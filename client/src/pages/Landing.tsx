@@ -399,6 +399,7 @@ export default function Landing() {
             { label: "Study Tools", href: "#tools" },
             { label: "Formulas", href: "/formulas" },
             { label: "Career Map", href: "/career" },
+            { label: "About", href: "#about" },
           ].map(item => (
             <a key={item.label} href={item.href} style={{
               padding: "6px 14px", borderRadius: 8,
@@ -641,6 +642,87 @@ export default function Landing() {
                   <div style={{ fontSize: 11, fontWeight: 700, color: f.color }}>Open →</div>
                 </div>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── About Section ── */}
+      <section id="about" style={{ background: "#0F172A", padding: "72px 24px" }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+
+          {/* Header */}
+          <div style={{ textAlign: "center", marginBottom: 52 }}>
+            <div style={{
+              display: "inline-block",
+              background: "rgba(96,165,250,0.12)",
+              border: "1px solid rgba(96,165,250,0.25)",
+              borderRadius: 20,
+              padding: "5px 14px",
+              fontSize: 11,
+              fontWeight: 700,
+              color: "#60A5FA",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase" as const,
+              marginBottom: 18,
+            }}>About Echelon Institute</div>
+            <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 900, color: "#FFFFFF", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
+              Built by an Engineer<br />Who Knows What's Missing
+            </h2>
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", maxWidth: 620, margin: "0 auto", lineHeight: 1.75 }}>
+              Ontario's water and wastewater sector is one of the most regulated and technically demanding in the country.
+              The only study resources available were dense government manuals, expensive in-person courses built on decade-old slides,
+              and American exam apps that referenced the wrong regulations entirely. Echelon was built to fix that.
+            </p>
+          </div>
+
+          {/* Two-column: story + timeline */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, marginBottom: 48 }}>
+
+            {/* Story card */}
+            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: "28px 24px" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#60A5FA", letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: 14 }}>The Curriculum</div>
+              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, margin: "0 0 16px" }}>
+                Every question is mapped to Ontario's regulatory framework. Every visual module lets you see and interact with real treatment processes — not just read about them.
+              </p>
+              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, margin: 0 }}>
+                The AI Tutor is trained on Ontario-specific content and can explain why a CT value matters, how to calculate a chlorine dose for a specific flow rate, or what O. Reg. 170/03 requires for turbidity monitoring.
+              </p>
+              <div style={{ marginTop: 20, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.08)", fontSize: 12, color: "rgba(255,255,255,0.4)" }}>
+                Curriculum based on O. Reg. 170/03 · 128/04 · 129/04 · OWWCO · EOCP
+              </div>
+            </div>
+
+            {/* Timeline */}
+            <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
+              {[
+                { year: "2025", title: "The Gap Identified", body: "Ay Bello, an Environmental Engineer (EIT) and Master's student in Digital Transformation at the University of Ottawa, identified a clear gap — operators were studying for technically demanding exams with resources that hadn't evolved in decades." },
+                { year: "Early 2026", title: "Built from Scratch", body: "Interactive SVG process diagrams, an adaptive practice engine, an AI tutor with confidence scoring and pattern detection, and a career path map based on real 2025 OCWA data." },
+                { year: "2026", title: "Platform Launched", body: "475 OIT practice questions, 10 study modules, process diagrams for drinking water and wastewater, pumping systems, lab and sampling, and a formula reference — all built for Ontario operators." },
+              ].map((item, i) => (
+                <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: "18px 20px", display: "flex", gap: 16, alignItems: "flex-start" }}>
+                  <div style={{ flexShrink: 0, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", borderRadius: 8, padding: "4px 10px", fontSize: 10, fontWeight: 800, color: "#fff", whiteSpace: "nowrap" as const }}>{item.year}</div>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 4 }}>{item.title}</div>
+                    <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, margin: 0 }}>{item.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Values row */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
+            {[
+              { icon: "🍁", title: "Ontario-First", body: "Every question, regulation, and process description is specific to Ontario's framework. No American content repurposed for Canadian exams." },
+              { icon: "🧠", title: "Understand, Don't Memorize", body: "The AI Tutor explains the why behind every answer — CT values, dosing calculations, turbidity monitoring requirements." },
+              { icon: "📈", title: "Career-Long Learning", body: "From OIT through Class 4. Content that grows with your career and supports every certification level." },
+            ].map(v => (
+              <div key={v.title} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: "22px 20px" }}>
+                <div style={{ fontSize: 28, marginBottom: 10 }}>{v.icon}</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{v.title}</div>
+                <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, margin: 0 }}>{v.body}</p>
+              </div>
             ))}
           </div>
         </div>
