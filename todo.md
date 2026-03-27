@@ -33,3 +33,7 @@
 - [x] Fix tool cards on Landing page to be clickable links (navigate to their respective pages)
 - [x] Add clickable home link to every tool page header so users can return to homepage
 - [x] Collapse WQA to a single certification prep course (accurate to Ontario O. Reg. 128/04)
+- [x] Add waitlist DB table (email, course, timestamp)
+- [x] Add tRPC waitlist.join procedure (save lead + notify owner)
+- [x] Add NotifyModal component with email input
+- [x] Wire "Notify me" button to WQA and Class 2-4 course cards on Landing page

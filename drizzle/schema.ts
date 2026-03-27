@@ -26,3 +26,15 @@ export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
 // TODO: Add your tables here
+
+/** Waitlist table for capturing email leads for upcoming courses */
+export const waitlist = mysqlTable("waitlist", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  courseCode: varchar("courseCode", { length: 32 }).notNull(),
+  courseTitle: varchar("courseTitle", { length: 128 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Waitlist = typeof waitlist.$inferSelect;
+export type InsertWaitlist = typeof waitlist.$inferInsert;

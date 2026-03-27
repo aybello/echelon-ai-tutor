@@ -4,6 +4,7 @@
 
 import { Link } from "wouter";
 import { useState } from "react";
+import NotifyModal from "@/components/NotifyModal";
 
 const WATER_COURSES = [
   {
@@ -48,6 +49,7 @@ const WATER_COURSES = [
     color: "#0E7490",
     bg: "#ECFEFF",
     border: "#A5F3FC",
+    comingSoon: true,
   },
   {
     code: "CL3-W",
@@ -62,6 +64,7 @@ const WATER_COURSES = [
     color: "#1E40AF",
     bg: "#EFF6FF",
     border: "#BFDBFE",
+    comingSoon: true,
   },
   {
     code: "CL4-W",
@@ -77,6 +80,7 @@ const WATER_COURSES = [
     color: "#6D28D9",
     bg: "#F5F3FF",
     border: "#DDD6FE",
+    comingSoon: true,
   },
 ];
 
@@ -123,6 +127,7 @@ const WASTEWATER_COURSES = [
     color: "#0F766E",
     bg: "#F0FDFA",
     border: "#99F6E4",
+    comingSoon: true,
   },
   {
     code: "CL3-WW",
@@ -137,6 +142,7 @@ const WASTEWATER_COURSES = [
     color: "#0E7490",
     bg: "#ECFEFF",
     border: "#A5F3FC",
+    comingSoon: true,
   },
   {
     code: "CL4-WW",
@@ -152,6 +158,7 @@ const WASTEWATER_COURSES = [
     color: "#6D28D9",
     bg: "#F5F3FF",
     border: "#DDD6FE",
+    comingSoon: true,
   },
 ];
 
@@ -216,6 +223,7 @@ const STATS = [
 
 function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
   const [expanded, setExpanded] = useState(false);
+  const [notifyOpen, setNotifyOpen] = useState(false);
   return (
     <div
       style={{
@@ -293,17 +301,40 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
         </ul>
       )}
 
-      <Link href="/quiz">
-        <button style={{
-          width: "100%", padding: "12px",
-          background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
-          color: "#fff", border: "none", borderRadius: 10,
-          fontSize: 13, fontWeight: 700, cursor: "pointer",
-          fontFamily: "inherit", transition: "opacity 0.15s",
-        }}>
-          Start Studying →
+      {course.comingSoon ? (
+        <button
+          onClick={() => setNotifyOpen(true)}
+          style={{
+            width: "100%", padding: "12px",
+            background: "linear-gradient(135deg, #7C3AED, #6D28D9)",
+            color: "#fff", border: "none", borderRadius: 10,
+            fontSize: 13, fontWeight: 700, cursor: "pointer",
+            fontFamily: "inherit", transition: "opacity 0.15s",
+          }}
+        >
+          🔔 Notify Me When Available
         </button>
-      </Link>
+      ) : (
+        <Link href="/quiz">
+          <button style={{
+            width: "100%", padding: "12px",
+            background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
+            color: "#fff", border: "none", borderRadius: 10,
+            fontSize: 13, fontWeight: 700, cursor: "pointer",
+            fontFamily: "inherit", transition: "opacity 0.15s",
+          }}>
+            Start Studying →
+          </button>
+        </Link>
+      )}
+
+      {notifyOpen && (
+        <NotifyModal
+          courseCode={course.code}
+          courseTitle={course.title}
+          onClose={() => setNotifyOpen(false)}
+        />
+      )}
     </div>
   );
 }
@@ -323,6 +354,7 @@ const WQA_COURSES = [
     color: "#6D28D9",
     bg: "#FAF5FF",
     border: "#DDD6FE",
+    comingSoon: true,
   },
 ];
 

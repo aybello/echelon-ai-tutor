@@ -8,6 +8,13 @@
       "when": 1774577811318,
       "tag": "0000_cloudy_thena",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1774601657108,
+      "tag": "0001_sticky_meltdown",
+      "breakpoints": true
     }
   ]
 }

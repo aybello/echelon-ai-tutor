@@ -1,8 +1,12 @@
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { invokeLLM } from "./_core/llm";
+import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
+import { getDb } from "./db";
+import { waitlist } from "../drizzle/schema";
+import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 
 export const appRouter = router({
@@ -17,6 +21,47 @@ export const appRouter = router({
         success: true,
       } as const;
     }),
+  }),
+
+  // Waitlist — email lead capture for upcoming courses
+  waitlist: router({
+    join: publicProcedure
+      .input(
+        z.object({
+          email: z.string().email("Please enter a valid email address"),
+          courseCode: z.string().min(1),
+          courseTitle: z.string().min(1),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable");
+
+        // Check for duplicate — same email + course
+        const existing = await db
+          .select()
+          .from(waitlist)
+          .where(and(eq(waitlist.email, input.email), eq(waitlist.courseCode, input.courseCode)))
+          .limit(1);
+
+        if (existing.length > 0) {
+          return { success: true, alreadyRegistered: true };
+        }
+
+        await db.insert(waitlist).values({
+          email: input.email,
+          courseCode: input.courseCode,
+          courseTitle: input.courseTitle,
+        });
+
+        // Notify the owner
+        await notifyOwner({
+          title: `New waitlist signup: ${input.courseCode}`,
+          content: `${input.email} joined the waitlist for "${input.courseTitle}".`,
+        });
+
+        return { success: true, alreadyRegistered: false };
+      }),
   }),
 
   // AI Tutor chat endpoint — proxies LLM calls server-side to keep API keys secure
