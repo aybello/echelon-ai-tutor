@@ -11,3 +11,16 @@
 - [x] Chemical Feed Calculator page (chlorine, alum, lime, fluoride, polymer dosing)
 - [x] Lab & Sampling Module page (chain of custody, QA/QC, parameter reference, calculators)
 - [x] Wire up routing and nav links for all 3 new pages across all existing pages
+- [x] Echelon Institute homepage (hero, two-track course catalogue, feature highlights, CTA)
+- [x] OIT exam bank — 475 questions across 10 OIT modules
+- [x] Update quiz engine to serve OIT questions with module filtering and AI Tutor
+- [x] Wire homepage CTAs into exam bank (/quiz route)
+- [x] Question bank integrity tests (9 tests covering structure, types, adaptive engine)
+
+## Next Priority Features
+- [ ] User accounts + authentication (persistent progress tracking)
+- [ ] Stripe paywall integration (Pro subscription $19/mo, course purchases $119-$329)
+- [ ] Student dashboard (study streaks, score history, module progress)
+- [ ] Expand question banks for Class 1-4 (500-1000 questions each)
+- [ ] Formula Sheet page (CT, SRT, SVI, flow calculations with worked examples)
+- [ ] Add 25 more Wastewater Treatment questions to reach 500 total

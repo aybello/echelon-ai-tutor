@@ -2,10 +2,11 @@
 // Design: Professional SaaS — Clean Dark-Accent
 // Philosophy: Sora typography, blue/teal gradient brand, white cards on slate bg
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { Link } from "wouter";
 import {
   QUESTIONS,
+  OIT_MODULES,
   getNextQuestion,
   getPatternInsights,
   type Question,
@@ -29,13 +30,29 @@ const DIFF_BG: Record<string, string> = {
   hard: "#FEE2E2",
 };
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  Disinfection:          { bg: "#DBEAFE", color: "#1D4ED8" },
-  Hydraulics:            { bg: "#DCFCE7", color: "#15803D" },
-  Regulations:           { bg: "#EDE9FE", color: "#6D28D9" },
-  "Math & Calculations": { bg: "#FFEDD5", color: "#C2410C" },
-  "Health & Safety":     { bg: "#FEE2E2", color: "#B91C1C" },
-  Wastewater:            { bg: "#CCFBF1", color: "#0F766E" },
-  "Water Quality":       { bg: "#FEF9C3", color: "#A16207" },
+  "Disinfection":          { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Chemical Feed & Storage": { bg: "#FEF9C3", color: "#A16207" },
+  "Hydraulics":            { bg: "#DCFCE7", color: "#15803D" },
+  "Math & Calculations":   { bg: "#FFEDD5", color: "#C2410C" },
+  "Ontario Regulations":   { bg: "#EDE9FE", color: "#6D28D9" },
+  "Pumping Systems":       { bg: "#CCFBF1", color: "#0F766E" },
+  "Water Treatment":       { bg: "#DBEAFE", color: "#0369A1" },
+  "Wastewater Treatment":  { bg: "#ECFDF5", color: "#065F46" },
+  "Water Quality & Sampling": { bg: "#FEF9C3", color: "#A16207" },
+  "Health & Safety":       { bg: "#FEE2E2", color: "#B91C1C" },
+};
+
+const MODULE_ICONS: Record<string, string> = {
+  "Disinfection":          "🧪",
+  "Chemical Feed & Storage": "⚗️",
+  "Hydraulics":            "💧",
+  "Math & Calculations":   "📐",
+  "Ontario Regulations":   "📋",
+  "Pumping Systems":       "⚙️",
+  "Water Treatment":       "🏭",
+  "Wastewater Treatment":  "♻️",
+  "Water Quality & Sampling": "🔬",
+  "Health & Safety":       "🦺",
 };
 
 export default function Home() {
@@ -49,6 +66,14 @@ export default function Home() {
   const [patternMode, setPatternMode] = useState(false);
   const [shakeKey, setShakeKey]       = useState(0);
   const [adaptive, setAdaptive]       = useState<string | null>(null);
+  const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [showModuleSelector, setShowModuleSelector] = useState(false);
+
+  // Filter questions by selected module
+  const activeQuestions = useMemo(() => {
+    if (!selectedModule) return QUESTIONS;
+    return QUESTIONS.filter(q => q.module === selectedModule);
+  }, [selectedModule]);
 
   const patterns = getPatternInsights(history);
   const allDone = !current;
@@ -59,7 +84,6 @@ export default function Home() {
       return;
     }
     if (!current) return;
-
     const isCorrect = selected === current.correct;
     const entry: HistoryEntry = {
       questionId: current.id,
@@ -75,8 +99,8 @@ export default function Home() {
   }, [selected, confidence, current]);
 
   const next = useCallback(() => {
-    const updatedHistory = history; // already updated via setHistory in confirm
-    const nextQ = getNextQuestion(updatedHistory, QUESTIONS);
+    const updatedHistory = history;
+    const nextQ = getNextQuestion(updatedHistory, activeQuestions);
     if (!nextQ) {
       setCurrent(null);
       return;
@@ -93,14 +117,30 @@ export default function Home() {
     setShowSteps(false);
     setTutorOpen(false);
     setPatternMode(false);
-  }, [history]);
+  }, [history, activeQuestions]);
 
   const openPatternTutor = () => { setPatternMode(true); setTutorOpen(true); };
   const openTutor = () => { setPatternMode(false); setTutorOpen(true); };
 
-  const resetSession = () => {
+  const resetSession = useCallback(() => {
+    const firstQ = activeQuestions[0] ?? QUESTIONS[0];
     setHistory([]);
-    setCurrent(QUESTIONS[0]);
+    setCurrent(firstQ);
+    setSelected(null);
+    setConfidence(null);
+    setConfirmed(false);
+    setShowSteps(false);
+    setTutorOpen(false);
+    setPatternMode(false);
+    setAdaptive(null);
+  }, [activeQuestions]);
+
+  const handleModuleSelect = (mod: string | null) => {
+    setSelectedModule(mod);
+    setShowModuleSelector(false);
+    const pool = mod ? QUESTIONS.filter(q => q.module === mod) : QUESTIONS;
+    setHistory([]);
+    setCurrent(pool[0] ?? null);
     setSelected(null);
     setConfidence(null);
     setConfirmed(false);
@@ -112,11 +152,20 @@ export default function Home() {
 
   const correctCount = history.filter((h) => h.correct).length;
   const wrongCount   = history.filter((h) => !h.correct).length;
-  const progress     = (history.length / QUESTIONS.length) * 100;
+  const progress     = (history.length / activeQuestions.length) * 100;
 
   const moduleStyle = current
     ? MODULE_COLORS[current.module] ?? { bg: "#DBEAFE", color: "#1D4ED8" }
     : { bg: "#DBEAFE", color: "#1D4ED8" };
+
+  // Module stats for selector
+  const moduleStats = useMemo(() => {
+    const stats: Record<string, number> = {};
+    QUESTIONS.forEach(q => {
+      stats[q.module] = (stats[q.module] ?? 0) + 1;
+    });
+    return stats;
+  }, []);
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
@@ -130,6 +179,7 @@ export default function Home() {
         .option-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
         .next-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(29,78,216,0.35) !important; }
         .tutor-btn:hover { background: #1e40af !important; }
+        .module-chip:hover { opacity: 0.85; transform: translateY(-1px); }
       `}</style>
 
       {/* ── HEADER ── */}
@@ -142,39 +192,67 @@ export default function Home() {
         boxShadow: "0 1px 8px rgba(0,0,0,0.05)",
       }}>
         <div style={{
-          padding: "13px 28px",
+          padding: "13px 20px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: 8,
         }}>
           {/* Brand */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <div style={{
-              width: 36,
-              height: 36,
-              borderRadius: 10,
-              background: "linear-gradient(135deg, #1D4ED8, #0F766E)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 16,
-              fontWeight: 800,
-              color: "#fff",
-              letterSpacing: "-0.5px",
-              boxShadow: "0 2px 8px rgba(29,78,216,0.3)",
-            }}>E</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <Link href="/">
+              <div style={{
+                width: 36,
+                height: 36,
+                borderRadius: 10,
+                background: "linear-gradient(135deg, #1D4ED8, #0F766E)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 16,
+                fontWeight: 800,
+                color: "#fff",
+                letterSpacing: "-0.5px",
+                boxShadow: "0 2px 8px rgba(29,78,216,0.3)",
+                cursor: "pointer",
+              }}>E</div>
+            </Link>
             <div>
               <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", letterSpacing: "0.04em" }}>
                 ECHELON INSTITUTE
               </div>
               <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 500 }}>
-                OIT — Adaptive Practice · AI Tutor v2
+                OIT — Adaptive Practice · {QUESTIONS.length} Questions
               </div>
             </div>
           </div>
 
           {/* Stats + controls */}
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+            {/* Module filter button */}
+            <button
+              onClick={() => setShowModuleSelector(!showModuleSelector)}
+              style={{
+                padding: "6px 12px",
+                borderRadius: 20,
+                border: `1px solid ${selectedModule ? "#1D4ED8" : "#E5E7EB"}`,
+                background: selectedModule ? "#EFF6FF" : "transparent",
+                color: selectedModule ? "#1D4ED8" : "#64748B",
+                fontSize: 10,
+                fontWeight: 700,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                transition: "all 0.15s",
+                display: "flex",
+                alignItems: "center",
+                gap: 4,
+              }}
+            >
+              {selectedModule ? `${MODULE_ICONS[selectedModule] ?? "📚"} ${selectedModule}` : "📚 All Modules"}
+              <span style={{ fontSize: 8 }}>▼</span>
+            </button>
+
             <div style={{ fontSize: 11, color: "#64748B", display: "flex", alignItems: "center", gap: 4 }}>
               <span style={{ fontWeight: 800, color: "#059669", fontSize: 13 }}>{correctCount}</span>
               <span style={{ color: "#CBD5E1" }}>/</span>
@@ -197,66 +275,6 @@ export default function Home() {
               }}>🧠 Pattern Detected</button>
             )}
 
-            <Link href="/process">
-              <button style={{
-                padding: "7px 14px",
-                borderRadius: 20,
-                border: "1px solid #E5E7EB",
-                background: "transparent",
-                color: "#64748B",
-                fontSize: 10,
-                fontWeight: 700,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                transition: "all 0.15s",
-              }}>🔬 Drinking Water</button>
-            </Link>
-
-            <Link href="/wastewater">
-              <button style={{
-                padding: "7px 14px",
-                borderRadius: 20,
-                border: "1px solid #E5E7EB",
-                background: "transparent",
-                color: "#64748B",
-                fontSize: 10,
-                fontWeight: 700,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                transition: "all 0.15s",
-              }}>🔩 Wastewater</button>
-            </Link>
-
-            <Link href="/career">
-              <button style={{
-                padding: "7px 14px",
-                borderRadius: 20,
-                border: "1px solid #E5E7EB",
-                background: "transparent",
-                color: "#64748B",
-                fontSize: 10,
-                fontWeight: 700,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                transition: "all 0.15s",
-              }}>🗺️ Career Map</button>
-            </Link>
-
-            <Link href="/pumping">
-              <button style={{
-                padding: "7px 14px",
-                borderRadius: 20,
-                border: "1px solid #E5E7EB",
-                background: "transparent",
-                color: "#64748B",
-                fontSize: 10,
-                fontWeight: 700,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                transition: "all 0.15s",
-              }}>⚙️ Pumping</button>
-            </Link>
-
             <Link href="/mock-exam">
               <button style={{
                 padding: "7px 14px",
@@ -272,7 +290,7 @@ export default function Home() {
               }}>📝 Mock Exam</button>
             </Link>
 
-            <Link href="/chem-calc">
+            <Link href="/process">
               <button style={{
                 padding: "7px 14px",
                 borderRadius: 20,
@@ -284,10 +302,10 @@ export default function Home() {
                 cursor: "pointer",
                 fontFamily: "inherit",
                 transition: "all 0.15s",
-              }}>🧪 Chem Calc</button>
+              }}>🔬 Processes</button>
             </Link>
 
-            <Link href="/lab">
+            <Link href="/career">
               <button style={{
                 padding: "7px 14px",
                 borderRadius: 20,
@@ -299,7 +317,7 @@ export default function Home() {
                 cursor: "pointer",
                 fontFamily: "inherit",
                 transition: "all 0.15s",
-              }}>🔬 Lab</button>
+              }}>🗺️ Career</button>
             </Link>
 
             {!tutorOpen && current && confirmed && (
@@ -324,12 +342,118 @@ export default function Home() {
           <div style={{
             height: "100%",
             background: "linear-gradient(90deg, #1D4ED8, #0F766E)",
-            width: `${progress}%`,
+            width: `${Math.min(progress, 100)}%`,
             transition: "width 0.5s ease",
             borderRadius: "0 2px 2px 0",
           }} />
         </div>
       </div>
+
+      {/* ── MODULE SELECTOR DROPDOWN ── */}
+      {showModuleSelector && (
+        <div style={{
+          position: "fixed",
+          top: 72,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          display: "flex",
+          justifyContent: "center",
+          padding: "0 20px",
+          animation: "fadeUp 0.2s ease both",
+        }}>
+          <div style={{
+            background: "#fff",
+            borderRadius: 16,
+            boxShadow: "0 8px 40px rgba(0,0,0,0.15)",
+            border: "1px solid #E5E7EB",
+            padding: 20,
+            maxWidth: 700,
+            width: "100%",
+          }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 14 }}>
+              FILTER BY MODULE — CLICK TO FOCUS YOUR PRACTICE
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 12 }}>
+              <button
+                className="module-chip"
+                onClick={() => handleModuleSelect(null)}
+                style={{
+                  padding: "8px 16px",
+                  borderRadius: 20,
+                  border: `2px solid ${!selectedModule ? "#1D4ED8" : "#E5E7EB"}`,
+                  background: !selectedModule ? "#EFF6FF" : "#F8FAFC",
+                  color: !selectedModule ? "#1D4ED8" : "#475569",
+                  fontSize: 12,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                  transition: "all 0.15s",
+                }}
+              >
+                📚 All Modules ({QUESTIONS.length})
+              </button>
+              {OIT_MODULES.map(mod => {
+                const count = moduleStats[mod] ?? 0;
+                const style = MODULE_COLORS[mod] ?? { bg: "#F1F5F9", color: "#475569" };
+                const icon = MODULE_ICONS[mod] ?? "📖";
+                const isActive = selectedModule === mod;
+                return (
+                  <button
+                    key={mod}
+                    className="module-chip"
+                    onClick={() => handleModuleSelect(mod)}
+                    style={{
+                      padding: "8px 14px",
+                      borderRadius: 20,
+                      border: `2px solid ${isActive ? style.color : "#E5E7EB"}`,
+                      background: isActive ? style.bg : "#F8FAFC",
+                      color: isActive ? style.color : "#475569",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      fontFamily: "inherit",
+                      transition: "all 0.15s",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 5,
+                    }}
+                  >
+                    <span>{icon}</span>
+                    <span>{mod}</span>
+                    <span style={{
+                      background: isActive ? style.color : "#E5E7EB",
+                      color: isActive ? "#fff" : "#64748B",
+                      borderRadius: 10,
+                      padding: "1px 6px",
+                      fontSize: 9,
+                      fontWeight: 800,
+                    }}>{count}</span>
+                  </button>
+                );
+              })}
+            </div>
+            <button
+              onClick={() => setShowModuleSelector(false)}
+              style={{
+                padding: "6px 16px", borderRadius: 8,
+                border: "1px solid #E5E7EB", background: "transparent",
+                color: "#94A3B8", fontSize: 11, cursor: "pointer", fontFamily: "inherit",
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Click-outside to close module selector */}
+      {showModuleSelector && (
+        <div
+          style={{ position: "fixed", inset: 0, zIndex: 40 }}
+          onClick={() => setShowModuleSelector(false)}
+        />
+      )}
 
       {/* ── MAIN CONTENT ── */}
       <div style={{
@@ -338,6 +462,36 @@ export default function Home() {
         padding: "28px 20px 80px",
         transition: "max-width 0.3s ease",
       }}>
+
+        {/* Module context banner */}
+        {selectedModule && (
+          <div style={{
+            background: MODULE_COLORS[selectedModule]?.bg ?? "#EFF6FF",
+            borderRadius: 10,
+            padding: "10px 16px",
+            marginBottom: 14,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            border: `1px solid ${MODULE_COLORS[selectedModule]?.color ?? "#1D4ED8"}33`,
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <span style={{ fontSize: 16 }}>{MODULE_ICONS[selectedModule] ?? "📖"}</span>
+              <span style={{ fontSize: 12, fontWeight: 700, color: MODULE_COLORS[selectedModule]?.color ?? "#1D4ED8" }}>
+                Focused on: {selectedModule} · {activeQuestions.length} questions
+              </span>
+            </div>
+            <button
+              onClick={() => handleModuleSelect(null)}
+              style={{
+                fontSize: 10, color: "#94A3B8", background: "none",
+                border: "none", cursor: "pointer", fontFamily: "inherit", fontWeight: 600,
+              }}
+            >
+              ✕ Clear Filter
+            </button>
+          </div>
+        )}
 
         <ReadinessScore history={history} />
 
@@ -377,6 +531,7 @@ export default function Home() {
             </div>
             <div style={{ fontSize: 14, color: "#64748B", marginBottom: 6 }}>
               {correctCount} correct out of {history.length} questions
+              {selectedModule && ` · ${selectedModule}`}
             </div>
 
             {/* Final score ring */}
@@ -396,7 +551,7 @@ export default function Home() {
                 correctCount / history.length >= 0.6 ? "#FFFBEB" : "#FEF2F2",
             }}>
               <span style={{
-                fontFamily: "'Nunito', sans-serif",
+                fontFamily: "'Sora', sans-serif",
                 fontSize: 20,
                 fontWeight: 900,
                 color: correctCount / history.length >= 0.75 ? "#059669" :
@@ -414,21 +569,39 @@ export default function Home() {
                 : "Keep studying — focus on the modules you struggled with."}
             </div>
 
-            <button onClick={resetSession} className="next-btn" style={{
-              padding: "15px 40px",
-              borderRadius: 14,
-              border: "none",
-              background: "linear-gradient(135deg, #1D4ED8, #0F766E)",
-              color: "#fff",
-              fontSize: 14,
-              fontWeight: 700,
-              cursor: "pointer",
-              fontFamily: "inherit",
-              boxShadow: "0 4px 16px rgba(29,78,216,0.3)",
-              transition: "all 0.2s",
-            }}>
-              Start New Session
-            </button>
+            <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
+              <button onClick={resetSession} className="next-btn" style={{
+                padding: "15px 40px",
+                borderRadius: 14,
+                border: "none",
+                background: "linear-gradient(135deg, #1D4ED8, #0F766E)",
+                color: "#fff",
+                fontSize: 14,
+                fontWeight: 700,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                boxShadow: "0 4px 16px rgba(29,78,216,0.3)",
+                transition: "all 0.2s",
+              }}>
+                {selectedModule ? `Restart ${selectedModule}` : "Start New Session"}
+              </button>
+              {selectedModule && (
+                <button onClick={() => handleModuleSelect(null)} style={{
+                  padding: "15px 32px",
+                  borderRadius: 14,
+                  border: "2px solid #1D4ED8",
+                  background: "#EFF6FF",
+                  color: "#1D4ED8",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                  transition: "all 0.2s",
+                }}>
+                  Practice All Modules
+                </button>
+              )}
+            </div>
           </div>
         ) : (
           <>
@@ -482,7 +655,7 @@ export default function Home() {
                   borderRadius: 20,
                   border: "1px solid #E2E8F0",
                 }}>
-                  {history.length + 1} / {QUESTIONS.length}
+                  {history.length + 1} / {activeQuestions.length}
                 </div>
               </div>
 
@@ -670,7 +843,7 @@ export default function Home() {
                     <StepSolution steps={current.steps} tip={current.tip} />
                   )}
 
-                  {/* Tip (for questions without steps) */}
+                  {/* Tip */}
                   {!current.steps && (
                     <div style={{
                       marginTop: 12,
