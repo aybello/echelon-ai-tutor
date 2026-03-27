@@ -28,3 +28,6 @@
 - [x] Cap quiz sessions at 15 questions per session with clean session-end and restart flow
 - [x] Build Formula Sheet page (/formulas) with Ontario operator exam formulas and worked examples
 - [x] Wire Formula Sheet into all nav bars
+- [x] Add WQA as third track tab in Landing page course catalogue (alongside Water and Wastewater)
+- [x] Remove "8,000+ Ontario Operators" stat — replace with a meaningful metric
+- [x] Fix tool cards on Landing page to be clickable links (navigate to their respective pages)

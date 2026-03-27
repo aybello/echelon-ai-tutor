@@ -161,44 +161,57 @@ const FEATURES = [
     title: "AI Tutor",
     description: "Ask anything, get instant expert answers. The AI Tutor knows Ontario regulations, process chemistry, and exam strategy.",
     color: "#2563EB",
+    href: "/quiz",
   },
   {
     icon: "🎯",
     title: "Adaptive Practice",
     description: "The engine learns your weak spots and serves targeted questions. Study smarter, not longer.",
     color: "#7C3AED",
+    href: "/quiz",
   },
   {
     icon: "🏭",
     title: "Interactive Process Guides",
     description: "Click through animated treatment plant diagrams. See how every component works — not just read about it.",
     color: "#059669",
+    href: "/process",
   },
   {
     icon: "⚙️",
     title: "Pumping Systems Module",
     description: "Live pump curves, cavitation toggle, series/parallel configurations. The most technical module on the exam, made visual.",
     color: "#D97706",
+    href: "/pumping",
   },
   {
     icon: "🧪",
     title: "Chemical Feed Calculator",
     description: "Real-time dosing calculations for chlorine, alum, lime, and fluoride. Know the formula and the answer.",
     color: "#DC2626",
+    href: "/chem-calc",
+  },
+  {
+    icon: "📐",
+    title: "Formula Sheet",
+    description: "33 Ontario operator exam formulas with worked examples and exam tips. CT values, SVI, pump power, and more.",
+    color: "#0E7490",
+    href: "/formulas",
   },
   {
     icon: "🗺️",
     title: "Career Map",
     description: "See your full career path — OIT to Class 4 — with salary ranges, employer landscape, and certification timelines.",
-    color: "#0E7490",
+    color: "#1D4ED8",
+    href: "/career",
   },
 ];
 
 const STATS = [
-  { value: "8,000+", label: "Ontario Operators" },
   { value: "475", label: "OIT Practice Questions" },
   { value: "10", label: "Certification Courses" },
-  { value: "2", label: "Specialization Tracks" },
+  { value: "3", label: "Specialization Tracks" },
+  { value: "Free", label: "OIT Access" },
 ];
 
 function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
@@ -295,8 +308,55 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
   );
 }
 
+const WQA_COURSES = [
+  {
+    code: "WQA-E",
+    title: "WQA Entry",
+    subtitle: "Water Quality Analyst — Entry",
+    price: 149,
+    duration: "4–6 weeks",
+    questions: 300,
+    description: "Introduction to drinking water laboratory analysis, sampling protocols, and quality assurance under O. Reg. 128/04.",
+    topics: ["Lab Safety & Equipment", "Sampling Techniques", "Basic Analytical Chemistry", "O. Reg. 128/04 Overview", "Chain of Custody"],
+    badge: "New",
+    badgeColor: "#7C3AED",
+    color: "#6D28D9",
+    bg: "#FAF5FF",
+    border: "#DDD6FE",
+  },
+  {
+    code: "WQA-I",
+    title: "WQA Intermediate",
+    subtitle: "Water Quality Analyst — Intermediate",
+    price: 199,
+    duration: "6–8 weeks",
+    questions: 350,
+    description: "Advanced analytical methods, QA/QC programs, method validation, and accreditation requirements for ISO/IEC 17025 labs.",
+    topics: ["Advanced Analytical Methods", "QA/QC Programs", "Method Validation", "ISO/IEC 17025 Basics", "Reporting & Documentation"],
+    badge: null,
+    color: "#7C3AED",
+    bg: "#FAF5FF",
+    border: "#DDD6FE",
+  },
+  {
+    code: "WQA-S",
+    title: "WQA Senior",
+    subtitle: "Water Quality Analyst — Senior",
+    price: 249,
+    duration: "8–10 weeks",
+    questions: 400,
+    description: "Lab management, accreditation audits, regulatory reporting, and leadership for senior analysts and lab managers.",
+    topics: ["Lab Management & Accreditation", "Regulatory Reporting", "Proficiency Testing", "Data Quality Objectives", "WQA Exam Mastery"],
+    badge: "Premium",
+    badgeColor: "#7C3AED",
+    color: "#5B21B6",
+    bg: "#F5F3FF",
+    border: "#C4B5FD",
+  },
+];
+
 export default function Landing() {
-  const [activeTrack, setActiveTrack] = useState<"water" | "wastewater">("water");
+  const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa">("water");
 
   return (
     <div style={{ fontFamily: "Sora, Nunito, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
@@ -460,18 +520,18 @@ export default function Landing() {
           <h2 style={{ fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
             Choose Your Certification Track
           </h2>
-          <p style={{ fontSize: 16, color: "#64748B", maxWidth: 520, margin: "0 auto 32px" }}>
-            Two specialization tracks, five certification levels each. Every course includes hundreds of practice questions and full AI Tutor access.
+          <p style={{ fontSize: 16, color: "#64748B", maxWidth: 560, margin: "0 auto 32px" }}>
+            Three specialization tracks — Water, Wastewater, and Water Quality Analyst. Every course includes hundreds of practice questions and full AI Tutor access.
           </p>
 
           {/* Track Toggle */}
           <div style={{
-            display: "inline-flex", background: "#F1F5F9", borderRadius: 12, padding: 4, gap: 4,
+            display: "inline-flex", background: "#F1F5F9", borderRadius: 12, padding: 4, gap: 4, flexWrap: "wrap", justifyContent: "center",
           }}>
             <button
               onClick={() => setActiveTrack("water")}
               style={{
-                padding: "10px 28px", borderRadius: 10, border: "none",
+                padding: "10px 24px", borderRadius: 10, border: "none",
                 background: activeTrack === "water" ? "#1D4ED8" : "transparent",
                 color: activeTrack === "water" ? "#fff" : "#64748B",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
@@ -483,7 +543,7 @@ export default function Landing() {
             <button
               onClick={() => setActiveTrack("wastewater")}
               style={{
-                padding: "10px 28px", borderRadius: 10, border: "none",
+                padding: "10px 24px", borderRadius: 10, border: "none",
                 background: activeTrack === "wastewater" ? "#059669" : "transparent",
                 color: activeTrack === "wastewater" ? "#fff" : "#64748B",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
@@ -491,6 +551,18 @@ export default function Landing() {
               }}
             >
               ♻️ Wastewater Treatment
+            </button>
+            <button
+              onClick={() => setActiveTrack("wqa")}
+              style={{
+                padding: "10px 24px", borderRadius: 10, border: "none",
+                background: activeTrack === "wqa" ? "#7C3AED" : "transparent",
+                color: activeTrack === "wqa" ? "#fff" : "#64748B",
+                fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                transition: "all 0.2s",
+              }}
+            >
+              🔬 Water Quality Analyst
             </button>
           </div>
         </div>
@@ -500,7 +572,7 @@ export default function Landing() {
           gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
           gap: 24,
         }}>
-          {(activeTrack === "water" ? WATER_COURSES : WASTEWATER_COURSES).map(course => (
+          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : WQA_COURSES).map(course => (
             <CourseCard key={course.code} course={course} />
           ))}
         </div>
@@ -527,26 +599,39 @@ export default function Landing() {
             gap: 20,
           }}>
             {FEATURES.map(f => (
-              <div key={f.title} style={{
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                borderRadius: 16, padding: "28px 24px",
-                transition: "background 0.2s",
-              }}
-                onMouseEnter={e => (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.08)"}
-                onMouseLeave={e => (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.05)"}
-              >
+              <Link key={f.title} href={f.href}>
                 <div style={{
-                  width: 48, height: 48, borderRadius: 12,
-                  background: `${f.color}22`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: 24, marginBottom: 16,
-                }}>
-                  {f.icon}
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: 16, padding: "28px 24px",
+                  transition: "background 0.2s, transform 0.15s, box-shadow 0.15s",
+                  cursor: "pointer",
+                  height: "100%",
+                }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.10)";
+                    (e.currentTarget as HTMLDivElement).style.transform = "translateY(-3px)";
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = `0 8px 28px ${f.color}30`;
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.05)";
+                    (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
+                    (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
+                  }}
+                >
+                  <div style={{
+                    width: 48, height: 48, borderRadius: 12,
+                    background: `${f.color}22`,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 24, marginBottom: 16,
+                  }}>
+                    {f.icon}
+                  </div>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#FFFFFF", margin: "0 0 8px 0" }}>{f.title}</h3>
+                  <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: "0 0 14px 0" }}>{f.description}</p>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: f.color }}>Open →</div>
                 </div>
-                <h3 style={{ fontSize: 16, fontWeight: 700, color: "#FFFFFF", margin: "0 0 8px 0" }}>{f.title}</h3>
-                <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: 0 }}>{f.description}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
