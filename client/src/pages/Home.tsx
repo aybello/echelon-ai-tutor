@@ -209,7 +209,22 @@ export default function Home() {
                 cursor: "pointer",
                 fontFamily: "inherit",
                 transition: "all 0.15s",
-              }}>🔬 Process Guide</button>
+              }}>🔬 Drinking Water</button>
+            </Link>
+
+            <Link href="/wastewater">
+              <button style={{
+                padding: "7px 14px",
+                borderRadius: 20,
+                border: "1px solid #E5E7EB",
+                background: "transparent",
+                color: "#64748B",
+                fontSize: 10,
+                fontWeight: 700,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                transition: "all 0.15s",
+              }}>🔩 Wastewater</button>
             </Link>
 
             {!tutorOpen && current && confirmed && (
