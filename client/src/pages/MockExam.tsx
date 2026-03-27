@@ -4,6 +4,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "wouter";
 import { QUESTIONS, type Question } from "@/lib/questions";
+import SiteNav from "@/components/SiteNav";
 
 // ── Extended question bank (25 questions: 15 original + 10 new) ──
 const EXTRA_QUESTIONS: Question[] = [
@@ -255,25 +256,7 @@ export default function MockExam() {
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
         <style>{`@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }`}</style>
 
-        {/* Header */}
-        <div style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "13px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 10, boxShadow: "0 1px 8px rgba(0,0,0,0.05)" }}>
-          <Link href="/">
-            <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}>
-              <div style={{ width: 36, height: 36, borderRadius: 10, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 800, color: "#fff" }}>E</div>
-              <div>
-                <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", letterSpacing: "0.04em" }}>ECHELON INSTITUTE</div>
-                <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 500 }}>OIT Mock Exam</div>
-              </div>
-            </div>
-          </Link>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            {NAV_LINKS.filter(l => l.href !== "/mock-exam").map(l => (
-              <Link key={l.href} href={l.href}>
-                <button style={{ padding: "6px 12px", borderRadius: 20, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{l.label}</button>
-              </Link>
-            ))}
-          </div>
-        </div>
+        <SiteNav currentPath="/mock-exam" />
 
         {/* Intro card */}
         <div style={{ maxWidth: 680, margin: "60px auto", padding: "0 20px", animation: "fadeUp 0.4s ease both" }}>
@@ -331,22 +314,12 @@ export default function MockExam() {
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
         <style>{`@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} } @keyframes popIn { from{transform:scale(0.9);opacity:0} to{transform:scale(1);opacity:1} }`}</style>
 
-        {/* Header */}
-        <div style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "13px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 10, boxShadow: "0 1px 8px rgba(0,0,0,0.05)" }}>
-          <Link href="/">
-            <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}>
-              <div style={{ width: 36, height: 36, borderRadius: 10, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 800, color: "#fff" }}>E</div>
-              <div>
-                <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", letterSpacing: "0.04em" }}>ECHELON INSTITUTE</div>
-                <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 500 }}>Exam Results</div>
-              </div>
-            </div>
-          </Link>
+        <SiteNav currentPath="/mock-exam" rightSlot={
           <div style={{ display: "flex", gap: 8 }}>
             <button onClick={startExam} style={{ padding: "7px 14px", borderRadius: 20, border: "none", background: "#1D4ED8", color: "#fff", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>🔄 Retake Exam</button>
             <Link href="/"><button style={{ padding: "7px 14px", borderRadius: 20, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>🎯 Practice Mode</button></Link>
           </div>
-        </div>
+        } />
 
         <div style={{ maxWidth: 760, margin: "0 auto", padding: "32px 20px 80px", animation: "fadeUp 0.4s ease both" }}>
 

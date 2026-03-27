@@ -5,6 +5,7 @@
 import { Link } from "wouter";
 import { useState } from "react";
 import NotifyModal from "@/components/NotifyModal";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const WATER_COURSES = [
   {
@@ -359,6 +360,11 @@ const WQA_COURSES = [
 ];
 
 export default function Landing() {
+  usePageMeta({
+    title: "Ontario Water & Wastewater Operator Exam Prep",
+    description: "475 OIT practice questions, AI Tutor, formula sheet, and career map — built specifically for Ontario water and wastewater operators. Free OIT access, no account required.",
+    path: "/",
+  });
   const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa">("water");
 
   return (

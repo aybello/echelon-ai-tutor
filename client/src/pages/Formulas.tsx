@@ -4,6 +4,8 @@
 
 import { useState } from "react";
 import { Link } from "wouter";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import SiteNav from "@/components/SiteNav";
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Formula {
@@ -710,6 +712,11 @@ function FormulaCard({ formula, color, bg }: { formula: Formula; color: string; 
 
 // ── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function Formulas() {
+  usePageMeta({
+    title: "Ontario Operator Exam Formula Sheet",
+    description: "33 Ontario water and wastewater operator exam formulas with worked examples and exam tips. CT values, SVI, chlorine dose, flow calculations, and more.",
+    path: "/formulas",
+  });
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [expandAll, setExpandAll] = useState(false);
@@ -742,66 +749,7 @@ export default function Formulas() {
         .search-input:focus { outline: none; border-color: #3B82F6 !important; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
       `}</style>
 
-      {/* ── HEADER ── */}
-      <div style={{
-        background: "#fff",
-        borderBottom: "1px solid #E5E7EB",
-        position: "sticky",
-        top: 0,
-        zIndex: 10,
-        boxShadow: "0 1px 8px rgba(0,0,0,0.05)",
-      }}>
-        <div style={{
-          padding: "13px 24px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: 10,
-        }}>
-          {/* Brand */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <Link href="/">
-              <div style={{
-                width: 36, height: 36, borderRadius: 10,
-                background: "linear-gradient(135deg, #1D4ED8, #0F766E)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 16, fontWeight: 800, color: "#fff",
-                boxShadow: "0 2px 8px rgba(29,78,216,0.3)",
-                cursor: "pointer",
-              }}>E</div>
-            </Link>
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", letterSpacing: "0.04em" }}>
-                ECHELON INSTITUTE
-              </div>
-              <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 500 }}>
-                Formula Sheet — {totalFormulas} Ontario Operator Exam Formulas
-              </div>
-            </div>
-          </div>
-
-          {/* Nav */}
-          <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-            {[
-              { href: "/quiz", label: "🎯 Practice Quiz" },
-              { href: "/mock-exam", label: "📝 Mock Exam" },
-              { href: "/chem-calc", label: "🧪 Chem Calc" },
-              { href: "/process", label: "💧 Processes" },
-              { href: "/career", label: "🗺️ Career" },
-            ].map(item => (
-              <Link key={item.href} href={item.href}>
-                <button style={{
-                  padding: "7px 12px", borderRadius: 8,
-                  border: "1px solid #E5E7EB", background: "transparent",
-                  color: "#64748B", fontSize: 10, fontWeight: 600,
-                  cursor: "pointer", fontFamily: "inherit",
-                }}>{item.label}</button>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
+      <SiteNav currentPath="/formulas" />
 
       {/* ── HERO BANNER ── */}
       <div style={{

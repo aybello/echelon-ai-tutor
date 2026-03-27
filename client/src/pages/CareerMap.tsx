@@ -4,6 +4,8 @@
 
 import { useState } from "react";
 import { Link } from "wouter";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import SiteNav from "@/components/SiteNav";
 import {
   TRACKS, LEVELS, EMPLOYERS, SALARY_JUMPS, HERO_STATS, JOB_MARKET,
   fmtSalary, fmtHr, type CertLevel,
@@ -466,6 +468,11 @@ function EmployersSection() {
 type ViewType = "ladder" | "chart" | "timeline" | "employers";
 
 export default function CareerMap() {
+  usePageMeta({
+    title: "Ontario Operator Career Map — OIT to Class 4",
+    description: "Explore the full Ontario water and wastewater operator career path from OIT to Class 4. Salary ranges, employer landscape, certification timelines, and Water Quality Analyst track.",
+    path: "/career",
+  });
   const [selected, setSelected] = useState<CertLevel | null>(null);
   const [track, setTrack]       = useState("all");
   const [view, setView]         = useState<ViewType>("ladder");
@@ -485,87 +492,20 @@ export default function CareerMap() {
         .fade { animation: fadeUp 0.4s ease both; }
       `}</style>
 
-      {/* ── HEADER ── */}
-      <div style={{
-        background: "#fff", borderBottom: "1px solid #E5E7EB",
-        position: "sticky", top: 0, zIndex: 10,
-        boxShadow: "0 1px 8px rgba(0,0,0,0.05)",
-      }}>
-        <div style={{ padding: "13px 28px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          {/* Brand */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <div style={{
-              width: 36, height: 36, borderRadius: 10,
-              background: "linear-gradient(135deg,#1D4ED8,#0F766E)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 16, fontWeight: 800, color: "#fff",
-              boxShadow: "0 2px 8px rgba(29,78,216,0.3)",
-            }}>E</div>
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", letterSpacing: "0.04em" }}>
-                ECHELON INSTITUTE
-              </div>
-              <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 500 }}>
-                Ontario Operator — Career Path & Salary Map
-              </div>
-            </div>
-          </div>
+      <SiteNav currentPath="/career" />
 
-          {/* View toggles + nav */}
-          <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-            {VIEWS.map(([v, l]) => (
-              <button key={v} onClick={() => setView(v)} style={{
-                padding: "7px 14px", borderRadius: 8,
-                border: `1px solid ${view === v ? "#1D4ED8" : "#E5E7EB"}`,
-                background: view === v ? "#EFF6FF" : "transparent",
-                color: view === v ? "#1D4ED8" : "#64748B",
-                fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.15s",
-              }}>{l}</button>
-            ))}
-            <div style={{ width: 1, height: 24, background: "#E5E7EB", margin: "0 4px" }} />
-            <Link href="/process">
-              <button style={{
-                padding: "7px 12px", borderRadius: 8, border: "1px solid #E5E7EB",
-                background: "transparent", color: "#64748B",
-                fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-              }}>💧 Drinking Water</button>
-            </Link>
-            <Link href="/wastewater">
-              <button style={{
-                padding: "7px 12px", borderRadius: 8, border: "1px solid #E5E7EB",
-                background: "transparent", color: "#64748B",
-                fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-              }}>🔩 Wastewater</button>
-            </Link>
-            <Link href="/pumping">
-              <button style={{
-                padding: "7px 12px", borderRadius: 8, border: "1px solid #E5E7EB",
-                background: "transparent", color: "#64748B",
-                fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-              }}>⚙️ Pumping</button>
-            </Link>
-            <Link href="/formulas">
-              <button style={{ padding: "7px 12px", borderRadius: 8, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>📐 Formulas</button>
-            </Link>
-            <Link href="/mock-exam">
-              <button style={{ padding: "7px 12px", borderRadius: 8, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>📝 Mock Exam</button>
-            </Link>
-            <Link href="/chem-calc">
-              <button style={{ padding: "7px 12px", borderRadius: 8, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>🧪 Chem Calc</button>
-            </Link>
-            <Link href="/lab">
-              <button style={{ padding: "7px 12px", borderRadius: 8, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>🔬 Lab</button>
-            </Link>
-            <Link href="/">
-              <button style={{
-                padding: "7px 12px", borderRadius: 8, border: "1px solid #E5E7EB",
-                background: "transparent", color: "#64748B",
-                fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-              }}>🧪 AI Tutor</button>
-            </Link>
-          </div>
-        </div>
+      {/* ── VIEW TOGGLES ── */}
+      <div style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6, flexWrap: "wrap" }}>
+        {VIEWS.map(([v, l]) => (
+          <button key={v} onClick={() => setView(v)} style={{
+            padding: "7px 14px", borderRadius: 8,
+            border: `1px solid ${view === v ? "#1D4ED8" : "#E5E7EB"}`,
+            background: view === v ? "#EFF6FF" : "transparent",
+            color: view === v ? "#1D4ED8" : "#64748B",
+            fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
+            transition: "all 0.15s",
+          }}>{l}</button>
+        ))}
       </div>
 
       {/* ── CONTENT ── */}

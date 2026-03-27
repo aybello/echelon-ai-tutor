@@ -3,19 +3,7 @@
 
 import { useState } from "react";
 import { Link } from "wouter";
-
-const NAV_LINKS = [
-  { href: "/", label: "🏠 Home" },
-  { href: "/quiz", label: "🎯 AI Tutor" },
-  { href: "/formulas", label: "📐 Formulas" },
-  { href: "/process", label: "💧 Drinking Water" },
-  { href: "/wastewater", label: "♻️ Wastewater" },
-  { href: "/career", label: "🗺️ Career" },
-  { href: "/pumping", label: "⚙️ Pumping" },
-  { href: "/mock-exam", label: "📝 Mock Exam" },
-  { href: "/chem-calc", label: "🧪 Chem Calc" },
-  { href: "/lab", label: "🔬 Lab" },
-];
+import SiteNav from "@/components/SiteNav";
 
 type Tab = "chlorine" | "alum" | "lime" | "fluoride" | "polymer";
 
@@ -435,25 +423,7 @@ export default function ChemCalc() {
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       <style>{`@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }`}</style>
 
-      {/* Header */}
-      <div style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "13px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 10, boxShadow: "0 1px 8px rgba(0,0,0,0.05)" }}>
-        <Link href="/">
-          <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}>
-            <div style={{ width: 36, height: 36, borderRadius: 10, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 800, color: "#fff" }}>E</div>
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", letterSpacing: "0.04em" }}>ECHELON INSTITUTE</div>
-              <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 500 }}>Chemical Feed Calculator</div>
-            </div>
-          </div>
-        </Link>
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          {NAV_LINKS.filter(l => l.href !== "/chem-calc").map(l => (
-            <Link key={l.href} href={l.href}>
-              <button style={{ padding: "6px 12px", borderRadius: 20, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{l.label}</button>
-            </Link>
-          ))}
-        </div>
-      </div>
+      <SiteNav currentPath="/chem-calc" />
 
       <div style={{ maxWidth: 800, margin: "0 auto", padding: "28px 20px 80px", animation: "fadeUp 0.3s ease both" }}>
 

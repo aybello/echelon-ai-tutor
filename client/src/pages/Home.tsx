@@ -4,6 +4,7 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { Link } from "wouter";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import {
   QUESTIONS,
   OIT_MODULES,
@@ -56,6 +57,11 @@ const MODULE_ICONS: Record<string, string> = {
 };
 
 export default function Home() {
+  usePageMeta({
+    title: "OIT Practice Quiz — 475 Questions",
+    description: "Practice for the Ontario Operator-in-Training (OIT) exam with 475 questions across 10 modules. AI Tutor, step-by-step solutions, and confidence tracking included.",
+    path: "/quiz",
+  });
   const [history, setHistory]         = useState<HistoryEntry[]>([]);
   const [current, setCurrent]         = useState<Question | null>(QUESTIONS[0]);
   const [selected, setSelected]       = useState<number | null>(null);
@@ -604,9 +610,9 @@ export default function Home() {
                 boxShadow: "0 4px 16px rgba(29,78,216,0.3)",
                 transition: "all 0.2s",
               }}>
-                {selectedModule ? `Restart ${selectedModule}` : "Start New Session"}
+                Try Another 15 →
               </button>
-              {selectedModule && (
+              {selectedModule ? (
                 <button onClick={() => handleModuleSelect(null)} style={{
                   padding: "15px 32px",
                   borderRadius: 14,
@@ -620,6 +626,24 @@ export default function Home() {
                   transition: "all 0.2s",
                 }}>
                   Practice All Modules
+                </button>
+              ) : (
+                <button onClick={() => {
+                  // Scroll to module selector
+                  document.getElementById("module-selector")?.scrollIntoView({ behavior: "smooth" });
+                }} style={{
+                  padding: "15px 32px",
+                  borderRadius: 14,
+                  border: "2px solid #0F766E",
+                  background: "#F0FDFA",
+                  color: "#0F766E",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                  transition: "all 0.2s",
+                }}>
+                  Switch Module
                 </button>
               )}
             </div>
@@ -876,6 +900,35 @@ export default function Home() {
                       <span style={{ fontSize: 9, fontWeight: 700, color: "#1D4ED8" }}>💡 TIP  </span>
                       <span style={{ fontSize: 11, color: "#1E3A5F", lineHeight: 1.65 }}>{current.tip}</span>
                     </div>
+                  )}
+
+                  {/* Formula sheet deep-link — shown when question has a formula */}
+                  {current.formula && (
+                    <a
+                      href="/formulas"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 6,
+                        marginTop: 10,
+                        padding: "7px 14px",
+                        borderRadius: 8,
+                        background: "#F0F9FF",
+                        border: "1px solid #BAE6FD",
+                        color: "#0369A1",
+                        fontSize: 11,
+                        fontWeight: 700,
+                        textDecoration: "none",
+                        fontFamily: "inherit",
+                        transition: "background 0.15s",
+                      }}
+                      onMouseEnter={e => (e.currentTarget.style.background = "#E0F2FE")}
+                      onMouseLeave={e => (e.currentTarget.style.background = "#F0F9FF")}
+                    >
+                      📐 View full formula sheet ↗
+                    </a>
                   )}
                 </div>
               )}

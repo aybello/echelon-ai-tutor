@@ -14,6 +14,7 @@ import MockExam from "./pages/MockExam";
 import ChemCalc from "./pages/ChemCalc";
 import Lab from "./pages/Lab";
 import Formulas from "./pages/Formulas";
+import About from "./pages/About";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -28,6 +29,7 @@ function Router() {
       <Route path={"/chem-calc"} component={ChemCalc} />
       <Route path={"/lab"} component={Lab} />
       <Route path={"/formulas"} component={Formulas} />
+      <Route path={"/about"} component={About} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

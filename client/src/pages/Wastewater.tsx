@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { WW_STEPS, WW_LABEL_INFO, type WastewaterStep } from "@/lib/wastewaterData";
 import { WWDiagramFor } from "@/components/WastewaterDiagrams";
+import SiteNav from "@/components/SiteNav";
 
 function WQCard({ quality, color }: { quality: Record<string, string>; color: string }) {
   return (
@@ -99,105 +100,20 @@ export default function Wastewater() {
         @keyframes fadeUp  { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
       `}</style>
 
-      {/* ── HEADER ── */}
-      <div style={{
-        background: "#fff",
-        borderBottom: "1px solid #E5E7EB",
-        position: "sticky",
-        top: 0,
-        zIndex: 10,
-        boxShadow: "0 1px 8px rgba(0,0,0,0.05)",
-      }}>
-        <div style={{ padding: "13px 28px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          {/* Brand */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <div style={{
-              width: 36, height: 36, borderRadius: 10,
-              background: "linear-gradient(135deg, #7C3AED, #BE185D)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 16, fontWeight: 800, color: "#fff", letterSpacing: "-0.5px",
-              boxShadow: "0 2px 8px rgba(124,58,237,0.3)",
-            }}>E</div>
-            <div>
-              <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", letterSpacing: "0.04em" }}>
-                ECHELON INSTITUTE
-              </div>
-              <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 500 }}>
-                Visual Learning — Wastewater Treatment Process
-              </div>
-            </div>
-          </div>
+      <SiteNav currentPath="/wastewater" />
 
-          {/* Nav */}
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            {/* View toggles */}
-            <div style={{ display: "flex", gap: 6 }}>
-              {([["learn", "🔬 Step Explorer"], ["overview", "📋 Full Overview"]] as const).map(([v, l]) => (
-                <button key={v} onClick={() => setView(v)} style={{
-                  padding: "7px 16px", borderRadius: 8,
-                  border: `1px solid ${view === v ? "#7C3AED" : "#E5E7EB"}`,
-                  background: view === v ? "#F5F3FF" : "transparent",
-                  color: view === v ? "#7C3AED" : "#64748B",
-                  fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-                  transition: "all 0.15s",
-                }}>{l}</button>
-              ))}
-            </div>
-            {/* Link to Drinking Water */}
-            <Link href="/process">
-              <button style={{
-                padding: "7px 16px", borderRadius: 8,
-                border: "1px solid #E5E7EB",
-                background: "transparent",
-                color: "#64748B",
-                fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.15s",
-              }}>💧 Drinking Water</button>
-            </Link>
-            {/* Link to Career Map */}
-            <Link href="/career">
-              <button style={{
-                padding: "7px 16px", borderRadius: 8,
-                border: "1px solid #E5E7EB",
-                background: "transparent",
-                color: "#64748B",
-                fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.15s",
-              }}>🗺️ Career Map</button>
-            </Link>
-            {/* Link to Pumping */}
-            <Link href="/pumping">
-              <button style={{
-                padding: "7px 16px", borderRadius: 8,
-                border: "1px solid #E5E7EB",
-                background: "transparent",
-                color: "#64748B",
-                fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.15s",
-              }}>⚙️ Pumping</button>
-            </Link>
-            <Link href="/mock-exam">
-              <button style={{ padding: "7px 16px", borderRadius: 8, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>📝 Mock Exam</button>
-            </Link>
-            <Link href="/chem-calc">
-              <button style={{ padding: "7px 16px", borderRadius: 8, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>🧪 Chem Calc</button>
-            </Link>
-            <Link href="/lab">
-              <button style={{ padding: "7px 16px", borderRadius: 8, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>🔬 Lab</button>
-            </Link>
-            {/* Link to Quiz */}
-            <Link href="/">
-              <button style={{
-                padding: "7px 16px", borderRadius: 8,
-                border: "1px solid #E5E7EB",
-                background: "transparent",
-                color: "#64748B",
-                fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.15s",
-              }}>🧪 AI Tutor Quiz</button>
-            </Link>
-          </div>
-        </div>
+      {/* ── VIEW TOGGLES ── */}
+      <div style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6 }}>
+        {([["learn", "🔬 Step Explorer"], ["overview", "📋 Full Overview"]] as const).map(([v, l]) => (
+          <button key={v} onClick={() => setView(v)} style={{
+            padding: "7px 16px", borderRadius: 8,
+            border: `1px solid ${view === v ? "#7C3AED" : "#E5E7EB"}`,
+            background: view === v ? "#F5F3FF" : "transparent",
+            color: view === v ? "#7C3AED" : "#64748B",
+            fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
+            transition: "all 0.15s",
+          }}>{l}</button>
+        ))}
       </div>
 
       {/* ── MAIN ── */}

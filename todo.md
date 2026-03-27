@@ -37,3 +37,8 @@
 - [x] Add tRPC waitlist.join procedure (save lead + notify owner)
 - [x] Add NotifyModal component with email input
 - [x] Wire "Notify me" button to WQA and Class 2-4 course cards on Landing page
+- [x] Quiz restart button on session-complete screen ("Try Another 15 →")
+- [x] Formula deep-link from quiz questions involving formulas (CT, chlorine dose, SVI, flow rate)
+- [x] About page (/about) with story, Ontario exam context, and mission
+- [x] SEO meta tags (title, description, og:*) per page
+- [x] Mobile navigation drawer (hamburger menu) on all tool page headers
