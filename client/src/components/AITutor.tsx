@@ -4,6 +4,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Question, HistoryEntry } from "@/lib/questions";
+import { trpc } from "@/lib/trpc";
 
 interface Props {
   question: Question | null;
@@ -80,6 +81,8 @@ export default function AITutor({
     setMessages([{ role: "assistant", content: initMsg }]);
   }, []);
 
+  const chatMutation = trpc.tutor.chat.useMutation();
+
   const sendMessage = async (userMsg: string) => {
     if (!userMsg.trim() || loading) return;
     setInput("");
@@ -131,31 +134,14 @@ Your approach:
 - If they've made the same mistake before (check the history), mention it gently`;
 
     try {
-      const apiKey = import.meta.env.VITE_FRONTEND_FORGE_API_KEY;
-      const apiUrl = import.meta.env.VITE_FRONTEND_FORGE_API_URL;
-
-      const res = await fetch(`${apiUrl}/v1/chat/completions`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-5",
-          max_tokens: 1000,
-          messages: [
-            { role: "system", content: systemPrompt },
-            ...newMessages.map((m) => ({ role: m.role, content: m.content })),
-          ],
-        }),
+      const result = await chatMutation.mutateAsync({
+        messages: [
+          { role: "system", content: systemPrompt },
+          ...newMessages.map((m) => ({ role: m.role as "user" | "assistant", content: typeof m.content === "string" ? m.content : String(m.content) })),
+        ],
       });
-
-      const data = await res.json();
-      const reply =
-        data.choices?.[0]?.message?.content ||
-        data.content?.[0]?.text ||
-        "I'm having trouble connecting right now — please try again.";
-      setMessages((prev) => [...prev, { role: "assistant", content: reply }]);
+      const replyText = typeof result.reply === "string" ? result.reply : String(result.reply);
+      setMessages((prev) => [...prev, { role: "assistant" as const, content: replyText }]);
     } catch {
       setMessages((prev) => [
         ...prev,

@@ -9,8 +9,8 @@ import Process from "./pages/Process";
 import Wastewater from "./pages/Wastewater";
 import CareerMap from "./pages/CareerMap";
 import PumpingSystems from "./pages/PumpingSystems";
-
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
