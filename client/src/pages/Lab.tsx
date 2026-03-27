@@ -5,10 +5,12 @@ import { useState } from "react";
 import { Link } from "wouter";
 
 const NAV_LINKS = [
-  { href: "/", label: "🎯 AI Tutor" },
-  { href: "/process", label: "🔬 Drinking Water" },
-  { href: "/wastewater", label: "🔩 Wastewater" },
-  { href: "/career", label: "🗺️ Career Map" },
+  { href: "/", label: "🏠 Home" },
+  { href: "/quiz", label: "🎯 AI Tutor" },
+  { href: "/formulas", label: "📐 Formulas" },
+  { href: "/process", label: "💧 Drinking Water" },
+  { href: "/wastewater", label: "♻️ Wastewater" },
+  { href: "/career", label: "🗺️ Career" },
   { href: "/pumping", label: "⚙️ Pumping" },
   { href: "/mock-exam", label: "📝 Mock Exam" },
   { href: "/chem-calc", label: "🧪 Chem Calc" },
@@ -398,13 +400,15 @@ export default function Lab() {
 
       {/* Header */}
       <div style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "13px 28px", display: "flex", alignItems: "center", justifyContent: "space-between", position: "sticky", top: 0, zIndex: 10, boxShadow: "0 1px 8px rgba(0,0,0,0.05)" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ width: 36, height: 36, borderRadius: 10, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 800, color: "#fff" }}>E</div>
-          <div>
-            <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", letterSpacing: "0.04em" }}>ECHELON INSTITUTE</div>
-            <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 500 }}>Lab & Sampling Module</div>
+        <Link href="/">
+          <div style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}>
+            <div style={{ width: 36, height: 36, borderRadius: 10, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 800, color: "#fff" }}>E</div>
+            <div>
+              <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", letterSpacing: "0.04em" }}>ECHELON INSTITUTE</div>
+              <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 500 }}>Lab & Sampling Module</div>
+            </div>
           </div>
-        </div>
+        </Link>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           {NAV_LINKS.filter(l => l.href !== "/lab").map(l => (
             <Link key={l.href} href={l.href}>
