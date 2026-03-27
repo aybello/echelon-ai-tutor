@@ -242,6 +242,21 @@ export default function Home() {
               }}>🗺️ Career Map</button>
             </Link>
 
+            <Link href="/pumping">
+              <button style={{
+                padding: "7px 14px",
+                borderRadius: 20,
+                border: "1px solid #E5E7EB",
+                background: "transparent",
+                color: "#64748B",
+                fontSize: 10,
+                fontWeight: 700,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                transition: "all 0.15s",
+              }}>⚙️ Pumping</button>
+            </Link>
+
             {!tutorOpen && current && confirmed && (
               <button onClick={openTutor} className="tutor-btn" style={{
                 padding: "7px 14px",

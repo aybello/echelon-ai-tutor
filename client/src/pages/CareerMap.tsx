@@ -514,6 +514,13 @@ export default function CareerMap() {
                 fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
               }}>🔩 Wastewater</button>
             </Link>
+            <Link href="/pumping">
+              <button style={{
+                padding: "7px 12px", borderRadius: 8, border: "1px solid #E5E7EB",
+                background: "transparent", color: "#64748B",
+                fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
+              }}>⚙️ Pumping</button>
+            </Link>
             <Link href="/">
               <button style={{
                 padding: "7px 12px", borderRadius: 8, border: "1px solid #E5E7EB",

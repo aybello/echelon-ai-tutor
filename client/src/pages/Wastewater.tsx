@@ -165,6 +165,17 @@ export default function Wastewater() {
                 transition: "all 0.15s",
               }}>🗺️ Career Map</button>
             </Link>
+            {/* Link to Pumping */}
+            <Link href="/pumping">
+              <button style={{
+                padding: "7px 16px", borderRadius: 8,
+                border: "1px solid #E5E7EB",
+                background: "transparent",
+                color: "#64748B",
+                fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
+                transition: "all 0.15s",
+              }}>⚙️ Pumping</button>
+            </Link>
             {/* Link to Quiz */}
             <Link href="/">
               <button style={{

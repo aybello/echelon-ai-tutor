@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Process from "./pages/Process";
 import Wastewater from "./pages/Wastewater";
 import CareerMap from "./pages/CareerMap";
+import PumpingSystems from "./pages/PumpingSystems";
 
 function Router() {
   return (
@@ -16,6 +17,7 @@ function Router() {
       <Route path={"/process"} component={Process} />
       <Route path={"/wastewater"} component={Wastewater} />
       <Route path={"/career"} component={CareerMap} />
+      <Route path={"/pumping"} component={PumpingSystems} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
