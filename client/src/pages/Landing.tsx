@@ -328,6 +328,7 @@ export default function Landing() {
           {[
             { label: "Courses", href: "#courses" },
             { label: "Study Tools", href: "#tools" },
+            { label: "Formulas", href: "/formulas" },
             { label: "Career Map", href: "/career" },
           ].map(item => (
             <a key={item.label} href={item.href} style={{
@@ -599,6 +600,7 @@ export default function Landing() {
         <div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 16 }}>
           {[
             { label: "AI Tutor Quiz", href: "/quiz" },
+            { label: "Formula Sheet", href: "/formulas" },
             { label: "Drinking Water", href: "/process" },
             { label: "Wastewater", href: "/wastewater" },
             { label: "Career Map", href: "/career" },

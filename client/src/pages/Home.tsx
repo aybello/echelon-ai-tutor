@@ -66,6 +66,7 @@ export default function Home() {
   const [patternMode, setPatternMode] = useState(false);
   const [shakeKey, setShakeKey]       = useState(0);
   const [adaptive, setAdaptive]       = useState<string | null>(null);
+  const SESSION_SIZE = 15;
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [showModuleSelector, setShowModuleSelector] = useState(false);
 
@@ -100,6 +101,11 @@ export default function Home() {
 
   const next = useCallback(() => {
     const updatedHistory = history;
+    // End session after SESSION_SIZE questions
+    if (updatedHistory.length >= SESSION_SIZE) {
+      setCurrent(null);
+      return;
+    }
     const nextQ = getNextQuestion(updatedHistory, activeQuestions);
     if (!nextQ) {
       setCurrent(null);
@@ -152,7 +158,7 @@ export default function Home() {
 
   const correctCount = history.filter((h) => h.correct).length;
   const wrongCount   = history.filter((h) => !h.correct).length;
-  const progress     = (history.length / activeQuestions.length) * 100;
+  const progress     = (history.length / SESSION_SIZE) * 100;
 
   const moduleStyle = current
     ? MODULE_COLORS[current.module] ?? { bg: "#DBEAFE", color: "#1D4ED8" }
@@ -303,6 +309,21 @@ export default function Home() {
                 fontFamily: "inherit",
                 transition: "all 0.15s",
               }}>🔬 Processes</button>
+            </Link>
+
+            <Link href="/formulas">
+              <button style={{
+                padding: "7px 14px",
+                borderRadius: 20,
+                border: "1px solid #E5E7EB",
+                background: "transparent",
+                color: "#64748B",
+                fontSize: 10,
+                fontWeight: 700,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                transition: "all 0.15s",
+              }}>📐 Formulas</button>
             </Link>
 
             <Link href="/career">
@@ -655,7 +676,7 @@ export default function Home() {
                   borderRadius: 20,
                   border: "1px solid #E2E8F0",
                 }}>
-                  {history.length + 1} / {activeQuestions.length}
+                  {history.length + 1} / {SESSION_SIZE}
                 </div>
               </div>
 

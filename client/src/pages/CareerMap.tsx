@@ -284,6 +284,7 @@ function CareerTimeline({ onSelect, selected }: {
   selected: CertLevel | null;
 }) {
   const mainLevels = LEVELS.filter(l => l.id !== "wqa");
+  const wqaLevel   = LEVELS.find(l => l.id === "wqa")!;
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -351,7 +352,30 @@ function CareerTimeline({ onSelect, selected }: {
         </div>
       </div>
 
-      {/* Selected detail */}
+        {/* WQA specialist path */}
+        <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB", marginTop: 8 }}>
+          <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>🔬 Specialist Path — Water Quality Analyst (WQA)</div>
+          <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 16 }}>Distinct from plant operations — laboratory-focused certification under O. Reg. 128/04</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 12 }}>
+            {[
+              { label: "Entry", years: "0–1 yr", salary: "$26–$30/hr", note: "Lab Technician / Junior Analyst" },
+              { label: "Intermediate", years: "2–4 yr", salary: "$30–$35/hr", note: "Senior Analyst / QA Coordinator" },
+              { label: "Senior", years: "5+ yr", salary: "$35–$38/hr", note: "Lab Manager / Quality Manager" },
+            ].map((step, i) => (
+              <div key={i} style={{ background: "#FAF5FF", borderRadius: 12, padding: "14px", border: "1px solid #DDD6FE" }}>
+                <div style={{ fontSize: 9, fontWeight: 700, color: "#7C3AED", letterSpacing: "0.1em", marginBottom: 4 }}>{step.label.toUpperCase()}</div>
+                <div style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>{step.salary}</div>
+                <div style={{ fontSize: 10, color: "#64748B", marginBottom: 4 }}>{step.years}</div>
+                <div style={{ fontSize: 9, color: "#7C3AED", fontWeight: 600 }}>{step.note}</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ marginTop: 14, background: "#EDE9FE", borderRadius: 10, padding: "12px 16px", fontSize: 11, color: "#4C1D95", lineHeight: 1.6 }}>
+            <strong>WQA Certification:</strong> Issued by OWWCO under O. Reg. 128/04. Analysts work in accredited drinking water testing laboratories (ISO/IEC 17025). High demand post-Walkerton as Ontario tightens lab requirements. Entry via the WQA exam — no prior operator experience required.
+          </div>
+        </div>
+
+        {/* Selected detail */}
       {selected && (
         <div style={{ animation: "popIn 0.3s ease both" }}>
           <DetailPanel level={selected} />
@@ -520,6 +544,9 @@ export default function CareerMap() {
                 background: "transparent", color: "#64748B",
                 fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
               }}>⚙️ Pumping</button>
+            </Link>
+            <Link href="/formulas">
+              <button style={{ padding: "7px 12px", borderRadius: 8, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>📐 Formulas</button>
             </Link>
             <Link href="/mock-exam">
               <button style={{ padding: "7px 12px", borderRadius: 8, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>📝 Mock Exam</button>

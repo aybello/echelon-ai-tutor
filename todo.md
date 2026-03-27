@@ -22,5 +22,9 @@
 - [ ] Stripe paywall integration (Pro subscription $19/mo, course purchases $119-$329)
 - [ ] Student dashboard (study streaks, score history, module progress)
 - [ ] Expand question banks for Class 1-4 (500-1000 questions each)
-- [ ] Formula Sheet page (CT, SRT, SVI, flow calculations with worked examples)
+- [x] Formula Sheet page (CT, SRT, SVI, flow calculations with worked examples)
 - [ ] Add 25 more Wastewater Treatment questions to reach 500 total
+- [x] Add Water Quality Analyst (WQA) to Career Map (ladder, salary, timeline, employers)
+- [x] Cap quiz sessions at 15 questions per session with clean session-end and restart flow
+- [x] Build Formula Sheet page (/formulas) with Ontario operator exam formulas and worked examples
+- [x] Wire Formula Sheet into all nav bars
