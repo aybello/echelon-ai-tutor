@@ -132,6 +132,21 @@ export default function PumpingSystems() {
             <span className="px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-semibold">
               Pumping
             </span>
+            <Link href="/mock-exam">
+              <span className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-xs font-medium transition-colors cursor-pointer">
+                📝 Mock Exam
+              </span>
+            </Link>
+            <Link href="/chem-calc">
+              <span className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-xs font-medium transition-colors cursor-pointer">
+                🧪 Chem Calc
+              </span>
+            </Link>
+            <Link href="/lab">
+              <span className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-xs font-medium transition-colors cursor-pointer">
+                🔬 Lab
+              </span>
+            </Link>
           </nav>
         </div>
       </header>

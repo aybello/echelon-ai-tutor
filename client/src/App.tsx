@@ -9,6 +9,9 @@ import Process from "./pages/Process";
 import Wastewater from "./pages/Wastewater";
 import CareerMap from "./pages/CareerMap";
 import PumpingSystems from "./pages/PumpingSystems";
+import MockExam from "./pages/MockExam";
+import ChemCalc from "./pages/ChemCalc";
+import Lab from "./pages/Lab";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -18,6 +21,9 @@ function Router() {
       <Route path={"/wastewater"} component={Wastewater} />
       <Route path={"/career"} component={CareerMap} />
       <Route path={"/pumping"} component={PumpingSystems} />
+      <Route path={"/mock-exam"} component={MockExam} />
+      <Route path={"/chem-calc"} component={ChemCalc} />
+      <Route path={"/lab"} component={Lab} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

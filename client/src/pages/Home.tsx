@@ -257,6 +257,51 @@ export default function Home() {
               }}>⚙️ Pumping</button>
             </Link>
 
+            <Link href="/mock-exam">
+              <button style={{
+                padding: "7px 14px",
+                borderRadius: 20,
+                border: "1px solid #E5E7EB",
+                background: "transparent",
+                color: "#64748B",
+                fontSize: 10,
+                fontWeight: 700,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                transition: "all 0.15s",
+              }}>📝 Mock Exam</button>
+            </Link>
+
+            <Link href="/chem-calc">
+              <button style={{
+                padding: "7px 14px",
+                borderRadius: 20,
+                border: "1px solid #E5E7EB",
+                background: "transparent",
+                color: "#64748B",
+                fontSize: 10,
+                fontWeight: 700,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                transition: "all 0.15s",
+              }}>🧪 Chem Calc</button>
+            </Link>
+
+            <Link href="/lab">
+              <button style={{
+                padding: "7px 14px",
+                borderRadius: 20,
+                border: "1px solid #E5E7EB",
+                background: "transparent",
+                color: "#64748B",
+                fontSize: 10,
+                fontWeight: 700,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                transition: "all 0.15s",
+              }}>🔬 Lab</button>
+            </Link>
+
             {!tutorOpen && current && confirmed && (
               <button onClick={openTutor} className="tutor-btn" style={{
                 padding: "7px 14px",

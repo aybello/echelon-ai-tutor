@@ -176,6 +176,15 @@ export default function Wastewater() {
                 transition: "all 0.15s",
               }}>⚙️ Pumping</button>
             </Link>
+            <Link href="/mock-exam">
+              <button style={{ padding: "7px 16px", borderRadius: 8, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>📝 Mock Exam</button>
+            </Link>
+            <Link href="/chem-calc">
+              <button style={{ padding: "7px 16px", borderRadius: 8, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>🧪 Chem Calc</button>
+            </Link>
+            <Link href="/lab">
+              <button style={{ padding: "7px 16px", borderRadius: 8, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>🔬 Lab</button>
+            </Link>
             {/* Link to Quiz */}
             <Link href="/">
               <button style={{
