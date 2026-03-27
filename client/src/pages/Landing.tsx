@@ -310,48 +310,19 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
 
 const WQA_COURSES = [
   {
-    code: "WQA-E",
-    title: "WQA Entry",
-    subtitle: "Water Quality Analyst — Entry",
-    price: 149,
-    duration: "4–6 weeks",
-    questions: 300,
-    description: "Introduction to drinking water laboratory analysis, sampling protocols, and quality assurance under O. Reg. 128/04.",
-    topics: ["Lab Safety & Equipment", "Sampling Techniques", "Basic Analytical Chemistry", "O. Reg. 128/04 Overview", "Chain of Custody"],
-    badge: "New",
+    code: "WQA",
+    title: "Water Quality Analyst",
+    subtitle: "Ontario WQA Certification Prep",
+    price: 199,
+    duration: "6–8 weeks",
+    questions: 400,
+    description: "Complete preparation for the Ontario Water Quality Analyst certification under O. Reg. 128/04. Covers sampling protocols, analytical methods, QA/QC programs, chain of custody, and regulatory reporting for accredited drinking water labs.",
+    topics: ["Sampling Techniques & Chain of Custody", "Analytical Methods & Lab Equipment", "QA/QC Programs & Method Validation", "O. Reg. 128/04 Requirements", "Regulatory Reporting & Documentation"],
+    badge: "Single Certification",
     badgeColor: "#7C3AED",
     color: "#6D28D9",
     bg: "#FAF5FF",
     border: "#DDD6FE",
-  },
-  {
-    code: "WQA-I",
-    title: "WQA Intermediate",
-    subtitle: "Water Quality Analyst — Intermediate",
-    price: 199,
-    duration: "6–8 weeks",
-    questions: 350,
-    description: "Advanced analytical methods, QA/QC programs, method validation, and accreditation requirements for ISO/IEC 17025 labs.",
-    topics: ["Advanced Analytical Methods", "QA/QC Programs", "Method Validation", "ISO/IEC 17025 Basics", "Reporting & Documentation"],
-    badge: null,
-    color: "#7C3AED",
-    bg: "#FAF5FF",
-    border: "#DDD6FE",
-  },
-  {
-    code: "WQA-S",
-    title: "WQA Senior",
-    subtitle: "Water Quality Analyst — Senior",
-    price: 249,
-    duration: "8–10 weeks",
-    questions: 400,
-    description: "Lab management, accreditation audits, regulatory reporting, and leadership for senior analysts and lab managers.",
-    topics: ["Lab Management & Accreditation", "Regulatory Reporting", "Proficiency Testing", "Data Quality Objectives", "WQA Exam Mastery"],
-    badge: "Premium",
-    badgeColor: "#7C3AED",
-    color: "#5B21B6",
-    bg: "#F5F3FF",
-    border: "#C4B5FD",
   },
 ];
 
@@ -521,7 +492,7 @@ export default function Landing() {
             Choose Your Certification Track
           </h2>
           <p style={{ fontSize: 16, color: "#64748B", maxWidth: 560, margin: "0 auto 32px" }}>
-            Three specialization tracks — Water, Wastewater, and Water Quality Analyst. Every course includes hundreds of practice questions and full AI Tutor access.
+            Three certification tracks — Water Treatment (5 levels), Wastewater Treatment (5 levels), and Water Quality Analyst (single Ontario certification). Every course includes hundreds of practice questions and full AI Tutor access.
           </p>
 
           {/* Track Toggle */}

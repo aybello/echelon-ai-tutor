@@ -32,3 +32,4 @@
 - [x] Remove "8,000+ Ontario Operators" stat — replace with a meaningful metric
 - [x] Fix tool cards on Landing page to be clickable links (navigate to their respective pages)
 - [x] Add clickable home link to every tool page header so users can return to homepage
+- [x] Collapse WQA to a single certification prep course (accurate to Ontario O. Reg. 128/04)
