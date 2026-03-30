@@ -173,7 +173,21 @@ Your approach:
     : "linear-gradient(135deg, #1D4ED8, #0F766E)";
 
   return (
+    <>
+      {/* Mobile backdrop */}
+      <style>{`
+        @media (max-width: 640px) {
+          .ai-tutor-panel {
+            width: 100% !important;
+            left: 0 !important;
+            top: 56px !important;
+            border-left: none !important;
+            border-top: 1px solid #E5E7EB !important;
+          }
+        }
+      `}</style>
     <div
+      className="ai-tutor-panel"
       style={{
         position: "fixed",
         right: 0,
@@ -512,5 +526,6 @@ Your approach:
         </button>
       </div>
     </div>
+    </>
   );
 }

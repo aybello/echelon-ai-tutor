@@ -747,6 +747,12 @@ export default function Formulas() {
         @keyframes fadeDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
         .cat-chip:hover { opacity: 0.85; transform: translateY(-1px); }
         .search-input:focus { outline: none; border-color: #3B82F6 !important; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+        @media (max-width: 640px) {
+          .formulas-content { padding: 16px 14px 60px !important; }
+          .formulas-category-filter { padding: 10px 14px !important; }
+          .formula-card-header { padding: 12px 14px !important; }
+          .formula-card-body { padding: 0 14px 14px !important; }
+        }
       `}</style>
 
       <SiteNav currentPath="/formulas" />
@@ -883,7 +889,7 @@ export default function Formulas() {
       </div>
 
       {/* ── FORMULA CONTENT ── */}
-      <div style={{ maxWidth: 960, margin: "0 auto", padding: "28px 24px 80px" }}>
+      <div className="formulas-content" style={{ maxWidth: 960, margin: "0 auto", padding: "28px 24px 80px" }}>
         {filteredCategories.length === 0 ? (
           <div style={{
             background: "#fff", borderRadius: 16, padding: "48px",

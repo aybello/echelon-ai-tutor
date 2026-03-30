@@ -192,6 +192,12 @@ export default function Home() {
         .next-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(29,78,216,0.35) !important; }
         .tutor-btn:hover { background: #1e40af !important; }
         .module-chip:hover { opacity: 0.85; transform: translateY(-1px); }
+        @media (max-width: 640px) {
+          .quiz-header-nav-btns { display: none !important; }
+          .quiz-header-stats { gap: 6px !important; }
+          .quiz-main-content { max-width: 100% !important; padding: 16px 14px 80px !important; }
+          .session-complete-card { padding: 32px 20px !important; }
+        }
       `}</style>
 
       {/* ── HEADER ── */}
@@ -241,7 +247,7 @@ export default function Home() {
           </div>
 
           {/* Stats + controls */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+          <div className="quiz-header-stats" style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
             {/* Module filter button */}
             <button
               onClick={() => setShowModuleSelector(!showModuleSelector)}
@@ -287,6 +293,7 @@ export default function Home() {
               }}>🧠 Pattern Detected</button>
             )}
 
+            <div className="quiz-header-nav-btns" style={{ display: "flex", gap: 6, alignItems: "center" }}>
             <Link href="/mock-exam">
               <button style={{
                 padding: "7px 14px",
@@ -346,6 +353,7 @@ export default function Home() {
                 transition: "all 0.15s",
               }}>🗺️ Career</button>
             </Link>
+            </div>
 
             {!tutorOpen && current && confirmed && (
               <button onClick={openTutor} className="tutor-btn" style={{
@@ -483,12 +491,15 @@ export default function Home() {
       )}
 
       {/* ── MAIN CONTENT ── */}
-      <div style={{
-        maxWidth: tutorOpen ? "calc(100% - 440px)" : 760,
-        margin: "0 auto",
-        padding: "28px 20px 80px",
-        transition: "max-width 0.3s ease",
-      }}>
+      <div
+        className="quiz-main-content"
+        style={{
+          maxWidth: tutorOpen ? "calc(100% - 440px)" : 760,
+          margin: "0 auto",
+          padding: "28px 20px 80px",
+          transition: "max-width 0.3s ease",
+        }}
+      >
 
         {/* Module context banner */}
         {selectedModule && (
@@ -551,6 +562,7 @@ export default function Home() {
             textAlign: "center",
             boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
             animation: "popIn 0.3s ease both",
+            boxSizing: "border-box" as const,
           }}>
             <div style={{ fontSize: 64, marginBottom: 16 }}>🎉</div>
             <div style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>

@@ -421,11 +421,21 @@ export default function ChemCalc() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
-      <style>{`@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }`}</style>
+      <style>{`
+        @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+        @media (max-width: 640px) {
+          .chemcalc-main { padding: 16px 14px 60px !important; }
+          .chemcalc-grid-2 { grid-template-columns: 1fr !important; }
+          .chemcalc-grid-3 { grid-template-columns: 1fr 1fr !important; }
+          .chemcalc-card { padding: 20px 16px !important; }
+          .chemcalc-table-wrap { overflow-x: auto; }
+          .chemcalc-hero { padding: 20px 18px !important; }
+        }
+      `}</style>
 
       <SiteNav currentPath="/chem-calc" />
 
-      <div style={{ maxWidth: 800, margin: "0 auto", padding: "28px 20px 80px", animation: "fadeUp 0.3s ease both" }}>
+      <div className="chemcalc-main" style={{ maxWidth: 800, margin: "0 auto", padding: "28px 20px 80px", animation: "fadeUp 0.3s ease both" }}>
 
         {/* Hero */}
         <div style={{ background: "linear-gradient(135deg, #1D4ED8, #0F766E)", borderRadius: 20, padding: "28px 32px", marginBottom: 24, color: "#fff" }}>

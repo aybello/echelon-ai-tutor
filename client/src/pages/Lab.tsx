@@ -162,7 +162,7 @@ function ChainOfCustody() {
                 <button onClick={() => removeEntry(idx)} style={{ padding: "4px 10px", borderRadius: 20, border: "1px solid #FCA5A5", background: "#FEF2F2", color: "#DC2626", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>Remove</button>
               )}
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
+            <div className="lab-grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
               {[
                 { label: "Parameter", field: "parameter" as keyof CoCEntry, placeholder: "e.g. Total Coliform" },
                 { label: "Sample Location", field: "location" as keyof CoCEntry, placeholder: "e.g. 123 Main St tap" },
@@ -183,7 +183,7 @@ function ChainOfCustody() {
                 </div>
               ))}
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginTop: 12 }}>
+            <div className="lab-grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginTop: 12 }}>
               {[
                 { label: "Bottle Type", field: "bottleType" as keyof CoCEntry },
                 { label: "Preservation", field: "preservation" as keyof CoCEntry },
@@ -291,7 +291,7 @@ function LabCalculators() {
         <div>
           <h3 style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>Relative Percent Difference (RPD)</h3>
           <p style={{ fontSize: 12, color: "#64748B", marginBottom: 20 }}>Used to assess precision between field duplicates. RPD ≤ 20% is typically acceptable.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
+          <div className="lab-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
             {[["Sample Result", rpd1, setRpd1], ["Duplicate Result", rpd2, setRpd2]].map(([label, val, set]) => (
               <div key={label as string}>
                 <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label as string}</label>
@@ -312,7 +312,7 @@ function LabCalculators() {
         <div>
           <h3 style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>Matrix Spike Recovery</h3>
           <p style={{ fontSize: 12, color: "#64748B", marginBottom: 20 }}>Acceptable recovery: 70–130%. Outside this range indicates matrix interference or method error.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 20 }}>
+          <div className="lab-grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 20 }}>
             {[["Unspiked Sample", spikeUnspiked, setSpikeUnspiked], ["Spiked Sample", spikeSpiked, setSpikeSpiked], ["Spike Added", spikeAdded, setSpikeAdded]].map(([label, val, set]) => (
               <div key={label as string}>
                 <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label as string}</label>
@@ -333,7 +333,7 @@ function LabCalculators() {
         <div>
           <h3 style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>Dilution Calculator (C₁V₁ = C₂V₂)</h3>
           <p style={{ fontSize: 12, color: "#64748B", marginBottom: 20 }}>Used to prepare standards, dilute concentrated samples, or calculate diluted concentrations.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 20 }}>
+          <div className="lab-grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 20 }}>
             {[["Initial Conc. C₁", c1, setC1], ["Initial Volume V₁ (mL)", v1, setV1], ["Final Volume V₂ (mL)", v2, setV2]].map(([label, val, set]) => (
               <div key={label as string}>
                 <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label as string}</label>
@@ -354,7 +354,7 @@ function LabCalculators() {
         <div>
           <h3 style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>BOD₅ Calculation</h3>
           <p style={{ fontSize: 12, color: "#64748B", marginBottom: 20 }}>Biochemical Oxygen Demand over 5 days at 20°C. Key wastewater treatment performance metric.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 20 }}>
+          <div className="lab-grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 20 }}>
             {[["Initial DO (mg/L)", initialDO, setInitialDO], ["Final DO after 5 days (mg/L)", finalDO, setFinalDO], ["Dilution Factor", dilutionFactor, setDilutionFactor]].map(([label, val, set]) => (
               <div key={label as string}>
                 <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label as string}</label>
@@ -384,11 +384,21 @@ export default function Lab() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
-      <style>{`@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }`}</style>
+      <style>{`
+        @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+        @media (max-width: 640px) {
+          .lab-main { padding: 16px 14px 60px !important; }
+          .lab-grid-2 { grid-template-columns: 1fr !important; }
+          .lab-grid-3 { grid-template-columns: 1fr !important; }
+          .lab-card { padding: 20px 16px !important; }
+          .lab-tab-bar { flex-wrap: wrap !important; gap: 6px !important; }
+          .lab-tab-bar button { font-size: 11px !important; padding: 8px 12px !important; }
+        }
+      `}</style>
 
       <SiteNav currentPath="/lab" />
 
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "28px 20px 80px", animation: "fadeUp 0.3s ease both" }}>
+      <div className="lab-main" style={{ maxWidth: 900, margin: "0 auto", padding: "28px 20px 80px", animation: "fadeUp 0.3s ease both" }}>
 
         {/* Hero */}
         <div style={{ background: "linear-gradient(135deg, #0F766E, #1D4ED8)", borderRadius: 20, padding: "28px 32px", marginBottom: 24, color: "#fff" }}>
@@ -399,7 +409,7 @@ export default function Lab() {
         </div>
 
         {/* Tab bar */}
-        <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
+        <div className="lab-tab-bar" style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
           {TABS.map(({ id, label, icon }) => (
             <button key={id} onClick={() => setActiveTab(id)}
               style={{ padding: "10px 18px", borderRadius: 20, border: `2px solid ${activeTab === id ? "#0F766E" : "#E2E8F0"}`, background: activeTab === id ? "#CCFBF1" : "#fff", color: activeTab === id ? "#0F766E" : "#64748B", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", transition: "all 0.15s" }}>

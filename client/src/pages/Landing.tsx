@@ -163,6 +163,25 @@ const WASTEWATER_COURSES = [
   },
 ];
 
+const WQA_COURSES = [
+  {
+    code: "WQA",
+    title: "Water Quality Analyst",
+    subtitle: "Ontario WQA Certification Prep",
+    price: 199,
+    duration: "6–8 weeks",
+    questions: 400,
+    description: "Complete preparation for the Ontario Water Quality Analyst certification under O. Reg. 128/04. Covers sampling protocols, analytical methods, QA/QC programs, chain of custody, and regulatory reporting for accredited drinking water labs.",
+    topics: ["Sampling Techniques & Chain of Custody", "Analytical Methods & Lab Equipment", "QA/QC Programs & Method Validation", "O. Reg. 128/04 Requirements", "Regulatory Reporting & Documentation"],
+    badge: "Single Certification",
+    badgeColor: "#7C3AED",
+    color: "#6D28D9",
+    bg: "#FAF5FF",
+    border: "#DDD6FE",
+    comingSoon: true,
+  },
+];
+
 const FEATURES = [
   {
     icon: "🤖",
@@ -271,7 +290,7 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
       <p style={{ fontSize: 12, color: course.color, fontWeight: 600, margin: "0 0 10px 0" }}>{course.subtitle}</p>
       <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.6, margin: "0 0 16px 0" }}>{course.description}</p>
 
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
         <div>
           <span style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>${course.price}</span>
           <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 4 }}>CAD</span>
@@ -340,25 +359,6 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
   );
 }
 
-const WQA_COURSES = [
-  {
-    code: "WQA",
-    title: "Water Quality Analyst",
-    subtitle: "Ontario WQA Certification Prep",
-    price: 199,
-    duration: "6–8 weeks",
-    questions: 400,
-    description: "Complete preparation for the Ontario Water Quality Analyst certification under O. Reg. 128/04. Covers sampling protocols, analytical methods, QA/QC programs, chain of custody, and regulatory reporting for accredited drinking water labs.",
-    topics: ["Sampling Techniques & Chain of Custody", "Analytical Methods & Lab Equipment", "QA/QC Programs & Method Validation", "O. Reg. 128/04 Requirements", "Regulatory Reporting & Documentation"],
-    badge: "Single Certification",
-    badgeColor: "#7C3AED",
-    color: "#6D28D9",
-    bg: "#FAF5FF",
-    border: "#DDD6FE",
-    comingSoon: true,
-  },
-];
-
 export default function Landing() {
   usePageMeta({
     title: "Ontario Water & Wastewater Operator Exam Prep",
@@ -366,9 +366,36 @@ export default function Landing() {
     path: "/",
   });
   const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa">("water");
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  const NAV_LINKS = [
+    { label: "Courses", href: "#courses" },
+    { label: "Study Tools", href: "#tools" },
+    { label: "Formulas", href: "/formulas" },
+    { label: "Career Map", href: "/career" },
+    { label: "About", href: "#about" },
+  ];
 
   return (
     <div style={{ fontFamily: "Sora, Nunito, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+      <style>{`
+        @media (max-width: 640px) {
+          .landing-nav-links { display: none !important; }
+          .landing-nav-cta { display: none !important; }
+          .landing-hamburger { display: flex !important; }
+          .landing-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .landing-track-toggle { flex-direction: column !important; width: 100% !important; }
+          .landing-track-toggle button { width: 100% !important; text-align: center; }
+          .landing-footer-links { flex-wrap: wrap !important; gap: 12px !important; justify-content: center !important; }
+          .landing-hero-btns { flex-direction: column !important; align-items: stretch !important; }
+          .landing-hero-btns a, .landing-hero-btns button { width: 100% !important; box-sizing: border-box; }
+          .landing-session-complete-pad { padding: 32px 20px !important; }
+        }
+        @media (min-width: 641px) {
+          .landing-hamburger { display: none !important; }
+          .landing-mobile-drawer { display: none !important; }
+        }
+      `}</style>
 
       {/* ── Navigation ── */}
       <nav style={{
@@ -378,8 +405,10 @@ export default function Landing() {
         position: "sticky", top: 0, zIndex: 100,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         height: 64,
+        gap: 12,
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        {/* Brand */}
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
           <div style={{
             width: 36, height: 36, borderRadius: 10,
             background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
@@ -393,18 +422,13 @@ export default function Landing() {
           </div>
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
-          {[
-            { label: "Courses", href: "#courses" },
-            { label: "Study Tools", href: "#tools" },
-            { label: "Formulas", href: "/formulas" },
-            { label: "Career Map", href: "/career" },
-            { label: "About", href: "#about" },
-          ].map(item => (
+        {/* Desktop nav links */}
+        <div className="landing-nav-links" style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "nowrap" }}>
+          {NAV_LINKS.map(item => (
             <a key={item.label} href={item.href} style={{
               padding: "6px 14px", borderRadius: 8,
               color: "#475569", fontSize: 13, fontWeight: 600,
-              textDecoration: "none", transition: "color 0.15s",
+              textDecoration: "none", transition: "color 0.15s", whiteSpace: "nowrap",
             }}>
               {item.label}
             </a>
@@ -414,13 +438,137 @@ export default function Landing() {
               padding: "8px 20px", borderRadius: 10,
               background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
               color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
-              cursor: "pointer", fontFamily: "inherit",
+              cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
             }}>
               Try Free →
             </button>
           </Link>
         </div>
+
+        {/* Hamburger button — mobile only */}
+        <button
+          className="landing-hamburger"
+          onClick={() => setMobileNavOpen(o => !o)}
+          aria-label="Open menu"
+          style={{
+            display: "none", // overridden by media query
+            background: "transparent",
+            border: "1px solid #E2E8F0",
+            borderRadius: 8,
+            color: "#0F172A",
+            fontSize: 18,
+            cursor: "pointer",
+            padding: "5px 10px",
+            lineHeight: 1,
+            flexShrink: 0,
+          }}
+        >
+          {mobileNavOpen ? "✕" : "☰"}
+        </button>
       </nav>
+
+      {/* Mobile nav drawer overlay */}
+      {mobileNavOpen && (
+        <div
+          onClick={() => setMobileNavOpen(false)}
+          style={{
+            position: "fixed", inset: 0,
+            background: "rgba(0,0,0,0.4)",
+            zIndex: 98,
+          }}
+        />
+      )}
+
+      {/* Mobile nav drawer */}
+      <div
+        className="landing-mobile-drawer"
+        style={{
+          position: "fixed",
+          top: 64, right: 0,
+          width: 260, bottom: 0,
+          background: "#FFFFFF",
+          borderLeft: "1px solid #E2E8F0",
+          zIndex: 99,
+          transform: mobileNavOpen ? "translateX(0)" : "translateX(100%)",
+          transition: "transform 0.25s cubic-bezier(0.4,0,0.2,1)",
+          overflowY: "auto",
+          padding: "16px 0 32px",
+        }}
+      >
+        <div style={{ padding: "0 20px 12px", borderBottom: "1px solid #F1F5F9", marginBottom: 8 }}>
+          <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            Navigation
+          </div>
+        </div>
+        {NAV_LINKS.map(item => (
+          <a
+            key={item.label}
+            href={item.href}
+            onClick={() => setMobileNavOpen(false)}
+            style={{
+              display: "block",
+              padding: "13px 20px",
+              color: "#0F172A",
+              fontSize: 14,
+              fontWeight: 600,
+              textDecoration: "none",
+              borderLeft: "3px solid transparent",
+              transition: "background 0.15s",
+            }}
+          >
+            {item.label}
+          </a>
+        ))}
+        <div style={{ padding: "16px 20px 0", marginTop: 8, borderTop: "1px solid #F1F5F9" }}>
+          <Link href="/quiz">
+            <button
+              onClick={() => setMobileNavOpen(false)}
+              style={{
+                width: "100%", padding: "12px",
+                borderRadius: 10, border: "none",
+                background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                color: "#fff", fontSize: 13, fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit",
+              }}
+            >
+              Try Free OIT Practice →
+            </button>
+          </Link>
+        </div>
+        {/* Tool links in drawer */}
+        <div style={{ padding: "16px 20px 0", marginTop: 8, borderTop: "1px solid #F1F5F9" }}>
+          <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>
+            Study Tools
+          </div>
+          {[
+            { label: "📝 OIT Practice Quiz", href: "/quiz" },
+            { label: "📐 Formula Sheet", href: "/formulas" },
+            { label: "🏭 Drinking Water Process", href: "/process" },
+            { label: "♻️ Wastewater Process", href: "/wastewater" },
+            { label: "⚙️ Pumping Systems", href: "/pumping" },
+            { label: "🧪 Chemical Calculator", href: "/chem-calc" },
+            { label: "🔬 Lab & Sampling", href: "/lab" },
+            { label: "🗺️ Career Map", href: "/career" },
+            { label: "📋 Mock Exam", href: "/mock-exam" },
+          ].map(item => (
+            <Link key={item.href} href={item.href}>
+              <div
+                onClick={() => setMobileNavOpen(false)}
+                style={{
+                  padding: "10px 0",
+                  color: "#475569",
+                  fontSize: 13,
+                  fontWeight: 500,
+                  cursor: "pointer",
+                  borderBottom: "1px solid #F8FAFC",
+                }}
+              >
+                {item.label}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
 
       {/* ── Hero ── */}
       <section style={{
@@ -452,7 +600,7 @@ export default function Landing() {
           </div>
 
           <h1 style={{
-            fontSize: "clamp(32px, 5vw, 56px)",
+            fontSize: "clamp(28px, 5vw, 56px)",
             fontWeight: 800,
             color: "#FFFFFF",
             lineHeight: 1.15,
@@ -466,7 +614,7 @@ export default function Landing() {
           </h1>
 
           <p style={{
-            fontSize: "clamp(15px, 2vw, 18px)",
+            fontSize: "clamp(14px, 2vw, 18px)",
             color: "rgba(255,255,255,0.75)",
             lineHeight: 1.7,
             maxWidth: 600,
@@ -476,7 +624,7 @@ export default function Landing() {
             Adaptive practice questions, interactive process guides, and an AI tutor available 24/7.
           </p>
 
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+          <div className="landing-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/quiz">
               <button style={{
                 padding: "14px 32px", borderRadius: 12,
@@ -484,16 +632,18 @@ export default function Landing() {
                 color: "#fff", border: "none", fontSize: 15, fontWeight: 700,
                 cursor: "pointer", fontFamily: "inherit",
                 boxShadow: "0 4px 24px rgba(37,99,235,0.4)",
+                width: "100%",
               }}>
                 Try Free OIT Practice →
               </button>
             </Link>
-            <a href="#courses">
+            <a href="#courses" style={{ width: "100%" }}>
               <button style={{
                 padding: "14px 32px", borderRadius: 12,
                 background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)",
                 color: "#fff", border: "1px solid rgba(255,255,255,0.2)",
                 fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
+                width: "100%",
               }}>
                 View All Courses
               </button>
@@ -508,11 +658,14 @@ export default function Landing() {
         borderBottom: "1px solid #E2E8F0",
         padding: "28px 24px",
       }}>
-        <div style={{
-          maxWidth: 900, margin: "0 auto",
-          display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-          gap: 24, textAlign: "center",
-        }}>
+        <div
+          className="landing-stats-grid"
+          style={{
+            maxWidth: 900, margin: "0 auto",
+            display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+            gap: 24, textAlign: "center",
+          }}
+        >
           {STATS.map(s => (
             <div key={s.label}>
               <div style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif" }}>
@@ -527,7 +680,7 @@ export default function Landing() {
       {/* ── Course Catalogue ── */}
       <section id="courses" style={{ padding: "72px 24px", maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <h2 style={{ fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
+          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
             Choose Your Certification Track
           </h2>
           <p style={{ fontSize: 16, color: "#64748B", maxWidth: 560, margin: "0 auto 32px" }}>
@@ -535,17 +688,20 @@ export default function Landing() {
           </p>
 
           {/* Track Toggle */}
-          <div style={{
-            display: "inline-flex", background: "#F1F5F9", borderRadius: 12, padding: 4, gap: 4, flexWrap: "wrap", justifyContent: "center",
-          }}>
+          <div
+            className="landing-track-toggle"
+            style={{
+              display: "inline-flex", background: "#F1F5F9", borderRadius: 12, padding: 4, gap: 4,
+            }}
+          >
             <button
               onClick={() => setActiveTrack("water")}
               style={{
-                padding: "10px 24px", borderRadius: 10, border: "none",
+                padding: "10px 20px", borderRadius: 10, border: "none",
                 background: activeTrack === "water" ? "#1D4ED8" : "transparent",
                 color: activeTrack === "water" ? "#fff" : "#64748B",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.2s",
+                transition: "all 0.2s", whiteSpace: "nowrap",
               }}
             >
               💧 Water Treatment
@@ -553,33 +709,33 @@ export default function Landing() {
             <button
               onClick={() => setActiveTrack("wastewater")}
               style={{
-                padding: "10px 24px", borderRadius: 10, border: "none",
+                padding: "10px 20px", borderRadius: 10, border: "none",
                 background: activeTrack === "wastewater" ? "#059669" : "transparent",
                 color: activeTrack === "wastewater" ? "#fff" : "#64748B",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.2s",
+                transition: "all 0.2s", whiteSpace: "nowrap",
               }}
             >
-              ♻️ Wastewater Treatment
+              ♻️ Wastewater
             </button>
             <button
               onClick={() => setActiveTrack("wqa")}
               style={{
-                padding: "10px 24px", borderRadius: 10, border: "none",
+                padding: "10px 20px", borderRadius: 10, border: "none",
                 background: activeTrack === "wqa" ? "#7C3AED" : "transparent",
                 color: activeTrack === "wqa" ? "#fff" : "#64748B",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.2s",
+                transition: "all 0.2s", whiteSpace: "nowrap",
               }}
             >
-              🔬 Water Quality Analyst
+              🔬 WQA
             </button>
           </div>
         </div>
 
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
           gap: 24,
         }}>
           {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : WQA_COURSES).map(course => (
@@ -595,7 +751,7 @@ export default function Landing() {
       }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 52 }}>
-            <h2 style={{ fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
+            <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
               Every Tool You Need to Pass
             </h2>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", maxWidth: 500, margin: "0 auto" }}>
@@ -605,7 +761,7 @@ export default function Landing() {
 
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
             gap: 20,
           }}>
             {FEATURES.map(f => (
@@ -666,7 +822,7 @@ export default function Landing() {
               textTransform: "uppercase" as const,
               marginBottom: 18,
             }}>About Echelon Institute</div>
-            <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 900, color: "#FFFFFF", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, color: "#FFFFFF", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
               Built by an Engineer<br />Who Knows What's Missing
             </h2>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", maxWidth: 620, margin: "0 auto", lineHeight: 1.75 }}>
@@ -734,10 +890,10 @@ export default function Landing() {
         padding: "64px 24px",
         textAlign: "center",
       }}>
-        <h2 style={{ fontSize: "clamp(22px, 3vw, 32px)", fontWeight: 800, color: "#FFFFFF", margin: "0 0 12px 0", letterSpacing: "-0.02em" }}>
+        <h2 style={{ fontSize: "clamp(20px, 3vw, 32px)", fontWeight: 800, color: "#FFFFFF", margin: "0 0 12px 0", letterSpacing: "-0.02em" }}>
           Start with the OIT — It's Free
         </h2>
-        <p style={{ fontSize: 16, color: "rgba(255,255,255,0.8)", margin: "0 0 32px 0" }}>
+        <p style={{ fontSize: 16, color: "rgba(255,255,255,0.8)", margin: "0 0 32px 0", maxWidth: 500, marginLeft: "auto", marginRight: "auto" }}>
           Try 475 OIT practice questions across 10 modules with full AI Tutor access. No account required.
         </p>
         <Link href="/quiz">
@@ -770,10 +926,10 @@ export default function Landing() {
           </div>
           <span style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF" }}>Echelon Institute</span>
         </div>
-        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", margin: 0 }}>
+        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", margin: "0 0 16px 0" }}>
           Ontario's AI-powered exam prep platform for water and wastewater operators.
         </p>
-        <div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 16 }}>
+        <div className="landing-footer-links" style={{ display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
           {[
             { label: "AI Tutor Quiz", href: "/quiz" },
             { label: "Formula Sheet", href: "/formulas" },

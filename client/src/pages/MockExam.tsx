@@ -254,12 +254,19 @@ export default function MockExam() {
   if (examState === "intro") {
     return (
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
-        <style>{`@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }`}</style>
+        <style>{`
+          @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+          @media (max-width: 640px) {
+            .mockexam-intro { margin: 24px auto !important; padding: 0 14px !important; }
+            .mockexam-intro-card { padding: 28px 20px !important; }
+            .mockexam-stats-grid { grid-template-columns: 1fr 1fr !important; }
+          }
+        `}</style>
 
         <SiteNav currentPath="/mock-exam" />
 
         {/* Intro card */}
-        <div style={{ maxWidth: 680, margin: "60px auto", padding: "0 20px", animation: "fadeUp 0.4s ease both" }}>
+        <div className="mockexam-intro" style={{ maxWidth: 680, margin: "60px auto", padding: "0 20px", animation: "fadeUp 0.4s ease both" }}>
           <div style={{ background: "#fff", borderRadius: 24, padding: "48px", boxShadow: "0 8px 32px rgba(0,0,0,0.08)", textAlign: "center" }}>
             <div style={{ fontSize: 56, marginBottom: 16 }}>📝</div>
             <h1 style={{ fontSize: 28, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>OIT Mock Exam</h1>
@@ -267,7 +274,7 @@ export default function MockExam() {
               Simulate the real Ontario OIT certification exam. 25 questions across all modules, 45-minute time limit, 70% to pass.
             </p>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
+            <div className="mockexam-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
               {[
                 { icon: "📋", label: "Questions", value: "25" },
                 { icon: "⏱️", label: "Time Limit", value: "45 min" },
@@ -312,7 +319,15 @@ export default function MockExam() {
 
     return (
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
-        <style>{`@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} } @keyframes popIn { from{transform:scale(0.9);opacity:0} to{transform:scale(1);opacity:1} }`}</style>
+        <style>{`
+          @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+          @keyframes popIn { from{transform:scale(0.9);opacity:0} to{transform:scale(1);opacity:1} }
+          @media (max-width: 640px) {
+            .mockexam-results { padding: 20px 14px 60px !important; }
+            .mockexam-results-stats { grid-template-columns: 1fr 1fr !important; }
+            .mockexam-score-hero { padding: 28px 20px !important; }
+          }
+        `}</style>
 
         <SiteNav currentPath="/mock-exam" rightSlot={
           <div style={{ display: "flex", gap: 8 }}>
@@ -338,7 +353,7 @@ export default function MockExam() {
           </div>
 
           {/* Stats row */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 24 }}>
+          <div className="mockexam-results-stats" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 24 }}>
             {[
               { label: "Correct", value: correctCount, color: "#059669", bg: "#F0FDF4" },
               { label: "Incorrect", value: 25 - correctCount, color: "#DC2626", bg: "#FEF2F2" },

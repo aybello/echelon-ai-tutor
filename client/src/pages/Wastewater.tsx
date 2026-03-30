@@ -98,12 +98,17 @@ export default function Wastewater() {
         @keyframes flow    { 0%{stroke-dashoffset:30} 100%{stroke-dashoffset:0} }
         @keyframes ping    { 0%{r:8;opacity:0.8} 100%{r:18;opacity:0} }
         @keyframes fadeUp  { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+        @media (max-width: 640px) {
+          .ww-main { padding: 16px 14px 60px !important; }
+          .ww-step-grid { grid-template-columns: 1fr !important; }
+          .ww-view-toggles { padding: 10px 14px !important; }
+        }
       `}</style>
 
       <SiteNav currentPath="/wastewater" />
 
       {/* ── VIEW TOGGLES ── */}
-      <div style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6 }}>
+      <div className="ww-view-toggles" style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6 }}>
         {([["learn", "🔬 Step Explorer"], ["overview", "📋 Full Overview"]] as const).map(([v, l]) => (
           <button key={v} onClick={() => setView(v)} style={{
             padding: "7px 16px", borderRadius: 8,
@@ -117,7 +122,7 @@ export default function Wastewater() {
       </div>
 
       {/* ── MAIN ── */}
-      <div style={{ padding: "24px 28px 60px", maxWidth: 1200, margin: "0 auto" }}>
+      <div className="ww-main" style={{ padding: "24px 28px 60px", maxWidth: 1200, margin: "0 auto" }}>
 
         {/* Flow map */}
         <div style={{
@@ -133,7 +138,7 @@ export default function Wastewater() {
         {/* ── STEP EXPLORER ── */}
         {view === "learn" && (
           <div key={activeStep.id} style={{ animation: "fadeUp 0.35s ease both" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 20 }}>
+            <div className="ww-step-grid" style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: 20 }}>
 
               {/* LEFT */}
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>

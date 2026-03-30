@@ -39,6 +39,11 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
 
   return (
     <>
+      <style>{`
+        @media (max-width: 640px) {
+          .site-nav-desktop { display: none !important; }
+        }
+      `}</style>
       <nav style={{
         background: "#0F172A",
         borderBottom: "1px solid rgba(255,255,255,0.08)",

@@ -131,7 +131,7 @@ function DetailPanel({ level }: { level: CertLevel | null }) {
             <div style={{ fontSize: 12, opacity: 0.85 }}>{level.years} of experience required</div>
           </div>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
+        <div className="career-detail-metrics" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
           {[
             { l: "Hourly Range",    v: `${fmtHr(level.hourly.min)}–${fmtHr(level.hourly.max)}` },
             { l: "Annual Range",   v: `${fmtSalary(level.annual.min)}–${fmtSalary(level.annual.max)}` },
@@ -171,7 +171,7 @@ function DetailPanel({ level }: { level: CertLevel | null }) {
       </div>
 
       {/* Info grid */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+      <div className="career-detail-info" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
         {[
           { l: "Certification Body", v: level.certBody,    icon: "🏛️", highlight: false },
           { l: "Key Regulation",     v: level.regulation,  icon: "📋", highlight: false },
@@ -340,7 +340,7 @@ function CareerTimeline({ onSelect, selected }: {
         </div>
 
         {/* Salary jump callouts */}
-        <div style={{ marginTop: 20, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
+        <div className="career-salary-jumps" style={{ marginTop: 20, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
           {SALARY_JUMPS.map((j, i) => (
             <div key={i} style={{
               background: "#F8FAFC", borderRadius: 10, padding: "10px",
@@ -358,7 +358,7 @@ function CareerTimeline({ onSelect, selected }: {
         <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB", marginTop: 8 }}>
           <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>🔬 Specialist Path — Water Quality Analyst (WQA)</div>
           <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 16 }}>Distinct from plant operations — laboratory-focused certification under O. Reg. 128/04</div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 12 }}>
+          <div className="career-salary-details" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 12 }}>
             {[
               { label: "Entry", years: "0–1 yr", salary: "$26–$30/hr", note: "Lab Technician / Junior Analyst" },
               { label: "Intermediate", years: "2–4 yr", salary: "$30–$35/hr", note: "Senior Analyst / QA Coordinator" },
@@ -392,7 +392,7 @@ function CareerTimeline({ onSelect, selected }: {
         <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 16 }}>
           Estimated career earnings by certification level (35-year career, mid-range salary)
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 10 }}>
+        <div className="career-timeline-nodes" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 10 }}>
           {mainLevels.map(l => {
             const mid    = (l.annual.min + l.annual.max) / 2;
             const career = mid * (35 - l.yearsNum);
@@ -425,7 +425,7 @@ function EmployersSection() {
           Who Hires Ontario Operators
         </div>
         <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 16 }}>Key employers across the province</div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
+        <div className="career-employers-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
           {EMPLOYERS.map((e, i) => (
             <div key={i} style={{
               background: "#F8FAFC", borderRadius: 12, padding: "14px",
@@ -451,7 +451,7 @@ function EmployersSection() {
         <div style={{ fontSize: 11, fontWeight: 700, color: "#059669", marginBottom: 12 }}>
           🌱 Job Market Outlook — Ontario Water Sector
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+        <div className="career-job-market-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
           {JOB_MARKET.map((item, i) => (
             <div key={i} style={{ background: "#fff", borderRadius: 10, padding: "12px 14px" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#059669", marginBottom: 4 }}>{item.title}</div>
@@ -490,12 +490,25 @@ export default function CareerMap() {
         @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
         @keyframes popIn  { from{opacity:0;transform:scale(0.92)} to{opacity:1;transform:scale(1)} }
         .fade { animation: fadeUp 0.4s ease both; }
+        @media (max-width: 640px) {
+          .career-content { padding: 16px 14px 60px !important; }
+          .career-hero-stats { grid-template-columns: repeat(2,1fr) !important; gap: 10px !important; }
+          .career-ladder-grid { grid-template-columns: 1fr !important; }
+          .career-salary-jumps { grid-template-columns: repeat(2,1fr) !important; }
+          .career-salary-details { grid-template-columns: 1fr !important; }
+          .career-timeline-nodes { grid-template-columns: repeat(2,1fr) !important; }
+          .career-employers-grid { grid-template-columns: 1fr !important; }
+          .career-job-market-grid { grid-template-columns: 1fr !important; }
+          .career-detail-metrics { grid-template-columns: 1fr 1fr !important; }
+          .career-detail-info { grid-template-columns: 1fr !important; }
+          .career-view-toggles { padding: 10px 14px !important; }
+        }
       `}</style>
 
       <SiteNav currentPath="/career" />
 
       {/* ── VIEW TOGGLES ── */}
-      <div style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6, flexWrap: "wrap" }}>
+      <div className="career-view-toggles" style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6, flexWrap: "wrap" }}>
         {VIEWS.map(([v, l]) => (
           <button key={v} onClick={() => setView(v)} style={{
             padding: "7px 14px", borderRadius: 8,
@@ -509,10 +522,10 @@ export default function CareerMap() {
       </div>
 
       {/* ── CONTENT ── */}
-      <div style={{ padding: "24px 28px 60px", maxWidth: 1200, margin: "0 auto" }}>
+      <div className="career-content" style={{ padding: "24px 28px 60px", maxWidth: 1200, margin: "0 auto" }}>
 
         {/* Hero stats */}
-        <div className="fade" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 14, marginBottom: 20 }}>
+        <div className="fade career-hero-stats" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 14, marginBottom: 20 }}>
           {HERO_STATS.map((s, i) => (
             <div key={i} style={{
               background: "#fff", borderRadius: 14, padding: "18px 20px",
@@ -552,7 +565,7 @@ export default function CareerMap() {
               </div>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 20 }}>
+            <div className="career-ladder-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 20 }}>
               {/* Left — certification cards */}
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 4 }}>
