@@ -38,3 +38,17 @@ export const waitlist = mysqlTable("waitlist", {
 
 export type Waitlist = typeof waitlist.$inferSelect;
 export type InsertWaitlist = typeof waitlist.$inferInsert;
+
+/** Question error reports — submitted by users who spot mistakes */
+export const questionErrorReports = mysqlTable("question_error_reports", {
+  id: int("id").autoincrement().primaryKey(),
+  questionId: int("questionId").notNull(),
+  questionText: text("questionText").notNull(),
+  module: varchar("module", { length: 64 }).notNull(),
+  reportType: varchar("reportType", { length: 32 }).notNull(), // 'wrong_answer' | 'wrong_calculation' | 'unclear_question' | 'other'
+  details: text("details"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type QuestionErrorReport = typeof questionErrorReports.$inferSelect;
+export type InsertQuestionErrorReport = typeof questionErrorReports.$inferInsert;

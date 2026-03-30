@@ -19,6 +19,7 @@ import StepSolution from "@/components/StepSolution";
 import PatternAlert from "@/components/PatternAlert";
 import ConfidenceInsight from "@/components/ConfidenceInsight";
 import AITutor from "@/components/AITutor";
+import ReportErrorModal from "@/components/ReportErrorModal";
 
 const DIFF_COLOR: Record<string, string> = {
   easy: "#059669",
@@ -75,6 +76,7 @@ export default function Home() {
   const SESSION_SIZE = 15;
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [showModuleSelector, setShowModuleSelector] = useState(false);
+  const [reportModalOpen, setReportModalOpen] = useState(false);
 
   // Filter questions by selected module
   const activeQuestions = useMemo(() => {
@@ -703,16 +705,41 @@ export default function Home() {
                     border: "1px solid #E2E8F0",
                   }}>{current?.type}</span>
                 </div>
-                <div style={{
-                  fontSize: 11,
-                  color: "#94A3B8",
-                  fontWeight: 600,
-                  background: "#F8FAFC",
-                  padding: "4px 10px",
-                  borderRadius: 20,
-                  border: "1px solid #E2E8F0",
-                }}>
-                  {history.length + 1} / {SESSION_SIZE}
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <div style={{
+                    fontSize: 11,
+                    color: "#94A3B8",
+                    fontWeight: 600,
+                    background: "#F8FAFC",
+                    padding: "4px 10px",
+                    borderRadius: 20,
+                    border: "1px solid #E2E8F0",
+                  }}>
+                    {history.length + 1} / {SESSION_SIZE}
+                  </div>
+                  <button
+                    onClick={() => setReportModalOpen(true)}
+                    title="Report an error with this question"
+                    style={{
+                      background: "none",
+                      border: "1px solid #E2E8F0",
+                      borderRadius: 20,
+                      padding: "4px 10px",
+                      fontSize: 11,
+                      color: "#94A3B8",
+                      cursor: "pointer",
+                      fontFamily: "inherit",
+                      fontWeight: 600,
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 4,
+                      transition: "all 0.15s",
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.color = "#DC2626"; e.currentTarget.style.borderColor = "#FECACA"; e.currentTarget.style.background = "#FEF2F2"; }}
+                    onMouseLeave={e => { e.currentTarget.style.color = "#94A3B8"; e.currentTarget.style.borderColor = "#E2E8F0"; e.currentTarget.style.background = "none"; }}
+                  >
+                    🚩 Flag
+                  </button>
                 </div>
               </div>
 
@@ -1060,6 +1087,16 @@ export default function Home() {
           history={history}
           patternMode={patternMode}
           onClose={() => setTutorOpen(false)}
+        />
+      )}
+
+      {/* ── REPORT ERROR MODAL ── */}
+      {reportModalOpen && current && (
+        <ReportErrorModal
+          questionId={current.id}
+          questionText={current.q}
+          module={current.module}
+          onClose={() => setReportModalOpen(false)}
         />
       )}
     </div>

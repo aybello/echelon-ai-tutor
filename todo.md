@@ -45,3 +45,6 @@
 - [x] Rewrite About page with accurate content (correct hero, timeline, curriculum attribution — no invented facts)
 - [x] Add About section to Landing page homepage with nav link that scrolls to it
 - [x] Replace 5-level confidence meter with minimal 2-option toggle (Sure / Not Sure) to reduce quiz distraction
+- [ ] Add error-reporting flag button on each quiz question (tRPC mutation + DB table)
+- [ ] Expand Pumping Systems question bank — replace near-duplicate questions with varied scenarios (NPSH, cavitation, parallel/series pumps)
+- [ ] Add step-by-step solution walkthroughs for hard math questions (expandable panel in StepSolution component)

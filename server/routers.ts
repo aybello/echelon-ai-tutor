@@ -5,7 +5,7 @@ import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
-import { waitlist } from "../drizzle/schema";
+import { waitlist, questionErrorReports } from "../drizzle/schema";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 
@@ -61,6 +61,40 @@ export const appRouter = router({
         });
 
         return { success: true, alreadyRegistered: false };
+      }),
+  }),
+
+  // Question error reporting — lets users flag mistakes in the question bank
+  question: router({
+    reportError: publicProcedure
+      .input(
+        z.object({
+          questionId: z.number().int().positive(),
+          questionText: z.string().min(1).max(1000),
+          module: z.string().min(1).max(64),
+          reportType: z.enum(["wrong_answer", "wrong_calculation", "unclear_question", "other"]),
+          details: z.string().max(500).optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable");
+
+        await db.insert(questionErrorReports).values({
+          questionId: input.questionId,
+          questionText: input.questionText,
+          module: input.module,
+          reportType: input.reportType,
+          details: input.details ?? null,
+        });
+
+        // Notify owner so errors can be reviewed quickly
+        await notifyOwner({
+          title: `Question error reported: Q${input.questionId}`,
+          content: `Module: ${input.module}\nType: ${input.reportType}\nQuestion: ${input.questionText.slice(0, 120)}...\n${input.details ? `Details: ${input.details}` : ""}`,
+        });
+
+        return { success: true };
       }),
   }),
 
