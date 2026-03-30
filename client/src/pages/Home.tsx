@@ -958,31 +958,28 @@ export default function Home() {
               }}
             >
               {!confirmed ? (
-                <>
-                  <ConfidenceMeter
-                    value={confidence}
-                    onChange={setConfidence}
-                    disabled={confirmed}
-                  />
-                  <div
-                    key={`shake-${shakeKey}`}
-                    style={{
-                      marginTop: 16,
-                      animation: shakeKey > 0 ? "shake 0.4s ease" : undefined,
-                    }}
-                  >
+                <div key={`shake-${shakeKey}`} style={{ animation: shakeKey > 0 ? "shake 0.4s ease" : undefined }}>
+                  {/* Confidence toggle + Confirm button on same row */}
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ flexShrink: 0 }}>
+                      <ConfidenceMeter
+                        value={confidence}
+                        onChange={setConfidence}
+                        disabled={confirmed}
+                      />
+                    </div>
                     <button
                       onClick={confirm}
                       style={{
-                        width: "100%",
-                        padding: "15px",
+                        flex: 1,
+                        padding: "10px 16px",
                         borderRadius: 12,
                         border: "none",
                         background: selected !== null && confidence !== null
                           ? "linear-gradient(135deg, #1D4ED8, #0F766E)"
                           : "#E2E8F0",
                         color: selected !== null && confidence !== null ? "#fff" : "#94A3B8",
-                        fontSize: 14,
+                        fontSize: 13,
                         fontWeight: 700,
                         cursor: selected !== null && confidence !== null ? "pointer" : "not-allowed",
                         fontFamily: "inherit",
@@ -990,21 +987,22 @@ export default function Home() {
                         boxShadow: selected !== null && confidence !== null
                           ? "0 4px 16px rgba(29,78,216,0.25)"
                           : "none",
+                        whiteSpace: "nowrap",
                       }}
                     >
                       {selected === null
                         ? "Select an answer first"
                         : confidence === null
-                        ? "Set your confidence level first"
+                        ? "Pick confidence →"
                         : "Confirm Answer →"}
                     </button>
-                    {(selected === null || confidence === null) && shakeKey > 0 && (
-                      <div style={{ textAlign: "center", fontSize: 11, color: "#DC2626", marginTop: 6 }}>
-                        {selected === null ? "Please select an answer" : "Please set your confidence level"}
-                      </div>
-                    )}
                   </div>
-                </>
+                  {(selected === null || confidence === null) && shakeKey > 0 && (
+                    <div style={{ textAlign: "center", fontSize: 11, color: "#DC2626", marginTop: 6 }}>
+                      {selected === null ? "Please select an answer" : "Please pick your confidence level"}
+                    </div>
+                  )}
+                </div>
               ) : (
                 <div style={{ display: "flex", gap: 10 }}>
                   {!tutorOpen && (

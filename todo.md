@@ -44,3 +44,4 @@
 - [x] Mobile navigation drawer (hamburger menu) on all tool page headers
 - [x] Rewrite About page with accurate content (correct hero, timeline, curriculum attribution — no invented facts)
 - [x] Add About section to Landing page homepage with nav link that scrolls to it
+- [x] Replace 5-level confidence meter with minimal 2-option toggle (Sure / Not Sure) to reduce quiz distraction
