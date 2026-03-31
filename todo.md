@@ -58,3 +58,5 @@
 - [x] Write 150+ Class 1 Wastewater Collection questions
 - [x] Add Class 1 certification tier to site (routing, nav, question bank integration)
 - [x] Fix Class 1 quiz to pre-select wastewater stream when navigating from Wastewater Class 1 course card
+- [ ] Fix OIT quiz card mobile layout — counter/flag row overflow, action bar clipping off-screen
+- [ ] Align Class 1 quiz card layout to match fixed OIT layout for consistency

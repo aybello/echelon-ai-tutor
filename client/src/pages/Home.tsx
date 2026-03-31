@@ -208,6 +208,15 @@ export default function Home() {
           .quiz-header-stats { gap: 6px !important; }
           .quiz-main-content { max-width: 100% !important; padding: 16px 14px 80px !important; }
           .session-complete-card { padding: 32px 20px !important; }
+          .q-card { padding: 20px 16px !important; }
+          .q-meta-row { flex-wrap: wrap !important; gap: 6px !important; }
+          .q-meta-right { flex-shrink: 0; }
+          .q-counter { font-size: 10px !important; padding: 3px 8px !important; }
+          .q-flag { font-size: 10px !important; padding: 3px 8px !important; }
+          .q-action-row { flex-wrap: wrap !important; gap: 8px !important; }
+          .q-action-row .confidence-wrap { width: 100% !important; }
+          .q-action-row .confirm-btn { width: 100% !important; flex: none !important; }
+          .q-text { font-size: 15px !important; }
         }
       `}</style>
 
@@ -676,6 +685,7 @@ export default function Home() {
             {/* ── QUESTION CARD ── */}
             <div
               key={`q-${current?.id}`}
+              className="q-card"
               style={{
                 background: "#fff",
                 borderRadius: 20,
@@ -686,7 +696,7 @@ export default function Home() {
               }}
             >
               {/* Tags + counter */}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+              <div className="q-meta-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20, gap: 8 }}>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   <span style={{
                     fontSize: 10,
@@ -714,8 +724,8 @@ export default function Home() {
                     border: "1px solid #E2E8F0",
                   }}>{current?.type}</span>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <div style={{
+                <div className="q-meta-right" style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+                  <div className="q-counter" style={{
                     fontSize: 11,
                     color: "#94A3B8",
                     fontWeight: 600,
@@ -723,10 +733,12 @@ export default function Home() {
                     padding: "4px 10px",
                     borderRadius: 20,
                     border: "1px solid #E2E8F0",
+                    whiteSpace: "nowrap",
                   }}>
                     {history.length + 1} / {SESSION_SIZE}
                   </div>
                   <button
+                    className="q-flag"
                     onClick={() => setReportModalOpen(true)}
                     title="Report an error with this question"
                     style={{
@@ -743,6 +755,7 @@ export default function Home() {
                       alignItems: "center",
                       gap: 4,
                       transition: "all 0.15s",
+                      whiteSpace: "nowrap",
                     }}
                     onMouseEnter={e => { e.currentTarget.style.color = "#DC2626"; e.currentTarget.style.borderColor = "#FECACA"; e.currentTarget.style.background = "#FEF2F2"; }}
                     onMouseLeave={e => { e.currentTarget.style.color = "#94A3B8"; e.currentTarget.style.borderColor = "#E2E8F0"; e.currentTarget.style.background = "none"; }}
@@ -982,7 +995,7 @@ export default function Home() {
               )}
             </div>
 
-            {/* ── CONFIDENCE + ACTION BUTTONS ── */}
+              {/* ── CONFIDENCE + ACTION BUTTONS ── */}
             <div
               key={`ctrl-${current?.id}`}
               style={{
@@ -995,9 +1008,9 @@ export default function Home() {
             >
               {!confirmed ? (
                 <div key={`shake-${shakeKey}`} style={{ animation: shakeKey > 0 ? "shake 0.4s ease" : undefined }}>
-                  {/* Confidence toggle + Confirm button on same row */}
-                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <div style={{ flexShrink: 0 }}>
+                  {/* Confidence toggle + Confirm button — stacks on mobile */}
+                  <div className="q-action-row" style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                    <div className="confidence-wrap" style={{ flexShrink: 0 }}>
                       <ConfidenceMeter
                         value={confidence}
                         onChange={setConfidence}
@@ -1005,9 +1018,11 @@ export default function Home() {
                       />
                     </div>
                     <button
+                      className="confirm-btn"
                       onClick={confirm}
                       style={{
                         flex: 1,
+                        minWidth: 140,
                         padding: "10px 16px",
                         borderRadius: 12,
                         border: "none",
@@ -1027,7 +1042,7 @@ export default function Home() {
                       }}
                     >
                       {selected === null
-                        ? "Select an answer first"
+                        ? "Select an answer →"
                         : confidence === null
                         ? "Pick confidence →"
                         : "Confirm Answer →"}

@@ -229,6 +229,13 @@ export default function Class1Quiz() {
         @media (max-width: 640px) {
           .c1-header-nav { display: none !important; }
           .c1-main { max-width: 100% !important; padding: 16px 14px 80px !important; }
+          .c1-q-card { padding: 20px 16px !important; }
+          .c1-meta-row { flex-wrap: wrap !important; gap: 6px !important; }
+          .c1-meta-right { flex-shrink: 0 !important; }
+          .c1-action-row { flex-wrap: wrap !important; gap: 8px !important; }
+          .c1-action-row .c1-confidence { width: 100% !important; }
+          .c1-action-row .c1-confirm-btn { width: 100% !important; padding: 12px 16px !important; }
+          .c1-q-text { font-size: 15px !important; }
         }
       `}</style>
 
@@ -540,23 +547,28 @@ export default function Class1Quiz() {
                 }}>
                   {current.difficulty.charAt(0).toUpperCase() + current.difficulty.slice(1)}
                 </span>
-                <span style={{ fontSize: 10, color: "#94A3B8", fontWeight: 600 }}>
+                <span style={{ fontSize: 10, color: "#94A3B8", fontWeight: 600, whiteSpace: "nowrap" }}>
                   Q{current.id} · {history.length + 1}/{SESSION_SIZE}
                 </span>
               </div>
               {/* Flag button */}
-              <button
-                onClick={() => setReportModalOpen(true)}
-                title="Report an error in this question"
-                style={{
-                  padding: "4px 8px", borderRadius: 8, border: "1px solid #FEE2E2",
-                  background: "#FFF5F5", color: "#DC2626",
-                  fontSize: 11, cursor: "pointer", fontFamily: "inherit",
-                  display: "flex", alignItems: "center", gap: 4,
-                }}
-              >
-                🚩 Report
-              </button>
+              <div className="c1-meta-right" style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+                <button
+                  onClick={() => setReportModalOpen(true)}
+                  title="Report an error in this question"
+                  style={{
+                    padding: "4px 10px", borderRadius: 20, border: "1px solid #E2E8F0",
+                    background: "none", color: "#94A3B8",
+                    fontSize: 11, cursor: "pointer", fontFamily: "inherit",
+                    display: "flex", alignItems: "center", gap: 4,
+                    fontWeight: 600, whiteSpace: "nowrap", transition: "all 0.15s",
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.color = "#DC2626"; e.currentTarget.style.borderColor = "#FECACA"; e.currentTarget.style.background = "#FEF2F2"; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = "#94A3B8"; e.currentTarget.style.borderColor = "#E2E8F0"; e.currentTarget.style.background = "none"; }}
+                >
+                  🚩 Report
+                </button>
+              </div>
             </div>
 
             {/* Question text */}
@@ -627,18 +639,23 @@ export default function Class1Quiz() {
             {!confirmed && (
               <div
                 key={shakeKey}
+                className="c1-action-row"
                 style={{
                   display: "flex", alignItems: "center", gap: 12,
                   flexWrap: "wrap",
                   animation: shakeKey > 0 ? "shake 0.4s ease" : undefined,
                 }}
               >
-                <ConfidenceMeter value={confidence} onChange={setConfidence} />
+                <div className="c1-confidence" style={{ flexShrink: 0 }}>
+                  <ConfidenceMeter value={confidence} onChange={setConfidence} />
+                </div>
                 <button
                   onClick={confirm}
                   disabled={selected === null || confidence === null}
-                  className="c1-next-btn"
+                  className="c1-next-btn c1-confirm-btn"
                   style={{
+                    flex: 1,
+                    minWidth: 140,
                     padding: "12px 28px", borderRadius: 12,
                     background: selected !== null && confidence !== null
                       ? "linear-gradient(135deg, #1D4ED8, #0F766E)"
@@ -649,9 +666,10 @@ export default function Class1Quiz() {
                     fontFamily: "inherit", transition: "all 0.2s",
                     boxShadow: selected !== null && confidence !== null
                       ? "0 4px 16px rgba(29,78,216,0.3)" : "none",
+                    whiteSpace: "nowrap",
                   }}
                 >
-                  Confirm →
+                  {selected === null ? "Select an answer →" : confidence === null ? "Pick confidence →" : "Confirm →"}
                 </button>
               </div>
             )}
