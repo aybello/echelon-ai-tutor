@@ -630,7 +630,7 @@ export default function Landing() {
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png"
               alt="Echelon Institute"
-              style={{ height: 120, width: "auto", filter: "brightness(0) invert(1) drop-shadow(0 4px 24px rgba(56,189,248,0.6))" }}
+              style={{ height: 120, width: "auto", filter: "brightness(0) invert(1)" }}
             />
           </div>
           <div style={{
