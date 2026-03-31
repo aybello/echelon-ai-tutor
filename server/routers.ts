@@ -142,7 +142,7 @@ export const appRouter = router({
       .input(
         z.object({
           sessionId: z.string().min(1).max(64),
-          examType: z.enum(["class1", "wqa"]),
+          examType: z.enum(["class1", "wqa", "oit"]),
           stream: z.enum(["water", "wastewater"]).optional(),
           score: z.number().int().min(0),
           total: z.number().int().min(1),
@@ -172,7 +172,7 @@ export const appRouter = router({
     getHistory: publicProcedure
       .input(z.object({
         sessionId: z.string().min(1).max(64),
-        examType: z.enum(["class1", "wqa"]),
+        examType: z.enum(["class1", "wqa", "oit"]),
         stream: z.enum(["water", "wastewater"]).optional(),
       }))
       .query(async ({ input }) => {

@@ -6,7 +6,7 @@ import { trpc } from "@/lib/trpc";
 
 interface ScoreHistoryProps {
   sessionId: string;
-  examType: "class1" | "wqa";
+  examType: "class1" | "wqa" | "oit";
   stream?: "water" | "wastewater";
   /** The current attempt's score (0–1) — excluded from the history list since it's already shown in the hero */
   currentResultId?: number;

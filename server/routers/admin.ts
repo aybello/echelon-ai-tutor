@@ -4,7 +4,7 @@
  */
 import { desc, eq } from "drizzle-orm";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults } from "../../drizzle/schema";
 import { getDb } from "../db";
 import { adminProcedure, router } from "../_core/trpc";
 
@@ -13,15 +13,17 @@ export const adminRouter = router({
   stats: adminProcedure.query(async () => {
     const db = await getDb();
     if (!db) throw new Error("Database unavailable");
-    const [trials, waitlistRows, errors] = await Promise.all([
+    const [trials, waitlistRows, errors, scores] = await Promise.all([
       db.select().from(trialEmails),
       db.select().from(waitlist),
       db.select().from(questionErrorReports),
+      db.select().from(examResults),
     ]);
     return {
       trialCount: trials.length,
       waitlistCount: waitlistRows.length,
       errorCount: errors.length,
+      scoreCount: scores.length,
     };
   }),
 
@@ -74,6 +76,28 @@ export const adminRouter = router({
         .delete(questionErrorReports)
         .where(eq(questionErrorReports.id, input.id));
       return { success: true };
+    }),
+
+  /** Paginated list of exam results (score history), newest first */
+  getScoreHistory: adminProcedure
+    .input(z.object({
+      limit: z.number().int().min(1).max(500).default(200),
+      examType: z.enum(["class1", "wqa", "oit", "all"]).default("all"),
+    }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+      const results = await db
+        .select()
+        .from(examResults)
+        .orderBy(desc(examResults.createdAt))
+        .limit(input.limit);
+      return results
+        .filter(r => input.examType === "all" || r.examType === input.examType)
+        .map(r => ({
+          ...r,
+          moduleBreakdown: r.moduleBreakdown ? JSON.parse(r.moduleBreakdown) : null,
+        }));
     }),
 
   /** Delete a waitlist entry */

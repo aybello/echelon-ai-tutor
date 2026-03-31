@@ -7,7 +7,19 @@ import { trpc } from "@/lib/trpc";
 import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 
-type Tab = "trials" | "waitlist" | "errors";
+type Tab = "trials" | "waitlist" | "errors" | "scores";
+
+const EXAM_TYPE_LABELS: Record<string, string> = {
+  oit: "OIT",
+  class1: "Class 1",
+  wqa: "WQA",
+};
+
+const EXAM_TYPE_COLORS: Record<string, { bg: string; color: string }> = {
+  oit: { bg: "#DBEAFE", color: "#1D4ED8" },
+  class1: { bg: "#DCFCE7", color: "#15803D" },
+  wqa: { bg: "#EDE9FE", color: "#6D28D9" },
+};
 
 const REPORT_TYPE_LABELS: Record<string, string> = {
   wrong_answer: "Wrong Answer",
@@ -40,6 +52,7 @@ export default function Admin() {
   const trialsQ = trpc.admin.getTrialEmails.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "trials" });
   const waitlistQ = trpc.admin.getWaitlist.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "waitlist" });
   const errorsQ = trpc.admin.getErrorReports.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "errors" });
+  const scoresQ = trpc.admin.getScoreHistory.useQuery({ limit: 500, examType: "all" }, { enabled: user?.role === "admin" && activeTab === "scores" });
 
   const utils = trpc.useUtils();
 
@@ -124,12 +137,14 @@ export default function Admin() {
     { label: "Trial Signups", value: stats.data?.trialCount ?? "—", icon: "📧", color: "#38BDF8", tab: "trials" as Tab },
     { label: "Waitlist Entries", value: stats.data?.waitlistCount ?? "—", icon: "📋", color: "#34D399", tab: "waitlist" as Tab },
     { label: "Error Reports", value: stats.data?.errorCount ?? "—", icon: "🐛", color: "#F87171", tab: "errors" as Tab },
+    { label: "Exam Results", value: stats.data?.scoreCount ?? "—", icon: "📊", color: "#FBBF24", tab: "scores" as Tab },
   ];
 
   const TABS: { id: Tab; label: string; icon: string }[] = [
     { id: "trials", label: "Trial Emails", icon: "📧" },
     { id: "waitlist", label: "Waitlist", icon: "📋" },
     { id: "errors", label: "Error Reports", icon: "🐛" },
+    { id: "scores", label: "Score History", icon: "📊" },
   ];
 
   return (
@@ -167,7 +182,7 @@ export default function Admin() {
           </div>
           <button
             className="admin-btn"
-            onClick={() => { stats.refetch(); trialsQ.refetch(); waitlistQ.refetch(); errorsQ.refetch(); }}
+            onClick={() => { stats.refetch(); trialsQ.refetch(); waitlistQ.refetch(); errorsQ.refetch(); scoresQ.refetch(); }}
             style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#94A3B8", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
           >
             ↻ Refresh
@@ -357,6 +372,85 @@ export default function Admin() {
                       </td>
                     </tr>
                   ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        )}
+
+        {/* ── SCORE HISTORY TAB ── */}
+        {activeTab === "scores" && (
+          <div style={{ background: "#1E293B", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,0.06)" }}>
+            <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
+              <div style={{ fontSize: 13, fontWeight: 700 }}>
+                📊 Exam Score History
+                {scoresQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{scoresQ.data.length} results</span>}
+              </div>
+              {scoresQ.data && scoresQ.data.length > 0 && (
+                <button
+                  className="admin-btn"
+                  onClick={() => downloadCSV(
+                    scoresQ.data!.map(r => ({
+                      session_id: r.sessionId,
+                      exam_type: r.examType,
+                      stream: r.stream ?? "",
+                      score: r.score,
+                      total: r.total,
+                      percent: Math.round(r.score / r.total * 100),
+                      passed: r.passed,
+                      time_taken_seconds: r.timeTakenSeconds ?? "",
+                      date: new Date(r.createdAt).toISOString(),
+                    })),
+                    `echelon-score-history-${new Date().toISOString().slice(0,10)}.csv`
+                  )}
+                  style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#A78BFA", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                >
+                  ⬇ Download CSV
+                </button>
+              )}
+            </div>
+            {scoresQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
+            {scoresQ.data && scoresQ.data.length === 0 && (
+              <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No exam results yet.</div>
+            )}
+            {scoresQ.data && scoresQ.data.length > 0 && (
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr style={{ background: "rgba(255,255,255,0.03)" }}>
+                    {["#", "Exam", "Score", "Result", "Time", "Date"].map(h => (
+                      <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {scoresQ.data.map((row, i) => {
+                    const pct = Math.round(row.score / row.total * 100);
+                    const passed = row.passed === "yes";
+                    const typeStyle = EXAM_TYPE_COLORS[row.examType] ?? { bg: "rgba(255,255,255,0.06)", color: "#94A3B8" };
+                    const timeTaken = row.timeTakenSeconds ? `${Math.floor(row.timeTakenSeconds / 60)}m ${row.timeTakenSeconds % 60}s` : "—";
+                    return (
+                      <tr key={row.id} className="admin-row" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+                        <td style={{ padding: "12px 16px", fontSize: 11, color: "#475569" }}>{i + 1}</td>
+                        <td style={{ padding: "12px 16px" }}>
+                          <span style={{ padding: "3px 10px", borderRadius: 100, background: typeStyle.bg + "30", color: typeStyle.color, fontSize: 10, fontWeight: 700 }}>
+                            {EXAM_TYPE_LABELS[row.examType] ?? row.examType.toUpperCase()}
+                          </span>
+                          {row.stream && <span style={{ marginLeft: 6, fontSize: 10, color: "#64748B" }}>{row.stream}</span>}
+                        </td>
+                        <td style={{ padding: "12px 16px" }}>
+                          <span style={{ fontSize: 15, fontWeight: 800, color: passed ? "#34D399" : "#F87171" }}>{pct}%</span>
+                          <span style={{ marginLeft: 6, fontSize: 11, color: "#64748B" }}>{row.score}/{row.total}</span>
+                        </td>
+                        <td style={{ padding: "12px 16px" }}>
+                          <span style={{ padding: "3px 10px", borderRadius: 100, background: passed ? "rgba(52,211,153,0.15)" : "rgba(248,113,113,0.15)", color: passed ? "#34D399" : "#F87171", fontSize: 10, fontWeight: 700 }}>
+                            {passed ? "PASS" : "FAIL"}
+                          </span>
+                        </td>
+                        <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{timeTaken}</td>
+                        <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{formatDate(row.createdAt)}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             )}

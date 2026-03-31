@@ -12,6 +12,7 @@ import { Link } from "wouter";
 export const NAV_LINKS = [
   { label: "🏠 Home",          href: "/" },
   { label: "📝 OIT Practice",  href: "/quiz" },
+  { label: "📋 OIT Mock Exam",  href: "/oit-mock" },
   { label: "🎓 Class 1 Exam",  href: "/class1" },
   { label: "📋 Class 1 Mock",   href: "/class1-mock" },
   { label: "🧪 WQA Practice",   href: "/wqa" },
@@ -72,7 +73,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
             flexShrink: 0,
           }}>
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo_35076f16.png"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo-transparent_66afefa9.png"
               alt="Echelon Institute logo"
               style={{ height: 28, width: "auto", filter: "brightness(0) invert(1)" }}
             />

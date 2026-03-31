@@ -347,6 +347,20 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
               Start Studying →
             </button>
           </Link>
+          {(course.code === "OIT-W" || course.code === "OIT-WW") && (
+            <Link href="/oit-mock">
+              <button style={{
+                width: "100%", padding: "10px",
+                background: "transparent",
+                color: course.color, border: `1.5px solid ${course.color}`,
+                borderRadius: 10, fontSize: 12, fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit",
+                marginTop: 8, transition: "all 0.15s",
+              }}>
+                📋 Timed Mock Exam
+              </button>
+            </Link>
+          )}
           {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "WQA") && (
             <Link href={course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-mock?stream=wastewater" : "/class1-mock?stream=water"}>
               <button style={{
@@ -427,7 +441,7 @@ export default function Landing() {
         {/* Brand */}
         <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo_35076f16.png"
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo-transparent_66afefa9.png"
             alt="Echelon Institute"
             style={{ height: 36, width: "auto" }}
           />
@@ -605,7 +619,7 @@ export default function Landing() {
           {/* Hero logo mark */}
           <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo_35076f16.png"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo-transparent_66afefa9.png"
               alt="Echelon Institute"
               style={{ height: 72, width: "auto", filter: "drop-shadow(0 4px 16px rgba(56,189,248,0.35))" }}
             />
@@ -941,7 +955,7 @@ export default function Landing() {
       }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 12 }}>
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo_35076f16.png"
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo-transparent_66afefa9.png"
             alt="Echelon Institute"
             style={{ height: 28, width: "auto", filter: "brightness(0) invert(1)" }}
           />

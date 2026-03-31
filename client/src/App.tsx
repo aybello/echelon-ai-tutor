@@ -20,6 +20,7 @@ import Class1MockExam from "./pages/Class1MockExam";
 import Admin from "@/pages/Admin";
 import WQAQuiz from "@/pages/WQAQuiz";
 import WQAMockExam from "@/pages/WQAMockExam";
+import OITMockExam from "@/pages/OITMockExam";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -39,6 +40,7 @@ function Router() {
       <Route path={"/class1-mock"} component={Class1MockExam} />
       <Route path={"/wqa"} component={WQAQuiz} />
       <Route path={"/wqa-mock"} component={WQAMockExam} />
+      <Route path={"/oit-mock"} component={OITMockExam} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
