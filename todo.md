@@ -72,3 +72,8 @@
 - [x] Fix Class 1 Mock Exam stream selector bug — selecting Wastewater loads Water questions instead
 - [x] Fix SEO on landing page (/): shorten title to 30-60 chars, shorten description to 50-160 chars, add keywords meta tag
 - [x] Fix Class 1 Mock Exam "Go to Practice Mode" link — always navigates to Water stream regardless of selected stream
+- [x] Add waitlist_signups and error_reports DB tables and push migration
+- [x] Add adminProcedure gate and admin tRPC router (getTrialEmails, getWaitlist, getErrorReports, dismissError)
+- [x] Build /admin dashboard page: trial emails, waitlist signups, error reports panels
+- [x] Wire /admin route in App.tsx (admin-only)
+- [x] Write vitest for admin procedures
