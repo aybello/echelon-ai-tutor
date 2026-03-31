@@ -150,14 +150,14 @@ export const CLASS1_QUESTIONS: Question[] = [
     difficulty: "medium",
     type: "calculation",
     q: `Using the same basin (40 m × 10 m × 4 m) with a flow of 8,640 m³/day, what is the hydraulic detention time (HDT) in hours?`,
-    options: ["4.0 hours", "8.0 hours", "12.0 hours", "16.0 hours"],
-    correct: 0,
-    explanation: "Volume = 40 × 10 × 4 = 1,600 m³. HDT = Volume ÷ Flow = 1,600 m³ ÷ (8,640 m³/d ÷ 24 h/d) = 1,600 ÷ 360 = 4.44 h ≈ 4.0 h. (Closest answer is 4.0 h.)",
+    options: ["2.2 hours", "4.4 hours", "8.9 hours", "17.8 hours"],
+    correct: 1,
+    explanation: "Volume = 40 × 10 × 4 = 1,600 m³. HDT = Volume ÷ Flow = 1,600 m³ ÷ (8,640 m³/d ÷ 24 h/d) = 1,600 ÷ 360 = 4.44 hours.",
     tip: "HDT (h) = Volume (m³) ÷ Flow rate (m³/h).",
     steps: [
       { l: "Step 1", c: "Calculate basin volume: 40 × 10 × 4 = 1,600 m³" },
       { l: "Step 2", c: "Convert flow to m³/h: 8,640 ÷ 24 = 360 m³/h" },
-      { l: "Step 3", c: "HDT = 1,600 ÷ 360 = 4.44 h ≈ 4.0 h" }
+      { l: "Step 3", c: "HDT = 1,600 ÷ 360 = 4.4 hours" }
     ],
   },
   {
@@ -312,13 +312,13 @@ export const CLASS1_QUESTIONS: Question[] = [
     difficulty: "hard",
     type: "calculation",
     q: `A clearwell has a volume of 2,000 m³ and a flow of 5,000 m³/h. Using the T₁₀ factor of 0.5 (baffling factor), what is the T₁₀ contact time in minutes?`,
-    options: ["7.2 min", "14.4 min", "24.0 min", "28.8 min"],
+    options: ["6 min", "12 min", "24 min", "48 min"],
     correct: 1,
-    explanation: "Theoretical detention time = Volume ÷ Flow = 2,000 m³ ÷ 5,000 m³/h = 0.4 h = 24 min. T₁₀ = Theoretical detention time × Baffling factor = 24 min × 0.5 = 12 min. Wait — re-checking: 2,000 ÷ 5,000 = 0.4 h × 60 = 24 min × 0.5 = 12 min. Closest answer is 14.4 min — let me recalculate with flow = 4,167 m³/h: 2,000 ÷ (5,000/60) = 24 min × 0.6 = 14.4 min. With baffling factor 0.6: T₁₀ = 24 × 0.6 = 14.4 min.",
+    explanation: "Theoretical detention time = Volume ÷ Flow = 2,000 m³ ÷ 5,000 m³/h = 0.4 h = 24 min. T₁₀ = Theoretical detention time × Baffling factor = 24 min × 0.5 = 12 min.",
     tip: "T₁₀ = Theoretical detention time × Baffling factor (T₁₀/T).",
     steps: [
-      { l: "Step 1", c: "Theoretical detention time = Volume ÷ Flow = 2,000 m³ ÷ (5,000 m³/h ÷ 60) = 24 min" },
-      { l: "Step 2", c: "T₁₀ = Theoretical DT × Baffling factor = 24 min × 0.6 = 14.4 min" }
+      { l: "Step 1", c: "Theoretical detention time = Volume ÷ Flow = 2,000 m³ ÷ 5,000 m³/h = 0.4 h = 24 min" },
+      { l: "Step 2", c: "T₁₀ = Theoretical DT × Baffling factor = 24 min × 0.5 = 12 min" }
     ],
   },
   {
@@ -2900,7 +2900,7 @@ export const CLASS1_QUESTIONS: Question[] = [
     type: "calculation",
     q: `An activated sludge plant treats 5,000 m³/day of wastewater with an influent BOD of 220 mg/L. The aeration basin volume is 2,500 m³ and MLSS is 3,000 mg/L. What is the F/M ratio in kg BOD/kg MLSS·day?`,
     options: ["0.15 kg/kg·day", "0.29 kg/kg·day", "0.44 kg/kg·day", "0.59 kg/kg·day"],
-    correct: 1,
+    correct: 0,
     explanation: "BOD applied = 5,000 m³/day × 220 g/m³ = 1,100,000 g/day = 1,100 kg/day. MLSS mass = 2,500 m³ × 3,000 g/m³ = 7,500,000 g = 7,500 kg. F/M = 1,100 ÷ 7,500 = 0.147 ≈ 0.15 kg BOD/kg MLSS·day.",
     tip: "F/M = BOD load (kg/d) ÷ MLSS mass (kg). BOD load = Q × BOD concentration.",
     steps: [
@@ -3530,16 +3530,16 @@ export const CLASS1_QUESTIONS: Question[] = [
     module: "Wastewater Collection",
     difficulty: "hard",
     type: "calculation",
-    q: `A gravity sewer has a slope of 0.005 m/m, a diameter of 250 mm (flowing full), and Manning's n = 0.013. What is the approximate flow velocity? (Use V = (1/n) × R^(2/3) × S^(1/2), R = D/4 for full pipe)`,
-    options: ["0.72 m/s", "0.96 m/s", "1.20 m/s", "1.44 m/s"],
-    correct: 1,
-    explanation: "R = D/4 = 0.250/4 = 0.0625 m. R^(2/3) = (0.0625)^(0.667) = 0.1575. S^(1/2) = (0.005)^(0.5) = 0.07071. V = (1/0.013) × 0.1575 × 0.07071 = 76.92 × 0.01114 = 0.857 ≈ 0.96 m/s (closest).",
+    q: `A gravity sewer has a slope of 0.008 m/m, a diameter of 250 mm (flowing full), and Manning's n = 0.013. What is the approximate flow velocity? (Use V = (1/n) × R^(2/3) × S^(1/2), R = D/4 for full pipe)`,
+    options: ["0.72 m/s", "0.86 m/s", "1.08 m/s", "1.44 m/s"],
+    correct: 2,
+    explanation: "R = D/4 = 0.250/4 = 0.0625 m. R^(2/3) = (0.0625)^(0.667) = 0.1575. S^(1/2) = (0.008)^(0.5) = 0.08944. V = (1/0.013) × 0.1575 × 0.08944 = 76.92 × 0.01409 = 1.08 m/s.",
     tip: "Manning's: V = (1/n) × R^(2/3) × S^(1/2). For full circular pipe: R = D/4.",
     steps: [
       { l: "Step 1", c: "R = 0.250 ÷ 4 = 0.0625 m" },
       { l: "Step 2", c: "R^(2/3) = (0.0625)^0.667 = 0.1575" },
-      { l: "Step 3", c: "S^(1/2) = (0.005)^0.5 = 0.07071" },
-      { l: "Step 4", c: "V = (1/0.013) × 0.1575 × 0.07071 = 76.92 × 0.01114 = 0.857 ≈ 0.96 m/s" }
+      { l: "Step 3", c: "S^(1/2) = (0.008)^0.5 = 0.08944" },
+      { l: "Step 4", c: "V = (1/0.013) × 0.1575 × 0.08944 = 76.92 × 0.01409 = 1.08 m/s" }
     ],
   },
 
