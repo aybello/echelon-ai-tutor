@@ -335,17 +335,33 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
           🔔 Notify Me When Available
         </button>
       ) : (
-        <Link href={course.code === "CL1-WW" ? "/class1?stream=wastewater" : course.code === "CL1-W" ? "/class1?stream=water" : "/quiz"}>
-          <button style={{
-            width: "100%", padding: "12px",
-            background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
-            color: "#fff", border: "none", borderRadius: 10,
-            fontSize: 13, fontWeight: 700, cursor: "pointer",
-            fontFamily: "inherit", transition: "opacity 0.15s",
-          }}>
-            Start Studying →
-          </button>
-        </Link>
+        <>
+          <Link href={course.code === "CL1-WW" ? "/class1?stream=wastewater" : course.code === "CL1-W" ? "/class1?stream=water" : "/quiz"}>
+            <button style={{
+              width: "100%", padding: "12px",
+              background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
+              color: "#fff", border: "none", borderRadius: 10,
+              fontSize: 13, fontWeight: 700, cursor: "pointer",
+              fontFamily: "inherit", transition: "opacity 0.15s",
+            }}>
+              Start Studying →
+            </button>
+          </Link>
+          {(course.code === "CL1-W" || course.code === "CL1-WW") && (
+            <Link href={course.code === "CL1-WW" ? "/class1-mock?stream=wastewater" : "/class1-mock?stream=water"}>
+              <button style={{
+                width: "100%", padding: "10px",
+                background: "transparent",
+                color: course.color, border: `1.5px solid ${course.color}`,
+                borderRadius: 10, fontSize: 12, fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit",
+                marginTop: 8, transition: "all 0.15s",
+              }}>
+                📋 Timed Mock Exam
+              </button>
+            </Link>
+          )}
+        </>
       )}
 
       {notifyOpen && (

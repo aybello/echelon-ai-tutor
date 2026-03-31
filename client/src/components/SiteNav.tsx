@@ -13,6 +13,7 @@ export const NAV_LINKS = [
   { label: "🏠 Home",          href: "/" },
   { label: "📝 OIT Practice",  href: "/quiz" },
   { label: "🎓 Class 1 Exam",  href: "/class1" },
+  { label: "📋 Class 1 Mock",   href: "/class1-mock" },
   { label: "📐 Formulas",      href: "/formulas" },
   { label: "🏭 Process Guide", href: "/process" },
   { label: "♻️ Wastewater",    href: "/wastewater" },

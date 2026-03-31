@@ -62,4 +62,10 @@
 - [ ] Align Class 1 quiz card layout to match fixed OIT layout for consistency
 - [ ] Build daily health check script (tests, TypeScript, math audit, duplicate ID scan)
 - [ ] Add server-side health check runner and owner notification
-- [ ] Schedule daily 6 AM automated health check
+- [x] Schedule daily 6 AM automated health check
+- [x] Fix Q1053 baffling factor (0.4→0.333) and Q1219 surface loading rate options
+- [x] Complete daily health check script with direct forge API notification
+- [x] Build Class 1 timed mock exam page (/class1-mock): stream selector (Water/Wastewater), 100 questions, 2-hour timer, 70% pass threshold, module breakdown on results
+- [x] Wire /class1-mock route in App.tsx
+- [x] Add Class 1 Mock Exam link to SiteNav and Landing page
+- [x] Apply freemium gate to Class 1 Mock Exam intro screen
