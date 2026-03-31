@@ -2,7 +2,7 @@
 // Certification: Class 1 Water (Treatment + Distribution) / Class 1 Wastewater (Treatment + Collection)
 
 import { useState, useCallback, useMemo } from "react";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import {
   CLASS1_QUESTIONS,
@@ -82,12 +82,25 @@ export default function Class1Quiz() {
     path: "/class1",
   });
 
-  const [stream, setStream] = useState<Stream>("all");
+  // Read stream from URL query param (e.g. /class1?stream=wastewater)
+  const searchString = useSearch();
+  const initialStream = useMemo<Stream>(() => {
+    const params = new URLSearchParams(searchString);
+    const s = params.get("stream");
+    if (s === "water" || s === "wastewater") return s;
+    return "all";
+  }, []); // only read on mount
+
+  const [stream, setStream] = useState<Stream>(initialStream);
   const [subModule, setSubModule] = useState<SubModule>(null);
   const [showStreamSelector, setShowStreamSelector] = useState(false);
 
   const [history, setHistory]       = useState<HistoryEntry[]>([]);
-  const [current, setCurrent]       = useState<Question | null>(() => CLASS1_QUESTIONS[0]);
+  const [current, setCurrent]       = useState<Question | null>(() => {
+    if (initialStream === "water") return getClass1Questions("water")[0] ?? null;
+    if (initialStream === "wastewater") return getClass1Questions("wastewater")[0] ?? null;
+    return CLASS1_QUESTIONS[0];
+  });
   const [selected, setSelected]     = useState<number | null>(null);
   const [confidence, setConfidence] = useState<number | null>(null);
   const [confirmed, setConfirmed]   = useState(false);

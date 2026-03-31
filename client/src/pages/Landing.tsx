@@ -335,7 +335,7 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
           🔔 Notify Me When Available
         </button>
       ) : (
-        <Link href={course.code.startsWith("CL1") ? "/class1" : "/quiz"}>
+        <Link href={course.code === "CL1-WW" ? "/class1?stream=wastewater" : course.code === "CL1-W" ? "/class1?stream=water" : "/quiz"}>
           <button style={{
             width: "100%", padding: "12px",
             background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
