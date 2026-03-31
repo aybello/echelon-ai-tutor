@@ -175,13 +175,27 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
         overflowY: "auto",
         padding: "16px 0 32px",
       }}>
+        {/* Drawer brand header */}
         <div style={{
-          padding: "0 20px 12px",
+          padding: "12px 20px 16px",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
           marginBottom: 8,
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
         }}>
-          <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            Navigation
+          <img
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png"
+            alt="Echelon Institute logo"
+            style={{ height: 36, width: "auto", filter: "brightness(0) invert(1)" }}
+          />
+          <div>
+            <div style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 15, color: "#FFFFFF", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
+              {brandName}
+            </div>
+            <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>
+              Canadian Water &amp; Wastewater
+            </div>
           </div>
         </div>
 
