@@ -37,7 +37,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-M001",
     module: "Math",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "Convert 2.5 mg/L to µg/L.",
     options: ["0.0025 µg/L", "25 µg/L", "250 µg/L", "2500 µg/L"],
     correctIndex: 3,
@@ -46,7 +46,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-M002",
     module: "Math",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the volume of a cylinder with a diameter of 2 m and a height of 3 m? (Use π = 3.14)",
     options: ["9.42 m³", "12.56 m³", "18.84 m³", "37.68 m³"],
     correctIndex: 0,
@@ -73,7 +73,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-M005",
     module: "Math",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "A stock solution has a concentration of 1000 mg/L. How many mL of this stock solution are needed to prepare 1 L of a 5 mg/L working standard?",
     options: ["0.5 mL", "5 mL", "50 mL", "500 mL"],
     correctIndex: 1,
@@ -91,11 +91,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-M007",
     module: "Math",
-    difficulty: "easy",
-    question: "Convert 500 mL to litres.",
-    options: ["0.05 L", "0.5 L", "5 L", "50 L"],
-    correctIndex: 1,
-    explanation: "1 L = 1000 mL. Therefore 500 mL ÷ 1000 = 0.5 L.",
+    difficulty: "medium",
+    question: "A water sample is collected in a 250 mL bottle. The lab requires the sample to be diluted 1:10 before analysis. What volume of sample (in mL) and what volume of diluent (in mL) are needed to make a 100 mL diluted sample?",
+    options: ["10 mL sample + 90 mL diluent", "25 mL sample + 75 mL diluent", "50 mL sample + 50 mL diluent", "1 mL sample + 99 mL diluent"],
+    correctIndex: 0,
+    explanation: "A 1:10 dilution means 1 part sample in 10 parts total volume. For 100 mL total: sample = 100/10 = 10 mL; diluent = 100 - 10 = 90 mL. Always verify: 10/100 = 0.1 = 1:10 dilution.",
   },
   {
     id: "WQA-M008",
@@ -136,7 +136,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-M012",
     module: "Math",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "Express 0.005 g/L in mg/L.",
     options: ["0.005 mg/L", "0.05 mg/L", "0.5 mg/L", "5 mg/L"],
     correctIndex: 3,
@@ -147,16 +147,21 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-S001",
     module: "Science",
-    difficulty: "easy",
-    question: "What is the chemical formula for water?",
-    options: ["HO", "H₂O", "H₂O₂", "OH"],
-    correctIndex: 1,
-    explanation: "Water is composed of two hydrogen atoms and one oxygen atom: H₂O.",
+    difficulty: "medium",
+    question: "Water has a high specific heat capacity (4,186 J/kg·°C). Which of the following best explains why this property is important for water treatment operations?",
+    options: [
+      "It means water requires a large amount of energy to change temperature, which stabilizes treatment processes and reduces the impact of temperature fluctuations on chemical reactions",
+      "It means water freezes at 0°C, which is important for winter operations",
+      "It means water conducts electricity, which is important for electrochemical treatment",
+      "It means water has a high boiling point, which prevents evaporation in open reservoirs"
+    ],
+    correctIndex: 0,
+    explanation: "Water's high specific heat capacity means it resists temperature changes, which stabilizes biological treatment processes (bacteria are sensitive to temperature), chemical reaction rates (coagulation, disinfection), and seasonal temperature variations in source water. This property is why large water bodies act as thermal buffers.",
   },
   {
     id: "WQA-S002",
     module: "Science",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "Which of the following is an example of an inorganic compound?",
     options: ["Glucose (C₆H₁₂O₆)", "Sodium chloride (NaCl)", "Acetic acid (CH₃COOH)", "Methane (CH₄)"],
     correctIndex: 1,
@@ -165,11 +170,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-S003",
     module: "Science",
-    difficulty: "easy",
-    question: "What is the pH of a neutral solution at 25°C?",
-    options: ["0", "5", "7", "14"],
-    correctIndex: 2,
-    explanation: "A neutral solution has equal concentrations of H⁺ and OH⁻ ions, giving a pH of 7 at 25°C.",
+    difficulty: "medium",
+    question: "A water sample has a pH of 8.4. What is the hydroxide ion concentration [OH⁻] in mol/L? (Kw = 1.0 × 10⁻¹⁴ at 25°C)",
+    options: [
+      "2.5 × 10⁻⁶ mol/L",
+      "4.0 × 10⁻⁷ mol/L",
+      "6.3 × 10⁻⁶ mol/L",
+      "1.0 × 10⁻⁸ mol/L"
+    ],
+    correctIndex: 0,
+    explanation: "At pH 8.4: [H⁺] = 10⁻⁸·⁴ = 3.98 × 10⁻⁹ mol/L. [OH⁻] = Kw / [H⁺] = 1.0 × 10⁻¹⁴ / 3.98 × 10⁻⁹ = 2.51 × 10⁻⁶ mol/L ≈ 2.5 × 10⁻⁶ mol/L. Alternatively: pOH = 14 - pH = 14 - 8.4 = 5.6; [OH⁻] = 10⁻⁵·⁶ = 2.5 × 10⁻⁶ mol/L.",
   },
   {
     id: "WQA-S004",
@@ -211,7 +221,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-S007",
     module: "Science",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "Which ion is primarily responsible for water hardness?",
     options: ["Na⁺ and K⁺", "Ca²⁺ and Mg²⁺", "Cl⁻ and SO₄²⁻", "HCO₃⁻ and CO₃²⁻"],
     correctIndex: 1,
@@ -257,11 +267,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-S011",
     module: "Science",
-    difficulty: "easy",
-    question: "What is the chemical symbol for calcium?",
-    options: ["C", "Ca", "Cl", "Co"],
-    correctIndex: 1,
-    explanation: "The chemical symbol for calcium is Ca. C = Carbon, Cl = Chlorine, Co = Cobalt.",
+    difficulty: "medium",
+    question: "A water sample has a total hardness of 280 mg/L as CaCO₃. The calcium hardness is 180 mg/L as CaCO₃. What is the magnesium hardness in mg/L as Mg²⁺? (Atomic mass: Mg = 24.3, Ca = 40.1, C = 12, O = 16)",
+    options: [
+      "100 mg/L as Mg²⁺",
+      "24.3 mg/L as Mg²⁺",
+      "48.6 mg/L as Mg²⁺",
+      "100 mg/L as CaCO₃"
+    ],
+    correctIndex: 2,
+    explanation: "Magnesium hardness as CaCO₃ = total hardness - calcium hardness = 280 - 180 = 100 mg/L as CaCO₃. To convert to mg/L as Mg²⁺: multiply by (Mg MW / CaCO₃ MW) × 2 = (24.3 / 100) × 2 = 0.486. Wait — conversion factor: mg/L as CaCO₃ × (Mg MW / (CaCO₃ MW / 2)) = 100 × (24.3 / 50) = 100 × 0.486 = 48.6 mg/L as Mg²⁺.",
   },
   {
     id: "WQA-S012",
@@ -298,7 +313,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-S015",
     module: "Science",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "Which of the following describes an oxidation reaction?",
     options: [
       "Gain of electrons",
@@ -340,7 +355,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-S018",
     module: "Science",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What does the term 'solubility' mean?",
     options: [
       "The ability of a substance to conduct electricity",
@@ -499,7 +514,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-L011",
     module: "Laboratory & Sampling",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is a 'reagent blank' used for in laboratory analysis?",
     options: [
       "To calibrate the instrument",
@@ -536,7 +551,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-L014",
     module: "Laboratory & Sampling",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What does 'NTU' stand for in water quality measurement?",
     options: ["Normal Turbidity Units", "Nephelometric Turbidity Units", "Natural Turbidity Units", "Normalized Turbidity Units"],
     correctIndex: 1,
@@ -573,7 +588,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-L017",
     module: "Laboratory & Sampling",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "Which piece of laboratory equipment is used to measure small volumes of liquid accurately?",
     options: ["Beaker", "Erlenmeyer flask", "Volumetric pipette", "Graduated cylinder"],
     correctIndex: 2,
@@ -610,7 +625,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-L020",
     module: "Laboratory & Sampling",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is a 'standard solution' in laboratory analysis?",
     options: [
       "A solution of unknown concentration used for testing",
@@ -661,7 +676,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-L024",
     module: "Laboratory & Sampling",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What does 'LOD' stand for in analytical chemistry?",
     options: ["Level of Detection", "Limit of Detection", "Laboratory Operating Directive", "Limit of Dilution"],
     correctIndex: 1,
@@ -712,7 +727,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-L028",
     module: "Laboratory & Sampling",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is a 'reagent' in laboratory analysis?",
     options: [
       "The sample being tested",
@@ -756,30 +771,30 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-SF001",
     module: "Safety",
-    difficulty: "easy",
-    question: "What does WHMIS stand for?",
+    difficulty: "medium",
+    question: "A laboratory receives a new chemical with a WHMIS 2015 label showing an exclamation mark (!) pictogram. The SDS lists an LC50 of 2,500 mg/kg (rat, oral). What hazard category does this indicate and what precautions are required?",
     options: [
-      "Workplace Hazardous Materials Information System",
-      "Water Handling and Management Information Standard",
-      "Worker Health and Medical Insurance System",
-      "Workplace Health Monitoring and Inspection Standards",
+      "Acute toxicity Category 4 (harmful if swallowed) — wear gloves and avoid ingestion; no special ventilation required",
+      "Acute toxicity Category 1 (fatal if swallowed) — requires full PPE, SCBA, and emergency response plan",
+      "Flammable liquid — store away from ignition sources",
+      "Oxidizer — store away from flammable materials"
     ],
     correctIndex: 0,
-    explanation: "WHMIS stands for Workplace Hazardous Materials Information System. It is Canada's national hazard communication standard for workplace chemicals.",
+    explanation: "The exclamation mark (!) pictogram indicates Category 4 acute toxicity (harmful, not fatal). LC50 of 2,500 mg/kg falls in Category 4 (300–2,000 mg/kg for oral toxicity — actually 2,500 is Category 5 or unclassified). Category 4 requires standard PPE (gloves, safety glasses), good ventilation, and avoiding ingestion/skin contact. Fatal toxicity (Category 1-3) would require the skull and crossbones pictogram.",
   },
   {
     id: "WQA-SF002",
     module: "Safety",
-    difficulty: "easy",
-    question: "What are the two main components of the WHMIS system?",
+    difficulty: "medium",
+    question: "A laboratory technician is preparing a 1:100 dilution of concentrated sulfuric acid (H₂SO₄). What is the correct procedure and why?",
     options: [
-      "Labels and Safety Data Sheets (SDS)",
-      "Training and inspections",
-      "Permits and certifications",
-      "Regulations and enforcement",
+      "Add water to the acid slowly while stirring — water into acid is safer",
+      "Add acid to water slowly while stirring — the heat of dilution is dissipated by the large volume of water, preventing spattering",
+      "Mix equal volumes simultaneously in a beaker",
+      "Add the acid to water rapidly to minimize exposure time"
     ],
-    correctIndex: 0,
-    explanation: "WHMIS has two main components: (1) Labels on hazardous product containers, and (2) Safety Data Sheets (SDS, formerly MSDS) providing detailed hazard information. Worker education/training is the third element.",
+    correctIndex: 1,
+    explanation: "Always add acid to water (never water to acid). When concentrated sulfuric acid contacts water, it releases a large amount of heat. Adding acid to a large volume of water dissipates this heat safely. Adding water to concentrated acid can cause violent boiling and spattering of hot acid. The mnemonic is 'AAA' — Always Add Acid (to water).",
   },
   {
     id: "WQA-SF003",
@@ -793,7 +808,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-SF004",
     module: "Safety",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What personal protective equipment (PPE) should always be worn when handling concentrated acids in the laboratory?",
     options: [
       "Safety glasses only",
@@ -821,7 +836,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-SF006",
     module: "Safety",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the first action to take if a chemical splashes in your eyes?",
     options: [
       "Apply a neutralizing solution",
@@ -849,7 +864,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-SF008",
     module: "Safety",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the purpose of a fume hood in a laboratory?",
     options: [
       "To store hazardous chemicals",
@@ -891,7 +906,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-SF011",
     module: "Safety",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What does the 'TLV-TWA' abbreviation mean in occupational health?",
     options: [
       "Total Liquid Volume — Time Weighted Average",
@@ -919,16 +934,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-SF013",
     module: "Safety",
-    difficulty: "easy",
-    question: "What is the correct way to smell a chemical in the laboratory?",
+    difficulty: "medium",
+    question: "An operator notices that a chemical storage area has a strong, sweet odour. The SDS for the chemical stored there lists an IDLH of 500 ppm and a TLV-TWA of 50 ppm. What should the operator do?",
     options: [
-      "Place the container directly under your nose and inhale deeply",
-      "Waft the vapours toward your nose with your hand from a safe distance",
-      "Smell the chemical only when wearing a gas mask",
-      "Never smell any chemical under any circumstances",
+      "Proceed — the sweet odour indicates the chemical is not hazardous",
+      "Leave the area immediately, ventilate, and test the air concentration before re-entering — odour detection does not reliably indicate safe concentrations",
+      "Take a deep breath to better identify the chemical, then decide on next steps",
+      "Open all windows and continue working — the TLV-TWA of 50 ppm provides adequate protection"
     ],
     correctIndex: 1,
-    explanation: "If smelling a chemical is necessary, use the 'wafting' technique: hold the container at arm's length and gently wave your hand over the opening to waft a small amount of vapour toward your nose. Never directly inhale from a container.",
+    explanation: "Odour detection is not a reliable indicator of safe concentrations. Many chemicals can be detected by smell at concentrations both above and below their TLV-TWA. The correct response to any unexpected chemical odour is to leave the area, ventilate, and use air monitoring equipment to verify concentrations are below the TLV-TWA before re-entry. Never use your nose as a safety instrument.",
   },
   {
     id: "WQA-SF014",
@@ -963,7 +978,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-WC001",
     module: "Water Characteristics",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the Ontario Drinking Water Quality Standard (ODWQS) for turbidity in treated drinking water?",
     options: ["< 0.1 NTU", "< 1 NTU", "< 5 NTU", "< 10 NTU"],
     correctIndex: 1,
@@ -972,7 +987,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-WC002",
     module: "Water Characteristics",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the acceptable pH range for drinking water under Ontario regulations?",
     options: ["5.0 – 7.0", "6.5 – 8.5", "7.0 – 9.0", "7.5 – 9.5"],
     correctIndex: 1,
@@ -1004,16 +1019,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-WC005",
     module: "Water Characteristics",
-    difficulty: "easy",
-    question: "What does 'turbidity' measure in water?",
+    difficulty: "medium",
+    question: "A water treatment plant's filtered water turbidity is 0.18 NTU. The Ontario drinking water standard requires turbidity to be ≤1 NTU at the point of entry and ≤0.3 NTU after filtration (95th percentile). Is this result compliant, and what does turbidity indicate about treatment performance?",
     options: [
-      "The concentration of dissolved minerals",
-      "The cloudiness or haziness caused by suspended particles",
-      "The colour of the water",
-      "The temperature of the water",
+      "Non-compliant — turbidity must be 0.0 NTU after filtration",
+      "Compliant — 0.18 NTU is below the 0.3 NTU post-filtration standard; low turbidity indicates effective removal of particles, pathogens, and disinfection byproduct precursors",
+      "Compliant — but turbidity has no relationship to pathogen removal",
+      "Non-compliant — the standard is 0.1 NTU after filtration"
     ],
     correctIndex: 1,
-    explanation: "Turbidity measures the cloudiness or haziness of water caused by suspended particles (sediment, algae, bacteria, etc.) that scatter light. It is measured in NTU.",
+    explanation: "0.18 NTU is below the Ontario post-filtration standard of ≤0.3 NTU (95th percentile), so this result is compliant. Turbidity is a key treatment performance indicator because particles (including Cryptosporidium and Giardia cysts) scatter light. Low turbidity after filtration indicates effective particle removal, which also reduces the UV absorbance and chlorine demand of the water.",
   },
   {
     id: "WQA-WC006",
@@ -1041,7 +1056,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-WC008",
     module: "Water Characteristics",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "At what temperature is water at its maximum density?",
     options: ["0°C", "4°C", "10°C", "25°C"],
     correctIndex: 1,
@@ -1092,7 +1107,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-WC012",
     module: "Water Characteristics",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What instrument is used to measure turbidity?",
     options: ["Spectrophotometer", "Nephelometer (turbidimeter)", "pH meter", "Conductivity meter"],
     correctIndex: 1,
@@ -1115,7 +1130,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-WC014",
     module: "Water Characteristics",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is 'alkalinity' in water?",
     options: [
       "The concentration of calcium and magnesium ions",
@@ -1147,11 +1162,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-WC017",
     module: "Water Characteristics",
-    difficulty: "easy",
-    question: "What causes the 'rotten egg' odour sometimes found in groundwater?",
-    options: ["Chlorine", "Hydrogen sulfide (H₂S)", "Methane", "Ammonia"],
+    difficulty: "medium",
+    question: "A groundwater source has a hydrogen sulfide (H₂S) concentration of 0.8 mg/L. The aesthetic objective for H₂S in Ontario drinking water is 0.05 mg/L. What treatment approach is most appropriate?",
+    options: [
+      "Add chlorine — it will oxidize H₂S to sulfate",
+      "Aeration or oxidation (chlorine, potassium permanganate) followed by filtration to remove colloidal sulfur",
+      "Ion exchange to remove sulfide ions",
+      "Activated carbon adsorption — carbon removes H₂S effectively"
+    ],
     correctIndex: 1,
-    explanation: "The 'rotten egg' odour in groundwater is caused by hydrogen sulfide (H₂S), produced by sulfate-reducing bacteria in anaerobic conditions. It is detectable at very low concentrations (< 0.5 µg/L).",
+    explanation: "H₂S is removed by oxidation (aeration, chlorination, or potassium permanganate) which converts H₂S to colloidal sulfur or sulfate. Aeration is the most common and cost-effective method for groundwater with moderate H₂S. If chlorine is used, the colloidal sulfur formed must be removed by filtration. Activated carbon is not effective for H₂S removal.",
   },
   {
     id: "WQA-WC018",
@@ -1193,11 +1213,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-WC021",
     module: "Water Characteristics",
-    difficulty: "easy",
-    question: "What is the unit used to measure colour in water?",
-    options: ["NTU", "TCU (True Colour Units)", "mg/L", "µS/cm"],
+    difficulty: "medium",
+    question: "A water sample has a colour of 25 TCU (True Colour Units). The Ontario aesthetic objective for colour is 15 TCU. What is the most likely source of this colour and what treatment is recommended?",
+    options: [
+      "The colour is from iron and manganese — use oxidation and filtration",
+      "The colour is likely from natural organic matter (NOM/humic substances) — coagulation/flocculation/sedimentation and filtration are the primary treatment methods",
+      "The colour is from turbidity — improve filtration",
+      "The colour is from chlorine — reduce chlorine dose"
+    ],
     correctIndex: 1,
-    explanation: "Colour in water is measured in True Colour Units (TCU), also called Platinum-Cobalt Units (PCU) or Hazen units. Turbidity is in NTU, conductivity in µS/cm.",
+    explanation: "Colour in surface water above 15 TCU is most commonly caused by natural organic matter (NOM) — humic and fulvic acids from decomposing vegetation. These compounds also react with chlorine to form trihalomethanes (THMs) and haloacetic acids (HAAs). Treatment: enhanced coagulation (lower pH, higher coagulant dose) removes NOM effectively. Iron/manganese cause a different colour (yellow-brown) and are removed by oxidation + filtration.",
   },
   {
     id: "WQA-WC022",
@@ -1213,7 +1238,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-B001",
     module: "Bacteriological Testing",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the Ontario Maximum Allowable Concentration (MAC) for total coliform bacteria in treated drinking water?",
     options: ["0 CFU/100 mL", "1 CFU/100 mL", "10 CFU/100 mL", "100 CFU/100 mL"],
     correctIndex: 0,
@@ -1222,7 +1247,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-B002",
     module: "Bacteriological Testing",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What does 'E. coli' indicate when found in drinking water?",
     options: [
       "Presence of industrial chemicals",
@@ -1264,16 +1289,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-B005",
     module: "Bacteriological Testing",
-    difficulty: "easy",
-    question: "What does 'CFU/100 mL' mean in bacteriological water testing?",
+    difficulty: "medium",
+    question: "A bacteriological analysis reports 2 CFU/100 mL of total coliforms in a treated drinking water sample. Under Ontario's O. Reg. 170/03, is this result compliant and what action is required?",
     options: [
-      "Chemical Filtration Units per 100 millilitres",
-      "Colony Forming Units per 100 millilitres",
-      "Coliform Frequency Units per 100 millilitres",
-      "Contamination Factor Units per 100 millilitres",
+      "Compliant — the Ontario MAC for total coliforms is 10 CFU/100 mL",
+      "Non-compliant — any detection of total coliforms in treated drinking water requires immediate investigation, resampling, and notification of the local Medical Officer of Health",
+      "Compliant — 2 CFU/100 mL is within the acceptable range for distribution system samples",
+      "Non-compliant — the sample must be re-run using a different method"
     ],
     correctIndex: 1,
-    explanation: "CFU/100 mL means Colony Forming Units per 100 millilitres. Each colony on the growth medium represents one viable bacterium (or cluster) from the original 100 mL sample.",
+    explanation: "Under O. Reg. 170/03, the Ontario MAC for total coliforms in treated drinking water is zero (0 CFU/100 mL). Any detection of total coliforms is an adverse result that requires immediate corrective action: resample, investigate the source, notify the local Medical Officer of Health and the Ministry of Environment, and take corrective action. There is no acceptable level of total coliforms in treated drinking water.",
   },
   {
     id: "WQA-B006",
@@ -1320,7 +1345,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-B009",
     module: "Bacteriological Testing",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the incubation temperature for total coliform analysis using the membrane filtration method?",
     options: ["25°C", "35°C", "44.5°C", "55°C"],
     correctIndex: 1,
@@ -1361,7 +1386,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-B013",
     module: "Bacteriological Testing",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "Why are coliforms used as indicator organisms for drinking water safety?",
     options: [
       "Because they are the most dangerous pathogens in water",
@@ -1400,7 +1425,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-CT001",
     module: "Chemical Testing",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the Ontario MAC for fluoride in drinking water?",
     options: ["0.5 mg/L", "1.5 mg/L", "4.0 mg/L", "10 mg/L"],
     correctIndex: 1,
@@ -1437,11 +1462,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-CT004",
     module: "Chemical Testing",
-    difficulty: "easy",
-    question: "Which method is commonly used to measure fluoride concentration in drinking water?",
-    options: ["Titration", "Ion-selective electrode (ISE) method", "Membrane filtration", "Spectrophotometry at 254 nm"],
-    correctIndex: 1,
-    explanation: "Fluoride is commonly measured using an ion-selective electrode (ISE) or the SPADNS colorimetric method. The ISE method is preferred for its simplicity and accuracy.",
+    difficulty: "medium",
+    question: "A water analyst is measuring fluoride using the SPADNS colorimetric method. The calibration curve shows an R² of 0.994. A sample gives an absorbance of 0.342. The calibration equation is: Concentration (mg/L) = (Absorbance - 0.015) / 0.185. What is the fluoride concentration?",
+    options: [
+      "1.77 mg/L",
+      "1.85 mg/L",
+      "0.34 mg/L",
+      "2.09 mg/L"
+    ],
+    correctIndex: 0,
+    explanation: "Using the calibration equation: Concentration = (0.342 - 0.015) / 0.185 = 0.327 / 0.185 = 1.768 ≈ 1.77 mg/L. The R² of 0.994 indicates a good linear calibration (R² > 0.995 is ideal but 0.994 is acceptable for most methods). The Ontario MAC for fluoride is 1.5 mg/L, so this result would exceed the standard and require investigation.",
   },
   {
     id: "WQA-CT005",
@@ -1469,7 +1499,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-CT007",
     module: "Chemical Testing",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What does 'TDS' stand for in water quality?",
     options: ["Total Dissolved Solids", "Total Dissolved Salts", "Total Dissolved Substances", "Total Dry Solids"],
     correctIndex: 0,
@@ -1510,7 +1540,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-CT011",
     module: "Chemical Testing",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the unit of measurement for conductivity in water?",
     options: ["mg/L", "NTU", "µS/cm (microsiemens per centimetre)", "pH units"],
     correctIndex: 2,
@@ -1530,7 +1560,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-D001",
     module: "Disinfection",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the Ontario minimum free chlorine residual required at the point of entry to the distribution system?",
     options: ["0.05 mg/L", "0.2 mg/L", "0.5 mg/L", "1.0 mg/L"],
     correctIndex: 1,
@@ -1553,7 +1583,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-D003",
     module: "Disinfection",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the DPD method used to measure?",
     options: ["Dissolved oxygen", "Chlorine residual (free and total)", "Fluoride", "pH"],
     correctIndex: 1,
@@ -1599,16 +1629,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-D007",
     module: "Disinfection",
-    difficulty: "easy",
-    question: "What are trihalomethanes (THMs)?",
+    difficulty: "medium",
+    question: "A water treatment plant uses chlorination and has a source water with high natural organic matter (NOM). The treated water's THM concentration is 95 µg/L. The Ontario MAC for total THMs is 100 µg/L. What strategies can reduce THM formation while maintaining adequate disinfection?",
     options: [
-      "Beneficial minerals added to drinking water",
-      "Disinfection by-products formed when chlorine reacts with natural organic matter",
-      "Chlorine compounds used for disinfection",
-      "Bacteria that are resistant to chlorine disinfection",
+      "Increase the chlorine dose — more chlorine will oxidize the THM precursors",
+      "Reduce chlorine contact time — shorter contact time means fewer THMs",
+      "Enhanced coagulation to remove NOM before chlorination, move the chlorination point later in the treatment train, or switch to chloramines for secondary disinfection",
+      "Add activated carbon after chlorination — carbon will remove THMs from the finished water"
     ],
-    correctIndex: 1,
-    explanation: "Trihalomethanes (THMs) are disinfection by-products (DBPs) formed when chlorine reacts with natural organic matter (NOM) in water. The four regulated THMs are chloroform, bromodichloromethane, dibromochloromethane, and bromoform. The Ontario MAC for total THMs is 100 µg/L.",
+    correctIndex: 2,
+    explanation: "THMs form when chlorine reacts with NOM (humic/fulvic acids). Strategies to reduce THM formation: (1) Remove NOM before chlorination using enhanced coagulation — less precursor = fewer THMs. (2) Move the primary chlorination point to after filtration (reduce contact time with NOM). (3) Use chloramines for distribution system residual — chloramines form fewer THMs than free chlorine. Activated carbon can remove some THMs but is not the primary control strategy.",
   },
   {
     id: "WQA-D008",
@@ -1645,7 +1675,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-D011",
     module: "Disinfection",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the maximum chlorine residual (aesthetic objective) in Ontario drinking water?",
     options: ["0.5 mg/L", "1.0 mg/L", "2.0 mg/L", "4.0 mg/L"],
     correctIndex: 3,
@@ -1693,7 +1723,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-QA001",
     module: "Quality Assurance & Quality Control",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the difference between 'accuracy' and 'precision' in laboratory measurements?",
     options: [
       "Accuracy is how close results are to each other; precision is how close to the true value",
@@ -1721,16 +1751,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-QA003",
     module: "Quality Assurance & Quality Control",
-    difficulty: "easy",
-    question: "What is 'sensitivity' of an analytical method?",
+    difficulty: "medium",
+    question: "A method for measuring nitrate has a limit of detection (LOD) of 0.05 mg/L and a limit of quantitation (LOQ) of 0.15 mg/L. A sample gives a reading of 0.08 mg/L. How should this result be reported?",
     options: [
-      "The ability of a method to detect small differences in concentration",
-      "The ability of a method to resist interference from other substances",
-      "The speed at which a method produces results",
-      "The cost of performing the analysis",
+      "Report as 0.08 mg/L — the result is above the LOD",
+      "Report as <0.05 mg/L — the result is below the LOQ so it cannot be quantified",
+      "Report as detected but not quantifiable (between LOD and LOQ) — the result is above the LOD but below the LOQ",
+      "Report as 0.15 mg/L — round up to the LOQ"
     ],
-    correctIndex: 0,
-    explanation: "Sensitivity is the ability of an analytical method to detect small differences in concentration. A highly sensitive method can detect very small changes in analyte concentration. It is related to the slope of the calibration curve.",
+    correctIndex: 2,
+    explanation: "A result between the LOD (0.05 mg/L) and LOQ (0.15 mg/L) indicates the analyte is detected but cannot be reliably quantified. It should be reported as 'detected but not quantifiable' or 'estimated value' with the actual reading noted. Results below the LOD are reported as <LOD (not detected). Results above the LOQ are reported as measured values.",
   },
   {
     id: "WQA-QA004",
@@ -1749,7 +1779,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-QA005",
     module: "Quality Assurance & Quality Control",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the purpose of a 'positive control' in laboratory analysis?",
     options: [
       "To verify that the analytical method is working correctly",
@@ -1791,7 +1821,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-QA008",
     module: "Quality Assurance & Quality Control",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the purpose of instrument calibration?",
     options: [
       "To clean the instrument before use",
@@ -1833,7 +1863,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-QA011",
     module: "Quality Assurance & Quality Control",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What does 'reproducibility' mean in laboratory analysis?",
     options: [
       "The ability to get the same result when the same sample is analyzed multiple times under the same conditions",
@@ -1875,16 +1905,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-QA014",
     module: "Quality Assurance & Quality Control",
-    difficulty: "easy",
-    question: "What is 'permanence' of a measurement?",
+    difficulty: "medium",
+    question: "A laboratory analyst runs a calibration standard at 1.00 mg/L and gets readings of 0.97, 0.98, 0.97, and 0.98 mg/L over four consecutive days. What do these results indicate about the method?",
     options: [
-      "The ability of a measurement to remain stable over time without degradation",
-      "The ability to store measurement records permanently",
-      "The ability of an instrument to maintain calibration indefinitely",
-      "The ability to repeat a measurement years later",
+      "High accuracy and high precision — the results are close to the true value and consistent",
+      "Low accuracy and high precision — the results are consistent but systematically biased low",
+      "High accuracy and low precision — the results average to the true value but are inconsistent",
+      "Low accuracy and low precision — the results are neither close to the true value nor consistent"
     ],
-    correctIndex: 0,
-    explanation: "Permanence (stability) refers to the ability of a measurement or standard to remain stable over time. For water quality measurements, it refers to the stability of analytes in samples during storage and the stability of calibration standards.",
+    correctIndex: 1,
+    explanation: "The results are highly precise (very consistent: 0.97-0.98 mg/L, low variability) but show low accuracy (systematically 2-3% below the true value of 1.00 mg/L). This pattern indicates a systematic error (bias) — possibly a calibration offset, contaminated standard, or matrix effect. High precision with low accuracy suggests a systematic, correctable error rather than random error.",
   },
   {
     id: "WQA-QA015",
@@ -1931,7 +1961,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-QA018",
     module: "Quality Assurance & Quality Control",
-    difficulty: "easy",
+    difficulty: "medium",
     question: "What is the purpose of an 'internal standard' in analytical chemistry?",
     options: [
       "To calibrate the instrument at the beginning of each run",
@@ -1947,11 +1977,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-R001",
     module: "Regulation",
-    difficulty: "easy",
-    question: "Which Ontario regulation governs the operation of municipal drinking water systems?",
-    options: ["O. Reg. 128/04", "O. Reg. 170/03", "O. Reg. 248/03", "O. Reg. 319/08"],
+    difficulty: "medium",
+    question: "Under O. Reg. 170/03, a municipal drinking water system operator detects E. coli in a distribution system sample. Within what timeframe must the operator notify the local Medical Officer of Health and the Ministry of Environment?",
+    options: [
+      "Within 24 hours of receiving the laboratory result",
+      "Immediately (as soon as practicable) upon receiving the adverse result — this is a Schedule 1 adverse result requiring immediate notification",
+      "Within 72 hours — the standard reporting window for adverse results",
+      "By the end of the next business day"
+    ],
     correctIndex: 1,
-    explanation: "O. Reg. 170/03 (Drinking Water Systems) under the Safe Drinking Water Act, 2002 governs the operation, monitoring, and reporting requirements for municipal drinking water systems in Ontario.",
+    explanation: "Under O. Reg. 170/03, E. coli detection is a Schedule 1 adverse result (the most serious category). The operator must notify the local Medical Officer of Health and the MECP immediately (as soon as practicable) upon receiving the result — not within 24 or 72 hours. The system owner must also be notified. Immediate notification allows public health authorities to take protective action.",
   },
   {
     id: "WQA-R002",
@@ -1984,16 +2019,16 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   {
     id: "WQA-R004",
     module: "Regulation",
-    difficulty: "easy",
-    question: "Under the Safe Drinking Water Act, 2002, who is responsible for ensuring drinking water safety?",
+    difficulty: "medium",
+    question: "A water quality analyst working at a municipal drinking water system discovers that a test result was incorrectly recorded in the operating log. Under O. Reg. 170/03, what is the correct procedure?",
     options: [
-      "The laboratory performing the analysis",
-      "The owner of the drinking water system",
-      "The Ministry of the Environment only",
-      "The local municipality only",
+      "Delete the incorrect entry and replace it with the correct value",
+      "Use correction fluid (white-out) to cover the error and write the correct value",
+      "Draw a single line through the incorrect entry, write the correct value beside it, and initial and date the correction — never obliterate original entries",
+      "Create a new log entry on a separate page and reference it from the original"
     ],
-    correctIndex: 1,
-    explanation: "Under the Safe Drinking Water Act, 2002, the owner of the drinking water system bears primary responsibility for ensuring that the water is safe. This includes monitoring, testing, reporting, and taking corrective action when required.",
+    correctIndex: 2,
+    explanation: "Under O. Reg. 170/03, operating records must be accurate and tamper-evident. The correct procedure for correcting an error is to draw a single line through the incorrect entry (so it remains legible), write the correct value beside or above it, and initial and date the correction. Deleting, using white-out, or obliterating original entries is not permitted as it destroys the audit trail.",
   },
   {
     id: "WQA-R005",

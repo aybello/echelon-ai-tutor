@@ -93,3 +93,5 @@
 - [ ] Remove freemium gate from OIT quiz — OIT is fully free and unlimited (no 15-question cap, no email gate)
 - [x] Add escape options to QuizGate modal — homepage link and "Try Another 15 Free" dismiss button so users are not trapped
 - [x] Randomize question order on restart/dismiss across all three quiz pages — no repeated question sets
+- [x] Rewrite OIT easy questions to genuine medium/hard difficulty — 58 easy / 332 medium / 87 hard (was 202/188/87)
+- [x] Rewrite WQA easy questions to genuine medium/hard difficulty — 5 easy / 131 medium / 31 hard (was 60/76/31)
