@@ -12,6 +12,7 @@ import { Link } from "wouter";
 export const NAV_LINKS = [
   { label: "🏠 Home",          href: "/" },
   { label: "📝 OIT Practice",  href: "/quiz" },
+  { label: "🎓 Class 1 Exam",  href: "/class1" },
   { label: "📐 Formulas",      href: "/formulas" },
   { label: "🏭 Process Guide", href: "/process" },
   { label: "♻️ Wastewater",    href: "/wastewater" },
@@ -35,7 +36,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
   const [open, setOpen] = useState(false);
 
   // Primary nav links shown in desktop bar (subset to avoid overflow)
-  const PRIMARY = ["/quiz", "/formulas", "/career", "/about"];
+  const PRIMARY = ["/quiz", "/class1", "/formulas", "/career", "/about"];
 
   return (
     <>
@@ -210,7 +211,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
                 fontFamily: "inherit",
               }}
             >
-              Start Free OIT Practice →
+              Start Practising →
             </button>
           </Link>
         </div>

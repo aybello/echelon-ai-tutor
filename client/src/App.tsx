@@ -15,6 +15,7 @@ import ChemCalc from "./pages/ChemCalc";
 import Lab from "./pages/Lab";
 import Formulas from "./pages/Formulas";
 import About from "./pages/About";
+import Class1Quiz from "./pages/Class1Quiz";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -30,6 +31,7 @@ function Router() {
       <Route path={"/lab"} component={Lab} />
       <Route path={"/formulas"} component={Formulas} />
       <Route path={"/about"} component={About} />
+      <Route path={"/class1"} component={Class1Quiz} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

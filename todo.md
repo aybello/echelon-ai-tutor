@@ -51,3 +51,9 @@
 - [x] Add trial_emails DB table for quiz gate email capture
 - [x] Build QuizGate component (email capture screen shown after question 15)
 - [x] Wire gate logic into Home.tsx with localStorage unlock persistence
+- [ ] Extract key topics from 4 reference books for Class 1 question writing
+- [ ] Write 150+ Class 1 Water Treatment questions
+- [ ] Write 150+ Class 1 Water Distribution questions
+- [ ] Write 150+ Class 1 Wastewater Treatment questions
+- [ ] Write 150+ Class 1 Wastewater Collection questions
+- [ ] Add Class 1 certification tier to site (routing, nav, question bank integration)
