@@ -69,3 +69,4 @@
 - [x] Wire /class1-mock route in App.tsx
 - [x] Add Class 1 Mock Exam link to SiteNav and Landing page
 - [x] Apply freemium gate to Class 1 Mock Exam intro screen
+- [x] Fix Class 1 Mock Exam stream selector bug — selecting Wastewater loads Water questions instead

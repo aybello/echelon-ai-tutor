@@ -94,8 +94,10 @@ export default function Class1MockExam() {
 
   const unlocked = isTrialUnlocked();
 
-  const startExam = useCallback(() => {
-    const qs = selectExamQuestions(stream);
+  const startExam = useCallback((examStream?: Stream) => {
+    const activeStream = examStream ?? stream;
+    const qs = selectExamQuestions(activeStream);
+    setStream(activeStream);
     setQuestions(qs);
     setCurrentIdx(0);
     setAnswers(qs.map((_, i) => ({ questionIndex: i, selected: null })));
@@ -163,7 +165,7 @@ export default function Class1MockExam() {
               return (
                 <button
                   key={s}
-                  onClick={() => { setStream(s); setExamState("intro"); }}
+                  onClick={() => { setStream(s); setExamState("intro"); /* stream stored for intro screen */ }}
                   style={{
                     padding: "32px 24px",
                     borderRadius: 20,
@@ -278,7 +280,7 @@ export default function Class1MockExam() {
               ← Change Stream
             </button>
             <button
-              onClick={startExam}
+              onClick={() => startExam(stream)}
               disabled={!unlocked}
               style={{
                 padding: "14px 48px",
@@ -338,7 +340,7 @@ export default function Class1MockExam() {
         <div className="c1mock-results" style={{ maxWidth: 760, margin: "0 auto", padding: "32px 20px 80px" }}>
           {/* Action bar */}
           <div style={{ display: "flex", gap: 10, marginBottom: 24, flexWrap: "wrap" }}>
-            <button onClick={() => { setExamState("intro"); }} style={{ padding: "8px 16px", borderRadius: 20, border: "none", background: cfg.color, color: "#fff", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>🔄 Retake Exam</button>
+            <button onClick={() => startExam(stream)} style={{ padding: "8px 16px", borderRadius: 20, border: "none", background: cfg.color, color: "#fff", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>🔄 Retake Exam</button>
             <button onClick={() => setExamState("stream-select")} style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>🔀 Change Stream</button>
             <Link href="/class1"><button style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>🎯 Practice Mode</button></Link>
           </div>
