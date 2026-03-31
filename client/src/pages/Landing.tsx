@@ -450,7 +450,7 @@ export default function Landing() {
         {/* Brand */}
         <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-only_f30f4bb1.png"
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png"
             alt="Echelon Institute"
             style={{ height: 44, width: "auto" }}
           />
@@ -628,7 +628,7 @@ export default function Landing() {
           {/* Hero logo mark */}
           <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-only_f30f4bb1.png"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png"
               alt="Echelon Institute"
               style={{ height: 120, width: "auto", filter: "brightness(0) invert(1) drop-shadow(0 4px 24px rgba(56,189,248,0.6))" }}
             />
@@ -1067,7 +1067,7 @@ export default function Landing() {
       }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 12 }}>
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-only_f30f4bb1.png"
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png"
             alt="Echelon Institute"
             style={{ height: 36, width: "auto", filter: "brightness(0) invert(1)" }}
           />
