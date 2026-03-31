@@ -17,7 +17,9 @@ import Formulas from "./pages/Formulas";
 import About from "./pages/About";
 import Class1Quiz from "./pages/Class1Quiz";
 import Class1MockExam from "./pages/Class1MockExam";
-import Admin from "./pages/Admin";
+import Admin from "@/pages/Admin";
+import WQAQuiz from "@/pages/WQAQuiz";
+import WQAMockExam from "@/pages/WQAMockExam";
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -35,6 +37,8 @@ function Router() {
       <Route path={"/about"} component={About} />
       <Route path={"/class1"} component={Class1Quiz} />
       <Route path={"/class1-mock"} component={Class1MockExam} />
+      <Route path={"/wqa"} component={WQAQuiz} />
+      <Route path={"/wqa-mock"} component={WQAMockExam} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />

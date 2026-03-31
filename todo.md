@@ -77,3 +77,11 @@
 - [x] Build /admin dashboard page: trial emails, waitlist signups, error reports panels
 - [x] Wire /admin route in App.tsx (admin-only)
 - [x] Write vitest for admin procedures
+- [x] Extract WQA exam topics from 4 reference documents
+- [x] Write 166-question WQA question bank (wqaQuestions.ts) covering all 10 modules
+- [x] Build WQA Quiz page (/wqa) with adaptive practice and AI Tutor
+- [x] Build WQA Mock Exam page (/wqa-mock) with timed exam and results breakdown
+- [x] Update landing page — remove Coming Soon from WQA card, add live links
+- [x] Wire /wqa and /wqa-mock routes in App.tsx
+- [x] Add WQA links to SiteNav
+- [x] Run tests (43 passing) and verify TypeScript clean
