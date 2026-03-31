@@ -33,6 +33,7 @@ export const appRouter = router({
           email: z.string().email("Please enter a valid email address"),
           courseCode: z.string().min(1),
           courseTitle: z.string().min(1),
+          province: z.string().optional(),
         })
       )
       .mutation(async ({ input }) => {
@@ -54,12 +55,13 @@ export const appRouter = router({
           email: input.email,
           courseCode: input.courseCode,
           courseTitle: input.courseTitle,
+          province: input.province ?? null,
         });
 
         // Notify the owner
         await notifyOwner({
           title: `New waitlist signup: ${input.courseCode}`,
-          content: `${input.email} joined the waitlist for "${input.courseTitle}".`,
+          content: `${input.email} joined the waitlist for "${input.courseTitle}"${input.province ? ` (Province: ${input.province})` : ""}.`,
         });
 
         return { success: true, alreadyRegistered: false };

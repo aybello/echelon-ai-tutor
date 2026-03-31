@@ -5,6 +5,7 @@
 import { Link } from "wouter";
 import { useState } from "react";
 import NotifyModal from "@/components/NotifyModal";
+import NationalWaitlistModal from "@/components/NationalWaitlistModal";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 const WATER_COURSES = [
@@ -398,6 +399,8 @@ export default function Landing() {
   });
   const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa">("water");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [nationalWaitlistOpen, setNationalWaitlistOpen] = useState(false);
+  const [nationalWaitlistProvince, setNationalWaitlistProvince] = useState("");
 
   const NAV_LINKS = [
     { label: "Courses", href: "#courses" },
@@ -409,6 +412,12 @@ export default function Landing() {
 
   return (
     <div style={{ fontFamily: "Sora, Nunito, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+      {nationalWaitlistOpen && (
+        <NationalWaitlistModal
+          defaultProvince={nationalWaitlistProvince}
+          onClose={() => { setNationalWaitlistOpen(false); setNationalWaitlistProvince(""); }}
+        />
+      )}
       <style>{`
         @media (max-width: 640px) {
           .landing-nav-links { display: none !important; }
@@ -987,7 +996,19 @@ export default function Landing() {
                 <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: 14 }}>
                   <span style={{ fontWeight: 600, color: "rgba(255,255,255,0.7)" }}>Exam Streams: </span>{p.exams}
                 </div>
-                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>{p.operators}</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 18 }}>{p.operators}</div>
+                <button
+                  onClick={() => { setNationalWaitlistProvince(p.province); setNationalWaitlistOpen(true); }}
+                  style={{
+                    padding: "9px 20px", borderRadius: 8,
+                    background: p.colorBorder,
+                    border: `1px solid ${p.colorBorder}`,
+                    color: p.color, fontSize: 12, fontWeight: 700,
+                    cursor: "pointer", fontFamily: "inherit",
+                  }}
+                >
+                  Get Notified →
+                </button>
               </div>
             ))}
           </div>
@@ -996,26 +1017,18 @@ export default function Landing() {
             <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", marginBottom: 20 }}>
               Want to be notified when your province launches? Join the waitlist.
             </p>
-            <a href="#courses">
-              <button
-                onClick={e => {
-                  e.preventDefault();
-                  // Trigger the notify modal for a generic waitlist entry
-                  const el = document.querySelector('[data-waitlist-trigger]') as HTMLElement | null;
-                  if (el) el.click();
-                  else window.location.hash = "#courses";
-                }}
-                style={{
-                  padding: "12px 32px", borderRadius: 10,
-                  background: "linear-gradient(135deg, #0891B2, #7C3AED)",
-                  color: "#fff", border: "none", fontSize: 14, fontWeight: 700,
-                  cursor: "pointer", fontFamily: "inherit",
-                  boxShadow: "0 4px 20px rgba(8,145,178,0.3)",
-                }}
-              >
-                Join the National Waitlist →
-              </button>
-            </a>
+            <button
+              onClick={() => setNationalWaitlistOpen(true)}
+              style={{
+                padding: "12px 32px", borderRadius: 10,
+                background: "linear-gradient(135deg, #0891B2, #7C3AED)",
+                color: "#fff", border: "none", fontSize: 14, fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit",
+                boxShadow: "0 4px 20px rgba(8,145,178,0.3)",
+              }}
+            >
+              Join the National Waitlist →
+            </button>
           </div>
         </div>
       </section>

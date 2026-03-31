@@ -33,6 +33,7 @@ export const waitlist = mysqlTable("waitlist", {
   email: varchar("email", { length: 320 }).notNull(),
   courseCode: varchar("courseCode", { length: 32 }).notNull(),
   courseTitle: varchar("courseTitle", { length: 128 }).notNull(),
+  province: varchar("province", { length: 64 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 

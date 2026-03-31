@@ -88,10 +88,10 @@ const SESSION_ID = (() => {
 
 export default function OITMockExam() {
   usePageMeta({
-    title: "OIT Timed Mock Exam — Ontario Water & Wastewater",
-    description: "100-question timed mock exam for Ontario Operator-in-Training (OIT) certification. 2-hour timer, 70% pass threshold, and full module breakdown on results.",
+    title: "OIT Timed Mock Exam — Canadian Water & Wastewater",
+    description: "100-question timed mock exam for the Operator-in-Training (OIT) certification. 2-hour timer, 70% pass threshold, and full module breakdown on results. For Ontario, BC, Alberta, and all Canadian provinces.",
     path: "/oit-mock",
-    keywords: "OIT mock exam, Ontario operator in training exam, water operator practice test, OWWCO OIT, timed exam prep",
+    keywords: "OIT mock exam, Canadian operator in training exam, water operator practice test, OWWCO OIT, EOCP OIT, timed exam prep",
   });
 
   const [examState, setExamState] = useState<ExamState>("intro");
@@ -101,6 +101,21 @@ export default function OITMockExam() {
   const [timeLeft, setTimeLeft] = useState(EXAM_DURATION);
   const [flagged, setFlagged] = useState<number[]>([]);
   const [showReview, setShowReview] = useState(false);
+  const [selectedProvince, setSelectedProvince] = useState<string>(() => {
+    return localStorage.getItem("echelon_province") ?? "Ontario";
+  });
+
+  const PROVINCE_OPTIONS = [
+    { value: "Ontario", label: "🍁 Ontario", regulator: "OWWCO / MECP" },
+    { value: "British Columbia", label: "🏔️ British Columbia", regulator: "EOCP" },
+    { value: "Alberta", label: "🛢️ Alberta", regulator: "Alberta EPA" },
+    { value: "Saskatchewan", label: "🌾 Saskatchewan" },
+    { value: "Manitoba", label: "🦬 Manitoba" },
+    { value: "Quebec", label: "⚜️ Quebec" },
+    { value: "New Brunswick", label: "🌲 New Brunswick" },
+    { value: "Nova Scotia", label: "⚓ Nova Scotia" },
+    { value: "Other", label: "🇨🇦 Other Province / Territory" },
+  ];
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resultSavedRef = useRef(false);
 
@@ -108,6 +123,8 @@ export default function OITMockExam() {
   const saveResult = trpc.exam.saveResult.useMutation();
 
   const startExam = useCallback(() => {
+    // Persist province selection for future visits
+    localStorage.setItem("echelon_province", selectedProvince);
     const qs = selectExamQuestions();
     setQuestions(qs);
     setAnswers(qs.map((_, i) => ({ questionIndex: i, selected: null })));
@@ -117,7 +134,7 @@ export default function OITMockExam() {
     setShowReview(false);
     resultSavedRef.current = false;
     setExamState("active");
-  }, []);
+  }, [selectedProvince]);
 
   // Timer
   useEffect(() => {
@@ -197,9 +214,44 @@ export default function OITMockExam() {
           <div style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center" }}>
             <div style={{ width: 72, height: 72, borderRadius: 20, background: "linear-gradient(135deg, #1D4ED8, #0E7490)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32, margin: "0 auto 20px" }}>📝</div>
             <h1 style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>OIT Mock Exam</h1>
-            <p style={{ fontSize: 14, color: "#64748B", marginBottom: 28, lineHeight: 1.6 }}>
-              Simulates the Ontario Operator-in-Training (OIT) certification exam format. Covers all 10 exam modules.
+            <p style={{ fontSize: 14, color: "#64748B", marginBottom: 20, lineHeight: 1.6 }}>
+              Simulates the Operator-in-Training (OIT) certification exam format. Covers all 10 exam modules.
             </p>
+
+            {/* Province selector */}
+            <div style={{ marginBottom: 24, textAlign: "left" }}>
+              <label style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", display: "block", marginBottom: 8 }}>YOUR PROVINCE</label>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                {PROVINCE_OPTIONS.map(p => (
+                  <button
+                    key={p.value}
+                    onClick={() => setSelectedProvince(p.value)}
+                    style={{
+                      padding: "7px 12px",
+                      borderRadius: 20,
+                      border: `2px solid ${selectedProvince === p.value ? "#1D4ED8" : "#E2E8F0"}`,
+                      background: selectedProvince === p.value ? "#EFF6FF" : "#F8FAFC",
+                      color: selectedProvince === p.value ? "#1D4ED8" : "#64748B",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      fontFamily: "inherit",
+                      transition: "all 0.15s",
+                    }}
+                  >
+                    {p.label}
+                    {p.regulator && selectedProvince === p.value && (
+                      <span style={{ marginLeft: 4, opacity: 0.7, fontWeight: 500 }}>· {p.regulator}</span>
+                    )}
+                  </button>
+                ))}
+              </div>
+              {selectedProvince !== "Ontario" && (
+                <div style={{ marginTop: 10, padding: "10px 14px", borderRadius: 10, background: "#FFF7ED", border: "1px solid #FED7AA", fontSize: 12, color: "#92400E" }}>
+                  📌 The question bank is currently optimised for Ontario. Province-specific content for {selectedProvince} is coming soon — the core process knowledge and calculations are the same across Canada.
+                </div>
+              )}
+            </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 28 }}>
               {[
                 { icon: "📝", label: "Questions", value: "100 MCQ" },
