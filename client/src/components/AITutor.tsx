@@ -75,7 +75,7 @@ export default function AITutor({
         initMsg = `Let's work through this together.\n\nYou selected **${question.options[userAnswer]}** — ${question.wrongExp?.[userAnswer] || "that's not quite right."}\n\nThe correct answer is **${question.options[question.correct]}**.\n\nWould you like me to walk through the solution step by step, or would you like me to explain the underlying concept first?`;
       }
     } else {
-      initMsg = `Hi! I'm your Echelon AI Tutor — here to help you master the Ontario water and wastewater operator exam.\n\nI can explain concepts, walk through calculations step by step, and help you understand *why* answers are right or wrong.\n\nWhat would you like to work on?`;
+      initMsg = `Hi! I'm your Echelon AI Tutor — here to help you master your Canadian water and wastewater operator certification exam.\n\nI can explain concepts, walk through calculations step by step, and help you understand *why* answers are right or wrong.\n\nWhat would you like to work on?`;
     }
 
     setMessages([{ role: "assistant", content: initMsg }]);
@@ -104,7 +104,7 @@ export default function AITutor({
             .join("\n")}`
         : "";
 
-    const systemPrompt = `You are an expert AI tutor for Echelon Institute — Ontario water and wastewater operator certification exam preparation.
+    const systemPrompt = `You are an expert AI tutor for Echelon Institute — Canadian water and wastewater operator certification exam preparation. You are knowledgeable about provincial certification programs across Canada including Ontario (OWWCO/MECP), British Columbia (EOCP), Alberta (EPA), and other provincial frameworks.
 
 ${
   patternMode
@@ -127,10 +127,10 @@ Your approach:
 - Be encouraging, warm, and patient — exam anxiety is real
 - Use ** for bold on key numbers, formulas, and terms
 - Show calculations step by step with clear formatting
-- Connect everything to real operator practice and Ontario regulations
+- Connect everything to real operator practice and relevant provincial regulations
 - Keep responses concise (3-5 sentences) unless doing a full worked example
 - If the student seems confused, ask a clarifying question rather than lecturing
-- Reference O. Reg. 170/03, OWWCO, EOCP where relevant
+- Reference applicable regulations (e.g., O. Reg. 170/03 for Ontario, EOCP for BC, Alberta EPA) where relevant
 - If they've made the same mistake before (check the history), mention it gently`;
 
     try {

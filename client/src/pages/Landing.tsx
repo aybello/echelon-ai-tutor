@@ -1,6 +1,6 @@
 // Echelon Institute — Homepage / Landing Page
 // Design: Bold, modern SaaS — feels like the product itself
-// Audience: Ontario water/wastewater operators seeking certification
+// Audience: Canadian water/wastewater operators seeking certification
 
 import { Link } from "wouter";
 import { useState } from "react";
@@ -391,9 +391,9 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
 
 export default function Landing() {
   usePageMeta({
-    title: "Ontario Operator Exam Prep | Echelon",
-    description: "Practice questions, AI Tutor & formula sheet for Ontario water and wastewater operator certification exams.",
-    keywords: "Ontario water operator exam, wastewater operator certification, OIT exam prep, OWWCO, EOCP, Class 1 water, operator practice questions",
+    title: "Canada's Water Operator Exam Prep | Echelon",
+    description: "Practice questions, AI Tutor & formula sheet for Canadian water and wastewater operator certification exams.",
+    keywords: "Canada water operator exam, wastewater operator certification, OIT exam prep, OWWCO, EOCP, Class 1 water, BC water operator, Alberta operator certification, operator practice questions",
     path: "/",
   });
   const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa">("water");
@@ -447,7 +447,7 @@ export default function Landing() {
           />
           <div>
             <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em" }}>Echelon Institute</div>
-            <div style={{ fontSize: 10, color: "#64748B", fontWeight: 500, marginTop: -2 }}>Ontario Operator Certification</div>
+            <div style={{ fontSize: 10, color: "#64748B", fontWeight: 500, marginTop: -2 }}>Canadian Water Operator Certification</div>
           </div>
         </div>
 
@@ -632,7 +632,7 @@ export default function Landing() {
           }}>
             <span style={{ fontSize: 12 }}>🇨🇦</span>
             <span style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>
-              Built for Ontario Water & Wastewater Operators
+              Built for Canadian Water & Wastewater Operators
             </span>
           </div>
 
@@ -657,7 +657,7 @@ export default function Landing() {
             maxWidth: 600,
             margin: "0 auto 36px",
           }}>
-            Ontario's only AI-powered exam prep platform for water and wastewater operators.
+            Canada's AI-powered exam prep platform for water and wastewater operators.
             Adaptive practice questions, interactive process guides, and an AI tutor available 24/7.
           </p>
 
@@ -792,7 +792,7 @@ export default function Landing() {
               Every Tool You Need to Pass
             </h2>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", maxWidth: 500, margin: "0 auto" }}>
-              Built specifically for Ontario operator exams — not generic quiz apps repurposed for water treatment.
+              Built specifically for Canadian operator exams — not generic quiz apps repurposed for water treatment.
             </p>
           </div>
 
@@ -863,7 +863,7 @@ export default function Landing() {
               Built by an Engineer<br />Who Knows What's Missing
             </h2>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", maxWidth: 620, margin: "0 auto", lineHeight: 1.75 }}>
-              Ontario's water and wastewater sector is one of the most regulated and technically demanding in the country.
+              Canada's water and wastewater sector is one of the most regulated and technically demanding in the country.
               The only study resources available were dense government manuals, expensive in-person courses built on decade-old slides,
               and American exam apps that referenced the wrong regulations entirely. Echelon was built to fix that.
             </p>
@@ -876,10 +876,10 @@ export default function Landing() {
             <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: "28px 24px" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#60A5FA", letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: 14 }}>The Curriculum</div>
               <p style={{ fontSize: 14, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, margin: "0 0 16px" }}>
-                Every question is mapped to Ontario's regulatory framework. Every visual module lets you see and interact with real treatment processes — not just read about them.
+                Every question is mapped to each province's regulatory framework. Every visual module lets you see and interact with real treatment processes — not just read about them.
               </p>
               <p style={{ fontSize: 14, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, margin: 0 }}>
-                The AI Tutor is trained on Ontario-specific content and can explain why a CT value matters, how to calculate a chlorine dose for a specific flow rate, or what O. Reg. 170/03 requires for turbidity monitoring.
+                The AI Tutor is trained on Canadian regulatory content and can explain why a CT value matters, how to calculate a chlorine dose for a specific flow rate, or what provincial regulations require for turbidity monitoring.
               </p>
               <div style={{ marginTop: 20, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.08)", fontSize: 12, color: "rgba(255,255,255,0.4)" }}>
                 Curriculum based on O. Reg. 170/03 · 128/04 · 129/04 · OWWCO · EOCP
@@ -891,7 +891,7 @@ export default function Landing() {
               {[
                 { year: "2025", title: "The Gap Identified", body: "Ay Bello, an Environmental Engineer (EIT) and Master's student in Digital Transformation at the University of Ottawa, identified a clear gap — operators were studying for technically demanding exams with resources that hadn't evolved in decades." },
                 { year: "Early 2026", title: "Built from Scratch", body: "Interactive SVG process diagrams, an adaptive practice engine, an AI tutor with confidence scoring and pattern detection, and a career path map based on real 2025 OCWA data." },
-                { year: "2026", title: "Platform Launched", body: "475 OIT practice questions, 10 study modules, process diagrams for drinking water and wastewater, pumping systems, lab and sampling, and a formula reference — all built for Ontario operators." },
+                { year: "2026", title: "Platform Launched", body: "475 OIT practice questions, 10 study modules, process diagrams for drinking water and wastewater, pumping systems, lab and sampling, and a formula reference — launching in Ontario with BC and Alberta coming next." },
               ].map((item, i) => (
                 <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: "18px 20px", display: "flex", gap: 16, alignItems: "flex-start" }}>
                   <div style={{ flexShrink: 0, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", borderRadius: 8, padding: "4px 10px", fontSize: 10, fontWeight: 800, color: "#fff", whiteSpace: "nowrap" as const }}>{item.year}</div>
@@ -907,7 +907,7 @@ export default function Landing() {
           {/* Values row */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
             {[
-              { icon: "🍁", title: "Ontario-First", body: "Every question, regulation, and process description is specific to Ontario's framework. No American content repurposed for Canadian exams." },
+              { icon: "🍁", title: "Canada-First", body: "Every question, regulation, and process description is specific to each province's framework. No American content repurposed for Canadian exams." },
               { icon: "🧠", title: "Understand, Don't Memorize", body: "The AI Tutor explains the why behind every answer — CT values, dosing calculations, turbidity monitoring requirements." },
               { icon: "📈", title: "Career-Long Learning", body: "From OIT through Class 4. Content that grows with your career and supports every certification level." },
             ].map(v => (
@@ -917,6 +917,105 @@ export default function Landing() {
                 <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, margin: 0 }}>{v.body}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Coming Soon: BC & Alberta ── */}
+      <section style={{
+        background: "#0F172A",
+        borderTop: "1px solid rgba(255,255,255,0.06)",
+        padding: "72px 24px",
+      }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              background: "rgba(56,189,248,0.1)",
+              border: "1px solid rgba(56,189,248,0.25)",
+              borderRadius: 20, padding: "5px 16px", marginBottom: 18,
+            }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: "#38BDF8", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>Expanding Nationally</span>
+            </div>
+            <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em", margin: "0 0 14px 0" }}>
+              Coming Soon to BC & Alberta
+            </h2>
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.55)", maxWidth: 560, margin: "0 auto" }}>
+              Echelon is expanding beyond Ontario. Province-specific question banks, regulatory content, and AI tutoring tailored to EOCP and Alberta EPA certification exams are in development.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, marginBottom: 48 }}>
+            {[
+              {
+                flag: "🏔️",
+                province: "British Columbia",
+                regulator: "EOCP — Environmental Operators Certification Program",
+                exams: "Water Treatment · Water Distribution · Wastewater Treatment · Wastewater Collection",
+                operators: "~4,200 certified operators",
+                color: "#0891B2",
+                colorBg: "rgba(8,145,178,0.1)",
+                colorBorder: "rgba(8,145,178,0.25)",
+              },
+              {
+                flag: "🛢️",
+                province: "Alberta",
+                regulator: "Alberta Environment and Protected Areas (EPA)",
+                exams: "Water Treatment · Water Distribution · Wastewater Treatment · Wastewater Collection",
+                operators: "~2,071 certified operators",
+                color: "#7C3AED",
+                colorBg: "rgba(124,58,237,0.1)",
+                colorBorder: "rgba(124,58,237,0.25)",
+              },
+            ].map(p => (
+              <div key={p.province} style={{
+                background: p.colorBg,
+                border: `1px solid ${p.colorBorder}`,
+                borderRadius: 16, padding: "28px 24px",
+                position: "relative" as const,
+              }}>
+                <div style={{
+                  position: "absolute" as const, top: 16, right: 16,
+                  background: "rgba(255,255,255,0.08)",
+                  borderRadius: 8, padding: "3px 10px",
+                  fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.5)",
+                  letterSpacing: "0.06em", textTransform: "uppercase" as const,
+                }}>Coming Soon</div>
+                <div style={{ fontSize: 32, marginBottom: 12 }}>{p.flag}</div>
+                <h3 style={{ fontSize: 18, fontWeight: 800, color: "#FFFFFF", margin: "0 0 6px 0" }}>{p.province}</h3>
+                <div style={{ fontSize: 12, fontWeight: 600, color: p.color, marginBottom: 14 }}>{p.regulator}</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: 14 }}>
+                  <span style={{ fontWeight: 600, color: "rgba(255,255,255,0.7)" }}>Exam Streams: </span>{p.exams}
+                </div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>{p.operators}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: "center" }}>
+            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", marginBottom: 20 }}>
+              Want to be notified when your province launches? Join the waitlist.
+            </p>
+            <a href="#courses">
+              <button
+                onClick={e => {
+                  e.preventDefault();
+                  // Trigger the notify modal for a generic waitlist entry
+                  const el = document.querySelector('[data-waitlist-trigger]') as HTMLElement | null;
+                  if (el) el.click();
+                  else window.location.hash = "#courses";
+                }}
+                style={{
+                  padding: "12px 32px", borderRadius: 10,
+                  background: "linear-gradient(135deg, #0891B2, #7C3AED)",
+                  color: "#fff", border: "none", fontSize: 14, fontWeight: 700,
+                  cursor: "pointer", fontFamily: "inherit",
+                  boxShadow: "0 4px 20px rgba(8,145,178,0.3)",
+                }}
+              >
+                Join the National Waitlist →
+              </button>
+            </a>
           </div>
         </div>
       </section>
@@ -962,7 +1061,7 @@ export default function Landing() {
           <span style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF" }}>Echelon Institute</span>
         </div>
         <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", margin: "0 0 16px 0" }}>
-          Ontario's AI-powered exam prep platform for water and wastewater operators.
+          Canada's AI-powered exam prep platform for water and wastewater operators.
         </p>
         <div className="landing-footer-links" style={{ display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
           {[

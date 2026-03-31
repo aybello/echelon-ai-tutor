@@ -159,7 +159,7 @@ export default function QuizGate({ questionsAnswered, onUnlocked, onDismiss }: Q
               lineHeight: 1.6,
               marginBottom: 28,
             }}>
-              Enter your email to unlock the <strong>full question bank</strong> — 600+ practice questions across all Ontario operator exam modules, completely free.
+              Enter your email to unlock the <strong>full question bank</strong> — 600+ practice questions across all Canadian operator exam modules, completely free.
             </p>
 
             {/* Email form */}
