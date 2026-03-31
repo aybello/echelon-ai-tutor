@@ -73,9 +73,9 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
             flexShrink: 0,
           }}>
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo-transparent_66afefa9.png"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-only_f30f4bb1.png"
               alt="Echelon Institute logo"
-              style={{ height: 28, width: "auto", filter: "brightness(0) invert(1)" }}
+              style={{ height: 40, width: "auto", filter: "brightness(0) invert(1)" }}
             />
             <span style={{
               fontFamily: "'Sora', sans-serif",
