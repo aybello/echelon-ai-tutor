@@ -5,7 +5,7 @@ import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
-import { waitlist, questionErrorReports } from "../drizzle/schema";
+import { waitlist, questionErrorReports, trialEmails } from "../drizzle/schema";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 
@@ -93,6 +93,42 @@ export const appRouter = router({
           title: `Question error reported: Q${input.questionId}`,
           content: `Module: ${input.module}\nType: ${input.reportType}\nQuestion: ${input.questionText.slice(0, 120)}...\n${input.details ? `Details: ${input.details}` : ""}`,
         });
+
+        return { success: true };
+      }),
+  }),
+
+  // Trial email gate — captures emails when users hit the 15-question free limit
+  trial: router({
+    unlock: publicProcedure
+      .input(
+        z.object({
+          email: z.string().email("Please enter a valid email address"),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable");
+
+        // Upsert — don't error if same email submits again
+        const existing = await db
+          .select()
+          .from(trialEmails)
+          .where(eq(trialEmails.email, input.email))
+          .limit(1);
+
+        if (existing.length === 0) {
+          await db.insert(trialEmails).values({
+            email: input.email,
+            source: "quiz_gate",
+          });
+
+          // Notify owner of new trial signup
+          await notifyOwner({
+            title: `New trial signup via quiz gate`,
+            content: `${input.email} submitted their email to unlock the full question bank.`,
+          });
+        }
 
         return { success: true };
       }),

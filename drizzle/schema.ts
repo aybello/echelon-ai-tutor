@@ -52,3 +52,14 @@ export const questionErrorReports = mysqlTable("question_error_reports", {
 
 export type QuestionErrorReport = typeof questionErrorReports.$inferSelect;
 export type InsertQuestionErrorReport = typeof questionErrorReports.$inferInsert;
+
+/** Trial email captures — users who hit the 15-question gate and unlocked the full bank */
+export const trialEmails = mysqlTable("trial_emails", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  source: varchar("source", { length: 32 }).notNull().default("quiz_gate"), // where the gate was hit
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type TrialEmail = typeof trialEmails.$inferSelect;
+export type InsertTrialEmail = typeof trialEmails.$inferInsert;

@@ -48,3 +48,6 @@
 - [ ] Add error-reporting flag button on each quiz question (tRPC mutation + DB table)
 - [ ] Expand Pumping Systems question bank — replace near-duplicate questions with varied scenarios (NPSH, cavitation, parallel/series pumps)
 - [ ] Add step-by-step solution walkthroughs for hard math questions (expandable panel in StepSolution component)
+- [x] Add trial_emails DB table for quiz gate email capture
+- [x] Build QuizGate component (email capture screen shown after question 15)
+- [x] Wire gate logic into Home.tsx with localStorage unlock persistence

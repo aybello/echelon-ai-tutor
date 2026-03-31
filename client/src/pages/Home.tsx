@@ -20,6 +20,7 @@ import PatternAlert from "@/components/PatternAlert";
 import ConfidenceInsight from "@/components/ConfidenceInsight";
 import AITutor from "@/components/AITutor";
 import ReportErrorModal from "@/components/ReportErrorModal";
+import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 
 const DIFF_COLOR: Record<string, string> = {
   easy: "#059669",
@@ -77,6 +78,9 @@ export default function Home() {
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [showModuleSelector, setShowModuleSelector] = useState(false);
   const [reportModalOpen, setReportModalOpen] = useState(false);
+  // Gate: show after 15 questions unless already unlocked this session
+  const [trialUnlocked, setTrialUnlockedState] = useState<boolean>(() => isTrialUnlocked());
+  const [showGate, setShowGate] = useState(false);
 
   // Filter questions by selected module
   const activeQuestions = useMemo(() => {
@@ -112,6 +116,11 @@ export default function Home() {
     // End session after SESSION_SIZE questions
     if (updatedHistory.length >= SESSION_SIZE) {
       setCurrent(null);
+      return;
+    }
+    // Show gate after 15 answered questions if not yet unlocked
+    if (updatedHistory.length >= 15 && !trialUnlocked) {
+      setShowGate(true);
       return;
     }
     const nextQ = getNextQuestion(updatedHistory, activeQuestions);
@@ -1097,6 +1106,34 @@ export default function Home() {
           questionText={current.q}
           module={current.module}
           onClose={() => setReportModalOpen(false)}
+        />
+      )}
+
+      {/* ── QUIZ GATE (shown after 15 questions for non-unlocked users) ── */}
+      {showGate && (
+        <QuizGate
+          questionsAnswered={history.length}
+          onUnlocked={() => {
+            setTrialUnlocked();
+            setTrialUnlockedState(true);
+            setShowGate(false);
+            // Continue to next question
+            const nextQ = getNextQuestion(history, activeQuestions);
+            if (nextQ) {
+              const pts = getPatternInsights(history);
+              const wasWeak = pts && pts.some((p) => p.module === nextQ.module);
+              setAdaptive(wasWeak ? `Serving a ${nextQ.module} question — your weakest area this session.` : null);
+              setCurrent(nextQ);
+              setSelected(null);
+              setConfidence(null);
+              setConfirmed(false);
+              setShowSteps(false);
+              setTutorOpen(false);
+              setPatternMode(false);
+            } else {
+              setCurrent(null);
+            }
+          }}
         />
       )}
     </div>
