@@ -6,6 +6,7 @@ import { Link } from "wouter";
 import { WQA_QUESTIONS, WQA_MODULES, type WQAQuestion } from "@/lib/wqaQuestions";
 import { type Question } from "@/lib/questions";
 import SiteNav from "@/components/SiteNav";
+import { trpc } from "@/lib/trpc";
 import { isTrialUnlocked } from "@/components/QuizGate";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
@@ -96,6 +97,18 @@ export default function WQAMockExam() {
     keywords: "WQA mock exam, Water Quality Analyst practice test, O. Reg. 248/03 exam, Ontario water quality certification",
   });
 
+  // Persistent anonymous session ID for score history
+  const [sessionId] = useState<string>(() => {
+    const key = "echelon_session_id";
+    let id = localStorage.getItem(key);
+    if (!id) {
+      id = `sess_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+      localStorage.setItem(key, id);
+    }
+    return id;
+  });
+  const saveResult = trpc.exam.saveResult.useMutation();
+  const resultSavedRef = useRef(false);
   const [examState, setExamState] = useState<ExamState>("intro");
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -162,6 +175,26 @@ export default function WQAMockExam() {
     }).filter(m => m.total > 0).sort((a, b) => a.pct - b.pct);
     return { correct, score, passed, moduleBreakdown };
   }, [examState, questions, answers]);
+
+  // Save result to DB when exam transitions to results screen
+  useEffect(() => {
+    if (examState !== "results" || resultSavedRef.current || !results) return;
+    resultSavedRef.current = true;
+    const timeUsed = EXAM_DURATION - timeLeft;
+    const moduleBreakdownRecord: Record<string, { correct: number; total: number }> = {};
+    results.moduleBreakdown.forEach(m => {
+      moduleBreakdownRecord[m.module] = { correct: m.correct, total: m.total };
+    });
+    saveResult.mutate({
+      sessionId,
+      examType: "wqa",
+      score: results.correct,
+      total: EXAM_QUESTIONS,
+      passed: results.passed,
+      timeTakenSeconds: timeUsed,
+      moduleBreakdown: moduleBreakdownRecord,
+    });
+  }, [examState, results]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const timerColor = timeLeft < 600 ? "#DC2626" : timeLeft < 1800 ? "#D97706" : "#0369A1";
   const answered = answers.filter(a => a.selected !== null).length;

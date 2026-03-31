@@ -7,7 +7,9 @@ import { Link, useLocation } from "wouter";
 import { CLASS1_QUESTIONS, getClass1Questions } from "@/lib/class1Questions";
 import type { Question } from "@/lib/questions";
 import SiteNav from "@/components/SiteNav";
+import { usePageMeta } from "@/hooks/usePageMeta";
 import { isTrialUnlocked } from "@/components/QuizGate";
+import { trpc } from "@/lib/trpc";
 
 const EXAM_DURATION = 2 * 60 * 60; // 2 hours in seconds
 const EXAM_QUESTIONS = 100;
@@ -71,6 +73,12 @@ function formatTime(seconds: number): string {
 }
 
 export default function Class1MockExam() {
+  usePageMeta({
+    title: "Class 1 Timed Mock Exam — Water & Wastewater",
+    description: "100-question timed mock exam for Ontario Class 1 Water and Wastewater operator certification. 2-hour timer, 70% pass threshold, and full module breakdown on results.",
+    path: "/class1-mock",
+    keywords: "Class 1 mock exam, Ontario water operator exam, wastewater operator practice test, EOCP Class 1, OWWCO exam prep",
+  });
   const [location] = useLocation();
   const params = useMemo(() => new URLSearchParams(window.location.search), []);
 
@@ -80,6 +88,18 @@ export default function Class1MockExam() {
     return null;
   }, [params]);
 
+  // Persistent anonymous session ID for score history
+  const [sessionId] = useState<string>(() => {
+    const key = "echelon_session_id";
+    let id = localStorage.getItem(key);
+    if (!id) {
+      id = `sess_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+      localStorage.setItem(key, id);
+    }
+    return id;
+  });
+  const saveResult = trpc.exam.saveResult.useMutation();
+  const resultSavedRef = useRef(false);
   const [examState, setExamState] = useState<ExamState>(
     initialStream ? "intro" : "stream-select"
   );
@@ -127,6 +147,7 @@ export default function Class1MockExam() {
   const submitExam = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
     setExamState("results");
+    resultSavedRef.current = false; // reset so the effect can save
   }, []);
 
   const selectAnswer = useCallback((optionIdx: number) => {

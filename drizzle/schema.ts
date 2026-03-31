@@ -63,3 +63,20 @@ export const trialEmails = mysqlTable("trial_emails", {
 
 export type TrialEmail = typeof trialEmails.$inferSelect;
 export type InsertTrialEmail = typeof trialEmails.$inferInsert;
+
+/** Exam results — saved when a user completes a mock exam */
+export const examResults = mysqlTable("exam_results", {
+  id: int("id").autoincrement().primaryKey(),
+  sessionId: varchar("sessionId", { length: 64 }).notNull(), // anonymous session ID from localStorage
+  examType: varchar("examType", { length: 32 }).notNull(), // 'class1' | 'wqa'
+  stream: varchar("stream", { length: 32 }), // 'water' | 'wastewater' | null for WQA
+  score: int("score").notNull(), // number of correct answers
+  total: int("total").notNull(), // total questions attempted
+  passed: mysqlEnum("passed", ["yes", "no"]).notNull(),
+  timeTakenSeconds: int("timeTakenSeconds"), // how long the exam took
+  moduleBreakdown: text("moduleBreakdown"), // JSON string: { moduleName: { correct, total } }
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type ExamResult = typeof examResults.$inferSelect;
+export type InsertExamResult = typeof examResults.$inferInsert;

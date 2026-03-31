@@ -130,8 +130,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A titration requires 12.5 mL of 0.02 N H₂SO₄ to titrate 100 mL of a water sample. What is the alkalinity of the sample in mg/L as CaCO₃?",
     options: ["1.25 mg/L", "12.5 mg/L", "25 mg/L", "125 mg/L"],
-    correctIndex: 1,
-    explanation: "Alkalinity (mg/L as CaCO₃) = (mL acid × N acid × 50,000) / mL sample = (12.5 × 0.02 × 50,000) / 100 = 12,500 / 100 = 125... Wait: = (12.5 × 0.02 × 50000) / 100 = 125. Correct answer is 125 mg/L. Let me recalculate: 12.5 × 0.02 = 0.25 meq; 0.25 meq / 0.1 L = 2.5 meq/L; 2.5 × 50 = 125 mg/L as CaCO₃.",
+    correctIndex: 3,
+    explanation: "Alkalinity (mg/L as CaCO₃) = (mL acid × N acid × 50,000) / mL sample = (12.5 × 0.02 × 50,000) / 100 = 125 mg/L as CaCO₃. Verification: 12.5 × 0.02 = 0.25 meq; 0.25 meq / 0.1 L = 2.5 meq/L; 2.5 meq/L × 50 mg/meq = 125 mg/L as CaCO₃.",
   },
   {
     id: "WQA-M012",
@@ -996,10 +996,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     id: "WQA-WC004",
     module: "Water Characteristics",
     difficulty: "medium",
-    question: "Water with a hardness of 180 mg/L as CaCO₃ is classified as:",
+    question: "Water with a hardness of 200 mg/L as CaCO₃ is classified as:",
     options: ["Soft", "Moderately hard", "Hard", "Very hard"],
     correctIndex: 3,
-    explanation: "Hardness classification: Soft (0–60 mg/L), Moderately hard (61–120 mg/L), Hard (121–180 mg/L), Very hard (> 180 mg/L) as CaCO₃. 180 mg/L is at the boundary of Hard/Very hard — classified as Very hard.",
+    explanation: "Standard hardness classification (AWWA): Soft (0–60 mg/L), Moderately hard (61–120 mg/L), Hard (121–180 mg/L), Very hard (> 180 mg/L) as CaCO₃. At 200 mg/L, the water is clearly Very hard.",
   },
   {
     id: "WQA-WC005",

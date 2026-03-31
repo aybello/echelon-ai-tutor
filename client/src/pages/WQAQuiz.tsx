@@ -117,21 +117,21 @@ export default function WQAQuiz() {
       selectedOption: selected,
       wrongExplanation: !isCorrect && current.wrongExp ? (current.wrongExp[selected] ?? null) : null,
     };
-    setHistory(prev => [...prev, entry]);
+    const updatedHistory = [...history, entry];
+    setHistory(updatedHistory);
     setConfirmed(true);
     setShowSteps(false);
     setAdaptive(null);
     if (!isCorrect && confidence >= 4) {
       setAdaptive("You were confident but got this wrong — let's review this module.");
     }
-  }, [selected, confidence, current]);
+    // Fire gate immediately after 15th answer — avoids stale state in handleNext()
+    if (updatedHistory.length >= 15 && !trialUnlocked) {
+      setShowGate(true);
+    }
+  }, [selected, confidence, current, history, trialUnlocked]);
 
   const handleNext = useCallback(() => {
-    // Freemium gate at 15 questions
-    if (!trialUnlocked && history.length >= 15) {
-      setShowGate(true);
-      return;
-    }
     const next = getNextQuestion(history, activePool);
     setCurrent(next);
     setSelected(null);

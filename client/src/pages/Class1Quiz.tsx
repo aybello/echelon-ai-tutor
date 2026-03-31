@@ -80,6 +80,7 @@ export default function Class1Quiz() {
     title: "Class 1 Practice Quiz — Water & Wastewater",
     description: "Practice for the Ontario Class 1 Water Treatment, Water Distribution, Wastewater Treatment, and Wastewater Collection operator certification exams.",
     path: "/class1",
+    keywords: "Class 1 water operator, Class 1 wastewater operator, EOCP exam prep, OWWCO certification, Ontario operator practice questions",
   });
 
   // Read stream from URL query param (e.g. /class1?stream=wastewater)
@@ -141,18 +142,19 @@ export default function Class1Quiz() {
       selectedOption: selected,
       wrongExplanation: !isCorrect ? null : null,
     };
-    setHistory(prev => [...prev, entry]);
+    const updatedHistory = [...history, entry];
+    setHistory(updatedHistory);
     setConfirmed(true);
-  }, [selected, confidence, current]);
+    // Fire gate immediately after 15th answer — avoids stale state in next()
+    if (updatedHistory.length >= 15 && !trialUnlocked) {
+      setShowGate(true);
+    }
+  }, [selected, confidence, current, history, trialUnlocked]);
 
   const next = useCallback(() => {
     const updatedHistory = history;
     if (updatedHistory.length >= SESSION_SIZE) {
       setCurrent(null);
-      return;
-    }
-    if (updatedHistory.length >= 15 && !trialUnlocked) {
-      setShowGate(true);
       return;
     }
     const nextQ = getNextQuestion(updatedHistory, activeQuestions);

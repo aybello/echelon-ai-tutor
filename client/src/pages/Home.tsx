@@ -63,6 +63,7 @@ export default function Home() {
     title: "OIT Practice Quiz — 475 Questions",
     description: "Practice for the Ontario Operator-in-Training (OIT) exam with 475 questions across 10 modules. AI Tutor, step-by-step solutions, and confidence tracking included.",
     path: "/quiz",
+    keywords: "OIT exam prep, Ontario operator in training, water treatment practice questions, wastewater OIT, EOCP OIT, Ontario operator certification",
   });
   const [history, setHistory]         = useState<HistoryEntry[]>([]);
   const [current, setCurrent]         = useState<Question | null>(QUESTIONS[0]);
@@ -107,20 +108,20 @@ export default function Home() {
       selectedOption: selected,
       wrongExplanation: !isCorrect ? (current.wrongExp?.[selected] ?? null) : null,
     };
-    setHistory((prev) => [...prev, entry]);
+    const updatedHistory = [...history, entry];
+    setHistory(updatedHistory);
     setConfirmed(true);
-  }, [selected, confidence, current]);
+    // Fire gate immediately after 15th answer — avoids stale state in next()
+    if (updatedHistory.length >= 15 && !trialUnlocked) {
+      setShowGate(true);
+    }
+  }, [selected, confidence, current, history, trialUnlocked]);
 
   const next = useCallback(() => {
     const updatedHistory = history;
     // End session after SESSION_SIZE questions
     if (updatedHistory.length >= SESSION_SIZE) {
       setCurrent(null);
-      return;
-    }
-    // Show gate after 15 answered questions if not yet unlocked
-    if (updatedHistory.length >= 15 && !trialUnlocked) {
-      setShowGate(true);
       return;
     }
     const nextQ = getNextQuestion(updatedHistory, activeQuestions);

@@ -85,3 +85,8 @@
 - [x] Wire /wqa and /wqa-mock routes in App.tsx
 - [x] Add WQA links to SiteNav
 - [x] Run tests (43 passing) and verify TypeScript clean
+- [x] Fix 15-question freemium gate — gate fires at question 16 instead of 15 (off-by-one bug fixed)
+- [x] Verify gate works consistently on OIT quiz, Class 1 quiz, and WQA quiz
+- [x] Add SEO meta tags to /quiz, /class1, /class1-mock, /wqa-mock pages (keywords added to all)
+- [x] Build score history — exam_results DB table, save mock exam results on submit (Class 1 + WQA)
+- [x] Review WQA question bank accuracy — fixed alkalinity titration correctIndex bug and hardness question ambiguity

@@ -5,7 +5,7 @@ import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
-import { waitlist, questionErrorReports, trialEmails } from "../drizzle/schema";
+import { waitlist, questionErrorReports, trialEmails, examResults } from "../drizzle/schema";
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
 import { adminRouter } from "./routers/admin";
@@ -133,6 +133,58 @@ export const appRouter = router({
         }
 
         return { success: true };
+      }),
+  }),
+
+  // Exam results — saves mock exam scores for score history
+  exam: router({
+    saveResult: publicProcedure
+      .input(
+        z.object({
+          sessionId: z.string().min(1).max(64),
+          examType: z.enum(["class1", "wqa"]),
+          stream: z.enum(["water", "wastewater"]).optional(),
+          score: z.number().int().min(0),
+          total: z.number().int().min(1),
+          passed: z.boolean(),
+          timeTakenSeconds: z.number().int().min(0).optional(),
+          moduleBreakdown: z.record(z.string(), z.object({ correct: z.number(), total: z.number() })).optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable");
+
+        await db.insert(examResults).values({
+          sessionId: input.sessionId,
+          examType: input.examType,
+          stream: input.stream ?? null,
+          score: input.score,
+          total: input.total,
+          passed: input.passed ? "yes" : "no",
+          timeTakenSeconds: input.timeTakenSeconds ?? null,
+          moduleBreakdown: input.moduleBreakdown ? JSON.stringify(input.moduleBreakdown) : null,
+        });
+
+        return { success: true };
+      }),
+
+    getHistory: publicProcedure
+      .input(z.object({ sessionId: z.string().min(1).max(64) }))
+      .query(async ({ input }) => {
+        const db = await getDb();
+        if (!db) return [];
+
+        const results = await db
+          .select()
+          .from(examResults)
+          .where(eq(examResults.sessionId, input.sessionId))
+          .orderBy(examResults.id);
+
+        return results.map(r => ({
+          ...r,
+          moduleBreakdown: r.moduleBreakdown ? JSON.parse(r.moduleBreakdown) : null,
+        }));
       }),
   }),
 
