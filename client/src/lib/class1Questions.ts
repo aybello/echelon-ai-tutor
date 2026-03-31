@@ -881,10 +881,10 @@ export const CLASS1_QUESTIONS: Question[] = [
     module: "Water Treatment",
     difficulty: "medium",
     type: "calculation",
-    q: `A chlorine contact chamber has a volume of 500 m³. The flow is 1,500 m³/h. The baffling factor (T₁₀/T) is 0.4. The chlorine residual is 2.0 mg/L. What is the CT value achieved?`,
+    q: `A chlorine contact chamber has a volume of 500 m³. The flow is 1,500 m³/h. The baffling factor (T₁₀/T) is 0.333. The chlorine residual is 2.0 mg/L. What is the CT value achieved?`,
     options: ["5.3 mg·min/L", "8.0 mg·min/L", "13.3 mg·min/L", "20.0 mg·min/L"],
     correct: 2,
-    explanation: "Theoretical DT = 500 m³ ÷ 1,500 m³/h × 60 min/h = 20 min. T₁₀ = 20 × 0.4 = 8 min. CT = C × T₁₀ = 2.0 mg/L × 8 min = 16 mg·min/L. Wait — let me recalculate: T = 500/1500 h = 0.333 h = 20 min. T₁₀ = 20 × 0.4 = 8 min. CT = 2.0 × 8 = 16. Hmm, 16 is not in the options. With baffling 0.667: T₁₀ = 20 × 0.667 = 13.3 min, CT = 2.0 × 13.3 = 26.6. Let me use baffling 0.333: T₁₀ = 20 × 0.333 = 6.67 min, CT = 2.0 × 6.67 = 13.3. So baffling factor = 1/3, CT = 13.3.",
+    explanation: "Theoretical DT = 500 m³ ÷ 1,500 m³/h × 60 min/h = 20 min. T₁₀ = 20 × 0.333 = 6.67 min. CT = C × T₁₀ = 2.0 mg/L × 6.67 min = 13.3 mg·min/L.",
     tip: "CT = C (mg/L) × T₁₀ (min). T₁₀ = Theoretical DT × Baffling factor.",
     steps: [
       { l: "Step 1", c: "Theoretical DT = Volume ÷ Flow = 500 m³ ÷ 1,500 m³/h × 60 = 20 min" },
@@ -2933,14 +2933,14 @@ export const CLASS1_QUESTIONS: Question[] = [
     difficulty: "hard",
     type: "calculation",
     q: `A secondary clarifier has a diameter of 30 m and receives a combined flow (influent + RAS) of 12,000 m³/day. What is the solids loading rate if the MLSS is 3,200 mg/L? (Express in kg/m²·day)`,
-    options: ["3.6 kg/m²·day", "5.4 kg/m²·day", "7.2 kg/m²·day", "10.8 kg/m²·day"],
-    correct: 1,
-    explanation: "Surface area = π × (15)² = 706.9 m². Solids loading = (Q × MLSS) ÷ Area = (12,000 m³/day × 3,200 g/m³) ÷ 706.9 m² = 38,400,000 g/day ÷ 706.9 = 54,320 g/m²·day = 54.3 kg/m²·day. Wait — let me recalculate: 12,000 × 3,200 = 38,400,000 g/day = 38,400 kg/day. 38,400 ÷ 706.9 = 54.3 kg/m²·day. That seems high. Typical design: 100–200 kg/m²·day. Let me re-examine: 12,000 m³/d × 3.2 kg/m³ = 38,400 kg/d ÷ 706.9 m² = 54.3 kg/m²·day. Closest answer is 5.4 × 10 = 54 → option 1 at 5.4 is incorrect. Recalculating: the answer should be 54 kg/m²·day — none of the options match perfectly. Choosing closest: 5.4 kg/m²·day × 10 = 54 → selecting index 1 as the intended answer with a factor-of-10 scaling note.",
-    tip: "Solids loading = (Q × MLSS) ÷ Surface area. Typical secondary clarifier: 100–200 kg/m²·day.",
+    options: ["27 kg/m²·day", "38 kg/m²·day", "54 kg/m²·day", "72 kg/m²·day"],
+    correct: 2,
+    explanation: "Surface area = π × (15)² = 706.9 m². Solids load = Q × MLSS = 12,000 m³/day × 3,200 g/m³ = 38,400,000 g/day = 38,400 kg/day. Solids loading rate = 38,400 ÷ 706.9 = 54.3 kg/m²·day.",
+    tip: "Solids loading = (Q × MLSS) ÷ Surface area. Typical secondary clarifier: 40–80 kg/m²·day.",
     steps: [
       { l: "Step 1", c: "Surface area = π × (15)² = 706.9 m²" },
-      { l: "Step 2", c: "Solids = 12,000 × 3,200 g/m³ = 38,400 kg/day" },
-      { l: "Step 3", c: "Loading = 38,400 ÷ 706.9 = 54.3 kg/m²·day" }
+      { l: "Step 2", c: "Solids load = 12,000 m³/day × 3,200 g/m³ = 38,400,000 g/day = 38,400 kg/day" },
+      { l: "Step 3", c: "Loading rate = 38,400 ÷ 706.9 = 54.3 kg/m²·day" }
     ],
   },
 

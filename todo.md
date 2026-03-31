@@ -60,3 +60,6 @@
 - [x] Fix Class 1 quiz to pre-select wastewater stream when navigating from Wastewater Class 1 course card
 - [ ] Fix OIT quiz card mobile layout — counter/flag row overflow, action bar clipping off-screen
 - [ ] Align Class 1 quiz card layout to match fixed OIT layout for consistency
+- [ ] Build daily health check script (tests, TypeScript, math audit, duplicate ID scan)
+- [ ] Add server-side health check runner and owner notification
+- [ ] Schedule daily 6 AM automated health check
