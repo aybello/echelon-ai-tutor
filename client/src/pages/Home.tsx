@@ -21,6 +21,7 @@ import ConfidenceInsight from "@/components/ConfidenceInsight";
 import AITutor from "@/components/AITutor";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
+import { shuffle } from "@/lib/utils";
 
 const DIFF_COLOR: Record<string, string> = {
   easy: "#059669",
@@ -147,9 +148,9 @@ export default function Home() {
   const openTutor = () => { setPatternMode(false); setTutorOpen(true); };
 
   const resetSession = useCallback(() => {
-    const firstQ = activeQuestions[0] ?? QUESTIONS[0];
+    const shuffled = shuffle(activeQuestions.length > 0 ? activeQuestions : QUESTIONS);
     setHistory([]);
-    setCurrent(firstQ);
+    setCurrent(shuffled[0] ?? null);
     setSelected(null);
     setConfidence(null);
     setConfirmed(false);

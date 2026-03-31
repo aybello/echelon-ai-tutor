@@ -9,6 +9,7 @@ import { type Question, type HistoryEntry, getNextQuestion, getPatternInsights }
 import ConfidenceMeter from "@/components/ConfidenceMeter";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked } from "@/components/QuizGate";
+import { shuffle } from "@/lib/utils";
 
 // ── Adapter: convert WQAQuestion → Question (for adaptive engine + AITutor) ──
 let _wqaIdCounter = 90000;
@@ -158,6 +159,7 @@ export default function WQAQuiz() {
   }, []);
 
   const handleRestart = useCallback(() => {
+    const shuffled = shuffle(activePool.length > 0 ? activePool : []);
     setHistory([]);
     setSelected(null);
     setConfidence(null);
@@ -165,7 +167,7 @@ export default function WQAQuiz() {
     setShowSteps(false);
     setPatternMode(false);
     setAdaptive(null);
-    setCurrent(activePool[0] ?? null);
+    setCurrent(shuffled[0] ?? null);
   }, [activePool]);
 
   const modLabel = selectedModule === "All" ? "All Modules" : selectedModule;

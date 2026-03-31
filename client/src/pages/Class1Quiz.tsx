@@ -20,6 +20,7 @@ import StepSolution from "@/components/StepSolution";
 import AITutor from "@/components/AITutor";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import QuizGate, { isTrialUnlocked } from "@/components/QuizGate";
+import { shuffle } from "@/lib/utils";
 
 type Stream = "all" | "water" | "wastewater";
 type SubModule = string | null;
@@ -172,8 +173,9 @@ export default function Class1Quiz() {
   }, [history, activeQuestions, trialUnlocked]);
 
   const resetSession = useCallback(() => {
+    const shuffled = shuffle(activeQuestions.length > 0 ? activeQuestions : CLASS1_QUESTIONS);
     setHistory([]);
-    setCurrent(activeQuestions[0] ?? CLASS1_QUESTIONS[0]);
+    setCurrent(shuffled[0] ?? null);
     setSelected(null);
     setConfidence(null);
     setConfirmed(false);

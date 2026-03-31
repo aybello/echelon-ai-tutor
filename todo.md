@@ -92,3 +92,4 @@
 - [x] Review WQA question bank accuracy — fixed alkalinity titration correctIndex bug and hardness question ambiguity
 - [ ] Remove freemium gate from OIT quiz — OIT is fully free and unlimited (no 15-question cap, no email gate)
 - [x] Add escape options to QuizGate modal — homepage link and "Try Another 15 Free" dismiss button so users are not trapped
+- [x] Randomize question order on restart/dismiss across all three quiz pages — no repeated question sets
