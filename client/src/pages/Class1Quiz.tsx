@@ -525,6 +525,10 @@ export default function Class1Quiz() {
               setTrialUnlockedState(true);
               setShowGate(false);
             }}
+            onDismiss={() => {
+              setShowGate(false);
+              resetSession();
+            }}
           />
         )}
 

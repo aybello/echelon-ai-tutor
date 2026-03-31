@@ -1150,6 +1150,10 @@ export default function Home() {
               setCurrent(null);
             }
           }}
+          onDismiss={() => {
+            setShowGate(false);
+            resetSession();
+          }}
         />
       )}
     </div>

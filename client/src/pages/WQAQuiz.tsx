@@ -280,6 +280,10 @@ export default function WQAQuiz() {
               setShowGate(false);
               handleNext();
             }}
+            onDismiss={() => {
+              setShowGate(false);
+              handleRestart();
+            }}
           />
         )}
 

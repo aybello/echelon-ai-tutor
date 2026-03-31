@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 
 interface QuizGateProps {
   questionsAnswered: number;
   onUnlocked: () => void;
+  onDismiss?: () => void; // optional: restart another free 15-question session
 }
 
 const TRIAL_UNLOCKED_KEY = "echelon_trial_unlocked";
@@ -24,7 +26,7 @@ export function setTrialUnlocked(): void {
   }
 }
 
-export default function QuizGate({ questionsAnswered, onUnlocked }: QuizGateProps) {
+export default function QuizGate({ questionsAnswered, onUnlocked, onDismiss }: QuizGateProps) {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -33,7 +35,6 @@ export default function QuizGate({ questionsAnswered, onUnlocked }: QuizGateProp
     onSuccess: () => {
       setTrialUnlocked();
       setSubmitted(true);
-      // Short delay so user sees the success state before continuing
       setTimeout(() => {
         onUnlocked();
       }, 1400);
@@ -222,9 +223,62 @@ export default function QuizGate({ questionsAnswered, onUnlocked }: QuizGateProp
               </button>
             </form>
 
-            <p style={{ color: "#94A3B8", fontSize: 12, marginTop: 14 }}>
+            <p style={{ color: "#94A3B8", fontSize: 12, marginTop: 14, marginBottom: 20 }}>
               No spam, no credit card. Just your study progress.
             </p>
+
+            {/* ── Escape options ── */}
+            <div style={{
+              borderTop: "1px solid #E2E8F0",
+              paddingTop: 18,
+              display: "flex",
+              flexDirection: "column",
+              gap: 10,
+            }}>
+              {onDismiss && (
+                <button
+                  onClick={onDismiss}
+                  style={{
+                    width: "100%",
+                    padding: "11px 20px",
+                    borderRadius: 10,
+                    border: "1.5px solid #CBD5E1",
+                    background: "#F8FAFC",
+                    color: "#374151",
+                    fontSize: 14,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    transition: "background 0.15s",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.background = "#F1F5F9")}
+                  onMouseLeave={e => (e.currentTarget.style.background = "#F8FAFC")}
+                >
+                  🔄 Try Another 15 Free Questions
+                </button>
+              )}
+              <Link href="/">
+                <button
+                  style={{
+                    width: "100%",
+                    padding: "11px 20px",
+                    borderRadius: 10,
+                    border: "1.5px solid #CBD5E1",
+                    background: "#F8FAFC",
+                    color: "#374151",
+                    fontSize: 14,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    transition: "background 0.15s",
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.background = "#F1F5F9")}
+                  onMouseLeave={e => (e.currentTarget.style.background = "#F8FAFC")}
+                >
+                  ← Back to Homepage
+                </button>
+              </Link>
+            </div>
           </>
         )}
       </div>
