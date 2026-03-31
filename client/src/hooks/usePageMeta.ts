@@ -1,5 +1,5 @@
 /**
- * usePageMeta — sets document title, meta description, and og:* tags per page.
+ * usePageMeta — sets document title, meta description, keywords, and og:* tags per page.
  * Call at the top of each page component.
  */
 import { useEffect } from "react";
@@ -7,6 +7,8 @@ import { useEffect } from "react";
 interface PageMetaOptions {
   title: string;
   description: string;
+  /** Comma-separated keywords for the meta keywords tag */
+  keywords?: string;
   /** Canonical path, e.g. "/quiz". Defaults to current pathname. */
   path?: string;
 }
@@ -26,7 +28,7 @@ function setMeta(name: string, content: string, property = false) {
   el.setAttribute("content", content);
 }
 
-export function usePageMeta({ title, description, path }: PageMetaOptions) {
+export function usePageMeta({ title, description, keywords, path }: PageMetaOptions) {
   useEffect(() => {
     const fullTitle = `${title} | ${BASE_TITLE}`;
     const canonicalUrl = `${BASE_URL}${path ?? window.location.pathname}`;
@@ -34,6 +36,7 @@ export function usePageMeta({ title, description, path }: PageMetaOptions) {
     // Basic
     document.title = fullTitle;
     setMeta("description", description);
+    if (keywords) setMeta("keywords", keywords);
 
     // Open Graph
     setMeta("og:title", fullTitle, true);
@@ -57,5 +60,5 @@ export function usePageMeta({ title, description, path }: PageMetaOptions) {
       document.head.appendChild(canonical);
     }
     canonical.setAttribute("href", canonicalUrl);
-  }, [title, description, path]);
+  }, [title, description, keywords, path]);
 }

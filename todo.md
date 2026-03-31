@@ -70,3 +70,4 @@
 - [x] Add Class 1 Mock Exam link to SiteNav and Landing page
 - [x] Apply freemium gate to Class 1 Mock Exam intro screen
 - [x] Fix Class 1 Mock Exam stream selector bug — selecting Wastewater loads Water questions instead
+- [x] Fix SEO on landing page (/): shorten title to 30-60 chars, shorten description to 50-160 chars, add keywords meta tag

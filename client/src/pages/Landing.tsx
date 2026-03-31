@@ -377,8 +377,9 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
 
 export default function Landing() {
   usePageMeta({
-    title: "Ontario Water & Wastewater Operator Exam Prep",
-    description: "475 OIT practice questions, AI Tutor, formula sheet, and career map — built specifically for Ontario water and wastewater operators. Free OIT access, no account required.",
+    title: "Ontario Operator Exam Prep | Echelon",
+    description: "Practice questions, AI Tutor & formula sheet for Ontario water and wastewater operator certification exams.",
+    keywords: "Ontario water operator exam, wastewater operator certification, OIT exam prep, OWWCO, EOCP, Class 1 water, operator practice questions",
     path: "/",
   });
   const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa">("water");
