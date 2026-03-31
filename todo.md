@@ -97,3 +97,6 @@
 - [x] Rewrite WQA easy questions to genuine medium/hard difficulty — 5 easy / 131 medium / 31 hard (was 60/76/31)
 - [x] Audit OIT questions — all 25 sampled questions verified accurate (earlier false alarm from bad regex)
 - [x] Audit WQA bank — 25 sampled questions verified accurate, no malformed options found
+- [x] Add getHistory tRPC procedure (filtered by examType/stream, sorted desc, limit 5)
+- [x] Build ScoreHistory component with mini bar chart, trend indicator, and attempt rows
+- [x] Integrate ScoreHistory into Class1MockExam and WQAMockExam results screens

@@ -7,6 +7,7 @@ import { WQA_QUESTIONS, WQA_MODULES, type WQAQuestion } from "@/lib/wqaQuestions
 import { type Question } from "@/lib/questions";
 import SiteNav from "@/components/SiteNav";
 import { trpc } from "@/lib/trpc";
+import ScoreHistory from "@/components/ScoreHistory";
 import { isTrialUnlocked } from "@/components/QuizGate";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
@@ -316,6 +317,9 @@ export default function WQAMockExam() {
               );
             })}
           </div>
+
+          {/* Score history */}
+          <ScoreHistory sessionId={sessionId} examType="wqa" />
 
           {/* Question review */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "20px 24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>

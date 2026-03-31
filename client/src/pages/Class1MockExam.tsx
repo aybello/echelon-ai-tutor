@@ -10,6 +10,7 @@ import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { isTrialUnlocked } from "@/components/QuizGate";
 import { trpc } from "@/lib/trpc";
+import ScoreHistory from "@/components/ScoreHistory";
 
 const EXAM_DURATION = 2 * 60 * 60; // 2 hours in seconds
 const EXAM_QUESTIONS = 100;
@@ -415,6 +416,9 @@ export default function Class1MockExam() {
               );
             })}
           </div>
+
+          {/* Score history */}
+          <ScoreHistory sessionId={sessionId} examType="class1" stream={stream} />
 
           {/* Question review toggle */}
           <div style={{ background: "#fff", borderRadius: 20, padding: "20px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>

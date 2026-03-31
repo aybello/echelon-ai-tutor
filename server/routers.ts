@@ -6,7 +6,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
 import { waitlist, questionErrorReports, trialEmails, examResults } from "../drizzle/schema";
-import { and, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { adminRouter } from "./routers/admin";
 
@@ -170,16 +170,29 @@ export const appRouter = router({
       }),
 
     getHistory: publicProcedure
-      .input(z.object({ sessionId: z.string().min(1).max(64) }))
+      .input(z.object({
+        sessionId: z.string().min(1).max(64),
+        examType: z.enum(["class1", "wqa"]),
+        stream: z.enum(["water", "wastewater"]).optional(),
+      }))
       .query(async ({ input }) => {
         const db = await getDb();
         if (!db) return [];
 
+        const conditions = [
+          eq(examResults.sessionId, input.sessionId),
+          eq(examResults.examType, input.examType),
+        ];
+        if (input.stream) {
+          conditions.push(eq(examResults.stream, input.stream));
+        }
+
         const results = await db
           .select()
           .from(examResults)
-          .where(eq(examResults.sessionId, input.sessionId))
-          .orderBy(examResults.id);
+          .where(and(...conditions))
+          .orderBy(desc(examResults.id))
+          .limit(5);
 
         return results.map(r => ({
           ...r,
