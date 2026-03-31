@@ -426,13 +426,11 @@ export default function Landing() {
       }}>
         {/* Brand */}
         <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-          <div style={{
-            width: 36, height: 36, borderRadius: 10,
-            background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}>
-            <span style={{ color: "#fff", fontSize: 18 }}>⚗</span>
-          </div>
+          <img
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo_35076f16.png"
+            alt="Echelon Institute"
+            style={{ height: 36, width: "auto" }}
+          />
           <div>
             <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em" }}>Echelon Institute</div>
             <div style={{ fontSize: 10, color: "#64748B", fontWeight: 500, marginTop: -2 }}>Ontario Operator Certification</div>
@@ -604,6 +602,14 @@ export default function Landing() {
         }} />
 
         <div style={{ position: "relative", maxWidth: 800, margin: "0 auto" }}>
+          {/* Hero logo mark */}
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo_35076f16.png"
+              alt="Echelon Institute"
+              style={{ height: 72, width: "auto", filter: "drop-shadow(0 4px 16px rgba(56,189,248,0.35))" }}
+            />
+          </div>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)",
@@ -934,13 +940,11 @@ export default function Landing() {
         textAlign: "center",
       }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 12 }}>
-          <div style={{
-            width: 28, height: 28, borderRadius: 8,
-            background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-          }}>
-            <span style={{ color: "#fff", fontSize: 14 }}>⚗</span>
-          </div>
+          <img
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo_35076f16.png"
+            alt="Echelon Institute"
+            style={{ height: 28, width: "auto", filter: "brightness(0) invert(1)" }}
+          />
           <span style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF" }}>Echelon Institute</span>
         </div>
         <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", margin: "0 0 16px 0" }}>

@@ -64,15 +64,28 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
         {/* Brand */}
         <Link href="/">
           <span style={{
-            fontFamily: "'Sora', sans-serif",
-            fontWeight: 800,
-            fontSize: 17,
-            color: "#FFFFFF",
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
             cursor: "pointer",
-            letterSpacing: "-0.02em",
-            whiteSpace: "nowrap",
+            textDecoration: "none",
+            flexShrink: 0,
           }}>
-            {brandName}
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-logo_35076f16.png"
+              alt="Echelon Institute logo"
+              style={{ height: 28, width: "auto", filter: "brightness(0) invert(1)" }}
+            />
+            <span style={{
+              fontFamily: "'Sora', sans-serif",
+              fontWeight: 800,
+              fontSize: 17,
+              color: "#FFFFFF",
+              letterSpacing: "-0.02em",
+              whiteSpace: "nowrap",
+            }}>
+              {brandName}
+            </span>
           </span>
         </Link>
 

@@ -100,3 +100,4 @@
 - [x] Add getHistory tRPC procedure (filtered by examType/stream, sorted desc, limit 5)
 - [x] Build ScoreHistory component with mini bar chart, trend indicator, and attempt rows
 - [x] Integrate ScoreHistory into Class1MockExam and WQAMockExam results screens
+- [ ] Incorporate Echelon Institute logo into site header, SiteNav, and favicon

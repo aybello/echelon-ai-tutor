@@ -62,6 +62,29 @@ export default function Admin() {
     setTimeout(() => setCopiedEmail(null), 1500);
   };
 
+  const downloadCSV = (rows: Record<string, unknown>[], filename: string) => {
+    if (!rows.length) return;
+    const headers = Object.keys(rows[0]);
+    const csvContent = [
+      headers.join(","),
+      ...rows.map(row =>
+        headers.map(h => {
+          const val = String(row[h] ?? "");
+          return val.includes(",") || val.includes('"') || val.includes("\n")
+            ? `"${val.replace(/"/g, '""')}"`
+            : val;
+        }).join(",")
+      ),
+    ].join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   // ── Auth gate ──
   if (loading) {
     return (
@@ -201,13 +224,25 @@ export default function Admin() {
                 {trialsQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{trialsQ.data.length} total</span>}
               </div>
               {trialsQ.data && trialsQ.data.length > 0 && (
-                <button
-                  className="admin-btn"
-                  onClick={() => copyAllEmails(trialsQ.data!.map(r => r.email))}
-                  style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#38BDF8", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
-                >
-                  {copiedEmail === "__all__" ? "✓ Copied!" : "📋 Copy All Emails"}
-                </button>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  <button
+                    className="admin-btn"
+                    onClick={() => copyAllEmails(trialsQ.data!.map(r => r.email))}
+                    style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#38BDF8", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                  >
+                    {copiedEmail === "__all__" ? "✓ Copied!" : "📋 Copy All Emails"}
+                  </button>
+                  <button
+                    className="admin-btn"
+                    onClick={() => downloadCSV(
+                      trialsQ.data!.map(r => ({ email: r.email, source: r.source, signed_up: new Date(r.createdAt).toISOString() })),
+                      `echelon-trial-emails-${new Date().toISOString().slice(0,10)}.csv`
+                    )}
+                    style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#A78BFA", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                  >
+                    ⬇ Download CSV
+                  </button>
+                </div>
               )}
             </div>
             {trialsQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
@@ -259,13 +294,25 @@ export default function Admin() {
                 {waitlistQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{waitlistQ.data.length} total</span>}
               </div>
               {waitlistQ.data && waitlistQ.data.length > 0 && (
-                <button
-                  className="admin-btn"
-                  onClick={() => copyAllEmails(waitlistQ.data!.map(r => r.email))}
-                  style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#34D399", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
-                >
-                  {copiedEmail === "__all__" ? "✓ Copied!" : "📋 Copy All Emails"}
-                </button>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  <button
+                    className="admin-btn"
+                    onClick={() => copyAllEmails(waitlistQ.data!.map(r => r.email))}
+                    style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#34D399", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                  >
+                    {copiedEmail === "__all__" ? "✓ Copied!" : "📋 Copy All Emails"}
+                  </button>
+                  <button
+                    className="admin-btn"
+                    onClick={() => downloadCSV(
+                      waitlistQ.data!.map(r => ({ email: r.email, course_code: r.courseCode, course_title: r.courseTitle, signed_up: new Date(r.createdAt).toISOString() })),
+                      `echelon-waitlist-${new Date().toISOString().slice(0,10)}.csv`
+                    )}
+                    style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#A78BFA", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                  >
+                    ⬇ Download CSV
+                  </button>
+                </div>
               )}
             </div>
             {waitlistQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
