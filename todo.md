@@ -152,3 +152,7 @@
 - [x] Update Class 2 Water price to $99 CAD in Pricing.tsx and server/stripe/products.ts
 - [x] Add 'Practice Pass available from $X' secondary text line to all 5 available Landing page course cards
 - [x] Make practice pass price line a clickable link to /pricing
+- [ ] Build Class 2 Wastewater question bank (500 questions, 5 modules)
+- [ ] Create Class2WastewaterQuiz.tsx and Class2WastewaterMockExam.tsx pages
+- [ ] Wire /class2-ww and /class2-ww-mock routes in App.tsx
+- [ ] Update SiteNav, Pricing, Landing, Account, and Stripe products for Class 2 WW

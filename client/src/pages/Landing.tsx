@@ -127,14 +127,15 @@ const WASTEWATER_COURSES = [
     subtitle: "Class 2 Certification",
     price: 229,
     duration: "8–10 weeks",
-    questions: 500,
+    questions: 395,
     description: "Advanced biological treatment, nutrient removal, sludge management, and process troubleshooting.",
     topics: ["Nutrient Removal (BNR)", "Sludge Processing & Dewatering", "SRT & SVI Calculations", "Advanced Lab Analysis", "Process Optimization"],
-    badge: null,
+    badge: "New",
+    badgeColor: "#0F766E",
     color: "#0F766E",
     bg: "#F0FDFA",
     border: "#99F6E4",
-    comingSoon: true,
+    practicePassPrice: 99,
   },
   {
     code: "CL3-WW",
@@ -356,7 +357,7 @@ function CourseCard({ course }: { course: CourseType }) {
         </button>
       ) : (
         <>
-          <Link href={course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "WQA" ? "/wqa" : "/quiz"}>
+          <Link href={course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "WQA" ? "/wqa" : "/quiz"}>
             <button style={{
               width: "100%", padding: "12px",
               background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
@@ -381,8 +382,8 @@ function CourseCard({ course }: { course: CourseType }) {
               </button>
             </Link>
           )}
-          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "CL2-W" || course.code === "WQA") && (
-            <Link href={course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-ww-mock" : course.code === "CL2-W" ? "/class2-water-mock" : "/class1-water-mock"}>
+          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "CL2-WW" || course.code === "CL2-W" || course.code === "WQA") && (
+            <Link href={course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-ww-mock" : course.code === "CL2-WW" ? "/class2-ww-mock" : course.code === "CL2-W" ? "/class2-water-mock" : "/class1-water-mock"}>
               <button style={{
                 width: "100%", padding: "10px",
                 background: "transparent",
