@@ -47,6 +47,7 @@ const EXAM_META: Record<
   "class2-water": {
     label: "Class 2 Water Treatment Pass",
     quizPath: "/class2-water",
+    mockPath: "/class2-water-mock",
     color: "#0E7490",
     bg: "#ECFEFF",
     icon: "🚰",

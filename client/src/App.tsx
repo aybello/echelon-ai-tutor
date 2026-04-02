@@ -25,6 +25,8 @@ import Pricing from "@/pages/Pricing";
 import PurchaseSuccess from "@/pages/PurchaseSuccess";
 import Class1WaterQuiz from "@/pages/Class1WaterQuiz";
 import Class1WaterMockExam from "@/pages/Class1WaterMockExam";
+import Class2WaterQuiz from "@/pages/Class2WaterQuiz";
+import Class2WaterMockExam from "@/pages/Class2WaterMockExam";
 import Class1WastewaterQuiz from "@/pages/Class1WastewaterQuiz";
 import Class1WastewaterMockExam from "@/pages/Class1WastewaterMockExam";
 import Account from "@/pages/Account";
@@ -51,6 +53,8 @@ function Router() {
       <Route path={"/oit-mock"} component={OITMockExam} />
       <Route path={"/class1-water"} component={Class1WaterQuiz} />
       <Route path={"/class1-water-mock"} component={Class1WaterMockExam} />
+      <Route path={"/class2-water"} component={Class2WaterQuiz} />
+      <Route path={"/class2-water-mock"} component={Class2WaterMockExam} />
       <Route path={"/class1-ww"} component={Class1WastewaterQuiz} />
       <Route path={"/class1-ww-mock"} component={Class1WastewaterMockExam} />
       <Route path={"/admin"} component={Admin} />
