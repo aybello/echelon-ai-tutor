@@ -143,4 +143,5 @@
 - [ ] Wire /account route in App.tsx and add to SiteNav
 - [ ] Scrape all RoyCEU water courses (Water Treatment Concepts, Chlorination, Lime Softening, Fluoride, Chloramines, RO, Hydraulics)
 - [ ] Write 200+ original questions from AWWA + RoyCEU material to reach 500 total in Class 2 Water bank
-- [ ] Replace class2WaterQuestions.ts with expanded 500-question bank
+- [x] Replace class2WaterQuestions.ts with expanded 500-question bank
+- [x] Update Class2WaterMockExam.tsx EXAM_MODULE_TARGETS to official Class 2 blueprint weights (Treatment: 32, Lab: 24, Equipment: 15, Safety: 16, Source Water: 13)

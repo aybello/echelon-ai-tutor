@@ -29,15 +29,13 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Security, Safety & Administrative": { bg: "#FEE2E2", color: "#B91C1C" },
 };
 
-// Proportional module targets for 100 questions from 282-question bank
-// Bank distribution: Treatment Process ~124, Equipment ~69, Lab ~34, Safety ~28, Source Water ~27
-// Scale to 100 proportionally
+// Official Class 2 Water Treatment exam blueprint (ABC/OWWCO)
 const EXAM_MODULE_TARGETS: Record<string, number> = {
-  "Treatment Process":              44,
-  "Equipment Operation & Maintenance": 24,
-  "Laboratory Analysis":            12,
-  "Security, Safety & Administrative": 10,
-  "Source Water Characteristics":   10,
+  "Treatment Process":              32,
+  "Laboratory Analysis":            24,
+  "Equipment Operation & Maintenance": 15,
+  "Security, Safety & Administrative": 16,
+  "Source Water Characteristics":   13,
 };
 
 function selectExamQuestions(): Class2WaterQuestion[] {
