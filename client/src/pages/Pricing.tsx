@@ -59,7 +59,7 @@ const INDIVIDUAL: Product[] = [
     name: "Class 2 Water Treatment",
     shortName: "Class 2 Water",
     description: "Advanced treatment processes, SCADA, corrosion control, membrane filtration, and process troubleshooting. 500 questions across 5 modules.",
-    priceCAD: 7900,
+    priceCAD: 9900,
     examTypes: ["class2-water"],
     badge: "Available Now",
     badgeColor: "#16A34A",

@@ -29,8 +29,8 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
   {
     key: "class2-water",
     name: "Class 2 Water Treatment Practice Pass",
-    description: "Full Class 2 Water Treatment question bank — 280+ questions across 5 modules, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 7900,
+    description: "Full Class 2 Water Treatment question bank — 500 questions across 5 modules, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 9900,
     examTypes: ["class2-water"],
   },
   {
