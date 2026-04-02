@@ -47,11 +47,11 @@ const WATER_COURSES = [
     questions: 500,
     description: "Advanced process control, chemical handling, hydraulics, and troubleshooting for mid-career operators.",
     topics: ["Advanced Hydraulics", "Chemical Feed Systems", "Process Troubleshooting", "SCADA Fundamentals", "Regulatory Compliance"],
-    badge: null,
+    badge: "Available Now",
+    badgeColor: "#16A34A",
     color: "#0E7490",
     bg: "#ECFEFF",
     border: "#A5F3FC",
-    comingSoon: true,
   },
   {
     code: "CL3-W",
@@ -337,7 +337,7 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
         </button>
       ) : (
         <>
-          <Link href={course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "WQA" ? "/wqa" : "/quiz"}>
+          <Link href={course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "WQA" ? "/wqa" : "/quiz"}>
             <button style={{
               width: "100%", padding: "12px",
               background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
@@ -362,8 +362,8 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
               </button>
             </Link>
           )}
-          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "WQA") && (
-            <Link href={course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-ww-mock" : "/class1-water-mock"}>
+          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "CL2-W" || course.code === "WQA") && (
+            <Link href={course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-ww-mock" : course.code === "CL2-W" ? "/class2-water-mock" : "/class1-water-mock"}>
               <button style={{
                 width: "100%", padding: "10px",
                 background: "transparent",

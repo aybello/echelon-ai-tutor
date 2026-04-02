@@ -44,8 +44,8 @@ const SESSION_SIZE = 15;
 
 export default function Class2WaterQuiz() {
   usePageMeta({
-    title: "Class 2 Water Treatment Practice Quiz — 280+ Questions",
-    description: "Practice for the Ontario Class 2 Water Treatment operator exam with 280+ questions across 5 modules. AI Tutor, step-by-step solutions, and confidence tracking included.",
+    title: "Class 2 Water Treatment Practice Quiz — 500 Questions",
+    description: "Practice for the Ontario Class 2 Water Treatment operator exam with 500 questions across 5 modules. AI Tutor, step-by-step solutions, and confidence tracking included.",
     path: "/class2-water",
     keywords: "Class 2 water treatment exam prep, Ontario operator certification, water treatment practice questions, OWWCO Class 2, O. Reg. 128/04",
   });
