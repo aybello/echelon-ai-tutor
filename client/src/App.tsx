@@ -21,6 +21,9 @@ import Admin from "@/pages/Admin";
 import WQAQuiz from "@/pages/WQAQuiz";
 import WQAMockExam from "@/pages/WQAMockExam";
 import OITMockExam from "@/pages/OITMockExam";
+import Pricing from "@/pages/Pricing";
+import PurchaseSuccess from "@/pages/PurchaseSuccess";
+
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
@@ -42,6 +45,8 @@ function Router() {
       <Route path={"/wqa-mock"} component={WQAMockExam} />
       <Route path={"/oit-mock"} component={OITMockExam} />
       <Route path={"/admin"} component={Admin} />
+      <Route path={"/pricing"} component={Pricing} />
+      <Route path={"/purchase-success"} component={PurchaseSuccess} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

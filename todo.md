@@ -101,3 +101,19 @@
 - [x] Build ScoreHistory component with mini bar chart, trend indicator, and attempt rows
 - [x] Integrate ScoreHistory into Class1MockExam and WQAMockExam results screens
 - [ ] Incorporate Echelon Institute logo into site header, SiteNav, and favicon
+- [x] Activate Stripe integration (live publishable key configured)
+- [x] Create all Stripe products and prices: 10 individual Practice Passes + 3 bundles (Water, Wastewater, All Access)
+- [x] Build /pricing page with individual passes and bundle cards, Stripe Checkout integration
+- [x] Build /purchase-success page with localStorage access grant and product-specific next-step links
+- [x] Add checkAccess tRPC procedure to verify purchase by email + examType
+- [x] Add verifySession tRPC procedure to confirm Stripe session and record purchase in DB
+- [x] Add PurchaseGate component — paywall overlay for paid quiz/exam pages
+- [x] Gate Class 1 Quiz (/class1) behind PurchaseGate (Class 1 Water Practice Pass, CA$79)
+- [x] Gate WQA Quiz (/wqa) behind PurchaseGate (WQA Practice Pass, CA$79)
+- [x] Gate Class 1 Mock Exam (/class1-mock) behind PurchaseGate
+- [x] Gate WQA Mock Exam (/wqa-mock) behind PurchaseGate
+- [x] Store email in localStorage on QuizGate unlock for PurchaseGate server-side check
+- [x] Add getPurchases admin procedure and revenue tab to /admin dashboard
+- [x] Update admin stats to include purchaseCount and totalRevenueCAD
+- [x] Add Pricing link to Landing page nav and hero CTA
+- [x] Write vitest for purchase schema and updated admin stats (47 tests passing)

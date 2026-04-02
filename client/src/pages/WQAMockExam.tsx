@@ -9,6 +9,7 @@ import SiteNav from "@/components/SiteNav";
 import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
 import { isTrialUnlocked } from "@/components/QuizGate";
+import PurchaseGate from "@/components/PurchaseGate";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 const EXAM_DURATION  = 2 * 60 * 60; // 2 hours in seconds
@@ -200,12 +201,12 @@ export default function WQAMockExam() {
   const timerColor = timeLeft < 600 ? "#DC2626" : timeLeft < 1800 ? "#D97706" : "#0369A1";
   const answered = answers.filter(a => a.selected !== null).length;
 
-  // ── INTRO SCREEN ──────────────────────────────────────────────────────────
+  // -- INTRO SCREEN ----------------------------------------─  // -- INTRO SCREEN --
   if (examState === "intro") {
     return (
+      <PurchaseGate examType="wqa" productKey="wqa" productName="WQA Practice Pass" price={79}>
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
-        <SiteNav currentPath="/wqa-mock" />
-        <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px" }}>
+        <SiteNav currentPath="/wqa-mock" />   <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px" }}>
           <div style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center" }}>
             <div style={{ width: 72, height: 72, borderRadius: 20, background: "linear-gradient(135deg, #0369A1, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32, margin: "0 auto 20px" }}>🧪</div>
             <h1 style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>WQA Mock Exam</h1>
@@ -263,10 +264,11 @@ export default function WQAMockExam() {
           </div>
         </div>
       </div>
+      </PurchaseGate>
     );
   }
 
-  // ── RESULTS SCREEN ────────────────────────────────────────────────────────
+  // -- RESULTS SCREEN --------------------------------------------------------
   if (examState === "results" && results) {
     const { correct, score, passed, moduleBreakdown } = results;
     return (
@@ -378,7 +380,7 @@ export default function WQAMockExam() {
     );
   }
 
-  // ── ACTIVE EXAM ───────────────────────────────────────────────────────────
+  // -- ACTIVE EXAM ----------------------------------------------------------─
   if (!currentQ) return null;
 
   const modStyle = MODULE_COLORS[currentQ.module] ?? { bg: "#E0F2FE", color: "#0369A1" };

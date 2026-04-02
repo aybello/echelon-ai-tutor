@@ -7,7 +7,7 @@ import { trpc } from "@/lib/trpc";
 import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 
-type Tab = "trials" | "waitlist" | "errors" | "scores";
+type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue";
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
   oit: "OIT",
@@ -44,15 +44,15 @@ function formatDate(d: Date | string) {
 
 export default function Admin() {
   const { user, loading } = useAuth();
-  const [activeTab, setActiveTab] = useState<Tab>("trials");
+  const [activeTab, setActiveTab] = useState<Tab>("revenue");
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
-
   // Data queries
   const stats = trpc.admin.stats.useQuery(undefined, { enabled: user?.role === "admin" });
   const trialsQ = trpc.admin.getTrialEmails.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "trials" });
   const waitlistQ = trpc.admin.getWaitlist.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "waitlist" });
   const errorsQ = trpc.admin.getErrorReports.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "errors" });
   const scoresQ = trpc.admin.getScoreHistory.useQuery({ limit: 500, examType: "all" }, { enabled: user?.role === "admin" && activeTab === "scores" });
+  const purchasesQ = trpc.admin.getPurchases.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "revenue" });;
 
   const utils = trpc.useUtils();
 
@@ -134,13 +134,14 @@ export default function Admin() {
 
   // ── Dashboard ──
   const statItems = [
-    { label: "Trial Signups", value: stats.data?.trialCount ?? "—", icon: "📧", color: "#38BDF8", tab: "trials" as Tab },
-    { label: "Waitlist Entries", value: stats.data?.waitlistCount ?? "—", icon: "📋", color: "#34D399", tab: "waitlist" as Tab },
+    { label: "Total Revenue", value: stats.data?.totalRevenueCAD != null ? `CA$${stats.data.totalRevenueCAD.toFixed(2)}` : "—", icon: "💰", color: "#34D399", tab: "revenue" as Tab },
+    { label: "Purchases", value: stats.data?.purchaseCount ?? "—", icon: "🛒", color: "#38BDF8", tab: "revenue" as Tab },
+    { label: "Trial Signups", value: stats.data?.trialCount ?? "—", icon: "📧", color: "#A78BFA", tab: "trials" as Tab },
     { label: "Error Reports", value: stats.data?.errorCount ?? "—", icon: "🐛", color: "#F87171", tab: "errors" as Tab },
-    { label: "Exam Results", value: stats.data?.scoreCount ?? "—", icon: "📊", color: "#FBBF24", tab: "scores" as Tab },
   ];
 
   const TABS: { id: Tab; label: string; icon: string }[] = [
+    { id: "revenue", label: "Revenue", icon: "💰" },
     { id: "trials", label: "Trial Emails", icon: "📧" },
     { id: "waitlist", label: "Waitlist", icon: "📋" },
     { id: "errors", label: "Error Reports", icon: "🐛" },
@@ -457,7 +458,57 @@ export default function Admin() {
           </div>
         )}
 
-        {/* ── ERROR REPORTS TAB ── */}
+        {/* -- REVENUE TAB -- */}
+        {activeTab === "revenue" && (
+          <div style={{ background: "#1E293B", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,0.06)" }}>
+            <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div style={{ fontSize: 13, fontWeight: 700 }}>
+                💰 Purchase History
+                {purchasesQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{purchasesQ.data.length} orders</span>}
+              </div>
+              {purchasesQ.data && purchasesQ.data.length > 0 && (
+                <div style={{ fontSize: 13, fontWeight: 800, color: "#34D399" }}>
+                  Total: CA${(purchasesQ.data.reduce((s, p) => s + p.amountCAD, 0) / 100).toFixed(2)}
+                </div>
+              )}
+            </div>
+            {purchasesQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
+            {purchasesQ.data && purchasesQ.data.length === 0 && (
+              <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No purchases yet. Share the pricing page to get your first sale!</div>
+            )}
+            {purchasesQ.data && purchasesQ.data.length > 0 && (
+              <div style={{ overflowX: "auto" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                  <thead>
+                    <tr style={{ background: "rgba(255,255,255,0.03)" }}>
+                      {["#", "Product", "Email", "Amount", "Date"].map(h => (
+                        <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {purchasesQ.data.map((row, i) => (
+                      <tr key={row.id} className="admin-row" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+                        <td style={{ padding: "12px 16px", fontSize: 11, color: "#475569" }}>{i + 1}</td>
+                        <td style={{ padding: "12px 16px" }}>
+                          <div style={{ fontSize: 12, fontWeight: 700, color: "#F1F5F9" }}>{row.productName}</div>
+                          <div style={{ fontSize: 10, color: "#64748B", marginTop: 2 }}>{row.productKey}</div>
+                        </td>
+                        <td style={{ padding: "12px 16px", fontSize: 12, color: "#94A3B8" }}>{row.email}</td>
+                        <td style={{ padding: "12px 16px" }}>
+                          <span style={{ fontSize: 14, fontWeight: 800, color: "#34D399" }}>CA${(row.amountCAD / 100).toFixed(2)}</span>
+                        </td>
+                        <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{formatDate(row.createdAt)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* -- ERROR REPORTS TAB -- */}
         {activeTab === "errors" && (
           <div style={{ background: "#1E293B", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,0.06)" }}>
             <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>

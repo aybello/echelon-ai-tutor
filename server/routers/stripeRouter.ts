@@ -1,0 +1,156 @@
+import { z } from "zod";
+import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
+import { stripe } from "../stripe/stripe";
+import { ALL_PRODUCTS, getAllUnlockedExamTypes } from "../stripe/products";
+import { getDb } from "../db";
+import { purchases } from "../../drizzle/schema";
+import { eq } from "drizzle-orm";
+
+export const stripeRouter = router({
+  /** Return all products with prices for the Pricing page */
+  getProducts: publicProcedure.query(() => {
+    return ALL_PRODUCTS.map(p => ({
+      key: p.key,
+      name: p.name,
+      description: p.description,
+      priceCAD: p.priceCAD,
+      examTypes: p.examTypes,
+    }));
+  }),
+
+  /** Create a Stripe Checkout session for a given product key */
+  createCheckoutSession: publicProcedure
+    .input(z.object({
+      productKey: z.string(),
+      email: z.string().email().optional(),
+      origin: z.string().url(),
+    }))
+    .mutation(async ({ input, ctx }) => {
+      const product = ALL_PRODUCTS.find(p => p.key === input.productKey);
+      if (!product) throw new Error("Product not found");
+
+      const userEmail = ctx.user?.email ?? input.email;
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        mode: "payment",
+        line_items: [
+          {
+            price_data: {
+              currency: "cad",
+              unit_amount: product.priceCAD,
+              product_data: {
+                name: product.name,
+                description: product.description,
+              },
+            },
+            quantity: 1,
+          },
+        ],
+        customer_email: userEmail,
+        client_reference_id: ctx.user?.id?.toString() ?? undefined,
+        metadata: {
+          product_key: product.key,
+          product_name: product.name,
+          user_id: ctx.user?.id?.toString() ?? "",
+          customer_email: userEmail ?? "",
+        },
+        allow_promotion_codes: true,
+        success_url: `${input.origin}/purchase-success?session_id={CHECKOUT_SESSION_ID}&product=${product.key}`,
+        cancel_url: `${input.origin}/pricing`,
+      });
+
+      return { url: session.url };
+    }),
+
+  /** Verify a Stripe checkout session and return email/product info */
+  verifySession: publicProcedure
+    .input(z.object({
+      sessionId: z.string(),
+      productKey: z.string(),
+    }))
+    .mutation(async ({ input }) => {
+      try {
+        const session = await stripe.checkout.sessions.retrieve(input.sessionId);
+        const email = session.customer_email ?? (session.metadata?.customer_email ?? "");
+        const productKey = session.metadata?.product_key ?? input.productKey;
+        const productName = session.metadata?.product_name ?? productKey;
+        const amountCAD = session.amount_total ?? 0;
+        const stripePaymentIntentId =
+          typeof session.payment_intent === "string" ? session.payment_intent : null;
+
+        if (session.payment_status === "paid" && email && productKey) {
+          const db = await getDb();
+          if (db) {
+            // Upsert — avoid duplicate on page refresh
+            const existing = await db
+              .select({ id: purchases.id })
+              .from(purchases)
+              .where(eq(purchases.stripeSessionId, input.sessionId))
+              .limit(1);
+            if (existing.length === 0) {
+              await db.insert(purchases).values({
+                email,
+                productKey,
+                productName,
+                amountCAD,
+                stripeSessionId: input.sessionId,
+                stripePaymentIntentId,
+              });
+            }
+          }
+        }
+
+        return { email, productKey, paid: session.payment_status === "paid" };
+      } catch (err: any) {
+        console.error("[verifySession] Error:", err.message);
+        return { email: "", productKey: input.productKey, paid: false };
+      }
+    }),
+
+  /** Get all purchases for the current user (by email) */
+  getMyPurchases: publicProcedure
+    .input(z.object({ email: z.string().email().optional() }))
+    .query(async ({ input, ctx }) => {
+      const email = ctx.user?.email ?? input.email;
+      if (!email) return { purchases: [], unlockedExamTypes: [] };
+
+      const db = await getDb();
+      if (!db) return { purchases: [], unlockedExamTypes: [] };
+
+      const rows = await db
+        .select()
+        .from(purchases)
+        .where(eq(purchases.email, email));
+
+      const productKeys = rows.map(r => r.productKey);
+      const unlockedExamTypes = getAllUnlockedExamTypes(productKeys);
+
+      return { purchases: rows, unlockedExamTypes };
+    }),
+
+  /** Check if a specific exam type is unlocked for an email */
+  checkAccess: publicProcedure
+    .input(z.object({
+      examType: z.string(),
+      email: z.string().email().optional(),
+    }))
+    .query(async ({ input, ctx }) => {
+      const email = ctx.user?.email ?? input.email;
+      if (!email) return { hasAccess: false };
+
+      const db = await getDb();
+      if (!db) return { hasAccess: false };
+
+      const rows = await db
+        .select({ productKey: purchases.productKey })
+        .from(purchases)
+        .where(eq(purchases.email, email));
+
+      const productKeys = rows.map(r => r.productKey);
+      const unlockedExamTypes = getAllUnlockedExamTypes(productKeys);
+      const hasAccess = unlockedExamTypes.includes(input.examType);
+
+      return { hasAccess };
+    }),
+});

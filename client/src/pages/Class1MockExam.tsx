@@ -11,6 +11,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { isTrialUnlocked } from "@/components/QuizGate";
 import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
+import PurchaseGate from "@/components/PurchaseGate";
 
 const EXAM_DURATION = 2 * 60 * 60; // 2 hours in seconds
 const EXAM_QUESTIONS = 100;
@@ -167,9 +168,10 @@ export default function Class1MockExam() {
 
   const cfg = STREAM_CONFIG[stream];
 
-  // ── STREAM SELECTOR ──
+  // -- STREAM SELECTOR --
   if (examState === "stream-select") {
     return (
+      <PurchaseGate examType="class1-water" productKey="class1-water" productName="Class 1 Water Treatment Practice Pass" price={79}>
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath="/class1-mock" />
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px" }}>
@@ -218,10 +220,11 @@ export default function Class1MockExam() {
           </div>
         </div>
       </div>
+      </PurchaseGate>
     );
   }
 
-  // ── INTRO ──
+  // -- INTRO --
   if (examState === "intro") {
     const waterCount = getClass1Questions("water").length;
     const wwCount = getClass1Questions("wastewater").length;
@@ -325,7 +328,7 @@ export default function Class1MockExam() {
     );
   }
 
-  // ── RESULTS ──
+  // -- RESULTS --
   if (examState === "results") {
     const correctCount = answers.filter((a, i) => a.selected === questions[i]?.correct).length;
     const score = correctCount / EXAM_QUESTIONS;
@@ -465,7 +468,7 @@ export default function Class1MockExam() {
     );
   }
 
-  // ── ACTIVE EXAM ──
+  // -- ACTIVE EXAM --
   const currentQ = questions[currentIdx];
   const currentAnswer = answers[currentIdx]?.selected ?? null;
   const isFlagged = flagged.includes(currentIdx);

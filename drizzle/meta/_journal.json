@@ -43,6 +43,13 @@
       "when": 1774992633824,
       "tag": "0005_nappy_namorita",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1775104691449,
+      "tag": "0006_robust_terror",
+      "breakpoints": true
     }
   ]
 }

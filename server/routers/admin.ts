@@ -2,9 +2,9 @@
  * Admin router — all procedures require role === 'admin'.
  * Provides read access to trial emails, waitlist signups, and question error reports.
  */
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, sum } from "drizzle-orm";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchases } from "../../drizzle/schema";
 import { getDb } from "../db";
 import { adminProcedure, router } from "../_core/trpc";
 
@@ -13,19 +13,36 @@ export const adminRouter = router({
   stats: adminProcedure.query(async () => {
     const db = await getDb();
     if (!db) throw new Error("Database unavailable");
-    const [trials, waitlistRows, errors, scores] = await Promise.all([
+    const [trials, waitlistRows, errors, scores, purchaseRows] = await Promise.all([
       db.select().from(trialEmails),
       db.select().from(waitlist),
       db.select().from(questionErrorReports),
       db.select().from(examResults),
+      db.select().from(purchases),
     ]);
+    const totalRevenueCents = purchaseRows.reduce((acc, p) => acc + p.amountCAD, 0);
     return {
       trialCount: trials.length,
       waitlistCount: waitlistRows.length,
       errorCount: errors.length,
       scoreCount: scores.length,
+      purchaseCount: purchaseRows.length,
+      totalRevenueCAD: totalRevenueCents / 100,
     };
   }),
+
+  /** Paginated list of purchases, newest first */
+  getPurchases: adminProcedure
+    .input(z.object({ limit: z.number().int().min(1).max(500).default(200) }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+      return db
+        .select()
+        .from(purchases)
+        .orderBy(desc(purchases.createdAt))
+        .limit(input.limit);
+    }),
 
   /** Paginated list of trial email signups, newest first */
   getTrialEmails: adminProcedure

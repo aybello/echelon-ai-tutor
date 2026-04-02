@@ -34,6 +34,8 @@ export default function QuizGate({ questionsAnswered, onUnlocked, onDismiss }: Q
   const unlockMutation = trpc.trial.unlock.useMutation({
     onSuccess: () => {
       setTrialUnlocked();
+      // Store email so PurchaseGate can use it for server-side access checks
+      try { localStorage.setItem("echelon_trial_email", email.trim().toLowerCase()); } catch {}
       setSubmitted(true);
       setTimeout(() => {
         onUnlocked();
@@ -42,6 +44,7 @@ export default function QuizGate({ questionsAnswered, onUnlocked, onDismiss }: Q
     onError: () => {
       // Even on error, unlock locally so the user isn't blocked
       setTrialUnlocked();
+      try { localStorage.setItem("echelon_trial_email", email.trim().toLowerCase()); } catch {}
       setSubmitted(true);
       setTimeout(() => {
         onUnlocked();

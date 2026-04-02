@@ -14,6 +14,19 @@ const statsSchema = z.object({
   trialCount: z.number(),
   waitlistCount: z.number(),
   errorCount: z.number(),
+  scoreCount: z.number().optional(),
+  purchaseCount: z.number().optional(),
+  totalRevenueCAD: z.number().optional(),
+});
+
+const purchaseSchema = z.object({
+  id: z.number(),
+  email: z.string().email(),
+  productKey: z.string(),
+  productName: z.string(),
+  amountCAD: z.number(),
+  stripeSessionId: z.string(),
+  createdAt: z.date(),
 });
 
 const trialEmailSchema = z.object({
@@ -119,6 +132,41 @@ describe("admin mutation input schemas", () => {
 
   it("removeWaitlistEntry input rejects non-integer id", () => {
     expect(removeWaitlistInputSchema.safeParse({ id: 1.5 }).success).toBe(false);
+  });
+});
+
+describe("admin purchase schema", () => {
+  it("validates a correct purchase row", () => {
+    const result = purchaseSchema.safeParse({
+      id: 1, email: "buyer@ontario.ca", productKey: "oit",
+      productName: "OIT Practice Pass", amountCAD: 4900,
+      stripeSessionId: "cs_test_abc123", createdAt: new Date(),
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("rejects purchase row with invalid email", () => {
+    const result = purchaseSchema.safeParse({
+      id: 1, email: "not-valid", productKey: "oit",
+      productName: "OIT Practice Pass", amountCAD: 4900,
+      stripeSessionId: "cs_test_abc123", createdAt: new Date(),
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it("validates stats with revenue fields", () => {
+    const result = statsSchema.safeParse({
+      trialCount: 10, waitlistCount: 5, errorCount: 2,
+      scoreCount: 8, purchaseCount: 3, totalRevenueCAD: 147.0,
+    });
+    expect(result.success).toBe(true);
+  });
+
+  it("validates stats without optional revenue fields", () => {
+    const result = statsSchema.safeParse({
+      trialCount: 10, waitlistCount: 5, errorCount: 2,
+    });
+    expect(result.success).toBe(true);
   });
 });
 

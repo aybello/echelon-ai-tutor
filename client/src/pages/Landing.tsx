@@ -405,6 +405,7 @@ export default function Landing() {
   const NAV_LINKS = [
     { label: "Courses", href: "#courses" },
     { label: "Study Tools", href: "#tools" },
+    { label: "Pricing", href: "/pricing" },
     { label: "Formulas", href: "/formulas" },
     { label: "Career Map", href: "/career" },
     { label: "About", href: "#about" },
@@ -683,7 +684,7 @@ export default function Landing() {
                 Try Free OIT Practice →
               </button>
             </Link>
-            <a href="#courses" style={{ width: "100%" }}>
+            <Link href="/pricing" style={{ width: "100%" }}>
               <button style={{
                 padding: "14px 32px", borderRadius: 12,
                 background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)",
@@ -691,9 +692,9 @@ export default function Landing() {
                 fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
                 width: "100%",
               }}>
-                View All Courses
+                View Pricing
               </button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

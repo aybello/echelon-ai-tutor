@@ -9,6 +9,7 @@ import { type Question, type HistoryEntry, getNextQuestion, getPatternInsights }
 import ConfidenceMeter from "@/components/ConfidenceMeter";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked } from "@/components/QuizGate";
+import PurchaseGate from "@/components/PurchaseGate";
 import { shuffle } from "@/lib/utils";
 
 // ── Adapter: convert WQAQuestion → Question (for adaptive engine + AITutor) ──
@@ -176,6 +177,7 @@ export default function WQAQuiz() {
     : MODULE_COLORS[selectedModule] ?? { bg: "#E0F2FE", color: "#0369A1" };
 
   return (
+    <PurchaseGate examType="wqa" productKey="wqa" productName="WQA Practice Pass" price={79}>
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         @keyframes fadeUp  { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
@@ -445,5 +447,6 @@ export default function WQAQuiz() {
         />
       )}
     </div>
+    </PurchaseGate>
   );
 }

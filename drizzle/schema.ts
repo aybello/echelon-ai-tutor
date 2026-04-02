@@ -81,3 +81,17 @@ export const examResults = mysqlTable("exam_results", {
 
 export type ExamResult = typeof examResults.$inferSelect;
 export type InsertExamResult = typeof examResults.$inferInsert;
+/** Purchases — tracks completed Stripe one-time payments */
+export const purchases = mysqlTable("purchases", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"), // null for guest purchases (email-only)
+  email: varchar("email", { length: 320 }).notNull(),
+  productKey: varchar("productKey", { length: 64 }).notNull(), // e.g. 'oit', 'bundle-all'
+  productName: varchar("productName", { length: 128 }).notNull(),
+  amountCAD: int("amountCAD").notNull(), // in cents
+  stripeSessionId: varchar("stripeSessionId", { length: 128 }).notNull().unique(),
+  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+export type Purchase = typeof purchases.$inferSelect;
+export type InsertPurchase = typeof purchases.$inferInsert;
