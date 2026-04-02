@@ -120,3 +120,5 @@
 - [x] Rework OIT QuizGate: after 15 free questions show dual-path paywall (Stripe OIT Practice Pass OR free email unlock)
 - [x] OIT Practice Pass unlocks full 500-question bank + OIT mock exam (PurchaseGate on OIT mock exam)
 - [x] Update OIT mock exam (/oit-mock) to be gated behind PurchaseGate for OIT product key
+- [x] Add 25 new OIT questions to reach 500+ total in questions.ts
+- [x] Update all copy to say "500+ questions" (QuizGate, PurchaseGate, Pricing, Landing, products.ts, OITMockExam, About, Home)

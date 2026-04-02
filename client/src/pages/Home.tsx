@@ -61,8 +61,8 @@ const MODULE_ICONS: Record<string, string> = {
 
 export default function Home() {
   usePageMeta({
-    title: "OIT Practice Quiz — 475 Questions",
-    description: "Practice for the Ontario Operator-in-Training (OIT) exam with 475 questions across 10 modules. AI Tutor, step-by-step solutions, and confidence tracking included.",
+    title: "OIT Practice Quiz — 500+ Questions",
+    description: "Practice for the Ontario Operator-in-Training (OIT) exam with 500+ questions across 10 modules. AI Tutor, step-by-step solutions, and confidence tracking included.",
     path: "/quiz",
     keywords: "OIT exam prep, Ontario operator in training, water treatment practice questions, wastewater OIT, EOCP OIT, Ontario operator certification",
   });

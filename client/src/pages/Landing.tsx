@@ -236,7 +236,7 @@ const FEATURES = [
 ];
 
 const STATS = [
-  { value: "475", label: "OIT Practice Questions" },
+  { value: "500+", label: "OIT Practice Questions" },
   { value: "10", label: "Certification Courses" },
   { value: "3", label: "Specialization Tracks" },
   { value: "Free", label: "OIT Access" },
@@ -901,7 +901,7 @@ export default function Landing() {
               {[
                 { year: "2025", title: "The Gap Identified", body: "Ay Bello, an Environmental Engineer (EIT) and Master's student in Digital Transformation at the University of Ottawa, identified a clear gap — operators were studying for technically demanding exams with resources that hadn't evolved in decades." },
                 { year: "Early 2026", title: "Built from Scratch", body: "Interactive SVG process diagrams, an adaptive practice engine, an AI tutor with confidence scoring and pattern detection, and a career path map based on real 2025 OCWA data." },
-                { year: "2026", title: "Platform Launched", body: "475 OIT practice questions, 10 study modules, process diagrams for drinking water and wastewater, pumping systems, lab and sampling, and a formula reference — launching in Ontario with BC and Alberta coming next." },
+                { year: "2026", title: "Platform Launched", body: "500+ OIT practice questions, 10 study modules, process diagrams for drinking water and wastewater, pumping systems, lab and sampling, and a formula reference — launching in Ontario with BC and Alberta coming next." },
               ].map((item, i) => (
                 <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: "18px 20px", display: "flex", gap: 16, alignItems: "flex-start" }}>
                   <div style={{ flexShrink: 0, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", borderRadius: 8, padding: "4px 10px", fontSize: 10, fontWeight: 800, color: "#fff", whiteSpace: "nowrap" as const }}>{item.year}</div>
@@ -1044,7 +1044,7 @@ export default function Landing() {
           Start with the OIT — It's Free
         </h2>
         <p style={{ fontSize: 16, color: "rgba(255,255,255,0.8)", margin: "0 0 32px 0", maxWidth: 500, marginLeft: "auto", marginRight: "auto" }}>
-          Try 475 OIT practice questions across 10 modules with full AI Tutor access. No account required.
+          Try 500+ OIT practice questions across 10 modules with full AI Tutor access. No account required.
         </p>
         <Link href="/quiz">
           <button style={{

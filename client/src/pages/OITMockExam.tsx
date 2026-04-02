@@ -25,7 +25,7 @@ interface ExamAnswer {
 // Module distribution for 100 questions (proportional to bank size)
 // Bank: Disinfection 50, Chem Feed 55, Hydraulics 49, Math 50, Regulations 50,
 //       Pumping 50, Water Treatment 50, Wastewater Treatment 26, WQ&S 50, H&S 45
-// Total 475 → scale to 100
+// Total 500+ → scale to 100
 const MODULE_TARGETS: Record<string, number> = {
   "Disinfection": 11,
   "Chemical Feed & Storage": 12,
