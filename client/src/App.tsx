@@ -27,6 +27,7 @@ import Class1WaterQuiz from "@/pages/Class1WaterQuiz";
 import Class1WaterMockExam from "@/pages/Class1WaterMockExam";
 import Class1WastewaterQuiz from "@/pages/Class1WastewaterQuiz";
 import Class1WastewaterMockExam from "@/pages/Class1WastewaterMockExam";
+import Account from "@/pages/Account";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -55,6 +56,7 @@ function Router() {
       <Route path={"/admin"} component={Admin} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/purchase-success"} component={PurchaseSuccess} />
+      <Route path={"/account"} component={Account} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

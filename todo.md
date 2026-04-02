@@ -134,3 +134,10 @@
 - [x] Wire /class1-ww and /class1-ww-mock routes in App.tsx and add to SiteNav
 - [x] Update Landing page course catalogue to link Class 1 Water card to /class1-water and /class1-water-mock
 - [x] Wire Class 1 Water and Class 1 Wastewater Practice Passes into PurchaseSuccess PRODUCT_PATHS
+- [x] Add Stripe CTA to Class 1 Water quiz gate (/class1-water) — dual-path paywall matching OIT pattern
+- [x] Add Stripe CTA to Class 1 Wastewater quiz gate (/class1-ww) — dual-path paywall matching OIT pattern
+- [x] Verify/fix Pricing page: Class 1 Water and Wastewater passes correctly listed with CA$79, features, and Stripe checkout
+- [ ] Add restoreAccess tRPC procedure (lookup purchases by email, return product keys)
+- [ ] Build /account page with email form, pass list, and direct exam links
+- [ ] Add "Already purchased? Restore access" link to PurchaseGate
+- [ ] Wire /account route in App.tsx and add to SiteNav

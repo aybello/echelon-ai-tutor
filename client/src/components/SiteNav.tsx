@@ -30,6 +30,7 @@ export const NAV_LINKS = [
   { label: "🗺️ Career Map",    href: "/career" },
   { label: "📋 Mock Exam",     href: "/mock-exam" },
   { label: "ℹ️ About",         href: "/about" },
+  { label: "🎫 My Passes",      href: "/account" },
 ];
 
 interface SiteNavProps {

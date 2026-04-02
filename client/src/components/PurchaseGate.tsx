@@ -222,8 +222,8 @@ export default function PurchaseGate({
           }}
         >
           Already purchased?{" "}
-          <a href="/pricing" style={{ color: "#1D4ED8", fontWeight: 600 }}>
-            View your passes
+          <a href="/account" style={{ color: "#1D4ED8", fontWeight: 600 }}>
+            Restore your access &rarr;
           </a>{" "}
           or email{" "}
           <a
