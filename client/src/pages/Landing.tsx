@@ -304,8 +304,14 @@ function CourseCard({ course }: { course: CourseType }) {
           <span style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>${course.price}</span>
           <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 4 }}>CAD</span>
           {'practicePassPrice' in course && (course as any).practicePassPrice && !course.comingSoon && (
-            <p style={{ fontSize: 11, color: "#64748B", margin: "3px 0 0 0", fontStyle: "italic" }}>
-              Practice Pass available from ${(course as any).practicePassPrice} CAD
+            <p style={{ fontSize: 11, margin: "3px 0 0 0" }}>
+              <Link
+                href="/pricing"
+                onClick={e => e.stopPropagation()}
+                style={{ color: course.color, fontStyle: "italic", textDecoration: "underline", textDecorationStyle: "dotted", textUnderlineOffset: 2 }}
+              >
+                Practice Pass from ${(course as any).practicePassPrice} CAD →
+              </Link>
             </p>
           )}
         </div>
