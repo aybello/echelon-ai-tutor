@@ -23,16 +23,7 @@ function toCompat(q: Class2WaterQuestion): QCompat {
   return { ...q, q: q.question };
 }
 
-const DIFF_COLOR: Record<string, string> = {
-  easy: "#059669",
-  medium: "#D97706",
-  hard: "#DC2626",
-};
-const DIFF_BG: Record<string, string> = {
-  easy: "#DCFCE7",
-  medium: "#FEF9C3",
-  hard: "#FEE2E2",
-};
+
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Treatment Process":              { bg: "#DBEAFE", color: "#1D4ED8" },
   "Laboratory Analysis":            { bg: "#FEF9C3", color: "#A16207" },
@@ -59,7 +50,7 @@ export default function Class2WaterQuiz() {
     keywords: "Class 2 water treatment exam prep, Ontario operator certification, water treatment practice questions, OWWCO Class 2, O. Reg. 128/04",
   });
 
-  const [history, setHistory]       = useState<Array<{ questionId: number; module: string; difficulty: string; correct: boolean; confidence: number; selectedOption: number; wrongExplanation: string | null }>>([]);
+  const [history, setHistory]       = useState<Array<{ questionId: number; module: string; topic: string; correct: boolean; confidence: number; selectedOption: number; wrongExplanation: string | null }>>([]);
   const [current, setCurrent]       = useState<QCompat | null>(() => toCompat(CLASS2_WATER_QUESTIONS[0]));
   const [selected, setSelected]     = useState<number | null>(null);
   const [confidence, setConfidence] = useState<number | null>(null);
@@ -90,7 +81,7 @@ export default function Class2WaterQuiz() {
     const entry = {
       questionId: current.id,
       module: current.module,
-      difficulty: current.difficulty,
+      topic: current.topic,
       correct: isCorrect,
       confidence,
       selectedOption: selected,
@@ -277,13 +268,13 @@ export default function Class2WaterQuiz() {
 
         {/* Question card */}
         <div style={{ background: "#fff", borderRadius: 20, padding: "28px 28px 24px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", marginBottom: 16, animation: "fadeUp 0.25s ease" }}>
-          {/* Module + difficulty badges */}
+          {/* Module + topic badges */}
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
             <span style={{ padding: "3px 10px", borderRadius: 100, background: moduleStyle.bg, color: moduleStyle.color, fontSize: 10, fontWeight: 700 }}>
               {MODULE_ICONS[current.module] ?? "📖"} {current.module}
             </span>
-            <span style={{ padding: "3px 10px", borderRadius: 100, background: DIFF_BG[current.difficulty], color: DIFF_COLOR[current.difficulty], fontSize: 10, fontWeight: 700 }}>
-              {current.difficulty}
+            <span style={{ padding: "3px 10px", borderRadius: 100, background: "#F1F5F9", color: "#64748B", fontSize: 10, fontWeight: 700 }}>
+              {current.topic}
             </span>
           </div>
 

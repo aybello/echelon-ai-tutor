@@ -415,8 +415,8 @@ export default function Class2WaterMockExam() {
               <span style={{ padding: "3px 10px", borderRadius: 100, background: MODULE_COLORS[currentQ.module]?.bg ?? "#E0F2FE", color: MODULE_COLORS[currentQ.module]?.color ?? "#0369A1", fontSize: 10, fontWeight: 700 }}>
                 {currentQ.module}
               </span>
-              <span style={{ padding: "3px 10px", borderRadius: 100, background: currentQ.difficulty === "hard" ? "#FEE2E2" : currentQ.difficulty === "medium" ? "#FEF9C3" : "#DCFCE7", color: currentQ.difficulty === "hard" ? "#B91C1C" : currentQ.difficulty === "medium" ? "#A16207" : "#15803D", fontSize: 10, fontWeight: 700 }}>
-                {currentQ.difficulty}
+              <span style={{ padding: "3px 10px", borderRadius: 100, background: "#F1F5F9", color: "#64748B", fontSize: 10, fontWeight: 700 }}>
+                {currentQ.topic}
               </span>
               {isFlagged && <span style={{ padding: "3px 10px", borderRadius: 100, background: "#FEF9C3", color: "#A16207", fontSize: 10, fontWeight: 700 }}>🚩 Flagged</span>}
             </div>
