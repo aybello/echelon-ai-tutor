@@ -5548,6 +5548,1476 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     ],
     "correct": 1,
     "explanation": "UV dose = UV intensity x contact time. At high flows, contact time decreases, reducing UV dose. Flow equalization dampens peak flows, maintaining more consistent contact time and UV dose across the range of plant flows."
+  },
+  {
+    "id": 396,
+    "module": "Collection Systems",
+    "difficulty": "easy",
+    "question": "What is the primary purpose of a wastewater collection system?",
+    "options": [
+      "Treat wastewater to drinking water standards",
+      "Convey wastewater from sources to the treatment plant",
+      "Store wastewater during peak flow periods",
+      "Remove solids from wastewater before discharge"
+    ],
+    "correct": 1,
+    "explanation": "The primary purpose of a wastewater collection system is to convey sewage from homes, businesses, and industries to the treatment plant. The system includes pipes, manholes, lift stations, and force mains."
+  },
+  {
+    "id": 397,
+    "module": "Collection Systems",
+    "difficulty": "easy",
+    "question": "A sanitary sewer is designed to carry:",
+    "options": [
+      "Stormwater runoff only",
+      "Domestic and industrial wastewater only",
+      "Both stormwater and wastewater",
+      "Treated effluent to receiving waters"
+    ],
+    "correct": 1,
+    "explanation": "Sanitary sewers are designed exclusively to carry domestic and industrial wastewater. They are separate from storm sewers, which carry surface runoff. Combined sewers carry both, but are no longer built in Canada."
+  },
+  {
+    "id": 398,
+    "module": "Collection Systems",
+    "difficulty": "easy",
+    "question": "What does 'I/I' stand for in collection system operations?",
+    "options": [
+      "Inspection and Investigation",
+      "Inflow and Infiltration",
+      "Intake and Influent",
+      "Invert and Inflow"
+    ],
+    "correct": 1,
+    "explanation": "I/I stands for Inflow and Infiltration. Inflow is stormwater that enters the sewer through direct connections (roof drains, catch basins). Infiltration is groundwater that seeps in through cracks, joints, or defects in the pipe."
+  },
+  {
+    "id": 399,
+    "module": "Collection Systems",
+    "difficulty": "easy",
+    "question": "The minimum slope for a 200 mm sanitary sewer to achieve self-cleaning velocity is approximately:",
+    "options": [
+      "0.1%",
+      "0.4%",
+      "1.0%",
+      "2.0%"
+    ],
+    "correct": 1,
+    "explanation": "A 200 mm (8-inch) sanitary sewer requires a minimum slope of approximately 0.4% (4 mm/m) to achieve the self-cleaning velocity of 0.6 m/s. This prevents solids from settling in the pipe."
+  },
+  {
+    "id": 400,
+    "module": "Collection Systems",
+    "difficulty": "easy",
+    "question": "What is the self-cleaning velocity for sanitary sewers?",
+    "options": [
+      "0.3 m/s",
+      "0.6 m/s",
+      "1.2 m/s",
+      "2.0 m/s"
+    ],
+    "correct": 1,
+    "explanation": "The minimum self-cleaning velocity for sanitary sewers is 0.6 m/s (2 ft/s). At this velocity, the flow has enough energy to keep solids suspended and prevent buildup in the pipe."
+  },
+  {
+    "id": 401,
+    "module": "Collection Systems",
+    "difficulty": "easy",
+    "question": "A manhole is installed in a collection system primarily to:",
+    "options": [
+      "Increase flow velocity in the sewer",
+      "Provide access for inspection, cleaning, and maintenance",
+      "Reduce the pressure in force mains",
+      "Store flow during peak periods"
+    ],
+    "correct": 1,
+    "explanation": "Manholes provide access points for inspection, cleaning, and maintenance of the sewer system. They are installed at pipe junctions, changes in direction, changes in grade, and at regular intervals along straight runs."
+  },
+  {
+    "id": 402,
+    "module": "Collection Systems",
+    "difficulty": "easy",
+    "question": "What is the maximum spacing for manholes on a straight sewer run?",
+    "options": [
+      "50 m",
+      "100 m",
+      "150 m",
+      "300 m"
+    ],
+    "correct": 1,
+    "explanation": "Ontario guidelines generally require manholes at maximum 100–120 m intervals on straight runs, though some jurisdictions allow up to 150 m. Closer spacing is required at junctions, grade changes, and direction changes."
+  },
+  {
+    "id": 403,
+    "module": "Collection Systems",
+    "difficulty": "easy",
+    "question": "A lift station (pump station) is required in a collection system when:",
+    "options": [
+      "The pipe diameter exceeds 600 mm",
+      "The sewer cannot flow by gravity to the treatment plant",
+      "The flow velocity exceeds 3 m/s",
+      "The wastewater temperature drops below 10°C"
+    ],
+    "correct": 1,
+    "explanation": "Lift stations are required when the terrain prevents gravity flow to the treatment plant. They pump wastewater uphill through a force main to a point where gravity flow can resume."
+  },
+  {
+    "id": 404,
+    "module": "Collection Systems",
+    "difficulty": "easy",
+    "question": "What type of pipe is most commonly used for new sanitary sewer construction in Canada?",
+    "options": [
+      "Cast iron",
+      "Vitrified clay",
+      "PVC (polyvinyl chloride)",
+      "Concrete"
+    ],
+    "correct": 2,
+    "explanation": "PVC pipe is the most commonly used material for new sanitary sewer construction due to its corrosion resistance, smooth interior surface (low friction), light weight, ease of installation, and long service life."
+  },
+  {
+    "id": 405,
+    "module": "Collection Systems",
+    "difficulty": "easy",
+    "question": "The invert of a pipe is:",
+    "options": [
+      "The top inside surface of the pipe",
+      "The bottom inside surface of the pipe",
+      "The centerline elevation of the pipe",
+      "The outside diameter of the pipe"
+    ],
+    "correct": 1,
+    "explanation": "The invert is the lowest point of the inside of the pipe — the bottom interior surface. Invert elevations are used to calculate pipe slopes and ensure proper drainage."
+  },
+  {
+    "id": 406,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "Hydrogen sulfide (H₂S) gas in sewers is produced by:",
+    "options": [
+      "Aerobic bacteria breaking down proteins",
+      "Anaerobic bacteria reducing sulfate compounds",
+      "Chemical reaction between chlorine and ammonia",
+      "Photosynthesis by algae in the sewer"
+    ],
+    "correct": 1,
+    "explanation": "H₂S is produced when anaerobic (sulfate-reducing) bacteria metabolize sulfate compounds in the absence of oxygen. It is common in force mains, long flat sewers, and warm climates where wastewater becomes septic."
+  },
+  {
+    "id": 407,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "The primary hazard of hydrogen sulfide in sewers is:",
+    "options": [
+      "It corrodes plastic pipes",
+      "It is flammable and can cause explosions only",
+      "It is toxic at low concentrations and can cause rapid incapacitation",
+      "It increases the BOD of wastewater"
+    ],
+    "correct": 2,
+    "explanation": "H₂S is highly toxic. At 100 ppm it causes rapid incapacitation; at 700+ ppm it can be immediately fatal. It also causes odour complaints at 0.5 ppm and corrodes concrete and metal infrastructure through biogenic sulfuric acid."
+  },
+  {
+    "id": 408,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "Biogenic sulfuric acid corrosion in concrete sewers occurs when:",
+    "options": [
+      "H₂S gas is oxidized to sulfuric acid by bacteria on the pipe crown",
+      "Chlorine reacts with concrete to form hydrochloric acid",
+      "Stormwater dilutes the wastewater and lowers pH",
+      "High-velocity flow erodes the concrete surface"
+    ],
+    "correct": 0,
+    "explanation": "Thiobacillus bacteria on the crown of concrete sewers oxidize H₂S gas to sulfuric acid (H₂SO₄). This acid attacks the calcium carbonate in concrete, causing severe corrosion that can reduce pipe wall thickness by several millimetres per year."
+  },
+  {
+    "id": 409,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "A force main differs from a gravity sewer in that it:",
+    "options": [
+      "Carries treated effluent only",
+      "Operates under pressure and flows full at all times",
+      "Is always made of concrete",
+      "Has a larger diameter than gravity sewers"
+    ],
+    "correct": 1,
+    "explanation": "A force main is a pressurized pipe that carries wastewater pumped by a lift station. Unlike gravity sewers, it flows full under pressure and can be installed at any grade, including uphill."
+  },
+  {
+    "id": 410,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "The wet well of a lift station is sized to:",
+    "options": [
+      "Treat the wastewater before pumping",
+      "Provide sufficient volume to prevent pump short-cycling",
+      "Store wastewater for 24 hours",
+      "Remove grit and grease before pumping"
+    ],
+    "correct": 1,
+    "explanation": "The wet well must be large enough to prevent pumps from cycling on and off too rapidly (short-cycling), which causes overheating and premature wear. Typical minimum cycle times are 5–10 minutes."
+  },
+  {
+    "id": 411,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "What is the purpose of a check valve on a lift station discharge?",
+    "options": [
+      "Regulate flow to the treatment plant",
+      "Prevent backflow into the wet well when pumps stop",
+      "Measure the flow rate in the force main",
+      "Reduce pressure surges in the force main"
+    ],
+    "correct": 1,
+    "explanation": "Check valves (non-return valves) prevent wastewater from flowing back into the wet well when pumps stop. Without them, the column of water in the force main would drain back, causing water hammer and potential pump damage."
+  },
+  {
+    "id": 412,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "Water hammer in a force main is caused by:",
+    "options": [
+      "Excessive flow velocity in the pipe",
+      "Rapid changes in flow velocity due to sudden pump start/stop",
+      "Corrosion of the pipe wall",
+      "Air pockets accumulating at high points"
+    ],
+    "correct": 1,
+    "explanation": "Water hammer is a pressure surge caused by the sudden deceleration or acceleration of flow — typically when a pump starts or stops abruptly, or when a valve is closed quickly. It can damage pipes, fittings, and pumps."
+  },
+  {
+    "id": 413,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "The best method to prevent water hammer in a force main is:",
+    "options": [
+      "Increase pipe diameter",
+      "Install slow-closing valves and/or surge tanks",
+      "Reduce pump speed",
+      "Increase wet well volume"
+    ],
+    "correct": 1,
+    "explanation": "Slow-closing (non-slam) check valves, surge tanks, and variable-speed drives that allow gradual pump start/stop are the most effective water hammer prevention measures. They reduce the rate of velocity change."
+  },
+  {
+    "id": 414,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "A sewer system with a design peak-to-average flow ratio of 2.5 means:",
+    "options": [
+      "Peak flow is 2.5 times the minimum flow",
+      "Peak flow is 2.5 times the average daily flow",
+      "The pipe is designed for 2.5 m/s velocity",
+      "The system can handle 2.5 times the design flow before surcharging"
+    ],
+    "correct": 1,
+    "explanation": "The peaking factor (peak-to-average ratio) represents how much higher peak flows are compared to average daily flow. A factor of 2.5 means the pipe must handle flows 2.5 times the average without surcharging."
+  },
+  {
+    "id": 415,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "Sewer surcharging occurs when:",
+    "options": [
+      "Flow velocity exceeds 3 m/s",
+      "The hydraulic grade line rises above the pipe crown",
+      "The wet well level drops below the pump intake",
+      "Dissolved oxygen in the wastewater drops below 2 mg/L"
+    ],
+    "correct": 1,
+    "explanation": "Surcharging occurs when the flow exceeds the pipe's capacity and the hydraulic grade line rises above the pipe crown. The pipe flows under pressure, which can cause manhole covers to lift and basement backups."
+  },
+  {
+    "id": 416,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "A CCTV (closed-circuit television) inspection of a sewer is used to:",
+    "options": [
+      "Measure flow rates in the sewer",
+      "Visually inspect the pipe interior for defects, cracks, and blockages",
+      "Test the wastewater for BOD and TSS",
+      "Locate buried manholes"
+    ],
+    "correct": 1,
+    "explanation": "CCTV inspection uses a camera mounted on a crawler to visually examine the pipe interior. It identifies cracks, root intrusion, joint offsets, corrosion, blockages, and other defects without excavation."
+  },
+  {
+    "id": 417,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "Root intrusion in sewer pipes is most problematic in:",
+    "options": [
+      "New PVC pipes",
+      "Older clay or concrete pipes with open joints",
+      "Force mains under pressure",
+      "Pipes with smooth interior surfaces"
+    ],
+    "correct": 1,
+    "explanation": "Tree roots seek moisture and nutrients and enter sewers through open joints, cracks, and defects. Older clay and concrete pipes with bell-and-spigot joints are most susceptible. Roots can cause blockages and structural damage."
+  },
+  {
+    "id": 418,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "The most common cause of sanitary sewer overflows (SSOs) is:",
+    "options": [
+      "Pipe corrosion",
+      "Blockages from grease, rags, and debris",
+      "Pump station failures",
+      "Excessive I/I during wet weather"
+    ],
+    "correct": 1,
+    "explanation": "Blockages from grease buildup, rags, wipes, and debris are the most common cause of SSOs. Grease from restaurants and homes accumulates on pipe walls, eventually restricting flow and causing backups."
+  },
+  {
+    "id": 419,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "A grease trap is installed at a food service establishment to:",
+    "options": [
+      "Remove BOD from wastewater",
+      "Intercept fats, oils, and grease before they enter the sewer",
+      "Reduce the temperature of wastewater",
+      "Neutralize acidic wastewater from dishwashers"
+    ],
+    "correct": 1,
+    "explanation": "Grease traps (interceptors) use gravity separation to remove fats, oils, and grease (FOG) from commercial kitchen wastewater before it enters the sewer. They prevent grease accumulation in the collection system."
+  },
+  {
+    "id": 420,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "The term 'sewer shed' refers to:",
+    "options": [
+      "A building that houses sewer maintenance equipment",
+      "The drainage area that contributes flow to a specific point in the sewer system",
+      "A type of manhole cover",
+      "The area downstream of a lift station"
+    ],
+    "correct": 1,
+    "explanation": "A sewer shed (or sewershed) is the area that drains to a specific point in the collection system — analogous to a watershed in stormwater management. It is used for flow analysis and capacity planning."
+  },
+  {
+    "id": 421,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "The Hazen-Williams equation is used in collection system design to:",
+    "options": [
+      "Calculate the BOD loading to the treatment plant",
+      "Determine head loss due to friction in pressurized pipes",
+      "Calculate the oxygen demand in force mains",
+      "Estimate the peak flow factor for a sewer system"
+    ],
+    "correct": 1,
+    "explanation": "The Hazen-Williams equation calculates friction head loss in pressurized pipes (force mains). It uses the pipe's C-factor (roughness coefficient), diameter, and flow velocity. Manning's equation is used for gravity sewers."
+  },
+  {
+    "id": 422,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "Manning's equation for gravity sewer design uses which coefficient to account for pipe roughness?",
+    "options": [
+      "Hazen-Williams C-factor",
+      "Manning's n",
+      "Darcy-Weisbach friction factor f",
+      "Reynolds number Re"
+    ],
+    "correct": 1,
+    "explanation": "Manning's equation uses 'n' (Manning's roughness coefficient) to account for pipe material roughness. For PVC, n ≈ 0.009–0.011; for concrete, n ≈ 0.013; for vitrified clay, n ≈ 0.012–0.014."
+  },
+  {
+    "id": 423,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "A 300 mm gravity sewer flowing at half-full depth has approximately what percentage of its full-flow capacity?",
+    "options": [
+      "50%",
+      "75%",
+      "82%",
+      "100%"
+    ],
+    "correct": 2,
+    "explanation": "Due to the hydraulic properties of circular pipes, maximum flow actually occurs at about 93% full depth, not 100% full. At half-full depth, a circular pipe carries approximately 82% of its full-flow capacity."
+  },
+  {
+    "id": 424,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "The purpose of a drop manhole is to:",
+    "options": [
+      "Increase flow velocity at a junction",
+      "Connect a higher-elevation incoming sewer to a lower-elevation sewer without causing turbulence",
+      "Measure flow in the sewer",
+      "Provide emergency overflow storage"
+    ],
+    "correct": 1,
+    "explanation": "A drop manhole (or drop connection) allows a sewer entering at a significantly higher elevation to discharge into the manhole without free-falling and causing turbulence, erosion, and H₂S generation. The flow is directed down the outside of the manhole."
+  },
+  {
+    "id": 425,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "In a combined sewer overflow (CSO) event, the overflow:",
+    "options": [
+      "Is fully treated before discharge",
+      "Contains a mixture of stormwater and raw sewage",
+      "Contains only stormwater",
+      "Is diverted to a holding tank for later treatment"
+    ],
+    "correct": 1,
+    "explanation": "During heavy rainfall, combined sewers (carrying both sewage and stormwater) can exceed treatment plant capacity. CSO structures allow the excess — a mixture of diluted raw sewage and stormwater — to overflow directly to receiving waters."
+  },
+  {
+    "id": 426,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "The purpose of a flow equalization basin in a collection system is to:",
+    "options": [
+      "Treat wastewater before it reaches the plant",
+      "Store peak flows and release them at a controlled rate to reduce treatment plant loading",
+      "Remove grit from stormwater",
+      "Provide emergency storage for SSO events"
+    ],
+    "correct": 1,
+    "explanation": "Flow equalization basins store peak wet-weather flows and release them at a controlled rate during off-peak periods. This reduces the peak hydraulic and pollutant loading on the treatment plant, improving process stability."
+  },
+  {
+    "id": 427,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "Acoustic leak detection in force mains works by:",
+    "options": [
+      "Measuring changes in water pressure",
+      "Detecting sound vibrations caused by water escaping through a leak",
+      "Using ground-penetrating radar to locate the pipe",
+      "Injecting tracer gas and detecting it at the surface"
+    ],
+    "correct": 1,
+    "explanation": "Acoustic leak detection uses sensitive microphones or correlators placed on the pipe or at access points to detect the sound and vibration generated by water escaping through a leak. The location is calculated from the time difference between sensors."
+  },
+  {
+    "id": 428,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "The rehabilitation method of pipe lining (CIPP — cured-in-place pipe) is used to:",
+    "options": [
+      "Replace a deteriorated pipe by excavation",
+      "Create a new structural pipe within the existing deteriorated host pipe without excavation",
+      "Increase the diameter of an undersized pipe",
+      "Install a new force main parallel to an existing one"
+    ],
+    "correct": 1,
+    "explanation": "CIPP lining inserts a resin-impregnated felt liner into the existing pipe and cures it in place (using heat or UV light) to form a new structural pipe. It restores structural integrity and stops infiltration without excavation."
+  },
+  {
+    "id": 429,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "Slip lining as a sewer rehabilitation method involves:",
+    "options": [
+      "Inserting a smaller-diameter pipe inside the existing pipe",
+      "Spraying a cement mortar lining on the pipe interior",
+      "Replacing the pipe by pipe bursting",
+      "Injecting chemical grout into joints"
+    ],
+    "correct": 0,
+    "explanation": "Slip lining inserts a smaller-diameter pipe (usually HDPE or PVC) inside the existing deteriorated pipe. The annular space between the two pipes is grouted. It reduces the pipe's hydraulic capacity slightly but restores structural integrity."
+  },
+  {
+    "id": 430,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "Pipe bursting is a trenchless sewer rehabilitation method that:",
+    "options": [
+      "Repairs cracks by injecting epoxy resin",
+      "Replaces the existing pipe by fracturing it outward while simultaneously pulling in a new pipe",
+      "Inserts a flexible liner inside the existing pipe",
+      "Cleans the pipe using high-pressure water jetting"
+    ],
+    "correct": 1,
+    "explanation": "Pipe bursting uses a bursting head pulled through the existing pipe to fracture it outward into the surrounding soil, while simultaneously pulling in a new pipe (usually HDPE) of the same or larger diameter. It replaces rather than rehabilitates the pipe."
+  },
+  {
+    "id": 431,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "The design standard for sanitary sewer capacity in Ontario typically requires the pipe to handle:",
+    "options": [
+      "Average daily flow only",
+      "Peak hourly flow with a safety factor",
+      "Maximum instantaneous flow plus I/I allowance",
+      "Minimum dry-weather flow"
+    ],
+    "correct": 1,
+    "explanation": "Ontario design standards require sanitary sewers to be sized for peak hourly flow (typically 2.5–4× average daily flow depending on population) plus an allowance for I/I. This ensures the system handles wet-weather peaks without surcharging."
+  },
+  {
+    "id": 432,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "What is the purpose of a cleanout in a building sewer?",
+    "options": [
+      "Measure the flow from the building",
+      "Provide access for cleaning and inspection of the building drain",
+      "Prevent backflow from the sewer into the building",
+      "Reduce the velocity of flow entering the sewer"
+    ],
+    "correct": 1,
+    "explanation": "A cleanout is an access fitting installed in the building sewer that allows cleaning equipment (rods, hydrojetting nozzles) to be inserted to clear blockages. It is typically located near the building foundation and at changes in direction."
+  },
+  {
+    "id": 433,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "High-velocity water jetting (hydrojetting) is used in sewer maintenance to:",
+    "options": [
+      "Test the structural integrity of the pipe",
+      "Remove grease, roots, and debris from pipe walls",
+      "Apply a protective coating to the pipe interior",
+      "Measure the flow velocity in the sewer"
+    ],
+    "correct": 1,
+    "explanation": "Hydrojetting uses high-pressure water (typically 10,000–20,000 psi) directed through a nozzle to cut through grease, roots, and debris and flush them downstream to a manhole where they are vacuumed out by a combination unit."
+  },
+  {
+    "id": 434,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "A vactor truck (combination unit) is used in sewer maintenance to:",
+    "options": [
+      "Pump wastewater from a flooded lift station",
+      "Simultaneously jet and vacuum clean a sewer",
+      "Apply chemical root control treatments",
+      "Perform CCTV inspections of sewers"
+    ],
+    "correct": 1,
+    "explanation": "A combination unit (vactor truck) has both a high-pressure water jetting system and a powerful vacuum system. It jets the sewer to loosen debris and simultaneously vacuums the debris and water back into the truck's tank."
+  },
+  {
+    "id": 435,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "Chemical root control in sewers typically uses:",
+    "options": [
+      "Chlorine gas",
+      "Copper sulfate or metam sodium (dichlobenil)",
+      "Sodium hydroxide",
+      "Hydrogen peroxide"
+    ],
+    "correct": 1,
+    "explanation": "Copper sulfate and metam sodium (a systemic herbicide) are the most common chemical root control agents. They are applied as a foam or liquid to kill roots in the pipe without harming the tree. Treatment is typically repeated every 2–5 years."
+  },
+  {
+    "id": 436,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "The purpose of a sewer system master plan is to:",
+    "options": [
+      "Document the location of all manholes",
+      "Assess current system capacity and plan for future growth and rehabilitation",
+      "Calculate the BOD loading to the treatment plant",
+      "Determine the staffing requirements for the collection system"
+    ],
+    "correct": 1,
+    "explanation": "A sewer system master plan evaluates current capacity, identifies deficiencies (capacity, structural, I/I), models future growth scenarios, and prioritizes capital projects for rehabilitation and expansion over a 20–30 year planning horizon."
+  },
+  {
+    "id": 437,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "Smoke testing of a sewer system is used to:",
+    "options": [
+      "Detect H₂S gas in the sewer",
+      "Locate illegal stormwater connections and defects in the sewer",
+      "Measure the flow rate in the sewer",
+      "Test the structural integrity of manholes"
+    ],
+    "correct": 1,
+    "explanation": "Smoke testing involves blowing non-toxic smoke into the sewer and observing where it exits. Smoke appearing from storm drains, catch basins, or building vents indicates illegal cross-connections. Smoke appearing from the ground indicates pipe defects."
+  },
+  {
+    "id": 438,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "Dye testing in a collection system is used to:",
+    "options": [
+      "Measure the BOD of the wastewater",
+      "Confirm suspected cross-connections between sanitary and storm sewers",
+      "Detect hydrogen sulfide in the sewer",
+      "Measure the infiltration rate into the sewer"
+    ],
+    "correct": 1,
+    "explanation": "Dye testing involves introducing a non-toxic fluorescent dye into a suspected cross-connection (e.g., a storm drain or foundation drain) and observing whether it appears in the sanitary sewer. It confirms illegal connections."
+  },
+  {
+    "id": 439,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "The Rational Method for estimating peak stormwater runoff uses the formula Q = CiA, where 'C' represents:",
+    "options": [
+      "Pipe roughness coefficient",
+      "Runoff coefficient (ratio of runoff to rainfall)",
+      "Hazen-Williams C-factor",
+      "Concentration time"
+    ],
+    "correct": 1,
+    "explanation": "In Q = CiA, C is the runoff coefficient (dimensionless, 0–1) representing the fraction of rainfall that becomes runoff. It depends on land use: C ≈ 0.9 for paved areas, 0.1–0.3 for lawns. 'i' is rainfall intensity and 'A' is drainage area."
+  },
+  {
+    "id": 440,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "In a collection system, the term 'hydraulic grade line' (HGL) refers to:",
+    "options": [
+      "The elevation of the pipe invert",
+      "The line representing the pressure head plus elevation head in the system",
+      "The slope of the pipe",
+      "The water surface elevation in the wet well"
+    ],
+    "correct": 1,
+    "explanation": "The hydraulic grade line (HGL) represents the total piezometric head (pressure head + elevation head) at any point in the system. For gravity sewers flowing partially full, the HGL is the water surface. For pressurized pipes, it is above the pipe crown."
+  },
+  {
+    "id": 441,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "A sewer system's infiltration rate is typically measured by:",
+    "options": [
+      "Comparing wet-weather flow to dry-weather flow",
+      "Night-flow isolation testing (measuring minimum nighttime flow)",
+      "CCTV inspection of all pipes",
+      "Dye testing of all manholes"
+    ],
+    "correct": 1,
+    "explanation": "Night-flow isolation testing measures the minimum flow rate in a sewer segment during nighttime (typically 2–4 AM) when domestic water use is minimal. The remaining flow is primarily infiltration. This method quantifies I/I without expensive dye or smoke testing."
+  },
+  {
+    "id": 442,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "The maximum velocity in a sanitary sewer to prevent pipe erosion is typically:",
+    "options": [
+      "1.5 m/s",
+      "3.0 m/s",
+      "4.5 m/s",
+      "6.0 m/s"
+    ],
+    "correct": 1,
+    "explanation": "Maximum velocity in sanitary sewers is typically limited to 3.0 m/s to prevent erosion of the pipe interior. At higher velocities, abrasive solids in the flow can erode pipe walls, especially in concrete and clay pipes."
+  },
+  {
+    "id": 443,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "A lift station's 'firm capacity' is defined as:",
+    "options": [
+      "The total pumping capacity of all pumps running simultaneously",
+      "The pumping capacity with the largest pump out of service",
+      "The capacity at the design peak flow",
+      "The minimum flow the station can handle without short-cycling"
+    ],
+    "correct": 1,
+    "explanation": "Firm capacity is the pumping capacity available with the largest pump out of service for maintenance or repair. Regulations typically require lift stations to handle peak design flows at firm capacity to ensure reliability."
+  },
+  {
+    "id": 444,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "The purpose of a wet well level control system is to:",
+    "options": [
+      "Measure the BOD of the incoming wastewater",
+      "Automatically start and stop pumps based on wet well water level",
+      "Control the flow rate to the treatment plant",
+      "Detect hydrogen sulfide in the wet well"
+    ],
+    "correct": 1,
+    "explanation": "Level control systems (using float switches, ultrasonic sensors, or pressure transducers) monitor the wet well level and automatically start pumps when the level reaches the 'pump on' setpoint and stop them at the 'pump off' setpoint."
+  },
+  {
+    "id": 445,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "What is the purpose of a bypass pumping arrangement at a lift station?",
+    "options": [
+      "Increase the pumping capacity during peak flows",
+      "Allow maintenance of the station while maintaining flow",
+      "Reduce energy costs during off-peak hours",
+      "Provide backup power during outages"
+    ],
+    "correct": 1,
+    "explanation": "Bypass pumping uses portable pumps to maintain flow during planned or emergency shutdowns of the permanent station. It prevents sewage backups and SSOs while the station is being repaired or maintained."
+  },
+  {
+    "id": 446,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "The pump affinity laws state that when pump speed is doubled:",
+    "options": [
+      "Flow doubles, head doubles, power doubles",
+      "Flow doubles, head quadruples, power increases 8-fold",
+      "Flow doubles, head stays constant, power doubles",
+      "Flow stays constant, head doubles, power doubles"
+    ],
+    "correct": 1,
+    "explanation": "The pump affinity laws: Q ∝ N (flow proportional to speed), H ∝ N² (head proportional to speed squared), P ∝ N³ (power proportional to speed cubed). Doubling speed doubles flow, quadruples head, and increases power 8-fold."
+  },
+  {
+    "id": 447,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "Variable frequency drives (VFDs) on lift station pumps are used to:",
+    "options": [
+      "Increase the maximum pumping capacity",
+      "Reduce energy consumption by matching pump speed to flow demand",
+      "Prevent water hammer by eliminating check valves",
+      "Increase the wet well storage volume"
+    ],
+    "correct": 1,
+    "explanation": "VFDs control pump motor speed to match pumping rate to inflow, eliminating the on/off cycling of fixed-speed pumps. This reduces energy consumption (following the affinity law P ∝ N³), reduces water hammer, and extends pump life."
+  },
+  {
+    "id": 448,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "Odour control at a lift station wet well is commonly achieved by:",
+    "options": [
+      "Adding chlorine to the wet well",
+      "Installing activated carbon or chemical scrubbers on the vent",
+      "Increasing the pumping rate to reduce detention time",
+      "Sealing all openings to prevent odour escape"
+    ],
+    "correct": 1,
+    "explanation": "Activated carbon adsorption and chemical scrubbers (using NaOH/NaOCl or iron salts) are the most common odour control methods at lift stations. They treat the air extracted from the wet well before releasing it to atmosphere."
+  },
+  {
+    "id": 449,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "The purpose of a force main air release valve is to:",
+    "options": [
+      "Measure the pressure in the force main",
+      "Release trapped air pockets that reduce hydraulic capacity",
+      "Prevent backflow when pumps stop",
+      "Control the flow rate in the force main"
+    ],
+    "correct": 1,
+    "explanation": "Air release valves (ARVs) are installed at high points in force mains to automatically release trapped air. Air pockets reduce the effective pipe diameter, increase head loss, and can cause water hammer when released suddenly."
+  },
+  {
+    "id": 450,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "A force main's hydraulic analysis must account for:",
+    "options": [
+      "Manning's roughness only",
+      "Static head, friction losses, and minor losses",
+      "Pipe diameter only",
+      "The BOD of the wastewater"
+    ],
+    "correct": 1,
+    "explanation": "Force main design requires calculating: (1) static head (elevation difference between wet well and discharge point), (2) friction losses (Hazen-Williams or Darcy-Weisbach), and (3) minor losses (fittings, valves). The pump must overcome the total dynamic head (TDH)."
+  },
+  {
+    "id": 451,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "The system curve for a force main is a plot of:",
+    "options": [
+      "Flow rate vs. pump efficiency",
+      "Total dynamic head vs. flow rate",
+      "Pump speed vs. power consumption",
+      "Wet well level vs. time"
+    ],
+    "correct": 1,
+    "explanation": "The system curve plots the total dynamic head (TDH) required to overcome static head and friction losses at various flow rates. The operating point is where the pump curve intersects the system curve, defining the actual flow and head delivered."
+  },
+  {
+    "id": 452,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "Cathodic protection on a metallic force main is used to:",
+    "options": [
+      "Increase the pipe's hydraulic capacity",
+      "Prevent electrochemical corrosion of the pipe",
+      "Reduce the operating pressure",
+      "Detect leaks in the pipe"
+    ],
+    "correct": 1,
+    "explanation": "Cathodic protection uses either sacrificial anodes (zinc or magnesium) or impressed current to make the pipe the cathode of an electrochemical cell, preventing the oxidation (corrosion) that would otherwise occur on the metal pipe surface."
+  },
+  {
+    "id": 453,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "The purpose of a sewer atlas (GIS mapping) is to:",
+    "options": [
+      "Calculate the BOD loading to the treatment plant",
+      "Document the location, size, material, age, and condition of all sewer assets",
+      "Plan the staffing schedule for collection system maintenance",
+      "Calculate the peak flow factor for the system"
+    ],
+    "correct": 1,
+    "explanation": "A sewer atlas (increasingly maintained as a GIS database) records the location, pipe size, material, age, invert elevations, and condition of all pipes, manholes, and appurtenances. It is essential for maintenance planning, capacity analysis, and capital planning."
+  },
+  {
+    "id": 454,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "A sanitary sewer overflow (SSO) must be reported to the Ministry of the Environment because:",
+    "options": [
+      "It increases the BOD loading to the treatment plant",
+      "It discharges untreated sewage to the environment, posing public health and environmental risks",
+      "It reduces the flow to the treatment plant",
+      "It indicates the lift station is operating above capacity"
+    ],
+    "correct": 1,
+    "explanation": "SSOs discharge raw or partially treated sewage to the environment, potentially contaminating drinking water sources, recreational waters, and ecosystems. Ontario's Environmental Protection Act and O. Reg. 170/03 require immediate reporting and remediation."
+  },
+  {
+    "id": 455,
+    "module": "Safety & Administration",
+    "difficulty": "easy",
+    "question": "Under Ontario's Occupational Health and Safety Act (OHSA), a worker's right to refuse unsafe work applies when:",
+    "options": [
+      "The worker is tired or overworked",
+      "The worker has reason to believe the work is likely to endanger themselves or another worker",
+      "The worker disagrees with their supervisor's instructions",
+      "The work involves overtime hours"
+    ],
+    "correct": 1,
+    "explanation": "Under OHSA Section 43, a worker may refuse work they have reason to believe is likely to endanger themselves or another worker. The refusal must be reported to the supervisor, and a formal investigation process follows."
+  },
+  {
+    "id": 456,
+    "module": "Safety & Administration",
+    "difficulty": "easy",
+    "question": "The purpose of a Safety Data Sheet (SDS) is to:",
+    "options": [
+      "Record the results of workplace safety inspections",
+      "Provide information on the hazards, safe handling, and emergency procedures for a chemical",
+      "Document worker training records",
+      "List the personal protective equipment required for all tasks"
+    ],
+    "correct": 1,
+    "explanation": "An SDS (formerly MSDS) provides comprehensive information about a chemical substance including: physical/chemical properties, health hazards, exposure limits, safe handling and storage, PPE requirements, and emergency response procedures."
+  },
+  {
+    "id": 457,
+    "module": "Safety & Administration",
+    "difficulty": "easy",
+    "question": "WHMIS 2015 requires that hazardous products in the workplace be:",
+    "options": [
+      "Stored in locked cabinets at all times",
+      "Labelled with standardized GHS hazard pictograms and accompanied by an SDS",
+      "Tested annually for potency",
+      "Disposed of after 6 months regardless of expiry date"
+    ],
+    "correct": 1,
+    "explanation": "WHMIS 2015 (aligned with the Globally Harmonized System) requires hazardous products to have standardized labels with GHS pictograms, signal words, hazard statements, and precautionary statements, plus an SDS available to workers."
+  },
+  {
+    "id": 458,
+    "module": "Safety & Administration",
+    "difficulty": "easy",
+    "question": "The minimum number of people required to safely enter a confined space is:",
+    "options": [
+      "One (the entrant only)",
+      "Two (one entrant and one attendant)",
+      "Three (two entrants and one attendant)",
+      "Four (two entrants, one attendant, one rescue standby)"
+    ],
+    "correct": 1,
+    "explanation": "Ontario's confined space regulations (O. Reg. 632/05) require at minimum an entrant and an attendant (standby person) outside the space. The attendant monitors conditions, maintains communication, and initiates rescue if needed."
+  },
+  {
+    "id": 459,
+    "module": "Safety & Administration",
+    "difficulty": "easy",
+    "question": "Before entering a confined space, the atmosphere must be tested for:",
+    "options": [
+      "Temperature and humidity only",
+      "Oxygen content, flammable gases, and toxic gases",
+      "pH and conductivity",
+      "BOD and TSS"
+    ],
+    "correct": 1,
+    "explanation": "Pre-entry atmospheric testing must check: (1) oxygen content (19.5–23% is acceptable), (2) flammable/explosive gases (below 10% of LEL), and (3) toxic gases such as H₂S and CO. Testing must be done before entry and continuously during work."
+  },
+  {
+    "id": 460,
+    "module": "Safety & Administration",
+    "difficulty": "easy",
+    "question": "The lower explosive limit (LEL) of a gas is:",
+    "options": [
+      "The concentration at which the gas becomes toxic",
+      "The minimum concentration in air at which the gas can ignite",
+      "The maximum concentration at which the gas can ignite",
+      "The concentration that immediately endangers life and health"
+    ],
+    "correct": 1,
+    "explanation": "The LEL is the minimum concentration of a flammable gas in air that can ignite when exposed to an ignition source. Below the LEL, the mixture is too lean to ignite. Work in confined spaces requires gas concentrations below 10% of the LEL."
+  },
+  {
+    "id": 461,
+    "module": "Safety & Administration",
+    "difficulty": "easy",
+    "question": "Personal protective equipment (PPE) is considered:",
+    "options": [
+      "The first line of defence against workplace hazards",
+      "The last line of defence after engineering and administrative controls",
+      "Optional when other controls are in place",
+      "Only required for supervisors"
+    ],
+    "correct": 1,
+    "explanation": "PPE is the last line of defence in the hierarchy of controls: elimination → substitution → engineering controls → administrative controls → PPE. It does not eliminate the hazard but protects the worker from exposure."
+  },
+  {
+    "id": 462,
+    "module": "Safety & Administration",
+    "difficulty": "easy",
+    "question": "A lockout/tagout (LOTO) procedure is used to:",
+    "options": [
+      "Lock the workplace after hours",
+      "Isolate energy sources and prevent equipment from being accidentally energized during maintenance",
+      "Tag equipment that needs repair",
+      "Lock chemicals in storage cabinets"
+    ],
+    "correct": 1,
+    "explanation": "LOTO procedures ensure that equipment is de-energized and cannot be accidentally restarted while workers are performing maintenance. All energy sources (electrical, hydraulic, pneumatic, gravity) must be isolated and locked before work begins."
+  },
+  {
+    "id": 463,
+    "module": "Safety & Administration",
+    "difficulty": "easy",
+    "question": "The purpose of a job hazard analysis (JHA) is to:",
+    "options": [
+      "Document the cost of a job",
+      "Identify hazards associated with each step of a task and determine controls",
+      "Schedule maintenance tasks",
+      "Calculate the time required to complete a job"
+    ],
+    "correct": 1,
+    "explanation": "A JHA (also called a job safety analysis or JSA) breaks a task into steps, identifies the hazards at each step, and determines appropriate controls. It is a proactive safety tool used before starting hazardous tasks."
+  },
+  {
+    "id": 464,
+    "module": "Safety & Administration",
+    "difficulty": "easy",
+    "question": "Under Ontario's OHSA, an employer is required to post which document in the workplace?",
+    "options": [
+      "The company's financial statements",
+      "The OHSA and the workplace's health and safety policy",
+      "The personal information of all workers",
+      "The emergency contact list for all supervisors"
+    ],
+    "correct": 1,
+    "explanation": "Ontario's OHSA requires employers to post a copy of the Act and the workplace's health and safety policy in a conspicuous location accessible to all workers. The Joint Health and Safety Committee (JHSC) posting requirements also apply."
+  },
+  {
+    "id": 465,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "A Joint Health and Safety Committee (JHSC) is required in Ontario workplaces with:",
+    "options": [
+      "5 or more workers",
+      "20 or more workers",
+      "50 or more workers",
+      "100 or more workers"
+    ],
+    "correct": 1,
+    "explanation": "Under Ontario's OHSA, a JHSC is required in workplaces with 20 or more regularly employed workers. The committee must have equal representation from workers and management and meet at least quarterly."
+  },
+  {
+    "id": 466,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The hierarchy of controls for workplace hazards, from most to least effective, is:",
+    "options": [
+      "PPE → Administrative → Engineering → Substitution → Elimination",
+      "Elimination → Substitution → Engineering → Administrative → PPE",
+      "Administrative → Engineering → PPE → Substitution → Elimination",
+      "Engineering → Elimination → Administrative → PPE → Substitution"
+    ],
+    "correct": 1,
+    "explanation": "The hierarchy of controls: (1) Elimination — remove the hazard entirely; (2) Substitution — replace with less hazardous alternative; (3) Engineering controls — isolate workers from hazard; (4) Administrative controls — change work practices; (5) PPE — protect the worker."
+  },
+  {
+    "id": 467,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The IDLH (Immediately Dangerous to Life and Health) concentration for hydrogen sulfide is:",
+    "options": [
+      "1 ppm",
+      "10 ppm",
+      "100 ppm",
+      "1000 ppm"
+    ],
+    "correct": 2,
+    "explanation": "NIOSH has established the IDLH for H₂S at 100 ppm. At this concentration, exposure for 30 minutes can cause serious irreversible health effects or impair escape. Ontario's OEL (TWA) for H₂S is 1 ppm; STEL is 5 ppm."
+  },
+  {
+    "id": 468,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "A permit-required confined space differs from a non-permit confined space in that it:",
+    "options": [
+      "Is larger in volume",
+      "Contains or has the potential to contain a serious safety or health hazard",
+      "Requires more than one worker to enter",
+      "Is located underground"
+    ],
+    "correct": 1,
+    "explanation": "A permit-required confined space has one or more of: (1) hazardous atmosphere, (2) material that could engulf an entrant, (3) internal configuration that could trap/asphyxiate, or (4) any other recognized serious safety hazard. A written entry permit is required."
+  },
+  {
+    "id": 469,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The purpose of an emergency response plan (ERP) at a wastewater treatment plant is to:",
+    "options": [
+      "Document the plant's operating budget",
+      "Provide procedures for responding to emergencies such as chemical spills, equipment failures, and natural disasters",
+      "Schedule routine maintenance activities",
+      "Record the results of effluent monitoring"
+    ],
+    "correct": 1,
+    "explanation": "An ERP outlines procedures, responsibilities, and resources for responding to emergencies. It covers scenarios such as chemical spills, power failures, equipment breakdowns, flooding, and security incidents, ensuring a coordinated and effective response."
+  },
+  {
+    "id": 470,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "Under Ontario's Environmental Protection Act, a spill of a pollutant must be reported to the Ministry of the Environment if:",
+    "options": [
+      "The spill is less than 1 litre",
+      "The spill causes or is likely to cause an adverse effect",
+      "The spill occurs during normal plant operations",
+      "The spill is contained within the plant boundary"
+    ],
+    "correct": 1,
+    "explanation": "Ontario's EPA Section 92 requires immediate reporting of any spill of a pollutant that causes or is likely to cause an adverse effect to the natural environment. This includes spills of chemicals, treated or untreated wastewater, and biosolids."
+  },
+  {
+    "id": 471,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The purpose of a Material Safety Data Sheet (SDS) Section 8 (Exposure Controls/PPE) is to:",
+    "options": [
+      "Describe the chemical's physical properties",
+      "Specify the occupational exposure limits and required PPE",
+      "Provide first aid instructions",
+      "Describe the environmental hazards of the chemical"
+    ],
+    "correct": 1,
+    "explanation": "SDS Section 8 provides occupational exposure limits (OELs such as TWA and STEL), engineering controls, and specific PPE requirements (respirator type, glove material, eye protection) for safe handling of the chemical."
+  },
+  {
+    "id": 472,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "A worker exposed to chlorine gas at a concentration above the IDLH should:",
+    "options": [
+      "Continue working while wearing a dust mask",
+      "Immediately evacuate to fresh air and call for emergency medical assistance",
+      "Drink water to dilute the exposure",
+      "Wait for symptoms to develop before seeking medical attention"
+    ],
+    "correct": 1,
+    "explanation": "Chlorine is a severe respiratory irritant and can be immediately life-threatening above the IDLH (10 ppm). Immediate evacuation to fresh air, removal of contaminated clothing, and emergency medical attention are required. Do not re-enter without SCBA."
+  },
+  {
+    "id": 473,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The purpose of a confined space rescue plan is to:",
+    "options": [
+      "Prevent workers from entering confined spaces",
+      "Ensure that a trained rescue team and equipment are available to retrieve an incapacitated entrant",
+      "Document the hazards in each confined space",
+      "Schedule confined space entries"
+    ],
+    "correct": 1,
+    "explanation": "A rescue plan must be prepared before any confined space entry. It specifies: rescue personnel and their training, rescue equipment (retrieval system, SCBA), communication procedures, and the rescue method (non-entry retrieval preferred over entry rescue)."
+  },
+  {
+    "id": 474,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "Chlorine gas cylinders at a wastewater treatment plant should be stored:",
+    "options": [
+      "In a heated room to prevent freezing",
+      "In a cool, dry, well-ventilated area away from heat sources and incompatible materials",
+      "Horizontally to prevent valve damage",
+      "In the same room as ammonia cylinders to save space"
+    ],
+    "correct": 1,
+    "explanation": "Chlorine cylinders must be stored upright (to keep the liquid/gas interface at the valve), in a cool, dry, well-ventilated area, away from heat sources, and segregated from incompatible materials (especially ammonia, which forms explosive chloramines)."
+  },
+  {
+    "id": 475,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The purpose of a safety shower and eyewash station near chemical handling areas is to:",
+    "options": [
+      "Provide drinking water for workers",
+      "Immediately flush chemicals from the skin and eyes in case of accidental exposure",
+      "Clean chemical spills from the floor",
+      "Test the purity of chemicals before use"
+    ],
+    "correct": 1,
+    "explanation": "Safety showers and eyewash stations provide immediate decontamination for chemical splashes. ANSI Z358.1 requires them to be within 10 seconds travel time (approximately 16 m) of the hazard, delivering tepid water (16–38°C) for at least 15 minutes."
+  },
+  {
+    "id": 476,
+    "module": "Safety & Administration",
+    "difficulty": "hard",
+    "question": "Under Ontario's O. Reg. 528/00 (Wastewater Systems), a Class 2 Wastewater Treatment Operator must hold a certificate of qualification issued by:",
+    "options": [
+      "The Ontario Water Wastewater Certification Office (OWWCO)",
+      "The Ministry of the Environment, Conservation and Parks (MECP)",
+      "The Ontario College of Trades",
+      "The Technical Standards and Safety Authority (TSSA)"
+    ],
+    "correct": 0,
+    "explanation": "OWWCO (Ontario Water Wastewater Certification Office) is the body that administers operator certification under O. Reg. 528/00. Operators must pass OWWCO-approved examinations and meet experience requirements to obtain and renew their certificates."
+  },
+  {
+    "id": 477,
+    "module": "Safety & Administration",
+    "difficulty": "hard",
+    "question": "Ontario Regulation 128/04 (Certification of Drinking Water System Operators and Water Quality Analysts) requires operators to:",
+    "options": [
+      "Hold a valid first aid certificate",
+      "Hold a certificate of qualification appropriate to the class of the system they operate",
+      "Complete 40 hours of continuing education per year",
+      "Be licensed by the Professional Engineers of Ontario"
+    ],
+    "correct": 1,
+    "explanation": "O. Reg. 128/04 requires that drinking water systems be operated by certified operators holding a certificate of qualification at or above the class of the system. The system class is determined by the system's size, complexity, and treatment processes."
+  },
+  {
+    "id": 478,
+    "module": "Safety & Administration",
+    "difficulty": "hard",
+    "question": "The purpose of an operator's log book (operating journal) is to:",
+    "options": [
+      "Record the operator's personal notes",
+      "Provide a legal record of plant operations, including process parameters, maintenance, and unusual events",
+      "Calculate the plant's energy consumption",
+      "Document the plant's capital expenditures"
+    ],
+    "correct": 1,
+    "explanation": "The operating journal is a legal document that records: daily process parameters, equipment operations, maintenance activities, chemical additions, sampling results, unusual events, and corrective actions. It demonstrates regulatory compliance and supports troubleshooting."
+  },
+  {
+    "id": 479,
+    "module": "Safety & Administration",
+    "difficulty": "hard",
+    "question": "Under Ontario's Safe Drinking Water Act (SDWA), an adverse water quality incident (AWQI) must be reported to the Medical Officer of Health and the Ministry within:",
+    "options": [
+      "24 hours",
+      "12 hours",
+      "1 hour",
+      "As soon as reasonably possible (within 24 hours)"
+    ],
+    "correct": 3,
+    "explanation": "O. Reg. 170/03 requires that AWQIs (adverse test results, equipment failures, or other events that may affect drinking water safety) be reported to the Medical Officer of Health and the Ministry of the Environment as soon as reasonably possible and no later than 24 hours after the owner/operator becomes aware."
+  },
+  {
+    "id": 480,
+    "module": "Safety & Administration",
+    "difficulty": "hard",
+    "question": "The purpose of a management of change (MOC) procedure at a wastewater treatment plant is to:",
+    "options": [
+      "Manage staff turnover and training",
+      "Ensure that changes to processes, equipment, or procedures are evaluated for safety and operational impacts before implementation",
+      "Document the plant's budget changes",
+      "Schedule equipment replacement projects"
+    ],
+    "correct": 1,
+    "explanation": "MOC procedures ensure that any change (process modification, chemical substitution, equipment upgrade, procedure change) is reviewed for safety, environmental, and operational impacts before implementation. They prevent unintended consequences and ensure proper documentation and training."
+  },
+  {
+    "id": 481,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "A plant's emergency action plan (EAP) should include:",
+    "options": [
+      "The plant's financial statements",
+      "Evacuation routes, assembly points, emergency contacts, and procedures for specific emergency scenarios",
+      "The operator's certification requirements",
+      "The plant's energy consumption data"
+    ],
+    "correct": 1,
+    "explanation": "An EAP must include: evacuation routes and assembly points, emergency contact numbers (fire, police, ambulance, utility, Ministry), procedures for specific scenarios (fire, chemical spill, power failure, flooding), and the roles and responsibilities of designated emergency response personnel."
+  },
+  {
+    "id": 482,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The purpose of a preventive maintenance (PM) program is to:",
+    "options": [
+      "Repair equipment after it fails",
+      "Perform scheduled maintenance to prevent equipment failures and extend service life",
+      "Document all equipment failures",
+      "Calculate the cost of equipment replacement"
+    ],
+    "correct": 1,
+    "explanation": "A PM program schedules maintenance tasks (lubrication, inspection, calibration, filter replacement) at regular intervals based on manufacturer recommendations and operational experience. It reduces unplanned failures, extends equipment life, and reduces overall maintenance costs."
+  },
+  {
+    "id": 483,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "A computerized maintenance management system (CMMS) is used to:",
+    "options": [
+      "Control the treatment process automatically",
+      "Track work orders, maintenance history, spare parts inventory, and equipment condition",
+      "Monitor effluent quality in real time",
+      "Calculate the plant's energy consumption"
+    ],
+    "correct": 1,
+    "explanation": "A CMMS manages all maintenance activities: scheduling PM tasks, tracking work orders, recording equipment history, managing spare parts inventory, and generating reports on maintenance costs and equipment reliability. It supports asset management and regulatory compliance."
+  },
+  {
+    "id": 484,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The purpose of a safety audit at a wastewater treatment plant is to:",
+    "options": [
+      "Calculate the plant's insurance premiums",
+      "Systematically evaluate the plant's safety program, identify deficiencies, and recommend improvements",
+      "Document the plant's operating costs",
+      "Schedule worker vacations"
+    ],
+    "correct": 1,
+    "explanation": "A safety audit is a systematic review of the plant's safety program, practices, and conditions. It identifies gaps between actual practices and regulatory requirements or best practices, and recommends corrective actions to improve worker safety."
+  },
+  {
+    "id": 485,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "Under Ontario's OHSA, a 'competent person' is defined as someone who:",
+    "options": [
+      "Has a university degree in engineering",
+      "Is qualified because of knowledge, training, and experience to organize and perform work safely",
+      "Has more than 5 years of experience",
+      "Holds a valid first aid certificate"
+    ],
+    "correct": 1,
+    "explanation": "OHSA defines a competent person as someone qualified by knowledge, training, and experience to organize and perform work, familiar with the OHSA and regulations applicable to the work, and knowledgeable about potential or actual hazards in the workplace."
+  },
+  {
+    "id": 486,
+    "module": "Safety & Administration",
+    "difficulty": "hard",
+    "question": "The purpose of a process hazard analysis (PHA) at a wastewater treatment plant is to:",
+    "options": [
+      "Calculate the plant's energy consumption",
+      "Systematically identify and evaluate hazards associated with the treatment process to prevent accidents",
+      "Document the plant's operating procedures",
+      "Schedule operator training programs"
+    ],
+    "correct": 1,
+    "explanation": "A PHA (using methods like HAZOP, What-If, or Checklist) systematically identifies process hazards, evaluates their potential consequences, and recommends safeguards. It is particularly important for chemical handling, confined space operations, and high-pressure systems."
+  },
+  {
+    "id": 487,
+    "module": "Safety & Administration",
+    "difficulty": "hard",
+    "question": "Ontario's Regulation 851 (Industrial Establishments) requires that:",
+    "options": [
+      "All workers wear hard hats at all times",
+      "Employers assess and control workplace hazards, maintain equipment, and provide worker training",
+      "Workers complete 40 hours of safety training annually",
+      "All equipment be replaced every 10 years"
+    ],
+    "correct": 1,
+    "explanation": "O. Reg. 851 under the OHSA sets out specific requirements for industrial establishments including: machine guarding, electrical safety, material handling, fire prevention, first aid, and general workplace conditions. It applies to most wastewater treatment plants."
+  },
+  {
+    "id": 488,
+    "module": "Safety & Administration",
+    "difficulty": "hard",
+    "question": "The purpose of a spill prevention, control, and countermeasure (SPCC) plan is to:",
+    "options": [
+      "Prevent chemical spills by restricting chemical use",
+      "Outline procedures to prevent spills, contain them if they occur, and minimize environmental damage",
+      "Document the plant's chemical inventory",
+      "Calculate the cost of spill cleanup"
+    ],
+    "correct": 1,
+    "explanation": "An SPCC plan identifies potential spill scenarios, describes containment structures (berms, secondary containment), outlines response procedures, identifies responsible personnel, and specifies notification requirements. It is required for facilities storing significant quantities of hazardous materials."
+  },
+  {
+    "id": 489,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The purpose of secondary containment around chemical storage tanks is to:",
+    "options": [
+      "Increase the storage capacity of the tank",
+      "Contain the contents of the tank in case of a leak or rupture, preventing environmental contamination",
+      "Protect the tank from physical damage",
+      "Reduce the evaporation of chemicals from the tank"
+    ],
+    "correct": 1,
+    "explanation": "Secondary containment (berms, dikes, or containment basins) surrounds chemical storage tanks to capture the tank's contents in case of a leak, rupture, or overfill. Ontario regulations typically require containment capacity of 110% of the largest tank volume."
+  },
+  {
+    "id": 490,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "A safety inspection checklist for a wastewater treatment plant should include:",
+    "options": [
+      "The plant's financial performance indicators",
+      "Checks for slip/trip hazards, equipment guarding, PPE availability, emergency equipment condition, and chemical storage compliance",
+      "The operator's training records",
+      "The plant's energy consumption data"
+    ],
+    "correct": 1,
+    "explanation": "A comprehensive safety inspection checklist covers: housekeeping (slip/trip hazards), machine guarding, electrical safety, PPE availability and condition, emergency equipment (eyewash, fire extinguishers, first aid), confined space signage, and chemical storage compliance."
+  },
+  {
+    "id": 491,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The purpose of a near-miss reporting program is to:",
+    "options": [
+      "Punish workers who make mistakes",
+      "Identify and correct hazardous conditions before they result in an injury or incident",
+      "Document the plant's safety record for insurance purposes",
+      "Calculate the plant's lost-time injury rate"
+    ],
+    "correct": 1,
+    "explanation": "Near-miss reporting captures incidents where no injury occurred but could have. Analyzing near-misses identifies systemic hazards and allows corrective action before a serious injury occurs. A non-punitive reporting culture is essential for program effectiveness."
+  },
+  {
+    "id": 492,
+    "module": "Safety & Administration",
+    "difficulty": "hard",
+    "question": "The Total Recordable Incident Rate (TRIR) is calculated as:",
+    "options": [
+      "(Number of incidents / Number of workers) × 100",
+      "(Number of recordable incidents × 200,000) / Total hours worked",
+      "(Number of lost-time injuries / Total hours worked) × 1,000,000",
+      "Number of incidents per year"
+    ],
+    "correct": 1,
+    "explanation": "TRIR = (Number of recordable incidents × 200,000) / Total hours worked. The 200,000 factor represents 100 full-time workers working 2,000 hours/year, allowing comparison between organizations of different sizes."
+  },
+  {
+    "id": 493,
+    "module": "Safety & Administration",
+    "difficulty": "hard",
+    "question": "Under Ontario's Workplace Safety and Insurance Act (WSIA), an employer must report a workplace injury to the WSIB within:",
+    "options": [
+      "24 hours",
+      "3 days",
+      "7 days",
+      "30 days"
+    ],
+    "correct": 1,
+    "explanation": "Ontario's WSIA requires employers to report workplace injuries to the WSIB within 3 days of learning of the injury. The employer must also provide the injured worker with a Form 7 (Employer's Report of Injury/Disease)."
+  },
+  {
+    "id": 494,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The purpose of a toolbox talk (safety talk) is to:",
+    "options": [
+      "Formally document all safety hazards",
+      "Provide a brief, informal safety discussion at the start of a work shift or task",
+      "Replace the formal safety training program",
+      "Document worker attendance at safety meetings"
+    ],
+    "correct": 1,
+    "explanation": "Toolbox talks are short (5–15 minute) safety discussions held at the worksite before starting a task or shift. They address specific hazards relevant to the day's work, reinforce safe practices, and provide a forum for workers to raise safety concerns."
+  },
+  {
+    "id": 495,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The purpose of a safety orientation for new workers at a wastewater treatment plant is to:",
+    "options": [
+      "Test the worker's technical knowledge of wastewater treatment",
+      "Familiarize the worker with workplace hazards, emergency procedures, PPE requirements, and safety rules before they begin work",
+      "Document the worker's qualifications",
+      "Assign the worker to their first task"
+    ],
+    "correct": 1,
+    "explanation": "New worker orientation ensures workers understand the specific hazards of the wastewater treatment environment (confined spaces, H₂S, chlorine, biological hazards, electrical equipment) and know the emergency procedures, PPE requirements, and safety rules before they begin work."
+  },
+  {
+    "id": 496,
+    "module": "Safety & Administration",
+    "difficulty": "hard",
+    "question": "Ontario's O. Reg. 632/05 (Confined Spaces) requires that before a worker enters a confined space, the employer must:",
+    "options": [
+      "Notify the Ministry of Labour",
+      "Prepare a written program, assess the space, develop an entry plan, and ensure rescue arrangements are in place",
+      "Obtain a permit from the municipality",
+      "Ensure the worker holds a confined space entry certificate"
+    ],
+    "correct": 1,
+    "explanation": "O. Reg. 632/05 requires: (1) a written confined space program, (2) assessment of each confined space, (3) a written entry plan for each entry, (4) atmospheric testing, (5) ventilation where required, (6) rescue arrangements, and (7) an attendant outside the space."
+  },
+  {
+    "id": 497,
+    "module": "Safety & Administration",
+    "difficulty": "hard",
+    "question": "The purpose of a plant's asset management plan (AMP) is to:",
+    "options": [
+      "Document the plant's daily operating procedures",
+      "Systematically manage infrastructure assets to optimize performance, manage risk, and minimize lifecycle costs",
+      "Calculate the plant's annual operating budget",
+      "Schedule operator certification renewals"
+    ],
+    "correct": 1,
+    "explanation": "An AMP provides a framework for managing infrastructure assets (pipes, pumps, tanks, buildings) over their full lifecycle. It includes asset inventory, condition assessment, risk assessment, maintenance strategies, and long-term capital investment planning to optimize performance and minimize total cost of ownership."
+  },
+  {
+    "id": 498,
+    "module": "Safety & Administration",
+    "difficulty": "medium",
+    "question": "The purpose of a confined space entry permit is to:",
+    "options": [
+      "Grant legal permission from the municipality to enter the space",
+      "Document that all required safety precautions have been completed before entry",
+      "Record the time workers spend in the confined space for payroll purposes",
+      "Notify the Ministry of Labour of the planned entry"
+    ],
+    "correct": 1,
+    "explanation": "A confined space entry permit documents that all required precautions have been completed: atmospheric testing results, ventilation in place, rescue arrangements confirmed, PPE assigned, and authorized personnel identified. It is a communication and accountability tool, not a legal permit from a government authority."
+  },
+  {
+    "id": 499,
+    "module": "Collection Systems",
+    "difficulty": "medium",
+    "question": "The purpose of a sewer system flow monitoring program is to:",
+    "options": [
+      "Measure the BOD and TSS of the wastewater",
+      "Quantify flows throughout the system to identify I/I sources, capacity constraints, and support master planning",
+      "Monitor the chemical composition of industrial discharges",
+      "Calculate the energy consumption of lift stations"
+    ],
+    "correct": 1,
+    "explanation": "Flow monitoring uses portable or permanent flow meters at strategic locations to measure flow rates and volumes. The data identifies I/I sources (by comparing wet-weather to dry-weather flows), locates capacity constraints, validates hydraulic models, and supports master planning and regulatory reporting."
+  },
+  {
+    "id": 500,
+    "module": "Collection Systems",
+    "difficulty": "hard",
+    "question": "The Darcy-Weisbach equation for head loss in a pipe is hf = f(L/D)(V²/2g). In this equation, 'f' represents:",
+    "options": [
+      "Manning's roughness coefficient",
+      "The Darcy-Weisbach friction factor, which depends on Reynolds number and pipe roughness",
+      "The Hazen-Williams C-factor",
+      "The flow velocity in m/s"
+    ],
+    "correct": 1,
+    "explanation": "In the Darcy-Weisbach equation, 'f' is the dimensionless Darcy friction factor. For laminar flow (Re < 2000), f = 64/Re. For turbulent flow, f depends on both the Reynolds number and the relative roughness (ε/D) of the pipe, determined from the Moody diagram or Colebrook-White equation."
   }
 ];
 
@@ -5594,7 +7064,6 @@ export function getClass2WWNextQuestion(
   const usedIds = new Set(history.map(h => h.questionId));
   const available = pool.filter(q => !usedIds.has(q.id));
   if (available.length === 0) return null;
-  // Prioritise questions the user got wrong
   const wrongIds = new Set(history.filter(h => !h.correct).map(h => h.questionId));
   const wrongAvailable = available.filter(q => wrongIds.has(q.id));
   const candidates = wrongAvailable.length > 0 ? wrongAvailable : available;
