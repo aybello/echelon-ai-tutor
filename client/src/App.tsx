@@ -25,6 +25,8 @@ import Pricing from "@/pages/Pricing";
 import PurchaseSuccess from "@/pages/PurchaseSuccess";
 import Class1WaterQuiz from "@/pages/Class1WaterQuiz";
 import Class1WaterMockExam from "@/pages/Class1WaterMockExam";
+import Class1WastewaterQuiz from "@/pages/Class1WastewaterQuiz";
+import Class1WastewaterMockExam from "@/pages/Class1WastewaterMockExam";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -48,6 +50,8 @@ function Router() {
       <Route path={"/oit-mock"} component={OITMockExam} />
       <Route path={"/class1-water"} component={Class1WaterQuiz} />
       <Route path={"/class1-water-mock"} component={Class1WaterMockExam} />
+      <Route path={"/class1-ww"} component={Class1WastewaterQuiz} />
+      <Route path={"/class1-ww-mock"} component={Class1WastewaterMockExam} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/purchase-success"} component={PurchaseSuccess} />

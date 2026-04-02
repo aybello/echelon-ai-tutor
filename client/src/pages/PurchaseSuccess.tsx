@@ -15,11 +15,12 @@ const PRODUCT_PATHS: Record<string, { label: string; path: string }[]> = {
     { label: "OIT Mock Exam", path: "/oit-mock" },
   ],
   "class1-water": [
-    { label: "Class 1 Water Practice Quiz", path: "/class1" },
-    { label: "Class 1 Water Mock Exam", path: "/class1-mock" },
+    { label: "Class 1 Water Practice Quiz", path: "/class1-water" },
+    { label: "Class 1 Water Mock Exam", path: "/class1-water-mock" },
   ],
   "class1-ww": [
-    { label: "Class 1 Wastewater Practice Quiz", path: "/wastewater" },
+    { label: "Class 1 Wastewater Practice Quiz", path: "/class1-ww" },
+    { label: "Class 1 Wastewater Mock Exam", path: "/class1-ww-mock" },
   ],
   wqa: [
     { label: "WQA Practice Quiz", path: "/wqa" },
@@ -27,18 +28,22 @@ const PRODUCT_PATHS: Record<string, { label: string; path: string }[]> = {
   ],
   "bundle-water": [
     { label: "OIT Practice Quiz", path: "/quiz" },
-    { label: "Class 1 Water Practice Quiz", path: "/class1" },
+    { label: "Class 1 Water Practice Quiz", path: "/class1-water" },
     { label: "OIT Mock Exam", path: "/oit-mock" },
+    { label: "Class 1 Water Mock Exam", path: "/class1-water-mock" },
   ],
   "bundle-ww": [
-    { label: "Class 1 Wastewater Practice Quiz", path: "/wastewater" },
+    { label: "Class 1 Wastewater Practice Quiz", path: "/class1-ww" },
+    { label: "Class 1 Wastewater Mock Exam", path: "/class1-ww-mock" },
   ],
   "bundle-all": [
     { label: "OIT Practice Quiz", path: "/quiz" },
-    { label: "Class 1 Water Practice Quiz", path: "/class1" },
+    { label: "Class 1 Water Practice Quiz", path: "/class1-water" },
+    { label: "Class 1 Wastewater Practice Quiz", path: "/class1-ww" },
     { label: "WQA Practice Quiz", path: "/wqa" },
     { label: "OIT Mock Exam", path: "/oit-mock" },
-    { label: "Class 1 Water Mock Exam", path: "/class1-mock" },
+    { label: "Class 1 Water Mock Exam", path: "/class1-water-mock" },
+    { label: "Class 1 Wastewater Mock Exam", path: "/class1-ww-mock" },
     { label: "WQA Mock Exam", path: "/wqa-mock" },
   ],
 };

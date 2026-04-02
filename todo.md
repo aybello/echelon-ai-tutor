@@ -128,3 +128,9 @@
 - [x] Build Class 1 Water 100-question mock exam page (/class1-water-mock)
 - [x] Wire /class1-water and /class1-water-mock routes in App.tsx
 - [x] Add Class 1 Water to nav and update PurchaseSuccess PRODUCT_PATHS
+- [x] Write 601 Class 1 Wastewater Treatment questions (8 modules) in class1WastewaterQuestions.ts
+- [x] Build Class 1 Wastewater quiz page (/class1-ww) with 15-question free gate + PurchaseGate
+- [x] Build Class 1 Wastewater mock exam page (/class1-ww-mock) with 100-question timed exam
+- [x] Wire /class1-ww and /class1-ww-mock routes in App.tsx and add to SiteNav
+- [x] Update Landing page course catalogue to link Class 1 Water card to /class1-water and /class1-water-mock
+- [x] Wire Class 1 Water and Class 1 Wastewater Practice Passes into PurchaseSuccess PRODUCT_PATHS

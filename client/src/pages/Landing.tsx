@@ -337,7 +337,7 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
         </button>
       ) : (
         <>
-          <Link href={course.code === "CL1-WW" ? "/class1?stream=wastewater" : course.code === "CL1-W" ? "/class1?stream=water" : course.code === "WQA" ? "/wqa" : "/quiz"}>
+          <Link href={course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "WQA" ? "/wqa" : "/quiz"}>
             <button style={{
               width: "100%", padding: "12px",
               background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
@@ -363,7 +363,7 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
             </Link>
           )}
           {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "WQA") && (
-            <Link href={course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-mock?stream=wastewater" : "/class1-mock?stream=water"}>
+            <Link href={course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-ww-mock" : "/class1-water-mock"}>
               <button style={{
                 width: "100%", padding: "10px",
                 background: "transparent",
