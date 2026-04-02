@@ -145,3 +145,5 @@
 - [ ] Write 200+ original questions from AWWA + RoyCEU material to reach 500 total in Class 2 Water bank
 - [x] Replace class2WaterQuestions.ts with expanded 500-question bank
 - [x] Update Class2WaterMockExam.tsx EXAM_MODULE_TARGETS to official Class 2 blueprint weights (Treatment: 32, Lab: 24, Equipment: 15, Safety: 16, Source Water: 13)
+- [x] Update Pricing page Class 2 Water card copy from '280+ questions' to '500 questions'
+- [x] Add ScoreHistory component to Class2WaterMockExam results screen (already present — verified)
