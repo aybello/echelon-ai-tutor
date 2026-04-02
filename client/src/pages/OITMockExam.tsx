@@ -7,7 +7,7 @@ import { Link } from "wouter";
 import { QUESTIONS, OIT_MODULES, type Question } from "@/lib/questions";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { isTrialUnlocked } from "@/components/QuizGate";
+import PurchaseGate from "@/components/PurchaseGate";
 import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
 
@@ -119,7 +119,6 @@ export default function OITMockExam() {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resultSavedRef = useRef(false);
 
-  const unlocked = isTrialUnlocked();
   const saveResult = trpc.exam.saveResult.useMutation();
 
   const startExam = useCallback(() => {
@@ -205,9 +204,10 @@ export default function OITMockExam() {
   const timerColor = timeLeft < 600 ? "#DC2626" : timeLeft < 1800 ? "#D97706" : "#0369A1";
   const answered = answers.filter(a => a.selected !== null).length;
 
-  // ── INTRO SCREEN ──────────────────────────────────────────────────────────
+  // -- INTRO SCREEN ----------------------------------------------------------
   if (examState === "intro") {
     return (
+      <PurchaseGate examType="oit" productKey="oit" productName="OIT Practice Pass" price={49}>
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath="/oit-mock" />
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px" }}>
@@ -277,32 +277,19 @@ export default function OITMockExam() {
                 ))}
               </div>
             </div>
-            {unlocked ? (
-              <button onClick={startExam} style={{ width: "100%", padding: "14px 24px", borderRadius: 14, background: "linear-gradient(135deg, #1D4ED8, #0E7490)", color: "#fff", fontWeight: 800, fontSize: 16, border: "none", cursor: "pointer", fontFamily: "inherit" }}>
-                🚀 Start Exam
-              </button>
-            ) : (
-              <div>
-                <div style={{ padding: "14px 16px", borderRadius: 12, background: "#FFF7ED", border: "1px solid #FED7AA", marginBottom: 16, fontSize: 13, color: "#92400E" }}>
-                  ⚠️ Complete 15 free practice questions to unlock the mock exam.
-                </div>
-                <Link href="/quiz">
-                  <button style={{ width: "100%", padding: "14px 24px", borderRadius: 14, background: "linear-gradient(135deg, #1D4ED8, #0E7490)", color: "#fff", fontWeight: 800, fontSize: 16, border: "none", cursor: "pointer", fontFamily: "inherit" }}>
-                    📝 Go to OIT Practice
-                  </button>
-                </Link>
-              </div>
-            )}
+            <button onClick={startExam} style={{ width: "100%", padding: "14px 24px", borderRadius: 14, background: "linear-gradient(135deg, #1D4ED8, #0E7490)", color: "#fff", fontWeight: 800, fontSize: 16, border: "none", cursor: "pointer", fontFamily: "inherit" }}>
+              🚀 Start Exam
+            </button>
             <div style={{ marginTop: 16 }}>
               <Link href="/quiz" style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none" }}>← Back to OIT Practice</Link>
             </div>
           </div>
         </div>
       </div>
+      </PurchaseGate>
     );
   }
-
-  // ── RESULTS SCREEN ────────────────────────────────────────────────────────
+  // -- RESULTS SCREENN --------------------------------------------------------
   if (examState === "results" && results) {
     const { correct, score, passed, moduleBreakdown } = results;
     return (
@@ -408,7 +395,7 @@ export default function OITMockExam() {
     );
   }
 
-  // ── ACTIVE EXAM SCREEN ────────────────────────────────────────────────────
+  // -- ACTIVE EXAM SCREEN ----------------------------------------------------
   if (!currentQ) return null;
 
   const isFlagged = flagged.includes(currentIdx);
@@ -485,7 +472,7 @@ export default function OITMockExam() {
               disabled={currentIdx === 0}
               style={{ flex: 1, minWidth: 100, padding: "12px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: currentIdx === 0 ? "#CBD5E1" : "#0F172A", fontWeight: 700, fontSize: 14, cursor: currentIdx === 0 ? "not-allowed" : "pointer", fontFamily: "inherit" }}
             >
-              ← Prev
+              « Prev
             </button>
             <button
               onClick={toggleFlag}

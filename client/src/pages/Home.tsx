@@ -1130,6 +1130,15 @@ export default function Home() {
       {showGate && (
         <QuizGate
           questionsAnswered={history.length}
+          productKey="oit"
+          productName="OIT Practice Pass"
+          priceLabel="CA$49"
+          paidFeatures={[
+            "Full 500+ question bank — unlimited attempts",
+            "OIT Mock Exam (100 questions, 2-hour timer)",
+            "AI Tutor explanations on every question",
+            "Score history & module breakdown",
+          ]}
           onUnlocked={() => {
             setTrialUnlocked();
             setTrialUnlockedState(true);

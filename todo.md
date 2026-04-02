@@ -117,3 +117,6 @@
 - [x] Update admin stats to include purchaseCount and totalRevenueCAD
 - [x] Add Pricing link to Landing page nav and hero CTA
 - [x] Write vitest for purchase schema and updated admin stats (47 tests passing)
+- [x] Rework OIT QuizGate: after 15 free questions show dual-path paywall (Stripe OIT Practice Pass OR free email unlock)
+- [x] OIT Practice Pass unlocks full 500-question bank + OIT mock exam (PurchaseGate on OIT mock exam)
+- [x] Update OIT mock exam (/oit-mock) to be gated behind PurchaseGate for OIT product key
