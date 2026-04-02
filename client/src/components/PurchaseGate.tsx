@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 
-const LOGO_URL = "https://cdn.manus.computer/uploads/echelon-icon-v2.png";
+const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png";
 
 interface PurchaseGateProps {
   examType: string;       // e.g. "oit", "class1-water", "wqa"

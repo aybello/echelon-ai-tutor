@@ -122,3 +122,4 @@
 - [x] Update OIT mock exam (/oit-mock) to be gated behind PurchaseGate for OIT product key
 - [x] Add 25 new OIT questions to reach 500+ total in questions.ts
 - [x] Update all copy to say "500+ questions" (QuizGate, PurchaseGate, Pricing, Landing, products.ts, OITMockExam, About, Home)
+- [x] Fix broken logo image in SiteNav (broken img tag showing next to "Echelon Institute" text)
