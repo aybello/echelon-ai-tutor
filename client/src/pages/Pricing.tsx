@@ -112,7 +112,7 @@ const INDIVIDUAL: Product[] = [
     key: "class2-ww",
     name: "Class 2 Wastewater",
     shortName: "Class 2 WW",
-    description: "Activated sludge, nutrient removal, advanced secondary treatment, and process control. 395 questions across 5 modules.",
+    description: "Activated sludge, nutrient removal, advanced secondary treatment, and process control. 500 questions across 5 modules.",
     priceCAD: 9900,
     examTypes: ["class2-ww"],
     badge: "Available Now",

@@ -127,7 +127,7 @@ const WASTEWATER_COURSES = [
     subtitle: "Class 2 Certification",
     price: 229,
     duration: "8–10 weeks",
-    questions: 395,
+    questions: 500,
     description: "Advanced biological treatment, nutrient removal, sludge management, and process troubleshooting.",
     topics: ["Nutrient Removal (BNR)", "Sludge Processing & Dewatering", "SRT & SVI Calculations", "Advanced Lab Analysis", "Process Optimization"],
     badge: "New",

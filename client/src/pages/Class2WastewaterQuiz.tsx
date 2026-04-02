@@ -1,5 +1,5 @@
 // Class 2 Wastewater Treatment Practice Quiz
-// 395-question bank · 15-question free trial · paid full access via PurchaseGate
+// 500-question bank · 15-question free trial · paid full access via PurchaseGate
 // Mirrors Class1WastewaterQuiz structure
 import { useState, useCallback, useMemo } from "react";
 import { Link } from "wouter";
@@ -71,7 +71,7 @@ function getNextQ(history: HistoryEntry[], trialUnlocked: boolean): QCompat | nu
 export default function Class2WastewaterQuiz() {
   usePageMeta({
     title: "Class 2 Wastewater Treatment Practice",
-    description: "Practice for your Ontario Class 2 Wastewater Treatment operator exam with 395+ questions, AI Tutor explanations, and a full 100-question mock exam.",
+    description: "Practice for your Ontario Class 2 Wastewater Treatment operator exam with 500 questions, AI Tutor explanations, and a full 100-question mock exam.",
     path: "/class2-ww",
     keywords: "Class 2 wastewater treatment exam prep, Ontario operator certification, OWWCO, O. Reg. 128/04 practice questions, activated sludge, nutrient removal",
   });
@@ -155,9 +155,14 @@ export default function Class2WastewaterQuiz() {
       <div style={{ maxWidth: 680, margin: "0 auto", padding: "80px 16px 40px" }}>
         {/* Header */}
         <div style={{ marginBottom: 20 }}>
-          <Link href="/pricing" style={{ textDecoration: "none" }}>
-            <span style={{ fontSize: 12, color: "#94A3B8", cursor: "pointer" }}>← All Courses</span>
-          </Link>
+          <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+            <Link href="/pricing" style={{ textDecoration: "none" }}>
+              <span style={{ fontSize: 12, color: "#94A3B8", cursor: "pointer" }}>← All Courses</span>
+            </Link>
+            <Link href="/formulas-ww2" style={{ textDecoration: "none" }}>
+              <span style={{ fontSize: 12, color: BRAND, cursor: "pointer", fontWeight: 700 }}>📐 Formula Sheet</span>
+            </Link>
+          </div>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 8 }}>
             <div style={{ width: 44, height: 44, borderRadius: 12, background: BRAND, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>
               ♻️
@@ -375,7 +380,7 @@ export default function Class2WastewaterQuiz() {
           productName="Class 2 Wastewater Treatment Practice Pass"
           priceLabel="CA$99"
           paidFeatures={[
-            "Full 395+ question bank — unlimited attempts",
+            "Full 500-question bank — unlimited attempts",
             "Class 2 Wastewater Mock Exam (100 questions, 2-hour timer)",
             "AI Tutor explanations on every question",
             "Score history & module breakdown",

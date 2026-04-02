@@ -32,6 +32,7 @@ import Class1WastewaterMockExam from "@/pages/Class1WastewaterMockExam";
 import Class2WastewaterQuiz from "@/pages/Class2WastewaterQuiz";
 import Class2WastewaterMockExam from "@/pages/Class2WastewaterMockExam";
 import Account from "@/pages/Account";
+import FormulasWW2 from "@/pages/FormulasWW2";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -61,6 +62,7 @@ function Router() {
       <Route path={"/class1-ww-mock"} component={Class1WastewaterMockExam} />
       <Route path={"/class2-ww"} component={Class2WastewaterQuiz} />
       <Route path={"/class2-ww-mock"} component={Class2WastewaterMockExam} />
+      <Route path={"/formulas-ww2"} component={FormulasWW2} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/purchase-success"} component={PurchaseSuccess} />
