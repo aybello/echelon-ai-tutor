@@ -150,3 +150,4 @@
 - [x] Update Class2WaterQuiz usePageMeta description from '280+ questions' to '500 questions'
 - [x] Add Class 2 Water card to Landing page course catalogue with link to /class2-water
 - [x] Update Class 2 Water price to $99 CAD in Pricing.tsx and server/stripe/products.ts
+- [x] Add 'Practice Pass available from $X' secondary text line to all 5 available Landing page course cards

@@ -23,6 +23,7 @@ const WATER_COURSES = [
     color: "#1D4ED8",
     bg: "#EFF6FF",
     border: "#BFDBFE",
+    practicePassPrice: 49,
   },
   {
     code: "CL1-W",
@@ -37,6 +38,7 @@ const WATER_COURSES = [
     color: "#0369A1",
     bg: "#F0F9FF",
     border: "#BAE6FD",
+    practicePassPrice: 79,
   },
   {
     code: "CL2-W",
@@ -52,6 +54,7 @@ const WATER_COURSES = [
     color: "#0E7490",
     bg: "#ECFEFF",
     border: "#A5F3FC",
+    practicePassPrice: 99,
   },
   {
     code: "CL3-W",
@@ -101,6 +104,7 @@ const WASTEWATER_COURSES = [
     color: "#065F46",
     bg: "#ECFDF5",
     border: "#A7F3D0",
+    practicePassPrice: 49,
   },
   {
     code: "CL1-WW",
@@ -115,6 +119,7 @@ const WASTEWATER_COURSES = [
     color: "#047857",
     bg: "#F0FDF4",
     border: "#BBF7D0",
+    practicePassPrice: 79,
   },
   {
     code: "CL2-WW",
@@ -180,6 +185,7 @@ const WQA_COURSES = [
     bg: "#FAF5FF",
     border: "#DDD6FE",
     comingSoon: false,
+    practicePassPrice: 79,
   },
 ];
 
@@ -242,7 +248,9 @@ const STATS = [
   { value: "Free", label: "OIT Access" },
 ];
 
-function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
+type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number];
+
+function CourseCard({ course }: { course: CourseType }) {
   const [expanded, setExpanded] = useState(false);
   const [notifyOpen, setNotifyOpen] = useState(false);
   return (
@@ -295,6 +303,11 @@ function CourseCard({ course }: { course: typeof WATER_COURSES[0] }) {
         <div>
           <span style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>${course.price}</span>
           <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 4 }}>CAD</span>
+          {'practicePassPrice' in course && (course as any).practicePassPrice && !course.comingSoon && (
+            <p style={{ fontSize: 11, color: "#64748B", margin: "3px 0 0 0", fontStyle: "italic" }}>
+              Practice Pass available from ${(course as any).practicePassPrice} CAD
+            </p>
+          )}
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#F8FAFC", borderRadius: 8, padding: "6px 12px" }}>
           <span style={{ fontSize: 11, color: "#64748B" }}>📝 {course.questions} questions</span>
