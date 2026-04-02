@@ -123,3 +123,8 @@
 - [x] Add 25 new OIT questions to reach 500+ total in questions.ts
 - [x] Update all copy to say "500+ questions" (QuizGate, PurchaseGate, Pricing, Landing, products.ts, OITMockExam, About, Home)
 - [x] Fix broken logo image in SiteNav (broken img tag showing next to "Echelon Institute" text)
+- [x] Write 563 Class 1 Water Treatment questions (8 modules) in class1WaterQuestions.ts
+- [x] Build Class 1 Water quiz page (/class1-water) with 15-question free gate + PurchaseGate
+- [x] Build Class 1 Water 100-question mock exam page (/class1-water-mock)
+- [x] Wire /class1-water and /class1-water-mock routes in App.tsx
+- [x] Add Class 1 Water to nav and update PurchaseSuccess PRODUCT_PATHS

@@ -15,6 +15,8 @@ export const NAV_LINKS = [
   { label: "📋 OIT Mock Exam",  href: "/oit-mock" },
   { label: "🎓 Class 1 Exam",  href: "/class1" },
   { label: "📋 Class 1 Mock",   href: "/class1-mock" },
+  { label: "💧 C1 Water Practice", href: "/class1-water" },
+  { label: "📋 C1 Water Mock",    href: "/class1-water-mock" },
   { label: "🧪 WQA Practice",   href: "/wqa" },
   { label: "🔬 WQA Mock Exam",  href: "/wqa-mock" },
   { label: "📐 Formulas",      href: "/formulas" },

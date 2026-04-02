@@ -23,6 +23,8 @@ import WQAMockExam from "@/pages/WQAMockExam";
 import OITMockExam from "@/pages/OITMockExam";
 import Pricing from "@/pages/Pricing";
 import PurchaseSuccess from "@/pages/PurchaseSuccess";
+import Class1WaterQuiz from "@/pages/Class1WaterQuiz";
+import Class1WaterMockExam from "@/pages/Class1WaterMockExam";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -44,6 +46,8 @@ function Router() {
       <Route path={"/wqa"} component={WQAQuiz} />
       <Route path={"/wqa-mock"} component={WQAMockExam} />
       <Route path={"/oit-mock"} component={OITMockExam} />
+      <Route path={"/class1-water"} component={Class1WaterQuiz} />
+      <Route path={"/class1-water-mock"} component={Class1WaterMockExam} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/purchase-success"} component={PurchaseSuccess} />
