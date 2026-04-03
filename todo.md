@@ -194,3 +194,5 @@
 - [ ] Build /purchase-success page: read session_id, confirm purchase, write to localStorage, show confirmation UI
 - [x] Add bundle upsell callout inside PurchaseGate for Water and WW courses
 - [x] Create OIT Wastewater quiz page and register route /oit-ww
+- [x] Create OIT Wastewater mock exam page at /oit-ww-mock
+- [ ] Add OIT WW course to Pricing page
