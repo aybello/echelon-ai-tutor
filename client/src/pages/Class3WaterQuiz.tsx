@@ -15,6 +15,7 @@ import ReportErrorModal from "@/components/ReportErrorModal";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import SiteNav from "@/components/SiteNav";
 import { shuffle } from "@/lib/utils";
+import { CLASS3_WATER_FORMULA_LINKS } from "@/lib/formulaLinks";
 
 type QCompat = Class3WaterQuestion & { q: string; wrongExp?: Record<number, string> };
 function toCompat(q: Class3WaterQuestion): QCompat {
@@ -318,6 +319,16 @@ export default function Class3WaterQuiz() {
               <div style={{ margin: "0 20px 20px", padding: "16px", background: "#F0F9FF", borderRadius: 10, border: "1px solid #BAE6FD" }}>
                 <div style={{ fontSize: 13, fontWeight: 700, color: "#0369A1", marginBottom: 8 }}>📖 Explanation</div>
                 <p style={{ margin: 0, fontSize: 14, color: "#0C4A6E", lineHeight: 1.7 }}>{current.explanation}</p>
+                {CLASS3_WATER_FORMULA_LINKS[current.id] && (
+                  <a
+                    href={CLASS3_WATER_FORMULA_LINKS[current.id]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 10, padding: "7px 14px", borderRadius: 8, background: "#CCFBF1", border: "1px solid #99F6E4", color: "#0F766E", fontSize: 11, fontWeight: 700, textDecoration: "none", fontFamily: "inherit" }}
+                  >
+                    📐 View formula sheet ↗
+                  </a>
+                )}
                 <button
                   onClick={() => setReportModalOpen(true)}
                   style={{ marginTop: 10, padding: "4px 10px", background: "transparent", color: "#94A3B8", border: "1px solid #E2E8F0", borderRadius: 6, fontSize: 11, cursor: "pointer" }}

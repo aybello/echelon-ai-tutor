@@ -15,6 +15,7 @@ import ReportErrorModal from "@/components/ReportErrorModal";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import SiteNav from "@/components/SiteNav";
 import { shuffle } from "@/lib/utils";
+import { CLASS2_WATER_FORMULA_LINKS } from "@/lib/formulaLinks";
 
 // Adapt Question to the shape expected by sub-components
 type QCompat = Class2WaterQuestion & { q: string; wrongExp?: Record<number, string> };
@@ -370,6 +371,16 @@ export default function Class2WaterQuiz() {
               <div style={{ marginTop: 8, padding: "14px 16px", borderRadius: 12, background: "#F0FDF4", border: "1px solid #BBF7D0" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: "#15803D", letterSpacing: "0.08em", marginBottom: 6 }}>EXPLANATION</div>
                 <div style={{ fontSize: 13, color: "#166534", lineHeight: 1.65 }}>{current.explanation}</div>
+                {CLASS2_WATER_FORMULA_LINKS[current.id] && (
+                  <a
+                    href={CLASS2_WATER_FORMULA_LINKS[current.id]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 10, padding: "7px 14px", borderRadius: 8, background: "#CCFBF1", border: "1px solid #99F6E4", color: "#0F766E", fontSize: 11, fontWeight: 700, textDecoration: "none", fontFamily: "inherit" }}
+                  >
+                    📐 View formula sheet ↗
+                  </a>
+                )}
               </div>
             </div>
           )}

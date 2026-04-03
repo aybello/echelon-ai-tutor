@@ -15,6 +15,7 @@ import ReportErrorModal from "@/components/ReportErrorModal";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import SiteNav from "@/components/SiteNav";
 import { shuffle } from "@/lib/utils";
+import { CLASS3_WW_FORMULA_LINKS } from "@/lib/formulaLinks";
 
 type QCompat = C3WWQuestion & { q: string };
 function toCompat(q: C3WWQuestion): QCompat {
@@ -331,6 +332,16 @@ export default function Class3WastewaterQuiz() {
                   <p style={{ margin: 0, fontSize: 13, color: "#134E4A", lineHeight: 1.6 }}>
                     💡 <strong>Explanation:</strong> {current.explanation}
                   </p>
+                  {CLASS3_WW_FORMULA_LINKS[current.id] && (
+                    <a
+                      href={CLASS3_WW_FORMULA_LINKS[current.id]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 10, padding: "7px 14px", borderRadius: 8, background: "#CCFBF1", border: "1px solid #99F6E4", color: "#0F766E", fontSize: 11, fontWeight: 700, textDecoration: "none", fontFamily: "inherit" }}
+                    >
+                      📐 View formula sheet ↗
+                    </a>
+                  )}
                 </div>
 
                 {/* Step solution toggle */}

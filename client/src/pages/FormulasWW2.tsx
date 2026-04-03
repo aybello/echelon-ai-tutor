@@ -332,6 +332,178 @@ const CATEGORIES: FormulaCategory[] = [
     ],
   },
   {
+    id: "primary-treatment",
+    label: "Primary & Secondary Treatment",
+    icon: "🌊",
+    color: "#0369A1",
+    bg: "#F0F9FF",
+    formulas: [
+      {
+        name: "Hydraulic Detention Time (HDT)",
+        formula: "HDT = V ÷ Q",
+        units: "hours (convert Q to m³/h)",
+        variables: [
+          { sym: "V", desc: "Basin volume (m³)" },
+          { sym: "Q", desc: "Flow rate (m³/h)" },
+        ],
+        example: {
+          problem: "Primary clarifier volume = 1,200 m³, flow = 400 m³/h. What is the HDT?",
+          solution: "HDT = 1,200 ÷ 400 = 3 hours",
+          answer: "3 hours",
+        },
+        tip: "Typical primary clarifier HDT: 1.5–2.5 hours. Secondary clarifier HDT: 1.5–2.5 hours. Short HDT = poor settling; long HDT = septic conditions.",
+      },
+      {
+        name: "Surface Overflow Rate (SOR)",
+        formula: "SOR = Q ÷ A",
+        units: "m³/m²·d  (m/d)",
+        variables: [
+          { sym: "Q", desc: "Flow rate (m³/d)" },
+          { sym: "A", desc: "Surface area of clarifier (m²)" },
+        ],
+        example: {
+          problem: "Flow = 8,000 m³/d, circular clarifier diameter = 20 m. What is the SOR?",
+          solution: "A = π × (10)² = 314.2 m²\nSOR = 8,000 ÷ 314.2 = 25.5 m/d",
+          answer: "25.5 m/d",
+        },
+        tip: "Primary clarifier SOR: 24–48 m/d (peak ≤ 60 m/d). Secondary clarifier SOR: 16–32 m/d. Higher SOR = shorter detention, poorer settling.",
+      },
+      {
+        name: "Weir Overflow Rate (WOR)",
+        formula: "WOR = Q ÷ L_weir",
+        units: "m³/m·d",
+        variables: [
+          { sym: "Q", desc: "Flow rate (m³/d)" },
+          { sym: "L_weir", desc: "Total weir length (m)" },
+        ],
+        example: {
+          problem: "Q = 8,000 m³/d, circular clarifier diameter = 20 m (one peripheral weir). What is the WOR?",
+          solution: "L_weir = π × 20 = 62.8 m\nWOR = 8,000 ÷ 62.8 = 127.4 m³/m·d",
+          answer: "127 m³/m·d",
+        },
+        tip: "Typical WOR: ≤ 125–250 m³/m·d. High WOR causes turbulence at the weir, dragging solids into the effluent. Inboard weirs reduce WOR.",
+      },
+      {
+        name: "Secondary Clarifier Solids Loading Rate",
+        formula: "SLR = (Q + Q_r) × MLSS ÷ A",
+        units: "kg TSS/m²·d",
+        variables: [
+          { sym: "Q", desc: "Influent flow (m³/d)" },
+          { sym: "Q_r", desc: "Return activated sludge flow (m³/d)" },
+          { sym: "MLSS", desc: "Mixed liquor suspended solids (g/m³ = mg/L)" },
+          { sym: "A", desc: "Clarifier surface area (m²)" },
+        ],
+        example: {
+          problem: "Q = 10,000 m³/d, Q_r = 5,000 m³/d, MLSS = 3,000 mg/L, A = 500 m². What is the SLR?",
+          solution: "SLR = (10,000 + 5,000) × 3,000 ÷ (500 × 1,000)\n= 45,000,000 ÷ 500,000 = 90 kg/m²·d",
+          answer: "90 kg TSS/m²·d",
+        },
+        tip: "Typical SLR: ≤ 100–150 kg/m²·d (average), ≤ 200 kg/m²·d (peak). Exceeding SLR causes sludge blanket rise and solids carryover in effluent.",
+      },
+      {
+        name: "BOD Removal Efficiency",
+        formula: "E = (BOD_in − BOD_out) ÷ BOD_in × 100",
+        units: "%",
+        variables: [
+          { sym: "BOD_in", desc: "Influent BOD (mg/L)" },
+          { sym: "BOD_out", desc: "Effluent BOD (mg/L)" },
+        ],
+        example: {
+          problem: "Influent BOD = 220 mg/L, effluent BOD = 15 mg/L. What is removal efficiency?",
+          solution: "E = (220 − 15) ÷ 220 × 100 = 93.2%",
+          answer: "93.2%",
+        },
+        tip: "Ontario Class 2 WW effluent limits (O. Reg. 347): BOD₅ ≤ 25 mg/L, TSS ≤ 25 mg/L. Class 3: BOD₅ ≤ 15 mg/L, TSS ≤ 15 mg/L.",
+      },
+      {
+        name: "Effluent Limits Reference (O. Reg. 347)",
+        formula: "Class 2: BOD ≤ 25 mg/L, TSS ≤ 25 mg/L | Class 3: BOD ≤ 15 mg/L, TSS ≤ 15 mg/L",
+        units: "mg/L",
+        variables: [
+          { sym: "Class 2", desc: "BOD₅ ≤ 25 mg/L, TSS ≤ 25 mg/L, Cl₂ residual ≤ 0.02 mg/L" },
+          { sym: "Class 3", desc: "BOD₅ ≤ 15 mg/L, TSS ≤ 15 mg/L, E. coli ≤ 200 CFU/100 mL" },
+          { sym: "Class 4", desc: "BOD₅ ≤ 10 mg/L, TSS ≤ 10 mg/L, TN ≤ 15 mg/L, TP ≤ 1 mg/L" },
+        ],
+        example: {
+          problem: "A Class 2 plant reports effluent BOD = 28 mg/L. Is this a compliance issue?",
+          solution: "Yes. Class 2 limit is BOD₅ ≤ 25 mg/L.\n28 mg/L exceeds the limit by 3 mg/L.\nOperator must investigate cause and take corrective action.",
+          answer: "Non-compliant — exceeds 25 mg/L limit",
+        },
+        tip: "Limits are monthly averages. Single-sample exceedances trigger investigation. Adverse conditions must be reported to the Director within 1 hour.",
+      },
+    ],
+  },
+  {
+    id: "disinfection",
+    label: "Disinfection",
+    icon: "🧪",
+    color: "#0F766E",
+    bg: "#F0FDFA",
+    formulas: [
+      {
+        name: "Chlorine Dose",
+        formula: "Dose = Demand + Residual",
+        units: "mg/L",
+        variables: [
+          { sym: "Dose", desc: "Total chlorine applied (mg/L)" },
+          { sym: "Demand", desc: "Chlorine consumed by organic matter, ammonia, etc. (mg/L)" },
+          { sym: "Residual", desc: "Chlorine remaining after demand is satisfied (mg/L)" },
+        ],
+        example: {
+          problem: "Chlorine demand = 4.5 mg/L, target residual = 0.5 mg/L. What dose is required?",
+          solution: "Dose = 4.5 + 0.5 = 5.0 mg/L",
+          answer: "5.0 mg/L",
+        },
+        tip: "Ontario effluent limit: total residual chlorine ≤ 0.02 mg/L (to protect receiving water). Dechlorination with sodium bisulfite or sodium thiosulfate is common.",
+      },
+      {
+        name: "Chlorine Feed Rate",
+        formula: "Feed rate = Q × Dose ÷ 1000",
+        units: "kg/d",
+        variables: [
+          { sym: "Q", desc: "Flow rate (m³/d)" },
+          { sym: "Dose", desc: "Chlorine dose (mg/L = g/m³)" },
+        ],
+        example: {
+          problem: "Q = 12,000 m³/d, chlorine dose = 5 mg/L. What is the daily chlorine feed rate?",
+          solution: "Feed rate = 12,000 × 5 ÷ 1000 = 60 kg/d",
+          answer: "60 kg/d",
+        },
+        tip: "For liquid sodium hypochlorite (12.5% available Cl₂): volume = kg Cl₂ ÷ (density × concentration). Always verify with calibration.",
+      },
+      {
+        name: "CT Value (Disinfection Efficacy)",
+        formula: "CT = C × t",
+        units: "mg/L·min",
+        variables: [
+          { sym: "C", desc: "Disinfectant residual concentration (mg/L)" },
+          { sym: "t", desc: "Contact time (minutes)" },
+        ],
+        example: {
+          problem: "Chlorine residual = 0.5 mg/L, contact time = 30 minutes. What is the CT value?",
+          solution: "CT = 0.5 × 30 = 15 mg/L·min",
+          answer: "15 mg/L·min",
+        },
+        tip: "Higher CT = more disinfection. Effective CT for 3-log Giardia inactivation at 10°C with free chlorine: ~165 mg/L·min. UV disinfection uses dose (mJ/cm²) instead of CT.",
+      },
+      {
+        name: "UV Dose (Disinfection)",
+        formula: "UV Dose = Irradiance × Exposure Time",
+        units: "mJ/cm²",
+        variables: [
+          { sym: "Irradiance", desc: "UV intensity at the target point (mW/cm²)" },
+          { sym: "Exposure Time", desc: "Time water is exposed to UV (seconds)" },
+        ],
+        example: {
+          problem: "UV irradiance = 10 mW/cm², exposure time = 4 seconds. What is the UV dose?",
+          solution: "UV Dose = 10 × 4 = 40 mJ/cm²",
+          answer: "40 mJ/cm²",
+        },
+        tip: "Ontario requires UV dose ≥ 40 mJ/cm² for 3-log E. coli inactivation. UV effectiveness depends on UVT (UV transmittance) of the effluent — lower UVT = lower dose delivered.",
+      },
+    ],
+  },
+  {
     id: "collection",
     label: "Collection Systems",
     icon: "🌊",
