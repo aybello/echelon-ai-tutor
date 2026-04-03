@@ -67,7 +67,7 @@ const WATER_COURSES = [
     topics: ["Advanced Treatment Process", "Membrane & Softening", "Lab Analysis & SUVA", "Equipment O&M", "Source Water & Safety"],
     badge: "New",
     badgeColor: "#1E40AF",
-    practicePassPrice: 99,
+    practicePassPrice: 129,
     color: "#1E40AF",
     bg: "#EFF6FF",
     border: "#BFDBFE",
@@ -154,7 +154,7 @@ const WASTEWATER_COURSES = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     comingSoon: false,
-    practicePassPrice: 99,
+    practicePassPrice: 129,
   },
   {
     code: "CL4-WW",
