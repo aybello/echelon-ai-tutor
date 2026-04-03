@@ -63,13 +63,15 @@ const WATER_COURSES = [
     price: 279,
     duration: "10–12 weeks",
     questions: 500,
-    description: "System design principles, advanced math, and management of large-scale water treatment operations.",
-    topics: ["System Design Principles", "Advanced Process Math", "Capital Planning Basics", "Staff Supervision", "Emergency Response"],
-    badge: null,
+    description: "Application-level exam prep for Class 3 Water Treatment. LSI, CT values, membranes, lime softening, SCADA, and advanced process control.",
+    topics: ["Advanced Treatment Process", "Membrane & Softening", "Lab Analysis & SUVA", "Equipment O&M", "Source Water & Safety"],
+    badge: "New",
+    badgeColor: "#1E40AF",
+    practicePassPrice: 99,
     color: "#1E40AF",
     bg: "#EFF6FF",
     border: "#BFDBFE",
-    comingSoon: true,
+    comingSoon: false,
   },
   {
     code: "CL4-W",
@@ -357,7 +359,7 @@ function CourseCard({ course }: { course: CourseType }) {
         </button>
       ) : (
         <>
-          <Link href={course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "WQA" ? "/wqa" : "/quiz"}>
+          <Link href={course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "WQA" ? "/wqa" : "/quiz"}>
             <button style={{
               width: "100%", padding: "12px",
               background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
@@ -382,8 +384,8 @@ function CourseCard({ course }: { course: CourseType }) {
               </button>
             </Link>
           )}
-          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "CL2-WW" || course.code === "CL2-W" || course.code === "WQA") && (
-            <Link href={course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-ww-mock" : course.code === "CL2-WW" ? "/class2-ww-mock" : course.code === "CL2-W" ? "/class2-water-mock" : "/class1-water-mock"}>
+          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "CL2-WW" || course.code === "CL2-W" || course.code === "CL3-W" || course.code === "WQA") && (
+            <Link href={course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-ww-mock" : course.code === "CL2-WW" ? "/class2-ww-mock" : course.code === "CL2-W" ? "/class2-water-mock" : course.code === "CL3-W" ? "/class3-water-mock" : "/class1-water-mock"}>
               <button style={{
                 width: "100%", padding: "10px",
                 background: "transparent",
