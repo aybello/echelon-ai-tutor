@@ -236,7 +236,6 @@ export default function Class3WaterQuiz() {
 
       {/* Question card */}
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px" }}>
-        <PurchaseGate examType="class3-water" productKey="class3-water" productName="Class 3 Water Treatment Practice Pass" price={99}>
           <div style={{ background: "#fff", borderRadius: 16, boxShadow: "0 2px 12px rgba(0,0,0,0.08)", overflow: "hidden" }}>
             {/* Question header */}
             <div style={{ padding: "16px 20px", borderBottom: "1px solid #F1F5F9", display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
@@ -351,7 +350,6 @@ export default function Class3WaterQuiz() {
               </div>
             )}
           </div>
-        </PurchaseGate>
       </div>
 
       {reportModalOpen && (
@@ -366,5 +364,4 @@ export default function Class3WaterQuiz() {
   );
 }
 
-// Import PurchaseGate inline to avoid circular imports
-import PurchaseGate from "@/components/PurchaseGate";
+
