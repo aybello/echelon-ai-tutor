@@ -1479,7 +1479,6 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     difficulty: "hard",
   },
 
-  // --- MODULE 1 continued (98-160) ------------------------------------------
   {
     id: 98,
     module: "Advanced Treatment Process Monitoring",

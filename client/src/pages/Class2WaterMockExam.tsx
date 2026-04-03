@@ -175,7 +175,7 @@ export default function Class2WaterMockExam() {
     });
     saveResult.mutate({
       sessionId: SESSION_ID,
-      examType: "class2water",
+      examType: "class2-water",
       score: results.correct,
       total: EXAM_QUESTIONS,
       passed: results.passed,
@@ -310,7 +310,7 @@ export default function Class2WaterMockExam() {
           </div>
 
           {/* Score history */}
-          <ScoreHistory sessionId={SESSION_ID} examType="class2water" stream="water" />
+          <ScoreHistory sessionId={SESSION_ID} examType="class2-water" stream="water" />
 
           {/* Module breakdown */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
