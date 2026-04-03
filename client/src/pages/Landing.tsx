@@ -38,7 +38,7 @@ function ContactSection() {
           <p style={{ fontSize: 16, color: "#64748B", margin: 0, maxWidth: 480, marginLeft: "auto", marginRight: "auto" }}>Have a question about a course, certification, or your account? We're here to help.</p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 40, alignItems: "start" }}>
+        <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 40, alignItems: "start" }}>
           {/* Contact info */}
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             <div style={{ background: "#FFFFFF", borderRadius: 16, padding: "24px", border: "1px solid #E2E8F0" }}>
@@ -82,7 +82,7 @@ function ContactSection() {
             ) : (
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
                 <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", margin: "0 0 4px" }}>Send Us a Message</h3>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                <div className="contact-form-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                   <div>
                     <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 6, letterSpacing: "0.05em" }}>YOUR NAME</label>
                     <input
@@ -602,6 +602,10 @@ export default function Landing() {
           .landing-hero-btns { flex-direction: column !important; align-items: stretch !important; }
           .landing-hero-btns a, .landing-hero-btns button { width: 100% !important; box-sizing: border-box; }
           .landing-session-complete-pad { padding: 32px 20px !important; }
+          .contact-grid { grid-template-columns: 1fr !important; }
+          .contact-info-row { flex-direction: row !important; flex-wrap: wrap !important; gap: 12px !important; }
+          .contact-info-card { flex: 1 1 140px !important; }
+          .contact-form-grid { grid-template-columns: 1fr !important; }
         }
         @media (min-width: 641px) {
           .landing-hamburger { display: none !important; }
