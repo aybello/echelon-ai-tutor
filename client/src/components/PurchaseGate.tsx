@@ -52,6 +52,12 @@ const DEFAULT_FEATURES: Record<string, string[]> = {
     "WQA formula sheet (30+ formulas)",
     "AI Tutor explanations on every question",
   ],
+  "class4-water": [
+    "500 Class 4 Water questions — unlimited attempts",
+    "Timed Class 4 Water mock exam",
+    "Class 4 Water formula sheet (37 formulas)",
+    "AI Tutor explanations on every question",
+  ],
   "class3-water": [
     "500+ Class 3 Water questions — unlimited attempts",
     "Timed Class 3 Water mock exam",
