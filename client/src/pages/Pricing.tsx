@@ -73,7 +73,7 @@ const INDIVIDUAL: Product[] = [
     key: "class3-water",
     name: "Class 3 Water Treatment",
     shortName: "Class 3 Water",
-    description: "Application-level exam prep: LSI, CT values, membranes, lime softening, SCADA, source water, and advanced process control. 500 questions + formula sheet.",
+    description: "Application-level exam prep: LSI, CT values, membranes, lime softening, SCADA, source water, and advanced process control.",
     priceCAD: 9900,
     examTypes: ["class3-water"],
     badge: "New",
@@ -82,6 +82,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#EFF6FF",
     border: "#BFDBFE",
     available: true,
+    features: ["500 practice questions", "Timed mock exam", "Class 3 Water formula sheet", "AI Tutor"],
   },
   {
     key: "class4-water",
@@ -129,7 +130,7 @@ const INDIVIDUAL: Product[] = [
     key: "class3-ww",
     name: "Class 3 Wastewater",
     shortName: "Class 3 WW",
-    description: "Advanced activated sludge, BNR, anaerobic digestion, biosolids dewatering, MBR/SBR, and tertiary treatment. 500 questions at application and analysis level.",
+    description: "Advanced activated sludge, BNR, anaerobic digestion, biosolids dewatering, MBR/SBR, and tertiary treatment.",
     priceCAD: 9900,
     examTypes: ["class3-ww"],
     badge: "New",
@@ -138,6 +139,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     available: true,
+    features: ["502 practice questions", "Timed mock exam", "WW3 formula sheet", "AI Tutor"],
   },
   {
     key: "class4-ww",

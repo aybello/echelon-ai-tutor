@@ -165,3 +165,6 @@
 - [x] Add formula deep-links to WQAMockExam post-exam review panel (using WQA_FORMULA_LINKS)
 - [x] Update Landing page STATS bar from "500+ OIT" to "1,300+ Practice Questions"
 - [x] Add "WQA Formula Sheet" as a feature bullet to the WQA Pricing card
+- [x] Add feature bullets to Class 3 WW Pricing card (502 questions, mock exam, WW3 formula sheet, AI Tutor)
+- [x] Add feature bullets to Class 3 Water Pricing card (500 questions, mock exam, formula sheet, AI Tutor)
+- [x] Fix pre-existing JSX error in Class3WastewaterQuiz.tsx (adjacent JSX elements at line 169 — confirmed already resolved, build clean)
