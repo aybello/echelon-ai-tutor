@@ -10,6 +10,7 @@ import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { adminRouter } from "./routers/admin";
 import { stripeRouter } from "./routers/stripeRouter";
+import { sendContactEmail } from "./email";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -202,6 +203,33 @@ export const appRouter = router({
           ...r,
           moduleBreakdown: r.moduleBreakdown ? JSON.parse(r.moduleBreakdown) : null,
         }));
+      }),
+  }),
+
+  // Contact form — sends email to abello@echeloninstitute.ca
+  contact: router({
+    send: publicProcedure
+      .input(
+        z.object({
+          name: z.string().min(1, "Name is required").max(100),
+          email: z.string().email("Please enter a valid email address"),
+          subject: z.string().min(1, "Subject is required").max(200),
+          message: z.string().min(10, "Message must be at least 10 characters").max(2000),
+        })
+      )
+      .mutation(async ({ input }) => {
+        try {
+          await sendContactEmail(input);
+          // Also notify owner via Manus notification system as backup
+          await notifyOwner({
+            title: `Contact form: ${input.subject}`,
+            content: `From: ${input.name} <${input.email}>\n\n${input.message}`,
+          }).catch(() => {}); // non-blocking
+          return { success: true };
+        } catch (err) {
+          console.error("[Contact] Email send failed:", err);
+          throw new Error("Failed to send message. Please try again or email us directly.");
+        }
       }),
   }),
 
