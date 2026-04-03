@@ -217,7 +217,7 @@ export default function Class2WaterQuiz() {
           >
             {selectedModule ? `📚 ${selectedModule}` : "📚 All Modules"}
           </button>
-          <Link href="/formulas" style={{ textDecoration: "none" }}>
+          <Link href="/formulas-water2" style={{ textDecoration: "none" }}>
             <button style={{ padding: "6px 12px", borderRadius: 20, border: "1.5px solid #E2E8F0", background: "#F8FAFC", color: "#0369A1", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>📐 Formulas</button>
           </Link>
           <Link href="/class2-water-mock" style={{ textDecoration: "none" }}>

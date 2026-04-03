@@ -10,12 +10,13 @@ const LOGO_URL =
 // Map each exam type to its display info and links
 const EXAM_META: Record<
   string,
-  { label: string; quizPath: string; mockPath?: string; color: string; bg: string; icon: string }
+  { label: string; quizPath: string; mockPath?: string; formulaPath?: string; color: string; bg: string; icon: string }
 > = {
   oit: {
     label: "OIT Practice Pass",
     quizPath: "/quiz",
     mockPath: "/oit-mock",
+    formulaPath: "/formulas",
     color: "#0369A1",
     bg: "#F0F9FF",
     icon: "💧",
@@ -24,6 +25,7 @@ const EXAM_META: Record<
     label: "Class 1 Water Treatment Pass",
     quizPath: "/class1-water",
     mockPath: "/class1-water-mock",
+    formulaPath: "/formulas-water1",
     color: "#0369A1",
     bg: "#F0F9FF",
     icon: "🚰",
@@ -32,6 +34,7 @@ const EXAM_META: Record<
     label: "Class 1 Wastewater Treatment Pass",
     quizPath: "/class1-ww",
     mockPath: "/class1-ww-mock",
+    formulaPath: "/formulas-ww1",
     color: "#0F766E",
     bg: "#F0FDFA",
     icon: "🌊",
@@ -40,6 +43,7 @@ const EXAM_META: Record<
     label: "Water Quality Analyst Pass",
     quizPath: "/wqa",
     mockPath: "/wqa-mock",
+    formulaPath: "/formulas-wqa",
     color: "#7C3AED",
     bg: "#F5F3FF",
     icon: "🔬",
@@ -48,6 +52,7 @@ const EXAM_META: Record<
     label: "Class 2 Water Treatment Pass",
     quizPath: "/class2-water",
     mockPath: "/class2-water-mock",
+    formulaPath: "/formulas-water2",
     color: "#0E7490",
     bg: "#ECFEFF",
     icon: "🚰",
@@ -55,6 +60,8 @@ const EXAM_META: Record<
   "class3-water": {
     label: "Class 3 Water Treatment Pass",
     quizPath: "/class3-water",
+    mockPath: "/class3-water-mock",
+    formulaPath: "/formulas-water3",
     color: "#1E40AF",
     bg: "#EFF6FF",
     icon: "🚰",
@@ -69,6 +76,8 @@ const EXAM_META: Record<
   "class2-ww": {
     label: "Class 2 Wastewater Treatment Pass",
     quizPath: "/class2-ww",
+    mockPath: "/class2-ww-mock",
+    formulaPath: "/formulas-ww2",
     color: "#0F766E",
     bg: "#F0FDFA",
     icon: "🌊",
@@ -76,6 +85,8 @@ const EXAM_META: Record<
   "class3-ww": {
     label: "Class 3 Wastewater Treatment Pass",
     quizPath: "/class3-ww",
+    mockPath: "/class3-ww-mock",
+    formulaPath: "/formulas-ww3",
     color: "#0F766E",
     bg: "#F0FDFA",
     icon: "🌊",
@@ -258,6 +269,13 @@ export default function Account() {
                             <Link href={meta.mockPath}>
                               <button className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-700 text-slate-200 hover:bg-slate-600 transition-colors">
                                 Mock Exam
+                              </button>
+                            </Link>
+                          )}
+                          {meta.formulaPath && (
+                            <Link href={meta.formulaPath}>
+                              <button className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors" style={{ background: "#064E3B", color: "#6EE7B7" }}>
+                                📐 Formulas
                               </button>
                             </Link>
                           )}

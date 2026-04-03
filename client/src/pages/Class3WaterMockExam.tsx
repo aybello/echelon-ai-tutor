@@ -451,6 +451,11 @@ export default function Class3WaterMockExam() {
             >
               Retake Exam
             </button>
+            <Link href="/formulas-water3" target="_blank">
+              <button style={{ flex: 1, padding: "12px", background: "#F0FDF4", color: "#15803D", border: "1.5px solid #22C55E", borderRadius: 10, fontSize: 14, fontWeight: 700, cursor: "pointer" }}>
+                📐 Water3 Formulas
+              </button>
+            </Link>
           </div>
         </div>
       </div>

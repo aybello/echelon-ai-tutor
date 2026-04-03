@@ -70,7 +70,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     available: true,
-    features: ["500 practice questions", "Timed mock exam", "AI Tutor"],
+    features: ["500 practice questions", "Timed mock exam", "Water2 formula sheet", "AI Tutor"],
   },
   {
     key: "class3-water",

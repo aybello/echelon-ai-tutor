@@ -310,6 +310,9 @@ export default function Class1WastewaterMockExam() {
               <Link href="/class1-ww" style={{ flex: 1, padding: "14px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#0369A1", fontWeight: 700, fontSize: 15, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 Practice Weak Modules
               </Link>
+              <Link href="/formulas-ww1" target="_blank" style={{ flex: 1, padding: "14px", borderRadius: 12, border: "1.5px solid #22C55E", background: "#F0FDF4", color: "#15803D", fontWeight: 700, fontSize: 15, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                📐 WW1 Formulas
+              </Link>
             </div>
             <div style={{ marginTop: 20 }}>
               <ScoreHistory sessionId={SESSION_ID} examType="class1-ww" />

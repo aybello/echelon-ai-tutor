@@ -388,6 +388,11 @@ export default function Class1WaterMockExam() {
                 📝 Practice Mode
               </button>
             </Link>
+            <Link href="/formulas-water1" target="_blank" style={{ flex: 1, minWidth: 140 }}>
+              <button style={{ width: "100%", padding: "14px 24px", borderRadius: 14, background: "#F0FDF4", color: "#15803D", fontWeight: 700, fontSize: 15, border: "1.5px solid #22C55E", cursor: "pointer", fontFamily: "inherit" }}>
+                📐 Water1 Formulas
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -42,6 +42,7 @@ import FormulasWW3 from "@/pages/FormulasWW3";
 import FormulasWQA from "@/pages/FormulasWQA";
 import FormulasWW1 from "@/pages/FormulasWW1";
 import FormulasWater1 from "@/pages/FormulasWater1";
+import FormulasWater2 from "@/pages/FormulasWater2";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -72,6 +73,7 @@ function Router() {
       <Route path={"/class2-ww"} component={Class2WastewaterQuiz} />
       <Route path={"/class2-ww-mock"} component={Class2WastewaterMockExam} />
       <Route path={"/formulas-water1"} component={FormulasWater1} />
+      <Route path={"/formulas-water2"} component={FormulasWater2} />
       <Route path={"/formulas-ww1"} component={FormulasWW1} />
       <Route path={"/formulas-ww2"} component={FormulasWW2} />
       <Route path={"/class3-water"} component={Class3WaterQuiz} />

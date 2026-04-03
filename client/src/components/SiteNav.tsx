@@ -20,6 +20,7 @@ export const NAV_LINKS = [
   { label: "📐 C1 Water Formulas", href: "/formulas-water1" },
   { label: "💧 C2 Water Practice", href: "/class2-water" },
   { label: "📋 C2 Water Mock",    href: "/class2-water-mock" },
+  { label: "📐 C2 Water Formulas", href: "/formulas-water2" },
   { label: "🦠 C1 WW Practice",   href: "/class1-ww" },
   { label: "📋 C1 WW Mock",       href: "/class1-ww-mock" },
   { label: "📐 C1 WW Formulas",   href: "/formulas-ww1" },

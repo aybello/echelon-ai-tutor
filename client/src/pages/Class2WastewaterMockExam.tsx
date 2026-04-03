@@ -410,6 +410,11 @@ export default function Class2WastewaterMockExam() {
                       Back to Practice
                     </button>
                   </Link>
+                  <Link href="/formulas-ww2" target="_blank">
+                    <button style={{ padding: "12px 24px", borderRadius: 12, border: "1.5px solid #22C55E", background: "#F0FDF4", color: "#15803D", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}>
+                      📐 WW2 Formulas
+                    </button>
+                  </Link>
                 </div>
               </div>
 

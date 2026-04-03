@@ -382,6 +382,11 @@ export default function Class3WastewaterMockExam() {
                 Practice Mode
               </button>
             </Link>
+            <Link href="/formulas-ww3" target="_blank">
+              <button style={{ flex: 1, padding: "13px", borderRadius: 12, border: "1.5px solid #22C55E", background: "#F0FDF4", color: "#15803D", fontSize: 15, fontWeight: 700, cursor: "pointer" }}>
+                📐 WW3 Formulas
+              </button>
+            </Link>
           </div>
         </div>
       </div>

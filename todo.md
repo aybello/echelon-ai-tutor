@@ -189,3 +189,6 @@
 - [x] Add course-specific paidFeatures to all remaining paid quiz gates — confirmed all 6 already have paidFeatures arrays, no change needed
 - [x] Audit Class 2 WW mock exam PurchaseGate price — confirmed already price={99}, no change needed
 - [x] Add View Pricing CTA to WQA Mock Exam PurchaseGate — rewrote PurchaseGate with direct Stripe checkout CTA (primary), View All Courses & Pricing (secondary), course-specific feature bullets, and Try Free OIT escape link
+- [ ] Audit all 10 courses comprehensively: formula sheets, quiz header links, pricing card bullets — build Class 2 Water formula sheet and fix all gaps in one pass
+- [ ] Build /account page: show purchased courses, restore access button, link to pricing
+- [ ] Build /purchase-success page: read session_id, confirm purchase, write to localStorage, show confirmation UI
