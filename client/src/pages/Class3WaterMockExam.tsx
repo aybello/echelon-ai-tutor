@@ -160,7 +160,7 @@ export default function Class3WaterMockExam() {
       <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Inter', sans-serif" }}>
         <SiteNav currentPath="/class3-water-mock" />
         <div style={{ maxWidth: 640, margin: "0 auto", padding: "40px 16px" }}>
-          <PurchaseGate examType="class3-water" productKey="class3-water" productName="Class 3 Water Treatment Practice Pass" price={99}>
+          <PurchaseGate examType="class3-water" productKey="class3-water" productName="Class 3 Water Treatment Practice Pass" price={129}>
             <div style={{ background: "#fff", borderRadius: 16, boxShadow: "0 2px 12px rgba(0,0,0,0.08)", padding: 32 }}>
               <div style={{ textAlign: "center", marginBottom: 24 }}>
                 <div style={{ fontSize: 48, marginBottom: 12 }}>🏆</div>

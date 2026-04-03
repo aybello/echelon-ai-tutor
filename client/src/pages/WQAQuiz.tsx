@@ -288,6 +288,16 @@ export default function WQAQuiz() {
         {showGate && (
           <QuizGate
             questionsAnswered={history.length}
+            productKey="wqa"
+            productName="WQA Practice Pass"
+            priceLabel="CA$79"
+            paidFeatures={[
+              "Full 300-question bank — unlimited attempts",
+              "WQA Mock Exam (100 questions, 2-hour timer)",
+              "WQA Formula Sheet (30+ formulas, 7 categories)",
+              "AI Tutor explanations on every question",
+              "Score history & module breakdown",
+            ]}
             onUnlocked={() => {
               setTrialUnlockedState(true);
               setShowGate(false);

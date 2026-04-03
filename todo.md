@@ -183,3 +183,4 @@
 - [x] Build Class 1 Water formula sheet at /formulas-water1 (8 categories, 27 formulas + regulatory limits table) — wired into App.tsx, SiteNav, Class1WaterQuiz header
 - [x] Update Class 1 WW Pricing card to include "WW1 formula sheet" in features
 - [x] Improve feature bullet styling across all Pricing cards — replaced plain <ul> with colored checkmark circles matching each card's accent color
+- [x] Fix WQA quiz gate — added productKey/productName/priceLabel/paidFeatures to QuizGate call; also fixed Class3WaterMockExam price from $99 to $129
