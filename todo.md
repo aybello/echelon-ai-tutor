@@ -196,3 +196,5 @@
 - [x] Create OIT Wastewater quiz page and register route /oit-ww
 - [x] Create OIT Wastewater mock exam page at /oit-ww-mock
 - [ ] Add OIT WW course to Pricing page
+- [ ] Add Report an Error button to quiz/mock exam results screens
+- [ ] Update About page changelog with OIT WW launch

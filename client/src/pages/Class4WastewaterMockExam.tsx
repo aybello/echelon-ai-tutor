@@ -12,6 +12,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import PurchaseGate from "@/components/PurchaseGate";
 import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
+import ReportErrorModal from "@/components/ReportErrorModal";
 
 const EXAM_DURATION  = 2 * 60 * 60; // 2 hours
 const EXAM_QUESTIONS = 100;
@@ -77,6 +78,7 @@ export default function Class4WastewaterMockExam() {
   const [timeLeft, setTimeLeft] = useState(EXAM_DURATION);
   const [flagged, setFlagged] = useState<Set<number>>(new Set());
   const [showReview, setShowReview] = useState(false);
+  const [reportModal, setReportModal] = useState<{ id: number; text: string; module: string } | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const sessionId = useMemo(() => `c4ww-mock-${Date.now()}`, []);
 
@@ -372,7 +374,16 @@ export default function Class4WastewaterMockExam() {
             </Link>
           </div>
         </div>
+      {reportModal && (
+        <ReportErrorModal
+          questionId={reportModal.id}
+          questionText={reportModal.text}
+          module={reportModal.module}
+          onClose={() => setReportModal(null)}
+        />
+      )}
       </div>
+
     );
   }
 

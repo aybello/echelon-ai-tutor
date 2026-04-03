@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "wouter";
 import { QUESTIONS, type Question } from "@/lib/questions";
 import SiteNav from "@/components/SiteNav";
+import ReportErrorModal from "@/components/ReportErrorModal";
 
 // ── Extended question bank (25 questions: 15 original + 10 new) ──
 const EXTRA_QUESTIONS: Question[] = [
@@ -177,6 +178,7 @@ export default function MockExam() {
   const [timeLeft, setTimeLeft] = useState(EXAM_DURATION);
   const [flagged, setFlagged] = useState<number[]>([]);
   const [showReview, setShowReview] = useState(false);
+  const [reportModal, setReportModal] = useState<{ id: number; text: string; module: string } | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const startExam = useCallback(() => {
@@ -602,6 +604,15 @@ export default function MockExam() {
           )}
         </div>
       </div>
+      {reportModal && (
+        <ReportErrorModal
+          questionId={reportModal.id}
+          questionText={reportModal.text}
+          module={reportModal.module}
+          onClose={() => setReportModal(null)}
+        />
+      )}
     </div>
+
   );
 }

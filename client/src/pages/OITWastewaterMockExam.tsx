@@ -12,6 +12,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import PurchaseGate from "@/components/PurchaseGate";
 import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
+import ReportErrorModal from "@/components/ReportErrorModal";
 
 const EXAM_DURATION  = 1 * 60 * 60; // 1 hour in seconds
 const EXAM_QUESTIONS = 50;
@@ -97,6 +98,7 @@ export default function OITWastewaterMockExam() {
   });
 
   const [examState, setExamState] = useState<ExamState>("intro");
+  const [reportModal, setReportModal] = useState<{ id: number; text: string; module: string } | null>(null);
   const [questions, setQuestions]   = useState<Class1WastewaterQuestion[]>([]);
   const [answers, setAnswers]       = useState<ExamAnswer[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -353,7 +355,16 @@ export default function OITWastewaterMockExam() {
             </Link>
           </div>
         </div>
-      </div>
+    
+      {reportModal && (
+        <ReportErrorModal
+          questionId={reportModal.id}
+          questionText={reportModal.text}
+          module={reportModal.module}
+          onClose={() => setReportModal(null)}
+        />
+      )}
+  </div>
     );
   }
 

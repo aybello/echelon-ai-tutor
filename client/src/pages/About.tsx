@@ -234,7 +234,7 @@ export default function About() {
             borderRadius: 20,
             letterSpacing: "0.06em",
             textTransform: "uppercase",
-          }}>All 10 Courses Live</span>
+          }}>11 Courses Live</span>
         </div>
         <p style={{ fontSize: 15, color: "#64748B", margin: "0 0 36px", lineHeight: 1.7 }}>
           A running record of every course and feature added to the platform.
@@ -245,6 +245,13 @@ export default function About() {
             {
               date: "April 2026",
               badge: "New",
+              badgeColor: "#7C3AED",
+              title: "OIT Wastewater Treatment — Standalone Free Course",
+              body: "OIT Wastewater is now available as its own dedicated free course. Covers primary and secondary treatment, biological processes, activated sludge, disinfection, biosolids basics, and regulatory fundamentals. Includes 500+ practice questions, adaptive quiz engine, AI Tutor, confidence scoring, process diagrams, and formula sheet.",
+            },
+            {
+              date: "April 2026",
+              badge: "",
               badgeColor: "#0F766E",
               title: "Class 4 Wastewater Treatment",
               body: "500 questions across 5 modules: Advanced Treatment, Equipment O&M, Lab Analysis, Biosolids Management, and Plant Management. Includes timed mock exam, formula sheet, and AI Tutor.",

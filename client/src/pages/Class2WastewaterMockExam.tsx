@@ -12,6 +12,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import PurchaseGate from "@/components/PurchaseGate";
 import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
+import ReportErrorModal from "@/components/ReportErrorModal";
 
 const EXAM_DURATION  = 2 * 60 * 60; // 2 hours
 const EXAM_QUESTIONS = 100;
@@ -97,6 +98,7 @@ export default function Class2WastewaterMockExam() {
   });
 
   const [examState, setExamState] = useState<ExamState>("intro");
+  const [reportModal, setReportModal] = useState<{ id: number; text: string; module: string } | null>(null);
   const [province, setProvince] = useState("Ontario");
   const [questions, setQuestions] = useState<WastewaterQuestion[]>([]);
   const [answers, setAnswers] = useState<ExamAnswer[]>([]);
@@ -470,7 +472,16 @@ export default function Class2WastewaterMockExam() {
             </div>
           )}
         </div>
+      {reportModal && (
+        <ReportErrorModal
+          questionId={reportModal.id}
+          questionText={reportModal.text}
+          module={reportModal.module}
+          onClose={() => setReportModal(null)}
+        />
+      )}
       </div>
+
     </PurchaseGate>
   );
 }
