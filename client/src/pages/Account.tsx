@@ -21,6 +21,15 @@ const EXAM_META: Record<
     bg: "#F0F9FF",
     icon: "💧",
   },
+  "oit-ww": {
+    label: "OIT Wastewater Practice Pass",
+    quizPath: "/oit-ww",
+    mockPath: "/oit-ww-mock",
+    formulaPath: "/formulas-ww1",
+    color: "#065F46",
+    bg: "#ECFDF5",
+    icon: "🌿",
+  },
   "class1-water": {
     label: "Class 1 Water Treatment Pass",
     quizPath: "/class1-water",

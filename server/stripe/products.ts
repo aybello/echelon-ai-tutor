@@ -20,6 +20,13 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     examTypes: ["oit"],
   },
   {
+    key: "oit-ww",
+    name: "OIT Wastewater Practice Pass",
+    description: "Full OIT Wastewater question bank — 500+ questions covering wastewater collection, treatment principles, and Ontario O. Reg. 129/04. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 4900,
+    examTypes: ["oit-ww"],
+  },
+  {
     key: "class1-water",
     name: "Class 1 Water Treatment Practice Pass",
     description: "Full Class 1 Water Treatment question bank — 500+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
@@ -95,16 +102,16 @@ export const BUNDLE_PRODUCTS: EchelonProduct[] = [
   {
     key: "bundle-ww",
     name: "Wastewater Treatment Full Ladder Bundle",
-    description: "Complete Wastewater Treatment ladder — Class 1 through Class 4. All 4 exam question banks, unlimited attempts, AI Tutor, score history. Save CA$157 vs buying individually.",
+    description: "Complete Wastewater Treatment ladder — OIT WW + Class 1 through Class 4. All 5 exam question banks, unlimited attempts, AI Tutor, score history. Save CA$206 vs buying individually.",
     priceCAD: 29900,
-    examTypes: ["class1-ww", "class2-ww", "class3-ww", "class4-ww"],
+    examTypes: ["oit-ww", "class1-ww", "class2-ww", "class3-ww", "class4-ww"],
   },
   {
     key: "bundle-all",
     name: "Complete All Access Bundle",
     description: "Every exam — all 10 Practice Passes in one bundle. Water Treatment (OIT–Class 4), Wastewater (Class 1–4), and WQA. Unlimited attempts, AI Tutor, score history. Save CA$441 vs buying individually.",
     priceCAD: 59900,
-    examTypes: ["oit", "class1-water", "class2-water", "class3-water", "class4-water", "class1-ww", "class2-ww", "class3-ww", "class4-ww", "wqa"],
+    examTypes: ["oit", "oit-ww", "class1-water", "class2-water", "class3-water", "class4-water", "class1-ww", "class2-ww", "class3-ww", "class4-ww", "wqa"],
   },
 ];
 

@@ -546,7 +546,7 @@ function CourseCard({ course }: { course: CourseType }) {
         </button>
       ) : (
         <>
-          <Link href={course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "CL3-WW" ? "/class3-ww" : course.code === "CL4-W" ? "/class4-water" : course.code === "CL4-WW" ? "/class4-ww" : course.code === "WQA" ? "/wqa" : "/quiz"}>
+          <Link href={course.code === "OIT-WW" ? "/oit-ww" : course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "CL3-WW" ? "/class3-ww" : course.code === "CL4-W" ? "/class4-water" : course.code === "CL4-WW" ? "/class4-ww" : course.code === "WQA" ? "/wqa" : "/quiz"}>
             <button style={{
               width: "100%", padding: "12px",
               background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
@@ -558,7 +558,7 @@ function CourseCard({ course }: { course: CourseType }) {
             </button>
           </Link>
           {(course.code === "OIT-W" || course.code === "OIT-WW") && (
-            <Link href="/oit-mock">
+            <Link href={course.code === "OIT-WW" ? "/oit-ww-mock" : "/oit-mock"}>
               <button style={{
                 width: "100%", padding: "10px",
                 background: "transparent",

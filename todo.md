@@ -192,3 +192,5 @@
 - [ ] Audit all 10 courses comprehensively: formula sheets, quiz header links, pricing card bullets — build Class 2 Water formula sheet and fix all gaps in one pass
 - [ ] Build /account page: show purchased courses, restore access button, link to pricing
 - [ ] Build /purchase-success page: read session_id, confirm purchase, write to localStorage, show confirmation UI
+- [x] Add bundle upsell callout inside PurchaseGate for Water and WW courses
+- [x] Create OIT Wastewater quiz page and register route /oit-ww

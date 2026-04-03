@@ -154,8 +154,29 @@ export default function PurchaseGate({
 
   const featureList = features ?? DEFAULT_FEATURES[productKey] ?? FALLBACK_FEATURES;
 
+  // Determine bundle upsell based on product type
+  const isWaterCourse = examType === "oit" || examType.includes("-water");
+  const isWwCourse = examType.includes("-ww");
+  const bundleKey = isWaterCourse ? "bundle-water" : isWwCourse ? "bundle-ww" : null;
+  const bundleName = isWaterCourse
+    ? "Water Treatment Full Ladder Bundle"
+    : isWwCourse
+    ? "Wastewater Treatment Full Ladder Bundle"
+    : null;
+  const bundlePrice = isWaterCourse ? 349 : isWwCourse ? 299 : null;
+  const bundleSavings = isWaterCourse
+    ? "OIT + Class 1–4 Water · Save CA$155"
+    : isWwCourse
+    ? "Class 1–4 Wastewater · Save CA$157"
+    : null;
+
   function handleBuyNow() {
     createSession.mutate({ productKey, email: email || "", origin: window.location.origin });
+  }
+
+  function handleBuyBundle() {
+    if (!bundleKey) return;
+    createSession.mutate({ productKey: bundleKey, email: email || "", origin: window.location.origin });
   }
 
   // No access — show paywall
@@ -257,6 +278,53 @@ export default function PurchaseGate({
         <div style={{ fontSize: 12, color: "#94A3B8", marginBottom: 20 }}>
           one-time · no subscription · instant access
         </div>
+
+        {/* Bundle upsell callout */}
+        {bundleKey && bundlePrice && bundleName && bundleSavings && (
+          <div
+            style={{
+              background: "linear-gradient(135deg, #FFF7ED 0%, #FEF3C7 100%)",
+              border: "1.5px solid #FCD34D",
+              borderRadius: 12,
+              padding: "14px 16px",
+              marginBottom: 16,
+              textAlign: "left",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, flexWrap: "wrap" }}>
+              <div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#B45309", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 2 }}>
+                  💡 Better Value
+                </div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", marginBottom: 2 }}>
+                  {bundleName}
+                </div>
+                <div style={{ fontSize: 12, color: "#78350F" }}>
+                  {bundleSavings}
+                </div>
+              </div>
+              <button
+                onClick={handleBuyBundle}
+                disabled={createSession.isPending}
+                style={{
+                  padding: "8px 14px",
+                  borderRadius: 8,
+                  background: createSession.isPending ? "#FCD34D" : "#D97706",
+                  color: "#fff",
+                  border: "none",
+                  fontSize: 13,
+                  fontWeight: 800,
+                  cursor: createSession.isPending ? "not-allowed" : "pointer",
+                  fontFamily: "inherit",
+                  whiteSpace: "nowrap",
+                  flexShrink: 0,
+                }}
+              >
+                CA${bundlePrice} →
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* CTAs */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
