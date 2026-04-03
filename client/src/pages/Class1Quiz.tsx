@@ -20,7 +20,6 @@ import StepSolution from "@/components/StepSolution";
 import AITutor from "@/components/AITutor";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import QuizGate, { isTrialUnlocked } from "@/components/QuizGate";
-import PurchaseGate from "@/components/PurchaseGate";
 import { shuffle } from "@/lib/utils";
 
 type Stream = "all" | "water" | "wastewater";
@@ -222,7 +221,6 @@ export default function Class1Quiz() {
   }, []);
 
   return (
-    <PurchaseGate examType="class1-water" productKey="class1-water" productName="Class 1 Water Treatment Practice Pass" price={79}>
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         @keyframes fadeUp  { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
@@ -773,6 +771,5 @@ export default function Class1Quiz() {
         />
       )}
     </div>
-    </PurchaseGate>
   );
 }
