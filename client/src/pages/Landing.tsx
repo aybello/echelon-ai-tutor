@@ -938,6 +938,47 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ── What's New Banner ── */}
+      <div style={{ padding: "32px 24px 0", maxWidth: 1200, margin: "0 auto" }}>
+        <div
+          style={{
+            background: "linear-gradient(135deg, #0F766E 0%, #0E7490 50%, #1D4ED8 100%)",
+            borderRadius: 16,
+            padding: "16px 24px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 16,
+            flexWrap: "wrap",
+            boxShadow: "0 4px 20px rgba(15,118,110,0.25)",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <span style={{ background: "rgba(255,255,255,0.2)", borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>NEW</span>
+            <span style={{ fontSize: 15, fontWeight: 600, color: "#fff" }}>
+              🏭 Class 4 Wastewater is now live — 500 questions, mock exam, formula sheet &amp; AI Tutor
+            </span>
+          </div>
+          <a
+            href="/class4-ww"
+            style={{
+              background: "rgba(255,255,255,0.15)",
+              border: "1.5px solid rgba(255,255,255,0.4)",
+              borderRadius: 10,
+              padding: "8px 18px",
+              fontSize: 13,
+              fontWeight: 700,
+              color: "#fff",
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+            }}
+          >
+            Start Studying →
+          </a>
+        </div>
+      </div>
+
       {/* ── Course Catalogue ── */}
       <section id="courses" style={{ padding: "72px 24px", maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
