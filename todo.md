@@ -176,3 +176,6 @@
 - [x] Build Class 2 Wastewater formula sheet at /formulas-ww2 — confirmed already exists (981 lines), wired in nav and quiz header
 - [x] Fix Class 3 WW quiz header — added 📋 Mock Exam → badge to header alongside Formula Sheet badge
 - [x] Fix incorrect prices for Class 3 Water and Class 3 Wastewater on Pricing page — updated to $129 (12900 cents)
+- [x] Audit Stripe checkout prices for Class 3 Water and Class 3 WW — confirmed server/stripe/products.ts already has 12900 cents ($129) for bothady has 12900 cents ($129) for both
+- [x] Add 📋 Mock Exam → badge to Class 3 Water quiz header — confirmed already present, no change needed — confirmed already present at line 186-188, no change needed
+- [x] Build Class 1 Wastewater formula sheet at /formulas-ww1 (7 categories, 25+ formulas) — wired into App.tsx, SiteNav, and Class1WastewaterQuiz header

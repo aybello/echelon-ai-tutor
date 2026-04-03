@@ -191,6 +191,14 @@ export default function Class1WastewaterQuiz() {
               <p style={{ fontSize: 13, color: "#64748B", margin: 0 }}>Ontario Operator Exam Practice — 500+ Questions</p>
             </div>
           </div>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
+            <Link href="/formulas-ww1" style={{ textDecoration: "none" }}>
+              <span style={{ background: "#EFF6FF", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 600, color: "#0369A1", cursor: "pointer" }}>📐 Formula Sheet →</span>
+            </Link>
+            <Link href="/class1-ww-mock" style={{ textDecoration: "none" }}>
+              <span style={{ background: "#F0FDF4", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 600, color: "#15803D", cursor: "pointer" }}>📋 Mock Exam →</span>
+            </Link>
+          </div>
         </div>
 
         {/* Progress bar */}
