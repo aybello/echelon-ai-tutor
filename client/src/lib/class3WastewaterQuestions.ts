@@ -34,9 +34,9 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     id: 3,
     module: "Treatment Process Monitoring",
     question: `Calculate the SRT (sludge retention time) for an activated sludge system: aeration basin volume = 4,000 m³, MLSS = 3,200 mg/L, WAS flow = 120 m³/day, WAS concentration = 8,500 mg/L, effluent TSS = 18 mg/L, effluent flow = 15,000 m³/day.`,
-    options: ["8.2 days", "11.4 days", "14.7 days", "6.8 days"],
+    options: ["8.2 days", "9.9 days", "14.7 days", "6.8 days"],
     correct: 1,
-    explanation: `SRT = (V × MLSS) / (WAS flow × WAS conc + effluent flow × effluent TSS) = (4000 × 3200) / (120 × 8500 + 15000 × 18) = 12,800,000 / (1,020,000 + 270,000) = 12,800,000 / 1,290,000 = 9.9 ≈ 11.4 days (using consistent units). The SRT controls nitrification, sludge settleability, and oxygen demand.`,
+    explanation: `SRT = (V × MLSS) / (WAS flow × WAS conc + effluent flow × effluent TSS) = (4,000 × 3,200) / (120 × 8,500 + 15,000 × 18) = 12,800,000 / (1,020,000 + 270,000) = 12,800,000 / 1,290,000 = 9.92 days ≈ 9.9 days. The SRT controls nitrification, sludge settleability, and oxygen demand.`,
     difficulty: "hard",
   },
   {

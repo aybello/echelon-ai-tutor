@@ -149,12 +149,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A secondary clarifier with a surface area of 500 m² is receiving a flow of 15,000 m³/d with a RAS flow of 6,000 m³/d. The MLSS is 3,200 mg/L. Calculate the solids flux (kg/m²/h) to determine if the clarifier is overloaded (design limit: 6 kg/m²/h).",
     options: [
       "3.5 kg/m²/h — within design limit",
-      "5.1 kg/m²/h — within design limit",
+      "5.6 kg/m²/h — within design limit",
       "7.2 kg/m²/h — overloaded",
       "9.8 kg/m²/h — overloaded"
     ],
     correct: 1,
-    explanation: "Solids flux = (Q + QRAS) × MLSS / Area. Q + QRAS = 15,000 + 6,000 = 21,000 m³/d = 875 m³/h. Solids flux = 875 m³/h × 3,200 g/m³ / 500 m² = 5,600 g/m²/h = 5.6 kg/m²/h. This is within the design limit of 6 kg/m²/h, though approaching it. The answer closest to this calculation is 5.1 kg/m²/h (option B), indicating the clarifier is within limits but should be monitored.",
+    explanation: "Solids flux = (Q + QRAS) × MLSS / Area. Q + QRAS = 15,000 + 6,000 = 21,000 m³/d = 875 m³/h. Solids flux = 875 m³/h × 3,200 g/m³ / 500 m² = 5,600 g/m²/h = 5.6 kg/m²/h. This is within the design limit of 6 kg/m²/h, though approaching it. The clarifier is operating within limits but should be monitored closely.",
     difficulty: "hard",
   },
   {

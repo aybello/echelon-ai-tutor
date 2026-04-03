@@ -249,7 +249,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
   { id: 39, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A wastewater plant has an influent total nitrogen of 45 mg/L (TKN = 40 mg/L, NO3-N = 5 mg/L). After treatment, effluent TN = 8 mg/L. What is the total nitrogen removal efficiency?",
     options: ["78%", "82%", "89%", "95%"],
-    correct: 2,
+    correct: 1,
     explanation: "TN removal = (45 − 8) / 45 × 100 = 37/45 × 100 = 82.2% ≈ 82%." },
 
   { id: 40, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
@@ -419,7 +419,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
   { id: 67, module: "Primary Treatment", difficulty: "hard",
     question: "A primary clarifier produces sludge at 3% TS with a specific gravity of 1.02. If the volatile fraction is 70%, how many kg/day of volatile solids are produced if the total sludge volume is 50 m³/day?",
     options: ["1,071 kg/day", "1,530 kg/day", "2,142 kg/day", "3,060 kg/day"],
-    correct: 1,
+    correct: 0,
     explanation: "Total sludge mass = 50 m³ × 1,020 kg/m³ = 51,000 kg/day. Dry solids = 51,000 × 0.03 = 1,530 kg/day. Volatile solids = 1,530 × 0.70 = 1,071 kg/day." },
 
   { id: 68, module: "Primary Treatment", difficulty: "easy",
