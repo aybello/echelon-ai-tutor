@@ -3991,3 +3991,65 @@ export function getWQAModuleCounts(): Record<WQAModule, number> {
   }
   return counts;
 }
+
+/**
+ * Maps WQA question IDs to the relevant section of the WQA Formula Sheet (/formulas-wqa).
+ * Used by WQAQuiz to show a "📐 See formula" deep-link after the explanation
+ * for questions that involve a specific calculation or formula.
+ *
+ * Sections available:
+ *   #unit-conversions   — mg/L ↔ µg/L, g/L, normality, molarity
+ *   #dilution           — C₁V₁=C₂V₂, serial dilution, spike recovery, back-calculation
+ *   #alkalinity-hardness — alkalinity titration, EDTA hardness, meq/L
+ *   #ct-disinfection    — CT values, log inactivation, UV dose, chlorine dose/demand
+ *   #lsi                — Langelier Saturation Index, pHs
+ *   #qaqc               — RPD, MDL, Z-score, CV
+ *   #regulatory         — O. Reg. 169/03 MACs, chlorine residual, record retention
+ */
+export const WQA_FORMULA_LINKS: Record<string, string> = {
+  "WQA-M001": "/formulas-wqa#unit-conversions",
+  "WQA-M003": "/formulas-wqa#alkalinity-hardness",
+  "WQA-M005": "/formulas-wqa#dilution",
+  "WQA-M006": "/formulas-wqa#unit-conversions",
+  "WQA-M007": "/formulas-wqa#dilution",
+  "WQA-M009": "/formulas-wqa#unit-conversions",
+  "WQA-M011": "/formulas-wqa#alkalinity-hardness",
+  "WQA-M012": "/formulas-wqa#unit-conversions",
+  "WQA-M013": "/formulas-wqa#ct-disinfection",
+  "WQA-M014": "/formulas-wqa#dilution",
+  "WQA-S007": "/formulas-wqa#alkalinity-hardness",
+  "WQA-S011": "/formulas-wqa#alkalinity-hardness",
+  "WQA-S017": "/formulas-wqa#lsi",
+  "WQA-S021": "/formulas-wqa#alkalinity-hardness",
+  "WQA-L023": "/formulas-wqa#ct-disinfection",
+  "WQA-L031": "/formulas-wqa#qaqc",
+  "WQA-SF002": "/formulas-wqa#dilution",
+  "WQA-SF005": "/formulas-wqa#dilution",
+  "WQA-SF016": "/formulas-wqa#dilution",
+  "WQA-WC003": "/formulas-wqa#alkalinity-hardness",
+  "WQA-WC004": "/formulas-wqa#alkalinity-hardness",
+  "WQA-WC011": "/formulas-wqa#alkalinity-hardness",
+  "WQA-WC014": "/formulas-wqa#alkalinity-hardness",
+  "WQA-WC015": "/formulas-wqa#alkalinity-hardness",
+  "WQA-WC017": "/formulas-wqa#unit-conversions",
+  "WQA-WC023": "/formulas-wqa#unit-conversions",
+  "WQA-B011": "/formulas-wqa#ct-disinfection",
+  "WQA-CT004": "/formulas-wqa#unit-conversions",
+  "WQA-CT013": "/formulas-wqa#alkalinity-hardness",
+  "WQA-D001": "/formulas-wqa#ct-disinfection",
+  "WQA-D005": "/formulas-wqa#ct-disinfection",
+  "WQA-D007": "/formulas-wqa#unit-conversions",
+  "WQA-D009": "/formulas-wqa#ct-disinfection",
+  "WQA-D011": "/formulas-wqa#ct-disinfection",
+  "WQA-D012": "/formulas-wqa#ct-disinfection",
+  "WQA-D014": "/formulas-wqa#alkalinity-hardness",
+  "WQA-D015": "/formulas-wqa#ct-disinfection",
+  "WQA-QA003": "/formulas-wqa#unit-conversions",
+  "WQA-QA004": "/formulas-wqa#qaqc",
+  "WQA-QA006": "/formulas-wqa#dilution",
+  "WQA-QA007": "/formulas-wqa#qaqc",
+  "WQA-QA014": "/formulas-wqa#unit-conversions",
+  "WQA-QA019": "/formulas-wqa#dilution",
+  "WQA-QA020": "/formulas-wqa#unit-conversions",
+  "WQA-R005": "/formulas-wqa#ct-disinfection",
+};

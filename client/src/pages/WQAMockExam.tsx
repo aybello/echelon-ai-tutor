@@ -374,6 +374,11 @@ export default function WQAMockExam() {
                 🧪 Practice Mode
               </button>
             </Link>
+            <Link href="/formulas-wqa" style={{ flex: 1 }}>
+              <button style={{ width: "100%", padding: "14px 20px", borderRadius: 14, background: "#CCFBF1", color: "#0F766E", fontWeight: 700, fontSize: 14, border: "1px solid #99F6E4", cursor: "pointer", fontFamily: "inherit" }}>
+                📐 WQA Formulas
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -410,6 +415,11 @@ export default function WQAMockExam() {
             <div style={{ fontSize: 20, fontWeight: 900, color: timerColor, fontVariantNumeric: "tabular-nums", letterSpacing: "-0.5px" }}>
               ⏱ {formatTime(timeLeft)}
             </div>
+            <Link href="/formulas-wqa" target="_blank">
+              <button style={{ padding: "8px 14px", borderRadius: 10, background: "#CCFBF1", color: "#0F766E", fontWeight: 700, fontSize: 12, border: "1px solid #99F6E4", cursor: "pointer", fontFamily: "inherit" }}>
+                📐 Formulas
+              </button>
+            </Link>
             <button
               onClick={() => { if (window.confirm(`Submit exam? You have answered ${answered}/${EXAM_QUESTIONS} questions.`)) handleSubmit(); }}
               style={{ padding: "8px 16px", borderRadius: 10, background: "#FEE2E2", color: "#B91C1C", fontWeight: 700, fontSize: 12, border: "1px solid #FECACA", cursor: "pointer", fontFamily: "inherit" }}

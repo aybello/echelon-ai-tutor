@@ -238,6 +238,13 @@ const FEATURES = [
     href: "/formulas",
   },
   {
+    icon: "🔬",
+    title: "WQA Formula Sheet",
+    description: "30+ formulas for the Ontario Water Quality Analyst exam — unit conversions, alkalinity, CT values, Langelier Index, QA/QC, and O. Reg. 169/03 limits.",
+    color: "#7C3AED",
+    href: "/formulas-wqa",
+  },
+  {
     icon: "🗺️",
     title: "Career Map",
     description: "See your full career path — OIT to Class 4 — with salary ranges, employer landscape, and certification timelines.",

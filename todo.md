@@ -159,3 +159,6 @@
 - [x] Add WQA formula sheet page (/formulas-wqa) covering unit conversions, dilution, alkalinity, CT values, hardness, LSI, and regulatory limits
 - [x] Update WQA quiz copy to reflect 300 questions (Landing.tsx questions field, description text)
 - [x] Add Class 3 Wastewater (CLASS3_WW_QUESTIONS) to quiz.smoke.test.ts with min 480 threshold
+- [x] Add 📐 Formulas button to WQAMockExam.tsx header (link to /formulas-wqa)
+- [x] Add WQA Formula Sheet feature card to Landing page Study Tools section
+- [x] Add formulaLink deep-links to WQA questions involving CT values, alkalinity, dilution, LSI, and hardness

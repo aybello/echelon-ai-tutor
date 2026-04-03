@@ -4,7 +4,7 @@
 import { useState, useCallback, useMemo } from "react";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { WQA_QUESTIONS, WQA_MODULES, type WQAQuestion, type WQAModule } from "@/lib/wqaQuestions";
+import { WQA_QUESTIONS, WQA_MODULES, WQA_FORMULA_LINKS, type WQAQuestion, type WQAModule } from "@/lib/wqaQuestions";
 import { type Question, type HistoryEntry, getNextQuestion, getPatternInsights } from "@/lib/questions";
 import ConfidenceMeter from "@/components/ConfidenceMeter";
 import AITutor from "@/components/AITutor";
@@ -14,8 +14,14 @@ import { shuffle } from "@/lib/utils";
 // ── Adapter: convert WQAQuestion → Question (for adaptive engine + AITutor) ──
 let _wqaIdCounter = 90000;
 const wqaIdMap = new Map<string, number>();
+// Reverse map: numeric Question.id → original WQA string ID (for formula deep-links)
+const wqaReverseMap = new Map<number, string>();
 function toQuestion(q: WQAQuestion): Question {
-  if (!wqaIdMap.has(q.id)) wqaIdMap.set(q.id, _wqaIdCounter++);
+  if (!wqaIdMap.has(q.id)) {
+    wqaIdMap.set(q.id, _wqaIdCounter);
+    wqaReverseMap.set(_wqaIdCounter, q.id);
+    _wqaIdCounter++;
+  }
   return {
     id: wqaIdMap.get(q.id)!,
     module: q.module,
@@ -370,6 +376,22 @@ export default function WQAQuiz() {
                   {selected === current.correct ? "✅ Correct!" : "❌ Incorrect"}
                 </div>
                 <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>{current.explanation}</div>
+                {/* Formula deep-link — shown when question involves a formula */}
+                {(() => {
+                  const wqaId = wqaReverseMap.get(current.id);
+                  const formulaHref = wqaId ? WQA_FORMULA_LINKS[wqaId] : undefined;
+                  if (!formulaHref) return null;
+                  return (
+                    <a
+                      href={formulaHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 10, padding: "7px 14px", borderRadius: 8, background: "#CCFBF1", border: "1px solid #99F6E4", color: "#0F766E", fontSize: 11, fontWeight: 700, textDecoration: "none", fontFamily: "inherit" }}
+                    >
+                      📐 View formula sheet ↗
+                    </a>
+                  );
+                })()}
                 {adaptive && (
                   <div style={{ marginTop: 10, padding: "8px 12px", borderRadius: 8, background: "#FFFBEB", border: "1px solid #FDE68A", fontSize: 12, color: "#92400E" }}>
                     💡 {adaptive}
