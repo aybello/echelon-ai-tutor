@@ -59,7 +59,7 @@ const INDIVIDUAL: Product[] = [
     key: "class2-water",
     name: "Class 2 Water Treatment",
     shortName: "Class 2 Water",
-    description: "Advanced treatment processes, SCADA, corrosion control, membrane filtration, and process troubleshooting. 500 questions across 5 modules.",
+    description: "Advanced treatment processes, SCADA, corrosion control, membrane filtration, and process troubleshooting.",
     priceCAD: 9900,
     examTypes: ["class2-water"],
     badge: "Available Now",
@@ -68,6 +68,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     available: true,
+    features: ["500 practice questions", "Timed mock exam", "AI Tutor"],
   },
   {
     key: "class3-water",
@@ -116,7 +117,7 @@ const INDIVIDUAL: Product[] = [
     key: "class2-ww",
     name: "Class 2 Wastewater",
     shortName: "Class 2 WW",
-    description: "Activated sludge, nutrient removal, advanced secondary treatment, and process control. 500 questions across 5 modules.",
+    description: "Activated sludge, nutrient removal, advanced secondary treatment, and process control.",
     priceCAD: 9900,
     examTypes: ["class2-ww"],
     badge: "Available Now",
@@ -125,6 +126,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
+    features: ["500 practice questions", "Timed mock exam", "AI Tutor"],
   },
   {
     key: "class3-ww",
@@ -620,24 +622,28 @@ export default function Pricing() {
           <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
             What's included with every Practice Pass
           </h3>
-          <p style={{ color: "#64748B", fontSize: 14, margin: "0 0 24px" }}>
+          <p style={{ color: "#64748B", fontSize: 14, margin: "0 0 8px" }}>
             One-time payment — access never expires
+          </p>
+          <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
+            1,300+ questions across Water Treatment, Wastewater, and WQA tracks
           </p>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
               gap: 16,
-              maxWidth: 800,
+              maxWidth: 900,
               margin: "0 auto",
             }}
           >
             {[
-              { icon: "📚", label: "500+ Questions" },
+              { icon: "📚", label: "1,300+ Questions" },
               { icon: "🤖", label: "AI Tutor Chat" },
               { icon: "📊", label: "Score History" },
               { icon: "🎯", label: "Adaptive Difficulty" },
               { icon: "🔁", label: "Unlimited Attempts" },
+              { icon: "📐", label: "Formula Sheets" },
               { icon: "📱", label: "Mobile Friendly" },
             ].map(f => (
               <div

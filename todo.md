@@ -168,3 +168,6 @@
 - [x] Add feature bullets to Class 3 WW Pricing card (502 questions, mock exam, WW3 formula sheet, AI Tutor)
 - [x] Add feature bullets to Class 3 Water Pricing card (500 questions, mock exam, formula sheet, AI Tutor)
 - [x] Fix pre-existing JSX error in Class3WastewaterQuiz.tsx (adjacent JSX elements at line 169 — confirmed already resolved, build clean)
+- [x] Add feature bullets to Class 2 WW and Class 2 Water Pricing cards (500 questions, mock exam, formula sheet, AI Tutor)
+- [x] Update Pricing page "What's included" section: change "500+ Questions" to "1,300+ Questions" with course breakdown
+- [x] Verify formula sheet link exists on Class3WaterQuiz.tsx header (linking to /formulas-water3) — already present, no change needed
