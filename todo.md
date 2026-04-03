@@ -186,3 +186,6 @@
 - [x] Fix WQA quiz gate — added productKey/productName/priceLabel/paidFeatures to QuizGate call; also fixed Class3WaterMockExam price from $99 to $129
 - [x] Audit all quiz gate prices — fixed Class2WaterQuiz (CA$79→CA$99), Class3WaterQuiz (CA$99→CA$129), Class2WaterMockExam (price 79→99)
 - [x] Remove free email path from all paid course quiz gates — QuizGate now shows Stripe CTA + Try 15 More + View Pricing for paid courses; free email form only shown for OIT (no productKey)
+- [x] Add course-specific paidFeatures to all remaining paid quiz gates — confirmed all 6 already have paidFeatures arrays, no change needed
+- [x] Audit Class 2 WW mock exam PurchaseGate price — confirmed already price={99}, no change needed
+- [x] Add View Pricing CTA to WQA Mock Exam PurchaseGate — rewrote PurchaseGate with direct Stripe checkout CTA (primary), View All Courses & Pricing (secondary), course-specific feature bullets, and Try Free OIT escape link
