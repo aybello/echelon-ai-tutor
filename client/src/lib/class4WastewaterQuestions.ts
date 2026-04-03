@@ -21,7 +21,7 @@ export interface C4WWQuestion {
 }
 
 export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
-  // ─── MODULE 1: Advanced Treatment Process Monitoring (1–160) ───────────────
+  // --- MODULE 1: Advanced Treatment Process Monitoring (1-160) ---------------
   {
     id: 1,
     module: "Advanced Treatment Process Monitoring",
@@ -772,7 +772,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     explanation: "Under Ontario's MISA program and Municipal Sewer Use By-laws, industrial users must pre-treat their discharge to meet by-law limits before discharging to the municipal sewer. The WWTP operator's obligation is to enforce the by-law, require industrial pre-treatment where needed, and report any exceedances to the Director (MECP). The WWTP is not responsible for treating industrial pollutants that exceed sewer use by-law limits. Dilution is not an acceptable treatment strategy under Ontario regulations.",
     difficulty: "medium",
   },
-  // ─── Continuing Module 1 (51–160) ──────────────────────────────────────────
+  // --- Continuing Module 1 (51-160) ------------------------------------------
   {
     id: 51,
     module: "Advanced Treatment Process Monitoring",
@@ -1479,7 +1479,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     difficulty: "hard",
   },
 
-  // ─── MODULE 1 continued (98–160) ──────────────────────────────────────────
+  // --- MODULE 1 continued (98-160) ------------------------------------------
   {
     id: 98,
     module: "Advanced Treatment Process Monitoring",
@@ -1825,7 +1825,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     explanation: "The primary advantage of IFAS for nitrogen removal is the ability to maintain nitrifying biofilm on the media carriers at overall SRTs that would wash out suspended-growth nitrifiers. Nitrifiers grow slowly (μmax ≈ 0.8/d at 20°C) and require long SRT (>6 days at 20°C). In IFAS, the biofilm carriers retain nitrifiers independently of the suspended-growth SRT, allowing the plant to operate at shorter SRT for BOD removal while still achieving nitrification. This is particularly valuable for upgrading existing plants without adding clarifier capacity. IFAS still requires secondary clarifiers.",
     difficulty: "hard",
   },
-  // ─── MODULE 2: Equipment Operation & Maintenance (121–230) ────────────────
+  // --- MODULE 2: Equipment Operation & Maintenance (121-230) ----------------
   {
     id: 121,
     module: "Equipment Operation & Maintenance",
@@ -2276,7 +2276,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     explanation: "IEEE Standard 43 provides guidance on motor insulation resistance. For 600V motors, the minimum acceptable insulation resistance is typically 1 MΩ (or 1 MΩ per kV of rated voltage + 1 MΩ). A reading of 2 MΩ is above the minimum but indicates marginal insulation — moisture, contamination, or insulation degradation is present. The recommended action is to monitor closely, investigate the cause (moisture ingress, contamination), dry the motor if moisture is suspected, and plan for replacement. A reading below 1 MΩ indicates failed insulation — the motor should not be energized. New motors typically read >100 MΩ.",
     difficulty: "medium",
   },
-  // ─── MODULE 3: Laboratory Analysis & Interpretation (151–250) ─────────────
+  // --- MODULE 3: Laboratory Analysis & Interpretation (151-250) -------------
   {
     id: 151,
     module: "Laboratory Analysis & Interpretation",
@@ -2728,7 +2728,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     difficulty: "medium",
   },
 
-  // ─── MODULE 4: Biosolids Management & Regulations (181–260) ───────────────
+  // --- MODULE 4: Biosolids Management & Regulations (181-260) ---------------
   {
     id: 181,
     module: "Biosolids Management & Regulations",
@@ -3179,7 +3179,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     explanation: "Anaerobic digesters are permit-required confined spaces with multiple hazards: oxygen deficiency (CH₄ and CO₂ displace O₂), toxic gas (H₂S — immediately dangerous to life and health at >100 ppm), and explosive atmosphere (CH₄ — LEL 5%). Entry requirements: (1) confined space entry permit signed by supervisor; (2) atmospheric testing for O₂ (19.5–23%), H₂S (<10 ppm), and LEL (<10%); (3) purge with fresh air until atmosphere is safe; (4) continuous atmospheric monitoring during entry; (5) trained attendant outside at all times; (6) rescue equipment available; (7) communication system. Never enter without a permit — H₂S can incapacitate instantly at high concentrations.",
     difficulty: "medium",
   },
-  // ─── MODULE 5: Plant Management, Safety & Administration (211–260) ────────
+  // --- MODULE 5: Plant Management, Safety & Administration (211-260) --------
   {
     id: 211,
     module: "Plant Management, Safety & Administration",
@@ -5430,7 +5430,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     explanation: "Concentration = Mass / Volume = 50 kg/day / 8,500 m3/day = 0.00588 kg/m3 = 5.88 mg/L (approximately 5.9 mg/L). Conversion: 1 kg/m3 = 1,000 mg/L. So 0.00588 kg/m3 x 1,000 = 5.88 mg/L. Mass-based limits are used when the receiving water assimilative capacity is the limiting factor -- the total mass of pollutant entering the receiving water must not exceed a threshold regardless of plant flow. A concentration limit of 5.9 mg/L BOD5 is very stringent and would typically require tertiary treatment (filtration, advanced biological treatment).",
     difficulty: "medium",
   },
-  // ─── MODULE 4: Biosolids Management & Regulations (361–440) ─────────────────
+  // --- MODULE 4: Biosolids Management & Regulations (361-440) -----------------
   {
     id: 361,
     module: "Biosolids Management & Regulations",
@@ -5881,7 +5881,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     explanation: "PFAS (including PFOA, PFOS, and thousands of related compounds) in biosolids: Current status (2024): (1) Not regulated in Ontario Regulation 267/03 or federal biosolids guidelines; (2) Health Canada and Environment and Climate Change Canada are conducting risk assessments under the Canadian Environmental Protection Act (CEPA); (3) PFAS accumulate in biosolids because they are not removed by conventional wastewater treatment; (4) Some Ontario municipalities have voluntarily begun PFAS testing; (5) US EPA has proposed PFAS limits for biosolids (2023). Operator communication: be transparent about the current regulatory gap; acknowledge the emerging concern; share any available testing data; commit to monitoring regulatory developments. Proactive communication builds public trust.",
     difficulty: "hard",
   },
-  // ─── MODULE 2: Equipment Operation & Maintenance (391–440) ──────────────────
+  // --- MODULE 2: Equipment Operation & Maintenance (391-440) ------------------
   {
     id: 391,
     module: "Equipment Operation & Maintenance",
@@ -6332,7 +6332,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     explanation: "Aeration energy reduction strategies: (1) VFDs on blowers: most impactful -- DO-based control reduces blower speed during low-demand periods; typical savings: 20-30% of aeration energy; payback: 2-4 years; (2) DO setpoint optimization: reducing DO from 3.0 to 2.0 mg/L reduces oxygen transfer driving force requirements; ensure nitrification is maintained; (3) Diffuser cleaning: fouled diffusers increase pressure drop and reduce SOTE; cleaning restores efficiency; (4) Turbo blowers: high-speed direct-drive blowers are 15-20% more efficient than conventional centrifugal blowers; (5) Aeration zoning: reduce aeration in the anoxic zone and increase in the aerobic zone; (6) Off-peak scheduling: shift energy-intensive operations to off-peak hours (lower electricity rates); (7) Demand response: participate in utility demand response programs. At 850,000 kWh/year for aeration, a 25% reduction = 212,500 kWh/year savings.",
     difficulty: "hard",
   },
-  // ─── MODULE 1 continued: Advanced Treatment Process Monitoring (421–460) ─────
+  // --- MODULE 1 continued: Advanced Treatment Process Monitoring (421-460) -----
   {
     id: 421,
     module: "Advanced Treatment Process Monitoring",
@@ -6633,7 +6633,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     explanation: "Online measurements for BNR process control: (1) Influent flow: required for all mass balance calculations and load-based control; (2) Influent NH3-N: enables proactive aeration control based on nitrogen loading (ammonia-based aeration control, ABAC); (3) DO in each aeration zone: primary control variable for aeration; target 1.5-2.5 mg/L in aerobic zones, < 0.2 mg/L in anoxic zones; (4) NO3-N or ORP in anoxic zone: monitors denitrification progress; ORP < -50 mV indicates good denitrification; (5) Effluent NH3-N: real-time compliance monitoring; triggers alarm if limit is approached; (6) Effluent NO3-N: monitors total nitrogen removal; (7) MLSS: used for SRT calculation and WAS control; (8) Effluent TP: monitors phosphorus removal; triggers chemical addition if needed. Advanced control: use ammonia-based aeration control (ABAC) and nitrate-based aeration control (NBAC) to optimize aeration and internal recycle simultaneously.",
     difficulty: "hard",
   },
-  // ─── Final batch: Remaining questions 441-500 ───────────────────────────────
+  // --- Final batch: Remaining questions 441-500 -------------------------------
   {
     id: 441,
     module: "Advanced Treatment Process Monitoring",
