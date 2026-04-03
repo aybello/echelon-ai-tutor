@@ -219,6 +219,138 @@ export default function About() {
         </div>
       </section>
 
+      {/* ── PLATFORM CHANGELOG ── */}
+      <section style={{ padding: "72px 24px", maxWidth: 860, margin: "0 auto" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+          <h2 style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", margin: 0, letterSpacing: "-0.01em" }}>
+            Platform Changelog
+          </h2>
+          <span style={{
+            background: "linear-gradient(135deg, #0F766E, #0E7490)",
+            color: "#fff",
+            fontSize: 11,
+            fontWeight: 800,
+            padding: "3px 10px",
+            borderRadius: 20,
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
+          }}>All 10 Courses Live</span>
+        </div>
+        <p style={{ fontSize: 15, color: "#64748B", margin: "0 0 36px", lineHeight: 1.7 }}>
+          A running record of every course and feature added to the platform.
+        </p>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {[
+            {
+              date: "April 2026",
+              badge: "New",
+              badgeColor: "#0F766E",
+              title: "Class 4 Wastewater Treatment",
+              body: "500 questions across 5 modules: Advanced Treatment, Equipment O&M, Lab Analysis, Biosolids Management, and Plant Management. Includes timed mock exam, formula sheet, and AI Tutor.",
+            },
+            {
+              date: "March 2026",
+              badge: "New",
+              badgeColor: "#1D4ED8",
+              title: "Class 4 Water Treatment",
+              body: "500 questions covering full system management, regulatory leadership, advanced treatment, and strategic operations. Includes timed mock exam, formula sheet with 37 formulas, and AI Tutor.",
+            },
+            {
+              date: "March 2026",
+              badge: "",
+              badgeColor: "#0F766E",
+              title: "Class 3 Wastewater Treatment",
+              body: "Advanced biological treatment, BNR, biosolids management, and process optimization. 500 questions, mock exam, formula sheet.",
+            },
+            {
+              date: "February 2026",
+              badge: "",
+              badgeColor: "#1D4ED8",
+              title: "Class 3 Water Treatment",
+              body: "LSI, CT values, membranes, lime softening, SCADA, source water, and advanced process control. 500 questions, mock exam, formula sheet.",
+            },
+            {
+              date: "February 2026",
+              badge: "",
+              badgeColor: "#0F766E",
+              title: "Class 2 Wastewater Treatment",
+              body: "Activated sludge, nutrient removal, advanced secondary treatment, and process control. 500 questions, mock exam, formula sheet.",
+            },
+            {
+              date: "January 2026",
+              badge: "",
+              badgeColor: "#1D4ED8",
+              title: "Class 2 Water Treatment",
+              body: "Advanced treatment processes, SCADA, corrosion control, membrane filtration, and process troubleshooting. 500 questions, mock exam, formula sheet.",
+            },
+            {
+              date: "January 2026",
+              badge: "",
+              badgeColor: "#0F766E",
+              title: "Class 1 Wastewater Treatment",
+              body: "Foundational wastewater treatment, biological processes, primary and secondary treatment, and basic operations. 500 questions, mock exam, formula sheet.",
+            },
+            {
+              date: "January 2026",
+              badge: "",
+              badgeColor: "#1D4ED8",
+              title: "Class 1 Water Treatment",
+              body: "Core water treatment processes, coagulation, filtration, disinfection, and basic regulations. 500 questions, mock exam, formula sheet.",
+            },
+            {
+              date: "Late 2025",
+              badge: "",
+              badgeColor: "#64748B",
+              title: "OIT Water & OIT Wastewater — Free Practice",
+              body: "Platform launched with free OIT practice for both streams. Includes adaptive quiz engine, AI Tutor, confidence scoring, pattern detection, interactive process diagrams, and formula sheets.",
+            },
+          ].map((item, i) => (
+            <div key={i} style={{
+              display: "flex",
+              gap: 16,
+              padding: "18px 22px",
+              background: "#fff",
+              borderRadius: 14,
+              border: "1px solid #E2E8F0",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+              alignItems: "flex-start",
+            }}>
+              <div style={{ flexShrink: 0, paddingTop: 2 }}>
+                <div style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: "50%",
+                  background: item.badgeColor,
+                  marginTop: 4,
+                }} />
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.07em" }}>
+                    {item.date}
+                  </span>
+                  {item.badge && (
+                    <span style={{
+                      background: item.badgeColor,
+                      color: "#fff",
+                      fontSize: 10,
+                      fontWeight: 800,
+                      padding: "2px 8px",
+                      borderRadius: 20,
+                      letterSpacing: "0.06em",
+                      textTransform: "uppercase",
+                    }}>{item.badge}</span>
+                  )}
+                </div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", marginBottom: 4 }}>{item.title}</div>
+                <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, margin: 0 }}>{item.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section style={{ padding: "72px 24px", textAlign: "center" }}>
         <div style={{ maxWidth: 560, margin: "0 auto" }}>

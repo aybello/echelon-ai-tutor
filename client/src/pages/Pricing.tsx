@@ -691,8 +691,8 @@ export default function Pricing() {
                 a: "We offer a 7-day money-back guarantee if you're not satisfied. Email support@echeloninstitute.ca.",
               },
               {
-                q: "Why are some exams 'Coming Soon'?",
-                a: "We're building Class 2–4 question banks right now. Join the waitlist on the homepage to be notified when they launch.",
+                q: "Which certification levels are available right now?",
+                a: "All 10 courses are live: OIT Water, OIT Wastewater, Class 1–4 Water Treatment, and Class 1–4 Wastewater Treatment. Every course includes a practice quiz, timed mock exam, formula sheet, and AI Tutor.",
               },
             ].map(faq => (
               <div
