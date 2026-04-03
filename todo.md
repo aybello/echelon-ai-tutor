@@ -162,3 +162,6 @@
 - [x] Add 📐 Formulas button to WQAMockExam.tsx header (link to /formulas-wqa)
 - [x] Add WQA Formula Sheet feature card to Landing page Study Tools section
 - [x] Add formulaLink deep-links to WQA questions involving CT values, alkalinity, dilution, LSI, and hardness
+- [x] Add formula deep-links to WQAMockExam post-exam review panel (using WQA_FORMULA_LINKS)
+- [x] Update Landing page STATS bar from "500+ OIT" to "1,300+ Practice Questions"
+- [x] Add "WQA Formula Sheet" as a feature bullet to the WQA Pricing card

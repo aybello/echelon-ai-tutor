@@ -23,6 +23,7 @@ interface Product {
   bg: string;
   border: string;
   available: boolean;
+  features?: string[]; // optional highlight bullets shown on the card
 }
 
 const INDIVIDUAL: Product[] = [
@@ -165,6 +166,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#FFFBEB",
     border: "#FDE68A",
     available: true,
+    features: ["300 practice questions", "Timed mock exam", "WQA formula sheet", "AI Tutor"],
   },
 ];
 
@@ -769,9 +771,19 @@ function ProductCard({ product }: { product: Product }) {
         </div>
       </div>
 
-      <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, margin: 0, flexGrow: 1 }}>
+      <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, margin: 0 }}>
         {product.description}
       </p>
+
+      {product.features ? (
+        <ul style={{ margin: 0, padding: "0 0 0 14px", flexGrow: 1 }}>
+          {product.features.map(f => (
+            <li key={f} style={{ fontSize: 11, color: "#374151", lineHeight: 1.7 }}>{f}</li>
+          ))}
+        </ul>
+      ) : (
+        <div style={{ flexGrow: 1 }} />
+      )}
 
       <div>
         <div style={{ fontSize: 26, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>

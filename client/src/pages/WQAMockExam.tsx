@@ -3,7 +3,7 @@
 // Based on Ontario Water Quality Analyst (WQA) exam format (O. Reg. 248/03)
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Link } from "wouter";
-import { WQA_QUESTIONS, WQA_MODULES, type WQAQuestion } from "@/lib/wqaQuestions";
+import { WQA_QUESTIONS, WQA_MODULES, WQA_FORMULA_LINKS, type WQAQuestion } from "@/lib/wqaQuestions";
 import { type Question } from "@/lib/questions";
 import SiteNav from "@/components/SiteNav";
 import { trpc } from "@/lib/trpc";
@@ -39,8 +39,14 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 // Convert WQAQuestion → Question (for display compatibility)
 let _idCounter = 91000;
 const idMap = new Map<string, number>();
+// Reverse map: numeric Question.id → original WQA string ID (for formula deep-links)
+const reverseIdMap = new Map<number, string>();
 function toQ(q: WQAQuestion): Question {
-  if (!idMap.has(q.id)) idMap.set(q.id, _idCounter++);
+  if (!idMap.has(q.id)) {
+    idMap.set(q.id, _idCounter);
+    reverseIdMap.set(_idCounter, q.id);
+    _idCounter++;
+  }
   return {
     id: idMap.get(q.id)!,
     module: q.module,
@@ -357,6 +363,22 @@ export default function WQAMockExam() {
                         Correct: <strong>{q.options[q.correct]}</strong>
                       </div>
                       <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.5 }}>{q.explanation}</div>
+                      {/* Formula deep-link */}
+                      {(() => {
+                        const wqaId = reverseIdMap.get(q.id);
+                        const formulaHref = wqaId ? WQA_FORMULA_LINKS[wqaId] : undefined;
+                        if (!formulaHref) return null;
+                        return (
+                          <a
+                            href={formulaHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ display: "inline-flex", alignItems: "center", gap: 5, marginTop: 8, padding: "5px 12px", borderRadius: 8, background: "#CCFBF1", border: "1px solid #99F6E4", color: "#0F766E", fontSize: 11, fontWeight: 700, textDecoration: "none", fontFamily: "inherit" }}
+                          >
+                            📐 View formula sheet ↗
+                          </a>
+                        );
+                      })()}
                     </div>
                   );
                 })}
