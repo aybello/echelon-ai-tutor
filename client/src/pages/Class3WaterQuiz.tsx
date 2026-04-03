@@ -145,7 +145,7 @@ export default function Class3WaterQuiz() {
             onDismiss={() => { setShowGate(false); setHistory([]); setCurrent(toCompat(CLASS3_WATER_QUESTIONS[0])); setSelected(null); setConfidence(null); setConfirmed(false); }}
             productKey="class3-water"
             productName="Class 3 Water Treatment Practice Pass"
-            priceLabel="CA$99"
+            priceLabel="CA$129"
             paidFeatures={[
               "500 application-level questions (Class 3 difficulty)",
               "5 modules: Treatment Process, Lab Analysis, Equipment O&M, Source Water, Safety",

@@ -405,7 +405,7 @@ export default function Class2WaterQuiz() {
           questionsAnswered={history.length}
           productKey="class2-water"
           productName="Class 2 Water Treatment Practice Pass"
-          priceLabel="CA$79"
+          priceLabel="CA$99"
           paidFeatures={[
             "Full 280+ question bank — unlimited attempts",
             "Class 2 Water Treatment Mock Exam (100 questions, 2-hour timer)",

@@ -190,7 +190,7 @@ export default function Class2WaterMockExam() {
   // -- INTRO SCREEN --
   if (examState === "intro") {
     return (
-      <PurchaseGate examType="class2-water" productKey="class2-water" productName="Class 2 Water Treatment Practice Pass" price={79}>
+      <PurchaseGate examType="class2-water" productKey="class2-water" productName="Class 2 Water Treatment Practice Pass" price={99}>
         <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
           <SiteNav currentPath="/class2-water-mock" />
           <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px" }}>

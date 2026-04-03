@@ -184,3 +184,5 @@
 - [x] Update Class 1 WW Pricing card to include "WW1 formula sheet" in features
 - [x] Improve feature bullet styling across all Pricing cards — replaced plain <ul> with colored checkmark circles matching each card's accent color
 - [x] Fix WQA quiz gate — added productKey/productName/priceLabel/paidFeatures to QuizGate call; also fixed Class3WaterMockExam price from $99 to $129
+- [x] Audit all quiz gate prices — fixed Class2WaterQuiz (CA$79→CA$99), Class3WaterQuiz (CA$99→CA$129), Class2WaterMockExam (price 79→99)
+- [x] Remove free email path from all paid course quiz gates — QuizGate now shows Stripe CTA + Try 15 More + View Pricing for paid courses; free email form only shown for OIT (no productKey)
