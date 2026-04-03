@@ -148,11 +148,13 @@ const WASTEWATER_COURSES = [
     questions: 500,
     description: "Large-scale wastewater system management, advanced process control, and regulatory leadership.",
     topics: ["Large System Operations", "Advanced Process Control", "Regulatory Reporting", "Staff & Budget Management", "Emergency Planning"],
-    badge: null,
+    badge: "New",
+    badgeColor: "#0E7490",
     color: "#0E7490",
     bg: "#ECFEFF",
     border: "#A5F3FC",
-    comingSoon: true,
+    comingSoon: false,
+    practicePassPrice: 99,
   },
   {
     code: "CL4-WW",
@@ -359,7 +361,7 @@ function CourseCard({ course }: { course: CourseType }) {
         </button>
       ) : (
         <>
-          <Link href={course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "WQA" ? "/wqa" : "/quiz"}>
+          <Link href={course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "CL3-WW" ? "/class3-ww" : course.code === "WQA" ? "/wqa" : "/quiz"}>
             <button style={{
               width: "100%", padding: "12px",
               background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,

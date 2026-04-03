@@ -36,6 +36,9 @@ import FormulasWW2 from "@/pages/FormulasWW2";
 import Class3WaterQuiz from "@/pages/Class3WaterQuiz";
 import Class3WaterMockExam from "@/pages/Class3WaterMockExam";
 import FormulasWater3 from "@/pages/FormulasWater3";
+import Class3WastewaterQuiz from "@/pages/Class3WastewaterQuiz";
+import Class3WastewaterMockExam from "@/pages/Class3WastewaterMockExam";
+import FormulasWW3 from "@/pages/FormulasWW3";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -69,6 +72,9 @@ function Router() {
       <Route path={"/class3-water"} component={Class3WaterQuiz} />
       <Route path={"/class3-water-mock"} component={Class3WaterMockExam} />
       <Route path={"/formulas-water3"} component={FormulasWater3} />
+      <Route path={"/class3-ww"} component={Class3WastewaterQuiz} />
+      <Route path={"/class3-ww-mock"} component={Class3WastewaterMockExam} />
+      <Route path={"/formulas-ww3"} component={FormulasWW3} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/purchase-success"} component={PurchaseSuccess} />
