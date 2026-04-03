@@ -171,12 +171,12 @@ export default function PurchaseGate({
     : null;
 
   function handleBuyNow() {
-    createSession.mutate({ productKey, email: email || "", origin: window.location.origin });
+    createSession.mutate({ productKey, email: email || undefined, origin: window.location.origin });
   }
 
   function handleBuyBundle() {
     if (!bundleKey) return;
-    createSession.mutate({ productKey: bundleKey, email: email || "", origin: window.location.origin });
+    createSession.mutate({ productKey: bundleKey, email: email || undefined, origin: window.location.origin });
   }
 
   // No access — show paywall
