@@ -5,7 +5,7 @@ import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
-import { waitlist, questionErrorReports, trialEmails, examResults } from "../drizzle/schema";
+import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmissions } from "../drizzle/schema";
 import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { adminRouter } from "./routers/admin";
@@ -218,18 +218,27 @@ export const appRouter = router({
         })
       )
       .mutation(async ({ input }) => {
+        const db = await getDb();
+        // 1. Save to database first (always, even if email fails)
+        if (db) await db.insert(contactSubmissions).values({
+          name: input.name,
+          email: input.email,
+          subject: input.subject,
+          message: input.message,
+        });
+        // 2. Send emails (notification + auto-reply)
         try {
           await sendContactEmail(input);
-          // Also notify owner via Manus notification system as backup
-          await notifyOwner({
-            title: `Contact form: ${input.subject}`,
-            content: `From: ${input.name} <${input.email}>\n\n${input.message}`,
-          }).catch(() => {}); // non-blocking
-          return { success: true };
         } catch (err) {
-          console.error("[Contact] Email send failed:", err);
-          throw new Error("Failed to send message. Please try again or email us directly.");
+          console.error("[Contact] Email send failed (submission still saved):", err);
+          // Don't throw — submission is already saved, user gets success
         }
+        // 3. Notify owner via Manus notification system as backup
+        notifyOwner({
+          title: `Contact form: ${input.subject}`,
+          content: `From: ${input.name} <${input.email}>\n\n${input.message}`,
+        }).catch(() => {}); // non-blocking
+        return { success: true };
       }),
   }),
 

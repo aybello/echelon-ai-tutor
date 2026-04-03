@@ -13,19 +13,50 @@ function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
   const sendContact = trpc.contact.send.useMutation({
     onSuccess: () => setSubmitted(true),
     onError: (err) => setError(err.message || "Failed to send. Please try again."),
   });
 
+  const validateField = (name: string, value: string): string => {
+    switch (name) {
+      case "name": return value.trim() ? "" : "Name is required";
+      case "email": return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()) ? "" : "Please enter a valid email address";
+      case "subject": return value.trim() ? "" : "Please select a subject";
+      case "message": return value.trim().length >= 10 ? "" : value.trim() ? "Message must be at least 10 characters" : "Message is required";
+      default: return "";
+    }
+  };
+
+  const handleChange = (name: string, value: string) => {
+    setForm(f => ({ ...f, [name]: value }));
+    if (touched[name]) {
+      setFieldErrors(prev => ({ ...prev, [name]: validateField(name, value) }));
+    }
+  };
+
+  const handleBlur = (name: string) => {
+    setTouched(prev => ({ ...prev, [name]: true }));
+    setFieldErrors(prev => ({ ...prev, [name]: validateField(name, form[name as keyof typeof form]) }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    if (!form.name.trim() || !form.email.trim() || !form.subject.trim() || !form.message.trim()) {
-      setError("Please fill in all fields.");
-      return;
-    }
+    // Validate all fields
+    const allTouched = { name: true, email: true, subject: true, message: true };
+    setTouched(allTouched);
+    const errors = {
+      name: validateField("name", form.name),
+      email: validateField("email", form.email),
+      subject: validateField("subject", form.subject),
+      message: validateField("message", form.message),
+    };
+    setFieldErrors(errors);
+    if (Object.values(errors).some(e => e)) return;
     sendContact.mutate(form);
   };
 
@@ -88,28 +119,33 @@ function ContactSection() {
                     <input
                       type="text"
                       value={form.name}
-                      onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                      onChange={e => handleChange("name", e.target.value)}
+                      onBlur={() => handleBlur("name")}
                       placeholder="Jane Smith"
-                      style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "1.5px solid #E2E8F0", fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: "#0F172A" }}
+                      style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.name ? "#DC2626" : "#E2E8F0"}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: "#0F172A" }}
                     />
+                    {fieldErrors.name && <p style={{ margin: "4px 0 0", fontSize: 12, color: "#DC2626" }}>{fieldErrors.name}</p>}
                   </div>
                   <div>
                     <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 6, letterSpacing: "0.05em" }}>EMAIL ADDRESS</label>
                     <input
                       type="email"
                       value={form.email}
-                      onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                      onChange={e => handleChange("email", e.target.value)}
+                      onBlur={() => handleBlur("email")}
                       placeholder="jane@example.com"
-                      style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "1.5px solid #E2E8F0", fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: "#0F172A" }}
+                      style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.email ? "#DC2626" : "#E2E8F0"}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: "#0F172A" }}
                     />
+                    {fieldErrors.email && <p style={{ margin: "4px 0 0", fontSize: 12, color: "#DC2626" }}>{fieldErrors.email}</p>}
                   </div>
                 </div>
                 <div>
                   <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 6, letterSpacing: "0.05em" }}>SUBJECT</label>
                   <select
                     value={form.subject}
-                    onChange={e => setForm(f => ({ ...f, subject: e.target.value }))}
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "1.5px solid #E2E8F0", fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: form.subject ? "#0F172A" : "#94A3B8", background: "#fff" }}
+                    onChange={e => handleChange("subject", e.target.value)}
+                    onBlur={() => handleBlur("subject")}
+                    style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.subject ? "#DC2626" : "#E2E8F0"}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: form.subject ? "#0F172A" : "#94A3B8", background: "#fff" }}
                   >
                     <option value="" disabled>Select a topic...</option>
                     <option value="Course Question">Course Question</option>
@@ -119,16 +155,19 @@ function ContactSection() {
                     <option value="Partnership Inquiry">Partnership Inquiry</option>
                     <option value="Other">Other</option>
                   </select>
+                  {fieldErrors.subject && <p style={{ margin: "4px 0 0", fontSize: 12, color: "#DC2626" }}>{fieldErrors.subject}</p>}
                 </div>
                 <div>
                   <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 6, letterSpacing: "0.05em" }}>MESSAGE</label>
                   <textarea
                     value={form.message}
-                    onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                    onChange={e => handleChange("message", e.target.value)}
+                    onBlur={() => handleBlur("message")}
                     placeholder="Tell us how we can help..."
                     rows={5}
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "1.5px solid #E2E8F0", fontSize: 14, fontFamily: "inherit", outline: "none", resize: "vertical", boxSizing: "border-box", color: "#0F172A" }}
+                    style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.message ? "#DC2626" : "#E2E8F0"}`, fontSize: 14, fontFamily: "inherit", outline: "none", resize: "vertical", boxSizing: "border-box", color: "#0F172A" }}
                   />
+                  {fieldErrors.message && <p style={{ margin: "4px 0 0", fontSize: 12, color: "#DC2626" }}>{fieldErrors.message}</p>}
                 </div>
                 {error && <p style={{ margin: 0, fontSize: 13, color: "#DC2626", fontWeight: 600 }}>{error}</p>}
                 <button
