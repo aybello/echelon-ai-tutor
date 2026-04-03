@@ -523,6 +523,17 @@ export default function Class1Quiz() {
         {showGate && !trialUnlocked && (
           <QuizGate
             questionsAnswered={history.length}
+            productKey="class1-water"
+            productName="Class 1 Practice Pass"
+            priceLabel="CA$49"
+            paidFeatures={[
+              "Full 600+ question bank — unlimited attempts",
+              "Covers Water Treatment, Distribution, Wastewater Treatment & Collection",
+              "Adaptive engine prioritizes your weak spots",
+              "AI Tutor explains every question in depth",
+              "Timed 100-question mock exam with pass/fail breakdown",
+              "Score history & module breakdown",
+            ]}
             onUnlocked={() => {
               setTrialUnlockedState(true);
               setShowGate(false);

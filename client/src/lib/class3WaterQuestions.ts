@@ -4689,8 +4689,7 @@ export const QUESTIONS: Question[] = [
       "1.2 oocysts/L is below the action level and requires no response",
       "The treatment system must achieve sufficient removal/inactivation to meet the regulatory requirement (typically 3-log removal/inactivation for Cryptosporidium)",
       "Cryptosporidium can be removed by chlorination alone",
-      "1.2 oocysts/L is too low to require treatment",
-      "Cryptosporidium oocysts are not a health concern"
+      "1.2 oocysts/L is too low to require treatment"
     ],
     "correct": 1,
     "explanation": "Cryptosporidium is resistant to chlorine disinfection. Treatment must rely on physical removal (coagulation, filtration) and UV or ozone inactivation. Ontario's Procedure for Disinfection of Drinking Water requires systems to achieve log credits based on source water monitoring data. At 1.2 oocysts/L, the system must demonstrate adequate treatment to achieve the required log reduction.",
