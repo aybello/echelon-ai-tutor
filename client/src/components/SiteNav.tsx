@@ -17,6 +17,7 @@ export const NAV_LINKS = [
   { label: "📋 Class 1 Mock",   href: "/class1-mock" },
   { label: "💧 C1 Water Practice", href: "/class1-water" },
   { label: "📋 C1 Water Mock",    href: "/class1-water-mock" },
+  { label: "📐 C1 Water Formulas", href: "/formulas-water1" },
   { label: "💧 C2 Water Practice", href: "/class2-water" },
   { label: "📋 C2 Water Mock",    href: "/class2-water-mock" },
   { label: "🦠 C1 WW Practice",   href: "/class1-ww" },

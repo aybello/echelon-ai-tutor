@@ -180,3 +180,6 @@
 - [x] Add 📋 Mock Exam → badge to Class 3 Water quiz header — confirmed already present, no change needed — confirmed already present at line 186-188, no change needed
 - [x] Build Class 1 Wastewater formula sheet at /formulas-ww1 (7 categories, 25+ formulas) — wired into App.tsx, SiteNav, and Class1WastewaterQuiz header
 - [x] Fix $99 price references for Class 3 Water and Class 3 WW on homepage/Landing page — updated practicePassPrice from 99 to 129 for CL3-W and CL3-WW in Landing.tsx
+- [x] Build Class 1 Water formula sheet at /formulas-water1 (8 categories, 27 formulas + regulatory limits table) — wired into App.tsx, SiteNav, Class1WaterQuiz header
+- [x] Update Class 1 WW Pricing card to include "WW1 formula sheet" in features
+- [x] Improve feature bullet styling across all Pricing cards — replaced plain <ul> with colored checkmark circles matching each card's accent color

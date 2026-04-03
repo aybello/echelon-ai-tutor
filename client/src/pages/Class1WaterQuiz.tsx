@@ -234,6 +234,12 @@ export default function Class1WaterQuiz() {
           >
             {selectedModule ? `📚 ${selectedModule}` : "📚 All Modules"}
           </button>
+          <Link href="/formulas-water1">
+            <span style={{ padding: "5px 10px", borderRadius: 20, border: "1.5px solid #0369A1", background: "#EFF6FF", color: "#0369A1", fontSize: 11, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap" }}>📐 Formulas →</span>
+          </Link>
+          <Link href="/class1-water-mock">
+            <span style={{ padding: "5px 10px", borderRadius: 20, border: "1.5px solid #E2E8F0", background: "#F8FAFC", color: "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap" }}>📋 Mock Exam →</span>
+          </Link>
           <div style={{ fontSize: 12, color: "#64748B", fontWeight: 600 }}>{history.length}/{SESSION_SIZE}</div>
         </div>
       </div>

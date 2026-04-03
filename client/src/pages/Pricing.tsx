@@ -55,7 +55,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0F9FF",
     border: "#BAE6FD",
     available: true,
-    features: ["500 practice questions", "Timed mock exam", "AI Tutor"],
+    features: ["500 practice questions", "Timed mock exam", "Water1 formula sheet", "AI Tutor"],
   },
   {
     key: "class2-water",
@@ -114,7 +114,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["500 practice questions", "Timed mock exam", "AI Tutor"],
+    features: ["500 practice questions", "Timed mock exam", "WW1 formula sheet", "AI Tutor"],
   },
   {
     key: "class2-ww",
@@ -787,11 +787,19 @@ function ProductCard({ product }: { product: Product }) {
       </p>
 
       {product.features ? (
-        <ul style={{ margin: 0, padding: "0 0 0 14px", flexGrow: 1 }}>
+        <div style={{ flexGrow: 1, display: "flex", flexDirection: "column", gap: 5 }}>
           {product.features.map(f => (
-            <li key={f} style={{ fontSize: 11, color: "#374151", lineHeight: 1.7 }}>{f}</li>
+            <div key={f} style={{ display: "flex", alignItems: "center", gap: 7 }}>
+              <span style={{
+                width: 16, height: 16, borderRadius: "50%",
+                background: product.bg, border: `1.5px solid ${product.color}44`,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                flexShrink: 0, fontSize: 9, color: product.color, fontWeight: 900,
+              }}>✓</span>
+              <span style={{ fontSize: 12, color: "#374151", lineHeight: 1.4 }}>{f}</span>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <div style={{ flexGrow: 1 }} />
       )}
