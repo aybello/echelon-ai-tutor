@@ -153,44 +153,51 @@ export default function Class2WastewaterQuiz() {
   return (
     <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Inter', 'Segoe UI', sans-serif" }}>
       <SiteNav currentPath="/class2-ww" />
-      <div style={{ maxWidth: 680, margin: "0 auto", padding: "80px 16px 40px" }}>
-        {/* Header */}
-        <div style={{ marginBottom: 20 }}>
-          <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-            <Link href="/pricing" style={{ textDecoration: "none" }}>
-              <span style={{ fontSize: 12, color: "#94A3B8", cursor: "pointer" }}>← All Courses</span>
-            </Link>
-            <Link href="/formulas-ww2" style={{ textDecoration: "none" }}>
-              <span style={{ fontSize: 12, color: BRAND, cursor: "pointer", fontWeight: 700 }}>📐 Formula Sheet</span>
-            </Link>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 8 }}>
-            <div style={{ width: 44, height: 44, borderRadius: 12, background: BRAND, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22 }}>
-              ♻️
-            </div>
+
+      {/* Header */}
+      <div style={{ background: "linear-gradient(135deg, #0F766E 0%, #0E7490 100%)", color: "#fff", padding: "24px 16px 20px" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
             <div>
-              <h1 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: 0 }}>Class 2 Wastewater Treatment</h1>
-              <p style={{ fontSize: 13, color: "#64748B", margin: 0 }}>{CLASS2_WW_QUESTIONS.length} questions · 5 modules · AI Tutor</p>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, opacity: 0.75, textTransform: "uppercase", marginBottom: 4 }}>Echelon Institute</div>
+              <h1 style={{ margin: 0, fontSize: 20, fontWeight: 800 }}>Class 2 Wastewater Treatment</h1>
+              <div style={{ fontSize: 13, opacity: 0.85, marginTop: 4 }}>Practice Quiz · {CLASS2_WW_QUESTIONS.length} Questions · Intermediate Level</div>
             </div>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Link href="/formulas-ww2">
+                <button style={{ padding: "8px 14px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+                  📐 Formula Sheet
+                </button>
+              </Link>
+              <Link href="/class2-ww-mock">
+                <button style={{ padding: "8px 14px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+                  📋 Mock Exam
+                </button>
+              </Link>
+            </div>
+          </div>
+          {/* Stats bar */}
+          <div style={{ display: "flex", gap: 16, marginTop: 16, flexWrap: "wrap" }}>
+            {[
+              { label: "Answered", value: totalAnswered },
+              { label: "Correct", value: correctCount },
+              { label: "Accuracy", value: `${accuracy}%` },
+            ].map(s => (
+              <div key={s.label} style={{ background: "rgba(255,255,255,0.15)", borderRadius: 8, padding: "6px 14px", textAlign: "center" }}>
+                <div style={{ fontSize: 18, fontWeight: 800 }}>{s.value}</div>
+                <div style={{ fontSize: 10, opacity: 0.8, textTransform: "uppercase", letterSpacing: 1 }}>{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
+      </div>
 
-        {/* Progress bar */}
-        {totalAnswered > 0 && (
-          <div style={{ background: "#fff", borderRadius: 12, padding: "14px 16px", border: "1px solid #E2E8F0", marginBottom: 16 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
-              <span style={{ fontSize: 12, fontWeight: 700, color: "#475569" }}>Session Progress</span>
-              <span style={{ fontSize: 12, fontWeight: 700, color: accuracy >= 70 ? "#059669" : "#DC2626" }}>{accuracy}% accuracy</span>
-            </div>
-            <div style={{ height: 6, background: "#E2E8F0", borderRadius: 3 }}>
-              <div style={{ height: "100%", width: `${Math.min(100, (sessionCount / SESSION_SIZE) * 100)}%`, background: `linear-gradient(90deg, ${BRAND}, #0E7490)`, borderRadius: 3, transition: "width 0.3s" }} />
-            </div>
-            <div style={{ display: "flex", justifyContent: "space-between", marginTop: 6 }}>
-              <span style={{ fontSize: 11, color: "#94A3B8" }}>{sessionCount}/{SESSION_SIZE} in session</span>
-              <span style={{ fontSize: 11, color: "#94A3B8" }}>{correctCount}/{totalAnswered} correct</span>
-            </div>
-          </div>
-        )}
+      {/* Progress bar */}
+      <div style={{ height: 4, background: "rgba(0,0,0,0.1)" }}>
+        <div style={{ height: "100%", width: `${Math.min(100, (sessionCount / SESSION_SIZE) * 100)}%`, background: "rgba(255,255,255,0.6)", transition: "width 0.3s" }} />
+      </div>
+
+      <div style={{ maxWidth: 680, margin: "0 auto", padding: "24px 16px 40px" }}>
 
         {/* Module selector */}
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>

@@ -221,74 +221,76 @@ export default function Class1WaterQuiz() {
 
       <SiteNav currentPath="/class1-water" />
 
-      {/* Header bar */}
-      <div style={{ background: "#fff", borderBottom: "1px solid #E2E8F0", padding: "12px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, position: "sticky", top: 0, zIndex: 40 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{ fontSize: 18 }}>💧</span>
-          <span style={{ fontSize: 13, fontWeight: 800, color: "#0F172A" }}>Class 1 Water Treatment</span>
-          <span style={{ fontSize: 11, color: "#94A3B8", fontWeight: 600 }}>· 500+ questions</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <button
-            onClick={() => setShowModuleSelector(v => !v)}
-            style={{ padding: "6px 12px", borderRadius: 20, border: "1.5px solid #E2E8F0", background: selectedModule ? "#EFF6FF" : "#F8FAFC", color: selectedModule ? "#0369A1" : "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
-          >
-            {selectedModule ? `📚 ${selectedModule}` : "📚 All Modules"}
-          </button>
-          <Link href="/formulas-water1">
-            <span style={{ padding: "5px 10px", borderRadius: 20, border: "1.5px solid #0369A1", background: "#EFF6FF", color: "#0369A1", fontSize: 11, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap" }}>📐 Formulas →</span>
-          </Link>
-          <Link href="/class1-water-mock">
-            <span style={{ padding: "5px 10px", borderRadius: 20, border: "1.5px solid #E2E8F0", background: "#F8FAFC", color: "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap" }}>📋 Mock Exam →</span>
-          </Link>
-          <div style={{ fontSize: 12, color: "#64748B", fontWeight: 600 }}>{history.length}/{SESSION_SIZE}</div>
+      {/* Header */}
+      <div style={{ background: "linear-gradient(135deg, #0369A1 0%, #0E7490 100%)", color: "#fff", padding: "24px 16px 20px" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, opacity: 0.75, textTransform: "uppercase", marginBottom: 4 }}>Echelon Institute</div>
+              <h1 style={{ margin: 0, fontSize: 20, fontWeight: 800 }}>Class 1 Water Treatment</h1>
+              <div style={{ fontSize: 13, opacity: 0.85, marginTop: 4 }}>Practice Quiz · 500 Questions · Foundation Level</div>
+            </div>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Link href="/formulas-water1">
+                <button style={{ padding: "8px 14px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+                  📐 Formula Sheet
+                </button>
+              </Link>
+              <Link href="/class1-water-mock">
+                <button style={{ padding: "8px 14px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+                  📋 Mock Exam
+                </button>
+              </Link>
+            </div>
+          </div>
+          {/* Stats bar */}
+          <div style={{ display: "flex", gap: 16, marginTop: 16, flexWrap: "wrap" }}>
+            {[
+              { label: "Answered", value: history.length },
+              { label: "Correct", value: correctCount },
+              { label: "Accuracy", value: `${history.length > 0 ? Math.round((correctCount / history.length) * 100) : 0}%` },
+            ].map(s => (
+              <div key={s.label} style={{ background: "rgba(255,255,255,0.15)", borderRadius: 8, padding: "6px 14px", textAlign: "center" }}>
+                <div style={{ fontSize: 18, fontWeight: 800 }}>{s.value}</div>
+                <div style={{ fontSize: 10, opacity: 0.8, textTransform: "uppercase", letterSpacing: 1 }}>{s.label}</div>
+              </div>
+            ))}
+            <button
+              onClick={() => setShowModuleSelector(v => !v)}
+              style={{ padding: "6px 14px", background: selectedModule ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+            >
+              {selectedModule ? `📚 ${selectedModule.split(" ")[0]}` : "📚 All Modules"}
+            </button>
+          </div>
+          {/* Module selector inline */}
+          {showModuleSelector && (
+            <div style={{ marginTop: 12, display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <button
+                onClick={() => handleModuleSelect(null)}
+                style={{ padding: "6px 12px", background: !selectedModule ? "#fff" : "rgba(255,255,255,0.15)", color: !selectedModule ? "#0369A1" : "#fff", border: "none", borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+              >
+                All Modules
+              </button>
+              {CLASS1_WATER_MODULES.map(mod => (
+                <button
+                  key={mod}
+                  onClick={() => handleModuleSelect(mod)}
+                  style={{ padding: "6px 12px", background: selectedModule === mod ? "#fff" : "rgba(255,255,255,0.15)", color: selectedModule === mod ? "#0369A1" : "#fff", border: "none", borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+                >
+                  {MODULE_ICONS[mod] ?? "📖"} {mod}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Module selector dropdown */}
-      {showModuleSelector && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 50, background: "rgba(0,0,0,0.4)", display: "flex", alignItems: "flex-start", justifyContent: "center", paddingTop: 80 }} onClick={() => setShowModuleSelector(false)}>
-          <div style={{ background: "#fff", borderRadius: 16, padding: 20, width: "90%", maxWidth: 480, boxShadow: "0 8px 32px rgba(0,0,0,0.15)" }} onClick={e => e.stopPropagation()}>
-            <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 14 }}>Select Module</div>
-            <button
-              onClick={() => handleModuleSelect(null)}
-              style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "1.5px solid #E2E8F0", background: !selectedModule ? "#EFF6FF" : "#F8FAFC", color: !selectedModule ? "#0369A1" : "#0F172A", fontWeight: 700, fontSize: 13, cursor: "pointer", fontFamily: "inherit", marginBottom: 8, textAlign: "left" }}
-            >
-              🎓 All Modules ({CLASS1_WATER_QUESTIONS.length} questions)
-            </button>
-            {CLASS1_WATER_MODULES.map(mod => (
-              <button
-                key={mod}
-                onClick={() => handleModuleSelect(mod)}
-                style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "1.5px solid #E2E8F0", background: selectedModule === mod ? "#EFF6FF" : "#F8FAFC", color: selectedModule === mod ? "#0369A1" : "#0F172A", fontWeight: 700, fontSize: 13, cursor: "pointer", fontFamily: "inherit", marginBottom: 8, textAlign: "left", display: "flex", justifyContent: "space-between", alignItems: "center" }}
-              >
-                <span>{MODULE_ICONS[mod] ?? "📖"} {mod}</span>
-                <span style={{ fontSize: 11, color: "#94A3B8" }}>{moduleStats[mod] ?? 0} Qs</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* Progress bar */}
-      <div style={{ height: 4, background: "#E2E8F0" }}>
-        <div style={{ height: "100%", width: `${progress}%`, background: "linear-gradient(90deg, #0369A1, #0E7490)", transition: "width 0.4s ease" }} />
+      <div style={{ height: 4, background: "rgba(0,0,0,0.1)" }}>
+        <div style={{ height: "100%", width: `${progress}%`, background: "rgba(255,255,255,0.6)", transition: "width 0.4s ease" }} />
       </div>
 
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
-        {/* Stats row */}
-        <div style={{ display: "flex", gap: 10, marginBottom: 20, flexWrap: "wrap" }}>
-          {[
-            { label: "Correct",   value: correctCount, color: "#059669", bg: "#DCFCE7" },
-            { label: "Incorrect", value: wrongCount,   color: "#DC2626", bg: "#FEE2E2" },
-            { label: "Remaining", value: SESSION_SIZE - history.length, color: "#0369A1", bg: "#DBEAFE" },
-          ].map(({ label, value, color, bg }) => (
-            <div key={label} style={{ flex: 1, minWidth: 80, background: bg, borderRadius: 12, padding: "10px 14px", textAlign: "center" }}>
-              <div style={{ fontSize: 22, fontWeight: 900, color }}>{value}</div>
-              <div style={{ fontSize: 10, color, fontWeight: 600 }}>{label}</div>
-            </div>
-          ))}
-        </div>
 
         {/* Question card */}
         <div style={{ background: "#fff", borderRadius: 20, padding: "28px 28px 24px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", marginBottom: 16, animation: "fadeUp 0.25s ease" }}>

@@ -179,49 +179,51 @@ export default function Class1WastewaterQuiz() {
   return (
     <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath="/class1-ww" />
-      <div style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px 80px" }}>
-        {/* Header */}
-        <div style={{ marginBottom: 20 }}>
-          <Link href="/" style={{ fontSize: 13, color: "#64748B", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 4, marginBottom: 12 }}>
-            ← Back to Home
-          </Link>
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 4 }}>
-            <span style={{ fontSize: 28 }}>🦠</span>
+
+      {/* Header */}
+      <div style={{ background: "linear-gradient(135deg, #0F766E 0%, #0E7490 100%)", color: "#fff", padding: "24px 16px 20px" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
             <div>
-              <h1 style={{ fontSize: 22, fontWeight: 800, color: "#1E293B", margin: 0 }}>Class 1 Wastewater Treatment</h1>
-              <p style={{ fontSize: 13, color: "#64748B", margin: 0 }}>Ontario Operator Exam Practice — 500+ Questions</p>
+              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, opacity: 0.75, textTransform: "uppercase", marginBottom: 4 }}>Echelon Institute</div>
+              <h1 style={{ margin: 0, fontSize: 20, fontWeight: 800 }}>Class 1 Wastewater Treatment</h1>
+              <div style={{ fontSize: 13, opacity: 0.85, marginTop: 4 }}>Practice Quiz · 500 Questions · Foundation Level</div>
+            </div>
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Link href="/formulas-ww1">
+                <button style={{ padding: "8px 14px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+                  📐 Formula Sheet
+                </button>
+              </Link>
+              <Link href="/class1-ww-mock">
+                <button style={{ padding: "8px 14px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+                  📋 Mock Exam
+                </button>
+              </Link>
             </div>
           </div>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
-            <Link href="/formulas-ww1" style={{ textDecoration: "none" }}>
-              <span style={{ background: "#EFF6FF", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 600, color: "#0369A1", cursor: "pointer" }}>📐 Formula Sheet →</span>
-            </Link>
-            <Link href="/class1-ww-mock" style={{ textDecoration: "none" }}>
-              <span style={{ background: "#F0FDF4", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 600, color: "#15803D", cursor: "pointer" }}>📋 Mock Exam →</span>
-            </Link>
+          {/* Stats bar */}
+          <div style={{ display: "flex", gap: 16, marginTop: 16, flexWrap: "wrap" }}>
+            {[
+              { label: "Answered", value: totalAnswered },
+              { label: "Correct", value: history.filter(h => h.correct).length },
+              { label: "Accuracy", value: `${accuracy}%` },
+            ].map(s => (
+              <div key={s.label} style={{ background: "rgba(255,255,255,0.15)", borderRadius: 8, padding: "6px 14px", textAlign: "center" }}>
+                <div style={{ fontSize: 18, fontWeight: 800 }}>{s.value}</div>
+                <div style={{ fontSize: 10, opacity: 0.8, textTransform: "uppercase", letterSpacing: 1 }}>{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
+      </div>
 
-        {/* Progress bar */}
-        <div style={{ background: "#E2E8F0", borderRadius: 8, height: 6, marginBottom: 20, overflow: "hidden" }}>
-          <div style={{ height: "100%", background: "linear-gradient(90deg, #0369A1, #0E7490)", borderRadius: 8, width: `${trialUnlockedState ? Math.min((totalAnswered / 601) * 100, 100) : Math.min((sessionCount / SESSION_SIZE) * 100, 100)}%`, transition: "width 0.4s ease" }} />
-        </div>
+      {/* Progress bar */}
+      <div style={{ height: 4, background: "rgba(0,0,0,0.1)" }}>
+        <div style={{ height: "100%", background: "rgba(255,255,255,0.6)", borderRadius: 0, width: `${trialUnlockedState ? Math.min((totalAnswered / 601) * 100, 100) : Math.min((sessionCount / SESSION_SIZE) * 100, 100)}%`, transition: "width 0.4s ease" }} />
+      </div>
 
-        {/* Stats row */}
-        <div style={{ display: "flex", gap: 12, marginBottom: 20, flexWrap: "wrap" }}>
-          <div style={{ flex: 1, minWidth: 100, background: "#fff", borderRadius: 12, padding: "12px 16px", border: "1px solid #E2E8F0" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em" }}>ANSWERED</div>
-            <div style={{ fontSize: 22, fontWeight: 800, color: "#1E293B" }}>{totalAnswered}</div>
-          </div>
-          <div style={{ flex: 1, minWidth: 100, background: "#fff", borderRadius: 12, padding: "12px 16px", border: "1px solid #E2E8F0" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em" }}>ACCURACY</div>
-            <div style={{ fontSize: 22, fontWeight: 800, color: accuracy >= 70 ? "#059669" : "#DC2626" }}>{accuracy}%</div>
-          </div>
-          <div style={{ flex: 1, minWidth: 100, background: "#fff", borderRadius: 12, padding: "12px 16px", border: "1px solid #E2E8F0" }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em" }}>BANK SIZE</div>
-            <div style={{ fontSize: 22, fontWeight: 800, color: "#0369A1" }}>500+</div>
-          </div>
-        </div>
+      <div style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px 80px" }}>
 
         {/* Question card */}
         {current && (
