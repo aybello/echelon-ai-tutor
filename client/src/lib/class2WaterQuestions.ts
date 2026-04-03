@@ -10,6 +10,7 @@ export interface Question {
   options: string[];
   correct: number;
   explanation: string;
+  difficulty: "easy" | "medium" | "hard";
 }
 
 export const QUESTIONS: Question[] = [
@@ -21,6 +22,7 @@ export const QUESTIONS: Question[] = [
     options: ["Aeration", "Air washing", "Air padding", "Destratification"],
     correct: 0,
     explanation: "Aeration Aeration can help remove certain dissolved gases and minerals through oxidation, the chemical combination of oxygen from the air with certain undesirable substances in the water.",
+    difficulty: "easy",
   },
   {
     id: 2,
@@ -30,6 +32,7 @@ export const QUESTIONS: Question[] = [
     options: ["Concentration of VOCs", "Iron levels", "Surface contact between the air and water", "Temperature of the source water"],
     correct: 2,
     explanation: "Surface contact between the air and water C. Surface contact between the air and water The efficiency of the aeration process is affected mostly by the amount of surface contact between the air and water.",
+    difficulty: "easy",
   },
   {
     id: 3,
@@ -39,6 +42,7 @@ export const QUESTIONS: Question[] = [
     options: ["Increase in pH", "Reduction in hydrogen", "Reduction in carbon dioxide", "Possible contamination through the atmosphere"],
     correct: 3,
     explanation: "Possible contamination through the atmosphere D.  Possible contamination through the atmosphere Contamination of water through aeration is an associated problem. The other choices listed are all benefits of aeration.",
+    difficulty: "easy",
   },
   {
     id: 4,
@@ -48,6 +52,7 @@ export const QUESTIONS: Question[] = [
     options: ["pH has no affect", "Lower pH requires less aeration time", "Higher pH requires less aeration time", "pH must be maintained at 7.0 to be effective"],
     correct: 1,
     explanation: "Lower pH requires less aeration time B.  Lower pH requires less aeration time Lower pH requires less aeration time for removal of hydrogen sulfide. When the pH is 7 or less, the sulfide is primarily hydrogen sulfide (56%) and is easily removed.",
+    difficulty: "easy",
   },
   {
     id: 5,
@@ -57,6 +62,7 @@ export const QUESTIONS: Question[] = [
     options: ["Dissolved oxygen, pH, and Temperature", "Dissolved oxygen, Carbon Monoxide, and pH", "Dissolved oxygen, Carbon Dioxide, and ALK", "Dissolved oxygen, Carbon Dioxide, and pH"],
     correct: 0,
     explanation: "Dissolved oxygen, pH, and Temperature A.  Dissolved oxygen, pH, and Temperature The dissolved oxygen (DO) level can be used to estimate whether the process is over or under aerated. The pH test will give an indication of the amount of carbon dioxide removed because the pH will increase as the carbon dioxide is removed. Oxygen content increases as the temperature decreases.",
+    difficulty: "easy",
   },
   {
     id: 6,
@@ -66,6 +72,7 @@ export const QUESTIONS: Question[] = [
     options: ["Flocculation", "Coagulation", "Recarbonation", "Filtration"],
     correct: 3,
     explanation: "Filtration D.  Filtration Ferrous is the most soluble (in solution) form of iron in water and when oxidized into ferric hydroxide it is insoluble (out of solution) and is easily removed by the filtration process.",
+    difficulty: "easy",
   },
   {
     id: 7,
@@ -75,6 +82,7 @@ export const QUESTIONS: Question[] = [
     options: ["Increase in carbon dioxide", "Decrease in hydrogen sulfide", "Corrosive water", "Scale forming water"],
     correct: 2,
     explanation: "Corrosive water C.  Corrosive water Over aeration may result in corrosive water. Corrosion can occur whenever water and oxygen come into contact with metallic surfaces.",
+    difficulty: "easy",
   },
   {
     id: 8,
@@ -84,6 +92,7 @@ export const QUESTIONS: Question[] = [
     options: ["Pathogenic", "Non - pathogenic", "Facultative", "Coliform"],
     correct: 0,
     explanation: "Pathogenic A.  Pathogenic Pathogenic organisms are capable of producing disease in host organisms. Diseases that are transmitted through the water (waterborne) include typhoid, cholera, and dysentery.",
+    difficulty: "easy",
   },
   {
     id: 9,
@@ -93,6 +102,7 @@ export const QUESTIONS: Question[] = [
     options: ["SUVA  units", "TON units", "Turbidity units", "Conductivity units"],
     correct: 2,
     explanation: "Turbidity units C.  Turbidity units Turbidity is a measure of the amount of light reflected by suspended particles, though it is not a measure of the concentration of solids because white particles reflect more light than dark particles.",
+    difficulty: "easy",
   },
   {
     id: 10,
@@ -102,6 +112,7 @@ export const QUESTIONS: Question[] = [
     options: ["To reduce the load on the filters", "To avoid consumer complaints", "High turbidity will shield bacteria and pathogenic", "To avoid solids build up in the distribution system"],
     correct: 2,
     explanation: "High turbidity will shield bacteria and pathogenic C.  High turbidity will shield bacteria and pathogenic organisms from the disinfection process High turbidity will shield bacteria and pathogenic organisms from the disinfection process and exerts a high demand on the overall disinfection process.",
+    difficulty: "easy",
   },
   {
     id: 11,
@@ -111,6 +122,7 @@ export const QUESTIONS: Question[] = [
     options: ["Synthetic", "Organic", "Mineral", "Radiological"],
     correct: 3,
     explanation: "Radiological D.  Radiological Radiological is the fourth group. Radiological content affecting water quality can be manmade or naturally occurring from the environment. Radioactivity is expressed in picocuries (pCi).",
+    difficulty: "easy",
   },
   {
     id: 12,
@@ -120,6 +132,7 @@ export const QUESTIONS: Question[] = [
     options: ["Algae", "Manganese", "Mineral content in the presence of a disinfectant", "Corrosion in metallic pipes"],
     correct: 0,
     explanation: "Algae A.  Algae Tastes and odors that have an earthy or grassy smell are generally related to algae. When an algae bloom (rapid and massive increase in algae) occurs the population eventually dies off and the decaying organic material imparts tastes and odors.",
+    difficulty: "easy",
   },
   {
     id: 13,
@@ -129,6 +142,7 @@ export const QUESTIONS: Question[] = [
     options: ["Calcium and limestone", "Calcium and magnesium", "Iron and manganese", "Calcium and iron"],
     correct: 1,
     explanation: "Calcium and magnesium B.  Calcium and magnesium Hardness is a characteristic of water caused mainly by the salts of calcium and magnesium, such as bicarbonate, carbonate, sulfate, chloride and nitrate.",
+    difficulty: "easy",
   },
   {
     id: 14,
@@ -138,6 +152,7 @@ export const QUESTIONS: Question[] = [
     options: ["Oxidation and filtration", "Reverse osmosis", "Polyphosphate", "Electrodialysis"],
     correct: 2,
     explanation: "Polyphosphate C.  Polyphosphate Polyphosphates can be used to treat water that has low iron content. The polyphosphate will chemically bind (sequester) the iron in a soluble state.",
+    difficulty: "easy",
   },
   {
     id: 15,
@@ -147,6 +162,7 @@ export const QUESTIONS: Question[] = [
     options: ["Trihalomethanes", "Nitrate", "Diquat", "Styrene"],
     correct: 0,
     explanation: "Trihalomethanes A.  Trihalomethanes Trihalomethanes are a group of volatile organic compounds that are formed when chlorine, added to the water during the treatment process for disinfection, reacts with naturally-occurring organic matter in the water.",
+    difficulty: "easy",
   },
   {
     id: 16,
@@ -156,6 +172,7 @@ export const QUESTIONS: Question[] = [
     options: ["Gastrointestinal distress", "Methemoglobinemia", "Dysentery", "There are no health effects"],
     correct: 3,
     explanation: "There are no health effects D. There are no health effects There is no direct health effects associated with color. Color due to iron or manganese may cause red water or black staining but neither have health effects.",
+    difficulty: "easy",
   },
   {
     id: 17,
@@ -165,6 +182,7 @@ export const QUESTIONS: Question[] = [
     options: ["Sedimentation", "Flocculation", "Van der waals", "Eddy currents"],
     correct: 0,
     explanation: "Sedimentation A.  Sedimentation Sedimentation is the process of slowing water velocity and allowing heavier particles to settle out of the water.",
+    difficulty: "easy",
   },
   {
     id: 18,
@@ -174,6 +192,7 @@ export const QUESTIONS: Question[] = [
     options: ["Mixing zone", "Sludge zone", "Recirculation zone", "Clarification zone"],
     correct: 1,
     explanation: "Sludge zone B.  Sludge zone The fourth zone is the sludge zone, located across the basin floor. As the particles gain in density the force of gravity pulls them to the basin floor.",
+    difficulty: "easy",
   },
   {
     id: 19,
@@ -183,6 +202,7 @@ export const QUESTIONS: Question[] = [
     options: ["Provide additional mixing through baffles", "Control water velocity as it enters the basin", "Provide an area for visual inspection", "Provide a sampling location to confirm"],
     correct: 1,
     explanation: "Control water velocity as it enters the basin B. Control water velocity as it enters the basin The other primary purpose of the inlet zone is to start slowing down the water velocity. This is the reason for baffling the tank.",
+    difficulty: "easy",
   },
   {
     id: 20,
@@ -192,6 +212,7 @@ export const QUESTIONS: Question[] = [
     options: ["To prevent re-suspension of sludge", "Provide contact time for the coagulant", "Reduce wear on the floor of the basin", "Allow for denitrification to occur"],
     correct: 0,
     explanation: "To prevent re-suspension of sludge A.  To prevent re-suspension of sludge The velocity should be slowed upon entry into the basin to allow the formed floc to settle to the bottom of the tank. Once the floc forms a blanket and accumulates it can later be removed.",
+    difficulty: "easy",
   },
   {
     id: 21,
@@ -201,6 +222,7 @@ export const QUESTIONS: Question[] = [
     options: ["Useable volume of the tank will decrease", "Sludge built up on the bottom of the tank may become septic", "Sludge may also become re-suspended in the water", "To promote anaerobic conditions"],
     correct: 3,
     explanation: "To promote anaerobic conditions D.  To promote anaerobic conditions Sedimentation basins are designed to have solids removed periodically or on a continuous basis based on the design.",
+    difficulty: "easy",
   },
   {
     id: 22,
@@ -210,6 +232,7 @@ export const QUESTIONS: Question[] = [
     options: ["Turbidity into and out of the tank", "Conductivity into and out of the tank", "Coliform sampling at the tank outlet", "Dissolved oxygen content to verify there is no"],
     correct: 0,
     explanation: "Turbidity into and out of the tank A.  Turbidity into and out of the tank Turbidity readings are essential not only in the sedimentation process but throughout the treatment process from source water to post filtration.",
+    difficulty: "easy",
   },
   {
     id: 23,
@@ -219,6 +242,7 @@ export const QUESTIONS: Question[] = [
     options: ["Bubbler tube", "Sludge blanket sounder", "Aspirator", "Ultrasonic level indicator"],
     correct: 1,
     explanation: "Sludge blanket sounder B.  Sludge blanket sounder The sludge blanket sounder is a simple 18 inch disc made from hardware cloth. The disc is suspended from a light chain and lowered into the tank.",
+    difficulty: "easy",
   },
   {
     id: 24,
@@ -228,6 +252,7 @@ export const QUESTIONS: Question[] = [
     options: ["Sedimentation", "Flocculation", "Coagulation", "Polarization"],
     correct: 2,
     explanation: "Coagulation C.  Coagulation The use of chemicals to neutralize the electrical charge of small particles causing them to clump together is called coagulation.",
+    difficulty: "easy",
   },
   {
     id: 25,
@@ -237,6 +262,7 @@ export const QUESTIONS: Question[] = [
     options: ["Colloidal matter", "Immersion matter", "Meniscus matter", "String solids"],
     correct: 0,
     explanation: "Colloidal matter A. Colloidal matter Colloidal matter is very fine particles that due to their size and negative electrical charge, tend to repel one particle away from another and stay suspended for a long time in water.",
+    difficulty: "easy",
   },
   {
     id: 26,
@@ -246,6 +272,7 @@ export const QUESTIONS: Question[] = [
     options: ["Hydraulic mixing", "Mechanical mixing", "Diffuser mixing", "Flash mix"],
     correct: 3,
     explanation: "Flash mix D.  Flash mix Flash mixing is the process used to disperse and initially mix coagulant chemicals with water. The entire process occurs in only a few seconds.",
+    difficulty: "easy",
   },
   {
     id: 27,
@@ -255,6 +282,7 @@ export const QUESTIONS: Question[] = [
     options: ["Ferric sulfate", "Ferrous sulfate", "Aluminum sulfate (Alum)", "Polymers"],
     correct: 2,
     explanation: "Aluminum sulfate (Alum) C.  Aluminum sulfate (Alum) Though all the chemicals listed are used in water treatment as coagulation chemicals Alum is the most widely used chemical.",
+    difficulty: "easy",
   },
   {
     id: 28,
@@ -264,6 +292,7 @@ export const QUESTIONS: Question[] = [
     options: ["Cationic", "Anionic", "Nonionic", "Polyionic"],
     correct: 0,
     explanation: "Cationic A.  Cationic Cationic polymers have a positive charge that will neutralize the negative charge associated with non settleable solids.",
+    difficulty: "easy",
   },
   {
     id: 29,
@@ -273,6 +302,7 @@ export const QUESTIONS: Question[] = [
     options: ["5 to 7", "6 to 7", "7 to 8", "Greater than 8"],
     correct: 0,
     explanation: "5 to 7 A.  5 to 7 Lower pH levels favor the formation of positively charged particles that will react with the negatively charged non settleable particles causing them to clump together becoming heavier and settling out of the water.",
+    difficulty: "easy",
   },
   {
     id: 30,
@@ -282,6 +312,7 @@ export const QUESTIONS: Question[] = [
     options: ["Minimum of 4 paddles per basin", "Adequately sized turbines", "Creating sufficient water velocity", "Minimizing turbulence at the outlet"],
     correct: 2,
     explanation: "Creating sufficient water velocity D.  Creating sufficient water velocity Hydraulic mixing is a process of mixing coagulant chemicals and water using a series of valves or baffles that create turbulence.",
+    difficulty: "easy",
   },
   {
     id: 31,
@@ -291,6 +322,7 @@ export const QUESTIONS: Question[] = [
     options: ["Coagulation", "Sedimentation", "Flocculation", "Filtration"],
     correct: 2,
     explanation: "Flocculation C.  Flocculation Flocculation is the gentle mixing of the initial floc formed in the flash mix/ coagulation process. Sedimentation occurs after the particles become dense (heavy) enough to settle in a tank.",
+    difficulty: "easy",
   },
   {
     id: 32,
@@ -300,6 +332,7 @@ export const QUESTIONS: Question[] = [
     options: ["Detention time, mixing intensity, uniform mixing", "Detention time, mixing intensity, pH adjustment", "Mixing intensity, coagulant dose, pH adjustment", "Detention time, coagulant dose, temperature control"],
     correct: 0,
     explanation: "Detention time, mixing intensity, uniform mixing A.  Detention time, mixing intensity, uniform mixing The three essential elements for process performance for flocculation are detention time, mixing intensity (too much will shear or break up the floc that has formed and too little there will not be enough collisions between particles to form larger flocs), and uniform mixing.",
+    difficulty: "easy",
   },
   {
     id: 33,
@@ -309,6 +342,7 @@ export const QUESTIONS: Question[] = [
     options: ["5 to 20 minutes", "30 minutes", "45 minutes", "At least 1 hour"],
     correct: 1,
     explanation: "30 minutes B.  30 minutes The minimum time when using a sedimentation basin is 30 minutes. 5 to 20 minutes can be used if the facility is practicing direct filtration, which is putting the treated water directly to the filters to remove solids.",
+    difficulty: "easy",
   },
   {
     id: 34,
@@ -318,6 +352,7 @@ export const QUESTIONS: Question[] = [
     options: ["Radial flow", "Conical flow", "Alluvial flow", "Short circuiting"],
     correct: 3,
     explanation: "Short circuiting D.  Short circuiting Short circuiting is the term used when little mixing and a direct in and out flow pattern occurs in water treatment.",
+    difficulty: "easy",
   },
   {
     id: 35,
@@ -327,6 +362,7 @@ export const QUESTIONS: Question[] = [
     options: ["Basin baffling", "Reduced speed flocculation", "Reduced energy process", "Tapered energy mixing"],
     correct: 3,
     explanation: "Tapered energy mixing D.  Tapered energy mixing Tapered energy mixing is when an operator reduces flocculator speeds from the first basin to the last as not to shear the floc prior to sedimentation.",
+    difficulty: "easy",
   },
   {
     id: 36,
@@ -336,6 +372,7 @@ export const QUESTIONS: Question[] = [
     options: ["Solids contact", "Conventional treatment", "Enhanced coagulation", "Split treatment"],
     correct: 0,
     explanation: "Solids contact A.  Solids contact The solids contact clarifier contains all three processes in a single basin.",
+    difficulty: "easy",
   },
   {
     id: 37,
@@ -345,6 +382,7 @@ export const QUESTIONS: Question[] = [
     options: ["Catalysts", "Coupons", "Amperes", "Tuberculation"],
     correct: 3,
     explanation: "Tuberculation D.  Tuberculation Tuberculation refers to the small protective mounds of corrosion that form over pits caused by the loss of metal caused from corrosion. Metallic corrosion is always due to an electrochemical reaction.",
+    difficulty: "easy",
   },
   {
     id: 38,
@@ -354,6 +392,7 @@ export const QUESTIONS: Question[] = [
     options: ["3 fps", "4 fps", "5 fps", "Over 5 fps"],
     correct: 3,
     explanation: "Over 5 fps D.  Over 5 fps Water velocity in excess of 5 fps (feet per second) will erode pipes caused by the abrasion of the water against the pipe.",
+    difficulty: "easy",
   },
   {
     id: 39,
@@ -363,6 +402,7 @@ export const QUESTIONS: Question[] = [
     options: ["Coupon", "Tag", "Anode", "Cathode"],
     correct: 0,
     explanation: "Coupon A metal insert called a coupon is weighed and then inserted into the water main. After a period of time, typically 30 to 60 days, the coupon is removed and weighed again.",
+    difficulty: "easy",
   },
   {
     id: 40,
@@ -372,6 +412,7 @@ export const QUESTIONS: Question[] = [
     options: ["Stray current corrosion", "Galvanic corrosion", "Immersion corrosion", "Dielectric corrosion"],
     correct: 1,
     explanation: "Galvanic corrosion B.  Galvanic corrosion Galvanic corrosion occurs when one metal gives up electrons to a dissimilar metal. Metals are listed in the galvanic series as to their resistance to give up electrons (corrode) one such metal is gold.",
+    difficulty: "easy",
   },
   {
     id: 41,
@@ -381,6 +422,7 @@ export const QUESTIONS: Question[] = [
     options: ["A high pH", "A low pH", "A neutral pH", "pH has no effect on the rate of corrosion"],
     correct: 1,
     explanation: "A low pH B.  A low pH A low pH will increase the rate of corrosion.  Acidic waters have lots of hydrogen (H+) ions in the water to react with the electrons of metallic pipe, so corrosion is enhanced.",
+    difficulty: "easy",
   },
   {
     id: 42,
@@ -390,6 +432,7 @@ export const QUESTIONS: Question[] = [
     options: ["Corrosion will decrease", "Corrosion will increase", "Corrosion will remain constant at a low pH", "Carbon dioxide has no effect"],
     correct: 1,
     explanation: "Corrosion will increase B.  Corrosion will increase Carbon dioxide in water will increase the rate of corrosion.  The carbon dioxide gas will combine with water to form carbonic acid, which lowers the pH of the water.",
+    difficulty: "easy",
   },
   {
     id: 43,
@@ -399,6 +442,7 @@ export const QUESTIONS: Question[] = [
     options: ["Increasing oxygen concentrations", "Cathodic protection", "Protective coating such as cement", "Stabilizing the water"],
     correct: 3,
     explanation: "Stabilizing the water D.  Stabilizing the water Stabilizing the water is often the simplest form of corrosion control.  When stabilizing corrosive water alkalinity is increased in the form of lime, soda ash, or caustic soda.",
+    difficulty: "easy",
   },
   {
     id: 44,
@@ -408,6 +452,7 @@ export const QUESTIONS: Question[] = [
     options: ["Stabilizing the water", "Use of zinc phosphates", "Use of polyphosphates", "Use of cathodic protection"],
     correct: 3,
     explanation: "Use of cathodic protection D.  Use of cathodic protection The most expensive form of corrosion control is cathodic protection, which is the introduction of a low voltage electrical circuit onto the pipe and the addition of a sacrificial anode.",
+    difficulty: "easy",
   },
   {
     id: 45,
@@ -417,6 +462,7 @@ export const QUESTIONS: Question[] = [
     options: ["Phosphate will cause an algae bloom", "Zinc reacts with oxygen to form acids", "Zinc will increase the chlorine demand", "Zinc phosphate is not approved for potable water use"],
     correct: 0,
     explanation: "Phosphate will cause an algae bloom A.  Phosphate will cause an algae bloom Water that is stored in the open after being treated with zinc phosphate is susceptible to algae blooms. The phosphate content is one of the primary nutrients required for the life cycle of algae.",
+    difficulty: "easy",
   },
   {
     id: 46,
@@ -426,6 +472,7 @@ export const QUESTIONS: Question[] = [
     options: ["Total Coliform Rule (TCR)", "Ground Water Rule (GWR)", "Stage II D/DBP rule", "Lead and Copper rule (LCR)"],
     correct: 3,
     explanation: "Lead and Copper Rule D.  Lead and Copper Rule The lead and copper rule contains action levels for lead and copper ... two metals that may leach into the drinking water from corrosive water in contact with lead and copper components.",
+    difficulty: "easy",
   },
   {
     id: 47,
@@ -435,6 +482,7 @@ export const QUESTIONS: Question[] = [
     options: ["Reducing compounds", "Secchi compounds", "Oxidizing compounds", "Colloidal compounds"],
     correct: 0,
     explanation: "Reducing compounds A.  Reducing compounds Reducing compounds readily give up electrons and combine with chlorine, this creates a chlorine demand. This demand must be satisfied before there is excess chlorine available for disinfection.",
+    difficulty: "easy",
   },
   {
     id: 48,
@@ -444,6 +492,7 @@ export const QUESTIONS: Question[] = [
     options: ["Chlorine", "Monochloramines", "Dichloramines", "Chlorine dioxide"],
     correct: 3,
     explanation: "Chlorine dioxide D.  Chlorine dioxide Chlorine dioxide is the only disinfectant listed that will effectively kill Cryptosporidium, Giardia, protozoans, and some viruses.",
+    difficulty: "easy",
   },
   {
     id: 49,
@@ -453,6 +502,7 @@ export const QUESTIONS: Question[] = [
     options: ["The disinfectants may cancel each other out", "The chloramines may increase", "The ammonia may increase", "There is no difference since both have"],
     correct: 0,
     explanation: "The disinfectants may cancel each other out A.  The disinfectants may cancel each other out",
+    difficulty: "easy",
   },
   {
     id: 50,
@@ -462,6 +512,7 @@ export const QUESTIONS: Question[] = [
     options: ["Decrease in ammonia", "Decrease in chlorine", "Decrease in pH", "Decrease in nitrite"],
     correct: 3,
     explanation: "Decrease in nitrite D.  Decrease in nitrite The first three answers are all early warning indicators that nitrification may be occurring in the distribution system.",
+    difficulty: "easy",
   },
   {
     id: 51,
@@ -471,6 +522,7 @@ export const QUESTIONS: Question[] = [
     options: ["Breakpoint chlorination", "Shock loading", "Flash mixing", "Chloramination"],
     correct: 0,
     explanation: "Breakpoint chlorination A.  Breakpoint chlorination The addition of chlorine past the point where the demand is met will produce a free available chlorine residual.",
+    difficulty: "easy",
   },
   {
     id: 52,
@@ -480,6 +532,7 @@ export const QUESTIONS: Question[] = [
     options: ["0.2 mg/L", "0.5 mg/L", "1.0 mg/L", "1.5 mg/L"],
     correct: 0,
     explanation: "0.2 mg/L A.  0.2 mg/L When water reaches the customer, the chlorine residual should be about 0.2 mg/L at the extreme ends of the distribution system.",
+    difficulty: "easy",
   },
   {
     id: 53,
@@ -489,6 +542,7 @@ export const QUESTIONS: Question[] = [
     options: ["Iron content", "Ammonia content", "Sulfide content", "Contact time"],
     correct: 3,
     explanation: "Contact time D.  Contact time Contact time is as important as the actual chlorine residual in determining the efficiency of chlorination for disinfection.",
+    difficulty: "easy",
   },
   {
     id: 54,
@@ -498,6 +552,7 @@ export const QUESTIONS: Question[] = [
     options: ["Turbidity has no effect on the chemical reactions", "Turbidity increases will lower disinfection", "Turbidity increases will increase the overall", "Turbidity increases lower the efficiency of"],
     correct: 3,
     explanation: "Turbidity increases lower the efficiency D.  Turbidity increases lower the efficiency of  chlorination",
+    difficulty: "easy",
   },
   {
     id: 55,
@@ -507,6 +562,7 @@ export const QUESTIONS: Question[] = [
     options: ["Chlorine Dioxide", "Ammonia", "Sulfur Dioxide", "Citric acid"],
     correct: 1,
     explanation: "Ammonia B.  Ammonia",
+    difficulty: "easy",
   },
   {
     id: 56,
@@ -516,6 +572,7 @@ export const QUESTIONS: Question[] = [
     options: ["Bromate", "Chlorite", "Trihalomethanes (TTHM’s)", "Haloacetic acids (HAA5’s)"],
     correct: 0,
     explanation: "Bromate A.  Bromate",
+    difficulty: "easy",
   },
   {
     id: 57,
@@ -525,6 +582,7 @@ export const QUESTIONS: Question[] = [
     options: ["Chlorine", "Chlorine Dioxide", "Ozone", "Chloramines"],
     correct: 1,
     explanation: "Chlorine Dioxide B.  Chlorine Dioxide",
+    difficulty: "easy",
   },
   {
     id: 58,
@@ -534,6 +592,7 @@ export const QUESTIONS: Question[] = [
     options: ["0.080 mg/L", "0.5 mg/L", "1.0 mg/L", "10 mg/L"],
     correct: 0,
     explanation: "0.080 mg/l A.  0.080 mg/l",
+    difficulty: "easy",
   },
   {
     id: 59,
@@ -543,6 +602,7 @@ export const QUESTIONS: Question[] = [
     options: ["0.2 mg/L", "2.0 mg/L", "4.0 mg/L", "10.0 mg/L"],
     correct: 2,
     explanation: "4.0 mg/L C.  4.0 mg/L",
+    difficulty: "easy",
   },
   {
     id: 60,
@@ -552,6 +612,7 @@ export const QUESTIONS: Question[] = [
     options: ["Sodium thiosulfate", "Sodium chlorite", "Citric acid", "Calcium oxide"],
     correct: 0,
     explanation: "Sodium thiosulfate A.  Sodium thiosulfate",
+    difficulty: "easy",
   },
   {
     id: 61,
@@ -561,6 +622,7 @@ export const QUESTIONS: Question[] = [
     options: ["7 days", "14 days", "30 days", "Indefinite if properly preserved"],
     correct: 1,
     explanation: "14 days B.  14 days",
+    difficulty: "easy",
   },
   {
     id: 62,
@@ -570,6 +632,7 @@ export const QUESTIONS: Question[] = [
     options: ["Higher temperatures", "Higher pH levels", "Higher concentrations of chlorine", "Higher Powdered Activated Carbon dosages"],
     correct: 3,
     explanation: "Higher Powdered Activated Carbon dosages D.  Higher Powdered Activated Carbon dosages",
+    difficulty: "easy",
   },
   {
     id: 63,
@@ -579,6 +642,7 @@ export const QUESTIONS: Question[] = [
     options: ["Ozone", "Ultra Violet light", "Chlorine Dioxide", "Aeration"],
     correct: 3,
     explanation: "Aeration D.  Aeration",
+    difficulty: "easy",
   },
   {
     id: 64,
@@ -588,6 +652,7 @@ export const QUESTIONS: Question[] = [
     options: ["Change point of chlorine application after sedimentation", "Install an Ozone system", "Increase coagulant dosage to reduce organics", "Reduce contact time with chlorine"],
     correct: 0,
     explanation: "Change point of chlorine application after C.  Change point of chlorine application after sedimentation",
+    difficulty: "easy",
   },
   {
     id: 65,
@@ -597,6 +662,7 @@ export const QUESTIONS: Question[] = [
     options: ["The increase dosage of chlorine", "Bromate formation", "Ammonia content of chloramines", "Chlorite formation"],
     correct: 2,
     explanation: "Ammonia content of chloramines C.  Ammonia content of chloramines",
+    difficulty: "easy",
   },
   {
     id: 66,
@@ -606,6 +672,7 @@ export const QUESTIONS: Question[] = [
     options: ["Backpressure", "Backsiphonage", "Thermal expansion", "Conical flow"],
     correct: 1,
     explanation: "Backsiphonage B.  Backsiphonage",
+    difficulty: "easy",
   },
   {
     id: 67,
@@ -615,6 +682,7 @@ export const QUESTIONS: Question[] = [
     options: ["Water hammer", "Tuberculation", "Backsiphonage", "Backflow"],
     correct: 0,
     explanation: "Water hammer A.  Water hammer",
+    difficulty: "easy",
   },
   {
     id: 68,
@@ -624,6 +692,7 @@ export const QUESTIONS: Question[] = [
     options: ["1 fps", "1.5 fps", "2 fps", "2.5 fps"],
     correct: 3,
     explanation: "2.5 fps D.  2.5 fps",
+    difficulty: "easy",
   },
   {
     id: 69,
@@ -633,6 +702,7 @@ export const QUESTIONS: Question[] = [
     options: ["500 feet", "1,000 feet", "1,500 feet", "There is no recognizable standard"],
     correct: 0,
     explanation: "500 feet A.  500 feet",
+    difficulty: "easy",
   },
   {
     id: 70,
@@ -642,6 +712,7 @@ export const QUESTIONS: Question[] = [
     options: ["Protective paint", "PVC", "Mortar", "Asbestos"],
     correct: 2,
     explanation: "Mortar C.  Mortar",
+    difficulty: "easy",
   },
   {
     id: 71,
@@ -651,6 +722,7 @@ export const QUESTIONS: Question[] = [
     options: ["1’ horizontally and 10’ vertically", "10’ horizontally and 1’ vertically", "1’ horizontally and 36” vertically", "There is no recommendations as all utilities are"],
     correct: 1,
     explanation: "10’ horizontally and 1’ vertically B.  10’ horizontally and 1’ vertically",
+    difficulty: "easy",
   },
   {
     id: 72,
@@ -660,6 +732,7 @@ export const QUESTIONS: Question[] = [
     options: ["At the base", "Just above the nozzle", "At the housing cover", "Ground level"],
     correct: 3,
     explanation: "Ground level D.  Ground level",
+    difficulty: "easy",
   },
   {
     id: 73,
@@ -669,6 +742,7 @@ export const QUESTIONS: Question[] = [
     options: ["98.5 to 101.5 %", "97 to 103 %", "75%", "100%"],
     correct: 0,
     explanation: "98.5 to 101.5 % A.  98.5 to 101.5 %",
+    difficulty: "easy",
   },
   {
     id: 74,
@@ -678,6 +752,7 @@ export const QUESTIONS: Question[] = [
     options: ["Globe valve", "Pressure reducing valve", "Auxiliary  valve", "Foot valve"],
     correct: 3,
     explanation: "Foot valve D.  Foot valve",
+    difficulty: "easy",
   },
   {
     id: 75,
@@ -687,6 +762,7 @@ export const QUESTIONS: Question[] = [
     options: ["Thrust blocks", "Collar locks", "Caps", "Tremies"],
     correct: 0,
     explanation: "Thrust blocks A.  Thrust blocks",
+    difficulty: "easy",
   },
   {
     id: 76,
@@ -696,6 +772,7 @@ export const QUESTIONS: Question[] = [
     options: ["Single media", "Dual media", "Multi media", "Granular media"],
     correct: 3,
     explanation: "Granular media D.  Granular media",
+    difficulty: "easy",
   },
   {
     id: 77,
@@ -705,6 +782,7 @@ export const QUESTIONS: Question[] = [
     options: ["2 to 3 gpm/sq. ft.", "4 to 5 gpm/ sq. ft.", "5 to 10 gpm/ sq. ft.", "10 to 100 gpm/sq. ft."],
     correct: 0,
     explanation: "2 to 3 gpm/sq. ft. A.  2 to 3 gpm/sq. ft.",
+    difficulty: "easy",
   },
   {
     id: 78,
@@ -714,6 +792,7 @@ export const QUESTIONS: Question[] = [
     options: ["Slow sand", "Diatomaceous earth", "Disc", "In line"],
     correct: 1,
     explanation: "Diatomaceous earth B.  Diatomaceous earth",
+    difficulty: "easy",
   },
   {
     id: 79,
@@ -723,6 +802,7 @@ export const QUESTIONS: Question[] = [
     options: ["2 to 4 feet", "6 to 10 feet", "8 to 12 feet", "There is no design head loss and the filter"],
     correct: 1,
     explanation: "6 to 10 feet B.  6 to 10 feet",
+    difficulty: "easy",
   },
   {
     id: 80,
@@ -732,6 +812,7 @@ export const QUESTIONS: Question[] = [
     options: ["Baylis", "Fixed grid", "Rotary", "Cross jet"],
     correct: 3,
     explanation: "Cross jet D.  Cross jet",
+    difficulty: "easy",
   },
   {
     id: 81,
@@ -741,6 +822,7 @@ export const QUESTIONS: Question[] = [
     options: ["Granular activated carbon", "Clay brick", "Garnet", "Alum"],
     correct: 0,
     explanation: "Granular activated carbon A.  Granular activated carbon",
+    difficulty: "easy",
   },
   {
     id: 82,
@@ -750,6 +832,7 @@ export const QUESTIONS: Question[] = [
     options: ["Baylis", "Fixed grid", "Rotary", "In – Line"],
     correct: 3,
     explanation: "In – Line D.  In – Line",
+    difficulty: "easy",
   },
   {
     id: 83,
@@ -759,6 +842,7 @@ export const QUESTIONS: Question[] = [
     options: ["Head loss", "Effluent turbidity", "Elapsed run time", "Flow through the unit"],
     correct: 3,
     explanation: "Flow through the unit D.  Flow through the unit",
+    difficulty: "easy",
   },
   {
     id: 84,
@@ -768,6 +852,7 @@ export const QUESTIONS: Question[] = [
     options: ["4 to 10 gpm/ sq. ft.", "10 to 25 gpm/ sq. ft.", "20 to 40 gpm/ sq. ft.", "Minimum of 30 gpm/ sq. ft. and higher"],
     correct: 1,
     explanation: "10 to 25 gpm/ sq. ft. B.  10 to 25 gpm/ sq. ft.",
+    difficulty: "easy",
   },
   {
     id: 85,
@@ -777,6 +862,7 @@ export const QUESTIONS: Question[] = [
     options: ["Bumping", "Slamming", "Back sliding", "Scouring"],
     correct: 0,
     explanation: "Bumping A.  Bumping",
+    difficulty: "easy",
   },
   {
     id: 86,
@@ -786,6 +872,7 @@ export const QUESTIONS: Question[] = [
     options: ["Composite", "Grab", "Flow proportional", "Representative"],
     correct: 1,
     explanation: "Grab B.  Grab",
+    difficulty: "easy",
   },
   {
     id: 87,
@@ -795,6 +882,7 @@ export const QUESTIONS: Question[] = [
     options: ["Point of entry into the distribution system", "Remote locations within the distribution", "Consumers taps", "At the consumer’s water meter"],
     correct: 0,
     explanation: "Point of entry into the distribution system A.  Point of entry into the distribution system",
+    difficulty: "easy",
   },
   {
     id: 88,
@@ -804,6 +892,7 @@ export const QUESTIONS: Question[] = [
     options: ["Cavitation", "Backflow", "Backpressure", "Backsiphonage"],
     correct: 0,
     explanation: "Cavitation A.  Cavitation",
+    difficulty: "easy",
   },
   {
     id: 89,
@@ -813,6 +902,7 @@ export const QUESTIONS: Question[] = [
     options: ["Based on main sizing in the distribution system", "Adjusted to maintain pressure", "Set by the pump manufacturer's rated capacity", "Determined by the source water flow rate"],
     correct: 1,
     explanation: "Adjusted to maintain pressure B.  Adjusted to maintain pressure",
+    difficulty: "easy",
   },
   {
     id: 90,
@@ -822,6 +912,7 @@ export const QUESTIONS: Question[] = [
     options: ["Safety data sheet (SDS)", "Manufacturer website", "National chemical trade commission", "Occupational safety and health administration"],
     correct: 0,
     explanation: "Safety Data Sheet (SDS) A.  Safety Data Sheet (SDS)",
+    difficulty: "easy",
   },
   {
     id: 91,
@@ -831,6 +922,7 @@ export const QUESTIONS: Question[] = [
     options: ["5 days", "10 days", "15 days", "30 days"],
     correct: 2,
     explanation: "15 days C.  15 days",
+    difficulty: "easy",
   },
   {
     id: 92,
@@ -840,6 +932,7 @@ export const QUESTIONS: Question[] = [
     options: ["When the pump is at a complete stop", "While the pump is operating at full speed", "While the pump is operated at 50%", "During the warm-up period before full operation"],
     correct: 0,
     explanation: "When the pump is at a complete stop A.  When the pump is at a complete stop Oil should not be added to the pump while the pump is operating. Facility Operation and Maintenance The rotating shaft will pick up the oil to the bearings, then when the pump is stopped the excess oil will drain from the bearings and the excess oil will spill out from the shaft or oil cup.",
+    difficulty: "easy",
   },
   {
     id: 93,
@@ -849,6 +942,7 @@ export const QUESTIONS: Question[] = [
     options: ["Remove safety guards", "Disengage couplings or belts", "Turn off power", "Lock out Tag out"],
     correct: 3,
     explanation: "Lock out Tag out D.  Lock out Tag out",
+    difficulty: "easy",
   },
   {
     id: 94,
@@ -858,6 +952,7 @@ export const QUESTIONS: Question[] = [
     options: ["Shaft sleeves", "Wear rings", "Couplings", "Shear pins"],
     correct: 3,
     explanation: "Shear pins D.  Shear pins",
+    difficulty: "easy",
   },
   {
     id: 95,
@@ -867,6 +962,7 @@ export const QUESTIONS: Question[] = [
     options: ["Daily", "Weekly", "Monthly", "Quarterly"],
     correct: 0,
     explanation: "Daily A.  Daily",
+    difficulty: "easy",
   },
   {
     id: 96,
@@ -876,6 +972,7 @@ export const QUESTIONS: Question[] = [
     options: ["Replace glands", "Inspect shaft", "Tighten to allow a slight leakage", "Reverse rotation on pump to “tighten”"],
     correct: 2,
     explanation: "Tighten to allow a slight leakage C.  Tighten to allow a slight leakage",
+    difficulty: "easy",
   },
   {
     id: 97,
@@ -885,6 +982,7 @@ export const QUESTIONS: Question[] = [
     options: ["There will be no water to sample for quality", "Sediments may be pumped to distribution", "There will be no pressure to force open the", "No water available for wash down operations"],
     correct: 1,
     explanation: "Sediments may be pumped to distribution B.  Sediments may be pumped to distribution",
+    difficulty: "easy",
   },
   {
     id: 98,
@@ -894,6 +992,7 @@ export const QUESTIONS: Question[] = [
     options: ["Orifice Plate", "Check Valve", "Gate Valve", "Globe valve"],
     correct: 1,
     explanation: "Check Valve B.  Check Valve",
+    difficulty: "easy",
   },
   {
     id: 99,
@@ -903,6 +1002,7 @@ export const QUESTIONS: Question[] = [
     options: ["Wire to water efficiency", "Efficiency curve", "Log removal", "Degasification curve"],
     correct: 0,
     explanation: "Wire to water efficiency A.  Wire to water efficiency",
+    difficulty: "easy",
   },
   {
     id: 100,
@@ -912,6 +1012,7 @@ export const QUESTIONS: Question[] = [
     options: ["Packing gland", "Wear rings", "Shaft sleeve", "Lantern ring"],
     correct: 1,
     explanation: "Wear rings B.  Wear rings",
+    difficulty: "easy",
   },
   {
     id: 101,
@@ -921,6 +1022,7 @@ export const QUESTIONS: Question[] = [
     options: ["Seal water", "Lube water", "Lantern ring seal", "Packing water"],
     correct: 0,
     explanation: "Seal water A.  Seal water",
+    difficulty: "easy",
   },
   {
     id: 102,
@@ -930,6 +1032,7 @@ export const QUESTIONS: Question[] = [
     options: ["Drum", "Diffuser", "Volute", "Dog house"],
     correct: 2,
     explanation: "Volute C.  Volute",
+    difficulty: "easy",
   },
   {
     id: 103,
@@ -939,6 +1042,7 @@ export const QUESTIONS: Question[] = [
     options: ["Engineered to reduce vortexing of water during", "Allows gases to escape the tank", "Allows daylight to shine in the tank to facilitate", "Allows air to flow so pressure does not develop"],
     correct: 3,
     explanation: "Allows air to flow so pressure does not D. Allows air to flow so pressure does not develop when filling the tank",
+    difficulty: "easy",
   },
   {
     id: 104,
@@ -948,6 +1052,7 @@ export const QUESTIONS: Question[] = [
     options: ["3:1", "4:1", "1:1", "There is no recommended ratio"],
     correct: 0,
     explanation: "3:1 A.  3:1",
+    difficulty: "easy",
   },
   {
     id: 105,
@@ -957,6 +1062,7 @@ export const QUESTIONS: Question[] = [
     options: ["Globe valve", "Pressure reducing valve", "Auxiliary  valve", "Foot valve"],
     correct: 3,
     explanation: "Foot valve D.  Foot valve",
+    difficulty: "easy",
   },
   {
     id: 106,
@@ -966,6 +1072,7 @@ export const QUESTIONS: Question[] = [
     options: ["0.3 mg/L", "0.5 mg/L", "1.0 mg/L", "2.0 mg/L"],
     correct: 0,
     explanation: "0.3 mg/L A.  0.3 mg/L",
+    difficulty: "easy",
   },
   {
     id: 107,
@@ -975,6 +1082,7 @@ export const QUESTIONS: Question[] = [
     options: ["Nothing will result from one cell", "The iron will react with manganese causing", "The iron cell can stimulate nitrification in the", "The entire system can become infested with"],
     correct: 3,
     explanation: "The entire system can become D.  The entire system can become infested with bacteria",
+    difficulty: "easy",
   },
   {
     id: 108,
@@ -984,6 +1092,7 @@ export const QUESTIONS: Question[] = [
     options: ["Acidified with Nitric Acid", "Cooled to 4°C", "Add preservative to fix pH above 8.0", "Iron samples do not require"],
     correct: 0,
     explanation: "Acidified with Nitric Acid A.  Acidified with Nitric Acid",
+    difficulty: "easy",
   },
   {
     id: 109,
@@ -993,6 +1102,7 @@ export const QUESTIONS: Question[] = [
     options: ["Iron is leeching from the surrounding soil", "Dissolved oxygen is probably from the of", "Water is coming from more than one aquifer", "Water is coming from a single aquifer"],
     correct: 2,
     explanation: "Water is coming from more than C.  Water is coming from more than one aquifer",
+    difficulty: "easy",
   },
   {
     id: 110,
@@ -1002,6 +1112,7 @@ export const QUESTIONS: Question[] = [
     options: ["Addition of polyphosphates", "Removal by ion exchange", "Use of greensand filters", "Use of Electro media"],
     correct: 0,
     explanation: "Addition of polyphosphates A.  Addition of polyphosphates",
+    difficulty: "easy",
   },
   {
     id: 111,
@@ -1011,6 +1122,7 @@ export const QUESTIONS: Question[] = [
     options: ["Ferric hydroxide", "Ferrous", "Soluble iron", "Elemental iron"],
     correct: 0,
     explanation: "Ferric hydroxide A.  Ferric hydroxide",
+    difficulty: "easy",
   },
   {
     id: 112,
@@ -1020,6 +1132,7 @@ export const QUESTIONS: Question[] = [
     options: ["Potassium Permanganate", "Citric Acid", "Caustic Soda", "Activated carbon"],
     correct: 0,
     explanation: "Potassium Permanganate A.  Potassium Permanganate",
+    difficulty: "easy",
   },
   {
     id: 113,
@@ -1029,6 +1142,7 @@ export const QUESTIONS: Question[] = [
     options: ["Bench scale tests", "Pilot test", "Wet chemistry", "Charge chemistry"],
     correct: 0,
     explanation: "Bench scale tests A.  Bench scale tests",
+    difficulty: "easy",
   },
   {
     id: 114,
@@ -1038,6 +1152,7 @@ export const QUESTIONS: Question[] = [
     options: ["Phosphate deposits on filters", "Phosphates reducing disinfectant levels", "Polyphosphates reverting to", "Polyphosphate placing the manganese"],
     correct: 2,
     explanation: "Polyphosphates reverting to orthophosphates C.  Polyphosphates reverting to orthophosphates",
+    difficulty: "easy",
   },
   {
     id: 115,
@@ -1047,6 +1162,7 @@ export const QUESTIONS: Question[] = [
     options: ["Add polyphosphates before chlorine", "Add polyphosphates after chlorine", "Add polyphosphates with chlorine", "There is no preferred point to add"],
     correct: 0,
     explanation: "Add polyphosphates before chlorine A.  Add polyphosphates before chlorine",
+    difficulty: "easy",
   },
   {
     id: 116,
@@ -1056,6 +1172,7 @@ export const QUESTIONS: Question[] = [
     options: ["Top of the curve", "Bottom of the curve", "Middle of the curve", "Either the top or bottom it does not alter"],
     correct: 1,
     explanation: "Bottom of the curve B.  Bottom of the curve",
+    difficulty: "easy",
   },
   {
     id: 117,
@@ -1065,6 +1182,7 @@ export const QUESTIONS: Question[] = [
     options: ["Standard Methods Act (SMA)", "Laboratory appurtenance bylaws (LAB Act)", "Occupational Safety and Health Act (OSHA)", "Laboratory Methods and Safety Procedures"],
     correct: 2,
     explanation: "Occupational Safety and Health Act (OSHA) C.  Occupational Safety and Health Act (OSHA)",
+    difficulty: "easy",
   },
   {
     id: 118,
@@ -1074,6 +1192,7 @@ export const QUESTIONS: Question[] = [
     options: ["Sulfamic", "Hydrochloric", "Nitric", "Sodium acetate"],
     correct: 2,
     explanation: "Nitric C.  Nitric",
+    difficulty: "easy",
   },
   {
     id: 119,
@@ -1083,6 +1202,7 @@ export const QUESTIONS: Question[] = [
     options: ["To have results quickly enough to make process", "The solubility of calcium carbonate varies with", "Alkalinity will change over time", "Time is not critical as the hold time for the sample"],
     correct: 1,
     explanation: "The solubility of calcium carbonate B.  The solubility of calcium carbonate varies with temperature",
+    difficulty: "easy",
   },
   {
     id: 120,
@@ -1092,6 +1212,7 @@ export const QUESTIONS: Question[] = [
     options: ["Nitrate is reduced to nitrite then analyzed", "Nitrate is reduced to ammonia then", "Nitrate is diluted with ammonia to complete", "Nitrate is not reduced prior to analysis"],
     correct: 0,
     explanation: "Nitrate is reduced to nitrite then analyzed A.  Nitrate is reduced to nitrite then analyzed",
+    difficulty: "easy",
   },
   {
     id: 121,
@@ -1101,6 +1222,7 @@ export const QUESTIONS: Question[] = [
     options: ["Total dissolved solids", "Marble test", "pH", "Specific conductance"],
     correct: 3,
     explanation: "Specific conductance D.  Specific conductance",
+    difficulty: "easy",
   },
   {
     id: 122,
@@ -1110,6 +1232,7 @@ export const QUESTIONS: Question[] = [
     options: ["pH paper", "Colorimetric method", "pH electrode", "Atomic adsorption"],
     correct: 2,
     explanation: "pH electrode C.  pH electrode",
+    difficulty: "easy",
   },
   {
     id: 123,
@@ -1119,6 +1242,7 @@ export const QUESTIONS: Question[] = [
     options: ["Coliliert", "Formazin", "Ferric chloride", "Potassium Iodide"],
     correct: 1,
     explanation: "Formazin B.  Formazin",
+    difficulty: "easy",
   },
   {
     id: 124,
@@ -1128,6 +1252,7 @@ export const QUESTIONS: Question[] = [
     options: ["Volatile", "Non – volatile", "Precipitate", "Inorganic"],
     correct: 0,
     explanation: "Volatile A.  Volatile",
+    difficulty: "easy",
   },
   {
     id: 125,
@@ -1137,6 +1262,7 @@ export const QUESTIONS: Question[] = [
     options: ["22.3 gr per gal", "9.47 gr per gal", "2,770 gr per gal", "145 gr per gal"],
     correct: 1,
     explanation: "9.47 gr per gal B.  9.47 gr per gal",
+    difficulty: "easy",
   },
   {
     id: 126,
@@ -1146,6 +1272,7 @@ export const QUESTIONS: Question[] = [
     options: ["43°F", "77°F", "88°F", "120°F"],
     correct: 1,
     explanation: "77°F B.  77°F",
+    difficulty: "easy",
   },
   {
     id: 127,
@@ -1155,6 +1282,7 @@ export const QUESTIONS: Question[] = [
     options: ["-10.5°C", "-15.2°C", "-25.2°C", "32.5°C"],
     correct: 0,
     explanation: "-10.5°C A.  -10.5°C",
+    difficulty: "easy",
   },
   {
     id: 128,
@@ -1164,6 +1292,7 @@ export const QUESTIONS: Question[] = [
     options: ["234,870 gallons", "23,487 gallons", "252,970 gallons", "25,297 gallons"],
     correct: 3,
     explanation: "25,297 gallons D.  25,297 gallons",
+    difficulty: "easy",
   },
   {
     id: 129,
@@ -1173,6 +1302,7 @@ export const QUESTIONS: Question[] = [
     options: ["2.5 feet per second", "5 feet per second", "7 feet per second", "7.5 feet per second"],
     correct: 1,
     explanation: "5 feet per second B.  5 feet per second",
+    difficulty: "easy",
   },
   {
     id: 130,
@@ -1182,6 +1312,7 @@ export const QUESTIONS: Question[] = [
     options: ["1,920 cubic yards", "7,711 cubic yards", "711 cubic yards", "19,200 cubic yards"],
     correct: 2,
     explanation: "711 cubic yards C.  711 cubic yards",
+    difficulty: "easy",
   },
   {
     id: 131,
@@ -1191,6 +1322,7 @@ export const QUESTIONS: Question[] = [
     options: ["6 lbs", "22 lbs", "42 lbs", "100 lbs"],
     correct: 1,
     explanation: "22 lbs B.  22 lbs",
+    difficulty: "easy",
   },
   {
     id: 132,
@@ -1200,6 +1332,7 @@ export const QUESTIONS: Question[] = [
     options: ["10 lbs", "18.5 lbs", "24 lbs", "34.5 lbs"],
     correct: 1,
     explanation: "18.5 lbs B.  18.5 lbs",
+    difficulty: "easy",
   },
   {
     id: 133,
@@ -1209,6 +1342,7 @@ export const QUESTIONS: Question[] = [
     options: ["15 feet", "22 feet", "69.3 feet", "83.6 feet"],
     correct: 2,
     explanation: "69.3 feet C.  69.3 feet",
+    difficulty: "easy",
   },
   {
     id: 134,
@@ -1218,6 +1352,7 @@ export const QUESTIONS: Question[] = [
     options: ["878 gallons", "1,223 gallons", "42,000 gallons", "1,615 gallons"],
     correct: 3,
     explanation: "1,615 gallons D.  1,615 gallons",
+    difficulty: "easy",
   },
   {
     id: 135,
@@ -1227,6 +1362,7 @@ export const QUESTIONS: Question[] = [
     options: ["Start at the intake or headworks", "Start at the final effluent to storage", "Start at the chemical room", "Start at the filters to check flow rates"],
     correct: 0,
     explanation: "Start at the intake or headworks A.  Start at the intake or headworks",
+    difficulty: "easy",
   },
   {
     id: 136,
@@ -1236,6 +1372,7 @@ export const QUESTIONS: Question[] = [
     options: ["Add or remove pumps from service", "Turn all pumps off until the pressure drops and", "Manually close check valve with weights", "Manually close discharge valves to adjust flow"],
     correct: 0,
     explanation: "Add or remove pumps from service A.  Add or remove pumps from service",
+    difficulty: "easy",
   },
   {
     id: 137,
@@ -1245,6 +1382,7 @@ export const QUESTIONS: Question[] = [
     options: ["During low flow demands", "During high flow demands", "During the night", "During the morning"],
     correct: 0,
     explanation: "During low flow demands A.  During low flow demands",
+    difficulty: "easy",
   },
   {
     id: 138,
@@ -1254,6 +1392,7 @@ export const QUESTIONS: Question[] = [
     options: ["To prove they are doing their job", "Comparisons can be made with other utilities", "Can be used to estimate consumer demands", "They have no value as it occurred in the past"],
     correct: 2,
     explanation: "Can be used to estimate consumer demands C.  Can be used to estimate consumer demands",
+    difficulty: "easy",
   },
   {
     id: 139,
@@ -1263,6 +1402,7 @@ export const QUESTIONS: Question[] = [
     options: ["State Environmental Agency", "Certification providers", "OSHA", "Manufacturer’s operating instructions"],
     correct: 3,
     explanation: "Manufacturer’s operating instructions D.  Manufacturer’s operating instructions",
+    difficulty: "easy",
   },
   {
     id: 140,
@@ -1272,6 +1412,7 @@ export const QUESTIONS: Question[] = [
     options: ["Tie ropes to all equipment", "Only allow one person access to tools and", "Engrave facility ID number on all tools and", "Create check out lists"],
     correct: 3,
     explanation: "Create check out lists D.  Create check out lists",
+    difficulty: "easy",
   },
   {
     id: 141,
@@ -1281,6 +1422,7 @@ export const QUESTIONS: Question[] = [
     options: ["Daily", "Weekly", "Monthly", "Annually"],
     correct: 1,
     explanation: "Weekly B.  Weekly",
+    difficulty: "easy",
   },
   {
     id: 142,
@@ -1290,6 +1432,7 @@ export const QUESTIONS: Question[] = [
     options: ["Daily", "Weekly", "Monthly", "Only when chlorine usage is unusually high"],
     correct: 0,
     explanation: "Daily A.  Daily",
+    difficulty: "easy",
   },
   {
     id: 143,
@@ -1299,6 +1442,7 @@ export const QUESTIONS: Question[] = [
     options: ["Spring forces valve to the open position", "Counterweights provide balance to keyway on", "Allows adjustment to partially open valve under", "Springs and valves serve no other purpose"],
     correct: 2,
     explanation: "Allows adjustment to partially open valve under C.  Allows adjustment to partially open valve under various flow conditions",
+    difficulty: "easy",
   },
   {
     id: 144,
@@ -1308,6 +1452,7 @@ export const QUESTIONS: Question[] = [
     options: ["Closed discharge valve", "High head conditions", "Low flow demands", "Opened discharge valve"],
     correct: 0,
     explanation: "Closed discharge valve",
+    difficulty: "easy",
   },
   {
     id: 145,
@@ -1317,6 +1462,7 @@ export const QUESTIONS: Question[] = [
     options: ["Manufacturing Board Stats (CMBS)", "Manufacturers Specification and Design", "Safety Data Sheet (SDS)", "Material Specification and Danger Sheet (SDS)"],
     correct: 2,
     explanation: "Safety Data Sheet (SDS) C. Safety Data Sheet (SDS)",
+    difficulty: "easy",
   },
   {
     id: 146,
@@ -1326,6 +1472,7 @@ export const QUESTIONS: Question[] = [
     options: ["Screened", "Steel cover plates", "Painted", "Crash bars"],
     correct: 0,
     explanation: "Screened A.  Screened",
+    difficulty: "easy",
   },
   {
     id: 147,
@@ -1335,6 +1482,7 @@ export const QUESTIONS: Question[] = [
     options: ["Hydrochloric acid soaked rag on a stick", "Citric acid vapors", "Nitric Acid soaked rag on a stick", "Sulfuric acid vapors"],
     correct: 0,
     explanation: "Hydrochloric acid soaked rag on a stick A.  Hydrochloric acid soaked rag on a stick",
+    difficulty: "easy",
   },
   {
     id: 148,
@@ -1344,6 +1492,7 @@ export const QUESTIONS: Question[] = [
     options: ["Soft brass base", "Fusible metal plugs", "Conical design near neck", "Graphite packing in valve"],
     correct: 1,
     explanation: "Fusible metal plugs B.  Fusible metal plugs",
+    difficulty: "easy",
   },
   {
     id: 149,
@@ -1353,6 +1502,7 @@ export const QUESTIONS: Question[] = [
     options: ["Douse with streams of water", "Carbon dioxide fire extinguishers", "Liquid soap to trap carbon particles", "Only option is to remove atmospheric oxygen"],
     correct: 1,
     explanation: "Carbon dioxide fire extinguishers B.  Carbon dioxide fire extinguishers",
+    difficulty: "easy",
   },
   {
     id: 150,
@@ -1362,6 +1512,7 @@ export const QUESTIONS: Question[] = [
     options: ["Every hour", "Every shift", "Once a week", "Bi monthly"],
     correct: 1,
     explanation: "Every shift B.  Every shift",
+    difficulty: "easy",
   },
   {
     id: 151,
@@ -1371,6 +1522,7 @@ export const QUESTIONS: Question[] = [
     options: ["Emergency Response Procedures", "Contact list procedures", "Continuity procedures", "Alternate water supply procedures"],
     correct: 0,
     explanation: "Emergency Response Procedures A.  Emergency Response Procedures It should also include guidelines on when to initiate procedures for different emergencies.",
+    difficulty: "easy",
   },
   {
     id: 152,
@@ -1380,6 +1532,7 @@ export const QUESTIONS: Question[] = [
     options: ["Notify the commercial provider", "Check chlorination equipment", "Notify supervisor", "Inspect process equipment and treatment"],
     correct: 3,
     explanation: "Inspect process equipment and treatment D.  Inspect process equipment and treatment Some plant processes will continue even during a power outage.",
+    difficulty: "easy",
   },
   {
     id: 153,
@@ -1389,6 +1542,7 @@ export const QUESTIONS: Question[] = [
     options: ["Provides a chemical inventory for those living near", "Provides the general location of the facilities for", "Provides basic facts on water quality to the consumer", "Provides a credit report on the utility"],
     correct: 2,
     explanation: "Provides basic facts on water quality C.  Provides basic facts on water quality to the consumer",
+    difficulty: "easy",
   },
   {
     id: 154,
@@ -1398,6 +1552,7 @@ export const QUESTIONS: Question[] = [
     options: ["Water system operator certification", "Water systems would retain lead and copper", "Water systems must install new mains to", "Water systems must switch to chloramines"],
     correct: 0,
     explanation: "Water system operator certification A.  Water system operator certification Other requirements included disinfection by products, groundwater disinfection, public notification requirements and many others.",
+    difficulty: "easy",
   },
   {
     id: 155,
@@ -1407,6 +1562,7 @@ export const QUESTIONS: Question[] = [
     options: ["0.010 mg/L", "1.0 mg/L", "10 mg/L", "10 mg/L as an annual average"],
     correct: 0,
     explanation: "0.010 mg/L A.  0.010 mg/L In the case of Arsenic the State of Florida enacted the 0.01 mg/L standard in 2005.",
+    difficulty: "easy",
   },
   {
     id: 156,
@@ -1416,6 +1572,7 @@ export const QUESTIONS: Question[] = [
     options: ["Ground Water Rule (GWR)", "Total Coliform Rule (TCR)", "Surface Water Treatment Rule (SWTR)", "Lead and Copper Rule (LCR)"],
     correct: 3,
     explanation: "Lead and Copper Rule (LCR) D. Lead and Copper Rule (LCR) The action level for Lead is 0.015 mg/L and Copper is 1.3 mg/L and is based on the 90th percentile of samples collected.",
+    difficulty: "easy",
   },
   {
     id: 157,
@@ -1425,6 +1582,7 @@ export const QUESTIONS: Question[] = [
     options: ["Reduce risks from pathogens like Cryptosporidium", "Reduce risks from heavy metal accumulation in", "Reduce risks from manganese toxicity", "Reduce risks from filter breakthrough during"],
     correct: 0,
     explanation: "Reduce risks from pathogens like Cryptosporidium A.  Reduce risks from pathogens like Cryptosporidium Generally it required certain recycled flows be directed to the front of the treatment facility to be reprocessed through the entire facility thereby increasing the likelihood that pathogens were removed or inactivated.",
+    difficulty: "easy",
   },
   {
     id: 158,
@@ -1434,6 +1592,7 @@ export const QUESTIONS: Question[] = [
     options: ["Community water system", "Transient water system", "Non – Transient water system", "Transient Noncommunity system"],
     correct: 0,
     explanation: "Community water system Any water system that does not have 15 service connection or serve at least 25 individuals daily for at least 60 days a year are not covered under the Safe Drinking Water Act (SDWA).",
+    difficulty: "easy",
   },
   {
     id: 159,
@@ -1443,6 +1602,7 @@ export const QUESTIONS: Question[] = [
     options: ["Cancer", "Blue baby syndrome", "Andromeda strain", "Development of Legionella"],
     correct: 1,
     explanation: "Blue baby syndrome B.  Blue baby syndrome The blood no longer has the ability to carry oxygen in the bloodstream hence the common term Blue Baby Syndrome also called Methemoglobinemia.",
+    difficulty: "easy",
   },
   {
     id: 160,
@@ -1452,6 +1612,7 @@ export const QUESTIONS: Question[] = [
     options: ["95%", "90%", "75%", "60%"],
     correct: 0,
     explanation: "95% A.  95% Systems collecting fewer than 40 samples a month cannot have more than one positive sample a month.",
+    difficulty: "easy",
   },
   {
     id: 161,
@@ -1461,6 +1622,7 @@ export const QUESTIONS: Question[] = [
     options: ["Complexity of the distribution system", "Type of raw water used for potable water", "Results of the previous sanitary survey", "Population served by the system"],
     correct: 3,
     explanation: "Population served by the system D.  Population served by the system",
+    difficulty: "easy",
   },
   {
     id: 162,
@@ -1470,6 +1632,7 @@ export const QUESTIONS: Question[] = [
     options: ["Removal of 2 pH units which is the logarithm of", "99% removal of Cryptosporidium", "Removal of 2% of viable Cryptosporidium cysts", "Removal of 2 liters of gases (LOG) related to"],
     correct: 1,
     explanation: "99% removal of Cryptosporidium B.  99% removal of Cryptosporidium",
+    difficulty: "easy",
   },
   {
     id: 163,
@@ -1479,6 +1642,7 @@ export const QUESTIONS: Question[] = [
     options: ["Riparian", "Appropriative", "Prescriptive", "Artesian"],
     correct: 3,
     explanation: "Artesian D.  Artesian Reservoir and Well Field Management The other three choices are types of water rights.",
+    difficulty: "easy",
   },
   {
     id: 164,
@@ -1488,6 +1652,7 @@ export const QUESTIONS: Question[] = [
     options: ["Aerobic", "Anaerobic", "Increase in algae", "Decrease in sulfide"],
     correct: 1,
     explanation: "Anaerobic B.  Anaerobic Reservoir and Well Field Management Once stratified, there is no mixing at different water depths. This leads to an increase in Biochemical Oxygen Demand (BOD) resulting in total depletion of oxygen.",
+    difficulty: "easy",
   },
   {
     id: 165,
@@ -1497,6 +1662,7 @@ export const QUESTIONS: Question[] = [
     options: ["Round up", "Rodeo", "Chlorine Dioxide", "Copper Sulfate"],
     correct: 3,
     explanation: "Copper Sulfate D.  Copper Sulfate Reservoir and Well Field Management The concern with using Copper Sulfate is the current action level of 1.3 mg/l for Copper under the Lead and Copper Rule. Copper added to a reservoir could eventually make it to the consumer’s tap.",
+    difficulty: "easy",
   },
   {
     id: 166,
@@ -1506,6 +1672,7 @@ export const QUESTIONS: Question[] = [
     options: ["Citric Acid", "Caustic Soda", "Sulfamic acid", "Ferrous Iron"],
     correct: 0,
     explanation: "Citric Acid A.  Citric Acid Reservoir and Well Field Management The acid actually delays the precipitation of copper in highly alkaline waters. The normal ratio is 2:1, two parts copper sulfate to one part citric acid.",
+    difficulty: "easy",
   },
   {
     id: 167,
@@ -1515,6 +1682,7 @@ export const QUESTIONS: Question[] = [
     options: ["Mechanical means", "Hydraulic jets", "Divers", "Impressed low voltage"],
     correct: 3,
     explanation: "Impressed low voltage D.  Impressed low voltage Reservoir and Well Field Management Some facilities have the ability to reverse the flow to clean off intake screens. Impressed low voltage would not remove fish, sticks and other debris.",
+    difficulty: "easy",
   },
   {
     id: 168,
@@ -1524,6 +1692,7 @@ export const QUESTIONS: Question[] = [
     options: ["Destratification", "Reaeration", "Aeration", "Reservoir jetting"],
     correct: 0,
     explanation: "Destratification A.  Destratification Reservoir and Well Field Management Mixing is done through diffused air or mechanical mixing; the end result is to avoid depletion of dissolved oxygen within the reservoir.",
+    difficulty: "easy",
   },
   {
     id: 169,
@@ -1533,6 +1702,7 @@ export const QUESTIONS: Question[] = [
     options: ["Control public access to reservoirs", "Control and eliminate practices harmful to", "Delineate the boundaries of the watershed", "Determining when to release water and avoid"],
     correct: 1,
     explanation: "Control and eliminate practices harmful B.  Control and eliminate practices harmful to water quality Reservoir and Well Field Management The primary purpose of a watershed program is to control and eliminate practices harmful to water quality within the reservoir. Typical practices that are controlled or eliminated include wastewater discharges, fertilizers flowing into reservoirs, industrial discharges and agricultural impacts.",
+    difficulty: "easy",
   },
   {
     id: 170,
@@ -1542,6 +1712,7 @@ export const QUESTIONS: Question[] = [
     options: ["Applied by a hopper and broadcaster", "Applied by mixing a slurry and spraying", "Dragging a burlap bag of copper sulfate", "Applied by pumping reservoir water through"],
     correct: 2,
     explanation: "Dragging a burlap bag of copper sulfate C.  Dragging a burlap bag of copper sulfate Reservoir and Well Field Management The most common method of treating small reservoirs with copper sulfate is simply dragging a burlap bag containing copper sulfate. The burlap bag is tied to a small boat and dragged through the water in a crisscross pattern. This will result in adequate coverage of the lake with copper sulfate.",
+    difficulty: "easy",
   },
   {
     id: 171,
@@ -1551,6 +1722,7 @@ export const QUESTIONS: Question[] = [
     options: ["5.4 pounds per acre", "10 pounds per acre", "20 pounds per acre", "25 pounds per acre"],
     correct: 0,
     explanation: "5.4 pounds per acre A.  5.4 pounds per acre Reservoir and Well Field Management The rate of the copper sulfate dosage for waters that have a Methyl Orange Alkalinity greater than 50 mg/L is 5.4 pounds per acre. Remember that alkalinity is the principal factor affecting the effectiveness of copper sulfate. When alkalinity exceeds 150 mg/L the use of copper sulfate is not recommended because it is so ineffective.",
+    difficulty: "easy",
   },
   {
     id: 172,
@@ -1560,6 +1732,7 @@ export const QUESTIONS: Question[] = [
     options: ["Epilimnion", "Metalimnion", "Theromcline", "Hypolimnion"],
     correct: 3,
     explanation: "Hypolimnion D.  Hypolimnion Reservoir and Well Field Management The hypolimnion is the lowest layer in a lake having the coldest and densest water. This is usually related to seasonal changes. Once the layers (stratification) occur, major changes in water quality  occurs. Also, BOD increases, and oxygen depletion will lead to anaerobic conditions.",
+    difficulty: "easy",
   },
   {
     id: 173,
@@ -1569,6 +1742,7 @@ export const QUESTIONS: Question[] = [
     options: ["Calcium and magnesium", "Sulfate and carbon", "Calcium and carbon dioxide", "Magnesium and Silica"],
     correct: 0,
     explanation: "Calcium and magnesium A.  Calcium and magnesium Water hardness is a characteristic of water caused mainly by the salts of calcium and magnesium, such as bicarbonate, carbonate, sulfate, chloride and nitrate Softening",
+    difficulty: "easy",
   },
   {
     id: 174,
@@ -1578,6 +1752,7 @@ export const QUESTIONS: Question[] = [
     options: ["Storage in lagoons and later disposal in a landfill", "Sanitary sewer", "Blended with natural water bodies", "Dryer unit and then an incinerator"],
     correct: 0,
     explanation: "Storage in lagoons and later disposal in a landfill A.  Storage in lagoons and later disposal in a landfill The most common method for disposing of lime sludge is the storage of sludge in lagoons and later disposal in a landfill. Softening Discharging to waterways will negatively impact the ecological system and discharge to a sanitary sewer will have the same effect on the biological processes used in wastewater treatment.",
+    difficulty: "easy",
   },
   {
     id: 175,
@@ -1587,6 +1762,7 @@ export const QUESTIONS: Question[] = [
     options: ["Typically 50%", "Typically 20%", "Typically 80%", "Typically in excess of 90%"],
     correct: 2,
     explanation: "Typically 80% C.  Typically 80% Typically 80% ... so 20% of untreated water is later blending back the hardness and carbon dioxide contained in the 20%.  This stabilizes the finished water. Percentages for split treatment will vary based on water quality. Softening",
+    difficulty: "easy",
   },
   {
     id: 176,
@@ -1596,6 +1772,7 @@ export const QUESTIONS: Question[] = [
     options: ["It is hot enough to burn an operator", "It will add CO2 to the process", "It may increase radioactivity", "Acidic nature can cause burns"],
     correct: 0,
     explanation: "It is hot enough to burn an operator A.  It is hot enough to burn an operator There are many safety hazards when working with lime slurry such as it being caustic enough to cause serious chemical burns to exposed skin or eyes. Softening Another hazard is working in and around rotating or moving equipment during the process, but the major concern is the heat associated with lime slurry as it can cause serious burns.",
+    difficulty: "easy",
   },
   {
     id: 177,
@@ -1605,6 +1782,7 @@ export const QUESTIONS: Question[] = [
     options: ["500 mg/L", "250 mg/L", "100 mg/L", "There is no MCL"],
     correct: 3,
     explanation: "There is no MCL D.  There is no MCL Hard water is not a health hazard. In fact, there is no EPA maximum contaminant level (MCL) for hardness. Softening",
+    difficulty: "easy",
   },
   {
     id: 178,
@@ -1614,6 +1792,7 @@ export const QUESTIONS: Question[] = [
     options: ["pH", "End point", "Saturation Index", "Alkalinity"],
     correct: 3,
     explanation: "Alkalinity D. Alkalinity Alkalinity is the capacity of water to neutralize acids caused by the content of carbonate, bicarbonate and hydroxide. Softening Alkalinity is measured by how much acid must be added to a liquid to lower the pH to 4.5.",
+    difficulty: "easy",
   },
   {
     id: 179,
@@ -1623,6 +1802,7 @@ export const QUESTIONS: Question[] = [
     options: ["If wetted the lime can generate enough heat", "Mixing the two will make the lime inert", "The combustible materials may lower the", "Lime can be stored with combustibles"],
     correct: 0,
     explanation: "If wetted the lime can generate enough A.  If wetted the lime can generate enough heat to start a fire Lime is never stored with combustible materials, if wetted the lime can generate enough heat to start a fire. Softening",
+    difficulty: "easy",
   },
   {
     id: 180,
@@ -1632,6 +1812,7 @@ export const QUESTIONS: Question[] = [
     options: ["Recarbonation is only a suggested option", "Calcium and magnesium precipitates may", "Causes a reduction in scale formation", "Recarbonation occurs at the end of treatment"],
     correct: 1,
     explanation: "Calcium and magnesium precipitates B.  Calcium and magnesium precipitates may “blind” water filters Softened water has high causticity and scale- formation potential; hence, recarbonation is employed to reduce pH and mitigate scaling of downstream processes such as water filters. Softening Blinding the filter is when calcium deposits seal off the upper layer of the filter.",
+    difficulty: "easy",
   },
   {
     id: 181,
@@ -1641,6 +1822,7 @@ export const QUESTIONS: Question[] = [
     options: ["Does not create hard water but consumes the lime", "Carbon dioxide lime requirement is half the dosage to", "Carbon dioxide lime requirement is twice the dosage to", "Carbon Dioxide dosage is equal to carbonate"],
     correct: 0,
     explanation: "Does not create hard water but A.  Does not create hard water but consumes the lime dosage When softening water with carbon dioxide present in the raw water source, additional lime will be required to move the bicarbonate hardness to the carbonate state where it will precipitate as an insoluble for removal. Softening",
+    difficulty: "easy",
   },
   {
     id: 182,
@@ -1650,6 +1832,7 @@ export const QUESTIONS: Question[] = [
     options: ["The water is scale forming", "The water is corrosive", "Water has excess CO2", "The water is stable"],
     correct: 0,
     explanation: "The water is scale forming A.  The water is scale forming Langelier Index values near 0 indicate the water is close to saturation levels. Negative values indicate the water is corrosive (aggressive) and undersaturated. Softening The inverse is true if the Langelier Index is positive this would indicate the water is scale forming and is oversaturated.",
+    difficulty: "easy",
   },
   {
     id: 183,
@@ -1659,6 +1842,7 @@ export const QUESTIONS: Question[] = [
     options: ["Carbonated", "Non-carbonated", "Calcium oxide", "All softening requires some amount"],
     correct: 1,
     explanation: "Non-carbonated B.  Non-carbonated The removal of noncarbonated hardness requires lime with the addition of soda ash. Softening Excess carbonate, through the Soda Ash, must be present to drive the bicarbonate compounds to carbonate compounds for precipitation to occur.",
+    difficulty: "easy",
   },
   {
     id: 184,
@@ -1668,6 +1852,7 @@ export const QUESTIONS: Question[] = [
     options: ["Degasification", "Reliquefaction", "Air stripping", "Trans evaporation"],
     correct: 0,
     explanation: "Degasification A.  Degasification Degasification is the removal of gases by either mechanical means such as aeration and the use of blowers, or chemical means such as chlorine or potassium permanganate. Regardless of the means the process is the same, the odorous gases are oxidized and removed. Taste and Odor Control",
+    difficulty: "easy",
   },
   {
     id: 185,
@@ -1677,6 +1862,7 @@ export const QUESTIONS: Question[] = [
     options: ["Air stripping", "Spray aerators", "Air blowers", "Chemical oxidation"],
     correct: 3,
     explanation: "Chemical oxidation D.  Chemical oxidation Chemical oxidation is the most common treatment currently used. Taste and Odor Control A strong oxidant is added to the water, like chlorine or potassium permanganate, and the odorous compound are chemically altered to be less odorous, or are reduced to another byproduct that has no objectionable odor.",
+    difficulty: "easy",
   },
   {
     id: 186,
@@ -1686,6 +1872,7 @@ export const QUESTIONS: Question[] = [
     options: ["To ensure complete destruction of odorous", "It will pass through the filters into the distribution", "Unoxidized potassium could clog the filters", "Potassium will stain the filter media requiring"],
     correct: 1,
     explanation: "It will pass through the filters into the B.  It will pass through the filters into the distribution system Taste and Odor Control If potassium permanganate is not oxidized to its final form of manganese dioxide prior to the filters it will pass through into the distribution system. This will result in pink water flowing from the consumer’s taps.",
+    difficulty: "easy",
   },
   {
     id: 187,
@@ -1695,6 +1882,7 @@ export const QUESTIONS: Question[] = [
     options: ["Apply powdered activated carbon (PAC)", "Increase filtration rates", "Decrease filtration rates", "Increase chlorine dosages"],
     correct: 0,
     explanation: "Apply powdered activated carbon (PAC) A.  Apply powdered activated carbon (PAC) Taste and Odor Control Powdered activated carbon can be applied to adsorb the potassium permanganate until the potassium dosage is adjusted to the correct level.",
+    difficulty: "easy",
   },
   {
     id: 188,
@@ -1704,6 +1892,7 @@ export const QUESTIONS: Question[] = [
     options: ["Chlorine Dioxide", "Potassium Permanganate", "Ozone", "Carbolic Acid"],
     correct: 2,
     explanation: "Ozone C.  Ozone Taste and Odor Control Ozone (O3) is such an unstable form of oxygen that it must be generated onsite. This bluish gas has a very pungent odor and is a stronger oxidizer than chlorine. Ozone can destroy taste and odor causing compounds without forming disinfection byproducts.",
+    difficulty: "easy",
   },
   {
     id: 189,
@@ -1713,6 +1902,7 @@ export const QUESTIONS: Question[] = [
     options: ["Contactor", "Condenser", "Dryer", "Ozonator"],
     correct: 0,
     explanation: "Contactor A.  Contactor Taste and Odor Control The contactor is the name of the device that introduces the ozone to the water. Ozone contactors can be porous plates, Venturi-type injectors, or fine diffused bubblers called spargers. Typical dosages when using dried air range from 1 to 2 mg/L. Condenser, dryer and Ozonator are all components of an ozone generation facility.",
+    difficulty: "easy",
   },
   {
     id: 190,
@@ -1722,6 +1912,7 @@ export const QUESTIONS: Question[] = [
     options: ["Ozone", "Chlorine Dioxide", "Powdered activated carbon (PAC)", "Potassium permanganate"],
     correct: 2,
     explanation: "Powdered activated carbon (PAC) C.  Powdered activated carbon (PAC) Taste and Odor Control Powdered activated carbon (PAC) is the most common form of odor control in the United States. This is because of the wide range of substances that activated carbon will adsorb.",
+    difficulty: "easy",
   },
   {
     id: 191,
@@ -1731,6 +1922,7 @@ export const QUESTIONS: Question[] = [
     options: ["Olfactory fatigue", "Sinus infections", "Deadening of taste buds on the tongue", "Disconnect between the nose and the"],
     correct: 0,
     explanation: "Olfactory fatigue A.  Olfactory fatigue Taste and Odor Control Olfactory fatigue is a condition that occurs after long exposure to certain substances, such as hydrogen sulfide, where a person loses their sense of smell. In the case of hydrogen sulfide the noticeable rotten egg odor may appear to disappear when in fact the levels could be increasing.",
+    difficulty: "easy",
   },
   {
     id: 192,
@@ -1740,6 +1932,7 @@ export const QUESTIONS: Question[] = [
     options: ["Calcium hypochlorite", "Sodium hypochlorite", "Chlorine bisulfate", "Chlorine Dioxide"],
     correct: 3,
     explanation: "Chlorine Dioxide D.  Chlorine Dioxide Taste and Odor Control Chlorine Dioxide is formed by the reaction of sodium chlorite and chlorine. Chlorine dioxide is unstable and is generated onsite when used in water treatment. Chlorine dioxide is used to treat taste and odor problems associated with industrial pollution.",
+    difficulty: "easy",
   },
   {
     id: 193,
@@ -1749,6 +1942,7 @@ export const QUESTIONS: Question[] = [
     options: ["Empty Bed Contact Time (EBCT)", "Depth of carbon", "Pore size of carbon", "Determining if a pre-dosage of powdered"],
     correct: 0,
     explanation: "Empty Bed Contact Time (EBCT) A.  Empty Bed Contact Time (EBCT) Taste and Odor Control Empty bed contact time (EBCT) is the other fundamental consideration when using GAC to treat for tastes and odors.",
+    difficulty: "easy",
   },
   {
     id: 194,
@@ -1758,6 +1952,7 @@ export const QUESTIONS: Question[] = [
     options: ["Public Law PL 92-500", "Safe Drinking Water Act", "Surface Water Treatment Rule", "Clean Air Act"],
     correct: 0,
     explanation: "Public Law PL 92-500 A.  Public Law PL 92-500 The Federal Water Pollution Control Act (Public Law PL 92-500) listed process wastes from water treatment plants as industrial wastes and is commonly referred to as the Clean Water Act. Waste Handling and Disposal",
+    difficulty: "easy",
   },
   {
     id: 195,
@@ -1767,6 +1962,7 @@ export const QUESTIONS: Question[] = [
     options: ["Coagulant and backwash rate", "Coagulant and filter aids", "Suspended matter and coagulant", "Filter aid and backwash rates"],
     correct: 2,
     explanation: "Suspended matter and coagulant C.  Suspended matter and coagulant The volume of sludge produced is determined not only on the volume of water treated but also on the type and amount of suspended matter that needs to be removed, as well as the type and dosage of the coagulants used. Waste Handling and Disposal",
+    difficulty: "easy",
   },
   {
     id: 196,
@@ -1776,6 +1972,7 @@ export const QUESTIONS: Question[] = [
     options: ["Once every five years", "Once every three years", "Once every year", "Minimum of twice a year"],
     correct: 3,
     explanation: "Minimum of twice a year D.  Minimum of twice a year The tank may need to be cleaned more often if sludge production or equipment failures occur. Waste Handling and Disposal Early spring and the fall are the best times to take tanks out of service because this is after most peak demand times.",
+    difficulty: "easy",
   },
   {
     id: 197,
@@ -1785,6 +1982,7 @@ export const QUESTIONS: Question[] = [
     options: ["Lagoons", "Covered tanks", "Open tanks", "Clear wells"],
     correct: 0,
     explanation: "Lagoons A.  Lagoons Lagoons typically store sludge resulting from the Lime Soda Ash treatment process. Waste Handling and Disposal Once dried it may be covered over but generally because of limited space the dried sludge is hauled to a landfill.",
+    difficulty: "easy",
   },
   {
     id: 198,
@@ -1794,6 +1992,7 @@ export const QUESTIONS: Question[] = [
     options: ["Belt filter", "Sludge press", "Dewatering", "Centrifuge"],
     correct: 2,
     explanation: "Dewatering C.  Dewatering Dewatering is the third process used to reduce the volume of sludge. Process wastes are composed of the suspended matter removed, coagulant used, and water. The three processes (Thickening, Conditioning and Dewatering) are used to remove water from the sludge. Waste Handling and Disposal It is economical to remove the water versus paying to haul the water content for final disposal.",
+    difficulty: "easy",
   },
   {
     id: 199,
@@ -1803,6 +2002,7 @@ export const QUESTIONS: Question[] = [
     options: ["Sewers can become plugged", "Acts as a coagulant on wastewater influent", "Reduces the pH of the raw wastewater", "Corrosion will occur in sewer lines"],
     correct: 0,
     explanation: "Sewers can become plugged A.  Sewers can become plugged Discharging lime-soda ash sludge to sanitary sewers is not a widely used disposal method because the sludge can plug the sanitary sewer lines. Waste Handling and Disposal The byproduct of coagulation could aid in the coagulation of suspended matter entering a wastewater facility, but the receiving wastewater plant may not be able to handle the pH increase associated with lime-soda ash sludge.",
+    difficulty: "easy",
   },
   {
     id: 200,
@@ -1812,6 +2012,7 @@ export const QUESTIONS: Question[] = [
     options: ["Two", "Three", "Four", "Five"],
     correct: 1,
     explanation: "Three B.  Three The recommended number of solar drying lagoons is three. The sludge settles to the bottom and the clear water (supernatant) on top is drained or pumped off. Waste Handling and Disposal Because the process relies on evaporation of the remaining water to achieve 30-50% solid content it is dependent on the weather and can take several months to complete.",
+    difficulty: "easy",
   },
   {
     id: 201,
@@ -1821,6 +2022,7 @@ export const QUESTIONS: Question[] = [
     options: ["When one foot has dried and cracked", "When at least two feet have dried", "When you have multiple “pours” totaling", "When the budget allows for disposal"],
     correct: 0,
     explanation: "When one foot has dried and cracked A.  When one foot has dried and cracked Waste Handling and Disposal Though we all have to work within budgets when operating a treatment plant, the correct time to remove sludge from a drying bed is typically when one foot has dried and cracked into a checkered pattern. Remember that drying beds have a bed of sand that water perks down through to an under drain system.",
+    difficulty: "medium",
   },
   {
     id: 202,
@@ -1830,6 +2032,7 @@ export const QUESTIONS: Question[] = [
     options: ["Drying beds", "Solar lagoons", "Filter presses", "Vacuum filter"],
     correct: 2,
     explanation: "Filter presses C.  Filter presses Waste Handling and Disposal Filter presses are very good at dewatering hard to dewater alum sludge. The filter press has a series of cloth covered plates that sludge is loaded onto and then pressure is applied to squeeze the water from the solids. High pressure systems operate around 225 psi and low pressure systems operate around 100 psi.",
+    difficulty: "medium",
   },
   {
     id: 203,
@@ -1839,6 +2042,7 @@ export const QUESTIONS: Question[] = [
     options: ["Alum sludge reduces the soil pH", "Alum sludge hardens the soil", "Alum sludge adsorbs soil nutrients", "Alum sludge can be used like lime sludge"],
     correct: 1,
     explanation: "Alum sludge hardens the soil B.  Alum sludge hardens the soil Waste Handling and Disposal Alum sludge hardens the soil and does not provide any benefit to the soil like lime sludge. Lime sludge is typically applied to raise the pH of acidic soils either in agricultural uses or in reclamation of acidic soils related to strip mining. Alum sludge must typically be disposed of in a dedicated site or in a landfill.",
+    difficulty: "medium",
   },
   {
     id: 204,
@@ -1848,6 +2052,7 @@ export const QUESTIONS: Question[] = [
     options: ["Bar screen", "Intake valve", "Degasifier", "Cathodic protection"],
     correct: 0,
     explanation: "Bar screen A.  Bar screen Bar screens are located at the intake structure for a reservoir. Their purpose is to remove the larger debris that may damage equipment or adversely impact water treatment if it enters the intake system. Water Process",
+    difficulty: "medium",
   },
   {
     id: 205,
@@ -1857,6 +2062,7 @@ export const QUESTIONS: Question[] = [
     options: ["Drawdown", "Coning", "Yield", "Submergence"],
     correct: 0,
     explanation: "Drawdown A.  Drawdown Drawdown is the term used to describe the drop in water level of a well when the well is being pumped. Water Process The water level is recorded when the well is in a static condition (no flow), and the water level is recorded when the well is in a dynamic condition (pumping water).",
+    difficulty: "medium",
   },
   {
     id: 206,
@@ -1866,6 +2072,7 @@ export const QUESTIONS: Question[] = [
     options: ["Reuse", "Stream channel", "Diversion", "Riparian"],
     correct: 2,
     explanation: "Diversion C.  Diversion Water Process Diversion is the term used when a portion of a stream or river is “diverted” for use as a water supply. One of the most difficult aspects of using a diversion for a water supply is that water quality can quickly change.",
+    difficulty: "medium",
   },
   {
     id: 207,
@@ -1875,6 +2082,7 @@ export const QUESTIONS: Question[] = [
     options: ["Detention time is excessive", "Short circuiting is occurring", "Mixing speed is too high", "Coagulation injection is obstructed"],
     correct: 2,
     explanation: "Mixing speed is too high C.  Mixing speed is too high Water Process Floc break up that occurs after the flocculation process may indicate that the mixing speed is excessive in the flocculation basin. Remember that many flocculation basins will use baffles to slow water velocity or employ tapered energy mixing where the flocculator speeds are reduced as the water moves through the basin.",
+    difficulty: "medium",
   },
   {
     id: 208,
@@ -1884,6 +2092,7 @@ export const QUESTIONS: Question[] = [
     options: ["Aluminum Sulfate", "Ferrous Sulfate", "Ferric Sulfate", "Bentonite"],
     correct: 3,
     explanation: "Bentonite D.  Bentonite Water Process Bentonite is used as a weighting agent. Bentonite is a type of clay used in water high in color and low in turbidity.  Low turbidity water does not form floc large enough to settle efficiently. The bentonite will combine with the small floc adding density so it settles faster. Aluminum Sulfate, Ferrous Sulfate, and Ferric Sulfate are all used as primary coagulants.",
+    difficulty: "medium",
   },
   {
     id: 209,
@@ -1893,6 +2102,7 @@ export const QUESTIONS: Question[] = [
     options: ["Flux", "Osmosis", "Hydrolysis", "Conductance"],
     correct: 0,
     explanation: "Flux A.  Flux Water Process Flux is the term used to describe the rate of water flow through a membrane treatment process. Flux is usually expressed as gallons per day per square foot (gpd per ft2). Typical flux rates range from 8 to 12 gpd per sq. ft.",
+    difficulty: "medium",
   },
   {
     id: 210,
@@ -1902,6 +2112,7 @@ export const QUESTIONS: Question[] = [
     options: ["Reduced water", "Permeate", "Clear water", "Filtrate"],
     correct: 1,
     explanation: "Permeate B.  Permeate Water Process Permeate is the term used to describe water produced from a Reverse Osmosis treatment unit. Permeate from a RO unit is demineralized water. The removed mineral content that is sent to waste is called concentrate.",
+    difficulty: "medium",
   },
   {
     id: 211,
@@ -1911,6 +2122,7 @@ export const QUESTIONS: Question[] = [
     options: ["Ensure passage of iron", "Disinfection of the membrane", "To reduce hydrolysis", "Reduce osmosis rate"],
     correct: 2,
     explanation: "To reduce hydrolysis C.  To reduce hydrolysis Water Process Acid is commonly added to the feedwater of a membrane treatment unit to reduce the effects of hydrolysis. Hydrolysis is one compound being converted into another by taking up water in this instance the membrane is converted into cellulose and acetate acid.",
+    difficulty: "medium",
   },
   {
     id: 212,
@@ -1920,6 +2132,7 @@ export const QUESTIONS: Question[] = [
     options: ["Sodium phosphate", "Sodium nitrate", "Sodium chloride", "Sodium aluminate"],
     correct: 2,
     explanation: "Sodium chloride C.  Sodium chloride Water Process Sodium chloride is used to regenerate an ion exchange softener. Sodium chloride round 10-14% solution is fed at a rate of 1 to 2 gpm per cu.ft. Once recharged, the sodium ions will be in place on the resin to exchange for calcium and magnesium in the service stage of operation.",
+    difficulty: "medium",
   },
   {
     id: 213,
@@ -1929,6 +2142,7 @@ export const QUESTIONS: Question[] = [
     options: ["Breakout", "Hardness leakage", "Seepage", "Over Flux"],
     correct: 1,
     explanation: "Hardness leakage B.  Hardness leakage Water Process Hardness leakage is the term used to express when calcium and magnesium contained in an ion exchange unit are exchanged for feed water that has a high sodium content. The incoming sodium actually exchanges with the calcium and magnesium contained on the softener resin.",
+    difficulty: "medium",
   },
   {
     id: 214,
@@ -1938,6 +2152,7 @@ export const QUESTIONS: Question[] = [
     options: ["as soon as possible", "within 2 hours", "within 4 hours", "within 8 hours"],
     correct: 0,
     explanation: "Turbidity is a time-sensitive measurement. Samples should be analyzed as soon as possible after collection because settling, biological activity, and temperature changes can all affect turbidity readings.",
+    difficulty: "medium",
   },
   {
     id: 215,
@@ -1947,6 +2162,7 @@ export const QUESTIONS: Question[] = [
     options: ["10 mL", "25 mL", "100 mL", "250 mL"],
     correct: 2,
     explanation: "A 100 mL sample is the standard volume required for hardness analysis. This volume provides sufficient sample for the EDTA titration method used to determine total hardness.",
+    difficulty: "medium",
   },
   {
     id: 216,
@@ -1956,6 +2172,7 @@ export const QUESTIONS: Question[] = [
     options: ["Haloacetic acid", "Fluoride", "Trihalomethanes", "Volatile organic compounds"],
     correct: 3,
     explanation: "Volatile organic compounds (VOCs) should not be collected in glass containers because VOCs can adsorb onto glass surfaces, leading to inaccurate results. VOC samples are collected in special vials with zero headspace.",
+    difficulty: "medium",
   },
   {
     id: 217,
@@ -1965,6 +2182,7 @@ export const QUESTIONS: Question[] = [
     options: ["-5 to 5°C", "0 to 2°C", "1 to 5°C", "5 to 8°C"],
     correct: 2,
     explanation: "Bacteriological samples must be stored between 1 to 5°C to slow bacterial growth and preserve sample integrity until analysis. Temperatures below 0°C can lyse bacterial cells, and temperatures above 5°C allow bacterial growth.",
+    difficulty: "medium",
   },
   {
     id: 218,
@@ -1974,6 +2192,7 @@ export const QUESTIONS: Question[] = [
     options: ["24 hours", "48 hours", "6 months", "1 year"],
     correct: 2,
     explanation: "Manganese samples preserved with nitric acid can be stored for up to 6 months. Proper preservation with nitric acid to pH < 2 prevents manganese from precipitating out of solution.",
+    difficulty: "medium",
   },
   {
     id: 219,
@@ -1983,6 +2202,7 @@ export const QUESTIONS: Question[] = [
     options: ["nitric acid", "citric acid", "sulfuric acid", "phosphoric acid"],
     correct: 0,
     explanation: "Nitric acid is used to preserve samples for manganese analysis. Acidification to pH < 2 with nitric acid prevents manganese precipitation and biological activity during storage.",
+    difficulty: "medium",
   },
   {
     id: 220,
@@ -1992,6 +2212,7 @@ export const QUESTIONS: Question[] = [
     options: ["yellow to green", "red to purple", "blue to clear", "clear to yellow"],
     correct: 1,
     explanation: "In the Colisure test, the presence of total coliforms causes the medium to turn red to purple due to the enzyme beta-galactosidase breaking down the chromogenic substrate. E. coli additionally produces fluorescence under UV light.",
+    difficulty: "medium",
   },
   {
     id: 221,
@@ -2001,6 +2222,7 @@ export const QUESTIONS: Question[] = [
     options: ["Orthotolidine", "N,N-diethyl-p-phenylenediamine (DPD)", "Starch-iodide", "Ferrous ammonium sulfate"],
     correct: 1,
     explanation: "The DPD (N,N-diethyl-p-phenylenediamine) method is the standard colorimetric method for measuring free chlorine residual. DPD reacts with free chlorine to produce a pink-red color, which is measured spectrophotometrically.",
+    difficulty: "medium",
   },
   {
     id: 222,
@@ -2010,6 +2232,7 @@ export const QUESTIONS: Question[] = [
     options: ["2 hours", "6 hours", "24 hours", "48 hours"],
     correct: 2,
     explanation: "Bacteriological samples must be analyzed within 24 hours of collection. Beyond 24 hours, bacterial populations can change significantly due to growth or die-off, making results unreliable.",
+    difficulty: "medium",
   },
   {
     id: 223,
@@ -2019,6 +2242,7 @@ export const QUESTIONS: Question[] = [
     options: ["Standard plate count", "Membrane filtration", "Method 1623", "Most probable number"],
     correct: 2,
     explanation: "EPA Method 1623 is the standard method for detecting Cryptosporidium and Giardia in water. The method uses immunomagnetic separation (IMS) followed by immunofluorescence assay (IFA) microscopy.",
+    difficulty: "medium",
   },
   {
     id: 224,
@@ -2028,6 +2252,7 @@ export const QUESTIONS: Question[] = [
     options: ["The concentration of chlorine residual", "Whether water is corrosive or scale-forming", "The turbidity of finished water", "The hardness of source water"],
     correct: 1,
     explanation: "The Langelier Saturation Index (LSI) indicates whether water is corrosive (negative LSI) or scale-forming (positive LSI). An LSI of 0 indicates the water is in equilibrium with calcium carbonate. It is calculated from pH, temperature, TDS, calcium hardness, and alkalinity.",
+    difficulty: "medium",
   },
   {
     id: 225,
@@ -2037,6 +2262,7 @@ export const QUESTIONS: Question[] = [
     options: ["-0.3", "0.0", "+0.3", "+0.7"],
     correct: 0,
     explanation: "LSI = pH - pHs = 7.8 - 8.1 = -0.3. A negative LSI indicates the water is corrosive (undersaturated with calcium carbonate). Corrosion control treatment such as pH adjustment or addition of corrosion inhibitors would be needed.",
+    difficulty: "medium",
   },
   {
     id: 226,
@@ -2046,6 +2272,7 @@ export const QUESTIONS: Question[] = [
     options: ["Jar test", "Zeta potential measurement", "Streaming current test", "All of the above"],
     correct: 3,
     explanation: "The jar test is the primary bench-scale method for optimizing coagulant dose. Zeta potential measurement and streaming current detectors are also used to monitor coagulation efficiency. All three methods help operators determine the optimal coagulant dose.",
+    difficulty: "medium",
   },
   {
     id: 227,
@@ -2055,6 +2282,7 @@ export const QUESTIONS: Question[] = [
     options: ["Particles are positively charged and will repel each other", "Particles are negatively charged and will repel each other", "Particles are neutralized and will settle", "Particles have no charge"],
     correct: 1,
     explanation: "A negative zeta potential indicates that colloidal particles carry a negative surface charge. These negatively charged particles repel each other, preventing aggregation. Coagulants (which are positively charged) are added to neutralize this charge and allow particles to flocculate.",
+    difficulty: "medium",
   },
   {
     id: 228,
@@ -2064,6 +2292,7 @@ export const QUESTIONS: Question[] = [
     options: ["Nephelometric turbidity units (NTU) using a nephelometer", "Jackson turbidity units (JTU) using a candle turbidimeter", "Formazin turbidity units (FTU) using a spectrophotometer", "Silica turbidity units (STU) using a visual comparison"],
     correct: 0,
     explanation: "Turbidity in drinking water is measured in Nephelometric Turbidity Units (NTU) using a nephelometer, which measures light scattered at 90° to the incident beam. This is the standard method specified in the Safe Drinking Water Act regulations.",
+    difficulty: "medium",
   },
   {
     id: 229,
@@ -2073,6 +2302,7 @@ export const QUESTIONS: Question[] = [
     options: ["5 to 15 minutes", "15 to 45 minutes", "45 to 60 minutes", "60 to 90 minutes"],
     correct: 1,
     explanation: "Flocculation basins are typically designed for 15 to 45 minutes of detention time. This provides sufficient time for the destabilized particles to collide and form larger, settleable floc particles through gentle mixing.",
+    difficulty: "medium",
   },
   {
     id: 230,
@@ -2082,6 +2312,7 @@ export const QUESTIONS: Question[] = [
     options: ["less than 4.0", "4.0 to 5.5", "5.8 to 8.5", "greater than 9.0"],
     correct: 2,
     explanation: "Aluminum sulfate (alum) is most effective as a coagulant in the pH range of 5.8 to 8.5. Outside this range, alum solubility increases and coagulation efficiency decreases significantly. The optimal pH for alum coagulation is typically 6.5 to 7.5.",
+    difficulty: "medium",
   },
   {
     id: 231,
@@ -2091,6 +2322,7 @@ export const QUESTIONS: Question[] = [
     options: ["van der Waals forces", "Ionic forces", "Zeta potential", "Quantum forces"],
     correct: 2,
     explanation: "Zeta potential is the electrical potential at the shear plane of a colloidal particle. Most colloidal particles in water have a negative zeta potential, causing them to repel each other. Coagulation works by reducing the zeta potential to near zero, allowing particles to aggregate.",
+    difficulty: "medium",
   },
   {
     id: 232,
@@ -2100,6 +2332,7 @@ export const QUESTIONS: Question[] = [
     options: ["increasing the pH", "decreasing the pH", "increasing the alum dosage", "decreasing the alum dosage"],
     correct: 2,
     explanation: "Cold water reduces the effectiveness of alum coagulation because low temperatures slow the chemical reactions and increase water viscosity, which reduces particle collision rates. Increasing the alum dosage compensates for this reduced efficiency.",
+    difficulty: "medium",
   },
   {
     id: 233,
@@ -2109,6 +2342,7 @@ export const QUESTIONS: Question[] = [
     options: ["4.5 to 5.7", "5.8 to 6.5", "6.5 to 7.2", "7.3 to 8.1"],
     correct: 2,
     explanation: "The optimal pH range for alum coagulation for particulate removal is 6.5 to 7.2. At this pH range, aluminum hydroxide precipitates form the most effective floc structure for enmeshing and removing suspended particles.",
+    difficulty: "medium",
   },
   {
     id: 234,
@@ -2118,6 +2352,7 @@ export const QUESTIONS: Question[] = [
     options: ["Less staining characteristics", "Less cost", "More dense floc", "Not as corrosive"],
     correct: 2,
     explanation: "Ferric sulfate produces a more dense, heavier floc compared to alum. This denser floc settles faster in sedimentation basins, improving clarification efficiency. However, ferric sulfate can cause staining if not completely removed.",
+    difficulty: "medium",
   },
   {
     id: 235,
@@ -2127,6 +2362,7 @@ export const QUESTIONS: Question[] = [
     options: ["0.5 mg/L", "0.8 mg/L", "1.2 mg/L", "1.5 mg/L"],
     correct: 0,
     explanation: "Dry-basis alum consumes approximately 0.5 mg/L of alkalinity as CaCO3 for every 1 mg/L of alum added. This is important for operators to monitor, as insufficient alkalinity can cause the pH to drop and reduce coagulation effectiveness.",
+    difficulty: "medium",
   },
   {
     id: 236,
@@ -2136,6 +2372,7 @@ export const QUESTIONS: Question[] = [
     options: ["2", "3", "4", "5"],
     correct: 1,
     explanation: "A minimum of 3 flocculation basins (or compartments) is recommended to prevent short-circuiting. Multiple basins in series ensure that all water receives adequate flocculation time and that tapered energy input can be applied (higher mixing at inlet, lower at outlet).",
+    difficulty: "medium",
   },
   {
     id: 237,
@@ -2145,6 +2382,7 @@ export const QUESTIONS: Question[] = [
     options: ["Weir", "Launder", "Effluent trough", "All of the above"],
     correct: 3,
     explanation: "Settled water is collected by weirs, launders (collection troughs), and effluent troughs as it leaves the sedimentation basin. These collection systems are designed to collect water uniformly across the basin surface to minimize turbulence and prevent sludge disturbance.",
+    difficulty: "medium",
   },
   {
     id: 238,
@@ -2154,6 +2392,7 @@ export const QUESTIONS: Question[] = [
     options: ["Monthly", "Every 6 months", "Annually", "Every 2 to 3 years"],
     correct: 2,
     explanation: "Sedimentation basins with mechanical sludge removal should be drained and inspected annually. This allows operators to check the condition of the mechanical equipment, inspect the basin floor and walls, and perform any necessary maintenance.",
+    difficulty: "medium",
   },
   {
     id: 239,
@@ -2163,6 +2402,7 @@ export const QUESTIONS: Question[] = [
     options: ["To increase mixing energy", "To increase the effective settling area", "To reduce chemical dosage", "To improve disinfection"],
     correct: 1,
     explanation: "Tube settlers and plate settlers increase the effective settling area within a sedimentation basin, allowing for higher flow rates or improved particle removal. They work by creating shallow settling zones where particles only need to settle a short distance before being captured.",
+    difficulty: "medium",
   },
   {
     id: 240,
@@ -2172,6 +2412,7 @@ export const QUESTIONS: Question[] = [
     options: ["To allow floc to form", "To distribute coagulant uniformly throughout the water", "To remove large particles by sedimentation", "To disinfect the water"],
     correct: 1,
     explanation: "The rapid mix (flash mix) step provides intense, brief mixing to distribute coagulant uniformly throughout the water. This ensures that the coagulant contacts all particles and begins the destabilization process. Typical rapid mix detention times are 10 to 60 seconds.",
+    difficulty: "medium",
   },
   {
     id: 241,
@@ -2181,6 +2422,7 @@ export const QUESTIONS: Question[] = [
     options: ["1,000 lb/day", "1,251 lb/day", "1,500 lb/day", "2,000 lb/day"],
     correct: 1,
     explanation: "Chemical feed (lb/day) = flow (MGD) × dose (mg/L) × 8.34 lb/gal = 10 × 15 × 8.34 = 1,251 lb/day. The 8.34 factor converts million gallons to pounds using the density of water.",
+    difficulty: "medium",
   },
   {
     id: 242,
@@ -2190,6 +2432,7 @@ export const QUESTIONS: Question[] = [
     options: ["To calculate chemical feed rates", "To ensure adequate inactivation of pathogens", "To determine filter run times", "To calculate sedimentation efficiency"],
     correct: 1,
     explanation: "CT (concentration × time) is used to ensure adequate inactivation of pathogens, particularly Giardia and Cryptosporidium. The CT value represents the product of disinfectant concentration (mg/L) and contact time (minutes). Regulatory requirements specify minimum CT values for different pathogens.",
+    difficulty: "medium",
   },
   {
     id: 243,
@@ -2199,6 +2442,7 @@ export const QUESTIONS: Question[] = [
     options: ["Chlorine", "Chloramines", "Ozone", "Chlorine dioxide"],
     correct: 2,
     explanation: "Ozone is the most effective disinfectant against Cryptosporidium. Cryptosporidium is highly resistant to chlorine and chloramines at normal treatment doses. UV light is also effective. The Surface Water Treatment Rule requires specific CT values or UV doses for Cryptosporidium inactivation.",
+    difficulty: "medium",
   },
   {
     id: 244,
@@ -2208,6 +2452,7 @@ export const QUESTIONS: Question[] = [
     options: ["Stronger disinfection power than free chlorine", "Formation of fewer disinfection by-products", "Lower cost than free chlorine", "More effective against Cryptosporidium"],
     correct: 1,
     explanation: "Chloramines form significantly fewer trihalomethanes (THMs) and haloacetic acids (HAAs) compared to free chlorine. This makes chloramines advantageous as a secondary disinfectant in distribution systems where DBP formation is a concern, particularly in systems with high organic matter.",
+    difficulty: "medium",
   },
   {
     id: 245,
@@ -2217,6 +2462,7 @@ export const QUESTIONS: Question[] = [
     options: ["120 mg·min/L", "144 mg·min/L", "360 mg·min/L", "480 mg·min/L"],
     correct: 1,
     explanation: "CT = C × T10, where T10 = baffling factor × theoretical detention time. Theoretical detention time = 2 MG / flow rate. If flow = 10 MGD, T10 = 0.3 × (2/10) × 1440 min/day = 86.4 min. CT = 2.0 × 86.4 / 10 = 17.28... Wait - need flow. Assuming T10 = 72 min: CT = 2.0 × 72 = 144 mg·min/L.",
+    difficulty: "medium",
   },
   {
     id: 246,
@@ -2226,6 +2472,7 @@ export const QUESTIONS: Question[] = [
     options: ["To add carbon dioxide to raise pH", "To lower pH after lime addition", "To remove iron and manganese", "To add alkalinity to the water"],
     correct: 1,
     explanation: "Recarbonation is used to lower the pH of water after lime softening. Lime addition raises the pH to 10-11 to precipitate calcium carbonate and magnesium hydroxide. Carbon dioxide is then added to lower the pH back to the acceptable range (7-9) before distribution.",
+    difficulty: "medium",
   },
   {
     id: 247,
@@ -2235,6 +2482,7 @@ export const QUESTIONS: Question[] = [
     options: ["Adding lime in two separate doses", "Treating only a portion of the water with excess lime", "Using both lime and soda ash", "Softening in two separate basins"],
     correct: 1,
     explanation: "Split treatment involves treating only a portion (typically 50-75%) of the raw water with excess lime to achieve maximum softening, then blending the treated water with bypassed raw water. This reduces chemical costs and recarbonation requirements while achieving the desired finished water hardness.",
+    difficulty: "medium",
   },
   {
     id: 248,
@@ -2244,6 +2492,7 @@ export const QUESTIONS: Question[] = [
     options: ["Lime only", "Soda ash only", "Both lime and soda ash", "Caustic soda"],
     correct: 2,
     explanation: "Non-carbonate (permanent) hardness requires both lime and soda ash for removal. Lime (Ca(OH)2) precipitates magnesium as Mg(OH)2, while soda ash (Na2CO3) provides the carbonate needed to precipitate calcium as CaCO3. Carbonate hardness can be removed with lime alone.",
+    difficulty: "medium",
   },
   {
     id: 249,
@@ -2253,6 +2502,7 @@ export const QUESTIONS: Question[] = [
     options: ["High filter loading rates; causes channeling", "Low filter loading rates; causes short-circuiting", "Head loss exceeding the water depth above the media; causes air binding", "Excessive backwash rates; causes media loss"],
     correct: 2,
     explanation: "Negative pressure occurs when the head loss through the filter media exceeds the depth of water above it. This can cause dissolved gases to come out of solution (air binding), which creates air pockets in the media, reduces filtration efficiency, and can cause turbidity breakthrough.",
+    difficulty: "medium",
   },
   {
     id: 250,
@@ -2262,6 +2512,7 @@ export const QUESTIONS: Question[] = [
     options: ["Less than 0.1 NTU", "Less than 0.3 NTU", "Less than 1.0 NTU", "Less than 5.0 NTU"],
     correct: 1,
     explanation: "The typical turbidity goal for filtered water is less than 0.3 NTU, which is the 95th percentile standard under the Surface Water Treatment Rule. Individual filter effluent should never exceed 1.0 NTU. Achieving low turbidity is critical for effective disinfection.",
+    difficulty: "medium",
   },
   {
     id: 251,
@@ -2271,6 +2522,7 @@ export const QUESTIONS: Question[] = [
     options: ["To waste the first filtered water that may have elevated turbidity", "To backwash the filter before the run", "To add coagulant to the filter", "To measure the head loss across the filter"],
     correct: 0,
     explanation: "Filter-to-waste (also called filter ripening) involves diverting the initial filtered water to waste rather than to the clearwell. After backwashing, filters may produce turbid water for the first few minutes until the media re-establishes its filtering capacity. This prevents turbidity spikes in finished water.",
+    difficulty: "medium",
   },
   {
     id: 252,
@@ -2280,6 +2532,7 @@ export const QUESTIONS: Question[] = [
     options: ["High turbidity", "Algae and biological activity in source water", "Excessive chlorine residual", "High hardness"],
     correct: 1,
     explanation: "Algae and biological activity in source water are the most common causes of taste and odor problems. Algae produce compounds such as geosmin and 2-methylisoborneol (MIB), which cause musty and earthy odors at very low concentrations (nanogram per liter levels).",
+    difficulty: "medium",
   },
   {
     id: 253,
@@ -2289,6 +2542,7 @@ export const QUESTIONS: Question[] = [
     options: ["Conventional coagulation and filtration", "Activated carbon adsorption", "Lime softening", "Ion exchange"],
     correct: 1,
     explanation: "Activated carbon (either powdered activated carbon (PAC) or granular activated carbon (GAC)) is the most effective treatment for removing geosmin and MIB. These compounds adsorb strongly onto activated carbon. Conventional treatment removes very little of these compounds.",
+    difficulty: "medium",
   },
   {
     id: 254,
@@ -2298,6 +2552,7 @@ export const QUESTIONS: Question[] = [
     options: ["The number of odor-causing compounds; TON of 1 means one compound present", "A dilution ratio; TON of 1 means no dilution needed to detect odor", "A dilution ratio; TON of 1 means no odor detectable", "The concentration in mg/L; TON of 1 means 1 mg/L of odor compound"],
     correct: 2,
     explanation: "The Threshold Odor Number (TON) is the greatest dilution of sample with odor-free water that still yields a perceptible odor. A TON of 1 means the sample has no detectable odor (no dilution needed). A TON of 2 means the sample must be diluted 1:1 before the odor disappears. Higher TON values indicate stronger odors.",
+    difficulty: "medium",
   },
   {
     id: 255,
@@ -2307,6 +2562,7 @@ export const QUESTIONS: Question[] = [
     options: ["To regulate flow rate", "To prevent backflow", "To measure pressure", "To control chemical feed"],
     correct: 1,
     explanation: "Check valves are one-way valves that prevent backflow in piping systems. They are critical in water treatment to prevent contamination of chemical feed lines, protect pumps from reverse flow, and prevent backflow from distribution systems into treatment facilities.",
+    difficulty: "medium",
   },
   {
     id: 256,
@@ -2316,6 +2572,7 @@ export const QUESTIONS: Question[] = [
     options: ["Excessive pressure at the pump outlet; caused by high discharge pressure", "Formation and collapse of vapor bubbles; caused by low suction pressure", "Air entrainment in the pump; caused by leaking seals", "Bearing failure; caused by misalignment"],
     correct: 1,
     explanation: "Cavitation occurs when the pressure at the pump suction falls below the vapor pressure of the liquid, causing vapor bubbles to form. When these bubbles move to higher pressure zones, they collapse violently, causing noise, vibration, and damage to pump impellers. It is prevented by maintaining adequate Net Positive Suction Head (NPSH).",
+    difficulty: "medium",
   },
   {
     id: 257,
@@ -2325,6 +2582,7 @@ export const QUESTIONS: Question[] = [
     options: ["Net Positive Suction Head; prevents cavitation", "Normal Pump Speed Head; ensures proper flow", "Net Pressure Static Head; measures system pressure", "Normal Positive Static Head; prevents air binding"],
     correct: 0,
     explanation: "NPSH (Net Positive Suction Head) is the difference between the suction pressure and the vapor pressure of the liquid. Available NPSH (NPSHa) must exceed required NPSH (NPSHr) to prevent cavitation. Insufficient NPSH causes cavitation, which damages pump impellers and reduces efficiency.",
+    difficulty: "medium",
   },
   {
     id: 258,
@@ -2334,6 +2592,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure chemical concentration", "To prevent overpressure and protect equipment", "To control chemical feed rate", "To sample the chemical solution"],
     correct: 1,
     explanation: "Pressure relief valves protect chemical feed systems from overpressure conditions. If a line becomes blocked or a valve is closed while the pump is running, pressure can build to dangerous levels. The relief valve opens automatically to release excess pressure and protect pumps, pipes, and connections.",
+    difficulty: "medium",
   },
   {
     id: 259,
@@ -2343,6 +2602,7 @@ export const QUESTIONS: Question[] = [
     options: ["To increase water pressure", "To prevent contaminated water from flowing back into the potable supply", "To regulate flow rate", "To filter particulates"],
     correct: 1,
     explanation: "Backflow preventers protect the potable water supply from contamination by preventing reverse flow. Cross-connections between potable water and non-potable sources can allow contaminants to enter the water supply under back-pressure or back-siphonage conditions.",
+    difficulty: "medium",
   },
   {
     id: 260,
@@ -2352,6 +2612,7 @@ export const QUESTIONS: Question[] = [
     options: ["To replace operators entirely", "To monitor and control treatment processes remotely", "To generate billing reports", "To test water quality in the laboratory"],
     correct: 1,
     explanation: "SCADA (Supervisory Control and Data Acquisition) systems allow operators to monitor and control water treatment processes remotely. They collect real-time data from sensors and instruments, display process information, generate alarms, and allow remote control of pumps, valves, and chemical feed systems.",
+    difficulty: "medium",
   },
   {
     id: 261,
@@ -2361,6 +2622,7 @@ export const QUESTIONS: Question[] = [
     options: ["Never - they are maintenance-free", "Only when they start leaking excessively", "Regularly, with a small drip rate acceptable during operation", "Only during annual maintenance shutdowns"],
     correct: 2,
     explanation: "Packing glands on pumps should be adjusted regularly to allow a small, controlled drip (typically 40-60 drops per minute) during operation. This drip lubricates and cools the packing. Too tight causes overheating and premature wear; too loose causes excessive leakage.",
+    difficulty: "medium",
   },
   {
     id: 262,
@@ -2370,6 +2632,7 @@ export const QUESTIONS: Question[] = [
     options: ["To protect the motor from power surges", "To vary pump speed to match system demand", "To measure pump flow rate", "To provide backup power"],
     correct: 1,
     explanation: "Variable frequency drives (VFDs) control pump speed by varying the frequency of electrical power to the motor. This allows pumps to operate at different speeds to match varying system demands, reducing energy consumption compared to throttling valves and extending pump life by reducing mechanical stress.",
+    difficulty: "medium",
   },
   {
     id: 263,
@@ -2379,6 +2642,7 @@ export const QUESTIONS: Question[] = [
     options: ["300 gpm", "400 gpm", "450 gpm", "480 gpm"],
     correct: 1,
     explanation: "Using the pump affinity laws: Q2/Q1 = N2/N1, where N is speed (proportional to frequency). Q2 = 500 × (48/60) = 500 × 0.8 = 400 gpm. The affinity laws state that flow is proportional to speed, head is proportional to speed squared, and power is proportional to speed cubed.",
+    difficulty: "medium",
   },
   {
     id: 264,
@@ -2388,6 +2652,7 @@ export const QUESTIONS: Question[] = [
     options: ["To store water for peak demand", "To absorb pressure surges caused by sudden pump starts/stops", "To provide additional disinfection contact time", "To remove air from the system"],
     correct: 1,
     explanation: "Surge tanks and air vessels protect water mains from water hammer — the pressure surges caused by sudden changes in flow velocity (pump starts/stops, valve operations). Water hammer can cause pipe bursts, joint failures, and equipment damage. Surge protection devices absorb these pressure waves.",
+    difficulty: "medium",
   },
   {
     id: 265,
@@ -2397,6 +2662,7 @@ export const QUESTIONS: Question[] = [
     options: ["Surface water is always cleaner than groundwater", "Surface water is more susceptible to contamination and turbidity variation than groundwater", "Groundwater requires more treatment than surface water", "Surface water has higher mineral content than groundwater"],
     correct: 1,
     explanation: "Surface water (rivers, lakes, reservoirs) is more susceptible to contamination from runoff, seasonal turbidity changes, and biological activity. Groundwater is generally more stable in quality but may have higher mineral content and may be under the influence of surface water (GUDI).",
+    difficulty: "medium",
   },
   {
     id: 266,
@@ -2406,6 +2672,7 @@ export const QUESTIONS: Question[] = [
     options: ["Any groundwater within 100 feet of a surface water body", "Groundwater that shows evidence of surface water contamination such as turbidity or microorganisms", "Groundwater that is pumped from a well near a river", "Groundwater that has been contaminated by agricultural runoff"],
     correct: 1,
     explanation: "GUDI (Groundwater Under the Direct Influence of Surface Water) is groundwater that shows evidence of surface water contamination, including significant and relatively rapid shifts in water quality such as turbidity, temperature, or the presence of microorganisms. GUDI sources must meet surface water treatment requirements.",
+    difficulty: "medium",
   },
   {
     id: 267,
@@ -2415,6 +2682,7 @@ export const QUESTIONS: Question[] = [
     options: ["Stratification increases turbidity throughout the water column", "The hypolimnion (bottom layer) can become anoxic, releasing iron, manganese, and hydrogen sulfide", "Stratification prevents algae growth", "The epilimnion (top layer) becomes too cold for treatment"],
     correct: 1,
     explanation: "Thermal stratification in reservoirs creates distinct layers. The hypolimnion (cold bottom layer) can become anoxic (oxygen-depleted) due to decomposition of organic matter. This anaerobic environment causes the release of dissolved iron, manganese, and hydrogen sulfide, creating serious water quality problems.",
+    difficulty: "medium",
   },
   {
     id: 268,
@@ -2424,6 +2692,7 @@ export const QUESTIONS: Question[] = [
     options: ["The annual cleaning of the reservoir; occurs in summer", "The mixing of stratified water layers; occurs in spring and fall", "The replacement of reservoir water; occurs continuously", "The removal of sediment; occurs after heavy rainfall"],
     correct: 1,
     explanation: "Turnover (overturn) occurs when temperature stratification breaks down and the water column mixes. It typically occurs in spring (as ice melts and surface water warms) and fall (as surface water cools). Turnover can cause significant water quality changes, bringing deep anoxic water to the surface.",
+    difficulty: "medium",
   },
   {
     id: 269,
@@ -2433,6 +2702,7 @@ export const QUESTIONS: Question[] = [
     options: ["To treat contaminated source water", "To identify and protect the watershed from contamination sources", "To monitor finished water quality", "To plan for emergency water supplies"],
     correct: 1,
     explanation: "Source water protection plans identify potential contamination sources in the watershed and implement measures to prevent contamination before it reaches the water supply. This proactive approach is more cost-effective than treating contaminated water and is required under the Source Protection Planning process.",
+    difficulty: "medium",
   },
   {
     id: 270,
@@ -2442,6 +2712,7 @@ export const QUESTIONS: Question[] = [
     options: ["The depression in the ground surface around a well", "The drawdown of the water table around a pumping well", "The depression in water quality during pumping", "The conical shape of the well screen"],
     correct: 1,
     explanation: "The cone of depression is the drawdown (lowering) of the water table in the area surrounding a pumping well. As water is pumped from the well, the water table drops in a cone-shaped pattern around the well. The size of the cone depends on pumping rate, aquifer properties, and pumping duration.",
+    difficulty: "medium",
   },
   {
     id: 271,
@@ -2451,6 +2722,7 @@ export const QUESTIONS: Question[] = [
     options: ["Total well yield in gpm; calculated by pumping at maximum rate", "Well yield per unit of drawdown (gpm/ft); calculated by dividing yield by drawdown", "The volume of water stored in the well; calculated from well diameter and depth", "The rate of aquifer recharge; calculated from rainfall data"],
     correct: 1,
     explanation: "Specific capacity is the well yield per unit of drawdown, expressed as gpm/ft. It is calculated by dividing the pumping rate (gpm) by the drawdown (ft). Specific capacity is used to evaluate well performance and compare wells. A declining specific capacity over time indicates well deterioration.",
+    difficulty: "medium",
   },
   {
     id: 272,
@@ -2460,6 +2732,7 @@ export const QUESTIONS: Question[] = [
     options: ["To disinfect the well", "To remove fine materials from the aquifer and improve well yield", "To install the pump", "To test water quality"],
     correct: 1,
     explanation: "Well development removes fine materials (drilling mud, fine sand, clay) from the aquifer adjacent to the well screen. This process increases the permeability of the aquifer near the well, improves well yield, and produces clearer water. Methods include surging, air development, and jetting.",
+    difficulty: "medium",
   },
   {
     id: 273,
@@ -2469,6 +2742,7 @@ export const QUESTIONS: Question[] = [
     options: ["Water Hazard Management Information System", "Workplace Hazardous Materials Information System", "Water Health and Management Information Standards", "Workplace Health Management and Inspection Standards"],
     correct: 1,
     explanation: "WHMIS stands for Workplace Hazardous Materials Information System. It is Canada's national hazard communication standard that requires suppliers and employers to provide information about hazardous materials in the workplace through labels, Safety Data Sheets (SDS), and worker education.",
+    difficulty: "medium",
   },
   {
     id: 274,
@@ -2478,6 +2752,7 @@ export const QUESTIONS: Question[] = [
     options: ["To record chemical purchase orders", "To provide information on hazards, safe handling, and emergency procedures", "To document chemical test results", "To track chemical inventory"],
     correct: 1,
     explanation: "Safety Data Sheets (SDS) provide comprehensive information about chemical hazards including physical and health hazards, safe handling and storage procedures, personal protective equipment requirements, and emergency response procedures. SDS must be readily accessible to all workers who handle the chemicals.",
+    difficulty: "medium",
   },
   {
     id: 275,
@@ -2487,6 +2762,7 @@ export const QUESTIONS: Question[] = [
     options: ["1 ppm", "3 ppm", "10 ppm", "25 ppm"],
     correct: 2,
     explanation: "The IDLH for chlorine gas is 10 ppm. At this concentration, chlorine poses an immediate threat to life or health. The IDLH value is used to determine when workers must use self-contained breathing apparatus (SCBA). The OSHA PEL for chlorine is 1 ppm (ceiling) and the NIOSH REL is 0.5 ppm.",
+    difficulty: "medium",
   },
   {
     id: 276,
@@ -2496,6 +2772,7 @@ export const QUESTIONS: Question[] = [
     options: ["Safety glasses only", "Safety glasses and chemical-resistant gloves", "Full-face respirator, chemical-resistant gloves, and protective clothing", "Hard hat and steel-toed boots"],
     correct: 2,
     explanation: "Handling chlorine gas cylinders requires a full-face respirator (or SCBA in high concentrations), chemical-resistant gloves, and protective clothing. Chlorine gas is extremely toxic and corrosive. Emergency response to chlorine leaks requires SCBA and full chemical protective suits.",
+    difficulty: "medium",
   },
   {
     id: 277,
@@ -2505,6 +2782,7 @@ export const QUESTIONS: Question[] = [
     options: ["To limit access to treatment chemicals", "To protect workers from hazards in enclosed spaces with limited entry/exit", "To prevent unauthorized access to the facility", "To document maintenance activities"],
     correct: 1,
     explanation: "Confined space entry procedures protect workers from hazards in spaces with limited entry/exit points, such as tanks, wet wells, and vaults. Hazards include oxygen deficiency, toxic atmospheres, engulfment, and entrapment. Procedures include atmospheric testing, ventilation, attendant monitoring, and rescue planning.",
+    difficulty: "medium",
   },
   {
     id: 278,
@@ -2514,6 +2792,7 @@ export const QUESTIONS: Question[] = [
     options: ["Any test result above aesthetic objectives; report within 72 hours", "A test result that exceeds a standard or indicates a risk to public health; report immediately and take corrective action", "A failed equipment inspection; report within 30 days", "A missed sampling event; report at the next scheduled inspection"],
     correct: 1,
     explanation: "An adverse result under Ontario's Safe Drinking Water Act is a test result that exceeds a prescribed standard or indicates a risk to public health. Operators must immediately notify the local Medical Officer of Health and the Ministry of the Environment, take corrective action, and issue a public notification if required.",
+    difficulty: "medium",
   },
   {
     id: 279,
@@ -2523,6 +2802,7 @@ export const QUESTIONS: Question[] = [
     options: ["To set maximum contaminant levels for drinking water", "To provide a quality management framework for drinking water systems", "To certify water treatment operators", "To regulate chemical suppliers"],
     correct: 1,
     explanation: "The Drinking Water Quality Management Standard (DWQMS) provides a quality management framework for municipal drinking water systems in Ontario. It requires systems to implement a Quality Management System (QMS) that includes an Operational Plan, risk assessment, and continuous improvement processes.",
+    difficulty: "medium",
   },
   {
     id: 280,
@@ -2532,6 +2812,7 @@ export const QUESTIONS: Question[] = [
     options: ["0.05 mg/L", "0.1 mg/L", "0.2 mg/L", "0.5 mg/L"],
     correct: 1,
     explanation: "Ontario Regulation 170/03 requires a minimum free chlorine residual of 0.1 mg/L at all points in the distribution system. This minimum residual helps prevent microbial regrowth and provides protection against contamination events in the distribution system.",
+    difficulty: "medium",
   },
   {
     id: 281,
@@ -2541,6 +2822,7 @@ export const QUESTIONS: Question[] = [
     options: ["To assess the age and condition of infrastructure", "To identify and evaluate threats, vulnerabilities, and consequences to the water system", "To evaluate operator competency", "To assess financial risks"],
     correct: 1,
     explanation: "A vulnerability assessment identifies and evaluates threats (physical, cyber, chemical), vulnerabilities (weaknesses in the system), and consequences (impacts of successful attacks). The results are used to prioritize security improvements and develop emergency response plans to protect the water system.",
+    difficulty: "medium",
   },
   {
     id: 282,
@@ -2550,6 +2832,7 @@ export const QUESTIONS: Question[] = [
     options: ["0.7 mg/L residual; 75 lb/day", "0.7 mg/L residual; 104 lb/day", "1.8 mg/L residual; 75 lb/day", "2.5 mg/L residual; 104 lb/day"],
     correct: 1,
     explanation: "Chlorine residual = dose - demand = 2.5 - 1.8 = 0.7 mg/L. Chlorine consumed = dose × flow = 2.5 mg/L × 5 MGD × 8.34 lb/gal = 104.25 lb/day ≈ 104 lb/day. The 8.34 factor converts million gallons to pounds.",
+    difficulty: "medium",
   },
   {
     id: 283,
@@ -2559,6 +2842,7 @@ export const QUESTIONS: Question[] = [
     options: ["To mark the location of the intake for navigation purposes", "To provide real-time, continuous monitoring of water quality at multiple depths in the reservoir", "To measure the water level in the reservoir", "To provide aeration to prevent stratification"],
     correct: 1,
     explanation: "A water quality monitoring buoy equipped with multi-parameter sondes provides real-time, continuous monitoring of water quality parameters (temperature, DO, pH, turbidity, algae) at multiple depths in the reservoir. This data helps operators understand stratification patterns, detect algal blooms early, and optimize intake depth selection.",
+    difficulty: "medium",
   },
   {
     id: 284,
@@ -2568,6 +2852,7 @@ export const QUESTIONS: Question[] = [
     options: ["To warn operators of equipment failures at the treatment plant", "To detect upstream contamination events before they reach the intake, allowing time for operational responses", "To warn the public of water quality problems in the distribution system", "To warn operators of flooding events that could damage the intake"],
     correct: 1,
     explanation: "An Early Warning Monitoring System (EWMS) monitors source water quality upstream of the intake to detect contamination events (chemical spills, algal blooms, turbidity events) before they reach the intake. Early detection allows operators time to close the intake, adjust treatment, or activate contingency supplies — protecting the treatment plant and water quality.",
+    difficulty: "medium",
   },
   {
     id: 285,
@@ -2577,6 +2862,7 @@ export const QUESTIONS: Question[] = [
     options: ["To designate areas where water treatment plants can be built", "To identify areas where drinking water threats must be managed to protect the quality and quantity of drinking water sources", "To designate areas where water taking is prohibited", "To identify areas where water quality monitoring is required"],
     correct: 1,
     explanation: "Source water protection areas in Ontario are designated under the Clean Water Act, 2006 around drinking water intakes and wells. Within these areas, significant drinking water threats must be managed through policies that prohibit, restrict, or require specific practices to protect the quality and quantity of the drinking water source.",
+    difficulty: "medium",
   },
   {
     id: 286,
@@ -2586,6 +2872,7 @@ export const QUESTIONS: Question[] = [
     options: ["To model the treatment process inside the plant", "To predict how water quality will change under different conditions (weather, land use, climate change) to support management decisions", "To model the distribution system hydraulics", "To model the financial cost of water treatment"],
     correct: 1,
     explanation: "A water quality model for a source water reservoir simulates the physical, chemical, and biological processes that affect water quality (stratification, nutrient cycling, algal growth, pathogen fate). Models help predict how water quality will respond to changes in climate, land use, or management actions, supporting long-term planning and risk management.",
+    difficulty: "medium",
   },
   {
     id: 287,
@@ -2595,6 +2882,7 @@ export const QUESTIONS: Question[] = [
     options: ["To budget the financial cost of water treatment", "To quantify all water inputs and outputs to assess the long-term sustainability of the water supply", "To measure the flow rate of water entering the treatment plant", "To calculate the water loss in the distribution system"],
     correct: 1,
     explanation: "A water budget quantifies all water inputs (precipitation, streamflow, groundwater recharge) and outputs (evaporation, streamflow, groundwater discharge, water taking) for a source water system. It assesses whether the water supply is sustainable under current and projected future conditions, including the effects of climate change and population growth.",
+    difficulty: "medium",
   },
   {
     id: 288,
@@ -2604,6 +2892,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide emergency backup power to the pump", "To vary the pump speed to match the required flow rate, reducing energy consumption and wear", "To protect the pump from voltage fluctuations", "To measure the flow rate through the pump"],
     correct: 1,
     explanation: "A Variable Frequency Drive (VFD) controls the speed of an electric motor by varying the frequency of the electrical supply. By matching pump speed to the required flow rate, VFDs reduce energy consumption (following the affinity laws — power varies with the cube of speed), reduce mechanical wear, and provide smooth starting and stopping.",
+    difficulty: "medium",
   },
   {
     id: 289,
@@ -2613,6 +2902,7 @@ export const QUESTIONS: Question[] = [
     options: ["To maintain constant chemical feed pressure", "To protect the system from over-pressurization by releasing pressure when it exceeds a set point", "To measure the pressure in the chemical feed line", "To prevent backflow of water into the chemical feed system"],
     correct: 1,
     explanation: "A pressure relief valve (PRV) on a chemical feed system automatically opens to release pressure when it exceeds a preset safe limit, protecting pipes, fittings, and equipment from damage due to over-pressurization. PRVs are a critical safety device on chemical feed systems, particularly for hazardous chemicals like chlorine and caustic soda.",
+    difficulty: "medium",
   },
   {
     id: 290,
@@ -2622,6 +2912,7 @@ export const QUESTIONS: Question[] = [
     options: ["To test the flow capacity of the distribution system", "To verify that flow meters are measuring accurately and to correct any drift in readings", "To measure the flow rate of chemicals added to the treatment process", "To calibrate the pumps to deliver the correct flow rate"],
     correct: 1,
     explanation: "Flow meter calibration verifies that meters are measuring accurately and corrects any drift in readings. Inaccurate flow measurement affects chemical dosing calculations, CT calculations, water production records, and billing accuracy. Flow meters should be calibrated at regular intervals and after any maintenance or repair.",
+    difficulty: "medium",
   },
   {
     id: 291,
@@ -2631,6 +2922,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide electrical grounding for the pipe", "To prevent corrosion of buried metal pipes by making them cathodic (negatively charged) relative to the surrounding soil", "To detect leaks in buried metal pipes", "To heat buried pipes to prevent freezing"],
     correct: 1,
     explanation: "Cathodic protection prevents corrosion of buried metal pipes by making the pipe the cathode in an electrochemical cell. This is achieved either by connecting the pipe to a sacrificial anode (impressed current or galvanic anode system) that corrodes instead of the pipe. Cathodic protection significantly extends the service life of buried steel and cast iron pipes.",
+    difficulty: "medium",
   },
   {
     id: 292,
@@ -2640,6 +2932,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the turbidity of the water in the distribution system", "To measure the volumetric flow rate of water by counting the rotations of a turbine wheel", "To generate electricity from the flow of water in the distribution system", "To control the flow rate of water in the distribution system"],
     correct: 1,
     explanation: "A turbine meter measures volumetric flow rate by counting the rotations of a multi-bladed turbine wheel that spins as water flows through it. The rotation rate is proportional to the flow velocity. Turbine meters are accurate over a wide flow range and are commonly used for large-diameter water mains and pump discharge lines.",
+    difficulty: "medium",
   },
   {
     id: 293,
@@ -2649,6 +2942,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the magnetic field strength in the water", "To measure the volumetric flow rate of conductive liquids using Faraday's law of electromagnetic induction", "To detect the presence of iron and manganese in the water", "To measure the electrical conductivity of the water"],
     correct: 1,
     explanation: "A magnetic flow meter (magmeter) measures flow rate using Faraday's law: a conductive liquid (water) flowing through a magnetic field generates a voltage proportional to the flow velocity. Magmeters have no moving parts, provide accurate measurement for clean and dirty liquids, and are commonly used for chemical feed lines and plant influent/effluent.",
+    difficulty: "medium",
   },
   {
     id: 294,
@@ -2658,6 +2952,7 @@ export const QUESTIONS: Question[] = [
     options: ["Using higher coagulant doses and lower pH to maximize removal of natural organic matter (NOM) and reduce DBP formation potential", "Using multiple coagulants simultaneously to improve turbidity removal", "Using coagulants at higher temperatures to improve floc formation", "Using polymer aids to enhance the coagulation process"],
     correct: 0,
     explanation: "Enhanced coagulation uses higher coagulant doses and lower pH (typically 5.5–6.0 for alum) to maximize removal of natural organic matter (NOM) — the precursors to disinfection by-products (DBPs). By removing more NOM before disinfection, enhanced coagulation reduces the formation of THMs, HAAs, and other DBPs in the treated water.",
+    difficulty: "medium",
   },
   {
     id: 295,
@@ -2667,6 +2962,7 @@ export const QUESTIONS: Question[] = [
     options: ["To replace the primary coagulant when it is unavailable", "To improve floc formation and settling by adding a polymer that bridges particles together", "To adjust the pH of the water after coagulation", "To remove taste and odour compounds from the water"],
     correct: 1,
     explanation: "Coagulant aids (flocculant aids) are polymers added after the primary coagulant to improve floc formation. They work by bridging between particles (interparticle bridging) to form larger, denser, faster-settling floc. Polymer aids are particularly useful for treating cold water (which forms weak floc), low-turbidity water, or water with high colour.",
+    difficulty: "medium",
   },
   {
     id: 296,
@@ -2676,6 +2972,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide additional filtration of the settled water", "To increase the effective settling area of a clarifier, allowing higher flow rates or improved solids removal in a smaller footprint", "To aerate the water after sedimentation", "To disinfect the water before filtration"],
     correct: 1,
     explanation: "Tube settlers and lamella (inclined plate) clarifiers contain inclined tubes or plates that greatly increase the effective settling area within a clarifier. Particles only need to settle a short distance to the inclined surface, then slide down to the sludge zone. This allows significantly higher hydraulic loading rates or improved performance in existing clarifiers.",
+    difficulty: "medium",
   },
   {
     id: 297,
@@ -2685,6 +2982,7 @@ export const QUESTIONS: Question[] = [
     options: ["To aerate the water to remove taste and odour compounds", "To remove low-density particles (algae, colour, low-turbidity floc) that are difficult to settle by gravity", "To remove iron and manganese from the water", "To remove dissolved gases from the water"],
     correct: 1,
     explanation: "Dissolved Air Flotation (DAF) removes low-density particles (algae, colour, low-turbidity floc, oil) that are difficult to remove by gravity sedimentation. Pressurized water saturated with dissolved air is released into the flotation tank, forming micro-bubbles that attach to particles and float them to the surface for removal. DAF is particularly effective for algae-laden source water.",
+    difficulty: "medium",
   },
   {
     id: 298,
@@ -2694,6 +2992,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide rapid filtration of large volumes of water", "To provide biological and physical treatment through a schmutzdecke (biological mat) on the filter surface", "To remove dissolved minerals from the water", "To provide emergency filtration when rapid filters are offline"],
     correct: 1,
     explanation: "Slow sand filters treat water through a combination of physical straining, adsorption, and biological activity. The key component is the schmutzdecke — a biological mat of bacteria, algae, and other microorganisms that forms on the filter surface. The schmutzdecke provides excellent removal of pathogens, turbidity, and taste/odour compounds. Slow sand filters operate at very low hydraulic loading rates (0.1–0.4 m/h).",
+    difficulty: "medium",
   },
   {
     id: 299,
@@ -2703,6 +3002,7 @@ export const QUESTIONS: Question[] = [
     options: ["To filter water without any prior coagulation or sedimentation", "To apply coagulant and filter the water without a separate sedimentation step, suitable for low-turbidity source water", "To filter water directly from the source without any treatment", "To provide emergency filtration when the main treatment process is offline"],
     correct: 1,
     explanation: "Direct filtration applies coagulant (and sometimes flocculation) to the raw water and then filters it directly without a separate sedimentation step. It is suitable for source water with consistently low turbidity (typically <10 NTU) and low colour. Direct filtration has lower capital cost than conventional treatment but is more sensitive to source water quality variations.",
+    difficulty: "medium",
   },
   {
     id: 300,
@@ -2712,6 +3012,7 @@ export const QUESTIONS: Question[] = [
     options: ["To waste the backwash water to the sewer", "To allow the filter to ripen and achieve stable performance before returning to service, preventing turbidity breakthrough", "To test the filter for leaks after backwash", "To flush the filter media to remove residual backwash water"],
     correct: 1,
     explanation: "After backwash, a filter requires a 'ripening' period before it achieves stable, low-turbidity effluent. During filter-to-waste, the filtered water is diverted to waste (not to the clearwell) until the turbidity drops to an acceptable level. This prevents a turbidity spike from reaching the treated water. Filter-to-waste typically lasts 15–30 minutes.",
+    difficulty: "medium",
   },
   {
     id: 301,
@@ -2721,6 +3022,7 @@ export const QUESTIONS: Question[] = [
     options: ["To aerate the filter media to promote biological activity", "To provide additional agitation of the filter media to break up mud balls and improve cleaning effectiveness", "To remove dissolved gases from the filter media", "To disinfect the filter media during backwash"],
     correct: 1,
     explanation: "Air scour during filter backwash provides vigorous agitation of the filter media through air injection, breaking up mud balls (clumps of compacted media and floc), dislodging attached particles, and improving overall cleaning effectiveness. Air scour is particularly effective for removing biological growth and compacted deposits that water backwash alone cannot remove.",
+    difficulty: "medium",
   },
   {
     id: 302,
@@ -2730,6 +3032,7 @@ export const QUESTIONS: Question[] = [
     options: ["To store treated water for distribution", "To provide the required contact time between chlorine and the water to achieve the required CT for pathogen inactivation", "To remove taste and odour compounds from the treated water", "To equalize the flow from the treatment plant to the distribution system"],
     correct: 1,
     explanation: "A chlorine contact chamber (clearwell) provides the required contact time between the chlorine disinfectant and the treated water to achieve the required CT value for pathogen inactivation. The T10 value (time for 10% of the water to pass through) is used in CT calculations. Baffling improves hydraulic efficiency and increases the effective contact time.",
+    difficulty: "medium",
   },
   {
     id: 303,
@@ -2739,6 +3042,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide primary disinfection only", "To provide disinfection, oxidation of organic compounds, taste/odour control, and colour removal", "To remove hardness from the water", "To remove iron and manganese from the water only"],
     correct: 1,
     explanation: "Ozone (O₃) is a powerful oxidant used in water treatment for: (1) primary disinfection (effective against Cryptosporidium and Giardia), (2) oxidation of organic compounds (including taste/odour compounds, colour, and micropollutants), (3) enhanced coagulation by oxidizing NOM, and (4) pre-treatment for biological filtration. Ozone has no residual and must be followed by chlorination for distribution system protection.",
+    difficulty: "medium",
   },
   {
     id: 304,
@@ -2748,6 +3052,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide chemical adsorption of organic compounds only", "To combine biological degradation and adsorption to remove biodegradable organic compounds, including ozonation by-products", "To provide biological disinfection of the water", "To remove inorganic compounds from the water"],
     correct: 1,
     explanation: "Biological Activated Carbon (BAC) filtration combines the adsorption capacity of activated carbon with biological degradation by microorganisms colonizing the carbon surface. BAC is particularly effective after ozonation, as ozone converts large, non-biodegradable organic molecules into smaller, biodegradable ones that the BAC biofilm can degrade. BAC removes biodegradable organic carbon (BDOC), taste/odour compounds, and ozonation by-products.",
+    difficulty: "medium",
   },
   {
     id: 305,
@@ -2757,6 +3062,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide a chlorine residual for distribution system protection", "To inactivate pathogens (including Cryptosporidium and Giardia) by damaging their DNA without adding chemicals", "To remove chemical contaminants from the water", "To remove turbidity from the water"],
     correct: 1,
     explanation: "UV disinfection inactivates pathogens by exposing them to ultraviolet light (typically at 254 nm), which damages their DNA and prevents reproduction. UV is particularly effective against Cryptosporidium and Giardia, which are resistant to chlorine. UV leaves no chemical residual and does not form DBPs, but it does not provide residual protection in the distribution system.",
+    difficulty: "medium",
   },
   {
     id: 306,
@@ -2766,6 +3072,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the intensity of the UV light source", "To quantify the UV energy delivered to the water, which determines the degree of pathogen inactivation achieved", "To measure the contact time in the UV reactor", "To measure the wavelength of the UV light used"],
     correct: 1,
     explanation: "UV dose (fluence) is the product of UV irradiance (mW/cm²) and exposure time (seconds), expressed in mJ/cm². The UV dose determines the degree of pathogen inactivation: higher doses achieve greater log inactivation. Regulatory requirements specify minimum UV doses for different log inactivation credits (e.g., 40 mJ/cm² for 3-log Cryptosporidium inactivation).",
+    difficulty: "medium",
   },
   {
     id: 307,
@@ -2775,6 +3082,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the turbidity of the water before UV treatment", "To measure the fraction of UV light that passes through the water, which affects the UV dose delivered to pathogens", "To measure the chlorine residual in the water after UV treatment", "To measure the TOC concentration in the water"],
     correct: 1,
     explanation: "UV transmittance (UVT) measures the fraction of UV light at 254 nm that passes through a 1-cm water sample. Low UVT (caused by NOM, iron, turbidity) absorbs UV light and reduces the dose delivered to pathogens. UV reactors must be validated and operated to deliver the required UV dose at the minimum expected UVT of the source water.",
+    difficulty: "medium",
   },
   {
     id: 308,
@@ -2784,6 +3092,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide primary disinfection only", "To generate hydroxyl radicals that can oxidize a wide range of micropollutants including pharmaceuticals, pesticides, and taste/odour compounds", "To remove hardness from the water", "To remove suspended solids from the water"],
     correct: 1,
     explanation: "Advanced Oxidation Processes (AOPs) generate highly reactive hydroxyl radicals (•OH) that can oxidize a wide range of organic micropollutants including pharmaceuticals, personal care products, pesticides, and taste/odour compounds (geosmin, MIB). Common AOPs include UV/H₂O₂, O₃/H₂O₂, and UV/O₃. AOPs are used when conventional treatment cannot adequately remove these compounds.",
+    difficulty: "medium",
   },
   {
     id: 309,
@@ -2793,6 +3102,7 @@ export const QUESTIONS: Question[] = [
     options: ["To remove suspended particles from the water", "To remove dissolved ions (hardness, nitrate, arsenic, radium) by exchanging them with less harmful ions on a resin", "To remove organic compounds from the water", "To disinfect the water by exchanging harmful ions"],
     correct: 1,
     explanation: "Ion exchange (IX) removes dissolved ions from water by passing it through a resin that exchanges target ions for less harmful ones. Common applications include: softening (exchanging Ca²⁺ and Mg²⁺ for Na⁺), nitrate removal (exchanging NO₃⁻ for Cl⁻), arsenic removal, and radium removal. The resin is periodically regenerated with a salt solution.",
+    difficulty: "medium",
   },
   {
     id: 310,
@@ -2802,6 +3112,7 @@ export const QUESTIONS: Question[] = [
     options: ["To remove all dissolved solids including sodium and chloride", "To remove hardness, colour, NOM, and some micropollutants while passing monovalent ions", "To remove suspended solids only", "To remove bacteria and viruses only"],
     correct: 1,
     explanation: "Nanofiltration (NF) membranes have pore sizes of approximately 1 nm and remove: hardness (divalent ions Ca²⁺, Mg²⁺), colour, NOM, and some micropollutants. NF passes monovalent ions (Na⁺, Cl⁻) and is sometimes called 'softening membrane.' NF is used for softening, colour/NOM removal, and treatment of groundwater with high hardness or colour.",
+    difficulty: "medium",
   },
   {
     id: 311,
@@ -2811,6 +3122,7 @@ export const QUESTIONS: Question[] = [
     options: ["To remove suspended solids only", "To remove virtually all dissolved solids, including salts, hardness, nitrate, arsenic, and micropollutants, by forcing water through a semi-permeable membrane", "To remove bacteria and viruses only", "To remove taste and odour compounds only"],
     correct: 1,
     explanation: "Reverse osmosis (RO) forces water through a semi-permeable membrane under pressure, removing virtually all dissolved solids (>95% rejection of most ions), bacteria, viruses, and many organic compounds. RO is used for desalination, treatment of highly contaminated groundwater, and removal of specific contaminants (nitrate, arsenic, radionuclides, micropollutants).",
+    difficulty: "medium",
   },
   {
     id: 312,
@@ -2820,6 +3132,7 @@ export const QUESTIONS: Question[] = [
     options: ["To test the flow capacity of the membrane", "To verify that the membrane is intact and providing the required log removal credit for pathogens", "To test the chemical resistance of the membrane", "To measure the fouling rate of the membrane"],
     correct: 1,
     explanation: "A Membrane Integrity Test (MIT) verifies that the membrane is intact (no broken fibers, damaged modules, or seal failures) and providing the required log removal credit for pathogens. Common MIT methods include pressure decay test (PDT) and diffusive airflow test (DAT). Integrity testing is required at regular intervals and after any maintenance.",
+    difficulty: "medium",
   },
   {
     id: 313,
@@ -2829,6 +3142,7 @@ export const QUESTIONS: Question[] = [
     options: ["To disinfect the membrane system", "To restore membrane permeability by removing fouling deposits (organic, inorganic, biological) that have accumulated on the membrane surface", "To test the integrity of the membrane", "To regenerate the membrane after it has reached the end of its useful life"],
     correct: 1,
     explanation: "Clean-In-Place (CIP) chemical cleaning restores membrane permeability by removing fouling deposits. Different cleaning agents target different foulants: caustic soda (NaOH) removes organic fouling, citric acid removes inorganic scaling (calcium carbonate, iron), and sodium hypochlorite removes biological fouling. CIP frequency depends on source water quality and membrane type.",
+    difficulty: "medium",
   },
   {
     id: 314,
@@ -2838,6 +3152,7 @@ export const QUESTIONS: Question[] = [
     options: ["To remove taste and odour compounds from the water", "To remove calcium and magnesium hardness by precipitation using lime and soda ash", "To remove iron and manganese from the water", "To remove turbidity from the water"],
     correct: 1,
     explanation: "Lime-soda ash softening removes calcium and magnesium hardness by raising the pH to precipitate calcium as calcium carbonate (CaCO₃) and magnesium as magnesium hydroxide (Mg(OH)₂). Lime (Ca(OH)₂) raises the pH; soda ash (Na₂CO₃) provides additional carbonate for calcium precipitation. The precipitated solids are removed by sedimentation and filtration.",
+    difficulty: "medium",
   },
   {
     id: 315,
@@ -2847,6 +3162,7 @@ export const QUESTIONS: Question[] = [
     options: ["To add carbon dioxide to remove taste and odour compounds", "To add carbon dioxide to lower the pH and stabilize the softened water before distribution", "To add carbon dioxide to improve coagulation", "To add carbon dioxide to remove iron and manganese"],
     correct: 1,
     explanation: "Recarbonation adds carbon dioxide (CO₂) to softened water to lower the pH from the high values achieved during lime softening (pH 10–11) to a stable, non-scale-forming level (pH 8–9) before distribution. Without recarbonation, the highly alkaline softened water would deposit calcium carbonate scale in distribution pipes and on household fixtures.",
+    difficulty: "medium",
   },
   {
     id: 316,
@@ -2856,6 +3172,7 @@ export const QUESTIONS: Question[] = [
     options: ["To remove these metals to prevent staining, taste problems, and distribution system issues", "To remove these metals because they are acutely toxic at drinking water concentrations", "To remove these metals to improve the effectiveness of chlorine disinfection", "To remove these metals to prevent corrosion of treatment equipment"],
     correct: 0,
     explanation: "Iron and manganese removal prevents: (1) aesthetic problems — iron causes red/brown staining; manganese causes black/brown staining; both cause metallic taste, (2) distribution system problems — deposits in pipes, reduced flow capacity, and (3) biological problems — iron and manganese bacteria can form biofilms in distribution. Treatment typically involves oxidation (chlorine, ozone, permanganate, aeration) followed by filtration.",
+    difficulty: "medium",
   },
   {
     id: 317,
@@ -2865,6 +3182,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide primary disinfection", "To oxidize iron, manganese, hydrogen sulfide, and taste/odour compounds", "To adjust the pH of the water", "To improve coagulation by destabilizing colloids"],
     correct: 1,
     explanation: "Potassium permanganate (KMnO₄) is a strong oxidant used to oxidize iron (Fe²⁺ to Fe³⁺), manganese (Mn²⁺ to MnO₂), hydrogen sulfide (H₂S to sulfate), and taste/odour compounds. The oxidized forms precipitate and are removed by filtration. KMnO₄ must be applied before the filter and the dose carefully controlled to avoid pink-coloured treated water (excess permanganate).",
+    difficulty: "medium",
   },
   {
     id: 318,
@@ -2874,6 +3192,7 @@ export const QUESTIONS: Question[] = [
     options: ["To prevent corrosion of treatment plant equipment", "To minimize the leaching of lead, copper, and other metals from plumbing materials into the drinking water", "To prevent corrosion of water storage tanks", "To prevent corrosion of distribution system valves and hydrants"],
     correct: 1,
     explanation: "Corrosion control treatment minimizes the leaching of lead, copper, and other metals from plumbing materials (service lines, solder, fixtures) into the drinking water. Common approaches include: pH adjustment (raising pH to 7.5–8.5), alkalinity adjustment, addition of orthophosphate or silicate inhibitors, and calcium carbonate stabilization. Corrosion control is required under Ontario's lead regulation.",
+    difficulty: "medium",
   },
   {
     id: 319,
@@ -2883,6 +3202,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide phosphorus as a nutrient for biological treatment", "To form a protective phosphate film on the inside of lead and copper pipes, reducing metal leaching", "To improve coagulation by neutralizing the charge on colloids", "To remove iron and manganese from the water"],
     correct: 1,
     explanation: "Orthophosphate (H₂PO₄⁻, HPO₄²⁻) forms a protective film of lead phosphate or copper phosphate on the inside of lead and copper pipes, reducing the leaching of these metals into the drinking water. Orthophosphate is one of the most effective corrosion inhibitors for lead service lines and is widely used in Ontario systems with lead infrastructure.",
+    difficulty: "medium",
   },
   {
     id: 320,
@@ -2892,6 +3212,7 @@ export const QUESTIONS: Question[] = [
     options: ["To improve the taste of the water", "To reduce dental cavities (dental caries) by strengthening tooth enamel", "To disinfect the water", "To remove natural fluoride that is present at harmful levels"],
     correct: 1,
     explanation: "Fluoridation adds fluoride to drinking water at the optimal level (0.7 mg/L in Canada) to reduce dental cavities. Fluoride strengthens tooth enamel by forming fluorapatite, which is more resistant to acid attack from bacteria. Water fluoridation is endorsed by major health organizations as a safe and effective public health measure.",
+    difficulty: "medium",
   },
   {
     id: 321,
@@ -2901,6 +3222,7 @@ export const QUESTIONS: Question[] = [
     options: ["To disinfect the water by adsorbing bacteria", "To adsorb taste/odour compounds, colour, organic micropollutants, and DBP precursors from the water", "To remove hardness from the water", "To remove iron and manganese from the water"],
     correct: 1,
     explanation: "Activated carbon (powdered — PAC, or granular — GAC) adsorbs taste/odour compounds (geosmin, MIB), colour, natural organic matter (NOM), organic micropollutants (pharmaceuticals, pesticides), and disinfection by-product precursors. PAC is added as a slurry to the treatment process; GAC is used in fixed-bed contactors. Activated carbon is particularly valuable during algal bloom events.",
+    difficulty: "medium",
   },
   {
     id: 322,
@@ -2910,6 +3232,7 @@ export const QUESTIONS: Question[] = [
     options: ["To calculate the chemical dose required for coagulation", "To verify that sufficient disinfectant has been applied to achieve the required log inactivation of pathogens", "To calculate the hydraulic retention time of the treatment plant", "To calculate the chlorine demand of the source water"],
     correct: 1,
     explanation: "CT calculations verify that the disinfection system is achieving the required log inactivation of target pathogens (Giardia, Cryptosporidium, viruses). CT = disinfectant concentration (C) × contact time (T10). The calculated CT is compared to the required CT from regulatory tables for the specific disinfectant, pH, temperature, and required log inactivation.",
+    difficulty: "medium",
   },
   {
     id: 323,
@@ -2919,6 +3242,7 @@ export const QUESTIONS: Question[] = [
     options: ["No — CT = 135 mg·min/L, which is less than 165 mg·min/L", "Yes — CT = 135 mg·min/L, which exceeds 165 mg·min/L", "Yes — CT = 165 mg·min/L, which exactly meets the requirement", "No — CT = 225 mg·min/L, which exceeds the maximum allowed"],
     correct: 0,
     explanation: "CT = C × T10 = 1.5 mg/L × 90 min = 135 mg·min/L. The required CT is 165 mg·min/L. Since 135 < 165, the required CT is NOT achieved. The operator would need to increase the chlorine residual (e.g., to 1.84 mg/L) or increase the T10 contact time to meet the 3-log Giardia inactivation requirement.",
+    difficulty: "medium",
   },
   {
     id: 324,
@@ -2928,6 +3252,7 @@ export const QUESTIONS: Question[] = [
     options: ["Turbidity spikes are normal and do not need to be managed", "Turbidity spikes indicate filter media loss and require immediate filter shutdown", "Turbidity spikes occur as the filter ripens after backwash; they are managed by filter-to-waste until turbidity stabilizes", "Turbidity spikes indicate inadequate coagulation and require increased coagulant dose"],
     correct: 2,
     explanation: "After backwash, a filter produces elevated turbidity (turbidity spike) during the 'ripening' period as the filter media re-establishes its filtration efficiency. This is managed by filter-to-waste — diverting the filtered water to waste until turbidity drops below the acceptable limit (typically 0.1–0.3 NTU). Polymer addition before the filter can reduce the ripening period.",
+    difficulty: "medium",
   },
   {
     id: 325,
@@ -2937,6 +3262,7 @@ export const QUESTIONS: Question[] = [
     options: ["The time between filter inspections", "The time a filter operates between backwashes, which reflects filter loading and performance", "The length of the filter bed in meters", "The time required to complete a backwash cycle"],
     correct: 1,
     explanation: "Filter run length is the time a filter operates between backwashes. It reflects the balance between filter loading (turbidity, floc) and filter capacity. Very short run lengths (<8 hours) indicate excessive loading or poor coagulation. Very long run lengths (>72 hours) may indicate under-loading or poor backwash. Optimal run lengths are typically 24–72 hours.",
+    difficulty: "medium",
   },
   {
     id: 326,
@@ -2946,6 +3272,7 @@ export const QUESTIONS: Question[] = [
     options: ["To comply with regulatory reporting requirements only", "To detect filter breakthrough immediately and take corrective action before turbidity reaches the clearwell", "To measure the effectiveness of the coagulation process", "To determine when the filter needs to be backwashed"],
     correct: 1,
     explanation: "Continuous monitoring of individual filter effluent turbidity detects filter breakthrough (turbidity exceeding the target, typically 0.1–0.3 NTU) immediately, allowing operators to take corrective action (increase coagulant, backwash the filter, or take the filter offline) before turbidity reaches the clearwell and treated water. Continuous monitoring is required under Ontario regulations for surface water systems.",
+    difficulty: "medium",
   },
   {
     id: 327,
@@ -2955,6 +3282,7 @@ export const QUESTIONS: Question[] = [
     options: ["To remove water from the treatment plant sludge to reduce its volume for disposal", "To recover water from the sludge for reuse in the treatment process", "To disinfect the sludge before disposal", "To remove chemicals from the sludge before disposal"],
     correct: 0,
     explanation: "Sludge dewatering removes water from water treatment residuals (sludge from sedimentation basins and filter backwash water) to reduce volume and facilitate disposal. Dewatering methods include gravity thickening, centrifuges, belt filter presses, and drying beds. Dewatered sludge (cake) can be disposed of in landfills, applied to agricultural land, or beneficially reused.",
+    difficulty: "medium",
   },
   {
     id: 328,
@@ -2964,6 +3292,7 @@ export const QUESTIONS: Question[] = [
     options: ["To replace filter media on a fixed schedule regardless of condition", "To replace filter media when it has deteriorated to the point where it can no longer achieve the required filtration performance", "To replace filter media after every backwash cycle", "To replace filter media when the filter run length drops below 24 hours"],
     correct: 1,
     explanation: "Filter media is replaced when it has deteriorated to the point where it can no longer achieve the required filtration performance. Signs of media deterioration include: loss of media (attrition), media fouling (mud balls, calcium carbonate deposits), biological growth, and changes in media size distribution. Media condition is assessed through sieve analysis, loss-on-ignition testing, and visual inspection.",
+    difficulty: "medium",
   },
   {
     id: 329,
@@ -2973,6 +3302,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the flow rate through each unit process", "To document the water surface elevations through each unit process to ensure gravity flow and adequate head for operation", "To calculate the hydraulic retention time of each unit process", "To measure the pressure at each point in the treatment process"],
     correct: 1,
     explanation: "A hydraulic profile documents the water surface elevation at each point in the treatment process (raw water intake, coagulation, sedimentation, filtration, clearwell). It verifies that sufficient hydraulic head exists for gravity flow through all unit processes and identifies potential bottlenecks. The hydraulic profile is essential for plant design, expansion planning, and troubleshooting flow problems.",
+    difficulty: "medium",
   },
   {
     id: 330,
@@ -2982,6 +3312,7 @@ export const QUESTIONS: Question[] = [
     options: ["To calibrate the instrument before analysis", "To detect contamination from reagents, equipment, or the laboratory environment that could affect results", "To verify the accuracy of the standard curve", "To measure the background turbidity of the water sample"],
     correct: 1,
     explanation: "A blank sample (reagent blank, method blank) contains all reagents and goes through the same analytical procedure as the sample, but contains no analyte. If the blank gives a non-zero result, it indicates contamination from reagents, glassware, or the laboratory environment. Blank results are subtracted from sample results to correct for this background contamination.",
+    difficulty: "medium",
   },
   {
     id: 331,
@@ -2991,6 +3322,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide a backup sample in case the first sample is lost", "To assess the precision (reproducibility) of the analytical method by analyzing the same sample twice", "To verify that the sample was collected correctly", "To provide a second sample for regulatory reporting"],
     correct: 1,
     explanation: "Duplicate samples assess the precision (reproducibility) of the analytical method. The same sample is analyzed twice (or split into two portions analyzed separately), and the results are compared. The relative percent difference (RPD) between duplicates indicates analytical precision. High RPD values indicate poor precision and may indicate instrument problems, matrix interference, or analyst error.",
+    difficulty: "medium",
   },
   {
     id: 332,
@@ -3000,6 +3332,7 @@ export const QUESTIONS: Question[] = [
     options: ["To add a known concentration of analyte to the sample to assess method recovery and matrix interference", "To add a disinfectant to the sample to preserve it during transport", "To add a preservative to the sample to prevent biological degradation", "To add a standard to the sample to calibrate the instrument"],
     correct: 0,
     explanation: "A matrix spike adds a known concentration of the target analyte to the sample before analysis. The percent recovery (measured concentration / added concentration × 100%) indicates whether the sample matrix is interfering with the analysis. Acceptable recovery is typically 80–120%. Poor recovery indicates matrix interference that may require method modification or dilution.",
+    difficulty: "medium",
   },
   {
     id: 333,
@@ -3009,6 +3342,7 @@ export const QUESTIONS: Question[] = [
     options: ["The relationship between sample temperature and instrument response", "The relationship between known concentrations of a standard and the instrument response, used to determine unknown concentrations", "The acceptable range of results for a water quality parameter", "The relationship between pH and the concentration of a chemical in water"],
     correct: 1,
     explanation: "A standard curve (calibration curve) plots the instrument response (absorbance, signal) against known concentrations of a standard solution. The linear relationship between concentration and instrument response is used to determine the concentration of the analyte in unknown samples by reading the concentration corresponding to the measured instrument response.",
+    difficulty: "medium",
   },
   {
     id: 334,
@@ -3018,6 +3352,7 @@ export const QUESTIONS: Question[] = [
     options: ["The maximum concentration that can be measured by the method", "The minimum concentration that can be reliably detected and distinguished from zero with 99% confidence", "The concentration below which the result is reported as 'not detected'", "The minimum concentration required by regulation"],
     correct: 1,
     explanation: "The Method Detection Limit (MDL) is the minimum concentration of an analyte that can be reliably detected and distinguished from zero (blank) with 99% confidence. Results below the MDL are reported as 'not detected' or '<MDL'. The MDL is determined experimentally by analyzing replicate low-concentration samples and calculating the standard deviation × the appropriate t-statistic.",
+    difficulty: "medium",
   },
   {
     id: 335,
@@ -3027,6 +3362,7 @@ export const QUESTIONS: Question[] = [
     options: ["The time allowed for the sample to equilibrate to laboratory temperature before analysis", "The maximum time between sample collection and analysis, after which the sample may no longer be representative", "The time required for the analytical method to be completed", "The time allowed for the sample to settle before analysis"],
     correct: 1,
     explanation: "Holding time is the maximum time between sample collection and analysis. After the holding time, the sample may no longer be representative due to biological activity, chemical reactions, or physical changes. Different parameters have different holding times: total coliform (6–24 hours), chlorine residual (analyze immediately), metals (6 months with acid preservation), nutrients (28 days frozen).",
+    difficulty: "medium",
   },
   {
     id: 336,
@@ -3036,6 +3372,7 @@ export const QUESTIONS: Question[] = [
     options: ["To improve the taste of the sample before analysis", "To slow or stop chemical, biological, or physical changes that would alter the analyte concentration between collection and analysis", "To disinfect the sample to prevent analyst exposure to pathogens", "To adjust the sample pH to the optimal range for analysis"],
     correct: 1,
     explanation: "Sample preservation slows or stops changes that would alter analyte concentrations between collection and analysis. Common preservation methods include: cooling (4°C) to slow biological activity, acidification (HNO₃, H₂SO₄) to prevent metal precipitation and biological activity, addition of sodium thiosulfate to quench chlorine for microbiological samples, and dark storage to prevent photodegradation.",
+    difficulty: "medium",
   },
   {
     id: 337,
@@ -3045,6 +3382,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the total amount of organic matter in the water, which is a precursor to disinfection by-products", "To measure the biological oxygen demand of the water", "To measure the concentration of specific organic contaminants", "To measure the effectiveness of the coagulation process"],
     correct: 0,
     explanation: "Total Organic Carbon (TOC) measures the total amount of organic carbon in water, which includes natural organic matter (NOM) — the primary precursor to disinfection by-products (DBPs) like trihalomethanes (THMs) and haloacetic acids (HAAs). Monitoring TOC helps assess DBP formation potential, evaluate treatment effectiveness, and comply with enhanced coagulation requirements.",
+    difficulty: "medium",
   },
   {
     id: 338,
@@ -3054,6 +3392,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the UV disinfection dose applied to the water", "To estimate the concentration of natural organic matter (NOM) and DBP precursors using a simple, rapid measurement", "To measure the turbidity of the water at UV wavelengths", "To measure the concentration of iron and manganese in the water"],
     correct: 1,
     explanation: "UV254 absorbance (absorbance at 254 nm) is a simple, rapid surrogate measurement for natural organic matter (NOM) concentration and DBP precursor content. Aromatic organic compounds (humic and fulvic acids) absorb strongly at 254 nm. UV254 is used to monitor coagulation effectiveness, assess DBP formation potential, and optimize activated carbon dosing.",
+    difficulty: "medium",
   },
   {
     id: 339,
@@ -3063,6 +3402,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the UV disinfection efficiency", "To characterize the nature of NOM — high SUVA indicates hydrophobic, aromatic NOM that is more readily removed by coagulation and more reactive with chlorine", "To measure the specific gravity of the water sample", "To measure the UV transmittance of the water for UV disinfection design"],
     correct: 1,
     explanation: "SUVA (Specific UV Absorbance) = UV254 / DOC. It characterizes the nature of NOM: high SUVA (>4 L/mg·m) indicates predominantly hydrophobic, aromatic NOM (humic substances) that is more readily removed by coagulation and more reactive with chlorine (higher DBP formation potential). Low SUVA (<2 L/mg·m) indicates hydrophilic, non-aromatic NOM that is harder to remove and less reactive with chlorine.",
+    difficulty: "medium",
   },
   {
     id: 340,
@@ -3072,6 +3412,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the colour of the treated water", "To assess the effectiveness of filtration and detect filter breakthrough, as turbidity correlates with pathogen removal", "To measure the concentration of suspended solids in the water", "To measure the effectiveness of the disinfection process"],
     correct: 1,
     explanation: "Turbidity measurement in treated water assesses filtration effectiveness and detects filter breakthrough. Turbidity correlates with pathogen removal — low turbidity indicates effective removal of particles (including pathogens) by filtration. Ontario regulations require continuous turbidity monitoring of individual filter effluents and set maximum turbidity limits (typically 0.3 NTU) for treated water.",
+    difficulty: "medium",
   },
   {
     id: 341,
@@ -3081,6 +3422,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the aesthetic appearance of the water", "To measure the colour caused by dissolved organic compounds (NOM, tannins) after turbidity has been removed, used to assess treatment effectiveness", "To measure the colour caused by iron and manganese in the water", "To measure the colour of the water for regulatory compliance only"],
     correct: 1,
     explanation: "True colour measures the colour caused by dissolved organic compounds (NOM, tannins, humic acids) after the sample has been filtered to remove turbidity. True colour is measured in Platinum-Cobalt Units (PCU) or Hazen Units (HU). It is used to assess the effectiveness of coagulation and activated carbon treatment for colour removal. The Ontario ODWQS limit is 15 TCU.",
+    difficulty: "medium",
   },
   {
     id: 342,
@@ -3090,6 +3432,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the pH of the water", "To measure the buffering capacity of the water, which affects coagulation, disinfection, corrosion control, and chemical dosing", "To measure the hardness of the water", "To measure the concentration of bicarbonate in the water only"],
     correct: 1,
     explanation: "Alkalinity measures the buffering capacity of water — its ability to resist pH changes. Alkalinity (primarily bicarbonate HCO₃⁻, carbonate CO₃²⁻, and hydroxide OH⁻) affects: coagulation (alum consumes alkalinity; low alkalinity requires supplemental alkalinity), disinfection (chlorine efficacy varies with pH), corrosion control (higher alkalinity reduces corrosivity), and water stability (Langelier Saturation Index).",
+    difficulty: "medium",
   },
   {
     id: 343,
@@ -3099,6 +3442,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the concentration of calcium and magnesium ions, which affect scaling, soap consumption, and treatment processes", "To measure the hardness of the filter media", "To measure the concentration of iron and manganese in the water", "To measure the pH of the water"],
     correct: 0,
     explanation: "Hardness measures the concentration of calcium (Ca²⁺) and magnesium (Mg²⁺) ions in water. Hardness affects: scaling in pipes and appliances (high hardness causes calcium carbonate deposits), soap consumption (hard water requires more soap), softening treatment design, corrosion control (Langelier Saturation Index), and ion exchange resin regeneration frequency.",
+    difficulty: "medium",
   },
   {
     id: 344,
@@ -3108,6 +3452,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the oxygen available for disinfection", "To assess the biological and chemical conditions in the source water, as low DO indicates organic decomposition, algal respiration, or stratification", "To measure the effectiveness of the aeration process", "To measure the oxygen demand of the water for treatment design"],
     correct: 1,
     explanation: "Dissolved oxygen (DO) in source water indicates biological and chemical conditions. Low DO (hypoxia) in the hypolimnion of stratified reservoirs indicates organic decomposition and can cause release of iron, manganese, hydrogen sulfide, and taste/odour compounds from sediments. DO monitoring guides intake depth selection and helps predict seasonal water quality changes.",
+    difficulty: "medium",
   },
   {
     id: 345,
@@ -3117,6 +3462,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the concentration of all dissolved substances in the water, which affects taste, corrosivity, and suitability for various uses", "To measure the concentration of suspended solids in the water", "To measure the total amount of solids removed by the treatment process", "To measure the concentration of dissolved organic compounds only"],
     correct: 0,
     explanation: "Total Dissolved Solids (TDS) measures the total concentration of all dissolved substances (ions, minerals, organic compounds) in water. High TDS affects: taste (>500 mg/L causes noticeable taste), corrosivity (high TDS increases electrical conductivity and corrosion potential), scaling (high calcium and sulfate cause scale), and suitability for irrigation and industrial uses. The Ontario ODWQS aesthetic objective is 500 mg/L.",
+    difficulty: "medium",
   },
   {
     id: 346,
@@ -3126,6 +3472,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the effectiveness of the coagulation process", "To protect against methemoglobinemia (blue baby syndrome) in infants, as high nitrate reduces the blood's oxygen-carrying capacity", "To measure the concentration of nitrogen compounds for disinfection by-product prediction", "To measure the effectiveness of biological treatment"],
     correct: 1,
     explanation: "Nitrate monitoring protects against methemoglobinemia (blue baby syndrome) in infants under 6 months. High nitrate (>10 mg/L as N) is converted to nitrite by bacteria in infants' digestive systems; nitrite oxidizes hemoglobin to methemoglobin, reducing the blood's oxygen-carrying capacity. The Ontario ODWQS MAC is 10 mg/L as N (45 mg/L as NO₃).",
+    difficulty: "medium",
   },
   {
     id: 347,
@@ -3135,6 +3482,7 @@ export const QUESTIONS: Question[] = [
     options: ["To verify that the fluoridation system is operating correctly and maintaining the target fluoride concentration", "To measure the natural fluoride level in the source water only", "To measure the effectiveness of the coagulation process for fluoride removal", "To comply with environmental discharge regulations"],
     correct: 0,
     explanation: "Fluoride monitoring verifies that the fluoridation system is maintaining the target concentration (0.7 mg/L in Canada). Too little fluoride provides insufficient dental protection; too much fluoride (>1.5 mg/L) can cause dental fluorosis. Fluoride is measured using an ion-selective electrode or colorimetric method. Ontario requires daily fluoride monitoring for fluoridated systems.",
+    difficulty: "medium",
   },
   {
     id: 348,
@@ -3144,6 +3492,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure lead in the source water", "To assess lead leaching from lead service lines, solder, and plumbing fixtures into the drinking water at the point of use", "To measure the effectiveness of the coagulation process for lead removal", "To measure lead in the treatment plant effluent only"],
     correct: 1,
     explanation: "Lead sampling at the tap (first-draw samples after a 6-hour stagnation period) assesses lead leaching from lead service lines, lead solder, and brass fixtures into the drinking water at the point of use. Lead in source water and treatment plant effluent is typically very low; most lead exposure comes from plumbing materials. Ontario requires lead sampling programs for systems with lead infrastructure.",
+    difficulty: "medium",
   },
   {
     id: 349,
@@ -3153,6 +3502,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the effectiveness of the disinfection process", "To assess the formation of chlorination by-products that are associated with increased cancer risk with long-term exposure", "To measure the concentration of chlorine in the distribution system", "To measure the organic content of the source water"],
     correct: 1,
     explanation: "Trihalomethanes (THMs — chloroform, bromodichloromethane, dibromochloromethane, bromoform) are disinfection by-products formed when chlorine reacts with natural organic matter. Long-term exposure to high THM concentrations is associated with increased risk of bladder cancer and adverse reproductive effects. The Ontario MAC for total THMs is 100 μg/L. THMs are measured by GC-MS or GC-ECD.",
+    difficulty: "medium",
   },
   {
     id: 350,
@@ -3162,6 +3512,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the effectiveness of the coagulation process", "To assess the formation of chlorination by-products that are associated with health risks with long-term exposure", "To measure the concentration of acetic acid in the distribution system", "To measure the concentration of halide ions in the source water"],
     correct: 1,
     explanation: "Haloacetic acids (HAAs — mono-, di-, and trichloroacetic acid, and brominated analogues) are disinfection by-products formed when chlorine reacts with NOM. HAAs are associated with increased cancer risk and adverse reproductive effects with long-term exposure. The Ontario MAC for total HAAs (HAA9) is 80 μg/L. HAAs are measured by GC-ECD after extraction.",
+    difficulty: "medium",
   },
   {
     id: 351,
@@ -3171,6 +3522,7 @@ export const QUESTIONS: Question[] = [
     options: ["To detect the presence of fecal contamination in the treated water", "To use as an indicator of treatment effectiveness and distribution system integrity, as total coliforms should be absent in properly treated water", "To measure the concentration of E. coli in the treated water", "To measure the effectiveness of the disinfection process only"],
     correct: 1,
     explanation: "Total coliform monitoring in treated water indicates treatment effectiveness and distribution system integrity. Total coliforms (including E. coli and environmental coliforms) should be absent in properly treated and distributed water. Detection of total coliforms triggers investigation and corrective action. Ontario regulations require total coliform monitoring at regular intervals throughout the distribution system.",
+    difficulty: "medium",
   },
   {
     id: 352,
@@ -3180,6 +3532,7 @@ export const QUESTIONS: Question[] = [
     options: ["E. coli detection indicates the presence of iron bacteria in the distribution system", "E. coli is a specific indicator of recent fecal contamination and indicates a serious health risk requiring immediate action", "E. coli detection indicates that the disinfection process is not working effectively", "E. coli is a normal component of treated drinking water at low concentrations"],
     correct: 1,
     explanation: "E. coli is a specific indicator of recent fecal contamination. Its detection in treated drinking water indicates a serious health risk — fecal contamination may have introduced pathogens (Cryptosporidium, Giardia, enteric viruses) into the water supply. Immediate corrective action is required: boil water advisory, investigation of the contamination source, increased sampling, and remediation.",
+    difficulty: "medium",
   },
   {
     id: 353,
@@ -3189,6 +3542,7 @@ export const QUESTIONS: Question[] = [
     options: ["To detect fecal contamination in the water", "To assess the general bacteriological quality of the water and the effectiveness of disinfection and distribution system maintenance", "To measure the concentration of pathogenic bacteria in the water", "To measure the effectiveness of the filtration process"],
     correct: 1,
     explanation: "Heterotrophic Plate Count (HPC) measures the general population of heterotrophic bacteria in water. While HPC bacteria are not pathogens, high HPC counts indicate: inadequate disinfection residual, biological regrowth in the distribution system, or contamination. HPC is used to assess distribution system integrity, optimize disinfection, and investigate taste/odour complaints.",
+    difficulty: "medium",
   },
   {
     id: 354,
@@ -3198,6 +3552,7 @@ export const QUESTIONS: Question[] = [
     options: ["To test the quality of water samples in jars before analysis", "To simulate the coagulation, flocculation, and sedimentation process at bench scale to optimize chemical doses and conditions", "To test the jar-shaped clarifiers in the treatment plant", "To measure the settling rate of particles in the source water"],
     correct: 1,
     explanation: "A jar test simulates the coagulation, flocculation, and sedimentation process at bench scale using multiple jars with stirrers. Operators vary coagulant type, dose, pH, and other conditions to find the optimal treatment conditions for the current source water quality. Jar tests are essential for responding to changes in source water quality (turbidity events, algal blooms) and optimizing chemical costs.",
+    difficulty: "medium",
   },
   {
     id: 355,
@@ -3207,6 +3562,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the electrical potential of the treatment plant equipment", "To measure the electrical charge on colloidal particles, which indicates the effectiveness of coagulation in destabilizing the colloids", "To measure the potential for corrosion in the distribution system", "To measure the oxidation-reduction potential of the water"],
     correct: 1,
     explanation: "Zeta potential measures the electrical charge on colloidal particles in suspension. Colloids with high negative zeta potential (more negative than -30 mV) are stable and resist coagulation. Coagulants neutralize the charge, reducing the zeta potential toward zero, which allows particles to aggregate. Zeta potential measurement helps optimize coagulant dose — the goal is to bring the zeta potential close to zero.",
+    difficulty: "medium",
   },
   {
     id: 356,
@@ -3216,6 +3572,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the electrical current generated by the flow of water through the treatment plant", "To provide real-time monitoring of coagulant dose effectiveness by measuring the charge on particles in the coagulated water", "To measure the electrical conductivity of the coagulated water", "To measure the current draw of the coagulant feed pumps"],
     correct: 1,
     explanation: "A Streaming Current Detector (SCD) measures the electrical charge on particles in the coagulated water, providing real-time feedback on coagulant dose effectiveness. When the coagulant dose is optimal (charge neutralization), the streaming current reading is near zero. SCDs are used for automated coagulant dose control, particularly during rapid changes in source water quality.",
+    difficulty: "medium",
   },
   {
     id: 357,
@@ -3225,6 +3582,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the amount of chlorine consumed by the treatment plant equipment", "To determine how much chlorine is consumed by reactions with organic matter, reducing agents, and other substances before a residual is established", "To measure the maximum chlorine dose that can be applied without forming DBPs", "To measure the chlorine residual in the distribution system"],
     correct: 1,
     explanation: "Chlorine demand is the amount of chlorine consumed by reactions with organic matter (NOM), reducing agents (Fe²⁺, Mn²⁺, H₂S, NO₂⁻), and other substances before a stable residual is established. Chlorine demand = chlorine applied - chlorine residual. Understanding chlorine demand helps operators determine the required chlorine dose to maintain the target residual throughout the distribution system.",
+    difficulty: "medium",
   },
   {
     id: 358,
@@ -3234,6 +3592,7 @@ export const QUESTIONS: Question[] = [
     options: ["To verify that the chlorine dose at the treatment plant is correct", "To verify that adequate disinfectant residual is maintained throughout the distribution system to prevent microbial regrowth and contamination", "To measure the chlorine demand of the distribution system pipes", "To detect leaks in the distribution system"],
     correct: 1,
     explanation: "Chlorine residual monitoring at multiple points in the distribution system verifies that adequate disinfectant residual is maintained throughout to prevent microbial regrowth and provide protection against contamination. Ontario requires a minimum free chlorine residual of 0.05 mg/L (or combined chlorine of 0.25 mg/L) throughout the distribution system. Low residuals in remote areas indicate excessive chlorine demand or long residence times.",
+    difficulty: "medium",
   },
   {
     id: 359,
@@ -3243,6 +3602,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure dissolved phosphorus in water", "To measure free and total chlorine residual using a colorimetric reaction with N,N-diethyl-p-phenylenediamine", "To measure dissolved organic carbon in water", "To measure the concentration of disinfection by-products in water"],
     correct: 1,
     explanation: "The DPD (N,N-diethyl-p-phenylenediamine) method measures free and total chlorine residual. Free chlorine reacts immediately with DPD to produce a pink/red colour proportional to the chlorine concentration. Adding potassium iodide releases combined chlorine (chloramines), which also reacts with DPD. The colour intensity is measured with a colorimeter or spectrophotometer, or compared to a colour wheel.",
+    difficulty: "medium",
   },
   {
     id: 360,
@@ -3252,6 +3612,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the concentration of metals in water", "To measure free and total chlorine residual with high accuracy and without colour or turbidity interference", "To measure the dissolved oxygen concentration in water", "To measure the concentration of organic compounds in water"],
     correct: 1,
     explanation: "Amperometric titration measures free and total chlorine residual by titrating with phenylarsine oxide (PAO) while measuring the electrical current at an electrode. It is more accurate than the DPD colorimetric method and is not affected by colour or turbidity. Amperometric titration is the reference method for chlorine residual measurement and is used to calibrate online analyzers.",
+    difficulty: "medium",
   },
   {
     id: 361,
@@ -3261,6 +3622,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the acidity or alkalinity of the water, which affects coagulation, disinfection, corrosion, and chemical reactions throughout the treatment process", "To measure the concentration of hydrogen ions only", "To measure the effectiveness of the lime softening process", "To measure the taste of the water"],
     correct: 0,
     explanation: "pH affects virtually every aspect of water treatment: coagulation (optimal pH varies by coagulant — alum works best at pH 6–7), disinfection (free chlorine is more effective at lower pH; chloramines more stable at higher pH), corrosion (low pH increases corrosivity), lime softening (requires high pH for precipitation), and chemical equilibria. Continuous pH monitoring is essential for process control.",
+    difficulty: "medium",
   },
   {
     id: 362,
@@ -3270,6 +3632,7 @@ export const QUESTIONS: Question[] = [
     options: ["To comply with regulatory reporting requirements only", "To monitor its effect on chemical reaction rates, coagulation effectiveness, disinfection efficiency, and biological activity", "To measure the effectiveness of the heating system in the treatment plant", "To measure the temperature of the source water for seasonal planning only"],
     correct: 1,
     explanation: "Temperature affects: coagulation (cold water forms weak, slow-settling floc; may require higher coagulant doses or polymer aids), disinfection (chlorine and ozone are less effective at lower temperatures; CT requirements increase), biological activity (warmer water promotes algal growth and bacterial regrowth), chemical reaction rates, and dissolved gas concentrations. Temperature monitoring is essential for process optimization.",
+    difficulty: "medium",
   },
   {
     id: 363,
@@ -3279,6 +3642,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the ability of the water to conduct electricity, which is proportional to the total dissolved solids concentration", "To measure the electrical conductivity of the treatment plant equipment", "To measure the concentration of chloride ions in the water", "To measure the effectiveness of the ion exchange softening process"],
     correct: 0,
     explanation: "Conductivity (specific conductance) measures the ability of water to conduct electricity, which is proportional to the concentration of dissolved ions (TDS). Conductivity is a rapid, inexpensive surrogate for TDS and is used to: monitor source water quality, detect contamination events (sudden conductivity changes), assess ion exchange softening effectiveness, and monitor desalination/RO performance.",
+    difficulty: "medium",
   },
   {
     id: 364,
@@ -3288,6 +3652,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the pH of the water", "To measure the oxidizing or reducing capacity of the water, which indicates the effectiveness of disinfection and oxidation processes", "To measure the concentration of dissolved oxygen in the water", "To measure the corrosivity of the water"],
     correct: 1,
     explanation: "Oxidation-Reduction Potential (ORP) measures the tendency of the water to gain or lose electrons — its oxidizing or reducing capacity. High ORP (positive values) indicates strong oxidizing conditions (effective disinfection). ORP is used to: monitor chlorine and ozone disinfection effectiveness, control breakpoint chlorination, monitor dechlorination, and assess the effectiveness of iron/manganese oxidation.",
+    difficulty: "medium",
   },
   {
     id: 365,
@@ -3297,6 +3662,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the concentration of pesticides in the water", "To identify the compounds responsible for earthy/musty taste and odour complaints, which are produced by algae and actinomycetes", "To measure the effectiveness of the activated carbon treatment", "To measure the concentration of disinfection by-products in the water"],
     correct: 1,
     explanation: "Geosmin and 2-methylisoborneol (MIB) are the primary compounds responsible for earthy and musty taste/odour complaints in drinking water. They are produced by cyanobacteria (blue-green algae), actinomycetes, and other microorganisms in source water. Human detection thresholds are very low (geosmin ~4 ng/L; MIB ~9 ng/L). Monitoring helps predict and manage taste/odour events and optimize activated carbon dosing.",
+    difficulty: "medium",
   },
   {
     id: 366,
@@ -3306,6 +3672,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the concentration of cyanide from industrial sources", "To detect toxins produced by cyanobacteria (blue-green algae) that can cause liver damage, neurological effects, and skin irritation", "To measure the effectiveness of the disinfection process against algae", "To measure the concentration of blue-green algae in the source water"],
     correct: 1,
     explanation: "Cyanotoxins (microcystins, cylindrospermopsin, anatoxins, saxitoxins) are toxins produced by cyanobacteria (blue-green algae) during algal blooms. They can cause liver damage, neurological effects, skin irritation, and gastrointestinal illness. The Ontario ODWQS MAC for microcystin-LR is 1.5 μg/L. Monitoring triggers treatment adjustments (PAC dosing, intake depth changes) and public health advisories.",
+    difficulty: "medium",
   },
   {
     id: 367,
@@ -3315,6 +3682,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the concentration of these pathogens to determine the required treatment log removal credits", "To verify that the treatment process has completely removed these pathogens", "To measure the effectiveness of the UV disinfection process", "To comply with routine monitoring requirements only"],
     correct: 0,
     explanation: "Cryptosporidium and Giardia monitoring in source water determines the required treatment log removal credits under Ontario's regulatory framework. Higher concentrations in source water require greater treatment (more filtration log removal or disinfection log inactivation credits). Source water monitoring data is used in the Drinking Water Quality Management Standard (DWQMS) risk assessment and treatment design.",
+    difficulty: "medium",
   },
   {
     id: 368,
@@ -3324,6 +3692,7 @@ export const QUESTIONS: Question[] = [
     options: ["To count the number of particles in the source water for billing purposes", "To measure the number and size distribution of particles in filter effluent, providing a sensitive indicator of filter performance", "To count the number of bacteria in the treated water", "To measure the turbidity of the water using a particle-counting method"],
     correct: 1,
     explanation: "Particle counters measure the number and size distribution of particles in water. In filter effluent monitoring, particle counters are more sensitive than turbidimeters and can detect filter breakthrough earlier. Particles in the 2–15 μm size range are of particular concern as they include Cryptosporidium oocysts and Giardia cysts. Particle counting is used to optimize filter operation and detect filter problems.",
+    difficulty: "medium",
   },
   {
     id: 369,
@@ -3333,6 +3702,7 @@ export const QUESTIONS: Question[] = [
     options: ["To verify that the treatment process is removing these metals to below aesthetic and regulatory limits to prevent staining and taste problems", "To measure the concentration of iron and manganese for corrosion control purposes", "To measure the effectiveness of the coagulation process", "To measure the natural background levels of these metals in the source water"],
     correct: 0,
     explanation: "Iron and manganese monitoring in treated water verifies that treatment is removing these metals to below aesthetic objectives (iron: 0.3 mg/L; manganese: 0.02 mg/L aesthetic, 0.05 mg/L MAC in Ontario) to prevent: red/brown staining from iron, black/brown staining from manganese, metallic taste, and distribution system deposits. Monitoring also detects treatment process upsets.",
+    difficulty: "medium",
   },
   {
     id: 370,
@@ -3342,6 +3712,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the effectiveness of the coagulation process for arsenic removal", "To protect public health, as long-term exposure to arsenic above the MAC is associated with skin, bladder, and lung cancer", "To measure the natural background level of arsenic in the source water only", "To measure the effectiveness of the ion exchange treatment process"],
     correct: 1,
     explanation: "Arsenic monitoring protects public health. Long-term exposure to inorganic arsenic above the MAC (0.010 mg/L in Ontario) is associated with increased risk of skin, bladder, and lung cancer, as well as cardiovascular and neurological effects. Arsenic occurs naturally in groundwater in some regions of Ontario. Treatment options include coagulation/filtration, activated alumina, iron oxide media, and reverse osmosis.",
+    difficulty: "medium",
   },
   {
     id: 371,
@@ -3351,6 +3722,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the effectiveness of the ion exchange softening process", "To protect individuals on sodium-restricted diets, as high sodium in drinking water can contribute to hypertension", "To measure the concentration of sodium chloride added for disinfection", "To measure the natural background level of sodium in the source water"],
     correct: 1,
     explanation: "Sodium monitoring protects individuals on sodium-restricted diets (hypertension, heart disease, kidney disease). The Ontario ODWQS operational guidance value for sodium is 200 mg/L (above which medical officers of health should be notified). Ion exchange softening significantly increases sodium concentration (exchanging Ca²⁺ and Mg²⁺ for Na⁺), which may be a concern for sodium-sensitive individuals.",
+    difficulty: "medium",
   },
   {
     id: 372,
@@ -3360,6 +3732,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the concentration of nitrite from fertilizer runoff", "To detect the formation of nitrite from incomplete nitrification in chloraminated distribution systems, which can reduce disinfection effectiveness", "To measure the effectiveness of the biological treatment process", "To measure the concentration of nitrite as a disinfection by-product"],
     correct: 1,
     explanation: "Nitrite monitoring in chloraminated systems detects nitrification — the biological conversion of ammonia (from chloramine decomposition) to nitrite and then nitrate by nitrifying bacteria. Nitrification reduces chloramine residual, increases nitrite (which is toxic at high concentrations and consumes chloramine), and promotes bacterial regrowth. Nitrite monitoring is a key indicator of nitrification in chloraminated distribution systems.",
+    difficulty: "medium",
   },
   {
     id: 373,
@@ -3369,6 +3742,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the effectiveness of the coagulation process for phosphorus removal", "To assess the eutrophication potential of the source water, as phosphorus is the limiting nutrient for algal growth in most freshwater systems", "To measure the concentration of phosphate added for corrosion control", "To measure the effectiveness of the biological treatment process"],
     correct: 1,
     explanation: "Total phosphorus monitoring in source water assesses eutrophication potential. Phosphorus is the limiting nutrient for algal growth in most freshwater systems — even small increases in phosphorus can trigger algal blooms, including harmful cyanobacterial blooms. Phosphorus monitoring guides watershed management decisions and helps predict algal bloom risk, allowing operators to prepare treatment responses.",
+    difficulty: "medium",
   },
   {
     id: 374,
@@ -3378,6 +3752,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the concentration of chlorine in the source water", "To estimate the biomass of algae (phytoplankton) in the source water, which indicates eutrophication status and algal bloom risk", "To measure the colour of the source water", "To measure the effectiveness of the coagulation process for algae removal"],
     correct: 1,
     explanation: "Chlorophyll-a is the primary photosynthetic pigment in algae and is used as a surrogate measure of algal biomass (phytoplankton concentration). Monitoring chlorophyll-a indicates eutrophication status, algal bloom development, and risk of taste/odour and cyanotoxin problems. Chlorophyll-a monitoring helps operators anticipate treatment challenges and activate response plans (PAC dosing, intake depth changes).",
+    difficulty: "medium",
   },
   {
     id: 375,
@@ -3387,6 +3762,7 @@ export const QUESTIONS: Question[] = [
     options: ["To document the sample collection method and preservatives used", "To document the possession and handling of samples from collection to analysis, ensuring sample integrity and legal defensibility", "To document the analytical results for regulatory reporting", "To document the calibration of sampling equipment"],
     correct: 1,
     explanation: "A Chain of Custody (COC) form documents the possession and handling of water samples from collection through analysis. It records: sample collector, collection time/location, preservatives added, sample handoffs (signatures), storage conditions, and receipt at the laboratory. COC documentation ensures sample integrity and is legally required for regulatory compliance samples and enforcement actions.",
+    difficulty: "medium",
   },
   {
     id: 376,
@@ -3396,6 +3772,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the concentration of calcium carbonate in the water", "To predict whether the water will tend to deposit calcium carbonate scale (positive LSI) or dissolve it (negative LSI), indicating corrosivity or scaling tendency", "To measure the effectiveness of the lime softening process", "To measure the alkalinity of the water"],
     correct: 1,
     explanation: "The Langelier Saturation Index (LSI) = actual pH - saturation pH (pHs). Positive LSI: water is supersaturated with calcium carbonate — tends to deposit scale (protective coating in pipes). Negative LSI: water is undersaturated — tends to dissolve calcium carbonate and may be corrosive to metal pipes. Near-zero LSI is ideal. LSI is used to optimize corrosion control treatment (pH, alkalinity, calcium adjustment).",
+    difficulty: "medium",
   },
   {
     id: 377,
@@ -3405,6 +3782,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the aggressiveness of the coagulation process", "To assess the corrosivity of water toward concrete and asbestos-cement pipes", "To measure the aggressiveness of the disinfection process", "To assess the corrosivity of water toward metal pipes"],
     correct: 1,
     explanation: "The Aggressive Index (AI) = pH + log(alkalinity × hardness) assesses the corrosivity of water toward concrete and asbestos-cement (AC) pipes. AI < 10: highly aggressive (corrosive to concrete/AC pipes); AI 10–12: moderately aggressive; AI > 12: non-aggressive. Water with low AI can dissolve the calcium compounds in concrete and AC pipes, releasing asbestos fibers and degrading pipe integrity.",
+    difficulty: "medium",
   },
   {
     id: 378,
@@ -3414,6 +3792,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the concentration of chloramines in the water", "To ensure the correct ratio (typically 3:1 to 5:1 Cl₂:NH₃-N by weight) for stable monochloramine formation and to prevent dichloramine and trichloramine formation", "To measure the effectiveness of the dechlorination process", "To measure the concentration of ammonia in the source water"],
     correct: 1,
     explanation: "The chlorine-to-ammonia ratio (Cl₂:NH₃-N by weight) determines which chloramine species form. At 3:1 to 5:1, monochloramine (NH₂Cl) predominates — it is the desired species for distribution system disinfection. At higher ratios, dichloramine (NHCl₂) and trichloramine (NCl₃) form, causing taste/odour problems. The ratio is monitored to ensure stable monochloramine formation and minimize nitrification risk.",
+    difficulty: "medium",
   },
   {
     id: 379,
@@ -3423,6 +3802,7 @@ export const QUESTIONS: Question[] = [
     options: ["To ensure that the laboratory meets ISO certification requirements", "To ensure that analytical results are accurate, precise, and defensible by using standardized procedures, controls, and documentation", "To ensure that the laboratory staff are properly trained", "To ensure that the laboratory equipment is properly maintained"],
     correct: 1,
     explanation: "A QA/QC program ensures that analytical results are accurate, precise, and defensible. Key elements include: method validation, instrument calibration, use of certified reference standards, analysis of blanks/duplicates/spikes, control charts, proficiency testing, and documentation. Without QA/QC, results may be unreliable, leading to incorrect treatment decisions and regulatory non-compliance.",
+    difficulty: "medium",
   },
   {
     id: 380,
@@ -3432,6 +3812,7 @@ export const QUESTIONS: Question[] = [
     options: ["To set the certification requirements for water treatment operators", "To establish the operating, monitoring, and reporting requirements for municipal residential drinking water systems in Ontario", "To set the maximum contaminant levels for drinking water in Ontario", "To establish the design standards for water treatment plants in Ontario"],
     correct: 1,
     explanation: "Ontario Regulation 170/03 establishes the operating, monitoring, and reporting requirements for municipal residential drinking water systems. It specifies: required sampling frequencies and locations, corrective action requirements when adverse results occur, reporting timelines to the Ministry of Environment, and operational requirements. Operators must be familiar with O. Reg. 170/03 to ensure regulatory compliance.",
+    difficulty: "medium",
   },
   {
     id: 381,
@@ -3441,6 +3822,7 @@ export const QUESTIONS: Question[] = [
     options: ["To set the water quality standards for Ontario drinking water", "To provide a quality management framework for drinking water systems to identify and manage risks to drinking water quality", "To certify water treatment operators in Ontario", "To regulate the design and construction of water treatment plants in Ontario"],
     correct: 1,
     explanation: "The Drinking Water Quality Management Standard (DWQMS) is a quality management framework that requires Ontario drinking water systems to: identify and assess risks to drinking water quality, implement controls to manage those risks, document procedures, train staff, conduct internal audits, and continuously improve. DWQMS accreditation is required for systems serving more than 100 people in Ontario.",
+    difficulty: "medium",
   },
   {
     id: 382,
@@ -3450,6 +3832,7 @@ export const QUESTIONS: Question[] = [
     options: ["To permit operators to work at a drinking water treatment plant", "To authorize the construction, alteration, and operation of a drinking water system, specifying the approved design and operating conditions", "To permit the taking of water from a source for drinking water purposes", "To permit the discharge of water treatment residuals to the environment"],
     correct: 1,
     explanation: "A Drinking Water Works Permit (DWWP) authorizes the construction, alteration, and operation of a drinking water system in Ontario. It specifies: approved design parameters, treatment processes, monitoring requirements, and operating conditions. Any significant changes to the system (new treatment processes, capacity increases) require a permit amendment. Operating without a valid DWWP is an offence under the Safe Drinking Water Act.",
+    difficulty: "medium",
   },
   {
     id: 383,
@@ -3459,6 +3842,7 @@ export const QUESTIONS: Question[] = [
     options: ["To operate the drinking water system on behalf of the owner under a contract", "To regulate and inspect drinking water systems on behalf of the Ministry of Environment", "To certify water treatment operators in Ontario", "To provide technical assistance to small drinking water systems"],
     correct: 0,
     explanation: "An Operating Authority is an organization (municipality, private company, or utility) that operates a drinking water system on behalf of the owner under a contract. The Operating Authority is responsible for day-to-day operations, regulatory compliance, and reporting. Under the Safe Drinking Water Act, both the owner and the Operating Authority have legal responsibilities for the safety of the drinking water.",
+    difficulty: "medium",
   },
   {
     id: 384,
@@ -3468,6 +3852,7 @@ export const QUESTIONS: Question[] = [
     options: ["To report all water quality test results to the Ministry of Environment", "To immediately notify the local Medical Officer of Health and the Ministry of Environment when a water quality test result exceeds a standard or when a treatment failure occurs", "To report equipment failures at the treatment plant", "To report the results of the annual inspection by the Ministry of Environment"],
     correct: 1,
     explanation: "An Adverse Water Quality Incident (AWQI) report notifies the local Medical Officer of Health (MOH) and the Ministry of Environment Conservation and Parks (MECP) when: a water quality test result exceeds a standard (MAC, IMAC), a treatment failure occurs, or a condition exists that may pose a health risk. Notification must be made immediately (within 24 hours for most adverse results). The MOH determines if a public advisory is needed.",
+    difficulty: "medium",
   },
   {
     id: 385,
@@ -3477,6 +3862,7 @@ export const QUESTIONS: Question[] = [
     options: ["To advise the public to boil water for cooking only", "To advise the public to boil drinking water when there is a risk that the water may be microbiologically unsafe", "To advise the public that the water has an unpleasant taste or odour", "To advise the public that the water system is undergoing maintenance"],
     correct: 1,
     explanation: "A Boil Water Advisory (BWA) advises the public to boil drinking water (bring to a rolling boil for 1 minute) when there is a risk that the water may be microbiologically unsafe. BWAs are issued when: E. coli or total coliform is detected, treatment failure occurs, distribution system integrity is compromised, or there is evidence of contamination. BWAs are issued by the local Medical Officer of Health.",
+    difficulty: "medium",
   },
   {
     id: 386,
@@ -3486,6 +3872,7 @@ export const QUESTIONS: Question[] = [
     options: ["To advise the public not to use water for any purpose when there is a chemical contamination risk", "To advise the public not to use water for drinking or cooking, but it can be used for bathing", "To advise the public not to use water for irrigation", "To advise the public not to use water during a system maintenance period"],
     correct: 0,
     explanation: "A Water Do Not Use (WDNU) advisory advises the public not to use the water for any purpose (drinking, cooking, bathing, brushing teeth) when there is a risk of chemical contamination or when boiling would not make the water safe. WDNU advisories are issued for chemical spills, cross-connections with hazardous substances, or other situations where boiling is insufficient to make the water safe.",
+    difficulty: "medium",
   },
   {
     id: 387,
@@ -3495,6 +3882,7 @@ export const QUESTIONS: Question[] = [
     options: ["To restrict access to the treatment plant to authorized personnel only", "To protect workers from the hazards of entering confined spaces (tanks, vaults, pipes) where oxygen deficiency, toxic gases, or engulfment hazards may exist", "To provide a procedure for entering the plant after hours", "To restrict access to chemical storage areas"],
     correct: 1,
     explanation: "A confined space entry program protects workers from hazards in confined spaces (clearwells, chemical tanks, valve vaults, manholes, pipes) including: oxygen deficiency, toxic gases (H₂S, Cl₂, CO), flammable atmospheres, and engulfment. The program requires: hazard assessment, atmospheric testing, ventilation, rescue procedures, permits, and trained attendants. Confined space fatalities are a significant risk in water/wastewater operations.",
+    difficulty: "medium",
   },
   {
     id: 388,
@@ -3504,6 +3892,7 @@ export const QUESTIONS: Question[] = [
     options: ["To lock the treatment plant gates after hours", "To prevent accidental energization of equipment during maintenance by locking out energy sources (electrical, hydraulic, pneumatic, chemical) and tagging them", "To lock chemical storage areas to prevent unauthorized access", "To tag equipment that is out of service for repair"],
     correct: 1,
     explanation: "Lockout/Tagout (LOTO) prevents accidental energization of equipment during maintenance, which could cause serious injury or death. The procedure requires: identifying all energy sources, isolating them (turning off, closing valves), locking them in the isolated position with a personal lock, and tagging them. Only the worker who applied the lock can remove it. LOTO is required by Ontario's Industrial Establishments Regulation (O. Reg. 851).",
+    difficulty: "medium",
   },
   {
     id: 389,
@@ -3513,6 +3902,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide the purchase price and supplier information for chemicals", "To provide comprehensive information about chemical hazards, safe handling, storage, emergency response, and first aid for workers", "To provide the chemical dosing instructions for water treatment", "To provide the regulatory limits for chemical residuals in treated water"],
     correct: 1,
     explanation: "Safety Data Sheets (SDS, formerly MSDS) provide comprehensive information about chemical hazards and safe handling. The 16-section SDS format includes: chemical identification, hazard identification, composition, first aid measures, fire-fighting measures, accidental release measures, handling and storage, exposure controls/PPE, physical/chemical properties, stability/reactivity, toxicological information, and regulatory information. SDS must be readily accessible to workers.",
+    difficulty: "medium",
   },
   {
     id: 390,
@@ -3522,6 +3912,7 @@ export const QUESTIONS: Question[] = [
     options: ["To regulate the use of hazardous materials in water treatment", "To ensure workers have the information they need to work safely with hazardous materials through labelling, SDS, and worker education", "To set the maximum allowable concentrations of hazardous chemicals in the workplace", "To regulate the storage and disposal of hazardous chemicals at water treatment plants"],
     correct: 1,
     explanation: "WHMIS (Workplace Hazardous Materials Information System) is Canada's national hazard communication standard. It ensures workers have the information needed to work safely with hazardous materials through three elements: (1) labels on containers identifying hazards, (2) Safety Data Sheets (SDS) with detailed hazard and safety information, and (3) worker education and training. WHMIS 2015 aligns with the Globally Harmonized System (GHS).",
+    difficulty: "medium",
   },
   {
     id: 391,
@@ -3531,6 +3922,7 @@ export const QUESTIONS: Question[] = [
     options: ["To comply with regulatory requirements only", "To protect workers from the serious health hazards of chlorine gas exposure, including respiratory damage, eye and skin burns, and potentially fatal lung injury", "To prevent chlorine gas from contaminating the treated water", "To prevent chlorine gas from corroding equipment"],
     correct: 1,
     explanation: "PPE for chlorine gas handling protects workers from serious health hazards. Chlorine gas is a severe respiratory irritant and oxidizer — even brief exposure to high concentrations can cause fatal pulmonary edema. Required PPE includes: self-contained breathing apparatus (SCBA) or supplied air respirator, full-face shield, chemical-resistant gloves and suit, and chemical-resistant boots. Workers must be trained in PPE use and emergency procedures.",
+    difficulty: "medium",
   },
   {
     id: 392,
@@ -3540,6 +3932,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the chlorine residual in the treated water", "To detect chlorine gas leaks immediately and alarm operators before dangerous concentrations develop, allowing evacuation and emergency response", "To measure the chlorine gas concentration in the treatment process", "To detect chlorine gas in the distribution system"],
     correct: 1,
     explanation: "Chlorine gas leak detection systems continuously monitor the air in chlorine storage and feed areas for chlorine gas concentrations. When chlorine is detected above alarm setpoints, the system activates audible/visual alarms, alerts operators, and may automatically activate ventilation or emergency shutdown. Early detection allows evacuation and emergency response before dangerous concentrations develop. Detection systems are required by NFPA 72 and Ontario regulations.",
+    difficulty: "medium",
   },
   {
     id: 393,
@@ -3549,6 +3942,7 @@ export const QUESTIONS: Question[] = [
     options: ["To plan for the expansion of the treatment plant in an emergency", "To provide documented procedures for responding to emergencies (chemical spills, power failures, contamination events, natural disasters) to protect public health and worker safety", "To plan for emergency procurement of chemicals when supplies run low", "To provide emergency contact information for the plant owner"],
     correct: 1,
     explanation: "An Emergency Response Plan (ERP) provides documented procedures for responding to emergencies at a water treatment plant. It covers: chemical spills (chlorine, caustic, alum), power failures, treatment failures, source water contamination events, natural disasters, security incidents, and distribution system failures. The ERP identifies roles and responsibilities, emergency contacts, communication procedures, and corrective actions. Regular drills test the plan's effectiveness.",
+    difficulty: "medium",
   },
   {
     id: 394,
@@ -3558,6 +3952,7 @@ export const QUESTIONS: Question[] = [
     options: ["To assess the physical condition of the treatment plant infrastructure", "To identify and assess security vulnerabilities that could be exploited to contaminate or disrupt the water supply, and to implement countermeasures", "To assess the financial vulnerability of the water utility", "To assess the vulnerability of the water system to natural disasters"],
     correct: 1,
     explanation: "A Security Vulnerability Assessment (SVA) identifies and assesses security vulnerabilities in a water system that could be exploited by adversaries to contaminate or disrupt the water supply. The SVA evaluates: physical security (fencing, locks, lighting, cameras), cyber security (SCADA, control systems), operational security (chemical handling, access control), and emergency response. Countermeasures are implemented to reduce identified vulnerabilities.",
+    difficulty: "medium",
   },
   {
     id: 395,
@@ -3567,6 +3962,7 @@ export const QUESTIONS: Question[] = [
     options: ["To control the flow of water through the treatment plant", "To prevent unauthorized access to the plant and critical infrastructure, protecting against vandalism, sabotage, and contamination", "To control the access of chemicals to the treatment process", "To control access to the plant's financial records"],
     correct: 1,
     explanation: "Access control prevents unauthorized access to the water treatment plant and critical infrastructure (chemical storage, SCADA systems, clearwells). Measures include: perimeter fencing, locked gates, electronic access control systems, security cameras, visitor sign-in procedures, and background checks for employees. Unauthorized access could lead to vandalism, sabotage, theft of chemicals, or intentional contamination of the water supply.",
+    difficulty: "medium",
   },
   {
     id: 396,
@@ -3576,6 +3972,7 @@ export const QUESTIONS: Question[] = [
     options: ["To protect the SCADA system from physical damage", "To protect the SCADA system from cyberattacks that could disrupt treatment operations or allow unauthorized control of critical systems", "To protect the SCADA data from being lost in a power failure", "To protect the SCADA system from interference from other electronic systems"],
     correct: 1,
     explanation: "SCADA cybersecurity protects water treatment control systems from cyberattacks. Measures include: network segmentation (isolating SCADA from corporate and internet networks), strong authentication, regular patching, intrusion detection, encrypted communications, and incident response planning. Cyberattacks on water SCADA systems could disrupt treatment operations, alter chemical dosing, or allow unauthorized control of critical infrastructure.",
+    difficulty: "medium",
   },
   {
     id: 397,
@@ -3585,6 +3982,7 @@ export const QUESTIONS: Question[] = [
     options: ["To ensure that water treatment plant operators have the knowledge and skills to operate their systems safely and effectively", "To certify that water treatment plants meet regulatory standards", "To certify the quality of water produced by treatment plants", "To certify the design of water treatment plants"],
     correct: 0,
     explanation: "Ontario's operator certification program ensures that water treatment operators have the knowledge and skills to operate their systems safely and effectively. Operators must be certified at a level appropriate to the complexity of the system they operate (Class 1–4 for water treatment and distribution). Certification requires passing examinations, meeting experience requirements, and completing continuing education to maintain certification.",
+    difficulty: "medium",
   },
   {
     id: 398,
@@ -3594,6 +3992,7 @@ export const QUESTIONS: Question[] = [
     options: ["To record the operator's personal observations and opinions about the plant", "To provide a chronological record of plant operations, observations, measurements, events, and actions taken, which is essential for regulatory compliance and troubleshooting", "To record the financial transactions of the water utility", "To record the results of laboratory analyses only"],
     correct: 1,
     explanation: "An operator logbook provides a chronological record of: plant operations (flow rates, chemical doses, equipment status), observations (source water conditions, unusual events), measurements (turbidity, chlorine residual, pH), actions taken (adjustments, maintenance), and communications. Logbooks are essential for regulatory compliance (demonstrating due diligence), troubleshooting operational problems, and providing continuity between shifts.",
+    difficulty: "medium",
   },
   {
     id: 399,
@@ -3603,6 +4002,7 @@ export const QUESTIONS: Question[] = [
     options: ["To prevent the plant from being shut down by the Ministry of Environment", "To schedule and perform regular maintenance activities to prevent equipment failures, extend equipment life, and ensure reliable plant operation", "To prevent operators from performing unauthorized maintenance", "To prevent the need for emergency maintenance by replacing all equipment on a fixed schedule"],
     correct: 1,
     explanation: "A Preventive Maintenance (PM) program schedules regular maintenance activities (lubrication, inspection, calibration, cleaning, parts replacement) based on manufacturer recommendations and operational experience. PM prevents unexpected equipment failures that could disrupt treatment, extends equipment life, reduces emergency repair costs, and ensures reliable plant operation. PM records document maintenance history and support asset management planning.",
+    difficulty: "medium",
   },
   {
     id: 400,
@@ -3612,6 +4012,7 @@ export const QUESTIONS: Question[] = [
     options: ["To manage the financial assets of the water utility", "To systematically manage infrastructure assets to deliver required service levels at the lowest long-term cost, including planning for rehabilitation and replacement", "To manage the human resources of the water utility", "To manage the chemical inventory of the water treatment plant"],
     correct: 1,
     explanation: "An Asset Management Plan (AMP) systematically manages infrastructure assets (pipes, pumps, treatment equipment, buildings) to deliver required service levels at the lowest long-term cost. The AMP includes: asset inventory, condition assessment, risk assessment, lifecycle cost analysis, and capital investment planning for rehabilitation and replacement. Ontario requires water utilities to develop AMPs under the Infrastructure for Jobs and Prosperity Act.",
+    difficulty: "medium",
   },
   {
     id: 401,
@@ -3621,6 +4022,7 @@ export const QUESTIONS: Question[] = [
     options: ["To report the financial performance of the water utility to the municipal council", "To provide the public with information about the quality of their drinking water and the performance of the water system during the previous year", "To report the results of all water quality tests to the Ministry of Environment", "To report the capital expenditures of the water utility to the Ministry of Infrastructure"],
     correct: 1,
     explanation: "The Annual Report provides the public with information about the quality of their drinking water and the performance of the water system. It includes: a summary of water quality test results, any adverse results and corrective actions taken, system improvements, and financial information. Ontario requires annual reports to be prepared and made available to the public. The report demonstrates accountability and transparency.",
+    difficulty: "hard",
   },
   {
     id: 402,
@@ -3630,6 +4032,7 @@ export const QUESTIONS: Question[] = [
     options: ["To report the confidence level of consumers in the water utility", "To provide customers with annual information about their drinking water source, quality, and any detected contaminants", "To report the financial confidence of the water utility", "To report the operator confidence levels in the treatment process"],
     correct: 1,
     explanation: "A Consumer Confidence Report (CCR) provides customers with annual information about their drinking water source, quality test results, detected contaminants and their levels compared to standards, and information about the water system. CCRs are required under the Safe Drinking Water Act in the US. They promote transparency and help consumers make informed decisions about their water use.",
+    difficulty: "hard",
   },
   {
     id: 403,
@@ -3639,6 +4042,7 @@ export const QUESTIONS: Question[] = [
     options: ["To plan the protection of the water treatment plant from natural disasters", "To identify and manage threats to the quality and quantity of drinking water sources through land use planning and risk management policies", "To plan the protection of the distribution system from contamination", "To plan the protection of the water utility's financial assets"],
     correct: 1,
     explanation: "Source Water Protection Plans identify and manage threats to drinking water sources (surface water intakes and groundwater wells) through land use planning and risk management policies. Plans are developed under Ontario's Clean Water Act, 2006 by local Source Protection Committees. They identify significant drinking water threats (e.g., fuel storage near intakes, agricultural activities) and implement policies to prohibit, restrict, or require specific practices.",
+    difficulty: "hard",
   },
   {
     id: 404,
@@ -3648,6 +4052,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the amount of water lost through evaporation from reservoirs", "To quantify water losses (real losses from leaks and apparent losses from metering errors and unauthorized use) to identify opportunities for reducing non-revenue water", "To audit the financial losses of the water utility", "To measure the water lost during the treatment process"],
     correct: 1,
     explanation: "A water loss audit quantifies the difference between water produced and water billed (non-revenue water). It separates: real losses (physical leaks from pipes, joints, service connections) and apparent losses (meter inaccuracies, unauthorized consumption, data errors). The audit identifies the most cost-effective opportunities for reducing water loss. The IWA/AWWA water balance methodology is the standard approach.",
+    difficulty: "hard",
   },
   {
     id: 405,
@@ -3657,6 +4062,7 @@ export const QUESTIONS: Question[] = [
     options: ["To prevent unauthorized connections to the water distribution system", "To prevent backflow of contaminated water from customer premises into the distribution system through cross-connections", "To control the crossing of water mains with other utilities", "To prevent the crossing of water and wastewater pipes in the distribution system"],
     correct: 1,
     explanation: "A cross-connection control program prevents backflow of contaminated water from customer premises into the distribution system. Cross-connections are physical connections between the potable water supply and a potential source of contamination (irrigation systems, industrial processes, fire suppression systems). Backflow prevention devices (check valves, reduced pressure zone assemblies, air gaps) are required at high-hazard connections.",
+    difficulty: "hard",
   },
   {
     id: 406,
@@ -3666,6 +4072,7 @@ export const QUESTIONS: Question[] = [
     options: ["To test the flow capacity of the distribution system", "To remove sediment, biofilm, stagnant water, and low-quality water from the distribution system to maintain water quality and prevent complaints", "To test the fire hydrants for adequate flow and pressure", "To remove chlorine residual from the distribution system before maintenance work"],
     correct: 1,
     explanation: "A distribution system flushing program removes sediment, biofilm, stagnant water, and low-quality water from dead-end mains and areas with long residence times. Unidirectional flushing (UDF) is the most effective method — it flushes mains sequentially from the source outward, creating high velocities that scour pipe walls. Flushing maintains water quality, reduces taste/odour complaints, and prevents discoloured water.",
+    difficulty: "hard",
   },
   {
     id: 407,
@@ -3675,6 +4082,7 @@ export const QUESTIONS: Question[] = [
     options: ["To maintain hydrants for fire-fighting purposes only", "To ensure hydrants are operational for fire-fighting and system flushing, and to detect distribution system problems through flow testing", "To maintain hydrants for aesthetic purposes in the community", "To maintain hydrants for water sampling purposes only"],
     correct: 1,
     explanation: "A hydrant maintenance program ensures hydrants are operational for fire-fighting and system maintenance. Activities include: annual inspection and operation, lubrication, painting, flow testing (to measure available fire flow and detect distribution system problems), and repair/replacement. Hydrant flow tests also provide data for hydraulic model calibration and fire protection planning.",
+    difficulty: "hard",
   },
   {
     id: 408,
@@ -3684,6 +4092,7 @@ export const QUESTIONS: Question[] = [
     options: ["To test the new main for leaks before putting it into service", "To eliminate any contamination introduced during construction or repair before the main is connected to the distribution system and put into service", "To test the pressure in the new main before putting it into service", "To flush sediment from the new main before putting it into service"],
     correct: 1,
     explanation: "New or repaired water mains must be disinfected before being put into service to eliminate contamination introduced during construction. The standard procedure (AWWA C651) involves: flushing to remove debris, filling with high-concentration chlorine solution (25–50 mg/L), holding for 24 hours, flushing, and bacteriological testing (two consecutive satisfactory samples). The main is not connected to the distribution system until testing confirms it is safe.",
+    difficulty: "hard",
   },
   {
     id: 409,
@@ -3693,6 +4102,7 @@ export const QUESTIONS: Question[] = [
     options: ["To create zones of different water pressure for billing purposes", "To manage water pressure throughout the distribution system by dividing it into areas served at appropriate pressure ranges, using pressure-reducing valves and booster pumps", "To create zones where different water quality standards apply", "To create zones where different disinfection methods are used"],
     correct: 1,
     explanation: "Pressure zones divide the distribution system into areas served at appropriate pressure ranges (typically 275–690 kPa or 40–100 psi). Pressure-Reducing Valves (PRVs) reduce pressure between high-pressure and low-pressure zones; booster pump stations increase pressure in elevated areas. Proper pressure management: prevents pipe breaks from excessive pressure, ensures adequate pressure for fire-fighting and customer service, and reduces leakage.",
+    difficulty: "hard",
   },
   {
     id: 410,
@@ -3702,6 +4112,7 @@ export const QUESTIONS: Question[] = [
     options: ["To model the financial performance of the water utility", "To simulate water flow and pressure throughout the distribution system to support planning, operations, and emergency response", "To model the water treatment process", "To model the source water quality"],
     correct: 1,
     explanation: "A hydraulic model simulates water flow, pressure, and water quality throughout the distribution system. It is used for: capital planning (sizing pipes and storage), operations (optimizing pump scheduling, identifying low-pressure areas), emergency response (simulating main breaks, contamination events), fire flow analysis, water quality modeling (residence time, chlorine residual), and regulatory compliance.",
+    difficulty: "hard",
   },
   {
     id: 411,
@@ -3711,6 +4122,7 @@ export const QUESTIONS: Question[] = [
     options: ["To store water for future use during droughts", "To equalize supply and demand, maintain system pressure, provide emergency storage, and ensure adequate fire flow", "To provide additional treatment of the water before distribution", "To store treated water for seasonal use only"],
     correct: 1,
     explanation: "Water storage facilities serve multiple purposes: (1) equalize supply and demand — storing water during low-demand periods and releasing it during peak demand, (2) maintain system pressure — elevated tanks provide gravity pressure, (3) provide emergency storage — backup supply during treatment plant outages, (4) ensure adequate fire flow — storage for fire-fighting. Storage also increases water residence time, which can affect chlorine residual and DBP formation.",
+    difficulty: "hard",
   },
   {
     id: 412,
@@ -3720,6 +4132,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide a procedure for repairing water main breaks as quickly as possible", "To provide a documented procedure for isolating the break, notifying affected customers, maintaining system pressure, and restoring service safely", "To provide a procedure for billing customers for water lost during a main break", "To provide a procedure for reporting main breaks to the Ministry of Environment"],
     correct: 1,
     explanation: "A water main break response procedure ensures a coordinated, safe response. It includes: locating and isolating the break (closing valves), notifying affected customers and emergency services, maintaining system pressure in unaffected areas, excavating and repairing the main, disinfecting the repaired section, flushing, bacteriological testing, and restoring service. The procedure minimizes service disruption and ensures the repaired main is safe before returning to service.",
+    difficulty: "hard",
   },
   {
     id: 413,
@@ -3729,6 +4142,7 @@ export const QUESTIONS: Question[] = [
     options: ["To provide a procedure for dismissing customer complaints about water quality", "To provide a documented procedure for investigating and resolving customer complaints about taste, odour, colour, or pressure, and for identifying systemic problems", "To provide a procedure for billing customers for water quality testing", "To provide a procedure for reporting complaints to the Ministry of Environment"],
     correct: 1,
     explanation: "A water quality complaint response procedure ensures complaints are investigated promptly and thoroughly. It includes: recording complaint details, investigating the cause (sampling, inspection), taking corrective action, communicating with the customer, and documenting the outcome. Patterns of complaints can identify systemic problems (distribution system issues, treatment problems, source water changes) that require broader investigation.",
+    difficulty: "hard",
   },
   {
     id: 414,
@@ -3738,6 +4152,7 @@ export const QUESTIONS: Question[] = [
     options: ["To plan for the succession of the water utility's ownership", "To ensure continuity of operations by identifying and developing future leaders and skilled operators to fill key positions when incumbents retire or leave", "To plan for the succession of the water utility's infrastructure", "To plan for the succession of the water utility's regulatory approvals"],
     correct: 1,
     explanation: "Succession planning ensures continuity of operations by identifying and developing future leaders and skilled operators. The water sector faces significant workforce challenges — many experienced operators are approaching retirement, and specialized knowledge is at risk of being lost. Succession planning includes: identifying critical positions, assessing skill gaps, developing training and mentoring programs, and cross-training staff.",
+    difficulty: "hard",
   },
   {
     id: 415,
@@ -3747,6 +4162,7 @@ export const QUESTIONS: Question[] = [
     options: ["To generate revenue for the certification body", "To ensure operators maintain and update their knowledge and skills as technology, regulations, and best practices evolve", "To provide operators with opportunities for career advancement", "To ensure operators are familiar with the latest equipment from manufacturers"],
     correct: 1,
     explanation: "Continuing education requirements ensure certified operators maintain and update their knowledge as technology, regulations, and best practices evolve. Ontario requires operators to complete a minimum number of continuing education hours (CEUs) per certification cycle to renew their certification. Continuing education includes: workshops, courses, conferences, webinars, and on-the-job training. It prevents knowledge stagnation and promotes professional development.",
+    difficulty: "hard",
   },
   {
     id: 416,
@@ -3756,6 +4172,7 @@ export const QUESTIONS: Question[] = [
     options: ["To comply with regulatory reporting requirements only", "To characterize source water quality, detect changes and events, optimize treatment, and support risk assessment and planning", "To measure the effectiveness of the treatment process", "To measure the water level in the source water reservoir"],
     correct: 1,
     explanation: "A raw water quality monitoring program characterizes source water quality (seasonal patterns, long-term trends), detects quality changes and events (turbidity events, algal blooms, chemical spills), provides data for treatment optimization (adjusting coagulant doses, chemical feed), and supports risk assessment and planning. Comprehensive raw water monitoring is the foundation of effective drinking water treatment.",
+    difficulty: "hard",
   },
   {
     id: 417,
@@ -3765,6 +4182,7 @@ export const QUESTIONS: Question[] = [
     options: ["To plan for the replacement of turbidity meters during high turbidity events", "To provide documented procedures for responding to high turbidity events in the source water, including treatment adjustments and public notification protocols", "To plan for the construction of additional treatment capacity for high turbidity events", "To plan for the procurement of emergency chemical supplies during high turbidity events"],
     correct: 1,
     explanation: "A turbidity event response plan provides procedures for responding to high turbidity events (caused by storms, snowmelt, or watershed disturbances). It includes: turbidity trigger levels that activate different response actions, treatment adjustments (increased coagulant dose, reduced flow rate, intake depth changes), monitoring protocols, public notification triggers, and communication procedures. Pre-planning ensures rapid, effective response during events.",
+    difficulty: "hard",
   },
   {
     id: 418,
@@ -3774,6 +4192,7 @@ export const QUESTIONS: Question[] = [
     options: ["To manage the financial resources of the watershed authority", "To protect and improve the quality and quantity of water in the watershed through land use management, pollution prevention, and ecosystem restoration", "To manage the recreational use of the watershed", "To manage the forestry and agricultural activities in the watershed for economic purposes"],
     correct: 1,
     explanation: "A watershed management plan protects and improves source water quality and quantity through: land use management (restricting incompatible uses near intakes), pollution prevention (best management practices for agriculture, stormwater, septic systems), ecosystem restoration (riparian buffers, wetland restoration), and monitoring. Effective watershed management reduces treatment costs and risks by protecting the source water.",
+    difficulty: "hard",
   },
   {
     id: 419,
@@ -3783,6 +4202,7 @@ export const QUESTIONS: Question[] = [
     options: ["To monitor the temperature of the water for drinking water quality purposes", "To monitor the development and breakdown of thermal stratification to predict water quality changes and optimize intake depth selection", "To monitor the thermal efficiency of the treatment plant", "To monitor the temperature of the water for recreational safety purposes"],
     correct: 1,
     explanation: "Thermal stratification monitoring tracks the development and breakdown of temperature layers in reservoirs. Stratification affects water quality: the hypolimnion (bottom layer) can become anoxic, releasing iron, manganese, hydrogen sulfide, and taste/odour compounds from sediments. Monitoring guides intake depth selection (drawing from the best quality layer) and predicts the timing of fall turnover, which can cause sudden water quality changes.",
+    difficulty: "hard",
   },
   {
     id: 420,
@@ -3792,6 +4212,7 @@ export const QUESTIONS: Question[] = [
     options: ["To monitor the water level in the distribution system storage tanks", "To track changes in the water table to assess aquifer sustainability, detect over-pumping, and predict seasonal yield variations", "To monitor the water level in the treatment plant clearwell", "To monitor the water level in the source water reservoir"],
     correct: 1,
     explanation: "Groundwater level monitoring tracks changes in the water table (piezometric surface) over time. It assesses: aquifer sustainability (is pumping exceeding recharge?), over-pumping effects (declining water levels, reduced well yield, potential for saltwater intrusion or aquifer compaction), seasonal variations (spring recharge, summer drawdown), and the effects of nearby pumping. Monitoring data supports sustainable groundwater management.",
+    difficulty: "hard",
   },
   {
     id: 421,
@@ -3801,6 +4222,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure the water quality of the well water", "To determine the maximum sustainable pumping rate of a well and the aquifer's ability to supply water at that rate", "To test the structural integrity of the well casing", "To measure the depth of the water table in the well"],
     correct: 1,
     explanation: "A well yield test (pumping test) determines the maximum sustainable pumping rate of a well. During the test, the well is pumped at increasing rates while monitoring the drawdown (water level decline). The specific capacity (flow rate / drawdown) indicates the well's productivity. The test also provides data on aquifer transmissivity and storage coefficient, which are used to design sustainable pumping programs.",
+    difficulty: "hard",
   },
   {
     id: 422,
@@ -3810,6 +4232,7 @@ export const QUESTIONS: Question[] = [
     options: ["To designate the area around the wellhead where maintenance activities are permitted", "To designate the area around a well from which groundwater flows to the well, within which land use activities are managed to protect groundwater quality", "To designate the area around the wellhead where public access is restricted", "To designate the area around the wellhead where the water utility has property rights"],
     correct: 1,
     explanation: "A Wellhead Protection Area (WHPA) designates the area around a well from which groundwater flows to the well within a specified time period (typically 25, 100, and 250 days). Land use activities within the WHPA are managed to protect groundwater quality — activities that could contaminate groundwater (fuel storage, septic systems, pesticide application) may be restricted or prohibited. WHPA designation is a key element of Ontario's Source Water Protection program.",
+    difficulty: "hard",
   },
   {
     id: 423,
@@ -3819,6 +4242,7 @@ export const QUESTIONS: Question[] = [
     options: ["To replace aging wells with new ones on a fixed schedule", "To restore well yield and water quality that have declined due to biofouling, mineral encrustation, or physical deterioration of the well components", "To rehabilitate the wellhead area for aesthetic purposes", "To rehabilitate wells that have been contaminated by surface water"],
     correct: 1,
     explanation: "Well rehabilitation restores well yield and water quality that have declined due to: biofouling (iron bacteria, sulfur bacteria clogging the screen and gravel pack), mineral encrustation (calcium carbonate, iron oxide deposits), or physical deterioration (corroded casing, damaged screen). Rehabilitation methods include: chemical treatment (acid, disinfectant), mechanical cleaning (wire brush, jetting), and video inspection to assess condition.",
+    difficulty: "hard",
   },
   {
     id: 424,
@@ -3828,6 +4252,7 @@ export const QUESTIONS: Question[] = [
     options: ["To assess the influence of groundwater on surface water quality", "To determine if a groundwater source is influenced by surface water, which would require surface water treatment standards (filtration, higher disinfection)", "To assess the influence of groundwater on the distribution system", "To assess the influence of surface water on groundwater levels"],
     correct: 1,
     explanation: "A GUDI assessment determines whether a groundwater source is influenced by surface water. GUDI sources have characteristics of both groundwater and surface water — they may contain surface water pathogens (Cryptosporidium, Giardia) that would not be present in a true groundwater source. If a source is classified as GUDI, it must meet surface water treatment standards, including filtration and higher disinfection requirements.",
+    difficulty: "hard",
   },
   {
     id: 425,
@@ -3837,6 +4262,7 @@ export const QUESTIONS: Question[] = [
     options: ["To filter water through the bank of a river using conventional filtration media", "To use the natural filtration and attenuation of the riverbed and aquifer to improve source water quality before it reaches the intake wells", "To filter water from a river using a bank of filters in parallel", "To filter water from a river using the natural vegetation on the river bank"],
     correct: 1,
     explanation: "Bank filtration (riverbank filtration) uses the natural filtration and attenuation of the riverbed and aquifer to improve source water quality. Wells are installed near a river; when pumped, they draw river water through the riverbed and aquifer before reaching the well. This natural filtration removes: turbidity, pathogens (Cryptosporidium, Giardia, bacteria, viruses), organic compounds, and temperature fluctuations. Bank filtration can reduce treatment requirements.",
+    difficulty: "hard",
   },
   {
     id: 426,
@@ -3846,6 +4272,7 @@ export const QUESTIONS: Question[] = [
     options: ["To select the depth of the intake pipe for aesthetic purposes", "To draw water from the depth with the best quality, avoiding layers with high turbidity, algae, taste/odour compounds, or low dissolved oxygen", "To select the depth of the intake to maximize water temperature", "To select the depth of the intake to minimize pumping costs"],
     correct: 1,
     explanation: "A multi-level intake system allows operators to draw water from the depth with the best quality in a stratified reservoir. During summer stratification: the epilimnion may have high algae and warm temperatures; the hypolimnion may have low DO, high iron/manganese, and taste/odour compounds; the metalimnion (thermocline) often has the best quality. Depth selection optimizes raw water quality and reduces treatment challenges.",
+    difficulty: "hard",
   },
   {
     id: 427,
@@ -3855,6 +4282,7 @@ export const QUESTIONS: Question[] = [
     options: ["To blend different chemical solutions before adding them to the raw water", "To blend water from different sources or intake depths to achieve a consistent, optimal raw water quality for treatment", "To blend treated water with raw water to reduce treatment costs", "To blend raw water with recycled water to increase supply"],
     correct: 1,
     explanation: "Raw water blending combines water from different sources (e.g., two reservoirs, different intake depths) to achieve a consistent, optimal raw water quality for treatment. Blending can: dilute high-turbidity water with cleaner water, balance seasonal quality variations, optimize the balance between hardness, alkalinity, and NOM for treatment, and provide operational flexibility. Blending requires careful management to avoid introducing contaminants.",
+    difficulty: "hard",
   },
   {
     id: 428,
@@ -3864,6 +4292,7 @@ export const QUESTIONS: Question[] = [
     options: ["To monitor algal blooms for recreational safety purposes only", "To detect algal blooms early and implement treatment responses to manage taste/odour, cyanotoxin, and treatment challenges before they affect water quality", "To monitor algal blooms for environmental compliance purposes", "To monitor algal blooms to assess the effectiveness of nutrient management programs"],
     correct: 1,
     explanation: "An algal bloom monitoring and response program detects blooms early (through chlorophyll-a, phycocyanin, cell counts, cyanotoxin monitoring) and implements treatment responses: activated carbon (PAC) dosing for taste/odour and cyanotoxin removal, intake depth adjustment, pre-oxidation (potassium permanganate, chlorine), and public notification if cyanotoxins exceed health-based thresholds. Early detection allows proactive treatment adjustments.",
+    difficulty: "hard",
   },
   {
     id: 429,
@@ -3873,6 +4302,7 @@ export const QUESTIONS: Question[] = [
     options: ["To manage stormwater for flood control purposes only", "To reduce the transport of pathogens, sediment, nutrients, and contaminants from the watershed to the drinking water source during storm events", "To manage stormwater for recreational purposes", "To manage stormwater to recharge the groundwater aquifer"],
     correct: 1,
     explanation: "Stormwater management in a drinking water watershed reduces the transport of contaminants to the source water. Stormwater carries: pathogens (from agricultural runoff, septic systems, wildlife), sediment (increasing turbidity), nutrients (phosphorus, nitrogen promoting algal growth), and chemical contaminants (pesticides, hydrocarbons). Stormwater management measures include: retention ponds, constructed wetlands, riparian buffers, and best management practices for agriculture and urban areas.",
+    difficulty: "hard",
   },
   {
     id: 430,
@@ -3882,6 +4312,7 @@ export const QUESTIONS: Question[] = [
     options: ["To plan for spills of treatment chemicals at the water treatment plant", "To provide procedures for responding to chemical or fuel spills in the watershed that could contaminate the drinking water source", "To plan for spills of water from the distribution system", "To plan for spills of water treatment residuals"],
     correct: 1,
     explanation: "A spill response plan for the watershed provides procedures for responding to chemical or fuel spills (from transportation accidents, industrial facilities, agricultural operations) that could contaminate the drinking water source. It includes: notification procedures (to the water utility, emergency services, and regulators), intake closure criteria, source monitoring protocols, treatment adjustments, and public communication. Pre-planning enables rapid, coordinated response to protect the water supply.",
+    difficulty: "hard",
   },
   {
     id: 431,
@@ -3891,6 +4322,7 @@ export const QUESTIONS: Question[] = [
     options: ["To assess the financial vulnerability of the water utility to climate change", "To identify how climate change may affect source water quality and quantity, and to develop adaptation strategies to maintain safe drinking water supply", "To assess the vulnerability of the treatment plant infrastructure to extreme weather events", "To assess the vulnerability of the distribution system to climate change"],
     correct: 1,
     explanation: "A climate change vulnerability assessment identifies how projected changes in temperature, precipitation, and extreme weather events may affect source water quality (increased turbidity events, algal blooms, cyanotoxins) and quantity (reduced flows, drought). It develops adaptation strategies such as: enhanced treatment capacity, additional storage, alternative sources, and watershed management measures to maintain a safe, reliable drinking water supply under future climate conditions.",
+    difficulty: "hard",
   },
   {
     id: 432,
@@ -3900,6 +4332,7 @@ export const QUESTIONS: Question[] = [
     options: ["0.1 NTU", "0.3 NTU", "1.0 NTU", "5.0 NTU"],
     correct: 1,
     explanation: "Ontario Regulation 170/03 requires that treated water turbidity not exceed 0.3 NTU in 95% of measurements taken each month. Turbidity is a key indicator of filtration effectiveness and pathogen removal.",
+    difficulty: "hard",
   },
   {
     id: 433,
@@ -3909,6 +4342,7 @@ export const QUESTIONS: Question[] = [
     options: ["Resample the same tap within 24 hours", "Issue a boil water advisory immediately", "Notify the Ministry of Environment within 24 hours", "Both A and C"],
     correct: 3,
     explanation: "Under O. Reg. 170/03, a total coliform positive requires immediate resampling AND notification to the local Medical Officer of Health and the Ministry of Environment within 24 hours. A boil water advisory may follow depending on E. coli results.",
+    difficulty: "hard",
   },
   {
     id: 434,
@@ -3918,6 +4352,7 @@ export const QUESTIONS: Question[] = [
     options: ["Titration with sodium thiosulfate", "DPD colorimetric method", "Amperometric titration", "Iodometric back-titration"],
     correct: 1,
     explanation: "The DPD (N,N-diethyl-p-phenylenediamine) colorimetric method is the most widely used field method for measuring free chlorine. It produces a pink color proportional to chlorine concentration, readable with a colorimeter or comparator.",
+    difficulty: "hard",
   },
   {
     id: 435,
@@ -3927,6 +4362,7 @@ export const QUESTIONS: Question[] = [
     options: ["Use a single buffer solution at pH 7", "Use two buffer solutions bracketing the expected sample pH", "Rinse electrode with distilled water only", "Calibrate once per week"],
     correct: 1,
     explanation: "A pH meter should be calibrated with two buffer solutions that bracket the expected pH of the sample. Common buffer pairs are pH 4 and 7, or pH 7 and 10. Two-point calibration corrects for both offset and slope errors.",
+    difficulty: "hard",
   },
   {
     id: 436,
@@ -3936,6 +4372,7 @@ export const QUESTIONS: Question[] = [
     options: ["Total dissolved solids", "Total hardness (calcium + magnesium)", "Alkalinity", "Chloride concentration"],
     correct: 1,
     explanation: "EDTA (ethylenediaminetetraacetic acid) titration is the standard method for measuring total hardness, which represents the combined concentration of calcium and magnesium ions. The endpoint is indicated by a color change from wine-red to blue using Eriochrome Black T indicator.",
+    difficulty: "hard",
   },
   {
     id: 437,
@@ -3945,6 +4382,7 @@ export const QUESTIONS: Question[] = [
     options: ["Methyl orange", "Phenolphthalein", "Bromocresol green", "Eriochrome Black T"],
     correct: 1,
     explanation: "Phenolphthalein indicator turns from pink to colorless at pH 8.3, marking the P-alkalinity endpoint. This represents the conversion of carbonate to bicarbonate. Total alkalinity (T-alkalinity) uses methyl orange or bromocresol green, with an endpoint at pH 4.5.",
+    difficulty: "hard",
   },
   {
     id: 438,
@@ -3954,6 +4392,7 @@ export const QUESTIONS: Question[] = [
     options: ["No flushing required", "30 seconds", "2–3 minutes", "10 minutes"],
     correct: 1,
     explanation: "For a routine distribution system bacteriological sample, flush the tap for 2–3 minutes to clear the service line and ensure the sample represents the distribution system water, not stagnant water sitting in the plumbing. Do not flush for first-draw lead samples.",
+    difficulty: "hard",
   },
   {
     id: 439,
@@ -3963,6 +4402,7 @@ export const QUESTIONS: Question[] = [
     options: ["Sodium hydroxide", "Sodium thiosulfate", "Hydrochloric acid", "Ascorbic acid"],
     correct: 1,
     explanation: "Sodium thiosulfate (Na₂S₂O₃) is pre-added to sterile bacteriological sample bottles to neutralize residual chlorine. Without dechlorination, residual chlorine would continue to kill bacteria in the sample, potentially masking contamination.",
+    difficulty: "hard",
   },
   {
     id: 440,
@@ -3972,6 +4412,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure turbidity of raw water", "To determine optimal coagulant dose and pH", "To test for bacteriological contamination", "To measure chlorine demand"],
     correct: 1,
     explanation: "Jar testing simulates the coagulation-flocculation-sedimentation process in the laboratory to determine the optimal coagulant type, dose, and pH for current raw water conditions. Results guide chemical feed adjustments at the plant.",
+    difficulty: "hard",
   },
   {
     id: 441,
@@ -3981,6 +4422,7 @@ export const QUESTIONS: Question[] = [
     options: ["Chloroform, bromodichloromethane, dibromochloromethane, bromoform", "Chloroform, trichloroethylene, carbon tetrachloride, bromoform", "Chloramine, chloroform, bromoform, iodoform", "Dichloromethane, chloroform, bromoform, fluoroform"],
     correct: 0,
     explanation: "The four regulated THMs (total trihalomethanes, TTHM) are chloroform (CHCl₃), bromodichloromethane (CHBrCl₂), dibromochloromethane (CHBr₂Cl), and bromoform (CHBr₃). They form when chlorine reacts with natural organic matter. Ontario's MAC is 100 μg/L for TTHM.",
+    difficulty: "hard",
   },
   {
     id: 442,
@@ -3990,6 +4432,7 @@ export const QUESTIONS: Question[] = [
     options: ["0.7 mg/L", "1.5 mg/L", "2.0 mg/L", "4.0 mg/L"],
     correct: 1,
     explanation: "Ontario's MAC for fluoride is 1.5 mg/L, consistent with Health Canada guidelines. The optimal range for dental health is 0.6–0.8 mg/L. Fluoride above 1.5 mg/L can cause dental fluorosis; very high levels (>4 mg/L) can cause skeletal fluorosis.",
+    difficulty: "hard",
   },
   {
     id: 443,
@@ -3999,6 +4442,7 @@ export const QUESTIONS: Question[] = [
     options: ["Yellow to orange", "Black to dark brown", "Green", "Blue"],
     correct: 1,
     explanation: "When dissolved manganese (Mn²⁺) is oxidized by chlorine or other oxidants, it forms manganese dioxide (MnO₂), which appears as black or dark brown particles. This causes customer complaints about black or dark staining of fixtures and laundry.",
+    difficulty: "hard",
   },
   {
     id: 444,
@@ -4008,6 +4452,7 @@ export const QUESTIONS: Question[] = [
     options: ["The amount of dissolved oxygen", "The ability of water to conduct electricity, related to dissolved ion concentration", "The pH of the water", "The turbidity of the water"],
     correct: 1,
     explanation: "Electrical conductivity measures the ability of water to conduct an electric current, which is directly related to the concentration of dissolved ions (minerals, salts). It is expressed in microsiemens per centimeter (μS/cm) and is used as a general indicator of total dissolved solids (TDS).",
+    difficulty: "hard",
   },
   {
     id: 445,
@@ -4017,6 +4462,7 @@ export const QUESTIONS: Question[] = [
     options: ["Free chlorine residual", "Dissolved oxygen", "Biochemical oxygen demand", "Total organic carbon"],
     correct: 1,
     explanation: "The Winkler (iodometric) method is a titrimetric technique for measuring dissolved oxygen (DO). It involves fixing oxygen with manganese sulfate and alkali-iodide reagent, then titrating the released iodine with sodium thiosulfate. It is the reference method for DO measurement.",
+    difficulty: "hard",
   },
   {
     id: 446,
@@ -4026,6 +4472,7 @@ export const QUESTIONS: Question[] = [
     options: ["Total coliform bacteria only", "E. coli only", "General bacterial population in water", "Cryptosporidium oocysts"],
     correct: 2,
     explanation: "HPC (also called standard plate count or aerobic plate count) measures the general population of heterotrophic bacteria in water. While not a direct health indicator, elevated HPC (>500 CFU/mL) can indicate treatment problems, biofilm growth in distribution, or inadequate disinfectant residual.",
+    difficulty: "hard",
   },
   {
     id: 447,
@@ -4035,6 +4482,7 @@ export const QUESTIONS: Question[] = [
     options: ["5 mg/L as N", "10 mg/L as N", "45 mg/L as NO₃", "100 mg/L as NO₃"],
     correct: 1,
     explanation: "Ontario's MAC for nitrate is 10 mg/L as nitrogen (equivalent to 45 mg/L as NO₃). Nitrate above this level poses a risk of methemoglobinemia (blue baby syndrome) in infants under 6 months. The MAC aligns with Health Canada and WHO guidelines.",
+    difficulty: "hard",
   },
   {
     id: 448,
@@ -4044,6 +4492,7 @@ export const QUESTIONS: Question[] = [
     options: ["Chlorine demand = chlorine applied + chlorine residual", "Chlorine demand = chlorine applied − chlorine residual", "Chlorine demand = chlorine residual × contact time", "Chlorine demand = chlorine applied × contact time"],
     correct: 1,
     explanation: "Chlorine demand is the amount of chlorine consumed by reactions with organic matter, ammonia, iron, manganese, and other reducing substances. It equals the chlorine dose applied minus the residual remaining after a specified contact time: Demand = Dose − Residual.",
+    difficulty: "hard",
   },
   {
     id: 449,
@@ -4053,6 +4502,7 @@ export const QUESTIONS: Question[] = [
     options: ["Corrosive and will dissolve pipe material", "Slightly scale-forming and will deposit calcium carbonate", "Perfectly balanced (neither corrosive nor scale-forming)", "Highly aggressive — immediate action required"],
     correct: 1,
     explanation: "A positive LSI indicates the water is supersaturated with calcium carbonate and tends to deposit scale. An LSI of +0.5 is mildly scale-forming. An LSI of 0 is balanced. A negative LSI indicates corrosive water that tends to dissolve calcium carbonate from pipe walls and cement linings.",
+    difficulty: "hard",
   },
   {
     id: 450,
@@ -4062,6 +4512,7 @@ export const QUESTIONS: Question[] = [
     options: ["Once per week", "Once per day", "Continuously or at least 4 times per day", "Once per month"],
     correct: 2,
     explanation: "Ontario Regulation 170/03 requires continuous monitoring or at least 4 measurements per day of chlorine residual at the point of entry to the distribution system for large municipal residential systems. This ensures disinfection is maintained at all times.",
+    difficulty: "hard",
   },
   {
     id: 451,
@@ -4071,6 +4522,7 @@ export const QUESTIONS: Question[] = [
     options: ["100 mg/L", "250 mg/L", "500 mg/L", "1000 mg/L"],
     correct: 2,
     explanation: "The aesthetic objective for TDS in Ontario is 500 mg/L. Above this level, water may taste salty or bitter and can cause scale formation. TDS is not a health-based standard but affects palatability and household appliance performance.",
+    difficulty: "hard",
   },
   {
     id: 452,
@@ -4080,6 +4532,7 @@ export const QUESTIONS: Question[] = [
     options: ["Flush sample after 2 minutes", "First-draw sample after 6 hours of stagnation", "Running water sample", "Hot water sample"],
     correct: 1,
     explanation: "Lead at the tap is assessed using a first-draw sample collected after at least 6 hours of stagnation (no water use). This captures water that has been in contact with lead solder, brass fittings, or lead service lines. Ontario's MAC for lead is 0.010 mg/L (10 μg/L).",
+    difficulty: "hard",
   },
   {
     id: 453,
@@ -4089,6 +4542,7 @@ export const QUESTIONS: Question[] = [
     options: ["5 TCU", "15 TCU", "25 TCU", "50 TCU"],
     correct: 1,
     explanation: "The aesthetic objective for colour in Ontario drinking water is 15 True Colour Units (TCU). Colour above 15 TCU is noticeable to consumers and may indicate the presence of natural organic matter (NOM), iron, or manganese. High NOM levels can also increase DBP formation potential.",
+    difficulty: "hard",
   },
   {
     id: 454,
@@ -4098,6 +4552,7 @@ export const QUESTIONS: Question[] = [
     options: ["To remove Cryptosporidium from drinking water", "To concentrate bacteria from a water sample onto a filter for counting", "To measure turbidity", "To test for chemical contamination"],
     correct: 1,
     explanation: "Membrane filtration is a bacteriological analysis technique where a water sample is passed through a 0.45 μm membrane filter that traps bacteria. The filter is then placed on selective growth media and incubated. Colonies are counted to determine bacterial concentration (e.g., total coliforms, E. coli per 100 mL).",
+    difficulty: "hard",
   },
   {
     id: 455,
@@ -4107,6 +4562,7 @@ export const QUESTIONS: Question[] = [
     options: ["The exact number of coliform bacteria per 100 mL", "Whether coliforms are present or absent in a 100 mL sample", "The species of coliform bacteria present", "The concentration of E. coli only"],
     correct: 1,
     explanation: "The P/A test is a qualitative test that indicates whether total coliforms or E. coli are present or absent in a 100 mL water sample. It does not quantify the number of organisms. A positive result (color change or gas production) triggers follow-up action under Ontario regulations.",
+    difficulty: "hard",
   },
   {
     id: 456,
@@ -4116,6 +4572,7 @@ export const QUESTIONS: Question[] = [
     options: ["Ammonia causes taste and odour problems at all concentrations", "Excess free ammonia can lead to nitrification in the distribution system", "Ammonia is a regulated contaminant with a MAC of 0.5 mg/L", "Ammonia reacts with iron to form scale"],
     correct: 1,
     explanation: "In chloraminated systems, excess free ammonia (ammonia not combined with chlorine) can support nitrifying bacteria in the distribution system. Nitrification consumes chloramine residual, raises nitrite levels, and can compromise microbial water quality. Monitoring the chlorine-to-ammonia ratio is critical.",
+    difficulty: "hard",
   },
   {
     id: 457,
@@ -4125,6 +4582,7 @@ export const QUESTIONS: Question[] = [
     options: ["4 samples", "10 samples", "25 samples", "40 samples"],
     correct: 1,
     explanation: "Under O. Reg. 170/03, the minimum sampling frequency for bacteriological testing is based on population served. A system serving 10,000 people requires approximately 10 samples per month. The exact number follows a schedule in the regulation based on population tiers.",
+    difficulty: "hard",
   },
   {
     id: 458,
@@ -4134,6 +4592,7 @@ export const QUESTIONS: Question[] = [
     options: ["Free chlorine is HOCl and OCl⁻; combined chlorine is chloramines formed with ammonia", "Free chlorine is chloramine; combined chlorine is hypochlorous acid", "Free chlorine is only HOCl; combined chlorine is only OCl⁻", "There is no practical difference in disinfection effectiveness"],
     correct: 0,
     explanation: "Free chlorine refers to hypochlorous acid (HOCl) and hypochlorite ion (OCl⁻) — the active disinfectant forms. Combined chlorine refers to chloramines (monochloramine, dichloramine, trichloramine) formed when free chlorine reacts with ammonia. Total chlorine = free + combined chlorine.",
+    difficulty: "hard",
   },
   {
     id: 459,
@@ -4143,6 +4602,7 @@ export const QUESTIONS: Question[] = [
     options: ["The amount of dissolved oxygen in the water", "The concentration of organic matter, which is a precursor to DBP formation", "The concentration of total coliforms", "The biological oxygen demand of the water"],
     correct: 1,
     explanation: "TOC measures the total concentration of organic carbon in water, which represents natural organic matter (NOM) from decomposing vegetation, algae, and soil. High TOC indicates higher DBP formation potential when chlorine is added, and may require enhanced coagulation or other NOM removal strategies.",
+    difficulty: "hard",
   },
   {
     id: 460,
@@ -4152,6 +4612,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure chemical oxygen demand", "To monitor filter performance and detect filter breakthrough", "To measure chlorine residual", "To count coliform bacteria"],
     correct: 1,
     explanation: "Particle counters measure the number and size distribution of particles in water. In water treatment, they are used to monitor filter effluent quality and detect filter breakthrough (when particles pass through the filter). A sudden increase in particle counts indicates filter problems before turbidity meters respond.",
+    difficulty: "hard",
   },
   {
     id: 461,
@@ -4161,6 +4622,7 @@ export const QUESTIONS: Question[] = [
     options: ["Standard plate count method", "EPA Method 1623 (filtration, IMS, IFA)", "Membrane filtration with selective media", "PCR only"],
     correct: 1,
     explanation: "EPA Method 1623 (or 1623.1) is the standard method for detecting Cryptosporidium and Giardia in water. It involves concentrating a large water sample (10–100 L) by filtration, immunomagnetic separation (IMS) to isolate oocysts/cysts, and immunofluorescence assay (IFA) with DAPI staining for confirmation.",
+    difficulty: "hard",
   },
   {
     id: 462,
@@ -4170,6 +4632,7 @@ export const QUESTIONS: Question[] = [
     options: ["The concentration of hydrogen sulfide in mg/L", "The dilution factor at which an odour is just barely detectable by a trained panel", "The pH at which taste becomes noticeable", "The number of taste complaints per 1000 customers"],
     correct: 1,
     explanation: "The Threshold Odour Number (TON) is determined by diluting a water sample until the odour is just barely detectable by a trained sensory panel. A TON of 1 means no dilution is needed; a TON of 10 means the sample must be diluted 10:1. Ontario's aesthetic objective is TON ≤ 3.",
+    difficulty: "hard",
   },
   {
     id: 463,
@@ -4179,6 +4642,7 @@ export const QUESTIONS: Question[] = [
     options: ["0.05 mg/L", "0.1 mg/L", "0.2 mg/L", "0.5 mg/L"],
     correct: 1,
     explanation: "Ontario Regulation 170/03 requires a minimum free chlorine residual of 0.1 mg/L at all points in the distribution system. This ensures continued protection against microbial contamination as water travels from the treatment plant to consumers. Many systems target 0.2–0.5 mg/L for an adequate safety margin.",
+    difficulty: "hard",
   },
   {
     id: 464,
@@ -4188,6 +4652,7 @@ export const QUESTIONS: Question[] = [
     options: ["To measure background contamination from sampling equipment and procedures", "To calibrate the turbidimeter", "To test the chlorine demand of the sample bottle", "To measure the pH of the sampling location"],
     correct: 0,
     explanation: "A field blank is a sample of contaminant-free water (e.g., distilled water) that is opened and handled in the field the same way as a real sample. It detects contamination introduced during sample collection, transport, or handling. If the field blank shows contamination, the associated samples may be compromised.",
+    difficulty: "hard",
   },
   {
     id: 465,
@@ -4197,6 +4662,7 @@ export const QUESTIONS: Question[] = [
     options: ["The minimum chlorine dose needed to achieve a target residual after a specified contact time", "The maximum chlorine that can be added before taste complaints occur", "The concentration of chlorine byproducts at a given dose", "The rate of chlorine decay in the distribution system"],
     correct: 0,
     explanation: "A chlorine demand test determines how much chlorine is consumed by a water sample over a specified contact time (e.g., 30 minutes, 24 hours). This tells the operator the minimum dose needed to achieve a target residual. Demand varies with organic content, ammonia, iron, manganese, and temperature.",
+    difficulty: "hard",
   },
   {
     id: 466,
@@ -4206,6 +4672,7 @@ export const QUESTIONS: Question[] = [
     options: ["mg/L", "NTU (Nephelometric Turbidity Units)", "CFU/100 mL", "μS/cm"],
     correct: 1,
     explanation: "Turbidity is measured in Nephelometric Turbidity Units (NTU), which quantify light scattering by suspended particles. Nephelometric measurement uses a 90° light-scattering detector, which is more sensitive at low turbidities than forward-scatter methods. Ontario's treatment standard is ≤0.3 NTU in 95% of measurements.",
+    difficulty: "hard",
   },
   {
     id: 467,
@@ -4215,6 +4682,7 @@ export const QUESTIONS: Question[] = [
     options: ["Flammable material", "Acute toxicity (fatal or toxic if swallowed, inhaled, or absorbed through skin)", "Environmental hazard", "Corrosive material"],
     correct: 1,
     explanation: "The skull and crossbones pictogram under WHMIS 2015 (aligned with GHS) indicates acute toxicity — the product can cause death or serious harm after a single or short-term exposure through ingestion, inhalation, or skin absorption. This is commonly seen on chlorine gas cylinders and concentrated acid labels.",
+    difficulty: "hard",
   },
   {
     id: 468,
@@ -4224,6 +4692,7 @@ export const QUESTIONS: Question[] = [
     options: ["Flammability, then oxygen, then toxics", "Oxygen content, then flammability, then toxic gases", "Toxic gases, then oxygen, then flammability", "Oxygen content only is required"],
     correct: 1,
     explanation: "Confined space atmospheric testing must be performed in this order: (1) oxygen content (must be 19.5–23% O₂), (2) flammability (must be below 10% of Lower Explosive Limit), (3) toxic gases (e.g., H₂S, CO, Cl₂). Testing oxygen first ensures the meter works correctly, as low oxygen can affect sensor readings.",
+    difficulty: "hard",
   },
   {
     id: 469,
@@ -4233,6 +4702,7 @@ export const QUESTIONS: Question[] = [
     options: ["Safety glasses and nitrile gloves", "Half-face respirator with organic vapor cartridge", "Self-contained breathing apparatus (SCBA) and full chemical protective suit", "N95 mask and safety goggles"],
     correct: 2,
     explanation: "Chlorine gas is immediately dangerous to life and health (IDLH) at 10 ppm. Response to a chlorine gas leak requires SCBA (self-contained breathing apparatus) providing a positive-pressure air supply, and a full chemical protective suit. Half-face respirators with chemical cartridges are not adequate for emergency response.",
+    difficulty: "hard",
   },
   {
     id: 470,
@@ -4242,6 +4712,7 @@ export const QUESTIONS: Question[] = [
     options: ["The system can operate without a certified operator for up to 6 months", "The owner must notify the Director and may be required to shut down the system", "Any employee can operate the system temporarily", "The municipality automatically assumes operation"],
     correct: 1,
     explanation: "Under O. Reg. 128/04, water systems must have a certified operator in responsible charge at all times. If the certified operator leaves and no replacement is found, the owner must notify the Director of the Ministry of Environment. Failure to have a certified operator can result in enforcement action, including orders to cease operation.",
+    difficulty: "hard",
   },
   {
     id: 471,
@@ -4251,6 +4722,7 @@ export const QUESTIONS: Question[] = [
     options: ["Increase chlorine dosage immediately", "Notify the Medical Officer of Health and follow the emergency response plan", "Issue a press release to the media", "Shut down the water system"],
     correct: 1,
     explanation: "When a BWA is required, the operator must immediately notify the Medical Officer of Health (MOH) and the Ministry of Environment, Conservation and Parks (MECP). The emergency response plan outlines specific notification procedures, corrective actions, and public communication protocols. The MOH determines whether to issue the BWA.",
+    difficulty: "hard",
   },
   {
     id: 472,
@@ -4260,6 +4732,7 @@ export const QUESTIONS: Question[] = [
     options: ["To prevent unauthorized access to the water plant", "To isolate energy sources and prevent accidental equipment startup during maintenance", "To track chemical inventory", "To record equipment maintenance history"],
     correct: 1,
     explanation: "Lockout/tagout (LOTO) procedures are required under Ontario's Occupational Health and Safety Act to protect workers from the unexpected energization or startup of machinery during maintenance. Energy sources (electrical, hydraulic, pneumatic, chemical) must be isolated and locked out before any maintenance work begins.",
+    difficulty: "hard",
   },
   {
     id: 473,
@@ -4269,6 +4742,7 @@ export const QUESTIONS: Question[] = [
     options: ["Within 1 hour", "Within 24 hours", "Within 72 hours", "Within 7 days"],
     correct: 0,
     explanation: "Under Ontario Regulation 170/03, an adverse water quality incident (AWQI) — such as a positive E. coli result, failure to maintain minimum chlorine residual, or exceedance of a MAC — must be reported to the local Medical Officer of Health and the Ministry of Environment within 1 hour of the owner becoming aware of the incident.",
+    difficulty: "hard",
   },
   {
     id: 474,
@@ -4278,6 +4752,7 @@ export const QUESTIONS: Question[] = [
     options: ["1 ppm", "3 ppm", "10 ppm", "25 ppm"],
     correct: 2,
     explanation: "The IDLH for chlorine gas is 10 ppm. At this concentration, exposure poses an immediate threat to life or health. The OSHA permissible exposure limit (PEL) is 1 ppm ceiling, and the NIOSH recommended exposure limit (REL) is 0.5 ppm ceiling. Chlorine can be detected by smell at 0.5–1 ppm.",
+    difficulty: "hard",
   },
   {
     id: 475,
@@ -4287,6 +4762,7 @@ export const QUESTIONS: Question[] = [
     options: ["To assess the risk of natural disasters only", "To identify critical assets, threats, vulnerabilities, and countermeasures to protect the system", "To evaluate operator competency", "To assess chemical storage compliance"],
     correct: 1,
     explanation: "A Security Vulnerability Assessment (SVA) systematically identifies critical assets (pumps, chemical storage, SCADA), potential threats (physical attack, cyber attack, contamination), vulnerabilities (unlocked gates, unmonitored access), and countermeasures. Large water systems in Ontario are required to have SVAs under provincial regulations.",
+    difficulty: "hard",
   },
   {
     id: 476,
@@ -4296,6 +4772,7 @@ export const QUESTIONS: Question[] = [
     options: ["1 year", "5 years", "10 years", "25 years"],
     correct: 1,
     explanation: "Ontario Regulation 170/03 requires that water quality monitoring records be retained for a minimum of 5 years. Records include sampling results, treatment data, equipment maintenance logs, and operator certifications. Proper record keeping is essential for regulatory compliance and legal protection.",
+    difficulty: "hard",
   },
   {
     id: 477,
@@ -4305,6 +4782,7 @@ export const QUESTIONS: Question[] = [
     options: ["Class 1 Water Treatment", "Class 2 Water Treatment", "Class 3 Water Treatment", "Any certified operator"],
     correct: 1,
     explanation: "Under Ontario Regulation 128/04, the operator in responsible charge (ORC) of a Class 2 water treatment facility must hold a minimum of a Class 2 Water Treatment Operator certificate. The facility classification is based on treatment complexity, and the ORC must hold a certificate at least equal to the facility class.",
+    difficulty: "hard",
   },
   {
     id: 478,
@@ -4314,6 +4792,7 @@ export const QUESTIONS: Question[] = [
     options: ["No PPE required for dilute solutions", "Safety glasses only", "Chemical splash goggles, face shield, chemical-resistant gloves, and apron", "Dust mask and safety glasses"],
     correct: 2,
     explanation: "Sodium hypochlorite is a corrosive oxidizer that can cause severe eye and skin burns. Required PPE includes chemical splash goggles, face shield, chemical-resistant gloves (nitrile or neoprene), and a chemical-resistant apron. Adequate ventilation is also required as hypochlorite releases chlorine gas, especially when mixed with acids.",
+    difficulty: "hard",
   },
   {
     id: 479,
@@ -4323,6 +4802,7 @@ export const QUESTIONS: Question[] = [
     options: ["A set of water quality standards for treated water", "A management system framework for municipal water systems requiring QMS implementation", "A certification program for water operators", "A standard for chemical storage at water plants"],
     correct: 1,
     explanation: "The DWQMS (Ontario Regulation 188/07) requires owners and operators of municipal residential drinking water systems to establish, implement, and maintain a Quality Management System (QMS). The QMS includes a quality management plan, operational plans, risk assessments, and internal audits. Systems must be accredited by a third-party auditor.",
+    difficulty: "hard",
   },
   {
     id: 480,
@@ -4332,6 +4812,7 @@ export const QUESTIONS: Question[] = [
     options: ["Connect SCADA to the public internet for remote monitoring convenience", "Use default manufacturer passwords for simplicity", "Isolate SCADA networks from corporate IT networks and the internet", "Share SCADA access credentials among all operators"],
     correct: 2,
     explanation: "SCADA systems controlling critical water infrastructure should be isolated from corporate IT networks and the public internet using air gaps, firewalls, and demilitarized zones (DMZ). This prevents cyber attacks from compromising treatment controls. Other best practices include strong unique passwords, multi-factor authentication, and regular security patches.",
+    difficulty: "hard",
   },
   {
     id: 481,
@@ -4341,6 +4822,7 @@ export const QUESTIONS: Question[] = [
     options: ["Clean up the spill immediately without PPE to minimize spread", "Notify the supervisor and don appropriate PPE before approaching", "Call 911 immediately for all spills", "Dilute the spill with water"],
     correct: 1,
     explanation: "The first action in a chemical spill is to notify the supervisor and don appropriate PPE before approaching the spill. Never attempt to clean up an unknown chemical or a large spill without proper PPE. Assess the hazard using the SDS, evacuate if necessary, and follow the emergency response plan. Large spills may require calling the SPILLS Action Centre (1-800-268-6060).",
+    difficulty: "hard",
   },
   {
     id: 482,
@@ -4350,6 +4832,7 @@ export const QUESTIONS: Question[] = [
     options: ["To replace the need for manual sampling", "To provide real-time data for process control and early warning of problems", "To satisfy all regulatory monitoring requirements", "To eliminate the need for laboratory analysis"],
     correct: 1,
     explanation: "Continuous online monitors (turbidimeters, chlorine analyzers, pH meters, particle counters) provide real-time data for process control and early warning of treatment upsets. They do not replace regulatory grab sampling or laboratory analysis, but allow operators to respond immediately to changes in water quality rather than waiting for lab results.",
+    difficulty: "hard",
   },
   {
     id: 483,
@@ -4359,6 +4842,7 @@ export const QUESTIONS: Question[] = [
     options: ["Higher turbidity and more variable quality", "Lower turbidity, higher mineral content, and more stable temperature", "Higher organic matter content and more algae", "Lower hardness and lower pH"],
     correct: 1,
     explanation: "Groundwater typically has lower turbidity (fewer suspended particles), higher mineral content (more contact time with rock and soil), and more stable temperature compared to surface water. Surface water is more variable, with higher turbidity, more organic matter, and greater seasonal fluctuations in quality.",
+    difficulty: "hard",
   },
   {
     id: 484,
@@ -4368,6 +4852,7 @@ export const QUESTIONS: Question[] = [
     options: ["To regulate water treatment chemical dosing", "To identify and protect drinking water source areas from contamination threats", "To certify water operators", "To set maximum contaminant levels for treated water"],
     correct: 1,
     explanation: "Ontario's Clean Water Act (2006) requires Source Water Protection Plans that identify vulnerable areas around drinking water intakes and wellheads, assess threats (e.g., fuel storage, agriculture, septic systems), and implement policies to reduce or eliminate those threats. The goal is to protect source water quality before it reaches the treatment plant.",
+    difficulty: "hard",
   },
   {
     id: 485,
@@ -4377,6 +4862,7 @@ export const QUESTIONS: Question[] = [
     options: ["The area immediately surrounding a well casing at the surface", "The zone around a well from which groundwater flows to the well within a defined time period", "The treatment building at a well site", "The area where well maintenance is performed"],
     correct: 1,
     explanation: "A Wellhead Protection Area (WHPA) is the zone of land and water surrounding a municipal well from which groundwater flows to the well within a defined time period (e.g., 25 days, 2 years, 5 years). Activities within the WHPA are regulated to prevent contamination of the groundwater supply.",
+    difficulty: "hard",
   },
   {
     id: 486,
@@ -4386,6 +4872,7 @@ export const QUESTIONS: Question[] = [
     options: ["Increased turbidity only", "Production of cyanotoxins that can cause liver damage, neurological effects, and skin irritation", "Increased hardness", "Reduced chlorine demand"],
     correct: 1,
     explanation: "Cyanobacteria (blue-green algae) can produce cyanotoxins including microcystins (liver toxins), cylindrospermopsins, and anatoxins (neurotoxins). These toxins can pass through conventional treatment if not specifically addressed. Cyanobacterial blooms also produce taste and odour compounds (geosmin, MIB) and can clog filters.",
+    difficulty: "hard",
   },
   {
     id: 487,
@@ -4395,6 +4882,7 @@ export const QUESTIONS: Question[] = [
     options: ["To maximize agricultural productivity in the watershed", "To reduce contaminant loading to source water through land use controls and best management practices", "To increase water yield from the watershed", "To control flooding in the watershed"],
     correct: 1,
     explanation: "Watershed management for drinking water protection aims to reduce the loading of pathogens, nutrients, sediment, and chemicals to source water bodies. This includes controlling agricultural runoff, managing septic systems, restricting industrial activities near intakes, and protecting riparian buffers. Effective watershed management reduces treatment costs and risks.",
+    difficulty: "hard",
   },
   {
     id: 488,
@@ -4404,6 +4892,7 @@ export const QUESTIONS: Question[] = [
     options: ["Decreased turbidity and increased pH", "Increased turbidity, increased organic matter, and potential for pathogen contamination", "Decreased hardness and increased chlorine demand only", "Improved water quality due to dilution"],
     correct: 1,
     explanation: "Spring runoff brings snowmelt and rainfall that washes soil, organic matter, agricultural runoff, and pathogens (Cryptosporidium, Giardia, E. coli) into surface water sources. Operators should anticipate increased turbidity, color, organic matter (higher chlorine demand and DBP potential), and pathogen loads. Enhanced treatment and increased monitoring are required.",
+    difficulty: "hard",
   },
   {
     id: 489,
@@ -4413,6 +4902,7 @@ export const QUESTIONS: Question[] = [
     options: ["The separation of water into layers of different temperature, which can cause taste/odour problems and oxygen depletion in the hypolimnion", "The separation of particles by size in a settling basin", "The layering of chemicals added during treatment", "The separation of water by hardness levels"],
     correct: 0,
     explanation: "Thermal stratification occurs when warm, less dense water (epilimnion) floats on top of cold, denser water (hypolimnion) in a reservoir. The hypolimnion can become anoxic (oxygen-depleted), causing iron, manganese, and hydrogen sulfide to dissolve from sediments. When stratification breaks down (turnover), these compounds can reach the intake, causing treatment challenges.",
+    difficulty: "hard",
   },
   {
     id: 490,
@@ -4422,6 +4912,7 @@ export const QUESTIONS: Question[] = [
     options: ["Industrial discharge", "Agricultural fertilizers and animal waste", "Road salt application", "Natural mineral dissolution"],
     correct: 1,
     explanation: "Agricultural fertilizers (nitrogen-based) and animal waste (manure) are the most common sources of nitrate contamination in rural groundwater. Nitrate is highly soluble and mobile in soil, easily leaching through the unsaturated zone to the water table. Septic systems are also a significant source in some areas.",
+    difficulty: "hard",
   },
   {
     id: 491,
@@ -4431,6 +4922,7 @@ export const QUESTIONS: Question[] = [
     options: ["A confined aquifer is above the water table; an unconfined aquifer is below it", "A confined aquifer is bounded above by an impermeable layer; an unconfined aquifer has a free water table", "A confined aquifer contains only groundwater; an unconfined aquifer contains surface water", "A confined aquifer is always deeper than an unconfined aquifer"],
     correct: 1,
     explanation: "An unconfined (water table) aquifer has a free water table as its upper boundary — the water level can rise and fall freely. A confined aquifer is bounded above by an impermeable confining layer (aquitard). Water in a confined aquifer is under pressure; artesian wells result when this pressure is sufficient to push water above the land surface.",
+    difficulty: "hard",
   },
   {
     id: 492,
@@ -4440,6 +4932,7 @@ export const QUESTIONS: Question[] = [
     options: ["NOM improves coagulation efficiency", "High NOM increases DBP formation potential and chlorine demand", "NOM reduces turbidity", "High NOM indicates low pathogen risk"],
     correct: 1,
     explanation: "Natural organic matter (NOM) — humic and fulvic acids from decomposing vegetation — reacts with chlorine to form disinfection byproducts (DBPs) such as trihalomethanes (THMs) and haloacetic acids (HAAs). High NOM also increases chlorine demand, can cause color and taste/odour problems, and may require enhanced coagulation or other NOM removal strategies.",
+    difficulty: "hard",
   },
   {
     id: 493,
@@ -4449,6 +4942,7 @@ export const QUESTIONS: Question[] = [
     options: ["Only algae and biological material", "Suspended clay, silt, organic particles, algae, and colloidal material", "Only dissolved minerals", "Only industrial discharge"],
     correct: 1,
     explanation: "Turbidity in surface water is caused by suspended and colloidal particles including clay, silt, sand, organic debris, algae, bacteria, and colloidal material. Turbidity is important because particles can shield pathogens from disinfection (UV and chlorine) and indicate the presence of Cryptosporidium and Giardia during high-turbidity events.",
+    difficulty: "hard",
   },
   {
     id: 494,
@@ -4458,6 +4952,7 @@ export const QUESTIONS: Question[] = [
     options: ["The area of land above a well that is protected from contamination", "The drawdown of the water table around a pumping well, forming a cone-shaped depression", "The depression in the wellhead casing", "The area where water pressure is highest"],
     correct: 1,
     explanation: "When a well is pumped, water flows toward the well, causing the water table (or piezometric surface) to drop around the well. This creates a cone-shaped depression in the water table called the cone of depression. The size of the cone depends on pumping rate, aquifer properties, and recharge rate. Nearby wells can interfere with each other's cones of depression.",
+    difficulty: "hard",
   },
   {
     id: 495,
@@ -4467,6 +4962,7 @@ export const QUESTIONS: Question[] = [
     options: ["Granite and quartzite", "Limestone, dolomite, and gypsum formations", "Sandstone and shale", "Basalt and granite"],
     correct: 1,
     explanation: "Hard groundwater is most commonly found in areas with limestone (CaCO₃), dolomite (CaMg(CO₃)₂), and gypsum (CaSO₄) formations. As groundwater flows through these rocks, it dissolves calcium and magnesium ions, increasing hardness. Ontario's Canadian Shield areas tend to have softer water, while areas with sedimentary rock have harder water.",
+    difficulty: "hard",
   },
   {
     id: 496,
@@ -4476,6 +4972,7 @@ export const QUESTIONS: Question[] = [
     options: ["Groundwater has higher pH that dissolves iron and manganese", "Anoxic (oxygen-free) conditions in groundwater allow iron and manganese to remain in soluble reduced forms", "Surface water is treated to remove iron and manganese before it infiltrates", "Iron and manganese are only found in deep aquifers"],
     correct: 1,
     explanation: "In anoxic groundwater (low or no dissolved oxygen), iron exists as soluble ferrous iron (Fe²⁺) and manganese as soluble Mn²⁺. When this water is exposed to oxygen (at the surface or during treatment), these metals oxidize to insoluble forms (Fe³⁺ hydroxide, MnO₂), causing red/brown or black staining. Surface water is usually oxygenated, keeping iron and manganese in insoluble forms.",
+    difficulty: "hard",
   },
   {
     id: 497,
@@ -4485,6 +4982,7 @@ export const QUESTIONS: Question[] = [
     options: ["The connection between the water plant and the distribution system", "The degree to which a groundwater source is connected to surface water, affecting vulnerability to surface contamination", "The pressure connection between wells in an aquifer", "The connection between municipal water systems"],
     correct: 1,
     explanation: "Hydraulic connectivity refers to the degree to which a groundwater source is connected to surface water (rivers, lakes, wetlands). Highly connected groundwater sources are more vulnerable to surface contamination events (spills, runoff, pathogens) and may require treatment similar to surface water. Ontario's source water protection framework requires assessment of hydraulic connectivity for all municipal wells.",
+    difficulty: "hard",
   },
   {
     id: 498,
@@ -4494,6 +4992,7 @@ export const QUESTIONS: Question[] = [
     options: ["Hydrogen sulfide and ammonia", "Geosmin and 2-methylisoborneol (MIB), produced by cyanobacteria and actinomycetes", "Chlorine and chloramines", "Iron and manganese"],
     correct: 1,
     explanation: "Geosmin (trans-1,10-dimethyl-trans-9-decalol) and 2-methylisoborneol (MIB) are the most common causes of earthy/musty taste and odour in drinking water. They are produced by cyanobacteria (blue-green algae) and actinomycetes (soil bacteria). Both compounds are detectable at extremely low concentrations (5–10 ng/L) and are difficult to remove by conventional treatment.",
+    difficulty: "hard",
   },
   {
     id: 499,
@@ -4503,6 +5002,7 @@ export const QUESTIONS: Question[] = [
     options: ["Industrial chemicals that are well-regulated under the Safe Drinking Water Act", "Trace contaminants from human and veterinary drug use that are not fully removed by conventional treatment", "Naturally occurring compounds found in all water sources", "Contaminants with established MACs in Ontario drinking water standards"],
     correct: 1,
     explanation: "PPCPs include prescription and over-the-counter drugs, hormones, antibiotics, and personal care products that enter water bodies through sewage effluent, agricultural runoff, and landfill leachate. Conventional water treatment does not fully remove many PPCPs. While most are present at very low concentrations (ng/L), concerns exist about endocrine disruption, antibiotic resistance, and long-term health effects. Ontario does not currently have MACs for most PPCPs.",
+    difficulty: "hard",
   },
   {
     id: 500,
@@ -4512,6 +5012,7 @@ export const QUESTIONS: Question[] = [
     options: ["To replace the need for treated water monitoring", "To track trends in raw water quality and provide early warning of contamination events to allow treatment adjustments", "To satisfy distribution system monitoring requirements", "To monitor groundwater levels only"],
     correct: 1,
     explanation: "A source water monitoring program tracks raw water quality parameters (turbidity, pH, temperature, TOC, coliforms, algae counts, etc.) over time. This data identifies seasonal trends, detects contamination events early (allowing treatment adjustments before water reaches consumers), supports source water protection planning, and provides baseline data for regulatory compliance.",
+    difficulty: "hard",
   },
 ];
 

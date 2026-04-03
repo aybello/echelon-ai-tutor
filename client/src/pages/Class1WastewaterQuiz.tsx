@@ -70,11 +70,10 @@ type HistoryEntry = {
   correct: boolean;
 };
 
-function getNextQ(history: HistoryEntry[], trialUnlocked: boolean): QCompat | null {
+function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, mod?: string | null): QCompat | null {
   const usedIds = new Set(history.map((h) => h.q.id));
-  const pool = trialUnlocked
-    ? CLASS1_WASTEWATER_QUESTIONS
-    : CLASS1_WASTEWATER_QUESTIONS.slice(0, 60); // first 60 for free trial
+  const base = mod ? CLASS1_WASTEWATER_QUESTIONS.filter(q => q.module === mod) : CLASS1_WASTEWATER_QUESTIONS;
+  const pool = trialUnlocked ? base : base.slice(0, 60);
   const remaining = pool.filter((q) => !usedIds.has(q.id));
   if (remaining.length === 0) return null;
   const shuffled = shuffle([...remaining]);
@@ -90,6 +89,12 @@ export default function Class1WastewaterQuiz() {
   });
 
   const [trialUnlockedState, setTrialUnlockedState] = useState(() => isTrialUnlocked());
+  const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [showModuleSelector, setShowModuleSelector] = useState(false);
+  const getPool = useCallback((mod: string | null, unlocked: boolean) => {
+    const base = mod ? CLASS1_WASTEWATER_QUESTIONS.filter(q => q.module === mod) : CLASS1_WASTEWATER_QUESTIONS;
+    return unlocked ? base : base.slice(0, 60);
+  }, []);
   const initialQ = useMemo(() => toCompat(CLASS1_WASTEWATER_QUESTIONS[0]), []);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [current, setCurrent] = useState<QCompat | null>(initialQ);
@@ -214,7 +219,29 @@ export default function Class1WastewaterQuiz() {
                 <div style={{ fontSize: 10, opacity: 0.8, textTransform: "uppercase", letterSpacing: 1 }}>{s.label}</div>
               </div>
             ))}
+            <button
+              onClick={() => setShowModuleSelector(v => !v)}
+              style={{ padding: "6px 14px", background: selectedModule ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+            >
+              {selectedModule ? `📚 ${selectedModule.split(" ")[0]}` : "📚 All Modules"}
+            </button>
           </div>
+          {showModuleSelector && (
+            <div style={{ marginTop: 12, display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <button
+                onClick={() => { setSelectedModule(null); setShowModuleSelector(false); setHistory([]); const q = getNextQ([], trialUnlockedState, null); setCurrent(q); setSelected(null); setConfidence(null); setConfirmed(false); }}
+                style={{ padding: "6px 12px", background: !selectedModule ? "#fff" : "rgba(255,255,255,0.15)", color: !selectedModule ? "#0F766E" : "#fff", border: "none", borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+              >All Modules</button>
+              {CLASS1_WASTEWATER_MODULES.map(mod => (
+                <button key={mod}
+                  onClick={() => { setSelectedModule(mod); setShowModuleSelector(false); setHistory([]); const q = getNextQ([], trialUnlockedState, mod); setCurrent(q); setSelected(null); setConfidence(null); setConfirmed(false); }}
+                  style={{ padding: "6px 12px", background: selectedModule === mod ? "#fff" : "rgba(255,255,255,0.15)", color: selectedModule === mod ? "#0F766E" : "#fff", border: "none", borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+                >
+                  {MODULE_ICONS[mod] ?? "📖"} {mod}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

@@ -25,6 +25,9 @@ function toCompat(q: Class2WaterQuestion): QCompat {
 }
 
 
+const DIFF_COLOR: Record<string, string> = { easy: "#059669", medium: "#D97706", hard: "#DC2626" };
+const DIFF_BG: Record<string, string>    = { easy: "#DCFCE7", medium: "#FEF9C3", hard: "#FEE2E2" };
+
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Treatment Process":              { bg: "#DBEAFE", color: "#1D4ED8" },
   "Laboratory Analysis":            { bg: "#FEF9C3", color: "#A16207" },
@@ -277,7 +280,7 @@ export default function Class2WaterQuiz() {
 
         {/* Question card */}
         <div style={{ background: "#fff", borderRadius: 20, padding: "28px 28px 24px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", marginBottom: 16, animation: "fadeUp 0.25s ease" }}>
-          {/* Module + topic badges */}
+          {/* Module + topic + difficulty badges */}
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
             <span style={{ padding: "3px 10px", borderRadius: 100, background: moduleStyle.bg, color: moduleStyle.color, fontSize: 10, fontWeight: 700 }}>
               {MODULE_ICONS[current.module] ?? "📖"} {current.module}
@@ -285,6 +288,11 @@ export default function Class2WaterQuiz() {
             <span style={{ padding: "3px 10px", borderRadius: 100, background: "#F1F5F9", color: "#64748B", fontSize: 10, fontWeight: 700 }}>
               {current.topic}
             </span>
+            {current.difficulty && (
+              <span style={{ padding: "3px 10px", borderRadius: 100, background: DIFF_BG[current.difficulty] ?? "#F1F5F9", color: DIFF_COLOR[current.difficulty] ?? "#64748B", fontSize: 10, fontWeight: 700, textTransform: "capitalize" }}>
+                {current.difficulty}
+              </span>
+            )}
           </div>
 
           <div style={{ fontSize: 16, fontWeight: 600, color: "#0F172A", lineHeight: 1.65, marginBottom: 24 }}>

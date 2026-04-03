@@ -58,11 +58,10 @@ type HistoryEntry = {
   correct: boolean;
 };
 
-function getNextQ(history: HistoryEntry[], trialUnlocked: boolean): QCompat | null {
+function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, mod?: string | null): QCompat | null {
   const usedIds = new Set(history.map((h) => h.q.id));
-  const pool = trialUnlocked
-    ? CLASS2_WW_QUESTIONS
-    : CLASS2_WW_QUESTIONS.slice(0, FREE_TRIAL_POOL);
+  const base = mod ? CLASS2_WW_QUESTIONS.filter(q => q.module === mod) : CLASS2_WW_QUESTIONS;
+  const pool = trialUnlocked ? base : base.slice(0, FREE_TRIAL_POOL);
   const remaining = pool.filter((q) => !usedIds.has(q.id));
   if (remaining.length === 0) return null;
   const shuffled = shuffle([...remaining]);
@@ -78,6 +77,8 @@ export default function Class2WastewaterQuiz() {
   });
 
   const [trialUnlockedState, setTrialUnlockedState] = useState(() => isTrialUnlocked());
+  const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [showModuleSelector, setShowModuleSelector] = useState(false);
   const initialQ = useMemo(() => toCompat(CLASS2_WW_QUESTIONS[0]), []);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [current, setCurrent] = useState<QCompat | null>(initialQ);
@@ -188,7 +189,29 @@ export default function Class2WastewaterQuiz() {
                 <div style={{ fontSize: 10, opacity: 0.8, textTransform: "uppercase", letterSpacing: 1 }}>{s.label}</div>
               </div>
             ))}
+            <button
+              onClick={() => setShowModuleSelector(v => !v)}
+              style={{ padding: "6px 14px", background: selectedModule ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+            >
+              {selectedModule ? `📚 ${selectedModule.split(" ")[0]}` : "📚 All Modules"}
+            </button>
           </div>
+          {showModuleSelector && (
+            <div style={{ marginTop: 12, display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <button
+                onClick={() => { setSelectedModule(null); setShowModuleSelector(false); setHistory([]); const q = getNextQ([], trialUnlockedState, null); setCurrent(q); setSelected(null); setConfidence(null); setConfirmed(false); }}
+                style={{ padding: "6px 12px", background: !selectedModule ? "#fff" : "rgba(255,255,255,0.15)", color: !selectedModule ? "#0F766E" : "#fff", border: "none", borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+              >All Modules</button>
+              {CLASS2_WW_MODULES.map(mod => (
+                <button key={mod.name}
+                  onClick={() => { setSelectedModule(mod.name); setShowModuleSelector(false); setHistory([]); const q = getNextQ([], trialUnlockedState, mod.name); setCurrent(q); setSelected(null); setConfidence(null); setConfirmed(false); }}
+                  style={{ padding: "6px 12px", background: selectedModule === mod.name ? "#fff" : "rgba(255,255,255,0.15)", color: selectedModule === mod.name ? "#0F766E" : "#fff", border: "none", borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+                >
+                  {MODULE_ICONS[mod.name] ?? "📖"} {mod.name}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
@@ -199,26 +222,7 @@ export default function Class2WastewaterQuiz() {
 
       <div style={{ maxWidth: 680, margin: "0 auto", padding: "24px 16px 40px" }}>
 
-        {/* Module selector */}
-        <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
-          {CLASS2_WW_MODULES.map((mod) => {
-            const mc = MODULE_COLORS[mod.name] || { bg: "#F1F5F9", color: "#475569" };
-            const icon = MODULE_ICONS[mod.name] || "📚";
-            return (
-              <button
-                key={mod.name}
-                onClick={() => {
-                  const q = mod.questions[Math.floor(Math.random() * mod.questions.length)];
-                  if (q) { setCurrent(toCompat(q)); setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false); }
-                }}
-                style={{ padding: "6px 12px", borderRadius: 20, border: `1.5px solid ${mc.bg}`, background: mc.bg, color: mc.color, fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", display: "flex", alignItems: "center", gap: 4 }}
-              >
-                <span>{icon}</span>
-                <span>{mod.name}</span>
-              </button>
-            );
-          })}
-        </div>
+
 
         {/* Question card */}
         {current ? (

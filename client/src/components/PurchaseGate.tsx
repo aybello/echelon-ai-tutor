@@ -70,6 +70,12 @@ const DEFAULT_FEATURES: Record<string, string[]> = {
     "WW3 formula sheet",
     "AI Tutor explanations on every question",
   ],
+  "class4-ww": [
+    "500 Class 4 WW questions — unlimited attempts",
+    "Timed Class 4 WW mock exam (100 questions, 2 hrs)",
+    "Class 4 WW formula sheet (30+ formulas)",
+    "AI Tutor explanations on every question",
+  ],
   "class2-water": [
     "500+ Class 2 Water questions — unlimited attempts",
     "Timed Class 2 Water mock exam",
