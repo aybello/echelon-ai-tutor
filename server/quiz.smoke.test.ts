@@ -122,4 +122,4 @@ smokeCheck("Class 2 WW Quiz",          CLASS2_WW_QUESTIONS,        400);
 smokeCheck("Class 3 Water Quiz",       CLASS3_WATER_QUESTIONS,     400);
 
 // ── WQA ───────────────────────────────────────────────────────────────────────
-smokeCheck("WQA Quiz",                 WQA_QUESTIONS,              150, { correctField: "correctIndex" });
+smokeCheck("WQA Quiz",                 WQA_QUESTIONS,              280, { correctField: "correctIndex" });
