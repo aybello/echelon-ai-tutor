@@ -700,7 +700,7 @@ export default function FormulasWater4() {
         {filteredSections
           .filter(s => !activeSection || s.id === activeSection)
           .map(section => (
-            <div key={section.id} style={{ marginBottom: 32 }}>
+            <div key={section.id} id={section.id} style={{ marginBottom: 32, scrollMarginTop: 80 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                 <div style={{ width: 36, height: 36, borderRadius: 10, background: section.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>
                   {section.icon}

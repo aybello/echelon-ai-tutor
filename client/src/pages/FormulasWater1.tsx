@@ -683,7 +683,7 @@ export default function FormulasWater1() {
 
         {/* Formula categories */}
         {filtered.map(cat => (
-          <div key={cat.id} style={{ marginBottom: 40 }}>
+          <div key={cat.id} id={cat.id} style={{ marginBottom: 40, scrollMarginTop: 80 }}>
             <div style={{
               display: "flex", alignItems: "center", gap: 10, marginBottom: 16,
               paddingBottom: 10, borderBottom: `2px solid ${cat.color}22`,

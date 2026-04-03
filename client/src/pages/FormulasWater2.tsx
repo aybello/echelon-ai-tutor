@@ -600,7 +600,7 @@ export default function FormulasWater2() {
           </div>
         ) : (
           filtered.map(cat => (
-            <div key={cat.id} style={{ marginBottom: 36 }}>
+            <div key={cat.id} id={cat.id} style={{ marginBottom: 36, scrollMarginTop: 80 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                 <div style={{ width: 36, height: 36, borderRadius: 10, background: cat.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>{cat.icon}</div>
                 <div>

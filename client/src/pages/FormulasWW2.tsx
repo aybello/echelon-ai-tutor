@@ -1097,7 +1097,7 @@ export default function FormulasWW2() {
 
         {/* Formula sections */}
         {filteredCategories.map(cat => (
-          <div key={cat.id} style={{ marginBottom: 36, animation: "fadeUp 0.3s ease both" }}>
+          <div key={cat.id} id={cat.id} style={{ marginBottom: 36, scrollMarginTop: 80, animation: "fadeUp 0.3s ease both" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
               <div style={{
                 width: 36, height: 36, borderRadius: 10,

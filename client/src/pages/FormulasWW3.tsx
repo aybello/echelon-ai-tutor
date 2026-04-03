@@ -501,7 +501,7 @@ export default function FormulasWW3() {
         {filteredCategories
           .filter((cat) => !activeCategory || cat.id === activeCategory)
           .map((cat) => (
-            <div key={cat.id} style={{ marginBottom: 32 }}>
+            <div key={cat.id} id={cat.id} style={{ marginBottom: 32, scrollMarginTop: 80 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
                 <span style={{ fontSize: 24 }}>{cat.icon}</span>
                 <h2 style={{ fontSize: 18, fontWeight: 800, color: cat.color, margin: 0 }}>{cat.label}</h2>

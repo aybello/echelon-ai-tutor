@@ -260,15 +260,15 @@ const WATER_COURSES = [
     questions: 500,
     description: "The highest certification level. Full system management, regulatory compliance, and strategic operations leadership.",
     topics: ["Full System Management", "Regulatory Leadership", "Advanced Troubleshooting", "Capital & Budget Planning", "Class 4 Exam Prep"],
-    badge: "Premium",
-    badgeColor: "#7C3AED",
+    badge: "New",
+    badgeColor: "#6D28D9",
+    practicePassPrice: 149,
     color: "#6D28D9",
     bg: "#F5F3FF",
     border: "#DDD6FE",
-    comingSoon: true,
+    comingSoon: false,
   },
 ];
-
 const WASTEWATER_COURSES = [
   {
     code: "OIT-WW",
@@ -343,15 +343,15 @@ const WASTEWATER_COURSES = [
     questions: 500,
     description: "The pinnacle of wastewater certification. Strategic operations, capital planning, and full regulatory compliance.",
     topics: ["Full System Leadership", "Capital & Infrastructure Planning", "Advanced Troubleshooting", "Regulatory Compliance", "Class 4 Exam Mastery"],
-    badge: "Premium",
-    badgeColor: "#7C3AED",
+    badge: "New",
+    badgeColor: "#6D28D9",
+    practicePassPrice: 149,
     color: "#6D28D9",
     bg: "#F5F3FF",
     border: "#DDD6FE",
-    comingSoon: true,
+    comingSoon: false,
   },
 ];
-
 const WQA_COURSES = [
   {
     code: "WQA",
@@ -546,7 +546,7 @@ function CourseCard({ course }: { course: CourseType }) {
         </button>
       ) : (
         <>
-          <Link href={course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "CL3-WW" ? "/class3-ww" : course.code === "WQA" ? "/wqa" : "/quiz"}>
+          <Link href={course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "CL3-WW" ? "/class3-ww" : course.code === "CL4-W" ? "/class4-water" : course.code === "CL4-WW" ? "/class4-ww" : course.code === "WQA" ? "/wqa" : "/quiz"}>
             <button style={{
               width: "100%", padding: "12px",
               background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
@@ -571,8 +571,8 @@ function CourseCard({ course }: { course: CourseType }) {
               </button>
             </Link>
           )}
-          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "CL2-WW" || course.code === "CL2-W" || course.code === "CL3-W" || course.code === "WQA") && (
-            <Link href={course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-ww-mock" : course.code === "CL2-WW" ? "/class2-ww-mock" : course.code === "CL2-W" ? "/class2-water-mock" : course.code === "CL3-W" ? "/class3-water-mock" : "/class1-water-mock"}>
+          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "CL2-WW" || course.code === "CL2-W" || course.code === "CL3-W" || course.code === "CL3-WW" || course.code === "CL4-W" || course.code === "CL4-WW" || course.code === "WQA") && (
+            <Link href={course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-ww-mock" : course.code === "CL2-WW" ? "/class2-ww-mock" : course.code === "CL2-W" ? "/class2-water-mock" : course.code === "CL3-W" ? "/class3-water-mock" : course.code === "CL3-WW" ? "/class3-ww-mock" : course.code === "CL4-W" ? "/class4-water-mock" : course.code === "CL4-WW" ? "/class4-ww-mock" : "/class1-water-mock"}>
               <button style={{
                 width: "100%", padding: "10px",
                 background: "transparent",
