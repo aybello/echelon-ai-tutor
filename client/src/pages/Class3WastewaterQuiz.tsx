@@ -162,6 +162,11 @@ export default function Class3WastewaterQuiz() {
                 📐 Formula Sheet →
               </span>
             </Link>
+            <Link href="/class3-ww-mock">
+              <span style={{ background: "rgba(255,255,255,0.25)", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 600, cursor: "pointer", textDecoration: "none", color: "#fff" }}>
+                📋 Mock Exam →
+              </span>
+            </Link>
           </div>
         </div>
       </div>

@@ -171,3 +171,8 @@
 - [x] Add feature bullets to Class 2 WW and Class 2 Water Pricing cards (500 questions, mock exam, formula sheet, AI Tutor)
 - [x] Update Pricing page "What's included" section: change "500+ Questions" to "1,300+ Questions" with course breakdown
 - [x] Verify formula sheet link exists on Class3WaterQuiz.tsx header (linking to /formulas-water3) — already present, no change needed
+- [x] Add feature bullets to OIT, Class 1 Water, and Class 1 WW Pricing cards
+- [x] Verify mock exam links exist on Class 2 Water and Class 2 WW quiz headers — Class 2 WW already had them; added Formulas + Mock Exam buttons to Class 2 Water sticky header
+- [x] Build Class 2 Wastewater formula sheet at /formulas-ww2 — confirmed already exists (981 lines), wired in nav and quiz header
+- [x] Fix Class 3 WW quiz header — added 📋 Mock Exam → badge to header alongside Formula Sheet badge
+- [x] Fix incorrect prices for Class 3 Water and Class 3 Wastewater on Pricing page — updated to $129 (12900 cents)
