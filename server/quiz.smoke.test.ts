@@ -38,6 +38,9 @@ import { CLASS2_WW_QUESTIONS } from "../client/src/lib/class2WastewaterQuestions
 // ── Class 3 Water ─────────────────────────────────────────────────────────────
 import { QUESTIONS as CLASS3_WATER_QUESTIONS } from "../client/src/lib/class3WaterQuestions";
 
+// ── Class 3 Wastewater ───────────────────────────────────────────────────────
+import { CLASS3_WW_QUESTIONS } from "../client/src/lib/class3WastewaterQuestions";
+
 // ── WQA ───────────────────────────────────────────────────────────────────────
 import { WQA_QUESTIONS } from "../client/src/lib/wqaQuestions";
 
@@ -120,6 +123,9 @@ smokeCheck("Class 2 WW Quiz",          CLASS2_WW_QUESTIONS,        400);
 
 // ── Class 3 Water ─────────────────────────────────────────────────────────────
 smokeCheck("Class 3 Water Quiz",       CLASS3_WATER_QUESTIONS,     400);
+
+// ── Class 3 Wastewater ───────────────────────────────────────────────────────
+smokeCheck("Class 3 WW Quiz",          CLASS3_WW_QUESTIONS,        480);
 
 // ── WQA ───────────────────────────────────────────────────────────────────────
 smokeCheck("WQA Quiz",                 WQA_QUESTIONS,              280, { correctField: "correctIndex" });

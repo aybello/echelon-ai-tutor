@@ -60,7 +60,7 @@ const SESSION_SIZE = 20;
 export default function WQAQuiz() {
   usePageMeta({
     title: "WQA Practice Quiz — Water Quality Analyst",
-    description: "Practice questions for the Ontario Water Quality Analyst (WQA) certification exam. Covers math, science, sampling, safety, bacteriological testing, disinfection, QA/QC, and regulations.",
+    description: "300 practice questions for the Ontario Water Quality Analyst (WQA) certification exam. Covers math, science, sampling, safety, bacteriological testing, disinfection, QA/QC, and regulations across 10 modules.",
     path: "/wqa",
     keywords: "WQA exam, Water Quality Analyst Ontario, O. Reg. 248/03, drinking water sampling, bacteriological testing, QA QC water",
   });
@@ -260,6 +260,11 @@ export default function WQAQuiz() {
             <Link href="/wqa-mock">
               <button style={{ padding: "6px 12px", borderRadius: 20, border: "1px solid #6D28D9", background: "#EDE9FE", color: "#6D28D9", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
                 📋 Mock Exam
+              </button>
+            </Link>
+            <Link href="/formulas-wqa">
+              <button style={{ padding: "6px 12px", borderRadius: 20, border: "1px solid #0F766E", background: "#CCFBF1", color: "#0F766E", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+                📐 Formulas
               </button>
             </Link>
           </div>

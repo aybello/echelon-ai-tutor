@@ -32,6 +32,7 @@ export const NAV_LINKS = [
   { label: "📐 C3 WW Formulas",   href: "/formulas-ww3" },
   { label: "🧪 WQA Practice",   href: "/wqa" },
   { label: "🔬 WQA Mock Exam",  href: "/wqa-mock" },
+  { label: "📐 WQA Formulas",   href: "/formulas-wqa" },
   { label: "📐 Formulas",      href: "/formulas" },
   { label: "🏭 Process Guide", href: "/process" },
   { label: "♻️ Wastewater",    href: "/wastewater" },

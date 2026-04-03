@@ -156,3 +156,6 @@
 - [ ] Create Class2WastewaterQuiz.tsx and Class2WastewaterMockExam.tsx pages
 - [ ] Wire /class2-ww and /class2-ww-mock routes in App.tsx
 - [ ] Update SiteNav, Pricing, Landing, Account, and Stripe products for Class 2 WW
+- [x] Add WQA formula sheet page (/formulas-wqa) covering unit conversions, dilution, alkalinity, CT values, hardness, LSI, and regulatory limits
+- [x] Update WQA quiz copy to reflect 300 questions (Landing.tsx questions field, description text)
+- [x] Add Class 3 Wastewater (CLASS3_WW_QUESTIONS) to quiz.smoke.test.ts with min 480 threshold
