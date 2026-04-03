@@ -630,7 +630,7 @@ export default function Pricing() {
             One-time payment — access never expires
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
-            1,300+ questions across Water Treatment, Wastewater, and WQA tracks
+            4,500+ questions across Water Treatment, Wastewater, and WQA tracks
           </p>
           <div
             style={{
@@ -642,7 +642,7 @@ export default function Pricing() {
             }}
           >
             {[
-              { icon: "📚", label: "1,300+ Questions" },
+              { icon: "📚", label: "4,500+ Questions" },
               { icon: "🤖", label: "AI Tutor Chat" },
               { icon: "📊", label: "Score History" },
               { icon: "🎯", label: "Adaptive Difficulty" },
