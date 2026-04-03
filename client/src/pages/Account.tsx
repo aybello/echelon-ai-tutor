@@ -69,6 +69,8 @@ const EXAM_META: Record<
   "class4-water": {
     label: "Class 4 Water Treatment Pass",
     quizPath: "/class4-water",
+    mockPath: "/class4-water-mock",
+    formulaPath: "/formulas-water4",
     color: "#4C1D95",
     bg: "#F5F3FF",
     icon: "🚰",
