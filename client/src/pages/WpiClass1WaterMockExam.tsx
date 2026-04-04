@@ -134,7 +134,7 @@ export default function WpiClass1WaterMockExam() {
       (a, i) => a.selected === questions[i]?.correctAnswer
     ).length;
     saveScore.mutate({
-      examType: "class1-water", // WPI Class I uses same product key as Class 1 Water
+      examType: "wpi-class1-water",
       score,
       total: EXAM_QUESTIONS,
       passed: score / EXAM_QUESTIONS >= PASS_THRESHOLD,
@@ -170,7 +170,7 @@ export default function WpiClass1WaterMockExam() {
     return (
       <PurchaseGate
         examType="wpi-class1-water"
-        productKey="class1-water"
+        productKey="wpi-class1-water"
         productName="WPI Class I Water Treatment Practice Pass"
         price={79}
         features={[
@@ -291,7 +291,7 @@ export default function WpiClass1WaterMockExam() {
             </div>
 
             <div style={{ marginTop: 24 }}>
-              <ScoreHistory examType="class1-water" sessionId="wpi-class1-water" />
+              <ScoreHistory examType="wpi-class1-water" sessionId="wpi-class1-water" />
             </div>
           </div>
         </div>
@@ -734,7 +734,7 @@ export default function WpiClass1WaterMockExam() {
           </div>
 
           <div style={{ marginTop: 24 }}>
-              <ScoreHistory examType="class1-water" sessionId="wpi-class1-water" />
+              <ScoreHistory examType="wpi-class1-water" sessionId="wpi-class1-water" />
           </div>
         </div>
       </div>

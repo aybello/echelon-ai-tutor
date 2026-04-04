@@ -42,6 +42,10 @@ export const NAV_LINKS = [
   { label: "🧪 WQA Practice",   href: "/wqa" },
   { label: "🔬 WQA Mock Exam",  href: "/wqa-mock" },
   { label: "📐 WQA Formulas",   href: "/formulas-wqa" },
+  // WPI (BC / AB / SK / MB)
+  { label: "🌊 WPI C1 Water Practice", href: "/wpi-class1-water" },
+  { label: "📋 WPI C1 Water Mock",     href: "/wpi-class1-water-mock" },
+  { label: "📐 WPI C1 Water Formulas", href: "/formulas-wpi-class1" },
   { label: "📐 Formulas",      href: "/formulas" },
   { label: "🏭 Process Guide", href: "/process" },
   { label: "♻️ Wastewater",    href: "/wastewater" },
@@ -225,10 +229,28 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
           </div>
         </div>
 
-        {NAV_LINKS.map(l => (
-          <Link key={l.href} href={l.href}>
-            <div
-              onClick={() => setOpen(false)}
+        {NAV_LINKS.map((l, i) => {
+          // Insert WPI section header before the first WPI link
+          const isWpiStart = l.href === "/wpi-class1-water";
+          return (
+            <>
+              {isWpiStart && (
+                <div key="wpi-header" style={{
+                  padding: "10px 20px 6px",
+                  marginTop: 4,
+                  borderTop: "1px solid rgba(255,255,255,0.08)",
+                  fontSize: 10,
+                  fontWeight: 700,
+                  color: "#38BDF8",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase" as const,
+                }}>
+                  🌊 WPI — BC / AB / SK / MB
+                </div>
+              )}
+              <Link key={l.href} href={l.href}>
+                <div
+                  onClick={() => setOpen(false)}
               style={{
                 padding: "12px 20px",
                 color: currentPath === l.href ? "#60A5FA" : "rgba(255,255,255,0.8)",
@@ -249,7 +271,10 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
               {l.label}
             </div>
           </Link>
-        ))}
+            </>
+          );
+        })}
+
 
         <div style={{ padding: "16px 20px 0", marginTop: 8, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
           <Link href="/quiz">

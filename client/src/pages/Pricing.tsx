@@ -192,6 +192,22 @@ const INDIVIDUAL: Product[] = [
     available: true,
     features: ["300 practice questions", "Timed mock exam", "WQA formula sheet", "AI Tutor"],
   },
+  // ── WPI (BC / AB / SK / MB) ──────────────────────────────────────────────
+  {
+    key: "wpi-class1-water",
+    name: "WPI Class I Water Treatment Practice Pass",
+    shortName: "WPI Class I Water",
+    description: "WPI Class I Water Treatment — 502 questions across 5 modules. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Aligned with WPI Need-to-Know Criteria.",
+    priceCAD: 7900,
+    examTypes: ["wpi-class1-water"],
+    badge: "WPI Exam",
+    badgeColor: "#0E7490",
+    color: "#0E7490",
+    bg: "#ECFEFF",
+    border: "#A5F3FC",
+    available: true,
+    features: ["502 practice questions", "Timed mock exam", "WPI formula sheet", "AI Tutor", "BC / AB / SK / MB"],
+  },
 ];
 
 interface Bundle {
@@ -710,7 +726,7 @@ export default function Pricing() {
             </div>
 
             {/* WQA section */}
-            <div>
+            <div style={{ marginBottom: 48 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
                 <div
                   style={{
@@ -732,6 +748,46 @@ export default function Pricing() {
                 }}
               >
                 {INDIVIDUAL.filter(p => p.key === "wqa").map(product => (
+                  <ProductCard key={product.key} product={product} />
+                ))}
+              </div>
+            </div>
+
+            {/* WPI section */}
+            <div>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                <div
+                  style={{
+                    width: 4,
+                    height: 28,
+                    borderRadius: 4,
+                    background: "linear-gradient(180deg, #0E7490, #0891B2)",
+                  }}
+                />
+                <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: 0 }}>
+                  🌊 WPI — BC / AB / SK / MB
+                </h2>
+                <span style={{
+                  background: "#ECFEFF",
+                  color: "#0E7490",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  padding: "3px 10px",
+                  borderRadius: 20,
+                  border: "1px solid #A5F3FC",
+                }}>✓ Live</span>
+              </div>
+              <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
+                WPI standardized exams recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+                  gap: 16,
+                }}
+              >
+                {INDIVIDUAL.filter(p => p.key.startsWith("wpi-")).map(product => (
                   <ProductCard key={product.key} product={product} />
                 ))}
               </div>
@@ -769,7 +825,7 @@ export default function Pricing() {
             One-time payment — access never expires
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
-            4,500+ questions across Water Treatment, Wastewater, and WQA tracks
+            5,000+ questions across Water Treatment, Wastewater, WQA, and WPI tracks
           </p>
           <div
             style={{
@@ -781,7 +837,7 @@ export default function Pricing() {
             }}
           >
             {[
-              { icon: "📚", label: "4,500+ Questions" },
+              { icon: "📚", label: "5,000+ Questions" },
               { icon: "🤖", label: "AI Tutor Chat" },
               { icon: "📊", label: "Score History" },
               { icon: "🎯", label: "Adaptive Difficulty" },

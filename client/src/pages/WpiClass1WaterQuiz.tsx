@@ -155,7 +155,7 @@ export default function WpiClass1WaterQuiz() {
     return (
       <QuizGate
         questionsAnswered={history.length}
-        productKey="class1-water"
+        productKey="wpi-class1-water"
         productName="WPI Class I Water Treatment Practice Pass"
         priceLabel="CA$79"
         paidFeatures={[
