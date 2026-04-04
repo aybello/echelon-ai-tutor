@@ -304,6 +304,7 @@ export default function WpiLanding() {
                   { href: "/formulas-wpi-class1", label: "📐 Class I Formula Sheet", sub: "CT values, dosing, flow rate" },
                   { href: "/wpi-class2-water", label: "🌊 Class II Practice Quiz", sub: "501 questions · 15 free" },
                   { href: "/wpi-class2-water-mock", label: "📋 Class II Mock Exam", sub: "100 questions · 2 hours" },
+                  { href: "/formulas-wpi-class2", label: "📐 Class II Formula Sheet", sub: "Ozone, UV, membranes, hydraulics" },
                 ].map(item => (
                   <Link key={item.href} href={item.href}>
                     <div style={{

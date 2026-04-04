@@ -614,6 +614,7 @@ export default function Landing() {
   const NAV_LINKS = [
     { label: "Courses", href: "#courses" },
     { label: "Study Tools", href: "#tools" },
+    { label: "WPI 🌊", href: "/wpi" },
     { label: "Pricing", href: "/pricing" },
     { label: "Formulas", href: "/formulas" },
     { label: "Career Map", href: "/career" },
@@ -803,6 +804,9 @@ export default function Landing() {
             { label: "🔬 Lab & Sampling", href: "/lab" },
             { label: "🗺️ Career Map", href: "/career" },
             { label: "📋 Mock Exam", href: "/mock-exam" },
+            { label: "🌊 WPI Overview (BC/AB/SK/MB)", href: "/wpi" },
+            { label: "🌊 WPI Class I Practice", href: "/wpi-class1-water" },
+            { label: "🌊 WPI Class II Practice", href: "/wpi-class2-water" },
           ].map(item => (
             <Link key={item.href} href={item.href}>
               <div
