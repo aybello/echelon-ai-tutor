@@ -238,6 +238,21 @@ const INDIVIDUAL: Product[] = [
     available: true,
     features: ["502 advanced questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB"],
   },
+  {
+    key: "wpi-class4-water",
+    name: "WPI Class IV Water Treatment Practice Pass",
+    shortName: "WPI Class IV Water",
+    description: "WPI Class IV Water Treatment — 501 questions across 6 chief-operator modules. Covers advanced CT/disinfection, membrane systems, plant management & leadership, asset management, regulatory compliance, and emergency response. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    priceCAD: 12900,
+    examTypes: ["wpi-class4-water"],
+    badge: "WPI Exam",
+    badgeColor: "#0E7490",
+    color: "#0E7490",
+    bg: "#ECFEFF",
+    border: "#A5F3FC",
+    available: true,
+    features: ["501 chief-operator questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB"],
+  },
 ];
 
 interface Bundle {
@@ -283,7 +298,7 @@ const BUNDLES: Bundle[] = [
   {
     key: "bundle-all",
     name: "Complete All Access",
-    tagline: "All 13 Practice Passes",
+    tagline: "All 14 Practice Passes",
     description: "Every exam on the platform — Water Treatment, Wastewater, and WQA. The ultimate prep bundle.",
     priceCAD: 59900,
     savings: 49000,
