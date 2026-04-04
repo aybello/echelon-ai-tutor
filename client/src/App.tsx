@@ -4,8 +4,6 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import PhoneOnboarding from "./components/PhoneOnboarding";
-import { useAuth } from "./_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import Home from "./pages/Home";
 import Landing from "./pages/Landing";
@@ -116,34 +114,13 @@ function Router() {
   );
 }
 
-function PhoneGate({ children }: { children: React.ReactNode }) {
-  const { user, isAuthenticated, loading } = useAuth();
-  const utils = trpc.useUtils();
-
-  // Show gate only when: logged in, not loading, and phone is missing
-  const needsPhone = isAuthenticated && !loading && user && !user.phone;
-
-  if (needsPhone) {
-    return (
-      <>
-        {children}
-        <PhoneOnboarding onComplete={() => utils.auth.me.invalidate()} />
-      </>
-    );
-  }
-
-  return <>{children}</>;
-}
-
 function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
-          <PhoneGate>
-            <Router />
-          </PhoneGate>
+          <Router />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
