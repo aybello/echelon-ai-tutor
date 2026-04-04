@@ -57,6 +57,11 @@ export default function PurchaseSuccess() {
   const [email, setEmail] = useState<string>("");
   const [verified, setVerified] = useState(false);
   const [verifying, setVerifying] = useState(true);
+  const [referralSource, setReferralSource] = useState("");
+  const [referralSubmitted, setReferralSubmitted] = useState(false);
+  const [stripeSessionId, setStripeSessionId] = useState("");
+
+  const saveReferral = trpc.stripe.saveReferralSource.useMutation();
 
   // Verify the session with Stripe and record the purchase
   const verifySession = trpc.stripe.verifySession.useMutation({
@@ -79,6 +84,7 @@ export default function PurchaseSuccess() {
       }
       setVerified(true);
       setVerifying(false);
+      setStripeSessionId(sessionId);
     },
     onError: () => {
       setVerifying(false);
@@ -207,6 +213,51 @@ export default function PurchaseSuccess() {
                 ))}
               </div>
             </div>
+
+            {/* How did you hear about us */}
+            {!referralSubmitted ? (
+              <div style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 12, padding: "16px", marginBottom: 16, textAlign: "left" }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#475569", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  Quick question
+                </div>
+                <p style={{ fontSize: 13, color: "#0F172A", fontWeight: 600, margin: "0 0 10px" }}>
+                  How did you hear about Echelon Institute?
+                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                  {["Instagram", "Facebook", "Google Search", "Word of mouth / colleague", "LinkedIn", "Other"].map(option => (
+                    <button
+                      key={option}
+                      onClick={() => {
+                        setReferralSource(option);
+                        setReferralSubmitted(true);
+                        // Save to DB via tRPC
+                        if (stripeSessionId) {
+                          saveReferral.mutate({ sessionId: stripeSessionId, referralSource: option });
+                        }
+                      }}
+                      style={{
+                        padding: "8px 12px",
+                        borderRadius: 8,
+                        border: `1.5px solid ${referralSource === option ? "#1D4ED8" : "#E2E8F0"}`,
+                        background: referralSource === option ? "#EFF6FF" : "#fff",
+                        color: "#0F172A",
+                        fontSize: 13,
+                        fontWeight: 500,
+                        cursor: "pointer",
+                        textAlign: "left",
+                        fontFamily: "inherit",
+                      }}
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div style={{ fontSize: 13, color: "#16A34A", fontWeight: 600, marginBottom: 16 }}>
+                ✓ Thanks for letting us know!
+              </div>
+            )}
 
             <div style={{ fontSize: 12, color: "#94A3B8", lineHeight: 1.6 }}>
               A receipt has been sent to your email by Stripe.

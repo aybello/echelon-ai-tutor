@@ -24,6 +24,9 @@ export const stripeRouter = router({
       productKey: z.string(),
       email: z.string().email().optional(),
       origin: z.string().url(),
+      utmSource: z.string().max(128).optional(),
+      utmMedium: z.string().max(128).optional(),
+      utmCampaign: z.string().max(128).optional(),
     }))
     .mutation(async ({ input, ctx }) => {
       const product = ALL_PRODUCTS.find(p => p.key === input.productKey);
@@ -54,9 +57,11 @@ export const stripeRouter = router({
           product_name: product.name,
           user_id: ctx.user?.id?.toString() ?? "",
           customer_email: userEmail ?? "",
+          utm_source: input.utmSource ?? "",
+          utm_medium: input.utmMedium ?? "",
+          utm_campaign: input.utmCampaign ?? "",
         },
         allow_promotion_codes: true,
-        phone_number_collection: { enabled: true },
         success_url: `${input.origin}/purchase-success?session_id={CHECKOUT_SESSION_ID}&product=${product.key}`,
         cancel_url: `${input.origin}/pricing`,
       });
@@ -128,6 +133,21 @@ export const stripeRouter = router({
       const unlockedExamTypes = getAllUnlockedExamTypes(productKeys);
 
       return { purchases: rows, unlockedExamTypes };
+    }),
+
+  /** Save the referral source answer for a completed purchase */
+  saveReferralSource: publicProcedure
+    .input(z.object({
+      sessionId: z.string(),
+      referralSource: z.string().max(128),
+    }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) return { success: false };
+      await db.update(purchases)
+        .set({ referralSource: input.referralSource })
+        .where(eq(purchases.stripeSessionId, input.sessionId));
+      return { success: true };
     }),
 
   /** Check if a specific exam type is unlocked for an email */
