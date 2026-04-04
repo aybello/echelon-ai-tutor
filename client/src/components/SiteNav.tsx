@@ -46,6 +46,8 @@ export const NAV_LINKS = [
   { label: "🌊 WPI C1 Water Practice", href: "/wpi-class1-water" },
   { label: "📋 WPI C1 Water Mock",     href: "/wpi-class1-water-mock" },
   { label: "📐 WPI C1 Water Formulas", href: "/formulas-wpi-class1" },
+  { label: "🌊 WPI C2 Water Practice", href: "/wpi-class2-water" },
+  { label: "📋 WPI C2 Water Mock",     href: "/wpi-class2-water-mock" },
   { label: "📐 Formulas",      href: "/formulas" },
   { label: "🏭 Process Guide", href: "/process" },
   { label: "♻️ Wastewater",    href: "/wastewater" },

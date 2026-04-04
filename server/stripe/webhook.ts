@@ -2,8 +2,9 @@ import type { Express, Request, Response } from "express";
 import express from "express";
 import { stripe } from "./stripe";
 import { getDb } from "../db";
-import { purchases } from "../../drizzle/schema";
+import { purchases, users } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
+import { eq } from "drizzle-orm";
 
 export function registerStripeWebhook(app: Express) {
   // MUST use raw body parser for Stripe signature verification
@@ -81,10 +82,25 @@ export function registerStripeWebhook(app: Express) {
 
             console.log(`[Stripe Webhook] Purchase recorded: ${email} → ${productKey} (CA$${(amountCAD / 100).toFixed(2)})`);
 
+            // Capture phone number from Stripe checkout if provided
+            const phone = session.customer_details?.phone ?? null;
+            if (phone && userId) {
+              try {
+                await db
+                  .update(users)
+                  .set({ phone })
+                  .where(eq(users.id, userId));
+                console.log(`[Stripe Webhook] Phone saved for user ${userId}: ${phone}`);
+              } catch (phoneErr) {
+                // Non-critical — log but don't fail the webhook
+                console.error("[Stripe Webhook] Failed to save phone:", phoneErr);
+              }
+            }
+
             // Notify owner
             await notifyOwner({
               title: `New Purchase: ${productName ?? productKey}`,
-              content: `${email} purchased ${productName ?? productKey} for CA$${(amountCAD / 100).toFixed(2)}`,
+              content: `${email} purchased ${productName ?? productKey} for CA$${(amountCAD / 100).toFixed(2)}${phone ? ` | Phone: ${phone}` : ""}`,
             });
           } else {
             console.log(`[Stripe Webhook] Duplicate session ${stripeSessionId} — skipping`);

@@ -208,6 +208,21 @@ const INDIVIDUAL: Product[] = [
     available: true,
     features: ["502 practice questions", "Timed mock exam", "WPI formula sheet", "AI Tutor", "BC / AB / SK / MB"],
   },
+  {
+    key: "wpi-class2-water",
+    name: "WPI Class II Water Treatment Practice Pass",
+    shortName: "WPI Class II Water",
+    description: "WPI Class II Water Treatment — 501 advanced questions across 5 modules. Covers advanced treatment processes, system design, lab monitoring, source water management, and regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    priceCAD: 9900,
+    examTypes: ["wpi-class2-water"],
+    badge: "WPI Exam",
+    badgeColor: "#0E7490",
+    color: "#0E7490",
+    bg: "#ECFEFF",
+    border: "#A5F3FC",
+    available: true,
+    features: ["501 advanced questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB"],
+  },
 ];
 
 interface Bundle {
@@ -253,7 +268,7 @@ const BUNDLES: Bundle[] = [
   {
     key: "bundle-all",
     name: "Complete All Access",
-    tagline: "All 11 Practice Passes",
+    tagline: "All 12 Practice Passes",
     description: "Every exam on the platform — Water Treatment, Wastewater, and WQA. The ultimate prep bundle.",
     priceCAD: 59900,
     savings: 49000,
