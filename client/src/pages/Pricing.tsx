@@ -223,6 +223,21 @@ const INDIVIDUAL: Product[] = [
     available: true,
     features: ["501 advanced questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB"],
   },
+  {
+    key: "wpi-class3-water",
+    name: "WPI Class III Water Treatment Practice Pass",
+    shortName: "WPI Class III Water",
+    description: "WPI Class III Water Treatment — 502 questions across 5 advanced modules. Covers ozone/UV disinfection, membrane filtration, advanced process control, distribution management, and regulatory QMS. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    priceCAD: 12900,
+    examTypes: ["wpi-class3-water"],
+    badge: "WPI Exam",
+    badgeColor: "#0E7490",
+    color: "#0E7490",
+    bg: "#ECFEFF",
+    border: "#A5F3FC",
+    available: true,
+    features: ["502 advanced questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB"],
+  },
 ];
 
 interface Bundle {
@@ -268,7 +283,7 @@ const BUNDLES: Bundle[] = [
   {
     key: "bundle-all",
     name: "Complete All Access",
-    tagline: "All 12 Practice Passes",
+    tagline: "All 13 Practice Passes",
     description: "Every exam on the platform — Water Treatment, Wastewater, and WQA. The ultimate prep bundle.",
     priceCAD: 59900,
     savings: 49000,

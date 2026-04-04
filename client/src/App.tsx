@@ -59,6 +59,9 @@ import WpiClass2WaterQuiz from "@/pages/WpiClass2WaterQuiz";
 import WpiClass2WaterMockExam from "@/pages/WpiClass2WaterMockExam";
 import WpiLanding from "@/pages/WpiLanding";
 import FormulasWpiClass2 from "@/pages/FormulasWpiClass2";
+import WpiClass3WaterQuiz from "@/pages/WpiClass3WaterQuiz";
+import WpiClass3WaterMockExam from "@/pages/WpiClass3WaterMockExam";
+import FormulasWpiClass3 from "@/pages/FormulasWpiClass3";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -113,6 +116,9 @@ function Router() {
       <Route path={"/wpi-class2-water-mock"} component={WpiClass2WaterMockExam} />
       <Route path={"/wpi"} component={WpiLanding} />
       <Route path={"/formulas-wpi-class2"} component={FormulasWpiClass2} />
+      <Route path={"/wpi-class3-water"} component={WpiClass3WaterQuiz} />
+      <Route path={"/wpi-class3-water-mock"} component={WpiClass3WaterMockExam} />
+      <Route path={"/formulas-wpi-class3"} component={FormulasWpiClass3} />
       <Route path={"/formulas-wqa"} component={FormulasWQA} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/pricing"} component={Pricing} />
