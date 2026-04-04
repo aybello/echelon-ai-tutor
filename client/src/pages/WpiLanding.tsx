@@ -124,7 +124,7 @@ const FAQS = [
   },
   {
     q: "Is WPI Wastewater Treatment prep available?",
-    a: "Yes — WPI Class I Wastewater Treatment is now available with 500 questions covering Collection Systems, Primary & Secondary Treatment, Solids Handling & Biosolids, Laboratory & Monitoring, and Safety & Regulations. Additional wastewater class levels are coming soon.",
+    a: "Yes — WPI Class I Wastewater Treatment is now available with 500 questions covering Collection Systems, Primary & Secondary Treatment, Solids Handling & Biosolids, Laboratory & Monitoring, and Safety & Regulations. WPI Class II Wastewater is also available with 501 questions covering advanced secondary treatment, nutrient removal, and biosolids management.",
   },
 ];
 
@@ -191,7 +191,7 @@ export default function WpiLanding() {
   usePageMeta({
     title: "WPI Water Treatment Exam Prep — BC EOCP, Alberta AWWOA, SK, MB | Echelon Institute",
     description:
-      "Prepare for the WPI Water & Wastewater Treatment exams with 2,005+ practice questions for Class I–IV Water and Class I Wastewater. Covers BC (EOCP), Alberta (AWWOA), Saskatchewan (SAHO), and Manitoba (MWWA).",
+      "Prepare for the WPI Water & Wastewater Treatment exams with 2,506+ practice questions for Class I–IV Water and Class I Wastewater. Covers BC (EOCP), Alberta (AWWOA), Saskatchewan (SAHO), and Manitoba (MWWA).",
     path: "/wpi",
     keywords:
       "WPI exam prep, BC EOCP water treatment, Alberta AWWOA water operator, Saskatchewan SAHO water, Manitoba MWWA water, WPI Class I practice questions, WPI Class II practice questions, WPI Class III Class IV wastewater",
@@ -248,7 +248,7 @@ export default function WpiLanding() {
             maxWidth: 560,
             margin: "0 auto 32px",
           }}>
-            2,005+ practice questions for WPI Class I–IV Water Treatment and Class I Wastewater — aligned with the Need-to-Know Criteria used by <strong style={{ color: "#BAE6FD" }}>EOCP (BC)</strong>, <strong style={{ color: "#BAE6FD" }}>AWWOA (AB)</strong>, <strong style={{ color: "#BAE6FD" }}>SAHO (SK)</strong>, and <strong style={{ color: "#BAE6FD" }}>MWWA (MB)</strong>.
+            2,506+ practice questions for WPI Class I–IV Water Treatment and Class I Wastewater — aligned with the Need-to-Know Criteria used by <strong style={{ color: "#BAE6FD" }}>EOCP (BC)</strong>, <strong style={{ color: "#BAE6FD" }}>AWWOA (AB)</strong>, <strong style={{ color: "#BAE6FD" }}>SAHO (SK)</strong>, and <strong style={{ color: "#BAE6FD" }}>MWWA (MB)</strong>.
           </p>
 
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -287,7 +287,7 @@ export default function WpiLanding() {
           {/* Stats */}
           <div style={{ display: "flex", gap: 32, justifyContent: "center", marginTop: 48, flexWrap: "wrap" }}>
             {[
-              { value: "2,005+", label: "Practice Questions" },
+              { value: "2,506+", label: "Practice Questions" },
               { value: "5", label: "Exam Levels" },
               { value: "4", label: "WPI Provinces" },
               { value: "70%", label: "Pass Mark" },
@@ -562,6 +562,52 @@ export default function WpiLanding() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── WPI vs OWWCO Comparison Table ────────────────────────────── */}
+      <section style={{ background: "#FFFFFF", padding: "64px 20px", borderTop: "1px solid #E2E8F0" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#0F172A", textAlign: "center" as const, marginBottom: 8 }}>
+            WPI vs. OWWCO — Which Exam Do You Need?
+          </h2>
+          <p style={{ textAlign: "center" as const, fontSize: 14, color: "#64748B", marginBottom: 40, maxWidth: 600, margin: "0 auto 40px" }}>
+            Both WPI and OWWCO use standardized national question banks. Your province determines which certification body you register with.
+          </p>
+          <div style={{ overflowX: "auto" as const }}>
+            <table style={{ width: "100%", borderCollapse: "collapse" as const, fontSize: 13 }}>
+              <thead>
+                <tr style={{ background: "#F1F5F9" }}>
+                  {["Province", "Cert Body", "Exam System", "Levels Available", "Question Format", "Passing Score"].map(h => (
+                    <th key={h} style={{ padding: "12px 14px", textAlign: "left" as const, fontWeight: 700, color: "#0F172A", borderBottom: "2px solid #E2E8F0", whiteSpace: "nowrap" as const }}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { province: "🇧🇨 BC", body: "EOCP", system: "WPI", levels: "Class I–IV Water & WW", format: "Multiple choice", pass: "70%", highlight: true },
+                  { province: "🇦🇧 AB", body: "AWWOA", system: "WPI", levels: "Class I–IV Water & WW", format: "Multiple choice", pass: "70%", highlight: true },
+                  { province: "🇸🇰 SK", body: "SAHO", system: "WPI", levels: "Class I–IV Water & WW", format: "Multiple choice", pass: "70%", highlight: true },
+                  { province: "🇲🇧 MB", body: "MWWA", system: "WPI", levels: "Class I–IV Water & WW", format: "Multiple choice", pass: "70%", highlight: true },
+                  { province: "🇨🇦 ON", body: "OWWCO", system: "OWWCO", levels: "OIT, Class 1–4 Water & WW, WQA", format: "Multiple choice", pass: "70%", highlight: false },
+                ].map((row, i) => (
+                  <tr key={i} style={{ background: row.highlight ? "#ECFEFF" : i % 2 === 0 ? "#FFFFFF" : "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
+                    <td style={{ padding: "12px 14px", fontWeight: 600, color: "#0F172A" }}>{row.province}</td>
+                    <td style={{ padding: "12px 14px", color: row.highlight ? "#0E7490" : "#1D4ED8", fontWeight: 600 }}>{row.body}</td>
+                    <td style={{ padding: "12px 14px" }}>
+                      <span style={{ background: row.highlight ? "#CFFAFE" : "#DBEAFE", color: row.highlight ? "#0E7490" : "#1D4ED8", padding: "2px 8px", borderRadius: 6, fontSize: 11, fontWeight: 700 }}>{row.system}</span>
+                    </td>
+                    <td style={{ padding: "12px 14px", color: "#475569" }}>{row.levels}</td>
+                    <td style={{ padding: "12px 14px", color: "#475569" }}>{row.format}</td>
+                    <td style={{ padding: "12px 14px", fontWeight: 700, color: "#16A34A" }}>{row.pass}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p style={{ textAlign: "center" as const, fontSize: 12, color: "#94A3B8", marginTop: 16 }}>
+            Passing score and format may vary — always verify with your provincial certification body before registering.
+          </p>
         </div>
       </section>
 
