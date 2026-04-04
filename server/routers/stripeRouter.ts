@@ -62,6 +62,7 @@ export const stripeRouter = router({
           utm_campaign: input.utmCampaign ?? "",
         },
         allow_promotion_codes: true,
+        phone_number_collection: { enabled: true },
         success_url: `${input.origin}/purchase-success?session_id={CHECKOUT_SESSION_ID}&product=${product.key}`,
         cancel_url: `${input.origin}/pricing`,
       });
