@@ -118,6 +118,13 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     priceCAD: 12900,
     examTypes: ["wpi-class4-water"],
   },
+  {
+    key: "wpi-class1-wastewater",
+    name: "WPI Class I Wastewater Treatment Practice Pass",
+    description: "WPI Class I Wastewater Treatment — 500 questions across 5 modules: Wastewater Collection Systems, Primary & Secondary Treatment, Solids Handling & Biosolids, Laboratory & Monitoring, Safety & Regulations. Aligned with WPI Class I Wastewater Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 7900,
+    examTypes: ["wpi-class1-wastewater"],
+  },
 ];
 
 export const BUNDLE_PRODUCTS: EchelonProduct[] = [
@@ -138,9 +145,9 @@ export const BUNDLE_PRODUCTS: EchelonProduct[] = [
   {
     key: "bundle-all",
     name: "Complete All Access Bundle",
-    description: "Every exam — all 14 Practice Passes in one bundle. Water Treatment (OIT–Class 4), Wastewater (Class 1–4), WQA, WPI Class I, II, III & IV Water. Unlimited attempts, AI Tutor, score history. Save CA$807 vs buying individually.",
+    description: "Every exam — all 15 Practice Passes in one bundle. Water Treatment (OIT–Class 4), Wastewater (Class 1–4), WQA, WPI Class I–IV Water & WPI Class I Wastewater. Unlimited attempts, AI Tutor, score history. Save CA$807 vs buying individually.",
     priceCAD: 59900,
-    examTypes: ["oit", "oit-ww", "class1-water", "class2-water", "class3-water", "class4-water", "class1-ww", "class2-ww", "class3-ww", "class4-ww", "wqa", "wpi-class1-water", "wpi-class2-water", "wpi-class3-water", "wpi-class4-water"],
+    examTypes: ["oit", "oit-ww", "class1-water", "class2-water", "class3-water", "class4-water", "class1-ww", "class2-ww", "class3-ww", "class4-ww", "wqa", "wpi-class1-water", "wpi-class2-water", "wpi-class3-water", "wpi-class4-water", "wpi-class1-wastewater"],
   },
 ];
 

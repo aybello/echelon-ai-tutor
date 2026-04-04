@@ -253,6 +253,21 @@ const INDIVIDUAL: Product[] = [
     available: true,
     features: ["501 chief-operator questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB"],
   },
+  {
+    key: "wpi-class1-wastewater",
+    name: "WPI Class I Wastewater Treatment Practice Pass",
+    shortName: "WPI Class I Wastewater",
+    description: "WPI Class I Wastewater Treatment — 500 questions across 5 modules: Collection Systems, Primary & Secondary Treatment, Solids Handling & Biosolids, Lab & Monitoring, Safety & Regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    priceCAD: 7900,
+    examTypes: ["wpi-class1-wastewater"],
+    badge: "WPI Exam",
+    badgeColor: "#0E7490",
+    color: "#0E7490",
+    bg: "#ECFEFF",
+    border: "#A5F3FC",
+    available: true,
+    features: ["500 wastewater questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB"],
+  },
 ];
 
 interface Bundle {
@@ -298,7 +313,7 @@ const BUNDLES: Bundle[] = [
   {
     key: "bundle-all",
     name: "Complete All Access",
-    tagline: "All 14 Practice Passes",
+    tagline: "All 15 Practice Passes",
     description: "Every exam on the platform — Water Treatment, Wastewater, and WQA. The ultimate prep bundle.",
     priceCAD: 59900,
     savings: 49000,
