@@ -1196,27 +1196,27 @@ export default function Landing() {
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(56,189,248,0.1)",
-              border: "1px solid rgba(56,189,248,0.25)",
+              background: "rgba(52,211,153,0.12)",
+              border: "1px solid rgba(52,211,153,0.3)",
               borderRadius: 20, padding: "5px 16px", marginBottom: 18,
             }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: "#38BDF8", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>Expanding Nationally</span>
+              <span style={{ fontSize: 11, fontWeight: 700, color: "#34D399", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>✓ Now Live Nationally</span>
             </div>
             <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em", margin: "0 0 14px 0" }}>
-              Coming Soon to BC & Alberta
+              WPI Exam Prep Now Available
             </h2>
-            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.55)", maxWidth: 560, margin: "0 auto" }}>
-              Echelon is expanding beyond Ontario. Province-specific question banks, regulatory content, and AI tutoring tailored to EOCP and Alberta EPA certification exams are in development.
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 auto" }}>
+              BC, Alberta, Saskatchewan, and Manitoba operators can now practice with our WPI-aligned question banks.
+              502 Class I Water Treatment questions live — with more levels coming.
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, marginBottom: 48 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16, marginBottom: 48 }}>
             {[
               {
                 flag: "🏔️",
                 province: "British Columbia",
-                regulator: "EOCP — Environmental Operators Certification Program",
-                exams: "Water Treatment · Water Distribution · Wastewater Treatment · Wastewater Collection",
+                certBody: "EOCP",
                 operators: "~4,200 certified operators",
                 color: "#0891B2",
                 colorBg: "rgba(8,145,178,0.1)",
@@ -1225,66 +1225,83 @@ export default function Landing() {
               {
                 flag: "🛢️",
                 province: "Alberta",
-                regulator: "Alberta Environment and Protected Areas (EPA)",
-                exams: "Water Treatment · Water Distribution · Wastewater Treatment · Wastewater Collection",
+                certBody: "AWWOA",
                 operators: "~2,071 certified operators",
                 color: "#7C3AED",
                 colorBg: "rgba(124,58,237,0.1)",
                 colorBorder: "rgba(124,58,237,0.25)",
               },
+              {
+                flag: "🌾",
+                province: "Saskatchewan",
+                certBody: "SAHO",
+                operators: "~800 certified operators",
+                color: "#D97706",
+                colorBg: "rgba(217,119,6,0.1)",
+                colorBorder: "rgba(217,119,6,0.25)",
+              },
+              {
+                flag: "🦬",
+                province: "Manitoba",
+                certBody: "MWWA",
+                operators: "~600 certified operators",
+                color: "#059669",
+                colorBg: "rgba(5,150,105,0.1)",
+                colorBorder: "rgba(5,150,105,0.25)",
+              },
             ].map(p => (
               <div key={p.province} style={{
                 background: p.colorBg,
                 border: `1px solid ${p.colorBorder}`,
-                borderRadius: 16, padding: "28px 24px",
+                borderRadius: 16, padding: "24px 20px",
                 position: "relative" as const,
               }}>
                 <div style={{
-                  position: "absolute" as const, top: 16, right: 16,
-                  background: "rgba(255,255,255,0.08)",
+                  position: "absolute" as const, top: 14, right: 14,
+                  background: "rgba(52,211,153,0.15)",
                   borderRadius: 8, padding: "3px 10px",
-                  fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.5)",
+                  fontSize: 10, fontWeight: 700, color: "#34D399",
                   letterSpacing: "0.06em", textTransform: "uppercase" as const,
-                }}>Coming Soon</div>
-                <div style={{ fontSize: 32, marginBottom: 12 }}>{p.flag}</div>
-                <h3 style={{ fontSize: 18, fontWeight: 800, color: "#FFFFFF", margin: "0 0 6px 0" }}>{p.province}</h3>
-                <div style={{ fontSize: 12, fontWeight: 600, color: p.color, marginBottom: 14 }}>{p.regulator}</div>
-                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.7, marginBottom: 14 }}>
-                  <span style={{ fontWeight: 600, color: "rgba(255,255,255,0.7)" }}>Exam Streams: </span>{p.exams}
-                </div>
-                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 18 }}>{p.operators}</div>
-                <button
-                  onClick={() => { setNationalWaitlistProvince(p.province); setNationalWaitlistOpen(true); }}
-                  style={{
-                    padding: "9px 20px", borderRadius: 8,
-                    background: p.colorBorder,
-                    border: `1px solid ${p.colorBorder}`,
-                    color: p.color, fontSize: 12, fontWeight: 700,
-                    cursor: "pointer", fontFamily: "inherit",
-                  }}
-                >
-                  Get Notified →
-                </button>
+                }}>✓ Live</div>
+                <div style={{ fontSize: 28, marginBottom: 10 }}>{p.flag}</div>
+                <h3 style={{ fontSize: 16, fontWeight: 800, color: "#FFFFFF", margin: "0 0 4px 0" }}>{p.province}</h3>
+                <div style={{ fontSize: 12, fontWeight: 600, color: p.color, marginBottom: 12 }}>{p.certBody} — WPI Exams</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>{p.operators}</div>
+                <a href="/wpi-class1-water" style={{ textDecoration: "none" }}>
+                  <button
+                    style={{
+                      padding: "8px 16px", borderRadius: 8,
+                      background: p.colorBorder,
+                      border: `1px solid ${p.colorBorder}`,
+                      color: p.color, fontSize: 12, fontWeight: 700,
+                      cursor: "pointer", fontFamily: "inherit",
+                    }}
+                  >
+                    Start Class I Practice →
+                  </button>
+                </a>
               </div>
             ))}
           </div>
 
           <div style={{ textAlign: "center" }}>
             <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", marginBottom: 20 }}>
-              Want to be notified when your province launches? Join the waitlist.
+              All WPI question banks are aligned with the WPI Need-to-Know Criteria.
+              Class II–IV levels coming soon.
             </p>
-            <button
-              onClick={() => setNationalWaitlistOpen(true)}
-              style={{
-                padding: "12px 32px", borderRadius: 10,
-                background: "linear-gradient(135deg, #0891B2, #7C3AED)",
-                color: "#fff", border: "none", fontSize: 14, fontWeight: 700,
-                cursor: "pointer", fontFamily: "inherit",
-                boxShadow: "0 4px 20px rgba(8,145,178,0.3)",
-              }}
-            >
-              Join the National Waitlist →
-            </button>
+            <a href="/pricing" style={{ textDecoration: "none" }}>
+              <button
+                style={{
+                  padding: "12px 32px", borderRadius: 10,
+                  background: "linear-gradient(135deg, #0891B2, #7C3AED)",
+                  color: "#fff", border: "none", fontSize: 14, fontWeight: 700,
+                  cursor: "pointer", fontFamily: "inherit",
+                  boxShadow: "0 4px 20px rgba(8,145,178,0.3)",
+                }}
+              >
+                View WPI Pricing →
+              </button>
+            </a>
           </div>
         </div>
       </section>

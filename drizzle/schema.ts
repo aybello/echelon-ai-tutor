@@ -21,6 +21,7 @@ export const users = mysqlTable("users", {
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
   phone: varchar("phone", { length: 32 }),
+  province: varchar("province", { length: 32 }), // 'ON' | 'BC' | 'AB' | 'SK' | 'MB' | 'QC'
 });
 
 export type User = typeof users.$inferSelect;
@@ -72,6 +73,7 @@ export const examResults = mysqlTable("exam_results", {
   sessionId: varchar("sessionId", { length: 64 }).notNull(), // anonymous session ID from localStorage
   examType: varchar("examType", { length: 32 }).notNull(), // 'class1' | 'wqa'
   stream: varchar("stream", { length: 32 }), // 'water' | 'wastewater' | null for WQA
+  province: varchar("province", { length: 32 }), // province context for this exam
   score: int("score").notNull(), // number of correct answers
   total: int("total").notNull(), // total questions attempted
   passed: mysqlEnum("passed", ["yes", "no"]).notNull(),
@@ -92,6 +94,11 @@ export const purchases = mysqlTable("purchases", {
   amountCAD: int("amountCAD").notNull(), // in cents
   stripeSessionId: varchar("stripeSessionId", { length: 128 }).notNull().unique(),
   stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
+  province: varchar("province", { length: 32 }), // province at time of purchase
+  utmSource: varchar("utmSource", { length: 128 }),
+  utmMedium: varchar("utmMedium", { length: 128 }),
+  utmCampaign: varchar("utmCampaign", { length: 128 }),
+  referralSource: varchar("referralSource", { length: 128 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type Purchase = typeof purchases.$inferSelect;

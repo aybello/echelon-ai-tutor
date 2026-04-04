@@ -372,6 +372,65 @@ function CheckoutButton({
   );
 }
 
+// ─── Province config for the selector ───────────────────────────────────────
+const PROVINCES = [
+  { code: "ON", name: "Ontario", flag: "🍁", certBody: "MOECP / OWWCO", framework: "ontario" },
+  { code: "BC", name: "British Columbia", flag: "🏔️", certBody: "EOCP", framework: "wpi" },
+  { code: "AB", name: "Alberta", flag: "🛢️", certBody: "AWWOA", framework: "wpi" },
+  { code: "SK", name: "Saskatchewan", flag: "🌾", certBody: "SAHO", framework: "wpi" },
+  { code: "MB", name: "Manitoba", flag: "🦬", certBody: "MWWA", framework: "wpi" },
+] as const;
+
+type ProvinceCode = "ON" | "BC" | "AB" | "SK" | "MB";
+
+// Province-specific label overrides for WPI provinces
+const WPI_WATER_LABELS: Record<string, { shortName: string; description: string; badge?: string }> = {
+  "oit": {
+    shortName: "OIT",
+    description: "Operator-in-Training — foundation water/wastewater treatment, safety, and provincial regulations.",
+  },
+  "class1-water": {
+    shortName: "Level I / Class I",
+    description: "WPI Class I Water Treatment — 502 questions covering treatment process, equipment O&M, lab analysis, and source water. Recognized by EOCP (BC), AWWOA (AB), SK, and MB.",
+    badge: "WPI Exam",
+  },
+  "class2-water": {
+    shortName: "Level II / Class II",
+    description: "WPI Class II Water Treatment — advanced treatment processes, membrane filtration, and process troubleshooting.",
+    badge: "WPI Exam",
+  },
+  "class3-water": {
+    shortName: "Level III / Class III",
+    description: "WPI Class III Water Treatment — senior operator level: LSI, CT values, membranes, lime softening, and advanced process control.",
+    badge: "WPI Exam",
+  },
+  "class4-water": {
+    shortName: "Level IV / Class IV",
+    description: "WPI Class IV Water Treatment — chief operator level: full system management, regulatory leadership, and strategic operations.",
+    badge: "WPI Exam",
+  },
+  "class1-ww": {
+    shortName: "Level I / Class I WW",
+    description: "WPI Class I Wastewater Treatment — collection systems, basic treatment, and provincial regulations.",
+    badge: "WPI Exam",
+  },
+  "class2-ww": {
+    shortName: "Level II / Class II WW",
+    description: "WPI Class II Wastewater Treatment — activated sludge, nutrient removal, and advanced secondary treatment.",
+    badge: "WPI Exam",
+  },
+  "class3-ww": {
+    shortName: "Level III / Class III WW",
+    description: "WPI Class III Wastewater Treatment — advanced biological treatment, BNR, and biosolids management.",
+    badge: "WPI Exam",
+  },
+  "class4-ww": {
+    shortName: "Level IV / Class IV WW",
+    description: "WPI Class IV Wastewater Treatment — plant superintendent level: BNR, MBR, biosolids, regulatory compliance.",
+    badge: "WPI Exam",
+  },
+};
+
 // ─── Main Pricing Page ────────────────────────────────────────────────────────
 export default function Pricing() {
   usePageMeta({
@@ -381,6 +440,9 @@ export default function Pricing() {
   });
 
   const [activeTab, setActiveTab] = useState<"individual" | "bundles">("individual");
+  const [selectedProvince, setSelectedProvince] = useState<ProvinceCode>("ON");
+  const isWpi = selectedProvince !== "ON";
+  const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
 
   return (
     <div
@@ -492,6 +554,67 @@ export default function Pricing() {
           No subscription, no hidden fees.
         </p>
 
+        {/* Province selector */}
+        <div style={{ marginBottom: 28 }}>
+          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", marginBottom: 10, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase" }}>
+            Select Your Province
+          </div>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
+            {PROVINCES.map(p => (
+              <button
+                key={p.code}
+                onClick={() => setSelectedProvince(p.code)}
+                style={{
+                  padding: "8px 16px",
+                  borderRadius: 10,
+                  border: selectedProvince === p.code
+                    ? "2px solid #7DD3FC"
+                    : "1.5px solid rgba(255,255,255,0.15)",
+                  background: selectedProvince === p.code
+                    ? "rgba(125,211,252,0.15)"
+                    : "rgba(255,255,255,0.07)",
+                  color: selectedProvince === p.code ? "#7DD3FC" : "rgba(255,255,255,0.7)",
+                  fontSize: 13,
+                  fontWeight: selectedProvince === p.code ? 700 : 500,
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                }}
+              >
+                <span>{p.flag}</span>
+                <span>{p.name}</span>
+                {p.framework === "wpi" && (
+                  <span style={{
+                    background: "rgba(125,211,252,0.2)",
+                    color: "#7DD3FC",
+                    fontSize: 9,
+                    fontWeight: 700,
+                    padding: "1px 6px",
+                    borderRadius: 8,
+                    letterSpacing: "0.04em",
+                  }}>WPI</span>
+                )}
+              </button>
+            ))}
+          </div>
+          {isWpi && (
+            <div style={{
+              marginTop: 12,
+              display: "inline-block",
+              background: "rgba(125,211,252,0.1)",
+              border: "1px solid rgba(125,211,252,0.3)",
+              borderRadius: 10,
+              padding: "8px 16px",
+              fontSize: 12,
+              color: "#7DD3FC",
+            }}>
+              <strong>{provinceInfo.certBody}</strong> — WPI standardized exams apply. All question banks are aligned with WPI Need-to-Know Criteria.
+            </div>
+          )}
+        </div>
+
         {/* Tab toggle */}
         <div
           style={{
@@ -553,7 +676,7 @@ export default function Pricing() {
                 }}
               >
                 {INDIVIDUAL.filter(p => p.key === "oit" || p.key.includes("-water")).map(product => (
-                  <ProductCard key={product.key} product={product} />
+                  <ProductCard key={product.key} product={product} isWpi={isWpi} wpiLabel={WPI_WATER_LABELS[product.key]} />
                 ))}
               </div>
             </div>
@@ -581,7 +704,7 @@ export default function Pricing() {
                 }}
               >
                 {INDIVIDUAL.filter(p => p.key.includes("-ww")).map(product => (
-                  <ProductCard key={product.key} product={product} />
+                  <ProductCard key={product.key} product={product} isWpi={isWpi} wpiLabel={WPI_WATER_LABELS[product.key]} />
                 ))}
               </div>
             </div>
@@ -745,8 +868,19 @@ export default function Pricing() {
   );
 }
 
-// ─── Product Card ─────────────────────────────────────────────────────────────
-function ProductCard({ product }: { product: Product }) {
+// ─── Product Card ────────────────────────────────────────────────────────
+function ProductCard({
+  product,
+  isWpi = false,
+  wpiLabel,
+}: {
+  product: Product;
+  isWpi?: boolean;
+  wpiLabel?: { shortName: string; description: string; badge?: string };
+}) {
+  const displayName = isWpi && wpiLabel ? wpiLabel.shortName : product.shortName;
+  const displayDesc = isWpi && wpiLabel ? wpiLabel.description : product.description;
+  const displayBadge = isWpi && wpiLabel?.badge ? wpiLabel.badge : product.badge;
   return (
     <div
       style={{
@@ -761,13 +895,13 @@ function ProductCard({ product }: { product: Product }) {
         boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
       }}
     >
-      {product.badge && (
+      {displayBadge && (
         <div
           style={{
             position: "absolute",
             top: -10,
             right: 14,
-            background: product.badgeColor ?? "#1D4ED8",
+            background: isWpi && wpiLabel?.badge ? "#0E7490" : (product.badgeColor ?? "#1D4ED8"),
             color: "#fff",
             fontSize: 10,
             fontWeight: 700,
@@ -777,7 +911,7 @@ function ProductCard({ product }: { product: Product }) {
             textTransform: "uppercase",
           }}
         >
-          {product.badge}
+          {displayBadge}
         </div>
       )}
 
@@ -795,12 +929,12 @@ function ProductCard({ product }: { product: Product }) {
           Practice Pass
         </div>
         <div style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", lineHeight: 1.2 }}>
-          {product.shortName}
+          {displayName}
         </div>
       </div>
 
       <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, margin: 0 }}>
-        {product.description}
+        {displayDesc}
       </p>
 
       {product.features ? (
