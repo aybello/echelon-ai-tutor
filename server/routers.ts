@@ -3,9 +3,9 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { invokeLLM } from "./_core/llm";
 import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router } from "./_core/trpc";
+import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
-import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmissions } from "../drizzle/schema";
+import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmissions, users } from "../drizzle/schema";
 import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { adminRouter } from "./routers/admin";
@@ -26,6 +26,18 @@ export const appRouter = router({
         success: true,
       } as const;
     }),
+    updatePhone: protectedProcedure
+      .input(
+        z.object({
+          phone: z.string().min(7, "Please enter a valid phone number").max(32),
+        })
+      )
+      .mutation(async ({ ctx, input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable");
+        await db.update(users).set({ phone: input.phone }).where(eq(users.id, ctx.user.id));
+        return { success: true };
+      }),
   }),
 
   // Waitlist — email lead capture for upcoming courses

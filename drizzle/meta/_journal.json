@@ -57,6 +57,13 @@
       "when": 1775197379941,
       "tag": "0007_robust_paladin",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1775268499881,
+      "tag": "0008_gorgeous_gertrude_yorkes",
+      "breakpoints": true
     }
   ]
 }
