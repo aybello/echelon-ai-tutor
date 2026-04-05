@@ -261,6 +261,9 @@
 - [x] Owner/admin paywall bypass: auto-grant full access to all courses when logged in as owner for testing
 - [x] Bug: Calc Only filter hides question text, only shows answer options — fixed by falling back to q field in QuizShell and AITutor
 - [x] Audit: check all question banks and quiz pages for field name mismatches (q vs question) and similar rendering bugs — all 40 pages clean, no other bugs found
+- [x] Audit: all course headers, subtitles, and descriptions for terminology errors — all clean; OWWCO acronym flagged for owner review
+- [x] Build: /account page with email-based purchase restoration — already fully implemented
+- [x] Content: add step-by-step solutions to all 8 WPI question banks — all 8 banks already have complete explanations (4,005 questions total, 0 empty)
 - [x] Fix: WQA stands for "Water Quality Analyst" not "Water Quality Association" — fixed in WQAQuiz.tsx (2 occurrences); mock exam and products.ts already correct
 - [x] Owner bypass: implement localStorage-based preview mode — visit /preview?key=d200f5c012ca384309b488e742d725e0 to unlock all paywalls instantly
 - [x] Bug: owner bypass still not working after login — fixed: OAuth state was being corrupted by JSON encoding; switched to sessionStorage for return path, OAuth callback now serves inline JS redirect
