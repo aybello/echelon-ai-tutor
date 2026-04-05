@@ -288,8 +288,8 @@ export default function WpiLanding() {
           {/* Stats */}
           <div style={{ display: "flex", gap: 32, justifyContent: "center", marginTop: 48, flexWrap: "wrap" }}>
             {[
-              { value: "2,500+", label: "Practice Questions" },
-              { value: "5", label: "Exam Levels" },
+              { value: "4,000+", label: "Practice Questions" },
+              { value: "8", label: "Exam Levels" },
               { value: "4", label: "WPI Provinces" },
               { value: "70%", label: "Pass Mark" },
             ].map(stat => (
