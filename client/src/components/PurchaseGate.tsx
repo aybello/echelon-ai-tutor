@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { getLoginUrl } from "@/const";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png";
 
@@ -387,6 +388,13 @@ export default function PurchaseGate({
           Already purchased?{" "}
           <a href="/account" style={{ color: "#1D4ED8", fontWeight: 600 }}>
             Restore access →
+          </a>
+          <br />
+          <a
+            href={getLoginUrl(window.location.pathname)}
+            style={{ color: "#64748B", fontWeight: 500, marginTop: 4, display: "inline-block" }}
+          >
+            Log in to your account →
           </a>
         </div>
       </div>
