@@ -769,6 +769,37 @@ export default function Pricing() {
       {/* ── Content ── */}
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 80px" }}>
         <>
+            {/* Ontario header — shown only on Ontario tab */}
+            {!isWpi && (
+              <div style={{ marginBottom: 32 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+                  <div
+                    style={{
+                      width: 4,
+                      height: 28,
+                      borderRadius: 4,
+                      background: "linear-gradient(180deg, #DC2626, #B91C1C)",
+                    }}
+                  />
+                  <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: 0 }}>
+                    🍁 Ontario — MOECP / OWWCO
+                  </h2>
+                  <span style={{
+                    background: "#FEF2F2",
+                    color: "#B91C1C",
+                    fontSize: 11,
+                    fontWeight: 700,
+                    padding: "3px 10px",
+                    borderRadius: 20,
+                    border: "1px solid #FECACA",
+                  }}>✓ Live</span>
+                </div>
+                <p style={{ fontSize: 13, color: "#64748B", margin: 0, lineHeight: 1.5 }}>
+                  Ontario operator certification exams regulated by MOECP and administered by OWWCO. OIT through Class 4 Water &amp; Wastewater.
+                </p>
+              </div>
+            )}
+
             {/* Water Treatment section */}
             <div style={{ marginBottom: 48 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
