@@ -372,6 +372,148 @@ const WQA_COURSES = [
   },
 ];
 
+const WPI_WATER_COURSES = [
+  {
+    code: "WPI-W1",
+    title: "WPI Class I Water",
+    subtitle: "WPI Water Treatment — Class I",
+    price: 129,
+    duration: "4–6 weeks",
+    questions: 503,
+    description: "Comprehensive WPI Class I Water Treatment prep aligned with WPI Need-to-Know Criteria. Covers coagulation, filtration, disinfection, distribution, and regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    topics: ["Coagulation & Flocculation", "Filtration & Sedimentation", "Disinfection & CT Values", "Distribution Systems", "Regulations & Safety"],
+    badge: "WPI",
+    badgeColor: "#0369A1",
+    color: "#0369A1",
+    bg: "#F0F9FF",
+    border: "#BAE6FD",
+    comingSoon: false,
+    practicePassPrice: 79,
+  },
+  {
+    code: "WPI-W2",
+    title: "WPI Class II Water",
+    subtitle: "WPI Water Treatment — Class II",
+    price: 149,
+    duration: "6–8 weeks",
+    questions: 501,
+    description: "Advanced WPI Class II Water Treatment prep. Covers advanced treatment processes, system design, lab monitoring, source water management, and regulatory compliance. 501 questions across 5 modules.",
+    topics: ["Advanced Treatment Processes", "System Design & Hydraulics", "Lab Monitoring & QC", "Source Water Management", "Regulatory Compliance"],
+    badge: "WPI",
+    badgeColor: "#0E7490",
+    color: "#0E7490",
+    bg: "#ECFEFF",
+    border: "#A5F3FC",
+    comingSoon: false,
+    practicePassPrice: 99,
+  },
+  {
+    code: "WPI-W3",
+    title: "WPI Class III Water",
+    subtitle: "WPI Water Treatment — Class III",
+    price: 169,
+    duration: "8–10 weeks",
+    questions: 502,
+    description: "Senior-level WPI Class III Water Treatment prep. Covers advanced process optimization, membrane systems, chemical handling, emergency response, and senior operator responsibilities.",
+    topics: ["Advanced Process Optimization", "Membrane & Advanced Treatment", "Chemical Handling & Safety", "Emergency Response", "Senior Operator Responsibilities"],
+    badge: "WPI",
+    badgeColor: "#1E40AF",
+    color: "#1E40AF",
+    bg: "#EFF6FF",
+    border: "#BFDBFE",
+    comingSoon: false,
+    practicePassPrice: 129,
+  },
+  {
+    code: "WPI-W4",
+    title: "WPI Class IV Water",
+    subtitle: "WPI Water Treatment — Class IV",
+    price: 189,
+    duration: "10–12 weeks",
+    questions: 501,
+    description: "Chief operator-level WPI Class IV Water Treatment prep. The highest WPI water certification. Covers system-wide management, capital planning, advanced regulatory compliance, and strategic operations.",
+    topics: ["System-Wide Management", "Capital & Infrastructure Planning", "Advanced Regulatory Compliance", "Strategic Operations", "Class IV Exam Mastery"],
+    badge: "WPI",
+    badgeColor: "#4C1D95",
+    color: "#4C1D95",
+    bg: "#F5F3FF",
+    border: "#DDD6FE",
+    comingSoon: false,
+    practicePassPrice: 149,
+  },
+];
+
+const WPI_WASTEWATER_COURSES = [
+  {
+    code: "WPI-WW1",
+    title: "WPI Class I Wastewater",
+    subtitle: "WPI Wastewater Treatment — Class I",
+    price: 129,
+    duration: "4–6 weeks",
+    questions: 501,
+    description: "WPI Class I Wastewater Treatment prep aligned with WPI Need-to-Know Criteria. Covers primary and secondary treatment, activated sludge basics, effluent quality, and regulations. Recognized by EOCP, AWWOA, SAHO, and MWWA.",
+    topics: ["Primary Clarification", "Activated Sludge Basics", "BOD & TSS Control", "Effluent Standards", "Regulations & Safety"],
+    badge: "WPI",
+    badgeColor: "#B45309",
+    color: "#B45309",
+    bg: "#FFFBEB",
+    border: "#FDE68A",
+    comingSoon: false,
+    practicePassPrice: 79,
+  },
+  {
+    code: "WPI-WW2",
+    title: "WPI Class II Wastewater",
+    subtitle: "WPI Wastewater Treatment — Class II",
+    price: 149,
+    duration: "6–8 weeks",
+    questions: 501,
+    description: "Advanced WPI Class II Wastewater Treatment prep. Covers biological nutrient removal, sludge management, advanced lab analysis, and process optimization. 501 questions across 8 modules.",
+    topics: ["Biological Nutrient Removal", "Sludge Processing & Dewatering", "SRT & SVI Calculations", "Advanced Lab Analysis", "Process Optimization"],
+    badge: "WPI",
+    badgeColor: "#0F766E",
+    color: "#0F766E",
+    bg: "#F0FDFA",
+    border: "#99F6E4",
+    comingSoon: false,
+    practicePassPrice: 99,
+  },
+  {
+    code: "WPI-WW3",
+    title: "WPI Class III Wastewater",
+    subtitle: "WPI Wastewater Treatment — Class III",
+    price: 169,
+    duration: "8–10 weeks",
+    questions: 502,
+    description: "Senior-level WPI Class III Wastewater Treatment prep. Covers advanced BNR, membrane bioreactors, industrial pretreatment, advanced biosolids, and regulatory compliance. 502 questions across 8 modules.",
+    topics: ["Advanced BNR & MBR", "Industrial Pretreatment", "Advanced Biosolids Management", "Regulatory Compliance", "Emergency Response"],
+    badge: "WPI",
+    badgeColor: "#1D4ED8",
+    color: "#1D4ED8",
+    bg: "#EFF6FF",
+    border: "#BFDBFE",
+    comingSoon: false,
+    practicePassPrice: 129,
+  },
+  {
+    code: "WPI-WW4",
+    title: "WPI Class IV Wastewater",
+    subtitle: "WPI Wastewater Treatment — Class IV",
+    price: 189,
+    duration: "10–12 weeks",
+    questions: 502,
+    description: "Chief operator-level WPI Class IV Wastewater Treatment prep. The highest WPI wastewater certification. Covers advanced process control, BNR & resource recovery, plant management, and strategic regulatory compliance. 502 questions across 7 modules.",
+    topics: ["Advanced Process Control", "BNR & Resource Recovery", "Plant Management & Leadership", "Regulatory Compliance", "Emergency Response"],
+    badge: "WPI",
+    badgeColor: "#6D28D9",
+    color: "#6D28D9",
+    bg: "#F5F3FF",
+    border: "#DDD6FE",
+    comingSoon: false,
+    practicePassPrice: 149,
+  },
+];
+
 const FEATURES = [
   {
     icon: "🤖",
@@ -434,11 +576,11 @@ const FEATURES = [
 const STATS = [
   { value: "7,300+", label: "Practice Questions" },
   { value: "22", label: "Certification Courses" },
-  { value: "3", label: "Specialization Tracks" },
+  { value: "5", label: "Specialization Tracks" },
   { value: "Free", label: "OIT Access" },
 ];
 
-type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number];
+type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number] | (typeof WPI_WATER_COURSES)[number] | (typeof WPI_WASTEWATER_COURSES)[number];
 
 function CourseCard({ course }: { course: CourseType }) {
   const [expanded, setExpanded] = useState(false);
@@ -606,7 +748,7 @@ export default function Landing() {
     keywords: "Canada water operator exam, wastewater operator certification, OIT exam prep, OWWCO, EOCP, Class 1 water, BC water operator, Alberta operator certification, operator practice questions",
     path: "/",
   });
-  const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa">("water");
+  const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa" | "wpi-water" | "wpi-wastewater">("water");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [nationalWaitlistOpen, setNationalWaitlistOpen] = useState(false);
   const [nationalWaitlistProvince, setNationalWaitlistProvince] = useState("");
@@ -990,7 +1132,7 @@ export default function Landing() {
             Choose Your Certification Track
           </h2>
           <p style={{ fontSize: 16, color: "#64748B", maxWidth: 560, margin: "0 auto 32px" }}>
-            Three certification tracks — Water Treatment (5 levels), Wastewater Treatment (5 levels), and Water Quality Analyst (single Ontario certification). Every course includes hundreds of practice questions and full AI Tutor access.
+            Five certification tracks — Ontario Water (5 levels), Ontario Wastewater (5 levels), WQA, plus WPI Water (Class I–IV) and WPI Wastewater (Class I–IV) for BC, AB, SK, and MB operators. Every course includes hundreds of practice questions and full AI Tutor access.
           </p>
 
           {/* Track Toggle */}
@@ -1036,6 +1178,30 @@ export default function Landing() {
             >
               🔬 WQA
             </button>
+            <button
+              onClick={() => setActiveTrack("wpi-water")}
+              style={{
+                padding: "10px 20px", borderRadius: 10, border: "none",
+                background: activeTrack === "wpi-water" ? "#0369A1" : "transparent",
+                color: activeTrack === "wpi-water" ? "#fff" : "#64748B",
+                fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                transition: "all 0.2s", whiteSpace: "nowrap",
+              }}
+            >
+              🏔️ WPI Water
+            </button>
+            <button
+              onClick={() => setActiveTrack("wpi-wastewater")}
+              style={{
+                padding: "10px 20px", borderRadius: 10, border: "none",
+                background: activeTrack === "wpi-wastewater" ? "#B45309" : "transparent",
+                color: activeTrack === "wpi-wastewater" ? "#fff" : "#64748B",
+                fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                transition: "all 0.2s", whiteSpace: "nowrap",
+              }}
+            >
+              🌿 WPI Wastewater
+            </button>
           </div>
         </div>
 
@@ -1044,7 +1210,7 @@ export default function Landing() {
           gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
           gap: 24,
         }}>
-          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : WQA_COURSES).map(course => (
+          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : WQA_COURSES).map(course => (
             <CourseCard key={course.code} course={course} />
           ))}
         </div>
@@ -1211,7 +1377,7 @@ export default function Landing() {
             </h2>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 auto" }}>
               BC, Alberta, Saskatchewan, and Manitoba operators can now practice with our WPI-aligned question banks.
-              502 Class I Water Treatment questions live — with more levels coming.
+              Over 4,000 questions across 8 WPI courses — Class I–IV Water and Class I–IV Wastewater — all live now.
             </p>
           </div>
 
@@ -1291,7 +1457,7 @@ export default function Landing() {
           <div style={{ textAlign: "center" }}>
             <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", marginBottom: 20 }}>
               All WPI question banks are aligned with the WPI Need-to-Know Criteria.
-              Class II–IV levels coming soon.
+              Class I–IV Water and Class I–IV Wastewater — all 8 levels are now live.
             </p>
             <a href="/pricing" style={{ textDecoration: "none" }}>
               <button

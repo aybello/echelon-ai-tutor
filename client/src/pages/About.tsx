@@ -245,6 +245,20 @@ export default function About() {
             {
               date: "April 2026",
               badge: "New",
+              badgeColor: "#6D28D9",
+              title: "WPI Class III & IV Wastewater Treatment",
+              body: "1,003 new questions across 15 modules for senior and chief operator-level WPI Wastewater certification. Class III covers advanced BNR, membrane bioreactors, industrial pretreatment, advanced biosolids, and regulatory compliance (501 questions). Class IV covers advanced process control, BNR & resource recovery, plant management, and strategic regulatory compliance (502 questions). Both include timed mock exam, formula sheet, and AI Tutor.",
+            },
+            {
+              date: "April 2026",
+              badge: "New",
+              badgeColor: "#0369A1",
+              title: "WPI Water & WPI Wastewater Full Ladder Bundles",
+              body: "Two new bundles for WPI operators: WPI Water Full Ladder (CA$299, Class I–IV Water, 2,007 questions, saves CA$99) and WPI Wastewater Full Ladder (CA$299, Class I–IV Wastewater, 1,503 questions, saves CA$120). Both bundles unlock all four levels, all mock exams, all formula sheets, and full AI Tutor access.",
+            },
+            {
+              date: "April 2026",
+              badge: "",
               badgeColor: "#7C3AED",
               title: "OIT Wastewater Treatment — Standalone Free Course",
               body: "OIT Wastewater is now available as its own dedicated free course. Covers primary and secondary treatment, biological processes, activated sludge, disinfection, biosolids basics, and regulatory fundamentals. Includes 500+ practice questions, adaptive quiz engine, AI Tutor, confidence scoring, process diagrams, and formula sheet.",

@@ -215,3 +215,6 @@
 - [x] Add WPI Water Full Ladder bundle callout to WPI landing page (matching WW bundle callout)
 - [x] Ensure bundle-wpi-water and bundle-wpi-wastewater are recognized in account/restore-access logic (already complete — server-side getAllUnlockedExamTypes and client-side PurchaseGate both handle them)
 - [x] Update main Landing page stats bar to 7,300+ questions and 22 courses
+- [x] Build /account page with email-based access restore and purchased course list (all 8 WPI exam types added to EXAM_META)
+- [x] Add WPI track tab/section to main Landing page course catalogue (WPI Water + WPI Wastewater tabs, 5 tracks total)
+- [x] Update About page changelog with WPI Class III/IV Wastewater and bundle launches
