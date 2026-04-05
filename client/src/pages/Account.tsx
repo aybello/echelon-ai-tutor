@@ -256,7 +256,8 @@ export default function Account() {
           <img
             src={LOGO_URL}
             alt="Echelon Institute"
-            className="w-14 h-14 mx-auto mb-4 rounded-xl"
+            className="mx-auto mb-4"
+            style={{ height: 56, width: "auto", filter: "brightness(0) invert(1)" }}
           />
           <h1 className="text-3xl font-bold text-white mb-2">My Passes</h1>
           <p className="text-slate-400 text-base">
