@@ -13,6 +13,7 @@ export interface Question {
   difficulty: 'easy' | 'medium' | 'hard';
   steps?: { l: string; c: string }[];
   tip?: string;
+  isCalc?: boolean;
 }
 export const QUESTIONS: Question[] = [
   {
@@ -28,14 +29,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Low-turbidity, high-colour water contains significant natural organic matter (NOM). Enhanced coagulation — operating at lower pH (5.5–6.5) with higher coagulant dose — is the most effective strategy. NOM removal is critical because it is a DBP precursor. Charge neutralization alone at neutral pH is insufficient for NOM removal. Polymer alone cannot effectively remove dissolved NOM.",
-    steps: [
-      { l: "Analyze Source Water Characteristics", c: "Identify that the source water has low turbidity (2 NTU) and high colour (45 TCU), indicating the presence of significant natural organic matter (NOM)." },
-      { l: "Understand Treatment Goals", c: "Recognize that the primary goal for this water type is effective NOM removal, which is crucial for preventing disinfection byproduct (DBP) formation." },
-      { l: "Evaluate Coagulation Strategies", c: "Consider different coagulation approaches. Charge neutralization at neutral pH is insufficient for NOM removal, and polymer alone is ineffective for dissolved NOM." },
-      { l: "Select Optimal Strategy", c: "Determine that enhanced coagulation, involving lower pH (5.5-6.5) and higher coagulant dose, is the most appropriate and effective strategy for removing NOM from low-turbidity, high-colour water." },
-    ],
     "difficulty": "hard",
-    tip: "When dealing with high-colour water, always prioritize strategies that effectively remove natural organic matter (NOM) to prevent DBP formation.",
   },
   {
     "id": 2,
@@ -50,14 +44,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "When excess coagulant is added, the colloidal particles become positively charged (charge reversal), causing restabilization. This results in poor floc formation and high turbidity in settled water. The optimal coagulant dose produces a zeta potential near zero (charge neutralization). Operators must avoid overdosing, which wastes chemicals and degrades performance.",
-    steps: [
-      { l: "Step 1: Understand Zeta Potential", c: "Zeta potential measures the electrical charge on the surface of colloidal particles. A negative zeta potential indicates stable particles that repel each other, while a positive zeta potential indicates charge reversal." },
-      { l: "Step 2: Relate Alum Dose to Charge", c: "Alum (aluminum sulfate) is a positively charged coagulant. Its primary function in enhanced coagulation is to neutralize the naturally negative charge of colloidal particles in water." },
-      { l: "Step 3: Interpret Increasing Positive Zeta Potential", c: "If increasing the alum dose beyond 30 mg/L causes the zeta potential to become increasingly positive, it means that the excess positive charge from the alum is now overwhelming the negative charge of the colloids." },
-      { l: "Step 4: Identify the Consequence of Overdosing", c: "This 'charge reversal' due to overdosing leads to restabilization of the particles. Instead of clumping together, the now positively charged particles repel each other, resulting in poor floc formation and high turbidity." },
-    ],
     "difficulty": "hard",
-    tip: "Always connect observed jar test results, like zeta potential changes, to the underlying chemical principles of coagulation to understand process implications.",
   },
   {
     "id": 3,
@@ -72,14 +59,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Gradual TMP increase despite regular backwashing indicates irreversible fouling — deposits that cannot be removed by hydraulic backwashing alone. This is typically caused by organic matter, biofouling, or scaling. Chemical cleaning (CIP — Clean-In-Place) using caustic/hypochlorite for organics or acid for scaling is required. Air binding causes sudden TMP spikes, not gradual increases.",
-    steps: [
-      { l: "Analyze the Problem", c: "The question describes a gradual increase in Transmembrane Pressure (TMP) over several weeks, despite regular backwashing. This points to a type of fouling that is not easily removed by hydraulic means." },
-      { l: "Evaluate Backwashing Effectiveness", c: "Regular backwashing is designed to remove reversible fouling. Since TMP is still increasing, the fouling is likely irreversible or partially irreversible, meaning backwashing is insufficient." },
-      { l: "Consider Fouling Types", c: "Irreversible fouling is commonly caused by organic matter, biofouling (microbial growth), or scaling (mineral precipitation). These materials adhere strongly to the membrane surface or pores." },
-      { l: "Identify the Solution", c: "To address irreversible fouling, chemical cleaning (Clean-In-Place or CIP) is required. Different chemicals are used depending on the type of foulant (e.g., caustic/hypochlorite for organics/biofouling, acid for scaling)." },
-    ],
     "difficulty": "hard",
-    tip: "When troubleshooting membrane issues, differentiate between sudden and gradual changes in TMP to identify the most likely cause and appropriate solution.",
   },
   {
     "id": 4,
@@ -94,14 +74,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Integrity testing (pressure decay or vacuum decay tests) detects breaches (holes, cracks) in UF membranes that could allow pathogens — including Cryptosporidium and Giardia — to pass through untreated. Ontario regulations require regular integrity testing of membrane systems used for pathogen removal credit. A pressure decay rate exceeding the threshold indicates a membrane breach requiring isolation and repair.",
-    steps: [
-      { l: "Identify the core function of UF membranes", c: "UF membranes are designed to physically remove suspended solids, colloids, and microorganisms, including pathogens like Cryptosporidium and Giardia, from water." },
-      { l: "Understand the consequence of membrane damage", c: "If a UF membrane develops a breach (hole or crack), its ability to physically block these contaminants is compromised, allowing them to pass through." },
-      { l: "Relate integrity testing to pathogen removal", c: "An integrity test, such as a pressure decay test, directly assesses the physical barrier's soundness. A failing test indicates a potential pathway for pathogens to bypass treatment." },
-      { l: "State the primary purpose", c: "Therefore, the primary purpose of an integrity test is to confirm the membrane's ability to prevent the passage of pathogens, ensuring the treated water meets safety standards." },
-    ],
     "difficulty": "medium",
-    tip: "Focus on the 'why' behind the process; understanding the fundamental purpose helps answer application-based questions.",
   },
   {
     "id": 5,
@@ -116,14 +89,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Ozone decays rapidly in water, so the residual changes significantly over the contact time. CT for ozone is calculated by integrating the area under the residual vs. time curve (∫C·dt) rather than using a single outlet residual × T10. This gives a more accurate representation of actual disinfection exposure. Ozone CT values are generally much lower than chlorine CT values for equivalent log inactivation.",
-    steps: [
-      { l: "Understand the core difference", c: "Ozone is highly reactive and decays very quickly in water, unlike chlorine which maintains a more stable residual over time." },
-      { l: "Identify the impact on CT calculation", c: "Because ozone's residual changes rapidly, a simple outlet residual multiplied by T10 (as often used for chlorine) would be inaccurate and overestimate the actual disinfection exposure." },
-      { l: "Explain the ozone CT calculation method", c: "For ozone, CT is calculated by integrating the area under the residual concentration versus time curve (∫C·dt). This accounts for the changing residual throughout the contact basin." },
-      { l: "State the practical implication", c: "This integrated approach provides a more accurate representation of the actual disinfection exposure achieved by ozone." },
-    ],
     "difficulty": "hard",
-    tip: "Remember that ozone's rapid decay necessitates an integrated CT calculation (∫C·dt) rather than a simple C x T10.",
   },
   {
     "id": 6,
@@ -153,14 +119,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "UV transmittance (UVT) measures how much UV light passes through the water. Lower UVT means more UV is absorbed by the water matrix (NOM, algae, turbidity) before reaching target organisms. This reduces the delivered UV dose. At lower UVT, the system may need to reduce flow rate, increase lamp intensity, or add more lamps to maintain the validated dose. Operators must monitor UVT continuously and adjust accordingly.",
-    steps: [
-      { l: "Understand the Relationship", c: "Recognize that UV transmittance (UVT) is directly proportional to the amount of UV light reaching the target organisms. A drop in UVT means less UV light is penetrating the water." },
-      { l: "Identify the Impact", c: "A decrease in UVT from 92% to 78% indicates that the water is absorbing more UV light. This increased absorption will reduce the intensity of UV light available for disinfection." },
-      { l: "Determine the Effect on Dose", c: "Since the UV dose is a function of UV intensity and exposure time, a reduction in UV intensity due to lower UVT will directly lead to a decrease in the delivered UV dose, assuming other parameters like flow rate and lamp power remain constant." },
-      { l: "Conclude the Outcome", c: "The delivered UV dose will be lower than the validated 12 mJ/cm² required for 3-log Cryptosporidium inactivation, potentially compromising disinfection effectiveness." },
-    ],
     "difficulty": "hard",
-    tip: "Always connect changes in water quality parameters like UVT directly to their impact on the effectiveness of the treatment process.",
   },
   {
     "id": 8,
@@ -175,14 +134,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 3,
     "explanation": "In Ontario (and under USEPA UV Guidance), UV disinfection does not receive credit for virus inactivation because viruses are relatively UV-resistant and the dose required for 4-log virus inactivation (186 mJ/cm²) is impractically high for drinking water treatment. UV is credited for Cryptosporidium (2-log at 10 mJ/cm²) and Giardia (3-log at 5 mJ/cm²) inactivation. Virus inactivation must be achieved through chemical disinfection (chlorine, chloramine, ClO₂).",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for the minimum UV dose for 4-log virus inactivation credit under Ontario's O. Reg. 170/03." },
-      { l: "Recall Regulatory Requirements", c: "Under O. Reg. 170/03 and USEPA UV Guidance, UV disinfection is not credited for virus inactivation in drinking water treatment." },
-      { l: "Identify the Reason", c: "Viruses are highly UV-resistant, and the dose required for 4-log inactivation (186 mJ/cm²) is considered impractically high for typical drinking water applications." },
-      { l: "Formulate the Answer", c: "Therefore, there is no minimum UV dose required for 4-log virus inactivation credit under O. Reg. 170/03 because UV is not given credit for virus inactivation." },
-    ],
     "difficulty": "hard",
-    tip: "Remember that regulations often specify what is NOT credited, which can be as important as what IS credited.",
   },
   {
     "id": 9,
@@ -257,14 +209,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Corrosion control for lead focuses on forming a protective scale on the interior of lead pipes. Optimizing pH (typically 7.2–7.8) and alkalinity (>30 mg/L as CaCO₃) promotes calcium carbonate or lead carbonate scale formation, which acts as a barrier between the water and the lead pipe. Orthophosphate addition (as phosphoric acid) is also effective — it forms insoluble lead phosphate scale. High chlorine can actually increase lead corrosion. Flushing is a short-term measure, not a treatment solution.",
-    steps: [
-      { l: "Step 1: Understand the Goal", c: "The primary goal is to reduce lead at the tap in a distribution system with lead service lines, where no corrosion inhibitor is currently used, as per Ontario's lead regulations." },
-      { l: "Step 2: Evaluate Corrosion Control Options", c: "Review the provided explanation which details effective corrosion control strategies: optimizing pH and alkalinity to form calcium carbonate or lead carbonate scale, and adding orthophosphate to form lead phosphate scale." },
-      { l: "Step 3: Identify the Most Effective Strategy", c: "Based on the explanation, both pH/alkalinity optimization and orthophosphate addition are effective for forming protective scales. Orthophosphate is specifically mentioned as forming insoluble lead phosphate scale, directly addressing lead corrosion." },
-      { l: "Step 4: Select the Primary Treatment Strategy", c: "Given the options, implementing a corrosion control program that includes orthophosphate addition and/or pH/alkalinity adjustment is the primary treatment strategy to reduce lead at the tap." },
-    ],
     "difficulty": "hard",
-    tip: "Focus on identifying the long-term, preventative treatment solutions rather than short-term measures when asked about primary strategies.",
   },
   {
     "id": 14,
@@ -279,14 +224,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "LSI = pH - pHs (saturation pH). A positive LSI (+0.8) indicates the water is supersaturated with CaCO₃ — it has a tendency to deposit scale. An LSI of 0 is balanced. A negative LSI indicates corrosive water that will dissolve CaCO₃. For corrosion control in distribution systems, a slightly positive LSI (+0.1 to +0.5) is targeted to promote a thin protective scale without excessive scaling. LSI > +0.5 may cause significant scaling in pipes and equipment.",
-    steps: [
-      { l: "Step 1: Understand LSI Basics", c: "Recall that the Langelier Saturation Index (LSI) is a measure of water's tendency to precipitate or dissolve calcium carbonate (CaCO₃)." },
-      { l: "Step 2: Interpret Positive LSI Values", c: "A positive LSI value indicates that the water is supersaturated with CaCO₃. This means the water has an excess of calcium carbonate and will tend to precipitate it out of solution." },
-      { l: "Step 3: Relate LSI to Scaling Tendency", c: "Specifically, an LSI of +0.8 is a significantly positive value. This indicates a strong tendency for the water to form scale, which is the deposition of calcium carbonate on pipe surfaces and equipment." },
-      { l: "Step 4: Consider Operational Implications", c: "While a slightly positive LSI (e.g., +0.1 to +0.5) is often targeted for corrosion control by forming a protective layer, an LSI of +0.8 suggests that excessive scaling is likely to occur, potentially leading to reduced pipe capacity and equipment damage." },
-    ],
     "difficulty": "medium",
-    tip: "Memorize the LSI scale: positive means scaling, negative means corrosive, and zero means balanced.",
   },
   {
     "id": 15,
@@ -301,14 +239,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "THMs form when chlorine reacts with NOM (DBP precursors). The most effective strategy is: (1) Remove NOM before chlorination using enhanced coagulation — this reduces the precursor load; (2) Move the chlorination point to after filtration (post-filtration chlorination) to minimize contact time between chlorine and NOM. Switching to chloramines reduces THMs but may increase HAAs. Increasing chlorine dose increases THM formation. Enhanced coagulation + post-filtration chlorination is the most effective combined approach.",
-    steps: [
-      { l: "Analyze the Problem", c: "The problem states high THM levels and high NOM (TOC = 8 mg/L) in the source water. THMs are disinfection byproducts formed when chlorine reacts with natural organic matter (NOM)." },
-      { l: "Identify Key Strategies for THM Reduction", c: "To reduce THM formation, we need to either reduce the amount of NOM (precursors) or reduce the contact time between chlorine and NOM, or switch to a disinfectant that forms fewer THMs." },
-      { l: "Evaluate Treatment Options", c: "Enhanced coagulation is effective at removing NOM. Moving the chlorination point to after filtration minimizes the contact time between chlorine and NOM. Switching to chloramines reduces THMs but can increase other DBPs like HAAs. Increasing chlorine dose would worsen THM formation." },
-      { l: "Determine Most Effective Modification", c: "Combining enhanced coagulation (to remove NOM precursors) with post-filtration chlorination (to reduce contact time) is the most effective strategy to significantly reduce THM formation in this scenario." },
-    ],
     "difficulty": "hard",
-    tip: "When addressing DBP formation, always consider both precursor removal and optimizing disinfection contact time.",
   },
   {
     "id": 16,
@@ -368,14 +299,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Short filter runs indicate the filter is being overloaded with solids. The first step is to investigate upstream processes — coagulation and flocculation. Poorly optimized coagulation produces weak, small floc that passes through the settling basin and overloads filters. Jar testing and settled water turbidity monitoring can identify the issue. Solutions may include optimizing coagulant dose, pH, or mixing. Reducing loading rate is a secondary option if upstream optimization is insufficient.",
-    steps: [
-      { l: "Step 1: Understand the Problem", c: "Shortened filter run times (8 hours vs. 24 hours expected) at a loading rate of 12 m/h indicate that the filters are being overloaded with solids." },
-      { l: "Step 2: Identify Potential Causes", c: "The most common cause of filter overloading is an issue with upstream processes, specifically coagulation and flocculation, leading to poor solids removal before filtration." },
-      { l: "Step 3: Prioritize Investigation", c: "The MOST appropriate first step is to investigate the efficiency of the coagulation and flocculation processes. This includes checking coagulant dose, pH, and mixing conditions." },
-      { l: "Step 4: Implement Diagnostic Tools", c: "Utilize tools like jar testing to optimize coagulant dose and monitor settled water turbidity to confirm if the upstream processes are effectively removing solids." },
-    ],
     "difficulty": "hard",
-    tip: "When troubleshooting filter issues, always consider upstream processes first, as they often dictate filter performance.",
   },
   {
     "id": 20,
@@ -390,14 +314,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Surface overflow rate (SOR = Q/A) determines which particles are removed. Particles with settling velocity > SOR are removed; particles with settling velocity < SOR are carried over. Increasing flow by 30% increases SOR by 30% (to 52 m³/m²·day). This means particles that previously settled (settling velocity between 40–52 m/m·day) will now overflow. Removal efficiency decreases. Solutions: add tube/plate settlers, increase basin area, or reduce flow.",
-    steps: [
-      { l: "Step 1: Understand SOR and its role", c: "The Surface Overflow Rate (SOR) is a critical design and operational parameter for sedimentation basins, representing the upward velocity of water. Particles with a settling velocity greater than the SOR are expected to be removed, while those with a lower settling velocity will be carried over." },
-      { l: "Step 2: Calculate the new SOR", c: "The initial SOR is 40 m³/m²·day. A 30% increase in flow directly translates to a 30% increase in SOR, assuming the basin area remains constant. The new SOR will be 40 * 1.30 = 52 m³/m²·day." },
-      { l: "Step 3: Analyze the impact on particle removal", c: "With the SOR increasing from 40 to 52 m³/m²·day, a wider range of particles will now have a settling velocity less than the new SOR. Specifically, particles with settling velocities between 40 and 52 m³/m²·day that were previously removed will now be carried over." },
-      { l: "Step 4: Conclude on removal efficiency", c: "Since more particles will be carried over due to the increased upward velocity, the overall particle removal efficiency of the sedimentation basin will decrease significantly." },
-    ],
     "difficulty": "hard",
-    tip: "Always remember that an increase in flow without a corresponding increase in basin area will always lead to a higher SOR and reduced removal efficiency in sedimentation.",
   },
   {
     "id": 21,
@@ -416,6 +333,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 22,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Fluoridation",
     "question": "A plant adds hydrofluosilicic acid (H₂SiF₆) for fluoridation. The target fluoride concentration is 0.7 mg/L. If the source water already contains 0.2 mg/L fluoride, what concentration must be added?",
@@ -448,14 +366,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "In lime-soda softening, lime (Ca(OH)₂) is added first to: (1) Neutralize free CO₂ (CO₂ + Ca(OH)₂ → CaCO₃ + H₂O); (2) Precipitate calcium carbonate (Ca²⁺ + 2OH⁻ → CaCO₃↓ + H₂O); (3) Raise pH for magnesium hydroxide precipitation. Soda ash (Na₂CO₃) is added after lime to remove non-carbonate (permanent) calcium hardness. The sequence is critical — lime first to remove carbonate hardness and CO₂, then soda ash for non-carbonate hardness.",
-    steps: [
-      { l: "Step 1: Understand the Goal", c: "The question asks for the FIRST chemical addition in a lime-soda ash softening process, given water characteristics." },
-      { l: "Step 2: Recall Lime-Soda Ash Process Basics", c: "Lime-soda ash softening primarily uses lime (Ca(OH)₂) to remove carbonate hardness and soda ash (Na₂CO₃) to remove non-carbonate hardness. The order of addition is crucial." },
-      { l: "Step 3: Identify Lime's Initial Roles", c: "Lime is added first to neutralize free carbon dioxide (CO₂), precipitate calcium carbonate (CaCO₃) from carbonate hardness, and raise the pH sufficiently for magnesium hydroxide (Mg(OH)₂) precipitation." },
-      { l: "Step 4: Determine the First Chemical", c: "Based on its multiple initial functions, lime (Ca(OH)₂) is always the first chemical added in the lime-soda ash softening process." },
-    ],
     "difficulty": "hard",
-    tip: "Memorize the sequence of chemical additions and their primary functions for common water treatment processes.",
   },
   {
     "id": 24,
@@ -500,14 +411,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Iron oxidizes rapidly at pH 6.5–7.0 with dissolved oxygen. Manganese oxidizes very slowly at neutral pH — it requires pH > 9.5 for effective oxidation by dissolved oxygen, which is impractical. At neutral pH, manganese removal requires: (1) Strong oxidants — chlorine, potassium permanganate (KMnO₄), or ozone; (2) Catalytic filter media (greensand, Birm, MnO₂-coated media) that catalyze manganese oxidation and adsorb it. Ontario's MAC for manganese is 0.05 mg/L (aesthetic) and 0.12 mg/L (health-based).",
-    steps: [
-      { l: "Step 1: Understand Oxidation Rates", c: "Iron oxidizes much faster than manganese at neutral pH with dissolved oxygen. The provided explanation states iron oxidizes rapidly at pH 6.5-7.0, while manganese oxidizes very slowly at neutral pH." },
-      { l: "Step 2: Identify pH Requirements", c: "Manganese requires a significantly higher pH (above 9.5) for effective oxidation by dissolved oxygen, which is not practical for most water treatment plants. The plant is likely operating at a neutral pH suitable for iron removal." },
-      { l: "Step 3: Recognize Missing Treatment Components", c: "Effective manganese removal at neutral pH requires strong oxidants (like chlorine or potassium permanganate) or catalytic filter media. The current treatment (aeration and filtration) is sufficient for iron but lacks these specific components for manganese." },
-      { l: "Step 4: Conclude Ineffective Removal", c: "Because the plant's current aeration and filtration process is optimized for iron oxidation at neutral pH and does not incorporate the specific conditions or chemicals needed for manganese oxidation, manganese removal is less effective." },
-    ],
     "difficulty": "hard",
-    tip: "When a question asks 'why' a treatment is less effective, focus on the chemical properties and required conditions for the substance in question, comparing them to the existing treatment process.",
   },
   {
     "id": 27,
@@ -541,6 +445,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 29,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Chlorination",
     "question": "Calculate the chlorine dose required to achieve a free chlorine residual of 0.5 mg/L if the chlorine demand of the water is 2.3 mg/L.",
@@ -574,14 +479,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Chloramines are used as secondary disinfectants primarily because they produce significantly lower concentrations of THMs and HAAs compared to free chlorine. Chloramines are weaker oxidants and react less readily with NOM to form these regulated DBPs. However, chloramines are much less effective than free chlorine for virus and Giardia inactivation (requiring much higher CT values) and provide no Cryptosporidium inactivation credit. They also decay more slowly, providing a more stable residual in long distribution systems.",
-    steps: [
-      { l: "Identify the core difference", c: "The question highlights a switch from free chlorine to chloramination for secondary disinfection. This immediately points to differences in their properties and applications within the distribution system." },
-      { l: "Recall DBP formation", c: "Free chlorine is known to react with natural organic matter (NOM) to form disinfection byproducts (DBPs) like Trihalomethanes (THMs) and Haloacetic Acids (HAAs), which are regulated contaminants." },
-      { l: "Understand chloramine benefits", c: "Chloramines are formed by combining chlorine with ammonia. This chemical structure makes them less reactive with NOM, significantly reducing the formation of THMs and HAAs compared to free chlorine." },
-      { l: "Determine the MAIN reason", c: "While chloramines offer a more stable residual, the primary driver for switching to them for secondary disinfection is to minimize the formation of regulated disinfection byproducts, especially in systems with long retention times or high NOM." },
-    ],
     "difficulty": "medium",
-    tip: "When comparing disinfectants, always consider their DBP formation potential and residual stability in the distribution system.",
   },
   {
     "id": 31,
@@ -596,14 +494,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Operating a centrifugal pump far from its BEP causes: (1) Increased radial thrust — the impeller experiences uneven pressure distribution, stressing bearings and seals; (2) Recirculation — at low flows, internal recirculation causes turbulence, noise, and impeller erosion; (3) Increased vibration; (4) Reduced efficiency and higher energy costs. Pumps should be selected and operated as close to BEP as possible. Cavitation can occur both above and below BEP, but for different reasons.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks about the consequence of long-term operation significantly below the Best Efficiency Point (BEP) for a centrifugal pump, specifically at 80% of BEP flow." },
-      { l: "Recall BEP Principles", c: "Operating a pump at its BEP maximizes efficiency and minimizes stress on components. Deviating from BEP, especially significantly below, introduces various operational issues." },
-      { l: "Identify Consequences of Low Flow Operation", c: "At flows significantly below BEP, common issues include increased radial thrust, internal recirculation, higher vibration, and reduced efficiency. These factors lead to premature wear and higher operating costs." },
-      { l: "Synthesize the Likely Consequence", c: "Considering the provided explanation, the most likely long-term consequence of operating at 80% of BEP (which is below BEP) is increased wear on bearings and seals due to radial thrust, impeller erosion from recirculation, and higher energy consumption due to reduced efficiency." },
-    ],
     "difficulty": "hard",
-    tip: "When answering questions about pump operation, always consider the impact of deviations from the Best Efficiency Point (BEP) on efficiency, component wear, and overall system reliability.",
   },
   {
     "id": 32,
@@ -618,14 +509,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Pumps in parallel: each pump contributes its flow at the same head. The combined curve is constructed by adding flows at each head value. The result is approximately doubled flow at the same head (the exact increase depends on the system curve). Pumps in parallel are used when additional flow capacity is needed without increasing head. Pumps in series are used when additional head (pressure) is needed without increasing flow. Note: the actual flow increase is less than double because the higher flow increases system head losses.",
-    steps: [
-      { l: "Step 1: Understand Parallel Pump Operation", c: "When pumps are connected in parallel, they share the same suction and discharge headers. This means they operate against the same system head." },
-      { l: "Step 2: Analyze Flow Contribution", c: "Each pump in a parallel configuration contributes its individual flow rate to the system. Therefore, the total flow rate is the sum of the individual pump flow rates." },
-      { l: "Step 3: Analyze Head Contribution", c: "Since both pumps are operating against the same system head, the head developed by the parallel combination remains approximately the same as that of a single pump." },
-      { l: "Step 4: Determine Combined Effect", c: "Compared to a single pump, two identical pumps in parallel will approximately double the flow rate while maintaining a similar head. The exact flow increase is slightly less than double due to increased system head losses at higher flow rates." },
-    ],
     "difficulty": "medium",
-    tip: "Remember that parallel pumps increase flow, while series pumps increase head; this is a common distinction tested on exams.",
   },
   {
     "id": 33,
@@ -670,14 +554,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Service factor (SF) is a multiplier that indicates how much above the rated load a motor can operate continuously without damage. SF = 1.15 means the motor can handle 75 × 1.15 = 86.25 kW continuously. However, operating at service factor reduces motor life and efficiency. It is intended as a safety margin, not a design operating point. Motors should normally be operated at or below their rated load. Operating above rated load (but within service factor) is acceptable for temporary conditions.",
-    steps: [
-      { l: "Step 1: Understand Motor Nameplate Data", c: "Identify the key information provided on the motor nameplate, specifically the rated power (75 kW) and the service factor (1.15)." },
-      { l: "Step 2: Define Service Factor", c: "Recall that the service factor (SF) is a multiplier indicating the permissible overload a motor can continuously handle beyond its rated power without immediate damage." },
-      { l: "Step 3: Calculate Maximum Continuous Power", c: "Multiply the rated power by the service factor to determine the maximum continuous power the motor can deliver. In this case, 75 kW * 1.15 = 86.25 kW." },
-      { l: "Step 4: Interpret the Meaning", c: "Conclude that a service factor of 1.15 means the motor can safely operate continuously at up to 115% of its rated power, or 86.25 kW, although this is not recommended for routine operation as it can reduce motor life and efficiency." },
-    ],
     "difficulty": "medium",
-    tip: "Always define the term first, then apply it to the given values to demonstrate full understanding.",
   },
   {
     "id": 36,
@@ -707,17 +584,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Formazin is the primary standard for turbidity calibration. It is prepared by reacting hydrazine sulfate with hexamethylenetetramine to produce a reproducible polymer suspension. Formazin-based standards (or AMCO-AEPA polymer standards equivalent to formazin) are used to calibrate nephelometers. Kaolin clay is sometimes used as an alternative but is not the primary standard. Distilled water is used as a zero/blank check. Proper calibration is critical for regulatory compliance — filter effluent turbidity limits are 0.3 NTU (95th percentile) and 1.0 NTU (maximum) in Ontario.",
-    steps: [
-      { l: "Step 1: Understand the Question", c: "The question asks for the standard calibration solution for nephelometric turbidity units (NTU) in the context of continuous filter effluent monitoring." },
-      { l: "Step 2: Recall Primary Turbidity Standards", c: "Remember that Formazin is the universally recognized primary standard for turbidity calibration due to its reproducible polymer suspension properties." },
-      { l: "Step 3: Identify Alternatives and Blanks", c: "While Kaolin clay can be used as an alternative, it's not the primary standard. Distilled water serves as a zero or blank check, not a calibration standard." },
-      { l: "Step 4: Conclude the Correct Answer", c: "Based on the primary standard, Formazin (or equivalent Formazin-based standards like AMCO-AEPA polymer standards) is the correct answer." },
-    ],
     "difficulty": "medium",
-    tip: "Always prioritize primary standards over alternatives when asked for 'the standard' in water treatment questions.",
   },
   {
     "id": 38,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Chemical Feed Systems",
     "question": "A diaphragm metering pump is used for alum feed. The pump is set to 80% stroke and 60 strokes/minute. If the pump output at 100% stroke and 100 strokes/minute is 50 L/h, what is the actual output?",
@@ -751,17 +622,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Sodium hypochlorite is highly corrosive to carbon steel and many metals. Metal ions (Fe²⁺, Cu²⁺) released by corrosion catalyze the decomposition of hypochlorite, accelerating both degradation and corrosion. Hypochlorite storage tanks must be made of: HDPE (high-density polyethylene), FRP (fibreglass-reinforced plastic), or rubber-lined steel. Piping must be PVC, CPVC, or PVDF. All fittings must be non-metallic or 316 stainless steel. Using incompatible materials is a common and costly mistake.",
-    steps: [
-      { l: "Identify the core issue", c: "The problem stems from the incompatibility of carbon steel with sodium hypochlorite. Carbon steel is not a suitable material for storing this chemical." },
-      { l: "Explain the corrosion mechanism", c: "Sodium hypochlorite is highly corrosive to carbon steel. This corrosion releases metal ions (like Fe²⁺) into the solution." },
-      { l: "Describe the catalytic effect", c: "These released metal ions act as catalysts, significantly accelerating the decomposition of the sodium hypochlorite solution. This explains the faster-than-expected degradation." },
-      { l: "Propose suitable materials", c: "To prevent this, the storage tank should be made of compatible materials such as HDPE, FRP, or rubber-lined steel. Piping and fittings also require specific non-metallic or 316 stainless steel materials." },
-    ],
     "difficulty": "medium",
-    tip: "Always consider chemical compatibility when selecting materials for storage and piping in water treatment processes.",
   },
   {
     "id": 40,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Residuals Management",
     "question": "A water treatment plant produces alum sludge from sedimentation basins. The sludge has a solids content of 1.5%. The plant wants to thicken it to 4% before dewatering. What is the volume reduction factor?",
@@ -795,14 +660,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "WTP residuals (alum sludge) discharged to watercourses cause: (1) High suspended solids — smothering of benthic organisms, reduced light penetration, impaired fish gill function; (2) Aluminum toxicity — Al³⁺ is toxic to aquatic organisms, especially fish, at pH < 6.5; (3) Oxygen depletion from decomposing organic matter in the sludge. Ontario requires a Permit to Take Water and Environmental Compliance Approval for residuals discharge. Most plants must treat residuals before discharge or land apply/landfill the dewatered cake.",
-    steps: [
-      { l: "Identify the core issue", c: "The question asks for the *primary* environmental concern. While all listed issues are concerns, one stands out as the most immediate and widespread impact of direct discharge." },
-      { l: "Analyze the options", c: "Consider the direct physical and chemical impacts of alum sludge. High suspended solids are a direct, immediate, and visible consequence of discharging sludge." },
-      { l: "Evaluate the impacts of suspended solids", c: "High suspended solids lead to smothering of benthic organisms, reduced light penetration affecting photosynthesis, and impaired fish gill function, which are severe and broad ecological disturbances." },
-      { l: "Compare with other concerns", c: "Aluminum toxicity is pH-dependent, making its impact variable. Oxygen depletion is also a concern but often secondary to the immediate physical impact of the solids themselves. High suspended solids are a universal and immediate consequence of sludge discharge." },
-    ],
     "difficulty": "hard",
-    tip: "When asked for the 'primary' concern, look for the most direct, immediate, and widespread impact.",
   },
   {
     "id": 42,
@@ -832,17 +690,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Valves that do not fully shut are a common problem in aging distribution systems. Causes include: (1) Damaged or worn seats; (2) Debris preventing full closure; (3) Corrosion; (4) Valve not fully closed (requires additional turns). A valve condition assessment program (including flow testing and leak detection) identifies non-shutoff valves before emergencies. In this scenario, the operator should also check system maps for additional connections. Valve rehabilitation or replacement may be required.",
-    steps: [
-      { l: "Step 1: Analyze the Problem", c: "The core problem is that water continues to flow despite closing upstream and downstream isolation valves, indicating a failure in the isolation process." },
-      { l: "Step 2: Evaluate Valve Functionality", c: "The most direct cause of continued flow after closing valves is that one or more of the isolation valves are not fully sealing. This could be due to internal damage, debris, or incomplete closure." },
-      { l: "Step 3: Consider System Configuration", c: "Beyond the immediate valves, there might be other connections or bypasses to the repair area that were not identified or isolated. This requires reviewing system maps." },
-      { l: "Step 4: Prioritize Immediate Action", c: "The operator's immediate action should be to re-check the closed valves for full closure and then consult system maps for additional connections that might be feeding the repair area." },
-    ],
     "difficulty": "medium",
-    tip: "When a problem persists despite standard procedures, consider equipment malfunction or overlooked system components.",
   },
   {
     "id": 44,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Reservoir and Storage",
     "question": "A clearwell has a baffling factor (T10/T) of 0.3. The theoretical hydraulic detention time (T) is 60 minutes. What is the T10 used for CT calculation?",
@@ -936,14 +788,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "pH is a field parameter that must be measured immediately at the point of collection. CO₂ degassing raises pH; biological activity and oxidation can change pH; temperature changes affect pH. A 2-hour delay makes the laboratory pH result unreliable for regulatory reporting. Standard Methods requires pH measurement within 15 minutes of collection or immediate field measurement. For regulatory compliance, pH must be measured in the field with a calibrated meter. This is particularly important for corrosion control monitoring and CT calculations.",
-    steps: [
-      { l: "Step 1: Identify the parameter and collection time.", c: "The question states the parameter is pH, and the sample was collected 2 hours prior to measurement without preservation." },
-      { l: "Step 2: Recall pH measurement requirements.", c: "pH is a field parameter that is highly susceptible to change after collection due to factors like CO2 degassing, biological activity, and temperature shifts. Standard Methods specifies a very short holding time, typically 15 minutes, or immediate field measurement." },
-      { l: "Step 3: Evaluate the reliability based on holding time.", c: "A 2-hour delay significantly exceeds the recommended holding time for pH. This extended delay makes the laboratory pH result unreliable for accurate representation of the water's pH at the time of collection." },
-      { l: "Step 4: Determine regulatory reporting suitability.", c: "Due to the unreliability caused by the delayed measurement and lack of preservation, this pH result is not suitable for regulatory reporting, especially for critical applications like corrosion control or CT calculations." },
-    ],
     "difficulty": "medium",
-    tip: "Always remember that pH is a field parameter requiring immediate measurement for regulatory compliance and accurate data.",
   },
   {
     "id": 50,
@@ -958,14 +803,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Turbidity alone is insufficient to confirm optimal coagulation. Additional parameters to measure include: (1) pH — must be within optimal range (6.0–7.5 for alum); (2) Alkalinity — must remain sufficient for floc formation (>30 mg/L as CaCO₃); (3) TOC or UV254 — confirms NOM removal (critical for DBP control); (4) Colour — indicates NOM removal. The optimal dose minimizes turbidity AND NOM while maintaining acceptable pH and alkalinity. Enhanced coagulation targets TOC removal, not just turbidity.",
-    steps: [
-      { l: "Step 1", c: "Identify the primary goal of coagulation beyond just turbidity removal. While turbidity is a key indicator, modern water treatment aims for broader contaminant removal." },
-      { l: "Step 2", c: "Recall the chemical reactions involved in coagulation, specifically with alum. Alum consumes alkalinity and lowers pH, which are critical for its effectiveness and subsequent treatment steps." },
-      { l: "Step 3", c: "Consider the impact of coagulation on organic matter. Coagulation is a primary method for removing natural organic matter (NOM), which is a precursor to disinfection byproducts (DBPs)." },
-      { l: "Step 4", c: "Based on these considerations, determine which additional parameters directly reflect the efficiency of these broader goals. pH, alkalinity, and organic matter indicators (like TOC or UV254) are essential for a comprehensive assessment." },
-    ],
     "difficulty": "hard",
-    tip: "Always consider the broader implications of treatment processes beyond the most obvious parameter, especially for coagulation.",
   },
   {
     "id": 51,
@@ -980,15 +818,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Monochloramine can interfere with the DPD free chlorine test, causing falsely elevated free chlorine readings. This is because monochloramine partially oxidizes DPD at the same rate as free chlorine in the first step of the test. This 'chloramine interference' is most significant at high chloramine concentrations. To minimize interference, the DPD free chlorine reading should be taken within 1 minute of adding reagents. Turbidity causes colour interference (falsely high or low). The amperometric titration method is more accurate for distinguishing free chlorine from chloramines.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for an interference that causes a falsely HIGH free chlorine reading using the DPD method." },
-      { l: "Review DPD Chemistry", c: "Recall that DPD (N,N-diethyl-p-phenylenediamine) reacts with free chlorine to produce a pink color. The intensity of this color is proportional to the free chlorine concentration." },
-      { l: "Consider Potential Interferences", c: "Think about other substances in water that might react with DPD or affect color development. Common interferences include chloramines, turbidity, and oxidizing agents." },
-      { l: "Evaluate Each Interference's Effect", c: "Monochloramine is known to react slowly with DPD, especially if the reading is not taken promptly, leading to an overestimation of free chlorine. Turbidity can cause either high or low readings depending on how it scatters light, but it's not a direct chemical interference that mimics free chlorine." },
-      { l: "Identify the Correct Interference", c: "Based on the DPD chemistry and known interferences, monochloramine is the primary culprit for falsely high free chlorine readings because it can partially react with DPD in the free chlorine step." },
-    ],
     "difficulty": "hard",
-    tip: "When answering interference questions, consider how each potential interference chemically or physically interacts with the test method to produce the observed effect.",
   },
   {
     "id": 52,
@@ -1018,17 +848,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Pin-point floc at higher coagulant dose is a classic sign of restabilization (charge reversal). When excess coagulant is added, the colloidal particles become positively charged and repel each other, preventing floc aggregation. The result is very small, dispersed floc that does not settle. The optimal dose is just below the restabilization zone — in this case, near 20 mg/L where large, well-settling floc is produced. This is a critical jar test observation that guides dose optimization.",
-    steps: [
-      { l: "Analyze the Observation", c: "The operator observed small, pin-point floc at 30 mg/L alum and larger, well-settling floc at 20 mg/L alum. This indicates a change in floc characteristics with increasing coagulant dose." },
-      { l: "Identify the Floc Type", c: "Pin-point floc that does not settle well, especially at a higher coagulant dose, is a key indicator of charge restabilization or charge reversal." },
-      { l: "Explain Restabilization", c: "Restabilization occurs when too much coagulant is added, causing the colloidal particles to become over-charged (typically positive) and repel each other, preventing them from aggregating into larger, settleable floc." },
-      { l: "Determine Optimal Dose Implications", c: "Since the floc was larger and settled well at 20 mg/L, this suggests that the optimal coagulant dose is likely around or slightly below 20 mg/L, as 30 mg/L has entered the restabilization zone." },
-    ],
     "difficulty": "hard",
-    tip: "Always look for the 'sweet spot' in jar tests where floc is largest and settles best, as both underdosing and overdosing can lead to poor performance.",
   },
   {
     "id": 54,
+    isCalc: true,
     "module": "Laboratory Analysis",
     "topic": "Water Quality Parameters",
     "question": "A source water sample has a UV254 absorbance of 0.18 cm⁻¹ and a TOC of 6 mg/L. What is the Specific UV Absorbance (SUVA) and what does it indicate?",
@@ -1062,14 +886,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Hardness and alkalinity are distinct but related parameters: Hardness = concentration of divalent cations (primarily Ca²⁺ and Mg²⁺) expressed as mg/L CaCO₃. Causes scale in pipes, water heaters, and boilers. Alkalinity = concentration of acid-neutralizing species (primarily HCO₃⁻, CO₃²⁻, OH⁻) expressed as mg/L CaCO₃. Provides buffering capacity — resists pH changes. Both are expressed as mg/L CaCO₃ for comparison. In many natural waters, calcium hardness ≈ carbonate alkalinity because both derive from limestone dissolution. They can be equal but are independent measurements.",
-    steps: [
-      { l: "Step 1: Define Hardness", c: "Hardness refers to the concentration of multivalent metallic cations in water, primarily calcium (Ca²⁺) and magnesium (Mg²⁺) ions. It is typically expressed as milligrams per liter (mg/L) of calcium carbonate (CaCO₃) equivalent." },
-      { l: "Step 2: Define Alkalinity", c: "Alkalinity is the water's capacity to neutralize acids, primarily due to the presence of bicarbonate (HCO₃⁻), carbonate (CO₃²⁻), and hydroxide (OH⁻) ions. It is also expressed as mg/L CaCO₃ equivalent." },
-      { l: "Step 3: Key Difference - Chemical Composition", c: "The fundamental difference lies in their chemical composition: hardness measures specific metal ions (cations), while alkalinity measures acid-neutralizing compounds (anions and bases)." },
-      { l: "Step 4: Key Difference - Impact on Water", c: "Hardness causes issues like scale formation in pipes and reduced soap lathering, whereas alkalinity provides buffering capacity, helping to stabilize pH and resist acidic pollution." },
-    ],
     "difficulty": "medium",
-    tip: "Remember that while both are expressed as mg/L CaCO₃, hardness measures cations and alkalinity measures acid-neutralizing capacity, making them distinct properties.",
   },
   {
     "id": 56,
@@ -1159,14 +976,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "This is a critical operational consideration: cyanobacteria store toxins intracellularly. If cells are lysed (broken open) by chlorination before removal, the intracellular toxins are released into the water as dissolved toxins, which are much harder to remove than intact cells. The correct approach during a bloom is: (1) Remove cells by coagulation and filtration BEFORE chlorination; (2) Use PAC or ozone to adsorb/oxidize dissolved toxins; (3) Avoid pre-chlorination during bloom events. This is the opposite of normal practice and requires careful operational adjustment.",
-    steps: [
-      { l: "Step 1: Understand Cyanobacteria Toxin Storage", c: "Cyanobacteria store toxins inside their cells (intracellularly). This means the toxins are contained within the cell walls." },
-      { l: "Step 2: Impact of Chlorine on Cell Integrity", c: "Increasing the chlorine dose to kill cyanobacteria can cause the cell walls to break open, a process called lysis." },
-      { l: "Step 3: Toxin Release Upon Lysis", c: "When cyanobacteria cells lyse, the intracellular toxins are released into the water, becoming dissolved toxins." },
-      { l: "Step 4: Difficulty of Removing Dissolved Toxins", c: "Dissolved toxins are significantly more difficult to remove from the water than intact cyanobacteria cells, posing a greater treatment challenge." },
-    ],
     "difficulty": "hard",
-    tip: "Always consider the downstream effects of chemical additions, especially when dealing with biological contaminants that store toxins.",
   },
   {
     "id": 62,
@@ -1226,14 +1036,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "O. Reg. 170/03 requires a minimum free chlorine residual of 0.2 mg/L at the point of entry (POE) to the distribution system for large municipal residential systems. This ensures adequate disinfection is maintained as water enters the distribution system. Within the distribution system, a detectable residual (>0.05 mg/L) must be maintained. The maximum chlorine residual in treated water is 4.0 mg/L (Health Canada guideline). Operators must monitor and record chlorine residuals at the POE and throughout the distribution system.",
-    steps: [
-      { l: "Understand the Question", c: "The question asks for the minimum free chlorine residual at the point of entry (POE) for a large municipal residential system under O. Reg. 170/03." },
-      { l: "Recall O. Reg. 170/03 Requirements", c: "O. Reg. 170/03 specifies various water quality parameters and operational requirements for municipal drinking water systems in Ontario." },
-      { l: "Identify POE Disinfection Standard", c: "For free chlorine, O. Reg. 170/03 mandates a minimum residual at the POE to ensure effective disinfection before water enters the distribution network." },
-      { l: "State the Specific Value", c: "The required minimum free chlorine residual at the point of entry to the distribution system for a large municipal residential system is 0.2 mg/L." },
-    ],
     "difficulty": "medium",
-    tip: "Memorize key regulatory values like minimum residuals and sampling frequencies for different system types.",
   },
   {
     "id": 66,
@@ -1383,14 +1186,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Health Canada's MAC for nitrate is 10 mg/L as N (equivalent to 45 mg/L as NO₃⁻). This limit is based on the risk of methemoglobinemia (blue baby syndrome) in infants under 6 months, who are most sensitive to nitrate. Nitrate is reduced to nitrite by bacteria in the infant gut, and nitrite oxidizes hemoglobin to methemoglobin, reducing oxygen-carrying capacity. Ontario's O. Reg. 169/03 adopts this MAC. Groundwater in agricultural areas is most at risk for nitrate contamination from fertilizers and manure.",
-    steps: [
-      { l: "Identify the contaminant", c: "The question asks for the Maximum Acceptable Concentration (MAC) of nitrate in drinking water." },
-      { l: "Recall the specific MAC value", c: "Health Canada's Guidelines for Canadian Drinking Water Quality (GCDWQ) set the MAC for nitrate at 10 mg/L." },
-      { l: "Note the unit of measurement", c: "The MAC for nitrate is expressed 'as N', meaning as nitrogen, not as the nitrate ion (NO₃⁻)." },
-      { l: "Confirm the context", c: "This limit is primarily to protect infants from methemoglobinemia, also known as blue baby syndrome." },
-    ],
     "difficulty": "medium",
-    tip: "Memorize key MAC values for common contaminants like nitrate, especially those with specific health implications.",
   },
   {
     "id": 76,
@@ -1405,14 +1201,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Arsenic removal from drinking water is most effectively achieved by: (1) Enhanced coagulation with ferric sulfate or ferric chloride — arsenic (as arsenate, As(V)) adsorbs strongly to iron hydroxide floc; (2) Adsorption on iron-based media (granular ferric hydroxide — GFH, iron oxide-coated sand); (3) Reverse osmosis (for high concentrations or multiple contaminants); (4) Ion exchange (for arsenate). Arsenic must be in the As(V) oxidation state for effective removal — pre-oxidation with chlorine or KMnO₄ converts As(III) to As(V). Chlorination alone does not remove arsenic.",
-    steps: [
-      { l: "Step 1: Understand the Problem", c: "The question asks for the MOST effective treatment technology for arsenic removal, given a groundwater source exceeding the MAC." },
-      { l: "Step 2: Analyze the Provided Explanation", c: "The explanation lists several effective methods: enhanced coagulation, adsorption on iron-based media, reverse osmosis, and ion exchange. It also highlights the importance of As(V) and pre-oxidation." },
-      { l: "Step 3: Evaluate Effectiveness and Commonality", c: "Enhanced coagulation with ferric salts and adsorption on iron-based media are widely recognized as highly effective and commonly employed methods for arsenic removal in water treatment, especially for concentrations like 0.015 mg/L. Reverse osmosis is effective but often considered for higher concentrations or multiple contaminants due to cost and complexity. Ion exchange is effective for arsenate but might be less universally applicable than coagulation or adsorption." },
-      { l: "Step 4: Identify the 'MOST Effective' Option", c: "Based on the explanation and common practice, enhanced coagulation with ferric sulfate or ferric chloride, and adsorption on iron-based media are among the most effective and practical solutions for arsenic removal at this concentration. The explanation specifically states that arsenic (as arsenate, As(V)) adsorbs strongly to iron hydroxide floc, making enhanced coagulation a primary choice." },
-    ],
     "difficulty": "hard",
-    tip: "When asked for the 'most effective' treatment, consider both efficacy and practical application for the given contaminant and concentration.",
   },
   {
     "id": 77,
@@ -1502,17 +1291,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Lifting a Boil Water Advisory requires confirmation that the water is safe. The standard protocol (which may vary by jurisdiction) typically requires: (1) Two consecutive sets of satisfactory bacteriological samples (total coliform and E. coli negative) collected at least 24 hours apart; (2) Samples from representative locations throughout the affected area; (3) Review and approval by the Medical Officer of Health (MOH); (4) Adequate chlorine residual throughout the system. The MOH has the authority to issue and lift BWAs in Ontario. Premature lifting of a BWA can expose the public to health risk.",
-    steps: [
-      { l: "Step 1: Collect Bacteriological Samples", c: "Collect two consecutive sets of satisfactory bacteriological samples (total coliform and E. coli negative) from representative locations throughout the affected area. These sample sets must be collected at least 24 hours apart." },
-      { l: "Step 2: Verify Chlorine Residual", c: "Ensure that an adequate chlorine residual is maintained throughout the entire distribution system, confirming effective disinfection." },
-      { l: "Step 3: Submit Documentation to MOH", c: "Compile all relevant documentation, including satisfactory sample results and chlorine residual data, and submit it to the Medical Officer of Health (MOH)." },
-      { l: "Step 4: Obtain MOH Approval", c: "Receive official review and approval from the Medical Officer of Health to lift the Boil Water Advisory, as they have the ultimate authority." },
-    ],
     "difficulty": "hard",
-    tip: "Always remember that public health and safety are paramount, and the Medical Officer of Health has the final say in lifting advisories.",
   },
   {
     "id": 83,
+    isCalc: true,
     "module": "Regulations & Management",
     "topic": "Hydraulic Calculations",
     "question": "A water main has a flow of 500 L/s and a diameter of 600 mm. What is the flow velocity in m/s?",
@@ -1546,14 +1329,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "The Hazen-Williams C-factor represents pipe smoothness/carrying capacity. New smooth pipes have high C-factors (130–150 for PVC, 120–130 for new cast iron). As pipes age, internal corrosion and tuberculation (iron oxide deposits) increase roughness, reducing the C-factor. A C-factor of 80 for old cast iron indicates significant tuberculation, which: (1) Reduces carrying capacity (flow for a given head loss); (2) Increases head loss for a given flow; (3) Can harbor bacteria; (4) Reduces water quality. Pipe cleaning (pigging) or lining can restore C-factors. This is used in hydraulic model calibration.",
-    steps: [
-      { l: "Understand the C-factor's role", c: "The Hazen-Williams C-factor is a measure of a pipe's internal smoothness and its ability to carry water. A higher C-factor indicates a smoother pipe and better carrying capacity." },
-      { l: "Compare C-factors", c: "A new cast iron pipe has a C-factor of 130. The 30-year-old unlined cast iron pipe has a C-factor of 80, which is significantly lower than that of a new pipe." },
-      { l: "Interpret the decrease", c: "This substantial decrease in the C-factor (from 130 to 80) indicates a significant increase in internal pipe roughness. This roughness is typically caused by corrosion and tuberculation (iron oxide deposits) in older unlined cast iron pipes." },
-      { l: "Identify the implications", c: "A lower C-factor means reduced carrying capacity, increased head loss for a given flow, and potential water quality issues due to the rough internal surface harboring bacteria and contributing to discolored water." },
-    ],
     "difficulty": "hard",
-    tip: "When interpreting C-factor changes, always relate the numerical difference to the physical condition of the pipe and its hydraulic performance implications.",
   },
   {
     "id": 85,
@@ -1568,17 +1344,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Ontario's Design Guidelines for Drinking Water Systems require a minimum residual pressure of 140 kPa (approximately 20 psi) at all service connections during maximum day demand plus fire flow conditions. During normal peak demand (without fire flow), 275 kPa (40 psi) is the typical minimum design standard. The 280 kPa during peak demand is acceptable (above 275 kPa), but the operator should investigate whether fire flow requirements can be met. Pressures below 140 kPa risk backflow and contamination. Maximum pressure is typically 690 kPa (100 psi) to protect customer plumbing.",
-    steps: [
-      { l: "Identify the Question's Core", c: "The question asks for the minimum acceptable pressure during peak demand in Ontario, given a static pressure and a peak demand pressure drop." },
-      { l: "Recall Ontario Standards", c: "Remember that Ontario's Design Guidelines for Drinking Water Systems specify a minimum residual pressure of 140 kPa during maximum day demand plus fire flow, and typically 275 kPa during normal peak demand (without fire flow)." },
-      { l: "Compare Given Pressure to Standard", c: "The given peak demand pressure is 280 kPa. This value is compared to the typical minimum design standard for normal peak demand, which is 275 kPa." },
-      { l: "Determine Acceptability", c: "Since 280 kPa is greater than 275 kPa, the pressure during peak demand is considered acceptable according to the normal peak demand standard." },
-    ],
     "difficulty": "hard",
-    tip: "Always differentiate between minimum pressure requirements for normal peak demand versus those including fire flow conditions.",
   },
   {
     "id": 86,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "CT Calculations",
     "question": "A plant uses free chlorine for primary disinfection. The clearwell has a T10 of 25 minutes and the chlorine residual at the outlet is 1.2 mg/L. The water temperature is 10°C and pH is 7.5. What is the CT achieved?",
@@ -1612,17 +1382,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Real contact chambers have short-circuiting — some water travels through faster than the theoretical detention time. T10 is the time at which 10% of a tracer has exited the chamber (determined by tracer testing). This means 90% of the water has been in the chamber for at least T10. Using T10 ensures that the CT calculation is conservative — it represents the minimum exposure time for the majority of the water. Using the theoretical T would overestimate exposure time and potentially underestimate the disinfection required. Tracer testing (using fluoride or lithium) is used to determine T10 for each contact chamber.",
-    steps: [
-      { l: "Understand Theoretical Detention Time (T)", c: "Theoretical detention time (T) assumes perfect plug flow, where all water spends the same amount of time in the chamber. This is calculated by dividing the chamber volume by the flow rate." },
-      { l: "Recognize Short-Circuiting", c: "In reality, contact chambers experience short-circuiting, meaning some water bypasses the main flow path and exits much faster than the theoretical detention time." },
-      { l: "Define T10", c: "T10 is the time at which 10% of a tracer introduced into the chamber has exited. This indicates that 90% of the water has been in the chamber for at least this duration." },
-      { l: "Ensure Conservative Disinfection", c: "Using T10 for CT calculations provides a more conservative estimate of contact time, ensuring that the vast majority of the water receives adequate disinfection, even with short-circuiting present." },
-    ],
     "difficulty": "hard",
-    tip: "When answering questions about T10, emphasize the concept of short-circuiting and the need for conservative disinfection to ensure public health protection.",
   },
   {
     "id": 88,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Log Inactivation",
     "question": "A surface water treatment plant must achieve 3-log removal/inactivation of Giardia and 4-log removal/inactivation of viruses. The filtration process provides 2.5-log Giardia removal and 2-log virus removal. What additional log inactivation must be achieved by disinfection?",
@@ -1716,14 +1480,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "During two-point calibration: (1) Adjust the 'zero' or 'offset' control at pH 7.0 buffer until the meter reads 7.00; (2) Adjust the 'slope' or 'span' control at pH 4.0 buffer until the meter reads 4.00. The readings of 6.95 and 4.12 indicate the meter needs calibration adjustment — the offset and slope are slightly off. After calibration, verify with a third buffer (e.g., pH 10.0) to confirm accuracy across the range. A properly calibrated pH meter should read within ±0.02 pH units of the buffer value. pH is a critical process control parameter for coagulation, disinfection, and corrosion control.",
-    steps: [
-      { l: "Step 1: Adjust Offset", c: "Place the pH electrode in the pH 7.0 buffer. Adjust the 'zero' or 'offset' control on the pH meter until the display reads exactly 7.00." },
-      { l: "Step 2: Adjust Slope", c: "Rinse the electrode thoroughly with deionized water and place it in the pH 4.0 buffer. Adjust the 'slope' or 'span' control until the display reads exactly 4.00." },
-      { l: "Step 3: Verify Calibration", c: "Rinse the electrode again and re-check both the pH 7.0 and pH 4.0 buffers to ensure the meter now reads correctly (7.00 and 4.00, respectively) within ±0.02 pH units. If not, repeat steps 1 and 2." },
-      { l: "Step 4: Confirm Accuracy", c: "For comprehensive accuracy, verify the calibration with a third buffer, such as pH 10.0, to ensure the meter is accurate across the expected operating range." },
-    ],
     "difficulty": "medium",
-    tip: "Always remember the two-point calibration sequence: adjust offset at pH 7.0 first, then adjust slope at the second buffer (e.g., pH 4.0 or pH 10.0).",
   },
   {
     "id": 94,
@@ -1738,14 +1495,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Chlorine gas is highly toxic (IDLH = 10 ppm; LC50 = 293 ppm for 1 hour). Response to a suspected leak: (1) Evacuate the area immediately — do not enter without SCBA; (2) Activate the emergency response plan; (3) Notify emergency services (fire department with hazmat capability); (4) Account for all personnel; (5) Do not re-enter without: SCBA (self-contained breathing apparatus), chemical-resistant PPE, and a trained partner (two-person rule). Never apply water to a chlorine gas leak — it creates hydrochloric acid. The chlorine room should have a dedicated scrubber system and emergency ventilation.",
-    steps: [
-      { l: "Step 1: Prioritize Safety", c: "Immediately evacuate the chlorine room and the surrounding area. Do not attempt to re-enter without proper personal protective equipment (PPE), specifically a self-contained breathing apparatus (SCBA)." },
-      { l: "Step 2: Activate Emergency Protocols", c: "Activate the facility's emergency response plan. This typically involves sounding an alarm and initiating the chlorine scrubber system if available." },
-      { l: "Step 3: Notify Emergency Services", c: "Contact emergency services, such as the fire department with hazardous materials (hazmat) capabilities, and inform them of the suspected chlorine leak. Provide them with all relevant details." },
-      { l: "Step 4: Account for Personnel", c: "Ensure all personnel are accounted for and are at a safe distance from the leak. Prevent unauthorized entry into the affected area." },
-    ],
     "difficulty": "medium",
-    tip: "Always prioritize personal safety and follow established emergency protocols when dealing with hazardous materials like chlorine gas.",
   },
   {
     "id": 95,
@@ -1835,18 +1585,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "A Permit to Take Water (PTTW) under the Ontario Water Resources Act authorizes a maximum taking — it does not guarantee that amount. PTTWs typically include conditions such as: (1) Minimum stream flow thresholds below which taking must be reduced or stopped; (2) Seasonal restrictions; (3) Monitoring requirements. During droughts, MECP may direct reductions to protect: (1) Aquatic ecosystems (minimum ecological flows); (2) Other water users (agriculture, industry, other municipalities); (3) Groundwater levels. Municipalities must have contingency plans for drought conditions, including demand management and alternative sources.",
-    steps: [
-      { l: "Understand the PTTW's Nature", c: "Recognize that a PTTW grants permission for a maximum taking but does not guarantee that volume, especially under adverse conditions like drought. It's a regulatory limit, not an entitlement." },
-      { l: "Identify Drought Conditions", c: "Acknowledge that a significant drop in river flow constitutes a drought condition, triggering specific obligations and potential restrictions outlined in the PTTW or by the regulatory authority." },
-      { l: "Consult PTTW Conditions", c: "The municipality must review its specific PTTW for conditions related to low flow, minimum stream flow thresholds, or seasonal restrictions that dictate actions during a drought." },
-      { l: "Implement Contingency Plans", c: "The municipality is obligated to activate its drought contingency plans, which typically include demand management strategies, exploring alternative water sources, and potentially reducing water taking to protect the ecosystem and other users." },
-      { l: "Comply with Regulatory Directives", c: "The municipality must be prepared to comply with any directives from the Ministry of the Environment, Conservation and Parks (MECP) to reduce or cease water taking to protect aquatic ecosystems, other water users, and groundwater levels." },
-    ],
     "difficulty": "hard",
-    tip: "Always remember that permits define maximums and conditions, not guaranteed entitlements, especially when environmental factors change.",
   },
   {
     "id": 101,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Reverse Osmosis",
     "question": "A reverse osmosis (RO) system is used to treat a brackish groundwater source. The system recovery rate is 75%. If the feed flow is 1,000 m³/day, what is the permeate (product) flow and concentrate (reject) flow?",
@@ -1879,14 +1622,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Rapid ΔP increase across RO modules indicates fouling of the feed spacers (the mesh spacers between membrane leaves that allow feed water to flow). Causes include: (1) Biological fouling (biofilm) — most common; (2) Particulate fouling — inadequate pre-treatment; (3) Colloidal fouling. Fouling increases resistance to flow, raising ΔP. Chemical cleaning (CIP) using biocides, caustic, or acid (depending on foulant type) is required. Preventive measures include: adequate pre-treatment (SDI < 5), biocide dosing, and regular CIP. Scaling (calcium carbonate, silica) causes gradual flux decline rather than rapid ΔP increase.",
-    steps: [
-      { l: "Analyze the symptom", c: "A rapid increase in differential pressure (ΔP) across RO membrane modules is the key symptom. This indicates a sudden increase in resistance to water flow through the membranes." },
-      { l: "Consider common causes of rapid ΔP increase", c: "Rapid ΔP increase is typically associated with fouling of the feed spacers within the membrane modules. This can be due to biological growth (biofouling), particulate matter, or colloids." },
-      { l: "Differentiate from other issues", c: "Scaling (e.g., calcium carbonate, silica) usually causes a more gradual decline in flux and a slower increase in ΔP, not a rapid spike. Membrane damage would likely cause a sudden increase in permeate conductivity rather than just ΔP." },
-      { l: "Identify the MOST likely cause", c: "Among the fouling types, biological fouling (biofilm) is often the most common cause of a rapid and significant increase in ΔP, especially if pre-treatment for particulates is generally adequate." },
-    ],
     "difficulty": "hard",
-    tip: "Focus on the word 'rapid' in the question; this often points to fouling rather than scaling or other gradual issues.",
   },
   {
     "id": 103,
@@ -1916,14 +1652,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Chlorine dioxide (ClO₂) advantages: (1) Does not form THMs or HAAs — it does not react with NOM in the same way as free chlorine; (2) Effective disinfectant at high pH (unlike free chlorine which loses efficacy above pH 8); (3) Effective for Giardia inactivation; (4) Controls taste and odour. Disadvantages: (1) Forms inorganic DBPs — chlorite (ClO₂⁻) and chlorate (ClO₃⁻), which have health-based limits; (2) Must be generated on-site (not stable for storage); (3) More complex generation and handling; (4) Ontario MAC for chlorite is 1.0 mg/L. ClO₂ is used where THM/HAA control is needed and pH is high.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for the PRIMARY advantage of chlorine dioxide (ClO₂) over free chlorine for disinfection." },
-      { l: "Review ClO₂ Advantages", c: "Recall or refer to the provided advantages of ClO₂: (1) Does not form THMs or HAAs; (2) Effective at high pH; (3) Effective for Giardia inactivation; (4) Controls taste and odor." },
-      { l: "Compare with Free Chlorine Disadvantages", c: "Consider the common issues with free chlorine, especially its reaction with natural organic matter (NOM) to form disinfection byproducts (DBPs) like Trihalomethanes (THMs) and Haloacetic Acids (HAAs)." },
-      { l: "Identify the Primary Advantage", c: "The most significant and often cited advantage of ClO₂ over free chlorine, particularly in the context of regulatory compliance and public health, is its inability to form regulated THMs and HAAs. This is explicitly stated as the first advantage and is a major driver for its use." },
-    ],
     "difficulty": "hard",
-    tip: "When asked for the 'primary' advantage, look for the most impactful or distinguishing benefit that addresses a major drawback of the alternative.",
   },
   {
     "id": 105,
@@ -1953,15 +1682,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "In pressure filters, elevated differential pressure (ΔP) across the media indicates the filter is becoming clogged with solids. If the pressure continues to rise, it can force floc through the media (breakthrough), causing elevated effluent turbidity. This is a critical operational indicator — the filter must be backwashed before breakthrough occurs. Operators should establish maximum ΔP limits (typically 50–70 kPa) that trigger backwash. Allowing excessive ΔP risks turbidity breakthrough and potential Cryptosporidium passage. Pressure filters are common in small systems and package plants.",
-    steps: [
-      { l: "Analyze the Symptoms", c: "The problem states two key symptoms: higher than normal pressure and elevated effluent turbidity. These two symptoms together are critical indicators of filter performance issues." },
-      { l: "Relate Pressure to Filter Condition", c: "Higher pressure in a filter indicates increased resistance to flow. This resistance is typically caused by the accumulation of solids (floc, particulates) within the filter media, leading to a higher differential pressure (ΔP)." },
-      { l: "Relate Turbidity to Filter Condition", c: "Elevated effluent turbidity means that the filter is no longer effectively removing suspended solids. This indicates that solids are passing through the filter media." },
-      { l: "Connect Symptoms to Cause", c: "When a filter becomes excessively clogged (high pressure), the accumulated solids can be forced through the media due to the increased hydraulic pressure. This phenomenon is called breakthrough, and it directly results in elevated effluent turbidity." },
-      { l: "Identify the MOST Likely Cause", c: "Therefore, the most likely cause for both high pressure and elevated effluent turbidity is that the filter is clogged and experiencing breakthrough, meaning it needs to be backwashed." },
-    ],
     "difficulty": "medium",
-    tip: "When a question presents multiple symptoms, look for the single cause that logically explains all of them simultaneously.",
   },
   {
     "id": 107,
@@ -1976,17 +1697,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Chlorine residual decays in the distribution system due to: (1) Bulk water reactions — chlorine reacts with NOM, ammonia, and other reducing agents in the water; (2) Pipe wall reactions — chlorine reacts with iron pipe corrosion products, biofilm, and pipe material; (3) Temperature — higher temperatures accelerate decay; (4) UV light (in open reservoirs). Pipe wall demand is often the dominant decay mechanism in older systems with corroded iron pipes. Decay modeling (using first-order or two-component models) is used to predict residuals throughout the system and identify areas at risk of low residuals.",
-    steps: [
-      { l: "Step 1: Analyze the given information.", c: "We have a significant drop in free chlorine residual (0.8 mg/L to 0.2 mg/L) over 48 hours in a distribution system. The explanation provided lists several causes of chlorine decay." },
-      { l: "Step 2: Evaluate the primary decay mechanisms in a distribution system.", c: "The explanation highlights bulk water reactions, pipe wall reactions, temperature, and UV light. It specifically states that 'Pipe wall demand is often the dominant decay mechanism in older systems with corroded iron pipes.'" },
-      { l: "Step 3: Consider the context of a 'distribution system'.", c: "Distribution systems typically consist of pipes, which can be old and corroded, leading to significant pipe wall reactions. While bulk water reactions occur, the extensive surface area of pipes over a 48-hour travel time makes pipe wall reactions a major factor." },
-      { l: "Step 4: Determine the 'PRIMARY' cause.", c: "Given the substantial decay over an extended period (48 hours) within a pipe network, and the explicit mention that pipe wall demand is often dominant, pipe wall reactions are the most likely primary cause of this significant residual decay." },
-    ],
     "difficulty": "medium",
-    tip: "When a question asks for the 'PRIMARY' cause, look for the most impactful or frequently dominant factor in the given scenario, often highlighted in the provided explanation.",
   },
   {
     "id": 108,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Fluoridation",
     "question": "A plant uses sodium silicofluoride (Na₂SiF₆) for fluoridation. The chemical has a purity of 98% and a fluoride content of 60.6%. The plant flow is 10,000 m³/day and the target fluoride addition is 0.5 mg/L. What is the chemical feed rate in kg/day?",
@@ -2008,6 +1723,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 109,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Pump Efficiency",
     "question": "A pump delivers 200 L/s against a total dynamic head (TDH) of 45 m. The motor input power is 120 kW. What is the overall pump-motor efficiency?",
@@ -2041,14 +1757,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Efficiency loss in aging pumps is caused by: (1) Impeller wear — erosion of impeller vanes reduces hydraulic efficiency; (2) Increased clearances — wear of wear rings allows recirculation from discharge to suction; (3) Operating off-BEP — system changes over time may move the operating point away from BEP; (4) Bearing friction; (5) Seal friction. A drop from 82% to 58% efficiency represents a 29% increase in energy consumption for the same output. Pump testing (performance testing) can quantify efficiency loss. Impeller replacement or trimming, wear ring replacement, and system curve analysis can restore efficiency.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for the MOST likely cause of a significant efficiency drop (82% to 58%) in high-service pumps, implying a physical degradation or operational mismatch." },
-      { l: "Evaluate Given Options (Implicit)", c: "Consider the common causes of pump efficiency loss provided in the explanation: impeller wear, increased clearances, operating off-BEP, bearing friction, and seal friction." },
-      { l: "Prioritize Major Causes of Significant Loss", c: "A substantial drop from 82% to 58% (24 percentage points) is typically due to significant hydraulic losses. Impeller wear and increased clearances (wear rings) directly impact the pump's ability to efficiently move water, leading to large efficiency reductions." },
-      { l: "Identify the MOST Likely Cause", c: "While operating off-BEP can reduce efficiency, a 24% drop often points to physical wear. Impeller wear and increased clearances are the primary culprits for such a large efficiency degradation in aging pumps, as they directly reduce the hydraulic efficiency and allow internal recirculation." },
-    ],
     "difficulty": "hard",
-    tip: "When a question asks for the 'MOST likely' cause of a significant operational issue, consider the factors that would have the largest impact on performance.",
   },
   {
     "id": 111,
@@ -2138,14 +1847,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "HPC measures the total number of heterotrophic bacteria in water. An elevated HPC (>500 CFU/mL) is an aesthetic objective exceedance, not a health-based limit. It indicates: (1) Low or absent disinfectant residual allowing bacterial regrowth; (2) Warm water temperature (summer) promoting growth; (3) Biofilm in distribution system pipes; (4) Long water age (dead ends, low-use areas). HPC is not directly correlated with pathogens, but elevated HPC can mask coliform detection in some test methods and indicates potential distribution system issues. Investigation should include checking chlorine residuals and water age at the sample location.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks what an elevated Heterotrophic Plate Count (HPC) indicates, given a specific value (800 CFU/mL) exceeding the aesthetic objective (500 CFU/mL)." },
-      { l: "Identify Key Information", c: "An HPC of 800 CFU/mL is above the aesthetic objective. HPC measures general bacterial growth, not specific pathogens. The explanation provides several potential causes for elevated HPC." },
-      { l: "Synthesize Indications", c: "Elevated HPC primarily indicates potential issues within the distribution system that promote bacterial growth, such as low disinfectant residual, warm water temperatures, biofilm formation, or long water age. It is an aesthetic concern, not a direct health threat." },
-      { l: "Formulate the Answer", c: "An elevated HPC suggests conditions favorable for bacterial regrowth in the distribution system, pointing to potential problems like inadequate disinfectant residual, biofilm presence, or long water age. While not a direct health risk, it warrants investigation into distribution system integrity and operation." },
-    ],
     "difficulty": "medium",
-    tip: "Focus on the 'why' behind the exceedance, linking it to operational or environmental factors in the distribution system, rather than immediate health risks.",
   },
   {
     "id": 117,
@@ -2175,14 +1877,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Before changing coagulants, comprehensive jar testing is essential: (1) Test ferric sulfate at multiple doses (typically 5–50 mg/L) and pH values (5.0–7.5); (2) Measure: settled water turbidity, colour, TOC/UV254, pH, alkalinity; (3) Compare to current alum performance; (4) Determine optimal dose and pH for ferric sulfate; (5) Assess filter performance with ferric floc (ferric floc is denser and may behave differently in filters); (6) Evaluate chemical handling and storage requirements. Ferric coagulants are generally more effective at lower pH and for NOM removal, but the optimal conditions differ from alum.",
-    steps: [
-      { l: "Step 1: Jar Testing with Ferric Sulfate", c: "Conduct comprehensive jar tests using ferric sulfate across a range of doses (e.g., 5-50 mg/L) and pH values (e.g., 5.0-7.5) to identify its coagulation effectiveness." },
-      { l: "Step 2: Performance Parameter Measurement", c: "Measure key water quality parameters for each jar test, including settled water turbidity, color, TOC/UV254, pH, and alkalinity, to assess treatment efficacy." },
-      { l: "Step 3: Comparative Analysis", c: "Compare the performance of ferric sulfate under various conditions to the current optimal performance achieved with alum, focusing on the desired treatment goals." },
-      { l: "Step 4: Filterability and Chemical Handling Assessment", c: "Evaluate the filterability of the ferric floc, as its density may differ from alum floc, and consider the practical aspects of chemical handling and storage for ferric sulfate." },
-    ],
     "difficulty": "medium",
-    tip: "When answering questions about chemical changes, always emphasize comprehensive bench-scale testing and comparative analysis to ensure a smooth transition and optimal performance.",
   },
   {
     "id": 119,
@@ -2216,6 +1911,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 121,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Coagulation Chemistry",
     "question": "Alum (Al₂(SO₄)₃·18H₂O) is added to water at a dose of 30 mg/L. The reaction consumes alkalinity. If the source water alkalinity is 40 mg/L as CaCO₃, is there sufficient alkalinity for coagulation?",
@@ -2253,6 +1949,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 123,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Sludge Dewatering",
     "question": "A belt filter press is used to dewater WTP sludge. The press produces a cake with 18% solids content. If the plant generates 5,000 kg of dry solids per day, what volume of cake is produced?",
@@ -2317,14 +2014,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Cross-connections with chemical feed systems (high hazard — toxic chemicals) require the highest level of backflow protection: (1) Air gap — physical separation between the water supply and the chemical — is the most reliable but not always practical; (2) Reduced Pressure Zone (RPZ) backflow preventer — provides high-level protection through two check valves and a relief valve that opens if back-pressure occurs. Double check valves are used for medium-hazard connections. Gate valves provide no backflow protection. Ontario's Plumbing Code and water utility cross-connection control programs specify the required protection level based on hazard classification.",
-    steps: [
-      { l: "Step 1: Identify the Hazard", c: "The question states a cross-connection exists between a potable water system and a chemical feed line. Chemical feed lines typically involve toxic or hazardous chemicals, classifying this as a high-hazard cross-connection." },
-      { l: "Step 2: Understand Backflow Protection Levels", c: "Recall the different levels of backflow protection: air gap, Reduced Pressure Zone (RPZ) assembly, and double check valve assembly. Each is designed for different hazard levels." },
-      { l: "Step 3: Match Protection to Hazard", c: "High-hazard cross-connections, especially those involving toxic chemicals, require the highest level of backflow protection to prevent contamination of the potable water supply." },
-      { l: "Step 4: Determine Minimum Protection", c: "The highest level of practical backflow protection is either an air gap or a Reduced Pressure Zone (RPZ) backflow preventer. The RPZ is often the minimum required when an air gap is not feasible." },
-    ],
     "difficulty": "medium",
-    tip: "Always classify the hazard level first (low, medium, high) to determine the appropriate backflow prevention device.",
   },
   {
     "id": 127,
@@ -2384,15 +2074,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "PPCPs (pharmaceuticals, hormones, personal care products) are emerging contaminants of concern. Conventional treatment (coagulation, filtration, chlorination) removes very little of most PPCPs. Effective treatment options: (1) Ozone — oxidizes many PPCPs, especially endocrine disruptors; (2) UV/H₂O₂ AOP — hydroxyl radicals non-selectively oxidize PPCPs; (3) GAC/PAC — adsorbs hydrophobic PPCPs; (4) RO/NF — physical rejection of PPCPs. Health Canada has not set MACs for most PPCPs, but the precautionary principle supports advanced treatment where feasible. This is an active area of research and regulation.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for the BEST treatment process for PPCP removal from a surface water source, implying a need for advanced treatment beyond conventional methods." },
-      { l: "Evaluate Conventional Treatment", c: "Recall that conventional treatment (coagulation, filtration, chlorination) is generally ineffective at removing most PPCPs, as stated in the explanation." },
-      { l: "Consider Advanced Oxidation Processes (AOPs)", c: "Ozone and UV/H₂O₂ (Advanced Oxidation Processes) are highly effective at oxidizing a wide range of PPCPs, often leading to their degradation. This makes them strong candidates for 'BEST removal'." },
-      { l: "Assess Adsorption and Membrane Processes", c: "Granular Activated Carbon (GAC) and Powdered Activated Carbon (PAC) are effective for adsorbing many PPCPs. Reverse Osmosis (RO) and Nanofiltration (NF) provide physical rejection, also offering high removal rates for many PPCPs." },
-      { l: "Determine the 'BEST' Option", c: "While several advanced processes are effective, Advanced Oxidation Processes (like UV/H₂O₂) and membrane filtration (RO/NF) often provide the most comprehensive and consistently high removal rates for a broad spectrum of PPCPs, with AOPs directly degrading them. Given the options, UV/H₂O₂ AOP is a strong contender for 'BEST' due to its non-selective oxidation." },
-    ],
     "difficulty": "hard",
-    tip: "When asked for the 'BEST' treatment for emerging contaminants, always consider advanced oxidation processes (AOPs) or high-rejection membrane technologies.",
   },
   {
     "id": 131,
@@ -2471,6 +2153,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 136,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Disinfection CT Tables",
     "question": "At a water temperature of 5°C and pH of 8.0, what is the CT required for 3-log inactivation of Giardia using free chlorine?",
@@ -2493,6 +2176,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 137,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Disinfection CT Tables",
     "question": "A plant achieves a CT of 450 mg·min/L with free chlorine at 10°C and pH 7.0. How many log inactivations of viruses does this represent?",
@@ -2515,6 +2199,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 138,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Sedimentation Basin Maintenance",
     "question": "A rectangular sedimentation basin has accumulated sludge to a depth of 0.5 m. The basin is 50 m long × 10 m wide. What volume of sludge must be removed?",
@@ -2538,6 +2223,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 139,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Chemical Dosing Calculations",
     "question": "A plant treats 50,000 m³/day and adds alum at 20 mg/L. The alum solution is 48% Al₂(SO₄)₃ by weight with a density of 1.33 kg/L. What volume of alum solution must be fed per day?",
@@ -2570,14 +2256,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "For a deteriorated cast iron main with low C-factor and frequent breaks, CIPP (Cured-In-Place Pipe) lining provides: (1) Structural reinforcement — the liner adds structural strength, reducing break frequency; (2) Hydraulic improvement — smooth CIPP liner increases C-factor to 150+, improving carrying capacity despite slight diameter reduction; (3) Corrosion protection — liner isolates water from iron pipe, eliminating iron leaching and further corrosion; (4) Trenchless installation — minimal excavation, lower cost than open-cut replacement. Pipe cleaning alone improves C-factor but does not address structural issues. CIPP is one of the most cost-effective rehabilitation methods for aging mains.",
-    steps: [
-      { l: "Analyze the Problem", c: "The main has a low C-factor (65) indicating poor hydraulic capacity and is experiencing frequent breaks, pointing to structural deterioration." },
-      { l: "Evaluate Rehabilitation Goals", c: "The solution must address both hydraulic capacity restoration (increase C-factor) and structural integrity (reduce breaks)." },
-      { l: "Consider Available Methods", c: "Pipe cleaning improves C-factor but not structural integrity. Open-cut replacement is effective but costly and disruptive. Various lining methods exist." },
-      { l: "Select Optimal Method", c: "Cured-In-Place Pipe (CIPP) lining restores hydraulic capacity by providing a smooth interior (high C-factor) and adds structural reinforcement, addressing both key issues effectively and trenchlessly." },
-    ],
     "difficulty": "hard",
-    tip: "When evaluating rehabilitation methods, always consider if the proposed solution addresses ALL aspects of the problem described in the question.",
   },
   {
     "id": 141,
@@ -2652,16 +2331,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "NIOSH/OSHA IDLH for chlorine gas is 10 ppm. Reference concentrations: 0.5 ppm = NIOSH ceiling (15-minute exposure limit); 1 ppm = detectable odour; 3–5 ppm = strong irritating odour; 10 ppm = IDLH — immediately dangerous to life or health; 25 ppm = severe respiratory distress; 50 ppm = potentially fatal with short exposure; 430 ppm = LC50 (30-minute exposure in humans). Chlorine rooms must have continuous gas detection with alarms at 1 ppm (warning) and 3 ppm (evacuation). SCBA must be available outside the chlorine room for emergency response. Ontario's OHSA requires chlorine gas monitoring and emergency procedures.",
-    steps: [
-      { l: "Identify the core question", c: "The question asks for the IDLH concentration for chlorine gas." },
-      { l: "Locate the IDLH value in the provided text", c: "Scan the 'Explanation' for the term 'IDLH' and its associated concentration." },
-      { l: "Extract the specific concentration", c: "The text explicitly states '10 ppm = IDLH — immediately dangerous to life or health'." },
-    ],
     "difficulty": "medium",
-    tip: "Always read the provided reference material carefully to find the exact answer, as it often contains the specific information needed.",
   },
   {
     "id": 146,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Energy Management",
     "question": "A water treatment plant's annual electricity bill is $800,000. An energy audit identifies that high-service pumps account for 65% of energy use. If pump efficiency is improved from 62% to 78%, what is the estimated annual energy savings?",
@@ -2725,14 +2399,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Loss of disinfectant residual is an adverse condition under O. Reg. 170/03 that requires: (1) Immediate investigation of the cause; (2) Notification to MECP and Medical Officer of Health within 24 hours; (3) Collection of additional bacteriological samples from the affected area; (4) Assessment of whether a Boil Water Advisory is warranted (based on duration, extent, and bacteriological results); (5) Documentation of all actions taken. The Medical Officer of Health makes the decision on issuing a BWA. A 4-hour loss of residual is a significant event — the risk depends on the distribution system's vulnerability and the cause of the loss.",
-    steps: [
-      { l: "Step 1: Immediate Investigation and Restoration", c: "Immediately investigate the cause of the chlorine residual loss and take corrective actions to restore the residual throughout the affected distribution system." },
-      { l: "Step 2: Notification to Authorities", c: "Notify the Ministry of the Environment, Conservation and Parks (MECP) and the Medical Officer of Health (MOH) within 24 hours of the incident, as this is an adverse condition." },
-      { l: "Step 3: Enhanced Bacteriological Sampling", c: "Collect additional bacteriological samples from the affected area of the distribution system to assess water quality and potential contamination." },
-      { l: "Step 4: Assessment for Boil Water Advisory", c: "Assess, in consultation with the MOH, whether a Boil Water Advisory (BWA) is warranted based on the duration and extent of the residual loss, the cause, and the bacteriological sample results. The MOH makes the final decision on issuing a BWA." },
-    ],
     "difficulty": "hard",
-    tip: "Always prioritize regulatory compliance and public health in your response to adverse conditions, even if not explicitly asked.",
   },
   {
     "id": 150,
@@ -2762,14 +2429,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "MBR advantages over conventional activated sludge + sand filtration: (1) Higher effluent quality — membrane provides absolute filtration (0.04–0.4 µm), removing virtually all suspended solids, bacteria, and protozoa; (2) Smaller footprint — no secondary clarifier needed; (3) Higher MLSS concentrations possible (8,000–12,000 mg/L vs. 2,000–4,000 mg/L) — smaller bioreactor volume; (4) Better pathogen removal — membrane provides physical barrier. Disadvantages: higher capital and operating costs, membrane fouling, energy-intensive aeration for membrane scouring. MBR is increasingly used for water reuse applications.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for the PRIMARY advantage of MBR over conventional activated sludge with sand filtration. This implies looking for the most significant benefit." },
-      { l: "Review MBR Characteristics", c: "Recall the key features of MBR technology, particularly how it differs from conventional systems. MBR integrates membrane filtration directly into the biological process." },
-      { l: "Compare Effluent Quality", c: "Consider the effluent quality produced by both systems. MBR's membrane provides a physical barrier, leading to superior removal of solids, bacteria, and protozoa compared to sand filtration." },
-      { l: "Identify Primary Advantage", c: "Based on the comparison, the significantly higher and more consistent effluent quality, due to the absolute filtration of the membrane, is the most fundamental and primary advantage." },
-    ],
     "difficulty": "hard",
-    tip: "When asked for the 'primary' advantage, focus on the most impactful and distinguishing benefit of the technology.",
   },
   {
     "id": 152,
@@ -2784,17 +2444,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 0,
     "explanation": "SBR cycle phases: (1) Fill — influent enters the reactor (can be aerated or anoxic during fill); (2) React — aeration/mixing for biological treatment (BOD removal, nitrification, denitrification); (3) Settle — aeration stops, biomass settles by gravity (no secondary clarifier needed); (4) Decant — clarified effluent is removed from the top; (5) Idle — optional phase between cycles. SBRs are flexible — the react phase can be programmed for different biological processes. They are commonly used in small to medium systems, package plants, and industrial wastewater treatment. The fill-and-draw operation eliminates the need for separate clarifiers.",
-    steps: [
-      { l: "Step 1: Fill", c: "The SBR cycle begins with the Fill phase, where influent wastewater enters the reactor. This phase can be aerated or anoxic depending on the treatment goals." },
-      { l: "Step 2: React", c: "Following Fill, the React phase involves aeration and mixing to facilitate biological treatment processes such as BOD removal, nitrification, and denitrification." },
-      { l: "Step 3: Settle", c: "After the React phase, aeration and mixing cease, allowing the biomass to settle by gravity. This eliminates the need for a separate secondary clarifier." },
-      { l: "Step 4: Decant", c: "Once settling is complete, the clarified treated effluent is removed from the top of the reactor during the Decant phase." },
-    ],
     "difficulty": "medium",
-    tip: "Memorize the core SBR phases (Fill, React, Settle, Decant) as they are fundamental to understanding this treatment process.",
   },
   {
     "id": 153,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Instrumentation",
     "question": "A differential pressure (DP) transmitter is used to measure flow in a venturi meter. The DP transmitter reads 25 kPa. If the calibrated range is 0–100 kPa corresponding to 0–500 L/s, what is the flow rate?",
@@ -2829,14 +2483,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Alkalinity forms at different pH ranges: Hydroxide (OH⁻): pH > 10; Carbonate (CO₃²⁻): pH 8.3–10; Bicarbonate (HCO₃⁻): pH 4.3–8.3. Phenolphthalein alkalinity (P) = 0 means pH < 8.3 — no carbonate or hydroxide alkalinity. Total alkalinity (T) = 85 mg/L = bicarbonate alkalinity only. This is the most common situation in natural waters at neutral pH. The carbonate system: P = 0, T = 85 → all HCO₃⁻. This information is used to calculate the Langelier Saturation Index and optimize coagulation and corrosion control.",
-    steps: [
-      { l: "Analyze Phenolphthalein Alkalinity (P)", c: "Phenolphthalein alkalinity (P) is 0 mg/L. This indicates that the pH of the water sample is less than 8.3, meaning there is no measurable hydroxide (OH⁻) or carbonate (CO₃²⁻) alkalinity present." },
-      { l: "Analyze Total Alkalinity (T)", c: "Total alkalinity (T) is 85 mg/L as CaCO₃. Total alkalinity represents the sum of all forms of alkalinity (hydroxide, carbonate, and bicarbonate)." },
-      { l: "Determine Alkalinity Components", c: "Since P = 0, all the measured alkalinity must be due to bicarbonate (HCO₃⁻). Therefore, the bicarbonate alkalinity is equal to the total alkalinity, which is 85 mg/L as CaCO₃." },
-      { l: "Interpret the Carbonate System", c: "This indicates that the water sample's alkalinity is entirely composed of bicarbonate ions. This is a common scenario for natural waters with a pH in the neutral to slightly acidic range (4.3-8.3)." },
-    ],
     "difficulty": "medium",
-    tip: "Remember the pH ranges for each alkalinity component (hydroxide, carbonate, bicarbonate) to quickly interpret P and T alkalinity values.",
   },
   {
     "id": 155,
@@ -2866,14 +2513,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Cationic polymers enhance coagulation through two mechanisms: (1) Charge neutralization — the positive charges on the polymer neutralize the negative surface charges on colloidal particles, reducing repulsion; (2) Bridging — long polymer chains adsorb onto multiple particles simultaneously, physically linking them into larger aggregates. Cationic polymers are used: as primary coagulants (replacing or supplementing metal coagulants), as coagulant aids (reducing metal coagulant dose), and as filter aids (strengthening floc for filtration). Anionic and nonionic polymers are used as flocculant aids (promoting floc growth) but not for charge neutralization.",
-    steps: [
-      { l: "Identify the primary function of cationic polymers", c: "Cationic polymers carry a positive charge, which is key to their function in water treatment." },
-      { l: "Explain charge neutralization", c: "The positive charges on the cationic polymer are attracted to and neutralize the negative surface charges present on colloidal particles in the water. This reduces the electrostatic repulsion between particles, allowing them to come closer together." },
-      { l: "Describe the bridging mechanism", c: "Long chains of the cationic polymer can adsorb onto multiple colloidal particles simultaneously. This physically links the particles together, forming larger, heavier aggregates (floc)." },
-      { l: "Conclude the enhancement of coagulation", c: "Through both charge neutralization and bridging, cationic polymers effectively destabilize colloidal particles and promote their aggregation, thereby enhancing the overall coagulation process." },
-    ],
     "difficulty": "hard",
-    tip: "When answering questions about polymer mechanisms, always consider both charge interaction and physical bridging.",
   },
   {
     "id": 157,
@@ -2888,17 +2528,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Dead ends in distribution systems cause: (1) Long water age — water stagnates and chlorine decays; (2) Low residuals — below regulatory minimums; (3) Sediment accumulation; (4) Potential for bacterial regrowth. Solutions in order of preference: (1) Looping — connecting the dead end to another main to create circulation (best long-term solution); (2) Booster chlorination — adds chlorine at the dead end (addresses residual but not water age or sediment); (3) Automatic flushing valves — periodic flushing replaces stagnant water (addresses water age but wastes water). Looping is the preferred engineering solution as it addresses the root cause.",
-    steps: [
-      { l: "Analyze the Problem", c: "The core issue is a dead-end main leading to long water age, chlorine decay, and low residuals. This creates an environment for potential bacterial regrowth and sediment accumulation." },
-      { l: "Evaluate Short-Term Solutions", c: "Booster chlorination can temporarily raise residuals but doesn't address water age or sediment. Automatic flushing valves improve water age but waste water and don't directly solve the chlorine decay issue at its source." },
-      { l: "Identify Long-Term Goals", c: "A long-term solution should aim to improve water circulation, reduce water age, maintain adequate chlorine residuals, and minimize sediment accumulation." },
-      { l: "Select the Optimal Solution", c: "Looping the dead-end main by connecting it to another active main is the best long-term solution. This eliminates the dead end, promotes continuous flow, reduces water age, and allows for consistent chlorine residual maintenance throughout the system." },
-    ],
     "difficulty": "medium",
-    tip: "When a question asks for the 'BEST long-term solution,' always consider options that address the root cause of the problem, not just the symptoms.",
   },
   {
     "id": 158,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Pump Curve Analysis",
     "question": "A pump has the following performance data: At 0 L/s (shutoff head) = 55 m; at 100 L/s = 48 m; at 200 L/s = 35 m; at 300 L/s = 15 m. The system curve intersects the pump curve at 180 L/s and 38 m. If a second identical pump is added in parallel, what is the approximate new operating point?",
@@ -2932,14 +2566,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Intake Protection Zones (IPZs) are defined based on travel time to the intake: IPZ-1: Area from which water can reach the intake within 2 hours — the most immediate zone, highest vulnerability, most restrictive policies. IPZ-2: Area from which water can reach the intake within 2 hours to the time of travel for the design storm event — intermediate vulnerability. IPZ-3: The remainder of the contributing drainage area — lower vulnerability, less restrictive policies. The 2-hour travel time for IPZ-1 is based on the time available for emergency response to a spill before it reaches the intake. Policies in IPZ-1 typically prohibit or strictly control high-hazard activities.",
-    steps: [
-      { l: "Understand the Question", c: "The question asks for the definition of an Intake Protection Zone 1 (IPZ-1) specifically in terms of distance from the intake." },
-      { l: "Recall IPZ Definitions", c: "Remember that Intake Protection Zones (IPZs) are defined by travel time to the intake, not a fixed distance. IPZ-1 is the most immediate zone." },
-      { l: "Identify IPZ-1 Travel Time", c: "The explanation states that IPZ-1 is the area from which water can reach the intake within 2 hours." },
-      { l: "Formulate the Answer", c: "Therefore, an IPZ-1 is defined as the area within a 2-hour travel time to the intake." },
-    ],
     "difficulty": "hard",
-    tip: "Always read the provided explanation carefully, as it often contains the direct answer or key information needed to deduce it.",
   },
   {
     "id": 160,
@@ -2973,6 +2600,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 162,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Aeration",
     "question": "A spray aerator is used to increase dissolved oxygen in a groundwater supply. The source water has a DO of 2 mg/L and the target is 8 mg/L. The saturation DO at 15°C is 10.1 mg/L. What is the oxygen deficit before aeration?",
@@ -3005,14 +2633,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Progressive cavity (PC) pumps advantages for sludge: (1) Handle high-viscosity fluids (up to 1,000,000 cP) — ideal for thick sludge; (2) Handle abrasive materials — the rotor-stator design is tolerant of grit; (3) Low shear — gentle pumping preserves floc structure; (4) Smooth, non-pulsating flow — unlike diaphragm or piston pumps; (5) Flow proportional to speed — easy to control with VFD; (6) Self-priming. Disadvantages: rotor and stator wear (especially with abrasive sludge), higher cost than centrifugal pumps, limited to moderate pressures. PC pumps are commonly used for WTP sludge, polymer solutions, and chemical feeds.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for the PRIMARY advantage of a progressive cavity pump for sludge applications. This means we need to identify the most significant benefit among its various positive characteristics when dealing with sludge." },
-      { l: "Recall PC Pump Characteristics for Sludge", c: "Progressive cavity pumps are known for their ability to handle viscous fluids, abrasive materials, provide low shear, and deliver a smooth flow. They are also self-priming and their flow is proportional to speed." },
-      { l: "Evaluate Advantages in Context of Sludge", c: "Sludge is typically a thick, viscous material, often containing abrasive solids. While low shear and smooth flow are beneficial, the most critical challenge in pumping sludge is its high viscosity and potential for abrasiveness. A pump's ability to effectively move such a difficult fluid is paramount." },
-      { l: "Identify the Primary Advantage", c: "The ability of progressive cavity pumps to handle high-viscosity fluids (thick sludge) and abrasive materials is their most significant advantage in sludge applications. Without this capability, other benefits like low shear or smooth flow would be irrelevant if the pump couldn't move the sludge at all. Given the options, handling high viscosity is often the most defining characteristic for sludge." },
-    ],
     "difficulty": "medium",
-    tip: "When asked for the 'primary' advantage, consider which characteristic directly addresses the most challenging aspect of the application.",
   },
   {
     "id": 164,
@@ -3027,14 +2648,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Fluoride concentration of 0.65 mg/L is below the target of 0.7 mg/L. The operator should: (1) Increase the fluoride feed rate slightly (adjust metering pump); (2) Recheck the fluoride level after the adjustment has had time to take effect; (3) Document the adjustment in the operating log. Fluoride monitoring and adjustment is a routine operational task. Ontario requires fluoride to be maintained within a specified range (typically ±0.1 mg/L of target). The SPADNS method is a standard colorimetric method for fluoride — it requires a blank correction and is subject to interference from aluminum, iron, and phosphate.",
-    steps: [
-      { l: "Step 1: Increase Fluoride Feed Rate", c: "Since the fluoride level is below the target, the operator should slightly increase the fluoride feed rate. This typically involves adjusting the metering pump for the fluoride chemical." },
-      { l: "Step 2: Allow for System Response", c: "After making the adjustment, allow sufficient time for the increased fluoride to travel through the system and for the concentration to stabilize before retesting." },
-      { l: "Step 3: Retest Fluoride Level", c: "Recheck the fluoride level using the SPADNS colorimetric method to confirm that the adjustment has brought the concentration closer to the 0.7 mg/L target." },
-      { l: "Step 4: Document Actions", c: "Record all adjustments made to the fluoride feed rate, the time of the adjustment, and the subsequent retest results in the operating log." },
-    ],
     "difficulty": "easy",
-    tip: "When answering operational questions, always consider the immediate action, the verification step, and the documentation requirement.",
   },
   {
     "id": 165,
@@ -3064,14 +2678,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Barium (Ba²⁺) is a divalent cation similar to calcium. Effective removal processes: (1) Lime softening — Ba²⁺ co-precipitates with calcium carbonate at high pH; (2) Ion exchange (cation exchange resin) — Ba²⁺ is exchanged for Na⁺ or H⁺; (3) Reverse osmosis — physical rejection of divalent ions; (4) Nanofiltration — selective rejection of divalent ions. Coagulation with alum does not effectively remove dissolved barium. Aeration and chlorination have no effect on dissolved barium. The choice of treatment depends on the system size, existing treatment, and other water quality parameters.",
-    steps: [
-      { l: "Step 1: Analyze the contaminant and its properties.", c: "The question states barium is a divalent cation (Ba²⁺) and its concentration is approaching the MAC. This indicates a need for a treatment process effective against dissolved inorganic ions." },
-      { l: "Step 2: Evaluate the provided treatment options based on barium's properties.", c: "Lime softening, ion exchange, reverse osmosis, and nanofiltration are listed as effective for barium removal. Coagulation with alum, aeration, and chlorination are explicitly stated as ineffective." },
-      { l: "Step 3: Consider the context of the question.", c: "The question asks for the MOST effective removal process. While several are effective, some are generally more robust or have higher removal efficiencies for dissolved ions." },
-      { l: "Step 4: Determine the most effective process among the viable options.", c: "Reverse osmosis and nanofiltration are membrane processes known for very high rejection rates of dissolved divalent ions like barium, often achieving greater removal than lime softening or ion exchange, especially when concentrations are critical." },
-    ],
     "difficulty": "hard",
-    tip: "When asked for the 'MOST effective' treatment, consider processes with the highest removal efficiencies for the specific contaminant, especially membrane processes for dissolved inorganics.",
   },
   {
     "id": 167,
@@ -3090,6 +2697,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 168,
+    isCalc: true,
     "module": "Laboratory Analysis",
     "topic": "Bench Chemistry",
     "question": "A water sample is titrated for total hardness using EDTA. The sample volume is 100 mL, the EDTA concentration is 0.01 M, and 18.5 mL of EDTA is used. What is the total hardness in mg/L as CaCO₃?",
@@ -3123,14 +2731,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Ontario's Water Opportunities Act, 2010 requires large municipalities to prepare Water Efficiency Plans that: (1) Assess current water use and losses; (2) Identify opportunities for efficiency improvements (leak detection, meter replacement, conservation programs); (3) Set targets for water use reduction; (4) Implement and monitor efficiency measures. Goals include: reducing per capita water consumption, reducing non-revenue water, deferring infrastructure expansion, and protecting source water quantity. Water efficiency planning is integrated with asset management and financial planning to ensure long-term sustainability of water services.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for the PRIMARY goal of a Water Efficiency Plan under Ontario's Water Opportunities Act. This requires identifying the overarching objective among the listed components." },
-      { l: "Review the Provided Explanation", c: "The explanation details several aspects of the plan, including assessment, identification of opportunities, setting targets, and implementation. It also lists various goals such as reducing per capita consumption, reducing non-revenue water, deferring infrastructure, and protecting source water quantity." },
-      { l: "Identify the Overarching Theme", c: "While there are multiple specific goals, the core purpose of all these activities (assessment, improvements, targets, implementation) is to achieve a more efficient use of water resources. The phrase 'Water Efficiency Plans' itself points directly to this primary objective." },
-      { l: "Determine the PRIMARY Goal", c: "Based on the name of the plan and the comprehensive activities described, the primary goal is to achieve water use reduction and ensure the long-term sustainability of water services through efficient management." },
-    ],
     "difficulty": "medium",
-    tip: "When asked for the 'primary' goal, look for the overarching objective that encompasses all other listed aims.",
   },
   {
     "id": 170,
@@ -3209,6 +2810,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 175,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Sedimentation Calculations",
     "question": "A circular sedimentation basin has a diameter of 30 m and a depth of 4 m. The plant flow is 25,000 m³/day. What is the surface overflow rate (SOR) in m³/m²·day?",
@@ -3242,14 +2844,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Ordering replacement parts for valves requires complete identification: (1) Manufacturer — different manufacturers have different seat designs; (2) Model number — even the same manufacturer may have multiple designs for the same size; (3) Year of manufacture — designs change over time; (4) Seat material — EPDM, Buna-N, PTFE, or metal depending on application; (5) Operating pressure and temperature — determines seat material selection; (6) Valve class/rating (AWWA C504). Using the wrong seat can result in leakage, premature failure, or valve malfunction. Maintaining a valve inventory with this information is a best practice for asset management.",
-    steps: [
-      { l: "Step 1: Identify Valve Manufacturer and Model", c: "Locate the valve's nameplate or documentation to determine the manufacturer and specific model number. This is crucial as seat designs vary significantly between manufacturers and models." },
-      { l: "Step 2: Determine Year of Manufacture and Valve Class", c: "Find the year of manufacture, often on the nameplate, and the valve class/rating (e.g., AWWA C504). Design changes over time and class ratings impact seat specifications." },
-      { l: "Step 3: Ascertain Current Seat Material and Operating Conditions", c: "Identify the existing seat material (e.g., EPDM, Buna-N, PTFE) and confirm the operating pressure and temperature of the transmission main. This ensures the new seat is compatible with the application." },
-      { l: "Step 4: Consult Manufacturer's Documentation or Representative", c: "With all gathered information, contact the valve manufacturer or their authorized representative. Provide them with the details to ensure the correct replacement disc seat is ordered." },
-    ],
     "difficulty": "medium",
-    tip: "Always prioritize identifying the manufacturer and model number first, as this information is foundational for all subsequent replacement part inquiries.",
   },
   {
     "id": 177,
@@ -3294,14 +2889,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Hydrogen sulfide (H₂S) is a dissolved gas with an extremely low odour threshold (~0.05 µg/L — detectable at parts per trillion). Treatment options: (1) Aeration — most cost-effective; H₂S is volatile and transfers readily from water to air; packed tower or cascade aeration achieves >95% removal; (2) Chlorination — oxidizes H₂S to sulfate (SO₄²⁻): H₂S + Cl₂ → S + 2HCl; requires careful dose control to avoid excess chlorine; (3) KMnO₄ — oxidizes H₂S to sulfur. Aeration is preferred for high H₂S concentrations because it removes the gas without adding chemicals. Chlorination is used as a polishing step or when aeration alone is insufficient.",
-    steps: [
-      { l: "Analyze the Problem", c: "The problem states a groundwater source has 2 mg/L of hydrogen sulfide (H₂S) causing taste and odor. This is a relatively high concentration for H₂S." },
-      { l: "Evaluate Treatment Options", c: "The explanation provides three main options: Aeration, Chlorination, and KMnO₄. Aeration is highlighted as most cost-effective and highly efficient for volatile H₂S, especially at higher concentrations." },
-      { l: "Compare Effectiveness and Suitability", c: "Aeration removes H₂S without adding chemicals, which is generally preferred. Chlorination and KMnO₄ are chemical oxidation methods, which can be effective but may require careful dose control and can be more expensive or create byproducts." },
-      { l: "Select the Most Effective Treatment", c: "Given the relatively high H₂S concentration (2 mg/L) and the explanation's emphasis on aeration's efficiency for volatile H₂S and its cost-effectiveness, aeration (specifically packed tower or cascade aeration for >95% removal) is the most effective primary treatment." },
-    ],
     "difficulty": "medium",
-    tip: "When a question asks for the 'MOST effective' treatment, consider the primary removal mechanism, cost-effectiveness, and potential side effects of each option presented in the context.",
   },
   {
     "id": 180,
@@ -3331,14 +2919,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Tapered flocculation (decreasing G) is the optimal design: Stage 1 (high G = 60 s⁻¹): Promotes rapid particle collisions — many small floc particles are present and need to collide. Stage 2 (medium G = 30 s⁻¹): Floc has grown larger — lower shear prevents breakup while still promoting collisions. Stage 3 (low G = 15 s⁻¹): Large floc is fragile — gentle mixing allows continued growth without breakup. The Camp number (Gt) — G × detention time — is used to design flocculation: optimal Gt = 10,000–100,000. Constant high G would break up the large floc formed in later stages, reducing settling efficiency.",
-    steps: [
-      { l: "Step 1: Understand the Goal of Flocculation", c: "Flocculation aims to aggregate small, destabilized particles into larger, settleable flocs. This process requires particle collisions." },
-      { l: "Step 2: Analyze the Impact of High Velocity Gradient (G) in Early Stages", c: "In the first stage, a high G (60 s⁻¹) promotes rapid and frequent collisions among the numerous small particles, initiating floc formation efficiently." },
-      { l: "Step 3: Analyze the Impact of Decreasing Velocity Gradient in Later Stages", c: "As floc particles grow larger in subsequent stages, they become more fragile. Decreasing G (30 s⁻¹ then 15 s⁻¹) reduces shear forces, preventing the breakup of these larger, more delicate flocs while still allowing for continued growth through gentle collisions." },
-      { l: "Step 4: Conclude on the Overall Benefit of Tapered Flocculation", c: "Tapered flocculation optimizes floc growth by providing sufficient energy for initial collisions and then progressively reducing energy to protect fragile, larger flocs, leading to better settling efficiency." },
-    ],
     "difficulty": "hard",
-    tip: "Remember that flocculation is a balance: enough energy for collisions, but not so much that it breaks up the formed floc.",
   },
   {
     "id": 182,
@@ -3353,14 +2934,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Liquid alum (aluminum sulfate solution) has a pH of 2–3 and is corrosive to skin and eyes. Required PPE for handling: (1) Safety goggles or face shield — to protect eyes from splashes; (2) Chemical-resistant gloves (nitrile or neoprene) — to protect hands; (3) Chemical-resistant apron or coveralls — to protect clothing and skin; (4) Safety boots. SCBA is not required for alum — it does not produce toxic vapours under normal conditions. The SDS (Safety Data Sheet) specifies the required PPE for each chemical. Operators must review the SDS before handling any chemical and ensure appropriate PPE is available and worn.",
-    steps: [
-      { l: "Step 1: Identify the chemical properties", c: "Liquid alum is corrosive with a low pH (2-3), posing a risk to skin and eyes upon contact." },
-      { l: "Step 2: Consult the SDS", c: "The Safety Data Sheet (SDS) for liquid alum is the primary source for specific PPE requirements and handling procedures." },
-      { l: "Step 3: Determine necessary eye and face protection", c: "Due to the corrosive nature and splash potential during transfer, safety goggles or a face shield are essential to protect the eyes and face." },
-      { l: "Step 4: Select appropriate body protection", c: "Chemical-resistant gloves (nitrile or neoprene), a chemical-resistant apron or coveralls, and safety boots are required to protect hands, body, and feet from splashes and contact." },
-    ],
     "difficulty": "easy",
-    tip: "Always refer to the SDS for specific chemical handling instructions and PPE requirements; it's the definitive guide for safe operations.",
   },
   {
     "id": 183,
@@ -3435,14 +3009,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Gross alpha exceeding the MAC (0.5 Bq/L) requires: (1) Confirmatory testing — gross alpha is a screening test; specific radionuclides must be identified (radium-226, radium-228, uranium, thorium); (2) Health risk assessment — based on the specific radionuclides and concentrations; (3) Notification to MECP and Medical Officer of Health; (4) Investigation of the source (geological, anthropogenic); (5) Treatment options if confirmed: ion exchange (for radium), RO, or lime softening. Chlorination has no effect on radioactivity. Granitic bedrock areas in Ontario (Canadian Shield) can have elevated natural radioactivity from uranium and radium.",
-    steps: [
-      { l: "Step 1: Compare Result to MAC", c: "The measured gross alpha radioactivity is 0.6 Bq/L, which exceeds Ontario's MAC of 0.5 Bq/L for gross alpha (excluding radon and uranium)." },
-      { l: "Step 2: Initiate Confirmatory Testing", c: "Since the gross alpha is a screening test and the MAC is exceeded, confirmatory testing is required to identify specific radionuclides such as radium-226, radium-228, uranium, and thorium." },
-      { l: "Step 3: Notify Authorities", c: "The Ministry of the Environment, Conservation and Parks (MECP) and the Medical Officer of Health must be notified of the exceedance." },
-      { l: "Step 4: Conduct Further Assessment and Investigation", c: "A health risk assessment based on specific radionuclides and concentrations is necessary, along with an investigation into the source of the radioactivity (geological or anthropogenic)." },
-    ],
     "difficulty": "hard",
-    tip: "Always compare the given value to the MAC first to determine if an exceedance has occurred, then recall the required follow-up actions for that specific parameter.",
   },
   {
     "id": 188,
@@ -3502,15 +3069,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Increasing nitrate in a rural well surrounded by agriculture is almost certainly from agricultural nitrogen: (1) Fertilizers (synthetic nitrogen) and manure applied to fields; (2) Nitrate leaches through the unsaturated zone into the aquifer; (3) Trend of increasing concentration indicates ongoing contamination. Actions: (1) Notify MECP and Source Protection Authority; (2) Increase monitoring frequency (quarterly); (3) Implement source protection measures — buffer zones, nutrient management plans for nearby farms; (4) Develop contingency plan if nitrate approaches MAC (10 mg/L as N); (5) Investigate treatment options (ion exchange, RO) if the trend continues. The MAC of 10 mg/L as N must not be exceeded.",
-    steps: [
-      { l: "Identify the Source", c: "The most likely source of increasing nitrate in a rural well surrounded by agricultural land is agricultural runoff, specifically from fertilizers and manure applied to fields." },
-      { l: "Confirm Contamination Pathway", c: "Nitrate from these agricultural sources leaches through the soil and unsaturated zone, eventually contaminating the groundwater aquifer that supplies the well. The increasing trend over five years confirms ongoing contamination." },
-      { l: "Immediate Regulatory Action", c: "Notify the relevant environmental regulatory body (e.g., MECP) and the Source Protection Authority about the increasing nitrate levels." },
-      { l: "Enhanced Monitoring and Source Protection", c: "Increase monitoring frequency (e.g., quarterly) to track the trend. Implement source protection measures such as establishing buffer zones and promoting nutrient management plans with nearby farms." },
-      { l: "Contingency Planning and Treatment Options", c: "Develop a contingency plan for when nitrate levels approach the Maximum Acceptable Concentration (MAC) of 10 mg/L as N. Investigate potential treatment options like ion exchange or reverse osmosis if the trend continues and the MAC is threatened." },
-    ],
     "difficulty": "hard",
-    tip: "Always connect the environmental context (rural, agriculture) directly to the most probable contaminant source (fertilizers/manure) and remember to prioritize regulatory notification and source protection measures.",
   },
   {
     "id": 192,
@@ -3529,6 +3088,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 193,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Sludge Thickening",
     "question": "A gravity thickener is used to concentrate WTP sludge from 0.8% to 3% solids. What is the volume reduction factor achieved?",
@@ -3566,6 +3126,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 195,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Filter Backwash",
     "question": "A rapid sand filter is being backwashed. The backwash rate is 50 m/h and the filter area is 40 m². What is the backwash flow rate in L/s?",
@@ -3598,15 +3159,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Iron and manganese removal sequence: (1) Aeration — oxidizes Fe²⁺ to Fe³⁺ (fast) and partially oxidizes Mn²⁺ (slow); (2) Chemical oxidation — chlorine or KMnO₄ completes Mn²⁺ → MnO₂ oxidation (manganese is harder to oxidize than iron — requires stronger oxidant or catalytic filtration); (3) Filtration — removes Fe(OH)₃ and MnO₂ precipitates. Note: Manganese requires pH > 9.5 for aeration alone to be effective — chemical oxidation is usually needed. Greensand filtration (with KMnO₄ regeneration) provides catalytic oxidation and filtration in one step. Chlorine dose for Mn oxidation: 1.3 mg Cl₂ per mg Mn.",
-    steps: [
-      { l: "Step 1: Analyze the Contaminants and Objectives", c: "The groundwater has iron (1.5 mg/L) and manganese (0.4 mg/L) exceeding aesthetic objectives (0.3 mg/L Fe, 0.05 mg/L Mn). Both need significant reduction." },
-      { l: "Step 2: Consider Initial Oxidation (Aeration)", c: "Aeration is effective for oxidizing iron quickly. It will also partially oxidize manganese, but not sufficiently to meet the objective." },
-      { l: "Step 3: Select a Stronger Oxidant for Manganese", c: "Since manganese is harder to oxidize and aeration alone is insufficient, a chemical oxidant like chlorine or potassium permanganate (KMnO₄) is necessary to complete its oxidation to insoluble MnO₂." },
-      { l: "Step 4: Implement Filtration", c: "After oxidation, both iron (as Fe(OH)₃) and manganese (as MnO₂) will be in particulate form. Filtration is required to physically remove these precipitates from the water." },
-      { l: "Step 5: Determine the Most Effective Sequence", c: "Based on the oxidation rates and requirements, the most effective sequence is Aeration (for iron and partial manganese oxidation), followed by Chemical Oxidation (to complete manganese oxidation), and finally Filtration (to remove all precipitates)." },
-    ],
     "difficulty": "hard",
-    tip: "When dealing with multiple contaminants, prioritize the most difficult to treat or the one requiring the strongest oxidant in the treatment sequence.",
   },
   {
     "id": 197,
@@ -3651,14 +3204,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "pH meter calibration best practices: (1) Use buffers that bracket the expected sample pH; (2) For samples near pH 9–10, calibrate with pH 7 and pH 10 buffers; (3) Three-point calibration (pH 4, 7, 10) is preferred for wide pH range measurements. pH electrodes have a linear response between calibration points but may be non-linear outside the calibrated range. For drinking water treatment (typically pH 6–9), calibration with pH 7 and pH 10 is appropriate. Calibration should be performed: before each use, after electrode storage, and when results are questionable. Temperature compensation is also critical — pH varies with temperature.",
-    steps: [
-      { l: "Step 1: Identify the calibrated range.", c: "The pH meter was calibrated using pH 4.0 and pH 7.0 buffer solutions. This establishes a linear response range between these two points." },
-      { l: "Step 2: Identify the sample pH.", c: "The sample being measured has a pH of 9.5, which falls outside the upper limit of the calibrated range." },
-      { l: "Step 3: Evaluate the calibration's suitability.", c: "According to best practices, buffers should bracket the expected sample pH. Since 9.5 is significantly higher than 7.0, the calibration is inadequate for this sample." },
-      { l: "Step 4: Determine the concern.", c: "The primary concern is that the pH meter's reading at pH 9.5 may be inaccurate because the electrode's response might be non-linear outside the calibrated range of 4.0 to 7.0. The meter was not calibrated for the higher pH range." },
-    ],
     "difficulty": "medium",
-    tip: "Always ensure your calibration buffers bracket the expected pH range of your samples to guarantee accurate readings.",
   },
   {
     "id": 200,
@@ -3673,14 +3219,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "DPD (N,N-diethyl-p-phenylenediamine) chlorine tests: DPD Free Chlorine: Reacts immediately with free chlorine (HOCl + OCl⁻) to produce a pink colour. Chloramines do not react in this step. DPD Total Chlorine: After the free chlorine reading, potassium iodide is added — this causes chloramines to oxidize iodide to iodine, which then reacts with DPD. Total = Free + Combined. Combined chlorine = Total - Free. This distinction is important for systems using chloramination — the combined chlorine (chloramine) residual must be maintained within the target range. O. Reg. 170/03 requires monitoring of both free and total chlorine where applicable.",
-    steps: [
-      { l: "Step 1: DPD Free Chlorine Test", c: "The DPD Free Chlorine test measures only the free chlorine (hypochlorous acid and hypochlorite ion) present in the water. It produces a pink color immediately upon reaction with free chlorine." },
-      { l: "Step 2: DPD Total Chlorine Test", c: "After the free chlorine reading, the DPD Total Chlorine test involves adding potassium iodide to the sample. This addition causes chloramines to react and oxidize the iodide." },
-      { l: "Step 3: Combined Chlorine Reaction", c: "The oxidized iodide then reacts with the DPD reagent, producing an additional pink color. This second reaction accounts for the combined chlorine (chloramines) present in the water." },
-      { l: "Step 4: Calculation of Combined Chlorine", c: "The total chlorine reading represents the sum of free chlorine and combined chlorine. Therefore, combined chlorine can be calculated by subtracting the free chlorine reading from the total chlorine reading." },
-    ],
     "difficulty": "medium",
-    tip: "Remember that DPD Free Chlorine measures only active disinfectant, while DPD Total Chlorine includes both free and combined forms, which is crucial for chloraminated systems.",
   },
   {
     "id": 201,
@@ -3800,14 +3339,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "At 9.8 mg/L as N, the nitrate concentration is very close to the MAC of 10 mg/L as N. Required actions: (1) Increase monitoring frequency — more frequent sampling to track the trend; (2) Notify MECP and MOH — approaching MAC requires notification; (3) Investigate potential sources — agricultural runoff, septic systems, geological; (4) Develop contingency plan — if MAC is exceeded, a Do Not Use Advisory may be required (nitrate cannot be removed by boiling — it is a chemical contaminant); (5) Evaluate treatment options — ion exchange, RO, blending. Nitrate is particularly dangerous for infants under 6 months (methemoglobinemia — 'blue baby syndrome'). A DNUA (not BWA) would be issued if MAC is exceeded.",
-    steps: [
-      { l: "Step 1: Assess Concentration vs. MAC", c: "Compare the measured nitrate concentration (9.8 mg/L as N) to the Maximum Acceptable Concentration (MAC) of 10 mg/L as N. Note that the concentration is very close to the MAC." },
-      { l: "Step 2: Increase Monitoring and Notification", c: "Immediately increase the frequency of nitrate monitoring to track trends. Notify the Ministry of the Environment, Conservation and Parks (MECP) and the Ministry of Health (MOH) as the concentration is approaching the MAC." },
-      { l: "Step 3: Investigate and Plan", c: "Initiate an investigation to identify potential sources of nitrate contamination. Develop a contingency plan outlining actions to take if the MAC is exceeded, including potential Do Not Use Advisories." },
-      { l: "Step 4: Evaluate Treatment Options", c: "Begin evaluating treatment options such as ion exchange, reverse osmosis, or blending to reduce nitrate levels, should they continue to rise or exceed the MAC." },
-    ],
     "difficulty": "hard",
-    tip: "When a contaminant is near its MAC, always prioritize increased monitoring, notification, and proactive planning for potential exceedances and treatment.",
   },
   {
     "id": 209,
@@ -3837,14 +3369,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Chloramination advantages: (1) Reduced DBP formation — chloramines react much more slowly with NOM than free chlorine, producing significantly less THMs and HAAs; (2) More stable residual — chloramines persist longer in distribution systems, maintaining residuals in remote areas; (3) Reduced biofilm formation — chloramines penetrate biofilm more effectively than free chlorine. Disadvantages: (1) Weaker disinfectant — not suitable for primary disinfection (Giardia/Cryptosporidium); (2) Nitrification risk — ammonia from chloramine decay can fuel nitrifying bacteria; (3) Not suitable for dialysis patients (chloramines cannot be removed by boiling); (4) Harmful to fish — aquarium owners must dechlorinate. Chloramination is used as secondary disinfection only.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for the PRIMARY reason for switching from free chlorine to chloramination for distribution system disinfection." },
-      { l: "Recall Chloramination Advantages", c: "Chloramination offers several benefits, including reduced DBP formation, a more stable residual, and reduced biofilm formation." },
-      { l: "Identify the Primary Advantage", c: "The most significant and often primary driver for switching to chloramination, especially in light of regulatory concerns, is the reduction of disinfection byproduct (DBP) formation, such as THMs and HAAs." },
-      { l: "Confirm with Explanation", c: "The provided explanation explicitly states that 'Reduced DBP formation' is a key advantage, as chloramines react much more slowly with natural organic matter (NOM) than free chlorine." },
-    ],
     "difficulty": "medium",
-    tip: "When asked for the 'primary' reason, consider the most impactful or common regulatory driver for the change.",
   },
   {
     "id": 211,
@@ -3859,14 +3384,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Diaphragm metering pump problems with hypochlorite: (1) Vapor lock — hypochlorite decomposes and releases chlorine gas, which accumulates in the pump head and reduces flow; solution: vent the pump head, use a back-pressure valve, or install a degassing valve; (2) Worn diaphragm — reduces stroke volume; (3) Check valve failure — suction or discharge check valve not seating properly, allowing backflow; (4) Suction lift too high — pump cannot prime. Hypochlorite is particularly problematic because it is unstable and degasses. Best practices: minimize suction lift, use short suction lines, install pulsation dampeners, and regularly inspect check valves and diaphragms.",
-    steps: [
-      { l: "Analyze the problem", c: "The problem describes a diaphragm metering pump feeding sodium hypochlorite with a significant discrepancy between the set flow (5 L/h) and the actual flow (3.2 L/h). This indicates a common issue with chemical dosing." },
-      { l: "Consider the chemical", c: "Sodium hypochlorite is known to decompose and release chlorine gas, especially in warmer conditions or with agitation. This characteristic is crucial for diagnosing pump issues." },
-      { l: "Evaluate common diaphragm pump issues with hypochlorite", c: "Given the chemical, the most common and problematic issue is vapor lock, where gas bubbles accumulate in the pump head, reducing pumping efficiency. Other issues like worn diaphragms or check valve failures are possible but less specific to hypochlorite's gassing nature." },
-      { l: "Identify the MOST likely cause", c: "Based on the properties of sodium hypochlorite and common diaphragm pump problems, vapor lock due to off-gassing is the most probable cause for the reduced flow." },
-    ],
     "difficulty": "hard",
-    tip: "When a question involves a specific chemical, always consider its unique properties and how they might interact with the equipment.",
   },
   {
     "id": 212,
@@ -3926,14 +3444,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Pressure Decay Test (PDT) procedure: (1) Drain the membrane module; (2) Pressurize with air to a set pressure (typically 100–200 kPa); (3) Isolate and monitor pressure decay over time (typically 5 minutes); (4) Calculate pressure decay rate (kPa/min). A high decay rate indicates: membrane breach (hole, crack), failed O-ring or seal, or instrument leak. The PDT can detect breaches as small as 3 µm — equivalent to Cryptosporidium oocyst size. Regulatory requirement: PDT must be performed daily for systems relying on UF for Cryptosporidium removal. Failed modules must be isolated and repaired or replaced before returning to service.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks what a high pressure decay rate indicates during a UF membrane system's Pressure Decay Test (PDT)." },
-      { l: "Recall PDT Purpose", c: "The PDT is designed to verify membrane integrity by detecting leaks or breaches in the system. A high decay rate means pressure is dropping quickly." },
-      { l: "Interpret High Decay Rate", c: "A rapid pressure drop signifies that air is escaping the sealed system faster than it should. This escape route is typically a breach in the membrane, a faulty seal, or an instrument leak." },
-      { l: "Formulate the Answer", c: "Therefore, a high pressure decay rate indicates a loss of integrity, such as a membrane breach (hole or crack), a failed O-ring or seal, or an instrument leak within the UF system." },
-    ],
     "difficulty": "hard",
-    tip: "Focus on the core function of the test; if pressure is decaying rapidly, something is allowing it to escape.",
   },
   {
     "id": 216,
@@ -3948,15 +3459,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Cavitation symptoms: crackling/rattling noise (like gravel in the pump), reduced flow and head, vibration, impeller erosion. Causes: (1) Insufficient NPSH available (NPSHa) — suction lift too high, suction pipe too small, strainer clogged; (2) Operating far right of BEP — high flow, low head; (3) High water temperature — increases vapour pressure; (4) Entrained air. Consequences: impeller erosion (pitting), reduced efficiency, bearing damage, seal failure. Solutions: (1) Reduce suction lift; (2) Increase suction pipe diameter; (3) Clean suction strainer; (4) Reduce pump speed (VFD); (5) Reduce flow by partially closing discharge valve. NPSHa must always exceed NPSHr (required) by a safety margin.",
-    steps: [
-      { l: "Analyze the Symptoms", c: "The question describes a 'crackling or rattling noise' and 'lower than normal flow and pressure'. These are classic indicators of a specific pump issue." },
-      { l: "Recall Pump Malfunctions", c: "Consider common pump problems. A crackling/rattling noise often sounds like gravel in the pump, which is a hallmark symptom of cavitation." },
-      { l: "Connect Symptoms to Causes", c: "Cavitation occurs when vapor bubbles form and collapse within the pump. This phenomenon directly leads to reduced flow and pressure, as well as the characteristic noise and potential damage." },
-      { l: "Evaluate Other Options (Implicit)", c: "While other issues can cause low flow/pressure, the distinct 'crackling/rattling' noise strongly points to cavitation over, for example, a worn impeller (which might cause vibration but less distinct noise) or a simple clog (which might reduce flow but not typically cause that specific noise)." },
-      { l: "Identify the Most Likely Cause", c: "Based on the combination of noise and performance reduction, cavitation is the most probable cause among typical pump malfunctions." },
-    ],
     "difficulty": "medium",
-    tip: "When a question lists multiple distinct symptoms, look for the single problem that explains all of them simultaneously.",
   },
   {
     "id": 217,
@@ -3971,14 +3474,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Stokes' Law: v = (g × d² × (ρp - ρw)) / (18 × µ), where d = particle diameter. Since v ∝ d², doubling the diameter (d → 2d) increases settling velocity by (2d)²/d² = 4×. This is why coagulation and flocculation are so important — by aggregating small particles into larger floc, the settling velocity increases dramatically. Example: a 1 µm particle settling at 0.001 mm/s becomes a 100 µm floc particle settling at 10 mm/s — a 10,000× increase. This explains why conventional treatment (coagulation + sedimentation) is so effective at removing colloidal particles that would never settle on their own.",
-    steps: [
-      { l: "Step 1: Understand Stokes' Law", c: "Recall Stokes' Law, which states that the settling velocity (v) is directly proportional to the square of the particle diameter (d²)." },
-      { l: "Step 2: Identify the relationship", c: "The formula v ∝ d² indicates that if the particle diameter changes, the settling velocity will change by the square of that factor." },
-      { l: "Step 3: Apply the change", c: "If the particle diameter is doubled, the new diameter becomes 2d. Substitute this into the proportional relationship: v ∝ (2d)²." },
-      { l: "Step 4: Calculate the new velocity", c: "Simplifying (2d)² gives 4d². This means the new settling velocity will be 4 times the original settling velocity." },
-    ],
     "difficulty": "hard",
-    tip: "For questions involving proportional relationships, focus on how the change in one variable affects the other based on the exponent in the formula.",
   },
   {
     "id": 218,
@@ -4008,14 +3504,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "THM reduction strategy (multiple barriers): (1) Enhanced coagulation — lower coagulant pH (5.5–6.0 for alum) to maximize NOM removal; target TOC removal of 25–50%; (2) Move chlorine addition point — eliminate pre-chlorination; add chlorine only after filtration when NOM is minimized; (3) Reduce chlorine dose — use the minimum effective dose; (4) Reduce contact time — minimize time between chlorination and distribution; (5) Consider chloramination for distribution system residual; (6) Consider ozone/GAC for NOM removal. Enhanced coagulation (USEPA requirement for surface water systems) is the most cost-effective first step — removing NOM precursors before they can react with chlorine.",
-    steps: [
-      { l: "Step 1: Analyze the Problem", c: "The plant has high THMs in summer, high NOM (TOC = 6 mg/L), and uses free chlorine. This indicates that the reaction between chlorine and NOM is the primary cause of THM formation." },
-      { l: "Step 2: Evaluate Given Strategies", c: "The explanation provides several THM reduction strategies. We need to identify the 'MOST effective' one, especially considering the high NOM source water." },
-      { l: "Step 3: Prioritize NOM Removal", c: "Since NOM is the precursor to THMs, removing it before chlorination is the most fundamental and effective approach. Enhanced coagulation is specifically designed for this purpose and is highlighted as the 'most cost-effective first step' and a USEPA requirement." },
-      { l: "Step 4: Select the Optimal Strategy", c: "Enhanced coagulation, by lowering coagulant pH to maximize NOM removal (targeting 25-50% TOC removal), directly addresses the root cause of THM formation by removing precursors before they can react with chlorine." },
-    ],
     "difficulty": "hard",
-    tip: "When asked for the 'MOST effective' strategy, always consider the root cause of the problem and the most fundamental solution, especially for precursor removal.",
   },
   {
     "id": 220,
@@ -4060,14 +3549,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "DO exceeding saturation (supersaturation) can be caused by: (1) Algal photosynthesis — algae produce oxygen during daylight, causing supersaturation in surface waters (can reach 150% saturation); (2) Aeration — recent intense aeration can temporarily supersaturate water; (3) Probe error — contaminated membrane, calibration error, or temperature error. For a drinking water sample (not a surface water sample), supersaturation is unusual and suggests probe error. Verification: (1) Check probe membrane and electrolyte; (2) Recalibrate using air-saturated water; (3) Compare with Winkler titration method. Supersaturation in distribution system samples is not expected.",
-    steps: [
-      { l: "Analyze the given data", c: "The DO probe reads 11.5 mg/L, while the saturation DO at the same temperature is 10.1 mg/L. This means the measured DO is higher than the maximum expected at saturation." },
-      { l: "Calculate the supersaturation percentage", c: "Supersaturation is (Measured DO / Saturation DO) * 100%. In this case, (11.5 mg/L / 10.1 mg/L) * 100% = 113.86%. This indicates a significant level of supersaturation." },
-      { l: "Evaluate potential causes based on context", c: "Supersaturation can be caused by algal photosynthesis, intense aeration, or probe error. Without knowing the sample source (e.g., surface water vs. drinking water distribution system), it's difficult to pinpoint the exact cause, but probe error is always a strong possibility when unexpected readings occur." },
-      { l: "Determine the most likely indication", c: "Given the options, and the fact that supersaturation in a typical drinking water sample (not surface water) is highly unusual, the most prudent conclusion is that there might be a probe error. The explanation provided also emphasizes probe error for drinking water samples." },
-    ],
     "difficulty": "medium",
-    tip: "Always consider probe error as a primary suspect when readings are significantly outside expected ranges, especially for parameters like DO in treated water.",
   },
   {
     "id": 223,
@@ -4097,17 +3579,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Completely softened water is problematic: (1) Corrosive — very soft water has low alkalinity and low LSI, aggressively dissolving pipe materials (lead, copper, iron); (2) Unpalatable — completely soft water tastes flat and is not preferred by consumers; (3) Unstable — can dissolve protective calcium carbonate scale from distribution pipes. Target hardness of 80–120 mg/L as CaCO₃ provides: adequate buffering capacity, acceptable taste, and a slightly positive or near-zero LSI for corrosion control. In lime-soda softening, the process is controlled by adjusting lime and soda ash doses to achieve the target hardness, then recarbonation (CO₂ addition) stabilizes the water.",
-    steps: [
-      { l: "Step 1: Understand the Goal of Softening", c: "The primary goal of water softening is to reduce hardness to an acceptable level, not necessarily to remove all of it. Complete removal can lead to other issues." },
-      { l: "Step 2: Identify Problems with Completely Soft Water", c: "Completely softened water is corrosive due to low alkalinity and LSI, making it aggressive towards pipe materials. It also tastes flat and is generally unpalatable to consumers." },
-      { l: "Step 3: Recognize Water Stability Issues", c: "Water with zero or very low hardness can be unstable, potentially dissolving protective calcium carbonate scale from distribution pipes, which can lead to corrosion and release of pipe materials." },
-      { l: "Step 4: Explain Benefits of Target Hardness", c: "Leaving some hardness (80-120 mg/L as CaCO₃) provides adequate buffering capacity, acceptable taste, and a slightly positive or near-zero LSI, which is crucial for effective corrosion control and distribution system stability." },
-    ],
     "difficulty": "medium",
-    tip: "When answering 'why' questions, focus on the practical implications and consequences of different operational choices.",
   },
   {
     "id": 225,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Sludge Management",
     "question": "A WTP produces 2,500 kg of dry solids per day from alum coagulation. The sludge is dewatered to 20% solids by a centrifuge. What is the daily volume of dewatered cake for disposal?",
@@ -4160,6 +3636,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 228,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Filtration Calculations",
     "question": "A plant has 6 dual-media filters, each 8 m × 12 m. The plant flow is 120,000 m³/day. What is the filter loading rate (hydraulic application rate) in m/h?",
@@ -4208,14 +3685,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Jar test results interpretation: 20 mg/L — insufficient coagulant: particles still negatively charged, poor aggregation, small floc, slow settling. 30 mg/L — optimal: charge neutralization achieved, large dense floc, rapid settling, clear supernatant. 50 mg/L — over-coagulation: excess positive charge causes charge reversal (particles become positively charged), electrostatic repulsion again, small floc, poor settling. This bell-curve response is characteristic of charge neutralization coagulation. The optimal dose is at the peak of performance (30 mg/L). Jar tests should also evaluate pH — the optimal dose may shift with pH. Results guide plant chemical dosing.",
-    steps: [
-      { l: "Analyze the 20 mg/L result", c: "The small, slow-settling floc at 20 mg/L indicates insufficient coagulant. The particles likely remain negatively charged, leading to poor aggregation." },
-      { l: "Analyze the 30 mg/L result", c: "The large, quickly settling floc at 30 mg/L suggests an optimal coagulant dose. Charge neutralization is achieved, allowing for effective particle aggregation and rapid settling." },
-      { l: "Analyze the 50 mg/L result", c: "The small floc and turbid settled water at 50 mg/L point to over-coagulation. Excess coagulant has likely caused charge reversal, leading to renewed repulsion between particles and poor floc formation." },
-      { l: "Conclude the overall trend", c: "This pattern demonstrates a typical bell-curve response for coagulation, where there's an optimal dose (30 mg/L) between under-dosing and over-dosing, both of which result in poor flocculation." },
-    ],
     "difficulty": "medium",
-    tip: "Always look for the 'bell-curve' effect in jar test questions, identifying under-dosing, optimal dosing, and over-dosing based on floc characteristics and settling.",
   },
   {
     "id": 231,
@@ -4320,14 +3790,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Fluoride removal processes: (1) Activated alumina (AA) — ion exchange-like adsorption; fluoride adsorbs onto the alumina surface; regenerated with NaOH and H₂SO₄; effective at pH 5.5–6.0; (2) Reverse osmosis — physical rejection of fluoride ions (>95% removal); (3) Bone char — activated carbon from bone; effective but less common; (4) Coagulation with alum — partial removal only (not reliable for compliance); (5) Ion exchange (anion resin) — effective but expensive. Activated alumina is the most common treatment for fluoride removal in small systems. Lime softening can reduce fluoride but is not reliable for compliance. Aeration and chlorination have no effect on dissolved fluoride.",
-    steps: [
-      { l: "Step 1: Analyze the problem", c: "The problem states that a groundwater source has fluoride at 2.5 mg/L, exceeding the Ontario MAC of 1.5 mg/L. We need to identify an effective treatment process for fluoride removal." },
-      { l: "Step 2: Evaluate given treatment options", c: "Review the provided explanations for each fluoride removal process. Activated alumina, reverse osmosis, and ion exchange are noted as effective. Bone char is effective but less common. Coagulation with alum and lime softening are not reliable for compliance. Aeration and chlorination have no effect." },
-      { l: "Step 3: Identify the most common and effective solution for small systems", c: "The explanation explicitly states that 'Activated alumina is the most common treatment for fluoride removal in small systems.' This aligns with the need for an effective solution." },
-      { l: "Step 4: Conclude the best treatment process", c: "Based on the effectiveness and common usage in small systems, activated alumina is the most appropriate treatment process to remove excess fluoride to meet the Ontario MAC." },
-    ],
     "difficulty": "hard",
-    tip: "When multiple options are effective, look for keywords like 'most common' or 'most effective' in the context of the problem (e.g., small systems) to select the best answer.",
   },
   {
     "id": 238,
@@ -4372,18 +3835,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Loss of chlorine residual is an adverse condition requiring immediate action: (1) Investigate immediately — check plant chlorine dose, check for main breaks or cross-connections, check for unusual demand; (2) Notify supervisor and MECP (within 24 hours for adverse condition); (3) Collect bacteriological samples from the affected area; (4) Assess BWA need — consult with Medical Officer of Health; (5) Take corrective action — restore residual, identify and fix the cause; (6) Document all actions. The sequence matters — investigation and notification come before simply increasing the dose. A zero residual for any duration is a serious event requiring a systematic response, not just a chemical adjustment.",
-    steps: [
-      { l: "Step 1: Investigate Immediately", c: "Check plant chlorine dose, look for main breaks or cross-connections, and identify any unusual demand that could be causing the loss of residual." },
-      { l: "Step 2: Notify Supervisor and Regulatory Body", c: "Inform your supervisor and the MECP (or equivalent regulatory agency) about the adverse condition within 24 hours, as required." },
-      { l: "Step 3: Collect Bacteriological Samples", c: "Take bacteriological samples from the affected area to assess potential contamination." },
-      { l: "Step 4: Assess BWA Need and Take Corrective Action", c: "Consult with the Medical Officer of Health regarding a potential Boil Water Advisory (BWA). Simultaneously, restore the chlorine residual and identify and fix the root cause of the problem." },
-      { l: "Step 5: Document All Actions", c: "Thoroughly document every action taken, from investigation to corrective measures and notifications." },
-    ],
     "difficulty": "hard",
-    tip: "Prioritize investigation and notification over immediate chemical adjustments when faced with adverse conditions like a zero chlorine residual.",
   },
   {
     "id": 241,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Hydraulic Calculations",
     "question": "Water flows through a 300 mm diameter pipe at a velocity of 1.5 m/s. What is the flow rate in L/s?",
@@ -4432,14 +3888,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Ontario's Wellhead Protection Areas are defined by groundwater travel time to the well: WHPA-A: Travel time ≤ 100 days — highest vulnerability; most restrictive policies; many activities prohibited. WHPA-B: Travel time 100 days to 25 years — high vulnerability; significant threats managed through Risk Management Plans. WHPA-C: Travel time 25–100 years — moderate vulnerability; less restrictive policies. WHPA-E: Recharge area for the aquifer — protects the quantity of groundwater. The 100-day threshold for WHPA-A is based on the time required for pathogens to be naturally attenuated in the subsurface. Activities in WHPA-A are strictly controlled to prevent contamination.",
-    steps: [
-      { l: "Step 1: Understand the Basis of WHPA Delineation", c: "Wellhead Protection Areas (WHPAs) in Ontario are primarily delineated based on the estimated travel time of groundwater to the municipal well." },
-      { l: "Step 2: Define WHPA-A", c: "WHPA-A represents the area where groundwater travel time to the well is 100 days or less. This zone has the highest vulnerability to contamination due to the rapid transport of potential contaminants." },
-      { l: "Step 3: Define WHPA-B", c: "WHPA-B encompasses the area where groundwater travel time to the well ranges from 100 days to 25 years. This zone still has high vulnerability, but the longer travel time allows for more natural attenuation compared to WHPA-A." },
-      { l: "Step 4: Differentiate by Vulnerability and Policy", c: "The key difference lies in their vulnerability and the associated policies: WHPA-A has the highest vulnerability with the most restrictive policies and many prohibited activities, while WHPA-B has high vulnerability with significant threats managed through Risk Management Plans." },
-    ],
     "difficulty": "hard",
-    tip: "Focus on understanding the core differentiating factor, which in this case is groundwater travel time and its direct correlation to vulnerability and policy restrictiveness.",
   },
   {
     "id": 244,
@@ -4484,17 +3933,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Ontario's design standards (based on AWWA and Ten States Standards) for distribution system pressure: Minimum during fire flow: 140 kPa (20 psi) — absolute minimum to prevent backflow and maintain service. Normal service pressure: 275–415 kPa (40–60 psi) — preferred range for adequate service and fire protection. Maximum pressure: 690 kPa (100 psi) — above this, pressure reducing valves (PRVs) are required to prevent pipe and fixture damage. The 140 kPa minimum during fire flow is the regulatory floor — below this, there is risk of backflow and inadequate fire suppression. System design must ensure this minimum is maintained at all locations under worst-case demand conditions.",
-    steps: [
-      { l: "Understand the Question", c: "The question asks for the *minimum residual pressure* at service connections during *maximum day demand plus fire flow* in a new water distribution system design." },
-      { l: "Recall Design Standards", c: "Refer to the provided explanation or your knowledge of water distribution system design standards, specifically focusing on minimum pressure requirements during fire flow conditions." },
-      { l: "Identify the Critical Value", c: "The explanation states: 'Minimum during fire flow: 140 kPa (20 psi) — absolute minimum to prevent backflow and maintain service.' This is the critical value for the specified conditions." },
-      { l: "Formulate the Answer", c: "The minimum residual pressure that must be maintained at all service connections during maximum day demand plus fire flow is 140 kPa (20 psi)." },
-    ],
     "difficulty": "medium",
-    tip: "Always pay close attention to keywords like 'minimum,' 'maximum,' and specific demand conditions (e.g., 'fire flow') as they dictate which standard applies.",
   },
   {
     "id": 247,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Disinfection Efficiency",
     "question": "A plant achieves 2-log removal of Cryptosporidium through filtration and 2-log inactivation through UV disinfection. What is the total log credit for Cryptosporidium?",
@@ -4562,6 +4005,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 251,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Chlorine Chemistry",
     "question": "At pH 8.5 and 20°C, what percentage of free chlorine exists as hypochlorous acid (HOCl) vs. hypochlorite ion (OCl⁻)?",
@@ -4595,14 +4039,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "A PRV passing full upstream pressure (failing open) can be caused by: (1) Debris on the seat — preventing the valve from closing; (2) Worn or damaged seat/disc — valve cannot seal properly; (3) Diaphragm failure — loss of control pressure; (4) Pilot valve failure — pilot controls the main valve; (5) Corrosion or scale buildup. Consequences of PRV failure: downstream pressure of 650 kPa exceeds the normal 350 kPa — risk of pipe and fitting failures, customer complaints, and increased leakage. Immediate action: isolate the PRV if possible, install a temporary pressure gauge, and repair or replace the valve. PRVs should be inspected annually and tested for proper operation.",
-    steps: [
-      { l: "Step 1: Understand the PRV's Function", c: "A Pressure Reducing Valve (PRV) is designed to lower and maintain a constant downstream pressure, regardless of fluctuations in the higher upstream pressure. In this case, it should reduce 650 kPa to 350 kPa." },
-      { l: "Step 2: Analyze the Failure Mode", c: "The problem states the PRV is 'passing full upstream pressure downstream,' meaning the downstream pressure is 650 kPa instead of the set 350 kPa. This indicates the valve is failing in an 'open' position, allowing unrestricted flow." },
-      { l: "Step 3: Evaluate Potential Causes for Failing Open", c: "When a PRV fails open, it's typically due to something preventing the valve from closing or sealing properly. Common causes include debris obstructing the seat, a damaged or worn seat/disc, or a failure in the control mechanism (like a diaphragm or pilot valve)." },
-      { l: "Step 4: Identify the MOST Likely Cause", c: "While several issues can cause a PRV to fail open, debris on the seat is a very common and often sudden cause. It physically prevents the valve's sealing components from fully closing, leading to the full upstream pressure passing through." },
-    ],
     "difficulty": "medium",
-    tip: "When a question asks for the 'MOST likely cause' of a common equipment failure, consider the simplest and most frequent mechanical issues first.",
   },
   {
     "id": 253,
@@ -4662,14 +4099,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Vacuum-operated chlorinators work by: (1) Water flowing through an ejector creates a vacuum; (2) The vacuum draws chlorine gas from the cylinder through the chlorinator; (3) Chlorine dissolves in the ejector water and is injected into the process. If no chlorine flow: (1) Check ejector water supply — is the water flowing? Is the pressure adequate? (2) Check ejector for blockage or wear; (3) Check vacuum regulator; (4) Check cylinder valve is fully open; (5) Check for ice formation at the cylinder valve (rapid gas withdrawal can cause freezing). The vacuum system is a safety feature — if the vacuum is lost (ejector water fails), the chlorinator automatically closes, preventing chlorine release.",
-    steps: [
-      { l: "Step 1: Verify Ejector Water Flow", c: "The vacuum-operated chlorinator relies on water flowing through the ejector to create the necessary vacuum. The operator should first check if there is adequate water flow and pressure to the ejector." },
-      { l: "Step 2: Inspect Ejector for Blockage", c: "If water flow is present, the ejector itself might be blocked or worn, preventing it from creating a sufficient vacuum. A visual inspection or simple test can confirm this." },
-      { l: "Step 3: Confirm Cylinder Valve is Fully Open", c: "Although the question states the valve is opened, it's crucial to ensure it's fully open. A partially open valve can restrict flow, especially with vacuum systems." },
-      { l: "Step 4: Check for Ice Formation", c: "Rapid withdrawal of chlorine gas can cause the cylinder valve or regulator to freeze due to the Joule-Thomson effect. Check for ice formation, which would block gas flow." },
-    ],
     "difficulty": "medium",
-    tip: "Always prioritize checks that address the fundamental operating principle of the equipment, such as the vacuum source for a vacuum-operated chlorinator.",
   },
   {
     "id": 257,
@@ -4703,6 +4133,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 259,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Disinfection Calculations",
     "question": "A clearwell has a volume of 5,000 m³ and receives a flow of 50,000 m³/day. The chlorine residual entering the clearwell is 2.0 mg/L and exiting is 1.5 mg/L. What is the CT achieved in the clearwell?",
@@ -4736,14 +4167,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Amperometric chlorine analyzers: (1) A membrane-covered electrochemical cell contains a cathode (gold or platinum) and anode (silver/silver chloride); (2) Chlorine diffuses through the membrane and is reduced at the cathode: HOCl + H⁺ + 2e⁻ → Cl⁻ + H₂O; (3) The reduction current is proportional to the chlorine concentration; (4) The analyzer measures this current and converts it to a chlorine concentration. Advantages: continuous measurement, no reagents needed, fast response. Maintenance: membrane replacement (monthly), electrolyte replacement, electrode cleaning, calibration with DPD method. pH and temperature affect amperometric readings — compensation is required.",
-    steps: [
-      { l: "Step 1: Diffusion and Reduction", c: "Chlorine (HOCl) from the water sample diffuses through a selective membrane into an electrochemical cell, where it is reduced at the cathode (gold or platinum)." },
-      { l: "Step 2: Electron Flow", c: "This reduction reaction consumes electrons, creating an electrical current that flows between the cathode and the anode (silver/silver chloride)." },
-      { l: "Step 3: Current Measurement", c: "The analyzer measures the magnitude of this electrical current, which is directly proportional to the concentration of chlorine that diffused through the membrane." },
-      { l: "Step 4: Concentration Conversion", c: "Finally, the measured current is converted and displayed as a chlorine concentration reading." },
-    ],
     "difficulty": "hard",
-    tip: "Focus on understanding the core chemical reaction and how it generates a measurable electrical signal for amperometric questions.",
   },
   {
     "id": 261,
@@ -4803,14 +4227,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Recarbonation after lime softening: (1) Lime softening raises pH to 10–11 (for magnesium removal) or 9–10 (for calcium removal); (2) CO₂ is added to lower pH: Ca(OH)₂ + CO₂ → CaCO₃↓ + H₂O (first stage recarbonation — precipitates excess calcium); (3) Additional CO₂ lowers pH further: CaCO₃ + CO₂ + H₂O → Ca(HCO₃)₂ (second stage — dissolves CaCO₃ to form bicarbonate, stabilizing the water); (4) Final pH: 7.0–8.5 for distribution. Without recarbonation, the high-pH softened water would deposit CaCO₃ scale throughout the distribution system. Recarbonation also adds alkalinity (bicarbonate) for corrosion control.",
-    steps: [
-      { l: "Step 1: Understand the Initial Problem", c: "Lime softening, while effective for hardness removal, significantly increases the water's pH, often to 10-11.2, as stated in the question. This high pH is unstable and can cause problems in the distribution system." },
-      { l: "Step 2: Identify the Primary Issue with High pH Water", c: "Water with a high pH and high calcium concentration (even after softening) is supersaturated with calcium carbonate (CaCO₃). If left untreated, this CaCO₃ will precipitate out as scale in pipes, valves, and fixtures throughout the distribution system, reducing flow and causing operational issues." },
-      { l: "Step 3: Explain the Role of First-Stage Recarbonation", c: "The initial addition of CO₂ (first-stage recarbonation) reacts with the excess calcium hydroxide (Ca(OH)₂) to form insoluble calcium carbonate (CaCO₃), which then precipitates out. This helps to remove residual hardness and begins to lower the pH." },
-      { l: "Step 4: Explain the Role of Second-Stage Recarbonation and Stabilization", c: "Further addition of CO₂ (second-stage recarbonation) converts the precipitated CaCO₃ into soluble calcium bicarbonate (Ca(HCO₃)₂). This process lowers the pH to a more neutral range (7.0-8.5) and adds alkalinity, which is crucial for stabilizing the water and preventing corrosion in the distribution system." },
-    ],
     "difficulty": "hard",
-    tip: "Focus on the 'why' behind each treatment step, especially how it addresses a problem created by a previous step or prepares the water for distribution.",
   },
   {
     "id": 265,
@@ -4829,6 +4246,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 266,
+    isCalc: true,
     "module": "Laboratory Analysis",
     "topic": "Hardness Testing",
     "question": "A water sample has a calcium hardness of 120 mg/L as CaCO₃ and a total hardness of 180 mg/L as CaCO₃. What is the magnesium hardness and the magnesium concentration in mg/L as Mg?",
@@ -4877,15 +4295,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Hazen-Williams: hf ∝ 1/C^1.852. Ratio of head losses: hf(CI)/hf(HDPE) = (C_HDPE/C_CI)^1.852 = (150/80)^1.852 = (1.875)^1.852. Calculate: ln(1.875) = 0.629; 0.629 × 1.852 = 1.165; e^1.165 = 3.21. So the cast iron pipe has approximately 3.2× more head loss than the HDPE pipe. This means the pump must work significantly harder (more energy) to push the same flow through the old cast iron pipe. Pipe rehabilitation (lining) that improves C from 80 to 140 would reduce head loss by approximately (140/80)^1.852 = 2.7× — significant energy savings.",
-    steps: [
-      { l: "Understand the Relationship", c: "The Hazen-Williams formula shows that head loss (hf) is inversely proportional to the C-factor raised to the power of 1.852 (hf ∝ 1/C^1.852). This means a lower C-factor results in higher head loss." },
-      { l: "Set up the Ratio", c: "To compare the head loss, we can set up a ratio of the head loss in the cast iron pipe to the head loss in the HDPE pipe: hf(CI)/hf(HDPE) = (C_HDPE/C_CI)^1.852." },
-      { l: "Substitute Values", c: "Plug in the given C-factors: C_CI = 80 and C_HDPE = 150. The ratio becomes (150/80)^1.852." },
-      { l: "Calculate the Ratio", c: "First, calculate the inner ratio: 150/80 = 1.875. Then, raise this value to the power of 1.852: (1.875)^1.852 ≈ 3.21." },
-      { l: "Interpret the Result", c: "The result of approximately 3.21 means that the head loss in the 20-year-old unlined cast iron pipe is about 3.2 times greater than the head loss in the new HDPE pipe for the same flow and diameter." },
-    ],
     "difficulty": "hard",
-    tip: "Always pay close attention to inverse relationships in formulas, as they often indicate a significant impact on the outcome.",
   },
   {
     "id": 269,
@@ -4964,6 +4374,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 274,
+    isCalc: true,
     "module": "Laboratory Analysis",
     "topic": "Chlorine Demand Testing",
     "question": "A chlorine demand test is performed on a water sample. A chlorine dose of 3.0 mg/L is applied. After 30 minutes, the free chlorine residual is 0.8 mg/L. What is the chlorine demand?",
@@ -5012,14 +4423,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Low-alkalinity water (20 mg/L as CaCO₃) has insufficient buffering capacity to maintain pH during alum addition. Alum consumes alkalinity: Al₂(SO₄)₃ + 6H₂O → 2Al(OH)₃ + 3H₂SO₄. The H₂SO₄ lowers pH. At pH 5.8, alum hydrolysis is incomplete — Al³⁺ forms soluble species rather than Al(OH)₃ floc. Optimal alum coagulation pH: 6.0–7.5. Correction: (1) Add lime (Ca(OH)₂) or soda ash (Na₂CO₃) to raise pH and add alkalinity; (2) Target alkalinity of 30–50 mg/L as CaCO₃ after alum addition; (3) Alternatively, use ferric coagulant (effective at lower pH). Alkalinity supplementation is common for soft, low-alkalinity surface waters.",
-    steps: [
-      { l: "Analyze the Problem", c: "The source water has very low alkalinity (20 mg/L as CaCO₃), and adding alum has caused the pH to drop significantly to 5.8. This pH is below the optimal range for alum coagulation." },
-      { l: "Identify the Cause", c: "Alum consumes alkalinity during hydrolysis, producing acid (H₂SO₄). With insufficient initial alkalinity, the water's buffering capacity is overwhelmed, leading to a drastic pH drop." },
-      { l: "Determine the Impact", c: "At pH 5.8, alum coagulation will be inefficient because aluminum will remain in soluble forms (Al³⁺) instead of forming the desired insoluble aluminum hydroxide floc (Al(OH)₃). This will result in poor turbidity removal." },
-      { l: "Propose the Adjustment", c: "To correct this, alkalinity must be added to the water. This can be done by pre-dosing lime (Ca(OH)₂) or soda ash (Na₂CO₃) to raise the pH and provide sufficient buffering capacity, aiming for a post-alum alkalinity of 30-50 mg/L as CaCO₃ and an optimal pH range of 6.0-7.5." },
-    ],
     "difficulty": "hard",
-    tip: "Always consider the impact of coagulant addition on alkalinity and pH, especially with low-alkalinity source waters.",
   },
   {
     "id": 277,
@@ -5038,6 +4442,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 278,
+    isCalc: true,
     "module": "Laboratory Analysis",
     "topic": "Jar Test Calculations",
     "question": "A jar test uses 2 L jars. The optimal alum dose determined from the jar test is 35 mg/L. The plant treats 80,000 m³/day. What is the daily alum requirement in kg/day?",
@@ -5070,17 +4475,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Operating with a safety margin (0.1 NTU vs. 0.3 NTU limit) is good practice — it provides buffer for: (1) Source water quality deterioration (storm events, algal blooms); (2) Equipment problems (coagulant pump failure, filter media issues); (3) Operator error. Increasing the loading rate: (1) Reduces detention time in the filter; (2) Increases the velocity through the media; (3) May reduce particle removal efficiency; (4) Reduces the safety margin. Before increasing loading rate: (1) Conduct pilot testing; (2) Evaluate performance during worst-case source water conditions; (3) Ensure adequate monitoring; (4) Obtain MECP approval (may require DWWP amendment). Regulatory compliance is a minimum — operating well below limits is preferred.",
-    steps: [
-      { l: "Analyze Current Performance", c: "The plant consistently achieves 0.1 NTU, well below the 0.3 NTU regulatory limit, indicating a good safety margin." },
-      { l: "Identify Risks of Increased Loading Rate", c: "Increasing the filter loading rate reduces detention time and increases velocity, which can decrease particle removal efficiency and erode the existing safety margin." },
-      { l: "Evaluate Impact on Compliance and Safety", c: "A reduced safety margin makes the plant more vulnerable to source water changes, equipment failures, or operator errors, potentially leading to exceedances of the 0.3 NTU limit." },
-      { l: "Recommend Prudent Action", c: "Before increasing the loading rate, pilot testing and evaluation under worst-case conditions are crucial to ensure continued compliance and public health protection." },
-    ],
     "difficulty": "hard",
-    tip: "When evaluating operational changes, always consider the impact on regulatory compliance and the existing safety margin.",
   },
   {
     "id": 280,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Chemical Feed Calculations",
     "question": "A plant adds sodium fluoride (NaF) for fluoridation. The target fluoride addition is 0.7 mg/L F⁻. The plant flow is 15,000 m³/day. NaF has a molecular weight of 42 g/mol (Na = 23, F = 19). What is the NaF feed rate in kg/day?",
@@ -5128,14 +4527,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "At 0.072 mg/L (90% of the 0.08 mg/L MAC), the HAA5 concentration is approaching the limit. Proactive actions: (1) Increase monitoring frequency — more frequent sampling to track trends; (2) Investigate DBP formation factors — NOM concentration, chlorine dose, contact time, temperature, pH; (3) Evaluate reduction strategies — enhanced coagulation, moving chlorination point, reducing dose; (4) Notify MECP if the trend continues upward. HAAs are formed by chlorine reacting with NOM — similar to THMs but with different precursors and formation conditions. HAA5 includes: monochloroacetic acid, dichloroacetic acid, trichloroacetic acid, monobromoacetic acid, dibromoacetic acid.",
-    steps: [
-      { l: "Step 1: Assess Current Concentration", c: "The measured HAA5 concentration is 0.072 mg/L, which is 90% of the Ontario MAC of 0.08 mg/L. This indicates the plant is operating close to the regulatory limit." },
-      { l: "Step 2: Increase Monitoring and Investigate", c: "Increase the frequency of HAA5 monitoring to better track trends. Simultaneously, investigate factors contributing to DBP formation, such as natural organic matter (NOM) levels, chlorine dose, contact time, temperature, and pH." },
-      { l: "Step 3: Evaluate and Implement Reduction Strategies", c: "Evaluate potential strategies to reduce HAA5 formation, including enhanced coagulation, optimizing the point of chlorination, or reducing chlorine dose where feasible without compromising disinfection." },
-      { l: "Step 4: Prepare for Regulatory Notification", c: "If the upward trend in HAA5 concentrations continues or approaches the MAC, prepare to notify the Ministry of the Environment, Conservation and Parks (MECP) as required." },
-    ],
     "difficulty": "medium",
-    tip: "When a parameter is close to a regulatory limit, always consider proactive measures like increased monitoring and investigation before it becomes an exceedance.",
   },
   {
     "id": 283,
@@ -5150,14 +4542,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Transmembrane pressure (TMP) at constant flux: TMP = driving pressure required to maintain the set flux. Increasing TMP at constant flux indicates increasing resistance — membrane fouling: (1) Particulate fouling — particles accumulating on membrane surface (cake layer); (2) Organic fouling — NOM adsorbing onto membrane; (3) Biofouling — biofilm growth; (4) Scaling — mineral precipitation (calcium carbonate, silica). Response: (1) Increase backwash frequency; (2) Perform enhanced flux maintenance (EFM) with sodium hypochlorite; (3) If TMP continues to rise, perform CIP (Clean-In-Place) with acid (citric acid for scaling) or caustic (NaOH for organic fouling). TMP trending is the primary indicator of membrane condition.",
-    steps: [
-      { l: "Step 1: Understand the Relationship", c: "Recognize that an increase in Transmembrane Pressure (TMP) at a constant flux signifies increased resistance to water flow through the membrane." },
-      { l: "Step 2: Identify the Primary Cause", c: "Connect increased resistance directly to membrane fouling, which is the accumulation of materials on or within the membrane pores." },
-      { l: "Step 3: Evaluate Fouling Types", c: "Consider the various types of fouling: particulate, organic, biofouling, and scaling. Each type contributes to increased resistance." },
-      { l: "Step 4: Determine the MOST Likely Cause", c: "Given the options, membrane fouling is the overarching and most direct cause of increased TMP at constant flux, as it encompasses all the specific mechanisms leading to higher resistance." },
-    ],
     "difficulty": "hard",
-    tip: "Always link an increase in TMP at constant flux directly to membrane fouling as the primary cause, then consider specific fouling types.",
   },
   {
     "id": 284,
@@ -5172,13 +4557,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Alkalinity forms by pH range: pH < 8.3: Bicarbonate (HCO₃⁻) alkalinity only. pH = 8.3: Transition point — both HCO₃⁻ and CO₃²⁻ present (phenolphthalein endpoint). pH 8.3–9.5: Both bicarbonate and carbonate alkalinity. pH > 9.5: Carbonate and hydroxide (OH⁻) alkalinity. At pH 8.3, the sample is at the phenolphthalein endpoint — both forms are present but bicarbonate predominates. The alkalinity forms are determined by titration: P-alkalinity (phenolphthalein, pH 8.3 endpoint) and T-alkalinity (total, pH 4.5 endpoint). The relationship between P and T determines the alkalinity forms.",
-    steps: [
-      { l: "Step 1: Understand the pH and Alkalinity Relationship", c: "The question provides a pH of 8.3. This pH value is a critical transition point in alkalinity chemistry, specifically the phenolphthalein endpoint." },
-      { l: "Step 2: Recall Alkalinity Forms at pH 8.3", c: "At pH 8.3, both bicarbonate (HCO₃⁻) and carbonate (CO₃²⁻) alkalinity are present. This is the point where phenolphthalein indicator changes color during a titration." },
-      { l: "Step 3: Identify Predominant Form", c: "While both are present at pH 8.3, bicarbonate alkalinity is the predominant form. Carbonate alkalinity begins to become more significant as pH increases above 8.3." },
-    ],
     "difficulty": "hard",
-    tip: "Memorize the key pH ranges and their corresponding alkalinity forms, especially the transition points like pH 8.3 and 9.5.",
   },
   {
     "id": 285,
@@ -5208,14 +4587,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Schmutzdecke ('dirty skin' in German) is the biological layer that forms on slow sand filters: (1) Composition: bacteria, algae, protozoa, fungi, organic matter, and colloidal particles; (2) Function: biological predation and degradation of pathogens and organic compounds; (3) Develops over 2–4 weeks of operation (ripening period); (4) Provides: virus removal (>4-log), Giardia removal (>3-log), organic carbon removal, taste and odour removal. The schmutzdecke is the key treatment mechanism — slow sand filters must not be backwashed (this destroys the schmutzdecke). When the filter head loss becomes too high, the top 2–5 cm of sand is scraped off and replaced. The filter must re-ripen (2–4 weeks) after scraping.",
-    steps: [
-      { l: "Step 1: Identify the biological layer", c: "The biological layer that forms on top of a slow sand filter is called the Schmutzdecke, which means 'dirty skin' in German." },
-      { l: "Step 2: Describe the composition of the Schmutzdecke", c: "This layer is composed of a diverse community of microorganisms, including bacteria, algae, protozoa, and fungi, along with organic matter and colloidal particles." },
-      { l: "Step 3: Explain the primary function of the Schmutzdecke", c: "The main function of the Schmutzdecke is to provide biological predation and degradation of pathogens (like viruses and Giardia) and organic compounds present in the water." },
-      { l: "Step 4: Detail additional benefits of the Schmutzdecke", c: "Beyond pathogen removal, the Schmutzdecke also contributes to organic carbon removal and the reduction of taste and odor compounds, making it the key treatment mechanism in slow sand filtration." },
-    ],
     "difficulty": "medium",
-    tip: "When answering questions about specific water treatment components, always define the component and then explain its function and significance.",
   },
   {
     "id": 287,
@@ -5230,14 +4602,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Sludge accumulation in sedimentation basins: (1) Reduces effective depth — 0.5 m sludge in a 4.5 m basin reduces effective depth to 4.0 m; (2) Increases overflow rate — less volume means shorter detention time; (3) Septic sludge — accumulated sludge becomes anaerobic, producing H₂S and releasing settled particles back into the water (sludge bulking); (4) Reduces basin capacity; (5) Increases turbidity of settled water. Sludge removal: (1) Mechanical scrapers — continuously move sludge to a hopper; (2) Hydraulic removal — sludge pumps; (3) Manual cleaning — drain and hose down (most disruptive). Sludge blanket level should be monitored regularly using a sludge judge.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for the PRIMARY concern with excessive sludge accumulation in a sedimentation basin, given specific dimensions." },
-      { l: "Evaluate Given Information", c: "We are told the basin depth is 4.5 m and 0.5 m of sludge has accumulated. This immediately tells us the effective depth is reduced to 4.0 m." },
-      { l: "Consult Explanation for Concerns", c: "The provided explanation lists several concerns: reduced effective depth, increased overflow rate, septic sludge, reduced basin capacity, and increased turbidity. We need to identify the most significant 'PRIMARY' concern." },
-      { l: "Identify Primary Concern", c: "While reduced effective depth and capacity are direct consequences, the most critical operational and water quality issue arising from excessive, unremoved sludge is it becoming septic. Septic sludge releases H₂S and re-suspends settled particles, directly impacting effluent quality (turbidity) and potentially causing taste/odor problems, which is a primary concern for a water treatment operator." },
-    ],
     "difficulty": "medium",
-    tip: "When a question asks for the 'PRIMARY' concern, look for the issue that has the most direct and severe negative impact on water quality or treatment process efficiency.",
   },
   {
     "id": 288,
@@ -5252,13 +4617,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Ontario's target fluoride concentration is 0.7 mg/L (Health Canada's optimal level for dental health). At 0.62 mg/L, the system is slightly below the target — the dental health benefit is reduced but there is no health risk. Action: (1) Increase the fluoride feed rate to achieve 0.7 mg/L; (2) Verify the measurement with a repeat test; (3) Check the fluoride feed system for proper operation. The acceptable range is typically 0.6–0.8 mg/L. Above 1.5 mg/L (Ontario MAC), dental fluorosis risk increases. Fluoride monitoring frequency: daily for large systems. The SPADNS method is a colorimetric method — fluoride reacts with the SPADNS reagent to bleach the red colour, measured at 570 nm.",
-    steps: [
-      { l: "Step 1: Compare result to optimal range", c: "The measured fluoride concentration of 0.62 mg/L F⁻ is slightly below Ontario's optimal target of 0.7 mg/L, but still within the typical acceptable range of 0.6-0.8 mg/L." },
-      { l: "Step 2: Adjust fluoride feed rate", c: "To achieve the optimal target for dental health benefits, increase the fluoride feed rate slightly to bring the concentration closer to 0.7 mg/L." },
-      { l: "Step 3: Verify and monitor", c: "Conduct a repeat test to verify the measurement and continuously monitor the fluoride levels to ensure the system stabilizes at the desired concentration. Also, check the fluoride feed system for proper operation." },
-    ],
     "difficulty": "easy",
-    tip: "Always compare the measured value to the specified optimal and acceptable ranges, and consider both immediate corrective actions and verification steps.",
   },
   {
     "id": 289,
@@ -5288,14 +4647,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "UV transmittance (UVT) is the fraction of UV light that passes through 1 cm of water at 254 nm. Lower UVT means more UV is absorbed by the water matrix (NOM, iron, turbidity) before reaching pathogens. Impact of reduced UVT: (1) Less UV reaches pathogens — dose decreases; (2) The validated dose (40 mJ/cm²) was established at 95% UVT; (3) At 85% UVT, the actual dose is lower than validated. Response options: (1) Reduce flow rate — increases exposure time; (2) Increase lamp power (if variable output); (3) Take the system offline if dose cannot be maintained; (4) Investigate and address the cause of UVT reduction. UV systems must have online UVT monitoring and dose calculation to ensure compliance.",
-    steps: [
-      { l: "Understand the Relationship", c: "Recognize that a decrease in UV transmittance (UVT) directly leads to a decrease in the actual UV dose delivered, assuming all other parameters remain constant." },
-      { l: "Identify the Impact", c: "The validated dose of 40 mJ/cm² was achieved at 95% UVT. When the UVT drops to 85%, less UV light penetrates the water, meaning the delivered dose will be lower than the validated dose." },
-      { l: "Conclude the Outcome", c: "Therefore, the UV dose delivered to the water will be less than the validated 40 mJ/cm² due to the increased absorption of UV light by the water matrix." },
-      { l: "Consider Operational Responses", c: "To compensate for the reduced UVT and maintain the required dose, operational adjustments such as reducing flow rate, increasing lamp power, or taking the system offline might be necessary." },
-    ],
     "difficulty": "hard",
-    tip: "Always remember that lower UVT means less UV light reaches the pathogens, directly reducing the effective UV dose.",
   },
   {
     "id": 291,
@@ -5325,14 +4677,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Uniform turbidity across all doses suggests: (1) Wrong coagulant type — the coagulant may not be effective for the specific NOM or particle type; (2) pH outside effective range — alum is ineffective below pH 5.5 or above pH 8.5; (3) Insufficient mixing — rapid mix not adequate for coagulant dispersion; (4) Jar test procedure error — wrong mixing speed, wrong settling time. Investigation: (1) Check and adjust pH; (2) Test alternative coagulants (ferric sulfate, ferric chloride, polyaluminum chloride); (3) Test coagulant aids (cationic polymers); (4) Verify jar test procedure. Some source waters (very low turbidity, high NOM) are difficult to coagulate — bench testing with multiple coagulants is essential.",
-    steps: [
-      { l: "Analyze the Observation", c: "The key observation is uniform turbidity across all coagulant doses, indicating that the coagulation process was ineffective regardless of the amount of coagulant added." },
-      { l: "Evaluate Coagulant Effectiveness", c: "This suggests that the chosen coagulant might not be suitable for the specific water characteristics (e.g., type of natural organic matter or particles) or that the conditions for its effectiveness were not met." },
-      { l: "Consider pH Impact", c: "Many coagulants, like alum, have a narrow optimal pH range. If the water's pH is outside this range, the coagulant will not perform effectively, leading to poor coagulation." },
-      { l: "Assess Mixing and Procedure", c: "Inadequate rapid mixing can prevent proper dispersion of the coagulant, and errors in the jar test procedure (e.g., incorrect mixing speeds or settling times) can also lead to misleading results." },
-    ],
     "difficulty": "hard",
-    tip: "When a jar test yields unexpected or uniform results, always consider fundamental factors like coagulant suitability, pH, and proper procedure before concluding the water is uncoagulable.",
   },
   {
     "id": 293,
@@ -5362,17 +4707,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Chemical phosphorus removal: (1) Alum: Al³⁺ + PO₄³⁻ → AlPO₄↓; also forms Al(OH)₃ which adsorbs phosphate; (2) Ferric salts: Fe³⁺ + PO₄³⁻ → FePO₄↓; effective over a wide pH range; (3) Lime: Ca²⁺ + PO₄³⁻ → Ca₅(PO₄)₃OH↓ (hydroxyapatite); effective at high pH (>9.5). Chemical dose for phosphorus removal: typically 1–3 mol metal per mol phosphorus. Phosphorus removal is important for: (1) Preventing eutrophication in receiving waters; (2) Compliance with effluent limits; (3) Reducing algal growth in reservoirs. Biological phosphorus removal (EBPR) is used in wastewater treatment but not typically in drinking water treatment.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for the MOST effective chemical treatment for phosphorus removal in a water treatment plant to prevent algal growth." },
-      { l: "Review Chemical Options", c: "The provided explanation details three chemical options: Alum, Ferric salts, and Lime. Each has a specific mechanism and pH range for effectiveness." },
-      { l: "Evaluate Effectiveness", c: "Ferric salts are noted as 'effective over a wide pH range,' which implies broader applicability and consistent performance compared to lime (high pH only) or alum (which also forms Al(OH)3 but ferric salts are often preferred for direct phosphate precipitation across varying conditions)." },
-      { l: "Select Best Option", c: "Considering the need for effective and potentially robust removal, ferric salts are generally considered highly effective due to their wide pH operating range and strong precipitation capabilities." },
-    ],
     "difficulty": "medium",
-    tip: "When asked for the 'most effective' option, look for chemicals with broad applicability or superior performance characteristics mentioned in the context.",
   },
   {
     "id": 295,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Chemical Feed Pump Calibration",
     "question": "A chemical metering pump is calibrated by collecting the output over a timed period. The pump collects 245 mL in 2 minutes. The pump setting indicates 150 mL/min. What is the calibration error?",
@@ -5436,14 +4775,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Booster chlorination for distribution system residual management: (1) Chlorine is added at strategic points in the distribution system — typically at pump stations, pressure zone boundaries, or storage facilities; (2) Maintains residuals in remote areas without increasing the plant dose (which would increase DBPs near the plant); (3) Reduces water age effects — the additional chlorine compensates for decay over long travel times. Other strategies: (1) Flushing dead-end mains — removes old water; (2) Looping dead ends — eliminates stagnant areas; (3) Reducing storage tank turnover time — prevents water from sitting too long; (4) Pressure management — reduces leakage and improves turnover. Booster chlorination requires careful design to avoid DBP formation at the booster point.",
-    steps: [
-      { l: "Step 1: Implement Booster Chlorination", c: "Introduce chlorine at strategic points within the distribution system, such as pump stations or storage facilities, to replenish residuals in remote areas without significantly increasing the initial plant dose." },
-      { l: "Step 2: Optimize Distribution System Hydraulics", c: "Conduct targeted flushing of dead-end mains to remove aged water and consider looping dead ends to eliminate stagnant zones, improving water circulation and reducing water age." },
-      { l: "Step 3: Improve Storage Tank Management", c: "Reduce the turnover time in storage tanks to prevent water from sitting for extended periods, ensuring fresher water is consistently entering the distribution system." },
-      { l: "Step 4: Evaluate Pressure Management", c: "Assess and optimize pressure management throughout the system to reduce leakage, which can contribute to water age issues, and improve overall water turnover." },
-    ],
     "difficulty": "hard",
-    tip: "When answering questions about distribution system issues, consider both chemical (e.g., booster chlorination) and physical (e.g., flushing, looping) solutions.",
   },
   {
     "id": 299,
@@ -5488,14 +4820,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "PACl advantages over alum: (1) Effective at lower temperatures — alum coagulation is significantly impaired below 5°C; PACl performs better in cold water; (2) Wider pH range — effective from pH 5.5–8.5; (3) Less alkalinity consumption — PACl is pre-hydrolyzed, consuming less alkalinity than alum; (4) Less sludge production — higher charge density means lower dose required; (5) Better performance at low turbidity. PACl disadvantages: (1) Higher cost per kg; (2) More complex chemistry; (3) Requires proper storage (can freeze). PACl is particularly valuable for Ontario plants treating cold source water in winter — a common challenge where alum performance deteriorates.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for the PRIMARY advantage of PACl over alum. This means we need to identify the most significant benefit among the listed advantages." },
-      { l: "Review PACl Advantages", c: "Recall or refer to the provided advantages of PACl: effectiveness at lower temperatures, wider pH range, less alkalinity consumption, less sludge production, and better performance at low turbidity." },
-      { l: "Identify the 'Primary' Advantage", c: "While all listed points are advantages, the explanation specifically highlights PACl's value for 'Ontario plants treating cold source water in winter' where 'alum performance deteriorates.' This strongly suggests that effectiveness at lower temperatures is often the most critical differentiator and primary advantage in practical scenarios, especially in regions with cold climates." },
-      { l: "Formulate the Answer", c: "The primary advantage of PACl over alum is its effectiveness at lower temperatures, as alum's performance significantly declines below 5°C." },
-    ],
     "difficulty": "hard",
-    tip: "When a question asks for the 'primary' advantage, look for the benefit that addresses a common or significant operational challenge that the alternative chemical resolves.",
   },
   {
     "id": 302,
@@ -5514,6 +4839,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 303,
+    isCalc: true,
     "module": "Laboratory Analysis",
     "topic": "TOC Analysis",
     "question": "A TOC (Total Organic Carbon) analyzer uses high-temperature combustion. A water sample has a TOC of 4.5 mg/L and a DOC (Dissolved Organic Carbon) of 4.1 mg/L. What is the POC (Particulate Organic Carbon)?",
@@ -5563,14 +4889,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "The 'swimming pool' or 'chlorinous' taste/odour is typically caused by chloramines (combined chlorine), not free chlorine: (1) Chloramines (monochloramine, dichloramine, trichloramine) are formed when chlorine reacts with ammonia or organic nitrogen; (2) Trichloramine (NCl₃) has an extremely low odour threshold (~0.02 mg/L) and produces the characteristic 'swimming pool' smell; (3) Trichloramine forms at low pH and high chlorine-to-ammonia ratios; (4) Free chlorine at 0.8 mg/L is not typically objectionable. Investigation: (1) Measure combined chlorine (total - free); (2) Check for ammonia in source water; (3) Check pH; (4) Evaluate breakpoint chlorination. Breakpoint chlorination (adding enough chlorine to destroy all ammonia) can eliminate chloramine taste/odour.",
-    steps: [
-      { l: "Step 1: Understand the Complaint", c: "The complaint is a 'chlorinous' or 'swimming pool' taste/odor, which is a classic indicator of combined chlorine compounds, specifically trichloramine." },
-      { l: "Step 2: Evaluate Free Chlorine Residual", c: "The free chlorine residual of 0.8 mg/L is within the normal range and typically does not cause objectionable taste/odor on its own." },
-      { l: "Step 3: Identify the Likely Culprit", c: "Combined chlorine (chloramines), particularly trichloramine, is the most likely cause of the 'swimming pool' taste/odor, even with a normal free chlorine residual." },
-      { l: "Step 4: Consider Formation Conditions", c: "Chloramines form when chlorine reacts with ammonia or organic nitrogen. Trichloramine, the primary taste/odor culprit, forms at low pH and high chlorine-to-ammonia ratios." },
-    ],
     "difficulty": "hard",
-    tip: "When taste and odor complaints mention 'swimming pool' or 'chlorinous' with normal free chlorine, always suspect combined chlorine (chloramines).",
   },
   {
     "id": 306,
@@ -5600,14 +4919,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "pH effect on alum coagulation: (1) Optimal pH for alum coagulation: 6.0–7.5; (2) At lower pH (6.0–6.5): charge neutralization mechanism dominates — effective for NOM removal; (3) At higher pH (7.0–7.5): sweep floc mechanism dominates — effective for turbidity removal; (4) The optimal pH depends on the source water NOM character. Trade-offs of operating at pH 6.5: (1) Better coagulation — lower turbidity and NOM; (2) More corrosive water — lower LSI; (3) More HOCl (better disinfection); (4) May require pH adjustment before distribution. The operator must optimize the balance between coagulation efficiency, corrosion control, and DBP formation. Jar tests at multiple pH values identify the optimal operating range.",
-    steps: [
-      { l: "Analyze the Jar Test Results", c: "The jar test shows that at pH 6.5, floc formation is better and settled turbidity is lower compared to pH 7.5 with the same alum dose. This indicates that pH 6.5 is more effective for coagulation under these specific conditions." },
-      { l: "Relate to Alum Coagulation Mechanisms", c: "According to the provided explanation, at lower pH (6.0–6.5), charge neutralization is the dominant mechanism for alum coagulation, which is effective for NOM removal. While the question doesn't explicitly mention NOM, better floc and lower turbidity suggest improved overall coagulation efficiency." },
-      { l: "Identify the Optimal pH Range", c: "The results suggest that for this specific source water and alum dose, the optimal pH for coagulation is closer to 6.5, falling within the 6.0-7.5 optimal range for alum." },
-      { l: "Consider Operational Implications", c: "Operating at pH 6.5 would likely lead to better coagulation, resulting in lower turbidity and potentially better NOM removal. However, it also means the treated water would be more corrosive and might require post-treatment pH adjustment before distribution." },
-    ],
     "difficulty": "hard",
-    tip: "Always connect jar test results to the underlying chemical principles and operational trade-offs described in the problem statement.",
   },
   {
     "id": 308,
@@ -5626,6 +4938,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 309,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Corrosion Control",
     "question": "A water utility is implementing orthophosphate treatment for lead corrosion control. The target orthophosphate residual in the distribution system is 1.0 mg/L as PO₄. The plant flow is 25,000 m³/day. What is the daily phosphoric acid (H₃PO₄, 85% solution, density 1.69 kg/L) requirement in litres per day?",
@@ -5689,17 +5002,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "A free chlorine residual below the minimum (0.2 mg/L) is an adverse condition requiring immediate action: (1) Investigate the cause — check plant chlorine dose, check for main breaks, check for unusual demand; (2) Increase chlorine dose at the plant or booster station; (3) Collect additional samples from the affected area; (4) Document the event in the operating log; (5) Notify supervisor; (6) If residual cannot be restored, consult with MOH about BWA. The minimum residual requirement is a regulatory floor — operating below it is a compliance violation. A single low reading requires investigation; a pattern of low readings requires a systematic solution (booster chlorination, pipe rehabilitation, system looping).",
-    steps: [
-      { l: "Step 1: Investigate the Cause", c: "Immediately investigate potential causes for the low chlorine residual, such as plant chlorine dose, main breaks, or unusual water demand in the area." },
-      { l: "Step 2: Increase Chlorine Dose", c: "Increase the chlorine dose at the treatment plant or a booster station to restore the residual above the minimum requirement." },
-      { l: "Step 3: Collect Additional Samples", c: "Collect additional samples from the affected area to confirm the residual has been restored and to identify the extent of the problem." },
-      { l: "Step 4: Document and Notify", c: "Document the event thoroughly in the operating log and immediately notify your supervisor about the adverse condition and actions taken." },
-    ],
     "difficulty": "medium",
-    tip: "When a question describes a regulatory violation, your answer should always prioritize immediate corrective action, investigation, and proper documentation.",
   },
   {
     "id": 313,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Sedimentation Basin Design",
     "question": "A rectangular sedimentation basin is 50 m long, 10 m wide, and 4 m deep. The plant flow is 20,000 m³/day. What is the surface overflow rate (SOR) in m/h?",
@@ -5733,14 +5040,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Pump-system curve interaction: (1) The operating point is where the pump curve intersects the system curve; (2) Partially closing a valve increases system resistance — the system curve shifts upward; (3) The new intersection point is at higher head and lower flow; (4) The pump 'rides up' its curve to a higher head point. This is how flow control valves work — they add resistance to reduce flow. However, throttling is energy-inefficient — the pump is still doing work against the valve. VFDs are more efficient — they reduce pump speed to reduce flow, moving down the pump curve rather than up. Pump efficiency at the new operating point should be checked — operating far from BEP reduces efficiency and increases wear.",
-    steps: [
-      { l: "Identify Initial Operating Point", c: "The initial operating point is where the pump curve intersects the original system curve. Given the system curve shows 30 m head at 500 L/s, and the pump curve shows 500 L/s at 30 m head, the initial operating point is 500 L/s at 30 m head." },
-      { l: "Analyze Valve Closure Impact", c: "Partially closing a valve increases the system's resistance to flow. This causes the system curve to shift upwards, meaning a higher head is required to achieve any given flow rate." },
-      { l: "Determine New Operating Point Characteristics", c: "With the system curve shifted upwards, the pump must now operate against a higher resistance. The pump will 'ride up' its characteristic curve to find a new intersection point with the shifted system curve." },
-      { l: "Conclude Operating Point Change", c: "The new operating point will be at a higher head and a lower flow rate compared to the initial operating point. The pump curve indicates that as head increases, flow decreases (e.g., 30m at 500 L/s vs. 40m at 400 L/s)." },
-    ],
     "difficulty": "hard",
-    tip: "Always visualize the pump and system curves when analyzing changes in operating conditions to quickly determine the impact on flow and head.",
   },
   {
     "id": 315,
@@ -5800,13 +5100,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Alum concentration variation: (1) Alum is typically supplied at 48–50% concentration; (2) A 48% vs. 50% difference means the 48% alum contains 4% less active ingredient per litre; (3) To maintain the same dose, the pump rate must be increased by 50/48 = 1.042 (4.2% increase); (4) Update the chemical feed calculations and pump settings; (5) Document the concentration change in the operating log. Operators must always verify chemical concentrations upon delivery — variations affect dosing accuracy. Chemical suppliers should provide a Certificate of Analysis (COA) with each delivery confirming the concentration. Accepting a lower concentration without adjusting the pump would result in under-dosing.",
-    steps: [
-      { l: "Step 1: Verify Concentration", c: "The operator should first verify the reported 48% alum concentration using a Certificate of Analysis (COA) from the supplier or by performing an in-house test." },
-      { l: "Step 2: Adjust Dosing Calculations", c: "Since 48% alum contains less active ingredient than 50% alum, the operator must adjust the chemical feed calculations to account for this difference. The pump rate will need to be increased by approximately 4.2% (50/48 = 1.042) to maintain the same active alum dose." },
-      { l: "Step 3: Update Pump Settings and Document", c: "The operator must then adjust the chemical feed pump settings according to the new calculations and document the concentration change and pump adjustments in the operating log for accurate record-keeping and future reference." },
-    ],
     "difficulty": "medium",
-    tip: "Always verify chemical concentrations upon delivery and adjust dosing rates accordingly to prevent under-dosing or over-dosing.",
   },
   {
     "id": 319,
@@ -5840,6 +5134,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 321,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Sludge Thickening",
     "question": "A WTP produces sludge at 0.5% solids concentration. The sludge is thickened to 3% solids. By what factor is the sludge volume reduced?",
@@ -5888,14 +5183,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "HPC (Heterotrophic Plate Count) significance: (1) HPC measures the general bacterial population — not specific pathogens; (2) High HPC indicates bacterial regrowth in the distribution system; (3) Causes: inadequate chlorine residual, high AOC/BDOC (food for bacteria), biofilm, high water age, warm temperatures; (4) Health significance: HPC bacteria are generally not pathogens — elevated HPC alone does not indicate a health risk; (5) However, high HPC can: interfere with coliform testing, indicate conditions favorable for pathogen growth, indicate biofilm problems. Investigation: check chlorine residual, check water age, check for biofilm, analyze AOC/BDOC. Corrective actions: increase chlorine dose, flush mains, clean storage tanks.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks what an elevated HPC indicates, given a sample result of 850 CFU/mL against a guideline of 500 CFU/mL." },
-      { l: "Define HPC Significance", c: "HPC measures the general bacterial population and an elevated count, like 850 CFU/mL, indicates bacterial regrowth in the distribution system, exceeding the guideline." },
-      { l: "Identify Potential Causes", c: "Elevated HPC suggests issues such as inadequate chlorine residual, high levels of organic carbon (AOC/BDOC) providing food for bacteria, biofilm formation, high water age, or warm temperatures." },
-      { l: "Determine Implications", c: "While HPC bacteria are generally not pathogens and elevated HPC alone doesn't directly indicate a health risk, it can interfere with coliform testing, signal conditions favorable for pathogen growth, and indicate biofilm problems within the distribution system." },
-    ],
     "difficulty": "medium",
-    tip: "When answering questions about water quality parameters, always connect the parameter's definition to its operational implications and potential causes.",
   },
   {
     "id": 324,
@@ -5944,6 +5232,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 327,
+    isCalc: true,
     "module": "Laboratory Analysis",
     "topic": "Jar Test Calculations",
     "question": "A jar test uses 2 L jars. The optimal polymer dose is determined to be 0.5 mg/L. The plant treats 50,000 m³/day. What is the daily polymer requirement in kg/day?",
@@ -5992,14 +5281,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "CO₂ and pH relationship: CO₂ + H₂O ⇌ H₂CO₃ ⇌ H⁺ + HCO₃⁻. Removing CO₂ drives the equilibrium to the left — reducing H⁺ concentration and raising pH. The pH change depends on the alkalinity (buffering capacity): (1) At pH 6.2 with 45 mg/L CO₂: the carbonate system is dominated by CO₂ and H₂CO₃; (2) Removing CO₂ to 5 mg/L significantly reduces the acid load; (3) pH rises to approximately 7.5–8.0 depending on alkalinity. Aeration for CO₂ removal is used to: (1) Raise pH before treatment; (2) Reduce corrosivity; (3) Reduce chemical costs for pH adjustment. CO₂ removal by aeration is very effective — CO₂ is a dissolved gas that readily transfers to the air phase.",
-    steps: [
-      { l: "Step 1: Understand the relationship between CO2 and pH", c: "The provided explanation clearly states that removing CO2 drives the equilibrium to the left, reducing H+ concentration and raising pH. This is the fundamental principle at play." },
-      { l: "Step 2: Analyze the initial conditions", c: "We start with a pH of 6.2 and a high CO2 concentration of 45 mg/L. At this pH, the carbonate system is dominated by CO2 and carbonic acid (H2CO3), indicating an acidic condition due to dissolved CO2." },
-      { l: "Step 3: Evaluate the effect of CO2 removal", c: "Aeration significantly reduces the CO2 from 45 mg/L to 5 mg/L. This substantial reduction in the acidic component will cause a significant increase in pH." },
-      { l: "Step 4: Estimate the final pH range", c: "Based on the explanation, removing CO2 from 45 mg/L to 5 mg/L will cause the pH to rise to approximately 7.5–8.0. This range reflects a typical outcome for effective CO2 stripping in water treatment." },
-    ],
     "difficulty": "hard",
-    tip: "When a question provides an explanation, use it to guide your reasoning and identify key relationships between parameters.",
   },
   {
     "id": 330,
@@ -6014,14 +5296,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "New water main disinfection (AWWA C651): (1) Flush to remove debris and construction materials; (2) Fill with chlorinated water — minimum 25 mg/L free chlorine (tablet, liquid, or gas); (3) Contact time — minimum 24 hours; (4) Verify chlorine residual after 24 hours — must be ≥ 10 mg/L; (5) Flush with potable water until chlorine residual matches the distribution system; (6) Bacteriological testing — collect samples and confirm absence of coliforms before connecting to the system. This disinfection procedure kills any bacteria, biofilm, or pathogens introduced during construction. Failure to properly disinfect new mains can introduce contamination to the distribution system.",
-    steps: [
-      { l: "Step 1: Flush the main", c: "Thoroughly flush the new water main to remove any debris or construction materials that may have accumulated during installation." },
-      { l: "Step 2: Disinfect with chlorinated water", c: "Fill the main with water containing a minimum of 25 mg/L free chlorine and allow it to sit for at least 24 hours." },
-      { l: "Step 3: Verify chlorine residual", c: "After 24 hours, confirm that the chlorine residual is at least 10 mg/L. If not, repeat the disinfection process." },
-      { l: "Step 4: Flush and sample", c: "Flush the main with potable water until the chlorine residual matches the existing distribution system, then collect bacteriological samples to confirm the absence of coliforms." },
-    ],
     "difficulty": "medium",
-    tip: "Memorize the key disinfection parameters like chlorine concentration and contact time for new mains.",
   },
   {
     "id": 331,
@@ -6036,14 +5311,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Consistently low chlorine residuals in one pressure zone indicate: (1) High water age — water travels longer distances or sits in storage longer before reaching sampling points; (2) High chlorine demand — elevated NOM, iron, or biofilm in that zone; (3) Dead-end mains — stagnant water in dead ends depletes chlorine; (4) Large storage tanks with poor turnover — water sits in the tank, losing residual. Investigation: (1) Map the pressure zone and identify dead ends and storage; (2) Measure water age (tracer studies); (3) Check storage tank turnover time; (4) Measure HPC and biofilm indicators; (5) Check for iron or manganese in that zone. Solutions: loop dead ends, install booster chlorination, improve storage tank turnover, flush regularly.",
-    steps: [
-      { l: "Analyze the Problem", c: "The core issue is consistently low chlorine residuals in a specific pressure zone, implying a localized problem rather than a system-wide chlorination failure." },
-      { l: "Evaluate Potential Causes", c: "Consider factors that deplete chlorine: high water age (long travel times, poor storage turnover), high chlorine demand (organic matter, metals, biofilm), or stagnant areas (dead-end mains)." },
-      { l: "Prioritize Likely Scenarios", c: "Given the options, high water age and increased chlorine demand due to stagnant conditions or contaminants are the most common culprits for localized residual drops." },
-      { l: "Identify the MOST Likely Cause", c: "While multiple factors can contribute, the combination of high water age, increased demand from biofilm/stagnation, and dead-end mains often go hand-in-hand in a specific pressure zone, making them the most probable primary causes." },
-    ],
     "difficulty": "medium",
-    tip: "When a question asks for the 'MOST likely' cause, think about the most common operational issues that lead to the described symptom in a specific area.",
   },
   {
     "id": 332,
@@ -6062,6 +5330,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 333,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Chlorination Calculations",
     "question": "A plant needs to achieve a CT of 150 mg·min/L for Giardia inactivation at 10°C. The clearwell T10 is 60 minutes. What minimum chlorine residual must be maintained at the clearwell outlet?",
@@ -6111,14 +5380,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Yellow tint in settled water after coagulation indicates residual dissolved NOM (humic and fulvic acids): (1) Turbidity removal (particle removal) and colour removal (NOM removal) are separate processes; (2) A coagulant may be effective at particle removal but less effective at NOM removal; (3) NOM removal requires: adequate coagulant dose, optimal pH (lower pH for enhanced coagulation), and sufficient mixing. Evaluation should include: turbidity, colour, UV254, DOC, and TOC measurements. The yellow tint could also be: (1) Residual iron from ferric coagulant (if switching to ferric); (2) Insufficient coagulant dose; (3) pH outside optimal range. Enhanced coagulation (lower pH, higher dose) typically improves NOM removal.",
-    steps: [
-      { l: "Step 1: Analyze the Problem", c: "The core issue is improved turbidity removal but a persistent yellow tint in the settled water after coagulation. This suggests that the new coagulant is effective at removing suspended solids but not necessarily dissolved organic matter." },
-      { l: "Step 2: Identify Potential Causes of Yellow Tint", c: "A yellow tint in water is most commonly associated with residual Natural Organic Matter (NOM), specifically humic and fulvic acids. Other possibilities include residual iron from ferric coagulants or an insufficient coagulant dose/suboptimal pH." },
-      { l: "Step 3: Evaluate Coagulant Effectiveness for NOM", c: "While the coagulant effectively removes turbidity, it may not be optimized for NOM removal. NOM removal often requires different conditions, such as a lower pH (enhanced coagulation) or a higher coagulant dose, compared to turbidity removal alone." },
-      { l: "Step 4: Conclude Most Likely Cause", c: "Given the improved turbidity removal, the most likely cause of the yellow tint is residual dissolved NOM that the new coagulant, under the tested conditions, is not effectively removing. This indicates a need to optimize the coagulation process specifically for NOM removal." },
-    ],
     "difficulty": "hard",
-    tip: "When a question presents conflicting results (e.g., good turbidity but poor color), focus on the specific parameters that address the remaining issue, like NOM for color.",
   },
   {
     "id": 336,
@@ -6197,6 +5459,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 341,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Hydraulic Calculations",
     "question": "A pump delivers water through a 500 m pipeline with 15 m of head loss. The pump adds 25 m of head. The static head (elevation difference) is 8 m. What is the net head available for flow?",
@@ -6230,14 +5493,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Belt filter press belt blinding causes: (1) Insufficient polymer — inadequate conditioning releases fine particles that penetrate and clog the belt pores; (2) Wrong polymer type — the polymer must match the sludge characteristics; (3) Polymer mixing — inadequate mixing of polymer with sludge; (4) Belt wash water pressure — insufficient pressure fails to clean the belt between cycles. Solutions: (1) Increase polymer dose; (2) Test alternative polymers (jar test for dewatering); (3) Improve polymer dilution and mixing; (4) Increase belt wash water pressure; (5) Reduce feed rate. Belt filter press performance indicators: cake solids content (target 18–25%), filtrate quality (turbidity), and throughput (kg dry solids/m belt width/hour).",
-    steps: [
-      { l: "Analyze the Problem", c: "The core problem is rapid belt blinding, which reduces throughput. This indicates an issue with the sludge conditioning or the belt cleaning process." },
-      { l: "Evaluate Polymer Effectiveness", c: "Insufficient polymer dose, the wrong polymer type, or inadequate polymer mixing are common causes of poor sludge conditioning, leading to fine particles blinding the belt. This is often the first area to investigate." },
-      { l: "Check Belt Washing System", c: "If the belt isn't being properly cleaned between cycles, residual solids will accumulate and cause blinding. Insufficient belt wash water pressure is a direct cause of this." },
-      { l: "Identify MOST Likely Cause", c: "Given the options, issues with polymer (insufficient dose, wrong type, or poor mixing) are the most frequent culprits for rapid blinding as they directly impact the sludge's ability to release water and form a stable cake." },
-    ],
     "difficulty": "hard",
-    tip: "When troubleshooting operational issues, always consider the most common and direct causes first, especially those related to chemical conditioning in dewatering processes.",
   },
   {
     "id": 343,
@@ -6286,6 +5542,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 346,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Pump Station Wet Well",
     "question": "A pump station wet well is designed with a minimum wet well volume of 10 minutes of pump capacity. The pump capacity is 200 L/s. What is the minimum wet well volume?",
@@ -6353,6 +5610,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 350,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Pump Efficiency",
     "question": "A pump delivers 300 L/s at 25 m head. The motor input power is 120 kW. What is the overall pump-motor efficiency?",
@@ -6385,14 +5643,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Highly coloured, low-turbidity source water characteristics: (1) NOM (humic and fulvic acids) dominates — these are negatively charged, dissolved organic molecules; (2) Low turbidity means few particles to form floc — sweep floc mechanism is less effective; (3) Charge neutralization at lower pH is the most effective mechanism. Enhanced coagulation for NOM removal: (1) Lower pH (5.5–6.5) — protonates humic acids, reducing their charge; improves coagulant efficiency; (2) Higher coagulant dose — more Al³⁺ or Fe³⁺ for charge neutralization; (3) Cationic polymer addition — bridges between NOM molecules; (4) Results: improved colour removal, reduced DBP precursors. This is why enhanced coagulation is required by USEPA for high-NOM surface waters.",
-    steps: [
-      { l: "Analyze Source Water Characteristics", c: "The source water is highly colored (80 TCU) and low in turbidity (1.5 NTU). This indicates a high concentration of dissolved organic matter (NOM), primarily humic and fulvic acids, which are negatively charged." },
-      { l: "Evaluate Coagulation Mechanisms", c: "Given the low turbidity, sweep floc coagulation (where coagulants entrap suspended particles) will be less effective due to the lack of particles. The primary challenge is neutralizing the negative charge of the dissolved NOM." },
-      { l: "Identify Most Appropriate Mechanism", c: "Charge neutralization is the most appropriate mechanism for highly colored, low-turbidity water. This involves adding positively charged coagulants (like aluminum or iron salts) to destabilize the negatively charged NOM." },
-      { l: "Consider Enhanced Coagulation Principles", c: "To optimize charge neutralization for NOM removal, enhanced coagulation strategies are often employed. This typically involves operating at a lower pH (5.5-6.5) to protonate humic acids and increase coagulant efficiency, along with a higher coagulant dose." },
-    ],
     "difficulty": "hard",
-    tip: "When dealing with highly colored, low-turbidity water, always prioritize charge neutralization and consider enhanced coagulation techniques.",
   },
   {
     "id": 352,
@@ -6407,14 +5658,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Chemical storage compatibility: (1) Sodium hypochlorite (NaOCl) is a strong oxidizer; (2) Ferric chloride (FeCl₃) is a strong acid; (3) Mixing an oxidizer with an acid can release chlorine gas (Cl₂): NaOCl + HCl → NaCl + HOCl → Cl₂ + H₂O; (4) Chlorine gas is toxic (IDLH = 10 ppm). Safety requirements: (1) Separate storage areas with physical barriers; (2) Secondary containment for each chemical; (3) Incompatible chemicals must not share containment; (4) Spill response procedures for each chemical; (5) WHMIS/SDS review for all chemicals. Chemical compatibility charts must be consulted when designing storage areas. Incompatible chemicals stored together are a serious safety hazard.",
-    steps: [
-      { l: "Identify the chemicals and their properties", c: "Sodium hypochlorite is a strong oxidizer. Ferric chloride is a strong acid." },
-      { l: "Understand the reaction between the chemicals", c: "Mixing a strong oxidizer (sodium hypochlorite) with a strong acid (ferric chloride) can lead to a chemical reaction." },
-      { l: "Determine the product of the reaction", c: "The reaction between sodium hypochlorite and ferric chloride can produce highly toxic chlorine gas." },
-      { l: "Identify the primary safety concern", c: "The release of toxic chlorine gas is the primary safety concern due to its immediate danger to life and health (IDLH)." },
-    ],
     "difficulty": "hard",
-    tip: "Always identify the chemical properties and potential reactions when evaluating storage compatibility questions.",
   },
   {
     "id": 353,
@@ -6429,14 +5673,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Nitrite in distribution systems using chloramination: (1) Chloramines decay: NH₂Cl → NH₃ + Cl₂; (2) Released ammonia is oxidized by nitrifying bacteria: NH₃ → NO₂⁻ (Nitrosomonas) → NO₃⁻ (Nitrobacter); (3) Nitrite accumulation indicates active nitrification; (4) Nitrification depletes chloramine residuals, increases HPC, and can cause taste/odour complaints. Response to nitrification: (1) Increase chloramine residual; (2) Flush affected areas; (3) Breakpoint chlorinate (free chlorine) to kill nitrifying bacteria; (4) Investigate the cause — high water age, warm temperatures, biofilm. Nitrification is a significant operational challenge for chloraminated systems, particularly in summer.",
-    steps: [
-      { l: "Analyze the Question", c: "The question states a positive nitrite test (0.5 mg/L as N) in a distribution system, which is below the MAC of 1.0 mg/L as N. The key is to understand what the presence of nitrite signifies, not just the concentration relative to the MAC." },
-      { l: "Recall Nitrification Process", c: "Remember that nitrite (NO₂⁻) is an intermediate product in the nitrification process, where ammonia (NH₃) is oxidized by nitrifying bacteria (specifically Nitrosomonas) to nitrite, and then further to nitrate (NO₃⁻) by Nitrobacter." },
-      { l: "Connect Nitrite to Chloramination", c: "In chloraminated systems, the decay of chloramines releases ammonia, which then becomes a substrate for nitrifying bacteria. The presence of nitrite, even below the MAC, is a strong indicator that nitrification is occurring." },
-      { l: "Identify Implications of Nitrification", c: "Nitrification is an undesirable process in distribution systems as it consumes chloramine residuals, can lead to increased heterotrophic plate count (HPC), and may cause taste and odor issues. Therefore, the presence of nitrite indicates active nitrification." },
-    ],
     "difficulty": "hard",
-    tip: "Always consider the operational implications of a water quality parameter, not just its compliance with regulatory limits.",
   },
   {
     "id": 354,
@@ -6481,17 +5718,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Online pH meter vs. grab sample discrepancy: (1) 0.5 pH unit difference is significant — requires investigation; (2) Online electrode fouling — calcium carbonate, biological fouling, or chemical coating on the glass electrode or reference junction; (3) Reference electrode drift — the reference electrode can drift over time, causing systematic errors; (4) Temperature compensation error — pH is temperature-dependent; if temperature compensation is incorrect, readings will be off; (5) Calibration drift — electrodes drift between calibrations. Troubleshooting: (1) Clean the electrode; (2) Recalibrate with fresh buffers; (3) Verify temperature compensation; (4) Compare with a third measurement (portable meter). Online pH meters require more frequent maintenance than bench meters due to continuous exposure to the process water.",
-    steps: [
-      { l: "Step 1", c: "Identify the significance of the discrepancy. A 0.5 pH unit difference is substantial and indicates a problem with the online meter's accuracy, requiring immediate investigation." },
-      { l: "Step 2", c: "Consider common issues with online pH meters. Online electrodes are continuously exposed to process water, making them prone to fouling (e.g., calcium carbonate, biological growth) or chemical coating, which directly impacts their ability to read accurately." },
-      { l: "Step 3", c: "Evaluate other potential causes. Reference electrode drift, incorrect temperature compensation, or calibration drift are also common reasons for online pH meter inaccuracies, especially when compared to a freshly calibrated bench meter." },
-      { l: "Step 4", c: "Determine the MOST likely cause. Given the continuous exposure and the nature of pH electrodes, fouling of the online electrode is the most frequent and probable cause for a consistent offset like 0.5 pH units lower." },
-    ],
     "difficulty": "medium",
-    tip: "When troubleshooting instrument discrepancies, always consider the most common and easily rectifiable issues first, especially those related to continuous exposure and maintenance.",
   },
   {
     "id": 357,
+    isCalc: true,
     "module": "Laboratory Analysis",
     "topic": "Bench-Scale Testing",
     "question": "A plant is evaluating the effectiveness of ozone for colour removal. The source water has a colour of 60 TCU. After ozone treatment at 3 mg/L, the colour drops to 15 TCU. What is the colour removal efficiency?",
@@ -6529,6 +5760,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 359,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Disinfection",
     "question": "A plant is designing a chlorination system for a new water treatment plant. The design CT requirement for Giardia inactivation at 5°C is 165 mg·min/L. The clearwell volume is 8,000 m³ and the T10/T ratio is 0.5. The plant flow is 40,000 m³/day. What minimum chlorine residual is required at the clearwell outlet?",
@@ -6577,14 +5809,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Collimated beam testing provides the dose-response relationship (log inactivation vs. UV dose) for the target organism. However, full-scale UV system validation is still required because: (1) Hydraulic efficiency — the full-scale system has non-ideal flow (not all water receives the same dose); (2) Lamp aging — UV output decreases over time; (3) UVT variation — the validated dose must be demonstrated at the minimum UVT; (4) Fouling — lamp sleeve fouling reduces UV output. Validation protocol (USEPA UV Disinfection Guidance Manual): (1) Biodosimetry testing — measure inactivation of a surrogate organism in the full-scale system; (2) Develop a dose-response curve; (3) Establish the UV dose delivered at various operating conditions. The full-scale system must demonstrate it delivers the required dose under worst-case conditions.",
-    steps: [
-      { l: "Understand Collimated Beam Results", c: "The 4-log inactivation at 40 mJ/cm² from the collimated beam apparatus indicates the UV dose required to achieve a specific level of inactivation for MS2 coliphage under ideal, controlled laboratory conditions." },
-      { l: "Identify Limitations of Collimated Beam", c: "Collimated beam results represent an ideal scenario and do not directly translate to full-scale system performance due to factors like non-ideal hydraulics, lamp aging, varying UV transmittance (UVT), and lamp sleeve fouling in a real-world plant." },
-      { l: "Necessity of Full-Scale Validation", c: "To ensure effective disinfection, the full-scale UV system must undergo validation using biodosimetry testing with a surrogate organism to establish a dose-response curve and confirm it delivers the required UV dose under all operating conditions, especially worst-case scenarios." },
-      { l: "Implication for Full-Scale Design/Operation", c: "The 40 mJ/cm² is a target dose for MS2 inactivation. The full-scale system must be designed and operated to consistently deliver at least this dose, or a higher dose if required by regulations, considering all real-world operational variables." },
-    ],
     "difficulty": "hard",
-    tip: "Always differentiate between ideal lab conditions (collimated beam) and real-world operational challenges when evaluating disinfection technologies for full-scale application.",
   },
   {
     "id": 362,
@@ -6603,6 +5828,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 363,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Hydraulic Calculations",
     "question": "A distribution system has a fire flow requirement of 30 L/s for 2 hours. What volume of water storage is required for fire flow alone?",
@@ -6625,6 +5851,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 364,
+    isCalc: true,
     "module": "Equipment O&M",
     "topic": "Ozone System",
     "question": "An ozone generator is producing ozone at a concentration of 8% by weight in oxygen feed gas. The ozone production rate is 10 kg/h. What is the oxygen feed gas flow rate in m³/h (at standard conditions)?",
@@ -6763,14 +5990,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 0,
     "explanation": "O. Reg. 170/03 requires a minimum free chlorine residual of 0.05 mg/L throughout the distribution system of a large municipal residential drinking water system. Operational targets are typically higher (0.2–0.5 mg/L) to provide a safety margin.",
-    steps: [
-      { l: "Identify the Regulation", c: "The question specifically references O. Reg. 170/03, which is the key regulation governing drinking water systems in Ontario." },
-      { l: "Locate the Relevant Section", c: "Within O. Reg. 170/03, the section pertaining to disinfection requirements for distribution systems needs to be consulted." },
-      { l: "Determine the Minimum Residual", c: "O. Reg. 170/03 mandates a minimum free chlorine residual of 0.05 mg/L throughout the distribution system for large municipal residential drinking water systems." },
-      { l: "Distinguish from Operational Targets", c: "While the regulatory minimum is 0.05 mg/L, operators often maintain higher residuals (e.g., 0.2-0.5 mg/L) as operational targets to ensure compliance and provide a safety factor against disinfectant decay." },
-    ],
     "difficulty": "hard",
-    tip: "Always differentiate between regulatory minimums and operational targets; the question asks for the minimum required by the regulation.",
   },
   {
     "id": 373,
@@ -6890,14 +6110,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "A Wellhead Protection Area (WHPA) is delineated around a groundwater supply well based on groundwater travel time to the well (WHPA-A = 100-day, WHPA-B = 2-year, WHPA-C = 5-year travel time). Activities within WHPAs that could contaminate the aquifer are managed through Source Protection Plans.",
-    steps: [
-      { l: "Define WHPA", c: "A Wellhead Protection Area (WHPA) is a designated surface and subsurface area surrounding a public water supply well or wellfield." },
-      { l: "Purpose of WHPA", c: "Its primary purpose is to protect the groundwater source from contamination by managing activities within this defined area." },
-      { l: "Delineation Basis", c: "WHPAs are typically delineated based on the time it takes for groundwater to travel to the well, often categorized into zones like 100-day, 2-year, and 5-year travel times." },
-      { l: "Management through SPPs", c: "Activities within WHPAs that pose a risk to groundwater quality are regulated and managed through Source Protection Plans (SPPs) to prevent contamination." },
-    ],
     "difficulty": "hard",
-    tip: "Focus on understanding the 'why' behind WHPAs (protection) and the 'how' (delineation and management) for comprehensive answers.",
   },
   {
     "id": 381,
@@ -7077,14 +6290,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "The primary health concern for nitrate in drinking water is methemoglobinemia (blue baby syndrome) in infants under 6 months. Bacteria in infants' digestive systems convert nitrate to nitrite, which oxidizes hemoglobin to methemoglobin, reducing the blood's ability to carry oxygen. The MAC for nitrate in Ontario is 10 mg/L as N.",
-    steps: [
-      { l: "Identify the target population", c: "The question specifically asks about health concerns, and the explanation highlights infants under 6 months as the most vulnerable group." },
-      { l: "Recall the specific illness", c: "For infants, the primary health concern linked to nitrate is methemoglobinemia, commonly known as 'blue baby syndrome.'" },
-      { l: "Understand the physiological mechanism", c: "In infants, bacteria convert nitrate to nitrite, which then interferes with oxygen transport in the blood by forming methemoglobin." },
-      { l: "Connect to the regulatory standard", c: "The Maximum Acceptable Concentration (MAC) of 10 mg/L as N is set to protect against this specific health risk." },
-    ],
     "difficulty": "medium",
-    tip: "Always link health concerns to specific vulnerable populations and the physiological impact of the contaminant.",
   },
   {
     "id": 393,
@@ -7159,14 +6365,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Chlorine dose is the total amount of chlorine added to the water. Chlorine demand is the amount consumed by reactions with organic matter, ammonia, metals, and other reducing substances. The chlorine residual = Dose - Demand. Understanding chlorine demand is essential for maintaining adequate residuals throughout the distribution system.",
-    steps: [
-      { l: "Define Chlorine Dose", c: "Chlorine dose is the total quantity of chlorine introduced into a water system at a specific point and time. It is the initial amount of disinfectant applied." },
-      { l: "Define Chlorine Demand", c: "Chlorine demand is the amount of chlorine consumed by reacting with various substances present in the water, such as organic matter, ammonia, and metals. These reactions occur before a stable chlorine residual can be established." },
-      { l: "Explain the Relationship", c: "The relationship between chlorine dose, demand, and residual is expressed by the formula: Chlorine Residual = Chlorine Dose - Chlorine Demand. This means that only the chlorine remaining after demand has been satisfied contributes to disinfection." },
-      { l: "Highlight the Difference", c: "The key difference is that chlorine dose is the input, while chlorine demand is the amount of that input that is used up by impurities. Understanding demand is crucial for determining the correct dose needed to achieve a desired residual." },
-    ],
     "difficulty": "medium",
-    tip: "Remember that chlorine demand must be satisfied before any free chlorine residual can be established for effective disinfection.",
   },
   {
     "id": 398,
@@ -7211,14 +6410,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 2,
     "explanation": "A gradual upward trend in filtered water turbidity, even below the operational trigger, warrants investigation. Trend analysis is a key tool in proactive plant management. The operator should investigate potential causes (filter media issues, coagulation problems, source water changes) and document findings before the situation escalates.",
-    steps: [
-      { l: "Step 1: Acknowledge the Trend", c: "Recognize that a gradual increase in filtered water turbidity, even below the trigger, indicates a potential issue developing within the treatment process." },
-      { l: "Step 2: Initiate Investigation", c: "Begin investigating potential causes for the rising turbidity. This includes reviewing filter performance data, coagulation/flocculation parameters, and recent source water quality changes." },
-      { l: "Step 3: Document Findings", c: "Record all observations, data collected, and any adjustments made during the investigation. This documentation is crucial for tracking the issue and future reference." },
-      { l: "Step 4: Proactive Adjustment (if needed)", c: "Based on the investigation, make minor, proactive adjustments to the treatment process (e.g., coagulant dose, filter backwash frequency) to address the underlying cause before turbidity exceeds the operational trigger." },
-    ],
     "difficulty": "medium",
-    tip: "Always consider trend analysis in operational questions; proactive intervention is often preferred over reactive responses.",
   },
   {
     "id": 401,
@@ -7263,15 +6455,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Ozone is a much more powerful oxidant than chlorine and is highly effective against Cryptosporidium (which is resistant to chlorine). Ozone does not produce halogenated disinfection byproducts (THMs, HAAs). However, ozone decomposes rapidly and provides no distribution system residual, so a secondary disinfectant is still required.",
-    steps: [
-      { l: "Identify Key Disinfection Properties", c: "Consider the strengths and weaknesses of both ozone and chlorine as disinfectants." },
-      { l: "Compare Oxidizing Power", c: "Ozone is a significantly stronger oxidant than chlorine, leading to more effective pathogen inactivation." },
-      { l: "Evaluate Pathogen Resistance", c: "Ozone is highly effective against chlorine-resistant pathogens like Cryptosporidium, which is a major advantage." },
-      { l: "Consider Disinfection Byproducts (DBPs)", c: "Ozone does not form halogenated disinfection byproducts (THMs, HAAs), which are a concern with chlorine." },
-      { l: "Determine Primary Advantage", c: "The primary advantage of ozone is its superior oxidizing power, leading to better pathogen inactivation and no halogenated DBP formation." },
-    ],
     "difficulty": "medium",
-    tip: "Focus on the most significant differences and unique benefits when comparing treatment methods.",
   },
   {
     "id": 404,
@@ -7286,15 +6470,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 0,
     "explanation": "Transmembrane pressure (TMP) is the pressure difference between the feed/concentrate side and the permeate side of the membrane. It is the driving force for filtration. Increasing TMP generally increases flux, but excessively high TMP can cause membrane fouling and damage. Monitoring TMP trends helps identify fouling.",
-    steps: [
-      { l: "Define TMP", c: "Transmembrane Pressure (TMP) is the net pressure difference across a membrane, specifically between the feed/concentrate side and the permeate side." },
-      { l: "Identify Driving Force", c: "TMP acts as the primary driving force that pushes water and dissolved solutes through the membrane pores, separating them from the larger particles or contaminants." },
-      { l: "Impact on Flux", c: "Generally, increasing TMP leads to a higher permeate flux (flow rate through the membrane). However, there's a limit, as excessively high TMP can compact the foulants on the membrane surface." },
-      { l: "Fouling and Damage", c: "Sustained high TMP can cause severe membrane fouling, reducing efficiency, and in extreme cases, can lead to irreversible membrane damage or compaction." },
-      { l: "Monitoring Importance", c: "Operators monitor TMP trends to detect early signs of membrane fouling, allowing for timely cleaning or operational adjustments to maintain system performance and membrane longevity." },
-    ],
     "difficulty": "medium",
-    tip: "Focus on understanding the 'why' behind each concept, not just the definition, as questions often test practical application.",
   },
   {
     "id": 405,
@@ -7339,14 +6515,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 0,
     "explanation": "Recovery rate = (Permeate flow / Feed flow) x 100%. A typical RO system for drinking water has a recovery rate of 70-85%, meaning 70-85% of the feed water becomes product water and 15-30% is rejected as concentrate. Higher recovery reduces water waste but increases concentrate concentration and fouling potential.",
-    steps: [
-      { l: "Understand the Goal", c: "The question asks for the definition of 'recovery rate' in an RO system." },
-      { l: "Identify Key Components", c: "Recovery rate relates the amount of treated water (permeate) to the total water entering the system (feed)." },
-      { l: "Formulate the Definition", c: "The recovery rate is the percentage of the feed water that successfully passes through the RO membrane as permeate (product water)." },
-      { l: "Recall the Formula", c: "The formula for recovery rate is (Permeate flow / Feed flow) x 100%." },
-    ],
     "difficulty": "medium",
-    tip: "Always relate RO system parameters back to the fundamental goal of producing clean water efficiently.",
   },
   {
     "id": 408,
@@ -7511,17 +6680,11 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Health Canada's Guidelines indicate that a UV dose of approximately 40 mJ/cm2 provides 3-log inactivation of Cryptosporidium. This is significantly lower than the dose needed for viruses (186 mJ/cm2 for 4-log). UV is particularly valuable for Cryptosporidium because it is resistant to chlorine disinfection.",
-    steps: [
-      { l: "Identify the target pathogen", c: "The question specifically asks for the UV dose required for Cryptosporidium inactivation." },
-      { l: "Recall Health Canada Guidelines for Cryptosporidium", c: "Health Canada's Guidelines for Canadian Drinking Water Quality provide specific UV dose recommendations for various pathogens." },
-      { l: "Locate the 3-log inactivation dose for Cryptosporidium", c: "According to these guidelines, a UV dose of approximately 40 mJ/cm2 is effective for 3-log inactivation of Cryptosporidium." },
-      { l: "State the final answer", c: "Therefore, the required UV dose is 40 mJ/cm2." },
-    ],
     "difficulty": "hard",
-    tip: "Memorize key disinfection parameters and regulatory guidelines for common pathogens like Cryptosporidium, especially its resistance to chlorine.",
   },
   {
     "id": 419,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Membrane Flux",
     "question": "A membrane filtration system has a flux rate of 20 L/m2/h and a total membrane area of 1,000 m2. What is the system's production capacity in m3/day?",
@@ -7544,6 +6707,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 420,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "EBCT",
     "question": "A GAC adsorber has a bed volume of 15 m3 and treats 300 m3/day. What is the Empty Bed Contact Time (EBCT) in minutes?",
@@ -7566,6 +6730,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 421,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Chemical Feed Rate",
     "question": "A plant treats 50 ML/day and needs to apply a coagulant dose of 12 mg/L. The coagulant solution is 10% by weight (specific gravity 1.08). What is the required solution feed rate in L/min?",
@@ -7588,6 +6753,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 422,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Detention Time",
     "question": "A sedimentation basin is 60 m long, 15 m wide, and 4 m deep. The plant flow is 45,000 m3/day. What is the hydraulic detention time in hours?",
@@ -7609,6 +6775,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 423,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Surface Overflow Rate",
     "question": "A circular clarifier has a diameter of 20 m and treats 15,000 m3/day. What is the surface overflow rate in m3/m2/day?",
@@ -7630,6 +6797,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 424,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Chlorine CT",
     "question": "A plant applies 2.5 mg/L of chlorine and maintains a residual of 1.8 mg/L at the end of a 30-minute contact chamber. What is the CT value?",
@@ -7652,6 +6820,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 425,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Filter Loading Rate",
     "question": "A plant has 6 dual-media filters, each 8 m x 10 m. The plant flow is 72,000 m3/day. What is the filtration rate in m3/m2/h?",
@@ -7673,6 +6842,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 426,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Pump Power",
     "question": "A pump delivers 500 L/s against a total dynamic head of 25 m. If the pump efficiency is 78%, what is the motor power required in kW?",
@@ -7695,6 +6865,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 427,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Weir Overflow Rate",
     "question": "A rectangular sedimentation basin has a weir length of 40 m and a flow of 20,000 m3/day. What is the weir overflow rate in m3/m/day?",
@@ -7717,6 +6888,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 428,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Fluoride Dosing",
     "question": "A plant treats 30 ML/day. The source water fluoride is 0.1 mg/L and the target is 0.7 mg/L. Using hydrofluosilicic acid (23% active, SG 1.19), what is the required feed rate in L/day?",
@@ -7739,6 +6911,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 429,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Backwash Rate",
     "question": "A filter is 8 m x 10 m and is backwashed at a rate of 50 m3/m2/h. What is the backwash flow rate in L/s?",
@@ -7761,6 +6934,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 430,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Sludge Volume",
     "question": "A sedimentation basin removes 85% of the incoming turbidity. The raw water turbidity is 40 NTU and the flow is 25,000 m3/day. Assuming 1 NTU ≈ 1 mg/L TSS, what is the daily sludge production in kg/day?",
@@ -7794,14 +6968,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "The velocity gradient G (s-1) represents the intensity of mixing in a flocculation basin. Higher G values increase particle collision rates but can also shear floc apart. Typical G values for flocculation are 10-75 s-1. The Gt value (G x detention time) is used to optimize flocculation performance.",
-    steps: [
-      { l: "Understand the Core Concept", c: "The velocity gradient (G value) quantifies the intensity of mixing within a flocculation basin. It's a measure of how rapidly the water's velocity changes over a given distance." },
-      { l: "Relate to Particle Interaction", c: "A higher G value indicates more vigorous mixing, which leads to a greater frequency of collisions between suspended particles. These collisions are essential for the formation of larger, settleable flocs." },
-      { l: "Consider the Dual Impact", c: "While increased collisions are beneficial, excessively high G values can also exert shear forces that break apart already formed flocs. This can hinder the overall flocculation process and lead to poorer settling." },
-      { l: "Identify the Optimal Range", c: "Therefore, the G value represents a balance: it needs to be high enough to promote particle contact but low enough to prevent floc destruction. Typical ranges (e.g., 10-75 s-1) are established to achieve this balance." },
-    ],
     "difficulty": "hard",
-    tip: "Focus on understanding the 'why' behind each parameter in water treatment, not just memorizing definitions.",
   },
   {
     "id": 432,
@@ -7820,6 +6987,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 433,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Hypochlorite Dosing",
     "question": "A plant uses sodium hypochlorite (12.5% available chlorine, SG 1.17) to chlorinate 40 ML/day at a dose of 2.2 mg/L. What is the daily volume of hypochlorite solution required in litres?",
@@ -7842,6 +7010,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 434,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Hardness Calculation",
     "question": "A water sample has Ca2+ = 80 mg/L and Mg2+ = 18 mg/L. What is the total hardness in mg/L as CaCO3?",
@@ -7864,6 +7033,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 435,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Alkalinity",
     "question": "A water sample has a bicarbonate alkalinity of 120 mg/L as CaCO3. What is the bicarbonate concentration in mg/L as HCO3-?",
@@ -7886,6 +7056,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 436,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Ozone CT",
     "question": "An ozone contactor maintains an ozone residual of 0.4 mg/L for a contact time of 8 minutes. What is the CT value for ozone?",
@@ -7908,6 +7079,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 437,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Pipe Flow",
     "question": "Water flows through a 400 mm diameter pipe at a velocity of 1.5 m/s. What is the flow rate in L/s?",
@@ -7930,6 +7102,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 438,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Reservoir Volume",
     "question": "A clearwell must provide 4 hours of detention time at a maximum flow of 60,000 m3/day. What is the minimum required clearwell volume?",
@@ -7952,6 +7125,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 439,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Percent Removal",
     "question": "A treatment plant reduces TOC from 8.5 mg/L to 3.2 mg/L. What is the percent TOC removal?",
@@ -7974,6 +7148,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 440,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Pump Affinity Laws",
     "question": "A pump operating at 1,200 RPM delivers 500 L/s. If the speed is increased to 1,440 RPM, what is the new flow rate?",
@@ -8142,14 +7317,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "The first action is to evacuate immediately and activate the emergency alarm. Never enter a chlorine-contaminated area without SCBA. Call emergency services from a safe upwind location. Do NOT apply water to a chlorine gas leak — this creates hydrochloric acid and can spread contamination.",
-    steps: [
-      { l: "Step 1: Prioritize Safety", c: "Immediately evacuate the chlorine room and the immediate vicinity. Do not attempt to address the leak without proper safety equipment." },
-      { l: "Step 2: Activate Emergency Alarm", c: "Trigger the facility's emergency alarm system to alert all personnel to the hazard and initiate emergency protocols." },
-      { l: "Step 3: Call Emergency Services", c: "From a safe, upwind location, contact emergency services (e.g., 911, fire department) and provide them with details of the chlorine gas leak." },
-      { l: "Step 4: Prevent Further Contamination", c: "Ensure no one enters the contaminated area without self-contained breathing apparatus (SCBA) and appropriate protective gear. Do NOT apply water to the leak." },
-    ],
     "difficulty": "hard",
-    tip: "Always prioritize personal safety and the safety of others as the absolute first action in any emergency scenario.",
   },
   {
     "id": 451,
@@ -8224,14 +7392,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "When increasing coagulant dose causes turbidity to increase, it indicates restabilization (charge reversal). Colloidal particles have become positively charged due to excess coagulant, preventing floc formation. The optimal dose is just below the restabilization point.",
-    steps: [
-      { l: "Analyze the Problem", c: "The question describes a scenario where increasing coagulant dose leads to an increase in settled water turbidity, which is counterintuitive for proper coagulation." },
-      { l: "Recall Coagulation Principles", c: "Coagulants work by neutralizing the negative charges on colloidal particles, allowing them to aggregate. There's an optimal dose where charge neutralization is achieved." },
-      { l: "Identify the Anomaly", c: "If turbidity increases with more coagulant, it means the particles are no longer aggregating effectively, despite the increased dose." },
-      { l: "Determine the Cause", c: "This phenomenon, where excess coagulant causes particles to become positively charged and repel each other again, is known as restabilization or charge reversal." },
-    ],
     "difficulty": "hard",
-    tip: "Understand the concept of restabilization; it's a common pitfall in coagulation and a frequent exam topic.",
   },
   {
     "id": 456,
@@ -8426,15 +7587,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Ferric coagulants (ferric sulfate, ferric chloride) are effective over a wider pH range (4–11) compared to alum (5.5–8), produce denser and faster-settling floc, and are more effective at lower temperatures. They are preferred for cold water treatment and low-alkalinity waters.",
-    steps: [
-      { l: "Analyze the Question", c: "The question asks for the primary advantage of ferric coagulants over alum specifically for cold water treatment." },
-      { l: "Recall Coagulant Properties", c: "Remember the general characteristics of both ferric coagulants and alum, particularly their performance under different conditions like pH and temperature." },
-      { l: "Identify Cold Water Performance", c: "Ferric coagulants are known to perform more effectively at lower temperatures compared to alum, which can become sluggish." },
-      { l: "Formulate the Advantage", c: "The primary advantage is their superior effectiveness and floc formation capabilities in cold water conditions." },
-      { l: "Confirm with Explanation", c: "The provided explanation confirms that ferric coagulants are 'more effective at lower temperatures' and 'preferred for cold water treatment.'" },
-    ],
     "difficulty": "hard",
-    tip: "Focus on keywords in the question, like 'primary advantage' and 'cold water treatment,' to guide your answer.",
   },
   {
     "id": 469,
@@ -8479,14 +7632,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "Pressure zones are used when significant elevation differences exist. Without zoning, high-elevation areas would have insufficient pressure while low-elevation areas would have excessive pressure causing leaks and failures. PRVs and booster stations maintain appropriate pressures in each zone.",
-    steps: [
-      { l: "Identify Elevation Differences", c: "Distribution systems often cover areas with varying elevations. These elevation changes directly impact water pressure." },
-      { l: "Address Insufficient Pressure", c: "Without pressure zones, higher elevation areas would experience very low water pressure, making it difficult to deliver water effectively to customers." },
-      { l: "Prevent Excessive Pressure", c: "Conversely, lower elevation areas would experience excessively high pressure, leading to increased leaks, pipe bursts, and damage to plumbing fixtures." },
-      { l: "Maintain Optimal Pressure", c: "Pressure zones, often separated by pressure reducing valves (PRVs) or booster stations, allow operators to maintain appropriate and consistent water pressure within specific elevation ranges throughout the entire distribution system." },
-    ],
     "difficulty": "medium",
-    tip: "When answering 'why' questions, focus on both the problems being solved and the benefits of the solution.",
   },
   {
     "id": 472,
@@ -8546,14 +7692,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "A PRV automatically reduces and maintains downstream pressure at a preset value regardless of upstream fluctuations. PRVs are used at pressure zone boundaries to prevent excessive pressures that could cause leaks, pipe failures, and excessive water loss.",
-    steps: [
-      { l: "Step 1: Identify the core purpose of a PRV.", c: "The primary function of a Pressure Reducing Valve (PRV) is to lower and stabilize water pressure within a distribution system." },
-      { l: "Step 2: Understand how it achieves this.", c: "A PRV automatically adjusts its internal mechanism to maintain a constant, preset downstream pressure, even if the upstream pressure changes." },
-      { l: "Step 3: Recognize the benefits of pressure reduction.", c: "By reducing high pressures, PRVs prevent damage to pipes and fixtures, minimize water leaks and bursts, and conserve water." },
-      { l: "Step 4: Consider typical application points.", c: "PRVs are commonly installed at the boundaries between different pressure zones in a water distribution network to manage pressure differentials effectively." },
-    ],
     "difficulty": "medium",
-    tip: "Focus on the 'reducing' and 'maintaining' aspects of a PRV's function, as these are its defining characteristics.",
   },
   {
     "id": 476,
@@ -8572,6 +7711,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 477,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Surface Overflow Rate",
     "question": "A circular clarifier has a diameter of 20 m and treats 15,000 m³/day. What is the surface overflow rate in m³/m²/day?",
@@ -8593,6 +7733,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 478,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Chlorine CT Calculation",
     "question": "A plant maintains a chlorine residual of 1.8 mg/L at the end of a 30-minute contact chamber. What is the CT value?",
@@ -8630,6 +7771,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 480,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Total Hardness",
     "question": "A water sample has Ca²⁺ = 80 mg/L and Mg²⁺ = 18 mg/L. What is the total hardness in mg/L as CaCO₃? (MW: Ca=40, Mg=24.3, CaCO₃=100)",
@@ -8651,6 +7793,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 481,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Pipe Flow Rate",
     "question": "Water flows through a 400 mm diameter pipe at a velocity of 1.5 m/s. What is the flow rate in L/s?",
@@ -8673,6 +7816,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 482,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Clearwell Volume",
     "question": "A clearwell must provide 4 hours of detention time at a maximum flow of 60,000 m³/day. What is the minimum required clearwell volume?",
@@ -8694,6 +7838,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 483,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Percent TOC Removal",
     "question": "A treatment plant reduces TOC from 8.5 mg/L to 3.2 mg/L. What is the percent TOC removal?",
@@ -8716,6 +7861,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 484,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Backwash Flow Rate",
     "question": "A filter is 8 m × 10 m and is backwashed at a rate of 50 m³/m²/h. What is the backwash flow rate in L/s?",
@@ -8738,6 +7884,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     "id": 485,
+    isCalc: true,
     "module": "Treatment Process",
     "topic": "Ozone CT",
     "question": "An ozone contactor maintains an ozone residual of 0.4 mg/L for a contact time of 8 minutes. What is the CT value?",
@@ -8771,14 +7918,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "An MBR combines biological treatment (activated sludge) with membrane filtration (MF or UF) to replace secondary clarifiers. Advantages include: higher effluent quality, smaller footprint, higher MLSS concentrations (8,000–12,000 mg/L vs 2,000–4,000 mg/L), and better control of SRT.",
-    steps: [
-      { l: "Define MBR", c: "A Membrane Bioreactor (MBR) is a wastewater treatment process that integrates a suspended growth biological treatment (like activated sludge) with a membrane filtration system (microfiltration or ultrafiltration)." },
-      { l: "Explain MBR Function", c: "In an MBR, the membranes replace the conventional secondary clarifiers and tertiary filtration, effectively separating the treated water from the mixed liquor suspended solids." },
-      { l: "List Key Advantages", c: "MBRs offer several advantages over conventional activated sludge, including superior effluent quality, a significantly smaller physical footprint, and the ability to operate at much higher Mixed Liquor Suspended Solids (MLSS) concentrations." },
-      { l: "Detail Operational Benefits", c: "The higher MLSS (8,000-12,000 mg/L vs. 2,000-4,000 mg/L) allows for more efficient biological treatment in a smaller volume, and the membrane barrier provides better control over the Solids Retention Time (SRT), leading to more stable operation and enhanced nutrient removal." },
-    ],
     "difficulty": "hard",
-    tip: "When comparing treatment technologies, focus on the 'why' behind the advantages, linking them back to fundamental process principles.",
   },
   {
     "id": 487,
@@ -8928,14 +8068,7 @@ export const QUESTIONS: Question[] = [
     ],
     "correct": 1,
     "explanation": "PPCPs (antibiotics, hormones, anti-depressants) are not effectively removed by conventional water treatment and are found at trace concentrations in surface waters receiving wastewater effluent. Concerns include endocrine disruption, antibiotic resistance, and unknown long-term effects. Advanced treatment (ozone, AOP, GAC, RO) is required for effective removal.",
-    steps: [
-      { l: "Identify the Source", c: "PPCPs enter the water cycle primarily through wastewater effluent, as they are excreted by humans and animals and then discharged into surface waters." },
-      { l: "Explain Ineffective Removal", c: "Conventional water treatment processes (coagulation, flocculation, sedimentation, filtration, chlorination) are not designed to effectively remove these complex organic compounds." },
-      { l: "Detail the Concerns", c: "The presence of PPCPs, even at trace concentrations, raises concerns about potential endocrine disruption, the development of antibiotic resistance, and unknown long-term health and ecological impacts." },
-      { l: "Highlight Treatment Challenges", c: "Effective removal of PPCPs typically requires advanced treatment technologies such as ozonation, advanced oxidation processes (AOPs), granular activated carbon (GAC), or reverse osmosis (RO), which are not universally implemented." },
-    ],
     "difficulty": "hard",
-    tip: "When answering 'why' questions, always provide both the cause and the consequence of the issue.",
   },
   {
     "id": 497,

@@ -68,7 +68,7 @@ function getNextQ(
   const pool = trialUnlocked
     ? CLASS4_WW_QUESTIONS
     : CLASS4_WW_QUESTIONS.slice(0, FREE_TRIAL_POOL);
-  const calcPool = calcOnly ? pool.filter((q) => q.steps && q.steps.length > 0) : pool;
+  const calcPool = calcOnly ? pool.filter((q) => q.isCalc) : pool;
   let remaining = calcPool.filter((q) => !usedIds.has(q.id));
   if (filterModule) remaining = remaining.filter((q) => q.module === filterModule);
   if (filterDiff) remaining = remaining.filter((q) => q.difficulty === filterDiff);

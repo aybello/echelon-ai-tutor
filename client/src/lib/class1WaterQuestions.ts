@@ -13,6 +13,7 @@ export interface Class1WaterQuestion {
   explanation: string;
   steps?: { l: string; c: string }[];
   tip?: string;
+  isCalc?: boolean;
 }
 
 export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
@@ -733,6 +734,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 52,
+    isCalc: true,
     module: "Water Sources & Quality",
     difficulty: "hard",
     question: "A water treatment plant must achieve 4-log (99.99%) inactivation of viruses. At a water temperature of 10°C and pH 7.5, the CT value for 4-log inactivation of viruses with free chlorine is 6 mg·min/L. If the contact time is 30 minutes, what minimum free chlorine residual is required?",
@@ -883,6 +885,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 62,
+    isCalc: true,
     module: "Coagulation & Flocculation",
     difficulty: "medium",
     question: "What is the G value (velocity gradient) in flocculation, and what is the typical range?",
@@ -920,6 +923,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 64,
+    isCalc: true,
     module: "Coagulation & Flocculation",
     difficulty: "hard",
     question: "A jar test is performed with alum doses of 10, 20, 30, 40, and 50 mg/L. The settled water turbidity results are 8, 3, 0.8, 0.6, and 0.5 NTU respectively. What is the optimal alum dose?",
@@ -1070,6 +1074,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 74,
+    isCalc: true,
     module: "Coagulation & Flocculation",
     difficulty: "hard",
     question: "Calculate the alum dose in mg/L if a plant treats 15,000 m³/day and feeds alum at a rate of 25 kg/hour.",
@@ -1134,6 +1139,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 78,
+    isCalc: true,
     module: "Coagulation & Flocculation",
     difficulty: "hard",
     question: "A water treatment plant is treating water with high colour (40 TCU) and low turbidity (2 NTU). What coagulation approach would be MOST effective?",
@@ -1299,6 +1305,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 89,
+    isCalc: true,
     module: "Coagulation & Flocculation",
     difficulty: "hard",
     question: "A plant is using 30 mg/L alum and the settled water turbidity is 5 NTU. The jar test shows that increasing to 45 mg/L reduces settled turbidity to 0.5 NTU. The plant treats 20,000 m³/day. What is the additional alum cost per day if alum costs $0.15/kg?",
@@ -1514,6 +1521,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 103,
+    isCalc: true,
     module: "Sedimentation",
     difficulty: "medium",
     question: "Calculate the surface overflow rate for a rectangular sedimentation basin 40 m long, 10 m wide, treating a flow of 20,000 m³/day.",
@@ -1607,6 +1615,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 109,
+    isCalc: true,
     module: "Sedimentation",
     difficulty: "easy",
     question: "What is the weir overflow rate (WOR) in a sedimentation basin?",
@@ -1643,6 +1652,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 111,
+    isCalc: true,
     module: "Sedimentation",
     difficulty: "hard",
     question: "A sedimentation basin has a surface area of 500 m² and treats 30,000 m³/day. What is the SOR, and is it within the typical design range?",
@@ -1759,6 +1769,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 119,
+    isCalc: true,
     module: "Filtration",
     difficulty: "medium",
     question: "What is the typical filtration rate for a rapid sand filter?",
@@ -1845,6 +1856,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 125,
+    isCalc: true,
     module: "Filtration",
     difficulty: "medium",
     question: "What is the typical backwash rate for a rapid sand filter?",
@@ -1889,6 +1901,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 128,
+    isCalc: true,
     module: "Filtration",
     difficulty: "hard",
     question: "A filter has a surface area of 50 m² and is backwashed at a rate of 50 m/h. What is the backwash flow rate in m³/min?",
@@ -1989,6 +2002,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 135,
+    isCalc: true,
     module: "Filtration",
     difficulty: "medium",
     question: "What is 'media stratification' in a dual-media filter, and why is it important?",
@@ -2005,6 +2019,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 136,
+    isCalc: true,
     module: "Filtration",
     difficulty: "hard",
     question: "A filter has been running for 48 hours. The head loss has reached 2.5 m (maximum), but the filtered water turbidity is still 0.15 NTU (well below the 0.3 NTU limit). Should the filter be backwashed?",
@@ -2063,6 +2078,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 140,
+    isCalc: true,
     module: "Filtration",
     difficulty: "hard",
     question: "A filter plant has 6 filters, each 60 m² in area. The plant flow is 36,000 m³/day. One filter is offline for backwashing. What is the filtration rate on the remaining 5 filters?",
@@ -2137,6 +2153,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 145,
+    isCalc: true,
     module: "Disinfection",
     difficulty: "easy",
     question: "What is breakpoint chlorination?",
@@ -2209,6 +2226,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 150,
+    isCalc: true,
     module: "Disinfection",
     difficulty: "hard",
     question: "What is the CT value required for 3-log inactivation of Giardia cysts with free chlorine at 10°C and pH 7.0?",
@@ -2351,6 +2369,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 160,
+    isCalc: true,
     module: "Disinfection",
     difficulty: "hard",
     question: "A water treatment plant applies 3.5 mg/L of chlorine. The chlorine demand of the water is 2.8 mg/L. What is the free chlorine residual, and does it meet Ontario's minimum requirement at the point of entry?",
@@ -2367,6 +2386,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 161,
+    isCalc: true,
     module: "Disinfection",
     difficulty: "medium",
     question: "What is the purpose of chlorine contact time in a water treatment plant?",
@@ -2383,6 +2403,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 162,
+    isCalc: true,
     module: "Disinfection",
     difficulty: "easy",
     question: "What does 'log inactivation' mean in the context of disinfection?",
@@ -3519,6 +3540,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 173,
+    isCalc: true,
     module: "Sedimentation",
     difficulty: "hard",
     question: "A circular clarifier has a diameter of 20 m and treats 5,000 m³/d. What is the surface overflow rate in m/d?",
@@ -3605,6 +3627,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 179,
+    isCalc: true,
     module: "Sedimentation",
     difficulty: "hard",
     question: "A sedimentation basin has a volume of 2,000 m³ and treats 8,000 m³/d. A tracer study shows t10 = 0.15 hours and t90 = 2.8 hours. What is the Morrill Dispersion Index?",
@@ -3691,6 +3714,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 185,
+    isCalc: true,
     module: "Sedimentation",
     difficulty: "hard",
     question: "A sedimentation basin produces 50,000 L/d of sludge at 0.3% solids. After gravity thickening, the solids content increases to 3%. What is the volume of thickened sludge in L/d?",
@@ -3777,6 +3801,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 191,
+    isCalc: true,
     module: "Sedimentation",
     difficulty: "hard",
     question: "A rectangular sedimentation basin (50 m × 12 m × 4 m) treats 18,000 m³/d. What is the horizontal flow velocity in m/h?",
@@ -3863,6 +3888,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 197,
+    isCalc: true,
     module: "Sedimentation",
     difficulty: "hard",
     question: "A sedimentation basin treats 10 ML/d and produces sludge at 0.2% solids. The sludge is thickened to 4% solids before disposal. If the thickened sludge density is 1,020 kg/m³, what is the volume of thickened sludge in m³/d? (Assume raw water TSS = 20 mg/L, 95% removal)",
@@ -4134,6 +4160,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 216,
+    isCalc: true,
     module: "Filtration",
     difficulty: "hard",
     question: "A filter has a surface area of 50 m² and treats 600 m³/h. What is the hydraulic loading rate in m/h?",
@@ -4150,6 +4177,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 217,
+    isCalc: true,
     module: "Filtration",
     difficulty: "hard",
     question: "A plant has four filters, each 8 m × 6 m. The plant flow is 20 ML/d. What is the hydraulic loading rate per filter in m/h when all four are in service?",
@@ -4264,6 +4292,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 225,
+    isCalc: true,
     module: "Filtration",
     difficulty: "hard",
     question: "A filter has a surface area of 40 m² and is backwashed at a rate of 36 m/h for 10 minutes. What volume of backwash water is used per backwash cycle?",
@@ -4406,6 +4435,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 235,
+    isCalc: true,
     module: "Filtration",
     difficulty: "hard",
     question: "A plant has 6 filters, each 10 m × 8 m. The plant treats 30 ML/d. One filter is taken out of service for maintenance. What is the new hydraulic loading rate per filter in m/h?",
@@ -4520,6 +4550,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 243,
+    isCalc: true,
     module: "Filtration",
     difficulty: "hard",
     question: "A filter run produces 4,000 m³ of filtered water before backwash is required. The backwash uses 120 m³ of water. What is the backwash water as a percentage of filtered water?",
@@ -4620,6 +4651,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 250,
+    isCalc: true,
     module: "Filtration",
     difficulty: "hard",
     question: "A filter has a media depth of 75 cm of sand (ES = 0.5 mm, UC = 1.4) and 30 cm of anthracite (ES = 1.2 mm). During backwash at 40 m/h, the sand expands by 30%. What is the expanded depth of the sand layer?",
@@ -4734,6 +4766,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 258,
+    isCalc: true,
     module: "Filtration",
     difficulty: "hard",
     question: "A filter run produces 5,500 m³ of water before backwash. The filter has a surface area of 45 m² and operates at 10 m/h. How long is the filter run in hours?",
@@ -4977,6 +5010,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 275,
+    isCalc: true,
     module: "Disinfection",
     difficulty: "hard",
     question: "A clearwell has a volume of 1,200 m³ and a T10/T = 0.5. The plant flow is 4,800 m³/h. What is the T10 in minutes?",
@@ -4993,6 +5027,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 276,
+    isCalc: true,
     module: "Disinfection",
     difficulty: "hard",
     question: "Using the clearwell from above (T10 = 7.5 min), the free chlorine residual at the clearwell outlet is 1.2 mg/L. What is the CT achieved?",
@@ -5177,6 +5212,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 289,
+    isCalc: true,
     module: "Disinfection",
     difficulty: "hard",
     question: "A water plant treats 15 ML/d at 10°C. The required CT for 3-log Giardia inactivation at pH 7.0 and 10°C is 73 mg·min/L. The free chlorine residual is 1.5 mg/L. What minimum T10 is required?",
@@ -5333,6 +5369,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 300,
+    isCalc: true,
     module: "Disinfection",
     difficulty: "hard",
     question: "A plant requires 8 mg/L of chlorine dose and treats 5 ML/d. The NaOCl solution is 12% available chlorine with a density of 1.17 kg/L. What volume of NaOCl solution is required per day?",
@@ -5433,6 +5470,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 307,
+    isCalc: true,
     module: "Disinfection",
     difficulty: "hard",
     question: "A water sample has a chlorine demand of 3.5 mg/L. The target free chlorine residual after 30 minutes is 0.5 mg/L. What is the required chlorine dose?",
@@ -5603,6 +5641,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 319,
+    isCalc: true,
     module: "Disinfection",
     difficulty: "hard",
     question: "A plant treats 8 ML/d and applies 5 mg/L of chlorine. The chlorine demand is 3.8 mg/L. What is the free chlorine residual after the demand is satisfied?",
@@ -5818,6 +5857,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 334,
+    isCalc: true,
     module: "Chemical Feed & Dosing",
     difficulty: "hard",
     question: "A plant treats 12 ML/d and requires a fluoride dose of 0.7 mg/L. The fluorosilicic acid (H₂SiF₆) solution is 23% w/w with a density of 1.19 kg/L, and contains 79.2% available fluoride by weight. What volume of solution is required per day?",
@@ -5862,6 +5902,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 337,
+    isCalc: true,
     module: "Chemical Feed & Dosing",
     difficulty: "hard",
     question: "A plant treats 20 ML/d and applies lime at 15 mg/L. Lime is supplied as a 10% slurry with a density of 1.07 kg/L. What is the required lime slurry feed rate in L/h?",
@@ -7872,6 +7913,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 480,
+    isCalc: true,
     module: "Water Quality & Regulations",
     difficulty: "hard",
     question: "A water treatment plant has a monthly compliance record showing 95 turbidity measurements, of which 4 exceed 0.3 NTU. Does this meet Ontario Regulation 170/03 requirements?",
@@ -8112,6 +8154,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 497,
+    isCalc: true,
     module: "Water Quality & Regulations",
     difficulty: "hard",
     question: "A water treatment plant produces 20 ML/d. The annual water loss (non-revenue water) is 15%. What is the volume of non-revenue water per year in ML?",
@@ -8128,6 +8171,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
   },
   {
     id: 498,
+    isCalc: true,
     module: "Water Quality & Regulations",
     difficulty: "hard",
     question: "A water treatment plant has a specific energy consumption of 0.35 kWh/m³. The plant treats 15 ML/d. What is the annual energy consumption in MWh?",

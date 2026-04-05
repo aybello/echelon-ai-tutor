@@ -9,6 +9,7 @@ export interface WastewaterQuestion {
   options: string[];
   correct: number;
   explanation: string;
+  isCalc?: boolean;
 }
 
 export interface WastewaterModule {

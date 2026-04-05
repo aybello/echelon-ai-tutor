@@ -18,6 +18,7 @@ export interface Question {
   wrongExp?: Record<number, string>;
   steps?: Step[];
   tip: string;
+  isCalc?: boolean;
 }
 export interface HistoryEntry {
   questionId: number;
@@ -611,6 +612,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 135,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "medium",
@@ -634,6 +636,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 136,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "medium",
@@ -657,6 +660,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 137,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "medium",
@@ -680,6 +684,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 138,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "medium",
@@ -703,6 +708,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 139,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "medium",
@@ -726,6 +732,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 140,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "medium",
@@ -749,6 +756,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 141,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "medium",
@@ -772,6 +780,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 142,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "medium",
@@ -795,6 +804,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 143,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "medium",
@@ -818,6 +828,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 144,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "medium",
@@ -841,6 +852,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 145,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "medium",
@@ -864,6 +876,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 146,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "medium",
@@ -881,6 +894,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 147,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "hard",
@@ -904,6 +918,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 148,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "hard",
@@ -926,6 +941,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 149,
+    isCalc: true,
     module: `Disinfection`,
     type: "calculation",
     difficulty: "hard",
@@ -964,6 +980,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 151,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "medium",
@@ -1019,6 +1036,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 154,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "medium",
@@ -1042,6 +1060,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 155,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "medium",
@@ -1097,6 +1116,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 158,
+    isCalc: true,
     module: `Wastewater Treatment`,
     type: "calculation",
     difficulty: "medium",
@@ -1114,6 +1134,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 159,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "hard",
@@ -1200,6 +1221,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 164,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "medium",
@@ -1217,6 +1239,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 165,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "medium",
@@ -1234,6 +1257,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 166,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "hard",
@@ -1336,6 +1360,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 172,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "medium",
@@ -1359,6 +1384,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 173,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "medium",
@@ -1414,6 +1440,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 176,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "hard",
@@ -1500,6 +1527,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 181,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "medium",
@@ -1523,6 +1551,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 182,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "medium",
@@ -1578,6 +1607,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 185,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "hard",
@@ -1633,6 +1663,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 188,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "medium",
@@ -1704,6 +1735,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 192,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "medium",
@@ -1759,6 +1791,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 195,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "medium",
@@ -1814,6 +1847,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 198,
+    isCalc: true,
     module: `Hydraulics`,
     type: "calculation",
     difficulty: "hard",
@@ -2655,6 +2689,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 250,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -2677,6 +2712,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 251,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -2715,6 +2751,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 253,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -2753,6 +2790,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 255,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -2775,6 +2813,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 256,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -2797,6 +2836,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 257,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -2819,6 +2859,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 258,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -2857,6 +2898,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 260,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -2895,6 +2937,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 262,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -2950,6 +2993,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 265,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -2973,6 +3017,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 266,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -2996,6 +3041,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 267,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3019,6 +3065,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 268,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3042,6 +3089,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 269,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3065,6 +3113,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 270,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3087,6 +3136,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 271,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3110,6 +3160,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 272,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3133,6 +3184,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 273,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3157,6 +3209,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 274,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3180,6 +3233,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 275,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3203,6 +3257,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 276,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3226,6 +3281,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 277,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3249,6 +3305,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 278,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3272,6 +3329,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 279,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3295,6 +3353,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 280,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3318,6 +3377,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 281,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3341,6 +3401,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 282,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3364,6 +3425,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 283,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3387,6 +3449,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 284,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3410,6 +3473,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 285,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3433,6 +3497,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 286,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3456,6 +3521,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 287,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3479,6 +3545,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 288,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3502,6 +3569,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 289,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3525,6 +3593,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 290,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3548,6 +3617,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 291,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3565,6 +3635,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 292,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "medium",
@@ -3582,6 +3653,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 293,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "hard",
@@ -3603,6 +3675,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 294,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "hard",
@@ -3624,6 +3697,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 295,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "hard",
@@ -3646,6 +3720,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 296,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "hard",
@@ -3668,6 +3743,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 297,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "hard",
@@ -3690,6 +3766,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 298,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "hard",
@@ -3711,6 +3788,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 299,
+    isCalc: true,
     module: `Math & Calculations`,
     type: "calculation",
     difficulty: "hard",
@@ -3844,6 +3922,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 307,
+    isCalc: true,
     module: `Health & Safety`,
     type: "calculation",
     difficulty: "hard",
@@ -3993,6 +4072,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 316,
+    isCalc: true,
     module: `Health & Safety`,
     type: "calculation",
     difficulty: "medium",
@@ -4224,6 +4304,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 330,
+    isCalc: true,
     module: `Health & Safety`,
     type: "calculation",
     difficulty: "medium",
@@ -4343,6 +4424,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 337,
+    isCalc: true,
     module: `Health & Safety`,
     type: "calculation",
     difficulty: "medium",
@@ -4446,6 +4528,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 343,
+    isCalc: true,
     module: `Health & Safety`,
     type: "calculation",
     difficulty: "medium",
@@ -4549,6 +4632,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 349,
+    isCalc: true,
     module: `Health & Safety`,
     type: "calculation",
     difficulty: "hard",
@@ -5130,6 +5214,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 385,
+    isCalc: true,
     module: `Water Treatment`,
     type: "calculation",
     difficulty: "medium",
@@ -5153,6 +5238,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 386,
+    isCalc: true,
     module: `Water Treatment`,
     type: "calculation",
     difficulty: "medium",
@@ -5176,6 +5262,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 387,
+    isCalc: true,
     module: `Water Treatment`,
     type: "calculation",
     difficulty: "medium",
@@ -5311,6 +5398,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 395,
+    isCalc: true,
     module: `Water Treatment`,
     type: "calculation",
     difficulty: "hard",
@@ -5333,6 +5421,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 396,
+    isCalc: true,
     module: `Water Treatment`,
     type: "calculation",
     difficulty: "hard",
@@ -5947,6 +6036,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 434,
+    isCalc: true,
     module: `Water Quality & Sampling`,
     type: "calculation",
     difficulty: "medium",
@@ -6082,6 +6172,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 442,
+    isCalc: true,
     module: `Water Quality & Sampling`,
     type: "calculation",
     difficulty: "medium",
@@ -6521,6 +6612,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 469,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "medium",
@@ -6544,6 +6636,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 470,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "medium",
@@ -6567,6 +6660,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 471,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "medium",
@@ -6591,6 +6685,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 472,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "medium",
@@ -6614,6 +6709,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 473,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "medium",
@@ -6637,6 +6733,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 474,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "medium",
@@ -6660,6 +6757,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 475,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "medium",
@@ -6875,6 +6973,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 488,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "medium",
@@ -6897,6 +6996,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 489,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "medium",
@@ -6920,6 +7020,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 490,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "medium",
@@ -6943,6 +7044,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 491,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "medium",
@@ -6965,6 +7067,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 492,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "medium",
@@ -7084,6 +7187,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 499,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "hard",
@@ -7106,6 +7210,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 500,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "hard",
@@ -7129,6 +7234,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 501,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "hard",
@@ -7152,6 +7258,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 502,
+    isCalc: true,
     module: `Pumping Systems`,
     type: "calculation",
     difficulty: "hard",
@@ -7559,6 +7666,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 527,
+    isCalc: true,
     module: `Chemical Feed & Storage`,
     type: "calculation",
     difficulty: "medium",
@@ -7886,6 +7994,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 547,
+    isCalc: true,
     module: `Chemical Feed & Storage`,
     type: "calculation",
     difficulty: "hard",
@@ -7907,6 +8016,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 548,
+    isCalc: true,
     module: `Chemical Feed & Storage`,
     type: "calculation",
     difficulty: "hard",
@@ -8137,6 +8247,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 562,
+    isCalc: true,
     module: `Wastewater Treatment`,
     type: "calculation",
     difficulty: "medium",
@@ -8416,6 +8527,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 579,
+    isCalc: true,
     module: `Wastewater Treatment`,
     type: "calculation",
     difficulty: "medium",

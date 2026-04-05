@@ -102,8 +102,8 @@ export default function WpiClass3WastewaterQuiz() {
   const getNextQuestion = useCallback(
     (afterId?: number) => {
       const pool = selectedModule
-        ? wpiClass3WastewaterQuestions.filter((q) => q.module === selectedModule && (!calcOnly || (q.steps && q.steps.length > 0)))
-        : (calcOnly ? wpiClass3WastewaterQuestions.filter((q) => q.steps && q.steps.length > 0) : wpiClass3WastewaterQuestions);
+        ? wpiClass3WastewaterQuestions.filter((q) => q.module === selectedModule && (!calcOnly || (q.isCalc)))
+        : (calcOnly ? wpiClass3WastewaterQuestions.filter((q) => q.isCalc) : wpiClass3WastewaterQuestions);
       const unanswered = pool.filter((q) => !answeredIds.has(q.id) && q.id !== afterId);
       if (unanswered.length === 0) return null;
       const shuffled = shuffle(unanswered);

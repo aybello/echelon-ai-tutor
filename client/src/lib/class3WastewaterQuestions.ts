@@ -11,6 +11,7 @@ export interface C3WWQuestion {
   difficulty: 'easy' | 'medium' | 'hard';
   steps?: { l: string; c: string }[];
   tip?: string;
+  isCalc?: boolean;
 }
 
 export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
@@ -34,6 +35,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 3,
+    isCalc: true,
     module: "Treatment Process Monitoring",
     question: `Calculate the SRT (sludge retention time) for an activated sludge system: aeration basin volume = 4,000 m³, MLSS = 3,200 mg/L, WAS flow = 120 m³/day, WAS concentration = 8,500 mg/L, effluent TSS = 18 mg/L, effluent flow = 15,000 m³/day.`,
     options: ["8.2 days", "9.9 days", "14.7 days", "6.8 days"],
@@ -54,6 +56,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 5,
+    isCalc: true,
     module: "Treatment Process Monitoring",
     question: `An operator performs a 30-minute settleability test (SSV30) and measures 420 mL/L. The MLSS is 2,800 mg/L. What is the SVI and what does it indicate?`,
     options: ["SVI = 150 mL/g — good settling", "SVI = 200 mL/g — poor settling (bulking)", "SVI = 118 mL/g — excellent settling", "SVI = 250 mL/g — severe bulking"],
@@ -164,6 +167,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 17,
+    isCalc: true,
     module: "Treatment Process Monitoring",
     question: `Calculate the alkalinity consumption for nitrification if the influent TKN is 45 mg/L as N and complete nitrification is achieved. (Alkalinity consumed = 7.14 mg CaCO₃ per mg NH₄-N oxidized)`,
     options: ["214 mg/L as CaCO₃", "321 mg/L as CaCO₃", "450 mg/L as CaCO₃", "143 mg/L as CaCO₃"],
@@ -238,6 +242,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 25,
+    isCalc: true,
     module: "Treatment Process Monitoring",
     question: `Calculate the theoretical biogas production from a digester treating 500 kg VS/day with 60% VS destruction and a biogas yield of 0.75 m³/kg VS destroyed.`,
     options: ["225 m³/day", "300 m³/day", "375 m³/day", "450 m³/day"],
@@ -348,6 +353,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 37,
+    isCalc: true,
     module: "Treatment Process Monitoring",
     question: `An operator is monitoring ozone disinfection. The ozone dose is 8 mg/L and the contact time is 10 minutes. The ozone residual after contact is 0.5 mg/L. What is the CT value and is it sufficient for 4-log Giardia inactivation (CT requirement ≈ 0.5 mg·min/L)?`,
     options: ["CT = 5 mg·min/L — sufficient", "CT = 80 mg·min/L — more than sufficient", "CT = 0.5 mg·min/L — borderline", "CT = 8 mg·min/L — sufficient"],
@@ -1160,6 +1166,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 127,
+    isCalc: true,
     module: "Equipment Operation",
     question: `A centrifugal pump is operating at 1,450 rpm and delivering 120 L/s at 25 m TDH. If the pump speed is increased to 1,740 rpm, what is the new approximate flow rate (using the affinity laws)?`,
     options: ["120 L/s", "144 L/s", "100 L/s", "168 L/s"],
@@ -2566,6 +2573,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 283,
+    isCalc: true,
     module: "Laboratory Analysis",
     question: `A BOD₅ test is performed on a secondary effluent sample. The initial DO is 8.2 mg/L, the final DO after 5 days is 5.8 mg/L, and the dilution factor is 10. What is the BOD₅?`,
     options: ["2.4 mg/L", "24 mg/L", "0.24 mg/L", "240 mg/L"],
@@ -2613,6 +2621,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 288,
+    isCalc: true,
     module: "Laboratory Analysis",
     question: `A TSS analysis is performed on a secondary effluent sample: initial filter weight = 1.2345 g, final filter weight = 1.2378 g, sample volume = 100 mL. What is the TSS?`,
     options: ["3.3 mg/L", "33 mg/L", "330 mg/L", "0.33 mg/L"],
@@ -2975,6 +2984,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 328,
+    isCalc: true,
     module: "Laboratory Analysis",
     question: `A BOD₅ test is performed on a secondary effluent sample. Initial DO = 8.2 mg/L, final DO = 5.4 mg/L, dilution factor = 5. What is the BOD₅?`,
     options: ["2.8 mg/L", "14 mg/L", "56 mg/L", "0.56 mg/L"],
@@ -3013,6 +3023,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 332,
+    isCalc: true,
     module: "Laboratory Analysis",
     question: `What is the sludge volume index (SVI) and what does it indicate about sludge settleability?`,
     options: ["SVI measures the volatile content of sludge", "SVI = (volume of settled sludge after 30 min in mL/L) / (MLSS in g/L) × 1000; a normal SVI is 80–150 mL/g; SVI > 150 indicates poor settling (bulking); SVI < 80 may indicate pin floc or over-thickened sludge", "SVI measures the BOD of the sludge", "SVI measures the phosphorus content of sludge"],
@@ -3069,6 +3080,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 338,
+    isCalc: true,
     module: "Laboratory Analysis",
     question: `What is the standard method for measuring total phosphorus in wastewater effluent?`,
     options: ["Titration with EDTA", "Persulphate digestion to convert all phosphorus forms to orthophosphate, followed by colorimetric measurement using the ascorbic acid (molybdate blue) method or the vanadomolybdate method; results are reported as mg/L TP", "Ion-selective electrode measurement", "Gravimetric analysis"],
@@ -3636,6 +3648,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 401,
+    isCalc: true,
     module: "Laboratory Analysis",
     question: `A 25 mL sample diluted to 300 mL has an initial DO of 8.2 mg/L and a final DO of 2.1 mg/L after 5 days. What is the BOD5?`,
     options: ["6.1 mg/L", "73.2 mg/L", "29.3 mg/L", "12.0 mg/L"],
@@ -3719,6 +3732,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 410,
+    isCalc: true,
     module: "Laboratory Analysis",
     question: `A Class 3 plant's MLSS is 3,200 mg/L and MLVSS is 2,100 mg/L. What does the MLVSS/MLSS ratio of 0.66 suggest?`,
     options: ["Excellent volatile fraction - healthy biomass", "High inorganic content - possible inert solids accumulation", "Normal ratio for activated sludge", "The SRT is too short"],
@@ -4261,6 +4275,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 470,
+    isCalc: true,
     module: "Laboratory Analysis",
     question: `A plant's effluent BOD5 is 4 mg/L and TSS is 6 mg/L. What does this suggest about the treatment performance?`,
     options: ["The plant is underperforming", "The plant is achieving excellent secondary treatment - well below typical permit limits", "The MLSS is too high", "The SRT is too short"],
@@ -4353,6 +4368,7 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
   },
   {
     id: 480,
+    isCalc: true,
     module: "Treatment Process Monitoring",
     question: `A plant's effluent ammonia is 0.3 mg/L in summer but the operator is concerned about winter performance. The current SRT is 8 days. What adjustment is recommended?`,
     options: ["Decrease SRT to 5 days to improve nitrification kinetics", "Increase SRT to 15-20 days to compensate for reduced nitrification rates at lower temperatures", "Add supplemental alkalinity only", "Increase the internal recycle ratio"],

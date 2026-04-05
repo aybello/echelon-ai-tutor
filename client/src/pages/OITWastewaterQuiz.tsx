@@ -74,7 +74,7 @@ function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, mod?: string 
   const usedIds = new Set(history.map((h) => h.q.id));
   const base = mod ? CLASS1_WASTEWATER_QUESTIONS.filter(q => q.module === mod) : CLASS1_WASTEWATER_QUESTIONS;
   const basePool = trialUnlocked ? base : base.slice(0, 60);
-  const pool = calcOnly ? basePool.filter((q) => q.steps && q.steps.length > 0) : basePool;
+  const pool = calcOnly ? basePool.filter((q) => q.isCalc) : basePool;
   const remaining = pool.filter((q) => !usedIds.has(q.id));
   if (remaining.length === 0) return null;
   const shuffled = shuffle([...remaining]);

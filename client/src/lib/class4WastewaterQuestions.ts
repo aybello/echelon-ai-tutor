@@ -20,6 +20,7 @@ export interface C4WWQuestion {
   difficulty: "easy" | "medium" | "hard";
   steps?: { l: string; c: string }[];
   tip?: string;
+  isCalc?: boolean;
 }
 
 export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
@@ -116,6 +117,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 7,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Nitrification",
     question: "A Class 4 plant must maintain effluent NH3-N ≤ 1.0 mg/L year-round. In winter, the aeration basin temperature drops to 8°C. Using the Arrhenius correction (θ = 1.072), how does the nitrification rate at 8°C compare to 20°C?",
@@ -148,6 +150,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 9,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Secondary Clarifier",
     question: "A secondary clarifier with a surface area of 500 m² is receiving a flow of 15,000 m³/d with a RAS flow of 6,000 m³/d. The MLSS is 3,200 mg/L. Calculate the solids flux (kg/m²/h) to determine if the clarifier is overloaded (design limit: 6 kg/m²/h).",
@@ -255,6 +258,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 16,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — SRT",
     question: "A plant has an aeration basin volume of 4,000 m³, MLSS of 3,500 mg/L, and a WAS rate of 200 m³/d with WAS TSS of 8,000 mg/L. Calculate the sludge age (SRT) in days.",
@@ -272,6 +276,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 17,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — F:M",
     question: "Calculate the F:M ratio for a plant with: influent BOD = 200 mg/L, flow = 10,000 m³/d, aeration basin volume = 3,000 m³, MLVSS = 2,800 mg/L. Is this within the conventional activated sludge target range?",
@@ -364,6 +369,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 23,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Chlorination & Dechlorination",
     question: "A plant adds 8 mg/L of chlorine and measures a residual of 3 mg/L after 30 minutes contact time. The chlorine demand is therefore 5 mg/L. If the effluent contains 2 mg/L of ammonia-nitrogen, what form of chlorine residual is MOST likely present?",
@@ -741,6 +747,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 48,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Sludge Volume Index",
     question: "An operator performs a 30-minute settleability test (SV30) and records a settled sludge volume of 240 mL/L. The MLSS is 3,000 mg/L. Calculate the SVI and interpret the result.",
@@ -758,6 +765,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 49,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Effluent Limits",
     question: "An Ontario plant has an effluent limit of 25 mg/L CBOD5 as a monthly average. The daily results for the month are: 18, 22, 28, 15, 31, 24, 19, 27, 20, 23 mg/L (10 samples). Is the plant in compliance?",
@@ -791,6 +799,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   // --- Continuing Module 1 (51-160) ------------------------------------------
   {
     id: 51,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — Wasting",
     question: "A plant uses the constant SRT wasting method. If the target SRT is 12 days and the system has 15,000 kg of MLSS in the aeration basin, how many kg of sludge must be wasted per day?",
@@ -823,6 +832,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 53,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — RAS/WAS",
     question: "The RAS TSS is 8,500 mg/L and the MLSS is 3,000 mg/L. Using the simplified RAS ratio formula, what is the required RAS flow as a percentage of influent flow?",
@@ -930,6 +940,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 60,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — Temperature Effects",
     question: "A plant's aeration basin temperature drops from 18°C to 10°C in November. The operator maintains the same SRT and MLSS. What effluent parameter is MOST likely to deteriorate first?",
@@ -1007,6 +1018,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 65,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Secondary Clarifier Design",
     question: "A secondary clarifier has a surface overflow rate (SOR) of 32 m³/m²/d at average flow. At peak flow (2.5× average), what is the SOR and is it within the typical design limit for activated sludge?",
@@ -1039,6 +1051,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 67,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Digester Operations",
     question: "An anaerobic digester has a volatile solids loading rate of 3.5 kg VS/m³/d. The digester volume is 2,000 m³. What is the daily VS feed rate (kg/d) and is this loading within the typical mesophilic design range?",
@@ -1071,6 +1084,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 69,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — Yield",
     question: "A plant produces 2,500 kg of WAS (VSS) per day while removing 5,000 kg BOD/d. What is the observed yield (Yobs) and what does this indicate about the system's SRT?",
@@ -1088,6 +1102,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 70,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — Yield",
     question: "A plant is evaluating the impact of increasing SRT from 10 to 20 days on sludge production. If the current WAS production is 3,000 kg VSS/d, what is the EXPECTED change in sludge production?",
@@ -1105,6 +1120,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 71,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — Aeration Basin",
     question: "A completely mixed activated sludge system has an aeration basin HRT of 6 hours. The influent BOD is 220 mg/L and the effluent BOD is 12 mg/L. What is the volumetric BOD removal rate (kg BOD/m³/d)?",
@@ -1332,6 +1348,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 86,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — pH Control",
     question: "Nitrification consumes alkalinity. If the influent alkalinity is 180 mg/L as CaCO3 and the plant nitrifies 30 mg/L of NH3-N, will there be sufficient alkalinity remaining for stable operation?",
@@ -1349,6 +1366,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 87,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — pH Control",
     question: "Denitrification recovers alkalinity. If the plant denitrifies 20 mg/L of NO3-N, how much alkalinity (mg/L as CaCO3) is recovered?",
@@ -1441,6 +1459,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 93,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — Deammonification",
     question: "A plant is operating a DEMON (Deammonification) reactor for sidestream nitrogen removal. The reactor is fed with centrate containing 800 mg/L NH4-N. The target is to achieve >85% TN removal. What is the stoichiometric ratio of NH4⁺ to NO2⁻ required for the Anammox reaction?",
@@ -1549,6 +1568,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 100,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — SVI",
     question: "A plant reports SVI of 250 mL/g. MLSS is 3,200 mg/L. What is the maximum MLSS the secondary clarifier can theoretically sustain at this SVI before sludge blanket overflow occurs?",
@@ -1656,6 +1676,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 107,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — Nitrification",
     question: "Nitrification in an activated sludge system stops at 12°C. The plant is designed for 20°C. Using the Arrhenius correction (θ = 1.072), what fraction of the design nitrification rate remains at 12°C?",
@@ -1703,6 +1724,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 110,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — SRT",
     question: "A plant has an aeration basin volume of 8,000 m³, MLSS of 3,500 mg/L, daily waste sludge flow of 400 m³/d at 8,000 mg/L TSS, and effluent TSS of 12 mg/L at 40,000 m³/d. What is the SRT?",
@@ -1780,6 +1802,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 115,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — Denitrification",
     question: "A plant is adding methanol as an external carbon source for denitrification. The target NO₃⁻-N removal is 8 mg/L. Using a methanol:NO₃⁻-N ratio of 3:1, what methanol dose is required?",
@@ -1797,6 +1820,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 116,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — Phosphorus",
     question: "A plant uses ferric chloride (FeCl₃) for chemical phosphorus removal. The target effluent TP is 0.3 mg/L and influent TP is 5.5 mg/L. Using a Fe:P molar ratio of 1.5:1, what FeCl₃ dose (as Fe) is required?",
@@ -2326,6 +2350,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   // --- MODULE 3: Laboratory Analysis & Interpretation (151-250) -------------
   {
     id: 151,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "BOD Testing",
     question: "A 5-day BOD test shows the following results: initial DO = 8.6 mg/L, final DO = 2.1 mg/L, sample volume = 5 mL, bottle volume = 300 mL. What is the BOD₅?",
@@ -2343,6 +2368,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 152,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "TSS Testing",
     question: "A TSS test uses a pre-weighed filter (1.2345 g). After filtering 100 mL of sample and drying at 105°C, the filter weighs 1.2412 g. What is the TSS?",
@@ -2420,6 +2446,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 157,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Volatile Suspended Solids",
     question: "A VSS test gives: TSS = 3,200 mg/L, VSS = 2,560 mg/L. What is the VSS/TSS ratio and what does it indicate about the activated sludge?",
@@ -2437,6 +2464,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 158,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Settleability Testing",
     question: "A 30-minute settlometer test shows MLSS = 3,000 mg/L and settled sludge volume = 450 mL/L. What is the SVI and what does it indicate?",
@@ -2544,6 +2572,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 165,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Nitrogen Testing",
     question: "A TKN (total Kjeldahl nitrogen) test measures organic nitrogen + ammonia nitrogen. The TKN result is 35 mg/L and the ammonia-N is 28 mg/L. What is the organic nitrogen concentration?",
@@ -2576,6 +2605,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 167,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Sludge Volume Index",
     question: "A diluted SVI (DSVI) test is performed because the SVI exceeds 250 mL/g. The DSVI uses a diluted sample (1:2 dilution with plant effluent). The settled volume is 320 mL/L and the diluted MLSS is 1,500 mg/L. What is the DSVI?",
@@ -2623,6 +2653,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 170,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Residuals Testing",
     question: "A biosolids sample shows arsenic concentration of 45 mg/kg dry weight. The Ontario Regulation 267/03 ceiling concentration for arsenic is 75 mg/kg. Can these biosolids be land applied?",
@@ -2640,6 +2671,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 171,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Nitrogen Testing",
     question: "A nitrate test by cadmium reduction shows an absorbance of 0.285 at 543 nm. The calibration curve gives: concentration (mg/L NO₃⁻-N) = (absorbance - 0.005) / 0.028. What is the nitrate-nitrogen concentration?",
@@ -2657,6 +2689,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 172,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Quality Assurance",
     question: "A laboratory runs a matrix spike (MS) on an effluent BOD sample. The unspiked sample BOD = 8 mg/L. A known spike of 200 mg/L glucose-glutamic acid (GGA) standard is added. The spiked sample BOD = 195 mg/L. What is the matrix spike recovery and is it acceptable?",
@@ -2674,6 +2707,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 173,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Oxygen Uptake Rate",
     question: "An OUR (oxygen uptake rate) test on mixed liquor shows DO dropping from 7.2 mg/L to 3.8 mg/L in 8 minutes. MLVSS = 2,800 mg/L. What is the SOUR?",
@@ -2706,6 +2740,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 175,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Biosolids Testing",
     question: "A total solids (TS) test on biosolids cake: wet weight = 52.3 g, dry weight after 105°C drying = 11.8 g. What is the percent total solids?",
@@ -2738,6 +2773,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 177,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Dissolved Oxygen",
     question: "A DO probe reads 6.2 mg/L in a sample at 25°C. The barometric pressure is 95 kPa (standard is 101.3 kPa). What is the saturation DO at these conditions, and is the sample supersaturated?",
@@ -2770,6 +2806,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 179,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Chlorine Residual",
     question: "A DPD colorimetric test shows total chlorine = 3.2 mg/L and free chlorine = 0.8 mg/L. What is the combined chlorine (chloramine) concentration?",
@@ -2894,6 +2931,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 187,
+    isCalc: true,
     module: "Biosolids Management & Regulations",
     topic: "Biosolids Composting",
     question: "A windrow composting operation must achieve 55°C for 15 consecutive days to meet Class A biosolids requirements. The windrow temperature drops to 48°C on day 10. What must happen?",
@@ -3001,6 +3039,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 194,
+    isCalc: true,
     module: "Biosolids Management & Regulations",
     topic: "Biosolids Nitrogen",
     question: "A biosolids analysis shows total nitrogen = 45,000 mg/kg dry weight (4.5% N). The plant-available nitrogen (PAN) is calculated as: PAN = NH₄⁺-N × 0.5 + organic N × 0.3. NH₄⁺-N = 8,000 mg/kg, organic N = 37,000 mg/kg. What is the PAN?",
@@ -3078,6 +3117,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 199,
+    isCalc: true,
     module: "Biosolids Management & Regulations",
     topic: "Biosolids Nutrient Management",
     question: "A corn crop requires 180 kg N/ha. The biosolids PAN is 15 kg/dry tonne. The biosolids are 22% TS (dry weight). What is the application rate in wet tonnes per hectare?",
@@ -3170,6 +3210,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 205,
+    isCalc: true,
     module: "Biosolids Management & Regulations",
     topic: "Biosolids Anaerobic Digestion",
     question: "An anaerobic digester has a hydraulic retention time (HRT) of 20 days and a volatile solids loading rate (VSLR) of 2.8 kg VS/m³/day. The digester volume is 5,000 m³. What is the daily VS feed rate?",
@@ -3863,6 +3904,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 251,
+    isCalc: true,
     module: "Plant Management, Safety & Administration",
     topic: "Regulatory Compliance",
     question: "A plant's Environmental Compliance Approval (ECA) requires a minimum chlorine contact time (CT) of 450 mg·min/L for effluent disinfection. The contact tank volume is 600 m³ and the effluent flow is 40,000 m³/d. The chlorine residual is 1.5 mg/L. Is the CT requirement met?",
@@ -4615,6 +4657,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 301,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Biochemical Oxygen Demand",
     question: "A 5-day BOD test is run on a wastewater sample. The initial DO is 8.4 mg/L and the final DO is 2.1 mg/L. The sample was diluted 1:30. What is the BOD5?",
@@ -4632,6 +4675,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 302,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Suspended Solids",
     question: "When performing a Total Suspended Solids (TSS) test, a filter is dried at 103-105 degrees C. The tare weight of the filter is 1.5423 g, and the weight after filtering and drying is 1.5891 g. The sample volume was 100 mL. What is the TSS concentration?",
@@ -4664,6 +4708,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 304,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Settleability Testing",
     question: "A 30-minute settleability test (SSV30) on mixed liquor gives a settled sludge volume of 320 mL/L. The MLSS is 2,800 mg/L. What is the Sludge Volume Index (SVI) and what does it indicate?",
@@ -4696,6 +4741,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 306,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Nutrient Analysis",
     question: "A wastewater sample is analyzed for Total Kjeldahl Nitrogen (TKN) and ammonia nitrogen. TKN = 38 mg/L; NH3-N = 22 mg/L. What is the organic nitrogen concentration, and what does it represent?",
@@ -4818,6 +4864,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 314,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Respirometry",
     question: "A respirometry test measures the oxygen uptake rate (OUR) of activated sludge as 42 mg O2/L/h. The MLVSS is 2,200 mg/L. What is the specific oxygen uptake rate (SOUR), and what does it indicate?",
@@ -4895,6 +4942,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 319,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Nutrient Removal Monitoring",
     question: "A BNR plant is monitoring for complete denitrification. The effluent analysis shows: TN = 12 mg/L; NH3-N = 0.8 mg/L; NO3-N = 9.5 mg/L; NO2-N = 0.3 mg/L. What is the organic nitrogen in the effluent, and is denitrification performing well?",
@@ -4912,6 +4960,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 320,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Chlorine Residual Testing",
     question: "A Class 4 operator uses the DPD colorimetric method to measure chlorine residual. The test shows: free chlorine = 0.3 mg/L; total chlorine = 1.8 mg/L. What is the combined chlorine (chloramine) concentration, and what does it indicate?",
@@ -4929,6 +4978,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 321,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Sludge Dewaterability",
     question: "A capillary suction time (CST) test is performed on digested sludge before and after polymer conditioning. Before polymer: CST = 180 seconds. After polymer at 5 kg/tonne DS: CST = 28 seconds. What does this indicate?",
@@ -4946,6 +4996,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 322,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Dissolved Oxygen Profiling",
     question: "A Class 4 operator profiles DO in the aeration basin at 5 points along the plug-flow reactor. Results: inlet = 0.1 mg/L; 25% = 0.4 mg/L; 50% = 1.8 mg/L; 75% = 3.2 mg/L; outlet = 4.5 mg/L. What does this profile indicate and what adjustment is needed?",
@@ -4993,6 +5044,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 325,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Nitrification Monitoring",
     question: "A Class 4 operator tracks nitrification performance by measuring influent TKN and effluent NH3-N and NO3-N. Influent TKN = 45 mg/L; effluent NH3-N = 1.2 mg/L; effluent NO3-N = 38 mg/L; effluent NO2-N = 0.8 mg/L. What is the approximate nitrification efficiency?",
@@ -5010,6 +5062,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 326,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Sludge Age Calculation",
     question: "A Class 4 operator calculates SRT for an activated sludge system. Aeration basin volume = 4,500 m3; MLSS = 3,200 mg/L; daily waste sludge flow = 180 m3/day at 8,500 mg/L SS; effluent flow = 18,000 m3/day at 12 mg/L SS. What is the SRT?",
@@ -5027,6 +5080,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 327,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Effluent Compliance Reporting",
     question: "A Class 4 plant's ECA requires monthly average BOD5 of 10 mg/L and a single-sample maximum of 20 mg/L. The monthly results (20 samples) average to 9.6 mg/L and the highest individual result is 15 mg/L. Is the plant in compliance?",
@@ -5074,6 +5128,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 330,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Sludge Volume Index",
     question: "An operator notices the SVI has been gradually increasing from 90 to 170 mL/g over 3 weeks. Microscopy shows no dominant filaments but the floc is light and fluffy. The F:M ratio is 0.15 and DO is 2.5 mg/L. What is the most likely cause?",
@@ -5106,6 +5161,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 332,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Digester Performance",
     question: "An anaerobic digester is operating at 35 C (mesophilic). The operator monitors volatile acid (VA) to alkalinity ratio. Current results: VA = 450 mg/L as acetic acid; alkalinity = 2,800 mg/L as CaCO3. Is the digester stable?",
@@ -5153,6 +5209,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 335,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Flow Measurement",
     question: "A Parshall flume is used to measure plant influent flow. The flume has a throat width of 6 inches (0.15 m). The measured head (Ha) is 0.42 m. Using the formula Q = 2.06 x W^1.025 x Ha^1.6 (SI units), what is the flow in m3/s?",
@@ -5170,6 +5227,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 336,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Polymer Optimization",
     question: "A Class 4 operator is optimizing polymer dose for belt press dewatering. At 3 kg/tonne DS, the cake is 18% TS with poor belt tracking. At 5 kg/tonne DS, the cake is 22% TS with good belt tracking. At 8 kg/tonne DS, the cake is 21% TS with sticky, blinding belt. What is the optimal dose?",
@@ -5217,6 +5275,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 339,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Influent Characterization",
     question: "A Class 4 plant receives a new industrial discharge from a food processing facility. The influent BOD increases from 220 mg/L to 380 mg/L and the TKN increases from 35 mg/L to 55 mg/L. What is the BOD:TKN ratio, and what does it indicate for the treatment process?",
@@ -5234,6 +5293,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 340,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Effluent Phosphorus",
     question: "A Class 4 plant is required to achieve effluent TP of 0.3 mg/L. The biological process achieves 0.8 mg/L TP. Chemical polishing with ferric chloride is used. The operator adds FeCl3 at 15 mg/L. The molar ratio of Fe:P is 1.5:1 for this application. What is the expected effluent TP after chemical polishing?",
@@ -5281,6 +5341,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 343,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Sidestream Treatment",
     question: "A Class 4 plant is considering SHARON-ANAMMOX treatment for digester reject water containing 900 mg/L NH3-N. What is the advantage of ANAMMOX over conventional nitrification-denitrification for this application?",
@@ -5298,6 +5359,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 344,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Membrane Bioreactor",
     question: "A Class 4 plant operates a membrane bioreactor (MBR). The transmembrane pressure (TMP) has been increasing from 15 kPa to 45 kPa over 3 months. What does this indicate and what maintenance is required?",
@@ -5330,6 +5392,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 346,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Ozone Disinfection",
     question: "A Class 4 plant uses ozone disinfection. The operator measures ozone residual in the contact chamber as 0.05 mg/L after 10 minutes contact time. The CT value is 0.5 mg.min/L. Is this sufficient for 4-log (99.99%) Giardia inactivation if the required CT is 1.0 mg.min/L?",
@@ -5347,6 +5410,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 347,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Chlorination Dechlorination",
     question: "A Class 4 plant chlorinates effluent to 3.5 mg/L total chlorine residual and then dechlorinates with sodium bisulfite (NaHSO3). The stoichiometric ratio is 1.46 mg NaHSO3 per mg Cl2. If the target effluent total residual chlorine (TRC) is < 0.02 mg/L, what NaHSO3 dose is needed?",
@@ -5379,6 +5443,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 349,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Receiving Water Monitoring",
     question: "A Class 4 plant's ECA requires receiving water monitoring 100 m upstream and 500 m downstream of the discharge. The upstream DO is 9.2 mg/L and the downstream DO is 6.8 mg/L. The receiving water temperature is 18 C (DO saturation = 9.5 mg/L). What is the DO deficit downstream, and does it indicate a compliance concern?",
@@ -5396,6 +5461,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 350,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Process Control Calculations",
     question: "A Class 4 operator needs to calculate the food-to-microorganism (F:M) ratio. Daily BOD load = 2,400 kg/day; aeration basin volume = 3,500 m3; MLVSS = 2,600 mg/L. What is the F:M ratio?",
@@ -5954,6 +6020,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 387,
+    isCalc: true,
     module: "Biosolids Management & Regulations",
     topic: "Biosolids Digester Heating",
     question: "A Class 4 plant must heat its anaerobic digester from 15 C (winter influent temperature) to 35 C (mesophilic operating temperature). The digester receives 250 m3/day of sludge. What is the daily heat requirement in MJ/day, and can the plant's biogas CHP unit (producing 800 MJ/day of thermal energy) meet this demand?",
@@ -6092,6 +6159,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 396,
+    isCalc: true,
     module: "Equipment Operation & Maintenance",
     topic: "Digester Gas System",
     question: "A Class 4 plant's biogas system shows a sudden pressure drop in the gas collection system. The gas meter shows no flow. What are the safety procedures and diagnostic steps?",
@@ -6257,6 +6325,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 407,
+    isCalc: true,
     module: "Equipment Operation & Maintenance",
     topic: "Aeration System Control",
     question: "A Class 4 plant uses dissolved oxygen (DO) control with variable frequency drives (VFDs) on the blowers. The DO setpoint is 2.0 mg/L but the actual DO fluctuates between 0.5 and 4.5 mg/L with a 15-minute cycle. What is the cause and corrective action?",
@@ -6379,6 +6448,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 415,
+    isCalc: true,
     module: "Equipment Operation & Maintenance",
     topic: "Pump Performance Testing",
     question: "A Class 4 operator wants to verify that a centrifugal pump is operating on its design curve. The pump nameplate shows: design flow = 150 L/s at 12 m TDH. The operator measures: actual flow = 130 L/s; suction pressure = -2.5 m; discharge pressure = 8.5 m. What is the actual TDH, and is the pump operating correctly?",
@@ -6456,6 +6526,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 420,
+    isCalc: true,
     module: "Equipment Operation & Maintenance",
     topic: "Energy Management",
     question: "A Class 4 plant's energy audit shows that aeration accounts for 65% of total plant energy consumption (850,000 kWh/year). The plant has fine bubble diffusers with an SOTE of 25% and blowers operating at constant speed. What energy reduction strategies are available?",
@@ -6474,6 +6545,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   // --- MODULE 1 continued: Advanced Treatment Process Monitoring (421-460) -----
   {
     id: 421,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Membrane Bioreactor",
     question: "A Class 4 plant operates an MBR system. The MLSS is 10,000 mg/L and the membrane flux is 15 LMH (litres per square metre per hour). The TMP has been stable at 20 kPa for 3 months but suddenly increases to 45 kPa over 2 days. What is the most likely cause?",
@@ -6714,6 +6786,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 437,
+    isCalc: true,
     module: "Advanced Treatment Process Monitoring",
     topic: "Biogas Upgrading",
     question: "A Class 4 plant is evaluating upgrading its biogas (65% CH4, 35% CO2, 200 ppm H2S) to biomethane (> 97% CH4) for injection into the natural gas grid. What are the key treatment steps required?",
@@ -7285,6 +7358,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 475,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Jar Test",
     question: "A Class 4 plant lab technician performs a jar test to optimize ferric chloride dose for chemical phosphorus removal. The results show: 5 mg/L FeCl3 = TP 1.8 mg/L; 10 mg/L = TP 0.9 mg/L; 15 mg/L = TP 0.5 mg/L; 20 mg/L = TP 0.4 mg/L; 25 mg/L = TP 0.4 mg/L. The ECA limit is TP < 0.5 mg/L. What is the optimal dose?",
@@ -7302,6 +7376,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 476,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Sludge Volume Index",
     question: "A Class 4 plant measures: MLSS = 3,200 mg/L and the 30-minute settled sludge volume = 320 mL/L. What is the SVI and what does it indicate about sludge settleability?",
@@ -7319,6 +7394,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 477,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Volatile Fatty Acids",
     question: "A Class 4 plant's anaerobic digester shows: total VFA = 850 mg/L as acetic acid, total alkalinity = 3,200 mg/L as CaCO3. What is the VFA:alkalinity ratio and what does it indicate?",
@@ -7336,6 +7412,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 478,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Nitrogen Analysis",
     question: "A Class 4 plant's effluent requires TN monitoring. The lab measures: effluent NH3-N = 0.8 mg/L, NO2-N = 0.05 mg/L, NO3-N = 8.2 mg/L, organic N = 1.5 mg/L. What is the TN and does it meet a limit of 10 mg/L TN?",
@@ -7353,6 +7430,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 479,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Phosphorus Analysis",
     question: "A Class 4 plant lab measures total phosphorus (TP) using the persulfate digestion method. The calibration curve shows: 0 mg/L P = 0.000 absorbance; 0.5 mg/L = 0.125; 1.0 mg/L = 0.250; 2.0 mg/L = 0.500. The effluent sample (diluted 1:5) shows absorbance = 0.175. What is the effluent TP?",
@@ -7430,6 +7508,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 484,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Sludge Age Calculation",
     question: "A Class 4 plant has: aeration basin volume = 8,500 m3, MLSS = 3,800 mg/L, daily WAS = 180 m3/day at 8,500 mg/L TS, and effluent TSS = 12 mg/L at a flow of 22,000 m3/day. What is the sludge age (SRT)?",
@@ -7447,6 +7526,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 485,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Chemical Oxygen Demand",
     question: "A Class 4 plant uses COD as a surrogate for BOD5 for process control. The COD:BOD5 ratio of the influent is 2.1. If the influent COD = 420 mg/L, what is the estimated BOD5 and what does a COD:BOD5 ratio of 2.1 indicate about the wastewater?",
@@ -7464,6 +7544,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 486,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Alkalinity and pH",
     question: "A Class 4 plant's aeration basin shows: pH = 6.9, alkalinity = 85 mg/L as CaCO3, and nitrification is occurring. What is the concern and what action should be taken?",
@@ -7511,6 +7592,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 489,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Turbidity Measurement",
     question: "A Class 4 plant uses turbidity as a surrogate for TSS in the effluent. The correlation equation is: TSS (mg/L) = 1.8 x Turbidity (NTU) + 0.5. The online turbidimeter reads 3.2 NTU. What is the estimated TSS and is the correlation reliable for regulatory reporting?",
@@ -7528,6 +7610,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 490,
+    isCalc: true,
     module: "Laboratory Analysis & Interpretation",
     topic: "Chlorine Residual",
     question: "A Class 4 plant uses sodium hypochlorite for disinfection. The ECA requires a minimum effluent total residual chlorine (TRC) of 0.5 mg/L and a maximum of 1.0 mg/L. The amperometric titration shows TRC = 1.4 mg/L. What actions are required?",
@@ -7641,6 +7724,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
   },
   {
     id: 497,
+    isCalc: true,
     module: "Equipment Operation & Maintenance",
     topic: "Membrane Bioreactor",
     question: "A Class 4 plant operates a Membrane Bioreactor (MBR) for advanced treatment. The transmembrane pressure (TMP) has been increasing from 15 kPa to 45 kPa over 3 months. What does this indicate and what maintenance is required?",

@@ -12,6 +12,7 @@ export interface WpiClass2WaterQuestion {
   steps?: { l: string; c: string }[];
   tip?: string;
   difficulty: 'easy' | 'medium' | 'hard';
+  isCalc?: boolean;
 }
 
 export const WPI_CLASS2_WATER_MODULES = [

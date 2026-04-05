@@ -62,7 +62,7 @@ function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, calcOnly = fa
   const pool = trialUnlocked
     ? CLASS3_WW_QUESTIONS
     : CLASS3_WW_QUESTIONS.slice(0, FREE_TRIAL_POOL);
-  const calcPool = calcOnly ? pool.filter((q) => q.steps && q.steps.length > 0) : pool;
+  const calcPool = calcOnly ? pool.filter((q) => q.isCalc) : pool;
   const remaining = calcPool.filter((q) => !usedIds.has(q.id));
   if (remaining.length === 0) return null;
   const shuffled = shuffle([...remaining]);

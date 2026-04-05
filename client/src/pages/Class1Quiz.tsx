@@ -123,7 +123,7 @@ export default function Class1Quiz() {
       ? CLASS1_QUESTIONS
       : getClass1Questions(stream === "water" ? "water" : "wastewater");
     if (subModule) pool = pool.filter(q => q.module === subModule);
-    if (calcOnly) pool = pool.filter(q => q.steps && q.steps.length > 0);
+    if (calcOnly) pool = pool.filter(q => q.isCalc);
     return pool;
   }, [stream, subModule, calcOnly]);
 

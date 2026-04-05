@@ -527,23 +527,7 @@ export default function WpiLanding() {
                       Get {cls.level} Pass →
                     </button>
                   </Link>
-                  <Link href={`${cls.quizHref}?calcOnly=true`}>
-                    <button style={{
-                      width: "100%",
-                      background: "rgba(124,58,237,0.06)",
-                      color: "#7C3AED",
-                      border: "1.5px solid #7C3AED",
-                      borderRadius: 10,
-                      padding: "8px",
-                      fontSize: 12,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                      marginTop: 8,
-                    }}>
-                      🧮 Math Practice
-                    </button>
-                  </Link>
+
                 </div>
               ))}
             </div>
@@ -649,23 +633,7 @@ export default function WpiLanding() {
                       {ww.btnLabel}
                     </button>
                   </Link>
-                  <Link href={`${ww.href}?calcOnly=true`}>
-                    <button style={{
-                      width: "100%",
-                      background: "rgba(124,58,237,0.06)",
-                      color: "#7C3AED",
-                      border: "1.5px solid #7C3AED",
-                      borderRadius: 10,
-                      padding: "8px",
-                      fontSize: 12,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                      marginTop: 8,
-                    }}>
-                      🧮 Math Practice
-                    </button>
-                  </Link>
+
                 </div>
               ))}
              </div>

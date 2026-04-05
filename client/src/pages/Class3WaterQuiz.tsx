@@ -72,7 +72,7 @@ export default function Class3WaterQuiz() {
     let pool = selectedModule
       ? CLASS3_WATER_QUESTIONS.filter(q => q.module === selectedModule)
       : CLASS3_WATER_QUESTIONS;
-    if (calcOnly) pool = pool.filter(q => q.steps && q.steps.length > 0);
+    if (calcOnly) pool = pool.filter(q => q.isCalc);
     return pool.map(toCompat);
   }, [selectedModule, calcOnly]);
 
@@ -111,7 +111,7 @@ export default function Class3WaterQuiz() {
     let pool = selectedModule
       ? CLASS3_WATER_QUESTIONS.filter(q => q.module === selectedModule)
       : CLASS3_WATER_QUESTIONS;
-    if (calcOnly) pool = pool.filter(q => q.steps && q.steps.length > 0);
+    if (calcOnly) pool = pool.filter(q => q.isCalc);
     const unanswered = pool.filter(q => !answeredIds.has(q.id));
     const weak = pool.filter(q => weakIds.has(q.id));
     let next: Class3WaterQuestion;

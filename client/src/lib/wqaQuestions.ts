@@ -20,6 +20,7 @@ export interface WQAQuestion {
   explanation: string;
   steps?: { l: string; c: string }[];
   tip?: string;
+  isCalc?: boolean;
 }
 
 export const WQA_MODULES = [
@@ -41,6 +42,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   // ─── MATH (12 questions) ────────────────────────────────────────────────────
   {
     id: "WQA-M001",
+    isCalc: true,
     module: "Math",
     difficulty: "medium",
     question: "Convert 2.5 mg/L to µg/L.",
@@ -58,6 +60,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-M002",
+    isCalc: true,
     module: "Math",
     difficulty: "medium",
     question: "What is the volume of a cylinder with a diameter of 2 m and a height of 3 m? (Use π = 3.14)",
@@ -74,6 +77,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-M003",
+    isCalc: true,
     module: "Math",
     difficulty: "medium",
     question: "A water sample has an alkalinity of 120 mg/L as CaCO₃. What is the alkalinity expressed in meq/L? (Equivalent weight of CaCO₃ = 50 g/eq)",
@@ -90,6 +94,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-M004",
+    isCalc: true,
     module: "Math",
     difficulty: "medium",
     question: "How many grams of NaCl are needed to prepare 500 mL of a 0.1 N solution? (Molecular weight of NaCl = 58.5 g/mol)",
@@ -107,6 +112,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-M005",
+    isCalc: true,
     module: "Math",
     difficulty: "medium",
     question: "A stock solution has a concentration of 1000 mg/L. How many mL of this stock solution are needed to prepare 1 L of a 5 mg/L working standard?",
@@ -123,6 +129,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-M006",
+    isCalc: true,
     module: "Math",
     difficulty: "medium",
     question: "What is the normality of a 98% (w/w) H₂SO₄ solution with a density of 1.84 g/mL? (MW of H₂SO₄ = 98 g/mol, n-factor = 2)",
@@ -138,6 +145,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-M007",
+    isCalc: true,
     module: "Math",
     difficulty: "medium",
     question: "A water sample is collected in a 250 mL bottle. The lab requires the sample to be diluted 1:10 before analysis. What volume of sample (in mL) and what volume of diluent (in mL) are needed to make a 100 mL diluted sample?",
@@ -154,6 +162,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-M008",
+    isCalc: true,
     module: "Math",
     difficulty: "medium",
     question: "A rectangular settling tank is 10 m long, 4 m wide, and 2 m deep. What is its volume in litres?",
@@ -170,6 +179,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-M009",
+    isCalc: true,
     module: "Math",
     difficulty: "hard",
     question: "A sample contains 0.045 mg of fluoride in 50 mL. What is the fluoride concentration in mg/L?",
@@ -186,6 +196,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-M010",
+    isCalc: true,
     module: "Math",
     difficulty: "medium",
     question: "What is the area of a circular clarifier with a diameter of 10 m? (Use π = 3.14)",
@@ -203,6 +214,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-M011",
+    isCalc: true,
     module: "Math",
     difficulty: "hard",
     question: "A titration requires 12.5 mL of 0.02 N H₂SO₄ to titrate 100 mL of a water sample. What is the alkalinity of the sample in mg/L as CaCO₃?",
@@ -220,6 +232,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-M012",
+    isCalc: true,
     module: "Math",
     difficulty: "medium",
     question: "Express 0.005 g/L in mg/L.",
@@ -262,6 +275,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-S003",
+    isCalc: true,
     module: "Science",
     difficulty: "medium",
     question: "A water sample has a pH of 8.4. What is the hydroxide ion concentration [OH⁻] in mol/L? (Kw = 1.0 × 10⁻¹⁴ at 25°C)",
@@ -365,6 +379,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-S011",
+    isCalc: true,
     module: "Science",
     difficulty: "medium",
     question: "A water sample has a total hardness of 280 mg/L as CaCO₃. The calcium hardness is 180 mg/L as CaCO₃. What is the magnesium hardness in mg/L as Mg²⁺? (Atomic mass: Mg = 24.3, Ca = 40.1, C = 12, O = 16)",
@@ -634,6 +649,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-L012",
+    isCalc: true,
     module: "Laboratory & Sampling",
     difficulty: "medium",
     question: "When collecting a raw water sample from a groundwater well, what should be done before collecting the sample?",
@@ -885,6 +901,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   // ─── SAFETY (15 questions) ──────────────────────────────────────────────────
   {
     id: "WQA-SF001",
+    isCalc: true,
     module: "Safety",
     difficulty: "medium",
     question: "A laboratory receives a new chemical with a WHMIS 2015 label showing an exclamation mark (!) pictogram. The SDS lists an LC50 of 2,500 mg/kg (rat, oral). What hazard category does this indicate and what precautions are required?",
@@ -1013,6 +1030,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-SF010",
+    isCalc: true,
     module: "Safety",
     difficulty: "hard",
     question: "Chlorine gas is detected in the laboratory. What is the correct response?",
@@ -1063,6 +1081,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-SF013",
+    isCalc: true,
     module: "Safety",
     difficulty: "medium",
     question: "An operator notices that a chemical storage area has a strong, sweet odour. The SDS for the chemical stored there lists an IDLH of 500 ppm and a TLV-TWA of 50 ppm. What should the operator do?",
@@ -1114,6 +1133,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   // ─── WATER CHARACTERISTICS (22 questions) ──────────────────────────────────
   {
     id: "WQA-WC001",
+    isCalc: true,
     module: "Water Characteristics",
     difficulty: "medium",
     question: "What is the Ontario Drinking Water Quality Standard (ODWQS) for turbidity in treated drinking water?",
@@ -1154,6 +1174,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-WC004",
+    isCalc: true,
     module: "Water Characteristics",
     difficulty: "medium",
     question: "Water with a hardness of 200 mg/L as CaCO₃ is classified as:",
@@ -1171,6 +1192,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-WC005",
+    isCalc: true,
     module: "Water Characteristics",
     difficulty: "medium",
     question: "A water treatment plant's filtered water turbidity is 0.18 NTU. The Ontario drinking water standard requires turbidity to be ≤1 NTU at the point of entry and ≤0.3 NTU after filtration (95th percentile). Is this result compliant, and what does turbidity indicate about treatment performance?",
@@ -1304,6 +1326,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-WC015",
+    isCalc: true,
     module: "Water Characteristics",
     difficulty: "hard",
     question: "A water sample has a pH of 8.5 and an alkalinity of 200 mg/L as CaCO₃. What is the predominant form of alkalinity?",
@@ -1320,6 +1343,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-WC016",
+    isCalc: true,
     module: "Water Characteristics",
     difficulty: "medium",
     question: "What is the Ontario Maximum Allowable Concentration (MAC) for fluoride in drinking water?",
@@ -1336,6 +1360,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-WC017",
+    isCalc: true,
     module: "Water Characteristics",
     difficulty: "medium",
     question: "A groundwater source has a hydrogen sulfide (H₂S) concentration of 0.8 mg/L. The aesthetic objective for H₂S in Ontario drinking water is 0.05 mg/L. What treatment approach is most appropriate?",
@@ -1357,6 +1382,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-WC018",
+    isCalc: true,
     module: "Water Characteristics",
     difficulty: "medium",
     question: "What is 'total dissolved solids' (TDS) and how is it measured?",
@@ -1393,6 +1419,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-WC020",
+    isCalc: true,
     module: "Water Characteristics",
     difficulty: "medium",
     question: "What is the Ontario aesthetic objective for total dissolved solids (TDS) in drinking water?",
@@ -1434,6 +1461,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   // ─── BACTERIOLOGICAL TESTING (15 questions) ─────────────────────────────────
   {
     id: "WQA-B001",
+    isCalc: true,
     module: "Bacteriological Testing",
     difficulty: "medium",
     question: "What is the Ontario Maximum Allowable Concentration (MAC) for total coliform bacteria in treated drinking water?",
@@ -1478,6 +1506,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-B004",
+    isCalc: true,
     module: "Bacteriological Testing",
     difficulty: "medium",
     question: "What is the 'membrane filtration' method used for in bacteriological testing?",
@@ -1500,6 +1529,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-B005",
+    isCalc: true,
     module: "Bacteriological Testing",
     difficulty: "medium",
     question: "A bacteriological analysis reports 2 CFU/100 mL of total coliforms in a treated drinking water sample. Under Ontario's O. Reg. 170/03, is this result compliant and what action is required?",
@@ -1535,6 +1565,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-B007",
+    isCalc: true,
     module: "Bacteriological Testing",
     difficulty: "hard",
     question: "What is the 'Most Probable Number' (MPN) method in bacteriological testing?",
@@ -1570,6 +1601,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-B009",
+    isCalc: true,
     module: "Bacteriological Testing",
     difficulty: "medium",
     question: "What is the incubation temperature for total coliform analysis using the membrane filtration method?",
@@ -1646,6 +1678,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-B015",
+    isCalc: true,
     module: "Bacteriological Testing",
     difficulty: "medium",
     question: "What is the minimum volume of water required for a microbiological sample for total coliform analysis?",
@@ -1688,6 +1721,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-CT003",
+    isCalc: true,
     module: "Chemical Testing",
     difficulty: "medium",
     question: "What is 'total suspended solids' (TSS)?",
@@ -1710,6 +1744,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-CT004",
+    isCalc: true,
     module: "Chemical Testing",
     difficulty: "medium",
     question: "A water analyst is measuring fluoride using the SPADNS colorimetric method. The calibration curve shows an R² of 0.994. A sample gives an absorbance of 0.342. The calibration equation is: Concentration (mg/L) = (Absorbance - 0.015) / 0.185. What is the fluoride concentration?",
@@ -1741,6 +1776,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-CT006",
+    isCalc: true,
     module: "Chemical Testing",
     difficulty: "medium",
     question: "What is 'biochemical oxygen demand' (BOD)?",
@@ -1794,6 +1830,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-CT010",
+    isCalc: true,
     module: "Chemical Testing",
     difficulty: "medium",
     question: "What is the maximum acceptable concentration for iron in Ontario drinking water?",
@@ -1830,6 +1867,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   // ─── DISINFECTION (14 questions) ────────────────────────────────────────────
   {
     id: "WQA-D001",
+    isCalc: true,
     module: "Disinfection",
     difficulty: "medium",
     question: "What is the Ontario minimum free chlorine residual required at the point of entry to the distribution system?",
@@ -1897,6 +1935,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-D006",
+    isCalc: true,
     module: "Disinfection",
     difficulty: "medium",
     question: "At pH 7, what percentage of total chlorine exists as hypochlorous acid (HOCl)?",
@@ -1913,6 +1952,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-D007",
+    isCalc: true,
     module: "Disinfection",
     difficulty: "medium",
     question: "A water treatment plant uses chlorination and has a source water with high natural organic matter (NOM). The treated water's THM concentration is 95 µg/L. The Ontario MAC for total THMs is 100 µg/L. What strategies can reduce THM formation while maintaining adequate disinfection?",
@@ -1944,6 +1984,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-D009",
+    isCalc: true,
     module: "Disinfection",
     difficulty: "hard",
     question: "What is the 'CT value' in disinfection?",
@@ -1966,6 +2007,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-D010",
+    isCalc: true,
     module: "Disinfection",
     difficulty: "medium",
     question: "Which disinfectant is most effective against Cryptosporidium oocysts?",
@@ -2072,6 +2114,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-QA004",
+    isCalc: true,
     module: "Quality Assurance & Quality Control",
     difficulty: "medium",
     question: "What is 'method detection limit' (MDL)?",
@@ -2108,6 +2151,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-QA006",
+    isCalc: true,
     module: "Quality Assurance & Quality Control",
     difficulty: "medium",
     question: "What is 'percent recovery' (%R) in a matrix spike, and what is an acceptable range?",
@@ -2131,6 +2175,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-QA007",
+    isCalc: true,
     module: "Quality Assurance & Quality Control",
     difficulty: "medium",
     question: "What is 'relative percent difference' (RPD) used for in QC?",
@@ -2222,6 +2267,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-QA013",
+    isCalc: true,
     module: "Quality Assurance & Quality Control",
     difficulty: "medium",
     question: "What is the purpose of a 'continuing calibration verification' (CCV) standard?",
@@ -2243,6 +2289,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-QA014",
+    isCalc: true,
     module: "Quality Assurance & Quality Control",
     difficulty: "medium",
     question: "A laboratory analyst runs a calibration standard at 1.00 mg/L and gets readings of 0.97, 0.98, 0.97, and 0.98 mg/L over four consecutive days. What do these results indicate about the method?",
@@ -2350,6 +2397,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-R003",
+    isCalc: true,
     module: "Regulation",
     difficulty: "medium",
     question: "What is an 'Adverse Water Quality Incident' (AWQI) under Ontario regulations?",
@@ -2437,6 +2485,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   // ─── ADDITIONAL HARD QUESTIONS ──────────────────────────────────────────────
   {
     id: "WQA-M013",
+    isCalc: true,
     module: "Math",
     difficulty: "hard",
     question: "A water sample has a turbidity of 0.45 NTU and a temperature of 5°C. The CT value for 3-log Giardia inactivation using free chlorine at pH 7.0 is 165 mg·min/L. If the free chlorine residual is 0.8 mg/L and the T10/HRT ratio is 0.7, what minimum hydraulic retention time (HRT) is required?",
@@ -2458,6 +2507,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-M014",
+    isCalc: true,
     module: "Math",
     difficulty: "hard",
     question: "A laboratory analyst prepares a 500 mL stock solution of 1000 mg/L nitrate-N. What mass of potassium nitrate (KNO3, MW = 101.1 g/mol; N MW = 14.01 g/mol) is needed to prepare this stock?",
@@ -2479,6 +2529,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-L031",
+    isCalc: true,
     module: "Laboratory & Sampling",
     difficulty: "hard",
     question: "A method detection limit (MDL) study for lead in drinking water yields the following 7 replicate spike results (µg/L): 0.42, 0.38, 0.51, 0.45, 0.39, 0.47, 0.44. What is the calculated MDL (use t-value of 3.143 for 6 degrees of freedom at 99% confidence)?",
@@ -2500,6 +2551,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-QA019",
+    isCalc: true,
     module: "Quality Assurance & Quality Control",
     difficulty: "hard",
     question: "A laboratory runs a continuing calibration verification (CCV) standard at 50 µg/L for total trihalomethanes (TTHMs). The measured result is 53.8 µg/L. The laboratory's acceptance criterion is ±10% of the true value. What is the percent recovery, and does it pass?",
@@ -2521,6 +2573,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-CT013",
+    isCalc: true,
     module: "Chemical Testing",
     difficulty: "hard",
     question: "During a hardness titration using EDTA (0.01 M), a 100 mL water sample requires 18.7 mL of titrant to reach the endpoint. What is the total hardness expressed as mg/L CaCO3? (MW of CaCO3 = 100.09 g/mol)",
@@ -2543,6 +2596,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-B016",
+    isCalc: true,
     module: "Bacteriological Testing",
     difficulty: "hard",
     question: "A membrane filtration result shows 42 blue colonies on a 100 mL sample filtered through a 0.45 µm membrane and incubated on m-Endo medium. However, the analyst notices 8 of the colonies are metallic green with a golden sheen. How should this result be reported?",
@@ -2565,6 +2619,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-D015",
+    isCalc: true,
     module: "Disinfection",
     difficulty: "hard",
     question: "A chloramination system uses a 3:1 Cl2:NH3-N mass ratio. If the target combined chlorine residual is 2.4 mg/L as Cl2, what is the required ammonia-nitrogen dose in mg/L?",
@@ -2586,6 +2641,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-S021",
+    isCalc: true,
     module: "Science",
     difficulty: "hard",
     question: "A water sample has a pH of 8.2, a total alkalinity of 180 mg/L as CaCO3, and a calcium hardness of 240 mg/L as CaCO3. Using the Langelier Saturation Index (LSI) with pHs = 9.3 + A + B − C − D (where A = 0.10, B = 2.09, C = 2.38, D = 2.26 for these conditions), what is the LSI and what does it indicate?",
@@ -2607,6 +2663,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-SF016",
+    isCalc: true,
     module: "Safety",
     difficulty: "hard",
     question: "A laboratory analyst is preparing a 1:10 dilution of concentrated sulfuric acid (H2SO4, 98% w/w, density 1.84 g/mL) to make a 100 mL working solution. What is the correct procedure and approximate molarity of the diluted acid?",
@@ -2628,6 +2685,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-WC023",
+    isCalc: true,
     module: "Water Characteristics",
     difficulty: "hard",
     question: "A drinking water sample tests positive for geosmin at 12 ng/L. The human odour threshold for geosmin is approximately 5–10 ng/L. The water also has a TOC of 8.2 mg/L and a UV254 absorbance of 0.18 cm⁻¹. What is the specific UV absorbance (SUVA) and what does it indicate about treatment?",
@@ -2650,6 +2708,7 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
   },
   {
     id: "WQA-QA020",
+    isCalc: true,
     module: "Quality Assurance & Quality Control",
     difficulty: "hard",
     question: "A laboratory's control chart for a 1.0 mg/L fluoride standard shows the following 20 consecutive daily QC results (mg/L): 0.97, 1.02, 0.99, 1.03, 0.98, 1.01, 0.96, 1.04, 0.97, 1.02, 0.95, 1.03, 0.94, 1.05, 0.93, 1.06, 0.92, 1.07, 0.91, 1.08. The warning limits are ±2s and control limits are ±3s (s = 0.05). Which control chart rule is triggered first?",

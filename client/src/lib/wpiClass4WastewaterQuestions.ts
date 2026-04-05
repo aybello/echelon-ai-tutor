@@ -23,6 +23,7 @@ export interface WpiClass4WastewaterQuestion {
   correctAnswer: number;
   explanation: string;
   steps: { l: string; c: string }[];
+  isCalc?: boolean;
   tip?: string;
 }
 

@@ -11,6 +11,7 @@ export interface WpiClass3WaterQuestion {
   explanation: string;
   steps?: { l: string; c: string }[];
   tip?: string;
+  isCalc?: boolean;
 }
 
 export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [

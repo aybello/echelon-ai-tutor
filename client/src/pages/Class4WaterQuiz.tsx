@@ -69,8 +69,8 @@ export default function Class4WaterQuiz() {
 
   const activeQuestions = useMemo<QCompat[]>(() => {
     const pool = selectedModule
-      ? CLASS4_WATER_QUESTIONS.filter(q => q.module === selectedModule && (!calcOnly || (q.steps && q.steps.length > 0)))
-      : (calcOnly ? CLASS4_WATER_QUESTIONS.filter(q => q.steps && q.steps.length > 0) : CLASS4_WATER_QUESTIONS);
+      ? CLASS4_WATER_QUESTIONS.filter(q => q.module === selectedModule && (!calcOnly || (q.isCalc)))
+      : (calcOnly ? CLASS4_WATER_QUESTIONS.filter(q => q.isCalc) : CLASS4_WATER_QUESTIONS);
     return pool.map(toCompat);
   }, [selectedModule, calcOnly]);
 
@@ -108,7 +108,7 @@ export default function Class4WaterQuiz() {
     let pool = selectedModule
       ? CLASS4_WATER_QUESTIONS.filter(q => q.module === selectedModule)
       : CLASS4_WATER_QUESTIONS;
-    if (calcOnly) pool = pool.filter(q => q.steps && q.steps.length > 0);
+    if (calcOnly) pool = pool.filter(q => q.isCalc);
     const unanswered = pool.filter(q => !answeredIds.has(q.id));
     const weak = pool.filter(q => weakIds.has(q.id));
     let next: Class4WaterQuestion;

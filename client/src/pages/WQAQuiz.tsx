@@ -93,7 +93,7 @@ export default function WQAQuiz() {
     const filtered = selectedModule === "All"
       ? WQA_QUESTIONS
       : WQA_QUESTIONS.filter(q => q.module === selectedModule);
-    const withCalc = calcOnly ? filtered.filter(q => q.steps && q.steps.length > 0) : filtered;
+    const withCalc = calcOnly ? filtered.filter(q => q.isCalc) : filtered;
     return withCalc.map(toQuestion);
   }, [selectedModule, calcOnly]);
 

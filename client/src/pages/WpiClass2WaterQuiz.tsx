@@ -89,7 +89,7 @@ export default function WpiClass2WaterQuiz() {
     const base = selectedModule
       ? wpiClass2WaterQuestions.filter((q) => q.module === selectedModule)
       : wpiClass2WaterQuestions;
-    return base.filter((q) => !usedIds.has(q.id) && (!calcOnly || (q.steps && q.steps.length > 0)));
+    return base.filter((q) => !usedIds.has(q.id) && (!calcOnly || (q.isCalc)));
   }, [selectedModule, usedIds]);
 
   const getNext = useCallback(() => {

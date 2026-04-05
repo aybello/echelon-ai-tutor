@@ -13,6 +13,7 @@ export interface Question {
   difficulty: "easy" | "medium" | "hard";
   steps?: { l: string; c: string }[];
   tip?: string;
+  isCalc?: boolean;
 }
 
 export const QUESTIONS: Question[] = [
@@ -2258,6 +2259,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 225,
+    isCalc: true,
     module: "Laboratory Analysis",
     topic: "Laboratory Analysis",
     question: "A water sample has a pH of 7.8, temperature of 15°C, calcium hardness of 120 mg/L as CaCO3, and total alkalinity of 80 mg/L as CaCO3. The saturation pH (pHs) is calculated to be 8.1. What is the Langelier Saturation Index?",
@@ -2420,6 +2422,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 241,
+    isCalc: true,
     module: "Treatment Process",
     topic: "Treatment Process",
     question: "A water treatment plant treats 10 MGD. The alum dose is 15 mg/L. How many pounds of alum are added per day?",
@@ -2462,6 +2465,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 245,
+    isCalc: true,
     module: "Treatment Process",
     topic: "Treatment Process",
     question: "A water treatment plant has a clearwell with a volume of 2 MG. The chlorine residual entering the clearwell is 2.0 mg/L. If the baffling factor is 0.3, what is the CT value?",
@@ -2644,6 +2648,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 263,
+    isCalc: true,
     module: "Equipment Operation & Maintenance",
     topic: "Equipment Operation & Maintenance",
     question: "A centrifugal pump has a flow of 500 gpm at 60 Hz. If the VFD reduces the frequency to 48 Hz, what is the approximate new flow rate?",
@@ -2836,6 +2841,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 282,
+    isCalc: true,
     module: "Security, Safety & Administrative",
     topic: "Security, Safety & Administrative",
     question: "A water treatment plant treats 5 MGD. The chlorine dose is 2.5 mg/L and the chlorine demand is 1.8 mg/L. What is the chlorine residual, and how many pounds of chlorine are consumed per day?",
@@ -3248,6 +3254,7 @@ export const QUESTIONS: Question[] = [
   },
   {
     id: 323,
+    isCalc: true,
     module: "Treatment Process",
     topic: "Treatment Process",
     question: "A treatment plant uses free chlorine at pH 7.5 and 10°C. The required CT for 3-log Giardia inactivation is 165 mg·min/L. If the free chlorine residual entering the contact basin is 1.5 mg/L and the T10 is 90 minutes, is the required CT achieved?",

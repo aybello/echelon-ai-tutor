@@ -14,13 +14,15 @@ export interface Class1WastewaterQuestion {
   explanation: string;
   steps?: { l: string; c: string }[];
   tip?: string;
+  isCalc?: boolean;
 }
 
 export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
 
   // ─── MODULE 1: Wastewater Characteristics & Preliminary Treatment (Q 1-70) ───
 
-  { id: 1, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
+  { id: 1,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
     question: "What is the typical BOD5 concentration of raw domestic wastewater?",
     options: ["10–50 mg/L", "100–300 mg/L", "500–800 mg/L", "1000–2000 mg/L"],
     correct: 1,
@@ -40,7 +42,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Screening is the first unit operation at a WWTP headworks, removing rags, plastics, and large solids to protect downstream equipment." },
 
-  { id: 3, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "medium",
+  { id: 3,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "medium",
     question: "A wastewater plant receives a flow of 15,000 m³/day with a TSS of 240 mg/L. What is the daily TSS load in kg/day?",
     options: ["1,800 kg/day", "3,600 kg/day", "360 kg/day", "36,000 kg/day"],
     correct: 1,
@@ -64,7 +67,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Infiltration is groundwater that enters the collection system through defective pipes, joints, and manholes, increasing plant hydraulic load." },
 
-  { id: 7, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
+  { id: 7,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A grit chamber is designed for a horizontal velocity of 0.3 m/s and a flow of 0.05 m³/s. If the depth is 0.6 m, what is the required width?",
     options: ["0.14 m", "0.28 m", "0.56 m", "1.12 m"],
     correct: 1,
@@ -82,7 +86,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "BOD (biochemical oxygen demand) is the standard measure of biodegradable organic content in wastewater, representing the oxygen consumed by microorganisms over 5 days." },
 
-  { id: 10, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "medium",
+  { id: 10,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "medium",
     question: "What is the typical suspended solids (TSS) concentration in raw domestic wastewater?",
     options: ["10–30 mg/L", "50–100 mg/L", "150–350 mg/L", "500–1000 mg/L"],
     correct: 2,
@@ -96,7 +101,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Memorize typical wastewater characteristics and pollutant ranges for common parameters like TSS, BOD, and nutrients.",
   },
 
-  { id: 11, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
+  { id: 11,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A plant treats 20,000 m³/day of wastewater with an influent BOD of 250 mg/L and effluent BOD of 15 mg/L. What is the BOD removal efficiency?",
     options: ["88%", "94%", "97%", "99%"],
     correct: 1,
@@ -120,7 +126,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 0,
     explanation: "COD (Chemical Oxygen Demand) measures the total oxygen required to chemically oxidize all oxidizable matter in a sample, including both biodegradable and non-biodegradable organics." },
 
-  { id: 15, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
+  { id: 15,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A wastewater sample has a COD of 400 mg/L and a BOD5 of 200 mg/L. What does a BOD/COD ratio of 0.5 indicate?",
     options: ["The wastewater is highly toxic", "About half the organic matter is biodegradable — typical of domestic wastewater", "The wastewater is fully treated", "The COD test was performed incorrectly"],
     correct: 1,
@@ -152,7 +159,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Raw domestic wastewater is typically near neutral, with a pH of 6.5–8.0. Significant deviations may indicate industrial discharge or septic conditions." },
 
-  { id: 19, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
+  { id: 19,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A plant has a peak-to-average flow ratio of 3.5 and an average daily flow of 8,000 m³/day. What is the peak hourly flow in m³/hour?",
     options: ["333 m³/hr", "467 m³/hr", "1,167 m³/hr", "2,333 m³/hr"],
     correct: 2,
@@ -176,7 +184,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "TKN measures organic nitrogen plus ammonia nitrogen (NH3-N + organic N). It does not include oxidized forms (nitrate, nitrite), which are measured separately." },
 
-  { id: 23, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
+  { id: 23,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A wastewater plant receives 10,000 m³/day with TKN = 40 mg/L and NH3-N = 25 mg/L. What is the organic nitrogen concentration?",
     options: ["15 mg/L", "25 mg/L", "40 mg/L", "65 mg/L"],
     correct: 0,
@@ -200,7 +209,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Ontario WWTP reporting uses cubic metres per day (m³/day) as the standard flow unit, consistent with the metric system used in O. Reg. 128/04." },
 
-  { id: 27, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
+  { id: 27,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A mechanically cleaned bar screen has openings of 25 mm. What is the approximate head loss across the screen when 40% of the openings are blocked, given an approach velocity of 0.6 m/s?",
     options: ["0.01 m", "0.03 m", "0.06 m", "0.12 m"],
     correct: 2,
@@ -214,7 +224,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Remember to convert blockage percentage to a decimal for calculations and use the correct value for gravity (g).",
   },
 
-  { id: 28, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
+  { id: 28,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
     question: "What is the typical total phosphorus (TP) concentration in raw domestic wastewater?",
     options: ["0.1–0.5 mg/L", "4–12 mg/L", "50–100 mg/L", "200–400 mg/L"],
     correct: 1,
@@ -240,13 +251,15 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "FOG (fats, oils, grease) are hydrophobic organic compounds from food preparation and industrial sources. They float on water surfaces, clog pipes, and interfere with biological treatment." },
 
-  { id: 31, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
+  { id: 31,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A wastewater plant has an average flow of 25,000 m³/day and a population equivalent (PE) of 100,000. What is the per capita flow?",
     options: ["100 L/person/day", "250 L/person/day", "400 L/person/day", "500 L/person/day"],
     correct: 1,
     explanation: "Per capita flow = Total flow / Population = 25,000,000 L/day / 100,000 persons = 250 L/person/day." , steps: [ { l: "Formula", c: "Per capita flow = Total flow / Population equivalent" }, { l: "Step 1", c: "Convert total flow from m³/day to L/day: 25,000 m³/day * 1,000 L/m³ = 25,000,000 L/day" }, { l: "Substitute", c: "Per capita flow = 25,000,000 L/day / 100,000 PE" }, { l: "Calculate", c: "Per capita flow = 250 L/PE/day" }, { l: "Result", c: "The per capita flow is 250 L/PE/day." } ], tip: "Always ensure units are consistent before calculating per capita flow." },
 
-  { id: 32, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
+  { id: 32,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
     question: "What does 'hydraulic retention time' (HRT) mean in a treatment basin?",
     options: ["The time for solids to settle", "The average time wastewater spends in a treatment unit", "The time for biological oxidation to complete", "The time between backwash cycles"],
     correct: 1,
@@ -266,7 +279,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "H2S is produced by sulfate-reducing bacteria under anaerobic conditions, commonly in force mains, long gravity sewers, and wet wells where wastewater becomes septic." },
 
-  { id: 34, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "medium",
+  { id: 34,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "medium",
     question: "What is the typical ammonia nitrogen (NH3-N) concentration in raw domestic wastewater?",
     options: ["1–5 mg/L", "15–35 mg/L", "100–200 mg/L", "300–500 mg/L"],
     correct: 1,
@@ -279,7 +293,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Memorize common wastewater characteristics and typical concentration ranges for key parameters, as these are often tested.",
   },
 
-  { id: 35, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
+  { id: 35,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A plant has a wet well with a volume of 120 m³. The average inflow is 0.05 m³/s and the pump rate is 0.08 m³/s. What is the approximate pump cycle time (fill + empty)?",
     options: ["10 min", "20 min", "40 min", "80 min"],
     correct: 2,
@@ -303,7 +318,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Grease accumulates on pipe walls, reducing diameter and flow capacity, eventually causing blockages (sanitary sewer overflows) and requiring costly maintenance." },
 
-  { id: 39, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
+  { id: 39,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A wastewater plant has an influent total nitrogen of 45 mg/L (TKN = 40 mg/L, NO3-N = 5 mg/L). After treatment, effluent TN = 8 mg/L. What is the total nitrogen removal efficiency?",
     options: ["78%", "82%", "89%", "95%"],
     correct: 1,
@@ -323,7 +339,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Primary clarifiers use gravity settling to remove 50–70% of TSS and 25–40% of BOD from wastewater, producing primary sludge and a clarified effluent for secondary treatment." },
 
-  { id: 42, module: "Primary Treatment", difficulty: "medium",
+  { id: 42,
+    isCalc: true, module: "Primary Treatment", difficulty: "medium",
     question: "What is the typical surface overflow rate (SOR) for a primary clarifier?",
     options: ["0.5–1.0 m³/m²·h", "1.0–2.5 m³/m²·h", "5.0–10.0 m³/m²·h", "20–30 m³/m²·h"],
     correct: 1,
@@ -337,13 +354,15 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Memorize typical design and operating ranges for key wastewater treatment units, as these are often tested directly.",
   },
 
-  { id: 43, module: "Primary Treatment", difficulty: "medium",
+  { id: 43,
+    isCalc: true, module: "Primary Treatment", difficulty: "medium",
     question: "A primary clarifier has a surface area of 500 m² and receives a flow of 10,000 m³/day. What is the surface overflow rate?",
     options: ["10 m³/m²·day", "20 m³/m²·day", "50 m³/m²·day", "100 m³/m²·day"],
     correct: 1,
     explanation: "SOR = Flow / Surface Area = 10,000 / 500 = 20 m³/m²·day, which is within the typical range for primary clarifiers." , steps: [ { l: "Formula", c: "Surface Overflow Rate (SOR) = Flow / Surface Area" }, { l: "Step 1", c: "Identify flow = 10,000 m³/day" }, { l: "Step 2", c: "Identify surface area = 500 m²" }, { l: "Substitute", c: "SOR = 10,000 m³/day / 500 m²" }, { l: "Calculate", c: "SOR = 20 m³/m²·day" }, { l: "Result", c: "The surface overflow rate is 20 m³/m²·day." } ], tip: "SOR is crucial for clarifier performance; remember its units." },
 
-  { id: 44, module: "Primary Treatment", difficulty: "easy",
+  { id: 44,
+    isCalc: true, module: "Primary Treatment", difficulty: "easy",
     question: "What is the typical TSS removal efficiency of a primary clarifier?",
     options: ["10–20%", "50–70%", "85–95%", "99%+"],
     correct: 1,
@@ -357,7 +376,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Memorize typical removal efficiencies for common wastewater treatment processes as they are frequently tested.",
   },
 
-  { id: 45, module: "Primary Treatment", difficulty: "medium",
+  { id: 45,
+    isCalc: true, module: "Primary Treatment", difficulty: "medium",
     question: "What is the typical BOD removal efficiency of a primary clarifier?",
     options: ["5–10%", "25–40%", "70–85%", "95–99%"],
     correct: 1,
@@ -371,13 +391,15 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Memorize typical removal efficiencies for common treatment processes, as these are frequently tested.",
   },
 
-  { id: 46, module: "Primary Treatment", difficulty: "hard",
+  { id: 46,
+    isCalc: true, module: "Primary Treatment", difficulty: "hard",
     question: "A circular primary clarifier has a diameter of 20 m and a side water depth of 3.5 m. What is the hydraulic retention time at a flow of 5,000 m³/day?",
     options: ["0.5 hours", "1.1 hours", "2.2 hours", "4.4 hours"],
     correct: 2,
     explanation: "Volume = π/4 × D² × depth = 0.785 × 400 × 3.5 = 1,099 m³. HRT = V/Q = 1,099 / (5,000/24) = 1,099 / 208.3 = 5.3 hours. Recalculating: HRT = 1,099 m³ / 208.3 m³/hr ≈ 5.3 hr. Closest answer is 2.2 hours if depth = 3.5 m and diameter = 14 m: V = 0.785 × 196 × 3.5 = 538 m³; HRT = 538/208.3 = 2.6 hr ≈ 2.2 hr." , steps: [ { l: "Formula", c: "Volume of circular clarifier = (π/4) * Diameter² * Depth; Hydraulic Retention Time (HRT) = Volume / Flow" }, { l: "Step 1", c: "Calculate the volume of the clarifier: Volume = 0.785 * (20 m)² * 3.5 m = 0.785 * 400 m² * 3.5 m = 1,099 m³" }, { l: "Step 2", c: "Convert flow from m³/day to m³/hour: 5,000 m³/day / 24 hours/day = 208.33 m³/hour" }, { l: "Substitute", c: "HRT = 1,099 m³ / 208.33 m³/hour" }, { l: "Calculate", c: "HRT ≈ 5.275 hours" }, { l: "Result", c: "The hydraulic retention time is approximately 5.3 hours." } ], tip: "HRT requires consistent volume and flow units (e.g., m³ and m³/hour)." },
 
-  { id: 47, module: "Primary Treatment", difficulty: "medium",
+  { id: 47,
+    isCalc: true, module: "Primary Treatment", difficulty: "medium",
     question: "What is 'weir overflow rate' in a clarifier and why is it important?",
     options: ["The rate of sludge removal from the bottom", "The flow per unit length of effluent weir — controls turbulence near the outlet", "The chemical dosing rate", "The rate of scum removal"],
     correct: 1,
@@ -404,7 +426,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Primary sludge typically has a solids content of 1–6% total solids (TS), depending on the sludge collection frequency and thickening." },
 
-  { id: 50, module: "Primary Treatment", difficulty: "hard",
+  { id: 50,
+    isCalc: true, module: "Primary Treatment", difficulty: "hard",
     question: "A primary clarifier produces 2,500 kg/day of dry solids at 3% TS. What volume of sludge is produced per day?",
     options: ["7.5 m³/day", "25 m³/day", "83 m³/day", "250 m³/day"],
     correct: 2,
@@ -422,7 +445,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Short-circuiting occurs when density currents, wind, or inlet turbulence create preferential flow paths, reducing the effective HRT and allowing solids to escape with the effluent." },
 
-  { id: 53, module: "Primary Treatment", difficulty: "easy",
+  { id: 53,
+    isCalc: true, module: "Primary Treatment", difficulty: "easy",
     question: "What is the typical hydraulic retention time (HRT) for a primary clarifier?",
     options: ["5–10 minutes", "1–3 hours", "8–12 hours", "24–48 hours"],
     correct: 1,
@@ -436,7 +460,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "For conceptual questions, recall design standards and typical operating ranges for the specific treatment unit.",
   },
 
-  { id: 54, module: "Primary Treatment", difficulty: "hard",
+  { id: 54,
+    isCalc: true, module: "Primary Treatment", difficulty: "hard",
     question: "A primary clarifier receives a flow of 15,000 m³/day. The effluent TSS is 90 mg/L and the influent TSS is 240 mg/L. How many kg/day of solids are removed?",
     options: ["1,350 kg/day", "2,250 kg/day", "3,600 kg/day", "5,400 kg/day"],
     correct: 1,
@@ -454,7 +479,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 0,
     explanation: "Higher water temperature reduces viscosity, which decreases the drag on settling particles (Stokes' Law), improving settling velocity. Cold water is more viscous and slows settling." },
 
-  { id: 57, module: "Primary Treatment", difficulty: "hard",
+  { id: 57,
+    isCalc: true, module: "Primary Treatment", difficulty: "hard",
     question: "Using Stokes' Law, if a particle has a diameter of 0.1 mm, a density of 1,100 kg/m³, and water temperature is 20°C (viscosity = 1.002 × 10⁻³ N·s/m²), what is the settling velocity?",
     options: ["0.5 mm/s", "2.4 mm/s", "8.2 mm/s", "24 mm/s"],
     correct: 1,
@@ -472,7 +498,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "CEPT involves adding coagulants (alum, ferric chloride) and/or polymers to the primary clarifier to enhance flocculation and settling, achieving higher TSS and phosphorus removal than conventional primary treatment." },
 
-  { id: 60, module: "Primary Treatment", difficulty: "hard",
+  { id: 60,
+    isCalc: true, module: "Primary Treatment", difficulty: "hard",
     question: "A primary clarifier has a weir length of 40 m and receives a flow of 8,000 m³/day. What is the weir overflow rate?",
     options: ["100 m³/m·day", "200 m³/m·day", "400 m³/m·day", "800 m³/m·day"],
     correct: 1,
@@ -490,7 +517,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Inlet baffles dissipate the kinetic energy of the incoming flow and distribute it evenly across the clarifier cross-section, minimizing turbulence and short-circuiting." },
 
-  { id: 63, module: "Primary Treatment", difficulty: "hard",
+  { id: 63,
+    isCalc: true, module: "Primary Treatment", difficulty: "hard",
     question: "A primary clarifier is 30 m long, 8 m wide, and 3 m deep. At a flow of 12,000 m³/day, what is the HRT?",
     options: ["0.7 hours", "1.4 hours", "2.9 hours", "5.8 hours"],
     correct: 1,
@@ -514,7 +542,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Primary sludge should be pumped continuously or multiple times per day to prevent septic conditions, odour, and solids carryover. Infrequent pumping allows sludge to become anaerobic and liquefy." },
 
-  { id: 67, module: "Primary Treatment", difficulty: "hard",
+  { id: 67,
+    isCalc: true, module: "Primary Treatment", difficulty: "hard",
     question: "A primary clarifier produces sludge at 3% TS with a specific gravity of 1.02. If the volatile fraction is 70%, how many kg/day of volatile solids are produced if the total sludge volume is 50 m³/day?",
     options: ["1,071 kg/day", "1,530 kg/day", "2,142 kg/day", "3,060 kg/day"],
     correct: 0,
@@ -526,7 +555,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Rectangular clarifiers can share walls between adjacent units, making more efficient use of land area when multiple clarifiers are needed. They also allow chain-and-flight sludge collectors." },
 
-  { id: 69, module: "Primary Treatment", difficulty: "medium",
+  { id: 69,
+    isCalc: true, module: "Primary Treatment", difficulty: "medium",
     question: "What is 'sludge volume index' (SVI) and in which process is it most commonly used?",
     options: ["Primary clarifier — measures settling rate of primary sludge", "Activated sludge — measures the settling characteristics of mixed liquor suspended solids", "Anaerobic digestion — measures gas production", "Trickling filter — measures biofilm thickness"],
     correct: 1,
@@ -540,7 +570,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Focus on keywords like 'sludge volume index' and 'activated sludge' to quickly identify the correct process and purpose.",
   },
 
-  { id: 70, module: "Primary Treatment", difficulty: "hard",
+  { id: 70,
+    isCalc: true, module: "Primary Treatment", difficulty: "hard",
     question: "A primary clarifier has an influent flow of 20,000 m³/day and TSS of 280 mg/L. The effluent TSS is 100 mg/L. If the sludge is pumped at 3% TS, what is the approximate sludge pumping rate in m³/day?",
     options: ["30 m³/day", "60 m³/day", "120 m³/day", "240 m³/day"],
     correct: 2,
@@ -554,7 +585,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "The activated sludge process uses a mixed culture of microorganisms suspended in the aeration basin to biologically oxidize dissolved and colloidal organic matter (BOD) using oxygen." },
 
-  { id: 72, module: "Secondary Treatment", difficulty: "easy",
+  { id: 72,
+    isCalc: true, module: "Secondary Treatment", difficulty: "easy",
     question: "What does 'MLSS' stand for in activated sludge?",
     options: ["Mixed Liquor Suspended Solids", "Minimum Liquid Sludge Solids", "Maximum Loading Sludge Standard", "Mixed Liquid Settling Solids"],
     correct: 0,
@@ -568,7 +600,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Memorize common acronyms and their full names, as they are frequently tested in water/wastewater exams.",
   },
 
-  { id: 73, module: "Secondary Treatment", difficulty: "medium",
+  { id: 73,
+    isCalc: true, module: "Secondary Treatment", difficulty: "medium",
     question: "What is the typical MLSS concentration range for a conventional activated sludge system?",
     options: ["100–500 mg/L", "1,500–4,000 mg/L", "8,000–12,000 mg/L", "20,000–30,000 mg/L"],
     correct: 1,
@@ -594,13 +627,15 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "WAS (waste activated sludge) is the excess biomass removed from the activated sludge system to maintain the desired sludge retention time (SRT) and MLSS concentration." },
 
-  { id: 76, module: "Secondary Treatment", difficulty: "hard",
+  { id: 76,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "An activated sludge system has an aeration basin volume of 2,000 m³, MLSS of 3,000 mg/L, and WAS rate of 50 m³/day at 8,000 mg/L TSS. What is the sludge retention time (SRT)?",
     options: ["5 days", "10 days", "15 days", "20 days"],
     correct: 2,
     explanation: "SRT = (V × MLSS) / (WAS flow × WAS TSS) = (2,000 × 3,000) / (50 × 8,000) = 6,000,000 / 400,000 = 15 days." , steps: [ { l: "Formula for Sludge Retention Time (SRT)", c: "SRT (days) = (Aeration Basin Volume (m³) × MLSS (mg/L)) / (WAS Flow (m³/day) × WAS TSS (mg/L))" }, { l: "Step 1: Identify Given Values", c: "Aeration Basin Volume (V) = 2,000 m³, MLSS = 3,000 mg/L, WAS Flow = 50 m³/day, WAS TSS = 8,000 mg/L" }, { l: "Step 2: Substitute Values into Formula", c: "SRT = (2,000 m³ × 3,000 mg/L) / (50 m³/day × 8,000 mg/L)" }, { l: "Step 3: Calculate Numerator and Denominator", c: "Numerator = 6,000,000 (m³·mg/L); Denominator = 400,000 (m³·mg/L·day)" }, { l: "Step 4: Perform Division", c: "SRT = 6,000,000 / 400,000 = 15 days" }, { l: "Result", c: "The sludge retention time (SRT) is 15 days." } ], tip: "Ensure consistent units (mg/L) for MLSS and WAS TSS." },
 
-  { id: 77, module: "Secondary Treatment", difficulty: "medium",
+  { id: 77,
+    isCalc: true, module: "Secondary Treatment", difficulty: "medium",
     question: "What is the typical SRT (sludge retention time) for a conventional activated sludge system treating BOD only?",
     options: ["0.5–1 day", "3–8 days", "20–30 days", "60–90 days"],
     correct: 1,
@@ -627,13 +662,15 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Activated sludge aeration basins are typically maintained at 1.0–3.0 mg/L DO to ensure adequate oxygen for aerobic metabolism without excessive energy waste." },
 
-  { id: 80, module: "Secondary Treatment", difficulty: "hard",
+  { id: 80,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "An activated sludge system has an F/M ratio of 0.15 kg BOD/kg MLVSS·day. The aeration basin has 2,500 m³ with MLVSS of 2,400 mg/L. What is the daily BOD load?",
     options: ["360 kg/day", "900 kg/day", "1,440 kg/day", "3,600 kg/day"],
     correct: 1,
     explanation: "MLVSS mass = 2,500 m³ × 2,400 g/m³ × 0.001 kg/g = 6,000 kg. BOD load = F/M × MLVSS mass = 0.15 × 6,000 = 900 kg/day." , steps: [ { l: "Formula for MLVSS Mass", c: "MLVSS Mass (kg) = Aeration Basin Volume (m³) × MLVSS (mg/L) × Conversion Factor (kg·L / mg·m³)" }, { l: "Step 1: Calculate MLVSS Mass in the Aeration Basin", c: "MLVSS Mass = 2,500 m³ × 2,400 mg/L × 0.001 (kg·L / mg·m³) = 6,000 kg" }, { l: "Formula for Daily BOD Load", c: "Daily BOD Load (kg BOD/day) = F/M Ratio (kg BOD/kg MLVSS·day) × MLVSS Mass (kg)" }, { l: "Step 2: Calculate Daily BOD Load", c: "Daily BOD Load = 0.15 kg BOD/kg MLVSS·day × 6,000 kg = 900 kg BOD/day" }, { l: "Result", c: "The daily BOD load is 900 kg/day." } ], tip: "Pay close attention to units, especially for F/M ratio." },
 
-  { id: 81, module: "Secondary Treatment", difficulty: "medium",
+  { id: 81,
+    isCalc: true, module: "Secondary Treatment", difficulty: "medium",
     question: "What does a low F/M ratio (< 0.05) indicate in an activated sludge system?",
     options: ["Young sludge with high activity", "Extended aeration or over-aeration — old sludge with low activity", "Insufficient oxygen supply", "High BOD loading"],
     correct: 1,
@@ -654,7 +691,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Bulking sludge is caused by the overgrowth of filamentous bacteria (e.g., Thiothrix, Microthrix) that form a network preventing compaction. It results in high SVI (> 200 mL/g) and poor clarifier performance." },
 
-  { id: 83, module: "Secondary Treatment", difficulty: "easy",
+  { id: 83,
+    isCalc: true, module: "Secondary Treatment", difficulty: "easy",
     question: "What is the SVI (sludge volume index) formula?",
     options: ["SVI = MLSS / settled volume × 1,000", "SVI = (settled volume in mL/L after 30 min) / MLSS (mg/L) × 1,000", "SVI = WAS flow / RAS flow", "SVI = BOD / MLVSS"],
     correct: 1,
@@ -668,7 +706,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Memorize common formulas and their units to quickly identify the correct option on the exam.",
   },
 
-  { id: 84, module: "Secondary Treatment", difficulty: "hard",
+  { id: 84,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "An activated sludge system has a settled sludge volume of 240 mL/L after 30 minutes and an MLSS of 3,200 mg/L. What is the SVI?",
     options: ["13 mL/g", "75 mL/g", "133 mL/g", "750 mL/g"],
     correct: 1,
@@ -680,7 +719,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "The secondary clarifier separates the activated sludge biomass (MLSS) from the clarified effluent by gravity settling. The settled sludge is returned as RAS or wasted as WAS." },
 
-  { id: 86, module: "Secondary Treatment", difficulty: "medium",
+  { id: 86,
+    isCalc: true, module: "Secondary Treatment", difficulty: "medium",
     question: "What is the typical surface overflow rate for a secondary clarifier?",
     options: ["0.5–1.0 m³/m²·h", "0.8–2.0 m³/m²·h", "5.0–10 m³/m²·h", "20–30 m³/m²·h"],
     correct: 1,
@@ -694,7 +734,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Memorize typical design and operational ranges for key wastewater treatment processes, as many exam questions are knowledge-based.",
   },
 
-  { id: 87, module: "Secondary Treatment", difficulty: "hard",
+  { id: 87,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "A secondary clarifier has a diameter of 25 m and receives a combined flow (influent + RAS) of 18,000 m³/day. What is the surface overflow rate?",
     options: ["18 m³/m²·day", "37 m³/m²·day", "73 m³/m²·day", "146 m³/m²·day"],
     correct: 1,
@@ -706,7 +747,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 0,
     explanation: "Rising sludge is caused by denitrification in the secondary clarifier sludge blanket. Nitrogen gas bubbles attach to sludge floc, causing it to float and carry over into the effluent." },
 
-  { id: 89, module: "Secondary Treatment", difficulty: "easy",
+  { id: 89,
+    isCalc: true, module: "Secondary Treatment", difficulty: "easy",
     question: "What is the typical BOD removal efficiency of a complete activated sludge system (aeration + secondary clarifier)?",
     options: ["50–60%", "70–80%", "85–95%", "99%+"],
     correct: 2,
@@ -752,7 +794,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Complete nitrification (NH3 → NO3) requires 4.57 g O2/g NH3-N oxidized. This is a significant oxygen demand that must be accounted for in aeration system design." },
 
-  { id: 95, module: "Biological Nutrient Removal", difficulty: "hard",
+  { id: 95,
+    isCalc: true, module: "Biological Nutrient Removal", difficulty: "hard",
     question: "A plant nitrifies 25 mg/L of NH3-N in a flow of 10,000 m³/day. What additional oxygen demand (kg/day) is created by nitrification?",
     options: ["286 kg/day", "457 kg/day", "1,143 kg/day", "2,285 kg/day"],
     correct: 2,
@@ -770,7 +813,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "In the anaerobic zone (no O2, no NO3), PAOs release stored polyphosphate and take up volatile fatty acids (VFAs). In the subsequent aerobic zone, PAOs take up phosphorus in excess (luxury uptake), achieving net phosphorus removal." },
 
-  { id: 98, module: "Biological Nutrient Removal", difficulty: "hard",
+  { id: 98,
+    isCalc: true, module: "Biological Nutrient Removal", difficulty: "hard",
     question: "A BNR plant has an influent TN of 40 mg/L and must achieve an effluent TN of 10 mg/L. If nitrification is complete (all NH3 converted to NO3), how much NO3-N must be denitrified?",
     options: ["10 mg/L", "20 mg/L", "30 mg/L", "40 mg/L"],
     correct: 2,
@@ -800,7 +844,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "The A2O (Anaerobic–Anoxic–Oxic) process is a three-zone BNR configuration that achieves simultaneous biological nitrogen and phosphorus removal in a single sludge system." },
 
-  { id: 103, module: "Biological Nutrient Removal", difficulty: "medium",
+  { id: 103,
+    isCalc: true, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is the minimum SRT required for reliable nitrification at 15°C?",
     options: ["1–2 days", "3–5 days", "10–15 days", "30–40 days"],
     correct: 2,
@@ -840,7 +885,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Rapid sand filters or dual-media (anthracite/sand) filters are most commonly used for tertiary filtration, removing residual TSS and associated BOD/phosphorus from secondary effluent." },
 
-  { id: 108, module: "Tertiary Treatment & Filtration", difficulty: "medium",
+  { id: 108,
+    isCalc: true, module: "Tertiary Treatment & Filtration", difficulty: "medium",
     question: "What is the typical TSS removal efficiency of tertiary filtration?",
     options: ["10–20%", "40–60%", "70–90%", "99%+"],
     correct: 2,
@@ -854,7 +900,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "For knowledge-based questions, recall typical operational ranges and treatment goals for each process stage.",
   },
 
-  { id: 109, module: "Tertiary Treatment & Filtration", difficulty: "hard",
+  { id: 109,
+    isCalc: true, module: "Tertiary Treatment & Filtration", difficulty: "hard",
     question: "A tertiary filter has a filtration rate of 5 m/h and a surface area of 100 m². What is the design flow in m³/day?",
     options: ["500 m³/day", "1,200 m³/day", "12,000 m³/day", "120,000 m³/day"],
     correct: 2,
@@ -910,7 +957,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Chlorination (using chlorine gas, sodium hypochlorite, or calcium hypochlorite) is the most widely used disinfection method at Ontario WWTPs due to its effectiveness, cost, and ease of operation." },
 
-  { id: 118, module: "Disinfection", difficulty: "medium",
+  { id: 118,
+    isCalc: true, module: "Disinfection", difficulty: "medium",
     question: "What is 'CT value' in disinfection and what does it represent?",
     options: ["Chlorine Toxicity — the toxic dose of chlorine", "Concentration × Time — the product of disinfectant concentration and contact time, used to predict pathogen inactivation", "Chlorine Treatment — the total chlorine applied", "Contact Time — the HRT of the disinfection basin"],
     correct: 1,
@@ -924,7 +972,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Always remember that CT value is a direct product of disinfectant concentration and contact time, crucial for pathogen inactivation.",
   },
 
-  { id: 119, module: "Disinfection", difficulty: "hard",
+  { id: 119,
+    isCalc: true, module: "Disinfection", difficulty: "hard",
     question: "A chlorine contact chamber has a volume of 500 m³ and receives a flow of 10,000 m³/day. The chlorine residual is 0.5 mg/L. What is the CT value?",
     options: ["0.6 mg·min/L", "36 mg·min/L", "72 mg·min/L", "360 mg·min/L"],
     correct: 1,
@@ -963,7 +1012,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 2,
     explanation: "Biogas from anaerobic digestion typically contains 60–70% methane (CH4) and 30–40% carbon dioxide (CO2), with trace amounts of H2S and other gases." },
 
-  { id: 125, module: "Solids Handling & Biosolids", difficulty: "hard",
+  { id: 125,
+    isCalc: true, module: "Solids Handling & Biosolids", difficulty: "hard",
     question: "An anaerobic digester processes 100 m³/day of sludge at 4% TS with 70% VS. If VS reduction is 40%, how many kg/day of VS are destroyed?",
     options: ["280 kg/day", "1,120 kg/day", "2,800 kg/day", "11,200 kg/day"],
     correct: 1,
@@ -999,7 +1049,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Belt filter presses use gravity drainage and mechanical pressure between two porous belts to dewater sludge, producing a cake with 18–25% TS." },
 
-  { id: 131, module: "Solids Handling & Biosolids", difficulty: "hard",
+  { id: 131,
+    isCalc: true, module: "Solids Handling & Biosolids", difficulty: "hard",
     question: "A centrifuge dewaters 50 m³/day of digested sludge at 2% TS to a cake at 22% TS. What is the approximate cake volume produced?",
     options: ["0.5 m³/day", "4.5 m³/day", "9.1 m³/day", "18.2 m³/day"],
     correct: 1,
@@ -1023,7 +1074,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Ontario Regulation 267/03 (Ontario Nutrient Management Act) governs the land application of biosolids, setting requirements for nutrient management plans, setbacks, and application rates." },
 
-  { id: 135, module: "Solids Handling & Biosolids", difficulty: "hard",
+  { id: 135,
+    isCalc: true, module: "Solids Handling & Biosolids", difficulty: "hard",
     question: "An anaerobic digester has a volume of 1,500 m³ and receives 80 m³/day of sludge. What is the hydraulic retention time (HRT)?",
     options: ["9.4 days", "18.75 days", "37.5 days", "75 days"],
     correct: 1,
@@ -1047,7 +1099,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Healthy anaerobic digesters operate at pH 6.8–7.4. Methanogens are sensitive to pH; values below 6.5 inhibit methanogenesis and cause digester failure." },
 
-  { id: 139, module: "Solids Handling & Biosolids", difficulty: "hard",
+  { id: 139,
+    isCalc: true, module: "Solids Handling & Biosolids", difficulty: "hard",
     question: "A digester produces 800 m³/day of biogas at 65% methane. What is the daily methane production in m³/day?",
     options: ["280 m³/day", "520 m³/day", "640 m³/day", "800 m³/day"],
     correct: 1,
@@ -1115,7 +1168,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "A spill response plan documents procedures for containing and cleaning up accidental releases of hazardous materials (chlorine gas, sodium hypochlorite, ferric chloride), protecting workers, the public, and the environment." },
 
-  { id: 150, module: "Regulations, Safety & Operations", difficulty: "hard",
+  { id: 150,
+    isCalc: true, module: "Regulations, Safety & Operations", difficulty: "hard",
     question: "A WWTP has an ECA effluent limit of 15 mg/L BOD and 15 mg/L TSS. The plant's monthly average results are BOD = 12 mg/L and TSS = 18 mg/L. What is the compliance status?",
     options: ["In compliance for both parameters", "In compliance for BOD; non-compliant for TSS", "Non-compliant for BOD; in compliance for TSS", "Non-compliant for both parameters"],
     correct: 1,
@@ -1195,7 +1249,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "An oxidation ditch is an extended aeration activated sludge variant with a continuous oval channel. Brush rotors or surface aerators provide oxygen and circulation. It operates at long SRTs (20–30 days) and produces a stable, nitrified effluent." },
 
-  { id: 163, module: "Secondary Treatment", difficulty: "hard",
+  { id: 163,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "An activated sludge plant has an influent BOD of 200 mg/L, flow of 12,000 m³/day, MLVSS of 2,500 mg/L, and aeration basin volume of 3,000 m³. What is the F/M ratio?",
     options: ["0.08 kg BOD/kg MLVSS/day", "0.16 kg BOD/kg MLVSS/day", "0.32 kg BOD/kg MLVSS/day", "0.64 kg BOD/kg MLVSS/day"],
     correct: 1,
@@ -1207,7 +1262,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "UV disinfection does not produce halogenated disinfection byproducts (THMs, HAAs) and does not require dechlorination before discharge, making it environmentally preferable for many applications." },
 
-  { id: 165, module: "Disinfection", difficulty: "hard",
+  { id: 165,
+    isCalc: true, module: "Disinfection", difficulty: "hard",
     question: "A UV disinfection system must achieve 4-log inactivation of E. coli. The required UV dose is 40 mJ/cm². At a flow of 8,000 m³/day through a channel with 20 UV lamps each delivering 2 mJ/cm² per lamp, is the dose sufficient?",
     options: ["Yes — 40 mJ/cm² is achieved", "No — only 40 mJ/cm² is achieved but 4-log requires 100 mJ/cm²", "Yes — 20 lamps × 2 mJ/cm² = 40 mJ/cm² meets the 40 mJ/cm² requirement", "No — UV dose depends on flow, not lamp count"],
     correct: 2,
@@ -1225,7 +1281,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Flow splitters divide the incoming flow equally between parallel treatment trains (clarifiers, aeration basins), ensuring balanced loading and preventing overloading of individual units." },
 
-  { id: 168, module: "Biological Nutrient Removal", difficulty: "hard",
+  { id: 168,
+    isCalc: true, module: "Biological Nutrient Removal", difficulty: "hard",
     question: "A BNR plant has an influent TP of 8 mg/L and must achieve effluent TP < 0.5 mg/L. EBPR achieves 1.5 mg/L. How much additional chemical phosphorus removal (as mg/L TP) is required?",
     options: ["0.5 mg/L", "1.0 mg/L", "1.5 mg/L", "7.5 mg/L"],
     correct: 1,
@@ -1237,7 +1294,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Constructed wetlands use natural processes (plant uptake, microbial activity, sedimentation) to polish secondary effluent, removing residual BOD, TSS, nitrogen, and phosphorus in a low-energy, low-maintenance system." },
 
-  { id: 170, module: "Solids Handling & Biosolids", difficulty: "medium",
+  { id: 170,
+    isCalc: true, module: "Solids Handling & Biosolids", difficulty: "medium",
     question: "What is 'sludge age' and how does it relate to SRT?",
     options: ["The age of the sludge in years since the plant was built", "The average time solids spend in the biological treatment system — equivalent to SRT (sludge retention time)", "The time since the last sludge wasting event", "The age of the sludge in the digester"],
     correct: 1,
@@ -1258,13 +1316,15 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Pin floc (or dispersed growth) consists of very small, poorly settling floc particles that cause turbid secondary effluent. It is associated with low F/M ratios, high SRTs, or toxic influent." },
 
-  { id: 172, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
+  { id: 172,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A plant receives a flow of 30,000 m³/day with BOD = 220 mg/L and TSS = 260 mg/L. What is the organic loading in kg BOD/day and the solids loading in kg TSS/day?",
     options: ["BOD: 6,600 kg/day; TSS: 7,800 kg/day", "BOD: 660 kg/day; TSS: 780 kg/day", "BOD: 66,000 kg/day; TSS: 78,000 kg/day", "BOD: 6.6 kg/day; TSS: 7.8 kg/day"],
     correct: 0,
     explanation: "BOD load = 220 × 30,000 × 0.001 = 6,600 kg/day. TSS load = 260 × 30,000 × 0.001 = 7,800 kg/day." , steps: [ { l: "Formula for Organic Loading (BOD)", c: "BOD Load (kg/day) = BOD (mg/L) × Flow (m³/day) × Conversion Factor (0.001 kg/mg * L/m³)" }, { l: "Substitute for BOD Load", c: "BOD Load = 220 mg/L × 30,000 m³/day × 0.001" }, { l: "Calculate BOD Load", c: "BOD Load = 6,600 kg/day" }, { l: "Formula for Solids Loading (TSS)", c: "TSS Load (kg/day) = TSS (mg/L) × Flow (m³/day) × Conversion Factor (0.001 kg/mg * L/m³)" }, { l: "Substitute for TSS Load", c: "TSS Load = 260 mg/L × 30,000 m³/day × 0.001" }, { l: "Calculate TSS Load", c: "TSS Load = 7,800 kg/day" }, { l: "Result", c: "The organic loading is 6,600 kg BOD/day and the solids loading is 7,800 kg TSS/day." } ], tip: "Loading calculations use flow and concentration, remember the 0.001 conversion factor." },
 
-  { id: 173, module: "Disinfection", difficulty: "medium",
+  { id: 173,
+    isCalc: true, module: "Disinfection", difficulty: "medium",
     question: "What is 'chlorine demand' in wastewater disinfection?",
     options: ["The total chlorine applied to the wastewater", "The amount of chlorine consumed by reactions with organic matter, ammonia, and other reducing agents before a residual is established", "The chlorine residual in the effluent", "The chlorine dose required for 4-log inactivation"],
     correct: 1,
@@ -1284,7 +1344,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "An EEP documents the procedures, responsibilities, and resources for responding to environmental emergencies at the WWTP, minimizing the impact on the environment and ensuring regulatory compliance." },
 
-  { id: 175, module: "Primary Treatment", difficulty: "hard",
+  { id: 175,
+    isCalc: true, module: "Primary Treatment", difficulty: "hard",
     question: "A primary clarifier has an influent TSS of 280 mg/L and achieves 60% TSS removal. The effluent flow is 18,000 m³/day. What is the primary sludge production in kg/day?",
     options: ["1,512 kg/day", "3,024 kg/day", "5,040 kg/day", "8,400 kg/day"],
     correct: 1,
@@ -1296,7 +1357,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Internal recycle (IR) pumps nitrate-rich mixed liquor from the aerobic zone back to the anoxic zone, providing the nitrate needed for denitrification and achieving total nitrogen removal." },
 
-  { id: 177, module: "Tertiary Treatment & Filtration", difficulty: "hard",
+  { id: 177,
+    isCalc: true, module: "Tertiary Treatment & Filtration", difficulty: "hard",
     question: "A tertiary filter receives secondary effluent with TSS = 20 mg/L at a flow of 15,000 m³/day. The filter achieves 80% TSS removal. What is the filtered effluent TSS?",
     options: ["2 mg/L", "4 mg/L", "8 mg/L", "16 mg/L"],
     correct: 1,
@@ -1314,7 +1376,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Diurnal flow variation is the predictable daily pattern of wastewater flow, with peaks typically in the morning (7-9 AM) and evening (6-9 PM) corresponding to residential water use patterns, and a minimum at night (2-4 AM)." },
 
-  { id: 180, module: "Secondary Treatment", difficulty: "hard",
+  { id: 180,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "An activated sludge system has MLSS = 3,500 mg/L, aeration basin volume = 4,000 m³, and SRT = 12 days. What is the daily WAS production in kg/day?",
     options: ["583 kg/day", "1,167 kg/day", "4,667 kg/day", "14,000 kg/day"],
     correct: 1,
@@ -1338,7 +1401,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "A primary effluent pump station lifts primary effluent to the secondary treatment system when the hydraulic grade line does not allow gravity flow, ensuring continuous treatment." },
 
-  { id: 184, module: "Biological Nutrient Removal", difficulty: "hard",
+  { id: 184,
+    isCalc: true, module: "Biological Nutrient Removal", difficulty: "hard",
     question: "A nitrification system must reduce NH3-N from 30 mg/L to < 3 mg/L. If the nitrification rate is 0.05 kg NH3-N/kg MLVSS/day, and the flow is 10,000 m³/day, what MLVSS mass is required?",
     options: ["270 kg", "540 kg", "5,400 kg", "54,000 kg"],
     correct: 2,
@@ -1374,7 +1438,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Chlorine contact time is the time wastewater spends in the chlorine contact chamber. Longer contact time (combined with adequate chlorine concentration) achieves greater CT values and higher pathogen inactivation." },
 
-  { id: 190, module: "Regulations, Safety & Operations", difficulty: "hard",
+  { id: 190,
+    isCalc: true, module: "Regulations, Safety & Operations", difficulty: "hard",
     question: "A WWTP operator notices that the secondary clarifier effluent TSS has increased from 12 mg/L to 35 mg/L over two days. What is the most likely cause and appropriate response?",
     options: ["Increase chlorine dose to improve disinfection", "Investigate for bulking sludge, rising sludge, or hydraulic overloading — check SVI, RAS rate, and DO; adjust WAS and RAS as needed", "Increase primary sludge pumping rate", "Reduce influent flow by bypassing"],
     correct: 1,
@@ -1412,7 +1477,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Water reclamation involves treating wastewater to a high quality for beneficial reuse, including agricultural and landscape irrigation, industrial cooling water, groundwater recharge, and non-potable municipal uses." },
 
-  { id: 195, module: "Solids Handling & Biosolids", difficulty: "hard",
+  { id: 195,
+    isCalc: true, module: "Solids Handling & Biosolids", difficulty: "hard",
     question: "A WWTP produces 2,000 kg/day of dry biosolids at 22% TS. The biosolids are land-applied at a rate of 5 dry tonnes/hectare. How many hectares can be applied per day?",
     options: ["0.4 ha/day", "2.0 ha/day", "4.0 ha/day", "10.0 ha/day"],
     correct: 0,
@@ -1436,7 +1502,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Odour control systems capture odorous air from covered process units (headworks, primary clarifiers, sludge handling) and treat it (biofilters, chemical scrubbers, activated carbon) before release to the atmosphere." },
 
-  { id: 199, module: "Disinfection", difficulty: "medium",
+  { id: 199,
+    isCalc: true, module: "Disinfection", difficulty: "medium",
     question: "What is the effect of high TSS on UV disinfection efficiency?",
     options: ["High TSS improves UV disinfection by scattering UV light", "High TSS reduces UV disinfection efficiency by shielding pathogens from UV radiation", "TSS has no effect on UV disinfection", "High TSS increases UV lamp life"],
     correct: 1,
@@ -1458,7 +1525,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
 
   // ─── Additional questions 201-300 across all modules ─────────────────────
 
-  { id: 201, module: "Secondary Treatment", difficulty: "hard",
+  { id: 201,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "An activated sludge plant has an aeration basin volume of 5,000 m³, MLSS of 2,800 mg/L, influent flow of 20,000 m³/day, and influent BOD of 180 mg/L. What is the volumetric BOD loading rate in kg BOD/m³/day?",
     options: ["0.36 kg BOD/m³/day", "0.72 kg BOD/m³/day", "1.44 kg BOD/m³/day", "3.60 kg BOD/m³/day"],
     correct: 1,
@@ -1494,7 +1562,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Primary sludge fermentation (partial anaerobic digestion of primary sludge) generates VFAs that serve as readily biodegradable carbon for EBPR (phosphorus release in the anaerobic zone) and denitrification." },
 
-  { id: 207, module: "Disinfection", difficulty: "hard",
+  { id: 207,
+    isCalc: true, module: "Disinfection", difficulty: "hard",
     question: "A chlorine contact chamber has a T10/T ratio of 0.5 (T10 = time for 10% of tracer to pass through). The HRT is 60 minutes and the chlorine residual is 1.0 mg/L. What is the effective CT value?",
     options: ["30 mg·min/L", "60 mg·min/L", "120 mg·min/L", "600 mg·min/L"],
     correct: 0,
@@ -1578,7 +1647,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "CSOs occur when combined sewer capacity is exceeded during wet weather, discharging a mixture of raw sewage and stormwater to receiving waters. They cause water quality impairment (pathogens, BOD, nutrients, floatables) and are regulated under Ontario's CSO Control Policy." },
 
-  { id: 221, module: "Primary Treatment", difficulty: "hard",
+  { id: 221,
+    isCalc: true, module: "Primary Treatment", difficulty: "hard",
     question: "A WWTP has two primary clarifiers, each 20 m diameter and 3 m SWD. One clarifier is taken offline for maintenance. The plant flow is 8,000 m³/day. What is the SOR on the remaining clarifier?",
     options: ["25 m³/m²/day", "50 m³/m²/day", "100 m³/m²/day", "200 m³/m²/day"],
     correct: 1,
@@ -1632,7 +1702,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Asset management planning involves inventorying infrastructure assets, assessing their condition and remaining life, and planning maintenance, rehabilitation, and replacement to maintain service levels at minimum lifecycle cost." },
 
-  { id: 230, module: "Secondary Treatment", difficulty: "hard",
+  { id: 230,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "An activated sludge system has MLVSS = 2,200 mg/L, aeration basin volume = 3,500 m³, influent BOD = 160 mg/L, and flow = 15,000 m³/day. What is the F/M ratio?",
     options: ["0.10 kg BOD/kg MLVSS/day", "0.31 kg BOD/kg MLVSS/day", "0.62 kg BOD/kg MLVSS/day", "1.24 kg BOD/kg MLVSS/day"],
     correct: 1,
@@ -1716,7 +1787,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Continuous monitors (online analyzers for DO, pH, turbidity, ammonia) provide real-time data for process control and early warning. Grab samples are collected at specific times for laboratory analysis, providing accurate data for regulatory reporting." },
 
-  { id: 244, module: "Secondary Treatment", difficulty: "hard",
+  { id: 244,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "An activated sludge system operates at SRT = 10 days, MLSS = 3,000 mg/L, and aeration basin volume = 2,500 m³. If the WAS is wasted from the RAS line at 6,000 mg/L TSS, what is the WAS flow rate in m³/day?",
     options: ["12.5 m³/day", "25 m³/day", "50 m³/day", "125 m³/day"],
     correct: 3,
@@ -1767,13 +1839,15 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "RAS is settled sludge from the secondary clarifier that is recycled back to the aeration basin to maintain the MLSS concentration needed for biological treatment. Typical RAS rates are 50–100% of influent flow." },
 
-  { id: 252, module: "Secondary Treatment", difficulty: "hard",
+  { id: 252,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "An activated sludge plant has influent flow = 25,000 m³/day, RAS flow = 12,500 m³/day, and MLSS = 3,200 mg/L. What is the secondary clarifier underflow TSS concentration?",
     options: ["3,200 mg/L", "6,400 mg/L", "9,600 mg/L", "12,800 mg/L"],
     correct: 2,
     explanation: "Mass balance: (Q + QRAS) × MLSS = QRAS × RASS. (25,000 + 12,500) × 3,200 = 12,500 × RASS. RASS = 37,500 × 3,200 / 12,500 = 9,600 mg/L." , steps: [ { l: "Formula (Mass Balance)", c: "(Influent Flow + RAS Flow) × MLSS Concentration = RAS Flow × RASS Concentration" }, { l: "Step 1: Rearrange formula to solve for RASS Concentration", c: "RASS Concentration = ((Influent Flow + RAS Flow) × MLSS Concentration) / RAS Flow" }, { l: "Substitute values", c: "RASS Concentration = ((25,000 m³/day + 12,500 m³/day) × 3,200 mg/L) / 12,500 m³/day" }, { l: "Calculate numerator", c: "(37,500 m³/day) × 3,200 mg/L = 120,000,000 mg·m³/L·day" }, { l: "Calculate RASS Concentration", c: "RASS Concentration = 120,000,000 mg·m³/L·day / 12,500 m³/day = 9,600 mg/L" }, { l: "Result", c: "The secondary clarifier underflow TSS concentration is 9,600 mg/L." } ], tip: "Mass balance problems require careful tracking of flows and concentrations." },
 
-  { id: 253, module: "Secondary Treatment", difficulty: "medium",
+  { id: 253,
+    isCalc: true, module: "Secondary Treatment", difficulty: "medium",
     question: "What is 'hydraulic retention time' (HRT) in an activated sludge aeration basin?",
     options: ["The time solids spend in the system", "The average time wastewater spends in the aeration basin = Volume / Flow", "The time for complete BOD removal", "The time for complete nitrification"],
     correct: 1,
@@ -1799,7 +1873,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "In a plug flow system, wastewater flows through a long basin with a substrate gradient from high (inlet) to low (outlet). This provides higher BOD removal efficiency but is more susceptible to toxic shock loads than completely mixed systems." },
 
-  { id: 256, module: "Secondary Treatment", difficulty: "hard",
+  { id: 256,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "A secondary clarifier has a diameter of 25 m, depth of 3.5 m, and receives a combined flow (Q + RAS) of 20,000 m³/day. What is the solids loading rate if MLSS = 3,000 mg/L?",
     options: ["40 kg/m²/day", "80 kg/m²/day", "120 kg/m²/day", "160 kg/m²/day"],
     correct: 0,
@@ -1817,7 +1892,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 0,
     explanation: "The UCT (University of Cape Town) process returns RAS to the anoxic zone (not the anaerobic zone), preventing nitrate from entering the anaerobic zone and inhibiting EBPR. An internal recycle from anoxic to anaerobic provides VFA-rich mixed liquor to the PAOs." },
 
-  { id: 259, module: "Biological Nutrient Removal", difficulty: "hard",
+  { id: 259,
+    isCalc: true, module: "Biological Nutrient Removal", difficulty: "hard",
     question: "A BNR plant achieves 85% TN removal from an influent TN of 40 mg/L. What is the effluent TN concentration?",
     options: ["2 mg/L", "6 mg/L", "8 mg/L", "34 mg/L"],
     correct: 1,
@@ -1841,13 +1917,15 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "MBR combines activated sludge treatment with membrane filtration (MF or UF), eliminating the secondary clarifier. It produces very high-quality effluent (TSS < 1 mg/L, turbidity < 0.2 NTU), operates at high MLSS (8,000–15,000 mg/L), and has a smaller footprint than conventional systems." },
 
-  { id: 263, module: "Tertiary Treatment & Filtration", difficulty: "hard",
+  { id: 263,
+    isCalc: true, module: "Tertiary Treatment & Filtration", difficulty: "hard",
     question: "A tertiary sand filter has a surface area of 200 m², receives a flow of 8,000 m³/day, and achieves 85% TSS removal from an influent TSS of 15 mg/L. What is the filtered effluent TSS and the hydraulic loading rate?",
     options: ["TSS = 2.25 mg/L; HLR = 40 m³/m²/day", "TSS = 2.25 mg/L; HLR = 80 m³/m²/day", "TSS = 12.75 mg/L; HLR = 40 m³/m²/day", "TSS = 12.75 mg/L; HLR = 80 m³/m²/day"],
     correct: 0,
     explanation: "TSS removed = 15 × 0.85 = 12.75 mg/L. Effluent TSS = 15 - 12.75 = 2.25 mg/L. HLR = 8,000 / 200 = 40 m³/m²/day." , steps: [ { l: "Formula (Effluent TSS)", c: "Effluent TSS = Influent TSS - (Influent TSS × TSS Removal Efficiency)" }, { l: "Formula (Hydraulic Loading Rate)", c: "Hydraulic Loading Rate (HLR) = Flow Rate / Surface Area" }, { l: "Step 1: Calculate Effluent TSS", c: "TSS Removed = 15 mg/L × 0.85 = 12.75 mg/L. Effluent TSS = 15 mg/L - 12.75 mg/L = 2.25 mg/L" }, { l: "Substitute (HLR)", c: "HLR = 8,000 m³/day / 200 m²" }, { l: "Calculate (HLR)", c: "HLR = 40 m³/m²/day" }, { l: "Result", c: "The filtered effluent TSS is 2.25 mg/L and the hydraulic loading rate is 40 m³/m²/day." } ], tip: "Hydraulic loading rate is simply flow divided by the filter's surface area." },
 
-  { id: 264, module: "Disinfection", difficulty: "medium",
+  { id: 264,
+    isCalc: true, module: "Disinfection", difficulty: "medium",
     question: "What is the 'CT concept' in disinfection and how is it calculated?",
     options: ["CT = Concentration × Time — the product of disinfectant concentration and contact time, used to predict pathogen inactivation", "CT = Chlorine × Temperature", "CT = Contact time only", "CT = Concentration only"],
     correct: 0,
@@ -1868,7 +1946,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 0,
     explanation: "Chlorine residual is the chlorine remaining after the demand has been satisfied. It confirms that adequate disinfection has occurred. However, chlorine residual in WWTP effluent is toxic to aquatic life and must be removed by dechlorination before discharge." },
 
-  { id: 266, module: "Disinfection", difficulty: "hard",
+  { id: 266,
+    isCalc: true, module: "Disinfection", difficulty: "hard",
     question: "A chlorine contact chamber has a volume of 500 m³ and receives a flow of 15,000 m³/day. The T10/HRT ratio is 0.6 and the chlorine residual is 0.8 mg/L. What is the CT value?",
     options: ["11.5 mg·min/L", "19.2 mg·min/L", "28.8 mg·min/L", "48.0 mg·min/L"],
     correct: 1,
@@ -1880,7 +1959,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Peracetic acid (PAA) is an effective disinfectant that does not produce halogenated DBPs and breaks down to acetic acid and oxygen, so no dechlorination is required. It is increasingly used where chlorination DBPs or toxicity are concerns." },
 
-  { id: 268, module: "Disinfection", difficulty: "medium",
+  { id: 268,
+    isCalc: true, module: "Disinfection", difficulty: "medium",
     question: "What is the effect of pH on chlorine disinfection efficiency?",
     options: ["Higher pH improves disinfection efficiency", "Lower pH (< 7) favours hypochlorous acid (HOCl), which is 80–100x more effective than hypochlorite ion (OCl-) — lower pH improves disinfection efficiency", "pH has no effect on chlorine disinfection", "Higher pH favours HOCl formation"],
     correct: 1,
@@ -1900,13 +1980,15 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Volatile solids (VS) are the fraction of total solids that volatilize at 550°C, representing the organic content. VS reduction during digestion (typically 30–50% for mesophilic AD) is the key measure of digestion efficiency and sludge stabilization." },
 
-  { id: 270, module: "Solids Handling & Biosolids", difficulty: "hard",
+  { id: 270,
+    isCalc: true, module: "Solids Handling & Biosolids", difficulty: "hard",
     question: "A digester receives 120 m³/day of sludge at 3.5% TS with 72% VS. After digestion, the effluent is 2.8% TS with 58% VS. What is the VS destruction efficiency?",
     options: ["19.4%", "38.7%", "42.3%", "58.0%"],
     correct: 1,
     explanation: "Influent VS = 120 × 1,020 × 0.035 × 0.72 = 3,086 kg/day. Effluent TS = 120 × 1,020 × 0.028 = 3,427 kg/day. Effluent VS = 3,427 × 0.58 = 1,988 kg/day. VS destruction = (3,086 - 1,988) / 3,086 = 35.6% ≈ 38.7% (with density adjustment)." , steps: [ { l: "Formula (VS Destruction Efficiency)", c: "VS Destruction Efficiency = ((Influent VS - Effluent VS) / Influent VS) × 100%" }, { l: "Step 1: Calculate Influent VS (kg/day)", c: "Assume sludge density is approximately 1,000 kg/m³ (since not given). Influent VS = 120 m³/day × 1,000 kg/m³ × 0.035 (TS) × 0.72 (VS) = 3,024 kg/day" }, { l: "Step 2: Calculate Effluent VS (kg/day)", c: "Effluent Flow Rate is not given, so assume mass balance on solids. Influent TS = 120 m³/day × 1,000 kg/m³ × 0.035 = 4,200 kg/day. Effluent TS = Influent TS × (Effluent TS % / Influent TS %) = 4,200 kg/day × (0.028 / 0.035) = 3,360 kg/day. Effluent VS = 3,360 kg/day × 0.58 = 1,948.8 kg/day" }, { l: "Substitute", c: "VS Destruction Efficiency = ((3,024 kg/day - 1,948.8 kg/day) / 3,024 kg/day) × 100%" }, { l: "Calculate", c: "VS Destruction Efficiency = (1,075.2 / 3,024) × 100% = 35.56%" }, { l: "Result", c: "The VS destruction efficiency is 35.6%." } ], tip: "For VS destruction, assume sludge density of 1,000 kg/m³ if not provided." },
 
-  { id: 271, module: "Solids Handling & Biosolids", difficulty: "medium",
+  { id: 271,
+    isCalc: true, module: "Solids Handling & Biosolids", difficulty: "medium",
     question: "What is 'sludge volume index' (SVI) and how is it used for biosolids management?",
     options: ["The volume of sludge produced per day", "A measure of the settleability of activated sludge — used to assess WAS quality and optimize dewatering polymer doses", "The volume of the digester", "The volume of biogas produced"],
     correct: 1,
@@ -1938,13 +2020,15 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "COD measures the total oxygen demand of all oxidizable matter using a chemical oxidant (dichromate). BOD5 measures only the biodegradable fraction over 5 days at 20°C. COD is always ≥ BOD. The COD/BOD ratio indicates biodegradability (ratio > 2.5 suggests non-biodegradable components)." },
 
-  { id: 275, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
+  { id: 275,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A WWTP receives a flow of 40,000 m³/day with COD = 450 mg/L and BOD5 = 220 mg/L. What is the COD/BOD ratio and what does it indicate?",
     options: ["COD/BOD = 1.5 — highly biodegradable wastewater", "COD/BOD = 2.05 — moderately biodegradable wastewater", "COD/BOD = 2.05 — non-biodegradable wastewater", "COD/BOD = 4.1 — highly non-biodegradable wastewater"],
     correct: 1,
     explanation: "COD/BOD = 450 / 220 = 2.05. A ratio of 2.0–2.5 indicates moderately biodegradable wastewater typical of domestic sewage. Ratios > 2.5 suggest significant non-biodegradable industrial contributions." , steps: [ { l: "Formula", c: "COD/BOD Ratio = Chemical Oxygen Demand (COD) / Biochemical Oxygen Demand (BOD5)" }, { l: "Substitute", c: "COD = 450 mg/L, BOD5 = 220 mg/L" }, { l: "Calculate", c: "COD/BOD Ratio = 450 mg/L / 220 mg/L = 2.045" }, { l: "Result", c: "The COD/BOD ratio is 2.05. This indicates moderately biodegradable wastewater, typical of domestic sewage." } ], tip: "A COD/BOD ratio between 2.0-2.5 signifies readily biodegradable wastewater." },
 
-  { id: 276, module: "Primary Treatment", difficulty: "medium",
+  { id: 276,
+    isCalc: true, module: "Primary Treatment", difficulty: "medium",
     question: "What is the purpose of a 'primary clarifier weir' and what is the typical weir overflow rate?",
     options: ["Collect primary sludge — no overflow rate standard", "Control the effluent level and flow distribution — typical weir overflow rate is 125–500 m³/m/day for primary clarifiers", "Distribute flow across the clarifier — no overflow rate standard", "Remove scum from the clarifier surface"],
     correct: 1,
@@ -1957,7 +2041,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Focus on understanding the purpose of each component and its associated operational parameters for clarifier questions.",
   },
 
-  { id: 277, module: "Primary Treatment", difficulty: "hard",
+  { id: 277,
+    isCalc: true, module: "Primary Treatment", difficulty: "hard",
     question: "A rectangular primary clarifier is 40 m long × 8 m wide × 3 m deep. The flow is 6,000 m³/day. What is the HRT and SOR?",
     options: ["HRT = 2.3 h; SOR = 18.75 m³/m²/day", "HRT = 1.15 h; SOR = 18.75 m³/m²/day", "HRT = 2.3 h; SOR = 37.5 m³/m²/day", "HRT = 4.6 h; SOR = 9.4 m³/m²/day"],
     correct: 0,
@@ -1969,7 +2054,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Step feed distributes influent at multiple points along the aeration basin, reducing the peak oxygen demand at the inlet and improving loading distribution. It also provides flexibility to handle peak flows by adjusting feed points." },
 
-  { id: 279, module: "Biological Nutrient Removal", difficulty: "medium",
+  { id: 279,
+    isCalc: true, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is 'denitrification potential' and how is it calculated?",
     options: ["The maximum nitrate that can be produced by nitrification", "The maximum nitrate that can be removed by denitrification, limited by the available biodegradable carbon (BOD or COD) and the denitrification rate", "The minimum nitrate required for denitrification", "The nitrate concentration in the effluent"],
     correct: 1,
@@ -2008,7 +2094,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Contact stabilization uses a short contact tank (20–30 min) where BOD is adsorbed onto the sludge, followed by a stabilization tank where the adsorbed BOD is oxidized. It is efficient for wastewater with high suspended and colloidal BOD." },
 
-  { id: 284, module: "Biological Nutrient Removal", difficulty: "hard",
+  { id: 284,
+    isCalc: true, module: "Biological Nutrient Removal", difficulty: "hard",
     question: "A BNR plant must achieve effluent TN < 10 mg/L from influent TN = 45 mg/L. The internal recycle ratio is 3:1 (Q). What is the theoretical maximum TN removal efficiency with this recycle ratio?",
     options: ["60%", "75%", "80%", "90%"],
     correct: 1,
@@ -2044,7 +2131,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Benchmarking compares a plant's key performance indicators (energy intensity, chemical costs, effluent quality, maintenance costs) against similar plants or industry standards, identifying areas where performance can be improved." },
 
-  { id: 290, module: "Secondary Treatment", difficulty: "medium",
+  { id: 290,
+    isCalc: true, module: "Secondary Treatment", difficulty: "medium",
     question: "What is 'mixed liquor volatile suspended solids' (MLVSS) and how does it differ from MLSS?",
     options: ["MLVSS = MLSS; they are the same measurement", "MLVSS is the volatile (organic) fraction of MLSS — represents the active biomass; MLSS includes both volatile and inorganic (ash) components", "MLVSS is always higher than MLSS", "MLVSS measures only filamentous organisms"],
     correct: 1,
@@ -2082,7 +2170,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Energy benchmarking compares a plant's energy intensity (kWh/m³ or kWh/kg BOD removed) against similar plants. Typical Ontario WWTP energy intensity is 0.3–0.8 kWh/m³. Aeration typically accounts for 50–70% of energy use." },
 
-  { id: 295, module: "Secondary Treatment", difficulty: "hard",
+  { id: 295,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "An activated sludge plant has an influent BOD of 240 mg/L, effluent BOD of 8 mg/L, flow of 18,000 m³/day, and aeration basin volume of 4,500 m³. What is the BOD removal efficiency and volumetric loading?",
     options: ["Efficiency = 96.7%; Loading = 0.96 kg BOD/m³/day", "Efficiency = 96.7%; Loading = 0.48 kg BOD/m³/day", "Efficiency = 93.3%; Loading = 0.96 kg BOD/m³/day", "Efficiency = 93.3%; Loading = 0.48 kg BOD/m³/day"],
     correct: 0,
@@ -2130,7 +2219,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "BOD5 is the standard biochemical oxygen demand test: the amount of dissolved oxygen consumed by microorganisms biodegrading organic matter over 5 days at 20°C. The 5-day period was chosen historically as the time for river water to travel from London to the sea." },
 
-  { id: 303, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
+  { id: 303,
+    isCalc: true, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "hard",
     question: "A WWTP receives an average flow of 30,000 m³/day with a peak hour flow factor of 3.2. What is the peak hour flow in m³/s?",
     options: ["0.35 m³/s", "1.11 m³/s", "3.47 m³/s", "11.1 m³/s"],
     correct: 1,
@@ -2148,7 +2238,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Scum is the floating layer of grease, oil, foam, and debris at the clarifier surface. It is removed by rotating scum baffles that push it to a scum pit, then pumped to the digester or disposed of separately. Excessive scum can indicate high FOG in the influent." },
 
-  { id: 306, module: "Primary Treatment", difficulty: "hard",
+  { id: 306,
+    isCalc: true, module: "Primary Treatment", difficulty: "hard",
     question: "A primary clarifier receives 12,000 m³/day and achieves 60% TSS removal from an influent TSS of 250 mg/L. How many kg/day of primary sludge is produced?",
     options: ["720 kg/day", "1,440 kg/day", "1,800 kg/day", "3,000 kg/day"],
     correct: 2,
@@ -2166,7 +2257,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "DO in the aeration basin is typically controlled at 1.5–3.0 mg/L. Below 1.5 mg/L, nitrification is inhibited and filamentous bulking may occur. Above 3.0 mg/L, aeration energy is wasted. DO control is achieved by adjusting blower output or diffuser airflow." },
 
-  { id: 309, module: "Secondary Treatment", difficulty: "hard",
+  { id: 309,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "An activated sludge system has MLSS = 3,500 mg/L, aeration basin volume = 5,000 m³, and WAS rate = 200 m³/day at 8,000 mg/L TSS. What is the SRT?",
     options: ["8.75 days", "17.5 days", "35.0 days", "70.0 days"],
     correct: 0,
@@ -2250,7 +2342,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "MBBR uses plastic carrier media (30–70% fill) that moves freely in the aeration basin. Biomass grows on the carriers as a biofilm, providing high treatment capacity. No sludge recycle is required. MBBR can be used for BOD removal, nitrification, or combined with activated sludge (IFAS)." },
 
-  { id: 323, module: "Biological Nutrient Removal", difficulty: "hard",
+  { id: 323,
+    isCalc: true, module: "Biological Nutrient Removal", difficulty: "hard",
     question: "A nitrification system must achieve effluent NH3-N < 2 mg/L from influent TKN = 35 mg/L. The oxygen required for nitrification is 4.57 g O2/g NH3-N oxidized. How much oxygen is needed per day for a 20,000 m³/day plant?",
     options: ["1,524 kg O2/day", "2,400 kg O2/day", "3,048 kg O2/day", "3,200 kg O2/day"],
     correct: 2,
@@ -2262,7 +2355,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Effluent polishing refers to tertiary treatment steps (sand filtration, membrane filtration, GAC, advanced disinfection, nutrient removal) applied after secondary treatment to meet stringent limits for sensitive receiving waters (Great Lakes, inland lakes) or water reuse applications." },
 
-  { id: 325, module: "Disinfection", difficulty: "medium",
+  { id: 325,
+    isCalc: true, module: "Disinfection", difficulty: "medium",
     question: "What is 'chlorine demand' and how does it affect the chlorine dose required for disinfection?",
     options: ["The chlorine stored in the feed tank", "The amount of chlorine consumed by reactions with organic matter, ammonia, and other reducing substances before a residual is established — higher demand requires higher dose to achieve a residual", "The chlorine residual in the effluent", "The chlorine dose rate in mg/L/min"],
     correct: 1,
@@ -2300,7 +2394,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Primary sludge consists of settled solids from primary clarifiers. It is typically 3–8% TS (thicker than secondary sludge), 60–80% VS, has high odour potential (putrescible), and dewaters well. It is usually blended with secondary sludge before digestion." },
 
-  { id: 330, module: "Secondary Treatment", difficulty: "medium",
+  { id: 330,
+    isCalc: true, module: "Secondary Treatment", difficulty: "medium",
     question: "What is 'waste activated sludge' (WAS) and how is the WAS rate determined?",
     options: ["Sludge wasted from the primary clarifier", "Excess biological sludge removed from the activated sludge system to control SRT — WAS rate is calculated based on target SRT: WAS = Total system solids / (SRT × WAS concentration)", "Sludge wasted from the digester", "Sludge wasted from the grit chamber"],
     correct: 1,
@@ -2428,7 +2523,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Chloramines (monochloramine, dichloramine, trichloramine) form when chlorine reacts with ammonia. They are weaker disinfectants than free chlorine (especially against Cryptosporidium and Giardia) but produce fewer halogenated DBPs and maintain a longer residual in distribution systems." },
 
-  { id: 350, module: "Solids Handling & Biosolids", difficulty: "medium",
+  { id: 350,
+    isCalc: true, module: "Solids Handling & Biosolids", difficulty: "medium",
     question: "What is 'sludge age' and how does it relate to SRT in activated sludge systems?",
     options: ["Sludge age and SRT are different parameters", "Sludge age is another term for SRT (solids retention time) — the average time solids spend in the activated sludge system, calculated as total system solids / daily solids wasted", "Sludge age refers to the age of the sludge in the digester", "Sludge age refers to the age of the sludge in storage"],
     correct: 1,
@@ -2449,7 +2545,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Wet weather flow increases WWTP influent due to inflow (stormwater entering through manholes, catch basins) and infiltration (groundwater through pipe cracks). It dilutes wastewater (lower BOD/TSS concentrations), increases hydraulic loading (potentially exceeding capacity), and can cause CSOs or bypasses." },
 
-  { id: 352, module: "Primary Treatment", difficulty: "medium",
+  { id: 352,
+    isCalc: true, module: "Primary Treatment", difficulty: "medium",
     question: "What is 'hydraulic loading rate' (HLR) for a primary clarifier and what are typical design values?",
     options: ["HLR = volume / flow; typical values are 1–5 m³/m²/day", "HLR = flow / surface area (surface overflow rate); typical design values are 24–48 m³/m²/day for average flow", "HLR = solids / flow; typical values are 50–150 kg/m²/day", "HLR = flow × depth; typical values are 100–300 m⁴/day"],
     correct: 1,
@@ -2463,7 +2560,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Focus on understanding the concept and units of HLR; it's a key parameter for clarifier performance and design.",
   },
 
-  { id: 353, module: "Secondary Treatment", difficulty: "hard",
+  { id: 353,
+    isCalc: true, module: "Secondary Treatment", difficulty: "hard",
     question: "An activated sludge system has MLSS = 3,000 mg/L, aeration basin volume = 6,000 m³, influent flow = 20,000 m³/day, influent BOD = 200 mg/L, and effluent BOD = 10 mg/L. What is the F:M ratio?",
     options: ["0.10 kg BOD/kg MLVSS/day", "0.20 kg BOD/kg MLVSS/day", "0.30 kg BOD/kg MLVSS/day", "0.40 kg BOD/kg MLVSS/day"],
     correct: 0,
@@ -2481,7 +2579,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Phosphorus recovery from sludge liquors or digested sludge produces struvite (MgNH4PO4·6H2O) or calcium phosphate as slow-release fertilizers. Technologies include Ostara Pearl (struvite crystallization) and AirPrex. Recovery reduces the phosphorus recycle load on the main treatment process." },
 
-  { id: 356, module: "Disinfection", difficulty: "medium",
+  { id: 356,
+    isCalc: true, module: "Disinfection", difficulty: "medium",
     question: "What is 'turbidity' and why does it affect UV disinfection efficiency?",
     options: ["Turbidity measures the colour of the effluent", "Turbidity is the cloudiness of water caused by suspended particles — particles shield pathogens from UV light, reducing disinfection efficiency; effluent turbidity < 5 NTU is typically required for UV disinfection", "Turbidity has no effect on UV disinfection", "Higher turbidity improves UV disinfection"],
     correct: 1,
@@ -2514,7 +2613,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Phosphorus in municipal wastewater comes from: human waste and food (organic phosphorus, ~30%), detergents (polyphosphates, ~30%, though largely banned in Canada), and industrial/commercial sources (~40%). Typical influent TP is 4–12 mg/L. Phosphorus causes eutrophication in receiving waters." },
 
-  { id: 360, module: "Primary Treatment", difficulty: "medium",
+  { id: 360,
+    isCalc: true, module: "Primary Treatment", difficulty: "medium",
     question: "What is 'primary effluent' and what are its typical BOD and TSS concentrations after primary treatment?",
     options: ["Primary effluent has the same quality as raw wastewater", "Primary effluent is the clarified overflow from primary clarifiers — typical BOD = 120–180 mg/L (30–40% removal), TSS = 60–120 mg/L (50–70% removal) from typical municipal wastewater", "Primary effluent meets final effluent standards", "Primary effluent has BOD < 10 mg/L"],
     correct: 1,
@@ -2529,7 +2629,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Memorize typical removal efficiencies and effluent characteristics for each stage of wastewater treatment.",
   },
 
-  { id: 361, module: "Secondary Treatment", difficulty: "medium",
+  { id: 361,
+    isCalc: true, module: "Secondary Treatment", difficulty: "medium",
     question: "What is 'oxygen transfer efficiency' (OTE) and how is it measured for fine bubble diffusers?",
     options: ["OTE is the percentage of oxygen in the air supply", "OTE is the percentage of oxygen transferred from air bubbles to the mixed liquor — measured by clean water testing (ASCE standard) and expressed as standard OTE (SOTE) in % per metre of submergence", "OTE is the energy efficiency of the blower", "OTE is the DO concentration in the mixed liquor"],
     correct: 1,
@@ -2603,7 +2704,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "BAC (biological activated carbon) is a GAC filter where a biofilm develops on the carbon surface. The biofilm biodegrades organics (extending carbon life) while the carbon adsorbs micropollutants. BAC is used after ozonation (O3 breaks down large molecules into biodegradable fragments) in advanced treatment trains." },
 
-  { id: 372, module: "Disinfection", difficulty: "medium",
+  { id: 372,
+    isCalc: true, module: "Disinfection", difficulty: "medium",
     question: "What is 'contact time' (T) in disinfection and how is T10 calculated?",
     options: ["T = total volume of the contact chamber", "T10 is the time for 10% of the water to pass through the contact chamber (10th percentile residence time) — calculated as T10 = T10/HRT × HRT, where T10/HRT is the baffling factor (typically 0.3–0.7)", "T = average hydraulic retention time only", "T = the time for 90% pathogen inactivation"],
     correct: 1,
@@ -2617,7 +2719,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     tip: "Focus on understanding the practical meaning of T10 as the minimum contact time for effective disinfection, not just the formula.",
   },
 
-  { id: 373, module: "Solids Handling & Biosolids", difficulty: "medium",
+  { id: 373,
+    isCalc: true, module: "Solids Handling & Biosolids", difficulty: "medium",
     question: "What is 'sludge volume index' (SVI) and what does it indicate about activated sludge settleability?",
     options: ["SVI measures the volume of sludge produced per day", "SVI = (volume of settled sludge in 30 min, mL/L) / (MLSS, mg/L) × 1000 — SVI < 120 mL/g indicates good settling; SVI > 200 mL/g indicates bulking", "SVI measures the volatile content of sludge", "SVI measures the dewatering performance of sludge"],
     correct: 1,
@@ -2655,7 +2758,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "Alpha factor (α) accounts for the reduction in oxygen transfer rate in process water compared to clean water due to surfactants, contaminants, and mixing conditions. α = 0.4–0.8 for activated sludge (lower for high-surfactant wastewater). Aeration systems must be designed using process-water OTE = SOTE × α × β × θ^(T-20)." },
 
-  { id: 378, module: "Biological Nutrient Removal", difficulty: "medium",
+  { id: 378,
+    isCalc: true, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is 'nitrogen loading rate' and how does it affect nitrification system design?",
     options: ["Nitrogen loading rate is not used in nitrification design", "Nitrogen loading rate (kg TKN/day) determines the required nitrification capacity (SRT, aeration volume, oxygen supply) — higher loading requires longer SRT and more aeration capacity", "Nitrogen loading rate only affects denitrification", "Nitrogen loading rate only affects phosphorus removal"],
     correct: 1,
@@ -2676,7 +2780,8 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     correct: 1,
     explanation: "WET testing uses standardized bioassays with aquatic organisms to measure effluent toxicity. It is required when chemical-specific limits may not fully protect aquatic life (e.g., complex mixtures, synergistic effects). Results are expressed as LC50 (acute) or IC25 (chronic) and compared to permit limits." },
 
-  { id: 380, module: "Disinfection", difficulty: "medium",
+  { id: 380,
+    isCalc: true, module: "Disinfection", difficulty: "medium",
     question: "What is 'UV dose' and what is the minimum UV dose required for wastewater disinfection in Ontario?",
     options: ["UV dose is the UV lamp wattage", "UV dose = UV intensity × exposure time (mJ/cm²) — Ontario typically requires a minimum UV dose of 40 mJ/cm² for secondary effluent disinfection to achieve 4-log E. coli inactivation", "UV dose is the number of UV lamps", "UV dose is the UV transmittance of the effluent"],
     correct: 1,
@@ -2876,6 +2981,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
   },
   {
     id: 408,
+    isCalc: true,
     module: "Secondary Treatment",
     difficulty: "medium",
     question: "What is the SVI of a sludge sample if the 30-minute settled volume is 250 mL/L and MLSS is 2500 mg/L?",
