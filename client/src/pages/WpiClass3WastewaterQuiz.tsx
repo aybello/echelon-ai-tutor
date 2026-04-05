@@ -2,6 +2,7 @@
 // 501-question bank aligned with WPI Need-to-Know Criteria (Senior Operator)
 // Used for: BC (EOCP Level III), Alberta (AWWOA Class III), Saskatchewan, Manitoba
 // 15-question free trial · paid full access via PurchaseGate
+import StepSolution from "@/components/StepSolution";
 import { useState, useCallback, useMemo } from "react";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -401,26 +402,10 @@ export default function WpiClass3WastewaterQuiz() {
                       {current.explanation}
                     </p>
                     {current.steps && current.steps.length > 0 && (
-                      <button
-                        onClick={() => setShowSteps(!showSteps)}
-                        style={{
-                          marginTop: 10, background: "none", border: "none",
-                          color: "#0369A1", fontSize: 12, fontWeight: 600,
-                          cursor: "pointer", padding: 0, fontFamily: "inherit",
-                        }}
-                      >
-                        {showSteps ? "Hide" : "Show"} Step-by-Step Solution
-                      </button>
-                    )}
-                    {showSteps && current.steps && (
-                      <div style={{ marginTop: 10 }}>
-                        {current.steps.map((step, i) => (
-                          <div key={i} style={{ display: "flex", gap: 8, marginBottom: 6 }}>
-                            <span style={{ minWidth: 20, height: 20, borderRadius: "50%", background: "#0F766E", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 800, flexShrink: 0 }}>{i + 1}</span>
-                            <span style={{ fontSize: 12, color: "#064E3B", background: "#F0FDF4", borderRadius: 6, padding: "4px 8px", flex: 1, border: "1px solid #BBF7D0" }}>{step}</span>
-                          </div>
-                        ))}
-                      </div>
+                      <StepSolution
+                        steps={current.steps as { l: string; c: string }[]}
+                        tip=""
+                      />
                     )}
                   </div>
 

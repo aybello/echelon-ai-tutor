@@ -8,7 +8,7 @@ export interface WpiClass2WastewaterQuestion {
   options: string[];
   correctAnswer: number;
   explanation: string;
-  steps: string[];
+  steps: { l: string; c: string }[];
 }
 
 export const WPI_CLASS2_WASTEWATER_MODULES: string[] = [
@@ -360,7 +360,12 @@ export const WPI_CLASS2_WASTEWATER_QUESTIONS: WpiClass2WastewaterQuestion[] = [
     options: ["1 mg/L", "9.6 mg/L", "50 mg/L", "100 mg/L"],
     correctAnswer: 1,
     explanation: `The stoichiometric dose of alum (Al2(SO4)3·18H2O) is approximately 9.6 mg/L per mg/L of phosphorus removed.`,
-    steps: [],
+    steps: [
+      { l: "Formula", c: "Alum Dose = Phosphorus Removed × Stoichiometric Ratio" },
+      { l: "Substitute", c: "Alum Dose = 1 mg/L P × 9.6 mg Alum / mg P" },
+      { l: "Calculate", c: "Alum Dose = 9.6 mg/L" },
+      { l: "Result", c: "The stoichiometric dose of alum is 9.6 mg/L." }
+    ],
   },
   {
     id: 39,
@@ -1413,7 +1418,12 @@ export const WPI_CLASS2_WASTEWATER_QUESTIONS: WpiClass2WastewaterQuestion[] = [
     options: ["30 mg/L as CaCO3", "214 mg/L as CaCO3", "500 mg/L as CaCO3", "1,000 mg/L as CaCO3"],
     correctAnswer: 1,
     explanation: `Nitrification consumes 7.14 × 30 = 214 mg/L alkalinity as CaCO3 for complete oxidation of 30 mg/L NH4-N.`,
-    steps: [],
+    steps: [
+      { l: "Formula", c: "Alkalinity Consumption = NH4-N Removed × 7.14 mg CaCO3 / mg NH4-N" },
+      { l: "Substitute", c: "Alkalinity Consumption = 30 mg/L NH4-N × 7.14 mg CaCO3 / mg NH4-N" },
+      { l: "Calculate", c: "Alkalinity Consumption = 214.2 mg/L as CaCO3" },
+      { l: "Result", c: "The typical alkalinity consumption is 214 mg/L as CaCO3." }
+    ],
   },
   {
     id: 156,
@@ -3006,7 +3016,11 @@ export const WPI_CLASS2_WASTEWATER_QUESTIONS: WpiClass2WastewaterQuestion[] = [
     options: ["5 days", "15 days", "20 days", "30 days"],
     correctAnswer: 2,
     explanation: `Mesophilic anaerobic digestion requires a minimum SRT of 15 days at 35–55°C to achieve Class B pathogen requirements (fecal coliform <2×10⁶ MPN/g TS).`,
-    steps: [],
+    steps: [
+      { l: "Step 1", c: "Identify the minimum SRT for mesophilic anaerobic digestion for Class B biosolids." },
+      { l: "Step 2", c: "Canadian guidelines for Class B biosolids require a minimum SRT of 15 days for mesophilic digesters." },
+      { l: "Result", c: "The typical minimum SRT is 15 days." }
+    ],
   },
   {
     id: 333,

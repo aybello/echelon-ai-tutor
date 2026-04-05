@@ -10,6 +10,7 @@ export interface WpiClass1WaterQuestion {
   options: string[];
   correctAnswer: number;
   explanation: string;
+  steps?: { l: string; c: string }[];
 }
 
 export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
@@ -60,6 +61,11 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     options: ["5 m/day", "10 m/day", "20 m/day", "50 m/day"],
     correctAnswer: 2,
     explanation: "SOR = Flow / Area = 10,000 m3/day / 500 m2 = 20 m/day.",
+    steps: [
+      { l: "Step 1", c: "Formula: SOR = Flow ÷ Surface Area" },
+      { l: "Step 2", c: "Substitute: SOR = 10,000 m³/day ÷ 500 m²" },
+      { l: "Step 3", c: "Calculate: SOR = 20 m/day" }
+    ],
   },
   {
     id: 7,
@@ -244,6 +250,12 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     options: ["187.5 kg", "1,875 kg", "18,750 kg", "187,500 kg"],
     correctAnswer: 0,
     explanation: "Mass = Flow x Concentration = 75,000 m3/day x 2.5 mg/L. Convert: 75,000,000 L/day x 0.0025 g/L = 187,500 g/day = 187.5 kg/day.",
+    steps: [
+      { l: "Step 1", c: "Formula: Mass = Flow × Concentration" },
+      { l: "Step 2", c: "Substitute: Mass = 75,000 m³/day × 2.5 mg/L" },
+      { l: "Step 3", c: "Calculate: Mass = 187,500,000 mg/day" },
+      { l: "Step 4", c: "Convert: Mass = 187,500,000 mg/day ÷ 1,000,000 mg/kg = 187.5 kg/day" }
+    ],
   },
   {
     id: 30,
@@ -444,6 +456,11 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     options: ["1.8 mg/L", "0.5 mg/L", "2.3 mg/L", "1.3 mg/L"],
     correctAnswer: 2,
     explanation: "Total chlorine dose = Chlorine demand + Required residual = 1.8 + 0.5 = 2.3 mg/L.",
+    steps: [
+      { l: "Step 1", c: "Formula: Total Chlorine Dose = Chlorine Demand + Required Residual" },
+      { l: "Step 2", c: "Substitute: Total Chlorine Dose = 1.8 mg/L + 0.5 mg/L" },
+      { l: "Step 3", c: "Calculate: Total Chlorine Dose = 2.3 mg/L" }
+    ],
   },
   {
     id: 55,
@@ -492,6 +509,12 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     options: ["0.2 hours", "4.8 hours", "24 hours", "2 hours"],
     correctAnswer: 1,
     explanation: "Detention time = Volume / Flow = 1,000 m3 / (5,000 m3/day) = 0.2 days = 0.2 x 24 = 4.8 hours.",
+    steps: [
+      { l: "Step 1", c: "Formula: Detention Time = Volume ÷ Flow" },
+      { l: "Step 2", c: "Substitute: Detention Time = 1,000 m³ ÷ 5,000 m³/day" },
+      { l: "Step 3", c: "Calculate: Detention Time = 0.2 days" },
+      { l: "Step 4", c: "Convert: Detention Time = 0.2 days × 24 hours/day = 4.8 hours" }
+    ],
   },
   {
     id: 61,
@@ -3212,6 +3235,10 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     options: ["A measure of turbidity", "An index that indicates whether water will tend to dissolve, deposit, or be in equilibrium with calcium carbonate — used to assess corrosivity and scale potential", "A measure of chlorine residual", "A measure of hardness"],
     correctAnswer: 1,
     explanation: "The LSI = pH - pHs (saturation pH). LSI > 0: water is supersaturated, tends to deposit CaCO3 scale. LSI < 0: water is undersaturated, tends to dissolve CaCO3 (corrosive). LSI = 0: water is in equilibrium.",
+    steps: [
+      { l: "Step 1", c: "Formula: LSI = pH - pHs" },
+      { l: "Step 2", c: "Conclusion: LSI indicates whether water will tend to dissolve, deposit, or be in equilibrium with calcium carbonate." }
+    ],
   },
   {
     id: 401,

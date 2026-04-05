@@ -2,6 +2,7 @@
 // 502-question bank aligned with WPI Need-to-Know Criteria (Chief Operator)
 // Used for: BC (EOCP Level IV), Alberta (AWWOA Class IV), Saskatchewan, Manitoba
 // 15-question free trial · paid full access via PurchaseGate
+import StepSolution from "@/components/StepSolution";
 import { useState, useCallback, useMemo } from "react";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -431,29 +432,12 @@ export default function WpiClass4WastewaterQuiz() {
                     </div>
 
                     {current.steps && current.steps.length > 0 && (
-                      <div style={{ marginBottom: 12 }}>
-                        <button
-                          onClick={() => setShowSteps((v) => !v)}
-                          style={{
-                            background: "none", border: "none", color: "#7C3AED",
-                            fontSize: 13, fontWeight: 600, cursor: "pointer",
-                            fontFamily: "inherit", padding: 0,
-                          }}
-                        >
-                          {showSteps ? "▾ Hide" : "▸ Show"} step-by-step solution
-                        </button>
-                        {showSteps && (
-                          <div style={{ marginTop: 8 }}>
-                            {current.steps.map((step, i) => (
-                              <div key={i} style={{ display: "flex", gap: 8, marginBottom: 6 }}>
-                                <span style={{ minWidth: 20, height: 20, borderRadius: "50%", background: "#7C3AED", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 800, flexShrink: 0 }}>{i + 1}</span>
-                                <span style={{ fontSize: 12, color: "#3B0764", background: "#F5F3FF", borderRadius: 6, padding: "4px 8px", flex: 1, border: "1px solid #DDD6FE" }}>{step}</span>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
+                      <StepSolution
+                        steps={current.steps as { l: string; c: string }[]}
+                        tip=""
+                      />
                     )}
+
 
                     <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                       <button

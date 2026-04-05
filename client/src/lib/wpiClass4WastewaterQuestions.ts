@@ -22,7 +22,7 @@ export interface WpiClass4WastewaterQuestion {
   options: string[];
   correctAnswer: number;
   explanation: string;
-  steps: string[];
+  steps: { l: string; c: string }[];
 }
 
 export const wpiClass4WastewaterQuestions: WpiClass4WastewaterQuestion[] = [
@@ -3648,7 +3648,12 @@ export const wpiClass4WastewaterQuestions: WpiClass4WastewaterQuestion[] = [
     options: ["5 MJ/m³", "21–25 MJ/m³ (5.8–6.9 kWh/m³) for biogas with 60–70% CH₄ content", "50 MJ/m³", "10 MJ/m³"],
     correctAnswer: 1,
     explanation: "Biogas energy content: CH₄ has a lower heating value (LHV) of 35.8 MJ/m³. Biogas with 60% CH₄: 0.60 × 35.8 = 21.5 MJ/m³ (6.0 kWh/m³). Biogas with 70% CH₄: 0.70 × 35.8 = 25.1 MJ/m³ (7.0 kWh/m³). CHP electrical efficiency ~35%: 6.0 × 0.35 = 2.1 kWh electricity per m³ biogas.",
-    steps: [],
+    steps: [
+      { l: "Step 1", c: "Biogas energy content is directly related to its methane (CH₄) content." },
+      { l: "Step 2", c: "Methane's Lower Heating Value (LHV) is approximately 35.8 MJ/m³." },
+      { l: "Step 3", c: "For 60-70% CH₄ content, calculate the range: 0.60 * 35.8 MJ/m³ to 0.70 * 35.8 MJ/m³." },
+      { l: "Result", c: "21.48 MJ/m³ to 25.06 MJ/m³, which is approximately 21-25 MJ/m³." }
+    ],
   },
   {
     id: 403,

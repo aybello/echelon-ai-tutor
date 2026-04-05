@@ -9,6 +9,7 @@ export interface WpiClass2WaterQuestion {
   options: string[];
   correctAnswer: number;
   explanation: string;
+  steps?: { l: string; c: string }[];
   difficulty: 'easy' | 'medium' | 'hard';
 }
 

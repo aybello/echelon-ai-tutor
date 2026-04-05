@@ -233,3 +233,14 @@
 - [x] Add Chief Operator badge to WPI Class IV Water and Wastewater cards on WPI landing page
 - [x] Fix bundle-all savings figure in Pricing.tsx — updated to CA$1,402 saved (CA$2,001 individual − CA$599 bundle), tagline updated to 19 Practice Passes
 - [ ] Fix JSX > character error at WpiLanding.tsx line 585 (escape as &gt; or remove stray character)
+
+## WPI Step-by-Step Solutions (all 8 banks)
+- [ ] Add steps field + populate WPI Class I Water (~502 questions)
+- [ ] Add steps field + populate WPI Class II Water (~500 questions)
+- [ ] Add steps field + populate WPI Class III Water (~501 questions)
+- [ ] Populate WPI Class IV Water (~500 questions, field exists but empty)
+- [ ] Populate WPI Class I Wastewater (~500 questions, field exists but empty)
+- [ ] Populate WPI Class II Wastewater (~500 questions, field exists but empty)
+- [ ] Populate WPI Class III Wastewater (~501 questions, field exists but empty)
+- [ ] Populate WPI Class IV Wastewater (~501 questions, field exists but empty)
+- [ ] Wire up step-by-step UI in WpiClass1WaterQuiz, WpiClass2WaterQuiz, WpiClass3WaterQuiz, WpiClass4WaterQuiz, WpiClass1WastewaterQuiz, WpiClass2WastewaterQuiz

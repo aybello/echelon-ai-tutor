@@ -8,7 +8,7 @@ export interface WpiClass4WaterQuestion {
   options: string[];
   correctAnswer: number;
   explanation: string;
-  steps: string[];
+  steps: { l: string; c: string }[];
 }
 
 export const WPI_CLASS4_WATER_MODULES: string[] = [
@@ -362,7 +362,12 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["Investigate the cause of high chlorine demand in the distribution system — check for biofilm, sediment, or high-demand areas — and consider a booster chlorination station", "Increase plant chlorine dose to 2.0 mg/L", "Reduce distribution system pressure", "Flush all dead-end mains"],
       correctAnswer: 0,
       explanation: "A large residual drop indicates high chlorine demand in the distribution system, likely from biofilm, sediment, or organic matter. The root cause must be identified. A booster station may be needed for large systems, but flushing and biofilm control should be addressed first.",
-    steps: [],
+    steps: [
+      { l: "Step 1", c: "A large residual drop (0.8 mg/L to 0.1 mg/L) indicates high chlorine demand." },
+      { l: "Step 2", c: "The most appropriate action is to investigate the cause of this demand." },
+      { l: "Step 3", c: "Common causes include biofilm, sediment, or organic matter in the distribution system." },
+      { l: "Step 4", c: "Consider booster chlorination for large systems or persistent issues after addressing root causes." }
+    ],
     },
   {
       id: 39,
@@ -632,7 +637,12 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["Initiate a corrosion control treatment optimization study and notify the regulatory authority — the plant may be required to develop a lead service line replacement program", "Increase chlorine dose to oxidize lead", "Notify customers to flush their taps for 2 minutes before use", "Increase the sampling frequency only"],
       correctAnswer: 0,
       explanation: "Lead exceedances above the Health Canada guideline trigger requirements to optimize corrosion control treatment and may require a lead service line replacement program. The regulatory authority must be notified and a corrective action plan developed.",
-    steps: [],
+    steps: [
+      { l: "Step 1", c: "Lead exceedances above the Health Canada guideline (0.005 mg/L) require immediate action." },
+      { l: "Step 2", c: "The primary action is to optimize corrosion control treatment to reduce lead leaching." },
+      { l: "Step 3", c: "Notify the regulatory authority (e.g., provincial Ministry of Environment)." },
+      { l: "Step 4", c: "Prepare for a potential lead service line replacement program, as often mandated by regulations." }
+    ],
     },
   {
       id: 69,
@@ -1406,7 +1416,12 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["35% TOC removal (for TOC 2–4 mg/L range with alkalinity 0–60 mg/L as CaCO3 — the 4.5 mg/L TOC falls in the >4 mg/L category requiring 45% removal)", "15% TOC removal", "25% TOC removal", "50% TOC removal"],
       correctAnswer: 2,
       explanation: "Under USEPA LT2ESWTR Enhanced Coagulation requirements, for source water with TOC >4 mg/L and alkalinity 0–60 mg/L as CaCO3, the required TOC removal is 45%. The question's answer reflects the correct category: TOC 4.5 mg/L is in the >4 mg/L row, alkalinity 60 mg/L is in the 0–60 mg/L column = 45% removal required.",
-    steps: [],
+    steps: [
+      { l: "Step 1", c: "Identify TOC and alkalinity ranges for USEPA Enhanced Coagulation requirements." },
+      { l: "Step 2", c: "Source water TOC = 4.5 mg/L (falls into >4 mg/L category)." },
+      { l: "Step 3", c: "Source water Alkalinity = 60 mg/L as CaCO3 (falls into 0-60 mg/L category)." },
+      { l: "Step 4", c: "Consult the USEPA Enhanced Coagulation table: >4 mg/L TOC and 0-60 mg/L alkalinity requires 45% TOC removal." }
+    ],
     },
   {
       id: 155,
@@ -1550,7 +1565,12 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["0.0915 mg/L ((0.082 + 0.091 + 0.095 + 0.098) / 4)", "0.098 mg/L", "0.082 mg/L", "0.100 mg/L"],
       correctAnswer: 0,
       explanation: "Running annual average = (0.082 + 0.091 + 0.095 + 0.098) / 4 = 0.366 / 4 = 0.0915 mg/L. This is below the MAC of 0.100 mg/L, but the upward trend is concerning and the plant should implement DBP reduction strategies to prevent future exceedances.",
-    steps: [],
+    steps: [
+      { l: "Formula", c: "Running Annual Average = (Q1 + Q2 + Q3 + Q4) ÷ 4" },
+      { l: "Substitute", c: "(0.082 mg/L + 0.091 mg/L + 0.095 mg/L + 0.098 mg/L) ÷ 4" },
+      { l: "Calculate", c: "0.366 mg/L ÷ 4" },
+      { l: "Result", c: "0.0915 mg/L" }
+    ],
     },
   {
       id: 171,
@@ -1649,7 +1669,12 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["Additional energy cost: $76,000/year. If energy is 18% of the $2,111,111 total budget, a 20% energy increase adds $76,000, requiring approximately a 3.6% total budget increase", "Additional energy cost: $76,000/year, requiring a 20% rate increase", "Additional energy cost: $38,000/year", "Additional energy cost: $76,000/year, requiring no rate increase"],
       correctAnswer: 0,
       explanation: "Additional energy cost = $380,000 × 20% = $76,000. If energy is 18% of total budget, total budget = $380,000 / 0.18 = $2,111,111. A $76,000 increase represents $76,000 / $2,111,111 = 3.6% increase in total budget, which would require approximately a 3.6% rate increase.",
-    steps: [],
+    steps: [
+      { l: "Formula", c: "Additional Cost = Current Cost × Percentage Increase" },
+      { l: "Substitute", c: "$380,000/year × 0.20" },
+      { l: "Calculate", c: "$76,000/year" },
+      { l: "Step 4", c: "Total budget = $380,000 / 0.18 = $2,111,111. Rate increase = $76,000 / $2,111,111 = 3.6%." }
+    ],
     },
   {
       id: 182,
@@ -1667,7 +1692,12 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["Approximately $208,000/year (20% × $650,000 × 80% reduction × 2 additional cost factor for reactive vs. preventive)", "$130,000/year", "$390,000/year", "$65,000/year"],
       correctAnswer: 0,
       explanation: "Currently missed PM = 20% × $650,000 = $130,000. With CMMS, missed PM reduced by 80% = $26,000 still missed. PM tasks that are missed become reactive maintenance at 3× cost, so $130,000 of missed PM generates $390,000 in reactive costs. With CMMS, only $26,000 missed = $78,000 reactive. Saving = $390,000 - $78,000 = $312,000 - but this overstates it. More conservatively, the additional cost of reactive vs. preventive is 2× (3× - 1×), so saving ≈ $104,000 × 2 = $208,000.",
-    steps: [],
+    steps: [
+      { l: "Step 1", c: "Current missed PM cost equivalent: 20% of $650,000 = $130,000." },
+      { l: "Step 2", c: "Reduction in missed PM by CMMS: 80% of $130,000 = $104,000." },
+      { l: "Step 3", c: "Additional cost factor for reactive vs. preventive: 3 - 1 = 2." },
+      { l: "Step 4", c: "Estimated annual saving = $104,000 × 2 = $208,000/year." }
+    ],
     },
   {
       id: 184,

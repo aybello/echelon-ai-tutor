@@ -10,7 +10,7 @@ export interface WpiClass1WastewaterQuestion {
   options: string[];
   correctAnswer: number;
   explanation: string;
-  steps: string[];
+  steps: { l: string; c: string }[];
 }
 
 export const WPI_CLASS1_WASTEWATER_MODULES = [
@@ -3845,7 +3845,14 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     options: ["15.9 m3/m2/d", "25.0 m3/m2/d", "10.0 m3/m2/d", "31.8 m3/m2/d"],
     correctAnswer: 0,
     explanation: "Area = pi x r2 = 3.14159 x 10^2 = 314.2 m2. SOR = 5000 / 314.2 = 15.9 m3/m2/d.",
-    steps: [],
+    steps: [
+      { l: "Step 1", c: "Formula: Area = π * (Diameter / 2)^2" },
+      { l: "Step 2", c: "Substitute: Area = 3.14159 * (20 m / 2)^2 = 3.14159 * (10 m)^2" },
+      { l: "Step 3", c: "Calculate: Area = 314.159 m²" },
+      { l: "Step 4", c: "Formula: SOR = Flow Rate / Surface Area" },
+      { l: "Step 5", c: "Substitute: SOR = 5000 m³/d / 314.159 m²" },
+      { l: "Step 6", c: "Result: SOR = 15.91 m³/m²/d" }
+    ],
   },
   {
     id: 427,
@@ -3854,7 +3861,17 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     options: ["3.75 days", "7.5 days", "1.9 days", "15 days"],
     correctAnswer: 0,
     explanation: "Mass in system = 3000 mg/L x 2000 m3 = 6000 kg. Mass wasted/day = 8000 mg/L x 200 m3/d = 1600 kg/d. SRT = 6000 / 1600 = 3.75 days.",
-    steps: [],
+    steps: [
+      { l: "Step 1", c: "Formula: Total MLSS mass = MLSS concentration * Tank Volume" },
+      { l: "Step 2", c: "Substitute: Total MLSS mass = 3000 mg/L * 2000 m³ * (1 kg / 1000 mg) * (1000 L / 1 m³)" },
+      { l: "Step 3", c: "Calculate: Total MLSS mass = 6000 kg" },
+      { l: "Step 4", c: "Formula: Mass wasted/day = WAS rate * WAS concentration" },
+      { l: "Step 5", c: "Substitute: Mass wasted/day = 200 m³/d * 8000 mg/L * (1 kg / 1000 mg) * (1000 L / 1 m³)" },
+      { l: "Step 6", c: "Calculate: Mass wasted/day = 1600 kg/d" },
+      { l: "Step 7", c: "Formula: SRT = Total MLSS mass / Mass wasted/day" },
+      { l: "Step 8", c: "Substitute: SRT = 6000 kg / 1600 kg/d" },
+      { l: "Step 9", c: "Result: SRT = 3.75 days" }
+    ],
   },
   {
     id: 428,
@@ -3863,7 +3880,12 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     options: ["92%", "80%", "88%", "96%"],
     correctAnswer: 0,
     explanation: "BOD removal = (250 - 20) / 250 x 100% = 230/250 x 100% = 92%.",
-    steps: [],
+    steps: [
+      { l: "Step 1", c: "Formula: BOD Removal Efficiency = ((Influent BOD - Effluent BOD) / Influent BOD) * 100%" },
+      { l: "Step 2", c: "Substitute: BOD Removal Efficiency = ((250 mg/L - 20 mg/L) / 250 mg/L) * 100%" },
+      { l: "Step 3", c: "Calculate: BOD Removal Efficiency = (230 mg/L / 250 mg/L) * 100%" },
+      { l: "Step 4", c: "Result: BOD Removal Efficiency = 92%" }
+    ],
   },
   {
     id: 429,
@@ -3872,7 +3894,12 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     options: ["100 mL/g", "62.5 mL/g", "125 mL/g", "200 mL/g"],
     correctAnswer: 0,
     explanation: "SVI = (settled sludge volume mL/L x 1000) / MLSS mg/L = (250 x 1000) / 2500 = 100 mL/g.",
-    steps: [],
+    steps: [
+      { l: "Step 1", c: "Formula: SVI = (Settled Sludge Volume (mL/L) * 1000) / MLSS (mg/L)" },
+      { l: "Step 2", c: "Substitute: SVI = (250 mL/L * 1000) / 2500 mg/L" },
+      { l: "Step 3", c: "Calculate: SVI = 250000 mL/L / 2500 mg/L" },
+      { l: "Step 4", c: "Result: SVI = 100 mL/g" }
+    ],
   },
   {
     id: 430,
@@ -3881,7 +3908,11 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     options: ["6 mg/L", "10 mg/L", "4 mg/L", "8 mg/L"],
     correctAnswer: 0,
     explanation: "Chlorine demand = dose - residual = 8 - 2 = 6 mg/L.",
-    steps: [],
+    steps: [
+      { l: "Step 1", c: "Formula: Chlorine Demand = Chlorine Dose - Chlorine Residual" },
+      { l: "Step 2", c: "Substitute: Chlorine Demand = 8 mg/L - 2 mg/L" },
+      { l: "Step 3", c: "Result: Chlorine Demand = 6 mg/L" }
+    ],
   },
   {
     id: 431,

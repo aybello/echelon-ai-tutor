@@ -514,7 +514,12 @@ export default function WpiClass4WaterQuiz() {
                     </p>
                   </div>
 
-                   {/* Step solution not available for WPI questions (different schema) */}
+                  {current.steps && current.steps.length > 0 && (
+                    <StepSolution
+                      steps={current.steps as { l: string; c: string }[]}
+                      tip=""
+                    />
+                  )}
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 12 }}>
                     <button
                       onClick={handleNext}
