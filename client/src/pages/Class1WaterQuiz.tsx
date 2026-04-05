@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback } from "react";
 import QuizShell from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
+import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import PurchaseGate from "@/components/PurchaseGate";
 import { CLASS1_WATER_QUESTIONS, CLASS1_WATER_MODULES, type Class1WaterQuestion } from '@/lib/class1WaterQuestions';
 
@@ -19,6 +20,10 @@ type HistoryEntry = {
 export default function Class1WaterQuiz() {
   const allQuestions = CLASS1_WATER_QUESTIONS as Class1WaterQuestion[];
   const modules = CLASS1_WATER_MODULES;
+
+  const SESSION_SIZE = 15;
+  const [trialDone, setTrialDone]   = useState(false);
+  const [trialUnlocked]             = useState(() => isTrialUnlocked());
 
   const [history, setHistory]       = useState<HistoryEntry[]>([]);
   const [usedIds, setUsedIds]       = useState<Set<number | string>>(new Set());
@@ -140,6 +145,31 @@ export default function Class1WaterQuiz() {
       setShowSteps(false);
     }
   }, [allQuestions, usedIds, calcOnly]);
+
+  if (trialDone && !trialUnlocked) {
+    return (
+      <QuizGate
+        questionsAnswered={history.length}
+        productKey="class1-water"
+        productName="Class 1 Water Treatment Practice Pass"
+        priceLabel="CA$99"
+        paidFeatures={[
+          "500+ Class 1 Water questions — unlimited attempts",
+          "Timed mock exam (100 questions, 2 hrs)",
+          "AI Tutor explanations on every question",
+          "Module-by-module performance tracking",
+        ]}
+        onUnlocked={() => {
+          setTrialUnlocked();
+          setTrialDone(false);
+          setSelected(null);
+          setConfidence(null);
+          setConfirmed(false);
+          setShowSteps(false);
+        }}
+      />
+    );
+  }
 
   return (
     <PurchaseGate

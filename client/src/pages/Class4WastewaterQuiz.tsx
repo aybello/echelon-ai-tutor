@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback } from "react";
 import QuizShell from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
+import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import PurchaseGate from "@/components/PurchaseGate";
 import { CLASS4_WW_QUESTIONS, CLASS4_WASTEWATER_MODULES, CLASS4_WW_FORMULA_LINKS, type C4WWQuestion } from '@/lib/class4WastewaterQuestions';
 
@@ -19,6 +20,10 @@ type HistoryEntry = {
 export default function Class4WastewaterQuiz() {
   const allQuestions = CLASS4_WW_QUESTIONS as C4WWQuestion[];
   const modules = CLASS4_WASTEWATER_MODULES;
+
+  const SESSION_SIZE = 15;
+  const [trialDone, setTrialDone]   = useState(false);
+  const [trialUnlocked]             = useState(() => isTrialUnlocked());
 
   const [history, setHistory]       = useState<HistoryEntry[]>([]);
   const [usedIds, setUsedIds]       = useState<Set<number | string>>(new Set());
@@ -140,6 +145,31 @@ export default function Class4WastewaterQuiz() {
       setShowSteps(false);
     }
   }, [allQuestions, usedIds, calcOnly]);
+
+  if (trialDone && !trialUnlocked) {
+    return (
+      <QuizGate
+        questionsAnswered={history.length}
+        productKey="class4-ww"
+        productName="Class 4 Wastewater Treatment Practice Pass"
+        priceLabel="CA$349"
+        paidFeatures={[
+          "500+ Class 4 Wastewater questions — unlimited attempts",
+          "Timed mock exam (100 questions, 2 hrs)",
+          "AI Tutor explanations on every question",
+          "Module-by-module performance tracking",
+        ]}
+        onUnlocked={() => {
+          setTrialUnlocked();
+          setTrialDone(false);
+          setSelected(null);
+          setConfidence(null);
+          setConfirmed(false);
+          setShowSteps(false);
+        }}
+      />
+    );
+  }
 
   return (
     <PurchaseGate
