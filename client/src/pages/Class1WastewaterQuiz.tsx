@@ -1,167 +1,89 @@
-// Class 1 Wastewater Treatment Practice Quiz
-// 601-question bank · 15-question free trial · paid full access via PurchaseGate
-// Mirrors Class1WaterQuiz structure
-
-import { useState, useCallback, useMemo } from "react";
-import { Link, useSearch} from "wouter";
-import { usePageMeta } from "@/hooks/usePageMeta";
-import {
-  CLASS1_WASTEWATER_QUESTIONS,
-  CLASS1_WASTEWATER_MODULES,
-  type Class1WastewaterQuestion,
-} from "@/lib/class1WastewaterQuestions";
-import ConfidenceMeter from "@/components/ConfidenceMeter";
+import { useState, useMemo, useCallback } from "react";
+import QuizShell from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
-import ReportErrorModal from "@/components/ReportErrorModal";
-import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import SiteNav from "@/components/SiteNav";
-import { shuffle } from "@/lib/utils";
-import { CLASS1_WW_FORMULA_LINKS } from "@/lib/formulaLinks";
+import PurchaseGate from "@/components/PurchaseGate";
+import { CLASS1_WASTEWATER_QUESTIONS, CLASS1_WASTEWATER_MODULES, type Class1WastewaterQuestion } from '@/lib/class1WastewaterQuestions';
 
-type QCompat = Class1WastewaterQuestion & { q: string; wrongExp?: Record<number, string> };
-
-function toCompat(q: Class1WastewaterQuestion): QCompat {
-  return { ...q, q: q.question };
-}
-
-const DIFF_COLOR: Record<string, string> = {
-  easy: "#059669",
-  medium: "#D97706",
-  hard: "#DC2626",
-};
-const DIFF_BG: Record<string, string> = {
-  easy: "#DCFCE7",
-  medium: "#FEF9C3",
-  hard: "#FEE2E2",
-};
-const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Wastewater Characteristics & Preliminary Treatment": { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Preliminary Treatment":  { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Primary Treatment":      { bg: "#DCFCE7", color: "#15803D" },
-  "Secondary Treatment":    { bg: "#EDE9FE", color: "#6D28D9" },
-  "Secondary Treatment -- Activated Sludge": { bg: "#EDE9FE", color: "#6D28D9" },
-  "Biological Nutrient Removal": { bg: "#CCFBF1", color: "#0F766E" },
-  "Tertiary Treatment & Filtration": { bg: "#FEF9C3", color: "#A16207" },
-  "Disinfection":           { bg: "#FFEDD5", color: "#C2410C" },
-  "Solids Handling":        { bg: "#FEE2E2", color: "#B91C1C" },
-  "Solids Handling & Biosolids": { bg: "#FEE2E2", color: "#B91C1C" },
-  "Regulations, Safety & Operations": { bg: "#F0FDF4", color: "#166534" },
-};
-const MODULE_ICONS: Record<string, string> = {
-  "Wastewater Characteristics & Preliminary Treatment": "🌊",
-  "Preliminary Treatment":  "🌊",
-  "Primary Treatment":      "🪣",
-  "Secondary Treatment":    "🦠",
-  "Secondary Treatment -- Activated Sludge": "🦠",
-  "Biological Nutrient Removal": "🔬",
-  "Tertiary Treatment & Filtration": "💧",
-  "Disinfection":           "🧪",
-  "Solids Handling":        "♻️",
-  "Solids Handling & Biosolids": "♻️",
-  "Regulations, Safety & Operations": "📋",
-};
-
-const SESSION_SIZE = 15;
+// ─── Types ───────────────────────────────────────────────────────────────────
 
 type HistoryEntry = {
-  q: QCompat;
+  q: Class1WastewaterQuestion;
   selected: number;
-  confidence: number;
+  confidence: number | null;
   correct: boolean;
-  questionObj?: QCompat;
+  questionObj?: Class1WastewaterQuestion;
 };
 
-function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, mod?: string | null, calcOnly = false): QCompat | null {
-  const usedIds = new Set(history.map((h) => h.q.id));
-  const base = mod ? CLASS1_WASTEWATER_QUESTIONS.filter(q => q.module === mod) : CLASS1_WASTEWATER_QUESTIONS;
-  const pool = trialUnlocked ? base : base.slice(0, 60);
-  const calcPool = calcOnly ? pool.filter((q) => q.isCalc) : pool;
-  const remaining = calcPool.filter((q) => !usedIds.has(q.id));
-  if (remaining.length === 0) return null;
-  const shuffled = shuffle([...remaining]);
-  return toCompat(shuffled[0]);
-}
+// ─── Component ───────────────────────────────────────────────────────────────
 
 export default function Class1WastewaterQuiz() {
-  usePageMeta({
-    title: "Class 1 Wastewater Treatment Practice",
-    description: "Practice for your Ontario Class 1 Wastewater Treatment operator exam with 500+ questions, AI Tutor explanations, and a full 100-question mock exam.",
-    path: "/class1-ww",
-    keywords: "Class 1 wastewater treatment exam prep, Ontario operator certification, OWWCO, O. Reg. 128/04 practice questions",
+  const allQuestions = CLASS1_WASTEWATER_QUESTIONS as Class1WastewaterQuestion[];
+  const modules = CLASS1_WASTEWATER_MODULES;
+
+  const [history, setHistory]       = useState<HistoryEntry[]>([]);
+  const [usedIds, setUsedIds]       = useState<Set<number | string>>(new Set());
+  const [current, setCurrent]       = useState<Class1WastewaterQuestion | null>(() => {
+    const q = allQuestions[Math.floor(Math.random() * allQuestions.length)];
+    return q ?? null;
   });
-
-  const [trialUnlockedState, setTrialUnlockedState] = useState(() => isTrialUnlocked());
-  const [selectedModule, setSelectedModule] = useState<string | null>(null);
-  const searchString = useSearch();
-  const initialCalcOnly = new URLSearchParams(searchString).get("calcOnly") === "true";
-    const [calcOnly, setCalcOnly] = useState(initialCalcOnly);
-  const [showModuleSelector, setShowModuleSelector] = useState(false);
-  const getPool = useCallback((mod: string | null, unlocked: boolean) => {
-    const base = mod ? CLASS1_WASTEWATER_QUESTIONS.filter(q => q.module === mod) : CLASS1_WASTEWATER_QUESTIONS;
-    return unlocked ? base : base.slice(0, 60);
-  }, []);
-  const initialQ = useMemo(() => toCompat(CLASS1_WASTEWATER_QUESTIONS[0]), []);
-  const [history, setHistory] = useState<HistoryEntry[]>([]);
-  const [current, setCurrent] = useState<QCompat | null>(initialQ);
-  const [selected, setSelected] = useState<number | null>(null);
+  const [selected, setSelected]     = useState<number | null>(null);
   const [confidence, setConfidence] = useState<number | null>(null);
-  const [confirmed, setConfirmed] = useState(false);
-  const [showSteps, setShowSteps] = useState(false);
-  const [tutorOpen, setTutorOpen] = useState(false);
-  const [showGate, setShowGate] = useState(false);
-  const [reportModalOpen, setReportModalOpen] = useState(false);
+  const [confirmed, setConfirmed]   = useState(false);
+  const [showSteps, setShowSteps]   = useState(false);
+  const [tutorOpen, setTutorOpen]   = useState(false);
+  const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [calcOnly, setCalcOnly]     = useState(false);
 
-  const sessionCount = history.length % SESSION_SIZE;
-  const totalAnswered = history.length;
+  const correctCount = history.filter(h => h.correct).length;
+  const wrongCount   = history.filter(h => !h.correct).length;
 
-  const resetSession = useCallback(() => {
-    const nextQ = getNextQ([], trialUnlockedState);
-    setCurrent(nextQ);
-    setHistory([]);
-    setSelected(null);
-    setConfidence(null);
-    setConfirmed(false);
-    setShowSteps(false);
-    setTutorOpen(false);
-    setShowGate(false);
-  }, [trialUnlockedState]);
+  // ── Filtered pool ─────────────────────────────────────────────────────────
+  const pool = useMemo(() => {
+    let qs = allQuestions.filter(q => !usedIds.has((q as any).id));
+    if (selectedModule) qs = qs.filter(q => (q as any).module === selectedModule);
+    if (calcOnly) qs = qs.filter(q => (q as any).isCalc === true);
+    return qs;
+  }, [usedIds, selectedModule, calcOnly]);
 
-  const confirm = useCallback(() => {
-    if (selected === null || confidence === null || !current) return;
-    const isCorrect = selected === current.correct;
-    const entry: HistoryEntry = {
-      q: current,
-      selected,
-      confidence,
-      correct: isCorrect,
-    };
-    setHistory((prev) => [...prev, entry]);
+  // ── Get next question ─────────────────────────────────────────────────────
+  const getNext = useCallback((currentPool: Class1WastewaterQuestion[]): Class1WastewaterQuestion | null => {
+    if (currentPool.length === 0) return null;
+    return currentPool[Math.floor(Math.random() * currentPool.length)];
+  }, []);
+
+  // ── Confirm answer ────────────────────────────────────────────────────────
+  const handleConfirm = useCallback(() => {
+    if (selected === null || !current) return;
+    const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
+    const isCorrect = selected === correctIdx;
+    setHistory(h => [...h, { q: current, selected, confidence, correct: isCorrect, questionObj: current }]);
+    setUsedIds(s => new Set([...Array.from(s), (current as any).id]));
     setConfirmed(true);
-  }, [selected, confidence, current]);
+    setShowSteps(false);
+  }, [selected, current, confidence]);
 
-  const next = useCallback(() => {
-    const newHistory = [...history, { q: current!, selected: selected!, confidence: confidence!, correct: selected === current!.correct, questionObj: current! }];
-    const newCount = newHistory.length;
-
-    // Show gate after SESSION_SIZE questions if not unlocked
-    if (!trialUnlockedState && newCount % SESSION_SIZE === 0) {
-      setShowGate(true);
-      return;
-    }
-
-    const nextQ = getNextQ(newHistory, trialUnlockedState);
-    setCurrent(nextQ);
+  // ── Next question ─────────────────────────────────────────────────────────
+  const handleNext = useCallback(() => {
+    const next = getNext(pool);
+    setCurrent(next);
     setSelected(null);
     setConfidence(null);
     setConfirmed(false);
     setShowSteps(false);
     setTutorOpen(false);
-  }, [history, current, selected, confidence, trialUnlockedState]);
+  }, [pool, getNext]);
+
+  // ── Go back ───────────────────────────────────────────────────────────────
   const goBack = useCallback(() => {
     if (history.length === 0) return;
-    const prev = history[history.length - 1];
     const newHistory = history.slice(0, -1);
+    const prev = history[history.length - 1];
     setHistory(newHistory);
+    setUsedIds(s => {
+      const next = new Set(Array.from(s));
+      next.delete((prev.q as any).id);
+      return next;
+    });
     setCurrent(prev.questionObj ?? prev.q);
     setSelected(prev.selected);
     setConfidence(prev.confidence);
@@ -170,335 +92,113 @@ export default function Class1WastewaterQuiz() {
     setTutorOpen(false);
   }, [history]);
 
-  // Stats
-  const correctCount = history.filter((h) => h.correct).length;
-  const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : 0;
+  // ── Reset session ─────────────────────────────────────────────────────────
+  const resetSession = useCallback(() => {
+    setHistory([]);
+    setUsedIds(new Set());
+    setSelected(null);
+    setConfidence(null);
+    setConfirmed(false);
+    setShowSteps(false);
+    setTutorOpen(false);
+    const q = allQuestions[Math.floor(Math.random() * allQuestions.length)];
+    setCurrent(q ?? null);
+  }, [allQuestions]);
 
-  const moduleStats = useMemo(() => {
-    const stats: Record<string, { correct: number; total: number }> = {};
-    history.forEach((h) => {
-      const mod = h.q.module;
-      if (!stats[mod]) stats[mod] = { correct: 0, total: 0 };
-      stats[mod].total++;
-      if (h.correct) stats[mod].correct++;
-    });
-    return stats;
-  }, [history]);
+  // ── Calc Only toggle ──────────────────────────────────────────────────────
+  const handleCalcOnlyToggle = useCallback(() => {
+    const next = !calcOnly;
+    setCalcOnly(next);
+    // Immediately load a calc question when toggling on
+    if (next) {
+      let calcPool = allQuestions.filter(q => (q as any).isCalc === true && !usedIds.has((q as any).id));
+      if (selectedModule) calcPool = calcPool.filter(q => (q as any).module === selectedModule);
+      if (calcPool.length > 0) {
+        const q = calcPool[Math.floor(Math.random() * calcPool.length)];
+        setCurrent(q);
+        setSelected(null);
+        setConfidence(null);
+        setConfirmed(false);
+        setShowSteps(false);
+      }
+    }
+  }, [calcOnly, allQuestions, usedIds, selectedModule]);
 
-  if (!current && history.length === 0) {
-    return (
-      <div style={{ minHeight: "100vh", background: "#F8FAFC" }}>
-        <SiteNav currentPath="/class1-ww" />
-        <div style={{ maxWidth: 600, margin: "0 auto", padding: "80px 20px", textAlign: "center" }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>🦠</div>
-          <h2 style={{ fontSize: 24, fontWeight: 800, color: "#1E293B", marginBottom: 8 }}>No questions available</h2>
-          <p style={{ color: "#64748B" }}>Please refresh the page to start a new session.</p>
-        </div>
-      </div>
-    );
-  }
+  // ── Module change ─────────────────────────────────────────────────────────
+  const handleModuleChange = useCallback((mod: string | null) => {
+    setSelectedModule(mod);
+    // Immediately load a question from the new module
+    let newPool = allQuestions.filter(q => !usedIds.has((q as any).id));
+    if (mod) newPool = newPool.filter(q => (q as any).module === mod);
+    if (calcOnly) newPool = newPool.filter(q => (q as any).isCalc === true);
+    if (newPool.length > 0) {
+      const q = newPool[Math.floor(Math.random() * newPool.length)];
+      setCurrent(q);
+      setSelected(null);
+      setConfidence(null);
+      setConfirmed(false);
+      setShowSteps(false);
+    }
+  }, [allQuestions, usedIds, calcOnly]);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>
-      <SiteNav currentPath="/class1-ww" />
-
-      {/* Header */}
-      <div style={{ background: "linear-gradient(135deg, #0F766E 0%, #0E7490 100%)", color: "#fff", padding: "24px 16px 20px" }}>
-        <div style={{ maxWidth: 720, margin: "0 auto" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
-            <div>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.5, opacity: 0.75, textTransform: "uppercase", marginBottom: 4 }}>Echelon Institute</div>
-              <h1 style={{ margin: 0, fontSize: 20, fontWeight: 800 }}>Class 1 Wastewater Treatment</h1>
-              <div style={{ fontSize: 13, opacity: 0.85, marginTop: 4 }}>Practice Quiz · 500 Questions · Foundation Level</div>
-            </div>
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-              <Link href="/formulas-ww1">
-                <button style={{ padding: "8px 14px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
-                  📐 Formula Sheet
-                </button>
-              </Link>
-              <Link href="/class1-ww-mock">
-                <button style={{ padding: "8px 14px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
-                  📋 Mock Exam
-                </button>
-              </Link>
-            </div>
-          </div>
-          {/* Stats bar */}
-          <div style={{ display: "flex", gap: 16, marginTop: 16, flexWrap: "wrap" }}>
-            {[
-              { label: "Answered", value: totalAnswered },
-              { label: "Correct", value: history.filter(h => h.correct).length },
-              { label: "Accuracy", value: `${accuracy}%` },
-            ].map(s => (
-              <div key={s.label} style={{ background: "rgba(255,255,255,0.15)", borderRadius: 8, padding: "6px 14px", textAlign: "center" }}>
-                <div style={{ fontSize: 18, fontWeight: 800 }}>{s.value}</div>
-                <div style={{ fontSize: 10, opacity: 0.8, textTransform: "uppercase", letterSpacing: 1 }}>{s.label}</div>
-              </div>
-            ))}
-            <button
-              onClick={() => setShowModuleSelector(v => !v)}
-              style={{ padding: "6px 14px", background: selectedModule ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
-            >
-              {selectedModule ? `📚 ${selectedModule.split(" ")[0]}` : "📚 All Modules"}
-            </button>
-            <button
-              onClick={() => {
-                const newCalcOnly = !calcOnly;
-                setCalcOnly(newCalcOnly);
-                const newPool = newCalcOnly ? CLASS1_WASTEWATER_QUESTIONS.filter(q => q.isCalc) : CLASS1_WASTEWATER_QUESTIONS;
-                const next = newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null;
-                setCurrent(next);
-                setHistory([]);
-                setSelected(null);
-                setConfidence(null);
-                setConfirmed(false);
-              }}
-              style={{ padding: "6px 14px", background: calcOnly ? "rgba(167,139,250,0.4)" : "rgba(255,255,255,0.15)", color: "#fff", border: calcOnly ? "1px solid rgba(167,139,250,0.8)" : "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
-            >
-              🧮 Calc Only
-            </button>
-          </div>
-          {showModuleSelector && (
-            <div style={{ marginTop: 12, display: "flex", gap: 8, flexWrap: "wrap" }}>
-              <button
-                onClick={() => { setSelectedModule(null); setShowModuleSelector(false); setHistory([]); const q = getNextQ([], trialUnlockedState, null); setCurrent(q); setSelected(null); setConfidence(null); setConfirmed(false); }}
-                style={{ padding: "6px 12px", background: !selectedModule ? "#fff" : "rgba(255,255,255,0.15)", color: !selectedModule ? "#0F766E" : "#fff", border: "none", borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
-              >All Modules</button>
-              {CLASS1_WASTEWATER_MODULES.map(mod => (
-                <button key={mod}
-                  onClick={() => { setSelectedModule(mod); setShowModuleSelector(false); setHistory([]); const q = getNextQ([], trialUnlockedState, mod); setCurrent(q); setSelected(null); setConfidence(null); setConfirmed(false); }}
-                  style={{ padding: "6px 12px", background: selectedModule === mod ? "#fff" : "rgba(255,255,255,0.15)", color: selectedModule === mod ? "#0F766E" : "#fff", border: "none", borderRadius: 6, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
-                >
-                  {MODULE_ICONS[mod] ?? "📖"} {mod}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Progress bar */}
-      <div style={{ height: 4, background: "rgba(0,0,0,0.1)" }}>
-        <div style={{ height: "100%", background: "rgba(255,255,255,0.6)", borderRadius: 0, width: `${trialUnlockedState ? Math.min((totalAnswered / 601) * 100, 100) : Math.min((sessionCount / SESSION_SIZE) * 100, 100)}%`, transition: "width 0.4s ease" }} />
-      </div>
-
-      <div style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px 80px" }}>
-
-        {/* Question card */}
-        {current && (
-          <div style={{ background: "#fff", borderRadius: 16, padding: "24px 20px", border: "1px solid #E2E8F0", marginBottom: 16 }}>
-            {/* Module badge */}
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16, flexWrap: "wrap" }}>
-              <span style={{
-                fontSize: 11, fontWeight: 700, padding: "4px 10px", borderRadius: 20,
-                background: MODULE_COLORS[current.module]?.bg ?? "#F1F5F9",
-                color: MODULE_COLORS[current.module]?.color ?? "#475569",
-                letterSpacing: "0.06em"
-              }}>
-                {MODULE_ICONS[current.module] ?? "📚"} {current.module}
-              </span>
-              <span style={{
-                fontSize: 11, fontWeight: 700, padding: "4px 10px", borderRadius: 20,
-                background: DIFF_BG[current.difficulty] ?? "#F1F5F9",
-                color: DIFF_COLOR[current.difficulty] ?? "#475569",
-                letterSpacing: "0.06em", textTransform: "uppercase"
-              }}>
-                {current.difficulty}
-              </span>
-              <span style={{ marginLeft: "auto", fontSize: 12, color: "#94A3B8" }}>#{current.id}</span>
-            </div>
-
-            {/* Question text */}
-            <p style={{ fontSize: 16, fontWeight: 600, color: "#1E293B", lineHeight: 1.6, marginBottom: 20 }}>
-              {current.question}
-            </p>
-
-            {/* Options */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {current.options.map((opt, i) => {
-                let bg = "#F8FAFC", border = "1.5px solid #E2E8F0", color = "#1E293B";
-                if (selected === i && !confirmed) { bg = "#EFF6FF"; border = "1.5px solid #0369A1"; color = "#0369A1"; }
-                if (confirmed) {
-                  if (i === current.correct) { bg = "#F0FDF4"; border = "1.5px solid #86EFAC"; color = "#15803D"; }
-                  else if (i === selected && i !== current.correct) { bg = "#FEF2F2"; border = "1.5px solid #FCA5A5"; color = "#DC2626"; }
-                }
-                return (
-                  <button
-                    key={i}
-                    onClick={() => !confirmed && setSelected(i)}
-                    style={{ padding: "13px 16px", borderRadius: 12, background: bg, border, color, fontWeight: 600, fontSize: 14, textAlign: "left", cursor: confirmed ? "default" : "pointer", fontFamily: "inherit", lineHeight: 1.5 }}
-                  >
-                    <span style={{ fontWeight: 800, marginRight: 8 }}>{String.fromCharCode(65 + i)}.</span>{opt}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Confidence meter */}
-            {selected !== null && !confirmed && (
-              <div style={{ marginTop: 20 }}>
-                <ConfidenceMeter value={confidence} onChange={setConfidence} />
-              </div>
-            )}
-
-            {/* Confirm / Next buttons */}
-            <div style={{ marginTop: 20, display: "flex", gap: 10, flexWrap: "wrap" }}>
-              {history.length > 0 && (
-              <button
-                onClick={goBack}
-                style={{ padding: "13px 16px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
-              >
-                ← Prev
-              </button>
-            )}
-            {!confirmed ? (
-                <button
-                  onClick={confirm}
-                  disabled={selected === null || confidence === null}
-                  style={{ flex: 1, padding: "13px 20px", borderRadius: 12, background: selected !== null && confidence !== null ? "linear-gradient(135deg, #0369A1, #0E7490)" : "#E2E8F0", color: selected !== null && confidence !== null ? "#fff" : "#94A3B8", fontWeight: 800, fontSize: 15, border: "none", cursor: selected !== null && confidence !== null ? "pointer" : "not-allowed", fontFamily: "inherit" }}
-                >
-                  Confirm Answer
-                </button>
-              ) : (
-                <>
-                  <button
-                  onClick={goBack}
-                  style={{ padding: "13px 16px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
-                >
-                  ← Prev
-                </button>
-                <button
-                    onClick={next}
-                    style={{ flex: 1, padding: "13px 20px", borderRadius: 12, background: "linear-gradient(135deg, #0369A1, #0E7490)", color: "#fff", fontWeight: 800, fontSize: 15, border: "none", cursor: "pointer", fontFamily: "inherit" }}
-                  >
-                    Next Question →
-                  </button>
-                  <button
-                    onClick={() => setShowSteps(v => !v)}
-                    style={{ padding: "13px 16px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: showSteps ? "#EFF6FF" : "#fff", color: showSteps ? "#0369A1" : "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
-                  >
-                    {showSteps ? "Hide" : "Explain"}
-                  </button>
-                  <button
-                    onClick={() => setTutorOpen(v => !v)}
-                    style={{ padding: "13px 16px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: tutorOpen ? "#EFF6FF" : "#fff", color: tutorOpen ? "#0369A1" : "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
-                  >
-                    🤖 AI Tutor
-                  </button>
-                </>
-              )}
-            </div>
-
-            {/* Explanation */}
-            {confirmed && showSteps && (
-              <div style={{ marginTop: 16 }}>
-                <div style={{ marginTop: 8, padding: "14px 16px", borderRadius: 12, background: "#F0FDF4", border: "1px solid #BBF7D0" }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: "#15803D", letterSpacing: "0.08em", marginBottom: 6 }}>EXPLANATION</div>
-                  <div style={{ fontSize: 13, color: "#166534", lineHeight: 1.65, whiteSpace: "pre-line" }}>{current.explanation}</div>
-                  {CLASS1_WW_FORMULA_LINKS[current.id] && (
-                    <a
-                      href={CLASS1_WW_FORMULA_LINKS[current.id]}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 10, padding: "7px 14px", borderRadius: 8, background: "#CCFBF1", border: "1px solid #99F6E4", color: "#0F766E", fontSize: 11, fontWeight: 700, textDecoration: "none", fontFamily: "inherit" }}
-                    >
-                      📐 View formula sheet ↗
-                    </a>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
+    <PurchaseGate
+      examType="class1-ww"
+      productKey="class1-ww"
+      productName="Ontario Class 1 · Wastewater Treatment"
+      price={79}
+    >
+      <QuizShell
+        currentPath="/class1-ww"
+        courseLabel="Ontario Class 1 · Wastewater Treatment"
+        courseTitle="Class 1 Wastewater Practice Quiz"
+        courseSubtitle="Ontario OWWCO Class 1 Wastewater Exam Prep"
+        headerGradient="linear-gradient(135deg, #0F766E 0%, #0369A1 100%)"
+        headerIcon="🌊"
+        headerActions={[
+          { label: "📝 Mock Exam", href: "/class1-ww-mock" },
+        ]}
+        history={history}
+        correctCount={correctCount}
+        wrongCount={wrongCount}
+        modules={modules.map((m: any) => ({
+          name: typeof m === "string" ? m : m.name,
+          icon: typeof m === "object" ? m.icon : undefined,
+          bg:   typeof m === "object" ? m.bg   : undefined,
+          color: typeof m === "object" ? m.color : undefined,
+        }))}
+        selectedModule={selectedModule}
+        onModuleChange={handleModuleChange}
+        hasCalcOnly={true}
+        calcOnly={calcOnly}
+        onCalcOnlyToggle={handleCalcOnlyToggle}
+        current={current}
+        selected={selected}
+        confidence={confidence}
+        confirmed={confirmed}
+        showSteps={showSteps}
+        tutorOpen={tutorOpen}
+        onSelect={setSelected}
+        onConfirm={handleConfirm}
+        onNext={handleNext}
+        onGoBack={goBack}
+        onConfidenceChange={setConfidence}
+        onToggleSteps={() => setShowSteps(v => !v)}
+        onTutorOpen={() => setTutorOpen(true)}
+        onTutorClose={() => setTutorOpen(false)}
+        onResetSession={resetSession}
+        mockExamHref="/class1-ww-mock"
+        
+        renderAITutor={() => (
+          <AITutor
+            question={current as any}
+            userAnswer={selected}
+            history={history as any}
+            patternMode={false}
+            onClose={() => setTutorOpen(false)}
+          />
         )}
-
-        {/* AI Tutor */}
-        {tutorOpen && confirmed && current && (
-          <div style={{ marginBottom: 16 }}>
-            <AITutor
-              question={current as any}
-              userAnswer={selected}
-              history={[]}
-              patternMode={false}
-              onClose={() => setTutorOpen(false)}
-            />
-          </div>
-        )}
-
-        {/* Report error */}
-        {current && (
-          <div style={{ textAlign: "center" }}>
-            <button
-              onClick={() => setReportModalOpen(true)}
-              style={{ fontSize: 11, color: "#CBD5E1", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}
-            >
-              Report an error with this question
-            </button>
-          </div>
-        )}
-
-        {/* Module breakdown */}
-        {Object.keys(moduleStats).length > 0 && (
-          <div style={{ background: "#fff", borderRadius: 16, padding: "20px", border: "1px solid #E2E8F0", marginTop: 24 }}>
-            <h3 style={{ fontSize: 14, fontWeight: 700, color: "#1E293B", marginBottom: 14 }}>Module Breakdown</h3>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {Object.entries(moduleStats).map(([mod, stat]) => (
-                <div key={mod} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <span style={{ fontSize: 12, color: "#475569", flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{mod}</span>
-                  <span style={{ fontSize: 12, fontWeight: 700, color: stat.correct / stat.total >= 0.7 ? "#059669" : "#DC2626", whiteSpace: "nowrap" }}>
-                    {stat.correct}/{stat.total}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Quiz Gate */}
-      {showGate && (
-        <QuizGate
-          questionsAnswered={history.length}
-          productKey="class1-ww"
-          productName="Class 1 Wastewater Treatment Practice Pass"
-          priceLabel="CA$79"
-          paidFeatures={[
-            "Full 500+ question bank — unlimited attempts",
-            "Class 1 Wastewater Mock Exam (100 questions, 2-hour timer)",
-            "AI Tutor explanations on every question",
-            "Score history & module breakdown",
-          ]}
-          onUnlocked={() => {
-            setTrialUnlocked();
-            setTrialUnlockedState(true);
-            setShowGate(false);
-            const nextQ = getNextQ(history, true);
-            if (nextQ) {
-              setCurrent(nextQ);
-              setSelected(null);
-              setConfidence(null);
-              setConfirmed(false);
-              setShowSteps(false);
-              setTutorOpen(false);
-            } else {
-              setCurrent(null);
-            }
-          }}
-          onDismiss={() => {
-            setShowGate(false);
-            resetSession();
-          }}
-        />
-      )}
-
-      {reportModalOpen && current && (
-        <ReportErrorModal
-          questionId={current.id}
-          questionText={current.question}
-          module={current.module}
-          onClose={() => setReportModalOpen(false)}
-        />
-      )}
-    </div>
+      />
+    </PurchaseGate>
   );
 }
