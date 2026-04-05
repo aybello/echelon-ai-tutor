@@ -361,6 +361,7 @@ export const WPI_CLASS2_WASTEWATER_QUESTIONS: WpiClass2WastewaterQuestion[] = [
     text: `What is the stoichiometric dose of alum required to remove 1 mg/L of phosphorus?`,
     options: ["1 mg/L", "9.6 mg/L", "50 mg/L", "100 mg/L"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: `The stoichiometric dose of alum (Al2(SO4)3·18H2O) is approximately 9.6 mg/L per mg/L of phosphorus removed.`,
     steps: [
       { l: "Formula", c: "Alum Dose = Phosphorus Removed × Stoichiometric Ratio" },

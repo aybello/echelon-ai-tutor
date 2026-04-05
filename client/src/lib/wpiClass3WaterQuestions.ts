@@ -58,6 +58,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant must achieve 3-log Cryptosporidium inactivation using ozone. The CT required is 12 mg\u00b7min/L at 15\u00b0C. If the ozone residual is 0.8 mg/L, what contact time is needed?",
     options: ["8 min", "15 min", "20 min", "10 min"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "CT = C \u00d7 T \u2192 T = CT / C = 12 / 0.8 = 15 minutes. The ozone contact chamber must provide at least 15 minutes of contact time at 0.8 mg/L residual.",
     steps: [
       { l: "Formula", c: "Contact Time (T) = CT / Residual (C)" },
@@ -83,6 +84,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "At 10\u00b0C, the CT required for 2-log Giardia inactivation with free chlorine at pH 7.0 is 22 mg\u00b7min/L. If the chlorine residual is 1.1 mg/L, what contact time is required?",
     options: ["15 min", "20 min", "25 min", "22 min"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "T = CT / C = 22 / 1.1 = 20 minutes. Temperature and pH both affect CT requirements \u2014 colder water requires longer contact times.",
     steps: [
       { l: "Formula", c: "Contact Time (T) = CT / Residual (C)" },
@@ -356,6 +358,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A filter has a surface area of 50 m\u00b2 and a design filtration rate of 8 m/h. What is the design flow through this filter?",
     options: ["400 m\u00b3/h", "4 m\u00b3/h", "50 m\u00b3/h", "800 m\u00b3/h"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Flow = Filtration rate \u00d7 Area = 8 m/h \u00d7 50 m\u00b2 = 400 m\u00b3/h. Filtration rate (surface overflow rate) is expressed as flow per unit filter area.",
     steps: [
       { l: "Formula", c: "Flow = Filtration Rate × Surface Area" },
@@ -435,6 +438,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A UF membrane system has a design flux of 50 L/m\u00b2/h (LMH) and a total membrane area of 2,000 m\u00b2. What is the design permeate flow?",
     options: ["100,000 L/h", "50,000 L/h", "25,000 L/h", "2,000 L/h"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Permeate flow = Flux \u00d7 Area = 50 LMH \u00d7 2,000 m\u00b2 = 100,000 L/h = 100 m\u00b3/h. Flux is the key design parameter for membrane systems, expressed as flow per unit membrane area per unit time.",
     steps: [
       { l: "Formula", c: "Permeate Flow = Flux × Total Membrane Area" },
@@ -532,6 +536,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "An RO system has a feed flow of 1,000 m\u00b3/day and a recovery of 75%. What is the concentrate (reject) flow?",
     options: ["750 m\u00b3/day", "250 m\u00b3/day", "500 m\u00b3/day", "1,000 m\u00b3/day"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "Permeate flow = 1,000 \u00d7 0.75 = 750 m\u00b3/day. Concentrate flow = Feed \u2212 Permeate = 1,000 \u2212 750 = 250 m\u00b3/day. The concentrate contains the rejected dissolved solids at 4\u00d7 the feed concentration (for 75% recovery).",
     steps: [
       { l: "Step 1", c: "Permeate Flow = Feed Flow × Recovery" },
@@ -611,6 +616,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A clearwell has a theoretical detention time of 60 minutes and a baffling factor of 0.5. What is the T10 used for CT calculations?",
     options: ["60 min", "30 min", "6 min", "120 min"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "T10 = Theoretical detention time \u00d7 Baffling factor = 60 \u00d7 0.5 = 30 minutes. The baffling factor accounts for short-circuiting. Well-baffled basins have factors of 0.7\u20131.0; poorly baffled basins have factors of 0.1\u20130.3.",
     steps: [
       { l: "Formula", c: "T10 = Theoretical Detention Time × Baffling Factor" },
@@ -717,6 +723,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant treats 10,000 m\u00b3/day of source water. Backwash waste is 500 m\u00b3/day, sludge is 200 m\u00b3/day, and treated water delivered is 9,100 m\u00b3/day. What is the unaccounted-for water?",
     options: ["200 m\u00b3/day", "100 m\u00b3/day", "0 m\u00b3/day", "300 m\u00b3/day"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Water balance: In = 10,000. Out = 9,100 + 500 + 200 = 9,800. Unaccounted = 10,000 \u2212 9,800 = 200 m\u00b3/day. This should be investigated \u2014 it may represent meter error, evaporation, or unrecorded uses.",
     steps: [
       { l: "Step 1", c: "Total Water In = 10,000 m³/day" },
@@ -1073,6 +1080,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant uses ozone at 2.0 mg/L with a contact time of 10 minutes. What is the CT achieved?",
     options: ["0.2 mg\u00b7min/L", "20 mg\u00b7min/L", "200 mg\u00b7min/L", "2.0 mg\u00b7min/L"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "CT = C \u00d7 T = 2.0 mg/L \u00d7 10 min = 20 mg\u00b7min/L. This CT provides significant inactivation credit for Giardia and Cryptosporidium, depending on temperature.",
     steps: [
       { l: "Formula:", c: "CT = Concentration × Time" },
@@ -1097,6 +1105,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A membrane system operates at a flux of 60 LMH with a TMP of 30 kPa. After 3 months, the same flux requires a TMP of 90 kPa. What is the fouling resistance increase factor?",
     options: ["2\u00d7", "3\u00d7", "1.5\u00d7", "4\u00d7"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "Fouling resistance is proportional to TMP at constant flux (from Darcy's Law). TMP increased from 30 to 90 kPa \u2014 a factor of 3\u00d7. This indicates significant fouling that likely requires CIP to restore permeability.",
     steps: [
       { l: "Formula:", c: "Fouling Factor = Final TMP ÷ Initial TMP" },
@@ -1146,6 +1155,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A distribution system has an average operating pressure of 450 kPa and a minimum required pressure of 275 kPa. A new development requires a flow of 50 L/s through a 200 mm main with a head loss of 3 m/100 m. What is the available pressure at the development after 500 m of main?",
     options: ["450 kPa", "300 kPa", "165 kPa", "450 \u2212 147 = 303 kPa"],
     correctAnswer: 3,
+    isCalc: true,
     explanation: "Head loss = 3 m/100 m \u00d7 500 m = 15 m = 147 kPa (1 m = 9.81 kPa \u2248 10 kPa). Available pressure = 450 \u2212 147 = 303 kPa. This exceeds the minimum of 275 kPa, so the development can be served.",
     steps: [
       { l: "Step 1: Calculate total head loss in meters", c: "Total Head Loss (m) = (3 m/100 m) × 500 m = 15 m" },
@@ -1225,6 +1235,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant is required to achieve 4-log virus inactivation. The UV system provides 2-log credit. How much additional inactivation must be provided by chlorination?",
     options: ["2-log", "4-log", "1-log", "0-log \u2014 UV is sufficient"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Total required = 4-log. UV provides 2-log. Remaining = 4 \u2212 2 = 2-log must be provided by chlorination. The CT required for 2-log virus inactivation with free chlorine depends on pH and temperature.",
   },
   {
@@ -1234,6 +1245,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A pressure vessel membrane module has 5,000 hollow fibers, each with a diameter of 1.5 mm and length of 1.2 m. What is the total membrane area?",
     options: ["28.3 m\u00b2", "56.5 m\u00b2", "14.1 m\u00b2", "113 m\u00b2"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Area per fiber = \u03c0 \u00d7 d \u00d7 L = \u03c0 \u00d7 0.0015 m \u00d7 1.2 m = 0.00565 m\u00b2. Total area = 5,000 \u00d7 0.00565 = 28.3 m\u00b2. This is a typical calculation for membrane system design.",
     steps: [
       { l: "Step 1: Calculate area per fiber", c: "Area per fiber = π × Diameter × Length" },
@@ -1337,6 +1349,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "At pH 7.5 and 15\u00b0C, the CT for 3-log Giardia inactivation with free chlorine is approximately 165 mg\u00b7min/L. A plant has a clearwell T10 of 45 minutes and a chlorine residual of 1.5 mg/L. What log inactivation credit is achieved?",
     options: ["1-log", "2-log", "3-log", "4-log"],
     correctAnswer: 2,
+    isCalc: true,
     explanation: "CT achieved = C \u00d7 T10 = 1.5 \u00d7 45 = 67.5 mg\u00b7min/L. At pH 7.5, 15\u00b0C, 67.5 mg\u00b7min/L provides approximately 1-log Giardia inactivation (CT for 1-log \u2248 55 mg\u00b7min/L). Wait \u2014 let me recalculate: CT for 3-log at pH 7.5, 15\u00b0C is ~165 mg\u00b7min/L. 67.5 / 165 \u00d7 3 \u2248 1.2-log. The closest answer is 1-log. Note: actual CT tables must be used for precise calculations.",
     steps: [
       { l: "Step 1: Calculate CT achieved", c: "CT achieved = Residual × T10 = 1.5 mg/L × 45 min = 67.5 mg·min/L" },
@@ -1380,6 +1393,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant switches from free chlorine to chloramine disinfection. The chloramine dose is 2.0 mg/L as Cl\u2082 with a Cl\u2082:NH\u2083 ratio of 4:1 by weight. How much ammonia (as N) must be added?",
     options: ["0.5 mg/L", "0.14 mg/L", "0.36 mg/L", "1.0 mg/L"],
     correctAnswer: 2,
+    isCalc: true,
     explanation: "Cl\u2082:NH\u2083 ratio = 4:1 by weight. Ammonia dose = 2.0 / 4 = 0.5 mg/L as NH\u2083. As nitrogen: NH\u2083-N = 0.5 \u00d7 (14/17) = 0.41 mg/L. The closest answer is 0.36 mg/L (using Cl\u2082:NH\u2083-N ratio of ~5.5:1). Precise calculation depends on the ratio used.",
     steps: [
       { l: "Step 1: Calculate ammonia (as NH₃) required", c: "NH₃ dose = Cl₂ dose / Ratio = 2.0 mg/L / 4 = 0.5 mg/L as NH₃" },
@@ -1423,6 +1437,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A water has a chlorine demand of 1.2 mg/L after 30 minutes. The target residual is 0.5 mg/L. What chlorine dose is required?",
     options: ["0.5 mg/L", "1.2 mg/L", "1.7 mg/L", "0.7 mg/L"],
     correctAnswer: 2,
+    isCalc: true,
     explanation: "Dose = Demand + Residual = 1.2 + 0.5 = 1.7 mg/L. The chlorine demand must be satisfied before a residual is established.",
     steps: [
       { l: "Formula:", c: "Chlorine Dose = Chlorine Demand + Target Residual" },
@@ -1474,6 +1489,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A filter has a media depth of 0.6 m sand (ES 0.5 mm, UC 1.4) and 0.3 m anthracite (ES 1.2 mm, UC 1.5). The filtration rate is 10 m/h. What is the hydraulic loading rate in m\u00b3/m\u00b2/h?",
     options: ["10 m\u00b3/m\u00b2/h", "0.1 m\u00b3/m\u00b2/h", "100 m\u00b3/m\u00b2/h", "1 m\u00b3/m\u00b2/h"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Hydraulic loading rate (filtration rate) = Flow / Area = 10 m/h = 10 m\u00b3/m\u00b2/h. The filtration rate and hydraulic loading rate are the same parameter expressed differently. 10 m/h is within the typical range for dual-media filters (8\u201315 m/h).",
     steps: [
       { l: "Formula:", c: "Hydraulic Loading Rate = Filtration Rate" },
@@ -1516,6 +1532,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A filter backwash uses a water rate of 40 m\u00b3/m\u00b2/h for 15 minutes. The filter area is 50 m\u00b2. What volume of backwash water is used per backwash?",
     options: ["500 m\u00b3", "1,000 m\u00b3", "200 m\u00b3", "100 m\u00b3"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Volume = Flow \u00d7 Time = (40 m\u00b3/m\u00b2/h \u00d7 50 m\u00b2) \u00d7 (15/60 h) = 2,000 m\u00b3/h \u00d7 0.25 h = 500 m\u00b3 per backwash. Backwash water volume is typically 2\u20135% of total plant production.",
     steps: [
       { l: "Formula", c: "Volume = Backwash Rate × Filter Area × Time" },
@@ -1559,6 +1576,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant has 4 filters, each 50 m\u00b2, operating at a combined flow of 800 m\u00b3/h. One filter is taken offline for backwash. What is the filtration rate on the remaining 3 filters?",
     options: ["5.33 m/h", "8 m/h", "4 m/h", "10.67 m/h"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Normal rate = 800 / (4 \u00d7 50) = 4 m/h. With 3 filters: rate = 800 / (3 \u00d7 50) = 5.33 m/h. This is within typical design limits. Plants must be designed so that the loss of one filter does not cause excessive loading on remaining filters.",
     steps: [
       { l: "Formula", c: "Filtration Rate = Total Flow Rate ÷ (Number of Filters × Area per Filter)" },
@@ -1593,6 +1611,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant feeds 15 mg/L of alum to treat 5,000 m\u00b3/day of water. Alum is supplied as a 48% solution with a density of 1.33 kg/L. What volume of alum solution must be fed per day?",
     options: ["56.3 L/day", "118 L/day", "75 L/day", "150 L/day"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "Alum mass = 15 mg/L \u00d7 5,000,000 L/day = 75,000,000 mg/day = 75 kg/day. Alum solution mass = 75 / 0.48 = 156.25 kg/day. Volume = 156.25 / 1.33 = 117.5 L/day \u2248 118 L/day.",
     steps: [
       { l: "Step 1", c: "Mass of Alum (active) = Dose × Flow Rate" },
@@ -1709,6 +1728,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A distribution system has 500 km of water mains. The average pipe age is 45 years. The annual main break rate is 25 breaks/100 km. What is the total number of main breaks expected per year?",
     options: ["125", "250", "50", "500"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Breaks = Rate \u00d7 Length = 25 breaks/100 km \u00d7 500 km = 125 breaks/year. Main break rates above 25/100 km/year typically indicate a need for accelerated pipe replacement programs.",
     steps: [
       { l: "Formula", c: "Total Breaks = Break Rate × Total Length" },
@@ -1887,6 +1907,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A cation exchange softener has a capacity of 40 kg CaCO\u2083/m\u00b3 resin and a resin volume of 3 m\u00b3. The raw water hardness is 200 mg/L as CaCO\u2083 and the flow is 500 m\u00b3/day. How many days between regenerations?",
     options: ["1.2 days", "2 days", "1.0 day", "3 days"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Total capacity = 40 \u00d7 3 = 120 kg CaCO\u2083. Daily load = 200 mg/L \u00d7 500,000 L/day = 100,000,000 mg/day = 100 kg/day. Days = 120 / 100 = 1.2 days.",
     steps: [
       { l: "Step 1", c: "Total Softener Capacity = Capacity per m³ × Resin Volume" },
@@ -1933,6 +1954,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A water has 2.5 mg/L Fe\u00b2\u207a. The theoretical chlorine demand for iron oxidation is 0.64 mg Cl\u2082/mg Fe. What chlorine dose is required just for iron oxidation?",
     options: ["1.6 mg/L", "2.5 mg/L", "0.64 mg/L", "4.0 mg/L"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Cl\u2082 demand = 0.64 \u00d7 2.5 = 1.6 mg/L. This is the theoretical demand for iron oxidation only \u2014 additional chlorine is needed for disinfection and to overcome other chlorine demands.",
     steps: [
       { l: "Formula", c: "Chlorine Dose = Iron Concentration × Chlorine Demand Ratio" },
@@ -1975,6 +1997,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A water has 0.025 mg/L arsenic. The MAC is 0.01 mg/L. What percentage removal is required?",
     options: ["40%", "50%", "60%", "75%"],
     correctAnswer: 2,
+    isCalc: true,
     explanation: "Required removal = (0.025 \u2212 0.01) / 0.025 \u00d7 100% = 0.015 / 0.025 \u00d7 100% = 60%. The treatment system must remove at least 60% of the arsenic to meet the MAC.",
     steps: [
       { l: "Formula", c: "Percentage Removal = ((Influent - Effluent) / Influent) × 100%" },
@@ -2045,6 +2068,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant uses a two-stage filtration system: roughing filter (filtration rate 1 m/h) followed by rapid sand filter (filtration rate 8 m/h). Source water turbidity is 150 NTU. After the roughing filter, turbidity is 15 NTU. What is the turbidity removal efficiency of the roughing filter?",
     options: ["90%", "85%", "95%", "80%"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Removal = (150 \u2212 15) / 150 \u00d7 100% = 135 / 150 \u00d7 100% = 90%. The roughing filter removes 90% of the turbidity, reducing the load on the rapid sand filter.",
     steps: [
       { l: "Formula", c: "Removal Efficiency = ((Influent Turbidity - Effluent Turbidity) / Influent Turbidity) × 100%" },
@@ -2242,6 +2266,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A storage tank has a volume of 2,000 m\u00b3 and an average daily throughput of 500 m\u00b3/day. What is the theoretical water age in the tank?",
     options: ["4 days", "2 days", "1 day", "0.25 days"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Water age = Volume / Flow = 2,000 / 500 = 4 days. A 4-day water age is high and likely to result in significant disinfectant residual decay. Operational strategies to reduce water age include increasing turnover frequency.",
     steps: [
       { l: "Formula:", c: "Water Age = Volume ÷ Throughput" },
@@ -2284,6 +2309,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A distribution system serves an area with elevations ranging from 50 m to 150 m above sea level. The minimum service pressure is 275 kPa (28 m head). What is the minimum hydraulic grade line (HGL) required to serve the highest elevation?",
     options: ["150 m", "178 m", "122 m", "200 m"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "HGL required = Elevation + Minimum pressure head = 150 m + 28 m = 178 m above sea level. The hydraulic grade line must be at least 178 m to provide 275 kPa at the highest point in the service area.",
     steps: [
       { l: "Formula:", c: "Minimum HGL = Highest Elevation + Minimum Pressure Head" },
@@ -2416,6 +2442,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A water has 0.5 mg/L ammonia-nitrogen. What chlorine dose is required to reach the breakpoint?",
     options: ["0.5 mg/L", "3.8 mg/L", "7.6 mg/L", "1.0 mg/L"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "Breakpoint Cl\u2082:NH\u2083-N ratio = 7.6:1 by weight. Breakpoint dose = 7.6 \u00d7 0.5 = 3.8 mg/L Cl\u2082. Additional chlorine beyond 3.8 mg/L will establish a free chlorine residual.",
     steps: [
       { l: "Formula:", c: "Chlorine Dose = Ammonia-Nitrogen Concentration × Breakpoint Ratio" },
@@ -2485,6 +2512,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant needs to remove geosmin from 10,000 m\u00b3/day of water. The geosmin concentration is 50 ng/L and the target is 5 ng/L. The PAC dose required is 10 mg/L. What mass of PAC is needed per day?",
     options: ["100 kg/day", "10 kg/day", "1,000 kg/day", "50 kg/day"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "PAC mass = 10 mg/L \u00d7 10,000,000 L/day = 100,000,000 mg/day = 100 kg/day.",
     steps: [
       { l: "Formula:", c: "Mass of PAC = PAC Dose × Flow Rate" },
@@ -2573,6 +2601,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "An RO system has a feed flow of 100 m\u00b3/h and a permeate flow of 75 m\u00b3/h. What is the recovery rate and the concentration factor for a dissolved constituent?",
     options: ["75% recovery, CF = 4", "75% recovery, CF = 3", "80% recovery, CF = 5", "75% recovery, CF = 1.33"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Recovery = 75/100 = 75%. Concentration factor (CF) = 1/(1-R) = 1/(1-0.75) = 4. A constituent at 100 mg/L in the feed will be at 400 mg/L in the concentrate. This determines the scaling potential of the concentrate.",
     steps: [
       { l: "Step 1:", c: "Recovery Rate = (Permeate Flow ÷ Feed Flow) × 100%" },
@@ -2678,6 +2707,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A sedimentation basin receives 500 m\u00b3/h of water with 50 mg/L TSS. Alum dose is 20 mg/L (producing ~0.26 mg floc/mg alum). Settled water TSS is 3 mg/L. What is the sludge production rate (kg/day)?",
     options: ["576 kg/day", "288 kg/day", "720 kg/day", "144 kg/day"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Solids in = (50 mg/L + 20\u00d70.26 mg/L) \u00d7 500 m\u00b3/h = (50 + 5.2) \u00d7 500,000 L/h = 55.2 \u00d7 500,000 = 27,600,000 mg/h = 27.6 kg/h. Solids out in settled water = 3 \u00d7 500,000 = 1,500,000 mg/h = 1.5 kg/h. Sludge = 27.6 \u2212 1.5 = 26.1 kg/h \u00d7 24 = 626 kg/day \u2248 576 kg/day (accounting for alum floc production).",
     steps: [
       { l: "Step 1:", c: "Calculate total incoming solids: (TSS in + Alum Floc) × Flow Rate" },
@@ -2743,6 +2773,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A distribution system has a dead-end main 2 km long with a diameter of 150 mm. The water age at the dead end is 7 days. The chlorine decay rate is 0.05/day. If the initial residual is 0.8 mg/L, what is the residual at the dead end?",
     options: ["0.57 mg/L", "0.8 mg/L", "0.4 mg/L", "0.3 mg/L"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "First-order decay: C = C\u2080 \u00d7 e^(-k\u00d7t) = 0.8 \u00d7 e^(-0.05\u00d77) = 0.8 \u00d7 e^(-0.35) = 0.8 \u00d7 0.705 = 0.564 \u2248 0.57 mg/L. This is above the minimum 0.2 mg/L, but the high water age is a concern for bacterial regrowth and DBP formation.",
     steps: [
       { l: "Formula:", c: "C = C₀ × e^(-kt)" },
@@ -2786,6 +2817,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A 200 mm diameter water main, 500 m long, needs to be disinfected at 50 mg/L chlorine. What volume of 12% sodium hypochlorite solution is needed?",
     options: ["2.6 L", "26 L", "0.26 L", "260 L"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Volume of main = \u03c0/4 \u00d7 0.2\u00b2 \u00d7 500 = 15.7 m\u00b3 = 15,700 L. Chlorine mass needed = 50 mg/L \u00d7 15,700 L = 785,000 mg = 785 g = 0.785 kg. Volume of 12% NaOCl = 0.785 / (0.12 \u00d7 1.2 kg/L) = 0.785 / 0.144 = 5.45 L. Note: NaOCl is ~12% active chlorine by weight, density ~1.2 kg/L. Answer \u2248 5.5 L. Closest answer is 2.6 L (if using different assumptions about NaOCl density and purity).",
     steps: [
       { l: "Step 1:", c: "Calculate volume of the main: V = π/4 × D² × L" },
@@ -2940,6 +2972,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A UV system is designed for 40 mJ/cm\u00b2 at 95% UVT and 100% lamp output. The aging factor is 0.8 and the fouling factor is 0.9. What is the design UV dose (before factors)?",
     options: ["40 mJ/cm\u00b2", "55.6 mJ/cm\u00b2", "32 mJ/cm\u00b2", "44.4 mJ/cm\u00b2"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "Design dose = Required dose / (aging factor \u00d7 fouling factor) = 40 / (0.8 \u00d7 0.9) = 40 / 0.72 = 55.6 mJ/cm\u00b2.",
     steps: [
       { l: "Formula:", c: "Design UV Dose = Required Dose ÷ (Aging Factor × Fouling Factor)" },
@@ -2983,6 +3016,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant uses ferric sulfate as a coagulant at 30 mg/L. Ferric sulfate has a molecular weight of 400 g/mol and contains 2 Fe\u00b3\u207a ions per molecule. What is the iron dose in mg/L as Fe?",
     options: ["4.2 mg/L", "8.4 mg/L", "2.1 mg/L", "16.8 mg/L"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Fe content in Fe\u2082(SO\u2084)\u2083: 2 \u00d7 56 / 400 = 0.28 = 28%. Iron dose = 30 \u00d7 0.28 = 8.4 mg/L as Fe. Wait \u2014 checking: Fe\u2082(SO\u2084)\u2083 MW = 2(56) + 3(32 + 64) = 112 + 288 = 400. Fe% = 112/400 = 28%. Iron dose = 30 \u00d7 0.28 = 8.4 mg/L. Closest answer is 8.4 mg/L.",
     steps: [
       { l: "Formula", c: "Fe content in Fe₂(SO₄)₃ = (2 × MW of Fe) / MW of Fe₂(SO₄)₃" },
@@ -3080,6 +3114,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant has 6 filters, each 40 m\u00b2, operating at a combined flow of 720 m\u00b3/h. The design filtration rate is 10 m/h. One filter is in backwash (15 min) and one is in filter-to-waste (20 min). What is the filtration rate on the remaining 4 filters?",
     options: ["4.5 m/h", "10 m/h", "18 m/h", "9 m/h"],
     correctAnswer: 2,
+    isCalc: true,
     explanation: "Flow on 4 filters = 720 / (4 \u00d7 40) = 720 / 160 = 4.5 m/h. Wait \u2014 that seems low. Let me recalculate: Total area = 6 \u00d7 40 = 240 m\u00b2. Normal rate = 720/240 = 3 m/h. With 4 filters: 720 / (4 \u00d7 40) = 720/160 = 4.5 m/h. Hmm, 18 m/h would require only 2 filters. The answer is 4.5 m/h \u2014 the plant is operating well within design capacity.",
     steps: [
       { l: "Formula", c: "Number of operating filters = Total filters - Filters out of service" },
@@ -3243,6 +3278,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A water utility produces 5,000 m\u00b3/day. Customer meters record 4,200 m\u00b3/day. Authorized unbilled consumption (flushing, fire fighting) is 50 m\u00b3/day. What is the non-revenue water percentage?",
     options: ["15%", "16%", "14%", "17%"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "NRW = Production \u2212 (Billed + Unbilled authorized) = 5,000 \u2212 (4,200 + 50) = 750 m\u00b3/day. NRW% = 750 / 5,000 \u00d7 100% = 15%. Wait \u2014 750/5000 = 15%. The answer is 15%. Let me recheck: 5000 - 4250 = 750. 750/5000 = 0.15 = 15%. Answer is 15%.",
     steps: [
       { l: "Formula", c: "Non-Revenue Water (NRW) = Production - (Billed Consumption + Authorized Unbilled Consumption)" },
@@ -3288,6 +3324,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "An acoustic correlator detects a leak between two hydrants 300 m apart. The time difference between the leak signal arriving at the two sensors is 0.05 seconds. The acoustic velocity in the pipe is 1,200 m/s. Where is the leak located from Sensor 1?",
     options: ["150 m", "120 m", "180 m", "90 m"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "Distance from Sensor 1 = (L \u2212 v \u00d7 \u0394t) / 2 = (300 \u2212 1200 \u00d7 0.05) / 2 = (300 \u2212 60) / 2 = 240 / 2 = 120 m.",
     steps: [
       { l: "Formula", c: "Distance from Sensor 1 = (Total Distance - (Acoustic Velocity × Time Difference)) / 2" },
@@ -3412,6 +3449,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A DAF system has a recycle ratio of 10% and a flow of 1,000 m\u00b3/h. The recycle pressure is 500 kPa. What is the recycle flow rate?",
     options: ["100 m\u00b3/h", "50 m\u00b3/h", "200 m\u00b3/h", "10 m\u00b3/h"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Recycle flow = Recycle ratio \u00d7 Total flow = 10% \u00d7 1,000 = 100 m\u00b3/h.",
     steps: [
       { l: "Formula", c: "Recycle Flow Rate = Recycle Ratio × Total Flow" },
@@ -3446,6 +3484,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A water treatment plant produces 500 kg/day of dry solids in sludge at 1% solids concentration. After thickening to 3% solids, what is the sludge volume?",
     options: ["16,667 L/day", "50,000 L/day", "500 L/day", "1,667 L/day"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "At 3% solids: Volume = Mass / Concentration = 500 kg / (0.03 kg/L) = 16,667 L/day. At 1% solids: Volume = 500 / 0.01 = 50,000 L/day. Thickening from 1% to 3% reduces volume by 67%.",
     steps: [
       { l: "Formula", c: "Sludge Volume (L/day) = Dry Solids (kg/day) / (Solids Concentration (decimal) × Density of Water (kg/L))" },
@@ -3489,6 +3528,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A lime softening plant adds 200 mg/L of lime (as CaO, MW=56) to remove hardness. The sludge is primarily CaCO\u2083 (MW=100). What mass of CaCO\u2083 sludge is produced per litre of water treated?",
     options: ["357 mg/L", "200 mg/L", "100 mg/L", "56 mg/L"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "CaO + CO\u2082 + H\u2082O \u2192 CaCO\u2083. Moles of CaO = 200/56 = 3.57 mmol/L. Each mole of CaO produces one mole of CaCO\u2083 (MW=100). CaCO\u2083 mass = 3.57 \u00d7 100 = 357 mg/L.",
     steps: [
       { l: "Formula", c: "Moles of CaO = Mass of CaO / Molecular Weight of CaO" },
@@ -3543,6 +3583,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A filter has a surface area of 50 m\u00b2 and a media depth of 0.6 m. The backwash rate is 40 m/h and the surface wash rate is 5 m/h. What is the total backwash water flow rate?",
     options: ["2,250 L/min", "2,000 L/min", "250 L/min", "2,500 L/min"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Backwash flow = 40 m/h \u00d7 50 m\u00b2 = 2,000 m\u00b3/h = 33,333 L/min. Surface wash flow = 5 \u00d7 50 = 250 m\u00b3/h = 4,167 L/min. Total = 37,500 L/min. Wait \u2014 converting: 40 m/h = 40,000 L/m\u00b2/h. Total backwash = (40+5) \u00d7 50 = 2,250 m\u00b3/h = 37,500 L/min. Hmm, let me recalculate for the answer choices: 2,250 m\u00b3/h = 2,250,000 L/h = 37,500 L/min. The answer 2,250 L/min doesn't match. Using m\u00b3/min: 2,250/60 = 37.5 m\u00b3/min = 37,500 L/min. The answer 2,250 L/min would be 135 m\u00b3/h which is too low. The correct answer is 37,500 L/min but the closest listed is 2,250 L/min (if units are m\u00b3/h, not L/min).",
     steps: [
       { l: "Formula", c: "Total Backwash Rate = Backwash Rate + Surface Wash Rate" },
@@ -3587,6 +3628,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A slow sand filter has an area of 1,000 m\u00b2 and operates at a filtration rate of 0.1 m/h. What is the daily production?",
     options: ["2,400 m\u00b3/day", "240 m\u00b3/day", "24,000 m\u00b3/day", "100 m\u00b3/day"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Production = Rate \u00d7 Area \u00d7 Time = 0.1 m/h \u00d7 1,000 m\u00b2 \u00d7 24 h/day = 2,400 m\u00b3/day.",
     steps: [
       { l: "Formula", c: "Daily Production = Filtration Rate × Filter Area × Time" },
@@ -3648,6 +3690,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A water treatment plant is designed for a maximum day demand of 15,000 m\u00b3/day and a peak hour demand of 25,000 m\u00b3/day. The plant is designed to treat at the maximum day demand rate. What storage volume is required to meet peak hour demand?",
     options: ["10,000 m\u00b3", "416.7 m\u00b3", "625 m\u00b3", "1,042 m\u00b3"],
     correctAnswer: 2,
+    isCalc: true,
     explanation: "Peak hour flow = 25,000 m\u00b3/day = 1,042 m\u00b3/h. Plant production rate = 15,000/24 = 625 m\u00b3/h. Storage must supply the difference during peak hour: 1,042 \u2212 625 = 417 m\u00b3/h. But the question asks for the storage volume to meet peak hour demand, which would be the difference over the peak hour: 417 m\u00b3. However, if the peak hour lasts the full hour: 417 m\u00b3. The answer 625 m\u00b3 would be if the plant is offline during peak hour.",
     steps: [
       { l: "Formula:", c: "Peak Hour Demand (m³/h) = Peak Day Demand (m³/day) ÷ 24 h/day" },
@@ -3693,6 +3736,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant has 4 sedimentation basins, each with a surface overflow rate (SOR) of 2 m/h at design flow. One basin is taken offline for maintenance. At what flow must the plant operate to maintain the same SOR on the remaining 3 basins?",
     options: ["75% of design flow", "100% of design flow", "133% of design flow", "50% of design flow"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "To maintain SOR = 2 m/h on 3 basins instead of 4, the flow must be reduced to 3/4 = 75% of design flow. Operating at higher flow would increase SOR above design, risking turbidity breakthrough.",
     steps: [
       { l: "Formula:", c: "New Flow Rate = Design Flow Rate × (Number of Basins Online / Total Design Basins)" },
@@ -3745,6 +3789,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A distribution system has a total length of 800 km of water mains. The annual main break rate is 20 breaks/100 km. Each break costs an average of $15,000 to repair. What is the annual main break repair cost?",
     options: ["$2,400,000", "$1,600,000", "$240,000", "$3,200,000"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Number of breaks = 20/100 \u00d7 800 = 160 breaks/year. Cost = 160 \u00d7 $15,000 = $2,400,000/year.",
   },
   {
@@ -3781,6 +3826,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A distribution main has a bulk chlorine decay rate of 0.3/day and a wall decay rate of 0.1/day. The initial residual is 1.0 mg/L. What is the residual after 2 days?",
     options: ["0.45 mg/L", "0.55 mg/L", "0.74 mg/L", "0.67 mg/L"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Total decay rate = k_bulk + k_wall = 0.3 + 0.1 = 0.4/day. C = C\u2080 \u00d7 e^(-k\u00d7t) = 1.0 \u00d7 e^(-0.4\u00d72) = e^(-0.8) = 0.449 \u2248 0.45 mg/L.",
     steps: [
       { l: "Formula:", c: "Total Decay Rate (k) = Bulk Decay Rate + Wall Decay Rate" },
@@ -3836,6 +3882,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A utility has 500 km of water mains with an average replacement cost of $500/m and an average remaining useful life of 25 years. What annual contribution to the capital reserve fund is required for pipe replacement?",
     options: ["$10,000,000/year", "$1,000,000/year", "$100,000/year", "$25,000,000/year"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Total replacement cost = 500,000 m \u00d7 $500/m = $250,000,000. Annual contribution = $250,000,000 / 25 years = $10,000,000/year.",
     steps: [
       { l: "Formula:", c: "Total Replacement Cost = Length of Mains (m) × Cost per Meter ($/m)" },
@@ -3915,6 +3962,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A clearwell has a volume of 2,000 m\u00b3. The flow through the clearwell is 500 m\u00b3/h. The T10/T (baffling factor) is 0.5. The chlorine residual entering the clearwell is 2.0 mg/L. What is the CT achieved?",
     options: ["12 mg\u00b7min/L", "24 mg\u00b7min/L", "6 mg\u00b7min/L", "48 mg\u00b7min/L"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "Theoretical detention time = V/Q = 2,000/500 = 4 hours = 240 minutes. T10 = Baffling factor \u00d7 Theoretical HRT = 0.5 \u00d7 240 = 120 minutes. CT = C \u00d7 T10 = 2.0 \u00d7 120 = 240 mg\u00b7min/L. Wait \u2014 that seems high. Let me recalculate: T10 = 0.5 \u00d7 240 = 120 min. CT = 2.0 \u00d7 120 = 240 mg\u00b7min/L. The answer 24 mg\u00b7min/L would require T10 = 12 min. Rechecking: if flow = 500 m\u00b3/h and V = 2000 m\u00b3, HRT = 4 h = 240 min. T10 = 0.5 \u00d7 240 = 120 min. CT = 2.0 \u00d7 120 = 240 mg\u00b7min/L. The answer 24 mg\u00b7min/L is incorrect based on this calculation. The correct answer is 240 mg\u00b7min/L, but since that is not listed, 24 mg\u00b7min/L is the closest listed answer (off by a factor of 10 \u2014 likely a unit issue in the question).",
     steps: [
       { l: "Formula:", c: "Theoretical Detention Time (HRT) = Volume (m³) / Flow (m³/h)" },
@@ -3962,6 +4010,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant measures a THM formation potential (THMFP) of 200 \u03bcg/L in raw water. After enhanced coagulation, THMFP is 80 \u03bcg/L. What is the percent reduction in THMFP?",
     options: ["60%", "40%", "80%", "20%"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Reduction = (200 - 80) / 200 \u00d7 100% = 120/200 \u00d7 100% = 60%.",
   },
   {
@@ -3998,6 +4047,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant adds 3 mg/L of chlorine and 0.5 mg/L of ammonia-N to form chloramines. What is the Cl:N ratio, and is this sufficient to prevent nitrification?",
     options: ["6:1 \u2014 sufficient", "3:1 \u2014 insufficient", "9:1 \u2014 excessive", "4:1 \u2014 borderline"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Cl:N ratio = 3 mg/L Cl\u2082 / 0.5 mg/L NH\u2083-N = 6:1. A ratio of 4:1 to 5:1 is typically recommended to minimize free ammonia while maintaining adequate chloramine residual. A ratio of 6:1 is sufficient to prevent nitrification.",
     steps: [
       { l: "Formula:", c: "Cl:N Ratio = Chlorine Dose (mg/L) / Ammonia-N Dose (mg/L)" },
@@ -4041,6 +4091,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A plant adds 20 mg/L of PAC with a geosmin adsorption capacity of 200 \u03bcg geosmin/mg PAC. The raw water geosmin concentration is 50 ng/L. What fraction of geosmin is removed?",
     options: ["20%", "100% (complete removal)", "50%", "80%"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "PAC capacity for geosmin = 20 mg/L \u00d7 200 \u03bcg/mg = 4,000 \u03bcg/L = 4,000,000 ng/L. Raw water geosmin = 50 ng/L. Since PAC capacity (4,000,000 ng/L) >> geosmin concentration (50 ng/L), essentially 100% of geosmin is removed. PAC is highly effective at these doses for typical geosmin events.",
     steps: [
       { l: "Formula:", c: "Total PAC Adsorption Capacity (ng/L) = PAC Dose (mg/L) × Adsorption Capacity (µg/mg) × 1000 ng/µg" },
@@ -4086,6 +4137,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A UV/H\u2082O\u2082 AOP system adds 5 mg/L of H\u2082O\u2082. After AOP, the residual H\u2082O\u2082 is 2 mg/L. Sodium bisulfite (NaHSO\u2083, MW=104) is added to quench the residual H\u2082O\u2082 (MW=34). The reaction is: H\u2082O\u2082 + NaHSO\u2083 \u2192 NaHSO\u2084 + H\u2082O. What dose of sodium bisulfite is required?",
     options: ["6.1 mg/L", "2 mg/L", "10.4 mg/L", "3.4 mg/L"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Molar ratio: 1 mol H\u2082O\u2082 : 1 mol NaHSO\u2083. NaHSO\u2083 dose = H\u2082O\u2082 dose \u00d7 (MW NaHSO\u2083 / MW H\u2082O\u2082) = 2 \u00d7 (104/34) = 2 \u00d7 3.06 = 6.1 mg/L.",
     steps: [
       { l: "Formula:", c: "Dose NaHSO₃ = Residual H₂O₂ (mg/L) × (MW NaHSO₃ / MW H₂O₂)" },
@@ -4129,6 +4181,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A groundwater supply well has a pumping rate of 500 m\u00b3/day. The aquifer has a hydraulic conductivity of 50 m/day, a hydraulic gradient of 0.005, and a porosity of 0.3. What is the groundwater velocity?",
     options: ["0.83 m/day", "0.25 m/day", "2.5 m/day", "1.67 m/day"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Darcy velocity = K \u00d7 i = 50 \u00d7 0.005 = 0.25 m/day. Seepage velocity = Darcy velocity / porosity = 0.25 / 0.3 = 0.83 m/day.",
     steps: [
       { l: "Formula:", c: "Darcy Velocity (v_D) = Hydraulic Conductivity (K) × Hydraulic Gradient (i)" },
@@ -4192,6 +4245,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "An RO system has a feed flow of 1,000 m\u00b3/day and a recovery of 75%. What is the permeate flow and concentrate flow?",
     options: ["750 m\u00b3/day permeate, 250 m\u00b3/day concentrate", "500 m\u00b3/day permeate, 500 m\u00b3/day concentrate", "800 m\u00b3/day permeate, 200 m\u00b3/day concentrate", "600 m\u00b3/day permeate, 400 m\u00b3/day concentrate"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Permeate = 75% \u00d7 1,000 = 750 m\u00b3/day. Concentrate = 1,000 - 750 = 250 m\u00b3/day.",
     steps: [
       { l: "Formula:", c: "Permeate Flow = Feed Flow × Recovery" },
@@ -4235,6 +4289,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A UF membrane system has a design flux of 60 L/m\u00b2/h (LMH) and a total membrane area of 500 m\u00b2. What is the design permeate flow?",
     options: ["30,000 L/h", "60,000 L/h", "3,000 L/h", "300 L/h"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Permeate flow = Flux \u00d7 Area = 60 L/m\u00b2/h \u00d7 500 m\u00b2 = 30,000 L/h = 30 m\u00b3/h.",
     steps: [
       { l: "Formula:", c: "Permeate Flow = Design Flux × Total Membrane Area" },
@@ -4277,6 +4332,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A membrane system operates at a flux of 50 LMH. After 30 minutes of filtration, the TMP has increased from 0.1 bar to 0.3 bar. What is the fouling rate in bar/h?",
     options: ["0.4 bar/h", "0.2 bar/h", "0.6 bar/h", "0.1 bar/h"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "TMP increase = 0.3 - 0.1 = 0.2 bar over 30 minutes = 0.5 h. Fouling rate = 0.2 bar / 0.5 h = 0.4 bar/h.",
     steps: [
       { l: "Step 1:", c: "TMP Increase = Final TMP - Initial TMP = 0.3 bar - 0.1 bar = 0.2 bar" },
@@ -4321,6 +4377,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "An SDI test gives t\u2081 = 30 seconds and t\u2082 = 60 seconds. What is the SDI?",
     options: ["3.3", "6.7", "1.7", "5.0"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "SDI = (1 - t\u2081/t\u2082) \u00d7 100/15 = (1 - 30/60) \u00d7 100/15 = (1 - 0.5) \u00d7 100/15 = 0.5 \u00d7 6.67 = 3.33 \u2248 3.3.",
     steps: [
       { l: "Formula:", c: "SDI = (1 - (t₁ / t₂)) × (100 / 15)" },
@@ -4364,6 +4421,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A GAC system is designed for an EBCT of 15 minutes at a flow of 500 m\u00b3/h. What is the required GAC bed volume?",
     options: ["125 m\u00b3", "500 m\u00b3", "7,500 m\u00b3", "50 m\u00b3"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "EBCT = V/Q \u2192 V = EBCT \u00d7 Q = (15/60) h \u00d7 500 m\u00b3/h = 0.25 \u00d7 500 = 125 m\u00b3.",
     steps: [
       { l: "Formula:", c: "EBCT = Bed Volume ÷ Flow Rate" },
@@ -4407,6 +4465,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A GAC system treats 1,000 m\u00b3/day of water with a TOC of 5 mg/L. The GAC has a TOC adsorption capacity of 100 g TOC/kg GAC. The GAC bed contains 500 kg of GAC. What is the theoretical GAC service life?",
     options: ["100 days", "10 days", "1,000 days", "50 days"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "TOC load per day = 1,000 m\u00b3/day \u00d7 5 g/m\u00b3 = 5,000 g TOC/day. GAC capacity = 500 kg \u00d7 100 g TOC/kg = 50,000 g TOC. Service life = 50,000 / 5,000 = 10 days. Wait \u2014 that seems very short. Let me recalculate: 5 mg/L = 5 g/m\u00b3. Daily TOC load = 1,000 \u00d7 5 = 5,000 g/day. GAC capacity = 500 \u00d7 100 = 50,000 g. Service life = 50,000/5,000 = 10 days. The answer 100 days would require GAC capacity of 500,000 g or TOC load of 500 g/day. The calculation gives 10 days, but 100 days is listed \u2014 this discrepancy suggests the question intends a different unit. Taking the calculation at face value: 10 days.",
     steps: [
       { l: "Step 1:", c: "Total TOC Adsorption Capacity = 500 kg GAC × 100 g TOC/kg GAC = 50,000 g TOC" },
@@ -4451,6 +4510,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A PID controller for chlorine dosing has a setpoint of 2.0 mg/L. The measured residual is 1.5 mg/L. The proportional gain is 2.0 (mg/L dose)/(mg/L error) and the integral gain is 0.5 (mg/L dose)/(mg/L\u00b7min). After 1 minute, what is the controller output (dose adjustment) from the P and I terms?",
     options: ["P=1.0, I=0.25 mg/L", "P=0.5, I=0.25 mg/L", "P=1.0, I=0.5 mg/L", "P=2.0, I=0.5 mg/L"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Error = Setpoint - Measured = 2.0 - 1.5 = 0.5 mg/L. P output = Kp \u00d7 error = 2.0 \u00d7 0.5 = 1.0 mg/L. I output = Ki \u00d7 error \u00d7 time = 0.5 \u00d7 0.5 \u00d7 1 = 0.25 mg/L.",
     steps: [
       { l: "Step 1:", c: "Error = Setpoint - Measured Residual = 2.0 mg/L - 1.5 mg/L = 0.5 mg/L" },
@@ -4495,6 +4555,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "An online turbidimeter reads 0.25 NTU when a 0.5 NTU standard is measured. What is the percent error, and what adjustment is needed?",
     options: ["50% error \u2014 increase reading by 0.25 NTU", "50% error \u2014 double the reading", "25% error \u2014 increase by 0.125 NTU", "100% error \u2014 add 0.25 NTU"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "Error = (Measured - True) / True \u00d7 100% = (0.25 - 0.5) / 0.5 \u00d7 100% = -50% (reading is 50% low). The instrument needs to be calibrated to read 0.5 NTU when the 0.5 NTU standard is measured \u2014 effectively doubling the current reading. The adjustment is a span correction, not an offset correction.",
   },
   {
@@ -4531,6 +4592,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A chemical feed pump is calibrated by collecting the output over 5 minutes. The collected volume is 250 mL. The pump is set to deliver 50 mL/min. What is the percent error?",
     options: ["0% \u2014 pump is accurate", "0% \u2014 250/5 = 50 mL/min", "10% error", "5% error"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "Actual flow = 250 mL / 5 min = 50 mL/min. Setpoint = 50 mL/min. Error = (50 - 50) / 50 \u00d7 100% = 0%. The pump is accurate.",
   },
   {
@@ -4567,6 +4629,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A matrix spike adds 1.0 mg/L of analyte to a sample with an initial concentration of 0.5 mg/L. The spiked sample result is 1.3 mg/L. What is the spike recovery?",
     options: ["80%", "130%", "65%", "93%"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Spike recovery = (Spiked - Unspiked) / Spike amount \u00d7 100% = (1.3 - 0.5) / 1.0 \u00d7 100% = 0.8 / 1.0 \u00d7 100% = 80%.",
     steps: [
       { l: "Formula:", c: "Spike Recovery (%) = ((Spiked Sample Result - Initial Concentration) / Spike Amount) × 100%" },
@@ -4610,6 +4673,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A water sample for total coliform analysis is collected in a 100 mL sterile bottle containing sodium thiosulfate. The sample is collected at 2:00 PM and must be analyzed within 24 hours. What is the latest acceptable analysis time?",
     options: ["2:00 PM the next day", "2:00 AM the next day", "6:00 AM the next day", "12:00 PM the next day"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "The 24-hour holding time for bacteriological samples begins at the time of collection (2:00 PM). The latest acceptable analysis time is 2:00 PM the following day. Sodium thiosulfate neutralizes residual chlorine to prevent it from killing bacteria during transport.",
   },
   {
@@ -4646,6 +4710,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A utility collects 50 lead samples. The 90th percentile is calculated from the sample ranked at position 50 \u00d7 0.9 = 45. The 45th ranked sample is 0.012 mg/L. What is the compliance status?",
     options: ["Non-compliant \u2014 exceeds 0.010 mg/L", "Compliant \u2014 90th percentile (0.012 mg/L) is below the action level of 0.015 mg/L", "Non-compliant \u2014 any lead is unacceptable", "Compliant \u2014 below 0.015 mg/L but should optimize"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "The lead action level is 0.015 mg/L (15 \u03bcg/L). The 90th percentile of 0.012 mg/L is below the action level, so the utility is compliant. However, Health Canada's maximum acceptable concentration for lead is 0.005 mg/L, and the utility should continue to optimize corrosion control to reduce lead levels further.",
   },
   {
@@ -4682,6 +4747,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A distribution system has a static pressure of 500 kPa. A building on a hill is 30 m above the main. What is the static pressure at the building service connection?",
     options: ["206 kPa", "500 kPa", "794 kPa", "294 kPa"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Pressure reduction due to elevation = \u03c1 \u00d7 g \u00d7 h = 1000 \u00d7 9.81 \u00d7 30 = 294,300 Pa = 294 kPa. Pressure at building = 500 - 294 = 206 kPa.",
     steps: [
       { l: "Formula:", c: "Pressure Change due to Elevation = (Density of Water × Gravity × Height)" },
@@ -4725,6 +4791,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A storage tank has a volume of 5,000 m\u00b3. The average daily demand served by the tank is 2,000 m\u00b3/day. What is the average water age in the tank?",
     options: ["2.5 days", "0.4 days", "5 days", "1 day"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Average water age = Tank volume / Daily flow = 5,000 / 2,000 = 2.5 days.",
     steps: [
       { l: "Formula:", c: "Average Water Age = Tank Volume ÷ Average Daily Demand" },
@@ -4803,6 +4870,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A utility has a water main with a replacement cost of $500,000, a remaining useful life of 10 years, and a consequence of failure score of 4 (out of 5). The probability of failure in the next year is 15%. What is the risk score?",
     options: ["0.60", "0.75", "0.30", "1.20"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Risk score = Probability of failure \u00d7 Consequence of failure = 0.15 \u00d7 4 = 0.60.",
     steps: [
       { l: "Formula", c: "Risk Score = Probability of Failure × Consequence of Failure" },
@@ -4846,6 +4914,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A regulatory inspection finds that the utility has not been collecting the required monthly distribution system bacteriological samples for 3 months. The utility has 5 sampling locations. How many missed samples does this represent?",
     options: ["15 samples", "3 samples", "5 samples", "60 samples"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Missed samples = 5 locations \u00d7 3 months = 15 samples.",
   },
   {
@@ -4936,6 +5005,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A water has pH 7.5, temperature 15\u00b0C, TDS 200 mg/L, calcium hardness 120 mg/L as CaCO\u2083, and total alkalinity 80 mg/L as CaCO\u2083. The pHs is calculated as 8.1. What is the LSI and what does it indicate?",
     options: ["LSI = -0.6, corrosive", "LSI = +0.6, scaling", "LSI = 0, balanced", "LSI = -1.6, highly corrosive"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "LSI = pH - pHs = 7.5 - 8.1 = -0.6. A negative LSI indicates the water is undersaturated with CaCO\u2083 and has a corrosive tendency \u2014 it will tend to dissolve CaCO\u2083 protective scale from pipe surfaces, potentially leaching lead and copper. Corrosion control treatment (pH adjustment, alkalinity addition) is needed.",
   },
   {
@@ -4972,6 +5042,7 @@ export const WPI_CLASS3_WATER_QUESTIONS: WpiClass3WaterQuestion[] = [
     question: "A process has a mean turbidity of 0.15 NTU and a standard deviation of 0.02 NTU. What are the upper and lower control limits (UCL and LCL) for a 3-sigma control chart?",
     options: ["UCL=0.21, LCL=0.09", "UCL=0.17, LCL=0.13", "UCL=0.25, LCL=0.05", "UCL=0.19, LCL=0.11"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "UCL = mean + 3\u03c3 = 0.15 + 3(0.02) = 0.15 + 0.06 = 0.21 NTU. LCL = mean - 3\u03c3 = 0.15 - 3(0.02) = 0.15 - 0.06 = 0.09 NTU.",
     steps: [
       { l: "Formula", c: "UCL = Mean + (3 × Standard Deviation); LCL = Mean - (3 × Standard Deviation)" },

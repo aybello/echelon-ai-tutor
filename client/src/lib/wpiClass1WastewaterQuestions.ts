@@ -2163,6 +2163,7 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     text: "What is the purpose of a biosolids application rate calculation?",
     options: ["To certify operators", "To determine the appropriate application rate based on crop nitrogen needs and regulatory limits to prevent over-application", "To measure flow rates", "To set effluent limits"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "Biosolids application rates are calculated based on the agronomic nitrogen need of the crop, the nitrogen content of the biosolids, and regulatory limits for heavy metals and phosphorus, preventing over-application and environmental impacts.",
     steps: [],
   },
@@ -3846,6 +3847,7 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     text: "A plant treats 5000 m3/d. The primary clarifier is 20m diameter. What is the surface overflow rate?",
     options: ["15.9 m3/m2/d", "25.0 m3/m2/d", "10.0 m3/m2/d", "31.8 m3/m2/d"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Area = pi x r2 = 3.14159 x 10^2 = 314.2 m2. SOR = 5000 / 314.2 = 15.9 m3/m2/d.",
     steps: [
       { l: "Formula", c: "Area = π * (Diameter / 2)^2" },
@@ -3863,6 +3865,7 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     text: "The aeration tank has MLSS of 3000 mg/L and volume of 2000 m3. WAS rate is 200 m3/d at 8000 mg/L. What is the SRT?",
     options: ["3.75 days", "7.5 days", "1.9 days", "15 days"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Mass in system = 3000 mg/L x 2000 m3 = 6000 kg. Mass wasted/day = 8000 mg/L x 200 m3/d = 1600 kg/d. SRT = 6000 / 1600 = 3.75 days.",
     steps: [
       { l: "Step 1", c: "Formula: Total MLSS mass = MLSS concentration * Tank Volume" },
@@ -3883,6 +3886,7 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     text: "Influent BOD is 250 mg/L and effluent BOD is 20 mg/L. What is the BOD removal efficiency?",
     options: ["92%", "80%", "88%", "96%"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "BOD removal = (250 - 20) / 250 x 100% = 230/250 x 100% = 92%.",
     steps: [
       { l: "Formula", c: "BOD Removal Efficiency = ((Influent BOD - Effluent BOD) / Influent BOD) * 100%" },
@@ -3898,6 +3902,7 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     text: "A 30-minute settled sludge volume is 250 mL/L and MLSS is 2500 mg/L. What is the SVI?",
     options: ["100 mL/g", "62.5 mL/g", "125 mL/g", "200 mL/g"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "SVI = (settled sludge volume mL/L x 1000) / MLSS mg/L = (250 x 1000) / 2500 = 100 mL/g.",
     steps: [
       { l: "Formula", c: "SVI = (Settled Sludge Volume (mL/L) * 1000) / MLSS (mg/L)" },
@@ -3913,6 +3918,7 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     text: "A chlorine dose of 8 mg/L is applied and the residual after 30 minutes is 2 mg/L. What is the chlorine demand?",
     options: ["6 mg/L", "10 mg/L", "4 mg/L", "8 mg/L"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Chlorine demand = dose - residual = 8 - 2 = 6 mg/L.",
     steps: [
       { l: "Formula", c: "Chlorine Demand = Chlorine Dose - Chlorine Residual" },

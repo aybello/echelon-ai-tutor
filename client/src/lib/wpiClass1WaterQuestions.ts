@@ -62,6 +62,7 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     question: "A sedimentation basin has a surface area of 500 m2 and treats 10,000 m3/day. What is the surface overflow rate?",
     options: ["5 m/day", "10 m/day", "20 m/day", "50 m/day"],
     correctAnswer: 2,
+    isCalc: true,
     explanation: "SOR = Flow / Area = 10,000 m3/day / 500 m2 = 20 m/day.",
     steps: [
       { l: "Formula", c: "SOR = Flow ÷ Surface Area" },
@@ -252,6 +253,7 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     question: "A water treatment plant treats 75,000 m3/day. If the chlorine dose is 2.5 mg/L, how many kg of chlorine are needed per day?",
     options: ["187.5 kg", "1,875 kg", "18,750 kg", "187,500 kg"],
     correctAnswer: 0,
+    isCalc: true,
     explanation: "Mass = Flow x Concentration = 75,000 m3/day x 2.5 mg/L. Convert: 75,000,000 L/day x 0.0025 g/L = 187,500 g/day = 187.5 kg/day.",
     steps: [
       { l: "Formula", c: "Mass = Flow × Concentration" },
@@ -459,6 +461,7 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     question: "A water plant has a flow of 20 ML/day and a chlorine demand of 1.8 mg/L. If a residual of 0.5 mg/L is required, what is the total chlorine dose needed?",
     options: ["1.8 mg/L", "0.5 mg/L", "2.3 mg/L", "1.3 mg/L"],
     correctAnswer: 2,
+    isCalc: true,
     explanation: "Total chlorine dose = Chlorine demand + Required residual = 1.8 + 0.5 = 2.3 mg/L.",
     steps: [
       { l: "Formula", c: "Total Chlorine Dose = Chlorine Demand + Required Residual" },
@@ -513,6 +516,7 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     question: "What is the detention time of a sedimentation basin treating 5,000 m3/day with a volume of 1,000 m3?",
     options: ["0.2 hours", "4.8 hours", "24 hours", "2 hours"],
     correctAnswer: 1,
+    isCalc: true,
     explanation: "Detention time = Volume / Flow = 1,000 m3 / (5,000 m3/day) = 0.2 days = 0.2 x 24 = 4.8 hours.",
     steps: [
       { l: "Formula", c: "Detention Time = Volume ÷ Flow" },
