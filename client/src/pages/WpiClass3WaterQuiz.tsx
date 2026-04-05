@@ -165,7 +165,7 @@ export default function WpiClass3WaterQuiz() {
       <QuizShell
         currentPath="/wpi-class3-water"
         courseLabel="WPI Class III · Water Treatment"
-        courseTitle="Practice Quiz"
+        courseTitle="WPI Class III Water Practice Quiz"
         courseSubtitle="502 questions · BC (EOCP Level III) · Alberta (AWWOA Class III) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="⚡"

@@ -139,7 +139,7 @@ export default function WpiClass2WastewaterQuiz() {
         questionsAnswered={history.length}
         productKey="wpi-class2-wastewater"
         productName="WPI Class II Wastewater Treatment Practice Pass"
-        priceLabel="CA$79"
+        priceLabel="CA$99"
         paidFeatures={[
           "501 WPI Class II Wastewater questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
@@ -160,12 +160,12 @@ export default function WpiClass2WastewaterQuiz() {
       examType="wpi-class2-wastewater"
       productKey="wpi-class2-wastewater"
       productName="WPI Class II Wastewater Treatment Practice Pass"
-      price={79}
+      price={99}
     >
       <QuizShell
         currentPath="/wpi-class2-wastewater"
         courseLabel="WPI Class II · Wastewater Treatment"
-        courseTitle="Practice Quiz"
+        courseTitle="WPI Class II Wastewater Practice Quiz"
         courseSubtitle="501 questions · BC (EOCP Level II) · Alberta (AWWOA Class II) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="🌊"

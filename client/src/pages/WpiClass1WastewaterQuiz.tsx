@@ -165,7 +165,7 @@ export default function WpiClass1WastewaterQuiz() {
       <QuizShell
         currentPath="/wpi-class1-wastewater"
         courseLabel="WPI Class I · Wastewater Treatment"
-        courseTitle="Practice Quiz"
+        courseTitle="WPI Class I Wastewater Practice Quiz"
         courseSubtitle="502 questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="🌊"

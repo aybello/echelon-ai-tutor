@@ -884,7 +884,7 @@ export default function Pricing() {
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+                  gridTemplateColumns: "repeat(3, minmax(0, 280px))",
                   gap: 16,
                 }}
               >
@@ -894,7 +894,8 @@ export default function Pricing() {
               </div>
             </div>
 
-            {/* WPI section */}
+            {/* WPI section — shown on Ontario tab only as a cross-sell */}
+            {!isWpi && (
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
                 <div
@@ -940,6 +941,7 @@ export default function Pricing() {
                 </div>
               </div>
             </div>
+            )}
         </>
 
         {/* Trust section */}

@@ -165,7 +165,7 @@ export default function WpiClass4WaterQuiz() {
       <QuizShell
         currentPath="/wpi-class4-water"
         courseLabel="WPI Class IV · Water Treatment"
-        courseTitle="Practice Quiz"
+        courseTitle="WPI Class IV Water Practice Quiz"
         courseSubtitle="502 questions · BC (EOCP Level IV) · Alberta (AWWOA Class IV) · Chief Operator"
         headerGradient={HEADER_GRADIENT}
         headerIcon="👑"

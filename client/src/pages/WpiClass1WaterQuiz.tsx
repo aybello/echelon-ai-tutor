@@ -171,7 +171,7 @@ export default function WpiClass1WaterQuiz() {
       <QuizShell
         currentPath="/wpi-class1-water"
         courseLabel="WPI Class I · Water Treatment"
-        courseTitle="Practice Quiz"
+        courseTitle="WPI Class I Water Practice Quiz"
         courseSubtitle="502 questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="⚗️"
