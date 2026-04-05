@@ -5,6 +5,7 @@ import { ALL_PRODUCTS, getAllUnlockedExamTypes } from "../stripe/products";
 import { getDb } from "../db";
 import { purchases } from "../../drizzle/schema";
 import { eq } from "drizzle-orm";
+import { ENV } from "../_core/env";
 
 export const stripeRouter = router({
   /** Return all products with prices for the Pricing page */
@@ -158,6 +159,11 @@ export const stripeRouter = router({
       email: z.string().email().optional(),
     }))
     .query(async ({ input, ctx }) => {
+      // Owner bypass — grants full access to all courses for testing
+      if (ctx.user?.openId && ctx.user.openId === ENV.ownerOpenId) {
+        return { hasAccess: true, isOwner: true };
+      }
+
       const email = ctx.user?.email ?? input.email;
       if (!email) return { hasAccess: false };
 

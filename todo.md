@@ -258,3 +258,4 @@
 - [x] QA: Mobile responsiveness, About, Account, edge cases
 - [x] QA: Fix all identified issues — no critical issues found, all 85 tests passing, 0 TypeScript errors
 - [x] WPI landing page: remove "Available Prep Materials" long list from province panel, replace with clean CTA buttons
+- [x] Owner/admin paywall bypass: auto-grant full access to all courses when logged in as owner for testing

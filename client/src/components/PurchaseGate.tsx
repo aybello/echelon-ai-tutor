@@ -5,6 +5,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png";
 
@@ -112,6 +113,7 @@ export default function PurchaseGate({
   const [email] = useState(getStoredEmail);
   const [localAccess] = useState(() => isLocallyPurchased(examType));
   const [, navigate] = useLocation();
+  const { isAuthenticated } = useAuth();
 
   // Stripe checkout session mutation
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
@@ -123,11 +125,11 @@ export default function PurchaseGate({
     },
   });
 
-  // Server-side access check (only if we have an email)
+  // Server-side access check — runs when logged in (for owner bypass) or when email is stored
   const { data: accessData, isLoading } = trpc.stripe.checkAccess.useQuery(
     { examType, email: email || undefined },
     {
-      enabled: !!email && !localAccess,
+      enabled: (!!email || isAuthenticated) && !localAccess,
       staleTime: 5 * 60 * 1000,
       retry: false,
     }
@@ -136,7 +138,7 @@ export default function PurchaseGate({
   const hasAccess = localAccess || accessData?.hasAccess === true;
 
   // While checking, show the children (optimistic — avoids flash of paywall)
-  if (isLoading && email) {
+  if (isLoading && (email || isAuthenticated)) {
     return <>{children}</>;
   }
 
