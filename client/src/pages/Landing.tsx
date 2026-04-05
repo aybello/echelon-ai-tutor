@@ -200,7 +200,8 @@ const WATER_COURSES = [
     color: "#1D4ED8",
     bg: "#EFF6FF",
     border: "#BFDBFE",
-    practicePassPrice: 49,
+    price: 49,
+    productKey: "oit",
   },
   {
     code: "CL1-W",
@@ -214,7 +215,8 @@ const WATER_COURSES = [
     color: "#0369A1",
     bg: "#F0F9FF",
     border: "#BAE6FD",
-    practicePassPrice: 79,
+    price: 79,
+    productKey: "class1-water",
   },
   {
     code: "CL2-W",
@@ -229,7 +231,8 @@ const WATER_COURSES = [
     color: "#0E7490",
     bg: "#ECFEFF",
     border: "#A5F3FC",
-    practicePassPrice: 99,
+    price: 99,
+    productKey: "class2-water",
   },
   {
     code: "CL3-W",
@@ -241,7 +244,8 @@ const WATER_COURSES = [
     topics: ["Advanced Treatment Process", "Membrane & Softening", "Lab Analysis & SUVA", "Equipment O&M", "Source Water & Safety"],
     badge: "New",
     badgeColor: "#1E40AF",
-    practicePassPrice: 129,
+    price: 129,
+    productKey: "class3-water",
     color: "#1E40AF",
     bg: "#EFF6FF",
     border: "#BFDBFE",
@@ -257,7 +261,8 @@ const WATER_COURSES = [
     topics: ["Full System Management", "Regulatory Leadership", "Advanced Troubleshooting", "Capital & Budget Planning", "Class 4 Exam Prep"],
     badge: "New",
     badgeColor: "#6D28D9",
-    practicePassPrice: 149,
+    price: 149,
+    productKey: "class4-water",
     color: "#6D28D9",
     bg: "#F5F3FF",
     border: "#DDD6FE",
@@ -278,7 +283,8 @@ const WASTEWATER_COURSES = [
     color: "#065F46",
     bg: "#ECFDF5",
     border: "#A7F3D0",
-    practicePassPrice: 49,
+    price: 49,
+    productKey: "oit-ww",
   },
   {
     code: "CL1-WW",
@@ -292,7 +298,8 @@ const WASTEWATER_COURSES = [
     color: "#047857",
     bg: "#F0FDF4",
     border: "#BBF7D0",
-    practicePassPrice: 79,
+    price: 79,
+    productKey: "class1-ww",
   },
   {
     code: "CL2-WW",
@@ -307,7 +314,8 @@ const WASTEWATER_COURSES = [
     color: "#0F766E",
     bg: "#F0FDFA",
     border: "#99F6E4",
-    practicePassPrice: 99,
+    price: 99,
+    productKey: "class2-ww",
   },
   {
     code: "CL3-WW",
@@ -323,7 +331,8 @@ const WASTEWATER_COURSES = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     comingSoon: false,
-    practicePassPrice: 129,
+    price: 129,
+    productKey: "class3-ww",
   },
   {
     code: "CL4-WW",
@@ -335,7 +344,8 @@ const WASTEWATER_COURSES = [
     topics: ["Full System Leadership", "Capital & Infrastructure Planning", "Advanced Troubleshooting", "Regulatory Compliance", "Class 4 Exam Mastery"],
     badge: "New",
     badgeColor: "#6D28D9",
-    practicePassPrice: 149,
+    price: 149,
+    productKey: "class4-ww",
     color: "#6D28D9",
     bg: "#F5F3FF",
     border: "#DDD6FE",
@@ -357,7 +367,8 @@ const WQA_COURSES = [
     bg: "#FAF5FF",
     border: "#DDD6FE",
     comingSoon: false,
-    practicePassPrice: 79,
+    price: 79,
+    productKey: "wqa",
   },
 ];
 
@@ -376,7 +387,8 @@ const WPI_WATER_COURSES = [
     bg: "#F0F9FF",
     border: "#BAE6FD",
     comingSoon: false,
-    practicePassPrice: 79,
+    price: 79,
+    productKey: "wpi-class1-water",
   },
   {
     code: "WPI-W2",
@@ -392,7 +404,8 @@ const WPI_WATER_COURSES = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     comingSoon: false,
-    practicePassPrice: 99,
+    price: 99,
+    productKey: "wpi-class2-water",
   },
   {
     code: "WPI-W3",
@@ -408,7 +421,8 @@ const WPI_WATER_COURSES = [
     bg: "#EFF6FF",
     border: "#BFDBFE",
     comingSoon: false,
-    practicePassPrice: 129,
+    price: 129,
+    productKey: "wpi-class3-water",
   },
   {
     code: "WPI-W4",
@@ -424,7 +438,8 @@ const WPI_WATER_COURSES = [
     bg: "#F5F3FF",
     border: "#DDD6FE",
     comingSoon: false,
-    practicePassPrice: 149,
+    price: 149,
+    productKey: "wpi-class4-water",
   },
 ];
 
@@ -443,7 +458,8 @@ const WPI_WASTEWATER_COURSES = [
     bg: "#FFFBEB",
     border: "#FDE68A",
     comingSoon: false,
-    practicePassPrice: 79,
+    price: 79,
+    productKey: "wpi-class1-wastewater",
   },
   {
     code: "WPI-WW2",
@@ -459,7 +475,8 @@ const WPI_WASTEWATER_COURSES = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     comingSoon: false,
-    practicePassPrice: 99,
+    price: 99,
+    productKey: "wpi-class2-wastewater",
   },
   {
     code: "WPI-WW3",
@@ -475,7 +492,8 @@ const WPI_WASTEWATER_COURSES = [
     bg: "#EFF6FF",
     border: "#BFDBFE",
     comingSoon: false,
-    practicePassPrice: 129,
+    price: 129,
+    productKey: "wpi-class3-wastewater",
   },
   {
     code: "WPI-WW4",
@@ -491,7 +509,8 @@ const WPI_WASTEWATER_COURSES = [
     bg: "#F5F3FF",
     border: "#DDD6FE",
     comingSoon: false,
-    practicePassPrice: 149,
+    price: 149,
+    productKey: "wpi-class4-wastewater",
   },
 ];
 
@@ -573,6 +592,15 @@ type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[n
 function CourseCard({ course }: { course: CourseType }) {
   const [expanded, setExpanded] = useState(false);
   const [notifyOpen, setNotifyOpen] = useState(false);
+  const createSession = trpc.stripe.createCheckoutSession.useMutation({
+    onSuccess: (data) => { if (data.url) window.open(data.url, '_blank'); },
+    onError: () => alert("Something went wrong. Please try again."),
+  });
+  function handleGetPass() {
+    const pk = (course as any).productKey;
+    if (!pk) return;
+    createSession.mutate({ productKey: pk, origin: window.location.origin });
+  }
   return (
     <div
       style={{
@@ -621,7 +649,7 @@ function CourseCard({ course }: { course: CourseType }) {
 
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
         <div>
-          <span style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>CA${(course as any).practicePassPrice}</span>
+          <span style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>CA${(course as any).price}</span>
           <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 4 }}>CAD</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#F8FAFC", borderRadius: 8, padding: "6px 12px" }}>
@@ -665,12 +693,30 @@ function CourseCard({ course }: { course: CourseType }) {
         </button>
       ) : (
         <>
+          {/* Get Pass — direct Stripe checkout */}
+          {(course as any).productKey && (
+            <button
+              onClick={handleGetPass}
+              disabled={createSession.isPending}
+              style={{
+                width: "100%", padding: "12px",
+                background: createSession.isPending ? "#93C5FD" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                color: "#fff", border: "none", borderRadius: 10,
+                fontSize: 13, fontWeight: 700,
+                cursor: createSession.isPending ? "not-allowed" : "pointer",
+                fontFamily: "inherit", marginBottom: 8,
+              }}
+            >
+              {createSession.isPending ? "Redirecting…" : `Get Pass — CA$${(course as any).price} →`}
+            </button>
+          )}
           <Link href={course.code === "OIT-WW" ? "/oit-ww" : course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "CL3-WW" ? "/class3-ww" : course.code === "CL4-W" ? "/class4-water" : course.code === "CL4-WW" ? "/class4-ww" : course.code === "WQA" ? "/wqa" : "/quiz"}>
             <button style={{
-              width: "100%", padding: "12px",
-              background: `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
-              color: "#fff", border: "none", borderRadius: 10,
-              fontSize: 13, fontWeight: 700, cursor: "pointer",
+              width: "100%", padding: "10px",
+              background: "transparent",
+              color: course.color, border: `1.5px solid ${course.color}`,
+              borderRadius: 10,
+              fontSize: 12, fontWeight: 700, cursor: "pointer",
               fontFamily: "inherit", transition: "opacity 0.15s",
             }}>
               Start Studying →

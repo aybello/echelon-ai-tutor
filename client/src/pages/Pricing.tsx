@@ -1,5 +1,5 @@
 // Echelon Institute — Pricing Page
-// Shows all 10 individual Practice Passes + 3 bundles
+// Shows all individual Practice Passes
 // Stripe Checkout integration via tRPC
 
 import { useState } from "react";
@@ -588,7 +588,6 @@ export default function Pricing() {
       "Affordable Practice Passes for every Canadian water and wastewater operator certification level. OIT, Class 1–4 Water, Class 1–4 Wastewater, and WQA.",
   });
 
-  const [activeTab, setActiveTab] = useState<"individual" | "bundles">("individual");
   const [selectedProvince, setSelectedProvince] = useState<ProvinceCode>("ON");
   const isWpi = selectedProvince !== "ON";
   const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
@@ -764,44 +763,12 @@ export default function Pricing() {
           )}
         </div>
 
-        {/* Tab toggle */}
-        <div
-          style={{
-            display: "inline-flex",
-            background: "rgba(255,255,255,0.1)",
-            borderRadius: 12,
-            padding: 4,
-            gap: 4,
-          }}
-        >
-          {(["individual", "bundles"] as const).map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              style={{
-                padding: "8px 24px",
-                borderRadius: 9,
-                border: "none",
-                background: activeTab === tab ? "#fff" : "transparent",
-                color: activeTab === tab ? "#0F172A" : "rgba(255,255,255,0.7)",
-                fontWeight: 700,
-                fontSize: 13,
-                cursor: "pointer",
-                fontFamily: "inherit",
-                transition: "all 0.15s",
-                textTransform: "capitalize",
-              }}
-            >
-              {tab === "individual" ? "Individual Passes" : "Save with Bundles"}
-            </button>
-          ))}
-        </div>
+
       </div>
 
       {/* ── Content ── */}
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 80px" }}>
-        {activeTab === "individual" ? (
-          <>
+        <>
             {/* Water Treatment section */}
             <div style={{ marginBottom: 48 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
@@ -925,20 +892,7 @@ export default function Pricing() {
                 ))}
               </div>
             </div>
-          </>
-        ) : (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-              gap: 24,
-            }}
-          >
-            {BUNDLES.map(bundle => (
-              <BundleCard key={bundle.key} bundle={bundle} />
-            ))}
-          </div>
-        )}
+        </>
 
         {/* Trust section */}
         <div
