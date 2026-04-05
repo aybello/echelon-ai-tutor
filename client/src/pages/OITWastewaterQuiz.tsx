@@ -1,10 +1,18 @@
-import { useState, useMemo, useCallback } from "react";
-import QuizShell from "@/components/QuizShell";
+// OIT WASTEWATER QUIZ
+// Free 15-question trial → QuizGate upsell → paid full access
+// Uses QuizShell for unified UI
+import { useState, useCallback, useMemo } from "react";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import {
+  CLASS1_WASTEWATER_QUESTIONS,
+  CLASS1_WASTEWATER_MODULES,
+  type Class1WastewaterQuestion,
+} from "@/lib/class1WastewaterQuestions";
 import AITutor from "@/components/AITutor";
-import PurchaseGate from "@/components/PurchaseGate";
-import { CLASS1_WASTEWATER_QUESTIONS, CLASS1_WASTEWATER_MODULES, type Class1WastewaterQuestion } from '@/lib/class1WastewaterQuestions';
+import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
+import QuizShell from "@/components/QuizShell";
 
-// ─── Types ───────────────────────────────────────────────────────────────────
+const SESSION_SIZE = 15;
 
 type HistoryEntry = {
   q: Class1WastewaterQuestion;
@@ -14,66 +22,97 @@ type HistoryEntry = {
   questionObj?: Class1WastewaterQuestion;
 };
 
-// ─── Component ───────────────────────────────────────────────────────────────
+// Module config with colors/icons for QuizShell
+const MODULE_CONFIG = [
+  { name: "Wastewater Characteristics & Preliminary Treatment", icon: "🔬", bg: "#ECFDF5", color: "#065F46" },
+  { name: "Primary Treatment",                                  icon: "🏊", bg: "#DBEAFE", color: "#1D4ED8" },
+  { name: "Secondary Treatment",                                icon: "🦠", bg: "#DCFCE7", color: "#15803D" },
+  { name: "Biological Nutrient Removal",                        icon: "🧫", bg: "#CCFBF1", color: "#0F766E" },
+  { name: "Tertiary Treatment & Filtration",                    icon: "💧", bg: "#EDE9FE", color: "#6D28D9" },
+  { name: "Disinfection",                                       icon: "🧪", bg: "#FEF9C3", color: "#A16207" },
+  { name: "Solids Handling & Biosolids",                        icon: "♻️", bg: "#FFEDD5", color: "#C2410C" },
+  { name: "Regulations, Safety & Operations",                   icon: "📋", bg: "#FEE2E2", color: "#B91C1C" },
+];
+
+// OIT-WW trial unlock key is separate from OIT Water
+const OIT_WW_TRIAL_KEY = "echelon_trial_unlocked_oit_ww";
+function isOitWwTrialUnlocked(): boolean {
+  try {
+    return localStorage.getItem(OIT_WW_TRIAL_KEY) === "true";
+  } catch { return false; }
+}
+function setOitWwTrialUnlocked(): void {
+  try { localStorage.setItem(OIT_WW_TRIAL_KEY, "true"); } catch { /* noop */ }
+}
 
 export default function OITWastewaterQuiz() {
-  const allQuestions = CLASS1_WASTEWATER_QUESTIONS as Class1WastewaterQuestion[];
-  const modules = CLASS1_WASTEWATER_MODULES;
+  usePageMeta({
+    title: "OIT Wastewater Practice Quiz — 500+ Questions",
+    description: "Practice for the Ontario OIT Wastewater exam with 500+ questions. AI Tutor, step-by-step solutions, and confidence tracking.",
+    keywords: "OIT wastewater exam prep, Ontario wastewater operator, wastewater certification practice",
+  });
 
-  const [history, setHistory]       = useState<HistoryEntry[]>([]);
-  const [usedIds, setUsedIds]       = useState<Set<number | string>>(new Set());
-  const [current, setCurrent]       = useState<Class1WastewaterQuestion | null>(() => {
+  const allQuestions = CLASS1_WASTEWATER_QUESTIONS as Class1WastewaterQuestion[];
+
+  const [history, setHistory]         = useState<HistoryEntry[]>([]);
+  const [usedIds, setUsedIds]         = useState<Set<number | string>>(new Set());
+  const [current, setCurrent]         = useState<Class1WastewaterQuestion | null>(() => {
     const q = allQuestions[Math.floor(Math.random() * allQuestions.length)];
     return q ?? null;
   });
-  const [selected, setSelected]     = useState<number | null>(null);
-  const [confidence, setConfidence] = useState<number | null>(null);
-  const [confirmed, setConfirmed]   = useState(false);
-  const [showSteps, setShowSteps]   = useState(false);
-  const [tutorOpen, setTutorOpen]   = useState(false);
+  const [selected, setSelected]       = useState<number | null>(null);
+  const [confidence, setConfidence]   = useState<number | null>(null);
+  const [confirmed, setConfirmed]     = useState(false);
+  const [showSteps, setShowSteps]     = useState(false);
+  const [tutorOpen, setTutorOpen]     = useState(false);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
-  const [calcOnly, setCalcOnly]     = useState(false);
+  const [calcOnly, setCalcOnly]       = useState(false);
+  const [trialUnlocked, setTrialUnlockedState] = useState<boolean>(() => isOitWwTrialUnlocked());
+  const [showGate, setShowGate]       = useState(false);
 
   const correctCount = history.filter(h => h.correct).length;
   const wrongCount   = history.filter(h => !h.correct).length;
 
-  // ── Filtered pool ─────────────────────────────────────────────────────────
+  // ── Filtered pool ──────────────────────────────────────────────────────────
   const pool = useMemo(() => {
     let qs = allQuestions.filter(q => !usedIds.has((q as any).id));
     if (selectedModule) qs = qs.filter(q => (q as any).module === selectedModule);
     if (calcOnly) qs = qs.filter(q => (q as any).isCalc === true);
     return qs;
-  }, [usedIds, selectedModule, calcOnly]);
+  }, [usedIds, selectedModule, calcOnly, allQuestions]);
 
-  // ── Get next question ─────────────────────────────────────────────────────
-  const getNext = useCallback((currentPool: Class1WastewaterQuestion[]): Class1WastewaterQuestion | null => {
-    if (currentPool.length === 0) return null;
-    return currentPool[Math.floor(Math.random() * currentPool.length)];
-  }, []);
-
-  // ── Confirm answer ────────────────────────────────────────────────────────
+  // ── Confirm answer ─────────────────────────────────────────────────────────
   const handleConfirm = useCallback(() => {
-    if (selected === null || !current) return;
-    const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
+    if (selected === null || confidence === null || !current) return;
+    const correctIdx = (current as any).correct ?? 0;
     const isCorrect = selected === correctIdx;
     setHistory(h => [...h, { q: current, selected, confidence, correct: isCorrect, questionObj: current }]);
     setUsedIds(s => new Set([...Array.from(s), (current as any).id]));
     setConfirmed(true);
-    setShowSteps(false);
-  }, [selected, current, confidence]);
+    const newLen = history.length + 1;
+    if (newLen >= SESSION_SIZE && !trialUnlocked) {
+      setShowGate(true);
+    }
+  }, [selected, current, confidence, history, trialUnlocked]);
 
-  // ── Next question ─────────────────────────────────────────────────────────
+  // ── Next question ──────────────────────────────────────────────────────────
   const handleNext = useCallback(() => {
-    const next = getNext(pool);
-    setCurrent(next);
+    if (history.length >= SESSION_SIZE && !trialUnlocked) {
+      setShowGate(true);
+      return;
+    }
+    const next = pool.length > 0
+      ? pool[Math.floor(Math.random() * pool.length)]
+      : allQuestions[Math.floor(Math.random() * allQuestions.length)];
+    setCurrent(next ?? null);
     setSelected(null);
     setConfidence(null);
     setConfirmed(false);
     setShowSteps(false);
     setTutorOpen(false);
-  }, [pool, getNext]);
+  }, [pool, allQuestions, history, trialUnlocked]);
 
-  // ── Go back ───────────────────────────────────────────────────────────────
+  // ── Go back ────────────────────────────────────────────────────────────────
   const goBack = useCallback(() => {
     if (history.length === 0) return;
     const newHistory = history.slice(0, -1);
@@ -92,7 +131,7 @@ export default function OITWastewaterQuiz() {
     setTutorOpen(false);
   }, [history]);
 
-  // ── Reset session ─────────────────────────────────────────────────────────
+  // ── Reset session ──────────────────────────────────────────────────────────
   const resetSession = useCallback(() => {
     setHistory([]);
     setUsedIds(new Set());
@@ -101,15 +140,15 @@ export default function OITWastewaterQuiz() {
     setConfirmed(false);
     setShowSteps(false);
     setTutorOpen(false);
+    setShowGate(false);
     const q = allQuestions[Math.floor(Math.random() * allQuestions.length)];
     setCurrent(q ?? null);
   }, [allQuestions]);
 
-  // ── Calc Only toggle ──────────────────────────────────────────────────────
+  // ── Calc Only toggle ───────────────────────────────────────────────────────
   const handleCalcOnlyToggle = useCallback(() => {
     const next = !calcOnly;
     setCalcOnly(next);
-    // Immediately load a calc question when toggling on
     if (next) {
       let calcPool = allQuestions.filter(q => (q as any).isCalc === true && !usedIds.has((q as any).id));
       if (selectedModule) calcPool = calcPool.filter(q => (q as any).module === selectedModule);
@@ -124,10 +163,9 @@ export default function OITWastewaterQuiz() {
     }
   }, [calcOnly, allQuestions, usedIds, selectedModule]);
 
-  // ── Module change ─────────────────────────────────────────────────────────
+  // ── Module change ──────────────────────────────────────────────────────────
   const handleModuleChange = useCallback((mod: string | null) => {
     setSelectedModule(mod);
-    // Immediately load a question from the new module
     let newPool = allQuestions.filter(q => !usedIds.has((q as any).id));
     if (mod) newPool = newPool.filter(q => (q as any).module === mod);
     if (calcOnly) newPool = newPool.filter(q => (q as any).isCalc === true);
@@ -142,17 +180,12 @@ export default function OITWastewaterQuiz() {
   }, [allQuestions, usedIds, calcOnly]);
 
   return (
-    <PurchaseGate
-      examType="oit-ww"
-      productKey="oit-ww"
-      productName="Ontario OIT · Wastewater Treatment"
-      price={49}
-    >
+    <>
       <QuizShell
         currentPath="/oit-ww"
         courseLabel="Ontario OIT · Wastewater Treatment"
         courseTitle="OIT Wastewater Practice Quiz"
-        courseSubtitle="Ontario OIT Wastewater Exam Prep"
+        courseSubtitle="Free · Ontario OIT Wastewater Exam Prep"
         headerGradient="linear-gradient(135deg, #0F766E 0%, #0369A1 100%)"
         headerIcon="🌊"
         headerActions={[
@@ -161,12 +194,8 @@ export default function OITWastewaterQuiz() {
         history={history}
         correctCount={correctCount}
         wrongCount={wrongCount}
-        modules={modules.map((m: any) => ({
-          name: typeof m === "string" ? m : m.name,
-          icon: typeof m === "object" ? m.icon : undefined,
-          bg:   typeof m === "object" ? m.bg   : undefined,
-          color: typeof m === "object" ? m.color : undefined,
-        }))}
+        sessionSize={SESSION_SIZE}
+        modules={MODULE_CONFIG}
         selectedModule={selectedModule}
         onModuleChange={handleModuleChange}
         hasCalcOnly={true}
@@ -188,7 +217,6 @@ export default function OITWastewaterQuiz() {
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={resetSession}
         mockExamHref="/oit-ww-mock"
-        
         renderAITutor={() => (
           <AITutor
             question={current as any}
@@ -199,6 +227,27 @@ export default function OITWastewaterQuiz() {
           />
         )}
       />
-    </PurchaseGate>
+      {/* Trial gate — shown after SESSION_SIZE questions for non-unlocked users */}
+      {showGate && (
+        <QuizGate
+          questionsAnswered={history.length}
+          productKey="oit-ww"
+          productName="OIT Wastewater Practice Pass"
+          priceLabel="CA$49"
+          paidFeatures={[
+            "Full 500+ question bank — unlimited attempts",
+            "OIT Wastewater Mock Exam (100 questions, 2-hour timer)",
+            "AI Tutor explanations on every question",
+            "Score history & module breakdown",
+          ]}
+          onUnlocked={() => {
+            setOitWwTrialUnlocked();
+            setTrialUnlockedState(true);
+            setShowGate(false);
+          }}
+          onDismiss={() => setShowGate(false)}
+        />
+      )}
+    </>
   );
 }
