@@ -11,7 +11,6 @@ import {
   type WpiClass4WastewaterQuestion,
 } from "@/lib/wpiClass4WastewaterQuestions";
 import ConfidenceMeter from "@/components/ConfidenceMeter";
-import StepSolution from "@/components/StepSolution";
 import AITutor from "@/components/AITutor";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
@@ -70,7 +69,7 @@ export default function WpiClass4WastewaterQuiz() {
 
   // Gate: first 15 questions are free
   const [trialDone, setTrialDone] = useState(false);
-  const [trialUnlocked] = useState(() => isTrialUnlocked("wpi-class4-wastewater"));
+  const [trialUnlocked] = useState(() => isTrialUnlocked());
 
   const answeredIds = useMemo(() => new Set(history.map((h) => h.questionId)), [history]);
   const correctCount = history.filter((h) => h.correct).length;
@@ -152,7 +151,7 @@ export default function WpiClass4WastewaterQuiz() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Inter', sans-serif" }}>
-      <SiteNav />
+      <SiteNav currentPath="/wpi-class4-wastewater" />
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px 80px" }}>
         {/* ── Header ── */}
         <div style={{ marginBottom: 20 }}>
@@ -274,15 +273,29 @@ export default function WpiClass4WastewaterQuiz() {
         {/* ── Trial gate ── */}
         {trialDone && !trialUnlocked ? (
           <QuizGate
-            examKey="wpi-class4-wastewater"
-            examName="WPI Class IV Wastewater"
-            onUnlock={() => {
-              setTrialUnlocked("wpi-class4-wastewater");
+            questionsAnswered={history.length}
+            productKey="wpi-class4-wastewater"
+            productName="WPI Class IV Wastewater Practice Pass"
+            priceLabel="CA$149"
+            paidFeatures={[
+              "502 WPI Class IV questions — unlimited attempts",
+              "Timed mock exam (100 questions, 2 hrs)",
+              "AI Tutor explanations on every question",
+              "Module-by-module performance tracking",
+            ]}
+            onUnlocked={() => {
+              setTrialUnlocked();
               setTrialDone(false);
+              const next = getNextQuestion();
+              setCurrent(next);
+              setSelected(null);
+              setConfidence(null);
+              setConfirmed(false);
+              setShowSteps(false);
             }}
           />
         ) : (
-          <PurchaseGate examType="wpi-class4-wastewater" freeQuestions={SESSION_SIZE} answeredCount={history.length}>
+          <PurchaseGate examType="wpi-class4-wastewater" productKey="wpi-class4-wastewater" productName="WPI Class IV Wastewater Practice Pass" price={149}>
             {allDone ? (
               <div style={{
                 background: "#fff", borderRadius: 16, padding: "32px 24px",
@@ -429,7 +442,16 @@ export default function WpiClass4WastewaterQuiz() {
                         >
                           {showSteps ? "▾ Hide" : "▸ Show"} step-by-step solution
                         </button>
-                        {showSteps && <StepSolution steps={current.steps} />}
+                        {showSteps && (
+                          <div style={{ marginTop: 8 }}>
+                            {current.steps.map((step, i) => (
+                              <div key={i} style={{ display: "flex", gap: 8, marginBottom: 6 }}>
+                                <span style={{ minWidth: 20, height: 20, borderRadius: "50%", background: "#7C3AED", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 800, flexShrink: 0 }}>{i + 1}</span>
+                                <span style={{ fontSize: 12, color: "#3B0764", background: "#F5F3FF", borderRadius: 6, padding: "4px 8px", flex: 1, border: "1px solid #DDD6FE" }}>{step}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )}
 

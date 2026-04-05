@@ -11,11 +11,9 @@ import {
   type WpiClass3WastewaterQuestion,
 } from "@/lib/wpiClass3WastewaterQuestions";
 import ConfidenceMeter from "@/components/ConfidenceMeter";
-import StepSolution from "@/components/StepSolution";
 import AITutor from "@/components/AITutor";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import PurchaseGate from "@/components/PurchaseGate";
 import SiteNav from "@/components/SiteNav";
 import { shuffle } from "@/lib/utils";
 
@@ -81,7 +79,7 @@ export default function WpiClass3WastewaterQuiz() {
 
   // Gate: first 15 questions are free
   const [trialDone, setTrialDone] = useState(false);
-  const [trialUnlocked] = useState(() => isTrialUnlocked("wpi-class3-wastewater"));
+  const [trialUnlocked] = useState(() => isTrialUnlocked());
 
   const answeredIds = useMemo(() => new Set(history.map((h) => h.questionId)), [history]);
   const correctCount = history.filter((h) => h.correct).length;
@@ -164,7 +162,7 @@ export default function WpiClass3WastewaterQuiz() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Inter', sans-serif" }}>
-      <SiteNav />
+      <SiteNav currentPath="/wpi-class3-wastewater" />
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "24px 16px 80px" }}>
         {/* ── Header ── */}
         <div style={{ marginBottom: 20 }}>
@@ -296,18 +294,27 @@ export default function WpiClass3WastewaterQuiz() {
           </div>
         ) : trialDone && !trialUnlocked ? (
           <QuizGate
-            examKey="wpi-class3-wastewater"
-            onUnlock={() => { setTrialUnlocked("wpi-class3-wastewater"); window.location.reload(); }}
-          >
-            <PurchaseGate
-              examType="wpi-class3-wastewater"
-              productKey="wpi-class3-wastewater"
-              productName="WPI Class III Wastewater Practice Pass"
-              price={99}
-            >
-              <></>
-            </PurchaseGate>
-          </QuizGate>
+            questionsAnswered={history.length}
+            productKey="wpi-class3-wastewater"
+            productName="WPI Class III Wastewater Practice Pass"
+            priceLabel="CA$99"
+            paidFeatures={[
+              "501 WPI Class III questions — unlimited attempts",
+              "Timed mock exam (100 questions, 2 hrs)",
+              "AI Tutor explanations on every question",
+              "Module-by-module performance tracking",
+            ]}
+            onUnlocked={() => {
+              setTrialUnlocked();
+              setTrialDone(false);
+              const next = getNextQuestion();
+              setCurrent(next);
+              setSelected(null);
+              setConfidence(null);
+              setConfirmed(false);
+              setShowSteps(false);
+            }}
+          />
         ) : (
           current && (
             <div style={{ background: "#fff", borderRadius: 16, border: "1px solid #E2E8F0", padding: "28px 24px" }}>
@@ -406,7 +413,14 @@ export default function WpiClass3WastewaterQuiz() {
                       </button>
                     )}
                     {showSteps && current.steps && (
-                      <StepSolution steps={current.steps} />
+                      <div style={{ marginTop: 10 }}>
+                        {current.steps.map((step, i) => (
+                          <div key={i} style={{ display: "flex", gap: 8, marginBottom: 6 }}>
+                            <span style={{ minWidth: 20, height: 20, borderRadius: "50%", background: "#0F766E", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 800, flexShrink: 0 }}>{i + 1}</span>
+                            <span style={{ fontSize: 12, color: "#064E3B", background: "#F0FDF4", borderRadius: 6, padding: "4px 8px", flex: 1, border: "1px solid #BBF7D0" }}>{step}</span>
+                          </div>
+                        ))}
+                      </div>
                     )}
                   </div>
 

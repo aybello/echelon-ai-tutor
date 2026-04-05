@@ -232,3 +232,4 @@
 - [x] Build Class 4 Wastewater formula sheet at /formulas-ww4 — already existed (567 lines), confirmed
 - [x] Add Chief Operator badge to WPI Class IV Water and Wastewater cards on WPI landing page
 - [x] Fix bundle-all savings figure in Pricing.tsx — updated to CA$1,402 saved (CA$2,001 individual − CA$599 bundle), tagline updated to 19 Practice Passes
+- [ ] Fix JSX > character error at WpiLanding.tsx line 585 (escape as &gt; or remove stray character)

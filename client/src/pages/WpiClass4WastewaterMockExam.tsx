@@ -84,7 +84,7 @@ export default function WpiClass4WastewaterMockExam() {
   const [timeLeft, setTimeLeft] = useState(EXAM_DURATION);
   const [showReview, setShowReview] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const saveScore = trpc.scores.save.useMutation();
+  const saveScore = trpc.exam.saveResult.useMutation();
 
   const startExam = useCallback(() => {
     const qs = buildExam();
@@ -99,10 +99,11 @@ export default function WpiClass4WastewaterMockExam() {
     if (timerRef.current) clearInterval(timerRef.current);
     const correct = ans.filter((a, i) => a.selected === qs[i].correctAnswer).length;
     saveScore.mutate({
+      sessionId: "wpi-class4-wastewater",
       examType: "wpi-class4-wastewater",
       score: correct,
       total: qs.length,
-      percentage: Math.round((correct / qs.length) * 100),
+      passed: correct / qs.length >= PASS_THRESHOLD,
     });
     setExamState("results");
   }, [saveScore]);
@@ -149,7 +150,7 @@ export default function WpiClass4WastewaterMockExam() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Inter', sans-serif" }}>
-      <SiteNav />
+      <SiteNav currentPath="/wpi-class4-wastewater-mock" />
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "24px 16px 80px" }}>
 
         {/* ── Breadcrumb ── */}
@@ -171,7 +172,7 @@ export default function WpiClass4WastewaterMockExam() {
           </span>
         </div>
 
-        <PurchaseGate examType="wpi-class4-wastewater" freeQuestions={0} answeredCount={0}>
+        <PurchaseGate examType="wpi-class4-wastewater" productKey="wpi-class4-wastewater" productName="WPI Class IV Wastewater Practice Pass" price={149}>
           {/* ── INTRO ── */}
           {examState === "intro" && (
             <div style={{ background: "#fff", borderRadius: 20, padding: "40px 32px", border: "1px solid #E2E8F0", textAlign: "center" }}>
@@ -231,7 +232,7 @@ export default function WpiClass4WastewaterMockExam() {
               >
                 Start Exam →
               </button>
-              <ScoreHistory examType="wpi-class4-wastewater" />
+              <ScoreHistory examType="wpi-class4-wastewater" sessionId="wpi-class4-wastewater" />
             </div>
           )}
 

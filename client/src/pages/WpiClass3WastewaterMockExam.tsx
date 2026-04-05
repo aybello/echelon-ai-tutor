@@ -87,7 +87,7 @@ export default function WpiClass3WastewaterMockExam() {
   const [showReview, setShowReview] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const saveScore = trpc.scores.save.useMutation();
+  const saveScore = trpc.exam.saveResult.useMutation();
 
   const startExam = useCallback(() => {
     const qs = buildExam();
@@ -103,6 +103,7 @@ export default function WpiClass3WastewaterMockExam() {
     setExamState("results");
     const score = answers.filter((a, i) => a.selected === questions[i]?.correctAnswer).length;
     saveScore.mutate({
+      sessionId: "wpi-class3-wastewater",
       examType: "wpi-class3-wastewater",
       score,
       total: EXAM_QUESTIONS,
@@ -142,7 +143,7 @@ export default function WpiClass3WastewaterMockExam() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Inter', sans-serif" }}>
-      <SiteNav />
+      <SiteNav currentPath="/wpi-class3-wastewater-mock" />
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "24px 16px 80px" }}>
         <PurchaseGate
           examType="wpi-class3-wastewater"
@@ -222,7 +223,7 @@ export default function WpiClass3WastewaterMockExam() {
 
               {/* Score history */}
               <div style={{ marginTop: 24 }}>
-                <ScoreHistory examType="wpi-class3-wastewater" />
+                <ScoreHistory examType="wpi-class3-wastewater" sessionId="wpi-class3-wastewater" />
               </div>
             </div>
           )}

@@ -319,7 +319,7 @@ export default function FormulasWpiClass4Ww() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Inter', sans-serif" }}>
-      <SiteNav />
+      <SiteNav currentPath="/formulas-wpi-class4-ww" />
       <div style={{ maxWidth: 860, margin: "0 auto", padding: "24px 16px 80px" }}>
         {/* Header */}
         <div style={{ marginBottom: 24 }}>
