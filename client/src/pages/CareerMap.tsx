@@ -1,18 +1,18 @@
-// Echelon Career Map — Ontario Operator Career Path & Salary Map
+// Echelon Career Map — Multi-Province Operator Career Path & Salary Map
 // Design: Professional SaaS — Clean Dark-Accent (Sora, blue/teal brand)
 // Views: Career Ladder | Salary Chart | Timeline | Employers
 
 import { useState } from "react";
-import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav from "@/components/SiteNav";
 import {
-  TRACKS, LEVELS, EMPLOYERS, SALARY_JUMPS, HERO_STATS, JOB_MARKET,
-  fmtSalary, fmtHr, type CertLevel,
-} from "@/lib/careerData";
+  TRACKS, PROVINCES,
+  fmtSalary, fmtHr,
+  type CertLevel, type ProvinceData,
+} from "@/lib/careerDataProvinces";
 
 // ── SALARY BAR ──────────────────────────────────────────────────────────────
-function SalaryBar({ min, max, color, maxScale = 120000 }: {
+function SalaryBar({ min, max, color, maxScale = 130000 }: {
   min: number; max: number; color: string; maxScale?: number;
 }) {
   const leftPct  = (min / maxScale) * 100;
@@ -95,7 +95,7 @@ function LevelCard({ level, active, onClick, track }: {
 }
 
 // ── DETAIL PANEL ─────────────────────────────────────────────────────────────
-function DetailPanel({ level }: { level: CertLevel | null }) {
+function DetailPanel({ level, province }: { level: CertLevel | null; province: ProvinceData }) {
   if (!level) return (
     <div style={{
       background: "#fff", borderRadius: 16, padding: "32px", textAlign: "center",
@@ -125,7 +125,7 @@ function DetailPanel({ level }: { level: CertLevel | null }) {
           <div style={{ fontSize: 32 }}>{level.icon}</div>
           <div>
             <div style={{ fontSize: 10, opacity: 0.8, letterSpacing: "0.1em", marginBottom: 2 }}>
-              ONTARIO CERTIFICATION
+              {province.name.toUpperCase()} CERTIFICATION
             </div>
             <div style={{ fontSize: 20, fontWeight: 800 }}>{level.label}</div>
             <div style={{ fontSize: 12, opacity: 0.85 }}>{level.years} of experience required</div>
@@ -197,10 +197,10 @@ function DetailPanel({ level }: { level: CertLevel | null }) {
 }
 
 // ── SALARY CHART ─────────────────────────────────────────────────────────────
-function SalaryChart() {
-  const mainLevels = LEVELS.filter(l => l.id !== "wqa");
-  const wqa        = LEVELS.find(l => l.id === "wqa")!;
-  const maxSalary  = 120000;
+function SalaryChart({ province }: { province: ProvinceData }) {
+  const mainLevels = province.levels.filter(l => l.id !== "wqa");
+  const wqa        = province.levels.find(l => l.id === "wqa");
+  const maxSalary  = 130000;
 
   const BarRow = ({ l }: { l: CertLevel }) => (
     <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
@@ -217,14 +217,6 @@ function SalaryChart() {
             background: `linear-gradient(90deg,${l.color}80,${l.color})`,
             borderRadius: 99,
           }} />
-          <div style={{
-            position: "absolute", left: `${(l.annual.min / maxSalary) * 100}%`,
-            top: "50%", transform: "translateY(-50%)", fontSize: 9, color: l.color, fontWeight: 700,
-          }}>│</div>
-          <div style={{
-            position: "absolute", left: `${(l.annual.max / maxSalary) * 100}%`,
-            top: "50%", transform: "translateY(-50%)", fontSize: 9, color: l.color, fontWeight: 700,
-          }}>│</div>
         </div>
       </div>
       <div style={{ width: 160, flexShrink: 0 }}>
@@ -240,19 +232,21 @@ function SalaryChart() {
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
         <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>
-          Salary Progression — Ontario Water/Wastewater Operators
+          Salary Progression — {province.name} Water/Wastewater Operators
         </div>
         <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 20 }}>
-          Based on OCWA collective agreement, Job Bank, and industry data (2025)
+          Based on Job Bank, Indeed.ca, and industry data (2025)
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           {mainLevels.map(l => <BarRow key={l.id} l={l} />)}
-          <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 14, marginTop: 4 }}>
-            <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", marginBottom: 10, letterSpacing: "0.1em" }}>
-              SPECIALIST PATH
+          {wqa && (
+            <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 14, marginTop: 4 }}>
+              <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", marginBottom: 10, letterSpacing: "0.1em" }}>
+                SPECIALIST PATH
+              </div>
+              <BarRow l={wqa} />
             </div>
-            <BarRow l={wqa} />
-          </div>
+          )}
         </div>
         {/* Scale */}
         <div style={{
@@ -269,11 +263,8 @@ function SalaryChart() {
       <div style={{ background: "#EFF6FF", borderRadius: 14, padding: "16px 20px", border: "1px solid #BFDBFE" }}>
         <div style={{ fontSize: 11, fontWeight: 700, color: "#1D4ED8", marginBottom: 8 }}>📊 Data Sources & Notes</div>
         <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.7 }}>
-          Salary data sourced from the <strong>Ontario Clean Water Agency (OCWA) OPSEU Collective Agreement</strong>,{" "}
-          <strong>Government of Canada Job Bank (Nov 2025)</strong>, <strong>Indeed.ca (Dec 2025)</strong>, and{" "}
-          <strong>Glassdoor (2025)</strong>. OCWA rates reflect unionised municipal employment — private sector and
-          non-union municipalities may vary. Additional pay for certification, on-call, overtime, and Overall
-          Responsible Operator (ORO) designation is not included and can add $2–8/hr. Rates are in Canadian dollars.
+          Salary data sourced from <strong>Government of Canada Job Bank (2025)</strong>, <strong>Indeed.ca (2025)</strong>,{" "}
+          <strong>Glassdoor (2025)</strong>, and provincial collective agreements where available. Rates reflect typical municipal employment ranges — private sector and non-union employers may vary. Additional pay for certification premiums, on-call, and overtime is not included. All rates are in Canadian dollars.
         </div>
       </div>
     </div>
@@ -281,12 +272,13 @@ function SalaryChart() {
 }
 
 // ── CAREER TIMELINE ──────────────────────────────────────────────────────────
-function CareerTimeline({ onSelect, selected }: {
+function CareerTimeline({ onSelect, selected, province }: {
   onSelect: (l: CertLevel | null) => void;
   selected: CertLevel | null;
+  province: ProvinceData;
 }) {
-  const mainLevels = LEVELS.filter(l => l.id !== "wqa");
-  const wqaLevel   = LEVELS.find(l => l.id === "wqa")!;
+  const mainLevels = province.levels.filter(l => l.id !== "wqa");
+  const wqaLevel   = province.levels.find(l => l.id === "wqa");
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -295,7 +287,7 @@ function CareerTimeline({ onSelect, selected }: {
           Typical Career Timeline
         </div>
         <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 24 }}>
-          Water & Wastewater Track — Ontario (years of experience)
+          Water & Wastewater Track — {province.name} (years of experience)
         </div>
 
         <div style={{ position: "relative" }}>
@@ -341,7 +333,7 @@ function CareerTimeline({ onSelect, selected }: {
 
         {/* Salary jump callouts */}
         <div className="career-salary-jumps" style={{ marginTop: 20, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
-          {SALARY_JUMPS.map((j, i) => (
+          {province.salaryJumps.map((j, i) => (
             <div key={i} style={{
               background: "#F8FAFC", borderRadius: 10, padding: "10px",
               textAlign: "center", border: "1px solid #E5E7EB",
@@ -354,8 +346,9 @@ function CareerTimeline({ onSelect, selected }: {
         </div>
       </div>
 
-        {/* WQA specialist path */}
-        <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB", marginTop: 8 }}>
+      {/* WQA specialist path — only for Ontario */}
+      {wqaLevel && (
+        <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
           <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>🔬 Specialist Path — Water Quality Analyst (WQA)</div>
           <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 16 }}>Distinct from plant operations — laboratory-focused certification under O. Reg. 128/04</div>
           <div className="career-salary-details" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 12 }}>
@@ -372,15 +365,13 @@ function CareerTimeline({ onSelect, selected }: {
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 14, background: "#EDE9FE", borderRadius: 10, padding: "12px 16px", fontSize: 11, color: "#4C1D95", lineHeight: 1.6 }}>
-            <strong>WQA Certification:</strong> Issued by OWWCO under O. Reg. 128/04. Analysts work in accredited drinking water testing laboratories (ISO/IEC 17025). High demand post-Walkerton as Ontario tightens lab requirements. Entry via the WQA exam — no prior operator experience required.
-          </div>
         </div>
+      )}
 
-        {/* Selected detail */}
+      {/* Selected detail */}
       {selected && (
         <div style={{ animation: "popIn 0.3s ease both" }}>
-          <DetailPanel level={selected} />
+          <DetailPanel level={selected} province={province} />
         </div>
       )}
 
@@ -417,16 +408,16 @@ function CareerTimeline({ onSelect, selected }: {
 }
 
 // ── EMPLOYERS SECTION ────────────────────────────────────────────────────────
-function EmployersSection() {
+function EmployersSection({ province }: { province: ProvinceData }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
         <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>
-          Who Hires Ontario Operators
+          Who Hires {province.name} Operators
         </div>
         <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 16 }}>Key employers across the province</div>
         <div className="career-employers-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
-          {EMPLOYERS.map((e, i) => (
+          {province.employers.map((e, i) => (
             <div key={i} style={{
               background: "#F8FAFC", borderRadius: 12, padding: "14px",
               border: `1px solid ${e.color}20`,
@@ -449,10 +440,10 @@ function EmployersSection() {
       {/* Job market outlook */}
       <div style={{ background: "#F0FDF4", borderRadius: 14, padding: "18px 20px", border: "1px solid #BBF7D0" }}>
         <div style={{ fontSize: 11, fontWeight: 700, color: "#059669", marginBottom: 12 }}>
-          🌱 Job Market Outlook — Ontario Water Sector
+          🌱 Job Market Outlook — {province.name} Water Sector
         </div>
         <div className="career-job-market-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-          {JOB_MARKET.map((item, i) => (
+          {province.jobMarket.map((item, i) => (
             <div key={i} style={{ background: "#fff", borderRadius: 10, padding: "12px 14px" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#059669", marginBottom: 4 }}>{item.title}</div>
               <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.55 }}>{item.desc}</div>
@@ -464,18 +455,65 @@ function EmployersSection() {
   );
 }
 
+// ── PROVINCE SELECTOR ────────────────────────────────────────────────────────
+function ProvinceSelector({ selected, onChange }: {
+  selected: string;
+  onChange: (id: string) => void;
+}) {
+  return (
+    <div style={{
+      background: "#fff", borderBottom: "1px solid #E5E7EB",
+      padding: "10px 28px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap",
+    }}>
+      <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", flexShrink: 0 }}>
+        PROVINCE
+      </span>
+      <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+        {PROVINCES.map(p => (
+          <button
+            key={p.id}
+            onClick={() => onChange(p.id)}
+            style={{
+              padding: "7px 14px", borderRadius: 8,
+              border: `1px solid ${selected === p.id ? "#1D4ED8" : "#E5E7EB"}`,
+              background: selected === p.id ? "#EFF6FF" : "transparent",
+              color: selected === p.id ? "#1D4ED8" : "#64748B",
+              fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
+              transition: "all 0.15s",
+            }}
+          >
+            {p.flag} {p.abbr}
+          </button>
+        ))}
+      </div>
+      <div style={{ fontSize: 10, color: "#94A3B8", marginLeft: "auto" }}>
+        {PROVINCES.find(p => p.id === selected)?.certBody}
+      </div>
+    </div>
+  );
+}
+
 // ── MAIN PAGE ────────────────────────────────────────────────────────────────
 type ViewType = "ladder" | "chart" | "timeline" | "employers";
 
 export default function CareerMap() {
   usePageMeta({
-    title: "Ontario Operator Career Map — OIT to Class 4",
-    description: "Explore the full Ontario water and wastewater operator career path from OIT to Class 4. Salary ranges, employer landscape, certification timelines, and Water Quality Analyst track.",
+    title: "Canadian Operator Career Map — OIT to Class 4",
+    description: "Explore the full Canadian water and wastewater operator career path from OIT to Class 4 across Ontario, BC, Alberta, Saskatchewan, and Manitoba. Salary ranges, employer landscape, certification timelines.",
     path: "/career",
   });
-  const [selected, setSelected] = useState<CertLevel | null>(null);
-  const [track, setTrack]       = useState("all");
-  const [view, setView]         = useState<ViewType>("ladder");
+  const [selected,   setSelected]   = useState<CertLevel | null>(null);
+  const [track,      setTrack]      = useState("all");
+  const [view,       setView]       = useState<ViewType>("ladder");
+  const [provinceId, setProvinceId] = useState("on");
+
+  const province = PROVINCES.find(p => p.id === provinceId) ?? PROVINCES[0];
+
+  // Reset selected level when province changes (levels have different IDs)
+  const handleProvinceChange = (id: string) => {
+    setProvinceId(id);
+    setSelected(null);
+  };
 
   const VIEWS: [ViewType, string][] = [
     ["ladder",    "🪜 Career Ladder"],
@@ -483,6 +521,10 @@ export default function CareerMap() {
     ["timeline",  "⏱ Timeline"],
     ["employers", "🏢 Employers"],
   ];
+
+  // Filter levels for the ladder (WQA is a specialist path, shown separately)
+  const mainLevels    = province.levels.filter(l => l.id !== "wqa");
+  const specialistLevel = province.levels.find(l => l.id === "wqa");
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
@@ -507,6 +549,9 @@ export default function CareerMap() {
 
       <SiteNav currentPath="/career" />
 
+      {/* ── PROVINCE SELECTOR ── */}
+      <ProvinceSelector selected={provinceId} onChange={handleProvinceChange} />
+
       {/* ── VIEW TOGGLES ── */}
       <div className="career-view-toggles" style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6, flexWrap: "wrap" }}>
         {VIEWS.map(([v, l]) => (
@@ -526,7 +571,7 @@ export default function CareerMap() {
 
         {/* Hero stats */}
         <div className="fade career-hero-stats" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 14, marginBottom: 20 }}>
-          {HERO_STATS.map((s, i) => (
+          {province.heroStats.map((s, i) => (
             <div key={i} style={{
               background: "#fff", borderRadius: 14, padding: "18px 20px",
               border: "1px solid #E5E7EB", borderTop: `3px solid ${s.color}`,
@@ -572,7 +617,7 @@ export default function CareerMap() {
                   CLICK ANY LEVEL TO SEE FULL DETAILS
                 </div>
                 {/* Main ladder */}
-                {LEVELS.filter(l => l.id !== "wqa").map((l, i, arr) => (
+                {mainLevels.map((l, i, arr) => (
                   <div key={l.id}>
                     <LevelCard level={l} active={selected} onClick={setSelected} track={track} />
                     {i < arr.length - 1 && (
@@ -580,7 +625,7 @@ export default function CareerMap() {
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
                           <div style={{ width: 2, height: 10, background: "#E5E7EB" }} />
                           <div style={{ fontSize: 9, color: "#94A3B8", fontWeight: 600 }}>
-                            {["1 yr exp", "2 yr exp", "3 yr exp", "3 yr exp"][i]}
+                            {i === 0 ? "1 yr exp" : i === 1 ? "2 yr exp" : i === 2 ? "3 yr exp" : "3 yr exp"}
                           </div>
                           <div style={{ width: 2, height: 10, background: "#E5E7EB" }} />
                         </div>
@@ -588,18 +633,20 @@ export default function CareerMap() {
                     )}
                   </div>
                 ))}
-                {/* WQA specialist */}
-                <div style={{ borderTop: "1px dashed #E5E7EB", paddingTop: 14, marginTop: 4 }}>
-                  <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 8 }}>
-                    SPECIALIST PATH
+                {/* WQA specialist — Ontario only */}
+                {specialistLevel && (
+                  <div style={{ borderTop: "1px dashed #E5E7EB", paddingTop: 14, marginTop: 4 }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 8 }}>
+                      SPECIALIST PATH
+                    </div>
+                    <LevelCard level={specialistLevel} active={selected} onClick={setSelected} track={track} />
                   </div>
-                  <LevelCard level={LEVELS[5]} active={selected} onClick={setSelected} track={track} />
-                </div>
+                )}
               </div>
 
               {/* Right — detail panel */}
               <div>
-                <DetailPanel level={selected} />
+                <DetailPanel level={selected} province={province} />
               </div>
             </div>
           </div>
@@ -608,21 +655,21 @@ export default function CareerMap() {
         {/* ── SALARY CHART ── */}
         {view === "chart" && (
           <div className="fade">
-            <SalaryChart />
+            <SalaryChart province={province} />
           </div>
         )}
 
         {/* ── TIMELINE ── */}
         {view === "timeline" && (
           <div className="fade">
-            <CareerTimeline onSelect={setSelected} selected={selected} />
+            <CareerTimeline onSelect={setSelected} selected={selected} province={province} />
           </div>
         )}
 
         {/* ── EMPLOYERS ── */}
         {view === "employers" && (
           <div className="fade">
-            <EmployersSection />
+            <EmployersSection province={province} />
           </div>
         )}
       </div>
