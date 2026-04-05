@@ -280,3 +280,4 @@
 - [x] Province-aware hero CTA copy on Landing page
 - [x] Store province in user profile DB and sync on selection
 - [x] Quality audit — fixed Class 1 Water duplicate IDs (62 removed), verified all paywalls, prices, routes, and math
+- [x] Fix SiteNav PRIMARY links to be contextual per quiz page
