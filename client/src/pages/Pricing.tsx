@@ -784,17 +784,22 @@ export default function Pricing() {
                   Water Treatment
                 </h2>
               </div>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-                  gap: 16,
-                }}
-              >
-                {INDIVIDUAL.filter(p => p.key === "oit" || p.key.includes("-water")).map(product => (
-                  <ProductCard key={product.key} product={product} isWpi={isWpi} wpiLabel={WPI_WATER_LABELS[product.key]} />
-                ))}
-              </div>
+              {/* Ontario: OIT + Class 1–4 Water = 5 cards on one row */}
+              {!isWpi && (
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
+                  {INDIVIDUAL.filter(p => p.key === "oit" || (p.key.includes("-water") && !p.key.startsWith("wpi-"))).map(product => (
+                    <ProductCard key={product.key} product={product} isWpi={false} wpiLabel={undefined} />
+                  ))}
+                </div>
+              )}
+              {/* WPI: Class I–IV Water = 4 cards on one row */}
+              {isWpi && (
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+                  {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-water")).map(product => (
+                    <ProductCard key={product.key} product={product} isWpi={true} wpiLabel={WPI_WATER_LABELS[product.key]} />
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Wastewater section */}
@@ -812,17 +817,22 @@ export default function Pricing() {
                   Wastewater Treatment
                 </h2>
               </div>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-                  gap: 16,
-                }}
-              >
-                {INDIVIDUAL.filter(p => p.key.includes("-ww")).map(product => (
-                  <ProductCard key={product.key} product={product} isWpi={isWpi} wpiLabel={WPI_WATER_LABELS[product.key]} />
-                ))}
-              </div>
+              {/* Ontario: OIT WW + Class 1–4 WW = 5 cards on one row */}
+              {!isWpi && (
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
+                  {INDIVIDUAL.filter(p => p.key.includes("-ww") && !p.key.startsWith("wpi-")).map(product => (
+                    <ProductCard key={product.key} product={product} isWpi={false} wpiLabel={undefined} />
+                  ))}
+                </div>
+              )}
+              {/* WPI: Class I–IV Wastewater = 4 cards on one row */}
+              {isWpi && (
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+                  {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-wastewater")).map(product => (
+                    <ProductCard key={product.key} product={product} isWpi={true} wpiLabel={WPI_WATER_LABELS[product.key]} />
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* WQA section */}
@@ -880,16 +890,23 @@ export default function Pricing() {
               <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
                 WPI standardized exams recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).
               </p>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-                  gap: 16,
-                }}
-              >
-                {INDIVIDUAL.filter(p => p.key.startsWith("wpi-")).map(product => (
-                  <ProductCard key={product.key} product={product} />
-                ))}
+              {/* WPI Water row */}
+              <div style={{ marginBottom: 16 }}>
+                <p style={{ fontSize: 12, fontWeight: 700, color: "#0E7490", textTransform: "uppercase", letterSpacing: "0.05em", margin: "0 0 10px" }}>Water Treatment</p>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+                  {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-water")).map(product => (
+                    <ProductCard key={product.key} product={product} />
+                  ))}
+                </div>
+              </div>
+              {/* WPI Wastewater row */}
+              <div>
+                <p style={{ fontSize: 12, fontWeight: 700, color: "#0F766E", textTransform: "uppercase", letterSpacing: "0.05em", margin: "0 0 10px" }}>Wastewater Treatment</p>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+                  {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-wastewater")).map(product => (
+                    <ProductCard key={product.key} product={product} />
+                  ))}
+                </div>
               </div>
             </div>
         </>
