@@ -3,7 +3,7 @@
 // Covers: wastewater collection, treatment principles, Ontario O. Reg. 129/04, safety
 
 import { useState, useCallback, useMemo } from "react";
-import { Link } from "wouter";
+import { Link, useSearch} from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import {
   CLASS1_WASTEWATER_QUESTIONS,
@@ -91,7 +91,9 @@ export default function OITWastewaterQuiz() {
 
   const [trialUnlockedState, setTrialUnlockedState] = useState(() => isTrialUnlocked());
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
-  const [calcOnly, setCalcOnly] = useState(false);
+  const searchString = useSearch();
+  const initialCalcOnly = new URLSearchParams(searchString).get("calcOnly") === "true";
+    const [calcOnly, setCalcOnly] = useState(initialCalcOnly);
   const [showModuleSelector, setShowModuleSelector] = useState(false);
 
   const getPool = useCallback((mod: string | null, unlocked: boolean) => {

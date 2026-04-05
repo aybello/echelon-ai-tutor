@@ -1525,8 +1525,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
     ],
     correct: 1,
     explanation: "Surface area = 40 m × 10 m = 400 m². SOR = 20,000 m³/day ÷ 400 m² = 50 m³/m²·day. This is slightly above the typical design range of 20-40 m³/m²·day, suggesting the basin may be undersized for optimal performance.",
-    steps: [ { l: "Formula", c: "Surface Overflow Rate (SOR) = Flow Rate / Surface Area" }, { l: "Step 1: Calculate the surface area of the basin.", c: "Surface Area = Length × Width = 40 m × 10 m = 400 m²" }, { l: "Step 2: Identify the given flow rate.", c: "Flow Rate = 20,000 m³/day" }, { l: "Step 3: Substitute values into the SOR formula.", c: "SOR = 20,000 m³/day / 400 m²" }, { l: "Step 4: Calculate the Surface Overflow Rate.", c: "SOR = 50 m³/m²·day" }, { l: "Result", c: "The surface overflow rate is 50 m³/m²·day." } ],
-    tip: "SOR indicates clarifier efficiency; higher values mean less settling time.",
+  steps: [
+    { l: "Formula", c: "Surface Overflow Rate (SOR) = Flow Rate / Surface Area" },
+    { l: "Step 1: Calculate the surface area of the basin.", c: "Surface Area = Length × Width = 40 m × 10 m = 400 m²" },
+    { l: "Step 2: Identify the given flow rate.", c: "Flow Rate = 20,000 m³/day" },
+    { l: "Step 3: Substitute values into the SOR formula.", c: "SOR = 20,000 m³/day / 400 m²" },
+    { l: "Step 4: Calculate the Surface Overflow Rate.", c: "SOR = 50 m³/m²·day" },
+    { l: "Result", c: "The surface overflow rate is 50 m³/m²·day." }
+  ],
+  tip: "SOR indicates clarifier efficiency; higher values mean less settling time.",
   },
   {
     id: 104,
@@ -1611,8 +1618,14 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
     ],
     correct: 1,
     explanation: "Weir overflow rate (WOR) = Flow rate (m³/day) ÷ Total weir length (m). It measures the hydraulic loading on the outlet weir. High WOR creates turbulence that can re-suspend settled floc. Typical WOR for conventional clarifiers is <250 m³/m·day.",
-    steps: [ { l: "Formula", c: "Alkalinity Consumed (mg/L as CaCO₃) = Alum Dose (mg/L) × Alkalinity Consumption Factor (mg alkalinity/mg alum)" }, { l: "Step 1: Identify the given values.", c: "Alum Dose = 40 mg/L. Alkalinity Consumption Factor = 0.45 mg alkalinity per mg alum." }, { l: "Step 2: Substitute the values into the formula.", c: "Alkalinity Consumed = 40 mg/L × 0.45" }, { l: "Calculate", c: "Alkalinity Consumed = 18 mg/L as CaCO₃" }, { l: "Result", c: "The alkalinity consumed is 18 mg/L as CaCO₃." } ],
-    tip: "Alum consumes alkalinity; ensure sufficient alkalinity remains for stable pH.",
+  steps: [
+    { l: "Formula", c: "Alkalinity Consumed (mg/L as CaCO₃) = Alum Dose (mg/L) × Alkalinity Consumption Factor (mg alkalinity/mg alum)" },
+    { l: "Step 1: Identify the given values.", c: "Alum Dose = 40 mg/L. Alkalinity Consumption Factor = 0.45 mg alkalinity per mg alum." },
+    { l: "Step 2: Substitute the values into the formula.", c: "Alkalinity Consumed = 40 mg/L × 0.45" },
+    { l: "Calculate", c: "Alkalinity Consumed = 18 mg/L as CaCO₃" },
+    { l: "Result", c: "The alkalinity consumed is 18 mg/L as CaCO₃." }
+  ],
+  tip: "Alum consumes alkalinity; ensure sufficient alkalinity remains for stable pH.",
   },
   {
     id: 110,

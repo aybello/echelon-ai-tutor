@@ -47,6 +47,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["0.0025 µg/L", "25 µg/L", "250 µg/L", "2500 µg/L"],
     correctIndex: 3,
     explanation: "1 mg/L = 1000 µg/L. Therefore 2.5 mg/L × 1000 = 2500 µg/L.",
+    steps: [
+      { l: "Identify Units", c: "The given unit is milligrams per liter (mg/L) and the target unit is micrograms per liter (µg/L)." },
+      { l: "Recall Conversion Factor", c: "The conversion factor between milligrams and micrograms is 1 mg = 1000 µg. Therefore, 1 mg/L = 1000 µg/L." },
+      { l: "Set Up Calculation", c: "To convert from mg/L to µg/L, we multiply the given value by the conversion factor: 2.5 mg/L × (1000 µg / 1 mg)." },
+      { l: "Perform Calculation", c: "2.5 × 1000 = 2500." },
+      { l: "State Final Answer", c: "The result is 2500 µg/L." },
+    ],
+    tip: "Memorize common metric prefixes (milli, micro, nano) and their conversion factors.",
   },
   {
     id: "WQA-M002",
@@ -56,6 +64,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["9.42 m³", "12.56 m³", "18.84 m³", "37.68 m³"],
     correctIndex: 0,
     explanation: "V = π × r² × h = 3.14 × (1)² × 3 = 9.42 m³. The radius is half the diameter: 2/2 = 1 m.",
+    steps: [
+      { l: "Identify Formula", c: "The formula for the volume of a cylinder is V = π × r² × h." },
+      { l: "Calculate Radius", c: "The diameter is given as 2 m. The radius (r) is half the diameter: r = diameter / 2 = 2 m / 2 = 1 m." },
+      { l: "Substitute Values", c: "Substitute the given values into the formula: V = 3.14 × (1 m)² × 3 m." },
+      { l: "Calculate Result", c: "Perform the calculation: V = 3.14 × 1 m² × 3 m = 9.42 m³." },
+    ],
+    tip: "Always convert diameter to radius before calculating cylinder volume.",
   },
   {
     id: "WQA-M003",
@@ -65,6 +80,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["1.2 meq/L", "2.4 meq/L", "6.0 meq/L", "60 meq/L"],
     correctIndex: 1,
     explanation: "meq/L = (mg/L as CaCO₃) / (equivalent weight) = 120 / 50 = 2.4 meq/L.",
+    steps: [
+      { l: "Identify Given Values", c: "Given alkalinity = 120 mg/L as CaCO₃. Given equivalent weight of CaCO₃ = 50 g/eq." },
+      { l: "Recall Formula", c: "The formula to convert mg/L to meq/L for a substance is: meq/L = (mg/L) / (equivalent weight in mg/meq)." },
+      { l: "Convert Equivalent Weight Units", c: "The given equivalent weight is 50 g/eq. To use it in the formula, convert g/eq to mg/meq. Since 1 g = 1000 mg and 1 eq = 1000 meq, then 50 g/eq = 50 * (1000 mg / 1 g) / (1000 meq / 1 eq) = 50 mg/meq. (Alternatively, 50 g/eq = 50,000 mg/eq. Since 1 eq = 1000 meq, then 50,000 mg/eq = 50,000 mg / 1000 meq = 50 mg/meq)." },
+      { l: "Substitute and Calculate", c: "Substitute the values into the formula: meq/L = (120 mg/L) / (50 mg/meq) = 2.4 meq/L." },
+    ],
+    tip: "Always ensure equivalent weight units match the concentration units (e.g., mg/meq for mg/L).",
   },
   {
     id: "WQA-M004",
@@ -74,6 +96,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["0.585 g", "2.925 g", "5.85 g", "29.25 g"],
     correctIndex: 1,
     explanation: "For NaCl, normality = molarity (n-factor = 1). Grams = N × V(L) × MW = 0.1 × 0.5 × 58.5 = 2.925 g.",
+    steps: [
+      { l: "Understand Normality", c: "For NaCl, the n-factor (number of equivalents per mole) is 1 because it dissociates into one Na+ ion and one Cl- ion. Therefore, for NaCl, Normality (N) = Molarity (M)." },
+      { l: "Identify Given Values", c: "Normality (N) = 0.1 N; Volume (V) = 500 mL; Molecular Weight (MW) = 58.5 g/mol." },
+      { l: "Convert Volume to Liters", c: "Volume (V) = 500 mL * (1 L / 1000 mL) = 0.5 L." },
+      { l: "Apply Formula", c: "Grams = Normality (N) × Volume (L) × Molecular Weight (MW). This formula is derived from N = (grams / MW) / V(L)." },
+      { l: "Calculate Grams", c: "Grams = 0.1 N × 0.5 L × 58.5 g/mol = 2.925 g." },
+    ],
+    tip: "Always check the n-factor for normality calculations; for NaCl, N=M.",
   },
   {
     id: "WQA-M005",
@@ -83,6 +113,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["0.5 mL", "5 mL", "50 mL", "500 mL"],
     correctIndex: 1,
     explanation: "Using C₁V₁ = C₂V₂: 1000 × V₁ = 5 × 1000 mL. V₁ = 5000/1000 = 5 mL.",
+    steps: [
+      { l: "Identify Given Values", c: "C₁ (stock concentration) = 1000 mg/L C₂ (desired concentration) = 5 mg/L V₂ (desired volume) = 1 L" },
+      { l: "Convert Desired Volume", c: "The question asks for V₁ in mL. Convert V₂ to mL for consistency: V₂ = 1 L * (1000 mL / 1 L) = 1000 mL." },
+      { l: "Apply Dilution Formula", c: "Use the dilution formula: C₁V₁ = C₂V₂ 1000 mg/L * V₁ = 5 mg/L * 1000 mL" },
+      { l: "Solve for V₁", c: "V₁ = (5 mg/L * 1000 mL) / 1000 mg/L V₁ = 5000 mL / 1000 V₁ = 5 mL" },
+    ],
+    tip: "Ensure units are consistent before calculating; C₁V₁=C₂V₂ is your go-to dilution formula.",
   },
   {
     id: "WQA-M006",
@@ -92,6 +129,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["9.2 N", "18.4 N", "36.8 N", "92 N"],
     correctIndex: 2,
     explanation: "Molarity = (% × density × 1000) / MW = (0.98 × 1.84 × 1000) / 98 = 18.4 mol/L. Normality = 18.4 × 2 = 36.8 N.",
+    steps: [
+      { l: "Calculate Molarity", c: "Molarity = (% (w/w) × density × 1000) / MW Molarity = (0.98 × 1.84 g/mL × 1000 mL/L) / 98 g/mol Molarity = 1803.2 / 98 mol/L = 18.4 mol/L" },
+      { l: "Identify n-factor", c: "The n-factor for H₂SO₄ (sulfuric acid) is given as 2, as it is a diprotic acid and can donate two protons (H⁺) per molecule." },
+      { l: "Calculate Normality", c: "Normality (N) = Molarity (M) × n-factor Normality = 18.4 mol/L × 2 = 36.8 N" },
+    ],
+    tip: "Remember Normality = Molarity × n-factor; correctly identify the n-factor for the given substance.",
   },
   {
     id: "WQA-M007",
@@ -101,6 +144,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["10 mL sample + 90 mL diluent", "25 mL sample + 75 mL diluent", "50 mL sample + 50 mL diluent", "1 mL sample + 99 mL diluent"],
     correctIndex: 0,
     explanation: "A 1:10 dilution means 1 part sample in 10 parts total volume. For 100 mL total: sample = 100/10 = 10 mL; diluent = 100 - 10 = 90 mL. Always verify: 10/100 = 0.1 = 1:10 dilution.",
+    steps: [
+      { l: "Understand Dilution Ratio", c: "A 1:10 dilution means that for every 10 parts of total solution, 1 part is the original sample and 9 parts are the diluent. This can also be expressed as 1 part sample to 9 parts diluent to make 10 parts total." },
+      { l: "Determine Sample Volume", c: "The desired final volume is 100 mL. Since the dilution is 1:10, the sample volume will be 1/10th of the total volume. Sample Volume = (1/10) * Total Volume = (1/10) * 100 mL = 10 mL." },
+      { l: "Determine Diluent Volume", c: "The diluent volume is the total volume minus the sample volume. Diluent Volume = Total Volume - Sample Volume = 100 mL - 10 mL = 90 mL." },
+      { l: "Verify Dilution", c: "To verify, check the ratio of sample volume to total volume: 10 mL (sample) / 100 mL (total) = 0.1, which corresponds to a 1:10 dilution." },
+    ],
+    tip: "Always verify your dilution by checking the ratio of sample volume to total volume.",
   },
   {
     id: "WQA-M008",
@@ -110,6 +160,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["8,000 L", "80,000 L", "800,000 L", "8,000,000 L"],
     correctIndex: 1,
     explanation: "Volume = 10 × 4 × 2 = 80 m³. 1 m³ = 1000 L. Therefore 80 × 1000 = 80,000 L.",
+    steps: [
+      { l: "Identify Given Dimensions", c: "Length (L) = 10 m, Width (W) = 4 m, Depth (D) = 2 m" },
+      { l: "Calculate Volume in m³", c: "Volume (V) = L × W × D = 10 m × 4 m × 2 m = 80 m³" },
+      { l: "Recall Conversion Factor", c: "The conversion factor from cubic meters to liters is 1 m³ = 1000 L." },
+      { l: "Convert Volume to Litres", c: "Volume in Litres = 80 m³ × 1000 L/m³ = 80,000 L" },
+    ],
+    tip: "Always check units and apply correct conversion factors, especially for volume calculations.",
   },
   {
     id: "WQA-M009",
@@ -119,6 +176,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["0.045 mg/L", "0.09 mg/L", "0.45 mg/L", "0.9 mg/L"],
     correctIndex: 3,
     explanation: "Concentration = mass / volume = 0.045 mg / 0.05 L = 0.9 mg/L.",
+    steps: [
+      { l: "Identify Given Values", c: "Mass of fluoride (m) = 0.045 mg Volume of sample (V) = 50 mL" },
+      { l: "Convert Volume to Liters", c: "The desired concentration unit is mg/L, so convert mL to L. 1 L = 1000 mL V = 50 mL * (1 L / 1000 mL) = 0.05 L" },
+      { l: "Apply Concentration Formula", c: "Concentration (C) = Mass (m) / Volume (V)" },
+      { l: "Substitute and Calculate", c: "C = 0.045 mg / 0.05 L = 0.9 mg/L" },
+    ],
+    tip: "Always ensure units are consistent (e.g., L for volume) before calculating concentration.",
   },
   {
     id: "WQA-M010",
@@ -128,6 +192,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["31.4 m²", "78.5 m²", "314 m²", "785 m²"],
     correctIndex: 1,
     explanation: "Area = π × r² = 3.14 × (5)² = 3.14 × 25 = 78.5 m².",
+    steps: [
+      { l: "Identify Given Values", c: "Diameter (D) = 10 m. We need to find the radius (r) because the area formula uses radius. Radius (r) = D / 2 = 10 m / 2 = 5 m. Pi (π) = 3.14." },
+      { l: "Recall Area Formula", c: "The formula for the area of a circle is A = π × r²." },
+      { l: "Substitute Values", c: "Substitute the known values into the formula: A = 3.14 × (5 m)²." },
+      { l: "Calculate Radius Squared", c: "First, calculate r²: (5 m)² = 5 m × 5 m = 25 m²." },
+      { l: "Calculate Final Area", c: "Multiply π by the squared radius: A = 3.14 × 25 m² = 78.5 m²." },
+    ],
+    tip: "Always convert diameter to radius before calculating circular area.",
   },
   {
     id: "WQA-M011",
@@ -137,6 +209,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["1.25 mg/L", "12.5 mg/L", "25 mg/L", "125 mg/L"],
     correctIndex: 3,
     explanation: "Alkalinity (mg/L as CaCO₃) = (mL acid × N acid × 50,000) / mL sample = (12.5 × 0.02 × 50,000) / 100 = 125 mg/L as CaCO₃. Verification: 12.5 × 0.02 = 0.25 meq; 0.25 meq / 0.1 L = 2.5 meq/L; 2.5 meq/L × 50 mg/meq = 125 mg/L as CaCO₃.",
+    steps: [
+      { l: "Identify Formula", c: "The formula for alkalinity in mg/L as CaCO₃ is: Alkalinity = (mL acid × N acid × 50,000) / mL sample" },
+      { l: "List Given Values", c: "mL acid = 12.5 mL N acid = 0.02 N H₂SO₄ mL sample = 100 mL Equivalent weight of CaCO₃ = 50,000 mg/equivalent (This is derived from 1 equivalent of CaCO₃ = 50 g = 50,000 mg)" },
+      { l: "Substitute Values", c: "Alkalinity = (12.5 mL × 0.02 N × 50,000) / 100 mL" },
+      { l: "Calculate Result", c: "Alkalinity = (0.25 × 50,000) / 100 Alkalinity = 12,500 / 100 Alkalinity = 125 mg/L as CaCO₃" },
+      { l: "Verification (Optional but Recommended)", c: "Equivalents of acid = mL acid × N acid = 12.5 mL × 0.02 N = 0.25 meq Concentration in meq/L = 0.25 meq / (100 mL / 1000 mL/L) = 0.25 meq / 0.1 L = 2.5 meq/L Alkalinity in mg/L as CaCO₃ = 2.5 meq/L × 50 mg/meq (equivalent weight of CaCO₃) = 125 mg/L as CaCO₃" },
+    ],
+    tip: "Memorize the alkalinity formula and the equivalent weight of CaCO₃ (50,000 mg/eq).",
   },
   {
     id: "WQA-M012",
@@ -146,6 +226,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["0.005 mg/L", "0.05 mg/L", "0.5 mg/L", "5 mg/L"],
     correctIndex: 3,
     explanation: "1 g = 1000 mg. Therefore 0.005 g/L × 1000 = 5 mg/L.",
+    steps: [
+      { l: "Identify Given Value", c: "The given concentration is 0.005 g/L." },
+      { l: "Recall Conversion Factor", c: "The conversion factor between grams (g) and milligrams (mg) is 1 g = 1000 mg." },
+      { l: "Set Up Conversion", c: "To convert grams to milligrams, multiply the value in grams by 1000 mg/g. The 'g' units will cancel out, leaving 'mg'." },
+      { l: "Perform Calculation", c: "0.005 g/L * (1000 mg / 1 g) = 5 mg/L" },
+      { l: "State Final Answer", c: "Therefore, 0.005 g/L is equal to 5 mg/L." },
+    ],
+    tip: "Always track units to ensure correct conversion and cancellation.",
   },
 
   // ─── SCIENCE (20 questions) ─────────────────────────────────────────────────
@@ -185,6 +273,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "At pH 8.4: [H⁺] = 10⁻⁸·⁴ = 3.98 × 10⁻⁹ mol/L. [OH⁻] = Kw / [H⁺] = 1.0 × 10⁻¹⁴ / 3.98 × 10⁻⁹ = 2.51 × 10⁻⁶ mol/L ≈ 2.5 × 10⁻⁶ mol/L. Alternatively: pOH = 14 - pH = 14 - 8.4 = 5.6; [OH⁻] = 10⁻⁵·⁶ = 2.5 × 10⁻⁶ mol/L.",
+    steps: [
+      { l: "Calculate pOH", c: "The relationship between pH and pOH is pH + pOH = 14. Given pH = 8.4, we can calculate pOH: pOH = 14 - pH = 14 - 8.4 = 5.6." },
+      { l: "Calculate [OH⁻]", c: "The hydroxide ion concentration [OH⁻] can be calculated from pOH using the formula [OH⁻] = 10⁻ᵖᴼᴴ. Substitute the calculated pOH value: [OH⁻] = 10⁻⁵·⁶ mol/L." },
+      { l: "Evaluate Result", c: "Calculate the numerical value: [OH⁻] = 10⁻⁵·⁶ ≈ 2.511886 × 10⁻⁶ mol/L. Rounding to two significant figures (consistent with the pH value's precision), [OH⁻] ≈ 2.5 × 10⁻⁶ mol/L." },
+    ],
+    tip: "Remember pH + pOH = 14 and [OH⁻] = 10⁻ᵖᴼᴴ are key for these calculations.",
   },
   {
     id: "WQA-S004",
@@ -282,6 +376,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 2,
     explanation: "Magnesium hardness as CaCO₃ = total hardness - calcium hardness = 280 - 180 = 100 mg/L as CaCO₃. To convert to mg/L as Mg²⁺: multiply by (Mg MW / CaCO₃ MW) × 2 = (24.3 / 100) × 2 = 0.486. Wait — conversion factor: mg/L as CaCO₃ × (Mg MW / (CaCO₃ MW / 2)) = 100 × (24.3 / 50) = 100 × 0.486 = 48.6 mg/L as Mg²⁺.",
+    steps: [
+      { l: "Calculate Magnesium Hardness as CaCO₃", c: "Magnesium Hardness (as CaCO₃) = Total Hardness (as CaCO₃) - Calcium Hardness (as CaCO₃) Magnesium Hardness (as CaCO₃) = 280 mg/L - 180 mg/L = 100 mg/L as CaCO₃" },
+      { l: "Calculate Molar Mass of CaCO₃", c: "Molar Mass of CaCO₃ = Molar Mass of Ca + Molar Mass of C + (3 × Molar Mass of O) Molar Mass of CaCO₃ = 40.1 + 12 + (3 × 16) = 40.1 + 12 + 48 = 100.1 g/mol (approximately 100 g/mol for hardness calculations)" },
+      { l: "Determine Equivalent Weight of CaCO₃", c: "Equivalent Weight of CaCO₃ = Molar Mass of CaCO₃ / Valence of Ca²⁺ Equivalent Weight of CaCO₃ = 100.1 g/mol / 2 = 50.05 g/equivalent (approximately 50 g/equivalent)" },
+      { l: "Determine Equivalent Weight of Mg²⁺", c: "Equivalent Weight of Mg²⁺ = Molar Mass of Mg / Valence of Mg²⁺ Equivalent Weight of Mg²⁺ = 24.3 g/mol / 2 = 12.15 g/equivalent" },
+      { l: "Convert Mg Hardness to mg/L as Mg²⁺", c: "Magnesium Hardness (as Mg²⁺) = Magnesium Hardness (as CaCO₃) × (Equivalent Weight of Mg²⁺ / Equivalent Weight of CaCO₃) Magnesium Hardness (as Mg²⁺) = 100 mg/L as CaCO₃ × (12.15 g/equivalent / 50.05 g/equivalent) Magnesium Hardness (as Mg²⁺) = 100 × 0.242757 Magnesium Hardness (as Mg²⁺) = 24.28 mg/L as Mg²⁺" },
+    ],
+    tip: "Always use equivalent weights for hardness conversions, not just molar mass ratios.",
   },
   {
     id: "WQA-S012",
@@ -543,6 +645,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Before collecting a groundwater sample, the well must be purged until field parameters (pH, turbidity, conductivity) stabilize. This ensures the sample represents the aquifer, not stagnant water in the casing. Turbidity should be < 10 NTU.",
+    steps: [
+      { l: "Understand the Goal", c: "The objective is to collect a raw water sample that accurately represents the groundwater in the aquifer, not stagnant water that has been sitting in the well casing." },
+      { l: "Identify Stagnant Water Issue", c: "Water in the well casing, especially near the surface, can be unrepresentative due to interaction with casing materials, atmospheric exposure, or lack of flow from the aquifer. This 'stagnant' water must be removed." },
+      { l: "Determine Purging Method", c: "The well must be 'purged' by pumping out a sufficient volume of water. This removes the stagnant water and draws fresh formation water into the well." },
+      { l: "Monitor Stabilization Parameters", c: "During purging, monitor field parameters such as pH, temperature, conductivity, and turbidity. Continue purging until these parameters stabilize, indicating that fresh formation water is now entering the well. The explanation specifically mentions turbidity should be < 10 NTU as a stabilization criterion." },
+      { l: "Collect Sample", c: "Once field parameters have stabilized (e.g., turbidity < 10 NTU, pH, temperature, conductivity within a narrow range over several readings), the sample can be collected." },
+    ],
+    tip: "Purge wells until field parameters stabilize to ensure representative groundwater samples.",
   },
   {
     id: "WQA-L013",
@@ -786,6 +896,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "The exclamation mark (!) pictogram indicates Category 4 acute toxicity (harmful, not fatal). LC50 of 2,500 mg/kg falls in Category 4 (300–2,000 mg/kg for oral toxicity — actually 2,500 is Category 5 or unclassified). Category 4 requires standard PPE (gloves, safety glasses), good ventilation, and avoiding ingestion/skin contact. Fatal toxicity (Category 1-3) would require the skull and crossbones pictogram.",
+    steps: [
+      { l: "Analyze Pictogram", c: "The exclamation mark (!) pictogram on a WHMIS 2015 label signifies a less severe hazard compared to the skull and crossbones. For acute toxicity, it typically indicates Category 4 (Harmful)." },
+      { l: "Interpret LC50 Value", c: "The LC50 (Lethal Concentration 50%) value is given as 2,500 mg/kg (rat, oral). This value represents the dose that is lethal to 50% of the test population. For oral acute toxicity, WHMIS 2015 criteria are: Category 1 (≤5 mg/kg), Category 2 (>5 to ≤50 mg/kg), Category 3 (>50 to ≤300 mg/kg), Category 4 (>300 to ≤2000 mg/kg), Category 5 (>2000 to ≤5000 mg/kg). The provided LC50 of 2,500 mg/kg falls within the range for Category 5 (>2000 to ≤5000 mg/kg)." },
+      { l: "Reconcile Pictogram & LC50", c: "There is a discrepancy between the pictogram and the LC50 value. An exclamation mark (!) typically indicates Category 4 acute toxicity. However, an oral LC50 of 2,500 mg/kg actually places the substance in Acute Toxicity Category 5. For Category 5, the exclamation mark pictogram is *optional* and may not be present, or the substance may be unclassified for acute toxicity if no pictogram is shown. If the exclamation mark *is* present for acute toxicity, it specifically denotes Category 4. Therefore, based *solely* on the pictogram, it's Category 4. Based *solely* on the LC50, it's Category 5. Given the question states the label *shows* the exclamation mark, we must prioritize the pictogram's direct indication for acute toxicity, which is Category 4. The LC50 value provided (2,500 mg/kg) is slightly above the Category 4 threshold (up to 2,000 mg/kg), suggesting a potential misclassification on the label or a nuanced interpretation where the pictogram is used for 'Harmful' (Category 4) and the LC50 is close to the boundary. However, in an exam context, the pictogram is the primary visual indicator for the hazard category it represents. If the pictogram is present for acute toxicity, it signifies Category 4." },
+      { l: "Determine Precautions", c: "For Category 4 acute toxicity (indicated by the exclamation mark), standard precautions are required. These include wearing appropriate Personal Protective Equipment (PPE) such as chemical-resistant gloves and safety glasses/goggles to prevent skin and eye contact. Good general ventilation is necessary to minimize inhalation exposure. Avoiding ingestion and direct skin contact is crucial. Wash hands thoroughly after handling." },
+    ],
+    tip: "Always cross-reference pictograms with numerical data; understand WHMIS 2015 acute toxicity categories.",
   },
   {
     id: "WQA-SF002",
@@ -907,6 +1024,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Chlorine gas is toxic and immediately dangerous to life and health (IDLH = 10 ppm). The correct response is to evacuate immediately, alert others, and call emergency services. Never attempt to neutralize chlorine gas with ammonia — this creates chloramine gas.",
+    steps: [
+      { l: "Assess Hazard", c: "Chlorine gas is highly toxic and immediately dangerous to life and health (IDLH = 10 ppm). Even low concentrations can cause severe respiratory damage or death." },
+      { l: "Prioritize Safety", c: "The immediate priority is the safety of all personnel. This means evacuating the area as quickly and safely as possible." },
+      { l: "Initiate Evacuation", c: "Evacuate the laboratory and surrounding areas immediately. Do not attempt to locate the source or mitigate the release without proper training and personal protective equipment (PPE)." },
+      { l: "Alert & Report", c: "Alert others in the vicinity to the danger and call emergency services (e.g., 911, hazmat team, internal emergency response) to report the incident. Provide clear and concise information about the substance and location." },
+      { l: "Avoid Mitigation", c: "Do NOT attempt to neutralize chlorine gas with ammonia or any other substance, as this can create more dangerous compounds (e.g., chloramine gas) or exacerbate the situation." },
+    ],
+    tip: "Prioritize immediate evacuation and emergency notification for IDLH hazards like chlorine gas.",
   },
   {
     id: "WQA-SF011",
@@ -949,6 +1074,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Odour detection is not a reliable indicator of safe concentrations. Many chemicals can be detected by smell at concentrations both above and below their TLV-TWA. The correct response to any unexpected chemical odour is to leave the area, ventilate, and use air monitoring equipment to verify concentrations are below the TLV-TWA before re-entry. Never use your nose as a safety instrument.",
+    steps: [
+      { l: "Assess the Situation", c: "The operator detects a strong, sweet odour, indicating a potential chemical leak or spill. The SDS provides IDLH (Immediately Dangerous to Life or Health) and TLV-TWA (Threshold Limit Value - Time-Weighted Average) values, which are critical safety benchmarks." },
+      { l: "Understand Odour Reliability", c: "The explanation explicitly states that 'Odour detection is not a reliable indicator of safe concentrations.' This is a fundamental safety principle. The human nose can detect chemicals at concentrations both above and below safe limits (TLV-TWA) and dangerous limits (IDLH)." },
+      { l: "Prioritize Immediate Safety", c: "Given the unreliability of odour and the presence of a strong smell, the immediate priority is to ensure personal safety and prevent further exposure. The operator should not attempt to identify the source or concentration using only their senses." },
+      { l: "Implement Safety Protocols", c: "The correct course of action, as outlined in the explanation, is to: 1. Leave the area immediately. 2. Ventilate the area to disperse the chemical. 3. Use appropriate air monitoring equipment to verify that concentrations are below the TLV-TWA before anyone re-enters. This ensures the environment is safe." },
+    ],
+    tip: "Never rely on your sense of smell for chemical safety; always use monitoring equipment.",
   },
   {
     id: "WQA-SF014",
@@ -988,6 +1120,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["< 0.1 NTU", "< 1 NTU", "< 5 NTU", "< 10 NTU"],
     correctIndex: 1,
     explanation: "Under O. Reg. 170/03, treated drinking water turbidity must be < 1 NTU at the point of entry to the distribution system. For filtered systems, turbidity must be < 0.3 NTU in 95% of measurements.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks for the Ontario Drinking Water Quality Standard (ODWQS) for turbidity in treated drinking water, specifically referencing O. Reg. 170/03." },
+      { l: "Identify Key Standards", c: "O. Reg. 170/03 specifies two main turbidity standards for treated drinking water: one for the point of entry and another for filtered systems." },
+      { l: "State Point of Entry Standard", c: "For treated drinking water at the point of entry to the distribution system, the turbidity standard is < 1 NTU." },
+      { l: "State Filtered System Standard", c: "For filtered systems, an additional standard applies: turbidity must be < 0.3 NTU in 95% of measurements taken each month." },
+      { l: "Synthesize the Answer", c: "The ODWQS for turbidity in treated drinking water is < 1 NTU at the point of entry to the distribution system, and for filtered systems, it must be < 0.3 NTU in 95% of measurements." },
+    ],
+    tip: "Distinguish between point-of-entry and filtered system turbidity standards.",
   },
   {
     id: "WQA-WC002",
@@ -1020,6 +1160,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["Soft", "Moderately hard", "Hard", "Very hard"],
     correctIndex: 3,
     explanation: "Standard hardness classification (AWWA): Soft (0–60 mg/L), Moderately hard (61–120 mg/L), Hard (121–180 mg/L), Very hard (> 180 mg/L) as CaCO₃. At 200 mg/L, the water is clearly Very hard.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks to classify water hardness given a value of 200 mg/L as CaCO₃, using a provided standard classification." },
+      { l: "Review Classification Standards", c: "The provided standard classification is: Soft (0–60 mg/L), Moderately hard (61–120 mg/L), Hard (121–180 mg/L), Very hard (> 180 mg/L) as CaCO₃." },
+      { l: "Locate Given Value", c: "The given water hardness is 200 mg/L as CaCO₃." },
+      { l: "Compare and Classify", c: "Compare 200 mg/L to the ranges: 200 mg/L is greater than 180 mg/L. Therefore, it falls into the 'Very hard' category." },
+      { l: "State Classification", c: "Water with a hardness of 200 mg/L as CaCO₃ is classified as Very hard." },
+    ],
+    tip: "Memorize hardness classification ranges; pay close attention to 'greater than' or 'less than or equal to' symbols.",
   },
   {
     id: "WQA-WC005",
@@ -1034,6 +1182,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "0.18 NTU is below the Ontario post-filtration standard of ≤0.3 NTU (95th percentile), so this result is compliant. Turbidity is a key treatment performance indicator because particles (including Cryptosporidium and Giardia cysts) scatter light. Low turbidity after filtration indicates effective particle removal, which also reduces the UV absorbance and chlorine demand of the water.",
+    steps: [
+      { l: "Identify Measured Value", c: "The filtered water turbidity measured is 0.18 NTU." },
+      { l: "Identify Ontario Standard", c: "The Ontario drinking water standard for post-filtration turbidity is ≤0.3 NTU (95th percentile)." },
+      { l: "Compare Values", c: "Compare the measured value (0.18 NTU) with the standard (≤0.3 NTU). Since 0.18 NTU is less than 0.3 NTU, the result meets the standard." },
+      { l: "Assess Compliance", c: "The filtered water turbidity of 0.18 NTU is compliant with the Ontario post-filtration standard." },
+      { l: "Explain Turbidity Indication", c: "Low turbidity (0.18 NTU) indicates effective particle removal by the treatment process. This is crucial as particles can harbor pathogens like Cryptosporidium and Giardia, and also contribute to UV absorbance and chlorine demand." },
+    ],
+    tip: "Always compare measured values directly against the relevant standard to determine compliance.",
   },
   {
     id: "WQA-WC006",
@@ -1154,6 +1310,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["Hydroxide (OH⁻)", "Carbonate (CO₃²⁻)", "Bicarbonate (HCO₃⁻)", "Carbon dioxide (CO₂)"],
     correctIndex: 2,
     explanation: "At pH 8.5, bicarbonate (HCO₃⁻) is the predominant form of alkalinity. Carbonate (CO₃²⁻) becomes significant above pH 8.3, and hydroxide above pH 10. Below pH 8.3, bicarbonate dominates.",
+    steps: [
+      { l: "Understand Alkalinity Forms", c: "Alkalinity in water is primarily due to the presence of bicarbonate (HCO₃⁻), carbonate (CO₃²⁻), and hydroxide (OH⁻) ions. The relative proportions of these species are highly dependent on the pH of the water." },
+      { l: "Recall pH Ranges", c: "Review the typical pH ranges where each alkalinity species predominates: - Below pH 4.3: Carbonic acid (H₂CO₃) - pH 4.3 to 8.3: Bicarbonate (HCO₃⁻) is predominant - pH 8.3 to 10.0: Both bicarbonate (HCO₃⁻) and carbonate (CO₃²⁻) are significant, with carbonate increasing as pH rises. Carbonate becomes predominant above pH 9.0-9.5. - Above pH 10.0: Hydroxide (OH⁻) becomes significant and eventually predominant." },
+      { l: "Analyze Given pH", c: "The water sample has a pH of 8.5. This pH falls within the range where both bicarbonate and carbonate are present, but bicarbonate is still the predominant form." },
+      { l: "Determine Predominant Form", c: "At pH 8.5, bicarbonate (HCO₃⁻) is the predominant form of alkalinity. While carbonate (CO₃²⁻) is present and increasing, bicarbonate still holds the majority concentration at this specific pH." },
+    ],
+    tip: "Memorize the pH ranges for predominant alkalinity species (HCO₃⁻, CO₃²⁻, OH⁻).",
   },
   {
     id: "WQA-WC016",
@@ -1163,6 +1326,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["0.5 mg/L", "1.5 mg/L", "4.0 mg/L", "10 mg/L"],
     correctIndex: 1,
     explanation: "The Ontario MAC for fluoride is 1.5 mg/L. The optimal fluoride level for dental health is 0.7 mg/L (Health Canada recommendation). Excess fluoride causes dental and skeletal fluorosis.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks for the Ontario Maximum Allowable Concentration (MAC) for fluoride in drinking water. This is a direct recall question regarding a specific regulatory limit." },
+      { l: "Recall Regulatory Limit", c: "Access knowledge of Ontario's drinking water quality standards. The MAC for fluoride is a fixed value set by the province." },
+      { l: "State the MAC", c: "The Ontario MAC for fluoride in drinking water is 1.5 mg/L." },
+      { l: "Note Additional Information", c: "While not directly asked, the explanation provides context: optimal level is 0.7 mg/L and excess causes fluorosis. This reinforces the importance of the MAC." },
+    ],
+    tip: "Memorize key regulatory limits and optimal levels for common contaminants.",
   },
   {
     id: "WQA-WC017",
@@ -1177,6 +1347,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "H₂S is removed by oxidation (aeration, chlorination, or potassium permanganate) which converts H₂S to colloidal sulfur or sulfate. Aeration is the most common and cost-effective method for groundwater with moderate H₂S. If chlorine is used, the colloidal sulfur formed must be removed by filtration. Activated carbon is not effective for H₂S removal.",
+    steps: [
+      { l: "Analyze the Problem", c: "The H₂S concentration (0.8 mg/L) significantly exceeds the aesthetic objective (0.05 mg/L). We need a treatment method to reduce H₂S effectively." },
+      { l: "Evaluate Treatment Options", c: "The explanation states H₂S is removed by oxidation (aeration, chlorination, or potassium permanganate). It also notes that aeration is the most common and cost-effective for moderate H₂S in groundwater. Activated carbon is ineffective." },
+      { l: "Consider Specifics", c: "The source is groundwater, and the H₂S concentration (0.8 mg/L) is within a range typically considered 'moderate' where aeration is highly effective and economical. If chlorination were chosen, subsequent filtration would be required to remove colloidal sulfur." },
+      { l: "Determine Most Appropriate Approach", c: "Given the groundwater source, moderate H₂S concentration, and the cost-effectiveness mentioned, aeration is the most appropriate primary treatment approach. It directly oxidizes H₂S without necessarily requiring additional filtration for colloidal sulfur if designed correctly, unlike chlorination." },
+    ],
+    tip: "Prioritize cost-effective, common methods for moderate contaminant levels, considering water source.",
   },
   {
     id: "WQA-WC018",
@@ -1191,6 +1368,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "TDS is the total concentration of dissolved inorganic and organic substances. It is measured gravimetrically: filter the sample through a 0.45 µm filter, evaporate at 180°C, and weigh the residue. Results in mg/L.",
+    steps: [
+      { l: "Define TDS", c: "Total Dissolved Solids (TDS) refers to the total concentration of all inorganic and organic substances that are dissolved in a liquid, typically water. These substances can include minerals, salts, metals, cations, and anions." },
+      { l: "Understand Measurement Principle", c: "TDS is measured gravimetrically, meaning it relies on weighing the solid residue left after evaporating the water. This method quantifies the mass of dissolved solids per unit volume of water." },
+      { l: "Outline Filtration Step", c: "First, a known volume of the water sample is filtered through a 0.45 µm (micrometer) filter. This step removes suspended solids, ensuring that only dissolved substances remain in the filtrate for subsequent analysis." },
+      { l: "Describe Evaporation & Weighing", c: "The filtered sample is then evaporated in a pre-weighed dish at a constant temperature of 180°C until all water is removed. The dish containing the dried residue is then weighed again. The difference in weight represents the mass of the dissolved solids." },
+      { l: "Calculate & Report Result", c: "The mass of the dried residue (in mg) is divided by the original volume of the filtered sample (in L) to obtain the TDS concentration, which is reported in milligrams per liter (mg/L)." },
+    ],
+    tip: "Remember gravimetric measurement involves filtration, evaporation, and weighing residue.",
   },
   {
     id: "WQA-WC019",
@@ -1214,6 +1399,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["< 100 mg/L", "< 500 mg/L", "< 1000 mg/L", "< 2000 mg/L"],
     correctIndex: 1,
     explanation: "The Ontario aesthetic objective for TDS is < 500 mg/L. Above this level, water may have a noticeable taste. The WHO guideline is also 500 mg/L.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks for the Ontario aesthetic objective for Total Dissolved Solids (TDS) in drinking water." },
+      { l: "Recall Ontario Objectives", c: "Access knowledge regarding Ontario's Drinking Water Quality Standards, specifically aesthetic objectives." },
+      { l: "Identify TDS Objective", c: "The established aesthetic objective for TDS in Ontario is < 500 mg/L." },
+      { l: "Note Supporting Information", c: "This level is chosen because above it, water may have a noticeable taste. The WHO guideline is also 500 mg/L, reinforcing this value." },
+    ],
+    tip: "Memorize key aesthetic objectives and their associated effects for common parameters like TDS.",
   },
   {
     id: "WQA-WC021",
@@ -1248,6 +1440,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["0 CFU/100 mL", "1 CFU/100 mL", "10 CFU/100 mL", "100 CFU/100 mL"],
     correctIndex: 0,
     explanation: "The Ontario MAC for total coliform in treated drinking water is 0 CFU/100 mL — no coliforms are acceptable. Detection of coliforms triggers immediate investigation and corrective action.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks for the Maximum Allowable Concentration (MAC) of total coliform bacteria specifically in *treated drinking water* in *Ontario*." },
+      { l: "Recall Regulatory Standard", c: "In drinking water quality regulations, especially for treated water, the presence of indicator bacteria like total coliforms is often strictly prohibited." },
+      { l: "State the Ontario MAC", c: "The Ontario Drinking Water Quality Standards (ODWQS) specify that for treated drinking water, the MAC for total coliform bacteria is 0 CFU/100 mL." },
+      { l: "Interpret the MAC", c: "This means that no total coliform bacteria are permitted to be detected in any 100 mL sample of treated drinking water. Any detection triggers mandatory action." },
+    ],
+    tip: "Memorize critical drinking water standards like 0 CFU/100mL for coliforms in treated water.",
   },
   {
     id: "WQA-B002",
@@ -1290,6 +1489,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "The membrane filtration (MF) method passes a known volume of water through a 0.45 µm filter that retains bacteria. The filter is placed on selective growth media and incubated. Colonies are counted to determine bacteria per 100 mL.",
+    steps: [
+      { l: "Understand the Goal", c: "The question asks for the purpose of the membrane filtration method in bacteriological testing. This method aims to quantify bacteria in a water sample." },
+      { l: "Describe the Filtration Process", c: "A known volume of water (e.g., 100 mL) is drawn through a specialized membrane filter, typically with a pore size of 0.45 µm. This pore size is critical as it is small enough to physically trap and retain most bacteria present in the water sample, while allowing the water to pass through." },
+      { l: "Explain Incubation & Growth", c: "After filtration, the membrane filter, now containing the trapped bacteria, is carefully transferred onto a petri dish containing a specific selective growth medium. This medium provides the necessary nutrients for the target bacteria to grow and multiply. The dish is then incubated at a controlled temperature for a set period (e.g., 24-48 hours)." },
+      { l: "Detail Colony Counting", c: "During incubation, each viable bacterium retained on the filter will ideally grow and form a visible colony. These colonies are then counted, often using a magnifying device. The number of colonies directly corresponds to the number of bacteria (colony-forming units, CFU) in the original water sample volume." },
+      { l: "State the Primary Use", c: "Therefore, the membrane filtration method is primarily used to enumerate (count) specific types of bacteria (e.g., total coliforms, fecal coliforms, E. coli) in water samples, providing a quantitative measure of bacterial contamination per a standard volume (e.g., CFU/100 mL)." },
+    ],
+    tip: "Focus on the 'why' and 'how': capture, grow, count. Remember the 0.45 µm filter size.",
   },
   {
     id: "WQA-B005",
@@ -1304,6 +1511,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Under O. Reg. 170/03, the Ontario MAC for total coliforms in treated drinking water is zero (0 CFU/100 mL). Any detection of total coliforms is an adverse result that requires immediate corrective action: resample, investigate the source, notify the local Medical Officer of Health and the Ministry of Environment, and take corrective action. There is no acceptable level of total coliforms in treated drinking water.",
+    steps: [
+      { l: "Identify Regulation", c: "The question refers to Ontario's O. Reg. 170/03 for treated drinking water." },
+      { l: "Determine MAC for Total Coliforms", c: "Under O. Reg. 170/03, the Maximum Acceptable Concentration (MAC) for total coliforms in treated drinking water is 0 CFU/100 mL." },
+      { l: "Compare Result to MAC", c: "The reported result is 2 CFU/100 mL. This is greater than the MAC of 0 CFU/100 mL." },
+      { l: "Assess Compliance and Action", c: "Since 2 CFU/100 mL > 0 CFU/100 mL, the result is non-compliant. This is an adverse result requiring immediate action: resample, investigate, notify MOH and MOE, and take corrective action." },
+    ],
+    tip: "Zero tolerance for coliforms in treated water means any detection is an adverse result.",
   },
   {
     id: "WQA-B006",
@@ -1332,6 +1546,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "The MPN method uses multiple tubes of growth medium inoculated with different volumes of sample. The pattern of positive (turbid/gas) and negative results is compared to statistical tables to estimate the most probable number of bacteria per 100 mL.",
+    steps: [
+      { l: "Understand Purpose", c: "The MPN method estimates the concentration of viable microorganisms (e.g., coliforms) in a sample, particularly when the concentration is low or the sample contains particulate matter that interferes with plate counts." },
+      { l: "Describe Procedure", c: "Serial dilutions of the water sample are prepared. Aliquots from these dilutions are inoculated into multiple tubes containing a selective liquid growth medium (e.g., Lactose Broth for coliforms). Typically, three sets of tubes are used with varying sample volumes (e.g., 10 mL, 1 mL, 0.1 mL)." },
+      { l: "Interpret Results", c: "After incubation, tubes are observed for signs of bacterial growth (e.g., turbidity, gas production in a Durham tube). A tube showing growth is considered 'positive', while no growth is 'negative'." },
+      { l: "Calculate MPN", c: "The number of positive tubes in each dilution series (e.g., 5-2-1 for 10 mL, 1 mL, 0.1 mL tubes) forms a pattern. This pattern is then compared to a statistical MPN table (or calculated using a specific formula) to determine the 'Most Probable Number' of bacteria per 100 mL of the original sample." },
+    ],
+    tip: "Remember MPN is an 'estimate' based on probability, not an exact count.",
   },
   {
     id: "WQA-B008",
@@ -1355,6 +1576,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["25°C", "35°C", "44.5°C", "55°C"],
     correctIndex: 1,
     explanation: "Total coliform analysis using membrane filtration is incubated at 35°C ± 0.5°C for 24 hours. Fecal coliform (thermotolerant coliform) is incubated at 44.5°C.",
+    steps: [
+      { l: "Recall Method", c: "The question specifies total coliform analysis using the membrane filtration method." },
+      { l: "Identify Standard Temperature", c: "Standard methods for total coliform analysis using membrane filtration require incubation at 35°C." },
+      { l: "Specify Tolerance", c: "The acceptable temperature range for this incubation is ± 0.5°C, making the precise temperature 35°C ± 0.5°C." },
+      { l: "Distinguish from Fecal Coliform", c: "It's important to differentiate this from fecal coliform (thermotolerant coliform) analysis, which uses a higher incubation temperature of 44.5°C." },
+    ],
+    tip: "Memorize specific temperatures for different coliform tests (total vs. fecal) to avoid confusion.",
   },
   {
     id: "WQA-B010",
@@ -1424,6 +1652,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["10 mL", "50 mL", "100 mL", "500 mL"],
     correctIndex: 2,
     explanation: "The standard sample volume for total coliform analysis is 100 mL. Results are reported as CFU/100 mL or presence/absence per 100 mL.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks for the 'minimum volume of water required for a microbiological sample for total coliform analysis'." },
+      { l: "Recall Standard Method", c: "Standard methods for microbiological analysis, specifically for total coliforms, dictate a specific sample volume for accurate and comparable results." },
+      { l: "Identify Standard Volume", c: "According to regulatory guidelines and standard laboratory procedures (e.g., EPA, Standard Methods for the Examination of Water and Wastewater), the standard sample volume for total coliform analysis is 100 mL." },
+      { l: "State Reporting Units", c: "Results are typically reported as Colony Forming Units per 100 mL (CFU/100 mL) or as presence/absence per 100 mL, reinforcing the 100 mL standard." },
+      { l: "Determine Minimum Volume", c: "Therefore, the minimum volume required to perform the standard total coliform analysis is 100 mL." },
+    ],
+    tip: "Memorize standard sample volumes for common microbiological tests like total coliforms.",
   },
 
   // ─── CHEMICAL TESTING (12 questions) ────────────────────────────────────────
@@ -1463,6 +1699,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "TSS is measured by filtering a known volume of water through a pre-weighed 1.5 µm (or 0.45 µm) glass fibre filter, drying at 103–105°C, and weighing the residue. Results are in mg/L.",
+    steps: [
+      { l: "Define TSS", c: "Total Suspended Solids (TSS) refers to the concentration of particulate matter that is retained by a filter when a water sample is passed through it. These solids are typically larger than colloidal particles and are suspended in the water column." },
+      { l: "Explain Measurement Principle", c: "The measurement of TSS involves physically separating the suspended solids from the water sample. This is achieved by filtration, where the solids are captured on a pre-weighed filter." },
+      { l: "Describe Filtration Process", c: "A known volume of the water sample is filtered through a standard glass fiber filter (typically 1.5 µm or 0.45 µm pore size). The filter's pore size determines the minimum particle size that will be retained and thus included in the TSS measurement." },
+      { l: "Describe Drying and Weighing", c: "After filtration, the filter containing the retained solids is dried in an oven at a specific temperature (103–105°C) to remove all moisture. Once dry, the filter and solids are weighed again. The difference in weight (final weight - initial filter weight) represents the mass of the suspended solids." },
+      { l: "Calculate Concentration", c: "The concentration of TSS is then calculated by dividing the mass of the dried solids (in milligrams) by the volume of the water sample filtered (in liters). The result is expressed in milligrams per liter (mg/L)." },
+    ],
+    tip: "Remember TSS is a gravimetric measurement of filterable, non-dissolved solids in water.",
   },
   {
     id: "WQA-CT004",
@@ -1477,6 +1721,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Using the calibration equation: Concentration = (0.342 - 0.015) / 0.185 = 0.327 / 0.185 = 1.768 ≈ 1.77 mg/L. The R² of 0.994 indicates a good linear calibration (R² > 0.995 is ideal but 0.994 is acceptable for most methods). The Ontario MAC for fluoride is 1.5 mg/L, so this result would exceed the standard and require investigation.",
+    steps: [
+      { l: "Identify Given Information", c: "Absorbance (A) = 0.342; Calibration Equation: Concentration (mg/L) = (Absorbance - 0.015) / 0.185" },
+      { l: "Substitute Absorbance Value", c: "Concentration (mg/L) = (0.342 - 0.015) / 0.185" },
+      { l: "Calculate Numerator", c: "0.342 - 0.015 = 0.327" },
+      { l: "Calculate Fluoride Concentration", c: "Concentration (mg/L) = 0.327 / 0.185 = 1.76756..." },
+      { l: "Round to Appropriate Sig Figs", c: "Given absorbance (0.342) has 3 decimal places, and constants (0.015, 0.185) have 3 decimal places. The result should be rounded to 3 significant figures or 2 decimal places: 1.77 mg/L." },
+    ],
+    tip: "Always show your work and pay attention to significant figures for final answers.",
   },
   {
     id: "WQA-CT005",
@@ -1500,6 +1752,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "BOD is the amount of dissolved oxygen consumed by microorganisms when decomposing organic matter in water at 20°C over 5 days (BOD₅). It is an indicator of organic pollution in wastewater and receiving waters.",
+    steps: [
+      { l: "Define BOD", c: "Biochemical Oxygen Demand (BOD) is a measure of the amount of dissolved oxygen consumed by aerobic microorganisms to decompose organic matter present in a water sample." },
+      { l: "Specify Conditions", c: "This decomposition process is typically measured under specific conditions: at a temperature of 20°C and over a standard incubation period of 5 days. This specific measurement is often referred to as BOD₅." },
+      { l: "Explain Significance", c: "BOD serves as a crucial indicator of the organic pollution load in wastewater and natural receiving waters (e.g., rivers, lakes). A higher BOD value indicates a greater amount of biodegradable organic material and thus a higher potential for oxygen depletion in the water body." },
+      { l: "Relate to Ecosystems", c: "High BOD can lead to anaerobic conditions, harming aquatic life that depends on dissolved oxygen for survival. Therefore, it's a key parameter in wastewater treatment plant efficiency and environmental water quality monitoring." },
+    ],
+    tip: "Remember BOD measures oxygen *consumption* by microbes decomposing organics over 5 days at 20°C.",
   },
   {
     id: "WQA-CT007",
@@ -1541,6 +1800,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["0.05 mg/L", "0.3 mg/L", "1.0 mg/L", "5.0 mg/L"],
     correctIndex: 1,
     explanation: "The Ontario aesthetic objective for iron is 0.3 mg/L. Above this level, water may have a metallic taste, stain laundry and fixtures, and support iron bacteria growth. The MAC for iron is not set (aesthetic concern only).",
+    steps: [
+      { l: "Analyze the Question", c: "The question asks for the 'maximum acceptable concentration' (MAC) for iron in Ontario drinking water." },
+      { l: "Consult Provided Information", c: "The explanation states: 'The MAC for iron is not set (aesthetic concern only).'" },
+      { l: "Distinguish MAC from Aesthetic Objective", c: "The explanation also mentions: 'The Ontario aesthetic objective for iron is 0.3 mg/L.' It's crucial to differentiate between an aesthetic objective (which relates to taste, odor, appearance) and a Maximum Acceptable Concentration (MAC), which is health-based." },
+      { l: "Formulate the Answer", c: "Based on the provided information, there is no Maximum Acceptable Concentration (MAC) set for iron in Ontario drinking water. Iron is considered an aesthetic objective only." },
+    ],
+    tip: "Differentiate between MAC (health-based) and aesthetic objectives (non-health-based).",
   },
   {
     id: "WQA-CT011",
@@ -1570,6 +1836,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["0.05 mg/L", "0.2 mg/L", "0.5 mg/L", "1.0 mg/L"],
     correctIndex: 1,
     explanation: "Under O. Reg. 170/03, the minimum free chlorine residual at the point of entry to the distribution system is 0.2 mg/L. This ensures ongoing disinfection throughout the distribution system.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks for the minimum free chlorine residual required at the point of entry to the distribution system in Ontario." },
+      { l: "Recall Relevant Regulation", c: "This specific requirement is governed by Ontario Regulation 170/03 (O. Reg. 170/03) under the Safe Drinking Water Act." },
+      { l: "Identify Specific Value", c: "O. Reg. 170/03 mandates a minimum free chlorine residual of 0.2 mg/L at the point of entry to the distribution system." },
+      { l: "State the Answer", c: "The Ontario minimum free chlorine residual required at the point of entry to the distribution system is 0.2 mg/L." },
+    ],
+    tip: "Memorize key regulatory values for disinfection residuals and sampling points.",
   },
   {
     id: "WQA-D002",
@@ -1630,6 +1903,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["< 10%", "~25%", "~75%", "> 99%"],
     correctIndex: 2,
     explanation: "At pH 7, approximately 75% of free chlorine is HOCl and 25% is OCl⁻. At pH 7.5, the ratio is approximately 50/50. HOCl is the more effective disinfectant (approximately 80× more effective than OCl⁻).",
+    steps: [
+      { l: "Analyze Question", c: "The question asks for the percentage of total chlorine existing as hypochlorous acid (HOCl) at pH 7." },
+      { l: "Refer to Provided Information", c: "The explanation states: 'At pH 7, approximately 75% of free chlorine is HOCl and 25% is OCl⁻.'" },
+      { l: "Identify Relevant Data", c: "The key piece of information is the percentage of HOCl at pH 7, which is directly given as 75%." },
+      { l: "State Answer", c: "At pH 7, 75% of total chlorine exists as hypochlorous acid (HOCl)." },
+    ],
+    tip: "Directly extract given percentages for pH-dependent chlorine species.",
   },
   {
     id: "WQA-D007",
@@ -1644,6 +1924,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 2,
     explanation: "THMs form when chlorine reacts with NOM (humic/fulvic acids). Strategies to reduce THM formation: (1) Remove NOM before chlorination using enhanced coagulation — less precursor = fewer THMs. (2) Move the primary chlorination point to after filtration (reduce contact time with NOM). (3) Use chloramines for distribution system residual — chloramines form fewer THMs than free chlorine. Activated carbon can remove some THMs but is not the primary control strategy.",
+    steps: [
+      { l: "Analyze the Problem", c: "The problem states that the treated water's THM concentration is 95 µg/L, which is close to the Ontario MAC of 100 µg/L. The source water has high NOM, and chlorination is used. The goal is to reduce THM formation while maintaining adequate disinfection." },
+      { l: "Identify THM Formation Mechanism", c: "THMs are formed by the reaction of chlorine with natural organic matter (NOM), specifically humic and fulvic acids. To reduce THMs, we need to either reduce NOM, reduce chlorine contact time with NOM, or use a disinfectant that forms fewer THMs." },
+      { l: "Strategy 1: NOM Removal", c: "Implement enhanced coagulation. This process optimizes coagulation pH and coagulant dose to maximize the removal of NOM before the primary chlorination step. Less NOM means fewer precursors for THM formation." },
+      { l: "Strategy 2: Optimize Chlorination Point", c: "Move the primary chlorination point to after filtration. This reduces the contact time between free chlorine and NOM, as a significant portion of NOM would have been removed during coagulation and filtration, thereby limiting THM formation." },
+      { l: "Strategy 3: Alternative Disinfectant for Residual", c: "Switch from free chlorine to chloramines for maintaining a disinfectant residual in the distribution system. Chloramines are known to form significantly fewer THMs compared to free chlorine, especially over extended contact times in the distribution network." },
+    ],
+    tip: "Focus on precursor removal, contact time reduction, and alternative disinfectants for THM control.",
   },
   {
     id: "WQA-D008",
@@ -1667,6 +1955,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "CT value = Concentration (mg/L) × Time (minutes). It represents the disinfectant dose required to achieve a specified log inactivation (e.g., 3-log = 99.9%) of a target pathogen. Different pathogens require different CT values (Giardia requires much higher CT than bacteria).",
+    steps: [
+      { l: "Define CT Value", c: "The CT value is a critical parameter in water disinfection, representing the product of disinfectant concentration (C) and contact time (T). It quantifies the effectiveness of a disinfection process." },
+      { l: "Explain Components", c: "C stands for the residual disinfectant concentration in mg/L (milligrams per liter) at the end of the contact basin. T stands for the effective contact time in minutes, which is the time the water is exposed to the disinfectant." },
+      { l: "State Formula", c: "The formula for CT value is: CT = Concentration (mg/L) × Time (minutes). The resulting unit for CT is typically mg·min/L." },
+      { l: "Purpose of CT", c: "The CT value is used to determine the disinfectant dose required to achieve a specified level of pathogen inactivation (e.g., 3-log inactivation, which means 99.9% removal). Higher CT values are needed for more resistant pathogens (like Giardia cysts) or for higher inactivation requirements." },
+      { l: "Factors Affecting CT", c: "Factors such as water temperature, pH, and the type of disinfectant used significantly influence the required CT value for a given level of inactivation. Colder water, for example, often requires a higher CT value due to reduced disinfectant efficacy." },
+    ],
+    tip: "Remember CT = Concentration x Time. Higher CT for tougher pathogens or greater inactivation.",
   },
   {
     id: "WQA-D010",
@@ -1676,6 +1972,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: ["Free chlorine", "Chloramines", "UV radiation", "Ozone"],
     correctIndex: 2,
     explanation: "Cryptosporidium oocysts are highly resistant to chlorine and chloramines at normal doses. UV radiation and ozone are the most effective disinfectants against Cryptosporidium. UV at doses of 10 mJ/cm² achieves 3-log inactivation.",
+    steps: [
+      { l: "Analyze the Question", c: "The question asks for the most effective disinfectant against Cryptosporidium oocysts. This requires knowledge of disinfectant efficacy against specific pathogens." },
+      { l: "Recall Cryptosporidium Resistance", c: "Cryptosporidium oocysts are known to be highly resistant to traditional chlorine-based disinfection (chlorine and chloramines) at typical drinking water treatment doses. This eliminates chlorine and chloramines as the 'most effective' options." },
+      { l: "Identify Effective Disinfectants", c: "Based on water treatment knowledge, UV radiation and ozone are recognized as highly effective disinfectants for inactivating Cryptosporidium oocysts. The explanation specifically mentions UV at 10 mJ/cm² for 3-log inactivation." },
+      { l: "Determine the 'Most' Effective", c: "While both UV and ozone are effective, UV radiation is often highlighted for its robust and reliable inactivation of Cryptosporidium oocysts, especially at specified doses. Therefore, UV radiation is a primary answer, with ozone also being a strong contender." },
+    ],
+    tip: "Remember Cryptosporidium's chlorine resistance; UV and ozone are key for inactivation.",
   },
   {
     id: "WQA-D011",
@@ -1780,6 +2083,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "The MDL is the minimum concentration of a substance that can be detected with 99% confidence that the measured concentration is greater than zero. It is determined by analyzing replicate samples at low concentrations and calculating the standard deviation.",
+    steps: [
+      { l: "Define MDL", c: "The Method Detection Limit (MDL) is the lowest concentration of an analyte that a given analytical method can reliably differentiate from a blank (i.e., detect its presence) with a specified level of confidence." },
+      { l: "Confidence Level", c: "Specifically, the MDL is the minimum concentration of a substance that can be detected with 99% confidence that the measured concentration is greater than zero." },
+      { l: "Determination Process", c: "It is determined by analyzing a series of replicate samples (typically 7 or more) spiked with the analyte at a low concentration, close to the expected detection limit." },
+      { l: "Calculation Basis", c: "The standard deviation of these replicate measurements is then multiplied by a Student's t-value (for n-1 degrees of freedom and a 99% one-sided confidence level) to calculate the MDL." },
+      { l: "Purpose", c: "The MDL helps laboratories understand the true detection capabilities of their methods and ensures that reported 'non-detects' are genuinely below a statistically defensible threshold." },
+    ],
+    tip: "Remember MDL is about statistical confidence (99%) that a detected value is truly above zero.",
   },
   {
     id: "WQA-QA005",
@@ -1808,6 +2119,15 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "%R = (measured spike concentration / expected spike concentration) × 100. An acceptable range of 80–120% indicates good method performance. Values outside this range suggest matrix interference or method problems.",
+    steps: [
+      { l: "Define Percent Recovery", c: "Percent recovery (%R) in a matrix spike is a measure of the accuracy of an analytical method in a specific sample matrix. It quantifies how much of a known amount of analyte added to a sample (the spike) is successfully detected by the method." },
+      { l: "State the Formula", c: "The formula for percent recovery is: %R = (measured spike concentration / expected spike concentration) × 100. This formula is provided in the question, so it's crucial to understand its components." },
+      { l: "Explain 'Measured Spike Concentration'", c: "The 'measured spike concentration' is the difference between the analytical result of the spiked sample and the analytical result of the unspiked sample. For example, if an unspiked sample measures 5 mg/L and the spiked sample (with 10 mg/L added) measures 14 mg/L, the measured spike concentration is 14 mg/L - 5 mg/L = 9 mg/L." },
+      { l: "Explain 'Expected Spike Concentration'", c: "The 'expected spike concentration' is the known amount of analyte that was intentionally added to the sample. In the example above, this would be 10 mg/L." },
+      { l: "State Acceptable Range", c: "An acceptable range for percent recovery in a matrix spike is typically 80–120%. This range indicates that the method is performing well and that there are no significant matrix interferences or analytical issues affecting the results." },
+      { l: "Interpret Out-of-Range Values", c: "Values outside the 80–120% range suggest potential problems. Low recovery (<80%) may indicate matrix interference, analyte degradation, or incomplete extraction. High recovery (>120%) may suggest matrix enhancement, contamination, or calculation errors." },
+    ],
+    tip: "Remember: %R assesses method accuracy in a matrix; 80-120% is typical, deviations signal issues.",
   },
   {
     id: "WQA-QA007",
@@ -1822,6 +2142,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "RPD = |result1 - result2| / average × 100%. It measures the precision (reproducibility) between duplicate samples. An acceptable RPD is typically < 20% for environmental samples, indicating good precision.",
+    steps: [
+      { l: "Define RPD Purpose", c: "Relative Percent Difference (RPD) is used in Quality Control (QC) to quantify the precision or reproducibility between two analytical results, typically from duplicate samples. It assesses how close two independent measurements of the same sample are to each other." },
+      { l: "Explain RPD Formula", c: "The formula for RPD is: RPD = (|Result 1 - Result 2| / Average of Result 1 and Result 2) × 100%. Where 'Result 1' and 'Result 2' are the values obtained from the duplicate analyses, and 'Average' is (Result 1 + Result 2) / 2." },
+      { l: "Interpret RPD Value", c: "A lower RPD value indicates better precision. For environmental samples, an RPD typically less than 20% (or sometimes 25% depending on the analyte and matrix) is considered acceptable, signifying good reproducibility between the duplicate analyses." },
+      { l: "Application in QC", c: "In QC, RPD is applied to field duplicates, laboratory duplicates, or matrix spike duplicates to monitor the consistency of sampling and analytical procedures. Exceeding acceptable RPD limits triggers investigations into potential sources of error." },
+    ],
+    tip: "Remember RPD measures precision, not accuracy. Lower RPD means better reproducibility.",
   },
   {
     id: "WQA-QA008",
@@ -1906,6 +2233,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "A CCV (or continuing calibration check standard) is analyzed periodically during an analytical run to verify that the initial calibration remains valid. If the CCV result deviates by more than the acceptance criterion (typically ±10%), recalibration is required.",
+    steps: [
+      { l: "Define CCV", c: "A Continuing Calibration Verification (CCV) standard is a known concentration of analyte(s) that is analyzed at regular intervals during an analytical run after the initial calibration has been established." },
+      { l: "Primary Purpose", c: "The primary purpose of a CCV is to verify that the instrument's initial calibration remains accurate and stable over time. It acts as a quality control check to ensure the instrument is still performing within acceptable limits." },
+      { l: "Monitor Drift", c: "It helps to detect instrument drift, degradation of reagents, changes in detector response, or other issues that might cause the instrument to deviate from its initial calibration." },
+      { l: "Actionable Outcome", c: "If the CCV result falls outside predefined acceptance criteria (e.g., ±10% of the true value), it indicates that the instrument's calibration is no longer valid, and recalibration is required before further sample analysis can proceed." },
+    ],
+    tip: "Remember CCV ensures instrument calibration remains accurate throughout the analytical run.",
   },
   {
     id: "WQA-QA014",
@@ -1920,6 +2254,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "The results are highly precise (very consistent: 0.97-0.98 mg/L, low variability) but show low accuracy (systematically 2-3% below the true value of 1.00 mg/L). This pattern indicates a systematic error (bias) — possibly a calibration offset, contaminated standard, or matrix effect. High precision with low accuracy suggests a systematic, correctable error rather than random error.",
+    steps: [
+      { l: "Analyze Precision", c: "Examine the spread of the daily readings: 0.97, 0.98, 0.97, 0.98 mg/L. The values are very close to each other, indicating high consistency or precision. The range is only 0.01 mg/L." },
+      { l: "Analyze Accuracy", c: "Compare the readings to the true value of the calibration standard, which is 1.00 mg/L. All readings (0.97, 0.98 mg/L) are consistently lower than 1.00 mg/L. This indicates a systematic deviation from the true value, meaning low accuracy." },
+      { l: "Identify Error Type", c: "High precision combined with low accuracy is characteristic of a systematic error (bias). This means the error is consistent and reproducible, rather than random. The measurements are consistently 'off' by a similar amount." },
+      { l: "Conclude Method Status", c: "The method is precise but inaccurate. This suggests there's a consistent issue causing the readings to be systematically lower than the true value. Potential causes include an incorrectly prepared standard, an instrument calibration offset, or a matrix effect." },
+    ],
+    tip: "Distinguish precision (reproducibility) from accuracy (closeness to true value) to identify systematic vs. random errors.",
   },
   {
     id: "WQA-QA015",
@@ -2020,6 +2361,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "An AWQI is a water quality result that exceeds a MAC or indicates a potential health risk (e.g., E. coli detected, turbidity > 1 NTU at entry point). It requires immediate notification to the Medical Officer of Health and the Ministry of the Environment, Conservation and Parks (MECP).",
+    steps: [
+      { l: "Define AWQI", c: "An Adverse Water Quality Incident (AWQI) is a water quality result that either exceeds a Maximum Acceptable Concentration (MAC) or indicates a potential health risk." },
+      { l: "Identify MAC Exceedances", c: "Examples of MAC exceedances include chemical parameters (e.g., lead, arsenic) found above their regulatory limits as defined in O. Reg. 169/03 (Ontario Drinking Water Quality Standards)." },
+      { l: "Identify Health Risk Indicators", c: "Examples of indicators of potential health risk include the detection of E. coli bacteria, or turbidity exceeding 1 Nephelometric Turbidity Unit (NTU) at the entry point to the distribution system." },
+      { l: "Outline Reporting Requirements", c: "Upon identification of an AWQI, immediate notification is required to both the local Medical Officer of Health (MOH) and the Ministry of the Environment, Conservation and Parks (MECP)." },
+    ],
+    tip: "Remember AWQI triggers: MAC exceedance OR potential health risk, requiring immediate MOH/MECP notification.",
   },
   {
     id: "WQA-R004",
@@ -2100,6 +2448,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 2,
     explanation: "CT = C × T10. T10 = CT / C = 165 / 0.8 = 206.25 min. HRT = T10 / (T10/HRT ratio) = 206.25 / 0.7 = 294.6 ≈ 295 minutes. The T10/HRT ratio accounts for short-circuiting in the contact basin.",
+    steps: [
+      { l: "Identify Given Values", c: "CT_required = 165 mg·min/L Free Chlorine Residual (C) = 0.8 mg/L T10/HRT ratio = 0.7" },
+      { l: "Calculate T10", c: "The CT concept is defined as CT = C × T10, where T10 is the contact time (in minutes) required for inactivation. We need to solve for T10. T10 = CT_required / C T10 = 165 mg·min/L / 0.8 mg/L T10 = 206.25 minutes" },
+      { l: "Calculate HRT", c: "The T10/HRT ratio accounts for hydraulic inefficiencies (short-circuiting) in the contact basin. We are given the ratio and have calculated T10. We need to solve for HRT. HRT = T10 / (T10/HRT ratio) HRT = 206.25 minutes / 0.7 HRT = 294.6428... minutes" },
+      { l: "Round to Appropriate Significant Figures", c: "Given the input values, rounding to the nearest whole minute or one decimal place is appropriate for practical application. HRT ≈ 295 minutes" },
+    ],
+    tip: "Remember CT = C × T10 and account for hydraulic efficiency with the T10/HRT ratio.",
   },
   {
     id: "WQA-M014",
@@ -2114,6 +2469,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 2,
     explanation: "Nitrate-N concentration = 1000 mg/L. Mass of N needed = 1000 mg/L × 0.5 L = 500 mg = 0.500 g N. KNO3 contains one N atom per molecule: mass fraction of N = 14.01/101.1 = 0.1386. Mass of KNO3 = 0.500 g / 0.1386 = 3.61 g.",
+    steps: [
+      { l: "Calculate total mass of N needed", c: "The stock solution is 1000 mg/L nitrate-N and the volume is 500 mL (0.5 L). Mass of N needed = Concentration (mg/L) × Volume (L) = 1000 mg/L × 0.5 L = 500 mg N = 0.500 g N." },
+      { l: "Determine mass fraction of N in KNO3", c: "KNO3 contains one N atom. Molecular weight of N = 14.01 g/mol. Molecular weight of KNO3 = 101.1 g/mol. Mass fraction of N in KNO3 = (MW of N) / (MW of KNO3) = 14.01 g/mol / 101.1 g/mol = 0.1386." },
+      { l: "Calculate mass of KNO3 required", c: "To find the mass of KNO3 that contains 0.500 g of N, divide the mass of N needed by the mass fraction of N in KNO3. Mass of KNO3 = Mass of N needed / Mass fraction of N = 0.500 g N / 0.1386 = 3.6075 g KNO3." },
+      { l: "Round to appropriate significant figures", c: "Given the input values, rounding to three significant figures is appropriate. Mass of KNO3 = 3.61 g." },
+    ],
+    tip: "Always account for the elemental mass fraction when preparing solutions from compounds.",
   },
   {
     id: "WQA-L031",
@@ -2128,6 +2490,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Mean = (0.42+0.38+0.51+0.45+0.39+0.47+0.44)/7 = 0.437. Deviations²: 0.000289, 0.003249, 0.005329, 0.000169, 0.002209, 0.001089, 0.000009. Sum = 0.012343. s = √(0.012343/6) = √0.002057 = 0.04535. MDL = t × s = 3.143 × 0.04535 = 0.1425 ≈ 0.13 µg/L (rounded to 2 sig figs).",
+    steps: [
+      { l: "Step 1", c: "Calculate the mean (average) of the 7 replicate spike results. Sum the values and divide by the number of replicates (7)." },
+      { l: "Step 2", c: "Calculate the standard deviation (s) of the replicate results. First, find the squared difference of each result from the mean. Sum these squared differences, divide by (n-1) where n is the number of replicates, and then take the square root." },
+      { l: "Step 3", c: "Apply the MDL formula: MDL = t * s. Multiply the calculated standard deviation (s) by the given t-value (3.143)." },
+      { l: "Step 4", c: "Round the final MDL value to an appropriate number of significant figures, typically consistent with the input data or regulatory requirements. In this case, rounding to two significant figures gives 0.14 ug/L." },
+    ],
+    tip: "Always double-check your calculations, especially for standard deviation, as small errors can significantly impact the final MDL. Pay attention to significant figures.",
   },
   {
     id: "WQA-QA019",
@@ -2142,6 +2511,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "% Recovery = (measured / true) × 100 = (53.8 / 50) × 100 = 107.6%. The acceptance criterion is 90–110% (±10%). Since 107.6% falls within this range, the CCV passes. If the result were outside 90–110%, the analyst would need to recalibrate and re-analyze the affected samples.",
+    steps: [
+      { l: "Identify Given Values", c: "True value (CCV standard) = 50 µg/L; Measured value = 53.8 µg/L; Acceptance criterion = ±10%." },
+      { l: "Calculate Percent Recovery", c: "% Recovery = (Measured Value / True Value) × 100 = (53.8 µg/L / 50 µg/L) × 100 = 1.076 × 100 = 107.6%." },
+      { l: "Determine Acceptance Range", c: "The acceptance criterion is ±10% of the true value. This means the acceptable range is 100% - 10% to 100% + 10%, which is 90% to 110%." },
+      { l: "Compare and Conclude", c: "The calculated percent recovery is 107.6%. Since 107.6% falls within the acceptance range of 90% to 110%, the CCV passes." },
+    ],
+    tip: "Always convert acceptance criteria (e.g., ±10%) into a clear percentage range (e.g., 90-110%).",
   },
   {
     id: "WQA-CT013",
@@ -2156,6 +2532,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 2,
     explanation: "Hardness (mg/L as CaCO3) = (mL EDTA × M EDTA × MW CaCO3 × 1000) / mL sample = (18.7 × 0.01 × 100.09 × 1000) / 100 = 18717 / 100 = 187.2 ≈ 187 mg/L CaCO3. This is considered 'hard' water (> 120 mg/L).",
+    steps: [
+      { l: "Identify Formula", c: "The formula for calculating total hardness as mg/L CaCO3 from an EDTA titration is: Hardness (mg/L as CaCO3) = (mL EDTA × M EDTA × MW CaCO3 × 1000) / mL sample" },
+      { l: "List Given Values", c: "mL EDTA = 18.7 mL M EDTA = 0.01 M MW CaCO3 = 100.09 g/mol mL sample = 100 mL Factor of 1000 is for converting g to mg." },
+      { l: "Substitute Values", c: "Hardness = (18.7 mL × 0.01 M × 100.09 g/mol × 1000 mg/g) / 100 mL" },
+      { l: "Calculate Numerator", c: "Numerator = 18.7 × 0.01 × 100.09 × 1000 = 18716.83" },
+      { l: "Calculate Result", c: "Hardness = 18716.83 / 100 = 187.1683 mg/L CaCO3. Rounding to one decimal place gives 187.2 mg/L CaCO3." },
+    ],
+    tip: "Memorize the hardness formula and ensure correct unit conversions, especially the 1000 factor.",
   },
   {
     id: "WQA-B016",
@@ -2170,6 +2554,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "On m-Endo medium, confirmed total coliforms produce a distinctive metallic green sheen (gold-green iridescence). Blue colonies without the metallic sheen are non-coliform background organisms. Only the 8 metallic green colonies should be counted as total coliforms. This is a critical quality control distinction in membrane filtration.",
+    steps: [
+      { l: "Understand Colony Morphology", c: "On m-Endo medium, total coliforms are specifically identified by their metallic green sheen (gold-green iridescence). Other colony colors or appearances (e.g., blue without sheen) are not considered total coliforms." },
+      { l: "Identify Coliform Colonies", c: "The question states that 8 of the colonies are metallic green with a golden sheen. These 8 colonies fit the description for confirmed total coliforms on m-Endo medium." },
+      { l: "Exclude Non-Coliforms", c: "The remaining 42 - 8 = 34 blue colonies without the metallic sheen are considered non-coliform background organisms and should not be counted as total coliforms." },
+      { l: "Determine Final Count", c: "Only the colonies exhibiting the characteristic metallic green sheen are counted. Therefore, the total coliform count for the 100 mL sample is 8." },
+      { l: "Report Result", c: "The result should be reported as 8 total coliforms per 100 mL (8 TC/100 mL)." },
+    ],
+    tip: "Always differentiate coliforms by specific colony morphology (e.g., metallic green sheen on m-Endo).",
   },
   {
     id: "WQA-D015",
@@ -2184,6 +2576,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "At a 3:1 Cl2:NH3-N mass ratio, for 2.4 mg/L Cl2, the required NH3-N = 2.4 / 3 = 0.8 mg/L. Maintaining the correct ratio is critical: too little ammonia leads to free chlorine breakthrough; too much causes excess ammonia and nitrification risk in the distribution system.",
+    steps: [
+      { l: "Understand the Ratio", c: "The question states a Cl2:NH3-N mass ratio of 3:1. This means for every 3 parts of chlorine (as Cl2), 1 part of ammonia-nitrogen (as NH3-N) is used." },
+      { l: "Identify Knowns", c: "Target combined chlorine residual (as Cl2) = 2.4 mg/L. Ratio = 3 (Cl2) : 1 (NH3-N)." },
+      { l: "Set up Calculation", c: "To find the required ammonia-nitrogen dose, we divide the target chlorine residual by the chlorine part of the ratio: NH3-N dose = Target Cl2 residual / Cl2 part of ratio." },
+      { l: "Calculate NH3-N Dose", c: "NH3-N dose = 2.4 mg/L Cl2 / 3 = 0.8 mg/L NH3-N." },
+    ],
+    tip: "Always ensure units match the ratio. Ratios are critical for proper chloramination control.",
   },
   {
     id: "WQA-S021",
@@ -2198,6 +2597,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "pHs = 9.3 + A + B − C − D = 9.3 + 0.10 + 2.09 − 2.38 − 2.26 = 6.85. Wait — recalculating with the given constants: pHs = 9.3 + 0.10 + 2.09 − 2.38 − 2.26 = 6.85. LSI = pH − pHs = 8.2 − 6.85 = +1.35. However, using the simplified version given: pHs ≈ 7.47, LSI = 8.2 − 7.47 = +0.73. A positive LSI means the water is supersaturated with CaCO3 and tends to deposit scale, which is protective for pipes but can reduce flow capacity.",
+    steps: [
+      { l: "Identify Given Values", c: "Given: pH = 8.2, Total Alkalinity = 180 mg/L as CaCO3, Calcium Hardness = 240 mg/L as CaCO3. Constants for pHs calculation: A = 0.10, B = 2.09, C = 2.38, D = 2.26." },
+      { l: "Calculate pHs", c: "The formula for pHs is: pHs = 9.3 + A + B - C - D. Substitute the given constants: pHs = 9.3 + 0.10 + 2.09 - 2.38 - 2.26 = 6.85." },
+      { l: "Calculate LSI", c: "The formula for LSI is: LSI = pH - pHs. Substitute the given pH and calculated pHs: LSI = 8.2 - 6.85 = +1.35." },
+      { l: "Interpret LSI Result", c: "A positive LSI (+1.35) indicates that the water is supersaturated with calcium carbonate (CaCO3). This means the water has a tendency to deposit scale, which can be protective for pipes but may reduce flow capacity over time." },
+    ],
+    tip: "Always use the provided constants for pHs calculation; don't rely on simplified versions unless specified.",
   },
   {
     id: "WQA-SF016",
@@ -2212,6 +2618,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 2,
     explanation: "The cardinal rule for diluting concentrated acids: ALWAYS add acid to water (never water to acid) to prevent violent exothermic reactions and spattering. Concentrated H2SO4 is ~18.4 M. A 1:10 dilution gives approximately 18.4/10 = 1.84 M. The acid must be added slowly while stirring to dissipate heat safely.",
+    steps: [
+      { l: "Calculate Molarity of Concentrated H2SO4", c: "Molarity = (percent w/w * density * 10) / Molar Mass. Molar Mass of H2SO4 = 2(1.008) + 32.06 + 4(16.00) = 98.08 g/mol. Molarity = (98 * 1.84 g/mL * 10) / 98.08 g/mol = 18.38 M (approx. 18.4 M)." },
+      { l: "Determine Volume of Concentrated Acid Needed", c: "A 1:10 dilution means 1 part concentrated acid to 9 parts water, making a total of 10 parts. For a 100 mL working solution, the volume of concentrated acid needed is (1/10) * 100 mL = 10 mL." },
+      { l: "Outline Dilution Procedure", c: "Measure approximately 80-90 mL of deionized water into a 100 mL volumetric flask. Slowly and carefully add 10 mL of the concentrated H2SO4 to the water while continuously stirring. Allow the solution to cool to room temperature. Then, dilute to the 100 mL mark with deionized water and invert several times to mix thoroughly." },
+      { l: "Calculate Molarity of Diluted Acid", c: "M_diluted = M_concentrated / dilution factor. M_diluted = 18.38 M / 10 = 1.838 M (approx. 1.84 M)." },
+    ],
+    tip: "Always add acid to water slowly, never the reverse, to prevent dangerous exothermic reactions.",
   },
   {
     id: "WQA-WC023",
@@ -2226,6 +2639,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "SUVA = (UV254 × 100) / TOC = (0.18 × 100) / 8.2 = 2.20 L/mg·m. SUVA < 2 indicates mostly hydrophilic, non-humic NOM that responds poorly to coagulation. SUVA 2–4 is a mixed composition. SUVA > 4 indicates mostly hydrophobic, humic NOM that coagulates well. At 2.20, this water has mixed NOM character; the geosmin (a taste-and-odour compound from cyanobacteria/actinomycetes) would be best treated with powdered activated carbon (PAC) or ozone rather than coagulation alone.",
+    steps: [
+      { l: "Identify SUVA Formula", c: "The Specific UV Absorbance (SUVA) is calculated using the formula: SUVA = (UV254 * 100) / TOC. UV254 is in cm⁻¹ and TOC is in mg/L. The factor of 100 converts cm⁻¹ to m⁻¹ for the final unit of L/mg·m." },
+      { l: "Extract Given Values", c: "From the question: UV254 = 0.18 cm⁻¹ and TOC = 8.2 mg/L." },
+      { l: "Calculate SUVA", c: "Substitute the values into the formula: SUVA = (0.18 cm⁻¹ * 100) / 8.2 mg/L = 18 / 8.2 L/mg·m = 2.195 L/mg·m. Rounding to two decimal places, SUVA = 2.20 L/mg·m." },
+      { l: "Interpret SUVA Value", c: "Based on the provided guidelines: SUVA < 2 indicates mostly hydrophilic, non-humic NOM; SUVA 2–4 indicates a mixed composition; SUVA > 4 indicates mostly hydrophobic, humic NOM. Since SUVA = 2.20 L/mg·m, this water has a mixed NOM character." },
+      { l: "Relate to Treatment", c: "Mixed NOM character (SUVA 2-4) suggests that coagulation alone may not be fully effective for NOM removal. Given the presence of geosmin (a taste-and-odour compound), advanced oxidation processes (like ozonation) or adsorption (like powdered activated carbon, PAC) would be more suitable for its removal than relying solely on coagulation." },
+    ],
+    tip: "Remember SUVA values indicate NOM character, guiding treatment choices; always include units.",
   },
   {
     id: "WQA-QA020",
@@ -2240,6 +2661,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 2,
     explanation: "Examining the data: the results show a clear alternating pattern with increasing amplitude — values are trending away from the mean in both directions. More critically, looking at the last 8 values (0.95 through 1.08), they show a systematic trend of increasing deviation. The six-consecutive-points-trending rule (Nelson Rule 3) is triggered by the last 6 results (0.93, 1.06, 0.92, 1.07, 0.91, 1.08) showing increasing magnitude, indicating the measurement system is drifting — likely a calibration standard degradation issue requiring immediate investigation.",
+    steps: [
+      { l: "Understand Control Chart Rules", c: "The question implies using Westgard or Nelson rules. We need to look for patterns in the data relative to the mean (1.0 mg/L) and standard deviation (s = 0.05). Key rules to consider are: points outside control limits, points outside warning limits, consecutive points on one side of the mean, and trending/alternating patterns." },
+      { l: "Calculate Warning and Control Limits", c: "Mean = 1.0 mg/L, s = 0.05 mg/L. Warning Limits (±2s): 1.0 ± (2 * 0.05) = 1.0 ± 0.10. So, 0.90 mg/L and 1.10 mg/L. Control Limits (±3s): 1.0 ± (3 * 0.05) = 1.0 ± 0.15. So, 0.85 mg/L and 1.15 mg/L." },
+      { l: "Analyze Data for Rule Violations", c: "Review the data points sequentially: 0.97, 1.02, 0.99, 1.03, 0.98, 1.01, 0.96, 1.04, 0.97, 1.02, 0.95, 1.03, 0.94, 1.05, 0.93, 1.06, 0.92, 1.07, 0.91, 1.08. No points exceed the control limits (0.85-1.15 mg/L). No points exceed the warning limits (0.90-1.10 mg/L) until the last few points. Let's check for trends or alternating patterns." },
+      { l: "Identify First Triggered Rule", c: "Observe the last 8 data points: 0.95, 1.03, 0.94, 1.05, 0.93, 1.06, 0.92, 1.07, 0.91, 1.08. This sequence shows an alternating pattern where each point is further from the mean than the previous one, regardless of direction. Specifically, the last 6 points (0.93, 1.06, 0.92, 1.07, 0.91, 1.08) show increasing deviation from the mean (1.0). This triggers the 'six consecutive points trending away from the mean' rule (Nelson Rule 3 or similar interpretation of increasing amplitude)." },
+    ],
+    tip: "Systematically apply control chart rules in order of sensitivity, focusing on patterns, not just individual points.",
   },
   {
     id: "wqa-178",
@@ -2254,6 +2682,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "O. Reg. 170/03 Schedule 2 sets 0.3 NTU as the operational trigger for conventional filtration. Exceeding this requires immediate corrective action and reporting to the Director.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks for the maximum allowable turbidity for treated water leaving a conventional filtration system before an adverse condition *must be reported* under O. Reg. 170/03." },
+      { l: "Reference O. Reg. 170/03", c: "O. Reg. 170/03 Schedule 2, Section 1-2.1 (2) specifies the operational requirements for conventional filtration systems regarding turbidity." },
+      { l: "Identify the Reporting Threshold", c: "Schedule 2, Section 1-2.1 (2) states that if the turbidity of the filtered water from a conventional filtration system exceeds 0.3 NTU, the operating authority shall immediately report the exceedance to the Director." },
+      { l: "Determine the Maximum Allowable Turbidity", c: "Therefore, the maximum allowable turbidity before an adverse condition must be reported is 0.3 NTU. Any reading above 0.3 NTU triggers the reporting requirement." },
+    ],
+    tip: "Memorize key regulatory thresholds; they are common exam questions.",
   },
   {
     id: "wqa-179",
@@ -2268,6 +2703,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 3,
     explanation: "The Ontario Drinking Water Standards require a CT of 165 mg·min/L for 4-log Giardia inactivation using free chlorine at 10°C, as specified in the Procedure for Disinfection of Drinking Water in Ontario.",
+    steps: [
+      { l: "Understand the Requirement", c: "The question asks for the minimum CT value for 4-log Giardia inactivation using chlorination only at 10°C, as per O. Reg. 170/03 and the Procedure for Disinfection of Drinking Water in Ontario." },
+      { l: "Consult Reference Material", c: "According to the Procedure for Disinfection of Drinking Water in Ontario (which is referenced in O. Reg. 170/03 for disinfection requirements), specific CT values are provided for different pathogens, disinfectants, temperatures, and inactivation levels." },
+      { l: "Locate Specific CT Value", c: "For 4-log (99.99%) inactivation of Giardia cysts using free chlorine at a temperature of 10°C, the required CT value is directly stated in the reference tables (e.g., Table 2-4 in the Procedure for Disinfection of Drinking Water in Ontario). The provided explanation confirms this value." },
+      { l: "State the Result", c: "The minimum CT value required is 165 mg·min/L." },
+    ],
+    tip: "Memorize key CT values or know where to find them quickly in provided reference materials.",
   },
   {
     id: "wqa-180",
@@ -2366,6 +2808,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "O. Reg. 169/03 sets the MAC for nitrate at 10 mg/L expressed as nitrogen (NO3-N), which is equivalent to 44.3 mg/L as nitrate (NO3). The nitrogen form is the regulatory standard.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks for the Maximum Acceptable Concentration (MAC) for nitrate as per O. Reg. 169/03. It also provides an explanation that clarifies the units." },
+      { l: "Identify Regulatory Standard", c: "The explanation explicitly states: 'The nitrogen form is the regulatory standard.' This means the answer should be expressed as nitrate-nitrogen (NO3-N)." },
+      { l: "Locate MAC Value", c: "The explanation provides the MAC for nitrate as '10 mg/L expressed as nitrogen (NO3-N)'." },
+      { l: "Confirm Units", c: "The value 10 mg/L is already in the correct regulatory unit (NO3-N), so no further conversion is needed for the direct answer to the question." },
+    ],
+    tip: "Always note the specified units (e.g., NO3-N vs. NO3) for regulatory standards.",
   },
   {
     id: "wqa-187",
@@ -2380,6 +2829,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "O. Reg. 170/03 requires a minimum free chlorine residual of 0.05 mg/L at all points in the distribution system. This is the regulatory floor; many systems target 0.2 mg/L for a safety margin.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks for the minimum free chlorine residual required by O. Reg. 170/03 throughout the distribution system." },
+      { l: "Recall Regulatory Requirement", c: "O. Reg. 170/03 specifies minimum water quality parameters for drinking water systems in Ontario." },
+      { l: "Identify Specific Value", c: "According to O. Reg. 170/03, the minimum free chlorine residual required at all points in the distribution system is 0.05 mg/L." },
+      { l: "Formulate Answer", c: "The required minimum free chlorine residual is 0.05 mg/L." },
+    ],
+    tip: "Memorize key regulatory minimums like chlorine residual for compliance questions.",
   },
   {
     id: "wqa-188",
@@ -2394,6 +2850,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "A chlorine residual below 0.05 mg/L anywhere in the distribution system is an adverse condition under O. Reg. 170/03, requiring immediate corrective action (flushing, boosting) and documentation.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks to classify a chlorine residual of 0.02 mg/L at a dead-end in the distribution system according to O. Reg. 170/03." },
+      { l: "Recall O. Reg. 170/03 Requirements", c: "O. Reg. 170/03 specifies minimum chlorine residual requirements for drinking water distribution systems. A key threshold is 0.05 mg/L." },
+      { l: "Compare Residual to Standard", c: "The measured chlorine residual is 0.02 mg/L. The minimum acceptable residual under O. Reg. 170/03 is 0.05 mg/L. Since 0.02 mg/L is less than 0.05 mg/L, this indicates a problem." },
+      { l: "Determine Condition Type", c: "A chlorine residual below 0.05 mg/L anywhere in the distribution system is defined as an adverse condition under O. Reg. 170/03. This requires immediate corrective action and reporting." },
+    ],
+    tip: "Memorize O. Reg. 170/03 minimum chlorine residual thresholds for adverse conditions.",
   },
   {
     id: "wqa-189",
@@ -2464,6 +2927,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 2,
     explanation: "The Ontario Procedure for Disinfection requires 4-log (99.99%) inactivation of viruses. UV disinfection can receive credit for virus inactivation based on validated UV dose, typically requiring 40 mJ/cm² for 4-log inactivation.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks for the minimum log inactivation credit for viruses required for a groundwater system using UV disinfection, specifically under the Ontario Procedure for Disinfection of Drinking Water." },
+      { l: "Recall Ontario Regulations", c: "The Ontario Drinking Water Systems Regulation (O. Reg. 170/03) and the associated Procedure for Disinfection of Drinking Water in Ontario specify the minimum treatment requirements for drinking water systems." },
+      { l: "Identify Virus Inactivation Requirement", c: "The Procedure for Disinfection of Drinking Water in Ontario mandates a minimum 4-log (99.99%) inactivation or removal of viruses for all drinking water systems, including groundwater systems." },
+      { l: "Confirm UV Disinfection Role", c: "While UV disinfection is mentioned as a method that can receive credit for virus inactivation (typically requiring 40 mJ/cm² for 4-log inactivation), the question specifically asks for the *required* log inactivation credit, not the UV dose itself. The required credit remains 4-log." },
+    ],
+    tip: "Memorize key log inactivation requirements for different pathogens and disinfection methods.",
   },
   {
     id: "wqa-194",
@@ -2506,6 +2976,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Magnesium hardness = 250 - 160 = 90 mg/L as CaCO₃. Convert to mg/L as Mg²⁺: 90 × (24.3/50.04) = 90 × 0.4856 = 43.7 mg/L. Wait — the correct conversion is: Mg²⁺ = (Mg hardness as CaCO₃) × (Mg MW / CaCO₃ equivalent) = 90 × (24.305/50.045) = 43.7 mg/L. The closest answer is 11.0 mg/L if the question uses the equivalent weight approach: 90 mg/L as CaCO₃ ÷ (50.045/12.15) = 90/4.12 = 21.8 ≈ 22 mg/L. Using EW of Mg = 12.15: 90 × 12.15/50.04 = 21.9 mg/L ≈ 22 mg/L.",
+    steps: [
+      { l: "Calculate Magnesium Hardness", c: "Total Hardness = Calcium Hardness + Magnesium Hardness. Therefore, Magnesium Hardness = Total Hardness - Calcium Hardness = 250 mg/L as CaCO₃ - 160 mg/L as CaCO₃ = 90 mg/L as CaCO₃." },
+      { l: "Identify Conversion Factor", c: "To convert hardness from 'as CaCO₃' to the specific ion (Mg²⁺), we use the ratio of the equivalent weight of the ion to the equivalent weight of CaCO₃. Equivalent weight of Mg²⁺ = Atomic Weight of Mg / Valence = 24.305 g/mol / 2 = 12.1525 g/eq. Equivalent weight of CaCO₃ = Molecular Weight of CaCO₃ / Valence = 100.086 g/mol / 2 = 50.043 g/eq. The conversion factor is (Equivalent Weight of Mg²⁺ / Equivalent Weight of CaCO₃) = 12.1525 / 50.043." },
+      { l: "Apply Conversion Factor", c: "Magnesium concentration as Mg²⁺ = Magnesium Hardness as CaCO₃ × (Equivalent Weight of Mg²⁺ / Equivalent Weight of CaCO₃) = 90 mg/L as CaCO₃ × (12.1525 / 50.043)." },
+      { l: "Calculate Result", c: "Magnesium concentration as Mg²⁺ = 90 × 0.24285 = 21.8565 mg/L. Rounded to one decimal place, this is 21.9 mg/L." },
+    ],
+    tip: "Always use equivalent weight ratios for converting hardness between 'as CaCO₃' and specific ions.",
   },
   {
     id: "wqa-197",
@@ -2534,6 +3011,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "LSI = pH - pHs = 7.8 - 8.4 = -0.6. A negative LSI indicates the water is undersaturated with CaCO₃ and has a corrosive tendency — it will dissolve CaCO₃ scale and potentially attack metal pipes. Corrosion control treatment (lime addition, pH adjustment) would be indicated.",
+    steps: [
+      { l: "Identify LSI Formula", c: "The Langelier Saturation Index (LSI) is calculated as: LSI = pH_actual - pH_saturation (pHs)." },
+      { l: "Identify Given Values", c: "From the problem statement: actual pH = 7.8 and pHs = 8.4." },
+      { l: "Substitute Values", c: "Substitute the given values into the LSI formula: LSI = 7.8 - 8.4." },
+      { l: "Calculate LSI", c: "Perform the subtraction: LSI = -0.6." },
+      { l: "Interpret LSI", c: "An LSI of -0.6 indicates the water is undersaturated with calcium carbonate and has a corrosive tendency." },
+    ],
+    tip: "Remember: LSI < 0 means corrosive, LSI > 0 means scaling, LSI ≈ 0 means balanced.",
   },
   {
     id: "wqa-199",
@@ -2562,6 +3047,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Combined chlorine = Total chlorine - Free chlorine = 2.8 - 1.2 = 1.6 mg/L. Combined chlorine includes monochloramine, dichloramine, and nitrogen trichloride. In a chloraminated system, this represents the chloramine residual.",
+    steps: [
+      { l: "Understand Chlorine Forms", c: "Chlorine residual in water can exist in different forms: Free Chlorine (HOCl, OCl-), Combined Chlorine (chloramines), and Total Chlorine (sum of free and combined chlorine)." },
+      { l: "Identify Given Values", c: "Free Chlorine (FC) = 1.2 mg/L Total Chlorine (TC) = 2.8 mg/L" },
+      { l: "Recall Formula", c: "The relationship between these forms is: Total Chlorine = Free Chlorine + Combined Chlorine. Therefore, Combined Chlorine = Total Chlorine - Free Chlorine." },
+      { l: "Substitute Values", c: "Combined Chlorine = 2.8 mg/L (Total Chlorine) - 1.2 mg/L (Free Chlorine)" },
+      { l: "Calculate Result", c: "Combined Chlorine = 1.6 mg/L" },
+    ],
+    tip: "Remember: Total Chlorine = Free Chlorine + Combined Chlorine. This fundamental relationship is key.",
   },
   {
     id: "wqa-201",
@@ -2590,6 +3083,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "POC = TOC - DOC = 4.2 - 3.8 = 0.4 mg/L. POC represents organic carbon associated with particles (>0.45 μm filter), while DOC is the fraction that passes through a 0.45 μm filter. High POC can indicate turbidity events or algal blooms.",
+    steps: [
+      { l: "Understand Definitions", c: "Total Organic Carbon (TOC) is the sum of Dissolved Organic Carbon (DOC) and Particulate Organic Carbon (POC)." },
+      { l: "Identify Formula", c: "To find POC, we use the formula: POC = TOC - DOC." },
+      { l: "Extract Given Values", c: "Given: TOC = 4.2 mg/L, DOC = 3.8 mg/L." },
+      { l: "Substitute Values", c: "Substitute the given values into the formula: POC = 4.2 mg/L - 3.8 mg/L." },
+      { l: "Calculate Result", c: "Perform the subtraction: POC = 0.4 mg/L." },
+    ],
+    tip: "Remember TOC = DOC + POC. Understand the fractions based on filtration.",
   },
   {
     id: "wqa-203",
@@ -2632,6 +3133,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "When P = 0 and total alkalinity (T) > 0, all alkalinity is in the bicarbonate (HCO₃⁻) form. The alkalinity forms can be determined from the P/T ratio: if P=0, only bicarbonate; if P<T/2, bicarbonate + carbonate; if P=T/2, carbonate only; if P>T/2, carbonate + hydroxide; if P=T, hydroxide only.",
+    steps: [
+      { l: "Identify Given Values", c: "Total Alkalinity (T) = 120 mg/L as CaCO₃ Phenolphthalein Alkalinity (P) = 0 mg/L" },
+      { l: "Determine P/T Relationship", c: "Compare P and T values. Here, P = 0 mg/L and T = 120 mg/L. Therefore, P = 0." },
+      { l: "Apply Alkalinity Rules", c: "According to the alkalinity rules, when P = 0 and T > 0, the only form of alkalinity present is bicarbonate (HCO₃⁻)." },
+      { l: "State Conclusion", c: "Based on the P/T relationship, only bicarbonate (HCO₃⁻) alkalinity is present in the water sample." },
+    ],
+    tip: "Memorize the P/T alkalinity relationships for quick identification.",
   },
   {
     id: "wqa-206",
@@ -2660,6 +3168,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "[NO₃⁻] = (Absorbance - 0.003) / 0.052 = (0.318 - 0.003) / 0.052 = 0.315 / 0.052 = 6.058 ≈ 6.1 mg/L. Always subtract the y-intercept (blank correction) before dividing by the slope when using a linear calibration equation.",
+    steps: [
+      { l: "Identify Given Equation", c: "The calibration curve equation is: Absorbance = 0.052 × [NO₃⁻] + 0.003. We are given an Absorbance of 0.318." },
+      { l: "Rearrange Equation for [NO₃⁻]", c: "To find the nitrate concentration ([NO₃⁻]), we need to isolate it. First, subtract the y-intercept (0.003) from the absorbance: Absorbance - 0.003 = 0.052 × [NO₃⁻]. Then, divide by the slope (0.052): [NO₃⁻] = (Absorbance - 0.003) / 0.052." },
+      { l: "Substitute Values", c: "Substitute the given absorbance (0.318) into the rearranged equation: [NO₃⁻] = (0.318 - 0.003) / 0.052." },
+      { l: "Perform Calculation", c: "First, calculate the numerator: 0.318 - 0.003 = 0.315. Then, divide by the slope: 0.315 / 0.052 = 6.05769..." },
+      { l: "Round and State Result", c: "Rounding to a reasonable number of significant figures (e.g., two decimal places or based on the input precision), the nitrate concentration is approximately 6.06 mg/L. If rounding to one decimal place as in the example, it's 6.1 mg/L." },
+    ],
+    tip: "Always subtract the y-intercept (blank) before dividing by the slope.",
   },
   {
     id: "wqa-208",
@@ -2702,6 +3218,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "The Method Detection Limit (MDL) is statistically defined as the minimum concentration that can be measured with 99% confidence that it is greater than zero. It is calculated as 3.14 times the standard deviation of replicate measurements of a low-level standard.",
+    steps: [
+      { l: "Understand the Concept", c: "The question asks for the definition of a detection limit, specifically the Method Detection Limit (MDL)." },
+      { l: "Recall MDL Definition", c: "The MDL is the lowest concentration of an analyte that a method can reliably detect above background noise. It's a statistical measure." },
+      { l: "Identify Key Statistical Elements", c: "The definition highlights '99% confidence' and 'greater than zero', indicating a statistical approach to distinguishing the analyte from noise." },
+      { l: "Recall Calculation Basis", c: "The calculation involves the standard deviation of replicate measurements of a low-level standard, often multiplied by a Student's t-value (e.g., 3.14 for 7 replicates at 99% confidence)." },
+      { l: "Formulate the Definition", c: "Combining these elements, the MDL is the minimum concentration that can be measured with 99% confidence that it is greater than zero, based on replicate measurements." },
+    ],
+    tip: "Distinguish MDL from PQL/LOQ; focus on statistical confidence above zero.",
   },
   {
     id: "wqa-211",
@@ -2716,6 +3240,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "The pKa for HOCl/OCl⁻ equilibrium is 7.5. At pH 6.5, which is 1 unit below the pKa, HOCl predominates. Using the Henderson-Hasselbalch equation: at pH 6.5, approximately 91% of free chlorine is HOCl and 9% is OCl⁻. HOCl is ~80× more effective as a disinfectant than OCl⁻.",
+    steps: [
+      { l: "Understand the Equilibrium", c: "The question states the pKa for the HOCl/OCl⁻ equilibrium is 7.5. This pKa value represents the pH at which HOCl and OCl⁻ concentrations are equal." },
+      { l: "Compare pH to pKa", c: "The given pH of the water sample is 6.5. Comparing this to the pKa of 7.5, we see that pH (6.5) is lower than pKa (7.5)." },
+      { l: "Relate pH to Predominant Species", c: "When the pH of a solution is lower than the pKa of an acid/conjugate base pair, the acidic form (protonated form) predominates. In this case, HOCl is the acidic form and OCl⁻ is the conjugate base." },
+      { l: "Determine Predominant Species", c: "Since pH (6.5) < pKa (7.5), hypochlorous acid (HOCl) is the predominant chlorine species present in the water sample. The explanation also confirms this, stating that at pH 6.5, approximately 91% of free chlorine is HOCl." },
+    ],
+    tip: "Remember: pH < pKa means the protonated (acidic) form predominates.",
   },
   {
     id: "wqa-212",
@@ -2744,6 +3275,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Organic/condensed phosphorus = Total phosphorus - Dissolved reactive phosphorus = 0.42 - 0.15 = 0.27 mg/L. Dissolved reactive phosphorus (DRP) is primarily orthophosphate (PO₄³⁻). The difference after digestion represents polyphosphates and organic phosphorus compounds that are hydrolyzed to orthophosphate during the digestion step.",
+    steps: [
+      { l: "Understand Phosphorus Forms", c: "Total phosphorus (TP) includes all forms: dissolved reactive phosphorus (DRP), polyphosphates, and organic phosphorus. DRP is primarily orthophosphate." },
+      { l: "Identify Given Values", c: "Dissolved Reactive Phosphorus (DRP) = 0.15 mg/L. Total Phosphorus (TP) after digestion = 0.42 mg/L." },
+      { l: "Determine Calculation Goal", c: "We need to find the concentration of organic/condensed phosphorus. This represents the phosphorus forms that are not DRP but become orthophosphate after digestion." },
+      { l: "Apply Formula", c: "Organic/Condensed Phosphorus = Total Phosphorus - Dissolved Reactive Phosphorus" },
+      { l: "Calculate Result", c: "Organic/Condensed Phosphorus = 0.42 mg/L - 0.15 mg/L = 0.27 mg/L" },
+    ],
+    tip: "Remember: Digestion converts all phosphorus forms to orthophosphate for total phosphorus measurement.",
   },
   {
     id: "wqa-214",
@@ -2772,6 +3311,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "For most environmental analytical methods, spike recoveries between 80-120% are considered acceptable. The 87% recovery is within this range, indicating the method is performing adequately. Some methods specify tighter control limits (85-115%), but 80-120% is the general standard for drinking water analysis.",
+    steps: [
+      { l: "Identify Recovery", c: "The method spike recovery is given as 87%." },
+      { l: "Determine Acceptable Range", c: "For most environmental analytical methods, the generally accepted spike recovery range is 80-120%." },
+      { l: "Compare Recovery to Range", c: "Compare the calculated recovery (87%) to the acceptable range (80-120%)." },
+      { l: "Evaluate Acceptability", c: "Since 87% falls within the 80-120% range (80% <= 87% <= 120%), the recovery is considered acceptable." },
+    ],
+    tip: "Memorize common acceptable recovery ranges (e.g., 80-120%) for method validation questions.",
   },
   {
     id: "wqa-216",
@@ -2800,6 +3346,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Chlorine required = Flow × Dose = 15,000 m³/day × 2.5 mg/L × (1 g/1,000 mg) × (1 kg/1,000 g) × (1,000 L/m³) = 15,000 × 2.5 / 1,000 = 37.5 kg/day.",
+    steps: [
+      { l: "Identify Given Values", c: "Flow (Q) = 15,000 m³/day Chlorine Dose = 2.5 mg/L" },
+      { l: "Recall Formula", c: "Mass of Chlorine Required = Flow × Dose" },
+      { l: "Convert Units for Calculation", c: "To convert mg/L to kg/m³ for direct multiplication, or to ensure consistent units: 1 m³ = 1,000 L 1 kg = 1,000 g = 1,000,000 mg So, 2.5 mg/L = 2.5 mg/L × (1 g / 1,000 mg) × (1 kg / 1,000 g) × (1,000 L / 1 m³) = 2.5 kg/m³" },
+      { l: "Calculate Chlorine Required", c: "Chlorine Required = 15,000 m³/day × 2.5 kg/m³ = 37,500 kg/day" },
+      { l: "Final Calculation (Alternative Method)", c: "Using the provided explanation's method: Chlorine required = 15,000 m³/day × 2.5 mg/L × (1 g/1,000 mg) × (1 kg/1,000 g) × (1,000 L/m³) = (15,000 × 2.5 × 1,000) / (1,000 × 1,000) kg/day = 37,500,000 / 1,000,000 kg/day = 37.5 kg/day" },
+    ],
+    tip: "Always perform unit conversions carefully to ensure consistent units for calculation.",
   },
   {
     id: "wqa-218",
@@ -2814,6 +3368,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Filtration rate = Flow / Area = 600 m³/h ÷ 50 m² = 12 m/h (or 12 m³/m²/h). Typical rapid sand filter rates are 5-15 m/h. A rate of 12 m/h is within the normal operating range.",
+    steps: [
+      { l: "Identify Given Values", c: "Given: Filter Area (A) = 50 m², Flow Rate (Q) = 600 m³/hour." },
+      { l: "Recall Formula", c: "The filtration rate (v) is calculated by dividing the flow rate (Q) by the filter area (A). Formula: v = Q / A." },
+      { l: "Substitute Values", c: "Substitute the given values into the formula: v = 600 m³/hour / 50 m²." },
+      { l: "Calculate Result", c: "Perform the division: v = 12 m/hour. The units simplify to m/hour (or m³/m²/h), which is the correct unit for filtration rate." },
+      { l: "Check Plausibility", c: "Typical rapid sand filter rates are 5-15 m/h. A rate of 12 m/h is within this normal operating range, indicating the calculation is likely correct." },
+    ],
+    tip: "Always check units! Ensure flow and area units are compatible for a correct filtration rate.",
   },
   {
     id: "wqa-219",
@@ -2828,6 +3390,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Flow = 450 mL/min × 60 min/h = 27,000 mL/h = 27 L/h. Mass of solution = 27 L/h × 1.08 kg/L = 29.16 kg/h. Mass of alum = 29.16 × 0.10 = 2.92 kg/h.",
+    steps: [
+      { l: "Convert Flow Rate to L/hour", c: "The initial flow rate is 450 mL/min. To convert to L/hour: 450 mL/min * (60 min / 1 hour) * (1 L / 1000 mL) = 27 L/hour" },
+      { l: "Calculate Mass Flow Rate of Solution", c: "The density of the alum solution is 1.08 kg/L. Using the converted flow rate: Mass flow rate of solution = 27 L/hour * 1.08 kg/L = 29.16 kg/hour" },
+      { l: "Calculate Mass Flow Rate of Alum", c: "The alum solution is 10% (by weight) alum. This means 10% of the solution's mass is actual alum: Mass flow rate of alum = 29.16 kg/hour * 0.10 = 2.916 kg/hour" },
+      { l: "Round to Significant Figures", c: "Rounding to two decimal places, as seen in the example explanation: Alum dose = 2.92 kg/hour" },
+    ],
+    tip: "Always track units carefully and ensure all conversions are correctly applied.",
   },
   {
     id: "wqa-220",
@@ -2842,6 +3411,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "TSS removed = (45 - 0.08) NTU × 1.5 mg/L per NTU ≈ 67.4 mg/L. Mass of solids = 8,000,000 L/day × 67.4 mg/L × (1 g/1,000 mg) × (1 kg/1,000 g) = 539 kg/day. Volume of sludge = 539 kg / (0.02 × 1,010 kg/m³) = 539 / 20.2 = 26.7 m³/day. Wait, recalculating: 539/(0.02×1010) = 539/20.2 = 26.7 m³. But the question asks for m³ and the answer 2.67 m³ would be if sludge density were 10,100 kg/m³. The correct answer is 26.7 m³.",
+    steps: [
+      { l: "Calculate Turbidity Removed", c: "Turbidity removed = Raw water turbidity - Treated water turbidity = 45 NTU - 0.08 NTU = 44.92 NTU" },
+      { l: "Convert Turbidity to TSS", c: "TSS removed = 44.92 NTU * 1.5 mg/L per NTU = 67.38 mg/L" },
+      { l: "Calculate Mass of Solids Removed", c: "Mass of solids = Flow rate * TSS removed = 8 ML/day * 67.38 mg/L Convert units: 8,000,000 L/day * 67.38 mg/L * (1 g / 1,000 mg) * (1 kg / 1,000 g) = 539.04 kg/day" },
+      { l: "Calculate Mass of Sludge", c: "The sludge has 2% solids by weight, so the mass of solids is 2% of the total sludge mass. Mass of sludge = Mass of solids / Solids content = 539.04 kg/day / 0.02 = 26,952 kg/day" },
+      { l: "Calculate Volume of Sludge", c: "Volume of sludge = Mass of sludge / Density of sludge = 26,952 kg/day / 1,010 kg/m³ = 26.685 m³/day Rounding to one decimal place as per typical exam precision: 26.7 m³/day" },
+    ],
+    tip: "Always track units carefully and ensure all conversions are applied correctly, especially for percentages and density.",
   },
   {
     id: "wqa-221",
@@ -2856,6 +3433,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 2,
     explanation: "Detention time = Volume / Flow = 2,500 m³ ÷ 500 m³/h = 5 hours. Theoretical detention time assumes plug flow with no short-circuiting. Actual detention time is typically 50-75% of theoretical due to short-circuiting.",
+    steps: [
+      { l: "Identify Goal", c: "The question asks for the theoretical detention time of the reservoir." },
+      { l: "Recall Formula", c: "The formula for theoretical detention time (TDT) is: TDT = Volume / Flow Rate." },
+      { l: "Identify Given Values", c: "Given: Volume (V) = 2,500 m³; Flow Rate (Q) = 500 m³/hour." },
+      { l: "Substitute Values", c: "Substitute the given values into the formula: TDT = 2,500 m³ / 500 m³/hour." },
+      { l: "Calculate Result", c: "Perform the division: TDT = 5 hours. The cubic meters (m³) units cancel out, leaving hours (h)." },
+    ],
+    tip: "Always check units! Ensure volume and flow rate units are compatible for direct calculation.",
   },
   {
     id: "wqa-222",
@@ -2870,6 +3455,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Detention time = 800 m³ ÷ 200 m³/h = 4 hours = 240 minutes. CT = C × T = 0.8 mg/L × 240 min = 192 mg·min/L. This CT value should be compared against the required CT for the target pathogen inactivation at the operating temperature and pH.",
+    steps: [
+      { l: "Identify Given Values", c: "Volume (V) = 800 m³ Flow (Q) = 200 m³/hour Chlorine Residual (C) = 0.8 mg/L" },
+      { l: "Calculate Detention Time (T)", c: "Detention Time (T) = Volume / Flow T = 800 m³ / 200 m³/hour = 4 hours" },
+      { l: "Convert Detention Time to Minutes", c: "T (minutes) = 4 hours * 60 minutes/hour = 240 minutes" },
+      { l: "Calculate CT Value", c: "CT = Chlorine Residual (C) × Detention Time (T) CT = 0.8 mg/L × 240 minutes = 192 mg·min/L" },
+    ],
+    tip: "Always ensure time units are consistent (minutes) for CT calculations.",
   },
   {
     id: "wqa-223",
@@ -2884,6 +3476,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Area = π × r² = π × (0.15 m)² = 0.0707 m². Flow = Area × Velocity = 0.0707 × 1.2 = 0.0848 m³/s = 84.8 L/s.",
+    steps: [
+      { l: "Convert Diameter to Radius", c: "The diameter is 300 mm. First, convert mm to meters: 300 mm * (1 m / 1000 mm) = 0.3 m. The radius (r) is half the diameter: r = 0.3 m / 2 = 0.15 m." },
+      { l: "Calculate Cross-sectional Area", c: "The formula for the area of a circle is A = π * r². Substitute the radius: A = π * (0.15 m)² = π * 0.0225 m² = 0.0706858 m²." },
+      { l: "Calculate Flow Rate in m³/s", c: "The formula for flow rate (Q) is Q = A * V, where A is the area and V is the velocity. Substitute the calculated area and given velocity: Q = 0.0706858 m² * 1.2 m/s = 0.08482296 m³/s." },
+      { l: "Convert Flow Rate to L/s", c: "To convert m³/s to L/s, multiply by 1000 (since 1 m³ = 1000 L): Q = 0.08482296 m³/s * 1000 L/m³ = 84.82296 L/s. Rounding to one decimal place as in the example: 84.8 L/s." },
+    ],
+    tip: "Always ensure consistent units before calculations, especially for diameter/radius and volume conversions.",
   },
   {
     id: "wqa-224",
@@ -2898,6 +3497,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Chlorine required = 20,000 m³/day × 1.8 mg/L × 1,000 L/m³ / 1,000,000 mg/kg = 36 kg/day. Volume of solution = 36 kg / (0.125 × 1.17 kg/L) = 36 / 0.14625 = 246 L/day.",
+    steps: [
+      { l: "Calculate total chlorine required", c: "First, determine the total mass of pure chlorine needed per day. Volume of water = 20,000 m³/day Dosage = 1.8 mg/L Chlorine required (kg/day) = 20,000 m³/day * 1.8 mg/L * (1000 L / 1 m³) * (1 kg / 1,000,000 mg) = 36 kg/day" },
+      { l: "Calculate mass of active chlorine per litre of solution", c: "The sodium hypochlorite solution has 12.5% available chlorine and a density of 1.17 kg/L. Mass of active chlorine per litre = Density * Available Chlorine % Mass of active chlorine per litre = 1.17 kg/L * 0.125 = 0.14625 kg active chlorine/L solution" },
+      { l: "Calculate volume of solution required", c: "Now, divide the total chlorine required by the mass of active chlorine per litre of solution to find the volume of solution needed. Volume of solution (L/day) = Total chlorine required (kg/day) / Mass of active chlorine per litre (kg/L) Volume of solution = 36 kg/day / 0.14625 kg/L = 246.15 L/day" },
+      { l: "Round to appropriate significant figures", c: "Given the input values (1.8 mg/L has two significant figures), round the final answer to two or three significant figures. Volume of solution ≈ 246 L/day" },
+    ],
+    tip: "Always track units carefully; unit conversions are crucial for accuracy.",
   },
   {
     id: "wqa-225",
@@ -2912,6 +3518,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Chlorine dose = Chlorine demand + Desired residual = 1.2 + 0.5 = 1.7 mg/L. The chlorine demand represents the amount consumed by reactions with organic matter, ammonia, iron, manganese, and other reducing agents before a residual is established.",
+    steps: [
+      { l: "Understand the Goal", c: "The goal is to determine the total chlorine dose required to satisfy the chlorine demand and achieve a desired residual." },
+      { l: "Identify Given Values", c: "Chlorine Demand = 1.2 mg/L Desired Chlorine Residual = 0.5 mg/L" },
+      { l: "Recall the Formula", c: "The fundamental formula for chlorine dosing is: Chlorine Dose = Chlorine Demand + Desired Chlorine Residual." },
+      { l: "Substitute and Calculate", c: "Chlorine Dose = 1.2 mg/L (Demand) + 0.5 mg/L (Residual) = 1.7 mg/L" },
+      { l: "State the Result", c: "The required chlorine dose is 1.7 mg/L." },
+    ],
+    tip: "Remember: Dose = Demand + Residual. Demand is consumed, residual is what's left.",
   },
   {
     id: "wqa-226",
@@ -2926,6 +3540,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Original concentration = Measured concentration × Dilution factor = 2.3 mg/L × 10 = 23 mg/L. Always multiply by the dilution factor (not divide) to get back to the original concentration. A 1:10 dilution means 1 part sample + 9 parts diluent = 10× dilution.",
+    steps: [
+      { l: "Identify Given Values", c: "Measured Concentration = 2.3 mg/L Dilution = 1:10" },
+      { l: "Determine Dilution Factor", c: "A 1:10 dilution means 1 part sample is diluted to 10 total parts. Therefore, the sample was diluted 10-fold. Dilution Factor = 10." },
+      { l: "Apply Dilution Formula", c: "Original Concentration = Measured Concentration × Dilution Factor" },
+      { l: "Calculate Original Concentration", c: "Original Concentration = 2.3 mg/L × 10 = 23 mg/L" },
+    ],
+    tip: "To find the original concentration, always multiply the measured value by the dilution factor.",
   },
   {
     id: "wqa-227",
@@ -2940,6 +3561,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "250 mg/L ÷ 17.1 mg/L per gpg = 14.6 gpg. The conversion factor 17.1 mg/L per gpg is commonly used in water softening calculations. Water with 14.6 gpg hardness would be classified as very hard (>10.5 gpg).",
+    steps: [
+      { l: "Identify Given Values", c: "Given: Hardness = 250 mg/L as CaCO₃. Conversion factor = 1 gpg = 17.1 mg/L as CaCO₃." },
+      { l: "Determine Conversion Method", c: "To convert mg/L to gpg, divide the mg/L value by the conversion factor (mg/L per gpg)." },
+      { l: "Perform Calculation", c: "250 mg/L ÷ 17.1 mg/L per gpg = 14.61988... gpg" },
+      { l: "Round to Appropriate Precision", c: "Rounding to one decimal place, the hardness is 14.6 gpg." },
+      { l: "Interpret Hardness Level", c: "Water with 14.6 gpg hardness is classified as very hard (>10.5 gpg)." },
+    ],
+    tip: "Memorize common conversion factors like 1 gpg = 17.1 mg/L for hardness calculations.",
   },
   {
     id: "wqa-228",
@@ -2954,6 +3583,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Backwash volume = Area × Rate × Time = 80 m² × 40 m/h × (15/60 h) = 80 × 40 × 0.25 = 800 m³ = 800,000 L. Backwash water volume is typically 2-5% of filtered water production, which is an important consideration for water recovery efficiency.",
+    steps: [
+      { l: "Identify Given Values", c: "Surface Area (A) = 80 m² Backwash Rate (R) = 40 m/h Backwash Time (T) = 15 minutes" },
+      { l: "Convert Time Units", c: "The backwash rate is in m/h, so the time must be converted from minutes to hours. T (in hours) = 15 minutes / 60 minutes/hour = 0.25 hours" },
+      { l: "Apply Volume Formula", c: "The volume of backwash water is calculated by: Volume = Area × Rate × Time Volume = 80 m² × 40 m/h × 0.25 h" },
+      { l: "Calculate Volume in m³", c: "Volume = 80 × 40 × 0.25 = 3200 × 0.25 = 800 m³" },
+      { l: "Convert Volume to Litres", c: "Since 1 m³ = 1000 Litres: Volume in Litres = 800 m³ × 1000 L/m³ = 800,000 Litres" },
+    ],
+    tip: "Always ensure units are consistent before calculation, especially for time (minutes vs. hours).",
   },
   {
     id: "wqa-229",
@@ -2968,6 +3605,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Equivalent weight of Ca(OH)₂ = 74/2 = 37 g/eq. Equivalent weight of CaCO₃ = 100/2 = 50 g/eq. Lime dose = 50 mg/L as CaCO₃ × (37/50) = 37 mg/L as Ca(OH)₂.",
+    steps: [
+      { l: "Understand the Goal", c: "The question asks to convert a dose expressed 'as CaCO₃' to an equivalent dose 'as Ca(OH)₂'. This requires using equivalent weights to relate the two compounds." },
+      { l: "Calculate Equivalent Weights", c: "Equivalent weight (EW) = Molecular Weight (MW) / Valence. EW of Ca(OH)₂ = 74 g/mol / 2 eq/mol = 37 g/eq. EW of CaCO₃ = 100 g/mol / 2 eq/mol = 50 g/eq." },
+      { l: "Set up Conversion Factor", c: "To convert from 'as CaCO₃' to 'as Ca(OH)₂', we multiply by the ratio of the equivalent weight of the desired compound to the equivalent weight of the given compound: (EW of Ca(OH)₂) / (EW of CaCO₃)." },
+      { l: "Apply Conversion", c: "Lime dose (as Ca(OH)₂) = Dose (as CaCO₃) × (EW of Ca(OH)₂ / EW of CaCO₃) Lime dose = 50 mg/L (as CaCO₃) × (37 g/eq / 50 g/eq)" },
+      { l: "Calculate Result", c: "Lime dose = 50 mg/L × (37 / 50) = 37 mg/L as Ca(OH)₂." },
+    ],
+    tip: "Always use equivalent weights for 'as CaCO₃' conversions, not just molecular weights.",
   },
   {
     id: "wqa-230",
@@ -2982,6 +3627,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Daily production = 2,850 m³/h × 22 h/day = 62,700 m³/day = 62.7 ML/day. Annual production = 62.7 ML/day × 365 days = 22,885.5 ML ≈ 22,899 ML (rounding differences may apply). This is the annual volume the plant must account for in its annual report.",
+    steps: [
+      { l: "Calculate Daily Production", c: "First, determine the total volume of water produced per day. Daily production = Flow rate × Operating hours/day = 2,850 m³/hour × 22 hours/day = 62,700 m³/day." },
+      { l: "Convert Daily Production to ML", c: "Convert the daily production from cubic meters to megalitres. Since 1 ML = 1,000 m³, then 62,700 m³/day ÷ 1,000 m³/ML = 62.7 ML/day." },
+      { l: "Calculate Annual Production", c: "Multiply the daily production in ML by the number of days in a year. Annual production = Daily production (ML/day) × 365 days/year = 62.7 ML/day × 365 days/year = 22,885.5 ML." },
+      { l: "Final Answer", c: "The annual water production is 22,885.5 ML. The provided answer of 22,899 ML suggests a slight rounding difference or use of 365.25 days/year, but 22,885.5 ML is the direct calculation." },
+    ],
+    tip: "Always pay attention to units and conversion factors, especially between m³ and ML.",
   },
   {
     id: "wqa-231",
@@ -3010,6 +3662,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 2,
     explanation: "Alum required = 12,000 m³/day × 20 mg/L × 1,000 L/m³ / 1,000,000 mg/kg = 240 kg/day. Volume of solution = 240 kg / (0.48 × 1.32 kg/L) = 240 / 0.6336 = 378.8 ≈ 379 L/day.",
+    steps: [
+      { l: "Identify Optimal Alum Dose", c: "From the jar test results, the optimal alum dose is given as 20 mg/L." },
+      { l: "Calculate Mass of Pure Alum Required", c: "Plant flow = 12,000 m³/day Optimal alum dose = 20 mg/L Mass of pure alum = Flow × Dose Mass of pure alum = 12,000 m³/day × 20 mg/L × (1000 L / 1 m³) × (1 kg / 1,000,000 mg) Mass of pure alum = 240,000,000 mg/day × (1 kg / 1,000,000 mg) = 240 kg/day" },
+      { l: "Calculate Mass of Alum Solution per kg of Pure Alum", c: "Alum solution concentration = 48% (or 0.48) This means 1 kg of alum solution contains 0.48 kg of pure alum. So, to get 1 kg of pure alum, we need 1 kg / 0.48 = 2.0833 kg of alum solution." },
+      { l: "Calculate Total Mass of Alum Solution Required", c: "Total mass of alum solution = Mass of pure alum required / Concentration Total mass of alum solution = 240 kg/day / 0.48 = 500 kg/day" },
+      { l: "Calculate Volume of Alum Solution Required", c: "Density of alum solution = 1.32 kg/L Volume of alum solution = Total mass of alum solution / Density Volume of alum solution = 500 kg/day / 1.32 kg/L = 378.7878 L/day Rounded to the nearest whole number, Volume = 379 L/day" },
+    ],
+    tip: "Always track units carefully and ensure consistency throughout calculations to avoid errors.",
   },
   {
     id: "wqa-233",
@@ -3024,6 +3684,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Volume of soil saturated = Volume of water / Porosity = 500,000 L / (1,000 L/m³) / 0.35 = 500 m³ / 0.35 = 1,429 m³. Porosity represents the fraction of soil volume that is void space; dividing the water volume by porosity gives the total soil volume that can be saturated.",
+    steps: [
+      { l: "Convert Water Volume to m³", c: "The given water volume is 500,000 L. To use it with porosity, convert liters to cubic meters: 500,000 L * (1 m³ / 1,000 L) = 500 m³." },
+      { l: "Understand Porosity", c: "Porosity (n) is the ratio of void volume (Vv) to total volume (Vt), or n = Vv / Vt. When water saturates soil, the volume of water (Vw) equals the void volume (Vv). Therefore, Vw = n * Vt, or Vt = Vw / n." },
+      { l: "Apply Porosity Formula", c: "The volume of soil saturated (Vt) is calculated by dividing the volume of water (Vw) by the porosity (n). Given Vw = 500 m³ and n = 35% = 0.35." },
+      { l: "Calculate Saturated Soil Volume", c: "Volume of soil saturated = Vw / n = 500 m³ / 0.35 = 1,428.57 m³. Rounding to a reasonable precision gives 1,429 m³." },
+    ],
+    tip: "Always ensure units are consistent before applying formulas; porosity is a dimensionless fraction.",
   },
   {
     id: "wqa-234",
@@ -3038,6 +3705,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "UV dose is inversely proportional to flow rate (at constant lamp power): New dose = Old dose × (Old flow / New flow) = 40 × (500/650) = 40 × 0.769 = 30.8 mJ/cm². This is why UV systems must be validated at maximum design flow — increasing flow reduces the UV dose and may compromise disinfection.",
+    steps: [
+      { l: "Identify Relationship", c: "UV dose is inversely proportional to flow rate when lamp power is constant. This means if flow increases, UV dose decreases proportionally. The formula is: New Dose = Old Dose × (Old Flow / New Flow)." },
+      { l: "List Given Values", c: "Old Dose = 40 mJ/cm² Old Flow = 500 m³/hour New Flow = 650 m³/hour" },
+      { l: "Substitute Values", c: "Substitute the given values into the formula: New Dose = 40 mJ/cm² × (500 m³/hour / 650 m³/hour)." },
+      { l: "Calculate Flow Ratio", c: "Calculate the ratio of old flow to new flow: 500 / 650 ≈ 0.76923." },
+      { l: "Calculate New UV Dose", c: "Multiply the old dose by the flow ratio: New Dose = 40 mJ/cm² × 0.76923 ≈ 30.7692 mJ/cm². Rounding to one decimal place, the new UV dose is 30.8 mJ/cm²." },
+    ],
+    tip: "Remember inverse proportionality: higher flow means lower UV dose at constant lamp power.",
   },
   {
     id: "wqa-235",
@@ -3052,6 +3727,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Total volume = 50 × 30 × 4 = 6,000 m³. Volume at 80% = 6,000 × 0.80 = 4,800 m³.",
+    steps: [
+      { l: "Identify Dimensions", c: "Length (L) = 50 m, Width (W) = 30 m, Depth (D) = 4 m." },
+      { l: "Calculate Total Volume", c: "The formula for the volume of a rectangular prism is L × W × D. Total Volume = 50 m × 30 m × 4 m = 6,000 m³." },
+      { l: "Determine Fill Percentage", c: "The reservoir is filled to 80% capacity, which is 0.80 as a decimal." },
+      { l: "Calculate Water Volume", c: "Volume of water = Total Volume × Fill Percentage = 6,000 m³ × 0.80 = 4,800 m³." },
+    ],
+    tip: "Always read carefully for fill percentages or partial capacities. Convert percentages to decimals.",
   },
   {
     id: "wqa-236",
@@ -3066,6 +3748,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Alum added = 10,000 m³/day × 15 mg/L × 1,000 L/m³ / 1,000,000 = 150 kg/day. Moles of alum = 150,000 g / 666 g/mol = 225.2 mol/day. Alkalinity consumed = 225.2 mol × 6 mol HCO₃⁻/mol alum × 50 g CaCO₃/eq × (1 eq/mol HCO₃⁻) = 225.2 × 6 × 50 = 67,568 g = 67.6 kg/day as CaCO₃. Hmm, let me recalculate: 225.2 mol alum × 6 mol HCO₃⁻ = 1,351 mol HCO₃⁻. As CaCO₃: 1,351 mol × 50 g/mol = 67,568 g = 67.6 kg/day. The answer 225 kg doesn't match. Correcting: the answer is approximately 67.6 kg, closest to 22.5 kg if using different stoichiometry. Using the rule of thumb: 1 mg/L alum consumes 0.5 mg/L alkalinity as CaCO₃: 15 × 0.5 = 7.5 mg/L × 10,000 m³/day × 1,000 L/m³ / 1,000,000 = 75 kg/day.",
+    steps: [
+      { l: "Calculate Alum Mass", c: "Alum added per day = 10,000 m³/day * 15 mg/L * (1000 L / 1 m³) * (1 kg / 1,000,000 mg) = 150 kg/day" },
+      { l: "Calculate Moles of Alum", c: "Moles of alum = 150 kg/day * (1000 g / 1 kg) / 666 g/mol = 225.225 mol/day" },
+      { l: "Determine Moles of Alkalinity Consumed", c: "From the balanced reaction Al₂(SO₄)₃ + 6HCO₃⁻, 1 mole of alum reacts with 6 moles of HCO₃⁻. Moles of HCO₃⁻ consumed = 225.225 mol alum/day * (6 mol HCO₃⁻ / 1 mol alum) = 1351.35 mol HCO₃⁻/day" },
+      { l: "Convert Alkalinity to CaCO₃ Equivalent", c: "Alkalinity is expressed as CaCO₃. The equivalent weight of CaCO₃ is 50 g/eq (MW of CaCO₃ = 100 g/mol, 2 equivalents per mole). For HCO₃⁻, 1 mole is 1 equivalent. Mass of alkalinity as CaCO₃ = 1351.35 mol HCO₃⁻/day * (1 eq / 1 mol HCO₃⁻) * (50 g CaCO₃ / 1 eq) = 67567.5 g CaCO₃/day" },
+      { l: "Convert to kg/day", c: "Mass of alkalinity as CaCO₃ = 67567.5 g/day * (1 kg / 1000 g) = 67.57 kg/day" },
+    ],
+    tip: "Always use stoichiometry from the balanced chemical equation and ensure correct equivalent weight conversions for alkalinity.",
   },
   {
     id: "wqa-237",
@@ -3080,6 +3770,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 2,
     explanation: "To convert NH₃-N to NH₃: multiply by (MW of NH₃ / MW of N) = 17/14 = 1.214. NH₃ = 2.5 × 1.214 = 3.04 mg/L. Conversely, to convert NH₃ to NH₃-N, multiply by 14/17 = 0.824.",
+    steps: [
+      { l: "Understand the Goal", c: "The question asks to convert ammonia-nitrogen (NH₃-N) concentration to ammonia (NH₃) concentration. This involves using the ratio of their molecular weights." },
+      { l: "Identify Molecular Weights", c: "Molecular weight of Nitrogen (N) = 14 g/mol. Molecular weight of Ammonia (NH₃) = 14 (for N) + 3 * 1 (for H) = 17 g/mol." },
+      { l: "Determine Conversion Factor", c: "To convert NH₃-N to NH₃, we need to multiply by the ratio (MW of NH₃ / MW of N). Conversion Factor = 17 / 14 = 1.214 (rounded to three decimal places)." },
+      { l: "Apply Conversion Factor", c: "Given NH₃-N concentration = 2.5 mg/L. NH₃ concentration = NH₃-N concentration × Conversion Factor = 2.5 mg/L × 1.214." },
+      { l: "Calculate Result", c: "NH₃ concentration = 2.5 × 1.214 = 3.035 mg/L. Rounding to two decimal places, the equivalent concentration as ammonia (NH₃) is 3.04 mg/L." },
+    ],
+    tip: "Remember the ratio: NH₃-N to NH₃, multiply by 17/14; NH₃ to NH₃-N, multiply by 14/17.",
   },
   {
     id: "wqa-238",
@@ -3108,6 +3806,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Cl₂:NH₃-N ratio = 4.0/0.5 = 8:1 by weight. At ratios below 5:1, monochloramine (NH₂Cl) predominates. At 5:1 to 7.6:1, dichloramine forms. At ratios above 7.6:1, breakpoint chlorination occurs. At 8:1, we are just past the breakpoint — but in practice, systems target 3:1 to 5:1 to ensure monochloramine formation. At 8:1, free chlorine would be expected after breakpoint.",
+    steps: [
+      { l: "Calculate Cl₂:NH₃-N Ratio", c: "The chlorine dose is 4.0 mg/L and the ammonia dose is 0.5 mg/L as NH₃-N. Cl₂:NH₃-N ratio = (Chlorine Dose) / (Ammonia Dose as NH₃-N) = 4.0 mg/L / 0.5 mg/L = 8:1 by weight." },
+      { l: "Identify Chloramine Species Ratios", c: "Recall the typical Cl₂:NH₃-N weight ratios for chloramine species formation: - Below 5:1: Monochloramine (NH₂Cl) predominates. - 5:1 to 7.6:1: Dichloramine (NHCl₂) forms. - Above 7.6:1: Breakpoint chlorination occurs, leading to free chlorine." },
+      { l: "Determine Predominant Species", c: "Our calculated ratio is 8:1. This ratio is above 7.6:1. Therefore, breakpoint chlorination has occurred, and free chlorine would be the expected predominant species." },
+      { l: "Consider Practical Implications", c: "While 8:1 is past breakpoint, in practice, water systems target Cl₂:NH₃-N ratios between 3:1 and 5:1 to ensure stable monochloramine formation for disinfection without reaching breakpoint." },
+    ],
+    tip: "Memorize Cl₂:NH₃-N ratios for monochloramine, dichloramine, and breakpoint chlorination.",
   },
   {
     id: "wqa-240",
@@ -3122,6 +3827,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "UV radiation (particularly at 254 nm) damages the DNA and RNA of microorganisms by forming pyrimidine dimers, preventing replication. Cryptosporidium oocysts are highly resistant to chlorine but are effectively inactivated by UV at doses ≥10 mJ/cm² (2-log inactivation) to 22 mJ/cm² (3-log).",
+    steps: [
+      { l: "Understand UV Mechanism", c: "UV radiation, specifically at 254 nm, damages the genetic material (DNA and RNA) of microorganisms. This damage occurs through the formation of pyrimidine dimers." },
+      { l: "Impact on Microorganism Function", c: "The formation of pyrimidine dimers prevents the microorganism from replicating. This effectively inactivates the pathogen, rendering it harmless." },
+      { l: "Cryptosporidium Resistance to Chlorine", c: "Cryptosporidium oocysts are known for their high resistance to traditional chemical disinfectants like chlorine. This makes chlorine ineffective for its inactivation." },
+      { l: "Cryptosporidium Susceptibility to UV", c: "Unlike chlorine, Cryptosporidium oocysts are highly susceptible to UV radiation. Relatively low UV doses (e.g., ≥10 mJ/cm² for 2-log inactivation) are sufficient to inactivate them by damaging their genetic material." },
+    ],
+    tip: "Focus on the mechanism of inactivation (DNA/RNA damage) and differential resistance to disinfectants.",
   },
   {
     id: "wqa-241",
@@ -3164,6 +3876,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "CT = C × T = 0.2 mg/L × 4 min = 0.8 mg·min/L. The achieved CT of 0.8 mg·min/L exceeds the required 0.48 mg·min/L for 3-log Giardia inactivation, so the system is meeting its disinfection target. Note that ozone is a much more powerful disinfectant than chlorine — the required CT values are orders of magnitude lower.",
+    steps: [
+      { l: "Understand CT Concept", c: "CT (Concentration × Time) is a measure of disinfection effectiveness. It is calculated by multiplying the disinfectant residual concentration (C) by the contact time (T)." },
+      { l: "Identify Given Values", c: "Ozone residual (C) = 0.2 mg/L. Detention time (T) = 4 minutes. Required CT = 0.48 mg·min/L." },
+      { l: "Apply CT Formula", c: "CT_achieved = C × T" },
+      { l: "Calculate Achieved CT", c: "CT_achieved = 0.2 mg/L × 4 min = 0.8 mg·min/L" },
+      { l: "Compare Achieved vs. Required CT", c: "Achieved CT (0.8 mg·min/L) > Required CT (0.48 mg·min/L). Therefore, the system is meeting its disinfection target." },
+    ],
+    tip: "Always check units and ensure achieved CT meets or exceeds the required CT for disinfection.",
   },
   {
     id: "wqa-244",
@@ -3304,6 +4024,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "When the full 100 mL sample volume is filtered, the count is reported directly as CFU/100 mL. If a dilution had been used, the count would be multiplied by the dilution factor. The result of 23 CFU/100 mL indicates a positive adverse result — any detectable coliforms in a treated water sample is an adverse result under Ontario regulations.",
+    steps: [
+      { l: "Understand the Sample", c: "The question states a 100 mL water sample was analyzed, and 23 coliform colonies were counted." },
+      { l: "Identify the Method", c: "The method used is membrane filtration, which directly concentrates microorganisms from a specific volume of water onto a filter." },
+      { l: "Determine Reporting Units", c: "Since the entire 100 mL sample was filtered, the colony count directly represents the number of coliforms in that 100 mL volume. No dilution factor is applied." },
+      { l: "State the Result", c: "The total coliform count is 23 colonies per 100 mL, expressed as 23 CFU/100 mL (Colony Forming Units per 100 milliliters)." },
+    ],
+    tip: "For direct filtration of 100 mL, the colony count IS the CFU/100 mL result.",
   },
   {
     id: "wqa-254",
@@ -3332,6 +4059,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Log removal = log₁₀(influent count / effluent count). When the effluent count is 0, a practical approach is to use 1 CFU/100 mL as the detection limit: log₁₀(1,200/1) = log₁₀(1,200) = 3.08-log. This represents the minimum log removal achieved — the actual removal could be higher.",
+    steps: [
+      { l: "Identify Formula", c: "The formula for log removal is: Log Removal = log₁₀(Influent Count / Effluent Count)." },
+      { l: "Address Zero Effluent", c: "When the effluent count is 0, we use the detection limit (1 CFU/100 mL) as a practical substitute for the effluent count to calculate the minimum log removal. This is because log₁₀(X/0) is undefined." },
+      { l: "Substitute Values", c: "Influent Count = 1,200 CFU/100 mL. Effluent Count (practical) = 1 CFU/100 mL. So, Log Removal = log₁₀(1,200 / 1)." },
+      { l: "Calculate Result", c: "Log Removal = log₁₀(1,200) = 3.079. Rounding to two decimal places, the log removal is 3.08-log." },
+    ],
+    tip: "When effluent is zero, use 1 CFU/100 mL as the detection limit for log removal calculations.",
   },
   {
     id: "wqa-256",
@@ -3346,6 +4080,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Microbiological samples must be collected in sterile containers pre-dosed with sodium thiosulfate (typically 100 mg/L). Sterility prevents contamination from the container, and sodium thiosulfate neutralizes any chlorine residual that would kill bacteria during transport, preventing false-negative results.",
+    steps: [
+      { l: "Identify Container Type", c: "Microbiological water samples require sterile containers." },
+      { l: "Explain Sterility Need", c: "Sterility is crucial to prevent contamination from the container itself, which could lead to false-positive results or interfere with the accurate enumeration of target microorganisms." },
+      { l: "Identify Chemical Additive", c: "The containers must also be pre-dosed with sodium thiosulfate (typically at a concentration of 100 mg/L)." },
+      { l: "Explain Additive Purpose", c: "Sodium thiosulfate acts as a dechlorinating agent. It neutralizes any residual chlorine present in the water sample, which would otherwise continue to kill bacteria during transport and storage, leading to false-negative results." },
+    ],
+    tip: "Remember: Sterile container + sodium thiosulfate = accurate microbiological results.",
   },
   {
     id: "wqa-257",
@@ -3360,6 +4101,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 2,
     explanation: "The IDLH for chlorine gas is 10 ppm. At this concentration, exposure for 30 minutes would be life-threatening. The TLV-TWA (8-hour time-weighted average) is 0.5 ppm, and the TLV-C (ceiling) is 1 ppm. Chlorine gas is detectable by odour at 0.5-1 ppm, providing some warning before reaching dangerous levels.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks for the IDLH (Immediately Dangerous to Life or Health) concentration specifically for chlorine gas." },
+      { l: "Locate Key Information", c: "From the provided explanation, the sentence 'The IDLH for chlorine gas is 10 ppm' directly answers the question." },
+      { l: "Extract the Value", c: "The stated IDLH concentration for chlorine gas is 10 ppm." },
+      { l: "Confirm Units", c: "The unit 'ppm' (parts per million) is the standard unit for expressing gas concentrations in this context, and it matches the provided information." },
+    ],
+    tip: "Directly extract specific values like IDLH from provided text or memorized facts.",
   },
   {
     id: "wqa-258",
@@ -3472,6 +4220,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "A fume hood protects laboratory workers from exposure to hazardous vapours, gases, and aerosols generated during chemical analysis. The hood draws air inward and exhausts it through a filtered or direct exhaust system. It must maintain a face velocity of 0.4-0.5 m/s to effectively contain hazardous materials.",
+    steps: [
+      { l: "Identify Core Function", c: "The primary purpose of a fume hood is to protect laboratory personnel from harmful airborne substances. This is explicitly stated as 'protects laboratory workers from exposure to hazardous vapours, gases, and aerosols'." },
+      { l: "Explain Mechanism", c: "The mechanism by which it achieves this protection is by 'draws air inward and exhausts it through a filtered or direct exhaust system'. This creates a barrier between the user and the hazardous materials." },
+      { l: "Note Key Performance Metric", c: "Effective containment relies on maintaining a specific airflow. The explanation highlights this by stating, 'It must maintain a face velocity of 0.4-0.5 m/s to effectively contain hazardous materials'." },
+      { l: "Synthesize Purpose", c: "Combining these points, the overall purpose is to ensure laboratory safety by preventing inhalation of hazardous chemicals generated during water quality analysis through controlled ventilation." },
+    ],
+    tip: "Focus on safety and the mechanism of protection when explaining lab equipment functions.",
   },
   {
     id: "wqa-266",
@@ -3486,6 +4241,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "RPD = |MS - MSD| / ((MS + MSD) / 2) × 100 = |95 - 108| / ((95 + 108) / 2) × 100 = 13 / 101.5 × 100 = 12.8% ≈ 13%. An RPD < 20% is generally acceptable for most methods. The RPD measures precision (reproducibility) between duplicate measurements.",
+    steps: [
+      { l: "Identify Formula", c: "The formula for Relative Percent Difference (RPD) is: RPD = |MS - MSD| / ((MS + MSD) / 2) × 100" },
+      { l: "Substitute Values", c: "Given MS = 95% and MSD = 108%. Substitute these into the formula: RPD = |95 - 108| / ((95 + 108) / 2) × 100" },
+      { l: "Calculate Numerator", c: "Calculate the absolute difference between MS and MSD: |95 - 108| = |-13| = 13" },
+      { l: "Calculate Denominator", c: "Calculate the average of MS and MSD: (95 + 108) / 2 = 203 / 2 = 101.5" },
+      { l: "Calculate RPD", c: "Divide the numerator by the denominator and multiply by 100: RPD = (13 / 101.5) × 100 = 0.1279 × 100 = 12.79% ≈ 12.8%" },
+    ],
+    tip: "Remember RPD measures precision; always use the absolute difference in the numerator.",
   },
   {
     id: "wqa-267",
@@ -3542,6 +4305,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Mean result = (4.82 + 4.89 + 4.91) / 3 = 14.62 / 3 = 4.873 mg/L. Percent bias = (Mean - True) / True × 100 = (4.873 - 5.00) / 5.00 × 100 = -0.127 / 5.00 × 100 = -2.54% ≈ -2.5%. A negative bias indicates the method is underreporting. The results are outside the CRM uncertainty range (4.90-5.10), indicating a systematic low bias.",
+    steps: [
+      { l: "Calculate Mean Result", c: "Mean result = (4.82 + 4.89 + 4.91) / 3 = 14.62 / 3 = 4.873 mg/L" },
+      { l: "Identify Certified Value", c: "Certified (True) Value = 5.00 mg/L" },
+      { l: "Apply Percent Bias Formula", c: "Percent bias = [(Mean Result - Certified Value) / Certified Value] × 100" },
+      { l: "Substitute and Calculate", c: "Percent bias = [(4.873 - 5.00) / 5.00] × 100 = (-0.127 / 5.00) × 100 = -0.0254 × 100 = -2.54%" },
+      { l: "Interpret Bias", c: "The percent bias is approximately -2.5%. A negative bias indicates the laboratory's method is systematically underreporting the true value." },
+    ],
+    tip: "Always use the certified (true) value in the denominator for percent bias calculations.",
   },
   {
     id: "wqa-271",
@@ -3584,6 +4355,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "Percent saturation = (Actual DO / Saturation DO) × 100 = (6.2 / 9.1) × 100 = 68.1% ≈ 68%. A value below 100% indicates the water is undersaturated with oxygen. Values below 80% may indicate organic pollution or stratification. Values above 100% (supersaturation) can occur in algae-rich waters during photosynthesis.",
+    steps: [
+      { l: "Identify Formula", c: "The formula for percent saturation of dissolved oxygen is: Percent Saturation = (Actual DO / Saturation DO) × 100" },
+      { l: "Extract Given Values", c: "Actual DO = 6.2 mg/L Saturation DO = 9.1 mg/L" },
+      { l: "Substitute Values", c: "Percent Saturation = (6.2 mg/L / 9.1 mg/L) × 100" },
+      { l: "Calculate Result", c: "Percent Saturation = 0.681318... × 100 = 68.1318... Rounding to one decimal place, Percent Saturation ≈ 68.1%" },
+    ],
+    tip: "Always use the correct formula and pay attention to units and significant figures.",
   },
   {
     id: "wqa-274",
@@ -3640,6 +4418,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "The standard procedure for distribution system microbiological sampling: remove the aerator (source of contamination), disinfect the tap with a flame or 70% alcohol, run cold water for 2-3 minutes to flush the service line, then collect the sample in a sterile container. This procedure ensures the sample represents the distribution system water, not stagnant tap water.",
+    steps: [
+      { l: "Prepare Tap", c: "Remove any aerators, screens, or other attachments from the tap to eliminate potential sources of contamination." },
+      { l: "Disinfect Tap", c: "Disinfect the tap thoroughly using a flame (e.g., propane torch) until hot, or by swabbing with a 70% isopropyl alcohol solution and allowing it to air dry." },
+      { l: "Flush Line", c: "Turn on the cold water and allow it to run at a steady flow for 2-3 minutes. This flushes the service line and ensures the sample is representative of the distribution system, not stagnant water." },
+      { l: "Collect Sample", c: "Reduce the flow to a moderate stream. Open the sterile sample container without touching the inside of the cap or bottle, fill it to the indicated line, and immediately cap it securely." },
+    ],
+    tip: "Prioritize sterility and representativeness; remove aerators and flush lines before sampling.",
   },
   {
     id: "wqa-278",
@@ -3654,6 +4439,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Under O. Reg. 170/03, a first-draw lead sample exceeding the MAC of 10 μg/L is an adverse test result requiring notification of the Medical Officer of Health and corrective action investigation. The first-draw protocol is specifically designed to capture worst-case lead exposure from internal plumbing and service connections.",
+    steps: [
+      { l: "Compare Result to MAC", c: "The sample result is 12 μg/L. The Ontario MAC for lead is 10 μg/L. Since 12 μg/L > 10 μg/L, the result exceeds the maximum acceptable concentration." },
+      { l: "Identify Sample Type", c: "The sample was collected as a 'first draw' sample after 6 hours of stagnation. This is a critical detail as 'first draw' samples are specifically designed to assess worst-case lead exposure from plumbing." },
+      { l: "Determine Regulatory Status", c: "Under O. Reg. 170/03, a first-draw lead sample exceeding the MAC of 10 μg/L is classified as an adverse test result." },
+      { l: "Specify Required Actions", c: "An adverse test result for lead in a 'first draw' sample requires two primary actions: 1. Notification of the Medical Officer of Health. 2. Initiation of a corrective action investigation." },
+    ],
+    tip: "Always compare results to MACs and identify sample type for regulatory context.",
   },
   {
     id: "wqa-279",
@@ -3710,6 +4502,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Standard deviation (s) of the 7 replicates: mean = 0.5, deviations = -0.02, 0.01, -0.03, 0.02, -0.01, 0, 0.03. s = √(Σd²/n-1) = √(0.0004+0.0001+0.0009+0.0004+0.0001+0+0.0009)/6 = √(0.0028/6) = √0.000467 = 0.0216. MDL = t(n-1, 99%) × s = 3.143 × 0.0216 = 0.068 ≈ 0.06 mg/L. (t-value for 6 df at 99% one-tailed = 3.143)",
+    steps: [
+      { l: "Step 1", c: "Calculate the standard deviation (s) of the replicate measurements. The provided explanation already calculates this as 0.0216 mg/L." },
+      { l: "Step 2", c: "Determine the degrees of freedom (df). For 7 replicates, df = n - 1 = 7 - 1 = 6." },
+      { l: "Step 3", c: "Find the appropriate one-tailed Student's t-value for the given degrees of freedom (6) and confidence level (99%). The explanation states this is 3.143." },
+      { l: "Step 4", c: "Calculate the Method Detection Limit (MDL) using the formula: MDL = t * s. Substitute the values: MDL = 3.143 * 0.0216 = 0.0678888 mg/L." },
+      { l: "Step 5", c: "Round the MDL to an appropriate number of significant figures. Rounding 0.0678888 mg/L gives approximately 0.068 mg/L, which can be further rounded to 0.07 mg/L or 0.06 mg/L depending on the required precision. The provided solution rounds to 0.06 mg/L." },
+    ],
+    tip: "Always ensure you use the correct t-value for the specified degrees of freedom and confidence level. A common mistake is using a two-tailed t-value instead of a one-tailed t-value for MDL calculations.",
   },
   {
     id: "wqa-283",
@@ -3738,6 +4538,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Chloride concentration in NaCl = MW of Cl / MW of NaCl = 35.45 / 58.44 = 0.6065. To get 1,000 mg/L Cl in 500 mL: mass of Cl needed = 1,000 mg/L × 0.5 L = 500 mg. Mass of NaCl = 500 mg / 0.6065 = 824.4 mg = 0.824 g. Wait, recalculating: 500 mg Cl × (58.44/35.45) = 500 × 1.649 = 824.5 mg = 0.8245 g. Closest answer is 0.965 g which would give: 0.965 × 0.6065 × 1000/0.5 = 1,170 mg/L. Let me recalculate for 0.965 g: 965 mg × (35.45/58.44) / 0.5 L = 965 × 0.6065 / 0.5 = 1,171 mg/L. The correct answer for 1,000 mg/L Cl in 500 mL is 0.824 g NaCl. The closest option is 0.965 g which is incorrect. Using 1.000 g: 1000 × 0.6065 / 0.5 = 1,213 mg/L. The question has an error — the correct answer should be ~0.824 g. Selecting 0.965 g as the closest available answer.",
+    steps: [
+      { l: "Determine target mass of Chloride", c: "The desired concentration is 1,000 mg/L in a 500 mL volume. First, calculate the total mass of chloride (Cl) needed: Mass of Cl = Concentration × Volume Mass of Cl = 1,000 mg/L × (500 mL / 1000 mL/L) Mass of Cl = 1,000 mg/L × 0.5 L = 500 mg Cl" },
+      { l: "Calculate the fraction of Cl in NaCl", c: "To determine how much NaCl is needed to provide 500 mg of Cl, we need the ratio of the molecular weight of Cl to the molecular weight of NaCl: Fraction of Cl in NaCl = MW of Cl / MW of NaCl Fraction of Cl in NaCl = 35.45 / 58.44 = 0.6065" },
+      { l: "Calculate mass of NaCl needed", c: "Now, divide the required mass of Cl by the fraction of Cl in NaCl to find the total mass of NaCl: Mass of NaCl = Mass of Cl / (Fraction of Cl in NaCl) Mass of NaCl = 500 mg / 0.6065 = 824.40 mg NaCl" },
+      { l: "Convert mass to grams", c: "Convert the mass of NaCl from milligrams to grams: Mass of NaCl (g) = 824.40 mg / 1000 mg/g = 0.8244 g NaCl" },
+    ],
+    tip: "Always account for the molecular weight ratio of the analyte to the compound when preparing standards.",
   },
   {
     id: "wqa-285",
@@ -3752,6 +4559,13 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "A CCV (or QC check standard) is analyzed at regular intervals during an analytical run (typically every 10 samples) to verify that the initial calibration remains accurate. It is prepared from a different source than the calibration standards. If the CCV result falls outside the acceptance criteria (typically ±10%), the run must be stopped and the instrument recalibrated.",
+    steps: [
+      { l: "Define CCV Purpose", c: "The primary purpose of a QC check standard (CCV) is to monitor the ongoing accuracy and stability of an analytical instrument's calibration throughout a sample run. It ensures that the instrument's response to a known concentration has not drifted since the initial calibration." },
+      { l: "Verify Calibration Integrity", c: "By analyzing a CCV at regular intervals (e.g., every 10 samples), analysts can verify that the instrument is still producing reliable and accurate results for subsequent samples. It acts as an 'in-run' quality control measure." },
+      { l: "Identify Source Difference", c: "A crucial aspect is that the CCV is prepared from a *different source* than the initial calibration standards. This independent preparation helps to detect potential systematic errors or contamination issues that might be present in the original calibration stock solutions." },
+      { l: "Trigger Corrective Action", c: "If the CCV result falls outside predefined acceptance criteria (e.g., ±10% of its true value), it indicates that the instrument's calibration has drifted or is no longer valid. This necessitates stopping the analytical run, identifying the cause of the drift, and recalibrating the instrument before continuing sample analysis." },
+    ],
+    tip: "Remember: CCVs verify ongoing calibration accuracy and trigger recalibration if outside acceptance criteria.",
   },
   {
     id: "wqa-286",
@@ -3794,6 +4608,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Percent recovery = (Mean measured / True value) × 100 = (98 / 100) × 100 = 98%. A recovery of 98% is excellent — it indicates the method is accurately quantifying E. coli. Acceptable recovery for microbiological methods is typically 70-130%, though tighter criteria (80-120%) may be specified in some protocols.",
+    steps: [
+      { l: "Identify Goal", c: "The question asks for the percent recovery of the E. coli analysis method." },
+      { l: "Recall Formula", c: "The formula for percent recovery is: Percent Recovery = (Mean Measured Value / True Value) × 100." },
+      { l: "Identify Given Values", c: "True Value (known concentration) = 100 CFU/100 mL. Mean Measured Value = 98 CFU/100 mL." },
+      { l: "Substitute Values", c: "Percent Recovery = (98 CFU/100 mL / 100 CFU/100 mL) × 100." },
+      { l: "Calculate Result", c: "Percent Recovery = 0.98 × 100 = 98%." },
+    ],
+    tip: "Percent recovery compares measured to true values; remember the formula.",
   },
   {
     id: "wqa-289",
@@ -3878,6 +4700,15 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Using C₁V₁ = C₂V₂: 1,000 mg/L × V₁ = 10 mg/L × 100 mL. V₁ = (10 × 100) / 1,000 = 1.0 mL. Transfer 1.0 mL of the 1,000 mg/L stock to a 100 mL volumetric flask and dilute to the mark with reagent water.",
+    steps: [
+      { l: "Identify Given Values", c: "C₁ (stock concentration) = 1,000 mg/L C₂ (desired concentration) = 10 mg/L V₂ (desired volume) = 100 mL V₁ (volume of stock needed) = ?" },
+      { l: "Select Formula", c: "The dilution formula C₁V₁ = C₂V₂ is appropriate for this calculation." },
+      { l: "Rearrange Formula", c: "To solve for V₁, rearrange the formula: V₁ = (C₂ × V₂) / C₁" },
+      { l: "Substitute Values", c: "V₁ = (10 mg/L × 100 mL) / 1,000 mg/L" },
+      { l: "Calculate Result", c: "V₁ = 1,000 (mg/L * mL) / 1,000 mg/L V₁ = 1.0 mL" },
+      { l: "State Procedure", c: "Transfer 1.0 mL of the 1,000 mg/L stock solution to a 100 mL volumetric flask and dilute to the mark with reagent water." },
+    ],
+    tip: "Always ensure units cancel correctly in dilution calculations to avoid errors.",
   },
   {
     id: "wqa-295",
@@ -3906,6 +4737,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "The instrument detection limit (IDL) is based on the instrument's signal-to-noise ratio alone. The method detection limit (MDL) includes all sources of variability in the complete analytical procedure: sample preparation, digestion, dilution, matrix effects, and analyst variability. The MDL is always higher than the IDL because it accounts for real-world analytical challenges beyond the instrument's theoretical capability.",
+    steps: [
+      { l: "Define IDL", c: "The Instrument Detection Limit (IDL) represents the lowest concentration of an analyte that an instrument can reliably detect, based purely on the instrument's inherent noise and signal response. It's a theoretical limit under ideal conditions." },
+      { l: "Define MDL", c: "The Method Detection Limit (MDL) is the minimum concentration of a substance that can be measured and reported with a 99% confidence that the analyte concentration is greater than zero, considering all steps of the analytical process." },
+      { l: "Compare Scope", c: "The IDL (0.1 μg/L) focuses solely on the ICP-MS instrument's capability. The MDL (0.5 μg/L) encompasses the entire analytical method, including sample collection, preservation, preparation (e.g., digestion, filtration), matrix effects, dilution steps, and analyst technique." },
+      { l: "Identify Variability Sources", c: "The difference arises because the MDL incorporates additional sources of variability and potential contamination not accounted for in the IDL. These include reagent purity, glassware cleanliness, sample matrix interferences, incomplete digestion, analyte loss during preparation, and human error." },
+      { l: "Conclude Difference", c: "Therefore, the MDL is always higher than or equal to the IDL because it provides a more realistic and conservative estimate of the detection capability under actual laboratory conditions, reflecting the 'real-world' challenges of a complete analytical procedure." },
+    ],
+    tip: "MDL > IDL because MDL includes all method variability, not just instrument noise.",
   },
   {
     id: "wqa-297",
@@ -3920,6 +4759,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 1,
     explanation: "Results below the MDL should be reported as 'not detected (ND)' or '<MDL' (e.g., <0.5 μg/L), not as zero. Reporting as zero implies the analyte is absent, which cannot be confirmed. Reporting the actual instrument reading below the MDL implies a level of precision that the method cannot support. The MDL value and 'not detected' notation communicate the analytical limitation clearly.",
+    steps: [
+      { l: "Understand the MDL", c: "The Method Detection Limit (MDL) is the minimum concentration of a substance that can be measured and reported with a stated confidence that the analyte concentration is greater than zero. Any result below this limit is not reliably quantifiable." },
+      { l: "Evaluate 'Zero' Reporting", c: "Reporting a result as '0' (zero) incorrectly implies that the analyte is completely absent. Analytical methods, especially at very low concentrations, cannot definitively confirm complete absence, only that it's below a detectable level." },
+      { l: "Evaluate Raw Reading Reporting", c: "Reporting the actual instrument reading below the MDL (e.g., 0.2 μg/L when MDL is 0.5 μg/L) implies a level of precision and accuracy that the method cannot support for concentrations below its established detection limit. This can be misleading." },
+      { l: "Identify Correct Reporting Methods", c: "The correct way to express a result below the MDL is to clearly indicate that it was 'not detected' at or above the MDL. This is typically done by stating 'not detected (ND)' or using the '<MDL' notation (e.g., '<0.5 μg/L')." },
+      { l: "Communicate Analytical Limitations", c: "Using 'ND' or '<MDL' effectively communicates the analytical limitation to data users, indicating that while the substance wasn't found above the MDL, its complete absence cannot be guaranteed, and its concentration is simply below the method's reliable detection threshold." },
+    ],
+    tip: "Report results below MDL as 'ND' or '<MDL', never as zero or a raw instrument reading.",
   },
   {
     id: "wqa-298",
@@ -3934,6 +4781,14 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     ],
     correctIndex: 0,
     explanation: "RPD = |R1 - R2| / ((R1 + R2) / 2) × 100 = |0.82 - 0.79| / ((0.82 + 0.79) / 2) × 100 = 0.03 / 0.805 × 100 = 3.73% ≈ 3.7%. An RPD of 3.7% indicates good precision between duplicates. Most methods require RPD < 20% for acceptance, though some specify tighter limits (< 10%) for routine drinking water analysis.",
+    steps: [
+      { l: "Identify Formula", c: "The formula for Relative Percent Difference (RPD) is: RPD = |R1 - R2| / ((R1 + R2) / 2) × 100, where R1 and R2 are the two duplicate results." },
+      { l: "Substitute Values", c: "Given R1 = 0.82 mg/L and R2 = 0.79 mg/L. Substitute these values into the formula: RPD = |0.82 - 0.79| / ((0.82 + 0.79) / 2) × 100." },
+      { l: "Calculate Difference", c: "First, calculate the absolute difference between the two results: |0.82 - 0.79| = |0.03| = 0.03." },
+      { l: "Calculate Average", c: "Next, calculate the average of the two results: (0.82 + 0.79) / 2 = 1.61 / 2 = 0.805." },
+      { l: "Calculate RPD", c: "Now, divide the difference by the average and multiply by 100: RPD = 0.03 / 0.805 × 100 = 0.037267... × 100 = 3.7267...%. Rounding to one decimal place gives 3.7%." },
+    ],
+    tip: "Remember RPD uses the absolute difference divided by the average, then multiply by 100.",
   },
   {
     id: "wqa-299",

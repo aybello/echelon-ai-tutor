@@ -2,7 +2,7 @@
 // Certification: Ontario Water Quality Analyst (WQA)
 // Based on O. Reg. 248/03, O. Reg. 170/03, and WQA Need-to-Know document
 import { useState, useCallback, useMemo } from "react";
-import { Link } from "wouter";
+import { Link, useSearch} from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { WQA_QUESTIONS, WQA_MODULES, WQA_FORMULA_LINKS, type WQAQuestion, type WQAModule } from "@/lib/wqaQuestions";
 import { type Question, type HistoryEntry, getNextQuestion, getPatternInsights } from "@/lib/questions";
@@ -72,7 +72,9 @@ export default function WQAQuiz() {
   });
 
   const [selectedModule, setSelectedModule] = useState<WQAModule | "All">("All");
-  const [calcOnly, setCalcOnly] = useState(false);
+  const searchString = useSearch();
+  const initialCalcOnly = new URLSearchParams(searchString).get("calcOnly") === "true";
+    const [calcOnly, setCalcOnly] = useState(initialCalcOnly);
   const [showModuleSelector, setShowModuleSelector] = useState(false);
   const [history, setHistory]       = useState<HistoryEntry[]>([]);
   const [selected, setSelected]     = useState<number | null>(null);

@@ -7539,6 +7539,14 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     ],
     correct: 1,
     explanation: "Chlorine residual exceedance response: (1) TRC = 1.4 mg/L exceeds the ECA maximum of 1.0 mg/L; this is a regulatory exceedance; (2) Immediate action: reduce hypochlorite dose; the dose-response relationship is: TRC = hypochlorite dose - chlorine demand; if demand is constant, reduce dose by approximately 0.4 mg/L Cl2 equivalent; (3) MECP notification: check the ECA conditions; some ECAs require immediate notification for any exceedance; others allow a grace period; contact the local MECP district office; (4) Investigate cause: check for changes in effluent characteristics that may have reduced chlorine demand: lower ammonia (less chloramine formation), lower BOD/TSS (less organic chlorine demand), or a change in hypochlorite concentration; (5) Chlorine residual and aquatic toxicity: chlorine residual > 0.1 mg/L is acutely toxic to fish; the ECA maximum of 1.0 mg/L is set to protect the receiving water; (6) Dechlorination: if TRC cannot be controlled below 1.0 mg/L, consider adding sodium bisulfite for dechlorination.",
+  steps: [
+    { l: "Identify Given Values", c: "ECA Minimum TRC = 0.5 mg/L, ECA Maximum TRC = 1.0 mg/L, Measured TRC = 1.4 mg/L" },
+    { l: "Assess Compliance", c: "The measured TRC of 1.4 mg/L exceeds the ECA maximum limit of 1.0 mg/L. This constitutes a regulatory exceedance." },
+    { l: "Immediate Action", c: "Reduce the sodium hypochlorite dose to bring the TRC back within the permitted range. A reduction of approximately 0.4 mg/L (1.4 - 1.0) in TRC is needed." },
+    { l: "Further Action", c: "Investigate the cause of the high residual. This could include changes in flow, chlorine demand, or equipment malfunction. Adjust the dosage control system if automated." },
+    { l: "Result", c: "The TRC of 1.4 mg/L exceeds the ECA maximum. Immediately reduce the sodium hypochlorite dose and investigate the cause." }
+  ],
+  tip: "Monitor chlorine residual closely; exceedances require immediate dose adjustment and investigation.",
     difficulty: "medium",
   },
   {
@@ -7644,6 +7652,13 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     ],
     correct: 1,
     explanation: "MBR transmembrane pressure (TMP) increase: (1) Mechanism: TMP = pressure required to push water through the membrane; as fouling increases, more pressure is needed; (2) Fouling types: (a) Cake layer: reversible; removed by backpulse or relaxation; (b) Pore blocking: partially reversible; removed by chemical cleaning; (c) Irreversible fouling: permanent; reduces membrane life; (3) TMP interpretation: normal TMP 10-30 kPa; TMP 30-50 kPa: moderate fouling; TMP > 50-60 kPa: severe fouling requiring recovery cleaning; (4) Maintenance actions: (a) Increase relaxation frequency: stop permeate flow for 1-2 minutes every 8-10 minutes to allow cake layer to relax; (b) Backpulse: reverse flow through membrane to dislodge cake; (c) Maintenance cleaning (weekly): soak membranes in 500-1,000 mg/L NaOCl for 30-60 minutes to remove biological fouling; (d) Recovery cleaning (when TMP > 60 kPa): 2,000-3,000 mg/L NaOCl + citric acid for mineral fouling; (e) Reduce MLSS: if MLSS > 12,000 mg/L, increase WAS to reduce MLSS; (f) Check aeration: membrane aeration scouring must be functioning to prevent cake buildup.",
+  steps: [
+    { l: "Understanding the concept", c: "Transmembrane pressure (TMP) is the pressure difference across the membrane that drives the filtration process. An increase in TMP over time, while maintaining a constant flux (flow rate), indicates increased resistance to flow through the membrane." },
+    { l: "Interpreting the data", c: "The TMP has increased from 15 kPa to 45 kPa over 3 months. This significant increase (a tripling of TMP) indicates that the membrane is experiencing substantial fouling." },
+    { l: "What does this indicate?", c: "An increasing TMP indicates membrane fouling. Fouling is the accumulation of materials (solids, organic matter, biological growth) on or within the membrane pores, which reduces the membrane\'s permeability and requires more pressure to maintain the desired flow rate." },
+    { l: "What actions should be taken?", c: "Actions to address increasing TMP due to fouling include: 1. Enhanced backwashing or relaxation cycles. 2. Chemical enhanced backwash (CEB) or maintenance cleaning using appropriate chemicals (e.g., acids for inorganic scaling, bases/oxidants for organic fouling). 3. Optimizing upstream pretreatment to reduce foulant loading. 4. If severe and persistent, a clean-in-place (CIP) may be required. 5. Monitoring and adjusting operational parameters (e.g., aeration, mixed liquor suspended solids concentration)." }
+  ],
+  tip: "Rising TMP signals membrane fouling; investigate and implement cleaning protocols promptly.",
     difficulty: "hard",
   },
   {

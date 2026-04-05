@@ -2,7 +2,7 @@
 // 502-question bank · 15-question free trial · paid full access via QuizGate
 // Mirrors Class2WastewaterQuiz structure
 import { useState, useCallback, useMemo } from "react";
-import { Link } from "wouter";
+import { Link, useSearch} from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import {
   CLASS3_WW_QUESTIONS,
@@ -78,7 +78,9 @@ export default function Class3WastewaterQuiz() {
   });
 
   const [trialUnlockedState, setTrialUnlockedState] = useState(() => isTrialUnlocked());
-  const [calcOnly, setCalcOnly] = useState(false);
+  const searchString = useSearch();
+  const initialCalcOnly = new URLSearchParams(searchString).get("calcOnly") === "true";
+    const [calcOnly, setCalcOnly] = useState(initialCalcOnly);
   const initialQ = useMemo(() => toCompat(CLASS3_WW_QUESTIONS[0]), []);
 
   const [history, setHistory] = useState<HistoryEntry[]>([]);
