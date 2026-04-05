@@ -191,7 +191,6 @@ const WATER_COURSES = [
     code: "OIT-W",
     title: "Water OIT",
     subtitle: "Operator-in-Training",
-    price: 119,
     duration: "4–6 weeks",
     questions: 500,
     description: "Foundation course covering basic water treatment principles, safety, and Ontario regulations. Your first step toward certification.",
@@ -207,7 +206,6 @@ const WATER_COURSES = [
     code: "CL1-W",
     title: "Water Class 1",
     subtitle: "Class 1 Certification",
-    price: 179,
     duration: "6–8 weeks",
     questions: 500,
     description: "Covers coagulation, flocculation, sedimentation, filtration, and disinfection in depth. Prepares you for the OWWCO Class 1 exam.",
@@ -222,7 +220,6 @@ const WATER_COURSES = [
     code: "CL2-W",
     title: "Water Class 2",
     subtitle: "Class 2 Certification",
-    price: 229,
     duration: "8–10 weeks",
     questions: 500,
     description: "Advanced process control, chemical handling, hydraulics, and troubleshooting for mid-career operators.",
@@ -238,7 +235,6 @@ const WATER_COURSES = [
     code: "CL3-W",
     title: "Water Class 3",
     subtitle: "Class 3 Certification",
-    price: 279,
     duration: "10–12 weeks",
     questions: 500,
     description: "Application-level exam prep for Class 3 Water Treatment. LSI, CT values, membranes, lime softening, SCADA, and advanced process control.",
@@ -255,7 +251,6 @@ const WATER_COURSES = [
     code: "CL4-W",
     title: "Water Class 4",
     subtitle: "Class 4 Certification",
-    price: 329,
     duration: "12–14 weeks",
     questions: 500,
     description: "The highest certification level. Full system management, regulatory compliance, and strategic operations leadership.",
@@ -274,7 +269,6 @@ const WASTEWATER_COURSES = [
     code: "OIT-WW",
     title: "Wastewater OIT",
     subtitle: "Operator-in-Training",
-    price: 119,
     duration: "4–6 weeks",
     questions: 500,
     description: "Introduction to wastewater collection, treatment principles, and Ontario regulations. Start your wastewater career here.",
@@ -290,7 +284,6 @@ const WASTEWATER_COURSES = [
     code: "CL1-WW",
     title: "Wastewater Class 1",
     subtitle: "Class 1 Certification",
-    price: 179,
     duration: "6–8 weeks",
     questions: 500,
     description: "Primary and secondary treatment, activated sludge basics, and effluent quality standards.",
@@ -305,7 +298,6 @@ const WASTEWATER_COURSES = [
     code: "CL2-WW",
     title: "Wastewater Class 2",
     subtitle: "Class 2 Certification",
-    price: 229,
     duration: "8–10 weeks",
     questions: 500,
     description: "Advanced biological treatment, nutrient removal, sludge management, and process troubleshooting.",
@@ -321,7 +313,6 @@ const WASTEWATER_COURSES = [
     code: "CL3-WW",
     title: "Wastewater Class 3",
     subtitle: "Class 3 Certification",
-    price: 279,
     duration: "10–12 weeks",
     questions: 500,
     description: "Large-scale wastewater system management, advanced process control, and regulatory leadership.",
@@ -338,7 +329,6 @@ const WASTEWATER_COURSES = [
     code: "CL4-WW",
     title: "Wastewater Class 4",
     subtitle: "Class 4 Certification",
-    price: 329,
     duration: "12–14 weeks",
     questions: 500,
     description: "The pinnacle of wastewater certification. Strategic operations, capital planning, and full regulatory compliance.",
@@ -357,7 +347,6 @@ const WQA_COURSES = [
     code: "WQA",
     title: "Water Quality Analyst",
     subtitle: "Ontario WQA Certification Prep",
-    price: 199,
     duration: "6–8 weeks",
     questions: 300,
     description: "Complete preparation for the Ontario Water Quality Analyst certification under O. Reg. 128/04. Covers sampling protocols, analytical methods, QA/QC programs, chain of custody, and regulatory reporting for accredited drinking water labs. 300 questions across 10 modules.",
@@ -377,7 +366,6 @@ const WPI_WATER_COURSES = [
     code: "WPI-W1",
     title: "WPI Class I Water",
     subtitle: "WPI Water Treatment — Class I",
-    price: 129,
     duration: "4–6 weeks",
     questions: 503,
     description: "Comprehensive WPI Class I Water Treatment prep aligned with WPI Need-to-Know Criteria. Covers coagulation, filtration, disinfection, distribution, and regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
@@ -394,7 +382,6 @@ const WPI_WATER_COURSES = [
     code: "WPI-W2",
     title: "WPI Class II Water",
     subtitle: "WPI Water Treatment — Class II",
-    price: 149,
     duration: "6–8 weeks",
     questions: 501,
     description: "Advanced WPI Class II Water Treatment prep. Covers advanced treatment processes, system design, lab monitoring, source water management, and regulatory compliance. 501 questions across 5 modules.",
@@ -411,7 +398,6 @@ const WPI_WATER_COURSES = [
     code: "WPI-W3",
     title: "WPI Class III Water",
     subtitle: "WPI Water Treatment — Class III",
-    price: 169,
     duration: "8–10 weeks",
     questions: 502,
     description: "Senior-level WPI Class III Water Treatment prep. Covers advanced process optimization, membrane systems, chemical handling, emergency response, and senior operator responsibilities.",
@@ -428,7 +414,6 @@ const WPI_WATER_COURSES = [
     code: "WPI-W4",
     title: "WPI Class IV Water",
     subtitle: "WPI Water Treatment — Class IV",
-    price: 189,
     duration: "10–12 weeks",
     questions: 501,
     description: "Chief operator-level WPI Class IV Water Treatment prep. The highest WPI water certification. Covers system-wide management, capital planning, advanced regulatory compliance, and strategic operations.",
@@ -448,7 +433,6 @@ const WPI_WASTEWATER_COURSES = [
     code: "WPI-WW1",
     title: "WPI Class I Wastewater",
     subtitle: "WPI Wastewater Treatment — Class I",
-    price: 129,
     duration: "4–6 weeks",
     questions: 501,
     description: "WPI Class I Wastewater Treatment prep aligned with WPI Need-to-Know Criteria. Covers primary and secondary treatment, activated sludge basics, effluent quality, and regulations. Recognized by EOCP, AWWOA, SAHO, and MWWA.",
@@ -465,7 +449,6 @@ const WPI_WASTEWATER_COURSES = [
     code: "WPI-WW2",
     title: "WPI Class II Wastewater",
     subtitle: "WPI Wastewater Treatment — Class II",
-    price: 149,
     duration: "6–8 weeks",
     questions: 501,
     description: "Advanced WPI Class II Wastewater Treatment prep. Covers biological nutrient removal, sludge management, advanced lab analysis, and process optimization. 501 questions across 8 modules.",
@@ -482,7 +465,6 @@ const WPI_WASTEWATER_COURSES = [
     code: "WPI-WW3",
     title: "WPI Class III Wastewater",
     subtitle: "WPI Wastewater Treatment — Class III",
-    price: 169,
     duration: "8–10 weeks",
     questions: 502,
     description: "Senior-level WPI Class III Wastewater Treatment prep. Covers advanced BNR, membrane bioreactors, industrial pretreatment, advanced biosolids, and regulatory compliance. 502 questions across 8 modules.",
@@ -499,7 +481,6 @@ const WPI_WASTEWATER_COURSES = [
     code: "WPI-WW4",
     title: "WPI Class IV Wastewater",
     subtitle: "WPI Wastewater Treatment — Class IV",
-    price: 189,
     duration: "10–12 weeks",
     questions: 502,
     description: "Chief operator-level WPI Class IV Wastewater Treatment prep. The highest WPI wastewater certification. Covers advanced process control, BNR & resource recovery, plant management, and strategic regulatory compliance. 502 questions across 7 modules.",
@@ -640,19 +621,8 @@ function CourseCard({ course }: { course: CourseType }) {
 
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
         <div>
-          <span style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>${course.price}</span>
+          <span style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>CA${(course as any).practicePassPrice}</span>
           <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 4 }}>CAD</span>
-          {'practicePassPrice' in course && (course as any).practicePassPrice && !course.comingSoon && (
-            <p style={{ fontSize: 11, margin: "3px 0 0 0" }}>
-              <Link
-                href="/pricing"
-                onClick={e => e.stopPropagation()}
-                style={{ color: course.color, fontStyle: "italic", textDecoration: "underline", textDecorationStyle: "dotted", textUnderlineOffset: 2 }}
-              >
-                Practice Pass from ${(course as any).practicePassPrice} CAD →
-              </Link>
-            </p>
-          )}
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#F8FAFC", borderRadius: 8, padding: "6px 12px" }}>
           <span style={{ fontSize: 11, color: "#64748B" }}>📝 {course.questions} questions</span>
