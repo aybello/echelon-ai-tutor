@@ -50,6 +50,7 @@ export default function Class4WaterQuiz() {
     questionId: number; module: string; topic: string;
     correct: boolean; confidence: number;
     selectedOption: number; wrongExplanation: string | null;
+    questionObj?: any;
   }>>([]);
   const [current, setCurrent]       = useState<QCompat | null>(() => toCompat(CLASS4_WATER_QUESTIONS[0]));
   const [selected, setSelected]     = useState<number | null>(null);
@@ -89,6 +90,7 @@ export default function Class4WaterQuiz() {
       confidence,
       selectedOption: selected,
       wrongExplanation: null,
+      questionObj: current,
     }]);
     setConfirmed(true);
   }, [selected, confidence, current]);
@@ -126,6 +128,18 @@ export default function Class4WaterQuiz() {
     setShowSteps(false);
     setTutorOpen(false);
   }, [history, trialUnlocked, selectedModule]);
+  const goBack = useCallback(() => {
+    if (history.length === 0) return;
+    const prev = history[history.length - 1];
+    const newHistory = history.slice(0, -1);
+    setHistory(newHistory);
+    setCurrent(prev.questionObj);
+    setSelected(prev.selectedOption);
+    setConfidence(prev.confidence);
+    setConfirmed(true);
+    setShowSteps(false);
+    setTutorOpen(false);
+  }, [history]);
 
   const sessionCount = history.length;
   const correctCount = history.filter(h => h.correct).length;
@@ -310,6 +324,14 @@ export default function Class4WaterQuiz() {
 
           {/* Confirm / Next buttons */}
           <div style={{ padding: "0 20px 20px", display: "flex", gap: 10, flexWrap: "wrap" }}>
+            {history.length > 0 && (
+              <button
+                onClick={goBack}
+                style={{ padding: "13px 16px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
+              >
+                ← Prev
+              </button>
+            )}
             {!confirmed ? (
               <button
                 onClick={confirm}

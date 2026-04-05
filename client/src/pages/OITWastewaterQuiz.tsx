@@ -68,6 +68,7 @@ type HistoryEntry = {
   selected: number;
   confidence: number;
   correct: boolean;
+  questionObj?: QCompat;
 };
 
 function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, mod?: string | null, calcOnly = false): QCompat | null {
@@ -126,7 +127,7 @@ export default function OITWastewaterQuiz() {
   const handleConfirm = useCallback(() => {
     if (selected === null || confidence === null || !current) return;
     const isCorrect = selected === current.correct;
-    const newHistory: HistoryEntry[] = [...history, { q: current, selected, confidence, correct: isCorrect }];
+    const newHistory: HistoryEntry[] = [...history, { q: current, selected, confidence, correct: isCorrect, questionObj: current }];
     setHistory(newHistory);
     setConfirmed(true);
 
@@ -145,6 +146,18 @@ export default function OITWastewaterQuiz() {
     setConfirmed(false);
     setTutorOpen(false);
   }, [current, history, trialUnlockedState, selectedModule]);
+  const goBack = useCallback(() => {
+    if (history.length === 0) return;
+    const prev = history[history.length - 1];
+    const newHistory = history.slice(0, -1);
+    setHistory(newHistory);
+    setCurrent(prev.questionObj ?? prev.q);
+    setSelected(prev.selected);
+    setConfidence(prev.confidence);
+    setConfirmed(true);
+    setTutorOpen(false);
+    setShowGate(false);
+  }, [history]);
 
   const moduleStats = useMemo(() => {
     const stats: Record<string, { correct: number; total: number }> = {};
@@ -362,12 +375,22 @@ export default function OITWastewaterQuiz() {
                   />
                 )}
 
+                <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
+                {history.length > 0 && (
+                  <button
+                    onClick={goBack}
+                    style={{ padding: "13px 16px", borderRadius: 10, border: "1.5px solid #E2E8F0", background: "#fff", color: "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
+                  >
+                    ← Prev
+                  </button>
+                )}
                 <button
                   onClick={handleNext}
                   style={{ width: "100%", padding: "13px", borderRadius: 10, background: "linear-gradient(135deg, #065F46, #0F766E)", color: "#fff", border: "none", fontSize: 15, fontWeight: 800, cursor: "pointer", fontFamily: "inherit" }}
                 >
                   Next Question →
                 </button>
+              </div>
               </div>
             )}
           </div>

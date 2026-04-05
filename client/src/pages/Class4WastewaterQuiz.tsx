@@ -55,6 +55,7 @@ type HistoryEntry = {
   selected: number;
   confidence: number;
   correct: boolean;
+  questionObj?: QCompat;
 };
 
 function getNextQ(
@@ -122,6 +123,17 @@ export default function Class4WastewaterQuiz() {
       .filter(([, s]) => s.total >= 5 && s.correct / s.total < 0.6)
       .map(([m]) => m);
   }, [history]);
+  const goBack = useCallback(() => {
+    if (history.length === 0) return;
+    const prev = history[history.length - 1];
+    const newHistory = history.slice(0, -1);
+    setHistory(newHistory);
+    setCurrent(prev.questionObj ?? prev.q);
+    setSelected(prev.selected);
+    setConfidence(prev.confidence);
+    setConfirmed(true);
+    setTutorOpen(false);
+  }, [history]);
 
   const confirm = useCallback(() => {
     if (selected === null || confidence === null || !current) return;
@@ -135,7 +147,7 @@ export default function Class4WastewaterQuiz() {
 
   const next = useCallback(() => {
     const nextQ = getNextQ(
-      [...history, { q: current!, selected: selected!, confidence: confidence!, correct: selected === current!.correct }],
+      [...history, { q: current!, selected: selected!, confidence: confidence!, correct: selected === current!.correct, questionObj: current! }],
       trialUnlockedState,
       filterModule,
       filterDiff,
@@ -324,6 +336,14 @@ export default function Class4WastewaterQuiz() {
               </div>
             )}
             {/* Confirm / Next buttons */}
+            {history.length > 0 && (
+              <button
+                onClick={goBack}
+                style={{ padding: "13px 16px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
+              >
+                ← Prev
+              </button>
+            )}
             {!confirmed ? (
               <button
                 onClick={confirm}

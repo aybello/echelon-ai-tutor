@@ -67,7 +67,7 @@ export default function Class1WaterQuiz() {
     keywords: "Class 1 water treatment exam prep, Ontario operator certification, water treatment practice questions, OWWCO Class 1, O. Reg. 128/04",
   });
 
-  const [history, setHistory]       = useState<Array<{ questionId: number; module: string; difficulty: string; correct: boolean; confidence: number; selectedOption: number; wrongExplanation: string | null }>>([]);
+  const [history, setHistory]       = useState<Array<{ questionId: number; module: string; difficulty: string; correct: boolean; confidence: number; selectedOption: number; wrongExplanation: string | null; questionObj: any }>>([]);
   const [current, setCurrent]       = useState<QCompat | null>(() => toCompat(CLASS1_WATER_QUESTIONS[0]));
   const [selected, setSelected]     = useState<number | null>(null);
   const [confidence, setConfidence] = useState<number | null>(null);
@@ -107,6 +107,7 @@ export default function Class1WaterQuiz() {
       confidence,
       selectedOption: selected,
       wrongExplanation: !isCorrect ? (current.wrongExp?.[selected] ?? null) : null,
+      questionObj: current,
     };
     const updatedHistory = [...history, entry];
     setHistory(updatedHistory);
@@ -140,6 +141,19 @@ export default function Class1WaterQuiz() {
     setShowSteps(false);
     setTutorOpen(false);
   }, [history, getNextQ]);
+  const goBack = useCallback(() => {
+    if (history.length === 0) return;
+    const prev = history[history.length - 1];
+    const newHistory = history.slice(0, -1);
+    setHistory(newHistory);
+    setCurrent(prev.questionObj);
+    setSelected(prev.selectedOption);
+    setConfidence(prev.confidence);
+    setConfirmed(true);
+    setShowSteps(false);
+    setTutorOpen(false);
+    setShowGate(false);
+  }, [history]);
 
   const resetSession = useCallback(() => {
     const shuffled = shuffle([...activeQuestions]);
@@ -371,6 +385,14 @@ export default function Class1WaterQuiz() {
 
           {/* Confirm / Next buttons */}
           <div style={{ marginTop: 20, display: "flex", gap: 10, flexWrap: "wrap" }}>
+            {history.length > 0 && (
+              <button
+                onClick={goBack}
+                style={{ padding: "13px 16px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
+              >
+                ← Prev
+              </button>
+            )}
             {!confirmed ? (
               <button
                 onClick={confirm}
@@ -381,6 +403,12 @@ export default function Class1WaterQuiz() {
               </button>
             ) : (
               <>
+                <button
+                  onClick={goBack}
+                  style={{ padding: "13px 16px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
+                >
+                  ← Prev
+                </button>
                 <button
                   onClick={next}
                   style={{ flex: 1, padding: "13px 20px", borderRadius: 12, background: "linear-gradient(135deg, #0369A1, #0E7490)", color: "#fff", fontWeight: 800, fontSize: 15, border: "none", cursor: "pointer", fontFamily: "inherit" }}

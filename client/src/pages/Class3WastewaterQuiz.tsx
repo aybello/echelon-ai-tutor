@@ -55,6 +55,7 @@ type HistoryEntry = {
   selected: number;
   confidence: number;
   correct: boolean;
+  questionObj?: QCompat;
 };
 
 function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, calcOnly = false): QCompat | null {
@@ -100,7 +101,7 @@ export default function Class3WastewaterQuiz() {
   const confirm = useCallback(() => {
     if (selected === null || confidence === null || !current) return;
     const correct = selected === current.correct;
-    setHistory((h) => [...h, { q: current, selected, confidence, correct }]);
+    setHistory((h) => [...h, { q: current, selected, confidence, correct, questionObj: current }]);
     setConfirmed(true);
   }, [selected, confidence, current]);
 
@@ -121,6 +122,18 @@ export default function Class3WastewaterQuiz() {
     setTutorOpen(false);
     setReportOpen(false);
   }, [history, trialUnlockedState, trialDone, filterModule, filterDiff]);
+  const goBack = useCallback(() => {
+    if (history.length === 0) return;
+    const prev = history[history.length - 1];
+    const newHistory = history.slice(0, -1);
+    setHistory(newHistory);
+    setCurrent(prev.questionObj ?? prev.q);
+    setSelected(prev.selected);
+    setConfidence(prev.confidence);
+    setConfirmed(true);
+    setShowSteps(false);
+    setTutorOpen(false);
+  }, [history]);
 
   const sessionCorrect = history.filter((h) => h.correct).length;
   const accuracy = sessionCount > 0 ? Math.round((sessionCorrect / sessionCount) * 100) : null;
@@ -332,6 +345,14 @@ export default function Class3WastewaterQuiz() {
             )}
 
             {/* Confirm / Next buttons */}
+            {history.length > 0 && (
+              <button
+                onClick={goBack}
+                style={{ padding: "13px 16px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
+              >
+                ← Prev
+              </button>
+            )}
             {!confirmed ? (
               <button
                 onClick={confirm}

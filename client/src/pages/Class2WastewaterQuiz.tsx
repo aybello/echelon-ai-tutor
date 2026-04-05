@@ -56,6 +56,7 @@ type HistoryEntry = {
   selected: number;
   confidence: number;
   correct: boolean;
+  questionObj?: QCompat;
 };
 
 function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, mod?: string | null, calcOnly = false): QCompat | null {
@@ -112,7 +113,7 @@ export default function Class2WastewaterQuiz() {
   const confirm = useCallback(() => {
     if (selected === null || confidence === null || !current) return;
     const isCorrect = selected === current.correct;
-    const entry: HistoryEntry = { q: current, selected, confidence, correct: isCorrect };
+    const entry: HistoryEntry = { q: current, selected, confidence, correct: isCorrect, questionObj: current };
     const newHistory = [...history, entry];
     setHistory(newHistory);
     setConfirmed(true);
@@ -140,6 +141,18 @@ export default function Class2WastewaterQuiz() {
       setTutorOpen(false);
     }
   }, [history, trialUnlockedState]);
+  const goBack = useCallback(() => {
+    if (history.length === 0) return;
+    const prev = history[history.length - 1];
+    const newHistory = history.slice(0, -1);
+    setHistory(newHistory);
+    setCurrent(prev.questionObj ?? prev.q);
+    setSelected(prev.selected);
+    setConfidence(prev.confidence);
+    setConfirmed(true);
+    setShowSteps(false);
+    setTutorOpen(false);
+  }, [history]);
 
   // Stats
   const correctCount = history.filter((h) => h.correct).length;
@@ -293,7 +306,15 @@ export default function Class2WastewaterQuiz() {
 
             {/* Action buttons */}
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 14 }}>
-              {!confirmed ? (
+              {history.length > 0 && (
+              <button
+                onClick={goBack}
+                style={{ padding: "13px 16px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
+              >
+                ← Prev
+              </button>
+            )}
+            {!confirmed ? (
                 <button
                   onClick={confirm}
                   disabled={selected === null || confidence === null}

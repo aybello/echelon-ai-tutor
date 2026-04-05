@@ -61,6 +61,7 @@ export default function WpiClass2WaterQuiz() {
       correct: boolean;
       confidence: number;
       selectedOption: number;
+      questionObj: any;
     }>
   >([]);
   const [current, setCurrent] = useState<QCompat | null>(
@@ -120,6 +121,7 @@ export default function WpiClass2WaterQuiz() {
         correct: isCorrect,
         confidence: confidence ?? 3,
         selectedOption: selected,
+        questionObj: current,
       },
     ]);
 
@@ -151,6 +153,18 @@ export default function WpiClass2WaterQuiz() {
       if (h.correct) stats[h.module].correct++;
     }
     return stats;
+  }, [history]);
+  const goBack = useCallback(() => {
+    if (history.length === 0) return;
+    const prev = history[history.length - 1];
+    const newHistory = history.slice(0, -1);
+    setHistory(newHistory);
+    setCurrent(prev.questionObj);
+    setSelected(prev.selectedOption);
+    setConfidence(prev.confidence);
+    setConfirmed(true);
+    setShowSteps(false);
+    setTutorOpen(false);
   }, [history]);
 
   // ── Trial gate ──────────────────────────────────────────────────────────────

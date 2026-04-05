@@ -145,6 +145,7 @@ export default function Class1Quiz() {
       confidence,
       selectedOption: selected,
       wrongExplanation: !isCorrect ? null : null,
+      questionObj: current,
     };
     const updatedHistory = [...history, entry];
     setHistory(updatedHistory);
@@ -174,6 +175,19 @@ export default function Class1Quiz() {
     setTutorOpen(false);
     setPatternMode(false);
   }, [history, activeQuestions, trialUnlocked]);
+  const goBack = useCallback(() => {
+    if (history.length === 0) return;
+    const prev = history[history.length - 1];
+    const newHistory = history.slice(0, -1);
+    setHistory(newHistory);
+    setCurrent(prev.questionObj);
+    setSelected(prev.selectedOption);
+    setConfidence(prev.confidence);
+    setConfirmed(true);
+    setShowSteps(false);
+    setTutorOpen(false);
+    setShowGate(false);
+  }, [history]);
 
   const resetSession = useCallback(() => {
     const shuffled = shuffle(activeQuestions.length > 0 ? activeQuestions : CLASS1_QUESTIONS);

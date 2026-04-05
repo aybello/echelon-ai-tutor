@@ -63,6 +63,7 @@ export default function WpiClass3WastewaterQuiz() {
       correct: boolean;
       confidence: number;
       selectedOption: number;
+      questionObj: any;
     }>
   >([]);
   const [current, setCurrent] = useState<QCompat | null>(
@@ -98,6 +99,18 @@ export default function WpiClass3WastewaterQuiz() {
     }
     return stats;
   }, [history]);
+  const goBack = useCallback(() => {
+    if (history.length === 0) return;
+    const prev = history[history.length - 1];
+    const newHistory = history.slice(0, -1);
+    setHistory(newHistory);
+    setCurrent(prev.questionObj);
+    setSelected(prev.selectedOption);
+    setConfidence(prev.confidence);
+    setConfirmed(true);
+    setShowSteps(false);
+    setTutorOpen(false);
+  }, [history]);
 
   const getNextQuestion = useCallback(
     (afterId?: number) => {
@@ -125,6 +138,7 @@ export default function WpiClass3WastewaterQuiz() {
         correct: isCorrect,
         confidence,
         selectedOption: selected,
+        questionObj: current,
       },
     ]);
     setConfirmed(true);

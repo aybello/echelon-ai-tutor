@@ -28,6 +28,7 @@ export interface HistoryEntry {
   confidence: number;
   selectedOption: number;
   wrongExplanation: string | null;
+  questionObj?: any;
 }
 export interface PatternInsight {
   module: string;
