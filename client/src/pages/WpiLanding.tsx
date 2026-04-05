@@ -184,6 +184,7 @@ const WATER_CLASSES = [
     formulaHref: "/formulas-wpi-class4",
     formulaDesc: "Advanced plant management formulas",
     features: ["501 chief-operator questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"],
+    badge: "👑 Chief Operator",
   },
 ];
 
@@ -497,6 +498,9 @@ export default function WpiLanding() {
                   textAlign: "left",
                   flexShrink: 0,
                 }}>
+                  {(cls as any).badge && (
+                    <div style={{ display: "inline-block", background: cls.color, color: "#FFFFFF", fontSize: 10, fontWeight: 700, borderRadius: 6, padding: "2px 8px", marginBottom: 8, letterSpacing: "0.05em" }}>{(cls as any).badge}</div>
+                  )}
                   <div style={{ fontSize: 10, fontWeight: 700, color: cls.color, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>WPI {cls.level}</div>
                   <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#0F172A", marginBottom: 3 }}>{cls.price}</div>
                   <div style={{ fontSize: 11, color: "#64748B", marginBottom: 16 }}>Unlimited · {cls.questions} questions</div>
@@ -588,7 +592,7 @@ export default function WpiLanding() {
                 { label: "WPI CLASS I WASTEWATER", price: "CA$79", questions: "500", color: "#B45309", bg: "#FFFBEB", border: "#FDE68A", href: "/wpi-class1-wastewater", btnLabel: "Get WW Class I Pass →", features: ["500 wastewater questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
                 { label: "WPI CLASS II WASTEWATER", price: "CA$99", questions: "501", color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", href: "/wpi-class2-wastewater", btnLabel: "Get WW Class II Pass →", features: ["501 advanced WW questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
                 { label: "WPI CLASS III WASTEWATER", price: "CA$129", questions: "501", color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", href: "/wpi-class3-wastewater", btnLabel: "Get WW Class III Pass →", features: ["501 senior WW questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
-                { label: "WPI CLASS IV WASTEWATER", price: "CA$149", questions: "502", color: "#6D28D9", bg: "#F5F3FF", border: "#C4B5FD", href: "/wpi-class4-wastewater", btnLabel: "Get WW Class IV Pass →", features: ["502 chief operator questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
+                { label: "WPI CLASS IV WASTEWATER", price: "CA$149", questions: "502", color: "#6D28D9", bg: "#F5F3FF", border: "#C4B5FD", href: "/wpi-class4-wastewater", btnLabel: "Get WW Class IV Pass →", features: ["502 chief operator questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"], badge: "👑 Chief Operator" },
               ].map(ww => (
                 <div key={ww.label} style={{
                   background: ww.bg,
@@ -599,6 +603,9 @@ export default function WpiLanding() {
                   textAlign: "left" as const,
                   flexShrink: 0,
                 }}>
+                  {(ww as any).badge && (
+                    <div style={{ display: "inline-block", background: ww.color, color: "#FFFFFF", fontSize: 10, fontWeight: 700, borderRadius: 6, padding: "2px 8px", marginBottom: 8, letterSpacing: "0.05em" }}>{(ww as any).badge}</div>
+                  )}
                   <div style={{ fontSize: 10, fontWeight: 700, color: ww.color, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>{ww.label}</div>
                   <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#0F172A", marginBottom: 3 }}>{ww.price}</div>
                   <div style={{ fontSize: 11, color: "#64748B", marginBottom: 16 }}>Unlimited · {ww.questions} questions</div>

@@ -228,3 +228,7 @@
 - [x] Fix WPI Water Full Ladder Bundle savings copy to CA$157 — updated Pricing.tsx, WpiLanding.tsx callout and FAQ
 - [x] Fix WPI Wastewater Full Ladder Bundle savings copy to CA$157 — updated Pricing.tsx, WpiLanding.tsx callout and FAQ
 - [x] Stripe prices for CA$149 — no action needed: checkout uses price_data with unit_amount from products.ts directly (already 14900 cents)
+- [x] Build Class 4 Water formula sheet at /formulas-water4 — already existed (751 lines), confirmed
+- [x] Build Class 4 Wastewater formula sheet at /formulas-ww4 — already existed (567 lines), confirmed
+- [x] Add Chief Operator badge to WPI Class IV Water and Wastewater cards on WPI landing page
+- [x] Fix bundle-all savings figure in Pricing.tsx — updated to CA$1,402 saved (CA$2,001 individual − CA$599 bundle), tagline updated to 19 Practice Passes

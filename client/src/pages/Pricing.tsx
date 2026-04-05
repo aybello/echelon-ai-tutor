@@ -386,10 +386,10 @@ const BUNDLES: Bundle[] = [
   {
     key: "bundle-all",
     name: "Complete All Access",
-    tagline: "All 22 Practice Passes",
+    tagline: "All 19 Practice Passes",
     description: "Every exam on the platform — Water Treatment, Wastewater, WQA, and all WPI courses. The ultimate prep bundle.",
     priceCAD: 59900,
-    savings: 49000,
+    savings: 140200,
     includes: ["OIT Water", "OIT Wastewater", "Class 1–4 Water Treatment", "Class 1–4 Wastewater", "WQA", "WPI Class I–IV Water", "WPI Class I–IV Wastewater"],
     color: "#7C3AED",
     bg: "linear-gradient(135deg, #F5F3FF, #EFF6FF)",
