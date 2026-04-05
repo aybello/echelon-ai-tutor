@@ -279,3 +279,4 @@
 - [x] Career Map deep-linking from province selection (?province=bc query param)
 - [x] Province-aware hero CTA copy on Landing page
 - [x] Store province in user profile DB and sync on selection
+- [x] Quality audit — fixed Class 1 Water duplicate IDs (62 removed), verified all paywalls, prices, routes, and math
