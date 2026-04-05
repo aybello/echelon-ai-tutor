@@ -748,8 +748,8 @@ function CourseCard({ course }: { course: CourseType }) {
               </button>
             </Link>
           )}
-          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "CL2-W" || course.code === "CL3-WW" || course.code === "CL4-WW" || course.code === "WQA") && (
-            <Link href={course.code === "WQA" ? "/wqa?calcOnly=true" : course.code === "CL1-WW" ? "/class1-ww?calcOnly=true" : course.code === "CL2-W" ? "/class2-water?calcOnly=true" : course.code === "CL3-WW" ? "/class3-ww?calcOnly=true" : course.code === "CL4-WW" ? "/class4-ww?calcOnly=true" : "/class1-water?calcOnly=true"}>
+          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "CL2-W" || course.code === "CL3-W" || course.code === "CL4-W" || course.code === "CL3-WW" || course.code === "CL4-WW" || course.code === "WQA") && (
+            <Link href={course.code === "WQA" ? "/wqa?calcOnly=true" : course.code === "CL1-WW" ? "/class1-ww?calcOnly=true" : course.code === "CL2-W" ? "/class2-water?calcOnly=true" : course.code === "CL3-W" ? "/class3-water?calcOnly=true" : course.code === "CL4-W" ? "/class4-water?calcOnly=true" : course.code === "CL3-WW" ? "/class3-ww?calcOnly=true" : course.code === "CL4-WW" ? "/class4-ww?calcOnly=true" : "/class1-water?calcOnly=true"}>
               <button style={{
                 width: "100%", padding: "10px",
                 background: "rgba(124,58,237,0.06)",

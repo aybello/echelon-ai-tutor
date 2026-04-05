@@ -69,11 +69,12 @@ export default function Class3WaterQuiz() {
   const [showGate, setShowGate] = useState(false);
 
   const activeQuestions = useMemo<QCompat[]>(() => {
-    const pool = selectedModule
+    let pool = selectedModule
       ? CLASS3_WATER_QUESTIONS.filter(q => q.module === selectedModule)
       : CLASS3_WATER_QUESTIONS;
+    if (calcOnly) pool = pool.filter(q => q.steps && q.steps.length > 0);
     return pool.map(toCompat);
-  }, [selectedModule]);
+  }, [selectedModule, calcOnly]);
 
   const confirm = useCallback(() => {
     if (selected === null || confidence === null) {
@@ -107,9 +108,10 @@ export default function Class3WaterQuiz() {
         .filter(h => !h.correct || h.confidence < 40)
         .map(h => h.questionId)
     );
-    const pool = selectedModule
+    let pool = selectedModule
       ? CLASS3_WATER_QUESTIONS.filter(q => q.module === selectedModule)
       : CLASS3_WATER_QUESTIONS;
+    if (calcOnly) pool = pool.filter(q => q.steps && q.steps.length > 0);
     const unanswered = pool.filter(q => !answeredIds.has(q.id));
     const weak = pool.filter(q => weakIds.has(q.id));
     let next: Class3WaterQuestion;

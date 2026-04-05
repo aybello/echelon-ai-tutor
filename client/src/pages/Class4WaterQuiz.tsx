@@ -105,9 +105,10 @@ export default function Class4WaterQuiz() {
         .filter(h => !h.correct || h.confidence < 40)
         .map(h => h.questionId)
     );
-    const pool = selectedModule
+    let pool = selectedModule
       ? CLASS4_WATER_QUESTIONS.filter(q => q.module === selectedModule)
       : CLASS4_WATER_QUESTIONS;
+    if (calcOnly) pool = pool.filter(q => q.steps && q.steps.length > 0);
     const unanswered = pool.filter(q => !answeredIds.has(q.id));
     const weak = pool.filter(q => weakIds.has(q.id));
     let next: Class4WaterQuestion;
