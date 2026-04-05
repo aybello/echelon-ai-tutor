@@ -745,18 +745,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "1.0 mg/L"
     ],
     correct: 1,
-    explanation: "Calculate the required free chlorine residual by dividing the given CT value by the contact time.
-
-Step 1 — Identify the formula for CT:
-CT = C × T
-
-Step 2 — Rearrange the formula to solve for C:
-C = CT ÷ T
-
-Step 3 — Substitute the given values and calculate the free chlorine residual:
-C = 6 mg·min/L ÷ 30 min = 0.2 mg/L
-
-The correct answer is **0.2 mg/L**.",
+    explanation: "Calculate the required free chlorine residual by dividing the given CT value by the contact time.\n\nStep 1 — Identify the formula for CT:\nCT = C × T\n\nStep 2 — Rearrange the formula to solve for C:\nC = CT ÷ T\n\nStep 3 — Substitute the given values and calculate the free chlorine residual:\nC = 6 mg·min/L ÷ 30 min = 0.2 mg/L\n\nThe correct answer is **0.2 mg/L**.",
     steps: [
       { l: "Formula", c: "CT = C × T" },
       { l: "Variables", c: "CT = 6 mg·min/L (given); T = 30 min (given); C = ? (unknown)" },
@@ -907,24 +896,7 @@ The correct answer is **0.2 mg/L**.",
       "A measure of detention time; typically 10-60 minutes"
     ],
     correct: 1,
-    explanation: "Understand the G value as a measure of mixing intensity and its typical range for flocculation.
-
-Step 1 — Define G value:
-The G value (velocity gradient) quantifies the intensity of mixing in water treatment processes.
-
-Step 2 — Identify G value for flocculation:
-For flocculation, the G value is typically in the range of 10-100 s⁻¹.
-
-Step 3 — Purpose of this G range:
-This range provides gentle mixing, allowing small particles to collide and form larger flocs without breaking them apart.
-
-Step 4 — Contrast with rapid mix:
-Rapid mixing, which is more intense, uses higher G values (e.g., 300-1000 s⁻¹) to quickly disperse chemicals.
-
-Step 5 — Related design parameter:
-The Gt value (G × detention time) is a key parameter used in the design of flocculation basins.
-
-The correct answer is B. A measure of mixing intensity; typically 10-100 s⁻¹ for flocculation.",
+    explanation: "Understand the G value as a measure of mixing intensity and its typical range for flocculation.\n\nStep 1 — Define G value:\nThe G value (velocity gradient) quantifies the intensity of mixing in water treatment processes.\n\nStep 2 — Identify G value for flocculation:\nFor flocculation, the G value is typically in the range of 10-100 s⁻¹.\n\nStep 3 — Purpose of this G range:\nThis range provides gentle mixing, allowing small particles to collide and form larger flocs without breaking them apart.\n\nStep 4 — Contrast with rapid mix:\nRapid mixing, which is more intense, uses higher G values (e.g., 300-1000 s⁻¹) to quickly disperse chemicals.\n\nStep 5 — Related design parameter:\nThe Gt value (G × detention time) is a key parameter used in the design of flocculation basins.\n\nThe correct answer is B. A measure of mixing intensity; typically 10-100 s⁻¹ for flocculation.",
     steps: [
       { l: "Understand the Question", c: "The question asks for the definition of G value and its typical range in flocculation." },
       { l: "Define G Value", c: "The G value, or velocity gradient (s⁻¹), is a measure of the mixing intensity in a fluid." },
@@ -962,23 +934,7 @@ The correct answer is B. A measure of mixing intensity; typically 10-100 s⁻¹ 
       "50 mg/L — lowest turbidity"
     ],
     correct: 2,
-    explanation: "Identify the optimal alum dose by evaluating the turbidity reduction at each dose and considering the point of diminishing returns.
-
-Step 1 — Evaluate turbidity reduction at 10 mg/L:
-Alum dose = 10 mg/L, Turbidity = 8 NTU. This dose is too low as turbidity remains high.
-
-Step 2 — Evaluate turbidity reduction at 20 mg/L:
-Alum dose = 20 mg/L, Turbidity = 3 NTU. Turbidity is significantly reduced but still above 1 NTU.
-
-Step 3 — Evaluate turbidity reduction at 30 mg/L:
-Alum dose = 30 mg/L, Turbidity = 0.8 NTU. Turbidity is reduced to below 1 NTU, which is a common target for treated water.
-
-Step 4 — Evaluate turbidity reduction at 40 mg/L and 50 mg/L:
-Alum dose = 40 mg/L, Turbidity = 0.6 NTU.
-Alum dose = 50 mg/L, Turbidity = 0.5 NTU.
-Increasing the dose from 30 mg/L to 40 mg/L or 50 mg/L provides only a marginal additional reduction in turbidity (0.2 NTU and 0.3 NTU respectively) at an increased chemical cost and sludge production.
-
-The correct answer is 30 mg/L — achieves turbidity below 1 NTU.",
+    explanation: "Identify the optimal alum dose by evaluating the turbidity reduction at each dose and considering the point of diminishing returns.\n\nStep 1 — Evaluate turbidity reduction at 10 mg/L:\nAlum dose = 10 mg/L, Turbidity = 8 NTU. This dose is too low as turbidity remains high.\n\nStep 2 — Evaluate turbidity reduction at 20 mg/L:\nAlum dose = 20 mg/L, Turbidity = 3 NTU. Turbidity is significantly reduced but still above 1 NTU.\n\nStep 3 — Evaluate turbidity reduction at 30 mg/L:\nAlum dose = 30 mg/L, Turbidity = 0.8 NTU. Turbidity is reduced to below 1 NTU, which is a common target for treated water.\n\nStep 4 — Evaluate turbidity reduction at 40 mg/L and 50 mg/L:\nAlum dose = 40 mg/L, Turbidity = 0.6 NTU.\nAlum dose = 50 mg/L, Turbidity = 0.5 NTU.\nIncreasing the dose from 30 mg/L to 40 mg/L or 50 mg/L provides only a marginal additional reduction in turbidity (0.2 NTU and 0.3 NTU respectively) at an increased chemical cost and sludge production.\n\nThe correct answer is 30 mg/L — achieves turbidity below 1 NTU.",
     steps: [
       { l: "Analyze Data", c: "Review the jar test results for alum dose vs. settled water turbidity." },
       { l: "Identify Turbidity Target", c: "Look for the lowest alum dose that achieves an acceptable turbidity (e.g., <1 NTU)." },
@@ -1129,21 +1085,7 @@ The correct answer is 30 mg/L — achieves turbidity below 1 NTU.",
       "60 mg/L"
     ],
     correct: 1,
-    explanation: "Calculate the alum dose by first converting the plant flow to m³/hour, then dividing the alum feed rate in grams per hour by this flow rate.
-
-Step 1 — Convert plant flow from m³/day to m³/hour:
-15,000 m³/day ÷ 24 hours/day = 625 m³/hour
-
-Step 2 — Convert alum feed rate from kg/hour to g/hour:
-25 kg/hour × 1,000 g/kg = 25,000 g/hour
-
-Step 3 — Calculate the alum dose in g/m³:
-25,000 g/hour ÷ 625 m³/hour = 40 g/m³
-
-Step 4 — Convert the dose from g/m³ to mg/L (1 g/m³ = 1 mg/L):
-40 g/m³ = 40 mg/L
-
-The correct answer is 40 mg/L.",
+    explanation: "Calculate the alum dose by first converting the plant flow to m³/hour, then dividing the alum feed rate in grams per hour by this flow rate.\n\nStep 1 — Convert plant flow from m³/day to m³/hour:\n15,000 m³/day ÷ 24 hours/day = 625 m³/hour\n\nStep 2 — Convert alum feed rate from kg/hour to g/hour:\n25 kg/hour × 1,000 g/kg = 25,000 g/hour\n\nStep 3 — Calculate the alum dose in g/m³:\n25,000 g/hour ÷ 625 m³/hour = 40 g/m³\n\nStep 4 — Convert the dose from g/m³ to mg/L (1 g/m³ = 1 mg/L):\n40 g/m³ = 40 mg/L\n\nThe correct answer is 40 mg/L.",
     steps: [
       { l: "Formula", c: "Dose (mg/L) = (Feed Rate (kg/hr) * 1,000,000 mg/kg) / (Flow Rate (m³/day) * 1000 L/m³ / 24 hr/day)" },
       { l: "Variables", c: "Feed Rate = 25 kg/hr; Flow Rate = 15,000 m³/day" },
@@ -1208,27 +1150,7 @@ The correct answer is 40 mg/L.",
       "Softening with lime to precipitate colour-causing compounds"
     ],
     correct: 1,
-    explanation: "Determine the most effective coagulation strategy by analyzing the water quality parameters and the mechanisms of different treatment approaches.
-
-Step 1 — Analyze water quality:
-The water has high colour (40 TCU) and low turbidity (2 NTU). This indicates that the primary contaminant is dissolved organic matter (DOM), specifically natural organic matter (NOM), which causes colour, rather than suspended solids.
-
-Step 2 — Evaluate coagulation mechanisms for NOM removal:
-NOM removal by coagulation is most effective through enhanced coagulation, which involves higher coagulant doses and a lower pH range (typically 5.5-6.5). This optimizes the charge neutralization and adsorption of NOM onto the aluminum hydroxide floc.
-
-Step 3 — Assess option A (Low alum dose at neutral pH):
-This approach is typically used for turbidity removal, not dissolved colour or NOM. It would be ineffective for the given water quality.
-
-Step 4 — Assess option C (Chlorination before coagulation):
-While chlorination can oxidize some organic compounds, it can also lead to the formation of disinfection byproducts (DBPs) and may not fully remove colour-causing NOM. It's not the primary or most effective coagulation approach for colour removal.
-
-Step 5 — Assess option D (Softening with lime):
-Softening primarily removes hardness (calcium and magnesium ions) and can precipitate some organic matter, but it is not the most effective or direct method for high colour removal caused by NOM.
-
-Step 6 — Conclude the most effective approach:
-Based on the water quality and coagulation principles, a high alum dose at a lower pH (5.5-6.5) is the most effective approach to maximize NOM and colour removal.
-
-The correct answer is B. High alum dose at lower pH (5.5-6.5) to maximize NOM/colour removal.",
+    explanation: "Determine the most effective coagulation strategy by analyzing the water quality parameters and the mechanisms of different treatment approaches.\n\nStep 1 — Analyze water quality:\nThe water has high colour (40 TCU) and low turbidity (2 NTU). This indicates that the primary contaminant is dissolved organic matter (DOM), specifically natural organic matter (NOM), which causes colour, rather than suspended solids.\n\nStep 2 — Evaluate coagulation mechanisms for NOM removal:\nNOM removal by coagulation is most effective through enhanced coagulation, which involves higher coagulant doses and a lower pH range (typically 5.5-6.5). This optimizes the charge neutralization and adsorption of NOM onto the aluminum hydroxide floc.\n\nStep 3 — Assess option A (Low alum dose at neutral pH):\nThis approach is typically used for turbidity removal, not dissolved colour or NOM. It would be ineffective for the given water quality.\n\nStep 4 — Assess option C (Chlorination before coagulation):\nWhile chlorination can oxidize some organic compounds, it can also lead to the formation of disinfection byproducts (DBPs) and may not fully remove colour-causing NOM. It's not the primary or most effective coagulation approach for colour removal.\n\nStep 5 — Assess option D (Softening with lime):\nSoftening primarily removes hardness (calcium and magnesium ions) and can precipitate some organic matter, but it is not the most effective or direct method for high colour removal caused by NOM.\n\nStep 6 — Conclude the most effective approach:\nBased on the water quality and coagulation principles, a high alum dose at a lower pH (5.5-6.5) is the most effective approach to maximize NOM and colour removal.\n\nThe correct answer is B. High alum dose at lower pH (5.5-6.5) to maximize NOM/colour removal.",
     steps: [
       { l: "Analyze Raw Water Quality", c: "Identify raw water characteristics: High colour (40 TCU) and low turbidity (2 NTU)." },
       { l: "Interpret Characteristics", c: "High colour with low turbidity suggests dissolved organic matter (NOM) as the primary contaminant." },
@@ -1394,24 +1316,7 @@ The correct answer is B. High alum dose at lower pH (5.5-6.5) to maximize NOM/co
       "$180/day"
     ],
     correct: 0,
-    explanation: "Calculate the additional alum required per day, then multiply by the cost per kilogram to find the additional daily cost.
-
-Step 1 – Determine the additional alum dose:
-45 mg/L - 30 mg/L = 15 mg/L
-
-Step 2 – Convert the additional dose to g/m³:
-15 mg/L = 15 g/m³
-
-Step 3 – Calculate the additional alum mass per day:
-15 g/m³ × 20,000 m³/day = 300,000 g/day
-
-Step 4 – Convert the additional alum mass to kg/day:
-300,000 g/day ÷ 1,000 g/kg = 300 kg/day
-
-Step 5 – Calculate the additional daily cost:
-300 kg/day × $0.15/kg = $45/day
-
-The correct answer is $45/day.",
+    explanation: "Calculate the additional alum required per day, then multiply by the cost per kilogram to find the additional daily cost.\n\nStep 1 – Determine the additional alum dose:\n45 mg/L - 30 mg/L = 15 mg/L\n\nStep 2 – Convert the additional dose to g/m³:\n15 mg/L = 15 g/m³\n\nStep 3 – Calculate the additional alum mass per day:\n15 g/m³ × 20,000 m³/day = 300,000 g/day\n\nStep 4 – Convert the additional alum mass to kg/day:\n300,000 g/day ÷ 1,000 g/kg = 300 kg/day\n\nStep 5 – Calculate the additional daily cost:\n300 kg/day × $0.15/kg = $45/day\n\nThe correct answer is $45/day.",
     steps: [
       { l: "Calculate additional alum dose", c: "Additional Alum Dose (mg/L) = New Dose - Old Dose" },
       { l: "Identify variables", c: "New Dose = 45 mg/L; Old Dose = 30 mg/L" },
@@ -1627,15 +1532,7 @@ The correct answer is $45/day.",
       "200 m³/m²·day"
     ],
     correct: 1,
-    explanation: "Calculate the surface area of the basin, then divide the flow rate by the surface area to find the surface overflow rate.
-
-Step 1 — Calculate the surface area of the basin:
-Surface Area = Length × Width = 40 m × 10 m = 400 m²
-
-Step 2 — Calculate the Surface Overflow Rate (SOR):
-SOR = Flow Rate ÷ Surface Area = 20,000 m³/day ÷ 400 m² = 50 m³/m²·day
-
-The correct answer is 50 m³/m²·day.",
+    explanation: "Calculate the surface area of the basin, then divide the flow rate by the surface area to find the surface overflow rate.\n\nStep 1 — Calculate the surface area of the basin:\nSurface Area = Length × Width = 40 m × 10 m = 400 m²\n\nStep 2 — Calculate the Surface Overflow Rate (SOR):\nSOR = Flow Rate ÷ Surface Area = 20,000 m³/day ÷ 400 m² = 50 m³/m²·day\n\nThe correct answer is 50 m³/m²·day.",
   steps: [
     { l: "Formula", c: "Surface Overflow Rate (SOR) = Flow Rate / Surface Area" },
     { l: "Step 1: Calculate the surface area of the basin.", c: "Surface Area = Length × Width = 40 m × 10 m = 400 m²" },
@@ -1729,21 +1626,7 @@ The correct answer is 50 m³/m²·day.",
       "The rate of chemical addition to the basin"
     ],
     correct: 1,
-    explanation: "Understand the definition and calculation of Weir Overflow Rate (WOR).
-
-Step 1 — Define Weir Overflow Rate (WOR):
-WOR is a measure of the hydraulic loading on the outlet weir of a sedimentation basin.
-
-Step 2 — Formula for WOR:
-WOR = Flow rate ÷ Total weir length
-
-Step 3 — Units of WOR:
-If flow rate is in m³/day and total weir length is in meters, then WOR is expressed in m³/m·day.
-
-Step 4 — Significance of WOR:
-A high WOR can create turbulence at the weir, potentially re-suspending settled floc and reducing treatment efficiency. Typical values for conventional clarifiers are often less than 250 m³/m·day.
-
-The correct answer is B. The flow rate per unit length of the outlet weir (m³/m·day).",
+    explanation: "Understand the definition and calculation of Weir Overflow Rate (WOR).\n\nStep 1 — Define Weir Overflow Rate (WOR):\nWOR is a measure of the hydraulic loading on the outlet weir of a sedimentation basin.\n\nStep 2 — Formula for WOR:\nWOR = Flow rate ÷ Total weir length\n\nStep 3 — Units of WOR:\nIf flow rate is in m³/day and total weir length is in meters, then WOR is expressed in m³/m·day.\n\nStep 4 — Significance of WOR:\nA high WOR can create turbulence at the weir, potentially re-suspending settled floc and reducing treatment efficiency. Typical values for conventional clarifiers are often less than 250 m³/m·day.\n\nThe correct answer is B. The flow rate per unit length of the outlet weir (m³/m·day).",
   steps: [
     { l: "Formula", c: "Alkalinity Consumed (mg/L as CaCO₃) = Alum Dose (mg/L) × Alkalinity Consumption Factor (mg alkalinity/mg alum)" },
     { l: "Step 1: Identify the given values.", c: "Alum Dose = 40 mg/L. Alkalinity Consumption Factor = 0.45 mg alkalinity per mg alum." },
@@ -1775,22 +1658,7 @@ The correct answer is B. The flow rate per unit length of the outlet weir (m³/m
     question: "A sedimentation basin has a surface area of 500 m² and treats 30,000 m³/day. What is the SOR, and is it within the typical design range?",
     options: ["SOR = 30 m³/m²·day — within typical range of 20-40 m³/m²·day", "SOR = 60 m³/m²·day — above typical range", "SOR = 15 m³/m²·day — below typical range", "SOR = 6 m³/m²·day — far below typical range"],
     correct: 1,
-    explanation: "Calculate the Surface Overflow Rate by dividing the flow rate by the surface area, then compare it to the typical design range.
-
-Step 1 — Identify given values:
-Flow Rate = 30,000 m³/day
-Surface Area = 500 m²
-Typical SOR Range = 20-40 m³/m²·day
-
-Step 2 — Calculate the Surface Overflow Rate (SOR):
-SOR = Flow Rate ÷ Surface Area
-SOR = 30,000 m³/day ÷ 500 m²
-SOR = 60 m³/m²·day
-
-Step 3 — Compare the calculated SOR to the typical range:
-60 m³/m²·day is greater than the typical range of 20-40 m³/m²·day.
-
-The correct answer is B. SOR = 60 m³/m²·day — above typical range.",
+    explanation: "Calculate the Surface Overflow Rate by dividing the flow rate by the surface area, then compare it to the typical design range.\n\nStep 1 — Identify given values:\nFlow Rate = 30,000 m³/day\nSurface Area = 500 m²\nTypical SOR Range = 20-40 m³/m²·day\n\nStep 2 — Calculate the Surface Overflow Rate (SOR):\nSOR = Flow Rate ÷ Surface Area\nSOR = 30,000 m³/day ÷ 500 m²\nSOR = 60 m³/m²·day\n\nStep 3 — Compare the calculated SOR to the typical range:\n60 m³/m²·day is greater than the typical range of 20-40 m³/m²·day.\n\nThe correct answer is B. SOR = 60 m³/m²·day — above typical range.",
     steps: [ { l: "Formula", c: "Surface Overflow Rate (SOR) = Flow Rate / Surface Area" }, { l: "Step 1: Identify the given surface area.", c: "Surface Area = 500 m²" }, { l: "Step 2: Identify the given flow rate.", c: "Flow Rate = 30,000 m³/day" }, { l: "Step 3: Substitute values into the SOR formula.", c: "SOR = 30,000 m³/day / 500 m²" }, { l: "Step 4: Calculate the Surface Overflow Rate.", c: "SOR = 60 m³/m²·day" }, { l: "Step 5: Compare with typical design range (20-40 m³/m²·day).", c: "60 m³/m²·day is above the typical range." }, { l: "Result", c: "The SOR is 60 m³/m²·day, which is above the typical design range." } ],
     tip: "Know typical design ranges for key parameters to assess treatment performance.",
   },
@@ -1907,18 +1775,7 @@ The correct answer is B. SOR = 60 m³/m²·day — above typical range.",
       "200 – 300 m/h"
     ],
     correct: 1,
-    explanation: "Identify the typical filtration rate range for rapid sand filters and differentiate it from other filtration types.
-
-Step 1 — Rapid Sand Filter Filtration Rate:
-Rapid sand filters are designed to operate at relatively high filtration rates to efficiently process large volumes of water. The typical range is 5 – 15 m/h (meters per hour).
-
-Step 2 — Comparison with Slow Sand Filters:
-Slow sand filters operate at much lower rates, typically 0.1 – 0.4 m/h, because they rely on biological processes for treatment in addition to physical filtration.
-
-Step 3 — Impact of High Rates:
-Filtration rates above 15 m/h in rapid sand filters can lead to decreased efficiency and potential \"turbidity breakthrough,\" meaning suspended particles are not adequately removed.
-
-The correct answer is B. 5 – 15 m/h.",
+    explanation: "Identify the typical filtration rate range for rapid sand filters and differentiate it from other filtration types.\n\nStep 1 — Rapid Sand Filter Filtration Rate:\nRapid sand filters are designed to operate at relatively high filtration rates to efficiently process large volumes of water. The typical range is 5 – 15 m/h (meters per hour).\n\nStep 2 — Comparison with Slow Sand Filters:\nSlow sand filters operate at much lower rates, typically 0.1 – 0.4 m/h, because they rely on biological processes for treatment in addition to physical filtration.\n\nStep 3 — Impact of High Rates:\nFiltration rates above 15 m/h in rapid sand filters can lead to decreased efficiency and potential \"turbidity breakthrough,\" meaning suspended particles are not adequately removed.\n\nThe correct answer is B. 5 – 15 m/h.",
     steps: [ { l: "Formula", c: "Mass (kg/d) = Dose (mg/L) × Flow (ML/d) × Conversion Factor (kg/mg/L/ML)" }, { l: "Step 1: Identify the given values.", c: "Alum Dose = 25 mg/L. Plant Flow = 10 ML/d." }, { l: "Step 2: Convert plant flow from ML/d to L/d for consistency.", c: "1 ML = 1,000,000 L. So, 10 ML/d = 10 × 1,000,000 L/d = 10,000,000 L/d." }, { l: "Step 3: Calculate the mass in mg/d.", c: "Mass = 25 mg/L × 10,000,000 L/d = 250,000,000 mg/d." }, { l: "Step 4: Convert the mass from mg/d to kg/d.", c: "1 kg = 1,000,000 mg. So, Mass in kg/d = 250,000,000 mg/d / 1,000,000 mg/kg = 250 kg/d." }, { l: "Result", c: "250 kg of alum are required per day." } ],
     tip: "Pay close attention to unit conversions, especially between mg, g, kg, L, and ML.",
   },
@@ -2005,15 +1862,7 @@ The correct answer is B. 5 – 15 m/h.",
       "200-300 m/h"
     ],
     correct: 1,
-    explanation: "The backwash rate for a rapid sand filter must be sufficient to fluidize the filter bed without washing out the media.
-
-Step 1 — Understand the purpose of backwash: Backwashing expands the filter bed by 30-50% to release trapped particles and clean the media.
-
-Step 2 — Identify the effective range: The rate needs to be high enough for effective cleaning but not so high that it causes media loss.
-
-Step 3 — Recall typical industry standards: Standard backwash rates for rapid sand filters fall within the range of 36-60 m/h (10-17 mm/s).
-
-The correct answer is 36-60 m/h.",
+    explanation: "The backwash rate for a rapid sand filter must be sufficient to fluidize the filter bed without washing out the media.\n\nStep 1 — Understand the purpose of backwash: Backwashing expands the filter bed by 30-50% to release trapped particles and clean the media.\n\nStep 2 — Identify the effective range: The rate needs to be high enough for effective cleaning but not so high that it causes media loss.\n\nStep 3 — Recall typical industry standards: Standard backwash rates for rapid sand filters fall within the range of 36-60 m/h (10-17 mm/s).\n\nThe correct answer is 36-60 m/h.",
     steps: [ { l: "Formula", c: "Hydraulic Retention Time (HRT) (minutes) = Volume (m³) / Flow Rate (m³/minute)" }, { l: "Step 1: Identify the given values.", c: "Flocculation basin volume (V) = 500 m³. Flow rate (Q) = 25,000 m³/d." }, { l: "Step 2: Convert the flow rate from m³/d to m³/minute.", c: "Minutes in a day = 24 hours/day × 60 minutes/hour = 1440 minutes/day. Flow rate in m³/minute = 25,000 m³/d / 1440 minutes/d ≈ 17.361 m³/minute." }, { l: "Step 3: Substitute the values into the HRT formula.", c: "HRT = 500 m³ / 17.361 m³/minute" }, { l: "Calculate", c: "HRT ≈ 28.8 minutes" }, { l: "Result", c: "The hydraulic retention time (HRT) is approximately 28.8 minutes." } ],
     tip: "HRT is critical for process efficiency; ensure consistent time units in calculations.",
   },
@@ -2058,18 +1907,7 @@ The correct answer is 36-60 m/h.",
       "0.42 m³/min"
     ],
     correct: 1,
-    explanation: "Calculate the backwash flow rate by multiplying the backwash rate by the filter surface area, then convert the hourly flow to minutes.
-
-Step 1 — Calculate the backwash flow rate in m³/h:
-Backwash Flow Rate = Backwash Rate × Filter Area = 50 m/h × 50 m² = 2,500 m³/h
-
-Step 2 — Convert the backwash flow rate from m³/h to m³/min:
-Backwash Flow Rate = 2,500 m³/h ÷ 60 min/h = 41.666... m³/min
-
-Step 3 — Round to one decimal place:
-41.666... m³/min ≈ 41.7 m³/min
-
-The correct answer is 41.7 m³/min.",
+    explanation: "Calculate the backwash flow rate by multiplying the backwash rate by the filter surface area, then convert the hourly flow to minutes.\n\nStep 1 — Calculate the backwash flow rate in m³/h:\nBackwash Flow Rate = Backwash Rate × Filter Area = 50 m/h × 50 m² = 2,500 m³/h\n\nStep 2 — Convert the backwash flow rate from m³/h to m³/min:\nBackwash Flow Rate = 2,500 m³/h ÷ 60 min/h = 41.666... m³/min\n\nStep 3 — Round to one decimal place:\n41.666... m³/min ≈ 41.7 m³/min\n\nThe correct answer is 41.7 m³/min.",
     steps: [ { l: "Formula", c: "Backwash Flow Rate = Backwash Rate × Filter Area" }, { l: "Step 1: Identify the given filter area.", c: "Filter Area = 50 m²" }, { l: "Step 2: Identify the given backwash rate.", c: "Backwash Rate = 50 m/h" }, { l: "Step 3: Calculate the backwash flow rate in m³/h.", c: "Backwash Flow Rate = 50 m/h × 50 m² = 2,500 m³/h" }, { l: "Step 4: Convert the backwash flow rate from m³/h to m³/min.", c: "Backwash Flow Rate = 2,500 m³/h ÷ 60 min/h" }, { l: "Step 5: Calculate the final backwash flow rate.", c: "Backwash Flow Rate = 41.67 m³/min (approximately 41.7 m³/min)" }, { l: "Result", c: "The backwash flow rate is 41.7 m³/min." } ],
     tip: "Pay attention to units; convert hours to minutes when required for flow rates.",
   },
@@ -2170,21 +2008,7 @@ The correct answer is 41.7 m³/min.",
       "The loss of fine media particles during backwash"
     ],
     correct: 0,
-    explanation: "Understand the definition of media stratification and its role in dual-media filter operation.
-
-Step 1 — Define media stratification:
-Media stratification is the natural process where filter media layers separate by density and size after backwash. In a dual-media filter, this means the lighter, coarser anthracite settles on top of the denser, finer sand.
-
-Step 2 — Importance of stratification:
-This layering is crucial for effective filtration. The coarser anthracite on top captures larger suspended particles, preventing premature clogging of the finer sand layer below. The finer sand then polishes the water by removing smaller particles.
-
-Step 3 — Consequence of lost stratification:
-If stratification is lost (e.g., due to insufficient backwash or improper media selection), the finer sand may mix with or be displaced by the coarser anthracite. This reduces the filter's ability to capture particles effectively, leading to poor effluent quality and shorter filter run times.
-
-Step 4 — Relate to the options:
-Option A accurately describes this process: \"The separation of anthracite and sand into distinct layers after backwash.\"
-
-The correct answer is A.",
+    explanation: "Understand the definition of media stratification and its role in dual-media filter operation.\n\nStep 1 — Define media stratification:\nMedia stratification is the natural process where filter media layers separate by density and size after backwash. In a dual-media filter, this means the lighter, coarser anthracite settles on top of the denser, finer sand.\n\nStep 2 — Importance of stratification:\nThis layering is crucial for effective filtration. The coarser anthracite on top captures larger suspended particles, preventing premature clogging of the finer sand layer below. The finer sand then polishes the water by removing smaller particles.\n\nStep 3 — Consequence of lost stratification:\nIf stratification is lost (e.g., due to insufficient backwash or improper media selection), the finer sand may mix with or be displaced by the coarser anthracite. This reduces the filter's ability to capture particles effectively, leading to poor effluent quality and shorter filter run times.\n\nStep 4 — Relate to the options:\nOption A accurately describes this process: \"The separation of anthracite and sand into distinct layers after backwash.\"\n\nThe correct answer is A.",
     steps: [ { l: "Formula for Mass of Alum", c: "Mass (kg/d) = Dose (mg/L) × Flow (L/d) × (1 kg / 1,000,000 mg)" }, { l: "Calculate Mass of Alum", c: "Mass of Alum = 30 mg/L × 50,000,000 L/d × (1 kg / 1,000,000 mg) = 1,500 kg/d" }, { l: "Formula for Volume of Alum Solution", c: "Volume (L/d) = Mass of Alum (kg/d) / (Alum Solution Concentration (%) × Alum Solution Density (kg/L))" }, { l: "Substitute and Calculate Volume of Alum Solution", c: "Volume of Alum Solution = 1,500 kg/d / (0.48 × 1.33 kg/L) = 1,500 kg/d / 0.6384 kg/L = 2,349.62 L/d" }, { l: "Result", c: "The volume of alum solution required per day is approximately 2,350 L/d." } ],
     tip: "Always convert units to match the desired output; pay attention to percentage concentration.",
   },
@@ -2201,21 +2025,7 @@ The correct answer is A.",
       "Yes — but only if the turbidity also exceeds 0.3 NTU"
     ],
     correct: 1,
-    explanation: "Determine the backwash trigger based on head loss or turbidity.
-
-Step 1 — Identify backwash triggers:
-Filters are backwashed when either maximum head loss is reached OR filtered water turbidity exceeds the limit.
-
-Step 2 — Evaluate head loss condition:
-The head loss has reached 2.5 m, which is the maximum allowed.
-
-Step 3 — Evaluate turbidity condition:
-The filtered water turbidity is 0.15 NTU, which is below the 0.3 NTU limit.
-
-Step 4 — Determine backwash necessity:
-Since the maximum head loss has been reached, the filter must be backwashed, regardless of the turbidity level.
-
-The correct answer is B.",
+    explanation: "Determine the backwash trigger based on head loss or turbidity.\n\nStep 1 — Identify backwash triggers:\nFilters are backwashed when either maximum head loss is reached OR filtered water turbidity exceeds the limit.\n\nStep 2 — Evaluate head loss condition:\nThe head loss has reached 2.5 m, which is the maximum allowed.\n\nStep 3 — Evaluate turbidity condition:\nThe filtered water turbidity is 0.15 NTU, which is below the 0.3 NTU limit.\n\nStep 4 — Determine backwash necessity:\nSince the maximum head loss has been reached, the filter must be backwashed, regardless of the turbidity level.\n\nThe correct answer is B.",
     steps: [ { l: "Principle", c: "Filter backwash is triggered by either maximum head loss or turbidity breakthrough, whichever occurs first." }, { l: "Step 1: Evaluate the head loss condition.", c: "Current Head Loss = 2.5 m. This has reached the maximum head loss (2.5 m)." }, { l: "Step 2: Evaluate the turbidity condition.", c: "Filtered Water Turbidity = 0.15 NTU. This is well below the 0.3 NTU limit." }, { l: "Step 3: Apply the backwash trigger principle.", c: "Since the maximum head loss has been reached, the filter should be backwashed, regardless of turbidity." }, { l: "Result", c: "Yes, the filter should be backwashed because it has reached maximum head loss." } ],
     tip: "Maximum head loss is a critical backwash trigger, even if turbidity is low.",
   },
@@ -2269,18 +2079,7 @@ The correct answer is B.",
     question: "A filter plant has 6 filters, each 60 m² in area. The plant flow is 36,000 m³/day. One filter is offline for backwashing. What is the filtration rate on the remaining 5 filters?",
     options: ["5 m/h", "8 m/h", "10 m/h", "12 m/h"],
     correct: 0,
-    explanation: "Calculate the total operational filter area, convert the plant flow to an hourly rate, then divide the hourly flow by the operational filter area to find the filtration rate.
-
-Step 1 — Calculate the total area of filters in operation:
-5 filters × 60 m²/filter = 300 m²
-
-Step 2 — Convert the plant flow from m³/day to m³/hour:
-36,000 m³/day ÷ 24 hours/day = 1,500 m³/hour
-
-Step 3 — Calculate the filtration rate:
-1,500 m³/hour ÷ 300 m² = 5 m/h
-
-The correct answer is 5 m/h.",
+    explanation: "Calculate the total operational filter area, convert the plant flow to an hourly rate, then divide the hourly flow by the operational filter area to find the filtration rate.\n\nStep 1 — Calculate the total area of filters in operation:\n5 filters × 60 m²/filter = 300 m²\n\nStep 2 — Convert the plant flow from m³/day to m³/hour:\n36,000 m³/day ÷ 24 hours/day = 1,500 m³/hour\n\nStep 3 — Calculate the filtration rate:\n1,500 m³/hour ÷ 300 m² = 5 m/h\n\nThe correct answer is 5 m/h.",
     steps: [ { l: "Formula", c: "Filtration Rate (m/h) = Flow (m³/h) / Filter Area (m²)" }, { l: "Step 1: Calculate the total area of the operational filters.", c: "Number of operational filters = 6 - 1 = 5 filters. Area per filter = 60 m². Total operational filter area = 5 filters × 60 m²/filter = 300 m²." }, { l: "Step 2: Convert the plant flow from m³/day to m³/hour.", c: "Plant flow = 36,000 m³/day. Hours in a day = 24 hours. Flow in m³/hour = 36,000 m³/day / 24 h/day = 1,500 m³/h." }, { l: "Step 3: Substitute the values into the filtration rate formula.", c: "Filtration Rate = 1,500 m³/h / 300 m²" }, { l: "Calculate", c: "Filtration Rate = 5 m/h" }, { l: "Result", c: "The filtration rate on the remaining 5 filters is 5 m/h." } ],
     tip: "Always double-check units and ensure all values are in the correct units before calculation.",
   },
@@ -2355,24 +2154,7 @@ The correct answer is 5 m/h.",
       "The point at which chlorine demand is first met"
     ],
     correct: 1,
-    explanation: "Understand the stages of chlorine addition and its reactions with water impurities.
-
-Step 1 — Initial chlorine addition:
-Chlorine reacts with reducing agents (e.g., hydrogen sulfide, ferrous iron) and some organic matter, creating a chlorine demand.
-
-Step 2 — Chloramine formation:
-As more chlorine is added, it reacts with ammonia to form chloramines (combined chlorine residual).
-
-Step 3 — Chloramine destruction:
-With further chlorine addition, the chloramines are oxidized and destroyed. This process reduces the chlorine residual.
-
-Step 4 — Breakpoint:
-This is the point where all ammonia and most organic matter have been oxidized, and chloramines are destroyed. The chlorine residual reaches a minimum.
-
-Step 5 — Free chlorine residual formation:
-Any chlorine added beyond the breakpoint will exist as free chlorine residual (hypochlorous acid and hypochlorite ion), and the residual will increase proportionally with the dose.
-
-The correct answer is B. The point at which all chloramines are destroyed and free chlorine residual begins to form.",
+    explanation: "Understand the stages of chlorine addition and its reactions with water impurities.\n\nStep 1 — Initial chlorine addition:\nChlorine reacts with reducing agents (e.g., hydrogen sulfide, ferrous iron) and some organic matter, creating a chlorine demand.\n\nStep 2 — Chloramine formation:\nAs more chlorine is added, it reacts with ammonia to form chloramines (combined chlorine residual).\n\nStep 3 — Chloramine destruction:\nWith further chlorine addition, the chloramines are oxidized and destroyed. This process reduces the chlorine residual.\n\nStep 4 — Breakpoint:\nThis is the point where all ammonia and most organic matter have been oxidized, and chloramines are destroyed. The chlorine residual reaches a minimum.\n\nStep 5 — Free chlorine residual formation:\nAny chlorine added beyond the breakpoint will exist as free chlorine residual (hypochlorous acid and hypochlorite ion), and the residual will increase proportionally with the dose.\n\nThe correct answer is B. The point at which all chloramines are destroyed and free chlorine residual begins to form.",
     steps: [ { l: "Formula for Daily Alum Consumption", c: "Daily Alum Consumption (kg/d) = Optimal Alum Dose (mg/L) × Plant Flow (L/d) × (1 kg / 1,000,000 mg)" }, { l: "Convert Plant Flow", c: "Plant Flow = 15 ML/d = 15,000,000 L/d" }, { l: "Substitute and Calculate", c: "Daily Alum Consumption = 45 mg/L × 15,000,000 L/d × (1 kg / 1,000,000 mg) = 675 kg/d" }, { l: "Result", c: "The daily alum consumption is 675 kg/d." } ],
     tip: "Remember that 1 ML equals 1,000,000 L for flow calculations.",
   },
@@ -2445,14 +2227,7 @@ The correct answer is B. The point at which all chloramines are destroyed and fr
       "195 mg·min/L"
     ],
     correct: 0,
-    explanation: "To determine the CT value for Giardia inactivation, consult the US EPA CT tables for free chlorine.
-
-Step 1 — Locate the CT value in the US EPA CT table:
-For 3-log inactivation of Giardia cysts with free chlorine at 10°C and pH 7.0, the CT table indicates a value of 65 mg·min/L.
-
-Note: CT values are influenced by temperature and pH; lower temperatures and higher pH generally require higher CT values for the same level of inactivation.
-
-The correct answer is 65 mg·min/L.",
+    explanation: "To determine the CT value for Giardia inactivation, consult the US EPA CT tables for free chlorine.\n\nStep 1 — Locate the CT value in the US EPA CT table:\nFor 3-log inactivation of Giardia cysts with free chlorine at 10°C and pH 7.0, the CT table indicates a value of 65 mg·min/L.\n\nNote: CT values are influenced by temperature and pH; lower temperatures and higher pH generally require higher CT values for the same level of inactivation.\n\nThe correct answer is 65 mg·min/L.",
     steps: [ { l: "Formula for Alum Sludge Solids", c: "Alum Sludge Solids (kg/d) = Alum Dose (mg/L) × Sludge Yield Factor (mg dry solids/mg alum) × Flow (L/d) × (1 kg / 1,000,000 mg)" }, { l: "Calculate Alum Sludge Solids", c: "Alum Sludge Solids = 35 mg/L × 0.26 × 20,000,000 L/d × (1 kg / 1,000,000 mg) = 182 kg/d" }, { l: "Formula for TSS Sludge Solids", c: "TSS Sludge Solids (kg/d) = Raw Water TSS (mg/L) × Removal Efficiency (%) × Flow (L/d) × (1 kg / 1,000,000 mg)" }, { l: "Calculate TSS Sludge Solids (assuming raw water TSS is 15 mg/L and removal efficiency is 95% from the explanation)", c: "TSS Sludge Solids = 15 mg/L × 0.95 × 20,000,000 L/d × (1 kg / 1,000,000 mg) = 285 kg/d" }, { l: "Calculate Total Sludge Solids", c: "Total Sludge Solids = Alum Sludge Solids + TSS Sludge Solids = 182 kg/d + 285 kg/d = 467 kg/d" }, { l: "Result", c: "The total daily sludge solids produced is 467 kg/d." } ],
     tip: "Sludge calculations combine contributions from coagulant and removed raw water solids.",
   },
@@ -2595,19 +2370,7 @@ The correct answer is 65 mg·min/L.",
       "2.8 mg/L — no, does not meet the minimum"
     ],
     correct: 0,
-    explanation: "Calculate the free chlorine residual by subtracting the chlorine demand from the chlorine dose, then compare it to Ontario's minimum requirement.
-
-Step 1 — Calculate the free chlorine residual:
-Free Chlorine Residual = Chlorine Dose - Chlorine Demand
-Free Chlorine Residual = 3.5 mg/L - 2.8 mg/L = 0.7 mg/L
-
-Step 2 — Compare to Ontario's minimum requirement:
-Ontario's minimum requirement at the point of entry is 0.2 mg/L.
-0.7 mg/L is greater than 0.2 mg/L.
-
-Therefore, the free chlorine residual meets the minimum requirement.
-
-The correct answer is 0.7 mg/L — yes, meets the 0.2 mg/L minimum.",
+    explanation: "Calculate the free chlorine residual by subtracting the chlorine demand from the chlorine dose, then compare it to Ontario's minimum requirement.\n\nStep 1 — Calculate the free chlorine residual:\nFree Chlorine Residual = Chlorine Dose - Chlorine Demand\nFree Chlorine Residual = 3.5 mg/L - 2.8 mg/L = 0.7 mg/L\n\nStep 2 — Compare to Ontario's minimum requirement:\nOntario's minimum requirement at the point of entry is 0.2 mg/L.\n0.7 mg/L is greater than 0.2 mg/L.\n\nTherefore, the free chlorine residual meets the minimum requirement.\n\nThe correct answer is 0.7 mg/L — yes, meets the 0.2 mg/L minimum.",
     steps: [ { l: "Formula", c: "Free Chlorine Residual (mg/L) = Chlorine Dose (mg/L) - Chlorine Demand (mg/L)" }, { l: "Step 1: Identify the given values.", c: "Chlorine Dose = 3.5 mg/L. Chlorine Demand = 2.8 mg/L." }, { l: "Step 2: Substitute the values into the formula.", c: "Free Chlorine Residual = 3.5 mg/L - 2.8 mg/L" }, { l: "Calculate", c: "Free Chlorine Residual = 0.7 mg/L" }, { l: "Step 3: Compare with Ontario's minimum requirement.", c: "Ontario's minimum requirement for free chlorine at the point of entry is 0.2 mg/L. Since 0.7 mg/L > 0.2 mg/L, the requirement is met." }, { l: "Result", c: "The free chlorine residual is 0.7 mg/L, which meets Ontario's minimum requirement." } ],
     tip: "Chlorine residual is crucial for disinfection; know your local regulatory requirements.",
   },
@@ -2624,21 +2387,7 @@ The correct answer is 0.7 mg/L — yes, meets the 0.2 mg/L minimum.",
       "To measure the chlorine demand of the water"
     ],
     correct: 1,
-    explanation: "Understand the primary goal of chlorine contact time in water treatment.
-
-Step 1 — Purpose of chlorination:
-Chlorine is added to water to disinfect it, primarily by inactivating harmful microorganisms (pathogens).
-
-Step 2 — Importance of contact time:
-For chlorine to effectively inactivate pathogens, it needs sufficient time to react with them. This duration is known as contact time.
-
-Step 3 — Meeting regulatory requirements:
-Regulatory bodies set specific CT (Concentration × Time) requirements to ensure adequate disinfection. The contact time must be long enough to meet these standards.
-
-Step 4 — Design considerations:
-Treatment plants design contact chambers (like clearwells or dedicated pipes) to provide the necessary contact time, ensuring that the water is exposed to the chlorine residual for the required duration, even under varying flow conditions.
-
-The correct answer is B. To provide sufficient time for chlorine to inactivate pathogens to meet CT requirements.",
+    explanation: "Understand the primary goal of chlorine contact time in water treatment.\n\nStep 1 — Purpose of chlorination:\nChlorine is added to water to disinfect it, primarily by inactivating harmful microorganisms (pathogens).\n\nStep 2 — Importance of contact time:\nFor chlorine to effectively inactivate pathogens, it needs sufficient time to react with them. This duration is known as contact time.\n\nStep 3 — Meeting regulatory requirements:\nRegulatory bodies set specific CT (Concentration × Time) requirements to ensure adequate disinfection. The contact time must be long enough to meet these standards.\n\nStep 4 — Design considerations:\nTreatment plants design contact chambers (like clearwells or dedicated pipes) to provide the necessary contact time, ensuring that the water is exposed to the chlorine residual for the required duration, even under varying flow conditions.\n\nThe correct answer is B. To provide sufficient time for chlorine to inactivate pathogens to meet CT requirements.",
     steps: [ { l: "Formula for Surface Area", c: "Surface Area (m²) = Length (m) × Width (m)" }, { l: "Calculate Surface Area", c: "Surface Area = 40 m × 10 m = 400 m²" }, { l: "Formula for Surface Overflow Rate (SOR)", c: "SOR (m/d) = Plant Flow (m³/d) / Surface Area (m²)" }, { l: "Substitute and Calculate SOR", c: "SOR = 12,000 m³/d / 400 m² = 30 m/d" }, { l: "Result", c: "The surface overflow rate is 30 m/d." } ],
     tip: "Surface overflow rate is flow divided by the basin's surface area.",
   },
@@ -2655,21 +2404,7 @@ The correct answer is B. To provide sufficient time for chlorine to inactivate p
       "The number of pathogens remaining after treatment"
     ],
     correct: 1,
-      explanation: "Understand log inactivation as a logarithmic scale for pathogen reduction, where each log increase signifies a tenfold improvement in removal efficiency.
-
-Step 1 — 1-log reduction:
-This means 90% of pathogens are removed, and 10% (1 in 10) survive.
-
-Step 2 — 2-log reduction:
-This means 99% of pathogens are removed, and 1% (1 in 100) survive.
-
-Step 3 — 3-log reduction:
-This means 99.9% of pathogens are removed, and 0.1% (1 in 1,000) survive.
-
-Step 4 — 4-log reduction:
-This means 99.99% of pathogens are removed, and 0.01% (1 in 10,000) survive.
-
-The correct answer is B. A logarithmic measure of pathogen reduction; 1-log = 90%, 2-log = 99%, 3-log = 99.9%.",
+      explanation: "Understand log inactivation as a logarithmic scale for pathogen reduction, where each log increase signifies a tenfold improvement in removal efficiency.\n\nStep 1 — 1-log reduction:\nThis means 90% of pathogens are removed, and 10% (1 in 10) survive.\n\nStep 2 — 2-log reduction:\nThis means 99% of pathogens are removed, and 1% (1 in 100) survive.\n\nStep 3 — 3-log reduction:\nThis means 99.9% of pathogens are removed, and 0.1% (1 in 1,000) survive.\n\nStep 4 — 4-log reduction:\nThis means 99.99% of pathogens are removed, and 0.01% (1 in 10,000) survive.\n\nThe correct answer is B. A logarithmic measure of pathogen reduction; 1-log = 90%, 2-log = 99%, 3-log = 99.9%.",
     steps: [ { l: "Formula for Volume of Basin", c: "Volume (m³) = Length (m) × Width (m) × Depth (m)" }, { l: "Calculate Volume of Basin", c: "Volume = 40 m × 10 m × 4 m = 1,600 m³" }, { l: "Formula for Hydraulic Detention Time (HDT)", c: "HDT (hours) = Volume (m³) / (Plant Flow (m³/d) / 24 hours/d)" }, { l: "Calculate Hourly Flow Rate", c: "Hourly Flow Rate = 12,000 m³/d / 24 hours/d = 500 m³/hour" }, { l: "Substitute and Calculate HDT", c: "HDT = 1,600 m³ / 500 m³/hour = 3.2 hours" }, { l: "Result", c: "The hydraulic detention time is 3.2 hours." } ],
     tip: "Detention time is volume divided by flow rate; ensure consistent time units.",
   },
@@ -3806,18 +3541,7 @@ The correct answer is B. A logarithmic measure of pathogen reduction; 1-log = 90
       "63.66 m/d"
     ],
     correct: 1,
-    explanation: "Calculate the surface area of the clarifier, then divide the flow rate by this area to find the surface overflow rate.
-
-Step 1 — Calculate the radius:
-Radius = Diameter ÷ 2 = 20 m ÷ 2 = 10 m
-
-Step 2 — Calculate the surface area:
-Surface Area = π × (Radius)² = 3.14159 × (10 m)² = 3.14159 × 100 m² = 314.16 m²
-
-Step 3 — Calculate the Surface Overflow Rate (SOR):
-SOR = Flow Rate ÷ Surface Area = 5,000 m³/d ÷ 314.16 m² = 15.915 m/d
-
-The correct answer is 15.92 m/d.",
+    explanation: "Calculate the surface area of the clarifier, then divide the flow rate by this area to find the surface overflow rate.\n\nStep 1 — Calculate the radius:\nRadius = Diameter ÷ 2 = 20 m ÷ 2 = 10 m\n\nStep 2 — Calculate the surface area:\nSurface Area = π × (Radius)² = 3.14159 × (10 m)² = 3.14159 × 100 m² = 314.16 m²\n\nStep 3 — Calculate the Surface Overflow Rate (SOR):\nSOR = Flow Rate ÷ Surface Area = 5,000 m³/d ÷ 314.16 m² = 15.915 m/d\n\nThe correct answer is 15.92 m/d.",
     steps: [ { l: "Formula for Surface Area (A) of a circle", c: "A = π * (D/2)^2, where D is the diameter." }, { l: "Calculate Surface Area", c: "A = π * (20 m / 2)^2 = π * (10 m)^2 = 314.16 m²" }, { l: "Formula for Surface Overflow Rate (SOR)", c: "SOR = Q / A, where Q is the flow rate and A is the surface area." }, { l: "Substitute values", c: "SOR = 5,000 m³/d / 314.16 m²" }, { l: "Calculate SOR", c: "SOR = 15.92 m/d" }, { l: "Result", c: "The surface overflow rate is 15.92 m/d." } ],
     tip: "Remember to use the radius (D/2) when calculating the area of a circle.",
   },
@@ -3904,19 +3628,7 @@ The correct answer is 15.92 m/d.",
       "28.0"
     ],
     correct: 2,
-    explanation: "Calculate the Morrill Dispersion Index (MDI) by dividing the t90 value by the t10 value.
-
-Step 1 — Identify the given values:
-t10 = 0.15 hours
-t90 = 2.8 hours
-
-Step 2 — Calculate the Morrill Dispersion Index (MDI):
-MDI = t90 ÷ t10 = 2.8 hours ÷ 0.15 hours = 18.666...
-
-Step 3 — Round to one decimal place:
-MDI = 18.7
-
-The correct answer is 18.7.",
+    explanation: "Calculate the Morrill Dispersion Index (MDI) by dividing the t90 value by the t10 value.\n\nStep 1 — Identify the given values:\nt10 = 0.15 hours\nt90 = 2.8 hours\n\nStep 2 — Calculate the Morrill Dispersion Index (MDI):\nMDI = t90 ÷ t10 = 2.8 hours ÷ 0.15 hours = 18.666...\n\nStep 3 — Round to one decimal place:\nMDI = 18.7\n\nThe correct answer is 18.7.",
     steps: [ { l: "Formula for Morrill Dispersion Index (MDI)", c: "MDI = t90 / t10, where t90 is the time for 90% tracer recovery and t10 is the time for 10% tracer recovery." }, { l: "Identify given values", c: "t10 = 0.15 hours, t90 = 2.8 hours" }, { l: "Substitute values into formula", c: "MDI = 2.8 hours / 0.15 hours" }, { l: "Calculate MDI", c: "MDI = 18.67" }, { l: "Result", c: "The Morrill Dispersion Index is 18.67." } ],
     tip: "A high MDI indicates poor hydraulic efficiency and potential short-circuiting.",
   },
@@ -4003,15 +3715,7 @@ The correct answer is 18.7.",
       "50,000 L/d"
     ],
     correct: 1,
-    explanation: "Calculate the mass of solids in the unthickened sludge, then use this mass to determine the volume of sludge at the new solids concentration.
-
-Step 1 — Calculate the mass of solids in the unthickened sludge:
-50,000 L/d × 0.003 = 150 kg solids/d
-
-Step 2 — Calculate the volume of thickened sludge:
-150 kg solids/d ÷ 0.03 = 5,000 L/d
-
-The correct answer is 5,000 L/d.",
+    explanation: "Calculate the mass of solids in the unthickened sludge, then use this mass to determine the volume of sludge at the new solids concentration.\n\nStep 1 — Calculate the mass of solids in the unthickened sludge:\n50,000 L/d × 0.003 = 150 kg solids/d\n\nStep 2 — Calculate the volume of thickened sludge:\n150 kg solids/d ÷ 0.03 = 5,000 L/d\n\nThe correct answer is 5,000 L/d.",
     steps: [ { l: "Calculate mass of dry solids in initial sludge", c: "Mass of solids (kg/d) = Volume of sludge (L/d) × Solids concentration (%) × (1 kg/L / 1000 L/m³) × (1000 g/kg / 1 g/mL) (assuming sludge density ≈ water density for mass calculation)" }, { l: "Substitute values for mass of solids", c: "Mass of solids = 50,000 L/d × 0.003 = 150 kg/d" }, { l: "Calculate volume of thickened sludge", c: "Volume of thickened sludge (L/d) = Mass of solids (kg/d) / (Thickened solids concentration (%) × Density of water (kg/L))" }, { l: "Substitute values for thickened sludge volume", c: "Volume of thickened sludge = 150 kg/d / (0.03 × 1 kg/L)" }, { l: "Calculate thickened sludge volume", c: "Volume of thickened sludge = 150 kg/d / 0.03 kg/L = 5,000 L/d" }, { l: "Result", c: "The volume of thickened sludge is 5,000 L/d." } ],
     tip: "Mass of dry solids remains constant during thickening; only volume changes.",
   },
@@ -4093,21 +3797,7 @@ The correct answer is 5,000 L/d.",
     question: "A rectangular sedimentation basin (50 m × 12 m × 4 m) treats 18,000 m³/d. What is the horizontal flow velocity in m/h?",
     options: ["A. 0.31 m/h", "B. 0.625 m/h", "C. 7.81 m/h", "D. 15.63 m/h"],
     correct: 3,
-    explanation: "Calculate the horizontal flow velocity by first converting the flow rate to an hourly basis, then determining the cross-sectional area, and finally dividing the hourly flow rate by the cross-sectional area.
-
-Step 1 — Convert daily flow rate to hourly flow rate:
-18,000 m³/d ÷ 24 h/d = 750 m³/h
-
-Step 2 — Calculate the cross-sectional area of the basin perpendicular to flow:
-12 m × 4 m = 48 m²
-
-Step 3 — Calculate the horizontal flow velocity:
-750 m³/h ÷ 48 m² = 15.625 m/h
-
-Step 4 — Round to two decimal places:
-15.625 m/h ≈ 15.63 m/h
-
-The correct answer is 15.63 m/h.",
+    explanation: "Calculate the horizontal flow velocity by first converting the flow rate to an hourly basis, then determining the cross-sectional area, and finally dividing the hourly flow rate by the cross-sectional area.\n\nStep 1 — Convert daily flow rate to hourly flow rate:\n18,000 m³/d ÷ 24 h/d = 750 m³/h\n\nStep 2 — Calculate the cross-sectional area of the basin perpendicular to flow:\n12 m × 4 m = 48 m²\n\nStep 3 — Calculate the horizontal flow velocity:\n750 m³/h ÷ 48 m² = 15.625 m/h\n\nStep 4 — Round to two decimal places:\n15.625 m/h ≈ 15.63 m/h\n\nThe correct answer is 15.63 m/h.",
     steps: [ { l: "Convert flow rate to m³/h", c: "Q (m³/h) = 18,000 m³/d / 24 h/d = 750 m³/h" }, { l: "Calculate Cross-sectional Area (A)", c: "A = Width × Depth = 12 m × 4 m = 48 m²" }, { l: "Formula for Horizontal Flow Velocity (v)", c: "v = Q / A, where Q is the flow rate and A is the cross-sectional area." }, { l: "Substitute values", c: "v = 750 m³/h / 48 m²" }, { l: "Calculate velocity", c: "v = 15.625 m/h" }, { l: "Result", c: "The horizontal flow velocity is 15.63 m/h." } ],
     tip: "Ensure all units are consistent (e.g., m³/h and m²) before calculation.",
   },
@@ -4189,24 +3879,7 @@ The correct answer is 15.63 m/h.",
     question: "A sedimentation basin treats 10 ML/d and produces sludge at 0.2% solids. The sludge is thickened to 4% solids before disposal. If the thickened sludge density is 1,020 kg/m³, what is the volume of thickened sludge in m³/d? (Assume raw water TSS = 20 mg/L, 95% removal)",
     options: ["0.46 m³/d", "4.66 m³/d", "46.6 m³/d", "466 m³/d"],
     correct: 1,
-    explanation: "Calculate the mass of solids removed, then determine the mass of thickened sludge, and finally convert this mass to a volume.
-
-Step 1 — Calculate the mass of solids removed per day:
-10 ML/d × 1,000,000 L/ML = 10,000,000 L/d
-10,000,000 L/d × 20 mg/L = 200,000,000 mg/d
-200,000,000 mg/d × 0.95 removal = 190,000,000 mg/d
-190,000,000 mg/d ÷ 1,000,000 mg/kg = 190 kg/d
-
-Step 2 — Calculate the mass of thickened sludge:
-190 kg/d ÷ 0.04 (4% solids) = 4,750 kg/d
-
-Step 3 — Calculate the volume of thickened sludge:
-4,750 kg/d ÷ 1,020 kg/m³ = 4.65686 m³/d
-
-Step 4 — Round to two decimal places:
-4.65686 m³/d ≈ 4.66 m³/d
-
-The correct answer is 4.66 m³/d.",
+    explanation: "Calculate the mass of solids removed, then determine the mass of thickened sludge, and finally convert this mass to a volume.\n\nStep 1 — Calculate the mass of solids removed per day:\n10 ML/d × 1,000,000 L/ML = 10,000,000 L/d\n10,000,000 L/d × 20 mg/L = 200,000,000 mg/d\n200,000,000 mg/d × 0.95 removal = 190,000,000 mg/d\n190,000,000 mg/d ÷ 1,000,000 mg/kg = 190 kg/d\n\nStep 2 — Calculate the mass of thickened sludge:\n190 kg/d ÷ 0.04 (4% solids) = 4,750 kg/d\n\nStep 3 — Calculate the volume of thickened sludge:\n4,750 kg/d ÷ 1,020 kg/m³ = 4.65686 m³/d\n\nStep 4 — Round to two decimal places:\n4.65686 m³/d ≈ 4.66 m³/d\n\nThe correct answer is 4.66 m³/d.",
     steps: [ { l: "Calculate mass of dry solids in initial sludge", c: "Mass of solids (kg/d) = Volume of sludge (L/d) × Solids concentration (%) × (1 kg/L / 1000 L/m³) (assuming sludge density ≈ water density for mass calculation)" }, { l: "Substitute values for mass of solids", c: "Mass of solids = 10,000,000 L/d × 0.002 = 20,000 kg/d" }, { l: "Calculate volume of thickened sludge", c: "Volume of thickened sludge (m³/d) = Mass of solids (kg/d) / (Thickened solids concentration (%) × Thickened sludge density (kg/m³))" }, { l: "Substitute values for thickened sludge volume", c: "Volume of thickened sludge = 20,000 kg/d / (0.04 × 1,020 kg/m³)" }, { l: "Calculate thickened sludge volume", c: "Volume of thickened sludge = 20,000 kg/d / 40.8 kg/m³ = 490.20 m³/d" }, { l: "Result", c: "The volume of thickened sludge is 490.20 m³/d." } ],
     tip: "Always use the correct density for thickened sludge when given.",
   },
@@ -4478,20 +4151,7 @@ The correct answer is 4.66 m³/d.",
       "24 m/h"
     ],
     correct: 1,
-    explanation: "Calculate the hydraulic loading rate by dividing the flow rate by the filter surface area.
-
-Step 1 — Identify the given values:
-Flow rate (Q) = 600 m³/h
-Surface area (A) = 50 m²
-
-Step 2 — Apply the hydraulic loading rate formula:
-Hydraulic Loading Rate = Q ÷ A
-Hydraulic Loading Rate = 600 m³/h ÷ 50 m²
-
-Step 3 — Calculate the result:
-Hydraulic Loading Rate = 12 m/h
-
-The correct answer is **12 m/h**.",
+    explanation: "Calculate the hydraulic loading rate by dividing the flow rate by the filter surface area.\n\nStep 1 — Identify the given values:\nFlow rate (Q) = 600 m³/h\nSurface area (A) = 50 m²\n\nStep 2 — Apply the hydraulic loading rate formula:\nHydraulic Loading Rate = Q ÷ A\nHydraulic Loading Rate = 600 m³/h ÷ 50 m²\n\nStep 3 — Calculate the result:\nHydraulic Loading Rate = 12 m/h\n\nThe correct answer is **12 m/h**.",
     steps: [ { l: "Formula", c: "Hydraulic Loading Rate = Flow Rate (Q) / Surface Area (A)" }, { l: "Substitute", c: "Hydraulic Loading Rate = 600 m³/h / 50 m²" }, { l: "Calculate", c: "Hydraulic Loading Rate = 12 m/h" }, { l: "Result", c: "The hydraulic loading rate is 12 m/h." } ],
     tip: "Remember units: m³/h divided by m² yields m/h, a loading rate.",
   },
@@ -4508,22 +4168,7 @@ The correct answer is **12 m/h**.",
       "34.7 m/h"
     ],
     correct: 0,
-    explanation: "Calculate the total filter area, convert the plant flow to an hourly rate, then divide the hourly flow by the total filter area to find the hydraulic loading rate.
-
-Step 1 — Calculate the area of one filter:
-8 m × 6 m = 48 m²
-
-Step 2 — Calculate the total filter area for all four filters:
-4 filters × 48 m²/filter = 192 m²
-
-Step 3 — Convert the plant flow from ML/d to m³/h:
-20 ML/d = 20,000 m³/d
-20,000 m³/d ÷ 24 h/d = 833.33 m³/h
-
-Step 4 — Calculate the hydraulic loading rate per filter:
-833.33 m³/h ÷ 192 m² = 4.34 m/h
-
-The correct answer is 4.3 m/h.",
+    explanation: "Calculate the total filter area, convert the plant flow to an hourly rate, then divide the hourly flow by the total filter area to find the hydraulic loading rate.\n\nStep 1 — Calculate the area of one filter:\n8 m × 6 m = 48 m²\n\nStep 2 — Calculate the total filter area for all four filters:\n4 filters × 48 m²/filter = 192 m²\n\nStep 3 — Convert the plant flow from ML/d to m³/h:\n20 ML/d = 20,000 m³/d\n20,000 m³/d ÷ 24 h/d = 833.33 m³/h\n\nStep 4 — Calculate the hydraulic loading rate per filter:\n833.33 m³/h ÷ 192 m² = 4.34 m/h\n\nThe correct answer is 4.3 m/h.",
     steps: [ { l: "Step 1: Calculate the area of one filter", c: "Area per filter = Length × Width = 8 m × 6 m = 48 m²" }, { l: "Step 2: Calculate the total filter area", c: "Total filter area = Number of filters × Area per filter = 4 × 48 m² = 192 m²" }, { l: "Step 3: Convert the plant flow rate to m³/h", c: "Plant flow = 20 ML/d = 20,000 m³/d. Convert to m³/h: 20,000 m³/d / 24 h/d = 833.33 m³/h" }, { l: "Step 4: Calculate the hydraulic loading rate", c: "Hydraulic Loading Rate = Plant Flow / Total Filter Area = 833.33 m³/h / 192 m²" }, { l: "Calculate", c: "Hydraulic Loading Rate = 4.34 m/h" }, { l: "Result", c: "The hydraulic loading rate per filter is 4.34 m/h." } ],
     tip: "Ensure all units are consistent (e.g., m³/h and m²) before calculating loading rates.",
   },
@@ -4638,15 +4283,7 @@ The correct answer is 4.3 m/h.",
       "480 m³"
     ],
     correct: 1,
-    explanation: "Calculate the volume of backwash water by multiplying the backwash rate by the filter surface area and the duration of the backwash.
-
-Step 1 — Convert backwash time to hours:
-10 minutes ÷ 60 minutes/hour = 0.1666666667 hours
-
-Step 2 — Calculate the volume of backwash water:
-Volume = 36 m/h × 40 m² × 0.1666666667 h = 240 m³
-
-The correct answer is 240 m³.",
+    explanation: "Calculate the volume of backwash water by multiplying the backwash rate by the filter surface area and the duration of the backwash.\n\nStep 1 — Convert backwash time to hours:\n10 minutes ÷ 60 minutes/hour = 0.1666666667 hours\n\nStep 2 — Calculate the volume of backwash water:\nVolume = 36 m/h × 40 m² × 0.1666666667 h = 240 m³\n\nThe correct answer is 240 m³.",
     steps: [ { l: "Formula", c: "Volume of Backwash Water = Backwash Rate × Surface Area × Backwash Time" }, { l: "Step 1: Convert backwash time to hours", c: "Backwash Time = 10 minutes / 60 minutes/hour = 0.16667 hours" }, { l: "Substitute", c: "Volume of Backwash Water = 36 m/h × 40 m² × 0.16667 h" }, { l: "Calculate", c: "Volume of Backwash Water = 240 m³" }, { l: "Result", c: "The volume of backwash water used is 240 m³." } ],
     tip: "Always convert time units to match the rate's time unit (e.g., hours).",
   },
@@ -4784,23 +4421,7 @@ The correct answer is 240 m³.",
     question: "A plant has 6 filters, each 10 m × 8 m. The plant treats 30 ML/d. One filter is taken out of service for maintenance. What is the new hydraulic loading rate per filter in m/h?",
     options: ["3.125 m/h", "6.25 m/h", "7.5 m/h", "10.4 m/h"],
     correct: 0,
-    explanation: "Calculate the surface area of one filter, determine the total operating filter area, convert the plant flow rate to cubic meters per hour, and then calculate the hydraulic loading rate.
-
-Step 1 — Calculate the surface area of one filter:
-10 m × 8 m = 80 m^2
-
-Step 2 — Calculate the total operating filter area:
-6 filters - 1 filter = 5 operating filters
-5 filters × 80 m^2/filter = 400 m^2
-
-Step 3 — Convert the plant flow rate to m^3/h:
-30 ML/d = 30,000 m^3/d
-30,000 m^3/d ÷ 24 h/d = 1,250 m^3/h
-
-Step 4 — Calculate the new hydraulic loading rate:
-1,250 m^3/h ÷ 400 m^2 = 3.125 m/h
-
-The correct answer is 3.125 m/h.",
+    explanation: "Calculate the surface area of one filter, determine the total operating filter area, convert the plant flow rate to cubic meters per hour, and then calculate the hydraulic loading rate.\n\nStep 1 — Calculate the surface area of one filter:\n10 m × 8 m = 80 m^2\n\nStep 2 — Calculate the total operating filter area:\n6 filters - 1 filter = 5 operating filters\n5 filters × 80 m^2/filter = 400 m^2\n\nStep 3 — Convert the plant flow rate to m^3/h:\n30 ML/d = 30,000 m^3/d\n30,000 m^3/d ÷ 24 h/d = 1,250 m^3/h\n\nStep 4 — Calculate the new hydraulic loading rate:\n1,250 m^3/h ÷ 400 m^2 = 3.125 m/h\n\nThe correct answer is 3.125 m/h.",
     steps: [ { l: "Step 1: Calculate the area of one filter", c: "Area per filter = Length × Width = 10 m × 8 m = 80 m²" }, { l: "Step 2: Calculate the total filter area with one filter out of service", c: "Number of filters in service = 6 - 1 = 5 filters. Total filter area = 5 filters × 80 m²/filter = 400 m²" }, { l: "Step 3: Convert the plant flow rate to m³/h", c: "Plant flow = 30 ML/d = 30,000 m³/d. Convert to m³/h: 30,000 m³/d / 24 h/d = 1,250 m³/h" }, { l: "Step 4: Calculate the new hydraulic loading rate", c: "Hydraulic Loading Rate = Plant Flow / Total Filter Area = 1,250 m³/h / 400 m²" }, { l: "Calculate", c: "Hydraulic Loading Rate = 3.125 m/h" }, { l: "Result", c: "The new hydraulic loading rate per filter is 3.125 m/h." } ],
     tip: "Adjust total area for filters out of service; flow remains constant.",
   },
@@ -4915,15 +4536,7 @@ The correct answer is 3.125 m/h.",
       "10%"
     ],
     correct: 1,
-    explanation: "To find the backwash water as a percentage of filtered water, divide the volume of backwash water by the volume of filtered water and multiply by 100.
-
-Step 1 — Calculate the ratio of backwash water to filtered water:
-120 m³ (backwash) ÷ 4,000 m³ (filtered) = 0.03
-
-Step 2 — Convert the ratio to a percentage:
-0.03 × 100% = 3%
-
-The correct answer is 3%.",
+    explanation: "To find the backwash water as a percentage of filtered water, divide the volume of backwash water by the volume of filtered water and multiply by 100.\n\nStep 1 — Calculate the ratio of backwash water to filtered water:\n120 m³ (backwash) ÷ 4,000 m³ (filtered) = 0.03\n\nStep 2 — Convert the ratio to a percentage:\n0.03 × 100% = 3%\n\nThe correct answer is 3%.",
     steps: [ { l: "Formula", c: "Backwash Water Percentage = (Volume of Backwash Water / Volume of Filtered Water) × 100%" }, { l: "Substitute", c: "Backwash Water Percentage = (120 m³ / 4,000 m³) × 100%" }, { l: "Calculate", c: "Backwash Water Percentage = 0.03 × 100% = 3%" }, { l: "Result", c: "The backwash water is 3% of the filtered water." } ],
     tip: "Percentage calculations always involve (part/whole) × 100.",
   },
@@ -5024,15 +4637,7 @@ The correct answer is 3%.",
       "112.5 cm"
     ],
     correct: 1,
-    explanation: "Calculate the expanded depth of the sand layer by multiplying its original depth by the expansion factor.
-
-Step 1 — Determine the expansion factor:
-1 + 0.30 (expansion fraction) = 1.30
-
-Step 2 — Calculate the expanded depth of the sand:
-75 cm (original depth) × 1.30 (expansion factor) = 97.5 cm
-
-The correct answer is 97.5 cm.",
+    explanation: "Calculate the expanded depth of the sand layer by multiplying its original depth by the expansion factor.\n\nStep 1 — Determine the expansion factor:\n1 + 0.30 (expansion fraction) = 1.30\n\nStep 2 — Calculate the expanded depth of the sand:\n75 cm (original depth) × 1.30 (expansion factor) = 97.5 cm\n\nThe correct answer is 97.5 cm.",
     steps: [ { l: "Formula", c: "Expanded Depth = Original Depth × (1 + Expansion Fraction)" }, { l: "Step 1", c: "Identify the given values: Original Depth = 75 cm, Expansion Fraction = 30% or 0.30." }, { l: "Substitute", c: "Expanded Depth = 75 cm × (1 + 0.30)" }, { l: "Calculate", c: "Expanded Depth = 75 cm × 1.30 = 97.5 cm" }, { l: "Result", c: "The expanded depth of the sand is 97.5 cm." } ],
     tip: "Remember to convert percentage expansion to a decimal for calculations.",
   },
@@ -5147,17 +4752,7 @@ The correct answer is 97.5 cm.",
       "24.4 hours"
     ],
     correct: 1,
-    explanation: "Calculate the filter's flow rate, then divide the total volume produced by this flow rate to find the run time.
-
-Step 1 — Calculate the filter's flow rate:
-Flow Rate = Filter Operating Rate × Filter Surface Area
-Flow Rate = 10 m/h × 45 m² = 450 m³/h
-
-Step 2 — Calculate the filter run time:
-Run Time = Total Volume Produced ÷ Flow Rate
-Run Time = 5,500 m³ ÷ 450 m³/h = 12.22 hours
-
-The correct answer is 12.2 hours.",
+    explanation: "Calculate the filter's flow rate, then divide the total volume produced by this flow rate to find the run time.\n\nStep 1 — Calculate the filter's flow rate:\nFlow Rate = Filter Operating Rate × Filter Surface Area\nFlow Rate = 10 m/h × 45 m² = 450 m³/h\n\nStep 2 — Calculate the filter run time:\nRun Time = Total Volume Produced ÷ Flow Rate\nRun Time = 5,500 m³ ÷ 450 m³/h = 12.22 hours\n\nThe correct answer is 12.2 hours.",
     steps: [ { l: "Formula 1", c: "Flow Rate = Filtration Rate × Surface Area" }, { l: "Formula 2", c: "Run Time = Total Volume / Flow Rate" }, { l: "Step 1", c: "Identify the given values: Total Volume = 5,500 m³, Surface Area = 45 m², Filtration Rate = 10 m/h." }, { l: "Substitute 1", c: "Flow Rate = 10 m/h × 45 m²" }, { l: "Calculate 1", c: "Flow Rate = 450 m³/h" }, { l: "Substitute 2", c: "Run Time = 5,500 m³ / 450 m³/h" }, { l: "Calculate 2", c: "Run Time = 12.22 hours (rounded to two decimal places)" }, { l: "Result", c: "The filter run is approximately 12.2 hours." } ],
     tip: "Break down multi-step problems; calculate flow rate first, then run time.",
   },
@@ -5401,18 +4996,7 @@ The correct answer is 12.2 hours.",
       "30 min"
     ],
     correct: 1,
-    explanation: "Calculate the theoretical hydraulic retention time (HRT), then use the T10/T ratio to find T10.
-
-Step 1 — Calculate the theoretical HRT (T):
-HRT (T) = Volume ÷ Flow = 1,200 m³ ÷ 4,800 m³/h = 0.25 h
-
-Step 2 — Convert HRT to minutes:
-HRT (T) = 0.25 h × 60 min/h = 15 min
-
-Step 3 — Calculate T10 using the given ratio:
-T10 = (T10/T) × T = 0.5 × 15 min = 7.5 min
-
-The correct answer is 7.5 min.",
+    explanation: "Calculate the theoretical hydraulic retention time (HRT), then use the T10/T ratio to find T10.\n\nStep 1 — Calculate the theoretical HRT (T):\nHRT (T) = Volume ÷ Flow = 1,200 m³ ÷ 4,800 m³/h = 0.25 h\n\nStep 2 — Convert HRT to minutes:\nHRT (T) = 0.25 h × 60 min/h = 15 min\n\nStep 3 — Calculate T10 using the given ratio:\nT10 = (T10/T) × T = 0.5 × 15 min = 7.5 min\n\nThe correct answer is 7.5 min.",
     steps: [ { l: "Formula 1", c: "Theoretical Hydraulic Retention Time (HRT) = Volume / Flow Rate" }, { l: "Formula 2", c: "T10 = T10/T Ratio × Theoretical HRT" }, { l: "Step 1", c: "Identify the given values: Volume = 1,200 m³, Plant Flow = 4,800 m³/h, T10/T Ratio = 0.5." }, { l: "Substitute 1", c: "Theoretical HRT = 1,200 m³ / 4,800 m³/h" }, { l: "Calculate 1", c: "Theoretical HRT = 0.25 hours" }, { l: "Step 2", c: "Convert Theoretical HRT to minutes: 0.25 hours × 60 minutes/hour = 15 minutes." }, { l: "Substitute 2", c: "T10 = 0.5 × 15 minutes" }, { l: "Calculate 2", c: "T10 = 7.5 minutes" }, { l: "Result", c: "The T10 is 7.5 minutes." } ],
     tip: "Always check units and convert to the desired final unit, like minutes.",
   },
@@ -5429,18 +5013,7 @@ The correct answer is 7.5 min.",
       "36.0 mg·min/L"
     ],
     correct: 1,
-    explanation: "Calculate CT by multiplying the free chlorine residual (C) by the T10 baffling factor (T).
-
-Step 1 — Identify the given values:
-Free Chlorine Residual (C) = 1.2 mg/L
-T10 Baffling Factor (T) = 7.5 min
-
-Step 2 — Calculate CT:
-CT = C × T
-CT = 1.2 mg/L × 7.5 min
-CT = 9.0 mg·min/L
-
-The correct answer is 9.0 mg·min/L.",
+    explanation: "Calculate CT by multiplying the free chlorine residual (C) by the T10 baffling factor (T).\n\nStep 1 — Identify the given values:\nFree Chlorine Residual (C) = 1.2 mg/L\nT10 Baffling Factor (T) = 7.5 min\n\nStep 2 — Calculate CT:\nCT = C × T\nCT = 1.2 mg/L × 7.5 min\nCT = 9.0 mg·min/L\n\nThe correct answer is 9.0 mg·min/L.",
     steps: [ { l: "Formula", c: "CT = C × T10" }, { l: "Step 1", c: "Identify the given values: Free Chlorine Residual (C) = 1.2 mg/L, T10 = 7.5 min (from previous question)." }, { l: "Substitute", c: "CT = 1.2 mg/L × 7.5 min" }, { l: "Calculate", c: "CT = 9.0 mg·min/L" }, { l: "Result", c: "The CT achieved is 9.0 mg·min/L." } ],
     tip: "CT is a direct product of disinfectant concentration and contact time.",
   },
@@ -5625,15 +5198,7 @@ The correct answer is 9.0 mg·min/L.",
       "109.5 min"
     ],
     correct: 1,
-    explanation: "To find the minimum T10, divide the required CT value by the free chlorine residual.
-
-Step 1 — Calculate minimum T10:
-73 mg·min/L ÷ 1.5 mg/L = 48.666... min
-
-Step 2 — Round to one decimal place:
-48.7 min
-
-The correct answer is 48.7 min.",
+    explanation: "To find the minimum T10, divide the required CT value by the free chlorine residual.\n\nStep 1 — Calculate minimum T10:\n73 mg·min/L ÷ 1.5 mg/L = 48.666... min\n\nStep 2 — Round to one decimal place:\n48.7 min\n\nThe correct answer is 48.7 min.",
     steps: [ { l: "Formula", c: "Minimum T10 = Required CT / Free Chlorine Residual (C)" }, { l: "Step 1", c: "Identify the given values: Required CT = 73 mg·min/L, Free Chlorine Residual (C) = 1.5 mg/L." }, { l: "Substitute", c: "Minimum T10 = 73 mg·min/L / 1.5 mg/L" }, { l: "Calculate", c: "Minimum T10 = 48.666... minutes" }, { l: "Result", c: "The minimum T10 required is approximately 48.7 minutes." } ],
     tip: "Rearrange the CT formula to solve for the unknown variable.",
   },
@@ -5785,18 +5350,7 @@ The correct answer is 48.7 min.",
     question: "A plant requires 8 mg/L of chlorine dose and treats 5 ML/d. The NaOCl solution is 12% available chlorine with a density of 1.17 kg/L. What volume of NaOCl solution is required per day?",
     options: ["142 L/d", "285 L/d", "341 L/d", "570 L/d"],
     correct: 1,
-    explanation: "Calculate the total mass of chlorine required, then determine the mass of NaOCl solution needed based on its available chlorine percentage, and finally convert this mass to a daily volume using the solution's density.
-
-Step 1 — Chlorine mass required per day:
-8 mg/L × 5 ML/d = 8 mg/L × 5,000,000 L/d = 40,000,000 mg/d = 40 kg/d
-
-Step 2 — Mass of NaOCl solution required per day (12% available chlorine):
-40 kg/d ÷ 0.12 = 333.33 kg/d
-
-Step 3 — Volume of NaOCl solution required per day:
-333.33 kg/d ÷ 1.17 kg/L = 284.9 L/d
-
-The correct answer is 285 L/d.",
+    explanation: "Calculate the total mass of chlorine required, then determine the mass of NaOCl solution needed based on its available chlorine percentage, and finally convert this mass to a daily volume using the solution's density.\n\nStep 1 — Chlorine mass required per day:\n8 mg/L × 5 ML/d = 8 mg/L × 5,000,000 L/d = 40,000,000 mg/d = 40 kg/d\n\nStep 2 — Mass of NaOCl solution required per day (12% available chlorine):\n40 kg/d ÷ 0.12 = 333.33 kg/d\n\nStep 3 — Volume of NaOCl solution required per day:\n333.33 kg/d ÷ 1.17 kg/L = 284.9 L/d\n\nThe correct answer is 285 L/d.",
     steps: [ { l: "Formula", c: "Mass_Cl2 = Dose × Flow; Mass_NaOCl_solution = Mass_Cl2 / %_available_Cl2; Volume_NaOCl_solution = Mass_NaOCl_solution / Density_NaOCl_solution" }, { l: "Step 1: Calculate the mass of chlorine required per day", c: "Mass_Cl2 = 8 mg/L × 5 ML/d = 8 mg/L × 5,000,000 L/d = 40,000,000 mg/d = 40 kg/d" }, { l: "Step 2: Calculate the mass of NaOCl solution required per day", c: "Mass_NaOCl_solution = 40 kg/d / 0.12 = 333.33 kg/d" }, { l: "Step 3: Calculate the volume of NaOCl solution required per day", c: "Volume_NaOCl_solution = 333.33 kg/d / 1.17 kg/L = 284.89 L/d" }, { l: "Result", c: "285 L/d" } ],
     tip: "Convert units carefully, especially mg to kg and ML to L.",
   },
@@ -5897,13 +5451,7 @@ The correct answer is 285 L/d.",
       "7.0 mg/L"
     ],
     correct: 1,
-    explanation: "Calculate the required chlorine dose by adding the chlorine demand to the desired free chlorine residual.
-
-Step 1 — Calculate the chlorine dose:
-Chlorine Dose = Chlorine Demand + Desired Residual
-Chlorine Dose = 3.5 mg/L + 0.5 mg/L = 4.0 mg/L
-
-The correct answer is 4.0 mg/L.",
+    explanation: "Calculate the required chlorine dose by adding the chlorine demand to the desired free chlorine residual.\n\nStep 1 — Calculate the chlorine dose:\nChlorine Dose = Chlorine Demand + Desired Residual\nChlorine Dose = 3.5 mg/L + 0.5 mg/L = 4.0 mg/L\n\nThe correct answer is 4.0 mg/L.",
     steps: [ { l: "Formula", c: "Chlorine Dose = Chlorine Demand + Desired Residual" }, { l: "Step 1: Identify given values", c: "Chlorine Demand = 3.5 mg/L; Desired Residual = 0.5 mg/L" }, { l: "Step 2: Substitute values into the formula", c: "Chlorine Dose = 3.5 mg/L + 0.5 mg/L" }, { l: "Step 3: Calculate the chlorine dose", c: "Chlorine Dose = 4.0 mg/L" }, { l: "Result", c: "4.0 mg/L" } ],
     tip: "Dose covers both demand and desired residual.",
   },
@@ -6074,13 +5622,7 @@ The correct answer is 4.0 mg/L.",
       "5.0 mg/L"
     ],
     correct: 1,
-    explanation: "Calculate the free chlorine residual by subtracting the chlorine demand from the applied chlorine dose.
-
-Step 1 — Calculate free chlorine residual:
-Free Chlorine Residual = Applied Chlorine Dose - Chlorine Demand
-Free Chlorine Residual = 5.0 mg/L - 3.8 mg/L = 1.2 mg/L
-
-The correct answer is 1.2 mg/L.",
+    explanation: "Calculate the free chlorine residual by subtracting the chlorine demand from the applied chlorine dose.\n\nStep 1 — Calculate free chlorine residual:\nFree Chlorine Residual = Applied Chlorine Dose - Chlorine Demand\nFree Chlorine Residual = 5.0 mg/L - 3.8 mg/L = 1.2 mg/L\n\nThe correct answer is 1.2 mg/L.",
     steps: [ { l: "Formula", c: "Free Chlorine Residual = Chlorine Dose - Chlorine Demand" }, { l: "Step 1: Identify given values", c: "Chlorine Dose = 5 mg/L; Chlorine Demand = 3.8 mg/L" }, { l: "Step 2: Substitute values into the formula", c: "Free Chlorine Residual = 5 mg/L - 3.8 mg/L" }, { l: "Step 3: Calculate the free chlorine residual", c: "Free Chlorine Residual = 1.2 mg/L" }, { l: "Result", c: "1.2 mg/L" } ],
     tip: "Residual is what's left after demand is met.",
   },
@@ -6296,21 +5838,7 @@ The correct answer is 1.2 mg/L.",
       "77 L/d"
     ],
     correct: 1,
-    explanation: "Calculate the total mass of fluoride required, then determine the mass of fluorosilicic acid solution needed, and finally convert this mass to a daily volume.
-
-Step 1 - Calculate the total mass of fluoride required per day:
-0.7 mg/L × 12,000,000 L/d = 8,400,000 mg/d = 8.4 kg/d
-
-Step 2 - Calculate the effective fluoride concentration in the solution:
-23% w/w × 79.2% available fluoride = 0.23 × 0.792 = 0.18216
-
-Step 3 - Calculate the total mass of fluorosilicic acid solution required per day:
-8.4 kg/d ÷ 0.18216 = 46.11 kg/d
-
-Step 4 - Convert the mass of solution to volume per day:
-46.11 kg/d ÷ 1.19 kg/L = 38.75 L/d
-
-The correct answer is 38.5 L/d.",
+    explanation: "Calculate the total mass of fluoride required, then determine the mass of fluorosilicic acid solution needed, and finally convert this mass to a daily volume.\n\nStep 1 - Calculate the total mass of fluoride required per day:\n0.7 mg/L × 12,000,000 L/d = 8,400,000 mg/d = 8.4 kg/d\n\nStep 2 - Calculate the effective fluoride concentration in the solution:\n23% w/w × 79.2% available fluoride = 0.23 × 0.792 = 0.18216\n\nStep 3 - Calculate the total mass of fluorosilicic acid solution required per day:\n8.4 kg/d ÷ 0.18216 = 46.11 kg/d\n\nStep 4 - Convert the mass of solution to volume per day:\n46.11 kg/d ÷ 1.19 kg/L = 38.75 L/d\n\nThe correct answer is 38.5 L/d.",
     steps: [ { l: "Formula", c: "Mass_F = Dose × Flow; Mass_H2SiF6_solution = Mass_F / (%_H2SiF6_w/w × %_available_F); Volume_H2SiF6_solution = Mass_H2SiF6_solution / Density_H2SiF6_solution" }, { l: "Step 1: Calculate the mass of fluoride required per day", c: "Mass_F = 0.7 mg/L × 12 ML/d = 0.7 mg/L × 12,000,000 L/d = 8,400,000 mg/d = 8.4 kg/d" }, { l: "Step 2: Calculate the mass of H₂SiF₆ solution required per day", c: "Mass_H2SiF6_solution = 8.4 kg/d / (0.23 × 0.792) = 8.4 kg/d / 0.18216 = 46.11 kg/d" }, { l: "Step 3: Calculate the volume of H₂SiF₆ solution required per day", c: "Volume_H2SiF6_solution = 46.11 kg/d / 1.19 kg/L = 38.75 L/d" }, { l: "Result", c: "38.75 L/d" } ],
     tip: "Account for both solution concentration and available fluoride percentage.",
   },
@@ -6350,23 +5878,7 @@ The correct answer is 38.5 L/d.",
     question: "A plant treats 20 ML/d and applies lime at 15 mg/L. Lime is supplied as a 10% slurry with a density of 1.07 kg/L. What is the required lime slurry feed rate in L/h?",
     options: ["58.4 L/h", "87.6 L/h", "116.8 L/h", "146.0 L/h"],
     correct: 2,
-    explanation: "Convert the lime dose to a daily mass, adjust for slurry concentration and density, then convert to an hourly flow rate.
-
-Step 1 — Calculate the total mass of pure lime needed per day:
-20 ML/d × 1,000,000 L/ML = 20,000,000 L/d
-20,000,000 L/d × 15 mg/L = 300,000,000 mg/d
-300,000,000 mg/d ÷ 1,000,000 mg/kg = 300 kg/d
-
-Step 2 — Calculate the total mass of slurry needed per day:
-300 kg/d ÷ 0.10 (10% slurry) = 3,000 kg/d
-
-Step 3 — Calculate the volume of slurry needed per day:
-3,000 kg/d ÷ 1.07 kg/L = 2,803.74 L/d
-
-Step 4 — Convert the daily slurry volume to an hourly feed rate:
-2,803.74 L/d ÷ 24 h/d = 116.82 L/h
-
-The correct answer is 116.8 L/h.",
+    explanation: "Convert the lime dose to a daily mass, adjust for slurry concentration and density, then convert to an hourly flow rate.\n\nStep 1 — Calculate the total mass of pure lime needed per day:\n20 ML/d × 1,000,000 L/ML = 20,000,000 L/d\n20,000,000 L/d × 15 mg/L = 300,000,000 mg/d\n300,000,000 mg/d ÷ 1,000,000 mg/kg = 300 kg/d\n\nStep 2 — Calculate the total mass of slurry needed per day:\n300 kg/d ÷ 0.10 (10% slurry) = 3,000 kg/d\n\nStep 3 — Calculate the volume of slurry needed per day:\n3,000 kg/d ÷ 1.07 kg/L = 2,803.74 L/d\n\nStep 4 — Convert the daily slurry volume to an hourly feed rate:\n2,803.74 L/d ÷ 24 h/d = 116.82 L/h\n\nThe correct answer is 116.8 L/h.",
     steps: [ { l: "Formula", c: "Mass_lime = Dose × Flow; Mass_slurry = Mass_lime / %_slurry; Volume_slurry = Mass_slurry / Density_slurry; Feed_rate_L/h = Volume_slurry / 24 h/d" }, { l: "Step 1: Calculate the mass of lime required per day", c: "Mass_lime = 15 mg/L × 20 ML/d = 15 mg/L × 20,000,000 L/d = 300,000,000 mg/d = 300 kg/d" }, { l: "Step 2: Calculate the mass of slurry required per day", c: "Mass_slurry = 300 kg/d / 0.10 = 3,000 kg/d" }, { l: "Step 3: Calculate the volume of slurry required per day", c: "Volume_slurry = 3,000 kg/d / 1.07 kg/L = 2,803.74 L/d" }, { l: "Step 4: Calculate the lime slurry feed rate in L/h", c: "Feed_rate_L/h = 2,803.74 L/d / 24 h/d = 116.82 L/h" }, { l: "Result", c: "116.8 L/h" } ],
     tip: "Remember to convert daily rates to hourly rates when needed.",
   },
@@ -8377,18 +7889,7 @@ The correct answer is 116.8 L/h.",
       "No, because any measurement exceeding 0.3 NTU is a violation"
     ],
     correct: 2,
-    explanation: "Determine the percentage of turbidity measurements that exceed 0.3 NTU and compare it to the regulatory limit.
-
-Step 1 — Calculate the percentage of measurements exceeding 0.3 NTU:
-(4 measurements exceeding 0.3 NTU ÷ 95 total measurements) × 100% = 4.2%
-
-Step 2 — Determine the percentage of measurements meeting the 0.3 NTU threshold:
-100% - 4.2% = 95.8%
-
-Step 3 — Compare to the Ontario Regulation 170/03 requirement:
-Ontario Regulation 170/03 requires that at least 95% of filtered water turbidity measurements be ≤0.3 NTU. Since 95.8% of measurements meet this criterion, the requirement is satisfied.
-
-The correct answer is C. Yes, because 4/95 = 4.2%, which is less than the 5% limit",
+    explanation: "Determine the percentage of turbidity measurements that exceed 0.3 NTU and compare it to the regulatory limit.\n\nStep 1 — Calculate the percentage of measurements exceeding 0.3 NTU:\n(4 measurements exceeding 0.3 NTU ÷ 95 total measurements) × 100% = 4.2%\n\nStep 2 — Determine the percentage of measurements meeting the 0.3 NTU threshold:\n100% - 4.2% = 95.8%\n\nStep 3 — Compare to the Ontario Regulation 170/03 requirement:\nOntario Regulation 170/03 requires that at least 95% of filtered water turbidity measurements be ≤0.3 NTU. Since 95.8% of measurements meet this criterion, the requirement is satisfied.\n\nThe correct answer is C. Yes, because 4/95 = 4.2%, which is less than the 5% limit",
     steps: [ { l: "Formula", c: "Percentage of measurements exceeding limit = (Number of measurements exceeding limit / Total number of measurements) * 100%" }, { l: "Step 1", c: "Calculate the percentage of measurements that exceed 0.3 NTU." }, { l: "Substitute", c: "Percentage exceeding = (4 / 95) * 100%" }, { l: "Calculate", c: "Percentage exceeding = 0.042105 * 100% = 4.21%" }, { l: "Step 2", c: "Calculate the percentage of measurements that are ≤ 0.3 NTU." }, { l: "Formula", c: "Percentage meeting requirement = 100% - Percentage exceeding limit" }, { l: "Substitute", c: "Percentage meeting = 100% - 4.21%" }, { l: "Calculate", c: "Percentage meeting = 95.79%" }, { l: "Result", c: "Since 95.79% is greater than or equal to the 95% requirement, the plant meets Ontario Regulation 170/03." } ],
     tip: "Always compare calculated percentages to the regulatory standard.",
   },
@@ -8629,15 +8130,7 @@ The correct answer is C. Yes, because 4/95 = 4.2%, which is less than the 5% lim
       "2,190 ML/yr"
     ],
     correct: 1,
-    explanation: "Calculate the total annual water production and then determine the volume of non-revenue water based on the given percentage.
-
-Step 1 — Calculate the annual water production:
-20 ML/d × 365 d/yr = 7,300 ML/yr
-
-Step 2 — Calculate the volume of non-revenue water:
-7,300 ML/yr × 0.15 = 1,095 ML/yr
-
-The correct answer is 1,095 ML/yr.",
+    explanation: "Calculate the total annual water production and then determine the volume of non-revenue water based on the given percentage.\n\nStep 1 — Calculate the annual water production:\n20 ML/d × 365 d/yr = 7,300 ML/yr\n\nStep 2 — Calculate the volume of non-revenue water:\n7,300 ML/yr × 0.15 = 1,095 ML/yr\n\nThe correct answer is 1,095 ML/yr.",
     steps: [ { l: "Formula", c: "Annual Production (ML/yr) = Daily Production (ML/d) * Days in a Year (d/yr)" }, { l: "Step 1", c: "Calculate the total annual water production." }, { l: "Substitute", c: "Annual Production = 20 ML/d * 365 d/yr" }, { l: "Calculate", c: "Annual Production = 7,300 ML/yr" }, { l: "Formula", c: "Non-Revenue Water (ML/yr) = Annual Production (ML/yr) * Percentage of Non-Revenue Water" }, { l: "Step 2", c: "Calculate the volume of non-revenue water per year." }, { l: "Substitute", c: "Non-Revenue Water = 7,300 ML/yr * 0.15" }, { l: "Calculate", c: "Non-Revenue Water = 1,095 ML/yr" }, { l: "Result", c: "The volume of non-revenue water per year is 1,095 ML." } ],
     tip: "Convert percentages to decimals for calculations. Pay attention to units.",
   },
@@ -8649,21 +8142,7 @@ The correct answer is 1,095 ML/yr.",
     question: "A water treatment plant has a specific energy consumption of 0.35 kWh/m³. The plant treats 15 ML/d. What is the annual energy consumption in MWh?",
     options: ["1,916 MWh/yr", "5,250 MWh/yr", "1,913 MWh/yr", "19,163 MWh/yr"],
     correct: 0,
-    explanation: "Calculate the annual energy consumption by converting the flow rate to m³/d, then determining daily and annual energy consumption, and finally converting to MWh.
-
-Step 1 — Convert daily flow rate to m³/d:
-15 ML/d × 1,000,000 L/ML × 1 m³/1,000 L = 15,000 m³/d
-
-Step 2 — Calculate daily energy consumption:
-15,000 m³/d × 0.35 kWh/m³ = 5,250 kWh/d
-
-Step 3 — Calculate annual energy consumption in kWh:
-5,250 kWh/d × 365 d/yr = 1,916,250 kWh/yr
-
-Step 4 — Convert annual energy consumption to MWh/yr:
-1,916,250 kWh/yr ÷ 1,000 kWh/MWh = 1,916.25 MWh/yr
-
-The correct answer is 1,916 MWh/yr.",
+    explanation: "Calculate the annual energy consumption by converting the flow rate to m³/d, then determining daily and annual energy consumption, and finally converting to MWh.\n\nStep 1 — Convert daily flow rate to m³/d:\n15 ML/d × 1,000,000 L/ML × 1 m³/1,000 L = 15,000 m³/d\n\nStep 2 — Calculate daily energy consumption:\n15,000 m³/d × 0.35 kWh/m³ = 5,250 kWh/d\n\nStep 3 — Calculate annual energy consumption in kWh:\n5,250 kWh/d × 365 d/yr = 1,916,250 kWh/yr\n\nStep 4 — Convert annual energy consumption to MWh/yr:\n1,916,250 kWh/yr ÷ 1,000 kWh/MWh = 1,916.25 MWh/yr\n\nThe correct answer is 1,916 MWh/yr.",
     steps: [ { l: "Formula", c: "Annual Volume (m³/yr) = Daily Volume (m³/d) * Days in a Year (d/yr)" }, { l: "Step 1", c: "Convert daily treatment volume from ML/d to m³/d and then calculate annual volume." }, { l: "Substitute", c: "Annual Volume = (15 ML/d * 1,000,000 L/ML * 1 m³/1,000 L) * 365 d/yr = 15,000 m³/d * 365 d/yr" }, { l: "Calculate", c: "Annual Volume = 5,475,000 m³/yr" }, { l: "Formula", c: "Annual Energy Consumption (kWh/yr) = Specific Energy Consumption (kWh/m³) * Annual Volume (m³/yr)" }, { l: "Step 2", c: "Calculate the total annual energy consumption in kWh." }, { l: "Substitute", c: "Annual Energy Consumption = 0.35 kWh/m³ * 5,475,000 m³/yr" }, { l: "Calculate", c: "Annual Energy Consumption = 1,916,250 kWh/yr" }, { l: "Formula", c: "Annual Energy Consumption (MWh/yr) = Annual Energy Consumption (kWh/yr) / 1,000 kWh/MWh" }, { l: "Step 3", c: "Convert annual energy consumption from kWh to MWh." }, { l: "Substitute", c: "Annual Energy Consumption = 1,916,250 kWh/yr / 1,000 kWh/MWh" }, { l: "Calculate", c: "Annual Energy Consumption = 1,916.25 MWh/yr" }, { l: "Result", c: "The annual energy consumption is approximately 1,916 MWh." } ],
     tip: "Always ensure units cancel correctly. Pay attention to final unit conversions (e.g., kWh to MWh).",
   },

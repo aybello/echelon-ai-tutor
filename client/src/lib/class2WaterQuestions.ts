@@ -2265,18 +2265,7 @@ export const QUESTIONS: Question[] = [
     question: "A water sample has a pH of 7.8, temperature of 15°C, calcium hardness of 120 mg/L as CaCO3, and total alkalinity of 80 mg/L as CaCO3. The saturation pH (pHs) is calculated to be 8.1. What is the Langelier Saturation Index?",
     options: ["-0.3", "0.0", "+0.3", "+0.7"],
     correct: 0,
-    explanation: "Calculate the Langelier Saturation Index (LSI) by subtracting the saturation pH (pHs) from the measured pH.
-
-Step 1 - Identify the given pH and pHs values:
-pH = 7.8
-pHs = 8.1
-
-Step 2 - Calculate the Langelier Saturation Index (LSI):
-LSI = pH - pHs
-LSI = 7.8 - 8.1
-LSI = -0.3
-
-The correct answer is -0.3.",
+    explanation: "Calculate the Langelier Saturation Index (LSI) by subtracting the saturation pH (pHs) from the measured pH.\n\nStep 1 - Identify the given pH and pHs values:\npH = 7.8\npHs = 8.1\n\nStep 2 - Calculate the Langelier Saturation Index (LSI):\nLSI = pH - pHs\nLSI = 7.8 - 8.1\nLSI = -0.3\n\nThe correct answer is -0.3.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "LSI = pH - pHs" }, { l: "Identify Variables", c: "pH = 7.8 (measured pH of water sample), pHs = 8.1 (saturation pH)" }, { l: "Substitute", c: "LSI = 7.8 - 8.1" }, { l: "Calculate", c: "LSI = -0.3" }, { l: "Result", c: "The Langelier Saturation Index (LSI) is -0.3." } ],
     tip: "Negative LSI means corrosive water; positive LSI means scaling water.",
@@ -2439,12 +2428,7 @@ The correct answer is -0.3.",
     question: "A water treatment plant treats 10 MGD. The alum dose is 15 mg/L. How many pounds of alum are added per day?",
     options: ["1,000 lb/day", "1,251 lb/day", "1,500 lb/day", "2,000 lb/day"],
     correct: 1,
-    explanation: "Calculate the pounds of alum added per day by multiplying the flow rate, alum dose, and a conversion factor.
-
-Step 1 — Calculate pounds of alum per day:
-10 MGD × 15 mg/L × 8.34 lb/gal = 1,251 lb/day
-
-The correct answer is 1,251 lb/day.",
+    explanation: "Calculate the pounds of alum added per day by multiplying the flow rate, alum dose, and a conversion factor.\n\nStep 1 — Calculate pounds of alum per day:\n10 MGD × 15 mg/L × 8.34 lb/gal = 1,251 lb/day\n\nThe correct answer is 1,251 lb/day.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Chemical Feed (lb/day) = Flow (MGD) × Dose (mg/L) × 8.34 (lb·L / mg·MG)" }, { l: "Identify Variables", c: "Flow = 10 MGD, Dose = 15 mg/L, Conversion factor = 8.34 lb/gal (for 1 MGD and 1 mg/L)" }, { l: "Substitute", c: "Chemical Feed = 10 MGD × 15 mg/L × 8.34 lb·L / mg·MG" }, { l: "Calculate", c: "Chemical Feed = 1,251 lb/day" }, { l: "Result", c: "1,251 pounds of alum are added per day." } ],
     tip: "Remember the 8.34 factor for converting MGD and mg/L to lb/day.",
@@ -2487,24 +2471,7 @@ The correct answer is 1,251 lb/day.",
     question: "A water treatment plant has a clearwell with a volume of 2 MG. The chlorine residual entering the clearwell is 2.0 mg/L. If the baffling factor is 0.3, what is the CT value?",
     options: ["A. 120 mg·min/L", "B. 144 mg·min/L", "C. 360 mg·min/L", "D. 480 mg·min/L"],
     correct: 1,
-    explanation: "To calculate the CT value, we need to determine the effective contact time (T) by working backward from the provided correct answer, as a flow rate is not given to calculate T10 directly.
-
-Step 1 — Identify given values:
-Chlorine residual (C) = 2.0 mg/L
-Baffling factor = 0.3
-Target CT value (from correct answer) = 144 mg·min/L
-
-Step 2 — Calculate the effective contact time (T) using the target CT value and chlorine residual:
-T = CT / C = 144 mg·min/L ÷ 2.0 mg/L = 72 minutes
-
-Step 3 — Calculate the T10 value using the effective contact time and baffling factor:
-T10 = T / Baffling Factor = 72 minutes ÷ 0.3 = 240 minutes
-
-Step 4 — Verify the CT value with the derived T10:
-Effective Contact Time (T) = T10 × Baffling Factor = 240 minutes × 0.3 = 72 minutes
-CT = C × T = 2.0 mg/L × 72 minutes = 144 mg·min/L
-
-The correct answer is 144 mg·min/L.",
+    explanation: "To calculate the CT value, we need to determine the effective contact time (T) by working backward from the provided correct answer, as a flow rate is not given to calculate T10 directly.\n\nStep 1 — Identify given values:\nChlorine residual (C) = 2.0 mg/L\nBaffling factor = 0.3\nTarget CT value (from correct answer) = 144 mg·min/L\n\nStep 2 — Calculate the effective contact time (T) using the target CT value and chlorine residual:\nT = CT / C = 144 mg·min/L ÷ 2.0 mg/L = 72 minutes\n\nStep 3 — Calculate the T10 value using the effective contact time and baffling factor:\nT10 = T / Baffling Factor = 72 minutes ÷ 0.3 = 240 minutes\n\nStep 4 — Verify the CT value with the derived T10:\nEffective Contact Time (T) = T10 × Baffling Factor = 240 minutes × 0.3 = 72 minutes\nCT = C × T = 2.0 mg/L × 72 minutes = 144 mg·min/L\n\nThe correct answer is 144 mg·min/L.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "CT = C × T10. T10 = Baffling Factor × Theoretical Detention Time. Theoretical Detention Time = Volume / Flow Rate." }, { l: "Identify Variables", c: "C = 2.0 mg/L (chlorine residual), Baffling Factor = 0.3. Note: A flow rate is needed to calculate T10. Assuming a typical flow rate, e.g., 10 MGD, for demonstration." }, { l: "Step 1: Calculate Theoretical Detention Time", c: "Theoretical Detention Time = 2 MG / 10 MGD = 0.2 days. Convert to minutes: 0.2 days × 1440 min/day = 288 minutes." }, { l: "Step 2: Calculate T10", c: "T10 = 0.3 × 288 minutes = 86.4 minutes." }, { l: "Step 3: Calculate CT", c: "CT = 2.0 mg/L × 86.4 minutes = 172.8 mg·min/L." }, { l: "Result", c: "The CT value is 172.8 mg·min/L (assuming a flow of 10 MGD)." } ],
     tip: "CT calculation requires flow rate for detention time; ensure consistent units.",
@@ -2687,20 +2654,7 @@ The correct answer is 144 mg·min/L.",
     question: "A centrifugal pump has a flow of 500 gpm at 60 Hz. If the VFD reduces the frequency to 48 Hz, what is the approximate new flow rate?",
     options: ["300 gpm", "400 gpm", "450 gpm", "480 gpm"],
     correct: 1,
-    explanation: "Use the pump affinity law for flow and speed to calculate the new flow rate.
-
-Step 1 — Identify the affinity law for flow and speed:
-Q2/Q1 = N2/N1 (where N is proportional to frequency)
-
-Step 2 — Substitute the given values into the formula:
-Q2 / 500 gpm = 48 Hz / 60 Hz
-
-Step 3 — Calculate the new flow rate (Q2):
-Q2 = 500 gpm × (48 Hz / 60 Hz)
-Q2 = 500 gpm × 0.8
-Q2 = 400 gpm
-
-The correct answer is 400 gpm.",
+    explanation: "Use the pump affinity law for flow and speed to calculate the new flow rate.\n\nStep 1 — Identify the affinity law for flow and speed:\nQ2/Q1 = N2/N1 (where N is proportional to frequency)\n\nStep 2 — Substitute the given values into the formula:\nQ2 / 500 gpm = 48 Hz / 60 Hz\n\nStep 3 — Calculate the new flow rate (Q2):\nQ2 = 500 gpm × (48 Hz / 60 Hz)\nQ2 = 500 gpm × 0.8\nQ2 = 400 gpm\n\nThe correct answer is 400 gpm.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Q2 / Q1 = N2 / N1 (Affinity Law for Flow), where Q is flow rate and N is pump speed (proportional to frequency)." }, { l: "Identify Variables", c: "Q1 = 500 gpm (initial flow), N1 = 60 Hz (initial frequency), N2 = 48 Hz (new frequency)." }, { l: "Rearrange Formula", c: "Q2 = Q1 × (N2 / N1)" }, { l: "Substitute", c: "Q2 = 500 gpm × (48 Hz / 60 Hz)" }, { l: "Calculate", c: "Q2 = 500 gpm × 0.8 = 400 gpm" }, { l: "Result", c: "The approximate new flow rate is 400 gpm." } ],
     tip: "Flow is directly proportional to speed (frequency) in pump affinity laws.",
@@ -2893,15 +2847,7 @@ The correct answer is 400 gpm.",
     question: "A water treatment plant treats 5 MGD. The chlorine dose is 2.5 mg/L and the chlorine demand is 1.8 mg/L. What is the chlorine residual, and how many pounds of chlorine are consumed per day?",
     options: ["0.7 mg/L residual; 75 lb/day", "0.7 mg/L residual; 104 lb/day", "1.8 mg/L residual; 75 lb/day", "2.5 mg/L residual; 104 lb/day"],
     correct: 0,
-    explanation: "Calculate the chlorine residual by subtracting the demand from the dose, then determine the pounds of chlorine consumed per day using the flow, demand, and a conversion factor.
-
-Step 1 — Calculate the chlorine residual:
-Chlorine Residual = Chlorine Dose - Chlorine Demand = 2.5 mg/L - 1.8 mg/L = 0.7 mg/L
-
-Step 2 — Calculate pounds of chlorine consumed per day:
-Pounds/Day = Flow (MGD) × Demand (mg/L) × 8.34 lb/gal = 5 MGD × 1.8 mg/L × 8.34 lb/gal = 75.06 lb/day
-
-The correct answer is 0.7 mg/L residual; 75 lb/day.",
+    explanation: "Calculate the chlorine residual by subtracting the demand from the dose, then determine the pounds of chlorine consumed per day using the flow, demand, and a conversion factor.\n\nStep 1 — Calculate the chlorine residual:\nChlorine Residual = Chlorine Dose - Chlorine Demand = 2.5 mg/L - 1.8 mg/L = 0.7 mg/L\n\nStep 2 — Calculate pounds of chlorine consumed per day:\nPounds/Day = Flow (MGD) × Demand (mg/L) × 8.34 lb/gal = 5 MGD × 1.8 mg/L × 8.34 lb/gal = 75.06 lb/day\n\nThe correct answer is 0.7 mg/L residual; 75 lb/day.",
     difficulty: "medium",
     steps: [ { l: "Formula 1 (Residual)", c: "Chlorine Residual (mg/L) = Chlorine Dose (mg/L) - Chlorine Demand (mg/L)" }, { l: "Formula 2 (Consumed)", c: "Chlorine Consumed (lb/day) = Chlorine Dose (mg/L) × Flow (MGD) × 8.34 (lb·L / mg·MG)" }, { l: "Identify Variables", c: "Dose = 2.5 mg/L, Demand = 1.8 mg/L, Flow = 5 MGD, Conversion factor = 8.34 lb/gal" }, { l: "Step 1: Calculate Chlorine Residual", c: "Chlorine Residual = 2.5 mg/L - 1.8 mg/L = 0.7 mg/L" }, { l: "Step 2: Calculate Pounds of Chlorine Consumed per Day", c: "Chlorine Consumed = 2.5 mg/L × 5 MGD × 8.34 lb·L / mg·MG = 104.25 lb/day" }, { l: "Result", c: "The chlorine residual is 0.7 mg/L, and 104.25 pounds of chlorine are consumed per day." } ],
     tip: "Chlorine demand is the amount used, dose is total added, residual is what's left.",
@@ -3314,18 +3260,7 @@ The correct answer is 0.7 mg/L residual; 75 lb/day.",
     question: "A treatment plant uses free chlorine at pH 7.5 and 10°C. The required CT for 3-log Giardia inactivation is 165 mg·min/L. If the free chlorine residual entering the contact basin is 1.5 mg/L and the T10 is 90 minutes, is the required CT achieved?",
     options: ["No — CT = 135 mg·min/L, which is less than 165 mg·min/L", "Yes — CT = 135 mg·min/L, which exceeds 165 mg·min/L", "Yes — CT = 165 mg·min/L, which exactly meets the requirement", "No — CT = 225 mg·min/L, which exceeds the maximum allowed"],
     correct: 0,
-    explanation: "Calculate the achieved CT value by multiplying the free chlorine residual by the T10 contact time, then compare it to the required CT.
-
-Step 1 — Calculate the achieved CT value:
-CT = Free Chlorine Residual × T10
-CT = 1.5 mg/L × 90 min = 135 mg·min/L
-
-Step 2 — Compare the achieved CT to the required CT:
-Achieved CT = 135 mg·min/L
-Required CT = 165 mg·min/L
-Since 135 mg·min/L is less than 165 mg·min/L, the required CT is not achieved.
-
-The correct answer is A. No — CT = 135 mg·min/L, which is less than 165 mg·min/L.",
+    explanation: "Calculate the achieved CT value by multiplying the free chlorine residual by the T10 contact time, then compare it to the required CT.\n\nStep 1 — Calculate the achieved CT value:\nCT = Free Chlorine Residual × T10\nCT = 1.5 mg/L × 90 min = 135 mg·min/L\n\nStep 2 — Compare the achieved CT to the required CT:\nAchieved CT = 135 mg·min/L\nRequired CT = 165 mg·min/L\nSince 135 mg·min/L is less than 165 mg·min/L, the required CT is not achieved.\n\nThe correct answer is A. No — CT = 135 mg·min/L, which is less than 165 mg·min/L.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "CT = C × T" }, { l: "Step 1", c: "Identify the given values: Required CT = 165 mg·min/L, Free chlorine residual (C) = 1.5 mg/L, T10 contact time (T) = 90 min." }, { l: "Substitute", c: "CT = 1.5 mg/L × 90 min" }, { l: "Calculate", c: "CT = 135 mg·min/L" }, { l: "Result", c: "The calculated CT is 135 mg·min/L. Since 135 mg·min/L < 165 mg·min/L, the required CT for 3-log Giardia inactivation is NOT achieved." } ],
     tip: "Always compare calculated CT to required CT for compliance.",

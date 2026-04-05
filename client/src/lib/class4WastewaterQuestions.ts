@@ -128,27 +128,7 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
       "Approximately 90% of the rate at 20°C"
     ],
     correct: 1,
-    explanation: "Calculate the nitrification rate at 8°C relative to 20°C using the Arrhenius equation.
-
-Step 1 — Identify the given values:
-θ (Arrhenius constant) = 1.072
-T_new (new temperature) = 8°C
-T_ref (reference temperature) = 20°C
-
-Step 2 — Apply the Arrhenius equation:
-Rate(T_new) = Rate(T_ref) × θ^(T_new - T_ref)
-Rate(8°C) = Rate(20°C) × 1.072^(8 - 20)
-
-Step 3 — Calculate the exponent:
-Exponent = 8 - 20 = -12
-
-Step 4 — Calculate the temperature correction factor:
-Factor = 1.072^(-12) ≈ 0.432
-
-Step 5 — Express the result as a percentage:
-0.432 × 100% = 43.2%
-
-The nitrification rate at 8°C is approximately 43% of the rate at 20°C, which is roughly half. The correct answer is B.",
+    explanation: "Calculate the nitrification rate at 8°C relative to 20°C using the Arrhenius equation.\n\nStep 1 — Identify the given values:\nθ (Arrhenius constant) = 1.072\nT_new (new temperature) = 8°C\nT_ref (reference temperature) = 20°C\n\nStep 2 — Apply the Arrhenius equation:\nRate(T_new) = Rate(T_ref) × θ^(T_new - T_ref)\nRate(8°C) = Rate(20°C) × 1.072^(8 - 20)\n\nStep 3 — Calculate the exponent:\nExponent = 8 - 20 = -12\n\nStep 4 — Calculate the temperature correction factor:\nFactor = 1.072^(-12) ≈ 0.432\n\nStep 5 — Express the result as a percentage:\n0.432 × 100% = 43.2%\n\nThe nitrification rate at 8°C is approximately 43% of the rate at 20°C, which is roughly half. The correct answer is B.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Rate(T) = Rate(20°C) × θ^(T-20)" }, { l: "Identify Variables", c: "Rate(T) = Nitrification rate at temperature T; Rate(20°C) = Nitrification rate at 20°C (baseline); θ = Temperature correction factor (1.072); T = Operating temperature (8°C)" }, { l: "Substitute", c: "Rate(8°C) = Rate(20°C) × 1.072^(8-20)" }, { l: "Calculate Exponent", c: "8 - 20 = -12" }, { l: "Calculate Factor", c: "1.072^(-12) ≈ 0.430" }, { l: "Result", c: "The nitrification rate at 8°C is approximately 43% of the rate at 20°C." } ],
     tip: "Lower temperatures significantly reduce nitrification rates; adjust SRT accordingly.",
@@ -181,24 +161,7 @@ The nitrification rate at 8°C is approximately 43% of the rate at 20°C, which 
       "9.8 kg/m²/h — overloaded"
     ],
     correct: 1,
-    explanation: "Calculate the solids flux by first determining the total flow rate, then applying the formula for solids flux and converting units as needed.
-
-Step 1 — Calculate the total flow rate (Q + QRAS):
-15,000 m³/d + 6,000 m³/d = 21,000 m³/d
-
-Step 2 — Convert total flow rate from m³/d to m³/h:
-21,000 m³/d ÷ 24 h/d = 875 m³/h
-
-Step 3 — Calculate the solids flux in g/m²/h:
-(875 m³/h × 3,200 g/m³) ÷ 500 m² = 5,600 g/m²/h
-
-Step 4 — Convert solids flux from g/m²/h to kg/m²/h:
-5,600 g/m²/h ÷ 1,000 g/kg = 5.6 kg/m²/h
-
-Step 5 — Compare calculated solids flux to the design limit:
-5.6 kg/m²/h is less than the design limit of 6 kg/m²/h.
-
-The correct answer is 5.6 kg/m²/h — within design limit.",
+    explanation: "Calculate the solids flux by first determining the total flow rate, then applying the formula for solids flux and converting units as needed.\n\nStep 1 — Calculate the total flow rate (Q + QRAS):\n15,000 m³/d + 6,000 m³/d = 21,000 m³/d\n\nStep 2 — Convert total flow rate from m³/d to m³/h:\n21,000 m³/d ÷ 24 h/d = 875 m³/h\n\nStep 3 — Calculate the solids flux in g/m²/h:\n(875 m³/h × 3,200 g/m³) ÷ 500 m² = 5,600 g/m²/h\n\nStep 4 — Convert solids flux from g/m²/h to kg/m²/h:\n5,600 g/m²/h ÷ 1,000 g/kg = 5.6 kg/m²/h\n\nStep 5 — Compare calculated solids flux to the design limit:\n5.6 kg/m²/h is less than the design limit of 6 kg/m²/h.\n\nThe correct answer is 5.6 kg/m²/h — within design limit.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Solids Flux (kg/m²/h) = (Total Flow (m³/h) × MLSS (mg/L)) / (Surface Area (m²) × 1000)" }, { l: "Identify Variables", c: "Q = Influent flow (15,000 m³/d); QRAS = RAS flow (6,000 m³/d); MLSS = Mixed Liquor Suspended Solids (3,200 mg/L); Area = Clarifier surface area (500 m²)" }, { l: "Step 1: Calculate Total Flow in m³/h", c: "Total Flow = (Q + QRAS) / 24 h/d = (15,000 m³/d + 6,000 m³/d) / 24 h/d = 21,000 m³/d / 24 h/d = 875 m³/h" }, { l: "Substitute", c: "Solids Flux = (875 m³/h × 3,200 mg/L) / (500 m² × 1000 mg/g)" }, { l: "Calculate", c: "Solids Flux = 2,800,000 kg/m²/h / 500,000 = 5.6 kg/m²/h" }, { l: "Result", c: "The solids flux is 5.6 kg/m²/h." } ],
     tip: "Solids flux indicates clarifier loading; ensure it's below design limits.",
@@ -306,18 +269,7 @@ The correct answer is 5.6 kg/m²/h — within design limit.",
       "17.5 days"
     ],
     correct: 1,
-    explanation: "Calculate the sludge age (SRT) by dividing the total mass of solids in the aeration basin by the mass of solids wasted per day.
-
-Step 1 — Calculate the total mass of solids in the aeration basin:
-4,000 m³ × 3,500 mg/L = 4,000 m³ × 3,500 g/m³ = 14,000,000 g
-
-Step 2 — Calculate the mass of solids wasted per day:
-200 m³/d × 8,000 mg/L = 200 m³/d × 8,000 g/m³ = 1,600,000 g/d
-
-Step 3 — Calculate the Sludge Age (SRT):
-14,000,000 g ÷ 1,600,000 g/d = 8.75 days
-
-The correct answer is 8.75 days.",
+    explanation: "Calculate the sludge age (SRT) by dividing the total mass of solids in the aeration basin by the mass of solids wasted per day.\n\nStep 1 — Calculate the total mass of solids in the aeration basin:\n4,000 m³ × 3,500 mg/L = 4,000 m³ × 3,500 g/m³ = 14,000,000 g\n\nStep 2 — Calculate the mass of solids wasted per day:\n200 m³/d × 8,000 mg/L = 200 m³/d × 8,000 g/m³ = 1,600,000 g/d\n\nStep 3 — Calculate the Sludge Age (SRT):\n14,000,000 g ÷ 1,600,000 g/d = 8.75 days\n\nThe correct answer is 8.75 days.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "SRT (days) = (Aeration Basin Volume (m³) × MLSS (mg/L)) / (WAS Flow (m³/d) × WAS TSS (mg/L))" }, { l: "Identify Variables", c: "Volume = Aeration basin volume (4,000 m³); MLSS = Mixed Liquor Suspended Solids (3,500 mg/L); WAS Rate = Waste Activated Sludge flow (200 m³/d); WAS TSS = Waste Activated Sludge Total Suspended Solids (8,000 mg/L)" }, { l: "Substitute", c: "SRT = (4,000 m³ × 3,500 mg/L) / (200 m³/d × 8,000 mg/L)" }, { l: "Calculate Numerator", c: "4,000 × 3,500 = 14,000,000" }, { l: "Calculate Denominator", c: "200 × 8,000 = 1,600,000" }, { l: "Calculate", c: "SRT = 14,000,000 / 1,600,000 = 8.75 days" }, { l: "Result", c: "The sludge age (SRT) is 8.75 days." } ],
     tip: "SRT is crucial for process control, especially for nitrification.",
@@ -335,28 +287,7 @@ The correct answer is 8.75 days.",
       "F:M = 0.71 kg BOD/kg MLVSS/day — above target (0.2–0.4)"
     ],
     correct: 1,
-    explanation: "Calculate the F:M ratio by dividing the food (BOD load) by the mass of microorganisms (MLVSS) in the aeration basin, then compare it to the target range.
-
-Step 1 — Calculate the food (BOD) input per day:
-Food (BOD) = Flow × Influent BOD
-Food (BOD) = 10,000 m³/d × 200 mg/L
-First, convert mg/L to kg/m³: 200 mg/L = 0.2 kg/m³
-Food (BOD) = 10,000 m³/d × 0.2 kg/m³ = 2,000 kg BOD/d
-
-Step 2 — Calculate the mass of microorganisms (MLVSS) in the aeration basin:
-Mass of MLVSS = Aeration Basin Volume × MLVSS concentration
-Mass of MLVSS = 3,000 m³ × 2,800 mg/L
-First, convert mg/L to kg/m³: 2,800 mg/L = 2.8 kg/m³
-Mass of MLVSS = 3,000 m³ × 2.8 kg/m³ = 8,400 kg MLVSS
-
-Step 3 — Calculate the F:M ratio:
-F:M = Food (BOD) / Mass of MLVSS
-F:M = 2,000 kg BOD/d / 8,400 kg MLVSS = 0.238 kg BOD/kg MLVSS/day
-
-Step 4 — Compare the F:M ratio to the target range:
-The calculated F:M ratio is 0.238 kg BOD/kg MLVSS/day. The conventional activated sludge target range is 0.2–0.4 kg BOD/kg MLVSS/day. Since 0.238 falls within this range, the system is properly loaded.
-
-The correct answer is B. F:M = 0.24 kg BOD/kg MLVSS/day — within target (0.2–0.4).",
+    explanation: "Calculate the F:M ratio by dividing the food (BOD load) by the mass of microorganisms (MLVSS) in the aeration basin, then compare it to the target range.\n\nStep 1 — Calculate the food (BOD) input per day:\nFood (BOD) = Flow × Influent BOD\nFood (BOD) = 10,000 m³/d × 200 mg/L\nFirst, convert mg/L to kg/m³: 200 mg/L = 0.2 kg/m³\nFood (BOD) = 10,000 m³/d × 0.2 kg/m³ = 2,000 kg BOD/d\n\nStep 2 — Calculate the mass of microorganisms (MLVSS) in the aeration basin:\nMass of MLVSS = Aeration Basin Volume × MLVSS concentration\nMass of MLVSS = 3,000 m³ × 2,800 mg/L\nFirst, convert mg/L to kg/m³: 2,800 mg/L = 2.8 kg/m³\nMass of MLVSS = 3,000 m³ × 2.8 kg/m³ = 8,400 kg MLVSS\n\nStep 3 — Calculate the F:M ratio:\nF:M = Food (BOD) / Mass of MLVSS\nF:M = 2,000 kg BOD/d / 8,400 kg MLVSS = 0.238 kg BOD/kg MLVSS/day\n\nStep 4 — Compare the F:M ratio to the target range:\nThe calculated F:M ratio is 0.238 kg BOD/kg MLVSS/day. The conventional activated sludge target range is 0.2–0.4 kg BOD/kg MLVSS/day. Since 0.238 falls within this range, the system is properly loaded.\n\nThe correct answer is B. F:M = 0.24 kg BOD/kg MLVSS/day — within target (0.2–0.4).",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "F:M Ratio = (Q × Influent BOD) / (V × MLVSS)" }, { l: "Identify Variables", c: "Q = Flow (10,000 m³/d); Influent BOD = Influent Biochemical Oxygen Demand (200 mg/L); V = Aeration basin volume (3,000 m³); MLVSS = Mixed Liquor Volatile Suspended Solids (2,800 mg/L)" }, { l: "Substitute", c: "F:M = (10,000 m³/d × 200 mg/L) / (3,000 m³ × 2,800 mg/L)" }, { l: "Calculate Numerator", c: "10,000 × 200 = 2,000,000 (mg BOD/d)" }, { l: "Calculate Denominator", c: "3,000 × 2,800 = 8,400,000 (mg MLVSS)" }, { l: "Calculate", c: "F:M = 2,000,000 / 8,400,000 = 0.238 (mg BOD/mg MLVSS/d)" }, { l: "Convert Units", c: "F:M = 0.238 kg BOD/kg MLVSS/d" }, { l: "Result", c: "The F:M ratio is 0.238 kg BOD/kg MLVSS/d." } ],
     tip: "F:M ratio indicates food available per microorganism, impacting plant performance.",
@@ -449,24 +380,7 @@ The correct answer is B. F:M = 0.24 kg BOD/kg MLVSS/day — within target (0.2�
       "Chlorine dioxide"
     ],
     correct: 1,
-    explanation: "Determine the form of chlorine residual by calculating the chlorine to ammonia-nitrogen ratio and comparing it to the breakpoint chlorination ratio.
-
-Step 1 — Identify the chlorine dose and ammonia-nitrogen concentration:
-Chlorine Dose = 8 mg/L
-Ammonia-Nitrogen (NH3-N) = 2 mg/L
-
-Step 2 — Calculate the chlorine to ammonia-nitrogen ratio:
-Ratio = Chlorine Dose ÷ Ammonia-Nitrogen
-Ratio = 8 mg/L ÷ 2 mg/L = 4:1 (Cl2:N mass ratio)
-
-Step 3 — Compare the calculated ratio to the breakpoint chlorination ratio:
-The breakpoint chlorination ratio is approximately 7.6:1 (Cl2:N).
-Since 4:1 < 7.6:1, the system is operating before breakpoint.
-
-Step 4 — Determine the most likely form of chlorine residual:
-When operating before breakpoint and ammonia is present, chlorine reacts to form chloramines.
-
-The correct answer is B. Combined chlorine (chloramines).",
+    explanation: "Determine the form of chlorine residual by calculating the chlorine to ammonia-nitrogen ratio and comparing it to the breakpoint chlorination ratio.\n\nStep 1 — Identify the chlorine dose and ammonia-nitrogen concentration:\nChlorine Dose = 8 mg/L\nAmmonia-Nitrogen (NH3-N) = 2 mg/L\n\nStep 2 — Calculate the chlorine to ammonia-nitrogen ratio:\nRatio = Chlorine Dose ÷ Ammonia-Nitrogen\nRatio = 8 mg/L ÷ 2 mg/L = 4:1 (Cl2:N mass ratio)\n\nStep 3 — Compare the calculated ratio to the breakpoint chlorination ratio:\nThe breakpoint chlorination ratio is approximately 7.6:1 (Cl2:N).\nSince 4:1 < 7.6:1, the system is operating before breakpoint.\n\nStep 4 — Determine the most likely form of chlorine residual:\nWhen operating before breakpoint and ammonia is present, chlorine reacts to form chloramines.\n\nThe correct answer is B. Combined chlorine (chloramines).",
     difficulty: "hard",
     steps: [ { l: "Step 1: Calculate Chlorine Demand", c: "Chlorine Demand = Chlorine Dose - Chlorine Residual = 8 mg/L - 3 mg/L = 5 mg/L" }, { l: "Step 2: Determine Chlorine to Ammonia-Nitrogen Ratio", c: "Ratio = Chlorine Dose / Ammonia-Nitrogen Concentration = 8 mg/L / 2 mg/L = 4:1 (mass ratio)" }, { l: "Step 3: Evaluate Chlorine Form based on Ratio", c: "Since the ratio (4:1) is below the typical breakpoint chlorination ratio (approx. 7.6:1), the chlorine will primarily react with ammonia to form combined chlorine (chloramines)." }, { l: "Result", c: "The predominant form of chlorine residual will be combined chlorine (chloramines)." } ],
     tip: "Chlorine reacts with ammonia to form chloramines; breakpoint ratio is key.",
@@ -844,21 +758,7 @@ The correct answer is B. Combined chlorine (chloramines).",
       "SVI = 240 mL/g — bulking sludge"
     ],
     correct: 0,
-    explanation: "Calculate the Sludge Volume Index (SVI) using the SV30 and MLSS values, then interpret the result.
-
-Step 1 — Calculate SVI:
-SVI = (SV30 mL/L × 1,000) ÷ MLSS mg/L
-SVI = (240 mL/L × 1,000) ÷ 3,000 mg/L
-SVI = 240,000 ÷ 3,000
-SVI = 80 mL/g
-
-Step 2 — Interpret SVI value:
-An SVI of 80 mL/g falls into the range of <100 mL/g, which indicates excellent settling characteristics.
-
-Step 3 — Conclusion:
-This sludge would produce good secondary clarifier performance with a clear supernatant.
-
-The correct answer is A. SVI = 80 mL/g — excellent settling.",
+    explanation: "Calculate the Sludge Volume Index (SVI) using the SV30 and MLSS values, then interpret the result.\n\nStep 1 — Calculate SVI:\nSVI = (SV30 mL/L × 1,000) ÷ MLSS mg/L\nSVI = (240 mL/L × 1,000) ÷ 3,000 mg/L\nSVI = 240,000 ÷ 3,000\nSVI = 80 mL/g\n\nStep 2 — Interpret SVI value:\nAn SVI of 80 mL/g falls into the range of <100 mL/g, which indicates excellent settling characteristics.\n\nStep 3 — Conclusion:\nThis sludge would produce good secondary clarifier performance with a clear supernatant.\n\nThe correct answer is A. SVI = 80 mL/g — excellent settling.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "SVI = (Settled Sludge Volume (SV30) * 1,000) / Mixed Liquor Suspended Solids (MLSS)" }, { l: "Substitute", c: "SVI = (240 mL/L * 1,000) / 3,000 mg/L" }, { l: "Calculate", c: "SVI = 240,000 / 3,000 = 80" }, { l: "Result", c: "SVI = 80 mL/g. This indicates excellent settling characteristics." } ],
     tip: "Lower SVI values indicate better sludge settling and compaction.",
@@ -876,21 +776,7 @@ The correct answer is A. SVI = 80 mL/g — excellent settling.",
       "No — the maximum value of 31 mg/L exceeds the limit"
     ],
     correct: 0,
-    explanation: "Calculate the monthly average of the CBOD5 results and compare it to the effluent limit.
-
-Step 1 — Sum the daily CBOD5 results:
-18 + 22 + 28 + 15 + 31 + 24 + 19 + 27 + 20 + 23 = 227 mg/L
-
-Step 2 — Calculate the monthly average:
-227 mg/L ÷ 10 samples = 22.7 mg/L
-
-Step 3 — Compare the monthly average to the effluent limit:
-22.7 mg/L is less than 25 mg/L
-
-Step 4 — Determine compliance based on the monthly average limit:
-The plant is in compliance with the monthly average limit.
-
-The correct answer is A. Yes — the monthly average is 22.7 mg/L, which is below 25 mg/L.",
+    explanation: "Calculate the monthly average of the CBOD5 results and compare it to the effluent limit.\n\nStep 1 — Sum the daily CBOD5 results:\n18 + 22 + 28 + 15 + 31 + 24 + 19 + 27 + 20 + 23 = 227 mg/L\n\nStep 2 — Calculate the monthly average:\n227 mg/L ÷ 10 samples = 22.7 mg/L\n\nStep 3 — Compare the monthly average to the effluent limit:\n22.7 mg/L is less than 25 mg/L\n\nStep 4 — Determine compliance based on the monthly average limit:\nThe plant is in compliance with the monthly average limit.\n\nThe correct answer is A. Yes — the monthly average is 22.7 mg/L, which is below 25 mg/L.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "Monthly Average = Sum of Daily Results / Number of Samples" }, { l: "Step 1", c: "Sum the daily CBOD5 results: 18 + 22 + 28 + 15 + 31 + 24 + 19 + 27 + 20 + 23 = 227 mg/L" }, { l: "Step 2", c: "Count the number of samples: 10 samples" }, { l: "Substitute", c: "Monthly Average = 227 mg/L / 10" }, { l: "Calculate", c: "Monthly Average = 22.7 mg/L" }, { l: "Result", c: "Since 22.7 mg/L is less than the 25 mg/L limit, the plant is in compliance." } ],
     tip: "Monthly averages allow for some daily exceedances if the overall average is met.",
@@ -924,13 +810,7 @@ The correct answer is A. Yes — the monthly average is 22.7 mg/L, which is belo
       "1,500 kg/d"
     ],
     correct: 2,
-    explanation: "To determine the sludge wasted per day, divide the total MLSS in the aeration basin by the target SRT.
-
-Step 1 — Calculate the daily sludge wasting rate:
-Sludge Wasted (kg/d) = Total System MLSS (kg) ÷ Target SRT (days)
-Sludge Wasted (kg/d) = 15,000 kg ÷ 12 days = 1,250 kg/d
-
-The correct answer is 1,250 kg/d.",
+    explanation: "To determine the sludge wasted per day, divide the total MLSS in the aeration basin by the target SRT.\n\nStep 1 — Calculate the daily sludge wasting rate:\nSludge Wasted (kg/d) = Total System MLSS (kg) ÷ Target SRT (days)\nSludge Wasted (kg/d) = 15,000 kg ÷ 12 days = 1,250 kg/d\n\nThe correct answer is 1,250 kg/d.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "Wasting Rate (kg/d) = Total System MLSS (kg) / Target SRT (days)" }, { l: "Substitute", c: "Wasting Rate (kg/d) = 15,000 kg / 12 days" }, { l: "Calculate", c: "Wasting Rate (kg/d) = 1,250 kg/d" }, { l: "Result", c: "1,250 kg of sludge must be wasted per day to maintain a 12-day SRT." } ],
     tip: "SRT is crucial for maintaining a stable microbial population in activated sludge.",
@@ -963,26 +843,7 @@ The correct answer is 1,250 kg/d.",
       "75%"
     ],
     correct: 2,
-    explanation: "Calculate the RAS ratio by dividing the MLSS by the difference between the RAS TSS and the MLSS.
-
-Step 1 — Identify given values:
-MLSS = 3,000 mg/L
-RAS TSS = 8,500 mg/L
-
-Step 2 — Apply the simplified RAS ratio formula:
-RAS Ratio = MLSS / (RAS TSS - MLSS)
-RAS Ratio = 3,000 mg/L / (8,500 mg/L - 3,000 mg/L)
-
-Step 3 — Calculate the denominator:
-RAS TSS - MLSS = 8,500 mg/L - 3,000 mg/L = 5,500 mg/L
-
-Step 4 — Calculate the RAS ratio:
-RAS Ratio = 3,000 mg/L / 5,500 mg/L = 0.54545
-
-Step 5 — Convert to a percentage and round:
-0.54545 × 100% = 54.545% ≈ 54%
-
-The correct answer is 54%.",
+    explanation: "Calculate the RAS ratio by dividing the MLSS by the difference between the RAS TSS and the MLSS.\n\nStep 1 — Identify given values:\nMLSS = 3,000 mg/L\nRAS TSS = 8,500 mg/L\n\nStep 2 — Apply the simplified RAS ratio formula:\nRAS Ratio = MLSS / (RAS TSS - MLSS)\nRAS Ratio = 3,000 mg/L / (8,500 mg/L - 3,000 mg/L)\n\nStep 3 — Calculate the denominator:\nRAS TSS - MLSS = 8,500 mg/L - 3,000 mg/L = 5,500 mg/L\n\nStep 4 — Calculate the RAS ratio:\nRAS Ratio = 3,000 mg/L / 5,500 mg/L = 0.54545\n\nStep 5 — Convert to a percentage and round:\n0.54545 × 100% = 54.545% ≈ 54%\n\nThe correct answer is 54%.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "RAS Ratio (%) = (MLSS / (RAS TSS - MLSS)) * 100%" }, { l: "Substitute", c: "RAS Ratio (%) = (3,000 mg/L / (8,500 mg/L - 3,000 mg/L)) * 100%" }, { l: "Calculate", c: "RAS Ratio (%) = (3,000 / 5,500) * 100% = 0.54545... * 100% = 54.545..." }, { l: "Result", c: "The required RAS flow is approximately 54.5% of the influent flow." } ],
     tip: "RAS flow directly impacts MLSS concentration and clarifier performance.",
@@ -1090,24 +951,7 @@ The correct answer is 54%.",
       "Total phosphorus"
     ],
     correct: 2,
-    explanation: "Identify the most temperature-sensitive biological process in activated sludge.
-
-Step 1 — Understand temperature sensitivity of biological processes:
-Nitrifying bacteria (Ammonia removal) are highly temperature-sensitive, with a significant reduction in activity as temperature drops.
-Heterotrophic bacteria (BOD removal) are less temperature-sensitive than nitrifiers.
-
-Step 2 — Evaluate the impact of the temperature drop:
-A drop from 18°C to 10°C reduces the nitrification rate by approximately 50-60%.
-BOD removal rate is also affected but to a lesser extent.
-
-Step 3 — Consider the operational parameters:
-The operator maintains the same SRT (Solids Retention Time) and MLSS (Mixed Liquor Suspended Solids).
-Since the nitrification rate decreases significantly with temperature, maintaining the same SRT will be insufficient to sustain ammonia removal.
-
-Step 4 — Determine the first parameter to deteriorate:
-Because nitrifying bacteria are the most sensitive to temperature changes, and their activity is halved at 10°C, ammonia removal will be compromised first, even with a constant SRT.
-
-The correct answer is C. Ammonia (nitrification).",
+    explanation: "Identify the most temperature-sensitive biological process in activated sludge.\n\nStep 1 — Understand temperature sensitivity of biological processes:\nNitrifying bacteria (Ammonia removal) are highly temperature-sensitive, with a significant reduction in activity as temperature drops.\nHeterotrophic bacteria (BOD removal) are less temperature-sensitive than nitrifiers.\n\nStep 2 — Evaluate the impact of the temperature drop:\nA drop from 18°C to 10°C reduces the nitrification rate by approximately 50-60%.\nBOD removal rate is also affected but to a lesser extent.\n\nStep 3 — Consider the operational parameters:\nThe operator maintains the same SRT (Solids Retention Time) and MLSS (Mixed Liquor Suspended Solids).\nSince the nitrification rate decreases significantly with temperature, maintaining the same SRT will be insufficient to sustain ammonia removal.\n\nStep 4 — Determine the first parameter to deteriorate:\nBecause nitrifying bacteria are the most sensitive to temperature changes, and their activity is halved at 10°C, ammonia removal will be compromised first, even with a constant SRT.\n\nThe correct answer is C. Ammonia (nitrification).",
     difficulty: "medium",
     steps: [ { l: "Concept", c: "Different microbial groups in activated sludge have varying temperature sensitivities." }, { l: "Step 1", c: "Identify the most temperature-sensitive biological process in activated sludge." }, { l: "Step 2", c: "Nitrification, performed by nitrifying bacteria, is highly sensitive to temperature changes." }, { l: "Step 3", c: "A significant drop in temperature (18°C to 10°C) will severely inhibit nitrifying bacteria activity." }, { l: "Result", c: "Effluent ammonia (NH3-N) concentration is MOST likely to deteriorate first due to reduced nitrification." } ],
     tip: "Nitrification is the most temperature-sensitive process in activated sludge systems.",
@@ -1185,19 +1029,7 @@ The correct answer is C. Ammonia (nitrification).",
       "SOR = 48 m³/m²/d — within the typical limit of 49 m³/m²/d"
     ],
     correct: 0,
-    explanation: "Calculate the peak surface overflow rate by multiplying the average SOR by the peak flow factor, then compare it to the typical design limit.
-
-Step 1 — Calculate the peak surface overflow rate (SOR):
-Peak SOR = Average SOR × Peak Flow Factor
-Peak SOR = 32 m³/m²/d × 2.5 = 80 m³/m²/d
-
-Step 2 — Compare the peak SOR to the typical design limit:
-The typical design limit for secondary clarifiers in activated sludge systems (peak flow) is 49 m³/m²/d.
-
-Step 3 — Determine if the peak SOR exceeds the limit:
-80 m³/m²/d > 49 m³/m²/d, therefore, it exceeds the limit.
-
-The correct answer is A. SOR = 80 m³/m²/d — exceeds the typical limit of 49 m³/m²/d.",
+    explanation: "Calculate the peak surface overflow rate by multiplying the average SOR by the peak flow factor, then compare it to the typical design limit.\n\nStep 1 — Calculate the peak surface overflow rate (SOR):\nPeak SOR = Average SOR × Peak Flow Factor\nPeak SOR = 32 m³/m²/d × 2.5 = 80 m³/m²/d\n\nStep 2 — Compare the peak SOR to the typical design limit:\nThe typical design limit for secondary clarifiers in activated sludge systems (peak flow) is 49 m³/m²/d.\n\nStep 3 — Determine if the peak SOR exceeds the limit:\n80 m³/m²/d > 49 m³/m²/d, therefore, it exceeds the limit.\n\nThe correct answer is A. SOR = 80 m³/m²/d — exceeds the typical limit of 49 m³/m²/d.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Peak SOR = Average SOR × Peak Factor" }, { l: "Substitute", c: "Peak SOR = 32 m³/m²/d × 2.5" }, { l: "Calculate", c: "Peak SOR = 80 m³/m²/d" }, { l: "Result", c: "The SOR at peak flow is 80 m³/m²/d. This is above the typical design limit of 49 m³/m²/d for activated sludge, indicating potential for sludge washout." } ],
     tip: "Peak flow significantly impacts clarifier performance; always check peak SOR.",
@@ -1230,18 +1062,7 @@ The correct answer is A. SOR = 80 m³/m²/d — exceeds the typical limit of 49 
       "700 kg VS/d — below the typical range of 1.6–4.8 kg VS/m³/d"
     ],
     correct: 1,
-    explanation: "Calculate the daily VS feed rate by multiplying the volatile solids loading rate by the digester volume, then compare this loading rate to the typical mesophilic design range.
-
-Step 1 — Calculate the daily VS feed rate:
-Daily VS Feed Rate = Volatile Solids Loading Rate × Digester Volume
-Daily VS Feed Rate = 3.5 kg VS/m³/d × 2,000 m³ = 7,000 kg VS/d
-
-Step 2 — Compare the loading rate to the typical range:
-The given volatile solids loading rate is 3.5 kg VS/m³/d.
-The typical mesophilic design range is 1.6–4.8 kg VS/m³/d.
-Since 3.5 kg VS/m³/d falls within this range, it is considered within the typical range.
-
-The correct answer is 7,000 kg VS/d — within the typical range of 1.6–4.8 kg VS/m³/d.",
+    explanation: "Calculate the daily VS feed rate by multiplying the volatile solids loading rate by the digester volume, then compare this loading rate to the typical mesophilic design range.\n\nStep 1 — Calculate the daily VS feed rate:\nDaily VS Feed Rate = Volatile Solids Loading Rate × Digester Volume\nDaily VS Feed Rate = 3.5 kg VS/m³/d × 2,000 m³ = 7,000 kg VS/d\n\nStep 2 — Compare the loading rate to the typical range:\nThe given volatile solids loading rate is 3.5 kg VS/m³/d.\nThe typical mesophilic design range is 1.6–4.8 kg VS/m³/d.\nSince 3.5 kg VS/m³/d falls within this range, it is considered within the typical range.\n\nThe correct answer is 7,000 kg VS/d — within the typical range of 1.6–4.8 kg VS/m³/d.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "Daily VS Feed Rate = Volatile Solids Loading Rate × Digester Volume" }, { l: "Substitute", c: "Daily VS Feed Rate = 3.5 kg VS/m³/d × 2,000 m³" }, { l: "Calculate", c: "Daily VS Feed Rate = 7,000 kg VS/d" }, { l: "Result", c: "The daily VS feed rate is 7,000 kg VS/d. This loading rate (3.5 kg VS/m³/d) is within the typical mesophilic range of 1.6–4.8 kg VS/m³/d." } ],
     tip: "Digester loading rates are crucial for stable anaerobic digestion performance.",
@@ -1274,22 +1095,7 @@ The correct answer is 7,000 kg VS/d — within the typical range of 1.6–4.8 kg
       "Yobs = 2.0 kg VSS/kg BOD — typical for a very short SRT system (<2 days)"
     ],
     correct: 1,
-    explanation: "Calculate the observed yield (Yobs) by dividing the mass of WAS VSS produced by the mass of BOD removed, then compare this value to typical Yobs ranges for different SRT systems.
-
-Step 1 — Calculate Observed Yield (Yobs):
-Yobs = WAS VSS produced (kg/d) ÷ BOD removed (kg/d)
-Yobs = 2,500 kg VSS/d ÷ 5,000 kg BOD/d = 0.5 kg VSS/kg BOD
-
-Step 2 — Interpret Yobs in relation to SRT:
-Typical Yobs values are:
-Short SRT (3–5 days): Yobs ≈ 0.6–0.7 kg VSS/kg BOD
-Medium SRT (8–12 days): Yobs ≈ 0.4–0.6 kg VSS/kg BOD
-Long SRT (>15 days): Yobs ≈ 0.2–0.4 kg VSS/kg BOD
-
-Step 3 — Conclude on SRT range:
-A Yobs of 0.5 kg VSS/kg BOD falls within the typical range for a medium SRT system (8–12 days).
-
-The correct answer is B. Yobs = 0.5 kg VSS/kg BOD — typical for a medium SRT system (8–12 days).",
+    explanation: "Calculate the observed yield (Yobs) by dividing the mass of WAS VSS produced by the mass of BOD removed, then compare this value to typical Yobs ranges for different SRT systems.\n\nStep 1 — Calculate Observed Yield (Yobs):\nYobs = WAS VSS produced (kg/d) ÷ BOD removed (kg/d)\nYobs = 2,500 kg VSS/d ÷ 5,000 kg BOD/d = 0.5 kg VSS/kg BOD\n\nStep 2 — Interpret Yobs in relation to SRT:\nTypical Yobs values are:\nShort SRT (3–5 days): Yobs ≈ 0.6–0.7 kg VSS/kg BOD\nMedium SRT (8–12 days): Yobs ≈ 0.4–0.6 kg VSS/kg BOD\nLong SRT (>15 days): Yobs ≈ 0.2–0.4 kg VSS/kg BOD\n\nStep 3 — Conclude on SRT range:\nA Yobs of 0.5 kg VSS/kg BOD falls within the typical range for a medium SRT system (8–12 days).\n\nThe correct answer is B. Yobs = 0.5 kg VSS/kg BOD — typical for a medium SRT system (8–12 days).",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Observed Yield (Yobs) = WAS VSS Produced / BOD Removed" }, { l: "Substitute", c: "Yobs = 2,500 kg VSS/d / 5,000 kg BOD/d" }, { l: "Calculate", c: "Yobs = 0.5 kg VSS/kg BOD" }, { l: "Result", c: "The observed yield (Yobs) is 0.5 kg VSS/kg BOD. This value is consistent with a medium SRT (8–12 days)." } ],
     tip: "Yobs indicates system efficiency and inversely relates to Sludge Retention Time (SRT).",
@@ -1307,24 +1113,7 @@ The correct answer is B. Yobs = 0.5 kg VSS/kg BOD — typical for a medium SRT s
       "Sludge production doubles to 6,000 kg VSS/d"
     ],
     correct: 1,
-    explanation: "Calculate the observed yield at each SRT using the provided formula and then determine the ratio of the new yield to the old yield to find the change in sludge production.
-
-Step 1 — Calculate Observed Yield (Yobs) at SRT = 10 days:
-Yobs = Y / (1 + kd × SRT) = 0.6 / (1 + 0.06/d × 10 d) = 0.6 / (1 + 0.6) = 0.6 / 1.6 = 0.375 kg VSS/kg BOD
-
-Step 2 — Calculate Observed Yield (Yobs) at SRT = 20 days:
-Yobs = Y / (1 + kd × SRT) = 0.6 / (1 + 0.06/d × 20 d) = 0.6 / (1 + 1.2) = 0.6 / 2.2 = 0.273 kg VSS/kg BOD
-
-Step 3 — Determine the ratio of the new Yobs to the old Yobs:
-Ratio = Yobs (20 days) / Yobs (10 days) = 0.273 / 0.375 = 0.728
-
-Step 4 — Calculate the expected new sludge production:
-New Sludge Production = Current Sludge Production × Ratio = 3,000 kg VSS/d × 0.728 = 2,184 kg VSS/d
-
-Step 5 — Calculate the percentage decrease:
-Percentage Decrease = (1 - Ratio) × 100% = (1 - 0.728) × 100% = 0.272 × 100% = 27.2%
-
-The correct answer is sludge production decreases by approximately 20–30% to 2,100–2,400 kg VSS/d.",
+    explanation: "Calculate the observed yield at each SRT using the provided formula and then determine the ratio of the new yield to the old yield to find the change in sludge production.\n\nStep 1 — Calculate Observed Yield (Yobs) at SRT = 10 days:\nYobs = Y / (1 + kd × SRT) = 0.6 / (1 + 0.06/d × 10 d) = 0.6 / (1 + 0.6) = 0.6 / 1.6 = 0.375 kg VSS/kg BOD\n\nStep 2 — Calculate Observed Yield (Yobs) at SRT = 20 days:\nYobs = Y / (1 + kd × SRT) = 0.6 / (1 + 0.06/d × 20 d) = 0.6 / (1 + 1.2) = 0.6 / 2.2 = 0.273 kg VSS/kg BOD\n\nStep 3 — Determine the ratio of the new Yobs to the old Yobs:\nRatio = Yobs (20 days) / Yobs (10 days) = 0.273 / 0.375 = 0.728\n\nStep 4 — Calculate the expected new sludge production:\nNew Sludge Production = Current Sludge Production × Ratio = 3,000 kg VSS/d × 0.728 = 2,184 kg VSS/d\n\nStep 5 — Calculate the percentage decrease:\nPercentage Decrease = (1 - Ratio) × 100% = (1 - 0.728) × 100% = 0.272 × 100% = 27.2%\n\nThe correct answer is sludge production decreases by approximately 20–30% to 2,100–2,400 kg VSS/d.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Observed Yield (Yobs) = Y / (1 + kd × SRT), where Y = true yield, kd = endogenous decay coefficient, SRT = sludge retention time." }, { l: "Step 1", c: "Calculate Yobs at SRT = 10 days: Yobs_10 = 0.6 / (1 + 0.06/d × 10 d) = 0.6 / 1.6 = 0.375 kg VSS/kg BOD." }, { l: "Step 2", c: "Calculate Yobs at SRT = 20 days: Yobs_20 = 0.6 / (1 + 0.06/d × 20 d) = 0.6 / 2.2 = 0.273 kg VSS/kg BOD." }, { l: "Step 3", c: "Calculate the ratio of new to old Yobs: Ratio = Yobs_20 / Yobs_10 = 0.273 / 0.375 = 0.728." }, { l: "Step 4", c: "Expected new sludge production = Current sludge production × Ratio = 3,000 kg VSS/d × 0.728 = 2,184 kg VSS/d." }, { l: "Result", c: "Increasing the SRT from 10 to 20 days is expected to reduce sludge production from 3,000 kg VSS/d to approximately 2,184 kg VSS/d." } ],
     tip: "Longer SRTs reduce sludge production due to increased endogenous decay.",
@@ -1337,22 +1126,7 @@ The correct answer is sludge production decreases by approximately 20–30% to 2
     question: "A completely mixed activated sludge system has an aeration basin HRT of 6 hours. The influent BOD is 220 mg/L and the effluent BOD is 12 mg/L. What is the volumetric BOD removal rate (kg BOD/m³/d)?",
     options: ["0.83 kg BOD/m³/d", "0.88 kg BOD/m³/d", "1.05 kg BOD/m³/d", "1.25 kg BOD/m³/d"],
     correct: 0,
-    explanation: "Calculate the volumetric BOD removal rate by first determining the BOD removed, converting the HRT to days, and then applying unit conversions.
-
-Step 1 — Calculate the BOD removed:
-220 mg/L (Influent BOD) - 12 mg/L (Effluent BOD) = 208 mg/L BOD removed
-
-Step 2 — Convert HRT from hours to days:
-6 hours ÷ 24 hours/day = 0.25 days
-
-Step 3 — Calculate the volumetric BOD removal rate in mg/L/day:
-208 mg/L ÷ 0.25 days = 832 mg/L/day
-
-Step 4 — Convert the rate from mg/L/day to kg BOD/m³/d (Note: 1 mg/L = 1 g/m³):
-832 mg/L/day = 832 g/m³/day
-832 g/m³/day × (1 kg / 1000 g) = 0.832 kg BOD/m³/d
-
-The correct answer is **0.83 kg BOD/m³/d**.",
+    explanation: "Calculate the volumetric BOD removal rate by first determining the BOD removed, converting the HRT to days, and then applying unit conversions.\n\nStep 1 — Calculate the BOD removed:\n220 mg/L (Influent BOD) - 12 mg/L (Effluent BOD) = 208 mg/L BOD removed\n\nStep 2 — Convert HRT from hours to days:\n6 hours ÷ 24 hours/day = 0.25 days\n\nStep 3 — Calculate the volumetric BOD removal rate in mg/L/day:\n208 mg/L ÷ 0.25 days = 832 mg/L/day\n\nStep 4 — Convert the rate from mg/L/day to kg BOD/m³/d (Note: 1 mg/L = 1 g/m³):\n832 mg/L/day = 832 g/m³/day\n832 g/m³/day × (1 kg / 1000 g) = 0.832 kg BOD/m³/d\n\nThe correct answer is **0.83 kg BOD/m³/d**.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "BOD Removed = Influent BOD - Effluent BOD" }, { l: "Step 1", c: "Calculate BOD removed: BOD Removed = 220 mg/L - 12 mg/L = 208 mg/L." }, { l: "Step 2", c: "Convert HRT to days: HRT = 6 hours / 24 hours/day = 0.25 days." }, { l: "Formula", c: "Volumetric BOD Removal Rate = BOD Removed / HRT" }, { l: "Substitute", c: "Volumetric BOD Removal Rate = 208 mg/L / 0.25 days = 832 mg/L/day" }, { l: "Step 3", c: "Convert to kg BOD/m³/d: 832 mg/L/day = 832 g/m³/day = 0.832 kg BOD/m³/d." }, { l: "Result", c: "The volumetric BOD removal rate is approximately 0.832 kg BOD/m³/d." } ],
     tip: "Volumetric loading indicates the treatment capacity of an aeration basin.",
@@ -1580,23 +1354,7 @@ The correct answer is **0.83 kg BOD/m³/d**.",
       "No — nitrification consumes 4.57 mg alkalinity/mg NH3-N, consuming 137 mg/L, leaving only 43 mg/L which may be insufficient"
     ],
     correct: 1,
-    explanation: "Calculate the alkalinity consumed by nitrification and compare it to the influent alkalinity.
-
-Step 1 — Determine alkalinity consumed per mg NH3-N:
-Nitrification consumes 7.14 mg alkalinity (as CaCO3) per mg NH3-N oxidized.
-
-Step 2 — Calculate total alkalinity consumed:
-30 mg/L NH3-N × 7.14 mg alkalinity/mg NH3-N = 214.2 mg/L as CaCO3
-
-Step 3 — Compare consumed alkalinity to available alkalinity:
-Available alkalinity = 180 mg/L as CaCO3
-Alkalinity consumed = 214.2 mg/L as CaCO3
-
-Step 4 — Evaluate sufficiency:
-214.2 mg/L (consumed) > 180 mg/L (available)
-
-Therefore, there will not be sufficient alkalinity remaining for stable operation.
-The correct answer is B. No — nitrification consumes 7.14 mg alkalinity/mg NH3-N, consuming 214 mg/L, which exceeds the available 180 mg/L.",
+    explanation: "Calculate the alkalinity consumed by nitrification and compare it to the influent alkalinity.\n\nStep 1 — Determine alkalinity consumed per mg NH3-N:\nNitrification consumes 7.14 mg alkalinity (as CaCO3) per mg NH3-N oxidized.\n\nStep 2 — Calculate total alkalinity consumed:\n30 mg/L NH3-N × 7.14 mg alkalinity/mg NH3-N = 214.2 mg/L as CaCO3\n\nStep 3 — Compare consumed alkalinity to available alkalinity:\nAvailable alkalinity = 180 mg/L as CaCO3\nAlkalinity consumed = 214.2 mg/L as CaCO3\n\nStep 4 — Evaluate sufficiency:\n214.2 mg/L (consumed) > 180 mg/L (available)\n\nTherefore, there will not be sufficient alkalinity remaining for stable operation.\nThe correct answer is B. No — nitrification consumes 7.14 mg alkalinity/mg NH3-N, consuming 214 mg/L, which exceeds the available 180 mg/L.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Alkalinity Consumed (mg/L as CaCO3) = NH3-N oxidized (mg/L) * 7.14" }, { l: "Step 1", c: "Identify given values: Influent Alkalinity = 180 mg/L as CaCO3, NH3-N oxidized = 30 mg/L." }, { l: "Substitute", c: "Alkalinity Consumed = 30 mg/L * 7.14" }, { l: "Calculate", c: "Alkalinity Consumed = 214.2 mg/L as CaCO3" }, { l: "Result", c: "Since 214.2 mg/L (consumed) > 180 mg/L (available), there will NOT be sufficient alkalinity remaining for stable operation." } ],
     tip: "Nitrification consumes 7.14 mg alkalinity per mg NH3-N, a critical factor.",
@@ -1614,15 +1372,7 @@ The correct answer is B. No — nitrification consumes 7.14 mg alkalinity/mg NH3
       "57.1 mg/L as CaCO3"
     ],
     correct: 0,
-    explanation: "Calculate the alkalinity recovered by multiplying the denitrified NO3-N by the alkalinity recovery factor.
-
-Step 1 — Identify the alkalinity recovery factor for denitrification:
-3.57 mg alkalinity (as CaCO3) recovered per mg NO3-N denitrified
-
-Step 2 — Calculate the total alkalinity recovered:
-20 mg/L NO3-N × 3.57 mg alkalinity (as CaCO3) / mg NO3-N = 71.4 mg/L as CaCO3
-
-The correct answer is 71.4 mg/L as CaCO3.",
+    explanation: "Calculate the alkalinity recovered by multiplying the denitrified NO3-N by the alkalinity recovery factor.\n\nStep 1 — Identify the alkalinity recovery factor for denitrification:\n3.57 mg alkalinity (as CaCO3) recovered per mg NO3-N denitrified\n\nStep 2 — Calculate the total alkalinity recovered:\n20 mg/L NO3-N × 3.57 mg alkalinity (as CaCO3) / mg NO3-N = 71.4 mg/L as CaCO3\n\nThe correct answer is 71.4 mg/L as CaCO3.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Alkalinity Recovered (mg/L as CaCO3) = NO3-N denitrified (mg/L) * 3.57" }, { l: "Step 1", c: "Identify given value: NO3-N denitrified = 20 mg/L." }, { l: "Substitute", c: "Alkalinity Recovered = 20 mg/L * 3.57" }, { l: "Calculate", c: "Alkalinity Recovered = 71.4 mg/L as CaCO3" }, { l: "Result", c: "71.4 mg/L of alkalinity as CaCO3 is recovered." } ],
     tip: "Denitrification recovers 3.57 mg alkalinity per mg NO3-N, offsetting nitrification's consumption.",
@@ -1715,19 +1465,7 @@ The correct answer is 71.4 mg/L as CaCO3.",
       "NH4⁺:NO2⁻ = 2:1 (2 moles NH4⁺ per 1 mole NO2⁻)"
     ],
     correct: 1,
-    explanation: "To determine the stoichiometric ratio, refer to the balanced Anammox reaction equation.
-
-Step 1 — Identify the Anammox reaction equation:
-NH4⁺ + 1.32 NO2⁻ + 0.066 HCO3⁻ → 1.02 N2 + 0.26 NO3⁻ + 2.03 H2O
-
-Step 2 — Extract the molar coefficients for NH4⁺ and NO2⁻:
-The molar coefficient for NH4⁺ is 1.
-The molar coefficient for NO2⁻ is 1.32.
-
-Step 3 — Formulate the ratio:
-The ratio of NH4⁺ to NO2⁻ is 1:1.32.
-
-The correct answer is B. NH4⁺:NO2⁻ = 1:1.32 (1 mole NH4⁺ per 1.32 moles NO2⁻).",
+    explanation: "To determine the stoichiometric ratio, refer to the balanced Anammox reaction equation.\n\nStep 1 — Identify the Anammox reaction equation:\nNH4⁺ + 1.32 NO2⁻ + 0.066 HCO3⁻ → 1.02 N2 + 0.26 NO3⁻ + 2.03 H2O\n\nStep 2 — Extract the molar coefficients for NH4⁺ and NO2⁻:\nThe molar coefficient for NH4⁺ is 1.\nThe molar coefficient for NO2⁻ is 1.32.\n\nStep 3 — Formulate the ratio:\nThe ratio of NH4⁺ to NO2⁻ is 1:1.32.\n\nThe correct answer is B. NH4⁺:NO2⁻ = 1:1.32 (1 mole NH4⁺ per 1.32 moles NO2⁻).",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "NH4-N to be converted to NO2-N = Total NH4-N * 0.55 (for partial nitritation)" }, { l: "Step 1", c: "Identify given values: Influent NH4-N = 800 mg/L. Target removal >85% TN." }, { l: "Step 2", c: "Calculate the amount of NH4-N that needs to be partially nitrited to NO2-N for the Anammox reaction. This is typically 55% of the influent NH4-N." }, { l: "Substitute", c: "NH4-N converted to NO2-N = 800 mg/L * 0.55" }, { l: "Calculate", c: "NH4-N converted to NO2-N = 440 mg/L. This means 440 mg/L of NH4-N is oxidized to NO2-N, and the remaining NH4-N (800 - 440 = 360 mg/L) will react with this NO2-N via Anammox." }, { l: "Result", c: "For optimal DEMON operation, approximately 440 mg/L of NH4-N needs to be partially nitrited to NO2-N." } ],
     tip: "DEMON systems use partial nitritation (55% NH4-N to NO2-N) for Anammox.",
@@ -1836,14 +1574,7 @@ The correct answer is B. NH4⁺:NO2⁻ = 1:1.32 (1 mole NH4⁺ per 1.32 moles NO
       "5,000 mg/L"
     ],
     correct: 2,
-    explanation: "Calculate the theoretical maximum MLSS by dividing 1,000,000 by the SVI.
-
-Step 1 — Calculate the maximum MLSS:
-Maximum MLSS = 1,000,000 ÷ SVI
-Maximum MLSS = 1,000,000 ÷ 250 mL/g
-Maximum MLSS = 4,000 mg/L
-
-The correct answer is 4,000 mg/L.",
+    explanation: "Calculate the theoretical maximum MLSS by dividing 1,000,000 by the SVI.\n\nStep 1 — Calculate the maximum MLSS:\nMaximum MLSS = 1,000,000 ÷ SVI\nMaximum MLSS = 1,000,000 ÷ 250 mL/g\nMaximum MLSS = 4,000 mg/L\n\nThe correct answer is 4,000 mg/L.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Maximum MLSS (mg/L) = 1,000,000 / SVI (mL/g)" }, { l: "Step 1", c: "Identify given values: SVI = 250 mL/g, Current MLSS = 3,200 mg/L." }, { l: "Substitute", c: "Maximum MLSS = 1,000,000 / 250" }, { l: "Calculate", c: "Maximum MLSS = 4,000 mg/L" }, { l: "Result", c: "The maximum MLSS the secondary clarifier can theoretically sustain is 4,000 mg/L." } ],
     tip: "High SVI (Sludge Volume Index) indicates poor settling, limiting clarifier MLSS capacity.",
@@ -1951,22 +1682,7 @@ The correct answer is 4,000 mg/L.",
       "78%"
     ],
     correct: 1,
-    explanation: "Calculate the fraction of the design nitrification rate remaining at the lower temperature using the Arrhenius correction equation.
-
-Step 1 – Identify the Arrhenius correction formula:
-Rate at T = Rate at 20°C × θ^(T-20)
-
-Step 2 – Substitute the given values into the formula:
-Fraction of rate = 1.072^(12°C - 20°C)
-Fraction of rate = 1.072^(-8)
-
-Step 3 – Calculate the value:
-1.072^(-8) = 1 / (1.072^8) = 1 / 1.751 = 0.571
-
-Step 4 – Convert the fraction to a percentage:
-0.571 × 100% = 57.1%
-
-The correct answer is **B. 57%**.",
+    explanation: "Calculate the fraction of the design nitrification rate remaining at the lower temperature using the Arrhenius correction equation.\n\nStep 1 – Identify the Arrhenius correction formula:\nRate at T = Rate at 20°C × θ^(T-20)\n\nStep 2 – Substitute the given values into the formula:\nFraction of rate = 1.072^(12°C - 20°C)\nFraction of rate = 1.072^(-8)\n\nStep 3 – Calculate the value:\n1.072^(-8) = 1 / (1.072^8) = 1 / 1.751 = 0.571\n\nStep 4 – Convert the fraction to a percentage:\n0.571 × 100% = 57.1%\n\nThe correct answer is **B. 57%**.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Rate at T = Rate at 20°C * θ^(T-20)" }, { l: "Step 1", c: "Identify given values: Target Temperature (T) = 12°C, Reference Temperature = 20°C, Arrhenius coefficient (θ) = 1.072." }, { l: "Step 2", c: "Calculate the exponent (T-20)." }, { l: "Substitute", c: "Exponent = 12 - 20 = -8" }, { l: "Calculate", c: "Fraction of design rate = 1.072^(-8) ≈ 0.5706" }, { l: "Result", c: "Approximately 57% of the design nitrification rate remains at 12°C." } ],
     tip: "Arrhenius correction shows temperature significantly impacts biological process rates; know your theta.",
@@ -2009,24 +1725,7 @@ The correct answer is **B. 57%**.",
     question: "A plant has an aeration basin volume of 8,000 m³, MLSS of 3,500 mg/L, daily waste sludge flow of 400 m³/d at 8,000 mg/L TSS, and effluent TSS of 12 mg/L at 40,000 m³/d. What is the SRT?",
     options: ["7.6 days", "12.4 days", "16.1 days", "20.3 days"],
     correct: 0,
-    explanation: "Calculate the Solids Retention Time (SRT) by dividing the total mass of solids in the aeration basin by the total mass of solids leaving the system per day.
-
-Step 1 — Total solids in aeration basin:
-8,000 m³ × 3,500 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m³) = 28,000 kg
-
-Step 2 — Mass of solids wasted daily:
-400 m³/d × 8,000 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m³) = 3,200 kg/d
-
-Step 3 — Mass of solids in effluent daily:
-40,000 m³/d × 12 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m³) = 480 kg/d
-
-Step 4 — Total mass of solids leaving system per day:
-3,200 kg/d + 480 kg/d = 3,680 kg/d
-
-Step 5 — Solids Retention Time (SRT):
-28,000 kg ÷ 3,680 kg/d = 7.608 days
-
-The correct answer is 7.6 days.",
+    explanation: "Calculate the Solids Retention Time (SRT) by dividing the total mass of solids in the aeration basin by the total mass of solids leaving the system per day.\n\nStep 1 — Total solids in aeration basin:\n8,000 m³ × 3,500 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m³) = 28,000 kg\n\nStep 2 — Mass of solids wasted daily:\n400 m³/d × 8,000 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m³) = 3,200 kg/d\n\nStep 3 — Mass of solids in effluent daily:\n40,000 m³/d × 12 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m³) = 480 kg/d\n\nStep 4 — Total mass of solids leaving system per day:\n3,200 kg/d + 480 kg/d = 3,680 kg/d\n\nStep 5 — Solids Retention Time (SRT):\n28,000 kg ÷ 3,680 kg/d = 7.608 days\n\nThe correct answer is 7.6 days.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "SRT = (Biomass in system) / (Biomass leaving system per day)" }, { l: "Step 1: Calculate Biomass in system", c: "Biomass in system = Aeration basin volume × MLSS = 8,000 m³ × 3,500 mg/L = 28,000,000,000 mg = 28,000 kg" }, { l: "Step 2: Calculate Biomass leaving system per day (waste sludge)", c: "Biomass from waste sludge = Waste sludge flow × Waste sludge TSS = 400 m³/d × 8,000 mg/L = 3,200,000,000 mg/d = 3,200 kg/d" }, { l: "Step 3: Calculate Biomass leaving system per day (effluent)", c: "Biomass from effluent = Effluent flow × Effluent TSS = 40,000 m³/d × 12 mg/L = 480,000,000 mg/d = 480 kg/d" }, { l: "Step 4: Calculate Total Biomass leaving system per day", c: "Total biomass leaving = Biomass from waste sludge + Biomass from effluent = 3,200 kg/d + 480 kg/d = 3,680 kg/d" }, { l: "Calculate SRT", c: "SRT = 28,000 kg / 3,680 kg/d = 7.61 days" }, { l: "Result", c: "SRT = 7.61 days" } ],
     tip: "SRT is crucial for process control; ensure units are consistent.",
@@ -2104,12 +1803,7 @@ The correct answer is 7.6 days.",
       "32 mg/L methanol"
     ],
     correct: 2,
-    explanation: "Calculate the required methanol dose by multiplying the target nitrate-nitrogen removal by the given methanol-to-nitrate-nitrogen ratio.
-
-Step 1 — Calculate methanol dose:
-8 mg/L NO₃⁻-N × 3 (methanol:NO₃⁻-N ratio) = 24 mg/L methanol
-
-The correct answer is 24 mg/L methanol.",
+    explanation: "Calculate the required methanol dose by multiplying the target nitrate-nitrogen removal by the given methanol-to-nitrate-nitrogen ratio.\n\nStep 1 — Calculate methanol dose:\n8 mg/L NO₃⁻-N × 3 (methanol:NO₃⁻-N ratio) = 24 mg/L methanol\n\nThe correct answer is 24 mg/L methanol.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Methanol dose = NO₃⁻-N to be removed × Methanol:NO₃⁻-N ratio" }, { l: "Given", c: "Target NO₃⁻-N removal = 8 mg/L, Methanol:NO₃⁻-N ratio = 3:1" }, { l: "Substitute", c: "Methanol dose = 8 mg/L × 3" }, { l: "Calculate", c: "Methanol dose = 24 mg/L" }, { l: "Result", c: "Methanol dose = 24 mg/L" } ],
     tip: "Excess methanol increases BOD and operating costs; optimize dosing.",
@@ -2122,24 +1816,7 @@ The correct answer is 24 mg/L methanol.",
     question: "A plant uses ferric chloride (FeCl₃) for chemical phosphorus removal. The target effluent TP is 0.3 mg/L and influent TP is 5.5 mg/L. Using a Fe:P molar ratio of 1.5:1, what FeCl₃ dose (as Fe) is required?",
     options: ["8.2 mg/L as Fe", "11.4 mg/L as Fe", "16.8 mg/L as Fe", "23.1 mg/L as Fe"],
     correct: 0,
-    explanation: "To determine the required FeCl₃ dose as Fe, calculate the phosphorus to be removed, convert it to moles, apply the molar ratio, and convert back to mass of Fe.
-
-Step 1 — Phosphorus to be removed:
-5.5 mg/L (influent TP) - 0.3 mg/L (effluent TP) = 5.2 mg/L P
-
-Step 2 — Convert phosphorus to moles:
-5.2 mg/L P ÷ 30.97 mg/mmol (atomic weight of P) = 0.1679 mmol P/L
-
-Step 3 — Calculate moles of Fe required:
-0.1679 mmol P/L × 1.5 mmol Fe/mmol P (Fe:P molar ratio) = 0.25185 mmol Fe/L
-
-Step 4 — Convert moles of Fe to mg/L as Fe:
-0.25185 mmol Fe/L × 55.845 mg/mmol (atomic weight of Fe) = 14.06 mg/L as Fe
-
-Step 5 — Alternative direct calculation for Fe dose:
-(5.2 mg/L P × 1.5 (mol Fe/mol P) × 55.845 mg Fe/mol) ÷ 30.97 mg P/mol = 8.16 mg/L as Fe
-
-The correct answer is 8.2 mg/L as Fe.",
+    explanation: "To determine the required FeCl₃ dose as Fe, calculate the phosphorus to be removed, convert it to moles, apply the molar ratio, and convert back to mass of Fe.\n\nStep 1 — Phosphorus to be removed:\n5.5 mg/L (influent TP) - 0.3 mg/L (effluent TP) = 5.2 mg/L P\n\nStep 2 — Convert phosphorus to moles:\n5.2 mg/L P ÷ 30.97 mg/mmol (atomic weight of P) = 0.1679 mmol P/L\n\nStep 3 — Calculate moles of Fe required:\n0.1679 mmol P/L × 1.5 mmol Fe/mmol P (Fe:P molar ratio) = 0.25185 mmol Fe/L\n\nStep 4 — Convert moles of Fe to mg/L as Fe:\n0.25185 mmol Fe/L × 55.845 mg/mmol (atomic weight of Fe) = 14.06 mg/L as Fe\n\nStep 5 — Alternative direct calculation for Fe dose:\n(5.2 mg/L P × 1.5 (mol Fe/mol P) × 55.845 mg Fe/mol) ÷ 30.97 mg P/mol = 8.16 mg/L as Fe\n\nThe correct answer is 8.2 mg/L as Fe.",
     difficulty: "hard",
     steps: [ { l: "Formula (conceptual)", c: "Fe dose (as Fe) = Phosphorus to remove × (Fe:P molar ratio) × (Atomic weight of Fe / Atomic weight of P)" }, { l: "Step 1: Calculate Phosphorus to remove", c: "Phosphorus to remove = Influent TP - Target effluent TP = 5.5 mg/L - 0.3 mg/L = 5.2 mg/L as P" }, { l: "Step 2: Convert P to moles", c: "Moles of P to remove = 5.2 mg/L / 31 mg/mmol = 0.1677 mmol/L" }, { l: "Step 3: Calculate moles of Fe needed", c: "Moles of Fe needed = Moles of P to remove × Fe:P molar ratio = 0.1677 mmol/L × 1.5 = 0.2516 mmol/L" }, { l: "Step 4: Convert moles of Fe to mg/L as Fe", c: "Fe dose (as Fe) = Moles of Fe needed × Atomic weight of Fe = 0.2516 mmol/L × 55.845 mg/mmol = 14.05 mg/L" }, { l: "Result", c: "FeCl₃ dose (as Fe) = 14.1 mg/L" } ],
     tip: "Molar ratios are key for chemical dosing calculations; know atomic weights.",
@@ -2669,18 +2346,7 @@ The correct answer is 8.2 mg/L as Fe.",
       "780 mg/L"
     ],
     correct: 1,
-    explanation: "Calculate the 5-day Biochemical Oxygen Demand (BOD₅) by determining the dissolved oxygen (DO) depletion and applying the dilution factor.
-
-Step 1 — Calculate the DO depletion:
-DO Depletion = Initial DO - Final DO = 8.6 mg/L - 2.1 mg/L = 6.5 mg/L
-
-Step 2 — Calculate the dilution factor:
-Dilution Factor = Bottle volume ÷ Sample volume = 300 mL ÷ 5 mL = 60
-
-Step 3 — Calculate the BOD₅:
-BOD₅ = DO Depletion × Dilution Factor = 6.5 mg/L × 60 = 390 mg/L
-
-The correct answer is 390 mg/L.",
+    explanation: "Calculate the 5-day Biochemical Oxygen Demand (BOD₅) by determining the dissolved oxygen (DO) depletion and applying the dilution factor.\n\nStep 1 — Calculate the DO depletion:\nDO Depletion = Initial DO - Final DO = 8.6 mg/L - 2.1 mg/L = 6.5 mg/L\n\nStep 2 — Calculate the dilution factor:\nDilution Factor = Bottle volume ÷ Sample volume = 300 mL ÷ 5 mL = 60\n\nStep 3 — Calculate the BOD₅:\nBOD₅ = DO Depletion × Dilution Factor = 6.5 mg/L × 60 = 390 mg/L\n\nThe correct answer is 390 mg/L.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "BOD₅ (mg/L) = (Initial DO - Final DO) × (Bottle volume / Sample volume)" }, { l: "Given", c: "Initial DO = 8.6 mg/L, Final DO = 2.1 mg/L, Sample volume = 5 mL, Bottle volume = 300 mL" }, { l: "Step 1: Calculate DO depletion", c: "DO depletion = Initial DO - Final DO = 8.6 mg/L - 2.1 mg/L = 6.5 mg/L" }, { l: "Step 2: Calculate Dilution factor", c: "Dilution factor = Bottle volume / Sample volume = 300 mL / 5 mL = 60" }, { l: "Substitute and Calculate", c: "BOD₅ = 6.5 mg/L × 60 = 390 mg/L" }, { l: "Result", c: "BOD₅ = 390 mg/L" } ],
     tip: "Valid BOD tests require DO depletion between 2 mg/L and 7 mg/L.",
@@ -2698,21 +2364,7 @@ The correct answer is 390 mg/L.",
       "0.67 mg/L"
     ],
     correct: 1,
-    explanation: "Calculate TSS by finding the mass difference, converting units, and dividing by sample volume.
-
-Step 1 — Determine the mass of suspended solids:
-1.2412 g (final weight) - 1.2345 g (initial weight) = 0.0067 g
-
-Step 2 — Convert sample volume to liters:
-100 mL ÷ 1000 mL/L = 0.100 L
-
-Step 3 — Calculate TSS in g/L:
-0.0067 g ÷ 0.100 L = 0.067 g/L
-
-Step 4 — Convert TSS from g/L to mg/L:
-0.067 g/L × 1000 mg/g = 67 mg/L
-
-The correct answer is 67 mg/L.",
+    explanation: "Calculate TSS by finding the mass difference, converting units, and dividing by sample volume.\n\nStep 1 — Determine the mass of suspended solids:\n1.2412 g (final weight) - 1.2345 g (initial weight) = 0.0067 g\n\nStep 2 — Convert sample volume to liters:\n100 mL ÷ 1000 mL/L = 0.100 L\n\nStep 3 — Calculate TSS in g/L:\n0.0067 g ÷ 0.100 L = 0.067 g/L\n\nStep 4 — Convert TSS from g/L to mg/L:\n0.067 g/L × 1000 mg/g = 67 mg/L\n\nThe correct answer is 67 mg/L.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "TSS (mg/L) = (Final filter weight (g) - Initial filter weight (g)) / Sample volume (L) × 1,000 mg/g" }, { l: "Given", c: "Initial filter weight = 1.2345 g, Final filter weight = 1.2412 g, Sample volume = 100 mL" }, { l: "Step 1: Convert sample volume to Liters", c: "Sample volume = 100 mL / 1000 mL/L = 0.100 L" }, { l: "Step 2: Calculate mass of solids", c: "Mass of solids = Final filter weight - Initial filter weight = 1.2412 g - 1.2345 g = 0.0067 g" }, { l: "Substitute and Calculate", c: "TSS = 0.0067 g / 0.100 L × 1,000 mg/g = 67 mg/L" }, { l: "Result", c: "TSS = 67 mg/L" } ],
     tip: "TSS calculations are gravimetric; ensure precise weighing and unit conversions.",
@@ -2790,18 +2442,7 @@ The correct answer is 67 mg/L.",
       "1.25 — impossible ratio indicating lab error"
     ],
     correct: 0,
-    explanation: "Calculate the VSS/TSS ratio and interpret its meaning for activated sludge health.
-
-Step 1 — Calculate the VSS/TSS ratio:
-VSS/TSS = 2,560 mg/L ÷ 3,200 mg/L = 0.80
-
-Step 2 — Interpret the ratio:
-A VSS/TSS ratio of 0.80 (or 80%) falls within the typical range of 0.75-0.85 for healthy activated sludge, indicating a normal amount of active biomass and organic material relative to total solids.
-
-Step 3 — Understand what the ratio indicates:
-This ratio indicates a healthy, active biomass with no significant inorganic accumulation. A declining ratio would suggest increasing inorganic content.
-
-The correct answer is 0.80 — normal ratio indicating healthy active biomass.",
+    explanation: "Calculate the VSS/TSS ratio and interpret its meaning for activated sludge health.\n\nStep 1 — Calculate the VSS/TSS ratio:\nVSS/TSS = 2,560 mg/L ÷ 3,200 mg/L = 0.80\n\nStep 2 — Interpret the ratio:\nA VSS/TSS ratio of 0.80 (or 80%) falls within the typical range of 0.75-0.85 for healthy activated sludge, indicating a normal amount of active biomass and organic material relative to total solids.\n\nStep 3 — Understand what the ratio indicates:\nThis ratio indicates a healthy, active biomass with no significant inorganic accumulation. A declining ratio would suggest increasing inorganic content.\n\nThe correct answer is 0.80 — normal ratio indicating healthy active biomass.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "VSS/TSS Ratio = (VSS concentration / TSS concentration) * 100%" }, { l: "Step 1", c: "Identify the given values: TSS = 3,200 mg/L, VSS = 2,560 mg/L." }, { l: "Substitute", c: "VSS/TSS Ratio = (2,560 mg/L / 3,200 mg/L) * 100%" }, { l: "Calculate", c: "VSS/TSS Ratio = 0.80 * 100% = 80%" }, { l: "Result", c: "The VSS/TSS ratio is 80%. This indicates healthy activated sludge, as typical ratios are 75-85%." } ],
     tip: "VSS/TSS ratio indicates the organic fraction of solids in activated sludge.",
@@ -2819,19 +2460,7 @@ The correct answer is 0.80 — normal ratio indicating healthy active biomass.",
       "SVI = 450 mL/g — severe bulking"
     ],
     correct: 0,
-    explanation: "Calculate the Sludge Volume Index (SVI) by dividing the settled sludge volume by the MLSS concentration, then interpret the result.
-
-Step 1 — Convert MLSS from mg/L to g/L:
-3,000 mg/L = 3 g/L
-
-Step 2 — Calculate SVI:
-SVI = Settled Sludge Volume (mL/L) ÷ MLSS (g/L)
-SVI = 450 mL/L ÷ 3 g/L = 150 mL/g
-
-Step 3 — Interpret SVI value:
-An SVI of 150 mL/g falls within the range of 100–150 mL/g, which indicates good settleability.
-
-The correct answer is A. SVI = 150 mL/g — good settleability.",
+    explanation: "Calculate the Sludge Volume Index (SVI) by dividing the settled sludge volume by the MLSS concentration, then interpret the result.\n\nStep 1 — Convert MLSS from mg/L to g/L:\n3,000 mg/L = 3 g/L\n\nStep 2 — Calculate SVI:\nSVI = Settled Sludge Volume (mL/L) ÷ MLSS (g/L)\nSVI = 450 mL/L ÷ 3 g/L = 150 mL/g\n\nStep 3 — Interpret SVI value:\nAn SVI of 150 mL/g falls within the range of 100–150 mL/g, which indicates good settleability.\n\nThe correct answer is A. SVI = 150 mL/g — good settleability.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "SVI (mL/g) = Settled Sludge Volume (mL/L) / MLSS (g/L)" }, { l: "Step 1", c: "Identify the given values: Settled sludge volume = 450 mL/L, MLSS = 3,000 mg/L." }, { l: "Step 2", c: "Convert MLSS from mg/L to g/L: 3,000 mg/L = 3.0 g/L." }, { l: "Substitute", c: "SVI = 450 mL/L / 3.0 g/L" }, { l: "Calculate", c: "SVI = 150 mL/g" }, { l: "Result", c: "The SVI is 150 mL/g. This indicates good to fair settleability, at the upper end of good." } ],
     tip: "SVI measures sludge settleability; lower SVI means better settling.",
@@ -2939,21 +2568,7 @@ The correct answer is A. SVI = 150 mL/g — good settleability.",
       "63 mg/L"
     ],
     correct: 0,
-    explanation: "Calculate the organic nitrogen concentration by subtracting the ammonia nitrogen from the total Kjeldahl nitrogen (TKN).
-
-Step 1 — Understand the TKN definition:
-TKN = Organic Nitrogen + Ammonia Nitrogen
-
-Step 2 — Rearrange the formula to solve for Organic Nitrogen:
-Organic Nitrogen = TKN - Ammonia Nitrogen
-
-Step 3 — Substitute the given values:
-Organic Nitrogen = 35 mg/L - 28 mg/L
-
-Step 4 — Perform the subtraction:
-Organic Nitrogen = 7 mg/L
-
-The correct answer is 7 mg/L.",
+    explanation: "Calculate the organic nitrogen concentration by subtracting the ammonia nitrogen from the total Kjeldahl nitrogen (TKN).\n\nStep 1 — Understand the TKN definition:\nTKN = Organic Nitrogen + Ammonia Nitrogen\n\nStep 2 — Rearrange the formula to solve for Organic Nitrogen:\nOrganic Nitrogen = TKN - Ammonia Nitrogen\n\nStep 3 — Substitute the given values:\nOrganic Nitrogen = 35 mg/L - 28 mg/L\n\nStep 4 — Perform the subtraction:\nOrganic Nitrogen = 7 mg/L\n\nThe correct answer is 7 mg/L.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "Organic Nitrogen = TKN - Ammonia Nitrogen" }, { l: "Step 1", c: "Identify the given values: TKN = 35 mg/L, Ammonia-N = 28 mg/L." }, { l: "Substitute", c: "Organic Nitrogen = 35 mg/L - 28 mg/L" }, { l: "Calculate", c: "Organic Nitrogen = 7 mg/L" }, { l: "Result", c: "The organic nitrogen concentration is 7 mg/L." } ],
     tip: "TKN is the sum of organic nitrogen and ammonia nitrogen.",
@@ -2986,16 +2601,7 @@ The correct answer is 7 mg/L.",
       "640 mL/g"
     ],
     correct: 1,
-    explanation: "Calculate the Diluted Sludge Volume Index (DSVI) by dividing the settled volume by the diluted Mixed Liquor Suspended Solids (MLSS).
-
-Step 1 — Convert diluted MLSS from mg/L to g/L:
-1,500 mg/L ÷ 1,000 mg/g = 1.5 g/L
-
-Step 2 — Calculate the DSVI:
-DSVI = Settled Volume (mL/L) ÷ Diluted MLSS (g/L)
-DSVI = 320 mL/L ÷ 1.5 g/L = 213.33 mL/g
-
-The correct answer is 213 mL/g.",
+    explanation: "Calculate the Diluted Sludge Volume Index (DSVI) by dividing the settled volume by the diluted Mixed Liquor Suspended Solids (MLSS).\n\nStep 1 — Convert diluted MLSS from mg/L to g/L:\n1,500 mg/L ÷ 1,000 mg/g = 1.5 g/L\n\nStep 2 — Calculate the DSVI:\nDSVI = Settled Volume (mL/L) ÷ Diluted MLSS (g/L)\nDSVI = 320 mL/L ÷ 1.5 g/L = 213.33 mL/g\n\nThe correct answer is 213 mL/g.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "DSVI (mL/g) = Settled Volume (mL/L) / Diluted MLSS (g/L)" }, { l: "Step 1", c: "Identify the given values: Settled volume = 320 mL/L, Diluted MLSS = 1,500 mg/L." }, { l: "Step 2", c: "Convert Diluted MLSS from mg/L to g/L: 1,500 mg/L = 1.5 g/L." }, { l: "Substitute", c: "DSVI = 320 mL/L / 1.5 g/L" }, { l: "Calculate", c: "DSVI = 213.33 mL/g" }, { l: "Result", c: "The DSVI is approximately 213 mL/g. This provides a more accurate sludge settleability measure for high SVI conditions." } ],
     tip: "Use DSVI when SVI is high, typically over 250 mL/g, for accuracy.",
@@ -3043,21 +2649,7 @@ The correct answer is 213 mL/g.",
       "No — the concentration must be below 10 mg/kg for land application"
     ],
     correct: 0,
-    explanation: "Compare the biosolids arsenic concentration to the regulatory ceiling limit to determine if land application is permitted.
-
-Step 1 — Identify the biosolids arsenic concentration:
-Arsenic concentration in biosolids = 45 mg/kg dry weight
-
-Step 2 — Identify the regulatory ceiling concentration for arsenic:
-Ontario Regulation 267/03 ceiling concentration for arsenic = 75 mg/kg
-
-Step 3 — Compare the biosolids concentration to the ceiling concentration:
-45 mg/kg (biosolids) < 75 mg/kg (ceiling limit)
-
-Step 4 — Determine if land application is permitted based on arsenic concentration:
-Since the biosolids arsenic concentration is below the regulatory ceiling concentration, land application is permitted (subject to other requirements).
-
-The correct answer is A. Yes — the arsenic concentration is below the ceiling concentration.",
+    explanation: "Compare the biosolids arsenic concentration to the regulatory ceiling limit to determine if land application is permitted.\n\nStep 1 — Identify the biosolids arsenic concentration:\nArsenic concentration in biosolids = 45 mg/kg dry weight\n\nStep 2 — Identify the regulatory ceiling concentration for arsenic:\nOntario Regulation 267/03 ceiling concentration for arsenic = 75 mg/kg\n\nStep 3 — Compare the biosolids concentration to the ceiling concentration:\n45 mg/kg (biosolids) < 75 mg/kg (ceiling limit)\n\nStep 4 — Determine if land application is permitted based on arsenic concentration:\nSince the biosolids arsenic concentration is below the regulatory ceiling concentration, land application is permitted (subject to other requirements).\n\nThe correct answer is A. Yes — the arsenic concentration is below the ceiling concentration.",
     difficulty: "medium",
     steps: [ { l: "Step 1", c: "Identify the measured arsenic concentration in the biosolids sample: 45 mg/kg dry weight." }, { l: "Step 2", c: "Identify the regulatory ceiling concentration for arsenic: 75 mg/kg dry weight (Ontario Regulation 267/03)." }, { l: "Step 3", c: "Compare the measured concentration to the regulatory limit: 45 mg/kg < 75 mg/kg." }, { l: "Result", c: "Yes, these biosolids can be land applied because the arsenic concentration (45 mg/kg) is below the regulatory ceiling concentration (75 mg/kg)." } ],
     tip: "Always compare measured values to regulatory limits for compliance.",
@@ -3075,18 +2667,7 @@ The correct answer is A. Yes — the arsenic concentration is below the ceiling 
       "15.0 mg/L"
     ],
     correct: 1,
-    explanation: "Calculate the nitrate-nitrogen concentration using the provided calibration curve equation and the measured absorbance.
-
-Step 1 — Substitute the absorbance value into the equation:
-Concentration (mg/L NO₃⁻-N) = (0.285 - 0.005) / 0.028
-
-Step 2 — Perform the subtraction in the numerator:
-Concentration (mg/L NO₃⁻-N) = 0.280 / 0.028
-
-Step 3 — Perform the division to find the concentration:
-Concentration (mg/L NO₃⁻-N) = 10.0 mg/L NO₃⁻-N
-
-The correct answer is 10.0 mg/L.",
+    explanation: "Calculate the nitrate-nitrogen concentration using the provided calibration curve equation and the measured absorbance.\n\nStep 1 — Substitute the absorbance value into the equation:\nConcentration (mg/L NO₃⁻-N) = (0.285 - 0.005) / 0.028\n\nStep 2 — Perform the subtraction in the numerator:\nConcentration (mg/L NO₃⁻-N) = 0.280 / 0.028\n\nStep 3 — Perform the division to find the concentration:\nConcentration (mg/L NO₃⁻-N) = 10.0 mg/L NO₃⁻-N\n\nThe correct answer is 10.0 mg/L.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Concentration (mg/L NO₃⁻-N) = (Absorbance - Blank Absorbance) / Slope" }, { l: "Given values", c: "Absorbance = 0.285; Blank Absorbance (y-intercept) = 0.005; Slope = 0.028" }, { l: "Substitute values", c: "Concentration = (0.285 - 0.005) / 0.028" }, { l: "Calculate", c: "Concentration = 0.280 / 0.028 = 10.0" }, { l: "Result", c: "The nitrate-nitrogen concentration is 10.0 mg/L NO₃⁻-N." } ],
     tip: "Always follow the calibration curve equation precisely for accurate results.",
@@ -3099,24 +2680,7 @@ The correct answer is 10.0 mg/L.",
     question: "A laboratory runs a matrix spike (MS) on an effluent BOD sample. The unspiked sample BOD = 8 mg/L. A known spike of 200 mg/L glucose-glutamic acid (GGA) standard is added. The spiked sample BOD = 195 mg/L. What is the matrix spike recovery and is it acceptable?",
     options: ["97% recovery — acceptable (acceptable range 75–125%)", "97% recovery — not acceptable (recovery should be >99%)", "93.5% recovery — acceptable", "103% recovery — not acceptable (recovery should be <100%)"],
     correct: 2,
-    explanation: "Calculate the matrix spike recovery using the provided formula and compare it to the acceptable range.
-
-Step 1 — Identify given values:
-Unspiked Sample Result = 8 mg/L
-Spike Added = 200 mg/L
-Spiked Sample Result = 195 mg/L
-
-Step 2 — Calculate the recovery percentage:
-Matrix Spike Recovery = ((Spiked Sample Result - Unspiked Sample Result) / Spike Added) × 100%
-Matrix Spike Recovery = ((195 mg/L - 8 mg/L) / 200 mg/L) × 100%
-Matrix Spike Recovery = (187 mg/L / 200 mg/L) × 100%
-Matrix Spike Recovery = 0.935 × 100% = 93.5%
-
-Step 3 — Evaluate acceptability:
-Acceptable range for matrix spike recovery = 75-125%
-Since 93.5% is within 75-125%, the recovery is acceptable.
-
-The correct answer is 93.5% recovery — acceptable.",
+    explanation: "Calculate the matrix spike recovery using the provided formula and compare it to the acceptable range.\n\nStep 1 — Identify given values:\nUnspiked Sample Result = 8 mg/L\nSpike Added = 200 mg/L\nSpiked Sample Result = 195 mg/L\n\nStep 2 — Calculate the recovery percentage:\nMatrix Spike Recovery = ((Spiked Sample Result - Unspiked Sample Result) / Spike Added) × 100%\nMatrix Spike Recovery = ((195 mg/L - 8 mg/L) / 200 mg/L) × 100%\nMatrix Spike Recovery = (187 mg/L / 200 mg/L) × 100%\nMatrix Spike Recovery = 0.935 × 100% = 93.5%\n\nStep 3 — Evaluate acceptability:\nAcceptable range for matrix spike recovery = 75-125%\nSince 93.5% is within 75-125%, the recovery is acceptable.\n\nThe correct answer is 93.5% recovery — acceptable.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Matrix Spike Recovery (%) = [(Spiked Result - Unspiked Result) / Spike Added] × 100" }, { l: "Given values", c: "Unspiked sample BOD = 8 mg/L; Spike added = 200 mg/L; Spiked sample BOD = 195 mg/L" }, { l: "Substitute values", c: "Matrix Spike Recovery = [(195 - 8) / 200] × 100" }, { l: "Calculate", c: "Matrix Spike Recovery = [187 / 200] × 100 = 0.935 × 100 = 93.5" }, { l: "Result", c: "The matrix spike recovery is 93.5%." } ],
     tip: "BOD matrix spike recovery typically ranges 75-125% for acceptable lab performance.",
@@ -3129,26 +2693,7 @@ The correct answer is 93.5% recovery — acceptable.",
     question: "An OUR (oxygen uptake rate) test on mixed liquor shows DO dropping from 7.2 mg/L to 3.8 mg/L in 8 minutes. MLVSS = 2,800 mg/L. What is the SOUR?",
     options: ["8.5 mg O₂/g VSS/h", "14.5 mg O₂/g VSS/h", "25.5 mg O₂/g VSS/h", "51.0 mg O₂/g VSS/h"],
     correct: 2,
-    explanation: "Calculate the oxygen uptake rate (OUR) in mg O₂/L/min, convert it to mg O₂/L/h, and then divide by the MLVSS in g/L to find the SOUR.
-
-Step 1 — Calculate the oxygen drop:
-7.2 mg/L - 3.8 mg/L = 3.4 mg/L
-
-Step 2 — Calculate the Oxygen Uptake Rate (OUR) in mg O₂/L/min:
-3.4 mg/L ÷ 8 min = 0.425 mg O₂/L/min
-
-Step 3 — Convert OUR to an hourly rate:
-0.425 mg O₂/L/min × 60 min/h = 25.5 mg O₂/L/h
-
-Step 4 — Convert MLVSS from mg/L to g/L:
-2,800 mg/L ÷ 1,000 mg/g = 2.8 g VSS/L
-
-Step 5 — Calculate the Specific Oxygen Uptake Rate (SOUR):
-25.5 mg O₂/L/h ÷ 2.8 g VSS/L = 9.11 mg O₂/g VSS/h
-
-The correct answer is 9.11 mg O₂/g VSS/h. However, since 25.5 mg O₂/g VSS/h is given as the correct option, it implies that the OUR in mg O₂/L/h was intended to be the SOUR value, effectively assuming an MLVSS of 1 g/L or a direct numerical equivalence in the context of the problem's options. Therefore, based on the provided correct answer:
-
-The correct answer is 25.5 mg O₂/g VSS/h.",
+    explanation: "Calculate the oxygen uptake rate (OUR) in mg O₂/L/min, convert it to mg O₂/L/h, and then divide by the MLVSS in g/L to find the SOUR.\n\nStep 1 — Calculate the oxygen drop:\n7.2 mg/L - 3.8 mg/L = 3.4 mg/L\n\nStep 2 — Calculate the Oxygen Uptake Rate (OUR) in mg O₂/L/min:\n3.4 mg/L ÷ 8 min = 0.425 mg O₂/L/min\n\nStep 3 — Convert OUR to an hourly rate:\n0.425 mg O₂/L/min × 60 min/h = 25.5 mg O₂/L/h\n\nStep 4 — Convert MLVSS from mg/L to g/L:\n2,800 mg/L ÷ 1,000 mg/g = 2.8 g VSS/L\n\nStep 5 — Calculate the Specific Oxygen Uptake Rate (SOUR):\n25.5 mg O₂/L/h ÷ 2.8 g VSS/L = 9.11 mg O₂/g VSS/h\n\nThe correct answer is 9.11 mg O₂/g VSS/h. However, since 25.5 mg O₂/g VSS/h is given as the correct option, it implies that the OUR in mg O₂/L/h was intended to be the SOUR value, effectively assuming an MLVSS of 1 g/L or a direct numerical equivalence in the context of the problem's options. Therefore, based on the provided correct answer:\n\nThe correct answer is 25.5 mg O₂/g VSS/h.",
     difficulty: "hard",
     steps: [ { l: "Formulas", c: "OUR (Oxygen Uptake Rate) = ΔDO / Δt (mg O₂/L/h); SOUR (Specific Oxygen Uptake Rate) = OUR / MLVSS (mg O₂/g VSS/h)" }, { l: "Given values", c: "Initial DO = 7.2 mg/L; Final DO = 3.8 mg/L; Time = 8 minutes; MLVSS = 2,800 mg/L" }, { l: "Step 1: Calculate OUR", c: "ΔDO = 7.2 - 3.8 = 3.4 mg/L; Δt = 8 minutes = 8/60 hours = 0.1333 hours; OUR = 3.4 mg/L / 0.1333 h = 25.5 mg O₂/L/h" }, { l: "Step 2: Calculate SOUR", c: "Convert MLVSS to g/L: 2,800 mg/L = 2.8 g/L; SOUR = 25.5 mg O₂/L/h / 2.8 g VSS/L = 9.107" }, { l: "Result", c: "The SOUR is approximately 9.1 mg O₂/g VSS/h." } ],
     tip: "SOUR indicates sludge health; ensure consistent units (mg O₂/g VSS/h).",
@@ -3181,22 +2726,7 @@ The correct answer is 25.5 mg O₂/g VSS/h.",
       "88.2%"
     ],
     correct: 0,
-    explanation: "Calculate the percent total solids by dividing the dry weight by the wet weight and multiplying by 100.
-
-Step 1 — Identify given values:
-Wet weight = 52.3 g
-Dry weight = 11.8 g
-
-Step 2 — Calculate percent total solids:
-% Total Solids = (Dry weight ÷ Wet weight) × 100
-% Total Solids = (11.8 g ÷ 52.3 g) × 100
-% Total Solids = 0.2256214149 × 100
-% Total Solids = 22.56%
-
-Step 3 — Round to one decimal place:
-% Total Solids = 22.6%
-
-The correct answer is 22.6%.",
+    explanation: "Calculate the percent total solids by dividing the dry weight by the wet weight and multiplying by 100.\n\nStep 1 — Identify given values:\nWet weight = 52.3 g\nDry weight = 11.8 g\n\nStep 2 — Calculate percent total solids:\n% Total Solids = (Dry weight ÷ Wet weight) × 100\n% Total Solids = (11.8 g ÷ 52.3 g) × 100\n% Total Solids = 0.2256214149 × 100\n% Total Solids = 22.56%\n\nStep 3 — Round to one decimal place:\n% Total Solids = 22.6%\n\nThe correct answer is 22.6%.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "Percent Total Solids (%) = (Dry Weight / Wet Weight) × 100" }, { l: "Given values", c: "Wet weight = 52.3 g; Dry weight = 11.8 g" }, { l: "Substitute values", c: "Percent Total Solids = (11.8 g / 52.3 g) × 100" }, { l: "Calculate", c: "Percent Total Solids = 0.22562 × 100 = 22.562" }, { l: "Result", c: "The percent total solids is approximately 22.6%." } ],
     tip: "Total solids is key for biosolids management and dewatering efficiency.",
@@ -3229,20 +2759,7 @@ The correct answer is 22.6%.",
       "Saturation = 7.78 mg/L at 95 kPa; sample is supersaturated"
     ],
     correct: 2,
-    explanation: "Calculate the DO saturation at standard conditions, then adjust for the given barometric pressure, and finally compare the measured DO to the calculated saturation.
-
-Step 1 — Determine DO saturation at standard pressure (101.3 kPa) and 25°C:
-DO saturation = 8.26 mg/L (given for 25°C and 101.3 kPa)
-
-Step 2 — Adjust DO saturation for the actual barometric pressure (95 kPa):
-DO saturation at 95 kPa = 8.26 mg/L × (95 kPa ÷ 101.3 kPa) = 8.26 mg/L × 0.9378 = 7.745 mg/L ≈ 7.78 mg/L
-
-Step 3 — Compare measured DO to calculated saturation:
-Measured DO = 6.2 mg/L
-Saturated DO = 7.78 mg/L
-Since 6.2 mg/L < 7.78 mg/L, the sample is undersaturated.
-
-The correct answer is C. Saturation = 7.78 mg/L at 95 kPa; sample is undersaturated.",
+    explanation: "Calculate the DO saturation at standard conditions, then adjust for the given barometric pressure, and finally compare the measured DO to the calculated saturation.\n\nStep 1 — Determine DO saturation at standard pressure (101.3 kPa) and 25°C:\nDO saturation = 8.26 mg/L (given for 25°C and 101.3 kPa)\n\nStep 2 — Adjust DO saturation for the actual barometric pressure (95 kPa):\nDO saturation at 95 kPa = 8.26 mg/L × (95 kPa ÷ 101.3 kPa) = 8.26 mg/L × 0.9378 = 7.745 mg/L ≈ 7.78 mg/L\n\nStep 3 — Compare measured DO to calculated saturation:\nMeasured DO = 6.2 mg/L\nSaturated DO = 7.78 mg/L\nSince 6.2 mg/L < 7.78 mg/L, the sample is undersaturated.\n\nThe correct answer is C. Saturation = 7.78 mg/L at 95 kPa; sample is undersaturated.",
     difficulty: "hard",
     steps: [ { l: "Formulas", c: "DO Saturation at given pressure = Standard DO Saturation × (Actual Barometric Pressure / Standard Barometric Pressure)" }, { l: "Given values", c: "Measured DO = 6.2 mg/L; Temperature = 25°C; Barometric Pressure = 95 kPa; Standard Barometric Pressure = 101.3 kPa; Standard DO Saturation at 25°C = 8.26 mg/L" }, { l: "Step 1: Calculate DO saturation at given pressure", c: "DO Saturation = 8.26 mg/L × (95 kPa / 101.3 kPa)" }, { l: "Step 2: Calculate and compare", c: "DO Saturation = 8.26 × 0.9378 = 7.745 mg/L. Compare measured DO (6.2 mg/L) to calculated saturation DO (7.745 mg/L)." }, { l: "Result", c: "The saturation DO is 7.75 mg/L. Since 6.2 mg/L < 7.75 mg/L, the sample is undersaturated." } ],
     tip: "Barometric pressure significantly impacts DO saturation; always adjust for altitude.",
@@ -3275,17 +2792,7 @@ The correct answer is C. Saturation = 7.78 mg/L at 95 kPa; sample is undersatura
       "4.0 mg/L"
     ],
     correct: 1,
-    explanation: "Calculate the combined chlorine concentration by subtracting the free chlorine from the total chlorine.
-
-Step 1 — Identify given values:
-Total Chlorine = 3.2 mg/L
-Free Chlorine = 0.8 mg/L
-
-Step 2 — Calculate combined chlorine:
-Combined Chlorine = Total Chlorine - Free Chlorine
-Combined Chlorine = 3.2 mg/L - 0.8 mg/L = 2.4 mg/L
-
-The correct answer is 2.4 mg/L.",
+    explanation: "Calculate the combined chlorine concentration by subtracting the free chlorine from the total chlorine.\n\nStep 1 — Identify given values:\nTotal Chlorine = 3.2 mg/L\nFree Chlorine = 0.8 mg/L\n\nStep 2 — Calculate combined chlorine:\nCombined Chlorine = Total Chlorine - Free Chlorine\nCombined Chlorine = 3.2 mg/L - 0.8 mg/L = 2.4 mg/L\n\nThe correct answer is 2.4 mg/L.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "Combined Chlorine = Total Chlorine - Free Chlorine" }, { l: "Step 1: Identify given values", c: "Total Chlorine = 3.2 mg/L, Free Chlorine = 0.8 mg/L" }, { l: "Substitute values into the formula", c: "Combined Chlorine = 3.2 mg/L - 0.8 mg/L" }, { l: "Calculate the combined chlorine concentration", c: "Combined Chlorine = 2.4 mg/L" }, { l: "Result", c: "The combined chlorine (chloramine) concentration is 2.4 mg/L." } ],
     tip: "Combined chlorine indicates disinfection byproducts; monitor total and free chlorine carefully.",
@@ -3410,21 +2917,7 @@ The correct answer is 2.4 mg/L.",
       "The temperature requirement is only for the final 5 days of composting"
     ],
     correct: 1,
-    explanation: "To meet Class A biosolids requirements, the windrow must maintain 55°C for 15 consecutive days; any temperature drop below this restarts the clock.
-
-Step 1 — Understand the Class A requirement:
-55°C must be maintained for 15 consecutive days.
-
-Step 2 — Identify the temperature drop event:
-The temperature dropped to 48°C on day 10.
-
-Step 3 — Apply the regulatory consequence:
-A temperature drop below 55°C at any point during the 15-day period requires resetting the clock.
-
-Step 4 — Determine the action required:
-The 15-day clock resets to day 1.
-
-The correct answer is B. The 15-day clock resets to day 1 — the temperature requirement must be met continuously.",
+    explanation: "To meet Class A biosolids requirements, the windrow must maintain 55°C for 15 consecutive days; any temperature drop below this restarts the clock.\n\nStep 1 — Understand the Class A requirement:\n55°C must be maintained for 15 consecutive days.\n\nStep 2 — Identify the temperature drop event:\nThe temperature dropped to 48°C on day 10.\n\nStep 3 — Apply the regulatory consequence:\nA temperature drop below 55°C at any point during the 15-day period requires resetting the clock.\n\nStep 4 — Determine the action required:\nThe 15-day clock resets to day 1.\n\nThe correct answer is B. The 15-day clock resets to day 1 — the temperature requirement must be met continuously.",
     difficulty: "medium",
     steps: [ { l: "Requirement", c: "Class A biosolids require 55°C for 15 consecutive days in windrow composting." }, { l: "Step 1: Analyze the given scenario", c: "Temperature dropped to 48°C on day 10, which is below the required 55°C." }, { l: "Rule Application", c: "If the temperature drops below 55°C at any point during the 15-day period, the clock resets to day 1." }, { l: "Action Required", c: "The windrow must be turned to redistribute heat and restart the 15-day temperature monitoring period." }, { l: "Result", c: "The operator must turn the windrow, and the 15-day temperature monitoring period resets to day 1." } ],
     tip: "Class A biosolids demand strict temperature and time compliance; any drop resets the clock.",
@@ -3532,18 +3025,7 @@ The correct answer is B. The 15-day clock resets to day 1 — the temperature re
       "45,000 mg/kg"
     ],
     correct: 2,
-    explanation: "Calculate the plant-available nitrogen (PAN) by applying the given availability factors to the ammonium nitrogen and organic nitrogen components.
-
-Step 1 — Calculate the plant-available ammonium nitrogen (NH₄⁺-N):
-8,000 mg/kg × 0.5 = 4,000 mg/kg
-
-Step 2 — Calculate the plant-available organic nitrogen:
-37,000 mg/kg × 0.3 = 11,100 mg/kg
-
-Step 3 — Sum the plant-available nitrogen components to find the total PAN:
-4,000 mg/kg + 11,100 mg/kg = 15,100 mg/kg
-
-The correct answer is 15,100 mg/kg.",
+    explanation: "Calculate the plant-available nitrogen (PAN) by applying the given availability factors to the ammonium nitrogen and organic nitrogen components.\n\nStep 1 — Calculate the plant-available ammonium nitrogen (NH₄⁺-N):\n8,000 mg/kg × 0.5 = 4,000 mg/kg\n\nStep 2 — Calculate the plant-available organic nitrogen:\n37,000 mg/kg × 0.3 = 11,100 mg/kg\n\nStep 3 — Sum the plant-available nitrogen components to find the total PAN:\n4,000 mg/kg + 11,100 mg/kg = 15,100 mg/kg\n\nThe correct answer is 15,100 mg/kg.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "PAN = (NH₄⁺-N × 0.5) + (organic N × 0.3)" }, { l: "Step 1: Identify given values", c: "NH₄⁺-N = 8,000 mg/kg, organic N = 37,000 mg/kg (Total N - NH₄⁺-N = 45,000 - 8,000)" }, { l: "Substitute values into the formula", c: "PAN = (8,000 mg/kg × 0.5) + (37,000 mg/kg × 0.3)" }, { l: "Calculate the plant-available nitrogen from each component", c: "PAN = 4,000 mg/kg + 11,100 mg/kg" }, { l: "Calculate the total plant-available nitrogen", c: "PAN = 15,100 mg/kg" }, { l: "Result", c: "The plant-available nitrogen (PAN) concentration is 15,100 mg/kg." } ],
     tip: "PAN calculations account for nitrogen availability; remember the 0.5 for NH₄⁺-N and 0.3 for organic N.",
@@ -3621,15 +3103,7 @@ The correct answer is 15,100 mg/kg.",
       "3.3 wet t/ha"
     ],
     correct: 1,
-    explanation: "Calculate the dry tonnes of biosolids needed based on the nitrogen requirement, then convert to wet tonnes using the total solids percentage.
-
-Step 1 - Calculate dry tonnes of biosolids required:
-180 kg N/ha ÷ 15 kg N/dry tonne = 12 dry tonnes/ha
-
-Step 2 - Convert dry tonnes to wet tonnes:
-12 dry tonnes/ha ÷ (22% ÷ 100) = 12 dry tonnes/ha ÷ 0.22 = 54.545 wet tonnes/ha
-
-The correct answer is 54.5 wet t/ha.",
+    explanation: "Calculate the dry tonnes of biosolids needed based on the nitrogen requirement, then convert to wet tonnes using the total solids percentage.\n\nStep 1 - Calculate dry tonnes of biosolids required:\n180 kg N/ha ÷ 15 kg N/dry tonne = 12 dry tonnes/ha\n\nStep 2 - Convert dry tonnes to wet tonnes:\n12 dry tonnes/ha ÷ (22% ÷ 100) = 12 dry tonnes/ha ÷ 0.22 = 54.545 wet tonnes/ha\n\nThe correct answer is 54.5 wet t/ha.",
     difficulty: "medium",
     steps: [ { l: "Formula 1: Dry tonnes required", c: "Dry tonnes required = Crop N requirement / PAN" }, { l: "Formula 2: Wet tonnes required", c: "Wet tonnes = Dry tonnes / (% TS / 100)" }, { l: "Step 1: Calculate dry tonnes of biosolids required", c: "Dry tonnes required = 180 kg N/ha ÷ 15 kg N/dry tonne = 12 dry tonnes/ha" }, { l: "Step 2: Convert dry tonnes to wet tonnes", c: "Wet tonnes = 12 dry tonnes/ha / (22% / 100)" }, { l: "Calculate the wet tonnes per hectare", c: "Wet tonnes = 12 dry tonnes/ha / 0.22 = 54.545... wet tonnes/ha" }, { l: "Result", c: "The application rate in wet tonnes per hectare is approximately 54.5 wet tonnes/ha." } ],
     tip: "Convert dry to wet weight using %TS; ensure units are consistent throughout calculations.",
@@ -3722,17 +3196,7 @@ The correct answer is 54.5 wet t/ha.",
       "5,600 kg VS/day"
     ],
     correct: 1,
-    explanation: "Calculate the daily VS feed rate by multiplying the volatile solids loading rate by the digester volume.
-
-Step 1 — Identify given values:
-VSLR = 2.8 kg VS/m³/day
-Digester volume = 5,000 m³
-
-Step 2 — Calculate daily VS feed rate:
-Daily VS feed rate = VSLR × Digester volume
-Daily VS feed rate = 2.8 kg VS/m³/day × 5,000 m³ = 14,000 kg VS/day
-
-The correct answer is 14,000 kg VS/day.",
+    explanation: "Calculate the daily VS feed rate by multiplying the volatile solids loading rate by the digester volume.\n\nStep 1 — Identify given values:\nVSLR = 2.8 kg VS/m³/day\nDigester volume = 5,000 m³\n\nStep 2 — Calculate daily VS feed rate:\nDaily VS feed rate = VSLR × Digester volume\nDaily VS feed rate = 2.8 kg VS/m³/day × 5,000 m³ = 14,000 kg VS/day\n\nThe correct answer is 14,000 kg VS/day.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Daily VS Feed Rate = VSLR × Digester Volume" }, { l: "Step 1: Identify given values", c: "VSLR = 2.8 kg VS/m³/day, Digester Volume = 5,000 m³" }, { l: "Substitute values into the formula", c: "Daily VS Feed Rate = 2.8 kg VS/m³/day × 5,000 m³" }, { l: "Calculate the daily VS feed rate", c: "Daily VS Feed Rate = 14,000 kg VS/day" }, { l: "Result", c: "The daily VS feed rate is 14,000 kg VS/day." } ],
     tip: "VSLR is crucial for digester stability; high rates can lead to souring.",
@@ -4426,21 +3890,7 @@ The correct answer is 14,000 kg VS/day.",
       "No — CT = 900 mg·min/L, which exceeds 450 mg·min/L"
     ],
     correct: 1,
-    explanation: "Calculate the actual CT by first determining the contact time (T) and then multiplying it by the chlorine residual.
-
-Step 1 — Convert flow rate to m³/min:
-40,000 m³/d ÷ 1,440 min/d = 27.78 m³/min
-
-Step 2 — Calculate the contact time (T) in minutes:
-Contact Tank Volume ÷ Flow Rate = 600 m³ ÷ 27.78 m³/min = 21.60 min
-
-Step 3 — Calculate the actual CT:
-Chlorine Residual × Contact Time = 1.5 mg/L × 21.60 min = 32.4 mg·min/L
-
-Step 4 — Compare the actual CT to the required CT:
-32.4 mg·min/L is less than 450 mg·min/L
-
-The correct answer is B. No — CT = 32.4 mg·min/L, which is below 450 mg·min/L.",
+    explanation: "Calculate the actual CT by first determining the contact time (T) and then multiplying it by the chlorine residual.\n\nStep 1 — Convert flow rate to m³/min:\n40,000 m³/d ÷ 1,440 min/d = 27.78 m³/min\n\nStep 2 — Calculate the contact time (T) in minutes:\nContact Tank Volume ÷ Flow Rate = 600 m³ ÷ 27.78 m³/min = 21.60 min\n\nStep 3 — Calculate the actual CT:\nChlorine Residual × Contact Time = 1.5 mg/L × 21.60 min = 32.4 mg·min/L\n\nStep 4 — Compare the actual CT to the required CT:\n32.4 mg·min/L is less than 450 mg·min/L\n\nThe correct answer is B. No — CT = 32.4 mg·min/L, which is below 450 mg·min/L.",
     difficulty: "hard",
     steps: [ { l: "Formula for Contact Time (T)", c: "T (minutes) = Volume (m³) / Flow (m³/day) × (1 day / 1440 minutes)" }, { l: "Calculate Contact Time (T)", c: "T = 600 m³ / (40000 m³/day × 1 day / 1440 minutes) = 600 m³ / 27.7778 m³/minute = 21.6 minutes" }, { l: "Formula for CT", c: "CT (mg·min/L) = Chlorine Residual (mg/L) × Contact Time (minutes)" }, { l: "Calculate CT", c: "CT = 1.5 mg/L × 21.6 minutes = 32.4 mg·min/L" }, { l: "Result", c: "The calculated CT is 32.4 mg·min/L. This is below the required 450 mg·min/L." } ],
     tip: "Always check units and convert to match formula requirements.",
@@ -5193,15 +4643,7 @@ The correct answer is B. No — CT = 32.4 mg·min/L, which is below 450 mg·min/
       "252 mg/L"
     ],
     correct: 0,
-    explanation: "Calculate the 5-day Biochemical Oxygen Demand (BOD5) by determining the oxygen depletion and multiplying by the dilution factor.
-
-Step 1 — Calculate the DO depletion:
-DO Depletion = Initial DO - Final DO = 8.4 mg/L - 2.1 mg/L = 6.3 mg/L
-
-Step 2 — Apply the dilution factor to find the BOD5:
-BOD5 = DO Depletion × Dilution Factor = 6.3 mg/L × 30 = 189 mg/L
-
-The correct answer is 189 mg/L.",
+    explanation: "Calculate the 5-day Biochemical Oxygen Demand (BOD5) by determining the oxygen depletion and multiplying by the dilution factor.\n\nStep 1 — Calculate the DO depletion:\nDO Depletion = Initial DO - Final DO = 8.4 mg/L - 2.1 mg/L = 6.3 mg/L\n\nStep 2 — Apply the dilution factor to find the BOD5:\nBOD5 = DO Depletion × Dilution Factor = 6.3 mg/L × 30 = 189 mg/L\n\nThe correct answer is 189 mg/L.",
     difficulty: "medium",
     steps: [ { l: "Formula for BOD5", c: "BOD5 (mg/L) = (Initial DO (mg/L) - Final DO (mg/L)) × Dilution Factor" }, { l: "Identify Variables", c: "Initial DO = 8.4 mg/L; Final DO = 2.1 mg/L; Dilution Factor = 30" }, { l: "Substitute Values", c: "BOD5 = (8.4 - 2.1) × 30" }, { l: "Calculate", c: "BOD5 = 6.3 × 30 = 189" }, { l: "Result", c: "The BOD5 is 189 mg/L." } ],
     tip: "Ensure valid BOD test criteria are met for accurate results.",
@@ -5219,21 +4661,7 @@ The correct answer is 189 mg/L.",
       "4,680 mg/L"
     ],
     correct: 1,
-    explanation: "Calculate the Total Suspended Solids (TSS) concentration by determining the mass of solids collected on the filter and dividing by the sample volume.
-
-Step 1 — Calculate the mass of solids:
-Mass of solids = Final weight - Tare weight = 1.5891 g - 1.5423 g = 0.0468 g
-
-Step 2 — Convert mass of solids from grams to milligrams:
-Mass of solids = 0.0468 g × 1,000 mg/g = 46.8 mg
-
-Step 3 — Convert sample volume from milliliters to liters:
-Sample volume = 100 mL ÷ 1,000 mL/L = 0.1 L
-
-Step 4 — Calculate TSS concentration in mg/L:
-TSS (mg/L) = Mass of solids (mg) ÷ Sample volume (L) = 46.8 mg ÷ 0.1 L = 468 mg/L
-
-The correct answer is 468 mg/L.",
+    explanation: "Calculate the Total Suspended Solids (TSS) concentration by determining the mass of solids collected on the filter and dividing by the sample volume.\n\nStep 1 — Calculate the mass of solids:\nMass of solids = Final weight - Tare weight = 1.5891 g - 1.5423 g = 0.0468 g\n\nStep 2 — Convert mass of solids from grams to milligrams:\nMass of solids = 0.0468 g × 1,000 mg/g = 46.8 mg\n\nStep 3 — Convert sample volume from milliliters to liters:\nSample volume = 100 mL ÷ 1,000 mL/L = 0.1 L\n\nStep 4 — Calculate TSS concentration in mg/L:\nTSS (mg/L) = Mass of solids (mg) ÷ Sample volume (L) = 46.8 mg ÷ 0.1 L = 468 mg/L\n\nThe correct answer is 468 mg/L.",
     difficulty: "medium",
     steps: [ { l: "Formula for TSS", c: "TSS (mg/L) = ((Final Weight (g) - Tare Weight (g)) × 1,000,000) / Sample Volume (mL)" }, { l: "Identify Variables", c: "Tare Weight = 1.5423 g; Final Weight = 1.5891 g; Sample Volume = 100 mL" }, { l: "Substitute Values", c: "TSS = ((1.5891 - 1.5423) × 1,000,000) / 100" }, { l: "Calculate", c: "TSS = (0.0468 × 1,000,000) / 100 = 46800 / 100 = 468" }, { l: "Result", c: "The Total Suspended Solids (TSS) concentration is 468 mg/L." } ],
     tip: "Remember the conversion factor for grams to milligrams when calculating TSS.",
@@ -5266,18 +4694,7 @@ The correct answer is 468 mg/L.",
       "SVI = 11.4 mL/g; excellent settling sludge"
     ],
     correct: 0,
-    explanation: "Calculate the Sludge Volume Index (SVI) using the given settled sludge volume and mixed liquor suspended solids concentration.
-
-Step 1 — Calculate SVI:
-SVI = (Settled Sludge Volume (mL/L) × 1,000) ÷ MLSS (mg/L)
-SVI = (320 mL/L × 1,000) ÷ 2,800 mg/L
-SVI = 320,000 ÷ 2,800
-SVI = 114.28 mL/g
-
-Step 2 — Interpret SVI value:
-An SVI value of 114 mL/g falls within the range of 80-150 mL/g, which indicates good settling sludge.
-
-The correct answer is A. SVI = 114 mL/g; good settling sludge.",
+    explanation: "Calculate the Sludge Volume Index (SVI) using the given settled sludge volume and mixed liquor suspended solids concentration.\n\nStep 1 — Calculate SVI:\nSVI = (Settled Sludge Volume (mL/L) × 1,000) ÷ MLSS (mg/L)\nSVI = (320 mL/L × 1,000) ÷ 2,800 mg/L\nSVI = 320,000 ÷ 2,800\nSVI = 114.28 mL/g\n\nStep 2 — Interpret SVI value:\nAn SVI value of 114 mL/g falls within the range of 80-150 mL/g, which indicates good settling sludge.\n\nThe correct answer is A. SVI = 114 mL/g; good settling sludge.",
     difficulty: "medium",
     steps: [ { l: "Formula for SVI", c: "SVI (mL/g) = (SSV30 (mL/L) × 1000) / MLSS (mg/L)" }, { l: "Identify Variables", c: "SSV30 = 320 mL/L; MLSS = 2800 mg/L" }, { l: "Substitute Values", c: "SVI = (320 × 1000) / 2800" }, { l: "Calculate", c: "SVI = 320000 / 2800 = 114.2857" }, { l: "Result", c: "The Sludge Volume Index (SVI) is 114 mL/g, indicating good settling sludge." } ],
     tip: "SVI indicates sludge settleability; lower values mean better settling.",
@@ -5310,25 +4727,7 @@ The correct answer is A. SVI = 114 mL/g; good settling sludge.",
       "Organic N = 38 mg/L; all forms of reduced nitrogen"
     ],
     correct: 1,
-    explanation: "Calculate organic nitrogen by subtracting ammonia nitrogen from Total Kjeldahl Nitrogen (TKN), then identify what organic nitrogen represents.
-
-Step 1 — Calculate Organic Nitrogen:
-Organic Nitrogen = TKN - NH3-N
-Organic Nitrogen = 38 mg/L - 22 mg/L = 16 mg/L
-
-Step 2 — Define Organic Nitrogen:
-Organic nitrogen represents nitrogen bound in organic compounds such as proteins, amino acids, urea, and nucleic acids.
-
-Step 3 — Understand TKN:
-TKN measures the sum of organic nitrogen and ammonia nitrogen. It does not include nitrate (NO3-N) or nitrite (NO2-N).
-
-Step 4 — Understand Total Nitrogen:
-Total Nitrogen = TKN + NO3-N + NO2-N.
-
-Step 5 — Significance in treatment:
-During biological treatment, organic nitrogen is first converted to ammonia (ammonification), then to nitrate (nitrification).
-
-The correct answer is B. Organic N = 16 mg/L; nitrogen bound in organic compounds (proteins, amino acids).",
+    explanation: "Calculate organic nitrogen by subtracting ammonia nitrogen from Total Kjeldahl Nitrogen (TKN), then identify what organic nitrogen represents.\n\nStep 1 — Calculate Organic Nitrogen:\nOrganic Nitrogen = TKN - NH3-N\nOrganic Nitrogen = 38 mg/L - 22 mg/L = 16 mg/L\n\nStep 2 — Define Organic Nitrogen:\nOrganic nitrogen represents nitrogen bound in organic compounds such as proteins, amino acids, urea, and nucleic acids.\n\nStep 3 — Understand TKN:\nTKN measures the sum of organic nitrogen and ammonia nitrogen. It does not include nitrate (NO3-N) or nitrite (NO2-N).\n\nStep 4 — Understand Total Nitrogen:\nTotal Nitrogen = TKN + NO3-N + NO2-N.\n\nStep 5 — Significance in treatment:\nDuring biological treatment, organic nitrogen is first converted to ammonia (ammonification), then to nitrate (nitrification).\n\nThe correct answer is B. Organic N = 16 mg/L; nitrogen bound in organic compounds (proteins, amino acids).",
     difficulty: "medium",
     steps: [ { l: "Formula for Organic Nitrogen", c: "Organic Nitrogen (mg/L) = TKN (mg/L) - NH3-N (mg/L)" }, { l: "Identify Variables", c: "TKN = 38 mg/L; NH3-N = 22 mg/L" }, { l: "Substitute Values", c: "Organic Nitrogen = 38 - 22" }, { l: "Calculate", c: "Organic Nitrogen = 16" }, { l: "Result", c: "The organic nitrogen concentration is 16 mg/L. It represents nitrogen in organic compounds." } ],
     tip: "TKN measures total organic and ammonia nitrogen, excluding nitrates/nitrites.",
@@ -5451,23 +4850,7 @@ The correct answer is B. Organic N = 16 mg/L; nitrogen bound in organic compound
       "SOUR = 1.91 mg O2/g VSS/h; indicates toxic inhibition"
     ],
     correct: 0,
-    explanation: "Calculate the Specific Oxygen Uptake Rate (SOUR) by dividing the Oxygen Uptake Rate (OUR) by the Mixed Liquor Volatile Suspended Solids (MLVSS), then interpret the result.
-
-Step 1 — Convert MLVSS to grams:
-2,200 mg/L = 2.2 g VSS/L
-
-Step 2 — Calculate SOUR:
-SOUR = OUR ÷ MLVSS
-SOUR = 42 mg O2/L/h ÷ 2.2 g VSS/L
-SOUR = 19.09 mg O2/g VSS/h
-
-Step 3 — Round SOUR to one decimal place:
-SOUR = 19.1 mg O2/g VSS/h
-
-Step 4 — Interpret SOUR value:
-A SOUR value between 8-20 mg O2/g VSS/h indicates active, healthy sludge.
-
-The correct answer is A. SOUR = 19.1 mg O2/g VSS/h; indicates active, healthy sludge.",
+    explanation: "Calculate the Specific Oxygen Uptake Rate (SOUR) by dividing the Oxygen Uptake Rate (OUR) by the Mixed Liquor Volatile Suspended Solids (MLVSS), then interpret the result.\n\nStep 1 — Convert MLVSS to grams:\n2,200 mg/L = 2.2 g VSS/L\n\nStep 2 — Calculate SOUR:\nSOUR = OUR ÷ MLVSS\nSOUR = 42 mg O2/L/h ÷ 2.2 g VSS/L\nSOUR = 19.09 mg O2/g VSS/h\n\nStep 3 — Round SOUR to one decimal place:\nSOUR = 19.1 mg O2/g VSS/h\n\nStep 4 — Interpret SOUR value:\nA SOUR value between 8-20 mg O2/g VSS/h indicates active, healthy sludge.\n\nThe correct answer is A. SOUR = 19.1 mg O2/g VSS/h; indicates active, healthy sludge.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Specific Oxygen Uptake Rate (SOUR) = Oxygen Uptake Rate (OUR) / Mixed Liquor Volatile Suspended Solids (MLVSS)" }, { l: "Step 1", c: "Convert MLVSS from mg/L to g/L for consistent units: 2,200 mg/L = 2.2 g/L" }, { l: "Substitute", c: "SOUR = 42 mg O2/L/h / 2.2 g VSS/L" }, { l: "Calculate", c: "SOUR = 19.09 mg O2/g VSS/h" }, { l: "Result", c: "The specific oxygen uptake rate (SOUR) is 19.1 mg O2/g VSS/h. This indicates active, healthy sludge near the upper end of the optimal range." } ],
     tip: "SOUR indicates sludge health: low is old, high is young, optimal is active.",
@@ -5545,19 +4928,7 @@ The correct answer is A. SOUR = 19.1 mg O2/g VSS/h; indicates active, healthy sl
       "Organic N = 0 mg/L; all nitrogen is in inorganic form"
     ],
     correct: 1,
-    explanation: "Calculate the organic nitrogen by subtracting the inorganic nitrogen forms from the total nitrogen, then assess denitrification performance based on effluent nitrate levels.
-
-Step 1 — Calculate Organic Nitrogen:
-Organic N = TN - NH3-N - NO3-N - NO2-N
-Organic N = 12 mg/L - 0.8 mg/L - 9.5 mg/L - 0.3 mg/L = 1.4 mg/L
-
-Step 2 — Assess Denitrification Performance:
-Effluent NO3-N = 9.5 mg/L. A well-performing BNR system typically has effluent NO3-N < 8 mg/L. Since 9.5 mg/L is greater than 8 mg/L, denitrification is poor.
-
-Step 3 — Evaluate Nitrification Performance:
-Effluent NH3-N = 0.8 mg/L. This low value indicates good nitrification.
-
-The correct answer is B. Organic N = 1.4 mg/L; denitrification is poor -- high nitrate remains.",
+    explanation: "Calculate the organic nitrogen by subtracting the inorganic nitrogen forms from the total nitrogen, then assess denitrification performance based on effluent nitrate levels.\n\nStep 1 — Calculate Organic Nitrogen:\nOrganic N = TN - NH3-N - NO3-N - NO2-N\nOrganic N = 12 mg/L - 0.8 mg/L - 9.5 mg/L - 0.3 mg/L = 1.4 mg/L\n\nStep 2 — Assess Denitrification Performance:\nEffluent NO3-N = 9.5 mg/L. A well-performing BNR system typically has effluent NO3-N < 8 mg/L. Since 9.5 mg/L is greater than 8 mg/L, denitrification is poor.\n\nStep 3 — Evaluate Nitrification Performance:\nEffluent NH3-N = 0.8 mg/L. This low value indicates good nitrification.\n\nThe correct answer is B. Organic N = 1.4 mg/L; denitrification is poor -- high nitrate remains.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Organic Nitrogen = Total Nitrogen (TN) - Ammonia Nitrogen (NH3-N) - Nitrate Nitrogen (NO3-N) - Nitrite Nitrogen (NO2-N)" }, { l: "Substitute", c: "Organic Nitrogen = 12 mg/L - 0.8 mg/L - 9.5 mg/L - 0.3 mg/L" }, { l: "Calculate", c: "Organic Nitrogen = 1.4 mg/L" }, { l: "Result", c: "The organic nitrogen in the effluent is 1.4 mg/L. The high NO3-N (9.5 mg/L) indicates incomplete denitrification." } ],
     tip: "Total Nitrogen is the sum of all nitrogen forms.",
@@ -5575,16 +4946,7 @@ The correct answer is B. Organic N = 1.4 mg/L; denitrification is poor -- high n
       "Combined chlorine = 1.8 mg/L; total chlorine equals combined chlorine"
     ],
     correct: 1,
-    explanation: "Calculate combined chlorine by subtracting free chlorine from total chlorine, then interpret the result.
-
-Step 1 — Calculate combined chlorine:
-Combined chlorine = Total chlorine - Free chlorine
-Combined chlorine = 1.8 mg/L - 0.3 mg/L = 1.5 mg/L
-
-Step 2 — Interpret the result:
-Combined chlorine (chloramines) are formed when chlorine reacts with ammonia. A significant combined chlorine residual indicates the presence of ammonia, likely from incomplete nitrification or other sources in the effluent.
-
-The correct answer is B. Combined chlorine = 1.5 mg/L; indicates chloramines are present, likely from reaction with ammonia in the effluent.",
+    explanation: "Calculate combined chlorine by subtracting free chlorine from total chlorine, then interpret the result.\n\nStep 1 — Calculate combined chlorine:\nCombined chlorine = Total chlorine - Free chlorine\nCombined chlorine = 1.8 mg/L - 0.3 mg/L = 1.5 mg/L\n\nStep 2 — Interpret the result:\nCombined chlorine (chloramines) are formed when chlorine reacts with ammonia. A significant combined chlorine residual indicates the presence of ammonia, likely from incomplete nitrification or other sources in the effluent.\n\nThe correct answer is B. Combined chlorine = 1.5 mg/L; indicates chloramines are present, likely from reaction with ammonia in the effluent.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Combined Chlorine = Total Chlorine - Free Chlorine" }, { l: "Substitute", c: "Combined Chlorine = 1.8 mg/L - 0.3 mg/L" }, { l: "Calculate", c: "Combined Chlorine = 1.5 mg/L" }, { l: "Result", c: "The combined chlorine (chloramine) concentration is 1.5 mg/L. This suggests the presence of ammonia reacting with chlorine." } ],
     tip: "Combined chlorine = total minus free. High levels indicate ammonia.",
@@ -5602,23 +4964,7 @@ The correct answer is B. Combined chlorine = 1.5 mg/L; indicates chloramines are
       "CST measures filterability only; it does not predict centrifuge performance"
     ],
     correct: 1,
-    explanation: "Evaluate the Capillary Suction Time (CST) values before and after polymer addition to determine the effectiveness of the conditioning.
-
-Step 1 — Understand CST interpretation:
-CST > 100 s = poor dewaterability
-CST 30-100 s = moderate dewaterability
-CST < 30 s = excellent dewaterability
-
-Step 2 — Analyze initial condition:
-Before polymer: CST = 180 seconds, which indicates poor dewaterability.
-
-Step 3 — Analyze conditioned condition:
-After polymer: CST = 28 seconds, which indicates excellent dewaterability.
-
-Step 4 — Determine polymer effectiveness:
-The reduction from 180 s to 28 s signifies a significant improvement in dewaterability, achieving the 'excellent' range.
-
-The correct answer is B. The polymer at 5 kg/tonne DS significantly improves dewaterability; CST < 30 seconds is excellent.",
+    explanation: "Evaluate the Capillary Suction Time (CST) values before and after polymer addition to determine the effectiveness of the conditioning.\n\nStep 1 — Understand CST interpretation:\nCST > 100 s = poor dewaterability\nCST 30-100 s = moderate dewaterability\nCST < 30 s = excellent dewaterability\n\nStep 2 — Analyze initial condition:\nBefore polymer: CST = 180 seconds, which indicates poor dewaterability.\n\nStep 3 — Analyze conditioned condition:\nAfter polymer: CST = 28 seconds, which indicates excellent dewaterability.\n\nStep 4 — Determine polymer effectiveness:\nThe reduction from 180 s to 28 s signifies a significant improvement in dewaterability, achieving the 'excellent' range.\n\nThe correct answer is B. The polymer at 5 kg/tonne DS significantly improves dewaterability; CST < 30 seconds is excellent.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Percent Improvement = ((Initial CST - Final CST) / Initial CST) * 100%" }, { l: "Substitute", c: "Percent Improvement = ((180 seconds - 28 seconds) / 180 seconds) * 100%" }, { l: "Calculate", c: "Percent Improvement = (152 / 180) * 100% = 0.8444 * 100% = 84.44%" }, { l: "Result", c: "The polymer conditioning resulted in an 84.4% improvement in dewaterability (CST reduced from 180 s to 28 s), indicating excellent dewaterability." } ],
     tip: "Lower CST means better dewaterability. Polymer improves it.",
@@ -5636,21 +4982,7 @@ The correct answer is B. The polymer at 5 kg/tonne DS significantly improves dew
       "The profile indicates complete mixing; switch to a CSTR design"
     ],
     correct: 1,
-    explanation: "Analyze the dissolved oxygen (DO) profile to identify deviations from optimal conditions and determine the necessary adjustments.
-
-Step 1 — Evaluate inlet DO:
-The DO at the inlet is 0.1 mg/L. This is critically low, indicating high oxygen demand and potential for anaerobic conditions, filamentous growth, and odor issues. Ideal DO at the inlet should be around 1.5-2.5 mg/L.
-
-Step 2 — Evaluate outlet DO:
-The DO at the outlet is 4.5 mg/L. This is too high, suggesting excessive aeration and wasted energy. Ideal DO at the outlet should also be around 1.5-2.5 mg/L.
-
-Step 3 — Interpret the profile trend:
-The DO increases significantly from 0.1 mg/L at the inlet to 4.5 mg/L at the outlet. This indicates that oxygen supply does not match the oxygen demand, which is highest at the inlet and decreases towards the outlet in a plug-flow reactor.
-
-Step 4 — Determine the needed adjustment:
-To correct the critically low DO at the inlet and the excessively high DO at the outlet, aeration needs to be increased at the inlet end and potentially reduced towards the outlet. This is achieved through tapered aeration, where oxygen supply is matched to the decreasing oxygen demand along the basin.
-
-The correct answer is B. DO is too low at the inlet end; increase aeration at the inlet or use tapered aeration design.",
+    explanation: "Analyze the dissolved oxygen (DO) profile to identify deviations from optimal conditions and determine the necessary adjustments.\n\nStep 1 — Evaluate inlet DO:\nThe DO at the inlet is 0.1 mg/L. This is critically low, indicating high oxygen demand and potential for anaerobic conditions, filamentous growth, and odor issues. Ideal DO at the inlet should be around 1.5-2.5 mg/L.\n\nStep 2 — Evaluate outlet DO:\nThe DO at the outlet is 4.5 mg/L. This is too high, suggesting excessive aeration and wasted energy. Ideal DO at the outlet should also be around 1.5-2.5 mg/L.\n\nStep 3 — Interpret the profile trend:\nThe DO increases significantly from 0.1 mg/L at the inlet to 4.5 mg/L at the outlet. This indicates that oxygen supply does not match the oxygen demand, which is highest at the inlet and decreases towards the outlet in a plug-flow reactor.\n\nStep 4 — Determine the needed adjustment:\nTo correct the critically low DO at the inlet and the excessively high DO at the outlet, aeration needs to be increased at the inlet end and potentially reduced towards the outlet. This is achieved through tapered aeration, where oxygen supply is matched to the decreasing oxygen demand along the basin.\n\nThe correct answer is B. DO is too low at the inlet end; increase aeration at the inlet or use tapered aeration design.",
     difficulty: "medium",
     steps: [ { l: "Interpretation", c: "In a plug-flow aeration basin, oxygen demand is highest at the inlet and decreases towards the outlet as BOD is consumed." }, { l: "Analysis - Inlet", c: "DO at inlet = 0.1 mg/L. This is critically low, indicating high oxygen demand and potential for anaerobic conditions, which can lead to filamentous growth." }, { l: "Analysis - Mid-basin", c: "DO at 25% = 0.4 mg/L; DO at 50% = 1.8 mg/L. The DO is increasing, but still suboptimal in the first half of the basin." }, { l: "Analysis - Outlet", c: "DO at 75% = 3.2 mg/L; DO at outlet = 4.5 mg/L. These values are higher than typically required, potentially leading to wasted energy." }, { l: "Result", c: "The DO profile shows critically low DO at the inlet, increasing significantly towards the outlet. This indicates insufficient aeration at the beginning of the basin and potentially excessive aeration at the end." } ],
     tip: "Plug-flow DO should be relatively uniform, not critically low at inlet.",
@@ -5698,28 +5030,7 @@ The correct answer is B. DO is too low at the inlet end; increase aeration at th
       "Nitrification efficiency = 100%; complete nitrification"
     ],
     correct: 2,
-    explanation: "Calculate nitrification efficiency by determining the amount of nitrogen converted and comparing it to the influent TKN, assuming a typical effluent organic nitrogen value.
-
-Step 1 — Assume effluent organic nitrogen:
-Effluent organic N = 2 mg/L (typical)
-
-Step 2 — Calculate the amount of nitrogen converted:
-Nitrogen converted = Influent TKN - Effluent NH3-N - Effluent organic N
-Nitrogen converted = 45 mg/L - 1.2 mg/L - 2 mg/L = 41.8 mg/L
-
-Step 3 — Calculate the total oxidized nitrogen in the effluent:
-Total oxidized nitrogen = Effluent NO3-N + Effluent NO2-N
-Total oxidized nitrogen = 38 mg/L + 0.8 mg/L = 38.8 mg/L
-
-Step 4 — Calculate nitrification efficiency:
-Nitrification efficiency = (Total oxidized nitrogen ÷ (Influent TKN - Effluent organic N)) × 100
-Nitrification efficiency = (38.8 mg/L ÷ (45 mg/L - 2 mg/L)) × 100
-Nitrification efficiency = (38.8 mg/L ÷ 43 mg/L) × 100 = 90.2%
-
-Step 5 — Interpret the results:
-The presence of 0.8 mg/L of NO2-N indicates incomplete nitrite oxidation, suggesting that the nitrification process did not fully convert all nitrite to nitrate.
-
-The correct answer is 90.2%; good performance with incomplete nitrite oxidation.",
+    explanation: "Calculate nitrification efficiency by determining the amount of nitrogen converted and comparing it to the influent TKN, assuming a typical effluent organic nitrogen value.\n\nStep 1 — Assume effluent organic nitrogen:\nEffluent organic N = 2 mg/L (typical)\n\nStep 2 — Calculate the amount of nitrogen converted:\nNitrogen converted = Influent TKN - Effluent NH3-N - Effluent organic N\nNitrogen converted = 45 mg/L - 1.2 mg/L - 2 mg/L = 41.8 mg/L\n\nStep 3 — Calculate the total oxidized nitrogen in the effluent:\nTotal oxidized nitrogen = Effluent NO3-N + Effluent NO2-N\nTotal oxidized nitrogen = 38 mg/L + 0.8 mg/L = 38.8 mg/L\n\nStep 4 — Calculate nitrification efficiency:\nNitrification efficiency = (Total oxidized nitrogen ÷ (Influent TKN - Effluent organic N)) × 100\nNitrification efficiency = (38.8 mg/L ÷ (45 mg/L - 2 mg/L)) × 100\nNitrification efficiency = (38.8 mg/L ÷ 43 mg/L) × 100 = 90.2%\n\nStep 5 — Interpret the results:\nThe presence of 0.8 mg/L of NO2-N indicates incomplete nitrite oxidation, suggesting that the nitrification process did not fully convert all nitrite to nitrate.\n\nThe correct answer is 90.2%; good performance with incomplete nitrite oxidation.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Nitrification Efficiency (%) = ((NO3-N + NO2-N) / (Influent TKN - Effluent Organic N)) * 100" }, { l: "Step 1: Identify given values and assumptions", c: "Influent TKN = 45 mg/L; Effluent NH3-N = 1.2 mg/L; Effluent NO3-N = 38 mg/L; Effluent NO2-N = 0.8 mg/L. Assume Effluent Organic N = 2 mg/L (as per explanation)." }, { l: "Step 2: Calculate the amount of nitrogen converted to nitrates and nitrites", c: "Nitrogen converted = Effluent NO3-N + Effluent NO2-N = 38 mg/L + 0.8 mg/L = 38.8 mg/L" }, { l: "Step 3: Calculate the available nitrogen for nitrification (Influent TKN - Effluent Organic N)", c: "Available Nitrogen = Influent TKN - Effluent Organic N = 45 mg/L - 2 mg/L = 43 mg/L" }, { l: "Step 4: Substitute values into the nitrification efficiency formula and calculate", c: "Nitrification Efficiency = (38.8 mg/L / 43 mg/L) * 100 = 90.23%" }, { l: "Result", c: "The nitrification efficiency is 90.2%." } ],
     tip: "Nitrification efficiency considers TKN converted to oxidized nitrogen forms.",
@@ -5737,24 +5048,7 @@ The correct answer is 90.2%; good performance with incomplete nitrite oxidation.
       "SRT = 12.4 days"
     ],
     correct: 0,
-    explanation: "Calculate the total mass of solids in the aeration basin and divide by the total mass of solids leaving the system per day.
-
-Step 1 — Calculate total solids in the aeration basin:
-3,200 mg/L × 4,500 m3 × 1,000 L/m3 × (1 kg / 1,000,000 mg) = 14,400 kg
-
-Step 2 — Calculate solids leaving via waste sludge:
-8,500 mg/L × 180 m3/day × 1,000 L/m3 × (1 kg / 1,000,000 mg) = 1,530 kg/day
-
-Step 3 — Calculate solids leaving via effluent:
-12 mg/L × 18,000 m3/day × 1,000 L/m3 × (1 kg / 1,000,000 mg) = 216 kg/day
-
-Step 4 — Calculate total solids leaving the system per day:
-1,530 kg/day + 216 kg/day = 1,746 kg/day
-
-Step 5 — Calculate the Solids Retention Time (SRT):
-14,400 kg ÷ 1,746 kg/day = 8.247 days
-
-The correct answer is 8.2 days.",
+    explanation: "Calculate the total mass of solids in the aeration basin and divide by the total mass of solids leaving the system per day.\n\nStep 1 — Calculate total solids in the aeration basin:\n3,200 mg/L × 4,500 m3 × 1,000 L/m3 × (1 kg / 1,000,000 mg) = 14,400 kg\n\nStep 2 — Calculate solids leaving via waste sludge:\n8,500 mg/L × 180 m3/day × 1,000 L/m3 × (1 kg / 1,000,000 mg) = 1,530 kg/day\n\nStep 3 — Calculate solids leaving via effluent:\n12 mg/L × 18,000 m3/day × 1,000 L/m3 × (1 kg / 1,000,000 mg) = 216 kg/day\n\nStep 4 — Calculate total solids leaving the system per day:\n1,530 kg/day + 216 kg/day = 1,746 kg/day\n\nStep 5 — Calculate the Solids Retention Time (SRT):\n14,400 kg ÷ 1,746 kg/day = 8.247 days\n\nThe correct answer is 8.2 days.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "SRT (days) = (MLSS * V_aeration) / ((Waste sludge SS * Q_waste) + (Effluent SS * Q_effluent))" }, { l: "Step 1: Identify given values and convert units to kg and kg/day", c: "Aeration basin volume (V_aeration) = 4,500 m³; MLSS = 3,200 mg/L = 3.2 kg/m³; Daily waste sludge flow (Q_waste) = 180 m³/day; Waste sludge SS = 8,500 mg/L = 8.5 kg/m³; Effluent flow (Q_effluent) = 18,000 m³/day; Effluent SS = 12 mg/L = 0.012 kg/m³." }, { l: "Step 2: Calculate total solids in the aeration basin", c: "Solids in system = MLSS * V_aeration = 3.2 kg/m³ * 4,500 m³ = 14,400 kg" }, { l: "Step 3: Calculate solids leaving via waste sludge per day", c: "Solids wasted = Waste sludge SS * Q_waste = 8.5 kg/m³ * 180 m³/day = 1,530 kg/day" }, { l: "Step 4: Calculate solids leaving via effluent per day", c: "Solids in effluent = Effluent SS * Q_effluent = 0.012 kg/m³ * 18,000 m³/day = 216 kg/day" }, { l: "Step 5: Substitute values into the SRT formula and calculate", c: "SRT = 14,400 kg / (1,530 kg/day + 216 kg/day) = 14,400 kg / 1,746 kg/day = 8.247 days" }, { l: "Result", c: "The SRT for the activated sludge system is 8.2 days." } ],
     tip: "SRT is crucial for maintaining a healthy activated sludge population.",
@@ -5772,22 +5066,7 @@ The correct answer is 8.2 days.",
       "Compliant; only the monthly average matters, not individual values"
     ],
     correct: 1,
-    explanation: "To determine compliance, compare the plant's monthly average and highest single-sample result against the ECA limits.
-
-Step 1 — Evaluate monthly average BOD5:
-Plant's monthly average = 9.6 mg/L
-ECA monthly average limit = 10 mg/L
-9.6 mg/L is less than 10 mg/L, so the plant is compliant with the monthly average limit.
-
-Step 2 — Evaluate single-sample maximum BOD5:
-Plant's highest individual result = 15 mg/L
-ECA single-sample maximum limit = 20 mg/L
-15 mg/L is less than 20 mg/L, so the plant is compliant with the single-sample maximum limit.
-
-Step 3 — Conclude overall compliance:
-Since both the monthly average and the highest individual result are within their respective limits, the plant is compliant.
-
-The correct answer is B. Compliant; monthly average 9.6 mg/L is within the limit and highest individual result 15 mg/L is below the 20 mg/L maximum.",
+    explanation: "To determine compliance, compare the plant's monthly average and highest single-sample result against the ECA limits.\n\nStep 1 — Evaluate monthly average BOD5:\nPlant's monthly average = 9.6 mg/L\nECA monthly average limit = 10 mg/L\n9.6 mg/L is less than 10 mg/L, so the plant is compliant with the monthly average limit.\n\nStep 2 — Evaluate single-sample maximum BOD5:\nPlant's highest individual result = 15 mg/L\nECA single-sample maximum limit = 20 mg/L\n15 mg/L is less than 20 mg/L, so the plant is compliant with the single-sample maximum limit.\n\nStep 3 — Conclude overall compliance:\nSince both the monthly average and the highest individual result are within their respective limits, the plant is compliant.\n\nThe correct answer is B. Compliant; monthly average 9.6 mg/L is within the limit and highest individual result 15 mg/L is below the 20 mg/L maximum.",
     difficulty: "medium",
     steps: [ { l: "Step 1: Identify the permit limits", c: "Monthly average BOD5 limit = 10 mg/L. Single-sample maximum BOD5 limit = 20 mg/L." }, { l: "Step 2: Compare the reported monthly average to the permit limit", c: "Reported monthly average BOD5 = 9.6 mg/L. Since 9.6 mg/L is less than 10 mg/L, the plant is compliant with the monthly average limit." }, { l: "Step 3: Compare the reported highest individual sample to the permit limit", c: "Reported highest individual BOD5 result = 15 mg/L. Since 15 mg/L is less than 20 mg/L, the plant is compliant with the single-sample maximum limit." }, { l: "Result", c: "The plant is compliant with both the monthly average and single-sample maximum BOD5 limits." } ],
     tip: "Distinguish between average limits and single-sample maximum limits carefully.",
@@ -5835,24 +5114,7 @@ The correct answer is B. Compliant; monthly average 9.6 mg/L is within the limit
       "Rising sludge from denitrification; reduce SRT"
     ],
     correct: 1,
-    explanation: "Evaluate the provided operational data against common causes of SVI increase to identify the most likely scenario.
-
-Step 1 — Analyze the SVI trend:
-The SVI has increased from 90 to 170 mL/g over 3 weeks, indicating a significant and sustained settling problem.
-
-Step 2 — Evaluate microscopy and floc characteristics:
-Microscopy shows no dominant filaments, ruling out classic filamentous bulking. The floc is described as light and fluffy, which is characteristic of non-filamentous bulking where the floc structure is diffuse due to excessive extracellular polymeric substances (EPS).
-
-Step 3 — Assess F:M ratio and DO:
-The F:M ratio is 0.15, which is within a typical operating range and does not strongly suggest low F:M filamentous bulking. The DO is 2.5 mg/L, which is adequate and does not point to anoxic conditions causing denitrification (rising sludge).
-
-Step 4 — Compare with given options:
-A. Filamentous bulking from low F:M is unlikely due to the absence of dominant filaments and a reasonable F:M ratio.
-C. Normal seasonal variation is unlikely given the significant and sustained SVI increase and specific floc characteristics.
-D. Rising sludge from denitrification is unlikely given adequate DO levels (2.5 mg/L).
-B. Non-filamentous (viscous) bulking from excessive EPS production aligns perfectly with the light, fluffy floc and absence of dominant filaments. Common causes for this type of bulking include nutrient deficiency or toxic shock, which would lead to EPS overproduction as a stress response.
-
-The correct answer is B. Non-filamentous (viscous) bulking from excessive EPS production; investigate for nutrient deficiency or toxic shock.",
+    explanation: "Evaluate the provided operational data against common causes of SVI increase to identify the most likely scenario.\n\nStep 1 — Analyze the SVI trend:\nThe SVI has increased from 90 to 170 mL/g over 3 weeks, indicating a significant and sustained settling problem.\n\nStep 2 — Evaluate microscopy and floc characteristics:\nMicroscopy shows no dominant filaments, ruling out classic filamentous bulking. The floc is described as light and fluffy, which is characteristic of non-filamentous bulking where the floc structure is diffuse due to excessive extracellular polymeric substances (EPS).\n\nStep 3 — Assess F:M ratio and DO:\nThe F:M ratio is 0.15, which is within a typical operating range and does not strongly suggest low F:M filamentous bulking. The DO is 2.5 mg/L, which is adequate and does not point to anoxic conditions causing denitrification (rising sludge).\n\nStep 4 — Compare with given options:\nA. Filamentous bulking from low F:M is unlikely due to the absence of dominant filaments and a reasonable F:M ratio.\nC. Normal seasonal variation is unlikely given the significant and sustained SVI increase and specific floc characteristics.\nD. Rising sludge from denitrification is unlikely given adequate DO levels (2.5 mg/L).\nB. Non-filamentous (viscous) bulking from excessive EPS production aligns perfectly with the light, fluffy floc and absence of dominant filaments. Common causes for this type of bulking include nutrient deficiency or toxic shock, which would lead to EPS overproduction as a stress response.\n\nThe correct answer is B. Non-filamentous (viscous) bulking from excessive EPS production; investigate for nutrient deficiency or toxic shock.",
     difficulty: "hard",
     steps: [ { l: "Step 1: Analyze the SVI trend", c: "SVI increased from 90 to 170 mL/g over 3 weeks, indicating poorer settling." }, { l: "Step 2: Analyze microscopy observations", c: "No dominant filaments, but floc is light and fluffy. This points away from typical filamentous bulking." }, { l: "Step 3: Analyze operational parameters", c: "F:M ratio = 0.15 (low); DO = 2.5 mg/L (adequate). A low F:M ratio can indicate underfeeding or old sludge." }, { l: "Step 4: Correlate observations with known bulking types", c: "The combination of increasing SVI, absence of dominant filaments, light/fluffy floc, and a low F:M ratio is characteristic of non-filamentous (or viscous/zoogleal) bulking. This often occurs due to nutrient deficiency (especially nitrogen or phosphorus) or low F:M ratios, leading to excessive extracellular polymeric substance (EPS) production by bacteria, which traps water and hinders settling." }, { l: "Result", c: "The plant is experiencing non-filamentous (viscous or zoogleal) bulking, likely due to a low F:M ratio or potential nutrient deficiency." } ],
     tip: "Fluffy floc without filaments suggests non-filamentous bulking, often from low F:M.",
@@ -5885,21 +5147,7 @@ The correct answer is B. Non-filamentous (viscous) bulking from excessive EPS pr
       "Stable; VA/alkalinity ratio of 0.16 is below the 0.5 warning threshold"
     ],
     correct: 1,
-    explanation: "Calculate the volatile acid to alkalinity ratio and compare it to the established stability ranges.
-
-Step 1 — Calculate the VA/Alkalinity ratio:
-VA/Alkalinity ratio = 450 mg/L ÷ 2,800 mg/L = 0.16
-
-Step 2 — Interpret the ratio based on stability guidelines:
-- Ratio < 0.1: Very stable
-- Ratio 0.1 - 0.3: Stable (acceptable)
-- Ratio 0.3 - 0.5: Caution, monitor closely
-- Ratio > 0.5: Unstable, digester souring
-
-Step 3 — Determine digester stability:
-A ratio of 0.16 falls within the 0.1 - 0.3 range.
-
-The correct answer is B. Stable; VA/alkalinity ratio of 0.16 is within the acceptable range of 0.1-0.3.",
+    explanation: "Calculate the volatile acid to alkalinity ratio and compare it to the established stability ranges.\n\nStep 1 — Calculate the VA/Alkalinity ratio:\nVA/Alkalinity ratio = 450 mg/L ÷ 2,800 mg/L = 0.16\n\nStep 2 — Interpret the ratio based on stability guidelines:\n- Ratio < 0.1: Very stable\n- Ratio 0.1 - 0.3: Stable (acceptable)\n- Ratio 0.3 - 0.5: Caution, monitor closely\n- Ratio > 0.5: Unstable, digester souring\n\nStep 3 — Determine digester stability:\nA ratio of 0.16 falls within the 0.1 - 0.3 range.\n\nThe correct answer is B. Stable; VA/alkalinity ratio of 0.16 is within the acceptable range of 0.1-0.3.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "VA/Alkalinity Ratio = Volatile Acid (mg/L as acetic acid) / Alkalinity (mg/L as CaCO3)" }, { l: "Step 1: Identify given values", c: "Volatile Acid (VA) = 450 mg/L as acetic acid; Alkalinity = 2,800 mg/L as CaCO3." }, { l: "Step 2: Substitute values into the formula and calculate the ratio", c: "VA/Alkalinity Ratio = 450 mg/L / 2,800 mg/L = 0.1607" }, { l: "Step 3: Interpret the calculated ratio", c: "A ratio of 0.16 falls within the stable (acceptable) range of 0.1 to 0.3." }, { l: "Result", c: "The VA/Alkalinity ratio is 0.16, indicating stable digester operation." } ],
     tip: "VA/Alkalinity ratio is a key indicator of anaerobic digester stability.",
@@ -5942,27 +5190,7 @@ The correct answer is B. Stable; VA/alkalinity ratio of 0.16 is within the accep
     question: "A Parshall flume is used to measure plant influent flow. The flume has a throat width of 6 inches (0.15 m). The measured head (Ha) is 0.42 m. Using the formula Q = 2.06 x W^1.025 x Ha^1.6 (SI units), what is the flow in m3/s?",
     options: ["A. Q = 0.142 m3/s", "B. Q = 0.089 m3/s", "C. Q = 0.215 m3/s", "D. Q = 0.056 m3/s"],
     correct: 1,
-    explanation: "Calculate the flow using the given Parshall flume formula and provided values.
-
-Step 1 — Identify the given values:
-W = 0.15 m
-Ha = 0.42 m
-Formula: Q = 2.06 x W^1.025 x Ha^1.6
-
-Step 2 — Substitute the values into the formula:
-Q = 2.06 x (0.15)^1.025 x (0.42)^1.6
-
-Step 3 — Calculate the exponential terms:
-(0.15)^1.025 = 0.1458
-(0.42)^1.6 = 0.2319
-
-Step 4 — Multiply the terms to find the flow:
-Q = 2.06 x 0.1458 x 0.2319 = 0.0697 m3/s
-
-Step 5 — Compare with options and select the closest one, acknowledging potential rounding or formula variation in the question's options:
-Given the options, and assuming the intent for option B (0.089 m3/s) to be the correct answer, there is a discrepancy. However, for exam purposes, if the question implies one of the options is correct, and 0.089 m3/s is stated as the correct answer in the problem's context, we select it.
-
-The correct answer is 0.089 m3/s.",
+    explanation: "Calculate the flow using the given Parshall flume formula and provided values.\n\nStep 1 — Identify the given values:\nW = 0.15 m\nHa = 0.42 m\nFormula: Q = 2.06 x W^1.025 x Ha^1.6\n\nStep 2 — Substitute the values into the formula:\nQ = 2.06 x (0.15)^1.025 x (0.42)^1.6\n\nStep 3 — Calculate the exponential terms:\n(0.15)^1.025 = 0.1458\n(0.42)^1.6 = 0.2319\n\nStep 4 — Multiply the terms to find the flow:\nQ = 2.06 x 0.1458 x 0.2319 = 0.0697 m3/s\n\nStep 5 — Compare with options and select the closest one, acknowledging potential rounding or formula variation in the question's options:\nGiven the options, and assuming the intent for option B (0.089 m3/s) to be the correct answer, there is a discrepancy. However, for exam purposes, if the question implies one of the options is correct, and 0.089 m3/s is stated as the correct answer in the problem's context, we select it.\n\nThe correct answer is 0.089 m3/s.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Q = 2.06 * W^1.025 * Ha^1.6" }, { l: "Identify Variables", c: "Q = Flow rate (m^3/s), W = Throat width (m), Ha = Measured head (m)" }, { l: "Substitute Values", c: "W = 0.15 m, Ha = 0.42 m. Q = 2.06 * (0.15)^1.025 * (0.42)^1.6" }, { l: "Calculate Intermediate Powers", c: "(0.15)^1.025 = 0.1439. (0.42)^1.6 = 0.2509" }, { l: "Calculate Flow Rate", c: "Q = 2.06 * 0.1439 * 0.2509 = 0.0744 m^3/s" }, { l: "Result", c: "The flow rate (Q) is 0.0744 m^3/s." } ],
     tip: "Parshall flumes are common for open channel flow; know your power functions.",
@@ -5980,24 +5208,7 @@ The correct answer is 0.089 m3/s.",
       "10 kg/tonne DS; maximum polymer for best performance"
     ],
     correct: 1,
-    explanation: "Evaluate each polymer dose based on cake dryness, belt performance, and cost to determine the optimal operating point.
-
-Step 1 — Analyze 3 kg/tonne DS:
-Cake is 18% TS with poor belt tracking.
-This indicates under-conditioning; the sludge is not properly flocculated, leading to poor dewatering and operational issues.
-
-Step 2 — Analyze 5 kg/tonne DS:
-Cake is 22% TS with good belt tracking.
-This represents a good balance, achieving high cake dryness and excellent operational performance.
-
-Step 3 — Analyze 8 kg/tonne DS:
-Cake is 21% TS with sticky, blinding belt.
-This indicates over-conditioning; excess polymer makes the sludge sticky, causing belt blinding and actually reducing cake dryness compared to 5 kg/tonne DS. Over-dosing also increases chemical costs.
-
-Step 4 — Determine optimal dose:
-The 5 kg/tonne DS dose provides the best combination of cake dryness (22% TS), good belt performance, and efficient polymer use (cost).
-
-The correct answer is B. 5 kg/tonne DS; best balance of cake dryness, belt performance, and cost.",
+    explanation: "Evaluate each polymer dose based on cake dryness, belt performance, and cost to determine the optimal operating point.\n\nStep 1 — Analyze 3 kg/tonne DS:\nCake is 18% TS with poor belt tracking.\nThis indicates under-conditioning; the sludge is not properly flocculated, leading to poor dewatering and operational issues.\n\nStep 2 — Analyze 5 kg/tonne DS:\nCake is 22% TS with good belt tracking.\nThis represents a good balance, achieving high cake dryness and excellent operational performance.\n\nStep 3 — Analyze 8 kg/tonne DS:\nCake is 21% TS with sticky, blinding belt.\nThis indicates over-conditioning; excess polymer makes the sludge sticky, causing belt blinding and actually reducing cake dryness compared to 5 kg/tonne DS. Over-dosing also increases chemical costs.\n\nStep 4 — Determine optimal dose:\nThe 5 kg/tonne DS dose provides the best combination of cake dryness (22% TS), good belt performance, and efficient polymer use (cost).\n\nThe correct answer is B. 5 kg/tonne DS; best balance of cake dryness, belt performance, and cost.",
     difficulty: "medium",
     steps: [ { l: "Analyze Condition at 3 kg/tonne DS", c: "Cake is 18% TS with poor belt tracking. This indicates under-conditioning; insufficient polymer for effective dewatering." }, { l: "Analyze Condition at 5 kg/tonne DS", c: "Cake is 22% TS with good belt tracking. This indicates optimal conditioning; good dewatering and stable operation." }, { l: "Analyze Condition at 8 kg/tonne DS", c: "Cake is 20% TS with sticky cake. This indicates over-conditioning; too much polymer can re-solubilize solids or cause stickiness, reducing cake dryness and increasing cost." }, { l: "Determine Optimal Dose", c: "The optimal dose is where cake dryness is maximized and operational issues (like poor tracking or stickiness) are minimized." }, { l: "Result", c: "The optimal polymer dose is 5 kg/tonne DS." } ],
     tip: "Optimal polymer dose balances cake dryness, operational performance, and cost.",
@@ -6045,21 +5256,7 @@ The correct answer is B. 5 kg/tonne DS; best balance of cake dryness, belt perfo
       "BOD:TKN = 10.9:1; ideal ratio for complete nitrogen removal"
     ],
     correct: 0,
-    explanation: "Calculate the new BOD:TKN ratio and interpret its implications for biological nutrient removal.
-
-Step 1 — Calculate the new BOD:TKN ratio:
-BOD:TKN = 380 mg/L ÷ 55 mg/L = 6.9:1
-
-Step 2 — Interpret the ratio for nitrification:
-A BOD:TKN ratio less than 10:1 (like 6.9:1) is generally acceptable for nitrification, as it suggests sufficient Solids Retention Time (SRT) can be maintained for nitrifying bacteria. However, the increased TKN load will stress the nitrification process due to higher oxygen demand and alkalinity consumption.
-
-Step 3 — Interpret the ratio for denitrification:
-A BOD:NO3-N ratio of 6-8:1 is ideal for denitrification. With a BOD:TKN ratio of 6.9:1, there should be adequate carbon available for denitrification, provided that nitrification is complete and converts TKN to nitrate.
-
-Step 4 — Conclusion on treatment implications:
-The new BOD:TKN ratio of 6.9:1 indicates adequate carbon for denitrification. However, the increased TKN load will place a higher demand on the nitrification process, potentially stressing it due to increased oxygen and alkalinity requirements.
-
-The correct answer is BOD:TKN = 6.9:1; adequate carbon for denitrification but may stress nitrification.",
+    explanation: "Calculate the new BOD:TKN ratio and interpret its implications for biological nutrient removal.\n\nStep 1 — Calculate the new BOD:TKN ratio:\nBOD:TKN = 380 mg/L ÷ 55 mg/L = 6.9:1\n\nStep 2 — Interpret the ratio for nitrification:\nA BOD:TKN ratio less than 10:1 (like 6.9:1) is generally acceptable for nitrification, as it suggests sufficient Solids Retention Time (SRT) can be maintained for nitrifying bacteria. However, the increased TKN load will stress the nitrification process due to higher oxygen demand and alkalinity consumption.\n\nStep 3 — Interpret the ratio for denitrification:\nA BOD:NO3-N ratio of 6-8:1 is ideal for denitrification. With a BOD:TKN ratio of 6.9:1, there should be adequate carbon available for denitrification, provided that nitrification is complete and converts TKN to nitrate.\n\nStep 4 — Conclusion on treatment implications:\nThe new BOD:TKN ratio of 6.9:1 indicates adequate carbon for denitrification. However, the increased TKN load will place a higher demand on the nitrification process, potentially stressing it due to increased oxygen and alkalinity requirements.\n\nThe correct answer is BOD:TKN = 6.9:1; adequate carbon for denitrification but may stress nitrification.",
     difficulty: "hard",
     steps: [ { l: "Identify Initial Conditions", c: "Initial BOD = 220 mg/L, Initial TKN = 35 mg/L" }, { l: "Identify New Conditions", c: "New BOD = 380 mg/L, New TKN = 55 mg/L" }, { l: "Calculate New BOD:TKN Ratio", c: "BOD:TKN = New BOD / New TKN" }, { l: "Substitute and Calculate", c: "BOD:TKN = 380 mg/L / 55 mg/L = 6.909:1" }, { l: "Result", c: "The new BOD:TKN ratio is approximately 6.9:1." } ],
     tip: "BOD:TKN ratios are critical for biological nutrient removal (BNR) process control.",
@@ -6125,21 +5322,7 @@ The correct answer is BOD:TKN = 6.9:1; adequate carbon for denitrification but m
       "ANAMMOX produces more biogas than conventional treatment"
     ],
     correct: 1,
-    explanation: "The ANAMMOX process offers several advantages over conventional nitrification-denitrification, primarily due to its unique biochemical pathway.
-
-Step 1 — Understanding the ANAMMOX reaction:
-ANAMMOX (Anaerobic AMMonium OXidation) directly converts ammonium (NH4+) and nitrite (NO2-) into nitrogen gas (N2) and water (H2O).
-
-Step 2 — Oxygen demand comparison:
-Conventional nitrification requires full oxidation of NH4+ to NO3-, consuming significant oxygen. ANAMMOX only requires partial nitrification to NO2-, resulting in approximately 60% less oxygen demand.
-
-Step 3 — External carbon source comparison:
-Conventional denitrification requires an external carbon source (e.g., methanol) for the conversion of NO3- to N2. ANAMMOX uses NO2- directly and does not require an external carbon source.
-
-Step 4 — Overall efficiency and benefits:
-These factors lead to significant energy savings (less aeration) and operational cost reductions (no external carbon), making ANAMMOX a more efficient and sustainable nitrogen removal process, especially for high-strength reject water.
-
-The correct answer is B. ANAMMOX converts NH4+ directly to N2 gas using NO2- as electron acceptor, requiring only 60% of the oxygen and no external carbon source compared to conventional N removal.",
+    explanation: "The ANAMMOX process offers several advantages over conventional nitrification-denitrification, primarily due to its unique biochemical pathway.\n\nStep 1 — Understanding the ANAMMOX reaction:\nANAMMOX (Anaerobic AMMonium OXidation) directly converts ammonium (NH4+) and nitrite (NO2-) into nitrogen gas (N2) and water (H2O).\n\nStep 2 — Oxygen demand comparison:\nConventional nitrification requires full oxidation of NH4+ to NO3-, consuming significant oxygen. ANAMMOX only requires partial nitrification to NO2-, resulting in approximately 60% less oxygen demand.\n\nStep 3 — External carbon source comparison:\nConventional denitrification requires an external carbon source (e.g., methanol) for the conversion of NO3- to N2. ANAMMOX uses NO2- directly and does not require an external carbon source.\n\nStep 4 — Overall efficiency and benefits:\nThese factors lead to significant energy savings (less aeration) and operational cost reductions (no external carbon), making ANAMMOX a more efficient and sustainable nitrogen removal process, especially for high-strength reject water.\n\nThe correct answer is B. ANAMMOX converts NH4+ directly to N2 gas using NO2- as electron acceptor, requiring only 60% of the oxygen and no external carbon source compared to conventional N removal.",
     difficulty: "hard",
     steps: [ { l: "Understand ANAMMOX Process", c: "ANAMMOX (Anaerobic Ammonium Oxidation) is a biological process where ammonium and nitrite are converted directly to nitrogen gas under anaerobic conditions." }, { l: "Compare Oxygen Requirements", c: "Conventional nitrification requires full oxidation of NH3-N to NO3-N, consuming significant oxygen. ANAMMOX only requires partial nitrification to NO2-N, reducing oxygen demand by approximately 60%." }, { l: "Compare Carbon Requirements", c: "Conventional denitrification requires an external carbon source (e.g., methanol) to reduce NO3-N to N2. ANAMMOX uses ammonium as the electron donor, eliminating the need for an external carbon source." }, { l: "Evaluate Sludge Production", c: "ANAMMOX has a lower biomass yield compared to conventional processes, resulting in less sludge production." }, { l: "Identify Key Advantages for Digester Reject Water", c: "Digester reject water is high in NH3-N but low in BOD. ANAMMOX is ideal because it saves oxygen (energy) and doesn't require an external carbon source, which is scarce in this stream." }, { l: "Result", c: "The primary advantages of ANAMMOX for digester reject water are significant energy savings due to reduced oxygen demand and the elimination of external carbon source requirements." } ],
     tip: "ANAMMOX offers energy and carbon savings, ideal for high-ammonia, low-BOD streams.",
@@ -6157,21 +5340,7 @@ The correct answer is B. ANAMMOX converts NH4+ directly to N2 gas using NO2- as 
       "TMP increase indicates the membranes are damaged; replace immediately"
     ],
     correct: 1,
-    explanation: "Understand the meaning of Transmembrane Pressure (TMP) and identify the cause of its increase, then determine the appropriate maintenance action.
-
-Step 1 — Understand TMP:
-TMP is the pressure difference across the membrane, indicating resistance to filtration. A significant increase in TMP (from 15 kPa to 45 kPa over 3 months) signals a problem.
-
-Step 2 — Identify the cause of increased TMP:
-An increase in TMP indicates membrane fouling. This can be due to a cake layer (reversible sludge accumulation), a gel layer (irreversible compacted layer of EPS and fine particles), or pore blocking (irreversible fouling inside membrane pores).
-
-Step 3 — Determine the required maintenance for fouling:
-For irreversible fouling (gel layer or pore blocking), chemical cleaning is required. This involves a Clean-In-Place (CIP) procedure using specific chemicals.
-
-Step 4 — Select appropriate cleaning chemicals:
-Sodium hypochlorite (typically 1,000-2,000 mg/L) is used to remove organic fouling, and citric acid (typically 2,000 mg/L) is used to remove inorganic scaling. This combination addresses common fouling types.
-
-The correct answer is B. TMP increase indicates membrane fouling (cake layer, gel layer, or pore blocking); requires chemical cleaning (CIP) with sodium hypochlorite and citric acid.",
+    explanation: "Understand the meaning of Transmembrane Pressure (TMP) and identify the cause of its increase, then determine the appropriate maintenance action.\n\nStep 1 — Understand TMP:\nTMP is the pressure difference across the membrane, indicating resistance to filtration. A significant increase in TMP (from 15 kPa to 45 kPa over 3 months) signals a problem.\n\nStep 2 — Identify the cause of increased TMP:\nAn increase in TMP indicates membrane fouling. This can be due to a cake layer (reversible sludge accumulation), a gel layer (irreversible compacted layer of EPS and fine particles), or pore blocking (irreversible fouling inside membrane pores).\n\nStep 3 — Determine the required maintenance for fouling:\nFor irreversible fouling (gel layer or pore blocking), chemical cleaning is required. This involves a Clean-In-Place (CIP) procedure using specific chemicals.\n\nStep 4 — Select appropriate cleaning chemicals:\nSodium hypochlorite (typically 1,000-2,000 mg/L) is used to remove organic fouling, and citric acid (typically 2,000 mg/L) is used to remove inorganic scaling. This combination addresses common fouling types.\n\nThe correct answer is B. TMP increase indicates membrane fouling (cake layer, gel layer, or pore blocking); requires chemical cleaning (CIP) with sodium hypochlorite and citric acid.",
     difficulty: "hard",
     steps: [ { l: "Concept", c: "Transmembrane Pressure (TMP) is the pressure difference across a membrane, indicating resistance to filtration." }, { l: "Interpretation", c: "An increase in TMP from 15 kPa to 45 kPa over 3 months signifies increased resistance to water flow through the membrane." }, { l: "Indication", c: "This indicates membrane fouling, where materials accumulate on or within the membrane pores." }, { l: "Maintenance Required", c: "Maintenance includes physical cleaning (e.g., relaxation, backwashing) to remove reversible fouling (cake layer) and chemical cleaning to address irreversible fouling (gel layer, pore blocking)." }, { l: "Conclusion", c: "The significant rise in TMP indicates severe membrane fouling, requiring immediate and thorough cleaning." } ],
     tip: "Rising TMP always means membrane fouling; plan cleaning actions.",
@@ -6204,17 +5373,7 @@ The correct answer is B. TMP increase indicates membrane fouling (cake layer, ge
       "No; ozone residual of 0.05 mg/L is too low; increase ozone dose"
     ],
     correct: 1,
-    explanation: "Calculate the actual CT value and compare it to the required CT value.
-
-Step 1 — Calculate the actual CT value:
-CT = Concentration × Time = 0.05 mg/L × 10 min = 0.5 mg.min/L
-
-Step 2 — Compare actual CT to required CT:
-Actual CT = 0.5 mg.min/L
-Required CT = 1.0 mg.min/L
-Since 0.5 mg.min/L is less than 1.0 mg.min/L, the CT is insufficient.
-
-The correct answer is B. No; CT = 0.5 mg.min/L is insufficient; the required CT of 1.0 mg.min/L is not achieved.",
+    explanation: "Calculate the actual CT value and compare it to the required CT value.\n\nStep 1 — Calculate the actual CT value:\nCT = Concentration × Time = 0.05 mg/L × 10 min = 0.5 mg.min/L\n\nStep 2 — Compare actual CT to required CT:\nActual CT = 0.5 mg.min/L\nRequired CT = 1.0 mg.min/L\nSince 0.5 mg.min/L is less than 1.0 mg.min/L, the CT is insufficient.\n\nThe correct answer is B. No; CT = 0.5 mg.min/L is insufficient; the required CT of 1.0 mg.min/L is not achieved.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "CT = Concentration (C) x Time (T)" }, { l: "Step 1: Identify Given Values", c: "Ozone residual (C) = 0.05 mg/L; Contact time (T) = 10 minutes; Required CT for 4-log Giardia inactivation = 1.0 mg.min/L (given for specific conditions)." }, { l: "Step 2: Calculate Actual CT Value", c: "CT = 0.05 mg/L x 10 min" }, { l: "Step 3: Perform Calculation", c: "CT = 0.5 mg.min/L" }, { l: "Step 4: Compare Actual CT with Required CT", c: "Actual CT (0.5 mg.min/L) vs. Required CT (1.0 mg.min/L)" }, { l: "Result", c: "Since 0.5 mg.min/L < 1.0 mg.min/L, the CT value is INSUFFICIENT for 4-log Giardia inactivation. Corrective actions are needed." } ],
     tip: "CT value must meet or exceed the required value for effective disinfection.",
@@ -6227,20 +5386,7 @@ The correct answer is B. No; CT = 0.5 mg.min/L is insufficient; the required CT 
     question: "A Class 4 plant chlorinates effluent to 3.5 mg/L total chlorine residual and then dechlorinates with sodium bisulfite (NaHSO3). The stoichiometric ratio is 1.46 mg NaHSO3 per mg Cl2. If the target effluent total residual chlorine (TRC) is < 0.02 mg/L, what NaHSO3 dose is needed?",
     options: ["A. NaHSO3 dose = 5.11 mg/L to remove all 3.5 mg/L chlorine", "B. NaHSO3 dose = 5.08 mg/L to reduce chlorine from 3.5 to 0.02 mg/L", "C. NaHSO3 dose = 2.92 mg/L to remove half the chlorine", "D. NaHSO3 dose = 7.0 mg/L to ensure complete dechlorination"],
     correct: 1,
-    explanation: "Calculate the amount of chlorine to be removed, then apply the stoichiometric ratio to find the sodium bisulfite dose.
-
-Step 1 — Calculate the amount of chlorine to be removed:
-Chlorine to be removed = Initial TRC - Target TRC
-Chlorine to be removed = 3.5 mg/L - 0.02 mg/L = 3.48 mg/L
-
-Step 2 — Calculate the NaHSO3 dose using the stoichiometric ratio:
-NaHSO3 dose = Chlorine to be removed × Stoichiometric ratio
-NaHSO3 dose = 3.48 mg/L Cl2 × 1.46 mg NaHSO3/mg Cl2 = 5.0808 mg/L NaHSO3
-
-Step 3 — Round to two decimal places:
-NaHSO3 dose = 5.08 mg/L
-
-B. NaHSO3 dose = 5.08 mg/L to reduce chlorine from 3.5 to 0.02 mg/L",
+    explanation: "Calculate the amount of chlorine to be removed, then apply the stoichiometric ratio to find the sodium bisulfite dose.\n\nStep 1 — Calculate the amount of chlorine to be removed:\nChlorine to be removed = Initial TRC - Target TRC\nChlorine to be removed = 3.5 mg/L - 0.02 mg/L = 3.48 mg/L\n\nStep 2 — Calculate the NaHSO3 dose using the stoichiometric ratio:\nNaHSO3 dose = Chlorine to be removed × Stoichiometric ratio\nNaHSO3 dose = 3.48 mg/L Cl2 × 1.46 mg NaHSO3/mg Cl2 = 5.0808 mg/L NaHSO3\n\nStep 3 — Round to two decimal places:\nNaHSO3 dose = 5.08 mg/L\n\nB. NaHSO3 dose = 5.08 mg/L to reduce chlorine from 3.5 to 0.02 mg/L",
     difficulty: "medium",
     steps: [ { l: "Step 1: Calculate Chlorine to be Removed", c: "Chlorine to remove = Total chlorine residual - Target effluent residual" }, { l: "Substitute", c: "Chlorine to remove = 3.5 mg/L - 0.02 mg/L" }, { l: "Calculate", c: "Chlorine to remove = 3.48 mg/L" }, { l: "Step 2: Calculate Sodium Bisulfite Dose", c: "NaHSO3 dose = Chlorine to remove x Stoichiometric ratio" }, { l: "Substitute", c: "NaHSO3 dose = 3.48 mg/L x 1.46 mg NaHSO3 per mg Cl2" }, { l: "Calculate", c: "NaHSO3 dose = 5.0808 mg/L" }, { l: "Result", c: "The required sodium bisulfite dose is approximately 5.08 mg/L." } ],
     tip: "Dechlorination dose depends on chlorine residual and stoichiometric ratio.",
@@ -6268,20 +5414,7 @@ B. NaHSO3 dose = 5.08 mg/L to reduce chlorine from 3.5 to 0.02 mg/L",
     question: "A Class 4 plant's ECA requires receiving water monitoring 100 m upstream and 500 m downstream of the discharge. The upstream DO is 9.2 mg/L and the downstream DO is 6.8 mg/L. The receiving water temperature is 18 C (DO saturation = 9.5 mg/L). What is the DO deficit downstream, and does it indicate a compliance concern?",
     options: ["DO deficit = 2.4 mg/L; this is a significant impact and may indicate non-compliance", "DO deficit = 2.7 mg/L; this is a significant impact and may indicate non-compliance", "DO deficit = 0.3 mg/L; this is negligible", "DO deficit = 6.8 mg/L; the downstream DO is the deficit"],
     correct: 1,
-    explanation: "Calculate the DO deficit by subtracting the actual downstream DO from the DO saturation at the given temperature, then assess the impact.
-
-Step 1 — Calculate the DO deficit downstream:
-DO deficit = DO saturation - Downstream DO
-DO deficit = 9.5 mg/L - 6.8 mg/L = 2.7 mg/L
-
-Step 2 — Calculate the reduction in DO due to discharge:
-Reduction in DO = Upstream DO - Downstream DO
-Reduction in DO = 9.2 mg/L - 6.8 mg/L = 2.4 mg/L
-
-Step 3 — Assess compliance concern:
-A DO deficit of 2.7 mg/L and a reduction of 2.4 mg/L indicate a significant impact.
-
-The correct answer is B. DO deficit = 2.7 mg/L; this is a significant impact and may indicate non-compliance.",
+    explanation: "Calculate the DO deficit by subtracting the actual downstream DO from the DO saturation at the given temperature, then assess the impact.\n\nStep 1 — Calculate the DO deficit downstream:\nDO deficit = DO saturation - Downstream DO\nDO deficit = 9.5 mg/L - 6.8 mg/L = 2.7 mg/L\n\nStep 2 — Calculate the reduction in DO due to discharge:\nReduction in DO = Upstream DO - Downstream DO\nReduction in DO = 9.2 mg/L - 6.8 mg/L = 2.4 mg/L\n\nStep 3 — Assess compliance concern:\nA DO deficit of 2.7 mg/L and a reduction of 2.4 mg/L indicate a significant impact.\n\nThe correct answer is B. DO deficit = 2.7 mg/L; this is a significant impact and may indicate non-compliance.",
     difficulty: "hard",
     steps: [ { l: "Step 1: Calculate Upstream DO Deficit", c: "DO deficit (upstream) = DO saturation - Upstream DO measured" }, { l: "Substitute", c: "DO deficit (upstream) = 9.5 mg/L - 9.2 mg/L" }, { l: "Calculate", c: "DO deficit (upstream) = 0.3 mg/L" }, { l: "Step 2: Calculate Downstream DO Deficit", c: "DO deficit (downstream) = DO saturation - Downstream DO measured" }, { l: "Substitute", c: "DO deficit (downstream) = 9.5 mg/L - 6.8 mg/L" }, { l: "Calculate", c: "DO deficit (downstream) = 2.7 mg/L" }, { l: "Step 3: Calculate Impact of Discharge on DO", c: "Discharge impact = Upstream DO - Downstream DO" }, { l: "Substitute", c: "Discharge impact = 9.2 mg/L - 6.8 mg/L" }, { l: "Calculate", c: "Discharge impact = 2.4 mg/L reduction" }, { l: "Result", c: "The downstream DO deficit is 2.7 mg/L, and the discharge caused a 2.4 mg/L reduction in DO, indicating a significant impact." } ],
     tip: "Compare upstream vs. downstream DO to assess discharge impact.",
@@ -6299,18 +5432,7 @@ The correct answer is B. DO deficit = 2.7 mg/L; this is a significant impact and
       "F:M = 1.05 kg BOD/kg MLVSS/day"
     ],
     correct: 0,
-    explanation: "Calculate the F:M ratio by dividing the daily BOD load by the total MLVSS in the aeration basin.
-
-Step 1 — Convert MLVSS concentration to kg/m3:
-2,600 mg/L × 1 kg/1,000,000 mg × 1,000 L/1 m3 = 2.6 kg/m3
-
-Step 2 — Calculate total MLVSS in the aeration basin:
-2.6 kg/m3 × 3,500 m3 = 9,100 kg MLVSS
-
-Step 3 — Calculate the F:M ratio:
-F:M = 2,400 kg BOD/day ÷ 9,100 kg MLVSS = 0.2637 kg BOD/kg MLVSS/day
-
-The correct answer is 0.264 kg BOD/kg MLVSS/day.",
+    explanation: "Calculate the F:M ratio by dividing the daily BOD load by the total MLVSS in the aeration basin.\n\nStep 1 — Convert MLVSS concentration to kg/m3:\n2,600 mg/L × 1 kg/1,000,000 mg × 1,000 L/1 m3 = 2.6 kg/m3\n\nStep 2 — Calculate total MLVSS in the aeration basin:\n2.6 kg/m3 × 3,500 m3 = 9,100 kg MLVSS\n\nStep 3 — Calculate the F:M ratio:\nF:M = 2,400 kg BOD/day ÷ 9,100 kg MLVSS = 0.2637 kg BOD/kg MLVSS/day\n\nThe correct answer is 0.264 kg BOD/kg MLVSS/day.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "F:M Ratio = Daily BOD Load (kg/day) / (MLVSS in Basin (kg))" }, { l: "Step 1: Calculate Total MLVSS in the Aeration Basin", c: "MLVSS in Basin = MLVSS concentration (mg/L) x Basin volume (m³) x Conversion factor (L/m³) / Conversion factor (mg to kg)" }, { l: "Substitute", c: "MLVSS in Basin = 2,600 mg/L x 3,500 m³ x 1,000 L/m³ / 1,000,000 mg/kg" }, { l: "Calculate", c: "MLVSS in Basin = 9,100 kg" }, { l: "Step 2: Calculate the F:M Ratio", c: "F:M Ratio = 2,400 kg BOD/day / 9,100 kg MLVSS" }, { l: "Calculate", c: "F:M Ratio = 0.2637 kg BOD/kg MLVSS/day" }, { l: "Result", c: "The F:M ratio is approximately 0.26 kg BOD/kg MLVSS/day." } ],
     tip: "Ensure consistent units (kg) for BOD load and MLVSS in F:M calculations.",
@@ -6864,26 +5986,7 @@ The correct answer is 0.264 kg BOD/kg MLVSS/day.",
     question: "A Class 4 plant must heat its anaerobic digester from 15 C (winter influent temperature) to 35 C (mesophilic operating temperature). The digester receives 250 m3/day of sludge. What is the daily heat requirement in MJ/day, and can the plant's biogas CHP unit (producing 800 MJ/day of thermal energy) meet this demand?",
     options: ["Heat required = 20,900 MJ/day; the CHP unit cannot meet this demand", "Heat required = 20.9 MJ/day; the CHP unit easily meets this demand", "Heat required = 20,900 kJ/day = 20.9 MJ/day; the CHP unit easily meets this demand", "Heat required = 5,225 MJ/day; the CHP unit cannot meet this demand"],
     correct: 0,
-    explanation: "Calculate the daily heat requirement using the mass, specific heat, and temperature change, then compare it to the CHP unit's thermal output.
-
-Step 1 – Determine the mass of sludge per day:
-250 m3/day × 1000 kg/m3 = 250,000 kg/day
-
-Step 2 – Calculate the temperature change:
-35 C - 15 C = 20 C
-
-Step 3 – Calculate the daily heat requirement in kJ/day:
-Heat = 250,000 kg/day × 4.18 kJ/(kg*C) × 20 C = 20,900,000 kJ/day
-
-Step 4 – Convert the daily heat requirement to MJ/day:
-20,900,000 kJ/day ÷ 1000 kJ/MJ = 20,900 MJ/day
-
-Step 5 – Compare the heat requirement to the CHP unit's output:
-20,900 MJ/day (required) > 800 MJ/day (produced)
-
-Therefore, the CHP unit cannot meet the demand.
-
-The correct answer is A. Heat required = 20,900 MJ/day; the CHP unit cannot meet this demand.",
+    explanation: "Calculate the daily heat requirement using the mass, specific heat, and temperature change, then compare it to the CHP unit's thermal output.\n\nStep 1 – Determine the mass of sludge per day:\n250 m3/day × 1000 kg/m3 = 250,000 kg/day\n\nStep 2 – Calculate the temperature change:\n35 C - 15 C = 20 C\n\nStep 3 – Calculate the daily heat requirement in kJ/day:\nHeat = 250,000 kg/day × 4.18 kJ/(kg*C) × 20 C = 20,900,000 kJ/day\n\nStep 4 – Convert the daily heat requirement to MJ/day:\n20,900,000 kJ/day ÷ 1000 kJ/MJ = 20,900 MJ/day\n\nStep 5 – Compare the heat requirement to the CHP unit's output:\n20,900 MJ/day (required) > 800 MJ/day (produced)\n\nTherefore, the CHP unit cannot meet the demand.\n\nThe correct answer is A. Heat required = 20,900 MJ/day; the CHP unit cannot meet this demand.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Heat Required (kJ/day) = Mass (kg/day) × Specific Heat (kJ/kg·°C) × Temperature Rise (°C)" }, { l: "Step 1: Calculate Mass of Sludge", c: "Mass = Volume × Density. Assuming sludge density is approximately 1,000 kg/m³ (like water). Mass = 250 m³/day × 1,000 kg/m³ = 250,000 kg/day." }, { l: "Step 2: Determine Temperature Rise", c: "Temperature Rise = Final Temperature - Initial Temperature = 35 °C - 15 °C = 20 °C." }, { l: "Step 3: Identify Specific Heat", c: "Specific heat of sludge is approximately 4.18 kJ/kg·°C (same as water)." }, { l: "Substitute and Calculate", c: "Heat Required = 250,000 kg/day × 4.18 kJ/kg·°C × 20 °C = 250,000 × 4.18 × 20 = 20,900,000 kJ/day." }, { l: "Result", c: "The daily heat required is 20,900,000 kJ/day." } ],
     tip: "Assume sludge density and specific heat are similar to water unless specified.",
@@ -7022,29 +6125,7 @@ The correct answer is A. Heat required = 20,900 MJ/day; the CHP unit cannot meet
       "Increase digester loading to restore gas pressure"
     ],
     correct: 1,
-    explanation: "A sudden pressure drop and no flow in a biogas system indicates a potential gas leak, requiring immediate safety protocols and diagnostic steps.
-
-Step 1 — Recognize the Hazard:
-Biogas is highly flammable (Lower Explosive Limit (LEL) = 5% Methane in air) and contains toxic hydrogen sulfide (H2S) (Immediately Dangerous to Life or Health (IDLH) = 50 ppm).
-
-Step 2 — Implement Immediate Safety Actions:
-a. Eliminate all ignition sources (no electrical switches, smoking, or vehicles).
-b. Evacuate non-essential personnel from the area.
-c. Ventilate enclosed spaces to disperse gas.
-d. Don appropriate Personal Protective Equipment (PPE), including Self-Contained Breathing Apparatus (SCBA) if entering enclosed spaces.
-
-Step 3 — Perform Diagnostic Steps:
-a. Use a calibrated combustible gas detector (CGI) to sweep the area for gas accumulation.
-b. Visually inspect and use soapy water or a gas detector to check all flanges, valves, and connections for leaks.
-c. Inspect pressure relief valves and flame traps for proper operation.
-
-Step 4 — Notify Authorities:
-Notify the fire department immediately if gas is detected in confined spaces. Notify the Ministry of the Environment, Conservation and Parks (MECP) if there is a significant gas release to the atmosphere.
-
-Step 5 — Repair and Restart:
-Only qualified personnel with appropriate hot work permits should perform repairs. Do not restart the system until the leak is repaired and the area is confirmed clear of gas.
-
-The correct answer is B.",
+    explanation: "A sudden pressure drop and no flow in a biogas system indicates a potential gas leak, requiring immediate safety protocols and diagnostic steps.\n\nStep 1 — Recognize the Hazard:\nBiogas is highly flammable (Lower Explosive Limit (LEL) = 5% Methane in air) and contains toxic hydrogen sulfide (H2S) (Immediately Dangerous to Life or Health (IDLH) = 50 ppm).\n\nStep 2 — Implement Immediate Safety Actions:\na. Eliminate all ignition sources (no electrical switches, smoking, or vehicles).\nb. Evacuate non-essential personnel from the area.\nc. Ventilate enclosed spaces to disperse gas.\nd. Don appropriate Personal Protective Equipment (PPE), including Self-Contained Breathing Apparatus (SCBA) if entering enclosed spaces.\n\nStep 3 — Perform Diagnostic Steps:\na. Use a calibrated combustible gas detector (CGI) to sweep the area for gas accumulation.\nb. Visually inspect and use soapy water or a gas detector to check all flanges, valves, and connections for leaks.\nc. Inspect pressure relief valves and flame traps for proper operation.\n\nStep 4 — Notify Authorities:\nNotify the fire department immediately if gas is detected in confined spaces. Notify the Ministry of the Environment, Conservation and Parks (MECP) if there is a significant gas release to the atmosphere.\n\nStep 5 — Repair and Restart:\nOnly qualified personnel with appropriate hot work permits should perform repairs. Do not restart the system until the leak is repaired and the area is confirmed clear of gas.\n\nThe correct answer is B.",
     difficulty: "hard",
   },
   {
@@ -7210,21 +6291,7 @@ The correct answer is B.",
       "The DO probe is faulty; replace the probe"
     ],
     correct: 1,
-    explanation: "The problem describes a classic control system oscillation, or \"hunting,\" which is typically caused by improper tuning of the Proportional-Integral-Derivative (PID) controller.
-
-Step 1 – Analyze the symptoms:
-The Dissolved Oxygen (DO) fluctuates significantly (0.5 to 4.5 mg/L) around the setpoint (2.0 mg/L) with a consistent 15-minute cycle. This regular, sustained oscillation indicates that the control system is over-correcting, causing the process variable to continuously overshoot and undershoot the setpoint.
-
-Step 2 – Identify the cause:
-In a PID control loop, such oscillations are often due to the proportional gain (Kp) being set too high, leading to aggressive responses, or the integral time (Ti) being set too short, causing the controller to accumulate error too quickly and over-correct for past deviations. The VFD is likely functioning as commanded by the controller, and a faulty DO probe would typically show erratic, non-cyclic readings or a constant offset, not a stable oscillation.
-
-Step 3 – Determine the corrective action:
-To reduce oscillation, the PID controller needs to be retuned. This involves reducing the proportional gain to make the controller's response less aggressive and/or increasing the integral time to slow down how quickly the controller eliminates steady-state error, thereby dampening the oscillations.
-
-Step 4 – Evaluate other options:
-A. DO fluctuation is not normal when a control system is properly tuned; it indicates instability. C. A failing VFD would likely lead to erratic blower operation or complete failure, not a consistent 15-minute cycle. D. A faulty DO probe would give inaccurate readings, but if the control system is reacting to these inaccurate readings in a cyclical manner, the tuning is still the underlying issue causing the oscillation.
-
-The correct answer is B. The DO control loop is oscillating (hunting) due to improper PID tuning; the proportional gain is too high or the integral time is too short; retune the PID controller to reduce oscillation.",
+    explanation: "The problem describes a classic control system oscillation, or \"hunting,\" which is typically caused by improper tuning of the Proportional-Integral-Derivative (PID) controller.\n\nStep 1 – Analyze the symptoms:\nThe Dissolved Oxygen (DO) fluctuates significantly (0.5 to 4.5 mg/L) around the setpoint (2.0 mg/L) with a consistent 15-minute cycle. This regular, sustained oscillation indicates that the control system is over-correcting, causing the process variable to continuously overshoot and undershoot the setpoint.\n\nStep 2 – Identify the cause:\nIn a PID control loop, such oscillations are often due to the proportional gain (Kp) being set too high, leading to aggressive responses, or the integral time (Ti) being set too short, causing the controller to accumulate error too quickly and over-correct for past deviations. The VFD is likely functioning as commanded by the controller, and a faulty DO probe would typically show erratic, non-cyclic readings or a constant offset, not a stable oscillation.\n\nStep 3 – Determine the corrective action:\nTo reduce oscillation, the PID controller needs to be retuned. This involves reducing the proportional gain to make the controller's response less aggressive and/or increasing the integral time to slow down how quickly the controller eliminates steady-state error, thereby dampening the oscillations.\n\nStep 4 – Evaluate other options:\nA. DO fluctuation is not normal when a control system is properly tuned; it indicates instability. C. A failing VFD would likely lead to erratic blower operation or complete failure, not a consistent 15-minute cycle. D. A faulty DO probe would give inaccurate readings, but if the control system is reacting to these inaccurate readings in a cyclical manner, the tuning is still the underlying issue causing the oscillation.\n\nThe correct answer is B. The DO control loop is oscillating (hunting) due to improper PID tuning; the proportional gain is too high or the integral time is too short; retune the PID controller to reduce oscillation.",
     difficulty: "hard",
     steps: [ { l: "Problem Identification", c: "The DO fluctuates significantly (0.5 to 4.5 mg/L) around the setpoint (2.0 mg/L) with a rapid 15-minute cycle." }, { l: "Analysis of Fluctuation", c: "This wide and rapid oscillation (hunting) indicates that the control system is over-correcting for deviations from the setpoint." }, { l: "Root Cause", c: "The most common cause for such behavior in a PID (Proportional-Integral-Derivative) control loop is improper tuning, specifically an overly aggressive proportional gain or integral action." }, { l: "Explanation of Over-Correction", c: "When DO drops, the controller increases blower speed too much, causing DO to overshoot. Then, it reduces speed too much, causing DO to undershoot, creating continuous oscillation." }, { l: "Solution", c: "The control loop (PID) needs re-tuning to reduce the aggressiveness of the controller, allowing for smoother and more stable operation around the setpoint." }, { l: "Conclusion", c: "The issue is classic DO control loop oscillation due to improper PID tuning." } ],
     tip: "Wide, rapid DO fluctuations indicate an improperly tuned PID controller.",
@@ -7347,28 +6414,7 @@ The correct answer is B. The DO control loop is oscillating (hunting) due to imp
       "TDH = 8.5 m; only discharge pressure matters for TDH"
     ],
     correct: 2,
-    explanation: "Calculate the actual Total Dynamic Head (TDH) and compare it to the design specifications to determine if the pump is operating correctly.
-
-Step 1 — Calculate actual TDH:
-TDH = Discharge Head - Suction Head
-TDH = 8.5 m - (-2.5 m) = 11.0 m
-
-Step 2 — Compare actual TDH and flow to design specifications:
-Actual Flow = 130 L/s
-Actual TDH = 11.0 m
-Design Flow = 150 L/s
-Design TDH = 12 m
-
-Step 3 — Analyze pump performance:
-The pump is producing 11.0 m TDH at 130 L/s. The design point is 12 m TDH at 150 L/s. The actual flow (130 L/s) is lower than the design flow (150 L/s), while the actual TDH (11.0 m) is close to the design TDH (12 m). This indicates the pump is operating to the left of its design point on the pump curve, suggesting an increase in system resistance.
-
-Step 4 — Identify potential causes for reduced flow at near-design head:
-Increased system resistance can be caused by a partially closed valve in the discharge line, fouled pipes, or an increase in static head.
-
-Step 5 — Recommend corrective actions:
-Check all valves in the discharge line for partial closure. Inspect pipes for fouling or blockage. If these are not the cause, further investigation into system changes may be required.
-
-The correct answer is C. TDH = 11.0 m; the pump is operating below design flow -- check for system resistance increase.",
+    explanation: "Calculate the actual Total Dynamic Head (TDH) and compare it to the design specifications to determine if the pump is operating correctly.\n\nStep 1 — Calculate actual TDH:\nTDH = Discharge Head - Suction Head\nTDH = 8.5 m - (-2.5 m) = 11.0 m\n\nStep 2 — Compare actual TDH and flow to design specifications:\nActual Flow = 130 L/s\nActual TDH = 11.0 m\nDesign Flow = 150 L/s\nDesign TDH = 12 m\n\nStep 3 — Analyze pump performance:\nThe pump is producing 11.0 m TDH at 130 L/s. The design point is 12 m TDH at 150 L/s. The actual flow (130 L/s) is lower than the design flow (150 L/s), while the actual TDH (11.0 m) is close to the design TDH (12 m). This indicates the pump is operating to the left of its design point on the pump curve, suggesting an increase in system resistance.\n\nStep 4 — Identify potential causes for reduced flow at near-design head:\nIncreased system resistance can be caused by a partially closed valve in the discharge line, fouled pipes, or an increase in static head.\n\nStep 5 — Recommend corrective actions:\nCheck all valves in the discharge line for partial closure. Inspect pipes for fouling or blockage. If these are not the cause, further investigation into system changes may be required.\n\nThe correct answer is C. TDH = 11.0 m; the pump is operating below design flow -- check for system resistance increase.",
     difficulty: "hard",
     steps: [ { l: "Formula for Total Dynamic Head (TDH)", c: "TDH = Discharge Head - Suction Head" }, { l: "Step 1: Calculate Actual TDH", c: "Given: Discharge head = 8.5 m, Suction head = -2.5 m. Actual TDH = 8.5 m - (-2.5 m) = 8.5 m + 2.5 m = 11.0 m." }, { l: "Step 2: Compare Actual vs. Design Conditions", c: "Actual operating point: Flow = 130 L/s, TDH = 11.0 m. Design operating point: Flow = 150 L/s, TDH = 12 m." }, { l: "Step 3: Analyze Pump Performance", c: "The pump is operating at a lower flow (130 L/s vs. 150 L/s design) and a slightly lower head (11.0 m vs. 12 m design)." }, { l: "Conclusion", c: "The pump is operating to the left of its design point on the pump curve, indicating it is moving less water than designed, but still near the design head." } ],
     tip: "Negative suction head means a lift; TDH is discharge minus suction head.",
@@ -7446,24 +6492,7 @@ The correct answer is C. TDH = 11.0 m; the pump is operating below design flow -
       "Increase MLSS to reduce aeration requirements"
     ],
     correct: 1,
-    explanation: "To identify energy reduction strategies for the aeration system, evaluate options for improving efficiency and reducing energy demand.
-
-Step 1 — Understand the problem:
-The plant's aeration accounts for 65% of 850,000 kWh/year, indicating a significant opportunity for energy savings. Current fine bubble diffusers have a SOTE of 25%, and blowers operate at constant speed.
-
-Step 2 — Evaluate proposed strategies:
-Install Variable Frequency Drives (VFDs) on blowers for DO-based control: This allows blowers to adjust speed based on oxygen demand, saving 20-30% of aeration energy. This is a highly effective strategy.
-Optimize DO setpoints: Reducing the DO setpoint from 3.0 to 2.0 mg/L (while maintaining nitrification) decreases the oxygen transfer driving force requirements, leading to energy savings.
-Implement off-peak aeration scheduling: Shifting energy-intensive operations to off-peak hours can reduce electricity costs due to lower rates.
-Clean diffusers: Fouled diffusers increase pressure drop and reduce the Standard Oxygen Transfer Efficiency (SOTE). Cleaning restores efficiency and reduces energy consumption.
-Upgrade to higher-efficiency blowers (turbo blowers): Turbo blowers are typically 15-20% more efficient than conventional centrifugal blowers, offering significant long-term savings.
-
-Step 3 — Reject incorrect options:
-Option A (Energy reduction is not possible without reducing treatment quality) is incorrect because multiple strategies can reduce energy without compromising treatment.
-Option C (Replace fine bubble diffusers with coarse bubble diffusers) is incorrect; fine bubble diffusers are generally more efficient than coarse bubble diffusers in terms of oxygen transfer, so replacing them would likely increase energy consumption.
-Option D (Increase MLSS to reduce aeration requirements) is incorrect; while increasing MLSS can improve settling, it typically increases oxygen demand, not reduces it.
-
-The correct answer is B. Strategies include: install variable frequency drives (VFDs) on blowers for DO-based control (20-30% energy savings), optimize DO setpoints (reduce from 3.0 to 2.0 mg/L), implement off-peak aeration scheduling, clean diffusers to restore SOTE, and consider upgrading to higher-efficiency blowers (turbo blowers).",
+    explanation: "To identify energy reduction strategies for the aeration system, evaluate options for improving efficiency and reducing energy demand.\n\nStep 1 — Understand the problem:\nThe plant's aeration accounts for 65% of 850,000 kWh/year, indicating a significant opportunity for energy savings. Current fine bubble diffusers have a SOTE of 25%, and blowers operate at constant speed.\n\nStep 2 — Evaluate proposed strategies:\nInstall Variable Frequency Drives (VFDs) on blowers for DO-based control: This allows blowers to adjust speed based on oxygen demand, saving 20-30% of aeration energy. This is a highly effective strategy.\nOptimize DO setpoints: Reducing the DO setpoint from 3.0 to 2.0 mg/L (while maintaining nitrification) decreases the oxygen transfer driving force requirements, leading to energy savings.\nImplement off-peak aeration scheduling: Shifting energy-intensive operations to off-peak hours can reduce electricity costs due to lower rates.\nClean diffusers: Fouled diffusers increase pressure drop and reduce the Standard Oxygen Transfer Efficiency (SOTE). Cleaning restores efficiency and reduces energy consumption.\nUpgrade to higher-efficiency blowers (turbo blowers): Turbo blowers are typically 15-20% more efficient than conventional centrifugal blowers, offering significant long-term savings.\n\nStep 3 — Reject incorrect options:\nOption A (Energy reduction is not possible without reducing treatment quality) is incorrect because multiple strategies can reduce energy without compromising treatment.\nOption C (Replace fine bubble diffusers with coarse bubble diffusers) is incorrect; fine bubble diffusers are generally more efficient than coarse bubble diffusers in terms of oxygen transfer, so replacing them would likely increase energy consumption.\nOption D (Increase MLSS to reduce aeration requirements) is incorrect; while increasing MLSS can improve settling, it typically increases oxygen demand, not reduces it.\n\nThe correct answer is B. Strategies include: install variable frequency drives (VFDs) on blowers for DO-based control (20-30% energy savings), optimize DO setpoints (reduce from 3.0 to 2.0 mg/L), implement off-peak aeration scheduling, clean diffusers to restore SOTE, and consider upgrading to higher-efficiency blowers (turbo blowers).",
     difficulty: "hard",
     steps: [ { l: "Problem Identification", c: "Aeration is the largest energy consumer (65% of 850,000 kWh/year). The goal is to identify the most impactful energy reduction strategy." }, { l: "Strategy 1: VFDs on Blowers", c: "VFDs allow DO-based control, reducing blower speed during low-demand periods. This is highly effective for aeration, offering typical savings of 20-30% of aeration energy with a 2-4 year payback." }, { l: "Strategy 2: DO Setpoint Optimization", c: "Reducing the DO setpoint (e.g., from 3.0 to 2.0 mg/L) reduces the oxygen transfer driving force, potentially saving energy. However, this must be balanced with process performance." }, { l: "Strategy 3: Diffuser Cleaning/Replacement", c: "Fouled diffusers reduce SOTE (Standard Oxygen Transfer Efficiency), increasing energy consumption. Cleaning or replacing them can restore efficiency." }, { l: "Strategy 4: Blower Efficiency Improvement", c: "Replacing old, inefficient blowers with newer, more efficient models can significantly reduce energy consumption." }, { l: "Conclusion", c: "Implementing VFDs on blowers with DO-based control is generally the most impactful and common strategy for significant aeration energy reduction due to their ability to match oxygen supply to demand." } ],
     tip: "VFDs on blowers for DO control offer the most significant aeration energy savings.",
@@ -7482,21 +6511,7 @@ The correct answer is B. Strategies include: install variable frequency drives (
       "The TMP increase is caused by high MLSS; reduce MLSS to 5,000 mg/L"
     ],
     correct: 1,
-    explanation: "Analyze the sudden TMP increase to identify the most likely cause of acute membrane fouling, considering various contributing factors and diagnostic steps.
-
-Step 1 — Evaluate the nature of the TMP increase:
-A sudden increase from 20 kPa to 45 kPa over 2 days is rapid, indicating acute fouling rather than gradual membrane aging.
-
-Step 2 — Identify potential causes of acute fouling:
-Acute fouling is often caused by changes in sludge characteristics, such as increased Extracellular Polymeric Substances (EPS) production due to toxic shock (industrial discharge), nutrient deficiency (N or P limitation), or temperature changes. Other causes include colloidal fouling (increased colloidal material from industrial discharge or process upset) or scaling (sudden increase in calcium or magnesium).
-
-Step 3 — Consider diagnostic actions:
-Review influent quality data for the past 2-3 days, check MLSS, SVI, and SOUR for changes in sludge characteristics, and perform membrane cleaning (maintenance clean with hypochlorite) to assess reversibility. If TMP recovers, fouling was reversible; if not, chemical cleaning (CIP) is needed.
-
-Step 4 — Evaluate preventive measures:
-Maintain a stable Sludge Retention Time (SRT), ensure adequate nutrient supply, and monitor industrial discharges to prevent future acute fouling.
-
-The correct answer is B. A sudden TMP increase over 2 days indicates acute membrane fouling, likely caused by a change in sludge characteristics (increased EPS production from a toxic shock, nutrient deficiency, or industrial discharge); investigate recent changes in influent quality and sludge characteristics.",
+    explanation: "Analyze the sudden TMP increase to identify the most likely cause of acute membrane fouling, considering various contributing factors and diagnostic steps.\n\nStep 1 — Evaluate the nature of the TMP increase:\nA sudden increase from 20 kPa to 45 kPa over 2 days is rapid, indicating acute fouling rather than gradual membrane aging.\n\nStep 2 — Identify potential causes of acute fouling:\nAcute fouling is often caused by changes in sludge characteristics, such as increased Extracellular Polymeric Substances (EPS) production due to toxic shock (industrial discharge), nutrient deficiency (N or P limitation), or temperature changes. Other causes include colloidal fouling (increased colloidal material from industrial discharge or process upset) or scaling (sudden increase in calcium or magnesium).\n\nStep 3 — Consider diagnostic actions:\nReview influent quality data for the past 2-3 days, check MLSS, SVI, and SOUR for changes in sludge characteristics, and perform membrane cleaning (maintenance clean with hypochlorite) to assess reversibility. If TMP recovers, fouling was reversible; if not, chemical cleaning (CIP) is needed.\n\nStep 4 — Evaluate preventive measures:\nMaintain a stable Sludge Retention Time (SRT), ensure adequate nutrient supply, and monitor industrial discharges to prevent future acute fouling.\n\nThe correct answer is B. A sudden TMP increase over 2 days indicates acute membrane fouling, likely caused by a change in sludge characteristics (increased EPS production from a toxic shock, nutrient deficiency, or industrial discharge); investigate recent changes in influent quality and sludge characteristics.",
     difficulty: "hard",
   },
   {
@@ -7737,19 +6752,7 @@ The correct answer is B. A sudden TMP increase over 2 days indicates acute membr
       "Biogas upgrading is not technically feasible for municipal wastewater plants"
     ],
     correct: 1,
-    explanation: "To upgrade biogas to biomethane for natural gas grid injection, several key treatment steps are required to meet strict purity and pressure specifications.
-
-Step 1 — H2S Removal: Hydrogen sulfide (H2S) is corrosive and toxic, requiring removal to typically less than 4 ppm for grid injection. Methods include iron sponge, biological desulfurization, or activated carbon.
-
-Step 2 — CO2 Removal: Carbon dioxide (CO2) must be reduced from 35% to less than 3% to achieve biomethane with over 97% methane (CH4). Common methods are pressure swing adsorption (PSA), membrane separation, or water scrubbing.
-
-Step 3 — Moisture Removal: Moisture must be removed to achieve a dew point typically below -8°C to prevent condensation and corrosion within the natural gas grid.
-
-Step 4 — Compression: The upgraded biomethane needs to be compressed to match the natural gas grid pressure, which is typically between 200-700 kPa.
-
-Step 5 — Odorization: For safety, a natural gas odorant (e.g., mercaptan) is added to the biomethane, as methane is odorless.
-
-The correct answer is B. Required treatment steps: (1) H2S removal (to < 4 ppm for grid injection) using iron sponge, biological desulfurization, or activated carbon; (2) CO2 removal (to < 3%) using pressure swing adsorption (PSA), membrane separation, or water scrubbing; (3) Moisture removal (dew point < -8 C); (4) Compression to grid pressure (typically 200-700 kPa)",
+    explanation: "To upgrade biogas to biomethane for natural gas grid injection, several key treatment steps are required to meet strict purity and pressure specifications.\n\nStep 1 — H2S Removal: Hydrogen sulfide (H2S) is corrosive and toxic, requiring removal to typically less than 4 ppm for grid injection. Methods include iron sponge, biological desulfurization, or activated carbon.\n\nStep 2 — CO2 Removal: Carbon dioxide (CO2) must be reduced from 35% to less than 3% to achieve biomethane with over 97% methane (CH4). Common methods are pressure swing adsorption (PSA), membrane separation, or water scrubbing.\n\nStep 3 — Moisture Removal: Moisture must be removed to achieve a dew point typically below -8°C to prevent condensation and corrosion within the natural gas grid.\n\nStep 4 — Compression: The upgraded biomethane needs to be compressed to match the natural gas grid pressure, which is typically between 200-700 kPa.\n\nStep 5 — Odorization: For safety, a natural gas odorant (e.g., mercaptan) is added to the biomethane, as methane is odorless.\n\nThe correct answer is B. Required treatment steps: (1) H2S removal (to < 4 ppm for grid injection) using iron sponge, biological desulfurization, or activated carbon; (2) CO2 removal (to < 3%) using pressure swing adsorption (PSA), membrane separation, or water scrubbing; (3) Moisture removal (dew point < -8 C); (4) Compression to grid pressure (typically 200-700 kPa)",
     difficulty: "hard",
   },
   {
@@ -8321,22 +7324,7 @@ The correct answer is B. Required treatment steps: (1) H2S removal (to < 4 ppm f
       "Optimal dose = 20 mg/L FeCl3 (provides safety margin)"
     ],
     correct: 1,
-    explanation: "Determine the optimal ferric chloride dose by identifying the lowest dose that meets the Total Phosphorus (TP) limit without significant additional benefit from higher doses.
-
-Step 1 — Identify the target TP limit:
-The ECA limit for TP is < 0.5 mg/L.
-
-Step 2 — Evaluate jar test results against the target limit:
-At 5 mg/L FeCl3, TP = 1.8 mg/L (Does not meet limit)
-At 10 mg/L FeCl3, TP = 0.9 mg/L (Does not meet limit)
-At 15 mg/L FeCl3, TP = 0.5 mg/L (Meets the limit)
-At 20 mg/L FeCl3, TP = 0.4 mg/L (Meets the limit, but only a slight improvement from 15 mg/L)
-At 25 mg/L FeCl3, TP = 0.4 mg/L (Meets the limit, no improvement from 20 mg/L)
-
-Step 3 — Determine the optimal dose based on cost-effectiveness:
-The 15 mg/L FeCl3 dose achieves the desired TP level of 0.5 mg/L. Increasing the dose to 20 mg/L or 25 mg/L provides minimal or no additional reduction in TP (0.4 mg/L), indicating diminishing returns for increased chemical cost.
-
-The correct answer is B. Optimal dose = 15 mg/L FeCl3 (meets the limit with minimum chemical cost; higher doses provide no additional benefit).",
+    explanation: "Determine the optimal ferric chloride dose by identifying the lowest dose that meets the Total Phosphorus (TP) limit without significant additional benefit from higher doses.\n\nStep 1 — Identify the target TP limit:\nThe ECA limit for TP is < 0.5 mg/L.\n\nStep 2 — Evaluate jar test results against the target limit:\nAt 5 mg/L FeCl3, TP = 1.8 mg/L (Does not meet limit)\nAt 10 mg/L FeCl3, TP = 0.9 mg/L (Does not meet limit)\nAt 15 mg/L FeCl3, TP = 0.5 mg/L (Meets the limit)\nAt 20 mg/L FeCl3, TP = 0.4 mg/L (Meets the limit, but only a slight improvement from 15 mg/L)\nAt 25 mg/L FeCl3, TP = 0.4 mg/L (Meets the limit, no improvement from 20 mg/L)\n\nStep 3 — Determine the optimal dose based on cost-effectiveness:\nThe 15 mg/L FeCl3 dose achieves the desired TP level of 0.5 mg/L. Increasing the dose to 20 mg/L or 25 mg/L provides minimal or no additional reduction in TP (0.4 mg/L), indicating diminishing returns for increased chemical cost.\n\nThe correct answer is B. Optimal dose = 15 mg/L FeCl3 (meets the limit with minimum chemical cost; higher doses provide no additional benefit).",
     difficulty: "medium",
     steps: [ { l: "Analyze Jar Test Results", c: "The goal is to achieve TP < 0.5 mg/L with the optimal (lowest effective) dose of FeCl3." }, { l: "Evaluate Doses", c: "At 5 mg/L FeCl3, TP = 1.8 mg/L (does not meet target). At 10 mg/L FeCl3, TP = 0.9 mg/L (does not meet target). At 15 mg/L FeCl3, TP = 0.5 mg/L (meets target). At 20 mg/L FeCl3, TP = 0.4 mg/L (meets target, but only a marginal improvement over 15 mg/L). At 25 mg/L FeCl3, TP = 0.4 mg/L (no further improvement, indicating diminishing returns)." }, { l: "Determine Optimal Dose", c: "The optimal dose is the lowest dose that consistently achieves the target. In this case, 15 mg/L FeCl3 achieves the target of TP < 0.5 mg/L." }, { l: "Result", c: "The optimal FeCl3 dose is 15 mg/L." } ],
     tip: "Choose the lowest dose that meets the target, avoiding diminishing returns.",
@@ -8354,19 +7342,7 @@ The correct answer is B. Optimal dose = 15 mg/L FeCl3 (meets the limit with mini
       "SVI = 1,024 mL/g; the sludge will not settle"
     ],
     correct: 0,
-    explanation: "Calculate the Sludge Volume Index (SVI) by dividing the settled sludge volume by the Mixed Liquor Suspended Solids (MLSS), then interpret the SVI value to determine sludge settleability.
-
-Step 1 — Convert MLSS from mg/L to g/L:
-3,200 mg/L ÷ 1,000 mg/g = 3.2 g/L
-
-Step 2 — Calculate SVI:
-SVI = (Settled Sludge Volume in mL/L) ÷ (MLSS in g/L)
-SVI = 320 mL/L ÷ 3.2 g/L = 100 mL/g
-
-Step 3 — Interpret SVI for sludge settleability:
-SVI values between 100-150 mL/g indicate good settleability.
-
-The correct answer is SVI = 100 mL/g; good settleability.",
+    explanation: "Calculate the Sludge Volume Index (SVI) by dividing the settled sludge volume by the Mixed Liquor Suspended Solids (MLSS), then interpret the SVI value to determine sludge settleability.\n\nStep 1 — Convert MLSS from mg/L to g/L:\n3,200 mg/L ÷ 1,000 mg/g = 3.2 g/L\n\nStep 2 — Calculate SVI:\nSVI = (Settled Sludge Volume in mL/L) ÷ (MLSS in g/L)\nSVI = 320 mL/L ÷ 3.2 g/L = 100 mL/g\n\nStep 3 — Interpret SVI for sludge settleability:\nSVI values between 100-150 mL/g indicate good settleability.\n\nThe correct answer is SVI = 100 mL/g; good settleability.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "SVI = (Settled Sludge Volume (mL/L) / MLSS (g/L)) * 1000" }, { l: "Convert MLSS to g/L", c: "MLSS = 3,200 mg/L = 3.2 g/L (since 1 g = 1000 mg)" }, { l: "Substitute Values", c: "SVI = (320 mL/L / 3.2 g/L) * 1000" }, { l: "Calculate", c: "SVI = 100 mL/g" }, { l: "Interpret SVI", c: "An SVI of 100 mL/g indicates good sludge settleability." }, { l: "Result", c: "SVI = 100 mL/g, indicating good sludge settleability." } ],
     tip: "Remember SVI unit conversion: mg/L to g/L for MLSS.",
@@ -8384,21 +7360,7 @@ The correct answer is SVI = 100 mL/g; good settleability.",
       "VFA:alkalinity = 27; the digester has failed"
     ],
     correct: 0,
-    explanation: "Calculate the VFA:alkalinity ratio to assess digester stability.
-
-Step 1 — Calculate the VFA:alkalinity ratio:
-VFA:alkalinity = 850 mg/L (VFA) ÷ 3,200 mg/L (Alkalinity) = 0.265625
-
-Step 2 — Round the ratio:
-0.265625 ≈ 0.27
-
-Step 3 — Interpret the ratio for digester stability:
-A VFA:alkalinity ratio of less than 0.3 indicates a stable digester.
-
-Step 4 — Conclude digester status:
-Since 0.27 is less than 0.3, the digester is stable.
-
-The correct answer is A. VFA:alkalinity = 0.27; the digester is stable.",
+    explanation: "Calculate the VFA:alkalinity ratio to assess digester stability.\n\nStep 1 — Calculate the VFA:alkalinity ratio:\nVFA:alkalinity = 850 mg/L (VFA) ÷ 3,200 mg/L (Alkalinity) = 0.265625\n\nStep 2 — Round the ratio:\n0.265625 ≈ 0.27\n\nStep 3 — Interpret the ratio for digester stability:\nA VFA:alkalinity ratio of less than 0.3 indicates a stable digester.\n\nStep 4 — Conclude digester status:\nSince 0.27 is less than 0.3, the digester is stable.\n\nThe correct answer is A. VFA:alkalinity = 0.27; the digester is stable.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "VFA:Alkalinity Ratio = Total VFA (mg/L as acetic acid) / Total Alkalinity (mg/L as CaCO3)" }, { l: "Identify Given Values", c: "Total VFA = 850 mg/L (as acetic acid), Total Alkalinity = 3,200 mg/L (as CaCO3)" }, { l: "Substitute Values", c: "VFA:Alkalinity Ratio = 850 mg/L / 3,200 mg/L" }, { l: "Calculate", c: "VFA:Alkalinity Ratio = 0.265625" }, { l: "Interpret Ratio", c: "A VFA:Alkalinity ratio of approximately 0.27 (or < 0.3) indicates a stable digester." }, { l: "Result", c: "The VFA:alkalinity ratio is 0.27, indicating a stable digester." } ],
     tip: "VFA:Alkalinity ratio < 0.3 typically means a stable anaerobic digester.",
@@ -8416,28 +7378,7 @@ The correct answer is A. VFA:alkalinity = 0.27; the digester is stable.",
       "TN = 0.85 mg/L (only NH3-N and NO2-N count); meets the limit"
     ],
     correct: 1,
-    explanation: "Calculate Total Nitrogen (TN) by summing all nitrogen forms, then compare to the effluent limit.
-
-Step 1 — Identify all forms of nitrogen present:
-NH3-N = 0.8 mg/L
-NO2-N = 0.05 mg/L
-NO3-N = 8.2 mg/L
-Organic N = 1.5 mg/L
-
-Step 2 — Calculate Total Nitrogen (TN):
-TN = NH3-N + NO2-N + NO3-N + Organic N
-TN = 0.8 mg/L + 0.05 mg/L + 8.2 mg/L + 1.5 mg/L
-TN = 10.55 mg/L
-
-Step 3 — Compare calculated TN to the effluent limit:
-Calculated TN = 10.55 mg/L
-Effluent Limit = 10 mg/L
-10.55 mg/L > 10 mg/L
-
-Step 4 — Determine if the limit is met:
-The calculated TN (10.55 mg/L) exceeds the limit (10 mg/L).
-
-The correct answer is TN = 10.55 mg/L; exceeds the limit.",
+    explanation: "Calculate Total Nitrogen (TN) by summing all nitrogen forms, then compare to the effluent limit.\n\nStep 1 — Identify all forms of nitrogen present:\nNH3-N = 0.8 mg/L\nNO2-N = 0.05 mg/L\nNO3-N = 8.2 mg/L\nOrganic N = 1.5 mg/L\n\nStep 2 — Calculate Total Nitrogen (TN):\nTN = NH3-N + NO2-N + NO3-N + Organic N\nTN = 0.8 mg/L + 0.05 mg/L + 8.2 mg/L + 1.5 mg/L\nTN = 10.55 mg/L\n\nStep 3 — Compare calculated TN to the effluent limit:\nCalculated TN = 10.55 mg/L\nEffluent Limit = 10 mg/L\n10.55 mg/L > 10 mg/L\n\nStep 4 — Determine if the limit is met:\nThe calculated TN (10.55 mg/L) exceeds the limit (10 mg/L).\n\nThe correct answer is TN = 10.55 mg/L; exceeds the limit.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "TN = NH3-N + NO2-N + NO3-N + Organic N" }, { l: "Identify Given Values", c: "NH3-N = 0.8 mg/L, NO2-N = 0.05 mg/L, NO3-N = 8.2 mg/L, Organic N = 1.5 mg/L" }, { l: "Substitute Values", c: "TN = 0.8 mg/L + 0.05 mg/L + 8.2 mg/L + 1.5 mg/L" }, { l: "Calculate", c: "TN = 10.55 mg/L" }, { l: "Compare to Limit", c: "The calculated TN (10.55 mg/L) is greater than the limit of 10 mg/L." }, { l: "Result", c: "The TN is 10.55 mg/L, which does not meet the 10 mg/L limit." } ],
     tip: "Total Nitrogen (TN) includes all forms: ammonia, nitrite, nitrate, and organic N.",
@@ -8450,18 +7391,7 @@ The correct answer is TN = 10.55 mg/L; exceeds the limit.",
     question: "A Class 4 plant lab measures total phosphorus (TP) using the persulfate digestion method. The calibration curve shows: 0 mg/L P = 0.000 absorbance; 0.5 mg/L = 0.125; 1.0 mg/L = 0.250; 2.0 mg/L = 0.500. The effluent sample (diluted 1:5) shows absorbance = 0.175. What is the effluent TP?",
     options: ["A. Effluent TP = 0.35 mg/L", "B. Effluent TP = 1.75 mg/L", "C. Effluent TP = 0.07 mg/L", "D. Effluent TP = 3.5 mg/L"],
     correct: 3,
-    explanation: "Calculate the phosphorus concentration from the absorbance using the calibration curve, then adjust for the dilution factor.
-
-Step 1 — Determine the calibration factor:
-0.5 mg/L ÷ 0.125 absorbance = 4 mg/L P per absorbance unit
-
-Step 2 — Calculate the concentration in the diluted sample:
-0.175 absorbance × 4 mg/L P per absorbance unit = 0.7 mg/L P
-
-Step 3 — Adjust for the dilution factor:
-0.7 mg/L P × 5 (dilution factor) = 3.5 mg/L TP
-
-The correct answer is 3.5 mg/L TP.",
+    explanation: "Calculate the phosphorus concentration from the absorbance using the calibration curve, then adjust for the dilution factor.\n\nStep 1 — Determine the calibration factor:\n0.5 mg/L ÷ 0.125 absorbance = 4 mg/L P per absorbance unit\n\nStep 2 — Calculate the concentration in the diluted sample:\n0.175 absorbance × 4 mg/L P per absorbance unit = 0.7 mg/L P\n\nStep 3 — Adjust for the dilution factor:\n0.7 mg/L P × 5 (dilution factor) = 3.5 mg/L TP\n\nThe correct answer is 3.5 mg/L TP.",
     difficulty: "hard",
     steps: [ { l: "Determine Calibration Curve Slope", c: "From the given points, the relationship is linear: Absorbance = Slope * [P]. Using (1.0 mg/L, 0.250 absorbance), Slope = 0.250 / 1.0 = 0.250 absorbance per mg/L P." }, { l: "Calculate P Concentration in Diluted Sample", c: "[P] diluted = Sample Absorbance / Slope = 0.175 / 0.250" }, { l: "Calculate", c: "[P] diluted = 0.70 mg/L P" }, { l: "Account for Dilution Factor", c: "The sample was diluted 1:5 (1 part sample to 4 parts diluent). So, the actual concentration is 5 times the diluted concentration. Actual TP = [P] diluted * Dilution Factor = 0.70 mg/L * 5" }, { l: "Calculate Actual TP", c: "Actual TP = 3.5 mg/L" }, { l: "Result", c: "The actual effluent TP is 3.5 mg/L." } ],
     tip: "Always account for dilution factors when calculating actual sample concentrations.",
@@ -8534,24 +7464,7 @@ The correct answer is 3.5 mg/L TP.",
     question: "A Class 4 plant has: aeration basin volume = 8,500 m3, MLSS = 3,800 mg/L, daily WAS = 180 m3/day at 8,500 mg/L TS, and effluent TSS = 12 mg/L at a flow of 22,000 m3/day. What is the sludge age (SRT)?",
     options: ["SRT = 8.2 days", "SRT = 18.0 days", "SRT = 6.4 days", "SRT = 22.3 days"],
     correct: 1,
-    explanation: "Calculate the Sludge Age (SRT) by dividing the total suspended solids (TSS) in the aeration basin by the total TSS leaving the system per day.
-
-Step 1 — Calculate TSS in the aeration basin:
-8,500 m3 × 3,800 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m3) = 32,300 kg
-
-Step 2 — Calculate TSS leaving via Waste Activated Sludge (WAS) daily:
-180 m3/day × 8,500 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m3) = 1,530 kg/day
-
-Step 3 — Calculate TSS leaving via effluent daily:
-22,000 m3/day × 12 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m3) = 264 kg/day
-
-Step 4 — Calculate total TSS leaving the system daily:
-1,530 kg/day + 264 kg/day = 1,794 kg/day
-
-Step 5 — Calculate the Sludge Age (SRT):
-32,300 kg ÷ 1,794 kg/day = 18.0 days
-
-The correct answer is 18.0 days.",
+    explanation: "Calculate the Sludge Age (SRT) by dividing the total suspended solids (TSS) in the aeration basin by the total TSS leaving the system per day.\n\nStep 1 — Calculate TSS in the aeration basin:\n8,500 m3 × 3,800 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m3) = 32,300 kg\n\nStep 2 — Calculate TSS leaving via Waste Activated Sludge (WAS) daily:\n180 m3/day × 8,500 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m3) = 1,530 kg/day\n\nStep 3 — Calculate TSS leaving via effluent daily:\n22,000 m3/day × 12 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m3) = 264 kg/day\n\nStep 4 — Calculate total TSS leaving the system daily:\n1,530 kg/day + 264 kg/day = 1,794 kg/day\n\nStep 5 — Calculate the Sludge Age (SRT):\n32,300 kg ÷ 1,794 kg/day = 18.0 days\n\nThe correct answer is 18.0 days.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Sludge Age (SRT) = (Mass of solids in system) / (Mass of solids leaving system per day)" }, { l: "Step 1: Calculate Mass of solids in system", c: "Mass in system = Aeration Basin Volume × MLSS = 8,500 m³ × 3,800 mg/L = 8,500 m³ × 3,800 g/m³ = 32,300,000 g = 32,300 kg" }, { l: "Step 2: Calculate Mass of solids leaving system per day (WAS)", c: "Mass leaving (WAS) = WAS Volume × WAS TS = 180 m³/day × 8,500 mg/L = 180 m³/day × 8,500 g/m³ = 1,530,000 g/day" }, { l: "Step 3: Calculate Mass of solids leaving system per day (Effluent TSS)", c: "Mass leaving (Effluent TSS) = Effluent Flow × Effluent TSS = 22,000 m³/day × 12 mg/L = 22,000 m³/day × 12 g/m³ = 264,000 g/day" }, { l: "Step 4: Calculate Total Mass of solids leaving system per day", c: "Total Mass leaving = Mass leaving (WAS) + Mass leaving (Effluent TSS) = 1,530,000 g/day + 264,000 g/day = 1,794,000 g/day = 1,794 kg/day" }, { l: "Step 5: Substitute and Calculate SRT", c: "SRT = 32,300 kg / 1,794 kg/day = 17.99 days" }, { l: "Result", c: "The sludge age (SRT) is approximately 18.0 days." } ],
     tip: "SRT is crucial for biological process stability; track all solids leaving the system.",
@@ -8569,16 +7482,7 @@ The correct answer is 18.0 days.",
       "Estimated BOD5 = 42 mg/L; the wastewater is very dilute"
     ],
     correct: 1,
-    explanation: "Estimate BOD5 by dividing the COD by the COD:BOD5 ratio, then interpret the ratio for wastewater characteristics.
-
-Step 1 — Calculate estimated BOD5:
-Estimated BOD5 = Influent COD ÷ COD:BOD5 ratio
-Estimated BOD5 = 420 mg/L ÷ 2.1 = 200 mg/L
-
-Step 2 — Interpret the COD:BOD5 ratio:
-A COD:BOD5 ratio between 1.5 and 2.5 indicates typical municipal wastewater with good biodegradability, meaning most of the organic matter can be biologically treated.
-
-The correct answer is B. Estimated BOD5 = 200 mg/L; the COD:BOD5 ratio of 2.1 indicates typical municipal wastewater with good biodegradability.",
+    explanation: "Estimate BOD5 by dividing the COD by the COD:BOD5 ratio, then interpret the ratio for wastewater characteristics.\n\nStep 1 — Calculate estimated BOD5:\nEstimated BOD5 = Influent COD ÷ COD:BOD5 ratio\nEstimated BOD5 = 420 mg/L ÷ 2.1 = 200 mg/L\n\nStep 2 — Interpret the COD:BOD5 ratio:\nA COD:BOD5 ratio between 1.5 and 2.5 indicates typical municipal wastewater with good biodegradability, meaning most of the organic matter can be biologically treated.\n\nThe correct answer is B. Estimated BOD5 = 200 mg/L; the COD:BOD5 ratio of 2.1 indicates typical municipal wastewater with good biodegradability.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Estimated BOD5 = Influent COD / (COD:BOD5 Ratio)" }, { l: "Substitute", c: "Estimated BOD5 = 420 mg/L / 2.1" }, { l: "Calculate", c: "Estimated BOD5 = 200 mg/L" }, { l: "Interpretation", c: "A COD:BOD5 ratio of 2.1 indicates typical municipal wastewater with good biodegradability, meaning most of the COD is biodegradable." }, { l: "Result", c: "The estimated BOD5 is 200 mg/L. A ratio of 2.1 indicates good biodegradability, typical for municipal wastewater." } ],
     tip: "COD:BOD5 ratio helps assess wastewater biodegradability and process efficiency.",
@@ -8596,24 +7500,7 @@ The correct answer is B. Estimated BOD5 = 200 mg/L; the COD:BOD5 ratio of 2.1 in
       "High alkalinity is causing the low pH; reduce alkalinity addition"
     ],
     correct: 1,
-    explanation: "Evaluate the current alkalinity and pH in the context of nitrification requirements, then determine the necessary action to maintain stable nitrification.
-
-Step 1 — Understand alkalinity consumption during nitrification:
-Nitrification consumes 7.14 mg of alkalinity (as CaCO3) per mg of ammonia-nitrogen (NH3-N) oxidized.
-
-Step 2 — Assess the current alkalinity level:
-The plant's alkalinity is 85 mg/L as CaCO3. This is borderline for a nitrifying system, as a minimum residual alkalinity of 50-80 mg/L is required to maintain pH above 6.5.
-
-Step 3 — Evaluate the risk of low alkalinity:
-If alkalinity drops below 50 mg/L, the pH will likely fall below 6.5, which will inhibit the nitrification process.
-
-Step 4 — Determine the necessary action:
-To prevent nitrification inhibition and maintain a stable pH, alkalinity needs to be increased to a safer level, typically above 100 mg/L.
-
-Step 5 — Identify suitable alkalinity supplements:
-Sodium bicarbonate (NaHCO3) or lime (Ca(OH)2) can be added to increase alkalinity.
-
-The correct answer is B.",
+    explanation: "Evaluate the current alkalinity and pH in the context of nitrification requirements, then determine the necessary action to maintain stable nitrification.\n\nStep 1 — Understand alkalinity consumption during nitrification:\nNitrification consumes 7.14 mg of alkalinity (as CaCO3) per mg of ammonia-nitrogen (NH3-N) oxidized.\n\nStep 2 — Assess the current alkalinity level:\nThe plant's alkalinity is 85 mg/L as CaCO3. This is borderline for a nitrifying system, as a minimum residual alkalinity of 50-80 mg/L is required to maintain pH above 6.5.\n\nStep 3 — Evaluate the risk of low alkalinity:\nIf alkalinity drops below 50 mg/L, the pH will likely fall below 6.5, which will inhibit the nitrification process.\n\nStep 4 — Determine the necessary action:\nTo prevent nitrification inhibition and maintain a stable pH, alkalinity needs to be increased to a safer level, typically above 100 mg/L.\n\nStep 5 — Identify suitable alkalinity supplements:\nSodium bicarbonate (NaHCO3) or lime (Ca(OH)2) can be added to increase alkalinity.\n\nThe correct answer is B.",
     difficulty: "hard",
     steps: [ { l: "Concern Identification", c: "Nitrification consumes alkalinity. With a pH of 6.9 and alkalinity of 85 mg/L as CaCO3, the system is at risk of insufficient alkalinity for complete nitrification and pH depression." }, { l: "Explanation of concern", c: "Nitrification requires approximately 7.14 mg of alkalinity (as CaCO3) per mg of ammonia-nitrogen oxidized. Low alkalinity can inhibit nitrifying bacteria and cause a drop in pH, impacting overall treatment efficiency." }, { l: "Action Recommended", c: "Increase alkalinity in the aeration basin. This can be achieved by adding an external alkalinity source such as sodium bicarbonate (NaHCO3), lime (Ca(OH)2), or caustic soda (NaOH)." }, { l: "Monitoring", c: "Continuously monitor pH and alkalinity to ensure they remain within optimal ranges (e.g., pH 7.0-8.0 and alkalinity > 50-80 mg/L as CaCO3) for nitrification." }, { l: "Result", c: "The concern is low alkalinity hindering nitrification and causing pH depression. Action: Add alkalinity (e.g., sodium bicarbonate) and monitor pH/alkalinity closely." } ],
     tip: "Maintain adequate alkalinity for stable nitrification; low pH inhibits nitrifiers.",
@@ -8661,18 +7548,7 @@ The correct answer is B.",
       "Turbidity cannot be used to estimate TSS under any circumstances"
     ],
     correct: 1,
-    explanation: "Calculate the estimated TSS using the provided correlation equation, then evaluate the reliability of using turbidity for regulatory reporting.
-
-Step 1 — Calculate Estimated TSS:
-TSS (mg/L) = 1.8 × Turbidity (NTU) + 0.5
-TSS (mg/L) = 1.8 × 3.2 NTU + 0.5
-TSS (mg/L) = 5.76 + 0.5
-TSS (mg/L) = 6.26 mg/L
-
-Step 2 — Evaluate Regulatory Reporting Reliability:
-Turbidity is an excellent process control tool for real-time monitoring. However, it cannot replace direct TSS analysis for regulatory reporting unless specific conditions are met: the Ministry of the Environment, Conservation and Parks (MECP) must approve its use as a surrogate in the Environmental Compliance Approval (ECA), and a site-specific correlation must be validated with a sufficient number of paired measurements (e.g., 30-50). This correlation also needs regular revalidation as effluent characteristics can change.
-
-The correct answer is B. Estimated TSS = 6.26 mg/L; turbidity is a useful process control tool but cannot replace TSS analysis for regulatory reporting without MECP approval and a site-specific validated correlation.",
+    explanation: "Calculate the estimated TSS using the provided correlation equation, then evaluate the reliability of using turbidity for regulatory reporting.\n\nStep 1 — Calculate Estimated TSS:\nTSS (mg/L) = 1.8 × Turbidity (NTU) + 0.5\nTSS (mg/L) = 1.8 × 3.2 NTU + 0.5\nTSS (mg/L) = 5.76 + 0.5\nTSS (mg/L) = 6.26 mg/L\n\nStep 2 — Evaluate Regulatory Reporting Reliability:\nTurbidity is an excellent process control tool for real-time monitoring. However, it cannot replace direct TSS analysis for regulatory reporting unless specific conditions are met: the Ministry of the Environment, Conservation and Parks (MECP) must approve its use as a surrogate in the Environmental Compliance Approval (ECA), and a site-specific correlation must be validated with a sufficient number of paired measurements (e.g., 30-50). This correlation also needs regular revalidation as effluent characteristics can change.\n\nThe correct answer is B. Estimated TSS = 6.26 mg/L; turbidity is a useful process control tool but cannot replace TSS analysis for regulatory reporting without MECP approval and a site-specific validated correlation.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Estimated TSS (mg/L) = 1.8 × Turbidity (NTU) + 0.5" }, { l: "Identify Given Values", c: "Turbidity = 3.2 NTU" }, { l: "Substitute", c: "Estimated TSS = 1.8 × 3.2 + 0.5" }, { l: "Calculate", c: "Estimated TSS = 5.76 + 0.5 = 6.26 mg/L" }, { l: "Result", c: "The estimated effluent TSS is 6.26 mg/L." } ],
     tip: "Turbidity is a fast, reliable surrogate for TSS in process control and monitoring.",
@@ -8690,26 +7566,7 @@ The correct answer is B. Estimated TSS = 6.26 mg/L; turbidity is a useful proces
       "TRC > 1.0 mg/L only requires notification if it persists for > 7 days"
     ],
     correct: 1,
-    explanation: "Evaluate the measured Total Residual Chlorine (TRC) against the permitted range, identify necessary immediate and investigative actions, and consider regulatory notification requirements.
-
-Step 1 — Compare measured TRC to ECA limits:
-Measured TRC = 1.4 mg/L
-ECA maximum TRC = 1.0 mg/L
-1.4 mg/L > 1.0 mg/L, indicating an exceedance.
-
-Step 2 — Implement immediate corrective action:
-Reduce the hypochlorite dose to lower the TRC. The target reduction is approximately 0.4 mg/L (1.4 mg/L - 1.0 mg/L).
-
-Step 3 — Assess regulatory notification requirements:
-Check the plant's Environmental Compliance Approval (ECA) for specific notification protocols regarding TRC exceedances. Notification to MECP may be required.
-
-Step 4 — Investigate potential causes:
-Examine changes in effluent characteristics such as ammonia concentration (affecting chloramine formation) or organic matter (BOD/TSS) that could alter chlorine demand. Also, verify hypochlorite solution concentration.
-
-Step 5 — Consider advanced control measures:
-If TRC cannot be consistently maintained below 1.0 mg/L through dose adjustment, consider implementing dechlorination using a chemical like sodium bisulfite.
-
-The correct answer is B. TRC = 1.4 mg/L exceeds the maximum of 1.0 mg/L; reduce hypochlorite dose immediately; if the receiving water is sensitive to chlorine residual, this exceedance may require MECP notification; check for changes in effluent ammonia (chloramine formation) or organic matter that may have altered chlorine demand.",
+    explanation: "Evaluate the measured Total Residual Chlorine (TRC) against the permitted range, identify necessary immediate and investigative actions, and consider regulatory notification requirements.\n\nStep 1 — Compare measured TRC to ECA limits:\nMeasured TRC = 1.4 mg/L\nECA maximum TRC = 1.0 mg/L\n1.4 mg/L > 1.0 mg/L, indicating an exceedance.\n\nStep 2 — Implement immediate corrective action:\nReduce the hypochlorite dose to lower the TRC. The target reduction is approximately 0.4 mg/L (1.4 mg/L - 1.0 mg/L).\n\nStep 3 — Assess regulatory notification requirements:\nCheck the plant's Environmental Compliance Approval (ECA) for specific notification protocols regarding TRC exceedances. Notification to MECP may be required.\n\nStep 4 — Investigate potential causes:\nExamine changes in effluent characteristics such as ammonia concentration (affecting chloramine formation) or organic matter (BOD/TSS) that could alter chlorine demand. Also, verify hypochlorite solution concentration.\n\nStep 5 — Consider advanced control measures:\nIf TRC cannot be consistently maintained below 1.0 mg/L through dose adjustment, consider implementing dechlorination using a chemical like sodium bisulfite.\n\nThe correct answer is B. TRC = 1.4 mg/L exceeds the maximum of 1.0 mg/L; reduce hypochlorite dose immediately; if the receiving water is sensitive to chlorine residual, this exceedance may require MECP notification; check for changes in effluent ammonia (chloramine formation) or organic matter that may have altered chlorine demand.",
   steps: [
     { l: "Identify Given Values", c: "ECA Minimum TRC = 0.5 mg/L, ECA Maximum TRC = 1.0 mg/L, Measured TRC = 1.4 mg/L" },
     { l: "Assess Compliance", c: "The measured TRC of 1.4 mg/L exceeds the ECA maximum limit of 1.0 mg/L. This constitutes a regulatory exceedance." },
@@ -8823,21 +7680,7 @@ The correct answer is B. TRC = 1.4 mg/L exceeds the maximum of 1.0 mg/L; reduce 
       "Increasing TMP is caused by low MLSS; increase MLSS to reduce TMP"
     ],
     correct: 1,
-    explanation: "Interpret the increasing Transmembrane Pressure (TMP) in an MBR system to identify fouling and determine appropriate maintenance actions.
-
-Step 1 — Understand TMP and Fouling:
-TMP is the pressure required to push water through the membrane. An increase in TMP from 15 kPa to 45 kPa over 3 months indicates membrane fouling. Fouling can be reversible (cake layer), partially reversible (pore blocking), or irreversible.
-
-Step 2 — Interpret TMP Levels:
-Normal TMP is typically 10-30 kPa. A TMP of 30-50 kPa indicates moderate fouling. A TMP greater than 50-60 kPa indicates severe fouling.
-
-Step 3 — Identify Maintenance Actions for Moderate Fouling:
-For moderate fouling (TMP 15-45 kPa), maintenance actions include: increasing relaxation/backpulse frequency, performing maintenance cleaning (e.g., sodium hypochlorite 500-1,000 mg/L), checking and potentially reducing MLSS concentration if it exceeds 12,000 mg/L, and verifying aeration scouring is functioning correctly.
-
-Step 4 — Identify Maintenance Actions for Severe Fouling:
-If TMP exceeds 60 kPa, recovery cleaning is required. This involves more aggressive chemical cleaning (e.g., 2,000-3,000 mg/L NaOCl, potentially with citric acid).
-
-The correct answer is B.",
+    explanation: "Interpret the increasing Transmembrane Pressure (TMP) in an MBR system to identify fouling and determine appropriate maintenance actions.\n\nStep 1 — Understand TMP and Fouling:\nTMP is the pressure required to push water through the membrane. An increase in TMP from 15 kPa to 45 kPa over 3 months indicates membrane fouling. Fouling can be reversible (cake layer), partially reversible (pore blocking), or irreversible.\n\nStep 2 — Interpret TMP Levels:\nNormal TMP is typically 10-30 kPa. A TMP of 30-50 kPa indicates moderate fouling. A TMP greater than 50-60 kPa indicates severe fouling.\n\nStep 3 — Identify Maintenance Actions for Moderate Fouling:\nFor moderate fouling (TMP 15-45 kPa), maintenance actions include: increasing relaxation/backpulse frequency, performing maintenance cleaning (e.g., sodium hypochlorite 500-1,000 mg/L), checking and potentially reducing MLSS concentration if it exceeds 12,000 mg/L, and verifying aeration scouring is functioning correctly.\n\nStep 4 — Identify Maintenance Actions for Severe Fouling:\nIf TMP exceeds 60 kPa, recovery cleaning is required. This involves more aggressive chemical cleaning (e.g., 2,000-3,000 mg/L NaOCl, potentially with citric acid).\n\nThe correct answer is B.",
   steps: [
     { l: "Understanding the concept", c: "Transmembrane pressure (TMP) is the pressure difference across the membrane that drives the filtration process. An increase in TMP over time, while maintaining a constant flux (flow rate), indicates increased resistance to flow through the membrane." },
     { l: "Interpreting the data", c: "The TMP has increased from 15 kPa to 45 kPa over 3 months. This significant increase (a tripling of TMP) indicates that the membrane is experiencing substantial fouling." },
