@@ -117,32 +117,32 @@ export default function QuizGate({
   // ── Main gate modal ────────────────────────────────────────────────────────
   return (
     <div style={{ position: "fixed", inset: 0, background: "rgba(15,23,42,0.88)", backdropFilter: "blur(6px)", zIndex: 9999, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
-      {/* X button — top-right corner */}
-      <button
-        onClick={() => navigate("/")}
-        aria-label="Back to homepage"
-        style={{
-          position: "fixed",
-          top: 16,
-          right: 16,
-          width: 40,
-          height: 40,
-          borderRadius: "50%",
-          background: "rgba(255,255,255,0.15)",
-          border: "1.5px solid rgba(255,255,255,0.3)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-          fontSize: 18,
-          color: "#fff",
-          zIndex: 10000,
-          lineHeight: 1,
-        }}
-      >
-        ✕
-      </button>
-      <div style={{ background: "#fff", borderRadius: 20, padding: "32px 32px 28px", maxWidth: 520, width: "100%", boxShadow: "0 32px 80px rgba(0,0,0,0.35)", textAlign: "center" }}>
+      <div style={{ background: "#fff", borderRadius: 20, padding: "32px 32px 28px", maxWidth: 520, width: "100%", boxShadow: "0 32px 80px rgba(0,0,0,0.35)", textAlign: "center", position: "relative" }}>
+        {/* X button — top-right corner of the card */}
+        <button
+          onClick={() => navigate("/")}
+          aria-label="Back to homepage"
+          style={{
+            position: "absolute",
+            top: 14,
+            right: 14,
+            width: 32,
+            height: 32,
+            borderRadius: "50%",
+            background: "#F1F5F9",
+            border: "1px solid #E2E8F0",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            fontSize: 15,
+            color: "#64748B",
+            lineHeight: 1,
+            padding: 0,
+          }}
+        >
+          ✕
+        </button>
 
         {/* Full logo */}
         <Link href="/">

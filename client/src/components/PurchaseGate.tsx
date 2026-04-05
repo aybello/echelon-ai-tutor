@@ -166,33 +166,6 @@ export default function PurchaseGate({
         position: "relative",
       }}
     >
-      {/* X button — top-right corner, always visible */}
-      <button
-        onClick={() => navigate("/")}
-        aria-label="Back to homepage"
-        style={{
-          position: "fixed",
-          top: 16,
-          right: 16,
-          width: 40,
-          height: 40,
-          borderRadius: "50%",
-          background: "#fff",
-          border: "1.5px solid #E2E8F0",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.10)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-          fontSize: 18,
-          color: "#64748B",
-          zIndex: 10,
-          lineHeight: 1,
-        }}
-      >
-        ✕
-      </button>
-
       <div
         style={{
           background: "#fff",
@@ -203,8 +176,34 @@ export default function PurchaseGate({
           width: "100%",
           textAlign: "center",
           boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
+          position: "relative",
         }}
       >
+        {/* X button — top-right corner of the card */}
+        <button
+          onClick={() => navigate("/")}
+          aria-label="Back to homepage"
+          style={{
+            position: "absolute",
+            top: 14,
+            right: 14,
+            width: 32,
+            height: 32,
+            borderRadius: "50%",
+            background: "#F1F5F9",
+            border: "1px solid #E2E8F0",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            fontSize: 15,
+            color: "#64748B",
+            lineHeight: 1,
+            padding: 0,
+          }}
+        >
+          ✕
+        </button>
         {/* Full logo: droplets icon + "Echelon Institute" text */}
         <Link href="/">
           <div
