@@ -110,7 +110,7 @@ ${
   patternMode
     ? `PATTERN ANALYSIS MODE: The student has a pattern of getting ${question?.module || "certain"} questions wrong. Your goal is to diagnose the root misconception through Socratic questioning. Ask them to explain their thinking, identify the exact point where their mental model breaks down, and rebuild it correctly.`
     : `
-Current question: ${question?.q}
+Current question: ${(question as any)?.question ?? question?.q}
 Module: ${question?.module}
 Type: ${question?.type}
 Correct answer: ${question?.options[question?.correct ?? 0]}

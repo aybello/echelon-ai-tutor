@@ -472,7 +472,7 @@ export default function QuizShell({
             lineHeight: 1.6,
             margin: "0 0 18px",
           }}>
-            {current.question}
+            {current.question ?? (current as any).q}
           </p>
 
           {/* Answer options */}
@@ -736,7 +736,7 @@ export default function QuizShell({
       {reportModalOpen && current && (
         <ReportErrorModal
           questionId={current.id ?? 0}
-          questionText={current.question}
+          questionText={current.question ?? (current as any).q}
           module={current.module ?? ""}
           onClose={() => setReportModalOpen(false)}
         />

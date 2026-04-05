@@ -259,3 +259,4 @@
 - [x] QA: Fix all identified issues — no critical issues found, all 85 tests passing, 0 TypeScript errors
 - [x] WPI landing page: remove "Available Prep Materials" long list from province panel, replace with clean CTA buttons
 - [x] Owner/admin paywall bypass: auto-grant full access to all courses when logged in as owner for testing
+- [x] Bug: Calc Only filter hides question text, only shows answer options — fixed by falling back to q field in QuizShell and AITutor
