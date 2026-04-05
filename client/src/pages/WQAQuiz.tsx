@@ -145,12 +145,12 @@ export default function WQAQuiz() {
     <PurchaseGate
       examType="wqa"
       productKey="wqa"
-      productName="WQA · Water Quality Association"
+      productName="WQA · Water Quality Analyst"
       price={79}
     >
       <QuizShell
         currentPath="/wqa"
-        courseLabel="WQA · Water Quality Association"
+        courseLabel="WQA · Water Quality Analyst"
         courseTitle="WQA Practice Quiz"
         courseSubtitle="WQA Certification Exam Prep"
         headerGradient="linear-gradient(135deg, #059669 0%, #0369A1 100%)"
