@@ -244,3 +244,6 @@
 - [ ] Populate WPI Class III Wastewater (~501 questions, field exists but empty)
 - [ ] Populate WPI Class IV Wastewater (~501 questions, field exists but empty)
 - [ ] Wire up step-by-step UI in WpiClass1WaterQuiz, WpiClass2WaterQuiz, WpiClass3WaterQuiz, WpiClass4WaterQuiz, WpiClass1WastewaterQuiz, WpiClass2WastewaterQuiz
+- [ ] Fix WPI quizzes to start at a random question instead of always question 1
+- [ ] Add post-checkout success redirect to purchased course quiz (update PurchaseSuccess.tsx)
+- [ ] Archive bundle products in Stripe via API

@@ -64,7 +64,7 @@ export default function WpiClass2WaterQuiz() {
     }>
   >([]);
   const [current, setCurrent] = useState<QCompat | null>(
-    () => toCompat(wpiClass2WaterQuestions[0])
+    () => toCompat(shuffle([...wpiClass2WaterQuestions])[0])
   );
   const [selected, setSelected] = useState<number | null>(null);
   const [confidence, setConfidence] = useState<number | null>(null);
@@ -347,7 +347,7 @@ export default function WpiClass2WaterQuiz() {
               <button
                 onClick={() => {
                   setHistory([]);
-                  setCurrent(toCompat(wpiClass2WaterQuestions[0]));
+                  setCurrent(toCompat(shuffle([...wpiClass2WaterQuestions])[0]));
                   setSelected(null);
                   setConfidence(null);
                   setConfirmed(false);

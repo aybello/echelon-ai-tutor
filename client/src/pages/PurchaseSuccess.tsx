@@ -1,18 +1,24 @@
 // Echelon Institute — Purchase Success Page
 // Shown after Stripe Checkout completes successfully
 // Verifies the session, stores email in localStorage for access gating
+// Auto-redirects to the purchased course quiz after 4 seconds
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png";
 
 // Map product keys to quiz/mock exam paths
+// First entry is the primary path (used for auto-redirect)
 const PRODUCT_PATHS: Record<string, { label: string; path: string }[]> = {
   oit: [
     { label: "OIT Practice Quiz", path: "/quiz" },
     { label: "OIT Mock Exam", path: "/oit-mock" },
+  ],
+  "oit-ww": [
+    { label: "OIT Wastewater Practice Quiz", path: "/oit-ww" },
+    { label: "OIT Wastewater Mock Exam", path: "/oit-ww-mock" },
   ],
   "class1-water": [
     { label: "Class 1 Water Practice Quiz", path: "/class1-water" },
@@ -22,34 +28,72 @@ const PRODUCT_PATHS: Record<string, { label: string; path: string }[]> = {
     { label: "Class 1 Wastewater Practice Quiz", path: "/class1-ww" },
     { label: "Class 1 Wastewater Mock Exam", path: "/class1-ww-mock" },
   ],
+  "class2-water": [
+    { label: "Class 2 Water Practice Quiz", path: "/class2-water" },
+    { label: "Class 2 Water Mock Exam", path: "/class2-water-mock" },
+  ],
+  "class2-ww": [
+    { label: "Class 2 Wastewater Practice Quiz", path: "/class2-ww" },
+    { label: "Class 2 Wastewater Mock Exam", path: "/class2-ww-mock" },
+  ],
+  "class3-water": [
+    { label: "Class 3 Water Practice Quiz", path: "/class3-water" },
+    { label: "Class 3 Water Mock Exam", path: "/class3-water-mock" },
+  ],
+  "class3-ww": [
+    { label: "Class 3 Wastewater Practice Quiz", path: "/class3-ww" },
+    { label: "Class 3 Wastewater Mock Exam", path: "/class3-ww-mock" },
+  ],
+  "class4-water": [
+    { label: "Class 4 Water Practice Quiz", path: "/class4-water" },
+    { label: "Class 4 Water Mock Exam", path: "/class4-water-mock" },
+  ],
+  "class4-ww": [
+    { label: "Class 4 Wastewater Practice Quiz", path: "/class4-ww" },
+    { label: "Class 4 Wastewater Mock Exam", path: "/class4-ww-mock" },
+  ],
   wqa: [
     { label: "WQA Practice Quiz", path: "/wqa" },
     { label: "WQA Mock Exam", path: "/wqa-mock" },
   ],
-  "bundle-water": [
-    { label: "OIT Practice Quiz", path: "/quiz" },
-    { label: "Class 1 Water Practice Quiz", path: "/class1-water" },
-    { label: "OIT Mock Exam", path: "/oit-mock" },
-    { label: "Class 1 Water Mock Exam", path: "/class1-water-mock" },
+  "wpi-class1-water": [
+    { label: "WPI Class 1 Water Practice Quiz", path: "/wpi-class1-water" },
+    { label: "WPI Class 1 Water Mock Exam", path: "/wpi-class1-water-mock" },
   ],
-  "bundle-ww": [
-    { label: "Class 1 Wastewater Practice Quiz", path: "/class1-ww" },
-    { label: "Class 1 Wastewater Mock Exam", path: "/class1-ww-mock" },
+  "wpi-class2-water": [
+    { label: "WPI Class 2 Water Practice Quiz", path: "/wpi-class2-water" },
+    { label: "WPI Class 2 Water Mock Exam", path: "/wpi-class2-water-mock" },
   ],
-  "bundle-all": [
-    { label: "OIT Practice Quiz", path: "/quiz" },
-    { label: "Class 1 Water Practice Quiz", path: "/class1-water" },
-    { label: "Class 1 Wastewater Practice Quiz", path: "/class1-ww" },
-    { label: "WQA Practice Quiz", path: "/wqa" },
-    { label: "OIT Mock Exam", path: "/oit-mock" },
-    { label: "Class 1 Water Mock Exam", path: "/class1-water-mock" },
-    { label: "Class 1 Wastewater Mock Exam", path: "/class1-ww-mock" },
-    { label: "WQA Mock Exam", path: "/wqa-mock" },
+  "wpi-class3-water": [
+    { label: "WPI Class 3 Water Practice Quiz", path: "/wpi-class3-water" },
+    { label: "WPI Class 3 Water Mock Exam", path: "/wpi-class3-water-mock" },
+  ],
+  "wpi-class4-water": [
+    { label: "WPI Class 4 Water Practice Quiz", path: "/wpi-class4-water" },
+    { label: "WPI Class 4 Water Mock Exam", path: "/wpi-class4-water-mock" },
+  ],
+  "wpi-class1-wastewater": [
+    { label: "WPI Class 1 Wastewater Practice Quiz", path: "/wpi-class1-wastewater" },
+    { label: "WPI Class 1 Wastewater Mock Exam", path: "/wpi-class1-wastewater-mock" },
+  ],
+  "wpi-class2-wastewater": [
+    { label: "WPI Class 2 Wastewater Practice Quiz", path: "/wpi-class2-wastewater" },
+    { label: "WPI Class 2 Wastewater Mock Exam", path: "/wpi-class2-wastewater-mock" },
+  ],
+  "wpi-class3-wastewater": [
+    { label: "WPI Class 3 Wastewater Practice Quiz", path: "/wpi-class3-wastewater" },
+    { label: "WPI Class 3 Wastewater Mock Exam", path: "/wpi-class3-wastewater-mock" },
+  ],
+  "wpi-class4-wastewater": [
+    { label: "WPI Class 4 Wastewater Practice Quiz", path: "/wpi-class4-wastewater" },
+    { label: "WPI Class 4 Wastewater Mock Exam", path: "/wpi-class4-wastewater-mock" },
   ],
 };
 
+const REDIRECT_DELAY = 5; // seconds
+
 export default function PurchaseSuccess() {
-  const [location] = useLocation();
+  const [, navigate] = useLocation();
   const params = new URLSearchParams(window.location.search);
   const sessionId = params.get("session_id") ?? "";
   const productKey = params.get("product") ?? "";
@@ -60,19 +104,22 @@ export default function PurchaseSuccess() {
   const [referralSource, setReferralSource] = useState("");
   const [referralSubmitted, setReferralSubmitted] = useState(false);
   const [stripeSessionId, setStripeSessionId] = useState("");
+  const [countdown, setCountdown] = useState(REDIRECT_DELAY);
+  const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const saveReferral = trpc.stripe.saveReferralSource.useMutation();
+
+  const links = PRODUCT_PATHS[productKey] ?? [{ label: "Start Practicing", path: "/quiz" }];
+  const primaryPath = links[0]?.path ?? "/quiz";
 
   // Verify the session with Stripe and record the purchase
   const verifySession = trpc.stripe.verifySession.useMutation({
     onSuccess: (data) => {
       if (data.email) {
         setEmail(data.email);
-        // Store email in localStorage so quiz pages can check access
         try {
           localStorage.setItem("echelon_trial_email", data.email);
           localStorage.setItem("echelon_trial_unlocked", "true");
-          // Store purchased product keys
           const existing = JSON.parse(localStorage.getItem("echelon_purchased_products") ?? "[]");
           if (!existing.includes(productKey)) {
             existing.push(productKey);
@@ -85,6 +132,17 @@ export default function PurchaseSuccess() {
       setVerified(true);
       setVerifying(false);
       setStripeSessionId(sessionId);
+
+      // Start countdown for auto-redirect
+      let remaining = REDIRECT_DELAY;
+      countdownRef.current = setInterval(() => {
+        remaining -= 1;
+        setCountdown(remaining);
+        if (remaining <= 0) {
+          if (countdownRef.current) clearInterval(countdownRef.current);
+          navigate(primaryPath);
+        }
+      }, 1000);
     },
     onError: () => {
       setVerifying(false);
@@ -97,9 +155,10 @@ export default function PurchaseSuccess() {
     } else {
       setVerifying(false);
     }
+    return () => {
+      if (countdownRef.current) clearInterval(countdownRef.current);
+    };
   }, [sessionId]);
-
-  const links = PRODUCT_PATHS[productKey] ?? [{ label: "Start Practicing", path: "/quiz" }];
 
   return (
     <div
@@ -162,7 +221,7 @@ export default function PurchaseSuccess() {
             <h1 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", margin: "0 0 8px" }}>
               Payment Successful!
             </h1>
-            <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 24px" }}>
+            <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 8px" }}>
               {email ? (
                 <>
                   Your Practice Pass is now active for <strong>{email}</strong>.
@@ -174,6 +233,32 @@ export default function PurchaseSuccess() {
                 </>
               )}
             </p>
+
+            {/* Auto-redirect countdown */}
+            {verified && (
+              <p style={{ color: "#16A34A", fontSize: 13, fontWeight: 600, marginBottom: 20 }}>
+                Redirecting to your course in {countdown}s…{" "}
+                <button
+                  onClick={() => {
+                    if (countdownRef.current) clearInterval(countdownRef.current);
+                    navigate(primaryPath);
+                  }}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: "#1D4ED8",
+                    fontSize: 13,
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    textDecoration: "underline",
+                    padding: 0,
+                    fontFamily: "inherit",
+                  }}
+                >
+                  Go now →
+                </button>
+              </p>
+            )}
 
             <div
               style={{
@@ -192,6 +277,9 @@ export default function PurchaseSuccess() {
                 {links.map(link => (
                   <Link key={link.path} href={link.path}>
                     <div
+                      onClick={() => {
+                        if (countdownRef.current) clearInterval(countdownRef.current);
+                      }}
                       style={{
                         padding: "10px 14px",
                         background: "#fff",
@@ -230,7 +318,6 @@ export default function PurchaseSuccess() {
                       onClick={() => {
                         setReferralSource(option);
                         setReferralSubmitted(true);
-                        // Save to DB via tRPC
                         if (stripeSessionId) {
                           saveReferral.mutate({ sessionId: stripeSessionId, referralSource: option });
                         }
@@ -270,6 +357,7 @@ export default function PurchaseSuccess() {
             <div style={{ marginTop: 24, display: "flex", gap: 12, justifyContent: "center" }}>
               <Link href="/">
                 <button
+                  onClick={() => { if (countdownRef.current) clearInterval(countdownRef.current); }}
                   style={{
                     padding: "9px 20px",
                     borderRadius: 8,
@@ -287,6 +375,7 @@ export default function PurchaseSuccess() {
               </Link>
               <Link href="/pricing">
                 <button
+                  onClick={() => { if (countdownRef.current) clearInterval(countdownRef.current); }}
                   style={{
                     padding: "9px 20px",
                     borderRadius: 8,
