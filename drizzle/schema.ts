@@ -79,6 +79,7 @@ export const examResults = mysqlTable("exam_results", {
   passed: mysqlEnum("passed", ["yes", "no"]).notNull(),
   timeTakenSeconds: int("timeTakenSeconds"), // how long the exam took
   moduleBreakdown: text("moduleBreakdown"), // JSON string: { moduleName: { correct, total } }
+  calcOnly: mysqlEnum("calcOnly", ["yes", "no"]).default("no"), // whether this was a Math Practice (calc-only) session
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 

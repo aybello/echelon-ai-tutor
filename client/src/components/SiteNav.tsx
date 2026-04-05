@@ -72,6 +72,7 @@ export const NAV_LINKS = [
   { label: "🏭 Process Guide", href: "/process" },
   { label: "♻️ Wastewater",    href: "/wastewater" },
   { label: "⚙️ Pumping",       href: "/pumping" },
+  { label: "🧮 Math Practice", href: "/math-practice" },
   { label: "🧪 Chem Calc",     href: "/chem-calc" },
   { label: "🔬 Lab",           href: "/lab" },
   { label: "🗺️ Career Map",    href: "/career" },

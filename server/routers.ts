@@ -166,6 +166,7 @@ export const appRouter = router({
           passed: z.boolean(),
           timeTakenSeconds: z.number().int().min(0).optional(),
           moduleBreakdown: z.record(z.string(), z.object({ correct: z.number(), total: z.number() })).optional(),
+          calcOnly: z.boolean().optional(), // true if this was a Math Practice (calc-only) session
         })
       )
       .mutation(async ({ input }) => {
@@ -181,6 +182,7 @@ export const appRouter = router({
           passed: input.passed ? "yes" : "no",
           timeTakenSeconds: input.timeTakenSeconds ?? null,
           moduleBreakdown: input.moduleBreakdown ? JSON.stringify(input.moduleBreakdown) : null,
+          calcOnly: input.calcOnly ? "yes" : "no",
         });
 
         return { success: true };
@@ -191,6 +193,7 @@ export const appRouter = router({
         sessionId: z.string().min(1).max(64),
         examType: z.enum(["class1", "wqa", "oit", "oit-ww", "class1-water", "class1-ww", "class2-water", "class2-ww", "class3-water", "class3-ww", "class4-water", "class4-ww", "wpi-class1-water", "wpi-class2-water", "wpi-class3-water", "wpi-class4-water", "wpi-class1-wastewater", "wpi-class2-wastewater", "wpi-class3-wastewater", "wpi-class4-wastewater"]),
         stream: z.enum(["water", "wastewater"]).optional(),
+        calcOnly: z.boolean().optional(), // filter to only Math Practice sessions
       }))
       .query(async ({ input }) => {
         const db = await getDb();
@@ -202,6 +205,9 @@ export const appRouter = router({
         ];
         if (input.stream) {
           conditions.push(eq(examResults.stream, input.stream));
+        }
+        if (input.calcOnly !== undefined) {
+          conditions.push(eq(examResults.calcOnly, input.calcOnly ? "yes" : "no"));
         }
 
         const results = await db

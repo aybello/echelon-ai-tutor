@@ -544,6 +544,13 @@ const FEATURES = [
     href: "/pumping",
   },
   {
+    icon: "🧮",
+    title: "Math Practice Hub",
+    description: "800+ calculation questions across all 18 courses — filtered to math-only, with step-by-step solutions and exam tips. Master every formula before exam day.",
+    color: "#7C3AED",
+    href: "/math-practice",
+  },
+  {
     icon: "🧪",
     title: "Chemical Feed Calculator",
     description: "Real-time dosing calculations for chlorine, alum, lime, and fluoride. Know the formula and the answer.",
@@ -970,6 +977,7 @@ export default function Landing() {
             { label: "🏭 Drinking Water Process", href: "/process" },
             { label: "♻️ Wastewater Process", href: "/wastewater" },
             { label: "⚙️ Pumping Systems", href: "/pumping" },
+            { label: "🧮 Math Practice Hub", href: "/math-practice" },
             { label: "🧪 Chemical Calculator", href: "/chem-calc" },
             { label: "🔬 Lab & Sampling", href: "/lab" },
             { label: "🗺️ Career Map", href: "/career" },

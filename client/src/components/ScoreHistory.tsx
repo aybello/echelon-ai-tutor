@@ -10,6 +10,8 @@ interface ScoreHistoryProps {
   stream?: "water" | "wastewater";
   /** The current attempt's score (0–1) — excluded from the history list since it's already shown in the hero */
   currentResultId?: number;
+  /** If true, only shows Math Practice (calc-only) sessions */
+  calcOnly?: boolean;
 }
 
 function formatDate(d: Date | string): string {
@@ -24,9 +26,9 @@ function formatTime(seconds: number | null): string {
   return `${m}m ${s.toString().padStart(2, "0")}s`;
 }
 
-export default function ScoreHistory({ sessionId, examType, stream }: ScoreHistoryProps) {
+export default function ScoreHistory({ sessionId, examType, stream, calcOnly }: ScoreHistoryProps) {
   const { data: history, isLoading } = trpc.exam.getHistory.useQuery(
-    { sessionId, examType, stream },
+    { sessionId, examType, stream, calcOnly },
     { enabled: !!sessionId }
   );
 
@@ -65,8 +67,13 @@ export default function ScoreHistory({ sessionId, examType, stream }: ScoreHisto
 
   return (
     <div style={{ background: "#fff", borderRadius: 20, padding: "24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
-        <div style={{ fontSize: 14, fontWeight: 700, color: "#0F172A" }}>📈 Your Score History</div>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div style={{ fontSize: 14, fontWeight: 700, color: "#0F172A" }}>📈 Your Score History</div>
+          {calcOnly && (
+            <span style={{ fontSize: 10, fontWeight: 700, color: "#7C3AED", background: "#F5F3FF", padding: "2px 8px", borderRadius: 6, border: "1px solid #DDD6FE" }}>🧮 Math Practice</span>
+          )}
+        </div>
         {trendIcon && (
           <div style={{ fontSize: 13, fontWeight: 700, color: trendColor }}>
             {trendIcon} {trendIcon === "↑" ? "Improving" : trendIcon === "↓" ? "Declining" : "Steady"}
@@ -161,6 +168,7 @@ export default function ScoreHistory({ sessionId, examType, stream }: ScoreHisto
                 <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 2 }}>
                   {formatDate(r.createdAt)} &nbsp;·&nbsp; {formatTime(r.timeTakenSeconds)}
                   {r.stream && <span> &nbsp;·&nbsp; {r.stream.charAt(0).toUpperCase() + r.stream.slice(1)}</span>}
+                  {r.calcOnly === "yes" && <span style={{ color: "#7C3AED", fontWeight: 600 }}> &nbsp;·&nbsp; 🧮 Math</span>}
                 </div>
               </div>
 

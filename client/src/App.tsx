@@ -13,6 +13,7 @@ import CareerMap from "./pages/CareerMap";
 import PumpingSystems from "./pages/PumpingSystems";
 import MockExam from "./pages/MockExam";
 import ChemCalc from "./pages/ChemCalc";
+import MathPractice from "./pages/MathPractice";
 import Lab from "./pages/Lab";
 import Formulas from "./pages/Formulas";
 import About from "./pages/About";
@@ -90,6 +91,7 @@ function Router() {
       <Route path={"/pumping"} component={PumpingSystems} />
       <Route path={"/mock-exam"} component={MockExam} />
       <Route path={"/chem-calc"} component={ChemCalc} />
+      <Route path={"/math-practice"} component={MathPractice} />
       <Route path={"/lab"} component={Lab} />
       <Route path={"/formulas"} component={Formulas} />
       <Route path={"/about"} component={About} />

@@ -71,6 +71,13 @@
       "when": 1775274097421,
       "tag": "0009_awesome_tusk",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1775366117827,
+      "tag": "0010_massive_tyrannus",
+      "breakpoints": true
     }
   ]
 }
