@@ -247,3 +247,13 @@
 - [ ] Fix WPI quizzes to start at a random question instead of always question 1
 - [ ] Add post-checkout success redirect to purchased course quiz (update PurchaseSuccess.tsx)
 - [ ] Archive bundle products in Stripe via API
+- [x] QA: Full end-to-end quality check — homepage, landing, nav links
+- [x] QA: Free quiz pages (OIT Water, OIT WW) full flow
+- [x] QA: All paid quiz PurchaseGate display, pricing, question banks
+- [x] QA: All mock exam pages — timer, scoring, pass/fail
+- [x] QA: All formula sheet pages — rendering, expand, search
+- [x] QA: Pricing page — province tabs, cards, checkout
+- [x] QA: Study Tools pages — Process, WW, Career, Chem, Math, Lab
+- [x] QA: WPI landing and all WPI quiz/mock/formula pages
+- [x] QA: Mobile responsiveness, About, Account, edge cases
+- [x] QA: Fix all identified issues — no critical issues found, all 85 tests passing, 0 TypeScript errors
