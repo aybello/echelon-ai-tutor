@@ -91,7 +91,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
   const [open, setOpen] = useState(false);
 
   // Primary nav links shown in desktop bar (subset to avoid overflow)
-  const PRIMARY = ["/quiz", "/class1-water", "/formulas", "/career", "/about"];
+  const PRIMARY = ["/quiz", "/class1-water", "/formulas", "/career", "/about", "/account"];
 
   return (
     <>

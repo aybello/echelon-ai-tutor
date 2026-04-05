@@ -263,6 +263,8 @@
 - [x] Audit: check all question banks and quiz pages for field name mismatches (q vs question) and similar rendering bugs — all 40 pages clean, no other bugs found
 - [x] Audit: all course headers, subtitles, and descriptions for terminology errors — all clean; OWWCO acronym flagged for owner review
 - [x] Build: /account page with email-based purchase restoration — already fully implemented
+- [x] SiteNav: add My Passes (/account) link to desktop nav
+- [x] Stripe: guide user to create live mode promo code — instructions provided in chat
 - [x] Content: add step-by-step solutions to all 8 WPI question banks — all 8 banks already have complete explanations (4,005 questions total, 0 empty)
 - [x] Fix: WQA stands for "Water Quality Analyst" not "Water Quality Association" — fixed in WQAQuiz.tsx (2 occurrences); mock exam and products.ts already correct
 - [x] Owner bypass: implement localStorage-based preview mode — visit /preview?key=d200f5c012ca384309b488e742d725e0 to unlock all paywalls instantly
