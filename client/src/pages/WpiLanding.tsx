@@ -124,7 +124,7 @@ const FAQS = [
   },
   {
     q: "Is WPI Wastewater Treatment prep available?",
-    a: "Yes — WPI Class I Wastewater Treatment is now available with 500 questions covering Collection Systems, Primary & Secondary Treatment, Solids Handling & Biosolids, Laboratory & Monitoring, and Safety & Regulations. WPI Class II Wastewater is also available with 501 questions covering advanced secondary treatment, nutrient removal, and biosolids management.",
+    a: "Yes — all four WPI Wastewater classes are now live. Class I (500 questions) covers Collection Systems, Primary & Secondary Treatment, Solids Handling, Lab & Monitoring, and Safety. Class II (501 questions) covers advanced secondary treatment, nutrient removal, and biosolids management. Class III (501 questions) covers Biological Nutrient Removal, Membrane Bioreactors, Industrial Pretreatment, and Advanced Biosolids. Class IV (502 questions) covers Advanced Process Control, Resource Recovery, Emerging Technologies, Plant Management, and Emergency Response. A WPI Wastewater Full Ladder Bundle (Class I–IV) is also available at CA$299, saving CA$120 vs. buying individually.",
   },
 ];
 
@@ -191,10 +191,10 @@ export default function WpiLanding() {
   usePageMeta({
     title: "WPI Water Treatment Exam Prep — BC EOCP, Alberta AWWOA, SK, MB | Echelon Institute",
     description:
-      "Prepare for the WPI Water & Wastewater Treatment exams with 2,506+ practice questions for Class I–IV Water and Class I Wastewater. Covers BC (EOCP), Alberta (AWWOA), Saskatchewan (SAHO), and Manitoba (MWWA).",
+      "Prepare for the WPI Water & Wastewater Treatment exams with 4,009+ practice questions for Class I–IV Water and Class I–IV Wastewater. Covers BC (EOCP), Alberta (AWWOA), Saskatchewan (SAHO), and Manitoba (MWWA).",
     path: "/wpi",
     keywords:
-      "WPI exam prep, BC EOCP water treatment, Alberta AWWOA water operator, Saskatchewan SAHO water, Manitoba MWWA water, WPI Class I practice questions, WPI Class II practice questions, WPI Class III Class IV wastewater",
+      "WPI exam prep, BC EOCP water treatment, Alberta AWWOA water operator, Saskatchewan SAHO water, Manitoba MWWA water, WPI Class I practice questions, WPI Class II practice questions, WPI Class III wastewater, WPI Class IV wastewater",
   });
 
   const [activeProvince, setActiveProvince] = useState("BC");
@@ -248,7 +248,7 @@ export default function WpiLanding() {
             maxWidth: 560,
             margin: "0 auto 32px",
           }}>
-            2,506+ practice questions for WPI Class I–IV Water Treatment and Class I Wastewater — aligned with the Need-to-Know Criteria used by <strong style={{ color: "#BAE6FD" }}>EOCP (BC)</strong>, <strong style={{ color: "#BAE6FD" }}>AWWOA (AB)</strong>, <strong style={{ color: "#BAE6FD" }}>SAHO (SK)</strong>, and <strong style={{ color: "#BAE6FD" }}>MWWA (MB)</strong>.
+            4,009+ practice questions for WPI Class I–IV Water Treatment and Class I–IV Wastewater — aligned with the Need-to-Know Criteria used by <strong style={{ color: "#BAE6FD" }}>EOCP (BC)</strong>, <strong style={{ color: "#BAE6FD" }}>AWWOA (AB)</strong>, <strong style={{ color: "#BAE6FD" }}>SAHO (SK)</strong>, and <strong style={{ color: "#BAE6FD" }}>MWWA (MB)</strong>.
           </p>
 
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -577,11 +577,61 @@ export default function WpiLanding() {
                   </Link>
                 </div>
               ))}
+             </div>
+
+          {/* WPI Wastewater Bundle callout */}
+          <div style={{ marginTop: 32, display: "flex", justifyContent: "center" }}>
+            <div style={{
+              background: "linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%)",
+              border: "2px solid #BFDBFE",
+              borderRadius: 20,
+              padding: "28px 32px",
+              maxWidth: 680,
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 24,
+              flexWrap: "wrap" as const,
+            }}>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "#1D4ED8", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>💡 Best Value — WPI Bundle</div>
+                <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>WPI Wastewater Full Ladder</div>
+                <div style={{ fontSize: 13, color: "#475569", marginBottom: 8 }}>WPI Class I–IV Wastewater · 1,503 questions · Save CA$120</div>
+                <div style={{ display: "flex", gap: 16, flexWrap: "wrap" as const }}>
+                  {["WPI Class I WW", "WPI Class II WW", "WPI Class III WW", "WPI Class IV WW"].map(item => (
+                    <span key={item} style={{ fontSize: 11, color: "#1D4ED8", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
+                      <span style={{ color: "#059669" }}>✓</span> {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div style={{ textAlign: "center" as const, flexShrink: 0 }}>
+                <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 30, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>CA$299</div>
+                <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 12 }}>one-time · no subscription</div>
+                <Link href="/pricing">
+                  <button style={{
+                    background: "#1D4ED8",
+                    color: "#FFFFFF",
+                    border: "none",
+                    borderRadius: 10,
+                    padding: "12px 24px",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    whiteSpace: "nowrap" as const,
+                  }}>
+                    Get WPI WW Bundle →
+                  </button>
+                </Link>
+              </div>
             </div>
+          </div>
+
           </div>
         </div>
       </section>
-
       {/* ── WPI vs OWWCO Comparison Table ────────────────────────────── */}
       <section style={{ background: "#FFFFFF", padding: "64px 20px", borderTop: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>

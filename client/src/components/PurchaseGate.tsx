@@ -39,6 +39,8 @@ function isLocallyPurchased(examType: string): boolean {
     )
       return true;
     if (examType.includes("-ww") && keys.includes("bundle-ww")) return true;
+    if (examType.startsWith("wpi-") && examType.includes("-water") && keys.includes("bundle-wpi-water")) return true;
+    if (examType.startsWith("wpi-") && examType.includes("-wastewater") && keys.includes("bundle-wpi-wastewater")) return true;
     return false;
   } catch {
     return false;
@@ -155,16 +157,26 @@ export default function PurchaseGate({
   const featureList = features ?? DEFAULT_FEATURES[productKey] ?? FALLBACK_FEATURES;
 
   // Determine bundle upsell based on product type
-  const isWaterCourse = examType === "oit" || examType.includes("-water");
-  const isWwCourse = examType.includes("-ww");
-  const bundleKey = isWaterCourse ? "bundle-water" : isWwCourse ? "bundle-ww" : null;
-  const bundleName = isWaterCourse
+  const isWpiWaterCourse = examType.startsWith("wpi-") && examType.includes("-water");
+  const isWpiWwCourse = examType.startsWith("wpi-") && examType.includes("-wastewater");
+  const isWaterCourse = !isWpiWaterCourse && (examType === "oit" || examType.includes("-water"));
+  const isWwCourse = !isWpiWwCourse && examType.includes("-ww");
+  const bundleKey = isWpiWaterCourse ? "bundle-wpi-water" : isWpiWwCourse ? "bundle-wpi-wastewater" : isWaterCourse ? "bundle-water" : isWwCourse ? "bundle-ww" : null;
+  const bundleName = isWpiWaterCourse
+    ? "WPI Water Full Ladder Bundle"
+    : isWpiWwCourse
+    ? "WPI Wastewater Full Ladder Bundle"
+    : isWaterCourse
     ? "Water Treatment Full Ladder Bundle"
     : isWwCourse
     ? "Wastewater Treatment Full Ladder Bundle"
     : null;
-  const bundlePrice = isWaterCourse ? 349 : isWwCourse ? 299 : null;
-  const bundleSavings = isWaterCourse
+  const bundlePrice = isWpiWaterCourse ? 299 : isWpiWwCourse ? 299 : isWaterCourse ? 349 : isWwCourse ? 299 : null;
+  const bundleSavings = isWpiWaterCourse
+    ? "WPI Class I–IV Water · Save CA$99"
+    : isWpiWwCourse
+    ? "WPI Class I–IV Wastewater · Save CA$120"
+    : isWaterCourse
     ? "OIT + Class 1–4 Water · Save CA$155"
     : isWwCourse
     ? "Class 1–4 Wastewater · Save CA$157"

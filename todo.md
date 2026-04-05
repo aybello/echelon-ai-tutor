@@ -209,3 +209,6 @@
 - [x] WPI Class IV Wastewater: formula sheet at /formulas-wpi-class4-ww
 - [x] WPI Class IV Wastewater: Stripe product (CA$129), SiteNav, Pricing page, bundle-all
 - [x] WPI landing page: add Class II, III, IV Wastewater to pricing cards section
+- [x] Add WPI Class II, III, IV Wastewater to SiteNav WPI dropdown
+- [x] Create WPI Wastewater Full Ladder bundle (CA$299) in products.ts, Pricing page, and WPI landing page
+- [x] Update WPI landing page FAQ to mention all four WW classes are live
