@@ -373,55 +373,48 @@ export default function WpiLanding() {
               </div>
             </div>
 
-            <div style={{ flex: "1 1 280px" }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", marginBottom: 12 }}>Available Prep Materials</div>
-              <div style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
-                {[
-                  { href: "/wpi-class1-water", label: "🌊 Class I Water Practice", sub: "502 questions · 15 free" },
-                  { href: "/wpi-class1-water-mock", label: "📋 Class I Water Mock Exam", sub: "100 questions · 2 hours" },
-                  { href: "/formulas-wpi-class1", label: "📐 Class I Water Formulas", sub: "CT values, dosing, flow rate" },
-                  { href: "/wpi-class2-water", label: "🌊 Class II Water Practice", sub: "501 questions · 15 free" },
-                  { href: "/wpi-class2-water-mock", label: "📋 Class II Water Mock Exam", sub: "100 questions · 2 hours" },
-                  { href: "/formulas-wpi-class2", label: "📐 Class II Water Formulas", sub: "Ozone, UV, membranes, hydraulics" },
-                  { href: "/wpi-class3-water", label: "🌊 Class III Water Practice", sub: "502 questions · 15 free" },
-                  { href: "/wpi-class3-water-mock", label: "📋 Class III Water Mock Exam", sub: "100 questions · 2 hours" },
-                  { href: "/formulas-wpi-class3", label: "📐 Class III Water Formulas", sub: "Ozone CT, membranes, process control" },
-                  { href: "/wpi-class4-water", label: "🌊 Class IV Water Practice", sub: "501 questions · 15 free" },
-                  { href: "/wpi-class4-water-mock", label: "📋 Class IV Water Mock Exam", sub: "100 questions · 2 hours" },
-                  { href: "/formulas-wpi-class4", label: "📐 Class IV Water Formulas", sub: "Advanced plant management formulas" },
-                  { href: "/wpi-class1-wastewater", label: "🌊 Class I Wastewater Practice", sub: "500 questions · 15 free" },
-                  { href: "/wpi-class1-wastewater-mock", label: "📋 Class I Wastewater Mock Exam", sub: "100 questions · 2 hours" },
-                  { href: "/formulas-wpi-class1-ww", label: "📐 Class I Wastewater Formulas", sub: "BOD, TSS, HRT, SRT, loading rates" },
-                  { href: "/wpi-class2-wastewater", label: "🌊 Class II Wastewater Practice", sub: "501 questions · 15 free" },
-                  { href: "/wpi-class2-wastewater-mock", label: "📋 Class II Wastewater Mock Exam", sub: "100 questions · 2 hours" },
-                  { href: "/formulas-wpi-class2-ww", label: "📐 Class II Wastewater Formulas", sub: "BNR, SRT, SVI, biosolids" },
-                  { href: "/wpi-class3-wastewater", label: "🌊 Class III Wastewater Practice", sub: "501 questions · 15 free" },
-                  { href: "/wpi-class3-wastewater-mock", label: "📋 Class III Wastewater Mock Exam", sub: "100 questions · 2 hours" },
-                  { href: "/formulas-wpi-class3-ww", label: "📐 Class III Wastewater Formulas", sub: "BNR kinetics, MBR, biosolids, industrial pretreatment" },
-                  { href: "/wpi-class4-wastewater", label: "🏛️ Class IV Wastewater Practice", sub: "502 questions · 15 free" },
-                  { href: "/wpi-class4-wastewater-mock", label: "📋 Class IV Wastewater Mock Exam", sub: "100 questions · 2 hours" },
-                  { href: "/formulas-wpi-class4-ww", label: "📐 Class IV Wastewater Formulas", sub: "Advanced process control, BNR, biogas, asset management" },
-                ].map(item => (
-                  <Link key={item.href} href={item.href}>
-                    <div style={{
-                      background: "#FFFFFF",
-                      border: "1px solid #E2E8F0",
-                      borderRadius: 10,
-                      padding: "10px 14px",
-                      cursor: "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                    }}>
-                      <div>
-                        <div style={{ fontSize: 12, fontWeight: 600, color: "#0F172A" }}>{item.label}</div>
-                        <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 2 }}>{item.sub}</div>
-                      </div>
-                      <span style={{ color: province.color, fontSize: 14 }}>→</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+            <div style={{ flex: "1 1 240px", display: "flex", flexDirection: "column" as const, justifyContent: "center", gap: 12 }}>
+              <Link href="/wpi-class1-water">
+                <div style={{
+                  background: province.color,
+                  color: "#FFFFFF",
+                  borderRadius: 12,
+                  padding: "14px 20px",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  cursor: "pointer",
+                  textAlign: "center" as const,
+                }}>
+                  Try Class I Water Free →
+                </div>
+              </Link>
+              <Link href="/wpi-class1-wastewater">
+                <div style={{
+                  background: "#FFFFFF",
+                  color: province.color,
+                  border: `2px solid ${province.color}`,
+                  borderRadius: 12,
+                  padding: "14px 20px",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  cursor: "pointer",
+                  textAlign: "center" as const,
+                }}>
+                  Try Class I Wastewater Free →
+                </div>
+              </Link>
+              <Link href="/wpi#pricing">
+                <div style={{
+                  color: "#64748B",
+                  fontSize: 13,
+                  textAlign: "center" as const,
+                  cursor: "pointer",
+                  textDecoration: "underline",
+                  paddingTop: 4,
+                }}>
+                  View all courses & pricing ↓
+                </div>
+              </Link>
             </div>
           </div>
         </div>
