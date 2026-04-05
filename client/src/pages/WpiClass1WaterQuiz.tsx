@@ -517,7 +517,7 @@ export default function WpiClass1WaterQuiz() {
                   {current.steps && current.steps.length > 0 && (
                     <StepSolution
                       steps={current.steps as { l: string; c: string }[]}
-                      tip=""
+                      tip={current.tip || ""}
                     />
                   )}
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 12 }}>

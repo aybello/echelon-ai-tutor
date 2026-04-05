@@ -11,6 +11,7 @@ export interface WpiClass1WaterQuestion {
   correctAnswer: number;
   explanation: string;
   steps?: { l: string; c: string }[];
+  tip?: string;
 }
 
 export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
@@ -62,10 +63,11 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     correctAnswer: 2,
     explanation: "SOR = Flow / Area = 10,000 m3/day / 500 m2 = 20 m/day.",
     steps: [
-      { l: "Step 1", c: "Formula: SOR = Flow ÷ Surface Area" },
-      { l: "Step 2", c: "Substitute: SOR = 10,000 m³/day ÷ 500 m²" },
-      { l: "Step 3", c: "Calculate: SOR = 20 m/day" }
+      { l: "Formula", c: "SOR = Flow ÷ Surface Area" },
+      { l: "Substitute", c: "SOR = 10,000 m³/day ÷ 500 m²" },
+      { l: "Calculate", c: "SOR = 20 m/day" }
     ],
+    tip: "Surface Overflow Rate (SOR) is Flow divided by Area. Units must cancel to length/time (e.g., m/day).",
   },
   {
     id: 7,
@@ -251,11 +253,12 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     correctAnswer: 0,
     explanation: "Mass = Flow x Concentration = 75,000 m3/day x 2.5 mg/L. Convert: 75,000,000 L/day x 0.0025 g/L = 187,500 g/day = 187.5 kg/day.",
     steps: [
-      { l: "Step 1", c: "Formula: Mass = Flow × Concentration" },
-      { l: "Step 2", c: "Substitute: Mass = 75,000 m³/day × 2.5 mg/L" },
-      { l: "Step 3", c: "Calculate: Mass = 187,500,000 mg/day" },
-      { l: "Step 4", c: "Convert: Mass = 187,500,000 mg/day ÷ 1,000,000 mg/kg = 187.5 kg/day" }
+      { l: "Formula", c: "Mass = Flow × Concentration" },
+      { l: "Substitute", c: "Mass = 75,000 m³/day × 2.5 mg/L" },
+      { l: "Calculate", c: "Mass = 187,500,000 mg/day" },
+      { l: "Result", c: "Mass = 187,500,000 mg/day ÷ 1,000,000 mg/kg = 187.5 kg/day" }
     ],
+    tip: "Mass (kg) = Flow (MLD) x Dose (mg/L). Remember 1 MGD x 1 mg/L = 8.34 lbs/day, or 1 m3/day x 1 mg/L = 1 g/day.",
   },
   {
     id: 30,
@@ -457,10 +460,11 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     correctAnswer: 2,
     explanation: "Total chlorine dose = Chlorine demand + Required residual = 1.8 + 0.5 = 2.3 mg/L.",
     steps: [
-      { l: "Step 1", c: "Formula: Total Chlorine Dose = Chlorine Demand + Required Residual" },
-      { l: "Step 2", c: "Substitute: Total Chlorine Dose = 1.8 mg/L + 0.5 mg/L" },
-      { l: "Step 3", c: "Calculate: Total Chlorine Dose = 2.3 mg/L" }
+      { l: "Formula", c: "Total Chlorine Dose = Chlorine Demand + Required Residual" },
+      { l: "Substitute", c: "Total Chlorine Dose = 1.8 mg/L + 0.5 mg/L" },
+      { l: "Calculate", c: "Total Chlorine Dose = 2.3 mg/L" }
     ],
+    tip: "Total Chlorine Dose is the sum of chlorine demand and the desired residual. Demand is used up, residual remains.",
   },
   {
     id: 55,
@@ -510,11 +514,12 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     correctAnswer: 1,
     explanation: "Detention time = Volume / Flow = 1,000 m3 / (5,000 m3/day) = 0.2 days = 0.2 x 24 = 4.8 hours.",
     steps: [
-      { l: "Step 1", c: "Formula: Detention Time = Volume ÷ Flow" },
-      { l: "Step 2", c: "Substitute: Detention Time = 1,000 m³ ÷ 5,000 m³/day" },
-      { l: "Step 3", c: "Calculate: Detention Time = 0.2 days" },
-      { l: "Step 4", c: "Convert: Detention Time = 0.2 days × 24 hours/day = 4.8 hours" }
+      { l: "Formula", c: "Detention Time = Volume ÷ Flow" },
+      { l: "Substitute", c: "Detention Time = 1,000 m³ ÷ 5,000 m³/day" },
+      { l: "Calculate", c: "Detention Time = 0.2 days" },
+      { l: "Result", c: "Detention Time = 0.2 days × 24 hours/day = 4.8 hours" }
     ],
+    tip: "Detention Time is Volume divided by Flow. Ensure units are consistent for the desired time unit.",
   },
   {
     id: 61,
@@ -3236,9 +3241,12 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     correctAnswer: 1,
     explanation: "The LSI = pH - pHs (saturation pH). LSI > 0: water is supersaturated, tends to deposit CaCO3 scale. LSI < 0: water is undersaturated, tends to dissolve CaCO3 (corrosive). LSI = 0: water is in equilibrium.",
     steps: [
-      { l: "Step 1", c: "Formula: LSI = pH - pHs" },
-      { l: "Step 2", c: "Conclusion: LSI indicates whether water will tend to dissolve, deposit, or be in equilibrium with calcium carbonate." }
+      { l: "Step 1", c: "Formula: LSI = pH - pHs (saturation pH)" },
+      { l: "Step 2", c: "LSI > 0: supersaturated, scaling potential." },
+      { l: "Step 3", c: "LSI < 0: undersaturated, corrosive potential." },
+      { l: "Step 4", c: "LSI = 0: equilibrium, stable water." }
     ],
+    tip: "Langelier Saturation Index (LSI) indicates water's tendency to scale (positive) or corrode (negative).",
   },
   {
     id: 401,

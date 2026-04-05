@@ -9,6 +9,7 @@ export interface WpiClass2WastewaterQuestion {
   correctAnswer: number;
   explanation: string;
   steps: { l: string; c: string }[];
+  tip?: string;
 }
 
 export const WPI_CLASS2_WASTEWATER_MODULES: string[] = [
@@ -366,6 +367,7 @@ export const WPI_CLASS2_WASTEWATER_QUESTIONS: WpiClass2WastewaterQuestion[] = [
       { l: "Calculate", c: "Alum Dose = 9.6 mg/L" },
       { l: "Result", c: "The stoichiometric dose of alum is 9.6 mg/L." }
     ],
+    tip: "Alum Dose: Remember the stoichiometric ratio of 9.6 mg Alum per mg P for phosphorus removal.",
   },
   {
     id: 39,
@@ -1424,6 +1426,7 @@ export const WPI_CLASS2_WASTEWATER_QUESTIONS: WpiClass2WastewaterQuestion[] = [
       { l: "Calculate", c: "Alkalinity Consumption = 214.2 mg/L as CaCO3" },
       { l: "Result", c: "The typical alkalinity consumption is 214 mg/L as CaCO3." }
     ],
+    tip: "Alkalinity Consumption: For nitrification, 7.14 mg CaCO3 is consumed per mg NH4-N oxidized.",
   },
   {
     id: 156,
@@ -3021,6 +3024,7 @@ export const WPI_CLASS2_WASTEWATER_QUESTIONS: WpiClass2WastewaterQuestion[] = [
       { l: "Step 2", c: "Canadian guidelines for Class B biosolids require a minimum SRT of 15 days for mesophilic digesters." },
       { l: "Result", c: "The typical minimum SRT is 15 days." }
     ],
+    tip: "SRT for Class B Biosolids: Mesophilic anaerobic digestion requires a minimum SRT of 15 days.",
   },
   {
     id: 333,

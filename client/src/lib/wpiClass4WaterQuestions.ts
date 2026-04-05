@@ -9,6 +9,7 @@ export interface WpiClass4WaterQuestion {
   correctAnswer: number;
   explanation: string;
   steps: { l: string; c: string }[];
+  tip?: string;
 }
 
 export const WPI_CLASS4_WATER_MODULES: string[] = [
@@ -368,6 +369,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       { l: "Step 3", c: "Common causes include biofilm, sediment, or organic matter in the distribution system." },
       { l: "Step 4", c: "Consider booster chlorination for large systems or persistent issues after addressing root causes." }
     ],
+    tip: "Chlorine residual drop: Investigate demand causes (biofilm, sediment, organics) before considering booster chlorination.",
     },
   {
       id: 39,
@@ -643,6 +645,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       { l: "Step 3", c: "Notify the regulatory authority (e.g., provincial Ministry of Environment)." },
       { l: "Step 4", c: "Prepare for a potential lead service line replacement program, as often mandated by regulations." }
     ],
+    tip: "Lead exceedance: Optimize corrosion control, notify regulators, and prepare for lead service line replacement.",
     },
   {
       id: 69,
@@ -1422,6 +1425,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       { l: "Step 3", c: "Source water Alkalinity = 60 mg/L as CaCO3 (falls into 0-60 mg/L category)." },
       { l: "Step 4", c: "Consult the USEPA Enhanced Coagulation table: >4 mg/L TOC and 0-60 mg/L alkalinity requires 45% TOC removal." }
     ],
+    tip: "Enhanced Coagulation: Use the USEPA table to match TOC and alkalinity to find the required TOC removal percentage.",
     },
   {
       id: 155,
@@ -1571,6 +1575,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       { l: "Calculate", c: "0.366 mg/L ÷ 4" },
       { l: "Result", c: "0.0915 mg/L" }
     ],
+    tip: "Running Annual Average: Sum the four most recent quarterly results and divide by four.",
     },
   {
       id: 171,
@@ -1675,6 +1680,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       { l: "Calculate", c: "$76,000/year" },
       { l: "Step 4", c: "Total budget = $380,000 / 0.18 = $2,111,111. Rate increase = $76,000 / $2,111,111 = 3.6%." }
     ],
+    tip: "Percentage Increase: Calculate the additional cost, then divide by the total budget to find the required rate increase.",
     },
   {
       id: 182,
@@ -1698,6 +1704,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       { l: "Step 3", c: "Additional cost factor for reactive vs. preventive: 3 - 1 = 2." },
       { l: "Step 4", c: "Estimated annual saving = $104,000 × 2 = $208,000/year." }
     ],
+    tip: "CMMS Savings: Calculate the reduction in missed PM, then multiply by the additional cost factor of reactive vs. preventive.",
     },
   {
       id: 184,

@@ -434,7 +434,7 @@ export default function WpiClass4WastewaterQuiz() {
                     {current.steps && current.steps.length > 0 && (
                       <StepSolution
                         steps={current.steps as { l: string; c: string }[]}
-                        tip=""
+                        tip={current.tip || ""}
                       />
                     )}
 

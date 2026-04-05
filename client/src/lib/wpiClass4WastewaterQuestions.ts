@@ -23,6 +23,7 @@ export interface WpiClass4WastewaterQuestion {
   correctAnswer: number;
   explanation: string;
   steps: { l: string; c: string }[];
+  tip?: string;
 }
 
 export const wpiClass4WastewaterQuestions: WpiClass4WastewaterQuestion[] = [
@@ -3654,6 +3655,7 @@ export const wpiClass4WastewaterQuestions: WpiClass4WastewaterQuestion[] = [
       { l: "Step 3", c: "For 60-70% CH₄ content, calculate the range: 0.60 * 35.8 MJ/m³ to 0.70 * 35.8 MJ/m³." },
       { l: "Result", c: "21.48 MJ/m³ to 25.06 MJ/m³, which is approximately 21-25 MJ/m³." }
     ],
+    tip: "Biogas energy content is proportional to its methane percentage. Remember methane's LHV is ~35.8 MJ/m³.",
   },
   {
     id: 403,

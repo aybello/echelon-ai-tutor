@@ -10,6 +10,7 @@ export interface WpiClass2WaterQuestion {
   correctAnswer: number;
   explanation: string;
   steps?: { l: string; c: string }[];
+  tip?: string;
   difficulty: 'easy' | 'medium' | 'hard';
 }
 

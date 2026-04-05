@@ -11,6 +11,7 @@ export interface WpiClass3WastewaterQuestion {
   correctAnswer: number;
   explanation: string;
   steps: { l: string; c: string }[];
+  tip?: string;
 }
 
 export const WPI_CLASS3_WASTEWATER_MODULES: string[] = [
@@ -300,6 +301,7 @@ export const wpiClass3WastewaterQuestions: WpiClass3WastewaterQuestion[] = [
       { l: "Calculate", c: "r = 3,000 mg/L / 5,000 mg/L" },
       { l: "Result", c: "r = 0.60" }
     ],
+    tip: "RAS Ratio (r) = MLSS / (RAS SS - MLSS). Remember this formula for calculating the return activated sludge ratio.",
   },
   {
     id: 31,
@@ -1221,9 +1223,11 @@ export const wpiClass3WastewaterQuestions: WpiClass3WastewaterQuestion[] = [
     correctAnswer: 2,
     explanation: "To achieve very low effluent TP (<0.1 mg/L), Fe:P molar ratios of 3–5:1 are typically required, as excess iron is needed to drive precipitation to completion and for co-precipitation.",
     steps: [
-      { l: "Step 1", c: "For effective phosphorus removal to <0.1 mg/L, a higher molar ratio is needed." },
+      { l: "Step 1", c: "To achieve very low effluent TP (<0.1 mg/L), a higher molar ratio is required." },
+      { l: "Step 2", c: "Excess iron is needed to drive precipitation to completion and for co-precipitation." },
       { l: "Result", c: "The approximate iron-to-phosphorus molar ratio is 3–5:1." }
     ],
+    tip: "For very low effluent phosphorus, remember a higher Fe:P molar ratio (3-5:1) is needed for effective removal.",
   },
   {
     id: 133,
@@ -1413,12 +1417,13 @@ export const wpiClass3WastewaterQuestions: WpiClass3WastewaterQuestion[] = [
     correctAnswer: 1,
     explanation: "With IR=3, approximately 75% of nitrate is recycled to the anoxic zone. If nitrification produces 30 mg/L NO₃-N, effluent NO₃-N ≈ 30 × (1/(1+3)) = 7.5 mg/L, typically 5–10 mg/L in practice.",
     steps: [
-      { l: "Formula", c: "Effluent NO₃-N = Influent NO₃-N / (1 + IR)" },
-      { l: "Step 1", c: "Assume influent NO₃-N from nitrification is 30 mg/L (typical)." },
+      { l: "Formula", c: "Effluent NO₃-N = Nitrified NO₃-N / (1 + IR)" },
+      { l: "Step 1", c: "Assume nitrified NO₃-N is 30 mg/L (typical for 80% nitrification)." },
       { l: "Substitute", c: "Effluent NO₃-N = 30 mg/L / (1 + 3)" },
       { l: "Calculate", c: "Effluent NO₃-N = 30 mg/L / 4 = 7.5 mg/L" },
-      { l: "Result", c: "The effluent nitrate concentration is approximately 3–5 mg/L (due to practical limitations and typical ranges)." }
+      { l: "Result", c: "The effluent nitrate concentration is approximately 7.5 mg/L." },
     ],
+    tip: "Effluent NO₃-N = Nitrified NO₃-N / (1 + IR). Higher IR means more denitrification and lower effluent nitrate.",
   },
   {
     id: 154,

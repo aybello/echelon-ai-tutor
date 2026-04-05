@@ -5,7 +5,7 @@ import { Step } from "@/lib/questions";
 
 interface Props {
   steps: Step[];
-  tip: string;
+  tip?: string;
 }
 
 export default function StepSolution({ steps, tip }: Props) {
@@ -81,23 +81,25 @@ export default function StepSolution({ steps, tip }: Props) {
         ))}
       </div>
 
-      {/* Tip callout */}
-      <div
-        style={{
-          marginTop: 10,
-          background: "#EFF6FF",
-          borderRadius: 8,
-          padding: "10px 12px",
-          borderLeft: "3px solid #2563EB",
-        }}
-      >
-        <span style={{ fontSize: 9, fontWeight: 700, color: "#1D4ED8" }}>
-          💡 TIP{"  "}
-        </span>
-        <span style={{ fontSize: 11, color: "#1E3A5F", lineHeight: 1.6 }}>
-          {tip}
-        </span>
-      </div>
+      {/* Tip callout — only shown when tip is non-empty */}
+      {tip && (
+        <div
+          style={{
+            marginTop: 10,
+            background: "#EFF6FF",
+            borderRadius: 8,
+            padding: "10px 12px",
+            borderLeft: "3px solid #2563EB",
+          }}
+        >
+          <span style={{ fontSize: 9, fontWeight: 700, color: "#1D4ED8" }}>
+            💡 TIP{"  "}
+          </span>
+          <span style={{ fontSize: 11, color: "#1E3A5F", lineHeight: 1.6 }}>
+            {tip}
+          </span>
+        </div>
+      )}
     </div>
   );
 }
