@@ -272,3 +272,4 @@
 - [x] Bug: owner bypass not granting access to all paid courses — added "Log in to your account" link on PurchaseGate with return-path redirect, OAuth callback now redirects back to original page after login
 - [x] Redesign WPI landing page for coherence: removed verbose "What's Covered" card grid, replaced with compact accordion, improved page flow
 - [x] Remove all bundle pricing options from WPI landing page and main pricing page
+- [x] Update all product prices: OIT $49, Class 1/WPI I $99, Class 2/WPI II $149, Class 3/WPI III $249, Class 4/WPI IV $349, WQA $129
