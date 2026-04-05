@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
+
+const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png";
 
 interface QuizGateProps {
   questionsAnswered: number;
@@ -43,6 +45,7 @@ export default function QuizGate({
   priceLabel,
   paidFeatures,
 }: QuizGateProps) {
+  const [, navigate] = useLocation();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -114,7 +117,40 @@ export default function QuizGate({
   // ── Main gate modal ────────────────────────────────────────────────────────
   return (
     <div style={{ position: "fixed", inset: 0, background: "rgba(15,23,42,0.88)", backdropFilter: "blur(6px)", zIndex: 9999, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
-      <div style={{ background: "#fff", borderRadius: 20, padding: "36px 32px", maxWidth: 520, width: "100%", boxShadow: "0 32px 80px rgba(0,0,0,0.35)", textAlign: "center" }}>
+      {/* X button — top-right corner */}
+      <button
+        onClick={() => navigate("/")}
+        aria-label="Back to homepage"
+        style={{
+          position: "fixed",
+          top: 16,
+          right: 16,
+          width: 40,
+          height: 40,
+          borderRadius: "50%",
+          background: "rgba(255,255,255,0.15)",
+          border: "1.5px solid rgba(255,255,255,0.3)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          fontSize: 18,
+          color: "#fff",
+          zIndex: 10000,
+          lineHeight: 1,
+        }}
+      >
+        ✕
+      </button>
+      <div style={{ background: "#fff", borderRadius: 20, padding: "32px 32px 28px", maxWidth: 520, width: "100%", boxShadow: "0 32px 80px rgba(0,0,0,0.35)", textAlign: "center" }}>
+
+        {/* Full logo */}
+        <Link href="/">
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 20, cursor: "pointer" }}>
+            <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 30, width: "auto", objectFit: "contain" }} />
+            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 15, color: "#0F172A", letterSpacing: "-0.02em", whiteSpace: "nowrap" }}>Echelon Institute</span>
+          </div>
+        </Link>
 
         {/* Icon + headline */}
         <div style={{ width: 64, height: 64, borderRadius: "50%", background: "linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 18px", fontSize: 28 }}>

@@ -3,7 +3,7 @@
 // Usage: wrap the quiz content in <PurchaseGate examType="oit" productKey="oit" productName="OIT Practice Pass" price={49} />
 
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png";
@@ -111,6 +111,7 @@ export default function PurchaseGate({
 }: PurchaseGateProps) {
   const [email] = useState(getStoredEmail);
   const [localAccess] = useState(() => isLocallyPurchased(examType));
+  const [, navigate] = useLocation();
 
   // Stripe checkout session mutation
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
@@ -162,25 +163,79 @@ export default function PurchaseGate({
         alignItems: "center",
         justifyContent: "center",
         padding: "40px 24px",
+        position: "relative",
       }}
     >
+      {/* X button — top-right corner, always visible */}
+      <button
+        onClick={() => navigate("/")}
+        aria-label="Back to homepage"
+        style={{
+          position: "fixed",
+          top: 16,
+          right: 16,
+          width: 40,
+          height: 40,
+          borderRadius: "50%",
+          background: "#fff",
+          border: "1.5px solid #E2E8F0",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.10)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          fontSize: 18,
+          color: "#64748B",
+          zIndex: 10,
+          lineHeight: 1,
+        }}
+      >
+        ✕
+      </button>
+
       <div
         style={{
           background: "#fff",
           borderRadius: 20,
           border: "1.5px solid #E2E8F0",
-          padding: "48px 40px",
+          padding: "40px 36px 36px",
           maxWidth: 500,
           width: "100%",
           textAlign: "center",
           boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
         }}
       >
-        <img
-          src={LOGO_URL}
-          alt="Echelon Institute"
-          style={{ height: 44, marginBottom: 20, objectFit: "contain" }}
-        />
+        {/* Full logo: droplets icon + "Echelon Institute" text */}
+        <Link href="/">
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              marginBottom: 24,
+              cursor: "pointer",
+              textDecoration: "none",
+            }}
+          >
+            <img
+              src={LOGO_URL}
+              alt="Echelon Institute"
+              style={{ height: 36, width: "auto", objectFit: "contain" }}
+            />
+            <span
+              style={{
+                fontFamily: "'Sora', sans-serif",
+                fontWeight: 800,
+                fontSize: 17,
+                color: "#0F172A",
+                letterSpacing: "-0.02em",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Echelon Institute
+            </span>
+          </div>
+        </Link>
 
         <div
           style={{
@@ -191,8 +246,8 @@ export default function PurchaseGate({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            margin: "0 auto 20px",
-            fontSize: 28,
+            margin: "0 auto 16px",
+            fontSize: 26,
           }}
         >
           🔒
@@ -334,6 +389,24 @@ export default function PurchaseGate({
           </a>
         </div>
       </div>
+
+      {/* Back to homepage text link at bottom */}
+      <Link href="/">
+        <button
+          style={{
+            marginTop: 20,
+            background: "transparent",
+            border: "none",
+            color: "#94A3B8",
+            fontSize: 13,
+            cursor: "pointer",
+            fontFamily: "inherit",
+            fontWeight: 500,
+          }}
+        >
+          ← Back to Homepage
+        </button>
+      </Link>
     </div>
   );
 }
