@@ -552,55 +552,6 @@ export default function WpiLanding() {
                 </div>
               ))}
             </div>
-            {/* Water Bundle */}
-            <div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
-              <div style={{
-                background: "linear-gradient(135deg, #ECFEFF 0%, #EFF6FF 100%)",
-                border: "2px solid #A5F3FC",
-                borderRadius: 16,
-                padding: "22px 28px",
-                maxWidth: 680,
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 20,
-                flexWrap: "wrap" as const,
-              }}>
-                <div>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: "#0E7490", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 4 }}>💡 Best Value — WPI Bundle</div>
-                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 3 }}>WPI Water Full Ladder</div>
-                  <div style={{ fontSize: 13, color: "#475569", marginBottom: 6 }}>Class I–IV Water · 2,000+ questions · Save CA$157</div>
-                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
-                    {["Class I", "Class II", "Class III", "Class IV"].map(item => (
-                      <span key={item} style={{ fontSize: 11, color: "#0E7490", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
-                        <span style={{ color: "#059669" }}>✓</span> {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div style={{ textAlign: "center" as const, flexShrink: 0 }}>
-                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>CA$299</div>
-                  <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 10 }}>one-time · no subscription</div>
-                  <Link href="/pricing">
-                    <button style={{
-                      background: "#0E7490",
-                      color: "#FFFFFF",
-                      border: "none",
-                      borderRadius: 8,
-                      padding: "10px 20px",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                      whiteSpace: "nowrap" as const,
-                    }}>
-                      Get Water Bundle →
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Wastewater Treatment */}
@@ -651,55 +602,7 @@ export default function WpiLanding() {
                 </div>
               ))}
             </div>
-            {/* Wastewater Bundle */}
-            <div style={{ marginTop: 20, display: "flex", justifyContent: "center" }}>
-              <div style={{
-                background: "linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 100%)",
-                border: "2px solid #BFDBFE",
-                borderRadius: 16,
-                padding: "22px 28px",
-                maxWidth: 680,
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 20,
-                flexWrap: "wrap" as const,
-              }}>
-                <div>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: "#1D4ED8", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 4 }}>💡 Best Value — WPI Bundle</div>
-                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 3 }}>WPI Wastewater Full Ladder</div>
-                  <div style={{ fontSize: 13, color: "#475569", marginBottom: 6 }}>Class I–IV Wastewater · 2,000+ questions · Save CA$157</div>
-                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
-                    {["Class I", "Class II", "Class III", "Class IV"].map(item => (
-                      <span key={item} style={{ fontSize: 11, color: "#1D4ED8", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
-                        <span style={{ color: "#059669" }}>✓</span> {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div style={{ textAlign: "center" as const, flexShrink: 0 }}>
-                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>CA$299</div>
-                  <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 10 }}>one-time · no subscription</div>
-                  <Link href="/pricing">
-                    <button style={{
-                      background: "#1D4ED8",
-                      color: "#FFFFFF",
-                      border: "none",
-                      borderRadius: 8,
-                      padding: "10px 20px",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                      whiteSpace: "nowrap" as const,
-                    }}>
-                      Get Wastewater Bundle →
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>

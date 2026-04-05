@@ -270,4 +270,5 @@
 - [x] Owner bypass: implement localStorage-based preview mode — visit /preview?key=d200f5c012ca384309b488e742d725e0 to unlock all paywalls instantly
 - [x] Bug: owner bypass still not working after login — fixed: OAuth state was being corrupted by JSON encoding; switched to sessionStorage for return path, OAuth callback now serves inline JS redirect
 - [x] Bug: owner bypass not granting access to all paid courses — added "Log in to your account" link on PurchaseGate with return-path redirect, OAuth callback now redirects back to original page after login
-- [ ] Redesign WPI landing page for coherence: remove verbose 'What's Covered' module breakdown, consolidate pricing, improve overall flow
+- [x] Redesign WPI landing page for coherence: removed verbose "What's Covered" card grid, replaced with compact accordion, improved page flow
+- [x] Remove all bundle pricing options from WPI landing page and main pricing page
