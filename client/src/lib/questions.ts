@@ -624,7 +624,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `The chlorine dose is the sum of the chlorine demand and the desired residual. Dose = Demand + Residual = 1.5 mg/L + 0.5 mg/L = 2.0 mg/L.`,
-    tip: `Chlorine Dose (mg/L) = Chlorine Demand (mg/L) + Chlorine Residual (mg/L)`,
+    steps: [
+      { l: "Identify known values", c: "List the given values from the problem statement for chlorine demand and desired chlorine residual." },
+      { l: "Recall the formula", c: "Remember the formula for calculating chlorine dose, which is the sum of chlorine demand and chlorine residual." },
+      { l: "Substitute values into formula", c: "Plug the identified values for chlorine demand and desired chlorine residual into the formula." },
+      { l: "Calculate the chlorine dose", c: "Perform the addition to find the total chlorine dose required for the water sample." },
+    ],
+    tip: "Always double-check that you are using the correct formula for the specific calculation required.",
   },
   {
     id: 136,
@@ -641,7 +647,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Chlorine demand is the difference between the dose applied and the residual measured. Demand = Dose - Residual = 3.0 mg/L - 0.8 mg/L = 2.2 mg/L.`,
-    tip: `Chlorine Demand (mg/L) = Chlorine Dose (mg/L) - Chlorine Residual (mg/L)`,
+    steps: [
+      { l: "Identify given values", c: "List the known values from the problem statement: Chlorine Dose = 3.0 mg/L and Chlorine Residual = 0.8 mg/L." },
+      { l: "Recall chlorine demand formula", c: "Remember the formula for chlorine demand: Chlorine Demand = Chlorine Dose - Chlorine Residual." },
+      { l: "Substitute values into formula", c: "Plug the identified dose and residual values into the chlorine demand formula: Chlorine Demand = 3.0 mg/L - 0.8 mg/L." },
+      { l: "Calculate chlorine demand", c: "Perform the subtraction to find the chlorine demand: 3.0 - 0.8 = 2.2 mg/L." },
+    ],
+    tip: "Always double-check that you are using the correct formula for the specific calculation requested in the question.",
   },
   {
     id: 137,
@@ -658,7 +670,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 2,
     explanation: `The CT value is calculated by multiplying the concentration by the time. CT = 1.5 mg/L * 30 min = 45 mg-min/L.`,
-    tip: `CT = Concentration (mg/L) x Time (minutes)`,
+    steps: [
+      { l: "Identify given values", c: "Extract the free chlorine concentration and contact time from the problem statement." },
+      { l: "Recall the CT formula", c: "Remember the formula for CT value, which is Concentration multiplied by Time." },
+      { l: "Substitute values into formula", c: "Plug the given concentration (1.5 mg/L) and time (30 minutes) into the CT formula." },
+      { l: "Calculate the CT value", c: "Perform the multiplication to find the final CT value in mg-min/L." },
+    ],
+    tip: "Always ensure units are consistent with the formula before performing calculations to avoid errors.",
   },
   {
     id: 138,
@@ -675,7 +693,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Feed Rate (kg/day) = Flow (ML/day) x Dose (mg/L). Flow = 1000 m3/day = 1.0 ML/day. Feed Rate = 1.0 ML/day x 2.0 mg/L = 2.0 kg/day.`,
-    tip: `Feed Rate (kg/day) = Flow (ML/day) x Dose (mg/L)`,
+    steps: [
+      { l: "Convert flow to ML/day", c: "The formula requires flow in ML/day, so convert the given flow of 1000 m3/day to megalitres per day. Remember that 1 ML = 1000 m3." },
+      { l: "Identify chlorine dose", c: "Determine the required chlorine dose from the problem statement. This value will be used directly in the feed rate calculation." },
+      { l: "Apply feed rate formula", c: "Use the provided formula: Feed Rate (kg/day) = Flow (ML/day) x Dose (mg/L). Substitute the converted flow and the given dose into the formula." },
+      { l: "Calculate daily chlorine needed", c: "Perform the multiplication to find the total kilograms of 100% chlorine gas required per day." },
+    ],
+    tip: "Always ensure units match the formula requirements; unit conversion is a common first step in many calculations.",
   },
   {
     id: 139,
@@ -692,7 +716,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `One megaliter (ML) is equal to 1,000 cubic meters (m3). Volume (ML) = 2,500 m3 / 1,000 m3/ML = 2.5 ML.`,
-    tip: `Volume (ML) = Volume (m3) / 1000`,
+    steps: [
+      { l: "Identify given volume", c: "Note the volume of water in the reservoir, which is given in cubic meters (m3)." },
+      { l: "Recall conversion factor", c: "Remember that 1 megaliter (ML) is equivalent to 1,000 cubic meters (m3). This is the key conversion factor." },
+      { l: "Apply conversion formula", c: "Divide the given volume in cubic meters by the conversion factor (1,000 m3/ML) to convert it to megaliters." },
+      { l: "Calculate final volume", c: "Perform the division to find the reservoir's volume expressed in megaliters (ML)." },
+    ],
+    tip: "Always double-check your units and ensure they cancel out correctly to arrive at the desired unit for the answer.",
   },
   {
     id: 140,
@@ -709,7 +739,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Flow (m3/day) = 50 L/s * (60 s/min) * (60 min/hr) * (24 hr/day) / 1000 L/m3 = 4,320 m3/day.`,
-    tip: `Flow (m3/day) = Flow (L/s) x 86.4`,
+    steps: [
+      { l: "Identify given values", c: "Note the provided flow rate in liters per second (L/s) which is 50 L/s." },
+      { l: "Identify target units", c: "The goal is to convert the flow rate to cubic meters per day (m3/day)." },
+      { l: "Apply conversion formula", c: "Use the given conversion factor: Flow (m3/day) = Flow (L/s) x 86.4. This factor combines seconds to days and liters to cubic meters." },
+      { l: "Calculate final flow", c: "Substitute the given flow rate into the formula: Flow (m3/day) = 50 L/s * 86.4. Perform the multiplication to get the final answer." },
+    ],
+    tip: "Always double-check the units required in the answer and ensure all conversion factors are correctly applied.",
   },
   {
     id: 141,
@@ -726,7 +762,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `First, find the 100% chlorine required: 5 ML/day * 2.5 mg/L = 12.5 kg/day. Then, adjust for the 12% strength: 12.5 kg/day / 0.12 = 104.17 kg/day.`,
-    tip: `Chemical Feed Rate (kg/day) = [Flow (ML/day) x Dose (mg/L)] / (% Strength as decimal)`,
+    steps: [
+      { l: "Convert flow to ML/day", c: "The formula requires flow in Mega Liters per day (ML/day), so convert the given flow rate from m3/day to ML/day by dividing by 1000." },
+      { l: "Calculate 100% chlorine needed", c: "Determine the mass of 100% pure chlorine required per day by multiplying the flow in ML/day by the required chlorine dose in mg/L. This gives the mass in kg/day." },
+      { l: "Convert percent to decimal", c: "The sodium hypochlorite strength is given as a percentage, so convert it to a decimal by dividing by 100 before using it in the formula." },
+      { l: "Calculate hypochlorite solution needed", c: "Divide the calculated 100% chlorine needed by the decimal strength of the sodium hypochlorite solution. This will give the total mass of the hypochlorite solution required per day." },
+    ],
+    tip: "Always ensure all units are consistent with the formula requirements before starting calculations, especially for flow and percentage strength.",
   },
   {
     id: 142,
@@ -743,7 +785,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 2,
     explanation: `Detention Time (hours) = Volume (m3) / Flow Rate (m3/hour). Flow Rate = 4,800 m3/day / 24 hours/day = 200 m3/hour. Time = 1,200 m3 / 200 m3/hour = 6.0 hours.`,
-    tip: `Detention Time (hours) = Volume / Flow Rate (ensure units match)`,
+    steps: [
+      { l: "Identify given values", c: "List the known volume of the clearwell and the flow rate to prepare for calculations." },
+      { l: "Convert flow rate units", c: "Convert the daily flow rate to an hourly flow rate to match the desired detention time unit (hours)." },
+      { l: "Apply detention time formula", c: "Use the formula Detention Time = Volume / Flow Rate, ensuring all units are consistent (m3 and m3/hour)." },
+      { l: "Calculate theoretical detention time", c: "Perform the division to find the theoretical detention time in hours." },
+    ],
+    tip: "Always ensure units are consistent before performing calculations; convert as needed to avoid errors.",
   },
   {
     id: 143,
@@ -760,7 +808,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Volume = 0.785 * (0.3 m)^2 * 500 m = 0.785 * 0.09 * 500 = 35.325 m3.`,
-    tip: `Volume of a cylinder = 0.785 x (diameter in meters)^2 x length in meters`,
+    steps: [
+      { l: "Convert diameter to meters", c: "The given diameter is in millimeters, so convert it to meters to match the units required by the formula." },
+      { l: "Identify known values", c: "List all the known values including the converted diameter and the given length for clarity." },
+      { l: "Apply the volume formula", c: "Substitute the known values into the provided formula for the volume of a cylinder: Volume = 0.785 x d^2 x L." },
+      { l: "Calculate the volume", c: "Perform the multiplication to find the total volume of water in the pipe in cubic meters." },
+    ],
+    tip: "Always ensure all units are consistent (e.g., meters) before performing calculations to avoid errors.",
   },
   {
     id: 144,
@@ -777,7 +831,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Feed Rate (L/day) = 45 mL/min * 60 min/hr * 24 hr/day = 64,800 mL/day. Convert to liters: 64,800 mL / 1000 mL/L = 64.8 L/day.`,
-    tip: `Feed Rate (L/day) = Feed Rate (mL/min) x 1440 min/day / 1000 mL/L`,
+    steps: [
+      { l: "Identify given values", c: "Note the chemical feed rate provided in milliliters per minute (mL/min)." },
+      { l: "Apply conversion factors", c: "Multiply the given feed rate by the number of minutes in a day (1440 min/day) to convert the rate from per minute to per day." },
+      { l: "Convert mL to L", c: "Divide the daily feed rate in milliliters by 1000 mL/L to convert the volume from milliliters to liters." },
+      { l: "Calculate final feed rate", c: "Perform the final calculation to determine the feed rate in liters per day (L/day)." },
+    ],
+    tip: "Always double-check your unit conversions, especially when converting between mL and L, and minutes and days.",
   },
   {
     id: 145,
@@ -794,7 +854,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Dose (mg/L) = Feed Rate (kg/day) / Flow (ML/day). Flow = 8.0 ML/day. Dose = 15 kg/day / 8.0 ML/day = 1.875 mg/L.`,
-    tip: `Dose (mg/L) = Feed Rate (kg/day) / Flow (ML/day)`,
+    steps: [
+      { l: "Convert flow to ML/day", c: "The formula requires flow in ML/day, so convert the given flow of 8,000 m3/day to Megalitres per day by dividing by 1,000." },
+      { l: "Identify given values", c: "List the known values from the problem statement: the chlorine feed rate in kg/day and the converted flow rate in ML/day." },
+      { l: "Apply the dose formula", c: "Use the provided formula: Dose (mg/L) = Feed Rate (kg/day) / Flow (ML/day), substituting the identified values." },
+      { l: "Calculate the applied dose", c: "Perform the division to find the applied chlorine dose in mg/L." },
+    ],
+    tip: "Always ensure units match the formula requirements; convert as necessary before performing calculations to avoid errors.",
   },
   {
     id: 146,
@@ -911,7 +977,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 2,
     explanation: `Flow rate Q is calculated by Q = V × A. Here, Q = 2 m/s × 0.5 m² = 1 m³/s. Converting to litres per second: 1 m³/s × 1000 L/m³ = 1000 L/s.`,
-    tip: `Q = V × A (flow rate = velocity × cross-sectional area)`,
+    steps: [
+      { l: "Identify given values", c: "List the known values for velocity (V) and cross-sectional area (A) from the problem statement." },
+      { l: "Calculate flow rate in m³/s", c: "Apply the formula Q = V × A to calculate the flow rate in cubic meters per second (m³/s)." },
+      { l: "Convert m³/s to L/s", c: "Convert the calculated flow rate from cubic meters per second to litres per second using the conversion factor 1 m³ = 1000 L." },
+      { l: "State the final answer", c: "Present the final flow rate in litres per second, ensuring the correct units are included." },
+    ],
+    tip: "Always pay close attention to units and perform necessary conversions to match the required output units.",
   },
   {
     id: 152,
@@ -960,7 +1032,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `First convert flow to m³/s: 360 L/s ÷ 1000 = 0.36 m³/s. Find the cross-sectional area: A = π × (d/2)² = 3.1416 × (0.15 m)² = 0.0707 m². Then velocity V = Q / A = 0.36 m³/s / 0.0707 m² = 5.09 m/s ≈ 5.1 m/s.`,
-    tip: `V = Q / A; A = π × (d/2)²`,
+    steps: [
+      { l: "Convert flow rate to m³/s", c: "The flow rate is given in L/s, but the velocity formula requires m³/s. Divide the given flow rate by 1000 to convert L/s to m³/s." },
+      { l: "Calculate pipe radius", c: "The area formula uses the radius, not the diameter. Divide the given pipe diameter by 2 to find the radius in meters." },
+      { l: "Calculate cross-sectional area", c: "Now that you have the radius, calculate the cross-sectional area of the pipe using the formula A = π × r²." },
+      { l: "Calculate water velocity", c: "Finally, calculate the velocity of the water using the formula V = Q / A, dividing the flow rate in m³/s by the cross-sectional area in m²." },
+    ],
+    tip: "Always ensure all units are consistent before performing calculations; convert as needed to avoid errors.",
   },
   {
     id: 155,
@@ -977,7 +1055,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `2 MGD = 2,000,000 gallons/day. 1 gallon = 3.785 L = 0.003785 m³, so 2,000,000 × 0.003785 = 7,570 m³/d.`,
-    tip: `m³/d = gallons/day × 0.003785`,
+    steps: [
+      { l: "Identify given values", c: "Note the flow rate in MGD and the conversion factor for US gallons to litres, which can be used to find cubic meters." },
+      { l: "Convert MGD to gallons/day", c: "Multiply the MGD value by 1,000,000 to express the flow rate in gallons per day, as the formula requires gallons/day." },
+      { l: "Apply conversion formula", c: "Use the provided formula: m³/d = gallons/day × 0.003785. Substitute the calculated gallons/day value into the formula." },
+      { l: "Calculate final flow rate", c: "Perform the multiplication to determine the flow rate in cubic meters per day (m³/d)." },
+    ],
+    tip: "Always ensure units are consistent before applying any conversion factors or formulas to avoid errors.",
   },
   {
     id: 156,
@@ -1265,7 +1349,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 2,
     explanation: `Total Dynamic Head (TDH) is the sum of the static lift (vertical height) and all head losses (friction, minor losses). TDH = 30 m (static lift) + 15 m (friction loss) = 45 meters.`,
-    tip: `TDH = Static Lift + Friction Loss`,
+    steps: [
+      { l: "Identify given values", c: "Extract the static lift and friction loss values from the problem statement to use in the calculation." },
+      { l: "Recall TDH formula", c: "Remember the formula for Total Dynamic Head (TDH), which is the sum of static lift and friction loss." },
+      { l: "Substitute values into formula", c: "Plug the identified static lift and friction loss values into the TDH formula." },
+      { l: "Calculate TDH", c: "Perform the addition to determine the final Total Dynamic Head the pump must provide." },
+    ],
+    tip: "Always ensure units are consistent before performing any calculations to avoid errors.",
   },
   {
     id: 173,
@@ -1282,7 +1372,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Output power = Input power × Efficiency. Output power = 10 kW × 0.75 = 7.5 kW.`,
-    tip: `Output Power = Input Power × Efficiency`,
+    steps: [
+      { l: "Identify given values", c: "List the input power and efficiency provided in the question to prepare for calculation." },
+      { l: "Convert efficiency to decimal", c: "Efficiency is given as a percentage, so convert it to a decimal by dividing by 100 for use in the formula." },
+      { l: "Apply output power formula", c: "Use the formula Output Power = Input Power × Efficiency to calculate the pump's output power." },
+      { l: "Calculate output power", c: "Perform the multiplication using the input power and the decimal efficiency to find the final output power." },
+    ],
+    tip: "Always convert percentages to decimals before using them in calculations to avoid errors.",
   },
   {
     id: 174,
@@ -1417,7 +1513,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Using Bernoulli's equation (P1/ρg + V1²/2g + Z1 = P2/ρg + V2²/2g + Z2), and assuming Z1=Z2 (horizontal pipe), P2 = P1 + 0.5ρ(V1² - V2²). P2 = 200,000 + 0.5 × 1000 × (2² - 4²) = 200,000 + 500 × (4 - 16) = 200,000 - 6000 = 194,000 Pa = 194 kPa.`,
-    tip: `P2 = P1 + 0.5ρ(V1² - V2²)`,
+    steps: [
+      { l: "Identify known values", c: "List all the given parameters from the problem statement to ensure they are correctly used in the calculation." },
+      { l: "Apply Bernoulli's simplified formula", c: "Since the pipe is horizontal, the elevation terms cancel out, simplifying Bernoulli's equation to P2 = P1 + 0.5ρ(V1² - V2²)." },
+      { l: "Substitute values into formula", c: "Plug in the identified values for initial pressure (P1), density (ρ), initial velocity (V1), and final velocity (V2) into the simplified formula." },
+      { l: "Calculate the pressure at B", c: "Perform the arithmetic operations to solve for P2, ensuring correct order of operations and unit consistency." },
+    ],
+    tip: "Always convert pressure to Pascals (Pa) before calculation if other units are in SI, then convert back to kPa for the final answer.",
   },
   {
     id: 182,
@@ -1434,7 +1536,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Darcy-Weisbach equation: hf = f × (L/D) × (V²/2g). hf = 0.02 × (500/0.2) × (1.5² / (2 × 9.81)) = 0.02 × 2500 × (2.25 / 19.62) = 50 × 0.11467 ≈ 5.73 m. The options are incorrect. Recalculating: hf = 0.02 * (500/0.2) * (1.5^2 / (2*9.81)) = 0.02 * 2500 * (2.25 / 19.62) = 50 * 0.11467 = 5.73 m. Let's assume there was a typo in the question or options and choose the closest one. Given the options, there seems to be an error in the question or options provided, as the calculated value is not among them. However, if we assume the question intended a different friction factor or length, or if there's a misunderstanding of the options, it's hard to pick the correct one. Let's re-evaluate the prompt and ensure the calculation is correct. If the question intended a different friction factor or length, or if there's a misunderstanding of the options, it's hard to pick the correct one. Let's re-evaluate the prompt and ensure the calculation is correct. The calculation is correct. The options are incorrect. I will select the closest option and note the discrepancy.`,
-    tip: `hf = f × (L/D) × (V²/2g)`,
+    steps: [
+      { l: "Identify given values", c: "List all the provided parameters from the question, including friction factor (f), pipe length (L), pipe diameter (D), water velocity (V), and gravitational acceleration (g)." },
+      { l: "Apply Darcy-Weisbach formula", c: "Substitute the identified values into the Darcy-Weisbach equation: hf = f × (L/D) × (V² / 2g). This formula calculates head loss due to friction." },
+      { l: "Calculate V² and 2g", c: "First, calculate the square of the velocity (V²) and then calculate 2 multiplied by the acceleration due to gravity (2g) to simplify the equation." },
+      { l: "Perform the final calculation", c: "Multiply the friction factor by the ratio of length to diameter, and then multiply that result by the ratio of V² to 2g to find the total head loss (hf)." },
+    ],
+    tip: "Double-check your calculations, especially squaring numbers and order of operations, to avoid common errors.",
   },
   {
     id: 183,
@@ -1538,7 +1646,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `To convert m³/day to L/s: (10,000 m³/day × 1000 L/m³) / (24 hours/day × 3600 seconds/hour) = 10,000,000 L / 86,400 s ≈ 115.74 L/s.`,
-    tip: `L/s = (m³/day × 1000) / 86400`,
+    steps: [
+      { l: "Identify given values", c: "Note the daily flow rate provided in the question, which is 10,000 m³/day." },
+      { l: "Recall conversion factors", c: "Remember that 1 m³ equals 1000 litres, and there are 86,400 seconds in one day (24 hours * 3600 seconds/hour)." },
+      { l: "Apply the formula", c: "Use the given formula L/s = (m³/day × 1000) / 86400 to convert the daily flow rate to litres per second." },
+      { l: "Calculate the result", c: "Substitute the values into the formula: (10,000 m³/day × 1000 L/m³) / 86400 s/day. Perform the multiplication and division to find the final flow rate in L/s." },
+    ],
+    tip: "Always double-check your unit conversions, especially for time (days to seconds) and volume (m³ to L), to avoid common errors.",
   },
   {
     id: 189,
@@ -1603,7 +1717,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `First, calculate the cross-sectional area A = π × (D/2)² = π × (0.25)² ≈ 0.1963 m². Then, Q = V × A = 1.2 m/s × 0.1963 m² ≈ 0.23556 m³/s.`,
-    tip: `Q = V × A; A = π × (d/2)^2 and Q in m³/s`,
+    steps: [
+      { l: "Identify given values", c: "List the known values from the problem statement: diameter (d) = 0.5 m and velocity (V) = 1.2 m/s." },
+      { l: "Calculate pipe radius", c: "Determine the radius (r) of the pipe by dividing the diameter by 2. This is needed for the area calculation." },
+      { l: "Calculate cross-sectional area", c: "Use the formula A = π × r² to calculate the cross-sectional area of the pipe in square meters. This area represents the space through which water flows." },
+      { l: "Calculate flow rate", c: "Apply the flow rate formula Q = V × A, multiplying the velocity by the calculated cross-sectional area to find the flow rate in m³/s." },
+    ],
+    tip: "Always ensure units are consistent before performing calculations; convert if necessary to avoid errors.",
   },
   {
     id: 193,
@@ -1652,7 +1772,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Power (W) = Pressure (Pa) × Flow rate (m³/s). Convert units: 250 kPa = 250,000 Pa, 500 L/min = 0.00833 m³/s. Power = 250,000 × 0.00833 = 2083 W = 2.083 kW.`,
-    tip: `Power (W) = Pressure (Pa) × Flow rate (m³/s)`,
+    steps: [
+      { l: "Convert pressure to Pascals", c: "The formula requires pressure in Pascals (Pa), so convert the given kilopascals (kPa) by multiplying by 1000." },
+      { l: "Convert flow rate to m³/s", c: "The formula requires flow rate in cubic meters per second (m³/s), so convert liters per minute (L/min) by dividing by 1000 (L to m³) and then by 60 (minutes to seconds)." },
+      { l: "Calculate power in Watts", c: "Apply the formula Power (W) = Pressure (Pa) × Flow rate (m³/s) using the converted values." },
+      { l: "Convert power to kilowatts", c: "The question asks for the answer in kilowatts (kW), so divide the calculated power in Watts by 1000." },
+    ],
+    tip: "Always ensure all units are consistent with the formula before performing calculations to avoid errors.",
   },
   {
     id: 196,
@@ -2541,7 +2667,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Mass (kg/day) = dose (mg/L) × flow (m³/day) ÷ 1,000 = 1.8 × 12,000 ÷ 1,000 = 21.6 kg/day. Remember: 1 mg/L × 1 m³ = 1 g, so multiply by flow in m³ and divide by 1,000 to get kg.`,
-    tip: `Chemical mass (kg/day) = dose (mg/L) × flow (m³/day) ÷ 1,000`,
+    steps: [
+      { l: "Identify given values", c: "List the known parameters from the problem statement: the plant flow rate and the chlorine dose." },
+      { l: "Recall the formula", c: "Use the formula to calculate the mass of chemical required: Mass (kg/day) = Dose (mg/L) × Flow (m³/day) ÷ 1000." },
+      { l: "Substitute values into formula", c: "Plug the given flow rate and chlorine dose into the formula to set up the calculation." },
+      { l: "Calculate daily chlorine requirement", c: "Perform the multiplication and division to find the total kilograms of chlorine needed per day." },
+    ],
+    tip: "Always ensure units are consistent before performing calculations; use the conversion factor of 1000 to convert grams to kilograms.",
   },
   {
     id: 251,
@@ -2557,7 +2689,12 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Volume = 20 × 5 × 3 = 300 m³. Flow = 2,160 m³/day ÷ 1,440 min/day = 1.5 m³/min. Detention time = 300 ÷ 1.5 = 200 minutes. Wait — recalculate: 2,160 m³/day = 2,160,000 L/day = 1,500 L/min. Volume = 300,000 L. DT = 300,000 ÷ 1,500 = 200 min. Hmm — let me use the correct answer: DT = V/Q = 300 m³ ÷ (2160/1440 m³/min) = 300 ÷ 1.5 = 200 min. The correct answer is 200 min but the closest is 200 min. Rechecking: 2160 m³/day ÷ 24h ÷ 60min = 1.5 m³/min. 300/1.5 = 200 min.`,
-    tip: `DT (min) = Volume (L) ÷ Flow (L/min). Convert all units to the same system first.`,
+    steps: [
+      { l: "Calculate chamber volume", c: "First, calculate the volume of the rectangular contact chamber using the formula: Volume = Length × Width × Depth. This gives us the total capacity of the chamber." },
+      { l: "Convert flow rate to m³/minute", c: "Next, convert the given flow rate from cubic meters per day to cubic meters per minute. There are 1440 minutes in a day (24 hours * 60 minutes/hour), so divide the daily flow by 1440." },
+      { l: "Calculate detention time", c: "Finally, calculate the theoretical detention time using the formula: Detention Time = Volume ÷ Flow Rate. This will give the time in minutes that water remains in the chamber." },
+    ],
+    tip: "Always ensure units are consistent before performing calculations, especially when dealing with time conversions.",
   },
   {
     id: 252,
@@ -2590,7 +2727,12 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Surface area = π × r² = π × 6² = 113.1 m². SOR = flow ÷ area = 3,456 ÷ 113.1 = 30.6 m³/m²/day. Typical design SOR for primary clarifiers is 24–32 m³/m²/day, so this is within normal range.`,
-    tip: `SOR = Q ÷ A. For circular clarifiers: A = π × (D/2)². Compare result to design criteria.`,
+    steps: [
+      { l: "Calculate clarifier radius", c: "First, determine the radius of the circular clarifier by dividing the given diameter by 2. This is needed to calculate the surface area." },
+      { l: "Calculate clarifier surface area", c: "Next, calculate the surface area of the circular clarifier using the formula A = πr². This area represents the footprint over which the flow is distributed." },
+      { l: "Calculate Surface Overflow Rate", c: "Finally, calculate the Surface Overflow Rate (SOR) by dividing the total daily flow by the clarifier's surface area. The formula is SOR = Flow / Area." },
+    ],
+    tip: "Always ensure units are consistent before performing calculations to avoid errors in your final answer.",
   },
   {
     id: 254,
@@ -2623,7 +2765,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `In dilute aqueous solutions: 1 mg/L = 1 ppm = 1,000 ppb. Therefore 0.45 mg/L = 0.45 ppm = 450 ppb. This equivalence holds because the density of water is approximately 1 kg/L (1 g/mL).`,
-    tip: `1 mg/L = 1 ppm = 1,000 ppb = 1,000 µg/L. These conversions apply to dilute aqueous solutions only.`,
+    steps: [
+      { l: "Understand mg/L to ppm", c: "Recognize that for dilute aqueous solutions, 1 mg/L is equivalent to 1 ppm. This is a common conversion in water treatment." },
+      { l: "Convert mg/L to ppm", c: "Apply the equivalence directly: 0.45 mg/L equals 0.45 ppm. No calculation is needed for this step." },
+      { l: "Understand ppm to ppb", c: "Recall that 1 ppm is equivalent to 1,000 ppb. This is because 'parts per billion' is a smaller unit of concentration than 'parts per million'." },
+      { l: "Convert ppm to ppb", c: "Multiply the concentration in ppm by 1,000 to convert it to ppb. So, 0.45 ppm * 1,000 = 450 ppb." },
+    ],
+    tip: "Memorize common concentration equivalencies like mg/L = ppm and ppm = 1,000 ppb for quick conversions.",
   },
   {
     id: 256,
@@ -2639,7 +2787,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `2.5 ML = 2,500 m³. Storage days = volume ÷ daily flow = 2,500 ÷ 8,000 = 0.3125 days. Wait — 1 ML = 1,000 m³, so 2.5 ML = 2,500 m³. 2,500 ÷ 8,000 = 0.3125 days. Rechecking: 1 ML = 1,000,000 L = 1,000 m³. 2.5 ML = 2,500 m³. 2,500/8,000 = 0.3125 days ≈ 0.3 days. Correct answer is 0.3 days.`,
-    tip: `1 ML = 1,000 m³ = 1,000,000 L. Always confirm unit conversions before calculating.`,
+    steps: [
+      { l: "Convert ML to m³", c: "First, convert the reservoir volume from megalitres (ML) to cubic metres (m³) to match the units of the plant's daily flow. Remember that 1 ML = 1,000 m³." },
+      { l: "Identify known values", c: "List the given values for reservoir volume in m³ and the plant's daily treatment flow rate in m³/day." },
+      { l: "Apply storage days formula", c: "Use the formula: Storage Days = Total Volume / Daily Flow Rate to calculate how many days of storage the reservoir provides." },
+      { l: "Calculate the result", c: "Perform the division to find the number of storage days and round to an appropriate number of significant figures." },
+    ],
+    tip: "Always ensure all units are consistent before performing calculations to avoid errors, especially with volume conversions.",
   },
   {
     id: 257,
@@ -2655,7 +2809,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Volume = L × W × D = 25 × 8 × 4.5 = 900 m³. Convert to ML: 900 m³ × 1,000 L/m³ = 900,000 L = 0.9 ML. (1 ML = 1,000,000 L = 1,000 m³)`,
-    tip: `Volume (m³) = L × W × D. To convert m³ to ML: divide by 1,000.`,
+    steps: [
+      { l: "Identify given dimensions", c: "List the length, width, and depth of the rectangular equalization basin from the problem statement." },
+      { l: "Calculate basin volume (m³)", c: "Use the formula for the volume of a rectangular prism (Length × Width × Depth) to find the volume in cubic meters." },
+      { l: "Convert volume to litres", c: "Convert the volume from cubic meters to litres, knowing that 1 cubic meter is equal to 1000 litres." },
+      { l: "Convert volume to megalitres (ML)", c: "Convert the volume from litres to megalitres, knowing that 1 megalitre is equal to 1,000,000 litres." },
+    ],
+    tip: "Always pay close attention to the required units for the final answer and perform necessary conversions accurately.",
   },
   {
     id: 258,
@@ -2671,7 +2831,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Surface area = π × r² = 3.14 × (18/2)² = 3.14 × 81 = 254.3 m². Note: radius = diameter ÷ 2 = 9 m.`,
-    tip: `Area of circle = π × r². Remember to use radius (half the diameter), not diameter.`,
+    steps: [
+      { l: "Identify given values", c: "Note the given diameter of the circular basin, which is 18 m, and the value for pi (π = 3.14)." },
+      { l: "Calculate the radius", c: "Determine the radius (r) of the circular basin by dividing the diameter by 2. This is essential for the area calculation." },
+      { l: "Apply area formula", c: "Use the formula for the surface area of a circle, which is Area = π × r². Substitute the calculated radius and the given value of pi into the formula." },
+      { l: "Perform calculation", c: "Multiply pi by the square of the radius to find the surface area in square meters." },
+    ],
+    tip: "Always double-check if you need to use the radius or diameter in a formula; convert as necessary before calculating.",
   },
   {
     id: 259,
@@ -2703,7 +2869,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `(a) 0.025 m³/s × 1,000 L/m³ = 25 L/s. (b) 25 L/s × 86,400 s/day = 2,160,000 L/day = 2,160 m³/day. (c) 2,160 m³/day ÷ 1,000 = 2.16 ML/day.`,
-    tip: `1 m³ = 1,000 L. 1 day = 86,400 seconds. 1 ML = 1,000 m³. Chain these conversions.`,
+    steps: [
+      { l: "Convert m³/s to L/s", c: "To convert cubic meters per second to liters per second, multiply the given flow rate by 1000 L/m³ since there are 1000 liters in one cubic meter." },
+      { l: "Convert L/s to L/day", c: "To convert liters per second to liters per day, multiply the flow rate in L/s by the number of seconds in a day (24 hours/day * 60 minutes/hour * 60 seconds/minute = 86,400 seconds/day)." },
+      { l: "Convert L/day to m³/day", c: "To convert liters per day to cubic meters per day, divide the flow rate in L/day by 1000 L/m³." },
+      { l: "Convert m³/day to ML/day", c: "To convert cubic meters per day to megaliters per day, divide the flow rate in m³/day by 1000 m³/ML, as one megaliter equals 1000 cubic meters." },
+    ],
+    tip: "Always pay close attention to units and use conversion factors carefully to avoid errors in calculations.",
   },
   {
     id: 261,
@@ -2735,7 +2907,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Mass = dose × volume = 3.2 mg/L × 18,500,000 L = 59,200,000 mg = 59.2 kg. Or: 3.2 mg/L × 18,500 m³ ÷ 1,000 = 59.2 kg/day.`,
-    tip: `Chemical mass (kg/day) = dose (mg/L) × flow (m³/day) ÷ 1,000`,
+    steps: [
+      { l: "Identify given values", c: "List the known parameters from the problem statement, which are the plant flow and the chemical dose rate." },
+      { l: "Convert flow to Litres", c: "Since the dose is in mg/L, convert the daily flow from cubic meters to Litres to ensure consistent units for calculation. Multiply m³ by 1000 L/m³." },
+      { l: "Calculate total mass in mg", c: "Multiply the chemical dose (mg/L) by the total daily volume (L) to find the total mass of chemical used in milligrams per day." },
+      { l: "Convert mass to kilograms", c: "Convert the total mass from milligrams to kilograms by dividing by 1,000,000 mg/kg, as the final answer is requested in kilograms." },
+    ],
+    tip: "Always ensure all units are consistent before performing calculations; convert as needed to avoid errors.",
   },
   {
     id: 263,
@@ -2785,7 +2963,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `To convert L/s to m³/d, multiply by 86,400 (seconds in a day) to get L/d, then divide by 1,000 (liters in a m³). 25 × 86,400 / 1,000 = 2,160 m³/d.`,
-    tip: `m³/d = L/s × 86.4`,
+    steps: [
+      { l: "Identify given values", c: "Note the initial flow rate provided in the question, which is 25 L/s." },
+      { l: "Recall conversion factor", c: "Remember the conversion factor to change L/s directly to m³/d, which is 86.4." },
+      { l: "Apply formula", c: "Multiply the given flow rate in L/s by the conversion factor 86.4 to get the flow rate in m³/d." },
+      { l: "Calculate final answer", c: "Perform the multiplication: 25 L/s × 86.4 = 2160 m³/d." },
+    ],
+    tip: "Always double-check your units and ensure they cancel out correctly to arrive at the desired final unit.",
   },
   {
     id: 266,
@@ -2802,7 +2986,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `To convert m³/d to L/s, multiply by 1,000 to get L/d, then divide by 86,400 (seconds in a day). 4,320 × 1,000 / 86,400 = 50 L/s.`,
-    tip: `L/s = m³/d / 86.4`,
+    steps: [
+      { l: "Identify given values", c: "Note the flow rate provided in the question, which is 4,320 m³/d." },
+      { l: "Recall conversion formula", c: "Remember the direct conversion formula from m³/d to L/s, which is L/s = m³/d / 86.4. This factor accounts for both volume and time conversions." },
+      { l: "Apply the formula", c: "Substitute the given flow rate into the formula: L/s = 4,320 m³/d / 86.4." },
+      { l: "Calculate the result", c: "Perform the division to find the flow rate in liters per second: 4,320 / 86.4 = 50 L/s." },
+    ],
+    tip: "Always double-check your units and conversion factors to ensure accuracy in your calculations.",
   },
   {
     id: 267,
@@ -2819,7 +3009,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `The feed rate is calculated by multiplying the flow in ML/d by the dose in mg/L. 4.0 ML/d × 2.5 mg/L = 10.0 kg/d.`,
-    tip: `Feed Rate (kg/d) = Flow (ML/d) × Dose (mg/L)`,
+    steps: [
+      { l: "Identify given values", c: "Extract the flow rate and chlorine dose from the problem statement to use in the calculation." },
+      { l: "Select correct formula", c: "Choose the provided formula for calculating the feed rate, ensuring it matches the units given and desired." },
+      { l: "Substitute values into formula", c: "Plug the identified flow rate and dose into the feed rate formula." },
+      { l: "Calculate the feed rate", c: "Perform the multiplication to determine the daily chlorine feed rate in kg/d." },
+    ],
+    tip: "Always double-check that your units cancel out correctly to arrive at the desired final unit for the answer.",
   },
   {
     id: 268,
@@ -2836,7 +3032,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Convert 1,000 m³ to 1.0 ML. Dose = Feed Rate / Flow = 2 kg / 1.0 ML = 2.0 mg/L.`,
-    tip: `Dose (mg/L) = Feed Rate (kg) / Flow (ML)`,
+    steps: [
+      { l: "Identify given values", c: "Note the amount of polymer fed (2 kg) and the volume of wastewater treated (1,000 m³)." },
+      { l: "Convert flow to Megalitres", c: "The formula requires flow in Megalitres (ML). Convert 1,000 m³ to ML by dividing by 1,000 (since 1 ML = 1,000 m³)." },
+      { l: "Apply the dose formula", c: "Use the given formula: Dose (mg/L) = Feed Rate (kg) / Flow (ML). Substitute the converted flow and the given feed rate into the formula." },
+      { l: "Calculate the final dose", c: "Perform the division to find the dose in mg/L. This will give you the final answer." },
+    ],
+    tip: "Always ensure units are consistent with the formula; convert if necessary before calculating to avoid errors.",
   },
   {
     id: 269,
@@ -2853,7 +3055,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Using C1V1 = C2V2: (1,000 mg/L) × V1 = (50 mg/L) × (100 mL). V1 = 5,000 / 1,000 = 5 mL.`,
-    tip: `C1V1 = C2V2`,
+    steps: [
+      { l: "Identify known values", c: "List the given concentrations and volumes from the problem statement to prepare for the calculation." },
+      { l: "State the formula", c: "Write down the dilution formula C1V1 = C2V2, which is used to calculate unknown concentrations or volumes during dilution." },
+      { l: "Substitute values into formula", c: "Plug the known values into the C1V1 = C2V2 equation, ensuring units are consistent where possible." },
+      { l: "Solve for unknown volume", c: "Rearrange the equation to isolate V1 and perform the calculation to find the required volume of stock solution." },
+    ],
+    tip: "Always ensure your units are consistent before performing calculations to avoid errors in your final answer.",
   },
   {
     id: 270,
@@ -2870,7 +3078,12 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `1 liter of water weighs 1,000 grams. A 1% solution contains 1% of that weight as the chemical. 1,000 g × 0.01 = 10 grams.`,
-    tip: `Mass = Volume × Density × Percent`,
+    steps: [
+      { l: "Determine total mass of solution", c: "First, calculate the total mass of the 1 liter solution. Since 1 liter of water weighs 1000 grams and the specific gravity is 1.0, the total mass of the solution is 1000 grams." },
+      { l: "Convert percentage to decimal", c: "Convert the given percentage of the chemical into its decimal equivalent. Divide the percentage by 100 to get the decimal value." },
+      { l: "Calculate chemical mass", c: "Finally, multiply the total mass of the solution by the decimal equivalent of the chemical's percentage. This will give you the mass of the chemical in grams." },
+    ],
+    tip: "Always convert percentages to decimals before using them in calculations to avoid common errors.",
   },
   {
     id: 271,
@@ -2887,7 +3100,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Detention time is calculated by dividing the tank volume by the flow rate. 1,200 m³ / 400 m³/d = 3.0 days.`,
-    tip: `Detention Time = Volume / Flow`,
+    steps: [
+      { l: "Identify given values", c: "List the known values from the problem statement: tank volume and flow rate." },
+      { l: "Recall detention time formula", c: "Remember the formula for detention time, which is Volume divided by Flow Rate." },
+      { l: "Substitute values into formula", c: "Plug the identified volume and flow rate values into the detention time formula." },
+      { l: "Calculate detention time", c: "Perform the division to find the detention time in days." },
+    ],
+    tip: "Always check that your units cancel out correctly to give the desired unit for the answer.",
   },
   {
     id: 272,
@@ -2904,7 +3123,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Convert the detention time to hours: 30 minutes = 0.5 hours. Rearrange the formula to solve for volume: Volume = Flow × Detention Time = 120 m³/h × 0.5 h = 60 m³.`,
-    tip: `Volume = Flow × Detention Time`,
+    steps: [
+      { l: "Identify given values", c: "List the known values from the problem: Flow = 120 m³/h and Detention Time = 30 minutes." },
+      { l: "Convert detention time units", c: "Ensure units are consistent. Convert the detention time from minutes to hours by dividing by 60: 30 minutes / 60 minutes/hour = 0.5 hours." },
+      { l: "Apply the formula", c: "Use the given formula, Volume = Flow × Detention Time, to calculate the required volume of the chamber." },
+      { l: "Calculate the volume", c: "Substitute the converted detention time and flow into the formula: Volume = 120 m³/h × 0.5 h = 60 m³." },
+    ],
+    tip: "Always check and convert units to be consistent before performing calculations to avoid errors.",
   },
   {
     id: 273,
@@ -2921,7 +3146,14 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `The volume of a rectangular basin is Length × Width × Depth. 30 m × 10 m × 4 m = 1,200 m³.`,
-    tip: `Volume = L × W × D`,
+    steps: [
+      { l: "Identify given dimensions", c: "List the provided length, width, and depth of the rectangular aeration basin from the question." },
+      { l: "Recall volume formula", c: "Remember the formula for the volume of a rectangular prism, which is Length multiplied by Width multiplied by Depth." },
+      { l: "Substitute values into formula", c: "Plug the identified length, width, and depth values into the volume formula." },
+      { l: "Calculate the volume", c: "Perform the multiplication to determine the total volume of the aeration basin." },
+      { l: "State final answer with units", c: "Express the calculated volume with the correct cubic meter units, ensuring accuracy." },
+    ],
+    tip: "Always double-check that all units are consistent before performing any calculations to avoid errors.",
   },
   {
     id: 274,
@@ -2938,7 +3170,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `The area of a circle is π × r². The radius is half the diameter, so r = 0.25 m. Area = 3.1416 × (0.25 m)² = 0.196 m².`,
-    tip: `Area = π × r²`,
+    steps: [
+      { l: "Determine the radius", c: "The radius is half of the diameter. Divide the given diameter by 2 to find the radius." },
+      { l: "Apply the area formula", c: "Use the formula for the area of a circle, Area = π × r², substituting the calculated radius." },
+      { l: "Calculate the squared radius", c: "First, square the radius value before multiplying by pi." },
+      { l: "Perform final multiplication", c: "Multiply the squared radius by π (use 3.1416 for accuracy) to get the cross-sectional area." },
+    ],
+    tip: "Always double-check if the problem provides diameter or radius, and adjust accordingly for area calculations.",
   },
   {
     id: 275,
@@ -2955,7 +3193,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Actual flow rate = Meter reading × Calibration factor. 50 L/s × 0.98 = 49 L/s.`,
-    tip: `Actual Flow = Meter Reading × Calibration Factor`,
+    steps: [
+      { l: "Identify given values", c: "Note the meter reading and the calibration factor provided in the problem statement." },
+      { l: "Recall the formula", c: "Remember the formula for calculating the actual flow rate using the meter reading and calibration factor." },
+      { l: "Substitute values into formula", c: "Plug the identified meter reading and calibration factor into the actual flow rate formula." },
+      { l: "Calculate actual flow rate", c: "Perform the multiplication to determine the actual flow rate in L/s." },
+    ],
+    tip: "Always double-check that you are using the correct formula for the given problem to avoid errors.",
   },
   {
     id: 276,
@@ -2972,7 +3216,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Area = π × r² = 3.1416 × (4 m)² = 50.2656 m². Volume = Area × Depth = 50.2656 m² × 5 m = 251.328 m³.`,
-    tip: `Volume = π × r² × h`,
+    steps: [
+      { l: "Identify given values", c: "Extract the diameter and depth from the problem statement to use in the volume calculation." },
+      { l: "Calculate the radius", c: "Divide the given diameter by 2 to find the radius, which is needed for the area calculation." },
+      { l: "Calculate the tank area", c: "Use the formula for the area of a circle (π × r²) with the calculated radius to find the tank's cross-sectional area." },
+      { l: "Calculate the tank volume", c: "Multiply the calculated area by the given depth of the tank to determine its total volume in cubic meters." },
+    ],
+    tip: "Always double-check units and ensure they are consistent throughout the calculation to avoid errors.",
   },
   {
     id: 277,
@@ -2989,7 +3239,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Total liters pumped = 500 L/min × 60 min/hour = 30,000 L/hour. Convert to m³: 30,000 L/hour / 1,000 L/m³ = 30 m³/hour.`,
-    tip: `Volume (m³) = Flow (L/min) × 60 / 1,000`,
+    steps: [
+      { l: "Identify given values", c: "Note the pump flow rate and the time duration for the calculation." },
+      { l: "Calculate total liters pumped", c: "Multiply the flow rate in L/min by the number of minutes in an hour to find the total volume in liters." },
+      { l: "Convert liters to cubic meters", c: "Divide the total volume in liters by 1,000 to convert it to cubic meters, as there are 1,000 liters in 1 cubic meter." },
+      { l: "State the final answer", c: "The result is the total volume pumped in cubic meters over the specified time." },
+    ],
+    tip: "Always check units carefully and ensure they cancel out correctly to arrive at the desired final unit.",
   },
   {
     id: 278,
@@ -3006,7 +3262,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `First, find mL/min: 150 mL / 30 seconds × 60 seconds/min = 300 mL/min. Convert to L/min: 300 mL/min / 1,000 mL/L = 0.3 L/min.`,
-    tip: `Feed Rate (L/min) = (Volume (mL) / Time (s)) × 60 / 1,000`,
+    steps: [
+      { l: "Identify given values", c: "Note the volume delivered and the time taken from the problem statement." },
+      { l: "Apply the formula", c: "Substitute the given volume and time into the provided formula to calculate the feed rate in L/min." },
+      { l: "Calculate the feed rate", c: "Perform the multiplication and division operations as indicated in the formula to find the numerical answer." },
+      { l: "State the final answer", c: "Present the calculated feed rate with the correct units (L/min)." },
+    ],
+    tip: "Always double-check unit conversions, especially when converting between mL, L, seconds, and minutes.",
   },
   {
     id: 279,
@@ -3023,7 +3285,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `First, convert L/s to L/d: 15 L/s × 86,400 s/d = 1,296,000 L/d. Then convert to Megaliters by dividing by 1,000,000. 1,296,000 / 1,000,000 = 1.296 ML, which rounds to 1.30 ML.`,
-    tip: `ML/d = (L/s × 86,400) / 1,000,000`,
+    steps: [
+      { l: "Identify given values", c: "Note the pump flow rate in L/s and the time period for the calculation." },
+      { l: "Apply conversion factor", c: "Convert the flow rate from L/s to L/day by multiplying by the number of seconds in a day (86,400)." },
+      { l: "Convert to Megaliters", c: "Divide the total daily volume in Liters by 1,000,000 to convert it to Megaliters (ML)." },
+      { l: "Round to appropriate precision", c: "Round the final answer to two decimal places as typically expected for ML values in these types of questions." },
+    ],
+    tip: "Always pay attention to units and conversion factors; a common mistake is forgetting to convert seconds to days or liters to megaliters.",
   },
   {
     id: 280,
@@ -3040,7 +3308,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `First, convert ML/d to m³/d: 5.5 ML/d = 5,500 m³/d. Then divide by 24 hours to get m³/h. 5,500 / 24 = 229.17 m³/h.`,
-    tip: `m³/h = (ML/d × 1,000) / 24`,
+    steps: [
+      { l: "Understand the goal", c: "The goal is to convert the given flow rate from Megalitres per day (ML/d) to cubic meters per hour (m³/h)." },
+      { l: "Convert ML/d to m³/d", c: "First, convert Megalitres (ML) to cubic meters (m³) by multiplying the given flow rate by 1,000, since 1 ML = 1,000 m³." },
+      { l: "Convert m³/d to m³/h", c: "Next, convert the daily flow rate to an hourly flow rate by dividing the cubic meters per day (m³/d) by 24 hours, as there are 24 hours in a day." },
+      { l: "Calculate the final flow rate", c: "Perform the calculation: (5.5 ML/d × 1,000 m³/ML) / 24 h/d to find the flow rate in m³/h." },
+    ],
+    tip: "Always pay close attention to units and ensure all conversions are correctly applied to avoid errors in calculations.",
   },
   {
     id: 281,
@@ -3057,7 +3331,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `First, convert the flow to ML: 5,000 m³ = 5.0 ML. Then rearrange the feed rate formula to solve for dose: Dose = Feed Rate / Flow. 15 kg / 5.0 ML = 3.0 mg/L.`,
-    tip: `Dose (mg/L) = Feed Rate (kg/d) / Flow (ML/d)`,
+    steps: [
+      { l: "Convert flow to ML", c: "Convert the given flow rate from cubic meters (m³) to megalitres (ML) because the dose formula requires flow in ML. Remember that 1 ML = 1000 m³." },
+      { l: "Identify known values", c: "Identify the mass of alum added (feed rate) and the converted flow rate. These are the values needed for the dose calculation." },
+      { l: "Apply dose formula", c: "Use the provided formula, Dose (mg/L) = Feed Rate (kg) / Flow (ML), to calculate the resulting alum dose. The units kg/ML directly convert to mg/L." },
+      { l: "Calculate the dose", c: "Perform the division using the identified feed rate and the converted flow to find the final dose in mg/L." },
+    ],
+    tip: "Always ensure your units are consistent with the formula requirements before starting calculations to avoid errors.",
   },
   {
     id: 282,
@@ -3074,7 +3354,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Convert flow to ML/d: 8,000 m³/d = 8.0 ML/d. Dose = Feed Rate / Flow. 24 kg/d / 8.0 ML/d = 3.0 mg/L.`,
-    tip: `Dose (mg/L) = Feed Rate (kg/d) / Flow (ML/d)`,
+    steps: [
+      { l: "Convert flow to ML/d", c: "The formula requires flow in ML/d, so convert the given flow of 8,000 m³/d to megalitres per day by dividing by 1,000." },
+      { l: "Identify known values", c: "List the given chlorine feed rate and the converted flow rate to prepare for the dose calculation." },
+      { l: "Apply the dose formula", c: "Use the provided formula: Dose (mg/L) = Feed Rate (kg/d) / Flow (ML/d) to calculate the chlorine dose." },
+      { l: "Calculate the chlorine dose", c: "Perform the division using the identified feed rate and the converted flow rate to find the final chlorine dose." },
+    ],
+    tip: "Always ensure units are consistent with the formula requirements before performing any calculations to avoid errors.",
   },
   {
     id: 283,
@@ -3091,7 +3377,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Rearrange the feed rate formula to solve for flow: Flow = Feed Rate / Dose. 20 kg/d / 5.0 mg/L = 4.0 ML/d.`,
-    tip: `Flow (ML/d) = Feed Rate (kg/d) / Dose (mg/L)`,
+    steps: [
+      { l: "Identify given values", c: "Extract the chemical dose and feed rate from the problem statement. The dose is 5.0 mg/L and the feed rate is 20 kg/d." },
+      { l: "Select correct formula", c: "Use the provided formula to calculate the flow rate. The formula is Flow (ML/d) = Feed Rate (kg/d) / Dose (mg/L)." },
+      { l: "Substitute values into formula", c: "Plug the identified values into the formula. This gives Flow (ML/d) = 20 kg/d / 5.0 mg/L." },
+      { l: "Calculate the flow rate", c: "Perform the division to find the maximum flow rate the plant can treat. 20 / 5.0 equals 4.0 ML/d." },
+    ],
+    tip: "Always ensure units are consistent with the formula to avoid errors in calculation.",
   },
   {
     id: 284,
@@ -3108,7 +3400,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Using C1V1 = C2V2: (12%) × V1 = (1%) × (50 L). V1 = (1 × 50) / 12 = 4.167 L.`,
-    tip: `C1V1 = C2V2`,
+    steps: [
+      { l: "Identify known values", c: "List the given concentrations and volumes from the problem statement to prepare for formula application." },
+      { l: "State the formula", c: "Recall the dilution formula C1V1 = C2V2, which relates initial and final concentrations and volumes." },
+      { l: "Substitute values", c: "Plug the known values into the C1V1 = C2V2 formula, ensuring units are consistent." },
+      { l: "Solve for unknown volume", c: "Rearrange the equation to isolate V1 and perform the calculation to find the required stock solution volume." },
+    ],
+    tip: "Always ensure your units are consistent before performing calculations to avoid errors in dilution problems.",
   },
   {
     id: 285,
@@ -3125,7 +3423,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Using C1V1 = C2V2: (10%) × (5 L) = (2%) × V2. V2 = 50 / 2 = 25 L total volume. The water to add is the total volume minus the initial volume: 25 L - 5 L = 20 L.`,
-    tip: `C1V1 = C2V2, then Water Added = V2 - V1`,
+    steps: [
+      { l: "Identify known values", c: "List the initial concentration (C1), initial volume (V1), and final concentration (C2) from the problem statement." },
+      { l: "Calculate final volume (V2)", c: "Use the dilution formula C1V1 = C2V2 to solve for the final volume (V2) after dilution." },
+      { l: "Solve for V2", c: "Rearrange the formula to isolate V2 and perform the calculation: V2 = (C1 * V1) / C2." },
+      { l: "Calculate water added", c: "Subtract the initial volume (V1) from the final volume (V2) to find the amount of water that must be added." },
+    ],
+    tip: "Always ensure units are consistent before performing calculations to avoid errors.",
   },
   {
     id: 286,
@@ -3142,7 +3446,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `A 15% solution means 15% of the weight is the active chemical. 20 L of water weighs 20 kg. 20 kg × 0.15 = 3.0 kg of active chemical.`,
-    tip: `Active Chemical (kg) = Volume (L) × Specific Gravity × (Percent / 100)`,
+    steps: [
+      { l: "Identify given values", c: "List the known parameters from the problem statement: volume, percentage, and specific gravity." },
+      { l: "Apply the formula", c: "Use the provided formula to calculate the mass of the active chemical in kilograms." },
+      { l: "Substitute values", c: "Plug the identified values into the formula to set up the calculation." },
+      { l: "Calculate active chemical mass", c: "Perform the multiplication to find the final mass of the active chemical." },
+    ],
+    tip: "Always double-check that you are using the correct units for each variable in the formula.",
   },
   {
     id: 287,
@@ -3159,7 +3469,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Percent concentration is the mass of the solute divided by the mass of the solution. 100 L of solution weighs approximately 100 kg. (5 kg / 100 kg) × 100 = 5.0%.`,
-    tip: `Percent = (Mass of chemical / Mass of solution) × 100`,
+    steps: [
+      { l: "Determine solution mass", c: "Assume the density of water is 1 kg/L. Therefore, 100 L of solution has an approximate mass of 100 kg." },
+      { l: "Identify chemical mass", c: "The mass of the dry powder (chemical) is given as 5 kg. This is the solute in the solution." },
+      { l: "Apply percent concentration formula", c: "Use the formula: Percent = (Mass of chemical / Mass of solution) × 100. Substitute the values: (5 kg / 100 kg) × 100." },
+      { l: "Calculate final percentage", c: "Perform the calculation: (5 / 100) × 100 = 0.05 × 100 = 5.0%. This is the percent concentration." },
+    ],
+    tip: "Remember to assume water's density is 1 kg/L for solution mass calculations unless otherwise specified.",
   },
   {
     id: 288,
@@ -3176,7 +3492,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 2,
     explanation: `First, calculate detention time in days: 500 m³ / 2,000 m³/d = 0.25 days. Then convert to hours by multiplying by 24. 0.25 days × 24 hours/day = 6.0 hours.`,
-    tip: `Detention Time (hours) = (Volume / Flow) × 24`,
+    steps: [
+      { l: "Identify given values", c: "List the known values for clarifier volume and flow rate from the problem statement." },
+      { l: "Apply detention time formula", c: "Use the provided formula for detention time, substituting the given volume and flow rate to calculate detention time in days." },
+      { l: "Convert days to hours", c: "Multiply the detention time in days by 24 to convert the result into hours, as required by the question." },
+      { l: "State final answer", c: "Present the calculated detention time in hours as the final answer." },
+    ],
+    tip: "Always ensure units cancel out correctly to arrive at the desired unit for the final answer.",
   },
   {
     id: 289,
@@ -3193,7 +3515,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `First, calculate the volume: 3 m × 2 m × 2 m = 12 m³. Then divide by the pumping rate: 12 m³ / 30 m³/h = 0.4 hours (or 24 minutes).`,
-    tip: `Time = Volume / Flow Rate`,
+    steps: [
+      { l: "Calculate wet well volume", c: "Determine the volume of water in the wet well using its length, width, and operating depth. This is the total amount of water to be removed." },
+      { l: "Identify given flow rate", c: "Note the pump's removal rate, which is the speed at which water is being taken out of the well." },
+      { l: "Apply time formula", c: "Use the formula Time = Volume / Flow Rate to calculate how long it will take to empty the well." },
+      { l: "Perform final calculation", c: "Divide the calculated volume by the given flow rate to find the time in hours." },
+    ],
+    tip: "Always ensure units are consistent before performing calculations to avoid errors, especially with time and volume.",
   },
   {
     id: 290,
@@ -3210,7 +3538,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `First, calculate the surface area: 20 m × 5 m = 100 m². Then divide the flow by the area: 3,000 m³/d / 100 m² = 30 m³/m²/d.`,
-    tip: `Surface Loading Rate = Flow / Surface Area`,
+    steps: [
+      { l: "Identify given values", c: "List the known parameters from the problem statement: clarifier length, width, and flow rate." },
+      { l: "Calculate surface area", c: "Determine the surface area of the rectangular clarifier by multiplying its length by its width. This is needed for the surface loading rate formula." },
+      { l: "Apply surface loading formula", c: "Use the formula Surface Loading Rate = Flow / Surface Area. Substitute the given flow rate and the calculated surface area into the formula." },
+      { l: "Calculate final answer", c: "Perform the division to find the surface loading rate and ensure the units are correct." },
+    ],
+    tip: "Always check that your units cancel out correctly to arrive at the desired final unit for the answer.",
   },
   {
     id: 291,
@@ -3672,7 +4006,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `The current oxygen level is 18.5% and the minimum acceptable level is 19.5%. The difference is 19.5% - 18.5% = 1.0%. This indicates a hazardous atmosphere.`,
-    tip: `Difference = Minimum acceptable level - Current level`,
+    steps: [
+      { l: "Identify given values", c: "Extract the minimum acceptable oxygen level and the current oxygen level from the problem statement." },
+      { l: "Recall the formula", c: "Use the provided formula to calculate the difference: Difference = Minimum acceptable level - Current level." },
+      { l: "Substitute values", c: "Plug the identified minimum acceptable level (19.5%) and current level (18.5%) into the formula." },
+      { l: "Calculate the difference", c: "Perform the subtraction to find out how much below the minimum acceptable level the current oxygen concentration is." },
+    ],
+    tip: "Always double-check that you are using the correct values (e.g., minimum vs. maximum) from the problem statement.",
   },
   {
     id: 317,
@@ -3897,7 +4237,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 2,
     explanation: `To calculate the required air flow rate, multiply the room volume by the number of air changes per hour. So, 500 m³ * 10 ACH = 5000 m³/hr.`,
-    tip: `Air Flow Rate = Room Volume * Air Changes Per Hour`,
+    steps: [
+      { l: "Identify given values", c: "Extract the room volume and the required air changes per hour from the problem statement." },
+      { l: "State the formula", c: "Recall or write down the formula for calculating the air flow rate, which is Air Flow Rate = Room Volume * Air Changes Per Hour." },
+      { l: "Substitute values into formula", c: "Plug the identified room volume and air changes per hour into the formula." },
+      { l: "Calculate air flow rate", c: "Perform the multiplication to determine the final air flow rate in cubic meters per hour." },
+    ],
+    tip: "Always double-check that your units are consistent throughout the calculation to avoid errors.",
   },
   {
     id: 331,
@@ -4010,7 +4356,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Using the dilution formula C1V1 = C2V2: (98%) * V1 = (10%) * 500 mL. V1 = (10 * 500) / 98 = 51.02 mL. This means 51.02 mL of the concentrated acid is needed.`,
-    tip: `C1V1 = C2V2 (where C is concentration and V is volume)`,
+    steps: [
+      { l: "Identify knowns and unknowns", c: "List the given concentrations and volumes, and identify the unknown volume of concentrated acid needed." },
+      { l: "State the dilution formula", c: "Recall the dilution formula C1V1 = C2V2, which is used to calculate the relationship between concentrations and volumes during dilution." },
+      { l: "Substitute values into formula", c: "Plug the known values into the dilution formula, ensuring that concentrations are used consistently (e.g., as percentages)." },
+      { l: "Solve for the unknown volume", c: "Rearrange the formula to isolate the unknown volume (V1) and perform the calculation to find the required amount of concentrated acid." },
+    ],
+    tip: "Always ensure units are consistent throughout your calculations to avoid errors, especially with concentrations and volumes.",
   },
   {
     id: 338,
@@ -4107,7 +4459,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Using the dilution formula C1V1 = C2V2: (10%) * V1 = (2%) * 1000 mL. V1 = (2 * 1000) / 10 = 200 mL. Therefore, 200 mL of the 10% stock solution is needed.`,
-    tip: `C1V1 = C2V2 (where C is concentration and V is volume)`,
+    steps: [
+      { l: "Identify known values", c: "List the given concentrations and the desired final volume from the problem statement." },
+      { l: "State the formula", c: "Recall the dilution formula C1V1 = C2V2, which is used for calculating volumes or concentrations during dilution." },
+      { l: "Substitute values into formula", c: "Plug the known values into the C1V1 = C2V2 equation, making sure to assign them correctly to C1, V2, and C2." },
+      { l: "Solve for unknown volume", c: "Rearrange the equation to isolate V1 and perform the calculation to find the required volume of the stock solution." },
+    ],
+    tip: "Always ensure units are consistent before performing calculations to avoid errors in your final answer.",
   },
   {
     id: 344,
@@ -4785,7 +5143,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `To find the dose, convert alum mass to mg (200 kg = 200,000,000 mg) and flow to L (12 ML = 12,000,000 L). Dose = 200,000,000 mg / 12,000,000 L = 16.666... mg/L, which rounds to 16.7 mg/L.`,
-    tip: `Dose (mg/L) = Alum (kg/day) * 1,000,000 mg/kg / (Flow (ML/day) * 1,000,000 L/ML)`,
+    steps: [
+      { l: "Identify given values", c: "List the known values for alum usage and plant flow rate from the problem statement." },
+      { l: "Apply the dose formula", c: "Use the provided formula to calculate the alum dose in mg/L directly, substituting the given values." },
+      { l: "Calculate the result", c: "Perform the multiplication and division operations to find the numerical value of the alum dose." },
+      { l: "Round to significant figures", c: "Round the calculated dose to an appropriate number of significant figures, typically one decimal place for mg/L doses." },
+    ],
+    tip: "Always double-check unit conversions to ensure they cancel out correctly and lead to the desired final unit.",
   },
   {
     id: 386,
@@ -4802,7 +5166,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 2,
     explanation: `Total flow = Surface Area × Filtration Rate × minutes per day ÷ 1000. Total flow = 50 m² × 120 L/min/m² = 6,000 L/min. Convert to L/day: 6,000 L/min × 1,440 min/day = 8,640,000 L/day. Convert to m³/day: 8,640,000 ÷ 1,000 = 8,640 m³/day.`,
-    tip: `Flow Rate (m³/day) = Surface Area (m²) * Filtration Rate (L/min/m²) * 60 min/hr * 24 hr/day / 1000 L/m³`,
+    steps: [
+      { l: "Identify given values", c: "List the known values from the problem statement: Surface Area = 50 m² and Filtration Rate = 120 L/min/m²." },
+      { l: "Apply formula directly", c: "Use the provided formula to calculate the total flow rate in m³/day by substituting the given values directly into the equation." },
+      { l: "Perform the calculation", c: "Calculate: Flow Rate = 50 m² × 120 L/min/m² × 1440 min/day ÷ 1000 L/m³." },
+      { l: "Calculate final result", c: "Complete the multiplication and division to find the total flow rate in m³/day: 50 × 120 × 1440 ÷ 1000 = 8640 m³/day." },
+    ],
+    tip: "Always double-check unit conversions, especially when dealing with time (minutes to days) and volume (liters to cubic meters).",
   },
   {
     id: 387,
@@ -4819,7 +5189,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `The surface overflow rate (SOR) is calculated by dividing the flow rate by the surface area of the basin. Surface area = 20 m * 10 m = 200 m². SOR = 2000 m³/day / 200 m² = 10 m³/m²/day.`,
-    tip: `SOR (m³/m²/day) = Flow Rate (m³/day) / Surface Area (m²)`,
+    steps: [
+      { l: "Identify given values", c: "List the known dimensions of the sedimentation basin and the flow rate to prepare for calculations." },
+      { l: "Calculate surface area", c: "Determine the surface area of the basin by multiplying its length by its width. This is the area over which the water flows." },
+      { l: "Apply SOR formula", c: "Use the provided formula to calculate the Surface Overflow Rate (SOR) by dividing the flow rate by the calculated surface area." },
+      { l: "State final answer", c: "Present the calculated SOR with the correct units, ensuring it matches one of the given options." },
+    ],
+    tip: "Always double-check units throughout your calculations to ensure consistency and prevent errors in the final answer.",
   },
   {
     id: 388,
@@ -5584,7 +5960,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 2,
     explanation: `To calculate total hardness as CaCO3, convert calcium and magnesium concentrations to their CaCO3 equivalents. For Ca: 40 mg/L * (100/40) = 100 mg/L as CaCO3. For Mg: 12 mg/L * (100/24) = 50 mg/L as CaCO3. Total hardness = 100 + 50 = 150 mg/L as CaCO3.`,
-    tip: `Hardness (as CaCO3) = (Ca mg/L * 100/40) + (Mg mg/L * 100/24)`,
+    steps: [
+      { l: "Calculate Calcium Hardness", c: "Convert the calcium concentration to its equivalent as CaCO3 using the provided formula: Ca mg/L * (100/40)." },
+      { l: "Calculate Magnesium Hardness", c: "Convert the magnesium concentration to its equivalent as CaCO3 using the provided formula: Mg mg/L * (100/24)." },
+      { l: "Sum for Total Hardness", c: "Add the calculated calcium hardness and magnesium hardness values together to find the total hardness as CaCO3." },
+      { l: "Compare with Options", c: "Review the calculated total hardness and select the option that matches the result." },
+    ],
+    tip: "Always double-check your unit conversions and ensure you are using the correct atomic weights for each element in the formula.",
   },
   {
     id: 435,
@@ -5713,7 +6095,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Total alkalinity is the sum of all forms of alkalinity present in the water. In this case, it is the sum of bicarbonate and carbonate alkalinity: 150 mg/L + 20 mg/L = 170 mg/L as CaCO3.`,
-    tip: `Total Alkalinity = Bicarbonate Alkalinity + Carbonate Alkalinity`,
+    steps: [
+      { l: "Identify given values", c: "Note the bicarbonate alkalinity and carbonate alkalinity provided in the question." },
+      { l: "Recall the formula", c: "Remember the formula for total alkalinity, which is the sum of bicarbonate and carbonate alkalinity." },
+      { l: "Substitute values into formula", c: "Plug the given bicarbonate alkalinity and carbonate alkalinity values into the total alkalinity formula." },
+      { l: "Calculate total alkalinity", c: "Perform the addition to find the total alkalinity value." },
+    ],
+    tip: "Always double-check that you are using the correct formula for the specific type of alkalinity being asked.",
   },
   {
     id: 443,
@@ -6146,7 +6534,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `Hydraulic Power (P_h) = Flow Rate * Head * Specific Weight = 0.02 m³/s * 30 m * 9.81 kN/m³ = 5.886 kW. Motor Power (P_m) = P_h / Efficiency = 5.886 kW / 0.75 = 7.848 kW, which is approximately 7.85 kW.`,
-    tip: `Power (kW) = (Flow Rate (m³/s) * Head (m) * Specific Weight of Water (kN/m³)) / Efficiency`,
+    steps: [
+      { l: "Identify given values", c: "List all the known values from the problem statement, including flow rate, head, efficiency, and specific gravity of water." },
+      { l: "Calculate specific weight", c: "Determine the specific weight of water in kN/m³. Since specific gravity is 1, the specific weight is 9.81 kN/m³ (g * specific gravity)." },
+      { l: "Apply power formula", c: "Use the provided formula to calculate the power required by the pump motor. Ensure all units are consistent for the calculation." },
+      { l: "Perform calculation", c: "Substitute the identified values into the formula and perform the arithmetic to find the final power in kilowatts." },
+    ],
+    tip: "Always double-check that all units are consistent before performing calculations to avoid errors.",
   },
   {
     id: 470,
@@ -6163,7 +6557,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 2,
     explanation: `Total Dynamic Head (TDH) = Suction Lift + Discharge Head + Suction Friction Loss + Discharge Friction Loss. TDH = 5m + 25m + 1m + 3m = 34 meters.`,
-    tip: `TDH = Suction Lift + Discharge Head + Suction Friction Loss + Discharge Friction Loss`,
+    steps: [
+      { l: "Identify given values", c: "List all the provided values for suction lift, discharge head, and friction losses from the problem statement." },
+      { l: "Recall TDH formula", c: "Remember the formula for Total Dynamic Head (TDH) which accounts for all vertical lifts and friction losses." },
+      { l: "Substitute values into formula", c: "Plug the identified numerical values into the TDH formula to set up the calculation." },
+      { l: "Calculate TDH", c: "Perform the addition to find the total dynamic head the pump must overcome." },
+    ],
+    tip: "Always ensure all units are consistent before performing any calculations to avoid errors.",
   },
   {
     id: 471,
@@ -6180,7 +6580,14 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 3,
     explanation: `Hydraulic Horsepower (HHP) = (GPM * Head (ft)) / 3960 = (500 * 100) / 3960 = 12.62 HHP. Brake Horsepower (BHP) = HHP / Efficiency = 12.62 / 0.70 = 18.03 BHP, approximately 18.0 BHP.`,
-    tip: `BHP = (GPM * Head (ft)) / (3960 * Efficiency)`,
+    steps: [
+      { l: "Identify given values", c: "List all the known values from the problem statement to ensure they are correctly used in the calculation." },
+      { l: "Apply BHP formula", c: "Use the provided formula for Brake Horsepower (BHP) directly, substituting the given values for GPM, Head, and Efficiency." },
+      { l: "Calculate the numerator", c: "Multiply the GPM by the total head in feet to get the top part of the equation." },
+      { l: "Calculate the denominator", c: "Multiply the constant 3960 by the pump efficiency (as a decimal) to get the bottom part of the equation." },
+      { l: "Perform final division", c: "Divide the numerator by the denominator to find the approximate Brake Horsepower (BHP) required." },
+    ],
+    tip: "Always convert efficiency to a decimal (e.g., 70% to 0.70) before using it in calculations.",
   },
   {
     id: 472,
@@ -6197,7 +6604,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 3,
     explanation: `Convert pressures to head: Suction Head = 50 kPa / (9.81 kN/m³) = 5.097 m. Discharge Head = 300 kPa / (9.81 kN/m³) = 30.581 m. Total Dynamic Head (TDH) = (Discharge Pressure Head - Suction Pressure Head) + Elevation Difference. TDH = (30.581 m - 5.097 m) + 12 m = 25.484 m + 12 m = 37.484 m, approximately 37.53 m.`,
-    tip: `TDH = (P_discharge (kPa) - P_suction (kPa)) / (Specific Weight of Water (kN/m³)) + Elevation Difference (m)`,
+    steps: [
+      { l: "Calculate pressure difference", c: "Subtract the suction pressure from the discharge pressure to find the net pressure increase across the pump. This is the pressure energy added by the pump." },
+      { l: "Convert pressure to head", c: "Divide the pressure difference by the specific weight of water (which is 9.81 kN/m³ for water with specific gravity 1) to convert the pressure energy into an equivalent head in meters." },
+      { l: "Add elevation difference", c: "Add the given elevation difference to the pressure head. Since the discharge is higher than the suction, this elevation contributes positively to the total head." },
+      { l: "Calculate Total Dynamic Head", c: "Sum the pressure head and the elevation head to determine the Total Dynamic Head (TDH), which represents the total energy imparted to the fluid by the pump." },
+    ],
+    tip: "Always ensure consistent units throughout your calculations; convert all values to the required units before performing operations.",
   },
   {
     id: 473,
@@ -6214,7 +6627,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 0,
     explanation: `The overall efficiency of a pump-motor unit is the product of the pump efficiency and the motor efficiency. Overall Efficiency = Pump Efficiency * Motor Efficiency = 0.70 * 0.90 = 0.63 or 63%.`,
-    tip: `Overall Efficiency = Pump Efficiency * Motor Efficiency`,
+    steps: [
+      { l: "Identify given efficiencies", c: "Note the individual efficiencies of the pump and the motor as provided in the question." },
+      { l: "Convert to decimal form", c: "Convert the percentage efficiencies of both the pump and the motor into their decimal equivalents for calculation purposes." },
+      { l: "Apply overall efficiency formula", c: "Multiply the decimal pump efficiency by the decimal motor efficiency to find the overall efficiency of the unit." },
+      { l: "Convert back to percentage", c: "Multiply the calculated overall efficiency (in decimal form) by 100 to express it as a percentage." },
+    ],
+    tip: "Always convert percentages to decimals before performing multiplication in efficiency calculations to avoid errors.",
   },
   {
     id: 474,
@@ -6231,7 +6650,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 3,
     explanation: `NPSHa = Atmospheric Pressure Head - Suction Lift - Friction Loss in Suction Line - Vapor Pressure Head. NPSHa = 10.3 m - 2 m - 2 m - 0.5 m = 5.8 meters.`,
-    tip: `NPSHa = Atmospheric Pressure Head - Suction Lift - Friction Loss in Suction Line - Vapor Pressure Head`,
+    steps: [
+      { l: "Identify given values", c: "List all the provided values from the problem statement to ensure all necessary data is available for the calculation." },
+      { l: "Recall NPSHa formula", c: "Remember the formula for Net Positive Suction Head Available (NPSHa) which is Atmospheric Pressure Head - Suction Lift - Friction Loss in Suction Line - Vapor Pressure Head." },
+      { l: "Substitute values into formula", c: "Plug the identified values into the NPSHa formula to set up the calculation." },
+      { l: "Calculate NPSHa", c: "Perform the subtraction operations to determine the final NPSHa value." },
+    ],
+    tip: "Always double-check that all units are consistent before performing any calculations to avoid errors.",
   },
   {
     id: 475,
@@ -6248,7 +6673,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 2,
     explanation: `Hydraulic Power (P_h) = Flow Rate * Head * Specific Weight = 0.0456 m³/s * 40 m * 9.81 kN/m³ = 17.90976 kW. Overall Efficiency = Pump Efficiency * Motor Efficiency = 0.70 * 0.85 = 0.595. Power Consumption (P_c) = P_h / Overall Efficiency = 17.90976 kW / 0.595 = 30.10 kW, approximately 30.1 kW.`,
-    tip: `Power (kW) = (Flow Rate (m³/s) * Head (m) * Specific Weight of Water (kN/m³)) / (Pump Efficiency * Motor Efficiency)`,
+    steps: [
+      { l: "Calculate hydraulic power", c: "First, calculate the hydraulic power (P_h) using the given flow rate, head, and specific weight of water. This represents the power delivered to the water." },
+      { l: "Calculate overall efficiency", c: "Next, determine the overall efficiency of the pumping system by multiplying the pump efficiency by the motor efficiency. This accounts for losses in both components." },
+      { l: "Calculate overall power consumption", c: "Finally, calculate the overall power consumption by dividing the hydraulic power by the overall efficiency. This gives the total electrical power required." },
+      { l: "Round to significant figures", c: "Round the final answer to an appropriate number of significant figures, typically one decimal place for power values in kW." },
+    ],
+    tip: "Always ensure units are consistent before performing calculations to avoid errors, especially with specific weight.",
   },
   {
     id: 476,
@@ -6547,7 +6978,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `When pumps operate in parallel, their flow rates add up. If each of the two operating pumps delivers 90 L/s, the total flow rate from the station is 90 L/s + 90 L/s = 180 L/s.`,
-    tip: `Total Flow Rate = Sum of individual pump flow rates at the operating head`,
+    steps: [
+      { l: "Identify individual pump flow", c: "Determine the flow rate provided by a single pump at the given operating conditions, which is 90 L/s." },
+      { l: "Count operating pumps", c: "Identify how many pumps are currently operating in parallel. In this scenario, two pumps are operating." },
+      { l: "Apply total flow formula", c: "Use the formula for total flow rate in parallel systems: Total Flow Rate = Sum of individual pump flow rates. Multiply the individual pump flow by the number of operating pumps." },
+      { l: "Calculate total flow", c: "Perform the calculation: 90 L/s/pump * 2 pumps = 180 L/s. This is the total flow from the station." },
+    ],
+    tip: "Remember that for pumps in parallel, flow rates add up, while for pumps in series, head adds up.",
   },
   {
     id: 493,
@@ -7135,7 +7572,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `To calculate the daily alum requirement, multiply the flow rate by the dosage: 10,000 m³/day * 15 mg/L = 150,000,000 mg/day = 150 kg/day. (Note: 1 m³ = 1000 L, 1 kg = 1,000,000 mg)`,
-    tip: `Daily Alum (kg) = Flow (m³/day) * Dosage (mg/L) / 1000`,
+    steps: [
+      { l: "Identify given values", c: "List the known parameters from the problem statement: flow rate and alum dosage." },
+      { l: "Select correct formula", c: "Choose the appropriate formula for calculating daily alum in kilograms, which is provided in the question." },
+      { l: "Substitute values into formula", c: "Plug the identified flow rate and dosage into the selected formula to set up the calculation." },
+      { l: "Calculate daily alum", c: "Perform the multiplication and division to determine the total kilograms of alum needed per day." },
+    ],
+    tip: "Always double-check units before and after calculations to ensure consistency and prevent errors.",
   },
   {
     id: 528,
@@ -7707,7 +8150,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `Surface Overflow Rate (SOR) is calculated by dividing the flow rate by the surface area of the clarifier. In this case, 5000 m3/day / 250 m2 = 20 m3/m2/day.`,
-    tip: `SOR = Flow Rate / Surface Area`,
+    steps: [
+      { l: "Identify given values", c: "List the provided flow rate and surface area from the problem statement to ensure all necessary data is at hand." },
+      { l: "Recall SOR formula", c: "Remember the formula for Surface Overflow Rate (SOR), which is Flow Rate divided by Surface Area." },
+      { l: "Substitute values into formula", c: "Plug the identified flow rate and surface area values into the SOR formula to set up the calculation." },
+      { l: "Calculate SOR", c: "Perform the division to find the final Surface Overflow Rate and include the correct units." },
+    ],
+    tip: "Always double-check that your units cancel out correctly to arrive at the desired final unit for the answer.",
   },
   {
     id: 563,
@@ -7979,7 +8428,13 @@ export const QUESTIONS: Question[] = [
     ],
     correct: 1,
     explanation: `SVI = (Settled volume in mL/L) divided by (MLSS in g/L) = 240 mL/L divided by 3.0 g/L = 80 mL/g. This is within the acceptable range (80-150 mL/g), indicating good sludge settleability.`,
-    tip: `Convert MLSS from mg/L to g/L by dividing by 1,000. SVI = mL/L divided by g/L.`,
+    steps: [
+      { l: "Identify given values", c: "List the provided values for Mixed Liquor Suspended Solids (MLSS) and settled sludge volume to prepare for the calculation." },
+      { l: "Convert MLSS to g/L", c: "Convert the MLSS from mg/L to g/L by dividing by 1,000, as the SVI formula requires MLSS in g/L." },
+      { l: "Apply SVI formula", c: "Use the SVI formula: SVI = (Settled Sludge Volume in mL/L) / (MLSS in g/L) to calculate the Sludge Volume Index." },
+      { l: "Calculate SVI", c: "Perform the division using the converted MLSS and the given settled sludge volume to find the final SVI value." },
+    ],
+    tip: "Always ensure units are consistent with the formula requirements, especially when converting mg/L to g/L for SVI calculations.",
   },
   {
     id: 580,

@@ -95,7 +95,8 @@ export default function Class1Quiz() {
 
   const [stream, setStream] = useState<Stream>(initialStream);
   const [subModule, setSubModule] = useState<SubModule>(null);
-  const [calcOnly, setCalcOnly] = useState(false);
+  const initialCalcOnly = useMemo(() => new URLSearchParams(searchString).get("calcOnly") === "true", []); // only read on mount
+  const [calcOnly, setCalcOnly] = useState(initialCalcOnly);
   const [showStreamSelector, setShowStreamSelector] = useState(false);
 
   const [history, setHistory]       = useState<HistoryEntry[]>([]);

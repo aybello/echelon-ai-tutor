@@ -34,8 +34,8 @@ export const QUESTIONS: Question[] = [
       { l: "Evaluate Coagulation Strategies", c: "Consider different coagulation approaches. Charge neutralization at neutral pH is insufficient for NOM removal, and polymer alone is ineffective for dissolved NOM." },
       { l: "Select Optimal Strategy", c: "Determine that enhanced coagulation, involving lower pH (5.5-6.5) and higher coagulant dose, is the most appropriate and effective strategy for removing NOM from low-turbidity, high-colour water." },
     ],
+    "difficulty": "hard",
     tip: "When dealing with high-colour water, always prioritize strategies that effectively remove natural organic matter (NOM) to prevent DBP formation.",
-    "difficulty": "hard"
   },
   {
     "id": 2,
@@ -56,8 +56,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Interpret Increasing Positive Zeta Potential", c: "If increasing the alum dose beyond 30 mg/L causes the zeta potential to become increasingly positive, it means that the excess positive charge from the alum is now overwhelming the negative charge of the colloids." },
       { l: "Step 4: Identify the Consequence of Overdosing", c: "This 'charge reversal' due to overdosing leads to restabilization of the particles. Instead of clumping together, the now positively charged particles repel each other, resulting in poor floc formation and high turbidity." },
     ],
+    "difficulty": "hard",
     tip: "Always connect observed jar test results, like zeta potential changes, to the underlying chemical principles of coagulation to understand process implications.",
-    "difficulty": "hard"
   },
   {
     "id": 3,
@@ -78,8 +78,8 @@ export const QUESTIONS: Question[] = [
       { l: "Consider Fouling Types", c: "Irreversible fouling is commonly caused by organic matter, biofouling (microbial growth), or scaling (mineral precipitation). These materials adhere strongly to the membrane surface or pores." },
       { l: "Identify the Solution", c: "To address irreversible fouling, chemical cleaning (Clean-In-Place or CIP) is required. Different chemicals are used depending on the type of foulant (e.g., caustic/hypochlorite for organics/biofouling, acid for scaling)." },
     ],
+    "difficulty": "hard",
     tip: "When troubleshooting membrane issues, differentiate between sudden and gradual changes in TMP to identify the most likely cause and appropriate solution.",
-    "difficulty": "hard"
   },
   {
     "id": 4,
@@ -100,8 +100,8 @@ export const QUESTIONS: Question[] = [
       { l: "Relate integrity testing to pathogen removal", c: "An integrity test, such as a pressure decay test, directly assesses the physical barrier's soundness. A failing test indicates a potential pathway for pathogens to bypass treatment." },
       { l: "State the primary purpose", c: "Therefore, the primary purpose of an integrity test is to confirm the membrane's ability to prevent the passage of pathogens, ensuring the treated water meets safety standards." },
     ],
+    "difficulty": "medium",
     tip: "Focus on the 'why' behind the process; understanding the fundamental purpose helps answer application-based questions.",
-    "difficulty": "medium"
   },
   {
     "id": 5,
@@ -122,8 +122,8 @@ export const QUESTIONS: Question[] = [
       { l: "Explain the ozone CT calculation method", c: "For ozone, CT is calculated by integrating the area under the residual concentration versus time curve (∫C·dt). This accounts for the changing residual throughout the contact basin." },
       { l: "State the practical implication", c: "This integrated approach provides a more accurate representation of the actual disinfection exposure achieved by ozone." },
     ],
+    "difficulty": "hard",
     tip: "Remember that ozone's rapid decay necessitates an integrated CT calculation (∫C·dt) rather than a simple C x T10.",
-    "difficulty": "hard"
   },
   {
     "id": 6,
@@ -159,8 +159,8 @@ export const QUESTIONS: Question[] = [
       { l: "Determine the Effect on Dose", c: "Since the UV dose is a function of UV intensity and exposure time, a reduction in UV intensity due to lower UVT will directly lead to a decrease in the delivered UV dose, assuming other parameters like flow rate and lamp power remain constant." },
       { l: "Conclude the Outcome", c: "The delivered UV dose will be lower than the validated 12 mJ/cm² required for 3-log Cryptosporidium inactivation, potentially compromising disinfection effectiveness." },
     ],
+    "difficulty": "hard",
     tip: "Always connect changes in water quality parameters like UVT directly to their impact on the effectiveness of the treatment process.",
-    "difficulty": "hard"
   },
   {
     "id": 8,
@@ -181,8 +181,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify the Reason", c: "Viruses are highly UV-resistant, and the dose required for 4-log inactivation (186 mJ/cm²) is considered impractically high for typical drinking water applications." },
       { l: "Formulate the Answer", c: "Therefore, there is no minimum UV dose required for 4-log virus inactivation credit under O. Reg. 170/03 because UV is not given credit for virus inactivation." },
     ],
+    "difficulty": "hard",
     tip: "Remember that regulations often specify what is NOT credited, which can be as important as what IS credited.",
-    "difficulty": "hard"
   },
   {
     "id": 9,
@@ -263,8 +263,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Identify the Most Effective Strategy", c: "Based on the explanation, both pH/alkalinity optimization and orthophosphate addition are effective for forming protective scales. Orthophosphate is specifically mentioned as forming insoluble lead phosphate scale, directly addressing lead corrosion." },
       { l: "Step 4: Select the Primary Treatment Strategy", c: "Given the options, implementing a corrosion control program that includes orthophosphate addition and/or pH/alkalinity adjustment is the primary treatment strategy to reduce lead at the tap." },
     ],
+    "difficulty": "hard",
     tip: "Focus on identifying the long-term, preventative treatment solutions rather than short-term measures when asked about primary strategies.",
-    "difficulty": "hard"
   },
   {
     "id": 14,
@@ -285,8 +285,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Relate LSI to Scaling Tendency", c: "Specifically, an LSI of +0.8 is a significantly positive value. This indicates a strong tendency for the water to form scale, which is the deposition of calcium carbonate on pipe surfaces and equipment." },
       { l: "Step 4: Consider Operational Implications", c: "While a slightly positive LSI (e.g., +0.1 to +0.5) is often targeted for corrosion control by forming a protective layer, an LSI of +0.8 suggests that excessive scaling is likely to occur, potentially leading to reduced pipe capacity and equipment damage." },
     ],
+    "difficulty": "medium",
     tip: "Memorize the LSI scale: positive means scaling, negative means corrosive, and zero means balanced.",
-    "difficulty": "medium"
   },
   {
     "id": 15,
@@ -307,8 +307,8 @@ export const QUESTIONS: Question[] = [
       { l: "Evaluate Treatment Options", c: "Enhanced coagulation is effective at removing NOM. Moving the chlorination point to after filtration minimizes the contact time between chlorine and NOM. Switching to chloramines reduces THMs but can increase other DBPs like HAAs. Increasing chlorine dose would worsen THM formation." },
       { l: "Determine Most Effective Modification", c: "Combining enhanced coagulation (to remove NOM precursors) with post-filtration chlorination (to reduce contact time) is the most effective strategy to significantly reduce THM formation in this scenario." },
     ],
+    "difficulty": "hard",
     tip: "When addressing DBP formation, always consider both precursor removal and optimizing disinfection contact time.",
-    "difficulty": "hard"
   },
   {
     "id": 16,
@@ -374,8 +374,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Prioritize Investigation", c: "The MOST appropriate first step is to investigate the efficiency of the coagulation and flocculation processes. This includes checking coagulant dose, pH, and mixing conditions." },
       { l: "Step 4: Implement Diagnostic Tools", c: "Utilize tools like jar testing to optimize coagulant dose and monitor settled water turbidity to confirm if the upstream processes are effectively removing solids." },
     ],
+    "difficulty": "hard",
     tip: "When troubleshooting filter issues, always consider upstream processes first, as they often dictate filter performance.",
-    "difficulty": "hard"
   },
   {
     "id": 20,
@@ -396,8 +396,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Analyze the impact on particle removal", c: "With the SOR increasing from 40 to 52 m³/m²·day, a wider range of particles will now have a settling velocity less than the new SOR. Specifically, particles with settling velocities between 40 and 52 m³/m²·day that were previously removed will now be carried over." },
       { l: "Step 4: Conclude on removal efficiency", c: "Since more particles will be carried over due to the increased upward velocity, the overall particle removal efficiency of the sedimentation basin will decrease significantly." },
     ],
+    "difficulty": "hard",
     tip: "Always remember that an increase in flow without a corresponding increase in basin area will always lead to a higher SOR and reduced removal efficiency in sedimentation.",
-    "difficulty": "hard"
   },
   {
     "id": 21,
@@ -432,8 +432,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify Existing Fluoride", c: "The source water already contains 0.2 mg/L of natural fluoride." },
       { l: "Calculate Fluoride Deficit", c: "Subtract the existing fluoride from the target fluoride to find the amount that needs to be added: 0.7 mg/L - 0.2 mg/L = 0.5 mg/L." },
     ],
+    "difficulty": "medium",
     tip: "Always account for existing concentrations in source water when calculating chemical dosages for target levels.",
-    "difficulty": "medium"
   },
   {
     "id": 23,
@@ -454,8 +454,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Identify Lime's Initial Roles", c: "Lime is added first to neutralize free carbon dioxide (CO₂), precipitate calcium carbonate (CaCO₃) from carbonate hardness, and raise the pH sufficiently for magnesium hydroxide (Mg(OH)₂) precipitation." },
       { l: "Step 4: Determine the First Chemical", c: "Based on its multiple initial functions, lime (Ca(OH)₂) is always the first chemical added in the lime-soda ash softening process." },
     ],
+    "difficulty": "hard",
     tip: "Memorize the sequence of chemical additions and their primary functions for common water treatment processes.",
-    "difficulty": "hard"
   },
   {
     "id": 24,
@@ -506,8 +506,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Recognize Missing Treatment Components", c: "Effective manganese removal at neutral pH requires strong oxidants (like chlorine or potassium permanganate) or catalytic filter media. The current treatment (aeration and filtration) is sufficient for iron but lacks these specific components for manganese." },
       { l: "Step 4: Conclude Ineffective Removal", c: "Because the plant's current aeration and filtration process is optimized for iron oxidation at neutral pH and does not incorporate the specific conditions or chemicals needed for manganese oxidation, manganese removal is less effective." },
     ],
+    "difficulty": "hard",
     tip: "When a question asks 'why' a treatment is less effective, focus on the chemical properties and required conditions for the substance in question, comparing them to the existing treatment process.",
-    "difficulty": "hard"
   },
   {
     "id": 27,
@@ -558,8 +558,8 @@ export const QUESTIONS: Question[] = [
       { l: "Apply the Formula", c: "The formula for chlorine dose is: Chlorine Dose = Chlorine Demand + Chlorine Residual. Substitute the given values into this formula." },
       { l: "Calculate the Dose", c: "Chlorine Dose = 2.3 mg/L (Demand) + 0.5 mg/L (Residual) = 2.8 mg/L. This is the total amount of chlorine required." },
     ],
+    "difficulty": "easy",
     tip: "Always remember that chlorine dose must cover both the demand and the desired residual; it's not just one or the other.",
-    "difficulty": "easy"
   },
   {
     "id": 30,
@@ -580,8 +580,8 @@ export const QUESTIONS: Question[] = [
       { l: "Understand chloramine benefits", c: "Chloramines are formed by combining chlorine with ammonia. This chemical structure makes them less reactive with NOM, significantly reducing the formation of THMs and HAAs compared to free chlorine." },
       { l: "Determine the MAIN reason", c: "While chloramines offer a more stable residual, the primary driver for switching to them for secondary disinfection is to minimize the formation of regulated disinfection byproducts, especially in systems with long retention times or high NOM." },
     ],
+    "difficulty": "medium",
     tip: "When comparing disinfectants, always consider their DBP formation potential and residual stability in the distribution system.",
-    "difficulty": "medium"
   },
   {
     "id": 31,
@@ -602,8 +602,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify Consequences of Low Flow Operation", c: "At flows significantly below BEP, common issues include increased radial thrust, internal recirculation, higher vibration, and reduced efficiency. These factors lead to premature wear and higher operating costs." },
       { l: "Synthesize the Likely Consequence", c: "Considering the provided explanation, the most likely long-term consequence of operating at 80% of BEP (which is below BEP) is increased wear on bearings and seals due to radial thrust, impeller erosion from recirculation, and higher energy consumption due to reduced efficiency." },
     ],
+    "difficulty": "hard",
     tip: "When answering questions about pump operation, always consider the impact of deviations from the Best Efficiency Point (BEP) on efficiency, component wear, and overall system reliability.",
-    "difficulty": "hard"
   },
   {
     "id": 32,
@@ -624,8 +624,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Analyze Head Contribution", c: "Since both pumps are operating against the same system head, the head developed by the parallel combination remains approximately the same as that of a single pump." },
       { l: "Step 4: Determine Combined Effect", c: "Compared to a single pump, two identical pumps in parallel will approximately double the flow rate while maintaining a similar head. The exact flow increase is slightly less than double due to increased system head losses at higher flow rates." },
     ],
+    "difficulty": "medium",
     tip: "Remember that parallel pumps increase flow, while series pumps increase head; this is a common distinction tested on exams.",
-    "difficulty": "medium"
   },
   {
     "id": 33,
@@ -676,8 +676,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate Maximum Continuous Power", c: "Multiply the rated power by the service factor to determine the maximum continuous power the motor can deliver. In this case, 75 kW * 1.15 = 86.25 kW." },
       { l: "Step 4: Interpret the Meaning", c: "Conclude that a service factor of 1.15 means the motor can safely operate continuously at up to 115% of its rated power, or 86.25 kW, although this is not recommended for routine operation as it can reduce motor life and efficiency." },
     ],
+    "difficulty": "medium",
     tip: "Always define the term first, then apply it to the given values to demonstrate full understanding.",
-    "difficulty": "medium"
   },
   {
     "id": 36,
@@ -713,8 +713,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Identify Alternatives and Blanks", c: "While Kaolin clay can be used as an alternative, it's not the primary standard. Distilled water serves as a zero or blank check, not a calibration standard." },
       { l: "Step 4: Conclude the Correct Answer", c: "Based on the primary standard, Formazin (or equivalent Formazin-based standards like AMCO-AEPA polymer standards) is the correct answer." },
     ],
+    "difficulty": "medium",
     tip: "Always prioritize primary standards over alternatives when asked for 'the standard' in water treatment questions.",
-    "difficulty": "medium"
   },
   {
     "id": 38,
@@ -735,8 +735,8 @@ export const QUESTIONS: Question[] = [
       { l: "Calculate Stroke Frequency Factor", c: "The stroke frequency factor is the current strokes per minute divided by the maximum strokes per minute. So, 60 strokes/minute / 100 strokes/minute = 0.60." },
       { l: "Calculate Actual Output", c: "Multiply the maximum output by both the stroke length factor and the stroke frequency factor: 50 L/h * 0.80 * 0.60 = 24 L/h." },
     ],
+    "difficulty": "hard",
     tip: "Always break down complex calculations into smaller, manageable steps to avoid errors and ensure you apply all given factors.",
-    "difficulty": "hard"
   },
   {
     "id": 39,
@@ -757,8 +757,8 @@ export const QUESTIONS: Question[] = [
       { l: "Describe the catalytic effect", c: "These released metal ions act as catalysts, significantly accelerating the decomposition of the sodium hypochlorite solution. This explains the faster-than-expected degradation." },
       { l: "Propose suitable materials", c: "To prevent this, the storage tank should be made of compatible materials such as HDPE, FRP, or rubber-lined steel. Piping and fittings also require specific non-metallic or 316 stainless steel materials." },
     ],
+    "difficulty": "medium",
     tip: "Always consider chemical compatibility when selecting materials for storage and piping in water treatment processes.",
-    "difficulty": "medium"
   },
   {
     "id": 40,
@@ -779,8 +779,8 @@ export const QUESTIONS: Question[] = [
       { l: "Perform Calculation", c: "Divide 4% by 1.5% to get the volume reduction factor: 4 / 1.5 = 2.666... ." },
       { l: "State Result", c: "Round the result to a practical number, such as 2.67 or approximately 2.7. This means the sludge volume is reduced by a factor of 2.7." },
     ],
+    "difficulty": "hard",
     tip: "Always double-check that you are dividing the final percentage by the initial percentage for volume reduction, not the other way around.",
-    "difficulty": "hard"
   },
   {
     "id": 41,
@@ -801,8 +801,8 @@ export const QUESTIONS: Question[] = [
       { l: "Evaluate the impacts of suspended solids", c: "High suspended solids lead to smothering of benthic organisms, reduced light penetration affecting photosynthesis, and impaired fish gill function, which are severe and broad ecological disturbances." },
       { l: "Compare with other concerns", c: "Aluminum toxicity is pH-dependent, making its impact variable. Oxygen depletion is also a concern but often secondary to the immediate physical impact of the solids themselves. High suspended solids are a universal and immediate consequence of sludge discharge." },
     ],
+    "difficulty": "hard",
     tip: "When asked for the 'primary' concern, look for the most direct, immediate, and widespread impact.",
-    "difficulty": "hard"
   },
   {
     "id": 42,
@@ -838,8 +838,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Consider System Configuration", c: "Beyond the immediate valves, there might be other connections or bypasses to the repair area that were not identified or isolated. This requires reviewing system maps." },
       { l: "Step 4: Prioritize Immediate Action", c: "The operator's immediate action should be to re-check the closed valves for full closure and then consult system maps for additional connections that might be feeding the repair area." },
     ],
+    "difficulty": "medium",
     tip: "When a problem persists despite standard procedures, consider equipment malfunction or overlooked system components.",
-    "difficulty": "medium"
   },
   {
     "id": 44,
@@ -860,8 +860,8 @@ export const QUESTIONS: Question[] = [
       { l: "Substitute and Calculate", c: "Substitute the given values into the formula: T10 = 0.3 × 60 minutes." },
       { l: "Determine the Result", c: "T10 = 18 minutes. This is the time used for CT calculations." },
     ],
+    "difficulty": "hard",
     tip: "Always remember that T10, not the theoretical detention time (T), is used for CT calculations to account for short-circuiting in contact chambers.",
-    "difficulty": "hard"
   },
   {
     "id": 45,
@@ -942,8 +942,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Evaluate the reliability based on holding time.", c: "A 2-hour delay significantly exceeds the recommended holding time for pH. This extended delay makes the laboratory pH result unreliable for accurate representation of the water's pH at the time of collection." },
       { l: "Step 4: Determine regulatory reporting suitability.", c: "Due to the unreliability caused by the delayed measurement and lack of preservation, this pH result is not suitable for regulatory reporting, especially for critical applications like corrosion control or CT calculations." },
     ],
+    "difficulty": "medium",
     tip: "Always remember that pH is a field parameter requiring immediate measurement for regulatory compliance and accurate data.",
-    "difficulty": "medium"
   },
   {
     "id": 50,
@@ -964,8 +964,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3", c: "Consider the impact of coagulation on organic matter. Coagulation is a primary method for removing natural organic matter (NOM), which is a precursor to disinfection byproducts (DBPs)." },
       { l: "Step 4", c: "Based on these considerations, determine which additional parameters directly reflect the efficiency of these broader goals. pH, alkalinity, and organic matter indicators (like TOC or UV254) are essential for a comprehensive assessment." },
     ],
+    "difficulty": "hard",
     tip: "Always consider the broader implications of treatment processes beyond the most obvious parameter, especially for coagulation.",
-    "difficulty": "hard"
   },
   {
     "id": 51,
@@ -987,8 +987,8 @@ export const QUESTIONS: Question[] = [
       { l: "Evaluate Each Interference's Effect", c: "Monochloramine is known to react slowly with DPD, especially if the reading is not taken promptly, leading to an overestimation of free chlorine. Turbidity can cause either high or low readings depending on how it scatters light, but it's not a direct chemical interference that mimics free chlorine." },
       { l: "Identify the Correct Interference", c: "Based on the DPD chemistry and known interferences, monochloramine is the primary culprit for falsely high free chlorine readings because it can partially react with DPD in the free chlorine step." },
     ],
+    "difficulty": "hard",
     tip: "When answering interference questions, consider how each potential interference chemically or physically interacts with the test method to produce the observed effect.",
-    "difficulty": "hard"
   },
   {
     "id": 52,
@@ -1024,8 +1024,8 @@ export const QUESTIONS: Question[] = [
       { l: "Explain Restabilization", c: "Restabilization occurs when too much coagulant is added, causing the colloidal particles to become over-charged (typically positive) and repel each other, preventing them from aggregating into larger, settleable floc." },
       { l: "Determine Optimal Dose Implications", c: "Since the floc was larger and settled well at 20 mg/L, this suggests that the optimal coagulant dose is likely around or slightly below 20 mg/L, as 30 mg/L has entered the restabilization zone." },
     ],
+    "difficulty": "hard",
     tip: "Always look for the 'sweet spot' in jar tests where floc is largest and settles best, as both underdosing and overdosing can lead to poor performance.",
-    "difficulty": "hard"
   },
   {
     "id": 54,
@@ -1046,8 +1046,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate SUVA", c: "Perform the calculation: (0.18 × 100) = 18. Then, 18 / 6 = 3.0. The SUVA value is 3.0 L/mg·m." },
       { l: "Step 4: Interpret the SUVA Value", c: "Interpret the calculated SUVA value based on the established ranges. A SUVA of 3.0 L/mg·m falls within the 2–4 L/mg·m range, indicating mixed natural organic matter (NOM) that is moderately amenable to coagulation." },
     ],
+    "difficulty": "hard",
     tip: "Memorize the SUVA formula and the interpretation ranges for different SUVA values, as this is a common concept in water treatment exams.",
-    "difficulty": "hard"
   },
   {
     "id": 55,
@@ -1068,8 +1068,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Key Difference - Chemical Composition", c: "The fundamental difference lies in their chemical composition: hardness measures specific metal ions (cations), while alkalinity measures acid-neutralizing compounds (anions and bases)." },
       { l: "Step 4: Key Difference - Impact on Water", c: "Hardness causes issues like scale formation in pipes and reduced soap lathering, whereas alkalinity provides buffering capacity, helping to stabilize pH and resist acidic pollution." },
     ],
+    "difficulty": "medium",
     tip: "Remember that while both are expressed as mg/L CaCO₃, hardness measures cations and alkalinity measures acid-neutralizing capacity, making them distinct properties.",
-    "difficulty": "medium"
   },
   {
     "id": 56,
@@ -1165,8 +1165,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Toxin Release Upon Lysis", c: "When cyanobacteria cells lyse, the intracellular toxins are released into the water, becoming dissolved toxins." },
       { l: "Step 4: Difficulty of Removing Dissolved Toxins", c: "Dissolved toxins are significantly more difficult to remove from the water than intact cyanobacteria cells, posing a greater treatment challenge." },
     ],
+    "difficulty": "hard",
     tip: "Always consider the downstream effects of chemical additions, especially when dealing with biological contaminants that store toxins.",
-    "difficulty": "hard"
   },
   {
     "id": 62,
@@ -1232,8 +1232,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify POE Disinfection Standard", c: "For free chlorine, O. Reg. 170/03 mandates a minimum residual at the POE to ensure effective disinfection before water enters the distribution network." },
       { l: "State the Specific Value", c: "The required minimum free chlorine residual at the point of entry to the distribution system for a large municipal residential system is 0.2 mg/L." },
     ],
+    "difficulty": "medium",
     tip: "Memorize key regulatory values like minimum residuals and sampling frequencies for different system types.",
-    "difficulty": "medium"
   },
   {
     "id": 66,
@@ -1389,8 +1389,8 @@ export const QUESTIONS: Question[] = [
       { l: "Note the unit of measurement", c: "The MAC for nitrate is expressed 'as N', meaning as nitrogen, not as the nitrate ion (NO₃⁻)." },
       { l: "Confirm the context", c: "This limit is primarily to protect infants from methemoglobinemia, also known as blue baby syndrome." },
     ],
+    "difficulty": "medium",
     tip: "Memorize key MAC values for common contaminants like nitrate, especially those with specific health implications.",
-    "difficulty": "medium"
   },
   {
     "id": 76,
@@ -1411,8 +1411,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Evaluate Effectiveness and Commonality", c: "Enhanced coagulation with ferric salts and adsorption on iron-based media are widely recognized as highly effective and commonly employed methods for arsenic removal in water treatment, especially for concentrations like 0.015 mg/L. Reverse osmosis is effective but often considered for higher concentrations or multiple contaminants due to cost and complexity. Ion exchange is effective for arsenate but might be less universally applicable than coagulation or adsorption." },
       { l: "Step 4: Identify the 'MOST Effective' Option", c: "Based on the explanation and common practice, enhanced coagulation with ferric sulfate or ferric chloride, and adsorption on iron-based media are among the most effective and practical solutions for arsenic removal at this concentration. The explanation specifically states that arsenic (as arsenate, As(V)) adsorbs strongly to iron hydroxide floc, making enhanced coagulation a primary choice." },
     ],
+    "difficulty": "hard",
     tip: "When asked for the 'most effective' treatment, consider both efficacy and practical application for the given contaminant and concentration.",
-    "difficulty": "hard"
   },
   {
     "id": 77,
@@ -1508,8 +1508,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Submit Documentation to MOH", c: "Compile all relevant documentation, including satisfactory sample results and chlorine residual data, and submit it to the Medical Officer of Health (MOH)." },
       { l: "Step 4: Obtain MOH Approval", c: "Receive official review and approval from the Medical Officer of Health to lift the Boil Water Advisory, as they have the ultimate authority." },
     ],
+    "difficulty": "hard",
     tip: "Always remember that public health and safety are paramount, and the Medical Officer of Health has the final say in lifting advisories.",
-    "difficulty": "hard"
   },
   {
     "id": 83,
@@ -1530,8 +1530,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the flow velocity", c: "The formula for velocity is V = Q / A. Substitute the converted flow rate and calculated area: V = 0.500 m³/s / 0.2827 m² = 1.77 m/s." },
       { l: "Step 4: Evaluate the calculated velocity", c: "Compare the calculated velocity to typical design ranges. A velocity of 1.77 m/s falls within the acceptable range of 0.6–3.0 m/s for distribution mains, indicating good design." },
     ],
+    "difficulty": "hard",
     tip: "Always ensure all units are consistent before performing calculations; converting to standard SI units (meters, seconds, kilograms) is often the safest approach.",
-    "difficulty": "hard"
   },
   {
     "id": 84,
@@ -1552,8 +1552,8 @@ export const QUESTIONS: Question[] = [
       { l: "Interpret the decrease", c: "This substantial decrease in the C-factor (from 130 to 80) indicates a significant increase in internal pipe roughness. This roughness is typically caused by corrosion and tuberculation (iron oxide deposits) in older unlined cast iron pipes." },
       { l: "Identify the implications", c: "A lower C-factor means reduced carrying capacity, increased head loss for a given flow, and potential water quality issues due to the rough internal surface harboring bacteria and contributing to discolored water." },
     ],
+    "difficulty": "hard",
     tip: "When interpreting C-factor changes, always relate the numerical difference to the physical condition of the pipe and its hydraulic performance implications.",
-    "difficulty": "hard"
   },
   {
     "id": 85,
@@ -1574,8 +1574,8 @@ export const QUESTIONS: Question[] = [
       { l: "Compare Given Pressure to Standard", c: "The given peak demand pressure is 280 kPa. This value is compared to the typical minimum design standard for normal peak demand, which is 275 kPa." },
       { l: "Determine Acceptability", c: "Since 280 kPa is greater than 275 kPa, the pressure during peak demand is considered acceptable according to the normal peak demand standard." },
     ],
+    "difficulty": "hard",
     tip: "Always differentiate between minimum pressure requirements for normal peak demand versus those including fire flow conditions.",
-    "difficulty": "hard"
   },
   {
     "id": 86,
@@ -1596,8 +1596,8 @@ export const QUESTIONS: Question[] = [
       { l: "Perform the Calculation", c: "Substitute the values into the formula: CT = 1.2 mg/L x 25 minutes." },
       { l: "State the Result", c: "The calculated CT is 30 mg min/L. This value represents the disinfection effectiveness achieved." },
     ],
+    "difficulty": "hard",
     tip: "Always double-check the units of your given values to ensure they are consistent before performing calculations.",
-    "difficulty": "hard"
   },
   {
     "id": 87,
@@ -1618,8 +1618,8 @@ export const QUESTIONS: Question[] = [
       { l: "Define T10", c: "T10 is the time at which 10% of a tracer introduced into the chamber has exited. This indicates that 90% of the water has been in the chamber for at least this duration." },
       { l: "Ensure Conservative Disinfection", c: "Using T10 for CT calculations provides a more conservative estimate of contact time, ensuring that the vast majority of the water receives adequate disinfection, even with short-circuiting present." },
     ],
+    "difficulty": "hard",
     tip: "When answering questions about T10, emphasize the concept of short-circuiting and the need for conservative disinfection to ensure public health protection.",
-    "difficulty": "hard"
   },
   {
     "id": 88,
@@ -1640,8 +1640,8 @@ export const QUESTIONS: Question[] = [
       { l: "Calculate Disinfection Credit for Giardia", c: "Subtract the filtration credit from the total required for Giardia: 3.0 - 2.5 = 0.5-log inactivation needed from disinfection." },
       { l: "Calculate Disinfection Credit for Viruses", c: "Subtract the filtration credit from the total required for viruses: 4.0 - 2.0 = 2.0-log inactivation needed from disinfection." },
     ],
+    "difficulty": "hard",
     tip: "Always break down log removal problems by individual pathogen to avoid confusion and ensure all requirements are met.",
-    "difficulty": "hard"
   },
   {
     "id": 89,
@@ -1722,8 +1722,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Verify Calibration", c: "Rinse the electrode again and re-check both the pH 7.0 and pH 4.0 buffers to ensure the meter now reads correctly (7.00 and 4.00, respectively) within ±0.02 pH units. If not, repeat steps 1 and 2." },
       { l: "Step 4: Confirm Accuracy", c: "For comprehensive accuracy, verify the calibration with a third buffer, such as pH 10.0, to ensure the meter is accurate across the expected operating range." },
     ],
+    "difficulty": "medium",
     tip: "Always remember the two-point calibration sequence: adjust offset at pH 7.0 first, then adjust slope at the second buffer (e.g., pH 4.0 or pH 10.0).",
-    "difficulty": "medium"
   },
   {
     "id": 94,
@@ -1744,8 +1744,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Notify Emergency Services", c: "Contact emergency services, such as the fire department with hazardous materials (hazmat) capabilities, and inform them of the suspected chlorine leak. Provide them with all relevant details." },
       { l: "Step 4: Account for Personnel", c: "Ensure all personnel are accounted for and are at a safe distance from the leak. Prevent unauthorized entry into the affected area." },
     ],
+    "difficulty": "medium",
     tip: "Always prioritize personal safety and follow established emergency protocols when dealing with hazardous materials like chlorine gas.",
-    "difficulty": "medium"
   },
   {
     "id": 95,
@@ -1842,8 +1842,8 @@ export const QUESTIONS: Question[] = [
       { l: "Implement Contingency Plans", c: "The municipality is obligated to activate its drought contingency plans, which typically include demand management strategies, exploring alternative water sources, and potentially reducing water taking to protect the ecosystem and other users." },
       { l: "Comply with Regulatory Directives", c: "The municipality must be prepared to comply with any directives from the Ministry of the Environment, Conservation and Parks (MECP) to reduce or cease water taking to protect aquatic ecosystems, other water users, and groundwater levels." },
     ],
+    "difficulty": "hard",
     tip: "Always remember that permits define maximums and conditions, not guaranteed entitlements, especially when environmental factors change.",
-    "difficulty": "hard"
   },
   {
     "id": 101,
@@ -1863,8 +1863,8 @@ export const QUESTIONS: Question[] = [
       { l: "2. Calculate the permeate (product) flow", c: "Permeate flow = Recovery rate × Feed flow. So, Permeate flow = 0.75 × 1,000 m³/day = 750 m³/day." },
       { l: "3. Calculate the concentrate (reject) flow", c: "Concentrate flow = Feed flow - Permeate flow. So, Concentrate flow = 1,000 m³/day - 750 m³/day = 250 m³/day." },
     ],
+    "difficulty": "medium",
     tip: "Always double-check your units and ensure they are consistent throughout your calculations.",
-    "difficulty": "medium"
   },
   {
     "id": 102,
@@ -1885,8 +1885,8 @@ export const QUESTIONS: Question[] = [
       { l: "Differentiate from other issues", c: "Scaling (e.g., calcium carbonate, silica) usually causes a more gradual decline in flux and a slower increase in ΔP, not a rapid spike. Membrane damage would likely cause a sudden increase in permeate conductivity rather than just ΔP." },
       { l: "Identify the MOST likely cause", c: "Among the fouling types, biological fouling (biofilm) is often the most common cause of a rapid and significant increase in ΔP, especially if pre-treatment for particulates is generally adequate." },
     ],
+    "difficulty": "hard",
     tip: "Focus on the word 'rapid' in the question; this often points to fouling rather than scaling or other gradual issues.",
-    "difficulty": "hard"
   },
   {
     "id": 103,
@@ -1922,8 +1922,8 @@ export const QUESTIONS: Question[] = [
       { l: "Compare with Free Chlorine Disadvantages", c: "Consider the common issues with free chlorine, especially its reaction with natural organic matter (NOM) to form disinfection byproducts (DBPs) like Trihalomethanes (THMs) and Haloacetic Acids (HAAs)." },
       { l: "Identify the Primary Advantage", c: "The most significant and often cited advantage of ClO₂ over free chlorine, particularly in the context of regulatory compliance and public health, is its inability to form regulated THMs and HAAs. This is explicitly stated as the first advantage and is a major driver for its use." },
     ],
+    "difficulty": "hard",
     tip: "When asked for the 'primary' advantage, look for the most impactful or distinguishing benefit that addresses a major drawback of the alternative.",
-    "difficulty": "hard"
   },
   {
     "id": 105,
@@ -1960,8 +1960,8 @@ export const QUESTIONS: Question[] = [
       { l: "Connect Symptoms to Cause", c: "When a filter becomes excessively clogged (high pressure), the accumulated solids can be forced through the media due to the increased hydraulic pressure. This phenomenon is called breakthrough, and it directly results in elevated effluent turbidity." },
       { l: "Identify the MOST Likely Cause", c: "Therefore, the most likely cause for both high pressure and elevated effluent turbidity is that the filter is clogged and experiencing breakthrough, meaning it needs to be backwashed." },
     ],
+    "difficulty": "medium",
     tip: "When a question presents multiple symptoms, look for the single cause that logically explains all of them simultaneously.",
-    "difficulty": "medium"
   },
   {
     "id": 107,
@@ -1982,8 +1982,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Consider the context of a 'distribution system'.", c: "Distribution systems typically consist of pipes, which can be old and corroded, leading to significant pipe wall reactions. While bulk water reactions occur, the extensive surface area of pipes over a 48-hour travel time makes pipe wall reactions a major factor." },
       { l: "Step 4: Determine the 'PRIMARY' cause.", c: "Given the substantial decay over an extended period (48 hours) within a pipe network, and the explicit mention that pipe wall demand is often dominant, pipe wall reactions are the most likely primary cause of this significant residual decay." },
     ],
+    "difficulty": "medium",
     tip: "When a question asks for the 'PRIMARY' cause, look for the most impactful or frequently dominant factor in the given scenario, often highlighted in the provided explanation.",
-    "difficulty": "medium"
   },
   {
     "id": 108,
@@ -2003,8 +2003,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Account for the fluoride content of the chemical", c: "Divide the total fluoride needed (5.0 kg F/day) by the fluoride content of the chemical (60.6% or 0.606). This calculates the amount of pure sodium silicofluoride required: 5.0 kg F/day / 0.606 = 8.25 kg pure Na₂SiF₆/day." },
       { l: "Step 3: Account for the purity of the chemical", c: "Divide the amount of pure chemical required (8.25 kg/day) by the chemical's purity (98% or 0.98). This gives the actual chemical feed rate: 8.25 kg/day / 0.98 = 8.42 kg/day. Round to one decimal place as appropriate, so 8.4 kg/day." },
     ],
+    "difficulty": "hard",
     tip: "Always account for both the active ingredient content and the purity of a chemical when calculating feed rates to avoid under- or over-dosing.",
-    "difficulty": "hard"
   },
   {
     "id": 109,
@@ -2025,8 +2025,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate Overall Efficiency", c: "Calculate the overall pump-motor efficiency using the formula: Overall Efficiency = Water Power / Motor Input Power. Divide 88.3 kW by 120 kW to get 0.736." },
       { l: "Step 4: Express as Percentage", c: "Convert the decimal efficiency to a percentage by multiplying by 100. 0.736 × 100 = 73.6%." },
     ],
+    "difficulty": "hard",
     tip: "Always ensure units are consistent (e.g., kW for power, m³/s for flow) before performing calculations to avoid errors.",
-    "difficulty": "hard"
   },
   {
     "id": 110,
@@ -2047,8 +2047,8 @@ export const QUESTIONS: Question[] = [
       { l: "Prioritize Major Causes of Significant Loss", c: "A substantial drop from 82% to 58% (24 percentage points) is typically due to significant hydraulic losses. Impeller wear and increased clearances (wear rings) directly impact the pump's ability to efficiently move water, leading to large efficiency reductions." },
       { l: "Identify the MOST Likely Cause", c: "While operating off-BEP can reduce efficiency, a 24% drop often points to physical wear. Impeller wear and increased clearances are the primary culprits for such a large efficiency degradation in aging pumps, as they directly reduce the hydraulic efficiency and allow internal recirculation." },
     ],
+    "difficulty": "hard",
     tip: "When a question asks for the 'MOST likely' cause of a significant operational issue, consider the factors that would have the largest impact on performance.",
-    "difficulty": "hard"
   },
   {
     "id": 111,
@@ -2144,8 +2144,8 @@ export const QUESTIONS: Question[] = [
       { l: "Synthesize Indications", c: "Elevated HPC primarily indicates potential issues within the distribution system that promote bacterial growth, such as low disinfectant residual, warm water temperatures, biofilm formation, or long water age. It is an aesthetic concern, not a direct health threat." },
       { l: "Formulate the Answer", c: "An elevated HPC suggests conditions favorable for bacterial regrowth in the distribution system, pointing to potential problems like inadequate disinfectant residual, biofilm presence, or long water age. While not a direct health risk, it warrants investigation into distribution system integrity and operation." },
     ],
+    "difficulty": "medium",
     tip: "Focus on the 'why' behind the exceedance, linking it to operational or environmental factors in the distribution system, rather than immediate health risks.",
-    "difficulty": "medium"
   },
   {
     "id": 117,
@@ -2181,8 +2181,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Comparative Analysis", c: "Compare the performance of ferric sulfate under various conditions to the current optimal performance achieved with alum, focusing on the desired treatment goals." },
       { l: "Step 4: Filterability and Chemical Handling Assessment", c: "Evaluate the filterability of the ferric floc, as its density may differ from alum floc, and consider the practical aspects of chemical handling and storage for ferric sulfate." },
     ],
+    "difficulty": "medium",
     tip: "When answering questions about chemical changes, always emphasize comprehensive bench-scale testing and comparative analysis to ensure a smooth transition and optimal performance.",
-    "difficulty": "medium"
   },
   {
     "id": 119,
@@ -2233,8 +2233,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Compare to Minimum Recommended Alkalinity", c: "Compare the remaining alkalinity (26.5 mg/L) to the recommended minimum of 20 mg/L for effective coagulation." },
       { l: "Step 4: Determine Sufficiency", c: "Since 26.5 mg/L is greater than 20 mg/L, there is technically sufficient alkalinity, but it is marginal and should be monitored closely." },
     ],
+    "difficulty": "hard",
     tip: "Always remember the typical alkalinity consumption factor for alum (0.45-0.50 mg/mg) and the minimum recommended residual alkalinity (20 mg/L) for effective coagulation.",
-    "difficulty": "hard"
   },
   {
     "id": 122,
@@ -2271,8 +2271,8 @@ export const QUESTIONS: Question[] = [
       { l: "Calculate Volume in m³/day", c: "Perform the calculation: Volume = 5,000 kg/day / (0.18 × 1,000 kg/m³) = 5,000 / 180 = 27.777... m³/day. Round to one decimal place for practical purposes: 27.8 m³/day." },
       { l: "Convert to Liters/day (Optional but useful)", c: "To express the volume in liters, multiply by 1,000 (since 1 m³ = 1,000 L): 27.8 m³/day × 1,000 L/m³ = 27,800 L/day." },
     ],
+    "difficulty": "hard",
     tip: "Always pay attention to units and ensure they are consistent throughout your calculations, converting percentages to decimals when necessary.",
-    "difficulty": "hard"
   },
   {
     "id": 124,
@@ -2323,8 +2323,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Match Protection to Hazard", c: "High-hazard cross-connections, especially those involving toxic chemicals, require the highest level of backflow protection to prevent contamination of the potable water supply." },
       { l: "Step 4: Determine Minimum Protection", c: "The highest level of practical backflow protection is either an air gap or a Reduced Pressure Zone (RPZ) backflow preventer. The RPZ is often the minimum required when an air gap is not feasible." },
     ],
+    "difficulty": "medium",
     tip: "Always classify the hazard level first (low, medium, high) to determine the appropriate backflow prevention device.",
-    "difficulty": "medium"
   },
   {
     "id": 127,
@@ -2391,8 +2391,8 @@ export const QUESTIONS: Question[] = [
       { l: "Assess Adsorption and Membrane Processes", c: "Granular Activated Carbon (GAC) and Powdered Activated Carbon (PAC) are effective for adsorbing many PPCPs. Reverse Osmosis (RO) and Nanofiltration (NF) provide physical rejection, also offering high removal rates for many PPCPs." },
       { l: "Determine the 'BEST' Option", c: "While several advanced processes are effective, Advanced Oxidation Processes (like UV/H₂O₂) and membrane filtration (RO/NF) often provide the most comprehensive and consistently high removal rates for a broad spectrum of PPCPs, with AOPs directly degrading them. Given the options, UV/H₂O₂ AOP is a strong contender for 'BEST' due to its non-selective oxidation." },
     ],
+    "difficulty": "hard",
     tip: "When asked for the 'BEST' treatment for emerging contaminants, always consider advanced oxidation processes (AOPs) or high-rejection membrane technologies.",
-    "difficulty": "hard"
   },
   {
     "id": 131,
@@ -2488,8 +2488,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify Environmental Conditions", c: "The given environmental conditions are a water temperature of 5°C and a pH of 8.0." },
       { l: "Consult CT Tables", c: "Refer to the provided USEPA/Ontario CT tables (or similar regulatory tables) for free chlorine inactivation of Giardia at 5°C and pH 8.0 for 3-log inactivation. The value is approximately 291 mg·min/L." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to temperature and pH when determining CT values, as they significantly impact disinfection effectiveness.",
-    "difficulty": "hard"
   },
   {
     "id": 137,
@@ -2510,8 +2510,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Compare Plant CT to Table Values", c: "The plant's achieved CT of 450 mg·min/L is significantly higher than the CT values required for 4-log inactivation (6 mg·min/L). This indicates that the plant is achieving much more than 4-log inactivation for viruses." },
       { l: "Step 4: Conclude Log Inactivation Level", c: "Based on the provided data, a CT of 450 mg·min/L represents far more than 4-log inactivation of viruses. The exact higher log inactivation is not explicitly given in the limited table, but it's clearly beyond 4-log." },
     ],
+    "difficulty": "hard",
     tip: "When presented with CT tables, always compare the given CT value to the highest log inactivation provided to determine if it exceeds the listed maximum.",
-    "difficulty": "hard"
   },
   {
     "id": 138,
@@ -2533,8 +2533,8 @@ export const QUESTIONS: Question[] = [
       { l: "Calculate the volume", c: "Perform the multiplication: 50 × 10 = 500, then 500 × 0.5 = 250." },
       { l: "State the final answer with units", c: "The volume of sludge that must be removed is 250 cubic meters (m³)." },
     ],
+    "difficulty": "medium",
     tip: "Always double-check your units throughout the calculation to ensure consistency and that the final answer is in the correct units.",
-    "difficulty": "medium"
   },
   {
     "id": 139,
@@ -2554,8 +2554,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Determine the mass of alum solution required.", c: "Since the alum solution is 48% pure alum, divide the mass of pure alum needed by the concentration percentage: 1,000 kg/day / 0.48 = 2,083.33 kg of alum solution per day." },
       { l: "Step 3: Convert the mass of alum solution to volume.", c: "Use the density of the alum solution to find the volume: 2,083.33 kg/day / 1.33 kg/L = 1,566.41 L/day. Round to a practical number for operations." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to whether the dose refers to the active ingredient or the total solution, and ensure all units cancel out correctly.",
-    "difficulty": "hard"
   },
   {
     "id": 140,
@@ -2576,8 +2576,8 @@ export const QUESTIONS: Question[] = [
       { l: "Consider Available Methods", c: "Pipe cleaning improves C-factor but not structural integrity. Open-cut replacement is effective but costly and disruptive. Various lining methods exist." },
       { l: "Select Optimal Method", c: "Cured-In-Place Pipe (CIPP) lining restores hydraulic capacity by providing a smooth interior (high C-factor) and adds structural reinforcement, addressing both key issues effectively and trenchlessly." },
     ],
+    "difficulty": "hard",
     tip: "When evaluating rehabilitation methods, always consider if the proposed solution addresses ALL aspects of the problem described in the question.",
-    "difficulty": "hard"
   },
   {
     "id": 141,
@@ -2657,8 +2657,8 @@ export const QUESTIONS: Question[] = [
       { l: "Locate the IDLH value in the provided text", c: "Scan the 'Explanation' for the term 'IDLH' and its associated concentration." },
       { l: "Extract the specific concentration", c: "The text explicitly states '10 ppm = IDLH — immediately dangerous to life or health'." },
     ],
+    "difficulty": "medium",
     tip: "Always read the provided reference material carefully to find the exact answer, as it often contains the specific information needed.",
-    "difficulty": "medium"
   },
   {
     "id": 146,
@@ -2679,8 +2679,8 @@ export const QUESTIONS: Question[] = [
       { l: "Calculate the annual energy savings", c: "Subtract the new energy cost from the current energy cost for the pumps: $520,000 - $413,333.33 = $106,666.67." },
       { l: "Round to the nearest whole dollar", c: "The estimated annual energy savings are approximately $106,667." },
     ],
+    "difficulty": "hard",
     tip: "Always double-check your calculations, especially when dealing with ratios and percentages, to avoid common inverse relationship errors.",
-    "difficulty": "hard"
   },
   {
     "id": 147,
@@ -2731,8 +2731,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Enhanced Bacteriological Sampling", c: "Collect additional bacteriological samples from the affected area of the distribution system to assess water quality and potential contamination." },
       { l: "Step 4: Assessment for Boil Water Advisory", c: "Assess, in consultation with the MOH, whether a Boil Water Advisory (BWA) is warranted based on the duration and extent of the residual loss, the cause, and the bacteriological sample results. The MOH makes the final decision on issuing a BWA." },
     ],
+    "difficulty": "hard",
     tip: "Always prioritize regulatory compliance and public health in your response to adverse conditions, even if not explicitly asked.",
-    "difficulty": "hard"
   },
   {
     "id": 150,
@@ -2768,8 +2768,8 @@ export const QUESTIONS: Question[] = [
       { l: "Compare Effluent Quality", c: "Consider the effluent quality produced by both systems. MBR's membrane provides a physical barrier, leading to superior removal of solids, bacteria, and protozoa compared to sand filtration." },
       { l: "Identify Primary Advantage", c: "Based on the comparison, the significantly higher and more consistent effluent quality, due to the absolute filtration of the membrane, is the most fundamental and primary advantage." },
     ],
+    "difficulty": "hard",
     tip: "When asked for the 'primary' advantage, focus on the most impactful and distinguishing benefit of the technology.",
-    "difficulty": "hard"
   },
   {
     "id": 152,
@@ -2790,8 +2790,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Settle", c: "After the React phase, aeration and mixing cease, allowing the biomass to settle by gravity. This eliminates the need for a separate secondary clarifier." },
       { l: "Step 4: Decant", c: "Once settling is complete, the clarified treated effluent is removed from the top of the reactor during the Decant phase." },
     ],
+    "difficulty": "medium",
     tip: "Memorize the core SBR phases (Fill, React, Settle, Decant) as they are fundamental to understanding this treatment process.",
-    "difficulty": "medium"
   },
   {
     "id": 153,
@@ -2813,8 +2813,8 @@ export const QUESTIONS: Question[] = [
       { l: "Calculate the square root", c: "Q = 500 L/s × √(0.25) = 500 L/s × 0.5." },
       { l: "Calculate the final flow rate", c: "Q = 250 L/s." },
     ],
+    "difficulty": "hard",
     tip: "Always remember the square root relationship for differential pressure flow meters; it's a common point of confusion on exams.",
-    "difficulty": "hard"
   },
   {
     "id": 154,
@@ -2835,8 +2835,8 @@ export const QUESTIONS: Question[] = [
       { l: "Determine Alkalinity Components", c: "Since P = 0, all the measured alkalinity must be due to bicarbonate (HCO₃⁻). Therefore, the bicarbonate alkalinity is equal to the total alkalinity, which is 85 mg/L as CaCO₃." },
       { l: "Interpret the Carbonate System", c: "This indicates that the water sample's alkalinity is entirely composed of bicarbonate ions. This is a common scenario for natural waters with a pH in the neutral to slightly acidic range (4.3-8.3)." },
     ],
+    "difficulty": "medium",
     tip: "Remember the pH ranges for each alkalinity component (hydroxide, carbonate, bicarbonate) to quickly interpret P and T alkalinity values.",
-    "difficulty": "medium"
   },
   {
     "id": 155,
@@ -2872,8 +2872,8 @@ export const QUESTIONS: Question[] = [
       { l: "Describe the bridging mechanism", c: "Long chains of the cationic polymer can adsorb onto multiple colloidal particles simultaneously. This physically links the particles together, forming larger, heavier aggregates (floc)." },
       { l: "Conclude the enhancement of coagulation", c: "Through both charge neutralization and bridging, cationic polymers effectively destabilize colloidal particles and promote their aggregation, thereby enhancing the overall coagulation process." },
     ],
+    "difficulty": "hard",
     tip: "When answering questions about polymer mechanisms, always consider both charge interaction and physical bridging.",
-    "difficulty": "hard"
   },
   {
     "id": 157,
@@ -2894,8 +2894,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify Long-Term Goals", c: "A long-term solution should aim to improve water circulation, reduce water age, maintain adequate chlorine residuals, and minimize sediment accumulation." },
       { l: "Select the Optimal Solution", c: "Looping the dead-end main by connecting it to another active main is the best long-term solution. This eliminates the dead end, promotes continuous flow, reduces water age, and allows for consistent chlorine residual maintenance throughout the system." },
     ],
+    "difficulty": "medium",
     tip: "When a question asks for the 'BEST long-term solution,' always consider options that address the root cause of the problem, not just the symptoms.",
-    "difficulty": "medium"
   },
   {
     "id": 158,
@@ -2916,8 +2916,8 @@ export const QUESTIONS: Question[] = [
       { l: "Locate System Curve Intersection", c: "The new operating point for two pumps in parallel will be where the combined pump curve intersects the system curve. Since the system curve is not provided as an equation, we must estimate based on the provided single pump operating point and the nature of parallel pump operation." },
       { l: "Estimate New Operating Point", c: "Given that the system curve intersects the single pump curve at 180 L/s and 38 m, and adding a second pump typically increases flow by 30-50% (not 100%) due to increased head loss, the new operating point will be at a higher flow and higher head than the single pump's operating point, but less than double the flow. Without the system curve equation, a precise answer isn't possible, but we know it will be significantly more than 180 L/s and higher than 38m, but less than 360 L/s." },
     ],
+    "difficulty": "hard",
     tip: "When dealing with parallel pumps and system curves, remember that flow does not simply double; increased head loss in the system limits the total flow increase.",
-    "difficulty": "hard"
   },
   {
     "id": 159,
@@ -2938,8 +2938,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify IPZ-1 Travel Time", c: "The explanation states that IPZ-1 is the area from which water can reach the intake within 2 hours." },
       { l: "Formulate the Answer", c: "Therefore, an IPZ-1 is defined as the area within a 2-hour travel time to the intake." },
     ],
+    "difficulty": "hard",
     tip: "Always read the provided explanation carefully, as it often contains the direct answer or key information needed to deduce it.",
-    "difficulty": "hard"
   },
   {
     "id": 160,
@@ -2989,8 +2989,8 @@ export const QUESTIONS: Question[] = [
       { l: "Recall Oxygen Deficit Formula", c: "The oxygen deficit is calculated by subtracting the actual dissolved oxygen from the saturation dissolved oxygen." },
       { l: "Calculate Oxygen Deficit", c: "Oxygen Deficit = Saturation DO - Actual DO = 10.1 mg/L - 2.0 mg/L = 8.1 mg/L." },
     ],
+    "difficulty": "medium",
     tip: "Always double-check that you are using the 'before aeration' actual DO for the initial deficit calculation.",
-    "difficulty": "medium"
   },
   {
     "id": 163,
@@ -3011,8 +3011,8 @@ export const QUESTIONS: Question[] = [
       { l: "Evaluate Advantages in Context of Sludge", c: "Sludge is typically a thick, viscous material, often containing abrasive solids. While low shear and smooth flow are beneficial, the most critical challenge in pumping sludge is its high viscosity and potential for abrasiveness. A pump's ability to effectively move such a difficult fluid is paramount." },
       { l: "Identify the Primary Advantage", c: "The ability of progressive cavity pumps to handle high-viscosity fluids (thick sludge) and abrasive materials is their most significant advantage in sludge applications. Without this capability, other benefits like low shear or smooth flow would be irrelevant if the pump couldn't move the sludge at all. Given the options, handling high viscosity is often the most defining characteristic for sludge." },
     ],
+    "difficulty": "medium",
     tip: "When asked for the 'primary' advantage, consider which characteristic directly addresses the most challenging aspect of the application.",
-    "difficulty": "medium"
   },
   {
     "id": 164,
@@ -3033,8 +3033,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Retest Fluoride Level", c: "Recheck the fluoride level using the SPADNS colorimetric method to confirm that the adjustment has brought the concentration closer to the 0.7 mg/L target." },
       { l: "Step 4: Document Actions", c: "Record all adjustments made to the fluoride feed rate, the time of the adjustment, and the subsequent retest results in the operating log." },
     ],
+    "difficulty": "easy",
     tip: "When answering operational questions, always consider the immediate action, the verification step, and the documentation requirement.",
-    "difficulty": "easy"
   },
   {
     "id": 165,
@@ -3070,8 +3070,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Consider the context of the question.", c: "The question asks for the MOST effective removal process. While several are effective, some are generally more robust or have higher removal efficiencies for dissolved ions." },
       { l: "Step 4: Determine the most effective process among the viable options.", c: "Reverse osmosis and nanofiltration are membrane processes known for very high rejection rates of dissolved divalent ions like barium, often achieving greater removal than lime softening or ion exchange, especially when concentrations are critical." },
     ],
+    "difficulty": "hard",
     tip: "When asked for the 'MOST effective' treatment, consider processes with the highest removal efficiencies for the specific contaminant, especially membrane processes for dissolved inorganics.",
-    "difficulty": "hard"
   },
   {
     "id": 167,
@@ -3107,8 +3107,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Convert moles of hardness to mg of CaCO₃.", c: "Multiply the moles of hardness by the molar mass of CaCO₃ (100,000 mg/mol) to get 18.5 mg of CaCO₃ in the 100 mL sample." },
       { l: "Step 4: Calculate total hardness in mg/L as CaCO₃.", c: "Divide the mg of CaCO₃ (18.5 mg) by the sample volume in liters (0.1 L) to obtain the total hardness of 185 mg/L as CaCO₃." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to units and ensure consistent conversions, especially when dealing with volumes and concentrations.",
-    "difficulty": "hard"
   },
   {
     "id": 169,
@@ -3129,8 +3129,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify the Overarching Theme", c: "While there are multiple specific goals, the core purpose of all these activities (assessment, improvements, targets, implementation) is to achieve a more efficient use of water resources. The phrase 'Water Efficiency Plans' itself points directly to this primary objective." },
       { l: "Determine the PRIMARY Goal", c: "Based on the name of the plan and the comprehensive activities described, the primary goal is to achieve water use reduction and ensure the long-term sustainability of water services through efficient management." },
     ],
+    "difficulty": "medium",
     tip: "When asked for the 'primary' goal, look for the overarching objective that encompasses all other listed aims.",
-    "difficulty": "medium"
   },
   {
     "id": 170,
@@ -3226,8 +3226,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the Surface Overflow Rate (SOR).", c: "The Surface Overflow Rate (SOR) is calculated by dividing the plant flow (Q) by the surface area (A): SOR = Q / A. Given Q = 25,000 m³/day and A = 706.858 m², SOR = 25,000 m³/day / 706.858 m² = 35.368 m³/m²·day." },
       { l: "Step 4: Round the SOR to an appropriate number of significant figures.", c: "Rounding to one decimal place, the Surface Overflow Rate (SOR) is 35.4 m³/m²·day." },
     ],
+    "difficulty": "hard",
     tip: "Always pay attention to units and ensure they cancel out correctly to arrive at the desired final unit for the answer.",
-    "difficulty": "hard"
   },
   {
     "id": 176,
@@ -3248,8 +3248,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Ascertain Current Seat Material and Operating Conditions", c: "Identify the existing seat material (e.g., EPDM, Buna-N, PTFE) and confirm the operating pressure and temperature of the transmission main. This ensures the new seat is compatible with the application." },
       { l: "Step 4: Consult Manufacturer's Documentation or Representative", c: "With all gathered information, contact the valve manufacturer or their authorized representative. Provide them with the details to ensure the correct replacement disc seat is ordered." },
     ],
+    "difficulty": "medium",
     tip: "Always prioritize identifying the manufacturer and model number first, as this information is foundational for all subsequent replacement part inquiries.",
-    "difficulty": "medium"
   },
   {
     "id": 177,
@@ -3300,8 +3300,8 @@ export const QUESTIONS: Question[] = [
       { l: "Compare Effectiveness and Suitability", c: "Aeration removes H₂S without adding chemicals, which is generally preferred. Chlorination and KMnO₄ are chemical oxidation methods, which can be effective but may require careful dose control and can be more expensive or create byproducts." },
       { l: "Select the Most Effective Treatment", c: "Given the relatively high H₂S concentration (2 mg/L) and the explanation's emphasis on aeration's efficiency for volatile H₂S and its cost-effectiveness, aeration (specifically packed tower or cascade aeration for >95% removal) is the most effective primary treatment." },
     ],
+    "difficulty": "medium",
     tip: "When a question asks for the 'MOST effective' treatment, consider the primary removal mechanism, cost-effectiveness, and potential side effects of each option presented in the context.",
-    "difficulty": "medium"
   },
   {
     "id": 180,
@@ -3337,8 +3337,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Analyze the Impact of Decreasing Velocity Gradient in Later Stages", c: "As floc particles grow larger in subsequent stages, they become more fragile. Decreasing G (30 s⁻¹ then 15 s⁻¹) reduces shear forces, preventing the breakup of these larger, more delicate flocs while still allowing for continued growth through gentle collisions." },
       { l: "Step 4: Conclude on the Overall Benefit of Tapered Flocculation", c: "Tapered flocculation optimizes floc growth by providing sufficient energy for initial collisions and then progressively reducing energy to protect fragile, larger flocs, leading to better settling efficiency." },
     ],
+    "difficulty": "hard",
     tip: "Remember that flocculation is a balance: enough energy for collisions, but not so much that it breaks up the formed floc.",
-    "difficulty": "hard"
   },
   {
     "id": 182,
@@ -3359,8 +3359,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Determine necessary eye and face protection", c: "Due to the corrosive nature and splash potential during transfer, safety goggles or a face shield are essential to protect the eyes and face." },
       { l: "Step 4: Select appropriate body protection", c: "Chemical-resistant gloves (nitrile or neoprene), a chemical-resistant apron or coveralls, and safety boots are required to protect hands, body, and feet from splashes and contact." },
     ],
+    "difficulty": "easy",
     tip: "Always refer to the SDS for specific chemical handling instructions and PPE requirements; it's the definitive guide for safe operations.",
-    "difficulty": "easy"
   },
   {
     "id": 183,
@@ -3441,8 +3441,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Notify Authorities", c: "The Ministry of the Environment, Conservation and Parks (MECP) and the Medical Officer of Health must be notified of the exceedance." },
       { l: "Step 4: Conduct Further Assessment and Investigation", c: "A health risk assessment based on specific radionuclides and concentrations is necessary, along with an investigation into the source of the radioactivity (geological or anthropogenic)." },
     ],
+    "difficulty": "hard",
     tip: "Always compare the given value to the MAC first to determine if an exceedance has occurred, then recall the required follow-up actions for that specific parameter.",
-    "difficulty": "hard"
   },
   {
     "id": 188,
@@ -3509,8 +3509,8 @@ export const QUESTIONS: Question[] = [
       { l: "Enhanced Monitoring and Source Protection", c: "Increase monitoring frequency (e.g., quarterly) to track the trend. Implement source protection measures such as establishing buffer zones and promoting nutrient management plans with nearby farms." },
       { l: "Contingency Planning and Treatment Options", c: "Develop a contingency plan for when nitrate levels approach the Maximum Acceptable Concentration (MAC) of 10 mg/L as N. Investigate potential treatment options like ion exchange or reverse osmosis if the trend continues and the MAC is threatened." },
     ],
+    "difficulty": "hard",
     tip: "Always connect the environmental context (rural, agriculture) directly to the most probable contaminant source (fertilizers/manure) and remember to prioritize regulatory notification and source protection measures.",
-    "difficulty": "hard"
   },
   {
     "id": 192,
@@ -3546,8 +3546,8 @@ export const QUESTIONS: Question[] = [
       { l: "Perform Calculation", c: "Divide the final solids percentage (3%) by the initial solids percentage (0.8%)." },
       { l: "State Result", c: "The volume reduction factor achieved is 3.75x." },
     ],
+    "difficulty": "hard",
     tip: "Always double-check that you are dividing the final concentration by the initial concentration for volume reduction, not the other way around.",
-    "difficulty": "hard"
   },
   {
     "id": 194,
@@ -3582,8 +3582,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Convert cubic meters per hour to liters per hour (L/h).", c: "Since 1 m³ = 1,000 L, multiply the flow rate by 1,000: 2,000 m³/h * 1,000 L/m³ = 2,000,000 L/h." },
       { l: "Step 3: Convert liters per hour to liters per second (L/s).", c: "There are 3,600 seconds in an hour, so divide the flow rate in L/h by 3,600: 2,000,000 L/h / 3,600 s/h = 555.56 L/s. Round to 556 L/s." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to the units required in the final answer and perform necessary conversions systematically.",
-    "difficulty": "hard"
   },
   {
     "id": 196,
@@ -3605,8 +3605,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 4: Implement Filtration", c: "After oxidation, both iron (as Fe(OH)₃) and manganese (as MnO₂) will be in particulate form. Filtration is required to physically remove these precipitates from the water." },
       { l: "Step 5: Determine the Most Effective Sequence", c: "Based on the oxidation rates and requirements, the most effective sequence is Aeration (for iron and partial manganese oxidation), followed by Chemical Oxidation (to complete manganese oxidation), and finally Filtration (to remove all precipitates)." },
     ],
+    "difficulty": "hard",
     tip: "When dealing with multiple contaminants, prioritize the most difficult to treat or the one requiring the strongest oxidant in the treatment sequence.",
-    "difficulty": "hard"
   },
   {
     "id": 197,
@@ -3657,8 +3657,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Evaluate the calibration's suitability.", c: "According to best practices, buffers should bracket the expected sample pH. Since 9.5 is significantly higher than 7.0, the calibration is inadequate for this sample." },
       { l: "Step 4: Determine the concern.", c: "The primary concern is that the pH meter's reading at pH 9.5 may be inaccurate because the electrode's response might be non-linear outside the calibrated range of 4.0 to 7.0. The meter was not calibrated for the higher pH range." },
     ],
+    "difficulty": "medium",
     tip: "Always ensure your calibration buffers bracket the expected pH range of your samples to guarantee accurate readings.",
-    "difficulty": "medium"
   },
   {
     "id": 200,
@@ -3679,8 +3679,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Combined Chlorine Reaction", c: "The oxidized iodide then reacts with the DPD reagent, producing an additional pink color. This second reaction accounts for the combined chlorine (chloramines) present in the water." },
       { l: "Step 4: Calculation of Combined Chlorine", c: "The total chlorine reading represents the sum of free chlorine and combined chlorine. Therefore, combined chlorine can be calculated by subtracting the free chlorine reading from the total chlorine reading." },
     ],
+    "difficulty": "medium",
     tip: "Remember that DPD Free Chlorine measures only active disinfectant, while DPD Total Chlorine includes both free and combined forms, which is crucial for chloraminated systems.",
-    "difficulty": "medium"
   },
   {
     "id": 201,
@@ -3806,8 +3806,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Investigate and Plan", c: "Initiate an investigation to identify potential sources of nitrate contamination. Develop a contingency plan outlining actions to take if the MAC is exceeded, including potential Do Not Use Advisories." },
       { l: "Step 4: Evaluate Treatment Options", c: "Begin evaluating treatment options such as ion exchange, reverse osmosis, or blending to reduce nitrate levels, should they continue to rise or exceed the MAC." },
     ],
+    "difficulty": "hard",
     tip: "When a contaminant is near its MAC, always prioritize increased monitoring, notification, and proactive planning for potential exceedances and treatment.",
-    "difficulty": "hard"
   },
   {
     "id": 209,
@@ -3843,8 +3843,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify the Primary Advantage", c: "The most significant and often primary driver for switching to chloramination, especially in light of regulatory concerns, is the reduction of disinfection byproduct (DBP) formation, such as THMs and HAAs." },
       { l: "Confirm with Explanation", c: "The provided explanation explicitly states that 'Reduced DBP formation' is a key advantage, as chloramines react much more slowly with natural organic matter (NOM) than free chlorine." },
     ],
+    "difficulty": "medium",
     tip: "When asked for the 'primary' reason, consider the most impactful or common regulatory driver for the change.",
-    "difficulty": "medium"
   },
   {
     "id": 211,
@@ -3865,8 +3865,8 @@ export const QUESTIONS: Question[] = [
       { l: "Evaluate common diaphragm pump issues with hypochlorite", c: "Given the chemical, the most common and problematic issue is vapor lock, where gas bubbles accumulate in the pump head, reducing pumping efficiency. Other issues like worn diaphragms or check valve failures are possible but less specific to hypochlorite's gassing nature." },
       { l: "Identify the MOST likely cause", c: "Based on the properties of sodium hypochlorite and common diaphragm pump problems, vapor lock due to off-gassing is the most probable cause for the reduced flow." },
     ],
+    "difficulty": "hard",
     tip: "When a question involves a specific chemical, always consider its unique properties and how they might interact with the equipment.",
-    "difficulty": "hard"
   },
   {
     "id": 212,
@@ -3932,8 +3932,8 @@ export const QUESTIONS: Question[] = [
       { l: "Interpret High Decay Rate", c: "A rapid pressure drop signifies that air is escaping the sealed system faster than it should. This escape route is typically a breach in the membrane, a faulty seal, or an instrument leak." },
       { l: "Formulate the Answer", c: "Therefore, a high pressure decay rate indicates a loss of integrity, such as a membrane breach (hole or crack), a failed O-ring or seal, or an instrument leak within the UF system." },
     ],
+    "difficulty": "hard",
     tip: "Focus on the core function of the test; if pressure is decaying rapidly, something is allowing it to escape.",
-    "difficulty": "hard"
   },
   {
     "id": 216,
@@ -3955,8 +3955,8 @@ export const QUESTIONS: Question[] = [
       { l: "Evaluate Other Options (Implicit)", c: "While other issues can cause low flow/pressure, the distinct 'crackling/rattling' noise strongly points to cavitation over, for example, a worn impeller (which might cause vibration but less distinct noise) or a simple clog (which might reduce flow but not typically cause that specific noise)." },
       { l: "Identify the Most Likely Cause", c: "Based on the combination of noise and performance reduction, cavitation is the most probable cause among typical pump malfunctions." },
     ],
+    "difficulty": "medium",
     tip: "When a question lists multiple distinct symptoms, look for the single problem that explains all of them simultaneously.",
-    "difficulty": "medium"
   },
   {
     "id": 217,
@@ -3977,8 +3977,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Apply the change", c: "If the particle diameter is doubled, the new diameter becomes 2d. Substitute this into the proportional relationship: v ∝ (2d)²." },
       { l: "Step 4: Calculate the new velocity", c: "Simplifying (2d)² gives 4d². This means the new settling velocity will be 4 times the original settling velocity." },
     ],
+    "difficulty": "hard",
     tip: "For questions involving proportional relationships, focus on how the change in one variable affects the other based on the exponent in the formula.",
-    "difficulty": "hard"
   },
   {
     "id": 218,
@@ -4014,8 +4014,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Prioritize NOM Removal", c: "Since NOM is the precursor to THMs, removing it before chlorination is the most fundamental and effective approach. Enhanced coagulation is specifically designed for this purpose and is highlighted as the 'most cost-effective first step' and a USEPA requirement." },
       { l: "Step 4: Select the Optimal Strategy", c: "Enhanced coagulation, by lowering coagulant pH to maximize NOM removal (targeting 25-50% TOC removal), directly addresses the root cause of THM formation by removing precursors before they can react with chlorine." },
     ],
+    "difficulty": "hard",
     tip: "When asked for the 'MOST effective' strategy, always consider the root cause of the problem and the most fundamental solution, especially for precursor removal.",
-    "difficulty": "hard"
   },
   {
     "id": 220,
@@ -4066,8 +4066,8 @@ export const QUESTIONS: Question[] = [
       { l: "Evaluate potential causes based on context", c: "Supersaturation can be caused by algal photosynthesis, intense aeration, or probe error. Without knowing the sample source (e.g., surface water vs. drinking water distribution system), it's difficult to pinpoint the exact cause, but probe error is always a strong possibility when unexpected readings occur." },
       { l: "Determine the most likely indication", c: "Given the options, and the fact that supersaturation in a typical drinking water sample (not surface water) is highly unusual, the most prudent conclusion is that there might be a probe error. The explanation provided also emphasizes probe error for drinking water samples." },
     ],
+    "difficulty": "medium",
     tip: "Always consider probe error as a primary suspect when readings are significantly outside expected ranges, especially for parameters like DO in treated water.",
-    "difficulty": "medium"
   },
   {
     "id": 223,
@@ -4103,8 +4103,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Recognize Water Stability Issues", c: "Water with zero or very low hardness can be unstable, potentially dissolving protective calcium carbonate scale from distribution pipes, which can lead to corrosion and release of pipe materials." },
       { l: "Step 4: Explain Benefits of Target Hardness", c: "Leaving some hardness (80-120 mg/L as CaCO₃) provides adequate buffering capacity, acceptable taste, and a slightly positive or near-zero LSI, which is crucial for effective corrosion control and distribution system stability." },
     ],
+    "difficulty": "medium",
     tip: "When answering 'why' questions, focus on the practical implications and consequences of different operational choices.",
-    "difficulty": "medium"
   },
   {
     "id": 225,
@@ -4125,8 +4125,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the Volume of Dewatered Cake", c: "Use the formula: Volume of cake = Mass of dry solids / (Solids fraction × Density). Substitute the values: Volume = 2,500 kg/day / (0.20 × 1,000 kg/m³)." },
       { l: "Step 4: Perform the Calculation", c: "Calculate the denominator first: 0.20 × 1,000 kg/m³ = 200 kg/m³. Then divide: 2,500 kg/day / 200 kg/m³ = 12.5 m³/day. To convert to liters, multiply by 1,000: 12.5 m³/day * 1,000 L/m³ = 12,500 L/day." },
     ],
+    "difficulty": "hard",
     tip: "Always pay attention to units and ensure consistency throughout your calculations, especially when converting between m³ and L.",
-    "difficulty": "hard"
   },
   {
     "id": 226,
@@ -4177,8 +4177,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the filter loading rate.", c: "Divide the flow rate in m³/h by the total filter area in m²: 5,000 m³/h / 576 m² = 8.68 m/h." },
       { l: "Step 4: Round to an appropriate number of significant figures.", c: "The filter loading rate is approximately 8.7 m/h." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to units and ensure they cancel out correctly to arrive at the desired final unit.",
-    "difficulty": "hard"
   },
   {
     "id": 229,
@@ -4214,8 +4214,8 @@ export const QUESTIONS: Question[] = [
       { l: "Analyze the 50 mg/L result", c: "The small floc and turbid settled water at 50 mg/L point to over-coagulation. Excess coagulant has likely caused charge reversal, leading to renewed repulsion between particles and poor floc formation." },
       { l: "Conclude the overall trend", c: "This pattern demonstrates a typical bell-curve response for coagulation, where there's an optimal dose (30 mg/L) between under-dosing and over-dosing, both of which result in poor flocculation." },
     ],
+    "difficulty": "medium",
     tip: "Always look for the 'bell-curve' effect in jar test questions, identifying under-dosing, optimal dosing, and over-dosing based on floc characteristics and settling.",
-    "difficulty": "medium"
   },
   {
     "id": 231,
@@ -4326,8 +4326,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Identify the most common and effective solution for small systems", c: "The explanation explicitly states that 'Activated alumina is the most common treatment for fluoride removal in small systems.' This aligns with the need for an effective solution." },
       { l: "Step 4: Conclude the best treatment process", c: "Based on the effectiveness and common usage in small systems, activated alumina is the most appropriate treatment process to remove excess fluoride to meet the Ontario MAC." },
     ],
+    "difficulty": "hard",
     tip: "When multiple options are effective, look for keywords like 'most common' or 'most effective' in the context of the problem (e.g., small systems) to select the best answer.",
-    "difficulty": "hard"
   },
   {
     "id": 238,
@@ -4379,8 +4379,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 4: Assess BWA Need and Take Corrective Action", c: "Consult with the Medical Officer of Health regarding a potential Boil Water Advisory (BWA). Simultaneously, restore the chlorine residual and identify and fix the root cause of the problem." },
       { l: "Step 5: Document All Actions", c: "Thoroughly document every action taken, from investigation to corrective measures and notifications." },
     ],
+    "difficulty": "hard",
     tip: "Prioritize investigation and notification over immediate chemical adjustments when faced with adverse conditions like a zero chlorine residual.",
-    "difficulty": "hard"
   },
   {
     "id": 241,
@@ -4401,8 +4401,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the flow rate in cubic meters per second", c: "The flow rate (Q) is calculated by multiplying the area (A) by the velocity (v): Q = A × v. Substitute the values: Q = 0.070686 m² × 1.5 m/s = 0.106029 m³/s." },
       { l: "Step 4: Convert the flow rate to liters per second", c: "Since 1 m³ = 1000 L, multiply the flow rate in m³/s by 1000 to get L/s: Q = 0.106029 m³/s × 1000 L/m³ = 106.029 L/s. Round to a reasonable number of significant figures, such as 106 L/s." },
     ],
+    "difficulty": "medium",
     tip: "Always pay close attention to units and perform necessary conversions at the beginning of the problem to avoid errors.",
-    "difficulty": "medium"
   },
   {
     "id": 242,
@@ -4438,8 +4438,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Define WHPA-B", c: "WHPA-B encompasses the area where groundwater travel time to the well ranges from 100 days to 25 years. This zone still has high vulnerability, but the longer travel time allows for more natural attenuation compared to WHPA-A." },
       { l: "Step 4: Differentiate by Vulnerability and Policy", c: "The key difference lies in their vulnerability and the associated policies: WHPA-A has the highest vulnerability with the most restrictive policies and many prohibited activities, while WHPA-B has high vulnerability with significant threats managed through Risk Management Plans." },
     ],
+    "difficulty": "hard",
     tip: "Focus on understanding the core differentiating factor, which in this case is groundwater travel time and its direct correlation to vulnerability and policy restrictiveness.",
-    "difficulty": "hard"
   },
   {
     "id": 244,
@@ -4490,8 +4490,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify the Critical Value", c: "The explanation states: 'Minimum during fire flow: 140 kPa (20 psi) — absolute minimum to prevent backflow and maintain service.' This is the critical value for the specified conditions." },
       { l: "Formulate the Answer", c: "The minimum residual pressure that must be maintained at all service connections during maximum day demand plus fire flow is 140 kPa (20 psi)." },
     ],
+    "difficulty": "medium",
     tip: "Always pay close attention to keywords like 'minimum,' 'maximum,' and specific demand conditions (e.g., 'fire flow') as they dictate which standard applies.",
-    "difficulty": "medium"
   },
   {
     "id": 247,
@@ -4512,8 +4512,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Add Log Credits", c: "Log credits for pathogen removal and inactivation are additive. Add the removal credit to the inactivation credit to find the total log credit." },
       { l: "Step 4: Calculate Total Log Credit", c: "Total log credit = 2-log (filtration) + 2-log (UV) = 4-log total." },
     ],
+    "difficulty": "medium",
     tip: "Remember that log credits for removal and inactivation are always added together to determine the total log credit.",
-    "difficulty": "medium"
   },
   {
     "id": 248,
@@ -4579,8 +4579,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate Percentages", c: "The ratio of 10 means that for every 1 part of HOCl, there are 10 parts of OCl⁻. The total parts are 1 (HOCl) + 10 (OCl⁻) = 11. Therefore, HOCl is 1/11 of the total, and OCl⁻ is 10/11 of the total." },
       { l: "Step 4: Convert to Percentages", c: "To find the percentage, multiply the fractions by 100. HOCl = (1/11) * 100% = 9.09% (approximately 9%). OCl⁻ = (10/11) * 100% = 90.91% (approximately 91%)." },
     ],
+    "difficulty": "hard",
     tip: "Memorize the Henderson-Hasselbalch equation and understand its application to pH-dependent chemical equilibria, especially for disinfection calculations.",
-    "difficulty": "hard"
   },
   {
     "id": 252,
@@ -4601,8 +4601,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Evaluate Potential Causes for Failing Open", c: "When a PRV fails open, it's typically due to something preventing the valve from closing or sealing properly. Common causes include debris obstructing the seat, a damaged or worn seat/disc, or a failure in the control mechanism (like a diaphragm or pilot valve)." },
       { l: "Step 4: Identify the MOST Likely Cause", c: "While several issues can cause a PRV to fail open, debris on the seat is a very common and often sudden cause. It physically prevents the valve's sealing components from fully closing, leading to the full upstream pressure passing through." },
     ],
+    "difficulty": "medium",
     tip: "When a question asks for the 'MOST likely cause' of a common equipment failure, consider the simplest and most frequent mechanical issues first.",
-    "difficulty": "medium"
   },
   {
     "id": 253,
@@ -4668,8 +4668,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Confirm Cylinder Valve is Fully Open", c: "Although the question states the valve is opened, it's crucial to ensure it's fully open. A partially open valve can restrict flow, especially with vacuum systems." },
       { l: "Step 4: Check for Ice Formation", c: "Rapid withdrawal of chlorine gas can cause the cylinder valve or regulator to freeze due to the Joule-Thomson effect. Check for ice formation, which would block gas flow." },
     ],
+    "difficulty": "medium",
     tip: "Always prioritize checks that address the fundamental operating principle of the equipment, such as the vacuum source for a vacuum-operated chlorinator.",
-    "difficulty": "medium"
   },
   {
     "id": 257,
@@ -4720,8 +4720,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Determine the chlorine residual (C)", c: "For a conservative CT calculation, use the minimum chlorine residual exiting the clearwell, which is 1.5 mg/L." },
       { l: "Step 4: Calculate the CT value", c: "CT = C * T10 = 1.5 mg/L * 72 minutes = 108 mg·min/L." },
     ],
+    "difficulty": "hard",
     tip: "Always use the most conservative values (e.g., minimum residual, T10 for typical clearwells) when calculating CT to ensure adequate disinfection.",
-    "difficulty": "hard"
   },
   {
     "id": 260,
@@ -4742,8 +4742,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Current Measurement", c: "The analyzer measures the magnitude of this electrical current, which is directly proportional to the concentration of chlorine that diffused through the membrane." },
       { l: "Step 4: Concentration Conversion", c: "Finally, the measured current is converted and displayed as a chlorine concentration reading." },
     ],
+    "difficulty": "hard",
     tip: "Focus on understanding the core chemical reaction and how it generates a measurable electrical signal for amperometric questions.",
-    "difficulty": "hard"
   },
   {
     "id": 261,
@@ -4809,8 +4809,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Explain the Role of First-Stage Recarbonation", c: "The initial addition of CO₂ (first-stage recarbonation) reacts with the excess calcium hydroxide (Ca(OH)₂) to form insoluble calcium carbonate (CaCO₃), which then precipitates out. This helps to remove residual hardness and begins to lower the pH." },
       { l: "Step 4: Explain the Role of Second-Stage Recarbonation and Stabilization", c: "Further addition of CO₂ (second-stage recarbonation) converts the precipitated CaCO₃ into soluble calcium bicarbonate (Ca(HCO₃)₂). This process lowers the pH to a more neutral range (7.0-8.5) and adds alkalinity, which is crucial for stabilizing the water and preventing corrosion in the distribution system." },
     ],
+    "difficulty": "hard",
     tip: "Focus on the 'why' behind each treatment step, especially how it addresses a problem created by a previous step or prepares the water for distribution.",
-    "difficulty": "hard"
   },
   {
     "id": 265,
@@ -4846,8 +4846,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Convert Magnesium Hardness to mg/L as Mg", c: "Use the ratio of equivalent weights to convert. Magnesium concentration (as Mg) = Magnesium Hardness (as CaCO₃) × (Equivalent Weight of Mg / Equivalent Weight of CaCO₃) = 60 mg/L as CaCO₃ × (12.15 mg/meq Mg / 50 mg/meq CaCO₃)." },
       { l: "Step 4: Calculate the Final Magnesium Concentration", c: "Perform the calculation: 60 × (12.15 / 50) = 60 × 0.243 = 14.58 mg/L Mg. Rounding to one decimal place gives 14.6 mg/L Mg." },
     ],
+    "difficulty": "hard",
     tip: "Always double-check your conversion factors and ensure you are using equivalent weights correctly when converting between different 'as' units.",
-    "difficulty": "hard"
   },
   {
     "id": 267,
@@ -4884,8 +4884,8 @@ export const QUESTIONS: Question[] = [
       { l: "Calculate the Ratio", c: "First, calculate the inner ratio: 150/80 = 1.875. Then, raise this value to the power of 1.852: (1.875)^1.852 ≈ 3.21." },
       { l: "Interpret the Result", c: "The result of approximately 3.21 means that the head loss in the 20-year-old unlined cast iron pipe is about 3.2 times greater than the head loss in the new HDPE pipe for the same flow and diameter." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to inverse relationships in formulas, as they often indicate a significant impact on the outcome.",
-    "difficulty": "hard"
   },
   {
     "id": 269,
@@ -4981,8 +4981,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify Given Values", c: "The chlorine dose applied is 3.0 mg/L, and the free chlorine residual after 30 minutes is 0.8 mg/L." },
       { l: "Calculate the Demand", c: "Substitute the given values into the formula: Chlorine Demand = 3.0 mg/L - 0.8 mg/L = 2.2 mg/L." },
     ],
+    "difficulty": "easy",
     tip: "Always remember the fundamental formula: Demand = Dose - Residual, as it's a common concept in water treatment calculations.",
-    "difficulty": "easy"
   },
   {
     "id": 275,
@@ -5018,8 +5018,8 @@ export const QUESTIONS: Question[] = [
       { l: "Determine the Impact", c: "At pH 5.8, alum coagulation will be inefficient because aluminum will remain in soluble forms (Al³⁺) instead of forming the desired insoluble aluminum hydroxide floc (Al(OH)₃). This will result in poor turbidity removal." },
       { l: "Propose the Adjustment", c: "To correct this, alkalinity must be added to the water. This can be done by pre-dosing lime (Ca(OH)₂) or soda ash (Na₂CO₃) to raise the pH and provide sufficient buffering capacity, aiming for a post-alum alkalinity of 30-50 mg/L as CaCO₃ and an optimal pH range of 6.0-7.5." },
     ],
+    "difficulty": "hard",
     tip: "Always consider the impact of coagulant addition on alkalinity and pH, especially with low-alkalinity source waters.",
-    "difficulty": "hard"
   },
   {
     "id": 277,
@@ -5054,8 +5054,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Calculate total alum mass in mg/day", c: "Multiply the optimal alum dose by the total daily flow rate: 35 mg/L * 80,000,000 L/day = 2,800,000,000 mg/day." },
       { l: "Step 3: Convert total alum mass from mg/day to kg/day", c: "Since 1 kg = 1,000,000 mg, divide the total mass in mg by 1,000,000: 2,800,000,000 mg/day / 1,000,000 mg/kg = 2,800 kg/day." },
     ],
+    "difficulty": "medium",
     tip: "Always pay close attention to units and perform necessary conversions to ensure your final answer is in the requested units.",
-    "difficulty": "medium"
   },
   {
     "id": 279,
@@ -5076,8 +5076,8 @@ export const QUESTIONS: Question[] = [
       { l: "Evaluate Impact on Compliance and Safety", c: "A reduced safety margin makes the plant more vulnerable to source water changes, equipment failures, or operator errors, potentially leading to exceedances of the 0.3 NTU limit." },
       { l: "Recommend Prudent Action", c: "Before increasing the loading rate, pilot testing and evaluation under worst-case conditions are crucial to ensure continued compliance and public health protection." },
     ],
+    "difficulty": "hard",
     tip: "When evaluating operational changes, always consider the impact on regulatory compliance and the existing safety margin.",
-    "difficulty": "hard"
   },
   {
     "id": 280,
@@ -5097,8 +5097,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Determine the fraction of fluoride in sodium fluoride (NaF).", c: "Fraction of F⁻ in NaF = (Atomic weight of F) / (Molecular weight of NaF). Fraction of F⁻ in NaF = 19 g/mol / 42 g/mol ≈ 0.452." },
       { l: "Step 3: Calculate the required feed rate of sodium fluoride (NaF) in kg/day.", c: "NaF feed rate = Mass of F⁻ needed / Fraction of F⁻ in NaF. NaF feed rate = 10.5 kg F⁻/day / 0.452 ≈ 23.23 kg NaF/day." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to units and conversion factors, especially when dealing with mass and volume in different scales (mg, kg, L, m³).",
-    "difficulty": "hard"
   },
   {
     "id": 281,
@@ -5134,8 +5134,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Evaluate and Implement Reduction Strategies", c: "Evaluate potential strategies to reduce HAA5 formation, including enhanced coagulation, optimizing the point of chlorination, or reducing chlorine dose where feasible without compromising disinfection." },
       { l: "Step 4: Prepare for Regulatory Notification", c: "If the upward trend in HAA5 concentrations continues or approaches the MAC, prepare to notify the Ministry of the Environment, Conservation and Parks (MECP) as required." },
     ],
+    "difficulty": "medium",
     tip: "When a parameter is close to a regulatory limit, always consider proactive measures like increased monitoring and investigation before it becomes an exceedance.",
-    "difficulty": "medium"
   },
   {
     "id": 283,
@@ -5156,8 +5156,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Evaluate Fouling Types", c: "Consider the various types of fouling: particulate, organic, biofouling, and scaling. Each type contributes to increased resistance." },
       { l: "Step 4: Determine the MOST Likely Cause", c: "Given the options, membrane fouling is the overarching and most direct cause of increased TMP at constant flux, as it encompasses all the specific mechanisms leading to higher resistance." },
     ],
+    "difficulty": "hard",
     tip: "Always link an increase in TMP at constant flux directly to membrane fouling as the primary cause, then consider specific fouling types.",
-    "difficulty": "hard"
   },
   {
     "id": 284,
@@ -5177,8 +5177,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Recall Alkalinity Forms at pH 8.3", c: "At pH 8.3, both bicarbonate (HCO₃⁻) and carbonate (CO₃²⁻) alkalinity are present. This is the point where phenolphthalein indicator changes color during a titration." },
       { l: "Step 3: Identify Predominant Form", c: "While both are present at pH 8.3, bicarbonate alkalinity is the predominant form. Carbonate alkalinity begins to become more significant as pH increases above 8.3." },
     ],
+    "difficulty": "hard",
     tip: "Memorize the key pH ranges and their corresponding alkalinity forms, especially the transition points like pH 8.3 and 9.5.",
-    "difficulty": "hard"
   },
   {
     "id": 285,
@@ -5214,8 +5214,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Explain the primary function of the Schmutzdecke", c: "The main function of the Schmutzdecke is to provide biological predation and degradation of pathogens (like viruses and Giardia) and organic compounds present in the water." },
       { l: "Step 4: Detail additional benefits of the Schmutzdecke", c: "Beyond pathogen removal, the Schmutzdecke also contributes to organic carbon removal and the reduction of taste and odor compounds, making it the key treatment mechanism in slow sand filtration." },
     ],
+    "difficulty": "medium",
     tip: "When answering questions about specific water treatment components, always define the component and then explain its function and significance.",
-    "difficulty": "medium"
   },
   {
     "id": 287,
@@ -5236,8 +5236,8 @@ export const QUESTIONS: Question[] = [
       { l: "Consult Explanation for Concerns", c: "The provided explanation lists several concerns: reduced effective depth, increased overflow rate, septic sludge, reduced basin capacity, and increased turbidity. We need to identify the most significant 'PRIMARY' concern." },
       { l: "Identify Primary Concern", c: "While reduced effective depth and capacity are direct consequences, the most critical operational and water quality issue arising from excessive, unremoved sludge is it becoming septic. Septic sludge releases H₂S and re-suspends settled particles, directly impacting effluent quality (turbidity) and potentially causing taste/odor problems, which is a primary concern for a water treatment operator." },
     ],
+    "difficulty": "medium",
     tip: "When a question asks for the 'PRIMARY' concern, look for the issue that has the most direct and severe negative impact on water quality or treatment process efficiency.",
-    "difficulty": "medium"
   },
   {
     "id": 288,
@@ -5257,8 +5257,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Adjust fluoride feed rate", c: "To achieve the optimal target for dental health benefits, increase the fluoride feed rate slightly to bring the concentration closer to 0.7 mg/L." },
       { l: "Step 3: Verify and monitor", c: "Conduct a repeat test to verify the measurement and continuously monitor the fluoride levels to ensure the system stabilizes at the desired concentration. Also, check the fluoride feed system for proper operation." },
     ],
+    "difficulty": "easy",
     tip: "Always compare the measured value to the specified optimal and acceptable ranges, and consider both immediate corrective actions and verification steps.",
-    "difficulty": "easy"
   },
   {
     "id": 289,
@@ -5294,8 +5294,8 @@ export const QUESTIONS: Question[] = [
       { l: "Conclude the Outcome", c: "Therefore, the UV dose delivered to the water will be less than the validated 40 mJ/cm² due to the increased absorption of UV light by the water matrix." },
       { l: "Consider Operational Responses", c: "To compensate for the reduced UVT and maintain the required dose, operational adjustments such as reducing flow rate, increasing lamp power, or taking the system offline might be necessary." },
     ],
+    "difficulty": "hard",
     tip: "Always remember that lower UVT means less UV light reaches the pathogens, directly reducing the effective UV dose.",
-    "difficulty": "hard"
   },
   {
     "id": 291,
@@ -5331,8 +5331,8 @@ export const QUESTIONS: Question[] = [
       { l: "Consider pH Impact", c: "Many coagulants, like alum, have a narrow optimal pH range. If the water's pH is outside this range, the coagulant will not perform effectively, leading to poor coagulation." },
       { l: "Assess Mixing and Procedure", c: "Inadequate rapid mixing can prevent proper dispersion of the coagulant, and errors in the jar test procedure (e.g., incorrect mixing speeds or settling times) can also lead to misleading results." },
     ],
+    "difficulty": "hard",
     tip: "When a jar test yields unexpected or uniform results, always consider fundamental factors like coagulant suitability, pH, and proper procedure before concluding the water is uncoagulable.",
-    "difficulty": "hard"
   },
   {
     "id": 293,
@@ -5368,8 +5368,8 @@ export const QUESTIONS: Question[] = [
       { l: "Evaluate Effectiveness", c: "Ferric salts are noted as 'effective over a wide pH range,' which implies broader applicability and consistent performance compared to lime (high pH only) or alum (which also forms Al(OH)3 but ferric salts are often preferred for direct phosphate precipitation across varying conditions)." },
       { l: "Select Best Option", c: "Considering the need for effective and potentially robust removal, ferric salts are generally considered highly effective due to their wide pH operating range and strong precipitation capabilities." },
     ],
+    "difficulty": "medium",
     tip: "When asked for the 'most effective' option, look for chemicals with broad applicability or superior performance characteristics mentioned in the context.",
-    "difficulty": "medium"
   },
   {
     "id": 295,
@@ -5390,8 +5390,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the calibration error percentage.", c: "Divide the difference (27.5 mL/min) by the pump setting (150 mL/min) and multiply by 100% to express it as a percentage: (27.5 / 150) * 100% = 18.33%." },
       { l: "Step 4: State the direction of the error.", c: "Since the actual output (122.5 mL/min) is less than the set point (150 mL/min), the pump is under-delivering by 18.33%." },
     ],
+    "difficulty": "medium",
     tip: "Always pay attention to the units and ensure consistency throughout your calculations to avoid errors.",
-    "difficulty": "medium"
   },
   {
     "id": 296,
@@ -5442,8 +5442,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Improve Storage Tank Management", c: "Reduce the turnover time in storage tanks to prevent water from sitting for extended periods, ensuring fresher water is consistently entering the distribution system." },
       { l: "Step 4: Evaluate Pressure Management", c: "Assess and optimize pressure management throughout the system to reduce leakage, which can contribute to water age issues, and improve overall water turnover." },
     ],
+    "difficulty": "hard",
     tip: "When answering questions about distribution system issues, consider both chemical (e.g., booster chlorination) and physical (e.g., flushing, looping) solutions.",
-    "difficulty": "hard"
   },
   {
     "id": 299,
@@ -5494,8 +5494,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify the 'Primary' Advantage", c: "While all listed points are advantages, the explanation specifically highlights PACl's value for 'Ontario plants treating cold source water in winter' where 'alum performance deteriorates.' This strongly suggests that effectiveness at lower temperatures is often the most critical differentiator and primary advantage in practical scenarios, especially in regions with cold climates." },
       { l: "Formulate the Answer", c: "The primary advantage of PACl over alum is its effectiveness at lower temperatures, as alum's performance significantly declines below 5°C." },
     ],
+    "difficulty": "hard",
     tip: "When a question asks for the 'primary' advantage, look for the benefit that addresses a common or significant operational challenge that the alternative chemical resolves.",
-    "difficulty": "hard"
   },
   {
     "id": 302,
@@ -5532,8 +5532,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 4: Substitute the given values into the formula", c: "Given TOC = 4.5 mg/L and DOC = 4.1 mg/L, calculate POC = 4.5 mg/L - 4.1 mg/L." },
       { l: "Step 5: Calculate the final answer", c: "POC = 0.4 mg/L." },
     ],
+    "difficulty": "easy",
     tip: "Always remember the fundamental relationships between water quality parameters, as they are frequently tested.",
-    "difficulty": "easy"
   },
   {
     "id": 304,
@@ -5569,8 +5569,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Identify the Likely Culprit", c: "Combined chlorine (chloramines), particularly trichloramine, is the most likely cause of the 'swimming pool' taste/odor, even with a normal free chlorine residual." },
       { l: "Step 4: Consider Formation Conditions", c: "Chloramines form when chlorine reacts with ammonia or organic nitrogen. Trichloramine, the primary taste/odor culprit, forms at low pH and high chlorine-to-ammonia ratios." },
     ],
+    "difficulty": "hard",
     tip: "When taste and odor complaints mention 'swimming pool' or 'chlorinous' with normal free chlorine, always suspect combined chlorine (chloramines).",
-    "difficulty": "hard"
   },
   {
     "id": 306,
@@ -5606,8 +5606,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify the Optimal pH Range", c: "The results suggest that for this specific source water and alum dose, the optimal pH for coagulation is closer to 6.5, falling within the 6.0-7.5 optimal range for alum." },
       { l: "Consider Operational Implications", c: "Operating at pH 6.5 would likely lead to better coagulation, resulting in lower turbidity and potentially better NOM removal. However, it also means the treated water would be more corrosive and might require post-treatment pH adjustment before distribution." },
     ],
+    "difficulty": "hard",
     tip: "Always connect jar test results to the underlying chemical principles and operational trade-offs described in the problem statement.",
-    "difficulty": "hard"
   },
   {
     "id": 308,
@@ -5643,8 +5643,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the mass of the 85% phosphoric acid solution.", c: "Since the solution is 85% H₃PO₄, Mass of solution = 25.8 kg/day ÷ 0.85 = 30.35 kg solution/day." },
       { l: "Step 4: Convert the mass of the solution to volume.", c: "Using the density, Volume = 30.35 kg/day ÷ 1.69 kg/L = 17.96 L/day. Rounding to one decimal place, the daily requirement is 18.0 L/day." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to units and conversion factors, especially when dealing with concentrations, percentages, and densities.",
-    "difficulty": "hard"
   },
   {
     "id": 310,
@@ -5695,8 +5695,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Collect Additional Samples", c: "Collect additional samples from the affected area to confirm the residual has been restored and to identify the extent of the problem." },
       { l: "Step 4: Document and Notify", c: "Document the event thoroughly in the operating log and immediately notify your supervisor about the adverse condition and actions taken." },
     ],
+    "difficulty": "medium",
     tip: "When a question describes a regulatory violation, your answer should always prioritize immediate corrective action, investigation, and proper documentation.",
-    "difficulty": "medium"
   },
   {
     "id": 313,
@@ -5717,8 +5717,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the Surface Overflow Rate (SOR).", c: "The SOR is calculated by dividing the flow rate (Q) by the surface area (A): SOR = 833.33 m³/h / 500 m² = 1.6666 m/h." },
       { l: "Step 4: Round the final answer to an appropriate number of significant figures.", c: "Rounding 1.6666 m/h to two decimal places gives 1.67 m/h." },
     ],
+    "difficulty": "medium",
     tip: "Always pay close attention to units and ensure they are consistent throughout your calculations, converting as necessary to match the required output unit.",
-    "difficulty": "medium"
   },
   {
     "id": 314,
@@ -5739,8 +5739,8 @@ export const QUESTIONS: Question[] = [
       { l: "Determine New Operating Point Characteristics", c: "With the system curve shifted upwards, the pump must now operate against a higher resistance. The pump will 'ride up' its characteristic curve to find a new intersection point with the shifted system curve." },
       { l: "Conclude Operating Point Change", c: "The new operating point will be at a higher head and a lower flow rate compared to the initial operating point. The pump curve indicates that as head increases, flow decreases (e.g., 30m at 500 L/s vs. 40m at 400 L/s)." },
     ],
+    "difficulty": "hard",
     tip: "Always visualize the pump and system curves when analyzing changes in operating conditions to quickly determine the impact on flow and head.",
-    "difficulty": "hard"
   },
   {
     "id": 315,
@@ -5805,8 +5805,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Adjust Dosing Calculations", c: "Since 48% alum contains less active ingredient than 50% alum, the operator must adjust the chemical feed calculations to account for this difference. The pump rate will need to be increased by approximately 4.2% (50/48 = 1.042) to maintain the same active alum dose." },
       { l: "Step 3: Update Pump Settings and Document", c: "The operator must then adjust the chemical feed pump settings according to the new calculations and document the concentration change and pump adjustments in the operating log for accurate record-keeping and future reference." },
     ],
+    "difficulty": "medium",
     tip: "Always verify chemical concentrations upon delivery and adjust dosing rates accordingly to prevent under-dosing or over-dosing.",
-    "difficulty": "medium"
   },
   {
     "id": 319,
@@ -5857,8 +5857,8 @@ export const QUESTIONS: Question[] = [
       { l: "Rearrange and Substitute Values", c: "Rearrange the formula to V₁/V₂ = C₂/C₁. Substitute the given concentrations: C₁ = 0.5% and C₂ = 3%." },
       { l: "Calculate the Reduction Factor", c: "Calculate V₁/V₂ = 3% / 0.5% = 6. This means the initial volume is 6 times larger than the final volume, or the volume is reduced by a factor of 6." },
     ],
+    "difficulty": "medium",
     tip: "Always ensure your units for concentration are consistent (e.g., both percentages) when performing calculations to avoid errors.",
-    "difficulty": "medium"
   },
   {
     "id": 322,
@@ -5894,8 +5894,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify Potential Causes", c: "Elevated HPC suggests issues such as inadequate chlorine residual, high levels of organic carbon (AOC/BDOC) providing food for bacteria, biofilm formation, high water age, or warm temperatures." },
       { l: "Determine Implications", c: "While HPC bacteria are generally not pathogens and elevated HPC alone doesn't directly indicate a health risk, it can interfere with coliform testing, signal conditions favorable for pathogen growth, and indicate biofilm problems within the distribution system." },
     ],
+    "difficulty": "medium",
     tip: "When answering questions about water quality parameters, always connect the parameter's definition to its operational implications and potential causes.",
-    "difficulty": "medium"
   },
   {
     "id": 324,
@@ -5961,8 +5961,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate total polymer required in mg/day", c: "Multiply the optimal polymer dose by the total daily flow in liters: 0.5 mg/L * 50,000,000 L/day = 25,000,000 mg/day." },
       { l: "Step 4: Convert total polymer required from mg/day to kg/day", c: "Convert milligrams to kilograms by dividing by 1,000,000 (since 1 kg = 1,000,000 mg). 25,000,000 mg/day / 1,000,000 mg/kg = 25 kg/day." },
     ],
+    "difficulty": "easy",
     tip: "Always pay close attention to units and perform necessary conversions to ensure your final answer is in the requested units.",
-    "difficulty": "easy"
   },
   {
     "id": 328,
@@ -5998,8 +5998,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Evaluate the effect of CO2 removal", c: "Aeration significantly reduces the CO2 from 45 mg/L to 5 mg/L. This substantial reduction in the acidic component will cause a significant increase in pH." },
       { l: "Step 4: Estimate the final pH range", c: "Based on the explanation, removing CO2 from 45 mg/L to 5 mg/L will cause the pH to rise to approximately 7.5–8.0. This range reflects a typical outcome for effective CO2 stripping in water treatment." },
     ],
+    "difficulty": "hard",
     tip: "When a question provides an explanation, use it to guide your reasoning and identify key relationships between parameters.",
-    "difficulty": "hard"
   },
   {
     "id": 330,
@@ -6020,8 +6020,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Verify chlorine residual", c: "After 24 hours, confirm that the chlorine residual is at least 10 mg/L. If not, repeat the disinfection process." },
       { l: "Step 4: Flush and sample", c: "Flush the main with potable water until the chlorine residual matches the existing distribution system, then collect bacteriological samples to confirm the absence of coliforms." },
     ],
+    "difficulty": "medium",
     tip: "Memorize the key disinfection parameters like chlorine concentration and contact time for new mains.",
-    "difficulty": "medium"
   },
   {
     "id": 331,
@@ -6042,8 +6042,8 @@ export const QUESTIONS: Question[] = [
       { l: "Prioritize Likely Scenarios", c: "Given the options, high water age and increased chlorine demand due to stagnant conditions or contaminants are the most common culprits for localized residual drops." },
       { l: "Identify the MOST Likely Cause", c: "While multiple factors can contribute, the combination of high water age, increased demand from biofilm/stagnation, and dead-end mains often go hand-in-hand in a specific pressure zone, making them the most probable primary causes." },
     ],
+    "difficulty": "medium",
     tip: "When a question asks for the 'MOST likely' cause, think about the most common operational issues that lead to the described symptom in a specific area.",
-    "difficulty": "medium"
   },
   {
     "id": 332,
@@ -6080,8 +6080,8 @@ export const QUESTIONS: Question[] = [
       { l: "Calculate the minimum chlorine residual", c: "Substitute the given values into the rearranged formula: C = 150 mg·min/L ÷ 60 min = 2.5 mg/L." },
       { l: "State the minimum chlorine residual", c: "The minimum chlorine residual that must be maintained at the clearwell outlet is 2.5 mg/L." },
     ],
+    "difficulty": "hard",
     tip: "Always double-check the units in CT calculations to ensure they cancel out correctly, leaving the desired unit for the answer.",
-    "difficulty": "hard"
   },
   {
     "id": 334,
@@ -6117,8 +6117,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Evaluate Coagulant Effectiveness for NOM", c: "While the coagulant effectively removes turbidity, it may not be optimized for NOM removal. NOM removal often requires different conditions, such as a lower pH (enhanced coagulation) or a higher coagulant dose, compared to turbidity removal alone." },
       { l: "Step 4: Conclude Most Likely Cause", c: "Given the improved turbidity removal, the most likely cause of the yellow tint is residual dissolved NOM that the new coagulant, under the tested conditions, is not effectively removing. This indicates a need to optimize the coagulation process specifically for NOM removal." },
     ],
+    "difficulty": "hard",
     tip: "When a question presents conflicting results (e.g., good turbidity but poor color), focus on the specific parameters that address the remaining issue, like NOM for color.",
-    "difficulty": "hard"
   },
   {
     "id": 336,
@@ -6214,8 +6214,8 @@ export const QUESTIONS: Question[] = [
       { l: "Substitute and Calculate", c: "Substitute the given values into the formula: Net Head = 25 m - 8 m - 15 m." },
       { l: "Determine Result", c: "Perform the calculation: Net Head = 2 m." },
     ],
+    "difficulty": "hard",
     tip: "Always clearly identify all given head components before applying the net head formula to avoid calculation errors.",
-    "difficulty": "hard"
   },
   {
     "id": 342,
@@ -6236,8 +6236,8 @@ export const QUESTIONS: Question[] = [
       { l: "Check Belt Washing System", c: "If the belt isn't being properly cleaned between cycles, residual solids will accumulate and cause blinding. Insufficient belt wash water pressure is a direct cause of this." },
       { l: "Identify MOST Likely Cause", c: "Given the options, issues with polymer (insufficient dose, wrong type, or poor mixing) are the most frequent culprits for rapid blinding as they directly impact the sludge's ability to release water and form a stable cake." },
     ],
+    "difficulty": "hard",
     tip: "When troubleshooting operational issues, always consider the most common and direct causes first, especially those related to chemical conditioning in dewatering processes.",
-    "difficulty": "hard"
   },
   {
     "id": 343,
@@ -6303,8 +6303,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate Minimum Wet Well Volume", c: "Multiply the pump capacity by the minimum detention time in seconds: 200 L/s * 600 s = 120,000 L." },
       { l: "Step 4: Convert to Cubic Meters (Optional but Common)", c: "Since 1 m³ = 1000 L, convert the volume to cubic meters: 120,000 L / 1000 L/m³ = 120 m³." },
     ],
+    "difficulty": "medium",
     tip: "Always pay close attention to units and ensure they are consistent throughout your calculations; convert as necessary.",
-    "difficulty": "medium"
   },
   {
     "id": 347,
@@ -6369,8 +6369,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Calculate Overall Efficiency", c: "Next, determine the overall pump-motor efficiency by dividing the hydraulic power by the motor input power. Overall Efficiency = Hydraulic Power / Motor Input Power = 73.6 kW / 120 kW = 0.613." },
       { l: "Step 3: Convert to Percentage", c: "Finally, convert the decimal efficiency to a percentage by multiplying by 100. 0.613 × 100 = 61.3%. This is the overall pump-motor efficiency." },
     ],
+    "difficulty": "hard",
     tip: "Always ensure units are consistent (e.g., kW for power) before performing calculations to avoid errors.",
-    "difficulty": "hard"
   },
   {
     "id": 351,
@@ -6391,8 +6391,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify Most Appropriate Mechanism", c: "Charge neutralization is the most appropriate mechanism for highly colored, low-turbidity water. This involves adding positively charged coagulants (like aluminum or iron salts) to destabilize the negatively charged NOM." },
       { l: "Consider Enhanced Coagulation Principles", c: "To optimize charge neutralization for NOM removal, enhanced coagulation strategies are often employed. This typically involves operating at a lower pH (5.5-6.5) to protonate humic acids and increase coagulant efficiency, along with a higher coagulant dose." },
     ],
+    "difficulty": "hard",
     tip: "When dealing with highly colored, low-turbidity water, always prioritize charge neutralization and consider enhanced coagulation techniques.",
-    "difficulty": "hard"
   },
   {
     "id": 352,
@@ -6413,8 +6413,8 @@ export const QUESTIONS: Question[] = [
       { l: "Determine the product of the reaction", c: "The reaction between sodium hypochlorite and ferric chloride can produce highly toxic chlorine gas." },
       { l: "Identify the primary safety concern", c: "The release of toxic chlorine gas is the primary safety concern due to its immediate danger to life and health (IDLH)." },
     ],
+    "difficulty": "hard",
     tip: "Always identify the chemical properties and potential reactions when evaluating storage compatibility questions.",
-    "difficulty": "hard"
   },
   {
     "id": 353,
@@ -6435,8 +6435,8 @@ export const QUESTIONS: Question[] = [
       { l: "Connect Nitrite to Chloramination", c: "In chloraminated systems, the decay of chloramines releases ammonia, which then becomes a substrate for nitrifying bacteria. The presence of nitrite, even below the MAC, is a strong indicator that nitrification is occurring." },
       { l: "Identify Implications of Nitrification", c: "Nitrification is an undesirable process in distribution systems as it consumes chloramine residuals, can lead to increased heterotrophic plate count (HPC), and may cause taste and odor issues. Therefore, the presence of nitrite indicates active nitrification." },
     ],
+    "difficulty": "hard",
     tip: "Always consider the operational implications of a water quality parameter, not just its compliance with regulatory limits.",
-    "difficulty": "hard"
   },
   {
     "id": 354,
@@ -6487,8 +6487,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3", c: "Evaluate other potential causes. Reference electrode drift, incorrect temperature compensation, or calibration drift are also common reasons for online pH meter inaccuracies, especially when compared to a freshly calibrated bench meter." },
       { l: "Step 4", c: "Determine the MOST likely cause. Given the continuous exposure and the nature of pH electrodes, fouling of the online electrode is the most frequent and probable cause for a consistent offset like 0.5 pH units lower." },
     ],
+    "difficulty": "medium",
     tip: "When troubleshooting instrument discrepancies, always consider the most common and easily rectifiable issues first, especially those related to continuous exposure and maintenance.",
-    "difficulty": "medium"
   },
   {
     "id": 357,
@@ -6509,8 +6509,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Substitute the values into the formula.", c: "Colour removal efficiency = (60 TCU - 15 TCU) / 60 TCU * 100%." },
       { l: "Step 4: Calculate the result.", c: "Colour removal efficiency = 45 / 60 * 100% = 0.75 * 100% = 75%." },
     ],
+    "difficulty": "easy",
     tip: "Always double-check your calculations, especially when dealing with percentages, to avoid simple arithmetic errors.",
-    "difficulty": "easy"
   },
   {
     "id": 358,
@@ -6546,8 +6546,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the T10 detention time", c: "The T10 detention time is found by multiplying the theoretical detention time by the T10/T ratio: T10 = 288 minutes × 0.5 = 144 minutes." },
       { l: "Step 4: Calculate the minimum chlorine residual (C)", c: "The minimum chlorine residual (C) is calculated by dividing the CT requirement by the T10 detention time: C = 165 mg·min/L ÷ 144 minutes = 1.15 mg/L." },
     ],
+    "difficulty": "hard",
     tip: "Always double-check your unit conversions, especially when dealing with time (days to minutes or hours) to avoid calculation errors.",
-    "difficulty": "hard"
   },
   {
     "id": 360,
@@ -6583,8 +6583,8 @@ export const QUESTIONS: Question[] = [
       { l: "Necessity of Full-Scale Validation", c: "To ensure effective disinfection, the full-scale UV system must undergo validation using biodosimetry testing with a surrogate organism to establish a dose-response curve and confirm it delivers the required UV dose under all operating conditions, especially worst-case scenarios." },
       { l: "Implication for Full-Scale Design/Operation", c: "The 40 mJ/cm² is a target dose for MS2 inactivation. The full-scale system must be designed and operated to consistently deliver at least this dose, or a higher dose if required by regulations, considering all real-world operational variables." },
     ],
+    "difficulty": "hard",
     tip: "Always differentiate between ideal lab conditions (collimated beam) and real-world operational challenges when evaluating disinfection technologies for full-scale application.",
-    "difficulty": "hard"
   },
   {
     "id": 362,
@@ -6620,8 +6620,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the total volume in Liters.", c: "Multiply the flow rate by the total duration in seconds: 30 L/s * 7200 s = 216,000 L." },
       { l: "Step 4: Convert the volume to cubic meters (optional but good practice).", c: "Divide the volume in Liters by 1000 to get cubic meters: 216,000 L / 1000 L/m³ = 216 m³." },
     ],
+    "difficulty": "medium",
     tip: "Always pay attention to units and convert them consistently before performing calculations to avoid errors.",
-    "difficulty": "medium"
   },
   {
     "id": 364,
@@ -6642,8 +6642,8 @@ export const QUESTIONS: Question[] = [
       { l: "Calculate the oxygen feed gas volume flow rate", c: "Divide the total feed gas mass flow rate by the density of oxygen: 125 kg/h / 1.429 kg/m³ = 87.47 m³/h." },
       { l: "Round to appropriate significant figures", c: "Rounding to one decimal place, the oxygen feed gas flow rate is 87.5 m³/h." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to units and ensure they cancel out correctly to arrive at the desired final unit.",
-    "difficulty": "hard"
   },
   {
     "id": 365,
@@ -6769,8 +6769,8 @@ export const QUESTIONS: Question[] = [
       { l: "Determine the Minimum Residual", c: "O. Reg. 170/03 mandates a minimum free chlorine residual of 0.05 mg/L throughout the distribution system for large municipal residential drinking water systems." },
       { l: "Distinguish from Operational Targets", c: "While the regulatory minimum is 0.05 mg/L, operators often maintain higher residuals (e.g., 0.2-0.5 mg/L) as operational targets to ensure compliance and provide a safety factor against disinfectant decay." },
     ],
+    "difficulty": "hard",
     tip: "Always differentiate between regulatory minimums and operational targets; the question asks for the minimum required by the regulation.",
-    "difficulty": "hard"
   },
   {
     "id": 373,
@@ -6896,8 +6896,8 @@ export const QUESTIONS: Question[] = [
       { l: "Delineation Basis", c: "WHPAs are typically delineated based on the time it takes for groundwater to travel to the well, often categorized into zones like 100-day, 2-year, and 5-year travel times." },
       { l: "Management through SPPs", c: "Activities within WHPAs that pose a risk to groundwater quality are regulated and managed through Source Protection Plans (SPPs) to prevent contamination." },
     ],
+    "difficulty": "hard",
     tip: "Focus on understanding the 'why' behind WHPAs (protection) and the 'how' (delineation and management) for comprehensive answers.",
-    "difficulty": "hard"
   },
   {
     "id": 381,
@@ -7083,8 +7083,8 @@ export const QUESTIONS: Question[] = [
       { l: "Understand the physiological mechanism", c: "In infants, bacteria convert nitrate to nitrite, which then interferes with oxygen transport in the blood by forming methemoglobin." },
       { l: "Connect to the regulatory standard", c: "The Maximum Acceptable Concentration (MAC) of 10 mg/L as N is set to protect against this specific health risk." },
     ],
+    "difficulty": "medium",
     tip: "Always link health concerns to specific vulnerable populations and the physiological impact of the contaminant.",
-    "difficulty": "medium"
   },
   {
     "id": 393,
@@ -7165,8 +7165,8 @@ export const QUESTIONS: Question[] = [
       { l: "Explain the Relationship", c: "The relationship between chlorine dose, demand, and residual is expressed by the formula: Chlorine Residual = Chlorine Dose - Chlorine Demand. This means that only the chlorine remaining after demand has been satisfied contributes to disinfection." },
       { l: "Highlight the Difference", c: "The key difference is that chlorine dose is the input, while chlorine demand is the amount of that input that is used up by impurities. Understanding demand is crucial for determining the correct dose needed to achieve a desired residual." },
     ],
+    "difficulty": "medium",
     tip: "Remember that chlorine demand must be satisfied before any free chlorine residual can be established for effective disinfection.",
-    "difficulty": "medium"
   },
   {
     "id": 398,
@@ -7217,8 +7217,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Document Findings", c: "Record all observations, data collected, and any adjustments made during the investigation. This documentation is crucial for tracking the issue and future reference." },
       { l: "Step 4: Proactive Adjustment (if needed)", c: "Based on the investigation, make minor, proactive adjustments to the treatment process (e.g., coagulant dose, filter backwash frequency) to address the underlying cause before turbidity exceeds the operational trigger." },
     ],
+    "difficulty": "medium",
     tip: "Always consider trend analysis in operational questions; proactive intervention is often preferred over reactive responses.",
-    "difficulty": "medium"
   },
   {
     "id": 401,
@@ -7270,8 +7270,8 @@ export const QUESTIONS: Question[] = [
       { l: "Consider Disinfection Byproducts (DBPs)", c: "Ozone does not form halogenated disinfection byproducts (THMs, HAAs), which are a concern with chlorine." },
       { l: "Determine Primary Advantage", c: "The primary advantage of ozone is its superior oxidizing power, leading to better pathogen inactivation and no halogenated DBP formation." },
     ],
+    "difficulty": "medium",
     tip: "Focus on the most significant differences and unique benefits when comparing treatment methods.",
-    "difficulty": "medium"
   },
   {
     "id": 404,
@@ -7293,8 +7293,8 @@ export const QUESTIONS: Question[] = [
       { l: "Fouling and Damage", c: "Sustained high TMP can cause severe membrane fouling, reducing efficiency, and in extreme cases, can lead to irreversible membrane damage or compaction." },
       { l: "Monitoring Importance", c: "Operators monitor TMP trends to detect early signs of membrane fouling, allowing for timely cleaning or operational adjustments to maintain system performance and membrane longevity." },
     ],
+    "difficulty": "medium",
     tip: "Focus on understanding the 'why' behind each concept, not just the definition, as questions often test practical application.",
-    "difficulty": "medium"
   },
   {
     "id": 405,
@@ -7345,8 +7345,8 @@ export const QUESTIONS: Question[] = [
       { l: "Formulate the Definition", c: "The recovery rate is the percentage of the feed water that successfully passes through the RO membrane as permeate (product water)." },
       { l: "Recall the Formula", c: "The formula for recovery rate is (Permeate flow / Feed flow) x 100%." },
     ],
+    "difficulty": "medium",
     tip: "Always relate RO system parameters back to the fundamental goal of producing clean water efficiently.",
-    "difficulty": "medium"
   },
   {
     "id": 408,
@@ -7517,8 +7517,8 @@ export const QUESTIONS: Question[] = [
       { l: "Locate the 3-log inactivation dose for Cryptosporidium", c: "According to these guidelines, a UV dose of approximately 40 mJ/cm2 is effective for 3-log inactivation of Cryptosporidium." },
       { l: "State the final answer", c: "Therefore, the required UV dose is 40 mJ/cm2." },
     ],
+    "difficulty": "hard",
     tip: "Memorize key disinfection parameters and regulatory guidelines for common pathogens like Cryptosporidium, especially its resistance to chlorine.",
-    "difficulty": "hard"
   },
   {
     "id": 419,
@@ -7539,8 +7539,8 @@ export const QUESTIONS: Question[] = [
       { l: "Calculate Daily Production in Liters", c: "Multiply the flux rate by the membrane area and the hours in a day: 20 L/m2/h * 1,000 m2 * 24 h/day = 480,000 L/day." },
       { l: "Convert Liters to Cubic Meters", c: "Since 1 m3 = 1,000 L, divide the daily production in liters by 1,000: 480,000 L/day / 1,000 L/m3 = 480 m3/day." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to the units required in the final answer and ensure all conversions are performed correctly.",
-    "difficulty": "hard"
   },
   {
     "id": 420,
@@ -7561,8 +7561,8 @@ export const QUESTIONS: Question[] = [
       { l: "Apply EBCT Formula", c: "Use the formula EBCT = Bed Volume / Flow Rate. Substitute the values: EBCT = 15 m³ / 0.2083 m³/minute." },
       { l: "Calculate EBCT", c: "Perform the division: EBCT = 72.01 minutes. Round to the nearest whole number, giving 72 minutes." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to units and ensure they are consistent before performing calculations, especially when time is involved.",
-    "difficulty": "hard"
   },
   {
     "id": 421,
@@ -7583,8 +7583,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the required volume of coagulant solution per day.", c: "Divide the total mass of pure coagulant needed (from Step 1) by the concentration of the solution (from Step 2): 600 kg/day / 0.108 kg/L = 5,555.56 L/day." },
       { l: "Step 4: Convert the daily solution volume to a feed rate in L/min.", c: "Divide the daily volume by the number of minutes in a day (24 hours * 60 minutes/hour = 1440 minutes): 5,555.56 L/day / 1440 min/day = 3.86 L/min. The closest answer provided in the explanation is 4.6 L/min, which suggests a slight rounding difference or an alternative calculation method was used in the provided explanation." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to units and ensure consistent unit conversion throughout your calculations to avoid errors.",
-    "difficulty": "hard"
   },
   {
     "id": 422,
@@ -7604,8 +7604,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Convert the plant flow rate from m³/day to m³/hour.", c: "Flow rate in m³/hour = 45,000 m³/day ÷ 24 hours/day = 1,875 m³/hour." },
       { l: "Step 3: Calculate the hydraulic detention time (HDT) in hours.", c: "HDT = Volume ÷ Flow rate = 3,600 m³ ÷ 1,875 m³/hour = 1.92 hours." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to units and ensure they are consistent throughout your calculations, especially when converting between days and hours.",
-    "difficulty": "hard"
   },
   {
     "id": 423,
@@ -7625,8 +7625,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Calculate the surface area of the clarifier.", c: "Using the formula for the area of a circle (A = π * r²), A = 3.14159 * (10 m)² = 3.14159 * 100 m² = 314.159 m²." },
       { l: "Step 3: Calculate the Surface Overflow Rate (SOR).", c: "SOR is calculated by dividing the flow rate by the surface area: SOR = 15,000 m³/day / 314.159 m² = 47.74 m³/m²/day." },
     ],
+    "difficulty": "hard",
     tip: "Always double-check your units throughout the calculation to ensure they cancel out correctly and your final answer has the expected units.",
-    "difficulty": "hard"
   },
   {
     "id": 424,
@@ -7647,8 +7647,8 @@ export const QUESTIONS: Question[] = [
       { l: "Perform the calculation", c: "Multiply the residual concentration by the contact time: 1.8 mg/L * 30 min = 54 mg·min/L." },
       { l: "State the final CT value", c: "The CT value is 54 mg·min/L." },
     ],
+    "difficulty": "medium",
     tip: "Always use the residual concentration at the end of the contact time, not the applied dose, when calculating CT values.",
-    "difficulty": "medium"
   },
   {
     "id": 425,
@@ -7668,8 +7668,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Convert the plant flow to cubic meters per hour", c: "Divide the daily plant flow by 24 hours: 72,000 m3/day / 24 h/day = 3,000 m3/h." },
       { l: "Step 3: Calculate the filtration rate", c: "Divide the flow in m3/h by the total filter area in m2: 3,000 m3/h / 480 m2 = 6.25 m3/m2/h." },
     ],
+    "difficulty": "hard",
     tip: "Always pay attention to units and ensure they are consistent throughout your calculations to avoid errors.",
-    "difficulty": "hard"
   },
   {
     "id": 426,
@@ -7690,8 +7690,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate Hydraulic Power", c: "Use the formula for hydraulic power: P_hydraulic = ρgQH, where ρ (density of water) = 1000 kg/m³ and g (acceleration due to gravity) = 9.81 m/s². P_hydraulic = 1000 kg/m³ * 9.81 m/s² * 0.5 m³/s * 25 m = 122,625 W. Convert this to kilowatts: 122,625 W / 1000 = 122.625 kW." },
       { l: "Step 4: Calculate Motor Power Required", c: "Motor power is calculated by dividing the hydraulic power by the pump efficiency: P_motor = P_hydraulic / η. P_motor = 122.625 kW / 0.78 = 157.21 kW. Round to a reasonable number of significant figures, such as 157 kW." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to units and perform necessary conversions (e.g., L/s to m³/s, W to kW) to ensure your calculations are accurate.",
-    "difficulty": "hard"
   },
   {
     "id": 427,
@@ -7712,8 +7712,8 @@ export const QUESTIONS: Question[] = [
       { l: "Substitute and Calculate", c: "Substitute the given values into the formula: WOR = 20,000 m3/day / 40 m. This calculates to 500 m3/m/day." },
       { l: "Interpret the Result", c: "The calculated weir overflow rate is 500 m3/m/day, which is at the upper end of typical design values (250-500 m3/m/day)." },
     ],
+    "difficulty": "medium",
     tip: "Always pay attention to units and ensure they cancel out correctly to arrive at the desired unit for the answer.",
-    "difficulty": "medium"
   },
   {
     "id": 428,
@@ -7734,8 +7734,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Determine the concentration of active fluoride in the hydrofluosilicic acid solution.", c: "The solution is 23% active and has a specific gravity of 1.19. So, the concentration is 0.23 * 1.19 kg/L = 0.2737 kg/L, or 273.7 g/L." },
       { l: "Step 4: Calculate the required feed rate of the hydrofluosilicic acid solution.", c: "Divide the total mass of fluoride needed by the concentration of the solution: 18 kg/day / 0.2737 kg/L = 65.76 L/day. Rounding to the nearest whole number gives 66 L/day." },
     ],
+    "difficulty": "hard",
     tip: "Always double-check your unit conversions, especially when dealing with large volumes and concentrations, to avoid calculation errors.",
-    "difficulty": "hard"
   },
   {
     "id": 429,
@@ -7756,8 +7756,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Convert the flow rate from m³/h to L/h.", c: "Since 1 m³ = 1,000 L, multiply 4,000 m³/h by 1,000 L/m³ to get 4,000,000 L/h." },
       { l: "Step 4: Convert the flow rate from L/h to L/s.", c: "Divide 4,000,000 L/h by the number of seconds in an hour (3,600 s/h): 4,000,000 L/h / 3,600 s/h = 1,111.11 L/s. Round to 1,111 L/s." },
     ],
+    "difficulty": "medium",
     tip: "Always pay close attention to units and ensure all conversions are performed accurately to arrive at the correct final unit.",
-    "difficulty": "medium"
   },
   {
     "id": 430,
@@ -7778,8 +7778,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the total mass of TSS removed per day", c: "Multiply the concentration of TSS removed by the total daily flow: 34 mg/L * 25,000,000 L/day = 850,000,000 mg/day." },
       { l: "Step 4: Convert the mass of TSS removed to kilograms per day", c: "Divide the mass in milligrams by 1,000,000 to convert to kilograms: 850,000,000 mg/day / 1,000,000 mg/kg = 850 kg/day." },
     ],
+    "difficulty": "medium",
     tip: "Always pay close attention to unit conversions, especially between mg, g, and kg, and between L and m3, as these are common areas for errors.",
-    "difficulty": "medium"
   },
   {
     "id": 431,
@@ -7800,8 +7800,8 @@ export const QUESTIONS: Question[] = [
       { l: "Consider the Dual Impact", c: "While increased collisions are beneficial, excessively high G values can also exert shear forces that break apart already formed flocs. This can hinder the overall flocculation process and lead to poorer settling." },
       { l: "Identify the Optimal Range", c: "Therefore, the G value represents a balance: it needs to be high enough to promote particle contact but low enough to prevent floc destruction. Typical ranges (e.g., 10-75 s-1) are established to achieve this balance." },
     ],
+    "difficulty": "hard",
     tip: "Focus on understanding the 'why' behind each parameter in water treatment, not just memorizing definitions.",
-    "difficulty": "hard"
   },
   {
     "id": 432,
@@ -7837,8 +7837,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the daily volume of hypochlorite solution needed.", c: "Divide the total mass of chlorine required (88 kg/day) by the concentration of available chlorine in the solution (0.14625 kg/L): 88 kg/day / 0.14625 kg/L = 601.7 L/day." },
       { l: "Step 4: Round to an appropriate number of significant figures.", c: "The result is approximately 600 L/day, which is a practical rounding for operational purposes." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to units and ensure consistent conversions throughout your calculations to avoid errors.",
-    "difficulty": "hard"
   },
   {
     "id": 434,
@@ -7859,8 +7859,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate Total Hardness", c: "Add the calculated calcium hardness and magnesium hardness to find the total hardness. Total hardness = 200 mg/L + 74.08 mg/L = 274.08 mg/L as CaCO3." },
       { l: "Step 4: Round to the nearest whole number", c: "Round the total hardness to the nearest whole number as typically required for exam answers. Total hardness ≈ 274 mg/L as CaCO3." },
     ],
+    "difficulty": "hard",
     tip: "Always remember the molecular weight ratios for converting individual hardness ions to mg/L as CaCO3, as these are fundamental for hardness calculations.",
-    "difficulty": "hard"
   },
   {
     "id": 435,
@@ -7881,8 +7881,8 @@ export const QUESTIONS: Question[] = [
       { l: "Substitute Values", c: "Substitute the given values into the formula: Concentration (as HCO3-) = 120 mg/L x (61 / 50)." },
       { l: "Calculate Result", c: "Perform the multiplication: 120 x 1.22 = 146.4 mg/L. Therefore, the bicarbonate concentration is 146.4 mg/L as HCO3-." },
     ],
+    "difficulty": "hard",
     tip: "Always pay close attention to the 'as' unit in alkalinity and hardness problems, as it dictates the conversion factor needed.",
-    "difficulty": "hard"
   },
   {
     "id": 436,
@@ -7903,8 +7903,8 @@ export const QUESTIONS: Question[] = [
       { l: "Substitute the values into the formula", c: "CT = 0.4 mg/L x 8 min." },
       { l: "Calculate the CT value", c: "CT = 3.2 mg·min/L." },
     ],
+    "difficulty": "medium",
     tip: "Always pay attention to the units provided and ensure your final answer includes the correct combined units for CT values.",
-    "difficulty": "medium"
   },
   {
     "id": 437,
@@ -7925,8 +7925,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the flow rate in cubic meters per second", c: "Flow rate (Q) is calculated by multiplying the area by the velocity (Q = A * V). Q = 0.1257 m^2 * 1.5 m/s = 0.18855 m^3/s." },
       { l: "Step 4: Convert the flow rate to liters per second", c: "Since 1 cubic meter (m^3) is equal to 1000 liters (L), convert the flow rate: 0.18855 m^3/s * 1000 L/m^3 = 188.55 L/s. Rounding to one decimal place gives 188.6 L/s." },
     ],
+    "difficulty": "medium",
     tip: "Always pay close attention to units and perform necessary conversions at each step to avoid errors.",
-    "difficulty": "medium"
   },
   {
     "id": 438,
@@ -7947,8 +7947,8 @@ export const QUESTIONS: Question[] = [
       { l: "Apply the Volume Formula", c: "Use the formula: Volume = Flow Rate x Detention Time. Substitute the calculated hourly flow rate and the given detention time." },
       { l: "Calculate Minimum Clearwell Volume", c: "Volume = 2,500 m3/hour x 4 hours = 10,000 m3. This is the minimum required clearwell volume." },
     ],
+    "difficulty": "medium",
     tip: "Always ensure all units are consistent (e.g., hours for time, m3/hour for flow) before performing calculations to avoid errors.",
-    "difficulty": "medium"
   },
   {
     "id": 439,
@@ -7969,8 +7969,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Apply the Percent Removal Formula", c: "Divide the amount removed by the influent TOC and multiply by 100 to get the percentage: (5.3 mg/L / 8.5 mg/L) * 100." },
       { l: "Step 4: Calculate the Result", c: "Perform the division and multiplication: 0.6235 * 100 = 62.35%. Round to one decimal place for the final answer: 62.4%." },
     ],
+    "difficulty": "easy",
     tip: "Always double-check that you are dividing by the influent (starting) value when calculating percent removal.",
-    "difficulty": "easy"
   },
   {
     "id": 440,
@@ -7991,8 +7991,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Rearrange the formula to solve for the unknown.", c: "To find Q2, we rearrange the formula to Q2 = Q1 * (N2/N1)." },
       { l: "Step 4: Substitute the values and calculate.", c: "Q2 = 500 L/s * (1440 RPM / 1200 RPM) = 500 L/s * 1.2 = 600 L/s." },
     ],
+    "difficulty": "medium",
     tip: "Always write down the formula first, then substitute your known values to avoid calculation errors.",
-    "difficulty": "medium"
   },
   {
     "id": 441,
@@ -8148,8 +8148,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Call Emergency Services", c: "From a safe, upwind location, contact emergency services (e.g., 911, fire department) and provide them with details of the chlorine gas leak." },
       { l: "Step 4: Prevent Further Contamination", c: "Ensure no one enters the contaminated area without self-contained breathing apparatus (SCBA) and appropriate protective gear. Do NOT apply water to the leak." },
     ],
+    "difficulty": "hard",
     tip: "Always prioritize personal safety and the safety of others as the absolute first action in any emergency scenario.",
-    "difficulty": "hard"
   },
   {
     "id": 451,
@@ -8230,8 +8230,8 @@ export const QUESTIONS: Question[] = [
       { l: "Identify the Anomaly", c: "If turbidity increases with more coagulant, it means the particles are no longer aggregating effectively, despite the increased dose." },
       { l: "Determine the Cause", c: "This phenomenon, where excess coagulant causes particles to become positively charged and repel each other again, is known as restabilization or charge reversal." },
     ],
+    "difficulty": "hard",
     tip: "Understand the concept of restabilization; it's a common pitfall in coagulation and a frequent exam topic.",
-    "difficulty": "hard"
   },
   {
     "id": 456,
@@ -8433,8 +8433,8 @@ export const QUESTIONS: Question[] = [
       { l: "Formulate the Advantage", c: "The primary advantage is their superior effectiveness and floc formation capabilities in cold water conditions." },
       { l: "Confirm with Explanation", c: "The provided explanation confirms that ferric coagulants are 'more effective at lower temperatures' and 'preferred for cold water treatment.'" },
     ],
+    "difficulty": "hard",
     tip: "Focus on keywords in the question, like 'primary advantage' and 'cold water treatment,' to guide your answer.",
-    "difficulty": "hard"
   },
   {
     "id": 469,
@@ -8485,8 +8485,8 @@ export const QUESTIONS: Question[] = [
       { l: "Prevent Excessive Pressure", c: "Conversely, lower elevation areas would experience excessively high pressure, leading to increased leaks, pipe bursts, and damage to plumbing fixtures." },
       { l: "Maintain Optimal Pressure", c: "Pressure zones, often separated by pressure reducing valves (PRVs) or booster stations, allow operators to maintain appropriate and consistent water pressure within specific elevation ranges throughout the entire distribution system." },
     ],
+    "difficulty": "medium",
     tip: "When answering 'why' questions, focus on both the problems being solved and the benefits of the solution.",
-    "difficulty": "medium"
   },
   {
     "id": 472,
@@ -8552,8 +8552,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Recognize the benefits of pressure reduction.", c: "By reducing high pressures, PRVs prevent damage to pipes and fixtures, minimize water leaks and bursts, and conserve water." },
       { l: "Step 4: Consider typical application points.", c: "PRVs are commonly installed at the boundaries between different pressure zones in a water distribution network to manage pressure differentials effectively." },
     ],
+    "difficulty": "medium",
     tip: "Focus on the 'reducing' and 'maintaining' aspects of a PRV's function, as these are its defining characteristics.",
-    "difficulty": "medium"
   },
   {
     "id": 476,
@@ -8588,8 +8588,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Calculate the surface area", c: "The formula for the surface area of a circle is A = π * r². Using the calculated radius, A = π * (10 m)² = 314.159 m² (approximately 314.2 m²)." },
       { l: "Step 3: Calculate the Surface Overflow Rate (SOR)", c: "The Surface Overflow Rate (SOR) is calculated by dividing the flow rate by the surface area. SOR = 15,000 m³/day / 314.159 m² = 47.74 m³/m²/day." },
     ],
+    "difficulty": "hard",
     tip: "Always double-check your units throughout the calculation to ensure they cancel out correctly and result in the desired final unit.",
-    "difficulty": "hard"
   },
   {
     "id": 478,
@@ -8610,8 +8610,8 @@ export const QUESTIONS: Question[] = [
       { l: "Perform Calculation", c: "Multiply the residual (1.8 mg/L) by the contact time (30 min): 1.8 mg/L * 30 min = 54 mg·min/L." },
       { l: "State Final Answer", c: "The CT value is 54 mg·min/L." },
     ],
+    "difficulty": "medium",
     tip: "Always ensure the contact time used in CT calculations is the T10 value, not the hydraulic retention time, as specified in the explanation.",
-    "difficulty": "medium"
   },
   {
     "id": 479,
@@ -8646,8 +8646,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Calculate Magnesium Hardness", c: "Convert the magnesium concentration to its equivalent as CaCO₃ by multiplying the Mg²⁺ concentration (18 mg/L) by the ratio of the molecular weight of CaCO₃ (100) to the molecular weight of Mg (24.3). Mg hardness = 18 mg/L * (100/24.3) = 74.07 mg/L as CaCO₃ (rounded to 74.1 mg/L as CaCO₃)." },
       { l: "Step 3: Calculate Total Hardness", c: "Add the calculated calcium hardness and magnesium hardness together to find the total hardness. Total hardness = 200 mg/L + 74.1 mg/L = 274.1 mg/L as CaCO₃." },
     ],
+    "difficulty": "hard",
     tip: "Always remember the conversion factor for hardness is (MW of CaCO₃ / MW of ion) to express hardness 'as CaCO₃'.",
-    "difficulty": "hard"
   },
   {
     "id": 481,
@@ -8668,8 +8668,8 @@ export const QUESTIONS: Question[] = [
       { l: "3. Calculate the flow rate in cubic meters per second.", c: "Flow rate (Q) is calculated by multiplying the area by the velocity: Q = A * v = 0.1257 m² * 1.5 m/s = 0.1885 m³/s." },
       { l: "4. Convert the flow rate to liters per second.", c: "Since 1 m³ = 1000 liters, multiply the flow rate in m³/s by 1000: 0.1885 m³/s * 1000 L/m³ = 188.5 L/s." },
     ],
+    "difficulty": "medium",
     tip: "Always pay close attention to units and ensure consistent unit conversion throughout your calculations, especially when dealing with different measurement systems.",
-    "difficulty": "medium"
   },
   {
     "id": 482,
@@ -8689,8 +8689,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 2: Calculate the required clearwell volume", c: "Use the formula Volume = Flow × Time. Multiply the hourly flow rate by the required detention time: 2,500 m³/hour × 4 hours = 10,000 m³." },
       { l: "Step 3: State the minimum required clearwell volume", c: "The minimum required clearwell volume to provide 4 hours of detention time at a maximum flow of 60,000 m³/day is 10,000 m³." },
     ],
+    "difficulty": "medium",
     tip: "Always ensure your units are consistent before performing calculations; convert all values to a common unit (e.g., hours) to avoid errors.",
-    "difficulty": "medium"
   },
   {
     "id": 483,
@@ -8711,8 +8711,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Calculate the percent removal.", c: "Divide the amount removed by the initial TOC and multiply by 100: (5.3 mg/L / 8.5 mg/L) * 100." },
       { l: "Step 4: Perform the calculation.", c: "5.3 ÷ 8.5 = 0.6235; 0.6235 * 100 = 62.35%. Round to one decimal place for 62.4%." },
     ],
+    "difficulty": "easy",
     tip: "Always double-check your calculations, especially when dealing with percentages, to avoid simple arithmetic errors.",
-    "difficulty": "easy"
   },
   {
     "id": 484,
@@ -8733,8 +8733,8 @@ export const QUESTIONS: Question[] = [
       { l: "Step 3: Convert the flow rate from m³/h to L/s", c: "First, convert m³ to Liters (1 m³ = 1000 L), then convert hours to seconds (1 hour = 3600 seconds). Flow rate in L/s = (4000 m³/h * 1000 L/m³) / 3600 s/h = 4,000,000 L / 3600 s = 1111.11 L/s." },
       { l: "Step 4: Round to an appropriate number of significant figures", c: "Given the input values, rounding to the nearest whole number or two decimal places is appropriate. Backwash flow rate = 1111 L/s." },
     ],
+    "difficulty": "medium",
     tip: "Always pay close attention to the units required in the final answer and perform necessary conversions systematically.",
-    "difficulty": "medium"
   },
   {
     "id": 485,
@@ -8755,8 +8755,8 @@ export const QUESTIONS: Question[] = [
       { l: "Perform the calculation", c: "Substitute the given values into the formula: CT = 0.4 mg/L x 8 min." },
       { l: "State the final CT value", c: "The CT value is 3.2 mg·min/L." },
     ],
+    "difficulty": "medium",
     tip: "Always pay attention to the units given in the problem and ensure your final answer includes the correct combined units for CT (mg·min/L).",
-    "difficulty": "medium"
   },
   {
     "id": 486,
@@ -8777,8 +8777,8 @@ export const QUESTIONS: Question[] = [
       { l: "List Key Advantages", c: "MBRs offer several advantages over conventional activated sludge, including superior effluent quality, a significantly smaller physical footprint, and the ability to operate at much higher Mixed Liquor Suspended Solids (MLSS) concentrations." },
       { l: "Detail Operational Benefits", c: "The higher MLSS (8,000-12,000 mg/L vs. 2,000-4,000 mg/L) allows for more efficient biological treatment in a smaller volume, and the membrane barrier provides better control over the Solids Retention Time (SRT), leading to more stable operation and enhanced nutrient removal." },
     ],
+    "difficulty": "hard",
     tip: "When comparing treatment technologies, focus on the 'why' behind the advantages, linking them back to fundamental process principles.",
-    "difficulty": "hard"
   },
   {
     "id": 487,
@@ -8934,8 +8934,8 @@ export const QUESTIONS: Question[] = [
       { l: "Detail the Concerns", c: "The presence of PPCPs, even at trace concentrations, raises concerns about potential endocrine disruption, the development of antibiotic resistance, and unknown long-term health and ecological impacts." },
       { l: "Highlight Treatment Challenges", c: "Effective removal of PPCPs typically requires advanced treatment technologies such as ozonation, advanced oxidation processes (AOPs), granular activated carbon (GAC), or reverse osmosis (RO), which are not universally implemented." },
     ],
+    "difficulty": "hard",
     tip: "When answering 'why' questions, always provide both the cause and the consequence of the issue.",
-    "difficulty": "hard"
   },
   {
     "id": 497,
