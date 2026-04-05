@@ -391,6 +391,15 @@ export default function WpiLanding() {
                   { href: "/wpi-class1-wastewater", label: "🌊 Class I Wastewater Practice", sub: "500 questions · 15 free" },
                   { href: "/wpi-class1-wastewater-mock", label: "📋 Class I Wastewater Mock Exam", sub: "100 questions · 2 hours" },
                   { href: "/formulas-wpi-class1-ww", label: "📐 Class I Wastewater Formulas", sub: "BOD, TSS, HRT, SRT, loading rates" },
+                  { href: "/wpi-class2-wastewater", label: "🌊 Class II Wastewater Practice", sub: "501 questions · 15 free" },
+                  { href: "/wpi-class2-wastewater-mock", label: "📋 Class II Wastewater Mock Exam", sub: "100 questions · 2 hours" },
+                  { href: "/formulas-wpi-class2-ww", label: "📐 Class II Wastewater Formulas", sub: "BNR, SRT, SVI, biosolids" },
+                  { href: "/wpi-class3-wastewater", label: "🌊 Class III Wastewater Practice", sub: "501 questions · 15 free" },
+                  { href: "/wpi-class3-wastewater-mock", label: "📋 Class III Wastewater Mock Exam", sub: "100 questions · 2 hours" },
+                  { href: "/formulas-wpi-class3-ww", label: "📐 Class III Wastewater Formulas", sub: "BNR kinetics, MBR, biosolids, industrial pretreatment" },
+                  { href: "/wpi-class4-wastewater", label: "🏛️ Class IV Wastewater Practice", sub: "502 questions · 15 free" },
+                  { href: "/wpi-class4-wastewater-mock", label: "📋 Class IV Wastewater Mock Exam", sub: "100 questions · 2 hours" },
+                  { href: "/formulas-wpi-class4-ww", label: "📐 Class IV Wastewater Formulas", sub: "Advanced process control, BNR, biogas, asset management" },
                 ].map(item => (
                   <Link key={item.href} href={item.href}>
                     <div style={{
@@ -519,47 +528,55 @@ export default function WpiLanding() {
             </div>
           </div>
 
-          {/* Wastewater card */}
+          {/* Wastewater cards */}
           <div>
             <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
               ♻️ Wastewater Treatment
             </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <div style={{
-                background: "#FFFBEB",
-                border: "2px solid #FDE68A",
-                borderRadius: 20,
-                padding: "24px 20px",
-                width: 260,
-                textAlign: "left",
-              }}>
-                <div style={{ fontSize: 10, fontWeight: 700, color: "#B45309", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>WPI CLASS I WASTEWATER</div>
-                <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#0F172A", marginBottom: 3 }}>CA$79</div>
-                <div style={{ fontSize: 11, color: "#64748B", marginBottom: 16 }}>Unlimited · 500 questions</div>
-                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 16px", display: "flex", flexDirection: "column" as const, gap: 6 }}>
-                  {["500 wastewater questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"].map(f => (
-                    <li key={f} style={{ fontSize: 12, color: "#0F172A", display: "flex", alignItems: "center", gap: 6 }}>
-                      <span style={{ color: "#B45309", fontWeight: 700, fontSize: 11 }}>✓</span> {f}
-                    </li>
-                  ))}
-                </ul>
-                <Link href="/pricing">
-                  <button style={{
-                    width: "100%",
-                    background: "#B45309",
-                    color: "#FFFFFF",
-                    border: "none",
-                    borderRadius: 10,
-                    padding: "10px",
-                    fontSize: 13,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                  }}>
-                    Get WW Class I Pass →
-                  </button>
-                </Link>
-              </div>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" as const, justifyContent: "center" }}>
+              {[
+                { label: "WPI CLASS I WASTEWATER", price: "CA$79", questions: "500", color: "#B45309", bg: "#FFFBEB", border: "#FDE68A", href: "/wpi-class1-wastewater", btnLabel: "Get WW Class I Pass →", features: ["500 wastewater questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
+                { label: "WPI CLASS II WASTEWATER", price: "CA$99", questions: "501", color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", href: "/wpi-class2-wastewater", btnLabel: "Get WW Class II Pass →", features: ["501 advanced WW questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
+                { label: "WPI CLASS III WASTEWATER", price: "CA$129", questions: "501", color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", href: "/wpi-class3-wastewater", btnLabel: "Get WW Class III Pass →", features: ["501 senior WW questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
+                { label: "WPI CLASS IV WASTEWATER", price: "CA$129", questions: "502", color: "#6D28D9", bg: "#F5F3FF", border: "#C4B5FD", href: "/wpi-class4-wastewater", btnLabel: "Get WW Class IV Pass →", features: ["502 chief operator questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
+              ].map(ww => (
+                <div key={ww.label} style={{
+                  background: ww.bg,
+                  border: `2px solid ${ww.border}`,
+                  borderRadius: 20,
+                  padding: "24px 20px",
+                  width: 240,
+                  textAlign: "left" as const,
+                  flexShrink: 0,
+                }}>
+                  <div style={{ fontSize: 10, fontWeight: 700, color: ww.color, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>{ww.label}</div>
+                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#0F172A", marginBottom: 3 }}>{ww.price}</div>
+                  <div style={{ fontSize: 11, color: "#64748B", marginBottom: 16 }}>Unlimited · {ww.questions} questions</div>
+                  <ul style={{ listStyle: "none", padding: 0, margin: "0 0 16px", display: "flex", flexDirection: "column" as const, gap: 6 }}>
+                    {ww.features.map(f => (
+                      <li key={f} style={{ fontSize: 12, color: "#0F172A", display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ color: ww.color, fontWeight: 700, fontSize: 11 }}>✓</span> {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/pricing">
+                    <button style={{
+                      width: "100%",
+                      background: ww.color,
+                      color: "#FFFFFF",
+                      border: "none",
+                      borderRadius: 10,
+                      padding: "10px",
+                      fontSize: 13,
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      fontFamily: "inherit",
+                    }}>
+                      {ww.btnLabel}
+                    </button>
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </div>

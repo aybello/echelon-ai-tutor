@@ -198,3 +198,14 @@
 - [ ] Add OIT WW course to Pricing page
 - [ ] Add Report an Error button to quiz/mock exam results screens
 - [ ] Update About page changelog with OIT WW launch
+- [x] WPI Class III Wastewater: 500+ question bank (501 questions)
+- [x] WPI Class III Wastewater: quiz page at /wpi-class3-wastewater
+- [x] WPI Class III Wastewater: mock exam page at /wpi-class3-wastewater-mock
+- [x] WPI Class III Wastewater: formula sheet at /formulas-wpi-class3-ww
+- [x] WPI Class III Wastewater: Stripe product (CA$129), SiteNav, Pricing page, bundle-all
+- [x] WPI Class IV Wastewater: 500+ question bank (502 questions)
+- [x] WPI Class IV Wastewater: quiz page at /wpi-class4-wastewater
+- [x] WPI Class IV Wastewater: mock exam page at /wpi-class4-wastewater-mock
+- [x] WPI Class IV Wastewater: formula sheet at /formulas-wpi-class4-ww
+- [x] WPI Class IV Wastewater: Stripe product (CA$129), SiteNav, Pricing page, bundle-all
+- [x] WPI landing page: add Class II, III, IV Wastewater to pricing cards section
