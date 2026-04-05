@@ -373,7 +373,7 @@ const BUNDLES: Bundle[] = [
     key: "bundle-wpi-wastewater",
     name: "WPI Wastewater Full Ladder",
     tagline: "WPI Class I–IV Wastewater",
-    description: "Complete WPI Wastewater Treatment ladder for BC, AB, SK & MB operators. Class I through Class IV in one pass. 1,503 questions total.",
+    description: "Complete WPI Wastewater Treatment ladder for BC, AB, SK & MB operators. Class I through Class IV in one pass. 1,500+ questions total.",
     priceCAD: 29900,
     savings: 15700,
     includes: ["WPI Class I Wastewater Practice Pass", "WPI Class II Wastewater Practice Pass", "WPI Class III Wastewater Practice Pass", "WPI Class IV Wastewater Practice Pass"],

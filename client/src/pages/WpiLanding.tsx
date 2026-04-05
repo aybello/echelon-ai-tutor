@@ -192,7 +192,7 @@ export default function WpiLanding() {
   usePageMeta({
     title: "WPI Water Treatment Exam Prep — BC EOCP, Alberta AWWOA, SK, MB | Echelon Institute",
     description:
-      "Prepare for the WPI Water & Wastewater Treatment exams with 4,009+ practice questions for Class I–IV Water and Class I–IV Wastewater. Covers BC (EOCP), Alberta (AWWOA), Saskatchewan (SAHO), and Manitoba (MWWA).",
+      "Prepare for the WPI Water & Wastewater Treatment exams with 4,000+ practice questions for Class I–IV Water and Class I–IV Wastewater. Covers BC (EOCP), Alberta (AWWOA), Saskatchewan (SAHO), and Manitoba (MWWA).",
     path: "/wpi",
     keywords:
       "WPI exam prep, BC EOCP water treatment, Alberta AWWOA water operator, Saskatchewan SAHO water, Manitoba MWWA water, WPI Class I practice questions, WPI Class II practice questions, WPI Class III wastewater, WPI Class IV wastewater",
@@ -249,7 +249,7 @@ export default function WpiLanding() {
             maxWidth: 560,
             margin: "0 auto 32px",
           }}>
-            4,009+ practice questions for WPI Class I–IV Water Treatment and Class I–IV Wastewater — aligned with the Need-to-Know Criteria used by <strong style={{ color: "#BAE6FD" }}>EOCP (BC)</strong>, <strong style={{ color: "#BAE6FD" }}>AWWOA (AB)</strong>, <strong style={{ color: "#BAE6FD" }}>SAHO (SK)</strong>, and <strong style={{ color: "#BAE6FD" }}>MWWA (MB)</strong>.
+            4,000+ practice questions for WPI Class I–IV Water Treatment and Class I–IV Wastewater — aligned with the Need-to-Know Criteria used by <strong style={{ color: "#BAE6FD" }}>EOCP (BC)</strong>, <strong style={{ color: "#BAE6FD" }}>AWWOA (AB)</strong>, <strong style={{ color: "#BAE6FD" }}>SAHO (SK)</strong>, and <strong style={{ color: "#BAE6FD" }}>MWWA (MB)</strong>.
           </p>
 
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -288,7 +288,7 @@ export default function WpiLanding() {
           {/* Stats */}
           <div style={{ display: "flex", gap: 32, justifyContent: "center", marginTop: 48, flexWrap: "wrap" }}>
             {[
-              { value: "2,506+", label: "Practice Questions" },
+              { value: "2,500+", label: "Practice Questions" },
               { value: "5", label: "Exam Levels" },
               { value: "4", label: "WPI Provinces" },
               { value: "70%", label: "Pass Mark" },
@@ -551,7 +551,7 @@ export default function WpiLanding() {
               <div>
                 <div style={{ fontSize: 10, fontWeight: 700, color: "#0E7490", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>💡 Best Value — WPI Bundle</div>
                 <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>WPI Water Full Ladder</div>
-                <div style={{ fontSize: 13, color: "#475569", marginBottom: 8 }}>WPI Class I–IV Water · 2,006 questions · Save CA$157</div>
+                <div style={{ fontSize: 13, color: "#475569", marginBottom: 8 }}>WPI Class I–IV Water · 2,000+ questions · Save CA$157</div>
                 <div style={{ display: "flex", gap: 16, flexWrap: "wrap" as const }}>
                   {["WPI Class I Water", "WPI Class II Water", "WPI Class III Water", "WPI Class IV Water"].map(item => (
                     <span key={item} style={{ fontSize: 11, color: "#0E7490", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
@@ -655,7 +655,7 @@ export default function WpiLanding() {
               <div>
                 <div style={{ fontSize: 10, fontWeight: 700, color: "#1D4ED8", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>💡 Best Value — WPI Bundle</div>
                 <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>WPI Wastewater Full Ladder</div>
-                <div style={{ fontSize: 13, color: "#475569", marginBottom: 8 }}>WPI Class I–IV Wastewater · 1,503 questions · Save CA$157</div>
+                <div style={{ fontSize: 13, color: "#475569", marginBottom: 8 }}>WPI Class I–IV Wastewater · 1,500+ questions · Save CA$157</div>
                 <div style={{ display: "flex", gap: 16, flexWrap: "wrap" as const }}>
                   {["WPI Class I WW", "WPI Class II WW", "WPI Class III WW", "WPI Class IV WW"].map(item => (
                     <span key={item} style={{ fontSize: 11, color: "#1D4ED8", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>

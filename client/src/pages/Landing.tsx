@@ -597,7 +597,7 @@ const FEATURES = [
 ];
 
 const STATS = [
-  { value: "7,300+", label: "Practice Questions" },
+  { value: "7,000+", label: "Practice Questions" },
   { value: "22", label: "Certification Courses" },
   { value: "5", label: "Specialization Tracks" },
   { value: "Free", label: "OIT Access" },
