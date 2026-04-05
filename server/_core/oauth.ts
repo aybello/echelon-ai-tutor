@@ -9,26 +9,6 @@ function getQueryParam(req: Request, key: string): string | undefined {
   return typeof value === "string" ? value : undefined;
 }
 
-/** Parse the state param — supports both legacy (plain base64 redirectUri) and
- *  new format (base64 JSON with { redirectUri, returnPath }). */
-function parseState(state: string): { redirectUri: string; returnPath: string } {
-  try {
-    const decoded = atob(state);
-    // New format: JSON object
-    if (decoded.startsWith("{")) {
-      const parsed = JSON.parse(decoded) as { redirectUri?: string; returnPath?: string };
-      return {
-        redirectUri: parsed.redirectUri ?? "/",
-        returnPath: parsed.returnPath ?? "/",
-      };
-    }
-    // Legacy format: plain redirectUri string
-    return { redirectUri: decoded, returnPath: "/" };
-  } catch {
-    return { redirectUri: "/", returnPath: "/" };
-  }
-}
-
 export function registerOAuthRoutes(app: Express) {
   app.get("/api/oauth/callback", async (req: Request, res: Response) => {
     const code = getQueryParam(req, "code");
@@ -64,10 +44,22 @@ export function registerOAuthRoutes(app: Express) {
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
-      // Redirect back to the page the user came from (or homepage)
-      const { returnPath } = parseState(state);
-      const safeReturnPath = returnPath.startsWith("/") ? returnPath : "/";
-      res.redirect(302, safeReturnPath);
+      // Redirect to a small HTML page that reads the return path from sessionStorage
+      // and navigates there, falling back to homepage
+      res.send(`<!DOCTYPE html>
+<html>
+<head><title>Redirecting...</title></head>
+<body>
+<script>
+  var returnPath = sessionStorage.getItem('echelon_login_return') || '/';
+  sessionStorage.removeItem('echelon_login_return');
+  // Validate it's a safe relative path
+  if (!returnPath.startsWith('/')) returnPath = '/';
+  window.location.replace(returnPath);
+</script>
+<p>Redirecting...</p>
+</body>
+</html>`);
     } catch (error) {
       console.error("[OAuth] Callback failed", error);
       res.status(500).json({ error: "OAuth callback failed" });

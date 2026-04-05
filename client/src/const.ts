@@ -1,21 +1,27 @@
 export { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 
 // Generate login URL at runtime so redirect URI reflects the current origin.
-// Pass returnPath to redirect back to a specific page after login (e.g. "/class1-water").
-export const getLoginUrl = (returnPath?: string) => {
+export const getLoginUrl = () => {
   const oauthPortalUrl = import.meta.env.VITE_OAUTH_PORTAL_URL;
   const appId = import.meta.env.VITE_APP_ID;
   const redirectUri = `${window.location.origin}/api/oauth/callback`;
-  // Encode both the redirectUri and an optional returnPath in state
-  const statePayload = returnPath
-    ? btoa(JSON.stringify({ redirectUri, returnPath }))
-    : btoa(redirectUri);
+  const state = btoa(redirectUri);
 
   const url = new URL(`${oauthPortalUrl}/app-auth`);
   url.searchParams.set("appId", appId);
   url.searchParams.set("redirectUri", redirectUri);
-  url.searchParams.set("state", statePayload);
+  url.searchParams.set("state", state);
   url.searchParams.set("type", "signIn");
 
   return url.toString();
 };
+
+/** Navigate to login, saving the current path so we can return after OAuth completes. */
+export function loginWithReturnPath(returnPath: string) {
+  try {
+    sessionStorage.setItem("echelon_login_return", returnPath);
+  } catch {
+    // ignore
+  }
+  window.location.href = getLoginUrl();
+}

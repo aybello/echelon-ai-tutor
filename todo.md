@@ -261,4 +261,5 @@
 - [x] Owner/admin paywall bypass: auto-grant full access to all courses when logged in as owner for testing
 - [x] Bug: Calc Only filter hides question text, only shows answer options — fixed by falling back to q field in QuizShell and AITutor
 - [x] Audit: check all question banks and quiz pages for field name mismatches (q vs question) and similar rendering bugs — all 40 pages clean, no other bugs found
+- [x] Bug: owner bypass still not working after login — fixed: OAuth state was being corrupted by JSON encoding; switched to sessionStorage for return path, OAuth callback now serves inline JS redirect
 - [x] Bug: owner bypass not granting access to all paid courses — added "Log in to your account" link on PurchaseGate with return-path redirect, OAuth callback now redirects back to original page after login
