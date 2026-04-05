@@ -10,6 +10,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { trpc } from "@/lib/trpc";
 import ProvinceBanner from "@/components/ProvinceBanner";
 import { useProvince, type ProvinceId } from "@/hooks/useProvince";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -792,6 +793,8 @@ export default function Landing() {
     path: "/",
   });
   const { province, provinceInfo, showPrompt, setProvince, dismiss } = useProvince();
+  const { isAuthenticated } = useAuth();
+  const updateProvinceMutation = trpc.auth.updateProvince.useMutation();
   // Default active track based on province: WPI for western provinces, ontario water for ON
   const defaultTrack = (province === "bc" || province === "ab" || province === "sk" || province === "mb") ? "wpi-water" : "water";
   const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa" | "wpi-water" | "wpi-wastewater">(defaultTrack);
@@ -801,6 +804,10 @@ export default function Landing() {
 
   const handleProvinceSelect = (id: ProvinceId) => {
     setProvince(id);
+    // Persist to DB if logged in
+    if (isAuthenticated) {
+      updateProvinceMutation.mutate({ province: id });
+    }
     // Switch track to match province
     if (id === "bc" || id === "ab" || id === "sk" || id === "mb") {
       setActiveTrack("wpi-water");
@@ -809,13 +816,14 @@ export default function Landing() {
     }
   };
 
+  const careerMapHref = province ? `/career?province=${province}` : "/career";
   const NAV_LINKS = [
     { label: "Courses", href: "#courses" },
     { label: "Study Tools", href: "#tools" },
     { label: "WPI 🌊", href: "/wpi" },
     { label: "Pricing", href: "/pricing" },
     { label: "Formulas", href: "/formulas" },
-    { label: "Career Map", href: "/career" },
+    { label: "Career Map", href: careerMapHref },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ];
@@ -1127,8 +1135,14 @@ export default function Landing() {
             Adaptive practice questions, interactive process guides, and an AI tutor available 24/7.
           </p>
 
+          {/* Province-aware hero CTA */}
+          {(() => {
+            const isWestern = province === "bc" || province === "ab" || province === "sk" || province === "mb";
+            const ctaHref = isWestern ? "/wpi-class1-water" : "/quiz";
+            const ctaLabel = isWestern ? `Try Free WPI Class I Practice →` : "Try Free OIT Practice →";
+            return (
           <div className="landing-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/quiz">
+            <Link href={ctaHref}>
               <button style={{
                 padding: "14px 32px", borderRadius: 12,
                 background: "linear-gradient(135deg, #2563EB, #0E7490)",
@@ -1137,7 +1151,7 @@ export default function Landing() {
                 boxShadow: "0 4px 24px rgba(37,99,235,0.4)",
                 width: "100%",
               }}>
-                Try Free OIT Practice →
+                {ctaLabel}
               </button>
             </Link>
             <Link href="/pricing" style={{ width: "100%" }}>
@@ -1152,9 +1166,10 @@ export default function Landing() {
               </button>
             </Link>
           </div>
+            );
+          })()}
         </div>
       </section>
-
       {/* ── Stats Bar ── */}
       <section style={{
         background: "#FFFFFF",

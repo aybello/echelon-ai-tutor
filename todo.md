@@ -276,3 +276,6 @@
 - [x] Add 15-question QuizGate paywall to Class1-4 Water, Class1-4 Wastewater, and WQA quiz pages
 - [x] Add BC, Alberta, Saskatchewan, Manitoba certification data to Career Map page
 - [x] Add 'What province are you in?' prompt on homepage for personalized course recommendations
+- [x] Career Map deep-linking from province selection (?province=bc query param)
+- [x] Province-aware hero CTA copy on Landing page
+- [x] Store province in user profile DB and sync on selection

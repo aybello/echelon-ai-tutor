@@ -89,4 +89,14 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
+/** Update the province field for a logged-in user */
+export async function updateUserProvince(userId: number, province: string): Promise<void> {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot update user province: database not available");
+    return;
+  }
+  await db.update(users).set({ province }).where(eq(users.id, userId));
+}
+
 // TODO: add feature queries here as your schema grows.

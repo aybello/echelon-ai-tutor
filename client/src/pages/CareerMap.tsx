@@ -2,7 +2,7 @@
 // Design: Professional SaaS — Clean Dark-Accent (Sora, blue/teal brand)
 // Views: Career Ladder | Salary Chart | Timeline | Employers
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav from "@/components/SiteNav";
 import {
@@ -502,10 +502,21 @@ export default function CareerMap() {
     description: "Explore the full Canadian water and wastewater operator career path from OIT to Class 4 across Ontario, BC, Alberta, Saskatchewan, and Manitoba. Salary ranges, employer landscape, certification timelines.",
     path: "/career",
   });
+  // Read ?province=bc from URL, fall back to localStorage, then default to "on"
+  const initialProvince = useMemo(() => {
+    const params = new URLSearchParams(window.location.search);
+    const urlProvince = params.get("province");
+    if (urlProvince && ["on","bc","ab","sk","mb"].includes(urlProvince)) return urlProvince;
+    try {
+      const stored = localStorage.getItem("echelon_province");
+      if (stored && ["on","bc","ab","sk","mb"].includes(stored)) return stored;
+    } catch { /* ignore */ }
+    return "on";
+  }, []);
   const [selected,   setSelected]   = useState<CertLevel | null>(null);
   const [track,      setTrack]      = useState("all");
   const [view,       setView]       = useState<ViewType>("ladder");
-  const [provinceId, setProvinceId] = useState("on");
+  const [provinceId, setProvinceId] = useState(initialProvince);
 
   const province = PROVINCES.find(p => p.id === provinceId) ?? PROVINCES[0];
 

@@ -38,6 +38,18 @@ export const appRouter = router({
         await db.update(users).set({ phone: input.phone }).where(eq(users.id, ctx.user.id));
         return { success: true };
       }),
+    updateProvince: protectedProcedure
+      .input(
+        z.object({
+          province: z.enum(["on", "bc", "ab", "sk", "mb"]),
+        })
+      )
+      .mutation(async ({ ctx, input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable");
+        await db.update(users).set({ province: input.province }).where(eq(users.id, ctx.user.id));
+        return { success: true };
+      }),
   }),
 
   // Waitlist — email lead capture for upcoming courses
