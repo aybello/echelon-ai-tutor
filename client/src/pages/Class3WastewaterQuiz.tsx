@@ -371,7 +371,7 @@ export default function Class3WastewaterQuiz() {
                 {/* Explanation */}
                 <div style={{ background: "#F0FDFA", border: "1px solid #99F6E4", borderRadius: 10, padding: "14px", marginBottom: 14 }}>
                   <p style={{ margin: 0, fontSize: 13, color: "#134E4A", lineHeight: 1.6 }}>
-                    💡 <strong>Explanation:</strong> {current.explanation}
+                    💡 <strong>Explanation:</strong> <span style={{ whiteSpace: "pre-line" }}>{current.explanation}</span>
                   </p>
                   {CLASS3_WW_FORMULA_LINKS[current.id] && (
                     <a

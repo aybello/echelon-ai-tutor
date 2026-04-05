@@ -370,7 +370,7 @@ export default function OITMockExam() {
                         <div style={{ fontSize: 12, color: "#DC2626", marginBottom: 4 }}>Your answer: {q.options[a.selected!]}</div>
                       )}
                       <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: 4 }}>(done) {q.options[q.correct]}</div>
-                      <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5 }}>{q.explanation}</div>
+                      <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line" }}>{q.explanation}</div>
                     </div>
                   );
                 })}

@@ -496,7 +496,7 @@ export default function WpiClass3WastewaterMockExam() {
                           Correct: {q.options[q.correctAnswer]}
                         </p>
                         <p style={{ fontSize: 12, color: "#64748B", margin: 0, lineHeight: 1.5 }}>
-                          {q.explanation}
+                          <span style={{ whiteSpace: "pre-line" }}>{q.explanation}</span>
                         </p>
                       </div>
                     );

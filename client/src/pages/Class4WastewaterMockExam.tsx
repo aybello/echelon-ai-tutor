@@ -348,7 +348,7 @@ export default function Class4WastewaterMockExam() {
                       <p style={{ fontSize: 13, fontWeight: 600, color: "#1E293B", marginBottom: 8 }}>Q{i + 1}. {q.question}</p>
                       <p style={{ fontSize: 12, color: "#DC2626", margin: "0 0 4px" }}>✗ Your answer: {q.options[a.selected!]}</p>
                       <p style={{ fontSize: 12, color: "#059669", margin: "0 0 8px" }}>✓ Correct: {q.options[q.correct]}</p>
-                      <p style={{ fontSize: 12, color: "#475569", background: "#F8FAFC", borderRadius: 8, padding: "8px 10px" }}>💡 {q.explanation}</p>
+                      <p style={{ fontSize: 12, color: "#475569", background: "#F8FAFC", borderRadius: 8, padding: "8px 10px" }}>💡 <span style={{ whiteSpace: "pre-line" }}>{q.explanation}</span></p>
                     </div>
                   );
                 })}

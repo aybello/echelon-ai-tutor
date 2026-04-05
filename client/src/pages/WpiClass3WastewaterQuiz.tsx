@@ -130,8 +130,8 @@ export default function WpiClass3WastewaterQuiz() {
   const handleConfirm = useCallback(() => {
     if (selected === null || confidence === null || !current) return;
     const isCorrect = selected === current.correctAnswer;
-    setHistory((prev) => [
-      ...prev,
+    setHistory([
+      ...history,
       {
         questionId: current.id,
         module: current.module,

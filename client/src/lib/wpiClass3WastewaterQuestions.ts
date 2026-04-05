@@ -296,7 +296,7 @@ export const wpiClass3WastewaterQuestions: WpiClass3WastewaterQuestion[] = [
     options: ["0.25", "0.60", "0.75", "1.00"],
     correctAnswer: 1,
     isCalc: true,
-    explanation: "Using the mass balance: MLSS = RAS_SS × (RAS/Q) / (1 + RAS/Q). Solving: 3,000 = 8,000 × r/(1+r) → 3,000 + 3,000r = 8,000r → r = 3,000/5,000 = 0.60.",
+    explanation: '**Step 1 — Mass Balance Equation:**\nMLSS = RAS_SS × (RAS/Q) / (1 + RAS/Q)\n\n**Step 2 — Substitute Values:**\n3,000 mg/L = 8,000 mg/L × (RAS/Q) / (1 + RAS/Q)\n\n**Step 3 — Solve for RAS/Q (let r = RAS/Q):**\n3,000 × (1 + r) = 8,000 × r\n3,000 + 3,000r = 8,000r\n3,000 = 8,000r - 3,000r\n3,000 = 5,000r\nr = 3,000 / 5,000\nr = 0.60\n\nThe correct answer is **0.60**.',
     steps: [
       { l: "Formula", c: "RAS Ratio (r) = MLSS / (RAS SS - MLSS)" },
       { l: "Substitute", c: "r = 3,000 mg/L / (8,000 mg/L - 3,000 mg/L)" },
@@ -4515,7 +4515,7 @@ export const wpiClass3WastewaterQuestions: WpiClass3WastewaterQuestion[] = [
     options: ["Only the effluent concentration", "The mixing zone model: C_mix = (Q_e × C_e + Q_r × C_r) / (Q_e + Q_r)", "Only the receiving water flow", "The POTW's treatment efficiency"],
     correctAnswer: 1,
     isCalc: true,
-    explanation: "The mixed concentration at the edge of the mixing zone: C_mix = (Q_e × C_e + Q_r × C_r) / (Q_e + Q_r), where Q_e and C_e are effluent flow and concentration, Q_r and C_r are receiving water flow and background concentration.",
+    explanation: '**Step 1 — Identify the Goal:**\nThe question asks for the method to calculate effluent dilution required to protect receiving water quality.\n\n**Step 2 — Evaluate Options:**\nOptions A, C, and D are incomplete or incorrect. Option B provides a standard formula for calculating mixed concentration in a receiving water body.\n\n**Step 3 — Apply Mixing Zone Model:**\nThe mixing zone model, C_mix = (Q_e × C_e + Q_r × C_r) / (Q_e + Q_r), directly calculates the concentration after effluent mixes with receiving water, which is essential for determining dilution and compliance with water quality standards.\n\nThe correct answer is **The mixing zone model: C_mix = (Q_e × C_e + Q_r × C_r) / (Q_e + Q_r)**.',
     steps: [],
   },
   {

@@ -436,7 +436,7 @@ export default function Class1WaterQuiz() {
             <div style={{ marginTop: 16 }}>
               <div style={{ marginTop: 8, padding: "14px 16px", borderRadius: 12, background: "#F0FDF4", border: "1px solid #BBF7D0" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: "#15803D", letterSpacing: "0.08em", marginBottom: 6 }}>EXPLANATION</div>
-                <div style={{ fontSize: 13, color: "#166534", lineHeight: 1.65 }}>{current.explanation}</div>
+                <div style={{ fontSize: 13, color: "#166534", lineHeight: 1.65, whiteSpace: "pre-line" }}>{current.explanation}</div>
                 {CLASS1_WATER_FORMULA_LINKS[current.id] && (
                   <a
                     href={CLASS1_WATER_FORMULA_LINKS[current.id]}

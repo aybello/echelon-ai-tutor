@@ -457,7 +457,7 @@ export default function Class1MockExam() {
                         Correct: {q.options[q.correct]}
                       </div>
                       <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.6, background: "rgba(255,255,255,0.6)", borderRadius: 8, padding: "8px 10px" }}>
-                        {q.explanation}
+                        <span style={{ whiteSpace: "pre-line" }}>{q.explanation}</span>
                       </div>
                     </div>
                   );

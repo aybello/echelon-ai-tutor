@@ -339,7 +339,7 @@ export default function OITWastewaterQuiz() {
                   <div style={{ fontWeight: 800, fontSize: 14, color: selected === current.correct ? "#166534" : "#991B1B", marginBottom: 6 }}>
                     {selected === current.correct ? "✅ Correct!" : "❌ Incorrect"}
                   </div>
-                  <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.6, margin: 0 }}>{current.explanation}</p>
+                  <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.6, margin: 0, whiteSpace: "pre-line" }}>{current.explanation}</p>
                 </div>
 
                 {/* Tip */}

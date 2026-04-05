@@ -433,7 +433,7 @@ export default function Class3WaterMockExam() {
                     <div style={{ fontSize: 12, color: "#15803D", marginBottom: 8 }}>
                       Correct: {q.options[q.correct]}
                     </div>
-                    <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.6 }}>{q.explanation}</div>
+                    <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.6, whiteSpace: "pre-line" }}>{q.explanation}</div>
                   </div>
                 );
               })}

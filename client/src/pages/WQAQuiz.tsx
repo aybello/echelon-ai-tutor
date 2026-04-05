@@ -402,7 +402,7 @@ export default function WQAQuiz() {
                 <div style={{ fontSize: 12, fontWeight: 800, color: selected === current.correct ? "#15803D" : "#C2410C", marginBottom: 6 }}>
                   {selected === current.correct ? "✅ Correct!" : "❌ Incorrect"}
                 </div>
-                <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>{current.explanation}</div>
+                <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6, whiteSpace: "pre-line" }}>{current.explanation}</div>
                 {/* Formula deep-link — shown when question involves a formula */}
                 {(() => {
                   const wqaId = wqaReverseMap.get(current.id);

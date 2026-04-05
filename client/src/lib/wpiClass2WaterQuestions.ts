@@ -805,7 +805,7 @@ export const wpiClass2WaterQuestions: WpiClass2WaterQuestion[] = [
     options: ["Pump head", "Head loss due to friction in pressurised pipes", "Settling velocity", "Chemical dose"],
     correctAnswer: 1,
     isCalc: true,
-    explanation: `The Hazen-Williams equation (hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87)) calculates friction head loss in pressurised pipes. C is the roughness coefficient.`,
+    explanation: '**Step 1 — Identify Equation Purpose:**\nThe Hazen-Williams equation is a widely used empirical formula in hydraulic engineering.\n\n**Step 2 — State Application:**\nIt is specifically designed to calculate the head loss due to friction in pressurized pipes carrying water.\n\nThe correct answer is **B**.',
     difficulty: "medium",
     steps: [
       { l: "Step 1: Understand the Purpose of the Hazen-Williams Equation", c: "The Hazen-Williams equation is an empirical formula used in hydraulic engineering to calculate the head loss due to friction in a pipe for a given flow rate, pipe length, and pipe diameter. It is commonly applied in water distribution systems." },
@@ -832,7 +832,7 @@ export const wpiClass2WaterQuestions: WpiClass2WaterQuestion[] = [
     options: ["Pressurised pipe flow", "Open channel (gravity) flow", "Pump selection", "Chemical dosing"],
     correctAnswer: 1,
     isCalc: true,
-    explanation: `Manning's equation (Q = (1/n)×A×R^(2/3)×S^(1/2)) applies to open channel flow (channels, partially full pipes). The Manning roughness coefficient n describes channel roughness.`,
+    explanation: '**Step 1 — Identify the equation:**\nThe Manning equation is Q = (1/n) × A × R^(2/3) × S^(1/2).\n\n**Step 2 — Define application:**\nThis equation is specifically designed to calculate flow in open channels or partially full pipes, where flow is driven by gravity.\n\nThe correct answer is **B**.',
     difficulty: "medium",
   },
   {

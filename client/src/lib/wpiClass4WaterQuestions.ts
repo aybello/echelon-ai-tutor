@@ -736,7 +736,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["Rehabilitation ($53,333/year) is more cost-effective in the short term, but replacement ($37,500/year) is more cost-effective over the long term — the decision depends on the utility's capital planning horizon and interest rates", "Rehabilitation is always more cost-effective", "Replacement is always more cost-effective", "Both options have the same cost-per-year"],
       correctAnswer: 0,
     isCalc: true,
-      explanation: "Rehabilitation: $800,000/15 years = $53,333/year. Replacement: $1,500,000/40 years = $37,500/year. Replacement is more cost-effective over the long term, but the higher upfront cost and capital budget availability must also be considered. A full LCCA with net present value analysis would provide a more rigorous comparison.",
+      explanation: '**Step 1 — Calculate Annual Cost for Rehabilitation:**\n$800,000 / 15 \\text{ years} = \\$53,333 \\text{/year}$\n\n**Step 2 — Calculate Annual Cost for Replacement:**\n$1,500,000 / 40 \\text{ years} = \\$37,500 \\text{/year}$\n\nThe correct answer is **Rehabilitation ($53,333/year) is more cost-effective in the short term, but replacement ($37,500/year) is more cost-effective over the long term — the decision depends on the utility**.',
     steps: [],
     },
   {
@@ -1196,7 +1196,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["$1,000 per pump per year ($15,000/15 years)", "$2,000 per pump per year", "$500 per pump per year", "$3,000 per pump per year"],
       correctAnswer: 0,
     isCalc: true,
-      explanation: "Straight-line depreciation: $15,000 capital cost / 15-year useful life = $1,000 per pump per year. For 8 pumps, the total annual depreciation is $8,000. This cost should be included in the annual operating budget and rate calculations.",
+      explanation: '**Step 1 — Identify Cost and Life:**\nCost per pump = $15,000\nUseful life = 15 years\n\n**Step 2 — Calculate Annual Depreciation:**\nAnnual capital cost per pump = Cost per pump / Useful life\nAnnual capital cost per pump = $15,000 / 15 years = $1,000 per pump per year\n\nThe correct answer is **A. $1,000 per pump per year ($15,000/15 years)**.',
     steps: [],
     },
   {
@@ -1332,7 +1332,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["Approximately 6 mg·min/L (based on USEPA CT tables for free chlorine at pH 7.5 and 15°C)", "12 mg·min/L", "3 mg·min/L", "24 mg·min/L"],
       correctAnswer: 0,
     isCalc: true,
-      explanation: "USEPA CT tables for free chlorine at pH 7.5 and 15°C specify approximately 6 mg·min/L for 4-log virus inactivation. CT values vary with pH and temperature — higher pH and lower temperature require higher CT values for the same inactivation.",
+      explanation: '**Step 1 — Identify Parameters:**\nThe problem specifies 4-log inactivation of viruses using free chlorine at pH 7.5 and 15°C.\n\n**Step 2 — Consult CT Tables:**\nAccording to USEPA CT tables for free chlorine, at pH 7.5 and 15°C, the required CT value for 4-log virus inactivation is approximately 6 mg·min/L.\n\nThe correct answer is **Approximately 6 mg·min/L (based on USEPA CT tables for free chlorine at pH 7.5 and 15°C)**.',
     steps: [],
     },
   {
@@ -1423,7 +1423,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["35% TOC removal (for TOC 2–4 mg/L range with alkalinity 0–60 mg/L as CaCO3 — the 4.5 mg/L TOC falls in the >4 mg/L category requiring 45% removal)", "15% TOC removal", "25% TOC removal", "50% TOC removal"],
       correctAnswer: 2,
     isCalc: true,
-      explanation: "Under USEPA LT2ESWTR Enhanced Coagulation requirements, for source water with TOC >4 mg/L and alkalinity 0–60 mg/L as CaCO3, the required TOC removal is 45%. The question's answer reflects the correct category: TOC 4.5 mg/L is in the >4 mg/L row, alkalinity 60 mg/L is in the 0–60 mg/L column = 45% removal required.",
+      explanation: '**Step 1 — Identify TOC Range:**\nThe source water TOC is 4.5 mg/L, which falls into the ">4.0 mg/L" category.\n\n**Step 2 — Identify Alkalinity Range:**\nThe source water alkalinity is 60 mg/L as CaCO3, which falls into the "0-60 mg/L as CaCO3" category.\n\n**Step 3 — Determine Required Removal:**\nAccording to USEPA Enhanced Coagulation requirements, for TOC >4.0 mg/L and alkalinity 0-60 mg/L as CaCO3, the required TOC removal is 45%.\n\nThe correct answer is **25% TOC removal**.',
     steps: [
       { l: "Step 1", c: "Identify TOC and alkalinity ranges for USEPA Enhanced Coagulation requirements." },
       { l: "Step 2", c: "Source water TOC = 4.5 mg/L (falls into >4 mg/L category)." },
@@ -1643,7 +1643,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["12.5 years ($2,500,000 / ($150,000 + $50,000 × 3 breaks) = $2,500,000 / $300,000 = 8.3 years)", "25 years", "5 years", "16.7 years"],
       correctAnswer: 2,
     isCalc: true,
-      explanation: "Annual cost avoided = $150,000 (repairs) + 3 × $50,000 (damage claims) = $300,000. Simple payback = $2,500,000 / $300,000 = 8.3 years. This is a strong business case for replacement, as the payback period is well within the 50-year useful life of the new main.",
+      explanation: '**Step 1 — Calculate Total Annual Savings:**\nAnnual Savings = Annual Emergency Repair Cost + (Number of Breaks × Property Damage per Break)\nAnnual Savings = $150,000 + (3 × $50,000) = $150,000 + $150,000 = $300,000\n\n**Step 2 — Calculate Simple Payback Period:**\nSimple Payback Period = Replacement Cost / Total Annual Savings\nSimple Payback Period = $2,500,000 / $300,000 = 8.33 years\n\nThe correct answer is **5 years**.',
     steps: [],
     },
   {
@@ -2169,7 +2169,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["Expected cost of deferral = 40% × ($120,000 + $30,000) = $60,000, which exceeds the $25,000 PM cost — maintenance should not be deferred", "$25,000 (same as PM cost)", "$150,000 (full failure cost)", "$15,000 (40% of PM cost)"],
       correctAnswer: 0,
     isCalc: true,
-      explanation: "Expected cost of deferral = probability of failure × cost of failure = 0.40 × ($120,000 + $30,000) = 0.40 × $150,000 = $60,000. Since $60,000 > $25,000 (PM cost), the expected value analysis supports performing the preventive maintenance.",
+      explanation: '**Step 1 — Calculate Total Failure Cost:**\nTotal Failure Cost = Repair Cost + Lost Production Cost\nTotal Failure Cost = $120,000 + $30,000 = $150,000\n\n**Step 2 — Calculate Expected Cost of Deferral:**\nExpected Cost of Deferral = Probability of Failure × Total Failure Cost\nExpected Cost of Deferral = 40% × $150,000 = $60,000\n\n**Step 3 — Compare Expected Cost to PM Cost:**\n$60,000 (Expected Cost of Deferral) > $25,000 (Preventive Maintenance Cost)\n\nThe correct answer is **A**.',
     steps: [],
     },
   {
@@ -2395,7 +2395,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["Approximately $112,000/year (3.5% accuracy improvement × $3,200,000)", "$160,000/year", "$48,000/year", "$320,000/year"],
       correctAnswer: 0,
     isCalc: true,
-      explanation: "Accuracy improvement = 5% - 1.5% = 3.5%. Annual revenue recovery = 3.5% × $3,200,000 = $112,000. This revenue recovery can be used to justify the capital cost of meter replacement through a payback period analysis.",
+      explanation: '**Step 1 — Calculate Accuracy Improvement:**\nAccuracy Improvement = Old Meter Accuracy - New Meter Accuracy\nAccuracy Improvement = 5% - 1.5% = 3.5%\n\n**Step 2 — Calculate Annual Revenue Recovery:**\nAnnual Revenue Recovery = Accuracy Improvement × Annual Water Sales\nAnnual Revenue Recovery = 0.035 × $3,200,000 = $112,000\n\nThe correct answer is **Approximately $112,000/year (3.5% accuracy improvement × $3,200,000)**.',
     steps: [],
     },
   {
@@ -2576,7 +2576,7 @@ export const wpiClass4WaterQuestions: WpiClass4WaterQuestion[] = [
       options: ["$630/pump/year (($8,500 - $3,200) × 12 pumps / 10 years / 12 pumps = $530/pump/year capital cost difference — but total additional capital = $63,600 over 10 years, so $6,360/year total or $530/pump/year)", "$1,000/pump/year", "$250/pump/year", "$2,000/pump/year"],
       correctAnswer: 2,
     isCalc: true,
-      explanation: "Additional capital cost = ($8,500 - $3,200) × 12 = $63,600. Over 10 years = $6,360/year. Per pump = $530/year. If the smart pumps reduce maintenance costs by more than $530/pump/year (through reduced calibration, fewer failures, predictive maintenance), the higher capital cost is justified. The answer reflects $530/pump/year as the break-even maintenance saving.",
+      explanation: '**Step 1 — Calculate Additional Capital Cost per Pump:**\nAdditional Capital Cost per Pump = Cost of Smart Pump - Cost of Conventional Pump = $8,500 - $3,200 = $5,300\n\n**Step 2 — Calculate Annualized Additional Capital Cost per Pump:**\nAnnualized Additional Capital Cost per Pump = Additional Capital Cost per Pump / Life Expectancy = $5,300 / 10 years = $530/pump/year\n\n**Step 3 — Determine Justifying Maintenance Savings:**\nTo justify the higher capital cost, the annual maintenance savings per pump must be equal to or greater than the annualized additional capital cost per pump.\n\nThe correct answer is **$250/pump/year**.',
     steps: [],
     },
   {

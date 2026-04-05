@@ -2164,7 +2164,7 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     options: ["To certify operators", "To determine the appropriate application rate based on crop nitrogen needs and regulatory limits to prevent over-application", "To measure flow rates", "To set effluent limits"],
     correctAnswer: 1,
     isCalc: true,
-    explanation: "Biosolids application rates are calculated based on the agronomic nitrogen need of the crop, the nitrogen content of the biosolids, and regulatory limits for heavy metals and phosphorus, preventing over-application and environmental impacts.",
+    explanation: '**Step 1 — Identify Key Factors:**\nBiosolids application rate calculations consider crop nitrogen needs, the nitrogen content of the biosolids, and regulatory limits (e.g., for heavy metals and phosphorus).\n\n**Step 2 — Prevent Over-application:**\nThe primary purpose is to determine an appropriate application rate that meets crop needs without exceeding regulatory limits, thereby preventing over-application and potential environmental harm.\n\nThe correct answer is **To determine the appropriate application rate based on crop nitrogen needs and regulatory limits to prevent over-application**.',
     steps: [],
   },
   {
@@ -3848,7 +3848,7 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     options: ["15.9 m3/m2/d", "25.0 m3/m2/d", "10.0 m3/m2/d", "31.8 m3/m2/d"],
     correctAnswer: 0,
     isCalc: true,
-    explanation: "Area = pi x r2 = 3.14159 x 10^2 = 314.2 m2. SOR = 5000 / 314.2 = 15.9 m3/m2/d.",
+    explanation: '**Step 1 — Calculate Clarifier Area:**\nArea = π * (Diameter / 2)^2 = 3.14159 * (20 m / 2)^2 = 3.14159 * (10 m)^2 = 314.159 m^2\n\n**Step 2 — Calculate Surface Overflow Rate (SOR):**\nSOR = Flow / Area = 5000 m^3/d / 314.159 m^2 = 15.91 m^3/m^2/d\n\nThe correct answer is **A**.',
     steps: [
       { l: "Formula", c: "Area = π * (Diameter / 2)^2" },
       { l: "Substitute", c: "Area = 3.14159 * (20 m / 2)^2 = 3.14159 * (10 m)^2" },
@@ -3866,7 +3866,7 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     options: ["3.75 days", "7.5 days", "1.9 days", "15 days"],
     correctAnswer: 0,
     isCalc: true,
-    explanation: "Mass in system = 3000 mg/L x 2000 m3 = 6000 kg. Mass wasted/day = 8000 mg/L x 200 m3/d = 1600 kg/d. SRT = 6000 / 1600 = 3.75 days.",
+    explanation: '**Step 1 — Calculate Total MLSS Mass:**\nTotal MLSS Mass = MLSS Concentration × Aeration Tank Volume\nTotal MLSS Mass = 3000 mg/L × 2000 m³ = 6,000,000,000 mg = 6000 kg\n\n**Step 2 — Calculate Mass of WAS Wasted Daily:**\nMass of WAS Wasted Daily = WAS Concentration × WAS Flow Rate\nMass of WAS Wasted Daily = 8000 mg/L × 200 m³/d = 1,600,000,000 mg/d = 1600 kg/d\n\n**Step 3 — Calculate SRT:**\nSRT = Total MLSS Mass / Mass of WAS Wasted Daily\nSRT = 6000 kg / 1600 kg/d = 3.75 days\n\nThe correct answer is **3.75 days**.',
     steps: [
       { l: "Step 1", c: "Formula: Total MLSS mass = MLSS concentration * Tank Volume" },
       { l: "Step 2", c: "Substitute: Total MLSS mass = 3000 mg/L * 2000 m³ * (1 kg / 1000 mg) * (1000 L / 1 m³)" },
@@ -3887,7 +3887,7 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     options: ["92%", "80%", "88%", "96%"],
     correctAnswer: 0,
     isCalc: true,
-    explanation: "BOD removal = (250 - 20) / 250 x 100% = 230/250 x 100% = 92%.",
+    explanation: '**Step 1 — Calculate BOD Removed:**\nBOD Removed = Influent BOD - Effluent BOD = 250 mg/L - 20 mg/L = 230 mg/L\n\n**Step 2 — Calculate Removal Efficiency:**\nRemoval Efficiency = (BOD Removed / Influent BOD) * 100% = (230 mg/L / 250 mg/L) * 100% = 92%\n\nThe correct answer is **92%**.',
     steps: [
       { l: "Formula", c: "BOD Removal Efficiency = ((Influent BOD - Effluent BOD) / Influent BOD) * 100%" },
       { l: "Substitute", c: "BOD Removal Efficiency = ((250 mg/L - 20 mg/L) / 250 mg/L) * 100%" },
@@ -3903,7 +3903,7 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     options: ["100 mL/g", "62.5 mL/g", "125 mL/g", "200 mL/g"],
     correctAnswer: 0,
     isCalc: true,
-    explanation: "SVI = (settled sludge volume mL/L x 1000) / MLSS mg/L = (250 x 1000) / 2500 = 100 mL/g.",
+    explanation: '**Step 1 — Recall Formula:**\nSVI = (Settled Sludge Volume (mL/L) * 1000) / MLSS (mg/L)\n\n**Step 2 — Plug in Values:**\nSVI = (250 mL/L * 1000) / 2500 mg/L\n\n**Step 3 — Calculate SVI:**\nSVI = 250000 / 2500 = 100 mL/g\n\nThe correct answer is **100 mL/g**.',
     steps: [
       { l: "Formula", c: "SVI = (Settled Sludge Volume (mL/L) * 1000) / MLSS (mg/L)" },
       { l: "Substitute", c: "SVI = (250 mL/L * 1000) / 2500 mg/L" },
@@ -3919,7 +3919,7 @@ export const WPI_CLASS1_WASTEWATER_QUESTIONS: WpiClass1WastewaterQuestion[] = [
     options: ["6 mg/L", "10 mg/L", "4 mg/L", "8 mg/L"],
     correctAnswer: 0,
     isCalc: true,
-    explanation: "Chlorine demand = dose - residual = 8 - 2 = 6 mg/L.",
+    explanation: '**Step 1 — Identify Given Values:**\nChlorine Dose = 8 mg/L\nChlorine Residual = 2 mg/L\n\n**Step 2 — Calculate Chlorine Demand:**\nChlorine Demand = Chlorine Dose - Chlorine Residual\nChlorine Demand = 8 mg/L - 2 mg/L = 6 mg/L\n\nThe correct answer is **A**.',
     steps: [
       { l: "Formula", c: "Chlorine Demand = Chlorine Dose - Chlorine Residual" },
       { l: "Substitute", c: "Chlorine Demand = 8 mg/L - 2 mg/L" },

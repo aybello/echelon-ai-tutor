@@ -462,7 +462,7 @@ export default function Class2WastewaterMockExam() {
                           Correct: {String.fromCharCode(65 + q.correct)}. {q.options[q.correct]}
                         </div>
                         <div style={{ fontSize: 12, color: "#374151", background: "#F0FDFA", padding: "8px 10px", borderRadius: 8, border: "1px solid #99F6E4" }}>
-                          {q.explanation}
+                          <span style={{ whiteSpace: "pre-line" }}>{q.explanation}</span>
                         </div>
                       </div>
                     );

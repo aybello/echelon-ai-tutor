@@ -362,7 +362,7 @@ export default function Class4WaterQuiz() {
           {confirmed && showSteps && (
             <div style={{ margin: "0 20px 20px", padding: "16px", background: "#F0F9FF", borderRadius: 10, border: "1px solid #BAE6FD" }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#0369A1", marginBottom: 8 }}>📖 Explanation</div>
-              <p style={{ margin: 0, fontSize: 14, color: "#0C4A6E", lineHeight: 1.7 }}>{current.explanation}</p>
+              <p style={{ margin: 0, fontSize: 14, color: "#0C4A6E", lineHeight: 1.7, whiteSpace: "pre-line" }}>{current.explanation}</p>
               {CLASS4_WATER_FORMULA_LINKS[current.id] && (
                 <a
                   href={CLASS4_WATER_FORMULA_LINKS[current.id]}

@@ -351,7 +351,7 @@ export default function Class2WastewaterQuiz() {
               <div style={{ marginTop: 16 }}>
                 <div style={{ padding: "14px 16px", borderRadius: 12, background: "#F0FDFA", border: "1px solid #99F6E4" }}>
                   <div style={{ fontSize: 11, fontWeight: 700, color: "#0F766E", letterSpacing: "0.08em", marginBottom: 6 }}>EXPLANATION</div>
-                  <div style={{ fontSize: 13, color: "#134E4A", lineHeight: 1.65 }}>{current.explanation}</div>
+                  <div style={{ fontSize: 13, color: "#134E4A", lineHeight: 1.65, whiteSpace: "pre-line" }}>{current.explanation}</div>
                   {CLASS2_WW_FORMULA_LINKS[current.id] && (
                     <a
                       href={CLASS2_WW_FORMULA_LINKS[current.id]}

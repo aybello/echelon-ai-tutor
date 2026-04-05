@@ -364,7 +364,7 @@ export default function WQAMockExam() {
                       <div style={{ fontSize: 12, color: "#15803D", marginBottom: 6 }}>
                         Correct: <strong>{q.options[q.correct]}</strong>
                       </div>
-                      <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.5 }}>{q.explanation}</div>
+                      <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.5, whiteSpace: "pre-line" }}>{q.explanation}</div>
                       {/* Formula deep-link */}
                       {(() => {
                         const wqaId = reverseIdMap.get(q.id);

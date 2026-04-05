@@ -113,8 +113,8 @@ export default function WpiClass2WastewaterQuiz() {
   function handleNext() {
     if (!current || selected === null) return;
     const isCorrect = selected === current.correctAnswer;
-    setHistory((h) => [
-      ...h,
+    setHistory([
+      ...history,
       {
         questionId: current.id,
         module: current.module,

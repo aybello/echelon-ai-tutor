@@ -63,7 +63,7 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     options: ["5 m/day", "10 m/day", "20 m/day", "50 m/day"],
     correctAnswer: 2,
     isCalc: true,
-    explanation: "SOR = Flow / Area = 10,000 m3/day / 500 m2 = 20 m/day.",
+    explanation: '**Step 1 — Identify Given Values:**\nFlow (Q) = 10,000 m³/day\nSurface Area (A) = 500 m²\n\n**Step 2 — Apply Formula:**\nSurface Overflow Rate (SOR) = Flow / Surface Area\n\n**Step 3 — Calculate SOR:**\nSOR = 10,000 m³/day / 500 m² = 20 m/day\n\nThe correct answer is **20 m/day**.',
     steps: [
       { l: "Formula", c: "SOR = Flow ÷ Surface Area" },
       { l: "Substitute", c: "SOR = 10,000 m³/day ÷ 500 m²" },
@@ -254,7 +254,7 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     options: ["187.5 kg", "1,875 kg", "18,750 kg", "187,500 kg"],
     correctAnswer: 0,
     isCalc: true,
-    explanation: "Mass = Flow x Concentration = 75,000 m3/day x 2.5 mg/L. Convert: 75,000,000 L/day x 0.0025 g/L = 187,500 g/day = 187.5 kg/day.",
+    explanation: '**Step 1 — Convert Flow Rate:**\n75,000 m³/day * 1000 L/m³ = 75,000,000 L/day\n\n**Step 2 — Calculate Mass in mg:**\n75,000,000 L/day * 2.5 mg/L = 187,500,000 mg/day\n\n**Step 3 — Convert Mass to kg:**\n187,500,000 mg/day / 1,000,000 mg/kg = 187.5 kg/day\n\nThe correct answer is **187.5 kg**.',
     steps: [
       { l: "Formula", c: "Mass = Flow × Concentration" },
       { l: "Substitute", c: "Mass = 75,000 m³/day × 2.5 mg/L" },
@@ -462,7 +462,7 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     options: ["1.8 mg/L", "0.5 mg/L", "2.3 mg/L", "1.3 mg/L"],
     correctAnswer: 2,
     isCalc: true,
-    explanation: "Total chlorine dose = Chlorine demand + Required residual = 1.8 + 0.5 = 2.3 mg/L.",
+    explanation: '**Step 1 — Identify Knowns:**\nChlorine Demand = 1.8 mg/L\nRequired Residual = 0.5 mg/L\n\n**Step 2 — Calculate Total Chlorine Dose:**\nTotal Chlorine Dose = Chlorine Demand + Required Residual\nTotal Chlorine Dose = 1.8 mg/L + 0.5 mg/L = 2.3 mg/L\n\nThe correct answer is **2.3 mg/L**.',
     steps: [
       { l: "Formula", c: "Total Chlorine Dose = Chlorine Demand + Required Residual" },
       { l: "Substitute", c: "Total Chlorine Dose = 1.8 mg/L + 0.5 mg/L" },
@@ -517,7 +517,7 @@ export const wpiClass1WaterQuestions: WpiClass1WaterQuestion[] = [
     options: ["0.2 hours", "4.8 hours", "24 hours", "2 hours"],
     correctAnswer: 1,
     isCalc: true,
-    explanation: "Detention time = Volume / Flow = 1,000 m3 / (5,000 m3/day) = 0.2 days = 0.2 x 24 = 4.8 hours.",
+    explanation: '**Step 1 — Calculate Detention Time in Days:**\nDetention Time (days) = Volume / Flow\nDetention Time (days) = 1,000 m³ / 5,000 m³/day = 0.2 days\n\n**Step 2 — Convert Detention Time to Hours:**\nDetention Time (hours) = Detention Time (days) × 24 hours/day\nDetention Time (hours) = 0.2 days × 24 hours/day = 4.8 hours\n\nThe correct answer is **4.8 hours**.',
     steps: [
       { l: "Formula", c: "Detention Time = Volume ÷ Flow" },
       { l: "Substitute", c: "Detention Time = 1,000 m³ ÷ 5,000 m³/day" },
