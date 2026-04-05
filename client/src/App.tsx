@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, Redirect } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { trpc } from "@/lib/trpc";
@@ -17,7 +17,7 @@ import MathPractice from "./pages/MathPractice";
 import Lab from "./pages/Lab";
 import Formulas from "./pages/Formulas";
 import About from "./pages/About";
-import Class1Quiz from "./pages/Class1Quiz";
+
 import Class1MockExam from "./pages/Class1MockExam";
 import Admin from "@/pages/Admin";
 import WQAQuiz from "@/pages/WQAQuiz";
@@ -95,7 +95,7 @@ function Router() {
       <Route path={"/lab"} component={Lab} />
       <Route path={"/formulas"} component={Formulas} />
       <Route path={"/about"} component={About} />
-      <Route path={"/class1"} component={Class1Quiz} />
+      <Route path={"/class1"}>{() => <Redirect to="/class1-water" />}</Route>
       <Route path={"/class1-mock"} component={Class1MockExam} />
       <Route path={"/wqa"} component={WQAQuiz} />
       <Route path={"/wqa-mock"} component={WQAMockExam} />

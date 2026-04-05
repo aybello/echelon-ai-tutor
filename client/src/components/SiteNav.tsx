@@ -13,8 +13,6 @@ export const NAV_LINKS = [
   { label: "🏠 Home",          href: "/" },
   { label: "📝 OIT Practice",  href: "/quiz" },
   { label: "📋 OIT Mock Exam",  href: "/oit-mock" },
-  { label: "🎓 Class 1 Exam",  href: "/class1" },
-  { label: "📋 Class 1 Mock",   href: "/class1-mock" },
   { label: "💧 C1 Water Practice", href: "/class1-water" },
   { label: "📋 C1 Water Mock",    href: "/class1-water-mock" },
   { label: "📐 C1 Water Formulas", href: "/formulas-water1" },
@@ -93,7 +91,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
   const [open, setOpen] = useState(false);
 
   // Primary nav links shown in desktop bar (subset to avoid overflow)
-  const PRIMARY = ["/quiz", "/class1", "/formulas", "/career", "/about"];
+  const PRIMARY = ["/quiz", "/class1-water", "/formulas", "/career", "/about"];
 
   return (
     <>

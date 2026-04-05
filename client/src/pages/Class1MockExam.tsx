@@ -214,7 +214,7 @@ export default function Class1MockExam() {
             })}
           </div>
           <div style={{ textAlign: "center" }}>
-            <Link href={`/class1?stream=${stream}`}>
+            <Link href={`/class1-water?stream=${stream}`}>
               <button style={{ padding: "10px 24px", borderRadius: 20, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
                 ← Back to Practice Mode
               </button>
@@ -291,7 +291,7 @@ export default function Class1MockExam() {
               <div style={{ fontSize: 13, color: "#1D4ED8", fontWeight: 600 }}>
                 🔓 Complete 15 practice questions first to unlock the full exam bank
               </div>
-              <Link href={`/class1?stream=${stream}`}>
+              <Link href={`/class1-water?stream=${stream}`}>
                 <button style={{ marginTop: 10, padding: "8px 20px", borderRadius: 20, border: "none", background: "#1D4ED8", color: "#fff", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
                   Go to Practice Mode →
                 </button>
@@ -369,7 +369,7 @@ export default function Class1MockExam() {
           <div style={{ display: "flex", gap: 10, marginBottom: 24, flexWrap: "wrap" }}>
             <button onClick={() => startExam(stream)} style={{ padding: "8px 16px", borderRadius: 20, border: "none", background: cfg.color, color: "#fff", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>🔄 Retake Exam</button>
             <button onClick={() => setExamState("stream-select")} style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>🔀 Change Stream</button>
-            <Link href={`/class1?stream=${stream}`}><button style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>🎯 Practice Mode</button></Link>
+            <Link href={`/class1-water?stream=${stream}`}><button style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid #E5E7EB", background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>🎯 Practice Mode</button></Link>
           </div>
 
           {/* Score hero */}
