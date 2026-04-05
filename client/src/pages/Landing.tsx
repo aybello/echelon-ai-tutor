@@ -8,6 +8,8 @@ import NotifyModal from "@/components/NotifyModal";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { trpc } from "@/lib/trpc";
+import ProvinceBanner from "@/components/ProvinceBanner";
+import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 
 function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -789,10 +791,23 @@ export default function Landing() {
     keywords: "water operator exam, OIT exam prep, wastewater certification, operator practice questions",
     path: "/",
   });
-  const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa" | "wpi-water" | "wpi-wastewater">("water");
+  const { province, provinceInfo, showPrompt, setProvince, dismiss } = useProvince();
+  // Default active track based on province: WPI for western provinces, ontario water for ON
+  const defaultTrack = (province === "bc" || province === "ab" || province === "sk" || province === "mb") ? "wpi-water" : "water";
+  const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa" | "wpi-water" | "wpi-wastewater">(defaultTrack);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [nationalWaitlistOpen, setNationalWaitlistOpen] = useState(false);
   const [nationalWaitlistProvince, setNationalWaitlistProvince] = useState("");
+
+  const handleProvinceSelect = (id: ProvinceId) => {
+    setProvince(id);
+    // Switch track to match province
+    if (id === "bc" || id === "ab" || id === "sk" || id === "mb") {
+      setActiveTrack("wpi-water");
+    } else {
+      setActiveTrack("water");
+    }
+  };
 
   const NAV_LINKS = [
     { label: "Courses", href: "#courses" },
@@ -902,8 +917,47 @@ export default function Landing() {
         >
           {mobileNavOpen ? "✕" : "☰"}
         </button>
-      </nav>
-
+       </nav>
+      {/* Province Banner — shown on first visit */}
+      {showPrompt && (
+        <ProvinceBanner onSelect={handleProvinceSelect} onDismiss={dismiss} />
+      )}
+      {/* Province context indicator — shown after province is selected */}
+      {!showPrompt && province && provinceInfo && (
+        <div style={{
+          background: "#F8FAFC",
+          borderBottom: "1px solid #E5E7EB",
+          padding: "8px 24px",
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          fontSize: 12,
+          color: "#64748B",
+        }}>
+          <span style={{ fontSize: 14 }}>{provinceInfo.flag}</span>
+          <span>Showing courses for <strong style={{ color: "#0F172A" }}>{provinceInfo.name}</strong></span>
+          <button
+            onClick={() => {
+              // Reset province so banner shows again
+              try { localStorage.removeItem("echelon_province"); localStorage.removeItem("echelon_province_dismissed"); } catch {}
+              window.location.reload();
+            }}
+            style={{
+              marginLeft: 8,
+              background: "transparent",
+              border: "1px solid #E5E7EB",
+              borderRadius: 6,
+              padding: "2px 10px",
+              fontSize: 11,
+              color: "#94A3B8",
+              cursor: "pointer",
+              fontFamily: "inherit",
+            }}
+          >
+            Change
+          </button>
+        </div>
+      )}
       {/* Mobile nav drawer overlay */}
       {mobileNavOpen && (
         <div

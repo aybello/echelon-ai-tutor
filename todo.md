@@ -275,3 +275,4 @@
 - [x] Update all product prices: OIT $49, Class 1/WPI I $99, Class 2/WPI II $149, Class 3/WPI III $249, Class 4/WPI IV $349, WQA $129
 - [x] Add 15-question QuizGate paywall to Class1-4 Water, Class1-4 Wastewater, and WQA quiz pages
 - [x] Add BC, Alberta, Saskatchewan, Manitoba certification data to Career Map page
+- [x] Add 'What province are you in?' prompt on homepage for personalized course recommendations
