@@ -784,9 +784,9 @@ function CourseCard({ course }: { course: CourseType }) {
 
 export default function Landing() {
   usePageMeta({
-    title: "Canada's Water Operator Exam Prep | Echelon",
+    title: "Water Operator Exam Prep",
     description: "Practice questions, AI Tutor & formula sheet for Canadian water and wastewater operator certification exams.",
-    keywords: "Canada water operator exam, wastewater operator certification, OIT exam prep, OWWCO, EOCP, Class 1 water, BC water operator, Alberta operator certification, operator practice questions",
+    keywords: "water operator exam, OIT exam prep, wastewater certification, operator practice questions",
     path: "/",
   });
   const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa" | "wpi-water" | "wpi-wastewater">("water");
