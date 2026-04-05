@@ -63,6 +63,7 @@ export default function Class2WaterQuiz() {
   const [tutorOpen, setTutorOpen]   = useState(false);
   const [shakeKey, setShakeKey]     = useState(0);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [calcOnly, setCalcOnly] = useState(false);
   const [showModuleSelector, setShowModuleSelector] = useState(false);
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [trialUnlocked, setTrialUnlockedState] = useState<boolean>(() => isTrialUnlocked());
@@ -246,6 +247,12 @@ export default function Class2WaterQuiz() {
               style={{ padding: "6px 14px", background: selectedModule ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
             >
               {selectedModule ? `📚 ${selectedModule.split(" ")[0]}` : "📚 All Modules"}
+            </button>
+            <button
+              onClick={() => setCalcOnly(v => !v)}
+              style={{ padding: "6px 14px", background: calcOnly ? "rgba(167,139,250,0.4)" : "rgba(255,255,255,0.15)", color: "#fff", border: calcOnly ? "1px solid rgba(167,139,250,0.8)" : "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+            >
+              🧮 Calc Only
             </button>
           </div>
           {/* Module selector inline */}

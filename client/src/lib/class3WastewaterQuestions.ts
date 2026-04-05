@@ -9,6 +9,8 @@ export interface C3WWQuestion {
   correct: number;
   explanation: string;
   difficulty: 'easy' | 'medium' | 'hard';
+  steps?: { l: string; c: string }[];
+  tip?: string;
 }
 
 export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
@@ -38,6 +40,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 1,
     explanation: `SRT = (V × MLSS) / (WAS flow × WAS conc + effluent flow × effluent TSS) = (4,000 × 3,200) / (120 × 8,500 + 15,000 × 18) = 12,800,000 / (1,020,000 + 270,000) = 12,800,000 / 1,290,000 = 9.92 days ≈ 9.9 days. The SRT controls nitrification, sludge settleability, and oxygen demand.`,
     difficulty: "hard",
+    steps: [ { l: "Formula", c: "SRT = (V * MLSS) / ((WAS flow * WAS conc) + (Effluent flow * Effluent TSS))" }, { l: "Identify Variables", c: "V = Aeration basin volume = 4,000 m³; MLSS = Mixed Liquor Suspended Solids = 3,200 mg/L; WAS flow = Waste Activated Sludge flow = 120 m³/day; WAS conc = Waste Activated Sludge concentration = 8,500 mg/L; Effluent flow = Not given, but can be inferred from the example calculation as 15,000 m³/day; Effluent TSS = Effluent Total Suspended Solids = 18 mg/L" }, { l: "Substitute Values", c: "SRT = (4,000 m³ * 3,200 mg/L) / ((120 m³/day * 8,500 mg/L) + (15,000 m³/day * 18 mg/L))" }, { l: "Calculate Numerator", c: "Numerator = 4,000 * 3,200 = 12,800,000 kg (or mg, units cancel out later)" }, { l: "Calculate Denominator", c: "Denominator = (120 * 8,500) + (15,000 * 18) = 1,020,000 + 270,000 = 1,290,000 kg/day (or mg/day)" }, { l: "Result", c: "SRT = 12,800,000 / 1,290,000 = 9.922 days ≈ 9.9 days" } ],
+    tip: "SRT controls nitrification, sludge settleability, and oxygen demand.",
   },
   {
     id: 4,
@@ -56,6 +60,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 0,
     explanation: `SVI = (SSV30 mL/L × 1000) / MLSS mg/L = (420 × 1000) / 2800 = 150 mL/g. An SVI of 100–150 mL/g indicates good settling. Values > 150 suggest bulking; > 200 indicates severe bulking. At 150, the sludge is at the upper limit of acceptable settling.`,
     difficulty: "medium",
+    steps: [ { l: "Formula", c: "SVI = (SSV30 * 1000) / MLSS" }, { l: "Identify Variables", c: "SSV30 = 30-minute Sludge Settleability Volume = 420 mL/L; MLSS = Mixed Liquor Suspended Solids = 2,800 mg/L" }, { l: "Substitute Values", c: "SVI = (420 mL/L * 1000) / 2,800 mg/L" }, { l: "Calculate", c: "SVI = 420,000 / 2,800 = 150" }, { l: "Result", c: "SVI = 150 mL/g. This indicates the sludge is at the upper limit of good settling." } ],
+    tip: "SVI < 150 mL/g generally indicates good sludge settling.",
   },
   {
     id: 6,
@@ -164,6 +170,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 1,
     explanation: `Alkalinity consumed = TKN × 7.14 = 45 × 7.14 = 321.3 mg/L as CaCO₃. If the influent alkalinity is insufficient to provide this plus maintain a pH > 7.0 for nitrifier activity, supplemental alkalinity (lime, sodium bicarbonate, or caustic) must be added. Denitrification recovers approximately 3.57 mg CaCO₃ per mg NO₃-N denitrified.`,
     difficulty: "hard",
+    steps: [ { l: "Formula", c: "Alkalinity Consumed = TKN * 7.14" }, { l: "Identify Variables", c: "TKN = Total Kjeldahl Nitrogen = 45 mg/L as N; Conversion Factor = 7.14 mg CaCO₃ per mg NH₄-N oxidized" }, { l: "Substitute Values", c: "Alkalinity Consumed = 45 mg/L * 7.14 mg CaCO₃/mg N" }, { l: "Calculate", c: "Alkalinity Consumed = 321.3" }, { l: "Result", c: "Alkalinity Consumed = 321.3 mg/L as CaCO₃" } ],
+    tip: "Nitrification requires 7.14 mg CaCO₃ per mg NH₄-N oxidized.",
   },
   {
     id: 18,
@@ -236,6 +244,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 0,
     explanation: `VS destroyed = 500 kg/day × 0.60 = 300 kg VS/day. Biogas production = 300 kg/day × 0.75 m³/kg = 225 m³/day. This biogas can be used for digester heating, building heating, or electricity generation via a cogeneration unit.`,
     difficulty: "hard",
+    steps: [ { l: "Formula for VS Destroyed", c: "VS Destroyed = VS Fed * % VS Destruction" }, { l: "Identify Variables (VS Destroyed)", c: "VS Fed = Volatile Solids fed = 500 kg VS/day; % VS Destruction = 60% = 0.60" }, { l: "Calculate VS Destroyed", c: "VS Destroyed = 500 kg/day * 0.60 = 300 kg VS/day" }, { l: "Formula for Biogas Production", c: "Biogas Production = VS Destroyed * Biogas Yield" }, { l: "Identify Variables (Biogas Production)", c: "VS Destroyed = 300 kg VS/day; Biogas Yield = 0.75 m³/kg VS destroyed" }, { l: "Substitute Values", c: "Biogas Production = 300 kg/day * 0.75 m³/kg" }, { l: "Calculate", c: "Biogas Production = 225" }, { l: "Result", c: "Biogas Production = 225 m³/day" } ],
+    tip: "Biogas production is directly proportional to volatile solids destroyed.",
   },
   {
     id: 26,
@@ -344,6 +354,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 0,
     explanation: `CT = residual concentration × contact time = 0.5 mg/L × 10 min = 5 mg·min/L. The CT requirement for 4-log Giardia inactivation with ozone at typical wastewater temperatures is approximately 0.5–1.0 mg·min/L, so a CT of 5 mg·min/L is more than sufficient. Ozone is also effective against Cryptosporidium (CT ≈ 5–10 mg·min/L for 3-log inactivation).`,
     difficulty: "hard",
+    steps: [ { l: "Formula", c: "CT = Residual Concentration * Contact Time" }, { l: "Identify Variables", c: "Residual Concentration = 0.5 mg/L; Contact Time = 10 minutes" }, { l: "Substitute Values", c: "CT = 0.5 mg/L * 10 min" }, { l: "Calculate", c: "CT = 5" }, { l: "Result", c: "CT = 5 mg·min/L. This is sufficient for 4-log Giardia inactivation." } ],
+    tip: "CT value is crucial for effective disinfection, especially for Giardia and Crypto.",
   },
   {
     id: 38,
@@ -1154,6 +1166,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 1,
     explanation: `Affinity Law: Q₂/Q₁ = N₂/N₁ → Q₂ = 120 × (1740/1450) = 120 × 1.2 = 144 L/s. The affinity laws state that flow is proportional to speed, head is proportional to speed squared, and power is proportional to speed cubed. A 20% increase in speed results in a 20% increase in flow, 44% increase in head, and 73% increase in power.`,
     difficulty: "hard",
+    steps: [ { l: "Formula", c: "The Affinity Law for flow rate is Q₂/Q₁ = N₂/N₁, where Q is flow rate and N is pump speed." }, { l: "Identify Variables", c: "Given: Q₁ = 120 L/s, N₁ = 1,450 rpm, N₂ = 1,740 rpm. We need to find Q₂." }, { l: "Rearrange Formula", c: "To solve for Q₂, the formula becomes Q₂ = Q₁ × (N₂/N₁)." }, { l: "Substitute Values", c: "Q₂ = 120 L/s × (1,740 rpm / 1,450 rpm)." }, { l: "Calculate", c: "Q₂ = 120 L/s × 1.2 = 144 L/s." }, { l: "Result", c: "The new approximate flow rate is 144 L/s." } ],
+    tip: "Remember: Flow is proportional to speed, head to speed squared, power to speed cubed.",
   },
   {
     id: 128,
@@ -2558,6 +2572,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 1,
     explanation: `BOD₅ = (initial DO - final DO) × dilution factor = (8.2 - 5.8) × 10 = 2.4 × 10 = 24 mg/L. A BOD₅ of 24 mg/L for a secondary effluent is slightly above the typical target of < 20 mg/L (Ontario secondary treatment standard). The dilution factor accounts for the dilution of the sample with aerated dilution water.`,
     difficulty: "medium",
+    steps: [ { l: "Formula", c: "BOD₅ = (Initial DO - Final DO) × Dilution Factor." }, { l: "Identify Variables", c: "Given: Initial DO = 8.2 mg/L, Final DO = 5.8 mg/L, Dilution Factor = 10." }, { l: "Substitute Values", c: "BOD₅ = (8.2 mg/L - 5.8 mg/L) × 10." }, { l: "Calculate Difference", c: "BOD₅ = 2.4 mg/L × 10." }, { l: "Calculate BOD₅", c: "BOD₅ = 24 mg/L." }, { l: "Result", c: "The BOD₅ of the sample is 24 mg/L." } ],
+    tip: "BOD₅ measures oxygen consumed; dilution factor corrects for sample concentration.",
   },
   {
     id: 284,
@@ -2603,6 +2619,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 1,
     explanation: `TSS = (final - initial) × 1000 / sample volume = (1.2378 - 1.2345) × 1000 / 100 = 0.0033 × 1000 / 100 = 3.3 / 100 × 1000 = 33 mg/L. Wait: (1.2378 - 1.2345) = 0.0033 g = 3.3 mg. TSS = 3.3 mg / 0.100 L = 33 mg/L. A TSS of 33 mg/L for secondary effluent is slightly above the typical Ontario standard of < 25 mg/L.`,
     difficulty: "medium",
+    steps: [ { l: "Formula", c: "TSS (mg/L) = [(Final Filter Weight (g) - Initial Filter Weight (g)) × 1,000,000 mg/g] / (Sample Volume (mL) × 1 L / 1000 mL)." }, { l: "Identify Variables", c: "Given: Initial Filter Weight = 1.2345 g, Final Filter Weight = 1.2378 g, Sample Volume = 100 mL." }, { l: "Calculate Weight Difference", c: "Weight difference = 1.2378 g - 1.2345 g = 0.0033 g." }, { l: "Convert Weight to mg", c: "0.0033 g × 1000 mg/g = 3.3 mg." }, { l: "Convert Volume to L", c: "100 mL / 1000 mL/L = 0.100 L." }, { l: "Calculate TSS", c: "TSS = 3.3 mg / 0.100 L = 33 mg/L." }, { l: "Result", c: "The Total Suspended Solids (TSS) is 33 mg/L." } ],
+    tip: "TSS calculation requires converting grams to milligrams and milliliters to liters.",
   },
   {
     id: 289,
@@ -2963,6 +2981,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 1,
     explanation: `BOD₅ = (initial DO - final DO) × dilution factor = (8.2 - 5.4) × 5 = 2.8 × 5 = 14 mg/L. A BOD₅ of 14 mg/L for secondary effluent is within the typical Ontario effluent limit of < 15–25 mg/L. The dilution factor is applied because the sample was diluted before the test — the actual oxygen consumption in the original sample is the measured depletion multiplied by the dilution factor.`,
     difficulty: "medium",
+    steps: [ { l: "Formula", c: "BOD₅ = (Initial DO - Final DO) × Dilution Factor." }, { l: "Identify Variables", c: "Given: Initial DO = 8.2 mg/L, Final DO = 5.4 mg/L, Dilution Factor = 5." }, { l: "Substitute Values", c: "BOD₅ = (8.2 mg/L - 5.4 mg/L) × 5." }, { l: "Calculate Difference", c: "BOD₅ = 2.8 mg/L × 5." }, { l: "Calculate BOD₅", c: "BOD₅ = 14 mg/L." }, { l: "Result", c: "The BOD₅ of the sample is 14 mg/L." } ],
+    tip: "Ensure DO values are subtracted correctly before applying the dilution factor.",
   },
   {
     id: 329,
@@ -2999,6 +3019,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 1,
     explanation: `SVI is a key process control parameter for activated sludge: (1) Calculation: SVI (mL/g) = [settled sludge volume (mL/L) / MLSS (mg/L)] × 1000. (2) Normal range: 80–150 mL/g indicates good settling. (3) High SVI (> 150–200 mL/g): poor settling, often caused by filamentous bulking (Microthrix parvicella, Type 021N, Nocardia), viscous bulking, or rising sludge. (4) Low SVI (< 80 mL/g): dense, compact sludge; may indicate pin floc (dispersed growth), over-oxidized sludge (very long SRT), or inorganic sludge. (5) Diluted SVI (DSVI): used when MLSS > 3500 mg/L to avoid interference from high solids concentration. SVI is measured using the 30-minute settleability test (1-L graduated cylinder).`,
     difficulty: "medium",
+    steps: [ { l: "Formula", c: "SVI (mL/g) = [Settled Sludge Volume (mL/L) / MLSS (mg/L)] × 1000." }, { l: "Explanation of Settled Sludge Volume", c: "Settled Sludge Volume is measured in a 1-liter Imhoff cone after 30 minutes of settling." }, { l: "Explanation of MLSS", c: "MLSS (Mixed Liquor Suspended Solids) is the concentration of suspended solids in the aeration tank, typically in mg/L." }, { l: "Interpretation of SVI", c: "SVI indicates the settleability and compaction characteristics of activated sludge." }, { l: "Normal Range", c: "An SVI between 80–150 mL/g generally indicates good settling sludge." }, { l: "High SVI Indication", c: "High SVI (> 150–200 mL/g) suggests poor settling, often due to filamentous bulking." } ],
+    tip: "SVI is crucial for activated sludge process control; know its formula and interpretation.",
   },
   {
     id: 333,
@@ -3620,6 +3642,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 1,
     explanation: `BOD5 = (Initial DO - Final DO) x Dilution Factor = (8.2 - 2.1) x (300/25) = 6.1 x 12 = 73.2 mg/L.`,
     difficulty: "hard",
+    steps: [ { l: "Formula", c: "BOD5 (mg/L) = (Initial DO - Final DO) x Dilution Factor" }, { l: "Step 1: Calculate Dilution Factor", c: "Dilution Factor = Total Sample Volume / Undiluted Sample Volume" }, { l: "Substitute values", c: "Dilution Factor = 300 mL / 25 mL = 12" }, { l: "Substitute into BOD5 formula", c: "BOD5 = (8.2 mg/L - 2.1 mg/L) x 12" }, { l: "Calculate", c: "BOD5 = 6.1 mg/L x 12 = 73.2 mg/L" }, { l: "Result", c: "The BOD5 is 73.2 mg/L." } ],
+    tip: "Remember to always calculate the dilution factor correctly for BOD problems.",
   },
   {
     id: 402,
@@ -3701,6 +3725,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 1,
     explanation: `A MLVSS/MLSS ratio below 0.70-0.75 suggests accumulation of inorganic solids (grit, chemical precipitates). Healthy activated sludge typically has a ratio of 0.75-0.85.`,
     difficulty: "hard",
+    steps: [ { l: "Formula", c: "MLVSS/MLSS Ratio = MLVSS (mg/L) / MLSS (mg/L)" }, { l: "Substitute values", c: "MLVSS/MLSS Ratio = 2,100 mg/L / 3,200 mg/L" }, { l: "Calculate", c: "MLVSS/MLSS Ratio = 0.65625" }, { l: "Interpretation", c: "A ratio of 0.66 (rounded) is below the typical healthy range of 0.75-0.85 for activated sludge." }, { l: "Conclusion", c: "This suggests an accumulation of inorganic solids (like grit or chemical precipitates) in the mixed liquor." } ],
+    tip: "Low MLVSS/MLSS ratio indicates inorganic solids accumulation, impacting sludge activity.",
   },
   {
     id: 411,
@@ -4241,6 +4267,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 1,
     explanation: `BOD5 of 4 mg/L and TSS of 6 mg/L represent excellent secondary treatment performance. Typical permit limits are BOD5 <= 25 mg/L and TSS <= 25 mg/L. This plant is achieving advanced secondary quality.`,
     difficulty: "medium",
+    steps: [ { l: "Given values", c: "Effluent BOD5 = 4 mg/L; Effluent TSS = 6 mg/L" }, { l: "Typical permit limits for secondary treatment", c: "BOD5 <= 25 mg/L; TSS <= 25 mg/L" }, { l: "Comparison with permit limits", c: "4 mg/L BOD5 is significantly lower than 25 mg/L. 6 mg/L TSS is significantly lower than 25 mg/L." }, { l: "Interpretation of performance", c: "These values indicate excellent removal of organic matter and suspended solids." }, { l: "Conclusion", c: "The plant is achieving advanced secondary treatment quality, well within typical permit requirements." } ],
+    tip: "Low effluent BOD5 and TSS indicate excellent treatment, often advanced secondary quality.",
   },
   {
     id: 471,
@@ -4331,6 +4359,8 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     correct: 1,
     explanation: `Nitrifying bacteria grow slowly and are temperature-sensitive. At low temperatures, a longer SRT is required to maintain sufficient nitrifier population. Increasing SRT from 8 to 15-20 days provides safety margin for winter nitrification.`,
     difficulty: "hard",
+    steps: [ { l: "Problem statement", c: "Effluent ammonia is 0.3 mg/L in summer with an 8-day SRT. Concern for winter performance." }, { l: "Principle", c: "Nitrifying bacteria (responsible for ammonia removal) are very sensitive to temperature changes and grow slowly." }, { l: "Impact of cold temperatures", c: "In colder winter conditions, the growth rate of nitrifiers decreases significantly." }, { l: "Required adjustment", c: "To maintain a sufficient population of nitrifiers for effective ammonia removal in winter, the Sludge Retention Time (SRT) must be increased." }, { l: "Recommendation", c: "Increase the SRT from 8 days to 15-20 days to provide a safety margin for nitrification during colder temperatures." } ],
+    tip: "Increase SRT in winter to maintain nitrifier population and ensure ammonia removal.",
   },
   {
     id: 481,

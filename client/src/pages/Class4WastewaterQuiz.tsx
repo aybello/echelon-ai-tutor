@@ -61,13 +61,15 @@ function getNextQ(
   history: HistoryEntry[],
   trialUnlocked: boolean,
   filterModule: string | null,
-  filterDiff: string | null
+  filterDiff: string | null,
+  calcOnly = false
 ): QCompat | null {
   const usedIds = new Set(history.map((h) => h.q.id));
   const pool = trialUnlocked
     ? CLASS4_WW_QUESTIONS
     : CLASS4_WW_QUESTIONS.slice(0, FREE_TRIAL_POOL);
-  let remaining = pool.filter((q) => !usedIds.has(q.id));
+  const calcPool = calcOnly ? pool.filter((q) => q.steps && q.steps.length > 0) : pool;
+  let remaining = calcPool.filter((q) => !usedIds.has(q.id));
   if (filterModule) remaining = remaining.filter((q) => q.module === filterModule);
   if (filterDiff) remaining = remaining.filter((q) => q.difficulty === filterDiff);
   if (remaining.length === 0) return null;
@@ -86,6 +88,7 @@ export default function Class4WastewaterQuiz() {
   });
 
   const [trialUnlockedState, setTrialUnlockedState] = useState(() => isTrialUnlocked());
+  const [calcOnly, setCalcOnly] = useState(false);
   const initialQ = useMemo(() => toCompat(CLASS4_WW_QUESTIONS[0]), []);
 
   const [history, setHistory] = useState<HistoryEntry[]>([]);
@@ -133,7 +136,8 @@ export default function Class4WastewaterQuiz() {
       [...history, { q: current!, selected: selected!, confidence: confidence!, correct: selected === current!.correct }],
       trialUnlockedState,
       filterModule,
-      filterDiff
+      filterDiff,
+      calcOnly
     );
     setCurrent(nextQ);
     setSelected(null);
@@ -228,6 +232,12 @@ export default function Class4WastewaterQuiz() {
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select>
+          <button
+            onClick={() => setCalcOnly(v => !v)}
+            style={{ padding: "6px 14px", background: calcOnly ? "#EDE9FE" : "#fff", color: calcOnly ? "#7C3AED" : "#475569", border: calcOnly ? "1px solid #7C3AED" : "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+          >
+            🧮 Calc Only
+          </button>
         </div>
 
         {/* Trial gate */}

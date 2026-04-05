@@ -11,6 +11,8 @@ export interface Question {
   correct: number;
   explanation: string;
   difficulty: "easy" | "medium" | "hard";
+  steps?: { l: string; c: string }[];
+  tip?: string;
 }
 
 export const QUESTIONS: Question[] = [
@@ -2263,6 +2265,8 @@ export const QUESTIONS: Question[] = [
     correct: 0,
     explanation: "LSI = pH - pHs = 7.8 - 8.1 = -0.3. A negative LSI indicates the water is corrosive (undersaturated with calcium carbonate). Corrosion control treatment such as pH adjustment or addition of corrosion inhibitors would be needed.",
     difficulty: "medium",
+    steps: [ { l: "Formula", c: "LSI = pH - pHs" }, { l: "Identify Variables", c: "pH = 7.8 (measured pH of water sample), pHs = 8.1 (saturation pH)" }, { l: "Substitute", c: "LSI = 7.8 - 8.1" }, { l: "Calculate", c: "LSI = -0.3" }, { l: "Result", c: "The Langelier Saturation Index (LSI) is -0.3." } ],
+    tip: "Negative LSI means corrosive water; positive LSI means scaling water.",
   },
   {
     id: 226,
@@ -2423,6 +2427,8 @@ export const QUESTIONS: Question[] = [
     correct: 1,
     explanation: "Chemical feed (lb/day) = flow (MGD) × dose (mg/L) × 8.34 lb/gal = 10 × 15 × 8.34 = 1,251 lb/day. The 8.34 factor converts million gallons to pounds using the density of water.",
     difficulty: "medium",
+    steps: [ { l: "Formula", c: "Chemical Feed (lb/day) = Flow (MGD) × Dose (mg/L) × 8.34 (lb·L / mg·MG)" }, { l: "Identify Variables", c: "Flow = 10 MGD, Dose = 15 mg/L, Conversion factor = 8.34 lb/gal (for 1 MGD and 1 mg/L)" }, { l: "Substitute", c: "Chemical Feed = 10 MGD × 15 mg/L × 8.34 lb·L / mg·MG" }, { l: "Calculate", c: "Chemical Feed = 1,251 lb/day" }, { l: "Result", c: "1,251 pounds of alum are added per day." } ],
+    tip: "Remember the 8.34 factor for converting MGD and mg/L to lb/day.",
   },
   {
     id: 242,
@@ -2463,6 +2469,8 @@ export const QUESTIONS: Question[] = [
     correct: 1,
     explanation: "CT = C × T10, where T10 = baffling factor × theoretical detention time. Theoretical detention time = 2 MG / flow rate. If flow = 10 MGD, T10 = 0.3 × (2/10) × 1440 min/day = 86.4 min. CT = 2.0 × 86.4 / 10 = 17.28... Wait - need flow. Assuming T10 = 72 min: CT = 2.0 × 72 = 144 mg·min/L.",
     difficulty: "medium",
+    steps: [ { l: "Formula", c: "CT = C × T10. T10 = Baffling Factor × Theoretical Detention Time. Theoretical Detention Time = Volume / Flow Rate." }, { l: "Identify Variables", c: "C = 2.0 mg/L (chlorine residual), Baffling Factor = 0.3. Note: A flow rate is needed to calculate T10. Assuming a typical flow rate, e.g., 10 MGD, for demonstration." }, { l: "Step 1: Calculate Theoretical Detention Time", c: "Theoretical Detention Time = 2 MG / 10 MGD = 0.2 days. Convert to minutes: 0.2 days × 1440 min/day = 288 minutes." }, { l: "Step 2: Calculate T10", c: "T10 = 0.3 × 288 minutes = 86.4 minutes." }, { l: "Step 3: Calculate CT", c: "CT = 2.0 mg/L × 86.4 minutes = 172.8 mg·min/L." }, { l: "Result", c: "The CT value is 172.8 mg·min/L (assuming a flow of 10 MGD)." } ],
+    tip: "CT calculation requires flow rate for detention time; ensure consistent units.",
   },
   {
     id: 246,
@@ -2643,6 +2651,8 @@ export const QUESTIONS: Question[] = [
     correct: 1,
     explanation: "Using the pump affinity laws: Q2/Q1 = N2/N1, where N is speed (proportional to frequency). Q2 = 500 × (48/60) = 500 × 0.8 = 400 gpm. The affinity laws state that flow is proportional to speed, head is proportional to speed squared, and power is proportional to speed cubed.",
     difficulty: "medium",
+    steps: [ { l: "Formula", c: "Q2 / Q1 = N2 / N1 (Affinity Law for Flow), where Q is flow rate and N is pump speed (proportional to frequency)." }, { l: "Identify Variables", c: "Q1 = 500 gpm (initial flow), N1 = 60 Hz (initial frequency), N2 = 48 Hz (new frequency)." }, { l: "Rearrange Formula", c: "Q2 = Q1 × (N2 / N1)" }, { l: "Substitute", c: "Q2 = 500 gpm × (48 Hz / 60 Hz)" }, { l: "Calculate", c: "Q2 = 500 gpm × 0.8 = 400 gpm" }, { l: "Result", c: "The approximate new flow rate is 400 gpm." } ],
+    tip: "Flow is directly proportional to speed (frequency) in pump affinity laws.",
   },
   {
     id: 264,
@@ -2833,6 +2843,8 @@ export const QUESTIONS: Question[] = [
     correct: 1,
     explanation: "Chlorine residual = dose - demand = 2.5 - 1.8 = 0.7 mg/L. Chlorine consumed = dose × flow = 2.5 mg/L × 5 MGD × 8.34 lb/gal = 104.25 lb/day ≈ 104 lb/day. The 8.34 factor converts million gallons to pounds.",
     difficulty: "medium",
+    steps: [ { l: "Formula 1 (Residual)", c: "Chlorine Residual (mg/L) = Chlorine Dose (mg/L) - Chlorine Demand (mg/L)" }, { l: "Formula 2 (Consumed)", c: "Chlorine Consumed (lb/day) = Chlorine Dose (mg/L) × Flow (MGD) × 8.34 (lb·L / mg·MG)" }, { l: "Identify Variables", c: "Dose = 2.5 mg/L, Demand = 1.8 mg/L, Flow = 5 MGD, Conversion factor = 8.34 lb/gal" }, { l: "Step 1: Calculate Chlorine Residual", c: "Chlorine Residual = 2.5 mg/L - 1.8 mg/L = 0.7 mg/L" }, { l: "Step 2: Calculate Pounds of Chlorine Consumed per Day", c: "Chlorine Consumed = 2.5 mg/L × 5 MGD × 8.34 lb·L / mg·MG = 104.25 lb/day" }, { l: "Result", c: "The chlorine residual is 0.7 mg/L, and 104.25 pounds of chlorine are consumed per day." } ],
+    tip: "Chlorine demand is the amount used, dose is total added, residual is what's left.",
   },
   {
     id: 283,
@@ -3243,6 +3255,8 @@ export const QUESTIONS: Question[] = [
     correct: 0,
     explanation: "CT = C × T10 = 1.5 mg/L × 90 min = 135 mg·min/L. The required CT is 165 mg·min/L. Since 135 < 165, the required CT is NOT achieved. The operator would need to increase the chlorine residual (e.g., to 1.84 mg/L) or increase the T10 contact time to meet the 3-log Giardia inactivation requirement.",
     difficulty: "medium",
+    steps: [ { l: "Formula", c: "CT = C × T" }, { l: "Step 1", c: "Identify the given values: Required CT = 165 mg·min/L, Free chlorine residual (C) = 1.5 mg/L, T10 contact time (T) = 90 min." }, { l: "Substitute", c: "CT = 1.5 mg/L × 90 min" }, { l: "Calculate", c: "CT = 135 mg·min/L" }, { l: "Result", c: "The calculated CT is 135 mg·min/L. Since 135 mg·min/L < 165 mg·min/L, the required CT for 3-log Giardia inactivation is NOT achieved." } ],
+    tip: "Always compare calculated CT to required CT for compliance.",
   },
   {
     id: 324,

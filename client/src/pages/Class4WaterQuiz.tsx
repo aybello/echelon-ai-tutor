@@ -59,6 +59,7 @@ export default function Class4WaterQuiz() {
   const [tutorOpen, setTutorOpen]   = useState(false);
   const [shakeKey, setShakeKey]     = useState(0);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [calcOnly, setCalcOnly] = useState(false);
   const [showModuleSelector, setShowModuleSelector] = useState(false);
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [trialUnlocked, setTrialUnlockedState] = useState<boolean>(() => isTrialUnlocked());
@@ -66,10 +67,10 @@ export default function Class4WaterQuiz() {
 
   const activeQuestions = useMemo<QCompat[]>(() => {
     const pool = selectedModule
-      ? CLASS4_WATER_QUESTIONS.filter(q => q.module === selectedModule)
-      : CLASS4_WATER_QUESTIONS;
+      ? CLASS4_WATER_QUESTIONS.filter(q => q.module === selectedModule && (!calcOnly || (q.steps && q.steps.length > 0)))
+      : (calcOnly ? CLASS4_WATER_QUESTIONS.filter(q => q.steps && q.steps.length > 0) : CLASS4_WATER_QUESTIONS);
     return pool.map(toCompat);
-  }, [selectedModule]);
+  }, [selectedModule, calcOnly]);
 
   const confirm = useCallback(() => {
     if (selected === null || confidence === null) {
@@ -207,12 +208,20 @@ export default function Class4WaterQuiz() {
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "20px 16px" }}>
         {/* Module filter */}
         <div style={{ marginBottom: 16 }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           <button
             onClick={() => setShowModuleSelector(v => !v)}
             style={{ padding: "8px 14px", background: "#fff", color: "#475569", border: "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
           >
             🎯 {selectedModule ? `Module: ${selectedModule}` : "All Modules"} ▾
           </button>
+          <button
+            onClick={() => setCalcOnly(v => !v)}
+            style={{ padding: "8px 14px", background: calcOnly ? "#EDE9FE" : "#fff", color: calcOnly ? "#7C3AED" : "#475569", border: calcOnly ? "1px solid #7C3AED" : "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+          >
+            🧮 Calc Only
+          </button>
+          </div>
           {showModuleSelector && (
             <div style={{ marginTop: 8, display: "flex", gap: 8, flexWrap: "wrap" }}>
               <button

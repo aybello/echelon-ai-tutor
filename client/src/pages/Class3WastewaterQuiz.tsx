@@ -57,12 +57,13 @@ type HistoryEntry = {
   correct: boolean;
 };
 
-function getNextQ(history: HistoryEntry[], trialUnlocked: boolean): QCompat | null {
+function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, calcOnly = false): QCompat | null {
   const usedIds = new Set(history.map((h) => h.q.id));
   const pool = trialUnlocked
     ? CLASS3_WW_QUESTIONS
     : CLASS3_WW_QUESTIONS.slice(0, FREE_TRIAL_POOL);
-  const remaining = pool.filter((q) => !usedIds.has(q.id));
+  const calcPool = calcOnly ? pool.filter((q) => q.steps && q.steps.length > 0) : pool;
+  const remaining = calcPool.filter((q) => !usedIds.has(q.id));
   if (remaining.length === 0) return null;
   const shuffled = shuffle([...remaining]);
   return toCompat(shuffled[0]);
@@ -77,6 +78,7 @@ export default function Class3WastewaterQuiz() {
   });
 
   const [trialUnlockedState, setTrialUnlockedState] = useState(() => isTrialUnlocked());
+  const [calcOnly, setCalcOnly] = useState(false);
   const initialQ = useMemo(() => toCompat(CLASS3_WW_QUESTIONS[0]), []);
 
   const [history, setHistory] = useState<HistoryEntry[]>([]);
@@ -223,6 +225,12 @@ export default function Class3WastewaterQuiz() {
             <button style={{ padding: "6px 14px", borderRadius: 8, border: "1.5px solid #0E7490", background: "transparent", color: "#0E7490", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>
               📝 Mock Exam
             </button>
+          <button
+            onClick={() => setCalcOnly(v => !v)}
+            style={{ padding: "8px 14px", background: calcOnly ? "#EDE9FE" : "#fff", color: calcOnly ? "#7C3AED" : "#475569", border: calcOnly ? "1px solid #7C3AED" : "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+          >
+            🧮 Calc Only
+          </button>
           </Link>
         </div>
 

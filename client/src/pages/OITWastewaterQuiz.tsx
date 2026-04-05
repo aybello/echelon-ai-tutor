@@ -70,10 +70,11 @@ type HistoryEntry = {
   correct: boolean;
 };
 
-function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, mod?: string | null): QCompat | null {
+function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, mod?: string | null, calcOnly = false): QCompat | null {
   const usedIds = new Set(history.map((h) => h.q.id));
   const base = mod ? CLASS1_WASTEWATER_QUESTIONS.filter(q => q.module === mod) : CLASS1_WASTEWATER_QUESTIONS;
-  const pool = trialUnlocked ? base : base.slice(0, 60);
+  const basePool = trialUnlocked ? base : base.slice(0, 60);
+  const pool = calcOnly ? basePool.filter((q) => q.steps && q.steps.length > 0) : basePool;
   const remaining = pool.filter((q) => !usedIds.has(q.id));
   if (remaining.length === 0) return null;
   const shuffled = shuffle([...remaining]);
@@ -90,6 +91,7 @@ export default function OITWastewaterQuiz() {
 
   const [trialUnlockedState, setTrialUnlockedState] = useState(() => isTrialUnlocked());
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [calcOnly, setCalcOnly] = useState(false);
   const [showModuleSelector, setShowModuleSelector] = useState(false);
 
   const getPool = useCallback((mod: string | null, unlocked: boolean) => {
@@ -216,6 +218,12 @@ export default function OITWastewaterQuiz() {
         >
           {selectedModule ? `📚 Module: ${selectedModule}` : "📚 All Modules"} {showModuleSelector ? "▲" : "▼"}
         </button>
+          <button
+            onClick={() => setCalcOnly(v => !v)}
+            style={{ padding: "8px 14px", background: calcOnly ? "#EDE9FE" : "#fff", color: calcOnly ? "#7C3AED" : "#475569", border: calcOnly ? "1px solid #7C3AED" : "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+          >
+            🧮 Calc Only
+          </button>
         {showModuleSelector && (
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 8 }}>
             <button

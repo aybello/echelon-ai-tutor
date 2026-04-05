@@ -72,6 +72,7 @@ export default function WQAQuiz() {
   });
 
   const [selectedModule, setSelectedModule] = useState<WQAModule | "All">("All");
+  const [calcOnly, setCalcOnly] = useState(false);
   const [showModuleSelector, setShowModuleSelector] = useState(false);
   const [history, setHistory]       = useState<HistoryEntry[]>([]);
   const [selected, setSelected]     = useState<number | null>(null);
@@ -90,8 +91,9 @@ export default function WQAQuiz() {
     const filtered = selectedModule === "All"
       ? WQA_QUESTIONS
       : WQA_QUESTIONS.filter(q => q.module === selectedModule);
-    return filtered.map(toQuestion);
-  }, [selectedModule]);
+    const withCalc = calcOnly ? filtered.filter(q => q.steps && q.steps.length > 0) : filtered;
+    return withCalc.map(toQuestion);
+  }, [selectedModule, calcOnly]);
 
   const [current, setCurrent] = useState<Question | null>(() => activePool[0] ?? null);
 
@@ -223,6 +225,12 @@ export default function WQAQuiz() {
                 🧪 {modLabel.length > 22 ? modLabel.slice(0, 20) + "…" : modLabel}
                 <span style={{ fontSize: 8 }}>▼</span>
               </button>
+          <button
+            onClick={() => setCalcOnly(v => !v)}
+            style={{ padding: "8px 14px", background: calcOnly ? "#EDE9FE" : "#fff", color: calcOnly ? "#7C3AED" : "#475569", border: calcOnly ? "1px solid #7C3AED" : "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+          >
+            🧮 Calc Only
+          </button>
               {showModuleSelector && (
                 <div style={{ position: "absolute", top: "calc(100% + 6px)", right: 0, background: "#fff", border: "1px solid #E5E7EB", borderRadius: 12, boxShadow: "0 8px 24px rgba(0,0,0,0.12)", zIndex: 100, minWidth: 260, padding: 8 }}>
                   <button

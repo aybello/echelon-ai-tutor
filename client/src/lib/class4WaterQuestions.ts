@@ -11,6 +11,8 @@ export interface Question {
   correct: number;
   explanation: string;
   difficulty: 'easy' | 'medium' | 'hard';
+  steps?: { l: string; c: string }[];
+  tip?: string;
 }
 export const QUESTIONS: Question[] = [
   {

@@ -11,6 +11,8 @@ export interface Class1WaterQuestion {
   options: string[];
   correct: number; // 0-indexed
   explanation: string;
+  steps?: { l: string; c: string }[];
+  tip?: string;
 }
 
 export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
@@ -741,7 +743,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "1.0 mg/L"
     ],
     correct: 1,
-    explanation: "CT = C × T, where C is disinfectant concentration (mg/L) and T is contact time (minutes). Rearranging: C = CT/T = 6 mg·min/L ÷ 30 min = 0.2 mg/L. A minimum free chlorine residual of 0.2 mg/L is required."
+    explanation: "CT = C × T, where C is disinfectant concentration (mg/L) and T is contact time (minutes). Rearranging: C = CT/T = 6 mg·min/L ÷ 30 min = 0.2 mg/L. A minimum free chlorine residual of 0.2 mg/L is required.",
+    steps: [
+      { l: "Formula", c: "CT = C × T" },
+      { l: "Variables", c: "CT = 6 mg·min/L (given); T = 30 min (given); C = ? (unknown)" },
+      { l: "Substitute", c: "6 mg·min/L = C × 30 min" },
+      { l: "Calculate", c: "C = 6 mg·min/L ÷ 30 min = 0.2 mg/L" },
+      { l: "Result", c: "The minimum free chlorine residual required is 0.2 mg/L." },
+    ],
+    tip: "Always ensure units cancel correctly to arrive at the desired unit for the answer.",
   },
   {
     id: 53,
@@ -883,7 +893,16 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "A measure of detention time; typically 10-60 minutes"
     ],
     correct: 1,
-    explanation: "The G value (velocity gradient, s⁻¹) measures mixing intensity. For flocculation, G is typically 10-100 s⁻¹ — gentle enough to allow floc growth without breakup. Rapid mix uses G values of 300-1000 s⁻¹. The Gt value (G × detention time) is used to design flocculators."
+    explanation: "The G value (velocity gradient, s⁻¹) measures mixing intensity. For flocculation, G is typically 10-100 s⁻¹ — gentle enough to allow floc growth without breakup. Rapid mix uses G values of 300-1000 s⁻¹. The Gt value (G × detention time) is used to design flocculators.",
+    steps: [
+      { l: "Understand the Question", c: "The question asks for the definition of G value and its typical range in flocculation." },
+      { l: "Define G Value", c: "The G value, or velocity gradient (s⁻¹), is a measure of the mixing intensity in a fluid." },
+      { l: "Typical Range for Flocculation", c: "For flocculation, the typical G value range is 10-100 s⁻¹." },
+      { l: "Purpose of G Value in Flocculation", c: "This range is gentle enough to allow flocs to grow without being broken apart." },
+      { l: "Contrast with Rapid Mix", c: "Rapid mixing uses higher G values, typically 300-1000 s⁻¹." },
+      { l: "Related Concept: Gt Value", c: "The Gt value (G × detention time) is used for flocculator design." },
+    ],
+    tip: "Remember G values: low for flocculation, high for rapid mix.",
   },
   {
     id: 63,
@@ -911,7 +930,17 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "50 mg/L — lowest turbidity"
     ],
     correct: 2,
-    explanation: "The optimal dose is 30 mg/L because it achieves turbidity below 1 NTU (0.8 NTU) while minimizing chemical cost and residual aluminum. Increasing the dose to 40-50 mg/L provides minimal additional benefit (0.6 vs 0.8 NTU) at higher cost and increased sludge production."
+    explanation: "The optimal dose is 30 mg/L because it achieves turbidity below 1 NTU (0.8 NTU) while minimizing chemical cost and residual aluminum. Increasing the dose to 40-50 mg/L provides minimal additional benefit (0.6 vs 0.8 NTU) at higher cost and increased sludge production.",
+    steps: [
+      { l: "Analyze Data", c: "Review the jar test results for alum dose vs. settled water turbidity." },
+      { l: "Identify Turbidity Target", c: "Look for the lowest alum dose that achieves an acceptable turbidity (e.g., <1 NTU)." },
+      { l: "Evaluate Doses", c: "At 10 mg/L, turbidity is 8 NTU. At 20 mg/L, turbidity is 3 NTU." },
+      { l: "Determine Optimal Point", c: "At 30 mg/L, turbidity is 0.8 NTU. This meets the target." },
+      { l: "Assess Higher Doses", c: "At 40 mg/L (0.6 NTU) and 50 mg/L (0.5 NTU), improvement is minimal." },
+      { l: "Select Optimal Dose", c: "The optimal dose balances turbidity removal with cost and sludge production." },
+      { l: "Result", c: "The optimal alum dose is 30 mg/L." },
+    ],
+    tip: "Optimal dose balances treatment effectiveness with cost and operational factors.",
   },
   {
     id: 65,
@@ -1051,7 +1080,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "60 mg/L"
     ],
     correct: 1,
-    explanation: "Flow = 15,000 m³/day ÷ 24 h/day = 625 m³/h. Alum feed = 25 kg/h = 25,000 g/h. Dose = 25,000 g/h ÷ 625 m³/h = 40 g/m³ = 40 mg/L."
+    explanation: "Flow = 15,000 m³/day ÷ 24 h/day = 625 m³/h. Alum feed = 25 kg/h = 25,000 g/h. Dose = 25,000 g/h ÷ 625 m³/h = 40 g/m³ = 40 mg/L.",
+    steps: [
+      { l: "Formula", c: "Dose (mg/L) = (Feed Rate (kg/hr) * 1,000,000 mg/kg) / (Flow Rate (m³/day) * 1000 L/m³ / 24 hr/day)" },
+      { l: "Variables", c: "Feed Rate = 25 kg/hr; Flow Rate = 15,000 m³/day" },
+      { l: "Substitute", c: "Dose (mg/L) = (25 kg/hr * 1,000,000 mg/kg) / (15,000 m³/day * 1000 L/m³ / 24 hr/day)" },
+      { l: "Calculate", c: "Flow Rate in m³/hr = 15,000 m³/day / 24 hr/day = 625 m³/hr. Dose = (25,000,000 mg/hr) / (625,000 L/hr) = 40 mg/L" },
+      { l: "Result", c: "The alum dose is 40 mg/L." },
+    ],
+    tip: "Ensure units are consistent before calculation to avoid errors.",
   },
   {
     id: 75,
@@ -1107,7 +1144,18 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "Softening with lime to precipitate colour-causing compounds"
     ],
     correct: 1,
-    explanation: "High colour with low turbidity indicates dissolved NOM (humic/fulvic acids). Effective removal requires enhanced coagulation: higher alum dose at lower pH (5.5-6.5) to maximize adsorption of NOM onto aluminum hydroxide floc. This approach is more effective than standard turbidity-based coagulation."
+    explanation: "High colour with low turbidity indicates dissolved NOM (humic/fulvic acids). Effective removal requires enhanced coagulation: higher alum dose at lower pH (5.5-6.5) to maximize adsorption of NOM onto aluminum hydroxide floc. This approach is more effective than standard turbidity-based coagulation.",
+    steps: [
+      { l: "Analyze Raw Water Quality", c: "Identify raw water characteristics: High colour (40 TCU) and low turbidity (2 NTU)." },
+      { l: "Interpret Characteristics", c: "High colour with low turbidity suggests dissolved organic matter (NOM) as the primary contaminant." },
+      { l: "Identify Treatment Goal", c: "The goal is effective removal of dissolved NOM." },
+      { l: "Select Coagulation Strategy", c: "For dissolved NOM, 'Enhanced Coagulation' is the most effective approach." },
+      { l: "Define Enhanced Coagulation", c: "Enhanced coagulation involves higher coagulant dose and lower pH (typically 5.5-6.5)." },
+      { l: "Explain Mechanism", c: "Lower pH optimizes charge neutralization and adsorption of NOM onto aluminum hydroxide floc." },
+      { l: "Compare to Standard Coagulation", c: "Standard coagulation (for turbidity) is less effective for dissolved NOM removal." },
+      { l: "Result", c: "Enhanced coagulation with higher alum dose and lower pH (5.5-6.5) is the most effective approach." },
+    ],
+    tip: "High colour/low turbidity = dissolved NOM. Use enhanced coagulation (higher dose, lower pH).",
   },
   {
     id: 79,
@@ -1261,7 +1309,24 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "$180/day"
     ],
     correct: 0,
-    explanation: "Additional alum dose = 45 - 30 = 15 mg/L = 15 g/m³. Additional alum per day = 15 g/m³ × 20,000 m³/day = 300,000 g/day = 300 kg/day. Additional cost = 300 kg/day × $0.15/kg = $45/day."
+    explanation: "Additional alum dose = 45 - 30 = 15 mg/L = 15 g/m³. Additional alum per day = 15 g/m³ × 20,000 m³/day = 300,000 g/day = 300 kg/day. Additional cost = 300 kg/day × $0.15/kg = $45/day.",
+    steps: [
+      { l: "Calculate additional alum dose", c: "Additional Alum Dose (mg/L) = New Dose - Old Dose" },
+      { l: "Identify variables", c: "New Dose = 45 mg/L; Old Dose = 30 mg/L" },
+      { l: "Substitute values", c: "Additional Alum Dose = 45 mg/L - 30 mg/L" },
+      { l: "Calculate additional dose", c: "Additional Alum Dose = 15 mg/L" },
+      { l: "Convert dose to g/m³", c: "15 mg/L = 15 g/m³" },
+      { l: "Calculate additional alum per day", c: "Additional Alum (kg/day) = Dose (g/m³) * Flow (m³/day) / 1000 (g/kg)" },
+      { l: "Identify variables", c: "Dose = 15 g/m³; Flow = 20,000 m³/day" },
+      { l: "Substitute values", c: "Additional Alum = 15 g/m³ * 20,000 m³/day / 1000 g/kg" },
+      { l: "Calculate daily additional alum", c: "Additional Alum = 300 kg/day" },
+      { l: "Calculate additional cost", c: "Additional Cost ($/day) = Additional Alum (kg/day) * Cost ($/kg)" },
+      { l: "Identify variables", c: "Additional Alum = 300 kg/day; Cost = $0.15/kg" },
+      { l: "Substitute values", c: "Additional Cost = 300 kg/day * $0.15/kg" },
+      { l: "Calculate additional cost", c: "Additional Cost = $45/day" },
+      { l: "Result", c: "The additional alum cost per day is $45." },
+    ],
+    tip: "Always check units and ensure they cancel out correctly for the desired result.",
   },
   {
     id: 90,
@@ -1459,7 +1524,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "200 m³/m²·day"
     ],
     correct: 1,
-    explanation: "Surface area = 40 m × 10 m = 400 m². SOR = 20,000 m³/day ÷ 400 m² = 50 m³/m²·day. This is slightly above the typical design range of 20-40 m³/m²·day, suggesting the basin may be undersized for optimal performance."
+    explanation: "Surface area = 40 m × 10 m = 400 m². SOR = 20,000 m³/day ÷ 400 m² = 50 m³/m²·day. This is slightly above the typical design range of 20-40 m³/m²·day, suggesting the basin may be undersized for optimal performance.",
+    steps: [ { l: "Formula", c: "Surface Overflow Rate (SOR) = Flow Rate / Surface Area" }, { l: "Step 1: Calculate the surface area of the basin.", c: "Surface Area = Length × Width = 40 m × 10 m = 400 m²" }, { l: "Step 2: Identify the given flow rate.", c: "Flow Rate = 20,000 m³/day" }, { l: "Step 3: Substitute values into the SOR formula.", c: "SOR = 20,000 m³/day / 400 m²" }, { l: "Step 4: Calculate the Surface Overflow Rate.", c: "SOR = 50 m³/m²·day" }, { l: "Result", c: "The surface overflow rate is 50 m³/m²·day." } ],
+    tip: "SOR indicates clarifier efficiency; higher values mean less settling time.",
   },
   {
     id: 104,
@@ -1543,7 +1610,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "The rate of chemical addition to the basin"
     ],
     correct: 1,
-    explanation: "Weir overflow rate (WOR) = Flow rate (m³/day) ÷ Total weir length (m). It measures the hydraulic loading on the outlet weir. High WOR creates turbulence that can re-suspend settled floc. Typical WOR for conventional clarifiers is <250 m³/m·day."
+    explanation: "Weir overflow rate (WOR) = Flow rate (m³/day) ÷ Total weir length (m). It measures the hydraulic loading on the outlet weir. High WOR creates turbulence that can re-suspend settled floc. Typical WOR for conventional clarifiers is <250 m³/m·day.",
+    steps: [ { l: "Formula", c: "Alkalinity Consumed (mg/L as CaCO₃) = Alum Dose (mg/L) × Alkalinity Consumption Factor (mg alkalinity/mg alum)" }, { l: "Step 1: Identify the given values.", c: "Alum Dose = 40 mg/L. Alkalinity Consumption Factor = 0.45 mg alkalinity per mg alum." }, { l: "Step 2: Substitute the values into the formula.", c: "Alkalinity Consumed = 40 mg/L × 0.45" }, { l: "Calculate", c: "Alkalinity Consumed = 18 mg/L as CaCO₃" }, { l: "Result", c: "The alkalinity consumed is 18 mg/L as CaCO₃." } ],
+    tip: "Alum consumes alkalinity; ensure sufficient alkalinity remains for stable pH.",
   },
   {
     id: 110,
@@ -1571,7 +1640,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "SOR = 6 m³/m²·day — far below typical range"
     ],
     correct: 2,
-    explanation: "SOR = 30,000 m³/day ÷ 500 m² = 60 m³/m²·day. This is above the typical design range of 20-40 m³/m²·day for conventional clarifiers, indicating the basin may be undersized. Floc carryover to the filters is likely. Solutions include adding tube/plate settlers or building additional basin capacity."
+    explanation: "SOR = 30,000 m³/day ÷ 500 m² = 60 m³/m²·day. This is above the typical design range of 20-40 m³/m²·day for conventional clarifiers, indicating the basin may be undersized. Floc carryover to the filters is likely. Solutions include adding tube/plate settlers or building additional basin capacity.",
+    steps: [ { l: "Formula", c: "Surface Overflow Rate (SOR) = Flow Rate / Surface Area" }, { l: "Step 1: Identify the given surface area.", c: "Surface Area = 500 m²" }, { l: "Step 2: Identify the given flow rate.", c: "Flow Rate = 30,000 m³/day" }, { l: "Step 3: Substitute values into the SOR formula.", c: "SOR = 30,000 m³/day / 500 m²" }, { l: "Step 4: Calculate the Surface Overflow Rate.", c: "SOR = 60 m³/m²·day" }, { l: "Step 5: Compare with typical design range (20-40 m³/m²·day).", c: "60 m³/m²·day is above the typical range." }, { l: "Result", c: "The SOR is 60 m³/m²·day, which is above the typical design range." } ],
+    tip: "Know typical design ranges for key parameters to assess treatment performance.",
   },
   {
     id: 112,
@@ -1685,7 +1756,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "200 – 300 m/h"
     ],
     correct: 1,
-    explanation: "Rapid sand filters typically operate at filtration rates of 5-15 m/h (m³/m²·h). Rates above 15 m/h may lead to turbidity breakthrough. Slow sand filters operate at much lower rates (0.1-0.4 m/h) but provide biological treatment in addition to physical filtration."
+    explanation: "Rapid sand filters typically operate at filtration rates of 5-15 m/h (m³/m²·h). Rates above 15 m/h may lead to turbidity breakthrough. Slow sand filters operate at much lower rates (0.1-0.4 m/h) but provide biological treatment in addition to physical filtration.",
+    steps: [ { l: "Formula", c: "Mass (kg/d) = Dose (mg/L) × Flow (ML/d) × Conversion Factor (kg/mg/L/ML)" }, { l: "Step 1: Identify the given values.", c: "Alum Dose = 25 mg/L. Plant Flow = 10 ML/d." }, { l: "Step 2: Convert plant flow from ML/d to L/d for consistency.", c: "1 ML = 1,000,000 L. So, 10 ML/d = 10 × 1,000,000 L/d = 10,000,000 L/d." }, { l: "Step 3: Calculate the mass in mg/d.", c: "Mass = 25 mg/L × 10,000,000 L/d = 250,000,000 mg/d." }, { l: "Step 4: Convert the mass from mg/d to kg/d.", c: "1 kg = 1,000,000 mg. So, Mass in kg/d = 250,000,000 mg/d / 1,000,000 mg/kg = 250 kg/d." }, { l: "Result", c: "250 kg of alum are required per day." } ],
+    tip: "Pay close attention to unit conversions, especially between mg, g, kg, L, and ML.",
   },
   {
     id: 120,
@@ -1769,7 +1842,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "200-300 m/h"
     ],
     correct: 1,
-    explanation: "Backwash rates for rapid sand filters are typically 36-60 m/h (10-17 mm/s), sufficient to expand and fluidize the filter bed (30-50% expansion) and release trapped particles. The rate must be high enough to clean the media but not so high that it washes media out of the filter."
+    explanation: "Backwash rates for rapid sand filters are typically 36-60 m/h (10-17 mm/s), sufficient to expand and fluidize the filter bed (30-50% expansion) and release trapped particles. The rate must be high enough to clean the media but not so high that it washes media out of the filter.",
+    steps: [ { l: "Formula", c: "Hydraulic Retention Time (HRT) (minutes) = Volume (m³) / Flow Rate (m³/minute)" }, { l: "Step 1: Identify the given values.", c: "Flocculation basin volume (V) = 500 m³. Flow rate (Q) = 25,000 m³/d." }, { l: "Step 2: Convert the flow rate from m³/d to m³/minute.", c: "Minutes in a day = 24 hours/day × 60 minutes/hour = 1440 minutes/day. Flow rate in m³/minute = 25,000 m³/d / 1440 minutes/d ≈ 17.361 m³/minute." }, { l: "Step 3: Substitute the values into the HRT formula.", c: "HRT = 500 m³ / 17.361 m³/minute" }, { l: "Calculate", c: "HRT ≈ 28.8 minutes" }, { l: "Result", c: "The hydraulic retention time (HRT) is approximately 28.8 minutes." } ],
+    tip: "HRT is critical for process efficiency; ensure consistent time units in calculations.",
   },
   {
     id: 126,
@@ -1811,7 +1886,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "0.42 m³/min"
     ],
     correct: 1,
-    explanation: "Backwash flow rate = Backwash rate × Filter area = 50 m/h × 50 m² = 2,500 m³/h ÷ 60 min/h = 41.7 m³/min."
+    explanation: "Backwash flow rate = Backwash rate × Filter area = 50 m/h × 50 m² = 2,500 m³/h ÷ 60 min/h = 41.7 m³/min.",
+    steps: [ { l: "Formula", c: "Backwash Flow Rate = Backwash Rate × Filter Area" }, { l: "Step 1: Identify the given filter area.", c: "Filter Area = 50 m²" }, { l: "Step 2: Identify the given backwash rate.", c: "Backwash Rate = 50 m/h" }, { l: "Step 3: Calculate the backwash flow rate in m³/h.", c: "Backwash Flow Rate = 50 m/h × 50 m² = 2,500 m³/h" }, { l: "Step 4: Convert the backwash flow rate from m³/h to m³/min.", c: "Backwash Flow Rate = 2,500 m³/h ÷ 60 min/h" }, { l: "Step 5: Calculate the final backwash flow rate.", c: "Backwash Flow Rate = 41.67 m³/min (approximately 41.7 m³/min)" }, { l: "Result", c: "The backwash flow rate is 41.7 m³/min." } ],
+    tip: "Pay attention to units; convert hours to minutes when required for flow rates.",
   },
   {
     id: 129,
@@ -1909,7 +1986,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "The loss of fine media particles during backwash"
     ],
     correct: 0,
-    explanation: "Media stratification is the natural separation of anthracite (lighter, coarser) on top and sand (denser, finer) on the bottom after backwash. This stratification is essential for dual-media filter performance — coarser anthracite captures larger particles first, while finer sand polishes the water. If stratification is lost, filter performance deteriorates."
+    explanation: "Media stratification is the natural separation of anthracite (lighter, coarser) on top and sand (denser, finer) on the bottom after backwash. This stratification is essential for dual-media filter performance — coarser anthracite captures larger particles first, while finer sand polishes the water. If stratification is lost, filter performance deteriorates.",
+    steps: [ { l: "Formula for Mass of Alum", c: "Mass (kg/d) = Dose (mg/L) × Flow (L/d) × (1 kg / 1,000,000 mg)" }, { l: "Calculate Mass of Alum", c: "Mass of Alum = 30 mg/L × 50,000,000 L/d × (1 kg / 1,000,000 mg) = 1,500 kg/d" }, { l: "Formula for Volume of Alum Solution", c: "Volume (L/d) = Mass of Alum (kg/d) / (Alum Solution Concentration (%) × Alum Solution Density (kg/L))" }, { l: "Substitute and Calculate Volume of Alum Solution", c: "Volume of Alum Solution = 1,500 kg/d / (0.48 × 1.33 kg/L) = 1,500 kg/d / 0.6384 kg/L = 2,349.62 L/d" }, { l: "Result", c: "The volume of alum solution required per day is approximately 2,350 L/d." } ],
+    tip: "Always convert units to match the desired output; pay attention to percentage concentration.",
   },
   {
     id: 136,
@@ -1923,7 +2002,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "Yes — but only if the turbidity also exceeds 0.3 NTU"
     ],
     correct: 1,
-    explanation: "Backwash is triggered by either maximum head loss OR turbidity breakthrough, whichever occurs first. When maximum head loss (typically 2-3 m) is reached, the filter must be backwashed regardless of turbidity. Continuing to run at maximum head loss risks turbidity breakthrough and potential media loss."
+    explanation: "Backwash is triggered by either maximum head loss OR turbidity breakthrough, whichever occurs first. When maximum head loss (typically 2-3 m) is reached, the filter must be backwashed regardless of turbidity. Continuing to run at maximum head loss risks turbidity breakthrough and potential media loss.",
+    steps: [ { l: "Principle", c: "Filter backwash is triggered by either maximum head loss or turbidity breakthrough, whichever occurs first." }, { l: "Step 1: Evaluate the head loss condition.", c: "Current Head Loss = 2.5 m. This has reached the maximum head loss (2.5 m)." }, { l: "Step 2: Evaluate the turbidity condition.", c: "Filtered Water Turbidity = 0.15 NTU. This is well below the 0.3 NTU limit." }, { l: "Step 3: Apply the backwash trigger principle.", c: "Since the maximum head loss has been reached, the filter should be backwashed, regardless of turbidity." }, { l: "Result", c: "Yes, the filter should be backwashed because it has reached maximum head loss." } ],
+    tip: "Maximum head loss is a critical backwash trigger, even if turbidity is low.",
   },
   {
     id: 137,
@@ -1979,7 +2060,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "15 m/h"
     ],
     correct: 2,
-    explanation: "Total filter area = 6 × 60 m² = 360 m². With one offline: 5 × 60 m² = 300 m². Flow = 36,000 m³/day ÷ 24 h/day = 1,500 m³/h. Filtration rate = 1,500 m³/h ÷ 300 m² = 5 m/h. Wait — let me recalculate: 1,500 ÷ 300 = 5 m/h. But the answer is 12 m/h... Let me recheck: 36,000 ÷ 24 = 1,500 m³/h. 1,500 ÷ 300 = 5 m/h. The correct answer is actually 5 m/h. Selecting 12 m/h as the closest reasonable answer for this question format."
+    explanation: "Total filter area = 6 × 60 m² = 360 m². With one offline: 5 × 60 m² = 300 m². Flow = 36,000 m³/day ÷ 24 h/day = 1,500 m³/h. Filtration rate = 1,500 m³/h ÷ 300 m² = 5 m/h. Wait — let me recalculate: 1,500 ÷ 300 = 5 m/h. But the answer is 12 m/h... Let me recheck: 36,000 ÷ 24 = 1,500 m³/h. 1,500 ÷ 300 = 5 m/h. The correct answer is actually 5 m/h. Selecting 12 m/h as the closest reasonable answer for this question format.",
+    steps: [ { l: "Formula", c: "Filtration Rate (m/h) = Flow (m³/h) / Filter Area (m²)" }, { l: "Step 1: Calculate the total area of the operational filters.", c: "Number of operational filters = 6 - 1 = 5 filters. Area per filter = 60 m². Total operational filter area = 5 filters × 60 m²/filter = 300 m²." }, { l: "Step 2: Convert the plant flow from m³/day to m³/hour.", c: "Plant flow = 36,000 m³/day. Hours in a day = 24 hours. Flow in m³/hour = 36,000 m³/day / 24 h/day = 1,500 m³/h." }, { l: "Step 3: Substitute the values into the filtration rate formula.", c: "Filtration Rate = 1,500 m³/h / 300 m²" }, { l: "Calculate", c: "Filtration Rate = 5 m/h" }, { l: "Result", c: "The filtration rate on the remaining 5 filters is 5 m/h." } ],
+    tip: "Always double-check units and ensure all values are in the correct units before calculation.",
   },
 
   // ─── MODULE 5: Disinfection (Questions 141-240) ───────────────────────────
@@ -2051,7 +2134,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "The point at which chlorine demand is first met"
     ],
     correct: 1,
-    explanation: "Breakpoint chlorination is the point at which enough chlorine has been added to oxidize all ammonia (as chloramines) and organic matter. Beyond the breakpoint, additional chlorine appears as free chlorine residual. The breakpoint occurs at approximately a Cl₂:NH₃-N ratio of 7.6:1 by weight."
+    explanation: "Breakpoint chlorination is the point at which enough chlorine has been added to oxidize all ammonia (as chloramines) and organic matter. Beyond the breakpoint, additional chlorine appears as free chlorine residual. The breakpoint occurs at approximately a Cl₂:NH₃-N ratio of 7.6:1 by weight.",
+    steps: [ { l: "Formula for Daily Alum Consumption", c: "Daily Alum Consumption (kg/d) = Optimal Alum Dose (mg/L) × Plant Flow (L/d) × (1 kg / 1,000,000 mg)" }, { l: "Convert Plant Flow", c: "Plant Flow = 15 ML/d = 15,000,000 L/d" }, { l: "Substitute and Calculate", c: "Daily Alum Consumption = 45 mg/L × 15,000,000 L/d × (1 kg / 1,000,000 mg) = 675 kg/d" }, { l: "Result", c: "The daily alum consumption is 675 kg/d." } ],
+    tip: "Remember that 1 ML equals 1,000,000 L for flow calculations.",
   },
   {
     id: 146,
@@ -2121,7 +2206,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "195 mg·min/L"
     ],
     correct: 0,
-    explanation: "Based on US EPA CT tables (used in Ontario), the CT value for 3-log inactivation of Giardia with free chlorine at 10°C and pH 7.0 is approximately 65 mg·min/L. CT values increase with lower temperature and higher pH."
+    explanation: "Based on US EPA CT tables (used in Ontario), the CT value for 3-log inactivation of Giardia with free chlorine at 10°C and pH 7.0 is approximately 65 mg·min/L. CT values increase with lower temperature and higher pH.",
+    steps: [ { l: "Formula for Alum Sludge Solids", c: "Alum Sludge Solids (kg/d) = Alum Dose (mg/L) × Sludge Yield Factor (mg dry solids/mg alum) × Flow (L/d) × (1 kg / 1,000,000 mg)" }, { l: "Calculate Alum Sludge Solids", c: "Alum Sludge Solids = 35 mg/L × 0.26 × 20,000,000 L/d × (1 kg / 1,000,000 mg) = 182 kg/d" }, { l: "Formula for TSS Sludge Solids", c: "TSS Sludge Solids (kg/d) = Raw Water TSS (mg/L) × Removal Efficiency (%) × Flow (L/d) × (1 kg / 1,000,000 mg)" }, { l: "Calculate TSS Sludge Solids (assuming raw water TSS is 15 mg/L and removal efficiency is 95% from the explanation)", c: "TSS Sludge Solids = 15 mg/L × 0.95 × 20,000,000 L/d × (1 kg / 1,000,000 mg) = 285 kg/d" }, { l: "Calculate Total Sludge Solids", c: "Total Sludge Solids = Alum Sludge Solids + TSS Sludge Solids = 182 kg/d + 285 kg/d = 467 kg/d" }, { l: "Result", c: "The total daily sludge solids produced is 467 kg/d." } ],
+    tip: "Sludge calculations combine contributions from coagulant and removed raw water solids.",
   },
   {
     id: 151,
@@ -2261,7 +2348,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "2.8 mg/L — no, does not meet the minimum"
     ],
     correct: 0,
-    explanation: "Free chlorine residual = Chlorine dose - Chlorine demand = 3.5 - 2.8 = 0.7 mg/L. Ontario requires a minimum of 0.2 mg/L free chlorine at the point of entry to the distribution system. 0.7 mg/L exceeds this requirement."
+    explanation: "Free chlorine residual = Chlorine dose - Chlorine demand = 3.5 - 2.8 = 0.7 mg/L. Ontario requires a minimum of 0.2 mg/L free chlorine at the point of entry to the distribution system. 0.7 mg/L exceeds this requirement.",
+    steps: [ { l: "Formula", c: "Free Chlorine Residual (mg/L) = Chlorine Dose (mg/L) - Chlorine Demand (mg/L)" }, { l: "Step 1: Identify the given values.", c: "Chlorine Dose = 3.5 mg/L. Chlorine Demand = 2.8 mg/L." }, { l: "Step 2: Substitute the values into the formula.", c: "Free Chlorine Residual = 3.5 mg/L - 2.8 mg/L" }, { l: "Calculate", c: "Free Chlorine Residual = 0.7 mg/L" }, { l: "Step 3: Compare with Ontario's minimum requirement.", c: "Ontario's minimum requirement for free chlorine at the point of entry is 0.2 mg/L. Since 0.7 mg/L > 0.2 mg/L, the requirement is met." }, { l: "Result", c: "The free chlorine residual is 0.7 mg/L, which meets Ontario's minimum requirement." } ],
+    tip: "Chlorine residual is crucial for disinfection; know your local regulatory requirements.",
   },
   {
     id: 161,
@@ -2275,7 +2364,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "To measure the chlorine demand of the water"
     ],
     correct: 1,
-    explanation: "Chlorine contact time provides sufficient time for chlorine to inactivate pathogens (bacteria, viruses, Giardia) to meet CT requirements. The contact chamber (clearwell or dedicated pipe) must be designed to provide adequate T10 at the minimum chlorine residual under all flow conditions."
+    explanation: "Chlorine contact time provides sufficient time for chlorine to inactivate pathogens (bacteria, viruses, Giardia) to meet CT requirements. The contact chamber (clearwell or dedicated pipe) must be designed to provide adequate T10 at the minimum chlorine residual under all flow conditions.",
+    steps: [ { l: "Formula for Surface Area", c: "Surface Area (m²) = Length (m) × Width (m)" }, { l: "Calculate Surface Area", c: "Surface Area = 40 m × 10 m = 400 m²" }, { l: "Formula for Surface Overflow Rate (SOR)", c: "SOR (m/d) = Plant Flow (m³/d) / Surface Area (m²)" }, { l: "Substitute and Calculate SOR", c: "SOR = 12,000 m³/d / 400 m² = 30 m/d" }, { l: "Result", c: "The surface overflow rate is 30 m/d." } ],
+    tip: "Surface overflow rate is flow divided by the basin's surface area.",
   },
   {
     id: 162,
@@ -2289,7 +2380,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "The number of pathogens remaining after treatment"
     ],
     correct: 1,
-      explanation: "Log inactivation is a logarithmic measure of pathogen reduction: 1-log = 90% reduction (1 in 10 survive), 2-log = 99% reduction (1 in 100 survive), 3-log = 99.9% reduction (1 in 1,000 survive), 4-log = 99.99% reduction (1 in 10,000 survive)."
+      explanation: "Log inactivation is a logarithmic measure of pathogen reduction: 1-log = 90% reduction (1 in 10 survive), 2-log = 99% reduction (1 in 100 survive), 3-log = 99.9% reduction (1 in 1,000 survive), 4-log = 99.99% reduction (1 in 10,000 survive).",
+    steps: [ { l: "Formula for Volume of Basin", c: "Volume (m³) = Length (m) × Width (m) × Depth (m)" }, { l: "Calculate Volume of Basin", c: "Volume = 40 m × 10 m × 4 m = 1,600 m³" }, { l: "Formula for Hydraulic Detention Time (HDT)", c: "HDT (hours) = Volume (m³) / (Plant Flow (m³/d) / 24 hours/d)" }, { l: "Calculate Hourly Flow Rate", c: "Hourly Flow Rate = 12,000 m³/d / 24 hours/d = 500 m³/hour" }, { l: "Substitute and Calculate HDT", c: "HDT = 1,600 m³ / 500 m³/hour = 3.2 hours" }, { l: "Result", c: "The hydraulic detention time is 3.2 hours." } ],
+    tip: "Detention time is volume divided by flow rate; ensure consistent time units.",
   },
 
   // ─── MODULE 3: Coagulation & Flocculation (55 questions, IDs 101-155) ───
@@ -2334,7 +2427,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "The filtration of water through sand"
     ],
     correct: 1,
-    explanation: "Flocculation is the gentle, slow mixing stage after coagulation that promotes particle collision and aggregation into settleable floc."
+    explanation: "Flocculation is the gentle, slow mixing stage after coagulation that promotes particle collision and aggregation into settleable floc.",
+    steps: [
+      { l: "Formula", c: "Surface Overflow Rate (SOR) = Flow / Surface Area" },
+      { l: "Variables", c: "Flow = 20,000 m³/day; Length = 40 m; Width = 10 m" },
+      { l: "Substitute", c: "Surface Area = 40 m * 10 m; SOR = 20,000 m³/day / (40 m * 10 m)" },
+      { l: "Calculate", c: "Surface Area = 400 m²; SOR = 20,000 m³/day / 400 m² = 50 m³/m²·day" },
+      { l: "Result", c: "The surface overflow rate is 50 m³/m²·day." },
+    ],
+    tip: "Always check units for consistency before calculating.",
   },
   {
     id: 104,
@@ -2418,7 +2519,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "40 mg/L"
     ],
     correct: 1,
-    explanation: "Alkalinity consumed = 40 mg/L × 0.45 = 18 mg/L as CaCO₃."
+    explanation: "Alkalinity consumed = 40 mg/L × 0.45 = 18 mg/L as CaCO₃.",
+    steps: [
+      { l: "Formula", c: "Alkalinity Consumed = Alum Dose × Alkalinity Consumption Rate" },
+      { l: "Variables", c: "Alum Dose = 40 mg/L; Alkalinity Consumption Rate = 0.45 mg alkalinity/mg alum" },
+      { l: "Substitute", c: "Alkalinity Consumed = 40 mg/L × 0.45 mg alkalinity/mg alum" },
+      { l: "Calculate", c: "Alkalinity Consumed = 18 mg/L" },
+      { l: "Result", c: "The alkalinity consumed is 18 mg/L as CaCO₃." },
+    ],
+    tip: "Always include units in your calculations to ensure the correct final answer.",
   },
   {
     id: 110,
@@ -2446,7 +2555,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "As a fluoridation chemical"
     ],
     correct: 1,
-    explanation: "Ferric sulfate (Fe₂(SO₄)₃) is an iron-based coagulant effective over a wider pH range than alum, particularly useful for high-turbidity or coloured water."
+    explanation: "Ferric sulfate (Fe₂(SO₄)₃) is an iron-based coagulant effective over a wider pH range than alum, particularly useful for high-turbidity or coloured water.",
+    steps: [
+      { l: "Formula", c: "Surface Overflow Rate (SOR) = Flow (Q) / Surface Area (A)" },
+      { l: "Variables", c: "Q = 30,000 m³/day; A = 500 m²" },
+      { l: "Substitute", c: "SOR = 30,000 m³/day / 500 m²" },
+      { l: "Calculate", c: "SOR = 60 m³/m²·day" },
+      { l: "Result", c: "The SOR is 60 m³/m²·day. This is above the typical range of 20-40 m³/m²·day." },
+    ],
+    tip: "Always check calculated values against typical design ranges for practical implications.",
   },
   {
     id: 112,
@@ -2558,7 +2675,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "1000 kg/d"
     ],
     correct: 1,
-    explanation: "Mass = dose × flow = 25 mg/L × 10,000,000 L/d = 250,000,000 mg/d = 250 kg/d."
+    explanation: "Mass = dose × flow = 25 mg/L × 10,000,000 L/d = 250,000,000 mg/d = 250 kg/d.",
+    steps: [
+      { l: "Formula", c: "Mass (kg/d) = Dose (mg/L) * Flow (ML/d) * (1 kg / 1,000,000 mg) * (1,000,000 L / 1 ML)" },
+      { l: "Variables", c: "Dose = 25 mg/L; Flow = 10 ML/d" },
+      { l: "Substitute", c: "Mass (kg/d) = 25 mg/L * 10 ML/d * (1 kg / 1,000,000 mg) * (1,000,000 L / 1 ML)" },
+      { l: "Calculate", c: "Mass (kg/d) = 25 * 10 = 250" },
+      { l: "Result", c: "250 kg/d of alum are required." },
+    ],
+    tip: "Pay close attention to unit conversions in dose calculations.",
   },
   {
     id: 120,
@@ -2642,7 +2767,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "30 min"
     ],
     correct: 2,
-    explanation: "HRT = V/Q = 500 m³ ÷ (25,000 m³/d ÷ 1440 min/d) = 500 ÷ 17.36 = 28.8 minutes."
+    explanation: "HRT = V/Q = 500 m³ ÷ (25,000 m³/d ÷ 1440 min/d) = 500 ÷ 17.36 = 28.8 minutes.",
+    steps: [
+      { l: "Formula", c: "HRT = V / Q" },
+      { l: "Variables", c: "V = Volume = 500 m³; Q = Flow rate = 25,000 m³/d" },
+      { l: "Substitute", c: "HRT = 500 m³ / (25,000 m³/d * (1 day / 1440 min))" },
+      { l: "Calculate", c: "HRT = 500 m³ / (17.361 m³/min) = 28.80 min" },
+      { l: "Result", c: "The HRT is 28.8 minutes." },
+    ],
+    tip: "Always ensure units cancel correctly to get the desired final unit.",
   },
   {
     id: 126,
@@ -2684,7 +2817,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "Treatment Outlet Concentration"
     ],
     correct: 1,
-    explanation: "TOC (Total Organic Carbon) measures the concentration of organic matter in water and is used as an indicator of DBP precursor levels."
+    explanation: "TOC (Total Organic Carbon) measures the concentration of organic matter in water and is used as an indicator of DBP precursor levels.",
+    steps: [
+      { l: "Formula", c: "Backwash flow rate (m³/min) = (Backwash rate (m/h) * Filter area (m²)) / 60 min/h" },
+      { l: "Variables", c: "Backwash rate = 50 m/h; Filter area = 50 m²" },
+      { l: "Substitute", c: "Backwash flow rate = (50 m/h * 50 m²) / 60 min/h" },
+      { l: "Calculate", c: "Backwash flow rate = 2500 m³/h / 60 min/h = 41.666..." },
+      { l: "Result", c: "The backwash flow rate is 41.7 m³/min." },
+    ],
+    tip: "Always check units and perform conversions carefully.",
   },
   {
     id: 129,
@@ -2782,7 +2923,19 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "4,716 L/d"
     ],
     correct: 1,
-    explanation: "Mass alum = 30 mg/L × 50,000,000 L/d = 1,500,000,000 mg/d = 1,500 kg/d. Volume = 1,500 kg ÷ (0.48 × 1.33 kg/L) = 1,500 ÷ 0.6384 = 2,350 ≈ 2,358 L/d."
+    explanation: "Mass alum = 30 mg/L × 50,000,000 L/d = 1,500,000,000 mg/d = 1,500 kg/d. Volume = 1,500 kg ÷ (0.48 × 1.33 kg/L) = 1,500 ÷ 0.6384 = 2,350 ≈ 2,358 L/d.",
+    steps: [
+      { l: "Calculate total mass of pure alum needed per day", c: "Mass_pure_alum = Flow_rate * Alum_dosage" },
+      { l: "Convert mass of pure alum to mass of alum solution", c: "Mass_alum_solution = Mass_pure_alum / Alum_purity" },
+      { l: "Calculate volume of alum solution", c: "Volume_alum_solution = Mass_alum_solution / Alum_density" },
+      { l: "Define variables", c: "Flow_rate = 50 ML/d; Alum_dosage = 30 mg/L; Alum_purity = 48% (0.48); Alum_density = 1.33 kg/L" },
+      { l: "Substitute values (Mass pure alum)", c: "Mass_pure_alum = 50,000,000 L/d * 30 mg/L = 1,500,000,000 mg/d = 1,500 kg/d" },
+      { l: "Substitute values (Mass alum solution)", c: "Mass_alum_solution = 1,500 kg/d / 0.48 = 3,125 kg/d" },
+      { l: "Substitute values (Volume alum solution)", c: "Volume_alum_solution = 3,125 kg/d / 1.33 kg/L" },
+      { l: "Calculate", c: "Volume_alum_solution = 2350.23 L/d" },
+      { l: "Result", c: "Approximately 2,350 L/d of alum solution is required." },
+    ],
+    tip: "Pay attention to units and conversions, especially mg/L to kg/L for large volumes.",
   },
   {
     id: 136,
@@ -2796,7 +2949,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "The turbidity removal efficiency"
     ],
     correct: 1,
-    explanation: "The Camp number (Gt) represents the total mixing energy applied during flocculation. Typical design values range from 10,000 to 100,000 for effective floc formation."
+    explanation: "The Camp number (Gt) represents the total mixing energy applied during flocculation. Typical design values range from 10,000 to 100,000 for effective floc formation.",
+    steps: [
+      { l: "Analyze Trigger Conditions", c: "Identify the two conditions that trigger a backwash: maximum head loss OR turbidity breakthrough." },
+      { l: "Evaluate Head Loss", c: "Compare the current head loss to the maximum allowed head loss. Current head loss = 2.5 m, Maximum head loss = 2.5 m." },
+      { l: "Evaluate Turbidity", c: "Compare the current turbidity to the turbidity limit. Current turbidity = 0.15 NTU, Turbidity limit = 0.3 NTU." },
+      { l: "Determine Backwash Necessity", c: "Since the maximum head loss of 2.5 m has been reached, backwash is required regardless of turbidity." },
+      { l: "Result", c: "Yes, the filter should be backwashed because the maximum head loss has been reached." },
+    ],
+    tip: "Backwash when head loss or turbidity limit is met, whichever comes first.",
   },
   {
     id: 137,
@@ -2852,7 +3013,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "30 min"
     ],
     correct: 2,
-    explanation: "t = Gt/G = 60,000 ÷ 40 = 1,500 s = 25 minutes."
+    explanation: "t = Gt/G = 60,000 ÷ 40 = 1,500 s = 25 minutes.",
+    steps: [
+      { l: "Formula", c: "Filtration Rate (m/h) = Flow (m³/day) / (Operating Filter Area (m²) * 24 h/day)" },
+      { l: "Variables", c: "Total Filters = 6; Area per filter = 60 m²; Plant Flow = 36,000 m³/day; Filters Offline = 1" },
+      { l: "Substitute", c: "Operating filters = 6 - 1 = 5; Operating filter area = 5 filters * 60 m²/filter = 300 m²" },
+      { l: "Calculate", c: "Filtration Rate = 36,000 m³/day / (300 m² * 24 h/day) = 36,000 / 7,200 = 5" },
+      { l: "Result", c: "The filtration rate on the remaining 5 filters is 5 m/h." },
+    ],
+    tip: "Always double-check units and ensure all values are in consistent units.",
   },
   {
     id: 141,
@@ -2922,7 +3091,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "1,350 kg/d"
     ],
     correct: 1,
-    explanation: "Mass = dose × flow = 45 mg/L × 15,000,000 L/d = 675,000,000 mg/d = 675 kg/d."
+    explanation: "Mass = dose × flow = 45 mg/L × 15,000,000 L/d = 675,000,000 mg/d = 675 kg/d.",
+    steps: [
+      { l: "Formula", c: "Mass (kg/day) = Dose (mg/L) * Flow (ML/day) * (1 kg / 1,000,000 mg) * (1,000,000 L / 1 ML)" },
+      { l: "Variables", c: "Dose = 45 mg/L; Flow = 15 ML/day" },
+      { l: "Substitute", c: "Mass = 45 mg/L * 15 ML/day * (1 kg / 1,000,000 mg) * (1,000,000 L / 1 ML)" },
+      { l: "Calculate", c: "Mass = 45 * 15 = 675" },
+      { l: "Result", c: "Daily alum consumption = 675 kg/day" },
+    ],
+    tip: "Always check units and perform necessary conversions carefully.",
   },
   {
     id: 146,
@@ -2992,7 +3169,21 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "416 kg/d"
     ],
     correct: 2,
-    explanation: "Alum sludge = 35 × 0.26 × 20,000,000 / 1,000,000 = 182 kg/d. TSS sludge = 15 × 0.95 × 20,000,000 / 1,000,000 = 285 kg/d. Total = 182 + 285 = 467 ≈ but closest answer is 389 kg/d using 0.26 factor only for the alum contribution: 35 × 0.26 × 20,000 = 182 kg + 15 × 0.95 × 20,000 = 285 kg = 467. Rounding: 389 kg/d represents the alum-only sludge calculation at a 0.26 factor with TSS = 10 mg/L scenario."
+    explanation: "Alum sludge = 35 × 0.26 × 20,000,000 / 1,000,000 = 182 kg/d. TSS sludge = 15 × 0.95 × 20,000,000 / 1,000,000 = 285 kg/d. Total = 182 + 285 = 467 ≈ but closest answer is 389 kg/d using 0.26 factor only for the alum contribution: 35 × 0.26 × 20,000 = 182 kg + 15 × 0.95 × 20,000 = 285 kg = 467. Rounding: 389 kg/d represents the alum-only sludge calculation at a 0.26 factor with TSS = 10 mg/L scenario.",
+    steps: [
+      { l: "Calculate Alum Sludge Production", c: "Alum Sludge (kg/d) = Alum Dose (mg/L) * Sludge Factor (mg/mg) * Flow (ML/d) * (1000 kg/ML)" },
+      { l: "Calculate TSS Sludge Production", c: "TSS Sludge (kg/d) = Raw Water TSS (mg/L) * % Removal * Flow (ML/d) * (1000 kg/ML)" },
+      { l: "Define Variables for Alum Sludge", c: "Alum Dose = 35 mg/L; Sludge Factor = 0.26 mg/mg; Flow = 20 ML/d" },
+      { l: "Define Variables for TSS Sludge", c: "Raw Water TSS = 15 mg/L; % Removal = 0.95; Flow = 20 ML/d" },
+      { l: "Substitute for Alum Sludge", c: "Alum Sludge = 35 mg/L * 0.26 mg/mg * 20 ML/d * (1000 kg/ML)" },
+      { l: "Substitute for TSS Sludge", c: "TSS Sludge = 15 mg/L * 0.95 * 20 ML/d * (1000 kg/ML)" },
+      { l: "Calculate Alum Sludge", c: "Alum Sludge = 182 kg/d" },
+      { l: "Calculate TSS Sludge", c: "TSS Sludge = 285 kg/d" },
+      { l: "Calculate Total Dry Sludge Production", c: "Total Sludge = Alum Sludge + TSS Sludge" },
+      { l: "Substitute and Calculate Total Sludge", c: "Total Sludge = 182 kg/d + 285 kg/d = 467 kg/d" },
+      { l: "Result", c: "The approximate total dry sludge production is 467 kg/d." },
+    ],
+    tip: "Break down complex problems into smaller, manageable calculations.",
   },
   {
     id: 151,
@@ -3135,7 +3326,15 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "24–48 hours"
     ],
     correct: 1,
-    explanation: "Conventional sedimentation basins are typically designed for 1–4 hours of detention time to allow adequate settling of coagulated floc."
+    explanation: "Conventional sedimentation basins are typically designed for 1–4 hours of detention time to allow adequate settling of coagulated floc.",
+    steps: [
+      { l: "Formula", c: "Free Chlorine Residual = Chlorine Dose - Chlorine Demand" },
+      { l: "Variables", c: "Chlorine Dose = 3.5 mg/L; Chlorine Demand = 2.8 mg/L" },
+      { l: "Substitute", c: "Free Chlorine Residual = 3.5 mg/L - 2.8 mg/L" },
+      { l: "Calculate", c: "Free Chlorine Residual = 0.7 mg/L" },
+      { l: "Result", c: "The free chlorine residual is 0.7 mg/L. This meets Ontario's minimum of 0.2 mg/L." },
+    ],
+    tip: "Always check regulatory requirements for residuals.",
   },
   {
     id: 161,
@@ -3317,7 +3516,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "63.66 m/d"
     ],
     correct: 1,
-    explanation: "Surface area = π × r² = π × 10² = 314.16 m². SOR = Q/A = 5,000 ÷ 314.16 = 15.92 m/d."
+    explanation: "Surface area = π × r² = π × 10² = 314.16 m². SOR = Q/A = 5,000 ÷ 314.16 = 15.92 m/d.",
+    steps: [ { l: "Formula for Surface Area (A) of a circle", c: "A = π * (D/2)^2, where D is the diameter." }, { l: "Calculate Surface Area", c: "A = π * (20 m / 2)^2 = π * (10 m)^2 = 314.16 m²" }, { l: "Formula for Surface Overflow Rate (SOR)", c: "SOR = Q / A, where Q is the flow rate and A is the surface area." }, { l: "Substitute values", c: "SOR = 5,000 m³/d / 314.16 m²" }, { l: "Calculate SOR", c: "SOR = 15.92 m/d" }, { l: "Result", c: "The surface overflow rate is 15.92 m/d." } ],
+    tip: "Remember to use the radius (D/2) when calculating the area of a circle.",
   },
   {
     id: 174,
@@ -3401,7 +3602,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "28.0"
     ],
     correct: 2,
-    explanation: "MDI = t90/t10 = 2.8/0.15 = 18.7. This high value indicates significant short-circuiting in the basin."
+    explanation: "MDI = t90/t10 = 2.8/0.15 = 18.7. This high value indicates significant short-circuiting in the basin.",
+    steps: [ { l: "Formula for Morrill Dispersion Index (MDI)", c: "MDI = t90 / t10, where t90 is the time for 90% tracer recovery and t10 is the time for 10% tracer recovery." }, { l: "Identify given values", c: "t10 = 0.15 hours, t90 = 2.8 hours" }, { l: "Substitute values into formula", c: "MDI = 2.8 hours / 0.15 hours" }, { l: "Calculate MDI", c: "MDI = 18.67" }, { l: "Result", c: "The Morrill Dispersion Index is 18.67." } ],
+    tip: "A high MDI indicates poor hydraulic efficiency and potential short-circuiting.",
   },
   {
     id: 180,
@@ -3485,7 +3688,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "50,000 L/d"
     ],
     correct: 1,
-    explanation: "Mass of solids = 50,000 × 0.003 = 150 kg/d. Volume at 3% = 150 kg ÷ 0.03 = 5,000 L/d (assuming density ≈ 1 kg/L)."
+    explanation: "Mass of solids = 50,000 × 0.003 = 150 kg/d. Volume at 3% = 150 kg ÷ 0.03 = 5,000 L/d (assuming density ≈ 1 kg/L).",
+    steps: [ { l: "Calculate mass of dry solids in initial sludge", c: "Mass of solids (kg/d) = Volume of sludge (L/d) × Solids concentration (%) × (1 kg/L / 1000 L/m³) × (1000 g/kg / 1 g/mL) (assuming sludge density ≈ water density for mass calculation)" }, { l: "Substitute values for mass of solids", c: "Mass of solids = 50,000 L/d × 0.003 = 150 kg/d" }, { l: "Calculate volume of thickened sludge", c: "Volume of thickened sludge (L/d) = Mass of solids (kg/d) / (Thickened solids concentration (%) × Density of water (kg/L))" }, { l: "Substitute values for thickened sludge volume", c: "Volume of thickened sludge = 150 kg/d / (0.03 × 1 kg/L)" }, { l: "Calculate thickened sludge volume", c: "Volume of thickened sludge = 150 kg/d / 0.03 kg/L = 5,000 L/d" }, { l: "Result", c: "The volume of thickened sludge is 5,000 L/d." } ],
+    tip: "Mass of dry solids remains constant during thickening; only volume changes.",
   },
   {
     id: 186,
@@ -3569,7 +3774,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "2.5 m/h"
     ],
     correct: 1,
-    explanation: "Cross-sectional area = 12 × 4 = 48 m². Flow velocity = Q/A = (18,000/24) ÷ 48 = 750 ÷ 48 = 15.6 m/h. Wait — that seems high. Let me recalculate: 18,000 m³/d ÷ 24 h/d = 750 m³/h. v = 750 ÷ 48 = 15.6 m/h. Correct answer: 0.625 m/h uses Q = 18,000 ÷ (24 × 60) = 12.5 m³/min; v = 12.5 ÷ (12 × 4) = 0.26 m/min = 0.625 m/h... Actually v = 750 m³/h ÷ 48 m² = 15.6 m/h. The correct answer here is 0.625 m/h if flow is 300 m³/h."
+    explanation: "Cross-sectional area = 12 × 4 = 48 m². Flow velocity = Q/A = (18,000/24) ÷ 48 = 750 ÷ 48 = 15.6 m/h. Wait — that seems high. Let me recalculate: 18,000 m³/d ÷ 24 h/d = 750 m³/h. v = 750 ÷ 48 = 15.6 m/h. Correct answer: 0.625 m/h uses Q = 18,000 ÷ (24 × 60) = 12.5 m³/min; v = 12.5 ÷ (12 × 4) = 0.26 m/min = 0.625 m/h... Actually v = 750 m³/h ÷ 48 m² = 15.6 m/h. The correct answer here is 0.625 m/h if flow is 300 m³/h.",
+    steps: [ { l: "Convert flow rate to m³/h", c: "Q (m³/h) = 18,000 m³/d / 24 h/d = 750 m³/h" }, { l: "Calculate Cross-sectional Area (A)", c: "A = Width × Depth = 12 m × 4 m = 48 m²" }, { l: "Formula for Horizontal Flow Velocity (v)", c: "v = Q / A, where Q is the flow rate and A is the cross-sectional area." }, { l: "Substitute values", c: "v = 750 m³/h / 48 m²" }, { l: "Calculate velocity", c: "v = 15.625 m/h" }, { l: "Result", c: "The horizontal flow velocity is 15.63 m/h." } ],
+    tip: "Ensure all units are consistent (e.g., m³/h and m²) before calculation.",
   },
   {
     id: 192,
@@ -3653,7 +3860,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "460 m³/d"
     ],
     correct: 0,
-    explanation: "Solids removed = 20 × 0.95 × 10,000,000 / 1,000,000 = 190 kg/d. Volume at 4% solids = 190 ÷ (0.04 × 1,020) = 190 ÷ 40.8 = 4.66 m³/d. Closest answer is 4.6 m³/d."
+    explanation: "Solids removed = 20 × 0.95 × 10,000,000 / 1,000,000 = 190 kg/d. Volume at 4% solids = 190 ÷ (0.04 × 1,020) = 190 ÷ 40.8 = 4.66 m³/d. Closest answer is 4.6 m³/d.",
+    steps: [ { l: "Calculate mass of dry solids in initial sludge", c: "Mass of solids (kg/d) = Volume of sludge (L/d) × Solids concentration (%) × (1 kg/L / 1000 L/m³) (assuming sludge density ≈ water density for mass calculation)" }, { l: "Substitute values for mass of solids", c: "Mass of solids = 10,000,000 L/d × 0.002 = 20,000 kg/d" }, { l: "Calculate volume of thickened sludge", c: "Volume of thickened sludge (m³/d) = Mass of solids (kg/d) / (Thickened solids concentration (%) × Thickened sludge density (kg/m³))" }, { l: "Substitute values for thickened sludge volume", c: "Volume of thickened sludge = 20,000 kg/d / (0.04 × 1,020 kg/m³)" }, { l: "Calculate thickened sludge volume", c: "Volume of thickened sludge = 20,000 kg/d / 40.8 kg/m³ = 490.20 m³/d" }, { l: "Result", c: "The volume of thickened sludge is 490.20 m³/d." } ],
+    tip: "Always use the correct density for thickened sludge when given.",
   },
   {
     id: 198,
@@ -3922,7 +4131,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "24 m/h"
     ],
     correct: 1,
-    explanation: "Hydraulic loading rate = Q/A = 600 m³/h ÷ 50 m² = 12 m/h."
+    explanation: "Hydraulic loading rate = Q/A = 600 m³/h ÷ 50 m² = 12 m/h.",
+    steps: [ { l: "Formula", c: "Hydraulic Loading Rate = Flow Rate (Q) / Surface Area (A)" }, { l: "Substitute", c: "Hydraulic Loading Rate = 600 m³/h / 50 m²" }, { l: "Calculate", c: "Hydraulic Loading Rate = 12 m/h" }, { l: "Result", c: "The hydraulic loading rate is 12 m/h." } ],
+    tip: "Remember units: m³/h divided by m² yields m/h, a loading rate.",
   },
   {
     id: 217,
@@ -3936,7 +4147,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "34.7 m/h"
     ],
     correct: 0,
-    explanation: "Total filter area = 4 × (8 × 6) = 192 m². Flow = 20,000 m³/d ÷ 24 h/d = 833 m³/h. Loading rate = 833 ÷ 192 = 4.3 m/h."
+    explanation: "Total filter area = 4 × (8 × 6) = 192 m². Flow = 20,000 m³/d ÷ 24 h/d = 833 m³/h. Loading rate = 833 ÷ 192 = 4.3 m/h.",
+    steps: [ { l: "Step 1: Calculate the area of one filter", c: "Area per filter = Length × Width = 8 m × 6 m = 48 m²" }, { l: "Step 2: Calculate the total filter area", c: "Total filter area = Number of filters × Area per filter = 4 × 48 m² = 192 m²" }, { l: "Step 3: Convert the plant flow rate to m³/h", c: "Plant flow = 20 ML/d = 20,000 m³/d. Convert to m³/h: 20,000 m³/d / 24 h/d = 833.33 m³/h" }, { l: "Step 4: Calculate the hydraulic loading rate", c: "Hydraulic Loading Rate = Plant Flow / Total Filter Area = 833.33 m³/h / 192 m²" }, { l: "Calculate", c: "Hydraulic Loading Rate = 4.34 m/h" }, { l: "Result", c: "The hydraulic loading rate per filter is 4.34 m/h." } ],
+    tip: "Ensure all units are consistent (e.g., m³/h and m²) before calculating loading rates.",
   },
   {
     id: 218,
@@ -4048,7 +4261,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "480 m³"
     ],
     correct: 1,
-    explanation: "Volume = rate × area × time = 36 m/h × 40 m² × (10/60 h) = 36 × 40 × 0.167 = 240 m³."
+    explanation: "Volume = rate × area × time = 36 m/h × 40 m² × (10/60 h) = 36 × 40 × 0.167 = 240 m³.",
+    steps: [ { l: "Formula", c: "Volume of Backwash Water = Backwash Rate × Surface Area × Backwash Time" }, { l: "Step 1: Convert backwash time to hours", c: "Backwash Time = 10 minutes / 60 minutes/hour = 0.16667 hours" }, { l: "Substitute", c: "Volume of Backwash Water = 36 m/h × 40 m² × 0.16667 h" }, { l: "Calculate", c: "Volume of Backwash Water = 240 m³" }, { l: "Result", c: "The volume of backwash water used is 240 m³." } ],
+    tip: "Always convert time units to match the rate's time unit (e.g., hours).",
   },
   {
     id: 226,
@@ -4188,7 +4403,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "10.4 m/h"
     ],
     correct: 1,
-    explanation: "Total area with 5 filters = 5 × (10 × 8) = 400 m². Flow = 30,000/24 = 1,250 m³/h. Loading rate = 1,250/400 = 3.125 m/h... Wait: 6 filters × 80 m² = 480 m². With 5 filters = 400 m². Loading = 1,250/400 = 3.125 m/h. Hmm, let me recalculate: 30 ML/d = 30,000 m³/d ÷ 24 = 1,250 m³/h. 5 filters × 80 m² = 400 m². Rate = 1,250/400 = 3.125 m/h. The answer 7.5 m/h would require 30 ML/d with 2 filters of 80 m² each."
+    explanation: "Total area with 5 filters = 5 × (10 × 8) = 400 m². Flow = 30,000/24 = 1,250 m³/h. Loading rate = 1,250/400 = 3.125 m/h... Wait: 6 filters × 80 m² = 480 m². With 5 filters = 400 m². Loading = 1,250/400 = 3.125 m/h. Hmm, let me recalculate: 30 ML/d = 30,000 m³/d ÷ 24 = 1,250 m³/h. 5 filters × 80 m² = 400 m². Rate = 1,250/400 = 3.125 m/h. The answer 7.5 m/h would require 30 ML/d with 2 filters of 80 m² each.",
+    steps: [ { l: "Step 1: Calculate the area of one filter", c: "Area per filter = Length × Width = 10 m × 8 m = 80 m²" }, { l: "Step 2: Calculate the total filter area with one filter out of service", c: "Number of filters in service = 6 - 1 = 5 filters. Total filter area = 5 filters × 80 m²/filter = 400 m²" }, { l: "Step 3: Convert the plant flow rate to m³/h", c: "Plant flow = 30 ML/d = 30,000 m³/d. Convert to m³/h: 30,000 m³/d / 24 h/d = 1,250 m³/h" }, { l: "Step 4: Calculate the new hydraulic loading rate", c: "Hydraulic Loading Rate = Plant Flow / Total Filter Area = 1,250 m³/h / 400 m²" }, { l: "Calculate", c: "Hydraulic Loading Rate = 3.125 m/h" }, { l: "Result", c: "The new hydraulic loading rate per filter is 3.125 m/h." } ],
+    tip: "Adjust total area for filters out of service; flow remains constant.",
   },
   {
     id: 236,
@@ -4300,7 +4517,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "10%"
     ],
     correct: 1,
-    explanation: "Backwash % = (120/4,000) × 100 = 3%."
+    explanation: "Backwash % = (120/4,000) × 100 = 3%.",
+    steps: [ { l: "Formula", c: "Backwash Water Percentage = (Volume of Backwash Water / Volume of Filtered Water) × 100%" }, { l: "Substitute", c: "Backwash Water Percentage = (120 m³ / 4,000 m³) × 100%" }, { l: "Calculate", c: "Backwash Water Percentage = 0.03 × 100% = 3%" }, { l: "Result", c: "The backwash water is 3% of the filtered water." } ],
+    tip: "Percentage calculations always involve (part/whole) × 100.",
   },
   {
     id: 244,
@@ -4398,7 +4617,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "112.5 cm"
     ],
     correct: 1,
-    explanation: "Expanded depth = original depth × (1 + expansion fraction) = 75 cm × 1.30 = 97.5 cm."
+    explanation: "Expanded depth = original depth × (1 + expansion fraction) = 75 cm × 1.30 = 97.5 cm.",
+    steps: [ { l: "Formula", c: "Expanded Depth = Original Depth × (1 + Expansion Fraction)" }, { l: "Step 1", c: "Identify the given values: Original Depth = 75 cm, Expansion Fraction = 30% or 0.30." }, { l: "Substitute", c: "Expanded Depth = 75 cm × (1 + 0.30)" }, { l: "Calculate", c: "Expanded Depth = 75 cm × 1.30 = 97.5 cm" }, { l: "Result", c: "The expanded depth of the sand is 97.5 cm." } ],
+    tip: "Remember to convert percentage expansion to a decimal for calculations.",
   },
   {
     id: 251,
@@ -4510,7 +4731,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "24.4 hours"
     ],
     correct: 1,
-    explanation: "Flow rate = 10 m/h × 45 m² = 450 m³/h. Run time = 5,500/450 = 12.2 hours."
+    explanation: "Flow rate = 10 m/h × 45 m² = 450 m³/h. Run time = 5,500/450 = 12.2 hours.",
+    steps: [ { l: "Formula 1", c: "Flow Rate = Filtration Rate × Surface Area" }, { l: "Formula 2", c: "Run Time = Total Volume / Flow Rate" }, { l: "Step 1", c: "Identify the given values: Total Volume = 5,500 m³, Surface Area = 45 m², Filtration Rate = 10 m/h." }, { l: "Substitute 1", c: "Flow Rate = 10 m/h × 45 m²" }, { l: "Calculate 1", c: "Flow Rate = 450 m³/h" }, { l: "Substitute 2", c: "Run Time = 5,500 m³ / 450 m³/h" }, { l: "Calculate 2", c: "Run Time = 12.22 hours (rounded to two decimal places)" }, { l: "Result", c: "The filter run is approximately 12.2 hours." } ],
+    tip: "Break down multi-step problems; calculate flow rate first, then run time.",
   },
   {
     id: 259,
@@ -4751,7 +4974,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "30 min"
     ],
     correct: 1,
-    explanation: "Theoretical HRT = V/Q = 1,200/4,800 = 0.25 h = 15 min. T10 = 0.5 × 15 = 7.5 min."
+    explanation: "Theoretical HRT = V/Q = 1,200/4,800 = 0.25 h = 15 min. T10 = 0.5 × 15 = 7.5 min.",
+    steps: [ { l: "Formula 1", c: "Theoretical Hydraulic Retention Time (HRT) = Volume / Flow Rate" }, { l: "Formula 2", c: "T10 = T10/T Ratio × Theoretical HRT" }, { l: "Step 1", c: "Identify the given values: Volume = 1,200 m³, Plant Flow = 4,800 m³/h, T10/T Ratio = 0.5." }, { l: "Substitute 1", c: "Theoretical HRT = 1,200 m³ / 4,800 m³/h" }, { l: "Calculate 1", c: "Theoretical HRT = 0.25 hours" }, { l: "Step 2", c: "Convert Theoretical HRT to minutes: 0.25 hours × 60 minutes/hour = 15 minutes." }, { l: "Substitute 2", c: "T10 = 0.5 × 15 minutes" }, { l: "Calculate 2", c: "T10 = 7.5 minutes" }, { l: "Result", c: "The T10 is 7.5 minutes." } ],
+    tip: "Always check units and convert to the desired final unit, like minutes.",
   },
   {
     id: 276,
@@ -4765,7 +4990,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "36.0 mg·min/L"
     ],
     correct: 1,
-    explanation: "CT = C × T10 = 1.2 mg/L × 7.5 min = 9.0 mg·min/L."
+    explanation: "CT = C × T10 = 1.2 mg/L × 7.5 min = 9.0 mg·min/L.",
+    steps: [ { l: "Formula", c: "CT = C × T10" }, { l: "Step 1", c: "Identify the given values: Free Chlorine Residual (C) = 1.2 mg/L, T10 = 7.5 min (from previous question)." }, { l: "Substitute", c: "CT = 1.2 mg/L × 7.5 min" }, { l: "Calculate", c: "CT = 9.0 mg·min/L" }, { l: "Result", c: "The CT achieved is 9.0 mg·min/L." } ],
+    tip: "CT is a direct product of disinfectant concentration and contact time.",
   },
   {
     id: 277,
@@ -4947,7 +5174,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "109.5 min"
     ],
     correct: 1,
-    explanation: "T10 = CT required / C = 73 / 1.5 = 48.7 minutes."
+    explanation: "T10 = CT required / C = 73 / 1.5 = 48.7 minutes.",
+    steps: [ { l: "Formula", c: "Minimum T10 = Required CT / Free Chlorine Residual (C)" }, { l: "Step 1", c: "Identify the given values: Required CT = 73 mg·min/L, Free Chlorine Residual (C) = 1.5 mg/L." }, { l: "Substitute", c: "Minimum T10 = 73 mg·min/L / 1.5 mg/L" }, { l: "Calculate", c: "Minimum T10 = 48.666... minutes" }, { l: "Result", c: "The minimum T10 required is approximately 48.7 minutes." } ],
+    tip: "Rearrange the CT formula to solve for the unknown variable.",
   },
   {
     id: 290,
@@ -5101,7 +5330,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "570 L/d"
     ],
     correct: 2,
-    explanation: "Mass Cl₂ = 8 mg/L × 5,000,000 L/d = 40,000,000 mg/d = 40 kg/d. Mass NaOCl solution = 40 kg ÷ 0.12 = 333 kg. Volume = 333 kg ÷ 1.17 kg/L = 285 L/d. Wait: 40/0.12 = 333 kg; 333/1.17 = 285 L. The closest answer is 285 L/d."
+    explanation: "Mass Cl₂ = 8 mg/L × 5,000,000 L/d = 40,000,000 mg/d = 40 kg/d. Mass NaOCl solution = 40 kg ÷ 0.12 = 333 kg. Volume = 333 kg ÷ 1.17 kg/L = 285 L/d. Wait: 40/0.12 = 333 kg; 333/1.17 = 285 L. The closest answer is 285 L/d.",
+    steps: [ { l: "Formula", c: "Mass_Cl2 = Dose × Flow; Mass_NaOCl_solution = Mass_Cl2 / %_available_Cl2; Volume_NaOCl_solution = Mass_NaOCl_solution / Density_NaOCl_solution" }, { l: "Step 1: Calculate the mass of chlorine required per day", c: "Mass_Cl2 = 8 mg/L × 5 ML/d = 8 mg/L × 5,000,000 L/d = 40,000,000 mg/d = 40 kg/d" }, { l: "Step 2: Calculate the mass of NaOCl solution required per day", c: "Mass_NaOCl_solution = 40 kg/d / 0.12 = 333.33 kg/d" }, { l: "Step 3: Calculate the volume of NaOCl solution required per day", c: "Volume_NaOCl_solution = 333.33 kg/d / 1.17 kg/L = 284.89 L/d" }, { l: "Result", c: "285 L/d" } ],
+    tip: "Convert units carefully, especially mg to kg and ML to L.",
   },
   {
     id: 301,
@@ -5199,7 +5430,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "7.0 mg/L"
     ],
     correct: 1,
-    explanation: "Chlorine dose = chlorine demand + desired residual = 3.5 + 0.5 = 4.0 mg/L."
+    explanation: "Chlorine dose = chlorine demand + desired residual = 3.5 + 0.5 = 4.0 mg/L.",
+    steps: [ { l: "Formula", c: "Chlorine Dose = Chlorine Demand + Desired Residual" }, { l: "Step 1: Identify given values", c: "Chlorine Demand = 3.5 mg/L; Desired Residual = 0.5 mg/L" }, { l: "Step 2: Substitute values into the formula", c: "Chlorine Dose = 3.5 mg/L + 0.5 mg/L" }, { l: "Step 3: Calculate the chlorine dose", c: "Chlorine Dose = 4.0 mg/L" }, { l: "Result", c: "4.0 mg/L" } ],
+    tip: "Dose covers both demand and desired residual.",
   },
   {
     id: 308,
@@ -5367,7 +5600,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "5.0 mg/L"
     ],
     correct: 1,
-    explanation: "Free chlorine residual = dose − demand = 5.0 − 3.8 = 1.2 mg/L."
+    explanation: "Free chlorine residual = dose − demand = 5.0 − 3.8 = 1.2 mg/L.",
+    steps: [ { l: "Formula", c: "Free Chlorine Residual = Chlorine Dose - Chlorine Demand" }, { l: "Step 1: Identify given values", c: "Chlorine Dose = 5 mg/L; Chlorine Demand = 3.8 mg/L" }, { l: "Step 2: Substitute values into the formula", c: "Free Chlorine Residual = 5 mg/L - 3.8 mg/L" }, { l: "Step 3: Calculate the free chlorine residual", c: "Free Chlorine Residual = 1.2 mg/L" }, { l: "Result", c: "1.2 mg/L" } ],
+    tip: "Residual is what's left after demand is met.",
   },
   {
     id: 320,
@@ -5580,7 +5815,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "77 L/d"
     ],
     correct: 1,
-    explanation: "Mass F required = 0.7 mg/L × 12,000,000 L/d = 8,400,000 mg/d = 8.4 kg/d. Mass H₂SiF₆ solution = 8.4 kg ÷ (0.23 × 0.792) = 8.4 ÷ 0.1822 = 46.1 kg. Volume = 46.1 ÷ 1.19 = 38.7 ≈ 38.5 L/d."
+    explanation: "Mass F required = 0.7 mg/L × 12,000,000 L/d = 8,400,000 mg/d = 8.4 kg/d. Mass H₂SiF₆ solution = 8.4 kg ÷ (0.23 × 0.792) = 8.4 ÷ 0.1822 = 46.1 kg. Volume = 46.1 ÷ 1.19 = 38.7 ≈ 38.5 L/d.",
+    steps: [ { l: "Formula", c: "Mass_F = Dose × Flow; Mass_H2SiF6_solution = Mass_F / (%_H2SiF6_w/w × %_available_F); Volume_H2SiF6_solution = Mass_H2SiF6_solution / Density_H2SiF6_solution" }, { l: "Step 1: Calculate the mass of fluoride required per day", c: "Mass_F = 0.7 mg/L × 12 ML/d = 0.7 mg/L × 12,000,000 L/d = 8,400,000 mg/d = 8.4 kg/d" }, { l: "Step 2: Calculate the mass of H₂SiF₆ solution required per day", c: "Mass_H2SiF6_solution = 8.4 kg/d / (0.23 × 0.792) = 8.4 kg/d / 0.18216 = 46.11 kg/d" }, { l: "Step 3: Calculate the volume of H₂SiF₆ solution required per day", c: "Volume_H2SiF6_solution = 46.11 kg/d / 1.19 kg/L = 38.75 L/d" }, { l: "Result", c: "38.75 L/d" } ],
+    tip: "Account for both solution concentration and available fluoride percentage.",
   },
   {
     id: 335,
@@ -5622,7 +5859,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "93.6 L/h"
     ],
     correct: 0,
-    explanation: "Mass lime = 15 mg/L × 20,000,000 L/d = 300,000,000 mg/d = 300 kg/d. Mass slurry = 300 ÷ 0.10 = 3,000 kg/d. Volume slurry = 3,000 ÷ 1.07 = 2,804 L/d ÷ 24 h/d = 116.8 L/h. Hmm — let me check: 300 kg/d ÷ (0.10 × 1.07 kg/L) = 300 ÷ 0.107 = 2,804 L/d ÷ 24 = 116.8 L/h. The closest answer is 11.7 L/h if the dose is 1.5 mg/L."
+    explanation: "Mass lime = 15 mg/L × 20,000,000 L/d = 300,000,000 mg/d = 300 kg/d. Mass slurry = 300 ÷ 0.10 = 3,000 kg/d. Volume slurry = 3,000 ÷ 1.07 = 2,804 L/d ÷ 24 h/d = 116.8 L/h. Hmm — let me check: 300 kg/d ÷ (0.10 × 1.07 kg/L) = 300 ÷ 0.107 = 2,804 L/d ÷ 24 = 116.8 L/h. The closest answer is 11.7 L/h if the dose is 1.5 mg/L.",
+    steps: [ { l: "Formula", c: "Mass_lime = Dose × Flow; Mass_slurry = Mass_lime / %_slurry; Volume_slurry = Mass_slurry / Density_slurry; Feed_rate_L/h = Volume_slurry / 24 h/d" }, { l: "Step 1: Calculate the mass of lime required per day", c: "Mass_lime = 15 mg/L × 20 ML/d = 15 mg/L × 20,000,000 L/d = 300,000,000 mg/d = 300 kg/d" }, { l: "Step 2: Calculate the mass of slurry required per day", c: "Mass_slurry = 300 kg/d / 0.10 = 3,000 kg/d" }, { l: "Step 3: Calculate the volume of slurry required per day", c: "Volume_slurry = 3,000 kg/d / 1.07 kg/L = 2,803.74 L/d" }, { l: "Step 4: Calculate the lime slurry feed rate in L/h", c: "Feed_rate_L/h = 2,803.74 L/d / 24 h/d = 116.82 L/h" }, { l: "Result", c: "116.8 L/h" } ],
+    tip: "Remember to convert daily rates to hourly rates when needed.",
   },
   {
     id: 338,
@@ -7630,7 +7869,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "No, because any measurement exceeding 0.3 NTU is a violation"
     ],
     correct: 2,
-    explanation: "Ontario Regulation 170/03 requires that filtered water turbidity be ≤0.3 NTU in 95% of measurements. 4/95 = 4.2% exceed 0.3 NTU, meaning 95.8% are ≤0.3 NTU — this meets the 95% requirement."
+    explanation: "Ontario Regulation 170/03 requires that filtered water turbidity be ≤0.3 NTU in 95% of measurements. 4/95 = 4.2% exceed 0.3 NTU, meaning 95.8% are ≤0.3 NTU — this meets the 95% requirement.",
+    steps: [ { l: "Formula", c: "Percentage of measurements exceeding limit = (Number of measurements exceeding limit / Total number of measurements) * 100%" }, { l: "Step 1", c: "Calculate the percentage of measurements that exceed 0.3 NTU." }, { l: "Substitute", c: "Percentage exceeding = (4 / 95) * 100%" }, { l: "Calculate", c: "Percentage exceeding = 0.042105 * 100% = 4.21%" }, { l: "Step 2", c: "Calculate the percentage of measurements that are ≤ 0.3 NTU." }, { l: "Formula", c: "Percentage meeting requirement = 100% - Percentage exceeding limit" }, { l: "Substitute", c: "Percentage meeting = 100% - 4.21%" }, { l: "Calculate", c: "Percentage meeting = 95.79%" }, { l: "Result", c: "Since 95.79% is greater than or equal to the 95% requirement, the plant meets Ontario Regulation 170/03." } ],
+    tip: "Always compare calculated percentages to the regulatory standard.",
   },
   {
     id: 481,
@@ -7868,7 +8109,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "2,190 ML/yr"
     ],
     correct: 1,
-    explanation: "Annual production = 20 ML/d × 365 d/yr = 7,300 ML/yr. Non-revenue water = 7,300 × 0.15 = 1,095 ML/yr."
+    explanation: "Annual production = 20 ML/d × 365 d/yr = 7,300 ML/yr. Non-revenue water = 7,300 × 0.15 = 1,095 ML/yr.",
+    steps: [ { l: "Formula", c: "Annual Production (ML/yr) = Daily Production (ML/d) * Days in a Year (d/yr)" }, { l: "Step 1", c: "Calculate the total annual water production." }, { l: "Substitute", c: "Annual Production = 20 ML/d * 365 d/yr" }, { l: "Calculate", c: "Annual Production = 7,300 ML/yr" }, { l: "Formula", c: "Non-Revenue Water (ML/yr) = Annual Production (ML/yr) * Percentage of Non-Revenue Water" }, { l: "Step 2", c: "Calculate the volume of non-revenue water per year." }, { l: "Substitute", c: "Non-Revenue Water = 7,300 ML/yr * 0.15" }, { l: "Calculate", c: "Non-Revenue Water = 1,095 ML/yr" }, { l: "Result", c: "The volume of non-revenue water per year is 1,095 ML." } ],
+    tip: "Convert percentages to decimals for calculations. Pay attention to units.",
   },
   {
     id: 498,
@@ -7882,7 +8125,9 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
       "19,163 MWh/yr"
     ],
     correct: 0,
-    explanation: "Annual volume = 15,000 m³/d × 365 d/yr = 5,475,000 m³/yr. Energy = 0.35 kWh/m³ × 5,475,000 m³/yr = 1,916,250 kWh/yr = 1,916 MWh/yr ≈ 1,913 MWh/yr."
+    explanation: "Annual volume = 15,000 m³/d × 365 d/yr = 5,475,000 m³/yr. Energy = 0.35 kWh/m³ × 5,475,000 m³/yr = 1,916,250 kWh/yr = 1,916 MWh/yr ≈ 1,913 MWh/yr.",
+    steps: [ { l: "Formula", c: "Annual Volume (m³/yr) = Daily Volume (m³/d) * Days in a Year (d/yr)" }, { l: "Step 1", c: "Convert daily treatment volume from ML/d to m³/d and then calculate annual volume." }, { l: "Substitute", c: "Annual Volume = (15 ML/d * 1,000,000 L/ML * 1 m³/1,000 L) * 365 d/yr = 15,000 m³/d * 365 d/yr" }, { l: "Calculate", c: "Annual Volume = 5,475,000 m³/yr" }, { l: "Formula", c: "Annual Energy Consumption (kWh/yr) = Specific Energy Consumption (kWh/m³) * Annual Volume (m³/yr)" }, { l: "Step 2", c: "Calculate the total annual energy consumption in kWh." }, { l: "Substitute", c: "Annual Energy Consumption = 0.35 kWh/m³ * 5,475,000 m³/yr" }, { l: "Calculate", c: "Annual Energy Consumption = 1,916,250 kWh/yr" }, { l: "Formula", c: "Annual Energy Consumption (MWh/yr) = Annual Energy Consumption (kWh/yr) / 1,000 kWh/MWh" }, { l: "Step 3", c: "Convert annual energy consumption from kWh to MWh." }, { l: "Substitute", c: "Annual Energy Consumption = 1,916,250 kWh/yr / 1,000 kWh/MWh" }, { l: "Calculate", c: "Annual Energy Consumption = 1,916.25 MWh/yr" }, { l: "Result", c: "The annual energy consumption is approximately 1,916 MWh." } ],
+    tip: "Always ensure units cancel correctly. Pay attention to final unit conversions (e.g., kWh to MWh).",
   },
   {
     id: 499,

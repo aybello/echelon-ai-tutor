@@ -73,6 +73,7 @@ export default function WpiClass4WaterQuiz() {
   const [tutorOpen, setTutorOpen] = useState(false);
   const [shakeKey, setShakeKey] = useState(0);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [calcOnly, setCalcOnly] = useState(false);
   const [showModuleSelector, setShowModuleSelector] = useState(false);
   const [reportModalOpen, setReportModalOpen] = useState(false);
 
@@ -86,7 +87,7 @@ export default function WpiClass4WaterQuiz() {
     const base = selectedModule
       ? wpiClass4WaterQuestions.filter((q) => q.module === selectedModule)
       : wpiClass4WaterQuestions;
-    return base.filter((q) => !usedIds.has(q.id));
+    return base.filter((q) => !usedIds.has(q.id) && (!calcOnly || (q.steps && q.steps.length > 0)));
   }, [selectedModule, usedIds]);
 
   const getNext = useCallback(() => {
@@ -258,6 +259,23 @@ export default function WpiClass4WaterQuiz() {
               }}
             >
               All Modules
+            </button>
+            <button
+              onClick={() => { setCalcOnly(v => !v); }}
+              style={{
+                padding: "6px 14px",
+                borderRadius: 20,
+                border: "1.5px solid",
+                borderColor: calcOnly ? "#7C3AED" : "#E2E8F0",
+                background: calcOnly ? "#EDE9FE" : "#fff",
+                color: calcOnly ? "#7C3AED" : "#64748B",
+                fontSize: 12,
+                fontWeight: 600,
+                cursor: "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              🧮 Calc Only
             </button>
             {WPI_CLASS4_WATER_MODULES.map((m) => {
               const mc = MODULE_COLORS[m] ?? { bg: "#F1F5F9", color: "#475569" };

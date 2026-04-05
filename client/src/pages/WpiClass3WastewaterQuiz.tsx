@@ -75,6 +75,7 @@ export default function WpiClass3WastewaterQuiz() {
   const [tutorOpen, setTutorOpen] = useState(false);
   const [shakeKey, setShakeKey] = useState(0);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [calcOnly, setCalcOnly] = useState(false);
   const [showModuleSelector, setShowModuleSelector] = useState(false);
   const [reportModalOpen, setReportModalOpen] = useState(false);
 
@@ -99,8 +100,8 @@ export default function WpiClass3WastewaterQuiz() {
   const getNextQuestion = useCallback(
     (afterId?: number) => {
       const pool = selectedModule
-        ? wpiClass3WastewaterQuestions.filter((q) => q.module === selectedModule)
-        : wpiClass3WastewaterQuestions;
+        ? wpiClass3WastewaterQuestions.filter((q) => q.module === selectedModule && (!calcOnly || (q.steps && q.steps.length > 0)))
+        : (calcOnly ? wpiClass3WastewaterQuestions.filter((q) => q.steps && q.steps.length > 0) : wpiClass3WastewaterQuestions);
       const unanswered = pool.filter((q) => !answeredIds.has(q.id) && q.id !== afterId);
       if (unanswered.length === 0) return null;
       const shuffled = shuffle(unanswered);
@@ -218,6 +219,40 @@ export default function WpiClass3WastewaterQuiz() {
               }}
             >
               All Modules
+            </button>
+            <button
+              onClick={() => setCalcOnly(v => !v)}
+              style={{
+                padding: "6px 14px",
+                borderRadius: 20,
+                border: "1.5px solid",
+                borderColor: calcOnly ? "#7C3AED" : "#E2E8F0",
+                background: calcOnly ? "#EDE9FE" : "#fff",
+                color: calcOnly ? "#7C3AED" : "#64748B",
+                fontSize: 12,
+                fontWeight: 600,
+                cursor: "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              🧮 Calc Only
+            </button>
+            <button
+              onClick={() => { setCalcOnly(v => !v); }}
+              style={{
+                padding: "6px 14px",
+                borderRadius: 20,
+                border: "1.5px solid",
+                borderColor: calcOnly ? "#7C3AED" : "#E2E8F0",
+                background: calcOnly ? "#EDE9FE" : "#fff",
+                color: calcOnly ? "#7C3AED" : "#64748B",
+                fontSize: 12,
+                fontWeight: 600,
+                cursor: "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              🧮 Calc Only
             </button>
             {WPI_CLASS3_WASTEWATER_MODULES.map((m) => {
               const mc = MODULE_COLORS[m] ?? { bg: "#F1F5F9", color: "#475569" };

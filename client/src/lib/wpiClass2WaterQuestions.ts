@@ -805,6 +805,14 @@ export const wpiClass2WaterQuestions: WpiClass2WaterQuestion[] = [
     correctAnswer: 1,
     explanation: `The Hazen-Williams equation (hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87)) calculates friction head loss in pressurised pipes. C is the roughness coefficient.`,
     difficulty: "medium",
+    steps: [
+      { l: "Step 1: Understand the Purpose of the Hazen-Williams Equation", c: "The Hazen-Williams equation is an empirical formula used in hydraulic engineering to calculate the head loss due to friction in a pipe for a given flow rate, pipe length, and pipe diameter. It is commonly applied in water distribution systems." },
+      { l: "Step 2: Introduce the Hazen-Williams Formula", c: "The general form of the Hazen-Williams equation for head loss (hf) is: hf = (10.67 * L * Q^1.852) / (C^1.852 * D^4.87). This formula is typically used with metric units where hf is in meters, L is in meters, Q is in cubic meters per second, and D is in meters." },
+      { l: "Step 3: Define Each Variable in the Equation", c: "hf = head loss due to friction (m); L = length of the pipe (m); Q = volumetric flow rate (m³/s); C = Hazen-Williams roughness coefficient (dimensionless, depends on pipe material and age); D = internal diameter of the pipe (m)." },
+      { l: "Step 4: Explain the Significance of the Roughness Coefficient (C)", c: "The 'C' value in the Hazen-Williams equation represents the roughness of the pipe material. A higher 'C' value indicates a smoother pipe, which results in less friction and therefore less head loss for a given flow rate and pipe size. Conversely, a lower 'C' value signifies a rougher pipe, leading to greater head loss." },
+      { l: "Step 5: Conclude the Application of the Equation", c: "By inputting the known values for pipe length, flow rate, pipe diameter, and the appropriate Hazen-Williams 'C' coefficient for the pipe material, the equation directly calculates the head loss that occurs as water flows through the pipe due to frictional resistance." },
+    ],
+    tip: "Recognize Hazen-Williams for friction head loss; 'C' value indicates pipe smoothness.",
   },
   {
     id: 88,
@@ -3901,6 +3909,13 @@ export const wpiClass2WaterQuestions: WpiClass2WaterQuestion[] = [
     correctAnswer: 1,
     explanation: `The velocity gradient G (s⁻¹) quantifies mixing intensity. Rapid mix: G = 300–1000 s⁻¹; flocculation: G = 10–100 s⁻¹ (decreasing through stages to avoid floc breakup).`,
     difficulty: "hard",
+    steps: [
+      { l: "Understand the Question", c: "The question asks to identify what the velocity gradient (G value) characterizes in water treatment." },
+      { l: "Recall Definition of Velocity Gradient (G)", c: "The velocity gradient, often denoted as G, is a fundamental parameter in water treatment, particularly in the coagulation and flocculation processes. It represents the shear rate in the water, which is directly related to the mixing intensity." },
+      { l: "Identify Application in Water Treatment", c: "In water treatment, G values are specifically used to quantify the mixing intensity during rapid mixing (coagulation) and flocculation. Rapid mixing requires a high G to quickly disperse coagulants, while flocculation requires a lower, controlled G to promote particle aggregation without shearing apart forming flocs." },
+      { l: "Formulate the Answer", c: "Based on its definition and application, the velocity gradient (G value) is used to characterize the mixing intensity in coagulation/flocculation processes." },
+    ],
+    tip: "G value quantifies mixing intensity; higher G for rapid mix, lower G for flocculation.",
   },
   {
     id: 432,

@@ -12,6 +12,8 @@ export interface Class1WastewaterQuestion {
   options: string[];
   correct: number; // 0-indexed
   explanation: string;
+  steps?: { l: string; c: string }[];
+  tip?: string;
 }
 
 export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
@@ -34,7 +36,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A wastewater plant receives a flow of 15,000 m³/day with a TSS of 240 mg/L. What is the daily TSS load in kg/day?",
     options: ["1,800 kg/day", "3,600 kg/day", "360 kg/day", "36,000 kg/day"],
     correct: 1,
-    explanation: "Load (kg/day) = Flow (m³/day) × Concentration (mg/L) × 0.001. = 15,000 × 240 × 0.001 = 3,600 kg/day." },
+    explanation: "Load (kg/day) = Flow (m³/day) × Concentration (mg/L) × 0.001. = 15,000 × 240 × 0.001 = 3,600 kg/day." , steps: [ { l: "Formula", c: "Load (kg/day) = Flow (m³/day) × Concentration (mg/L) × Conversion Factor (kg·L / mg·m³)" }, { l: "Variables", c: "Flow = 15,000 m³/day; Concentration = 240 mg/L; Conversion Factor = 0.001 (to convert mg/L to kg/m³)" }, { l: "Substitute", c: "Load (kg/day) = 15,000 m³/day × 240 mg/L × 0.001" }, { l: "Calculate", c: "Load (kg/day) = 3,600" }, { l: "Result", c: "The daily TSS load is 3,600 kg/day." } ], tip: "Remember the 0.001 conversion factor for load calculations." },
 
   { id: 4, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
     question: "What is the primary purpose of a grit chamber in wastewater treatment?",
@@ -58,7 +60,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A grit chamber is designed for a horizontal velocity of 0.3 m/s and a flow of 0.05 m³/s. If the depth is 0.6 m, what is the required width?",
     options: ["0.14 m", "0.28 m", "0.56 m", "1.12 m"],
     correct: 1,
-    explanation: "Cross-sectional area = Q / v = 0.05 / 0.3 = 0.167 m². Width = Area / Depth = 0.167 / 0.6 ≈ 0.28 m." },
+    explanation: "Cross-sectional area = Q / v = 0.05 / 0.3 = 0.167 m². Width = Area / Depth = 0.167 / 0.6 ≈ 0.28 m." , steps: [ { l: "Formula 1", c: "Cross-sectional Area (A) = Flow (Q) / Velocity (v)" }, { l: "Formula 2", c: "Width (W) = Area (A) / Depth (D)" }, { l: "Variables", c: "Q = 0.05 m³/s; v = 0.3 m/s; D = 0.6 m" }, { l: "Step 1: Calculate Cross-sectional Area", c: "A = 0.05 m³/s / 0.3 m/s = 0.1666... m²" }, { l: "Step 2: Calculate Width", c: "W = 0.1666... m² / 0.6 m = 0.2777... m" }, { l: "Result", c: "The required width is approximately 0.28 m." } ], tip: "Break down complex geometry problems into simpler area and flow steps." },
 
   { id: 8, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
     question: "What is 'inflow' in a wastewater collection system?",
@@ -82,7 +84,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A plant treats 20,000 m³/day of wastewater with an influent BOD of 250 mg/L and effluent BOD of 15 mg/L. What is the BOD removal efficiency?",
     options: ["88%", "94%", "97%", "99%"],
     correct: 1,
-    explanation: "Removal efficiency = (Influent − Effluent) / Influent × 100 = (250 − 15) / 250 × 100 = 94%." },
+    explanation: "Removal efficiency = (Influent − Effluent) / Influent × 100 = (250 − 15) / 250 × 100 = 94%." , steps: [ { l: "Formula", c: "Removal Efficiency (%) = ((Influent Concentration - Effluent Concentration) / Influent Concentration) × 100" }, { l: "Variables", c: "Influent BOD = 250 mg/L; Effluent BOD = 15 mg/L" }, { l: "Substitute", c: "Removal Efficiency (%) = ((250 mg/L - 15 mg/L) / 250 mg/L) × 100" }, { l: "Calculate", c: "Removal Efficiency (%) = (235 / 250) × 100 = 0.94 × 100 = 94" }, { l: "Result", c: "The BOD removal efficiency is 94%." } ], tip: "Efficiency calculations always use (In - Out) / In." },
 
   { id: 12, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
     question: "Which of the following is a characteristic of combined sewer systems?",
@@ -130,7 +132,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A plant has a peak-to-average flow ratio of 3.5 and an average daily flow of 8,000 m³/day. What is the peak hourly flow in m³/hour?",
     options: ["333 m³/hr", "467 m³/hr", "1,167 m³/hr", "2,333 m³/hr"],
     correct: 2,
-    explanation: "Average hourly flow = 8,000 / 24 = 333 m³/hr. Peak hourly flow = 333 × 3.5 = 1,167 m³/hr." },
+    explanation: "Average hourly flow = 8,000 / 24 = 333 m³/hr. Peak hourly flow = 333 × 3.5 = 1,167 m³/hr." , steps: [ { l: "Formula 1", c: "Average Hourly Flow (m³/hr) = Average Daily Flow (m³/day) / 24 hours/day" }, { l: "Formula 2", c: "Peak Hourly Flow (m³/hr) = Average Hourly Flow (m³/hr) × Peak-to-Average Ratio" }, { l: "Variables", c: "Average Daily Flow = 8,000 m³/day; Peak-to-Average Ratio = 3.5" }, { l: "Step 1: Calculate Average Hourly Flow", c: "Average Hourly Flow = 8,000 m³/day / 24 hr/day = 333.33 m³/hr" }, { l: "Step 2: Calculate Peak Hourly Flow", c: "Peak Hourly Flow = 333.33 m³/hr × 3.5 = 1166.66 m³/hr" }, { l: "Result", c: "The peak hourly flow is approximately 1,167 m³/hour." } ], tip: "Convert daily flow to hourly before applying peak factors." },
 
   { id: 20, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
     question: "Which of the following is NOT typically found in raw domestic wastewater?",
@@ -154,7 +156,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A wastewater plant receives 10,000 m³/day with TKN = 40 mg/L and NH3-N = 25 mg/L. What is the organic nitrogen concentration?",
     options: ["15 mg/L", "25 mg/L", "40 mg/L", "65 mg/L"],
     correct: 0,
-    explanation: "Organic N = TKN − NH3-N = 40 − 25 = 15 mg/L." },
+    explanation: "Organic N = TKN − NH3-N = 40 − 25 = 15 mg/L." , steps: [ { l: "Formula", c: "Organic Nitrogen (mg/L) = Total Kjeldahl Nitrogen (TKN) (mg/L) - Ammonia Nitrogen (NH₃-N) (mg/L)" }, { l: "Variables", c: "TKN = 40 mg/L; NH₃-N = 25 mg/L" }, { l: "Substitute", c: "Organic Nitrogen (mg/L) = 40 mg/L - 25 mg/L" }, { l: "Calculate", c: "Organic Nitrogen (mg/L) = 15" }, { l: "Result", c: "The organic nitrogen concentration is 15 mg/L." } ], tip: "TKN is the sum of organic and ammonia nitrogen." },
 
   { id: 24, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
     question: "What is the main purpose of preliminary treatment in wastewater treatment?",
@@ -202,7 +204,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A wastewater plant has an average flow of 25,000 m³/day and a population equivalent (PE) of 100,000. What is the per capita flow?",
     options: ["100 L/person/day", "250 L/person/day", "400 L/person/day", "500 L/person/day"],
     correct: 1,
-    explanation: "Per capita flow = Total flow / Population = 25,000,000 L/day / 100,000 persons = 250 L/person/day." },
+    explanation: "Per capita flow = Total flow / Population = 25,000,000 L/day / 100,000 persons = 250 L/person/day." , steps: [ { l: "Formula", c: "Per capita flow = Total flow / Population equivalent" }, { l: "Step 1", c: "Convert total flow from m³/day to L/day: 25,000 m³/day * 1,000 L/m³ = 25,000,000 L/day" }, { l: "Substitute", c: "Per capita flow = 25,000,000 L/day / 100,000 PE" }, { l: "Calculate", c: "Per capita flow = 250 L/PE/day" }, { l: "Result", c: "The per capita flow is 250 L/PE/day." } ], tip: "Always ensure units are consistent before calculating per capita flow." },
 
   { id: 32, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
     question: "What does 'hydraulic retention time' (HRT) mean in a treatment basin?",
@@ -226,7 +228,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A plant has a wet well with a volume of 120 m³. The average inflow is 0.05 m³/s and the pump rate is 0.08 m³/s. What is the approximate pump cycle time (fill + empty)?",
     options: ["10 min", "20 min", "40 min", "80 min"],
     correct: 2,
-    explanation: "Fill time: 120 m³ / (0.08 − 0.05) m³/s = 4,000 s ≈ 67 min. Empty time: 120 / 0.08 = 1,500 s ≈ 25 min. Total cycle ≈ 92 min. The closest answer is 40 min for a half-cycle (fill only from empty to full at net fill rate 0.03 m³/s: 120/0.03 = 4,000 s ≈ 67 min). Selecting 40 min as the closest option for the fill phase at net 0.05 m³/s: 120/0.05 = 2,400 s = 40 min." },
+    explanation: "Fill time: 120 m³ / (0.08 − 0.05) m³/s = 4,000 s ≈ 67 min. Empty time: 120 / 0.08 = 1,500 s ≈ 25 min. Total cycle ≈ 92 min. The closest answer is 40 min for a half-cycle (fill only from empty to full at net fill rate 0.03 m³/s: 120/0.03 = 4,000 s ≈ 67 min). Selecting 40 min as the closest option for the fill phase at net 0.05 m³/s: 120/0.05 = 2,400 s = 40 min." , steps: [ { l: "Formula", c: "Fill time = Wet well volume / (Pump rate - Inflow rate); Empty time = Wet well volume / Pump rate; Total cycle time = Fill time + Empty time" }, { l: "Step 1", c: "Calculate the net fill rate: 0.08 m³/s - 0.05 m³/s = 0.03 m³/s" }, { l: "Step 2", c: "Calculate the fill time: 120 m³ / 0.03 m³/s = 4,000 seconds" }, { l: "Step 3", c: "Calculate the empty time: 120 m³ / 0.08 m³/s = 1,500 seconds" }, { l: "Step 4", c: "Calculate the total cycle time: 4,000 s + 1,500 s = 5,500 seconds" }, { l: "Step 5", c: "Convert total cycle time to minutes: 5,500 seconds / 60 seconds/minute ≈ 91.67 minutes" }, { l: "Result", c: "The approximate pump cycle time is 92 minutes." } ], tip: "Net flow determines fill time; pump rate determines empty time." },
 
   { id: 36, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
     question: "What is the typical fecal coliform count in raw domestic wastewater?",
@@ -250,7 +252,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A wastewater plant has an influent total nitrogen of 45 mg/L (TKN = 40 mg/L, NO3-N = 5 mg/L). After treatment, effluent TN = 8 mg/L. What is the total nitrogen removal efficiency?",
     options: ["78%", "82%", "89%", "95%"],
     correct: 1,
-    explanation: "TN removal = (45 − 8) / 45 × 100 = 37/45 × 100 = 82.2% ≈ 82%." },
+    explanation: "TN removal = (45 − 8) / 45 × 100 = 37/45 × 100 = 82.2% ≈ 82%." , steps: [ { l: "Formula", c: "Removal efficiency = ((Influent concentration - Effluent concentration) / Influent concentration) * 100%" }, { l: "Step 1", c: "Identify influent total nitrogen (TN) = 45 mg/L" }, { l: "Step 2", c: "Identify effluent total nitrogen (TN) = 8 mg/L" }, { l: "Substitute", c: "Removal efficiency = ((45 mg/L - 8 mg/L) / 45 mg/L) * 100%" }, { l: "Calculate", c: "Removal efficiency = (37 / 45) * 100% = 0.8222 * 100% = 82.22%" }, { l: "Result", c: "The total nitrogen removal efficiency is approximately 82%." } ], tip: "Removal efficiency always uses influent as the denominator." },
 
   { id: 40, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "easy",
     question: "What does 'CBOD' stand for in wastewater analysis?",
@@ -276,7 +278,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A primary clarifier has a surface area of 500 m² and receives a flow of 10,000 m³/day. What is the surface overflow rate?",
     options: ["10 m³/m²·day", "20 m³/m²·day", "50 m³/m²·day", "100 m³/m²·day"],
     correct: 1,
-    explanation: "SOR = Flow / Surface Area = 10,000 / 500 = 20 m³/m²·day, which is within the typical range for primary clarifiers." },
+    explanation: "SOR = Flow / Surface Area = 10,000 / 500 = 20 m³/m²·day, which is within the typical range for primary clarifiers." , steps: [ { l: "Formula", c: "Surface Overflow Rate (SOR) = Flow / Surface Area" }, { l: "Step 1", c: "Identify flow = 10,000 m³/day" }, { l: "Step 2", c: "Identify surface area = 500 m²" }, { l: "Substitute", c: "SOR = 10,000 m³/day / 500 m²" }, { l: "Calculate", c: "SOR = 20 m³/m²·day" }, { l: "Result", c: "The surface overflow rate is 20 m³/m²·day." } ], tip: "SOR is crucial for clarifier performance; remember its units." },
 
   { id: 44, module: "Primary Treatment", difficulty: "easy",
     question: "What is the typical TSS removal efficiency of a primary clarifier?",
@@ -294,7 +296,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A circular primary clarifier has a diameter of 20 m and a side water depth of 3.5 m. What is the hydraulic retention time at a flow of 5,000 m³/day?",
     options: ["0.5 hours", "1.1 hours", "2.2 hours", "4.4 hours"],
     correct: 2,
-    explanation: "Volume = π/4 × D² × depth = 0.785 × 400 × 3.5 = 1,099 m³. HRT = V/Q = 1,099 / (5,000/24) = 1,099 / 208.3 = 5.3 hours. Recalculating: HRT = 1,099 m³ / 208.3 m³/hr ≈ 5.3 hr. Closest answer is 2.2 hours if depth = 3.5 m and diameter = 14 m: V = 0.785 × 196 × 3.5 = 538 m³; HRT = 538/208.3 = 2.6 hr ≈ 2.2 hr." },
+    explanation: "Volume = π/4 × D² × depth = 0.785 × 400 × 3.5 = 1,099 m³. HRT = V/Q = 1,099 / (5,000/24) = 1,099 / 208.3 = 5.3 hours. Recalculating: HRT = 1,099 m³ / 208.3 m³/hr ≈ 5.3 hr. Closest answer is 2.2 hours if depth = 3.5 m and diameter = 14 m: V = 0.785 × 196 × 3.5 = 538 m³; HRT = 538/208.3 = 2.6 hr ≈ 2.2 hr." , steps: [ { l: "Formula", c: "Volume of circular clarifier = (π/4) * Diameter² * Depth; Hydraulic Retention Time (HRT) = Volume / Flow" }, { l: "Step 1", c: "Calculate the volume of the clarifier: Volume = 0.785 * (20 m)² * 3.5 m = 0.785 * 400 m² * 3.5 m = 1,099 m³" }, { l: "Step 2", c: "Convert flow from m³/day to m³/hour: 5,000 m³/day / 24 hours/day = 208.33 m³/hour" }, { l: "Substitute", c: "HRT = 1,099 m³ / 208.33 m³/hour" }, { l: "Calculate", c: "HRT ≈ 5.275 hours" }, { l: "Result", c: "The hydraulic retention time is approximately 5.3 hours." } ], tip: "HRT requires consistent volume and flow units (e.g., m³ and m³/hour)." },
 
   { id: 47, module: "Primary Treatment", difficulty: "medium",
     question: "What is 'weir overflow rate' in a clarifier and why is it important?",
@@ -318,7 +320,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A primary clarifier produces 2,500 kg/day of dry solids at 3% TS. What volume of sludge is produced per day?",
     options: ["7.5 m³/day", "25 m³/day", "83 m³/day", "250 m³/day"],
     correct: 2,
-    explanation: "Sludge volume = Mass of dry solids / (TS fraction × density). = 2,500 kg / (0.03 × 1,000 kg/m³) = 2,500 / 30 = 83.3 m³/day." },
+    explanation: "Sludge volume = Mass of dry solids / (TS fraction × density). = 2,500 kg / (0.03 × 1,000 kg/m³) = 2,500 / 30 = 83.3 m³/day." , steps: [ { l: "Formula", c: "Sludge Volume (m³/day) = Mass of Dry Solids (kg/day) / (TS Fraction × Density of Water (kg/m³))" }, { l: "Identify Variables", c: "Mass of Dry Solids = 2,500 kg/day; TS Fraction = 3% = 0.03; Density of Water = 1,000 kg/m³ (standard assumption for water/sludge density)" }, { l: "Substitute Values", c: "Sludge Volume = 2,500 kg/day / (0.03 × 1,000 kg/m³)" }, { l: "Calculate", c: "Sludge Volume = 2,500 / 30 = 83.333..." }, { l: "Result", c: "Sludge Volume = 83.3 m³/day" } ], tip: "Remember to convert percentage solids to a decimal fraction before calculating." },
 
   { id: 51, module: "Primary Treatment", difficulty: "medium",
     question: "What is the function of a scum baffle in a primary clarifier?",
@@ -342,7 +344,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A primary clarifier receives a flow of 15,000 m³/day. The effluent TSS is 90 mg/L and the influent TSS is 240 mg/L. How many kg/day of solids are removed?",
     options: ["1,350 kg/day", "2,250 kg/day", "3,600 kg/day", "5,400 kg/day"],
     correct: 1,
-    explanation: "Solids removed = (Influent TSS − Effluent TSS) × Flow × 0.001 = (240 − 90) × 15,000 × 0.001 = 150 × 15 = 2,250 kg/day." },
+    explanation: "Solids removed = (Influent TSS − Effluent TSS) × Flow × 0.001 = (240 − 90) × 15,000 × 0.001 = 150 × 15 = 2,250 kg/day." , steps: [ { l: "Formula", c: "Solids Removed (kg/day) = (Influent TSS (mg/L) - Effluent TSS (mg/L)) × Flow (m³/day) × Conversion Factor (kg·L / mg·m³)" }, { l: "Identify Variables", c: "Influent TSS = 240 mg/L; Effluent TSS = 90 mg/L; Flow = 15,000 m³/day; Conversion Factor = 0.001 (to convert mg/L to kg/m³ and then to kg/day with flow)" }, { l: "Substitute Values", c: "Solids Removed = (240 mg/L - 90 mg/L) × 15,000 m³/day × 0.001" }, { l: "Calculate", c: "Solids Removed = 150 × 15,000 × 0.001 = 150 × 15 = 2,250" }, { l: "Result", c: "Solids Removed = 2,250 kg/day" } ], tip: "The 0.001 conversion factor is key for mg/L to kg/day calculations." },
 
   { id: 55, module: "Primary Treatment", difficulty: "medium",
     question: "What is the purpose of a primary clarifier sludge collector mechanism?",
@@ -360,7 +362,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "Using Stokes' Law, if a particle has a diameter of 0.1 mm, a density of 1,100 kg/m³, and water temperature is 20°C (viscosity = 1.002 × 10⁻³ N·s/m²), what is the settling velocity?",
     options: ["0.5 mm/s", "2.4 mm/s", "8.2 mm/s", "24 mm/s"],
     correct: 1,
-    explanation: "Stokes' Law: vs = g(ρp-ρw)d² / 18μ = 9.81 × (1100-1000) × (0.0001)² / (18 × 0.001002) = 9.81 × 100 × 10⁻⁸ / 0.018036 = 9.81 × 10⁻⁶ / 0.018036 ≈ 5.4 × 10⁻⁴ m/s ≈ 0.54 mm/s. Closest answer is 0.5 mm/s." },
+    explanation: "Stokes' Law: vs = g(ρp-ρw)d² / 18μ = 9.81 × (1100-1000) × (0.0001)² / (18 × 0.001002) = 9.81 × 100 × 10⁻⁸ / 0.018036 = 9.81 × 10⁻⁶ / 0.018036 ≈ 5.4 × 10⁻⁴ m/s ≈ 0.54 mm/s. Closest answer is 0.5 mm/s." , steps: [ { l: "Formula", c: "Stokes' Law: vs = [g × (ρp - ρw) × d²] / (18 × μ)" }, { l: "Identify Variables", c: "vs = settling velocity (m/s); g = acceleration due to gravity (9.81 m/s²); ρp = particle density (1,100 kg/m³); ρw = water density (1,000 kg/m³); d = particle diameter (0.1 mm = 0.0001 m); μ = dynamic viscosity of water (1.002 × 10⁻³ N·s/m²)" }, { l: "Substitute Values", c: "vs = [9.81 m/s² × (1,100 kg/m³ - 1,000 kg/m³) × (0.0001 m)²] / (18 × 1.002 × 10⁻³ N·s/m²)" }, { l: "Calculate", c: "vs = [9.81 × 100 × 0.00000001] / 0.018036 = [9.81 × 10⁻⁶] / 0.018036 ≈ 0.0005439 m/s" }, { l: "Convert Units", c: "vs = 0.0005439 m/s × 1000 mm/m ≈ 0.5439 mm/s" }, { l: "Result", c: "Settling Velocity ≈ 0.54 mm/s" } ], tip: "Ensure all units are consistent (e.g., meters, seconds, kilograms) before calculating." },
 
   { id: 58, module: "Primary Treatment", difficulty: "easy",
     question: "What is 'primary effluent'?",
@@ -378,7 +380,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A primary clarifier has a weir length of 40 m and receives a flow of 8,000 m³/day. What is the weir overflow rate?",
     options: ["100 m³/m·day", "200 m³/m·day", "400 m³/m·day", "800 m³/m·day"],
     correct: 1,
-    explanation: "Weir overflow rate = Flow / Weir length = 8,000 / 40 = 200 m³/m·day. The typical design limit is 125–500 m³/m·day." },
+    explanation: "Weir overflow rate = Flow / Weir length = 8,000 / 40 = 200 m³/m·day. The typical design limit is 125–500 m³/m·day." , steps: [ { l: "Formula", c: "Weir Overflow Rate (m³/m·day) = Flow (m³/day) / Weir Length (m)" }, { l: "Identify Variables", c: "Flow = 8,000 m³/day; Weir Length = 40 m" }, { l: "Substitute Values", c: "Weir Overflow Rate = 8,000 m³/day / 40 m" }, { l: "Calculate", c: "Weir Overflow Rate = 200" }, { l: "Result", c: "Weir Overflow Rate = 200 m³/m·day" } ], tip: "Weir overflow rate is a measure of flow per unit length of weir." },
 
   { id: 61, module: "Primary Treatment", difficulty: "medium",
     question: "What is the typical volatile solids (VS) content of primary sludge?",
@@ -396,7 +398,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A primary clarifier is 30 m long, 8 m wide, and 3 m deep. At a flow of 12,000 m³/day, what is the HRT?",
     options: ["0.7 hours", "1.4 hours", "2.9 hours", "5.8 hours"],
     correct: 1,
-    explanation: "Volume = 30 × 8 × 3 = 720 m³. Flow rate = 12,000/24 = 500 m³/hr. HRT = 720/500 = 1.44 hours ≈ 1.4 hours." },
+    explanation: "Volume = 30 × 8 × 3 = 720 m³. Flow rate = 12,000/24 = 500 m³/hr. HRT = 720/500 = 1.44 hours ≈ 1.4 hours." , steps: [ { l: "Formula for Volume", c: "Volume (m³) = Length (m) × Width (m) × Depth (m)" }, { l: "Calculate Volume", c: "Volume = 30 m × 8 m × 3 m = 720 m³" }, { l: "Convert Flow Rate", c: "Flow Rate (m³/hr) = Flow (m³/day) / 24 hr/day = 12,000 m³/day / 24 hr/day = 500 m³/hr" }, { l: "Formula for HRT", c: "Hydraulic Retention Time (HRT) (hours) = Volume (m³) / Flow Rate (m³/hr)" }, { l: "Substitute and Calculate HRT", c: "HRT = 720 m³ / 500 m³/hr = 1.44 hours" }, { l: "Result", c: "HRT ≈ 1.4 hours" } ], tip: "Always ensure flow rate and volume units are compatible for HRT calculation." },
 
   { id: 64, module: "Primary Treatment", difficulty: "easy",
     question: "What is 'scum' in a primary clarifier?",
@@ -420,7 +422,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A primary clarifier produces sludge at 3% TS with a specific gravity of 1.02. If the volatile fraction is 70%, how many kg/day of volatile solids are produced if the total sludge volume is 50 m³/day?",
     options: ["1,071 kg/day", "1,530 kg/day", "2,142 kg/day", "3,060 kg/day"],
     correct: 0,
-    explanation: "Total sludge mass = 50 m³ × 1,020 kg/m³ = 51,000 kg/day. Dry solids = 51,000 × 0.03 = 1,530 kg/day. Volatile solids = 1,530 × 0.70 = 1,071 kg/day." },
+    explanation: "Total sludge mass = 50 m³ × 1,020 kg/m³ = 51,000 kg/day. Dry solids = 51,000 × 0.03 = 1,530 kg/day. Volatile solids = 1,530 × 0.70 = 1,071 kg/day." , steps: [ { l: "Formula for Total Sludge Mass", c: "Total Sludge Mass = Total Sludge Volume × Specific Gravity × Density of Water" }, { l: "Step 1: Calculate Total Sludge Mass", c: "Total Sludge Mass = 50 m³/day × 1.02 (specific gravity) × 1,000 kg/m³ (density of water) = 51,000 kg/day" }, { l: "Step 2: Calculate Dry Solids Mass", c: "Dry Solids Mass = Total Sludge Mass × % TS (as a decimal) = 51,000 kg/day × 0.03 = 1,530 kg/day" }, { l: "Step 3: Calculate Volatile Solids Mass", c: "Volatile Solids Mass = Dry Solids Mass × Volatile Fraction (as a decimal) = 1,530 kg/day × 0.70 = 1,071 kg/day" }, { l: "Result", c: "1,071 kg/day of volatile solids are produced." } ], tip: "Remember to convert percentages to decimals for calculations." },
 
   { id: 68, module: "Primary Treatment", difficulty: "easy",
     question: "What is the main advantage of rectangular clarifiers over circular clarifiers?",
@@ -438,7 +440,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A primary clarifier has an influent flow of 20,000 m³/day and TSS of 280 mg/L. The effluent TSS is 100 mg/L. If the sludge is pumped at 3% TS, what is the approximate sludge pumping rate in m³/day?",
     options: ["30 m³/day", "60 m³/day", "120 m³/day", "240 m³/day"],
     correct: 2,
-    explanation: "Solids removed = (280 − 100) × 20,000 × 0.001 = 3,600 kg/day. Sludge volume = 3,600 / (0.03 × 1,000) = 120 m³/day." },
+    explanation: "Solids removed = (280 − 100) × 20,000 × 0.001 = 3,600 kg/day. Sludge volume = 3,600 / (0.03 × 1,000) = 120 m³/day." , steps: [ { l: "Formula for Solids Removed", c: "Solids Removed (kg/day) = (Influent TSS - Effluent TSS) mg/L × Flow (m³/day) × Conversion Factor (kg·L / mg·m³)" }, { l: "Step 1: Calculate Solids Removed", c: "Solids Removed = (280 mg/L - 100 mg/L) × 20,000 m³/day × 0.001 (kg·L / mg·m³) = 180 mg/L × 20,000 m³/day × 0.001 = 3,600 kg/day" }, { l: "Formula for Sludge Volume", c: "Sludge Volume (m³/day) = Solids Removed (kg/day) / (% TS as decimal × Density of Water (kg/m³))" }, { l: "Step 2: Calculate Sludge Pumping Rate (Volume)", c: "Sludge Volume = 3,600 kg/day / (0.03 × 1,000 kg/m³) = 3,600 kg/day / 30 kg/m³ = 120 m³/day" }, { l: "Result", c: "The approximate sludge pumping rate is 120 m³/day." } ], tip: "Use the 0.001 conversion factor for mg/L to kg/m³." },
 
   // ─── MODULE 3: Secondary Treatment — Activated Sludge (Q 71-160) ──────────
 
@@ -476,7 +478,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An activated sludge system has an aeration basin volume of 2,000 m³, MLSS of 3,000 mg/L, and WAS rate of 50 m³/day at 8,000 mg/L TSS. What is the sludge retention time (SRT)?",
     options: ["5 days", "10 days", "15 days", "20 days"],
     correct: 2,
-    explanation: "SRT = (V × MLSS) / (WAS flow × WAS TSS) = (2,000 × 3,000) / (50 × 8,000) = 6,000,000 / 400,000 = 15 days." },
+    explanation: "SRT = (V × MLSS) / (WAS flow × WAS TSS) = (2,000 × 3,000) / (50 × 8,000) = 6,000,000 / 400,000 = 15 days." , steps: [ { l: "Formula for Sludge Retention Time (SRT)", c: "SRT (days) = (Aeration Basin Volume (m³) × MLSS (mg/L)) / (WAS Flow (m³/day) × WAS TSS (mg/L))" }, { l: "Step 1: Identify Given Values", c: "Aeration Basin Volume (V) = 2,000 m³, MLSS = 3,000 mg/L, WAS Flow = 50 m³/day, WAS TSS = 8,000 mg/L" }, { l: "Step 2: Substitute Values into Formula", c: "SRT = (2,000 m³ × 3,000 mg/L) / (50 m³/day × 8,000 mg/L)" }, { l: "Step 3: Calculate Numerator and Denominator", c: "Numerator = 6,000,000 (m³·mg/L); Denominator = 400,000 (m³·mg/L·day)" }, { l: "Step 4: Perform Division", c: "SRT = 6,000,000 / 400,000 = 15 days" }, { l: "Result", c: "The sludge retention time (SRT) is 15 days." } ], tip: "Ensure consistent units (mg/L) for MLSS and WAS TSS." },
 
   { id: 77, module: "Secondary Treatment", difficulty: "medium",
     question: "What is the typical SRT (sludge retention time) for a conventional activated sludge system treating BOD only?",
@@ -500,7 +502,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An activated sludge system has an F/M ratio of 0.15 kg BOD/kg MLVSS·day. The aeration basin has 2,500 m³ with MLVSS of 2,400 mg/L. What is the daily BOD load?",
     options: ["360 kg/day", "900 kg/day", "1,440 kg/day", "3,600 kg/day"],
     correct: 1,
-    explanation: "MLVSS mass = 2,500 m³ × 2,400 g/m³ × 0.001 kg/g = 6,000 kg. BOD load = F/M × MLVSS mass = 0.15 × 6,000 = 900 kg/day." },
+    explanation: "MLVSS mass = 2,500 m³ × 2,400 g/m³ × 0.001 kg/g = 6,000 kg. BOD load = F/M × MLVSS mass = 0.15 × 6,000 = 900 kg/day." , steps: [ { l: "Formula for MLVSS Mass", c: "MLVSS Mass (kg) = Aeration Basin Volume (m³) × MLVSS (mg/L) × Conversion Factor (kg·L / mg·m³)" }, { l: "Step 1: Calculate MLVSS Mass in the Aeration Basin", c: "MLVSS Mass = 2,500 m³ × 2,400 mg/L × 0.001 (kg·L / mg·m³) = 6,000 kg" }, { l: "Formula for Daily BOD Load", c: "Daily BOD Load (kg BOD/day) = F/M Ratio (kg BOD/kg MLVSS·day) × MLVSS Mass (kg)" }, { l: "Step 2: Calculate Daily BOD Load", c: "Daily BOD Load = 0.15 kg BOD/kg MLVSS·day × 6,000 kg = 900 kg BOD/day" }, { l: "Result", c: "The daily BOD load is 900 kg/day." } ], tip: "Pay close attention to units, especially for F/M ratio." },
 
   { id: 81, module: "Secondary Treatment", difficulty: "medium",
     question: "What does a low F/M ratio (< 0.05) indicate in an activated sludge system?",
@@ -524,7 +526,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An activated sludge system has a settled sludge volume of 240 mL/L after 30 minutes and an MLSS of 3,200 mg/L. What is the SVI?",
     options: ["13 mL/g", "75 mL/g", "133 mL/g", "750 mL/g"],
     correct: 1,
-    explanation: "SVI = (240 mL/L / 3,200 mg/L) × 1,000 = 75 mL/g. This indicates good settling characteristics." },
+    explanation: "SVI = (240 mL/L / 3,200 mg/L) × 1,000 = 75 mL/g. This indicates good settling characteristics." , steps: [ { l: "Formula for Sludge Volume Index (SVI)", c: "SVI (mL/g) = (Settled Sludge Volume (mL/L) / MLSS (mg/L)) × 1,000 (mg/g)" }, { l: "Step 1: Identify Given Values", c: "Settled Sludge Volume = 240 mL/L, MLSS = 3,200 mg/L" }, { l: "Step 2: Substitute Values into Formula", c: "SVI = (240 mL/L / 3,200 mg/L) × 1,000 mg/g" }, { l: "Step 3: Perform Calculation", c: "SVI = 0.075 (mL/mg) × 1,000 (mg/g) = 75 mL/g" }, { l: "Result", c: "The SVI is 75 mL/g." } ], tip: "SVI is a key indicator of sludge settleability and health." },
 
   { id: 85, module: "Secondary Treatment", difficulty: "medium",
     question: "What is the purpose of the secondary clarifier in the activated sludge process?",
@@ -542,7 +544,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A secondary clarifier has a diameter of 25 m and receives a combined flow (influent + RAS) of 18,000 m³/day. What is the surface overflow rate?",
     options: ["18 m³/m²·day", "37 m³/m²·day", "73 m³/m²·day", "146 m³/m²·day"],
     correct: 1,
-    explanation: "Surface area = π/4 × 25² = 490.9 m². SOR = 18,000 / 490.9 = 36.7 ≈ 37 m³/m²·day." },
+    explanation: "Surface area = π/4 × 25² = 490.9 m². SOR = 18,000 / 490.9 = 36.7 ≈ 37 m³/m²·day." , steps: [ { l: "Formula", c: "Surface Overflow Rate (SOR) = Flow / Surface Area" }, { l: "Step 1", c: "Calculate the surface area of the clarifier: Area = π/4 × Diameter²" }, { l: "Substitute", c: "Area = π/4 × (25 m)² = 0.7854 × 625 m²" }, { l: "Calculate", c: "Area = 490.87 m²" }, { l: "Substitute", c: "SOR = 18,000 m³/day / 490.87 m²" }, { l: "Calculate", c: "SOR = 36.67 m³/m²·day" }, { l: "Result", c: "The surface overflow rate is approximately 37 m³/m²·day." } ], tip: "Remember to calculate area first for circular tanks before finding SOR." },
 
   { id: 88, module: "Secondary Treatment", difficulty: "medium",
     question: "What is 'rising sludge' in a secondary clarifier and what causes it?",
@@ -592,7 +594,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A plant nitrifies 25 mg/L of NH3-N in a flow of 10,000 m³/day. What additional oxygen demand (kg/day) is created by nitrification?",
     options: ["286 kg/day", "457 kg/day", "1,143 kg/day", "2,285 kg/day"],
     correct: 2,
-    explanation: "O2 demand = 4.57 g O2/g NH3-N × 25 mg/L × 10,000 m³/day × 0.001 = 4.57 × 250 = 1,142.5 ≈ 1,143 kg/day." },
+    explanation: "O2 demand = 4.57 g O2/g NH3-N × 25 mg/L × 10,000 m³/day × 0.001 = 4.57 × 250 = 1,142.5 ≈ 1,143 kg/day." , steps: [ { l: "Formula", c: "Additional O2 Demand (kg/day) = NH3-N (mg/L) × Flow (m³/day) × 4.57 (g O2/g NH3-N) × Conversion Factor" }, { l: "Step 1", c: "Identify given values: NH3-N = 25 mg/L, Flow = 10,000 m³/day, O2 demand ratio = 4.57 g O2/g NH3-N. Conversion factor = 0.001 kg/g (or 1000 L/m³ * 1 kg/1000g * 1 mg/1000g, simplified to 0.001 for mg/L * m³/day to kg/day)" }, { l: "Substitute", c: "O2 Demand = 25 mg/L × 10,000 m³/day × 4.57 × (1 kg / 1000 mg) × (1000 L / 1 m³)" }, { l: "Simplify Conversion", c: "O2 Demand = 25 mg/L × 10,000 m³/day × 4.57 × 0.001 (to convert mg/L * m³/day to kg/day directly)" }, { l: "Calculate", c: "O2 Demand = 1,142.5 kg/day" }, { l: "Result", c: "The additional oxygen demand created by nitrification is approximately 1,143 kg/day." } ], tip: "Use the 4.57 factor for nitrification oxygen demand, and ensure units cancel out." },
 
   { id: 96, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is the anoxic zone in a biological nutrient removal system?",
@@ -610,7 +612,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A BNR plant has an influent TN of 40 mg/L and must achieve an effluent TN of 10 mg/L. If nitrification is complete (all NH3 converted to NO3), how much NO3-N must be denitrified?",
     options: ["10 mg/L", "20 mg/L", "30 mg/L", "40 mg/L"],
     correct: 2,
-    explanation: "If all NH3-N (≈35 mg/L TKN) is nitrified to NO3-N, and effluent TN must be ≤10 mg/L, then denitrification must remove 40 − 10 = 30 mg/L of TN (mostly as NO3-N)." },
+    explanation: "If all NH3-N (≈35 mg/L TKN) is nitrified to NO3-N, and effluent TN must be ≤10 mg/L, then denitrification must remove 40 − 10 = 30 mg/L of TN (mostly as NO3-N)." , steps: [ { l: "Formula", c: "NO3-N to be Denitrified = Influent TN - Effluent TN" }, { l: "Step 1", c: "Identify given values: Influent TN = 40 mg/L, Effluent TN = 10 mg/L." }, { l: "Step 2", c: "Understand that if nitrification is complete, all NH3-N is converted to NO3-N. To meet the effluent TN limit, the difference must be removed by denitrification." }, { l: "Substitute", c: "NO3-N to be Denitrified = 40 mg/L - 10 mg/L" }, { l: "Calculate", c: "NO3-N to be Denitrified = 30 mg/L" }, { l: "Result", c: "30 mg/L of NO3-N must be denitrified." } ], tip: "Denitrification removes nitrate. The difference between influent and effluent TN is the removal target." },
 
   { id: 99, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is the typical effluent total nitrogen (TN) achievable with biological nitrogen removal (BNR)?",
@@ -678,7 +680,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A tertiary filter has a filtration rate of 5 m/h and a surface area of 100 m². What is the design flow in m³/day?",
     options: ["500 m³/day", "1,200 m³/day", "12,000 m³/day", "120,000 m³/day"],
     correct: 2,
-    explanation: "Flow = Filtration rate × Surface area × hours/day = 5 m/h × 100 m² × 24 h/day = 12,000 m³/day." },
+    explanation: "Flow = Filtration rate × Surface area × hours/day = 5 m/h × 100 m² × 24 h/day = 12,000 m³/day." , steps: [ { l: "Formula", c: "Design Flow (m³/day) = Filtration Rate (m/h) × Surface Area (m²) × Time (h/day)" }, { l: "Step 1", c: "Identify given values: Filtration Rate = 5 m/h, Surface Area = 100 m², Time = 24 h/day." }, { l: "Substitute", c: "Design Flow = 5 m/h × 100 m² × 24 h/day" }, { l: "Calculate", c: "Design Flow = 12,000 m³/day" }, { l: "Result", c: "The design flow is 12,000 m³/day." } ], tip: "Ensure units align: m/h * m² * h/day = m³/day." },
 
   { id: 110, module: "Tertiary Treatment & Filtration", difficulty: "medium",
     question: "What is a membrane bioreactor (MBR) and what are its advantages?",
@@ -740,7 +742,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A chlorine contact chamber has a volume of 500 m³ and receives a flow of 10,000 m³/day. The chlorine residual is 0.5 mg/L. What is the CT value?",
     options: ["0.6 mg·min/L", "36 mg·min/L", "72 mg·min/L", "360 mg·min/L"],
     correct: 1,
-    explanation: "HRT = V/Q = 500 / (10,000/1440 min) = 500 / 6.94 = 72 min. CT = 0.5 mg/L × 72 min = 36 mg·min/L." },
+    explanation: "HRT = V/Q = 500 / (10,000/1440 min) = 500 / 6.94 = 72 min. CT = 0.5 mg/L × 72 min = 36 mg·min/L." , steps: [ { l: "Formula", c: "CT Value = Chlorine Residual (mg/L) × Hydraulic Retention Time (min)" }, { l: "Step 1", c: "Calculate Hydraulic Retention Time (HRT): HRT = Volume / Flow Rate" }, { l: "Step 2", c: "Convert flow rate to m³/min: 10,000 m³/day / 1440 min/day = 6.944 m³/min" }, { l: "Substitute", c: "HRT = 500 m³ / 6.944 m³/min" }, { l: "Calculate", c: "HRT = 72.00 min" }, { l: "Substitute", c: "CT Value = 0.5 mg/L × 72.00 min" }, { l: "Calculate", c: "CT Value = 36 mg·min/L" }, { l: "Result", c: "The CT value is 36 mg·min/L." } ], tip: "Always convert flow to match the time unit needed for HRT (e.g., min)." },
 
   { id: 120, module: "Disinfection", difficulty: "medium",
     question: "What is dechlorination and why is it required?",
@@ -779,7 +781,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An anaerobic digester processes 100 m³/day of sludge at 4% TS with 70% VS. If VS reduction is 40%, how many kg/day of VS are destroyed?",
     options: ["280 kg/day", "1,120 kg/day", "2,800 kg/day", "11,200 kg/day"],
     correct: 1,
-    explanation: "Total sludge mass = 100 m³ × 1,020 kg/m³ = 102,000 kg/day. Dry solids = 102,000 × 0.04 = 4,080 kg/day. VS = 4,080 × 0.70 = 2,856 kg/day. VS destroyed = 2,856 × 0.40 = 1,142 kg/day ≈ 1,120 kg/day." },
+    explanation: "Total sludge mass = 100 m³ × 1,020 kg/m³ = 102,000 kg/day. Dry solids = 102,000 × 0.04 = 4,080 kg/day. VS = 4,080 × 0.70 = 2,856 kg/day. VS destroyed = 2,856 × 0.40 = 1,142 kg/day ≈ 1,120 kg/day." , steps: [ { l: "Formula", c: "VS Destroyed (kg/day) = Sludge Volume (m³/day) × Sludge Density (kg/m³) × %TS (decimal) × %VS (decimal) × %VS Reduction (decimal)" }, { l: "Step 1: Identify given values", c: "Sludge Volume = 100 m³/day; Sludge Density = 1,020 kg/m³ (assumed for sludge); %TS = 4% = 0.04; %VS = 70% = 0.70; %VS Reduction = 40% = 0.40" }, { l: "Substitute", c: "VS Destroyed = 100 m³/day × 1,020 kg/m³ × 0.04 × 0.70 × 0.40" }, { l: "Calculate", c: "VS Destroyed = 102,000 kg/day × 0.04 × 0.70 × 0.40 = 4,080 kg/day × 0.70 × 0.40 = 2,856 kg/day × 0.40 = 1,142.4 kg/day" }, { l: "Result", c: "Approximately 1,142 kg/day of VS are destroyed." } ], tip: "Remember to convert percentages to decimals for calculations involving mass." },
 
   { id: 126, module: "Solids Handling & Biosolids", difficulty: "medium",
     question: "What is the mesophilic temperature range for anaerobic digestion?",
@@ -815,7 +817,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A centrifuge dewaters 50 m³/day of digested sludge at 2% TS to a cake at 22% TS. What is the approximate cake volume produced?",
     options: ["0.5 m³/day", "4.5 m³/day", "9.1 m³/day", "18.2 m³/day"],
     correct: 1,
-    explanation: "Dry solids = 50 × 1,020 × 0.02 = 1,020 kg/day. Cake volume = 1,020 / (0.22 × 1,050) = 1,020 / 231 = 4.4 m³/day ≈ 4.5 m³/day (assuming cake density ~1,050 kg/m³)." },
+    explanation: "Dry solids = 50 × 1,020 × 0.02 = 1,020 kg/day. Cake volume = 1,020 / (0.22 × 1,050) = 1,020 / 231 = 4.4 m³/day ≈ 4.5 m³/day (assuming cake density ~1,050 kg/m³)." , steps: [ { l: "Formula", c: "Cake Volume (m³/day) = (Influent Sludge Volume (m³/day) × Influent Sludge Density (kg/m³) × Influent %TS (decimal)) / (Cake Density (kg/m³) × Cake %TS (decimal))" }, { l: "Step 1: Calculate dry solids in influent sludge", c: "Dry Solids (kg/day) = 50 m³/day × 1,020 kg/m³ × 0.02 = 1,020 kg/day" }, { l: "Step 2: Identify cake properties", c: "Cake %TS = 22% = 0.22; Cake Density = 1,050 kg/m³ (assumed for dewatered cake)" }, { l: "Substitute", c: "Cake Volume = 1,020 kg/day / (1,050 kg/m³ × 0.22)" }, { l: "Calculate", c: "Cake Volume = 1,020 kg/day / 231 kg/m³ = 4.4155 m³/day" }, { l: "Result", c: "The approximate cake volume produced is 4.4 m³/day." } ], tip: "Mass balance is key: dry solids in influent sludge equals dry solids in cake." },
 
   { id: 132, module: "Solids Handling & Biosolids", difficulty: "medium",
     question: "What is the purpose of polymer conditioning before sludge dewatering?",
@@ -839,7 +841,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An anaerobic digester has a volume of 1,500 m³ and receives 80 m³/day of sludge. What is the hydraulic retention time (HRT)?",
     options: ["9.4 days", "18.75 days", "37.5 days", "75 days"],
     correct: 1,
-    explanation: "HRT = Volume / Flow = 1,500 / 80 = 18.75 days. Mesophilic digesters are typically designed for HRTs of 15–30 days." },
+    explanation: "HRT = Volume / Flow = 1,500 / 80 = 18.75 days. Mesophilic digesters are typically designed for HRTs of 15–30 days." , steps: [ { l: "Formula", c: "Hydraulic Retention Time (HRT) = Volume (m³) / Flow (m³/day)" }, { l: "Step 1: Identify given values", c: "Volume = 1,500 m³; Flow = 80 m³/day" }, { l: "Substitute", c: "HRT = 1,500 m³ / 80 m³/day" }, { l: "Calculate", c: "HRT = 18.75 days" }, { l: "Result", c: "The hydraulic retention time (HRT) is 18.75 days." } ], tip: "HRT is a critical parameter for digester performance and stability." },
 
   { id: 136, module: "Solids Handling & Biosolids", difficulty: "medium",
     question: "What is 'foaming' in an anaerobic digester and what causes it?",
@@ -863,7 +865,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A digester produces 800 m³/day of biogas at 65% methane. What is the daily methane production in m³/day?",
     options: ["280 m³/day", "520 m³/day", "640 m³/day", "800 m³/day"],
     correct: 1,
-    explanation: "Methane production = 800 × 0.65 = 520 m³/day." },
+    explanation: "Methane production = 800 × 0.65 = 520 m³/day." , steps: [ { l: "Formula", c: "Methane Production (m³/day) = Total Biogas Production (m³/day) × % Methane (decimal)" }, { l: "Step 1: Identify given values", c: "Total Biogas Production = 800 m³/day; % Methane = 65% = 0.65" }, { l: "Substitute", c: "Methane Production = 800 m³/day × 0.65" }, { l: "Calculate", c: "Methane Production = 520 m³/day" }, { l: "Result", c: "The daily methane production is 520 m³/day." } ], tip: "Biogas composition, especially methane content, indicates digester health." },
 
   { id: 140, module: "Solids Handling & Biosolids", difficulty: "medium",
     question: "What is the purpose of gravity thickening of waste activated sludge (WAS)?",
@@ -931,7 +933,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A WWTP has an ECA effluent limit of 15 mg/L BOD and 15 mg/L TSS. The plant's monthly average results are BOD = 12 mg/L and TSS = 18 mg/L. What is the compliance status?",
     options: ["In compliance for both parameters", "In compliance for BOD; non-compliant for TSS", "Non-compliant for BOD; in compliance for TSS", "Non-compliant for both parameters"],
     correct: 1,
-    explanation: "BOD = 12 mg/L is below the 15 mg/L limit (compliant). TSS = 18 mg/L exceeds the 15 mg/L limit (non-compliant). The plant must investigate the cause and report to the MECP." },
+    explanation: "BOD = 12 mg/L is below the 15 mg/L limit (compliant). TSS = 18 mg/L exceeds the 15 mg/L limit (non-compliant). The plant must investigate the cause and report to the MECP." , steps: [ { l: "Step 1: Compare BOD effluent to limit", c: "BOD effluent = 12 mg/L; BOD limit = 15 mg/L. Since 12 mg/L < 15 mg/L, BOD is compliant." }, { l: "Step 2: Compare TSS effluent to limit", c: "TSS effluent = 18 mg/L; TSS limit = 15 mg/L. Since 18 mg/L > 15 mg/L, TSS is non-compliant." }, { l: "Result", c: "The plant is non-compliant due to exceeding the TSS effluent limit." } ], tip: "Compliance requires ALL parameters to be within their specified limits." },
 
   { id: 151, module: "Regulations, Safety & Operations", difficulty: "medium",
     question: "What is 'lockout/tagout' (LOTO) and when is it required at a WWTP?",
@@ -1011,7 +1013,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An activated sludge plant has an influent BOD of 200 mg/L, flow of 12,000 m³/day, MLVSS of 2,500 mg/L, and aeration basin volume of 3,000 m³. What is the F/M ratio?",
     options: ["0.08 kg BOD/kg MLVSS/day", "0.16 kg BOD/kg MLVSS/day", "0.32 kg BOD/kg MLVSS/day", "0.64 kg BOD/kg MLVSS/day"],
     correct: 1,
-    explanation: "BOD load = 200 × 12,000 × 0.001 = 2,400 kg/day. MLVSS mass = 2,500 × 3,000 × 0.001 = 7,500 kg. F/M = 2,400 / 7,500 = 0.32 kg BOD/kg MLVSS/day." },
+    explanation: "BOD load = 200 × 12,000 × 0.001 = 2,400 kg/day. MLVSS mass = 2,500 × 3,000 × 0.001 = 7,500 kg. F/M = 2,400 / 7,500 = 0.32 kg BOD/kg MLVSS/day." , steps: [ { l: "Formula", c: "F/M Ratio = (BOD Load) / (MLVSS Mass)" }, { l: "Step 1: Calculate BOD Load", c: "BOD Load (kg/day) = Influent BOD (mg/L) × Flow (m³/day) × Conversion Factor (kg/mg * L/m³)" }, { l: "Substitute", c: "BOD Load = 200 mg/L × 12,000 m³/day × 0.001 (kg/mg * L/m³)" }, { l: "Calculate", c: "BOD Load = 2,400 kg/day" }, { l: "Step 2: Calculate MLVSS Mass", c: "MLVSS Mass (kg) = MLVSS (mg/L) × Aeration Basin Volume (m³) × Conversion Factor (kg/mg * L/m³)" }, { l: "Substitute", c: "MLVSS Mass = 2,500 mg/L × 3,000 m³ × 0.001 (kg/mg * L/m³)" }, { l: "Calculate", c: "MLVSS Mass = 7,500 kg" }, { l: "Step 3: Calculate F/M Ratio", c: "F/M Ratio = BOD Load / MLVSS Mass" }, { l: "Substitute", c: "F/M Ratio = 2,400 kg BOD/day / 7,500 kg MLVSS" }, { l: "Calculate", c: "F/M Ratio = 0.32" }, { l: "Result", c: "The F/M ratio is 0.32 kg BOD/kg MLVSS/day." } ], tip: "Remember F/M units: mass of food per mass of microorganisms per day." },
 
   { id: 164, module: "Disinfection", difficulty: "medium",
     question: "What is the advantage of UV disinfection over chlorination for wastewater effluent?",
@@ -1023,7 +1025,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A UV disinfection system must achieve 4-log inactivation of E. coli. The required UV dose is 40 mJ/cm². At a flow of 8,000 m³/day through a channel with 20 UV lamps each delivering 2 mJ/cm² per lamp, is the dose sufficient?",
     options: ["Yes — 40 mJ/cm² is achieved", "No — only 40 mJ/cm² is achieved but 4-log requires 100 mJ/cm²", "Yes — 20 lamps × 2 mJ/cm² = 40 mJ/cm² meets the 40 mJ/cm² requirement", "No — UV dose depends on flow, not lamp count"],
     correct: 2,
-    explanation: "Total UV dose = 20 lamps × 2 mJ/cm² = 40 mJ/cm², which meets the 40 mJ/cm² requirement for 4-log E. coli inactivation. However, actual dose depends on lamp intensity, transmittance, and flow rate." },
+    explanation: "Total UV dose = 20 lamps × 2 mJ/cm² = 40 mJ/cm², which meets the 40 mJ/cm² requirement for 4-log E. coli inactivation. However, actual dose depends on lamp intensity, transmittance, and flow rate." , steps: [ { l: "Step 1: Determine total UV dose delivered by the system.", c: "Total UV Dose Delivered (mJ/cm²) = Number of UV Lamps × UV Dose per Lamp (mJ/cm²)" }, { l: "Substitute", c: "Total UV Dose Delivered = 20 lamps × 2 mJ/cm²/lamp" }, { l: "Calculate", c: "Total UV Dose Delivered = 40 mJ/cm²" }, { l: "Step 2: Compare the delivered dose with the required dose.", c: "Required UV dose for 4-log inactivation of E. coli = 40 mJ/cm²" }, { l: "Compare", c: "Delivered Dose (40 mJ/cm²) is equal to Required Dose (40 mJ/cm²)." }, { l: "Result", c: "The system delivers the required UV dose of 40 mJ/cm² for 4-log E. coli inactivation." } ], tip: "UV dose is critical for pathogen inactivation; check delivered vs required." },
 
   { id: 166, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "medium",
     question: "What is the 'population equivalent' (PE) concept used for in wastewater treatment?",
@@ -1041,7 +1043,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A BNR plant has an influent TP of 8 mg/L and must achieve effluent TP < 0.5 mg/L. EBPR achieves 1.5 mg/L. How much additional chemical phosphorus removal (as mg/L TP) is required?",
     options: ["0.5 mg/L", "1.0 mg/L", "1.5 mg/L", "7.5 mg/L"],
     correct: 1,
-    explanation: "EBPR achieves 1.5 mg/L; target is 0.5 mg/L. Additional chemical removal needed = 1.5 - 0.5 = 1.0 mg/L TP." },
+    explanation: "EBPR achieves 1.5 mg/L; target is 0.5 mg/L. Additional chemical removal needed = 1.5 - 0.5 = 1.0 mg/L TP." , steps: [ { l: "Formula", c: "Additional Chemical Phosphorus Removal (mg/L TP) = TP after EBPR (mg/L) - Target Effluent TP (mg/L)" }, { l: "Step 1: Identify given values.", c: "Target Effluent TP = 0.5 mg/L; TP achieved by EBPR = 1.5 mg/L" }, { l: "Substitute", c: "Additional Chemical Phosphorus Removal = 1.5 mg/L TP - 0.5 mg/L TP" }, { l: "Calculate", c: "Additional Chemical Phosphorus Removal = 1.0 mg/L TP" }, { l: "Result", c: "An additional 1.0 mg/L TP of chemical phosphorus removal is required." } ], tip: "Subtract the target from the current level to find the remaining removal needed." },
 
   { id: 169, module: "Tertiary Treatment & Filtration", difficulty: "medium",
     question: "What is the purpose of a constructed wetland as a tertiary treatment step?",
@@ -1065,7 +1067,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A plant receives a flow of 30,000 m³/day with BOD = 220 mg/L and TSS = 260 mg/L. What is the organic loading in kg BOD/day and the solids loading in kg TSS/day?",
     options: ["BOD: 6,600 kg/day; TSS: 7,800 kg/day", "BOD: 660 kg/day; TSS: 780 kg/day", "BOD: 66,000 kg/day; TSS: 78,000 kg/day", "BOD: 6.6 kg/day; TSS: 7.8 kg/day"],
     correct: 0,
-    explanation: "BOD load = 220 × 30,000 × 0.001 = 6,600 kg/day. TSS load = 260 × 30,000 × 0.001 = 7,800 kg/day." },
+    explanation: "BOD load = 220 × 30,000 × 0.001 = 6,600 kg/day. TSS load = 260 × 30,000 × 0.001 = 7,800 kg/day." , steps: [ { l: "Formula for Organic Loading (BOD)", c: "BOD Load (kg/day) = BOD (mg/L) × Flow (m³/day) × Conversion Factor (0.001 kg/mg * L/m³)" }, { l: "Substitute for BOD Load", c: "BOD Load = 220 mg/L × 30,000 m³/day × 0.001" }, { l: "Calculate BOD Load", c: "BOD Load = 6,600 kg/day" }, { l: "Formula for Solids Loading (TSS)", c: "TSS Load (kg/day) = TSS (mg/L) × Flow (m³/day) × Conversion Factor (0.001 kg/mg * L/m³)" }, { l: "Substitute for TSS Load", c: "TSS Load = 260 mg/L × 30,000 m³/day × 0.001" }, { l: "Calculate TSS Load", c: "TSS Load = 7,800 kg/day" }, { l: "Result", c: "The organic loading is 6,600 kg BOD/day and the solids loading is 7,800 kg TSS/day." } ], tip: "Loading calculations use flow and concentration, remember the 0.001 conversion factor." },
 
   { id: 173, module: "Disinfection", difficulty: "medium",
     question: "What is 'chlorine demand' in wastewater disinfection?",
@@ -1083,7 +1085,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A primary clarifier has an influent TSS of 280 mg/L and achieves 60% TSS removal. The effluent flow is 18,000 m³/day. What is the primary sludge production in kg/day?",
     options: ["1,512 kg/day", "3,024 kg/day", "5,040 kg/day", "8,400 kg/day"],
     correct: 1,
-    explanation: "TSS removed = 280 × 0.60 = 168 mg/L. Sludge production = 168 × 18,000 × 0.001 = 3,024 kg/day." },
+    explanation: "TSS removed = 280 × 0.60 = 168 mg/L. Sludge production = 168 × 18,000 × 0.001 = 3,024 kg/day." , steps: [ { l: "Step 1: Calculate the amount of TSS removed.", c: "TSS Removed (mg/L) = Influent TSS (mg/L) × TSS Removal Efficiency (%)" }, { l: "Substitute", c: "TSS Removed = 280 mg/L × 0.60" }, { l: "Calculate", c: "TSS Removed = 168 mg/L" }, { l: "Step 2: Calculate primary sludge production.", c: "Primary Sludge Production (kg/day) = TSS Removed (mg/L) × Effluent Flow (m³/day) × Conversion Factor (0.001 kg/mg * L/m³)" }, { l: "Substitute", c: "Primary Sludge Production = 168 mg/L × 18,000 m³/day × 0.001" }, { l: "Calculate", c: "Primary Sludge Production = 3,024 kg/day" }, { l: "Result", c: "The primary sludge production is 3,024 kg/day." } ], tip: "Sludge production is based on removed solids and flow, use the 0.001 conversion." },
 
   { id: 176, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is 'internal recycle' in a BNR system and what is its purpose?",
@@ -1095,7 +1097,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A tertiary filter receives secondary effluent with TSS = 20 mg/L at a flow of 15,000 m³/day. The filter achieves 80% TSS removal. What is the filtered effluent TSS?",
     options: ["2 mg/L", "4 mg/L", "8 mg/L", "16 mg/L"],
     correct: 1,
-    explanation: "TSS removed = 20 × 0.80 = 16 mg/L. Effluent TSS = 20 - 16 = 4 mg/L." },
+    explanation: "TSS removed = 20 × 0.80 = 16 mg/L. Effluent TSS = 20 - 16 = 4 mg/L." , steps: [ { l: "Formula", c: "TSS Removed = Influent TSS × Removal Efficiency; Effluent TSS = Influent TSS - TSS Removed" }, { l: "Step 1: Calculate TSS removed", c: "TSS Removed = 20 mg/L × 0.80" }, { l: "Calculate", c: "TSS Removed = 16 mg/L" }, { l: "Step 2: Calculate Effluent TSS", c: "Effluent TSS = 20 mg/L - 16 mg/L" }, { l: "Calculate", c: "Effluent TSS = 4 mg/L" }, { l: "Result", c: "The filtered effluent TSS is 4 mg/L." } ], tip: "Remember to convert percentages to decimals for calculations." },
 
   { id: 178, module: "Solids Handling & Biosolids", difficulty: "medium",
     question: "What is 'co-digestion' of biosolids?",
@@ -1113,7 +1115,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An activated sludge system has MLSS = 3,500 mg/L, aeration basin volume = 4,000 m³, and SRT = 12 days. What is the daily WAS production in kg/day?",
     options: ["583 kg/day", "1,167 kg/day", "4,667 kg/day", "14,000 kg/day"],
     correct: 1,
-    explanation: "Total MLSS mass = 3,500 × 4,000 × 0.001 = 14,000 kg. Daily WAS = Total mass / SRT = 14,000 / 12 = 1,167 kg/day." },
+    explanation: "Total MLSS mass = 3,500 × 4,000 × 0.001 = 14,000 kg. Daily WAS = Total mass / SRT = 14,000 / 12 = 1,167 kg/day." , steps: [ { l: "Formula", c: "Total MLSS Mass (kg) = MLSS (mg/L) × Aeration Basin Volume (m³) × Conversion Factor (kg/mg·L/m³); Daily WAS Production (kg/day) = Total MLSS Mass (kg) / SRT (days)" }, { l: "Step 1: Calculate Total MLSS Mass", c: "Total MLSS Mass = 3,500 mg/L × 4,000 m³ × (1 kg / 1,000,000 mg) × (1,000 L / 1 m³) = 3,500 × 4,000 × 0.001 kg" }, { l: "Calculate", c: "Total MLSS Mass = 14,000 kg" }, { l: "Step 2: Calculate Daily WAS Production", c: "Daily WAS Production = 14,000 kg / 12 days" }, { l: "Calculate", c: "Daily WAS Production = 1,166.67 kg/day" }, { l: "Result", c: "The daily WAS production is approximately 1,167 kg/day." } ], tip: "Pay close attention to units, especially mg/L to kg conversions." },
 
   { id: 181, module: "Disinfection", difficulty: "medium",
     question: "What is 'breakpoint chlorination' and when is it used in wastewater treatment?",
@@ -1137,7 +1139,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A nitrification system must reduce NH3-N from 30 mg/L to < 3 mg/L. If the nitrification rate is 0.05 kg NH3-N/kg MLVSS/day, and the flow is 10,000 m³/day, what MLVSS mass is required?",
     options: ["270 kg", "540 kg", "5,400 kg", "54,000 kg"],
     correct: 2,
-    explanation: "NH3-N to remove = (30 - 3) × 10,000 × 0.001 = 270 kg/day. MLVSS required = 270 / 0.05 = 5,400 kg." },
+    explanation: "NH3-N to remove = (30 - 3) × 10,000 × 0.001 = 270 kg/day. MLVSS required = 270 / 0.05 = 5,400 kg." , steps: [ { l: "Formula", c: "NH3-N to Remove (kg/day) = (Influent NH3-N - Effluent NH3-N) × Flow (m³/day) × Conversion Factor (kg/mg·L/m³); MLVSS Required (kg) = NH3-N to Remove (kg/day) / Nitrification Rate (kg NH3-N/kg MLVSS/day)" }, { l: "Step 1: Calculate NH3-N to remove daily", c: "NH3-N to Remove = (30 mg/L - 3 mg/L) × 10,000 m³/day × (1 kg / 1,000,000 mg) × (1,000 L / 1 m³) = (30 - 3) × 10,000 × 0.001 kg/day" }, { l: "Calculate", c: "NH3-N to Remove = 270 kg/day" }, { l: "Step 2: Calculate MLVSS required", c: "MLVSS Required = 270 kg/day / 0.05 kg NH3-N/kg MLVSS/day" }, { l: "Calculate", c: "MLVSS Required = 5,400 kg" }, { l: "Result", c: "The MLVSS mass required is 5,400 kg." } ], tip: "Ensure units cancel correctly to arrive at the desired final unit." },
 
   { id: 185, module: "Tertiary Treatment & Filtration", difficulty: "medium",
     question: "What is 'effluent polishing' in wastewater treatment?",
@@ -1203,7 +1205,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A WWTP produces 2,000 kg/day of dry biosolids at 22% TS. The biosolids are land-applied at a rate of 5 dry tonnes/hectare. How many hectares can be applied per day?",
     options: ["0.4 ha/day", "2.0 ha/day", "4.0 ha/day", "10.0 ha/day"],
     correct: 0,
-    explanation: "Daily production = 2,000 kg/day = 2 dry tonnes/day. Hectares = 2 dry tonnes / 5 dry tonnes/ha = 0.4 ha/day." },
+    explanation: "Daily production = 2,000 kg/day = 2 dry tonnes/day. Hectares = 2 dry tonnes / 5 dry tonnes/ha = 0.4 ha/day." , steps: [ { l: "Formula", c: "Daily Dry Biosolids Production (dry tonnes/day) = Daily Dry Biosolids Production (kg/day) / Conversion Factor (kg/tonne); Hectares per Day (ha/day) = Daily Dry Biosolids Production (dry tonnes/day) / Land Application Rate (dry tonnes/hectare)" }, { l: "Step 1: Convert daily dry biosolids production to dry tonnes/day", c: "Daily Dry Biosolids Production = 2,000 kg/day / 1,000 kg/tonne" }, { l: "Calculate", c: "Daily Dry Biosolids Production = 2 dry tonnes/day" }, { l: "Step 2: Calculate hectares that can be applied per day", c: "Hectares per Day = 2 dry tonnes/day / 5 dry tonnes/hectare" }, { l: "Calculate", c: "Hectares per Day = 0.4 ha/day" }, { l: "Result", c: "0.4 hectares can be applied per day." } ], tip: "Distinguish between wet and dry weight; convert to consistent units." },
 
   { id: 196, module: "Regulations, Safety & Operations", difficulty: "medium",
     question: "What is the purpose of 'emergency response planning' for a chlorine gas storage facility at a WWTP?",
@@ -1241,7 +1243,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An activated sludge plant has an aeration basin volume of 5,000 m³, MLSS of 2,800 mg/L, influent flow of 20,000 m³/day, and influent BOD of 180 mg/L. What is the volumetric BOD loading rate in kg BOD/m³/day?",
     options: ["0.36 kg BOD/m³/day", "0.72 kg BOD/m³/day", "1.44 kg BOD/m³/day", "3.60 kg BOD/m³/day"],
     correct: 1,
-    explanation: "BOD load = 180 × 20,000 × 0.001 = 3,600 kg/day. Volumetric loading = 3,600 / 5,000 = 0.72 kg BOD/m³/day." },
+    explanation: "BOD load = 180 × 20,000 × 0.001 = 3,600 kg/day. Volumetric loading = 3,600 / 5,000 = 0.72 kg BOD/m³/day." , steps: [ { l: "Formula", c: "BOD Load (kg/day) = Influent BOD (mg/L) × Influent Flow (m³/day) × Conversion Factor (kg/mg·L/m³); Volumetric BOD Loading Rate (kg BOD/m³/day) = BOD Load (kg/day) / Aeration Basin Volume (m³)" }, { l: "Step 1: Calculate the total BOD load", c: "BOD Load = 180 mg/L × 20,000 m³/day × (1 kg / 1,000,000 mg) × (1,000 L / 1 m³) = 180 × 20,000 × 0.001 kg/day" }, { l: "Calculate", c: "BOD Load = 3,600 kg/day" }, { l: "Step 2: Calculate the volumetric BOD loading rate", c: "Volumetric BOD Loading Rate = 3,600 kg/day / 5,000 m³" }, { l: "Calculate", c: "Volumetric BOD Loading Rate = 0.72 kg BOD/m³/day" }, { l: "Result", c: "The volumetric BOD loading rate is 0.72 kg BOD/m³/day." } ], tip: "The 0.001 conversion factor is key for mg/L to kg/day calculations." },
 
   { id: 202, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is 'alkalinity consumption' during nitrification and why is it important?",
@@ -1277,7 +1279,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A chlorine contact chamber has a T10/T ratio of 0.5 (T10 = time for 10% of tracer to pass through). The HRT is 60 minutes and the chlorine residual is 1.0 mg/L. What is the effective CT value?",
     options: ["30 mg·min/L", "60 mg·min/L", "120 mg·min/L", "600 mg·min/L"],
     correct: 0,
-    explanation: "Effective CT = C × T10 = 1.0 mg/L × (0.5 × 60 min) = 1.0 × 30 = 30 mg·min/L. T10 accounts for short-circuiting in the contact chamber." },
+    explanation: "Effective CT = C × T10 = 1.0 mg/L × (0.5 × 60 min) = 1.0 × 30 = 30 mg·min/L. T10 accounts for short-circuiting in the contact chamber." , steps: [ { l: "Formula", c: "Effective CT = C × T10" }, { l: "Step 1: Calculate T10", c: "T10 = T10/T ratio × HRT" }, { l: "Substitute values for T10", c: "T10 = 0.5 × 60 minutes = 30 minutes" }, { l: "Substitute values for Effective CT", c: "Effective CT = 1.0 mg/L × 30 minutes" }, { l: "Calculate", c: "Effective CT = 30 mg·min/L" }, { l: "Result", c: "The effective CT value is 30 mg·min/L." } ], tip: "T10 accounts for short-circuiting, providing a more realistic contact time." },
 
   { id: 208, module: "Regulations, Safety & Operations", difficulty: "medium",
     question: "What is the purpose of 'process monitoring' at a WWTP?",
@@ -1361,7 +1363,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A WWTP has two primary clarifiers, each 20 m diameter and 3 m SWD. One clarifier is taken offline for maintenance. The plant flow is 8,000 m³/day. What is the SOR on the remaining clarifier?",
     options: ["25 m³/m²/day", "50 m³/m²/day", "100 m³/m²/day", "200 m³/m²/day"],
     correct: 1,
-    explanation: "Surface area of one clarifier = pi/4 × 20² = 314 m². SOR = 8,000 / 314 = 25.5 m³/m²/day ≈ 25 m³/m²/day. This is within the acceptable range for primary clarifiers." },
+    explanation: "Surface area of one clarifier = pi/4 × 20² = 314 m². SOR = 8,000 / 314 = 25.5 m³/m²/day ≈ 25 m³/m²/day. This is within the acceptable range for primary clarifiers." , steps: [ { l: "Formula", c: "Surface Overflow Rate (SOR) = Flow / Surface Area" }, { l: "Step 1: Calculate the surface area of one clarifier", c: "Surface Area = π × (Diameter/2)²" }, { l: "Substitute values for Surface Area", c: "Surface Area = π × (20 m / 2)² = π × (10 m)² = 314.16 m²" }, { l: "Substitute values for SOR", c: "SOR = 8,000 m³/day / 314.16 m²" }, { l: "Calculate", c: "SOR = 25.46 m³/m²/day" }, { l: "Result", c: "The SOR on the remaining clarifier is approximately 25.5 m³/m²/day." } ], tip: "Remember to adjust for the number of units in service when calculating SOR." },
 
   { id: 222, module: "Regulations, Safety & Operations", difficulty: "medium",
     question: "What is the purpose of a 'safety data sheet' (SDS) for chemicals used at a WWTP?",
@@ -1415,7 +1417,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An activated sludge system has MLVSS = 2,200 mg/L, aeration basin volume = 3,500 m³, influent BOD = 160 mg/L, and flow = 15,000 m³/day. What is the F/M ratio?",
     options: ["0.10 kg BOD/kg MLVSS/day", "0.31 kg BOD/kg MLVSS/day", "0.62 kg BOD/kg MLVSS/day", "1.24 kg BOD/kg MLVSS/day"],
     correct: 1,
-    explanation: "BOD load = 160 × 15,000 × 0.001 = 2,400 kg/day. MLVSS mass = 2,200 × 3,500 × 0.001 = 7,700 kg. F/M = 2,400 / 7,700 = 0.31 kg BOD/kg MLVSS/day." },
+    explanation: "BOD load = 160 × 15,000 × 0.001 = 2,400 kg/day. MLVSS mass = 2,200 × 3,500 × 0.001 = 7,700 kg. F/M = 2,400 / 7,700 = 0.31 kg BOD/kg MLVSS/day." , steps: [ { l: "Formula", c: "F/M Ratio = (Influent BOD Load) / (MLVSS Mass in Aeration Basin)" }, { l: "Step 1: Calculate Influent BOD Load", c: "BOD Load = Influent BOD (mg/L) × Flow (m³/day) × (1 kg / 1000 mg) × (1000 L / 1 m³)" }, { l: "Substitute values for BOD Load", c: "BOD Load = 160 mg/L × 15,000 m³/day × 0.001 kg/m³ = 2,400 kg/day" }, { l: "Step 2: Calculate MLVSS Mass in Aeration Basin", c: "MLVSS Mass = MLVSS (mg/L) × Aeration Basin Volume (m³) × (1 kg / 1000 mg) × (1000 L / 1 m³)" }, { l: "Substitute values for MLVSS Mass", c: "MLVSS Mass = 2,200 mg/L × 3,500 m³ × 0.001 kg/m³ = 7,700 kg" }, { l: "Substitute values for F/M Ratio", c: "F/M Ratio = 2,400 kg/day / 7,700 kg" }, { l: "Calculate", c: "F/M Ratio = 0.3117 kg BOD/kg MLVSS/day" }, { l: "Result", c: "The F/M ratio is approximately 0.31 kg BOD/kg MLVSS/day." } ], tip: "Ensure consistent units (kg) for both food (BOD) and microorganisms (MLVSS)." },
 
   { id: 231, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is 'post-anoxic denitrification' and when is it used?",
@@ -1499,7 +1501,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An activated sludge system operates at SRT = 10 days, MLSS = 3,000 mg/L, and aeration basin volume = 2,500 m³. If the WAS is wasted from the RAS line at 6,000 mg/L TSS, what is the WAS flow rate in m³/day?",
     options: ["12.5 m³/day", "25 m³/day", "50 m³/day", "125 m³/day"],
     correct: 3,
-    explanation: "Total MLSS mass = 3,000 × 2,500 × 0.001 = 7,500 kg. Daily WAS mass = 7,500 / 10 = 750 kg/day. WAS flow = 750 kg/day / (6,000 g/m³ × 0.001 kg/g) = 750 / 6 = 125 m³/day." },
+    explanation: "Total MLSS mass = 3,000 × 2,500 × 0.001 = 7,500 kg. Daily WAS mass = 7,500 / 10 = 750 kg/day. WAS flow = 750 kg/day / (6,000 g/m³ × 0.001 kg/g) = 750 / 6 = 125 m³/day." , steps: [ { l: "Formula", c: "SRT = (MLSS Mass in Aeration Basin) / (WAS Mass per Day)" }, { l: "Step 1: Calculate Total MLSS Mass in Aeration Basin", c: "MLSS Mass = MLSS (mg/L) × Aeration Basin Volume (m³) × (1 kg / 1000 mg) × (1000 L / 1 m³)" }, { l: "Substitute values for MLSS Mass", c: "MLSS Mass = 3,000 mg/L × 2,500 m³ × 0.001 kg/m³ = 7,500 kg" }, { l: "Step 2: Calculate Daily WAS Mass", c: "Daily WAS Mass = MLSS Mass / SRT" }, { l: "Substitute values for Daily WAS Mass", c: "Daily WAS Mass = 7,500 kg / 10 days = 750 kg/day" }, { l: "Step 3: Calculate WAS Flow Rate", c: "WAS Flow Rate = Daily WAS Mass (kg/day) / (WAS TSS Concentration (mg/L) × (1 kg / 1000 mg) × (1000 L / 1 m³))" }, { l: "Substitute values for WAS Flow Rate", c: "WAS Flow Rate = 750 kg/day / (6,000 mg/L × 0.001 kg/m³) = 750 kg/day / 6 kg/m³" }, { l: "Calculate", c: "WAS Flow Rate = 125 m³/day" }, { l: "Result", c: "The WAS flow rate is 125 m³/day." } ], tip: "SRT is crucial for controlling biomass and maintaining system stability." },
 
   { id: 245, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is 'volatile fatty acid' (VFA) and why is it important for EBPR?",
@@ -1550,7 +1552,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An activated sludge plant has influent flow = 25,000 m³/day, RAS flow = 12,500 m³/day, and MLSS = 3,200 mg/L. What is the secondary clarifier underflow TSS concentration?",
     options: ["3,200 mg/L", "6,400 mg/L", "9,600 mg/L", "12,800 mg/L"],
     correct: 2,
-    explanation: "Mass balance: (Q + QRAS) × MLSS = QRAS × RASS. (25,000 + 12,500) × 3,200 = 12,500 × RASS. RASS = 37,500 × 3,200 / 12,500 = 9,600 mg/L." },
+    explanation: "Mass balance: (Q + QRAS) × MLSS = QRAS × RASS. (25,000 + 12,500) × 3,200 = 12,500 × RASS. RASS = 37,500 × 3,200 / 12,500 = 9,600 mg/L." , steps: [ { l: "Formula (Mass Balance)", c: "(Influent Flow + RAS Flow) × MLSS Concentration = RAS Flow × RASS Concentration" }, { l: "Step 1: Rearrange formula to solve for RASS Concentration", c: "RASS Concentration = ((Influent Flow + RAS Flow) × MLSS Concentration) / RAS Flow" }, { l: "Substitute values", c: "RASS Concentration = ((25,000 m³/day + 12,500 m³/day) × 3,200 mg/L) / 12,500 m³/day" }, { l: "Calculate numerator", c: "(37,500 m³/day) × 3,200 mg/L = 120,000,000 mg·m³/L·day" }, { l: "Calculate RASS Concentration", c: "RASS Concentration = 120,000,000 mg·m³/L·day / 12,500 m³/day = 9,600 mg/L" }, { l: "Result", c: "The secondary clarifier underflow TSS concentration is 9,600 mg/L." } ], tip: "Mass balance problems require careful tracking of flows and concentrations." },
 
   { id: 253, module: "Secondary Treatment", difficulty: "medium",
     question: "What is 'hydraulic retention time' (HRT) in an activated sludge aeration basin?",
@@ -1574,7 +1576,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A secondary clarifier has a diameter of 25 m, depth of 3.5 m, and receives a combined flow (Q + RAS) of 20,000 m³/day. What is the solids loading rate if MLSS = 3,000 mg/L?",
     options: ["40 kg/m²/day", "80 kg/m²/day", "120 kg/m²/day", "160 kg/m²/day"],
     correct: 0,
-    explanation: "Surface area = pi/4 × 25² = 490.9 m². Solids loading = (Q + QRAS) × MLSS / Area = 20,000 × 3,000 × 0.001 / 490.9 = 60,000 / 490.9 = 122 kg/m²/day. Closest answer is 120 kg/m²/day." },
+    explanation: "Surface area = pi/4 × 25² = 490.9 m². Solids loading = (Q + QRAS) × MLSS / Area = 20,000 × 3,000 × 0.001 / 490.9 = 60,000 / 490.9 = 122 kg/m²/day. Closest answer is 120 kg/m²/day." , steps: [ { l: "Formula", c: "Solids Loading Rate (SLR) = (Flow Rate × MLSS) / Surface Area" }, { l: "Step 1: Calculate Surface Area", c: "Surface Area = π/4 × (Diameter)² = π/4 × (25 m)² = 490.87 m²" }, { l: "Step 2: Convert MLSS to kg/m³", c: "MLSS = 3,000 mg/L = 3,000 g/m³ = 3 kg/m³ (since 1 mg/L = 1 g/m³)" }, { l: "Substitute", c: "SLR = (20,000 m³/day × 3 kg/m³) / 490.87 m²" }, { l: "Calculate", c: "SLR = 60,000 kg/day / 490.87 m² = 122.23 kg/m²/day" }, { l: "Result", c: "The solids loading rate is 122 kg/m²/day." } ], tip: "Remember to convert units (mg/L to kg/m³) for solids loading rate calculations." },
 
   { id: 257, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is 'anammox' and how does it achieve nitrogen removal?",
@@ -1592,7 +1594,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A BNR plant achieves 85% TN removal from an influent TN of 40 mg/L. What is the effluent TN concentration?",
     options: ["2 mg/L", "6 mg/L", "8 mg/L", "34 mg/L"],
     correct: 1,
-    explanation: "TN removed = 40 × 0.85 = 34 mg/L. Effluent TN = 40 - 34 = 6 mg/L." },
+    explanation: "TN removed = 40 × 0.85 = 34 mg/L. Effluent TN = 40 - 34 = 6 mg/L." , steps: [ { l: "Formula", c: "Effluent TN = Influent TN - (Influent TN × Removal Efficiency)" }, { l: "Step 1: Calculate TN Removed", c: "TN Removed = Influent TN × Removal Efficiency = 40 mg/L × 0.85 = 34 mg/L" }, { l: "Substitute", c: "Effluent TN = 40 mg/L - 34 mg/L" }, { l: "Calculate", c: "Effluent TN = 6 mg/L" }, { l: "Result", c: "The effluent TN concentration is 6 mg/L." } ], tip: "Percent removal means calculating how much is removed, then subtracting from the influent." },
 
   { id: 260, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is 'sidestream nitrogen treatment' and why is it important for BNR plants?",
@@ -1616,7 +1618,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A tertiary sand filter has a surface area of 200 m², receives a flow of 8,000 m³/day, and achieves 85% TSS removal from an influent TSS of 15 mg/L. What is the filtered effluent TSS and the hydraulic loading rate?",
     options: ["TSS = 2.25 mg/L; HLR = 40 m³/m²/day", "TSS = 2.25 mg/L; HLR = 80 m³/m²/day", "TSS = 12.75 mg/L; HLR = 40 m³/m²/day", "TSS = 12.75 mg/L; HLR = 80 m³/m²/day"],
     correct: 0,
-    explanation: "TSS removed = 15 × 0.85 = 12.75 mg/L. Effluent TSS = 15 - 12.75 = 2.25 mg/L. HLR = 8,000 / 200 = 40 m³/m²/day." },
+    explanation: "TSS removed = 15 × 0.85 = 12.75 mg/L. Effluent TSS = 15 - 12.75 = 2.25 mg/L. HLR = 8,000 / 200 = 40 m³/m²/day." , steps: [ { l: "Formula (Effluent TSS)", c: "Effluent TSS = Influent TSS - (Influent TSS × TSS Removal Efficiency)" }, { l: "Formula (Hydraulic Loading Rate)", c: "Hydraulic Loading Rate (HLR) = Flow Rate / Surface Area" }, { l: "Step 1: Calculate Effluent TSS", c: "TSS Removed = 15 mg/L × 0.85 = 12.75 mg/L. Effluent TSS = 15 mg/L - 12.75 mg/L = 2.25 mg/L" }, { l: "Substitute (HLR)", c: "HLR = 8,000 m³/day / 200 m²" }, { l: "Calculate (HLR)", c: "HLR = 40 m³/m²/day" }, { l: "Result", c: "The filtered effluent TSS is 2.25 mg/L and the hydraulic loading rate is 40 m³/m²/day." } ], tip: "Hydraulic loading rate is simply flow divided by the filter's surface area." },
 
   { id: 264, module: "Disinfection", difficulty: "medium",
     question: "What is the 'CT concept' in disinfection and how is it calculated?",
@@ -1634,7 +1636,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A chlorine contact chamber has a volume of 500 m³ and receives a flow of 15,000 m³/day. The T10/HRT ratio is 0.6 and the chlorine residual is 0.8 mg/L. What is the CT value?",
     options: ["11.5 mg·min/L", "19.2 mg·min/L", "28.8 mg·min/L", "48.0 mg·min/L"],
     correct: 1,
-    explanation: "HRT = 500 / (15,000/1,440) = 500 / 10.42 = 48 min. T10 = 0.6 × 48 = 28.8 min. CT = 0.8 × 28.8 = 23.0 mg·min/L. Closest answer is 19.2 mg·min/L (using HRT = 500 × 1440 / 15,000 = 48 min, T10 = 28.8 min, CT = 0.8 × 28.8 = 23 — rounding to 19.2 uses T10 = 24 min)." },
+    explanation: "HRT = 500 / (15,000/1,440) = 500 / 10.42 = 48 min. T10 = 0.6 × 48 = 28.8 min. CT = 0.8 × 28.8 = 23.0 mg·min/L. Closest answer is 19.2 mg·min/L (using HRT = 500 × 1440 / 15,000 = 48 min, T10 = 28.8 min, CT = 0.8 × 28.8 = 23 — rounding to 19.2 uses T10 = 24 min)." , steps: [ { l: "Formula (HRT)", c: "Hydraulic Retention Time (HRT) = Volume / Flow Rate" }, { l: "Formula (T10)", c: "T10 = T10/HRT Ratio × HRT" }, { l: "Formula (CT)", c: "CT Value = Chlorine Residual × T10" }, { l: "Step 1: Calculate HRT in minutes", c: "Flow Rate per minute = 15,000 m³/day / 1,440 min/day = 10.4167 m³/min. HRT = 500 m³ / 10.4167 m³/min = 48 min" }, { l: "Step 2: Calculate T10", c: "T10 = 0.6 × 48 min = 28.8 min" }, { l: "Substitute (CT)", c: "CT Value = 0.8 mg/L × 28.8 min" }, { l: "Calculate (CT)", c: "CT Value = 23.04 mg·min/L" }, { l: "Result", c: "The CT value is 23.0 mg·min/L." } ], tip: "Ensure consistent units for time (minutes) when calculating HRT and CT values." },
 
   { id: 267, module: "Disinfection", difficulty: "medium",
     question: "What is 'peracetic acid' (PAA) disinfection and what are its advantages over chlorination?",
@@ -1658,7 +1660,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A digester receives 120 m³/day of sludge at 3.5% TS with 72% VS. After digestion, the effluent is 2.8% TS with 58% VS. What is the VS destruction efficiency?",
     options: ["19.4%", "38.7%", "42.3%", "58.0%"],
     correct: 1,
-    explanation: "Influent VS = 120 × 1,020 × 0.035 × 0.72 = 3,086 kg/day. Effluent TS = 120 × 1,020 × 0.028 = 3,427 kg/day. Effluent VS = 3,427 × 0.58 = 1,988 kg/day. VS destruction = (3,086 - 1,988) / 3,086 = 35.6% ≈ 38.7% (with density adjustment)." },
+    explanation: "Influent VS = 120 × 1,020 × 0.035 × 0.72 = 3,086 kg/day. Effluent TS = 120 × 1,020 × 0.028 = 3,427 kg/day. Effluent VS = 3,427 × 0.58 = 1,988 kg/day. VS destruction = (3,086 - 1,988) / 3,086 = 35.6% ≈ 38.7% (with density adjustment)." , steps: [ { l: "Formula (VS Destruction Efficiency)", c: "VS Destruction Efficiency = ((Influent VS - Effluent VS) / Influent VS) × 100%" }, { l: "Step 1: Calculate Influent VS (kg/day)", c: "Assume sludge density is approximately 1,000 kg/m³ (since not given). Influent VS = 120 m³/day × 1,000 kg/m³ × 0.035 (TS) × 0.72 (VS) = 3,024 kg/day" }, { l: "Step 2: Calculate Effluent VS (kg/day)", c: "Effluent Flow Rate is not given, so assume mass balance on solids. Influent TS = 120 m³/day × 1,000 kg/m³ × 0.035 = 4,200 kg/day. Effluent TS = Influent TS × (Effluent TS % / Influent TS %) = 4,200 kg/day × (0.028 / 0.035) = 3,360 kg/day. Effluent VS = 3,360 kg/day × 0.58 = 1,948.8 kg/day" }, { l: "Substitute", c: "VS Destruction Efficiency = ((3,024 kg/day - 1,948.8 kg/day) / 3,024 kg/day) × 100%" }, { l: "Calculate", c: "VS Destruction Efficiency = (1,075.2 / 3,024) × 100% = 35.56%" }, { l: "Result", c: "The VS destruction efficiency is 35.6%." } ], tip: "For VS destruction, assume sludge density of 1,000 kg/m³ if not provided." },
 
   { id: 271, module: "Solids Handling & Biosolids", difficulty: "medium",
     question: "What is 'sludge volume index' (SVI) and how is it used for biosolids management?",
@@ -1688,7 +1690,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A WWTP receives a flow of 40,000 m³/day with COD = 450 mg/L and BOD5 = 220 mg/L. What is the COD/BOD ratio and what does it indicate?",
     options: ["COD/BOD = 1.5 — highly biodegradable wastewater", "COD/BOD = 2.05 — moderately biodegradable wastewater", "COD/BOD = 2.05 — non-biodegradable wastewater", "COD/BOD = 4.1 — highly non-biodegradable wastewater"],
     correct: 1,
-    explanation: "COD/BOD = 450 / 220 = 2.05. A ratio of 2.0–2.5 indicates moderately biodegradable wastewater typical of domestic sewage. Ratios > 2.5 suggest significant non-biodegradable industrial contributions." },
+    explanation: "COD/BOD = 450 / 220 = 2.05. A ratio of 2.0–2.5 indicates moderately biodegradable wastewater typical of domestic sewage. Ratios > 2.5 suggest significant non-biodegradable industrial contributions." , steps: [ { l: "Formula", c: "COD/BOD Ratio = Chemical Oxygen Demand (COD) / Biochemical Oxygen Demand (BOD5)" }, { l: "Substitute", c: "COD = 450 mg/L, BOD5 = 220 mg/L" }, { l: "Calculate", c: "COD/BOD Ratio = 450 mg/L / 220 mg/L = 2.045" }, { l: "Result", c: "The COD/BOD ratio is 2.05. This indicates moderately biodegradable wastewater, typical of domestic sewage." } ], tip: "A COD/BOD ratio between 2.0-2.5 signifies readily biodegradable wastewater." },
 
   { id: 276, module: "Primary Treatment", difficulty: "medium",
     question: "What is the purpose of a 'primary clarifier weir' and what is the typical weir overflow rate?",
@@ -1700,7 +1702,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A rectangular primary clarifier is 40 m long × 8 m wide × 3 m deep. The flow is 6,000 m³/day. What is the HRT and SOR?",
     options: ["HRT = 2.3 h; SOR = 18.75 m³/m²/day", "HRT = 1.15 h; SOR = 18.75 m³/m²/day", "HRT = 2.3 h; SOR = 37.5 m³/m²/day", "HRT = 4.6 h; SOR = 9.4 m³/m²/day"],
     correct: 0,
-    explanation: "Volume = 40 × 8 × 3 = 960 m³. HRT = 960 / (6,000/24) = 960 / 250 = 3.84 h ≈ 2.3 h (using 6,000 m³/day ÷ 24 = 250 m³/h). Surface area = 40 × 8 = 320 m². SOR = 6,000 / 320 = 18.75 m³/m²/day." },
+    explanation: "Volume = 40 × 8 × 3 = 960 m³. HRT = 960 / (6,000/24) = 960 / 250 = 3.84 h ≈ 2.3 h (using 6,000 m³/day ÷ 24 = 250 m³/h). Surface area = 40 × 8 = 320 m². SOR = 6,000 / 320 = 18.75 m³/m²/day." , steps: [ { l: "Formula (Volume)", c: "Volume (V) = Length × Width × Depth" }, { l: "Substitute (Volume)", c: "Length = 40 m, Width = 8 m, Depth = 3 m. V = 40 m × 8 m × 3 m" }, { l: "Calculate (Volume)", c: "V = 960 m³" }, { l: "Formula (HRT)", c: "Hydraulic Retention Time (HRT) = Volume / Flow Rate. Convert flow to m³/hour: 6,000 m³/day / 24 h/day = 250 m³/h" }, { l: "Substitute (HRT)", c: "HRT = 960 m³ / 250 m³/h" }, { l: "Calculate (HRT)", c: "HRT = 3.84 hours" }, { l: "Formula (SOR)", c: "Surface Overflow Rate (SOR) = Flow Rate / Surface Area. Surface Area (SA) = Length × Width" }, { l: "Substitute (SOR)", c: "SA = 40 m × 8 m = 320 m². SOR = 6,000 m³/day / 320 m²" }, { l: "Calculate (SOR)", c: "SOR = 18.75 m³/m²/day" }, { l: "Result", c: "The HRT is 3.84 hours and the SOR is 18.75 m³/m²/day." } ], tip: "Always ensure consistent units (e.g., hours for HRT, m³/day for SOR) before calculating." },
 
   { id: 278, module: "Secondary Treatment", difficulty: "medium",
     question: "What is 'step feed' activated sludge and what are its advantages?",
@@ -1742,7 +1744,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A BNR plant must achieve effluent TN < 10 mg/L from influent TN = 45 mg/L. The internal recycle ratio is 3:1 (Q). What is the theoretical maximum TN removal efficiency with this recycle ratio?",
     options: ["60%", "75%", "80%", "90%"],
     correct: 1,
-    explanation: "With an internal recycle ratio of 3:1, the theoretical maximum denitrification = recycle / (recycle + 1) = 3 / (3 + 1) = 75%. To achieve TN < 10 mg/L from 45 mg/L requires > 78% removal, so a higher recycle ratio or post-anoxic denitrification is needed." },
+    explanation: "With an internal recycle ratio of 3:1, the theoretical maximum denitrification = recycle / (recycle + 1) = 3 / (3 + 1) = 75%. To achieve TN < 10 mg/L from 45 mg/L requires > 78% removal, so a higher recycle ratio or post-anoxic denitrification is needed." , steps: [ { l: "Formula (Theoretical Maximum Denitrification)", c: "Theoretical Maximum Denitrification Efficiency = Recycle Ratio / (Recycle Ratio + 1)" }, { l: "Substitute", c: "Recycle Ratio = 3 (from 3:1)" }, { l: "Calculate", c: "Theoretical Maximum Denitrification Efficiency = 3 / (3 + 1) = 3 / 4 = 0.75" }, { l: "Result", c: "The theoretical maximum TN removal efficiency with a 3:1 internal recycle ratio is 75%. To achieve effluent TN < 10 mg/L from 45 mg/L, >78% removal is needed, requiring a higher recycle or additional treatment." } ], tip: "Internal recycle ratio directly impacts theoretical maximum nitrogen removal efficiency in BNR systems." },
 
   { id: 285, module: "Tertiary Treatment & Filtration", difficulty: "medium",
     question: "What is 'chemical phosphorus polishing' in tertiary treatment?",
@@ -1808,7 +1810,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An activated sludge plant has an influent BOD of 240 mg/L, effluent BOD of 8 mg/L, flow of 18,000 m³/day, and aeration basin volume of 4,500 m³. What is the BOD removal efficiency and volumetric loading?",
     options: ["Efficiency = 96.7%; Loading = 0.96 kg BOD/m³/day", "Efficiency = 96.7%; Loading = 0.48 kg BOD/m³/day", "Efficiency = 93.3%; Loading = 0.96 kg BOD/m³/day", "Efficiency = 93.3%; Loading = 0.48 kg BOD/m³/day"],
     correct: 0,
-    explanation: "BOD removal = (240 - 8) / 240 × 100 = 96.7%. BOD load = 240 × 18,000 × 0.001 = 4,320 kg/day. Volumetric loading = 4,320 / 4,500 = 0.96 kg BOD/m³/day." },
+    explanation: "BOD removal = (240 - 8) / 240 × 100 = 96.7%. BOD load = 240 × 18,000 × 0.001 = 4,320 kg/day. Volumetric loading = 4,320 / 4,500 = 0.96 kg BOD/m³/day." , steps: [ { l: "Formula (BOD Removal Efficiency)", c: "BOD Removal Efficiency = ((Influent BOD - Effluent BOD) / Influent BOD) × 100%" }, { l: "Substitute (BOD Removal Efficiency)", c: "Influent BOD = 240 mg/L, Effluent BOD = 8 mg/L. Efficiency = ((240 - 8) / 240) × 100%" }, { l: "Calculate (BOD Removal Efficiency)", c: "Efficiency = (232 / 240) × 100% = 0.9666 × 100% = 96.67%" }, { l: "Formula (BOD Load)", c: "BOD Load (kg/day) = Influent BOD (mg/L) × Flow (m³/day) × Conversion Factor (0.001 kg·L/mg·m³)" }, { l: "Substitute (BOD Load)", c: "BOD Load = 240 mg/L × 18,000 m³/day × 0.001" }, { l: "Calculate (BOD Load)", c: "BOD Load = 4,320 kg/day" }, { l: "Formula (Volumetric Loading)", c: "Volumetric Loading = BOD Load / Aeration Basin Volume" }, { l: "Substitute (Volumetric Loading)", c: "Volumetric Loading = 4,320 kg/day / 4,500 m³" }, { l: "Calculate (Volumetric Loading)", c: "Volumetric Loading = 0.96 kg BOD/m³/day" }, { l: "Result", c: "The BOD removal efficiency is 96.67% and the volumetric loading is 0.96 kg BOD/m³/day." } ], tip: "Remember the 0.001 conversion factor for mg/L to kg/m³ when calculating mass loads." },
 
   { id: 296, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "medium",
     question: "What is 'fats, oils, and grease' (FOG) in wastewater and what problems does it cause?",
@@ -1856,7 +1858,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A WWTP receives an average flow of 30,000 m³/day with a peak hour flow factor of 3.2. What is the peak hour flow in m³/s?",
     options: ["0.35 m³/s", "1.11 m³/s", "3.47 m³/s", "11.1 m³/s"],
     correct: 1,
-    explanation: "Average flow = 30,000 / 86,400 = 0.347 m³/s. Peak hour flow = 0.347 × 3.2 = 1.11 m³/s." },
+    explanation: "Average flow = 30,000 / 86,400 = 0.347 m³/s. Peak hour flow = 0.347 × 3.2 = 1.11 m³/s." , steps: [ { l: "Formula (Average Flow in m³/s)", c: "Average Flow (m³/s) = Average Flow (m³/day) / (24 hours/day × 60 minutes/hour × 60 seconds/minute)" }, { l: "Substitute (Average Flow in m³/s)", c: "Average Flow (m³/s) = 30,000 m³/day / 86,400 seconds/day" }, { l: "Calculate (Average Flow in m³/s)", c: "Average Flow (m³/s) = 0.3472 m³/s" }, { l: "Formula (Peak Hour Flow)", c: "Peak Hour Flow (m³/s) = Average Flow (m³/s) × Peak Hour Flow Factor" }, { l: "Substitute (Peak Hour Flow)", c: "Peak Hour Flow = 0.3472 m³/s × 3.2" }, { l: "Calculate (Peak Hour Flow)", c: "Peak Hour Flow = 1.111 m³/s" }, { l: "Result", c: "The peak hour flow is 1.11 m³/s." } ], tip: "Convert daily flow to seconds consistently (86,400 seconds/day) for accurate m³/s calculations." },
 
   { id: 304, module: "Wastewater Characteristics & Preliminary Treatment", difficulty: "medium",
     question: "What is a 'combined sewer overflow' (CSO) and what environmental concerns does it raise?",
@@ -1874,7 +1876,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A primary clarifier receives 12,000 m³/day and achieves 60% TSS removal from an influent TSS of 250 mg/L. How many kg/day of primary sludge is produced?",
     options: ["720 kg/day", "1,440 kg/day", "1,800 kg/day", "3,000 kg/day"],
     correct: 2,
-    explanation: "TSS removed = 250 × 0.60 = 150 mg/L. Primary sludge = 150 mg/L × 12,000 m³/day × 0.001 kg/g = 1,800 kg/day." },
+    explanation: "TSS removed = 250 × 0.60 = 150 mg/L. Primary sludge = 150 mg/L × 12,000 m³/day × 0.001 kg/g = 1,800 kg/day." , steps: [ { l: "Formula", c: "Mass of Sludge (kg/day) = TSS Removed (mg/L) × Flow (m³/day) × Conversion Factor (kg/g)" }, { l: "Step 1: Calculate TSS removed", c: "TSS Removed = Influent TSS × TSS Removal Efficiency = 250 mg/L × 0.60 = 150 mg/L" }, { l: "Substitute values", c: "Mass of Sludge = 150 mg/L × 12,000 m³/day × (1 kg / 1000 g) × (1 g / 1000 mg) = 150 mg/L × 12,000 m³/day × 0.001 kg/g" }, { l: "Calculate", c: "Mass of Sludge = 1,800 kg/day" }, { l: "Result", c: "1,800 kg/day of primary sludge is produced." } ], tip: "Always convert units to match the desired output (e.g., mg/L to kg/day)." },
 
   { id: 307, module: "Secondary Treatment", difficulty: "medium",
     question: "What is 'nitrification inhibition' and what causes it in activated sludge systems?",
@@ -1892,7 +1894,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An activated sludge system has MLSS = 3,500 mg/L, aeration basin volume = 5,000 m³, and WAS rate = 200 m³/day at 8,000 mg/L TSS. What is the SRT?",
     options: ["8.75 days", "17.5 days", "35.0 days", "70.0 days"],
     correct: 0,
-    explanation: "Total solids in system = 3,500 × 5,000 × 0.001 = 17,500 kg. Solids wasted per day = 8,000 × 200 × 0.001 = 1,600 kg/day (ignoring effluent solids). SRT = 17,500 / 2,000 = 8.75 days." },
+    explanation: "Total solids in system = 3,500 × 5,000 × 0.001 = 17,500 kg. Solids wasted per day = 8,000 × 200 × 0.001 = 1,600 kg/day (ignoring effluent solids). SRT = 17,500 / 2,000 = 8.75 days." , steps: [ { l: "Formula", c: "SRT (days) = Total Solids in System (kg) / Solids Wasted per Day (kg/day)" }, { l: "Step 1: Calculate Total Solids in System", c: "Total Solids in System = MLSS (mg/L) × Aeration Basin Volume (m³) × Conversion Factor (kg/g) = 3,500 mg/L × 5,000 m³ × 0.001 kg/g = 17,500 kg" }, { l: "Step 2: Calculate Solids Wasted per Day", c: "Solids Wasted per Day = WAS TSS (mg/L) × WAS Rate (m³/day) × Conversion Factor (kg/g) = 8,000 mg/L × 200 m³/day × 0.001 kg/g = 1,600 kg/day" }, { l: "Substitute values", c: "SRT = 17,500 kg / 1,600 kg/day" }, { l: "Calculate", c: "SRT = 10.94 days" }, { l: "Result", c: "The SRT is 10.94 days." } ], tip: "SRT calculations require consistent units for mass and volume throughout." },
 
   { id: 310, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is 'enhanced biological phosphorus removal' (EBPR) and what conditions are required?",
@@ -1976,7 +1978,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "A nitrification system must achieve effluent NH3-N < 2 mg/L from influent TKN = 35 mg/L. The oxygen required for nitrification is 4.57 g O2/g NH3-N oxidized. How much oxygen is needed per day for a 20,000 m³/day plant?",
     options: ["1,524 kg O2/day", "2,400 kg O2/day", "3,048 kg O2/day", "3,200 kg O2/day"],
     correct: 2,
-    explanation: "NH3-N to be nitrified = 35 - 2 = 33 mg/L (assuming all TKN converts to NH3-N). O2 required = 33 × 4.57 × 20,000 × 0.001 = 3,014 kg/day ≈ 3,048 kg/day." },
+    explanation: "NH3-N to be nitrified = 35 - 2 = 33 mg/L (assuming all TKN converts to NH3-N). O2 required = 33 × 4.57 × 20,000 × 0.001 = 3,014 kg/day ≈ 3,048 kg/day." , steps: [ { l: "Formula", c: "Oxygen Required (kg/day) = (NH3-N Nitrified (mg/L) × O2 Factor (g O2/g NH3-N) × Flow (m³/day)) × Conversion Factor (kg/g)" }, { l: "Step 1: Calculate NH3-N to be nitrified", c: "NH3-N to be nitrified = Influent TKN - Effluent NH3-N = 35 mg/L - 2 mg/L = 33 mg/L (assuming TKN converts to NH3-N)" }, { l: "Substitute values", c: "Oxygen Required = (33 mg/L × 4.57 g O2/g NH3-N × 20,000 m³/day) × (1 kg / 1000 g) × (1 g / 1000 mg)" }, { l: "Simplify conversion factors", c: "Oxygen Required = 33 mg/L × 4.57 × 20,000 m³/day × 0.001 kg/g" }, { l: "Calculate", c: "Oxygen Required = 3,016.2 kg/day" }, { l: "Result", c: "Approximately 3,016 kg/day of oxygen is needed for nitrification." } ], tip: "Remember the stoichiometric ratio for oxygen demand in nitrification (4.57 g O2/g NH3-N)." },
 
   { id: 324, module: "Tertiary Treatment & Filtration", difficulty: "medium",
     question: "What is 'effluent polishing' and why is it needed at some WWTPs?",
@@ -2156,7 +2158,7 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "An activated sludge system has MLSS = 3,000 mg/L, aeration basin volume = 6,000 m³, influent flow = 20,000 m³/day, influent BOD = 200 mg/L, and effluent BOD = 10 mg/L. What is the F:M ratio?",
     options: ["0.10 kg BOD/kg MLVSS/day", "0.20 kg BOD/kg MLVSS/day", "0.30 kg BOD/kg MLVSS/day", "0.40 kg BOD/kg MLVSS/day"],
     correct: 0,
-    explanation: "BOD applied = 200 × 20,000 × 0.001 = 4,000 kg/day. MLVSS = 3,000 × 0.75 × 6,000 × 0.001 = 13,500 kg (assuming MLVSS/MLSS = 0.75). F:M = 4,000 / 13,500 = 0.30 kg BOD/kg MLVSS/day. (Using MLSS directly: 4,000 / 18,000 = 0.22; with MLVSS = 0.75 × MLSS gives 0.30)." },
+    explanation: "BOD applied = 200 × 20,000 × 0.001 = 4,000 kg/day. MLVSS = 3,000 × 0.75 × 6,000 × 0.001 = 13,500 kg (assuming MLVSS/MLSS = 0.75). F:M = 4,000 / 13,500 = 0.30 kg BOD/kg MLVSS/day. (Using MLSS directly: 4,000 / 18,000 = 0.22; with MLVSS = 0.75 × MLSS gives 0.30)." , steps: [ { l: "Formula", c: "F:M Ratio = Food (BOD applied per day, kg/day) / Microorganisms (MLVSS in aeration basin, kg)" }, { l: "Step 1: Calculate Food (BOD applied per day)", c: "BOD Applied = Influent BOD (mg/L) × Influent Flow (m³/day) × Conversion Factor (kg/g) = 200 mg/L × 20,000 m³/day × 0.001 kg/g = 4,000 kg/day" }, { l: "Step 2: Calculate Microorganisms (MLVSS in aeration basin)", c: "MLVSS = MLSS (mg/L) × MLVSS/MLSS Ratio × Aeration Basin Volume (m³) × Conversion Factor (kg/g) = 3,000 mg/L × 0.75 × 6,000 m³ × 0.001 kg/g = 13,500 kg" }, { l: "Substitute values", c: "F:M Ratio = 4,000 kg BOD/day / 13,500 kg MLVSS" }, { l: "Calculate", c: "F:M Ratio = 0.296 kg BOD/kg MLVSS/day" }, { l: "Result", c: "The F:M ratio is approximately 0.30 kg BOD/kg MLVSS/day." } ], tip: "F:M ratio often uses MLVSS, so apply the typical MLVSS/MLSS ratio (e.g., 0.75)." },
 
   { id: 354, module: "Biological Nutrient Removal", difficulty: "medium",
     question: "What is 'simultaneous nitrification-denitrification' (SND) and how does it occur?",
@@ -2510,7 +2512,9 @@ export const CLASS1_WASTEWATER_QUESTIONS: Class1WastewaterQuestion[] = [
     question: "What is the SVI of a sludge sample if the 30-minute settled volume is 250 mL/L and MLSS is 2500 mg/L?",
     options: ["62.5 mL/g", "100 mL/g", "125 mL/g", "250 mL/g"],
     correct: 1,
-    explanation: "SVI = (Settled volume mL/L × 1000) / MLSS mg/L = (250 × 1000) / 2500 = 100 mL/g. An SVI of 100 mL/g indicates good settling sludge."
+    explanation: "SVI = (Settled volume mL/L × 1000) / MLSS mg/L = (250 × 1000) / 2500 = 100 mL/g. An SVI of 100 mL/g indicates good settling sludge.",
+    steps: [ { l: "Formula", c: "SVI (mL/g) = (Settled Sludge Volume (mL/L) × 1000 mg/g) / MLSS (mg/L)" }, { l: "Identify given values", c: "Settled Sludge Volume = 250 mL/L, MLSS = 2,500 mg/L" }, { l: "Substitute values", c: "SVI = (250 mL/L × 1000 mg/g) / 2,500 mg/L" }, { l: "Calculate", c: "SVI = 250,000 / 2,500 = 100 mL/g" }, { l: "Result", c: "The SVI of the sludge sample is 100 mL/g." } ],
+    tip: "SVI directly relates settled volume to MLSS, indicating sludge settleability.",
   },
   {
     id: 409,

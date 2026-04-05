@@ -65,6 +65,7 @@ export default function WpiClass4WastewaterQuiz() {
   const [tutorOpen, setTutorOpen] = useState(false);
   const [shakeKey, setShakeKey] = useState(0);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [calcOnly, setCalcOnly] = useState(false);
   const [showModuleSelector, setShowModuleSelector] = useState(false);
   const [reportModalOpen, setReportModalOpen] = useState(false);
 
@@ -89,8 +90,8 @@ export default function WpiClass4WastewaterQuiz() {
   const getNextQuestion = useCallback(
     (afterId?: number) => {
       const pool = selectedModule
-        ? wpiClass4WastewaterQuestions.filter((q) => q.module === selectedModule)
-        : wpiClass4WastewaterQuestions;
+        ? wpiClass4WastewaterQuestions.filter((q) => q.module === selectedModule && (!calcOnly || (q.steps && q.steps.length > 0)))
+        : (calcOnly ? wpiClass4WastewaterQuestions.filter((q) => q.steps && q.steps.length > 0) : wpiClass4WastewaterQuestions);
       const unanswered = pool.filter((q) => !answeredIds.has(q.id) && q.id !== afterId);
       if (unanswered.length === 0) return null;
       const shuffled = shuffle(unanswered);

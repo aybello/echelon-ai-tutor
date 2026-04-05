@@ -95,6 +95,7 @@ export default function Class1Quiz() {
 
   const [stream, setStream] = useState<Stream>(initialStream);
   const [subModule, setSubModule] = useState<SubModule>(null);
+  const [calcOnly, setCalcOnly] = useState(false);
   const [showStreamSelector, setShowStreamSelector] = useState(false);
 
   const [history, setHistory]       = useState<HistoryEntry[]>([]);
@@ -121,8 +122,9 @@ export default function Class1Quiz() {
       ? CLASS1_QUESTIONS
       : getClass1Questions(stream === "water" ? "water" : "wastewater");
     if (subModule) pool = pool.filter(q => q.module === subModule);
+    if (calcOnly) pool = pool.filter(q => q.steps && q.steps.length > 0);
     return pool;
-  }, [stream, subModule]);
+  }, [stream, subModule, calcOnly]);
 
   const patterns = getPatternInsights(history);
   const allDone = !current;
@@ -291,6 +293,12 @@ export default function Class1Quiz() {
               {streamCfg.icon} {subModule ?? streamCfg.label}
               <span style={{ fontSize: 8 }}>▼</span>
             </button>
+          <button
+            onClick={() => setCalcOnly(v => !v)}
+            style={{ padding: "8px 14px", background: calcOnly ? "#EDE9FE" : "#fff", color: calcOnly ? "#7C3AED" : "#475569", border: calcOnly ? "1px solid #7C3AED" : "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+          >
+            🧮 Calc Only
+          </button>
 
             {/* Score */}
             <div style={{ fontSize: 11, color: "#64748B", display: "flex", alignItems: "center", gap: 4 }}>

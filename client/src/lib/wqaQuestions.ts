@@ -18,6 +18,8 @@ export interface WQAQuestion {
   options: string[];
   correctIndex: number;
   explanation: string;
+  steps?: { l: string; c: string }[];
+  tip?: string;
 }
 
 export const WQA_MODULES = [
