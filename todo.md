@@ -212,3 +212,6 @@
 - [x] Add WPI Class II, III, IV Wastewater to SiteNav WPI dropdown
 - [x] Create WPI Wastewater Full Ladder bundle (CA$299) in products.ts, Pricing page, and WPI landing page
 - [x] Update WPI landing page FAQ to mention all four WW classes are live
+- [x] Add WPI Water Full Ladder bundle callout to WPI landing page (matching WW bundle callout)
+- [x] Ensure bundle-wpi-water and bundle-wpi-wastewater are recognized in account/restore-access logic (already complete — server-side getAllUnlockedExamTypes and client-side PurchaseGate both handle them)
+- [x] Update main Landing page stats bar to 7,300+ questions and 22 courses

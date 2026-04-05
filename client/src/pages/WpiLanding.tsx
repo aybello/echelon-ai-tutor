@@ -528,6 +528,56 @@ export default function WpiLanding() {
             </div>
           </div>
 
+          {/* WPI Water Bundle callout */}
+          <div style={{ marginBottom: 40, display: "flex", justifyContent: "center" }}>
+            <div style={{
+              background: "linear-gradient(135deg, #ECFEFF 0%, #EFF6FF 100%)",
+              border: "2px solid #A5F3FC",
+              borderRadius: 20,
+              padding: "28px 32px",
+              maxWidth: 680,
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 24,
+              flexWrap: "wrap" as const,
+            }}>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "#0E7490", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>💡 Best Value — WPI Bundle</div>
+                <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>WPI Water Full Ladder</div>
+                <div style={{ fontSize: 13, color: "#475569", marginBottom: 8 }}>WPI Class I–IV Water · 2,006 questions · Save CA$99</div>
+                <div style={{ display: "flex", gap: 16, flexWrap: "wrap" as const }}>
+                  {["WPI Class I Water", "WPI Class II Water", "WPI Class III Water", "WPI Class IV Water"].map(item => (
+                    <span key={item} style={{ fontSize: 11, color: "#0E7490", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
+                      <span style={{ color: "#059669" }}>✓</span> {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div style={{ textAlign: "center" as const, flexShrink: 0 }}>
+                <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 30, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>CA$299</div>
+                <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 12 }}>one-time · no subscription</div>
+                <Link href="/pricing">
+                  <button style={{
+                    background: "#0E7490",
+                    color: "#FFFFFF",
+                    border: "none",
+                    borderRadius: 10,
+                    padding: "12px 24px",
+                    fontSize: 14,
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    whiteSpace: "nowrap" as const,
+                  }}>
+                    Get WPI Water Bundle →
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
           {/* Wastewater cards */}
           <div>
             <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
