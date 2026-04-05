@@ -924,7 +924,10 @@ export default function Pricing() {
               </p>
               {/* WPI Water row */}
               <div style={{ marginBottom: 16 }}>
-                <p style={{ fontSize: 12, fontWeight: 700, color: "#0E7490", textTransform: "uppercase", letterSpacing: "0.05em", margin: "0 0 10px" }}>Water Treatment</p>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "0 0 10px" }}>
+                  <p style={{ fontSize: 12, fontWeight: 700, color: "#0E7490", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>Water Treatment</p>
+                  <span style={{ fontSize: 11, color: "#64748B", fontWeight: 500 }}>· 2,000+ questions across Class I–IV</span>
+                </div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
                   {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-water")).map(product => (
                     <ProductCard key={product.key} product={product} />
@@ -933,7 +936,10 @@ export default function Pricing() {
               </div>
               {/* WPI Wastewater row */}
               <div>
-                <p style={{ fontSize: 12, fontWeight: 700, color: "#0F766E", textTransform: "uppercase", letterSpacing: "0.05em", margin: "0 0 10px" }}>Wastewater Treatment</p>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "0 0 10px" }}>
+                  <p style={{ fontSize: 12, fontWeight: 700, color: "#0F766E", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>Wastewater Treatment</p>
+                  <span style={{ fontSize: 11, color: "#64748B", fontWeight: 500 }}>· 2,000+ questions across Class I–IV</span>
+                </div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
                   {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-wastewater")).map(product => (
                     <ProductCard key={product.key} product={product} />
@@ -962,7 +968,7 @@ export default function Pricing() {
             One-time payment — access never expires
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
-            5,000+ questions across Water Treatment, Wastewater, WQA, and WPI tracks
+            8,500+ questions across Water Treatment, Wastewater, WQA, and WPI tracks
           </p>
           <div
             style={{
@@ -974,7 +980,7 @@ export default function Pricing() {
             }}
           >
             {[
-              { icon: "📚", label: "5,000+ Questions" },
+              { icon: "📚", label: "8,500+ Questions" },
               { icon: "🤖", label: "AI Tutor Chat" },
               { icon: "📊", label: "Score History" },
               { icon: "🎯", label: "Adaptive Difficulty" },
