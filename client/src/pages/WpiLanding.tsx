@@ -124,7 +124,7 @@ const FAQS = [
   },
   {
     q: "Is WPI Wastewater Treatment prep available?",
-    a: "Yes — all four WPI Wastewater classes are now live. Class I (500 questions) covers Collection Systems, Primary & Secondary Treatment, Solids Handling, Lab & Monitoring, and Safety. Class II (501 questions) covers advanced secondary treatment, nutrient removal, and biosolids management. Class III (501 questions) covers Biological Nutrient Removal, Membrane Bioreactors, Industrial Pretreatment, and Advanced Biosolids. Class IV (502 questions) covers Advanced Process Control, Resource Recovery, Emerging Technologies, Plant Management, and Emergency Response. A WPI Wastewater Full Ladder Bundle (Class I–IV) is also available at CA$299, saving CA$120 vs. buying individually.",
+    a: "Yes — all four WPI Wastewater classes are now live. Class I (500 questions) covers Collection Systems, Primary & Secondary Treatment, Solids Handling, Lab & Monitoring, and Safety. Class II (501 questions) covers advanced secondary treatment, nutrient removal, and biosolids management. Class III (501 questions) covers Biological Nutrient Removal, Membrane Bioreactors, Industrial Pretreatment, and Advanced Biosolids. Class IV (502 questions) covers Advanced Process Control, Resource Recovery, Emerging Technologies, Plant Management, and Emergency Response. A WPI Wastewater Full Ladder Bundle (Class I–IV) is also available at CA$299, saving CA$157 vs. buying individually.",
   },
 ];
 
@@ -546,7 +546,7 @@ export default function WpiLanding() {
               <div>
                 <div style={{ fontSize: 10, fontWeight: 700, color: "#0E7490", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>💡 Best Value — WPI Bundle</div>
                 <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>WPI Water Full Ladder</div>
-                <div style={{ fontSize: 13, color: "#475569", marginBottom: 8 }}>WPI Class I–IV Water · 2,006 questions · Save CA$99</div>
+                <div style={{ fontSize: 13, color: "#475569", marginBottom: 8 }}>WPI Class I–IV Water · 2,006 questions · Save CA$157</div>
                 <div style={{ display: "flex", gap: 16, flexWrap: "wrap" as const }}>
                   {["WPI Class I Water", "WPI Class II Water", "WPI Class III Water", "WPI Class IV Water"].map(item => (
                     <span key={item} style={{ fontSize: 11, color: "#0E7490", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
@@ -647,7 +647,7 @@ export default function WpiLanding() {
               <div>
                 <div style={{ fontSize: 10, fontWeight: 700, color: "#1D4ED8", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>💡 Best Value — WPI Bundle</div>
                 <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>WPI Wastewater Full Ladder</div>
-                <div style={{ fontSize: 13, color: "#475569", marginBottom: 8 }}>WPI Class I–IV Wastewater · 1,503 questions · Save CA$120</div>
+                <div style={{ fontSize: 13, color: "#475569", marginBottom: 8 }}>WPI Class I–IV Wastewater · 1,503 questions · Save CA$157</div>
                 <div style={{ display: "flex", gap: 16, flexWrap: "wrap" as const }}>
                   {["WPI Class I WW", "WPI Class II WW", "WPI Class III WW", "WPI Class IV WW"].map(item => (
                     <span key={item} style={{ fontSize: 11, color: "#1D4ED8", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>

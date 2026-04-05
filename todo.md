@@ -225,3 +225,6 @@
 - [x] Add OIT Wastewater to Pricing page INDIVIDUAL array (already present — confirmed)
 - [x] Fix Landing page hero subtitle from "Three certification tracks" to "Five certification tracks" (already correct — confirmed)
 - [x] Update WPI Class IV Water and WPI Class IV Wastewater prices to CA$149 (products.ts, Pricing.tsx, WPI landing page, quiz gate copy)
+- [x] Fix WPI Water Full Ladder Bundle savings copy to CA$157 — updated Pricing.tsx, WpiLanding.tsx callout and FAQ
+- [x] Fix WPI Wastewater Full Ladder Bundle savings copy to CA$157 — updated Pricing.tsx, WpiLanding.tsx callout and FAQ
+- [x] Stripe prices for CA$149 — no action needed: checkout uses price_data with unit_amount from products.ts directly (already 14900 cents)
