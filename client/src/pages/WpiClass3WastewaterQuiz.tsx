@@ -109,7 +109,7 @@ export default function WpiClass3WastewaterQuiz() {
       const shuffled = shuffle(unanswered);
       return toCompat(shuffled[0]);
     },
-    [answeredIds, selectedModule]
+    [answeredIds, selectedModule, calcOnly]
   );
 
   const allDone = !current;
@@ -223,7 +223,19 @@ export default function WpiClass3WastewaterQuiz() {
               All Modules
             </button>
             <button
-              onClick={() => setCalcOnly(v => !v)}
+              onClick={() => {
+                const newCalcOnly = !calcOnly;
+                setCalcOnly(newCalcOnly);
+                // Immediately load a question from the filtered pool
+                const newPool = wpiClass3WastewaterQuestions.filter((q) => !newCalcOnly || q.isCalc);
+                const next = newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null;
+                setCurrent(next);
+                setSelected(null);
+                setConfidence(null);
+                setConfirmed(false);
+                setShowSteps(false);
+                setHistory([]);
+              }}
               style={{
                 padding: "6px 14px",
                 borderRadius: 20,

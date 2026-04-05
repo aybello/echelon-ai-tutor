@@ -75,8 +75,9 @@ export default function Class2WaterQuiz() {
     const pool = selectedModule
       ? CLASS2_WATER_QUESTIONS.filter(q => q.module === selectedModule)
       : CLASS2_WATER_QUESTIONS;
-    return pool.map(toCompat);
-  }, [selectedModule]);
+    const calcPool = calcOnly ? pool.filter(q => q.isCalc) : pool;
+    return calcPool.map(toCompat);
+  }, [selectedModule, calcOnly]);
 
   const confirm = useCallback(() => {
     if (selected === null || confidence === null) {
@@ -251,7 +252,16 @@ export default function Class2WaterQuiz() {
               {selectedModule ? `📚 ${selectedModule.split(" ")[0]}` : "📚 All Modules"}
             </button>
             <button
-              onClick={() => setCalcOnly(v => !v)}
+              onClick={() => {
+                const newCalcOnly = !calcOnly;
+                setCalcOnly(newCalcOnly);
+                const newPool = newCalcOnly ? CLASS2_WATER_QUESTIONS.filter(q => q.isCalc).map(toCompat) : CLASS2_WATER_QUESTIONS.map(toCompat);
+                setHistory([]);
+                setCurrent(newPool.length > 0 ? shuffle([...newPool])[0] : null);
+                setSelected(null);
+                setConfidence(null);
+                setConfirmed(false);
+              }}
               style={{ padding: "6px 14px", background: calcOnly ? "rgba(167,139,250,0.4)" : "rgba(255,255,255,0.15)", color: "#fff", border: calcOnly ? "1px solid rgba(167,139,250,0.8)" : "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
             >
               🧮 Calc Only

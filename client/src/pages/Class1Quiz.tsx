@@ -1,7 +1,7 @@
 // ECHELON AI TUTOR — Class 1 Quiz Page
 // Certification: Class 1 Water (Treatment + Distribution) / Class 1 Wastewater (Treatment + Collection)
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { Link, useSearch } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import {
@@ -295,7 +295,14 @@ export default function Class1Quiz() {
               <span style={{ fontSize: 8 }}>▼</span>
             </button>
           <button
-            onClick={() => setCalcOnly(v => !v)}
+            onClick={() => {
+                const newCalcOnly = !calcOnly;
+                setCalcOnly(newCalcOnly);
+                setHistory([]);
+                setSelected(null);
+                setConfidence(null);
+                setConfirmed(false);
+              }}
             style={{ padding: "8px 14px", background: calcOnly ? "#EDE9FE" : "#fff", color: calcOnly ? "#7C3AED" : "#475569", border: calcOnly ? "1px solid #7C3AED" : "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
           >
             🧮 Calc Only

@@ -1,7 +1,7 @@
 // ECHELON AI TUTOR — WQA (Water Quality Analyst) Practice Quiz
 // Certification: Ontario Water Quality Analyst (WQA)
 // Based on O. Reg. 248/03, O. Reg. 170/03, and WQA Need-to-Know document
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { Link, useSearch} from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { WQA_QUESTIONS, WQA_MODULES, WQA_FORMULA_LINKS, type WQAQuestion, type WQAModule } from "@/lib/wqaQuestions";
@@ -228,7 +228,14 @@ export default function WQAQuiz() {
                 <span style={{ fontSize: 8 }}>▼</span>
               </button>
           <button
-            onClick={() => setCalcOnly(v => !v)}
+            onClick={() => {
+                const newCalcOnly = !calcOnly;
+                setCalcOnly(newCalcOnly);
+                setHistory([]);
+                setSelected(null);
+                setConfidence(null);
+                setConfirmed(false);
+              }}
             style={{ padding: "8px 14px", background: calcOnly ? "#EDE9FE" : "#fff", color: calcOnly ? "#7C3AED" : "#475569", border: calcOnly ? "1px solid #7C3AED" : "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
           >
             🧮 Calc Only

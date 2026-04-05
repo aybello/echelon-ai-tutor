@@ -219,7 +219,17 @@ export default function Class4WaterQuiz() {
             🎯 {selectedModule ? `Module: ${selectedModule}` : "All Modules"} ▾
           </button>
           <button
-            onClick={() => setCalcOnly(v => !v)}
+            onClick={() => {
+                const newCalcOnly = !calcOnly;
+                setCalcOnly(newCalcOnly);
+                const newPool = newCalcOnly ? CLASS4_WATER_QUESTIONS.filter(q => q.isCalc).map(toCompat) : CLASS4_WATER_QUESTIONS.map(toCompat);
+                setHistory([]);
+                setCurrent(newPool.length > 0 ? newPool[Math.floor(Math.random() * newPool.length)] : null);
+                setSelected(null);
+                setConfidence(null);
+                setConfirmed(false);
+                setShowSteps && setShowSteps(false);
+              }}
             style={{ padding: "8px 14px", background: calcOnly ? "#EDE9FE" : "#fff", color: calcOnly ? "#7C3AED" : "#475569", border: calcOnly ? "1px solid #7C3AED" : "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
           >
             🧮 Calc Only

@@ -90,7 +90,7 @@ export default function WpiClass1WastewaterQuiz() {
       ? wpiClass1WastewaterQuestions.filter((q) => q.module === selectedModule)
       : wpiClass1WastewaterQuestions;
     return base.filter((q) => !usedIds.has(q.id) && (!calcOnly || (q.isCalc)));
-  }, [selectedModule, usedIds]);
+  }, [selectedModule, usedIds, calcOnly]);
 
   const getNext = useCallback(() => {
     if (pool.length === 0) return null;
@@ -263,7 +263,19 @@ export default function WpiClass1WastewaterQuiz() {
               All Modules
             </button>
             <button
-              onClick={() => { setCalcOnly(v => !v); }}
+              onClick={() => {
+                const newCalcOnly = !calcOnly;
+                setCalcOnly(newCalcOnly);
+                // Immediately load a question from the filtered pool
+                const newPool = wpiClass1WastewaterQuestions.filter((q) => !newCalcOnly || q.isCalc);
+                const next = newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null;
+                setCurrent(next);
+                setSelected(null);
+                setConfidence(null);
+                setConfirmed(false);
+                setShowSteps(false);
+                setHistory([]);
+              }}
               style={{
                 padding: "6px 14px",
                 borderRadius: 20,

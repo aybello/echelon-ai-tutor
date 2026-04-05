@@ -70,11 +70,12 @@ type HistoryEntry = {
   correct: boolean;
 };
 
-function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, mod?: string | null): QCompat | null {
+function getNextQ(history: HistoryEntry[], trialUnlocked: boolean, mod?: string | null, calcOnly = false): QCompat | null {
   const usedIds = new Set(history.map((h) => h.q.id));
   const base = mod ? CLASS1_WASTEWATER_QUESTIONS.filter(q => q.module === mod) : CLASS1_WASTEWATER_QUESTIONS;
   const pool = trialUnlocked ? base : base.slice(0, 60);
-  const remaining = pool.filter((q) => !usedIds.has(q.id));
+  const calcPool = calcOnly ? pool.filter((q) => q.isCalc) : pool;
+  const remaining = calcPool.filter((q) => !usedIds.has(q.id));
   if (remaining.length === 0) return null;
   const shuffled = shuffle([...remaining]);
   return toCompat(shuffled[0]);
@@ -229,7 +230,17 @@ export default function Class1WastewaterQuiz() {
               {selectedModule ? `📚 ${selectedModule.split(" ")[0]}` : "📚 All Modules"}
             </button>
             <button
-              onClick={() => setCalcOnly(v => !v)}
+              onClick={() => {
+                const newCalcOnly = !calcOnly;
+                setCalcOnly(newCalcOnly);
+                const newPool = newCalcOnly ? CLASS1_WASTEWATER_QUESTIONS.filter(q => q.isCalc) : CLASS1_WASTEWATER_QUESTIONS;
+                const next = newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null;
+                setCurrent(next);
+                setHistory([]);
+                setSelected(null);
+                setConfidence(null);
+                setConfirmed(false);
+              }}
               style={{ padding: "6px 14px", background: calcOnly ? "rgba(167,139,250,0.4)" : "rgba(255,255,255,0.15)", color: "#fff", border: calcOnly ? "1px solid rgba(167,139,250,0.8)" : "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
             >
               🧮 Calc Only

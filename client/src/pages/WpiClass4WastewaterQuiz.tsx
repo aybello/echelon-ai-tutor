@@ -99,7 +99,7 @@ export default function WpiClass4WastewaterQuiz() {
       const shuffled = shuffle(unanswered);
       return toCompat(shuffled[0]);
     },
-    [answeredIds, selectedModule]
+    [answeredIds, selectedModule, calcOnly]
   );
 
   const allDone = !current;

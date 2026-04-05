@@ -216,7 +216,17 @@ export default function Class3WaterQuiz() {
               {selectedModule ? `📚 ${selectedModule.split(" ")[0]}` : "📚 All Modules"}
             </button>
             <button
-              onClick={() => setCalcOnly(v => !v)}
+              onClick={() => {
+                const newCalcOnly = !calcOnly;
+                setCalcOnly(newCalcOnly);
+                const newPool = newCalcOnly ? CLASS3_WATER_QUESTIONS.filter(q => q.isCalc).map(toCompat) : CLASS3_WATER_QUESTIONS.map(toCompat);
+                setHistory([]);
+                setCurrent(newPool.length > 0 ? shuffle([...newPool])[0] : null);
+                setSelected(null);
+                setConfidence(null);
+                setConfirmed(false);
+                setShowSteps && setShowSteps(false);
+              }}
               style={{ padding: "6px 14px", background: calcOnly ? "rgba(167,139,250,0.4)" : "rgba(255,255,255,0.15)", color: "#fff", border: calcOnly ? "1px solid rgba(167,139,250,0.8)" : "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
             >
               🧮 Calc Only

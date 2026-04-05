@@ -228,7 +228,17 @@ export default function Class3WastewaterQuiz() {
               📝 Mock Exam
             </button>
           <button
-            onClick={() => setCalcOnly(v => !v)}
+            onClick={() => {
+                const newCalcOnly = !calcOnly;
+                setCalcOnly(newCalcOnly);
+                const newPool = newCalcOnly ? CLASS3_WW_QUESTIONS.filter(q => q.isCalc) : CLASS3_WW_QUESTIONS;
+                const next = newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null;
+                setCurrent(next);
+                setHistory([]);
+                setSelected(null);
+                setConfidence(null);
+                setConfirmed(false);
+              }}
             style={{ padding: "8px 14px", background: calcOnly ? "#EDE9FE" : "#fff", color: calcOnly ? "#7C3AED" : "#475569", border: calcOnly ? "1px solid #7C3AED" : "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
           >
             🧮 Calc Only
