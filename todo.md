@@ -218,3 +218,10 @@
 - [x] Build /account page with email-based access restore and purchased course list (all 8 WPI exam types added to EXAM_META)
 - [x] Add WPI track tab/section to main Landing page course catalogue (WPI Water + WPI Wastewater tabs, 5 tracks total)
 - [x] Update About page changelog with WPI Class III/IV Wastewater and bundle launches
+- [ ] Build /account page UI: email form, checkAccess tRPC call, purchased course card grid, localStorage restore
+- [ ] Wire /account route in App.tsx
+- [ ] Add "My Courses" link to SiteNav
+- [ ] Add "Restore access" link to PurchaseGate overlay
+- [x] Add OIT Wastewater to Pricing page INDIVIDUAL array (already present — confirmed)
+- [x] Fix Landing page hero subtitle from "Three certification tracks" to "Five certification tracks" (already correct — confirmed)
+- [x] Update WPI Class IV Water and WPI Class IV Wastewater prices to CA$149 (products.ts, Pricing.tsx, WPI landing page, quiz gate copy)

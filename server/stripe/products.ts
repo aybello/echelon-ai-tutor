@@ -115,7 +115,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     key: "wpi-class4-water",
     name: "WPI Class IV Water Treatment Practice Pass",
     description: "WPI Class IV Water Treatment — 501 questions across 6 chief-operator modules: Advanced Process Control, Advanced Water Quality, Emergency Response & Contingency Planning, Plant Management & Leadership, Regulatory Compliance & Reporting, and Source Water Protection. Aligned with WPI Class IV Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 12900,
+    priceCAD: 14900,
     examTypes: ["wpi-class4-water"],
   },
   {
@@ -143,7 +143,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     key: "wpi-class4-wastewater",
     name: "WPI Class IV Wastewater Treatment Practice Pass",
     description: "WPI Class IV Wastewater Treatment — 502 questions across 7 chief-operator modules: Advanced Process Control & Optimization, Advanced Nutrient Removal & Resource Recovery, Emerging Technologies & Innovation, Plant Management, Asset Management & Leadership, Regulatory Compliance, Reporting & Environmental Management, Emergency Response & Resilience Planning, and Health, Safety & Environmental Stewardship. Aligned with WPI Class IV Wastewater Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 12900,
+    priceCAD: 14900,
     examTypes: ["wpi-class4-wastewater"],
   },
 ];

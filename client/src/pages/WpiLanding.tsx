@@ -174,8 +174,8 @@ const WATER_CLASSES = [
   {
     level: "CLASS IV",
     questions: "501",
-    price: "CA$129",
-    priceNum: 12900,
+    price: "CA$149",
+    priceNum: 14900,
     color: "#7C3AED",
     bg: "#F5F3FF",
     border: "#DDD6FE",
@@ -588,7 +588,7 @@ export default function WpiLanding() {
                 { label: "WPI CLASS I WASTEWATER", price: "CA$79", questions: "500", color: "#B45309", bg: "#FFFBEB", border: "#FDE68A", href: "/wpi-class1-wastewater", btnLabel: "Get WW Class I Pass →", features: ["500 wastewater questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
                 { label: "WPI CLASS II WASTEWATER", price: "CA$99", questions: "501", color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", href: "/wpi-class2-wastewater", btnLabel: "Get WW Class II Pass →", features: ["501 advanced WW questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
                 { label: "WPI CLASS III WASTEWATER", price: "CA$129", questions: "501", color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", href: "/wpi-class3-wastewater", btnLabel: "Get WW Class III Pass →", features: ["501 senior WW questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
-                { label: "WPI CLASS IV WASTEWATER", price: "CA$129", questions: "502", color: "#6D28D9", bg: "#F5F3FF", border: "#C4B5FD", href: "/wpi-class4-wastewater", btnLabel: "Get WW Class IV Pass →", features: ["502 chief operator questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
+                { label: "WPI CLASS IV WASTEWATER", price: "CA$149", questions: "502", color: "#6D28D9", bg: "#F5F3FF", border: "#C4B5FD", href: "/wpi-class4-wastewater", btnLabel: "Get WW Class IV Pass →", features: ["502 chief operator questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"] },
               ].map(ww => (
                 <div key={ww.label} style={{
                   background: ww.bg,

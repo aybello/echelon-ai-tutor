@@ -172,7 +172,7 @@ export default function WpiClass4WaterMockExam() {
         examType="wpi-class4-water"
         productKey="wpi-class4-water"
         productName="WPI Class IV Water Treatment Practice Pass"
-        price={79}
+        price={149}
         features={[
           "502 WPI Class I questions — unlimited practice",
           "Timed mock exam (100 questions, 2 hrs)",

@@ -157,7 +157,7 @@ export default function WpiClass4WaterQuiz() {
         questionsAnswered={history.length}
         productKey="wpi-class4-water"
         productName="WPI Class IV Water Treatment Practice Pass"
-        priceLabel="CA$79"
+        priceLabel="CA$149"
         paidFeatures={[
           "502 WPI Class I questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
