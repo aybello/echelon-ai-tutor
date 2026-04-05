@@ -389,6 +389,8 @@ const WPI_WATER_COURSES = [
     comingSoon: false,
     price: 79,
     productKey: "wpi-class1-water",
+    quizHref: "/wpi-class1-water",
+    mockHref: "/wpi-class1-water-mock",
   },
   {
     code: "WPI-W2",
@@ -406,6 +408,8 @@ const WPI_WATER_COURSES = [
     comingSoon: false,
     price: 99,
     productKey: "wpi-class2-water",
+    quizHref: "/wpi-class2-water",
+    mockHref: "/wpi-class2-water-mock",
   },
   {
     code: "WPI-W3",
@@ -423,6 +427,8 @@ const WPI_WATER_COURSES = [
     comingSoon: false,
     price: 129,
     productKey: "wpi-class3-water",
+    quizHref: "/wpi-class3-water",
+    mockHref: "/wpi-class3-water-mock",
   },
   {
     code: "WPI-W4",
@@ -440,6 +446,8 @@ const WPI_WATER_COURSES = [
     comingSoon: false,
     price: 149,
     productKey: "wpi-class4-water",
+    quizHref: "/wpi-class4-water",
+    mockHref: "/wpi-class4-water-mock",
   },
 ];
 
@@ -460,6 +468,8 @@ const WPI_WASTEWATER_COURSES = [
     comingSoon: false,
     price: 79,
     productKey: "wpi-class1-wastewater",
+    quizHref: "/wpi-class1-wastewater",
+    mockHref: "/wpi-class1-wastewater-mock",
   },
   {
     code: "WPI-WW2",
@@ -477,6 +487,8 @@ const WPI_WASTEWATER_COURSES = [
     comingSoon: false,
     price: 99,
     productKey: "wpi-class2-wastewater",
+    quizHref: "/wpi-class2-wastewater",
+    mockHref: "/wpi-class2-wastewater-mock",
   },
   {
     code: "WPI-WW3",
@@ -494,6 +506,8 @@ const WPI_WASTEWATER_COURSES = [
     comingSoon: false,
     price: 129,
     productKey: "wpi-class3-wastewater",
+    quizHref: "/wpi-class3-wastewater",
+    mockHref: "/wpi-class3-wastewater-mock",
   },
   {
     code: "WPI-WW4",
@@ -511,6 +525,8 @@ const WPI_WASTEWATER_COURSES = [
     comingSoon: false,
     price: 149,
     productKey: "wpi-class4-wastewater",
+    quizHref: "/wpi-class4-wastewater",
+    mockHref: "/wpi-class4-wastewater-mock",
   },
 ];
 
@@ -710,7 +726,7 @@ function CourseCard({ course }: { course: CourseType }) {
               {createSession.isPending ? "Redirecting…" : `Get Pass — CA$${(course as any).price} →`}
             </button>
           )}
-          <Link href={course.code === "OIT-WW" ? "/oit-ww" : course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "CL3-WW" ? "/class3-ww" : course.code === "CL4-W" ? "/class4-water" : course.code === "CL4-WW" ? "/class4-ww" : course.code === "WQA" ? "/wqa" : "/quiz"}>
+          <Link href={(course as any).quizHref ?? (course.code === "OIT-WW" ? "/oit-ww" : course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "CL3-WW" ? "/class3-ww" : course.code === "CL4-W" ? "/class4-water" : course.code === "CL4-WW" ? "/class4-ww" : course.code === "WQA" ? "/wqa" : "/quiz")}>
             <button style={{
               width: "100%", padding: "10px",
               background: "transparent",
@@ -737,8 +753,8 @@ function CourseCard({ course }: { course: CourseType }) {
             </Link>
           )}
 
-          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "CL2-WW" || course.code === "CL2-W" || course.code === "CL3-W" || course.code === "CL3-WW" || course.code === "CL4-W" || course.code === "CL4-WW" || course.code === "WQA") && (
-            <Link href={course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-ww-mock" : course.code === "CL2-WW" ? "/class2-ww-mock" : course.code === "CL2-W" ? "/class2-water-mock" : course.code === "CL3-W" ? "/class3-water-mock" : course.code === "CL3-WW" ? "/class3-ww-mock" : course.code === "CL4-W" ? "/class4-water-mock" : course.code === "CL4-WW" ? "/class4-ww-mock" : "/class1-water-mock"}>
+          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "CL2-WW" || course.code === "CL2-W" || course.code === "CL3-W" || course.code === "CL3-WW" || course.code === "CL4-W" || course.code === "CL4-WW" || course.code === "WQA" || (course as any).mockHref) && (
+            <Link href={(course as any).mockHref ?? (course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-ww-mock" : course.code === "CL2-WW" ? "/class2-ww-mock" : course.code === "CL2-W" ? "/class2-water-mock" : course.code === "CL3-W" ? "/class3-water-mock" : course.code === "CL3-WW" ? "/class3-ww-mock" : course.code === "CL4-W" ? "/class4-water-mock" : course.code === "CL4-WW" ? "/class4-ww-mock" : "/class1-water-mock")}>
               <button style={{
                 width: "100%", padding: "10px",
                 background: "transparent",
