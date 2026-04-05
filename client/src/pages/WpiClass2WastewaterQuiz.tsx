@@ -139,7 +139,7 @@ export default function WpiClass2WastewaterQuiz() {
         questionsAnswered={history.length}
         productKey="wpi-class2-wastewater"
         productName="WPI Class II Wastewater Treatment Practice Pass"
-        priceLabel="CA$99"
+        priceLabel="CA$149"
         paidFeatures={[
           "501 WPI Class II Wastewater questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",

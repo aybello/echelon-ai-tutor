@@ -254,7 +254,7 @@ export default function About() {
               badge: "New",
               badgeColor: "#0369A1",
               title: "WPI Water & WPI Wastewater Full Ladder Bundles",
-              body: "Two new bundles for WPI operators: WPI Water Full Ladder (CA$299, Class I–IV Water, 2,000+ questions, saves CA$99) and WPI Wastewater Full Ladder (CA$299, Class I–IV Wastewater, 2,000+ questions, saves CA$120). Both bundles unlock all four levels, all mock exams, all formula sheets, and full AI Tutor access.",
+              body: "WPI Class I–IV Water and Class I–IV Wastewater courses are now live. 4,000+ questions total, aligned with WPI Need-to-Know Criteria, recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
             },
             {
               date: "April 2026",

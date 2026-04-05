@@ -139,7 +139,7 @@ export default function WpiClass3WastewaterQuiz() {
         questionsAnswered={history.length}
         productKey="wpi-class3-wastewater"
         productName="WPI Class III Wastewater Practice Pass"
-        priceLabel="CA$99"
+        priceLabel="CA$249"
         paidFeatures={[
           "501 WPI Class III Wastewater questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",

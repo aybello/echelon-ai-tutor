@@ -145,7 +145,7 @@ export default function WpiClass1WaterQuiz() {
         questionsAnswered={history.length}
         productKey="wpi-class1-water"
         productName="WPI Class I Water Treatment Practice Pass"
-        priceLabel="CA$79"
+        priceLabel="CA$99"
         paidFeatures={[
           "502 WPI Class I questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",

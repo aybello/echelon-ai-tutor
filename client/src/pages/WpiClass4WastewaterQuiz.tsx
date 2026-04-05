@@ -139,7 +139,7 @@ export default function WpiClass4WastewaterQuiz() {
         questionsAnswered={history.length}
         productKey="wpi-class4-wastewater"
         productName="WPI Class IV Wastewater Practice Pass"
-        priceLabel="CA$149"
+        priceLabel="CA$349"
         paidFeatures={[
           "502 WPI Class IV Wastewater questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",

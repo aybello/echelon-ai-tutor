@@ -139,7 +139,7 @@ export default function WpiClass3WaterQuiz() {
         questionsAnswered={history.length}
         productKey="wpi-class3-water"
         productName="WPI Class III Water Treatment Practice Pass"
-        priceLabel="CA$99"
+        priceLabel="CA$249"
         paidFeatures={[
           "502 WPI Class III Water questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
