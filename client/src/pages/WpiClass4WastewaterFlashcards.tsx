@@ -13,6 +13,7 @@ export default function WpiClass4WastewaterFlashcards() {
       <FlashcardShell
         questions={wpiClass4WastewaterQuestions as unknown as FlashcardQuestion[]}
         examName="WPI Class IV Wastewater"
+        examType="wpi-class4-wastewater"
         backPath="/wpi-class4-wastewater"
         modules={WPI_CLASS4_WASTEWATER_MODULES as unknown as string[]}
       />

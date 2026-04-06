@@ -1,9 +1,11 @@
 // ECHELON AI TUTOR — FlashcardShell Component
 // Flip-card study mode derived from any question bank
 // Handles all field name variants: question/q/text, correct/correctAnswer/correctIndex
+// Persists spaced-repetition state (known/unknown) to the database per email+examType
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { Link } from "wouter";
+import { trpc } from "@/lib/trpc";
 
 export interface FlashcardQuestion {
   id: number | string;
@@ -22,6 +24,7 @@ export interface FlashcardQuestion {
 interface FlashcardShellProps {
   questions: FlashcardQuestion[];
   examName: string;
+  examType: string;   // e.g. "class1-water" — used for persistence key
   backPath: string;
   modules: string[];
 }
@@ -49,7 +52,13 @@ const DIFF_COLOR: Record<string, { bg: string; fg: string }> = {
   hard:   { bg: "#FEE2E2", fg: "#B91C1C" },
 };
 
-export default function FlashcardShell({ questions, examName, backPath, modules }: FlashcardShellProps) {
+/** Get email from localStorage (set by Account page restore flow) */
+function getStoredEmail(): string {
+  try { return localStorage.getItem("echelon_purchase_email") ?? localStorage.getItem("echelon_trial_email") ?? ""; }
+  catch { return ""; }
+}
+
+export default function FlashcardShell({ questions, examName, examType, backPath, modules }: FlashcardShellProps) {
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [flipped, setFlipped] = useState(false);
   const [index, setIndex] = useState(0);
@@ -57,6 +66,48 @@ export default function FlashcardShell({ questions, examName, backPath, modules 
   const [reviewing, setReviewing] = useState(false);
   const [deck, setDeck] = useState<FlashcardQuestion[]>(() => shuffleArr(questions));
   const [sessionComplete, setSessionComplete] = useState(false);
+  const [progressLoaded, setProgressLoaded] = useState(false);
+
+  // Stable email for persistence — read once on mount
+  const emailRef = useRef(getStoredEmail());
+  const email = emailRef.current;
+
+  // ── Load saved progress on mount ──────────────────────────────────────────
+  const { data: savedProgress } = trpc.flashcard.getProgress.useQuery(
+    { email, examType },
+    {
+      enabled: !!email,
+      staleTime: Infinity,
+      retry: false,
+    }
+  );
+
+  useEffect(() => {
+    if (savedProgress && !progressLoaded) {
+      const ids = savedProgress.knownIds ?? [];
+      if (ids.length > 0) {
+        setKnown(new Set(ids));
+      }
+      setProgressLoaded(true);
+    }
+  }, [savedProgress, progressLoaded]);
+
+  // ── Save progress (debounced) ─────────────────────────────────────────────
+  const saveProgress = trpc.flashcard.saveProgress.useMutation();
+  const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const persistKnown = useCallback((nextKnown: Set<number | string>) => {
+    if (!email) return;
+    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    saveTimerRef.current = setTimeout(() => {
+      saveProgress.mutate({
+        email,
+        examType,
+        knownIds: Array.from(nextKnown),
+        totalCards: questions.length,
+      });
+    }, 800);
+  }, [email, examType, questions.length, saveProgress]);
 
   // Memoized filtered list (used for module switching)
   const _filtered = useMemo(() => {
@@ -108,12 +159,26 @@ export default function FlashcardShell({ questions, examName, backPath, modules 
   };
 
   const markKnown = () => {
-    if (card) setKnown(prev => { const s = new Set(prev); s.add(card.id); return s; });
+    if (card) {
+      setKnown(prev => {
+        const s = new Set(prev);
+        s.add(card.id);
+        persistKnown(s);
+        return s;
+      });
+    }
     handleNext();
   };
 
   const markUnknown = () => {
-    if (card) setKnown(prev => { const s = new Set(prev); s.delete(card.id); return s; });
+    if (card) {
+      setKnown(prev => {
+        const s = new Set(prev);
+        s.delete(card.id);
+        persistKnown(s);
+        return s;
+      });
+    }
     handleNext();
   };
 
@@ -121,7 +186,9 @@ export default function FlashcardShell({ questions, examName, backPath, modules 
     const base = selectedModule ? questions.filter(q => q.module === selectedModule) : questions;
     const next = reviewing ? base.filter(q => !known.has(q.id)) : base;
     reshuffleDeck(next);
-    setKnown(new Set());
+    const empty = new Set<number | string>();
+    setKnown(empty);
+    persistKnown(empty);
   };
 
   const handleReviewUnknown = () => {
@@ -137,7 +204,7 @@ export default function FlashcardShell({ questions, examName, backPath, modules 
     return (
       <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
         <div style={{ background: "#fff", borderRadius: "20px", padding: "48px 40px", maxWidth: "480px", width: "100%", textAlign: "center", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
-          <div style={{ fontSize: "56px", marginBottom: "16px" }}>&#127881;</div>
+          <div style={{ fontSize: "56px", marginBottom: "16px" }}>🎉</div>
           <h2 style={{ fontSize: "28px", fontWeight: 800, color: "#0f172a", marginBottom: "8px" }}>Session Complete!</h2>
           <p style={{ color: "#64748b", fontSize: "16px", marginBottom: "32px" }}>You reviewed all {deck.length} cards</p>
           <div style={{ display: "flex", gap: "16px", justifyContent: "center", marginBottom: "32px" }}>
@@ -150,6 +217,11 @@ export default function FlashcardShell({ questions, examName, backPath, modules 
               <div style={{ fontSize: "13px", color: "#B91C1C", fontWeight: 600 }}>Review Again</div>
             </div>
           </div>
+          {email && (
+            <p style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "16px" }}>
+              ✓ Progress saved for {email}
+            </p>
+          )}
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             {unknownCount > 0 && (
               <button onClick={handleReviewUnknown} style={{ background: "#1e40af", color: "#fff", border: "none", borderRadius: "10px", padding: "14px 24px", fontSize: "15px", fontWeight: 700, cursor: "pointer" }}>
@@ -209,6 +281,7 @@ export default function FlashcardShell({ questions, examName, backPath, modules 
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <span style={{ color: "#94a3b8", fontSize: "13px" }}>
             <span style={{ color: "#22c55e", fontWeight: 700 }}>{knownCount}</span> known
+            {email && <span style={{ color: "#475569", marginLeft: 6, fontSize: "11px" }}>· saved</span>}
           </span>
           <button onClick={handleShuffle} style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", cursor: "pointer" }}>
             Shuffle
@@ -280,7 +353,6 @@ export default function FlashcardShell({ questions, examName, backPath, modules 
                   Tap to flip
                 </div>
               </div>
-
               {/* Back */}
               <div className="fc-face fc-back">
                 <div style={{ marginBottom: "12px" }}>

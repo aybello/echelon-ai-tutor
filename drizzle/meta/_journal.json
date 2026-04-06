@@ -78,6 +78,13 @@
       "when": 1775366117827,
       "tag": "0010_massive_tyrannus",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1775495511978,
+      "tag": "0011_chief_reavers",
+      "breakpoints": true
     }
   ]
 }

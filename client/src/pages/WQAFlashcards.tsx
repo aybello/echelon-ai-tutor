@@ -13,6 +13,7 @@ export default function WQAFlashcards() {
       <FlashcardShell
         questions={WQA_QUESTIONS as unknown as FlashcardQuestion[]}
         examName="WQA Water Quality Analyst"
+        examType="wqa"
         backPath="/wqa"
         modules={WQA_MODULES as unknown as string[]}
       />

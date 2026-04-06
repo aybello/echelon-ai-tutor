@@ -13,6 +13,7 @@ export default function Class1WastewaterFlashcards() {
       <FlashcardShell
         questions={CLASS1_WASTEWATER_QUESTIONS as unknown as FlashcardQuestion[]}
         examName="Ontario Class 1 Wastewater"
+        examType="class1-ww"
         backPath="/class1-ww"
         modules={CLASS1_WASTEWATER_MODULES as unknown as string[]}
       />

@@ -12,28 +12,43 @@ const LOGO_URL =
 // Map each exam type to its display info and links
 const EXAM_META: Record<
   string,
-  { label: string; quizPath: string; mockPath?: string; formulaPath?: string; color: string; bg: string; icon: string; track: string }
+  { label: string; quizPath: string; mockPath?: string; formulaPath?: string; flashcardPath?: string; color: string; bg: string; icon: string; track: string }
 > = {
   oit: { label: "OIT Practice Pass", quizPath: "/quiz", mockPath: "/oit-mock", formulaPath: "/formulas", color: "#0369A1", bg: "#F0F9FF", icon: "💧", track: "Ontario" },
-  "oit-ww": { label: "OIT Wastewater Practice Pass", quizPath: "/oit-ww", mockPath: "/oit-ww-mock", formulaPath: "/formulas-ww1", color: "#065F46", bg: "#ECFDF5", icon: "🌿", track: "Ontario" },
-  "class1-water": { label: "Class 1 Water Treatment Pass", quizPath: "/class1-water", mockPath: "/class1-water-mock", formulaPath: "/formulas-water1", color: "#0369A1", bg: "#F0F9FF", icon: "🚰", track: "Ontario" },
-  "class1-ww": { label: "Class 1 Wastewater Treatment Pass", quizPath: "/class1-ww", mockPath: "/class1-ww-mock", formulaPath: "/formulas-ww1", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
-  wqa: { label: "Water Quality Analyst Pass", quizPath: "/wqa", mockPath: "/wqa-mock", formulaPath: "/formulas-wqa", color: "#7C3AED", bg: "#F5F3FF", icon: "🔬", track: "Ontario" },
-  "class2-water": { label: "Class 2 Water Treatment Pass", quizPath: "/class2-water", mockPath: "/class2-water-mock", formulaPath: "/formulas-water2", color: "#0E7490", bg: "#ECFEFF", icon: "🚰", track: "Ontario" },
-  "class3-water": { label: "Class 3 Water Treatment Pass", quizPath: "/class3-water", mockPath: "/class3-water-mock", formulaPath: "/formulas-water3", color: "#1E40AF", bg: "#EFF6FF", icon: "🚰", track: "Ontario" },
-  "class4-water": { label: "Class 4 Water Treatment Pass", quizPath: "/class4-water", mockPath: "/class4-water-mock", formulaPath: "/formulas-water4", color: "#4C1D95", bg: "#F5F3FF", icon: "🚰", track: "Ontario" },
-  "class2-ww": { label: "Class 2 Wastewater Treatment Pass", quizPath: "/class2-ww", mockPath: "/class2-ww-mock", formulaPath: "/formulas-ww2", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
-  "class3-ww": { label: "Class 3 Wastewater Treatment Pass", quizPath: "/class3-ww", mockPath: "/class3-ww-mock", formulaPath: "/formulas-ww3", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
-  "class4-ww": { label: "Class 4 Wastewater Treatment Pass", quizPath: "/class4-ww", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
-  "wpi-class1-water": { label: "WPI Class I Water Treatment Pass", quizPath: "/wpi-class1-water", mockPath: "/wpi-class1-water-mock", formulaPath: "/formulas-wpi-water1", color: "#0369A1", bg: "#F0F9FF", icon: "🏔️", track: "WPI" },
-  "wpi-class2-water": { label: "WPI Class II Water Treatment Pass", quizPath: "/wpi-class2-water", mockPath: "/wpi-class2-water-mock", formulaPath: "/formulas-wpi-water2", color: "#0E7490", bg: "#ECFEFF", icon: "🏔️", track: "WPI" },
-  "wpi-class3-water": { label: "WPI Class III Water Treatment Pass", quizPath: "/wpi-class3-water", mockPath: "/wpi-class3-water-mock", formulaPath: "/formulas-wpi-water3", color: "#1E40AF", bg: "#EFF6FF", icon: "🏔️", track: "WPI" },
-  "wpi-class4-water": { label: "WPI Class IV Water Treatment Pass", quizPath: "/wpi-class4-water", mockPath: "/wpi-class4-water-mock", formulaPath: "/formulas-wpi-water4", color: "#4C1D95", bg: "#F5F3FF", icon: "🏔️", track: "WPI" },
-  "wpi-class1-wastewater": { label: "WPI Class I Wastewater Treatment Pass", quizPath: "/wpi-class1-wastewater", mockPath: "/wpi-class1-wastewater-mock", formulaPath: "/formulas-wpi-ww1", color: "#B45309", bg: "#FFFBEB", icon: "🌿", track: "WPI" },
-  "wpi-class2-wastewater": { label: "WPI Class II Wastewater Treatment Pass", quizPath: "/wpi-class2-wastewater", mockPath: "/wpi-class2-wastewater-mock", formulaPath: "/formulas-wpi-class2-ww", color: "#0F766E", bg: "#F0FDFA", icon: "🌿", track: "WPI" },
-  "wpi-class3-wastewater": { label: "WPI Class III Wastewater Treatment Pass", quizPath: "/wpi-class3-wastewater", mockPath: "/wpi-class3-wastewater-mock", formulaPath: "/formulas-wpi-class3-ww", color: "#1D4ED8", bg: "#EFF6FF", icon: "🌿", track: "WPI" },
-  "wpi-class4-wastewater": { label: "WPI Class IV Wastewater Treatment Pass", quizPath: "/wpi-class4-wastewater", mockPath: "/wpi-class4-wastewater-mock", formulaPath: "/formulas-wpi-class4-ww", color: "#6D28D9", bg: "#F5F3FF", icon: "🌿", track: "WPI" },
+  "oit-ww": { label: "OIT Wastewater Practice Pass", quizPath: "/oit-ww", mockPath: "/oit-ww-mock", formulaPath: "/formulas-ww1", flashcardPath: "/oit-ww-flashcards", color: "#065F46", bg: "#ECFDF5", icon: "🌿", track: "Ontario" },
+  "class1-water": { label: "Class 1 Water Treatment Pass", quizPath: "/class1-water", mockPath: "/class1-water-mock", formulaPath: "/formulas-water1", flashcardPath: "/class1-water-flashcards", color: "#0369A1", bg: "#F0F9FF", icon: "🚰", track: "Ontario" },
+  "class1-ww": { label: "Class 1 Wastewater Treatment Pass", quizPath: "/class1-ww", mockPath: "/class1-ww-mock", formulaPath: "/formulas-ww1", flashcardPath: "/class1-ww-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
+  wqa: { label: "Water Quality Analyst Pass", quizPath: "/wqa", mockPath: "/wqa-mock", formulaPath: "/formulas-wqa", flashcardPath: "/wqa-flashcards", color: "#7C3AED", bg: "#F5F3FF", icon: "🔬", track: "Ontario" },
+  "class2-water": { label: "Class 2 Water Treatment Pass", quizPath: "/class2-water", mockPath: "/class2-water-mock", formulaPath: "/formulas-water2", flashcardPath: "/class2-water-flashcards", color: "#0E7490", bg: "#ECFEFF", icon: "🚰", track: "Ontario" },
+  "class3-water": { label: "Class 3 Water Treatment Pass", quizPath: "/class3-water", mockPath: "/class3-water-mock", formulaPath: "/formulas-water3", flashcardPath: "/class3-water-flashcards", color: "#1E40AF", bg: "#EFF6FF", icon: "🚰", track: "Ontario" },
+  "class4-water": { label: "Class 4 Water Treatment Pass", quizPath: "/class4-water", mockPath: "/class4-water-mock", formulaPath: "/formulas-water4", flashcardPath: "/class4-water-flashcards", color: "#4C1D95", bg: "#F5F3FF", icon: "🚰", track: "Ontario" },
+  "class2-ww": { label: "Class 2 Wastewater Treatment Pass", quizPath: "/class2-ww", mockPath: "/class2-ww-mock", formulaPath: "/formulas-ww2", flashcardPath: "/class2-ww-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
+  "class3-ww": { label: "Class 3 Wastewater Treatment Pass", quizPath: "/class3-ww", mockPath: "/class3-ww-mock", formulaPath: "/formulas-ww3", flashcardPath: "/class3-ww-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
+  "class4-ww": { label: "Class 4 Wastewater Treatment Pass", quizPath: "/class4-ww", flashcardPath: "/class4-ww-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
+  "wpi-class1-water": { label: "WPI Class I Water Treatment Pass", quizPath: "/wpi-class1-water", mockPath: "/wpi-class1-water-mock", formulaPath: "/formulas-wpi-water1", flashcardPath: "/wpi-class1-water-flashcards", color: "#0369A1", bg: "#F0F9FF", icon: "🏔️", track: "WPI" },
+  "wpi-class2-water": { label: "WPI Class II Water Treatment Pass", quizPath: "/wpi-class2-water", mockPath: "/wpi-class2-water-mock", formulaPath: "/formulas-wpi-water2", flashcardPath: "/wpi-class2-water-flashcards", color: "#0E7490", bg: "#ECFEFF", icon: "🏔️", track: "WPI" },
+  "wpi-class3-water": { label: "WPI Class III Water Treatment Pass", quizPath: "/wpi-class3-water", mockPath: "/wpi-class3-water-mock", formulaPath: "/formulas-wpi-water3", flashcardPath: "/wpi-class3-water-flashcards", color: "#1E40AF", bg: "#EFF6FF", icon: "🏔️", track: "WPI" },
+  "wpi-class4-water": { label: "WPI Class IV Water Treatment Pass", quizPath: "/wpi-class4-water", mockPath: "/wpi-class4-water-mock", formulaPath: "/formulas-wpi-water4", flashcardPath: "/wpi-class4-water-flashcards", color: "#4C1D95", bg: "#F5F3FF", icon: "🏔️", track: "WPI" },
+  "wpi-class1-wastewater": { label: "WPI Class I Wastewater Treatment Pass", quizPath: "/wpi-class1-wastewater", mockPath: "/wpi-class1-wastewater-mock", formulaPath: "/formulas-wpi-ww1", flashcardPath: "/wpi-class1-wastewater-flashcards", color: "#B45309", bg: "#FFFBEB", icon: "🌿", track: "WPI" },
+  "wpi-class2-wastewater": { label: "WPI Class II Wastewater Treatment Pass", quizPath: "/wpi-class2-wastewater", mockPath: "/wpi-class2-wastewater-mock", formulaPath: "/formulas-wpi-class2-ww", flashcardPath: "/wpi-class2-wastewater-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌿", track: "WPI" },
+  "wpi-class3-wastewater": { label: "WPI Class III Wastewater Treatment Pass", quizPath: "/wpi-class3-wastewater", mockPath: "/wpi-class3-wastewater-mock", formulaPath: "/formulas-wpi-class3-ww", flashcardPath: "/wpi-class3-wastewater-flashcards", color: "#1D4ED8", bg: "#EFF6FF", icon: "🌿", track: "WPI" },
+  "wpi-class4-wastewater": { label: "WPI Class IV Wastewater Treatment Pass", quizPath: "/wpi-class4-wastewater", mockPath: "/wpi-class4-wastewater-mock", formulaPath: "/formulas-wpi-class4-ww", flashcardPath: "/wpi-class4-wastewater-flashcards", color: "#6D28D9", bg: "#F5F3FF", icon: "🌿", track: "WPI" },
 };
+
+/** Small inline mastery progress badge for flashcard stats */
+function MasteryBadge({ knownCount, totalCards }: { knownCount: number; totalCards: number }) {
+  if (!totalCards) return null;
+  const pct = Math.round((knownCount / totalCards) * 100);
+  const color = pct >= 80 ? "#22c55e" : pct >= 50 ? "#f59e0b" : "#94a3b8";
+  return (
+    <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11, color, fontWeight: 700 }}>
+      <span style={{ display: "inline-block", width: 56, height: 4, borderRadius: 4, background: "#1E293B", overflow: "hidden" }}>
+        <span style={{ display: "block", width: pct + "%", height: "100%", background: color, borderRadius: 4, transition: "width 0.4s ease" }} />
+      </span>
+      {knownCount}/{totalCards} cards mastered ({pct}%)
+    </span>
+  );
+}
 
 /** Write product keys + email to localStorage so PurchaseGate can verify access */
 function restoreLocalStorage(email: string, productKeys: string[]) {
@@ -70,6 +85,13 @@ export default function Account() {
     { email: submittedEmail ?? "" },
     { enabled: !!submittedEmail, retry: false }
   );
+
+  // Flashcard mastery stats — load all progress for this email
+  const getFlashcardProgress = trpc.flashcard.getAllProgress.useQuery(
+    { email: submittedEmail ?? "" },
+    { enabled: !!submittedEmail, retry: false, staleTime: 30_000 }
+  );
+  const flashcardMastery = getFlashcardProgress.data?.progress ?? {};
 
   // Restore localStorage when purchases are fetched
   useEffect(() => {
@@ -285,7 +307,7 @@ export default function Account() {
                               </div>
                               <div>
                                 <p style={{ color: "#F1F5F9", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
-                                <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam</p>
+                                <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
                               </div>
                             </div>
                             <div className="pass-actions">
@@ -297,12 +319,23 @@ export default function Account() {
                                   <span className="pass-btn" style={{ background: "#1E293B", color: "#94A3B8", border: "1px solid #334155" }}>Mock Exam</span>
                                 </Link>
                               )}
+                              {meta.flashcardPath && (
+                                <Link href={meta.flashcardPath}>
+                                  <span className="pass-btn" style={{ background: "#1E3A5F", color: "#93C5FD" }}>🃏 Flashcards</span>
+                                </Link>
+                              )}
                               {meta.formulaPath && (
                                 <Link href={meta.formulaPath}>
                                   <span className="pass-btn" style={{ background: "#064E3B", color: "#6EE7B7" }}>📐 Formulas</span>
                                 </Link>
                               )}
                             </div>
+                            {/* Mastery badge */}
+                            {meta.flashcardPath && flashcardMastery[examType] && (
+                              <div style={{ paddingLeft: 54, marginTop: 4 }}>
+                                <MasteryBadge knownCount={flashcardMastery[examType].knownCount} totalCards={flashcardMastery[examType].totalCards} />
+                              </div>
+                            )}
                           </div>
                         );
                       })}
@@ -328,7 +361,7 @@ export default function Account() {
                               </div>
                               <div>
                                 <p style={{ color: "#F1F5F9", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
-                                <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam</p>
+                                <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
                               </div>
                             </div>
                             <div className="pass-actions">
@@ -340,12 +373,23 @@ export default function Account() {
                                   <span className="pass-btn" style={{ background: "#1E293B", color: "#94A3B8", border: "1px solid #334155" }}>Mock Exam</span>
                                 </Link>
                               )}
+                              {meta.flashcardPath && (
+                                <Link href={meta.flashcardPath}>
+                                  <span className="pass-btn" style={{ background: "#1E3A5F", color: "#93C5FD" }}>🃏 Flashcards</span>
+                                </Link>
+                              )}
                               {meta.formulaPath && (
                                 <Link href={meta.formulaPath}>
                                   <span className="pass-btn" style={{ background: "#064E3B", color: "#6EE7B7" }}>📐 Formulas</span>
                                 </Link>
                               )}
                             </div>
+                            {/* Mastery badge */}
+                            {meta.flashcardPath && flashcardMastery[examType] && (
+                              <div style={{ paddingLeft: 54, marginTop: 4 }}>
+                                <MasteryBadge knownCount={flashcardMastery[examType].knownCount} totalCards={flashcardMastery[examType].totalCards} />
+                              </div>
+                            )}
                           </div>
                         );
                       })}

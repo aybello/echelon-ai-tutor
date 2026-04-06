@@ -13,6 +13,7 @@ export default function OITWastewaterFlashcards() {
       <FlashcardShell
         questions={CLASS1_WASTEWATER_QUESTIONS as unknown as FlashcardQuestion[]}
         examName="OIT Wastewater"
+        examType="oit-ww"
         backPath="/oit-ww"
         modules={CLASS1_WASTEWATER_MODULES as unknown as string[]}
       />

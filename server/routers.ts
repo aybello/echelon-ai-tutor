@@ -10,6 +10,7 @@ import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { adminRouter } from "./routers/admin";
 import { stripeRouter } from "./routers/stripeRouter";
+import { flashcardRouter } from "./routers/flashcardRouter";
 import { sendContactEmail } from "./email";
 
 export const appRouter = router({
@@ -17,6 +18,7 @@ export const appRouter = router({
   system: systemRouter,
   admin: adminRouter,
   stripe: stripeRouter,
+  flashcard: flashcardRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

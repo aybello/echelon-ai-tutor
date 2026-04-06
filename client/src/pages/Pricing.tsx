@@ -26,6 +26,28 @@ interface Product {
   features?: string[]; // optional highlight bullets shown on the card
 }
 
+/** Maps product key → flashcard page path */
+const FLASHCARD_ROUTES: Record<string, string> = {
+  "oit-ww": "/oit-ww-flashcards",
+  "class1-water": "/class1-water-flashcards",
+  "class1-ww": "/class1-ww-flashcards",
+  "class2-water": "/class2-water-flashcards",
+  "class2-ww": "/class2-ww-flashcards",
+  "class3-water": "/class3-water-flashcards",
+  "class3-ww": "/class3-ww-flashcards",
+  "class4-water": "/class4-water-flashcards",
+  "class4-ww": "/class4-ww-flashcards",
+  "wqa": "/wqa-flashcards",
+  "wpi-class1-water": "/wpi-class1-water-flashcards",
+  "wpi-class2-water": "/wpi-class2-water-flashcards",
+  "wpi-class3-water": "/wpi-class3-water-flashcards",
+  "wpi-class4-water": "/wpi-class4-water-flashcards",
+  "wpi-class1-wastewater": "/wpi-class1-wastewater-flashcards",
+  "wpi-class2-wastewater": "/wpi-class2-wastewater-flashcards",
+  "wpi-class3-wastewater": "/wpi-class3-wastewater-flashcards",
+  "wpi-class4-wastewater": "/wpi-class4-wastewater-flashcards",
+};
+
 const INDIVIDUAL: Product[] = [
   {
     key: "oit",
@@ -1042,6 +1064,17 @@ function ProductCard({
         label={`Get ${product.shortName} Pass →`}
         disabled={!product.available}
       />
+      {FLASHCARD_ROUTES[product.key] && (
+        <Link href={FLASHCARD_ROUTES[product.key]}>
+          <span style={{
+            display: "block", textAlign: "center", fontSize: 12, fontWeight: 600,
+            color: product.color, textDecoration: "none", padding: "4px 0",
+            opacity: 0.75, cursor: "pointer",
+          }}>
+            🃏 Preview Flashcards
+          </span>
+        </Link>
+      )}
     </div>
   );
 }
