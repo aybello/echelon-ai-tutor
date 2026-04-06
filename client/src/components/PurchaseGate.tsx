@@ -165,7 +165,15 @@ export default function PurchaseGate({
 
   // No access — show paywall
   return (
+    <>
+    <style>{`
+      @media (max-width: 480px) {
+        .pg-outer { padding: 16px 12px !important; justify-content: flex-start !important; padding-top: 40px !important; }
+        .pg-card { padding: 28px 18px 24px !important; border-radius: 16px !important; }
+      }
+    `}</style>
     <div
+      className="pg-outer"
       style={{
         fontFamily: "Sora, Nunito, sans-serif",
         minHeight: "100vh",
@@ -179,6 +187,7 @@ export default function PurchaseGate({
       }}
     >
       <div
+        className="pg-card"
         style={{
           background: "#fff",
           borderRadius: 20,
@@ -427,5 +436,6 @@ export default function PurchaseGate({
         </button>
       </Link>
     </div>
+    </>
   );
 }

@@ -383,7 +383,18 @@ export default function FormulasWpiClass1Ww() {
     : SECTIONS;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0F172A", color: "#F1F5F9" }}>
+    <div style={{ minHeight: "100vh", background: "#0F172A", color: "#F1F5F9" }}>      <style>{`
+        @media (max-width: 640px) {
+          .formulas-content { padding: 16px 14px 60px !important; }
+          .formulas-hero { padding: 32px 16px 28px !important; }
+          .formulas-hero-btns { flex-direction: column !important; align-items: stretch !important; }
+          .formulas-hero-btns a, .formulas-hero-btns button { width: 100% !important; box-sizing: border-box; }
+          .formulas-nav-btns { flex-wrap: wrap !important; }
+          .formulas-nav-btns a, .formulas-nav-btns button { flex: 1 1 auto !important; }
+          .formulas-quick-ref { grid-template-columns: 1fr 1fr !important; }
+        }
+      `}</style>
+
       <SiteNav currentPath="/formulas-wpi-class1-ww" />
 
       {/* Hero */}

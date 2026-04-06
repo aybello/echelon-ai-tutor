@@ -852,6 +852,9 @@ export default function Landing() {
           .contact-info-row { flex-direction: row !important; flex-wrap: wrap !important; gap: 12px !important; }
           .contact-info-card { flex: 1 1 140px !important; }
           .contact-form-grid { grid-template-columns: 1fr !important; }
+          .landing-whats-new { flex-direction: column !important; gap: 12px !important; }
+          .landing-whats-new-btn { width: 100% !important; text-align: center !important; }
+          .landing-course-section { padding: 48px 16px !important; }
         }
         @media (min-width: 641px) {
           .landing-hamburger { display: none !important; }
@@ -1198,6 +1201,7 @@ export default function Landing() {
       {/* ── What's New Banner ── */}
       <div style={{ padding: "32px 24px 0", maxWidth: 1200, margin: "0 auto" }}>
         <div
+          className="landing-whats-new"
           style={{
             background: "linear-gradient(135deg, #0F766E 0%, #0E7490 50%, #1D4ED8 100%)",
             borderRadius: 16,
@@ -1218,6 +1222,7 @@ export default function Landing() {
           </div>
           <a
             href="/class4-ww"
+            className="landing-whats-new-btn"
             style={{
               background: "rgba(255,255,255,0.15)",
               border: "1.5px solid rgba(255,255,255,0.4)",
@@ -1237,7 +1242,7 @@ export default function Landing() {
       </div>
 
       {/* ── Course Catalogue ── */}
-      <section id="courses" style={{ padding: "72px 24px", maxWidth: 1200, margin: "0 auto" }}>
+      <section id="courses" className="landing-course-section" style={{ padding: "72px 24px", maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
             Choose Your Certification Track

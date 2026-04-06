@@ -517,7 +517,18 @@ export default function FormulasWW1() {
   });
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>      <style>{`
+        @media (max-width: 640px) {
+          .formulas-content { padding: 16px 14px 60px !important; }
+          .formulas-hero { padding: 32px 16px 28px !important; }
+          .formulas-hero-btns { flex-direction: column !important; align-items: stretch !important; }
+          .formulas-hero-btns a, .formulas-hero-btns button { width: 100% !important; box-sizing: border-box; }
+          .formulas-nav-btns { flex-wrap: wrap !important; }
+          .formulas-nav-btns a, .formulas-nav-btns button { flex: 1 1 auto !important; }
+          .formulas-quick-ref { grid-template-columns: 1fr 1fr !important; }
+        }
+      `}</style>
+
       <SiteNav currentPath="/formulas-ww1" />
 
       {/* Hero */}

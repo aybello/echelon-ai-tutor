@@ -182,6 +182,22 @@ export default function WpiLanding() {
 
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+      <style>{`
+        @media (max-width: 640px) {
+          .wpi-province-card { flex-direction: column !important; }
+          .wpi-province-btns { min-width: 0 !important; width: 100% !important; }
+          .wpi-pricing-cards { gap: 10px !important; }
+          .wpi-pricing-card { width: calc(50% - 5px) !important; min-width: 140px !important; padding: 16px 12px !important; }
+          .wpi-hero-section { padding: 48px 16px 36px !important; }
+          .wpi-province-tabs { flex-wrap: wrap !important; gap: 6px !important; }
+          .wpi-province-tab { flex: 1 1 auto !important; }
+          .wpi-features-grid { grid-template-columns: 1fr !important; }
+          .wpi-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 380px) {
+          .wpi-pricing-card { width: 100% !important; }
+        }
+      `}</style>
       <SiteNav currentPath="/wpi" />
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
@@ -351,7 +367,7 @@ export default function WpiLanding() {
               </div>
             </div>
 
-            <div style={{ flex: "0 0 auto", display: "flex", flexDirection: "column" as const, gap: 10, minWidth: 220 }}>
+            <div className="wpi-province-btns" style={{ flex: "1 1 220px", display: "flex", flexDirection: "column" as const, gap: 10, minWidth: 0 }}>
               <Link href="/wpi-class1-water">
                 <div style={{
                   background: province.color,
@@ -509,9 +525,9 @@ export default function WpiLanding() {
             <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
               💧 Water Treatment
             </div>
-            <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
               {WATER_CLASSES.map(cls => (
-                <div key={cls.level} style={{
+                <div key={cls.level} className="wpi-pricing-card" style={{
                   background: cls.bg,
                   border: `2px solid ${cls.border}`,
                   borderRadius: 18,
@@ -559,9 +575,9 @@ export default function WpiLanding() {
             <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
               ♻️ Wastewater Treatment
             </div>
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" as const, justifyContent: "center" }}>
+            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 14, flexWrap: "wrap" as const, justifyContent: "center" }}>
               {WW_CLASSES.map(ww => (
-                <div key={ww.level} style={{
+                <div key={ww.level} className="wpi-pricing-card" style={{
                   background: ww.bg,
                   border: `2px solid ${ww.border}`,
                   borderRadius: 18,

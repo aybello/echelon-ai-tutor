@@ -300,6 +300,27 @@ export default function MockExamShell({
   // ── INTRO SCREEN ────────────────────────────────────────────────────────────
   if (examState === "intro") {
     return (
+      <>
+      <style>{`
+        @media (max-width: 768px) {
+          .mes-active-grid { grid-template-columns: 1fr !important; }
+          .mes-navigator { display: none !important; }
+        }
+        @media (max-width: 640px) {
+          .mes-results-hero-btns { flex-direction: column !important; }
+          .mes-results-hero-btns button, .mes-results-hero-btns a { width: 100% !important; }
+          .mes-stats-4 { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        @media (max-width: 480px) {
+          .mes-intro-card { padding: 28px 18px !important; }
+          .mes-stats-grid { grid-template-columns: 1fr 1fr !important; }
+          .mes-results-hero { padding: 24px 16px !important; }
+          .mes-active-header { flex-wrap: wrap !important; gap: 8px !important; }
+          .mes-active-header-right { flex-wrap: wrap !important; gap: 8px !important; }
+          .mes-nav-btns { flex-wrap: wrap !important; }
+          .mes-nav-btns button { flex: 1 1 40% !important; min-width: 80px !important; }
+        }
+      `}</style>
       <PurchaseGate
         examType={productKey}
         productKey={productKey}
@@ -311,7 +332,7 @@ export default function MockExamShell({
         <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
           <SiteNav currentPath={currentPath} />
           <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px 80px" }}>
-            <div style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center" }}>
+            <div className="mes-intro-card" style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center" }}>
               {/* Icon + badge */}
               <div style={{ width: 72, height: 72, borderRadius: 20, background: `linear-gradient(135deg, ${accentColor}, ${accentColor2})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32, margin: "0 auto 16px" }}>📝</div>
               <div style={{ display: "inline-block", padding: "4px 14px", borderRadius: 20, background: `${accentColor}18`, color: accentColor, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", marginBottom: 12 }}>
@@ -353,7 +374,7 @@ export default function MockExamShell({
               )}
 
               {/* Stats grid */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 28 }}>
+              <div className="mes-stats-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 28 }}>
                 {[
                   { icon: "📝", label: "Questions",  value: `${EXAM_QUESTIONS} MCQ` },
                   { icon: "⏱️", label: "Time Limit", value: `${Math.round(EXAM_DURATION / 3600)} Hour${EXAM_DURATION >= 7200 ? "s" : ""}` },
@@ -395,6 +416,7 @@ export default function MockExamShell({
           </div>
         </div>
       </PurchaseGate>
+      </>
     );
   }
 
@@ -414,14 +436,14 @@ export default function MockExamShell({
               : "linear-gradient(135deg, #DC2626, #9B1C1C)",
             borderRadius: 20, padding: "36px 32px", textAlign: "center", color: "#fff",
             marginBottom: 24, boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
-          }}>
+          }} className="mes-results-hero">
             <div style={{ fontSize: 52, marginBottom: 8 }}>{passed ? "🎉" : "📚"}</div>
             <div style={{ fontSize: 48, fontWeight: 900, marginBottom: 4 }}>{pct}%</div>
             <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>{passed ? "PASSED" : "NOT YET"}</div>
             <div style={{ fontSize: 14, opacity: 0.85, marginBottom: 24 }}>
               {correct} / {EXAM_QUESTIONS} correct · {passed ? `You met the ${Math.round(passThreshold * 100)}% pass threshold` : `${Math.round(passThreshold * 100)}% required to pass`}
             </div>
-            <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+            <div className="mes-results-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <button
                 onClick={() => { resultSavedRef.current = false; startExam(); }}
                 style={{ padding: "12px 28px", borderRadius: 10, background: "rgba(255,255,255,0.2)", color: "#fff", border: "2px solid rgba(255,255,255,0.4)", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
@@ -443,7 +465,7 @@ export default function MockExamShell({
           </div>
 
           {/* Stats grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 24 }}>
+          <div className="mes-stats-4" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 24 }}>
             {[
               { label: "Correct",   value: correct,   color: "#059669", bg: "#DCFCE7" },
               { label: "Incorrect", value: incorrect, color: "#DC2626", bg: "#FEE2E2" },
@@ -539,14 +561,14 @@ export default function MockExamShell({
       <SiteNav currentPath={currentPath} />
       {/* Sticky header */}
       <div style={{ position: "sticky", top: 0, zIndex: 100, background: "#fff", borderBottom: "1px solid #E2E8F0", padding: "10px 20px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+        <div className="mes-active-header" style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
           <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A" }}>
             Q{currentIdx + 1} / {questions.length}
             <span style={{ marginLeft: 12, fontSize: 12, color: "#64748B", fontWeight: 500 }}>
               {answered} answered · {flagged.length} flagged
             </span>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <div className="mes-active-header-right" style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: timerColor, fontVariantNumeric: "tabular-nums" }}>
               ⏱ {formatTime(timeLeft)}
             </div>
@@ -560,7 +582,7 @@ export default function MockExamShell({
         </div>
       </div>
 
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 20px 80px", display: "grid", gridTemplateColumns: "1fr 220px", gap: 20, alignItems: "start" }}>
+      <div className="mes-active-grid" style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 20px 80px", display: "grid", gridTemplateColumns: "1fr 220px", gap: 20, alignItems: "start" }}>
         {/* Question card */}
         <div style={{ background: "#fff", borderRadius: 16, padding: "28px 28px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
           {/* Module badge */}
@@ -596,7 +618,7 @@ export default function MockExamShell({
             })}
           </div>
           {/* Navigation */}
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <div className="mes-nav-btns" style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <button
               onClick={() => setCurrentIdx(i => Math.max(0, i - 1))}
               disabled={currentIdx === 0}
@@ -636,7 +658,7 @@ export default function MockExamShell({
         </div>
 
         {/* Question navigator */}
-        <div style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
+        <div className="mes-navigator" style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 4 }}>
             {questions.map((_, i) => {

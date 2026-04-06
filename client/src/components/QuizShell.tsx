@@ -180,7 +180,7 @@ export default function QuizShell({
             padding: "40px 36px",
             boxShadow: "0 4px 24px rgba(0,0,0,0.08)",
             textAlign: "center",
-          }}>
+          }} className="qs-session-card">
             <div style={{ fontSize: 52, marginBottom: 12 }}>{pct >= 70 ? "🎉" : "📚"}</div>
             <h2 style={{ fontSize: 24, fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>
               Session Complete!
@@ -197,7 +197,7 @@ export default function QuizShell({
               {correctCount} correct · {wrongCount} incorrect
               {sessionSize ? ` · ${sessionSize} questions` : ""}
             </p>
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <div className="qs-session-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <button
                 onClick={onResetSession}
                 style={{
@@ -257,6 +257,17 @@ export default function QuizShell({
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
+        @media (max-width: 480px) {
+          .qs-header-actions { display: none !important; }
+          .qs-module-pills { gap: 4px !important; }
+          .qs-module-pills button { font-size: 10px !important; padding: 4px 8px !important; }
+          .qs-question-card { padding: 16px 14px 14px !important; }
+          .qs-action-row { flex-direction: column !important; }
+          .qs-action-row button { width: 100% !important; flex: none !important; }
+          .qs-session-card { padding: 28px 18px !important; }
+          .qs-session-btns { flex-direction: column !important; }
+          .qs-session-btns a, .qs-session-btns button { width: 100% !important; }
+        }
       `}</style>
 
       <SiteNav currentPath={currentPath} />
@@ -299,7 +310,7 @@ export default function QuizShell({
 
             {/* Action buttons */}
             {headerActions.length > 0 && (
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+              <div className="qs-header-actions" style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                 {headerActions.map(a => (
                   <Link key={a.href} href={a.href}>
                     <button style={{
@@ -342,7 +353,7 @@ export default function QuizShell({
 
             {/* Module filter toggle */}
             {modules.length > 0 && (
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginLeft: 4 }}>
+              <div className="qs-module-pills" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginLeft: 4 }}>
                 <button
                   onClick={() => onModuleChange(null)}
                   style={{
@@ -424,7 +435,7 @@ export default function QuizShell({
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "20px 16px 80px" }}>
 
         {/* Question card */}
-        <div style={{
+        <div className="qs-question-card" style={{
           background: "#fff",
           borderRadius: 16,
           padding: "24px 24px 20px",
@@ -530,7 +541,7 @@ export default function QuizShell({
           )}
 
           {/* Action buttons */}
-          <div style={{ marginTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <div className="qs-action-row" style={{ marginTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
             {/* ← Prev (always show if history exists) */}
             {history.length > 0 && (
               <button

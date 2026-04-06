@@ -166,3 +166,30 @@
 .formula-mono {
   font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
 }
+
+/* ── Global Mobile Optimizations ─────────────────────────────────────────── */
+
+/* Prevent horizontal overflow on all pages */
+html, body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Ensure images don't overflow their containers */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Improve tap target sizes on mobile */
+@media (max-width: 640px) {
+  /* Ensure buttons and links have adequate tap targets */
+  button, a {
+    min-height: 36px;
+  }
+
+  /* Prevent text from being too small */
+  input, select, textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+}

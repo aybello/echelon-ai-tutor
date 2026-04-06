@@ -982,7 +982,7 @@ export default function FormulasWW2() {
           <p style={{ fontSize: 15, color: "rgba(255,255,255,0.85)", margin: "0 0 24px", lineHeight: 1.6 }}>
             {totalFormulas} formulas across 6 modules — activated sludge, BNR, biosolids, collection systems, lab analysis, and safety. Each with worked examples and exam tips.
           </p>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+          <div className="formulas-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/class2-ww">
               <span style={{ background: "#fff", color: BRAND, padding: "10px 20px", borderRadius: 8, fontSize: 13, fontWeight: 700, cursor: "pointer", textDecoration: "none" }}>
                 ← Practice Quiz

@@ -543,6 +543,11 @@ export default function CareerMap() {
         @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
         @keyframes popIn  { from{opacity:0;transform:scale(0.92)} to{opacity:1;transform:scale(1)} }
         .fade { animation: fadeUp 0.4s ease both; }
+        @media (max-width: 768px) {
+          .career-salary-jumps { grid-template-columns: repeat(2,1fr) !important; }
+          .career-timeline-nodes { grid-template-columns: repeat(3,1fr) !important; }
+          .career-employers-grid { grid-template-columns: 1fr 1fr !important; }
+        }
         @media (max-width: 640px) {
           .career-content { padding: 16px 14px 60px !important; }
           .career-hero-stats { grid-template-columns: repeat(2,1fr) !important; gap: 10px !important; }

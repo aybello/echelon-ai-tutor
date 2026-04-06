@@ -48,11 +48,21 @@ export default function About() {
 
   return (
     <div style={{ background: "#F8FAFC", minHeight: "100vh", fontFamily: "'Sora', sans-serif" }}>
+      <style>{`
+        @media (max-width: 640px) {
+          .about-hero { padding: 48px 16px 40px !important; }
+          .about-section { padding: 48px 16px !important; }
+          .about-timeline { padding-left: 24px !important; }
+          .about-cta-btns { flex-direction: column !important; align-items: stretch !important; }
+          .about-cta-btns a, .about-cta-btns button { width: 100% !important; box-sizing: border-box; }
+          .about-changelog-row { flex-direction: column !important; gap: 8px !important; }
+        }
+      `}</style>
 
       <SiteNav currentPath="/about" />
 
       {/* ── HERO ── */}
-      <section style={{
+      <section className="about-hero" style={{
         background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)",
         padding: "80px 24px 72px",
         textAlign: "center",
@@ -96,7 +106,7 @@ export default function About() {
       </section>
 
       {/* ── WHY ECHELON EXISTS ── */}
-      <section style={{ padding: "72px 24px", maxWidth: 800, margin: "0 auto" }}>
+      <section className="about-section" style={{ padding: "72px 24px", maxWidth: 800, margin: "0 auto" }}>
         <h2 style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", margin: "0 0 28px", letterSpacing: "-0.01em" }}>
           Why Echelon Exists
         </h2>
@@ -125,12 +135,12 @@ export default function About() {
       </section>
 
       {/* ── TIMELINE ── */}
-      <section style={{ padding: "0 24px 72px", maxWidth: 800, margin: "0 auto" }}>
+      <section className="about-section" style={{ padding: "0 24px 72px", maxWidth: 800, margin: "0 auto" }}>
         <h2 style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", margin: "0 0 36px", letterSpacing: "-0.01em" }}>
           How We Got Here
         </h2>
 
-        <div style={{ position: "relative", paddingLeft: 32 }}>
+        <div className="about-timeline" style={{ position: "relative", paddingLeft: 32 }}>
           {/* Vertical line */}
           <div style={{
             position: "absolute",
@@ -327,7 +337,7 @@ export default function About() {
               body: "Platform launched with free OIT practice for both streams. Includes adaptive quiz engine, AI Tutor, confidence scoring, pattern detection, interactive process diagrams, and formula sheets.",
             },
           ].map((item, i) => (
-            <div key={i} style={{
+            <div key={i} className="about-changelog-row" style={{
               display: "flex",
               gap: 16,
               padding: "18px 22px",
@@ -381,7 +391,7 @@ export default function About() {
           <p style={{ fontSize: 15, color: "#64748B", marginBottom: 32, lineHeight: 1.7 }}>
             500+ OIT practice questions, an AI Tutor that knows Canadian provincial regulations, and a formula sheet — all free.
           </p>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+          <div className="about-cta-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/quiz">
               <button style={{
                 padding: "14px 28px",
