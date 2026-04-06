@@ -113,17 +113,29 @@ export default function PurchaseGate({
   price,
   children,
   features,
-  backPath = "/",
+  backPath,
 }: PurchaseGateProps) {
-  // Owner preview mode — bypass all paywalls instantly
-  if (isPreviewModeActive()) {
-    return <>{children}</>;
-  }
-
+  // All hooks must be declared before any early returns
   const [email] = useState(getStoredEmail);
   const [localAccess] = useState(() => isLocallyPurchased(examType));
   const [, navigate] = useLocation();
   const { isAuthenticated } = useAuth();
+
+  // Determine back navigation: use explicit backPath, or browser history if available, else "/"
+  const handleBack = () => {
+    if (backPath) {
+      navigate(backPath);
+    } else if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      navigate("/");
+    }
+  };
+
+  // Owner preview mode — bypass all paywalls instantly
+  if (isPreviewModeActive()) {
+    return <>{children}</>;
+  }
 
   // Stripe checkout session mutation
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
@@ -202,7 +214,7 @@ export default function PurchaseGate({
       >
         {/* X button — top-right corner of the card */}
         <button
-          onClick={() => navigate(backPath)}
+          onClick={handleBack}
           aria-label="Go back"
           style={{
             position: "absolute",
@@ -425,22 +437,21 @@ export default function PurchaseGate({
       </div>
 
       {/* Back link at bottom */}
-      <Link href={backPath}>
-        <button
-          style={{
-            marginTop: 20,
-            background: "transparent",
-            border: "none",
-            color: "#94A3B8",
-            fontSize: 13,
-            cursor: "pointer",
-            fontFamily: "inherit",
-            fontWeight: 500,
-          }}
-        >
-          ← {backPath === "/" ? "Back to Homepage" : "Back"}
-        </button>
-      </Link>
+      <button
+        onClick={handleBack}
+        style={{
+          marginTop: 20,
+          background: "transparent",
+          border: "none",
+          color: "#94A3B8",
+          fontSize: 13,
+          cursor: "pointer",
+          fontFamily: "inherit",
+          fontWeight: 500,
+        }}
+      >
+        ← Back
+      </button>
     </div>
     </>
   );
