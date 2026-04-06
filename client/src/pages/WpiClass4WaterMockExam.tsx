@@ -175,7 +175,7 @@ export default function WpiClass4WaterMockExam() {
         productName="WPI Class IV Water Treatment Practice Pass"
         price={149}
         features={[
-          "593 WPI Class IV questions — unlimited practice",
+          "592 WPI Class IV questions — unlimited practice",
           "Timed mock exam (100 questions, 2 hrs)",
           "Module-by-module performance breakdown",
           "AI Tutor explanations on every question",
@@ -217,6 +217,22 @@ export default function WpiClass4WaterMockExam() {
               >
                 WPI Class IV · Water Treatment
               </div>
+              <a
+                href="/wpi"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 4,
+                  color: "#6366F1",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  textDecoration: "none",
+                  marginBottom: 12,
+                  opacity: 0.85,
+                }}
+              >
+                ℹ️ What is WPI certification? →
+              </a>
               <h1
                 style={{
                   fontSize: "clamp(22px, 4vw, 32px)",

@@ -152,7 +152,7 @@ export default function WpiClass3WastewaterMockExam() {
           productName="WPI Class III Wastewater Practice Pass"
           price={99}
           features={[
-            "608 WPI Class III questions — unlimited practice",
+            "607 WPI Class III questions — unlimited practice",
             "Timed mock exam (100 questions, 2 hrs)",
             "Module-by-module performance breakdown",
             "AI Tutor explanations on every question",
@@ -173,6 +173,22 @@ export default function WpiClass3WastewaterMockExam() {
                 padding: "40px 32px", textAlign: "center", marginBottom: 24,
               }}>
                 <div style={{ fontSize: 56, marginBottom: 16 }}>♻️</div>
+                <a
+                  href="/wpi"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 4,
+                    color: "#6366F1",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    textDecoration: "none",
+                    marginBottom: 12,
+                    opacity: 0.85,
+                  }}
+                >
+                  ℹ️ What is WPI certification? →
+                </a>
                 <h1 style={{
                   fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 900,
                   color: "#0F172A", margin: "0 0 8px",
@@ -187,7 +203,7 @@ export default function WpiClass3WastewaterMockExam() {
                     { label: "Questions", value: "100" },
                     { label: "Time Limit", value: "2:00:00" },
                     { label: "Pass Mark", value: "70%" },
-                    { label: "Question Bank", value: "501" },
+                    { label: "Question Bank", value: "607" },
                   ].map(({ label, value }) => (
                     <div key={label} style={{ textAlign: "center" }}>
                       <div style={{ fontSize: 24, fontWeight: 800, color: "#0F766E" }}>{value}</div>

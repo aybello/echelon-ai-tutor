@@ -22,20 +22,30 @@ type ExamState = "intro" | "active" | "results";
 interface ExamAnswer { questionIndex: number; selected: number | null; }
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Treatment Process":           { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Laboratory Analysis":         { bg: "#FEF9C3", color: "#A16207" },
-  "Equipment O&M":               { bg: "#DCFCE7", color: "#15803D" },
-  "Source Water Characteristics":{ bg: "#EDE9FE", color: "#6D28D9" },
-  "Security, Safety & Admin":    { bg: "#FEE2E2", color: "#B91C1C" },
+  "Disinfection":       { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Regulations":        { bg: "#FEE2E2", color: "#B91C1C" },
+  "Hydraulics":         { bg: "#DCFCE7", color: "#15803D" },
+  "Filtration":         { bg: "#FEF9C3", color: "#A16207" },
+  "Chemical Treatment": { bg: "#EDE9FE", color: "#6D28D9" },
+  "Sludge Management":  { bg: "#CCFBF1", color: "#0F766E" },
+  "Operations":         { bg: "#FFEDD5", color: "#C2410C" },
+  "Coagulation":        { bg: "#F3E8FF", color: "#7C3AED" },
+  "Sedimentation":      { bg: "#E0F2FE", color: "#0369A1" },
+  "Corrosion Control":  { bg: "#FDF2F8", color: "#9D174D" },
 };
 
 // Official Class 3 Water Treatment exam blueprint (ABC/WPI NTK)
 const EXAM_MODULE_TARGETS: Record<string, number> = {
-  "Treatment Process":           33,
-  "Laboratory Analysis":         16,
-  "Equipment O&M":               23,
-  "Source Water Characteristics":15,
-  "Security, Safety & Admin":    13,
+  "Disinfection":        18,
+  "Regulations":         18,
+  "Hydraulics":          14,
+  "Filtration":          10,
+  "Chemical Treatment":  10,
+  "Sludge Management":   10,
+  "Operations":           8,
+  "Coagulation":          6,
+  "Sedimentation":        6,
+  "Corrosion Control":    0,
 };
 
 function selectExamQuestions(): Class3WaterQuestion[] {

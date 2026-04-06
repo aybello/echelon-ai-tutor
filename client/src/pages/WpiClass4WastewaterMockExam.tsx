@@ -179,7 +179,7 @@ export default function WpiClass4WastewaterMockExam() {
           productName="WPI Class IV Wastewater Practice Pass"
           price={149}
           features={[
-            "607 WPI Class IV questions — unlimited practice",
+            "606 WPI Class IV questions — unlimited practice",
             "Timed mock exam (100 questions, 2 hrs)",
             "Module-by-module performance breakdown",
             "AI Tutor explanations on every question",
@@ -194,6 +194,22 @@ export default function WpiClass4WastewaterMockExam() {
               }}>
                 🏛️
               </div>
+              <a
+                href="/wpi"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 4,
+                  color: "#6366F1",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  textDecoration: "none",
+                  marginBottom: 12,
+                  opacity: 0.85,
+                }}
+              >
+                ℹ️ What is WPI certification? →
+              </a>
               <h1 style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 900, color: "#0F172A", margin: "0 0 10px" }}>
                 WPI Class IV Wastewater Mock Exam
               </h1>

@@ -158,7 +158,7 @@ export default function Class3WastewaterMockExam() {
     return (
       <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Inter', sans-serif" }}>
         <SiteNav currentPath="/class3-ww-mock" />
-        <PurchaseGate examType="class3-ww" productKey="class3-ww" productName="Class 3 Wastewater Treatment" price={129}>
+        <PurchaseGate examType="class3-ww" productKey="class3-ww" productName="Class 3 Wastewater Treatment Practice Pass" price={129}>
           <div style={{ maxWidth: 640, margin: "60px auto", padding: "0 16px" }}>
             <div style={{ background: "#fff", borderRadius: 20, boxShadow: "0 4px 24px rgba(0,0,0,0.10)", padding: "40px 36px", textAlign: "center" }}>
               <div style={{ fontSize: 56, marginBottom: 16 }}>🏭</div>

@@ -8265,7 +8265,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 505,
   isCalc: true,
-  "module": "Chemical Feed",
+  "module": "Treatment Process",
   "topic": "Advanced chemical dosing (polymer optimization)",
   "question": "A water treatment plant treats 28971.0 m\u00b3/day of water. A polymer is dosed at 0.78 mg/L. The polymer is supplied as a 0.47% solution with a density of 1.06 kg/L. If the cost of the neat polymer is $3.93/kg, calculate the daily mass of neat polymer required, the daily volume of polymer solution needed, and the daily cost of polymer.",
   "options": [
@@ -8296,7 +8296,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 506,
   isCalc: true,
-  "module": "Chemical Feed",
+  "module": "Treatment Process",
   "topic": "Advanced chemical dosing (polymer optimization)",
   "question": "A water treatment plant treats 24160.0 m\u00b3/day of water. A polymer is dosed at 1.23 mg/L. The polymer is supplied as a 0.46% solution with a density of 1.08 kg/L. If the cost of the neat polymer is $5.02/kg, calculate the daily mass of neat polymer required, the daily volume of polymer solution needed, and the daily cost of polymer.",
   "options": [
@@ -8327,7 +8327,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 507,
   isCalc: true,
-  "module": "Process Optimization",
+  "module": "Treatment Process",
   "topic": "Energy optimization (specific energy consumption kWh/m\u00b3)",
   "question": "A water treatment plant processes 54894.0 m\u00b3/day of water. The total energy consumed by the plant is 10796.0 kWh/day. The cost of electricity is $0.13/kWh. The plant aims to achieve a specific energy consumption (SEC) of 0.23 kWh/m\u00b3. Calculate the current specific energy consumption (SEC) of the plant, the daily energy cost, and the potential daily cost savings if the target SEC is met.",
   "options": [
@@ -8358,7 +8358,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 508,
   isCalc: true,
-  "module": "Process Optimization",
+  "module": "Treatment Process",
   "topic": "Energy optimization (specific energy consumption kWh/m\u00b3)",
   "question": "A water treatment plant processes 34676.0 m\u00b3/day of water. The total energy consumed by the plant is 14209.0 kWh/day. The cost of electricity is $0.19/kWh. The plant aims to achieve a specific energy consumption (SEC) of 0.19 kWh/m\u00b3. Calculate the current specific energy consumption (SEC) of the plant, the daily energy cost, and the potential daily cost savings if the target SEC is met.",
   "options": [
@@ -8389,7 +8389,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 509,
   isCalc: true,
-  "module": "Management",
+  "module": "Regulations & Management",
   "topic": "Chemical inventory and cost calculations",
   "question": "A water treatment plant uses Sodium Hypochlorite with a daily consumption of 345.0 kg/day. The current inventory is 4779.0 kg. The reorder point is set at 10 days of supply, and the delivery lead time is 4 days. If the cost of Sodium Hypochlorite is $0.96/kg and the standard order quantity is 6649.0 kg, calculate the current days of supply remaining, the reorder point in kilograms, and the cost of the standard order.",
   "options": [
@@ -8420,7 +8420,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 510,
   isCalc: true,
-  "module": "Management",
+  "module": "Regulations & Management",
   "topic": "Chemical inventory and cost calculations",
   "question": "A water treatment plant uses Aluminum Sulfate with a daily consumption of 456.0 kg/day. The current inventory is 1600.0 kg. The reorder point is set at 13 days of supply, and the delivery lead time is 6 days. If the cost of Aluminum Sulfate is $0.67/kg and the standard order quantity is 3409.0 kg, calculate the current days of supply remaining, the reorder point in kilograms, and the cost of the standard order.",
   "options": [
@@ -8451,7 +8451,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 511,
   isCalc: true,
-  "module": "Hydraulics",
+  "module": "Equipment O&M",
   "topic": "Advanced hydraulic modeling",
   "question": "A new pipeline with a diameter of 450 mm and a length of 1245.0 m is being designed to carry water at a flow rate of 0.27 m\u00b3/s. The Hazen-Williams C factor for the pipe is 120. The water needs to be pumped against an elevation change of 12.0 m. If the pump efficiency is 75.0% and the motor efficiency is 90.0%, calculate the head loss due to friction, the total dynamic head (TDH), and the required motor power in kW. (Assume g = 9.81 m/s\u00b2 and water density = 1000 kg/m\u00b3)",
   "options": [
@@ -8482,7 +8482,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 512,
   isCalc: true,
-  "module": "Hydraulics",
+  "module": "Equipment O&M",
   "topic": "Advanced hydraulic modeling",
   "question": "A new pipeline with a diameter of 600 mm and a length of 1789.0 m is being designed to carry water at a flow rate of 0.41 m\u00b3/s. The Hazen-Williams C factor for the pipe is 140. The water needs to be pumped against an elevation change of 15.0 m. If the pump efficiency is 81.0% and the motor efficiency is 93.0%, calculate the head loss due to friction, the total dynamic head (TDH), and the required motor power in kW. (Assume g = 9.81 m/s\u00b2 and water density = 1000 kg/m\u00b3)",
   "options": [
@@ -8513,7 +8513,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 513,
   isCalc: true,
-  "module": "Management",
+  "module": "Regulations & Management",
   "topic": "Compliance reporting (running averages, percentile calculations)",
   "question": "A water treatment plant monitors a water quality parameter daily. The last 30 daily readings (mg/L) are: [0.09, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]. The regulatory limit for this parameter is 0.18 mg/L. Calculate the 7-day running average for the most recent data and the 90th percentile of all 30 data points. Assess if the plant is in compliance based on these two metrics.",
   "options": [
@@ -8540,7 +8540,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 514,
   isCalc: true,
-  "module": "Management",
+  "module": "Regulations & Management",
   "topic": "Compliance reporting (running averages, percentile calculations)",
   "question": "A water treatment plant monitors a water quality parameter daily. The last 30 daily readings (mg/L) are: [0.08, 0.12, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]. The regulatory limit for this parameter is 0.16 mg/L. Calculate the 7-day running average for the most recent data and the 90th percentile of all 30 data points. Assess if the plant is in compliance based on these two metrics.",
   "options": [
@@ -8567,7 +8567,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 515,
   isCalc: true,
-  "module": "Disinfection",
+  "module": "Treatment Process",
   "topic": "Ozone system design (O3 dose, CT, off-gas)",
   "question": "A water treatment plant uses an ozone system to treat 45694.0 m\u00b3/day of water. The target ozone dose is 2.1 mg/L. The ozone contactor has a volume of 1159.0 m\u00b3. During operation, the ozone residual in the contactor is 0.6 mg/L. The regulatory required CT for ozone is 11.0 mg\u00b7min/L. Additionally, the ozone off-gas system has a flow rate of 2109.0 m\u00b3/hr and an off-gas ozone concentration of 0.09 ppm. Calculate the daily ozone demand (kg), the actual CT achieved (mg\u00b7min/L), and the mass of ozone in the off-gas (kg/hr). Assess if the plant meets the required ozone CT. (Assume 1 ppm O\u2083 = 2.14 mg/m\u00b3 at STP)",
   "options": [
@@ -8598,7 +8598,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 516,
   isCalc: true,
-  "module": "Disinfection",
+  "module": "Treatment Process",
   "topic": "Ozone system design (O3 dose, CT, off-gas)",
   "question": "A water treatment plant uses an ozone system to treat 67890.0 m\u00b3/day of water. The target ozone dose is 1.8 mg/L. The ozone contactor has a volume of 1345.0 m\u00b3. During operation, the ozone residual in the contactor is 0.7 mg/L. The regulatory required CT for ozone is 13.0 mg\u00b7min/L. Additionally, the ozone off-gas system has a flow rate of 1890.0 m\u00b3/hr and an off-gas ozone concentration of 0.12 ppm. Calculate the daily ozone demand (kg), the actual CT achieved (mg\u00b7min/L), and the mass of ozone in the off-gas (kg/hr). Assess if the plant meets the required ozone CT. (Assume 1 ppm O\u2083 = 2.14 mg/m\u00b3 at STP)",
   "options": [
@@ -8629,7 +8629,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 517,
   isCalc: true,
-  "module": "Disinfection",
+  "module": "Treatment Process",
   "topic": "UV system validation (RED, UVT correction)",
   "question": "A UV disinfection system treats 18765.0 m\u00b3/day of water. The required UV dose is 32.0 mJ/cm\u00b2. The influent water has a UV transmittance (UVT) of 92.0%. The UV reactor has a total power consumption of 12.5 kW. The UV intensity sensor reads 85.0% of the reference intensity. Calculate the estimated actual UV dose delivered (mJ/cm\u00b2) and the daily energy consumption of the UV system (kWh).",
   "options": [
@@ -8656,7 +8656,7 @@ export const CLASS4_WATER_MODULES = [
 {
   "id": 518,
   isCalc: true,
-  "module": "Disinfection",
+  "module": "Treatment Process",
   "topic": "UV system validation (RED, UVT correction)",
   "question": "A UV disinfection system treats 23456.0 m\u00b3/day of water. The required UV dose is 28.0 mJ/cm\u00b2. The influent water has a UV transmittance (UVT) of 95.0%. The UV reactor has a total power consumption of 18.0 kW. The UV intensity sensor reads 78.0% of the reference intensity. Calculate the estimated actual UV dose delivered (mJ/cm\u00b2) and the daily energy consumption of the UV system (kWh).",
   "options": [

@@ -67,21 +67,21 @@ const CURRICULUM = [
       },
       {
         label: "Class II",
-        questions: 501,
+        questions: 598,
         color: "#0F766E",
         quizHref: "/wpi-class2-water",
         topics: ["Advanced treatment (ozone, UV, GAC, membranes)", "System design & hydraulics", "Advanced lab & SCADA monitoring", "Source water & environmental management", "Regulations, DWQMS, staff management"],
       },
       {
         label: "Class III",
-        questions: 502,
+        questions: 531,
         color: "#1D4ED8",
         quizHref: "/wpi-class3-water",
         topics: ["Advanced process control & optimization", "Hydraulics, pump stations, distribution modelling", "Disinfection by-products & emerging contaminants", "Source protection plans & climate resilience", "DWQMS auditing & regulatory compliance"],
       },
       {
         label: "Class IV",
-        questions: 501,
+        questions: 592,
         color: "#7C3AED",
         quizHref: "/wpi-class4-water",
         topics: ["Full plant optimization & process modelling", "Advanced water quality & DBP management", "Emergency response & business continuity", "Asset management, capital planning, leadership", "DWQMS, regulatory reporting, enforcement"],
@@ -93,28 +93,28 @@ const CURRICULUM = [
     classes: [
       {
         label: "Class I",
-        questions: 500,
+        questions: 594,
         color: "#B45309",
         quizHref: "/wpi-class1-wastewater",
         topics: ["Wastewater collection & lift stations", "Primary & secondary treatment (activated sludge, trickling filters)", "Solids handling, digestion & biosolids", "Lab & monitoring (BOD, TSS, DO)", "Safety, WHMIS, H₂S monitoring"],
       },
       {
         label: "Class II",
-        questions: 501,
+        questions: 599,
         color: "#0F766E",
         quizHref: "/wpi-class2-wastewater",
         topics: ["Advanced secondary treatment & nutrient removal", "Biological nitrogen & phosphorus removal", "Advanced biosolids management", "SCADA & process monitoring", "Regulatory compliance & effluent standards"],
       },
       {
         label: "Class III",
-        questions: 501,
+        questions: 607,
         color: "#1D4ED8",
         quizHref: "/wpi-class3-wastewater",
         topics: ["Biological nutrient removal (BNR)", "Membrane bioreactors (MBR)", "Industrial pretreatment programs", "Advanced biosolids & resource recovery", "Emergency response & plant management"],
       },
       {
         label: "Class IV",
-        questions: 502,
+        questions: 606,
         color: "#6D28D9",
         quizHref: "/wpi-class4-wastewater",
         topics: ["Advanced process control & resource recovery", "Emerging technologies & innovation", "Plant management, leadership & budgeting", "Strategic emergency response planning", "Regulatory compliance & enforcement"],
@@ -125,16 +125,16 @@ const CURRICULUM = [
 
 const WATER_CLASSES = [
   { level: "CLASS I", questions: "502", price: "CA$99", priceNum: 9900, color: "#0E7490", bg: "#F0FDFF", border: "#A5F3FC", quizHref: "/wpi-class1-water" },
-  { level: "CLASS II", questions: "501", price: "CA$149", priceNum: 14900, color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-water" },
-  { level: "CLASS III", questions: "502", price: "CA$249", priceNum: 24900, color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-water" },
-  { level: "CLASS IV", questions: "501", price: "CA$349", priceNum: 34900, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", quizHref: "/wpi-class4-water", badge: "👑 Chief Operator" },
+  { level: "CLASS II", questions: "598", price: "CA$149", priceNum: 14900, color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-water" },
+  { level: "CLASS III", questions: "531", price: "CA$249", priceNum: 24900, color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-water" },
+  { level: "CLASS IV", questions: "592", price: "CA$349", priceNum: 34900, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", quizHref: "/wpi-class4-water", badge: "👑 Chief Operator" },
 ];
 
 const WW_CLASSES = [
-  { level: "CLASS I", questions: "500", price: "CA$99", color: "#B45309", bg: "#FFFBEB", border: "#FDE68A", quizHref: "/wpi-class1-wastewater" },
-  { level: "CLASS II", questions: "501", price: "CA$149", color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-wastewater" },
-  { level: "CLASS III", questions: "501", price: "CA$249", color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-wastewater" },
-  { level: "CLASS IV", questions: "502", price: "CA$349", color: "#6D28D9", bg: "#F5F3FF", border: "#C4B5FD", quizHref: "/wpi-class4-wastewater", badge: "👑 Chief Operator" },
+  { level: "CLASS I", questions: "594", price: "CA$99", color: "#B45309", bg: "#FFFBEB", border: "#FDE68A", quizHref: "/wpi-class1-wastewater" },
+  { level: "CLASS II", questions: "599", price: "CA$149", color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-wastewater" },
+  { level: "CLASS III", questions: "607", price: "CA$249", color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-wastewater" },
+  { level: "CLASS IV", questions: "606", price: "CA$349", color: "#6D28D9", bg: "#F5F3FF", border: "#C4B5FD", quizHref: "/wpi-class4-wastewater", badge: "👑 Chief Operator" },
 ];
 
 const FAQS = [
@@ -156,11 +156,11 @@ const FAQS = [
   },
   {
     q: "Does Echelon cover the full WPI Water Treatment ladder (Class I–IV)?",
-    a: "Yes. We have dedicated practice banks for all four WPI Water Treatment class levels: Class I (502 questions), Class II (501 questions), Class III (502 questions), and Class IV (501 questions). Each bank is aligned with the respective WPI Need-to-Know Criteria and includes timed mock exams, AI Tutor, formula sheet, and score history.",
+    a: "Yes. We have dedicated practice banks for all four WPI Water Treatment class levels: Class I (502 questions), Class II (598 questions), Class III (531 questions), and Class IV (592 questions). Each bank is aligned with the respective WPI Need-to-Know Criteria and includes timed mock exams, AI Tutor, formula sheet, and score history.",
   },
   {
     q: "Is WPI Wastewater Treatment prep available?",
-    a: "Yes — all four WPI Wastewater classes are live. Class I (500 questions) covers Collection Systems, Primary & Secondary Treatment, Solids Handling, Lab & Monitoring, and Safety. Classes II–IV cover progressively advanced topics including BNR, MBR, resource recovery, and plant management. A WPI Wastewater Full Ladder Bundle (Class I–IV) is available at CA$299, saving CA$157 vs. buying individually.",
+    a: "Yes — all four WPI Wastewater classes are live. Class I (594 questions) covers Collection Systems, Primary & Secondary Treatment, Solids Handling, Lab & Monitoring, and Safety. Classes II–IV cover progressively advanced topics including BNR, MBR, resource recovery, and plant management. A WPI Wastewater Full Ladder Bundle (Class I–IV) is available at CA$299, saving CA$157 vs. buying individually.",
   },
 ];
 
