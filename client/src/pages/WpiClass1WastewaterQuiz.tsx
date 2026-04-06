@@ -15,7 +15,7 @@ import { shuffle } from "@/lib/utils";
 
 type QCompat = WpiClass1WastewaterQuestion & { q: string };
 function toCompat(q: WpiClass1WastewaterQuestion): QCompat {
-  return { ...q, q: (q as any).question ?? (q as any).q ?? "" };
+  return { ...q, q: (q as any).question ?? (q as any).text ?? (q as any).q ?? "" };
 }
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
