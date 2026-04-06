@@ -79,8 +79,16 @@ export const stripeRouter = router({
     }))
     .mutation(async ({ input }) => {
       try {
-        const session = await stripe.checkout.sessions.retrieve(input.sessionId);
-        const email = session.customer_email ?? (session.metadata?.customer_email ?? "");
+        const session = await stripe.checkout.sessions.retrieve(input.sessionId, {
+          expand: ["customer_details"],
+        });
+        // Stripe populates customer_details.email after checkout completes;
+        // customer_email is only set when pre-filled before checkout.
+        const email =
+          (session as any).customer_details?.email ??
+          session.customer_email ??
+          session.metadata?.customer_email ??
+          "";
         const productKey = session.metadata?.product_key ?? input.productKey;
         const productName = session.metadata?.product_name ?? productKey;
         const amountCAD = session.amount_total ?? 0;

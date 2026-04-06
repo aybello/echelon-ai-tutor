@@ -46,7 +46,10 @@ export function registerStripeWebhook(app: Express) {
 
           const productKey = session.metadata?.product_key;
           const productName = session.metadata?.product_name;
-          const email = session.customer_email ?? session.metadata?.customer_email;
+          const email =
+            session.customer_details?.email ??
+            session.customer_email ??
+            session.metadata?.customer_email;
           const userId = session.metadata?.user_id
             ? parseInt(session.metadata.user_id)
             : null;
