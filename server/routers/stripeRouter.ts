@@ -1,11 +1,12 @@
 import { z } from "zod";
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { stripe } from "../stripe/stripe";
-import { ALL_PRODUCTS, getAllUnlockedExamTypes } from "../stripe/products";
+import { ALL_PRODUCTS, getAllUnlockedExamTypes, PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { getDb } from "../db";
 import { purchases } from "../../drizzle/schema";
 import { eq } from "drizzle-orm";
 import { ENV } from "../_core/env";
+import { sendPurchaseConfirmationEmail } from "../email";
 
 export const stripeRouter = router({
   /** Return all products with prices for the Pricing page */
@@ -112,6 +113,20 @@ export const stripeRouter = router({
                 amountCAD,
                 stripeSessionId: input.sessionId,
                 stripePaymentIntentId,
+              });
+              // Send confirmation email (non-blocking — webhook is the primary trigger;
+              // this is a fallback for cases where the webhook fires after the user
+              // has already landed on the success page)
+              const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
+              sendPurchaseConfirmationEmail({
+                email,
+                productName: productName ?? productKey,
+                productKey,
+                amountCAD,
+                quizPath: studyPaths.quizPath,
+                mockPath: studyPaths.mockPath,
+              }).catch(err => {
+                console.error("[verifySession] Failed to send confirmation email:", err.message);
               });
             }
           }

@@ -308,3 +308,5 @@
 - [x] Add "Try a different email" button to no-purchases state with common reasons list
 - [x] Improve PurchaseGate restore-access CTA to be a prominent blue button
 - [x] Verify SiteNav already includes 🎫 My Passes link in mobile menu
+- [x] Audit all exam PurchaseGate/QuizGate pages for Stripe email capture bug (customer_details.email)
+- [x] Build post-purchase confirmation email: HTML template, SMTP helper, trigger on webhook + verifySession

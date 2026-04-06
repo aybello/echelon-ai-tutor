@@ -8,6 +8,15 @@ export interface ContactEmailPayload {
   message: string;
 }
 
+export interface PurchaseConfirmationPayload {
+  email: string;
+  productName: string;
+  productKey: string;
+  amountCAD: number; // in cents
+  quizPath: string;  // e.g. "/class1-ww"
+  mockPath: string;  // e.g. "/class1-ww-mock"
+}
+
 function createTransporter(): nodemailer.Transporter {
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     return nodemailer.createTransport({
@@ -22,6 +31,160 @@ function createTransporter(): nodemailer.Transporter {
   }
   // Fallback — should not reach here in production
   throw new Error("SMTP not configured");
+}
+
+/**
+ * Sends a purchase confirmation email to the buyer after a successful Stripe checkout.
+ * Includes their access link, the email they used, and a restore-access reminder.
+ */
+export async function sendPurchaseConfirmationEmail(
+  payload: PurchaseConfirmationPayload
+): Promise<void> {
+  const { email, productName, productKey, amountCAD, quizPath, mockPath } = payload;
+
+  let transporter: nodemailer.Transporter;
+
+  if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
+    transporter = createTransporter();
+  } else {
+    // Fallback: Ethereal test account (emails visible at ethereal.email)
+    const testAccount = await nodemailer.createTestAccount();
+    transporter = nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false,
+      auth: {
+        user: testAccount.user,
+        pass: testAccount.pass,
+      },
+    });
+  }
+
+  const siteUrl = "https://echeloninstitute.manus.space";
+  const amountFormatted = `CA$${(amountCAD / 100).toFixed(2)}`;
+  const quizUrl = `${siteUrl}${quizPath}`;
+  const mockUrl = `${siteUrl}${mockPath}`;
+  const accountUrl = `${siteUrl}/account`;
+
+  const confirmationMail = {
+    from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
+    to: email,
+    subject: `Your ${productName} is ready — Echelon Institute`,
+    text: [
+      `You're all set!`,
+      ``,
+      `Thank you for purchasing the ${productName} (${amountFormatted}).`,
+      ``,
+      `Start studying now:`,
+      `  Practice Quiz: ${quizUrl}`,
+      `  Mock Exam:     ${mockUrl}`,
+      ``,
+      `IMPORTANT — Save this email.`,
+      `Your access is tied to this email address: ${email}`,
+      `To restore access on any device, visit: ${accountUrl}`,
+      `Enter the email above and your passes will be unlocked instantly.`,
+      ``,
+      `Questions? Reply to this email or contact us at abello@echeloninstitute.ca`,
+      ``,
+      `Good luck on your exam!`,
+      `— The Echelon Institute Team`,
+    ].join("\n"),
+    html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,Helvetica,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+
+        <!-- Header -->
+        <tr>
+          <td style="background:linear-gradient(135deg,#1D4ED8 0%,#0E7490 100%);border-radius:12px 12px 0 0;padding:32px 32px 28px;text-align:center;">
+            <div style="font-size:40px;margin-bottom:12px;">🎉</div>
+            <h1 style="color:#ffffff;margin:0 0 8px;font-size:26px;font-weight:800;line-height:1.2;">You're all set!</h1>
+            <p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">Your practice pass is now active and ready to use.</p>
+          </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td style="background:#ffffff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;">
+
+            <!-- Purchase summary -->
+            <div style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:10px;padding:18px 22px;margin-bottom:28px;">
+              <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#15803D;letter-spacing:0.06em;text-transform:uppercase;">Purchase Confirmed</p>
+              <p style="margin:0;font-size:18px;font-weight:800;color:#0F172A;">${productName}</p>
+              <p style="margin:4px 0 0;font-size:14px;color:#475569;">${amountFormatted} · One-time payment · Access never expires</p>
+            </div>
+
+            <!-- Start studying CTAs -->
+            <p style="margin:0 0 16px;font-size:16px;font-weight:700;color:#0F172A;">Start studying now:</p>
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+              <tr>
+                <td style="padding-right:8px;width:50%;">
+                  <a href="${quizUrl}" style="display:block;background:linear-gradient(135deg,#1D4ED8,#0E7490);color:#ffffff;text-decoration:none;text-align:center;padding:14px 12px;border-radius:8px;font-size:14px;font-weight:700;">
+                    📝 Practice Quiz →
+                  </a>
+                </td>
+                <td style="padding-left:8px;width:50%;">
+                  <a href="${mockUrl}" style="display:block;background:#0F172A;color:#ffffff;text-decoration:none;text-align:center;padding:14px 12px;border-radius:8px;font-size:14px;font-weight:700;">
+                    ⏱ Mock Exam →
+                  </a>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Access restore notice -->
+            <div style="background:#FFF7ED;border:1.5px solid #FED7AA;border-radius:10px;padding:18px 22px;margin-bottom:28px;">
+              <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#C2410C;">⚠️ Save this email — it's your access key</p>
+              <p style="margin:0 0 10px;font-size:13px;color:#78350F;line-height:1.6;">
+                Your access is tied to this email address:<br>
+                <strong style="color:#0F172A;font-size:14px;">${email}</strong>
+              </p>
+              <p style="margin:0 0 12px;font-size:13px;color:#78350F;line-height:1.6;">
+                To restore access on any device (new phone, different browser, cleared cache), visit the Account page and enter this email.
+              </p>
+              <a href="${accountUrl}" style="display:inline-block;background:#FFF7ED;border:1.5px solid #FED7AA;color:#C2410C;text-decoration:none;padding:10px 18px;border-radius:7px;font-size:13px;font-weight:700;">
+                🎫 Restore Access → Account Page
+              </a>
+            </div>
+
+            <!-- What's included -->
+            <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#0F172A;">What's included in your pass:</p>
+            <ul style="margin:0 0 28px;padding-left:20px;">
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">500+ practice questions — unlimited attempts</li>
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Timed mock exam (100 questions, 2 hours)</li>
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">AI Tutor — step-by-step explanations on every question</li>
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Module-by-module performance tracking</li>
+              <li style="font-size:13px;color:#475569;line-height:1.5;">Formula sheet with worked examples</li>
+            </ul>
+
+            <!-- Footer -->
+            <div style="border-top:1px solid #E2E8F0;padding-top:20px;text-align:center;">
+              <p style="margin:0 0 6px;font-size:13px;color:#64748B;">Questions? Reply to this email or reach us at</p>
+              <p style="margin:0 0 6px;font-size:13px;"><a href="mailto:abello@echeloninstitute.ca" style="color:#1D4ED8;text-decoration:none;">abello@echeloninstitute.ca</a></p>
+              <p style="margin:12px 0 0;font-size:12px;color:#94A3B8;">Echelon Institute · Canada's AI-powered exam prep for water &amp; wastewater operators</p>
+            </div>
+
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
+    `,
+  };
+
+  const info = await transporter.sendMail(confirmationMail);
+
+  // Log preview URL for test accounts
+  if (!ENV.smtpHost) {
+    console.log("[Purchase Email] Preview URL:", nodemailer.getTestMessageUrl(info));
+  } else {
+    console.log(`[Purchase Email] Sent to ${email} for ${productKey}`);
+  }
 }
 
 /**

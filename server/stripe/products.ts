@@ -158,6 +158,29 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
 
 export const ALL_PRODUCTS = [...INDIVIDUAL_PRODUCTS];
 
+/** Maps product key → { quizPath, mockPath } for use in confirmation emails */
+export const PRODUCT_STUDY_PATHS: Record<string, { quizPath: string; mockPath: string }> = {
+  "oit":                    { quizPath: "/quiz",                      mockPath: "/oit-mock" },
+  "oit-ww":                { quizPath: "/oit-ww",                    mockPath: "/oit-ww-mock" },
+  "class1-water":          { quizPath: "/class1-water",              mockPath: "/class1-water-mock" },
+  "class1-ww":             { quizPath: "/class1-ww",                 mockPath: "/class1-ww-mock" },
+  "class2-water":          { quizPath: "/class2-water",              mockPath: "/class2-water-mock" },
+  "class2-ww":             { quizPath: "/class2-ww",                 mockPath: "/class2-ww-mock" },
+  "class3-water":          { quizPath: "/class3-water",              mockPath: "/class3-water-mock" },
+  "class3-ww":             { quizPath: "/class3-ww",                 mockPath: "/class3-ww-mock" },
+  "class4-water":          { quizPath: "/class4-water",              mockPath: "/class4-water-mock" },
+  "class4-ww":             { quizPath: "/class4-ww",                 mockPath: "/class4-ww-mock" },
+  "wqa":                   { quizPath: "/wqa",                       mockPath: "/wqa-mock" },
+  "wpi-class1-water":      { quizPath: "/wpi-class1-water",          mockPath: "/wpi-class1-water-mock" },
+  "wpi-class2-water":      { quizPath: "/wpi-class2-water",          mockPath: "/wpi-class2-water-mock" },
+  "wpi-class3-water":      { quizPath: "/wpi-class3-water",          mockPath: "/wpi-class3-water-mock" },
+  "wpi-class4-water":      { quizPath: "/wpi-class4-water",          mockPath: "/wpi-class4-water-mock" },
+  "wpi-class1-wastewater": { quizPath: "/wpi-class1-wastewater",     mockPath: "/wpi-class1-wastewater-mock" },
+  "wpi-class2-wastewater": { quizPath: "/wpi-class2-wastewater",     mockPath: "/wpi-class2-wastewater-mock" },
+  "wpi-class3-wastewater": { quizPath: "/wpi-class3-wastewater",     mockPath: "/wpi-class3-wastewater-mock" },
+  "wpi-class4-wastewater": { quizPath: "/wpi-class4-wastewater",     mockPath: "/wpi-class4-wastewater-mock" },
+};
+
 /** Given a product key, return all exam types it unlocks */
 export function getUnlockedExamTypes(productKey: string): string[] {
   const product = ALL_PRODUCTS.find(p => p.key === productKey);

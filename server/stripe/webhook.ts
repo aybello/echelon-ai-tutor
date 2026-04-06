@@ -4,6 +4,8 @@ import { stripe } from "./stripe";
 import { getDb } from "../db";
 import { purchases, users } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
+import { sendPurchaseConfirmationEmail } from "../email";
+import { PRODUCT_STUDY_PATHS } from "./products";
 import { eq } from "drizzle-orm";
 
 export function registerStripeWebhook(app: Express) {
@@ -84,6 +86,19 @@ export function registerStripeWebhook(app: Express) {
             });
 
             console.log(`[Stripe Webhook] Purchase recorded: ${email} → ${productKey} (CA$${(amountCAD / 100).toFixed(2)})`);
+
+            // Send purchase confirmation email (non-blocking — don't fail webhook on email error)
+            const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
+            sendPurchaseConfirmationEmail({
+              email,
+              productName: productName ?? productKey,
+              productKey,
+              amountCAD,
+              quizPath: studyPaths.quizPath,
+              mockPath: studyPaths.mockPath,
+            }).catch(err => {
+              console.error("[Stripe Webhook] Failed to send confirmation email:", err.message);
+            });
 
             // Capture phone number from Stripe checkout if provided
             const phone = session.customer_details?.phone ?? null;
