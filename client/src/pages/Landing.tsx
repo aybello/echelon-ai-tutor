@@ -218,7 +218,7 @@ const WATER_COURSES = [
     color: "#0369A1",
     bg: "#F0F9FF",
     border: "#BAE6FD",
-    price: 99,
+    price: 149,
     productKey: "class1-water",
   },
   {
