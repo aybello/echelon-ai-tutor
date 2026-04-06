@@ -8177,7 +8177,662 @@ export function getNextQuestion(
 export function getPatternInsights(
   history: HistoryEntry[]
 ): Array<{ module: string; issue: string }> {
-  const insights: Array<{ module: string; issue: string }> = [];
+  const insights: Array<{ module: string; issue: string }> = [,
+{
+  "id": 501,
+  isCalc: true,
+  "module": "Treatment Process",
+  "topic": "Advanced CT compliance (log removal allocation, multi-barrier)",
+  "question": "A water treatment plant processes 19702.0 m\u00b3/day. The regulatory requirement is 2.1 log removal for a specific pathogen. Under current operating conditions, the disinfectant contact time is 28.0 minutes and the disinfectant residual is 1.1 mg/L. Assuming a CT value of 12 mg\u00b7min/L is required for each log removal, what is the plant\'s CT compliance status and how much additional log removal capacity is available or needed?",
+  "options": [
+    "Non-compliant. Log removal needed: 0.47 logs.",
+    "Compliant. Log removal capacity available: 12.57 logs.",
+    "Compliant. Log removal capacity available: 0.33 logs.",
+    "Compliant. Log removal capacity available: 0.47 logs."
+  ],
+  "correct": 3,
+  "explanation": "Step 1: Calculate the actual CT achieved.\nFormula: CT_achieved = Contact Time (min) * Disinfectant Residual (mg/L)\nCalculation: CT_achieved = 28.0 min * 1.1 mg/L = 30.8 mg\u00b7min/L\n\nStep 2: Calculate the actual log removal achieved.\nFormula: Actual Log Removal = CT_achieved / CT_per_log_removal\nCalculation: Actual Log Removal = 30.8 mg\u00b7min/L / 12 mg\u00b7min/L/log = 2.57 logs\n\nStep 3: Determine the log removal difference and compliance status.\nFormula: Log Removal Difference = Actual Log Removal - Required Log Removal\nCalculation: Log Removal Difference = 2.57 logs - 2.1 logs = 0.47 logs\n\nSince the Log Removal Difference is 0.47 logs, the plant is Compliant. There is 0.47 logs capacity available.",
+  steps: [
+    {
+      l: "Calculate actual CT achieved",
+      c: "28.0 min * 1.1 mg/L = 30.8 mg\u00b7min/L"
+    },
+    {
+      l: "Calculate actual log removal achieved",
+      c: "30.8 mg\u00b7min/L / 12 mg\u00b7min/L/log = 2.57 logs"
+    },
+    {
+      l: "Determine log removal difference and compliance",
+      c: "2.57 logs - 2.1 logs = 0.47 logs. Status: Compliant."
+    }
+  ],
+  tip: "Remember to distinguish between actual CT achieved and required CT for log removal.",
+  difficulty: "medium"
+},
+{
+  "id": 502,
+  isCalc: true,
+  "module": "Treatment Process",
+  "topic": "Advanced CT compliance (log removal allocation, multi-barrier)",
+  "question": "A water treatment plant processes 25639.0 m\u00b3/day. The regulatory requirement is 2.3 log removal for a specific pathogen. Under current operating conditions, the disinfectant contact time is 35.0 minutes and the disinfectant residual is 1.4 mg/L. Assuming a CT value of 12 mg\u00b7min/L is required for each log removal, what is the plant\'s CT compliance status and how much additional log removal capacity is available or needed?",
+  "options": [
+    "Compliant. Log removal capacity available: 19.0 logs.",
+    "Compliant. Log removal capacity available: 1.78 logs.",
+    "Non-compliant. Log removal needed: 1.78 logs.",
+    "Compliant. Log removal capacity available: 0.73 logs."
+  ],
+  "correct": 1,
+  "explanation": "Step 1: Calculate the actual CT achieved.\nFormula: CT_achieved = Contact Time (min) * Disinfectant Residual (mg/L)\nCalculation: CT_achieved = 35.0 min * 1.4 mg/L = 49.0 mg\u00b7min/L\n\nStep 2: Calculate the actual log removal achieved.\nFormula: Actual Log Removal = CT_achieved / CT_per_log_removal\nCalculation: Actual Log Removal = 49.0 mg\u00b7min/L / 12 mg\u00b7min/L/log = 4.08 logs\n\nStep 3: Determine the log removal difference and compliance status.\nFormula: Log Removal Difference = Actual Log Removal - Required Log Removal\nCalculation: Log Removal Difference = 4.08 logs - 2.3 logs = 1.78 logs\n\nSince the Log Removal Difference is 1.78 logs, the plant is Compliant. There is 1.78 logs capacity available.",
+  steps: [
+    {
+      l: "Calculate actual CT achieved",
+      c: "35.0 min * 1.4 mg/L = 49.0 mg\u00b7min/L"
+    },
+    {
+      l: "Calculate actual log removal achieved",
+      c: "49.0 mg\u00b7min/L / 12 mg\u00b7min/L/log = 4.08 logs"
+    },
+    {
+      l: "Determine log removal difference and compliance",
+      c: "4.08 logs - 2.3 logs = 1.78 logs. Status: Compliant."
+    }
+  ],
+  tip: "Remember to distinguish between actual CT achieved and required CT for log removal.",
+  difficulty: "medium"
+},
+{
+  "id": 503,
+  isCalc: true,
+  "module": "Treatment Process",
+  "topic": "Membrane system optimization (flux decline, fouling index, SDI)",
+  "question": "A membrane filtration plant operates with a total membrane area of 553.0 m\u00b2. Over a filtration cycle, the initial flux is 35.4 L/m\u00b2/hr, and the final flux drops to 33.2 L/m\u00b2/hr. The initial transmembrane pressure (TMP) is 140.0 kPa, and it increases to 243.0 kPa by the end of the cycle. Calculate the percentage flux decline and a simplified fouling index based on the percentage increase in TMP.",
+  "options": [
+    "Flux Decline: -6.21%. Fouling Index (TMP increase): 73.57%.",
+    "Flux Decline: 6.21%. Fouling Index (TMP increase): 173.57%.",
+    "Flux Decline: 6.21%. Fouling Index (TMP increase): 73.57%.",
+    "Flux Decline: 73.57%. Fouling Index (TMP increase): 6.21%."
+  ],
+  "correct": 2,
+  "explanation": "Step 1: Calculate the percentage flux decline.\nFormula: Flux Decline (%) = ((Initial Flux - Final Flux) / Initial Flux) * 100\nCalculation: Flux Decline (%) = ((35.4 - 33.2) / 35.4) * 100 = 6.21%\n\nStep 2: Calculate the simplified fouling index based on percentage increase in TMP.\nFormula: Fouling Index (%) = ((Final TMP - Initial TMP) / Initial TMP) * 100\nCalculation: Fouling Index (%) = ((243.0 - 140.0) / 140.0) * 100 = 73.57%",
+  steps: [
+    {
+      l: "Calculate percentage flux decline",
+      c: "(( 35.4 - 33.2 ) / 35.4 ) * 100 = 6.21%"
+    },
+    {
+      l: "Calculate fouling index (TMP increase)",
+      c: "(( 243.0 - 140.0 ) / 140.0 ) * 100 = 73.57%"
+    }
+  ],
+  tip: "Flux decline indicates membrane performance reduction, while TMP increase can be an indicator of fouling.",
+  difficulty: "medium"
+},
+{
+  "id": 504,
+  isCalc: true,
+  "module": "Treatment Process",
+  "topic": "Membrane system optimization (flux decline, fouling index, SDI)",
+  "question": "A membrane filtration plant operates with a total membrane area of 976.0 m\u00b2. Over a filtration cycle, the initial flux is 38.7 L/m\u00b2/hr, and the final flux drops to 33.3 L/m\u00b2/hr. The initial transmembrane pressure (TMP) is 61.0 kPa, and it increases to 108.0 kPa by the end of the cycle. Calculate the percentage flux decline and a simplified fouling index based on the percentage increase in TMP.",
+  "options": [
+    "Flux Decline: 77.05%. Fouling Index (TMP increase): 13.95%.",
+    "Flux Decline: 13.95%. Fouling Index (TMP increase): 177.05%.",
+    "Flux Decline: -13.95%. Fouling Index (TMP increase): 77.05%.",
+    "Flux Decline: 13.95%. Fouling Index (TMP increase): 77.05%."
+  ],
+  "correct": 3,
+  "explanation": "Step 1: Calculate the percentage flux decline.\nFormula: Flux Decline (%) = ((Initial Flux - Final Flux) / Initial Flux) * 100\nCalculation: Flux Decline (%) = ((38.7 - 33.3) / 38.7) * 100 = 13.95%\n\nStep 2: Calculate the simplified fouling index based on percentage increase in TMP.\nFormula: Fouling Index (%) = ((Final TMP - Initial TMP) / Initial TMP) * 100\nCalculation: Fouling Index (%) = ((108.0 - 61.0) / 61.0) * 100 = 77.05%",
+  steps: [
+    {
+      l: "Calculate percentage flux decline",
+      c: "(( 38.7 - 33.3 ) / 38.7 ) * 100 = 13.95%"
+    },
+    {
+      l: "Calculate fouling index (TMP increase)",
+      c: "(( 108.0 - 61.0 ) / 61.0 ) * 100 = 77.05%"
+    }
+  ],
+  tip: "Flux decline indicates membrane performance reduction, while TMP increase can be an indicator of fouling.",
+  difficulty: "medium"
+},
+{
+  "id": 505,
+  isCalc: true,
+  "module": "Chemical Feed",
+  "topic": "Advanced chemical dosing (polymer optimization)",
+  "question": "A water treatment plant treats 28971.0 m\u00b3/day of water. A polymer is dosed at 0.78 mg/L. The polymer is supplied as a 0.47% solution with a density of 1.06 kg/L. If the cost of the neat polymer is $3.93/kg, calculate the daily mass of neat polymer required, the daily volume of polymer solution needed, and the daily cost of polymer.",
+  "options": [
+    "Daily Neat Polymer: 22.6 kg. Daily Solution Volume: 4535.8 L. Daily Cost: $17825.71.",
+    "Daily Neat Polymer: 22597.38 kg. Daily Solution Volume: 4535.8 L. Daily Cost: $88.81.",
+    "Daily Neat Polymer: 22.6 kg. Daily Solution Volume: 4535.8 L. Daily Cost: $88.81.",
+    "Daily Neat Polymer: 22.6 kg. Daily Solution Volume: 4807.95 L. Daily Cost: $88.81."
+  ],
+  "correct": 2,
+  "explanation": "Step 1: Calculate the daily mass of neat polymer required.\nFormula: Daily Polymer Mass (kg) = Flow (m\u00b3/day) * Polymer Dose (mg/L) / 1000 (mg/kg)\nCalculation: Daily Polymer Mass = 28971.0 m\u00b3/day * 0.78 mg/L / 1000 = 22.6 kg/day\n\nStep 2: Calculate the daily volume of polymer solution needed.\nFormula: Daily Solution Volume (L) = Daily Polymer Mass (kg) / Polymer Density (kg/L) / (Polymer Solution % / 100)\nCalculation: Daily Solution Volume = 22.6 kg / 1.06 kg/L / (0.47 / 100) = 4535.8 L/day\n\nStep 3: Calculate the daily cost of polymer.\nFormula: Daily Cost = Daily Polymer Mass (kg) * Cost per kg ($/kg)\nCalculation: Daily Cost = 22.6 kg * $3.93/kg = $88.81",
+  steps: [
+    {
+      l: "Calculate daily neat polymer mass",
+      c: "28971.0 m\u00b3/day * 0.78 mg/L / 1000 = 22.6 kg/day"
+    },
+    {
+      l: "Calculate daily polymer solution volume",
+      c: "22.6 kg / 1.06 kg/L / (0.47 / 100) = 4535.8 L/day"
+    },
+    {
+      l: "Calculate daily polymer cost",
+      c: "22.6 kg * $3.93/kg = $88.81"
+    }
+  ],
+  tip: "Ensure correct unit conversions when calculating polymer mass and solution volume.",
+  difficulty: "medium"
+},
+{
+  "id": 506,
+  isCalc: true,
+  "module": "Chemical Feed",
+  "topic": "Advanced chemical dosing (polymer optimization)",
+  "question": "A water treatment plant treats 24160.0 m\u00b3/day of water. A polymer is dosed at 1.23 mg/L. The polymer is supplied as a 0.46% solution with a density of 1.08 kg/L. If the cost of the neat polymer is $5.02/kg, calculate the daily mass of neat polymer required, the daily volume of polymer solution needed, and the daily cost of polymer.",
+  "options": [
+    "Daily Neat Polymer: 29.72 kg. Daily Solution Volume: 5981.64 L. Daily Cost: $30027.85.",
+    "Daily Neat Polymer: 29.72 kg. Daily Solution Volume: 5981.64 L. Daily Cost: $149.18.",
+    "Daily Neat Polymer: 29716.8 kg. Daily Solution Volume: 5981.64 L. Daily Cost: $149.18.",
+    "Daily Neat Polymer: 29.72 kg. Daily Solution Volume: 6460.17 L. Daily Cost: $149.18."
+  ],
+  "correct": 1,
+  "explanation": "Step 1: Calculate the daily mass of neat polymer required.\nFormula: Daily Polymer Mass (kg) = Flow (m\u00b3/day) * Polymer Dose (mg/L) / 1000 (mg/kg)\nCalculation: Daily Polymer Mass = 24160.0 m\u00b3/day * 1.23 mg/L / 1000 = 29.72 kg/day\n\nStep 2: Calculate the daily volume of polymer solution needed.\nFormula: Daily Solution Volume (L) = Daily Polymer Mass (kg) / Polymer Density (kg/L) / (Polymer Solution % / 100)\nCalculation: Daily Solution Volume = 29.72 kg / 1.08 kg/L / (0.46 / 100) = 5981.64 L/day\n\nStep 3: Calculate the daily cost of polymer.\nFormula: Daily Cost = Daily Polymer Mass (kg) * Cost per kg ($/kg)\nCalculation: Daily Cost = 29.72 kg * $5.02/kg = $149.18",
+  steps: [
+    {
+      l: "Calculate daily neat polymer mass",
+      c: "24160.0 m\u00b3/day * 1.23 mg/L / 1000 = 29.72 kg/day"
+    },
+    {
+      l: "Calculate daily polymer solution volume",
+      c: "29.72 kg / 1.08 kg/L / (0.46 / 100) = 5981.64 L/day"
+    },
+    {
+      l: "Calculate daily polymer cost",
+      c: "29.72 kg * $5.02/kg = $149.18"
+    }
+  ],
+  tip: "Ensure correct unit conversions when calculating polymer mass and solution volume.",
+  difficulty: "medium"
+},
+{
+  "id": 507,
+  isCalc: true,
+  "module": "Process Optimization",
+  "topic": "Energy optimization (specific energy consumption kWh/m\u00b3)",
+  "question": "A water treatment plant processes 54894.0 m\u00b3/day of water. The total energy consumed by the plant is 10796.0 kWh/day. The cost of electricity is $0.13/kWh. The plant aims to achieve a specific energy consumption (SEC) of 0.23 kWh/m\u00b3. Calculate the current specific energy consumption (SEC) of the plant, the daily energy cost, and the potential daily cost savings if the target SEC is met.",
+  "options": [
+    "Current SEC: 0.197 kWh/m\u00b3. Daily Energy Cost: $1403.48. Potential Daily Cost Savings: $197.82.",
+    "Current SEC: 0.197 kWh/m\u00b3. Daily Energy Cost: $1403.48. Potential Daily Cost Savings: $25.72.",
+    "Current SEC: 5.089 kWh/m\u00b3. Daily Energy Cost: $1403.48. Potential Daily Cost Savings: $197.82.",
+    "Current SEC: 0.197 kWh/m\u00b3. Daily Energy Cost: $1403.48. Potential Daily Cost Savings: $197.82."
+  ],
+  "correct": 3,
+  "explanation": "Step 1: Calculate the current specific energy consumption (SEC).\nFormula: Current SEC (kWh/m\u00b3) = Total Energy (kWh/day) / Flow (m\u00b3/day)\nCalculation: Current SEC = 10796.0 kWh/day / 54894.0 m\u00b3/day = 0.197 kWh/m\u00b3\n\nStep 2: Calculate the daily energy cost.\nFormula: Daily Energy Cost = Total Energy (kWh/day) * Energy Cost ($/kWh)\nCalculation: Daily Energy Cost = 10796.0 kWh/day * $0.13/kWh = $1403.48\n\nStep 3: Calculate the potential daily cost savings.\nFormula: Potential Daily Cost Savings = (Total Energy (kWh/day) - (Target SEC (kWh/m\u00b3) * Flow (m\u00b3/day))) * Energy Cost ($/kWh)\nCalculation: Potential Daily Cost Savings = (10796.0 kWh/day - (0.23 kWh/m\u00b3 * 54894.0 m\u00b3/day)) * $0.13/kWh = $197.82",
+  steps: [
+    {
+      l: "Calculate current SEC",
+      c: "10796.0 kWh/day / 54894.0 m\u00b3/day = 0.197 kWh/m\u00b3"
+    },
+    {
+      l: "Calculate daily energy cost",
+      c: "10796.0 kWh/day * $0.13/kWh = $1403.48"
+    },
+    {
+      l: "Calculate potential daily cost savings",
+      c: "(10796.0 - (0.23 * 54894.0)) * $0.13 = $197.82"
+    }
+  ],
+  tip: "Specific energy consumption (SEC) is a key performance indicator for energy efficiency.",
+  difficulty: "medium"
+},
+{
+  "id": 508,
+  isCalc: true,
+  "module": "Process Optimization",
+  "topic": "Energy optimization (specific energy consumption kWh/m\u00b3)",
+  "question": "A water treatment plant processes 34676.0 m\u00b3/day of water. The total energy consumed by the plant is 14209.0 kWh/day. The cost of electricity is $0.19/kWh. The plant aims to achieve a specific energy consumption (SEC) of 0.19 kWh/m\u00b3. Calculate the current specific energy consumption (SEC) of the plant, the daily energy cost, and the potential daily cost savings if the target SEC is met.",
+  "options": [
+    "Current SEC: 0.41 kWh/m\u00b3. Daily Energy Cost: $2699.71. Potential Daily Cost Savings: $768.99.",
+    "Current SEC: 0.41 kWh/m\u00b3. Daily Energy Cost: $2699.71. Potential Daily Cost Savings: $146.19.",
+    "Current SEC: 0.41 kWh/m\u00b3. Daily Energy Cost: $8.2. Potential Daily Cost Savings: $768.99.",
+    "Current SEC: 2.43 kWh/m\u00b3. Daily Energy Cost: $2699.71. Potential Daily Cost Savings: $768.99."
+  ],
+  "correct": 0,
+  "explanation": "Step 1: Calculate the current specific energy consumption (SEC).\nFormula: Current SEC (kWh/m\u00b3) = Total Energy (kWh/day) / Flow (m\u00b3/day)\nCalculation: Current SEC = 14209.0 kWh/day / 34676.0 m\u00b3/day = 0.41 kWh/m\u00b3\n\nStep 2: Calculate the daily energy cost.\nFormula: Daily Energy Cost = Total Energy (kWh/day) * Energy Cost ($/kWh)\nCalculation: Daily Energy Cost = 14209.0 kWh/day * $0.19/kWh = $2699.71\n\nStep 3: Calculate the potential daily cost savings.\nFormula: Potential Daily Cost Savings = (Total Energy (kWh/day) - (Target SEC (kWh/m\u00b3) * Flow (m\u00b3/day))) * Energy Cost ($/kWh)\nCalculation: Potential Daily Cost Savings = (14209.0 kWh/day - (0.19 kWh/m\u00b3 * 34676.0 m\u00b3/day)) * $0.19/kWh = $768.99",
+  steps: [
+    {
+      l: "Calculate current SEC",
+      c: "14209.0 kWh/day / 34676.0 m\u00b3/day = 0.41 kWh/m\u00b3"
+    },
+    {
+      l: "Calculate daily energy cost",
+      c: "14209.0 kWh/day * $0.19/kWh = $2699.71"
+    },
+    {
+      l: "Calculate potential daily cost savings",
+      c: "(14209.0 - (0.19 * 34676.0)) * $0.19 = $768.99"
+    }
+  ],
+  tip: "Specific energy consumption (SEC) is a key performance indicator for energy efficiency.",
+  difficulty: "medium"
+},
+{
+  "id": 509,
+  isCalc: true,
+  "module": "Management",
+  "topic": "Chemical inventory and cost calculations",
+  "question": "A water treatment plant uses Sodium Hypochlorite with a daily consumption of 345.0 kg/day. The current inventory is 4779.0 kg. The reorder point is set at 10 days of supply, and the delivery lead time is 4 days. If the cost of Sodium Hypochlorite is $0.96/kg and the standard order quantity is 6649.0 kg, calculate the current days of supply remaining, the reorder point in kilograms, and the cost of the standard order.",
+  "options": [
+    "Days of Supply Remaining: 13.85 days. Reorder Point: 3450.0 kg. Cost of Order: $6383.04.",
+    "Days of Supply Remaining: 13.85 days. Reorder Point: 3450.0 kg. Cost of Order: $6383.04.",
+    "Days of Supply Remaining: 13.85 days. Reorder Point: 4830.0 kg. Cost of Order: $6383.04.",
+    "Days of Supply Remaining: 13.85 days. Reorder Point: 345.0 kg. Cost of Order: $6383.04."
+  ],
+  "correct": 1,
+  "explanation": "Step 1: Calculate the current days of supply remaining.\nFormula: Days of Supply = Current Inventory (kg) / Daily Consumption (kg/day)\nCalculation: Days of Supply = 4779.0 kg / 345.0 kg/day = 13.85 days\n\nStep 2: Calculate the reorder point in kilograms.\nFormula: Reorder Point (kg) = Reorder Point (days) * Daily Consumption (kg/day)\nCalculation: Reorder Point = 10 days * 345.0 kg/day = 3450.0 kg\n\nStep 3: Calculate the cost of the standard order.\nFormula: Cost of Order = Order Quantity (kg) * Cost per kg ($/kg)\nCalculation: Cost of Order = 6649.0 kg * $0.96/kg = $6383.04",
+  steps: [
+    {
+      l: "Calculate days of supply remaining",
+      c: "4779.0 kg / 345.0 kg/day = 13.85 days"
+    },
+    {
+      l: "Calculate reorder point in kilograms",
+      c: "10 days * 345.0 kg/day = 3450.0 kg"
+    },
+    {
+      l: "Calculate cost of standard order",
+      c: "6649.0 kg * $0.96/kg = $6383.04"
+    }
+  ],
+  tip: "Accurate inventory management prevents stockouts and optimizes chemical expenditure.",
+  difficulty: "medium"
+},
+{
+  "id": 510,
+  isCalc: true,
+  "module": "Management",
+  "topic": "Chemical inventory and cost calculations",
+  "question": "A water treatment plant uses Aluminum Sulfate with a daily consumption of 456.0 kg/day. The current inventory is 1600.0 kg. The reorder point is set at 13 days of supply, and the delivery lead time is 6 days. If the cost of Aluminum Sulfate is $0.67/kg and the standard order quantity is 3409.0 kg, calculate the current days of supply remaining, the reorder point in kilograms, and the cost of the standard order.",
+  "options": [
+    "Days of Supply Remaining: 3.51 days. Reorder Point: 5928.0 kg. Cost of Order: $2284.03.",
+    "Days of Supply Remaining: 3.51 days. Reorder Point: 456.0 kg. Cost of Order: $2284.03.",
+    "Days of Supply Remaining: 3.51 days. Reorder Point: 5928.0 kg. Cost of Order: $2284.03.",
+    "Days of Supply Remaining: 3.51 days. Reorder Point: 5928.0 kg. Cost of Order: $305.52."
+  ],
+  "correct": 2,
+  "explanation": "Step 1: Calculate the current days of supply remaining.\nFormula: Days of Supply = Current Inventory (kg) / Daily Consumption (kg/day)\nCalculation: Days of Supply = 1600.0 kg / 456.0 kg/day = 3.51 days\n\nStep 2: Calculate the reorder point in kilograms.\nFormula: Reorder Point (kg) = Reorder Point (days) * Daily Consumption (kg/day)\nCalculation: Reorder Point = 13 days * 456.0 kg/day = 5928.0 kg\n\nStep 3: Calculate the cost of the standard order.\nFormula: Cost of Order = Order Quantity (kg) * Cost per kg ($/kg)\nCalculation: Cost of Order = 3409.0 kg * $0.67/kg = $2284.03",
+  steps: [
+    {
+      l: "Calculate days of supply remaining",
+      c: "1600.0 kg / 456.0 kg/day = 3.51 days"
+    },
+    {
+      l: "Calculate reorder point in kilograms",
+      c: "13 days * 456.0 kg/day = 5928.0 kg"
+    },
+    {
+      l: "Calculate cost of standard order",
+      c: "3409.0 kg * $0.67/kg = $2284.03"
+    }
+  ],
+  tip: "Accurate inventory management prevents stockouts and optimizes chemical expenditure.",
+  difficulty: "medium"
+},
+{
+  "id": 511,
+  isCalc: true,
+  "module": "Hydraulics",
+  "topic": "Advanced hydraulic modeling",
+  "question": "A new pipeline with a diameter of 450 mm and a length of 1245.0 m is being designed to carry water at a flow rate of 0.27 m\u00b3/s. The Hazen-Williams C factor for the pipe is 120. The water needs to be pumped against an elevation change of 12.0 m. If the pump efficiency is 75.0% and the motor efficiency is 90.0%, calculate the head loss due to friction, the total dynamic head (TDH), and the required motor power in kW. (Assume g = 9.81 m/s\u00b2 and water density = 1000 kg/m\u00b3)",
+  "options": [
+    "Head Loss: 11.0 m. TDH: 0.99 m. Motor Power: 43.1 kW.",
+    "Head Loss: 11.0 m. TDH: 23.0 m. Motor Power: 43.1 kW.",
+    "Head Loss: 11.0 m. TDH: 23.0 m. Motor Power: 38.79 kW.",
+    "Head Loss: 11.0 m. TDH: 23.0 m. Motor Power: 43.1 kW."
+  ],
+  "correct": 3,
+  "explanation": "Step 1: Calculate the head loss due to friction using the Hazen-Williams equation.\nFormula: hf = (10.67 * L * Q^1.852) / (C^1.852 * D^4.87)\nCalculation: hf = (10.67 * 1245.0 * 0.27^1.852) / (120^1.852 * (0.45)^4.87) = 11.0 m\n\nStep 2: Calculate the total dynamic head (TDH).\nFormula: TDH = Elevation Change + Head Loss\nCalculation: TDH = 12.0 m + 11.0 m = 23.0 m\n\nStep 3: Calculate the required motor power.\nFormula: Motor Power (kW) = (Flow (m\u00b3/s) * TDH (m) * 9.81) / (Pump Efficiency * Motor Efficiency)\nCalculation: Motor Power = (0.27 * 23.0 * 9.81) / (0.75 * 0.90) = 90.1 kW",
+  steps: [
+    {
+      l: "Calculate head loss due to friction",
+      c: "(10.67 * 1245.0 * 0.27^1.852) / (120^1.852 * (0.45)^4.87) = 11.0 m"
+    },
+    {
+      l: "Calculate total dynamic head (TDH)",
+      c: "12.0 m + 11.0 m = 23.0 m"
+    },
+    {
+      l: "Calculate required motor power",
+      c: "(0.27 * 23.0 * 9.81) / (0.75 * 0.90) = 90.1 kW"
+    }
+  ],
+  tip: "Accurate hydraulic calculations are crucial for efficient pump selection and pipeline design.",
+  difficulty: "medium"
+},
+{
+  "id": 512,
+  isCalc: true,
+  "module": "Hydraulics",
+  "topic": "Advanced hydraulic modeling",
+  "question": "A new pipeline with a diameter of 600 mm and a length of 1789.0 m is being designed to carry water at a flow rate of 0.41 m\u00b3/s. The Hazen-Williams C factor for the pipe is 140. The water needs to be pumped against an elevation change of 15.0 m. If the pump efficiency is 81.0% and the motor efficiency is 93.0%, calculate the head loss due to friction, the total dynamic head (TDH), and the required motor power in kW. (Assume g = 9.81 m/s\u00b2 and water density = 1000 kg/m\u00b3)",
+  "options": [
+    "Head Loss: 7.96 m. TDH: 22.96 m. Motor Power: 124.95 kW.",
+    "Head Loss: 7.96 m. TDH: 22.96 m. Motor Power: 116.2 kW.",
+    "Head Loss: 7.96 m. TDH: 7.04 m. Motor Power: 124.95 kW.",
+    "Head Loss: 7.96 m. TDH: 22.96 m. Motor Power: 124.95 kW."
+  ],
+  "correct": 3,
+  "explanation": "Step 1: Calculate the head loss due to friction using the Hazen-Williams equation.\nFormula: hf = (10.67 * L * Q^1.852) / (C^1.852 * D^4.87)\nCalculation: hf = (10.67 * 1789.0 * 0.41^1.852) / (140^1.852 * (0.6)^4.87) = 7.96 m\n\nStep 2: Calculate the total dynamic head (TDH).\nFormula: TDH = Elevation Change + Head Loss\nCalculation: TDH = 15.0 m + 7.96 m = 22.96 m\n\nStep 3: Calculate the required motor power.\nFormula: Motor Power (kW) = (Flow (m\u00b3/s) * TDH (m) * 9.81) / (Pump Efficiency * Motor Efficiency)\nCalculation: Motor Power = (0.41 * 22.96 * 9.81) / (0.81 * 0.93) = 124.95 kW",
+  steps: [
+    {
+      l: "Calculate head loss due to friction",
+      c: "(10.67 * 1789.0 * 0.41^1.852) / (140^1.852 * (0.6)^4.87) = 7.96 m"
+    },
+    {
+      l: "Calculate total dynamic head (TDH)",
+      c: "15.0 m + 7.96 m = 22.96 m"
+    },
+    {
+      l: "Calculate required motor power",
+      c: "(0.41 * 22.96 * 9.81) / (0.81 * 0.93) = 124.95 kW"
+    }
+  ],
+  tip: "Accurate hydraulic calculations are crucial for efficient pump selection and pipeline design.",
+  difficulty: "medium"
+},
+{
+  "id": 513,
+  isCalc: true,
+  "module": "Management",
+  "topic": "Compliance reporting (running averages, percentile calculations)",
+  "question": "A water treatment plant monitors a water quality parameter daily. The last 30 daily readings (mg/L) are: [0.09, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]. The regulatory limit for this parameter is 0.18 mg/L. Calculate the 7-day running average for the most recent data and the 90th percentile of all 30 data points. Assess if the plant is in compliance based on these two metrics.",
+  "options": [
+    "7-day Running Average: 0.1 mg/L (Compliant). 90th Percentile: 0.1 mg/L (Compliant).",
+    "7-day Running Average: 0.1 mg/L (Compliant). 90th Percentile: 0.1 mg/L (Compliant).",
+    "7-day Running Average: 0.1 mg/L (Compliant). 90th Percentile: 0.1 mg/L (Compliant).",
+    "7-day Running Average: 0.1 mg/L (Compliant). 90th Percentile: 0.1 mg/L (Compliant)."
+  ],
+  "correct": 1,
+  "explanation": "Step 1: Calculate the 7-day running average.\nFormula: Running Average = Sum of last 7 daily readings / 7\nCalculation: Running Average = 0.7 / 7 = 0.1 mg/L. Compliance: 0.1 mg/L <= 0.18 mg/L, so Compliant.\n\nStep 2: Calculate the 90th percentile.\nFormula: Sort data, find value at 90% position (index = 0.90 * N - 1).\nCalculation: Sorted data: [0.09, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]. 90th percentile index = 0.90 * 30 - 1 = 26. Value = 0.1 mg/L. Compliance: 0.1 mg/L <= 0.18 mg/L, so Compliant.",
+  steps: [
+    {
+      l: "Calculate 7-day running average",
+      c: "Sum([0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]) / 7 = 0.1 mg/L. Status: Compliant."
+    },
+    {
+      l: "Calculate 90th percentile",
+      c: "Sorted data: [0.09, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]. 90th percentile = 0.1 mg/L. Status: Compliant."
+    }
+  ],
+  tip: "Understand the difference between running averages and percentiles for compliance reporting.",
+  difficulty: "medium"
+},
+{
+  "id": 514,
+  isCalc: true,
+  "module": "Management",
+  "topic": "Compliance reporting (running averages, percentile calculations)",
+  "question": "A water treatment plant monitors a water quality parameter daily. The last 30 daily readings (mg/L) are: [0.08, 0.12, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]. The regulatory limit for this parameter is 0.16 mg/L. Calculate the 7-day running average for the most recent data and the 90th percentile of all 30 data points. Assess if the plant is in compliance based on these two metrics.",
+  "options": [
+    "7-day Running Average: 0.1 mg/L (Compliant). 90th Percentile: 0.1 mg/L (Compliant).",
+    "7-day Running Average: 0.1 mg/L (Compliant). 90th Percentile: 0.1 mg/L (Compliant).",
+    "7-day Running Average: 0.1 mg/L (Compliant). 90th Percentile: 0.1 mg/L (Compliant).",
+    "7-day Running Average: 0.1 mg/L (Compliant). 90th Percentile: 0.1 mg/L (Compliant)."
+  ],
+  "correct": 0,
+  "explanation": "Step 1: Calculate the 7-day running average.\nFormula: Running Average = Sum of last 7 daily readings / 7\nCalculation: Running Average = 0.7 / 7 = 0.1 mg/L. Compliance: 0.1 mg/L <= 0.16 mg/L, so Compliant.\n\nStep 2: Calculate the 90th percentile.\nFormula: Sort data, find value at 90% position (index = 0.90 * N - 1).\nCalculation: Sorted data: [0.08, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.12]. 90th percentile index = 0.90 * 30 - 1 = 26. Value = 0.1 mg/L. Compliance: 0.1 mg/L <= 0.16 mg/L, so Compliant.",
+  steps: [
+    {
+      l: "Calculate 7-day running average",
+      c: "Sum([0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]) / 7 = 0.1 mg/L. Status: Compliant."
+    },
+    {
+      l: "Calculate 90th percentile",
+      c: "Sorted data: [0.08, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.12]. 90th percentile = 0.1 mg/L. Status: Compliant."
+    }
+  ],
+  tip: "Understand the difference between running averages and percentiles for compliance reporting.",
+  difficulty: "medium"
+},
+{
+  "id": 515,
+  isCalc: true,
+  "module": "Disinfection",
+  "topic": "Ozone system design (O3 dose, CT, off-gas)",
+  "question": "A water treatment plant uses an ozone system to treat 45694.0 m\u00b3/day of water. The target ozone dose is 2.1 mg/L. The ozone contactor has a volume of 1159.0 m\u00b3. During operation, the ozone residual in the contactor is 0.6 mg/L. The regulatory required CT for ozone is 11.0 mg\u00b7min/L. Additionally, the ozone off-gas system has a flow rate of 2109.0 m\u00b3/hr and an off-gas ozone concentration of 0.09 ppm. Calculate the daily ozone demand (kg), the actual CT achieved (mg\u00b7min/L), and the mass of ozone in the off-gas (kg/hr). Assess if the plant meets the required ozone CT. (Assume 1 ppm O\u2083 = 2.14 mg/m\u00b3 at STP)",
+  "options": [
+    "Daily Ozone Demand: 96.06 kg. Actual CT: 3.64 mg\u00b7min/L (Non-compliant). Off-gas Ozone Mass: 0.0004 kg/hr.",
+    "Daily Ozone Demand: 96.06 kg. Actual CT: 3.64 mg\u00b7min/L (Non-compliant). Off-gas Ozone Mass: 0.0004 kg/hr.",
+    "Daily Ozone Demand: 96057.4 kg. Actual CT: 3.64 mg\u00b7min/L (Non-compliant). Off-gas Ozone Mass: 0.0004 kg/hr.",
+    "Daily Ozone Demand: 96.06 kg. Actual CT: 3.64 mg\u00b7min/L (Non-compliant). Off-gas Ozone Mass: 0.19 kg/hr."
+  ],
+  "correct": 1,
+  "explanation": "Step 1: Calculate the daily ozone demand.\nFormula: Daily Ozone Demand (kg) = Flow (m\u00b3/day) * Ozone Dose (mg/L) / 1000\nCalculation: Daily Ozone Demand = 45694.0 m\u00b3/day * 2.1 mg/L / 1000 = 96.06 kg/day\n\nStep 2: Calculate the actual CT achieved.\nFormula: Contact Time (min) = Contactor Volume (m\u00b3) / Flow (m\u00b3/hr) * 60 min/hr\nCalculation: Contact Time = 1159.0 m\u00b3 / (45694.0/24) m\u00b3/hr * 60 = 36.44 min\nFormula: Actual CT = Contact Time (min) * Ozone Residual (mg/L)\nCalculation: Actual CT = 36.44 min * 0.6 mg/L = 21.86 mg\u00b7min/L. Compliance: 21.86 mg\u00b7min/L vs Required 11.0 mg\u00b7min/L. Status: Compliant.\n\nStep 3: Calculate the mass of ozone in the off-gas.\nFormula: Off-gas Ozone Mass (kg/hr) = Off-gas Concentration (ppm) * 2.14 mg/m\u00b3/ppm * Off-gas Flow (m\u00b3/hr) / 1,000,000 mg/kg\nCalculation: Off-gas Ozone Mass = 0.09 ppm * 2.14 mg/m\u00b3/ppm * 2109.0 m\u00b3/hr / 1,000,000 = 0.0004 kg/hr",
+  steps: [
+    {
+      l: "Calculate daily ozone demand",
+      c: "45694.0 m\u00b3/day * 2.1 mg/L / 1000 = 96.06 kg/day"
+    },
+    {
+      l: "Calculate actual CT achieved",
+      c: "Contact Time = (1159.0 / (45694.0/24)) * 60 = 36.44 min. Actual CT = 36.44 * 0.6 = 21.86 mg\u00b7min/L. Status: Compliant."
+    },
+    {
+      l: "Calculate off-gas ozone mass flow",
+      c: "0.09 ppm * 2.14 mg/m\u00b3/ppm * 2109.0 m\u00b3/hr / 1,000,000 = 0.0004 kg/hr"
+    }
+  ],
+  tip: "Ozone CT is critical for effective disinfection; off-gas monitoring ensures safety and efficiency.",
+  difficulty: "medium"
+},
+{
+  "id": 516,
+  isCalc: true,
+  "module": "Disinfection",
+  "topic": "Ozone system design (O3 dose, CT, off-gas)",
+  "question": "A water treatment plant uses an ozone system to treat 67890.0 m\u00b3/day of water. The target ozone dose is 1.8 mg/L. The ozone contactor has a volume of 1345.0 m\u00b3. During operation, the ozone residual in the contactor is 0.7 mg/L. The regulatory required CT for ozone is 13.0 mg\u00b7min/L. Additionally, the ozone off-gas system has a flow rate of 1890.0 m\u00b3/hr and an off-gas ozone concentration of 0.12 ppm. Calculate the daily ozone demand (kg), the actual CT achieved (mg\u00b7min/L), and the mass of ozone in the off-gas (kg/hr). Assess if the plant meets the required ozone CT. (Assume 1 ppm O\u2083 = 2.14 mg/m\u00b3 at STP)",
+  "options": [
+    "Daily Ozone Demand: 122.2 kg. Actual CT: 24.9 mg\u00b7min/L (Compliant). Off-gas Ozone Mass: 0.0005 kg/hr.",
+    "Daily Ozone Demand: 122.2 kg. Actual CT: 24.9 mg\u00b7min/L (Compliant). Off-gas Ozone Mass: 0.0005 kg/hr.",
+    "Daily Ozone Demand: 122202.0 kg. Actual CT: 24.9 mg\u00b7min/L (Compliant). Off-gas Ozone Mass: 0.0005 kg/hr.",
+    "Daily Ozone Demand: 122.2 kg. Actual CT: 24.9 mg\u00b7min/L (Compliant). Off-gas Ozone Mass: 0.48 kg/hr."
+  ],
+  "correct": 1,
+  "explanation": "Step 1: Calculate the daily ozone demand.\nFormula: Daily Ozone Demand (kg) = Flow (m\u00b3/day) * Ozone Dose (mg/L) / 1000\nCalculation: Daily Ozone Demand = 67890.0 m\u00b3/day * 1.8 mg/L / 1000 = 122.2 kg/day\n\nStep 2: Calculate the actual CT achieved.\nFormula: Contact Time (min) = Contactor Volume (m\u00b3) / Flow (m\u00b3/hr) * 60 min/hr\nCalculation: Contact Time = 1345.0 m\u00b3 / (67890.0/24) m\u00b3/hr * 60 = 28.49 min\nFormula: Actual CT = Contact Time (min) * Ozone Residual (mg/L)\nCalculation: Actual CT = 28.49 min * 0.7 mg/L = 19.94 mg\u00b7min/L. Compliance: 19.94 mg\u00b7min/L vs Required 13.0 mg\u00b7min/L. Status: Compliant.\n\nStep 3: Calculate the mass of ozone in the off-gas.\nFormula: Off-gas Ozone Mass (kg/hr) = Off-gas Concentration (ppm) * 2.14 mg/m\u00b3/ppm * Off-gas Flow (m\u00b3/hr) / 1,000,000 mg/kg\nCalculation: Off-gas Ozone Mass = 0.12 ppm * 2.14 mg/m\u00b3/ppm * 1890.0 m\u00b3/hr / 1,000,000 = 0.0005 kg/hr",
+  steps: [
+    {
+      l: "Calculate daily ozone demand",
+      c: "67890.0 m\u00b3/day * 1.8 mg/L / 1000 = 122.2 kg/day"
+    },
+    {
+      l: "Calculate actual CT achieved",
+      c: "Contact Time = (1345.0 / (67890.0/24)) * 60 = 28.49 min. Actual CT = 28.49 * 0.7 = 19.94 mg\u00b7min/L. Status: Compliant."
+    },
+    {
+      l: "Calculate off-gas ozone mass flow",
+      c: "0.12 ppm * 2.14 mg/m\u00b3/ppm * 1890.0 m\u00b3/hr / 1,000,000 = 0.0005 kg/hr"
+    }
+  ],
+  tip: "Ozone CT is critical for effective disinfection; off-gas monitoring ensures safety and efficiency.",
+  difficulty: "medium"
+},
+{
+  "id": 517,
+  isCalc: true,
+  "module": "Disinfection",
+  "topic": "UV system validation (RED, UVT correction)",
+  "question": "A UV disinfection system treats 18765.0 m\u00b3/day of water. The required UV dose is 32.0 mJ/cm\u00b2. The influent water has a UV transmittance (UVT) of 92.0%. The UV reactor has a total power consumption of 12.5 kW. The UV intensity sensor reads 85.0% of the reference intensity. Calculate the estimated actual UV dose delivered (mJ/cm\u00b2) and the daily energy consumption of the UV system (kWh).",
+  "options": [
+    "Actual UV Dose: 25.07 mJ/cm\u00b2. Daily Energy Consumption: 300.0 kWh.",
+    "Actual UV Dose: 25.07 mJ/cm\u00b2. Daily Energy Consumption: 300.0 kWh.",
+    "Actual UV Dose: 25.07 mJ/cm\u00b2. Daily Energy Consumption: 9773.44 kWh.",
+    "Actual UV Dose: 29.44 mJ/cm\u00b2. Daily Energy Consumption: 300.0 kWh."
+  ],
+  "correct": 1,
+  "explanation": "Step 1: Calculate the estimated actual UV dose delivered.\nFormula: Actual UV Dose (mJ/cm\u00b2) = Required UV Dose * (100 / UVT%) * (Sensor Reading% / 100)\nCalculation: Actual UV Dose = 32.0 mJ/cm\u00b2 * (100 / 92.0) * (85.0 / 100) = 29.57 mJ/cm\u00b2\n\nStep 2: Calculate the daily energy consumption of the UV system.\nFormula: Daily Energy Consumption (kWh) = UV Reactor Power (kW) * Lamp Hours per Day (hr)\nCalculation: Daily Energy Consumption = 12.5 kW * 24 hr = 300.0 kWh",
+  steps: [
+    {
+      l: "Calculate actual UV dose delivered",
+      c: "32.0 * (100 / 92.0) * (85.0 / 100) = 29.57 mJ/cm\u00b2"
+    },
+    {
+      l: "Calculate daily energy consumption",
+      c: "12.5 kW * 24 hr = 300.0 kWh"
+    }
+  ],
+  tip: "UV dose is affected by water quality (UVT) and lamp intensity; regular validation is key.",
+  difficulty: "medium"
+},
+{
+  "id": 518,
+  isCalc: true,
+  "module": "Disinfection",
+  "topic": "UV system validation (RED, UVT correction)",
+  "question": "A UV disinfection system treats 23456.0 m\u00b3/day of water. The required UV dose is 28.0 mJ/cm\u00b2. The influent water has a UV transmittance (UVT) of 95.0%. The UV reactor has a total power consumption of 18.0 kW. The UV intensity sensor reads 78.0% of the reference intensity. Calculate the estimated actual UV dose delivered (mJ/cm\u00b2) and the daily energy consumption of the UV system (kWh).",
+  "options": [
+    "Actual UV Dose: 23.01 mJ/cm\u00b2. Daily Energy Consumption: 432.0 kWh.",
+    "Actual UV Dose: 23.01 mJ/cm\u00b2. Daily Energy Consumption: 432.0 kWh.",
+    "Actual UV Dose: 21.84 mJ/cm\u00b2. Daily Energy Consumption: 432.0 kWh.",
+    "Actual UV Dose: 23.01 mJ/cm\u00b2. Daily Energy Consumption: 17529.02 kWh."
+  ],
+  "correct": 1,
+  "explanation": "Step 1: Calculate the estimated actual UV dose delivered.\nFormula: Actual UV Dose (mJ/cm\u00b2) = Required UV Dose * (100 / UVT%) * (Sensor Reading% / 100)\nCalculation: Actual UV Dose = 28.0 mJ/cm\u00b2 * (100 / 95.0) * (78.0 / 100) = 23.01 mJ/cm\u00b2\n\nStep 2: Calculate the daily energy consumption of the UV system.\nFormula: Daily Energy Consumption (kWh) = UV Reactor Power (kW) * Lamp Hours per Day (hr)\nCalculation: Daily Energy Consumption = 18.0 kW * 24 hr = 432.0 kWh",
+  steps: [
+    {
+      l: "Calculate actual UV dose delivered",
+      c: "28.0 * (100 / 95.0) * (78.0 / 100) = 23.01 mJ/cm\u00b2"
+    },
+    {
+      l: "Calculate daily energy consumption",
+      c: "18.0 kW * 24 hr = 432.0 kWh"
+    }
+  ],
+  tip: "UV dose is affected by water quality (UVT) and lamp intensity; regular validation is key.",
+  difficulty: "medium"
+},
+{
+  "id": 519,
+  isCalc: true,
+  "module": "Treatment Process",
+  "topic": "Advanced lime softening process control",
+  "question": "A lime softening plant treats 15678.0 m\u00b3/day of raw water with a hardness of 280.0 mg/L as CaCO\u2083. The target treated water hardness is 100.0 mg/L as CaCO\u2083. The lime used has a purity of 95.0% and is dosed at 180.0 mg/L. The generated sludge has 15.0% solids and a density of 1100.0 kg/m\u00b3. Calculate the daily mass of commercial lime required, the daily mass of dry sludge produced, and the daily volume of wet sludge produced.",
+  "options": [
+    "Daily Commercial Lime: 2970.63 kg. Daily Dry Sludge: 2822.04 kg. Daily Wet Sludge Volume: 17.1 kg.",
+    "Daily Commercial Lime: 2970.63 kg. Daily Dry Sludge: 2822.04 kg. Daily Wet Sludge Volume: 17.1 kg.",
+    "Daily Commercial Lime: 2970.63 kg. Daily Dry Sludge: 4390.0 kg. Daily Wet Sludge Volume: 17.1 kg.",
+    "Daily Commercial Lime: 2970.63 kg. Daily Dry Sludge: 2822.04 kg. Daily Wet Sludge Volume: 17.1 kg."
+  ],
+  "correct": 1,
+  "explanation": "Step 1: Calculate the daily mass of commercial lime required.\nFormula: Daily Lime (kg) = (Flow (m\u00b3/day) * Lime Dose (mg/L)) / (1000 * Lime Purity (%/100))\nCalculation: Daily Lime = (15678.0 * 180.0) / (1000 * 0.95) = 2970.63 kg/day\n\nStep 2: Calculate the daily mass of dry sludge produced.\nFormula: Daily Dry Sludge (kg) = (Flow (m\u00b3/day) * Hardness Removed (mg/L as CaCO\u2083)) / 1000\nCalculation: Daily Dry Sludge = (15678.0 * (280.0 - 100.0)) / 1000 = 2822.04 kg/day\n\nStep 3: Calculate the daily volume of wet sludge produced.\nFormula: Daily Wet Sludge Volume (m\u00b3) = Daily Dry Sludge (kg) / (Sludge Density (kg/m\u00b3) * Sludge Solids (%/100))\nCalculation: Daily Wet Sludge Volume = 2822.04 kg / (1100.0 kg/m\u00b3 * (15.0/100)) = 17.1 kg",
+  steps: [
+    {
+      l: "Calculate daily commercial lime required",
+      c: "(15678.0 * 180.0) / (1000 * 0.95) = 2970.63 kg/day"
+    },
+    {
+      l: "Calculate daily mass of dry sludge produced",
+      c: "(15678.0 * (280.0 - 100.0)) / 1000 = 2822.04 kg/day"
+    },
+    {
+      l: "Calculate daily volume of wet sludge produced",
+      c: "2822.04 / (1100.0 * (15.0/100)) = 17.1 m\u00b3"
+    }
+  ],
+  tip: "Lime softening calculations involve stoichiometry, mass balance, and sludge management.",
+  difficulty: "medium"
+},
+{
+  "id": 520,
+  isCalc: true,
+  "module": "Treatment Process",
+  "topic": "Advanced lime softening process control",
+  "question": "A lime softening plant treats 21000.0 m\u00b3/day of raw water with a hardness of 350.0 mg/L as CaCO\u2083. The target treated water hardness is 90.0 mg/L as CaCO\u2083. The lime used has a purity of 92.0% and is dosed at 220.0 mg/L. The generated sludge has 18.0% solids and a density of 1080.0 kg/m\u00b3. Calculate the daily mass of commercial lime required, the daily mass of dry sludge produced, and the daily volume of wet sludge produced.",
+  "options": [
+    "Daily Commercial Lime: 5021.74 kg. Daily Dry Sludge: 5460.0 kg. Daily Wet Sludge Volume: 28.09 kg.",
+    "Daily Commercial Lime: 5021.74 kg. Daily Dry Sludge: 5460.0 kg. Daily Wet Sludge Volume: 28.09 kg.",
+    "Daily Commercial Lime: 5021.74 kg. Daily Dry Sludge: 7350.0 kg. Daily Wet Sludge Volume: 28.09 kg.",
+    "Daily Commercial Lime: 5021.74 kg. Daily Dry Sludge: 5460.0 kg. Daily Wet Sludge Volume: 28.09 kg."
+  ],
+  "correct": 1,
+  "explanation": "Step 1: Calculate the daily mass of commercial lime required.\nFormula: Daily Lime (kg) = (Flow (m\u00b3/day) * Lime Dose (mg/L)) / (1000 * Lime Purity (%/100))\nCalculation: Daily Lime = (21000.0 * 220.0) / (1000 * 0.92) = 5021.74 kg/day\n\nStep 2: Calculate the daily mass of dry sludge produced.\nFormula: Daily Dry Sludge (kg) = (Flow (m\u00b3/day) * Hardness Removed (mg/L as CaCO\u2083)) / 1000\nCalculation: Daily Dry Sludge = (21000.0 * (350.0 - 90.0)) / 1000 = 5460.0 kg/day\n\nStep 3: Calculate the daily volume of wet sludge produced.\nFormula: Daily Wet Sludge Volume (m\u00b3) = Daily Dry Sludge (kg) / (Sludge Density (kg/m\u00b3) * Sludge Solids (%/100))\nCalculation: Daily Wet Sludge Volume = 5460.0 kg / (1080.0 kg/m\u00b3 * (18.0/100)) = 28.09 kg",
+  steps: [
+    {
+      l: "Calculate daily commercial lime required",
+      c: "(21000.0 * 220.0) / (1000 * 0.92) = 5021.74 kg/day"
+    },
+    {
+      l: "Calculate daily mass of dry sludge produced",
+      c: "(21000.0 * (350.0 - 90.0)) / 1000 = 5460.0 kg/day"
+    },
+    {
+      l: "Calculate daily volume of wet sludge produced",
+      c: "5460.0 / (1080.0 * (18.0/100)) = 28.09 m\u00b3"
+    }
+  ],
+  tip: "Lime softening calculations involve stoichiometry, mass balance, and sludge management.",
+  difficulty: "medium"
+},
+{
+  "id": 521,
+  isCalc: true,
+  "module": "Treatment Process",
+  "topic": "Advanced CT compliance (log removal allocation, multi-barrier)",
+  "question": "A water treatment plant processes 27500.0 m\u00b3/day. The regulatory requirement is 2.5 log removal for a specific pathogen. Under current operating conditions, the disinfectant contact time is 30.0 minutes and the disinfectant residual is 1.2 mg/L. Assuming a CT value of 10 mg\u00b7min/L is required for each log removal, what is the plant\'s CT compliance status and how much additional log removal capacity is available or needed?",
+  "options": [
+    "Compliant. Log removal capacity available: 1.1 logs.",
+    "Compliant. Log removal capacity available: 1.1 logs.",
+    "Non-compliant. Log removal needed: 1.1 logs.",
+    "Compliant. Log removal capacity available: 3.6 logs."
+  ],
+  "correct": 1,
+  "explanation": "Step 1: Calculate the actual CT achieved.\nFormula: CT_achieved = Contact Time (min) * Disinfectant Residual (mg/L)\nCalculation: CT_achieved = 30.0 min * 1.2 mg/L = 36.0 mg\u00b7min/L\n\nStep 2: Calculate the actual log removal achieved.\nFormula: Actual Log Removal = CT_achieved / CT_per_log_removal\nCalculation: Actual Log Removal = 36.0 mg\u00b7min/L / 10 mg\u00b7min/L/log = 3.6 logs\n\nStep 3: Determine the log removal difference and compliance status.\nFormula: Log Removal Difference = Actual Log Removal - Required Log Removal\nCalculation: Log Removal Difference = 3.6 logs - 2.5 logs = 1.1 logs\n\nSince the Log Removal Difference is 1.1 logs, the plant is Compliant. There is 1.1 logs capacity available.",
+  steps: [
+    {
+      l: "Calculate actual CT achieved",
+      c: "30.0 min * 1.2 mg/L = 36.0 mg\u00b7min/L"
+    },
+    {
+      l: "Calculate actual log removal achieved",
+      c: "36.0 mg\u00b7min/L / 10 mg\u00b7min/L/log = 3.6 logs"
+    },
+    {
+      l: "Determine log removal difference and compliance",
+      c: "3.6 logs - 2.5 logs = 1.1 logs. Status: Compliant."
+    }
+  ],
+  tip: "Remember to distinguish between actual CT achieved and required CT for log removal.",
+  difficulty: "medium"
+},
+{
+  "id": 522,
+  isCalc: true,
+  "module": "Treatment Process",
+  "topic": "Membrane system optimization (flux decline, fouling index, SDI)",
+  "question": "A membrane filtration plant operates with a total membrane area of 1120.0 m\u00b2. Over a filtration cycle, the initial flux is 30.5 L/m\u00b2/hr, and the final flux drops to 25.1 L/m\u00b2/hr. The initial transmembrane pressure (TMP) is 85.0 kPa, and it increases to 180.0 kPa by the end of the cycle. Calculate the percentage flux decline and a simplified fouling index based on the percentage increase in TMP.",
+  "options": [
+    "Flux Decline: 17.69%. Fouling Index (TMP increase): 111.76%.",
+    "Flux Decline: 17.69%. Fouling Index (TMP increase): 111.76%.",
+    "Flux Decline: -17.69%. Fouling Index (TMP increase): 111.76%.",
+    "Flux Decline: 111.76%. Fouling Index (TMP increase): 17.69%."
+  ],
+  "correct": 1,
+  "explanation": "Step 1: Calculate the percentage flux decline.\nFormula: Flux Decline (%) = ((Initial Flux - Final Flux) / Initial Flux) * 100\nCalculation: Flux Decline (%) = ((30.5 - 25.1) / 30.5) * 100 = 17.7%\n\nStep 2: Calculate the simplified fouling index based on percentage increase in TMP.\nFormula: Fouling Index (%) = ((Final TMP - Initial TMP) / Initial TMP) * 100\nCalculation: Fouling Index (%) = ((180.0 - 85.0) / 85.0) * 100 = 111.76%",
+  steps: [
+    {
+      l: "Calculate percentage flux decline",
+      c: "(( 30.5 - 25.1 ) / 30.5 ) * 100 = 17.7%"
+    },
+    {
+      l: "Calculate fouling index (TMP increase)",
+      c: "(( 180.0 - 85.0 ) / 85.0 ) * 100 = 111.76%"
+    }
+  ],
+  tip: "Flux decline indicates membrane performance reduction, while TMP increase can be an indicator of fouling.",
+  difficulty: "medium"
+}
+];
   const moduleStats: Record<string, { correct: number; total: number; lowConf: number }> = {};
   for (const entry of history) {
     const q = QUESTIONS.find((q) => String(q.id) === String(entry.id));

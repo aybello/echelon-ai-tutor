@@ -7226,7 +7226,969 @@ export function shuffleClass1Water(arr: Class1WaterQuestion[]): Class1WaterQuest
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+    [a[i], a[j]] = [a[j], a[i],
+  {
+    "id": 501,
+    isCalc: true,
+    "module": "Disinfection",
+    "topic": "chlorine dose = demand + residual",
+    "question": "A water treatment plant has a chlorine demand of 1.5 mg/L. The desired chlorine residual in the distribution system is 0.5 mg/L. What is the required chlorine dose?",
+    "options": ["1.0 mg/L", "1.5 mg/L", "2.0 mg/L", "0.5 mg/L"],
+    "correct": 2,
+    "explanation": "To calculate the required chlorine dose, add the chlorine demand and the desired chlorine residual.\nFormula: Chlorine Dose = Chlorine Demand + Chlorine Residual\nSubstitution: Chlorine Dose = 1.5 mg/L + 0.5 mg/L\nCalculation: Chlorine Dose = 2.0 mg/L",
+    steps: [
+      { l: "Identify chlorine demand", c: "1.5 mg/L" },
+      { l: "Identify desired residual", c: "0.5 mg/L" },
+      { l: "Calculate chlorine dose", c: "1.5 mg/L + 0.5 mg/L = 2.0 mg/L" }
+    ],
+    tip: "Remember that chlorine dose must cover both the demand and the desired residual.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 502,
+    isCalc: true,
+    "module": "Disinfection",
+    "topic": "CT = C × T (basic)",
+    "question": "A water treatment plant maintains a chlorine residual of 0.8 mg/L and a contact time of 20 minutes. Calculate the CT value in mg·min/L.",
+    "options": ["16 mg·min/L", "1.6 mg·min/L", "20.8 mg·min/L", "19.2 mg·min/L"],
+    "correct": 0,
+    "explanation": "To calculate the CT value, multiply the chlorine concentration (C) by the contact time (T).\nFormula: CT = C × T\nSubstitution: CT = 0.8 mg/L × 20 min\nCalculation: CT = 16 mg·min/L",
+    steps: [
+      { l: "Identify chlorine concentration (C)", c: "0.8 mg/L" },
+      { l: "Identify contact time (T)", c: "20 min" },
+      { l: "Calculate CT value", c: "0.8 mg/L × 20 min = 16 mg·min/L" }
+    ],
+    tip: "CT value is a critical parameter for disinfection effectiveness.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 503,
+    isCalc: true,
+    "module": "Chemical Feed",
+    "topic": "flow × dose = mass (simple)",
+    "question": "A water treatment plant treats a flow of 10,000 m³/d. If the chlorine dose is 2.5 mg/L, what is the mass of chlorine required per day in kg?",
+    "options": ["25 kg/d", "250 kg/d", "2.5 kg/d", "2500 kg/d"],
+    "correct": 0,
+    "explanation": "To calculate the mass of chlorine required, use the formula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000.\nFormula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000\nSubstitution: Mass (kg/d) = 10,000 m³/d × 2.5 mg/L / 1000\nCalculation: Mass (kg/d) = 25 kg/d",
+    steps: [
+      { l: "Identify flow rate", c: "10,000 m³/d" },
+      { l: "Identify chlorine dose", c: "2.5 mg/L" },
+      { l: "Calculate mass of chlorine", c: "(10,000 m³/d * 2.5 mg/L) / 1000 = 25 kg/d" }
+    ],
+    tip: "Remember the conversion factor of 1000 when converting mg/L to kg/d with m³/d flow.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 504,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "filter loading rate = flow/area",
+    "question": "A rapid sand filter has a surface area of 50 m². If the flow rate through the filter is 5,000 m³/d, what is the filter loading rate in m³/m²·d?",
+    "options": ["100 m³/m²·d", "10 m³/m²·d", "250 m³/m²·d", "500 m³/m²·d"],
+    "correct": 0,
+    "explanation": "To calculate the filter loading rate, divide the flow rate by the filter surface area.\nFormula: Filter Loading Rate = Flow / Area\nSubstitution: Filter Loading Rate = 5,000 m³/d / 50 m²\nCalculation: Filter Loading Rate = 100 m³/m²·d",
+    steps: [
+      { l: "Identify flow rate", c: "5,000 m³/d" },
+      { l: "Identify filter area", c: "50 m²" },
+      { l: "Calculate filter loading rate", c: "5,000 m³/d / 50 m² = 100 m³/m²·d" }
+    ],
+    tip: "Filter loading rate indicates the hydraulic capacity of a filter.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 505,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "detention time = volume/flow",
+    "question": "A sedimentation basin has a volume of 1,200 m³. If the flow rate through the basin is 600 m³/h, what is the detention time in hours?",
+    "options": ["0.5 h", "2.0 h", "1.0 h", "3.0 h"],
+    "correct": 1,
+    "explanation": "To calculate the detention time, divide the basin volume by the flow rate.\nFormula: Detention Time = Volume / Flow\nSubstitution: Detention Time = 1,200 m³ / 600 m³/h\nCalculation: Detention Time = 2.0 h",
+    steps: [
+      { l: "Identify basin volume", c: "1,200 m³" },
+      { l: "Identify flow rate", c: "600 m³/h" },
+      { l: "Calculate detention time", c: "1,200 m³ / 600 m³/h = 2.0 h" }
+    ],
+    tip: "Detention time is crucial for effective sedimentation and flocculation.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 506,
+    isCalc: true,
+    "module": "Water Quality",
+    "topic": "percent removal = (in-out)/in × 100",
+    "question": "Raw water turbidity entering a treatment plant is 15 NTU. After treatment, the finished water turbidity is 0.5 NTU. What is the percent removal of turbidity?",
+    "options": ["96.67%", "93.33%", "90.00%", "98.33%"],
+    "correct": 0,
+    "explanation": "To calculate the percent removal, use the formula: Percent Removal = ((In - Out) / In) × 100.\nFormula: Percent Removal = ((In - Out) / In) × 100\nSubstitution: Percent Removal = ((15 NTU - 0.5 NTU) / 15 NTU) × 100\nCalculation: Percent Removal = (14.5 / 15) × 100 = 96.67%",
+    steps: [
+      { l: "Identify influent turbidity (In)", c: "15 NTU" },
+      { l: "Identify effluent turbidity (Out)", c: "0.5 NTU" },
+      { l: "Calculate percent removal", c: "((15 - 0.5) / 15) * 100 = 96.67%" }
+    ],
+    tip: "High percent removal of turbidity indicates efficient treatment.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 507,
+    isCalc: true,
+    "module": "Chemical Feed",
+    "topic": "chemical feed rate (simple)",
+    "question": "A chemical feed pump delivers 50 mL of solution in 30 seconds. What is the feed rate in L/min?",
+    "options": ["0.1 L/min", "0.05 L/min", "1.0 L/min", "0.5 L/min"],
+    "correct": 0,
+    "explanation": "To calculate the feed rate in L/min, first convert mL to L and seconds to minutes.\nFormula: Feed Rate (L/min) = (Volume (mL) / 1000 mL/L) / (Time (s) / 60 s/min)\nSubstitution: Feed Rate (L/min) = (50 mL / 1000) / (30 s / 60)\nCalculation: Feed Rate (L/min) = 0.05 L / 0.5 min = 0.1 L/min",
+    steps: [
+      { l: "Convert volume to Liters", c: "50 mL / 1000 = 0.05 L" },
+      { l: "Convert time to minutes", c: "30 s / 60 = 0.5 min" },
+      { l: "Calculate feed rate", c: "0.05 L / 0.5 min = 0.1 L/min" }
+    ],
+    tip: "Pay attention to unit conversions when calculating feed rates.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 508,
+    isCalc: true,
+    "module": "Water Quality",
+    "topic": "unit conversions (L to m³, mg/L to kg/d)",
+    "question": "A chemical solution has a concentration of 200 mg/L. If a plant uses 500 L of this solution per day, what is the mass of the chemical used in kg/d?",
+    "options": ["0.1 kg/d", "1.0 kg/d", "0.01 kg/d", "10 kg/d"],
+    "correct": 0,
+    "explanation": "First, convert the volume from L to m³ (1 m³ = 1000 L). Then, use the formula Mass (kg/d) = Flow (m³/d) × Concentration (mg/L) / 1000.\nFormula: Mass (kg/d) = (Volume (L) / 1000 L/m³) × Concentration (mg/L) / 1000\nSubstitution: Mass (kg/d) = (500 L / 1000) × 200 mg/L / 1000\nCalculation: Mass (kg/d) = 0.5 m³ × 200 mg/L / 1000 = 0.1 kg/d",
+    steps: [
+      { l: "Convert volume to m³", c: "500 L / 1000 = 0.5 m³" },
+      { l: "Calculate mass of chemical", c: "(0.5 m³ * 200 mg/L) / 1000 = 0.1 kg/d" }
+    ],
+    tip: "Be careful with unit conversions, especially between L and m³ and mg/L to kg/d.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 509,
+    isCalc: true,
+    "module": "Hydraulics",
+    "topic": "pipe velocity = flow/area",
+    "question": "A pipe has a diameter of 0.3 meters. If the flow rate through the pipe is 0.05 m³/s, what is the velocity of the water in m/s? (Use π = 3.14)",
+    "options": ["0.71 m/s", "0.07 m/s", "7.1 m/s", "0.53 m/s"],
+    "correct": 0,
+    "explanation": "First, calculate the cross-sectional area of the pipe using the formula A = πr², where r is the radius (diameter/2). Then, calculate the velocity using the formula Velocity = Flow / Area.\nFormula: Area = π × (Diameter/2)²; Velocity = Flow / Area\nSubstitution: Area = 3.14 × (0.3 m / 2)² = 3.14 × (0.15 m)² = 3.14 × 0.0225 m² = 0.07065 m²; Velocity = 0.05 m³/s / 0.07065 m²\nCalculation: Velocity = 0.7077 m/s ≈ 0.71 m/s",
+    steps: [
+      { l: "Calculate pipe radius", c: "0.3 m / 2 = 0.15 m" },
+      { l: "Calculate pipe area", c: "3.14 * (0.15 m)^2 = 0.07065 m²" },
+      { l: "Calculate water velocity", c: "0.05 m³/s / 0.07065 m² = 0.7077 m/s" }
+    ],
+    tip: "Ensure consistent units when calculating pipe velocity.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 510,
+    isCalc: true,
+    "module": "Hydraulics",
+    "topic": "pump head (basic)",
+    "question": "A pump lifts water from a clearwell with a water level of 10 meters to an elevated storage tank with a water level of 35 meters. What is the static head the pump must overcome?",
+    "options": ["25 meters", "45 meters", "10 meters", "35 meters"],
+    "correct": 0,
+    "explanation": "The static head is the vertical distance the water is lifted. It is the difference between the discharge water level and the suction water level.\nFormula: Static Head = Discharge Level - Suction Level\nSubstitution: Static Head = 35 m - 10 m\nCalculation: Static Head = 25 m",
+    steps: [
+      { l: "Identify discharge level", c: "35 m" },
+      { l: "Identify suction level", c: "10 m" },
+      { l: "Calculate static head", c: "35 m - 10 m = 25 m" }
+    ],
+    tip: "Static head is a fundamental component of total dynamic head.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 511,
+    isCalc: true,
+    "module": "Water Quality",
+    "topic": "percent removal = (in-out)/in × 100",
+    "question": "A settling tank receives water with a turbidity of 20 NTU. The effluent turbidity is measured at 1.2 NTU. What is the percent removal of turbidity?",
+    "options": ["94.0%", "88.0%", "92.0%", "96.0%"],
+    "correct": 0,
+    "explanation": "To calculate the percent removal, use the formula: Percent Removal = ((In - Out) / In) × 100.\nFormula: Percent Removal = ((In - Out) / In) × 100\nSubstitution: Percent Removal = ((20 NTU - 1.2 NTU) / 20 NTU) × 100\nCalculation: Percent Removal = (18.8 / 20) × 100 = 94.0%",
+    steps: [
+      { l: "Identify influent turbidity (In)", c: "20 NTU" },
+      { l: "Identify effluent turbidity (Out)", c: "1.2 NTU" },
+      { l: "Calculate percent removal", c: "((20 - 1.2) / 20) * 100 = 94.0%" }
+    ],
+    tip: "Percent removal is a key indicator of treatment efficiency.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 512,
+    isCalc: true,
+    "module": "Disinfection",
+    "topic": "chlorine residual after demand",
+    "question": "A water sample has a chlorine demand of 1.2 mg/L. If a chlorine dose of 2.0 mg/L is applied, what is the chlorine residual after the demand has been met?",
+    "options": ["0.8 mg/L", "3.2 mg/L", "1.2 mg/L", "2.0 mg/L"],
+    "correct": 0,
+    "explanation": "To calculate the chlorine residual after demand, subtract the chlorine demand from the applied chlorine dose.\nFormula: Chlorine Residual = Chlorine Dose - Chlorine Demand\nSubstitution: Chlorine Residual = 2.0 mg/L - 1.2 mg/L\nCalculation: Chlorine Residual = 0.8 mg/L",
+    steps: [
+      { l: "Identify chlorine dose", c: "2.0 mg/L" },
+      { l: "Identify chlorine demand", c: "1.2 mg/L" },
+      { l: "Calculate chlorine residual", c: "2.0 mg/L - 1.2 mg/L = 0.8 mg/L" }
+    ],
+    tip: "The residual is what's left for disinfection after the demand is satisfied.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 513,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "alum dose from jar test",
+    "question": "A jar test indicates that an optimal alum dose is 15 mg/L. If the plant treats a flow of 8,000 m³/d, what is the daily mass of alum required in kg?",
+    "options": ["120 kg/d", "12 kg/d", "1.2 kg/d", "1200 kg/d"],
+    "correct": 0,
+    "explanation": "To calculate the mass of alum required, use the formula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000.\nFormula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000\nSubstitution: Mass (kg/d) = 8,000 m³/d × 15 mg/L / 1000\nCalculation: Mass (kg/d) = 120 kg/d",
+    steps: [
+      { l: "Identify flow rate", c: "8,000 m³/d" },
+      { l: "Identify alum dose", c: "15 mg/L" },
+      { l: "Calculate mass of alum", c: "(8,000 m³/d * 15 mg/L) / 1000 = 120 kg/d" }
+    ],
+    tip: "Jar tests are essential for optimizing coagulant dosages.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 514,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "weir overflow rate",
+    "question": "A sedimentation basin has an effluent weir with a total length of 25 meters. If the flow rate over the weir is 4,800 m³/d, what is the weir overflow rate in m³/m·d?",
+    "options": ["192 m³/m·d", "19.2 m³/m·d", "120 m³/m·d", "480 m³/m·d"],
+    "correct": 0,
+    "explanation": "To calculate the weir overflow rate, divide the flow rate by the total weir length.\nFormula: Weir Overflow Rate = Flow / Weir Length\nSubstitution: Weir Overflow Rate = 4,800 m³/d / 25 m\nCalculation: Weir Overflow Rate = 192 m³/m·d",
+    steps: [
+      { l: "Identify flow rate", c: "4,800 m³/d" },
+      { l: "Identify weir length", c: "25 m" },
+      { l: "Calculate weir overflow rate", c: "4,800 m³/d / 25 m = 192 m³/m·d" }
+    ],
+    tip: "Weir overflow rate is important for efficient settling and preventing floc carryover.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 515,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "backwash rate",
+    "question": "A filter with a surface area of 20 m² is backwashed at a rate of 10 L/s. What is the backwash rate in m³/m²·min?",
+    "options": ["0.03 m³/m²·min", "0.3 m³/m²·min", "3.0 m³/m²·min", "0.003 m³/m²·min"],
+    "correct": 0,
+    "explanation": "First, convert the flow rate from L/s to m³/min. Then, divide by the filter surface area.\nFormula: Backwash Rate (m³/m²·min) = (Flow (L/s) × 60 s/min / 1000 L/m³) / Area (m²)\nSubstitution: Backwash Rate = (10 L/s × 60 / 1000) / 20 m²\nCalculation: Backwash Rate = 0.6 m³/min / 20 m² = 0.03 m³/m²·min",
+    steps: [
+      { l: "Convert flow to m³/min", c: "10 L/s * 60 s/min / 1000 L/m³ = 0.6 m³/min" },
+      { l: "Calculate backwash rate", c: "0.6 m³/min / 20 m² = 0.03 m³/m²·min" }
+    ],
+    tip: "Proper backwash rates are essential for effective filter cleaning.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 516,
+    isCalc: true,
+    "module": "Chemical Feed",
+    "topic": "chemical feed rate (simple)",
+    "question": "A chemical pump is calibrated to deliver 75 mL in 45 seconds. What is the feed rate in L/min?",
+    "options": ["0.1 L/min", "0.075 L/min", "0.05 L/min", "0.15 L/min"],
+    "correct": 0,
+    "explanation": "First, convert the volume from mL to L and the time from seconds to minutes. Then, divide the volume by the time.\nFormula: Feed Rate (L/min) = (Volume (mL) / 1000) / (Time (s) / 60)\nSubstitution: Feed Rate (L/min) = (75 mL / 1000) / (45 s / 60)\nCalculation: Feed Rate (L/min) = 0.075 L / 0.75 min = 0.1 L/min",
+    steps: [
+      { l: "Convert volume to Liters", c: "75 mL / 1000 = 0.075 L" },
+      { l: "Convert time to minutes", c: "45 s / 60 = 0.75 min" },
+      { l: "Calculate feed rate", c: "0.075 L / 0.75 min = 0.1 L/min" }
+    ],
+    tip: "Accurate calibration of chemical feed pumps is vital for proper dosing.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 517,
+    isCalc: true,
+    "module": "Disinfection",
+    "topic": "chlorine dose = demand + residual",
+    "question": "A water sample has a chlorine demand of 0.8 mg/L. If the desired residual is 0.3 mg/L, what is the required chlorine dose?",
+    "options": ["0.5 mg/L", "1.1 mg/L", "0.8 mg/L", "0.3 mg/L"],
+    "correct": 1,
+    "explanation": "To calculate the required chlorine dose, add the chlorine demand and the desired chlorine residual.\nFormula: Chlorine Dose = Chlorine Demand + Chlorine Residual\nSubstitution: Chlorine Dose = 0.8 mg/L + 0.3 mg/L\nCalculation: Chlorine Dose = 1.1 mg/L",
+    steps: [
+      { l: "Identify chlorine demand", c: "0.8 mg/L" },
+      { l: "Identify desired residual", c: "0.3 mg/L" },
+      { l: "Calculate chlorine dose", c: "0.8 mg/L + 0.3 mg/L = 1.1 mg/L" }
+    ],
+    tip: "Always ensure the dose is sufficient to meet demand and maintain residual.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 518,
+    isCalc: true,
+    "module": "Disinfection",
+    "topic": "CT = C × T (basic)",
+    "question": "A contact tank has a chlorine residual of 0.5 mg/L and a contact time of 30 minutes. What is the CT value in mg·min/L?",
+    "options": ["15 mg·min/L", "1.5 mg·min/L", "30.5 mg·min/L", "29.5 mg·min/L"],
+    "correct": 0,
+    "explanation": "To calculate the CT value, multiply the chlorine concentration (C) by the contact time (T).\nFormula: CT = C × T\nSubstitution: CT = 0.5 mg/L × 30 min\nCalculation: CT = 15 mg·min/L",
+    steps: [
+      { l: "Identify chlorine concentration (C)", c: "0.5 mg/L" },
+      { l: "Identify contact time (T)", c: "30 min" },
+      { l: "Calculate CT value", c: "0.5 mg/L × 30 min = 15 mg·min/L" }
+    ],
+    tip: "CT values are used to assess the effectiveness of disinfection against pathogens.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 519,
+    isCalc: true,
+    "module": "Chemical Feed",
+    "topic": "flow × dose = mass (simple)",
+    "question": "A water treatment plant doses fluoride at 1.2 mg/L. If the plant treats 15,000 m³/d, what is the daily mass of fluoride added in kg?",
+    "options": ["18 kg/d", "180 kg/d", "1.8 kg/d", "1800 kg/d"],
+    "correct": 0,
+    "explanation": "To calculate the mass of fluoride required, use the formula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000.\nFormula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000\nSubstitution: Mass (kg/d) = 15,000 m³/d × 1.2 mg/L / 1000\nCalculation: Mass (kg/d) = 18 kg/d",
+    steps: [
+      { l: "Identify flow rate", c: "15,000 m³/d" },
+      { l: "Identify fluoride dose", c: "1.2 mg/L" },
+      { l: "Calculate mass of fluoride", c: "(15,000 m³/d * 1.2 mg/L) / 1000 = 18 kg/d" }
+    ],
+    tip: "Fluoride dosing is important for dental health in many communities.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 520,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "filter loading rate = flow/area",
+    "question": "A conventional filter has dimensions of 6 meters by 8 meters. If the design flow rate is 7,200 m³/d, what is the filter loading rate in m³/m²·d?",
+    "options": ["150 m³/m²·d", "100 m³/m²·d", "120 m³/m²·d", "180 m³/m²·d"],
+    "correct": 0,
+    "explanation": "First, calculate the surface area of the filter. Then, divide the flow rate by the filter area.\nFormula: Area = Length × Width; Filter Loading Rate = Flow / Area\nSubstitution: Area = 6 m × 8 m = 48 m²; Filter Loading Rate = 7,200 m³/d / 48 m²\nCalculation: Filter Loading Rate = 150 m³/m²·d",
+    steps: [
+      { l: "Calculate filter area", c: "6 m * 8 m = 48 m²" },
+      { l: "Calculate filter loading rate", c: "7,200 m³/d / 48 m² = 150 m³/m²·d" }
+    ],
+    tip: "Filter loading rates are critical for maintaining filter performance and water quality.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 521,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "detention time = volume/flow",
+    "question": "A flocculation tank has a volume of 800 m³. If the flow rate through the tank is 400 m³/h, what is the detention time in hours?",
+    "options": ["1.0 h", "2.0 h", "0.5 h", "1.5 h"],
+    "correct": 1,
+    "explanation": "To calculate the detention time, divide the tank volume by the flow rate.\nFormula: Detention Time = Volume / Flow\nSubstitution: Detention Time = 800 m³ / 400 m³/h\nCalculation: Detention Time = 2.0 h",
+    steps: [
+      { l: "Identify tank volume", c: "800 m³" },
+      { l: "Identify flow rate", c: "400 m³/h" },
+      { l: "Calculate detention time", c: "800 m³ / 400 m³/h = 2.0 h" }
+    ],
+    tip: "Adequate detention time is essential for effective floc formation.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 522,
+    isCalc: true,
+    "module": "Water Quality",
+    "topic": "unit conversions (mg/L to kg/d)",
+    "question": "A water treatment plant processes 25,000 m³/d of water. If the iron concentration is 0.3 mg/L, what is the daily mass of iron in kg?",
+    "options": ["7.5 kg/d", "75 kg/d", "0.75 kg/d", "750 kg/d"],
+    "correct": 0,
+    "explanation": "To convert mg/L to kg/d when flow is in m³/d, use the formula: Mass (kg/d) = Flow (m³/d) × Concentration (mg/L) / 1000.\nFormula: Mass (kg/d) = Flow (m³/d) × Concentration (mg/L) / 1000\nSubstitution: Mass (kg/d) = 25,000 m³/d × 0.3 mg/L / 1000\nCalculation: Mass (kg/d) = 7.5 kg/d",
+    steps: [
+      { l: "Identify flow rate", c: "25,000 m³/d" },
+      { l: "Identify iron concentration", c: "0.3 mg/L" },
+      { l: "Calculate daily mass of iron", c: "(25,000 m³/d * 0.3 mg/L) / 1000 = 7.5 kg/d" }
+    ],
+    tip: "Remember the conversion factor of 1000 when converting mg/L to kg/d with m³/d flow.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 523,
+    isCalc: true,
+    "module": "Hydraulics",
+    "topic": "pipe velocity = flow/area",
+    "question": "Water flows through a 0.2-meter diameter pipe at a rate of 0.03 m³/s. What is the velocity of the water in m/s? (Use π = 3.14)",
+    "options": ["0.95 m/s", "0.095 m/s", "9.5 m/s", "0.76 m/s"],
+    "correct": 0,
+    "explanation": "First, calculate the cross-sectional area of the pipe using the formula A = πr², where r is the radius (diameter/2). Then, calculate the velocity using the formula Velocity = Flow / Area.\nFormula: Area = π × (Diameter/2)²; Velocity = Flow / Area\nSubstitution: Area = 3.14 × (0.2 m / 2)² = 3.14 × (0.1 m)² = 3.14 × 0.01 m² = 0.0314 m²; Velocity = 0.03 m³/s / 0.0314 m²\nCalculation: Velocity = 0.955 m/s ≈ 0.95 m/s",
+    steps: [
+      { l: "Calculate pipe radius", c: "0.2 m / 2 = 0.1 m" },
+      { l: "Calculate pipe area", c: "3.14 * (0.1 m)^2 = 0.0314 m²" },
+      { l: "Calculate water velocity", c: "0.03 m³/s / 0.0314 m² = 0.955 m/s" }
+    ],
+    tip: "Pipe velocity affects head loss and potential for scour or sedimentation.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 524,
+    isCalc: true,
+    "module": "Hydraulics",
+    "topic": "pump head (basic)",
+    "question": "A pump is used to transfer water from a reservoir at an elevation of 50 meters to a treatment plant at an elevation of 85 meters. What is the static head the pump must overcome?",
+    "options": ["35 meters", "135 meters", "50 meters", "85 meters"],
+    "correct": 0,
+    "explanation": "The static head is the vertical distance the water is lifted. It is the difference between the discharge water level and the suction water level.\nFormula: Static Head = Discharge Level - Suction Level\nSubstitution: Static Head = 85 m - 50 m\nCalculation: Static Head = 35 m",
+    steps: [
+      { l: "Identify discharge level", c: "85 m" },
+      { l: "Identify suction level", c: "50 m" },
+      { l: "Calculate static head", c: "85 m - 50 m = 35 m" }
+    ],
+    tip: "Static head is a key factor in determining pump selection and power requirements.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 525,
+    isCalc: true,
+    "module": "Water Quality",
+    "topic": "percent removal = (in-out)/in × 100",
+    "question": "A filter influent has a turbidity of 10 NTU. The filter effluent has a turbidity of 0.3 NTU. What is the percent removal of turbidity?",
+    "options": ["97.0%", "93.0%", "90.0%", "87.0%"],
+    "correct": 0,
+    "explanation": "To calculate the percent removal, use the formula: Percent Removal = ((In - Out) / In) × 100.\nFormula: Percent Removal = ((In - Out) / In) × 100\nSubstitution: Percent Removal = ((10 NTU - 0.3 NTU) / 10 NTU) × 100\nCalculation: Percent Removal = (9.7 / 10) × 100 = 97.0%",
+    steps: [
+      { l: "Identify influent turbidity (In)", c: "10 NTU" },
+      { l: "Identify effluent turbidity (Out)", c: "0.3 NTU" },
+      { l: "Calculate percent removal", c: "((10 - 0.3) / 10) * 100 = 97.0%" }
+    ],
+    tip: "Effective turbidity removal is crucial for public health and aesthetics.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 526,
+    isCalc: true,
+    "module": "Chemical Feed",
+    "topic": "chemical feed rate (simple)",
+    "question": "A chemical feed pump is set to deliver 120 mL of polymer solution in 60 seconds. What is the feed rate in L/min?",
+    "options": ["0.12 L/min", "0.06 L/min", "0.24 L/min", "1.2 L/min"],
+    "correct": 0,
+    "explanation": "First, convert the volume from mL to L and the time from seconds to minutes. Then, divide the volume by the time.\nFormula: Feed Rate (L/min) = (Volume (mL) / 1000) / (Time (s) / 60)\nSubstitution: Feed Rate (L/min) = (120 mL / 1000) / (60 s / 60)\nCalculation: Feed Rate (L/min) = 0.12 L / 1 min = 0.12 L/min",
+    steps: [
+      { l: "Convert volume to Liters", c: "120 mL / 1000 = 0.12 L" },
+      { l: "Convert time to minutes", c: "60 s / 60 = 1 min" },
+      { l: "Calculate feed rate", c: "0.12 L / 1 min = 0.12 L/min" }
+    ],
+    tip: "Regular calibration checks ensure accurate chemical dosing.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 527,
+    isCalc: true,
+    "module": "Disinfection",
+    "topic": "chlorine dose = demand + residual",
+    "question": "A water sample has a chlorine demand of 1.0 mg/L. If the desired residual is 0.4 mg/L, what is the required chlorine dose?",
+    "options": ["0.6 mg/L", "1.0 mg/L", "1.4 mg/L", "0.4 mg/L"],
+    "correct": 2,
+    "explanation": "To calculate the required chlorine dose, add the chlorine demand and the desired chlorine residual.\nFormula: Chlorine Dose = Chlorine Demand + Chlorine Residual\nSubstitution: Chlorine Dose = 1.0 mg/L + 0.4 mg/L\nCalculation: Chlorine Dose = 1.4 mg/L",
+    steps: [
+      { l: "Identify chlorine demand", c: "1.0 mg/L" },
+      { l: "Identify desired residual", c: "0.4 mg/L" },
+      { l: "Calculate chlorine dose", c: "1.0 mg/L + 0.4 mg/L = 1.4 mg/L" }
+    ],
+    tip: "The chlorine dose must be sufficient to satisfy the demand and leave a residual.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 528,
+    isCalc: true,
+    "module": "Disinfection",
+    "topic": "CT = C × T (basic)",
+    "question": "A chlorine contact chamber has a chlorine residual of 0.6 mg/L and a contact time of 25 minutes. What is the CT value in mg·min/L?",
+    "options": ["15 mg·min/L", "1.5 mg·min/L", "25.6 mg·min/L", "24.4 mg·min/L"],
+    "correct": 0,
+    "explanation": "To calculate the CT value, multiply the chlorine concentration (C) by the contact time (T).\nFormula: CT = C × T\nSubstitution: CT = 0.6 mg/L × 25 min\nCalculation: CT = 15 mg·min/L",
+    steps: [
+      { l: "Identify chlorine concentration (C)", c: "0.6 mg/L" },
+      { l: "Identify contact time (T)", c: "25 min" },
+      { l: "Calculate CT value", c: "0.6 mg/L × 25 min = 15 mg·min/L" }
+    ],
+    tip: "CT values are crucial for ensuring adequate pathogen inactivation.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 529,
+    isCalc: true,
+    "module": "Chemical Feed",
+    "topic": "flow × dose = mass (simple)",
+    "question": "A water treatment plant adds potassium permanganate at a dose of 0.8 mg/L. If the plant treats 12,000 m³/d, what is the daily mass of potassium permanganate added in kg?",
+    "options": ["9.6 kg/d", "96 kg/d", "0.96 kg/d", "960 kg/d"],
+    "correct": 0,
+    "explanation": "To calculate the mass of potassium permanganate required, use the formula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000.\nFormula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000\nSubstitution: Mass (kg/d) = 12,000 m³/d × 0.8 mg/L / 1000\nCalculation: Mass (kg/d) = 9.6 kg/d",
+    steps: [
+      { l: "Identify flow rate", c: "12,000 m³/d" },
+      { l: "Identify potassium permanganate dose", c: "0.8 mg/L" },
+      { l: "Calculate mass of potassium permanganate", c: "(12,000 m³/d * 0.8 mg/L) / 1000 = 9.6 kg/d" }
+    ],
+    tip: "Potassium permanganate is often used for oxidation of iron, manganese, and taste and odor compounds.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 530,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "filter loading rate = flow/area",
+    "question": "A filter bed is 5 meters long and 4 meters wide. If the flow rate through the filter is 3,600 m³/d, what is the filter loading rate in m³/m²·d?",
+    "options": ["180 m³/m²·d", "150 m³/m²·d", "200 m³/m²·d", "120 m³/m²·d"],
+    "correct": 0,
+    "explanation": "First, calculate the surface area of the filter. Then, divide the flow rate by the filter area.\nFormula: Area = Length × Width; Filter Loading Rate = Flow / Area\nSubstitution: Area = 5 m × 4 m = 20 m²; Filter Loading Rate = 3,600 m³/d / 20 m²\nCalculation: Filter Loading Rate = 180 m³/m²·d",
+    steps: [
+      { l: "Calculate filter area", c: "5 m * 4 m = 20 m²" },
+      { l: "Calculate filter loading rate", c: "3,600 m³/d / 20 m² = 180 m³/m²·d" }
+    ],
+    tip: "Maintaining optimal filter loading rates is key to efficient filtration.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 531,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "detention time = volume/flow",
+    "question": "A clearwell has a volume of 2,500 m³. If the average daily flow rate is 5,000 m³/d, what is the detention time in hours?",
+    "options": ["12 h", "24 h", "6 h", "18 h"],
+    "correct": 0,
+    "explanation": "To calculate the detention time, divide the clearwell volume by the flow rate. Since the flow rate is in m³/d, convert the detention time to hours.\nFormula: Detention Time (days) = Volume / Flow; Detention Time (hours) = Detention Time (days) × 24 h/day\nSubstitution: Detention Time (days) = 2,500 m³ / 5,000 m³/d = 0.5 days; Detention Time (hours) = 0.5 days × 24 h/day\nCalculation: Detention Time = 12 h",
+    steps: [
+      { l: "Identify clearwell volume", c: "2,500 m³" },
+      { l: "Identify flow rate", c: "5,000 m³/d" },
+      { l: "Calculate detention time in days", c: "2,500 m³ / 5,000 m³/d = 0.5 days" },
+      { l: "Convert detention time to hours", c: "0.5 days * 24 h/day = 12 h" }
+    ],
+    tip: "Clearwell detention time provides contact time for disinfection and balances pumping.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 532,
+    isCalc: true,
+    "module": "Water Quality",
+    "topic": "unit conversions (L to m³, mg/L to kg/d)",
+    "question": "A chemical tank contains 1,500 L of a solution with a concentration of 150 mg/L. What is the total mass of the chemical in kg?",
+    "options": ["0.225 kg", "2.25 kg", "22.5 kg", "0.0225 kg"],
+    "correct": 0,
+    "explanation": "First, convert the volume from L to m³ (1 m³ = 1000 L). Then, use the formula Mass (kg) = Volume (m³) × Concentration (mg/L) / 1000.\nFormula: Mass (kg) = (Volume (L) / 1000 L/m³) × Concentration (mg/L) / 1000\nSubstitution: Mass (kg) = (1,500 L / 1000) × 150 mg/L / 1000\nCalculation: Mass (kg) = 1.5 m³ × 150 mg/L / 1000 = 0.225 kg",
+    steps: [
+      { l: "Convert volume to m³", c: "1,500 L / 1000 = 1.5 m³" },
+      { l: "Calculate mass of chemical", c: "(1.5 m³ * 150 mg/L) / 1000 = 0.225 kg" }
+    ],
+    tip: "Accurate unit conversions are vital for correct chemical inventory and dosing.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 533,
+    isCalc: true,
+    "module": "Hydraulics",
+    "topic": "pipe velocity = flow/area",
+    "question": "A 0.4-meter diameter pipe carries a flow of 0.08 m³/s. What is the velocity of the water in m/s? (Use π = 3.14)",
+    "options": ["0.64 m/s", "0.064 m/s", "6.4 m/s", "0.8 m/s"],
+    "correct": 0,
+    "explanation": "First, calculate the cross-sectional area of the pipe using the formula A = πr², where r is the radius (diameter/2). Then, calculate the velocity using the formula Velocity = Flow / Area.\nFormula: Area = π × (Diameter/2)²; Velocity = Flow / Area\nSubstitution: Area = 3.14 × (0.4 m / 2)² = 3.14 × (0.2 m)² = 3.14 × 0.04 m² = 0.1256 m²; Velocity = 0.08 m³/s / 0.1256 m²\nCalculation: Velocity = 0.6369 m/s ≈ 0.64 m/s",
+    steps: [
+      { l: "Calculate pipe radius", c: "0.4 m / 2 = 0.2 m" },
+      { l: "Calculate pipe area", c: "3.14 * (0.2 m)^2 = 0.1256 m²" },
+      { l: "Calculate water velocity", c: "0.08 m³/s / 0.1256 m² = 0.6369 m/s" }
+    ],
+    tip: "High velocities can lead to increased head loss and pipe erosion.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 534,
+    isCalc: true,
+    "module": "Hydraulics",
+    "topic": "pump head (basic)",
+    "question": "A pump draws water from a well with a static water level of 15 meters below ground and discharges it to a tank 20 meters above ground. What is the total static head the pump must overcome?",
+    "options": ["5 meters", "35 meters", "15 meters", "20 meters"],
+    "correct": 1,
+    "explanation": "The total static head is the sum of the suction lift (distance from pump to water level) and the discharge head (distance from pump to discharge point). In this case, it's the difference in elevation between the water source and the discharge point.\nFormula: Total Static Head = Suction Lift + Discharge Head\nSubstitution: Total Static Head = 15 m + 20 m\nCalculation: Total Static Head = 35 m",
+    steps: [
+      { l: "Identify suction lift", c: "15 m" },
+      { l: "Identify discharge head", c: "20 m" },
+      { l: "Calculate total static head", c: "15 m + 20 m = 35 m" }
+    ],
+    tip: "Static head is the vertical distance water is moved, ignoring friction losses.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 535,
+    isCalc: true,
+    "module": "Water Quality",
+    "topic": "percent removal = (in-out)/in × 100",
+    "question": "A coagulation-flocculation process reduces the turbidity from 25 NTU to 1.5 NTU. What is the percent removal of turbidity?",
+    "options": ["94.0%", "92.0%", "96.0%", "90.0%"],
+    "correct": 0,
+    "explanation": "To calculate the percent removal, use the formula: Percent Removal = ((In - Out) / In) × 100.\nFormula: Percent Removal = ((In - Out) / In) × 100\nSubstitution: Percent Removal = ((25 NTU - 1.5 NTU) / 25 NTU) × 100\nCalculation: Percent Removal = (23.5 / 25) × 100 = 94.0%",
+    steps: [
+      { l: "Identify influent turbidity (In)", c: "25 NTU" },
+      { l: "Identify effluent turbidity (Out)", c: "1.5 NTU" },
+      { l: "Calculate percent removal", c: "((25 - 1.5) / 25) * 100 = 94.0%" }
+    ],
+    tip: "Optimizing coagulation and flocculation improves turbidity removal.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 536,
+    isCalc: true,
+    "module": "Chemical Feed",
+    "topic": "chemical feed rate (simple)",
+    "question": "A chemical metering pump delivers 80 mL of solution in 20 seconds. What is the feed rate in L/min?",
+    "options": ["0.24 L/min", "0.08 L/min", "0.16 L/min", "0.32 L/min"],
+    "correct": 0,
+    "explanation": "First, convert the volume from mL to L and the time from seconds to minutes. Then, divide the volume by the time.\nFormula: Feed Rate (L/min) = (Volume (mL) / 1000) / (Time (s) / 60)\nSubstitution: Feed Rate (L/min) = (80 mL / 1000) / (20 s / 60)\nCalculation: Feed Rate (L/min) = 0.08 L / 0.3333 min = 0.24 L/min",
+    steps: [
+      { l: "Convert volume to Liters", c: "80 mL / 1000 = 0.08 L" },
+      { l: "Convert time to minutes", c: "20 s / 60 = 0.3333 min" },
+      { l: "Calculate feed rate", c: "0.08 L / 0.3333 min = 0.24 L/min" }
+    ],
+    tip: "Accurate chemical feed rates are crucial for process control and water quality.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 537,
+    isCalc: true,
+    "module": "Disinfection",
+    "topic": "chlorine dose = demand + residual",
+    "question": "A water sample has a chlorine demand of 1.3 mg/L. If the desired residual is 0.6 mg/L, what is the required chlorine dose?",
+    "options": ["0.7 mg/L", "1.3 mg/L", "1.9 mg/L", "0.6 mg/L"],
+    "correct": 2,
+    "explanation": "To calculate the required chlorine dose, add the chlorine demand and the desired chlorine residual.\nFormula: Chlorine Dose = Chlorine Demand + Chlorine Residual\nSubstitution: Chlorine Dose = 1.3 mg/L + 0.6 mg/L\nCalculation: Chlorine Dose = 1.9 mg/L",
+    steps: [
+      { l: "Identify chlorine demand", c: "1.3 mg/L" },
+      { l: "Identify desired residual", c: "0.6 mg/L" },
+      { l: "Calculate chlorine dose", c: "1.3 mg/L + 0.6 mg/L = 1.9 mg/L" }
+    ],
+    tip: "Always ensure the dose is sufficient to meet demand and maintain residual.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 538,
+    isCalc: true,
+    "module": "Disinfection",
+    "topic": "CT = C × T (basic)",
+    "question": "A water plant maintains a chlorine residual of 0.7 mg/L and a contact time of 22 minutes. Calculate the CT value in mg·min/L.",
+    "options": ["15.4 mg·min/L", "1.54 mg·min/L", "22.7 mg·min/L", "21.3 mg·min/L"],
+    "correct": 0,
+    "explanation": "To calculate the CT value, multiply the chlorine concentration (C) by the contact time (T).\nFormula: CT = C × T\nSubstitution: CT = 0.7 mg/L × 22 min\nCalculation: CT = 15.4 mg·min/L",
+    steps: [
+      { l: "Identify chlorine concentration (C)", c: "0.7 mg/L" },
+      { l: "Identify contact time (T)", c: "22 min" },
+      { l: "Calculate CT value", c: "0.7 mg/L × 22 min = 15.4 mg·min/L" }
+    ],
+    tip: "CT values are essential for demonstrating compliance with disinfection regulations.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 539,
+    isCalc: true,
+    "module": "Chemical Feed",
+    "topic": "flow × dose = mass (simple)",
+    "question": "A water treatment plant uses soda ash at a dose of 10 mg/L. If the plant treats 8,000 m³/d, what is the daily mass of soda ash added in kg?",
+    "options": ["80 kg/d", "8 kg/d", "0.8 kg/d", "800 kg/d"],
+    "correct": 0,
+    "explanation": "To calculate the mass of soda ash required, use the formula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000.\nFormula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000\nSubstitution: Mass (kg/d) = 8,000 m³/d × 10 mg/L / 1000\nCalculation: Mass (kg/d) = 80 kg/d",
+    steps: [
+      { l: "Identify flow rate", c: "8,000 m³/d" },
+      { l: "Identify soda ash dose", c: "10 mg/L" },
+      { l: "Calculate mass of soda ash", c: "(8,000 m³/d * 10 mg/L) / 1000 = 80 kg/d" }
+    ],
+    tip: "Soda ash is commonly used for pH adjustment and alkalinity control.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 540,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "filter loading rate = flow/area",
+    "question": "A filter has a surface area of 40 m². If the flow rate through the filter is 4,000 m³/d, what is the filter loading rate in m³/m²·d?",
+    "options": ["100 m³/m²·d", "10 m³/m²·d", "200 m³/m²·d", "50 m³/m²·d"],
+    "correct": 0,
+    "explanation": "To calculate the filter loading rate, divide the flow rate by the filter surface area.\nFormula: Filter Loading Rate = Flow / Area\nSubstitution: Filter Loading Rate = 4,000 m³/d / 40 m²\nCalculation: Filter Loading Rate = 100 m³/m²·d",
+    steps: [
+      { l: "Identify flow rate", c: "4,000 m³/d" },
+      { l: "Identify filter area", c: "40 m²" },
+      { l: "Calculate filter loading rate", c: "4,000 m³/d / 40 m² = 100 m³/m²·d" }
+    ],
+    tip: "Optimal filter loading rates prevent premature filter clogging and ensure efficient filtration.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 541,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "detention time = volume/flow",
+    "question": "A contact tank has a volume of 1,500 m³. If the flow rate through the tank is 750 m³/h, what is the detention time in hours?",
+    "options": ["1.0 h", "2.0 h", "0.5 h", "1.5 h"],
+    "correct": 1,
+    "explanation": "To calculate the detention time, divide the tank volume by the flow rate.\nFormula: Detention Time = Volume / Flow\nSubstitution: Detention Time = 1,500 m³ / 750 m³/h\nCalculation: Detention Time = 2.0 h",
+    steps: [
+      { l: "Identify tank volume", c: "1,500 m³" },
+      { l: "Identify flow rate", c: "750 m³/h" },
+      { l: "Calculate detention time", c: "1,500 m³ / 750 m³/h = 2.0 h" }
+    ],
+    tip: "Detention time is critical for ensuring adequate contact time for disinfection.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 542,
+    isCalc: true,
+    "module": "Water Quality",
+    "topic": "unit conversions (L to m³, mg/L to kg/d)",
+    "question": "A chemical feed system uses 2,000 L of a 50 mg/L solution daily. What is the total mass of the chemical used per day in kg?",
+    "options": ["0.1 kg/d", "1.0 kg/d", "10 kg/d", "0.01 kg/d"],
+    "correct": 0,
+    "explanation": "First, convert the volume from L to m³ (1 m³ = 1000 L). Then, use the formula Mass (kg/d) = Volume (m³/d) × Concentration (mg/L) / 1000.\nFormula: Mass (kg/d) = (Volume (L) / 1000 L/m³) × Concentration (mg/L) / 1000\nSubstitution: Mass (kg/d) = (2,000 L / 1000) × 50 mg/L / 1000\nCalculation: Mass (kg/d) = 2 m³ × 50 mg/L / 1000 = 0.1 kg/d",
+    steps: [
+      { l: "Convert volume to m³", c: "2,000 L / 1000 = 2 m³" },
+      { l: "Calculate mass of chemical", c: "(2 m³ * 50 mg/L) / 1000 = 0.1 kg/d" }
+    ],
+    tip: "Accurate unit conversions are essential for managing chemical inventory and costs.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 543,
+    isCalc: true,
+    "module": "Hydraulics",
+    "topic": "pipe velocity = flow/area",
+    "question": "A 0.25-meter diameter pipe has water flowing through it at a rate of 0.04 m³/s. What is the velocity of the water in m/s? (Use π = 3.14)",
+    "options": ["0.81 m/s", "0.081 m/s", "8.1 m/s", "0.64 m/s"],
+    "correct": 0,
+    "explanation": "First, calculate the cross-sectional area of the pipe using the formula A = πr², where r is the radius (diameter/2). Then, calculate the velocity using the formula Velocity = Flow / Area.\nFormula: Area = π × (Diameter/2)²; Velocity = Flow / Area\nSubstitution: Area = 3.14 × (0.25 m / 2)² = 3.14 × (0.125 m)² = 3.14 × 0.015625 m² = 0.0490625 m²; Velocity = 0.04 m³/s / 0.0490625 m²\nCalculation: Velocity = 0.815 m/s ≈ 0.81 m/s",
+    steps: [
+      { l: "Calculate pipe radius", c: "0.25 m / 2 = 0.125 m" },
+      { l: "Calculate pipe area", c: "3.14 * (0.125 m)^2 = 0.0490625 m²" },
+      { l: "Calculate water velocity", c: "0.04 m³/s / 0.0490625 m² = 0.815 m/s" }
+    ],
+    tip: "Understanding pipe velocity helps in designing efficient piping systems.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 544,
+    isCalc: true,
+    "module": "Hydraulics",
+    "topic": "pump head (basic)",
+    "question": "A pump delivers water from a suction tank with a water level of 2 meters to a discharge tank with a water level of 18 meters. What is the static head the pump must overcome?",
+    "options": ["16 meters", "20 meters", "18 meters", "2 meters"],
+    "correct": 0,
+    "explanation": "The static head is the vertical distance the water is lifted. It is the difference between the discharge water level and the suction water level.\nFormula: Static Head = Discharge Level - Suction Level\nSubstitution: Static Head = 18 m - 2 m\nCalculation: Static Head = 16 m",
+    steps: [
+      { l: "Identify discharge level", c: "18 m" },
+      { l: "Identify suction level", c: "2 m" },
+      { l: "Calculate static head", c: "18 m - 2 m = 16 m" }
+    ],
+    tip: "Static head is a fundamental component of total dynamic head.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 545,
+    isCalc: true,
+    "module": "Water Quality",
+    "topic": "percent removal = (in-out)/in × 100",
+    "question": "Raw water entering a plant has a turbidity of 18 NTU. After clarification, the turbidity is 0.9 NTU. What is the percent removal of turbidity?",
+    "options": ["95.0%", "90.0%", "92.0%", "98.0%"],
+    "correct": 0,
+    "explanation": "To calculate the percent removal, use the formula: Percent Removal = ((In - Out) / In) × 100.\nFormula: Percent Removal = ((In - Out) / In) × 100\nSubstitution: Percent Removal = ((18 NTU - 0.9 NTU) / 18 NTU) × 100\nCalculation: Percent Removal = (17.1 / 18) × 100 = 95.0%",
+    steps: [
+      { l: "Identify influent turbidity (In)", c: "18 NTU" },
+      { l: "Identify effluent turbidity (Out)", c: "0.9 NTU" },
+      { l: "Calculate percent removal", c: "((18 - 0.9) / 18) * 100 = 95.0%" }
+    ],
+    tip: "High turbidity removal is essential for effective disinfection and overall water quality.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 546,
+    isCalc: true,
+    "module": "Chemical Feed",
+    "topic": "chemical feed rate (simple)",
+    "question": "A chemical feed pump delivers 90 mL of solution in 30 seconds. What is the feed rate in L/min?",
+    "options": ["0.18 L/min", "0.09 L/min", "0.27 L/min", "0.03 L/min"],
+    "correct": 0,
+    "explanation": "First, convert the volume from mL to L and the time from seconds to minutes. Then, divide the volume by the time.\nFormula: Feed Rate (L/min) = (Volume (mL) / 1000) / (Time (s) / 60)\nSubstitution: Feed Rate (L/min) = (90 mL / 1000) / (30 s / 60)\nCalculation: Feed Rate (L/min) = 0.09 L / 0.5 min = 0.18 L/min",
+    steps: [
+      { l: "Convert volume to Liters", c: "90 mL / 1000 = 0.09 L" },
+      { l: "Convert time to minutes", c: "30 s / 60 = 0.5 min" },
+      { l: "Calculate feed rate", c: "0.09 L / 0.5 min = 0.18 L/min" }
+    ],
+    tip: "Accurate chemical feed rates are crucial for maintaining water quality and optimizing treatment processes.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 547,
+    isCalc: true,
+    "module": "Disinfection",
+    "topic": "chlorine dose = demand + residual",
+    "question": "A water sample has a chlorine demand of 1.1 mg/L. If the desired residual is 0.4 mg/L, what is the required chlorine dose?",
+    "options": ["0.7 mg/L", "1.1 mg/L", "1.5 mg/L", "0.4 mg/L"],
+    "correct": 2,
+    "explanation": "To calculate the required chlorine dose, add the chlorine demand and the desired chlorine residual.\nFormula: Chlorine Dose = Chlorine Demand + Chlorine Residual\nSubstitution: Chlorine Dose = 1.1 mg/L + 0.4 mg/L\nCalculation: Chlorine Dose = 1.5 mg/L",
+    steps: [
+      { l: "Identify chlorine demand", c: "1.1 mg/L" },
+      { l: "Identify desired residual", c: "0.4 mg/L" },
+      { l: "Calculate chlorine dose", c: "1.1 mg/L + 0.4 mg/L = 1.5 mg/L" }
+    ],
+    tip: "Chlorine dose must always be greater than or equal to the sum of demand and residual.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 548,
+    isCalc: true,
+    "module": "Disinfection",
+    "topic": "CT = C × T (basic)",
+    "question": "A water treatment plant has a chlorine residual of 0.4 mg/L and a contact time of 35 minutes. What is the CT value in mg·min/L?",
+    "options": ["14 mg·min/L", "1.4 mg·min/L", "35.4 mg·min/L", "34.6 mg·min/L"],
+    "correct": 0,
+    "explanation": "To calculate the CT value, multiply the chlorine concentration (C) by the contact time (T).\nFormula: CT = C × T\nSubstitution: CT = 0.4 mg/L × 35 min\nCalculation: CT = 14 mg·min/L",
+    steps: [
+      { l: "Identify chlorine concentration (C)", c: "0.4 mg/L" },
+      { l: "Identify contact time (T)", c: "35 min" },
+      { l: "Calculate CT value", c: "0.4 mg/L × 35 min = 14 mg·min/L" }
+    ],
+    tip: "CT values are crucial for ensuring adequate pathogen inactivation.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 549,
+    isCalc: true,
+    "module": "Chemical Feed",
+    "topic": "flow × dose = mass (simple)",
+    "question": "A water treatment plant adds carbon dioxide at a dose of 5 mg/L. If the plant treats 10,000 m³/d, what is the daily mass of carbon dioxide added in kg?",
+    "options": ["50 kg/d", "5 kg/d", "0.5 kg/d", "500 kg/d"],
+    "correct": 0,
+    "explanation": "To calculate the mass of carbon dioxide required, use the formula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000.\nFormula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000\nSubstitution: Mass (kg/d) = 10,000 m³/d × 5 mg/L / 1000\nCalculation: Mass (kg/d) = 50 kg/d",
+    steps: [
+      { l: "Identify flow rate", c: "10,000 m³/d" },
+      { l: "Identify carbon dioxide dose", c: "5 mg/L" },
+      { l: "Calculate mass of carbon dioxide", c: "(10,000 m³/d * 5 mg/L) / 1000 = 50 kg/d" }
+    ],
+    tip: "Carbon dioxide is often used for pH adjustment and recarbonation after lime softening.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 550,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "filter loading rate = flow/area",
+    "question": "A filter has a length of 7 meters and a width of 6 meters. If the flow rate through the filter is 6,300 m³/d, what is the filter loading rate in m³/m²·d?",
+    "options": ["150 m³/m²·d", "100 m³/m²·d", "200 m³/m²·d", "250 m³/m²·d"],
+    "correct": 0,
+    "explanation": "First, calculate the surface area of the filter. Then, divide the flow rate by the filter area.\nFormula: Area = Length × Width; Filter Loading Rate = Flow / Area\nSubstitution: Area = 7 m × 6 m = 42 m²; Filter Loading Rate = 6,300 m³/d / 42 m²\nCalculation: Filter Loading Rate = 150 m³/m²·d",
+    steps: [
+      { l: "Calculate filter area", c: "7 m * 6 m = 42 m²" },
+      { l: "Calculate filter loading rate", c: "6,300 m³/d / 42 m² = 150 m³/m²·d" }
+    ],
+    tip: "Proper filter loading rates are essential for efficient particle removal.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 551,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "detention time = volume/flow",
+    "question": "A flocculation basin has a volume of 900 m³. If the flow rate through the basin is 300 m³/h, what is the detention time in hours?",
+    "options": ["2.0 h", "3.0 h", "1.5 h", "4.0 h"],
+    "correct": 1,
+    "explanation": "To calculate the detention time, divide the basin volume by the flow rate.\nFormula: Detention Time = Volume / Flow\nSubstitution: Detention Time = 900 m³ / 300 m³/h\nCalculation: Detention Time = 3.0 h",
+    steps: [
+      { l: "Identify basin volume", c: "900 m³" },
+      { l: "Identify flow rate", c: "300 m³/h" },
+      { l: "Calculate detention time", c: "900 m³ / 300 m³/h = 3.0 h" }
+    ],
+    tip: "Sufficient detention time in flocculation is crucial for particle aggregation.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 552,
+    isCalc: true,
+    "module": "Water Quality",
+    "topic": "unit conversions (L to m³, mg/L to kg/d)",
+    "question": "A chemical drum contains 500 L of a 250 mg/L solution. What is the total mass of the chemical in kg?",
+    "options": ["0.125 kg", "1.25 kg", "12.5 kg", "0.0125 kg"],
+    "correct": 0,
+    "explanation": "First, convert the volume from L to m³ (1 m³ = 1000 L). Then, use the formula Mass (kg) = Volume (m³) × Concentration (mg/L) / 1000.\nFormula: Mass (kg) = (Volume (L) / 1000 L/m³) × Concentration (mg/L) / 1000\nSubstitution: Mass (kg) = (500 L / 1000) × 250 mg/L / 1000\nCalculation: Mass (kg) = 0.5 m³ × 250 mg/L / 1000 = 0.125 kg",
+    steps: [
+      { l: "Convert volume to m³", c: "500 L / 1000 = 0.5 m³" },
+      { l: "Calculate mass of chemical", c: "(0.5 m³ * 250 mg/L) / 1000 = 0.125 kg" }
+    ],
+    tip: "Accurate chemical inventory is crucial for operational efficiency and safety.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 553,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "weir overflow rate",
+    "question": "A sedimentation basin has an effluent weir with a total length of 30 meters. If the flow rate over the weir is 6,000 m³/d, what is the weir overflow rate in m³/m·d?",
+    "options": ["200 m³/m·d", "20 m³/m·d", "180 m³/m·d", "150 m³/m·d"],
+    "correct": 0,
+    "explanation": "To calculate the weir overflow rate, divide the flow rate by the total weir length.\nFormula: Weir Overflow Rate = Flow / Weir Length\nSubstitution: Weir Overflow Rate = 6,000 m³/d / 30 m\nCalculation: Weir Overflow Rate = 200 m³/m·d",
+    steps: [
+      { l: "Identify flow rate", c: "6,000 m³/d" },
+      { l: "Identify weir length", c: "30 m" },
+      { l: "Calculate weir overflow rate", c: "6,000 m³/d / 30 m = 200 m³/m·d" }
+    ],
+    tip: "Proper weir overflow rates prevent excessive velocities and floc carryover.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 554,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "backwash rate",
+    "question": "A filter with a surface area of 25 m² is backwashed at a rate of 12 L/s. What is the backwash rate in m³/m²·min?",
+    "options": ["0.0288 m³/m²·min", "0.288 m³/m²·min", "2.88 m³/m²·min", "0.00288 m³/m²·min"],
+    "correct": 0,
+    "explanation": "First, convert the flow rate from L/s to m³/min. Then, divide by the filter surface area.\nFormula: Backwash Rate (m³/m²·min) = (Flow (L/s) × 60 s/min / 1000 L/m³) / Area (m²)\nSubstitution: Backwash Rate = (12 L/s × 60 / 1000) / 25 m²\nCalculation: Backwash Rate = 0.72 m³/min / 25 m² = 0.0288 m³/m²·min",
+    steps: [
+      { l: "Convert flow to m³/min", c: "12 L/s * 60 s/min / 1000 L/m³ = 0.72 m³/min" },
+      { l: "Calculate backwash rate", c: "0.72 m³/min / 25 m² = 0.0288 m³/m²·min" }
+    ],
+    tip: "An appropriate backwash rate is essential for effective filter cleaning and preventing mudball formation.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 555,
+    isCalc: true,
+    "module": "Disinfection",
+    "topic": "chlorine residual after demand",
+    "question": "A water sample has a chlorine demand of 0.9 mg/L. If a chlorine dose of 1.8 mg/L is applied, what is the chlorine residual after the demand has been met?",
+    "options": ["0.9 mg/L", "2.7 mg/L", "1.8 mg/L", "0.45 mg/L"],
+    "correct": 0,
+    "explanation": "To calculate the chlorine residual after demand, subtract the chlorine demand from the applied chlorine dose.\nFormula: Chlorine Residual = Chlorine Dose - Chlorine Demand\nSubstitution: Chlorine Residual = 1.8 mg/L - 0.9 mg/L\nCalculation: Chlorine Residual = 0.9 mg/L",
+    steps: [
+      { l: "Identify chlorine dose", c: "1.8 mg/L" },
+      { l: "Identify chlorine demand", c: "0.9 mg/L" },
+      { l: "Calculate chlorine residual", c: "1.8 mg/L - 0.9 mg/L = 0.9 mg/L" }
+    ],
+    tip: "Maintaining a proper chlorine residual is vital for preventing bacterial regrowth in the distribution system.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 556,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "alum dose from jar test",
+    "question": "A jar test determines an optimal alum dose of 12 mg/L. If the plant treats a flow of 9,000 m³/d, what is the daily mass of alum required in kg?",
+    "options": ["108 kg/d", "10.8 kg/d", "1.08 kg/d", "1080 kg/d"],
+    "correct": 0,
+    "explanation": "To calculate the mass of alum required, use the formula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000.\nFormula: Mass (kg/d) = Flow (m³/d) × Dose (mg/L) / 1000\nSubstitution: Mass (kg/d) = 9,000 m³/d × 12 mg/L / 1000\nCalculation: Mass (kg/d) = 108 kg/d",
+    steps: [
+      { l: "Identify flow rate", c: "9,000 m³/d" },
+      { l: "Identify alum dose", c: "12 mg/L" },
+      { l: "Calculate mass of alum", c: "(9,000 m³/d * 12 mg/L) / 1000 = 108 kg/d" }
+    ],
+    tip: "Jar tests are crucial for optimizing coagulant dosages and minimizing chemical costs.",
+    "difficulty": "medium"
+  },
+  {
+    "id": 557,
+    isCalc: true,
+    "module": "Treatment Process",
+    "topic": "weir overflow rate",
+    "question": "A sedimentation basin has an effluent weir with a total length of 20 meters. If the flow rate over the weir is 4,000 m³/d, what is the weir overflow rate in m³/m·d?",
+    "options": ["200 m³/m·d", "20 m³/m·d", "180 m³/m·d", "150 m³/m·d"],
+    "correct": 0,
+    "explanation": "To calculate the weir overflow rate, divide the flow rate by the total weir length.\nFormula: Weir Overflow Rate = Flow / Weir Length\nSubstitution: Weir Overflow Rate = 4,000 m³/d / 20 m\nCalculation: Weir Overflow Rate = 200 m³/m·d",
+    steps: [
+      { l: "Identify flow rate", c: "4,000 m³/d" },
+      { l: "Identify weir length", c: "20 m" },
+      { l: "Calculate weir overflow rate", c: "4,000 m³/d / 20 m = 200 m³/m·d" }
+    ],
+    tip: "Maintaining optimal weir overflow rates helps prevent short-circuiting and improves settling efficiency.",
+    "difficulty": "medium"
+  }
+];
   }
   return a;
 }
