@@ -170,7 +170,7 @@ export default function WpiClass1WastewaterQuiz() {
         courseSubtitle="502 questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="🌊"
-        headerActions={[{ label: "📝 Mock Exam →", href: "/wpi-class1-wastewater-mock" }]}
+        headerActions={[{ label: "📝 Mock Exam →", href: "/wpi-class1-wastewater-mock" }, { label: "🃏 Flashcards", href: "/wpi-class1-wastewater-flashcards" }]}
         history={history}
         correctCount={correctCount}
         wrongCount={history.length - correctCount}

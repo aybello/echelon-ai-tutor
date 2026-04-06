@@ -187,6 +187,7 @@ export default function Class2WastewaterQuiz() {
         headerIcon="🌊"
         headerActions={[
           { label: "📝 Mock Exam", href: "/class2-ww-mock" },
+          { label: "🃏 Flashcards", href: "/class2-ww-flashcards" },
         ]}
         history={history}
         correctCount={correctCount}

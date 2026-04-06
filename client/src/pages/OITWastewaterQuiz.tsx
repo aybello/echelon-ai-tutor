@@ -190,6 +190,7 @@ export default function OITWastewaterQuiz() {
         headerIcon="🌊"
         headerActions={[
           { label: "📝 Mock Exam", href: "/oit-ww-mock" },
+          { label: "🃏 Flashcards", href: "/oit-ww-flashcards" },
         ]}
         history={history}
         correctCount={correctCount}

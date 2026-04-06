@@ -187,6 +187,7 @@ export default function WQAQuiz() {
         headerIcon="🔬"
         headerActions={[
           { label: "📝 Mock Exam", href: "/wqa-mock" },
+          { label: "🃏 Flashcards", href: "/wqa-flashcards" },
         ]}
         history={history}
         correctCount={correctCount}

@@ -79,6 +79,25 @@ import WpiClass4WastewaterQuiz from "@/pages/WpiClass4WastewaterQuiz";
 import WpiClass4WastewaterMockExam from "@/pages/WpiClass4WastewaterMockExam";
 import FormulasWpiClass4Ww from "@/pages/FormulasWpiClass4Ww";
 import PreviewMode from "@/pages/PreviewMode";
+// Flashcard pages
+import OITWastewaterFlashcards from "@/pages/OITWastewaterFlashcards";
+import Class1WaterFlashcards from "@/pages/Class1WaterFlashcards";
+import Class1WastewaterFlashcards from "@/pages/Class1WastewaterFlashcards";
+import Class2WaterFlashcards from "@/pages/Class2WaterFlashcards";
+import Class2WastewaterFlashcards from "@/pages/Class2WastewaterFlashcards";
+import Class3WaterFlashcards from "@/pages/Class3WaterFlashcards";
+import Class3WastewaterFlashcards from "@/pages/Class3WastewaterFlashcards";
+import Class4WaterFlashcards from "@/pages/Class4WaterFlashcards";
+import Class4WastewaterFlashcards from "@/pages/Class4WastewaterFlashcards";
+import WQAFlashcards from "@/pages/WQAFlashcards";
+import WpiClass1WaterFlashcards from "@/pages/WpiClass1WaterFlashcards";
+import WpiClass1WastewaterFlashcards from "@/pages/WpiClass1WastewaterFlashcards";
+import WpiClass2WaterFlashcards from "@/pages/WpiClass2WaterFlashcards";
+import WpiClass2WastewaterFlashcards from "@/pages/WpiClass2WastewaterFlashcards";
+import WpiClass3WaterFlashcards from "@/pages/WpiClass3WaterFlashcards";
+import WpiClass3WastewaterFlashcards from "@/pages/WpiClass3WastewaterFlashcards";
+import WpiClass4WaterFlashcards from "@/pages/WpiClass4WaterFlashcards";
+import WpiClass4WastewaterFlashcards from "@/pages/WpiClass4WastewaterFlashcards";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -153,6 +172,25 @@ function Router() {
       <Route path={"/wpi-class4-wastewater-mock"} component={WpiClass4WastewaterMockExam} />
       <Route path={"/formulas-wpi-class4-ww"} component={FormulasWpiClass4Ww} />
       <Route path={"/formulas-wqa"} component={FormulasWQA} />
+      {/* Flashcard routes */}
+      <Route path={"/oit-ww-flashcards"} component={OITWastewaterFlashcards} />
+      <Route path={"/class1-water-flashcards"} component={Class1WaterFlashcards} />
+      <Route path={"/class1-ww-flashcards"} component={Class1WastewaterFlashcards} />
+      <Route path={"/class2-water-flashcards"} component={Class2WaterFlashcards} />
+      <Route path={"/class2-ww-flashcards"} component={Class2WastewaterFlashcards} />
+      <Route path={"/class3-water-flashcards"} component={Class3WaterFlashcards} />
+      <Route path={"/class3-ww-flashcards"} component={Class3WastewaterFlashcards} />
+      <Route path={"/class4-water-flashcards"} component={Class4WaterFlashcards} />
+      <Route path={"/class4-ww-flashcards"} component={Class4WastewaterFlashcards} />
+      <Route path={"/wqa-flashcards"} component={WQAFlashcards} />
+      <Route path={"/wpi-class1-water-flashcards"} component={WpiClass1WaterFlashcards} />
+      <Route path={"/wpi-class1-wastewater-flashcards"} component={WpiClass1WastewaterFlashcards} />
+      <Route path={"/wpi-class2-water-flashcards"} component={WpiClass2WaterFlashcards} />
+      <Route path={"/wpi-class2-wastewater-flashcards"} component={WpiClass2WastewaterFlashcards} />
+      <Route path={"/wpi-class3-water-flashcards"} component={WpiClass3WaterFlashcards} />
+      <Route path={"/wpi-class3-wastewater-flashcards"} component={WpiClass3WastewaterFlashcards} />
+      <Route path={"/wpi-class4-water-flashcards"} component={WpiClass4WaterFlashcards} />
+      <Route path={"/wpi-class4-wastewater-flashcards"} component={WpiClass4WastewaterFlashcards} />
       <Route path={"/preview"} component={PreviewMode} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/pricing"} component={Pricing} />

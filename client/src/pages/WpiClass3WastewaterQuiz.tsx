@@ -170,7 +170,7 @@ export default function WpiClass3WastewaterQuiz() {
         courseSubtitle="501 questions · BC (EOCP Level III) · Alberta (AWWOA Class III) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="🦠"
-        headerActions={[{ label: "📝 Mock Exam →", href: "/wpi-class3-wastewater-mock" }]}
+        headerActions={[{ label: "📝 Mock Exam →", href: "/wpi-class3-wastewater-mock" }, { label: "🃏 Flashcards", href: "/wpi-class3-wastewater-flashcards" }]}
         history={history}
         correctCount={correctCount}
         wrongCount={history.length - correctCount}

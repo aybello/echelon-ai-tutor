@@ -172,7 +172,7 @@ export default function WpiClass4WaterQuiz() {
         courseSubtitle="502 questions · BC (EOCP Level IV) · Alberta (AWWOA Class IV) · Chief Operator"
         headerGradient={HEADER_GRADIENT}
         headerIcon="👑"
-        headerActions={[{ label: "📝 Mock Exam →", href: "/wpi-class4-water-mock" }]}
+        headerActions={[{ label: "📝 Mock Exam →", href: "/wpi-class4-water-mock" }, { label: "🃏 Flashcards", href: "/wpi-class4-water-flashcards" }]}
         history={history}
         correctCount={correctCount}
         wrongCount={history.length - correctCount}
