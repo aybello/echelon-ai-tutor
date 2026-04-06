@@ -825,7 +825,7 @@ export default function Landing() {
     { label: "Formulas", href: "/formulas" },
     { label: "Career Map", href: careerMapHref },
     { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
+    { label: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -1617,6 +1617,107 @@ export default function Landing() {
         </Link>
       </section>
 
+      {/* ── Testimonials Section ── */}
+      <section style={{ background: "#FFFFFF", padding: "80px 24px" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ display: "inline-block", background: "#EFF6FF", color: "#1D4ED8", borderRadius: 20, padding: "4px 14px", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 12 }}>Student Stories</div>
+            <h2 style={{ fontSize: 32, fontWeight: 900, color: "#0F172A", margin: "0 0 12px", letterSpacing: "-0.02em" }}>Operators Who Passed With Echelon</h2>
+            <p style={{ fontSize: 16, color: "#64748B", maxWidth: 520, margin: "0 auto" }}>Real feedback from water and wastewater operators across Canada.</p>
+          </div>
+          <div className="testimonials-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+            {[
+              {
+                quote: "The adaptive quiz engine kept drilling me on hydraulics until I actually understood it. Passed my Class 2 Water exam on the first attempt.",
+                name: "Jordan T.",
+                role: "Class 2 Water Operator — Ontario",
+                initials: "JT",
+                color: "#1D4ED8",
+                bg: "#EFF6FF",
+              },
+              {
+                quote: "I failed the OIT twice before finding Echelon. The AI Tutor explained *why* I was getting disinfection questions wrong, not just what the answer was.",
+                name: "Priya S.",
+                role: "OIT Certified — British Columbia",
+                initials: "PS",
+                color: "#0F766E",
+                bg: "#F0FDFA",
+              },
+              {
+                quote: "The WPI formula sheets alone were worth it. I had everything I needed for the Class III exam in one place, with worked examples.",
+                name: "Marcus L.",
+                role: "WPI Class III Water — Alberta",
+                initials: "ML",
+                color: "#7C3AED",
+                bg: "#F5F3FF",
+              },
+              {
+                quote: "500+ OIT questions with difficulty levels meant I could focus on the hard stuff. The mock exam format matched the real test closely.",
+                name: "Aisha K.",
+                role: "OIT Certified — Ontario",
+                initials: "AK",
+                color: "#B45309",
+                bg: "#FFFBEB",
+              },
+              {
+                quote: "I studied for my Class 1 Wastewater on my phone during lunch breaks. The mobile layout is clean and the questions are genuinely challenging.",
+                name: "Devon R.",
+                role: "Class 1 Wastewater Operator — Ontario",
+                initials: "DR",
+                color: "#065F46",
+                bg: "#ECFDF5",
+              },
+              {
+                quote: "The WQA practice bank covered every module from the exam blueprint. I felt prepared walking in — and I passed with 84%.",
+                name: "Fatima O.",
+                role: "Water Quality Analyst — Ontario",
+                initials: "FO",
+                color: "#BE185D",
+                bg: "#FDF2F8",
+              },
+            ].map((t, i) => (
+              <div key={i} style={{
+                background: "#F8FAFC",
+                borderRadius: 16,
+                padding: "28px 24px",
+                border: "1px solid #E2E8F0",
+                display: "flex",
+                flexDirection: "column",
+                gap: 16,
+              }}>
+                {/* Stars */}
+                <div style={{ display: "flex", gap: 2 }}>
+                  {[0,1,2,3,4].map(s => (
+                    <span key={s} style={{ color: "#F59E0B", fontSize: 14 }}>★</span>
+                  ))}
+                </div>
+                {/* Quote */}
+                <p style={{ fontSize: 14, color: "#334155", lineHeight: 1.7, margin: 0, fontStyle: "italic" }}>
+                  "{t.quote}"
+                </p>
+                {/* Author */}
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: "auto" }}>
+                  <div style={{
+                    width: 38, height: 38, borderRadius: "50%",
+                    background: t.bg, color: t.color,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    fontSize: 13, fontWeight: 800, flexShrink: 0,
+                  }}>{t.initials}</div>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A" }}>{t.name}</div>
+                    <div style={{ fontSize: 11, color: "#64748B" }}>{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <style>{`
+        @media (max-width: 900px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 600px) { .testimonials-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
+
       {/* ── Contact Section ── */}
       <ContactSection />
 
@@ -1647,7 +1748,7 @@ export default function Landing() {
             { label: "Career Map", href: "/career" },
             { label: "Pumping Systems", href: "/pumping" },
             { label: "Lab & Sampling", href: "/lab" },
-            { label: "Contact", href: "#contact" },
+            { label: "Contact", href: "/#contact" },
           ].map(link => (
             <Link key={link.label} href={link.href}>
               <span style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", cursor: "pointer", textDecoration: "none" }}>

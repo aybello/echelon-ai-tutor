@@ -292,3 +292,10 @@
 - [x] Add mobile bottom navigation bar component (Home, Courses, Formulas, AI Tutor)
 - [x] Integrate MobileBottomNav into all pages with bottom padding to prevent overlap
 - [x] Optimize QuizShell and MockExamShell touch targets and scroll behavior
+
+## QA Bug Fixes (Apr 2026)
+- [x] P0: Add React ErrorBoundary to prevent white screen crashes
+- [x] P1: Fix missing key prop on Fragment in SiteNav mobile menu map
+- [x] P1: Add retry button to AITutor on connection error
+- [x] P2: Fix Contact nav link to work from all pages (not just Landing anchor)
+- [x] P2: Add testimonials section to Landing page

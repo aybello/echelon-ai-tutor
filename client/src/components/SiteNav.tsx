@@ -5,7 +5,7 @@
  * Usage:
  *   <SiteNav currentPath="/quiz" />
  */
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import type { ReactNode } from "react";
 import { Link } from "wouter";
 import MobileBottomNav from "./MobileBottomNav";
@@ -293,9 +293,9 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
           // Insert WPI section header before the first WPI link
           const isWpiStart = l.href === "/wpi-class1-water";
           return (
-            <>
+            <Fragment key={l.href}>
               {isWpiStart && (
-                <div key="wpi-header" style={{
+                <div style={{
                   padding: "10px 20px 6px",
                   marginTop: 4,
                   borderTop: "1px solid rgba(255,255,255,0.08)",
@@ -331,7 +331,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
               {l.label}
             </div>
           </Link>
-            </>
+            </Fragment>
           );
         })}
 

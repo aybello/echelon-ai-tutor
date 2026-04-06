@@ -41,6 +41,7 @@ export default function AITutor({
   >([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [lastUserMsg, setLastUserMsg] = useState<string | null>(null);
   const chatRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -92,6 +93,7 @@ export default function AITutor({
     ];
     setMessages(newMessages);
     setLoading(true);
+    setLastUserMsg(userMsg);
 
     const historyContext =
       history.length > 0
@@ -147,7 +149,7 @@ Your approach:
         ...prev,
         {
           role: "assistant",
-          content: "Connection issue — please try again in a moment.",
+          content: "__ERROR__",
         },
       ]);
     }
@@ -375,13 +377,39 @@ Your approach:
                   m.role === "user"
                     ? "14px 14px 4px 14px"
                     : "14px 14px 14px 4px",
-                background: m.role === "user" ? "#1D4ED8" : "#F1F5F9",
+                background: m.role === "user" ? "#1D4ED8" : (m.content === "__ERROR__" ? "#FEF2F2" : "#F1F5F9"),
                 color: m.role === "user" ? "#fff" : "#1E293B",
                 fontSize: 12,
                 lineHeight: 1.65,
               }}
             >
-              {renderMsg(m.content)}
+              {m.content === "__ERROR__" ? (
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  <span style={{ color: "#DC2626", fontWeight: 600 }}>⚠️ Connection issue — please try again.</span>
+                  {lastUserMsg && i === messages.length - 1 && (
+                    <button
+                      onClick={() => {
+                        setMessages(prev => prev.slice(0, -1));
+                        sendMessage(lastUserMsg);
+                      }}
+                      style={{
+                        padding: "6px 12px",
+                        borderRadius: 8,
+                        background: "#1D4ED8",
+                        color: "#fff",
+                        fontWeight: 700,
+                        fontSize: 11,
+                        border: "none",
+                        cursor: "pointer",
+                        alignSelf: "flex-start",
+                        fontFamily: "inherit",
+                      }}
+                    >
+                      🔄 Retry
+                    </button>
+                  )}
+                </div>
+              ) : renderMsg(m.content)}
             </div>
           </div>
         ))}
