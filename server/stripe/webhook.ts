@@ -102,13 +102,30 @@ export function registerStripeWebhook(app: Express) {
 
             // Capture phone number from Stripe checkout if provided
             const phone = session.customer_details?.phone ?? null;
-            if (phone && userId) {
+            if (phone) {
               try {
+                // 1. Save phone to the purchases row (always works, no userId needed)
                 await db
-                  .update(users)
+                  .update(purchases)
                   .set({ phone })
-                  .where(eq(users.id, userId));
-                console.log(`[Stripe Webhook] Phone saved for user ${userId}: ${phone}`);
+                  .where(eq(purchases.stripeSessionId, stripeSessionId));
+                console.log(`[Stripe Webhook] Phone saved to purchases for session ${stripeSessionId}: ${phone}`);
+
+                // 2. Also update the users table — try by userId first, fall back to email lookup
+                const targetUserId = userId ?? (await db
+                  .select({ id: users.id })
+                  .from(users)
+                  .where(eq(users.email, email))
+                  .limit(1)
+                  .then(rows => rows[0]?.id ?? null));
+
+                if (targetUserId) {
+                  await db
+                    .update(users)
+                    .set({ phone })
+                    .where(eq(users.id, targetUserId));
+                  console.log(`[Stripe Webhook] Phone saved to users table for user ${targetUserId}: ${phone}`);
+                }
               } catch (phoneErr) {
                 // Non-critical — log but don't fail the webhook
                 console.error("[Stripe Webhook] Failed to save phone:", phoneErr);

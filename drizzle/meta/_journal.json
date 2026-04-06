@@ -85,6 +85,13 @@
       "when": 1775495511978,
       "tag": "0011_chief_reavers",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "5",
+      "when": 1775519892688,
+      "tag": "0012_red_bishop",
+      "breakpoints": true
     }
   ]
 }

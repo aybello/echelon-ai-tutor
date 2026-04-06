@@ -100,6 +100,7 @@ export const purchases = mysqlTable("purchases", {
   utmMedium: varchar("utmMedium", { length: 128 }),
   utmCampaign: varchar("utmCampaign", { length: 128 }),
   referralSource: varchar("referralSource", { length: 128 }),
+  phone: varchar("phone", { length: 32 }), // captured from Stripe checkout
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type Purchase = typeof purchases.$inferSelect;
