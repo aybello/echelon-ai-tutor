@@ -19,18 +19,20 @@ function toCompat(q: WpiClass4WaterQuestion): QCompat {
 }
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Advanced Treatment & Disinfection": { "bg": "#EDE9FE", "color": "#7C3AED" },
-  "Filtration & Membrane Systems": { "bg": "#DBEAFE", "color": "#1D4ED8" },
-  "Process Control & Optimization": { "bg": "#DCFCE7", "color": "#15803D" },
-  "Distribution System Management": { "bg": "#CCFBF1", "color": "#0F766E" },
-  "Regulations & Management": { "bg": "#FFEDD5", "color": "#C2410C" },
+  "Advanced Process Control": { "bg": "#DBEAFE", "color": "#1D4ED8" },
+  "Advanced Water Quality": { "bg": "#DCFCE7", "color": "#15803D" },
+  "Emergency Response & Contingency Planning": { "bg": "#EDE9FE", "color": "#6D28D9" },
+  "Plant Management & Leadership": { "bg": "#CCFBF1", "color": "#0F766E" },
+  "Regulatory Compliance & Reporting": { "bg": "#FFEDD5", "color": "#C2410C" },
+  "Source Water Protection": { "bg": "#FEF9C3", "color": "#A16207" },
 };
 const MODULE_ICONS: Record<string, string> = {
-  "Advanced Treatment & Disinfection": "⚡",
-  "Filtration & Membrane Systems": "🔬",
-  "Process Control & Optimization": "⚗️",
-  "Distribution System Management": "🏗️",
-  "Regulations & Management": "📋",
+  "Advanced Process Control": "⚙️",
+  "Advanced Water Quality": "🔬",
+  "Emergency Response & Contingency Planning": "🚨",
+  "Plant Management & Leadership": "👔",
+  "Regulatory Compliance & Reporting": "📋",
+  "Source Water Protection": "🌊",
 };
 
 const MODULES: ModuleConfig[] = WPI_CLASS4_WATER_MODULES.map(m => ({
@@ -157,6 +159,7 @@ export default function WpiClass4WaterQuiz() {
 
   return (
     <PurchaseGate
+      backPath="/wpi"
       examType="wpi-class4-water"
       productKey="wpi-class4-water"
       productName="WPI Class IV Water Treatment Practice Pass"

@@ -146,6 +146,7 @@ export default function WpiClass3WastewaterMockExam() {
       <SiteNav currentPath="/wpi-class3-wastewater-mock" />
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "24px 16px 80px" }}>
         <PurchaseGate
+      backPath="/wpi"
           examType="wpi-class3-wastewater"
           productKey="wpi-class3-wastewater"
           productName="WPI Class III Wastewater Practice Pass"

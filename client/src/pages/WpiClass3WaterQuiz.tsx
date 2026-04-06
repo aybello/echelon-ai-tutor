@@ -23,14 +23,14 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Filtration & Membrane Systems": { "bg": "#DBEAFE", "color": "#1D4ED8" },
   "Process Control & Optimization": { "bg": "#DCFCE7", "color": "#15803D" },
   "Distribution System Management": { "bg": "#CCFBF1", "color": "#0F766E" },
-  "Regulations & Management": { "bg": "#FFEDD5", "color": "#C2410C" },
+  "Regulatory Compliance & QMS": { "bg": "#FFEDD5", "color": "#C2410C" },
 };
 const MODULE_ICONS: Record<string, string> = {
   "Advanced Treatment & Disinfection": "⚡",
   "Filtration & Membrane Systems": "🔬",
   "Process Control & Optimization": "⚗️",
   "Distribution System Management": "🏗️",
-  "Regulations & Management": "📋",
+  "Regulatory Compliance & QMS": "📋",
 };
 
 const MODULES: ModuleConfig[] = WPI_CLASS3_WATER_MODULES.map(m => ({
@@ -157,6 +157,7 @@ export default function WpiClass3WaterQuiz() {
 
   return (
     <PurchaseGate
+      backPath="/wpi"
       examType="wpi-class3-water"
       productKey="wpi-class3-water"
       productName="WPI Class III Water Treatment Practice Pass"

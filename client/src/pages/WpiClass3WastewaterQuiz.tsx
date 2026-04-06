@@ -157,6 +157,7 @@ export default function WpiClass3WastewaterQuiz() {
 
   return (
     <PurchaseGate
+      backPath="/wpi"
       examType="wpi-class3-wastewater"
       productKey="wpi-class3-wastewater"
       productName="WPI Class III Wastewater Practice Pass"

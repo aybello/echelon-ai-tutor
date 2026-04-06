@@ -23,21 +23,21 @@ type ExamState = "intro" | "active" | "results";
 interface ExamAnswer { questionIndex: number; selected: number | null; }
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Treatment Process":   { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Equipment O&M":       { bg: "#DCFCE7", color: "#15803D" },
-  "Laboratory Analysis": { bg: "#EDE9FE", color: "#6D28D9" },
-  "Source Water":        { bg: "#CCFBF1", color: "#0F766E" },
-  "Safety & Admin":      { bg: "#FFEDD5", color: "#C2410C" },
+  "Plant Management & Leadership":                { bg: "#CCFBF1", color: "#0F766E" },
+  "Emergency Response & Contingency Planning":    { bg: "#EDE9FE", color: "#6D28D9" },
+  "Advanced Process Control":                     { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Regulatory Compliance & Reporting":            { bg: "#FFEDD5", color: "#C2410C" },
+  "Advanced Water Quality":                       { bg: "#DCFCE7", color: "#15803D" },
 };
 
 // WPI Class I exam blueprint: proportional module targets
 // Treatment Process ~31%, Equipment O&M ~26%, Lab ~16%, Source Water ~15%, Safety ~12%
 const EXAM_MODULE_TARGETS: Record<string, number> = {
-  "Treatment Process":   31,
-  "Equipment O&M":       26,
-  "Laboratory Analysis": 16,
-  "Source Water":        15,
-  "Safety & Admin":      12,
+  "Plant Management & Leadership":                32,
+  "Emergency Response & Contingency Planning":    20,
+  "Advanced Process Control":                     20,
+  "Regulatory Compliance & Reporting":            18,
+  "Advanced Water Quality":                       10,
 };
 
 function shuffle<T>(arr: T[]): T[] {
@@ -169,6 +169,7 @@ export default function WpiClass4WaterMockExam() {
   if (examState === "intro") {
     return (
       <PurchaseGate
+      backPath="/wpi"
         examType="wpi-class4-water"
         productKey="wpi-class4-water"
         productName="WPI Class IV Water Treatment Practice Pass"

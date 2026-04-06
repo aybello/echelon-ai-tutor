@@ -157,6 +157,7 @@ export default function WpiClass4WastewaterQuiz() {
 
   return (
     <PurchaseGate
+      backPath="/wpi"
       examType="wpi-class4-wastewater"
       productKey="wpi-class4-wastewater"
       productName="WPI Class IV Wastewater Practice Pass"

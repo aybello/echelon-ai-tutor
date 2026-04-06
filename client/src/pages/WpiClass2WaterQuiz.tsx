@@ -23,14 +23,14 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "System Design & Engineering": { "bg": "#DCFCE7", "color": "#15803D" },
   "Advanced Laboratory & Monitoring": { "bg": "#EDE9FE", "color": "#6D28D9" },
   "Source Water & Environmental": { "bg": "#CCFBF1", "color": "#0F766E" },
-  "Safety, Management & Regulations": { "bg": "#FFEDD5", "color": "#C2410C" },
+  "Management, Regulations & Safety": { "bg": "#FFEDD5", "color": "#C2410C" },
 };
 const MODULE_ICONS: Record<string, string> = {
   "Advanced Treatment Processes": "⚗️",
   "System Design & Engineering": "🔧",
   "Advanced Laboratory & Monitoring": "🔬",
   "Source Water & Environmental": "🌊",
-  "Safety, Management & Regulations": "🦺",
+  "Management, Regulations & Safety": "🦺",
 };
 
 const MODULES: ModuleConfig[] = WPI_CLASS2_WATER_MODULES.map(m => ({
@@ -157,6 +157,7 @@ export default function WpiClass2WaterQuiz() {
 
   return (
     <PurchaseGate
+      backPath="/wpi"
       examType="wpi-class2-water"
       productKey="wpi-class2-water"
       productName="WPI Class II Water Treatment Practice Pass"

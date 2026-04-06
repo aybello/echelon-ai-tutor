@@ -163,6 +163,7 @@ export default function WpiClass1WaterQuiz() {
 
   return (
     <PurchaseGate
+      backPath="/wpi"
       examType="wpi-class1-water"
       productKey="wpi-class1-water"
       productName="WPI Class I Water Treatment Practice Pass"

@@ -19,18 +19,18 @@ function toCompat(q: WpiClass1WastewaterQuestion): QCompat {
 }
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Treatment Process": { "bg": "#CCFBF1", "color": "#0F766E" },
-  "Equipment O&M": { "bg": "#DCFCE7", "color": "#15803D" },
-  "Laboratory Analysis": { "bg": "#EDE9FE", "color": "#6D28D9" },
-  "Source Water": { "bg": "#DBEAFE", "color": "#1D4ED8" },
-  "Safety & Admin": { "bg": "#FFEDD5", "color": "#C2410C" },
+  "Wastewater Collection Systems": { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Primary & Secondary Treatment": { bg: "#CCFBF1", color: "#0F766E" },
+  "Solids Handling & Biosolids": { bg: "#DCFCE7", color: "#15803D" },
+  "Laboratory & Monitoring": { bg: "#EDE9FE", color: "#6D28D9" },
+  "Safety, Regulations & Admin": { bg: "#FFEDD5", color: "#C2410C" },
 };
 const MODULE_ICONS: Record<string, string> = {
-  "Treatment Process": "⚗️",
-  "Equipment O&M": "🔧",
-  "Laboratory Analysis": "🔬",
-  "Source Water": "🌊",
-  "Safety & Admin": "🦺",
+  "Wastewater Collection Systems": "🔧",
+  "Primary & Secondary Treatment": "⚗️",
+  "Solids Handling & Biosolids": "♻️",
+  "Laboratory & Monitoring": "🔬",
+  "Safety, Regulations & Admin": "🦺",
 };
 
 const MODULES: ModuleConfig[] = WPI_CLASS1_WASTEWATER_MODULES.map(m => ({
@@ -157,6 +157,7 @@ export default function WpiClass1WastewaterQuiz() {
 
   return (
     <PurchaseGate
+      backPath="/wpi"
       examType="wpi-class1-wastewater"
       productKey="wpi-class1-wastewater"
       productName="WPI Class I Wastewater Treatment Practice Pass"

@@ -23,21 +23,21 @@ type ExamState = "intro" | "active" | "results";
 interface ExamAnswer { questionIndex: number; selected: number | null; }
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Treatment Process":   { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Equipment O&M":       { bg: "#DCFCE7", color: "#15803D" },
-  "Laboratory Analysis": { bg: "#EDE9FE", color: "#6D28D9" },
-  "Source Water":        { bg: "#CCFBF1", color: "#0F766E" },
-  "Safety & Admin":      { bg: "#FFEDD5", color: "#C2410C" },
+  "Advanced Treatment & Disinfection":  { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Filtration & Membrane Systems":      { bg: "#DCFCE7", color: "#15803D" },
+  "Process Control & Optimization":     { bg: "#EDE9FE", color: "#6D28D9" },
+  "Regulatory Compliance & QMS":        { bg: "#FFEDD5", color: "#C2410C" },
+  "Distribution System Management":     { bg: "#CCFBF1", color: "#0F766E" },
 };
 
 // WPI Class I exam blueprint: proportional module targets
 // Treatment Process ~31%, Equipment O&M ~26%, Lab ~16%, Source Water ~15%, Safety ~12%
 const EXAM_MODULE_TARGETS: Record<string, number> = {
-  "Treatment Process":   31,
-  "Equipment O&M":       26,
-  "Laboratory Analysis": 16,
-  "Source Water":        15,
-  "Safety & Admin":      12,
+  "Advanced Treatment & Disinfection":  24,
+  "Filtration & Membrane Systems":      21,
+  "Process Control & Optimization":     19,
+  "Regulatory Compliance & QMS":        19,
+  "Distribution System Management":     17,
 };
 
 function shuffle<T>(arr: T[]): T[] {
@@ -169,6 +169,7 @@ export default function WpiClass3WaterMockExam() {
   if (examState === "intro") {
     return (
       <PurchaseGate
+      backPath="/wpi"
         examType="wpi-class3-water"
         productKey="wpi-class3-water"
         productName="WPI Class III Water Treatment Practice Pass"

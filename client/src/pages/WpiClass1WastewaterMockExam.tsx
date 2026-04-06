@@ -23,21 +23,21 @@ type ExamState = "intro" | "active" | "results";
 interface ExamAnswer { questionIndex: number; selected: number | null; }
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Treatment Process":   { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Equipment O&M":       { bg: "#DCFCE7", color: "#15803D" },
-  "Laboratory Analysis": { bg: "#EDE9FE", color: "#6D28D9" },
-  "Source Water":        { bg: "#CCFBF1", color: "#0F766E" },
-  "Safety & Admin":      { bg: "#FFEDD5", color: "#C2410C" },
+  "Wastewater Collection Systems":   { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Primary & Secondary Treatment":   { bg: "#CCFBF1", color: "#0F766E" },
+  "Solids Handling & Biosolids":     { bg: "#DCFCE7", color: "#15803D" },
+  "Laboratory & Monitoring":         { bg: "#EDE9FE", color: "#6D28D9" },
+  "Safety, Regulations & Admin":     { bg: "#FFEDD5", color: "#C2410C" },
 };
 
 // WPI Class I exam blueprint: proportional module targets
 // Treatment Process ~31%, Equipment O&M ~26%, Lab ~16%, Source Water ~15%, Safety ~12%
 const EXAM_MODULE_TARGETS: Record<string, number> = {
-  "Treatment Process":   31,
-  "Equipment O&M":       26,
-  "Laboratory Analysis": 16,
-  "Source Water":        15,
-  "Safety & Admin":      12,
+  "Primary & Secondary Treatment":   26,
+  "Safety, Regulations & Admin":     20,
+  "Wastewater Collection Systems":   19,
+  "Laboratory & Monitoring":         18,
+  "Solids Handling & Biosolids":     17,
 };
 
 function shuffle<T>(arr: T[]): T[] {
@@ -169,6 +169,7 @@ export default function WpiClass1WastewaterMockExam() {
   if (examState === "intro") {
     return (
       <PurchaseGate
+      backPath="/wpi"
         examType="wpi-class1-wastewater"
         productKey="wpi-class1-wastewater"
         productName="WPI Class I Wastewater Treatment Practice Pass"

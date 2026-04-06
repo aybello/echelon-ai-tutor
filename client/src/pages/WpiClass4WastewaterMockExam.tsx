@@ -172,7 +172,8 @@ export default function WpiClass4WastewaterMockExam() {
           </span>
         </div>
 
-        <PurchaseGate examType="wpi-class4-wastewater" productKey="wpi-class4-wastewater" productName="WPI Class IV Wastewater Practice Pass" price={149}>
+        <PurchaseGate
+      backPath="/wpi" examType="wpi-class4-wastewater" productKey="wpi-class4-wastewater" productName="WPI Class IV Wastewater Practice Pass" price={149}>
           {/* ── INTRO ── */}
           {examState === "intro" && (
             <div style={{ background: "#fff", borderRadius: 20, padding: "40px 32px", border: "1px solid #E2E8F0", textAlign: "center" }}>

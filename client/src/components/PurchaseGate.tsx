@@ -19,6 +19,8 @@ interface PurchaseGateProps {
   children: React.ReactNode;
   /** Optional feature bullets shown in the paywall */
   features?: string[];
+  /** Path to navigate to when the user dismisses the paywall (defaults to "/") */
+  backPath?: string;
 }
 
 /** Read email from localStorage (set during QuizGate or PurchaseSuccess) */
@@ -111,6 +113,7 @@ export default function PurchaseGate({
   price,
   children,
   features,
+  backPath = "/",
 }: PurchaseGateProps) {
   // Owner preview mode — bypass all paywalls instantly
   if (isPreviewModeActive()) {
@@ -190,8 +193,8 @@ export default function PurchaseGate({
       >
         {/* X button — top-right corner of the card */}
         <button
-          onClick={() => navigate("/")}
-          aria-label="Back to homepage"
+          onClick={() => navigate(backPath)}
+          aria-label="Go back"
           style={{
             position: "absolute",
             top: 14,
@@ -406,8 +409,8 @@ export default function PurchaseGate({
         </div>
       </div>
 
-      {/* Back to homepage text link at bottom */}
-      <Link href="/">
+      {/* Back link at bottom */}
+      <Link href={backPath}>
         <button
           style={{
             marginTop: 20,
@@ -420,7 +423,7 @@ export default function PurchaseGate({
             fontWeight: 500,
           }}
         >
-          ← Back to Homepage
+          ← {backPath === "/" ? "Back to Homepage" : "Back"}
         </button>
       </Link>
     </div>
