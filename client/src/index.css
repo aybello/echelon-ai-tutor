@@ -195,10 +195,4 @@ img {
     font-size: 16px; /* Prevents iOS zoom on focus */
   }
 
-  /* Add bottom padding to prevent content hiding behind MobileBottomNav (64px height) */
-  /* Applied to the outermost page wrapper divs */
-  body > #root > div > div:last-child:not(.mobile-bottom-nav),
-  .page-bottom-pad {
-    padding-bottom: 72px;
-  }
 }
