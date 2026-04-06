@@ -79,49 +79,49 @@ const INDIVIDUAL: Product[] = [
     description: "Application-level exam prep: LSI, CT values, membranes, lime softening, SCADA, source water, and advanced process control.",
     priceCAD: 24900,
     examTypes: ["class3-water"],
-    badge: "New",
-    badgeColor: "#1E40AF",
-    color: "#1E40AF",
-    bg: "#EFF6FF",
-    border: "#BFDBFE",
+    badge: "Available Now",
+    badgeColor: "#16A34A",
+    color: "#0F766E",
+    bg: "#F0FDFA",
+    border: "#99F6E4",
     available: true,
-    features: ["500 practice questions", "Timed mock exam", "Class 3 Water formula sheet", "AI Tutor"],
+    features: ["552 practice questions", "Timed mock exam", "Water3 formula sheet", "AI Tutor"],
   },
   {
     key: "class4-water",
     name: "Class 4 Water Treatment",
     shortName: "Class 4 Water",
-    description: "Full system management, regulatory leadership, advanced treatment, and strategic operations for Class 4 Water operators.",
+    description: "Chief operator-level exam prep: full system management, regulatory leadership, strategic operations, and emergency response.",
     priceCAD: 34900,
     examTypes: ["class4-water"],
-    badge: "New",
-    badgeColor: "#7C3AED",
-    color: "#4C1D95",
+    badge: "Available Now",
+    badgeColor: "#16A34A",
+    color: "#7C3AED",
     bg: "#F5F3FF",
     border: "#DDD6FE",
     available: true,
-    features: ["500 practice questions", "Timed mock exam", "Class 4 Water formula sheet", "AI Tutor"],
+    features: ["500+ practice questions", "Timed mock exam", "Water4 formula sheet", "AI Tutor"],
   },
   {
     key: "oit-ww",
     name: "OIT Wastewater Practice Pass",
-    shortName: "OIT WW",
-    description: "Operator-in-Training Wastewater — collection systems, basic treatment, safety, and Ontario O. Reg. 129/04.",
+    shortName: "OIT Wastewater",
+    description: "Operator-in-Training Wastewater — collection systems, basic treatment, safety, and Ontario regulations.",
     priceCAD: 4900,
     examTypes: ["oit-ww"],
     badge: "Available Now",
     badgeColor: "#16A34A",
-    color: "#065F46",
+    color: "#0F766E",
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["600+ practice questions", "Timed mock exam", "WW1 formula sheet", "AI Tutor"],
+    features: ["500+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor"],
   },
   {
     key: "class1-ww",
-    name: "Class 1 Wastewater",
-    shortName: "Class 1 WW",
-    description: "Wastewater characteristics, collection systems, basic treatment, and O. Reg. 129/04.",
+    name: "Class 1 Wastewater Treatment",
+    shortName: "Class 1 Wastewater",
+    description: "Primary and secondary treatment, activated sludge, solids handling, and Ontario regulations.",
     priceCAD: 9900,
     examTypes: ["class1-ww"],
     badge: "Available Now",
@@ -130,59 +130,59 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["500 practice questions", "Timed mock exam", "WW1 formula sheet", "AI Tutor"],
+    features: ["500+ practice questions", "Timed mock exam", "WW1 formula sheet", "AI Tutor"],
   },
   {
     key: "class2-ww",
-    name: "Class 2 Wastewater",
-    shortName: "Class 2 WW",
-    description: "Activated sludge, nutrient removal, advanced secondary treatment, and process control.",
+    name: "Class 2 Wastewater Treatment",
+    shortName: "Class 2 Wastewater",
+    description: "Advanced secondary treatment, nutrient removal, biosolids management, and process troubleshooting.",
     priceCAD: 14900,
     examTypes: ["class2-ww"],
     badge: "Available Now",
     badgeColor: "#16A34A",
-    color: "#0F766E",
-    bg: "#F0FDFA",
-    border: "#99F6E4",
-    available: true,
-    features: ["500 practice questions", "Timed mock exam", "WW2 formula sheet", "AI Tutor"],
-  },
-  {
-    key: "class3-ww",
-    name: "Class 3 Wastewater",
-    shortName: "Class 3 WW",
-    description: "Advanced biological treatment, BNR, biosolids management, and process optimization for Class 3 Wastewater operators.",
-    priceCAD: 24900,
-    examTypes: ["class3-ww"],
-    badge: "New",
-    badgeColor: "#0E7490",
-    color: "#0E7490",
-    bg: "#ECFEFF",
-    border: "#A5F3FC",
-    available: true,
-    features: ["502 practice questions", "Timed mock exam", "WW3 formula sheet", "AI Tutor"],
-  },
-  {
-    key: "class4-ww",
-    name: "Class 4 Wastewater",
-    shortName: "Class 4 WW",
-    description: "Plant superintendent level — BNR, MBR, biosolids, regulatory compliance, capital planning, and leadership.",
-    priceCAD: 34900,
-    examTypes: ["class4-ww"],
-    badge: "New",
-    badgeColor: "#0E7490",
-    color: "#064E3B",
+    color: "#065F46",
     bg: "#ECFDF5",
     border: "#6EE7B7",
     available: true,
-    features: ["500 practice questions", "Timed mock exam", "WW4 formula sheet", "AI Tutor"],
+    features: ["500+ practice questions", "Timed mock exam", "WW2 formula sheet", "AI Tutor"],
+  },
+  {
+    key: "class3-ww",
+    name: "Class 3 Wastewater Treatment",
+    shortName: "Class 3 Wastewater",
+    description: "Advanced BNR, industrial pretreatment, biosolids, and regulatory compliance.",
+    priceCAD: 24900,
+    examTypes: ["class3-ww"],
+    badge: "Available Now",
+    badgeColor: "#16A34A",
+    color: "#065F46",
+    bg: "#ECFDF5",
+    border: "#6EE7B7",
+    available: true,
+    features: ["500+ practice questions", "Timed mock exam", "WW3 formula sheet", "AI Tutor"],
+  },
+  {
+    key: "class4-ww",
+    name: "Class 4 Wastewater Treatment",
+    shortName: "Class 4 Wastewater",
+    description: "Plant superintendent level: BNR, MBR, biosolids, regulatory compliance, and emergency response.",
+    priceCAD: 34900,
+    examTypes: ["class4-ww"],
+    badge: "Available Now",
+    badgeColor: "#16A34A",
+    color: "#065F46",
+    bg: "#ECFDF5",
+    border: "#6EE7B7",
+    available: true,
+    features: ["500+ practice questions", "Timed mock exam", "WW4 formula sheet", "AI Tutor"],
   },
   {
     key: "wqa",
-    name: "WQA Practice Pass",
+    name: "Water Quality Analyst Practice Pass",
     shortName: "WQA",
-    description: "Water Quality Analyst — lab techniques, sampling, QA/QC, and regulatory compliance.",
-    priceCAD: 12900,
+    description: "Water Quality Analyst exam prep — lab procedures, sampling, analytical methods, and Ontario regulations.",
+    priceCAD: 9900,
     examTypes: ["wqa"],
     badge: "Available Now",
     badgeColor: "#16A34A",
@@ -190,14 +190,13 @@ const INDIVIDUAL: Product[] = [
     bg: "#FFFBEB",
     border: "#FDE68A",
     available: true,
-    features: ["300 practice questions", "Timed mock exam", "WQA formula sheet", "AI Tutor"],
+    features: ["500+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor"],
   },
-  // ── WPI (BC / AB / SK / MB) ──────────────────────────────────────────────
   {
     key: "wpi-class1-water",
     name: "WPI Class I Water Treatment Practice Pass",
     shortName: "WPI Class I Water",
-    description: "WPI Class I Water Treatment — 502 questions across 5 modules. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Aligned with WPI Need-to-Know Criteria.",
+    description: "WPI Class I Water Treatment — 502 questions covering treatment process, equipment O&M, lab analysis, and source water. Recognized by EOCP (BC), AWWOA (AB), SK, and MB.",
     priceCAD: 9900,
     examTypes: ["wpi-class1-water"],
     badge: "WPI Exam",
@@ -429,7 +428,6 @@ function CheckoutButton({
 
   function handleClick() {
     if (disabled) return;
-    // Try to get email from localStorage (set during quiz gate)
     const storedEmail = localStorage.getItem("echelon_trial_email") || "";
     if (storedEmail) {
       setLoading(true);
@@ -580,6 +578,153 @@ const WPI_WATER_LABELS: Record<string, { shortName: string; description: string;
   },
 };
 
+// ─── Responsive styles injected once ────────────────────────────────────────
+const PRICING_STYLES = `
+  .pricing-page { font-family: Sora, Nunito, sans-serif; background: #F8FAFC; min-height: 100vh; }
+
+  /* Nav */
+  .pricing-nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid #E2E8F0;
+    padding: 0 24px; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    backdrop-filter: blur(8px);
+  }
+  .pricing-nav-logo { display: flex; align-items: center; gap: 10px; cursor: pointer; text-decoration: none; }
+  .pricing-nav-logo span { font-weight: 800; font-size: 16px; color: #0F172A; letter-spacing: -0.3px; }
+  .pricing-nav-actions { display: flex; gap: 12px; align-items: center; }
+  .pricing-nav-back { color: #475569; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .pricing-nav-cta {
+    padding: 7px 18px; border-radius: 8px;
+    background: linear-gradient(135deg, #1D4ED8, #0E7490);
+    color: #fff; border: none; font-size: 13px; font-weight: 700;
+    cursor: pointer; font-family: inherit; white-space: nowrap;
+  }
+
+  /* Hero */
+  .pricing-hero {
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%);
+    padding: 64px 24px 56px; text-align: center;
+  }
+  .pricing-hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 5px 16px;
+    color: #7DD3FC; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .pricing-hero h1 {
+    font-size: clamp(26px, 5vw, 48px); font-weight: 900; color: #fff;
+    margin: 0 0 16px; letter-spacing: -1px; line-height: 1.15;
+  }
+  .pricing-hero p {
+    font-size: 16px; color: #94A3B8; max-width: 520px;
+    margin: 0 auto 32px; line-height: 1.6;
+  }
+
+  /* Province selector */
+  .province-selector { margin-bottom: 28px; }
+  .province-selector-label {
+    font-size: 12px; color: rgba(255,255,255,0.55); margin-bottom: 10px;
+    font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .province-pills { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+  .province-pill {
+    padding: 8px 14px; border-radius: 10px; cursor: pointer;
+    font-size: 13px; font-family: inherit;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .province-wpi-tag {
+    background: rgba(125,211,252,0.2); color: #7DD3FC;
+    font-size: 9px; font-weight: 700; padding: 1px 6px;
+    border-radius: 8px; letter-spacing: 0.04em;
+  }
+  .province-wpi-note {
+    margin-top: 12px; display: inline-block;
+    background: rgba(125,211,252,0.1); border: 1px solid rgba(125,211,252,0.3);
+    border-radius: 10px; padding: 8px 16px; font-size: 12px; color: #7DD3FC;
+  }
+
+  /* Content area */
+  .pricing-content { max-width: 1100px; margin: 0 auto; padding: 48px 20px 80px; }
+
+  /* Section headers */
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+  .section-header h2 { font-size: 20px; font-weight: 800; color: #0F172A; margin: 0; }
+  .section-bar { width: 4px; height: 28px; border-radius: 4px; flex-shrink: 0; }
+  .section-badge {
+    font-size: 11px; font-weight: 700; padding: 3px 10px;
+    border-radius: 20px; border-width: 1px; border-style: solid;
+  }
+
+  /* Product grids — responsive */
+  .product-grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .product-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .product-grid-1 {
+    display: grid;
+    grid-template-columns: minmax(0, 280px);
+    gap: 16px;
+  }
+
+  /* Trust grid */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 16px; max-width: 900px; margin: 0 auto;
+  }
+
+  /* FAQ */
+  .faq-item {
+    padding: 16px 20px; background: #fff;
+    border-radius: 10px; border: 1px solid #E2E8F0;
+  }
+
+  /* ── Tablet: 2–3 columns ── */
+  @media (max-width: 900px) {
+    .product-grid-5 { grid-template-columns: repeat(3, 1fr); }
+    .product-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ── Mobile: 1–2 columns ── */
+  @media (max-width: 600px) {
+    .pricing-nav { padding: 0 16px; }
+    .pricing-nav-logo span { font-size: 14px; }
+    .pricing-nav-back { display: none; }
+
+    .pricing-hero { padding: 40px 16px 36px; }
+    .pricing-hero p { font-size: 14px; }
+
+    .province-pill { padding: 7px 10px; font-size: 12px; }
+    .province-wpi-note { font-size: 11px; padding: 6px 12px; text-align: left; }
+
+    .pricing-content { padding: 28px 16px 60px; }
+
+    .product-grid-5 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .product-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .product-grid-1 { grid-template-columns: 1fr; }
+
+    .trust-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .section-header h2 { font-size: 17px; }
+    .faq-item { padding: 14px 16px; }
+  }
+
+  /* ── Very small: 1 column ── */
+  @media (max-width: 380px) {
+    .product-grid-5 { grid-template-columns: 1fr; }
+    .product-grid-4 { grid-template-columns: 1fr; }
+  }
+`;
+
 // ─── Main Pricing Page ────────────────────────────────────────────────────────
 export default function Pricing() {
   usePageMeta({
@@ -593,128 +738,47 @@ export default function Pricing() {
   const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
 
   return (
-    <div
-      style={{
-        fontFamily: "Sora, Nunito, sans-serif",
-        background: "#F8FAFC",
-        minHeight: "100vh",
-      }}
-    >
+    <div className="pricing-page">
+      <style>{PRICING_STYLES}</style>
+
       {/* ── Nav ── */}
-      <nav
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 100,
-          background: "rgba(255,255,255,0.97)",
-          borderBottom: "1px solid #E2E8F0",
-          padding: "0 24px",
-          height: 60,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          backdropFilter: "blur(8px)",
-        }}
-      >
+      <nav className="pricing-nav">
         <Link href="/">
-          <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer", textDecoration: "none" }}>
+          <div className="pricing-nav-logo">
             <img
               src={LOGO_URL}
               alt="Echelon Institute"
               style={{ height: 36, width: "auto", objectFit: "contain" }}
             />
-            <span style={{ fontWeight: 800, fontSize: 16, color: "#0F172A", letterSpacing: "-0.3px" }}>
-              Echelon Institute
-            </span>
+            <span>Echelon Institute</span>
           </div>
         </Link>
-        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+        <div className="pricing-nav-actions">
           <Link href="/">
-            <span style={{ color: "#475569", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>← Back to Home</span>
+            <span className="pricing-nav-back">← Back to Home</span>
           </Link>
           <Link href="/quiz">
-            <button
-              style={{
-                padding: "7px 18px",
-                borderRadius: 8,
-                background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
-                color: "#fff",
-                border: "none",
-                fontSize: 13,
-                fontWeight: 700,
-                cursor: "pointer",
-                fontFamily: "inherit",
-              }}
-            >
-              Try Free →
-            </button>
+            <button className="pricing-nav-cta">Try Free →</button>
           </Link>
         </div>
       </nav>
 
       {/* ── Hero ── */}
-      <div
-        style={{
-          background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)",
-          padding: "64px 24px 56px",
-          textAlign: "center",
-        }}
-      >
-        <div
-          style={{
-            display: "inline-block",
-            background: "rgba(255,255,255,0.12)",
-            border: "1px solid rgba(255,255,255,0.2)",
-            borderRadius: 20,
-            padding: "5px 16px",
-            color: "#7DD3FC",
-            fontSize: 12,
-            fontWeight: 700,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            marginBottom: 20,
-          }}
-        >
-          Canadian Operator Certification Prep
-        </div>
-        <h1
-          style={{
-            fontSize: "clamp(28px, 5vw, 48px)",
-            fontWeight: 900,
-            color: "#fff",
-            margin: "0 0 16px",
-            letterSpacing: "-1px",
-            lineHeight: 1.15,
-          }}
-        >
-          Simple, Transparent Pricing
-        </h1>
-        <p
-          style={{
-            fontSize: 17,
-            color: "#94A3B8",
-            maxWidth: 520,
-            margin: "0 auto 32px",
-            lineHeight: 1.6,
-          }}
-        >
-          One-time payment. Unlimited practice. AI Tutor included.
-          No subscription, no hidden fees.
-        </p>
+      <div className="pricing-hero">
+        <div className="pricing-hero-badge">Canadian Operator Certification Prep</div>
+        <h1>Simple, Transparent Pricing</h1>
+        <p>One-time payment. Unlimited practice. AI Tutor included.<br />No subscription, no hidden fees.</p>
 
         {/* Province selector */}
-        <div style={{ marginBottom: 28 }}>
-          <div style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", marginBottom: 10, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase" }}>
-            Select Your Province
-          </div>
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
+        <div className="province-selector">
+          <div className="province-selector-label">Select Your Province</div>
+          <div className="province-pills">
             {PROVINCES.map(p => (
               <button
                 key={p.code}
                 onClick={() => setSelectedProvince(p.code)}
+                className="province-pill"
                 style={{
-                  padding: "8px 16px",
-                  borderRadius: 10,
                   border: selectedProvince === p.code
                     ? "2px solid #7DD3FC"
                     : "1.5px solid rgba(255,255,255,0.15)",
@@ -722,239 +786,142 @@ export default function Pricing() {
                     ? "rgba(125,211,252,0.15)"
                     : "rgba(255,255,255,0.07)",
                   color: selectedProvince === p.code ? "#7DD3FC" : "rgba(255,255,255,0.7)",
-                  fontSize: 13,
                   fontWeight: selectedProvince === p.code ? 700 : 500,
-                  cursor: "pointer",
-                  fontFamily: "inherit",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
                 }}
               >
                 <span>{p.flag}</span>
                 <span>{p.name}</span>
                 {p.framework === "wpi" && (
-                  <span style={{
-                    background: "rgba(125,211,252,0.2)",
-                    color: "#7DD3FC",
-                    fontSize: 9,
-                    fontWeight: 700,
-                    padding: "1px 6px",
-                    borderRadius: 8,
-                    letterSpacing: "0.04em",
-                  }}>WPI</span>
+                  <span className="province-wpi-tag">WPI</span>
                 )}
               </button>
             ))}
           </div>
           {isWpi && (
-            <div style={{
-              marginTop: 12,
-              display: "inline-block",
-              background: "rgba(125,211,252,0.1)",
-              border: "1px solid rgba(125,211,252,0.3)",
-              borderRadius: 10,
-              padding: "8px 16px",
-              fontSize: 12,
-              color: "#7DD3FC",
-            }}>
+            <div className="province-wpi-note">
               <strong>{provinceInfo.certBody}</strong> — WPI standardized exams apply. All question banks are aligned with WPI Need-to-Know Criteria.
             </div>
           )}
         </div>
-
-
       </div>
 
       {/* ── Content ── */}
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px 80px" }}>
-        <>
-            {/* Ontario header — shown only on Ontario tab */}
-            {!isWpi && (
-              <div style={{ marginBottom: 32 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-                  <div
-                    style={{
-                      width: 4,
-                      height: 28,
-                      borderRadius: 4,
-                      background: "linear-gradient(180deg, #DC2626, #B91C1C)",
-                    }}
-                  />
-                  <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: 0 }}>
-                    🍁 Ontario — MOECP / OWWCO
-                  </h2>
-                  <span style={{
-                    background: "#FEF2F2",
-                    color: "#B91C1C",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    padding: "3px 10px",
-                    borderRadius: 20,
-                    border: "1px solid #FECACA",
-                  }}>✓ Live</span>
-                </div>
-                <p style={{ fontSize: 13, color: "#64748B", margin: 0, lineHeight: 1.5 }}>
-                  Ontario operator certification exams regulated by MOECP and administered by OWWCO. OIT through Class 4 Water &amp; Wastewater.
-                </p>
-              </div>
-            )}
+      <div className="pricing-content">
 
-            {/* Water Treatment section */}
-            <div style={{ marginBottom: 48 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-                <div
-                  style={{
-                    width: 4,
-                    height: 28,
-                    borderRadius: 4,
-                    background: "linear-gradient(180deg, #1D4ED8, #0E7490)",
-                  }}
-                />
-                <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: 0 }}>
-                  Water Treatment
-                </h2>
-              </div>
-              {/* Ontario: OIT + Class 1–4 Water = 5 cards on one row */}
-              {!isWpi && (
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
-                  {INDIVIDUAL.filter(p => p.key === "oit" || (p.key.includes("-water") && !p.key.startsWith("wpi-"))).map(product => (
-                    <ProductCard key={product.key} product={product} isWpi={false} wpiLabel={undefined} />
-                  ))}
-                </div>
-              )}
-              {/* WPI: Class I–IV Water = 4 cards on one row */}
-              {isWpi && (
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
-                  {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-water")).map(product => (
-                    <ProductCard key={product.key} product={product} isWpi={true} wpiLabel={WPI_WATER_LABELS[product.key]} />
-                  ))}
-                </div>
-              )}
+        {/* Ontario header */}
+        {!isWpi && (
+          <div style={{ marginBottom: 32 }}>
+            <div className="section-header">
+              <div className="section-bar" style={{ background: "linear-gradient(180deg, #DC2626, #B91C1C)" }} />
+              <h2>🍁 Ontario — MOECP / OWWCO</h2>
+              <span className="section-badge" style={{ background: "#FEF2F2", color: "#B91C1C", borderColor: "#FECACA" }}>✓ Live</span>
             </div>
+            <p style={{ fontSize: 13, color: "#64748B", margin: 0, lineHeight: 1.5 }}>
+              Ontario operator certification exams regulated by MOECP and administered by OWWCO. OIT through Class 4 Water &amp; Wastewater.
+            </p>
+          </div>
+        )}
 
-            {/* Wastewater section */}
-            <div style={{ marginBottom: 48 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-                <div
-                  style={{
-                    width: 4,
-                    height: 28,
-                    borderRadius: 4,
-                    background: "linear-gradient(180deg, #0F766E, #065F46)",
-                  }}
-                />
-                <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: 0 }}>
-                  Wastewater Treatment
-                </h2>
-              </div>
-              {/* Ontario: OIT WW + Class 1–4 WW = 5 cards on one row */}
-              {!isWpi && (
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
-                  {INDIVIDUAL.filter(p => p.key.includes("-ww") && !p.key.startsWith("wpi-")).map(product => (
-                    <ProductCard key={product.key} product={product} isWpi={false} wpiLabel={undefined} />
-                  ))}
-                </div>
-              )}
-              {/* WPI: Class I–IV Wastewater = 4 cards on one row */}
-              {isWpi && (
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
-                  {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-wastewater")).map(product => (
-                    <ProductCard key={product.key} product={product} isWpi={true} wpiLabel={WPI_WATER_LABELS[product.key]} />
-                  ))}
-                </div>
-              )}
+        {/* Water Treatment section */}
+        <div style={{ marginBottom: 48 }}>
+          <div className="section-header">
+            <div className="section-bar" style={{ background: "linear-gradient(180deg, #1D4ED8, #0E7490)" }} />
+            <h2>Water Treatment</h2>
+          </div>
+          {!isWpi && (
+            <div className="product-grid-5">
+              {INDIVIDUAL.filter(p => p.key === "oit" || (p.key.includes("-water") && !p.key.startsWith("wpi-"))).map(product => (
+                <ProductCard key={product.key} product={product} isWpi={false} wpiLabel={undefined} />
+              ))}
             </div>
+          )}
+          {isWpi && (
+            <div className="product-grid-4">
+              {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-water")).map(product => (
+                <ProductCard key={product.key} product={product} isWpi={true} wpiLabel={WPI_WATER_LABELS[product.key]} />
+              ))}
+            </div>
+          )}
+        </div>
 
-            {/* WQA section */}
-            <div style={{ marginBottom: 48 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-                <div
-                  style={{
-                    width: 4,
-                    height: 28,
-                    borderRadius: 4,
-                    background: "linear-gradient(180deg, #B45309, #92400E)",
-                  }}
-                />
-                <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: 0 }}>
-                  Water Quality Analyst
-                </h2>
+        {/* Wastewater section */}
+        <div style={{ marginBottom: 48 }}>
+          <div className="section-header">
+            <div className="section-bar" style={{ background: "linear-gradient(180deg, #0F766E, #065F46)" }} />
+            <h2>Wastewater Treatment</h2>
+          </div>
+          {!isWpi && (
+            <div className="product-grid-5">
+              {INDIVIDUAL.filter(p => p.key.includes("-ww") && !p.key.startsWith("wpi-")).map(product => (
+                <ProductCard key={product.key} product={product} isWpi={false} wpiLabel={undefined} />
+              ))}
+            </div>
+          )}
+          {isWpi && (
+            <div className="product-grid-4">
+              {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-wastewater")).map(product => (
+                <ProductCard key={product.key} product={product} isWpi={true} wpiLabel={WPI_WATER_LABELS[product.key]} />
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* WQA section */}
+        <div style={{ marginBottom: 48 }}>
+          <div className="section-header">
+            <div className="section-bar" style={{ background: "linear-gradient(180deg, #B45309, #92400E)" }} />
+            <h2>Water Quality Analyst</h2>
+          </div>
+          <div className="product-grid-1">
+            {INDIVIDUAL.filter(p => p.key === "wqa").map(product => (
+              <ProductCard key={product.key} product={product} />
+            ))}
+          </div>
+        </div>
+
+        {/* WPI cross-sell section — shown on Ontario tab only */}
+        {!isWpi && (
+          <div style={{ marginBottom: 48 }}>
+            <div className="section-header">
+              <div className="section-bar" style={{ background: "linear-gradient(180deg, #0E7490, #0891B2)" }} />
+              <h2>🌊 WPI — BC / AB / SK / MB</h2>
+              <span className="section-badge" style={{ background: "#ECFEFF", color: "#0E7490", borderColor: "#A5F3FC" }}>✓ Live</span>
+            </div>
+            <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
+              WPI standardized exams recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).
+            </p>
+            {/* WPI Water row */}
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "0 0 10px", flexWrap: "wrap" }}>
+                <p style={{ fontSize: 12, fontWeight: 700, color: "#0E7490", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>Water Treatment</p>
+                <span style={{ fontSize: 11, color: "#64748B", fontWeight: 500 }}>· 2,000+ questions across Class I–IV</span>
               </div>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(3, minmax(0, 280px))",
-                  gap: 16,
-                }}
-              >
-                {INDIVIDUAL.filter(p => p.key === "wqa").map(product => (
+              <div className="product-grid-4">
+                {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-water")).map(product => (
                   <ProductCard key={product.key} product={product} />
                 ))}
               </div>
             </div>
-
-            {/* WPI section — shown on Ontario tab only as a cross-sell */}
-            {!isWpi && (
+            {/* WPI Wastewater row */}
             <div>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-                <div
-                  style={{
-                    width: 4,
-                    height: 28,
-                    borderRadius: 4,
-                    background: "linear-gradient(180deg, #0E7490, #0891B2)",
-                  }}
-                />
-                <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: 0 }}>
-                  🌊 WPI — BC / AB / SK / MB
-                </h2>
-                <span style={{
-                  background: "#ECFEFF",
-                  color: "#0E7490",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  padding: "3px 10px",
-                  borderRadius: 20,
-                  border: "1px solid #A5F3FC",
-                }}>✓ Live</span>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "0 0 10px", flexWrap: "wrap" }}>
+                <p style={{ fontSize: 12, fontWeight: 700, color: "#0F766E", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>Wastewater Treatment</p>
+                <span style={{ fontSize: 11, color: "#64748B", fontWeight: 500 }}>· 2,000+ questions across Class I–IV</span>
               </div>
-              <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
-                WPI standardized exams recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).
-              </p>
-              {/* WPI Water row */}
-              <div style={{ marginBottom: 16 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "0 0 10px" }}>
-                  <p style={{ fontSize: 12, fontWeight: 700, color: "#0E7490", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>Water Treatment</p>
-                  <span style={{ fontSize: 11, color: "#64748B", fontWeight: 500 }}>· 2,000+ questions across Class I–IV</span>
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
-                  {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-water")).map(product => (
-                    <ProductCard key={product.key} product={product} />
-                  ))}
-                </div>
-              </div>
-              {/* WPI Wastewater row */}
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "0 0 10px" }}>
-                  <p style={{ fontSize: 12, fontWeight: 700, color: "#0F766E", textTransform: "uppercase", letterSpacing: "0.05em", margin: 0 }}>Wastewater Treatment</p>
-                  <span style={{ fontSize: 11, color: "#64748B", fontWeight: 500 }}>· 2,000+ questions across Class I–IV</span>
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
-                  {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-wastewater")).map(product => (
-                    <ProductCard key={product.key} product={product} />
-                  ))}
-                </div>
+              <div className="product-grid-4">
+                {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-wastewater")).map(product => (
+                  <ProductCard key={product.key} product={product} />
+                ))}
               </div>
             </div>
-            )}
-        </>
+          </div>
+        )}
 
         {/* Trust section */}
         <div
           style={{
             marginTop: 64,
-            padding: "32px 24px",
+            padding: "32px 20px",
             background: "#fff",
             borderRadius: 16,
             border: "1px solid #E2E8F0",
@@ -970,15 +937,7 @@ export default function Pricing() {
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
             8,500+ questions across Water Treatment, Wastewater, WQA, and WPI tracks
           </p>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-              gap: 16,
-              maxWidth: 900,
-              margin: "0 auto",
-            }}
-          >
+          <div className="trust-grid">
             {[
               { icon: "📚", label: "8,500+ Questions" },
               { icon: "🤖", label: "AI Tutor Chat" },
@@ -1032,15 +991,7 @@ export default function Pricing() {
                 a: "All 11 courses are live: OIT Water, OIT Wastewater, Class 1–4 Water Treatment, and Class 1–4 Wastewater Treatment, plus WQA. Every course includes a practice quiz, timed mock exam, formula sheet, and AI Tutor.",
               },
             ].map(faq => (
-              <div
-                key={faq.q}
-                style={{
-                  padding: "16px 20px",
-                  background: "#fff",
-                  borderRadius: 10,
-                  border: "1px solid #E2E8F0",
-                }}
-              >
+              <div key={faq.q} className="faq-item">
                 <div style={{ fontWeight: 700, color: "#0F172A", fontSize: 14, marginBottom: 6 }}>
                   {faq.q}
                 </div>
@@ -1055,7 +1006,7 @@ export default function Pricing() {
       <div
         style={{
           background: "#0F172A",
-          padding: "24px",
+          padding: "24px 20px",
           textAlign: "center",
           color: "#64748B",
           fontSize: 12,
@@ -1086,7 +1037,7 @@ function ProductCard({
         background: "#fff",
         borderRadius: 14,
         border: `1.5px solid ${product.border}`,
-        padding: "20px 18px",
+        padding: "20px 16px",
         display: "flex",
         flexDirection: "column",
         gap: 12,
@@ -1127,7 +1078,7 @@ function ProductCard({
         >
           Practice Pass
         </div>
-        <div style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", lineHeight: 1.2 }}>
+        <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", lineHeight: 1.2 }}>
           {displayName}
         </div>
       </div>
@@ -1155,7 +1106,7 @@ function ProductCard({
       )}
 
       <div>
-        <div style={{ fontSize: 26, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
+        <div style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
           CA${(product.priceCAD / 100).toFixed(0)}
         </div>
         <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 2 }}>one-time · no subscription</div>
