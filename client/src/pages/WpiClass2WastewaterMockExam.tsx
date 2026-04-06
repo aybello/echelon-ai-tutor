@@ -1,29 +1,28 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { WPI_CLASS2_WASTEWATER_QUESTIONS as POOL_RAW } from "@/lib/wpiClass2WastewaterQuestions";
+import { WPI_CLASS2_WASTEWATER_QUESTIONS as RAW } from "@/lib/wpiClass2WastewaterQuestions";
 
-const POOL: ExamQuestion[] = (POOL_RAW as any[]).map(q => ({
-  id: q.id,
-  module: q.module,
+const POOL: ExamQuestion[] = (RAW as any[]).map(q => ({
+  id: q.id, module: q.module,
   question: q.question ?? q.text ?? "",
   options: q.options,
-  correct: q.correct ?? q.correctAnswer ?? 0,
+  correct: q.correctAnswer ?? q.correct ?? 0,
   explanation: q.explanation,
 }));
 
 const MODULE_TARGETS: Record<string, number> = {
-  'Nutrient Removal': 27,
-  'Biosolids Management': 22,
-  'Secondary Treatment Processes': 19,
-  'Advanced Treatment & Effluent Quality': 16,
-  'Safety, Regulations & Administration': 16,
+  "Nutrient Removal":                          27,
+  "Biosolids Management":                      22,
+  "Secondary Treatment Processes":             19,
+  "Advanced Treatment & Effluent Quality":     16,
+  "Safety, Regulations & Administration":      16,
 };
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  'Nutrient Removal': { bg: '#DCFCE7', color: '#15803D' },
-  'Biosolids Management': { bg: '#EDE9FE', color: '#6D28D9' },
-  'Secondary Treatment Processes': { bg: '#CCFBF1', color: '#0F766E' },
-  'Advanced Treatment & Effluent Quality': { bg: '#DBEAFE', color: '#1D4ED8' },
-  'Safety, Regulations & Administration': { bg: '#FFEDD5', color: '#C2410C' },
+  "Nutrient Removal":                          { bg: "#DCFCE7", color: "#15803D" },
+  "Biosolids Management":                      { bg: "#EDE9FE", color: "#6D28D9" },
+  "Secondary Treatment Processes":             { bg: "#CCFBF1", color: "#0F766E" },
+  "Advanced Treatment & Effluent Quality":     { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Safety, Regulations & Administration":      { bg: "#FFEDD5", color: "#C2410C" },
 };
 
 export default function WpiClass2WastewaterMockExam() {
@@ -31,8 +30,8 @@ export default function WpiClass2WastewaterMockExam() {
     <MockExamShell
       title="WPI Class II Wastewater Treatment Mock Exam"
       badge="WPI CLASS II · WASTEWATER TREATMENT"
-      metaDescription="100-question timed mock exam for WPI Class II Wastewater Treatment certification."
-      metaKeywords="WPI Class 2 wastewater mock exam, EOCP Level II wastewater, AWWOA Class II practice test"
+      metaDescription="100-question timed mock exam for the WPI Class II Wastewater Treatment certification. 2-hour timer, 70% pass threshold."
+      metaKeywords="WPI Class 2 wastewater mock exam, BC EOCP Level II wastewater, Alberta AWWOA Class II"
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
@@ -44,13 +43,12 @@ export default function WpiClass2WastewaterMockExam() {
       price={79}
       backPath="/wpi"
       practicePath="/wpi-class2-ww"
-      practiceLabel="WPI Class II Wastewater Practice"
-      accentColor="#0F766E"
-      accentColor2="#0369A1"
+      practiceLabel="Class II Wastewater Practice"
       showProvinceSelector={false}
       currentPath="/wpi-class2-ww-mock"
-      infoLine="599 questions · BC (EOCP Level II) · Alberta (AWWOA Class II) · SK · MB"
+      infoLine={`${POOL.length} questions · BC (EOCP Level II) · Alberta (AWWOA Class II) · SK · MB`}
       stream="wastewater"
+      accentColor="#0F766E"
     />
   );
 }
