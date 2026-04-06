@@ -1,6 +1,6 @@
-// WPI CLASS I WATER TREATMENT MOCK EXAM
+// WPI CLASS II WASTEWATER TREATMENT MOCK EXAM
 // 100 questions · 2-hour timer · 70% pass threshold
-// Used for: BC (EOCP Level I), Alberta (AWWOA Class I), Saskatchewan, Manitoba
+// Used for: BC (EOCP Level II), Alberta (AWWOA Class II), Saskatchewan, Manitoba
 
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Link } from "wouter";
@@ -175,7 +175,7 @@ export default function WpiClass2WastewaterMockExam() {
         productName="WPI Class II Wastewater Treatment Practice Pass"
         price={79}
         features={[
-          "502 WPI Class I questions — unlimited practice",
+          "600 WPI Class II questions — unlimited practice",
           "Timed mock exam (100 questions, 2 hrs)",
           "Module-by-module performance breakdown",
           "AI Tutor explanations on every question",
@@ -215,7 +215,7 @@ export default function WpiClass2WastewaterMockExam() {
                   textTransform: "uppercase",
                 }}
               >
-                WPI Class I · Wastewater Treatment
+                WPI Class II · Wastewater Treatment
               </div>
               <h1
                 style={{

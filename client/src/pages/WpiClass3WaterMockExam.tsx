@@ -1,6 +1,6 @@
 // WPI CLASS III WATER TREATMENT MOCK EXAM
 // 100 questions · 2-hour timer · 70% pass threshold
-// Used for: BC (EOCP Level I), Alberta (AWWOA Class I), Saskatchewan, Manitoba
+// Used for: BC (EOCP Level III), Alberta (AWWOA Class III), Saskatchewan, Manitoba
 
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Link } from "wouter";
@@ -175,7 +175,7 @@ export default function WpiClass3WaterMockExam() {
         productName="WPI Class III Water Treatment Practice Pass"
         price={79}
         features={[
-          "502 WPI Class I questions — unlimited practice",
+          "532 WPI Class III questions — unlimited practice",
           "Timed mock exam (100 questions, 2 hrs)",
           "Module-by-module performance breakdown",
           "AI Tutor explanations on every question",
@@ -215,7 +215,7 @@ export default function WpiClass3WaterMockExam() {
                   textTransform: "uppercase",
                 }}
               >
-                WPI Class I · Water Treatment
+                WPI Class III · Water Treatment
               </div>
               <h1
                 style={{

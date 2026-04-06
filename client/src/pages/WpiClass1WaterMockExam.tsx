@@ -175,7 +175,7 @@ export default function WpiClass1WaterMockExam() {
         productName="WPI Class I Water Treatment Practice Pass"
         price={79}
         features={[
-          "502 WPI Class I questions — unlimited practice",
+          "599 WPI Class I questions — unlimited practice",
           "Timed mock exam (100 questions, 2 hrs)",
           "Module-by-module performance breakdown",
           "AI Tutor explanations on every question",

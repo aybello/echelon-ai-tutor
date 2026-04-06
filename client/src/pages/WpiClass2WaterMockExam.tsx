@@ -1,4 +1,4 @@
-// WPI CLASS I WATER TREATMENT MOCK EXAM
+// WPI CLASS II WATER TREATMENT MOCK EXAM
 // 100 questions · 2-hour timer · 70% pass threshold
 // Used for: BC (EOCP Level II), Alberta (AWWOA Class II), Saskatchewan, Manitoba
 
@@ -67,7 +67,7 @@ function formatTime(seconds: number): string {
 
 export default function WpiClass2WaterMockExam() {
   usePageMeta({
-    title: "WPI Class III Water Treatment Mock Exam — 100 Questions",
+    title: "WPI Class II Water Treatment Mock Exam — 100 Questions",
     description:
       "Timed 100-question mock exam for the WPI Class II Water Treatment certification. BC EOCP Level II, Alberta AWWOA Class II, Saskatchewan, Manitoba. 2-hour timer, 70% pass threshold.",
     path: "/wpi-class2-water-mock",
@@ -175,7 +175,7 @@ export default function WpiClass2WaterMockExam() {
         productName="WPI Class II Water Treatment Practice Pass"
         price={79}
         features={[
-          "502 WPI Class II questions — unlimited practice",
+          "599 WPI Class II questions — unlimited practice",
           "Timed mock exam (100 questions, 2 hrs)",
           "Module-by-module performance breakdown",
           "AI Tutor explanations on every question",

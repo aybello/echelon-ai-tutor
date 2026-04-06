@@ -175,7 +175,7 @@ export default function WpiClass4WaterMockExam() {
         productName="WPI Class IV Water Treatment Practice Pass"
         price={149}
         features={[
-          "592 WPI Class IV questions — unlimited practice",
+          "593 WPI Class IV questions — unlimited practice",
           "Timed mock exam (100 questions, 2 hrs)",
           "Module-by-module performance breakdown",
           "AI Tutor explanations on every question",
@@ -231,7 +231,7 @@ export default function WpiClass4WaterMockExam() {
               <p style={{ color: "#64748B", fontSize: 15, lineHeight: 1.6, margin: "0 0 32px" }}>
                 100 questions · 2-hour time limit · 70% to pass
                 <br />
-                BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB
+                BC (EOCP Level IV) · Alberta (AWWOA Class IV) · SK · MB
               </p>
 
               <div

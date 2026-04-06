@@ -151,6 +151,12 @@ export default function WpiClass3WastewaterMockExam() {
           productKey="wpi-class3-wastewater"
           productName="WPI Class III Wastewater Practice Pass"
           price={99}
+          features={[
+            "608 WPI Class III questions — unlimited practice",
+            "Timed mock exam (100 questions, 2 hrs)",
+            "Module-by-module performance breakdown",
+            "AI Tutor explanations on every question",
+          ]}
         >
           {/* ── INTRO ── */}
           {examState === "intro" && (

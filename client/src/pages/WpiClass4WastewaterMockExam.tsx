@@ -173,7 +173,17 @@ export default function WpiClass4WastewaterMockExam() {
         </div>
 
         <PurchaseGate
-      backPath="/wpi" examType="wpi-class4-wastewater" productKey="wpi-class4-wastewater" productName="WPI Class IV Wastewater Practice Pass" price={149}>
+      backPath="/wpi"
+          examType="wpi-class4-wastewater"
+          productKey="wpi-class4-wastewater"
+          productName="WPI Class IV Wastewater Practice Pass"
+          price={149}
+          features={[
+            "607 WPI Class IV questions — unlimited practice",
+            "Timed mock exam (100 questions, 2 hrs)",
+            "Module-by-module performance breakdown",
+            "AI Tutor explanations on every question",
+          ]}>
           {/* ── INTRO ── */}
           {examState === "intro" && (
             <div style={{ background: "#fff", borderRadius: 20, padding: "40px 32px", border: "1px solid #E2E8F0", textAlign: "center" }}>
