@@ -226,7 +226,7 @@ export default function Home() {
           questionsAnswered={history.length}
           productKey="oit"
           productName="OIT Practice Pass"
-          priceLabel="CA$49"
+          priceLabel="CA$79"
           paidFeatures={[
             "Full 500+ question bank — unlimited attempts",
             "OIT Mock Exam (100 questions, 2-hour timer)",

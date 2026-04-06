@@ -40,7 +40,7 @@ export default function WpiClass2WastewaterMockExam() {
       questionPool={POOL}
       productKey="wpi-class2-wastewater"
       productName="WPI Class II Wastewater Treatment Practice Pass"
-      price={79}
+      price={199}
       backPath="/wpi"
       practicePath="/wpi-class2-wastewater"
       practiceLabel="Class II Wastewater Practice"

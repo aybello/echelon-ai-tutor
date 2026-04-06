@@ -31,8 +31,8 @@ const INDIVIDUAL: Product[] = [
     key: "oit",
     name: "OIT Practice Pass",
     shortName: "OIT",
-    description: "Operator-in-Training — foundation water treatment, safety, and Ontario regulations.",
-    priceCAD: 4900,
+    description: "Operator-in-Training — foundation water treatment, safety, and Ontario regulations. Your first step toward a licensed career.",
+    priceCAD: 7900,
     examTypes: ["oit"],
     badge: "Available Now",
     badgeColor: "#16A34A",
@@ -46,8 +46,8 @@ const INDIVIDUAL: Product[] = [
     key: "class1-water",
     name: "Class 1 Water Treatment",
     shortName: "Class 1 Water",
-    description: "Coagulation, filtration, disinfection, CT values, and O. Reg. 128/04.",
-    priceCAD: 9900,
+    description: "Coagulation, filtration, disinfection, CT values, and O. Reg. 128/04. Pass faster with Canada-specific AI explanations.",
+    priceCAD: 14900,
     examTypes: ["class1-water"],
     badge: "Available Now",
     badgeColor: "#16A34A",
@@ -61,8 +61,8 @@ const INDIVIDUAL: Product[] = [
     key: "class2-water",
     name: "Class 2 Water Treatment",
     shortName: "Class 2 Water",
-    description: "Advanced treatment processes, SCADA, corrosion control, membrane filtration, and process troubleshooting.",
-    priceCAD: 14900,
+    description: "Advanced treatment processes, SCADA, corrosion control, membrane filtration, and process troubleshooting. Operators who pass Class 2 typically earn $70K–$90K.",
+    priceCAD: 19900,
     examTypes: ["class2-water"],
     badge: "Available Now",
     badgeColor: "#16A34A",
@@ -76,8 +76,8 @@ const INDIVIDUAL: Product[] = [
     key: "class3-water",
     name: "Class 3 Water Treatment",
     shortName: "Class 3 Water",
-    description: "Application-level exam prep: LSI, CT values, membranes, lime softening, SCADA, source water, and advanced process control.",
-    priceCAD: 24900,
+    description: "Application-level exam prep: LSI, CT values, membranes, lime softening, SCADA, source water, and advanced process control. Class 3 operators earn $85K–$105K.",
+    priceCAD: 34900,
     examTypes: ["class3-water"],
     badge: "Available Now",
     badgeColor: "#16A34A",
@@ -91,8 +91,8 @@ const INDIVIDUAL: Product[] = [
     key: "class4-water",
     name: "Class 4 Water Treatment",
     shortName: "Class 4 Water",
-    description: "Chief operator-level exam prep: full system management, regulatory leadership, strategic operations, and emergency response.",
-    priceCAD: 34900,
+    description: "Chief operator-level exam prep: full system management, regulatory leadership, strategic operations, and emergency response. Class 4 chief operators earn $100K–$130K+.",
+    priceCAD: 49900,
     examTypes: ["class4-water"],
     badge: "Available Now",
     badgeColor: "#16A34A",
@@ -106,8 +106,8 @@ const INDIVIDUAL: Product[] = [
     key: "oit-ww",
     name: "OIT Wastewater Practice Pass",
     shortName: "OIT Wastewater",
-    description: "Operator-in-Training Wastewater — collection systems, basic treatment, safety, and Ontario regulations.",
-    priceCAD: 4900,
+    description: "Operator-in-Training Wastewater — collection systems, basic treatment, safety, and Ontario regulations. Your first step toward a licensed wastewater career.",
+    priceCAD: 7900,
     examTypes: ["oit-ww"],
     badge: "Available Now",
     badgeColor: "#16A34A",
@@ -121,8 +121,8 @@ const INDIVIDUAL: Product[] = [
     key: "class1-ww",
     name: "Class 1 Wastewater Treatment",
     shortName: "Class 1 Wastewater",
-    description: "Primary and secondary treatment, activated sludge, solids handling, and Ontario regulations.",
-    priceCAD: 9900,
+    description: "Primary and secondary treatment, activated sludge, solids handling, and Ontario regulations. Pass faster with AI-explained step-by-step solutions.",
+    priceCAD: 14900,
     examTypes: ["class1-ww"],
     badge: "Available Now",
     badgeColor: "#16A34A",
@@ -136,8 +136,8 @@ const INDIVIDUAL: Product[] = [
     key: "class2-ww",
     name: "Class 2 Wastewater Treatment",
     shortName: "Class 2 Wastewater",
-    description: "Advanced secondary treatment, nutrient removal, biosolids management, and process troubleshooting.",
-    priceCAD: 14900,
+    description: "Advanced secondary treatment, nutrient removal, biosolids management, and process troubleshooting. Operators who pass Class 2 WW typically earn $70K–$90K.",
+    priceCAD: 19900,
     examTypes: ["class2-ww"],
     badge: "Available Now",
     badgeColor: "#16A34A",
@@ -151,8 +151,8 @@ const INDIVIDUAL: Product[] = [
     key: "class3-ww",
     name: "Class 3 Wastewater Treatment",
     shortName: "Class 3 Wastewater",
-    description: "Advanced BNR, industrial pretreatment, biosolids, and regulatory compliance.",
-    priceCAD: 24900,
+    description: "Advanced BNR, industrial pretreatment, biosolids, and regulatory compliance. Class 3 WW operators earn $85K–$105K.",
+    priceCAD: 34900,
     examTypes: ["class3-ww"],
     badge: "Available Now",
     badgeColor: "#16A34A",
@@ -166,8 +166,8 @@ const INDIVIDUAL: Product[] = [
     key: "class4-ww",
     name: "Class 4 Wastewater Treatment",
     shortName: "Class 4 Wastewater",
-    description: "Plant superintendent level: BNR, MBR, biosolids, regulatory compliance, and emergency response.",
-    priceCAD: 34900,
+    description: "Plant superintendent level: BNR, MBR, biosolids, regulatory compliance, and emergency response. Class 4 WW superintendents earn $100K–$130K+.",
+    priceCAD: 49900,
     examTypes: ["class4-ww"],
     badge: "Available Now",
     badgeColor: "#16A34A",
@@ -181,8 +181,8 @@ const INDIVIDUAL: Product[] = [
     key: "wqa",
     name: "Water Quality Analyst Practice Pass",
     shortName: "WQA",
-    description: "Water Quality Analyst exam prep — lab procedures, sampling, analytical methods, and Ontario regulations.",
-    priceCAD: 9900,
+    description: "Water Quality Analyst exam prep — lab procedures, sampling, analytical methods, and Ontario regulations. WQA certification opens $65K–$85K analyst roles.",
+    priceCAD: 17900,
     examTypes: ["wqa"],
     badge: "Available Now",
     badgeColor: "#16A34A",
@@ -197,7 +197,7 @@ const INDIVIDUAL: Product[] = [
     name: "WPI Class I Water Treatment Practice Pass",
     shortName: "WPI Class I Water",
     description: "WPI Class I Water Treatment — 502 questions covering treatment process, equipment O&M, lab analysis, and source water. Recognized by EOCP (BC), AWWOA (AB), SK, and MB.",
-    priceCAD: 9900,
+    priceCAD: 14900,
     examTypes: ["wpi-class1-water"],
     badge: "WPI Exam",
     badgeColor: "#0E7490",
@@ -212,7 +212,7 @@ const INDIVIDUAL: Product[] = [
     name: "WPI Class II Water Treatment Practice Pass",
     shortName: "WPI Class II Water",
     description: "WPI Class II Water Treatment — 501 advanced questions across 5 modules. Covers advanced treatment processes, system design, lab monitoring, source water management, and regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
-    priceCAD: 14900,
+    priceCAD: 19900,
     examTypes: ["wpi-class2-water"],
     badge: "WPI Exam",
     badgeColor: "#0E7490",
@@ -227,7 +227,7 @@ const INDIVIDUAL: Product[] = [
     name: "WPI Class III Water Treatment Practice Pass",
     shortName: "WPI Class III Water",
     description: "WPI Class III Water Treatment — 502 questions across 5 advanced modules. Covers ozone/UV disinfection, membrane filtration, advanced process control, distribution management, and regulatory QMS. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
-    priceCAD: 24900,
+    priceCAD: 34900,
     examTypes: ["wpi-class3-water"],
     badge: "WPI Exam",
     badgeColor: "#0E7490",
@@ -242,7 +242,7 @@ const INDIVIDUAL: Product[] = [
     name: "WPI Class IV Water Treatment Practice Pass",
     shortName: "WPI Class IV Water",
     description: "WPI Class IV Water Treatment — 501 questions across 6 chief-operator modules. Covers advanced CT/disinfection, membrane systems, plant management & leadership, asset management, regulatory compliance, and emergency response. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
-    priceCAD: 34900,
+    priceCAD: 49900,
     examTypes: ["wpi-class4-water"],
     badge: "WPI Exam",
     badgeColor: "#0E7490",
@@ -257,7 +257,7 @@ const INDIVIDUAL: Product[] = [
     name: "WPI Class I Wastewater Treatment Practice Pass",
     shortName: "WPI Class I Wastewater",
     description: "WPI Class I Wastewater Treatment — 500 questions across 5 modules: Collection Systems, Primary & Secondary Treatment, Solids Handling & Biosolids, Lab & Monitoring, Safety & Regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
-    priceCAD: 9900,
+    priceCAD: 14900,
     examTypes: ["wpi-class1-wastewater"],
     badge: "WPI Exam",
     badgeColor: "#0E7490",
@@ -272,7 +272,7 @@ const INDIVIDUAL: Product[] = [
     name: "WPI Class II Wastewater Treatment Practice Pass",
     shortName: "WPI Class II Wastewater",
     description: "WPI Class II Wastewater Treatment — 501 questions across 5 advanced modules: Secondary Treatment, Nutrient Removal, Biosolids Management, Advanced Treatment, and Process Control & Safety. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
-    priceCAD: 14900,
+    priceCAD: 19900,
     examTypes: ["wpi-class2-wastewater"],
     badge: "WPI Exam",
     badgeColor: "#0E7490",
@@ -287,7 +287,7 @@ const INDIVIDUAL: Product[] = [
     name: "WPI Class III Wastewater Treatment Practice Pass",
     shortName: "WPI Class III Wastewater",
     description: "WPI Class III Wastewater Treatment — 501 questions across 8 senior-level modules: Advanced BNR, MBR, Industrial Pretreatment, Biosolids, Process Control, Regulatory Compliance, Safety, and Emerging Technologies. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
-    priceCAD: 24900,
+    priceCAD: 34900,
     examTypes: ["wpi-class3-wastewater"],
     badge: "WPI Exam",
     badgeColor: "#1D4ED8",
@@ -302,7 +302,7 @@ const INDIVIDUAL: Product[] = [
     name: "WPI Class IV Wastewater Treatment Practice Pass",
     shortName: "WPI Class IV Wastewater",
     description: "WPI Class IV Wastewater Treatment — 502 questions across 7 chief-operator-level modules: Advanced Process Control, BNR & Resource Recovery, Emerging Technologies, Plant Management, Regulatory Compliance, Emergency Response, and Health & Safety. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
-    priceCAD: 34900,
+    priceCAD: 49900,
     examTypes: ["wpi-class4-wastewater"],
     badge: "WPI Exam",
     badgeColor: "#6D28D9",
@@ -314,89 +314,6 @@ const INDIVIDUAL: Product[] = [
   },
 ];
 
-interface Bundle {
-  key: string;
-  name: string;
-  tagline: string;
-  description: string;
-  priceCAD: number;
-  savings: number;
-  includes: string[];
-  color: string;
-  bg: string;
-  border: string;
-  badge?: string;
-  badgeColor?: string;
-}
-
-const BUNDLES: Bundle[] = [
-  {
-    key: "bundle-water",
-    name: "Water Treatment Full Ladder",
-    tagline: "OIT + Class 1–4",
-    description: "Every Water Treatment exam in one pass. Take your career from OIT all the way to Class 4.",
-    priceCAD: 34900,
-    savings: 15500,
-    includes: ["OIT Practice Pass", "Class 1 Water Treatment", "Class 2 Water Treatment", "Class 3 Water Treatment", "Class 4 Water Treatment"],
-    color: "#1D4ED8",
-    bg: "linear-gradient(135deg, #EFF6FF, #F0F9FF)",
-    border: "#BFDBFE",
-  },
-  {
-    key: "bundle-ww",
-    name: "Wastewater Full Ladder",
-    tagline: "OIT WW + Class 1–4",
-    description: "Complete Wastewater Treatment ladder — OIT WW through Class 4 in one bundle.",
-    priceCAD: 29900,
-    savings: 20700,
-    includes: ["OIT Wastewater Practice Pass", "Class 1 Wastewater", "Class 2 Wastewater", "Class 3 Wastewater", "Class 4 Wastewater"],
-    color: "#0F766E",
-    bg: "linear-gradient(135deg, #F0FDFA, #ECFDF5)",
-    border: "#99F6E4",
-  },
-  {
-    key: "bundle-wpi-water",
-    name: "WPI Water Full Ladder",
-    tagline: "WPI Class I–IV Water",
-    description: "Complete WPI Water Treatment ladder for BC, AB, SK & MB operators. Class I through Class IV in one pass.",
-    priceCAD: 29900,
-    savings: 15700,
-    includes: ["WPI Class I Water Practice Pass", "WPI Class II Water Practice Pass", "WPI Class III Water Practice Pass", "WPI Class IV Water Practice Pass"],
-    color: "#0E7490",
-    bg: "linear-gradient(135deg, #ECFEFF, #EFF6FF)",
-    border: "#A5F3FC",
-    badge: "WPI Bundle",
-    badgeColor: "#0E7490",
-  },
-  {
-    key: "bundle-wpi-wastewater",
-    name: "WPI Wastewater Full Ladder",
-    tagline: "WPI Class I–IV Wastewater",
-    description: "Complete WPI Wastewater Treatment ladder for BC, AB, SK & MB operators. Class I through Class IV in one pass. 1,500+ questions total.",
-    priceCAD: 29900,
-    savings: 15700,
-    includes: ["WPI Class I Wastewater Practice Pass", "WPI Class II Wastewater Practice Pass", "WPI Class III Wastewater Practice Pass", "WPI Class IV Wastewater Practice Pass"],
-    color: "#1D4ED8",
-    bg: "linear-gradient(135deg, #EFF6FF, #F5F3FF)",
-    border: "#BFDBFE",
-    badge: "WPI Bundle",
-    badgeColor: "#1D4ED8",
-  },
-  {
-    key: "bundle-all",
-    name: "Complete All Access",
-    tagline: "All 19 Practice Passes",
-    description: "Every exam on the platform — Water Treatment, Wastewater, WQA, and all WPI courses. The ultimate prep bundle.",
-    priceCAD: 59900,
-    savings: 140200,
-    includes: ["OIT Water", "OIT Wastewater", "Class 1–4 Water Treatment", "Class 1–4 Wastewater", "WQA", "WPI Class I–IV Water", "WPI Class I–IV Wastewater"],
-    color: "#7C3AED",
-    bg: "linear-gradient(135deg, #F5F3FF, #EFF6FF)",
-    border: "#DDD6FE",
-    badge: "Best Value",
-    badgeColor: "#7C3AED",
-  },
-];
 
 // ─── Checkout button ──────────────────────────────────────────────────────────
 function CheckoutButton({
@@ -765,9 +682,9 @@ export default function Pricing() {
 
       {/* ── Hero ── */}
       <div className="pricing-hero">
-        <div className="pricing-hero-badge">Canadian Operator Certification Prep</div>
-        <h1>Simple, Transparent Pricing</h1>
-        <p>One-time payment. Unlimited practice. AI Tutor included.<br />No subscription, no hidden fees.</p>
+        <div className="pricing-hero-badge">Canadian Water &amp; Wastewater Operator Certification</div>
+        <h1>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</h1>
+        <p>One-time payment. Unlimited practice. AI Tutor &amp; step-by-step solutions included.<br />Operators who pass Class 3–4 earn <strong>$85K–$130K+</strong>. Your pass costs less than one day's pay.</p>
 
         {/* Province selector */}
         <div className="province-selector">
@@ -929,13 +846,13 @@ export default function Pricing() {
           }}
         >
           <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
-            What's included with every Practice Pass
+            Everything you need to pass — included in every Practice Pass
           </h3>
           <p style={{ color: "#64748B", fontSize: 14, margin: "0 0 8px" }}>
-            One-time payment — access never expires
+            One-time payment — access never expires. No subscription, no hidden fees.
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
-            8,500+ questions across Water Treatment, Wastewater, WQA, and WPI tracks
+            8,500+ questions across Water Treatment, Wastewater, WQA, and WPI tracks. Canada-specific. AI-explained.
           </p>
           <div className="trust-grid">
             {[
@@ -971,12 +888,20 @@ export default function Pricing() {
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {[
               {
+                q: "Why are the prices higher than other prep courses?",
+                a: "Because this isn't a video course — it's a career accelerator. Operators who pass Class 3 or Class 4 typically earn $85K–$130K+. Your Practice Pass costs less than one day's pay at that salary. We price based on outcome value, not content volume.",
+              },
+              {
                 q: "Do the Practice Passes expire?",
-                a: "No. Your access never expires. Pay once, practice as many times as you need.",
+                a: "No. Your access never expires. Pay once, practice as many times as you need until you pass.",
               },
               {
                 q: "Are the questions based on real exam content?",
-                a: "Yes. All questions are written by certified operators and aligned with OWWCO, EOCP, and provincial exam syllabi.",
+                a: "Yes. All questions are written by certified operators and aligned with OWWCO, EOCP, and provincial exam syllabi. Every calculation question includes a full step-by-step AI-explained solution.",
+              },
+              {
+                q: "What makes Echelon different from free study materials?",
+                a: "Free materials give you content. Echelon gives you adaptive practice, instant AI explanations for every wrong answer, timed mock exams that simulate the real thing, and a score history that shows exactly where to focus. The difference is passing vs. re-booking.",
               },
               {
                 q: "What payment methods do you accept?",

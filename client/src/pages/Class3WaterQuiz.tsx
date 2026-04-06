@@ -152,7 +152,7 @@ export default function Class3WaterQuiz() {
         questionsAnswered={history.length}
         productKey="class3-water"
         productName="Class 3 Water Treatment Practice Pass"
-        priceLabel="CA$249"
+        priceLabel="CA$349"
         paidFeatures={[
           "500+ Class 3 Water questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
@@ -176,7 +176,7 @@ export default function Class3WaterQuiz() {
       examType="class3-water"
       productKey="class3-water"
       productName="Ontario Class 3 · Water Treatment"
-      price={129}
+      price={349}
     >
       <QuizShell
         currentPath="/class3-water"

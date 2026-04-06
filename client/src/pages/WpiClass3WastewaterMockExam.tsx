@@ -46,7 +46,7 @@ export default function WpiClass3WastewaterMockExam() {
       questionPool={POOL}
       productKey="wpi-class3-wastewater"
       productName="WPI Class III Wastewater Practice Pass"
-      price={99}
+      price={349}
       backPath="/wpi"
       practicePath="/wpi-class3-wastewater"
       practiceLabel="Class III Wastewater Practice"

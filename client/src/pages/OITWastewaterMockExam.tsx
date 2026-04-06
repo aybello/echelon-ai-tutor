@@ -189,7 +189,7 @@ export default function OITWastewaterMockExam() {
   // ─── INTRO ───────────────────────────────────────────────────────────────────
   if (examState === "intro") {
     return (
-      <PurchaseGate examType="oit-ww" productKey="oit-ww" productName="OIT Wastewater Practice Pass" price={49}>
+      <PurchaseGate examType="oit-ww" productKey="oit-ww" productName="OIT Wastewater Practice Pass" price={79}>
         <div style={{ minHeight: "100vh", background: "#F8FAFC" }}>
           <SiteNav currentPath="/oit-ww-mock" />
           <div style={{ maxWidth: 680, margin: "0 auto", padding: "48px 16px" }}>

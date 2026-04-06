@@ -46,7 +46,7 @@ export default function Class1WastewaterMockExam() {
       questionPool={POOL}
       productKey="class1-ww"
       productName="Class 1 Wastewater Practice Pass"
-      price={79}
+      price={149}
       backPath="/ontario"
       practicePath="/class1-ww"
       practiceLabel="Class 1 Wastewater Practice"

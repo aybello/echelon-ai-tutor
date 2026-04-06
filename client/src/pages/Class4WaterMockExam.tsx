@@ -40,7 +40,7 @@ export default function Class4WaterMockExam() {
       questionPool={POOL}
       productKey="class4-water"
       productName="Class 4 Water Treatment Practice Pass"
-      price={149}
+      price={499}
       backPath="/ontario"
       practicePath="/class4-water"
       practiceLabel="Class 4 Water Practice"

@@ -212,7 +212,7 @@ export default function WQAMockExam() {
   // -- INTRO SCREEN ----------------------------------------─  // -- INTRO SCREEN --
   if (examState === "intro") {
     return (
-      <PurchaseGate examType="wqa" productKey="wqa" productName="WQA Practice Pass" price={79}>
+      <PurchaseGate examType="wqa" productKey="wqa" productName="WQA Practice Pass" price={179}>
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath="/wqa-mock" />   <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px" }}>
           <div style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center" }}>
