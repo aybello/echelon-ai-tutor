@@ -19,6 +19,9 @@ export interface FlashcardQuestion {
   correctIndex?: number;
   explanation: string;
   difficulty?: string;
+  /** Calculation questions are excluded from flashcard decks */
+  isCalc?: boolean;
+  type?: string;
 }
 
 interface FlashcardShellProps {
@@ -58,13 +61,20 @@ function getStoredEmail(): string {
   catch { return ""; }
 }
 
+/** Strip calculation questions — they require multi-step math and are not suitable for flip-card study */
+function filterConceptual(qs: FlashcardQuestion[]): FlashcardQuestion[] {
+  return qs.filter(q => !q.isCalc && q.type !== "calculation");
+}
+
 export default function FlashcardShell({ questions, examName, examType, backPath, modules }: FlashcardShellProps) {
+  // Remove calculation questions once, before any deck operations
+  const conceptualQuestions = useMemo(() => filterConceptual(questions), [questions]);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [flipped, setFlipped] = useState(false);
   const [index, setIndex] = useState(0);
   const [known, setKnown] = useState<Set<number | string>>(new Set());
   const [reviewing, setReviewing] = useState(false);
-  const [deck, setDeck] = useState<FlashcardQuestion[]>(() => shuffleArr(questions));
+  const [deck, setDeck] = useState<FlashcardQuestion[]>(() => shuffleArr(conceptualQuestions));
   const [sessionComplete, setSessionComplete] = useState(false);
   const [progressLoaded, setProgressLoaded] = useState(false);
 
@@ -104,16 +114,16 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         email,
         examType,
         knownIds: Array.from(nextKnown),
-        totalCards: questions.length,
+        totalCards: conceptualQuestions.length,
       });
     }, 800);
   }, [email, examType, questions.length, saveProgress]);
 
   // Memoized filtered list (used for module switching)
   const _filtered = useMemo(() => {
-    const base = selectedModule ? questions.filter(q => q.module === selectedModule) : questions;
+    const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
     return reviewing ? base.filter(q => !known.has(q.id)) : base;
-  }, [questions, selectedModule, reviewing, known]);
+  }, [conceptualQuestions, selectedModule, reviewing, known]);
   void _filtered;
 
   const card = deck[index] ?? null;
@@ -137,7 +147,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
 
   const handleModuleChange = (mod: string | null) => {
     setSelectedModule(mod);
-    const base = mod ? questions.filter(q => q.module === mod) : questions;
+    const base = mod ? conceptualQuestions.filter(q => q.module === mod) : conceptualQuestions;
     const next = reviewing ? base.filter(q => !known.has(q.id)) : base;
     reshuffleDeck(next);
   };
