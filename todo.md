@@ -299,3 +299,12 @@
 - [x] P1: Add retry button to AITutor on connection error
 - [x] P2: Fix Contact nav link to work from all pages (not just Landing anchor)
 - [x] P2: Add testimonials section to Landing page
+
+## Account / Restore Access Page (Apr 2026)
+- [x] Rebuild Account.tsx with polished restore-access UI (how-it-works steps, trust signals, loading skeleton)
+- [x] Group passes by Ontario / WPI track with section headers
+- [x] Show purchase history table with date, amount, and product name
+- [x] Add "Copy email" button to success banner
+- [x] Add "Try a different email" button to no-purchases state with common reasons list
+- [x] Improve PurchaseGate restore-access CTA to be a prominent blue button
+- [x] Verify SiteNav already includes 🎫 My Passes link in mobile menu

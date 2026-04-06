@@ -393,25 +393,31 @@ export default function PurchaseGate({
           </Link>
         </div>
 
-        <div
-          style={{
-            marginTop: 20,
-            paddingTop: 16,
-            borderTop: "1px solid #E2E8F0",
-            fontSize: 11,
-            color: "#94A3B8",
-            lineHeight: 1.6,
-          }}
-        >
-          Already purchased?{" "}
-          <a href="/account" style={{ color: "#1D4ED8", fontWeight: 600 }}>
-            Restore access →
+        <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #E2E8F0" }}>
+          <a
+            href="/account"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              padding: "11px 16px",
+              borderRadius: 10,
+              background: "#EFF6FF",
+              border: "1px solid #BFDBFE",
+              color: "#1D4ED8",
+              fontWeight: 700,
+              fontSize: 13,
+              textDecoration: "none",
+              marginBottom: 8,
+            }}
+          >
+            🎫 Already purchased? Restore access →
           </a>
-          <br />
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); loginWithReturnPath(window.location.pathname); }}
-            style={{ color: "#64748B", fontWeight: 500, marginTop: 4, display: "inline-block" }}
+            style={{ display: "block", textAlign: "center", color: "#94A3B8", fontWeight: 500, fontSize: 11 }}
           >
             Log in to your account →
           </a>
