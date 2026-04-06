@@ -8145,7 +8145,10 @@ export const CLASS4_WATER_MODULES = [
   "Advanced Treatment",
   "Lab Analysis",
   "Safety",
+];
 
+// Extra questions (501-522) appended to QUESTIONS below
+const EXTRA_QUESTIONS: Question[] = [
 {
   "id": 501,
   isCalc: true,
@@ -8801,6 +8804,9 @@ export const CLASS4_WATER_MODULES = [
   difficulty: "medium"
 }
 ];
+
+// Merge extra questions into the main bank
+QUESTIONS.push(...EXTRA_QUESTIONS);
 
 export interface HistoryEntry {
   id: string | number;

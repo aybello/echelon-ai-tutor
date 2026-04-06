@@ -2,6 +2,8 @@ import PurchaseGate from "@/components/PurchaseGate";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
 import { CLASS4_WW_QUESTIONS, CLASS4_WASTEWATER_MODULES } from "@/lib/class4WastewaterQuestions";
 
+const C4WW_MODULE_NAMES = CLASS4_WASTEWATER_MODULES.map((m) => (m as unknown as { name: string }).name);
+
 export default function Class4WastewaterFlashcards() {
   return (
     <PurchaseGate
@@ -15,7 +17,7 @@ export default function Class4WastewaterFlashcards() {
         examName="Ontario Class 4 Wastewater"
         examType="class4-ww"
         backPath="/class4-ww"
-        modules={CLASS4_WASTEWATER_MODULES as unknown as string[]}
+        modules={C4WW_MODULE_NAMES}
       />
     </PurchaseGate>
   );

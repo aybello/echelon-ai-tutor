@@ -4,6 +4,7 @@
 export interface C3WWQuestion {
   id: number;
   module: string;
+  topic?: string;
   question: string;
   options: string[];
   correct: number;
@@ -4584,7 +4585,10 @@ export const CLASS3_WW_MODULES = [
   "Laboratory Analysis",
   "Security, Safety & Admin",
   "Treatment Process Monitoring",
+];
 
+// Extra questions (503-537) appended to CLASS3_WW_QUESTIONS below
+const EXTRA_C3WW_QUESTIONS: C3WWQuestion[] = [
 {
         "id": 503,
         isCalc: true,
@@ -5590,3 +5594,6 @@ export const CLASS3_WW_MODULES = [
     difficulty: "medium",
   }
 ];
+
+// Merge extra questions into the main bank
+CLASS3_WW_QUESTIONS.push(...EXTRA_C3WW_QUESTIONS);

@@ -7779,7 +7779,12 @@ export const CLASS4_WW_FORMULA_LINKS: Record<string, string> = Object.fromEntrie
       "Biosolids Management & Regulations": "#biosolids",
       "Plant Management, Safety & Administration": "#plant-management",
     };
-    return [`CL4-WW-${q.id}`, moduleToAnchor[q.module] || "#advanced-treatment",
+    return [`CL4-WW-${q.id}`, moduleToAnchor[q.module] || "#advanced-treatment"];
+  })
+);
+
+// Extra questions (502-518) appended to CLASS4_WW_QUESTIONS below
+const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
   {
     id: 502,
     module: "Activated Sludge",
@@ -7968,5 +7973,6 @@ export const CLASS4_WW_FORMULA_LINKS: Record<string, string> = Object.fromEntrie
     difficulty: "medium",
   }
 ];
-  })
-);
+
+// Merge extra questions into the main bank
+CLASS4_WW_QUESTIONS.push(...EXTRA_WW_QUESTIONS);
