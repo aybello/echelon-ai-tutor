@@ -46,10 +46,10 @@ export default function WpiClass4WastewaterMockExam() {
       productName="WPI Class IV Wastewater Practice Pass"
       price={149}
       backPath="/wpi"
-      practicePath="/wpi-class4-ww"
+      practicePath="/wpi-class4-wastewater"
       practiceLabel="Class IV Wastewater Practice"
       showProvinceSelector={false}
-      currentPath="/wpi-class4-ww-mock"
+      currentPath="/wpi-class4-wastewater-mock"
       infoLine={`${POOL.length} questions · BC (EOCP Level IV) · Alberta (AWWOA Class IV) · SK · MB`}
       stream="wastewater"
       accentColor="#0F766E"

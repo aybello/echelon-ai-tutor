@@ -48,10 +48,10 @@ export default function WpiClass3WastewaterMockExam() {
       productName="WPI Class III Wastewater Practice Pass"
       price={99}
       backPath="/wpi"
-      practicePath="/wpi-class3-ww"
+      practicePath="/wpi-class3-wastewater"
       practiceLabel="Class III Wastewater Practice"
       showProvinceSelector={false}
-      currentPath="/wpi-class3-ww-mock"
+      currentPath="/wpi-class3-wastewater-mock"
       infoLine={`${POOL.length} questions · BC (EOCP Level III) · Alberta (AWWOA Class III) · SK · MB`}
       stream="wastewater"
       accentColor="#0F766E"

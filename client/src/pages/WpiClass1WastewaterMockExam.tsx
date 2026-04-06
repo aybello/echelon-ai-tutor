@@ -42,10 +42,10 @@ export default function WpiClass1WastewaterMockExam() {
       productName="WPI Class I Wastewater Treatment Practice Pass"
       price={79}
       backPath="/wpi"
-      practicePath="/wpi-class1-ww"
+      practicePath="/wpi-class1-wastewater"
       practiceLabel="Class I Wastewater Practice"
       showProvinceSelector={false}
-      currentPath="/wpi-class1-ww-mock"
+      currentPath="/wpi-class1-wastewater-mock"
       infoLine={`${POOL.length} questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB`}
       stream="wastewater"
       accentColor="#0F766E"
