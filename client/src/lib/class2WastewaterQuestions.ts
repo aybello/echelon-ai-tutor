@@ -7024,7 +7024,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 501,
     "module": "Treatment Process",
-    "topic": "BOD Loading Rate",
     "question": "A wastewater treatment plant receives 8,000 m³/d of influent with a BOD of 250 mg/L. What is the daily BOD load in kg/d?",
     "options": ["2,000 kg/d", "200 kg/d", "20,000 kg/d", "250 kg/d"],
     "correct": 0,
@@ -7035,7 +7034,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 502,
     "module": "Treatment Process",
-    "topic": "BOD Removal Efficiency",
     "question": "A secondary treatment plant receives influent BOD of 250 mg/L and produces effluent BOD of 20 mg/L. What is the BOD removal efficiency?",
     "options": ["92%", "80%", "88%", "95%"],
     "correct": 0,
@@ -7046,7 +7044,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 503,
     "module": "Treatment Process",
-    "topic": "Aeration Tank HRT",
     "question": "An aeration tank has a volume of 3,000 m³ and receives a flow of 8,000 m³/d. What is the hydraulic retention time in hours?",
     "options": ["9.0 h", "0.375 h", "24 h", "3.75 h"],
     "correct": 0,
@@ -7057,7 +7054,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 504,
     "module": "Treatment Process",
-    "topic": "F:M Ratio",
     "question": "An aeration tank has a volume of 3,000 m³, MLSS of 3,500 mg/L (VSS fraction = 0.80), and receives a BOD load of 2,000 kg/d. What is the F:M ratio (kg BOD/kg VSS·d)?",
     "options": ["0.24 kg BOD/kg VSS·d", "0.19 kg BOD/kg VSS·d", "0.30 kg BOD/kg VSS·d", "2.38 kg BOD/kg VSS·d"],
     "correct": 0,
@@ -7068,7 +7064,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 505,
     "module": "Treatment Process",
-    "topic": "Sludge Volume Index (SVI)",
     "question": "An activated sludge system has an MLSS of 3,000 mg/L and a 30-minute settled sludge volume (SV₃₀) of 250 mL/L. What is the SVI?",
     "options": ["83 mL/g", "250 mL/g", "0.083 mL/g", "750 mL/g"],
     "correct": 0,
@@ -7079,7 +7074,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 506,
     "module": "Treatment Process",
-    "topic": "Return Activated Sludge Flow",
     "question": "A plant has an influent flow of 8,000 m³/d, desired MLSS of 3,000 mg/L, and RAS concentration of 8,000 mg/L. What RAS flow rate is required?",
     "options": ["4,800 m³/d", "3,000 m³/d", "8,000 m³/d", "2,400 m³/d"],
     "correct": 0,
@@ -7090,7 +7084,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 507,
     "module": "Treatment Process",
-    "topic": "Waste Activated Sludge (WAS) Rate",
     "question": "To maintain an SRT of 10 days, a plant has an aeration tank volume of 3,000 m³, MLSS of 3,000 mg/L, and WAS concentration of 8,000 mg/L. What is the required WAS flow rate in m³/d?",
     "options": ["112.5 m³/d", "300 m³/d", "30 m³/d", "1,125 m³/d"],
     "correct": 0,
@@ -7101,7 +7094,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 508,
     "module": "Treatment Process",
-    "topic": "Secondary Clarifier Solids Loading Rate",
     "question": "A secondary clarifier has an area of 500 m² and receives a combined flow (influent + RAS) of 12,800 m³/d at MLSS of 3,000 mg/L. What is the solids loading rate in kg/m²·d?",
     "options": ["76.8 kg/m²·d", "38.4 kg/m²·d", "25.6 kg/m²·d", "153.6 kg/m²·d"],
     "correct": 0,
@@ -7112,7 +7104,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 509,
     "module": "Treatment Process",
-    "topic": "Secondary Clarifier SOR",
     "question": "A secondary clarifier has a surface area of 500 m² and receives an influent flow of 8,000 m³/d. What is the surface overflow rate?",
     "options": ["16 m³/m²·d", "0.0625 m³/m²·d", "4,000,000 m³/m²·d", "160 m³/m²·d"],
     "correct": 0,
@@ -7123,7 +7114,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 510,
     "module": "Treatment Process",
-    "topic": "Primary Clarifier TSS Removal",
     "question": "A primary clarifier receives wastewater with TSS of 220 mg/L and achieves 55% TSS removal. What is the effluent TSS concentration?",
     "options": ["99 mg/L", "121 mg/L", "55 mg/L", "165 mg/L"],
     "correct": 0,
@@ -7134,7 +7124,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 511,
     "module": "Disinfection",
-    "topic": "Chlorine Dose Calculation",
     "question": "Treated wastewater has a chlorine demand of 6.5 mg/L. The required effluent chlorine residual is 0.5 mg/L. What chlorine dose is needed?",
     "options": ["7.0 mg/L", "6.0 mg/L", "6.5 mg/L", "13.0 mg/L"],
     "correct": 0,
@@ -7145,7 +7134,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 512,
     "module": "Disinfection",
-    "topic": "Chlorine Feed Rate",
     "question": "A plant treats 8,000 m³/d of effluent and requires a chlorine dose of 7.0 mg/L. What is the daily chlorine feed rate in kg/d?",
     "options": ["56 kg/d", "5.6 kg/d", "560 kg/d", "7.0 kg/d"],
     "correct": 0,
@@ -7156,7 +7144,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 513,
     "module": "Disinfection",
-    "topic": "Dechlorination Dose",
     "question": "Chlorinated effluent has a residual of 0.5 mg/L Cl₂. Sodium bisulfite (NaHSO₃) is used for dechlorination at a ratio of 1.46 mg NaHSO₃ per mg Cl₂. What dose of NaHSO₃ is required?",
     "options": ["0.73 mg/L", "0.50 mg/L", "1.46 mg/L", "2.92 mg/L"],
     "correct": 0,
@@ -7167,7 +7154,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 514,
     "module": "Disinfection",
-    "topic": "UV Dose Calculation",
     "question": "A UV disinfection system has an average intensity of 40 mW/cm² and a contact time of 5 seconds. What is the UV dose in mJ/cm²?",
     "options": ["200 mJ/cm²", "8 mJ/cm²", "40 mJ/cm²", "800 mJ/cm²"],
     "correct": 0,
@@ -7178,7 +7164,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 515,
     "module": "Sludge Management",
-    "topic": "Primary Sludge Production",
     "question": "A primary clarifier processes 8,000 m³/d with influent TSS of 220 mg/L and 55% TSS removal. How many kg/d of primary sludge solids are produced?",
     "options": ["968 kg/d", "440 kg/d", "1,760 kg/d", "121 kg/d"],
     "correct": 0,
@@ -7189,7 +7174,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 516,
     "module": "Sludge Management",
-    "topic": "Primary Sludge Volume",
     "question": "A primary clarifier produces 968 kg/d of sludge solids at 4% solids concentration (density = 1,000 kg/m³). What is the daily sludge volume in m³?",
     "options": ["24.2 m³/d", "968 m³/d", "4.0 m³/d", "242 m³/d"],
     "correct": 0,
@@ -7200,7 +7184,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 517,
     "module": "Sludge Management",
-    "topic": "Anaerobic Digester Loading Rate",
     "question": "An anaerobic digester has a volume of 1,500 m³ and receives 1,200 kg VS/d. What is the volatile solids loading rate in kg VS/m³·d?",
     "options": ["0.80 kg VS/m³·d", "1.25 kg VS/m³·d", "1,800 kg VS/m³·d", "0.125 kg VS/m³·d"],
     "correct": 0,
@@ -7211,7 +7194,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 518,
     "module": "Sludge Management",
-    "topic": "Anaerobic Digester HRT",
     "question": "An anaerobic digester has a volume of 1,500 m³ and receives 24 m³/d of sludge. What is the hydraulic retention time in days?",
     "options": ["62.5 days", "0.016 days", "36,000 days", "24 days"],
     "correct": 0,
@@ -7222,7 +7204,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 519,
     "module": "Sludge Management",
-    "topic": "VS Destruction in Digester",
     "question": "An anaerobic digester receives 1,200 kg VS/d and achieves 55% VS destruction. How many kg VS/d leave the digester?",
     "options": ["540 kg VS/d", "660 kg VS/d", "1,200 kg VS/d", "1,760 kg VS/d"],
     "correct": 0,
@@ -7233,7 +7214,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 520,
     "module": "Sludge Management",
-    "topic": "Biogas Production",
     "question": "An anaerobic digester destroys 660 kg VS/d. The biogas yield is 0.75 m³/kg VS destroyed. What is the daily biogas production in m³/d?",
     "options": ["495 m³/d", "880 m³/d", "0.75 m³/d", "660 m³/d"],
     "correct": 0,
@@ -7244,7 +7224,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 521,
     "module": "Treatment Process",
-    "topic": "Theoretical Oxygen Demand",
     "question": "An aeration tank receives a BOD load of 2,000 kg/d. Assuming a theoretical oxygen requirement of 1.0 kg O₂/kg BOD removed, what is the oxygen demand in kg/d?",
     "options": ["2,000 kg/d", "200 kg/d", "20,000 kg/d", "1,000 kg/d"],
     "correct": 0,
@@ -7255,7 +7234,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 522,
     "module": "Treatment Process",
-    "topic": "Aeration Power Requirement",
     "question": "An aeration system has an oxygen transfer efficiency of 1.8 kg O₂/kWh and the oxygen demand is 2,000 kg/d. What is the required power in kW?",
     "options": ["46.3 kW", "3,600 kW", "1,111 kW", "0.9 kW"],
     "correct": 0,
@@ -7266,7 +7244,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 523,
     "module": "Treatment Process",
-    "topic": "Weir Overflow Rate",
     "question": "A secondary clarifier has a weir length of 50 m and receives a flow of 8,000 m³/d. What is the weir overflow rate?",
     "options": ["160 m³/m·d", "400 m³/m·d", "50 m³/m·d", "16 m³/m·d"],
     "correct": 0,
@@ -7277,7 +7254,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 524,
     "module": "Treatment Process",
-    "topic": "Nitrification Oxygen Demand",
     "question": "A plant treats 8,000 m³/d with influent NH₄-N of 30 mg/L. The oxygen demand for nitrification is 4.57 kg O₂/kg NH₄-N. What is the nitrification oxygen demand in kg/d?",
     "options": ["1,097 kg/d", "240 kg/d", "4,570 kg/d", "365 kg/d"],
     "correct": 0,
@@ -7288,7 +7264,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 525,
     "module": "Treatment Process",
-    "topic": "Effluent Ammonia After Nitrification",
     "question": "A nitrifying activated sludge system receives influent NH₄-N of 30 mg/L and achieves 90% removal. What is the effluent NH₄-N concentration?",
     "options": ["3.0 mg/L", "27.0 mg/L", "0.3 mg/L", "30.0 mg/L"],
     "correct": 0,
@@ -7299,7 +7274,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 526,
     "module": "Treatment Process",
-    "topic": "Denitrification NO\u2083 Removal",
     "question": "A denitrification system receives effluent with NO₃-N of 25 mg/L and achieves 80% removal. What is the effluent NO₃-N?",
     "options": ["5.0 mg/L", "20.0 mg/L", "25.0 mg/L", "0.5 mg/L"],
     "correct": 0,
@@ -7310,7 +7284,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 527,
     "module": "Treatment Process",
-    "topic": "Alum Dose for Phosphorus Removal",
     "question": "A plant must reduce effluent phosphorus from 6.0 mg/L to 0.5 mg/L. Alum is dosed at 9.6 mg alum per mg P removed. What alum dose is required?",
     "options": ["52.8 mg/L", "57.6 mg/L", "9.6 mg/L", "5.5 mg/L"],
     "correct": 0,
@@ -7321,7 +7294,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 528,
     "module": "Treatment Process",
-    "topic": "Trickling Filter BOD Loading",
     "question": "A trickling filter has a media volume of 2,000 m³ and receives a BOD load of 1,500 kg/d. What is the volumetric BOD loading rate?",
     "options": ["0.75 kg BOD/m³·d", "750 kg BOD/m³·d", "0.0005 kg BOD/m³·d", "1.33 kg BOD/m³·d"],
     "correct": 0,
@@ -7332,7 +7304,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 529,
     "module": "Treatment Process",
-    "topic": "Trickling Filter Hydraulic Application Rate",
     "question": "A trickling filter has a surface area of 400 m² and receives a flow of 8,000 m³/d. What is the hydraulic application rate?",
     "options": ["20 m³/m²·d", "0.05 m³/m²·d", "3,200,000 m³/m²·d", "200 m³/m²·d"],
     "correct": 0,
@@ -7343,7 +7314,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 530,
     "module": "Treatment Process",
-    "topic": "Trickling Filter Recirculation Ratio",
     "question": "A trickling filter has an influent flow of 8,000 m³/d and a recirculation flow of 4,000 m³/d. What is the recirculation ratio?",
     "options": ["0.5", "2.0", "0.33", "4,000"],
     "correct": 0,
@@ -7354,7 +7324,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 531,
     "module": "Treatment Process",
-    "topic": "NRC Equation \u2014 TF Efficiency",
     "question": "Using the NRC equation, a single-stage trickling filter has W = 1,500 kg BOD/d, V = 2,000 m³, F = 1.0. What is the BOD removal efficiency? (NRC: E = 1 / (1 + 0.4432√(W/VF)))",
     "options": ["72.3%", "58.8%", "41.2%", "88.0%"],
     "correct": 0,
@@ -7365,7 +7334,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 532,
     "module": "Treatment Process",
-    "topic": "Sludge Retention Time (SRT)",
     "question": "An aeration tank has V = 3,000 m³, MLSS = 3,000 mg/L, WAS flow = 112.5 m³/d, WAS concentration = 8,000 mg/L. What is the SRT in days?",
     "options": ["10 days", "30 days", "3 days", "100 days"],
     "correct": 0,
@@ -7376,7 +7344,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 533,
     "module": "Treatment Process",
-    "topic": "Effluent TSS Mass Load",
     "question": "A secondary clarifier produces effluent with TSS of 15 mg/L at a flow of 8,000 m³/d. What is the daily TSS mass leaving in the effluent?",
     "options": ["120 kg/d", "15 kg/d", "1,200 kg/d", "0.12 kg/d"],
     "correct": 0,
@@ -7387,7 +7354,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 534,
     "module": "Treatment Process",
-    "topic": "Sand Filter Hydraulic Loading",
     "question": "A tertiary sand filter has a surface area of 100 m² and receives 2,000 m³/d. What is the hydraulic loading rate?",
     "options": ["20 m³/m²·d", "0.05 m³/m²·d", "200,000 m³/m²·d", "2 m³/m²·d"],
     "correct": 0,
@@ -7398,7 +7364,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 535,
     "module": "Treatment Process",
-    "topic": "Effluent cBOD from Secondary Treatment",
     "question": "A secondary treatment system receives influent BOD of 250 mg/L and achieves 90% removal. What is the effluent cBOD?",
     "options": ["25 mg/L", "225 mg/L", "250 mg/L", "2.5 mg/L"],
     "correct": 0,
@@ -7409,7 +7374,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 536,
     "module": "Treatment Process",
-    "topic": "Oxygen Transfer Rate Correction",
     "question": "A surface aerator has a SOTR of 100 kg O₂/h. At process conditions (α=0.85, β=0.95, T=25°C, DO=2.0 mg/L, DO_sat_clean=9.1 mg/L), what is the actual OTR? (θ=1.024)",
     "options": ["72.2 kg O₂/h", "85 kg O₂/h", "100 kg O₂/h", "57.4 kg O₂/h"],
     "correct": 0,
@@ -7420,7 +7384,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 537,
     "module": "Treatment Process",
-    "topic": "Dissolved Oxygen Deficit",
     "question": "At 20°C, the DO saturation is 9.1 mg/L. The measured DO in the aeration tank is 2.0 mg/L. What is the DO deficit?",
     "options": ["7.1 mg/L", "11.1 mg/L", "2.0 mg/L", "9.1 mg/L"],
     "correct": 0,
@@ -7431,7 +7394,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 538,
     "module": "Sludge Management",
-    "topic": "Gravity Thickener Volume Reduction",
     "question": "A gravity thickener receives 24 m³/d of sludge at 4% solids (40,000 mg/L). The thickened sludge is 6% solids (60,000 mg/L). What is the thickened sludge volume?",
     "options": ["16 m³/d", "24 m³/d", "36 m³/d", "6 m³/d"],
     "correct": 0,
@@ -7442,7 +7404,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 539,
     "module": "Sludge Management",
-    "topic": "Centrifuge Solids Capture",
     "question": "A centrifuge receives 16 m³/d of sludge at 4% solids (40,000 mg/L) and produces 3.2 m³/d of cake at 20% solids (200,000 mg/L). What is the solids capture efficiency?",
     "options": ["100%", "80%", "64%", "20%"],
     "correct": 0,
@@ -7453,7 +7414,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 540,
     "module": "Sludge Management",
-    "topic": "Polymer Dose for Dewatering",
     "question": "A belt filter press processes 16 m³/d of sludge at 4% solids. Polymer is dosed at 5 kg/tonne dry solids. How many kg/d of polymer is required?",
     "options": ["3.2 kg/d", "32 kg/d", "0.32 kg/d", "640 kg/d"],
     "correct": 0,
@@ -7464,7 +7424,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 541,
     "module": "Treatment Process",
-    "topic": "Effluent Total Nitrogen",
     "question": "A biological nutrient removal plant receives influent TN of 40 mg/L and achieves 75% TN removal. What is the effluent TN?",
     "options": ["10 mg/L", "30 mg/L", "40 mg/L", "0.75 mg/L"],
     "correct": 0,
@@ -7475,7 +7434,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 542,
     "module": "Treatment Process",
-    "topic": "Effluent Total Phosphorus",
     "question": "A plant receives influent TP of 6.0 mg/L and achieves 91.7% TP removal. What is the effluent TP?",
     "options": ["0.5 mg/L", "5.5 mg/L", "6.0 mg/L", "0.917 mg/L"],
     "correct": 0,
@@ -7486,7 +7444,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 543,
     "module": "Sludge Management",
-    "topic": "Biosolids Land Application Rate",
     "question": "The agronomic nitrogen rate for a crop is 200 kg N/ha·yr. Biosolids contain 30 kg N/tonne dry solids. What is the maximum biosolids application rate in tonnes/ha·yr?",
     "options": ["6.7 t/ha·yr", "0.15 t/ha·yr", "200 t/ha·yr", "6,000 t/ha·yr"],
     "correct": 0,
@@ -7497,7 +7454,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 544,
     "module": "Disinfection",
-    "topic": "Coliform Log Reduction",
     "question": "A chlorination system achieves a CT of 7.0 mg·min/L. Using a first-order model with k = 0.23 min⁻¹/(mg/L), what is the approximate log reduction of coliforms?",
     "options": ["0.70 log", "1.61 log", "0.23 log", "7.0 log"],
     "correct": 0,
@@ -7508,7 +7464,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 545,
     "module": "Disinfection",
-    "topic": "Effluent Fecal Coliform After Disinfection",
     "question": "Secondary effluent has fecal coliform of 10⁷ CFU/100 mL. Disinfection achieves 4-log reduction. What is the effluent fecal coliform?",
     "options": ["1,000 CFU/100 mL", "10,000 CFU/100 mL", "100 CFU/100 mL", "10³ CFU/100 mL"],
     "correct": 0,
@@ -7519,7 +7474,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 546,
     "module": "Hydraulics",
-    "topic": "Total Dynamic Head",
     "question": "A pump system has a static head of 15 m, friction head losses of 8 m, and velocity head of 0.5 m. What is the total dynamic head (TDH)?",
     "options": ["23.5 m", "15 m", "8 m", "23 m"],
     "correct": 0,
@@ -7530,7 +7484,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 547,
     "module": "Hydraulics",
-    "topic": "Pump Power Requirement",
     "question": "A pump delivers 0.1 m³/s against a TDH of 23.5 m with 75% efficiency. What is the shaft power required? (ρ=1,000 kg/m³, g=9.81 m/s²)",
     "options": ["30.8 kW", "23.1 kW", "41.0 kW", "3.08 kW"],
     "correct": 0,
@@ -7541,7 +7494,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 548,
     "module": "Hydraulics",
-    "topic": "Flow Velocity in Pipe",
     "question": "A 300 mm diameter pipe carries a flow of 0.1 m³/s. What is the flow velocity?",
     "options": ["1.41 m/s", "0.33 m/s", "3.14 m/s", "0.71 m/s"],
     "correct": 0,
@@ -7552,7 +7504,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 549,
     "module": "Hydraulics",
-    "topic": "Hazen-Williams Friction Loss",
     "question": "Using the Hazen-Williams equation, calculate the head loss in a 500 m long, 300 mm diameter pipe (C=100) carrying 0.1 m³/s. (h_f = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87))",
     "options": ["5.2 m", "0.9 m", "22.5 m", "1.8 m"],
     "correct": 0,
@@ -7563,7 +7514,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 550,
     "module": "Hydraulics",
-    "topic": "Manning's Equation \u2014 Open Channel Flow",
     "question": "A concrete channel (n=0.013) has a cross-sectional area of 2.0 m², hydraulic radius of 0.5 m, and slope of 0.001. Using Manning's equation, what is the flow rate? (Q = (1/n) × A × R^(2/3) × S^(1/2))",
     "options": ["3.07 m³/s", "0.29 m³/s", "6.88 m³/s", "1.72 m³/s"],
     "correct": 0,
@@ -7574,7 +7524,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 551,
     "module": "Treatment Process",
-    "topic": "Temperature Effect on BOD Removal",
     "question": "A biological treatment system achieves effluent BOD of 200 mg/L at 20°C. Using θ=1.047, what is the expected effluent BOD at 15°C?",
     "options": ["158 mg/L", "252 mg/L", "200 mg/L", "127 mg/L"],
     "correct": 0,
@@ -7585,7 +7534,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 552,
     "module": "Treatment Process",
-    "topic": "Specific Oxygen Uptake Rate (SOUR)",
     "question": "An aeration tank has an OUR of 50 mg O₂/L·h and MLVSS of 2,500 mg/L. What is the SOUR in mg O₂/g VSS·h?",
     "options": ["20 mg O₂/g VSS·h", "125 mg O₂/g VSS·h", "0.02 mg O₂/g VSS·h", "50 mg O₂/g VSS·h"],
     "correct": 0,
@@ -7596,7 +7544,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 553,
     "module": "Treatment Process",
-    "topic": "Effluent TSS Mass Balance",
     "question": "A plant has influent Q=8,000 m³/d, TSS=220 mg/L; WAS Q=112.5 m³/d, TSS=8,000 mg/L. What is the effluent TSS? (Assume no TSS in return flow)",
     "options": ["109 mg/L", "220 mg/L", "15 mg/L", "117 mg/L"],
     "correct": 0,
@@ -7607,7 +7554,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 554,
     "module": "Treatment Process",
-    "topic": "Septicity Potential",
     "question": "A wastewater has BOD of 300 mg/L and sulphate (SO₄) of 80 mg/L. What is the BOD:SO₄ ratio, and is the wastewater likely to turn septic?",
     "options": ["3.75 — likely septic", "0.27 — not septic", "3.75 — not septic", "0.27 — likely septic"],
     "correct": 0,
@@ -7618,7 +7564,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 555,
     "module": "Treatment Process",
-    "topic": "Grit Channel Velocity",
     "question": "A grit channel is 0.5 m wide and 0.4 m deep. The flow is 0.1 m³/s. What is the channel velocity?",
     "options": ["0.50 m/s", "0.25 m/s", "2.0 m/s", "0.20 m/s"],
     "correct": 0,
@@ -7629,7 +7574,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 556,
     "module": "Treatment Process",
-    "topic": "Screenings Volume",
     "question": "A plant processes 8 ML/d of wastewater. The screenings yield is 0.015 m³/ML. What volume of screenings is produced per day?",
     "options": ["0.12 m³/d", "0.015 m³/d", "120 m³/d", "1.2 m³/d"],
     "correct": 0,
@@ -7640,7 +7584,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 557,
     "module": "Treatment Process",
-    "topic": "Grit Quantity",
     "question": "A plant processes 8 ML/d. The grit yield is 0.04 m³/ML. How much grit is produced per day?",
     "options": ["0.32 m³/d", "0.04 m³/d", "3.2 m³/d", "32 m³/d"],
     "correct": 0,
@@ -7651,7 +7594,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 558,
     "module": "Laboratory",
-    "topic": "BOD Test Dilution",
     "question": "A sample is expected to have a BOD of 250 mg/L. A 1:20 dilution is used in the BOD bottle. What BOD concentration is expected in the diluted sample?",
     "options": ["12.5 mg/L", "250 mg/L", "5,000 mg/L", "0.05 mg/L"],
     "correct": 0,
@@ -7662,7 +7604,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 559,
     "module": "Laboratory",
-    "topic": "BOD Calculation from Test",
     "question": "A BOD test uses a 1:20 dilution. Initial DO = 8.5 mg/L, final DO after 5 days = 3.2 mg/L. What is the BOD₅?",
     "options": ["106 mg/L", "5.3 mg/L", "212 mg/L", "53 mg/L"],
     "correct": 0,
@@ -7673,7 +7614,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 560,
     "module": "Laboratory",
-    "topic": "COD:BOD Ratio",
     "question": "A wastewater sample has COD of 450 mg/L and BOD₅ of 250 mg/L. What is the COD:BOD ratio, and what does it indicate?",
     "options": ["1.8 — moderately biodegradable", "0.56 — highly biodegradable", "1.8 — non-biodegradable", "4.5 — highly toxic"],
     "correct": 0,
@@ -7684,7 +7624,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 561,
     "module": "Laboratory",
-    "topic": "TSS Calculation",
     "question": "A 100 mL wastewater sample is filtered. The filter paper mass before filtration is 1.2345 g and after drying is 1.2470 g. What is the TSS concentration?",
     "options": ["125 mg/L", "12.5 mg/L", "1,250 mg/L", "0.125 mg/L"],
     "correct": 0,
@@ -7695,7 +7634,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 562,
     "module": "Laboratory",
-    "topic": "VSS as Percentage of TSS",
     "question": "A sample has TSS of 12.5 mg and VSS of 9.8 mg. What percentage of TSS is volatile?",
     "options": ["78.4%", "21.6%", "12.5%", "9.8%"],
     "correct": 0,
@@ -7706,7 +7644,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 563,
     "module": "Treatment Process",
-    "topic": "Alkalinity Consumed by Nitrification",
     "question": "Nitrification consumes 7.14 mg alkalinity (as CaCO₃) per mg NH₄-N oxidized. If 30 mg/L NH₄-N is nitrified, how much alkalinity is consumed?",
     "options": ["214 mg/L as CaCO₃", "7.14 mg/L as CaCO₃", "30 mg/L as CaCO₃", "4.3 mg/L as CaCO₃"],
     "correct": 0,
@@ -7717,7 +7654,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 564,
     "module": "Treatment Process",
-    "topic": "Alkalinity Recovered by Denitrification",
     "question": "Denitrification recovers 3.57 mg alkalinity (as CaCO₃) per mg NO₃-N reduced. If 20 mg/L NO₃-N is denitrified, how much alkalinity is recovered?",
     "options": ["71.4 mg/L as CaCO₃", "3.57 mg/L as CaCO₃", "20 mg/L as CaCO₃", "57.1 mg/L as CaCO₃"],
     "correct": 0,
@@ -7728,7 +7664,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 565,
     "module": "Treatment Process",
-    "topic": "Net Alkalinity Change in BNR",
     "question": "A BNR system nitrifies 30 mg/L NH₄-N (consuming 214 mg/L alkalinity as CaCO₃) and denitrifies 20 mg/L NO₃-N (recovering 71 mg/L alkalinity as CaCO₃). What is the net alkalinity change?",
     "options": ["-143 mg/L as CaCO₃", "+143 mg/L as CaCO₃", "-214 mg/L as CaCO₃", "+71 mg/L as CaCO₃"],
     "correct": 0,
@@ -7739,7 +7674,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 566,
     "module": "Treatment Process",
-    "topic": "Effluent Compliance Check",
     "question": "A plant's effluent has BOD=25 mg/L, TSS=20 mg/L, NH₄-N=3 mg/L. The permit limits are BOD≤25, TSS≤25, NH₄-N≤3 mg/L. Is the plant in compliance?",
     "options": ["Yes — all parameters at or below limits", "No — BOD exceeds limit", "No — TSS exceeds limit", "No — NH₄-N exceeds limit"],
     "correct": 0,
@@ -7750,7 +7684,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 567,
     "module": "Hydraulics",
-    "topic": "Wet Well Volume",
     "question": "A pump station receives an average inflow of 0.2 m³/s. The pump operates for 5 minutes before the wet well empties. What is the minimum wet well working volume?",
     "options": ["60 m³", "0.2 m³", "12 m³", "300 m³"],
     "correct": 0,
@@ -7761,7 +7694,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 568,
     "module": "Disinfection",
-    "topic": "CT Value Calculation",
     "question": "A chlorine contact chamber maintains a residual of 2.0 mg/L for 30 minutes. What is the CT value?",
     "options": ["60 mg·min/L", "0.067 mg·min/L", "30 mg·min/L", "2.0 mg·min/L"],
     "correct": 0,
@@ -7772,7 +7704,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 569,
     "module": "Disinfection",
-    "topic": "Effective Contact Time T10",
     "question": "A chlorine contact chamber has an HRT of 30 minutes. The T10/HRT ratio (baffling factor) is 0.70. What is the effective contact time T10?",
     "options": ["21 min", "30 min", "42.9 min", "0.70 min"],
     "correct": 0,
@@ -7783,7 +7714,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 570,
     "module": "Disinfection",
-    "topic": "Effective CT with T10",
     "question": "A chlorine contact chamber has a residual of 2.0 mg/L and T10 of 21 minutes. What is the effective CT?",
     "options": ["42 mg·min/L", "60 mg·min/L", "2.0 mg·min/L", "21 mg·min/L"],
     "correct": 0,
@@ -7794,7 +7724,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 571,
     "module": "Disinfection",
-    "topic": "E. coli Reduction by UV",
     "question": "Secondary effluent has E. coli of 10⁶ CFU/100 mL. A UV dose of 40 mJ/cm² achieves 2-log reduction. What is the effluent E. coli?",
     "options": ["10,000 CFU/100 mL", "100,000 CFU/100 mL", "1,000 CFU/100 mL", "10⁶ CFU/100 mL"],
     "correct": 0,
@@ -7805,7 +7734,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 572,
     "module": "Laboratory",
-    "topic": "Theoretical Oxygen Demand from Glucose",
     "question": "A solution contains 500 mg/L of glucose (C₆H₁₂O₆, MW=180). What is the theoretical oxygen demand (ThOD)? (C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O; MW O₂=32)",
     "options": ["533 mg/L", "500 mg/L", "192 mg/L", "1,067 mg/L"],
     "correct": 0,
@@ -7816,7 +7744,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 573,
     "module": "Sludge Management",
-    "topic": "Dewatered Cake Volume",
     "question": "A belt filter press dewaters 16 m³/d of sludge at 4% solids to produce cake at 22% solids (density=1,000 kg/m³). What is the daily cake volume?",
     "options": ["2.9 m³/d", "16 m³/d", "0.22 m³/d", "7.3 m³/d"],
     "correct": 0,
@@ -7827,7 +7754,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 574,
     "module": "Treatment Process",
-    "topic": "Biological Phosphorus Removal",
     "question": "A biological phosphorus removal system receives influent TP of 6.0 mg/L and achieves 75% removal. What is the effluent TP?",
     "options": ["1.5 mg/L", "4.5 mg/L", "6.0 mg/L", "0.75 mg/L"],
     "correct": 0,
@@ -7838,7 +7764,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 575,
     "module": "Treatment Process",
-    "topic": "Ferric Chloride Dose for P Removal",
     "question": "To remove 5.5 mg/L of phosphorus using FeCl₃ at a Fe:P molar ratio of 1.8:1, what is the approximate FeCl₃ dose? (MW: Fe=56, P=31, FeCl₃=162.2)",
     "options": ["92.6 mg/L", "52.5 mg/L", "9.9 mg/L", "288 mg/L"],
     "correct": 0,
@@ -7849,7 +7774,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 576,
     "module": "Treatment Process",
-    "topic": "Anaerobic Pond HRT",
     "question": "An anaerobic pond has a volume of 50,000 m³ and receives 1,000 m³/d of wastewater. What is the HRT in days?",
     "options": ["50 days", "0.02 days", "50,000 days", "1,000 days"],
     "correct": 0,
@@ -7860,7 +7784,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 577,
     "module": "Treatment Process",
-    "topic": "Facultative Pond BOD Surface Loading",
     "question": "A facultative pond receives 1,000 m³/d with BOD of 200 mg/L. The pond area is 20,000 m² (2 ha). What is the BOD surface loading rate?",
     "options": ["100 kg BOD/ha·d", "200 kg BOD/ha·d", "50 kg BOD/ha·d", "10 kg BOD/ha·d"],
     "correct": 0,
@@ -7871,7 +7794,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 578,
     "module": "Treatment Process",
-    "topic": "Pond Effluent BOD \u2014 First-Order Model",
     "question": "A completely mixed pond receives BOD of 200 mg/L, has k=0.15 d⁻¹, and HRT=50 days. Using the first-order model, what is the effluent BOD? (BOD_out = BOD_in / (1 + k×HRT))",
     "options": ["21 mg/L", "170 mg/L", "200 mg/L", "0.75 mg/L"],
     "correct": 0,
@@ -7882,7 +7804,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 579,
     "module": "Treatment Process",
-    "topic": "Pond Effluent BOD \u2014 Plug-Flow Model",
     "question": "A plug-flow pond receives BOD of 200 mg/L, has k=0.15 d⁻¹, and HRT=50 days. Using the plug-flow model, what is the effluent BOD? (BOD_out = BOD_in × e^(-k×HRT))",
     "options": ["0.38 mg/L", "21 mg/L", "200 mg/L", "7.5 mg/L"],
     "correct": 0,
@@ -7893,7 +7814,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 580,
     "module": "Treatment Process",
-    "topic": "Secondary Sludge Production",
     "question": "A plant treats 8,000 m³/d with BOD removal of 225 mg/L. Using Y=0.6 kg VSS/kg BOD, kd=0.06 d⁻¹, SRT=10 d, what is the net VSS production? (P_x = Q×BOD_rem/1000 × Y/(1+kd×SRT))",
     "options": ["675 kg VSS/d", "1,080 kg VSS/d", "540 kg VSS/d", "900 kg VSS/d"],
     "correct": 0,
@@ -7904,7 +7824,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 581,
     "module": "Treatment Process",
-    "topic": "Total Effluent BOD from Secondary Clarifier",
     "question": "Secondary effluent has soluble BOD of 15 mg/L and TSS of 20 mg/L (60% biodegradable). What is the total effluent BOD?",
     "options": ["27 mg/L", "15 mg/L", "35 mg/L", "12 mg/L"],
     "correct": 0,
@@ -7915,7 +7834,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 584,
     "module": "Treatment Process",
-    "topic": "Secondary Clarifier Blanket Depth",
     "question": "A secondary clarifier has Q=8,000 m³/d, MLSS=3,000 mg/L, area=500 m². If the sludge settling velocity is 2.0 m/h, what is the sludge blanket depth?",
     "options": ["1.0 m", "0.5 m", "2.0 m", "4.0 m"],
     "correct": 0,
@@ -7926,7 +7844,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 585,
     "module": "Treatment Process",
-    "topic": "Chemical Phosphorus Removal",
     "question": "Alum (150 mg/L) is added to remove phosphorus. Alum MW=342, Al MW=27, P MW=31. Influent TP=5 mg/L. Approximately how much P can be removed by AlPO₄ precipitation (1:1 Al:P molar ratio)?",
     "options": ["~4.3 mg/L", "~1.0 mg/L", "~5.0 mg/L", "~0.5 mg/L"],
     "correct": 0,
@@ -7937,7 +7854,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 586,
     "module": "Treatment Process",
-    "topic": "Nitrification Oxygen Demand",
     "question": "A plant nitrifies TKN from 35 mg/L to 2 mg/L at Q=10,000 m³/d. Using 4.57 g O₂/g N, what is the daily nitrification oxygen demand?",
     "options": ["1,508 kg O₂/d", "150.8 kg O₂/d", "15,080 kg O₂/d", "330 kg O₂/d"],
     "correct": 0,
@@ -7948,7 +7864,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 587,
     "module": "Treatment Process",
-    "topic": "Denitrification Alkalinity Recovery",
     "question": "Denitrification removes 20 mg/L NO₃-N. Using 3.57 g alkalinity recovered per g NO₃-N, how much alkalinity is recovered?",
     "options": ["71.4 mg/L as CaCO₃", "20 mg/L", "3.57 mg/L", "357 mg/L"],
     "correct": 0,
@@ -7959,7 +7874,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 588,
     "module": "Treatment Process",
-    "topic": "Aeration Tank Volume from SRT",
     "question": "Design an aeration tank: SRT=10 d, Q=10,000 m³/d, MLSS=3,500 mg/L, Y=0.6, kd=0.06/d, BOD₀=200 mg/L, BOD_eff=10 mg/L. What is the tank volume?",
     "options": ["2,250 m³", "1,500 m³", "3,500 m³", "5,000 m³"],
     "correct": 0,
@@ -7970,7 +7884,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 589,
     "module": "Treatment Process",
-    "topic": "Effluent Ammonia from Nitrification Kinetics",
     "question": "Nitrifier kinetics: μ_max=0.8/d, Ks=0.5 mg/L, kd=0.05/d, SRT=10 d. What is the steady-state effluent NH₄⁺? (NH₄ = Ks×(1+kd×SRT) / (SRT×(μ_max-kd)-1))",
     "options": ["0.11 mg/L", "0.50 mg/L", "2.0 mg/L", "5.0 mg/L"],
     "correct": 0,
@@ -7981,7 +7894,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 590,
     "module": "Treatment Process",
-    "topic": "Net Sludge Production",
     "question": "Calculate net sludge production: Y=0.5, kd=0.06/d, SRT=8 d, BOD removed=180 mg/L, Q=15,000 m³/d.",
     "options": ["843.75 kg VSS/d", "1,350 kg VSS/d", "675 kg VSS/d", "2,700 kg VSS/d"],
     "correct": 0,
@@ -7992,7 +7904,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 591,
     "module": "Sludge Management",
-    "topic": "Anaerobic Digester Gas Production",
     "question": "An anaerobic digester receives 1,000 kg VS/d. VS destruction = 55%, gas yield = 0.9 m³/kg VS destroyed. What is the daily biogas production?",
     "options": ["495 m³/d", "550 m³/d", "900 m³/d", "1,000 m³/d"],
     "correct": 0,
@@ -8003,7 +7914,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 592,
     "module": "Sludge Management",
-    "topic": "Centrifuge Cake Volume",
     "question": "A centrifuge processes 100 m³/d of 2.5% solids sludge, producing a 22% solids cake. What is the cake volume? (Assume density = 1,000 kg/m³)",
     "options": ["11.4 m³/d", "2.5 m³/d", "22 m³/d", "100 m³/d"],
     "correct": 0,
@@ -8014,7 +7924,6 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
   {
     "id": 593,
     "module": "Treatment Process",
-    "topic": "Effluent Acute Toxicity Units",
     "question": "A whole effluent toxicity test shows LC50 = 5% (v/v). What is the acute toxic unit (TUa) value?",
     "options": ["20 TUa", "5 TUa", "0.05 TUa", "100 TUa"],
     "correct": 0,

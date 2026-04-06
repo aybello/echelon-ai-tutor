@@ -8145,39 +8145,7 @@ export const CLASS4_WATER_MODULES = [
   "Advanced Treatment",
   "Lab Analysis",
   "Safety",
-];
 
-export interface HistoryEntry {
-  id: string | number;
-  correct: boolean;
-  confidence: number;
-}
-
-export function getNextQuestion(
-  history: HistoryEntry[],
-  module?: string
-): Question | null {
-  const usedIds = new Set(history.map((h) => String(h.id)));
-  const pool = module
-    ? QUESTIONS.filter((q) => q.module === module && !usedIds.has(String(q.id)))
-    : QUESTIONS.filter((q) => !usedIds.has(String(q.id)));
-  if (pool.length === 0) return null;
-  const scored = pool.map((q) => {
-    const attempts = history.filter((h) => String(h.id) === String(q.id));
-    const lastAttempt = attempts[attempts.length - 1];
-    const score = lastAttempt
-      ? lastAttempt.correct ? lastAttempt.confidence : -lastAttempt.confidence
-      : 0;
-    return { q, score };
-  });
-  scored.sort((a, b) => a.score - b.score);
-  return scored[0].q;
-}
-
-export function getPatternInsights(
-  history: HistoryEntry[]
-): Array<{ module: string; issue: string }> {
-  const insights: Array<{ module: string; issue: string }> = [,
 {
   "id": 501,
   isCalc: true,
@@ -8833,6 +8801,38 @@ export function getPatternInsights(
   difficulty: "medium"
 }
 ];
+
+export interface HistoryEntry {
+  id: string | number;
+  correct: boolean;
+  confidence: number;
+}
+
+export function getNextQuestion(
+  history: HistoryEntry[],
+  module?: string
+): Question | null {
+  const usedIds = new Set(history.map((h) => String(h.id)));
+  const pool = module
+    ? QUESTIONS.filter((q) => q.module === module && !usedIds.has(String(q.id)))
+    : QUESTIONS.filter((q) => !usedIds.has(String(q.id)));
+  if (pool.length === 0) return null;
+  const scored = pool.map((q) => {
+    const attempts = history.filter((h) => String(h.id) === String(q.id));
+    const lastAttempt = attempts[attempts.length - 1];
+    const score = lastAttempt
+      ? lastAttempt.correct ? lastAttempt.confidence : -lastAttempt.confidence
+      : 0;
+    return { q, score };
+  });
+  scored.sort((a, b) => a.score - b.score);
+  return scored[0].q;
+}
+
+export function getPatternInsights(
+  history: HistoryEntry[]
+): Array<{ module: string; issue: string }> {
+  const insights: Array<{ module: string; issue: string }> = [];
   const moduleStats: Record<string, { correct: number; total: number; lowConf: number }> = {};
   for (const entry of history) {
     const q = QUESTIONS.find((q) => String(q.id) === String(entry.id));
