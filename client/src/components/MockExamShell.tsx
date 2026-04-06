@@ -308,8 +308,19 @@ export default function MockExamShell({
         }
         @media (max-width: 640px) {
           .mes-results-hero-btns { flex-direction: column !important; }
-          .mes-results-hero-btns button, .mes-results-hero-btns a { width: 100% !important; }
+          .mes-results-hero-btns button, .mes-results-hero-btns a { width: 100% !important; min-height: 48px !important; }
           .mes-stats-4 { grid-template-columns: repeat(2, 1fr) !important; }
+          /* Larger touch targets for answer options in active exam */
+          .mes-option-btn {
+            min-height: 52px !important;
+            padding: 14px 16px !important;
+            touch-action: manipulation;
+          }
+          /* Nav buttons full-width on mobile */
+          .mes-nav-btns { flex-direction: column !important; gap: 10px !important; }
+          .mes-nav-btns button { width: 100% !important; min-height: 48px !important; }
+          /* Scroll to top on question change */
+          .mes-question-area { scroll-margin-top: 70px; }
         }
         @media (max-width: 480px) {
           .mes-intro-card { padding: 28px 18px !important; }
@@ -317,8 +328,6 @@ export default function MockExamShell({
           .mes-results-hero { padding: 24px 16px !important; }
           .mes-active-header { flex-wrap: wrap !important; gap: 8px !important; }
           .mes-active-header-right { flex-wrap: wrap !important; gap: 8px !important; }
-          .mes-nav-btns { flex-wrap: wrap !important; }
-          .mes-nav-btns button { flex: 1 1 40% !important; min-width: 80px !important; }
         }
       `}</style>
       <PurchaseGate
@@ -600,6 +609,7 @@ export default function MockExamShell({
               return (
                 <button
                   key={i}
+                  className="mes-option-btn"
                   onClick={() => setAnswers(prev => prev.map((a, idx) => idx === currentIdx ? { ...a, selected: i } : a))}
                   style={{
                     padding: "14px 18px", borderRadius: 12, textAlign: "left",

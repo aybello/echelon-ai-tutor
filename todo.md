@@ -285,3 +285,10 @@
 - [ ] Write 1,174 calc questions across 16 banks to reach 100 calc questions each
 - [x] Fix paywall modal close button - should return to WPI page not homepage
 - [x] Fix WPI exam questions not showing up
+
+## Mobile UX Improvements (Round 2)
+
+- [x] Add touch-action: manipulation globally to buttons/links (300ms tap delay fix)
+- [x] Add mobile bottom navigation bar component (Home, Courses, Formulas, AI Tutor)
+- [x] Integrate MobileBottomNav into all pages with bottom padding to prevent overlap
+- [x] Optimize QuizShell and MockExamShell touch targets and scroll behavior

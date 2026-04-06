@@ -8,6 +8,7 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
 import { Link } from "wouter";
+import MobileBottomNav from "./MobileBottomNav";
 
 export const NAV_LINKS = [
   { label: "🏠 Home",          href: "/" },
@@ -357,6 +358,8 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
           </Link>
         </div>
       </div>
+      {/* Mobile bottom navigation — only visible on ≤640px screens */}
+      <MobileBottomNav currentPath={currentPath} />
     </>
   );
 }

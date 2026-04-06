@@ -257,16 +257,26 @@ export default function QuizShell({
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
+        @media (max-width: 640px) {
+          /* Larger touch targets for answer options */
+          .qs-question-card button {
+            min-height: 48px !important;
+            padding: 14px 16px !important;
+            touch-action: manipulation;
+          }
+          /* Confirm/Next buttons full width on mobile */
+          .qs-action-row { flex-direction: column !important; gap: 10px !important; }
+          .qs-action-row button { width: 100% !important; flex: none !important; min-height: 48px !important; }
+          /* Session end buttons */
+          .qs-session-btns { flex-direction: column !important; }
+          .qs-session-btns a, .qs-session-btns button { width: 100% !important; min-height: 48px !important; }
+        }
         @media (max-width: 480px) {
           .qs-header-actions { display: none !important; }
           .qs-module-pills { gap: 4px !important; }
           .qs-module-pills button { font-size: 10px !important; padding: 4px 8px !important; }
           .qs-question-card { padding: 16px 14px 14px !important; }
-          .qs-action-row { flex-direction: column !important; }
-          .qs-action-row button { width: 100% !important; flex: none !important; }
           .qs-session-card { padding: 28px 18px !important; }
-          .qs-session-btns { flex-direction: column !important; }
-          .qs-session-btns a, .qs-session-btns button { width: 100% !important; }
         }
       `}</style>
 

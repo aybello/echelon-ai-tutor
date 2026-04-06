@@ -108,6 +108,8 @@
   input[type="checkbox"]:not(:disabled),
   input[type="radio"]:not(:disabled) {
     @apply cursor-pointer;
+    /* Eliminate 300ms tap delay on mobile browsers */
+    touch-action: manipulation;
   }
 }
 
@@ -191,5 +193,12 @@ img {
   /* Prevent text from being too small */
   input, select, textarea {
     font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+  /* Add bottom padding to prevent content hiding behind MobileBottomNav (64px height) */
+  /* Applied to the outermost page wrapper divs */
+  body > #root > div > div:last-child:not(.mobile-bottom-nav),
+  .page-bottom-pad {
+    padding-bottom: 72px;
   }
 }
