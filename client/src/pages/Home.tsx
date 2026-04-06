@@ -180,6 +180,7 @@ export default function Home() {
         headerIcon="💧"
         headerActions={[
           { label: "📝 Mock Exam", href: "/mock-exam" },
+          { label: "🃏 Flashcards", href: "/oit-water-flashcards" },
           { label: "🔬 Processes", href: "/process" },
           { label: "📐 Formulas", href: "/formulas" },
           { label: "🗺️ Career", href: "/career" },

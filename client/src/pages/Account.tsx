@@ -14,7 +14,7 @@ const EXAM_META: Record<
   string,
   { label: string; quizPath: string; mockPath?: string; formulaPath?: string; flashcardPath?: string; color: string; bg: string; icon: string; track: string }
 > = {
-  oit: { label: "OIT Practice Pass", quizPath: "/quiz", mockPath: "/oit-mock", formulaPath: "/formulas", color: "#0369A1", bg: "#F0F9FF", icon: "💧", track: "Ontario" },
+  oit: { label: "OIT Practice Pass", quizPath: "/quiz", mockPath: "/oit-mock", formulaPath: "/formulas", flashcardPath: "/oit-water-flashcards", color: "#0369A1", bg: "#F0F9FF", icon: "💧", track: "Ontario" },
   "oit-ww": { label: "OIT Wastewater Practice Pass", quizPath: "/oit-ww", mockPath: "/oit-ww-mock", formulaPath: "/formulas-ww1", flashcardPath: "/oit-ww-flashcards", color: "#065F46", bg: "#ECFDF5", icon: "🌿", track: "Ontario" },
   "class1-water": { label: "Class 1 Water Treatment Pass", quizPath: "/class1-water", mockPath: "/class1-water-mock", formulaPath: "/formulas-water1", flashcardPath: "/class1-water-flashcards", color: "#0369A1", bg: "#F0F9FF", icon: "🚰", track: "Ontario" },
   "class1-ww": { label: "Class 1 Wastewater Treatment Pass", quizPath: "/class1-ww", mockPath: "/class1-ww-mock", formulaPath: "/formulas-ww1", flashcardPath: "/class1-ww-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },

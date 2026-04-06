@@ -28,6 +28,7 @@ interface Product {
 
 /** Maps product key → flashcard page path */
 const FLASHCARD_ROUTES: Record<string, string> = {
+  "oit": "/oit-water-flashcards",
   "oit-ww": "/oit-ww-flashcards",
   "class1-water": "/class1-water-flashcards",
   "class1-ww": "/class1-ww-flashcards",

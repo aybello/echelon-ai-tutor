@@ -80,6 +80,7 @@ import WpiClass4WastewaterMockExam from "@/pages/WpiClass4WastewaterMockExam";
 import FormulasWpiClass4Ww from "@/pages/FormulasWpiClass4Ww";
 import PreviewMode from "@/pages/PreviewMode";
 // Flashcard pages
+import OITWaterFlashcards from "@/pages/OITWaterFlashcards";
 import OITWastewaterFlashcards from "@/pages/OITWastewaterFlashcards";
 import Class1WaterFlashcards from "@/pages/Class1WaterFlashcards";
 import Class1WastewaterFlashcards from "@/pages/Class1WastewaterFlashcards";
@@ -173,6 +174,7 @@ function Router() {
       <Route path={"/formulas-wpi-class4-ww"} component={FormulasWpiClass4Ww} />
       <Route path={"/formulas-wqa"} component={FormulasWQA} />
       {/* Flashcard routes */}
+      <Route path={"/oit-water-flashcards"} component={OITWaterFlashcards} />
       <Route path={"/oit-ww-flashcards"} component={OITWastewaterFlashcards} />
       <Route path={"/class1-water-flashcards"} component={Class1WaterFlashcards} />
       <Route path={"/class1-ww-flashcards"} component={Class1WastewaterFlashcards} />
