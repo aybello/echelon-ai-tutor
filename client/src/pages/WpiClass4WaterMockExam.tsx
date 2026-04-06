@@ -30,8 +30,8 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Advanced Water Quality":                       { bg: "#DCFCE7", color: "#15803D" },
 };
 
-// WPI Class I exam blueprint: proportional module targets
-// Treatment Process ~31%, Equipment O&M ~26%, Lab ~16%, Source Water ~15%, Safety ~12%
+// WPI Class IV exam blueprint: proportional module targets
+// Plant Management ~32%, Emergency Response ~20%, Advanced Process Control ~20%, Regulatory ~18%, Water Quality ~10%
 const EXAM_MODULE_TARGETS: Record<string, number> = {
   "Plant Management & Leadership":                32,
   "Emergency Response & Contingency Planning":    20,
@@ -72,7 +72,7 @@ export default function WpiClass4WaterMockExam() {
       "Timed 100-question mock exam for the WPI Class IV Water Treatment certification. BC EOCP Level I, Alberta AWWOA Class I, Saskatchewan, Manitoba. 2-hour timer, 70% pass threshold.",
     path: "/wpi-class4-water-mock",
     keywords:
-      "WPI Class I mock exam, BC EOCP Level I exam, Alberta AWWOA Class I exam, water treatment mock exam, WPI practice exam",
+      "WPI Class IV mock exam, BC EOCP Level IV exam, Alberta AWWOA Class IV exam, water treatment mock exam, WPI practice exam",
   });
 
   const [examState, setExamState] = useState<ExamState>("intro");
@@ -175,7 +175,7 @@ export default function WpiClass4WaterMockExam() {
         productName="WPI Class IV Water Treatment Practice Pass"
         price={149}
         features={[
-          "502 WPI Class I questions — unlimited practice",
+          "592 WPI Class IV questions — unlimited practice",
           "Timed mock exam (100 questions, 2 hrs)",
           "Module-by-module performance breakdown",
           "AI Tutor explanations on every question",
@@ -215,7 +215,7 @@ export default function WpiClass4WaterMockExam() {
                   textTransform: "uppercase",
                 }}
               >
-                WPI Class I · Water Treatment
+                WPI Class IV · Water Treatment
               </div>
               <h1
                 style={{
@@ -650,7 +650,7 @@ export default function WpiClass4WaterMockExam() {
               Module Breakdown
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {WPI_CLASS4_WATER_MODULES.map((module) => {
+              {WPI_CLASS4_WATER_MODULES.filter((module) => (results.byModule[module]?.total ?? 0) > 0).map((module) => {
                 const stat = results.byModule[module] ?? { correct: 0, total: 0 };
                 const pct = stat.total > 0 ? stat.correct / stat.total : 0;
                 const mc = MODULE_COLORS[module] ?? { bg: "#F1F5F9", color: "#475569" };

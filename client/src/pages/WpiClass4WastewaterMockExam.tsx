@@ -447,7 +447,7 @@ export default function WpiClass4WastewaterMockExam() {
                   Module Breakdown
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column" as const, gap: 10 }}>
-                  {WPI_CLASS4_WASTEWATER_MODULES.map((mod) => {
+                  {WPI_CLASS4_WASTEWATER_MODULES.filter((mod) => (moduleBreakdown[mod]?.total ?? 0) > 0).map((mod) => {
                     const bd = moduleBreakdown[mod] ?? { correct: 0, total: 0 };
                     if (bd.total === 0) return null;
                     const modPct = Math.round((bd.correct / bd.total) * 100);

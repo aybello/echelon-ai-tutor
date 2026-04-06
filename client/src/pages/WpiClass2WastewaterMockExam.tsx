@@ -650,7 +650,7 @@ export default function WpiClass2WastewaterMockExam() {
               Module Breakdown
             </h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {WPI_CLASS2_WASTEWATER_MODULES.map((module) => {
+              {WPI_CLASS2_WASTEWATER_MODULES.filter((module) => (results.byModule[module]?.total ?? 0) > 0).map((module) => {
                 const stat = results.byModule[module] ?? { correct: 0, total: 0 };
                 const pct = stat.total > 0 ? stat.correct / stat.total : 0;
                 const mc = MODULE_COLORS[module] ?? { bg: "#F1F5F9", color: "#475569" };
