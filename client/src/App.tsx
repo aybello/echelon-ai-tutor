@@ -5,6 +5,8 @@ import { Route, Switch, Redirect } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { trpc } from "@/lib/trpc";
+import PhoneCollectionModal from "./components/PhoneCollectionModal";
+import { useAuth } from "./_core/hooks/useAuth";
 import Home from "./pages/Home";
 import Landing from "./pages/Landing";
 import Process from "./pages/Process";
@@ -204,6 +206,25 @@ function Router() {
   );
 }
 
+/**
+ * PhoneGate — renders a mandatory phone collection modal for any authenticated
+ * user who hasn't yet provided a phone number. Cannot be dismissed.
+ */
+function PhoneGate() {
+  const { user, loading } = useAuth();
+  const utils = trpc.useUtils();
+
+  // Only show after auth is resolved, user is logged in, and phone is missing
+  if (loading || !user) return null;
+  if ((user as any).phone) return null;
+
+  return (
+    <PhoneCollectionModal
+      onComplete={() => utils.auth.me.invalidate()}
+    />
+  );
+}
+
 function App() {
   return (
     <ErrorBoundary>
@@ -211,6 +232,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <PhoneGate />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
