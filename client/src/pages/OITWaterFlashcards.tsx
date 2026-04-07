@@ -10,6 +10,8 @@ export default function OITWaterFlashcards() {
         examType="oit"
         backPath="/quiz"
         modules={OIT_MODULES as unknown as string[]}
+        freeFlipLimit={10}
+        productKey="oit"
       />
     </FlashcardErrorBoundary>
   );

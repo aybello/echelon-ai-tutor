@@ -7,6 +7,8 @@ import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 
+const FREE_FLIP_LIMIT = 10; // cards that can be flipped before paywall
+
 export interface FlashcardQuestion {
   id: number | string;
   module: string;
@@ -30,6 +32,10 @@ interface FlashcardShellProps {
   examType: string;   // e.g. "class1-water" — used for persistence key
   backPath: string;
   modules: string[];
+  /** If set, show a paywall overlay after this many flips (for free preview pages) */
+  freeFlipLimit?: number;
+  /** Product key to link to on the paywall CTA */
+  productKey?: string;
 }
 
 function shuffleArr<T>(arr: T[]): T[] {
@@ -66,11 +72,15 @@ function filterConceptual(qs: FlashcardQuestion[]): FlashcardQuestion[] {
   return qs.filter(q => !q.isCalc && q.type !== "calculation");
 }
 
-export default function FlashcardShell({ questions, examName, examType, backPath, modules }: FlashcardShellProps) {
+export default function FlashcardShell({ questions, examName, examType, backPath, modules, freeFlipLimit, productKey }: FlashcardShellProps) {
   // Remove calculation questions once, before any deck operations
   const conceptualQuestions = useMemo(() => filterConceptual(questions), [questions]);
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [flipped, setFlipped] = useState(false);
+  const [totalFlips, setTotalFlips] = useState(0);
+  const [paywallDismissed, setPaywallDismissed] = useState(false);
+  const limit = freeFlipLimit ?? FREE_FLIP_LIMIT;
+  const showPaywall = freeFlipLimit !== undefined && totalFlips >= limit && !paywallDismissed;
   const [index, setIndex] = useState(0);
   const [known, setKnown] = useState<Set<number | string>>(new Set());
   const [reviewing, setReviewing] = useState(false);
@@ -344,7 +354,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             )}
             <div
               className={"fc-inner" + (flipped ? " flipped" : "")}
-              onClick={() => setFlipped(f => !f)}
+              onClick={() => { if (!showPaywall) { setFlipped(f => { if (!f) setTotalFlips(n => n + 1); return !f; }); } }}
             >
               {/* Front */}
               <div className="fc-face fc-front">
@@ -409,6 +419,37 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         </div>
       )}
 
+      {/* Free trial paywall overlay */}
+      {showPaywall && (
+        <div style={{ position: "fixed", inset: 0, background: "rgba(15,23,42,0.92)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
+          <div style={{ background: "#fff", borderRadius: "20px", padding: "40px 36px", maxWidth: "440px", width: "100%", textAlign: "center", boxShadow: "0 24px 80px rgba(0,0,0,0.5)" }}>
+            <div style={{ fontSize: "48px", marginBottom: "12px" }}>🃏</div>
+            <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#0f172a", margin: "0 0 10px" }}>You've previewed {limit} free cards!</h2>
+            <p style={{ color: "#475569", fontSize: "14px", lineHeight: 1.6, marginBottom: "24px" }}>
+              Unlock the full <strong>{examName}</strong> flashcard deck — {questions.length}+ cards with spaced repetition, module filters, and progress tracking.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <Link href={productKey ? `/pricing#${productKey}` : "/pricing"}>
+                <button style={{ width: "100%", padding: "14px 20px", borderRadius: "12px", border: "none", background: "linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%)", color: "#fff", fontSize: "15px", fontWeight: 700, cursor: "pointer" }}>
+                  Get Full Access →
+                </button>
+              </Link>
+              <button
+                onClick={() => setPaywallDismissed(true)}
+                style={{ width: "100%", padding: "12px 20px", borderRadius: "12px", border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}
+              >
+                🔄 Try {limit} More Free Cards
+              </button>
+              <Link href="/pricing">
+                <button style={{ width: "100%", padding: "10px 20px", borderRadius: "12px", border: "none", background: "transparent", color: "#94A3B8", fontSize: "12px", cursor: "pointer" }}>
+                  📋 View All Courses & Pricing
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
       <div style={{ padding: "8px 24px 32px" }}>
         <div style={{ maxWidth: "680px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -417,7 +458,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           </button>
           <button
             style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#94a3b8", borderRadius: "10px", padding: "10px 20px", fontSize: "13px", cursor: "pointer" }}
-            onClick={() => setFlipped(f => !f)}
+            onClick={() => { if (!showPaywall) { setFlipped(f => { if (!f) setTotalFlips(n => n + 1); return !f; }); } }}
           >
             {flipped ? "Show Question" : "Show Answer"}
           </button>
