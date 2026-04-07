@@ -130,3 +130,16 @@ export const flashcardProgress = mysqlTable("flashcard_progress", {
 });
 export type FlashcardProgressRow = typeof flashcardProgress.$inferSelect;
 export type InsertFlashcardProgress = typeof flashcardProgress.$inferInsert;
+
+/** Exam dates — optional exam date set by customer per product, used for countdown + email reminders */
+export const examDates = mysqlTable("exam_dates", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  productKey: varchar("productKey", { length: 64 }).notNull(), // e.g. 'class1-water', 'oit'
+  examDate: timestamp("examDate").notNull(), // the date of their exam
+  remindersSent: text("remindersSent").notNull(), // JSON array of intervals already sent e.g. [30, 14]
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type ExamDate = typeof examDates.$inferSelect;
+export type InsertExamDate = typeof examDates.$inferInsert;

@@ -60,7 +60,7 @@ export async function sendPurchaseConfirmationEmail(
     });
   }
 
-  const siteUrl = "https://echeloninstitute.manus.space";
+  const siteUrl = "https://echeloninstitute.ca";
   const amountFormatted = `CA$${(amountCAD / 100).toFixed(2)}`;
   const quizUrl = `${siteUrl}${quizPath}`;
   const mockUrl = `${siteUrl}${mockPath}`;

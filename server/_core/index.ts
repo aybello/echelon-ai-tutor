@@ -9,6 +9,7 @@ import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { registerStripeWebhook } from "../stripe/webhook";
 import { startReconciliationJob } from "../jobs/reconcile";
+import { startExamReminderJob } from "../jobs/examReminders";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -70,6 +71,7 @@ async function startServer() {
     console.log(`Server running on http://localhost:${port}/`);
     // Start background jobs after server is listening
     startReconciliationJob();
+    startExamReminderJob();
   });
 }
 

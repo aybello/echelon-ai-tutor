@@ -5,7 +5,7 @@ import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
-import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmissions, users } from "../drizzle/schema";
+import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmissions, users, examDates } from "../drizzle/schema";
 import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { adminRouter } from "./routers/admin";
@@ -270,6 +270,60 @@ export const appRouter = router({
           title: `Contact form: ${input.subject}`,
           content: `From: ${input.name} <${input.email}>\n\n${input.message}`,
         }).catch(() => {}); // non-blocking
+        return { success: true };
+      }),
+  }),
+
+  // Exam Date Tracker — optional per-product exam date for countdown + reminders
+  examDate: router({
+    get: publicProcedure
+      .input(z.object({ email: z.string().email(), productKey: z.string() }))
+      .query(async ({ input }) => {
+        const db = await getDb();
+        if (!db) return null;
+        const rows = await db
+          .select()
+          .from(examDates)
+          .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)))
+          .limit(1);
+        if (!rows.length) return null;
+        return { examDate: rows[0].examDate.toISOString(), productKey: rows[0].productKey };
+      }),
+    set: publicProcedure
+      .input(z.object({ email: z.string().email(), productKey: z.string(), examDate: z.string() }))
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable");
+        const date = new Date(input.examDate);
+        if (isNaN(date.getTime())) throw new Error("Invalid date");
+        const existing = await db
+          .select()
+          .from(examDates)
+          .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)))
+          .limit(1);
+        if (existing.length) {
+          await db
+            .update(examDates)
+            .set({ examDate: date, remindersSent: "[]" })
+            .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)));
+        } else {
+          await db.insert(examDates).values({
+            email: input.email,
+            productKey: input.productKey,
+            examDate: date,
+            remindersSent: "[]",
+          });
+        }
+        return { success: true };
+      }),
+    remove: publicProcedure
+      .input(z.object({ email: z.string().email(), productKey: z.string() }))
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable");
+        await db
+          .delete(examDates)
+          .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)));
         return { success: true };
       }),
   }),

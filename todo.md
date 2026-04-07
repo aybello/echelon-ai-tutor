@@ -328,3 +328,10 @@
 - [ ] Branded loading spinner (replace plain spinner)
 - [ ] Reduced motion support (prefers-reduced-motion)
 - [ ] Mobile performance check
+- [x] Add exam_dates DB table (email, productKey, examDate, remindersSent)
+- [x] Add examDate tRPC router (get, set, remove procedures)
+- [x] Build ExamDateTracker component (countdown, date picker, urgency colors)
+- [x] Wire ExamDateTracker into Account page for all Ontario + WPI pass rows
+- [x] Build exam reminder cron job (daily 8AM UTC, sends at 30/14/7/1 days out)
+- [x] Register exam reminder job in server startup
+- [x] Fix purchase confirmation email domain (echeloninstitute.manus.space → echeloninstitute.ca)

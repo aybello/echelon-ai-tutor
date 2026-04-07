@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import ExamDateTracker from "@/components/ExamDateTracker";
 
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png";
@@ -336,6 +337,17 @@ export default function Account() {
                                 <MasteryBadge knownCount={flashcardMastery[examType].knownCount} totalCards={flashcardMastery[examType].totalCards} />
                               </div>
                             )}
+                            {/* Exam date tracker */}
+                            {submittedEmail && (
+                              <div style={{ paddingLeft: 0, width: "100%" }}>
+                                <ExamDateTracker
+                                  email={submittedEmail}
+                                  productKey={examType}
+                                  productLabel={meta.label}
+                                  color={meta.color}
+                                />
+                              </div>
+                            )}
                           </div>
                         );
                       })}
@@ -388,6 +400,17 @@ export default function Account() {
                             {meta.flashcardPath && flashcardMastery[examType] && (
                               <div style={{ paddingLeft: 54, marginTop: 4 }}>
                                 <MasteryBadge knownCount={flashcardMastery[examType].knownCount} totalCards={flashcardMastery[examType].totalCards} />
+                              </div>
+                            )}
+                            {/* Exam date tracker */}
+                            {submittedEmail && (
+                              <div style={{ paddingLeft: 0, width: "100%" }}>
+                                <ExamDateTracker
+                                  email={submittedEmail}
+                                  productKey={examType}
+                                  productLabel={meta.label}
+                                  color={meta.color}
+                                />
                               </div>
                             )}
                           </div>
