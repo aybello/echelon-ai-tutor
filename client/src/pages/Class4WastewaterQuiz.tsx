@@ -4,6 +4,7 @@ import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import PurchaseGate from "@/components/PurchaseGate";
 import { CLASS4_WW_QUESTIONS, CLASS4_WASTEWATER_MODULES, CLASS4_WW_FORMULA_LINKS, type C4WWQuestion } from '@/lib/class4WastewaterQuestions';
+import { CLASS4_WASTEWATER_OVERVIEWS } from '@/lib/moduleOverviews';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -219,6 +220,7 @@ export default function Class4WastewaterQuiz() {
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={resetSession}
         mockExamHref="/class4-ww-mock"
+        moduleOverviews={CLASS4_WASTEWATER_OVERVIEWS}
         formulaLinks={CLASS4_WW_FORMULA_LINKS}
         renderAITutor={() => (
           <AITutor

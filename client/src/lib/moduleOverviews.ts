@@ -2128,3 +2128,1339 @@ export const CLASS3_WASTEWATER_OVERVIEWS: Record<string, ModuleOverview> = {
       "No calculation formulas — this module is regulatory and procedural. Know the notification timelines, confined space testing order, and key Ontario regulations (OWRA, O. Reg. 129/04, OHSA, O. Reg. 632/05).",
   },
 };
+
+// ─── Class 4 Water Module Overviews ─────────────────────────────────────────
+export const CLASS4_WATER_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Treatment Process": {
+    title: "Treatment Process",
+    intro:
+      "Class 4 Water operators hold the highest certification level and are responsible for the overall operation, optimization, and compliance of large or complex water treatment facilities. This includes multi-barrier treatment systems, advanced disinfection (UV, ozone, chloramination), membrane filtration, and regulatory reporting under O. Reg. 170/03 (Safe Drinking Water Act). Class 4 operators must understand CT calculations, log inactivation requirements, and multi-barrier risk management.",
+    keyPoints: [
+      {
+        heading: "Multi-Barrier Treatment and Log Inactivation",
+        body: "Ontario's multi-barrier approach requires that treatment achieve specified log removal/inactivation of Giardia, Cryptosporidium, and viruses. Under O. Reg. 170/03 and the associated Procedure for Disinfection of Drinking Water in Ontario: Giardia — 3 log removal/inactivation; Cryptosporidium — 2 log removal/inactivation (or more based on source water monitoring); Viruses — 4 log removal/inactivation. Physical removal (coagulation/flocculation/sedimentation/filtration) provides credit toward log removal. Disinfection provides the remaining inactivation credit. CT (concentration x time) is used to calculate inactivation credit.",
+      },
+      {
+        heading: "CT Calculations and Disinfection Credit",
+        body: "CT = Disinfectant Residual (mg/L) x Contact Time (minutes). CT tables (from Health Canada or USEPA) give the CT required for a specific log inactivation at a given temperature and pH. T10 (the time for 10% of the water to pass through the contact basin) is used instead of theoretical HRT to account for short-circuiting. T10 = Baffling Factor x HRT. Baffling factors: unbaffled = 0.1, poor = 0.3, average = 0.5, superior = 0.7, perfect = 1.0. CT achieved must equal or exceed CT required for each pathogen.",
+      },
+      {
+        heading: "Advanced Disinfection: UV and Ozone",
+        body: "UV disinfection: inactivates Giardia and Cryptosporidium at low doses (40 mJ/cm2 for 3-log Giardia; 10 mJ/cm2 for 2-log Cryptosporidium). UV dose = UV intensity (mW/cm2) x exposure time (s). UV transmittance (UVT) must be monitored — low UVT reduces effective dose. Validated UV reactors use RED (Reduction Equivalent Dose) from manufacturer testing. Ozone: powerful oxidant and disinfectant; effective against Cryptosporidium (CT = 0.5 mg·min/L for 2-log at 25 degrees C). Ozone also oxidizes taste/odour compounds (MIB, geosmin), iron, manganese, and some micropollutants. Ozone requires off-gas destruction and careful monitoring of bromate formation (DBP).",
+      },
+      {
+        heading: "Membrane Filtration",
+        body: "Membrane filtration types: microfiltration (MF, 0.1-0.2 um), ultrafiltration (UF, 0.01-0.05 um), nanofiltration (NF), reverse osmosis (RO). MF/UF provide absolute physical barrier against Cryptosporidium and Giardia — 3-log credit if integrity is maintained. Integrity testing: pressure decay test (PDT) or direct integrity test (DIT) — performed daily or per manufacturer/regulatory requirements. Turbidity of individual membrane module filtrate monitored continuously. NF/RO remove dissolved solids, nitrates, hardness, and some micropollutants — concentrate (reject) must be managed.",
+      },
+      {
+        heading: "Chloramination",
+        body: "Chloramination (combined chlorine) is used as a secondary disinfectant to reduce trihalomethane (THM) and haloacetic acid (HAA) formation in distribution systems. Chloramine formation: Cl2 + NH3 → monochloramine (NH2Cl). Cl2:NH3-N ratio must be maintained at < 5:1 (mass ratio) to prevent dichloramine and trichloramine formation (taste/odour). Chloramine residual decays more slowly than free chlorine — better for long distribution systems. Nitrification risk: ammonia released from chloramine decay supports Nitrosomonas growth — monitor nitrite in distribution system. Breakpoint chlorination may be needed to restore free chlorine residual.",
+      },
+    ],
+    tableHeadings: ["Pathogen", "Log Removal Required (Ontario)", "Primary Credit Source"],
+    tableRows: [
+      ["Giardia", "3 log", "Filtration (2 log) + CT disinfection (1 log)"],
+      ["Cryptosporidium", "2 log (minimum)", "Filtration (2 log) or UV"],
+      ["Viruses", "4 log", "Filtration (2 log) + CT disinfection (2 log)"],
+    ],
+    examTips: [
+      "CT = Residual (mg/L) x T10 (min) — always use T10, not theoretical HRT",
+      "T10 = Baffling Factor x HRT — know baffling factor values (unbaffled = 0.1, perfect = 1.0)",
+      "UV provides Cryptosporidium credit that chlorine does not — key advantage of UV",
+      "Cl2:NH3-N ratio must be < 5:1 for monochloramine; > 5:1 causes taste/odour from dichloramine",
+      "Membrane integrity testing (PDT) must be performed regularly — failure = loss of log removal credit",
+      "Ozone forms bromate from bromide — monitor bromate as a DBP",
+    ],
+    formulaHint:
+      "CT (mg·min/L) = Disinfectant Residual (mg/L) x T10 (min)\nT10 (min) = Baffling Factor x HRT (min)\nHRT (min) = Volume (L) / Flow (L/min)\nLog Inactivation = CT_achieved / CT_required_per_log",
+  },
+  "Equipment O&M": {
+    title: "Equipment O&M",
+    intro:
+      "Class 4 Water operators are responsible for the maintenance management of all plant equipment, including high-service pumps, chemical feed systems, SCADA/instrumentation, and emergency power systems. At this level, operators develop and oversee maintenance programs, evaluate equipment performance, and manage capital replacement planning.",
+    keyPoints: [
+      {
+        heading: "Pump Condition Monitoring and Performance Testing",
+        body: "Performance testing compares actual pump output (flow, head, power) to the original pump curve. Efficiency = Water Power / Shaft Power x 100%. Declining efficiency indicates impeller wear, increased internal recirculation, or seal deterioration. Vibration analysis: ISO 10816 velocity limits (typically < 4.5 mm/s RMS for large pumps). Bearing temperature: < 70 degrees C above ambient. Oil analysis identifies bearing wear metals (Fe, Cu, Al) before failure. Thermographic imaging detects hot spots in motor windings, switchgear, and bearings.",
+      },
+      {
+        heading: "Chemical Feed System Maintenance",
+        body: "Chemical feed systems include metering pumps (peristaltic, diaphragm), solution tanks, day tanks, and injection points. Peristaltic pumps: check tubing for wear and cracking — replace per manufacturer schedule. Diaphragm pumps: check diaphragm, valves, and calibration. Calibration: measure actual output volume over a timed period and compare to set point. Chemical compatibility: verify all wetted materials are compatible with the chemical being fed (e.g., sodium hypochlorite attacks brass and some elastomers). Secondary containment must be sized for 110% of the largest tank volume.",
+      },
+      {
+        heading: "SCADA and Instrumentation",
+        body: "SCADA (Supervisory Control and Data Acquisition) systems monitor and control plant operations remotely. Key components: PLCs (Programmable Logic Controllers), HMI (Human-Machine Interface), communication networks, field instruments. Cybersecurity: SCADA systems must be protected from unauthorized access — network segmentation, strong passwords, patch management. Instrument calibration: all process instruments (flow, pressure, level, turbidity, chlorine residual, pH) must be calibrated on a defined schedule and records maintained. Alarm management: critical alarms (low chlorine residual, high turbidity, pump failure) must trigger immediate operator response.",
+      },
+      {
+        heading: "Emergency Power Systems",
+        body: "Emergency generators must be capable of powering all critical plant systems (high-service pumps, chemical feed, SCADA, lighting). Generator testing: monthly no-load test; annual load test under full plant load. Transfer switch: automatic transfer switch (ATS) transfers load to generator within seconds of power failure. Fuel supply: minimum 72-hour fuel supply required for critical facilities. Battery backup (UPS): provides power during generator start-up delay for critical instruments and controls. Emergency response plan must include power failure scenarios and manual operating procedures.",
+      },
+    ],
+    tableHeadings: ["Equipment", "Key Maintenance Indicator", "Action Threshold"],
+    tableRows: [
+      ["High-service pump", "Vibration velocity (mm/s RMS)", "> 4.5 mm/s: investigate and schedule repair"],
+      ["Pump bearing", "Temperature rise above ambient", "> 70 degrees C rise: shut down and inspect"],
+      ["Chemical metering pump", "Calibration accuracy", "> 5% deviation: recalibrate"],
+      ["Emergency generator", "Load test result", "Fails to start or sustain load: immediate repair"],
+      ["SCADA instrument", "Calibration drift", "Outside acceptable range: recalibrate or replace"],
+    ],
+    examTips: [
+      "Pump efficiency = Water Power / Shaft Power x 100% — declining efficiency indicates wear",
+      "Vibration at 1x = imbalance; 2x = misalignment; high frequency = bearing defects",
+      "Chemical secondary containment must hold 110% of the largest tank volume",
+      "Generator must be load-tested annually — monthly no-load test is not sufficient",
+      "SCADA cybersecurity: network segmentation and access controls are regulatory expectations",
+      "Peristaltic pump tubing must be replaced on schedule — failure causes loss of chemical feed",
+    ],
+    formulaHint:
+      "Pump Efficiency (%) = (Q m3/s x H m x 9810 N/m3) / (Shaft Power W) x 100\nCalibration: Actual Output (mL) / Set Output (mL) x 100% — target 95-105%",
+  },
+  "Hydraulics": {
+    title: "Hydraulics",
+    intro:
+      "Class 4 Water operators must apply advanced hydraulic principles to manage distribution system pressures, model flow networks, size pumping systems, and ensure adequate fire flow and minimum pressure throughout the service area. Understanding the Hardy-Cross method, energy grade lines, and hydraulic transients is essential at this certification level.",
+    keyPoints: [
+      {
+        heading: "Distribution System Hydraulics",
+        body: "Minimum pressure in distribution system: 275 kPa (40 psi) under normal conditions; 140 kPa (20 psi) during fire flow. Maximum pressure: typically < 690 kPa (100 psi) to prevent main breaks and customer complaints. Pressure zones: large systems use pressure reducing valves (PRVs) and booster stations to maintain pressure in different elevation zones. Hazen-Williams equation: V = 0.8492 x C x R^0.63 x S^0.54, where C is roughness coefficient (new cast iron = 130, old tuberculated = 60-80, PVC = 150). Darcy-Weisbach is more accurate for all flow conditions.",
+      },
+      {
+        heading: "Water Hammer and Hydraulic Transients",
+        body: "Water hammer occurs when flow velocity changes rapidly (pump start/stop, valve closure). Pressure surge = rho x a x delta_V, where a is wave speed (~1,200 m/s for water in steel pipe). Surge pressure can exceed 10x normal operating pressure — can cause main breaks and fitting failures. Mitigation: slow-closing valves (> 10 seconds), surge tanks, air release/vacuum break valves, pump control valves. Pump start-up: open discharge valve slowly; pump shut-down: close discharge valve before stopping pump (for large pumps).",
+      },
+      {
+        heading: "Pipe Network Analysis",
+        body: "Hardy-Cross method: iterative method for solving pipe network flows and head losses. Each loop must satisfy: (1) continuity — flow into each junction equals flow out; (2) energy — head loss around each loop sums to zero. Flow correction: delta_Q = -sum(h_L) / (n x sum(h_L/Q)), where n = 1.85 for Hazen-Williams. Modern practice uses computer hydraulic models (WaterGEMS, EPANET) for network analysis. Models must be calibrated against field measurements (pressure, flow) to be reliable.",
+      },
+      {
+        heading: "Pumping System Design and Energy",
+        body: "System curve: H = static head + friction losses (increases with Q^2). Pump curve: H decreases as Q increases. Operating point: intersection of pump and system curves. Parallel pumps: same head, flows add — used to increase flow capacity. Series pumps: same flow, heads add — used to overcome high static head. Specific speed (Ns) classifies pump type: low Ns (< 1000) = radial flow (high head, low flow); high Ns (> 10000) = axial flow (low head, high flow). VFD energy savings: P proportional to N^3 — reducing speed to 80% saves ~50% energy.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Minimum/Maximum", "Regulatory Reference"],
+    tableRows: [
+      ["Distribution pressure (normal)", "275 kPa (40 psi) minimum", "Ontario Drinking Water Standards"],
+      ["Distribution pressure (fire flow)", "140 kPa (20 psi) minimum", "Ontario Fire Code / NFPA 291"],
+      ["Maximum distribution pressure", "< 690 kPa (100 psi) typical", "Design standard"],
+      ["Hazen-Williams C (new PVC)", "150", "AWWA M23"],
+      ["Hazen-Williams C (old cast iron)", "60-80", "AWWA M23"],
+    ],
+    examTips: [
+      "Minimum pressure: 275 kPa normal; 140 kPa during fire flow — know both values",
+      "Water hammer mitigation: slow-closing valves, surge tanks, air release valves",
+      "Parallel pumps: flows add at same head; Series pumps: heads add at same flow",
+      "VFD: power proportional to speed cubed — 80% speed = ~51% of full power",
+      "Hardy-Cross: iterate until head loss around each loop sums to zero",
+      "Hazen-Williams C decreases with age/tuberculation — affects head loss calculations",
+    ],
+    formulaHint:
+      "Hazen-Williams: V (m/s) = 0.8492 x C x R^0.63 x S^0.54\nWater Hammer Surge: delta_P = rho x a x delta_V\nParallel pumps: Q_total = Q1 + Q2 (at same head)\nSeries pumps: H_total = H1 + H2 (at same flow)",
+  },
+  "Regulations & Management": {
+    title: "Regulations & Management",
+    intro:
+      "Class 4 Water operators must have comprehensive knowledge of Ontario's drinking water regulatory framework, including the Safe Drinking Water Act (SDWA), O. Reg. 170/03, the Drinking Water Quality Standards (O. Reg. 169/03), and the Procedure for Disinfection of Drinking Water in Ontario. At this level, operators are also responsible for management systems, quality management, and regulatory reporting.",
+    keyPoints: [
+      {
+        heading: "Safe Drinking Water Act and O. Reg. 170/03",
+        body: "The Safe Drinking Water Act (SDWA, 2002) is Ontario's primary drinking water legislation. O. Reg. 170/03 (Drinking Water Systems) sets out operational requirements: sampling frequencies, adverse result reporting, notification requirements, and record-keeping. Key requirements: continuous monitoring of turbidity and disinfectant residual; daily sampling for microbiological parameters; immediate reporting of adverse results to the Medical Officer of Health and the MECP. Licence and permit to take water (PTTW) must be maintained. Annual summary report must be prepared and made available to the public.",
+      },
+      {
+        heading: "Adverse Results and Notification",
+        body: "Adverse result: any test result that exceeds a standard in O. Reg. 169/03, or any result that indicates a potential health risk. Notification chain: (1) Immediately notify the Medical Officer of Health (MOH) and the MECP; (2) Issue a Boil Water Advisory (BWA) or Do Not Use Advisory if required; (3) Notify the public. Turbidity adverse result: > 1 NTU for filtered systems triggers immediate investigation and potential BWA. E. coli detection: immediate BWA, resample, investigate source. Total coliform detection: investigate, resample within 24 hours.",
+      },
+      {
+        heading: "Drinking Water Quality Management Standard (DWQMS)",
+        body: "DWQMS is Ontario's quality management system for municipal drinking water. Based on ISO 9001 principles. Key elements: Operational Plan (documents all aspects of system operation), risk assessment, management review, internal audits, corrective actions. Accreditation: third-party auditors verify compliance with DWQMS. Owners (municipalities) must have an accredited Operating Authority. The Operational Plan must be reviewed and updated annually. Continuous improvement is a core requirement.",
+      },
+      {
+        heading: "Source Water Protection",
+        body: "Clean Water Act (2006) established Source Protection Plans (SPPs) for all Ontario watersheds. Significant threats to drinking water sources must be identified and managed. Wellhead Protection Areas (WHPAs) and Intake Protection Zones (IPZs) define areas where activities are regulated. Operators must know the threats in their source protection area and the policies that apply. Vulnerable areas: karst aquifers, shallow unconfined aquifers, surface water intakes near agricultural land. Source-to-tap approach: protection at the source reduces treatment burden.",
+      },
+    ],
+    tableHeadings: ["Trigger", "Required Action", "Timeline"],
+    tableRows: [
+      ["E. coli detection", "Notify MOH and MECP, issue BWA, resample", "Immediately"],
+      ["Total coliform detection", "Investigate, resample", "Within 24 hours"],
+      ["Turbidity > 1 NTU (filtered)", "Investigate, consider BWA", "Immediately"],
+      ["Chlorine residual below minimum", "Investigate, notify MECP if not restored", "Immediately"],
+      ["Annual summary report", "Prepare and make available to public", "By February 28 each year"],
+    ],
+    examTips: [
+      "E. coli = immediate BWA, notify MOH and MECP immediately — no waiting for confirmation",
+      "Total coliform = investigate and resample within 24 hours (not automatic BWA)",
+      "Turbidity > 1 NTU for filtered systems = adverse result requiring immediate action",
+      "DWQMS Operational Plan must be reviewed and updated annually",
+      "Annual summary report must be made available to the public by February 28",
+      "Source Protection Plans (SPPs) under the Clean Water Act regulate activities near intakes and wells",
+    ],
+    formulaHint:
+      "No primary calculation formulas — this module is regulatory. Know the notification timelines, adverse result thresholds (O. Reg. 169/03), and DWQMS requirements.",
+  },
+  "Water Quality": {
+    title: "Water Quality",
+    intro:
+      "Class 4 Water operators must understand advanced water quality parameters, disinfection by-product (DBP) formation and control, corrosion control, and emerging contaminants. Managing DBP formation while maintaining adequate disinfection is one of the most challenging aspects of Class 4 water treatment.",
+    keyPoints: [
+      {
+        heading: "Disinfection By-Products (DBPs)",
+        body: "DBPs form when disinfectants react with natural organic matter (NOM) in source water. Trihalomethanes (THMs): chloroform, bromodichloromethane, dibromochloromethane, bromoform — formed by chlorination of NOM. Ontario MAC: 100 ug/L total THMs. Haloacetic acids (HAAs): formed by chlorination of NOM — Ontario MAC: 80 ug/L. DBP control strategies: (1) reduce NOM before disinfection (enhanced coagulation, GAC); (2) use alternative disinfectants (chloramines, UV, ozone); (3) optimize chlorine dose and contact time. Bromide in source water increases brominated DBP formation.",
+      },
+      {
+        heading: "Corrosion Control",
+        body: "Corrosion in distribution systems causes lead and copper leaching, red water (iron), and pipe deterioration. Langelier Saturation Index (LSI): LSI = pH - pHs, where pHs is the saturation pH for calcium carbonate. LSI > 0: water is scale-forming (protective CaCO3 layer). LSI < 0: water is corrosive. Corrosion control: adjust pH (target 7.5-8.5), add phosphate inhibitor, maintain calcium hardness. Lead and copper rule (Ontario): if > 10% of samples exceed lead MAC (10 ug/L) or copper MAC (1 mg/L), corrosion control treatment required.",
+      },
+      {
+        heading: "Emerging Contaminants",
+        body: "Emerging contaminants include pharmaceuticals and personal care products (PPCPs), per- and polyfluoroalkyl substances (PFAS), microplastics, and cyanotoxins. PFAS: highly persistent, bioaccumulative — Ontario has established interim MACs for PFOA and PFOS. Cyanotoxins (from harmful algal blooms, HABs): microcystin-LR MAC = 1.5 ug/L. Monitoring and treatment: ozone + GAC is effective for many emerging contaminants. Early warning monitoring at intake is critical for HAB events.",
+      },
+      {
+        heading: "Taste and Odour Control",
+        body: "Common taste and odour compounds: 2-methylisoborneol (MIB) and geosmin — produced by cyanobacteria and actinomycetes. Threshold odour concentration: MIB and geosmin detectable at 5-10 ng/L. Treatment: powdered activated carbon (PAC) — effective for MIB and geosmin; ozone oxidizes both compounds. Chlorine does not effectively remove MIB or geosmin. Monitoring: threshold odour number (TON) test; GC-MS for specific compounds. Seasonal occurrence: late summer/fall algal blooms are peak risk period.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Ontario MAC", "Treatment Strategy"],
+    tableRows: [
+      ["Total THMs", "100 ug/L", "Enhanced coagulation, chloramination, GAC"],
+      ["Haloacetic acids (HAAs)", "80 ug/L", "Enhanced coagulation, chloramination, GAC"],
+      ["Lead", "10 ug/L", "pH adjustment, phosphate inhibitor, pipe replacement"],
+      ["Copper", "1 mg/L", "pH adjustment, corrosion inhibitor"],
+      ["Microcystin-LR", "1.5 ug/L", "Ozone, PAC, GAC, monitoring at intake"],
+      ["PFOA/PFOS", "Interim MACs (check current Ontario standards)", "GAC, nanofiltration, reverse osmosis"],
+    ],
+    examTips: [
+      "THM MAC = 100 ug/L; HAA MAC = 80 ug/L — both are running annual averages",
+      "LSI > 0 = scale-forming (protective); LSI < 0 = corrosive — target slightly positive LSI",
+      "MIB and geosmin: chlorine does NOT remove them — use PAC or ozone",
+      "Lead MAC = 10 ug/L; if > 10% of samples exceed, corrosion control treatment required",
+      "PFAS are highly persistent — GAC and nanofiltration/RO are primary treatment options",
+      "Cyanotoxin risk peaks in late summer — monitor intake turbidity, algae counts, and microcystin",
+    ],
+    formulaHint:
+      "LSI = pH_measured - pH_saturation\npH_saturation = pK2 - pKs + p[Ca2+] + p[alkalinity]\nTHM formation increases with: higher NOM, higher chlorine dose, longer contact time, higher temperature, higher pH",
+  },
+  "Math & Calculations": {
+    title: "Math & Calculations",
+    intro:
+      "Class 4 Water operators must perform complex calculations involving CT compliance, chemical dosing, flow rates, pump performance, and hydraulic analysis. Accuracy is critical — errors in CT calculations or chemical dosing can result in regulatory non-compliance or public health risks.",
+    keyPoints: [
+      {
+        heading: "CT Compliance Calculations",
+        body: "CT_required is obtained from regulatory tables (based on temperature, pH, and target log inactivation). CT_achieved = Residual (mg/L) x T10 (min). T10 = Baffling Factor x HRT. HRT = Volume / Flow. Log inactivation achieved = CT_achieved / CT_per_log. Multiple disinfection stages: sum CT contributions from each stage. Example: if CT_required for 3-log Giardia at 10 degrees C and pH 7 = 165 mg·min/L, and CT_achieved = 180 mg·min/L, the system is compliant with 0.33 log of additional capacity.",
+      },
+      {
+        heading: "Chemical Feed Calculations",
+        body: "Chemical dose (mg/L) = mass of chemical applied / volume of water treated. Feed rate (kg/day) = Dose (mg/L) x Flow (m3/day) x 0.001. For solutions: Feed rate (L/day) = [Dose (mg/L) x Flow (m3/day)] / [Solution concentration (mg/L)]. Chlorine demand = Applied dose - Residual. Chlorine dose for CT: must achieve required residual at the end of the contact zone. Alum dose for coagulation: jar test determines optimal dose — typically 10-50 mg/L. Lime softening: calculate hardness removal using stoichiometry (CaCO3 precipitation).",
+      },
+      {
+        heading: "Flow and Volume Calculations",
+        body: "Flow rate: Q = A x V (pipe flow); Q = Cd x A x sqrt(2gH) (orifice/weir). Weir flow: Q = 1.84 x L x H^1.5 (rectangular weir, SI units). Unit conversions: 1 m3 = 1000 L; 1 MLD = 1,000,000 L/day = 11.57 L/s. Detention time: HRT = V / Q. Surface overflow rate (SOR): SOR = Q / A (m3/m2/day). Filter loading rate: Q / filter area (m3/m2/h or m/h). Typical filter loading: 5-12 m/h for rapid sand filters.",
+      },
+      {
+        heading: "Pump and Energy Calculations",
+        body: "Water power (kW) = Q (m3/s) x H (m) x rho (kg/m3) x g (9.81 m/s2) / 1000. Shaft power = Water power / Pump efficiency. Motor power = Shaft power / Motor efficiency. Wire-to-water efficiency = Water power / Motor input power. Energy cost = Power (kW) x Time (h) x Rate ($/kWh). Affinity laws: Q2/Q1 = N2/N1; H2/H1 = (N2/N1)^2; P2/P1 = (N2/N1)^3. Specific speed: Ns = N x Q^0.5 / H^0.75 (rpm, m3/s, m).",
+      },
+    ],
+    tableHeadings: ["Calculation Type", "Key Formula", "Units"],
+    tableRows: [
+      ["CT achieved", "CT = Residual x T10", "mg·min/L"],
+      ["T10", "T10 = Baffling Factor x HRT", "minutes"],
+      ["Chemical feed rate", "Feed (kg/day) = Dose (mg/L) x Q (m3/day) x 0.001", "kg/day"],
+      ["Water power", "P = Q x H x 9810 / 1000", "kW (Q in m3/s, H in m)"],
+      ["Rectangular weir flow", "Q = 1.84 x L x H^1.5", "m3/s (L and H in metres)"],
+      ["Filter loading rate", "Rate = Q / A", "m/h or m3/m2/h"],
+    ],
+    examTips: [
+      "Always use T10 (not HRT) in CT calculations — T10 = Baffling Factor x HRT",
+      "Chemical feed rate: Dose (mg/L) x Flow (m3/d) x 0.001 = kg/day",
+      "Water power formula: Q (m3/s) x H (m) x 9810 / 1000 = kW",
+      "Affinity laws: power proportional to speed cubed — halving speed = 1/8 power",
+      "Rectangular weir: Q = 1.84 x L x H^1.5 (SI units)",
+      "Filter loading rate: typically 5-12 m/h for rapid sand; > 15 m/h may cause turbidity breakthrough",
+    ],
+    formulaHint:
+      "CT = Residual (mg/L) x T10 (min)\nT10 = Baffling Factor x HRT\nFeed Rate (kg/d) = Dose (mg/L) x Q (m3/d) x 0.001\nWater Power (kW) = Q (m3/s) x H (m) x 9810 / 1000\nWeir: Q = 1.84 x L x H^1.5",
+  },
+  "Source Water Protection": {
+    title: "Source Water Protection",
+    intro:
+      "Class 4 Water operators must understand source water characterization, vulnerability assessment, and the regulatory framework for source protection in Ontario. The Clean Water Act (2006) and associated Source Protection Plans (SPPs) require operators to identify and manage threats to drinking water sources.",
+    keyPoints: [
+      {
+        heading: "Source Water Characterization",
+        body: "Surface water sources: susceptible to seasonal variation, runoff events, and upstream land use activities. Key parameters: turbidity, colour, TOC (total organic carbon), temperature, algae counts, E. coli, and specific contaminants (nitrates, pesticides). Groundwater sources: generally more stable but vulnerable to contamination from surface infiltration, septic systems, and industrial activities. Aquifer vulnerability: depends on depth to water table, soil permeability, and presence of fractures or karst features. Source water monitoring program must be documented in the Operational Plan.",
+      },
+      {
+        heading: "Intake Protection Zones (IPZs)",
+        body: "IPZs are defined areas around surface water intakes where activities are regulated to protect the drinking water source. IPZ-1: area immediately around the intake (highest protection). IPZ-2: area from which water could reach the intake within 2 hours. IPZ-3: area contributing to the intake during a significant storm event. Regulated activities within IPZs: fuel storage, pesticide application, sewage disposal, road salt application. Operators must know the significant threats in their IPZ and the applicable policies.",
+      },
+      {
+        heading: "Wellhead Protection Areas (WHPAs)",
+        body: "WHPAs are defined around groundwater wells based on time-of-travel zones: WHPA-A (0-2 year travel time), WHPA-B (2-5 years), WHPA-C (5-25 years), WHPA-D (25-100 years). Higher protection in WHPA-A and WHPA-B. Regulated activities: fuel storage, waste disposal, pesticide application, road salt. Vulnerability scoring: WHPA vulnerability is rated 1-10 based on aquifer characteristics — higher score = more vulnerable = stricter policies.",
+      },
+      {
+        heading: "Harmful Algal Blooms (HABs)",
+        body: "HABs (cyanobacterial blooms) produce cyanotoxins (microcystins, anatoxins, cylindrospermopsin) that can cause serious health effects. HAB risk factors: warm temperatures, high nutrients (phosphorus, nitrogen), low flow, and stable water column. Monitoring: visual inspection, algae cell counts, cyanotoxin testing (ELISA or LC-MS). Response: if microcystin > 1.5 ug/L, issue advisory and increase treatment. Treatment: conventional treatment removes intact cells; ozone and GAC remove dissolved toxins. Avoid using copper sulfate to kill algae — cell lysis releases intracellular toxins.",
+      },
+    ],
+    tableHeadings: ["Zone", "Definition", "Protection Level"],
+    tableRows: [
+      ["IPZ-1", "Immediately around surface water intake", "Highest — most activities prohibited"],
+      ["IPZ-2", "2-hour travel time to intake", "High — significant threats regulated"],
+      ["IPZ-3", "Significant storm event contribution area", "Moderate — key threats regulated"],
+      ["WHPA-A", "0-2 year groundwater travel time", "Highest — most activities prohibited"],
+      ["WHPA-B", "2-5 year groundwater travel time", "High — significant threats regulated"],
+    ],
+    examTips: [
+      "IPZ-2 = 2-hour travel time to intake; WHPA-A = 0-2 year groundwater travel time",
+      "HAB response: if microcystin > 1.5 ug/L, issue advisory — do NOT use copper sulfate (releases toxins)",
+      "Source water monitoring must be documented in the Operational Plan (DWQMS requirement)",
+      "Groundwater vulnerability: karst and fractured rock aquifers are most vulnerable",
+      "Clean Water Act (2006) established Source Protection Plans — know the key zones and threats",
+      "TOC monitoring at intake is a leading indicator of DBP formation potential",
+    ],
+    formulaHint:
+      "No primary calculation formulas — this module is regulatory and conceptual. Know the zone definitions, threat categories, and HAB response protocols.",
+  },
+  "Plant Management": {
+    title: "Plant Management",
+    intro:
+      "Class 4 Water operators are responsible for overall plant management, including staff supervision, budget management, capital planning, regulatory compliance, and continuous improvement. The Drinking Water Quality Management Standard (DWQMS) requires a documented management system with regular management reviews and internal audits.",
+    keyPoints: [
+      {
+        heading: "DWQMS Operational Plan",
+        body: "The Operational Plan is the core document of the DWQMS management system. It must describe: the drinking water system (infrastructure, processes, service area); the quality management policy; risk assessment (threats, likelihood, consequences, controls); operational procedures; monitoring and measurement; emergency response; training requirements; and document control. The Operational Plan must be reviewed and updated at least annually. All staff must be trained on the Operational Plan. Third-party accreditation audits verify compliance.",
+      },
+      {
+        heading: "Risk Assessment and Management",
+        body: "Risk assessment identifies hazards and threats to drinking water quality from source to tap. Risk = Likelihood x Consequence. High-risk items require priority control measures and monitoring. Critical control points (CCPs): key process steps where failure would directly impact water quality (e.g., disinfection, filtration). Corrective action procedures must be documented for each CCP. Management of change: any significant change to the system (new chemical, process modification, infrastructure change) must be assessed for risk before implementation.",
+      },
+      {
+        heading: "Staff Management and Training",
+        body: "Class 4 operators may supervise all lower-class operators. All staff performing regulated duties must hold the appropriate certification. Training records must be maintained. Succession planning: ensure coverage for all critical roles during vacations, illness, and turnover. Performance management: regular performance reviews, documented training needs, and professional development plans. Operators must accumulate Professional Development Hours (PDHs) to maintain certification. Safety training: WHMIS, confined space, lockout/tagout, first aid must be current for all relevant staff.",
+      },
+      {
+        heading: "Capital Planning and Asset Management",
+        body: "Asset management: inventory all infrastructure assets (pipes, pumps, tanks, instruments), assess condition, and plan for rehabilitation or replacement. Lifecycle costing: consider capital cost, operating cost, and end-of-life replacement cost when evaluating equipment options. Capital budget: prioritize replacements based on criticality (impact on service if failed), condition, and remaining useful life. Infrastructure Ontario and MECP provide guidance on asset management for water systems. Annual infrastructure reports may be required under municipal or provincial requirements.",
+      },
+    ],
+    tableHeadings: ["DWQMS Element", "Key Requirement", "Frequency"],
+    tableRows: [
+      ["Operational Plan review", "Review and update all elements", "At least annually"],
+      ["Management review", "Senior management reviews system performance", "At least annually"],
+      ["Internal audit", "Audit all elements of the management system", "At least annually"],
+      ["Risk assessment", "Review and update risk assessment", "When significant changes occur or annually"],
+      ["Third-party accreditation audit", "External auditor verifies DWQMS compliance", "Per accreditation cycle"],
+    ],
+    examTips: [
+      "Operational Plan must be reviewed and updated at least annually — DWQMS requirement",
+      "Risk = Likelihood x Consequence — high-risk items require priority controls",
+      "Management of change: assess risk before implementing any significant system change",
+      "All staff performing regulated duties must hold appropriate certification",
+      "PDHs are required to maintain operator certification — track and document",
+      "Asset management: condition + criticality + remaining useful life = replacement priority",
+    ],
+    formulaHint:
+      "Risk Score = Likelihood (1-5) x Consequence (1-5)\nAsset Priority = f(Criticality, Condition, Remaining Useful Life)\nNo primary calculation formulas — this module is management and regulatory.",
+  },
+  "Emergency Response": {
+    title: "Emergency Response",
+    intro:
+      "Class 4 Water operators must develop, maintain, and execute emergency response plans (ERPs) for a wide range of scenarios including source water contamination events, infrastructure failures, power outages, and natural disasters. Under O. Reg. 170/03 and the DWQMS, a documented ERP is mandatory.",
+    keyPoints: [
+      {
+        heading: "Emergency Response Plan Requirements",
+        body: "The ERP must address: source water contamination (spills, HABs, extreme turbidity events); treatment failures (loss of disinfection, filter breakthrough, chemical feed failure); distribution system failures (main breaks, pressure loss, backflow events); power outages; and natural disasters (floods, ice storms). The ERP must include: emergency contacts (MOH, MECP, municipal officials, utilities); notification procedures; response procedures for each scenario; resource requirements (equipment, chemicals, staff); and communication protocols (public notification, media). The ERP must be tested through tabletop exercises or drills at least annually.",
+      },
+      {
+        heading: "Boil Water Advisory (BWA) Protocols",
+        body: "A BWA is issued when there is a risk that drinking water may be unsafe to consume without boiling. Triggers: E. coli detection, loss of disinfection, turbidity exceedance, distribution system contamination, or significant pressure loss. Issuing a BWA: notify MOH and MECP immediately; issue public notification (media, social media, door-to-door if needed). Maintaining a BWA: continue monitoring; identify and correct the root cause. Lifting a BWA: requires two consecutive satisfactory microbiological samples (minimum 24 hours apart), restoration of normal treatment and pressure, and approval from MOH.",
+      },
+      {
+        heading: "Source Water Contamination Response",
+        body: "Spill response: activate ERP, notify MECP Spills Action Centre (1-800-268-6060), assess impact on intake, consider switching to backup source or shutting down intake. Extreme turbidity events (spring runoff, storm events): increase coagulant dose, reduce filter loading rate, increase monitoring frequency, consider activating emergency storage. HAB events: increase monitoring (algae counts, microcystin), consider PAC addition, notify MOH if microcystin approaches MAC. Drought: reduced flow concentrates contaminants — increase monitoring and adjust treatment.",
+      },
+      {
+        heading: "Infrastructure Failure Response",
+        body: "Loss of disinfection: immediately notify MECP and MOH; issue BWA if residual cannot be restored within a defined time; investigate cause (chemical feed failure, pump failure, power outage); restore disinfection before lifting BWA. Main break: isolate section, maintain minimum pressure in remainder of system, flush and resample before returning to service. Backflow event: investigate source of contamination, issue BWA if contamination confirmed, flush and resample. Power outage: transfer to emergency generator, verify all critical systems are operating, document duration and any impacts on treatment.",
+      },
+    ],
+    tableHeadings: ["Emergency Scenario", "Immediate Action", "Notification Required"],
+    tableRows: [
+      ["E. coli detection", "Issue BWA, investigate source", "MOH and MECP immediately"],
+      ["Loss of disinfection", "Issue BWA if not restored promptly, investigate", "MECP immediately"],
+      ["Extreme turbidity event", "Increase coagulant, reduce filter loading, monitor", "MECP if adverse result"],
+      ["Source water spill", "Assess intake impact, consider shutdown", "MECP Spills Action Centre immediately"],
+      ["HAB event (microcystin > 1.5 ug/L)", "Issue advisory, add PAC, increase monitoring", "MOH and MECP"],
+    ],
+    examTips: [
+      "BWA triggers: E. coli, loss of disinfection, turbidity exceedance, significant pressure loss",
+      "Lifting a BWA requires two consecutive satisfactory microbiological samples (minimum 24 hours apart)",
+      "Spill reporting: call MECP Spills Action Centre (1-800-268-6060) immediately",
+      "ERP must be tested through exercises or drills at least annually — DWQMS requirement",
+      "HAB response: do NOT use copper sulfate — use PAC or ozone; notify MOH if microcystin > 1.5 ug/L",
+      "Loss of disinfection: issue BWA if residual cannot be restored — do not delay notification",
+    ],
+    formulaHint:
+      "No primary calculation formulas — this module is procedural. Know the notification timelines, BWA triggers and lifting criteria, and ERP testing requirements.",
+  },
+  "Advanced Treatment": {
+    title: "Advanced Treatment",
+    intro:
+      "Class 4 Water operators must understand and operate advanced treatment processes including granular activated carbon (GAC), ion exchange, advanced oxidation processes (AOPs), biological filtration, and membrane systems. These processes are increasingly required to address emerging contaminants, DBP precursors, and stringent effluent quality requirements.",
+    keyPoints: [
+      {
+        heading: "Granular Activated Carbon (GAC)",
+        body: "GAC adsorbs dissolved organic compounds including DBP precursors (NOM), taste and odour compounds (MIB, geosmin), pesticides, and some micropollutants (PFAS). Empty bed contact time (EBCT): the time water spends in contact with GAC — typically 10-20 minutes. Longer EBCT = greater removal. GAC exhaustion: capacity decreases over time as adsorption sites fill — monitored by TOC breakthrough or taste/odour complaints. Reactivation: exhausted GAC is thermally reactivated (900 degrees C) to restore adsorption capacity. Biological GAC (BAC): after ozonation, GAC supports biological activity that degrades NOM — extends GAC life.",
+      },
+      {
+        heading: "Advanced Oxidation Processes (AOPs)",
+        body: "AOPs generate hydroxyl radicals (OH•) — the most powerful oxidant used in water treatment. Common AOPs: UV/H2O2, ozone/H2O2, ozone/UV. Hydroxyl radicals react non-selectively with most organic compounds — effective for micropollutants, pharmaceuticals, and PFAS (some). UV/H2O2: UV photolysis of H2O2 generates OH•. H2O2 residual must be quenched before distribution (by GAC or sodium thiosulfate). Ozone/H2O2: more efficient OH• generation than ozone alone. AOPs are energy-intensive — optimize dose to minimize cost while achieving treatment objectives.",
+      },
+      {
+        heading: "Ion Exchange",
+        body: "Ion exchange resins remove specific ions from water by exchanging them with ions on the resin. Cation exchange: removes hardness (Ca2+, Mg2+), heavy metals, and radionuclides. Anion exchange: removes nitrate, arsenic, perchlorate, and PFAS (PFOA, PFOS). Strong acid cation (SAC) resin: used for water softening — regenerated with NaCl or HCl. Strong base anion (SBA) resin: used for nitrate and PFAS removal — regenerated with NaCl or NaOH. Regeneration produces concentrated brine waste that must be managed. Single-use (non-regenerable) resins are used for PFAS removal to avoid regeneration waste issues.",
+      },
+      {
+        heading: "Biological Filtration",
+        body: "Biological filtration uses microorganisms attached to filter media to biodegrade dissolved organic matter, ammonia, and manganese. Biologically active filters (BAFs): typically operated after ozonation (ozone increases biodegradability of NOM). Nitrification in filters: Nitrosomonas oxidize ammonia to nitrate — requires DO > 2 mg/L and SRT > 10 days. Manganese removal: biological oxidation of Mn2+ to MnO2 — requires pH > 7.5 and DO. Biological filters must not be disinfected — chlorine kills the biofilm. Backwash with unchlorinated water or air scour only.",
+      },
+    ],
+    tableHeadings: ["Process", "Target Contaminants", "Key Design Parameter"],
+    tableRows: [
+      ["GAC adsorption", "NOM, DBP precursors, MIB/geosmin, micropollutants", "EBCT: 10-20 minutes"],
+      ["UV/H2O2 AOP", "Micropollutants, pharmaceuticals, some PFAS", "UV dose + H2O2 dose"],
+      ["Ozone", "Taste/odour, Cryptosporidium, colour, iron/Mn", "CT (mg·min/L) and bromate control"],
+      ["Cation exchange (softening)", "Hardness (Ca2+, Mg2+)", "Service flow rate, regeneration frequency"],
+      ["Anion exchange", "Nitrate, PFAS, arsenic", "Service flow rate, regenerant waste management"],
+      ["Biological filtration (BAF)", "NOM, ammonia, manganese", "EBCT, DO, backwash protocol"],
+    ],
+    examTips: [
+      "GAC EBCT: 10-20 minutes typical — longer EBCT = greater removal",
+      "Biological filters must NOT be chlorinated — chlorine kills the biofilm",
+      "UV/H2O2 AOP: H2O2 residual must be quenched before distribution (GAC or sodium thiosulfate)",
+      "Ion exchange for PFAS: single-use resins avoid regeneration waste problems",
+      "Ozone + GAC = BAC (biologically active carbon) — ozone increases NOM biodegradability",
+      "Biological Mn removal requires pH > 7.5 and DO — do not disinfect biological filters",
+    ],
+    formulaHint:
+      "EBCT (min) = GAC Volume (m3) / Flow Rate (m3/min)\nGAC Throughput (bed volumes) = Total Volume Treated / GAC Volume\nUV Dose (mJ/cm2) = UV Intensity (mW/cm2) x Exposure Time (s)",
+  },
+  "Lab Analysis": {
+    title: "Lab Analysis",
+    intro:
+      "Class 4 Water operators must oversee laboratory operations, ensure quality assurance and quality control (QA/QC), interpret complex analytical results, and ensure compliance with Ontario's sampling and testing requirements under O. Reg. 170/03. At this level, operators must understand method detection limits, chain of custody, and the significance of analytical results.",
+    keyPoints: [
+      {
+        heading: "Regulatory Sampling Requirements",
+        body: "O. Reg. 170/03 specifies minimum sampling frequencies for all parameters. Microbiological sampling: daily for large systems; weekly for small systems. Turbidity: continuous monitoring for filtered systems. Chlorine residual: continuous at treatment and at distribution system sampling points. THMs and HAAs: quarterly sampling at distribution system locations. Lead and copper: sampling at customer taps (first-draw samples after 6-hour stagnation). All samples must be collected, preserved, and transported per standard methods. Chain of custody must be maintained from collection to analysis.",
+      },
+      {
+        heading: "QA/QC in the Laboratory",
+        body: "Quality assurance (QA): system-level activities to ensure accuracy (method validation, staff training, instrument maintenance). Quality control (QC): sample-level activities to detect errors (blanks, duplicates, spikes, standards). Method blanks: detect contamination in reagents or equipment. Field blanks: detect contamination during sampling. Duplicate samples: assess precision (reproducibility). Matrix spikes: assess accuracy (recovery) in the sample matrix. Control charts: track instrument performance over time — identify drift and out-of-control conditions. Accredited laboratories must meet ISO/IEC 17025 requirements.",
+      },
+      {
+        heading: "Turbidity and Particle Counting",
+        body: "Turbidity: measured in NTU (nephelometric turbidity units) using a nephelometer. Regulatory limits: < 1 NTU for filtered systems (adverse result if exceeded); < 0.3 NTU target for individual filters. Particle counting: counts particles by size (typically 2-10 um range for Cryptosporidium surrogate). Particle counts provide earlier warning of filter breakthrough than turbidity. Filter ripening: turbidity and particle counts are elevated immediately after backwash — ripening period typically 15-30 minutes. Filter-to-waste during ripening prevents elevated turbidity from entering the distribution system.",
+      },
+      {
+        heading: "Microbiological Testing",
+        body: "Total coliform and E. coli: membrane filtration (MF) or presence-absence (P-A) methods. Heterotrophic plate count (HPC): indicates overall bacterial activity in distribution system — elevated HPC may indicate biofilm growth or stagnation. Cryptosporidium and Giardia: Method 1623 (immunofluorescence assay) — expensive and time-consuming; used for source water monitoring. Legionella: culture or PCR — monitoring required for cooling towers and hot water systems. All microbiological samples must be analyzed within holding time (E. coli: 6 hours; total coliform: 24 hours).",
+      },
+    ],
+    tableHeadings: ["Test", "Regulatory Requirement", "Action Level"],
+    tableRows: [
+      ["E. coli", "Daily sampling (large systems)", "Any detection = adverse result, BWA"],
+      ["Total coliform", "Daily sampling (large systems)", "Detection = investigate, resample within 24 h"],
+      ["Turbidity (filtered)", "Continuous monitoring", "> 1 NTU = adverse result"],
+      ["Chlorine residual", "Continuous at plant; regular in distribution", "Below minimum = investigate immediately"],
+      ["THMs", "Quarterly (distribution system)", "> 100 ug/L running annual average = adverse result"],
+      ["Lead (first-draw)", "Per lead and copper sampling plan", "> 10 ug/L in > 10% of samples = corrosion control required"],
+    ],
+    examTips: [
+      "E. coli holding time: 6 hours; total coliform: 24 hours — exceed holding time = invalid sample",
+      "Turbidity > 1 NTU for filtered systems = adverse result — notify MECP and MOH",
+      "Particle counting provides earlier warning of filter breakthrough than turbidity",
+      "Matrix spikes assess accuracy (recovery); duplicates assess precision (reproducibility)",
+      "THM MAC = 100 ug/L as running annual average — quarterly samples averaged over 4 quarters",
+      "Lead sampling: first-draw after 6-hour stagnation — specific protocol required",
+    ],
+    formulaHint:
+      "Running Annual Average (THMs) = Sum of 4 quarterly results / 4\nPercent Recovery (spike) = (Spiked result - Unspiked result) / Spike added x 100%\nRPD (duplicates) = |Result1 - Result2| / Average x 100%",
+  },
+  "Safety": {
+    title: "Safety",
+    intro:
+      "Class 4 Water operators are responsible for workplace safety at a senior level, including developing safety programs, conducting hazard assessments, overseeing confined space entry programs, and ensuring compliance with the Occupational Health and Safety Act (OHSA) and its regulations. At this level, operators may serve as the designated safety officer or supervisor.",
+    keyPoints: [
+      {
+        heading: "OHSA Supervisor Responsibilities",
+        body: "Under OHSA, supervisors must: ensure workers use required protective equipment; advise workers of known hazards; take every precaution reasonable in the circumstances for the protection of workers; and not direct workers to perform work in contravention of OHSA. Supervisors can be held personally liable for OHSA violations. Due diligence: supervisors must demonstrate they took all reasonable precautions to prevent workplace injuries. Incident reporting: critical injuries must be reported to MECP and MOH (for water quality incidents) and to the Ministry of Labour (for workplace injuries).",
+      },
+      {
+        heading: "Confined Space Program Management",
+        body: "Under O. Reg. 632/05 (Confined Spaces), employers must develop a written confined space program. Program elements: identification of all confined spaces; hazard assessment for each space; written entry procedures; atmospheric testing requirements; rescue plan (non-entry rescue preferred); training for all entrants, attendants, and rescue team members. Entry permit: must be completed before each entry — includes space identification, hazards, atmospheric test results, PPE required, rescue plan, and signatures. Atmospheric testing order: (1) O2 (19.5-23.0%); (2) combustible gases (< 10% LEL); (3) toxic gases (H2S < 10 ppm, CO < 25 ppm).",
+      },
+      {
+        heading: "Lockout/Tagout (LOTO) Program",
+        body: "Lockout/tagout (LOTO) prevents the unexpected energization of equipment during maintenance. O. Reg. 851 (Industrial Establishments) requires written LOTO procedures for all equipment. LOTO steps: (1) notify affected workers; (2) identify all energy sources (electrical, pneumatic, hydraulic, gravity, thermal); (3) shut down equipment; (4) isolate all energy sources; (5) apply personal locks; (6) release stored energy (bleed lines, block gravity loads); (7) verify zero energy state before work begins. Each worker must apply their own lock — never share locks. Tagout only (no lock) is only permitted when lockout is not physically possible.",
+      },
+      {
+        heading: "Chemical Safety and Emergency Response",
+        body: "Water treatment chemicals: chlorine gas (highly toxic, TLV-C = 1 ppm), sodium hypochlorite (corrosive, generates chlorine gas if acidified), ammonia (toxic, flammable), alum (corrosive), fluoride compounds (toxic). Chlorine gas emergency: evacuate, call 911, use SCBA for rescue — do NOT enter without SCBA. Secondary containment: all chemical storage areas must have containment for 110% of largest tank. SDS must be accessible in the workplace. Emergency shower and eyewash: within 10 seconds of chemical handling areas. Annual emergency response drills must include chemical spill scenarios.",
+      },
+    ],
+    tableHeadings: ["Hazard", "Regulatory Reference", "Key Requirement"],
+    tableRows: [
+      ["Confined space entry", "O. Reg. 632/05", "Written program, entry permit, rescue team"],
+      ["Lockout/tagout", "O. Reg. 851", "Written procedures, personal locks, verify zero energy"],
+      ["Chlorine gas", "OHSA / WHMIS 2015", "SCBA required for entry, TLV-C = 1 ppm"],
+      ["Chemical storage", "OHSA / Fire Code", "Secondary containment 110% of largest tank"],
+      ["Critical injury", "OHSA Section 51", "Report to Ministry of Labour immediately"],
+    ],
+    examTips: [
+      "Supervisors are personally liable under OHSA — due diligence is the defence",
+      "LOTO: each worker applies their own lock — never share locks",
+      "Confined space atmospheric testing order: O2 first, then LEL, then toxic gases (H2S, CO)",
+      "Chlorine gas TLV-C = 1 ppm — SCBA required for any entry into chlorine gas atmosphere",
+      "Secondary containment must hold 110% of the largest tank volume",
+      "Critical injury reporting: notify Ministry of Labour immediately (OHSA Section 51)",
+    ],
+    formulaHint:
+      "No primary calculation formulas — this module is regulatory and procedural. Know the OHSA requirements, confined space testing order, LOTO steps, and chemical safety thresholds.",
+  },
+};
+
+// ─── Class 4 Wastewater Module Overviews ─────────────────────────────────────
+export const CLASS4_WASTEWATER_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Treatment Process Monitoring": {
+    title: "Treatment Process Monitoring",
+    intro:
+      "Class 4 Wastewater operators hold the highest certification level and are responsible for the overall operation, optimization, and regulatory compliance of large or complex wastewater treatment facilities. This includes advanced secondary treatment (activated sludge, MBR), tertiary treatment (filtration, UV disinfection), nutrient removal (BNR), and biosolids management. Class 4 operators must understand process control theory, effluent quality standards, and the regulatory framework under Ontario's Environmental Compliance Approvals (ECAs).",
+    keyPoints: [
+      {
+        heading: "Activated Sludge Process Control",
+        body: "The activated sludge process uses a mixed culture of microorganisms to biologically oxidize dissolved and suspended organic matter. Key process control parameters: mixed liquor suspended solids (MLSS) — typically 2,000-4,000 mg/L for conventional activated sludge; sludge retention time (SRT, also called mean cell residence time or MCRT) — typically 5-15 days for BOD removal, 10-20 days for nitrification; food-to-microorganism ratio (F/M) — typically 0.2-0.5 kg BOD/kg MLVSS/day. SRT = Mass of MLSS in aeration basin / Mass of MLSS wasted per day. Increasing SRT: improves nitrification, reduces sludge production, but increases aeration basin volume requirement.",
+      },
+      {
+        heading: "Biological Nutrient Removal (BNR)",
+        body: "BNR removes nitrogen and phosphorus biologically to meet stringent effluent limits. Biological nitrogen removal: nitrification (aerobic) + denitrification (anoxic). Nitrification: NH4+ → NO2- → NO3- (Nitrosomonas and Nitroba cter). Denitrification: NO3- → N2 (heterotrophic bacteria using carbon source). BNR configurations: Modified Ludzack-Ettinger (MLE) — anoxic zone before aerobic zone; Bardenpho (4 or 5 stage) — multiple anoxic/aerobic zones for enhanced N and P removal. Biological phosphorus removal (EBPR): anaerobic zone before aerobic zone — polyphosphate-accumulating organisms (PAOs) release P anaerobically and uptake P aerobically. Volatile fatty acids (VFAs) are required for EBPR — low VFA in influent may require supplemental carbon (acetate, methanol).",
+      },
+      {
+        heading: "Membrane Bioreactor (MBR)",
+        body: "MBR combines activated sludge with membrane filtration (MF or UF) for solids separation. Advantages: very high effluent quality (turbidity < 0.2 NTU, no Cryptosporidium/Giardia), smaller footprint, higher MLSS (8,000-15,000 mg/L), longer SRT. Membrane fouling: the primary operational challenge — caused by colloidal and soluble organic matter, scaling, and biofilm. Fouling control: coarse bubble aeration (scouring), regular chemical cleaning (citric acid for scaling, sodium hypochlorite for biofouling). Transmembrane pressure (TMP): monitored continuously — rising TMP indicates fouling. Maintenance cleaning: weekly; recovery cleaning: monthly or when TMP exceeds threshold.",
+      },
+      {
+        heading: "Tertiary Treatment and Effluent Polishing",
+        body: "Tertiary treatment removes residual suspended solids, nutrients, and pathogens after secondary treatment. Tertiary filtration: granular media filters or cloth disk filters — reduces TSS to < 5 mg/L. UV disinfection: provides pathogen inactivation without chemical residual — required for effluents discharged to sensitive receiving waters. UV dose: typically 40-100 mJ/cm2 for wastewater (higher than drinking water due to turbidity). Effluent limits (Ontario ECA): BOD5 < 25 mg/L; TSS < 25 mg/L; Total N < 10-15 mg/L (nutrient-sensitive areas); Total P < 0.5-1.0 mg/L (nutrient-sensitive areas). Phosphorus polishing: chemical precipitation with alum or ferric chloride after biological treatment.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Typical Range", "Significance"],
+    tableRows: [
+      ["MLSS", "2,000-4,000 mg/L (conventional)", "Too low = poor settling; too high = oxygen demand exceeds aeration capacity"],
+      ["SRT (BOD removal)", "5-15 days", "Short SRT = young sludge, poor settling; long SRT = good nitrification"],
+      ["SRT (nitrification)", "10-20 days (temperature dependent)", "Must exceed minimum SRT for Nitrosomonas growth"],
+      ["F/M ratio", "0.2-0.5 kg BOD/kg MLVSS/day", "High F/M = young sludge, bulking risk; low F/M = old sludge, pinpoint floc"],
+      ["MBR MLSS", "8,000-15,000 mg/L", "Higher MLSS possible due to membrane separation"],
+    ],
+    examTips: [
+      "SRT = MLSS in basin (kg) / Wasting rate (kg/day) — the primary lever for process control",
+      "Nitrification requires SRT > minimum (temperature-dependent) — cold temperatures require longer SRT",
+      "EBPR requires anaerobic zone before aerobic zone and adequate VFAs",
+      "MBR: rising TMP = fouling — schedule maintenance cleaning; do not wait for TMP to spike",
+      "Tertiary UV dose for wastewater is higher than drinking water (40-100 mJ/cm2 vs 10-40 mJ/cm2)",
+      "Effluent BOD5 and TSS limits: 25 mg/L each — know these standard ECA limits",
+    ],
+    formulaHint:
+      "SRT (days) = MLSS in basin (kg) / Wasting rate (kg/day)\nF/M = BOD load (kg/day) / MLVSS in basin (kg)\nWasting rate (kg/day) = Waste flow (m3/day) x WAS concentration (mg/L) x 0.001",
+  },
+  "Laboratory Analysis & Interpretation": {
+    title: "Laboratory Analysis & Interpretation",
+    intro:
+      "Class 4 Wastewater operators must oversee laboratory operations, ensure QA/QC, interpret complex analytical results, and ensure compliance with Ontario's sampling requirements under Environmental Compliance Approvals (ECAs). At this level, operators must understand method detection limits, chain of custody, statistical process control, and the significance of analytical results for process optimization and regulatory compliance.",
+    keyPoints: [
+      {
+        heading: "Effluent Compliance Monitoring",
+        body: "ECA effluent limits are typically expressed as: maximum concentration (e.g., BOD5 < 25 mg/L); loading limits (e.g., total phosphorus < X kg/day); and geometric mean for microbiological parameters (e.g., E. coli < 200 CFU/100 mL geometric mean). Sampling requirements: composite samples for BOD5, TSS, nutrients (24-hour flow-proportional composite preferred); grab samples for pH, dissolved oxygen, temperature, and microbiological parameters. Chain of custody: must be maintained from sample collection to analysis — any break in chain of custody invalidates the sample. Holding times: BOD5 = 48 hours (refrigerated); TSS = 7 days; ammonia = 28 days (acidified); total phosphorus = 28 days (acidified).",
+      },
+      {
+        heading: "Settleability and Sludge Quality Tests",
+        body: "Sludge volume index (SVI): SVI = (30-minute settled volume, mL/L) / MLSS (g/L) x 1000. Good settling: SVI < 120 mL/g. Bulking sludge: SVI > 150 mL/g — caused by filamentous organisms (Thiothrix, Type 021N, Microthrix). Foaming: caused by Microthrix parvicella or Nocardia — associated with high SRT and lipid-rich wastewater. Microscopic examination: identifies filamentous organisms, protozoa (indicator of process health), and floc structure. Diluted sludge volume index (DSVI): used when MLSS > 3,500 mg/L to avoid hindered settling effects on SVI measurement.",
+      },
+      {
+        heading: "Nutrient Analysis",
+        body: "Total Kjeldahl nitrogen (TKN): measures organic nitrogen + ammonia nitrogen — indicates nitrogen load to biological process. Ammonia (NH4-N): substrate for nitrification — monitor in aeration basin and effluent. Nitrate (NO3-N) and nitrite (NO2-N): products of nitrification; nitrate is substrate for denitrification. Total nitrogen (TN) = TKN + NO3-N + NO2-N. Total phosphorus (TP): measured by persulfate digestion + colorimetric analysis. Ortho-phosphate (PO4-P): soluble reactive phosphorus — indicates biological P removal performance. Alkalinity: consumed during nitrification (7.14 g alkalinity per g NH4-N oxidized) — monitor to prevent pH drop.",
+      },
+      {
+        heading: "Biosolids Quality Testing",
+        body: "Biosolids quality must meet Ontario Regulation 267/03 (Nutrient Management Act) or O. Reg. 170/09 for land application. Required analyses: total solids, volatile solids, pH, total metals (As, Cd, Co, Cr, Cu, Hg, Mo, Ni, Pb, Se, Zn), pathogens (fecal coliforms or Salmonella), and nutrients (N, P, K). Class A biosolids: fecal coliforms < 1,000 MPN/g TS (dry weight); Salmonella < 3 MPN/4g TS. Class B biosolids: fecal coliforms < 2,000,000 MPN/g TS. Vector attraction reduction: volatile solids reduction > 38%, or specific oxygen uptake rate (SOUR) < 1.5 mg O2/h/g TS.",
+      },
+    ],
+    tableHeadings: ["Test", "Method", "Regulatory Significance"],
+    tableRows: [
+      ["BOD5", "Standard Methods 5210B", "Primary effluent compliance parameter"],
+      ["TSS", "Standard Methods 2540D", "Primary effluent compliance parameter"],
+      ["Total phosphorus", "Persulfate digestion + colorimetry", "Nutrient-sensitive receiving waters"],
+      ["E. coli (effluent)", "Membrane filtration or Colilert", "Geometric mean < 200 CFU/100 mL"],
+      ["SVI", "Settleability test (30 min)", "Process control — identifies bulking"],
+      ["Fecal coliforms (biosolids)", "MPN or membrane filtration", "Class A or B biosolids classification"],
+    ],
+    examTips: [
+      "SVI = (Settled volume mL/L) / MLSS (g/L) x 1000 — good settling < 120 mL/g",
+      "SVI > 150 = bulking — identify filamentous organism by microscopy",
+      "BOD5 holding time = 48 hours refrigerated — exceed = invalid sample",
+      "Nitrification consumes alkalinity: 7.14 g alkalinity per g NH4-N oxidized",
+      "Class A biosolids: fecal coliforms < 1,000 MPN/g TS (dry weight)",
+      "TN = TKN + NO3-N + NO2-N — know the components of total nitrogen",
+    ],
+    formulaHint:
+      "SVI (mL/g) = Settled Volume (mL/L) / MLSS (g/L) x 1000\nAlkalinity consumed (mg/L) = NH4-N removed (mg/L) x 7.14\nTN (mg/L) = TKN + NO3-N + NO2-N",
+  },
+  "Equipment Operation & Maintenance": {
+    title: "Equipment Operation & Maintenance",
+    intro:
+      "Class 4 Wastewater operators are responsible for the maintenance management of all plant equipment, including large centrifugal and submersible pumps, blowers, dewatering equipment, UV systems, and SCADA/instrumentation. At this level, operators develop and oversee preventive and predictive maintenance programs, evaluate equipment performance, and manage capital replacement planning.",
+    keyPoints: [
+      {
+        heading: "Blower and Aeration System Management",
+        body: "Aeration provides oxygen for biological treatment and mixing. Blower types: centrifugal (high flow, moderate pressure), positive displacement (lower flow, high pressure), turbo blowers (high efficiency, variable speed). Dissolved oxygen (DO) control: target 1.5-3.0 mg/L in aeration basin — too low causes poor nitrification and bulking; too high wastes energy. DO probes: calibrate regularly; membrane fouling reduces accuracy. Aeration efficiency: standard oxygen transfer efficiency (SOTE) — typically 10-25% for fine bubble diffusers. Energy: aeration accounts for 50-70% of plant energy consumption — VFD-controlled blowers with DO feedback control significantly reduce energy use.",
+      },
+      {
+        heading: "Dewatering Equipment",
+        body: "Dewatering reduces biosolids volume for disposal or land application. Common equipment: belt filter press (BFP), centrifuge, screw press. Belt filter press: polymer conditioning → gravity drainage → pressure rollers. Cake solids: 18-25% TS. Centrifuge: polymer conditioning → centrifugal separation. Cake solids: 20-30% TS. Polymer selection and dose: jar test or pilot testing — optimize for cake solids and centrate/filtrate quality. Polymer dose: typically 5-15 kg/tonne TS (dry weight). Centrate/filtrate quality: high ammonia and phosphorus — return to headworks; may require side-stream treatment for nutrient-sensitive plants.",
+      },
+      {
+        heading: "UV Disinfection System Maintenance",
+        body: "UV disinfection systems require regular maintenance to maintain effective dose delivery. Lamp aging: UV output decreases over time — lamps must be replaced when output falls below 70-80% of initial output (typically 8,000-12,000 hours). Sleeve fouling: quartz sleeves accumulate scale and biofilm — reduces UV transmittance. Cleaning: automatic mechanical wipers (continuous or periodic) plus periodic chemical cleaning (citric acid for calcium scale; sodium hypochlorite for biofilm). UV transmittance (UVT) monitoring: online UVT sensor monitors water quality — low UVT reduces effective dose. Validation: UV reactors must be validated per USEPA or NWRI guidelines to confirm dose delivery.",
+      },
+      {
+        heading: "SCADA and Process Automation",
+        body: "SCADA systems at Class 4 facilities typically include: PLCs for local control, HMI for operator interface, historian for data logging, and remote access for off-site monitoring. Process automation: automatic DO control (blower speed), automatic RAS/WAS control (SRT management), automatic chemical feed (polymer, coagulant, disinfectant). Alarm management: critical alarms (high effluent TSS, low DO, pump failure, UV system failure) must trigger immediate operator response. Cybersecurity: SCADA systems must be protected — network segmentation, access controls, regular patching. Data management: process data must be retained for regulatory reporting and process optimization.",
+      },
+    ],
+    tableHeadings: ["Equipment", "Key Performance Indicator", "Action Threshold"],
+    tableRows: [
+      ["Aeration blower", "DO in aeration basin (mg/L)", "< 1.0 mg/L: increase aeration; > 3.0 mg/L: reduce (energy waste)"],
+      ["Belt filter press", "Cake solids (%TS)", "< 18% TS: adjust polymer dose or belt speed"],
+      ["Centrifuge", "Cake solids (%TS) and centrate TSS", "High centrate TSS: adjust polymer dose or bowl speed"],
+      ["UV lamp", "UV output (% of initial)", "< 70-80%: replace lamp"],
+      ["UV sleeve", "TMP across sleeve or UVT", "Declining UVT: schedule cleaning"],
+    ],
+    examTips: [
+      "DO target in aeration basin: 1.5-3.0 mg/L — too low causes poor nitrification and bulking",
+      "Aeration accounts for 50-70% of plant energy — VFD + DO control = major energy savings",
+      "UV lamp replacement: when output falls below 70-80% of initial (typically 8,000-12,000 hours)",
+      "Belt filter press cake solids: 18-25% TS; centrifuge: 20-30% TS",
+      "Polymer dose: typically 5-15 kg/tonne TS — optimize by jar test",
+      "Centrate/filtrate: high ammonia and phosphorus — return to headworks carefully",
+    ],
+    formulaHint:
+      "DO deficit = DO_saturation - DO_actual\nPolymer dose (kg/day) = Dose (kg/tonne TS) x Sludge flow (m3/day) x TS concentration (g/L) / 1000\nSludge production (kg TS/day) = Flow (m3/day) x TSS removed (mg/L) x 0.001",
+  },
+  "Activated Sludge": {
+    title: "Activated Sludge",
+    intro:
+      "The activated sludge process is the most widely used biological wastewater treatment technology. Class 4 operators must understand the microbiology, process control, troubleshooting, and optimization of activated sludge systems, including conventional, extended aeration, step-feed, and sequencing batch reactor (SBR) configurations.",
+    keyPoints: [
+      {
+        heading: "Process Microbiology and Kinetics",
+        body: "Activated sludge relies on a diverse community of heterotrophic bacteria to oxidize BOD, autotrophic nitrifiers (Nitrosomonas, Nitrobacter) for nitrification, and facultative bacteria for denitrification. Monod kinetics describe microbial growth: mu = mu_max x S / (Ks + S), where mu is specific growth rate, S is substrate concentration, and Ks is the half-saturation constant. At low substrate concentrations (S << Ks), growth is first-order in S. At high substrate concentrations (S >> Ks), growth approaches mu_max. Yield coefficient (Y): mass of VSS produced per mass of BOD removed — typically 0.4-0.8 g VSS/g BOD. Endogenous decay (b): loss of active biomass — typically 0.05-0.15 day-1.",
+      },
+      {
+        heading: "Process Control and SRT Management",
+        body: "SRT is the primary control variable for activated sludge. Increasing SRT: improves nitrification, reduces sludge production, increases MLSS, improves effluent quality. Decreasing SRT: increases sludge production, reduces MLSS, may impair nitrification. Minimum SRT for nitrification: temperature-dependent — approximately 3-5 days at 20 degrees C, 8-12 days at 10 degrees C. Safety factor: operate at 2-3x minimum SRT to provide buffer against upsets. Wasting: waste activated sludge (WAS) from return activated sludge (RAS) line or directly from aeration basin (hydraulic wasting). Constant SRT control: waste a fixed mass of MLSS per day regardless of MLSS concentration.",
+      },
+      {
+        heading: "Bulking and Foaming Troubleshooting",
+        body: "Filamentous bulking: excessive growth of filamentous organisms causes poor settling (SVI > 150 mL/g). Common filaments and causes: Thiothrix/Type 021N — low DO or high sulfide; Microthrix parvicella — low temperature, high lipids, long SRT; Type 0041/0675 — low F/M, long SRT; Sphaerotilus natans — low DO, high BOD load. Control: selector (anoxic or anaerobic contact zone before aeration), reduce SRT, increase DO, chlorinate RAS (emergency measure). Viscous bulking (non-filamentous): caused by excessive EPS production — associated with high carbohydrate wastewater. Foaming: Microthrix parvicella or Nocardia — spray water on foam, reduce SRT, chlorinate foam.",
+      },
+      {
+        heading: "Sequencing Batch Reactor (SBR)",
+        body: "SBR operates in batch mode: Fill → React → Settle → Decant → Idle. Advantages: single basin performs all functions, flexible for nutrient removal, good settling (no return sludge pumping). Disadvantages: requires equalization for continuous flow, complex control, decanter design critical. SBR process control: react phase duration controls treatment; settle phase duration controls effluent quality; decant volume controls HRT. Nutrient removal in SBR: anoxic fill (denitrification), aerobic react (nitrification), anaerobic phase (EBPR). SBR is well-suited for small to medium plants and intermittent flows.",
+      },
+    ],
+    tableHeadings: ["Filamentous Organism", "Cause", "Control Strategy"],
+    tableRows: [
+      ["Thiothrix / Type 021N", "Low DO, high sulfide, high BOD/N ratio", "Increase DO, add nitrogen, aerobic selector"],
+      ["Microthrix parvicella", "Low temperature, high lipids, long SRT", "Reduce SRT, chlorinate RAS, reduce lipid load"],
+      ["Type 0041 / 0675", "Low F/M, long SRT, nutrient deficiency", "Reduce SRT, add nutrients"],
+      ["Sphaerotilus natans", "Low DO, high soluble BOD", "Increase DO, reduce BOD load"],
+      ["Nocardia / Microthrix (foaming)", "Long SRT, hydrophobic organisms", "Reduce SRT, spray water, chlorinate foam"],
+    ],
+    examTips: [
+      "Minimum SRT for nitrification at 10 degrees C: 8-12 days — cold weather requires longer SRT",
+      "SVI > 150 = bulking — identify filament by microscopy to determine cause",
+      "Thiothrix = low DO; Microthrix = low temperature + high lipids; Type 0041 = low F/M",
+      "Selector (anoxic contact zone) is the preferred long-term bulking control strategy",
+      "SBR phases: Fill → React → Settle → Decant → Idle — know the sequence",
+      "Y (yield) = 0.4-0.8 g VSS/g BOD; b (decay) = 0.05-0.15 day-1 — used in sludge production calculations",
+    ],
+    formulaHint:
+      "SRT (days) = MLVSS in basin (kg) / Net VSS wasted per day (kg/day)\nNet sludge production = Y x BOD removed - b x MLVSS x Volume\nMinimum SRT (nitrification) = 1 / (mu_max_nitrifier - b_nitrifier)",
+  },
+  "Advanced Treatment Process Monitoring": {
+    title: "Advanced Treatment Process Monitoring",
+    intro:
+      "Advanced treatment processes at Class 4 facilities include biological nutrient removal (BNR), chemical phosphorus removal, tertiary filtration, UV disinfection, and emerging technologies such as membrane bioreactors (MBR) and anaerobic digestion with biogas recovery. Monitoring and optimization of these processes requires a deep understanding of process chemistry, microbiology, and instrumentation.",
+    keyPoints: [
+      {
+        heading: "Biological Nitrogen Removal Monitoring",
+        body: "Nitrification monitoring: ammonia in aeration basin effluent (target < 1-2 mg/L NH4-N for full nitrification); nitrate in aeration basin effluent; alkalinity (must remain > 50 mg/L as CaCO3 to prevent pH drop). Denitrification monitoring: nitrate in anoxic zone effluent; internal recycle ratio (typically 2-4x influent flow for MLE process); carbon source availability (BOD:TN ratio > 4:1 for complete denitrification). Nitrous oxide (N2O): a potent greenhouse gas produced during incomplete nitrification/denitrification — minimize by maintaining adequate DO in aerobic zones and adequate carbon in anoxic zones.",
+      },
+      {
+        heading: "Biological Phosphorus Removal (EBPR) Monitoring",
+        body: "EBPR monitoring: ortho-phosphate in anaerobic zone (should increase as PAOs release P); ortho-phosphate in aerobic zone (should decrease as PAOs uptake P); VFA in anaerobic zone (> 25-50 mg/L as acetate required for good EBPR). Signs of EBPR failure: rising effluent TP, decreasing ortho-P release in anaerobic zone, declining P content in biosolids. Causes of EBPR failure: insufficient VFAs, nitrate in anaerobic zone (competes with PAOs), high SRT (reduces P content in sludge), temperature < 10 degrees C. Chemical backup: ferric chloride or alum addition to polish effluent TP when EBPR is insufficient.",
+      },
+      {
+        heading: "Anaerobic Digestion Monitoring",
+        body: "Anaerobic digestion stabilizes biosolids and produces biogas (60-70% methane). Key monitoring parameters: volatile solids reduction (VSR) — target > 40% for Class B biosolids; biogas production (0.5-1.0 m3/kg VS destroyed); methane content (60-70%); pH (6.8-7.4); alkalinity (> 1,500 mg/L as CaCO3); volatile fatty acids (VFA) — VFA:alkalinity ratio < 0.3 indicates stable digestion. Digester upset: high VFA, low pH, low biogas production, high H2S. Recovery: reduce feed rate, add alkalinity (lime, sodium bicarbonate), increase HRT. Biogas utilization: combined heat and power (CHP) — generates electricity and heat for plant use.",
+      },
+      {
+        heading: "Tertiary Filtration and UV Monitoring",
+        body: "Tertiary filtration: effluent TSS target < 5 mg/L; turbidity < 2 NTU before UV. Filter backwash: triggered by head loss (> 2-3 m) or turbidity breakthrough. Backwash sequence: air scour → water backwash → rinse. UV disinfection: online UVT monitoring; UV intensity sensors in each reactor; dose pacing based on flow and UVT. Effluent E. coli: geometric mean < 200 CFU/100 mL (Ontario ECA typical limit). UV system alarms: low UV intensity, lamp failure, sleeve fouling, low UVT. Effluent compliance: continuous monitoring of key parameters with data logged to SCADA for regulatory reporting.",
+      },
+    ],
+    tableHeadings: ["Process", "Key Monitoring Parameter", "Target/Threshold"],
+    tableRows: [
+      ["Nitrification", "Effluent NH4-N", "< 1-2 mg/L for full nitrification"],
+      ["Denitrification", "Effluent NO3-N", "< 3-5 mg/L for enhanced N removal"],
+      ["EBPR", "Effluent ortho-phosphate", "< 0.5 mg/L (with chemical polishing)"],
+      ["Anaerobic digestion", "VFA:Alkalinity ratio", "< 0.3 for stable digestion"],
+      ["Tertiary filtration", "Effluent turbidity", "< 2 NTU before UV"],
+      ["UV disinfection", "Effluent E. coli", "Geometric mean < 200 CFU/100 mL"],
+    ],
+    examTips: [
+      "Nitrification alkalinity consumption: 7.14 g alkalinity per g NH4-N — monitor to prevent pH drop",
+      "EBPR requires VFA > 25-50 mg/L in anaerobic zone — low VFA = EBPR failure",
+      "Nitrate in anaerobic zone inhibits EBPR — control internal recycle to prevent NO3 carryover",
+      "Anaerobic digestion upset: high VFA, low pH — reduce feed, add alkalinity",
+      "VFA:Alkalinity < 0.3 = stable digestion; > 0.4 = potential upset",
+      "UV effluent E. coli: geometric mean < 200 CFU/100 mL — geometric mean, not arithmetic",
+    ],
+    formulaHint:
+      "Alkalinity consumed (mg/L as CaCO3) = NH4-N oxidized (mg/L) x 7.14\nVFA:Alkalinity ratio = VFA (mg/L as acetate) / Alkalinity (mg/L as CaCO3)\nVSR (%) = (VS in - VS out) / VS in x 100",
+  },
+  "Nutrient Removal": {
+    title: "Nutrient Removal",
+    intro:
+      "Nutrient removal (nitrogen and phosphorus) is required at Class 4 facilities discharging to nutrient-sensitive receiving waters such as the Great Lakes. Ontario's Nutrient Management Act and ECA conditions set stringent effluent limits. Class 4 operators must understand both biological and chemical nutrient removal processes, their interactions, and optimization strategies.",
+    keyPoints: [
+      {
+        heading: "Nitrogen Removal Chemistry and Stoichiometry",
+        body: "Nitrification (two-step): (1) Nitrosomonas: NH4+ + 1.5 O2 → NO2- + H2O + 2H+ (consumes 3.43 g O2/g NH4-N); (2) Nitrobacter: NO2- + 0.5 O2 → NO3- (consumes 1.14 g O2/g NO2-N). Total oxygen demand for nitrification: 4.57 g O2/g NH4-N oxidized. Alkalinity consumed: 7.14 g CaCO3/g NH4-N. Denitrification: NO3- + carbon source → N2 + CO2 + H2O. Oxygen recovered: 2.86 g O2/g NO3-N (reduces aeration demand). Carbon requirement: 4-6 g BOD/g NO3-N for complete denitrification. Effluent TN target: < 10 mg/L (nutrient-sensitive areas); < 15 mg/L (standard).",
+      },
+      {
+        heading: "Phosphorus Removal",
+        body: "Biological phosphorus removal (EBPR): PAOs accumulate polyphosphate in aerobic conditions after being stressed in anaerobic conditions. P content of PAO sludge: 5-8% TP/TS (vs. 1-2% for non-PAO sludge). Chemical phosphorus removal: alum (Al2(SO4)3) or ferric chloride (FeCl3) precipitate phosphate as AlPO4 or FePO4. Alum dose: 1 mole Al per mole P (theoretical); in practice, 1.5-3 moles Al/mole P due to competing reactions. Ferric chloride dose: 1 mole Fe per mole P (theoretical); in practice, 1.5-2.5 moles Fe/mole P. Chemical addition point: pre-precipitation (primary clarifier), co-precipitation (aeration basin), post-precipitation (tertiary). Effluent TP target: < 0.5-1.0 mg/L (nutrient-sensitive areas).",
+      },
+      {
+        heading: "BNR Process Configurations",
+        body: "Modified Ludzack-Ettinger (MLE): anoxic zone (denitrification) followed by aerobic zone (nitrification). Internal recycle (IR) from aerobic to anoxic zone. IR ratio: 2-4x influent flow. Effluent TN: 8-12 mg/L typical. 4-stage Bardenpho: anoxic → aerobic → anoxic → aerobic. Achieves TN < 5 mg/L. 5-stage Bardenpho: adds anaerobic zone for EBPR. University of Cape Town (UCT): anaerobic → anoxic → aerobic with separate recycles to prevent nitrate from entering anaerobic zone — better EBPR performance. Johannesburg (JHB) process: anoxic zone before anaerobic zone to strip nitrate from RAS before it enters anaerobic zone.",
+      },
+      {
+        heading: "Side-Stream Nutrient Treatment",
+        body: "Centrate and filtrate from dewatering operations are high in ammonia (500-1,500 mg/L) and phosphorus (50-200 mg/L) — returning to headworks increases nutrient load by 15-30%. Side-stream treatment options: struvite (magnesium ammonium phosphate, MgNH4PO4) precipitation — recovers P and N as slow-release fertilizer; SHARON/ANAMMOX — partial nitritation to nitrite followed by anaerobic ammonia oxidation to N2 — very low energy and no carbon required; steam stripping — removes ammonia by heating and air stripping. Struvite formation: Mg2+ + NH4+ + PO43- → MgNH4PO4·6H2O. Struvite control in pipes: add MgCl2 or reduce pH.",
+      },
+    ],
+    tableHeadings: ["BNR Configuration", "Typical Effluent TN", "Typical Effluent TP"],
+    tableRows: [
+      ["MLE (Modified Ludzack-Ettinger)", "8-12 mg/L", "No biological P removal"],
+      ["4-stage Bardenpho", "< 5 mg/L", "No biological P removal"],
+      ["5-stage Bardenpho", "< 5 mg/L", "< 1 mg/L (with EBPR)"],
+      ["UCT process", "8-12 mg/L", "< 1 mg/L (better EBPR than MLE)"],
+      ["Chemical P removal (post-precipitation)", "N/A", "< 0.5 mg/L"],
+    ],
+    examTips: [
+      "Nitrification oxygen demand: 4.57 g O2/g NH4-N; alkalinity consumed: 7.14 g CaCO3/g NH4-N",
+      "Denitrification oxygen credit: 2.86 g O2/g NO3-N — reduces aeration energy demand",
+      "MLE: IR ratio 2-4x influent flow; higher IR = lower effluent TN but more energy",
+      "EBPR requires no nitrate in anaerobic zone — UCT and JHB processes address this",
+      "Struvite = MgNH4PO4 — forms in pipes when Mg, NH4, and PO4 are present at high pH",
+      "Side-stream treatment (ANAMMOX) can handle 15-30% of plant nitrogen load at very low energy",
+    ],
+    formulaHint:
+      "O2 for nitrification = NH4-N removed (mg/L) x 4.57\nAlkalinity consumed = NH4-N removed (mg/L) x 7.14\nAlum dose (mg/L) = P to remove (mg/L) x 9.6 (for 1:1 molar ratio, MW Al = 27, P = 31)\nStruvite: Mg2+ + NH4+ + PO43- → MgNH4PO4·6H2O",
+  },
+  "Secondary Treatment": {
+    title: "Secondary Treatment",
+    intro:
+      "Secondary treatment removes dissolved and colloidal organic matter (BOD) and suspended solids through biological processes. Class 4 operators must understand the full range of secondary treatment technologies including activated sludge variants, trickling filters, rotating biological contactors (RBCs), and moving bed biofilm reactors (MBBR), as well as secondary clarifier design and operation.",
+    keyPoints: [
+      {
+        heading: "Secondary Clarifier Operation",
+        body: "Secondary clarifiers (final clarifiers) separate biological solids from treated effluent. Key design parameters: surface overflow rate (SOR) — typically 15-25 m3/m2/day for conventional activated sludge; solids loading rate (SLR) — typically 100-150 kg TSS/m2/day. Sludge blanket: monitor depth — should be < 1/3 of clarifier depth. Return activated sludge (RAS): recycles settled sludge to aeration basin — maintains MLSS. RAS rate: typically 50-100% of influent flow. Waste activated sludge (WAS): removes excess sludge to maintain target SRT. Rising sludge: caused by denitrification in clarifier (N2 gas lifts sludge) — reduce SRT or increase RAS rate.",
+      },
+      {
+        heading: "Trickling Filters and RBCs",
+        body: "Trickling filters: wastewater is distributed over a bed of media (rock or plastic) where a biofilm grows. BOD removal: 60-85% for single-pass; > 90% for recirculation. Recirculation ratio: 1-4x influent flow — dilutes influent, improves distribution, prevents drying. Ponding: caused by excessive biofilm growth or media clogging — increase recirculation, reduce hydraulic loading. Rotating biological contactors (RBCs): discs rotate through wastewater and air — biofilm grows on disc surface. RBC staging: 3-4 stages for BOD removal; 4-6 stages for nitrification. RBC failure modes: excessive biofilm weight (structural failure), bearing failure, media cracking.",
+      },
+      {
+        heading: "Moving Bed Biofilm Reactor (MBBR)",
+        body: "MBBR uses plastic carriers (media) that move freely in the aeration basin — biofilm grows on carrier surface. Advantages: compact (high surface area per volume), no sludge recycle required (biofilm is self-regulating), easy to retrofit existing basins. Media fill fraction: typically 30-70% of basin volume. Carrier surface area: 200-1,200 m2/m3 depending on carrier type. BOD removal rate: 5-15 g BOD/m2/day (carrier surface area). MBBR + activated sludge = IFAS (integrated fixed-film activated sludge) — combines biofilm and suspended growth for enhanced capacity. Effluent quality: MBBR alone produces effluent with TSS 50-100 mg/L — requires clarification.",
+      },
+      {
+        heading: "Lagoon Systems",
+        body: "Lagoons (stabilization ponds) use natural processes (sunlight, wind, algae, bacteria) for treatment. Types: aerobic (shallow, < 0.5 m, algae-based); facultative (1-2 m, aerobic surface + anaerobic bottom); anaerobic (> 2 m, high BOD loads). HRT: aerobic = 3-30 days; facultative = 5-30 days; anaerobic = 5-50 days. Advantages: low cost, low energy, simple operation. Disadvantages: large land area, seasonal performance variation, algae in effluent. Odour control: maintain aerobic conditions in surface layer; avoid overloading anaerobic lagoons. Effluent quality: BOD 20-50 mg/L; TSS 20-60 mg/L (including algae).",
+      },
+    ],
+    tableHeadings: ["Process", "BOD Removal", "Key Advantage"],
+    tableRows: [
+      ["Conventional activated sludge", "85-95%", "Flexible, well-understood, good control"],
+      ["Extended aeration", "90-98%", "Low sludge production, simple operation"],
+      ["Trickling filter (recirculation)", "> 90%", "Low energy, simple, no sludge recycle"],
+      ["RBC", "85-95%", "Low energy, compact, staged treatment"],
+      ["MBBR", "80-95%", "Compact, easy retrofit, no sludge recycle"],
+      ["Facultative lagoon", "70-90%", "Very low cost, minimal operation"],
+    ],
+    examTips: [
+      "Secondary clarifier SOR: 15-25 m3/m2/day; SLR: 100-150 kg TSS/m2/day",
+      "Rising sludge in clarifier = denitrification (N2 gas) — reduce SRT or increase RAS",
+      "Trickling filter ponding = biofilm overgrowth — increase recirculation or reduce loading",
+      "MBBR media fill fraction: 30-70% of basin volume — do not overfill (restricts mixing)",
+      "RAS rate: 50-100% of influent flow — adjust to maintain target MLSS and sludge blanket depth",
+      "Lagoon effluent TSS includes algae — may need polishing for sensitive receiving waters",
+    ],
+    formulaHint:
+      "SOR (m3/m2/day) = Flow (m3/day) / Clarifier area (m2)\nSLR (kg TSS/m2/day) = [Flow (m3/day) x MLSS (mg/L) x 0.001] / Clarifier area (m2)\nRAS ratio = RAS flow / Influent flow",
+  },
+  "Sludge Treatment": {
+    title: "Sludge Treatment",
+    intro:
+      "Sludge (biosolids) treatment and management is a major operational and regulatory challenge at Class 4 wastewater facilities. Class 4 operators must understand the full biosolids treatment train: thickening, stabilization (anaerobic digestion, aerobic digestion, lime stabilization), dewatering, and final disposal or beneficial use under Ontario Regulation 267/03.",
+    keyPoints: [
+      {
+        heading: "Sludge Thickening",
+        body: "Thickening increases sludge solids concentration before stabilization to reduce digester volume and heating requirements. Gravity thickening: primary sludge thickens readily to 4-8% TS; secondary sludge thickens poorly (1-3% TS) due to biological floc. Dissolved air flotation (DAF) thickening: effective for secondary sludge — air bubbles attach to solids and float them to surface. Cake solids: 3-6% TS. Gravity belt thickener (GBT): polymer conditioning + gravity drainage on moving belt — 4-8% TS. Rotary drum thickener (RDT): polymer conditioning + drum rotation — 4-8% TS. Thickening reduces volume by 3-5x — significant reduction in digester and dewatering equipment size.",
+      },
+      {
+        heading: "Anaerobic Digestion",
+        body: "Anaerobic digestion stabilizes sludge, reduces pathogens, and produces biogas. Four stages: hydrolysis → acidogenesis → acetogenesis → methanogenesis. Rate-limiting step: hydrolysis (for complex substrates) or methanogenesis (for simple substrates). Mesophilic digestion: 35-37 degrees C, HRT 20-30 days. Thermophilic digestion: 50-55 degrees C, HRT 10-15 days — faster, better pathogen reduction, but less stable. Volatile solids reduction (VSR): 40-60% typical. Biogas production: 0.5-1.0 m3/kg VS destroyed; 60-70% methane. Specific energy: 1 m3 methane = 35.8 MJ = 9.95 kWh. Digester heating: biogas used to heat digester and plant — energy self-sufficiency possible at large plants.",
+      },
+      {
+        heading: "Aerobic Digestion",
+        body: "Aerobic digestion stabilizes sludge by extended aeration — microorganisms oxidize their own cell mass (endogenous respiration). Conventional aerobic digestion: 15-30 days HRT at 20 degrees C; VSR 35-45%. Autothermal thermophilic aerobic digestion (ATAD): insulated reactor, no external heating — temperature rises to 55-65 degrees C due to exothermic oxidation. ATAD achieves Class A biosolids (pathogen reduction). Aerobic digestion produces no biogas — energy-intensive (aeration required). Suitable for small plants where anaerobic digestion is not economical. Effluent (supernatant/reject water): high in ammonia — return to headworks carefully.",
+      },
+      {
+        heading: "Biosolids Land Application",
+        body: "Ontario Regulation 267/03 (Nutrient Management Act) regulates biosolids land application. Categories: Class A (exceptional quality) — unrestricted use; Class B — restricted use (setbacks, site restrictions, injection or incorporation required). Class A requirements: fecal coliforms < 1,000 MPN/g TS; Salmonella < 3 MPN/4g TS; vector attraction reduction. Class B requirements: fecal coliforms < 2,000,000 MPN/g TS; site restrictions apply. Nutrient management plan (NMP): required for all land application sites — documents agronomic rates, setbacks, and record-keeping. Metals limits: must not exceed cumulative loading limits for As, Cd, Co, Cr, Cu, Hg, Mo, Ni, Pb, Se, Zn.",
+      },
+    ],
+    tableHeadings: ["Process", "VSR", "Biogas", "Class A/B"],
+    tableRows: [
+      ["Mesophilic anaerobic digestion", "40-60%", "0.5-1.0 m3/kg VS", "Class B (with time/temp)"],
+      ["Thermophilic anaerobic digestion", "45-65%", "0.5-1.0 m3/kg VS", "Class A (if criteria met)"],
+      ["Conventional aerobic digestion", "35-45%", "None", "Class B"],
+      ["ATAD (autothermal thermophilic)", "35-45%", "None", "Class A"],
+      ["Lime stabilization", "Minimal VS reduction", "None", "Class B (pH > 12 for 2 h)"],
+    ],
+    examTips: [
+      "Anaerobic digestion: mesophilic = 35-37 degrees C, 20-30 days HRT; thermophilic = 50-55 degrees C, 10-15 days",
+      "Biogas: 60-70% methane; 0.5-1.0 m3/kg VS destroyed",
+      "VFA:Alkalinity > 0.4 = digester upset risk — reduce feed, add alkalinity",
+      "Class A biosolids: fecal coliforms < 1,000 MPN/g TS (dry weight)",
+      "Class B biosolids: fecal coliforms < 2,000,000 MPN/g TS — site restrictions apply",
+      "ATAD achieves Class A without external heating — temperature rises due to exothermic oxidation",
+    ],
+    formulaHint:
+      "VSR (%) = (VS in - VS out) / VS in x 100\nBiogas production = 0.5-1.0 m3/kg VS destroyed\nHRT (days) = Digester volume (m3) / Feed rate (m3/day)\nSludge volume reduction = (1 - TS_in/TS_out) x 100%",
+  },
+  "Biosolids Management & Regulations": {
+    title: "Biosolids Management & Regulations",
+    intro:
+      "Class 4 Wastewater operators must have comprehensive knowledge of Ontario's biosolids regulatory framework, including the Nutrient Management Act (NMA), O. Reg. 267/03, the Environmental Compliance Approval (ECA) process, and the requirements for biosolids quality, land application, and alternative disposal pathways.",
+    keyPoints: [
+      {
+        heading: "Ontario Regulatory Framework for Biosolids",
+        body: "Ontario Regulation 267/03 (under the Nutrient Management Act, 2002) is the primary regulation governing biosolids land application. Key requirements: biosolids must meet quality standards (metals, pathogens, vector attraction reduction) for the applicable category; land application must follow a Nutrient Management Plan (NMP) or Strategy; setbacks from water bodies, wells, and residences must be maintained; records must be kept for all applications. Environmental Compliance Approval (ECA): required for biosolids storage, treatment, and land application facilities. Ministry of the Environment, Conservation and Parks (MECP) issues ECAs and conducts inspections.",
+      },
+      {
+        heading: "Biosolids Quality Categories",
+        body: "Category 1 (exceptional quality, similar to US Class A): meets the most stringent pathogen and metals standards — can be used without site restrictions. Category 2 (similar to US Class B): meets less stringent standards — site restrictions, setbacks, and application timing restrictions apply. Category 3: lower quality — more restrictive application conditions. Metals limits: cumulative loading limits (kg/ha) for As, Cd, Co, Cr, Cu, Hg, Mo, Ni, Pb, Se, Zn — must not be exceeded over the life of the site. Annual loading limits also apply. Pathogen reduction: time-temperature requirements for thermophilic digestion; fecal coliform and Salmonella limits.",
+      },
+      {
+        heading: "Nutrient Management Planning",
+        body: "A Nutrient Management Plan (NMP) is required for all biosolids land application. NMP elements: site description and map; soil test results; crop nutrient requirements; application rates (agronomic rates based on crop N requirement); setbacks (from water bodies, wells, tile drains, residences); application timing (not on frozen or saturated ground); record-keeping requirements. Agronomic rate: the application rate that provides the crop's nutrient requirement without excess — prevents nutrient runoff and groundwater contamination. Phosphorus saturation: soils with high P saturation have increased P loss risk — may require reduced application rates.",
+      },
+      {
+        heading: "Alternative Biosolids Management",
+        body: "When land application is not feasible (high metals, insufficient land, public opposition), alternative management options include: incineration — reduces volume by 90%, destroys pathogens and organics, produces ash (must be managed as waste); co-composting with yard waste or wood chips — produces Class A compost product; co-digestion with food waste or fats/oils/grease (FOG) — increases biogas production; landfill disposal — last resort, regulated under O. Reg. 232/98; thermal hydrolysis (e.g., Cambi THP) — pre-treatment before anaerobic digestion to improve VSR and biogas production. Energy recovery: biogas from anaerobic digestion used for CHP — can offset 30-50% of plant energy use.",
+      },
+    ],
+    tableHeadings: ["Biosolids Category", "Fecal Coliform Limit", "Application Restrictions"],
+    tableRows: [
+      ["Category 1 (exceptional quality)", "< 1,000 MPN/g TS", "None — unrestricted use"],
+      ["Category 2", "< 2,000,000 MPN/g TS", "Site restrictions, setbacks, timing restrictions"],
+      ["Category 3", "Higher limits", "Most restrictive conditions"],
+    ],
+    examTips: [
+      "O. Reg. 267/03 governs biosolids land application in Ontario — know the key requirements",
+      "Category 1 biosolids: fecal coliforms < 1,000 MPN/g TS — unrestricted use",
+      "Category 2 biosolids: fecal coliforms < 2,000,000 MPN/g TS — site restrictions apply",
+      "NMP must be based on agronomic rates — do not over-apply (nutrient runoff risk)",
+      "Metals cumulative loading limits apply over the life of the site — track carefully",
+      "Thermal hydrolysis (Cambi THP) improves VSR and biogas production before anaerobic digestion",
+    ],
+    formulaHint:
+      "Agronomic rate (kg/ha) = Crop N requirement (kg/ha) / Biosolids N availability (fraction) / Biosolids N content (kg/tonne)\nAnnual metals loading (kg/ha) = Application rate (tonne/ha) x Metal concentration (mg/kg) / 1,000,000",
+  },
+  "Plant Management, Safety & Administration": {
+    title: "Plant Management, Safety & Administration",
+    intro:
+      "Class 4 Wastewater operators are responsible for overall plant management, regulatory compliance, staff supervision, budget management, and safety program oversight. This includes the Environmental Compliance Approval (ECA), annual reporting requirements, and compliance with the Occupational Health and Safety Act (OHSA) and its regulations.",
+    keyPoints: [
+      {
+        heading: "Environmental Compliance Approval (ECA)",
+        body: "The ECA is issued by the MECP and sets out the conditions under which a wastewater treatment plant may operate. ECA conditions include: effluent limits (BOD5, TSS, TP, TN, E. coli, pH); monitoring and reporting requirements; operational requirements (minimum staffing, process controls); emergency response requirements; and record-keeping requirements. Operators must understand all ECA conditions and ensure the plant operates in compliance. Non-compliance: must be reported to the MECP in accordance with the ECA conditions — typically within 24 hours for acute exceedances. Annual report: submitted to MECP summarizing plant performance, compliance, and any incidents.",
+      },
+      {
+        heading: "Regulatory Reporting",
+        body: "Annual performance report: submitted to MECP by March 31 each year — summarizes effluent quality, compliance with ECA limits, biosolids production and management, and any incidents or non-compliance events. Discharge monitoring report (DMR): monthly or quarterly submission of effluent quality data. Spill reporting: any spill of sewage or chemicals must be reported to the MECP Spills Action Centre (1-800-268-6060) immediately. Biosolids application records: must be maintained for all land application events — site, date, volume, analysis results, and weather conditions. Records retention: typically 5-7 years for all operational and compliance records.",
+      },
+      {
+        heading: "Confined Space and Safety Programs",
+        body: "Wastewater treatment plants have numerous confined spaces: digesters, wet wells, manholes, clarifiers, and chemical storage tanks. O. Reg. 632/05 (Confined Spaces) requires a written confined space program with entry permits, atmospheric testing, and rescue procedures. Hydrogen sulfide (H2S): the primary toxic hazard in wastewater confined spaces — TLV-TWA = 1 ppm; TLV-C = 5 ppm; IDLH = 100 ppm. Methane (CH4): explosive hazard in digesters and wet wells — LEL = 5%, UEL = 15%. Atmospheric testing order: O2 (19.5-23.0%) → combustible gases (< 10% LEL) → H2S (< 10 ppm) → CO (< 25 ppm). Non-entry rescue is preferred — tripod and retrieval system.",
+      },
+      {
+        heading: "Asset Management and Capital Planning",
+        body: "Asset management at Class 4 facilities involves managing complex infrastructure with significant capital value. Key elements: asset inventory (all equipment, structures, and infrastructure); condition assessment (regular inspection and rating); criticality assessment (impact of failure on service and compliance); lifecycle cost analysis (capital, operating, and end-of-life costs); capital replacement plan (prioritized list of replacements with cost estimates and timelines). Ontario's Asset Management Planning for Municipal Infrastructure (O. Reg. 588/17) requires municipalities to develop and maintain asset management plans. Infrastructure Ontario provides guidance and funding programs for water and wastewater infrastructure renewal.",
+      },
+    ],
+    tableHeadings: ["Regulatory Requirement", "Deadline/Frequency", "Regulatory Reference"],
+    tableRows: [
+      ["Annual performance report", "By March 31 each year", "ECA conditions / MECP"],
+      ["Spill reporting", "Immediately", "MECP Spills Action Centre (1-800-268-6060)"],
+      ["Non-compliance reporting", "Within 24 hours (acute)", "ECA conditions"],
+      ["Biosolids application records", "Maintained for 5-7 years", "O. Reg. 267/03"],
+      ["Asset management plan", "Per O. Reg. 588/17 schedule", "O. Reg. 588/17"],
+    ],
+    examTips: [
+      "ECA annual performance report due March 31 — includes compliance summary and incidents",
+      "Spill reporting: call MECP Spills Action Centre (1-800-268-6060) immediately",
+      "H2S in wastewater confined spaces: TLV-TWA = 1 ppm; IDLH = 100 ppm",
+      "Confined space atmospheric testing order: O2 → LEL → H2S → CO",
+      "Non-entry rescue is preferred for confined spaces — tripod and retrieval system",
+      "O. Reg. 588/17 requires municipalities to develop and maintain asset management plans",
+    ],
+    formulaHint:
+      "No primary calculation formulas — this module is regulatory and management-focused. Know the ECA requirements, reporting timelines, H2S thresholds, and confined space protocols.",
+  },
+};
+
+// ─── Water Quality Analyst (WQA) Module Overviews ────────────────────────────
+export const WQA_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Bacteriological Testing": {
+    title: "Bacteriological Testing",
+    intro:
+      "Bacteriological testing is the cornerstone of drinking water quality assurance. Water Quality Analysts must be proficient in standard methods for detecting indicator organisms (total coliform, E. coli, fecal coliform) and other pathogens, while maintaining rigorous QA/QC to ensure results are defensible for regulatory compliance under O. Reg. 170/03.",
+    keyPoints: [
+      {
+        heading: "Indicator Organisms and Their Significance",
+        body: "Total coliform: a group of gram-negative, facultatively anaerobic rod-shaped bacteria that ferment lactose — includes Escherichia, Klebsiella, Citrobacter, and Enterobacter. Total coliform is an indicator of treatment effectiveness and distribution system integrity, not necessarily of fecal contamination. E. coli: a subset of total coliform that is specific to fecal contamination — its presence in drinking water indicates a potential health risk and requires immediate action. Fecal coliform: a broader group that includes E. coli and other thermotolerant coliforms — less specific than E. coli. Heterotrophic plate count (HPC): measures total culturable bacteria — elevated HPC (> 500 CFU/mL) may indicate biofilm growth, stagnation, or inadequate disinfection.",
+      },
+      {
+        heading: "Membrane Filtration (MF) Method",
+        body: "The membrane filtration method (Standard Methods 9222) is the most common method for total coliform and E. coli in drinking water. Procedure: filter a known volume of sample through a 0.45 um membrane; place membrane on selective/differential media; incubate at 35 degrees C (total coliform) or 44.5 degrees C (fecal coliform/E. coli); count colonies. Media: m-Endo agar (total coliform — metallic sheen colonies); m-FC agar (fecal coliform — blue colonies at 44.5 degrees C); MI agar or Chromocult (E. coli — fluorescent or coloured colonies). Minimum sample volume: 100 mL for drinking water. Holding time: 6 hours (refrigerated, dark). Filtration must be performed within 6 hours of collection.",
+      },
+      {
+        heading: "Presence-Absence (P-A) and Colilert Methods",
+        body: "Presence-Absence (P-A) test (Standard Methods 9221E): 100 mL sample added to P-A broth; incubated at 35 degrees C for 48 hours; yellow = total coliform positive; fluorescence under UV = E. coli positive. Colilert (IDEXX): enzyme-based method using ONPG (beta-galactosidase for total coliform) and MUG (beta-glucuronidase for E. coli). Colilert-18: 18-hour incubation at 35 degrees C. Quanti-Tray/2000: quantitative MPN method using Colilert — 97 large wells + 48 small wells for MPN calculation. Colilert is approved under O. Reg. 170/03 for drinking water monitoring.",
+      },
+      {
+        heading: "QA/QC for Bacteriological Testing",
+        body: "Positive controls: known positive organism (e.g., E. coli ATCC 25922) — verify media and method performance. Negative controls: sterile water blank — detect contamination. Field blanks: sterile water processed in the field — detect sampling contamination. Duplicates: split sample analyzed in parallel — assess precision. Sterility checks: media sterility verified before use. Autoclave verification: biological indicators (Geobacillus stearothermophilus spores) verify sterilization. Chain of custody: sample ID, collection time, collector, preservation, and analysis time must be documented. Holding time violations: any sample analyzed outside holding time must be flagged and may not be used for regulatory compliance.",
+      },
+    ],
+    tableHeadings: ["Organism", "Method", "Incubation", "Positive Result"],
+    tableRows: [
+      ["Total coliform", "MF on m-Endo agar", "35 degrees C, 24 h", "Metallic sheen colonies"],
+      ["Fecal coliform", "MF on m-FC agar", "44.5 degrees C, 24 h", "Blue colonies"],
+      ["E. coli (Colilert)", "Colilert/Quanti-Tray", "35 degrees C, 18-24 h", "Yellow + fluorescence under UV"],
+      ["E. coli (MI agar)", "MF on MI agar", "35 degrees C, 24 h", "Blue/indigo colonies"],
+      ["HPC", "Spread plate or pour plate", "35 degrees C, 48 h", "Count all colonies"],
+    ],
+    examTips: [
+      "E. coli = fecal contamination indicator — any detection in drinking water = immediate action",
+      "Total coliform holding time: 6 hours (refrigerated, dark) — exceed = invalid sample",
+      "Colilert: yellow = total coliform; yellow + fluorescence under UV = E. coli",
+      "MF method: 0.45 um membrane; m-Endo for total coliform (metallic sheen); m-FC for fecal coliform (blue)",
+      "Positive control verifies media performance; negative control detects contamination",
+      "HPC > 500 CFU/mL in distribution system may indicate biofilm or stagnation",
+    ],
+    formulaHint:
+      "MPN (most probable number): use MPN tables based on number of positive tubes in multiple tube fermentation\nColilert Quanti-Tray MPN: read from IDEXX MPN table based on large and small well positives",
+  },
+  "Chemical Testing": {
+    title: "Chemical Testing",
+    intro:
+      "Chemical testing encompasses the analysis of inorganic and organic parameters in drinking water and source water. Water Quality Analysts must understand analytical methods, instrument operation, calibration, QA/QC, and the regulatory significance of results under Ontario's Drinking Water Quality Standards (O. Reg. 169/03).",
+    keyPoints: [
+      {
+        heading: "Inorganic Parameters",
+        body: "Key inorganic parameters in drinking water: nitrate (MAC 10 mg/L as N), nitrite (MAC 1 mg/L as N), fluoride (MAC 1.5 mg/L), arsenic (MAC 0.010 mg/L), lead (MAC 0.010 mg/L), copper (MAC 1.0 mg/L), iron (AO 0.3 mg/L), manganese (MAC 0.12 mg/L), sodium (AO 200 mg/L), hardness (AO 80-100 mg/L as CaCO3 for corrosion control). Methods: ion chromatography (IC) for anions (nitrate, nitrite, fluoride, sulfate, chloride); ICP-MS or ICP-OES for metals (lead, arsenic, copper, iron, manganese); colorimetry for nitrate, nitrite, ammonia, phosphate. Sample preservation: metals — acidified to pH < 2 with HNO3, 6-month holding time; nitrate/nitrite — refrigerate, 48-hour holding time.",
+      },
+      {
+        heading: "Organic Parameters and DBPs",
+        body: "Trihalomethanes (THMs): chloroform, bromodichloromethane, dibromochloromethane, bromoform. Method: GC-ECD or GC-MS (purge-and-trap or liquid-liquid extraction). MAC: 100 ug/L total THMs (running annual average). Haloacetic acids (HAAs): monochloroacetic acid, dichloroacetic acid, trichloroacetic acid, monobromoacetic acid, dibromoacetic acid. Method: GC-ECD after liquid-liquid extraction and methylation. MAC: 80 ug/L total HAAs. Total organic carbon (TOC): measures all organic carbon in water — indicator of NOM and DBP precursor potential. Method: high-temperature combustion or UV/persulfate oxidation with infrared CO2 detection. Dissolved organic carbon (DOC): TOC of filtered (0.45 um) sample.",
+      },
+      {
+        heading: "Instrument Calibration and Maintenance",
+        body: "Calibration: all instruments must be calibrated before each use or per manufacturer/method requirements. Calibration curve: minimum 5 standards spanning the expected sample range, including a blank. R2 value: calibration curve linearity — must be > 0.995 for most methods. Calibration verification: check standard (mid-range) analyzed every 10-20 samples — must be within 10% of true value. Instrument maintenance: regular cleaning, lamp replacement (spectrophotometers), column replacement (GC, IC), detector maintenance. Spectrophotometer: wavelength calibration, stray light check, absorbance linearity verification. ICP-MS: daily tuning, internal standard monitoring, interference check solutions.",
+      },
+      {
+        heading: "Method Detection Limit (MDL) and Reporting",
+        body: "Method detection limit (MDL): the minimum concentration that can be detected with 99% confidence — determined by analyzing 7 replicates of a low-concentration standard and calculating MDL = t(n-1, 0.99) x standard deviation. Practical quantitation limit (PQL): typically 5-10x MDL — the concentration above which results can be reported with confidence. Reporting: results below MDL reported as < MDL (non-detect); results between MDL and PQL reported with qualifier. Significant figures: report results to the appropriate number of significant figures based on the method and instrument precision. Units: mg/L for most parameters; ug/L for trace metals and organics; ng/L for ultra-trace compounds.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Ontario MAC/AO", "Analytical Method"],
+    tableRows: [
+      ["Nitrate", "10 mg/L as N (MAC)", "Ion chromatography or colorimetry"],
+      ["Lead", "0.010 mg/L (MAC)", "ICP-MS or graphite furnace AAS"],
+      ["Arsenic", "0.010 mg/L (MAC)", "ICP-MS or hydride generation AAS"],
+      ["Total THMs", "100 ug/L (MAC, running annual avg)", "GC-ECD or GC-MS"],
+      ["Total HAAs", "80 ug/L (MAC, running annual avg)", "GC-ECD after extraction/methylation"],
+      ["Fluoride", "1.5 mg/L (MAC)", "Ion-selective electrode or IC"],
+    ],
+    examTips: [
+      "THM MAC = 100 ug/L; HAA MAC = 80 ug/L — both are running annual averages",
+      "Lead MAC = 0.010 mg/L (10 ug/L) — first-draw samples after 6-hour stagnation",
+      "Calibration curve R2 must be > 0.995 for most methods",
+      "MDL = t(6, 0.99) x SD of 7 replicates — know the concept, not just the formula",
+      "Metals preservation: acidify to pH < 2 with HNO3; 6-month holding time",
+      "TOC = indicator of NOM and DBP precursor potential — monitor at intake",
+    ],
+    formulaHint:
+      "MDL = t(n-1, 0.99) x SD (of 7 replicates of low-concentration standard)\nCalibration: y = mx + b; R2 must be > 0.995\nPercent recovery = (Measured concentration / True concentration) x 100%",
+  },
+  "Disinfection": {
+    title: "Disinfection",
+    intro:
+      "Disinfection is the most critical step in drinking water treatment for protecting public health. Water Quality Analysts must understand the chemistry and kinetics of disinfection, CT calculations, disinfection by-product (DBP) formation, and the regulatory requirements under Ontario's Procedure for Disinfection of Drinking Water.",
+    keyPoints: [
+      {
+        heading: "Disinfectant Chemistry",
+        body: "Chlorine chemistry: Cl2 + H2O → HOCl + HCl. HOCl (hypochlorous acid) is the active disinfectant — 80-90x more effective than OCl- (hypochlorite ion). pH effect: at pH 7.5, approximately 50% HOCl / 50% OCl-; at pH 6, approximately 95% HOCl; at pH 8.5, approximately 10% HOCl. Free chlorine = HOCl + OCl-. Combined chlorine = chloramines (NH2Cl, NHCl2, NCl3). Chloramine formation: Cl2 + NH3 → NH2Cl (monochloramine) — requires Cl2:NH3-N mass ratio < 5:1. Chlorine demand = applied dose - residual. Chlorine decay: first-order decay in distribution system — affected by temperature, pH, NOM, and pipe material.",
+      },
+      {
+        heading: "CT Calculations",
+        body: "CT = Disinfectant Residual (mg/L) x Contact Time (minutes). T10 is used instead of theoretical HRT to account for short-circuiting: T10 = Baffling Factor x HRT. Baffling factors: unbaffled = 0.1, poor = 0.3, average = 0.5, superior = 0.7, perfect = 1.0. CT tables (Health Canada / USEPA) give CT required for specific log inactivation at given temperature and pH. Log inactivation achieved = CT_achieved / CT_per_log. Ontario requirements: Giardia — 3 log removal/inactivation; Cryptosporidium — 2 log (UV preferred); Viruses — 4 log. Chlorine is effective against Giardia and viruses but NOT Cryptosporidium at practical doses — UV or ozone required for Crypto.",
+      },
+      {
+        heading: "Disinfection By-Products (DBPs)",
+        body: "DBPs form when disinfectants react with natural organic matter (NOM). THM formation factors: higher NOM (TOC), higher chlorine dose, longer contact time, higher temperature, higher pH, presence of bromide. HAA formation: similar factors but HAAs are favoured at lower pH relative to THMs. DBP control: enhanced coagulation (reduces NOM before chlorination), chloramination (reduces THM/HAA formation in distribution system), GAC (removes NOM and DBP precursors), point-of-disinfection optimization (chlorinate after filtration, not before). Bromate: formed when ozone reacts with bromide — MAC 0.010 mg/L. Chlorite and chlorate: formed from chlorine dioxide — MAC 1.0 mg/L each.",
+      },
+      {
+        heading: "Residual Monitoring and Compliance",
+        body: "Continuous chlorine residual monitoring: required at the treatment plant and at distribution system sampling points under O. Reg. 170/03. Minimum residual in distribution system: 0.05 mg/L free chlorine (or equivalent combined chlorine). Maximum residual: 4.0 mg/L free chlorine (AO). Chlorine residual analyzers: amperometric (most accurate), colorimetric (DPD method — field use). DPD method: N,N-diethyl-p-phenylenediamine — DPD No. 1 for free chlorine; DPD No. 3 for total chlorine. Amperometric titration: most accurate method for free and combined chlorine — used for calibration of online analyzers.",
+      },
+    ],
+    tableHeadings: ["Disinfectant", "Effective Against", "Key Limitation"],
+    tableRows: [
+      ["Free chlorine (HOCl)", "Bacteria, viruses, Giardia", "Ineffective against Cryptosporidium at practical doses"],
+      ["Chloramines", "Bacteria (distribution residual)", "Poor disinfection power; nitrification risk"],
+      ["UV (254 nm)", "Giardia, Cryptosporidium, bacteria", "No residual; turbidity reduces effectiveness"],
+      ["Ozone", "All pathogens including Crypto", "Bromate formation; no residual"],
+      ["Chlorine dioxide", "Bacteria, viruses, Giardia", "Chlorite/chlorate DBPs; limited use"],
+    ],
+    examTips: [
+      "HOCl is 80-90x more effective than OCl- — pH control is critical for disinfection efficiency",
+      "CT = Residual x T10 — always use T10, not HRT",
+      "Chlorine does NOT inactivate Cryptosporidium at practical doses — UV or ozone required",
+      "THM formation increases with: higher NOM, higher Cl2 dose, higher temperature, higher pH",
+      "DPD No. 1 = free chlorine; DPD No. 3 = total chlorine",
+      "Minimum distribution residual: 0.05 mg/L free chlorine — below this requires investigation",
+    ],
+    formulaHint:
+      "CT (mg·min/L) = Residual (mg/L) x T10 (min)\nT10 = Baffling Factor x HRT\nChlorine demand = Applied dose - Residual\nHOCl fraction: at pH 7.5 ≈ 50%; at pH 6 ≈ 95%; at pH 8.5 ≈ 10%",
+  },
+  "Laboratory & Sampling": {
+    title: "Laboratory & Sampling",
+    intro:
+      "Proper sampling and laboratory practices are fundamental to producing accurate, defensible analytical results. Water Quality Analysts must understand sampling protocols, sample preservation, chain of custody, laboratory safety, and QA/QC requirements for all types of water quality samples.",
+    keyPoints: [
+      {
+        heading: "Sampling Protocols",
+        body: "Representative sampling: the sample must accurately represent the water being tested — consider flow, stratification, and mixing. Grab samples: collected at a single point in time — appropriate for parameters that change rapidly (pH, DO, chlorine residual, temperature, microbiological). Composite samples: multiple grab samples combined over time or flow — appropriate for parameters that are relatively stable (BOD, TSS, nutrients). Flow-proportional composite: sample volume proportional to flow rate — most representative for variable flow conditions. Sample containers: specific containers required for each parameter (glass for organics, plastic for metals, sterile bottles for microbiological). Headspace: minimize for volatile parameters (THMs, VOCs); fill to top for microbiological samples.",
+      },
+      {
+        heading: "Sample Preservation and Holding Times",
+        body: "Preservation prevents chemical and biological changes between collection and analysis. Temperature: most samples refrigerated at 4 degrees C. Chemical preservation: acid (HNO3 or H2SO4) for metals and nutrients; sodium thiosulfate for chlorine residual quenching in microbiological samples; ascorbic acid for chlorine quenching in THM samples. Key holding times: microbiological (E. coli, total coliform) = 6 hours; BOD5 = 48 hours; TSS = 7 days; nitrate = 48 hours (refrigerated); metals = 6 months (acidified); THMs = 14 days (refrigerated, ascorbic acid); chlorine residual = analyze immediately. Samples outside holding time must be flagged and may not be used for regulatory compliance.",
+      },
+      {
+        heading: "Chain of Custody (COC)",
+        body: "Chain of custody documents the possession and handling of samples from collection to analysis. COC form must include: sample ID, collection location, date and time of collection, collector's name, preservation, parameters requested, and signatures at each transfer. Custody seals: tamper-evident seals on sample containers and coolers. Laboratory receipt: sample condition, temperature, and integrity checked on arrival. Any deviation from COC requirements must be documented and may invalidate the sample for regulatory purposes. Electronic COC (eCOC) systems are increasingly used for efficiency and traceability.",
+      },
+      {
+        heading: "Laboratory Safety",
+        body: "WHMIS 2015 (GHS): all hazardous chemicals must have Safety Data Sheets (SDS) accessible in the laboratory. Personal protective equipment (PPE): lab coat, safety glasses, chemical-resistant gloves for all chemical handling; face shield for corrosive chemicals; fume hood for volatile chemicals. Chemical storage: acids and bases stored separately; flammables in approved flammable storage cabinet; oxidizers stored away from organics. Waste disposal: chemical waste must be segregated and disposed of per MECP regulations — never pour chemicals down the drain without authorization. Emergency equipment: eyewash and safety shower within 10 seconds of chemical handling areas; fire extinguisher accessible.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Container", "Preservation", "Holding Time"],
+    tableRows: [
+      ["E. coli / total coliform", "Sterile plastic, 100 mL", "Na2S2O3 (dechlorination)", "6 hours (refrigerated)"],
+      ["BOD5", "Glass, 300 mL", "Refrigerate at 4 degrees C", "48 hours"],
+      ["Metals (dissolved)", "Plastic, 500 mL", "Acidify to pH < 2 (HNO3)", "6 months"],
+      ["THMs", "Glass, 40 mL (no headspace)", "Ascorbic acid + refrigerate", "14 days"],
+      ["Nitrate", "Plastic, 100 mL", "Refrigerate at 4 degrees C", "48 hours"],
+      ["Chlorine residual", "Any", "Analyze immediately", "Immediately"],
+    ],
+    examTips: [
+      "Microbiological samples: 6-hour holding time — most critical holding time to remember",
+      "Metals: acidify to pH < 2 with HNO3; 6-month holding time",
+      "THM samples: glass vials, no headspace, ascorbic acid to quench chlorine, 14-day holding time",
+      "Grab samples for rapidly changing parameters (pH, DO, Cl2, microbiological)",
+      "Composite samples for BOD, TSS, nutrients — flow-proportional is most representative",
+      "Chain of custody must be unbroken from collection to analysis — any break = potential invalidation",
+    ],
+    formulaHint:
+      "No primary calculation formulas — this module is procedural. Know the holding times, preservation methods, and COC requirements for each parameter type.",
+  },
+  "Math": {
+    title: "Math",
+    intro:
+      "Water Quality Analysts must perform a range of calculations for data analysis, QA/QC, dilutions, concentration conversions, and statistical analysis. Accuracy in calculations is essential for regulatory compliance and process optimization.",
+    keyPoints: [
+      {
+        heading: "Concentration Calculations and Dilutions",
+        body: "Concentration units: mg/L = ppm (parts per million) for most water quality parameters; ug/L = ppb (parts per billion) for trace contaminants; ng/L = ppt (parts per trillion) for ultra-trace. Unit conversions: 1 mg/L = 1 g/m3 = 1 ppm (for water); 1 ug/L = 0.001 mg/L = 1 ppb. Dilution: C1V1 = C2V2 — used to prepare standards and dilute concentrated samples. Dilution factor (DF): DF = final volume / initial volume. Percent recovery: (measured concentration / true concentration) x 100% — target 80-120% for most methods. Relative percent difference (RPD): |C1 - C2| / average x 100% — measures precision of duplicates; target < 20% for most methods.",
+      },
+      {
+        heading: "Statistical Analysis",
+        body: "Mean (arithmetic average): sum of values / number of values. Geometric mean: nth root of the product of n values — used for E. coli and fecal coliform compliance (geometric mean < 200 CFU/100 mL). Standard deviation (SD): measure of variability — SD = sqrt[sum(xi - mean)^2 / (n-1)]. Coefficient of variation (CV): SD / mean x 100% — measure of relative variability. Control charts: plot results over time with warning limits (mean ± 2SD) and action limits (mean ± 3SD). Out-of-control: result outside action limits or 2 consecutive results outside warning limits — investigate and take corrective action. t-test: compare two means; F-test: compare two variances.",
+      },
+      {
+        heading: "Flow and Volume Calculations",
+        body: "Flow rate: Q = A x V (pipe flow); Q = Cd x A x sqrt(2gH) (orifice). Unit conversions: 1 m3/s = 1,000 L/s = 86,400 m3/day; 1 MLD = 1,000,000 L/day = 11.57 L/s. Mass loading: Load (kg/day) = Concentration (mg/L) x Flow (m3/day) x 0.001. Detention time: HRT = Volume / Flow. Filter loading rate: Q / filter area (m/h). Surface overflow rate: Q / clarifier area (m3/m2/day). Weir overflow rate: Q / weir length (m3/m/day). Chemical feed rate: Feed (kg/day) = Dose (mg/L) x Flow (m3/day) x 0.001.",
+      },
+      {
+        heading: "Calibration and QC Calculations",
+        body: "Calibration curve: y = mx + b (linear regression). R2 (coefficient of determination): measures linearity — must be > 0.995 for most methods. Slope and intercept: used to calculate concentration from instrument response. Calibration verification: check standard result must be within 10% of true value. MDL calculation: MDL = t(6, 0.99) x SD (of 7 replicates) — t value for 6 degrees of freedom at 99% confidence = 3.143. Blank correction: subtract blank response from sample response before calculating concentration. Matrix spike recovery: (spiked result - unspiked result) / spike added x 100% — target 80-120%.",
+      },
+    ],
+    tableHeadings: ["Calculation", "Formula", "Acceptable Range"],
+    tableRows: [
+      ["Percent recovery (spike)", "(Measured - Unspiked) / Spike x 100%", "80-120%"],
+      ["RPD (duplicates)", "|C1 - C2| / Average x 100%", "< 20% (most methods)"],
+      ["Calibration linearity", "R2 of calibration curve", "> 0.995"],
+      ["Calibration verification", "Check standard result vs. true value", "Within 10%"],
+      ["Geometric mean (E. coli)", "nth root of product of n values", "< 200 CFU/100 mL"],
+    ],
+    examTips: [
+      "C1V1 = C2V2 — the fundamental dilution formula; use for standards and sample dilutions",
+      "Geometric mean for E. coli compliance — not arithmetic mean",
+      "RPD < 20% for duplicates; percent recovery 80-120% for spikes",
+      "R2 > 0.995 for calibration curve linearity",
+      "Mass loading: Concentration (mg/L) x Flow (m3/day) x 0.001 = kg/day",
+      "MDL = 3.143 x SD of 7 replicates (t value for 6 df at 99% confidence)",
+    ],
+    formulaHint:
+      "C1V1 = C2V2 (dilution)\nLoad (kg/day) = Conc (mg/L) x Q (m3/day) x 0.001\nGeometric mean = (C1 x C2 x ... x Cn)^(1/n)\nMDL = 3.143 x SD (7 replicates)\nRPD = |C1 - C2| / [(C1+C2)/2] x 100%",
+  },
+  "Quality Assurance & Quality Control": {
+    title: "Quality Assurance & Quality Control",
+    intro:
+      "Quality assurance (QA) and quality control (QC) are the systems and procedures that ensure analytical results are accurate, precise, and defensible. Water Quality Analysts must implement and document QA/QC for every analysis to meet ISO/IEC 17025 accreditation requirements and regulatory obligations.",
+    keyPoints: [
+      {
+        heading: "QA vs. QC",
+        body: "Quality assurance (QA): the overall system of planned activities designed to ensure that the laboratory produces reliable data. QA includes: method validation, staff training, equipment maintenance, proficiency testing, and management review. Quality control (QC): the specific measures applied to each batch of samples to detect and correct errors. QC includes: blanks, duplicates, spikes, standards, and control charts. QA is proactive (prevents errors); QC is reactive (detects errors). Both are required for ISO/IEC 17025 accreditation.",
+      },
+      {
+        heading: "QC Samples",
+        body: "Method blank: reagent water processed through the entire analytical method — detects contamination from reagents, glassware, or equipment. Field blank: reagent water taken to the field and processed like a sample — detects contamination during sampling and transport. Trip blank: reagent water that travels with samples but is not opened in the field — detects contamination from sample containers or transport. Equipment blank: reagent water used to rinse sampling equipment — detects cross-contamination between samples. Laboratory duplicate: split sample analyzed in parallel — measures precision (reproducibility). Matrix spike: known amount of analyte added to a sample — measures accuracy (recovery) in the sample matrix. Surrogate spike: known amount of a non-native compound added to organic samples — monitors extraction efficiency.",
+      },
+      {
+        heading: "Control Charts",
+        body: "Control charts track instrument and method performance over time. Types: Shewhart X-bar chart (mean), R chart (range), and S chart (standard deviation). Control limits: warning limits = mean ± 2SD; action limits = mean ± 3SD. Out-of-control rules (Nelson/Western Electric): 1 point outside action limits; 2 of 3 consecutive points outside warning limits; 4 of 5 consecutive points beyond 1SD; 8 consecutive points on one side of the mean. Out-of-control action: stop analysis, investigate cause, take corrective action, re-analyze affected samples. Control charts must be maintained for all QC samples (check standards, blanks, spikes).",
+      },
+      {
+        heading: "Proficiency Testing and Accreditation",
+        body: "Proficiency testing (PT): external evaluation of laboratory performance by analyzing blind samples from a PT provider. PT results: z-score = (laboratory result - assigned value) / standard deviation for proficiency. |z| < 2 = satisfactory; 2 < |z| < 3 = questionable; |z| > 3 = unsatisfactory. ISO/IEC 17025: the international standard for laboratory competence — required for accreditation in Ontario. CALA (Canadian Association for Laboratory Accreditation): accredits laboratories for specific methods and parameters. Accreditation scope: laboratories must only report results for parameters within their accreditation scope. Annual assessments: ISO/IEC 17025 requires regular internal audits and management reviews.",
+      },
+    ],
+    tableHeadings: ["QC Sample", "Purpose", "Acceptable Criteria"],
+    tableRows: [
+      ["Method blank", "Detect reagent/equipment contamination", "< MDL"],
+      ["Field blank", "Detect field contamination", "< MDL"],
+      ["Laboratory duplicate", "Measure precision (reproducibility)", "RPD < 20% (most methods)"],
+      ["Matrix spike", "Measure accuracy (recovery)", "80-120% recovery"],
+      ["Check standard (CCV)", "Verify calibration stability", "Within 10% of true value"],
+      ["Proficiency test (PT)", "External performance verification", "z-score |z| < 2"],
+    ],
+    examTips: [
+      "Method blank = reagent contamination; field blank = sampling contamination; trip blank = transport contamination",
+      "Duplicate RPD < 20%; spike recovery 80-120% — know both acceptance criteria",
+      "Control chart action limit = mean ± 3SD; warning limit = mean ± 2SD",
+      "z-score for PT: |z| < 2 = satisfactory; |z| > 3 = unsatisfactory",
+      "ISO/IEC 17025 = accreditation standard for laboratories — required in Ontario",
+      "Out-of-control: stop analysis, investigate, take corrective action before reporting results",
+    ],
+    formulaHint:
+      "z-score = (Lab result - Assigned value) / SD for proficiency\nRPD = |C1 - C2| / [(C1+C2)/2] x 100%\nSpike recovery = (Spiked - Unspiked) / Spike added x 100%\nControl limits: UCL = mean + 3SD; LCL = mean - 3SD",
+  },
+  "Regulation": {
+    title: "Regulation",
+    intro:
+      "Water Quality Analysts must have a thorough understanding of Ontario's drinking water regulatory framework, including the Safe Drinking Water Act (SDWA), O. Reg. 169/03 (Drinking Water Quality Standards), O. Reg. 170/03 (Drinking Water Systems), and the roles of the Ministry of the Environment, Conservation and Parks (MECP) and local Medical Officers of Health (MOH).",
+    keyPoints: [
+      {
+        heading: "Ontario Drinking Water Quality Standards (O. Reg. 169/03)",
+        body: "O. Reg. 169/03 establishes maximum acceptable concentrations (MACs) and aesthetic objectives (AOs) for drinking water parameters. MAC: a health-based limit — drinking water must not exceed the MAC. AO: a guideline based on aesthetic considerations (taste, odour, colour) — not a health-based limit but should be met where possible. Interim MACs (IMACs): provisional limits for parameters under review. Key MACs: E. coli = 0 CFU/100 mL; total coliform = 0 CFU/100 mL; turbidity = 1 NTU (filtered systems); total THMs = 100 ug/L; HAAs = 80 ug/L; nitrate = 10 mg/L as N; lead = 0.010 mg/L; arsenic = 0.010 mg/L.",
+      },
+      {
+        heading: "O. Reg. 170/03 Operational Requirements",
+        body: "O. Reg. 170/03 sets out operational requirements for municipal drinking water systems. Key requirements: minimum sampling frequencies for all parameters; continuous monitoring of turbidity and chlorine residual; adverse result reporting to MOH and MECP; public notification requirements; record-keeping (minimum 5 years for most records); annual summary report (by February 28). Adverse result: any result exceeding a MAC or indicating a health risk. Notification timeline: E. coli or total coliform detection — notify MOH and MECP immediately; turbidity > 1 NTU — notify MECP immediately; any adverse result — notify within 24 hours if not already done.",
+      },
+      {
+        heading: "Roles and Responsibilities",
+        body: "MECP (Ministry of the Environment, Conservation and Parks): issues ECAs, sets standards, conducts inspections, receives adverse result reports, and enforces the SDWA. Medical Officer of Health (MOH): public health authority — notified of adverse results; issues Boil Water Advisories (BWAs) and Do Not Use Advisories; advises the public on health risks. Owner: the municipality or entity that owns the water system — responsible for overall compliance. Operating authority: the entity that operates the system — responsible for day-to-day compliance. Certified operator: must hold the appropriate class of certification for the system being operated. Water Quality Analyst: certified under O. Reg. 128/04 — responsible for sampling and analysis.",
+      },
+      {
+        heading: "Drinking Water Quality Management Standard (DWQMS)",
+        body: "DWQMS is Ontario's quality management system for municipal drinking water. Required elements: Operational Plan (documents all aspects of system operation); risk assessment; management review; internal audits; corrective actions; training records. Accreditation: third-party auditors verify compliance. Operating authorities must be accredited under DWQMS. The Operational Plan must be reviewed annually. Continuous improvement is a core requirement. DWQMS is based on ISO 9001 principles but is specific to drinking water.",
+      },
+    ],
+    tableHeadings: ["Parameter", "MAC/AO", "Adverse Result Action"],
+    tableRows: [
+      ["E. coli", "0 CFU/100 mL (MAC)", "Notify MOH and MECP immediately; issue BWA"],
+      ["Total coliform", "0 CFU/100 mL (MAC)", "Investigate, resample within 24 hours"],
+      ["Turbidity (filtered)", "1 NTU (MAC)", "Notify MECP immediately; consider BWA"],
+      ["Total THMs", "100 ug/L (MAC, running annual avg)", "Notify MECP; investigate source"],
+      ["Nitrate", "10 mg/L as N (MAC)", "Notify MOH and MECP; issue advisory if needed"],
+      ["Lead", "0.010 mg/L (MAC)", "Corrosion control required if > 10% of samples exceed"],
+    ],
+    examTips: [
+      "E. coli MAC = 0 CFU/100 mL — any detection requires immediate notification of MOH and MECP",
+      "Total coliform MAC = 0 CFU/100 mL — detection requires investigation and resampling within 24 h",
+      "Turbidity MAC for filtered systems = 1 NTU — adverse result requires immediate MECP notification",
+      "Annual summary report due February 28 — must be made available to the public",
+      "DWQMS Operational Plan must be reviewed annually",
+      "Water Quality Analyst certification: O. Reg. 128/04 — separate from operator certification",
+    ],
+    formulaHint:
+      "No primary calculation formulas — this module is regulatory. Know the MACs, adverse result thresholds, notification timelines, and DWQMS requirements.",
+  },
+  "Safety": {
+    title: "Safety",
+    intro:
+      "Laboratory safety is a critical responsibility for Water Quality Analysts. Working with hazardous chemicals, biological samples, and laboratory equipment requires knowledge of WHMIS 2015, proper PPE selection, chemical handling and storage, emergency procedures, and the Occupational Health and Safety Act (OHSA).",
+    keyPoints: [
+      {
+        heading: "WHMIS 2015 (GHS)",
+        body: "WHMIS 2015 aligns with the Globally Harmonized System (GHS) for classification and labelling of chemicals. Hazard classes: physical hazards (flammable, explosive, oxidizing, compressed gas, corrosive to metals); health hazards (acute toxicity, skin/eye corrosion, respiratory sensitization, carcinogenicity, reproductive toxicity); environmental hazards. Labels: must include product identifier, hazard pictograms, signal word (Danger or Warning), hazard statements, precautionary statements, and supplier information. Safety Data Sheets (SDS): 16-section format — Section 2 (hazard identification), Section 8 (exposure controls/PPE), Section 13 (disposal). SDS must be accessible to all workers in the workplace.",
+      },
+      {
+        heading: "Chemical Hazards in Water Quality Laboratories",
+        body: "Common laboratory hazards: concentrated acids (H2SO4, HNO3, HCl) — corrosive, oxidizing; concentrated bases (NaOH, KOH) — corrosive; organic solvents (methylene chloride, hexane, acetone) — flammable, toxic, carcinogenic; mercury compounds (mercuric sulfate in COD reagents) — highly toxic, bioaccumulative; sodium azide (preservative in some reagents) — toxic, explosive when dry; chlorine gas — toxic, generated when hypochlorite contacts acid. PPE selection: chemical-resistant gloves (nitrile for most organics; neoprene or butyl for concentrated acids/bases); safety glasses or goggles; lab coat; face shield for splash hazards; fume hood for volatile chemicals.",
+      },
+      {
+        heading: "Emergency Procedures",
+        body: "Chemical spill: evacuate area if large spill; contain small spills with absorbent material; neutralize acids with sodium bicarbonate, bases with citric acid; dispose of waste per MECP regulations. Chemical splash to eyes: immediately flush with water for 15 minutes at eyewash station — do not rub eyes; seek medical attention. Chemical splash to skin: remove contaminated clothing; flush with water for 15 minutes; seek medical attention for corrosive chemicals. Fire: use appropriate extinguisher (Class A for ordinary combustibles; Class B for flammable liquids; Class C for electrical fires); evacuate if fire is not immediately controllable. First aid: know the location of first aid kit, eyewash, safety shower, and fire extinguisher.",
+      },
+      {
+        heading: "Biological Safety",
+        body: "Water quality laboratories handle samples that may contain pathogens (E. coli, Salmonella, Cryptosporidium, Giardia, Legionella). Biosafety level 2 (BSL-2): appropriate for most water quality samples — standard microbiological practices, lab coats, gloves, eye protection, biological safety cabinet for aerosol-generating procedures. Sharps safety: use puncture-resistant containers for needles and broken glass — never recap needles. Autoclave: used to sterilize biological waste before disposal — verify sterilization with biological indicators. Biohazard waste: must be segregated, autoclaved, and disposed of per MECP and Public Health regulations. Hand washing: wash hands after removing gloves and before leaving the laboratory.",
+      },
+    ],
+    tableHeadings: ["Hazard", "PPE Required", "Emergency Response"],
+    tableRows: [
+      ["Concentrated acid (H2SO4, HNO3)", "Nitrile gloves, goggles, lab coat, face shield", "Flush 15 min water; neutralize with NaHCO3"],
+      ["Concentrated base (NaOH)", "Nitrile gloves, goggles, lab coat", "Flush 15 min water; neutralize with citric acid"],
+      ["Organic solvents (flammable)", "Nitrile gloves, safety glasses, fume hood", "Evacuate; use Class B extinguisher"],
+      ["Mercury compounds", "Nitrile gloves, goggles, fume hood", "Specialized mercury spill kit; notify supervisor"],
+      ["Biological samples (pathogens)", "Gloves, lab coat, eye protection", "Autoclave spills; wash hands; report exposure"],
+    ],
+    examTips: [
+      "WHMIS 2015 = GHS alignment — 16-section SDS; hazard pictograms on labels",
+      "Eye splash: flush 15 minutes at eyewash — do not rub eyes",
+      "Sodium azide: toxic and explosive when dry — handle carefully, never acidify",
+      "BSL-2 for water quality samples — standard practices plus biological safety cabinet for aerosols",
+      "Autoclave verification: biological indicators (Geobacillus stearothermophilus spores)",
+      "Class A fire extinguisher: ordinary combustibles; Class B: flammable liquids; Class C: electrical",
+    ],
+    formulaHint:
+      "No primary calculation formulas — this module is procedural. Know the WHMIS 2015 requirements, PPE selection, emergency procedures, and biosafety practices.",
+  },
+  "Science": {
+    title: "Science",
+    intro:
+      "Water Quality Analysts must understand the fundamental chemistry and microbiology underlying water quality analysis. This includes inorganic chemistry (pH, alkalinity, hardness, oxidation-reduction), organic chemistry (NOM, DBP precursors), and microbiology (pathogen characteristics, indicator organisms, treatment mechanisms).",
+    keyPoints: [
+      {
+        heading: "pH, Alkalinity, and Hardness",
+        body: "pH: measure of hydrogen ion activity — pH = -log[H+]. pH scale: 0-14; neutral = 7; acidic < 7; basic > 7. Buffer capacity: resistance to pH change — provided by carbonate/bicarbonate system in natural waters. Alkalinity: measure of water's capacity to neutralize acids — primarily due to bicarbonate (HCO3-), carbonate (CO32-), and hydroxide (OH-). Alkalinity (mg/L as CaCO3) = [HCO3-] x 50/61 + [CO32-] x 50/30 + [OH-] x 50/17. Hardness: caused by dissolved calcium and magnesium — total hardness (mg/L as CaCO3) = [Ca2+] x 2.5 + [Mg2+] x 4.1. Temporary hardness: due to bicarbonates — removed by boiling. Permanent hardness: due to sulfates and chlorides — requires chemical or ion exchange treatment.",
+      },
+      {
+        heading: "Oxidation-Reduction (Redox) Chemistry",
+        body: "Oxidation: loss of electrons (increase in oxidation state). Reduction: gain of electrons (decrease in oxidation state). Oxidizing agents: accept electrons — chlorine, ozone, permanganate, dissolved oxygen. Reducing agents: donate electrons — organic matter, Fe2+, Mn2+, H2S, NH3. Oxidation-reduction potential (ORP): measured in millivolts — positive ORP = oxidizing conditions; negative ORP = reducing conditions. Iron chemistry: Fe2+ (ferrous, soluble) → Fe3+ (ferric, insoluble) in the presence of oxygen. Manganese chemistry: Mn2+ (soluble) → MnO2 (insoluble) — requires higher ORP than iron. Sulfide chemistry: SO42- → H2S (reducing conditions) — causes odour and corrosion.",
+      },
+      {
+        heading: "Natural Organic Matter (NOM)",
+        body: "NOM is a complex mixture of organic compounds derived from decomposition of plant and animal material. Components: humic acids (large, aromatic, hydrophobic — major DBP precursor), fulvic acids (smaller, more hydrophilic), hydrophilic acids, and proteins. NOM measurement: TOC (total organic carbon), DOC (dissolved organic carbon), UV254 absorbance (indicator of aromatic NOM), SUVA (specific UV absorbance = UV254/DOC — indicator of humic content and DBP formation potential). SUVA > 4 L/mg/m: high humic content, high DBP formation potential — enhanced coagulation recommended. NOM removal: coagulation/flocculation (charge neutralization and sweep floc), GAC adsorption, nanofiltration.",
+      },
+      {
+        heading: "Microbiology of Water Treatment",
+        body: "Pathogens of concern in drinking water: bacteria (E. coli O157:H7, Salmonella, Campylobacter, Legionella), viruses (norovirus, rotavirus, hepatitis A, adenovirus), protozoa (Cryptosporidium parvum, Giardia lamblia). Cryptosporidium and Giardia: form oocysts/cysts that are resistant to chlorine — physical removal (filtration) and UV are primary control measures. Virus removal: requires high CT with chlorine or UV — viruses are smaller than bacteria and protozoa. Biofilm in distribution systems: attached microbial communities on pipe surfaces — source of coliform regrowth, taste/odour, and corrosion. Nitrification: Nitrosomonas and Nitrobacter oxidize ammonia released from chloramine decay — produces nitrite and nitrate in distribution system.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Formula/Relationship", "Significance"],
+    tableRows: [
+      ["pH", "pH = -log[H+]", "Controls disinfection efficiency, corrosion, precipitation"],
+      ["Alkalinity", "Primarily HCO3- (bicarbonate)", "Buffer capacity; consumed by nitrification (7.14 g/g NH4-N)"],
+      ["Total hardness", "[Ca2+] x 2.5 + [Mg2+] x 4.1 (as CaCO3)", "Scaling potential; corrosion control"],
+      ["SUVA", "UV254 / DOC (L/mg/m)", "> 4 = high humic NOM, high DBP formation potential"],
+      ["ORP", "Measured in mV", "Positive = oxidizing; negative = reducing conditions"],
+    ],
+    examTips: [
+      "pH = -log[H+]; lower pH = more acidic = more HOCl (better disinfection)",
+      "Alkalinity consumed by nitrification: 7.14 g CaCO3 per g NH4-N oxidized",
+      "SUVA > 4 = high humic NOM = high DBP formation potential — enhanced coagulation recommended",
+      "Cryptosporidium oocysts are chlorine-resistant — UV or ozone required for inactivation",
+      "Biofilm in distribution systems: source of coliform regrowth and taste/odour",
+      "Fe2+ (ferrous) is soluble; Fe3+ (ferric) is insoluble — oxidation required for iron removal",
+    ],
+    formulaHint:
+      "pH = -log[H+]\nTotal hardness (mg/L as CaCO3) = [Ca2+] x 2.5 + [Mg2+] x 4.1\nSUVA (L/mg/m) = UV254 absorbance (m-1) / DOC (mg/L)\nAlkalinity consumed = NH4-N removed x 7.14",
+  },
+  "Water Characteristics": {
+    title: "Water Characteristics",
+    intro:
+      "Understanding the physical, chemical, and biological characteristics of source water and treated water is fundamental to water quality analysis. Water Quality Analysts must be able to interpret water quality data, identify trends, and recognize conditions that may affect treatment performance or public health.",
+    keyPoints: [
+      {
+        heading: "Physical Characteristics",
+        body: "Turbidity: measure of water clarity — caused by suspended particles (clay, silt, algae, organic matter). Measured in NTU (nephelometric turbidity units). High turbidity: reduces disinfection effectiveness (particles shield pathogens from UV and chlorine); indicator of treatment problems; aesthetic concern. Temperature: affects disinfection kinetics (lower temperature = slower CT reactions), biological activity, dissolved oxygen, and chemical reaction rates. Colour: true colour (after filtration) vs. apparent colour (including suspended matter). True colour caused by dissolved NOM (humic/fulvic acids) — measured in TCU (true colour units). Taste and odour: caused by MIB, geosmin (algae), H2S (anaerobic conditions), chlorine compounds, and industrial contaminants.",
+      },
+      {
+        heading: "Chemical Characteristics",
+        body: "Dissolved oxygen (DO): indicator of aerobic conditions — DO < 4 mg/L may indicate organic pollution or algal respiration at night. DO saturation decreases with increasing temperature and altitude. Biochemical oxygen demand (BOD5): measure of biodegradable organic matter — 5-day test at 20 degrees C. Chemical oxygen demand (COD): measure of total oxidizable organic matter — faster than BOD5. BOD:COD ratio: high ratio (> 0.5) indicates readily biodegradable organic matter; low ratio (< 0.3) indicates refractory organics. Nutrients: nitrogen (TKN, NH4-N, NO3-N, NO2-N) and phosphorus (TP, ortho-P) — indicators of agricultural runoff, sewage contamination, and eutrophication potential.",
+      },
+      {
+        heading: "Seasonal Variation in Source Water",
+        body: "Spring runoff: high turbidity, high TOC, high coliform counts — peak treatment challenge. Summer: algal blooms (HABs), taste/odour (MIB, geosmin), elevated temperature, low DO at depth. Fall turnover: destratification of lakes — cold, oxygen-depleted bottom water mixes with surface water — may cause taste/odour, elevated iron/manganese, and elevated TOC. Winter: low temperature reduces disinfection efficiency and biological treatment rates — increase CT by increasing chlorine dose or contact time. Ice cover: reduces reaeration — may cause low DO in shallow lakes. Operators must anticipate seasonal changes and adjust treatment accordingly.",
+      },
+      {
+        heading: "Groundwater Characteristics",
+        body: "Groundwater is generally more stable than surface water but may have specific chemical characteristics depending on the aquifer geology. Hard water: high calcium and magnesium from limestone aquifers — scaling in pipes and water heaters. Iron and manganese: common in anaerobic groundwater — Fe2+ and Mn2+ are soluble; oxidation and filtration required for removal. Nitrates: from agricultural activities, septic systems — elevated in shallow, unconfined aquifers. Arsenic: naturally occurring in some aquifers — requires treatment (coagulation, adsorption, ion exchange). Radon: naturally occurring radioactive gas — dissolved in groundwater from uranium-bearing rock. Hardness, iron, and manganese are the most common groundwater treatment challenges in Ontario.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Typical Range (Drinking Water)", "Treatment Implication"],
+    tableRows: [
+      ["Turbidity", "< 1 NTU (treated)", "High turbidity shields pathogens; impairs UV disinfection"],
+      ["Temperature", "4-25 degrees C (source water)", "Low temp reduces CT efficiency; affects biological treatment"],
+      ["BOD5", "< 2 mg/L (treated)", "High BOD = high chlorine demand; potential for regrowth"],
+      ["Dissolved oxygen", "> 6 mg/L (source water)", "Low DO = anaerobic conditions; iron/Mn/H2S release"],
+      ["Iron (dissolved)", "< 0.3 mg/L (AO)", "Oxidation and filtration required; stains plumbing"],
+      ["Manganese", "< 0.12 mg/L (MAC)", "Oxidation and filtration required; black deposits in pipes"],
+    ],
+    examTips: [
+      "Turbidity > 1 NTU for filtered systems = adverse result — also impairs UV disinfection",
+      "Spring runoff = highest turbidity and coliform risk — peak treatment challenge",
+      "Fall turnover: cold, O2-depleted bottom water mixes with surface — taste/odour, Fe/Mn spike",
+      "Low temperature reduces CT efficiency — increase chlorine dose or contact time in winter",
+      "Groundwater: iron and manganese are most common treatment challenges in Ontario",
+      "BOD:COD ratio > 0.5 = readily biodegradable; < 0.3 = refractory organics",
+    ],
+    formulaHint:
+      "DO saturation decreases with temperature: at 20 degrees C = 9.1 mg/L; at 10 degrees C = 11.3 mg/L; at 0 degrees C = 14.6 mg/L\nBOD:COD ratio = BOD5 / COD\nCT required increases as temperature decreases — use CT tables at the appropriate temperature",
+  },
+};

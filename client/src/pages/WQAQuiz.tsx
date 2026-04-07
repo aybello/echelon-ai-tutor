@@ -4,6 +4,7 @@ import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import PurchaseGate from "@/components/PurchaseGate";
 import { WQA_QUESTIONS, WQA_MODULES, WQA_FORMULA_LINKS, type WQAQuestion } from '@/lib/wqaQuestions';
+import { WQA_OVERVIEWS } from '@/lib/moduleOverviews';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -219,6 +220,7 @@ export default function WQAQuiz() {
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={resetSession}
         mockExamHref="/wqa-mock"
+        moduleOverviews={WQA_OVERVIEWS}
         formulaLinks={WQA_FORMULA_LINKS}
         renderAITutor={() => (
           <AITutor
