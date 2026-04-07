@@ -634,6 +634,13 @@ const FEATURES = [
     color: "#0F766E",
     href: "/oit-water-flashcards",
   },
+  {
+    icon: "📖",
+    title: "Module Study Notes",
+    description: "Condensed study notes for every module — key concepts, process tables, formulas, and exam tips. Read before you practice, not just after you get it wrong.",
+    color: "#B45309",
+    href: "/quiz",
+  },
 ];
 
 const STATS = [
