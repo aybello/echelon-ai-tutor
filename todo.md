@@ -343,3 +343,6 @@
 - [x] Wire CLASS1_WASTEWATER_OVERVIEWS into Class1WastewaterQuiz page
 - [x] Auto-expand Module Overview panel when a module is first selected
 - [x] Add Study Notes button in QuizShell header for All Modules mode with module picker modal
+- [x] Write module overview study notes for all Class 1 Water modules
+- [x] Wire CLASS1_WATER_OVERVIEWS into Class1WaterQuiz page
+- [x] Add "Study Notes" to course feature list on landing page (OIT, Class 1 Water, OIT WW, Class 1 WW)

@@ -63,7 +63,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#EFF6FF",
     border: "#BFDBFE",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "400+ flashcards"],
+    features: ["500+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "400+ flashcards", "📖 Module study notes"],
   },
   {
     key: "class1-water",
@@ -78,7 +78,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0F9FF",
     border: "#BAE6FD",
     available: true,
-    features: ["500 practice questions", "Timed mock exam", "Water1 formula sheet", "AI Tutor", "400+ flashcards"],
+    features: ["500 practice questions", "Timed mock exam", "Water1 formula sheet", "AI Tutor", "400+ flashcards", "📖 Module study notes"],
   },
   {
     key: "class2-water",
@@ -138,7 +138,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "400+ flashcards"],
+    features: ["500+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "400+ flashcards", "📖 Module study notes"],
   },
   {
     key: "class1-ww",
@@ -153,7 +153,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "WW1 formula sheet", "AI Tutor", "400+ flashcards"],
+    features: ["500+ practice questions", "Timed mock exam", "WW1 formula sheet", "AI Tutor", "400+ flashcards", "📖 Module study notes"],
   },
   {
     key: "class2-ww",

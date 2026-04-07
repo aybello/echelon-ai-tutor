@@ -4,6 +4,7 @@ import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import PurchaseGate from "@/components/PurchaseGate";
 import { CLASS1_WATER_QUESTIONS, CLASS1_WATER_MODULES, type Class1WaterQuestion } from '@/lib/class1WaterQuestions';
+import { CLASS1_WATER_OVERVIEWS } from '@/lib/moduleOverviews';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -219,7 +220,7 @@ export default function Class1WaterQuiz() {
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={resetSession}
         mockExamHref="/class1-water-mock"
-        
+        moduleOverviews={CLASS1_WATER_OVERVIEWS}
         renderAITutor={() => (
           <AITutor
             question={current as any}

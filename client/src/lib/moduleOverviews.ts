@@ -698,3 +698,305 @@ export const OIT_WATER_OVERVIEWS: Record<string, ModuleOverview> = {
     ],
   },
 };
+
+// ─── Class 1 Water Module Overviews ─────────────────────────────────────────
+export const CLASS1_WATER_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Water Sources & Quality": {
+    title: "Water Sources & Quality",
+    intro:
+      "Understanding where drinking water comes from and what's in it is the starting point for all water treatment. The Class 1 Water exam tests your knowledge of surface water vs. groundwater characteristics, how source water quality affects treatment decisions, and Ontario's regulatory framework for source protection.",
+    keyPoints: [
+      {
+        heading: "Surface Water vs. Groundwater",
+        body: "Surface water (lakes, rivers) has variable quality — susceptible to turbidity, algae, runoff, and seasonal changes. Groundwater is generally more stable but may have elevated hardness, iron, manganese, or naturally occurring contaminants. The treatment approach must match the source type.",
+      },
+      {
+        heading: "Key Water Quality Parameters",
+        body: "Turbidity (NTU) measures suspended particles — high turbidity shields pathogens from disinfection. Colour (TCU) indicates dissolved organics. pH affects coagulation efficiency and disinfection. Temperature affects reaction rates — cold water requires more coagulant and longer contact times for disinfection.",
+      },
+      {
+        heading: "Source Protection (Ontario)",
+        body: "Ontario's Clean Water Act (2006) requires Source Protection Plans for all municipal drinking water systems. Significant drinking water threats (e.g., fuel storage, agriculture) in vulnerable areas must be managed. Operators must understand their intake's vulnerability and the threats identified in their Source Protection Plan.",
+      },
+      {
+        heading: "Drinking Water Standards",
+        body: "Ontario Drinking Water Quality Standards (O. Reg. 169/03) set maximum acceptable concentrations (MACs) for chemical parameters and health-based standards for microbiological parameters. The Ontario Drinking Water Surveillance Program (ODWSP) monitors raw and treated water quality across the province.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Surface Water Typical Range", "Concern"],
+    tableRows: [
+      ["Turbidity", "1–100+ NTU (variable)", "Pathogen shielding, filter performance"],
+      ["Colour", "5–50+ TCU", "DBP precursors (THMs, HAAs)"],
+      ["pH", "6.5–8.5", "Coagulation efficiency, corrosion"],
+      ["Temperature", "0–25°C (seasonal)", "Disinfection CT, coagulant dose"],
+    ],
+    examTips: [
+      "High turbidity reduces disinfection effectiveness — always treat turbidity before disinfecting",
+      "O. Reg. 169/03 sets the Ontario drinking water standards — know the MAC for nitrate (10 mg/L as N)",
+      "The 4-3-2-1 rule: 4 log Giardia, 3 log Cryptosporidium, 2 log virus inactivation required",
+      "Source protection plans are legally binding in Ontario under the Clean Water Act",
+    ],
+  },
+
+  "Coagulation & Flocculation": {
+    title: "Coagulation & Flocculation",
+    intro:
+      "Coagulation and flocculation are the first treatment steps for surface water systems. They destabilize and aggregate suspended particles so they can be removed by sedimentation and filtration. This is one of the most heavily tested topics on the Class 1 Water exam — especially coagulant chemistry, jar testing, and pH control.",
+    keyPoints: [
+      {
+        heading: "Coagulation",
+        body: "Coagulation neutralizes the negative charge on suspended particles (colloids), allowing them to come together. Common coagulants: alum (aluminum sulfate) — optimal pH 6.0–7.5; ferric sulfate/ferric chloride — optimal pH 4.5–8.5 (wider range). Rapid mixing disperses the coagulant quickly — typically 1–3 minutes at high velocity (G = 300–1000 s⁻¹).",
+      },
+      {
+        heading: "Flocculation",
+        body: "Flocculation gently agitates the water to encourage particle collisions and growth of floc. Slow mixing (G = 10–75 s⁻¹) for 20–40 minutes. Over-mixing breaks apart floc. The velocity gradient (G) and detention time (Gt value) are used to optimize flocculation performance.",
+      },
+      {
+        heading: "Jar Testing",
+        body: "Jar testing simulates the coagulation/flocculation/sedimentation process at bench scale to determine optimal coagulant dose and pH. Operators adjust coagulant dose, pH, and mixing conditions to find the combination that produces the best settled water turbidity. Results guide full-scale plant operation.",
+      },
+      {
+        heading: "pH and Alkalinity",
+        body: "Alum consumes alkalinity and lowers pH. If natural alkalinity is insufficient, lime or soda ash is added to maintain the optimal pH range. Low alkalinity = poor coagulation. Monitoring pH and alkalinity before and after coagulant addition is essential for process control.",
+      },
+    ],
+    formulaHint: "Alum dose (mg/L) × 0.45 = alkalinity consumed (mg/L as CaCO₃)",
+    tableHeadings: ["Coagulant", "Optimal pH", "Notes"],
+    tableRows: [
+      ["Alum (Al₂(SO₄)₃)", "6.0–7.5", "Most common, consumes alkalinity"],
+      ["Ferric sulfate", "4.5–8.5", "Wider pH range, darker floc"],
+      ["Ferric chloride", "4.5–8.5", "Similar to ferric sulfate"],
+      ["Polyaluminum chloride (PACl)", "5.5–8.0", "Less pH-sensitive, less sludge"],
+    ],
+    examTips: [
+      "Alum works best at pH 6.0–7.5 — if pH is outside this range, coagulation will be poor",
+      "Jar testing is the standard method to determine optimal coagulant dose",
+      "Rapid mix disperses coagulant; slow mix (flocculation) builds floc — don't confuse the two",
+      "Zeta potential measures the charge on particles — near zero = good coagulation",
+    ],
+  },
+
+  "Sedimentation": {
+    title: "Sedimentation",
+    intro:
+      "Sedimentation (clarification) removes floc particles from water by gravity settling after coagulation and flocculation. Understanding settling theory, overflow rate, and sludge management is essential for Class 1 Water operators.",
+    keyPoints: [
+      {
+        heading: "Settling Theory",
+        body: "Particles settle at a rate determined by Stokes' Law — larger, denser particles settle faster. The overflow rate (surface loading rate) is the key design parameter: flow rate divided by surface area (m³/m²·day or gpd/ft²). Particles with a settling velocity greater than the overflow rate will be removed.",
+      },
+      {
+        heading: "Types of Clarifiers",
+        body: "Conventional rectangular or circular clarifiers have four zones: inlet, settling, sludge, and outlet. Tube settlers and lamella plates increase effective settling area without enlarging the tank footprint — they are common in upgrades to increase capacity. Upflow clarifiers (solids contact units) combine coagulation, flocculation, and sedimentation in one unit.",
+      },
+      {
+        heading: "Overflow Rate & Detention Time",
+        body: "Typical overflow rate: 20–40 m³/m²·day for conventional clarifiers. Typical detention time: 2–4 hours. High flow events (storms) increase overflow rate and reduce detention time — this is when settled water turbidity typically rises. Operators must respond by increasing coagulant dose or reducing flow.",
+      },
+      {
+        heading: "Sludge Management",
+        body: "Settled sludge accumulates at the bottom and must be removed regularly. Sludge blanket level monitoring prevents carry-over of solids into the filter. Sludge is typically thickened and sent to lagoons or dewatered for disposal. Alum sludge is not classified as hazardous in Ontario but must be managed per local regulations.",
+      },
+    ],
+    formulaHint: "Overflow Rate = Flow (m³/day) ÷ Surface Area (m²)",
+    tableHeadings: ["Parameter", "Typical Value", "Impact if Exceeded"],
+    tableRows: [
+      ["Overflow rate", "20–40 m³/m²·day", "Poor settling, turbidity breakthrough"],
+      ["Detention time", "2–4 hours", "Insufficient settling"],
+      ["Sludge blanket", "Below weir by ≥1 m", "Solids carryover to filters"],
+    ],
+    examTips: [
+      "Overflow rate is the most important design parameter for sedimentation — know how to calculate it",
+      "High turbidity in settled water = too high overflow rate, poor coagulation, or rising sludge blanket",
+      "Weir loading rate (flow per unit length of weir) affects outlet zone performance",
+      "Short-circuiting reduces effective detention time — baffles help prevent it",
+    ],
+  },
+
+  "Filtration": {
+    title: "Filtration",
+    intro:
+      "Filtration is the final physical treatment step before disinfection. Filters remove residual floc, turbidity, and pathogens (especially Cryptosporidium, which is resistant to chlorine). Proper filter operation and backwashing are critical for producing safe drinking water and meeting Ontario's turbidity requirements.",
+    keyPoints: [
+      {
+        heading: "Rapid Sand Filtration",
+        body: "Rapid sand filters use a bed of sand (and often anthracite) to physically strain and adsorb particles. Typical filtration rate: 5–15 m/h. As the filter loads with solids, headloss increases. Filters are taken offline for backwashing when headloss reaches the terminal value or filtered water turbidity rises above 0.1 NTU.",
+      },
+      {
+        heading: "Filter Media",
+        body: "Dual-media filters (anthracite over sand) allow deeper penetration of solids and longer filter runs than single-media sand filters. Anthracite (lighter, coarser) sits on top; sand (denser, finer) on the bottom. GAC (granular activated carbon) may replace anthracite for taste/odour and DBP precursor removal.",
+      },
+      {
+        heading: "Backwashing",
+        body: "Backwashing reverses flow through the filter to expand the media bed and flush out accumulated solids. Backwash rate must be sufficient to expand the bed (30–50% expansion) but not wash out media. Air scour before backwash improves cleaning efficiency. Backwash water is collected and typically recycled to the head of the plant.",
+      },
+      {
+        heading: "Filter-to-Waste & Ripening",
+        body: "After backwashing, filters go through a ripening period where turbidity is elevated. Filter-to-waste (bypassing the clearwell) is used during ripening to prevent unfiltered water from entering the distribution system. O. Reg. 170/03 requires filtered water turbidity ≤ 0.3 NTU (95th percentile) and never exceeding 1.0 NTU.",
+      },
+    ],
+    formulaHint: "Filtration Rate = Flow (m³/h) ÷ Filter Area (m²)",
+    tableHeadings: ["Parameter", "Typical Value / Limit", "Regulatory Reference"],
+    tableRows: [
+      ["Filtered water turbidity", "≤0.3 NTU (95th %ile)", "O. Reg. 170/03"],
+      ["Maximum filtered turbidity", "≤1.0 NTU at all times", "O. Reg. 170/03"],
+      ["Filtration rate", "5–15 m/h", "Design standard"],
+      ["Backwash bed expansion", "30–50%", "Operational guideline"],
+    ],
+    examTips: [
+      "Filtered water turbidity must be ≤0.3 NTU (95th percentile) and never >1.0 NTU per O. Reg. 170/03",
+      "Cryptosporidium is resistant to chlorine — filtration is the primary removal mechanism",
+      "Filter-to-waste prevents post-backwash turbidity spikes from entering the clearwell",
+      "Headloss increase = filter loading up; sudden turbidity increase = filter breakthrough",
+    ],
+  },
+
+  "Disinfection": {
+    title: "Disinfection",
+    intro:
+      "Disinfection is the last barrier before water enters the distribution system. It inactivates pathogens that have passed through all previous treatment steps. CT values, residual requirements, and disinfection by-product (DBP) formation are the core concepts tested on the Class 1 Water exam.",
+    keyPoints: [
+      {
+        heading: "CT Values",
+        body: "CT = Concentration (mg/L) × Contact Time (minutes). A higher CT means more disinfection credit. Temperature and pH affect CT requirements — colder water and higher pH require a higher CT to achieve the same inactivation. CT tables (from Health Canada / USEPA) specify the CT needed for 3-log Giardia and 4-log virus inactivation.",
+      },
+      {
+        heading: "Chlorine Chemistry",
+        body: "When chlorine is added to water, it forms hypochlorous acid (HOCl) and hypochlorite ion (OCl⁻). HOCl is the more effective disinfectant — it dominates at pH <7.5. At higher pH, OCl⁻ dominates and disinfection efficiency drops. This is why pH control matters for disinfection performance.",
+      },
+      {
+        heading: "Disinfection By-Products (DBPs)",
+        body: "Chlorine reacts with natural organic matter (NOM) to form trihalomethanes (THMs) and haloacetic acids (HAAs). Ontario MAC for THMs: 0.1 mg/L (100 µg/L); HAAs: 0.08 mg/L (80 µg/L). DBP formation increases with higher chlorine dose, higher NOM, higher temperature, and longer contact time. Removing NOM before disinfection (coagulation, filtration) reduces DBP formation.",
+      },
+      {
+        heading: "Residual Requirements (Ontario)",
+        body: "O. Reg. 170/03 requires a minimum free chlorine residual of 0.05 mg/L at the point of entry to the distribution system and throughout the system. Operators must monitor and log residuals. A detectable residual at the far ends of the system confirms ongoing protection against recontamination.",
+      },
+    ],
+    formulaHint: "CT = C (mg/L) × T (minutes) | Chlorine Dose = Demand + Residual",
+    tableHeadings: ["Disinfectant", "Primary Use", "Key Advantage", "Key Limitation"],
+    tableRows: [
+      ["Free chlorine", "Primary disinfection + residual", "Low cost, well understood", "DBP formation, pH-sensitive"],
+      ["Chloramines", "Distribution system residual", "Less DBPs, stable residual", "Weaker disinfectant, nitrification risk"],
+      ["UV", "Cryptosporidium inactivation", "No DBPs, effective vs. Crypto", "No residual"],
+      ["Ozone", "Taste/odour, pre-disinfection", "Strong oxidant, no chlorine DBPs", "No residual, expensive"],
+    ],
+    examTips: [
+      "CT requirement increases as temperature decreases — always check the temperature when calculating CT",
+      "HOCl is more effective than OCl⁻ — lower pH favours HOCl (better disinfection)",
+      "Ontario MAC: THMs = 0.1 mg/L, HAAs = 0.08 mg/L",
+      "Minimum free chlorine residual at point of entry: 0.05 mg/L (O. Reg. 170/03)",
+    ],
+  },
+
+  "Chemical Feed & Dosing": {
+    title: "Chemical Feed & Dosing",
+    intro:
+      "Accurate chemical dosing is fundamental to water treatment. Operators must be able to calculate chemical doses, understand feed system types, and troubleshoot dosing problems. This module is heavily calculation-focused on the Class 1 Water exam.",
+    keyPoints: [
+      {
+        heading: "Dose Calculations",
+        body: "Chemical dose (mg/L) × flow rate (L/s or MLD) = mass feed rate (mg/s or kg/day). Always convert units carefully. For liquid chemicals, convert from mg/L to mL/min using the chemical's concentration and density. For dry chemicals, account for purity (e.g., 98% alum means 98 g of active ingredient per 100 g of product).",
+      },
+      {
+        heading: "Chemical Feed Systems",
+        body: "Dry feeders (volumetric or gravimetric) are used for powdered or granular chemicals (alum, lime, soda ash). Liquid chemical metering pumps (diaphragm, peristaltic) are used for solutions (sodium hypochlorite, ferric chloride). Gravimetric feeders are more accurate than volumetric. Pump calibration must be verified regularly.",
+      },
+      {
+        heading: "Chemical Storage & Safety",
+        body: "Chemicals must be stored per WHMIS requirements with SDS accessible. Incompatible chemicals (acids/bases, oxidizers/reducers) must be stored separately. Secondary containment (berms, drip trays) is required for liquid chemicals. Chlorine gas cylinders require leak detectors and emergency scrubbers.",
+      },
+      {
+        heading: "Fluoridation",
+        body: "Many Ontario systems add fluoride to drinking water at a target of 0.7 mg/L (Health Canada guideline). Common fluoride chemicals: hydrofluosilicic acid (liquid), sodium silicofluoride (dry), sodium fluoride (dry). Fluoride dosing must be carefully controlled — the MAC is 1.5 mg/L.",
+      },
+    ],
+    formulaHint: "Feed Rate (kg/day) = Dose (mg/L) × Flow (ML/day) × 1 kg/1,000,000 mg × 1,000,000 L/ML",
+    tableHeadings: ["Chemical", "Purpose", "Typical Form"],
+    tableRows: [
+      ["Alum", "Coagulation", "Liquid or dry"],
+      ["Sodium hypochlorite", "Disinfection", "Liquid (10–15%)"],
+      ["Lime / soda ash", "pH adjustment, softening", "Dry"],
+      ["Hydrofluosilicic acid", "Fluoridation", "Liquid"],
+      ["Sodium bisulfite", "Dechlorination", "Dry or liquid"],
+    ],
+    examTips: [
+      "Always check chemical purity when calculating dose — 98% alum ≠ 100% active ingredient",
+      "Feed rate (kg/day) = dose (mg/L) × flow (ML/day) — memorize this formula",
+      "Fluoride target: 0.7 mg/L; MAC: 1.5 mg/L per O. Reg. 169/03",
+      "Pump calibration: collect output over a timed period and compare to setpoint",
+    ],
+  },
+
+  "Iron & Manganese Removal": {
+    title: "Iron & Manganese Removal",
+    intro:
+      "Iron and manganese are naturally occurring in groundwater and some surface waters. They cause aesthetic problems (staining, taste, odour) and can exceed Ontario's aesthetic objectives. Removal typically involves oxidation followed by filtration. This is a common topic in Class 1 Water exams for systems drawing from groundwater.",
+    keyPoints: [
+      {
+        heading: "Why Iron & Manganese Are Problematic",
+        body: "Iron (Fe²⁺) and manganese (Mn²⁺) are soluble in reduced (low-oxygen) groundwater. When exposed to air or oxidants, they oxidize to insoluble Fe³⁺ and MnO₂, forming reddish-brown (iron) or black (manganese) precipitates. These cause staining of laundry and fixtures, bitter/metallic taste, and can support bacterial growth (iron bacteria).",
+      },
+      {
+        heading: "Oxidation Methods",
+        body: "Aeration (cascade, spray, packed tower) is the simplest method — introduces oxygen to oxidize iron. Chlorine, potassium permanganate (KMnO₄), and ozone are chemical oxidants used when aeration alone is insufficient (especially for manganese, which oxidizes more slowly). Manganese requires a higher oxidation potential than iron.",
+      },
+      {
+        heading: "Filtration",
+        body: "After oxidation, precipitated iron and manganese are removed by filtration. Greensand filters (coated with MnO₂) catalyze manganese oxidation and removal. Birm media works similarly. Filters must be backwashed regularly to remove accumulated precipitates. KMnO₄ regeneration of greensand is required periodically.",
+      },
+      {
+        heading: "Ontario Aesthetic Objectives",
+        body: "Ontario Drinking Water Quality Standards (O. Reg. 169/03) set aesthetic objectives (not MACs) for iron and manganese: Iron AO = 0.3 mg/L; Manganese AO = 0.05 mg/L. Exceedances cause customer complaints but are not health-based limits. However, manganese has a health-based MAC of 0.12 mg/L for infants.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Aesthetic Objective", "Health MAC"],
+    tableRows: [
+      ["Iron (Fe)", "0.3 mg/L", "None (aesthetic only)"],
+      ["Manganese (Mn)", "0.05 mg/L", "0.12 mg/L (infants)"],
+    ],
+    examTips: [
+      "Iron oxidizes faster than manganese — manganese may require chemical oxidants (KMnO₄, chlorine)",
+      "Greensand filters catalyze manganese removal — they must be regenerated with KMnO₄",
+      "Iron AO = 0.3 mg/L; Manganese AO = 0.05 mg/L (O. Reg. 169/03)",
+      "Iron bacteria (Gallionella, Leptothrix) thrive in iron-rich water — can cause biofouling in distribution",
+    ],
+  },
+
+  "Water Quality & Regulations": {
+    title: "Water Quality & Regulations",
+    intro:
+      "Ontario has one of the most comprehensive drinking water regulatory frameworks in the world, built largely in response to the Walkerton tragedy (2000). Class 1 Water operators must know the key regulations, reporting requirements, and adverse water quality incident (AWQI) response procedures.",
+    keyPoints: [
+      {
+        heading: "Key Ontario Regulations",
+        body: "O. Reg. 170/03 (Drinking Water Systems) — operational requirements, sampling, reporting, and corrective action for municipal residential systems. O. Reg. 169/03 — Ontario Drinking Water Quality Standards (MACs, AOs, operational technology objectives). Safe Drinking Water Act (2002) — the overarching legislation. The Drinking Water Quality Management Standard (DWQMS) — requires a Quality Management System for licensed operators.",
+      },
+      {
+        heading: "Adverse Water Quality Incidents (AWQIs)",
+        body: "An AWQI is any result that exceeds an Ontario standard or indicates a potential health risk. Operators must notify the local Medical Officer of Health (MOH) and the Ministry of the Environment within specific timeframes. E. coli or total coliform in treated water = immediate notification. Exceedance of a chemical MAC = notification within 24 hours.",
+      },
+      {
+        heading: "Sampling Requirements",
+        body: "O. Reg. 170/03 specifies minimum sampling frequencies for microbiological and chemical parameters based on system size and type. Distribution system sampling must be at representative locations. Results must be reported to the owner and posted publicly. Operators must maintain records for a minimum of 5 years.",
+      },
+      {
+        heading: "Operator Licensing",
+        body: "Ontario requires all drinking water system operators to hold a valid licence issued by the MECP. Licence class (1–4) must match or exceed the system's classification. Operators must complete continuing education (30 hours per 3-year cycle) to maintain their licence. The owner is responsible for ensuring all operators are licensed.",
+      },
+    ],
+    tableHeadings: ["Regulation", "Key Requirement"],
+    tableRows: [
+      ["O. Reg. 170/03", "Operational standards, sampling, reporting, AWQIs"],
+      ["O. Reg. 169/03", "Drinking water quality standards (MACs, AOs)"],
+      ["Safe Drinking Water Act", "Overarching legislation, licensing, enforcement"],
+      ["DWQMS", "Quality Management System for licensed systems"],
+    ],
+    examTips: [
+      "E. coli in treated water = immediate notification to MOH and MECP — no delay",
+      "AWQI reporting timelines: microbiological = immediate; chemical MAC = within 24 hours",
+      "Operator licence class must match or exceed the system classification",
+      "Records must be kept for a minimum of 5 years under O. Reg. 170/03",
+    ],
+  },
+};
