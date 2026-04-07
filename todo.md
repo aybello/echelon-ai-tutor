@@ -359,3 +359,12 @@
 - [x] Find Class 3 Wastewater modules and write study note content
 - [x] Wire CLASS3_WASTEWATER_OVERVIEWS into Class3WastewaterQuiz page
 - [x] Add Study Notes to Class 3 Wastewater Pricing card
+
+## WQA Question Bank Expansion (to 50+ per module)
+- [x] Add 25 questions to Bacteriological Testing module
+- [x] Add 25 questions to Disinfection module
+- [x] Add 25 questions to QA/QC module
+- [x] Add 25 questions to Regulation module
+- [x] Add 25 questions to Safety module
+- [x] Add 25 questions to Science module
+- [x] Add 25 questions to Water Characteristics module
