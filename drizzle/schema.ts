@@ -124,7 +124,7 @@ export const flashcardProgress = mysqlTable("flashcard_progress", {
   id: int("id").autoincrement().primaryKey(),
   email: varchar("email", { length: 320 }).notNull(),
   examType: varchar("examType", { length: 64 }).notNull(), // e.g. 'class1-water', 'wpi-class2-wastewater'
-  knownIds: text("knownIds").notNull().default("[]"), // JSON array of card IDs marked as known
+  knownIds: text("knownIds").notNull(), // JSON array of card IDs marked as known (TiDB does not allow TEXT defaults)
   totalCards: int("totalCards").notNull().default(0),  // total cards in this deck at time of save
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });

@@ -92,6 +92,13 @@
       "when": 1775519892688,
       "tag": "0012_red_bishop",
       "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1775535539229,
+      "tag": "0013_thick_midnight",
+      "breakpoints": true
     }
   ]
 }

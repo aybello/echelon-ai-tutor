@@ -31,6 +31,12 @@ export function registerStripeWebhook(app: Express) {
         return res.status(400).send(`Webhook Error: ${err.message}`);
       }
 
+      // Guard against malformed events
+      if (!event || !event.id) {
+        console.warn("[Stripe Webhook] Received event with no id — ignoring");
+        return res.json({ received: true });
+      }
+
       // Handle test events for webhook verification
       if (event.id.startsWith("evt_test_")) {
         console.log("[Stripe Webhook] Test event detected, returning verification response");
