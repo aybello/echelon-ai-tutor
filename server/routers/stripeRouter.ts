@@ -7,6 +7,7 @@ import { purchases } from "../../drizzle/schema";
 import { eq } from "drizzle-orm";
 import { ENV } from "../_core/env";
 import { sendPurchaseConfirmationEmail } from "../email";
+import { notifyOwner } from "../_core/notification";
 
 export const stripeRouter = router({
   /** Return all products with prices for the Pricing page */
@@ -135,6 +136,11 @@ export const stripeRouter = router({
         return { email, productKey, paid: session.payment_status === "paid" };
       } catch (err: any) {
         console.error("[verifySession] Error:", err.message);
+        // Notify owner so they can manually restore access if needed
+        notifyOwner({
+          title: "\u26a0\ufe0f verifySession Error",
+          content: `verifySession failed for session ${input.sessionId} (product: ${input.productKey}).\n\nError: ${err.message}\n\nAction required: manually insert purchase or run Sync Stripe in Admin.`,
+        }).catch(() => {});
         return { email: "", productKey: input.productKey, paid: false };
       }
     }),

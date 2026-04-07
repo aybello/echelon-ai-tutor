@@ -7,7 +7,7 @@ import { trpc } from "@/lib/trpc";
 import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 
-type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue";
+type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue" | "health";
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
   oit: "OIT",
@@ -53,6 +53,7 @@ export default function Admin() {
   const errorsQ = trpc.admin.getErrorReports.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "errors" });
   const scoresQ = trpc.admin.getScoreHistory.useQuery({ limit: 500, examType: "all" }, { enabled: user?.role === "admin" && activeTab === "scores" });
   const purchasesQ = trpc.admin.getPurchases.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "revenue" });
+  const healthQ = trpc.admin.getSystemHealth.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "health", refetchInterval: 60_000 });
   const reconcile = trpc.admin.reconcilePurchases.useMutation({
     onSuccess: (data) => {
       purchasesQ.refetch();
@@ -157,6 +158,7 @@ export default function Admin() {
     { id: "waitlist", label: "Waitlist", icon: "📋" },
     { id: "errors", label: "Error Reports", icon: "🐛" },
     { id: "scores", label: "Score History", icon: "📊" },
+    { id: "health", label: "System Health", icon: "🩺" },
   ];
 
   return (
@@ -526,6 +528,78 @@ export default function Admin() {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* -- SYSTEM HEALTH TAB -- */}
+        {activeTab === "health" && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div style={{ background: "#1E293B", borderRadius: 16, border: "1px solid rgba(255,255,255,0.06)", overflow: "hidden" }}>
+              <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                <div style={{ fontSize: 13, fontWeight: 700 }}>
+                  🩺 System Health
+                  {healthQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>Last checked: {formatDate(healthQ.data.timestamp)}</span>}
+                </div>
+                <button className="admin-btn" onClick={() => healthQ.refetch()} style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#94A3B8", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>↻ Refresh</button>
+              </div>
+              {healthQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Running checks…</div>}
+              {healthQ.data && (
+                <div style={{ padding: "16px 20px", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 12 }}>
+                  {healthQ.data.checks.map((c) => {
+                    const statusColor = c.status === "ok" ? "#34D399" : c.status === "warn" ? "#FBBF24" : "#F87171";
+                    const statusBg = c.status === "ok" ? "rgba(52,211,153,0.08)" : c.status === "warn" ? "rgba(251,191,36,0.08)" : "rgba(248,113,113,0.08)";
+                    const statusIcon = c.status === "ok" ? "✅" : c.status === "warn" ? "⚠️" : "❌";
+                    return (
+                      <div key={c.name} style={{ padding: "14px 16px", borderRadius: 12, background: statusBg, border: `1px solid ${statusColor}30` }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
+                          <span style={{ fontSize: 14 }}>{statusIcon}</span>
+                          <span style={{ fontSize: 12, fontWeight: 700, color: statusColor }}>{c.name}</span>
+                        </div>
+                        <div style={{ fontSize: 11, color: "#94A3B8", lineHeight: 1.5 }}>{c.detail}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* Recent purchases in last 24h */}
+            {healthQ.data && (
+              <div style={{ background: "#1E293B", borderRadius: 16, border: "1px solid rgba(255,255,255,0.06)", overflow: "hidden" }}>
+                <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                  <div style={{ fontSize: 13, fontWeight: 700 }}>
+                    💳 Purchases (Last 24h)
+                    <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{healthQ.data.recentPurchases.length} purchase(s)</span>
+                  </div>
+                </div>
+                {healthQ.data.recentPurchases.length === 0 && (
+                  <div style={{ padding: 32, textAlign: "center", color: "#475569", fontSize: 13 }}>No purchases in the last 24 hours.</div>
+                )}
+                {healthQ.data.recentPurchases.length > 0 && (
+                  <div style={{ overflowX: "auto" }}>
+                    <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                      <thead>
+                        <tr style={{ background: "rgba(255,255,255,0.03)" }}>
+                          {["Product", "Email", "Amount", "Time"].map(h => (
+                            <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {healthQ.data.recentPurchases.map((row, i) => (
+                          <tr key={i} className="admin-row" style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+                            <td style={{ padding: "12px 16px", fontSize: 12, fontWeight: 700, color: "#F1F5F9" }}>{row.productKey}</td>
+                            <td style={{ padding: "12px 16px", fontSize: 12, color: "#94A3B8" }}>{row.email}</td>
+                            <td style={{ padding: "12px 16px" }}><span style={{ fontSize: 13, fontWeight: 800, color: "#34D399" }}>CA${(row.amountCAD / 100).toFixed(2)}</span></td>
+                            <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{formatDate(row.createdAt)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
               </div>
             )}
           </div>

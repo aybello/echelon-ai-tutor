@@ -310,3 +310,9 @@
 - [x] Verify SiteNav already includes 🎫 My Passes link in mobile menu
 - [x] Audit all exam PurchaseGate/QuizGate pages for Stripe email capture bug (customer_details.email)
 - [x] Build post-purchase confirmation email: HTML template, SMTP helper, trigger on webhook + verifySession
+
+## Zero-Error System (Apr 2026)
+- [x] Daily automatic Stripe reconciliation scheduled job (server startup cron, runs at 3 AM)
+- [x] Server-side error owner notifications for webhook and verifySession failures
+- [x] Admin health dashboard: recent purchases, webhook events, failed emails, system status
+- [ ] E2E integration tests for full purchase flow (Stripe checkout → webhook → verifySession → email)

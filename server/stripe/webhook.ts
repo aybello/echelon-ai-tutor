@@ -142,6 +142,13 @@ export function registerStripeWebhook(app: Express) {
           }
         } catch (err: any) {
           console.error("[Stripe Webhook] Error processing checkout.session.completed:", err);
+          // Notify owner immediately so they can manually restore access
+          const sessionEmail = session?.customer_details?.email ?? session?.customer_email ?? session?.metadata?.customer_email ?? "unknown";
+          const sessionProduct = session?.metadata?.product_name ?? session?.metadata?.product_key ?? "unknown";
+          notifyOwner({
+            title: "\u26a0\ufe0f Webhook Processing Error",
+            content: `Failed to record purchase for ${sessionEmail} (${sessionProduct}).\n\nError: ${err.message}\n\nAction required: manually insert purchase or run Sync Stripe in Admin.`,
+          }).catch(() => {});
           return res.status(500).json({ error: "Internal error" });
         }
       }

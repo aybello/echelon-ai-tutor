@@ -251,4 +251,68 @@ export const adminRouter = router({
         details: recovered,
       };
     }),
+
+  /** System health check — DB, Stripe, SMTP, recent purchases */
+  getSystemHealth: adminProcedure.query(async () => {
+    const checks: { name: string; status: "ok" | "warn" | "error"; detail: string }[] = [];
+    const now = Date.now();
+
+    // 1. Database connectivity
+    try {
+      const db = await getDb();
+      if (!db) throw new Error("getDb returned null");
+      await db.select({ id: purchases.id }).from(purchases).limit(1);
+      checks.push({ name: "Database", status: "ok", detail: "Connected and queryable" });
+    } catch (err: any) {
+      checks.push({ name: "Database", status: "error", detail: err.message });
+    }
+
+    // 2. Stripe connectivity
+    try {
+      const stripe = getStripe();
+      await stripe.balance.retrieve();
+      checks.push({ name: "Stripe API", status: "ok", detail: "Connected" });
+    } catch (err: any) {
+      checks.push({ name: "Stripe API", status: "error", detail: err.message });
+    }
+
+    // 3. Stripe webhook secret
+    const webhookOk = !!process.env.STRIPE_WEBHOOK_SECRET;
+    checks.push({
+      name: "Stripe Webhook Secret",
+      status: webhookOk ? "ok" : "warn",
+      detail: webhookOk ? "Configured" : "STRIPE_WEBHOOK_SECRET not set — signature verification disabled",
+    });
+
+    // 4. SMTP email config
+    const smtpOk = !!(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
+    checks.push({
+      name: "Email (SMTP)",
+      status: smtpOk ? "ok" : "warn",
+      detail: smtpOk ? `Configured (${process.env.SMTP_HOST})` : "SMTP_HOST/USER/PASS not set — emails will not send",
+    });
+
+    // 5. Recent purchases (last 24h)
+    let recentPurchases: { email: string; productKey: string; amountCAD: number; createdAt: Date | string }[] = [];
+    try {
+      const db = await getDb();
+      if (db) {
+        const cutoff = new Date(now - 24 * 60 * 60 * 1000);
+        const rows = await db
+          .select({ email: purchases.email, productKey: purchases.productKey, amountCAD: purchases.amountCAD, createdAt: purchases.createdAt })
+          .from(purchases)
+          .orderBy(desc(purchases.createdAt))
+          .limit(20);
+        recentPurchases = rows.filter(r => new Date(r.createdAt) >= cutoff);
+        const label = recentPurchases.length > 0
+          ? `${recentPurchases.length} purchase(s) in last 24h`
+          : "No purchases in last 24h";
+        checks.push({ name: "Recent Purchases (24h)", status: "ok", detail: label });
+      }
+    } catch (err: any) {
+      checks.push({ name: "Recent Purchases (24h)", status: "warn", detail: err.message });
+    }
+
+    return { checks, recentPurchases, timestamp: new Date() };
+  }),
 });
