@@ -52,7 +52,18 @@ export default function Admin() {
   const waitlistQ = trpc.admin.getWaitlist.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "waitlist" });
   const errorsQ = trpc.admin.getErrorReports.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "errors" });
   const scoresQ = trpc.admin.getScoreHistory.useQuery({ limit: 500, examType: "all" }, { enabled: user?.role === "admin" && activeTab === "scores" });
-  const purchasesQ = trpc.admin.getPurchases.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "revenue" });;
+  const purchasesQ = trpc.admin.getPurchases.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "revenue" });
+  const reconcile = trpc.admin.reconcilePurchases.useMutation({
+    onSuccess: (data) => {
+      purchasesQ.refetch();
+      if (data.recovered > 0) {
+        alert(`Reconciliation complete. Recovered ${data.recovered} missing purchase(s): ${data.details.map((d: any) => `${d.email} -> ${d.productKey}`).join(", ")}`);
+      } else {
+        alert("All purchases are already in sync. No missing records found.");
+      }
+    },
+    onError: (err) => alert(`Reconciliation failed: ${err.message}`),
+  });
 
   const utils = trpc.useUtils();
 
@@ -461,16 +472,27 @@ export default function Admin() {
         {/* -- REVENUE TAB -- */}
         {activeTab === "revenue" && (
           <div style={{ background: "#1E293B", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,0.06)" }}>
-            <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
               <div style={{ fontSize: 13, fontWeight: 700 }}>
                 💰 Purchase History
                 {purchasesQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{purchasesQ.data.length} orders</span>}
               </div>
-              {purchasesQ.data && purchasesQ.data.length > 0 && (
-                <div style={{ fontSize: 13, fontWeight: 800, color: "#34D399" }}>
-                  Total: CA${(purchasesQ.data.reduce((s, p) => s + p.amountCAD, 0) / 100).toFixed(2)}
-                </div>
-              )}
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                {purchasesQ.data && purchasesQ.data.length > 0 && (
+                  <div style={{ fontSize: 13, fontWeight: 800, color: "#34D399" }}>
+                    Total: CA${(purchasesQ.data.reduce((s, p) => s + p.amountCAD, 0) / 100).toFixed(2)}
+                  </div>
+                )}
+                <button
+                  className="admin-btn"
+                  onClick={() => reconcile.mutate({ hoursBack: 48 })}
+                  disabled={reconcile.isPending}
+                  title="Check Stripe for any paid sessions in the last 48h that are missing from our database and insert them"
+                  style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(99,102,241,0.4)", background: "rgba(99,102,241,0.15)", color: "#A5B4FC", cursor: reconcile.isPending ? "not-allowed" : "pointer", opacity: reconcile.isPending ? 0.6 : 1, fontFamily: "inherit" }}
+                >
+                  {reconcile.isPending ? "Syncing..." : "Sync Stripe (48h)"}
+                </button>
+              </div>
             </div>
             {purchasesQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
             {purchasesQ.data && purchasesQ.data.length === 0 && (
@@ -481,7 +503,7 @@ export default function Admin() {
                 <table style={{ width: "100%", borderCollapse: "collapse" }}>
                   <thead>
                     <tr style={{ background: "rgba(255,255,255,0.03)" }}>
-                      {["#", "Product", "Email", "Amount", "Date"].map(h => (
+                      {["#", "Product", "Email", "Phone", "Amount", "Date"].map(h => (
                         <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
                       ))}
                     </tr>
@@ -495,6 +517,7 @@ export default function Admin() {
                           <div style={{ fontSize: 10, color: "#64748B", marginTop: 2 }}>{row.productKey}</div>
                         </td>
                         <td style={{ padding: "12px 16px", fontSize: 12, color: "#94A3B8" }}>{row.email}</td>
+                        <td style={{ padding: "12px 16px", fontSize: 12, color: "#94A3B8" }}>{(row as any).phone ?? <span style={{ color: "#334155" }}>—</span>}</td>
                         <td style={{ padding: "12px 16px" }}>
                           <span style={{ fontSize: 14, fontWeight: 800, color: "#34D399" }}>CA${(row.amountCAD / 100).toFixed(2)}</span>
                         </td>

@@ -2,11 +2,20 @@
  * Admin router — all procedures require role === 'admin'.
  * Provides read access to trial emails, waitlist signups, and question error reports.
  */
-import { desc, eq, sum } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
+import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchases } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users } from "../../drizzle/schema";
 import { getDb } from "../db";
 import { adminProcedure, router } from "../_core/trpc";
+import { sendPurchaseConfirmationEmail } from "../email";
+import { PRODUCT_STUDY_PATHS } from "../stripe/products";
+
+function getStripe() {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) throw new Error("STRIPE_SECRET_KEY not set");
+  return new Stripe(key, { apiVersion: "2024-12-18.acacia" as any });
+}
 
 export const adminRouter = router({
   /** Summary counts for the dashboard header */
@@ -125,5 +134,121 @@ export const adminRouter = router({
       if (!db) throw new Error("Database unavailable");
       await db.delete(waitlist).where(eq(waitlist.id, input.id));
       return { success: true };
+    }),
+
+  /**
+   * Reconcile purchases — queries Stripe for all paid checkout sessions in the
+   * last N hours and inserts any that are missing from our database.
+   * Safe to call multiple times (idempotent via stripeSessionId unique constraint).
+   * Use this to recover purchases that were missed due to webhook failures or
+   * customers closing the browser before the success page loaded.
+   */
+  reconcilePurchases: adminProcedure
+    .input(z.object({ hoursBack: z.number().int().min(1).max(168).default(48) }))
+    .mutation(async ({ input }) => {
+      const stripe = getStripe();
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+
+      const since = Math.floor(Date.now() / 1000) - input.hoursBack * 3600;
+      const recovered: { email: string; productKey: string; sessionId: string }[] = [];
+      const skipped: string[] = [];
+
+      // Page through all completed checkout sessions in the window
+      let hasMore = true;
+      let startingAfter: string | undefined;
+
+      while (hasMore) {
+        const params: Stripe.Checkout.SessionListParams = {
+          limit: 100,
+          created: { gte: since },
+          status: "complete",
+        };
+        if (startingAfter) params.starting_after = startingAfter;
+
+        const page = await stripe.checkout.sessions.list(params);
+
+        for (const session of page.data) {
+          const productKey = session.metadata?.product_key;
+          const email =
+            (session as any).customer_details?.email ??
+            session.customer_email ??
+            session.metadata?.customer_email;
+
+          if (!productKey || !email || session.payment_status !== "paid") {
+            skipped.push(session.id);
+            continue;
+          }
+
+          // Check if already in DB
+          const existing = await db
+            .select({ id: purchases.id })
+            .from(purchases)
+            .where(eq(purchases.stripeSessionId, session.id))
+            .limit(1);
+
+          if (existing.length > 0) {
+            skipped.push(session.id);
+            continue;
+          }
+
+          // Insert the missing purchase
+          const productName = session.metadata?.product_name ?? productKey;
+          const amountCAD = session.amount_total ?? 0;
+          const stripePaymentIntentId =
+            typeof session.payment_intent === "string" ? session.payment_intent : null;
+          const userId = session.metadata?.user_id
+            ? parseInt(session.metadata.user_id)
+            : null;
+          const phone = (session as any).customer_details?.phone ?? null;
+
+          await db.insert(purchases).values({
+            userId: userId ?? undefined,
+            email,
+            productKey,
+            productName,
+            amountCAD,
+            stripeSessionId: session.id,
+            stripePaymentIntentId,
+            phone,
+          });
+
+          // Save phone to users table if available
+          if (phone) {
+            const targetUserId = userId ?? (await db
+              .select({ id: users.id })
+              .from(users)
+              .where(eq(users.email, email))
+              .limit(1)
+              .then(rows => rows[0]?.id ?? null));
+            if (targetUserId) {
+              await db.update(users).set({ phone }).where(eq(users.id, targetUserId));
+            }
+          }
+
+          // Send confirmation email (non-blocking)
+          const studyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
+          sendPurchaseConfirmationEmail({
+            email,
+            productName,
+            productKey,
+            amountCAD,
+            quizPath: studyPaths.quizPath,
+            mockPath: studyPaths.mockPath,
+          }).catch(err => console.error("[reconcile] Email failed:", err.message));
+
+          recovered.push({ email, productKey, sessionId: session.id });
+          console.log(`[reconcile] Recovered missing purchase: ${email} → ${productKey} (${session.id})`);
+        }
+
+        hasMore = page.has_more;
+        if (page.data.length > 0) startingAfter = page.data[page.data.length - 1].id;
+      }
+
+      return {
+        recovered: recovered.length,
+        skipped: skipped.length,
+        details: recovered,
+      };
     }),
 });
