@@ -339,3 +339,5 @@
 - [x] Build ModuleOverviewPanel component (collapsible, key concepts, table, exam tips)
 - [x] Wire ModuleOverview into QuizShell as optional prop
 - [x] Add moduleOverviews prop to OIT Water quiz page (Home.tsx)
+- [x] Write module overview study notes for all 8 Class 1 Wastewater modules
+- [x] Wire CLASS1_WASTEWATER_OVERVIEWS into Class1WastewaterQuiz page
