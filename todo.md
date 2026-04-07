@@ -353,3 +353,9 @@
 - [x] Add "Study Notes" to Class 2 Water and Class 2 Wastewater on Pricing page
 - [x] Add "module study notes" to landing page hero description
 - [x] Add Study Notes card to the What's Included features grid on the landing page
+- [x] Find Class 3 Water modules and write study note content
+- [x] Wire CLASS3_WATER_OVERVIEWS into Class3WaterQuiz page
+- [x] Add Study Notes to Class 3 Water Pricing card
+- [x] Find Class 3 Wastewater modules and write study note content
+- [x] Wire CLASS3_WASTEWATER_OVERVIEWS into Class3WastewaterQuiz page
+- [x] Add Study Notes to Class 3 Wastewater Pricing card

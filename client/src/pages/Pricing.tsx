@@ -108,7 +108,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["552 practice questions", "Timed mock exam", "Water3 formula sheet", "AI Tutor", "400+ flashcards"],
+    features: ["552 practice questions", "Timed mock exam", "Water3 formula sheet", "📖 Module study notes", "AI Tutor", "400+ flashcards"],
   },
   {
     key: "class4-water",
@@ -183,7 +183,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFDF5",
     border: "#6EE7B7",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "WW3 formula sheet", "AI Tutor", "400+ flashcards"],
+    features: ["500+ practice questions", "Timed mock exam", "WW3 formula sheet", "📖 Module study notes", "AI Tutor", "400+ flashcards"],
   },
   {
     key: "class4-ww",

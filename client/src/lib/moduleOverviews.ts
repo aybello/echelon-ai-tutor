@@ -1696,3 +1696,435 @@ export const CLASS2_WASTEWATER_OVERVIEWS: Record<string, ModuleOverview> = {
     formulaHint: "VS Reduction (%) = (VS in − VS out) ÷ VS in × 100 | VA:Alk ratio = Volatile Acids (mg/L) ÷ Alkalinity (mg/L as CaCO₃)",
   },
 };
+
+// ─── Class 3 Water Treatment ──────────────────────────────────────────────────
+export const CLASS3_WATER_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Treatment Process": {
+    title: "Treatment Process",
+    intro:
+      "Class 3 Water Treatment covers advanced treatment processes beyond conventional coagulation/filtration — including membrane filtration, ozone disinfection, UV disinfection, lime softening, and advanced process control. At this level, operators are expected to understand not just how processes work, but how to optimize them, troubleshoot failures, and make process control decisions based on data.",
+    keyPoints: [
+      {
+        heading: "Membrane Filtration",
+        body: "Membrane systems (MF, UF, NF, RO) remove contaminants by physical size exclusion. Microfiltration (MF) and ultrafiltration (UF) remove turbidity, bacteria, Giardia, and viruses. Nanofiltration (NF) removes hardness and colour. Reverse osmosis (RO) removes TDS, nitrates, arsenic, and fluoride. Key operating parameter is transmembrane pressure (TMP) — rising TMP indicates fouling. Integrity is verified by pressure decay testing (PDT).",
+      },
+      {
+        heading: "Ozone Disinfection",
+        body: "Ozone (O₃) is a powerful oxidant used for disinfection, colour removal, and taste/odour control. It is generated on-site by corona discharge from oxygen or air. Ozone provides no residual in the distribution system — chlorination must follow. CT values for ozone are much lower than for chlorine for equivalent Giardia/Crypto inactivation. Off-gas must be destroyed (catalytic or thermal destruction) as ozone is toxic above 0.1 ppm.",
+      },
+      {
+        heading: "UV Disinfection",
+        body: "UV disinfection inactivates pathogens by damaging their DNA — effective against Giardia and Cryptosporidium at low doses (5–10 mJ/cm²). UV provides no residual and must be followed by chlorination. UV dose = intensity (mW/cm²) × exposure time (s). UV transmittance (UVT) of the water affects dose delivery — low UVT (high colour/turbidity) reduces effective dose. Lamp sleeves must be cleaned regularly to maintain output.",
+      },
+      {
+        heading: "Lime Softening",
+        body: "Lime softening removes hardness (Ca²⁺, Mg²⁺) by raising pH to precipitate CaCO₃ and Mg(OH)₂. Single-stage lime softening removes calcium at pH ~9.5. Excess lime process raises pH >11 to also remove magnesium. Recarbonation (CO₂ addition) is required after softening to lower pH before distribution. The Langelier Saturation Index (LSI) measures water's tendency to deposit or dissolve CaCO₃: LSI = pH − pHs; positive = scale-forming, negative = corrosive.",
+      },
+    ],
+    tableHeadings: ["Process", "Target Removal", "Key Control Parameter"],
+    tableRows: [
+      ["Microfiltration (MF)", "Turbidity, bacteria, Giardia", "TMP (transmembrane pressure)"],
+      ["Ultrafiltration (UF)", "Viruses, NOM, turbidity", "TMP, flux rate"],
+      ["Nanofiltration (NF)", "Hardness, colour, some DBPs", "Recovery rate, pressure"],
+      ["Reverse Osmosis (RO)", "TDS, nitrates, arsenic, fluoride", "Recovery, reject rate"],
+      ["Ozone (O₃)", "Colour, taste/odour, Crypto", "CT value, ozone dose (mg/L)"],
+      ["UV", "Giardia, Crypto, bacteria", "UV dose (mJ/cm²), UVT"],
+    ],
+    examTips: [
+      "RO reject (concentrate) must be disposed of — it cannot be discharged untreated to surface water",
+      "UV does NOT provide a residual — always followed by chlorination for distribution system protection",
+      "Ozone CT values are much lower than chlorine CT values for the same log inactivation",
+      "LSI > 0 = scale-forming (good for pipe protection); LSI < 0 = corrosive (bad for distribution system)",
+      "Membrane integrity testing (pressure decay test) is required to verify no breach in the membrane barrier",
+      "SCADA alarms must be responded to within regulatory timeframes — know the difference between advisory and critical alarms",
+    ],
+    formulaHint:
+      "LSI = pH − pHs | UV Dose (mJ/cm²) = Intensity (mW/cm²) × Exposure Time (s) | TMP = (Feed pressure + Concentrate pressure) ÷ 2 − Permeate pressure",
+  },
+
+  "Laboratory Analysis": {
+    title: "Laboratory Analysis",
+    intro:
+      "At Class 3 level, laboratory analysis expands beyond routine testing to include advanced analytical methods, QA/QC program management, method detection limits, and interpretation of complex water quality data. Operators must understand the regulatory basis for each test, the acceptable methods, and how to respond to out-of-specification results.",
+    keyPoints: [
+      {
+        heading: "Total Organic Carbon (TOC) and DBPs",
+        body: "TOC is an indicator of natural organic matter (NOM) — high TOC increases disinfection byproduct (DBP) formation potential. THMs (trihalomethanes) and HAAs (haloacetic acids) are the primary regulated DBPs formed when chlorine reacts with NOM. Under O. Reg. 170/03, THM MAC is 100 µg/L and HAA MAC is 80 µg/L. TOC monitoring is required for GUDI systems and systems with high NOM.",
+      },
+      {
+        heading: "QA/QC Program Management",
+        body: "A QA/QC program ensures data quality through method blanks (detect contamination), duplicates (measure precision), matrix spikes (measure accuracy/recovery), and calibration standards. Spike recovery should be 70–130%. Duplicate RPD (relative percent difference) should be <20%. Results outside these ranges indicate a problem with the method, sample, or instrument.",
+      },
+      {
+        heading: "Advanced Analytical Methods",
+        body: "Gas chromatography (GC) with electron capture detection (ECD) or mass spectrometry (MS) is used for THMs, HAAs, and pesticides. Inductively coupled plasma (ICP) is used for metals (lead, arsenic, copper). Ion chromatography (IC) is used for anions (nitrate, fluoride, sulphate). Operators must understand method detection limits (MDL) and reporting requirements.",
+      },
+      {
+        heading: "Langelier Saturation Index (LSI)",
+        body: "The LSI quantifies water's tendency to deposit or dissolve CaCO₃. Required inputs: pH, temperature, TDS, calcium hardness, and total alkalinity. LSI = pH − pHs, where pHs is the saturation pH calculated from correction factors. Positive LSI = scale-forming (protective for pipes); negative LSI = corrosive (dissolves pipe material, may leach lead/copper). Target LSI is slightly positive (+0.1 to +0.3) for distribution system protection.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Method/Instrument", "Regulatory Limit (O. Reg. 170/03)"],
+    tableRows: [
+      ["Turbidity (filtered)", "Turbidimeter (NTU)", "≤0.3 NTU (95%), never >1.0 NTU"],
+      ["Free chlorine residual", "DPD colorimetry / amperometric", "≥0.05 mg/L at POE"],
+      ["THMs (trihalomethanes)", "GC-MS or GC-ECD", "≤100 µg/L (MAC)"],
+      ["HAAs (haloacetic acids)", "GC-ECD", "≤80 µg/L (MAC)"],
+      ["Total coliform / E. coli", "Membrane filtration / Colilert", "0 CFU/100 mL"],
+      ["TOC", "Combustion/UV oxidation", "Site-specific (GUDI trigger)"],
+    ],
+    examTips: [
+      "A matrix spike recovery outside 70–130% indicates a matrix interference — the method may not be suitable for that sample",
+      "THMs are measured at the point of maximum residence time in the distribution system — not at the treatment plant",
+      "Jar test results are not directly transferable to full scale — use as a guide and monitor full-scale results",
+      "Method detection limit (MDL) is the lowest concentration that can be reliably detected; results below MDL are reported as <MDL",
+      "Duplicate sample RPD >20% indicates poor precision — investigate and re-sample",
+    ],
+    formulaHint:
+      "RPD = |Sample1 − Sample2| ÷ ((Sample1 + Sample2) ÷ 2) × 100 | Spike Recovery (%) = (Spiked result − Unspiked result) ÷ Spike added × 100 | LSI = pH − pHs",
+  },
+
+  "Equipment O&M": {
+    title: "Equipment O&M",
+    intro:
+      "Class 3 equipment operation and maintenance covers advanced mechanical systems including high-service pumps, variable frequency drives (VFDs), membrane systems, ozone generators, UV reactors, chemical feed systems, and SCADA/instrumentation. At this level, operators are expected to perform preventive maintenance planning, troubleshoot complex equipment failures, and interpret equipment performance data.",
+    keyPoints: [
+      {
+        heading: "Variable Frequency Drives (VFDs)",
+        body: "VFDs control pump speed by varying motor frequency (Hz), allowing precise flow control and significant energy savings. The pump affinity laws govern the relationship between speed and performance: flow is proportional to speed (Q ∝ N), head is proportional to speed squared (H ∝ N²), and power is proportional to speed cubed (P ∝ N³). This means reducing speed by 20% reduces power consumption by nearly 50%. VFDs also reduce water hammer and mechanical wear.",
+      },
+      {
+        heading: "Membrane System Maintenance",
+        body: "Membrane systems require periodic clean-in-place (CIP) procedures using acid (citric, hydrochloric), caustic (NaOH), or oxidant (sodium hypochlorite) solutions to remove fouling. Integrity is verified by pressure decay testing (PDT) — pressurize with air, isolate, monitor pressure drop; excessive drop indicates a breach. Membranes are replaced when TMP exceeds operating limits or when integrity cannot be restored.",
+      },
+      {
+        heading: "Ozone and UV System Maintenance",
+        body: "Ozone generators use corona discharge and require dry feed gas (dew point < −60°C) to prevent nitric acid formation. Electrodes degrade over time and must be replaced. UV reactors require regular lamp sleeve cleaning (calcium carbonate deposits reduce UV transmittance) and lamp replacement when output falls below the validated threshold. UV intensity sensors must be calibrated.",
+      },
+      {
+        heading: "Preventive Maintenance Programs",
+        body: "PM programs are based on manufacturer recommendations, operating hours, and regulatory requirements. All maintenance must be documented in logbooks or CMMS (computerized maintenance management system). Critical equipment (high-service pumps, chemical feed systems) requires redundancy — always maintain a spare. Vibration analysis, thermography, and oil sampling are condition monitoring tools used at Class 3 level.",
+      },
+    ],
+    tableHeadings: ["Equipment", "Key Maintenance Task", "Failure Indicator"],
+    tableRows: [
+      ["Centrifugal pump", "Bearing lubrication, seal inspection", "Vibration, seal leakage, reduced flow"],
+      ["VFD", "Cooling fan, capacitor check", "Overtemperature alarm, harmonic distortion"],
+      ["Membrane system", "CIP cleaning, integrity test", "Rising TMP, declining flux, failed PDT"],
+      ["Ozone generator", "Feed gas dew point, electrode check", "Reduced O₃ output, arc discharge"],
+      ["UV reactor", "Lamp/sleeve cleaning, intensity check", "Low UV intensity alarm, lamp failure"],
+      ["Turbidimeter", "Calibration, bubble check", "Drift, erratic readings"],
+    ],
+    examTips: [
+      "Pump affinity laws: if speed doubles, flow doubles, head quadruples, and power increases 8×",
+      "VFDs should not be used with motors not rated for inverter duty — can damage motor insulation",
+      "Pressure decay test (PDT): pressurize membrane with air, isolate, monitor pressure drop — excessive drop = breach",
+      "Ozone off-gas destruction is mandatory — ozone is toxic at >0.1 ppm in air (OSHA/ACGIH limit)",
+      "UV lamp output is rated in mW/cm² — always verify against the validated dose-response curve for your system",
+    ],
+    formulaHint:
+      "Affinity Laws: Q₂/Q₁ = N₂/N₁ | H₂/H₁ = (N₂/N₁)² | P₂/P₁ = (N₂/N₁)³ | where Q = flow, H = head, P = power, N = speed (rpm)",
+  },
+
+  "Source Water Characteristics": {
+    title: "Source Water Characteristics",
+    intro:
+      "At Class 3 level, source water assessment goes beyond basic quality monitoring to include watershed management, source water protection plans, GUDI assessment, and the impact of source water variability on treatment performance. Operators must understand how seasonal and event-driven changes in source water quality affect treatment and what adaptive responses are required.",
+    keyPoints: [
+      {
+        heading: "GUDI and Source Water Protection",
+        body: "Groundwater Under Direct Influence of surface water (GUDI) is groundwater that shows rapid response to surface water conditions (turbidity, microbiology, TOC). GUDI systems must meet surface water treatment standards under O. Reg. 170/03. Source Water Protection Plans (SWPPs) are required under the Clean Water Act (2006) and identify threats to municipal drinking water sources within designated vulnerable areas.",
+      },
+      {
+        heading: "Algal Blooms and Cyanotoxins",
+        body: "Cyanobacteria (blue-green algae) produce taste/odour compounds (geosmin, MIB) and cyanotoxins (microcystin, anatoxin). Microcystin MAC is 1.5 µg/L under Health Canada guidelines. Treatment options include powdered activated carbon (PAC) for taste/odour, ozone for oxidation, and enhanced coagulation. Algal bloom monitoring requires cell counts and toxin testing. Operators must have a response plan for bloom events.",
+      },
+      {
+        heading: "Seasonal Source Water Variability",
+        body: "Thermal stratification in reservoirs creates a warm epilimnion and cold hypolimnion. Turnover events (spring and fall) mix the water column, releasing iron, manganese, and H₂S from the hypolimnion. Storm events cause rapid turbidity spikes that require immediate coagulant dose adjustments. Snowmelt runoff carries agricultural chemicals and pathogens. Operators must anticipate seasonal changes and have pre-planned responses.",
+      },
+      {
+        heading: "Natural Organic Matter (NOM)",
+        body: "NOM (humic and fulvic acids from decomposing vegetation) affects treatment in multiple ways: it reacts with chlorine to form DBPs, it causes colour and taste/odour, it fouls membranes, and it competes with coagulants. NOM concentration varies seasonally — highest in fall (leaf decomposition) and after storm events. Enhanced coagulation (lower pH, higher coagulant dose) is used to maximize NOM removal.",
+      },
+    ],
+    tableHeadings: ["Source Water Issue", "Treatment Response", "Monitoring Trigger"],
+    tableRows: [
+      ["High turbidity (storm event)", "Increase coagulant dose, reduce flow", "Raw turbidity >10 NTU"],
+      ["Algal bloom (taste/odour)", "Activated carbon (PAC or GAC)", "Geosmin/MIB >10 ng/L"],
+      ["Cyanotoxin (microcystin)", "PAC, ozone, or enhanced coagulation", "Microcystin >1.5 µg/L (MAC)"],
+      ["High NOM (colour)", "Enhanced coagulation, lower pH", "TOC >4 mg/L, colour >15 TCU"],
+      ["Iron/Manganese release", "Oxidation (Cl₂, KMnO₄), filtration", "Fe >0.3 mg/L, Mn >0.05 mg/L"],
+      ["GUDI trigger", "Surface water treatment protocol", "Turbidity, coliform, TOC spikes"],
+    ],
+    examTips: [
+      "GUDI determination requires a hydrogeological assessment — operators cannot make this determination themselves",
+      "Microcystin MAC is 1.5 µg/L (total) under Health Canada guidelines — Ontario follows this",
+      "Geosmin and MIB are not health hazards but cause consumer complaints at extremely low concentrations (ng/L range)",
+      "Reservoir turnover (fall and spring) is a predictable source water quality event — operators should have a response plan",
+      "Source water protection plans are legally binding — operators must be aware of designated vulnerable areas and threats",
+    ],
+    formulaHint:
+      "No single formula — source water assessment relies on trend analysis, comparison to baseline, and regulatory thresholds. Know the Ontario MAC values for key parameters.",
+  },
+
+  "Security, Safety & Admin": {
+    title: "Security, Safety & Admin",
+    intro:
+      "At Class 3 level, security, safety, and administrative responsibilities expand to include emergency response planning, security vulnerability assessments, confined space rescue coordination, WHMIS 2015 program management, and regulatory reporting under O. Reg. 170/03. Operators at this level may be responsible for supervising other operators and ensuring compliance across the entire system.",
+    keyPoints: [
+      {
+        heading: "Emergency Response Plans (ERPs)",
+        body: "ERPs are required under O. Reg. 170/03 and must address loss of power, source water contamination, treatment failure, distribution system emergencies, and chemical spills. ERPs must be reviewed annually, tested through exercises, and updated when contacts or procedures change. All staff must be trained on the ERP. The plan must include notification procedures for the Medical Officer of Health (MOH) and MECP.",
+      },
+      {
+        heading: "Adverse Water Quality (AWQ) Reporting",
+        body: "Any result exceeding a MAC or indicator parameter trigger requires immediate notification to the local Medical Officer of Health and MECP under O. Reg. 170/03. Microbiological AWQ (any E. coli or total coliform) must be reported within 24 hours. The MOH decides whether to issue a boil water advisory — the operator provides the data and supports the decision but does not issue the advisory.",
+      },
+      {
+        heading: "Confined Space Safety",
+        body: "Class 3 operators may coordinate confined space rescue operations. Atmospheric testing is required before entry in this order: O₂ first (19.5–23.0% acceptable), then LEL (lower explosive limit, <10% acceptable), then toxic gases (H₂S <10 ppm, CO <35 ppm). A rescue team must be in place before entry — rescue from outside is preferred. Entry permits must be completed and signed.",
+      },
+      {
+        heading: "Operator Certification and Supervision",
+        body: "Class 3 operators must hold a valid Class 3 certificate and are responsible for supervising lower-class operators. Operators must ensure that staff performing duties hold the appropriate certification level. Continuing education requirements apply — operators must maintain their certification through approved training. Operators are personally responsible for their actions and cannot be directed to violate regulations.",
+      },
+    ],
+    tableHeadings: ["Regulatory Requirement", "Trigger / Frequency", "Action Required"],
+    tableRows: [
+      ["AWQ report to MOH/MECP", "Any MAC exceedance", "Immediate notification, boil water advisory consideration"],
+      ["Microbiological AWQ", "Any E. coli or total coliform", "Notify MOH/MECP within 24 hours"],
+      ["Annual summary report", "Annually (Jan 31)", "Submit to MECP and make available to public"],
+      ["Confined space entry", "Before each entry", "Atmospheric test, rescue team standby, permit"],
+      ["WHMIS training", "Before handling hazardous products", "Review SDS, use proper PPE"],
+      ["Emergency Response Plan", "Review annually", "Update contacts, procedures, and resources"],
+    ],
+    examTips: [
+      "AWQ notification to MOH must be immediate — do not wait for confirmation of the result before notifying",
+      "A boil water advisory is issued by the Medical Officer of Health, not the operator",
+      "Confined space atmospheric testing order: O₂ first, then LEL, then toxic gases (H₂S, CO)",
+      "WHMIS 2015 replaced WHMIS 1988 — SDS replaced MSDS; GHS pictograms replaced WHMIS symbols",
+      "Class 3 operators are responsible for ensuring that operators under their supervision hold the appropriate certification",
+    ],
+    formulaHint:
+      "No calculation formulas — this module is regulatory and procedural. Know the notification timelines, reporting requirements, and O. Reg. 170/03 Schedule thresholds.",
+  },
+};
+
+// ─── Class 3 Wastewater Module Overviews ────────────────────────────────────
+export const CLASS3_WASTEWATER_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Treatment Process Monitoring": {
+    title: "Treatment Process Monitoring",
+    intro:
+      "Class 3 Wastewater operators are responsible for advanced process control of activated sludge systems, biological nutrient removal (BNR), secondary clarification, and overall plant performance. At this level, operators must interpret process data, diagnose problems, and make process adjustments to maintain effluent quality within regulatory limits under O. Reg. 419/04 and the facility's Environmental Compliance Approval (ECA).",
+    keyPoints: [
+      {
+        heading: "Activated Sludge Process Control",
+        body: "The activated sludge process depends on maintaining the correct balance of food (BOD), microorganisms (MLSS/MLVSS), and oxygen (DO). Key control parameters: F:M ratio (target 0.2-0.4 kg BOD/kg MLVSS/day for conventional AS), SRT/MCRT (5-15 days conventional; >10 days for nitrification), MLSS (2,000-4,000 mg/L), DO (1.5-3.0 mg/L in aeration basin). Waste Activated Sludge (WAS) rate is the primary control variable — increasing WAS reduces SRT and MLSS, decreasing WAS increases them.",
+      },
+      {
+        heading: "Sludge Volume Index (SVI) and Settleability",
+        body: "SVI = (settled sludge volume mL/L after 30 min x 1000) divided by MLSS (mg/L). Target SVI < 150 mL/g. SVI 150-200: marginal settling. SVI > 200: bulking sludge. Bulking is caused by filamentous organisms (Thiothrix, Type 021N, Microthrix parvicella) due to low DO, low F:M, nutrient deficiency, or low pH. Corrective actions: increase DO, adjust F:M by increasing WAS, add nutrients, chlorinate RAS (short-term). Pin floc (SVI < 50): very short SRT, poor settling — increase SRT.",
+      },
+      {
+        heading: "Nitrification and Denitrification",
+        body: "Nitrification: NH4+ converted to NO2- then NO3- (aerobic, by Nitrosomonas and Nitrobacter). Requires DO > 2 mg/L, SRT > 10 days, temperature > 10 degrees C, alkalinity (7.14 mg CaCO3 per mg NH4+ oxidized). Denitrification: NO3- converted to N2 gas (anoxic, requires carbon source). In BNR systems, internal recycle (IMLR) returns nitrate-rich mixed liquor from aerobic to anoxic zone. Temperature correction: nitrification rate decreases significantly below 15 degrees C — increase SRT in winter.",
+      },
+      {
+        heading: "Biological Phosphorus Removal (Bio-P)",
+        body: "Bio-P relies on Polyphosphate Accumulating Organisms (PAOs) that release phosphorus in an anaerobic zone and take up excess phosphorus in the aerobic zone. Key requirement: a true anaerobic zone (no dissolved oxygen AND no nitrate). Volatile fatty acids (VFAs) in the anaerobic zone drive PAO activity — if VFAs are low, Bio-P performance drops. Supplemental chemical precipitation (alum or ferric chloride) is used as a backup or polishing step. Effluent TP target is typically < 1 mg/L under ECA.",
+      },
+      {
+        heading: "Secondary Clarifier Performance",
+        body: "Secondary clarifiers separate the mixed liquor into clarified effluent and thickened return activated sludge (RAS). Key parameters: surface overflow rate (SOR) 16-32 m3/m2/day, solids loading rate (SLR) < 6 kg TSS/m2/h. High SOR or SLR causes biomass carryover in effluent. Sludge blanket depth should be < 1 m to prevent anaerobic conditions and rising sludge (denitrification in clarifier). RAS rate (50-100% of influent flow) controls blanket depth. Rising sludge = denitrification in clarifier — reduce blanket depth, increase WAS.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Target Range", "Problem if Outside Range"],
+    tableRows: [
+      ["MLSS", "2,000-4,000 mg/L", "Too low: poor treatment / Too high: poor settling"],
+      ["SRT (conventional AS)", "5-15 days", "< 5 days: washout / > 15 days: bulking risk"],
+      ["SRT (nitrification)", "> 10 days", "< 10 days: nitrification failure"],
+      ["F:M ratio", "0.2-0.4 kg BOD/kg MLVSS/day", "< 0.1: filamentous bulking / > 0.5: poor effluent"],
+      ["DO in aeration basin", "1.5-3.0 mg/L", "< 1.0: filamentous bulking / > 3.0: energy waste"],
+      ["SVI", "< 150 mL/g", "> 200: bulking; poor settling"],
+      ["RAS rate", "50-100% of Q", "Too low: MLSS drops / Too high: dilution"],
+    ],
+    examTips: [
+      "SVI > 200 mL/g = sludge bulking — investigate DO, F:M ratio, and filamentous organisms",
+      "Rising sludge in secondary clarifier = denitrification — reduce sludge blanket depth, increase WAS",
+      "Nitrification requires SRT > 10 days, DO > 2 mg/L, and adequate alkalinity",
+      "Bio-P requires a true anaerobic zone — no O2 AND no nitrate",
+      "WAS rate is the primary process control variable — it controls SRT, MLSS, and F:M",
+      "Dark brown stable foam = Nocardia or Microthrix — reduce SRT, avoid recycling foam",
+    ],
+    formulaHint:
+      "SRT (days) = (Aeration Volume m3 x MLSS mg/L) / [(WAS flow m3/d x WAS TSS mg/L) + (Effluent flow m3/d x Effluent TSS mg/L)]\nF:M = (Influent BOD mg/L x Flow m3/d) / (Aeration Volume m3 x MLVSS mg/L)\nSVI (mL/g) = (Settled Volume mL/L x 1000) / MLSS mg/L",
+  },
+  "Laboratory Analysis": {
+    title: "Laboratory Analysis",
+    intro:
+      "Class 3 Wastewater operators must perform and interpret laboratory analyses to monitor treatment performance, meet regulatory reporting requirements, and make process control decisions. Key tests include BOD5, COD, TSS, VSS, ammonia, nitrate, phosphorus, DO, pH, alkalinity, and settleability tests. Results must be recorded accurately and compared to Environmental Compliance Approval (ECA) limits.",
+    keyPoints: [
+      {
+        heading: "BOD5 Test",
+        body: "BOD5 measures the oxygen consumed by microorganisms in decomposing organic matter over 5 days at 20 degrees C. Procedure: dilute sample, measure initial DO, incubate 5 days at 20 degrees C in the dark, measure final DO. BOD5 = (Initial DO minus Final DO) x Dilution Factor. Seed correction is required if the sample lacks sufficient microorganisms (e.g., disinfected effluent). Nitrification inhibitor (TCMP or allylthiourea) is added if nitrogenous BOD (nBOD) must be excluded. Typical secondary effluent BOD5 target: < 20 mg/L (or per ECA).",
+      },
+      {
+        heading: "TSS and VSS",
+        body: "Total Suspended Solids (TSS): filter sample through 1.2 um glass fibre filter, dry at 105 degrees C, weigh. TSS (mg/L) = (mass retained on filter mg x 1000) / sample volume mL. Volatile Suspended Solids (VSS): ignite dried filter at 550 degrees C; mass lost = VSS (organic fraction). VSS/TSS ratio indicates the organic content of sludge — typically 0.7-0.8 for activated sludge. MLVSS is used in F:M calculations. Effluent TSS target: typically < 25 mg/L (or per ECA).",
+      },
+      {
+        heading: "Nitrogen and Phosphorus Analysis",
+        body: "Ammonia (NH3-N): measured by colorimetric method (indophenol blue) or ion-selective electrode. Elevated effluent ammonia indicates nitrification failure. Nitrate (NO3-N): measured by cadmium reduction or ion chromatography. Total Kjeldahl Nitrogen (TKN) = organic N + ammonia N. Total Phosphorus (TP): persulfate digestion followed by colorimetric measurement. Orthophosphate (soluble reactive P) measured directly. Effluent TP target: typically < 1 mg/L under nutrient management requirements.",
+      },
+      {
+        heading: "Settleability and Process Control Tests",
+        body: "30-minute Settleability Test (SSV30): fill 1-L graduated cylinder with mixed liquor, record settled volume after 30 minutes. Used to calculate SVI. Zone Settling Rate (ZSR): measures the settling velocity of the sludge blanket — used to size clarifiers and set RAS rates. Oxygen Uptake Rate (OUR): measures the rate at which microorganisms consume oxygen — indicates biomass activity. Specific OUR (SOUR) = OUR / MLVSS. High SOUR indicates active, healthy biomass; low SOUR may indicate toxicity or starvation.",
+      },
+    ],
+    tableHeadings: ["Test", "Method / Principle", "Typical Effluent Target"],
+    tableRows: [
+      ["BOD5", "5-day incubation at 20 degrees C, DO difference x dilution", "< 20 mg/L (or per ECA)"],
+      ["TSS", "Filtration (1.2 um), dry at 105 degrees C, gravimetric", "< 25 mg/L (or per ECA)"],
+      ["VSS", "Ignite TSS filter at 550 degrees C, mass loss = VSS", "VSS/TSS ratio 0.7-0.8 for AS"],
+      ["Ammonia (NH3-N)", "Colorimetric (indophenol) or ISE", "< 2 mg/L (nitrifying plants)"],
+      ["Total Phosphorus", "Persulfate digestion + colorimetric", "< 1 mg/L (BNR plants)"],
+      ["DO", "Membrane electrode or optical probe", "1.5-3.0 mg/L in aeration basin"],
+      ["pH", "pH meter with temperature compensation", "6.5-8.5 for AS process"],
+    ],
+    examTips: [
+      "BOD5 = (Initial DO minus Final DO) x Dilution Factor — always apply dilution factor",
+      "TSS filter is dried at 105 degrees C; VSS ignition is at 550 degrees C — do not confuse temperatures",
+      "SVI = (SSV30 mL/L x 1000) / MLSS mg/L — target < 150 mL/g",
+      "Nitrification inhibitor prevents nBOD from being measured in carbonaceous BOD tests",
+      "SOUR (specific oxygen uptake rate) indicates biomass activity — low SOUR may indicate toxicity",
+      "All lab results must be recorded and retained per applicable regulation reporting requirements",
+    ],
+    formulaHint:
+      "BOD5 (mg/L) = (DO_initial minus DO_final) x Dilution Factor\nTSS (mg/L) = (Filter mass after drying mg minus Filter tare mass mg) x 1000 / Sample volume mL\nSVI (mL/g) = SSV30 (mL/L) x 1000 / MLSS (mg/L)",
+  },
+  "Equipment Operation": {
+    title: "Equipment Operation",
+    intro:
+      "Class 3 Wastewater operators must operate and troubleshoot all major equipment at a wastewater treatment plant, including centrifugal pumps, blowers, aerators, clarifiers, thickeners, digesters, and instrumentation. Understanding pump affinity laws, NPSH, and VFD operation is essential for both the exam and day-to-day plant management.",
+    keyPoints: [
+      {
+        heading: "Centrifugal Pump Operation and Affinity Laws",
+        body: "Centrifugal pumps are the most common type in wastewater treatment. The pump curve shows the relationship between flow (Q) and head (H) — as flow increases, head decreases. The system curve shows the static head plus friction losses at various flows. The operating point is where the pump curve intersects the system curve. Affinity Laws: Q2/Q1 = N2/N1 (flow proportional to speed); H2/H1 = (N2/N1)^2 (head proportional to speed squared); P2/P1 = (N2/N1)^3 (power proportional to speed cubed). VFDs reduce speed to match flow demand, saving significant energy.",
+      },
+      {
+        heading: "Net Positive Suction Head (NPSH) and Cavitation",
+        body: "NPSH Available (NPSHa) must exceed NPSH Required (NPSHr) to prevent cavitation. Cavitation occurs when liquid pressure drops below vapour pressure, forming and collapsing vapour bubbles — symptoms: crackling/rattling noise, vibration, reduced flow and head, pitting of impeller. Causes of low NPSHa: high suction lift, high liquid temperature, long suction pipe, partially closed suction valve. Corrective actions: lower pump, increase suction pipe diameter, reduce suction lift, cool liquid.",
+      },
+      {
+        heading: "Blowers and Aeration Systems",
+        body: "Blowers supply air to the aeration basin for activated sludge. Types: rotary lobe (positive displacement) and centrifugal (turbo). Rotary lobe blowers provide constant flow at variable pressure — used for smaller plants. Centrifugal blowers are more efficient at larger flows. Dissolved oxygen (DO) control: adjust blower output or diffuser air flow to maintain 1.5-3.0 mg/L. Fine bubble diffusers are more efficient than coarse bubble (higher oxygen transfer efficiency, OTE). Diffuser fouling reduces OTE — regular cleaning required.",
+      },
+      {
+        heading: "Lift Station Operation",
+        body: "Lift stations pump wastewater from low points to higher elevations. Wet well design: adequate volume to prevent short cycling (minimum 5-30 min HRT). Pump control: float switches, ultrasonic level sensors, or pressure transducers. Redundancy: minimum 2 pumps (N+1). Emergency overflow prevention: high-level alarms, emergency generators, bypass pumping. Common problems: pump failure (impeller wear, air binding), check valve failure (backflow), clogged suction screen, wet well septicity (H2S generation). Wet well ventilation is required to control H2S and prevent explosive atmospheres.",
+      },
+    ],
+    tableHeadings: ["Affinity Law", "Formula", "Application"],
+    tableRows: [
+      ["Flow vs. Speed", "Q2 = Q1 x (N2/N1)", "Predict new flow when speed changes"],
+      ["Head vs. Speed", "H2 = H1 x (N2/N1)^2", "Predict new head when speed changes"],
+      ["Power vs. Speed", "P2 = P1 x (N2/N1)^3", "Predict energy savings with VFD"],
+      ["Specific Speed", "Ns = N x Q^0.5 / H^0.75", "Classify pump type"],
+    ],
+    examTips: [
+      "Affinity Laws: flow proportional to speed, head proportional to speed squared, power proportional to speed cubed",
+      "Cavitation symptoms: crackling noise, vibration, reduced flow, pitting — caused by insufficient NPSHa",
+      "VFDs reduce speed to match demand — power savings are cubic (halving speed = 1/8 power)",
+      "Fine bubble diffusers have higher OTE than coarse bubble — preferred for energy efficiency",
+      "Wet well H2S: ventilate wet well, monitor H2S levels, use PPE before entry",
+      "Rising wet well level with pump running: check impeller wear, air binding, check valve, suction screen",
+    ],
+    formulaHint:
+      "Q2 = Q1 x (N2/N1)  |  H2 = H1 x (N2/N1)^2  |  P2 = P1 x (N2/N1)^3\nNPSHa = (Atmospheric pressure minus Vapour pressure minus Suction lift minus Friction losses) in metres",
+  },
+  "Equipment Evaluation & Maintenance": {
+    title: "Equipment Evaluation & Maintenance",
+    intro:
+      "Class 3 Wastewater operators must evaluate equipment condition, plan preventive maintenance, and diagnose equipment failures. A proactive maintenance program reduces unplanned downtime, extends equipment life, and ensures regulatory compliance. Key areas include pump condition assessment, vibration analysis, bearing maintenance, and instrumentation calibration.",
+    keyPoints: [
+      {
+        heading: "Preventive Maintenance Programs",
+        body: "A preventive maintenance (PM) program schedules inspections and maintenance tasks based on manufacturer recommendations, operating hours, or calendar intervals. PM tasks for pumps: lubrication (check oil level, grease bearings per schedule), seal inspection (mechanical seals or packing glands), vibration measurement, temperature monitoring (bearings less than 70 degrees C above ambient), alignment check. PM records must be maintained for regulatory compliance and warranty purposes. Predictive maintenance uses condition monitoring (vibration, thermography, oil analysis) to identify developing problems before failure.",
+      },
+      {
+        heading: "Vibration Analysis",
+        body: "Vibration analysis identifies developing mechanical problems in rotating equipment. Measured parameters: vibration velocity (mm/s RMS) or acceleration (g). ISO 10816 provides vibration severity guidelines. Common causes of excessive vibration: imbalance (1x running speed frequency), misalignment (1x and 2x frequency), bearing defects (high-frequency components), cavitation (random broadband), resonance. Vibration trending over time identifies deteriorating conditions. Corrective actions: dynamic balancing, shaft alignment (laser alignment preferred), bearing replacement.",
+      },
+      {
+        heading: "Pump Condition Assessment",
+        body: "Pump performance testing compares actual flow and head to the original pump curve. Reduced flow at normal head: worn impeller, air binding, partially closed valve. Reduced head at normal flow: worn impeller, excessive wear ring clearance. Impeller inspection: look for erosion, corrosion, pitting (cavitation), and wear ring clearance (should be less than 0.5 mm). Mechanical seal inspection: check for leakage (small drip acceptable for packing; no leakage for mechanical seals), heat, and seal face condition. Pump efficiency = (Water power output) / (Shaft power input) x 100%.",
+      },
+      {
+        heading: "Instrumentation Calibration",
+        body: "Accurate instrumentation is essential for process control and regulatory reporting. Flow meters: verify with portable ultrasonic meter or weir/flume measurement. DO probes: 2-point calibration (air-saturated water and zero DO). pH meters: 2-point calibration with pH 4 and pH 7 buffers (or pH 7 and pH 10 for alkaline samples). Turbidity meters: calibrate with formazin or AMCO-AEPA standards. Calibration records must be maintained. Out-of-calibration instruments must be taken out of service or results flagged until recalibrated.",
+      },
+    ],
+    tableHeadings: ["Equipment", "Key Maintenance Task", "Warning Sign"],
+    tableRows: [
+      ["Centrifugal pump", "Lubrication, seal inspection, vibration check", "Excessive vibration, bearing temperature > 70 degrees C above ambient"],
+      ["Blower (rotary lobe)", "Oil change, belt tension, inlet filter", "High discharge temperature, unusual noise"],
+      ["Mechanical seal", "Inspect for leakage, heat, seal face wear", "Continuous leakage (more than a drip)"],
+      ["DO probe", "Membrane/electrolyte replacement, calibration", "Drift, slow response, readings inconsistent with process"],
+      ["Flow meter (magnetic)", "Electrode cleaning, zero check", "Erratic readings, zero offset"],
+      ["UV disinfection lamp", "Sleeve cleaning, lamp output measurement", "UVT drop, lamp hours exceeding rated life"],
+    ],
+    examTips: [
+      "Bearing temperature limit: typically less than 70 degrees C above ambient (or per manufacturer spec)",
+      "Vibration at 1x running speed = imbalance; at 2x = misalignment; high frequency = bearing defects",
+      "Pump efficiency decreases with worn impeller — compare actual curve to original pump curve",
+      "DO probe calibration: 2-point (air-saturated and zero); pH meter: 2-point with appropriate buffers",
+      "Mechanical seal should have no continuous leakage; packing gland allows a small drip",
+      "Calibration records are a regulatory requirement — maintain and retain per O&M manual",
+    ],
+    formulaHint:
+      "Pump Efficiency (%) = (Water Power kW / Shaft Power kW) x 100\nWater Power (kW) = Q (m3/s) x H (m) x density (kg/m3) x g (9.81 m/s2) / 1000\nBearing Temperature Rise = Measured temperature minus Ambient temperature (limit: approximately 70 degrees C rise)",
+  },
+  "Security, Safety & Admin": {
+    title: "Security, Safety & Admin",
+    intro:
+      "Class 3 Wastewater operators carry expanded responsibilities for workplace safety, regulatory compliance, emergency response, and administrative oversight. At this level, operators may supervise other staff, coordinate emergency responses, and ensure the facility meets all requirements under the Ontario Water Resources Act (OWRA), O. Reg. 129/04 (Wastewater Systems Effluent), the Occupational Health and Safety Act (OHSA), and the facility's Environmental Compliance Approval (ECA).",
+    keyPoints: [
+      {
+        heading: "Confined Space Safety",
+        body: "Confined space entry at wastewater plants is a high-risk activity due to H2S, methane, CO2, and oxygen deficiency. Atmospheric testing order before entry: (1) Oxygen — acceptable range 19.5-23.0%; (2) Combustible gases — acceptable less than 10% LEL; (3) Toxic gases — H2S less than 10 ppm, CO less than 25 ppm. A written entry permit must be completed before each entry. Non-entry rescue is preferred — a rescue team must be in place before entry begins. Attendant must remain outside and maintain communication with entrant. OHSA Confined Spaces Regulation (O. Reg. 632/05) governs confined space work in Ontario.",
+      },
+      {
+        heading: "Emergency Response and Spill Reporting",
+        body: "Class 3 operators must know the facility's Emergency Response Plan (ERP) and be able to coordinate emergency responses. Spill reporting: any discharge of a pollutant to the natural environment that is not authorized by the ECA must be reported to the MECP Spills Action Centre (1-800-268-6060) immediately. Wastewater bypasses must be reported to MECP and the local municipality. Adverse results (effluent exceeding ECA limits) must be reported per the ECA conditions — typically within 24 hours. Operators must maintain records of all spills, bypasses, and adverse results.",
+      },
+      {
+        heading: "Operator Certification and Supervision",
+        body: "Under O. Reg. 129/04, wastewater systems must be operated by certified operators. Class 3 operators may supervise Class 1 and Class 2 operators. The Overall Responsible Operator (ORO) is accountable for the overall operation of the facility. Operators must ensure that staff performing duties hold the appropriate certification. Continuing education is required to maintain certification — operators must accumulate Professional Development Hours (PDHs). Operators are personally responsible for their professional actions and cannot be directed to violate regulations.",
+      },
+      {
+        heading: "WHMIS 2015 and Chemical Safety",
+        body: "WHMIS 2015 (aligned with GHS) replaced WHMIS 1988. Safety Data Sheets (SDS) replaced Material Safety Data Sheets (MSDS). GHS pictograms replaced WHMIS symbols. Chemicals at wastewater plants: sodium hypochlorite (disinfection), sodium bisulfite (dechlorination), alum/ferric chloride (chemical P removal), polymer (sludge conditioning), methanol (denitrification carbon source). All staff must be trained on WHMIS 2015 before handling hazardous products. SDS must be accessible in the workplace. PPE selection must be based on SDS hazard information.",
+      },
+    ],
+    tableHeadings: ["Regulatory Requirement", "Trigger / Frequency", "Action Required"],
+    tableRows: [
+      ["Spill report to MECP", "Any unauthorized discharge", "Call Spills Action Centre immediately (1-800-268-6060)"],
+      ["Adverse result report", "Effluent exceeds ECA limit", "Report per ECA conditions (typically 24 hours)"],
+      ["Bypass report", "Any wastewater bypass", "Report to MECP and municipality immediately"],
+      ["Confined space entry permit", "Before each entry", "Atmospheric test, rescue team, written permit"],
+      ["WHMIS training", "Before handling hazardous products", "Review SDS, use appropriate PPE"],
+      ["Operator certification", "Ongoing", "Maintain PDHs, renew certificate before expiry"],
+    ],
+    examTips: [
+      "Confined space atmospheric testing order: O2 first, then combustible gases (LEL), then toxic gases (H2S, CO)",
+      "H2S acceptable limit before confined space entry: less than 10 ppm",
+      "Spill reporting: call MECP Spills Action Centre immediately — do not wait to assess severity",
+      "WHMIS 2015: SDS replaced MSDS; GHS pictograms replaced WHMIS symbols",
+      "Non-entry rescue is preferred for confined spaces — rescue team must be in place before entry",
+      "ORO (Overall Responsible Operator) is accountable for overall facility operation under O. Reg. 129/04",
+    ],
+    formulaHint:
+      "No calculation formulas — this module is regulatory and procedural. Know the notification timelines, confined space testing order, and key Ontario regulations (OWRA, O. Reg. 129/04, OHSA, O. Reg. 632/05).",
+  },
+};

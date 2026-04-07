@@ -4,6 +4,7 @@ import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import PurchaseGate from "@/components/PurchaseGate";
 import { CLASS3_WW_QUESTIONS, CLASS3_WW_MODULES, type C3WWQuestion } from '@/lib/class3WastewaterQuestions';
+import { CLASS3_WASTEWATER_OVERVIEWS } from '@/lib/moduleOverviews';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -219,7 +220,7 @@ export default function Class3WastewaterQuiz() {
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={resetSession}
         mockExamHref="/class3-ww-mock"
-        
+        moduleOverviews={CLASS3_WASTEWATER_OVERVIEWS}
         renderAITutor={() => (
           <AITutor
             question={current as any}
