@@ -341,3 +341,5 @@
 - [x] Add moduleOverviews prop to OIT Water quiz page (Home.tsx)
 - [x] Write module overview study notes for all 8 Class 1 Wastewater modules
 - [x] Wire CLASS1_WASTEWATER_OVERVIEWS into Class1WastewaterQuiz page
+- [x] Auto-expand Module Overview panel when a module is first selected
+- [x] Add Study Notes button in QuizShell header for All Modules mode with module picker modal

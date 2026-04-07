@@ -169,6 +169,8 @@ export default function QuizShell({
   moduleOverviews,
 }: QuizShellProps) {
   const [reportModalOpen, setReportModalOpen] = useState(false);
+  const [studyNotesOpen, setStudyNotesOpen] = useState(false);
+  const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
 
   const progress = sessionSize ? (history.length / sessionSize) * 100 : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
@@ -325,27 +327,50 @@ export default function QuizShell({
             </div>
 
             {/* Action buttons */}
-            {headerActions.length > 0 && (
-              <div className="qs-header-actions" style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                {headerActions.map(a => (
-                  <Link key={a.href} href={a.href}>
-                    <button style={{
-                      padding: "7px 12px",
-                      background: "rgba(255,255,255,0.15)",
-                      color: "#fff",
-                      border: "1px solid rgba(255,255,255,0.3)",
-                      borderRadius: 8,
-                      fontSize: 12,
-                      fontWeight: 600,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                    }}>
-                      {a.label}
-                    </button>
-                  </Link>
-                ))}
-              </div>
-            )}
+            <div className="qs-header-actions" style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+              {/* Study Notes button — shown when moduleOverviews are available */}
+              {moduleOverviews && Object.keys(moduleOverviews).length > 0 && (
+                <button
+                  onClick={() => {
+                    setStudyNotesModule(selectedModule);
+                    setStudyNotesOpen(true);
+                  }}
+                  style={{
+                    padding: "7px 12px",
+                    background: "rgba(255,255,255,0.22)",
+                    color: "#fff",
+                    border: "1.5px solid rgba(255,255,255,0.6)",
+                    borderRadius: 8,
+                    fontSize: 12,
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 5,
+                  }}
+                >
+                  📖 Study Notes
+                </button>
+              )}
+              {headerActions.map(a => (
+                <Link key={a.href} href={a.href}>
+                  <button style={{
+                    padding: "7px 12px",
+                    background: "rgba(255,255,255,0.15)",
+                    color: "#fff",
+                    border: "1px solid rgba(255,255,255,0.3)",
+                    borderRadius: 8,
+                    fontSize: 12,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                  }}>
+                    {a.label}
+                  </button>
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Stats row */}
@@ -450,14 +475,16 @@ export default function QuizShell({
       {/* ── Body ── */}
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "20px 16px 80px" }}>
 
-        {/* Module Overview panel — shown when a specific module is selected */}
+        {/* Module Overview panel — shown when a specific module is selected, auto-expands */}
         {moduleOverviews && selectedModule && moduleOverviews[selectedModule] && (
           <ModuleOverviewPanel
+            key={selectedModule}
             overview={moduleOverviews[selectedModule]}
             moduleName={selectedModule}
             moduleColor={modules.find(m => m.name === selectedModule)?.color}
             moduleBg={modules.find(m => m.name === selectedModule)?.bg}
             moduleIcon={modules.find(m => m.name === selectedModule)?.icon}
+            defaultExpanded={true}
           />
         )}
 
@@ -778,6 +805,107 @@ export default function QuizShell({
           module={current.module ?? ""}
           onClose={() => setReportModalOpen(false)}
         />
+      )}
+
+      {/* ── Study Notes modal ── */}
+      {studyNotesOpen && moduleOverviews && (
+        <div
+          onClick={() => setStudyNotesOpen(false)}
+          style={{
+            position: "fixed", inset: 0, zIndex: 1000,
+            background: "rgba(0,0,0,0.55)",
+            display: "flex", alignItems: "flex-start", justifyContent: "center",
+            padding: "40px 16px 40px",
+            overflowY: "auto",
+          }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: "#F8FAFC",
+              borderRadius: 18,
+              width: "100%",
+              maxWidth: 760,
+              boxShadow: "0 8px 40px rgba(0,0,0,0.18)",
+              fontFamily: "'Sora', sans-serif",
+              overflow: "hidden",
+            }}
+          >
+            {/* Modal header */}
+            <div style={{
+              display: "flex", alignItems: "center", justifyContent: "space-between",
+              padding: "18px 22px",
+              background: "#0F172A",
+              color: "#fff",
+            }}>
+              <div>
+                <div style={{ fontSize: 16, fontWeight: 800 }}>📖 Study Notes</div>
+                <div style={{ fontSize: 12, opacity: 0.7, marginTop: 2 }}>Select a module to read its overview</div>
+              </div>
+              <button
+                onClick={() => setStudyNotesOpen(false)}
+                style={{ background: "none", border: "none", color: "#fff", fontSize: 22, cursor: "pointer", lineHeight: 1, padding: 4 }}
+              >✕</button>
+            </div>
+
+            {/* Module picker — shown when no module selected in modal */}
+            {!studyNotesModule && (
+              <div style={{ padding: "20px 22px" }}>
+                <div style={{ fontSize: 13, color: "#64748B", marginBottom: 14 }}>Choose a module:</div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 10 }}>
+                  {Object.keys(moduleOverviews).map(modName => {
+                    const mod = modules.find(m => m.name === modName);
+                    return (
+                      <button
+                        key={modName}
+                        onClick={() => setStudyNotesModule(modName)}
+                        style={{
+                          padding: "12px 14px",
+                          background: mod?.bg ?? "#DBEAFE",
+                          color: mod?.color ?? "#1D4ED8",
+                          border: `1.5px solid ${mod?.color ?? "#1D4ED8"}33`,
+                          borderRadius: 10,
+                          fontSize: 12,
+                          fontWeight: 700,
+                          cursor: "pointer",
+                          fontFamily: "inherit",
+                          textAlign: "left",
+                        }}
+                      >
+                        {mod?.icon && <span style={{ marginRight: 6 }}>{mod.icon}</span>}
+                        {modName}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Overview content — shown when a module is selected in modal */}
+            {studyNotesModule && moduleOverviews[studyNotesModule] && (
+              <div style={{ padding: "0 22px 22px" }}>
+                <button
+                  onClick={() => setStudyNotesModule(null)}
+                  style={{
+                    background: "none", border: "none", color: "#0369A1",
+                    fontSize: 12, fontWeight: 700, cursor: "pointer",
+                    padding: "14px 0 10px", fontFamily: "inherit",
+                    display: "flex", alignItems: "center", gap: 4,
+                  }}
+                >← All modules</button>
+                <ModuleOverviewPanel
+                  key={studyNotesModule + "-modal"}
+                  overview={moduleOverviews[studyNotesModule]}
+                  moduleName={studyNotesModule}
+                  moduleColor={modules.find(m => m.name === studyNotesModule)?.color}
+                  moduleBg={modules.find(m => m.name === studyNotesModule)?.bg}
+                  moduleIcon={modules.find(m => m.name === studyNotesModule)?.icon}
+                  defaultExpanded={true}
+                />
+              </div>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );

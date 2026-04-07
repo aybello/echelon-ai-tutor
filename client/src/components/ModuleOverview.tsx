@@ -1,7 +1,8 @@
 /**
- * ModuleOverview — Collapsible study note panel shown above the question card
+ * ModuleOverview — Study note panel shown above the question card
  * when a specific module is selected in the quiz.
  *
+ * Auto-expands when first shown (defaultExpanded=true).
  * Renders: intro paragraph, key concept cards, optional table, and exam tips.
  */
 
@@ -14,6 +15,7 @@ interface ModuleOverviewProps {
   moduleColor?: string;
   moduleBg?: string;
   moduleIcon?: string;
+  defaultExpanded?: boolean;
 }
 
 export default function ModuleOverviewPanel({
@@ -22,17 +24,19 @@ export default function ModuleOverviewPanel({
   moduleColor = "#0369A1",
   moduleBg = "#DBEAFE",
   moduleIcon = "📚",
+  defaultExpanded = true,
 }: ModuleOverviewProps) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(defaultExpanded);
 
   return (
     <div style={{
       background: "#fff",
       borderRadius: 14,
       marginBottom: 16,
-      border: `1.5px solid ${moduleColor}22`,
+      border: `1.5px solid ${moduleColor}33`,
       overflow: "hidden",
       fontFamily: "'Sora', sans-serif",
+      boxShadow: expanded ? `0 2px 12px ${moduleColor}18` : "none",
     }}>
       {/* ── Header / toggle ── */}
       <button
@@ -55,8 +59,8 @@ export default function ModuleOverviewPanel({
             background: moduleColor,
             color: "#fff",
             borderRadius: 8,
-            padding: "4px 8px",
-            fontSize: 14,
+            padding: "4px 10px",
+            fontSize: 15,
             lineHeight: 1,
           }}>
             {moduleIcon}
