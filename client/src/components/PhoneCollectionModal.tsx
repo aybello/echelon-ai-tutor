@@ -38,7 +38,16 @@ export default function PhoneCollectionModal({ onComplete }: Props) {
 
   return (
     /* Full-screen overlay — no click-outside dismiss */
+    <>
+    <style>{`
+      @media (max-width: 480px) {
+        .pcm-card { padding: 28px 20px !important; border-radius: 16px !important; }
+        .pcm-overlay { align-items: flex-end !important; padding: 0 !important; }
+        .pcm-card-wrap { border-radius: 20px 20px 0 0 !important; max-width: 100% !important; width: 100% !important; }
+      }
+    `}</style>
     <div
+      className="pcm-overlay"
       style={{
         position: "fixed",
         inset: 0,
@@ -53,6 +62,7 @@ export default function PhoneCollectionModal({ onComplete }: Props) {
       }}
     >
       <div
+        className="pcm-card-wrap"
         style={{
           background: "#1E293B",
           border: "1px solid rgba(255,255,255,0.1)",
@@ -209,5 +219,6 @@ export default function PhoneCollectionModal({ onComplete }: Props) {
         </p>
       </div>
     </div>
+    </>
   );
 }
