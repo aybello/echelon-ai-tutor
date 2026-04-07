@@ -1172,7 +1172,7 @@ export default function Landing() {
             margin: "0 auto 36px",
           }}>
             Canada's AI-powered exam prep platform for water and wastewater operators.
-            Adaptive practice questions, interactive process guides, and an AI tutor available 24/7.
+            Adaptive practice questions, 400+ flashcards, interactive process guides, and an AI tutor available 24/7.
           </p>
 
           {/* Province-aware hero CTA */}
