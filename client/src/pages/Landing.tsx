@@ -203,7 +203,7 @@ const WATER_COURSES = [
     color: "#1D4ED8",
     bg: "#EFF6FF",
     border: "#BFDBFE",
-    price: 49,
+    price: 79,
     productKey: "oit",
     flashcardHref: "/oit-water-flashcards",
   },
@@ -621,7 +621,7 @@ const FEATURES = [
 
 const STATS = [
   { value: "8,500+", label: "Practice Questions" },
-  { value: "22", label: "Certification Courses" },
+  { value: "19", label: "Certification Courses" },
   { value: "5", label: "Specialization Tracks" },
   { value: "Free", label: "OIT Access" },
 ];
