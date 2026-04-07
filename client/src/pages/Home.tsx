@@ -11,6 +11,7 @@ import {
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import QuizShell from "@/components/QuizShell";
+import { OIT_WATER_OVERVIEWS } from "@/lib/moduleOverviews";
 
 const SESSION_SIZE = 15;
 
@@ -211,6 +212,7 @@ export default function Home() {
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={resetSession}
         mockExamHref="/mock-exam"
+        moduleOverviews={OIT_WATER_OVERVIEWS}
         renderAITutor={() => (
           <AITutor
             question={current as any}

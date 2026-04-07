@@ -13,6 +13,8 @@
 
 import { useState, type ReactNode } from "react";
 import SiteNav from "@/components/SiteNav";
+import ModuleOverviewPanel from "@/components/ModuleOverview";
+import type { ModuleOverview } from "@/lib/moduleOverviews";
 import ConfidenceMeter from "@/components/ConfidenceMeter";
 import StepSolution from "@/components/StepSolution";
 import ReportErrorModal from "@/components/ReportErrorModal";
@@ -105,6 +107,9 @@ export interface QuizShellProps {
 
   // Optional: extra content below question card (e.g. pattern alerts)
   extraContent?: ReactNode;
+
+  // Optional: module overview study notes (keyed by module name)
+  moduleOverviews?: Record<string, ModuleOverview>;
 }
 
 // ─── Constants ───────────────────────────────────────────────────────────────
@@ -161,6 +166,7 @@ export default function QuizShell({
   formulaLinks,
   extraContent,
   renderAITutor,
+  moduleOverviews,
 }: QuizShellProps) {
   const [reportModalOpen, setReportModalOpen] = useState(false);
 
@@ -443,6 +449,17 @@ export default function QuizShell({
 
       {/* ── Body ── */}
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "20px 16px 80px" }}>
+
+        {/* Module Overview panel — shown when a specific module is selected */}
+        {moduleOverviews && selectedModule && moduleOverviews[selectedModule] && (
+          <ModuleOverviewPanel
+            overview={moduleOverviews[selectedModule]}
+            moduleName={selectedModule}
+            moduleColor={modules.find(m => m.name === selectedModule)?.color}
+            moduleBg={modules.find(m => m.name === selectedModule)?.bg}
+            moduleIcon={modules.find(m => m.name === selectedModule)?.icon}
+          />
+        )}
 
         {/* Question card */}
         <div className="qs-question-card" style={{

@@ -335,3 +335,7 @@
 - [x] Build exam reminder cron job (daily 8AM UTC, sends at 30/14/7/1 days out)
 - [x] Register exam reminder job in server startup
 - [x] Fix purchase confirmation email domain (echeloninstitute.manus.space → echeloninstitute.ca)
+- [x] Write module overview study notes for all 10 OIT Water modules (moduleOverviews.ts)
+- [x] Build ModuleOverviewPanel component (collapsible, key concepts, table, exam tips)
+- [x] Wire ModuleOverview into QuizShell as optional prop
+- [x] Add moduleOverviews prop to OIT Water quiz page (Home.tsx)
