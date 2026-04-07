@@ -475,7 +475,7 @@ export default function QuizShell({
       {/* ── Body ── */}
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "20px 16px 80px" }}>
 
-        {/* Module Overview panel — shown when a specific module is selected, auto-expands */}
+        {/* Module Overview panel — shown when a specific module is selected */}
         {moduleOverviews && selectedModule && moduleOverviews[selectedModule] && (
           <ModuleOverviewPanel
             key={selectedModule}
@@ -484,7 +484,7 @@ export default function QuizShell({
             moduleColor={modules.find(m => m.name === selectedModule)?.color}
             moduleBg={modules.find(m => m.name === selectedModule)?.bg}
             moduleIcon={modules.find(m => m.name === selectedModule)?.icon}
-            defaultExpanded={true}
+            defaultExpanded={false}
           />
         )}
 
