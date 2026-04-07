@@ -205,6 +205,7 @@ const WATER_COURSES = [
     border: "#BFDBFE",
     price: 49,
     productKey: "oit",
+    flashcardHref: "/oit-water-flashcards",
   },
   {
     code: "CL1-W",
@@ -220,6 +221,7 @@ const WATER_COURSES = [
     border: "#BAE6FD",
     price: 149,
     productKey: "class1-water",
+    flashcardHref: "/class1-water-flashcards",
   },
   {
     code: "CL2-W",
@@ -236,6 +238,7 @@ const WATER_COURSES = [
     border: "#A5F3FC",
     price: 199,
     productKey: "class2-water",
+    flashcardHref: "/class2-water-flashcards",
   },
   {
     code: "CL3-W",
@@ -249,6 +252,7 @@ const WATER_COURSES = [
     badgeColor: "#1E40AF",
     price: 349,
     productKey: "class3-water",
+    flashcardHref: "/class3-water-flashcards",
     color: "#1E40AF",
     bg: "#EFF6FF",
     border: "#BFDBFE",
@@ -266,6 +270,7 @@ const WATER_COURSES = [
     badgeColor: "#6D28D9",
     price: 499,
     productKey: "class4-water",
+    flashcardHref: "/class4-water-flashcards",
     color: "#6D28D9",
     bg: "#F5F3FF",
     border: "#DDD6FE",
@@ -288,6 +293,7 @@ const WASTEWATER_COURSES = [
     border: "#A7F3D0",
     price: 79,
     productKey: "oit-ww",
+    flashcardHref: "/oit-ww-flashcards",
   },
   {
     code: "CL1-WW",
@@ -303,6 +309,7 @@ const WASTEWATER_COURSES = [
     border: "#BBF7D0",
     price: 149,
     productKey: "class1-ww",
+    flashcardHref: "/class1-ww-flashcards",
   },
   {
     code: "CL2-WW",
@@ -319,6 +326,7 @@ const WASTEWATER_COURSES = [
     border: "#99F6E4",
     price: 199,
     productKey: "class2-ww",
+    flashcardHref: "/class2-ww-flashcards",
   },
   {
     code: "CL3-WW",
@@ -336,6 +344,7 @@ const WASTEWATER_COURSES = [
     comingSoon: false,
     price: 349,
     productKey: "class3-ww",
+    flashcardHref: "/class3-ww-flashcards",
   },
   {
     code: "CL4-WW",
@@ -349,6 +358,7 @@ const WASTEWATER_COURSES = [
     badgeColor: "#6D28D9",
     price: 499,
     productKey: "class4-ww",
+    flashcardHref: "/class4-ww-flashcards",
     color: "#6D28D9",
     bg: "#F5F3FF",
     border: "#DDD6FE",
@@ -372,6 +382,7 @@ const WQA_COURSES = [
     comingSoon: false,
     price: 179,
     productKey: "wqa",
+    flashcardHref: "/wqa-flashcards",
   },
 ];
 
@@ -392,6 +403,7 @@ const WPI_WATER_COURSES = [
     comingSoon: false,
     price: 149,
     productKey: "wpi-class1-water",
+    flashcardHref: "/wpi-class1-water-flashcards",
     quizHref: "/wpi-class1-water",
     mockHref: "/wpi-class1-water-mock",
   },
@@ -411,6 +423,7 @@ const WPI_WATER_COURSES = [
     comingSoon: false,
     price: 199,
     productKey: "wpi-class2-water",
+    flashcardHref: "/wpi-class2-water-flashcards",
     quizHref: "/wpi-class2-water",
     mockHref: "/wpi-class2-water-mock",
   },
@@ -597,6 +610,13 @@ const FEATURES = [
     color: "#1D4ED8",
     href: "/career",
   },
+  {
+    icon: "🃏",
+    title: "Flashcards",
+    description: "400+ concept cards per course — flip to reveal answers, filter by module, and track your progress as you master key definitions and processes.",
+    color: "#0F766E",
+    href: "/oit-water-flashcards",
+  },
 ];
 
 const STATS = [
@@ -767,6 +787,22 @@ function CourseCard({ course }: { course: CourseType }) {
                 marginTop: 8, transition: "all 0.15s",
               }}>
                 📋 Timed Mock Exam
+              </button>
+            </Link>
+          )}
+
+          {/* Flashcard button — shown for courses with a flashcard page */}
+          {(course as any).flashcardHref && (
+            <Link href={(course as any).flashcardHref}>
+              <button style={{
+                width: "100%", padding: "10px",
+                background: "transparent",
+                color: "#0F766E", border: "1.5px solid #0F766E",
+                borderRadius: 10, fontSize: 12, fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit",
+                marginTop: 8, transition: "all 0.15s",
+              }}>
+                🃏 Flashcards
               </button>
             </Link>
           )}
@@ -1056,6 +1092,7 @@ export default function Landing() {
             { label: "🌊 WPI Overview (BC/AB/SK/MB)", href: "/wpi" },
             { label: "🌊 WPI Class I Practice", href: "/wpi-class1-water" },
             { label: "🌊 WPI Class II Practice", href: "/wpi-class2-water" },
+            { label: "🃏 OIT Flashcards", href: "/oit-water-flashcards" },
           ].map(item => (
             <Link key={item.href} href={item.href}>
               <div
@@ -1748,6 +1785,7 @@ export default function Landing() {
             { label: "Career Map", href: "/career" },
             { label: "Pumping Systems", href: "/pumping" },
             { label: "Lab & Sampling", href: "/lab" },
+            { label: "Flashcards", href: "/oit-water-flashcards" },
             { label: "Contact", href: "/#contact" },
           ].map(link => (
             <Link key={link.label} href={link.href}>
