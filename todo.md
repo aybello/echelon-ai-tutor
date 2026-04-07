@@ -346,3 +346,8 @@
 - [x] Write module overview study notes for all Class 1 Water modules
 - [x] Wire CLASS1_WATER_OVERVIEWS into Class1WaterQuiz page
 - [x] Add "Study Notes" to course feature list on landing page (OIT, Class 1 Water, OIT WW, Class 1 WW)
+- [x] Write module overview study notes for all Class 2 Water modules
+- [x] Write module overview study notes for all Class 2 Wastewater modules
+- [x] Wire CLASS2_WATER_OVERVIEWS into Class2WaterQuiz page
+- [x] Wire CLASS2_WASTEWATER_OVERVIEWS into Class2WastewaterQuiz page
+- [x] Add "Study Notes" to Class 2 Water and Class 2 Wastewater on Pricing page

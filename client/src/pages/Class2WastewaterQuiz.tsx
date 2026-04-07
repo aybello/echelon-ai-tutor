@@ -4,6 +4,7 @@ import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import PurchaseGate from "@/components/PurchaseGate";
 import { CLASS2_WW_QUESTIONS, CLASS2_WW_MODULES, type WastewaterQuestion } from '@/lib/class2WastewaterQuestions';
+import { CLASS2_WASTEWATER_OVERVIEWS } from '@/lib/moduleOverviews';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -180,6 +181,7 @@ export default function Class2WastewaterQuiz() {
     >
       <QuizShell
         currentPath="/class2-ww"
+        moduleOverviews={CLASS2_WASTEWATER_OVERVIEWS}
         courseLabel="Ontario Class 2 · Wastewater Treatment"
         courseTitle="Class 2 Wastewater Practice Quiz"
         courseSubtitle="Ontario OWWCO Class 2 Wastewater Exam Prep"
