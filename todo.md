@@ -351,3 +351,4 @@
 - [x] Wire CLASS2_WATER_OVERVIEWS into Class2WaterQuiz page
 - [x] Wire CLASS2_WASTEWATER_OVERVIEWS into Class2WastewaterQuiz page
 - [x] Add "Study Notes" to Class 2 Water and Class 2 Wastewater on Pricing page
+- [x] Add "module study notes" to landing page hero description
