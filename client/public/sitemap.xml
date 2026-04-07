@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core Pages -->
+  <url>
+    <loc>https://echeloninstitute.ca/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/pricing</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/career</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Free OIT Practice (Lead Magnet) -->
+  <url>
+    <loc>https://echeloninstitute.ca/quiz</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/oit-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/oit-water-flashcards</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/oit-ww</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/oit-ww-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Ontario Class 1 -->
+  <url>
+    <loc>https://echeloninstitute.ca/class1-water</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/class1-water-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/class1-ww</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/class1-ww-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Ontario Class 2 -->
+  <url>
+    <loc>https://echeloninstitute.ca/class2-water</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/class2-water-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/class2-ww</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/class2-ww-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Ontario Class 3 -->
+  <url>
+    <loc>https://echeloninstitute.ca/class3-water</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/class3-water-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/class3-ww</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/class3-ww-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Ontario Class 4 -->
+  <url>
+    <loc>https://echeloninstitute.ca/class4-water</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/class4-water-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/class4-ww</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/class4-ww-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- WQA -->
+  <url>
+    <loc>https://echeloninstitute.ca/wqa</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wqa-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- WPI BC/AB Class 1 -->
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class1-water</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class1-water-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class1-wastewater</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class1-wastewater-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- WPI BC/AB Class 2 -->
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class2-water</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class2-water-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class2-wastewater</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class2-wastewater-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- WPI BC/AB Class 3 -->
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class3-water</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class3-water-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class3-wastewater</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class3-wastewater-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- WPI BC/AB Class 4 -->
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class4-water</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class4-water-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class4-wastewater</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/wpi-class4-wastewater-mock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Study Tools -->
+  <url>
+    <loc>https://echeloninstitute.ca/process</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/formulas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/math-practice</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
