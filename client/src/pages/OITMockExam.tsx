@@ -209,7 +209,7 @@ export default function OITMockExam() {
   // -- INTRO SCREEN ----------------------------------------------------------
   if (examState === "intro") {
     return (
-      <PurchaseGate examType="oit" productKey="oit" productName="OIT Practice Pass" price={79}>
+      <PurchaseGate examType="oit" productKey="oit" productName="OIT Practice Pass" price={59}>
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath="/oit-mock" />
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px" }}>

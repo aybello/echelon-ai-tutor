@@ -1,9 +1,9 @@
 /**
  * Echelon Institute — Stripe Product Definitions
- * All prices are in CAD cents (e.g. 7900 = CA$79.00)
+ * All prices are in CAD cents (e.g. 5900 = CA$59.00)
  *
  * Pricing strategy: career-accelerator positioning
- *   OIT / OIT-WW:       $79
+ *   OIT / OIT-WW:       $59
  *   Class 1 / WPI I:    $149
  *   Class 2 / WPI II:   $199
  *   Class 3 / WPI III:  $349
@@ -24,14 +24,14 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     key: "oit",
     name: "OIT Practice Pass",
     description: "Full OIT (Operator-in-Training) question bank — 500+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 7900,
+    priceCAD: 5900,
     examTypes: ["oit"],
   },
   {
     key: "oit-ww",
     name: "OIT Wastewater Practice Pass",
     description: "Full OIT Wastewater question bank — 500+ questions covering wastewater collection, treatment principles, and Ontario O. Reg. 129/04. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 7900,
+    priceCAD: 5900,
     examTypes: ["oit-ww"],
   },
   {

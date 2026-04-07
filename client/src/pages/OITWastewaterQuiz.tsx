@@ -234,7 +234,7 @@ export default function OITWastewaterQuiz() {
           questionsAnswered={history.length}
           productKey="oit-ww"
           productName="OIT Wastewater Practice Pass"
-          priceLabel="CA$79"
+          priceLabel="CA$59"
           paidFeatures={[
             "Full 500+ question bank — unlimited attempts",
             "OIT Wastewater Mock Exam (100 questions, 2-hour timer)",

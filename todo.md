@@ -368,3 +368,7 @@
 - [x] Add 25 questions to Safety module
 - [x] Add 25 questions to Science module
 - [x] Add 25 questions to Water Characteristics module
+
+## Price Update (Apr 7 2026)
+- [ ] Update OIT Water price from CA$79 to CA$59 (products.ts, Pricing.tsx, quiz gate copy, landing page)
+- [ ] Update OIT Wastewater price from CA$79 to CA$59 (products.ts, Pricing.tsx, quiz gate copy, landing page)

@@ -11,7 +11,7 @@ export default function OITWastewaterFlashcards() {
         examType="class1-ww"
         productKey="oit-ww"
         productName="OIT Wastewater Practice Pass"
-        price={79}
+        price={59}
       >
         <FlashcardShell
           questions={CLASS1_WASTEWATER_QUESTIONS as unknown as FlashcardQuestion[]}
