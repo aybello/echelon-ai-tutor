@@ -370,5 +370,12 @@
 - [x] Add 25 questions to Water Characteristics module
 
 ## Price Update (Apr 7 2026)
-- [ ] Update OIT Water price from CA$79 to CA$59 (products.ts, Pricing.tsx, quiz gate copy, landing page)
-- [ ] Update OIT Wastewater price from CA$79 to CA$59 (products.ts, Pricing.tsx, quiz gate copy, landing page)
+- [x] Update OIT Water price from CA$79 to CA$59 (products.ts, Pricing.tsx, quiz gate copy, landing page)
+- [x] Update OIT Wastewater price from CA$79 to CA$59 (products.ts, Pricing.tsx, quiz gate copy, landing page)
+
+## WQA Copy & Stripe Price Updates (Apr 7 2026)
+- [x] Update WQA question count from "300 questions" to "475 questions" in Pricing.tsx
+- [x] Update WQA question count from "300 questions" to "475 questions" in Landing.tsx
+- [x] Update WQA question count in WQAQuiz.tsx if present
+- [x] OIT Water Stripe price already uses price_data dynamically — no Dashboard update needed (priceCAD: 5900 in products.ts)
+- [x] OIT Wastewater Stripe price already uses price_data dynamically — no Dashboard update needed (priceCAD: 5900 in products.ts)

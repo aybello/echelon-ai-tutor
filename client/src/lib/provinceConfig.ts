@@ -137,7 +137,7 @@ export const PROVINCE_CONFIGS: Record<ProvinceCode, ProvinceConfig> = {
         examType: "wqa",
         displayName: "Water Quality Analyst (WQA)",
         label: "WQA",
-        description: "Water Quality Analyst certification — 300+ questions.",
+        description: "Water Quality Analyst certification — 475+ questions.",
         available: true,
         stream: "wqa",
       },

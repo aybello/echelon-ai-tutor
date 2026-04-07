@@ -155,7 +155,7 @@ export default function WQAQuiz() {
         productName="WQA Practice Pass"
         priceLabel="CA$179"
         paidFeatures={[
-          "500+ WQA questions — unlimited attempts",
+          "475 WQA questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
           "AI Tutor explanations on every question",
           "Module-by-module performance tracking",

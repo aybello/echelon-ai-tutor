@@ -4,7 +4,7 @@
  * Practices for the Collection and Handling of Drinking Water Samples (MOE 2009),
  * and Water Quality: Principles and Practices of Water Supply Operations Vol. 4 (AWWA)
  *
- * 300 questions across 10 modules matching the real WQA exam distribution.
+ * 475 questions across 10 modules matching the real WQA exam distribution.
  * Modules: Math (35), Chemical Testing (35), Laboratory & Sampling (55),
  * Science (25), Safety (25), Water Characteristics (25), Bacteriological Testing (25),
  * Disinfection (25), Quality Assurance & Quality Control (25), Regulation (25).

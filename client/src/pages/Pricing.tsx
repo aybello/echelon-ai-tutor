@@ -213,7 +213,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#FFFBEB",
     border: "#FDE68A",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "400+ flashcards"],
+    features: ["475 practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "400+ flashcards", "📖 Module study notes"],
   },
   {
     key: "wpi-class1-water",

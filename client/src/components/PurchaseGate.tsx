@@ -44,7 +44,7 @@ function isLocallyPurchased(examType: string): boolean {
 
 const DEFAULT_FEATURES: Record<string, string[]> = {
   "wqa": [
-    "300-question WQA bank — unlimited attempts",
+    "475-question WQA bank — unlimited attempts",
     "Timed WQA mock exam (100 questions, 2 hrs)",
     "WQA formula sheet (30+ formulas)",
     "AI Tutor explanations on every question",
