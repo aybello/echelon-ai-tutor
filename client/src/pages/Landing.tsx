@@ -3,7 +3,8 @@
 // Audience: Canadian water/wastewater operators seeking certification
 
 import { Link } from "wouter";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import NotifyModal from "@/components/NotifyModal";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -11,6 +12,22 @@ import { trpc } from "@/lib/trpc";
 import ProvinceBanner from "@/components/ProvinceBanner";
 import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { FadeUp, FadeIn, SlideLeft, StaggerContainer, StaggerItem } from "@/components/animations";
+import { useCountUp } from "@/hooks/useCountUp";
+import React from "react";
+
+// Animated stat component using count-up hook
+function AnimatedStat({ value, suffix = "", label }: { value: number; suffix?: string; label: string }) {
+  const { ref, count } = useCountUp(value, 1600);
+  return (
+    <div>
+      <span ref={ref} style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif", display: "block" }}>
+        {count.toLocaleString()}{suffix}
+      </span>
+      <div style={{ fontSize: 13, color: "#64748B", fontWeight: 500, marginTop: 2 }}>{label}</div>
+    </div>
+  );
+}
 
 function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -642,6 +659,7 @@ function CourseCard({ course }: { course: CourseType }) {
   }
   return (
     <div
+      className="course-card"
       style={{
         background: "#FFFFFF",
         border: `1.5px solid ${course.border}`,
@@ -1130,50 +1148,70 @@ export default function Landing() {
         }} />
 
         <div style={{ position: "relative", maxWidth: 800, margin: "0 auto" }}>
-          {/* Hero logo mark */}
-          <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
+          {/* Hero logo mark — floats down */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}
+          >
             <img
               src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png"
               alt="Echelon Institute"
               style={{ height: 120, width: "auto", filter: "brightness(0) invert(1)" }}
             />
-          </div>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)",
-            borderRadius: 20, padding: "6px 16px", marginBottom: 24,
-            border: "1px solid rgba(255,255,255,0.15)",
-          }}>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.25 }}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)",
+              borderRadius: 20, padding: "6px 16px", marginBottom: 24,
+              border: "1px solid rgba(255,255,255,0.15)",
+            }}
+          >
             <span style={{ fontSize: 12 }}>🇨🇦</span>
             <span style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>
               Built for Canadian Water & Wastewater Operators
             </span>
-          </div>
+          </motion.div>
 
-          <h1 style={{
-            fontSize: "clamp(28px, 5vw, 56px)",
-            fontWeight: 800,
-            color: "#FFFFFF",
-            lineHeight: 1.15,
-            letterSpacing: "-0.03em",
-            margin: "0 0 20px 0",
-          }}>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            style={{
+              fontSize: "clamp(28px, 5vw, 56px)",
+              fontWeight: 800,
+              color: "#FFFFFF",
+              lineHeight: 1.15,
+              letterSpacing: "-0.03em",
+              margin: "0 0 20px 0",
+            }}
+          >
             Pass Your Operator Exam.<br />
             <span style={{ background: "linear-gradient(90deg, #38BDF8, #34D399)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               Advance Your Career.
             </span>
-          </h1>
+          </motion.h1>
 
-          <p style={{
-            fontSize: "clamp(14px, 2vw, 18px)",
-            color: "rgba(255,255,255,0.75)",
-            lineHeight: 1.7,
-            maxWidth: 600,
-            margin: "0 auto 36px",
-          }}>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: "easeOut", delay: 0.55 }}
+            style={{
+              fontSize: "clamp(14px, 2vw, 18px)",
+              color: "rgba(255,255,255,0.75)",
+              lineHeight: 1.7,
+              maxWidth: 600,
+              margin: "0 auto 36px",
+            }}
+          >
             Canada's AI-powered exam prep platform for water and wastewater operators.
             Adaptive practice questions, 400+ flashcards, interactive process guides, and an AI tutor available 24/7.
-          </p>
+          </motion.p>
 
           {/* Province-aware hero CTA */}
           {(() => {
@@ -1181,7 +1219,11 @@ export default function Landing() {
             const ctaHref = isWestern ? "/wpi-class1-water" : "/quiz";
             const ctaLabel = isWestern ? `Try Free WPI Class I Practice →` : "Try Free OIT Practice →";
             return (
-          <div className="landing-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.7 }}
+            className="landing-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href={ctaHref}>
               <button style={{
                 padding: "14px 32px", borderRadius: 12,
@@ -1205,11 +1247,19 @@ export default function Landing() {
                 View Pricing
               </button>
             </Link>
-          </div>
+          </motion.div>
             );
           })()}
         </div>
       </section>
+
+      {/* ── Wave Divider ── */}
+      <div style={{ lineHeight: 0, background: "#FFFFFF" }}>
+        <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" style={{ display: "block", width: "100%" }}>
+          <path d="M0,30 C360,60 1080,0 1440,30 L1440,0 L0,0 Z" fill="#0F172A" />
+        </svg>
+      </div>
+
       {/* ── Stats Bar ── */}
       <section style={{
         background: "#FFFFFF",
@@ -1224,18 +1274,28 @@ export default function Landing() {
             gap: 24, textAlign: "center",
           }}
         >
-          {STATS.map(s => (
-            <div key={s.label}>
-              <div style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif" }}>
-                {s.value}
-              </div>
-              <div style={{ fontSize: 13, color: "#64748B", fontWeight: 500, marginTop: 2 }}>{s.label}</div>
+          <StaggerContainer style={{ display: "contents" } as React.CSSProperties}>
+          <StaggerItem>
+            <AnimatedStat value={8500} suffix="+" label="Practice Questions" />
+          </StaggerItem>
+          <StaggerItem>
+            <AnimatedStat value={19} label="Certification Courses" />
+          </StaggerItem>
+          <StaggerItem>
+            <AnimatedStat value={5} label="Specialization Tracks" />
+          </StaggerItem>
+          <StaggerItem>
+            <div>
+              <div style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif" }}>Free</div>
+              <div style={{ fontSize: 13, color: "#64748B", fontWeight: 500, marginTop: 2 }}>OIT Access</div>
             </div>
-          ))}
+          </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* ── What's New Banner ── */}
+      <SlideLeft delay={0.1}>
       <div style={{ padding: "32px 24px 0", maxWidth: 1200, margin: "0 auto" }}>
         <div
           className="landing-whats-new"
@@ -1277,9 +1337,11 @@ export default function Landing() {
           </a>
         </div>
       </div>
+      </SlideLeft>
 
       {/* ── Course Catalogue ── */}
       <section id="courses" className="landing-course-section" style={{ padding: "72px 24px", maxWidth: 1200, margin: "0 auto" }}>
+        <FadeUp>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
             Choose Your Certification Track
@@ -1357,6 +1419,7 @@ export default function Landing() {
             </button>
           </div>
         </div>
+        </FadeUp>
 
         <div style={{
           display: "grid",
@@ -1375,6 +1438,7 @@ export default function Landing() {
         padding: "72px 24px",
       }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <FadeUp>
           <div style={{ textAlign: "center", marginBottom: 52 }}>
             <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
               Every Tool You Need to Pass
@@ -1383,13 +1447,16 @@ export default function Landing() {
               Built specifically for Canadian operator exams — not generic quiz apps repurposed for water treatment.
             </p>
           </div>
+          </FadeUp>
 
+          <StaggerContainer>
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
             gap: 20,
           }}>
             {FEATURES.map(f => (
+              <StaggerItem key={f.title}>
               <Link key={f.title} href={f.href}>
                 <div style={{
                   background: "rgba(255,255,255,0.05)",
@@ -1423,8 +1490,10 @@ export default function Landing() {
                   <div style={{ fontSize: 11, fontWeight: 700, color: f.color }}>Open →</div>
                 </div>
               </Link>
+              </StaggerItem>
             ))}
           </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -1433,6 +1502,7 @@ export default function Landing() {
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
 
           {/* Header */}
+          <FadeUp>
           <div style={{ textAlign: "center", marginBottom: 52 }}>
             <div style={{
               display: "inline-block",
@@ -1456,6 +1526,7 @@ export default function Landing() {
               and American exam apps that referenced the wrong regulations entirely. Echelon was built to fix that.
             </p>
           </div>
+          </FadeUp>
 
           {/* Two-column: story + timeline */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, marginBottom: 48 }}>
@@ -1630,6 +1701,7 @@ export default function Landing() {
       </section>
 
       {/* ── CTA Banner ── */}
+      <FadeUp>
       <section style={{
         background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
         padding: "64px 24px",
@@ -1653,15 +1725,18 @@ export default function Landing() {
           </button>
         </Link>
       </section>
+      </FadeUp>
 
       {/* ── Testimonials Section ── */}
       <section style={{ background: "#FFFFFF", padding: "80px 24px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <FadeUp>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div style={{ display: "inline-block", background: "#EFF6FF", color: "#1D4ED8", borderRadius: 20, padding: "4px 14px", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 12 }}>Student Stories</div>
             <h2 style={{ fontSize: 32, fontWeight: 900, color: "#0F172A", margin: "0 0 12px", letterSpacing: "-0.02em" }}>Operators Who Passed With Echelon</h2>
             <p style={{ fontSize: 16, color: "#64748B", maxWidth: 520, margin: "0 auto" }}>Real feedback from water and wastewater operators across Canada.</p>
           </div>
+          </FadeUp>
           <div className="testimonials-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
             {[
               {

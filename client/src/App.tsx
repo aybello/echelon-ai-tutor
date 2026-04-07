@@ -231,7 +231,9 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <div className="page-enter">
+            <Router />
+          </div>
           <PhoneGate />
         </TooltipProvider>
       </ThemeProvider>

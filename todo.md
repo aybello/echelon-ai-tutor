@@ -316,3 +316,15 @@
 - [x] Server-side error owner notifications for webhook and verifySession failures
 - [x] Admin health dashboard: recent purchases, webhook events, failed emails, system status
 - [ ] E2E integration tests for full purchase flow (Stripe checkout → webhook → verifySession → email)
+
+## Phase 1 Animations (April 7 2026)
+- [ ] Install Framer Motion
+- [ ] Scroll entrance animations on all Landing page sections
+- [ ] Counting stats animation (numbers count up on scroll into view)
+- [ ] Animated wave divider between sections
+- [ ] Card hover lift + gradient border effect
+- [ ] Button hover scale + glow polish
+- [ ] Page fade transitions
+- [ ] Branded loading spinner (replace plain spinner)
+- [ ] Reduced motion support (prefers-reduced-motion)
+- [ ] Mobile performance check
