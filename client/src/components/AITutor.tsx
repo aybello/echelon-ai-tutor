@@ -82,12 +82,14 @@ export default function AITutor({
       } else {
         initMsg = `Hi! I'm your Echelon AI Tutor. I'm here to help you understand any topic. What would you like to work on?`;
       }
-    } else if (userAnswer !== null && question) {
+    } else if (userAnswer !== null && question && correctIdx !== undefined) {
       const isCorrect = userAnswer === correctIdx;
+      const selectedText = question.options?.[userAnswer] ?? "your selection";
+      const correctText = question.options?.[correctIdx] ?? "the correct option";
       if (isCorrect) {
-        initMsg = `✓ Correct! You selected **${question.options[userAnswer]}**.\n\nWould you like me to explain *why* this is right in more depth, or show you the step-by-step working so you can apply the same logic to harder questions?`;
+        initMsg = `✓ Correct! You selected **${selectedText}**.\n\nWould you like me to explain *why* this is right in more depth, or show you the step-by-step working so you can apply the same logic to harder questions?`;
       } else {
-        initMsg = `Let's work through this together.\n\nYou selected **${question.options[userAnswer]}** — ${(question as any).wrongExp?.[userAnswer] || "that's not quite right."}\n\nThe correct answer is **${question.options[correctIdx ?? 0]}**.\n\nWould you like me to walk through the solution step by step, or would you like me to explain the underlying concept first?`;
+        initMsg = `Let's work through this together.\n\nYou selected **${selectedText}** — ${(question as any).wrongExp?.[userAnswer] || "that's not quite right."}\n\nThe correct answer is **${correctText}**.\n\nWould you like me to walk through the solution step by step, or would you like me to explain the underlying concept first?`;
       }
     } else {
       initMsg = `Hi! I'm your Echelon AI Tutor — here to help you master your Canadian water and wastewater operator certification exam.\n\nI can explain concepts, walk through calculations step by step, and help you understand *why* answers are right or wrong.\n\nWhat would you like to work on?`;
@@ -129,7 +131,7 @@ ${
 Current question: ${questionText}
 Module: ${question?.module}
 Type: ${(question as any)?.type ?? "conceptual"}
-Correct answer: ${question?.options[correctIdx ?? 0]}
+Correct answer: ${correctIdx !== undefined ? question?.options[correctIdx] : "(not yet confirmed)"}
 Explanation: ${question?.explanation}
 ${(question as any)?.formula ? `Formula: ${(question as any).formula}` : ""}
 ${question?.steps ? `Steps: ${question.steps.map((s, i) => `${i + 1}. ${s.l}: ${s.c}`).join(" | ")}` : ""}
