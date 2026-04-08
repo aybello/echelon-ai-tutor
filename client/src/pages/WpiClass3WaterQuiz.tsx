@@ -12,6 +12,7 @@ import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGa
 import PurchaseGate from "@/components/PurchaseGate";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import { shuffle } from "@/lib/utils";
+import { WPI_CLASS3_WATER_OVERVIEWS } from "@/lib/moduleOverviews";
 
 type QCompat = WpiClass3WaterQuestion & { q: string };
 function toCompat(q: WpiClass3WaterQuestion): QCompat {
@@ -199,6 +200,7 @@ export default function WpiClass3WaterQuiz() {
           setHistory([]); setCurrent(toCompat(shuffle([...wpiClass3WaterQuestions])[0]));
           setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false);
         }}
+        moduleOverviews={WPI_CLASS3_WATER_OVERVIEWS}
         mockExamHref="/wpi-class3-water-mock"
         renderAITutor={() => (
           <AITutor

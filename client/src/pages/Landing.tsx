@@ -462,6 +462,7 @@ const WPI_WATER_COURSES = [
     productKey: "wpi-class3-water",
     quizHref: "/wpi-class3-water",
     mockHref: "/wpi-class3-water-mock",
+    flashcardHref: "/wpi-class3-water-flashcards",
   },
   {
     code: "WPI-W4",
@@ -481,6 +482,7 @@ const WPI_WATER_COURSES = [
     productKey: "wpi-class4-water",
     quizHref: "/wpi-class4-water",
     mockHref: "/wpi-class4-water-mock",
+    flashcardHref: "/wpi-class4-water-flashcards",
   },
 ];
 
@@ -541,6 +543,7 @@ const WPI_WASTEWATER_COURSES = [
     productKey: "wpi-class3-wastewater",
     quizHref: "/wpi-class3-wastewater",
     mockHref: "/wpi-class3-wastewater-mock",
+    flashcardHref: "/wpi-class3-wastewater-flashcards",
   },
   {
     code: "WPI-WW4",
@@ -560,6 +563,7 @@ const WPI_WASTEWATER_COURSES = [
     productKey: "wpi-class4-wastewater",
     quizHref: "/wpi-class4-wastewater",
     mockHref: "/wpi-class4-wastewater-mock",
+    flashcardHref: "/wpi-class4-wastewater-flashcards",
   },
 ];
 

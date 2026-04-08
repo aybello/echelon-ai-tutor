@@ -12,6 +12,7 @@ import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGa
 import PurchaseGate from "@/components/PurchaseGate";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import { shuffle } from "@/lib/utils";
+import { WPI_CLASS4_WASTEWATER_OVERVIEWS } from "@/lib/moduleOverviews";
 
 type QCompat = WpiClass4WastewaterQuestion & { q: string };
 function toCompat(q: WpiClass4WastewaterQuestion): QCompat {
@@ -199,6 +200,7 @@ export default function WpiClass4WastewaterQuiz() {
           setHistory([]); setCurrent(toCompat(shuffle([...wpiClass4WastewaterQuestions])[0]));
           setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false);
         }}
+        moduleOverviews={WPI_CLASS4_WASTEWATER_OVERVIEWS}
         mockExamHref="/wpi-class4-wastewater-mock"
         renderAITutor={() => (
           <AITutor

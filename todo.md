@@ -384,3 +384,11 @@
 - [x] Write WPI_CLASS1_WATER_OVERVIEWS (5 modules: Treatment Process, Equipment O&M, Laboratory Analysis, Source Water, Safety & Admin)
 - [x] Append WPI_CLASS1_WATER_OVERVIEWS to moduleOverviews.ts
 - [x] Wire WPI_CLASS1_WATER_OVERVIEWS into WpiClass1WaterQuiz.tsx
+
+## WPI Class 3 & 4 Study Notes + Flashcard Fix (Apr 8 2026)
+- [ ] Write and wire WPI Class 3 Water study notes
+- [ ] Write and wire WPI Class 3 Wastewater study notes
+- [ ] Write and wire WPI Class 4 Water study notes
+- [ ] Write and wire WPI Class 4 Wastewater study notes
+- [ ] Fix missing flashcard links on WPI Class 3 Water course card
+- [ ] Fix missing flashcard links on WPI Class 3 Wastewater course card
