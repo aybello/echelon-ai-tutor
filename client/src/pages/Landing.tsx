@@ -505,6 +505,7 @@ const WPI_WASTEWATER_COURSES = [
     productKey: "wpi-class1-wastewater",
     quizHref: "/wpi-class1-wastewater",
     mockHref: "/wpi-class1-wastewater-mock",
+    flashcardHref: "/wpi-class1-wastewater-flashcards",
   },
   {
     code: "WPI-WW2",

@@ -543,7 +543,7 @@ export default function WpiLanding() {
                   <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>{cls.price}</div>
                   <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>Unlimited · {cls.questions} questions</div>
                   <ul style={{ listStyle: "none", padding: 0, margin: "0 0 14px", display: "flex", flexDirection: "column" as const, gap: 5 }}>
-                    {["Practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"].map(f => (
+                    {["Practice questions", "Timed mock exam", "Flashcards", "Study notes", "Formula sheet", "AI Tutor", "Score history"].map(f => (
                       <li key={f} style={{ fontSize: 12, color: "#0F172A", display: "flex", alignItems: "center", gap: 6 }}>
                         <span style={{ color: cls.color, fontWeight: 700, fontSize: 11 }}>✓</span> {f}
                       </li>
@@ -593,7 +593,7 @@ export default function WpiLanding() {
                   <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>{ww.price}</div>
                   <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>Unlimited · {ww.questions} questions</div>
                   <ul style={{ listStyle: "none", padding: 0, margin: "0 0 14px", display: "flex", flexDirection: "column" as const, gap: 5 }}>
-                    {["Practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "Score history"].map(f => (
+                    {["Practice questions", "Timed mock exam", "Flashcards", "Study notes", "Formula sheet", "AI Tutor", "Score history"].map(f => (
                       <li key={f} style={{ fontSize: 12, color: "#0F172A", display: "flex", alignItems: "center", gap: 6 }}>
                         <span style={{ color: ww.color, fontWeight: 700, fontSize: 11 }}>✓</span> {f}
                       </li>
