@@ -126,6 +126,7 @@ export default function Class1WastewaterQuiz() {
         setConfidence(null);
         setConfirmed(false);
         setShowSteps(false);
+        setTutorOpen(false);
       }
     }
   }, [calcOnly, allQuestions, usedIds, selectedModule]);
@@ -144,6 +145,7 @@ export default function Class1WastewaterQuiz() {
       setConfidence(null);
       setConfirmed(false);
       setShowSteps(false);
+      setTutorOpen(false);
     }
   }, [allQuestions, usedIds, calcOnly]);
 
@@ -167,6 +169,7 @@ export default function Class1WastewaterQuiz() {
           setConfidence(null);
           setConfirmed(false);
           setShowSteps(false);
+          setTutorOpen(false);
         }}
       />
     );
