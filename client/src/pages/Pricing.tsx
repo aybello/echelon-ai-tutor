@@ -911,8 +911,8 @@ export default function Pricing() {
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             {[
               {
-                q: "Why are the prices higher than other prep courses?",
-                a: "Because this isn't a video course — it's a career accelerator. Operators who pass Class 3 or Class 4 typically earn $85K–$130K+. Your Practice Pass costs less than one day's pay at that salary. We price based on outcome value, not content volume.",
+                q: "How is Echelon priced compared to other prep courses?",
+                a: "Echelon starts at CA$49 for OIT and CA$99 for Class 1 — less than most textbooks. We keep prices accessible because we want every operator to be able to prepare properly, regardless of budget. Higher class levels (3 and 4) are priced at CA$249–$299 to reflect the larger question banks and more complex content.",
               },
               {
                 q: "Do the Practice Passes expire?",
@@ -932,11 +932,11 @@ export default function Pricing() {
               },
               {
                 q: "Can I get a refund?",
-                a: "We offer a 7-day money-back guarantee if you're not satisfied. Email support@echeloninstitute.ca.",
+                a: "We offer a 7-day money-back guarantee if you're not satisfied. Given our low price points, we're confident you'll find the value — but if not, email support@echeloninstitute.ca and we'll make it right.",
               },
               {
                 q: "Which certification levels are available right now?",
-                a: "All 11 courses are live: OIT Water, OIT Wastewater, Class 1–4 Water Treatment, and Class 1–4 Wastewater Treatment, plus WQA. Every course includes a practice quiz, timed mock exam, formula sheet, and AI Tutor.",
+                a: "All 11 Ontario courses are live: OIT Water (CA$49), OIT Wastewater (CA$49), Class 1–4 Water Treatment (CA$99–$299), Class 1–4 Wastewater Treatment (CA$99–$299), and WQA (CA$149). WPI courses for BC, Alberta, Saskatchewan, and Manitoba are also available at the same price points. Every course includes a practice quiz, timed mock exam, formula sheet, and AI Tutor.",
               },
             ].map(faq => (
               <div key={faq.q} className="faq-item">
