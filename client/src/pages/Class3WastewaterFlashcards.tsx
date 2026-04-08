@@ -11,7 +11,7 @@ export default function Class3WastewaterFlashcards() {
         examType="class3-ww"
         productKey="class3-ww"
         productName="Class 3 Wastewater Treatment Practice Pass"
-        price={349}
+        price={249}
       >
         <FlashcardShell
           questions={CLASS3_WW_QUESTIONS as unknown as FlashcardQuestion[]}

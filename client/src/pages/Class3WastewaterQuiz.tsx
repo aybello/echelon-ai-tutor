@@ -155,7 +155,7 @@ export default function Class3WastewaterQuiz() {
         questionsAnswered={history.length}
         productKey="class3-ww"
         productName="Class 3 Wastewater Treatment Practice Pass"
-        priceLabel="CA$349"
+        priceLabel="CA$249"
         paidFeatures={[
           "500+ Class 3 Wastewater questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
@@ -180,7 +180,7 @@ export default function Class3WastewaterQuiz() {
       examType="class3-ww"
       productKey="class3-ww"
       productName="Ontario Class 3 · Wastewater Treatment"
-      price={349}
+      price={249}
     >
       <QuizShell
         currentPath="/class3-ww"

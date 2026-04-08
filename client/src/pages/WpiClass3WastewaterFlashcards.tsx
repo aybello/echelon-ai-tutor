@@ -11,7 +11,7 @@ export default function WpiClass3WastewaterFlashcards() {
         examType="wpi-class3-wastewater"
         productKey="wpi-class3-wastewater"
         productName="WPI Class III Wastewater Practice Pass"
-        price={349}
+        price={249}
       >
         <FlashcardShell
           questions={wpiClass3WastewaterQuestions as unknown as FlashcardQuestion[]}

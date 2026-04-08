@@ -41,7 +41,7 @@ export default function Class2WaterMockExam() {
       questionPool={POOL}
       productKey="class2-water"
       productName="Class 2 Water Treatment Practice Pass"
-      price={199}
+      price={149}
       formulaPath="/formulas-water2"
       formulaLabel="Class 2 Water Formulas"
       backPath="/ontario"

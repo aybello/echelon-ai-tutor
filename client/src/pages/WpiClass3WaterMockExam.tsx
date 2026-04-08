@@ -40,7 +40,7 @@ export default function WpiClass3WaterMockExam() {
       questionPool={POOL}
       productKey="wpi-class3-water"
       productName="WPI Class III Water Treatment Practice Pass"
-      price={349}
+      price={249}
       backPath="/wpi"
       practicePath="/wpi-class3-water"
       practiceLabel="Class III Water Practice"

@@ -140,7 +140,7 @@ export default function WpiClass2WaterQuiz() {
         questionsAnswered={history.length}
         productKey="wpi-class2-water"
         productName="WPI Class II Water Treatment Practice Pass"
-        priceLabel="CA$199"
+        priceLabel="CA$149"
         paidFeatures={[
           "501 WPI Class II Water questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
@@ -162,7 +162,7 @@ export default function WpiClass2WaterQuiz() {
       examType="wpi-class2-water"
       productKey="wpi-class2-water"
       productName="WPI Class II Water Treatment Practice Pass"
-      price={199}
+      price={149}
     >
       <QuizShell
         currentPath="/wpi-class2-water"

@@ -11,7 +11,7 @@ export default function WpiClass2WastewaterFlashcards() {
         examType="wpi-class2-wastewater"
         productKey="wpi-class2-wastewater"
         productName="WPI Class II Wastewater Treatment Practice Pass"
-        price={199}
+        price={149}
       >
         <FlashcardShell
           questions={wpiClass2WastewaterQuestions as unknown as FlashcardQuestion[]}

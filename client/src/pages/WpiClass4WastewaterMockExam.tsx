@@ -44,7 +44,7 @@ export default function WpiClass4WastewaterMockExam() {
       questionPool={POOL}
       productKey="wpi-class4-wastewater"
       productName="WPI Class IV Wastewater Practice Pass"
-      price={499}
+      price={299}
       backPath="/wpi"
       practicePath="/wpi-class4-wastewater"
       practiceLabel="Class IV Wastewater Practice"

@@ -11,7 +11,7 @@ export default function Class3WaterFlashcards() {
         examType="class3-water"
         productKey="class3-water"
         productName="Class 3 Water Treatment Practice Pass"
-        price={349}
+        price={249}
       >
         <FlashcardShell
           questions={CLASS3_WATER_QUESTIONS as unknown as FlashcardQuestion[]}

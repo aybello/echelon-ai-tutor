@@ -11,7 +11,7 @@ export default function WQAFlashcards() {
         examType="wqa"
         productKey="wqa"
         productName="WQA Practice Pass"
-        price={179}
+        price={149}
       >
         <FlashcardShell
           questions={WQA_QUESTIONS as unknown as FlashcardQuestion[]}

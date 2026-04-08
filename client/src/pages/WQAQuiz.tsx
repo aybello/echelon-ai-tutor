@@ -153,7 +153,7 @@ export default function WQAQuiz() {
         questionsAnswered={history.length}
         productKey="wqa"
         productName="WQA Practice Pass"
-        priceLabel="CA$179"
+        priceLabel="CA$149"
         paidFeatures={[
           "475 WQA questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
@@ -177,7 +177,7 @@ export default function WQAQuiz() {
       examType="wqa"
       productKey="wqa"
       productName="WQA · Water Quality Analyst"
-      price={179}
+      price={149}
     >
       <QuizShell
         currentPath="/wqa"
