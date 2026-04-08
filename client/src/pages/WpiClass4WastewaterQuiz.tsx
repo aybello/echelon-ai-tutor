@@ -101,7 +101,7 @@ export default function WpiClass4WastewaterQuiz() {
     }
     const next = getNext();
     setCurrent(next);
-    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
   }
 
   const goBack = useCallback(() => {
@@ -121,7 +121,7 @@ export default function WpiClass4WastewaterQuiz() {
     setCalcOnly(next);
     const newPool = wpiClass4WastewaterQuestions.filter(q => !next || q.isCalc);
     setCurrent(newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null);
-    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setHistory([]);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false); setHistory([]);
   }
 
   function handleModuleChange(mod: string | null) {
@@ -129,7 +129,7 @@ export default function WpiClass4WastewaterQuiz() {
     const newPool = (mod ? wpiClass4WastewaterQuestions.filter(q => q.module === mod) : wpiClass4WastewaterQuestions)
       .filter(q => !calcOnly || q.isCalc);
     setCurrent(newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null);
-    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
   }
 
   const correctCount = history.filter(h => h.correct).length;
@@ -150,7 +150,7 @@ export default function WpiClass4WastewaterQuiz() {
         onUnlocked={() => {
           setTrialUnlocked(); setTrialDone(false);
           setCurrent(getNext());
-          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false);
+          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
         }}
       />
     );
@@ -198,7 +198,7 @@ export default function WpiClass4WastewaterQuiz() {
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={() => {
           setHistory([]); setCurrent(toCompat(shuffle([...wpiClass4WastewaterQuestions])[0]));
-          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false);
+          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
         }}
         moduleOverviews={WPI_CLASS4_WASTEWATER_OVERVIEWS}
         mockExamHref="/wpi-class4-wastewater-mock"

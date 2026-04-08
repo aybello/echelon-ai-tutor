@@ -106,7 +106,7 @@ export default function WpiClass1WaterQuiz() {
     }
     const next = getNext();
     setCurrent(next);
-    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
   }
 
   const goBack = useCallback(() => {
@@ -126,7 +126,7 @@ export default function WpiClass1WaterQuiz() {
     setCalcOnly(next);
     const newPool = wpiClass1WaterQuestions.filter(q => !next || q.isCalc);
     setCurrent(newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null);
-    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setHistory([]);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false); setHistory([]);
   }
 
   function handleModuleChange(mod: string | null) {
@@ -134,7 +134,7 @@ export default function WpiClass1WaterQuiz() {
     const newPool = (mod ? wpiClass1WaterQuestions.filter(q => q.module === mod) : wpiClass1WaterQuestions)
       .filter(q => !calcOnly || q.isCalc);
     setCurrent(newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null);
-    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
   }
 
   const correctCount = history.filter(h => h.correct).length;
@@ -156,7 +156,7 @@ export default function WpiClass1WaterQuiz() {
         onUnlocked={() => {
           setTrialUnlocked(); setTrialDone(false);
           setCurrent(getNext());
-          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false);
+          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
         }}
       />
     );
@@ -204,7 +204,7 @@ export default function WpiClass1WaterQuiz() {
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={() => {
           setHistory([]); setCurrent(toCompat(shuffle([...wpiClass1WaterQuestions])[0]));
-          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false);
+          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
         }}
         mockExamHref="/wpi-class1-water-mock"
         moduleOverviews={WPI_CLASS1_WATER_OVERVIEWS}
