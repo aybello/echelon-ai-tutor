@@ -36,6 +36,20 @@ export default function AITutor({
   patternMode,
   onClose,
 }: Props) {
+  // Normalise field names — Ontario uses `correct`, WPI uses `correctAnswer`
+  const correctIdx: number | undefined =
+    (question as any)?.correctAnswer ?? (question as any)?.correct ?? undefined;
+  // Normalise question text — Ontario uses `q`, WPI uses `question`
+  const questionText: string =
+    (question as any)?.question ?? (question as any)?.q ?? "";
+  // Normalise history entries — Ontario uses { q, selected, confidence } at top level,
+  // WPI uses { questionId, module, correct, confidence } at top level
+  const normHistory = (history as any[]).map((h: any) => ({
+    questionId: h.questionId ?? h.q?.id ?? 0,
+    module: h.module ?? h.q?.module ?? "Unknown",
+    correct: h.correct,
+    confidence: h.confidence ?? 3,
+  }));
   const [messages, setMessages] = useState<
     { role: "user" | "assistant"; content: string }[]
   >([]);
@@ -55,7 +69,7 @@ export default function AITutor({
 
     if (patternMode) {
       const byModule: Record<string, { wrong: number; total: number }> = {};
-      history.forEach((h) => {
+      normHistory.forEach((h) => {
         if (!byModule[h.module]) byModule[h.module] = { wrong: 0, total: 0 };
         byModule[h.module].total++;
         if (!h.correct) byModule[h.module].wrong++;
@@ -69,11 +83,11 @@ export default function AITutor({
         initMsg = `Hi! I'm your Echelon AI Tutor. I'm here to help you understand any topic. What would you like to work on?`;
       }
     } else if (userAnswer !== null && question) {
-      const isCorrect = userAnswer === question.correct;
+      const isCorrect = userAnswer === correctIdx;
       if (isCorrect) {
         initMsg = `✓ Correct! You selected **${question.options[userAnswer]}**.\n\nWould you like me to explain *why* this is right in more depth, or show you the step-by-step working so you can apply the same logic to harder questions?`;
       } else {
-        initMsg = `Let's work through this together.\n\nYou selected **${question.options[userAnswer]}** — ${question.wrongExp?.[userAnswer] || "that's not quite right."}\n\nThe correct answer is **${question.options[question.correct]}**.\n\nWould you like me to walk through the solution step by step, or would you like me to explain the underlying concept first?`;
+        initMsg = `Let's work through this together.\n\nYou selected **${question.options[userAnswer]}** — ${(question as any).wrongExp?.[userAnswer] || "that's not quite right."}\n\nThe correct answer is **${question.options[correctIdx ?? 0]}**.\n\nWould you like me to walk through the solution step by step, or would you like me to explain the underlying concept first?`;
       }
     } else {
       initMsg = `Hi! I'm your Echelon AI Tutor — here to help you master your Canadian water and wastewater operator certification exam.\n\nI can explain concepts, walk through calculations step by step, and help you understand *why* answers are right or wrong.\n\nWhat would you like to work on?`;
@@ -96,8 +110,8 @@ export default function AITutor({
     setLastUserMsg(userMsg);
 
     const historyContext =
-      history.length > 0
-        ? `\n\nStudent's recent performance:\n${history
+      normHistory.length > 0
+        ? `\n\nStudent's recent performance:\n${normHistory
             .slice(-5)
             .map(
               (h) =>
@@ -112,16 +126,16 @@ ${
   patternMode
     ? `PATTERN ANALYSIS MODE: The student has a pattern of getting ${question?.module || "certain"} questions wrong. Your goal is to diagnose the root misconception through Socratic questioning. Ask them to explain their thinking, identify the exact point where their mental model breaks down, and rebuild it correctly.`
     : `
-Current question: ${(question as any)?.question ?? question?.q}
+Current question: ${questionText}
 Module: ${question?.module}
-Type: ${question?.type}
-Correct answer: ${question?.options[question?.correct ?? 0]}
+Type: ${(question as any)?.type ?? "conceptual"}
+Correct answer: ${question?.options[correctIdx ?? 0]}
 Explanation: ${question?.explanation}
-${question?.formula ? `Formula: ${question.formula}` : ""}
+${(question as any)?.formula ? `Formula: ${(question as any).formula}` : ""}
 ${question?.steps ? `Steps: ${question.steps.map((s, i) => `${i + 1}. ${s.l}: ${s.c}`).join(" | ")}` : ""}
-${userAnswer !== null ? `Student selected: ${question?.options[userAnswer ?? 0]} (${userAnswer === question?.correct ? "CORRECT" : "INCORRECT"})` : "Student hasn't answered yet."}
-${userAnswer !== null && userAnswer !== question?.correct ? `Why student was wrong: ${question?.wrongExp?.[userAnswer ?? 0]}` : ""}
-${question?.tip ? `Operator tip: ${question.tip}` : ""}`
+${userAnswer !== null ? `Student selected: ${question?.options[userAnswer ?? 0]} (${userAnswer === correctIdx ? "CORRECT" : "INCORRECT"})` : "Student hasn't answered yet."}
+${userAnswer !== null && userAnswer !== correctIdx ? `Why student was wrong: ${(question as any)?.wrongExp?.[userAnswer ?? 0] ?? ""}` : ""}
+${(question as any)?.tip ? `Operator tip: ${(question as any).tip}` : ""}`
 }
 ${historyContext}
 
@@ -307,9 +321,9 @@ Your approach:
           <div
             style={{ fontSize: 11, fontWeight: 600, color: "#0F172A", lineHeight: 1.4 }}
           >
-            {question.module} — {question.difficulty}
+            {question.module}{(question as any).difficulty ? ` — ${(question as any).difficulty}` : ""}
           </div>
-          {question.formula && (
+          {(question as any).formula && (
             <div
               style={{
                 fontFamily:
@@ -323,7 +337,7 @@ Your approach:
                 marginTop: 4,
               }}
             >
-              {question.formula}
+              {(question as any).formula}
             </div>
           )}
         </div>
