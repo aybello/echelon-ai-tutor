@@ -392,3 +392,7 @@
 - [ ] Write and wire WPI Class 4 Wastewater study notes
 - [ ] Fix missing flashcard links on WPI Class 3 Water course card
 - [ ] Fix missing flashcard links on WPI Class 3 Wastewater course card
+
+## AI Tutor Fix for WPI Quiz Pages (Apr 8 2026)
+- [x] Diagnose why AI Tutor in WPI quiz pages doesn't recognize the current question
+- [x] Fix all 8 WPI quiz pages to pass correct question context to AI Tutor

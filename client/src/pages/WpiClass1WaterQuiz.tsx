@@ -210,9 +210,9 @@ export default function WpiClass1WaterQuiz() {
         moduleOverviews={WPI_CLASS1_WATER_OVERVIEWS}
         renderAITutor={() => (
           <AITutor
-            question={null}
+            question={current as any}
             userAnswer={selected}
-            history={[]}
+            history={history as any}
             patternMode={false}
             onClose={() => setTutorOpen(false)}
           />

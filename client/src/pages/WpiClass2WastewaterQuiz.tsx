@@ -204,9 +204,9 @@ export default function WpiClass2WastewaterQuiz() {
         moduleOverviews={WPI_CLASS2_WASTEWATER_OVERVIEWS}
         renderAITutor={() => (
           <AITutor
-            question={null}
+            question={current as any}
             userAnswer={selected}
-            history={[]}
+            history={history as any}
             patternMode={false}
             onClose={() => setTutorOpen(false)}
           />

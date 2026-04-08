@@ -204,9 +204,9 @@ export default function WpiClass3WaterQuiz() {
         mockExamHref="/wpi-class3-water-mock"
         renderAITutor={() => (
           <AITutor
-            question={null}
+            question={current as any}
             userAnswer={selected}
-            history={[]}
+            history={history as any}
             patternMode={false}
             onClose={() => setTutorOpen(false)}
           />
