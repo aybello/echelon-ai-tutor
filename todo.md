@@ -379,3 +379,8 @@
 - [x] Update WQA question count in WQAQuiz.tsx if present
 - [x] OIT Water Stripe price already uses price_data dynamically — no Dashboard update needed (priceCAD: 5900 in products.ts)
 - [x] OIT Wastewater Stripe price already uses price_data dynamically — no Dashboard update needed (priceCAD: 5900 in products.ts)
+
+## WPI Class 1 Study Notes (Apr 7 2026)
+- [x] Write WPI_CLASS1_WATER_OVERVIEWS (5 modules: Treatment Process, Equipment O&M, Laboratory Analysis, Source Water, Safety & Admin)
+- [x] Append WPI_CLASS1_WATER_OVERVIEWS to moduleOverviews.ts
+- [x] Wire WPI_CLASS1_WATER_OVERVIEWS into WpiClass1WaterQuiz.tsx

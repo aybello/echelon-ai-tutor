@@ -3464,3 +3464,244 @@ export const WQA_OVERVIEWS: Record<string, ModuleOverview> = {
       "DO saturation decreases with temperature: at 20 degrees C = 9.1 mg/L; at 10 degrees C = 11.3 mg/L; at 0 degrees C = 14.6 mg/L\nBOD:COD ratio = BOD5 / COD\nCT required increases as temperature decreases — use CT tables at the appropriate temperature",
   },
 };
+
+// ─── WPI Class 1 Water Treatment — Module Overviews ────────────────────────
+// Aligned with WPI Need-to-Know Criteria (Class I Water Treatment)
+// Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB)
+
+export const WPI_CLASS1_WATER_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Treatment Process": {
+    title: "Treatment Process",
+    intro:
+      "The Treatment Process module covers the fundamental unit operations used in a Class I water treatment plant: coagulation, flocculation, sedimentation, filtration, and disinfection. At this level, operators must understand the purpose of each process, the key control parameters, and how to recognize and respond to process upsets. WPI Class I exams place heavy emphasis on filter loading rates, CT calculations, and chemical dosing.",
+    keyPoints: [
+      {
+        heading: "Coagulation & Flocculation",
+        body: "Coagulation destabilizes colloidal particles by neutralizing their negative surface charge. Common coagulants include alum (Al₂(SO₄)₃·18H₂O) and ferric chloride (FeCl₃). Optimal coagulation occurs at a specific pH — alum works best at pH 6.5–7.5; ferric coagulants work over a wider range (pH 5–9). Jar testing is used to determine the optimal coagulant dose. Flocculation follows coagulation — gentle mixing (G value 10–75 s⁻¹) allows microflocs to collide and grow into settleable floc. Rapid mixing (G > 300 s⁻¹) disperses the coagulant; slow mixing builds floc.",
+      },
+      {
+        heading: "Sedimentation",
+        body: "Sedimentation (clarification) removes floc by gravity settling. The key design parameter is surface overflow rate (SOR), also called surface loading rate: SOR = Flow (m³/d) ÷ Surface Area (m²). Typical SOR for conventional clarifiers is 20–40 m³/m²/d. Weir overflow rate (WOR) = Flow ÷ Weir Length; typical WOR < 250 m³/m/d. Tube settlers and lamella plates increase effective settling area. Sludge blanket level must be monitored — if it rises too high, carryover occurs.",
+      },
+      {
+        heading: "Filtration",
+        body: "Rapid sand filtration removes residual floc and turbidity. Filter loading rate = Flow ÷ Filter Area; typical range 5–15 m³/m²/h (120–360 m³/m²/d). Headloss across the filter increases as it loads — backwash is triggered by headloss (typically 2–3 m), turbidity breakthrough, or time. Backwash rate must be sufficient to expand the bed 20–30% (typically 36–60 m³/m²/h). Dual-media filters (anthracite over sand) allow deeper penetration of solids and longer filter runs. Filter-to-waste (filter ripening) is used after backwash to prevent turbidity spikes.",
+      },
+      {
+        heading: "Disinfection & CT Concept",
+        body: "Disinfection inactivates pathogens using chlorine, chloramine, chlorine dioxide, ozone, or UV. The CT concept (CT = Concentration × Time) quantifies disinfection effectiveness. CT values are published by regulators for specific log inactivation of Giardia and Cryptosporidium at given temperatures and pH. Chlorine CT increases with higher pH and lower temperature. Free chlorine is more effective than combined chlorine (chloramines) for Giardia inactivation. Chloramines are used for distribution system residual to minimize DBP formation. The 4-log virus inactivation requirement is typically met at the treatment plant.",
+      },
+      {
+        heading: "Chemical Feed & Dosing",
+        body: "Chemical feed rate (kg/d) = Flow (m³/d) × Dose (mg/L) × 0.001. For liquid chemicals: Feed Rate (L/d) = [Flow (m³/d) × Dose (mg/L)] ÷ [Concentration (mg/L)]. Chlorine demand = chlorine applied − chlorine residual. Chlorine dose must satisfy demand plus maintain the required residual. Breakpoint chlorination destroys chloramines — the breakpoint occurs at approximately a 7.6:1 Cl₂:NH₃-N mass ratio. After the breakpoint, free chlorine residual forms.",
+      },
+    ],
+    tableHeadings: ["Process", "Key Parameter", "Typical Range"],
+    tableRows: [
+      ["Coagulation (Alum)", "Optimal pH", "6.5 – 7.5"],
+      ["Flocculation", "Velocity gradient (G)", "10 – 75 s⁻¹"],
+      ["Sedimentation", "Surface overflow rate", "20 – 40 m³/m²/d"],
+      ["Rapid sand filtration", "Loading rate", "5 – 15 m³/m²/h"],
+      ["Filtration backwash", "Backwash rate", "36 – 60 m³/m²/h"],
+      ["Chlorine residual (distribution)", "Free Cl₂ minimum", "≥ 0.2 mg/L (typical)"],
+    ],
+    examTips: [
+      "Filter loading rate formula: Flow ÷ Filter Area — watch units (m³/d vs m³/h vs m³/m²/h)",
+      "CT = Concentration (mg/L) × Contact Time (min) — higher CT = more inactivation",
+      "Alum coagulation lowers pH — lime or soda ash may be needed to correct pH",
+      "Breakpoint chlorination: the breakpoint is at ~7.6:1 Cl₂:NH₃-N ratio by mass",
+      "Jar test determines optimal coagulant dose and pH — always performed before changing coagulant",
+      "Surface overflow rate (SOR) is the primary design parameter for clarifiers — not depth",
+      "Filter-to-waste prevents turbidity spikes from reaching the distribution system after backwash",
+    ],
+    formulaHint:
+      "Filter Loading Rate = Flow ÷ Filter Area | SOR = Flow ÷ Clarifier Area | CT = C × T | Chemical Feed (kg/d) = Flow (m³/d) × Dose (mg/L) × 0.001",
+  },
+
+  "Equipment O&M": {
+    title: "Equipment O&M",
+    intro:
+      "The Equipment O&M module covers the operation, maintenance, and troubleshooting of the mechanical and electrical equipment found in a Class I water treatment plant. This includes pumps, motors, chemical feed systems, instrumentation, and control systems. Operators must be able to identify common failure modes, perform routine maintenance, and understand the importance of preventive maintenance programs.",
+    keyPoints: [
+      {
+        heading: "Pumps — Types and Operation",
+        body: "Centrifugal pumps are the most common type in water treatment — they move water using a rotating impeller. Key parameters: flow rate (Q), total dynamic head (TDH), and efficiency. TDH = static head + friction losses + minor losses. Pump curves show the relationship between flow and head — the operating point is where the pump curve intersects the system curve. Cavitation occurs when suction pressure drops below vapour pressure — symptoms include noise, vibration, and impeller damage. Net positive suction head available (NPSHa) must exceed NPSHr to prevent cavitation.",
+      },
+      {
+        heading: "Chemical Feed Systems",
+        body: "Chemical feed systems include dry feeders (for powdered chemicals like lime) and liquid metering pumps (diaphragm or peristaltic). Calibration of chemical feed pumps is critical — calibration is performed by measuring actual output over a timed period and comparing to the set point. Chemical storage areas require secondary containment (100% of largest container volume). Safety data sheets (SDS) must be accessible for all chemicals. Chlorine gas systems require leak detection, scrubbers, and self-contained breathing apparatus (SCBA) nearby.",
+      },
+      {
+        heading: "Instrumentation & Control",
+        body: "Key instruments in a water plant include: turbidimeters (continuous monitoring of filter effluent), chlorine analyzers (amperometric or colorimetric), pH meters, flow meters (magnetic, Venturi, ultrasonic), and level sensors. Instruments require regular calibration against known standards. SCADA (Supervisory Control and Data Acquisition) systems allow remote monitoring and control. Alarms must be responded to promptly — operators must know which alarms are critical vs. advisory.",
+      },
+      {
+        heading: "Preventive Maintenance",
+        body: "A preventive maintenance (PM) program schedules routine inspections, lubrication, adjustments, and part replacements before failures occur. Maintenance records must be kept for all equipment. Packing glands on pumps require regular adjustment and replacement — excessive leakage wastes water; too tight causes overheating. Mechanical seals are preferred over packing for cleaner operation. Bearings require proper lubrication — over-lubrication is as harmful as under-lubrication. V-belt drives require proper tension — check with a tension gauge.",
+      },
+      {
+        heading: "Electrical Safety",
+        body: "Lockout/tagout (LOTO) procedures must be followed before working on any electrical equipment. All electrical work must comply with the applicable electrical code. Ground fault circuit interrupters (GFCIs) are required in wet areas. Motor overload protection prevents damage from excessive current draw. Variable frequency drives (VFDs) allow speed control of pump motors — they reduce energy consumption and water hammer. Three-phase power requires proper phase rotation for correct pump rotation.",
+      },
+    ],
+    tableHeadings: ["Equipment", "Common Problem", "Likely Cause"],
+    tableRows: [
+      ["Centrifugal pump", "Cavitation (noise/vibration)", "Insufficient NPSHa, high suction lift"],
+      ["Centrifugal pump", "Low flow/pressure", "Worn impeller, air in suction, closed valve"],
+      ["Chemical metering pump", "Incorrect dose", "Needs recalibration, worn diaphragm"],
+      ["Turbidimeter", "Erratic readings", "Dirty flow cell, air bubbles, needs calibration"],
+      ["Chlorine analyzer", "Drift", "Reagent depletion, membrane fouling"],
+      ["Motor", "Overheating", "Overload, poor ventilation, bearing failure"],
+    ],
+    examTips: [
+      "NPSHa must always be greater than NPSHr to prevent cavitation",
+      "Calibrate chemical feed pumps by measuring actual output — not just reading the dial",
+      "LOTO must be completed before any maintenance on energized equipment",
+      "Pump operating point = intersection of pump curve and system curve",
+      "VFDs reduce energy use and eliminate water hammer — know their advantages",
+      "Secondary containment for chemical storage = 100% of the largest container volume",
+    ],
+    formulaHint:
+      "TDH = Static Head + Friction Losses | NPSHa = Atmospheric Pressure − Vapour Pressure − Friction Losses − Static Lift | Pump Power (kW) = (Q × TDH × ρg) ÷ Efficiency",
+  },
+
+  "Laboratory Analysis": {
+    title: "Laboratory Analysis",
+    intro:
+      "The Laboratory Analysis module covers the routine and regulatory testing performed at a Class I water treatment plant. Operators must understand the purpose of each test, the correct sampling procedures, acceptable methods, and how to interpret results in the context of regulatory requirements. WPI Class I exams focus on microbiological testing, physical/chemical parameters, and QA/QC fundamentals.",
+    keyPoints: [
+      {
+        heading: "Microbiological Testing",
+        body: "Total coliform and E. coli are the primary indicators of microbiological water quality. The membrane filtration (MF) method and the presence-absence (P-A) test are common methods. Samples must be collected in sterile bottles with sodium thiosulfate (to neutralize residual chlorine). Samples must be kept at 4°C and analyzed within 6 hours for P-A tests or 24 hours for MF. A positive total coliform result triggers immediate repeat sampling and investigation. E. coli presence indicates fecal contamination — immediate notification of the regulatory authority is required.",
+      },
+      {
+        heading: "Physical & Chemical Parameters",
+        body: "Turbidity is measured in NTU (nephelometric turbidity units) using a nephelometer or turbidimeter. Filtered water turbidity must typically be ≤ 1 NTU (≤ 0.3 NTU for individual filters in some jurisdictions). pH is measured electrochemically using a pH meter with a glass electrode — calibrate with two buffer solutions bracketing the expected range. Chlorine residual is measured using the DPD colorimetric method or amperometric titration. Free chlorine is measured first; total chlorine includes combined chlorine (chloramines).",
+      },
+      {
+        heading: "Sampling Procedures",
+        body: "Representative sampling is critical — flush the tap for 2–3 minutes before collecting a sample (unless sampling for lead, which requires a first-draw sample). Avoid sampling from hose bibs or outdoor taps. Label all samples with date, time, location, and collector's name. Chain of custody documentation must accompany samples sent to an external laboratory. Composite samples are collected over time for average concentration; grab samples represent a single point in time.",
+      },
+      {
+        heading: "QA/QC Fundamentals",
+        body: "Quality assurance (QA) is the overall program; quality control (QC) is the specific procedures. Key QC measures: field blanks (detect contamination during sampling), duplicate samples (measure precision), and calibration checks. Precision is the reproducibility of results; accuracy is how close results are to the true value. Method detection limit (MDL) is the lowest concentration that can be reliably detected. Results below the MDL are reported as '<MDL' — they cannot be used quantitatively.",
+      },
+      {
+        heading: "Regulatory Testing Requirements",
+        body: "WPI-aligned regulations require minimum testing frequencies based on system size and source type. Microbiological samples are collected at a minimum frequency per population served. Turbidity monitoring is continuous for filtered systems. Chemical parameters (nitrate, fluoride, etc.) are tested on a scheduled basis. Operators must maintain records of all test results for a minimum period (typically 5–10 years). Results exceeding maximum acceptable concentrations (MACs) must be reported to the regulatory authority within specified timeframes.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Method", "Typical Limit"],
+    tableRows: [
+      ["Total coliform", "Membrane filtration / P-A test", "Absent in 100 mL (treated)"],
+      ["E. coli", "Membrane filtration / P-A test", "Absent in 100 mL"],
+      ["Turbidity (filtered)", "Nephelometry", "≤ 1 NTU (≤ 0.3 NTU individual filters)"],
+      ["Free chlorine residual", "DPD colorimetric / amperometric", "≥ 0.2 mg/L (distribution)"],
+      ["pH", "Electrometric (pH meter)", "6.5 – 8.5 (aesthetic)"],
+      ["Nitrate", "Ion chromatography / colorimetric", "≤ 10 mg/L as N (MAC)"],
+    ],
+    examTips: [
+      "Sodium thiosulfate in sample bottles neutralizes chlorine — critical for microbiological samples",
+      "E. coli positive = fecal contamination — immediate regulatory notification required",
+      "Turbidity samples for individual filters must be taken within 15 minutes of backwash completion",
+      "DPD method: DPD #1 = free chlorine; DPD #3 = total chlorine; difference = combined chlorine",
+      "Flush tap 2–3 minutes before sampling (except first-draw lead samples)",
+      "MDL = minimum detectable concentration — results below MDL are reported as '<MDL'",
+    ],
+    formulaHint:
+      "Free Cl₂ = DPD #1 reading | Combined Cl₂ = Total Cl₂ − Free Cl₂ | Chlorine Demand = Dose Applied − Residual Remaining",
+  },
+
+  "Source Water": {
+    title: "Source Water",
+    intro:
+      "The Source Water module covers the characteristics of raw water sources (surface water and groundwater), the factors that affect source water quality, and the strategies used to protect and manage source water. At Class I level, operators must understand how source water quality affects treatment requirements and how to recognize and respond to changes in raw water quality.",
+    keyPoints: [
+      {
+        heading: "Surface Water vs. Groundwater",
+        body: "Surface water (rivers, lakes, reservoirs) is more susceptible to contamination from runoff, seasonal variation, and biological activity. It typically requires more treatment than groundwater. Groundwater is generally more stable in quality but may have elevated hardness, iron, manganese, or naturally occurring contaminants (arsenic, radon). Groundwater under the direct influence of surface water (GUDI) must be treated as surface water — indicators include rapid changes in turbidity, temperature, or coliform counts after rainfall events.",
+      },
+      {
+        heading: "Raw Water Quality Parameters",
+        body: "Key raw water parameters include: turbidity (measure of suspended solids), colour (true colour from dissolved organics, apparent colour from turbidity), pH, alkalinity (buffering capacity), hardness (Ca²⁺ and Mg²⁺), temperature (affects treatment efficiency and disinfection), and total organic carbon (TOC — precursor to disinfection byproducts). Seasonal variations are common — spring runoff increases turbidity and TOC; summer algal blooms cause taste/odour problems and can produce cyanotoxins.",
+      },
+      {
+        heading: "Source Water Protection",
+        body: "Source water protection (SWP) programs identify and manage threats to drinking water sources. Wellhead protection areas (WHPAs) are defined zones around groundwater wells where land use is restricted. Intake protection zones (IPZs) are defined around surface water intakes. Threats include agricultural runoff, septic systems, fuel storage, road salt, and industrial discharges. Operators must report any observed threats to the source water to the appropriate authority.",
+      },
+      {
+        heading: "Algae & Taste/Odour",
+        body: "Algal blooms in source water reservoirs can cause taste and odour problems, elevated TOC, and in the case of cyanobacteria (blue-green algae), can produce cyanotoxins (e.g., microcystin). Geosmin and 2-methylisoborneol (MIB) are the most common taste/odour compounds — produced by actinomycetes and cyanobacteria. Activated carbon (PAC or GAC) is the primary treatment for taste/odour. Operators should monitor algae counts and have an algal bloom response plan.",
+      },
+      {
+        heading: "Watershed Management",
+        body: "A watershed is the land area that drains to a water body. Operators should understand the activities in their watershed that could affect source water quality. Monitoring programs should include upstream sampling points to provide early warning of contamination events. Contingency plans must be in place for source water quality emergencies (spills, algal blooms, flooding). Communication with upstream land users, municipalities, and regulatory authorities is essential.",
+      },
+    ],
+    tableHeadings: ["Source Type", "Typical Characteristics", "Primary Treatment Concerns"],
+    tableRows: [
+      ["Surface water (river)", "Variable turbidity, seasonal TOC", "Coagulation, filtration, DBP control"],
+      ["Surface water (reservoir)", "Algae, stratification, taste/odour", "Algae management, taste/odour control"],
+      ["Groundwater (confined)", "Stable, low turbidity, possible hardness/iron", "Softening, iron/manganese removal"],
+      ["GUDI", "Responds to surface events", "Must treat as surface water"],
+      ["Shallow groundwater", "Susceptible to agricultural runoff", "Nitrate, pesticide monitoring"],
+    ],
+    examTips: [
+      "GUDI must be treated as surface water — key indicators are rapid turbidity/temperature changes after rain",
+      "Geosmin and MIB cause earthy/musty taste and odour — treat with activated carbon (PAC)",
+      "Spring runoff = high turbidity + high TOC — increase coagulant dose and monitor filter performance",
+      "Alkalinity provides buffering capacity — low alkalinity water is more difficult to coagulate",
+      "Cyanobacteria (blue-green algae) can produce toxins — do not use PAC alone; consult health authority",
+      "Wellhead protection area (WHPA) restricts land use to protect groundwater quality",
+    ],
+    formulaHint:
+      "Hardness (mg/L as CaCO₃) = [Ca²⁺ (mg/L) ÷ 40.1 + Mg²⁺ (mg/L) ÷ 24.3] × 50 | Alkalinity (mg/L as CaCO₃) = Titrant Volume (mL) × Normality × 50,000 ÷ Sample Volume (mL)",
+  },
+
+  "Safety & Admin": {
+    title: "Safety & Admin",
+    intro:
+      "The Safety & Admin module covers the occupational health and safety requirements, regulatory compliance, record-keeping, and administrative responsibilities of a Class I water treatment operator. Operators must understand their legal obligations, the hazards present in a water treatment plant, and the emergency response procedures required by regulation.",
+    keyPoints: [
+      {
+        heading: "Hazardous Materials & WHMIS",
+        body: "The Workplace Hazardous Materials Information System (WHMIS) requires that all hazardous products be labelled and accompanied by a Safety Data Sheet (SDS). SDS documents contain 16 sections covering physical/chemical properties, health hazards, first aid, PPE requirements, and spill response. Operators must be trained on the hazards of all chemicals used in the plant. Common hazardous chemicals include chlorine gas, sodium hypochlorite, alum, ferric chloride, and caustic soda (NaOH). Chlorine gas is a severe respiratory hazard — SCBA required for any chlorine gas leak response.",
+      },
+      {
+        heading: "Personal Protective Equipment (PPE)",
+        body: "PPE selection must be based on the hazard. For chemical handling: chemical-resistant gloves, apron, face shield, and safety glasses. For confined space entry: supplied-air respirator or SCBA, safety harness, and retrieval line. For electrical work: insulated gloves and tools, arc flash protection. Hearing protection is required in areas with noise levels above 85 dB(A). PPE must be inspected before each use and replaced when damaged. Operators must be trained in the proper donning, doffing, and maintenance of PPE.",
+      },
+      {
+        heading: "Confined Space Entry",
+        body: "A confined space is a space large enough to enter and perform work, not designed for continuous occupancy, and with limited means of entry/exit. A permit-required confined space has actual or potential hazards (atmospheric, engulfment, entrapment). Entry requires: atmospheric testing (oxygen 19.5–23.5%, combustible gas <10% LEL, toxic gas below TLV), a written entry permit, an attendant outside the space, and rescue equipment. Never enter a confined space without testing the atmosphere — oxygen-deficient atmospheres are immediately dangerous to life and health (IDLH).",
+      },
+      {
+        heading: "Record-Keeping & Reporting",
+        body: "Operators must maintain accurate records of all operational data, test results, maintenance activities, and chemical usage. Log books must be completed at each shift. Regulatory reports must be submitted on schedule — typically monthly or quarterly. Adverse water quality events (positive E. coli, turbidity exceedances, loss of residual) must be reported to the regulatory authority within specified timeframes (often within 24 hours). Records must be retained for a minimum period (typically 5–10 years depending on the jurisdiction).",
+      },
+      {
+        heading: "Emergency Response",
+        body: "Every water system must have an Emergency Response Plan (ERP) that addresses loss of power, source water contamination, treatment failure, distribution system breaks, and natural disasters. Operators must know how to issue a Boil Water Advisory (BWA) — when to issue, how to notify the public, and when it can be lifted. Backup power (generators) must be tested regularly. Communication protocols must be established with the regulatory authority, public health unit, and media. Operators must participate in regular emergency drills.",
+      },
+    ],
+    tableHeadings: ["Hazard", "Required PPE / Procedure", "Key Regulation"],
+    tableRows: [
+      ["Chlorine gas leak", "SCBA, evacuate area, notify supervisor", "WHMIS, OH&S Act"],
+      ["Confined space entry", "Atmospheric test, permit, attendant, SCBA", "OH&S Confined Space Regs"],
+      ["Chemical spill", "Appropriate PPE, contain, report, clean up per SDS", "WHMIS, environmental regs"],
+      ["Electrical work", "LOTO, insulated PPE, arc flash protection", "Electrical Safety Code"],
+      ["Positive E. coli result", "Repeat sample, notify authority, investigate", "Drinking Water Regulations"],
+      ["Turbidity exceedance", "Notify authority within required timeframe, investigate", "Drinking Water Regulations"],
+    ],
+    examTips: [
+      "WHMIS SDS has 16 sections — Section 8 = PPE; Section 6 = Accidental Release; Section 4 = First Aid",
+      "Confined space atmosphere: O₂ 19.5–23.5%, combustible gas <10% LEL, toxic gas below TLV",
+      "Boil Water Advisory: issued when E. coli detected, turbidity uncontrolled, or loss of disinfection",
+      "LOTO must be completed before any maintenance on energized or pressurized equipment",
+      "Chlorine gas is heavier than air — it collects in low-lying areas and confined spaces",
+      "Adverse events must be reported to the regulatory authority — know the timeframes in your jurisdiction",
+    ],
+    formulaHint:
+      "No primary formulas — focus on regulatory thresholds, reporting timeframes, and PPE selection criteria for each hazard type.",
+  },
+};
