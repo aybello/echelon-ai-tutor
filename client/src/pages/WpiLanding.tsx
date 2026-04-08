@@ -124,17 +124,17 @@ const CURRICULUM = [
 ];
 
 const WATER_CLASSES = [
-  { level: "CLASS I", questions: "502", price: "CA$149", priceNum: 14900, color: "#0E7490", bg: "#F0FDFF", border: "#A5F3FC", quizHref: "/wpi-class1-water" },
-  { level: "CLASS II", questions: "598", price: "CA$199", priceNum: 19900, color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-water" },
-  { level: "CLASS III", questions: "531", price: "CA$349", priceNum: 34900, color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-water" },
-  { level: "CLASS IV", questions: "592", price: "CA$499", priceNum: 49900, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", quizHref: "/wpi-class4-water", badge: "👑 Chief Operator" },
+  { level: "CLASS I", questions: "502", price: "CA$99", priceNum: 9900, color: "#0E7490", bg: "#F0FDFF", border: "#A5F3FC", quizHref: "/wpi-class1-water" },
+  { level: "CLASS II", questions: "598", price: "CA$149", priceNum: 14900, color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-water" },
+  { level: "CLASS III", questions: "531", price: "CA$249", priceNum: 24900, color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-water" },
+  { level: "CLASS IV", questions: "592", price: "CA$299", priceNum: 29900, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", quizHref: "/wpi-class4-water", badge: "👑 Chief Operator" },
 ];
 
 const WW_CLASSES = [
-  { level: "CLASS I", questions: "594", price: "CA$149", color: "#B45309", bg: "#FFFBEB", border: "#FDE68A", quizHref: "/wpi-class1-wastewater" },
-  { level: "CLASS II", questions: "599", price: "CA$199", color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-wastewater" },
-  { level: "CLASS III", questions: "607", price: "CA$349", color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-wastewater" },
-  { level: "CLASS IV", questions: "606", price: "CA$499", color: "#6D28D9", bg: "#F5F3FF", border: "#C4B5FD", quizHref: "/wpi-class4-wastewater", badge: "👑 Chief Operator" },
+  { level: "CLASS I", questions: "594", price: "CA$99", color: "#B45309", bg: "#FFFBEB", border: "#FDE68A", quizHref: "/wpi-class1-wastewater" },
+  { level: "CLASS II", questions: "599", price: "CA$149", color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-wastewater" },
+  { level: "CLASS III", questions: "607", price: "CA$249", color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-wastewater" },
+  { level: "CLASS IV", questions: "606", price: "CA$299", color: "#6D28D9", bg: "#F5F3FF", border: "#C4B5FD", quizHref: "/wpi-class4-wastewater", badge: "👑 Chief Operator" },
 ];
 
 const FAQS = [
