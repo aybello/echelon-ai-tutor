@@ -112,7 +112,13 @@ export default function Process() {
       <SiteNav currentPath="/process" />
 
       {/* ── VIEW TOGGLES ── */}
-      <div className="process-view-toggles" style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6 }}>
+      <div className="process-view-toggles" style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
+        {/* Stream switcher */}
+        <div style={{ display: "flex", gap: 4, marginRight: 12, background: "#F1F5F9", borderRadius: 10, padding: 3 }}>
+          <span style={{ padding: "6px 14px", borderRadius: 8, background: "#1D4ED8", color: "#fff", fontSize: 11, fontWeight: 700, cursor: "default" }}>💧 Drinking Water</span>
+          <a href="/wastewater" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>♻️ Wastewater</a>
+        </div>
+        <div style={{ width: 1, height: 22, background: "#E5E7EB", marginRight: 6 }} />
         {([['learn', '🔬 Step Explorer'], ['overview', '📋 Full Overview']] as const).map(([v, l]) => (
           <button key={v} onClick={() => setView(v)} style={{
             padding: "7px 16px", borderRadius: 8,
