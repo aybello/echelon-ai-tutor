@@ -185,12 +185,16 @@ export default function Wastewater() {
                   </div>
 
                   {/* SVG diagram */}
-                  <WWDiagramFor
-                    stepId={activeStep.id}
-                    color={activeStep.color}
-                    active={activeLabel}
-                    onClick={handleLabelClick}
-                  />
+                  <div style={{ overflowX: "auto", overflowY: "hidden" }}>
+                    <div style={{ minWidth: 480 }}>
+                      <WWDiagramFor
+                        stepId={activeStep.id}
+                        color={activeStep.color}
+                        active={activeLabel}
+                        onClick={handleLabelClick}
+                      />
+                    </div>
+                  </div>
 
                   {/* Label info popup */}
                   {activeLabel && labelDesc && (
