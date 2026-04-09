@@ -11,6 +11,7 @@ import {
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import QuizShell from "@/components/QuizShell";
+import { CLASS1_WASTEWATER_OVERVIEWS } from "@/lib/moduleOverviews";
 
 const SESSION_SIZE = 15;
 
@@ -202,6 +203,7 @@ export default function OITWastewaterQuiz() {
         modules={MODULE_CONFIG}
         selectedModule={selectedModule}
         onModuleChange={handleModuleChange}
+        moduleOverviews={CLASS1_WASTEWATER_OVERVIEWS}
         hasCalcOnly={true}
         calcOnly={calcOnly}
         onCalcOnlyToggle={handleCalcOnlyToggle}

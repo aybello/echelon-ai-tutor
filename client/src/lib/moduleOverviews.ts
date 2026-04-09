@@ -318,6 +318,59 @@ export const CLASS1_WASTEWATER_OVERVIEWS: Record<string, ModuleOverview> = {
       "Confined space entry always requires atmospheric testing — even for short entries",
     ],
   },
+  "Wastewater Collection": {
+    title: "Wastewater Collection",
+    intro:
+      "Wastewater collection systems gather sewage from homes, businesses, and industries and transport it to the treatment plant. Ontario operators must understand the design and operation of gravity sewers, lift stations, and force mains, as well as how to manage infiltration and inflow (I/I), respond to sanitary sewer overflows (SSOs), and maintain collection system infrastructure safely. This module is tested on the OIT Wastewater exam.",
+    keyPoints: [
+      {
+        heading: "Gravity Sewers",
+        body: "Gravity sewers use the natural slope of the pipe to move wastewater toward the treatment plant. Pipes must be designed with sufficient slope to maintain a self-cleaning velocity of at least 0.6 m/s (2 ft/s) to prevent solids from settling and causing blockages. Common pipe materials include PVC, concrete, and vitrified clay. Manholes are installed at regular intervals (typically every 90–120 m) to allow access for inspection, cleaning, and maintenance. Sewer maps and as-built drawings are essential for locating and maintaining the system.",
+      },
+      {
+        heading: "Lift Stations (Pumping Stations)",
+        body: "When gravity flow is not possible (e.g., flat terrain or deep sewers), lift stations pump wastewater uphill through a force main. A lift station consists of a wet well (where wastewater collects), submersible or dry-pit pumps, a control panel with level sensors (float switches or ultrasonic), and backup power (generator). Operators must monitor wet well levels, pump cycling frequency, and pump run times. High wet well level alarms indicate pump failure or excessive inflow. Lift stations are confined spaces and require proper entry procedures.",
+      },
+      {
+        heading: "Force Mains",
+        body: "Force mains are pressurized pipes that carry wastewater from a lift station to the next gravity sewer or treatment plant. Unlike gravity sewers, force mains flow full and under pressure. Common materials include PVC, HDPE, and ductile iron. Force mains are susceptible to hydrogen sulfide (H₂S) generation due to anaerobic conditions — H₂S causes odour, corrosion of concrete structures, and is a serious safety hazard. Air release valves at high points and cleanouts at low points are essential appurtenances.",
+      },
+      {
+        heading: "Infiltration and Inflow (I/I)",
+        body: "Infiltration is groundwater that enters the sewer through cracks, joints, or deteriorated pipe. Inflow is stormwater that enters through illegal connections, open manholes, or cross-connections with storm sewers. Excessive I/I increases flows to the treatment plant, causing hydraulic overload, bypasses, and higher treatment costs. I/I is detected through flow monitoring, smoke testing, dye testing, and CCTV inspection. Rehabilitation methods include pipe lining (CIPP), manhole sealing, and disconnecting illegal connections.",
+      },
+      {
+        heading: "Sanitary Sewer Overflows (SSOs)",
+        body: "An SSO occurs when wastewater overflows from the collection system before reaching the treatment plant — through manholes, cleanouts, or basement backups. SSOs are caused by blockages (grease, roots, debris), pump failures, pipe collapses, or excessive I/I during wet weather. Under O. Reg. 170/03 and the Environmental Protection Act, SSOs must be reported to the MECP Spills Action Centre immediately. Operators must document the event, estimate the volume, and take corrective action. Grease interceptors at restaurants and food service establishments reduce grease-related blockages.",
+      },
+      {
+        heading: "Collection System Maintenance",
+        body: "Routine maintenance includes: CCTV inspection (camera inspection of pipe interiors to identify cracks, root intrusion, offset joints, and grease buildup), high-pressure water jetting (hydro-jetting) to clear blockages and clean pipe walls, root cutting using mechanical cutters or chemical root inhibitors, manhole inspection and rehabilitation, and lift station preventive maintenance (pump impeller inspection, seal replacement, valve testing, generator testing). A computerized maintenance management system (CMMS) is used to schedule and track all maintenance activities.",
+      },
+      {
+        heading: "Hydrogen Sulfide (H₂S) Safety",
+        body: "H₂S is generated in sewers and wet wells under anaerobic (oxygen-depleted) conditions. It is colourless, has a rotten egg odour at low concentrations, but causes olfactory fatigue — you cannot rely on smell at dangerous levels. H₂S is heavier than air and accumulates in low points and confined spaces. OSHA and Ontario's O. Reg. 632/05 require atmospheric testing before confined space entry. The IDLH (Immediately Dangerous to Life and Health) for H₂S is 100 ppm. Operators must use a 4-gas monitor (O₂, LEL, CO, H₂S) and have a rescue plan in place before entry.",
+      },
+    ],
+    tableHeadings: ["Issue", "Cause", "Detection Method", "Corrective Action"],
+    tableRows: [
+      ["Blockage", "Grease, roots, debris", "CCTV, flow monitoring", "Hydro-jetting, root cutting"],
+      ["Infiltration", "Cracked pipes, failed joints", "Flow monitoring, smoke test", "CIPP lining, joint sealing"],
+      ["Inflow", "Illegal connections, open manholes", "Dye test, smoke test", "Disconnect connections, seal manholes"],
+      ["SSO", "Blockage, pump failure, I/I", "Visual, alarm", "Clear blockage, repair pump, report to MECP"],
+      ["H₂S corrosion", "Anaerobic conditions in force main", "Odour, CCTV", "Chemical dosing, ventilation"],
+    ],
+    examTips: [
+      "Minimum self-cleaning velocity in gravity sewers: 0.6 m/s (2 ft/s)",
+      "H₂S causes olfactory fatigue — never rely on smell to assess safety",
+      "SSOs must be reported to the MECP Spills Action Centre immediately under the Environmental Protection Act",
+      "Lift stations are confined spaces — atmospheric testing required before entry",
+      "Infiltration = groundwater entering through cracks; Inflow = stormwater entering through illegal connections",
+      "CIPP (Cured-In-Place Pipe) lining rehabilitates deteriorated pipes without excavation",
+      "Force mains are pressurized and flow full — unlike gravity sewers which flow partially full",
+      "H₂S IDLH: 100 ppm — use a 4-gas monitor (O₂, LEL, CO, H₂S) for confined space entry",
+    ],
+  },
 };
 
 // ─── OIT Water Module Overviews ───────────────────────────────────────────────
