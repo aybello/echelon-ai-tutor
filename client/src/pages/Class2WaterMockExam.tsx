@@ -11,11 +11,12 @@ const POOL: ExamQuestion[] = (POOL_RAW as any[]).map(q => ({
 }));
 
 const MODULE_TARGETS: Record<string, number> = {
-  'Treatment Process': 32,
-  'Laboratory Analysis': 24,
-  'Equipment Operation & Maintenance': 15,
-  'Security, Safety & Administrative': 16,
-  'Source Water Characteristics': 13,
+  'Treatment Process': 29,
+  'Laboratory Analysis': 22,
+  'Equipment Operation & Maintenance': 14,
+  'Security, Safety & Administrative': 14,
+  'Source Water Characteristics': 12,
+  'Water Distribution': 9,
 };
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
@@ -24,6 +25,7 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   'Equipment Operation & Maintenance': { bg: '#DCFCE7', color: '#15803D' },
   'Source Water Characteristics': { bg: '#EDE9FE', color: '#6D28D9' },
   'Security, Safety & Administrative': { bg: '#FEE2E2', color: '#B91C1C' },
+  'Water Distribution': { bg: '#E0F2FE', color: '#0284C7' },
 };
 
 export default function Class2WaterMockExam() {

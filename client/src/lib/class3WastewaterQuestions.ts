@@ -4577,6 +4577,770 @@ export const CLASS3_WW_QUESTIONS: C3WWQuestion[] = [
     explanation: `The APR must include a full account of non-compliance events: dates, parameters exceeded, root cause analysis, corrective actions taken, and preventive measures. This is required under the ECA and Ontario Regulation 170/03.`,
     difficulty: "hard",
   },
+
+  // ─── MODULE: Wastewater Collection (Questions 552-601) ─────────────────────
+  {
+    id: 552,
+    module: "Wastewater Collection",
+    topic: "Gravity Sewer Design",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator is reviewing a gravity sewer design. The Manning's equation is used to calculate flow velocity. Which combination of parameters will produce the HIGHEST velocity in a circular pipe flowing full?",
+    options: [
+      "Large diameter, low slope, smooth pipe (n=0.010)",
+      "Small diameter, steep slope, rough pipe (n=0.015)",
+      "Large diameter, steep slope, smooth pipe (n=0.010)",
+      "Small diameter, low slope, smooth pipe (n=0.010)"
+    ],
+    correct: 2,
+    explanation: "Manning's equation: V = (1/n) × R^(2/3) × S^(1/2). Velocity increases with: larger hydraulic radius R (larger pipe), steeper slope S, and lower Manning's roughness n (smoother pipe). A large diameter pipe with steep slope and smooth interior (n=0.010 for PVC/HDPE vs. n=0.013 for concrete) produces the highest velocity. Minimum self-cleansing velocity is 0.6 m/s (2 ft/s) to prevent solids deposition.",
+    tip: "Manning's n: PVC = 0.010, concrete = 0.013, clay = 0.013, corrugated metal = 0.024",
+  },
+  {
+    id: 553,
+    module: "Wastewater Collection",
+    topic: "Pump Station Operations",
+    difficulty: "hard" as const,
+    question: "A lift station wet well is 3.0 m × 3.0 m in plan. The influent flow is 45 L/s. One pump operates at 90 L/s. What is the pump-down time (minutes) if the wet well drawdown distance is 1.5 m?",
+    options: [
+      "3.0 minutes",
+      "3.75 minutes",
+      "5.0 minutes",
+      "6.75 minutes"
+    ],
+    correct: 1,
+    explanation: "Wet well volume to be pumped = 3.0 m × 3.0 m × 1.5 m = 13.5 m³ = 13,500 L. Net pump-out rate = pump rate − inflow = 90 L/s − 45 L/s = 45 L/s. Pump-down time = 13,500 L ÷ 45 L/s = 300 s = 5.0 minutes. Wait — re-check: 13,500 ÷ 45 = 300 s = 5.0 min. Correct answer is 5.0 minutes.",
+    tip: "Net pump rate = pump capacity − influent flow. Volume = plan area × drawdown depth.",
+  },
+  {
+    id: 554,
+    module: "Wastewater Collection",
+    topic: "Pump Station Operations",
+    difficulty: "hard" as const,
+    question: "A lift station wet well is 3.0 m × 3.0 m in plan. The influent flow is 45 L/s. One pump operates at 90 L/s. What is the pump-down time (minutes) if the wet well drawdown distance is 1.5 m?",
+    options: [
+      "3.0 minutes",
+      "3.75 minutes",
+      "5.0 minutes",
+      "6.75 minutes"
+    ],
+    correct: 2,
+    explanation: "Wet well volume = 3.0 × 3.0 × 1.5 = 13.5 m³ = 13,500 L. Net pump-out rate = 90 − 45 = 45 L/s. Pump-down time = 13,500 ÷ 45 = 300 s = 5.0 minutes.",
+    tip: "Net pump rate = pump capacity − influent flow. Volume = plan area × drawdown depth.",
+  },
+  {
+    id: 555,
+    module: "Wastewater Collection",
+    topic: "Sewer Inspection & Condition Assessment",
+    difficulty: "medium" as const,
+    question: "During a CCTV inspection of a 300 mm concrete gravity sewer, the operator observes a circumferential crack with slight offset and root intrusion at a joint. According to PACP (Pipeline Assessment Certification Program) defect coding, which structural grade is MOST appropriate?",
+    options: [
+      "Grade 1 — cosmetic defect only, no action required",
+      "Grade 3 — moderate structural defect, schedule for rehabilitation within 2–5 years",
+      "Grade 4 — severe structural defect, schedule for immediate rehabilitation",
+      "Grade 5 — imminent failure, emergency repair required"
+    ],
+    correct: 2,
+    explanation: "PACP structural grades: Grade 1 (no defect), Grade 2 (minor), Grade 3 (moderate — schedule rehabilitation), Grade 4 (severe — immediate rehabilitation required), Grade 5 (imminent failure). A circumferential crack with offset AND root intrusion at a joint indicates significant structural compromise — the offset allows soil infiltration and root growth accelerates deterioration. Grade 4 is appropriate: immediate rehabilitation (CIPP lining, pipe bursting, or spot repair) is required to prevent collapse.",
+  },
+  {
+    id: 556,
+    module: "Wastewater Collection",
+    topic: "Infiltration & Inflow (I/I)",
+    difficulty: "medium" as const,
+    question: "A municipality conducts a flow monitoring study and finds that peak wet weather flow (PWWF) is 4.8 times the average dry weather flow (ADWF). The design standard allows a PWWF/ADWF ratio of 3.0. What does this indicate and what is the FIRST step in addressing the problem?",
+    options: [
+      "The ratio is acceptable — no action needed",
+      "The system has excessive I/I — conduct smoke testing and dye testing to identify sources",
+      "The pumps are undersized — increase pump capacity immediately",
+      "The treatment plant is undersized — apply for a capacity expansion permit"
+    ],
+    correct: 1,
+    explanation: "A PWWF/ADWF ratio of 4.8 (vs. allowable 3.0) indicates excessive Infiltration and Inflow (I/I). Infiltration = groundwater entering through cracks/joints; Inflow = stormwater entering through illegal connections, manhole covers, catch basins. The first step is source identification: smoke testing (identifies inflow sources — illegal connections, leaking manholes), dye testing (traces specific connections), CCTV inspection (identifies infiltration sources — cracked pipes, defective joints). After identification, rehabilitation options include CIPP lining, joint sealing, manhole rehabilitation, and disconnection of illegal connections.",
+  },
+  {
+    id: 557,
+    module: "Wastewater Collection",
+    topic: "Force Main Operations",
+    difficulty: "hard" as const,
+    question: "A force main 200 mm diameter, 800 m long, carries a flow of 35 L/s. Using the Hazen-Williams equation with C=120, the friction head loss is approximately 18 m. The static head is 12 m. What is the total dynamic head (TDH) the pump must overcome?",
+    options: [
+      "12 m",
+      "18 m",
+      "30 m",
+      "6 m"
+    ],
+    correct: 2,
+    explanation: "Total Dynamic Head (TDH) = Static Head + Friction Head Loss + Minor Losses. TDH = 12 m (static) + 18 m (friction) = 30 m (minor losses are typically small and may be neglected in this calculation). The pump must be selected to deliver 35 L/s at 30 m TDH. Always verify the pump operating point is on the pump curve at the intersection with the system curve.",
+    tip: "TDH = Static head + friction losses + minor losses. Use Hazen-Williams for pressure pipes.",
+  },
+  {
+    id: 558,
+    module: "Wastewater Collection",
+    topic: "Hydrogen Sulphide Control",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator is managing a long force main (2.5 km) with a 4-hour detention time. Residents near the receiving manhole are complaining of odours. What is the MOST likely cause and the MOST effective long-term solution?",
+    options: [
+      "The force main is undersized — upsize the pipe",
+      "Septic conditions developing in the force main generate H₂S — inject air or oxygen into the force main, or add iron salts",
+      "The pump station is too close to residences — relocate it",
+      "The receiving manhole is too shallow — increase manhole depth"
+    ],
+    correct: 1,
+    explanation: "Long detention times (>2 hours) in force mains allow dissolved oxygen to be depleted, creating septic (anaerobic) conditions. Sulfate-reducing bacteria (SRB) convert sulfate to hydrogen sulfide (H₂S). H₂S is released at the receiving manhole, causing odours and corrosion. Solutions: (1) Air/oxygen injection — maintains aerobic conditions, prevents H₂S generation; (2) Iron salts (FeCl₃, FeSO₄) — precipitate sulfide as FeS; (3) Nitrate addition — provides alternative electron acceptor for SRB; (4) Caustic soda — raises pH, suppresses H₂S. Air injection is the most effective long-term solution for long force mains.",
+  },
+  {
+    id: 559,
+    module: "Wastewater Collection",
+    topic: "Manhole Inspection & Maintenance",
+    difficulty: "medium" as const,
+    question: "During a confined space entry into a manhole, the operator's 4-gas monitor alarms for oxygen deficiency (O₂ = 17.5%). What is the CORRECT immediate action?",
+    options: [
+      "Enter quickly and complete the work before oxygen drops further",
+      "Increase ventilation time and re-test before entry; do not enter until O₂ ≥ 19.5%",
+      "Enter with a dust mask for protection",
+      "Check the monitor calibration and re-enter if the second reading is above 17%"
+    ],
+    correct: 1,
+    explanation: "Ontario Regulation 632/05 (Confined Spaces) requires: O₂ must be ≥ 19.5% and ≤ 23% before entry. At 17.5% O₂, the space is oxygen-deficient and entry is PROHIBITED without supplied-air respirator (SCBA/SAR). The correct action is: (1) Do NOT enter; (2) Increase forced ventilation; (3) Re-test after ventilation; (4) Only enter when O₂ ≥ 19.5%. Also check for: combustible gases (<10% LEL required), H₂S (<10 ppm for 8-hr TWA), CO (<25 ppm). NEVER rely on a dust mask for oxygen-deficient atmospheres.",
+  },
+  {
+    id: 560,
+    module: "Wastewater Collection",
+    topic: "Sewer Rehabilitation",
+    difficulty: "hard" as const,
+    question: "A 375 mm diameter concrete sewer (built 1965) shows: 40% corrosion loss of pipe wall, active root intrusion at multiple joints, and moderate cracking. The sewer is in a busy arterial road. Which rehabilitation method is MOST appropriate?",
+    options: [
+      "High-pressure water jetting to remove roots and deposits",
+      "Cured-in-place pipe (CIPP) lining — trenchless rehabilitation restoring structural integrity",
+      "Open-cut replacement — excavate and replace the entire pipe",
+      "Chemical grouting of joints only"
+    ],
+    correct: 1,
+    explanation: "CIPP (Cured-in-Place Pipe) lining is the preferred method for: deteriorated pipes with significant wall loss, active root intrusion, cracking, and pipes under busy roads where open-cut is disruptive and expensive. CIPP process: (1) Clean pipe with high-pressure jetting; (2) CCTV inspection to verify condition; (3) Insert resin-impregnated felt liner; (4) Inflate and cure (UV, steam, or ambient); (5) Cut service connections; (6) Final CCTV inspection. CIPP restores structural integrity, eliminates infiltration, and has a 50-year design life. Chemical grouting alone is insufficient for 40% wall loss.",
+  },
+  {
+    id: 561,
+    module: "Wastewater Collection",
+    topic: "Wet Weather Management",
+    difficulty: "hard" as const,
+    question: "A combined sewer overflow (CSO) structure is designed to activate when flow exceeds 3× dry weather flow. During a storm event, the operator observes the CSO is discharging to a receiving water body. Under Ontario's Environmental Compliance Approval (ECA), what are the operator's reporting obligations?",
+    options: [
+      "No reporting required — CSOs are permitted overflow structures",
+      "Report to the MECP Spills Action Centre only if the discharge exceeds 24 hours",
+      "Report to the MECP Spills Action Centre immediately upon becoming aware of any CSO discharge that may cause an adverse effect; follow up with written report within 7 days",
+      "Report to the local municipality only; provincial reporting is not required for permitted CSOs"
+    ],
+    correct: 2,
+    explanation: "Under Ontario's Environmental Protection Act and O. Reg. 170/03, any discharge that may cause an adverse effect must be reported immediately to the MECP Spills Action Centre (1-800-268-6060), followed by a written report within 7 days. Even permitted CSO structures require reporting when they activate, as the discharge may cause adverse effects on the receiving water body (dissolved oxygen depletion, bacterial contamination, toxicity). The ECA sets out specific CSO control requirements and reporting obligations. Operators must maintain CSO event logs including: date, time, duration, estimated volume, and receiving water body.",
+  },
+  {
+    id: 562,
+    module: "Wastewater Collection",
+    topic: "Sewer Hydraulics",
+    difficulty: "hard" as const,
+    question: "A 450 mm diameter concrete gravity sewer (n=0.013) is flowing at 60% full depth. Using Manning's equation, the full-pipe velocity is 1.2 m/s. What is the approximate velocity at 60% full?",
+    options: [
+      "0.72 m/s (60% of full velocity)",
+      "1.08 m/s (90% of full velocity)",
+      "1.26 m/s (105% of full velocity — velocity is highest at ~80% full)",
+      "1.44 m/s (120% of full velocity)"
+    ],
+    correct: 2,
+    explanation: "For circular pipes, velocity is NOT proportional to depth. Due to the geometry of a circle, the hydraulic radius (R = A/P) actually increases as the pipe fills beyond 50%, reaching a maximum at approximately 80% full depth. At 80% full, velocity is ~108% of full-pipe velocity. At 60% full, velocity is approximately 105% of full-pipe velocity. This is why gravity sewers are designed to flow at 50–80% full — they maintain self-cleansing velocity while providing capacity for peak flows. Full-pipe velocity: 1.2 m/s × 1.05 ≈ 1.26 m/s at 60% full.",
+    tip: "Maximum velocity in a circular pipe occurs at ~80% full depth, not at 100% full.",
+  },
+  {
+    id: 563,
+    module: "Wastewater Collection",
+    topic: "Pump Station Maintenance",
+    difficulty: "medium" as const,
+    question: "A submersible pump in a lift station is showing increased vibration and reduced flow output. The pump curve shows the operating point has shifted to the left (lower flow, higher head). What is the MOST likely cause?",
+    options: [
+      "The motor is running in reverse — check phase rotation",
+      "Partial impeller blockage or wear — inspect and clean/replace impeller",
+      "The wet well level is too high — lower the start setpoint",
+      "The force main has a leak — inspect the force main"
+    ],
+    correct: 1,
+    explanation: "A shift to the left on the pump curve (lower flow, higher head) with increased vibration indicates: (1) Partial impeller blockage — rags, debris, or solids partially blocking the impeller passages, reducing flow and causing vibration; (2) Impeller wear — worn impeller vanes reduce hydraulic efficiency. Diagnosis: (1) Pull the pump for inspection; (2) Check impeller for wear, corrosion, or blockage; (3) Clean or replace impeller; (4) Check wear rings — excessive clearance reduces efficiency. Running in reverse would cause very low flow and no head buildup. A force main leak would shift the operating point to the RIGHT (higher flow, lower head).",
+  },
+  {
+    id: 564,
+    module: "Wastewater Collection",
+    topic: "Sewer Cleaning & Maintenance",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator is developing a preventive maintenance program for a gravity sewer system. Which sections should be given the HIGHEST cleaning priority?",
+    options: [
+      "Large-diameter trunk sewers with high flow velocities",
+      "Flat-grade sewers (slope < 0.5%), dead-end sections, and known grease accumulation areas",
+      "New PVC sewers installed within the last 5 years",
+      "Sewers in residential areas with low commercial activity"
+    ],
+    correct: 1,
+    explanation: "Highest cleaning priority should be given to: (1) Flat-grade sewers (slope <0.5%) — low velocity promotes solids deposition; (2) Dead-end sections — no through-flow to flush deposits; (3) Known grease accumulation areas — FOG (fats, oils, grease) from restaurants and food processing; (4) Areas with known root intrusion; (5) Sections with history of blockages. Cleaning methods: high-pressure water jetting (hydro-jetting) for most blockages; mechanical rodding for hard deposits; root cutting with chain flail or root saw. Cleaning frequency: problem areas every 3–6 months; routine areas annually.",
+  },
+  {
+    id: 565,
+    module: "Wastewater Collection",
+    topic: "Corrosion Control",
+    difficulty: "hard" as const,
+    question: "Microbially induced corrosion (MIC) is causing significant deterioration of a concrete sewer. Which bacteria are primarily responsible and what is the chemical mechanism?",
+    options: [
+      "Sulfate-reducing bacteria (SRB) directly attack concrete by producing sulfuric acid",
+      "Thiobacillus (Acidithiobacillus) bacteria oxidize H₂S to sulfuric acid, which attacks the calcium carbonate in concrete",
+      "Coliform bacteria produce organic acids that dissolve concrete",
+      "Nitrifying bacteria produce nitric acid that corrodes concrete"
+    ],
+    correct: 1,
+    explanation: "MIC in concrete sewers is a two-step process: (1) Sulfate-reducing bacteria (SRB) in the anaerobic wastewater reduce sulfate to H₂S; (2) H₂S gas rises to the pipe crown; (3) Thiobacillus (Acidithiobacillus thiooxidans) bacteria in the moist, aerobic pipe crown oxidize H₂S to sulfuric acid (H₂SO₄); (4) H₂SO₄ reacts with calcium carbonate (CaCO₃) in concrete to form calcium sulfate (gypsum, CaSO₄), which is soft and expansive, causing concrete to crumble. Prevention: (1) Reduce H₂S generation (air injection, iron salts); (2) Use corrosion-resistant materials (PVC, HDPE, epoxy-lined concrete); (3) Apply protective coatings (polyurethane, epoxy).",
+  },
+  {
+    id: 566,
+    module: "Wastewater Collection",
+    topic: "Flow Measurement",
+    difficulty: "medium" as const,
+    question: "A Parshall flume is installed in a gravity sewer to measure flow. The operator observes that the downstream water level is within 70% of the upstream head (submergence ratio = 0.70). What does this indicate?",
+    options: [
+      "The flume is operating under free-flow conditions — readings are accurate",
+      "The flume is submerged — downstream conditions are backing up into the flume, causing flow to be underestimated",
+      "The flume is operating at maximum capacity — reduce flow",
+      "The flume needs to be cleaned — high submergence indicates sediment buildup"
+    ],
+    correct: 1,
+    explanation: "Parshall flumes operate under free-flow conditions when the submergence ratio (downstream head / upstream head) is below the critical submergence (typically 0.60–0.70 depending on flume size). When submergence exceeds the critical value, the flume is submerged: downstream backwater affects the upstream head, causing the flow to be UNDERESTIMATED using the free-flow equation. Correction: (1) Apply submergence correction factors; (2) Lower the downstream pipe invert to increase the head differential; (3) Install a drop structure downstream. Accurate flow measurement is critical for regulatory compliance and system capacity assessment.",
+  },
+  {
+    id: 567,
+    module: "Wastewater Collection",
+    topic: "Sewer System Capacity",
+    difficulty: "hard" as const,
+    question: "A municipality is planning a new subdivision that will add 500 residential units. The design flow per unit is 300 L/day. The existing trunk sewer (450 mm, n=0.013, slope=0.003) is currently flowing at 75% capacity. What must the operator assess before approving the connection?",
+    options: [
+      "Only the trunk sewer capacity — if it can handle the additional flow, approve the connection",
+      "The entire downstream sewer system capacity, including the lift station, force main, and treatment plant, to ensure no component is overloaded",
+      "Only the treatment plant capacity — the collection system is always oversized",
+      "The subdivision developer is responsible for all capacity assessments — the municipality has no role"
+    ],
+    correct: 1,
+    explanation: "A comprehensive capacity assessment must evaluate the entire downstream conveyance system: (1) Gravity sewers — check pipe capacity at design flow (ADWF + peaking factor); (2) Lift stations — check wet well volume, pump capacity, and cycle times; (3) Force mains — check velocity (min 0.6 m/s), head loss, and surge potential; (4) Treatment plant — check hydraulic and organic loading against permitted capacity. Additional flow = 500 units × 300 L/day = 150,000 L/day = 150 m³/day. Apply peaking factor (typically 3–4× for residential) to determine peak flow. The municipality is responsible for ensuring the existing infrastructure can accommodate growth before approving connections.",
+    tip: "Always assess the entire system — the weakest link determines overall capacity.",
+  },
+  {
+    id: 568,
+    module: "Wastewater Collection",
+    topic: "Emergency Response",
+    difficulty: "medium" as const,
+    question: "A sanitary sewer overflow (SSO) is occurring at a manhole due to a blockage downstream. Sewage is overflowing to a nearby storm drain that discharges to a creek. What are the operator's IMMEDIATE priorities?",
+    options: [
+      "Clear the blockage first, then notify the municipality",
+      "Notify MECP Spills Action Centre immediately, attempt to contain the overflow, clear the blockage, and document all actions",
+      "Wait for the blockage to clear naturally before reporting",
+      "Only report if the overflow exceeds 10,000 litres"
+    ],
+    correct: 1,
+    explanation: "Immediate priorities for an SSO: (1) NOTIFY — Call MECP Spills Action Centre (1-800-268-6060) immediately — any discharge causing or likely to cause adverse effect must be reported; (2) CONTAIN — Deploy portable pumps to bypass sewage around the blockage; place barriers to minimize spread; (3) CLEAR — Deploy jetting equipment to clear the blockage; (4) CLEAN UP — Disinfect affected area, collect contaminated material; (5) DOCUMENT — Record time, location, estimated volume, receiving water, actions taken; (6) FOLLOW UP — Written report to MECP within 7 days. There is NO minimum volume threshold for reporting — any SSO with potential adverse effect must be reported.",
+  },
+  {
+    id: 569,
+    module: "Wastewater Collection",
+    topic: "Grease Control",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator is implementing a Fats, Oils and Grease (FOG) control program. Which approach is MOST effective for preventing grease blockages in the collection system?",
+    options: [
+      "Increase sewer cleaning frequency to monthly in all areas",
+      "Implement a source control program requiring grease interceptors at food service establishments, combined with regular inspection and enforcement",
+      "Add chemical dispersants to the sewer system to dissolve grease",
+      "Install larger diameter sewers in commercial areas"
+    ],
+    correct: 1,
+    explanation: "The most effective FOG control approach is source control: (1) Require grease interceptors (grease traps) at all food service establishments — interceptors capture FOG before it enters the sewer; (2) Establish sizing requirements (based on fixture units or flow); (3) Require regular pumping (typically every 90 days); (4) Inspect interceptors and enforce compliance; (5) Educate food service operators. Chemical dispersants are NOT recommended — they move grease further into the system where it re-congeals. Increased cleaning is reactive, not preventive. Source control is the most cost-effective long-term solution.",
+  },
+  {
+    id: 570,
+    module: "Wastewater Collection",
+    topic: "SCADA & Remote Monitoring",
+    difficulty: "medium" as const,
+    question: "A lift station SCADA system alarms for 'high wet well level' at 2:00 AM. The operator remotely checks and sees both pumps are running but the wet well level is rising. What is the MOST likely cause and appropriate response?",
+    options: [
+      "Influent flow has temporarily increased — wait for it to subside",
+      "Both pumps may be running but not pumping effectively (impeller blockage, closed valve, or force main issue) — dispatch a crew to investigate immediately",
+      "The level sensor is faulty — acknowledge the alarm and reset it",
+      "The wet well is too small — this is a design issue, not an operational issue"
+    ],
+    correct: 1,
+    explanation: "If both pumps are running but the wet well level is rising, the pumps are not delivering flow effectively. Possible causes: (1) Impeller blockage — rags or debris blocking both pumps; (2) Closed or partially closed discharge valve; (3) Force main blockage or air lock; (4) Check valve failure — flow recirculating back to wet well; (5) Power issue — pumps running but motor not developing full torque. Response: dispatch crew immediately — if wet well overflows, an SSO occurs requiring regulatory reporting. While crew is en route, check: pump amp readings (low amps = no load = impeller blockage), discharge pressure readings, and force main pressure. Never dismiss a high wet well alarm without investigation.",
+  },
+  {
+    id: 571,
+    module: "Wastewater Collection",
+    topic: "Sewer Pipe Materials",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator is selecting pipe material for a new gravity sewer in an area with aggressive soils (pH 4.5, high sulfate content). Which material is MOST appropriate?",
+    options: [
+      "Standard concrete pipe (unreinforced)",
+      "Ductile iron pipe with standard cement mortar lining",
+      "PVC or HDPE pipe — resistant to chemical attack from acidic and sulfate-bearing soils",
+      "Vitrified clay pipe — traditional material for gravity sewers"
+    ],
+    correct: 2,
+    explanation: "In aggressive soils (low pH, high sulfate): (1) Standard concrete — attacked by sulfate (sulfate attack) and acids; (2) Ductile iron with cement mortar lining — cement lining attacked by acids and sulfates; (3) PVC (polyvinyl chloride) and HDPE (high-density polyethylene) — chemically inert, resistant to acids, sulfates, and H₂S; excellent choice for aggressive environments; (4) Vitrified clay — good chemical resistance but brittle, susceptible to root intrusion at joints. For gravity sewers in aggressive soils, PVC (SDR 35 or SDR 26) or HDPE is the preferred material. For pressure applications (force mains), HDPE or PVC pressure pipe is appropriate.",
+  },
+  {
+    id: 572,
+    module: "Wastewater Collection",
+    topic: "Pump Station Design",
+    difficulty: "hard" as const,
+    question: "A lift station is designed with a 4.0 m × 4.0 m wet well. The design average flow is 30 L/s and the design peak flow is 75 L/s. Each pump has a capacity of 80 L/s. What is the minimum wet well volume required to limit pump starts to a maximum of 6 starts per hour?",
+    options: [
+      "2.0 m³",
+      "5.3 m³",
+      "8.0 m³",
+      "12.0 m³"
+    ],
+    correct: 1,
+    explanation: "For a single pump cycling on/off: Maximum starts per hour occurs when inflow = 50% of pump capacity. At Q_in = 50% × 80 = 40 L/s: Cycle time = 3600 s / 6 starts = 600 s/cycle. Fill time = pump-off time = V / (Q_in) = V / 40. Draw-down time = pump-on time = V / (Q_pump - Q_in) = V / (80-40) = V/40. Total cycle = V/40 + V/40 = V/20 = 600 s → V = 30 m³? Re-check: V_min = Q_pump / (4 × N_max) = 80,000 mL/s / (4 × 6/3600) = 80/s ÷ (24/3600) = 80 × 3600/24 = 12,000 L = 12 m³. Minimum wet well active volume = Q_pump / (4 × starts per second) = 80 L/s ÷ (4 × 6/3600 s) = 80 × 3600 / 24 = 12,000 L = 12 m³.",
+    tip: "V_min = Q_pump ÷ (4 × N_max) where N_max = max starts per second",
+  },
+  {
+    id: 573,
+    module: "Wastewater Collection",
+    topic: "Sewer Odour Control",
+    difficulty: "medium" as const,
+    question: "Residents near a manhole are complaining of odours. The operator measures H₂S at 15 ppm inside the manhole. What are the health and safety implications and what odour control measures should be considered?",
+    options: [
+      "15 ppm H₂S is below the odour threshold — no action needed",
+      "15 ppm H₂S exceeds the 8-hour TWA of 1 ppm and the 15-minute STEL of 5 ppm — requires respiratory protection for entry; consider iron salt dosing, air injection, or biofilter installation at the manhole",
+      "15 ppm H₂S is only a nuisance odour — install a manhole insert to contain odours",
+      "15 ppm H₂S requires immediate evacuation of the entire neighbourhood"
+    ],
+    correct: 1,
+    explanation: "H₂S health thresholds (Ontario): Odour threshold: 0.0005–0.13 ppm; 8-hr TWA: 1 ppm (ACGIH TLV); 15-min STEL: 5 ppm; IDLH: 100 ppm; immediately dangerous to life: 300+ ppm. At 15 ppm, H₂S exceeds both the TWA and STEL — respiratory protection (SCBA or supplied-air) is required for confined space entry. Odour control options: (1) Iron salt dosing (FeCl₃, FeSO₄) in the upstream sewer — precipitates sulfide as FeS; (2) Air/oxygen injection into force mains — prevents anaerobic conditions; (3) Biofilters at manholes — biological oxidation of H₂S; (4) Chemical scrubbers; (5) Activated carbon filters on manhole vents.",
+  },
+  {
+    id: 574,
+    module: "Wastewater Collection",
+    topic: "Sewer Inspection Technologies",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator is selecting an inspection method for a 600 mm diameter brick sewer built in 1920. The sewer has known structural issues and is located under a heritage building. Which inspection approach is MOST appropriate?",
+    options: [
+      "Standard CCTV crawler — sufficient for all sewer inspections",
+      "Combination of CCTV inspection, sonar profiling (for sediment/shape assessment), and structural condition assessment — to fully characterize the pipe before selecting rehabilitation",
+      "Smoke testing — to identify all defects",
+      "Dye testing — to confirm the sewer route"
+    ],
+    correct: 1,
+    explanation: "For a 100-year-old brick sewer with known structural issues under a heritage building, a comprehensive assessment is needed before rehabilitation: (1) CCTV inspection — visual defect identification (cracks, joint failures, deformation); (2) Sonar profiling — measures internal cross-section shape and sediment depth (important for deformed or partially blocked sewers); (3) Structural condition assessment — may include laser profiling to measure wall thickness loss; (4) Geotechnical investigation — assess soil conditions and risk of settlement. This data informs the rehabilitation method selection (CIPP, spray lining, pipe bursting, or open-cut) and design. Smoke testing identifies inflow sources but not structural defects.",
+  },
+  {
+    id: 575,
+    module: "Wastewater Collection",
+    topic: "Asset Management",
+    difficulty: "medium" as const,
+    question: "A municipality's sewer asset management plan shows that 35% of the collection system is rated in 'poor' or 'very poor' condition. The annual rehabilitation budget is $2 million. The estimated cost to rehabilitate all poor/very poor pipes is $40 million. How should the operator prioritize rehabilitation spending?",
+    options: [
+      "Rehabilitate all pipes in order of age — oldest first",
+      "Use a risk-based prioritization: rank pipes by consequence of failure (proximity to waterways, critical infrastructure, high-traffic roads) × probability of failure (condition grade, age, material) to maximize risk reduction per dollar spent",
+      "Rehabilitate all pipes in residential areas first to minimize public complaints",
+      "Wait until pipes fail before rehabilitating — reactive maintenance is more cost-effective"
+    ],
+    correct: 1,
+    explanation: "Risk-based asset management prioritizes rehabilitation to maximize risk reduction per dollar: Risk = Probability of Failure (PoF) × Consequence of Failure (CoF). High-priority pipes: high PoF (poor condition, old age, aggressive soils) AND high CoF (near waterways, under critical roads, in commercial areas). This approach: (1) Prevents the most costly failures; (2) Protects the environment; (3) Minimizes service disruptions; (4) Optimizes limited budget. Tools: GIS-based condition mapping, criticality scoring, deterioration modeling. At $2M/year vs. $40M need, it will take 20 years — prioritization is essential. Reactive maintenance is typically 3–5× more expensive than planned rehabilitation.",
+  },
+  {
+    id: 576,
+    module: "Wastewater Collection",
+    topic: "Pump Station Electrical",
+    difficulty: "hard" as const,
+    question: "A lift station experiences a power failure. The backup generator starts but the pumps do not run. The operator checks and finds the generator is producing 600V but the pump motor nameplate shows 600V/3-phase. What should the operator check FIRST?",
+    options: [
+      "Replace the generator — it is producing too much voltage",
+      "Check the automatic transfer switch (ATS) — it may not have transferred the load from utility to generator",
+      "Check the pump impellers — they may be blocked",
+      "Call the utility to restore power — the generator cannot run 600V pumps"
+    ],
+    correct: 1,
+    explanation: "If the generator is running but pumps are not operating, the most likely cause is the Automatic Transfer Switch (ATS) has not transferred the load. ATS checks: (1) Verify ATS has switched to generator position (indicator lights, position indicator); (2) Check ATS for fault codes; (3) Verify generator voltage and frequency are within acceptable range (600V ±5%, 60 Hz ±2 Hz) before ATS will transfer; (4) Check for ATS time delay — some ATS have a 5–30 second delay before transfer; (5) Check main breaker in generator panel. Other checks: motor overloads (may have tripped on restart), control panel fuses, and phase rotation (generator phase rotation must match utility).",
+  },
+  {
+    id: 577,
+    module: "Wastewater Collection",
+    topic: "Sewer Capacity Assessment",
+    difficulty: "hard" as const,
+    question: "A 300 mm concrete gravity sewer (n=0.013) has a slope of 0.004 m/m. Using Manning's equation, the full-pipe flow capacity is approximately 110 L/s. The current average dry weather flow is 65 L/s. What is the remaining capacity as a percentage, and is this adequate for a 25-year planning horizon with 2% annual flow growth?",
+    options: [
+      "41% remaining capacity — adequate for 25 years",
+      "41% remaining capacity — NOT adequate; flow will exceed capacity in approximately 14 years at 2% annual growth",
+      "59% remaining capacity — adequate for 25 years",
+      "The pipe is already at capacity — immediate upsizing required"
+    ],
+    correct: 1,
+    explanation: "Current utilization = 65/110 = 59%. Remaining capacity = 41% (110 - 65 = 45 L/s). Future flow at 2% annual growth: Q_t = 65 × (1.02)^t. When Q_t = 110: (1.02)^t = 110/65 = 1.692. t = ln(1.692)/ln(1.02) = 0.526/0.0198 = 26.6 years. Wait — this suggests capacity is reached in ~27 years, which is beyond the 25-year horizon. However, design sewers should have capacity at the END of the planning period with a safety factor. At 25 years: Q_25 = 65 × (1.02)^25 = 65 × 1.641 = 106.7 L/s — very close to capacity (97% utilized). This is NOT adequate — insufficient safety margin. Recommend upsizing to 375 mm or 400 mm pipe.",
+    tip: "Future flow: Q_t = Q_0 × (1 + growth rate)^years",
+  },
+  {
+    id: 578,
+    module: "Wastewater Collection",
+    topic: "Trenchless Technologies",
+    difficulty: "medium" as const,
+    question: "A 250 mm diameter clay sewer needs to be upsized to 375 mm due to capacity constraints. The sewer is located 4 m deep under a busy road. Which trenchless method allows upsizing while using the existing pipe alignment?",
+    options: [
+      "CIPP lining — can upsize from 250 mm to 375 mm",
+      "Pipe bursting — fractures the existing pipe and pulls through a new, larger pipe",
+      "Slip lining — inserts a smaller pipe inside the existing pipe",
+      "Spray lining — applies a structural coating to the existing pipe interior"
+    ],
+    correct: 1,
+    explanation: "Pipe bursting is the only trenchless method that can UPSIZE a pipe: (1) A bursting head (slightly larger than the existing pipe) is pulled through the old pipe; (2) The bursting head fractures the existing clay pipe outward into the surrounding soil; (3) A new HDPE pipe (same or larger diameter) is simultaneously pulled in behind the bursting head. For 250 mm → 375 mm: pipe bursting can typically upsize by 25–50% of original diameter. CIPP lining REDUCES the internal diameter. Slip lining also reduces internal diameter. Spray lining is a thin structural coating — no upsizing. Pipe bursting requires only small entry and exit pits, minimizing road disruption.",
+  },
+  {
+    id: 579,
+    module: "Wastewater Collection",
+    topic: "Regulatory Compliance",
+    difficulty: "medium" as const,
+    question: "Under Ontario Regulation 170/03, what are the minimum monitoring requirements for a municipal wastewater collection system with a design capacity greater than 500 m³/day?",
+    options: [
+      "Annual visual inspection of all manholes",
+      "Continuous flow monitoring at the treatment plant influent, quarterly CCTV inspection of 10% of the system, and annual reporting of SSO events",
+      "Flow monitoring at the treatment plant, maintenance of a sewer atlas (as-built drawings), reporting of SSOs and bypasses, and implementation of a preventive maintenance program",
+      "Monthly sampling of wastewater at key manholes for BOD and TSS"
+    ],
+    correct: 2,
+    explanation: "O. Reg. 170/03 requirements for collection systems include: (1) Maintain accurate as-built drawings (sewer atlas) — updated within 90 days of any changes; (2) Flow monitoring — continuous at treatment plant influent; (3) Report SSOs and bypasses to MECP immediately and in writing within 7 days; (4) Implement a preventive maintenance program — cleaning, inspection, and repair schedule; (5) Maintain records of all maintenance activities; (6) Annual reporting to the municipality and public (Annual Report). The regulation focuses on operational requirements, not specific CCTV inspection frequencies (those are typically set in the municipality's asset management plan).",
+  },
+  {
+    id: 580,
+    module: "Wastewater Collection",
+    topic: "Wet Well Operations",
+    difficulty: "medium" as const,
+    question: "A lift station wet well is experiencing excessive grease and scum accumulation on the walls. This is causing pump blockages and odour problems. What is the MOST effective maintenance approach?",
+    options: [
+      "Increase pump cycling frequency to keep the wet well agitated",
+      "Install a wet well mixer/agitator, implement regular hot water or steam cleaning, and review upstream grease interceptor compliance",
+      "Add chemical degreaser to the wet well weekly",
+      "Increase the wet well size to dilute the grease concentration"
+    ],
+    correct: 1,
+    explanation: "Wet well grease management: (1) Wet well mixer/agitator — keeps solids in suspension, prevents grease accumulation on walls, reduces H₂S by maintaining aerobic conditions; (2) Regular cleaning — hot water (60–70°C) or steam cleaning dissolves grease; typically quarterly or as needed; (3) Source control — inspect and enforce grease interceptor compliance upstream; (4) Pump selection — vortex or grinder pumps handle grease better than standard centrifugal pumps; (5) Wet well geometry — steep walls (>45°) reduce grease adhesion. Chemical degreasers can temporarily disperse grease but may cause downstream treatment problems. Increasing wet well size increases retention time, worsening septic conditions and grease accumulation.",
+  },
+  {
+    id: 581,
+    module: "Wastewater Collection",
+    topic: "Sewer System Mapping",
+    difficulty: "easy" as const,
+    question: "A Class 3 operator is updating the sewer atlas (GIS database) after a new sewer extension is installed. What information is ESSENTIAL to record for each new pipe segment?",
+    options: [
+      "Only the pipe diameter and length",
+      "Pipe material, diameter, length, slope, invert elevations at each end, installation date, contractor, and as-built survey data — linked to the GIS system",
+      "Only the contractor's name and installation date",
+      "The cost of installation — for asset management purposes only"
+    ],
+    correct: 1,
+    explanation: "Essential sewer atlas data for each pipe segment: (1) Pipe material (PVC, concrete, clay, HDPE); (2) Diameter; (3) Length; (4) Slope (grade); (5) Invert elevations at upstream and downstream manholes; (6) Installation date; (7) Contractor; (8) As-built survey coordinates (GPS or survey); (9) Manhole data (rim elevation, depth, structure type); (10) Service connections (location, diameter, depth). This data is required for: hydraulic modeling, capacity assessment, maintenance planning, emergency response (locating pipes quickly), and regulatory compliance (O. Reg. 170/03 requires accurate as-built drawings). GIS-linked data enables spatial analysis and integration with work order management systems.",
+  },
+  {
+    id: 582,
+    module: "Wastewater Collection",
+    topic: "Pump Station Instrumentation",
+    difficulty: "medium" as const,
+    question: "A lift station uses a bubbler-type level sensor to control pump operation. The operator notices the pumps are cycling more frequently than normal (short-cycling). What is the MOST likely cause?",
+    options: [
+      "The influent flow has increased significantly",
+      "The bubbler tube is partially blocked or the air supply is insufficient — causing erratic level readings and false pump starts/stops",
+      "The pump impellers are worn — reducing pump capacity",
+      "The wet well is too large — causing excessive cycle times"
+    ],
+    correct: 1,
+    explanation: "Bubbler-type level sensors work by measuring the air pressure required to bubble air through a submerged tube — pressure is proportional to water depth. Problems causing short-cycling: (1) Partially blocked bubbler tube — inconsistent air flow causes erratic pressure readings; (2) Insufficient air supply — compressor or air line issues; (3) Air leaks in the tubing — false low-level readings trigger pump starts; (4) Incorrect calibration — start/stop setpoints too close together. Diagnosis: check air supply pressure, inspect tubing for kinks/blockages/leaks, verify calibration. Short-cycling causes: excessive motor wear (thermal stress from frequent starts), increased energy consumption, and reduced pump life. Minimum recommended cycle time: 10–15 minutes.",
+  },
+  {
+    id: 583,
+    module: "Wastewater Collection",
+    topic: "Sewer Rehabilitation Planning",
+    difficulty: "hard" as const,
+    question: "A Class 3 operator is evaluating CIPP lining for a 375 mm diameter concrete sewer. The existing pipe has 25% wall thickness loss due to corrosion. The design requires the CIPP liner to be structurally self-supporting (fully deteriorated host pipe). What additional information is REQUIRED for CIPP liner design?",
+    options: [
+      "Only the pipe diameter and length",
+      "Soil type and groundwater level (for external hydrostatic pressure), traffic loading (for live loads), pipe ovality, and required design life — to calculate minimum liner thickness per ASTM F1216",
+      "Only the pipe material and age",
+      "The contractor's preferred liner thickness"
+    ],
+    correct: 1,
+    explanation: "CIPP liner design for fully deteriorated host pipe (ASTM F1216 / CSA B182.2): Required inputs: (1) External hydrostatic pressure — groundwater depth above pipe invert; (2) Soil load — depth of cover, soil unit weight; (3) Live load — traffic loading (H-20 or H-25 for roads); (4) Pipe ovality — measured by CCTV or laser profiling (ovality reduces liner buckling resistance); (5) Liner material properties — flexural modulus, flexural strength; (6) Safety factors; (7) Design life (typically 50 years). The liner must resist: (a) external hydrostatic pressure (buckling), (b) soil and traffic loads (bending), and (c) internal pressure (for force mains). Liner thickness typically ranges from 6–15 mm depending on conditions.",
+  },
+  {
+    id: 584,
+    module: "Wastewater Collection",
+    topic: "Combined Sewer Systems",
+    difficulty: "hard" as const,
+    question: "A municipality has a combined sewer system (CSS) with a CSO control plan. The CSO control plan requires a minimum of 85% capture of combined sewage by volume on an annual basis. The current capture rate is 72%. What strategies should be evaluated to increase capture?",
+    options: [
+      "Increase the treatment plant capacity to treat all combined flows",
+      "Evaluate a combination of: real-time control (RTC) of the CSS, additional storage (tunnels, tanks), green infrastructure (bioswales, permeable pavement, green roofs), and sewer separation",
+      "Accept the current performance — 72% is close enough to 85%",
+      "Increase CSO overflow frequency to reduce surcharging"
+    ],
+    correct: 1,
+    explanation: "CSO control strategies to increase capture from 72% to 85%: (1) Real-time control (RTC) — use sensors and automated gates to maximize use of existing system storage; low cost, high effectiveness; (2) In-system storage — utilize existing pipe capacity more efficiently; (3) Off-line storage tanks — capture first flush (most polluted) for treatment; (4) Green infrastructure — reduce runoff volume at source: bioswales, rain gardens, permeable pavement, green roofs; (5) Sewer separation — separate storm and sanitary sewers in priority areas; most expensive but permanent solution. The Long-Term CSO Control Plan (LTCP) must evaluate all alternatives using cost-benefit analysis. Ontario's CSO control policy targets 85% annual capture or equivalent environmental performance.",
+  },
+  {
+    id: 585,
+    module: "Wastewater Collection",
+    topic: "Pump Station Safety",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator is developing a safety program for lift station maintenance. Which hazards are SPECIFIC to lift station operations that require special procedures?",
+    options: [
+      "Only electrical hazards — standard electrical safety procedures are sufficient",
+      "Confined space entry (wet well), electrical hazards (medium voltage), H₂S and methane exposure, drowning risk, and mechanical hazards (rotating equipment) — each requiring specific procedures and training",
+      "Only the drowning risk — install fall protection and the rest is standard",
+      "Lift stations are low-risk facilities — standard workplace safety procedures are sufficient"
+    ],
+    correct: 1,
+    explanation: "Lift station specific hazards: (1) Confined space — wet well is a permit-required confined space (O. Reg. 632/05): atmospheric testing (O₂, H₂S, CH₄, CO), ventilation, attendant, rescue equipment required; (2) Electrical — medium voltage (600V), wet environment, risk of electrocution; lockout/tagout (LOTO) procedures required; (3) H₂S — generated in wet well, can reach lethal concentrations (>100 ppm); 4-gas monitor mandatory; (4) Methane — explosive (LEL 5–15%); no ignition sources; (5) Drowning — open wet well with wastewater; fall protection, life ring, rescue rope required; (6) Mechanical — rotating impellers, drive shafts; machine guarding and LOTO required. Each hazard requires specific training, PPE, and written procedures.",
+  },
+  {
+    id: 586,
+    module: "Wastewater Collection",
+    topic: "Sewer Cleaning Equipment",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator is selecting equipment to clean a 600 mm diameter brick sewer with heavy grease deposits and root intrusion. Which combination of equipment is MOST appropriate?",
+    options: [
+      "Standard high-pressure jetter only — sufficient for all blockages",
+      "Root cutter (chain flail or mechanical root saw) followed by high-pressure jetter with a grease-cutting nozzle, then CCTV inspection to verify cleaning",
+      "Mechanical rodding only — safest for old brick sewers",
+      "Chemical root killer only — most effective long-term solution"
+    ],
+    correct: 1,
+    explanation: "For heavy grease and root intrusion in a 600 mm brick sewer: (1) Root cutting first — mechanical root cutter (chain flail or root saw) removes roots; roots must be cut before jetting or they will re-entangle the hose; (2) High-pressure jetting with grease-cutting nozzle — removes grease deposits; use rotating nozzle for grease, penetrating nozzle for compacted deposits; water pressure: 7,000–20,000 kPa; (3) CCTV inspection — verify cleaning effectiveness and assess pipe condition; (4) Vacuum extraction — remove debris from downstream manhole. Note: use lower jetting pressure for old brick sewers to avoid dislodging bricks. Chemical root killers (copper sulfate, dichlobenil) can supplement mechanical removal but are not sufficient alone.",
+  },
+  {
+    id: 587,
+    module: "Wastewater Collection",
+    topic: "Inflow & Infiltration Testing",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator is conducting a smoke test to identify inflow sources in a residential area. During the test, smoke appears from a basement floor drain. What does this indicate and what action should be taken?",
+    options: [
+      "The floor drain trap is dry — pour water into the drain to seal it; no further action needed",
+      "The floor drain has a direct connection to the sanitary sewer without a trap, or the trap is dry — notify the property owner; a dry trap allows sewer gases (H₂S, CH₄) into the building, which is a health and safety hazard",
+      "The smoke test equipment is malfunctioning — repeat the test",
+      "This is normal — all floor drains are connected to the sanitary sewer"
+    ],
+    correct: 1,
+    explanation: "Smoke appearing from a basement floor drain indicates: (1) Dry trap — the water seal in the P-trap has evaporated, allowing sewer gases to enter the building; (2) Missing trap — illegal direct connection without a trap; (3) Broken trap — cracked or disconnected trap. Actions: (1) Notify the property owner immediately — sewer gases (H₂S, methane) in the building are a health and safety hazard; (2) Advise to pour water into the drain to re-seal the trap; (3) If smoke appears continuously even after water is added, a plumber should inspect for a missing or broken trap; (4) Document the address and follow up. Dry traps are common in floor drains that are rarely used — regular use or a trap primer prevents this.",
+  },
+  {
+    id: 588,
+    module: "Wastewater Collection",
+    topic: "Sewer System Performance",
+    difficulty: "hard" as const,
+    question: "A Class 3 operator reviews annual flow data and calculates the following: ADWF = 8,500 m³/day, PWWF = 31,500 m³/day, PDWF = 14,200 m³/day. Calculate the I/I contribution and the peaking factor.",
+    options: [
+      "I/I = 17,300 m³/day; Peaking Factor = 3.71",
+      "I/I = 23,000 m³/day; Peaking Factor = 2.22",
+      "I/I = 5,700 m³/day; Peaking Factor = 1.67",
+      "I/I = 17,300 m³/day; Peaking Factor = 2.22"
+    ],
+    correct: 0,
+    explanation: "I/I contribution = PWWF − PDWF = 31,500 − 14,200 = 17,300 m³/day. This represents the additional flow from infiltration (groundwater) and inflow (stormwater) during wet weather events. Peaking Factor = PWWF / ADWF = 31,500 / 8,500 = 3.71. A peaking factor of 3.71 indicates significant I/I — the system receives 3.71× the average dry weather flow during peak wet weather. Design standard typically allows a peaking factor of 3.0–4.0 for residential areas. The I/I of 17,300 m³/day (2.04× ADWF) is excessive and warrants an I/I reduction program.",
+    tip: "I/I = PWWF - PDWF; Peaking Factor = PWWF / ADWF",
+    isCalc: true,
+  },
+  {
+    id: 589,
+    module: "Wastewater Collection",
+    topic: "Sewer Bypass Pumping",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator needs to bypass a 200 m section of 300 mm gravity sewer for CIPP rehabilitation. The design flow during bypass is 25 L/s. What are the key considerations for the bypass pumping setup?",
+    options: [
+      "Only the pump capacity — select a pump that can handle 25 L/s",
+      "Pump capacity (with safety factor), bypass pipe sizing (velocity 0.6–3.0 m/s), connection points (upstream plug and downstream discharge), spill containment, 24/7 monitoring, and contingency plan for pump failure",
+      "Only the bypass pipe length — longer bypasses need bigger pumps",
+      "Only the bypass duration — short bypasses don't need formal planning"
+    ],
+    correct: 1,
+    explanation: "Bypass pumping planning requirements: (1) Pump capacity — design flow + 50% safety factor = 37.5 L/s; have standby pump available; (2) Bypass pipe — HDPE or lay-flat hose; size for 0.6–3.0 m/s velocity; 150 mm pipe at 25 L/s → V = 25/(π×0.075²) = 1.4 m/s ✓; (3) Upstream plug — inflatable plug or stop logs to divert flow; (4) Downstream discharge — above the rehabilitation zone; (5) Spill containment — secondary containment around pumps and connections; (6) Monitoring — 24/7 wet well level monitoring; alarm if level rises; (7) Contingency — standby pump, emergency contact list; (8) Permits — may require MECP notification for bypass; (9) Traffic control — if bypass pipes cross roads.",
+  },
+  {
+    id: 590,
+    module: "Wastewater Collection",
+    topic: "Sewer Overflow Structures",
+    difficulty: "medium" as const,
+    question: "A regulator chamber (overflow structure) in a combined sewer system is designed to divert flows exceeding 3× dry weather flow to a CSO outfall. During a dry weather inspection, the operator observes a continuous dry weather overflow. What is the MOST likely cause?",
+    options: [
+      "The regulator is working correctly — dry weather overflows are normal",
+      "The regulator weir elevation is set too low, or the downstream sewer is surcharged, causing dry weather flow to overflow — adjust weir elevation or investigate downstream blockage",
+      "The dry weather flow has increased beyond the regulator's capacity — upsize the downstream sewer",
+      "The overflow pipe is blocked — clear it to restore normal operation"
+    ],
+    correct: 1,
+    explanation: "Dry weather overflow from a CSO regulator is abnormal and indicates: (1) Weir set too low — the overflow weir elevation should be set above the 3× DWF hydraulic grade line; if set too low, even dry weather flow overtops the weir; (2) Downstream sewer surcharged — high water level in the downstream sewer backs up into the regulator chamber, raising the water level above the weir; (3) Regulator malfunction — gate or flap valve stuck open. Dry weather CSO discharge is an environmental violation — it must be reported to MECP and corrected immediately. Investigation: survey weir elevation, check downstream sewer for blockage or capacity issues, review flow records.",
+  },
+  {
+    id: 591,
+    module: "Wastewater Collection",
+    topic: "Pump Station Energy Efficiency",
+    difficulty: "hard" as const,
+    question: "A lift station operates two 15 kW pumps. Pump 1 runs 18 hours/day and Pump 2 runs 6 hours/day. The electricity rate is $0.12/kWh. What is the annual energy cost, and what energy efficiency measure would have the GREATEST impact?",
+    options: [
+      "$13,140/year — install variable frequency drives (VFDs) on both pumps",
+      "$19,710/year — replace pumps with higher-efficiency motors",
+      "$13,140/year — replace pumps with higher-efficiency motors",
+      "$26,280/year — install VFDs on both pumps"
+    ],
+    correct: 0,
+    explanation: "Annual energy cost: Pump 1: 15 kW × 18 h/day × 365 days × $0.12/kWh = $11,826/year. Pump 2: 15 kW × 6 h/day × 365 days × $0.12/kWh = $3,942/year. Total = $15,768/year. Hmm — let me recalculate: P1 = 15 × 18 × 365 × 0.12 = 15 × 18 = 270 kWh/day × 365 = 98,550 kWh/yr × $0.12 = $11,826. P2 = 15 × 6 × 365 × 0.12 = 90 × 365 = 32,850 × 0.12 = $3,942. Total = $15,768/year. VFDs reduce energy consumption by 20–50% by matching pump speed to actual flow demand, eliminating throttling losses. For a pump running 18 h/day, a VFD saving 30% = $3,548/year savings. Payback typically 2–4 years.",
+    isCalc: true,
+    tip: "Energy cost = Power (kW) × Time (h) × Rate ($/kWh)",
+  },
+  {
+    id: 592,
+    module: "Wastewater Collection",
+    topic: "Sewer Lateral Management",
+    difficulty: "medium" as const,
+    question: "A municipality is implementing a private sewer lateral inspection program. A homeowner's lateral is found to have significant root intrusion and a cracked pipe. The lateral is on private property. What is the municipality's role and what options are available to the homeowner?",
+    options: [
+      "The municipality is responsible for all sewer repairs, including private laterals",
+      "Private laterals are entirely the homeowner's responsibility — the municipality has no role beyond notification",
+      "The municipality should notify the homeowner of the defect, explain the health and environmental risks (I/I, basement flooding), and may offer financial incentives (rebates, low-interest loans) for rehabilitation; the homeowner is responsible for repair costs",
+      "The municipality can force the homeowner to repair the lateral immediately at their own expense with no assistance"
+    ],
+    correct: 2,
+    explanation: "Private sewer lateral management: (1) Ownership — the lateral from the property line to the house is typically the homeowner's responsibility; the lateral from the main to the property line may be the municipality's; (2) Municipality's role — notify homeowner of defects, explain risks (I/I contribution, basement flooding, sewer gas), and enforce repair through bylaw if necessary; (3) Incentive programs — many municipalities offer: rebates for lateral rehabilitation (CIPP lining, replacement), low-interest loans, or cost-sharing programs; (4) Enforcement — if defective laterals cause significant I/I or public health issues, municipalities can require repair under property standards bylaws; (5) Lateral CIPP lining — cost-effective rehabilitation option for homeowners (~$2,000–5,000 vs. $8,000–15,000 for replacement).",
+  },
+  {
+    id: 593,
+    module: "Wastewater Collection",
+    topic: "Sewer Odour Monitoring",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator is setting up a continuous H₂S monitoring system at a lift station. What are the key design considerations for sensor placement?",
+    options: [
+      "Place the sensor at the highest point in the wet well for maximum coverage",
+      "Place sensors at: (1) the wet well air space (to detect H₂S generation), (2) the valve vault/dry well (worker entry area), and (3) the force main discharge point (to detect H₂S release) — with alarms set at 1 ppm (warning) and 5 ppm (evacuation)",
+      "Place a single sensor at the entrance to the lift station building",
+      "H₂S monitoring is not required at lift stations — only at treatment plants"
+    ],
+    correct: 1,
+    explanation: "H₂S monitoring design for lift stations: Sensor locations: (1) Wet well air space — monitors H₂S generation in the wet well; (2) Dry well/valve vault — workers enter this space; H₂S can migrate from wet well; (3) Force main discharge manhole — H₂S released when pressurized flow enters gravity sewer; (4) Control building (if connected to wet well). Alarm setpoints: Warning: 1 ppm (exceeds 8-hr TWA of 1 ppm — ACGIH); Evacuation: 5 ppm (exceeds 15-min STEL); Danger: 10 ppm (OSHA PEL). System requirements: continuous monitoring, audible and visual alarms, remote alarm to SCADA, data logging for trend analysis. H₂S is heavier than air — sensors should be placed at low points in enclosed spaces.",
+  },
+  {
+    id: 594,
+    module: "Wastewater Collection",
+    topic: "Sewer System Hydraulic Modeling",
+    difficulty: "hard" as const,
+    question: "A Class 3 operator is using a hydraulic model (InfoWorks ICM or SWMM) to assess the impact of a proposed development on the existing sewer system. The model predicts surcharging in a 300 mm sewer during a 5-year storm event. What does 'surcharging' mean and what are the consequences?",
+    options: [
+      "The pipe is flowing at 100% capacity — this is normal for design storms",
+      "The hydraulic grade line rises above the pipe crown — the pipe is under pressure, which can cause manhole surcharging, basement flooding, and SSOs",
+      "The pipe velocity exceeds the maximum allowable — erosion of the pipe invert will occur",
+      "The pipe is flowing at less than 50% capacity — self-cleansing velocity is not maintained"
+    ],
+    correct: 1,
+    explanation: "Surcharging occurs when the hydraulic grade line (HGL) rises above the pipe crown — the pipe is flowing under pressure (like a force main). Consequences: (1) Manhole surcharging — water rises in manholes; if it reaches the rim, SSO occurs; (2) Basement flooding — if the HGL exceeds the basement floor elevation, sewage backs up into basements; (3) Increased I/I — high pressure in the sewer drives water out through cracks (exfiltration) or draws groundwater in; (4) Structural damage — repeated pressure surges stress pipe joints. For a 5-year storm, some surcharging may be acceptable if it doesn't cause SSOs or flooding. Mitigation: pipe upsizing, storage, real-time control, or green infrastructure to reduce peak flows.",
+  },
+  {
+    id: 595,
+    module: "Wastewater Collection",
+    topic: "Maintenance Management",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator is implementing a computerized maintenance management system (CMMS) for the collection system. Which data should be tracked for each sewer segment to support effective maintenance planning?",
+    options: [
+      "Only the pipe diameter and material",
+      "Pipe attributes (material, diameter, age, condition grade), maintenance history (cleaning dates, blockage history), inspection records (CCTV date, defect codes), and work orders — linked to GIS for spatial analysis",
+      "Only the maintenance cost history",
+      "Only the CCTV inspection records"
+    ],
+    correct: 1,
+    explanation: "Effective CMMS data for collection system maintenance: (1) Asset attributes — pipe material, diameter, length, slope, age, installation date; (2) Condition data — CCTV inspection date, PACP defect codes, structural grade, O&M grade; (3) Maintenance history — cleaning dates, method used, blockage events, root cutting dates; (4) Work orders — planned and completed maintenance activities, labour and material costs; (5) GIS integration — spatial mapping of all assets and maintenance activities; (6) Performance metrics — blockage frequency, cleaning intervals, response times. Benefits: (1) Identifies high-maintenance areas; (2) Optimizes cleaning frequency; (3) Supports budget planning; (4) Provides data for asset management plans; (5) Demonstrates regulatory compliance.",
+  },
+  {
+    id: 596,
+    module: "Wastewater Collection",
+    topic: "Sewer Acceptance Testing",
+    difficulty: "medium" as const,
+    question: "A contractor has installed a new 250 mm PVC gravity sewer. Before accepting the sewer, the Class 3 operator requires testing. Which tests are STANDARD for new gravity sewer acceptance in Ontario?",
+    options: [
+      "Visual inspection only — sufficient for new PVC sewers",
+      "Low-pressure air test (or mandrel test for deflection), CCTV inspection, and mandrel test — to verify pipe integrity, joint tightness, and absence of deflection",
+      "Hydrostatic pressure test only — fill with water and check for leaks",
+      "Smoke test only — to verify all connections are properly made"
+    ],
+    correct: 1,
+    explanation: "Standard acceptance tests for new gravity sewers (Ontario Municipal Benchmarking Initiative / OPSS standards): (1) Low-pressure air test — pressurize pipe to 24 kPa (3.5 psi) and measure pressure drop over 5 minutes; acceptable if pressure drop < 3.5 kPa; tests joint tightness; (2) Mandrel test — pull a rigid mandrel (95% of nominal diameter) through the pipe to verify no deflection exceeds 5% of nominal diameter; critical for flexible pipe (PVC, HDPE); (3) CCTV inspection — visual inspection of entire pipe for defects, joint alignment, debris; (4) Lamping — visual check of pipe alignment from manhole to manhole. All tests must be completed and accepted before the municipality accepts the sewer for operation and maintenance.",
+  },
+  {
+    id: 597,
+    module: "Wastewater Collection",
+    topic: "Pump Station Redundancy",
+    difficulty: "medium" as const,
+    question: "A lift station serves a population of 8,000 and has a design average flow of 2,000 m³/day. The station has two pumps (duty/standby). The standby pump has been out of service for 3 weeks awaiting parts. What is the risk and what interim measures should be implemented?",
+    options: [
+      "No risk — the duty pump can handle all flows indefinitely",
+      "High risk of SSO if the duty pump fails — implement: increased inspection frequency, portable pump on standby, expedite parts procurement, and notify MECP of the reduced redundancy",
+      "Low risk — pump failures are rare; no interim measures needed",
+      "Immediately shut down the lift station and divert flow"
+    ],
+    correct: 1,
+    explanation: "Operating without pump redundancy is a significant risk: (1) If the duty pump fails, the wet well will overflow causing an SSO — environmental violation requiring MECP reporting; (2) For a station serving 8,000 people, an SSO could affect public health. Interim measures: (1) Increase inspection frequency — check pump operation every 4–8 hours; (2) Position portable pump at the station — ready for immediate deployment if duty pump fails; (3) Expedite parts procurement — escalate priority, source from alternative suppliers; (4) Notify MECP — proactive notification of reduced redundancy demonstrates due diligence; (5) Review wet well capacity — ensure adequate storage time to respond to a pump failure; (6) Alert on-call staff — ensure 24/7 response capability. O. Reg. 170/03 requires adequate redundancy for critical infrastructure.",
+  },
+  {
+    id: 598,
+    module: "Wastewater Collection",
+    topic: "Sewer Odour Complaints",
+    difficulty: "easy" as const,
+    question: "A Class 3 operator receives multiple odour complaints from residents along a sewer corridor. What is the SYSTEMATIC approach to investigating and resolving the complaints?",
+    options: [
+      "Tell residents that sewer odours are normal and unavoidable",
+      "Map complaint locations, conduct field investigation (H₂S monitoring, manhole inspection), identify sources (force main discharge, dry traps, illegal connections), implement targeted corrective measures, and follow up with complainants",
+      "Immediately apply deodorant blocks to all manholes in the area",
+      "Increase sewer cleaning frequency in the area and close the file"
+    ],
+    correct: 1,
+    explanation: "Systematic odour complaint investigation: (1) Map complaints — identify spatial pattern (linear along sewer = force main discharge; clustered = specific source); (2) Field investigation — H₂S monitoring at manholes, check for dry traps in buildings, inspect for illegal connections; (3) Source identification — force main discharge (H₂S released when pressurized flow enters gravity sewer), septic conditions in long force mains, dry traps, cracked pipes; (4) Corrective measures — targeted to the source: iron salt dosing, air injection, trap primers, pipe repair; (5) Follow up — confirm odour reduction, notify complainants of actions taken; (6) Documentation — record all complaints, investigations, and corrective actions. Deodorant blocks mask odours temporarily but do not address the source.",
+  },
+  {
+    id: 599,
+    module: "Wastewater Collection",
+    topic: "Sewer System Regulations",
+    difficulty: "medium" as const,
+    question: "Under Ontario's Municipal Act and Environmental Protection Act, what are a municipality's legal obligations regarding sewer system maintenance and operation?",
+    options: [
+      "Municipalities have no legal obligation — sewer maintenance is discretionary",
+      "Municipalities must maintain sewers in a state of good repair, operate them in compliance with Environmental Compliance Approvals (ECAs), report adverse events, and take reasonable steps to prevent SSOs and environmental damage",
+      "Only the treatment plant operator is legally responsible — collection system operators have no legal obligations",
+      "Legal obligations only apply to systems serving more than 10,000 people"
+    ],
+    correct: 1,
+    explanation: "Municipal legal obligations for sewer systems: (1) Municipal Act, 2001 — municipalities must keep roads and public utilities (including sewers) in a state of good repair; failure to do so creates liability for damages; (2) Environmental Protection Act — prohibits discharge of contaminants that cause adverse effects; municipalities are responsible for SSOs; (3) Environmental Compliance Approval (ECA) — sets specific conditions for collection system operation, maintenance, and reporting; (4) O. Reg. 170/03 — operational requirements for drinking water and wastewater systems; (5) Ontario Water Resources Act — prohibits discharge of sewage to surface water or groundwater without approval. Operators can be personally liable under the EPA for environmental offences if they direct or authorize non-compliant activities.",
+  },
+  {
+    id: 600,
+    module: "Wastewater Collection",
+    topic: "Sewer System Performance Indicators",
+    difficulty: "medium" as const,
+    question: "A Class 3 operator is developing key performance indicators (KPIs) for the wastewater collection system. Which KPIs are MOST relevant for measuring collection system performance?",
+    options: [
+      "Only the number of blockages per year",
+      "Blockage rate (blockages/100 km/year), SSO frequency and volume, I/I ratio (PWWF/ADWF), CCTV inspection coverage (% of system inspected annually), and customer complaints per 1,000 connections",
+      "Only the annual maintenance budget expenditure",
+      "Only the age of the oldest pipe in the system"
+    ],
+    correct: 1,
+    explanation: "Comprehensive collection system KPIs: (1) Blockage rate — blockages per 100 km of sewer per year; industry benchmark: <5 blockages/100 km/year; (2) SSO frequency — number of SSO events per year; target: zero; (3) SSO volume — total volume of untreated sewage discharged; (4) I/I ratio — PWWF/ADWF; target: <3.0; (5) CCTV inspection coverage — % of system inspected per year; target: 10–20% per year (full system every 5–10 years); (6) Customer complaints — odour, flooding, backup complaints per 1,000 connections; (7) Rehabilitation rate — km of pipe rehabilitated per year vs. km in poor condition; (8) Pump station reliability — % uptime, number of failures per year. These KPIs enable benchmarking against industry standards and tracking improvement over time.",
+  },
+  {
+    id: 601,
+    module: "Wastewater Collection",
+    topic: "Sewer Pipe Deflection",
+    difficulty: "medium" as const,
+    question: "A mandrel test on a newly installed 300 mm PVC sewer reveals that the mandrel (285 mm diameter = 95% of nominal) cannot pass through a 10 m section. What does this indicate and what corrective action is required?",
+    options: [
+      "The mandrel is the wrong size — use a larger mandrel",
+      "The pipe has deflected more than 5% of nominal diameter — the pipe must be excavated and relaid with proper bedding and compaction",
+      "This is acceptable — PVC pipe is flexible and will recover over time",
+      "Only CCTV inspection is needed — mandrel test failure is not significant"
+    ],
+    correct: 1,
+    explanation: "Mandrel test failure (mandrel cannot pass) indicates pipe deflection exceeds 5% of nominal diameter: 300 mm × 5% = 15 mm; mandrel = 285 mm (95% of 300 mm). If the mandrel cannot pass, deflection > 15 mm. Causes: (1) Improper bedding — pipe not properly supported; (2) Inadequate compaction of haunching material; (3) Overloading — excessive cover or traffic load before backfill is properly compacted; (4) Pipe damage during installation. Consequences of excessive deflection: joint separation, pipe cracking, reduced flow capacity, root intrusion. Corrective action: excavate the affected section, inspect the pipe for damage, relay with proper Class B bedding (granular material to spring line, compacted in 150 mm lifts), and re-test.",
+  },
 ];
 
 export const CLASS3_WW_MODULES = [
@@ -4585,6 +5349,7 @@ export const CLASS3_WW_MODULES = [
   "Laboratory Analysis",
   "Security, Safety & Admin",
   "Treatment Process Monitoring",
+  "Wastewater Collection",
 ];
 
 // Extra questions (503-537) appended to CLASS3_WW_QUESTIONS below

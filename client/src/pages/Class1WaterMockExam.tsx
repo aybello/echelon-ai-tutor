@@ -32,6 +32,7 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Chemical Feed & Dosing":     { bg: "#FFEDD5", color: "#C2410C" },
   "Iron & Manganese Removal":   { bg: "#FEE2E2", color: "#B91C1C" },
   "Water Quality & Regulations":{ bg: "#F0FDF4", color: "#166534" },
+  "Water Distribution":         { bg: "#E0F2FE", color: "#0284C7" },
 };
 
 // Proportional module targets for 100 questions from 563-question bank
@@ -40,14 +41,15 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 //   Disinfection ~70, Chem Feed ~60, Iron/Mn ~55, WQ&Regs ~55+
 // Scale to 100 proportionally, rounding to exactly 100 total
 const EXAM_MODULE_TARGETS: Record<string, number> = {
-  "Water Sources & Quality":    13,
-  "Coagulation & Flocculation": 12,
-  "Sedimentation":              11,
-  "Filtration":                 14,
-  "Disinfection":               14,
-  "Chemical Feed & Dosing":     12,
-  "Iron & Manganese Removal":   12,
-  "Water Quality & Regulations":12,
+  "Water Sources & Quality":    12,
+  "Coagulation & Flocculation": 11,
+  "Sedimentation":              10,
+  "Filtration":                 13,
+  "Disinfection":               13,
+  "Chemical Feed & Dosing":     11,
+  "Iron & Manganese Removal":   11,
+  "Water Quality & Regulations":11,
+  "Water Distribution":          8,
 };
 
 function selectExamQuestions(): Class1WaterQuestion[] {

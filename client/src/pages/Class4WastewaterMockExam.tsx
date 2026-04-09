@@ -10,11 +10,12 @@ const POOL: ExamQuestion[] = (RAW as any[]).map(q => ({
 }));
 
 const MODULE_TARGETS: Record<string, number> = {
-  "Advanced Treatment Process Monitoring": 29,
-  "Equipment Operation & Maintenance":     22,
-  "Laboratory Analysis & Interpretation":  22,
-  "Biosolids Management & Regulations":    14,
-  "Plant Management, Safety & Administration": 13,
+  "Advanced Treatment Process Monitoring": 26,
+  "Equipment Operation & Maintenance":     20,
+  "Laboratory Analysis & Interpretation":  20,
+  "Biosolids Management & Regulations":    12,
+  "Plant Management, Safety & Administration": 12,
+  "Wastewater Collection":                 10,
 };
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
@@ -23,6 +24,7 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Laboratory Analysis & Interpretation":  { bg: "#EDE9FE", color: "#6D28D9" },
   "Biosolids Management & Regulations":    { bg: "#CCFBF1", color: "#0F766E" },
   "Plant Management, Safety & Administration": { bg: "#FEE2E2", color: "#B91C1C" },
+  "Wastewater Collection":                 { bg: "#FEF9C3", color: "#A16207" },
 };
 
 export default function Class4WastewaterMockExam() {

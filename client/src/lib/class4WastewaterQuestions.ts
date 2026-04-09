@@ -7735,6 +7735,509 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     explanation: "Digester heat exchanger fouling and maintenance: (1) Fouling mechanisms: (a) Sludge side: struvite (MgNH4PO4) deposits form when pH rises as CO2 is stripped; calcium carbonate deposits at high pH; biological films; (b) Hot water side: calcium carbonate scale from hard water; (2) Consequences: reduced heat transfer coefficient; lower digester temperature; reduced biogas production; increased energy consumption; (3) Maintenance actions: (a) Sludge side cleaning: high-pressure water jetting (annual); chemical cleaning with citric acid (2-5% solution) for struvite and calcium carbonate; (b) Hot water side cleaning: descaling with citric acid or proprietary descaler; (c) Inspection: check for tube fouling, corrosion, or damage; (d) Preventive maintenance: clean sludge side every 6 months; (e) Struvite prevention: maintain digester pH < 7.5 by controlling CO2 stripping; (4) Temperature impact: at 32 C vs 35 C, mesophilic digestion rate decreases by approximately 15-20%; VS destruction decreases; biogas production decreases; (5) Monitoring: track heat exchanger inlet/outlet temperatures and hot water flow to detect fouling early.",
     difficulty: "medium",
   },
+  // ─── MODULE: Wastewater Collection (Questions 519-568) ─────────────────────
+  {
+    id: 519,
+    module: "Wastewater Collection",
+    topic: "Collection System Master Planning",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator/superintendent is developing a 20-year collection system master plan. The municipality has a combined sewer system (CSS) with a CSO Long-Term Control Plan (LTCP) requiring 85% annual capture. Current capture is 68%. Which planning framework BEST integrates all required elements?",
+    options: [
+      "Focus solely on pipe upsizing to handle peak flows",
+      "Integrated watershed management approach: green infrastructure (GI) to reduce runoff volume, real-time control (RTC) to maximize system storage utilization, targeted sewer separation in priority areas, and CSO storage/treatment — with cost-effectiveness analysis and environmental performance monitoring",
+      "Separate storm and sanitary sewers throughout the entire system within 5 years",
+      "Install CSO treatment facilities at all outfalls to treat 100% of combined flows"
+    ],
+    correct: 1,
+    explanation: "An integrated watershed management approach for CSO LTCP compliance: (1) Green Infrastructure (GI) — bioswales, rain gardens, permeable pavement, green roofs reduce runoff volume at source; cost-effective for residential areas; (2) Real-Time Control (RTC) — sensors and automated gates maximize use of existing system storage; can increase capture by 5–15% with minimal capital cost; (3) Targeted sewer separation — prioritize areas with highest CSO frequency and environmental impact; (4) CSO storage/treatment — in-line or off-line storage for first flush; high-rate treatment (screening, disinfection) for overflow; (5) Cost-effectiveness analysis — compare alternatives on $/% capture improvement; (6) Environmental performance monitoring — receiving water quality, CSO frequency, volume. The LTCP must demonstrate that the selected approach achieves 85% capture or equivalent environmental performance.",
+    tip: "LTCP hierarchy: GI first (cheapest), then RTC, then storage, then separation/treatment.",
+  },
+  {
+    id: 520,
+    module: "Wastewater Collection",
+    topic: "Hydraulic Transients in Force Mains",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is investigating repeated force main failures at a lift station. The force main is 300 mm HDPE, 1.2 km long, with a pump shutoff head of 45 m. After pump shutdown, a pressure transient (water hammer) is suspected. What is the approximate wave speed in HDPE pipe and what surge pressure should be expected?",
+    options: [
+      "Wave speed ~1,400 m/s (steel); surge pressure ~350 m",
+      "Wave speed ~300–400 m/s (HDPE); surge pressure ~60–80 m — significantly lower than steel due to pipe flexibility",
+      "Wave speed ~1,200 m/s (concrete); surge pressure ~300 m",
+      "HDPE pipes do not experience water hammer — no surge protection needed"
+    ],
+    correct: 1,
+    explanation: "Wave speed in HDPE pipe: a = √(K/ρ) / √(1 + K·D/(E·t)) where K = bulk modulus of water (2.1 GPa), E = elastic modulus of HDPE (0.8–1.0 GPa), D = pipe diameter, t = wall thickness. For HDPE DR11 (300 mm): a ≈ 300–400 m/s vs. steel (1,200–1,400 m/s) or concrete (1,000–1,200 m/s). Joukowsky surge pressure: ΔP = ρ·a·ΔV. At flow velocity 1.5 m/s and wave speed 350 m/s: ΔP = 1000 × 350 × 1.5 = 525,000 Pa = 53.5 m. Total head = static (45 m) + surge (53.5 m) = 98.5 m. HDPE's flexibility significantly reduces surge pressure vs. rigid pipes. Surge protection: air release/vacuum breaker valves, surge tanks, slow-closing check valves, VFDs for controlled pump shutdown.",
+    tip: "HDPE flexibility reduces wave speed and surge pressure compared to rigid pipes.",
+  },
+  {
+    id: 521,
+    module: "Wastewater Collection",
+    topic: "Collection System Capacity Planning",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is reviewing a hydraulic model calibration report. The model uses SWMM (Storm Water Management Model). The calibration shows a Nash-Sutcliffe Efficiency (NSE) of 0.72 for peak flow prediction during a 5-year storm. Is this acceptable and what does it mean for planning decisions?",
+    options: [
+      "NSE of 0.72 is unacceptable — the model must be recalibrated before any use",
+      "NSE of 0.72 indicates good model performance (NSE > 0.65 is generally acceptable for calibration); the model can be used for planning with appropriate uncertainty analysis and conservative design factors",
+      "NSE of 0.72 means the model is 72% accurate — apply a 28% safety factor to all results",
+      "NSE only applies to rainfall-runoff models, not sewer hydraulic models"
+    ],
+    correct: 1,
+    explanation: "Nash-Sutcliffe Efficiency (NSE): NSE = 1 − [Σ(Q_obs − Q_sim)² / Σ(Q_obs − Q_mean)²]. NSE = 1.0 = perfect fit; NSE > 0.75 = very good; NSE 0.65–0.75 = good; NSE 0.50–0.65 = satisfactory; NSE < 0.50 = unsatisfactory. NSE of 0.72 = good calibration — acceptable for planning. Implications: (1) Model can be used for capacity assessment and rehabilitation planning; (2) Apply uncertainty analysis — run sensitivity scenarios (±10% on roughness, ±15% on I/I); (3) Use conservative design factors for critical infrastructure; (4) Validate model against independent storm events; (5) Document calibration data and assumptions. Model uncertainty is higher for extreme events (>10-year return period) — apply larger safety factors.",
+  },
+  {
+    id: 522,
+    module: "Wastewater Collection",
+    topic: "Advanced I/I Analysis",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator conducts a detailed I/I analysis using continuous flow monitoring data. The analysis identifies: base infiltration = 1,200 m³/day, storm-derived inflow = 8,500 m³/day during a 25 mm/hr storm, and groundwater infiltration = 2,800 m³/day during spring snowmelt. What is the total I/I and what is the MOST cost-effective rehabilitation strategy?",
+    options: [
+      "Total I/I = 12,500 m³/day — replace all pipes in the system",
+      "Total I/I = 12,500 m³/day — prioritize: (1) rapid inflow reduction (manhole rehabilitation, illegal connection removal) for immediate benefit; (2) CIPP lining of highest-infiltration pipe segments; (3) private lateral rehabilitation program",
+      "Total I/I = 10,000 m³/day — only address storm-derived inflow",
+      "Total I/I = 4,000 m³/day — only base infiltration and groundwater infiltration count"
+    ],
+    correct: 1,
+    explanation: "Total I/I = base infiltration (1,200) + storm inflow (8,500) + groundwater infiltration (2,800) = 12,500 m³/day. Cost-effective I/I reduction strategy: (1) Rapid/low-cost inflow reduction — manhole frame and cover rehabilitation (leaking manholes are a major inflow source); remove illegal storm connections; install manhole inserts; typical cost: $500–2,000/manhole; (2) CIPP lining of high-infiltration segments — identified by flow isolation testing and CCTV; typical cost: $200–500/m; (3) Private lateral program — laterals contribute 30–50% of total I/I; offer rebates for CIPP lining; (4) Prioritize by cost-per-unit-reduction ($/m³/day removed). Storm-derived inflow (8,500 m³/day) is the largest component — focus here first for maximum impact.",
+    isCalc: true,
+  },
+  {
+    id: 523,
+    module: "Wastewater Collection",
+    topic: "Force Main Condition Assessment",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is planning a condition assessment of a 20-year-old, 400 mm ductile iron force main that has experienced two failures in the past 3 years. Which assessment technologies are MOST appropriate and what failure mechanisms should be investigated?",
+    options: [
+      "CCTV inspection only — standard for all pipe condition assessments",
+      "Electromagnetic inspection (SmartBall or PipeDiver) for leak detection, guided wave ultrasonic testing (GWUT) for wall thickness measurement, and soil corrosivity testing — to assess internal corrosion (MIC, H₂S), external corrosion (stray current, aggressive soils), and graphitization of cast iron",
+      "Pressure testing only — fill with water and check for pressure drop",
+      "Visual inspection at access points — sufficient for force mains"
+    ],
+    correct: 1,
+    explanation: "Force main condition assessment for ductile iron: (1) SmartBall/PipeDiver — free-swimming acoustic leak detection tools; identify active leaks and areas of pipe distress; can assess 10+ km in a single run; (2) Guided Wave Ultrasonic Testing (GWUT) — measures wall thickness loss from internal and external corrosion; requires excavation at test points; (3) Soil corrosivity testing — soil resistivity, pH, redox potential, sulfide content; identifies areas of aggressive external corrosion; (4) Internal inspection — if pipe can be dewatered: CCTV for tuberculation, graphitization; (5) Cathodic protection assessment — check for stray current corrosion. Failure mechanisms: (a) Internal MIC — H₂S generated in force main attacks iron; (b) External corrosion — aggressive soils, stray currents; (c) Graphitization — cast iron loses metallic iron, leaving weak graphite matrix; (d) Fatigue — pressure cycling from pump starts/stops.",
+  },
+  {
+    id: 524,
+    module: "Wastewater Collection",
+    topic: "Real-Time Control Systems",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is implementing a real-time control (RTC) system for a combined sewer system to maximize CSO capture. The RTC system uses flow sensors, rain gauges, and automated control gates. What are the key performance requirements and failure mode considerations?",
+    options: [
+      "RTC only needs to maximize flow to the treatment plant — no failure mode planning needed",
+      "RTC must: maximize system storage utilization (target 85% capture), maintain minimum velocities to prevent solids deposition (>0.6 m/s), prevent surcharging and basement flooding, fail-safe to passive operation if communication is lost, and include cybersecurity measures to prevent unauthorized access",
+      "RTC is only for large systems (>100,000 population) — not applicable to smaller systems",
+      "RTC replaces the need for physical infrastructure improvements — no additional capital works needed"
+    ],
+    correct: 1,
+    explanation: "RTC system performance requirements: (1) Maximize CSO capture — optimize gate positions to fill available storage before overflow; (2) Maintain self-cleansing velocity — minimum 0.6 m/s in all sewers; avoid creating dead zones where solids deposit; (3) Prevent surcharging — monitor hydraulic grade line; prevent basement flooding; (4) Fail-safe operation — if communication fails, gates revert to passive (gravity) operation; no single point of failure; (5) Cybersecurity — SCADA systems are critical infrastructure; implement: network segmentation, encrypted communications, access controls, intrusion detection; (6) Redundancy — backup power, redundant sensors, manual override capability; (7) Performance monitoring — log all gate operations, CSO events, and system performance; (8) Operator training — RTC requires skilled operators who understand both hydraulics and control systems.",
+  },
+  {
+    id: 525,
+    module: "Wastewater Collection",
+    topic: "Sewer Overflow Regulatory Framework",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is preparing an Environmental Compliance Approval (ECA) amendment application for a new CSO storage facility. Under Ontario's Environmental Assessment Act and Environmental Protection Act, what approvals are required and what is the typical approval timeline?",
+    options: [
+      "Only a building permit is required — no provincial approvals needed for storage facilities",
+      "A Schedule B Municipal Class Environmental Assessment (Class EA) is typically required for CSO storage facilities, followed by an ECA amendment; total timeline typically 18–36 months including EA, detailed design, and ECA review",
+      "Only an ECA amendment is required — no environmental assessment needed",
+      "Federal Environmental Assessment is required for all CSO facilities — provincial approvals are not sufficient"
+    ],
+    correct: 1,
+    explanation: "Approval pathway for CSO storage facility in Ontario: (1) Municipal Class Environmental Assessment (Class EA) — Schedule B (for projects with predictable effects): complete Class EA study (problem statement, alternatives, impact assessment, mitigation); 30-day public review; if no Part II Order request, proceed to design; (2) ECA Amendment — submit to MECP: detailed design, operational plan, monitoring program, emergency response plan; MECP review: 6–12 months; (3) Building permit — municipal building department; (4) Utility coordination — locate and protect existing utilities. Timeline: Class EA (6–12 months) + detailed design (6–12 months) + ECA review (6–12 months) + construction (12–24 months) = 30–60 months total. Key considerations: receiving water quality objectives, groundwater protection, odour control, overflow monitoring.",
+  },
+  {
+    id: 526,
+    module: "Wastewater Collection",
+    topic: "Pump Station Energy Management",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is conducting an energy audit of a major lift station with four 75 kW pumps (two duty, two standby). Annual energy consumption is 2,100,000 kWh at $0.11/kWh. The audit identifies that the pumps are operating at 65% efficiency vs. the design efficiency of 82%. What is the potential annual energy savings and what is the most likely cause of the efficiency loss?",
+    options: [
+      "Savings: $25,000/year — cause: pumps are too large for current flows",
+      "Savings: $47,850/year — cause: impeller wear, operating off the best efficiency point (BEP), or system curve changes since original design",
+      "Savings: $10,000/year — cause: electrical motor inefficiency only",
+      "No savings possible — pump efficiency cannot be improved without replacing pumps"
+    ],
+    correct: 1,
+    explanation: "Current energy cost = 2,100,000 kWh × $0.11 = $231,000/year. Efficiency improvement from 65% to 82%: Energy ratio = 65/82 = 0.793. New energy consumption = 2,100,000 × 0.793 = 1,665,000 kWh. New cost = 1,665,000 × $0.11 = $183,150. Savings = $231,000 − $183,150 = $47,850/year. Causes of efficiency loss: (1) Impeller wear — worn vanes increase clearances, reduce hydraulic efficiency; (2) Operating off BEP — if flows have changed since design, pumps may be operating at a different point on the pump curve; (3) System curve changes — increased pipe roughness, additional head losses; (4) Wear ring wear — increased internal recirculation. Solutions: (1) Replace worn impellers; (2) Trim impellers to match current system curve; (3) Install VFDs to maintain BEP operation; (4) Conduct pump performance testing to identify specific issues.",
+    isCalc: true,
+  },
+  {
+    id: 527,
+    module: "Wastewater Collection",
+    topic: "Collection System Risk Assessment",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is developing a risk-based asset management plan for a collection system with 450 km of sewers. The system includes: 180 km of pre-1970 concrete sewers, 120 km of 1970–1990 concrete sewers, 150 km of post-1990 PVC sewers. What risk assessment methodology should be used and what data is required?",
+    options: [
+      "Assess risk based solely on pipe age — oldest pipes are highest risk",
+      "Use a multi-attribute risk matrix: Probability of Failure (PoF) × Consequence of Failure (CoF). PoF inputs: pipe age, material, condition grade (CCTV), soil type, groundwater, historical failure rate. CoF inputs: pipe diameter, depth, proximity to waterways/buildings/roads, social disruption, environmental impact",
+      "Assess risk based solely on pipe diameter — larger pipes are higher consequence",
+      "Use a simple pass/fail system — pipes either need replacement or they don't"
+    ],
+    correct: 1,
+    explanation: "Risk-based asset management methodology: Risk = PoF × CoF. Probability of Failure (PoF) inputs: (1) Pipe age and expected service life; (2) Material deterioration rate (concrete vs. PVC); (3) CCTV condition grade (PACP 1–5); (4) Soil corrosivity (pH, sulfate, resistivity); (5) Groundwater level (infiltration pressure); (6) Historical failure/blockage rate; (7) Structural loading (traffic, depth of cover). Consequence of Failure (CoF) inputs: (1) Pipe diameter (larger = more flow, more disruption); (2) Depth (deeper = more expensive to repair); (3) Location (proximity to waterways, buildings, critical infrastructure); (4) Social impact (traffic disruption, service interruption); (5) Environmental impact (proximity to sensitive areas). Output: risk score for each pipe segment → prioritized rehabilitation program. Data requirements: GIS-linked asset inventory, CCTV inspection records, maintenance history, soil data.",
+  },
+  {
+    id: 528,
+    module: "Wastewater Collection",
+    topic: "Advanced Sewer Rehabilitation",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is evaluating rehabilitation options for a 600 mm diameter brick egg-shaped sewer (built 1910) with 35% cross-sectional area reduction due to corrosion and deposits, significant structural cracking, and located under a heritage building. What rehabilitation approach is MOST appropriate?",
+    options: [
+      "Standard CIPP lining — suitable for all deteriorated sewers",
+      "Spray-applied structural lining (e.g., Perma-Pipe or Sprayroq) combined with robotic cutting to restore cross-section, followed by structural assessment — appropriate for non-circular sections where CIPP is difficult to install uniformly",
+      "Open-cut replacement — only option for severely deteriorated sewers",
+      "Chemical grouting — sufficient to restore structural integrity"
+    ],
+    correct: 1,
+    explanation: "For a 600 mm egg-shaped brick sewer with complex geometry under a heritage building: (1) Spray-applied structural lining — polyurethane or cementitious spray lining applied robotically; conforms to any cross-section shape; provides structural reinforcement; typical thickness 6–25 mm; (2) Robotic cutting — restore cross-section to design dimensions by removing deposits and corrosion products before lining; (3) Structural assessment — calculate liner thickness required to support soil and traffic loads (ASTM F1216 methodology adapted for non-circular sections); (4) Heritage building considerations — vibration monitoring during rehabilitation; no open-cut excavation; trenchless access from manholes. CIPP is difficult for egg-shaped sections — liner may not conform uniformly to the non-circular shape. Open-cut is not feasible under a heritage building.",
+  },
+  {
+    id: 529,
+    module: "Wastewater Collection",
+    topic: "Sanitary Sewer Overflow Prevention",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is developing a Sanitary Sewer Overflow (SSO) prevention and response plan required by the municipality's ECA. What are the MINIMUM elements required in the plan?",
+    options: [
+      "Only an emergency contact list and a portable pump inventory",
+      "SSO prevention program (preventive maintenance, capacity assessment, I/I reduction), SSO response procedures (containment, notification, cleanup), reporting requirements (MECP, public), root cause analysis process, corrective action tracking, and annual performance review",
+      "Only the regulatory reporting requirements — operations are covered by standard procedures",
+      "Only the SSO response procedures — prevention is covered by the maintenance program"
+    ],
+    correct: 1,
+    explanation: "SSO Prevention and Response Plan elements required by Ontario ECA: (1) Prevention Program: (a) Preventive maintenance schedule (cleaning, inspection, pump testing); (b) Capacity assessment and I/I reduction program; (c) Infrastructure rehabilitation plan; (d) Pump station redundancy and backup power; (2) Response Procedures: (a) SSO detection (SCADA alarms, field reports, public complaints); (b) Immediate response (containment, bypass pumping, blockage removal); (c) Notification chain (MECP Spills Action Centre, municipality, public); (3) Reporting: (a) Immediate verbal notification to MECP; (b) Written report within 7 days; (c) Annual SSO summary in Annual Report; (4) Root Cause Analysis: (a) Investigate each SSO event; (b) Identify contributing factors; (c) Implement corrective actions; (5) Performance Metrics: (a) SSO frequency, volume, duration; (b) Track trends and improvement.",
+  },
+  {
+    id: 530,
+    module: "Wastewater Collection",
+    topic: "Lift Station Design Review",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is reviewing the design of a new major lift station (design flow: 150 L/s average, 375 L/s peak). The design includes two duty pumps (200 L/s each) and one standby pump. What design deficiencies should the operator identify?",
+    options: [
+      "The design is adequate — two duty pumps and one standby is standard practice",
+      "Deficiencies: (1) With two duty pumps at 200 L/s each, peak flow of 375 L/s cannot be met with one pump out of service; (2) Only one standby pump for a major station is insufficient — should have N+1 redundancy for each duty pump configuration; (3) Need to verify wet well volume for adequate pump cycle time and emergency storage",
+      "The pumps are oversized — reduce to 150 L/s each to match average flow",
+      "Only one duty pump is needed — the standby pump provides sufficient backup"
+    ],
+    correct: 1,
+    explanation: "Design review for major lift station: (1) Redundancy — with two duty pumps (200 L/s each) and peak flow of 375 L/s: if one duty pump fails, remaining pump handles 200 L/s < 375 L/s peak; station cannot handle peak flow with one pump out; need to verify if this is acceptable (wet weather peak vs. design storm); (2) N+1 redundancy — for a major station (150 L/s average), should have: 3 pumps (2 duty + 1 standby) where any single pump can handle average flow, and 2 pumps can handle peak flow; (3) Wet well volume — minimum active volume = Q_pump / (4 × N_max); verify cycle time ≥ 10 minutes; emergency storage for power failure; (4) Force main — check for air release valves at high points, surge protection, minimum velocity 0.6 m/s; (5) Backup power — generator sized for all pumps + controls; (6) Odour control — wet well ventilation and treatment.",
+  },
+  {
+    id: 531,
+    module: "Wastewater Collection",
+    topic: "Collection System Performance Benchmarking",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator is preparing the annual collection system performance report for council. The system has: 250 km of sewers, 3 SSO events (total 45,000 L), 18 blockages, PWWF/ADWF ratio of 3.8. How do these metrics compare to industry benchmarks and what are the priority improvement areas?",
+    options: [
+      "All metrics are within acceptable ranges — no improvements needed",
+      "Blockage rate = 7.2/100 km/year (above benchmark of <5); I/I ratio of 3.8 (above target of <3.0); SSO volume of 45,000 L requires investigation; priority improvements: I/I reduction program and targeted sewer cleaning in high-blockage areas",
+      "Only the SSO events matter — blockage rate and I/I ratio are not performance indicators",
+      "The I/I ratio of 3.8 is acceptable — no I/I reduction program needed"
+    ],
+    correct: 1,
+    explanation: "Performance benchmarking: (1) Blockage rate = 18 blockages / 250 km × 100 = 7.2 blockages/100 km/year. Industry benchmark: <5/100 km/year (Ontario Municipal Benchmarking Initiative). Above benchmark — investigate high-blockage areas (grease, roots, structural defects); (2) I/I ratio = PWWF/ADWF = 3.8. Target: <3.0 for well-maintained systems. Above target — implement I/I reduction program (smoke testing, CCTV, lateral rehabilitation); (3) SSO events = 3 events, 45,000 L. Target: zero SSOs. Each SSO requires root cause analysis and corrective action; (4) Priority improvements: (a) I/I reduction — highest impact on treatment plant loading and SSO risk; (b) Targeted cleaning — reduce blockage rate; (c) SSO root cause analysis — prevent recurrence. Report should include trend analysis (improving or worsening) and 5-year improvement targets.",
+    isCalc: true,
+  },
+  {
+    id: 532,
+    module: "Wastewater Collection",
+    topic: "Odour Control Technology Selection",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is evaluating odour control technologies for a major lift station with measured H₂S concentrations of 50–200 ppm in the wet well headspace. The station is in a residential area. Which technology provides the MOST reliable long-term control?",
+    options: [
+      "Activated carbon adsorption — simplest technology, no chemicals required",
+      "Biological trickling filter (biofilter) — most cost-effective for continuous high-concentration H₂S; microorganisms oxidize H₂S to sulfate; low operating cost; effective for concentrations up to 500 ppm; requires adequate moisture and nutrient control",
+      "Chemical scrubber (caustic/hypochlorite) — most effective for all concentrations",
+      "Masking agents — most cost-effective solution for residential areas"
+    ],
+    correct: 1,
+    explanation: "Odour control technology comparison for 50–200 ppm H₂S: (1) Biological trickling filter (biofilter) — Thiobacillus bacteria oxidize H₂S to sulfuric acid (neutralized by packing media); effective for 10–500 ppm H₂S; removal efficiency >99%; low operating cost (no chemicals); media life 10–15 years; footprint: 1–5 m² per 1,000 m³/hr; best for continuous, predictable concentrations; (2) Activated carbon — effective for <50 ppm; carbon exhaustion at high concentrations is costly; (3) Chemical scrubber — very effective for high concentrations; high chemical costs (NaOH, NaOCl); chemical handling hazards; (4) Masking agents — do not remove H₂S; unacceptable for regulatory compliance. For 50–200 ppm in a residential area: biofilter is optimal — reliable, low operating cost, no chemical hazards, meets regulatory requirements.",
+  },
+  {
+    id: 533,
+    module: "Wastewater Collection",
+    topic: "Sewer System Cybersecurity",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator is reviewing the cybersecurity posture of the collection system SCADA network following a ransomware attack on a nearby municipality's water system. What are the CRITICAL cybersecurity measures for collection system SCADA?",
+    options: [
+      "Change all passwords annually — sufficient cybersecurity for SCADA systems",
+      "Implement: network segmentation (air gap or firewall between SCADA and corporate network), multi-factor authentication, encrypted remote access (VPN), regular software patching, incident response plan, and operator cybersecurity training — following NIST Cybersecurity Framework",
+      "Disconnect all remote access — only on-site operation is secure",
+      "Cybersecurity is the IT department's responsibility — operators don't need to be involved"
+    ],
+    correct: 1,
+    explanation: "Critical SCADA cybersecurity measures (NIST Cybersecurity Framework): (1) Identify — asset inventory of all SCADA components; vulnerability assessment; (2) Protect — network segmentation (DMZ between SCADA and corporate network); multi-factor authentication for all remote access; encrypted communications (VPN, TLS); regular patching of SCADA software and OS; remove default passwords; disable unused ports/services; (3) Detect — intrusion detection system (IDS); anomaly monitoring; log all access attempts; (4) Respond — incident response plan; isolation procedures; backup control capability (manual operation); (5) Recover — system backup and recovery procedures; tested regularly. Wastewater collection systems are critical infrastructure — a cyberattack could cause pump failures, SSOs, and public health emergencies. Operators must understand cybersecurity as part of their operational responsibilities.",
+  },
+  {
+    id: 534,
+    module: "Wastewater Collection",
+    topic: "Biosolids and Collection System Interface",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator notices that the treatment plant is receiving significantly higher solids loading than expected during dry weather. Investigation reveals that a major lift station wet well has not been cleaned in 5 years and has accumulated 2 m of septage and grease. What are the operational implications and what is the proper management approach?",
+    options: [
+      "The accumulated material is harmless — no action needed",
+      "Accumulated septage and grease: (1) creates H₂S and odour problems; (2) reduces wet well effective volume; (3) when disturbed by pump operation, sends slug loads of solids to the treatment plant, causing process upsets; (4) requires planned removal with proper septage management — pump out, characterize, and dispose at approved facility or treatment plant headworks",
+      "Simply increase pump cycling to flush the material to the treatment plant",
+      "Add chemical degreaser to dissolve the accumulated material in place"
+    ],
+    correct: 1,
+    explanation: "Wet well accumulated septage management: (1) Operational impacts: (a) Reduced wet well volume → shorter pump cycles → increased pump wear; (b) H₂S generation from anaerobic septage → corrosion, odour, safety hazard; (c) Slug loads of solids when disturbed → treatment plant process upsets (high SS, BOD, toxicity); (d) Pump blockages from grease; (2) Planned removal procedure: (a) Isolate wet well if possible (bypass pumping); (b) Pump out accumulated material with vacuum truck; (c) Characterize material (TCLP, metals if industrial inputs); (d) Dispose at approved septage receiving facility or treatment plant headworks (controlled rate to avoid process upset); (e) High-pressure wash wet well walls; (f) Inspect for structural damage; (3) Prevention: install wet well mixer; regular inspection (quarterly); cleaning schedule (annual or as needed).",
+  },
+  {
+    id: 535,
+    module: "Wastewater Collection",
+    topic: "Collection System Monitoring Program",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator is designing a comprehensive collection system monitoring program. The system has 300 km of sewers, 8 lift stations, and 3 CSO outfalls. What monitoring technologies and parameters should be included?",
+    options: [
+      "Only flow monitoring at the treatment plant influent",
+      "Integrated monitoring program: (1) continuous flow monitoring at key nodes (treatment plant, major lift stations, CSO structures); (2) continuous level monitoring at all lift stations; (3) H₂S monitoring at lift stations and force main discharge points; (4) CSO event monitoring (flow, duration, volume); (5) rainfall monitoring (rain gauges at multiple locations); (6) periodic water quality sampling at CSO outfalls; (7) SCADA integration for real-time data and alarms",
+      "Only CCTV inspection — visual monitoring is sufficient",
+      "Only monitoring at CSO outfalls — required by regulation"
+    ],
+    correct: 1,
+    explanation: "Comprehensive collection system monitoring program: (1) Flow monitoring — continuous electromagnetic or ultrasonic flow meters at: treatment plant influent, major lift stations, CSO structures, key sewer junctions; (2) Level monitoring — continuous at all lift station wet wells; SCADA alarms for high/low level; (3) H₂S monitoring — continuous at lift station wet wells, force main discharge manholes; 4-gas monitors for confined space entry; (4) CSO monitoring — flow rate, duration, volume at each outfall; required by ECA; (5) Rainfall — tipping bucket rain gauges at multiple locations; correlate with I/I and CSO events; (6) Water quality — periodic sampling at CSO outfalls for regulatory compliance; (7) SCADA integration — real-time data, alarms, trend analysis, remote access; (8) Portable flow monitoring — for I/I studies, capacity assessment, model calibration.",
+  },
+  {
+    id: 536,
+    module: "Wastewater Collection",
+    topic: "Collection System Financing",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator is preparing a business case for a $15 million collection system rehabilitation program. The program will reduce SSOs by 90%, reduce I/I by 40%, and extend infrastructure life by 50 years. What financial analysis should be included in the business case?",
+    options: [
+      "Only the capital cost — operating cost savings are not relevant",
+      "Life-cycle cost analysis (LCCA): capital cost, avoided emergency repair costs, reduced treatment plant operating costs (from I/I reduction), reduced regulatory risk (SSO penalties), deferred capacity expansion costs, and net present value (NPV) analysis over 50 years",
+      "Only the regulatory compliance benefit — financial analysis is not required for infrastructure",
+      "Compare only to the cost of doing nothing — if doing nothing is cheaper, don't proceed"
+    ],
+    correct: 1,
+    explanation: "Business case financial analysis for collection system rehabilitation: (1) Capital cost — $15 million rehabilitation program; (2) Operating cost savings: (a) Reduced emergency repairs — SSO response costs $50,000–200,000/event; 90% reduction = significant savings; (b) Reduced treatment costs — 40% I/I reduction reduces flow to treatment plant; lower pumping, chemical, and energy costs; (c) Reduced regulatory costs — SSO penalties, MECP compliance orders; (3) Deferred capital — I/I reduction defers need for treatment plant capacity expansion; (4) Life-cycle cost analysis (LCCA) — compare: (a) rehabilitation now ($15M + reduced O&M) vs. (b) deferred rehabilitation (higher O&M + emergency repairs + eventual replacement at higher cost); (5) Net Present Value (NPV) — discount all future costs/savings to present value at municipal discount rate (typically 4–6%); (6) Risk analysis — probability and cost of SSO events, regulatory penalties, infrastructure failure.",
+  },
+  {
+    id: 537,
+    module: "Wastewater Collection",
+    topic: "Pump Station Automation",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is upgrading a lift station control system from simple float-switch control to a PLC-based system with SCADA integration. What control logic improvements should be implemented to optimize pump operation?",
+    options: [
+      "Simply replace float switches with electronic level sensors — no logic changes needed",
+      "Implement: (1) variable speed control (VFD) with level-based speed modulation; (2) pump alternation to equalize wear; (3) predictive start/stop based on inflow rate calculation; (4) anti-cavitation protection (minimum speed); (5) thermal overload protection; (6) run-time equalization between pumps; (7) alarm management with priority levels; (8) data logging for performance analysis",
+      "Only add SCADA monitoring — keep existing float switch control",
+      "Implement maximum pump speed at all times to minimize wet well retention time"
+    ],
+    correct: 1,
+    explanation: "Advanced PLC/SCADA control logic for lift stations: (1) VFD control — modulate pump speed to match inflow rate; maintain constant wet well level; reduces energy consumption 20–40%; eliminates water hammer from frequent starts/stops; (2) Pump alternation — automatically alternate lead/lag pumps to equalize wear; (3) Predictive control — calculate inflow rate from level change; start pump before high level alarm; (4) Anti-cavitation — minimum speed setpoint to prevent cavitation at low wet well levels; (5) Thermal protection — monitor motor temperature; reduce speed or stop if overheating; (6) Run-time equalization — balance operating hours between pumps; (7) Alarm hierarchy — critical (pump failure, high level), warning (high temperature, low level), informational (maintenance due); (8) Data logging — flow, level, power, run-time for performance trending and maintenance planning.",
+  },
+  {
+    id: 538,
+    module: "Wastewater Collection",
+    topic: "Collection System Climate Adaptation",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is updating the collection system master plan to incorporate climate change projections. Ontario climate projections indicate: 20% increase in extreme precipitation events, 15% increase in annual precipitation, and warmer winters. How should these projections affect collection system planning?",
+    options: [
+      "Climate change projections are too uncertain to incorporate into infrastructure planning",
+      "Increase design storm return periods (e.g., from 5-year to 10-year for new sewers), increase CSO storage capacity to handle higher peak flows, prioritize I/I reduction (higher groundwater from increased precipitation), implement green infrastructure to reduce runoff, and design for increased pump station capacity with climate safety factors",
+      "Only address warmer winters — reduced frost depth is the primary climate impact",
+      "Climate adaptation is the provincial government's responsibility — municipalities don't need to plan for it"
+    ],
+    correct: 1,
+    explanation: "Climate change adaptation for collection systems: (1) Design storm standards — increase return period for new infrastructure (5-year → 10-year for gravity sewers; 25-year → 50-year for major trunks); (2) CSO storage — increase storage capacity to capture higher peak flows; 20% increase in extreme events = more frequent CSO activation; (3) I/I management — higher annual precipitation → higher groundwater → increased infiltration; accelerate I/I reduction program; (4) Green infrastructure — bioswales, permeable pavement, green roofs reduce runoff volume; most cost-effective at source; (5) Pump station capacity — size for increased peak flows with climate safety factor (10–20%); (6) Warmer winters — reduced frost depth affects pipe installation depths; warmer temperatures may increase biological activity in sewers (more H₂S, more grease liquefaction); (7) Asset management — prioritize rehabilitation of vulnerable infrastructure before climate impacts intensify.",
+  },
+  {
+    id: 539,
+    module: "Wastewater Collection",
+    topic: "Advanced Force Main Management",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator manages a 15 km force main (500 mm HDPE, DR11) that serves as the sole conveyance for a community of 25,000 people. The force main crosses a sensitive wetland. What is the MINIMUM risk management framework required?",
+    options: [
+      "Annual visual inspection of above-ground sections only",
+      "Comprehensive risk management: (1) condition assessment program (acoustic leak detection, pressure testing); (2) cathodic protection monitoring (if metallic); (3) surge analysis and protection review; (4) emergency response plan with bypass pumping capability; (5) environmental contingency plan for wetland crossing; (6) SCADA monitoring of pressure and flow; (7) redundancy analysis and capacity reserve",
+      "Risk management is only required for metallic force mains — HDPE doesn't corrode",
+      "Only emergency response planning is required — condition assessment is optional"
+    ],
+    correct: 1,
+    explanation: "Risk management for critical force main serving 25,000 people across sensitive wetland: (1) Condition assessment — acoustic leak detection (SmartBall) every 3–5 years; pressure testing; HDPE inspection for joint integrity; (2) Surge protection — review surge analysis; verify air release/vacuum breaker valves are functional; HDPE is susceptible to vacuum collapse; (3) Emergency response plan — bypass pumping plan: portable pumps, temporary pipe, deployment time <4 hours; mutual aid agreements with neighboring municipalities; (4) Environmental contingency — wetland crossing failure response: containment booms, vacuum trucks, emergency notification to MECP and Conservation Authority; (5) SCADA monitoring — continuous pressure monitoring; leak detection by flow balance (compare pump flow vs. receiving flow); alarm on pressure drop; (6) Redundancy — evaluate feasibility of parallel force main or alternative routing; (7) Regulatory — wetland crossing requires Conservation Authority permit; spill response plan required.",
+  },
+  {
+    id: 540,
+    module: "Wastewater Collection",
+    topic: "Collection System Procurement",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator is developing specifications for a CIPP lining contract covering 8 km of sewers (200–600 mm diameter). What are the CRITICAL specification requirements to ensure quality and performance?",
+    options: [
+      "Only specify the liner thickness — contractors will determine the rest",
+      "Specifications must include: liner design requirements (ASTM F1216, minimum thickness by pipe condition), pre-installation CCTV, material certifications (resin type, felt specifications), installation procedures (inversion or pull-in), curing method (UV, steam, or ambient), post-installation CCTV and mandrel test, service connection reinstatement, warranty (minimum 5 years), and QA/QC requirements including third-party inspection",
+      "Only specify the post-installation CCTV — quality is the contractor's responsibility",
+      "Use a performance specification only — specify the outcome, not the method"
+    ],
+    correct: 1,
+    explanation: "Critical CIPP lining specification requirements: (1) Design — ASTM F1216 structural design; minimum liner thickness based on pipe condition (partially vs. fully deteriorated); design life 50 years; (2) Pre-installation — CCTV inspection to confirm pipe condition; cleaning to remove all debris; (3) Materials — resin type (polyester, vinyl ester, or epoxy); felt tube specifications (weight, thickness); material certifications and test results; (4) Installation — inversion (water or air) or pull-in method; temperature monitoring during curing; (5) Curing — UV, steam, or ambient; temperature and time requirements; (6) Post-installation — CCTV inspection (100% of lined pipe); mandrel test (95% of nominal diameter); pressure test if applicable; (7) Service connections — robotic cutting within 24 hours; CCTV verification; (8) QA/QC — third-party inspection; material samples for testing; (9) Warranty — minimum 5 years for materials and workmanship; (10) Environmental — manage liner waste, water discharge.",
+  },
+  {
+    id: 541,
+    module: "Wastewater Collection",
+    topic: "Pump Station Lifecycle Management",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is developing a lifecycle management plan for a fleet of 15 lift stations ranging in age from 5 to 45 years. What framework should be used to prioritize capital renewal investments?",
+    options: [
+      "Replace all stations older than 25 years",
+      "Condition-based lifecycle management: assess each station using a structured scoring system (electrical condition, mechanical condition, control system, structural condition, operational performance, regulatory compliance); calculate remaining useful life; prioritize renewal based on risk score and remaining life; develop 10-year capital renewal forecast with cost estimates",
+      "Only replace stations that have experienced failures — reactive replacement is most cost-effective",
+      "Replace all stations on a fixed 20-year cycle regardless of condition"
+    ],
+    correct: 1,
+    explanation: "Lifecycle management framework for lift station fleet: (1) Condition assessment — structured scoring for each component: (a) Electrical: switchgear age, motor condition, wiring, grounding; (b) Mechanical: pump efficiency, impeller wear, valve condition, piping; (c) Controls: PLC age, SCADA integration, instrumentation; (d) Structural: wet well condition, access, ventilation; (e) Operational: reliability, energy efficiency, maintenance cost; (2) Remaining useful life — estimate based on condition score and component age; (3) Risk scoring — condition × consequence of failure; (4) Capital renewal prioritization — rank stations by risk score; (5) 10-year capital forecast — estimate renewal costs (component replacement vs. full station rehabilitation vs. new station); (6) Optimization — identify stations where component replacement extends life vs. stations requiring full renewal; (7) Budget planning — smooth capital expenditure over 10-year horizon; avoid peaks.",
+  },
+  {
+    id: 542,
+    module: "Wastewater Collection",
+    topic: "Collection System Regulatory Compliance",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator receives a Director's Order from MECP requiring the municipality to develop and implement a Capacity, Management, Operations and Maintenance (CMOM) program within 18 months. What are the core elements of a CMOM program?",
+    options: [
+      "CMOM only requires a maintenance schedule — no other elements are needed",
+      "CMOM core elements: (1) Capacity — assess system capacity, identify deficiencies, develop CIP; (2) Management — organizational structure, staffing, training, budget; (3) Operations — standard operating procedures, emergency response, SCADA; (4) Maintenance — preventive maintenance program, equipment inventory, work order system; plus: legal authority, mapping, overflow response, communication program, and periodic program assessment",
+      "CMOM is a US EPA program — not applicable in Ontario",
+      "Only the overflow response element is required — other elements are optional"
+    ],
+    correct: 1,
+    explanation: "CMOM (Capacity, Management, Operations and Maintenance) program elements: (1) Legal Authority — verify municipality has authority to: regulate sewer use, require I/I reduction, enforce grease control; (2) Mapping — accurate GIS-based sewer atlas; (3) Capacity — hydraulic model; capacity assessment; CIP for deficiencies; (4) Management — organizational structure; staffing levels; training program; budget and financial planning; (5) Operations — SOPs for all routine and emergency operations; SCADA; emergency response plan; (6) Maintenance — preventive maintenance schedule; equipment inventory; CMMS; (7) Overflow Response — SSO response plan; notification procedures; root cause analysis; corrective actions; (8) Communication — public notification of SSOs; annual report; stakeholder engagement; (9) Program Assessment — annual performance review; KPI tracking; continuous improvement. CMOM is now used in Ontario as a framework for ECA compliance and Director's Orders.",
+  },
+  {
+    id: 543,
+    module: "Wastewater Collection",
+    topic: "Advanced Hydraulic Analysis",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator is analyzing a sewer system that experiences basement flooding during a 10-year storm event. The hydraulic model shows that a 300 mm trunk sewer is surcharging to 2.5 m above the pipe crown. The basement floor elevation is 1.8 m above the pipe crown. What does this indicate and what are the mitigation options?",
+    options: [
+      "The basement flooding is caused by the sump pump failing — not a sewer capacity issue",
+      "The hydraulic grade line (2.5 m above crown) exceeds the basement floor elevation (1.8 m above crown) — sewage is backing up into the basement through floor drains. Mitigation: (1) backwater valve installation (most cost-effective for individual properties); (2) pipe upsizing (addresses root cause); (3) storage (in-line or off-line); (4) green infrastructure to reduce peak flows",
+      "The flooding is acceptable — basement flooding during 10-year storms is within design standards",
+      "Only pipe upsizing is effective — other measures are temporary fixes"
+    ],
+    correct: 1,
+    explanation: "Basement flooding analysis: HGL = 2.5 m above pipe crown. Basement floor = 1.8 m above pipe crown. Since HGL (2.5 m) > basement floor (1.8 m), the hydraulic grade line is above the basement floor during the 10-year storm — sewage can back up through floor drains, toilets, and other fixtures. Mitigation options (in order of cost-effectiveness): (1) Backwater valves — installed on individual service connections; prevents backflow into basement; cost: $1,000–3,000/property; does not address root cause; (2) Sewer separation — if combined sewer, separate storm and sanitary; removes stormwater from sanitary system; (3) Pipe upsizing — increase trunk sewer capacity; most expensive; (4) Storage — in-line or off-line storage to attenuate peak flows; (5) Green infrastructure — reduce runoff volume; (6) Real-time control — maximize use of existing storage. Combination approach typically most cost-effective.",
+  },
+  {
+    id: 544,
+    module: "Wastewater Collection",
+    topic: "Collection System Staffing",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator is reviewing staffing requirements for a collection system with 400 km of sewers, 12 lift stations, and 4 CSO structures. What staffing levels and qualifications are required under Ontario regulations?",
+    options: [
+      "One operator can manage any size collection system — no minimum staffing requirements",
+      "Ontario O. Reg. 128/04 requires: a licensed operator-in-charge (OIC) for each operating authority; staffing levels sufficient to operate the system safely and in compliance with the ECA; for a system of this size, typically requires: 1 Class 3 or 4 OIC, 2–3 Class 2 or 3 operators, 2–4 maintenance technicians, and 24/7 on-call capability",
+      "Only a Class 1 operator is required — collection systems are low-risk",
+      "Staffing is entirely at the municipality's discretion — no regulatory requirements"
+    ],
+    correct: 1,
+    explanation: "Ontario staffing requirements for collection systems (O. Reg. 128/04): (1) Operator-in-Charge (OIC) — must hold a licence at least equal to the system's classification; for a Class 3 collection system, OIC must hold Class 3 or higher; (2) Staffing levels — sufficient to: operate all facilities safely; respond to emergencies within 1 hour; perform preventive maintenance; maintain regulatory compliance; (3) For a 400 km, 12 lift station system: OIC (Class 3/4), 2–3 operators (Class 2/3), 2–4 maintenance technicians (electrical, mechanical), administrative support; (4) 24/7 on-call — required for lift station alarms and SSO response; (5) Training — operators must maintain continuing education credits for licence renewal; (6) Succession planning — ensure qualified operators available if OIC leaves; (7) Contractors — specialized work (CCTV, CIPP, confined space) may be contracted but OIC remains responsible for compliance.",
+  },
+  {
+    id: 545,
+    module: "Wastewater Collection",
+    topic: "Sewer Use Bylaw Enforcement",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator discovers that an industrial facility is discharging high-strength wastewater (BOD 2,500 mg/L, pH 4.5, temperature 65°C) to the municipal sewer. The sewer use bylaw limits are: BOD 300 mg/L, pH 5.5–10.5, temperature 60°C. What enforcement actions are available and what are the operational impacts?",
+    options: [
+      "No action required — industrial discharges are the provincial government's responsibility",
+      "Enforcement actions: (1) issue a notice of violation; (2) require immediate corrective action (pH adjustment, cooling, pretreatment); (3) issue an order to comply with a deadline; (4) if non-compliant, issue a fine or disconnect from the sewer; (5) refer to MECP if discharge causes adverse effects. Operational impacts: high BOD overloads biological treatment; low pH inhibits biological treatment and corrodes concrete; high temperature kills nitrifying bacteria",
+      "Only issue a warning letter — enforcement is too costly for small violations",
+      "Accept the discharge but increase treatment plant chemical dosing to compensate"
+    ],
+    correct: 1,
+    explanation: "Sewer use bylaw enforcement for non-compliant industrial discharge: (1) Immediate actions: (a) Notify the facility of the violation; (b) Require immediate corrective action (pH neutralization, cooling tower installation, pretreatment); (c) Increase monitoring frequency; (2) Formal enforcement: (a) Notice of Violation with compliance deadline; (b) Administrative Penalty (if bylaw allows); (c) Order to Comply; (d) Sewer connection suspension for continued non-compliance; (3) Operational impacts: (a) BOD 2,500 mg/L (8× limit) — overloads biological treatment, increases aeration demand, may cause effluent violations; (b) pH 4.5 — corrodes concrete sewers (MIC accelerated), inhibits biological treatment (optimal pH 6.5–8.5), kills nitrifying bacteria; (c) Temperature 65°C — kills biological treatment organisms (mesophilic bacteria die above 45°C); (4) Pretreatment requirement — facility must install: pH neutralization, heat exchanger, BOD reduction (equalization, biological pretreatment).",
+  },
+  {
+    id: 546,
+    module: "Wastewater Collection",
+    topic: "Collection System Emergency Management",
+    difficulty: "hard" as const,
+    question: "A major earthquake (magnitude 6.2) has caused widespread damage to the collection system. Multiple lift stations are without power, several sewers have collapsed, and there are reports of SSOs throughout the system. As Class 4 operator, what is the INCIDENT COMMAND structure and priority sequence?",
+    options: [
+      "Address SSOs first, then restore power, then repair sewers",
+      "Activate Emergency Operations Center (EOC) and Incident Command System (ICS): (1) Life safety — ensure no personnel in damaged confined spaces; (2) Situation assessment — rapid damage assessment of all lift stations and known sewer failures; (3) Prioritize — restore power to largest lift stations first; deploy portable pumps; (4) Contain SSOs — notify MECP, deploy containment; (5) Communicate — update EOC, MECP, public; (6) Document — all actions, observations, costs for insurance/ODRAP claims",
+      "Wait for provincial emergency management to take over — municipality has no role in major emergencies",
+      "Only address lift stations — sewer repairs can wait until the emergency is over"
+    ],
+    correct: 1,
+    explanation: "Earthquake emergency response using ICS: (1) Life Safety — account for all personnel; do not enter damaged confined spaces; (2) Incident Command — activate EOC; establish ICS with Operations, Logistics, Finance, Planning sections; (3) Situation Assessment — rapid damage assessment: which lift stations are offline? Which sewers are collapsed? Estimated SSO volumes?; (4) Priority Restoration — largest lift stations serving most population first; deploy portable generators and pumps; mutual aid from neighboring municipalities; (5) SSO Management — notify MECP Spills Action Centre; deploy containment (portable berms, vacuum trucks); public notification if health risk; (6) Communication — regular updates to EOC, mayor, MECP, public; (7) Documentation — photograph all damage; record all actions and costs; required for Ontario Disaster Relief Assistance Program (ODRAP) claims; (8) Recovery planning — temporary repairs to restore service; permanent repairs with post-earthquake design standards.",
+  },
+  {
+    id: 547,
+    module: "Wastewater Collection",
+    topic: "Collection System Financial Planning",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator is preparing a 10-year capital plan for the collection system. The system replacement value is $180 million. Industry benchmarks suggest annual reinvestment of 1–2% of replacement value. The current annual capital budget is $800,000. What is the funding gap and what financing strategies should be considered?",
+    options: [
+      "The current budget is adequate — $800,000/year is sufficient for any system",
+      "Funding gap: benchmark = $1.8–3.6M/year vs. current $800K = gap of $1.0–2.8M/year. Strategies: (1) rate increases (user fees); (2) development charges for growth-related infrastructure; (3) Infrastructure Ontario loans (low interest); (4) federal/provincial grants (ICIP, OCIF); (5) asset optimization (prioritize highest-risk assets); (6) P3 arrangements for major projects",
+      "The funding gap is the provincial government's responsibility to fill",
+      "Reduce the rehabilitation program to match the available budget — no additional funding needed"
+    ],
+    correct: 1,
+    explanation: "Collection system capital funding analysis: Benchmark reinvestment = 1–2% × $180M = $1.8–3.6M/year. Current budget = $800K/year. Funding gap = $1.0–2.8M/year. Financing strategies: (1) Rate increases — user fees (water/wastewater rates) are the primary funding source; rate study to determine sustainable rate path; (2) Development charges — recover growth-related infrastructure costs from developers; (3) Infrastructure Ontario (IO) loans — low-interest financing for municipalities; 20–30 year terms; (4) Federal/Provincial grants: (a) Investing in Canada Infrastructure Program (ICIP); (b) Ontario Community Infrastructure Fund (OCIF); (c) Green Infrastructure Fund; (5) Asset optimization — prioritize highest-risk assets to maximize impact of limited budget; (6) P3 arrangements — private financing for major projects (>$50M); (7) Reserve fund — build up reserve fund during low-capital years for future large projects. Sustainable infrastructure requires full-cost accounting and rate setting.",
+    isCalc: true,
+  },
+  {
+    id: 548,
+    module: "Wastewater Collection",
+    topic: "Collection System Innovation",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator is evaluating emerging technologies for collection system management. Which technology has the GREATEST potential to transform collection system operations in the next 5–10 years?",
+    options: [
+      "Traditional CCTV inspection — the gold standard that cannot be improved",
+      "AI-powered CCTV analysis (automated defect detection and PACP coding), IoT sensor networks for real-time distributed monitoring, digital twin modeling (real-time hydraulic model updated with sensor data), and predictive analytics for maintenance optimization — collectively enabling proactive rather than reactive management",
+      "Larger pipe diameters — the only proven solution for capacity problems",
+      "Chemical treatment — the most cost-effective approach for all collection system problems"
+    ],
+    correct: 1,
+    explanation: "Transformative technologies for collection system management: (1) AI-powered CCTV analysis — machine learning algorithms automatically detect and code defects from CCTV video; reduces inspection cost by 60–80%; consistent, objective defect coding; enables rapid assessment of large pipe inventories; (2) IoT sensor networks — low-cost, wireless flow and level sensors throughout the system; real-time distributed monitoring; early detection of blockages, I/I events, and capacity issues; (3) Digital twin — real-time hydraulic model updated with sensor data; predicts system behavior; enables proactive intervention before problems occur; supports RTC optimization; (4) Predictive analytics — machine learning models predict blockage probability based on pipe attributes, maintenance history, and environmental factors; optimize cleaning schedules; reduce emergency responses by 30–50%; (5) Drone inspection — for large sewers (>900 mm); faster than CCTV crawlers; (6) Acoustic leak detection — continuous monitoring of force mains for leaks. These technologies enable the shift from reactive to predictive maintenance.",
+  },
+  {
+    id: 549,
+    module: "Wastewater Collection",
+    topic: "Collection System Environmental Compliance",
+    difficulty: "hard" as const,
+    question: "A Class 4 operator receives a Notice of Non-Compliance from MECP citing: (1) failure to report 3 SSO events within the required timeframe; (2) failure to maintain accurate sewer atlas; (3) pump station without required backup power. What is the appropriate response and what are the potential consequences of non-compliance?",
+    options: [
+      "Respond to MECP that the violations are minor and will be addressed eventually",
+      "Respond within the required timeframe with: (1) acknowledgment of each violation; (2) root cause analysis; (3) corrective action plan with specific timelines; (4) immediate corrective actions already taken. Potential consequences if not addressed: Director's Order, Administrative Monetary Penalty (up to $100,000/day), prosecution under EPA (up to $6M for corporations), and personal liability for the operator",
+      "Ignore the notice — MECP rarely follows up on notices of non-compliance",
+      "Only address the backup power issue — the other violations are administrative only"
+    ],
+    correct: 1,
+    explanation: "Response to MECP Notice of Non-Compliance: (1) Immediate response — acknowledge receipt; contact MECP inspector to discuss; (2) Corrective action plan: (a) SSO reporting — implement improved SSO detection and notification procedures; train staff; update emergency contact list; (b) Sewer atlas — assign staff/contractor to update GIS; establish process for ongoing updates within 90 days of changes; (c) Backup power — procure and install generator; interim measure: portable generator on standby; (3) Timeline — provide specific completion dates for each corrective action; (4) Documentation — demonstrate good faith and due diligence. Potential consequences: (a) Director's Order — legally binding requirements with specific timelines; (b) Administrative Monetary Penalty (AMP) — up to $100,000/day under EPA; (c) Prosecution — up to $6M for corporations, $1M for individuals; (d) Personal liability — operators can be personally charged for directing non-compliant activities; (e) Licence suspension — MECP can suspend operator licence. Proactive, transparent response reduces enforcement risk.",
+  },
+  {
+    id: 550,
+    module: "Wastewater Collection",
+    topic: "Collection System Stakeholder Management",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator is managing a major sewer rehabilitation project that will cause significant traffic disruption and service interruptions over 18 months. What stakeholder communication and engagement strategy is required?",
+    options: [
+      "Notify affected residents 48 hours before work begins — standard notification is sufficient",
+      "Comprehensive stakeholder engagement: (1) pre-project public consultation (open houses, project website); (2) regular project updates (monthly newsletter, social media); (3) direct notification to affected property owners (30 days advance notice); (4) business impact mitigation (access maintenance, advance notice to businesses); (5) emergency contact line for complaints; (6) post-project communication (project completion, service restoration)",
+      "Only notify the municipality's communications department — they will handle all public communication",
+      "Stakeholder communication is not required for infrastructure projects"
+    ],
+    correct: 1,
+    explanation: "Stakeholder communication strategy for major sewer rehabilitation: (1) Pre-project: (a) Public open house — present project scope, timeline, impacts, mitigation; (b) Project website — maps, FAQs, contact information, progress updates; (c) Council presentation — obtain approval and support; (2) During construction: (a) 30-day advance notice to affected property owners; (b) Monthly project newsletter; (c) Social media updates (Twitter/X, Facebook); (d) Direct notification 48 hours before work on specific streets; (e) Emergency contact line (24/7) for urgent issues; (f) Regular media updates; (3) Business impact mitigation: (a) Maintain access to all businesses during construction; (b) Advance notice to businesses (3 months) to plan for disruption; (c) Consider business liaison to address specific concerns; (4) Post-project: (a) Project completion announcement; (b) Service restoration notification; (c) Lessons learned for future projects. Effective communication reduces complaints, builds public trust, and supports future project approvals.",
+  },
+  {
+    id: 551,
+    module: "Wastewater Collection",
+    topic: "Collection System Benchmarking",
+    difficulty: "medium" as const,
+    question: "A Class 4 operator is participating in the Ontario Municipal Benchmarking Initiative (OMBI) for wastewater collection. The system data shows: cost per km of sewer maintained = $4,200/km; blockage rate = 8.5/100 km/year; % of system inspected by CCTV = 6%/year. How do these compare to OMBI benchmarks and what improvements are needed?",
+    options: [
+      "All metrics are within acceptable ranges — no improvements needed",
+      "Analysis: (1) Cost $4,200/km — above median ($2,800–3,500/km) — investigate high-cost activities; (2) Blockage rate 8.5/100 km — above benchmark (<5/100 km) — increase preventive cleaning; (3) CCTV coverage 6%/year — below target (10–20%/year for full 5–10 year cycle) — increase inspection program. Root cause: insufficient preventive maintenance leading to higher reactive costs and blockages",
+      "OMBI benchmarks are not applicable — every system is unique",
+      "Only the blockage rate matters — cost and CCTV coverage are not performance indicators"
+    ],
+    correct: 1,
+    explanation: "OMBI benchmarking analysis: (1) Cost per km: $4,200/km vs. OMBI median $2,800–3,500/km — above benchmark; investigate: high reactive maintenance costs (blockage response), overtime, contractor costs; (2) Blockage rate: 8.5/100 km/year vs. benchmark <5/100 km/year — 70% above benchmark; root causes: insufficient preventive cleaning, aging infrastructure, grease accumulation; (3) CCTV coverage: 6%/year vs. target 10–20%/year — below target; at 6%/year, full system inspection takes 17 years — too long for aging infrastructure. Improvement plan: (1) Increase preventive cleaning frequency in high-blockage areas; (2) Increase CCTV inspection to 15%/year; (3) Implement risk-based maintenance (focus resources on highest-risk areas); (4) FOG control program to reduce grease blockages; (5) Track improvements in blockage rate and cost over 3–5 years. OMBI benchmarking enables comparison with peer municipalities and identification of improvement opportunities.",
+    isCalc: true,
+  },
 ];
 
 export const CLASS4_WASTEWATER_MODULES = [
@@ -7767,6 +8270,12 @@ export const CLASS4_WASTEWATER_MODULES = [
     name: "Plant Management, Safety & Administration",
     icon: "🏭",
     description: "Regulatory compliance, emergency response, asset management, and staff training",
+  },
+  {
+    id: "wastewater-collection",
+    name: "Wastewater Collection",
+    icon: "🔩",
+    description: "Collection system master planning, force main management, I/I analysis, CSO control, and risk-based asset management",
   },
 ];
 

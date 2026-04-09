@@ -2929,6 +2929,55 @@ export const CLASS4_WATER_OVERVIEWS: Record<string, ModuleOverview> = {
     ],
     formulaHint: "Hazen-Williams: hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87) | LSI = pH − pHs | Pump affinity: Q∝N, H∝N², P∝N³",
   },
+  "Wastewater Collection": {
+    title: "Wastewater Collection",
+    intro:
+      "Class 3 Wastewater Collection covers the design, operation, and maintenance of municipal sanitary and combined sewer systems. Key topics include gravity sewer hydraulics (Manning's equation), force main design and operation, lift station management, inflow and infiltration (I/I) analysis and control, combined sewer overflow (CSO) management, sewer condition assessment (CCTV, PACP), trenchless rehabilitation (CIPP, pipe bursting), odour and corrosion control, and regulatory compliance under Ontario's Environmental Compliance Approvals (ECAs). Class 3 operators must understand how collection system performance affects treatment plant loading and regulatory compliance.",
+    keyPoints: [
+      {
+        heading: "Gravity Sewer Hydraulics",
+        body: "Manning's equation: V = (1/n) × R^(2/3) × S^(1/2), where V = velocity (m/s), n = Manning's roughness coefficient, R = hydraulic radius (m) = A/P, S = slope (m/m). For a circular pipe flowing full: R = D/4. Minimum self-cleansing velocity: 0.6 m/s (prevents solids deposition). Maximum velocity: 3.0 m/s (prevents pipe erosion). Manning's n values: PVC = 0.009–0.011; concrete = 0.012–0.015; brick = 0.013–0.017. Partial flow conditions: a pipe flowing 80–90% full has the highest velocity (greater than full-flow velocity due to hydraulic radius effects). Design slopes: minimum 0.3% for 200 mm pipe; steeper for smaller diameters.",
+      },
+      {
+        heading: "Force Main Design and Operation",
+        body: "Force mains convey wastewater under pressure from lift stations. Key design parameters: minimum velocity 0.6 m/s (self-cleansing); maximum velocity 3.0 m/s; Hazen-Williams equation for head loss: hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87). C values: HDPE = 150; PVC = 150; ductile iron = 130–140; old cast iron = 80–100. Surge (water hammer) analysis is critical for force mains — Joukowsky equation: ΔH = a × ΔV / g. HDPE has lower wave speed (300–400 m/s) than steel (1,200–1,400 m/s), reducing surge pressure. Air release/vacuum breaker valves required at high points. H₂S generation in force mains: long retention time + anaerobic conditions → H₂S → corrosion of concrete manholes and pipes downstream.",
+      },
+      {
+        heading: "Inflow and Infiltration (I/I) Analysis",
+        body: "I/I = stormwater entering the sanitary sewer system. Inflow: direct entry through manhole covers, illegal storm connections, roof leaders. Infiltration: groundwater entry through pipe joints, cracks, and defects. I/I measurement: flow monitoring during wet and dry weather; PWWF/ADWF ratio (target < 3.0 for well-maintained systems). I/I sources: smoke testing (inflow), dye testing (connections), CCTV (structural defects). I/I reduction: manhole rehabilitation, CIPP lining of defective pipes, private lateral program. Economic analysis: compare I/I reduction cost vs. avoided treatment plant capacity expansion cost. Typical I/I rates: 0.1–0.5 L/s/km (low) to 1.0–5.0 L/s/km (high).",
+      },
+      {
+        heading: "Lift Station Operation",
+        body: "Lift station components: wet well, pumps (centrifugal submersible or dry-pit), controls (PLC/SCADA), force main, backup power. Pump selection: operating point = intersection of pump curve and system curve. Pump efficiency: typically 65–85% at BEP (Best Efficiency Point). VFDs (Variable Frequency Drives) reduce energy consumption 20–40% by matching pump speed to inflow rate. Wet well volume: minimum active volume = Q_pump / (4 × N_max) where N_max = maximum starts/hour. Backup power: generator sized for all pumps + controls; automatic transfer switch. H₂S monitoring: required in wet well headspace; 4-gas monitor for confined space entry. Odour control: biofilter, chemical scrubber, or activated carbon for wet well ventilation.",
+      },
+      {
+        heading: "Sewer Condition Assessment",
+        body: "CCTV inspection is the primary tool for sewer condition assessment. PACP (Pipeline Assessment and Certification Program) provides standardized defect coding: structural defects (cracks, fractures, deformation, joint displacement), operational defects (roots, deposits, infiltration). PACP condition grades: 1 (best) to 5 (worst). Inspection frequency: 10–20% of system per year for a complete 5–10 year cycle. Acoustic leak detection for force mains (SmartBall, PipeDiver). Sonar inspection for partially-filled large sewers. Laser profiling for cross-section measurement. Risk-based prioritization: combine condition grade with consequence of failure (pipe size, location, depth) to prioritize rehabilitation.",
+      },
+      {
+        heading: "Trenchless Rehabilitation",
+        body: "CIPP (Cured-In-Place Pipe) lining: felt tube impregnated with resin; inserted by inversion or pull-in; cured by UV, steam, or ambient temperature. Design per ASTM F1216: liner thickness based on pipe condition (partially vs. fully deteriorated), soil load, groundwater pressure. Typical cost: $200–500/m. Pipe bursting: static or pneumatic; expands existing pipe while pulling in new pipe; suitable for replacing deteriorated pipes without excavation. Slip lining: new pipe inserted inside existing pipe; reduces cross-section. Spray-applied lining: for non-circular sections (egg-shaped, horseshoe). Service connection reinstatement: robotic cutting required after CIPP lining. Warranty: minimum 5 years for materials and workmanship.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Value/Range", "Notes"],
+    tableRows: [
+      ["Minimum self-cleansing velocity", "0.6 m/s", "Prevents solids deposition in gravity sewers and force mains"],
+      ["Manning's n (PVC)", "0.009–0.011", "Lower n = smoother pipe = higher velocity at same slope"],
+      ["Manning's n (concrete)", "0.012–0.015", "Increases with age and tuberculation"],
+      ["PWWF/ADWF ratio target", "< 3.0", "Higher ratio indicates significant I/I"],
+      ["H₂S IDLH", "50 ppm", "Immediately dangerous to life and health — use SCBA"],
+      ["CIPP design standard", "ASTM F1216", "Structural liner design for fully deteriorated pipe condition"],
+      ["Wet well minimum volume", "Q_pump / (4 × N_max)", "Prevents excessive pump starts; N_max typically 4–6/hour"],
+    ],
+    examTips: [
+      "Manning's equation: V = (1/n) × R^(2/3) × S^(1/2) — steeper slope and larger hydraulic radius increase velocity",
+      "Pipe flowing 80–90% full has higher velocity than full-flow — due to hydraulic radius effect",
+      "I/I ratio > 3.0 indicates significant infiltration/inflow — investigate with smoke testing and CCTV",
+      "H₂S in force mains: long retention time + anaerobic conditions → H₂S → concrete corrosion downstream",
+      "CIPP design: fully deteriorated condition (no structural credit to host pipe) requires thicker liner",
+    ],
+    formulaHint: "Manning's: V = (1/n) × R^(2/3) × S^(1/2) | Hazen-Williams: hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87) | Wet well volume: V = Q_pump / (4 × N_max) | Joukowsky surge: ΔH = a × ΔV / g",
+  },
 };
 
 // ─── Class 4 Wastewater Module Overviews ─────────────────────────────────────
@@ -5717,5 +5766,54 @@ export const WPI_CLASS4_WASTEWATER_OVERVIEWS: Record<string, import("./moduleOve
       "Non-entry rescue: always preferred — use tripod and winch; entry rescue requires SCBA and trained rescuers",
     ],
     formulaHint: "No specific formulas — focus on TLVs, IDLHs, confined space entry procedures, and WHMIS requirements.",
+  },
+  "Wastewater Collection": {
+    title: "Wastewater Collection",
+    intro:
+      "Class 4 Wastewater Collection covers advanced collection system planning, management, and optimization at the superintendent level. Key topics include collection system master planning, hydraulic modelling (SWMM), risk-based asset management, CSO Long-Term Control Plans (LTCPs), force main condition assessment and surge analysis, real-time control (RTC) systems, advanced I/I analysis, collection system financing, regulatory compliance (CMOM programs, Director's Orders), and climate change adaptation. Class 4 operators must integrate technical, regulatory, financial, and operational knowledge to manage complex collection systems serving large populations.",
+    keyPoints: [
+      {
+        heading: "Collection System Master Planning",
+        body: "A collection system master plan integrates: (1) hydraulic modelling (SWMM or equivalent) calibrated to flow monitoring data (Nash-Sutcliffe Efficiency > 0.65 acceptable); (2) capacity assessment for current and future flows (design horizon 20–50 years); (3) I/I quantification and reduction program; (4) CSO LTCP compliance strategy (GI + RTC + storage + separation); (5) risk-based rehabilitation program; (6) capital investment plan with 10-year forecast; (7) climate change adaptation (increase design storm return periods, increase storage capacity). Master plans are typically updated every 10 years or when significant system changes occur.",
+      },
+      {
+        heading: "Risk-Based Asset Management",
+        body: "Risk = Probability of Failure (PoF) × Consequence of Failure (CoF). PoF inputs: pipe age, material, CCTV condition grade (PACP 1–5), soil corrosivity, groundwater level, historical failure rate. CoF inputs: pipe diameter, depth, proximity to waterways/buildings/roads, social disruption, environmental impact. Risk matrix output: prioritized rehabilitation program. Asset management framework: ISO 55000 / Ontario's Asset Management Planning regulation (O. Reg. 588/17) requires municipalities to have asset management plans with lifecycle cost analysis, levels of service, and financial planning. Annual reinvestment benchmark: 1–2% of replacement value.",
+      },
+      {
+        heading: "CSO Long-Term Control Plans",
+        body: "CSO LTCPs are required for municipalities with combined sewer systems. Ontario's approach: demonstrate 85% annual capture or equivalent environmental performance. LTCP elements: (1) characterization of CSO problem (frequency, volume, receiving water impacts); (2) evaluation of alternatives (GI, RTC, storage, separation, treatment); (3) cost-effectiveness analysis; (4) implementation schedule; (5) performance monitoring. Green Infrastructure (GI) is the most cost-effective first step — bioswales, permeable pavement, green roofs reduce runoff volume at source. Real-Time Control (RTC) maximizes use of existing system storage — can increase capture 5–15% with minimal capital cost.",
+      },
+      {
+        heading: "Force Main Advanced Management",
+        body: "Force main condition assessment technologies: SmartBall/PipeDiver (acoustic leak detection, free-swimming); Guided Wave Ultrasonic Testing (GWUT, wall thickness measurement); soil corrosivity testing (resistivity, pH, redox, sulfide). Surge analysis: Joukowsky equation ΔH = a × ΔV / g; HDPE wave speed 300–400 m/s (lower than steel 1,200–1,400 m/s); surge protection: air release/vacuum breaker valves, surge tanks, slow-closing check valves, VFDs. H₂S management: long retention time + anaerobic conditions → H₂S generation; iron salts (FeCl₃, FeSO₄) precipitate sulfide; nitrate addition inhibits sulfate-reducing bacteria; air injection oxidizes sulfide. Emergency response: bypass pumping plan for critical force mains; mutual aid agreements.",
+      },
+      {
+        heading: "CMOM Programs and Regulatory Compliance",
+        body: "CMOM (Capacity, Management, Operations and Maintenance) program elements: (1) Legal Authority — sewer use bylaw, I/I reduction authority; (2) Mapping — GIS-based sewer atlas, updated within 90 days of changes; (3) Capacity — hydraulic model, capacity assessment, CIP; (4) Management — organizational structure, staffing, training, budget; (5) Operations — SOPs, SCADA, emergency response plan; (6) Maintenance — preventive maintenance schedule, CMMS, work order system; (7) Overflow Response — SSO response plan, notification procedures, root cause analysis; (8) Communication — public notification, annual report; (9) Program Assessment — annual KPI review, continuous improvement. MECP can issue Director's Orders requiring CMOM implementation for non-compliant systems.",
+      },
+      {
+        heading: "Collection System Financing",
+        body: "Sustainable collection system financing requires full-cost accounting: capital renewal (1–2% of replacement value/year), operating and maintenance, debt service. Funding sources: (1) User fees (water/wastewater rates) — primary source; rate study required; (2) Development charges — recover growth-related infrastructure costs from developers; (3) Infrastructure Ontario (IO) loans — low-interest, 20–30 year terms; (4) Federal/Provincial grants — ICIP, OCIF, Green Infrastructure Fund; (5) Reserve funds — build up during low-capital years; (6) P3 arrangements for major projects (>$50M). Business case for rehabilitation: life-cycle cost analysis (LCCA) comparing rehabilitation vs. deferred action; include avoided emergency repair costs, reduced treatment costs (I/I reduction), deferred capacity expansion, and regulatory risk.",
+      },
+    ],
+    tableHeadings: ["Topic", "Key Standard/Benchmark", "Notes"],
+    tableRows: [
+      ["Hydraulic model calibration", "NSE > 0.65 (good)", "Nash-Sutcliffe Efficiency for peak flow prediction"],
+      ["Annual reinvestment rate", "1–2% of replacement value", "Ontario benchmark for sustainable infrastructure"],
+      ["CSO capture target", "85% annual capture", "Ontario LTCP requirement for combined sewer systems"],
+      ["PACP condition grade", "1 (best) to 5 (worst)", "Standardized CCTV defect coding system"],
+      ["Asset management regulation", "O. Reg. 588/17", "Ontario municipalities must have asset management plans"],
+      ["CMOM program", "Required by Director's Order", "Capacity, Management, Operations and Maintenance"],
+      ["Force main wave speed (HDPE)", "300–400 m/s", "Lower than steel — reduces surge pressure"],
+    ],
+    examTips: [
+      "Risk = PoF × CoF — prioritize rehabilitation where both probability and consequence are high",
+      "CSO LTCP: GI first (cheapest), then RTC, then storage, then separation/treatment",
+      "CMOM: 9 elements — Legal Authority, Mapping, Capacity, Management, Operations, Maintenance, Overflow Response, Communication, Program Assessment",
+      "Force main H₂S control: iron salts precipitate sulfide; nitrate inhibits SRBs; air injection oxidizes sulfide",
+      "Joukowsky surge: ΔH = a × ΔV / g — HDPE has lower wave speed and lower surge pressure than steel",
+    ],
+    formulaHint: "Joukowsky surge: ΔH = a × ΔV / g | NSE = 1 − [Σ(Q_obs − Q_sim)² / Σ(Q_obs − Q_mean)²] | Risk = PoF × CoF | Annual reinvestment = 1–2% × replacement value",
   },
 };

@@ -10,11 +10,12 @@ const POOL: ExamQuestion[] = (RAW as any[]).map(q => ({
 }));
 
 const MODULE_TARGETS: Record<string, number> = {
-  "Treatment Process Monitoring":        32,
-  "Equipment Operation":                 22,
-  "Equipment Evaluation & Maintenance":  15,
-  "Laboratory Analysis":                 20,
-  "Security, Safety & Admin":            11,
+  "Treatment Process Monitoring":        28,
+  "Equipment Operation":                 20,
+  "Equipment Evaluation & Maintenance":  14,
+  "Laboratory Analysis":                 18,
+  "Security, Safety & Admin":            10,
+  "Wastewater Collection":               10,
 };
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
@@ -23,6 +24,7 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Equipment Evaluation & Maintenance":  { bg: "#FFEDD5", color: "#C2410C" },
   "Laboratory Analysis":                 { bg: "#EDE9FE", color: "#6D28D9" },
   "Security, Safety & Admin":            { bg: "#FEE2E2", color: "#B91C1C" },
+  "Wastewater Collection":               { bg: "#CCFBF1", color: "#0F766E" },
 };
 
 export default function Class3WastewaterMockExam() {
