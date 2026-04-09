@@ -861,9 +861,9 @@ function CourseCard({ course }: { course: CourseType }) {
 
 export default function Landing() {
   usePageMeta({
-    title: "Water Operator Exam Prep",
-    description: "Practice questions, AI Tutor & formula sheet for Canadian water and wastewater operator certification exams.",
-    keywords: "water operator exam, OIT exam prep, wastewater certification, operator practice questions",
+    title: "Water & Wastewater Operator Exam Prep",
+    description: "Canada's exam prep platform for water and wastewater operators. Adaptive practice questions, interactive process guides, and an AI tutor.",
+    keywords: "water operator exam prep, OIT exam, wastewater certification Canada, operator practice questions, EOCP exam",
     path: "/",
   });
   const { province, provinceInfo, showPrompt, setProvince, dismiss } = useProvince();
