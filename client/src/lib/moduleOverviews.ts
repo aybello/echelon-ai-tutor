@@ -697,6 +697,59 @@ export const OIT_WATER_OVERVIEWS: Record<string, ModuleOverview> = {
       "SDS must be accessible to all workers who handle the chemical",
     ],
   },
+  "Water Distribution": {
+    title: "Water Distribution",
+    intro:
+      "Water distribution is the system of pipes, storage tanks, pumping stations, and appurtenances that deliver treated drinking water from the treatment plant to consumers. Ontario operators must understand how to maintain water quality throughout the distribution system, meet regulatory residual requirements, and safely operate and maintain distribution infrastructure. This module is tested on the OIT exam and is essential for any operator working in a municipal water system.",
+    keyPoints: [
+      {
+        heading: "Distribution System Components",
+        body: "A distribution system consists of transmission mains (large-diameter pipes carrying water from the plant), distribution mains (smaller pipes serving neighbourhoods), service connections (pipes from the main to individual properties), fire hydrants, valves (gate, butterfly, check), pressure-reducing valves (PRVs), and storage reservoirs (elevated tanks, ground-level reservoirs, standpipes). Each component plays a role in maintaining adequate pressure and water quality throughout the system.",
+      },
+      {
+        heading: "Pressure Requirements",
+        body: "Ontario's O. Reg. 170/03 requires a minimum residual pressure of 140 kPa (20 psi) at all service connections under normal operating conditions. Fire flow requirements typically demand 550 kPa (80 psi) or higher at hydrants. Pressure zones are created using PRVs or booster pumping stations to prevent excessive pressure in low-elevation areas and maintain adequate pressure in high-elevation areas. Pressure that is too high causes pipe breaks and leaks; pressure that is too low risks backflow and inadequate fire protection.",
+      },
+      {
+        heading: "Chlorine Residual in Distribution",
+        body: "O. Reg. 170/03 requires a minimum free chlorine residual of 0.05 mg/L at all points in the distribution system. Operators must monitor residuals at representative sampling points — including dead ends, areas with long detention times, and points furthest from the treatment plant. Residual loss is caused by reactions with organic matter, pipe biofilms, and corrosion products. Booster chlorination stations can be used to maintain residuals in large or complex systems.",
+      },
+      {
+        heading: "Cross-Connection Control and Backflow Prevention",
+        body: "A cross-connection is any physical link between the potable water supply and a source of contamination. Backflow occurs when water flows in the reverse direction — either due to back-pressure (downstream pressure exceeds supply pressure) or back-siphonage (negative pressure in the supply main). Ontario requires backflow prevention devices at all high-hazard connections. Device types include: Air Gap (highest protection, complete physical separation), Reduced Pressure Zone (RPZ) device (for high-hazard connections), Double Check Valve Assembly (DCVA) (for low-to-medium hazard), and Atmospheric Vacuum Breaker (AVB) (for irrigation, hose bibs). Annual testing of backflow preventers is required.",
+      },
+      {
+        heading: "Flushing and Dead-End Management",
+        body: "Dead ends in a distribution system are locations where water does not circulate, leading to stagnation, chlorine residual loss, sediment accumulation, and bacterial regrowth. Operators manage dead ends through unidirectional flushing (UDF) — a systematic process of opening hydrants in sequence to create high-velocity flow that scours the pipe. Flushing should achieve a minimum velocity of 0.75 m/s (2.5 ft/s) to effectively remove sediment. Flushing programs are typically conducted seasonally (spring and fall) and after any main break or repair.",
+      },
+      {
+        heading: "Water Main Breaks and Repairs",
+        body: "Water main breaks are caused by ground movement, frost, corrosion, pressure surges (water hammer), and aging infrastructure. After a repair, operators must disinfect the repaired section (minimum 50 mg/L chlorine for 24 hours or 25 mg/L for 72 hours per AWWA C651), flush the main, and collect two consecutive satisfactory bacteriological samples before returning the main to service. All events must be documented and reported per O. Reg. 170/03.",
+      },
+      {
+        heading: "Pipe Materials and Corrosion Control",
+        body: "Common pipe materials include Ductile Iron (DI), PVC, HDPE, and legacy Cast Iron (CI) and Asbestos Cement (AC). Corrosion is controlled through cathodic protection (sacrificial anodes or impressed current), cement-mortar lining, and corrosion inhibitors (orthophosphate). Lead service lines must be identified and replaced under Ontario's Lead in Drinking Water regulations. Tuberculation (iron deposits inside CI pipes) reduces flow capacity and harbours bacteria.",
+      },
+    ],
+    tableHeadings: ["Backflow Device", "Hazard Level", "Typical Application"],
+    tableRows: [
+      ["Air Gap", "High", "Chemical feed, boiler fill"],
+      ["RPZ Device", "High", "Industrial, irrigation with chemicals"],
+      ["DCVA", "Low–Medium", "Commercial irrigation, fire suppression"],
+      ["Atmospheric Vacuum Breaker", "Low", "Hose bibs, lawn irrigation"],
+      ["Pressure Vacuum Breaker", "Low–Medium", "Irrigation systems"],
+    ],
+    examTips: [
+      "Minimum residual pressure in distribution: 140 kPa (20 psi) under O. Reg. 170/03",
+      "Minimum free chlorine residual at all points in distribution: 0.05 mg/L",
+      "Back-pressure backflow: downstream pressure exceeds supply pressure",
+      "Back-siphonage: negative pressure (vacuum) in the supply main pulls water backward",
+      "RPZ devices are required for high-hazard cross-connections — they have a relief valve that opens if the check valves fail",
+      "Unidirectional flushing velocity target: minimum 0.75 m/s to scour sediment",
+      "After a main break repair: disinfect, flush, then collect two consecutive satisfactory bacteriological samples before returning to service",
+      "Dead ends cause stagnation, residual loss, and sediment buildup — manage with regular flushing",
+    ],
+  },
 };
 
 // ─── Class 1 Water Module Overviews ─────────────────────────────────────────
