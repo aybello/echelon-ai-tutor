@@ -267,68 +267,67 @@ export function ClarifierDiagram({ active, onClick, color }: DiagramProps) {
 
 // ─── 5. FILTRATION ───────────────────────────────────────────────────────────
 export function FilterDiagram({ active, onClick, color }: DiagramProps) {
+  // Labels placed OUTSIDE the filter box to avoid stacking inside it
+  // Influent above, layer labels on right side, turbidity + underdrain below
   const labels = [
-    { id: "influent",   x: 320, y: 32,  text: "Filter Influent" },
-    { id: "anthracite", x: 320, y: 82,  text: "Anthracite" },
-    { id: "sand",       x: 320, y: 128, text: "Sand Layer" },
-    { id: "gravel",     x: 320, y: 168, text: "Gravel Support" },
-    { id: "underdrain", x: 320, y: 205, text: "Underdrain" },
-    { id: "turbidity",  x: 105, y: 185, text: "Turbidity Monitor" },
+    { id: "influent",   x: 320, y: 30,  text: "Filter Influent" },
+    { id: "anthracite", x: 590, y: 86,  text: "Anthracite" },
+    { id: "sand",       x: 590, y: 131, text: "Sand Layer" },
+    { id: "gravel",     x: 590, y: 165, text: "Gravel" },
+    { id: "underdrain", x: 320, y: 218, text: "Underdrain" },
+    { id: "turbidity",  x: 75,  y: 218, text: "Turbidity Monitor" },
   ];
-  // Media dot patterns
+  // Media dot patterns — shifted right to leave room for right-side labels
   const anthrDots: [number, number][] = [];
   const sandDots:  [number, number][] = [];
   const gravDots:  [number, number][] = [];
-  for (let x = 65; x < 580; x += 18) {
+  for (let x = 58; x < 530; x += 18) {
     anthrDots.push([x, 68 + (x % 3) * 5]);
     sandDots.push([x + 4, 115 + (x % 3) * 4]);
   }
-  for (let x = 65; x < 580; x += 22) {
+  for (let x = 58; x < 530; x += 22) {
     gravDots.push([x, 155 + (x % 3) * 5]);
   }
   return (
-    <svg viewBox="0 0 640 230" width="100%" height="auto">
-      {/* Filter box */}
-      <rect x={50} y={44} width={540} height={168} rx={8} fill="#F8FAFC" stroke="#CBD5E1" strokeWidth={2} />
+    <svg viewBox="0 0 660 245" width="100%" height="auto">
+      {/* Filter box — narrower to leave right margin for labels */}
+      <rect x={50} y={44} width={490} height={168} rx={8} fill="#F8FAFC" stroke="#CBD5E1" strokeWidth={2} />
       {/* Influent water layer */}
-      <rect x={52} y={46} width={536} height={16} rx={4} fill="#BAE6FD" opacity={0.75} />
+      <rect x={52} y={46} width={486} height={16} rx={4} fill="#BAE6FD" opacity={0.75} />
+      {/* Influent arrow from above */}
+      <path d="M 320 10 L 320 44" stroke="#0369A1" strokeWidth={2.5} />
+      <polygon points="315,41 320,50 325,41" fill="#0369A1" />
       {/* Anthracite zone */}
-      <rect x={52} y={62} width={536} height={48} fill="#374151" opacity={0.06} />
+      <rect x={52} y={62} width={486} height={48} fill="#374151" opacity={0.06} />
       {anthrDots.map((d, i) => <circle key={i} cx={d[0]} cy={d[1]} r={4.5} fill="#374151" opacity={0.5} />)}
       {/* Sand zone */}
-      <rect x={52} y={110} width={536} height={42} fill="#D97706" opacity={0.06} />
+      <rect x={52} y={110} width={486} height={42} fill="#D97706" opacity={0.06} />
       {sandDots.map((d, i) => <circle key={i} cx={d[0]} cy={d[1]} r={3} fill="#D97706" opacity={0.6} />)}
       {/* Gravel zone */}
-      <rect x={52} y={152} width={536} height={26} fill="#92400E" opacity={0.07} />
+      <rect x={52} y={152} width={486} height={26} fill="#92400E" opacity={0.07} />
       {gravDots.map((d, i) => <circle key={i} cx={d[0]} cy={d[1]} r={5.5} fill="#92400E" opacity={0.4} />)}
       {/* Underdrain */}
-      <rect x={52} y={178} width={536} height={32} rx={4} fill="#E2E8F0" />
-      {[70, 100, 130, 160, 190, 220, 250, 280, 310, 340, 370, 400, 430, 460, 490, 520, 550].map(x => (
+      <rect x={52} y={178} width={486} height={32} rx={4} fill="#E2E8F0" />
+      {[68, 96, 124, 152, 180, 208, 236, 264, 292, 320, 348, 376, 404, 432, 460, 488, 516].map(x => (
         <rect key={x} x={x} y={178} width={8} height={32} rx={2} fill="#CBD5E1" />
       ))}
-      {/* Flow arrows (downward) */}
-      {[110, 200, 295, 395, 490].map((x, i) => (
+      {/* Flow arrows (downward through media) */}
+      {[110, 200, 295, 395, 480].map((x, i) => (
         <path key={i} d={`M ${x} 46 L ${x} 175`} stroke="#0369A1" strokeWidth={1.5} fill="none"
           opacity={0.2} strokeDasharray="6 4" style={{ animation: `flow ${1.2 + i * 0.15}s linear infinite` }} />
       ))}
       {/* Effluent outlet at bottom */}
-      <rect x={296} y={210} width={48} height={14} rx={4} fill="#0F766E" opacity={0.85} />
-      <path d="M 320 210 L 320 224" stroke="#0F766E" strokeWidth={3} />
-      <polygon points="315,221 320,230 325,221" fill="#0F766E" opacity={0.85} />
-      {/* Media labels on right side */}
-      {[{ y: 88,  c: "#374151", t: "Anthracite" },
-        { y: 133, c: "#D97706", t: "Sand" },
-        { y: 167, c: "#92400E", t: "Gravel" }].map((m, i) => (
-        <g key={i}>
-          <rect x={592} y={m.y - 11} width={44} height={14} rx={3} fill="rgba(255,255,255,0.85)" />
-          <text x={614} y={m.y} textAnchor="middle" fontSize={8} fill={m.c} fontWeight="700">{m.t}</text>
-        </g>
-      ))}
-      {/* Turbidity monitor — left side, clear of label dot */}
-      <rect x={18} y={148} width={84} height={34} rx={7} fill="#1D4ED8" opacity={0.9} />
-      <text x={60} y={160} textAnchor="middle" fontSize={7} fill="white" fontWeight="700">TURBIDITY</text>
-      <text x={60} y={174} textAnchor="middle" fontSize={11} fill="#4ADE80" fontWeight="800" fontFamily="monospace">0.12 NTU</text>
-      <line x1={102} y1={165} x2={130} y2={165} stroke="#1D4ED8" strokeWidth={2} strokeDasharray="3 2" />
+      <path d="M 320 212 L 320 232" stroke="#0F766E" strokeWidth={3} />
+      <polygon points="315,229 320,238 325,229" fill="#0F766E" opacity={0.85} />
+      {/* Zone divider lines on right — connect to right-side label dots */}
+      <line x1={540} y1={86}  x2={555} y2={86}  stroke="#374151" strokeWidth={1.5} strokeDasharray="3 2" opacity={0.5} />
+      <line x1={540} y1={131} x2={555} y2={131} stroke="#D97706" strokeWidth={1.5} strokeDasharray="3 2" opacity={0.5} />
+      <line x1={540} y1={165} x2={555} y2={165} stroke="#92400E" strokeWidth={1.5} strokeDasharray="3 2" opacity={0.5} />
+      {/* Turbidity monitor — bottom left, outside filter box */}
+      <rect x={18} y={196} width={84} height={34} rx={7} fill="#1D4ED8" opacity={0.9} />
+      <text x={60} y={208} textAnchor="middle" fontSize={7} fill="white" fontWeight="700">TURBIDITY</text>
+      <text x={60} y={222} textAnchor="middle" fontSize={11} fill="#4ADE80" fontWeight="800" fontFamily="monospace">0.12 NTU</text>
+      <line x1={102} y1={213} x2={118} y2={200} stroke="#1D4ED8" strokeWidth={2} strokeDasharray="3 2" />
       {labels.map(l => <LabelDot key={l.id} {...l} active={active} color={color} onClick={onClick} />)}
     </svg>
   );
@@ -336,45 +335,46 @@ export function FilterDiagram({ active, onClick, color }: DiagramProps) {
 
 // ─── 6. DISINFECTION ─────────────────────────────────────────────────────────
 export function DisinfectionDiagram({ active, onClick, color }: DiagramProps) {
+  // Wider viewBox (760px) so 6 labels have room without overlapping
   const labels = [
-    { id: "inflow",   x: 75,  y: 195, text: "Inlet" },
-    { id: "chlorine", x: 165, y: 215, text: "Cl₂ Injection" },
-    { id: "baffles",  x: 295, y: 195, text: "Baffle Walls" },
-    { id: "ctzone",   x: 420, y: 195, text: "CT Contact Zone" },
-    { id: "residual", x: 540, y: 215, text: "Residual Monitor" },
-    { id: "outflow",  x: 610, y: 195, text: "To Distribution" },
+    { id: "inflow",   x: 65,  y: 210, text: "Inlet" },
+    { id: "chlorine", x: 195, y: 232, text: "Cl₂ Injection" },
+    { id: "baffles",  x: 335, y: 210, text: "Baffle Walls" },
+    { id: "ctzone",   x: 475, y: 210, text: "CT Contact Zone" },
+    { id: "residual", x: 600, y: 232, text: "Residual Monitor" },
+    { id: "outflow",  x: 710, y: 210, text: "To Distribution" },
   ];
-  // Serpentine path inside the contact chamber
-  const serpentine = "M 75 110 L 168 110 L 168 68 L 258 68 L 258 150 L 348 150 L 348 68 L 438 68 L 438 150 L 528 150 L 528 110 L 580 110";
+  // Serpentine path — chamber x=40–640
+  const serpentine = "M 65 115 L 180 115 L 180 68 L 280 68 L 280 162 L 380 162 L 380 68 L 480 68 L 480 162 L 580 162 L 580 115 L 648 115";
   return (
-    <svg viewBox="0 0 640 240" width="100%" height="auto">
-      {/* Contact chamber */}
-      <rect x={48} y={50} width={540} height={118} rx={8} fill="#FFFBEB" stroke="#D97706" strokeWidth={2} />
+    <svg viewBox="0 0 760 255" width="100%" height="auto">
+      {/* Contact chamber — x=40 to 660, height 50–168 */}
+      <rect x={40} y={50} width={620} height={120} rx={8} fill="#FFFBEB" stroke="#D97706" strokeWidth={2} />
       {/* CT zone highlight */}
-      <rect x={175} y={53} width={350} height={112} rx={5} fill="#FCD34D" opacity={0.07} />
-      {/* Baffle walls */}
-      {[168, 258, 348, 438, 528].map((x, i) => (
-        <rect key={x} x={x - 4} y={i % 2 === 0 ? 50 : 90} width={8} height={78} rx={2} fill="#374151" opacity={0.75} />
+      <rect x={185} y={53} width={415} height={114} rx={5} fill="#FCD34D" opacity={0.07} />
+      {/* Baffle walls — match serpentine x positions */}
+      {[180, 280, 380, 480, 580].map((x, i) => (
+        <rect key={x} x={x - 4} y={i % 2 === 0 ? 50 : 95} width={8} height={75} rx={2} fill="#374151" opacity={0.75} />
       ))}
       {/* Water flow path */}
       <path d={serpentine} stroke="#0369A1" strokeWidth={14} fill="none" opacity={0.1} strokeLinecap="round" />
       <path d={serpentine} stroke="#0369A1" strokeWidth={2.5} fill="none"
         strokeDasharray="9 5" style={{ animation: "flow 1.3s linear infinite" }} />
       {/* Inlet arrow */}
-      <path d="M 18 110 L 50 110" stroke="#0369A1" strokeWidth={3} />
-      <polygon points="46,105 58,110 46,115" fill="#0369A1" />
+      <path d="M 10 115 L 42 115" stroke="#0369A1" strokeWidth={3} />
+      <polygon points="38,110 50,115 38,120" fill="#0369A1" />
       {/* Outlet arrow */}
-      <path d="M 588 110 L 622 110" stroke="#059669" strokeWidth={3} />
-      <polygon points="618,105 630,110 618,115" fill="#059669" />
-      {/* Cl₂ injector — below chamber, left side */}
-      <circle cx={165} cy={190} r={18} fill="#7C3AED" opacity={0.9} />
-      <text x={165} y={194} textAnchor="middle" fontSize={12} fill="white" fontWeight="800">Cl₂</text>
-      <line x1={165} y1={172} x2={165} y2={128} stroke="#7C3AED" strokeWidth={2} strokeDasharray="4 2" />
-      {/* Residual monitor — below chamber, right side, clear of label dot */}
-      <rect x={490} y={178} width={88} height={32} rx={7} fill="#059669" opacity={0.9} />
-      <text x={534} y={190} textAnchor="middle" fontSize={7.5} fill="white" fontWeight="700">FREE Cl₂</text>
-      <text x={534} y={203} textAnchor="middle" fontSize={11} fill="#86EFAC" fontWeight="800" fontFamily="monospace">0.52 mg/L</text>
-      <line x1={520} y1={178} x2={500} y2={168} stroke="#059669" strokeWidth={2} strokeDasharray="3 2" />
+      <path d="M 650 115 L 700 115" stroke="#059669" strokeWidth={3} />
+      <polygon points="696,110 708,115 696,120" fill="#059669" />
+      {/* Cl₂ injector — below chamber left, between label dots */}
+      <circle cx={195} cy={192} r={18} fill="#7C3AED" opacity={0.9} />
+      <text x={195} y={197} textAnchor="middle" fontSize={12} fill="white" fontWeight="800">Cl₂</text>
+      <line x1={195} y1={174} x2={195} y2={130} stroke="#7C3AED" strokeWidth={2} strokeDasharray="4 2" />
+      {/* Residual monitor display — below chamber right, clear of label dot */}
+      <rect x={548} y={180} width={96} height={34} rx={7} fill="#059669" opacity={0.9} />
+      <text x={596} y={193} textAnchor="middle" fontSize={7.5} fill="white" fontWeight="700">FREE Cl₂</text>
+      <text x={596} y={207} textAnchor="middle" fontSize={11} fill="#86EFAC" fontWeight="800" fontFamily="monospace">0.52 mg/L</text>
+      <line x1={580} y1={180} x2={560} y2={170} stroke="#059669" strokeWidth={2} strokeDasharray="3 2" />
       {labels.map(l => <LabelDot key={l.id} {...l} active={active} color={color} onClick={onClick} />)}
     </svg>
   );
