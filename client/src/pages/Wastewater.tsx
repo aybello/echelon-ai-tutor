@@ -191,8 +191,8 @@ export default function Wastewater() {
                   </div>
 
                   {/* SVG diagram */}
-                  <div style={{ overflowX: "auto", overflowY: "hidden" }}>
-                    <div style={{ minWidth: 480 }}>
+                  <div style={{ width: "100%" }}>
+                    <div style={{ width: "100%" }}>
                       <WWDiagramFor
                         stepId={activeStep.id}
                         color={activeStep.color}

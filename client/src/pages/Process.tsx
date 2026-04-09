@@ -195,8 +195,8 @@ export default function Process() {
                   </div>
 
                   {/* SVG diagram */}
-                  <div style={{ overflowX: "auto", overflowY: "hidden" }}>
-                    <div style={{ minWidth: 480 }}>
+                  <div style={{ width: "100%" }}>
+                    <div style={{ width: "100%" }}>
                       <DiagramFor
                         stepId={activeStep.id}
                         color={activeStep.color}
