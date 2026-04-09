@@ -191,6 +191,9 @@ export default function OITWastewaterQuiz() {
         headerActions={[
           { label: "📝 Mock Exam", href: "/oit-ww-mock" },
           { label: "🃏 Flashcards", href: "/oit-ww-flashcards" },
+          { label: "🔬 Processes", href: "/wastewater" },
+          { label: "📐 Formulas", href: "/formulas-ww1" },
+          { label: "🗺️ Career", href: "/career" },
         ]}
         history={history}
         correctCount={correctCount}
