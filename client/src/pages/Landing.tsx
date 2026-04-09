@@ -1007,42 +1007,7 @@ export default function Landing() {
       {showPrompt && (
         <ProvinceBanner onSelect={handleProvinceSelect} onDismiss={dismiss} />
       )}
-      {/* Province context indicator — shown after province is selected */}
-      {!showPrompt && province && provinceInfo && (
-        <div style={{
-          background: "#F8FAFC",
-          borderBottom: "1px solid #E5E7EB",
-          padding: "8px 24px",
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-          fontSize: 12,
-          color: "#64748B",
-        }}>
-          <span style={{ fontSize: 14 }}>{provinceInfo.flag}</span>
-          <span>Showing courses for <strong style={{ color: "#0F172A" }}>{provinceInfo.name}</strong></span>
-          <button
-            onClick={() => {
-              // Reset province so banner shows again
-              try { localStorage.removeItem("echelon_province"); localStorage.removeItem("echelon_province_dismissed"); } catch {}
-              window.location.reload();
-            }}
-            style={{
-              marginLeft: 8,
-              background: "transparent",
-              border: "1px solid #E5E7EB",
-              borderRadius: 6,
-              padding: "2px 10px",
-              fontSize: 11,
-              color: "#94A3B8",
-              cursor: "pointer",
-              fontFamily: "inherit",
-            }}
-          >
-            Change
-          </button>
-        </div>
-      )}
+
       {/* Mobile nav drawer overlay */}
       {mobileNavOpen && (
         <div
