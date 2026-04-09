@@ -1055,99 +1055,147 @@ export default function Landing() {
         />
       )}
 
-      {/* Mobile nav drawer */}
+      {/* Mobile nav drawer — compact drop-down, no scroll */}
       <div
         className="landing-mobile-drawer"
         style={{
           position: "fixed",
-          top: 64, right: 0,
-          width: 260, bottom: 0,
+          top: 64,
+          left: 0,
+          right: 0,
           background: "#FFFFFF",
-          borderLeft: "1px solid #E2E8F0",
+          borderBottom: "1px solid #E2E8F0",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
           zIndex: 99,
-          transform: mobileNavOpen ? "translateX(0)" : "translateX(100%)",
+          transform: mobileNavOpen ? "translateY(0)" : "translateY(calc(-100% - 64px))",
           transition: "transform 0.25s cubic-bezier(0.4,0,0.2,1)",
-          overflowY: "auto",
-          padding: "16px 0 32px",
         }}
       >
-        <div style={{ padding: "0 20px 12px", borderBottom: "1px solid #F1F5F9", marginBottom: 8 }}>
-          <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-            Navigation
-          </div>
-        </div>
-        {NAV_LINKS.map(item => (
-          <a
-            key={item.label}
-            href={item.href}
-            onClick={() => setMobileNavOpen(false)}
-            style={{
-              display: "block",
-              padding: "13px 20px",
-              color: "#0F172A",
-              fontSize: 14,
-              fontWeight: 600,
-              textDecoration: "none",
-              borderLeft: "3px solid transparent",
-              transition: "background 0.15s",
-            }}
-          >
-            {item.label}
-          </a>
-        ))}
-        <div style={{ padding: "16px 20px 0", marginTop: 8, borderTop: "1px solid #F1F5F9" }}>
-          <Link href="/quiz">
-            <button
-              onClick={() => setMobileNavOpen(false)}
-              style={{
-                width: "100%", padding: "12px",
-                borderRadius: 10, border: "none",
-                background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
-                color: "#fff", fontSize: 13, fontWeight: 700,
-                cursor: "pointer", fontFamily: "inherit",
-              }}
-            >
-              Try Free OIT Practice →
-            </button>
-          </Link>
-        </div>
-        {/* Tool links in drawer */}
-        <div style={{ padding: "16px 20px 0", marginTop: 8, borderTop: "1px solid #F1F5F9" }}>
-          <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>
-            Study Tools
-          </div>
+        {/* Quick action tiles */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr 1fr",
+          gap: 8,
+          padding: "12px 16px 10px",
+          borderBottom: "1px solid #F1F5F9",
+        }}>
           {[
-            { label: "📝 OIT Practice Quiz", href: "/quiz" },
-            { label: "📐 Formula Sheet", href: "/formulas" },
-            { label: "🏭 Drinking Water Process", href: "/process" },
-            { label: "♻️ Wastewater Process", href: "/wastewater" },
-            { label: "⚙️ Pumping Systems", href: "/pumping" },
-            { label: "📡 Process Control & Instrumentation", href: "/instrumentation" },
-            { label: "🧠 Math Practice Hub", href: "/math-practice" },
-            { label: "🧪 Chemical Calculator", href: "/chem-calc" },
-            { label: "🔬 Lab & Sampling", href: "/lab" },
-            { label: "🗺️ Career Map", href: "/career" },
-            { label: "📋 Mock Exam", href: "/mock-exam" },
-            { label: "🌊 WPI Overview (BC/AB/SK/MB)", href: "/wpi" },
-            { label: "🌊 WPI Class I Practice", href: "/wpi-class1-water" },
-            { label: "🌊 WPI Class II Practice", href: "/wpi-class2-water" },
-            { label: "🃏 OIT Flashcards", href: "/oit-water-flashcards" },
-          ].map(item => (
-            <Link key={item.href} href={item.href}>
+            { label: "📝 OIT Practice", href: "/quiz", accent: true },
+            { label: "🏭 Process Guide", href: "/process", accent: false },
+            { label: "📐 Formulas", href: "/formulas", accent: false },
+            { label: "🗺️ Career Map", href: "/career", accent: false },
+          ].map(tile => (
+            <Link key={tile.href} href={tile.href}>
               <div
                 onClick={() => setMobileNavOpen(false)}
                 style={{
-                  padding: "10px 0",
-                  color: "#475569",
-                  fontSize: 13,
-                  fontWeight: 500,
+                  padding: "10px 6px",
+                  borderRadius: 10,
+                  background: tile.accent ? "linear-gradient(135deg, #1D4ED8, #0E7490)" : "#F8FAFC",
+                  border: tile.accent ? "none" : "1px solid #E2E8F0",
+                  color: tile.accent ? "#fff" : "#0F172A",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  textAlign: "center" as const,
                   cursor: "pointer",
-                  borderBottom: "1px solid #F8FAFC",
+                  lineHeight: 1.3,
                 }}
               >
-                {item.label}
+                {tile.label}
               </div>
             </Link>
+          ))}
+        </div>
+
+        {/* Nav link pills */}
+        <div style={{
+          display: "flex",
+          overflowX: "auto",
+          gap: 0,
+          borderBottom: "1px solid #F1F5F9",
+          scrollbarWidth: "none" as const,
+        }}>
+          {NAV_LINKS.map(item => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={() => setMobileNavOpen(false)}
+              style={{
+                flexShrink: 0,
+                padding: "11px 14px",
+                color: "#475569",
+                fontSize: 12,
+                fontWeight: 600,
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+                borderBottom: "2px solid transparent",
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+
+        {/* Study tools 2-col grid */}
+        <div style={{ padding: "8px 12px" }}>
+          <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", textTransform: "uppercase", padding: "4px 4px 6px" }}>Study Tools</div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
+            {[
+              { label: "📝 OIT Practice Quiz", href: "/quiz" },
+              { label: "📐 Formula Sheet", href: "/formulas" },
+              { label: "🏭 Drinking Water Process", href: "/process" },
+              { label: "♻️ Wastewater Process", href: "/wastewater" },
+              { label: "⚙️ Pumping Systems", href: "/pumping" },
+              { label: "🧠 Math Practice Hub", href: "/math-practice" },
+              { label: "🌊 WPI Overview", href: "/wpi" },
+              { label: "🃏 OIT Flashcards", href: "/oit-water-flashcards" },
+            ].map(item => (
+              <Link key={item.href} href={item.href}>
+                <div
+                  onClick={() => setMobileNavOpen(false)}
+                  style={{
+                    padding: "8px 10px",
+                    borderRadius: 8,
+                    color: "#475569",
+                    fontSize: 12,
+                    fontWeight: 500,
+                    cursor: "pointer",
+                  }}
+                >
+                  {item.label}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer row */}
+        <div style={{
+          display: "flex",
+          gap: 16,
+          padding: "8px 16px 14px",
+          borderTop: "1px solid #F1F5F9",
+          flexWrap: "wrap",
+        }}>
+          {[
+            { label: "🎫 My Passes", href: "/account" },
+            { label: "💰 Pricing", href: "/pricing" },
+            { label: "ℹ️ About", href: "#about" },
+          ].map(l => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setMobileNavOpen(false)}
+              style={{
+                fontSize: 12,
+                color: "#94A3B8",
+                fontWeight: 500,
+                textDecoration: "none",
+                cursor: "pointer",
+              }}
+            >
+              {l.label}
+            </a>
           ))}
         </div>
       </div>
