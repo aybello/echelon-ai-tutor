@@ -16,11 +16,24 @@ type HistoryEntry = {
   questionObj?: Class1WaterQuestion;
 };
 
+// ─── Module Config (icons + colours) ────────────────────────────────────────
+const MODULE_CONFIG = [
+  { name: "Water Sources & Quality",    icon: "💧", bg: "#DBEAFE", color: "#1D4ED8" },
+  { name: "Coagulation & Flocculation", icon: "🧪", bg: "#FEF9C3", color: "#A16207" },
+  { name: "Sedimentation",              icon: "🏞️", bg: "#DCFCE7", color: "#15803D" },
+  { name: "Filtration",                 icon: "🔍", bg: "#FFEDD5", color: "#C2410C" },
+  { name: "Disinfection",               icon: "☣️", bg: "#EDE9FE", color: "#6D28D9" },
+  { name: "Chemical Feed & Dosing",     icon: "⚗️", bg: "#CCFBF1", color: "#0F766E" },
+  { name: "Iron & Manganese Removal",   icon: "🔩", bg: "#FEE2E2", color: "#B91C1C" },
+  { name: "Water Quality & Regulations",icon: "📋", bg: "#DBEAFE", color: "#0369A1" },
+  { name: "Water Distribution",         icon: "🚰", bg: "#E0F2FE", color: "#0284C7" },
+];
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function Class1WaterQuiz() {
   const allQuestions = CLASS1_WATER_QUESTIONS as Class1WaterQuestion[];
-  const modules = CLASS1_WATER_MODULES;
+  const modules = MODULE_CONFIG;
 
   const SESSION_SIZE = 15;
   const [trialDone, setTrialDone]   = useState(false);

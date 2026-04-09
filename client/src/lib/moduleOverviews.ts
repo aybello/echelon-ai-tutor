@@ -1105,6 +1105,62 @@ export const CLASS1_WATER_OVERVIEWS: Record<string, ModuleOverview> = {
       "Records must be kept for a minimum of 5 years under O. Reg. 170/03",
     ],
   },
+  "Water Distribution": {
+    title: "Water Distribution",
+    intro:
+      "Water distribution is the system of pipes, storage tanks, pumping stations, and appurtenances that deliver treated drinking water from the treatment plant to consumers. Class 1 Water operators must understand how to maintain water quality and pressure throughout the distribution system, comply with Ontario O. Reg. 170/03 residual requirements, and safely operate and maintain distribution infrastructure.",
+    keyPoints: [
+      {
+        heading: "Distribution System Components",
+        body: "A distribution system consists of: transmission mains (large-diameter pipes from the plant), distribution mains (smaller neighbourhood pipes), service connections (pipes to individual properties), fire hydrants, isolation valves (gate, butterfly), pressure-reducing valves (PRVs), air release/vacuum valves, and storage reservoirs (elevated tanks, ground reservoirs, standpipes). Each component maintains adequate pressure and water quality.",
+      },
+      {
+        heading: "Pressure Requirements",
+        body: "Ontario guidelines require a minimum residual pressure of 275 kPa (40 psi) at all service connections under peak demand conditions. Maximum pressure is typically limited to 690 kPa (100 psi) to protect customer plumbing. Pressure zones are created using PRVs and booster stations to serve areas at different elevations. Elevated storage tanks maintain pressure through the hydraulic grade line (HGL).",
+      },
+      {
+        heading: "Chlorine Residual Requirements",
+        body: "Ontario O. Reg. 170/03 requires a minimum free chlorine residual of 0.05 mg/L at all points in the distribution system. Most systems target 0.2-0.5 mg/L for a safety margin. Chlorine residual depletes due to reaction with pipe materials, biofilm, and organic matter. Dead ends, long residence times, and warm temperatures accelerate residual loss and require regular flushing.",
+      },
+      {
+        heading: "Cross-Connection Control",
+        body: "A cross-connection is any actual or potential connection between the potable water supply and a contamination source. Backflow can occur through backsiphonage (negative pressure draws contaminants in) or backpressure (downstream pressure exceeds supply pressure). Protection devices include: atmospheric vacuum breakers (AVBs), pressure vacuum breakers (PVBs), double check valve assemblies (DCVAs), and reduced pressure zone (RPZ) devices. RPZ devices provide the highest level of protection for high-hazard connections.",
+      },
+      {
+        heading: "Distribution Main Maintenance",
+        body: "Key maintenance activities include: (1) Flushing - removes sediment, biofilm, and stale water; unidirectional flushing (UDF) is most effective; (2) Valve exercising - regular operation of isolation valves ensures they function during emergencies; (3) Hydrant testing - flow tests verify available fire flow and system capacity; (4) Leak detection - acoustic methods locate underground leaks before they surface; (5) New main disinfection - minimum 50 mg/L chlorine for 24 hours before service.",
+      },
+      {
+        heading: "Pipe Materials",
+        body: "Common distribution pipe materials include: PVC (most common for new installations - corrosion-resistant, smooth, low cost), ductile iron (high-pressure applications, older systems), HDPE (flexible, trenchless installations), and copper (service lines). Older cast iron and steel pipes may require cathodic protection or lining to prevent corrosion and tuberculation. Tuberculation reduces the Hazen-Williams C factor and increases head loss.",
+      },
+      {
+        heading: "Regulatory Reporting",
+        body: "Under O. Reg. 170/03, adverse results in the distribution system (e.g., E. coli detected) must be reported to the local Medical Officer of Health and MECP within 1 hour of receiving the result. A boil water advisory (BWA) may be issued. The system must investigate the cause, resample, and take corrective action before the BWA can be lifted. Two consecutive satisfactory samples (24 hours apart) are typically required.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Requirement / Target"],
+    tableRows: [
+      ["Minimum free chlorine residual", "0.05 mg/L (O. Reg. 170/03)"],
+      ["Typical target residual", "0.2-0.5 mg/L"],
+      ["Minimum distribution pressure", "275 kPa (40 psi)"],
+      ["Maximum distribution pressure", "690 kPa (100 psi)"],
+      ["New main disinfection", "50 mg/L Cl2 for 24 hours (AWWA C651)"],
+      ["Adverse result reporting", "Within 1 hour to MOH and MECP"],
+      ["Minimum pipe cover depth (Ontario)", "1.5 m below frost line"],
+      ["Self-cleaning velocity", ">=0.6 m/s"],
+    ],
+    examTips: [
+      "Minimum chlorine residual in distribution = 0.05 mg/L under O. Reg. 170/03",
+      "RPZ device provides the highest level of backflow protection for high-hazard cross-connections",
+      "Adverse results must be reported within 1 hour - not 24 hours",
+      "New mains require 50 mg/L chlorine for 24 hours before being placed in service",
+      "Dead ends require regular flushing to maintain chlorine residual and water quality",
+      "Backsiphonage = negative pressure; backpressure = downstream pressure exceeds supply",
+      "Unidirectional flushing (UDF) is more effective than conventional flushing",
+      "Minimum distribution pressure = 275 kPa (40 psi) under peak demand",
+    ],
+  },
 };
 
 // ─── Class 2 Water Module Overviews ─────────────────────────────────────────

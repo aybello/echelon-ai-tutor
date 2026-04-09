@@ -14,6 +14,7 @@ export interface Class1WaterQuestion {
   steps?: { l: string; c: string }[];
   tip?: string;
   isCalc?: boolean;
+  topic?: string;
 }
 
 export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
@@ -7194,39 +7195,7 @@ export const CLASS1_WATER_QUESTIONS: Class1WaterQuestion[] = [
     correct: 1,
     explanation: "The ultimate goal of a water treatment operator is to consistently produce safe, clean, aesthetically acceptable drinking water that protects public health and meets all applicable regulatory requirements — every day, without exception."
   },
-];
 
-export const CLASS1_WATER_MODULE_TARGETS: Record<string, number> = {
-  "Source Water & Intake":        11,
-  "Aeration & Pre-Treatment":     10,
-  "Coagulation & Flocculation":   12,
-  "Sedimentation":                11,
-  "Filtration":                   12,
-  "Disinfection":                 14,
-  "Chemical Feed & Dosing":       10,
-  "Iron & Manganese Removal":     10,
-  "Water Quality & Regulations":  10,
-};
-
-export const CLASS1_WATER_TOTAL = CLASS1_WATER_QUESTIONS.length;
-
-export const CLASS1_WATER_MODULES = [
-  "Water Sources & Quality",
-  "Coagulation & Flocculation",
-  "Sedimentation",
-  "Filtration",
-  "Disinfection",
-  "Chemical Feed & Dosing",
-  "Iron & Manganese Removal",
-  "Water Quality & Regulations",
-] as const;
-
-/** Shuffle helper */
-export function shuffleClass1Water(arr: Class1WaterQuestion[]): Class1WaterQuestion[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i],
   {
     "id": 501,
     isCalc: true,
@@ -8187,8 +8156,755 @@ export function shuffleClass1Water(arr: Class1WaterQuestion[]): Class1WaterQuest
     ],
     tip: "Maintaining optimal weir overflow rates helps prevent short-circuiting and improves settling efficiency.",
     "difficulty": "medium"
-  }
+  },
+  // ─── MODULE: Water Distribution (Questions 558-607) ─────────────────────
+  {
+    id: 558,
+    module: "Water Distribution",
+    difficulty: "easy",
+    question: "What is the minimum residual chlorine required in a distribution system under Ontario O. Reg. 170/03?",
+    options: ["0.05 mg/L", "0.2 mg/L", "0.5 mg/L", "1.0 mg/L"],
+    correct: 0,
+    explanation: "Ontario O. Reg. 170/03 requires a minimum free chlorine residual of 0.05 mg/L at all points in the distribution system to maintain microbiological safety.",
+    tip: "Remember: 0.05 mg/L is the minimum; most systems target 0.2–0.5 mg/L for a safety margin."
+  },
+  {
+    id: 559,
+    module: "Water Distribution",
+    difficulty: "easy",
+    question: "Which pipe material is most commonly used for new water distribution mains in Ontario?",
+    options: ["Cast iron", "Ductile iron", "PVC (polyvinyl chloride)", "Copper"],
+    correct: 2,
+    explanation: "PVC (polyvinyl chloride) is the most commonly installed pipe material for new water distribution mains due to its corrosion resistance, smooth interior, low cost, and ease of installation.",
+    tip: "PVC is preferred for new installations; ductile iron is common in older systems and high-pressure applications."
+  },
+  {
+    id: 560,
+    module: "Water Distribution",
+    difficulty: "easy",
+    question: "What is the purpose of a pressure reducing valve (PRV) in a water distribution system?",
+    options: [
+      "To increase water pressure in low-pressure zones",
+      "To reduce higher upstream pressure to a lower, controlled downstream pressure",
+      "To prevent backflow from customer premises",
+      "To measure flow rate in the distribution main"
+    ],
+    correct: 1,
+    explanation: "A pressure reducing valve (PRV) automatically reduces higher upstream pressure to a lower, controlled downstream pressure, protecting pipes and fixtures in lower pressure zones from excessive pressure.",
+    tip: "PRVs are commonly installed at pressure zone boundaries to manage hydraulic grade lines."
+  },
+  {
+    id: 561,
+    module: "Water Distribution",
+    difficulty: "easy",
+    question: "What is a dead-end main in a water distribution system?",
+    options: [
+      "A main that has been permanently decommissioned",
+      "A pipe that is connected at only one end with no outlet at the other end",
+      "A main installed below the frost line",
+      "A pipe that connects two pressure zones"
+    ],
+    correct: 1,
+    explanation: "A dead-end main is a pipe connected at only one end, with no outlet at the other end. Dead ends are problematic because water stagnates, chlorine residual depletes, and sediment accumulates — requiring regular flushing.",
+    tip: "Dead ends should be flushed regularly to maintain water quality and chlorine residual."
+  },
+  {
+    id: 562,
+    module: "Water Distribution",
+    difficulty: "easy",
+    question: "What is the primary purpose of flushing water distribution mains?",
+    options: [
+      "To test pipe pressure",
+      "To remove stale water, sediment, and biofilm to restore water quality",
+      "To check for leaks in the system",
+      "To calibrate flow meters"
+    ],
+    correct: 1,
+    explanation: "Flushing distribution mains removes stale water, sediment, corrosion byproducts, and biofilm that accumulate over time, restoring water quality, chlorine residual, and aesthetic properties (taste, odour, colour).",
+    tip: "Unidirectional flushing (UDF) is more effective than conventional flushing as it creates higher velocities to scour sediment."
+  },
+  {
+    id: 563,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is cross-connection in a water distribution system?",
+    options: [
+      "A pipe connection between two different pressure zones",
+      "Any actual or potential connection between a potable water supply and a source of contamination",
+      "A valve that connects two parallel mains",
+      "A connection between the distribution main and a fire hydrant"
+    ],
+    correct: 1,
+    explanation: "A cross-connection is any actual or potential connection between a potable (drinking) water supply and any source of contamination or pollution. Cross-connections create the risk of backflow, which can contaminate the drinking water supply.",
+    tip: "Cross-connection control programs identify and eliminate cross-connections through inspections and backflow prevention device requirements."
+  },
+  {
+    id: 564,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "Under what conditions does backsiphonage occur?",
+    options: [
+      "When downstream pressure exceeds upstream pressure",
+      "When a pump creates excessive pressure in the main",
+      "When negative pressure (vacuum) in the supply line draws contaminants back into the potable water system",
+      "When a fire hydrant is opened during high-demand periods"
+    ],
+    correct: 2,
+    explanation: "Backsiphonage occurs when negative pressure (a partial vacuum) develops in the supply line, creating a siphoning effect that draws contaminants back into the potable water system. It can occur during water main breaks, heavy firefighting demand, or when a pump shuts down suddenly.",
+    tip: "Backsiphonage is one of two types of backflow — the other is backpressure, caused by downstream pressure exceeding supply pressure."
+  },
+  {
+    id: 565,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What type of backflow preventer provides the highest level of protection against both backsiphonage and backpressure?",
+    options: [
+      "Atmospheric vacuum breaker (AVB)",
+      "Pressure vacuum breaker (PVB)",
+      "Double check valve assembly (DCVA)",
+      "Reduced pressure zone (RPZ) device"
+    ],
+    correct: 3,
+    explanation: "The reduced pressure zone (RPZ) device provides the highest level of backflow protection. It contains two independently acting check valves and a hydraulically operated relief valve that maintains a zone of reduced pressure between the checks, providing protection against both backsiphonage and backpressure.",
+    tip: "RPZ devices are required for high-hazard cross-connections such as those at hospitals, car washes, and industrial facilities."
+  },
+  {
+    id: 566,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the typical minimum cover depth for water distribution mains in Ontario to protect against freezing?",
+    options: ["0.5 m", "1.0 m", "1.5 m", "2.0 m"],
+    correct: 2,
+    explanation: "In Ontario, water distribution mains are typically installed with a minimum cover depth of 1.5 m (approximately 5 feet) below the frost line to protect against freezing. Local conditions and frost depth may require greater depths.",
+    tip: "The frost depth in Ontario varies by region — northern Ontario may require deeper installation than southern Ontario."
+  },
+  {
+    id: 567,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a water storage reservoir (elevated tank) in a distribution system?",
+    options: [
+      "To treat water before distribution",
+      "To provide pressure equalization, emergency storage, and fire flow reserve",
+      "To remove chlorine before it reaches customers",
+      "To measure water consumption in the distribution zone"
+    ],
+    correct: 1,
+    explanation: "Elevated storage tanks and reservoirs serve three key functions: (1) pressure equalization — they maintain relatively constant pressure during demand fluctuations; (2) emergency storage — they provide backup supply during pump failures; and (3) fire flow reserve — they supply additional water for firefighting.",
+    tip: "The hydraulic grade line (HGL) from an elevated tank determines the pressure throughout the pressure zone it serves."
+  },
+  {
+    id: 568,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What does the term 'water hammer' describe in a distribution system?",
+    options: [
+      "The sound of water flowing through a partially closed valve",
+      "A pressure surge caused by a sudden change in water velocity",
+      "The impact of water on a fire hydrant during flushing",
+      "Sediment buildup on the walls of a water main"
+    ],
+    correct: 1,
+    explanation: "Water hammer is a pressure surge (shock wave) caused by a sudden change in water velocity, typically when a valve is closed rapidly or a pump shuts down abruptly. The kinetic energy of the moving water is converted to pressure energy, creating a high-pressure wave that can damage pipes and fittings.",
+    tip: "Water hammer can be mitigated by using slow-closing valves, surge tanks, or pressure relief valves."
+  },
+  {
+    id: 569,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a blow-off valve (blow-off assembly) on a water main?",
+    options: [
+      "To release excess pressure from the main",
+      "To drain or flush a section of main, typically at low points or dead ends",
+      "To prevent backflow from service connections",
+      "To allow air to enter the main during draining"
+    ],
+    correct: 1,
+    explanation: "A blow-off valve (blow-off assembly) is installed at low points or dead ends of water mains to allow the main to be drained or flushed. It is used during main breaks, repairs, or routine maintenance to remove sediment and stale water.",
+    tip: "Blow-off assemblies should discharge to a suitable location to prevent contamination of the surrounding area."
+  },
+  {
+    id: 570,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "Which type of valve is most commonly used as a main line isolation valve in water distribution systems?",
+    options: ["Ball valve", "Gate valve", "Butterfly valve", "Globe valve"],
+    correct: 1,
+    explanation: "Gate valves are the most commonly used isolation valves in water distribution mains. They provide full-bore flow (minimal head loss when fully open) and are designed for fully open or fully closed operation — not for throttling.",
+    tip: "Gate valves should never be used for throttling as partial opening causes vibration and erosion of the gate disc."
+  },
+  {
+    id: 571,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of an air release/air vacuum valve on a water main?",
+    options: [
+      "To release excess chlorine from the distribution system",
+      "To release trapped air during filling and allow air entry during draining to prevent vacuum",
+      "To measure dissolved oxygen in the distribution main",
+      "To prevent water from entering the main during construction"
+    ],
+    correct: 1,
+    explanation: "Air release/air vacuum valves (also called combination air valves) serve two functions: (1) they release trapped air from high points in the main during filling and operation; and (2) they allow air to enter the main during draining to prevent a vacuum that could collapse the pipe or cause backsiphonage.",
+    tip: "Air pockets in water mains reduce flow capacity and can cause pressure fluctuations — air valves are installed at high points to release them."
+  },
+  {
+    id: 572,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the standard colour code for fire hydrants in Ontario indicating flow capacity?",
+    options: [
+      "Red = high flow, Yellow = medium flow, Green = low flow",
+      "Blue = high flow (>95 L/s), Green = good flow (63–95 L/s), Orange = marginal flow (32–63 L/s), Red = inadequate flow (<32 L/s)",
+      "White = potable water, Yellow = recycled water, Red = fire suppression only",
+      "Green = tested, Red = untested, Yellow = out of service"
+    ],
+    correct: 1,
+    explanation: "The NFPA 291 colour coding system for fire hydrant caps indicates available flow: Blue = Class AA (>95 L/s), Green = Class A (63–95 L/s), Orange = Class B (32–63 L/s), Red = Class C (<32 L/s). This helps firefighters quickly assess available fire flow.",
+    tip: "Hydrant barrels are typically painted a consistent colour (often yellow or red) while the caps indicate flow class."
+  },
+  {
+    id: 573,
+    module: "Water Distribution",
+    difficulty: "hard",
+    question: "A water main has a static pressure of 550 kPa. During peak demand, the residual pressure at the same point drops to 280 kPa. What is the pressure drop during peak demand?",
+    options: ["270 kPa", "280 kPa", "550 kPa", "830 kPa"],
+    correct: 0,
+    explanation: "Pressure drop = Static pressure − Residual pressure = 550 kPa − 280 kPa = 270 kPa. This pressure drop represents the head loss due to friction and velocity head during peak demand flow conditions.",
+    isCalc: true,
+    tip: "The difference between static and residual pressure indicates system head loss — a large drop suggests undersized mains or high friction losses."
+  },
+  {
+    id: 574,
+    module: "Water Distribution",
+    difficulty: "hard",
+    question: "A distribution main carries a flow of 120 L/s. If the pipe diameter is 300 mm, what is the approximate flow velocity in m/s? (Use: V = Q/A, where A = π × d²/4)",
+    options: ["0.85 m/s", "1.70 m/s", "3.40 m/s", "0.42 m/s"],
+    correct: 1,
+    explanation: "A = π × (0.3 m)² / 4 = π × 0.09 / 4 = 0.07069 m². Flow Q = 120 L/s = 0.120 m³/s. V = Q/A = 0.120 / 0.07069 = 1.70 m/s. This is within the typical design range of 0.6–3.0 m/s for distribution mains.",
+    isCalc: true,
+    steps: [
+      { l: "Convert diameter to metres", c: "d = 300 mm = 0.3 m" },
+      { l: "Calculate pipe area", c: "A = π × (0.3)² / 4 = 0.07069 m²" },
+      { l: "Convert flow to m³/s", c: "Q = 120 L/s = 0.120 m³/s" },
+      { l: "Calculate velocity", c: "V = Q/A = 0.120 / 0.07069 = 1.70 m/s" }
+    ],
+    tip: "Velocities above 3 m/s can cause erosion and water hammer; below 0.6 m/s, sediment may accumulate."
+  },
+  {
+    id: 575,
+    module: "Water Distribution",
+    difficulty: "hard",
+    question: "What is the Hazen-Williams equation used for in water distribution system design?",
+    options: [
+      "Calculating the chlorine dose required for disinfection",
+      "Estimating head loss due to friction in water distribution pipes",
+      "Determining the size of a storage reservoir",
+      "Calculating the pump power required for a booster station"
+    ],
+    correct: 1,
+    explanation: "The Hazen-Williams equation is an empirical formula used to estimate head loss due to friction in water distribution pipes: V = 0.8492 × C × R^0.63 × S^0.54, where C is the Hazen-Williams roughness coefficient, R is the hydraulic radius, and S is the hydraulic slope. It is widely used in distribution system modelling.",
+    tip: "Higher C values (e.g., PVC = 150) indicate smoother pipes with less friction loss; lower C values (e.g., old cast iron = 80–100) indicate rougher pipes."
+  },
+  {
+    id: 576,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a service line curb stop?",
+    options: [
+      "To measure water consumption at the property line",
+      "To provide a shut-off point for the service line at or near the property line",
+      "To prevent backflow from the customer's plumbing",
+      "To reduce water pressure entering the building"
+    ],
+    correct: 1,
+    explanation: "A curb stop is a shut-off valve installed on the service line at or near the property line (typically at the curb). It allows the utility to shut off water service to an individual property without affecting other customers, and is used during repairs, non-payment, or emergencies.",
+    tip: "The curb stop is owned and operated by the water utility; the customer's shut-off (corporation stop) is inside the building."
+  },
+  {
+    id: 577,
+    module: "Water Distribution",
+    difficulty: "easy",
+    question: "What does the term 'non-revenue water' (NRW) refer to in a water distribution system?",
+    options: [
+      "Water used for fire suppression",
+      "Water that is produced but not billed to customers, including losses from leaks and meter inaccuracies",
+      "Water used for flushing distribution mains",
+      "Water stored in elevated tanks that is not used"
+    ],
+    correct: 1,
+    explanation: "Non-revenue water (NRW) is the difference between the volume of water put into the distribution system and the volume billed to customers. It includes real losses (leaks, main breaks), apparent losses (meter inaccuracies, unauthorized use), and unbilled authorized consumption (flushing, firefighting).",
+    tip: "Reducing NRW is a key goal of distribution system management — typical NRW targets are below 15% of system input volume."
+  },
+  {
+    id: 578,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of cathodic protection on buried metallic water mains?",
+    options: [
+      "To prevent biological growth inside the pipe",
+      "To prevent or reduce electrochemical corrosion of buried metallic pipes",
+      "To maintain water pressure in the distribution system",
+      "To detect leaks in the distribution main"
+    ],
+    correct: 1,
+    explanation: "Cathodic protection is an electrochemical technique used to prevent or reduce corrosion of buried metallic pipes (such as ductile iron and steel). It works by making the metal pipe the cathode of an electrochemical cell, either through sacrificial anode systems (zinc or magnesium anodes) or impressed current systems.",
+    tip: "Cathodic protection is especially important in corrosive soils with high conductivity (e.g., clay soils, areas with stray electrical currents)."
+  },
+  {
+    id: 579,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "Under Ontario O. Reg. 170/03, how soon must a water system operator report a distribution system adverse result (e.g., E. coli detected) to the local Medical Officer of Health?",
+    options: ["Within 24 hours", "Within 1 hour", "Within 72 hours", "Within 48 hours"],
+    correct: 1,
+    explanation: "Under Ontario O. Reg. 170/03, if an adverse result is obtained from a distribution system sample (e.g., E. coli detected), the owner/operating authority must notify the local Medical Officer of Health and the Ministry of the Environment within 1 hour of receiving the result.",
+    tip: "The 1-hour notification requirement applies to adverse results; the 24-hour requirement applies to other notifications such as equipment failures."
+  },
+  {
+    id: 580,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a pressure zone in a water distribution system?",
+    options: [
+      "To separate different water quality zones",
+      "To maintain water pressure within an acceptable range throughout a defined area of the distribution system",
+      "To isolate sections of the system for maintenance",
+      "To control the flow direction in the distribution main"
+    ],
+    correct: 1,
+    explanation: "A pressure zone is a portion of the distribution system where water pressure is maintained within a defined range (typically 275–690 kPa or 40–100 psi). Pressure zones are created using pressure reducing valves, pumping stations, and elevated storage to serve areas at different elevations while maintaining acceptable pressures.",
+    tip: "Ontario guidelines typically require a minimum residual pressure of 275 kPa (40 psi) at service connections under peak demand conditions."
+  },
+  {
+    id: 581,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the recommended minimum velocity for water in distribution mains to prevent sediment deposition?",
+    options: ["0.1 m/s", "0.3 m/s", "0.6 m/s", "1.5 m/s"],
+    correct: 2,
+    explanation: "A minimum velocity of approximately 0.6 m/s (2 ft/s) is recommended in water distribution mains to prevent sediment deposition and maintain self-cleaning conditions. Velocities below this threshold allow particles to settle and accumulate in the pipe.",
+    tip: "Self-cleaning velocity is particularly important in mains that carry turbid water or have a history of sediment problems."
+  },
+  {
+    id: 582,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a booster pumping station in a water distribution system?",
+    options: [
+      "To treat water before it enters the distribution system",
+      "To increase water pressure in areas where gravity or system pressure is insufficient",
+      "To reduce water pressure in high-elevation areas",
+      "To filter sediment from the distribution main"
+    ],
+    correct: 1,
+    explanation: "A booster pumping station increases water pressure in areas where the available system pressure is insufficient to serve customers at adequate pressure, such as high-elevation areas, remote locations far from the treatment plant, or zones with high demand. Booster stations are a key component of multi-zone distribution systems.",
+    tip: "Booster stations are typically equipped with variable speed drives (VSDs) to match pump output to demand and maintain constant pressure."
+  },
+  {
+    id: 583,
+    module: "Water Distribution",
+    difficulty: "easy",
+    question: "What is a water main break and what is the typical immediate response?",
+    options: [
+      "A planned maintenance activity; response is to schedule repairs within 30 days",
+      "A failure of a water distribution pipe causing uncontrolled water loss; response is to isolate the break by closing adjacent valves and notify affected customers",
+      "A pressure drop in the system; response is to increase pump speed",
+      "A backflow event; response is to flush the affected main"
+    ],
+    correct: 1,
+    explanation: "A water main break is an unplanned failure of a distribution pipe causing uncontrolled water loss and potential service disruption. The immediate response is to isolate the break by closing the nearest upstream and downstream isolation valves, notify affected customers of the service disruption, and arrange for emergency repairs.",
+    tip: "After a main break repair, the affected section must be disinfected, flushed, and sampled before being returned to service."
+  },
+  {
+    id: 584,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What disinfection procedure is required when a new or repaired water main is placed into service in Ontario?",
+    options: [
+      "Flushing with high-velocity water only",
+      "Chlorination with a minimum 50 mg/L chlorine solution for 24 hours, followed by flushing and bacteriological sampling",
+      "UV disinfection of the main before connection",
+      "Ozonation of the main interior"
+    ],
+    correct: 1,
+    explanation: "Under AWWA C651 and Ontario guidelines, new or repaired water mains must be disinfected using a chlorine solution of at least 50 mg/L (some methods use 25 mg/L) maintained for a minimum contact time of 24 hours, followed by thorough flushing to remove the chlorinated water, and bacteriological sampling to confirm the main is safe for service.",
+    tip: "Two consecutive satisfactory bacteriological samples (collected 24 hours apart) are typically required before a new main is placed into service."
+  },
+  {
+    id: 585,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a looped (grid) distribution system compared to a branching system?",
+    options: [
+      "Looped systems are cheaper to construct",
+      "Looped systems provide water from two directions, improving reliability, reducing dead ends, and maintaining better pressure and water quality",
+      "Looped systems use less pipe material",
+      "Looped systems are easier to isolate for maintenance"
+    ],
+    correct: 1,
+    explanation: "A looped (grid) distribution system connects mains in a network so water can flow from multiple directions to any point. This provides: (1) improved reliability — if one section is isolated, water can reach customers via an alternate route; (2) better pressure maintenance — flow is distributed across multiple paths; and (3) improved water quality — water circulates rather than stagnating in dead ends.",
+    tip: "Branching (tree) systems are simpler and cheaper but have dead ends that require regular flushing and are vulnerable to single-point failures."
+  },
+  {
+    id: 586,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a corporation stop on a water service connection?",
+    options: [
+      "To prevent backflow from the customer's plumbing into the main",
+      "To provide a shut-off point where the service line connects to the distribution main",
+      "To reduce pressure entering the service line",
+      "To measure water consumption at the main"
+    ],
+    correct: 1,
+    explanation: "A corporation stop (also called a corporation cock) is a valve installed directly in the distribution main where the service line taps off. It provides a shut-off point at the main and is used during service line installation, repair, or replacement. It is typically operated with a special key and is located at the main.",
+    tip: "The corporation stop is at the main; the curb stop is at the property line; the meter stop is inside the building — these three valves control the service line."
+  },
+  {
+    id: 587,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the typical design minimum residual pressure in Ontario water distribution systems under peak demand conditions?",
+    options: ["100 kPa (14.5 psi)", "140 kPa (20 psi)", "275 kPa (40 psi)", "550 kPa (80 psi)"],
+    correct: 2,
+    explanation: "Ontario design guidelines require a minimum residual pressure of 275 kPa (40 psi) at all service connections under peak demand (maximum day plus fire flow) conditions. This ensures adequate pressure for domestic use and fire suppression throughout the system.",
+    tip: "Maximum pressure in distribution systems is typically limited to 690 kPa (100 psi) to prevent damage to customer plumbing and appliances."
+  },
+  {
+    id: 588,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the difference between a gate valve and a butterfly valve in a water distribution system?",
+    options: [
+      "Gate valves are used for throttling; butterfly valves are for isolation only",
+      "Gate valves use a sliding gate disc for full-bore isolation; butterfly valves use a rotating disc and can be used for both isolation and throttling",
+      "Gate valves are installed on service lines; butterfly valves are only used in treatment plants",
+      "There is no functional difference — they are interchangeable in all applications"
+    ],
+    correct: 1,
+    explanation: "Gate valves use a sliding gate disc that retracts fully into the valve body when open, providing full-bore flow with minimal head loss — ideal for isolation. Butterfly valves use a rotating disc that remains in the flow path even when open, causing some head loss but allowing throttling. Butterfly valves are lighter and less expensive, making them common in larger diameter mains.",
+    tip: "Gate valves are preferred for distribution mains; butterfly valves are common in transmission mains and treatment plant piping."
+  },
+  {
+    id: 589,
+    module: "Water Distribution",
+    difficulty: "hard",
+    question: "A water storage tank has a capacity of 2,000 m³ and serves a community with an average daily demand of 5,000 m³/d. What is the storage capacity as a percentage of average daily demand?",
+    options: ["20%", "25%", "40%", "50%"],
+    correct: 2,
+    explanation: "Storage as % of ADD = (Tank capacity / Average daily demand) × 100 = (2,000 m³ / 5,000 m³/d) × 100 = 40%. Ontario guidelines typically recommend storage capacity of 25–50% of average daily demand for equalization, with additional storage for fire flow and emergency reserves.",
+    isCalc: true,
+    steps: [
+      { l: "Identify tank capacity", c: "2,000 m³" },
+      { l: "Identify average daily demand", c: "5,000 m³/d" },
+      { l: "Calculate storage percentage", c: "(2,000 / 5,000) × 100 = 40%" }
+    ],
+    tip: "Total storage should include equalization storage + fire storage + emergency storage components."
+  },
+  {
+    id: 590,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a water distribution system model (hydraulic model)?",
+    options: [
+      "To track customer billing and water consumption",
+      "To simulate water flow, pressure, and water quality throughout the distribution system for planning, operations, and emergency response",
+      "To monitor chlorine residual in real time",
+      "To detect leaks in the distribution system"
+    ],
+    correct: 1,
+    explanation: "A hydraulic model (such as EPANET or WaterGEMS) simulates water flow, pressure, and water quality throughout the distribution system. It is used for system planning (sizing new mains), operations (optimizing pump schedules), emergency response (isolating breaks), and water quality analysis (tracking chlorine decay and age).",
+    tip: "EPANET is a free, widely used hydraulic modelling software developed by the US EPA that can model both hydraulics and water quality."
+  },
+  {
+    id: 591,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a fire hydrant flow test?",
+    options: [
+      "To verify that fire hydrants are properly lubricated",
+      "To measure the available fire flow and residual pressure at a specific location in the distribution system",
+      "To check for cross-connections at the hydrant",
+      "To determine the chlorine residual in the distribution main"
+    ],
+    correct: 1,
+    explanation: "A fire hydrant flow test measures the available fire flow (in L/s or US gpm) and residual pressure at a specific location in the distribution system. The test involves flowing water from one or more hydrants while measuring the residual pressure at a nearby hydrant. Results are used to evaluate system capacity for fire suppression and identify areas needing system upgrades.",
+    tip: "Flow test results are plotted on a log-log graph to extrapolate available flow at the minimum residual pressure (typically 140 kPa or 20 psi)."
+  },
+  {
+    id: 592,
+    module: "Water Distribution",
+    difficulty: "easy",
+    question: "What is the purpose of a water meter in a distribution system?",
+    options: [
+      "To regulate water pressure entering a building",
+      "To measure the volume of water consumed by a customer for billing and system management purposes",
+      "To prevent backflow from customer plumbing",
+      "To filter sediment from the service line"
+    ],
+    correct: 1,
+    explanation: "A water meter measures the volume of water consumed by a customer, providing data for: (1) billing — customers are charged based on metered consumption; (2) system management — meter data helps identify leaks, monitor demand patterns, and calculate non-revenue water; and (3) conservation — metering encourages efficient water use.",
+    tip: "Automatic meter reading (AMR) and advanced metering infrastructure (AMI) systems allow remote meter reading and real-time consumption monitoring."
+  },
+  {
+    id: 593,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the significance of the hydraulic grade line (HGL) in a water distribution system?",
+    options: [
+      "It represents the elevation of the pipe centreline",
+      "It represents the total energy (pressure head + elevation head) at any point in the system, indicating water pressure",
+      "It shows the chlorine residual profile throughout the system",
+      "It indicates the maximum flow capacity of the distribution main"
+    ],
+    correct: 1,
+    explanation: "The hydraulic grade line (HGL) represents the sum of pressure head and elevation head at any point in the distribution system. The height of the HGL above the pipe centreline equals the water pressure at that point (in metres of water head). The HGL slopes downward in the direction of flow due to friction losses.",
+    tip: "If the HGL falls below the pipe elevation, negative pressure (vacuum) exists — this can cause pipe collapse or backsiphonage."
+  },
+  {
+    id: 594,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a pressure sustaining valve (PSV) in a water distribution system?",
+    options: [
+      "To reduce pressure in high-pressure zones",
+      "To maintain a minimum upstream pressure while allowing flow to continue downstream",
+      "To prevent backflow between pressure zones",
+      "To release excess pressure during surge events"
+    ],
+    correct: 1,
+    explanation: "A pressure sustaining valve (PSV) maintains a minimum upstream pressure while allowing flow to pass downstream. It is used to protect upstream areas from pressure drops caused by high demand downstream, ensuring that upstream customers always receive adequate pressure even during peak demand periods.",
+    tip: "PSVs are the opposite of PRVs: PRVs reduce downstream pressure; PSVs maintain upstream pressure."
+  },
+  {
+    id: 595,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a leak detection program in a water distribution system?",
+    options: [
+      "To identify and locate water main breaks before they become visible at the surface",
+      "To measure chlorine residual in the distribution system",
+      "To test the structural integrity of new water mains",
+      "To identify cross-connections in the system"
+    ],
+    correct: 0,
+    explanation: "A leak detection program uses acoustic listening equipment, correlators, and other techniques to identify and locate underground leaks in water mains before they become visible at the surface. Early detection reduces water loss (non-revenue water), prevents main breaks, and avoids costly emergency repairs and property damage.",
+    tip: "Acoustic leak detection works by listening for the characteristic sound of water escaping under pressure from a pipe — the frequency and amplitude help locate the leak."
+  },
+  {
+    id: 596,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a SCADA system in water distribution operations?",
+    options: [
+      "To treat water at remote booster stations",
+      "To monitor and control distribution system components (pumps, valves, tanks) remotely in real time",
+      "To test water quality at customer taps",
+      "To calculate water billing for customers"
+    ],
+    correct: 1,
+    explanation: "SCADA (Supervisory Control and Data Acquisition) systems allow operators to monitor and control distribution system components — including pump stations, pressure reducing valves, storage tanks, and water quality sensors — remotely and in real time. SCADA provides alarms for abnormal conditions and historical data for system analysis.",
+    tip: "SCADA cybersecurity is increasingly important as water utilities are critical infrastructure — systems must be protected against unauthorized access."
+  },
+  {
+    id: 597,
+    module: "Water Distribution",
+    difficulty: "hard",
+    question: "A distribution main experiences a pressure of 480 kPa at an elevation of 50 m. What is the hydraulic grade line (HGL) elevation at this point? (Use: HGL = elevation + pressure head, where pressure head = P / (ρg) and ρg ≈ 9.81 kN/m³)",
+    options: ["98.9 m", "50.0 m", "480.0 m", "530.0 m"],
+    correct: 0,
+    explanation: "Pressure head = P / (ρg) = 480 kPa / 9.81 kN/m³ = 48.9 m. HGL elevation = pipe elevation + pressure head = 50 m + 48.9 m = 98.9 m. The HGL represents the elevation to which water would rise in a piezometer tube at that point.",
+    isCalc: true,
+    steps: [
+      { l: "Calculate pressure head", c: "P / (ρg) = 480 / 9.81 = 48.9 m" },
+      { l: "Calculate HGL elevation", c: "HGL = 50 m + 48.9 m = 98.9 m" }
+    ],
+    tip: "The HGL elevation is always above the pipe when pressure is positive; it equals the pipe elevation when pressure is zero."
+  },
+  {
+    id: 598,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a water distribution system master plan?",
+    options: [
+      "To document daily operational procedures for distribution system operators",
+      "To provide a long-term plan for system expansion, rehabilitation, and capital investment based on projected growth and infrastructure condition",
+      "To record the location of all water mains and valves in the system",
+      "To set water rates for customers"
+    ],
+    correct: 1,
+    explanation: "A water distribution system master plan is a long-term planning document that evaluates existing system capacity and condition, projects future demand based on population growth, identifies system deficiencies, and recommends capital improvements (new mains, storage, pumping) with cost estimates and priorities. It typically covers a 20–25 year planning horizon.",
+    tip: "Master plans are updated every 5–10 years to reflect changes in growth projections, infrastructure condition, and regulatory requirements."
+  },
+  {
+    id: 599,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a valve exercise program in a water distribution system?",
+    options: [
+      "To test the pressure rating of distribution valves",
+      "To regularly operate isolation valves to ensure they function properly when needed for emergencies or maintenance",
+      "To lubricate valve stems to prevent corrosion",
+      "To identify valves that need to be replaced due to age"
+    ],
+    correct: 1,
+    explanation: "A valve exercise program involves regularly operating (opening and closing) isolation valves throughout the distribution system to ensure they function properly when needed. Valves that are not exercised regularly can seize, corrode, or fail to close fully — making it impossible to isolate sections of the system during emergencies or maintenance.",
+    tip: "Industry practice is to exercise each valve at least once per year; critical valves (near hospitals, schools) may be exercised more frequently."
+  },
+  {
+    id: 600,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a water quality monitoring program in the distribution system?",
+    options: [
+      "To verify that water meets regulatory requirements and identify quality deterioration as water travels through the distribution system",
+      "To measure the flow rate at key points in the distribution system",
+      "To identify leaks in the distribution system",
+      "To track customer complaints about water quality"
+    ],
+    correct: 0,
+    explanation: "A distribution system water quality monitoring program verifies that treated water continues to meet regulatory requirements (chlorine residual, turbidity, microbiological parameters) as it travels through the distribution system. It also identifies areas of quality deterioration due to long residence times, pipe corrosion, or biofilm growth.",
+    tip: "Ontario O. Reg. 170/03 specifies minimum sampling frequencies for distribution system monitoring based on system size and type."
+  },
+  {
+    id: 601,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a pipe condition assessment program for water distribution mains?",
+    options: [
+      "To measure water pressure in aging mains",
+      "To evaluate the structural integrity and remaining service life of existing pipes to prioritize rehabilitation and replacement",
+      "To identify cross-connections in aging infrastructure",
+      "To test the chlorine demand of older pipe materials"
+    ],
+    correct: 1,
+    explanation: "A pipe condition assessment program evaluates the structural integrity and remaining service life of existing water mains using techniques such as CCTV inspection, acoustic emission testing, pipe sampling, and break history analysis. Results are used to prioritize rehabilitation (lining, coating) or replacement of pipes that are at risk of failure.",
+    tip: "Condition assessment helps utilities optimize capital investment by replacing the highest-risk pipes first rather than using age alone as a criterion."
+  },
+  {
+    id: 602,
+    module: "Water Distribution",
+    difficulty: "easy",
+    question: "What is the purpose of a water distribution system map (as-built drawings)?",
+    options: [
+      "To show customers where their service line is located",
+      "To record the location, size, material, and age of all distribution system components for operations, maintenance, and emergency response",
+      "To display water pressure zones to the public",
+      "To document water quality monitoring results"
+    ],
+    correct: 1,
+    explanation: "As-built drawings and GIS-based system maps record the location, size, material, age, and condition of all distribution system components — mains, valves, hydrants, service connections, and appurtenances. This information is essential for operations, maintenance, emergency response (locating valves to isolate breaks), and long-term planning.",
+    tip: "Modern utilities use GIS (Geographic Information Systems) to maintain digital, spatially accurate maps that can be accessed in the field via mobile devices."
+  },
+  {
+    id: 603,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a cross-connection control program?",
+    options: [
+      "To identify and eliminate connections between potable water and non-potable sources to protect public health",
+      "To manage the flow of water between pressure zones",
+      "To prevent water main breaks at pipe crossings",
+      "To control the number of service connections on a distribution main"
+    ],
+    correct: 0,
+    explanation: "A cross-connection control program identifies and eliminates or controls actual and potential cross-connections between the potable water supply and non-potable sources. It includes: (1) surveys of customer premises to identify cross-connections; (2) requirements for backflow prevention devices; (3) annual testing of backflow preventers; and (4) enforcement to ensure compliance.",
+    tip: "Ontario Regulation 170/03 requires water systems to have a cross-connection control program and to maintain records of all backflow prevention devices."
+  },
+  {
+    id: 604,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a water main rehabilitation technique known as cured-in-place pipe (CIPP) lining?",
+    options: [
+      "To replace a deteriorated water main by installing a new pipe inside the old one",
+      "To restore the structural integrity and hydraulic capacity of a deteriorated main by installing a resin-impregnated liner that cures in place",
+      "To clean the interior of a water main using high-pressure water jetting",
+      "To apply a protective coating to the exterior of a buried water main"
+    ],
+    correct: 1,
+    explanation: "Cured-in-place pipe (CIPP) lining is a trenchless rehabilitation technique that restores deteriorated water mains by inserting a flexible, resin-impregnated liner into the existing pipe and curing it in place (using heat, UV light, or ambient temperature). The cured liner forms a new, smooth pipe within the old pipe, restoring structural integrity and hydraulic capacity without excavation.",
+    tip: "CIPP lining is cost-effective for rehabilitating mains in areas where excavation is disruptive or expensive (e.g., under roads, railways, or buildings)."
+  },
+  {
+    id: 605,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a water distribution system flushing program?",
+    options: [
+      "To test the structural integrity of distribution mains",
+      "To remove accumulated sediment, biofilm, and stale water from distribution mains to maintain water quality",
+      "To measure the flow capacity of distribution mains",
+      "To identify cross-connections in the distribution system"
+    ],
+    correct: 1,
+    explanation: "A systematic flushing program removes accumulated sediment, corrosion products, biofilm, and stale water from distribution mains, restoring water quality (turbidity, colour, taste, odour) and chlorine residual. Unidirectional flushing (UDF) is the most effective method, creating high velocities that scour the pipe interior.",
+    tip: "Flushing should be performed annually at minimum, with additional flushing after main breaks, repairs, or when water quality complaints are received."
+  },
+  {
+    id: 606,
+    module: "Water Distribution",
+    difficulty: "hard",
+    question: "A water main has a Hazen-Williams C factor of 100 and carries a flow of 50 L/s in a 200 mm diameter pipe. If the C factor decreases to 80 due to tuberculation, what happens to the head loss?",
+    options: [
+      "Head loss decreases by approximately 20%",
+      "Head loss increases because a lower C factor means higher friction losses",
+      "Head loss remains the same because flow and pipe size are unchanged",
+      "Head loss decreases because the pipe becomes rougher"
+    ],
+    correct: 1,
+    explanation: "In the Hazen-Williams equation, a lower C factor indicates a rougher pipe with higher friction losses. When C decreases from 100 to 80 due to tuberculation (iron oxide deposits), the head loss increases significantly. The relationship is inverse — lower C = higher friction = higher head loss for the same flow and pipe diameter.",
+    tip: "Tuberculation in unlined cast iron and ductile iron pipes can reduce the effective C factor from 130 (new) to as low as 60–80 (severely tuberculated), dramatically increasing head loss."
+  },
+  {
+    id: 607,
+    module: "Water Distribution",
+    difficulty: "medium",
+    question: "What is the purpose of a water system emergency response plan (ERP)?",
+    options: [
+      "To document daily operational procedures for routine maintenance",
+      "To provide pre-planned procedures for responding to emergencies such as main breaks, contamination events, power failures, and natural disasters",
+      "To set water rates during emergency conditions",
+      "To train new operators on distribution system operations"
+    ],
+    correct: 1,
+    explanation: "An emergency response plan (ERP) provides pre-planned procedures for responding to water system emergencies including main breaks, contamination events (boil water advisories), power failures, natural disasters, and security incidents. It identifies key contacts, decision-making authority, communication protocols, and restoration procedures to minimize service disruption and protect public health.",
+    tip: "Ontario requires water systems to have emergency response plans under O. Reg. 170/03, and plans must be tested through exercises and updated regularly."
+  },
 ];
+
+export const CLASS1_WATER_MODULE_TARGETS: Record<string, number> = {
+  "Source Water & Intake":        11,
+  "Aeration & Pre-Treatment":     10,
+  "Coagulation & Flocculation":   12,
+  "Sedimentation":                11,
+  "Filtration":                   12,
+  "Disinfection":                 14,
+  "Chemical Feed & Dosing":       10,
+  "Iron & Manganese Removal":     10,
+  "Water Quality & Regulations":  10,
+};
+
+export const CLASS1_WATER_TOTAL = CLASS1_WATER_QUESTIONS.length;
+
+export const CLASS1_WATER_MODULES = [
+  "Water Sources & Quality",
+  "Coagulation & Flocculation",
+  "Sedimentation",
+  "Filtration",
+  "Disinfection",
+  "Chemical Feed & Dosing",
+  "Iron & Manganese Removal",
+  "Water Quality & Regulations",
+  "Water Distribution",
+] as const;
+/** Shuffle helper */
+export function shuffleClass1Water(arr: Class1WaterQuestion[]): Class1WaterQuestion[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
 }
