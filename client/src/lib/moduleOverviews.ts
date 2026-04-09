@@ -1509,6 +1509,50 @@ export const CLASS2_WATER_OVERVIEWS: Record<string, ModuleOverview> = {
       "DWQMS is required for large municipal drinking water systems — Class 2 operators must know it",
     ],
   },
+  "Water Distribution": {
+    title: "Water Distribution",
+    intro:
+      "Class 2 Water Distribution covers the design, operation, and maintenance of pressurized water distribution systems. Key topics include hydraulics (Hazen-Williams, head loss, pressure zones), water quality management (chlorine residual, water age, nitrification, DBPs), storage and pumping, backflow prevention, corrosion control, regulatory compliance under O. Reg. 170/03, and emergency response. Class 2 operators must understand how distribution system decisions affect public health and regulatory compliance.",
+    keyPoints: [
+      {
+        heading: "Hydraulics & Pressure Zones",
+        body: "The Hazen-Williams equation calculates head loss: hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87). Higher C factor = smoother pipe = less head loss. PVC has C≈150; tuberculated cast iron may have C≈60-80. Pressure zones divide the system to maintain 275-690 kPa service pressure. PRVs reduce pressure at zone boundaries; booster pumps increase pressure for higher zones. The hydraulic grade line (HGL) represents total piezometric head at each point.",
+      },
+      {
+        heading: "Water Quality in Distribution",
+        body: "Water age (time since leaving the plant) is the key quality driver. High water age causes: chlorine residual depletion, DBP formation (THMs, HAAs), bacterial regrowth, and taste/odour problems. Target water age <3-5 days. Nitrification in chloraminated systems: AOB convert ammonia to nitrite, consuming chloramine residual — signs are rising nitrite + declining total chlorine. DBP control: remove NOM before disinfection, minimize water age, optimize chlorine dose.",
+      },
+      {
+        heading: "Corrosion Control & Lead",
+        body: "The Langelier Saturation Index (LSI = pH − pHs) measures corrosivity. Negative LSI = corrosive water that dissolves pipe material and protective scale. Lead leaches from lead service lines (LSLs) and pre-1990 solder through corrosion. Corrosion control: pH adjustment, orthophosphate addition (forms protective phosphate scale). Ontario MAC for lead = 0.01 mg/L. First draw samples (after 6-hour stagnation) represent worst-case lead exposure. Cathodic protection prevents external corrosion of buried metallic mains.",
+      },
+      {
+        heading: "Backflow Prevention & Cross-Connections",
+        body: "Backsiphonage (negative supply pressure) and backpressure (downstream > supply pressure) are the two backflow mechanisms. High-hazard connections (hospitals, industrial) require RPZ (Reduced Pressure Zone) devices. Medium-hazard connections use DCVA (Double Check Valve Assembly). AVBs and PVBs are used for low-hazard residential connections. Cross-connection control programs require annual inspection and testing of all backflow prevention devices.",
+      },
+      {
+        heading: "Regulatory Compliance (O. Reg. 170/03)",
+        body: "Minimum distribution residual: 0.05 mg/L free chlorine (or 0.25 mg/L total chlorine for chloramines). Bacteriological sampling frequency depends on population served (e.g., 5,000 people = 4 samples/month). Adverse results (E. coli or total coliforms detected) must be reported to MOH and MECP within 1 hour. New mains require: pressure testing, disinfection (50 mg/L Cl₂ for 24 hours per AWWA C651), flushing, and 2 satisfactory bacteriological samples before service. The ORO is legally responsible for system compliance.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Standard / Target", "Notes"],
+    tableRows: [
+      ["Min. free Cl₂ residual", "0.05 mg/L (O. Reg. 170/03)", "Most systems target 0.2–0.5 mg/L"],
+      ["Service pressure (normal)", "275–690 kPa (40–100 psi)", "Min 140 kPa during fire flow"],
+      ["Water age target", "<3–5 days", "Higher age → residual loss, DBPs"],
+      ["PVC Hazen-Williams C", "~150", "Tuberculated cast iron: 60–80"],
+      ["Lead MAC (Ontario)", "0.01 mg/L", "First draw sample after 6-hr stagnation"],
+      ["New main disinfection", "50 mg/L Cl₂ × 24 hrs", "AWWA C651; 2 satisfactory bact. samples"],
+    ],
+    examTips: [
+      "Negative LSI = corrosive water — add lime or orthophosphate to raise LSI toward zero",
+      "Nitrification = rising nitrite + declining chloramine residual — flush dead ends and reduce water age",
+      "RPZ required for high-hazard cross-connections (hospitals, industrial); DCVA for medium-hazard",
+      "Adverse bact. result must be reported to MOH and MECP within 1 hour — not after confirmation",
+      "New main disinfection: 50 mg/L Cl₂ for 24 hours (AWWA C651), then flush and test before service",
+    ],
+    formulaHint: "Hazen-Williams: hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87) | LSI = pH − pHs",
+  },
 };
 
 // ─── Class 2 Wastewater Module Overviews ─────────────────────────────────────
@@ -2070,6 +2114,52 @@ export const CLASS3_WATER_OVERVIEWS: Record<string, ModuleOverview> = {
     ],
     formulaHint:
       "No calculation formulas — this module is regulatory and procedural. Know the notification timelines, reporting requirements, and O. Reg. 170/03 Schedule thresholds.",
+  },
+  "Water Distribution": {
+    title: "Water Distribution",
+    intro:
+      "Class 3 Water Distribution requires advanced knowledge of distribution system hydraulics, water quality management, regulatory compliance, and system optimization. At this level, operators must be able to analyze hydraulic models, diagnose complex water quality problems (nitrification, DBP formation, lead leaching), manage cross-connection control programs, and ensure compliance with O. Reg. 170/03 and Ontario's Drinking Water Quality Standards. Class 3 operators often serve as the ORO for large, complex distribution systems.",
+    keyPoints: [
+      {
+        heading: "Advanced Hydraulics & System Analysis",
+        body: "Hazen-Williams: hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87). Velocity = Q/A. Hydraulic gradient = hf/L. Looped systems reduce head loss by splitting flow. Water hammer (pressure surge) from rapid valve closure or pump shutdown can cause pipe damage — mitigated by slow-closing valves, surge tanks, and air chambers. Hydraulic models (EPANET) simulate pressures, flows, and water quality throughout the network. NPSHa must exceed NPSHr to prevent pump cavitation.",
+      },
+      {
+        heading: "Water Quality Management",
+        body: "Water age is the primary driver of distribution water quality. Nitrification in chloraminated systems: AOB oxidize ammonia → nitrite, consuming chloramine residual. Signs: rising nitrite + declining total chlorine. Control: maintain ≥0.5 mg/L chloramine, flush dead ends, reduce water age, periodic breakpoint chlorination. DBP control: remove NOM before disinfection, minimize water age, optimize Cl₂ dose. HPC >500 CFU/mL indicates treatment/distribution integrity issues. First draw samples (6-hr stagnation) assess worst-case lead exposure.",
+      },
+      {
+        heading: "Corrosion Control & Lead Management",
+        body: "LSI (Langelier Saturation Index) = pH − pHs. Negative LSI = corrosive water. Lead leaches from LSLs and pre-1990 solder. Corrosion control treatment: pH ≥7.5, orthophosphate addition (forms protective phosphate scale on lead surfaces). Ontario MAC for lead = 0.01 mg/L. 90th percentile first draw lead >0.01 mg/L triggers corrosion control optimization. Cathodic protection (impressed current or sacrificial anode) prevents external corrosion of metallic mains in corrosive soils.",
+      },
+      {
+        heading: "Cross-Connection Control & Backflow Prevention",
+        body: "Two backflow mechanisms: backsiphonage (negative supply pressure) and backpressure (downstream > supply). Device selection by hazard: RPZ (Reduced Pressure Zone) = high hazard (hospitals, industrial); DCVA (Double Check Valve Assembly) = medium hazard; AVB/PVB = low hazard residential. Class 3 operators manage cross-connection control programs: annual device inspection/testing, maintaining device registry, investigating backflow incidents, and reporting to the MOH.",
+      },
+      {
+        heading: "Regulatory Compliance & Emergency Response",
+        body: "O. Reg. 170/03 requirements: min. 0.05 mg/L free Cl₂ (or 0.25 mg/L total Cl₂ for chloramines) at all distribution points. Adverse bact. result (E. coli or total coliforms): notify MOH and MECP within 1 hour. New main commissioning: pressure test, 50 mg/L Cl₂ × 24 hrs (AWWA C651), flush, 2 satisfactory bact. samples. Boil Water Advisory (BWA) issued by MOH when microbiological risk exists. The ORO is legally responsible for system compliance and must hold a certificate ≥ system classification.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Standard / Target", "Notes"],
+    tableRows: [
+      ["Min. free Cl₂ residual", "0.05 mg/L (O. Reg. 170/03)", "Most systems target 0.2–0.5 mg/L"],
+      ["Min. chloramine residual", "0.25 mg/L total Cl₂", "Nitrification risk if <0.5 mg/L"],
+      ["Service pressure", "275–690 kPa (40–100 psi)", "Min 140 kPa during fire flow"],
+      ["Lead MAC (Ontario)", "0.01 mg/L", "90th percentile first draw sample"],
+      ["HPC concern threshold", ">500 CFU/mL", "Indicates distribution integrity issue"],
+      ["New main disinfection", "50 mg/L Cl₂ × 24 hrs", "AWWA C651; 2 satisfactory bact. samples"],
+      ["Adverse result reporting", "Within 1 hour", "Notify MOH and MECP"],
+    ],
+    examTips: [
+      "Negative LSI = corrosive water — add lime or orthophosphate to raise LSI toward zero",
+      "Nitrification = rising nitrite + declining chloramine residual — flush, reduce water age, breakpoint chlorinate",
+      "RPZ required for high-hazard cross-connections; DCVA for medium-hazard; AVB/PVB for low-hazard",
+      "Adverse bact. result must be reported within 1 hour — not after confirmation sample",
+      "NPSHa must exceed NPSHr — low NPSHa causes cavitation (noise, vibration, impeller erosion)",
+      "Water hammer from rapid valve closure — use slow-closing valves and surge protection devices",
+    ],
+    formulaHint: "Hazen-Williams: hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87) | LSI = pH − pHs | V = Q/A",
   },
 };
 
@@ -2790,6 +2880,54 @@ export const CLASS4_WATER_OVERVIEWS: Record<string, ModuleOverview> = {
     ],
     formulaHint:
       "No primary calculation formulas — this module is regulatory and procedural. Know the OHSA requirements, confined space testing order, LOTO steps, and chemical safety thresholds.",
+  },
+  "Water Distribution": {
+    title: "Water Distribution",
+    intro:
+      "Class 4 Water Distribution represents the highest level of distribution system expertise. Class 4 operators are responsible for managing large, complex distribution systems serving major urban populations, including multi-zone systems, transmission mains, large storage facilities, and advanced water quality management programs. Key competencies include: advanced hydraulic analysis and modeling, comprehensive water quality management (lead, DBPs, nitrification, corrosion), regulatory compliance at the senior level, asset management, emergency preparedness, and DWQMS implementation.",
+    keyPoints: [
+      {
+        heading: "Advanced Hydraulic Analysis & Modeling",
+        body: "Class 4 operators use hydraulic models (EPANET, WaterGEMS) for: system planning, fire flow analysis, pressure zone optimization, and water quality simulation. Key hydraulic concepts: Hazen-Williams (hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87)), Hardy-Cross method for looped network analysis, pump affinity laws (Q∝N, H∝N², P∝N³), water hammer analysis (Joukowsky equation: ΔP = ρ × a × ΔV). Pressure management: PRVs, FCVs, time-modulated pressure control. Leakage management: DMA analysis, minimum night flow, pressure-leakage relationship (N1 exponent typically 0.5-1.5).",
+      },
+      {
+        heading: "Comprehensive Water Quality Management",
+        body: "Lead management: 90th percentile monitoring, corrosion control optimization (pH, orthophosphate), LSL replacement programs. DBP management: THM/HAA formation modeling, NOM removal optimization, chloramine conversion. Nitrification control: chloramine residual ≥0.5 mg/L, water age reduction, periodic breakpoint chlorination, AOB monitoring. Advanced monitoring: online turbidity, TOC, chlorine, and pressure sensors with SCADA integration. Water quality modeling: EPANET water quality extension for chlorine decay, water age, and contaminant transport simulation.",
+      },
+      {
+        heading: "Asset Management & Infrastructure Renewal",
+        body: "Class 4 operators manage comprehensive asset management programs: condition assessment (CCTV, acoustic leak detection, pipe sampling), risk-based prioritization (consequence × likelihood), lifecycle cost analysis, and capital planning. Pipe materials: understanding failure modes for CI, DI, AC, PVC, HDPE, and steel mains. Rehabilitation options: CIPP lining, cement mortar lining, pipe bursting, slip lining. Asset management frameworks: ISO 55000, PSAB 3150 (tangible capital assets). Infrastructure renewal funding: development charges, rate-supported capital, grants.",
+      },
+      {
+        heading: "Regulatory Compliance & DWQMS",
+        body: "Class 4 operators are typically the ORO for large systems and are legally responsible for full compliance with: O. Reg. 170/03 (operating), O. Reg. 248/03 (testing), Safe Drinking Water Act 2002, and the DWQMS. DWQMS Operational Plan: 21 elements including risk assessment, infrastructure review, operational procedures, training, emergency response, and management review. MDWLP: licence renewal every 5 years, third-party DWQMS audit every 3 years. Adverse condition reporting: Tier 1 and Tier 2 events under Schedule 7 of O. Reg. 170/03.",
+      },
+      {
+        heading: "Emergency Response & Business Continuity",
+        body: "Class 4 operators develop and maintain comprehensive emergency response plans (ERPs) covering: main breaks, contamination events, power outages, natural disasters, and cyber attacks (SCADA security). Incident Command System (ICS) integration with municipal emergency management. Mutual aid agreements with adjacent utilities. Business continuity planning: backup power (generators), emergency interconnections, temporary treatment/supply. Boil Water Advisory (BWA) protocols: issuance criteria, public notification, lifting criteria (2 consecutive satisfactory samples, MOH approval). Post-incident review and corrective action.",
+      },
+    ],
+    tableHeadings: ["Parameter", "Standard / Target", "Notes"],
+    tableRows: [
+      ["Min. free Cl₂ (distribution)", "0.05 mg/L (O. Reg. 170/03)", "Most systems target 0.2–0.5 mg/L"],
+      ["Min. free Cl₂ (POE)", "0.2 mg/L", "Higher to account for distribution decay"],
+      ["Min. chloramine (distribution)", "0.25 mg/L total Cl₂", "Target ≥0.5 mg/L to prevent nitrification"],
+      ["Service pressure", "275–690 kPa (40–100 psi)", "Min 140 kPa during fire flow"],
+      ["Lead MAC (Ontario)", "0.01 mg/L", "90th percentile first draw sample"],
+      ["Orthophosphate target", "1–3 mg/L as PO₄", "For corrosion control and lead reduction"],
+      ["DWQMS audit frequency", "Every 3 years", "Third-party accredited auditor"],
+      ["MDWLP licence renewal", "Every 5 years", "Must maintain DWQMS accreditation"],
+    ],
+    examTips: [
+      "Hardy-Cross method: iteratively correct flows in looped networks until head loss balance is achieved",
+      "Pump affinity laws: doubling speed doubles flow, quadruples head, and increases power 8×",
+      "Water hammer: ΔP = ρ × a × ΔV — use slow-closing valves and surge protection to limit pressure rise",
+      "LSI = pH − pHs: negative = corrosive; add lime or orthophosphate to raise LSI toward 0",
+      "DWQMS has 21 elements — know the key ones: risk assessment, infrastructure review, operational procedures, emergency response, management review",
+      "Adverse result reporting: Tier 2 (E. coli, negative pressure, loss of disinfection) = notify MOH and MECP within 1 hour",
+      "BWA lifting criteria: 2 consecutive satisfactory samples (E. coli = 0, total coliforms = 0) + MOH approval",
+    ],
+    formulaHint: "Hazen-Williams: hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87) | LSI = pH − pHs | Pump affinity: Q∝N, H∝N², P∝N³",
   },
 };
 

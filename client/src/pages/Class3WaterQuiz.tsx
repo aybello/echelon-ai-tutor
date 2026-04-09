@@ -16,11 +16,21 @@ type HistoryEntry = {
   questionObj?: any;
 };
 
+// ─── Module Config (icons + colours) ────────────────────────────────────────
+const MODULE_CONFIG = [
+  { name: "Treatment Process",               icon: "🏭", bg: "#DBEAFE", color: "#1D4ED8" },
+  { name: "Laboratory Analysis",             icon: "🔬", bg: "#FEF9C3", color: "#A16207" },
+  { name: "Equipment O&M",                   icon: "⚙️", bg: "#FFEDD5", color: "#C2410C" },
+  { name: "Source Water Characteristics",    icon: "💧", bg: "#DCFCE7", color: "#15803D" },
+  { name: "Security, Safety & Admin",        icon: "🛡️", bg: "#FEE2E2", color: "#B91C1C" },
+  { name: "Water Distribution",              icon: "🚰", bg: "#E0F2FE", color: "#0284C7" },
+];
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function Class3WaterQuiz() {
   const allQuestions = CLASS3_WATER_QUESTIONS as any[];
-  const modules = CLASS3_WATER_MODULES;
+  const modules = MODULE_CONFIG;
 
   const SESSION_SIZE = 15;
   const [trialDone, setTrialDone]   = useState(false);

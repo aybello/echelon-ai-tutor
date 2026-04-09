@@ -6229,7 +6229,772 @@ export const QUESTIONS: Question[] = [
     explanation: "Ct = C0 \u00d7 e^(-kt) = 1.0 \u00d7 e^(-0.015 \u00d7 36) = e^(-0.54) = 0.58 mg/L.",
     steps: [{"l": "Apply first-order decay", "c": "Ct = C0 × e^(-kt) = 1.0 × e^(-0.015 × 36)"}, {"l": "Calculate exponent", "c": "kt = 0.015 × 36 = 0.54"}, {"l": "Calculate residual", "c": "Ct = e^(-0.54) = 0.58 mg/L"}],
     difficulty: "hard",
-  }
+  },
+  // ─── MODULE: Water Distribution (Questions 601-650) ─────────────────────
+  {
+    id: 601,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "easy",
+    question: "What is the Hazen-Williams equation used to calculate in water distribution systems?",
+    options: [
+      "Chlorine residual decay",
+      "Head loss due to friction in pipes",
+      "Water age in storage tanks",
+      "Pump efficiency"
+    ],
+    correct: 1,
+    explanation: "The Hazen-Williams equation calculates head loss due to friction in water distribution pipes. The formula is: hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87), where C is the Hazen-Williams roughness coefficient, L is pipe length, Q is flow, and D is pipe diameter."
+  },
+  {
+    id: 602,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "medium",
+    question: "A 200 mm diameter water main has a Hazen-Williams C factor of 140. If the C factor drops to 80 due to tuberculation, what happens to head loss?",
+    options: [
+      "Head loss decreases significantly",
+      "Head loss stays the same",
+      "Head loss increases significantly",
+      "Head loss doubles exactly"
+    ],
+    correct: 2,
+    explanation: "Head loss is inversely proportional to C^1.852 in the Hazen-Williams equation. A drop from C=140 to C=80 represents a significant decrease in the roughness coefficient, causing head loss to increase substantially. Tuberculation (iron oxide deposits) reduces the effective pipe diameter and increases roughness, dramatically increasing friction losses."
+  },
+  {
+    id: 603,
+    module: "Water Distribution",
+    topic: "Pressure Zones",
+    difficulty: "medium",
+    question: "What is the primary purpose of a pressure-reducing valve (PRV) in a water distribution system?",
+    options: [
+      "To increase pressure in low-pressure zones",
+      "To reduce pressure from a high-pressure zone to a lower-pressure zone",
+      "To prevent backflow from customer premises",
+      "To release air from the distribution main"
+    ],
+    correct: 1,
+    explanation: "A pressure-reducing valve (PRV) automatically reduces and regulates downstream pressure to a set point, regardless of upstream pressure fluctuations. PRVs are used at pressure zone boundaries to prevent high pressure from damaging customer plumbing and to maintain service pressures within acceptable limits (typically 275-690 kPa)."
+  },
+  {
+    id: 604,
+    module: "Water Distribution",
+    topic: "Storage",
+    difficulty: "medium",
+    question: "An elevated water storage tank has a water surface elevation of 45 m above the distribution main. What is the approximate static pressure at the main?",
+    options: [
+      "45 kPa",
+      "441 kPa",
+      "4.5 kPa",
+      "4,500 kPa"
+    ],
+    correct: 1,
+    explanation: "Pressure from an elevated tank = ρgh = 1000 kg/m³ × 9.81 m/s² × 45 m = 441,450 Pa ≈ 441 kPa. The rule of thumb is approximately 9.81 kPa per metre of elevation (or roughly 10 kPa/m). 45 m × 9.81 kPa/m ≈ 441 kPa.",
+    isCalc: true,
+    steps: [
+      { l: "Use pressure formula", c: "P = ρgh = 1000 × 9.81 × 45" },
+      { l: "Calculate", c: "P = 441,450 Pa = 441.5 kPa" }
+    ]
+  },
+  {
+    id: 605,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "medium",
+    question: "What is 'water age' in a distribution system, and why is it important?",
+    options: [
+      "The age of the pipes in the system — older pipes have more corrosion",
+      "The time water has been in the distribution system since leaving the treatment plant",
+      "The number of years since the system was last flushed",
+      "The time since the last water quality sample was taken"
+    ],
+    correct: 1,
+    explanation: "Water age is the time elapsed since treated water left the treatment plant. High water age (long residence time) is associated with: chlorine residual depletion, disinfection by-product (DBP) formation, bacterial regrowth, taste and odour problems, and increased corrosion. Dead ends, oversized mains, and large storage tanks increase water age. Target water age is typically <3-5 days."
+  },
+  {
+    id: 606,
+    module: "Water Distribution",
+    topic: "Disinfection",
+    difficulty: "hard",
+    question: "A distribution system uses chloramination. The total chlorine residual is 1.2 mg/L but the free chlorine is 0.05 mg/L. What does this indicate?",
+    options: [
+      "The system has adequate free chlorine residual",
+      "The system is primarily using combined chlorine (chloramines) for residual maintenance",
+      "The system has a chlorine demand problem",
+      "The system needs more chlorine addition at the plant"
+    ],
+    correct: 1,
+    explanation: "When total chlorine is much higher than free chlorine, the residual is primarily combined chlorine (chloramines). In a chloraminated system, this is intentional — chloramines are more stable and persist longer in the distribution system than free chlorine. They are formed by reacting chlorine with ammonia. Chloramines are less effective disinfectants than free chlorine but provide better residual maintenance in large distribution systems."
+  },
+  {
+    id: 607,
+    module: "Water Distribution",
+    topic: "Backflow Prevention",
+    difficulty: "medium",
+    question: "A hospital is connected to the municipal water supply. What type of backflow prevention device is required for this high-hazard connection?",
+    options: [
+      "Atmospheric vacuum breaker (AVB)",
+      "Double check valve assembly (DCVA)",
+      "Reduced pressure zone (RPZ) device",
+      "Pressure vacuum breaker (PVB)"
+    ],
+    correct: 2,
+    explanation: "Hospitals are high-hazard cross-connections because they may use toxic chemicals, pathogens, and radioactive materials. An RPZ (Reduced Pressure Zone) device is required for high-hazard connections. The RPZ has two independently acting check valves and a pressure-differential relief valve that opens to atmosphere if either check valve fails, providing the highest level of backflow protection."
+  },
+  {
+    id: 608,
+    module: "Water Distribution",
+    topic: "Pipe Materials",
+    difficulty: "easy",
+    question: "What is the most common pipe material used for new water distribution main installations in Ontario?",
+    options: [
+      "Cast iron",
+      "Galvanized steel",
+      "PVC (polyvinyl chloride)",
+      "Asbestos cement"
+    ],
+    correct: 2,
+    explanation: "PVC (polyvinyl chloride) is the most common material for new water distribution main installations. Advantages include: corrosion resistance, smooth interior (high C factor ~150), lightweight, low cost, and long service life. PVC is available in pressure classes and is approved for potable water service. It has largely replaced older materials like cast iron and asbestos cement."
+  },
+  {
+    id: 609,
+    module: "Water Distribution",
+    topic: "Flushing",
+    difficulty: "medium",
+    question: "What is the primary advantage of unidirectional flushing (UDF) over conventional flushing?",
+    options: [
+      "UDF uses less water",
+      "UDF achieves higher velocities in the main being flushed, more effectively removing sediment and biofilm",
+      "UDF can be done without closing any valves",
+      "UDF does not require a flushing hydrant"
+    ],
+    correct: 1,
+    explanation: "Unidirectional flushing (UDF) isolates pipe segments using valves to force all flow through one main at a time, achieving self-cleaning velocities (typically >0.9 m/s). Conventional flushing opens a hydrant but flow comes from multiple directions, resulting in lower velocities and less effective cleaning. UDF is more effective at removing sediment, biofilm, and corrosion products, though it requires more valve operations."
+  },
+  {
+    id: 610,
+    module: "Water Distribution",
+    topic: "Leak Detection",
+    difficulty: "medium",
+    question: "What is the most common method used for acoustic leak detection in buried water mains?",
+    options: [
+      "Ground-penetrating radar (GPR)",
+      "Acoustic correlators and listening devices",
+      "Pressure transient analysis",
+      "Tracer gas injection"
+    ],
+    correct: 1,
+    explanation: "Acoustic leak detection uses listening devices (geophones, hydrophones) and acoustic correlators to detect the sound of water escaping from a pressurized main. Correlators compare the sound signal at two points on the pipe and calculate the leak location based on the time difference. This method is effective for metallic and plastic pipes and can locate leaks without excavation."
+  },
+  {
+    id: 611,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "hard",
+    question: "A distribution main has a flow of 0.05 m³/s and an internal diameter of 200 mm. What is the flow velocity?",
+    options: [
+      "0.25 m/s",
+      "1.59 m/s",
+      "0.64 m/s",
+      "3.18 m/s"
+    ],
+    correct: 1,
+    explanation: "Velocity = Q / A = Q / (π × D² / 4) = 0.05 / (π × 0.2² / 4) = 0.05 / (π × 0.04 / 4) = 0.05 / 0.03142 = 1.59 m/s. This is above the self-cleaning velocity of 0.6 m/s and within the acceptable range for distribution mains (typically 0.6-3.0 m/s).",
+    isCalc: true,
+    steps: [
+      { l: "Calculate pipe area", c: "A = π × D² / 4 = π × 0.04 / 4 = 0.03142 m²" },
+      { l: "Calculate velocity", c: "V = Q / A = 0.05 / 0.03142 = 1.59 m/s" }
+    ]
+  },
+  {
+    id: 612,
+    module: "Water Distribution",
+    topic: "Storage",
+    difficulty: "medium",
+    question: "What is the purpose of the equalizing storage volume in a water distribution system?",
+    options: [
+      "To store water for emergency use only",
+      "To balance supply and demand fluctuations throughout the day",
+      "To maintain fire flow reserves",
+      "To allow treatment plant shutdown for maintenance"
+    ],
+    correct: 1,
+    explanation: "Equalizing storage balances the difference between the relatively constant treatment plant output and the variable demand throughout the day. During low-demand periods (night), the tank fills; during peak demand periods (morning/evening), the tank supplements plant supply. This allows the treatment plant to operate at a steady rate rather than matching every demand fluctuation."
+  },
+  {
+    id: 613,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "hard",
+    question: "A distribution system operator notices rising nitrite levels and declining chloramine residual in one zone. What is the most likely cause?",
+    options: [
+      "Increased demand in the zone",
+      "Nitrification by ammonia-oxidizing bacteria",
+      "A main break allowing soil contamination",
+      "Increased water age from a new storage tank"
+    ],
+    correct: 1,
+    explanation: "Rising nitrite combined with declining chloramine residual is the classic signature of nitrification. Ammonia-oxidizing bacteria (AOB) convert free ammonia (from chloramine decomposition) to nitrite, consuming the chloramine residual in the process. Nitrification is more common in warm temperatures, dead ends, and areas with high water age. Control measures include: increasing chloramine residual, flushing, reducing water age, and periodic breakpoint chlorination."
+  },
+  {
+    id: 614,
+    module: "Water Distribution",
+    topic: "New Main Commissioning",
+    difficulty: "medium",
+    question: "After installing a new water main, what is the required disinfection procedure per AWWA C651?",
+    options: [
+      "Fill with water and flush for 30 minutes",
+      "Apply a minimum chlorine concentration of 50 mg/L for at least 24 hours",
+      "Apply 10 mg/L chlorine for 1 hour",
+      "Flush with 5 pipe volumes of chlorinated water"
+    ],
+    correct: 1,
+    explanation: "AWWA C651 (Standard for Disinfecting Water Mains) requires a minimum chlorine concentration of 50 mg/L maintained for at least 24 hours (continuous feed method) before the main is placed in service. After disinfection, the main must be flushed until chlorine residual is within the normal system range, and bacteriological samples must confirm the main is safe before service."
+  },
+  {
+    id: 615,
+    module: "Water Distribution",
+    topic: "Corrosion Control",
+    difficulty: "hard",
+    question: "What is the Langelier Saturation Index (LSI) and what does a negative value indicate?",
+    options: [
+      "A measure of chlorine demand; negative means excess chlorine",
+      "A measure of calcium carbonate saturation; negative means corrosive water",
+      "A measure of water hardness; negative means soft water",
+      "A measure of pH; negative means acidic water"
+    ],
+    correct: 1,
+    explanation: "The Langelier Saturation Index (LSI) = actual pH − saturation pH (pHs). It measures the tendency of water to deposit or dissolve calcium carbonate (CaCO₃). A negative LSI indicates the water is undersaturated with CaCO₃ and is corrosive — it will dissolve pipe material and protective scale. A positive LSI indicates scale-forming water. Target LSI is slightly positive (0 to +0.5) for distribution system corrosion control.",
+  },
+  {
+    id: 616,
+    module: "Water Distribution",
+    topic: "Valves",
+    difficulty: "easy",
+    question: "What is the primary function of a gate valve in a water distribution system?",
+    options: [
+      "To regulate flow and maintain a set pressure",
+      "To fully open or fully close a section of pipe for isolation",
+      "To prevent backflow from customer premises",
+      "To release air from the distribution main"
+    ],
+    correct: 1,
+    explanation: "Gate valves are isolation valves designed to be either fully open or fully closed. They provide minimal flow restriction when fully open (full bore). Gate valves should never be used for throttling (partial opening) as this causes vibration, erosion, and valve damage. They are used to isolate sections of the distribution system for maintenance, repairs, and emergency response."
+  },
+  {
+    id: 617,
+    module: "Water Distribution",
+    topic: "Fire Flow",
+    difficulty: "medium",
+    question: "What is the minimum residual pressure that must be maintained in a distribution system during a fire flow event?",
+    options: [
+      "275 kPa (40 psi)",
+      "140 kPa (20 psi)",
+      "415 kPa (60 psi)",
+      "690 kPa (100 psi)"
+    ],
+    correct: 1,
+    explanation: "During a fire flow event, the minimum residual pressure in the distribution system must be maintained at 140 kPa (20 psi) at the test hydrant. Under normal (non-fire) conditions, the minimum pressure is 275 kPa (40 psi). The difference reflects the temporary pressure drop acceptable during emergency fire fighting operations."
+  },
+  {
+    id: 618,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "hard",
+    question: "What is the hydraulic grade line (HGL) in a water distribution system?",
+    options: [
+      "The elevation of the pipe centerline",
+      "The line representing the pressure head (pressure/ρg) plus elevation head at each point",
+      "The maximum pressure the pipe can withstand",
+      "The elevation of the water surface in storage tanks"
+    ],
+    correct: 1,
+    explanation: "The Hydraulic Grade Line (HGL) represents the total piezometric head (pressure head + elevation head) at each point in the system. For a pressurized pipe, the HGL is above the pipe centerline by a height equal to the pressure head (P/ρg). The HGL slopes downward in the direction of flow due to friction losses. Elevated storage tanks set the HGL for the pressure zone they serve."
+  },
+  {
+    id: 619,
+    module: "Water Distribution",
+    topic: "Sampling",
+    difficulty: "medium",
+    question: "Under O. Reg. 170/03, where must distribution system bacteriological samples be collected?",
+    options: [
+      "Only at the treatment plant entry point",
+      "At representative points throughout the distribution system, including dead ends",
+      "Only at customer complaints locations",
+      "Only at the most distant point from the treatment plant"
+    ],
+    correct: 1,
+    explanation: "O. Reg. 170/03 requires bacteriological samples to be collected at representative points throughout the distribution system. The sampling plan must include: points at varying distances from the treatment plant, dead ends and areas with high water age, areas with known water quality issues, and a sufficient number of samples based on population served. Dead ends are particularly important as they often have the lowest residuals and highest water age."
+  },
+  {
+    id: 620,
+    module: "Water Distribution",
+    topic: "Emergency Response",
+    difficulty: "medium",
+    question: "A water main break occurs in a residential area. What is the correct sequence of actions?",
+    options: [
+      "Repair the main, then notify customers",
+      "Isolate the break using valves, notify affected customers, repair the main, flush and test before returning to service",
+      "Immediately increase treatment plant output to compensate",
+      "Issue a boil water advisory, then isolate the break"
+    ],
+    correct: 1,
+    explanation: "The correct sequence for a main break is: (1) Isolate the break using isolation valves to minimize water loss and service disruption; (2) Notify affected customers of the outage; (3) Repair the main; (4) Disinfect the repaired section; (5) Flush the main to restore water quality; (6) Collect bacteriological samples; (7) Restore service after satisfactory results. A boil water advisory may be issued if there is risk of contamination."
+  },
+  {
+    id: 621,
+    module: "Water Distribution",
+    topic: "Pumping",
+    difficulty: "medium",
+    question: "What is the purpose of a booster pump station in a water distribution system?",
+    options: [
+      "To pump water from the source to the treatment plant",
+      "To increase pressure in areas that cannot be served by gravity from storage",
+      "To remove air from the distribution main",
+      "To reduce pressure in high-pressure zones"
+    ],
+    correct: 1,
+    explanation: "Booster pump stations increase water pressure in areas where gravity from storage tanks is insufficient to maintain minimum service pressures. They are commonly used in: high-elevation service areas, areas far from storage, industrial zones requiring high fire flows, and new development areas. Booster stations must have backup power to maintain service during power outages."
+  },
+  {
+    id: 622,
+    module: "Water Distribution",
+    topic: "Corrosion Control",
+    difficulty: "medium",
+    question: "What is the primary mechanism by which lead enters drinking water from distribution system pipes?",
+    options: [
+      "Lead particles break off from pipe walls",
+      "Lead leaches from lead service lines and lead solder through corrosion",
+      "Lead is present in the source water",
+      "Lead is added during the treatment process"
+    ],
+    correct: 1,
+    explanation: "Lead enters drinking water primarily through corrosion of lead service lines (LSLs), lead solder (used before 1990), and brass fixtures. Corrosive water (low pH, low alkalinity, low calcium) dissolves the protective scale on lead pipes, releasing lead ions into the water. Corrosion control treatment (pH adjustment, orthophosphate addition) forms a protective phosphate scale on pipe surfaces, reducing lead leaching. Ontario's MAC for lead is 0.01 mg/L."
+  },
+  {
+    id: 623,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "hard",
+    question: "In a looped distribution system, what happens to head loss when a parallel pipe is added?",
+    options: [
+      "Head loss increases because there is more pipe",
+      "Head loss decreases because flow is split between the two pipes",
+      "Head loss stays the same",
+      "Head loss doubles"
+    ],
+    correct: 1,
+    explanation: "In a looped (parallel) system, adding a parallel pipe splits the flow between the two pipes. Since head loss is proportional to Q^1.852 (Hazen-Williams), reducing the flow in each pipe significantly reduces the head loss per pipe. The total head loss across the parallel combination is lower than for a single pipe carrying the full flow. This is why looped systems have better pressure and flow capacity than dead-end systems."
+  },
+  {
+    id: 624,
+    module: "Water Distribution",
+    topic: "Air Valves",
+    difficulty: "medium",
+    question: "What is the function of an air release valve (ARV) in a water distribution main?",
+    options: [
+      "To release pressure when it exceeds a set point",
+      "To automatically release accumulated air pockets from pressurized mains",
+      "To allow air into the main during draining",
+      "To prevent backflow from customer connections"
+    ],
+    correct: 1,
+    explanation: "Air release valves (ARVs) automatically release small air pockets that accumulate at high points in pressurized water mains. Air pockets reduce the effective pipe cross-section, increase head loss, cause pressure fluctuations, and can lead to water hammer. ARVs are installed at high points in the distribution system. Air/vacuum valves (combination valves) also allow large volumes of air to enter the pipe during draining and to escape during filling."
+  },
+  {
+    id: 625,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "medium",
+    question: "What is the most effective method to control disinfection by-product (DBP) formation in a distribution system?",
+    options: [
+      "Increase chlorine dose at the treatment plant",
+      "Reduce natural organic matter (NOM) before disinfection and minimize water age in distribution",
+      "Add more chlorine at booster stations",
+      "Increase system pressure"
+    ],
+    correct: 1,
+    explanation: "DBPs (trihalomethanes, haloacetic acids) form when chlorine reacts with natural organic matter (NOM). The most effective control strategy is: (1) Remove NOM before disinfection through enhanced coagulation and filtration; (2) Minimize water age in the distribution system to reduce contact time between chlorine and NOM; (3) Optimize chlorine dose (use minimum effective dose); (4) Consider alternative disinfectants (chloramines, UV). Adding more chlorine increases DBP formation."
+  },
+  {
+    id: 626,
+    module: "Water Distribution",
+    topic: "Pipe Materials",
+    difficulty: "medium",
+    question: "What is the Hazen-Williams C factor for new PVC pipe, and how does it compare to old cast iron pipe?",
+    options: [
+      "PVC C=80, old cast iron C=150",
+      "PVC C=150, old cast iron C=80",
+      "Both have C=130",
+      "PVC C=100, old cast iron C=100"
+    ],
+    correct: 1,
+    explanation: "New PVC pipe has a Hazen-Williams C factor of approximately 150 (very smooth). Old, tuberculated cast iron pipe may have a C factor as low as 60-80 due to corrosion deposits (tuberculation). A higher C factor means lower friction losses and better hydraulic capacity. The smooth interior of PVC is one of its major advantages over older pipe materials."
+  },
+  {
+    id: 627,
+    module: "Water Distribution",
+    topic: "Pressure Zones",
+    difficulty: "medium",
+    question: "A distribution system has a high-pressure zone (Zone 1) and a low-pressure zone (Zone 2). What device separates these zones?",
+    options: [
+      "A gate valve",
+      "A pressure-reducing valve (PRV)",
+      "A check valve",
+      "An air release valve"
+    ],
+    correct: 1,
+    explanation: "A pressure-reducing valve (PRV) is installed at the boundary between pressure zones to reduce the high pressure from Zone 1 to the lower pressure required in Zone 2. The PRV maintains a constant downstream pressure regardless of upstream pressure variations. Without a PRV, the high pressure from Zone 1 would exceed the maximum allowable pressure in Zone 2, potentially damaging customer plumbing and increasing leak rates."
+  },
+  {
+    id: 628,
+    module: "Water Distribution",
+    topic: "Flushing",
+    difficulty: "easy",
+    question: "Why are dead ends in a distribution system a concern for water quality?",
+    options: [
+      "Dead ends cause high pressure",
+      "Dead ends have stagnant water with high water age, leading to chlorine residual loss and bacterial regrowth",
+      "Dead ends are more susceptible to main breaks",
+      "Dead ends cause water hammer"
+    ],
+    correct: 1,
+    explanation: "Dead ends are the terminus of a distribution main with no through-flow. Water in dead ends becomes stagnant, resulting in: high water age, chlorine residual depletion, bacterial regrowth (including biofilm formation), taste and odour problems, and sediment accumulation. Dead ends must be regularly flushed to replace stagnant water with fresh, chlorinated water. Eliminating dead ends by looping the system is the preferred long-term solution."
+  },
+  {
+    id: 629,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "hard",
+    question: "What is water hammer in a distribution system, and what causes it?",
+    options: [
+      "Pressure surges caused by sudden changes in flow velocity, typically from rapid valve closure or pump shutdown",
+      "Vibration caused by high-velocity flow in pipes",
+      "Noise caused by air pockets in the main",
+      "Pressure loss caused by pipe friction"
+    ],
+    correct: 0,
+    explanation: "Water hammer is a pressure surge (shock wave) caused by a sudden change in flow velocity. Common causes include: rapid valve closure, pump start/stop, fire hydrant operation, and pipe breaks. The pressure wave travels through the system at the speed of sound in water (~1,200 m/s) and can cause pipe damage, joint failures, and meter damage. Prevention: slow-closing valves, surge tanks, air chambers, and pump bypass lines."
+  },
+  {
+    id: 630,
+    module: "Water Distribution",
+    topic: "Regulatory",
+    difficulty: "medium",
+    question: "Under Ontario O. Reg. 170/03, what is the required minimum sampling frequency for distribution system bacteriological samples in a system serving 5,000 people?",
+    options: [
+      "1 sample per month",
+      "4 samples per month",
+      "Daily sampling",
+      "1 sample per week"
+    ],
+    correct: 1,
+    explanation: "Under O. Reg. 170/03, the required sampling frequency for distribution system bacteriological samples depends on population served. For a system serving 5,000 people, the minimum is 4 samples per month (approximately one per week). Larger systems require more frequent sampling. The samples must be collected at representative points throughout the distribution system, not just at the plant."
+  },
+  {
+    id: 631,
+    module: "Water Distribution",
+    topic: "Corrosion Control",
+    difficulty: "medium",
+    question: "What is the purpose of cathodic protection for buried metallic water mains?",
+    options: [
+      "To prevent internal corrosion from chlorine",
+      "To prevent external corrosion by making the pipe a cathode in the electrochemical cell",
+      "To prevent tuberculation inside the pipe",
+      "To prevent scale formation on the pipe interior"
+    ],
+    correct: 1,
+    explanation: "Cathodic protection prevents external corrosion of buried metallic pipes (ductile iron, steel) by applying an electrical current that makes the pipe a cathode (electron receiver) rather than an anode (electron donor). Two methods: (1) Impressed current — external DC power source drives current to the pipe; (2) Sacrificial anode — a more reactive metal (zinc, magnesium) is connected to the pipe and corrodes preferentially. Cathodic protection is essential in corrosive soils."
+  },
+  {
+    id: 632,
+    module: "Water Distribution",
+    topic: "Storage",
+    difficulty: "medium",
+    question: "What are the three components of distribution system storage volume?",
+    options: [
+      "Equalizing storage, fire storage, and emergency storage",
+      "Peak storage, base storage, and reserve storage",
+      "Daily storage, weekly storage, and monthly storage",
+      "Treated storage, raw storage, and buffer storage"
+    ],
+    correct: 0,
+    explanation: "Distribution system storage is sized for three components: (1) Equalizing storage — balances diurnal demand fluctuations (typically 15-25% of maximum daily demand); (2) Fire storage — volume needed to fight fires for the required duration (depends on land use and flow requirements); (3) Emergency storage — reserve for treatment plant shutdown or supply interruption (typically 1-2 days of average demand). Total storage = sum of all three components."
+  },
+  {
+    id: 633,
+    module: "Water Distribution",
+    topic: "Valves",
+    difficulty: "medium",
+    question: "What is the difference between a butterfly valve and a gate valve in distribution system applications?",
+    options: [
+      "Butterfly valves are only used for backflow prevention",
+      "Butterfly valves can be used for throttling and are more compact; gate valves are for full open/close isolation",
+      "Gate valves are used for large-diameter mains only",
+      "Butterfly valves require more maintenance than gate valves"
+    ],
+    correct: 1,
+    explanation: "Butterfly valves have a disc that rotates 90° to open/close and can be used for both isolation and flow regulation (throttling). They are compact, lightweight, and suitable for large-diameter mains. Gate valves use a sliding gate and are designed for full open/close isolation only — throttling causes vibration and erosion. Gate valves have full bore (no flow restriction when open); butterfly valves have the disc in the flow path even when open."
+  },
+  {
+    id: 634,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "hard",
+    question: "What is the significance of the 'first draw' sample in lead monitoring for distribution systems?",
+    options: [
+      "The first sample taken after a main break",
+      "A sample collected after water has stood in service lines and plumbing for at least 6 hours, representing worst-case lead exposure",
+      "The first sample collected in the morning before any water use",
+      "A sample collected at the treatment plant entry point"
+    ],
+    correct: 1,
+    explanation: "A first draw sample is collected after water has been standing in the service line and household plumbing for at least 6 hours (typically overnight). This represents worst-case lead exposure because water in contact with lead pipes and solder for extended periods has the highest lead concentration. Ontario's lead monitoring program requires first draw samples to assess the 90th percentile lead level. If the 90th percentile exceeds 0.01 mg/L, corrosion control treatment must be optimized."
+  },
+  {
+    id: 635,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "medium",
+    question: "What is the purpose of a pressure sustaining valve (PSV) in a distribution system?",
+    options: [
+      "To reduce pressure in high-pressure zones",
+      "To maintain a minimum upstream pressure regardless of downstream demand",
+      "To prevent backflow from customer premises",
+      "To release air from the distribution main"
+    ],
+    correct: 1,
+    explanation: "A pressure sustaining valve (PSV) maintains a minimum upstream pressure by restricting flow when upstream pressure drops below the set point. PSVs are used to: protect upstream storage tanks from draining completely, maintain minimum pressure for upstream customers when downstream demand is high, and prevent siphoning. They are the opposite of PRVs — PRVs limit downstream pressure, PSVs maintain upstream pressure."
+  },
+  {
+    id: 636,
+    module: "Water Distribution",
+    topic: "Pipe Materials",
+    difficulty: "medium",
+    question: "What is the main advantage of ductile iron pipe over cast iron pipe for water distribution?",
+    options: [
+      "Ductile iron is cheaper than cast iron",
+      "Ductile iron has higher tensile strength and flexibility, making it more resistant to breakage",
+      "Ductile iron has a higher Hazen-Williams C factor",
+      "Ductile iron does not corrode"
+    ],
+    correct: 1,
+    explanation: "Ductile iron pipe has a graphite microstructure that gives it significantly higher tensile strength and ductility (flexibility) compared to grey cast iron. Ductile iron can flex without breaking, making it more resistant to soil movement, water hammer, and installation stresses. It replaced cast iron as the standard metallic pipe for water mains. Ductile iron still requires cathodic protection in corrosive soils and may need cement lining to prevent internal corrosion."
+  },
+  {
+    id: 637,
+    module: "Water Distribution",
+    topic: "Emergency Response",
+    difficulty: "medium",
+    question: "When is a Boil Water Advisory (BWA) issued for a distribution system?",
+    options: [
+      "Whenever chlorine residual drops below 0.5 mg/L",
+      "When there is evidence of microbiological contamination or a significant risk to public health from the distribution system",
+      "Whenever a main break occurs",
+      "When turbidity exceeds 1 NTU at the plant"
+    ],
+    correct: 1,
+    explanation: "A Boil Water Advisory (BWA) is issued when there is evidence of microbiological contamination or a significant risk to public health. Triggers include: detection of E. coli or total coliforms in distribution samples, loss of disinfection residual, main breaks with potential for contamination, loss of pressure (negative pressure allowing contaminant intrusion), and treatment plant failures. The Medical Officer of Health (MOH) issues BWAs in Ontario. Two consecutive satisfactory bacteriological samples are typically required to lift a BWA."
+  },
+  {
+    id: 638,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "hard",
+    question: "A distribution main has a head loss of 5 m over a 500 m length. What is the hydraulic gradient?",
+    options: [
+      "0.001 m/m",
+      "0.01 m/m",
+      "0.1 m/m",
+      "1.0 m/m"
+    ],
+    correct: 1,
+    explanation: "Hydraulic gradient = head loss / pipe length = 5 m / 500 m = 0.01 m/m (or 10 m/km). The hydraulic gradient represents the slope of the hydraulic grade line. A gradient of 0.01 m/m is typical for distribution mains. Higher gradients indicate higher velocities or smaller pipes. The hydraulic gradient is used to check if adequate pressure is available at all points in the system.",
+    isCalc: true,
+    steps: [
+      { l: "Calculate hydraulic gradient", c: "i = hf / L = 5 m / 500 m = 0.01 m/m" }
+    ]
+  },
+  {
+    id: 639,
+    module: "Water Distribution",
+    topic: "Sampling",
+    difficulty: "medium",
+    question: "What action must be taken within 1 hour of receiving an adverse microbiological result from the distribution system?",
+    options: [
+      "Issue a boil water advisory",
+      "Notify the Medical Officer of Health (MOH) and the Ministry of the Environment",
+      "Increase chlorine dose at the treatment plant",
+      "Collect a confirmation sample"
+    ],
+    correct: 1,
+    explanation: "Under O. Reg. 170/03, when an adverse microbiological result is received (E. coli or total coliforms detected), the owner/operator must notify the Medical Officer of Health (MOH) and the Ministry of the Environment, Conservation and Parks (MECP) within 1 hour. This is a mandatory reporting requirement regardless of whether the result is confirmed. The MOH will advise on whether a Boil Water Advisory is needed. Failure to report is a regulatory violation."
+  },
+  {
+    id: 640,
+    module: "Water Distribution",
+    topic: "Pipe Materials",
+    difficulty: "medium",
+    question: "What is the primary concern with asbestos cement (AC) pipe in older distribution systems?",
+    options: [
+      "AC pipe has a very low Hazen-Williams C factor",
+      "AC pipe may release asbestos fibres into the water, especially when disturbed or corroded",
+      "AC pipe is very expensive to replace",
+      "AC pipe cannot be disinfected effectively"
+    ],
+    correct: 1,
+    explanation: "Asbestos cement (AC) pipe was widely used from the 1930s to 1980s. The primary concern is the potential release of asbestos fibres into drinking water, particularly when the pipe is corroded, disturbed during maintenance, or subjected to high-velocity flow. While the health risk from ingested asbestos fibres is debated, AC pipe is being systematically replaced in Ontario. Workers must follow strict safety protocols (respiratory protection, wet methods) when working with AC pipe."
+  },
+  {
+    id: 641,
+    module: "Water Distribution",
+    topic: "Storage",
+    difficulty: "medium",
+    question: "What is the purpose of a standpipe in a water distribution system?",
+    options: [
+      "A vertical pipe used to measure pressure",
+      "A tall, cylindrical storage tank where the entire volume is within the pressure zone",
+      "A pipe that connects different pressure zones",
+      "A pipe used for fire suppression only"
+    ],
+    correct: 1,
+    explanation: "A standpipe is a tall, cylindrical steel storage tank where the entire storage volume is within the operating pressure range of the distribution system. Unlike an elevated tank (where the tank is elevated on a pedestal), a standpipe sits on the ground with its full height contributing to system pressure. The water surface elevation determines the pressure. Standpipes are typically used where land elevation provides sufficient pressure without an elevated structure."
+  },
+  {
+    id: 642,
+    module: "Water Distribution",
+    topic: "Backflow Prevention",
+    difficulty: "medium",
+    question: "What is the difference between backsiphonage and backpressure as mechanisms of backflow?",
+    options: [
+      "They are the same phenomenon",
+      "Backsiphonage is caused by negative pressure in the supply; backpressure is caused by downstream pressure exceeding supply pressure",
+      "Backsiphonage only occurs in industrial connections",
+      "Backpressure only occurs during fire fighting"
+    ],
+    correct: 1,
+    explanation: "Backsiphonage occurs when negative pressure (vacuum) develops in the supply pipe, drawing contaminants back into the potable water system. Causes: high-velocity flow creating a venturi effect, main breaks, or large withdrawals. Backpressure occurs when downstream pressure exceeds the supply pressure, forcing contaminants back into the supply. Causes: booster pumps, elevated tanks, or thermal expansion in hot water systems. Both mechanisms require backflow prevention devices at cross-connections."
+  },
+  {
+    id: 643,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "medium",
+    question: "What is the purpose of a pressure zone in a water distribution system?",
+    options: [
+      "To separate different water quality zones",
+      "To maintain pressures within acceptable limits (275-690 kPa) for areas at different elevations",
+      "To isolate sections for maintenance",
+      "To control chlorine residual distribution"
+    ],
+    correct: 1,
+    explanation: "Pressure zones divide the distribution system into areas where pressures can be maintained within acceptable limits (typically 275-690 kPa or 40-100 psi). In hilly terrain, a single pressure zone would result in excessive pressures at low elevations and inadequate pressures at high elevations. PRVs reduce pressure at zone boundaries for lower zones; booster pumps increase pressure for higher zones. Each pressure zone is typically served by its own storage tank."
+  },
+  {
+    id: 644,
+    module: "Water Distribution",
+    topic: "Regulatory",
+    difficulty: "medium",
+    question: "What is the role of the Overall Responsible Operator (ORO) in a Class 2 water distribution system?",
+    options: [
+      "The ORO is responsible only for treatment plant operations",
+      "The ORO is the certified operator legally responsible for the overall operation of the water system",
+      "The ORO is a government inspector who oversees the system",
+      "The ORO is responsible only for emergency response"
+    ],
+    correct: 1,
+    explanation: "The Overall Responsible Operator (ORO) is the certified operator designated as legally responsible for the overall operation and maintenance of the water system under O. Reg. 128/04. The ORO must hold a certificate at least equal to the system classification. Responsibilities include: ensuring the system is operated in compliance with regulations, ensuring adequate staffing and training, reviewing operating records, and being the primary contact for regulatory authorities. The ORO can be held personally liable for regulatory violations."
+  },
+  {
+    id: 645,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "hard",
+    question: "What is the significance of heterotrophic plate count (HPC) in distribution system monitoring?",
+    options: [
+      "HPC directly measures pathogen concentration",
+      "HPC indicates overall microbial activity and treatment/distribution system integrity",
+      "HPC is used to calculate chlorine demand",
+      "HPC measures the concentration of coliform bacteria"
+    ],
+    correct: 1,
+    explanation: "HPC (Heterotrophic Plate Count) measures the total number of bacteria that can grow on a nutrient medium. While HPC bacteria are generally not pathogens, elevated HPC (>500 CFU/mL in Ontario) indicates: reduced treatment effectiveness, loss of disinfection residual, biofilm growth in distribution pipes, or contamination. HPC is a useful indicator of overall system integrity and is used to evaluate treatment performance, distribution system cleanliness, and the effectiveness of flushing programs."
+  },
+  {
+    id: 646,
+    module: "Water Distribution",
+    topic: "Pumping",
+    difficulty: "hard",
+    question: "What is the net positive suction head available (NPSHa) and why is it important for distribution system pumps?",
+    options: [
+      "The maximum pressure the pump can generate",
+      "The absolute pressure at the pump suction minus the vapour pressure of water — must exceed NPSHr to prevent cavitation",
+      "The difference between pump discharge and suction pressures",
+      "The minimum flow rate the pump can handle"
+    ],
+    correct: 1,
+    explanation: "NPSHa (Net Positive Suction Head available) is the absolute pressure at the pump suction minus the vapour pressure of water. If NPSHa falls below the pump's required NPSH (NPSHr), the water vaporizes at the suction, causing cavitation — implosion of vapour bubbles that erodes impellers and causes noise, vibration, and reduced performance. NPSHa must always exceed NPSHr by a safety margin. Low NPSHa occurs with: high suction lift, high water temperature, or high friction losses in suction piping."
+  },
+  {
+    id: 647,
+    module: "Water Distribution",
+    topic: "Flushing",
+    difficulty: "medium",
+    question: "What is the minimum flushing velocity recommended to effectively remove sediment from a distribution main?",
+    options: [
+      "0.3 m/s",
+      "0.6 m/s",
+      "1.5 m/s",
+      "3.0 m/s"
+    ],
+    correct: 1,
+    explanation: "A minimum velocity of 0.6 m/s (approximately 2 ft/s) is the self-cleaning velocity required to resuspend and remove sediment from distribution mains. For effective flushing, velocities of 0.9-1.5 m/s are preferred. Unidirectional flushing (UDF) is designed to achieve these velocities by isolating pipe segments with valves. Flushing at insufficient velocity will not remove sediment and may actually stir it up without removing it."
+  },
+  {
+    id: 648,
+    module: "Water Distribution",
+    topic: "Pipe Materials",
+    difficulty: "medium",
+    question: "What is the purpose of cement mortar lining in ductile iron water mains?",
+    options: [
+      "To increase the pipe's pressure rating",
+      "To prevent internal corrosion and maintain water quality by providing a smooth, inert surface",
+      "To reduce the weight of the pipe for easier installation",
+      "To improve the pipe's resistance to external soil corrosion"
+    ],
+    correct: 1,
+    explanation: "Cement mortar lining (CML) is applied to the interior of ductile iron pipes to: (1) Prevent internal corrosion by isolating the metal from the water; (2) Maintain water quality by providing an inert, non-reactive surface; (3) Improve hydraulic capacity by providing a smooth surface (higher C factor); (4) Prevent tuberculation (iron oxide deposits). CML is the standard interior protection for ductile iron pipe in water service. It must be properly cured before the pipe is placed in service."
+  },
+  {
+    id: 649,
+    module: "Water Distribution",
+    topic: "Emergency Response",
+    difficulty: "hard",
+    question: "What is the purpose of a distribution system hydraulic model and how is it used in emergency response?",
+    options: [
+      "A hydraulic model is only used for new system design",
+      "A hydraulic model simulates pressure and flow throughout the system, used to predict system response to main breaks, valve closures, and fire flows",
+      "A hydraulic model calculates chlorine residual only",
+      "A hydraulic model is used to schedule maintenance activities"
+    ],
+    correct: 1,
+    explanation: "A hydraulic model (e.g., EPANET) is a computer simulation of the distribution system that calculates pressures, flows, and water quality throughout the network. In emergency response, it is used to: predict pressure impacts of main breaks and valve closures, identify alternative supply routes, determine which customers will be affected by an isolation, optimize valve operations, and plan flushing programs. Models must be calibrated against field measurements to be accurate."
+  },
+  {
+    id: 650,
+    module: "Water Distribution",
+    topic: "Regulatory",
+    difficulty: "medium",
+    question: "Under Ontario regulations, what is required before a new water distribution main can be placed in service?",
+    options: [
+      "Only a visual inspection",
+      "Pressure testing, disinfection per AWWA C651, flushing, and satisfactory bacteriological testing",
+      "Only bacteriological testing",
+      "Only pressure testing and flushing"
+    ],
+    correct: 1,
+    explanation: "Before a new water main can be placed in service in Ontario, the following steps are required: (1) Pressure testing — hydrostatic test at 1.5× working pressure for 2 hours to check for leaks; (2) Disinfection — 50 mg/L chlorine for 24 hours per AWWA C651; (3) Flushing — to remove disinfection solution and restore normal residual; (4) Bacteriological sampling — minimum 2 satisfactory samples (E. coli = 0, total coliforms = 0) collected 24 hours apart before the main is approved for service."
+  },
 ];
 
 export const MODULES = [
@@ -6238,6 +7003,7 @@ export const MODULES = [
   "Equipment Operation & Maintenance",
   "Laboratory Analysis",
   "Security, Safety & Administrative",
+  "Water Distribution",
 ];
 
 export function getNextQuestion(

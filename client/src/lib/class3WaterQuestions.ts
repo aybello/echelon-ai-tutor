@@ -8472,7 +8472,778 @@ export const QUESTIONS: Question[] = [
     explanation: `pH increase = 7.8 - 7.2 = 0.6 pH units.`,
     isCalc: true,
     difficulty: "medium",
-  }
+  },
+  // ─── MODULE: Water Distribution (Questions 554-603) ─────────────────────
+  {
+    id: 554,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "hard",
+    question: "A 300 mm diameter water main (C=130) carries a flow of 0.08 m³/s over a 1,000 m length. What is the approximate head loss?",
+    options: ["2.1 m", "4.8 m", "8.3 m", "12.6 m"],
+    correct: 1,
+    explanation: "Using Hazen-Williams: hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87). hf = 10.67 × 1000 × (0.08)^1.852 / (130^1.852 × 0.3^4.87). (0.08)^1.852 ≈ 0.00878; 130^1.852 ≈ 7,850; 0.3^4.87 ≈ 0.00236. hf = 10.67 × 1000 × 0.00878 / (7,850 × 0.00236) ≈ 93.6 / 18.5 ≈ 4.8 m.",
+    isCalc: true,
+    steps: [
+      { l: "Apply Hazen-Williams", c: "hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87)" },
+      { l: "Calculate numerator", c: "10.67 × 1000 × (0.08)^1.852 = 10,670 × 0.00878 = 93.6" },
+      { l: "Calculate denominator", c: "130^1.852 × 0.3^4.87 = 7,850 × 0.00236 = 18.5" },
+      { l: "Head loss", c: "hf = 93.6 / 18.5 ≈ 4.8 m" }
+    ]
+  },
+  {
+    id: 555,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "hard",
+    question: "A Class 3 operator notices that a chloraminated distribution zone has: total chlorine = 0.8 mg/L, free chlorine = 0.6 mg/L, and nitrite = 0.15 mg/L. What does this indicate?",
+    options: [
+      "Normal chloramination — the system is operating correctly",
+      "Early-stage nitrification — free ammonia is being oxidized, but chloramine breakdown is not yet severe",
+      "Breakpoint chlorination has occurred — excess free chlorine is present",
+      "The system has a cross-connection contamination event"
+    ],
+    correct: 2,
+    explanation: "In a properly functioning chloraminated system, free chlorine should be very low (most chlorine should be combined as chloramines). Here, free chlorine (0.6 mg/L) is high relative to total chlorine (0.8 mg/L), meaning combined chlorine = only 0.2 mg/L. The elevated nitrite (0.15 mg/L) confirms nitrification is occurring — AOB are oxidizing ammonia, breaking down chloramines and releasing free chlorine. This is actually advanced nitrification where chloramine residual is nearly depleted."
+  },
+  {
+    id: 556,
+    module: "Water Distribution",
+    topic: "Pressure Zones",
+    difficulty: "hard",
+    question: "A PRV is set to maintain 350 kPa downstream. The upstream pressure is 650 kPa. If a major main break occurs downstream, what happens to the PRV?",
+    options: [
+      "The PRV opens fully to supply maximum flow to the break",
+      "The PRV closes to prevent the downstream pressure from dropping below 350 kPa",
+      "The PRV maintains 350 kPa downstream regardless of flow demand",
+      "The PRV fails open, allowing 650 kPa to enter the downstream zone"
+    ],
+    correct: 2,
+    explanation: "A PRV is a pressure-reducing valve that maintains a set downstream pressure by throttling flow from the upstream zone. When downstream demand increases (e.g., a main break), the PRV opens further to maintain the 350 kPa set point. However, if the flow demand exceeds the PRV's capacity, downstream pressure will drop below the set point. The PRV does not close during a break — it tries to maintain the set pressure by opening. The PRV will not allow upstream pressure (650 kPa) to pass through."
+  },
+  {
+    id: 557,
+    module: "Water Distribution",
+    topic: "Corrosion Control",
+    difficulty: "hard",
+    question: "A distribution system has a pH of 7.2, calcium hardness of 80 mg/L as CaCO₃, alkalinity of 60 mg/L as CaCO₃, and temperature of 15°C. The calculated pHs is 7.8. What is the LSI and what action is needed?",
+    options: [
+      "LSI = +0.6 (scale-forming) — reduce pH to prevent scale",
+      "LSI = -0.6 (corrosive) — increase pH or add orthophosphate to reduce corrosivity",
+      "LSI = 0 (balanced) — no action needed",
+      "LSI = -0.6 (corrosive) — add more chlorine to prevent corrosion"
+    ],
+    correct: 1,
+    explanation: "LSI = actual pH − pHs = 7.2 − 7.8 = −0.6. A negative LSI indicates the water is undersaturated with CaCO₃ and is corrosive — it will dissolve protective scale from pipe surfaces, increasing lead and copper leaching. Corrective actions: (1) Increase pH (add lime or soda ash) to raise LSI toward 0; (2) Add orthophosphate (1-3 mg/L) to form a protective phosphate scale on pipe surfaces; (3) Increase alkalinity. Target LSI is 0 to +0.5 for corrosion control.",
+    isCalc: true,
+    steps: [
+      { l: "Calculate LSI", c: "LSI = pH − pHs = 7.2 − 7.8 = −0.6" },
+      { l: "Interpret result", c: "Negative LSI = corrosive water (undersaturated with CaCO₃)" },
+      { l: "Action required", c: "Increase pH or add orthophosphate to raise LSI toward 0" }
+    ]
+  },
+  {
+    id: 558,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "medium",
+    question: "What is the significance of the energy grade line (EGL) versus the hydraulic grade line (HGL)?",
+    options: [
+      "They are the same line — EGL and HGL are interchangeable terms",
+      "EGL = HGL + velocity head (V²/2g); EGL is always above HGL by the velocity head",
+      "HGL = EGL + velocity head; HGL is always above EGL",
+      "EGL represents pressure head only; HGL represents elevation head only"
+    ],
+    correct: 1,
+    explanation: "The Energy Grade Line (EGL) represents total energy head = pressure head + elevation head + velocity head (V²/2g). The Hydraulic Grade Line (HGL) represents piezometric head = pressure head + elevation head only. Therefore EGL = HGL + V²/2g. For water distribution systems with relatively low velocities, the velocity head is small (typically <0.1 m), so EGL and HGL are nearly identical. Both slope downward in the direction of flow due to friction losses."
+  },
+  {
+    id: 559,
+    module: "Water Distribution",
+    topic: "Sampling",
+    difficulty: "hard",
+    question: "Under O. Reg. 170/03, what triggers a Tier 2 adverse condition notification?",
+    options: [
+      "Any turbidity reading above 1 NTU",
+      "Detection of E. coli in a distribution sample",
+      "Chlorine residual below the minimum at any point",
+      "Total coliforms detected in a distribution sample"
+    ],
+    correct: 1,
+    explanation: "Under O. Reg. 170/03, detection of E. coli in a distribution sample triggers a Tier 2 adverse condition. Tier 2 requires: immediate notification to the Medical Officer of Health (MOH) and the Ministry of the Environment (MECP) within 1 hour; investigation; corrective action; and follow-up sampling. E. coli is a direct indicator of fecal contamination and poses an immediate public health risk. Total coliforms alone (without E. coli) may trigger a Tier 1 adverse condition requiring investigation and re-sampling."
+  },
+  {
+    id: 560,
+    module: "Water Distribution",
+    topic: "Storage",
+    difficulty: "medium",
+    question: "A distribution system serves a population of 50,000 with an average daily demand of 200 L/capita/day. What is the minimum equalizing storage required if the peak hourly demand is 2.5× the average daily demand?",
+    options: [
+      "500 m³",
+      "1,250 m³",
+      "2,500 m³",
+      "5,000 m³"
+    ],
+    correct: 1,
+    explanation: "Average daily demand = 50,000 × 200 L/day = 10,000,000 L/day = 10,000 m³/day. Equalizing storage is typically 15-25% of maximum daily demand. For a peak factor of 2.5, max daily demand = 10,000 × 2.5 = 25,000 m³/day. Equalizing storage ≈ 25,000 × 0.05 (the fraction of the day that demand exceeds supply) ≈ 1,250 m³. This represents the volume needed to supply the peak demand period when demand exceeds the treatment plant's output.",
+    isCalc: true,
+    steps: [
+      { l: "Calculate average daily demand", c: "50,000 × 200 L = 10,000,000 L/day = 10,000 m³/day" },
+      { l: "Calculate max daily demand", c: "10,000 × 2.5 = 25,000 m³/day" },
+      { l: "Equalizing storage (5% of max daily)", c: "25,000 × 0.05 = 1,250 m³" }
+    ]
+  },
+  {
+    id: 561,
+    module: "Water Distribution",
+    topic: "Backflow Prevention",
+    difficulty: "hard",
+    question: "A Class 3 operator discovers that a commercial car wash has been connected to the municipal water supply without a backflow prevention device. The car wash uses recycled water with detergents. What is the correct classification and required device?",
+    options: [
+      "Low hazard — atmospheric vacuum breaker (AVB) is sufficient",
+      "Medium hazard — double check valve assembly (DCVA) is required",
+      "High hazard — reduced pressure zone (RPZ) device is required",
+      "No device needed — car washes are not cross-connections"
+    ],
+    correct: 2,
+    explanation: "A car wash using recycled water with detergents is a high-hazard cross-connection because the recycled water may contain: detergents, oils, heavy metals, and microorganisms that would be harmful if introduced into the potable water supply. High-hazard connections require an RPZ (Reduced Pressure Zone) device, which provides the highest level of protection through two independent check valves and a pressure differential relief valve. The RPZ must be tested annually by a certified tester."
+  },
+  {
+    id: 562,
+    module: "Water Distribution",
+    topic: "Pipe Materials",
+    difficulty: "medium",
+    question: "What is the primary cause of red water complaints in a distribution system with cast iron mains?",
+    options: [
+      "High manganese concentration in the source water",
+      "Internal corrosion (tuberculation) of cast iron mains releasing iron oxide particles",
+      "Chlorine reacting with organic matter to form coloured compounds",
+      "Copper leaching from customer plumbing"
+    ],
+    correct: 1,
+    explanation: "Red water in systems with cast iron mains is primarily caused by tuberculation — the buildup of iron oxide (rust) deposits on the interior of unlined cast iron pipes. When flow velocity increases (e.g., during flushing, fire fighting, or demand changes), these deposits are dislodged and carried into the water, causing red/brown discolouration. The iron concentration may exceed the aesthetic objective of 0.3 mg/L. Solutions: unidirectional flushing, cement mortar lining, or pipe replacement."
+  },
+  {
+    id: 563,
+    module: "Water Distribution",
+    topic: "Emergency Response",
+    difficulty: "hard",
+    question: "A Class 3 operator receives a report of low pressure in a residential area. Investigation reveals a main break with potential for negative pressure. What immediate actions are required?",
+    options: [
+      "Increase plant output and wait for pressure to recover",
+      "Isolate the break, issue a Boil Water Advisory, notify MOH and MECP, and increase chlorine dose",
+      "Flush the affected area and collect bacteriological samples before taking other action",
+      "Issue a Do Not Use advisory and wait for the break to be repaired"
+    ],
+    correct: 1,
+    explanation: "A main break with negative pressure is a Tier 2 adverse condition because negative pressure allows contaminants to be drawn into the distribution system. Required actions: (1) Isolate the break immediately using valves; (2) Issue a Boil Water Advisory (BWA) for the affected area — negative pressure creates a presumptive contamination risk; (3) Notify MOH and MECP within 1 hour; (4) Repair the main and disinfect; (5) Collect bacteriological samples; (6) Lift BWA after 2 consecutive satisfactory samples. Increasing chlorine dose alone is insufficient."
+  },
+  {
+    id: 564,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "hard",
+    question: "What is the purpose of a surge tank (standpipe) connected to a pump discharge main?",
+    options: [
+      "To increase pump pressure",
+      "To absorb pressure surges from water hammer by providing a volume of water that can compress or expand",
+      "To store water for fire fighting",
+      "To reduce chlorine demand in the distribution system"
+    ],
+    correct: 1,
+    explanation: "A surge tank (or surge standpipe) is connected to a pump discharge main to absorb pressure surges from water hammer. When a pump shuts down suddenly, the water column decelerates rapidly, creating a negative pressure wave. The surge tank supplies water to fill the void, preventing column separation and the subsequent pressure surge when the columns rejoin. Surge tanks are sized to absorb the energy of the pressure wave. They are used at pump stations where water hammer is a significant concern."
+  },
+  {
+    id: 565,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "hard",
+    question: "A distribution system operator is implementing a lead service line replacement program. What is the most important water quality consideration during partial LSL replacement?",
+    options: [
+      "Chlorine residual may decrease during construction",
+      "Partial replacement (replacing only the municipal portion) may temporarily increase lead levels at the tap",
+      "Turbidity will increase during construction",
+      "Water pressure will decrease during construction"
+    ],
+    correct: 1,
+    explanation: "Partial lead service line (LSL) replacement — replacing only the municipal portion while leaving the customer-owned portion — can temporarily increase lead levels at the tap. The mechanical disturbance of the pipe during replacement dislodges lead particles and disrupts the protective scale on the remaining LSL. Studies have shown that partial replacements can increase lead levels for weeks to months after the work. Full LSL replacement is preferred. Customers should be advised to flush their taps and use a filter certified for lead removal after partial replacement."
+  },
+  {
+    id: 566,
+    module: "Water Distribution",
+    topic: "Valves",
+    difficulty: "medium",
+    question: "A Class 3 operator needs to close a section of main for repairs. The isolation requires closing 4 valves. What is the correct procedure?",
+    options: [
+      "Close all 4 valves simultaneously to minimize service disruption",
+      "Close valves in sequence starting from the valve furthest from the repair site",
+      "Close valves in sequence, checking pressure after each closure to confirm isolation",
+      "Open all hydrants in the area first, then close the valves"
+    ],
+    correct: 2,
+    explanation: "Valve isolation should be done in sequence, checking pressure (or flow) after each valve closure to confirm the valve is seating properly and the isolation is effective. This approach: (1) Confirms each valve is working before proceeding; (2) Identifies leaking or failed valves early; (3) Minimizes the number of customers affected if a valve fails; (4) Allows the operator to adjust the isolation plan if needed. Closing all valves simultaneously makes it impossible to identify which valve has failed if isolation is incomplete."
+  },
+  {
+    id: 567,
+    module: "Water Distribution",
+    topic: "Regulatory",
+    difficulty: "hard",
+    question: "Under Ontario's Drinking Water Quality Management Standard (DWQMS), what is the purpose of an Operational Plan?",
+    options: [
+      "A plan for expanding the distribution system capacity",
+      "A documented quality management system describing how the drinking water system is operated and maintained to protect public health",
+      "A financial plan for infrastructure renewal",
+      "An emergency response plan for main breaks"
+    ],
+    correct: 1,
+    explanation: "The DWQMS Operational Plan is a comprehensive quality management system document required for large municipal residential drinking water systems in Ontario. It describes: the system's infrastructure and processes, risk assessment and management, operating procedures, training and competency requirements, monitoring and measurement, incident and emergency response, and management review. The Operational Plan must be reviewed and updated annually, and the system must be audited by an accredited third party every 3 years. It is a legal requirement under the Safe Drinking Water Act, 2002."
+  },
+  {
+    id: 568,
+    module: "Water Distribution",
+    topic: "Pumping",
+    difficulty: "hard",
+    question: "A booster pump station has two identical pumps. When both pumps operate in parallel, what happens to the total flow and head compared to a single pump?",
+    options: [
+      "Flow doubles and head doubles",
+      "Flow approximately doubles at the same head; head does not double",
+      "Head doubles and flow stays the same",
+      "Flow and head both remain the same"
+    ],
+    correct: 1,
+    explanation: "When two identical pumps operate in parallel, they share the same suction and discharge headers. At any given head, each pump delivers its rated flow, so total flow approximately doubles. However, the head does not double — the combined pump curve intersects the system curve at a higher flow but not at double the head. In practice, due to increased friction losses at higher flow, the head actually decreases slightly compared to a single pump. Parallel pumping is used to increase flow capacity; series pumping is used to increase head (pressure)."
+  },
+  {
+    id: 569,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "medium",
+    question: "What is the purpose of a distribution system water quality model (e.g., EPANET water quality extension)?",
+    options: [
+      "To calculate pipe pressures and flows only",
+      "To simulate chlorine residual decay, water age, and contaminant transport throughout the distribution network",
+      "To design new pipe sizes for system expansion",
+      "To calculate pump energy consumption"
+    ],
+    correct: 1,
+    explanation: "EPANET's water quality extension simulates: chlorine residual decay (bulk and wall decay), water age (residence time), contaminant transport and mixing, and disinfection by-product formation potential. Water quality models help operators: identify areas with high water age, predict where residuals will be low, optimize booster chlorination locations, design flushing programs, and assess the impact of operational changes on water quality. Models must be calibrated against field measurements to be accurate."
+  },
+  {
+    id: 570,
+    module: "Water Distribution",
+    topic: "Flushing",
+    difficulty: "hard",
+    question: "A Class 3 operator is designing a unidirectional flushing (UDF) program. What is the correct sequence for flushing a dead-end main?",
+    options: [
+      "Open the flushing hydrant first, then close isolation valves",
+      "Close isolation valves to direct flow from one direction, then open the flushing hydrant at the dead end",
+      "Flush from the dead end toward the source to push sediment back to the plant",
+      "Open all hydrants simultaneously to maximize velocity"
+    ],
+    correct: 1,
+    explanation: "UDF sequence for a dead-end main: (1) Identify the pipe segment to be flushed and the direction of flow; (2) Close isolation valves to direct all flow through the target main from one direction only; (3) Open the flushing hydrant at the downstream end (dead end) to create flow through the main; (4) Flush until the water runs clear and chlorine residual is within normal range; (5) Close the hydrant; (6) Reopen isolation valves. The key is to force all flow through the target main in one direction to achieve self-cleaning velocity (≥0.9 m/s)."
+  },
+  {
+    id: 571,
+    module: "Water Distribution",
+    topic: "Corrosion Control",
+    difficulty: "hard",
+    question: "A distribution system operator is evaluating orthophosphate dosing for corrosion control. What is the target orthophosphate residual in the distribution system?",
+    options: [
+      "0.1-0.5 mg/L as PO₄",
+      "1-3 mg/L as PO₄",
+      "5-10 mg/L as PO₄",
+      "0.01-0.05 mg/L as PO₄"
+    ],
+    correct: 1,
+    explanation: "The target orthophosphate residual in the distribution system for corrosion control is typically 1-3 mg/L as PO₄ (or 0.3-1.0 mg/L as P). This concentration is sufficient to form a protective phosphate scale on lead and copper surfaces while remaining below the aesthetic objective for phosphorus. The dose must be optimized through bench testing and field monitoring — too little provides insufficient protection; too much can promote biological growth and increase phosphorus loading in wastewater. Orthophosphate is most effective when pH is also optimized (≥7.5)."
+  },
+  {
+    id: 572,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "hard",
+    question: "What is the purpose of a check valve on a pump discharge line, and what happens if it fails open?",
+    options: [
+      "A check valve prevents backflow; if it fails open, the pump can run in reverse",
+      "A check valve prevents backflow; if it fails open, water flows backward through the pump when it is stopped, potentially causing water hammer and pump damage",
+      "A check valve regulates flow; if it fails open, pressure increases",
+      "A check valve prevents air entry; if it fails open, air enters the system"
+    ],
+    correct: 1,
+    explanation: "A check valve on a pump discharge line prevents backflow through the pump when the pump is stopped. If the check valve fails open (or is missing), when the pump stops, water flows backward through the pump under the pressure differential. This causes: (1) Reverse rotation of the pump impeller, which can damage the pump; (2) Water hammer when the reverse flow is suddenly stopped; (3) Loss of prime in the pump suction. Check valves must be inspected regularly and replaced when worn. Swing check valves are common; tilting disc check valves are used where water hammer is a concern."
+  },
+  {
+    id: 573,
+    module: "Water Distribution",
+    topic: "Regulatory",
+    difficulty: "medium",
+    question: "What is the required minimum chlorine residual at the point of entry (POE) to the distribution system under Ontario regulations?",
+    options: [
+      "0.05 mg/L free chlorine",
+      "0.2 mg/L free chlorine (or 1.0 mg/L total chlorine for chloramines)",
+      "0.5 mg/L free chlorine",
+      "1.0 mg/L free chlorine"
+    ],
+    correct: 1,
+    explanation: "Under O. Reg. 170/03, the minimum chlorine residual at the point of entry (POE) to the distribution system is 0.2 mg/L free chlorine (or 1.0 mg/L total chlorine for systems using chloramination). This is higher than the minimum distribution residual (0.05 mg/L free) to account for residual decay as water travels through the distribution system. The POE residual must be maintained continuously and is monitored by continuous analyzers with alarms."
+  },
+  {
+    id: 574,
+    module: "Water Distribution",
+    topic: "Storage",
+    difficulty: "medium",
+    question: "What is the recommended turnover time for a distribution system storage tank to prevent water quality deterioration?",
+    options: [
+      "Once per month",
+      "Every 3-7 days",
+      "Once per year",
+      "Every 24 hours"
+    ],
+    correct: 1,
+    explanation: "Distribution system storage tanks should be turned over (completely emptied and refilled) every 3-7 days to prevent water quality deterioration. Insufficient turnover leads to: high water age, chlorine residual depletion, bacterial regrowth, taste and odour problems, and sediment accumulation. Tanks that are oversized relative to demand are particularly prone to water quality problems. Operational strategies to improve turnover: adjust fill/draw levels, implement active mixing, use altitude valves to control fill cycles."
+  },
+  {
+    id: 575,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "hard",
+    question: "A distribution system operator notices that THM concentrations are highest in a specific pressure zone during summer. What is the most likely cause and corrective action?",
+    options: [
+      "High chlorine dose at the plant — reduce chlorine to below 0.5 mg/L",
+      "High water age in that zone combined with elevated temperature and NOM — reduce water age and optimize NOM removal",
+      "The pressure zone has old pipes that release organic matter",
+      "The zone has high demand that increases chlorine consumption"
+    ],
+    correct: 1,
+    explanation: "THM formation is driven by: chlorine concentration × NOM × time × temperature. High THMs in a specific zone during summer indicates: (1) High water age (long contact time between chlorine and NOM); (2) Elevated temperature (summer accelerates THM formation kinetics); (3) Residual NOM from the treatment plant. Corrective actions: (1) Reduce water age by increasing tank turnover, flushing dead ends, and optimizing storage operations; (2) Improve NOM removal at the plant (enhanced coagulation, activated carbon); (3) Consider switching to chloramination (chloramines form fewer THMs than free chlorine)."
+  },
+  {
+    id: 576,
+    module: "Water Distribution",
+    topic: "Pipe Materials",
+    difficulty: "hard",
+    question: "What is the significance of the C-900 and C-905 designations for PVC pipe in water distribution?",
+    options: [
+      "They refer to the Hazen-Williams C factor for different PVC grades",
+      "They are AWWA standards specifying pressure classes and dimensions for PVC pressure pipe",
+      "They are Ontario provincial standards for pipe installation depth",
+      "They refer to the chemical composition of different PVC formulations"
+    ],
+    correct: 1,
+    explanation: "AWWA C-900 and C-905 are AWWA standards for PVC pressure pipe: C-900 covers 100-300 mm (4-12 inch) diameter pipe; C-905 covers 350-900 mm (14-36 inch) diameter pipe. Both standards specify: pressure classes (PC 100, 150, 200, 235, 305 psi), outside diameter dimensions (based on cast iron OD for compatibility with existing fittings), wall thickness, and testing requirements. PVC pipe conforming to these standards is approved for potable water service and is the most common material for new water main installations."
+  },
+  {
+    id: 577,
+    module: "Water Distribution",
+    topic: "Emergency Response",
+    difficulty: "hard",
+    question: "A Class 3 operator is managing a prolonged power outage affecting a booster pump station. The elevated storage tank has 24 hours of supply remaining. What is the priority action?",
+    options: [
+      "Issue a water restriction immediately and wait for power to be restored",
+      "Activate the emergency generator, notify the MOH, and implement water conservation measures while monitoring tank levels",
+      "Shut down the distribution system to conserve the remaining storage",
+      "Open connections to adjacent pressure zones to supplement supply"
+    ],
+    correct: 1,
+    explanation: "Priority actions during a power outage affecting a booster station: (1) Activate the emergency generator — all pump stations must have backup power per O. Reg. 170/03; (2) Notify the MOH and MECP if service is at risk; (3) Implement water conservation measures (public advisory to reduce non-essential use); (4) Monitor tank levels continuously; (5) Contact the utility for power restoration timeline; (6) Prepare contingency plans (mutual aid, temporary pumping). Shutting down the system is a last resort. Opening connections to adjacent zones requires careful hydraulic analysis."
+  },
+  {
+    id: 578,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "hard",
+    question: "What is the purpose of a flow control valve (FCV) in a distribution system?",
+    options: [
+      "To prevent backflow from customer premises",
+      "To limit the flow rate to a set maximum value regardless of pressure differential",
+      "To reduce pressure in high-pressure zones",
+      "To release air from the distribution main"
+    ],
+    correct: 1,
+    explanation: "A flow control valve (FCV) limits the flow rate through a pipe to a set maximum value, regardless of the pressure differential across the valve. FCVs are used to: prevent one zone from drawing excessive flow from another zone, limit flow to a specific customer or area, balance flow distribution in looped systems, and protect downstream infrastructure from excessive flow. Unlike PRVs (which control pressure), FCVs control flow rate. They are often used in conjunction with pressure management to optimize system performance."
+  },
+  {
+    id: 579,
+    module: "Water Distribution",
+    topic: "Sampling",
+    difficulty: "hard",
+    question: "A Class 3 operator is reviewing the distribution system sampling plan. What factors determine the number and location of bacteriological sampling points?",
+    options: [
+      "Only the population served — more people = more samples",
+      "Population served, system size, number of pressure zones, dead ends, areas with known water quality issues, and regulatory requirements",
+      "Only the length of the distribution mains",
+      "Only the age of the infrastructure"
+    ],
+    correct: 1,
+    explanation: "The bacteriological sampling plan must consider: (1) Population served (determines minimum sample frequency per O. Reg. 170/03); (2) System size and complexity (number of pressure zones, storage tanks, booster stations); (3) Dead ends and areas with high water age (highest risk for residual loss and bacterial regrowth); (4) Areas with known water quality problems (historical adverse results, consumer complaints); (5) Points at varying distances from the treatment plant (to assess residual decay); (6) Vulnerable areas (schools, hospitals, care homes). The plan must be reviewed and updated annually."
+  },
+  {
+    id: 580,
+    module: "Water Distribution",
+    topic: "Corrosion Control",
+    difficulty: "medium",
+    question: "What is the difference between uniform corrosion and pitting corrosion in water distribution pipes?",
+    options: [
+      "They are the same type of corrosion with different names",
+      "Uniform corrosion attacks the entire pipe surface evenly; pitting corrosion creates localized deep holes that can cause pinhole leaks",
+      "Pitting corrosion only occurs in plastic pipes; uniform corrosion only in metal pipes",
+      "Uniform corrosion is caused by chlorine; pitting corrosion is caused by bacteria"
+    ],
+    correct: 1,
+    explanation: "Uniform corrosion attacks the entire pipe surface at a relatively even rate, gradually thinning the pipe wall. It is predictable and can be managed through corrosion control treatment. Pitting corrosion creates localized, deep holes (pits) in the pipe surface, often caused by: differential aeration cells, microbiologically influenced corrosion (MIC), chloride attack on stainless steel, or galvanic corrosion at dissimilar metal contacts. Pitting is more dangerous than uniform corrosion because it can cause pinhole leaks while most of the pipe wall remains intact. Pitting is less predictable and harder to detect."
+  },
+  {
+    id: 581,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "hard",
+    question: "A distribution system has a looped main with two parallel pipes connecting points A and B. Pipe 1 is 200 mm diameter, 500 m long, C=130. Pipe 2 is 150 mm diameter, 500 m long, C=130. If the total flow from A to B is 0.05 m³/s, how does the flow split?",
+    options: [
+      "Equal split — 0.025 m³/s in each pipe",
+      "More flow in Pipe 1 (larger diameter) — approximately 0.035 m³/s in Pipe 1 and 0.015 m³/s in Pipe 2",
+      "More flow in Pipe 2 (smaller diameter) — approximately 0.035 m³/s in Pipe 2 and 0.015 m³/s in Pipe 1",
+      "All flow in Pipe 1 — Pipe 2 carries no flow"
+    ],
+    correct: 1,
+    explanation: "In parallel pipes, head loss must be equal in both pipes (same start and end points). Using Hazen-Williams, for equal head loss: Q₁/Q₂ = (D₁/D₂)^(4.87/1.852) × (C₁/C₂)^1 = (200/150)^2.63 × 1 = (1.333)^2.63 ≈ 2.3. So Q₁ ≈ 2.3 × Q₂. With Q₁ + Q₂ = 0.05: Q₂ = 0.05/3.3 ≈ 0.015 m³/s; Q₁ ≈ 0.035 m³/s. The larger pipe carries more flow because it has lower resistance.",
+    isCalc: true,
+    steps: [
+      { l: "Equal head loss condition", c: "hf₁ = hf₂ for parallel pipes" },
+      { l: "Flow ratio", c: "Q₁/Q₂ = (D₁/D₂)^2.63 = (200/150)^2.63 ≈ 2.3" },
+      { l: "Solve for flows", c: "Q₁ + Q₂ = 0.05; Q₁ ≈ 0.035 m³/s, Q₂ ≈ 0.015 m³/s" }
+    ]
+  },
+  {
+    id: 582,
+    module: "Water Distribution",
+    topic: "Regulatory",
+    difficulty: "hard",
+    question: "What is the purpose of Schedule 7 under O. Reg. 170/03?",
+    options: [
+      "It specifies the minimum chlorine residual requirements",
+      "It specifies the adverse conditions and required notifications for drinking water systems",
+      "It specifies the sampling frequency for distribution systems",
+      "It specifies the qualifications required for certified operators"
+    ],
+    correct: 1,
+    explanation: "Schedule 7 of O. Reg. 170/03 specifies the adverse conditions that require notification and the required actions. It defines: Tier 1 adverse conditions (less serious — require investigation and re-sampling within specified timeframes); Tier 2 adverse conditions (more serious — require immediate notification to MOH and MECP within 1 hour, and may require issuing a Boil Water Advisory). Examples of Tier 2 conditions: E. coli detected, loss of disinfection, negative pressure in the distribution system, and treatment equipment failure."
+  },
+  {
+    id: 583,
+    module: "Water Distribution",
+    topic: "Storage",
+    difficulty: "hard",
+    question: "What is the purpose of an altitude valve on a distribution system storage tank?",
+    options: [
+      "To release air from the top of the tank",
+      "To automatically stop filling the tank when it reaches a set high-water level and open to allow flow when the level drops",
+      "To measure the water level in the tank",
+      "To prevent backflow from the tank into the distribution system"
+    ],
+    correct: 1,
+    explanation: "An altitude valve is a pressure-operated valve installed on the inlet/outlet pipe of a storage tank. It automatically closes when the tank reaches its maximum water level (set by the valve's pressure setting) to prevent overflow, and opens when the distribution system pressure drops below the tank's pressure (i.e., when the tank needs to supply the system). Altitude valves eliminate the need for float valves or electronic level controls. They are sized for both fill and draw flows and must be maintained to ensure proper operation."
+  },
+  {
+    id: 584,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "hard",
+    question: "What is the significance of the 90th percentile lead result in Ontario's lead monitoring program?",
+    options: [
+      "90% of samples must be below the MAC of 0.01 mg/L",
+      "The 90th percentile of first draw samples must not exceed 0.01 mg/L; if it does, corrosion control treatment must be optimized",
+      "90% of the distribution system must have lead-free service lines",
+      "The 90th percentile sample must be collected within 90 days"
+    ],
+    correct: 1,
+    explanation: "Ontario's lead monitoring program requires collection of first draw samples (after ≥6 hours stagnation) from a representative sample of homes with lead service lines or lead solder. The 90th percentile of these samples is calculated — if it exceeds 0.01 mg/L (Ontario's MAC for lead), the system must: (1) Optimize corrosion control treatment (pH, orthophosphate); (2) Investigate and replace lead service lines; (3) Increase monitoring frequency. The 90th percentile approach recognizes that some variability is expected and focuses on the worst-case results."
+  },
+  {
+    id: 585,
+    module: "Water Distribution",
+    topic: "Pipe Materials",
+    difficulty: "medium",
+    question: "What precautions must be taken when working with asbestos cement (AC) pipe during repairs or replacement?",
+    options: [
+      "AC pipe requires no special precautions — it is safe to handle",
+      "Workers must use respiratory protection (N95 or better), wet cutting methods, and dispose of AC pipe as hazardous waste",
+      "AC pipe only requires gloves and safety glasses",
+      "AC pipe must be replaced immediately upon discovery"
+    ],
+    correct: 1,
+    explanation: "Asbestos cement (AC) pipe contains chrysotile asbestos fibres that can be released as airborne dust during cutting, grinding, or breaking. Required precautions: (1) Respiratory protection — minimum N95 respirator, preferably half-face respirator with P100 filters; (2) Wet cutting methods — use water to suppress dust; (3) Personal protective equipment — disposable coveralls, gloves; (4) Decontamination procedures before leaving the work area; (5) Dispose of AC pipe as asbestos-containing material (ACM) per provincial regulations; (6) Notify the Ministry of Labour if required. Workers must be trained in asbestos awareness."
+  },
+  {
+    id: 586,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "medium",
+    question: "What is the purpose of a pressure management program in a water distribution system?",
+    options: [
+      "To increase pressure throughout the system for better fire flow",
+      "To reduce average system pressure to decrease leak rates, main breaks, and energy consumption while maintaining minimum service pressures",
+      "To eliminate pressure zones and simplify the system",
+      "To increase pressure in high-elevation areas only"
+    ],
+    correct: 1,
+    explanation: "Pressure management programs reduce average system pressure to: (1) Decrease leak rates — leakage is proportional to pressure (higher pressure = more leakage); (2) Reduce main break frequency — high pressure increases stress on aging pipes; (3) Reduce energy consumption — lower pressure = less pumping energy; (4) Extend infrastructure life — lower pressure reduces fatigue loading on pipes and joints. Pressure management uses PRVs, time-modulated PRVs, and flow-modulated PRVs to reduce pressure during low-demand periods (night) while maintaining minimum pressures during peak demand."
+  },
+  {
+    id: 587,
+    module: "Water Distribution",
+    topic: "Backflow Prevention",
+    difficulty: "medium",
+    question: "What is the required annual testing procedure for a reduced pressure zone (RPZ) device?",
+    options: [
+      "Visual inspection only",
+      "Testing by a certified backflow prevention tester using a differential pressure gauge to verify both check valves and the relief valve function correctly",
+      "Replacement of the device every year",
+      "Flushing the device with chlorinated water"
+    ],
+    correct: 1,
+    explanation: "RPZ devices must be tested annually by a certified backflow prevention tester (CBPT) using a differential pressure test kit. The test verifies: (1) First check valve — opens at the correct pressure and holds against backpressure; (2) Second check valve — opens at the correct pressure and holds against backpressure; (3) Pressure differential relief valve — opens when the pressure differential across the first check valve drops below the minimum set point (typically 2 psi). Failed devices must be repaired or replaced immediately. Test records must be maintained and submitted to the water utility."
+  },
+  {
+    id: 588,
+    module: "Water Distribution",
+    topic: "Regulatory",
+    difficulty: "medium",
+    question: "What is the purpose of the Drinking Water Quality Management Standard (DWQMS) in Ontario?",
+    options: [
+      "To set maximum contaminant levels for drinking water",
+      "To establish a quality management framework for drinking water systems to prevent failures and protect public health",
+      "To regulate the qualifications of certified operators",
+      "To specify the design standards for new water treatment plants"
+    ],
+    correct: 1,
+    explanation: "The DWQMS is a quality management standard developed by the Ontario Ministry of the Environment following the Walkerton Inquiry. It requires large municipal residential drinking water systems to implement a quality management system (QMS) that: identifies and manages risks to drinking water quality, establishes documented operating procedures, ensures operator competency and training, monitors and measures performance, investigates incidents and adverse events, and conducts management reviews. DWQMS accreditation is required for municipal drinking water systems in Ontario and is audited by accredited third-party auditors every 3 years."
+  },
+  {
+    id: 589,
+    module: "Water Distribution",
+    topic: "Flushing",
+    difficulty: "medium",
+    question: "What is the purpose of a hydrant flow test in a distribution system?",
+    options: [
+      "To flush sediment from the distribution main",
+      "To measure the available fire flow and residual pressure at a specific location to verify the system meets fire protection requirements",
+      "To test the hydrant for mechanical defects",
+      "To measure chlorine residual at the hydrant"
+    ],
+    correct: 1,
+    explanation: "A hydrant flow test measures the available fire flow and residual pressure at a specific location in the distribution system. The test involves: (1) Recording static pressure at the test hydrant; (2) Opening one or more flow hydrants to create flow; (3) Recording residual pressure at the test hydrant and flow rate from the flow hydrant(s); (4) Using the results to calculate the available flow at the minimum required residual pressure (typically 140 kPa). Results are used to: verify fire protection adequacy, calibrate hydraulic models, identify system deficiencies, and plan infrastructure improvements."
+  },
+  {
+    id: 590,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "hard",
+    question: "A Class 3 operator is investigating consumer complaints of earthy/musty taste and odour in a specific distribution zone during late summer. What is the most likely cause?",
+    options: [
+      "Chlorine residual is too high in that zone",
+      "Geosmin and 2-methylisoborneol (MIB) from cyanobacteria (blue-green algae) in the source water, passing through treatment",
+      "Iron and manganese from corroding pipes in that zone",
+      "Bacterial contamination from a cross-connection"
+    ],
+    correct: 1,
+    explanation: "Earthy/musty taste and odour complaints in late summer are the classic signature of geosmin and 2-methylisoborneol (MIB) — compounds produced by cyanobacteria (blue-green algae) and actinomycetes. These compounds are detectable at extremely low concentrations (5-10 ng/L for geosmin; 10-15 ng/L for MIB) and are not effectively removed by conventional treatment. They are most prevalent during late summer algal blooms in source water reservoirs. Treatment options: powdered activated carbon (PAC) addition, ozonation, or advanced oxidation. The distribution system amplifies the problem in areas with high water age."
+  },
+  {
+    id: 591,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "medium",
+    question: "What is the purpose of a district metered area (DMA) in a water distribution system?",
+    options: [
+      "To separate different pressure zones",
+      "To isolate a defined area of the distribution system for water balance and leakage monitoring",
+      "To meter individual customer connections",
+      "To create separate chlorination zones"
+    ],
+    correct: 1,
+    explanation: "A District Metered Area (DMA) is a defined section of the distribution system, typically bounded by closed isolation valves, with all inflows and outflows metered. DMAs are used for: (1) Leakage monitoring — comparing metered supply to metered consumption identifies real losses (leakage); (2) Minimum Night Flow (MNF) analysis — the minimum flow at night (typically 2-4 AM) when customer demand is lowest represents background leakage; (3) Pressure management — DMAs allow targeted pressure reduction to minimize leakage; (4) Water quality monitoring — smaller, defined areas make it easier to track water age and residuals."
+  },
+  {
+    id: 592,
+    module: "Water Distribution",
+    topic: "Regulatory",
+    difficulty: "hard",
+    question: "Under Ontario regulations, what is the maximum time allowed between the collection of a distribution system bacteriological sample and its analysis in a laboratory?",
+    options: [
+      "6 hours",
+      "30 hours",
+      "24 hours",
+      "48 hours"
+    ],
+    correct: 1,
+    explanation: "Under O. Reg. 170/03 and Ontario's Drinking Water Testing Regulation (O. Reg. 248/03), distribution system bacteriological samples must be analyzed within 30 hours of collection. Samples must be: collected in sterile bottles with sodium thiosulfate (to neutralize chlorine residual), kept at 4-10°C during transport, and delivered to an accredited laboratory within the time limit. Samples held beyond 30 hours are invalid and must be discarded. This time limit ensures that bacterial counts reflect conditions at the time of collection, not growth during transport."
+  },
+  {
+    id: 593,
+    module: "Water Distribution",
+    topic: "Pumping",
+    difficulty: "hard",
+    question: "A booster pump station is experiencing cavitation. What are the signs of cavitation and what corrective actions should be taken?",
+    options: [
+      "Signs: high discharge pressure; corrective action: reduce pump speed",
+      "Signs: noise (crackling/grinding), vibration, reduced flow, pitted impellers; corrective actions: increase suction pressure, reduce pump speed, or lower water temperature",
+      "Signs: low discharge pressure; corrective action: increase pump speed",
+      "Signs: high motor current; corrective action: replace the motor"
+    ],
+    correct: 1,
+    explanation: "Cavitation occurs when NPSHa < NPSHr, causing water to vaporize at the pump suction. Signs: crackling/grinding noise (vapour bubble implosion), vibration, reduced flow and head, pitted/eroded impellers, and elevated motor current. Corrective actions: (1) Increase NPSHa — raise suction water level, reduce suction pipe friction losses, lower pump elevation; (2) Reduce NPSHr — reduce pump speed (variable frequency drive), select a pump with lower NPSHr; (3) Lower water temperature (if possible); (4) Inspect and repair impellers if pitting has occurred. Continued operation with cavitation will destroy the impeller."
+  },
+  {
+    id: 594,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "medium",
+    question: "What is the purpose of a chlorine residual monitoring program in the distribution system?",
+    options: [
+      "To ensure chlorine levels are high enough to kill all bacteria instantly",
+      "To verify that a disinfectant residual is maintained throughout the system to prevent microbial regrowth and provide a barrier against contamination",
+      "To measure the amount of chlorine added at the treatment plant",
+      "To detect cross-connections in the distribution system"
+    ],
+    correct: 1,
+    explanation: "Chlorine residual monitoring verifies that a disinfectant residual is maintained throughout the distribution system. The residual serves as: (1) A barrier against microbial regrowth — chlorine inhibits bacteria from multiplying in the distribution system; (2) An indicator of system integrity — loss of residual may indicate contamination, high demand, or treatment failure; (3) A measure of water quality — declining residuals indicate increasing water age or organic matter. Monitoring must be done at representative points throughout the system, including dead ends and areas with high water age."
+  },
+  {
+    id: 595,
+    module: "Water Distribution",
+    topic: "Pipe Materials",
+    difficulty: "hard",
+    question: "What is the purpose of a polyethylene encasement on ductile iron pipe, and when is it required?",
+    options: [
+      "To prevent internal corrosion from chlorinated water",
+      "To protect against external corrosion in aggressive soils by providing a physical barrier between the pipe and the soil",
+      "To increase the pipe's pressure rating",
+      "To improve the pipe's hydraulic capacity"
+    ],
+    correct: 1,
+    explanation: "Polyethylene encasement (PE wrap) is applied to the exterior of ductile iron pipe to protect against external corrosion in aggressive soils. It is required when soil conditions indicate high corrosivity: low soil resistivity (<1,500 ohm-cm), high chloride or sulfate content, acidic pH, or presence of stray electrical currents. PE encasement provides a physical barrier between the pipe and corrosive soil, preventing direct contact. It is specified in ANSI/AWWA C105 and is a cost-effective alternative to cathodic protection for moderate corrosion risk. It does not protect against internal corrosion."
+  },
+  {
+    id: 596,
+    module: "Water Distribution",
+    topic: "Emergency Response",
+    difficulty: "hard",
+    question: "A Class 3 operator is managing a Boil Water Advisory (BWA). What criteria must be met before the BWA can be lifted?",
+    options: [
+      "The main break must be repaired and chlorine residual restored",
+      "Two consecutive satisfactory bacteriological samples (E. coli = 0, total coliforms = 0) collected at least 24 hours apart, plus restoration of adequate chlorine residual and system pressure",
+      "One satisfactory bacteriological sample and approval from the treatment plant operator",
+      "The MOH must conduct an inspection of the treatment plant"
+    ],
+    correct: 1,
+    explanation: "To lift a Boil Water Advisory (BWA) in Ontario, the following criteria must typically be met: (1) The cause of the adverse condition has been identified and corrected; (2) Adequate chlorine residual has been restored throughout the affected area; (3) Normal system pressure has been restored; (4) Two consecutive satisfactory bacteriological samples (E. coli = 0, total coliforms = 0) have been collected at least 24 hours apart from representative points in the affected area; (5) The Medical Officer of Health (MOH) has reviewed the results and issued a notice lifting the BWA. The MOH has final authority to issue and lift BWAs."
+  },
+  {
+    id: 597,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "hard",
+    question: "What is the purpose of a variable frequency drive (VFD) on a distribution system pump?",
+    options: [
+      "To protect the pump from power surges",
+      "To vary the pump speed to match system demand, reducing energy consumption and water hammer",
+      "To increase the pump's maximum pressure output",
+      "To allow the pump to operate in reverse for system flushing"
+    ],
+    correct: 1,
+    explanation: "A Variable Frequency Drive (VFD) controls pump speed by varying the frequency of the electrical supply to the motor. Benefits: (1) Energy savings — pump power is proportional to speed³ (affinity laws), so reducing speed by 20% reduces power by ~50%; (2) Reduced water hammer — gradual speed changes prevent pressure surges from rapid start/stop; (3) Pressure management — pump speed can be modulated to maintain constant system pressure regardless of demand; (4) Extended equipment life — soft start/stop reduces mechanical stress. VFDs are standard equipment for modern booster pump stations."
+  },
+  {
+    id: 598,
+    module: "Water Distribution",
+    topic: "Regulatory",
+    difficulty: "hard",
+    question: "What is the purpose of the Municipal Drinking Water Licensing Program (MDWLP) in Ontario?",
+    options: [
+      "To license individual operators to work on water systems",
+      "To require municipal drinking water systems to obtain a licence demonstrating they have a DWQMS in place and meet all regulatory requirements",
+      "To license private water systems",
+      "To license water treatment chemical suppliers"
+    ],
+    correct: 1,
+    explanation: "The Municipal Drinking Water Licensing Program (MDWLP) requires municipalities operating drinking water systems to obtain a licence from the Ministry of the Environment. To obtain and maintain a licence, the municipality must: (1) Have an approved Operational Plan (DWQMS); (2) Achieve and maintain DWQMS accreditation through third-party audits; (3) Comply with all applicable regulations; (4) Have a Financial Plan demonstrating the ability to fund long-term infrastructure renewal. The licence is renewed every 5 years. Loss of accreditation can result in licence suspension or revocation."
+  },
+  {
+    id: 599,
+    module: "Water Distribution",
+    topic: "Water Quality",
+    difficulty: "hard",
+    question: "What is the purpose of a distribution system water quality surveillance program beyond the minimum regulatory requirements?",
+    options: [
+      "To generate data for annual reports only",
+      "To proactively identify emerging water quality issues, optimize operations, and provide early warning of contamination events before they become public health emergencies",
+      "To satisfy insurance requirements",
+      "To demonstrate compliance to customers"
+    ],
+    correct: 1,
+    explanation: "A comprehensive water quality surveillance program goes beyond minimum regulatory sampling to: (1) Identify trends in water quality parameters (residuals, HPC, turbidity, pH) that indicate emerging problems; (2) Optimize operations (chlorine dosing, flushing schedules, storage operations) based on real-time data; (3) Provide early warning of contamination events through online monitoring (continuous turbidity, chlorine, TOC analyzers); (4) Support hydraulic model calibration; (5) Identify areas of the system that need infrastructure investment; (6) Demonstrate due diligence in protecting public health. Online monitoring with alarms is increasingly replacing manual sampling for critical parameters."
+  },
+  {
+    id: 600,
+    module: "Water Distribution",
+    topic: "Hydraulics",
+    difficulty: "hard",
+    question: "A Class 3 operator is reviewing a hydraulic model of the distribution system. The model shows that during peak demand, pressures in one area drop to 180 kPa. What is the significance of this finding and what options are available to correct it?",
+    options: [
+      "180 kPa is acceptable — no action needed",
+      "180 kPa is below the minimum 275 kPa — options include upsizing mains, adding a booster pump station, or adding a new storage tank in the low-pressure area",
+      "180 kPa is too high — pressure needs to be reduced",
+      "180 kPa only needs to be corrected during fire flow events"
+    ],
+    correct: 1,
+    explanation: "A residual pressure of 180 kPa during peak demand is below the minimum service pressure of 275 kPa (40 psi) required under Ontario regulations. This indicates a hydraulic deficiency. Options to correct: (1) Upsize undersized mains — increases hydraulic capacity and reduces head loss; (2) Add a booster pump station — increases pressure in the deficient area; (3) Add a new storage tank — provides local storage to supplement supply during peak demand; (4) Loop dead-end mains — improves flow distribution; (5) Pressure zone reconfiguration — adjust zone boundaries to better match topography. The hydraulic model can be used to evaluate each option before capital investment."
+  },
+  {
+    id: 601,
+    module: "Water Distribution",
+    topic: "Regulatory",
+    difficulty: "medium",
+    question: "What is the required minimum pressure that must be maintained in the distribution system under normal operating conditions in Ontario?",
+    options: [
+      "140 kPa (20 psi)",
+      "275 kPa (40 psi)",
+      "415 kPa (60 psi)",
+      "690 kPa (100 psi)"
+    ],
+    correct: 1,
+    explanation: "Under Ontario regulations, the minimum service pressure in the distribution system under normal operating conditions is 275 kPa (40 psi). During fire flow events, the minimum residual pressure at the test hydrant is 140 kPa (20 psi). The maximum pressure is typically 690 kPa (100 psi) to protect customer plumbing. Pressures below 275 kPa can cause: inadequate flow to upper floors of buildings, inability to operate appliances, and increased risk of contamination from negative pressure events."
+  },
+  {
+    id: 602,
+    module: "Water Distribution",
+    topic: "Corrosion Control",
+    difficulty: "hard",
+    question: "A distribution system operator is evaluating the effectiveness of the corrosion control program. What key performance indicators (KPIs) should be monitored?",
+    options: [
+      "Only chlorine residual and pH",
+      "90th percentile lead results, pH, alkalinity, LSI, orthophosphate residual, pipe break frequency, and consumer complaints about discoloured water",
+      "Only pipe break frequency",
+      "Only consumer complaints"
+    ],
+    correct: 1,
+    explanation: "A comprehensive corrosion control program should monitor: (1) 90th percentile lead results — primary indicator of lead leaching from LSLs and solder; (2) pH and alkalinity — key drivers of corrosivity; (3) LSI — overall corrosivity indicator; (4) Orthophosphate residual — verifies inhibitor is reaching all parts of the system; (5) Pipe break frequency and locations — indicates areas of external corrosion or aging infrastructure; (6) Consumer complaints about discoloured water (red, brown, black) — indicates internal corrosion releasing iron or manganese; (7) HPC — indicates biofilm growth related to corrosion. Regular review of all KPIs allows proactive adjustment of the corrosion control strategy."
+  },
+  {
+    id: 603,
+    module: "Water Distribution",
+    topic: "Emergency Response",
+    difficulty: "hard",
+    question: "A Class 3 operator discovers that a contractor has connected a fire hydrant to a concrete mixing truck without a backflow prevention device. The truck has been drawing water for 2 hours. What actions are required?",
+    options: [
+      "Disconnect the truck and continue normal operations",
+      "Disconnect the truck, isolate the affected area, issue a Boil Water Advisory, notify MOH and MECP, collect bacteriological samples, and investigate for contamination",
+      "Increase chlorine dose at the treatment plant",
+      "Flush the affected hydrant and collect one water sample"
+    ],
+    correct: 1,
+    explanation: "An unprotected connection to a concrete mixing truck is a high-hazard cross-connection event. Concrete mixing water may contain: cement (high pH), aggregates, and potentially contaminated water. Required actions: (1) Immediately disconnect the truck and secure the hydrant; (2) Isolate the potentially affected section of the distribution system; (3) Issue a Boil Water Advisory for the affected area — there is a presumptive risk of contamination; (4) Notify MOH and MECP within 1 hour; (5) Investigate the extent of potential contamination; (6) Collect bacteriological and chemical samples; (7) Flush and disinfect the affected section; (8) Lift BWA after 2 consecutive satisfactory samples. Document the incident and take enforcement action against the contractor."
+  },
 ];
 
 export const MODULES = [
@@ -8481,6 +9252,7 @@ export const MODULES = [
   'Equipment O&M',
   'Source Water Characteristics',
   'Security, Safety & Admin',
+  'Water Distribution',
 ];
 
 export function getNextQuestion(

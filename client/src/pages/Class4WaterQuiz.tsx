@@ -16,11 +16,28 @@ type HistoryEntry = {
   questionObj?: any;
 };
 
+// ─── Module Config (icons + colours) ────────────────────────────────────────
+const MODULE_CONFIG = [
+  { name: "Treatment Process",               icon: "🏭", bg: "#DBEAFE", color: "#1D4ED8" },
+  { name: "Equipment O&M",                   icon: "⚙️", bg: "#FFEDD5", color: "#C2410C" },
+  { name: "Hydraulics",                      icon: "💧", bg: "#DCFCE7", color: "#15803D" },
+  { name: "Regulations & Management",        icon: "📜", bg: "#EDE9FE", color: "#6D28D9" },
+  { name: "Water Quality",                   icon: "🔬", bg: "#FEF9C3", color: "#A16207" },
+  { name: "Math & Calculations",             icon: "🧮", bg: "#FEE2E2", color: "#B91C1C" },
+  { name: "Source Water Protection",         icon: "🌿", bg: "#CCFBF1", color: "#0F766E" },
+  { name: "Plant Management",                icon: "🏢", bg: "#F3E8FF", color: "#7C3AED" },
+  { name: "Emergency Response",              icon: "🚨", bg: "#FEE2E2", color: "#DC2626" },
+  { name: "Advanced Treatment",              icon: "⚡", bg: "#E0F2FE", color: "#0284C7" },
+  { name: "Lab Analysis",                    icon: "🧪", bg: "#FEF9C3", color: "#CA8A04" },
+  { name: "Safety",                          icon: "🛡️", bg: "#FEE2E2", color: "#B91C1C" },
+  { name: "Water Distribution",              icon: "🚰", bg: "#E0F2FE", color: "#0284C7" },
+];
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function Class4WaterQuiz() {
   const allQuestions = CLASS4_WATER_QUESTIONS as any[];
-  const modules = CLASS4_WATER_MODULES;
+  const modules = MODULE_CONFIG;
 
   const SESSION_SIZE = 15;
   const [trialDone, setTrialDone]   = useState(false);
