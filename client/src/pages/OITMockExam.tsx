@@ -429,7 +429,13 @@ export default function OITMockExam() {
         </div>
       </div>
 
-      <div style={{ maxWidth: 800, margin: "0 auto", padding: "24px 20px 80px", display: "grid", gridTemplateColumns: "1fr 240px", gap: 20, alignItems: "start" }}>
+      <style>{`
+        @media (max-width: 640px) {
+          .oit-active-grid { grid-template-columns: 1fr !important; }
+          .oit-sidebar { display: none !important; }
+        }
+      `}</style>
+      <div className="oit-active-grid" style={{ maxWidth: 800, margin: "0 auto", padding: "24px 20px 80px", display: "grid", gridTemplateColumns: "1fr 240px", gap: 20, alignItems: "start" }}>
         {/* Question card */}
         <div>
           <div style={{ background: "#fff", borderRadius: 16, padding: "28px 28px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", marginBottom: 16 }}>
@@ -510,7 +516,7 @@ export default function OITMockExam() {
         </div>
 
         {/* Question navigator */}
-        <div style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
+        <div className="oit-sidebar" style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 4 }}>
             {questions.map((_, i) => {

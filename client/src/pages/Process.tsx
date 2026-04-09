@@ -101,11 +101,16 @@ export default function Process() {
         .step-btn-hover { transition: all 0.2s; }
         .step-btn-hover:hover { transform: translateY(-3px); }
         @media (max-width: 640px) {
-          .process-main { padding: 16px 14px 60px !important; }
+          .process-main { padding: 12px 12px 60px !important; }
           .process-step-grid { grid-template-columns: 1fr !important; }
           .process-overview-row { grid-template-columns: 48px 1fr !important; }
           .process-overview-row .overview-right-cols { display: none !important; }
-          .process-view-toggles { padding: 10px 14px !important; }
+          .process-view-toggles { padding: 8px 12px !important; flex-wrap: wrap !important; gap: 6px !important; }
+          .process-view-toggles .stream-switcher { width: 100% !important; justify-content: center !important; margin-right: 0 !important; }
+          .process-view-toggles .view-divider { display: none !important; }
+          .process-view-toggles .view-btn { flex: 1 !important; text-align: center !important; min-height: 36px !important; }
+          .process-flow-map-card { padding: 14px 12px !important; }
+          .process-flow-map-label { font-size: 9px !important; }
         }
       `}</style>
 
@@ -114,13 +119,13 @@ export default function Process() {
       {/* ── VIEW TOGGLES ── */}
       <div className="process-view-toggles" style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
         {/* Stream switcher */}
-        <div style={{ display: "flex", gap: 4, marginRight: 12, background: "#F1F5F9", borderRadius: 10, padding: 3 }}>
+        <div className="stream-switcher" style={{ display: "flex", gap: 4, marginRight: 12, background: "#F1F5F9", borderRadius: 10, padding: 3 }}>
           <span style={{ padding: "6px 14px", borderRadius: 8, background: "#1D4ED8", color: "#fff", fontSize: 11, fontWeight: 700, cursor: "default" }}>💧 Drinking Water</span>
           <Link href="/wastewater" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>♻️ Wastewater</Link>
         </div>
-        <div style={{ width: 1, height: 22, background: "#E5E7EB", marginRight: 6 }} />
+        <div className="view-divider" style={{ width: 1, height: 22, background: "#E5E7EB", marginRight: 6 }} />
         {([['learn', '🔬 Step Explorer'], ['overview', '📋 Full Overview']] as const).map(([v, l]) => (
-          <button key={v} onClick={() => setView(v)} style={{
+          <button key={v} className="view-btn" onClick={() => setView(v)} style={{
             padding: "7px 16px", borderRadius: 8,
             border: `1px solid ${view === v ? "#1D4ED8" : "#E5E7EB"}`,
             background: view === v ? "#EFF6FF" : "transparent",
@@ -135,11 +140,11 @@ export default function Process() {
       <div className="process-main" style={{ padding: "24px 28px 60px", maxWidth: 1200, margin: "0 auto" }}>
 
         {/* Flow map */}
-        <div style={{
+        <div className="process-flow-map-card" style={{
           background: "#fff", borderRadius: 16, padding: "20px", marginBottom: 20,
           boxShadow: "0 2px 12px rgba(0,0,0,0.05)", border: "1px solid #E5E7EB",
         }}>
-          <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 14 }}>
+          <div className="process-flow-map-label" style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 14 }}>
             DRINKING WATER TREATMENT PROCESS — CLICK ANY STEP TO EXPLORE
           </div>
           <FlowMap active={activeStep} onSelect={handleStepSelect} />

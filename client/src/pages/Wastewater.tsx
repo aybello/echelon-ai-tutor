@@ -99,9 +99,16 @@ export default function Wastewater() {
         @keyframes ping    { 0%{r:8;opacity:0.8} 100%{r:18;opacity:0} }
         @keyframes fadeUp  { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
         @media (max-width: 640px) {
-          .ww-main { padding: 16px 14px 60px !important; }
+          .ww-main { padding: 12px 12px 60px !important; }
           .ww-step-grid { grid-template-columns: 1fr !important; }
-          .ww-view-toggles { padding: 10px 14px !important; }
+          .ww-overview-row { grid-template-columns: 48px 1fr !important; }
+          .ww-overview-row .overview-right-cols { display: none !important; }
+          .ww-view-toggles { padding: 8px 12px !important; flex-wrap: wrap !important; gap: 6px !important; }
+          .ww-view-toggles .stream-switcher { width: 100% !important; justify-content: center !important; margin-right: 0 !important; }
+          .ww-view-toggles .view-divider { display: none !important; }
+          .ww-view-toggles .view-btn { flex: 1 !important; text-align: center !important; min-height: 36px !important; }
+          .ww-flow-map-card { padding: 14px 12px !important; }
+          .ww-flow-map-label { font-size: 9px !important; }
         }
       `}</style>
 
@@ -110,13 +117,13 @@ export default function Wastewater() {
       {/* ── VIEW TOGGLES ── */}
       <div className="ww-view-toggles" style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "10px 28px", display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
         {/* Stream switcher */}
-        <div style={{ display: "flex", gap: 4, marginRight: 12, background: "#F1F5F9", borderRadius: 10, padding: 3 }}>
+        <div className="stream-switcher" style={{ display: "flex", gap: 4, marginRight: 12, background: "#F1F5F9", borderRadius: 10, padding: 3 }}>
           <Link href="/process" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>💧 Drinking Water</Link>
           <span style={{ padding: "6px 14px", borderRadius: 8, background: "#7C3AED", color: "#fff", fontSize: 11, fontWeight: 700, cursor: "default" }}>♻️ Wastewater</span>
         </div>
-        <div style={{ width: 1, height: 22, background: "#E5E7EB", marginRight: 6 }} />
+        <div className="view-divider" style={{ width: 1, height: 22, background: "#E5E7EB", marginRight: 6 }} />
         {([['learn', '🔬 Step Explorer'], ['overview', '📋 Full Overview']] as const).map(([v, l]) => (
-          <button key={v} onClick={() => setView(v)} style={{
+          <button key={v} className="view-btn" onClick={() => setView(v)} style={{
             padding: "7px 16px", borderRadius: 8,
             border: `1px solid ${view === v ? "#7C3AED" : "#E5E7EB"}`,
             background: view === v ? "#F5F3FF" : "transparent",
@@ -131,11 +138,11 @@ export default function Wastewater() {
       <div className="ww-main" style={{ padding: "24px 28px 60px", maxWidth: 1200, margin: "0 auto" }}>
 
         {/* Flow map */}
-        <div style={{
+        <div className="ww-flow-map-card" style={{
           background: "#fff", borderRadius: 16, padding: "20px", marginBottom: 20,
           boxShadow: "0 2px 12px rgba(0,0,0,0.05)", border: "1px solid #E5E7EB",
         }}>
-          <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 14 }}>
+          <div className="ww-flow-map-label" style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 14 }}>
             WASTEWATER TREATMENT PROCESS — CLICK ANY STEP TO EXPLORE
           </div>
           <FlowMap active={activeStep} onSelect={handleStepSelect} />
