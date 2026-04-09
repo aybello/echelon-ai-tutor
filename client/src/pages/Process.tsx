@@ -116,7 +116,7 @@ export default function Process() {
         {/* Stream switcher */}
         <div style={{ display: "flex", gap: 4, marginRight: 12, background: "#F1F5F9", borderRadius: 10, padding: 3 }}>
           <span style={{ padding: "6px 14px", borderRadius: 8, background: "#1D4ED8", color: "#fff", fontSize: 11, fontWeight: 700, cursor: "default" }}>💧 Drinking Water</span>
-          <a href="/wastewater" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>♻️ Wastewater</a>
+          <Link href="/wastewater" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>♻️ Wastewater</Link>
         </div>
         <div style={{ width: 1, height: 22, background: "#E5E7EB", marginRight: 6 }} />
         {([['learn', '🔬 Step Explorer'], ['overview', '📋 Full Overview']] as const).map(([v, l]) => (
