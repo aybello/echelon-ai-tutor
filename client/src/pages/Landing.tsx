@@ -1275,9 +1275,9 @@ export default function Landing() {
       </section>
 
       {/* ── Wave Divider ── */}
-      <div style={{ lineHeight: 0, marginTop: -2, position: "relative", zIndex: 1 }}>
+      <div style={{ lineHeight: 0, marginTop: -1, position: "relative", zIndex: 1 }}>
         <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ display: "block", width: "100%", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)" }}>
-          <path d="M0,60 C360,20 1080,40 1440,60 L1440,0 L0,0 Z" fill="#FFFFFF" />
+          <path d="M0,60 L1440,60 L1440,30 C1080,0 360,60 0,30 Z" fill="#FFFFFF" />
         </svg>
       </div>
 
