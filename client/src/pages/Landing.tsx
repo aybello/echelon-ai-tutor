@@ -1292,7 +1292,7 @@ export default function Landing() {
       <section style={{
         background: "#F1F5F9",
         borderBottom: "1px solid #E2E8F0",
-        padding: "28px 24px",
+        padding: "16px 24px",
       }}>
         <div
           className="landing-stats-grid"
@@ -1324,7 +1324,7 @@ export default function Landing() {
 
       {/* ── What's New Banner ── */}
       <SlideLeft delay={0.1}>
-      <div style={{ padding: "32px 24px 0", maxWidth: 1200, margin: "0 auto" }}>
+      <div style={{ padding: "12px 24px 0", maxWidth: 1200, margin: "0 auto" }}>
         <div
           className="landing-whats-new"
           style={{
