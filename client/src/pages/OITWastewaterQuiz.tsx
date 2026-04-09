@@ -33,6 +33,7 @@ const MODULE_CONFIG = [
   { name: "Disinfection",                                       icon: "🧪", bg: "#FEF9C3", color: "#A16207" },
   { name: "Solids Handling & Biosolids",                        icon: "♻️", bg: "#FFEDD5", color: "#C2410C" },
   { name: "Regulations, Safety & Operations",                   icon: "📋", bg: "#FEE2E2", color: "#B91C1C" },
+  { name: "Wastewater Collection",                               icon: "🔩", bg: "#F0FDF4", color: "#166534" },
 ];
 
 // OIT-WW trial unlock key is separate from OIT Water
