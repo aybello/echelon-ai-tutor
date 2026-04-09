@@ -265,7 +265,7 @@ export function DisinfectionDiagram({ active, onClick, color }: DiagramProps) {
   ];
   const serpentine = "M 75 105 L 168 105 L 168 65 L 255 65 L 255 145 L 340 145 L 340 65 L 425 65 L 425 145 L 510 145 L 510 105 L 555 105";
   return (
-    <svg viewBox="0 0 620 215" width="100%" height="auto">
+    <svg viewBox="0 0 620 230" width="100%" height="auto">
       <rect x={48} y={48} width={520} height={116} rx={8} fill="#FFFBEB" stroke="#D97706" strokeWidth={2} />
       {[168, 255, 340, 425, 510].map((x, i) => (
         <rect key={x} x={x - 4} y={i % 2 === 0 ? 48 : 88} width={8} height={76} rx={2} fill="#374151" opacity={0.7} />
@@ -274,17 +274,20 @@ export function DisinfectionDiagram({ active, onClick, color }: DiagramProps) {
       <path d={serpentine} stroke="#0369A1" strokeWidth={2.5} fill="none"
         strokeDasharray="9 5" style={{ animation: "flow 1.3s linear infinite" }} />
       <rect x={172} y={51} width={340} height={110} rx={4} fill="#FCD34D" opacity={0.08} />
-      <circle cx={160} cy={173} r={16} fill="#7C3AED" opacity={0.9} />
-      <text x={160} y={178} textAnchor="middle" fontSize={11} fill="white" fontWeight="800">Cl₂</text>
-      <line x1={160} y1={157} x2={160} y2={118} stroke="#7C3AED" strokeWidth={2} strokeDasharray="4 2" />
-      <rect x={395} y={172} width={78} height={30} rx={6} fill="#059669" opacity={0.9} />
-      <text x={434} y={182} textAnchor="middle" fontSize={7} fill="white" fontWeight="700">FREE Cl₂</text>
-      <text x={434} y={195} textAnchor="middle" fontSize={11} fill="#86EFAC" fontWeight="800" fontFamily="monospace">0.52 mg/L</text>
-      <line x1={434} y1={172} x2={434} y2={148} stroke="#059669" strokeWidth={2} strokeDasharray="3 2" />
+      {/* Cl₂ injector — below orange rect */}
+      <circle cx={160} cy={185} r={16} fill="#7C3AED" opacity={0.9} />
+      <text x={160} y={190} textAnchor="middle" fontSize={11} fill="white" fontWeight="800">Cl₂</text>
+      <line x1={160} y1={169} x2={160} y2={118} stroke="#7C3AED" strokeWidth={2} strokeDasharray="4 2" />
+      {/* Residual monitor display — shifted right of label dot */}
+      <rect x={460} y={172} width={80} height={30} rx={6} fill="#059669" opacity={0.9} />
+      <text x={500} y={182} textAnchor="middle" fontSize={7} fill="white" fontWeight="700">FREE Cl₂</text>
+      <text x={500} y={195} textAnchor="middle" fontSize={11} fill="#86EFAC" fontWeight="800" fontFamily="monospace">0.52 mg/L</text>
+      <line x1={490} y1={172} x2={480} y2={148} stroke="#059669" strokeWidth={2} strokeDasharray="3 2" />
       <path d="M 20 105 L 50 105" stroke="#0369A1" strokeWidth={3} />
       <polygon points="47,100 59,105 47,110" fill="#0369A1" />
       <path d="M 570 105 L 595 105" stroke="#059669" strokeWidth={3} />
       <polygon points="591,100 603,105 591,110" fill="#059669" />
+      {/* Label dots rendered last so they sit on top of everything */}
       {labels.map(l => <LabelDot key={l.id} {...l} active={active} color={color} onClick={onClick} />)}
     </svg>
   );
