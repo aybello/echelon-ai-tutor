@@ -5,7 +5,7 @@
  * Usage:
  *   <SiteNav currentPath="/quiz" />
  */
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import type { ReactNode } from "react";
 import { Link } from "wouter";
 
@@ -80,6 +80,84 @@ export const NAV_LINKS = [
   { label: "🎫 My Passes",      href: "/account" },
 ];
 
+// Grouped sections for the mobile drawer
+const DRAWER_SECTIONS = [
+  {
+    key: "oit",
+    label: "OIT — Operator in Training",
+    color: "#60A5FA",
+    links: [
+      { label: "Practice Questions", href: "/quiz" },
+      { label: "Mock Exam", href: "/oit-mock" },
+      { label: "Formulas", href: "/formulas" },
+    ],
+  },
+  {
+    key: "ontario-water",
+    label: "Ontario Water",
+    color: "#34D399",
+    links: [
+      { label: "Class 1 Practice", href: "/class1-water" },
+      { label: "Class 1 Mock", href: "/class1-water-mock" },
+      { label: "Class 2 Practice", href: "/class2-water" },
+      { label: "Class 2 Mock", href: "/class2-water-mock" },
+      { label: "Class 3 Practice", href: "/class3-water" },
+      { label: "Class 3 Mock", href: "/class3-water-mock" },
+      { label: "Class 4 Practice", href: "/class4-water" },
+      { label: "Class 4 Mock", href: "/class4-water-mock" },
+    ],
+  },
+  {
+    key: "ontario-ww",
+    label: "Ontario Wastewater",
+    color: "#A78BFA",
+    links: [
+      { label: "Class 1 Practice", href: "/class1-ww" },
+      { label: "Class 1 Mock", href: "/class1-ww-mock" },
+      { label: "Class 2 Practice", href: "/class2-ww" },
+      { label: "Class 2 Mock", href: "/class2-ww-mock" },
+      { label: "Class 3 Practice", href: "/class3-ww" },
+      { label: "Class 3 Mock", href: "/class3-ww-mock" },
+      { label: "Class 4 Practice", href: "/class4-ww" },
+      { label: "Class 4 Mock", href: "/class4-ww-mock" },
+    ],
+  },
+  {
+    key: "wpi",
+    label: "WPI — BC / AB / SK / MB",
+    color: "#38BDF8",
+    links: [
+      { label: "WPI Overview", href: "/wpi" },
+      { label: "C1 Water Practice", href: "/wpi-class1-water" },
+      { label: "C2 Water Practice", href: "/wpi-class2-water" },
+      { label: "C1 WW Practice", href: "/wpi-class1-wastewater" },
+      { label: "C2 WW Practice", href: "/wpi-class2-wastewater" },
+    ],
+  },
+  {
+    key: "wqa",
+    label: "WQA — Water Quality Analyst",
+    color: "#FCD34D",
+    links: [
+      { label: "Practice Questions", href: "/wqa" },
+      { label: "Mock Exam", href: "/wqa-mock" },
+      { label: "Formulas", href: "/formulas-wqa" },
+    ],
+  },
+  {
+    key: "guides",
+    label: "Study Guides & Tools",
+    color: "#FB923C",
+    links: [
+      { label: "💧 Process Guide", href: "/process" },
+      { label: "♻️ Wastewater Guide", href: "/wastewater" },
+      { label: "📐 Formulas", href: "/formulas" },
+      { label: "🗺️ Career Map", href: "/career" },
+      { label: "🎫 My Passes", href: "/account" },
+    ],
+  },
+];
+
 interface SiteNavProps {
   currentPath: string;
   /** Override the brand name shown (defaults to "Echelon Institute") */
@@ -129,15 +207,26 @@ function getContextualPrimary(currentPath: string): string[] {
 
 export default function SiteNav({ currentPath, brandName = "Echelon Institute", rightSlot }: SiteNavProps) {
   const [open, setOpen] = useState(false);
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   // Contextual primary links based on current page
   const PRIMARY = getContextualPrimary(currentPath);
+
+  // Auto-expand the section that contains the current path
+  const activeSection = DRAWER_SECTIONS.find(s => s.links.some(l => l.href === currentPath))?.key ?? null;
+
+  const toggleSection = (key: string) => {
+    setExpandedSection(prev => prev === key ? null : key);
+  };
 
   return (
     <>
       <style>{`
         @media (max-width: 640px) {
           .site-nav-desktop { display: none !important; }
+        }
+        .drawer-section-link:hover {
+          background: rgba(255,255,255,0.06) !important;
         }
       `}</style>
       <nav style={{
@@ -218,7 +307,6 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
         <button
           onClick={() => setOpen(o => !o)}
           aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
           style={{
             background: "transparent",
             border: "1px solid rgba(255,255,255,0.15)",
@@ -238,125 +326,194 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
         </button>
       </nav>
 
-      {/* Drawer overlay */}
+      {/* Full-screen backdrop */}
       {open && (
         <div
           onClick={() => setOpen(false)}
           style={{
             position: "fixed",
             inset: 0,
-            background: "rgba(0,0,0,0.5)",
+            background: "rgba(0,0,0,0.6)",
             zIndex: 198,
           }}
         />
       )}
 
-      {/* Drawer panel */}
+      {/* Full-width drawer panel */}
       <div style={{
         position: "fixed",
         top: 56,
+        left: 0,
         right: 0,
-        width: 260,
         bottom: 0,
         background: "#0F172A",
-        borderLeft: "1px solid rgba(255,255,255,0.1)",
         zIndex: 199,
-        transform: open ? "translateX(0)" : "translateX(100%)",
-        transition: "transform 0.25s cubic-bezier(0.4,0,0.2,1)",
+        transform: open ? "translateY(0)" : "translateY(-100%)",
+        transition: "transform 0.28s cubic-bezier(0.4,0,0.2,1)",
         overflowY: "auto",
-        padding: "16px 0 32px",
+        display: "flex",
+        flexDirection: "column",
       }}>
-        {/* Drawer brand header */}
+        {/* Quick actions row */}
         <div style={{
-          padding: "12px 20px 16px",
-          borderBottom: "1px solid rgba(255,255,255,0.08)",
-          marginBottom: 8,
-          display: "flex",
-          alignItems: "center",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
           gap: 10,
+          padding: "16px 16px 12px",
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
         }}>
-          <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png"
-            alt="Echelon Institute logo"
-            style={{ height: 36, width: "auto", filter: "brightness(0) invert(1)" }}
-          />
-          <div>
-            <div style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 15, color: "#FFFFFF", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
-              {brandName}
+          <Link href="/quiz">
+            <div onClick={() => setOpen(false)} style={{
+              padding: "14px 12px",
+              borderRadius: 12,
+              background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
+              color: "#fff",
+              fontSize: 13,
+              fontWeight: 700,
+              textAlign: "center",
+              cursor: "pointer",
+            }}>
+              📝 OIT Practice
             </div>
-            <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>
-              Canadian Water &amp; Wastewater
+          </Link>
+          <Link href="/process">
+            <div onClick={() => setOpen(false)} style={{
+              padding: "14px 12px",
+              borderRadius: 12,
+              background: "rgba(255,255,255,0.07)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              color: "#fff",
+              fontSize: 13,
+              fontWeight: 600,
+              textAlign: "center",
+              cursor: "pointer",
+            }}>
+              🏭 Process Guide
             </div>
-          </div>
+          </Link>
+          <Link href="/formulas">
+            <div onClick={() => setOpen(false)} style={{
+              padding: "14px 12px",
+              borderRadius: 12,
+              background: "rgba(255,255,255,0.07)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              color: "#fff",
+              fontSize: 13,
+              fontWeight: 600,
+              textAlign: "center",
+              cursor: "pointer",
+            }}>
+              📐 Formulas
+            </div>
+          </Link>
+          <Link href="/career">
+            <div onClick={() => setOpen(false)} style={{
+              padding: "14px 12px",
+              borderRadius: 12,
+              background: "rgba(255,255,255,0.07)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              color: "#fff",
+              fontSize: 13,
+              fontWeight: 600,
+              textAlign: "center",
+              cursor: "pointer",
+            }}>
+              🗺️ Career Map
+            </div>
+          </Link>
         </div>
 
-        {NAV_LINKS.map((l, i) => {
-          // Insert WPI section header before the first WPI link
-          const isWpiStart = l.href === "/wpi-class1-water";
-          return (
-            <Fragment key={l.href}>
-              {isWpiStart && (
-                <div style={{
-                  padding: "10px 20px 6px",
-                  marginTop: 4,
-                  borderTop: "1px solid rgba(255,255,255,0.08)",
-                  fontSize: 10,
-                  fontWeight: 700,
-                  color: "#38BDF8",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase" as const,
-                }}>
-                  🌊 WPI — BC / AB / SK / MB
-                </div>
-              )}
+        {/* Collapsible sections */}
+        <div style={{ flex: 1, overflowY: "auto", padding: "8px 0 32px" }}>
+          {DRAWER_SECTIONS.map(section => {
+            const isExpanded = expandedSection === section.key || activeSection === section.key;
+            const hasActive = section.links.some(l => l.href === currentPath);
+            return (
+              <div key={section.key}>
+                {/* Section header */}
+                <button
+                  onClick={() => toggleSection(section.key)}
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    padding: "14px 20px",
+                    background: hasActive ? "rgba(255,255,255,0.04)" : "transparent",
+                    border: "none",
+                    borderBottom: "1px solid rgba(255,255,255,0.06)",
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                  }}
+                >
+                  <span style={{
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: hasActive ? section.color : "rgba(255,255,255,0.85)",
+                    letterSpacing: "-0.01em",
+                  }}>
+                    {section.label}
+                  </span>
+                  <span style={{
+                    fontSize: 12,
+                    color: "rgba(255,255,255,0.4)",
+                    transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
+                    transition: "transform 0.2s",
+                    display: "inline-block",
+                  }}>▾</span>
+                </button>
+
+                {/* Section links */}
+                {isExpanded && (
+                  <div style={{ background: "rgba(0,0,0,0.2)" }}>
+                    {section.links.map(link => (
+                      <Link key={link.href} href={link.href}>
+                        <div
+                          className="drawer-section-link"
+                          onClick={() => setOpen(false)}
+                          style={{
+                            padding: "12px 20px 12px 32px",
+                            color: currentPath === link.href ? section.color : "rgba(255,255,255,0.65)",
+                            fontSize: 14,
+                            fontWeight: currentPath === link.href ? 700 : 400,
+                            cursor: "pointer",
+                            borderLeft: currentPath === link.href ? `3px solid ${section.color}` : "3px solid transparent",
+                            background: currentPath === link.href ? "rgba(255,255,255,0.04)" : "transparent",
+                            transition: "background 0.12s",
+                          }}
+                        >
+                          {link.label}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+
+          {/* Account / misc links */}
+          <div style={{ padding: "16px 20px 0", marginTop: 8, borderTop: "1px solid rgba(255,255,255,0.08)", display: "flex", gap: 12, flexWrap: "wrap" }}>
+            {[
+              { label: "🎫 My Passes", href: "/account" },
+              { label: "ℹ️ About", href: "/about" },
+              { label: "💰 Pricing", href: "/pricing" },
+            ].map(l => (
               <Link key={l.href} href={l.href}>
-                <div
+                <span
                   onClick={() => setOpen(false)}
-              style={{
-                padding: "12px 20px",
-                color: currentPath === l.href ? "#60A5FA" : "rgba(255,255,255,0.8)",
-                fontSize: 14,
-                fontWeight: currentPath === l.href ? 700 : 400,
-                cursor: "pointer",
-                background: currentPath === l.href ? "rgba(96,165,250,0.08)" : "transparent",
-                borderLeft: currentPath === l.href ? "3px solid #60A5FA" : "3px solid transparent",
-                transition: "background 0.15s",
-              }}
-              onMouseEnter={e => {
-                if (currentPath !== l.href) (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.05)";
-              }}
-              onMouseLeave={e => {
-                if (currentPath !== l.href) (e.currentTarget as HTMLDivElement).style.background = "transparent";
-              }}
-            >
-              {l.label}
-            </div>
-          </Link>
-            </Fragment>
-          );
-        })}
-
-
-        <div style={{ padding: "16px 20px 0", marginTop: 8, borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-          <Link href="/quiz">
-            <button
-              onClick={() => setOpen(false)}
-              style={{
-                width: "100%",
-                padding: "12px",
-                borderRadius: 10,
-                border: "none",
-                background: "linear-gradient(135deg, #1D4ED8, #0F766E)",
-                color: "#fff",
-                fontSize: 13,
-                fontWeight: 700,
-                cursor: "pointer",
-                fontFamily: "inherit",
-              }}
-            >
-              Start Practising →
-            </button>
-          </Link>
+                  style={{
+                    fontSize: 13,
+                    color: currentPath === l.href ? "#60A5FA" : "rgba(255,255,255,0.5)",
+                    fontWeight: currentPath === l.href ? 700 : 400,
+                    cursor: "pointer",
+                  }}
+                >
+                  {l.label}
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </>
