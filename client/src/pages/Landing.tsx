@@ -1290,7 +1290,7 @@ export default function Landing() {
 
       {/* ── Stats Bar ── */}
       <section style={{
-        background: "#FFFFFF",
+        background: "#F1F5F9",
         borderBottom: "1px solid #E2E8F0",
         padding: "28px 24px",
       }}>
