@@ -884,6 +884,10 @@ export default function Pricing() {
             {[
               { icon: "📚", label: "8,500+ Questions" },
               { icon: "🤖", label: "AI Tutor Chat" },
+              { icon: "📝", label: "Timed Mock Exam" },
+              { icon: "🃏", label: "400+ Flashcards" },
+              { icon: "📖", label: "Module Study Notes" },
+              { icon: "💡", label: "AI Step-by-Step Explanations" },
               { icon: "📊", label: "Score History" },
               { icon: "🎯", label: "Adaptive Difficulty" },
               { icon: "🔁", label: "Unlimited Attempts" },
