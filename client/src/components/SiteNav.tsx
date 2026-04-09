@@ -5,7 +5,7 @@
  * Usage:
  *   <SiteNav currentPath="/quiz" />
  */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import { Link } from "wouter";
 
@@ -208,6 +208,30 @@ function getContextualPrimary(currentPath: string): string[] {
 export default function SiteNav({ currentPath, brandName = "Echelon Institute", rightSlot }: SiteNavProps) {
   const [open, setOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+
+  // Lock body scroll when drawer is open so the page behind doesn't scroll
+  useEffect(() => {
+    if (open) {
+      const scrollY = window.scrollY;
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      if (scrollY) window.scrollTo(0, -parseInt(scrollY || "0", 10));
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+    };
+  }, [open]);
 
   // Contextual primary links based on current page
   const PRIMARY = getContextualPrimary(currentPath);
