@@ -27,12 +27,13 @@ const MODULE_CONFIG = [
   { name: "Wastewater Treatment",     icon: "♻️", bg: "#ECFDF5", color: "#065F46" },
   { name: "Water Quality & Sampling", icon: "🔬", bg: "#FEF9C3", color: "#A16207" },
   { name: "Health & Safety",          icon: "🦺", bg: "#FEE2E2", color: "#B91C1C" },
+  { name: "Water Distribution",         icon: "🚰", bg: "#E0F2FE", color: "#0369A1" },
 ];
 
 export default function Home() {
   usePageMeta({
-    title: "OIT Practice Quiz — 500+ Questions",
-    description: "Practice for the Ontario Operator-in-Training (OIT) exam with 500+ questions across 10 modules. AI Tutor, step-by-step solutions, and confidence tracking included.",
+    title: "OIT Practice Quiz — 551+ Questions",
+    description: "Practice for the Ontario Operator-in-Training (OIT) exam with 551+ questions across 11 modules including Water Distribution. AI Tutor, step-by-step solutions, and confidence tracking included.",
     keywords: "water operator exam, OIT exam prep, wastewater certification, operator practice questions",
   });
 
@@ -175,7 +176,7 @@ export default function Home() {
       <QuizShell
         currentPath="/quiz"
         courseLabel="Ontario OIT · Water Treatment"
-        courseTitle="OIT Practice Quiz — 500+ Questions"
+        courseTitle="OIT Practice Quiz — 551+ Questions"
         courseSubtitle="Free · Ontario OIT Exam Prep"
         headerGradient="linear-gradient(135deg, #1D4ED8 0%, #0F766E 100%)"
         headerIcon="💧"
@@ -231,7 +232,7 @@ export default function Home() {
           productName="OIT Practice Pass"
           priceLabel="CA$49"
           paidFeatures={[
-            "Full 500+ question bank — unlimited attempts",
+            "Full 551+ question bank — unlimited attempts",
             "OIT Mock Exam (100 questions, 2-hour timer)",
             "AI Tutor explanations on every question",
             "Score history & module breakdown",
