@@ -70,11 +70,11 @@ const EXAM_TIPS = [
 ];
 
 const colorMap: Record<string, { bg: string; border: string; text: string; badge: string }> = {
-  blue: { bg: "bg-blue-950/40", border: "border-blue-800/50", text: "text-blue-100", badge: "bg-blue-900/60 text-blue-300" },
-  amber: { bg: "bg-amber-950/40", border: "border-amber-800/50", text: "text-amber-100", badge: "bg-amber-900/60 text-amber-300" },
-  emerald: { bg: "bg-emerald-950/40", border: "border-emerald-800/50", text: "text-emerald-100", badge: "bg-emerald-900/60 text-emerald-300" },
-  red: { bg: "bg-red-950/40", border: "border-red-800/50", text: "text-red-100", badge: "bg-red-900/60 text-red-300" },
-  purple: { bg: "bg-purple-950/40", border: "border-purple-800/50", text: "text-purple-100", badge: "bg-purple-900/60 text-purple-300" },
+  blue:    { bg: "bg-blue-50",    border: "border-blue-200",    text: "text-blue-700",    badge: "bg-blue-100 text-blue-700" },
+  amber:   { bg: "bg-amber-50",   border: "border-amber-200",   text: "text-amber-700",   badge: "bg-amber-100 text-amber-700" },
+  emerald: { bg: "bg-emerald-50", border: "border-emerald-200", text: "text-emerald-700", badge: "bg-emerald-100 text-emerald-700" },
+  red:     { bg: "bg-red-50",     border: "border-red-200",     text: "text-red-700",     badge: "bg-red-100 text-red-700" },
+  purple:  { bg: "bg-purple-50",  border: "border-purple-200",  text: "text-purple-700",  badge: "bg-purple-100 text-purple-700" },
 };
 
 export default function PumpingSystems() {
@@ -95,9 +95,9 @@ export default function PumpingSystems() {
   const p2Ratio = (ratio * ratio * ratio).toFixed(2);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen text-slate-900" style={{ background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       {/* ── Header ── */}
-      <header className="bg-slate-900 border-b border-slate-800 sticky top-0 z-40">
+      <header style={{ background: "#fff", borderBottom: "1px solid #E5E7EB" }} className="sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4 flex-wrap">
           <div className="flex items-center gap-3">
             <Link href="/">
@@ -105,27 +105,27 @@ export default function PumpingSystems() {
                 ECHELON
               </span>
             </Link>
-            <span className="text-slate-600 text-lg">/</span>
-            <span className="text-slate-300 font-semibold text-sm">Pumping Systems</span>
+            <span className="text-slate-400 text-lg">/</span>
+            <span className="text-slate-700 font-semibold text-sm">Pumping Systems</span>
           </div>
           <nav className="flex items-center gap-1 flex-wrap">
             <Link href="/">
-              <span className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-xs font-medium transition-colors cursor-pointer">
+              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
                 AI Tutor
               </span>
             </Link>
             <Link href="/process">
-              <span className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-xs font-medium transition-colors cursor-pointer">
+              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
                 Drinking Water
               </span>
             </Link>
             <Link href="/wastewater">
-              <span className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-xs font-medium transition-colors cursor-pointer">
+              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
                 Wastewater
               </span>
             </Link>
             <Link href="/career">
-              <span className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-xs font-medium transition-colors cursor-pointer">
+              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
                 Career Map
               </span>
             </Link>
@@ -133,17 +133,17 @@ export default function PumpingSystems() {
               Pumping
             </span>
             <Link href="/mock-exam">
-              <span className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-xs font-medium transition-colors cursor-pointer">
+              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
                 📝 Mock Exam
               </span>
             </Link>
             <Link href="/chem-calc">
-              <span className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-xs font-medium transition-colors cursor-pointer">
+              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
                 🧪 Chem Calc
               </span>
             </Link>
             <Link href="/lab">
-              <span className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-xs font-medium transition-colors cursor-pointer">
+              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
                 🔬 Lab
               </span>
             </Link>
@@ -158,17 +158,17 @@ export default function PumpingSystems() {
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-3xl">⚙️</span>
-                <h1 className="text-3xl font-black text-white tracking-tight">Pumping Systems</h1>
+                <h1 className="text-3xl font-black text-slate-900 tracking-tight">Pumping Systems</h1>
               </div>
-              <p className="text-slate-400 text-base max-w-2xl">
+              <p className="text-slate-500 text-base max-w-2xl">
                 Interactive centrifugal pump module — explore anatomy, performance curves, cavitation behaviour, and series/parallel configurations used in Ontario water and wastewater facilities.
               </p>
             </div>
             {/* Regulation badge */}
-            <div className="bg-blue-950/50 border border-blue-800/50 rounded-xl px-4 py-3 text-sm flex-shrink-0">
-              <p className="text-blue-300 text-xs font-semibold uppercase tracking-wide mb-1">Ontario Regulation</p>
-              <p className="text-blue-100 font-medium">O. Reg. 170/03 — Schedule 8</p>
-              <p className="text-blue-300 text-xs mt-0.5">Pumping station requirements</p>
+            <div className="rounded-xl px-4 py-3 text-sm flex-shrink-0" style={{ background: "#EFF6FF", border: "1px solid #BFDBFE" }}>
+              <p className="text-blue-600 text-xs font-semibold uppercase tracking-wide mb-1">Ontario Regulation</p>
+              <p className="text-blue-800 font-medium">O. Reg. 170/03 — Schedule 8</p>
+              <p className="text-blue-500 text-xs mt-0.5">Pumping station requirements</p>
             </div>
           </div>
 
@@ -180,17 +180,17 @@ export default function PumpingSystems() {
               { label: "Impeller Speed", value: "1,450–3,500 rpm", sub: "50/60 Hz motor" },
               { label: "TDH Range", value: "5–100 m", sub: "Depends on system" },
             ].map(s => (
-              <div key={s.label} className="bg-slate-800/60 border border-slate-700 rounded-xl p-3">
+              <div key={s.label} className="rounded-xl p-3" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                 <p className="text-slate-400 text-xs mb-1">{s.label}</p>
-                <p className="text-white font-bold text-sm">{s.value}</p>
-                <p className="text-slate-500 text-xs">{s.sub}</p>
+                <p className="text-slate-900 font-bold text-sm">{s.value}</p>
+                <p className="text-slate-400 text-xs">{s.sub}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* ── Global Controls ── */}
-        <div className="bg-slate-800/60 border border-slate-700 rounded-2xl p-4 mb-6">
+        <div className="rounded-2xl p-4 mb-6" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
           <p className="text-slate-400 text-xs font-semibold uppercase tracking-wide mb-3">Simulation Controls</p>
           <div className="flex flex-wrap gap-4 items-center">
             {/* Running toggle */}
@@ -199,10 +199,10 @@ export default function PumpingSystems() {
               className={`flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-sm transition-all ${
                 isRunning
                   ? "bg-emerald-600 hover:bg-emerald-700 text-white"
-                  : "bg-slate-700 hover:bg-slate-600 text-slate-300"
+                  : "bg-slate-100 hover:bg-slate-200 text-slate-600"
               }`}
             >
-              <span className={`w-2 h-2 rounded-full ${isRunning ? "bg-white animate-pulse" : "bg-slate-500"}`} />
+              <span className={`w-2 h-2 rounded-full ${isRunning ? "bg-white animate-pulse" : "bg-slate-400"}`} />
               {isRunning ? "Pump Running" : "Pump Stopped"}
             </button>
 
@@ -212,7 +212,7 @@ export default function PumpingSystems() {
               className={`flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-sm transition-all ${
                 cavitationMode
                   ? "bg-red-700 hover:bg-red-800 text-white"
-                  : "bg-slate-700 hover:bg-slate-600 text-slate-300"
+                  : "bg-slate-100 hover:bg-slate-200 text-slate-600"
               }`}
             >
               <span className="text-base">💧</span>
@@ -221,8 +221,8 @@ export default function PumpingSystems() {
 
             {/* Static head slider */}
             <div className="flex items-center gap-3 flex-1 min-w-48">
-              <label className="text-slate-400 text-xs font-medium whitespace-nowrap">
-                Static Head: <span className="text-white font-bold">{staticHead} m</span>
+              <label className="text-slate-500 text-xs font-medium whitespace-nowrap">
+                Static Head: <span className="text-slate-900 font-bold">{staticHead} m</span>
               </label>
               <input
                 type="range"
@@ -237,15 +237,15 @@ export default function PumpingSystems() {
         </div>
 
         {/* ── Tab Navigation ── */}
-        <div className="flex gap-1 mb-6 bg-slate-800/60 rounded-xl p-1 w-fit flex-wrap">
+        <div className="flex gap-1 mb-6 rounded-xl p-1 w-fit flex-wrap" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
           {TABS.map(tab => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
                 activeTab === tab.id
-                  ? "bg-blue-600 text-white shadow-lg"
-                  : "text-slate-400 hover:text-white hover:bg-slate-700"
+                  ? "bg-blue-600 text-white shadow"
+                  : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
               }`}
             >
               <span>{tab.icon}</span>
@@ -262,8 +262,8 @@ export default function PumpingSystems() {
             <PumpCutaway isRunning={isRunning} cavitationMode={cavitationMode} />
 
             {/* How it works */}
-            <div className="bg-slate-800/60 border border-slate-700 rounded-2xl p-6">
-              <h3 className="text-white font-bold text-lg mb-4">How a Centrifugal Pump Works</h3>
+            <div className="rounded-2xl p-6" style={{ background: "#fff", border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+              <h3 className="text-slate-900 font-bold text-lg mb-4">How a Centrifugal Pump Works</h3>
               <div className="grid sm:grid-cols-3 gap-4">
                 {[
                   { step: "1", title: "Fluid Enters", desc: "Liquid enters the pump eye (centre of impeller) along the shaft axis at low pressure from the suction pipe.", color: "#06B6D4" },
@@ -278,8 +278,8 @@ export default function PumpingSystems() {
                       {s.step}
                     </span>
                     <div>
-                      <p className="text-white font-semibold text-sm mb-1">{s.title}</p>
-                      <p className="text-slate-400 text-xs leading-relaxed">{s.desc}</p>
+                      <p className="text-slate-900 font-semibold text-sm mb-1">{s.title}</p>
+                      <p className="text-slate-500 text-xs leading-relaxed">{s.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -291,11 +291,11 @@ export default function PumpingSystems() {
         {/* PUMP CURVES TAB */}
         {activeTab === "curves" && (
           <div className="space-y-6">
-            <div className="bg-slate-800/40 border border-slate-700 rounded-2xl p-5">
+            <div className="rounded-2xl p-5" style={{ background: "#fff", border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
               <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
                 <div>
-                  <h3 className="text-white font-bold text-lg">Live Performance Curves</h3>
-                  <p className="text-slate-400 text-sm">Adjust static head to see operating point shift in real time</p>
+                  <h3 className="text-slate-900 font-bold text-lg">Live Performance Curves</h3>
+                  <p className="text-slate-500 text-sm">Adjust static head to see operating point shift in real time</p>
                 </div>
               </div>
               <PumpCurveChart mode="single" cavitationMode={cavitationMode} systemStaticHead={staticHead} />
@@ -303,18 +303,18 @@ export default function PumpingSystems() {
 
             {/* Reading the curves */}
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="bg-slate-800/60 border border-slate-700 rounded-2xl p-5">
-                <h4 className="text-white font-bold mb-3">Reading the H-Q Curve</h4>
-                <ul className="space-y-2 text-sm text-slate-300">
+              <div className="rounded-2xl p-5" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
+                <h4 className="text-slate-900 font-bold mb-3">Reading the H-Q Curve</h4>
+                <ul className="space-y-2 text-sm text-slate-600">
                   <li className="flex gap-2"><span className="text-blue-400 font-bold">→</span> Shutoff head: maximum head at zero flow</li>
                   <li className="flex gap-2"><span className="text-blue-400 font-bold">→</span> Free delivery: maximum flow at zero head</li>
                   <li className="flex gap-2"><span className="text-orange-400 font-bold">→</span> Operating point: intersection with system curve</li>
                   <li className="flex gap-2"><span className="text-indigo-400 font-bold">→</span> BEP: Best Efficiency Point — ideal operating zone</li>
                 </ul>
               </div>
-              <div className="bg-slate-800/60 border border-slate-700 rounded-2xl p-5">
-                <h4 className="text-white font-bold mb-3">System Curve Shape</h4>
-                <ul className="space-y-2 text-sm text-slate-300">
+              <div className="rounded-2xl p-5" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
+                <h4 className="text-slate-900 font-bold mb-3">System Curve Shape</h4>
+                <ul className="space-y-2 text-sm text-slate-600">
                   <li className="flex gap-2"><span className="text-orange-400 font-bold">→</span> Starts at static head (elevation difference)</li>
                   <li className="flex gap-2"><span className="text-orange-400 font-bold">→</span> Rises parabolically due to friction losses</li>
                   <li className="flex gap-2"><span className="text-orange-400 font-bold">→</span> Higher static head shifts curve up</li>
@@ -340,36 +340,37 @@ export default function PumpingSystems() {
                   onClick={() => setPumpMode(m.id)}
                   className={`p-4 rounded-2xl border-2 text-left transition-all ${
                     pumpMode === m.id
-                      ? m.color === "blue" ? "border-blue-500 bg-blue-950/50" : m.color === "amber" ? "border-amber-500 bg-amber-950/50" : "border-emerald-500 bg-emerald-950/50"
-                      : "border-slate-700 bg-slate-800/40 hover:border-slate-500"
+                      ? m.color === "blue" ? "border-blue-500 bg-blue-50" : m.color === "amber" ? "border-amber-500 bg-amber-50" : "border-emerald-500 bg-emerald-50"
+                      : "border-slate-200 hover:border-slate-300"
                   }`}
+                  style={pumpMode !== m.id ? { background: "#fff" } : {}}
                 >
                   <div className="text-2xl mb-2">{m.icon}</div>
-                  <p className="text-white font-bold text-sm">{m.label}</p>
-                  <p className="text-slate-400 text-xs mt-1">{m.desc}</p>
+                  <p className="text-slate-900 font-bold text-sm">{m.label}</p>
+                  <p className="text-slate-500 text-xs mt-1">{m.desc}</p>
                 </button>
               ))}
             </div>
 
             {/* Visual schematic */}
-            <div className="bg-slate-900 border border-slate-700 rounded-2xl p-5">
+            <div className="rounded-2xl p-5" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
               <p className="text-slate-400 text-xs font-semibold uppercase tracking-wide mb-4">Piping Schematic</p>
               {pumpMode === "single" && (
                 <div className="flex items-center justify-center gap-2 py-4">
-                  <div className="text-slate-400 text-sm">Suction →</div>
-                  <div className="bg-blue-800 border-2 border-blue-500 rounded-xl px-6 py-3 text-white font-bold text-sm">Pump 1</div>
-                  <div className="text-slate-400 text-sm">→ Discharge</div>
+                  <div className="text-slate-500 text-sm">Suction →</div>
+                  <div className="bg-blue-600 border-2 border-blue-400 rounded-xl px-6 py-3 text-white font-bold text-sm">Pump 1</div>
+                  <div className="text-slate-500 text-sm">→ Discharge</div>
                 </div>
               )}
               {pumpMode === "series" && (
                 <div className="flex items-center justify-center gap-2 py-4 flex-wrap">
-                  <div className="text-slate-400 text-sm">Suction →</div>
-                  <div className="bg-amber-800 border-2 border-amber-500 rounded-xl px-5 py-3 text-white font-bold text-sm">Pump 1</div>
-                  <div className="text-amber-400 font-bold text-lg">→</div>
-                  <div className="bg-amber-800 border-2 border-amber-500 rounded-xl px-5 py-3 text-white font-bold text-sm">Pump 2</div>
-                  <div className="text-slate-400 text-sm">→ Discharge</div>
+                  <div className="text-slate-500 text-sm">Suction →</div>
+                  <div className="bg-amber-500 border-2 border-amber-400 rounded-xl px-5 py-3 text-white font-bold text-sm">Pump 1</div>
+                  <div className="text-amber-500 font-bold text-lg">→</div>
+                  <div className="bg-amber-500 border-2 border-amber-400 rounded-xl px-5 py-3 text-white font-bold text-sm">Pump 2</div>
+                  <div className="text-slate-500 text-sm">→ Discharge</div>
                   <div className="w-full text-center mt-3">
-                    <span className="bg-amber-900/50 border border-amber-700 text-amber-300 text-xs px-3 py-1 rounded-full">
+                    <span className="bg-amber-50 border border-amber-200 text-amber-700 text-xs px-3 py-1 rounded-full">
                       Outlet of Pump 1 feeds directly into inlet of Pump 2 — heads add together
                     </span>
                   </div>
@@ -378,14 +379,14 @@ export default function PumpingSystems() {
               {pumpMode === "parallel" && (
                 <div className="flex flex-col items-center py-4 gap-2">
                   <div className="flex items-center gap-2">
-                    <div className="text-slate-400 text-sm">Suction →</div>
+                    <div className="text-slate-500 text-sm">Suction →</div>
                     <div className="flex flex-col gap-2">
-                      <div className="bg-emerald-800 border-2 border-emerald-500 rounded-xl px-5 py-2 text-white font-bold text-sm">Pump 1</div>
-                      <div className="bg-emerald-800 border-2 border-emerald-500 rounded-xl px-5 py-2 text-white font-bold text-sm">Pump 2</div>
+                      <div className="bg-emerald-600 border-2 border-emerald-400 rounded-xl px-5 py-2 text-white font-bold text-sm">Pump 1</div>
+                      <div className="bg-emerald-600 border-2 border-emerald-400 rounded-xl px-5 py-2 text-white font-bold text-sm">Pump 2</div>
                     </div>
-                    <div className="text-slate-400 text-sm">→ Common Discharge Header</div>
+                    <div className="text-slate-500 text-sm">→ Common Discharge Header</div>
                   </div>
-                  <span className="bg-emerald-900/50 border border-emerald-700 text-emerald-300 text-xs px-3 py-1 rounded-full mt-2">
+                  <span className="bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs px-3 py-1 rounded-full mt-2">
                     Both pumps draw from same suction header — flows add together at same head
                   </span>
                 </div>
@@ -393,58 +394,58 @@ export default function PumpingSystems() {
             </div>
 
             {/* Combined curves */}
-            <div className="bg-slate-800/40 border border-slate-700 rounded-2xl p-5">
-              <h3 className="text-white font-bold text-lg mb-4">Combined Performance Curves</h3>
+            <div className="rounded-2xl p-5" style={{ background: "#fff", border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+              <h3 className="text-slate-900 font-bold text-lg mb-4">Combined Performance Curves</h3>
               <PumpCurveChart mode={pumpMode} cavitationMode={cavitationMode} systemStaticHead={staticHead} />
             </div>
 
             {/* Affinity Laws Calculator */}
-            <div className="bg-slate-800/60 border border-slate-700 rounded-2xl p-5">
-              <h3 className="text-white font-bold text-lg mb-1">Affinity Laws Calculator</h3>
-              <p className="text-slate-400 text-sm mb-5">Predict pump performance after a speed change (e.g., VFD adjustment)</p>
+            <div className="rounded-2xl p-5" style={{ background: "#fff", border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+              <h3 className="text-slate-900 font-bold text-lg mb-1">Affinity Laws Calculator</h3>
+              <p className="text-slate-500 text-sm mb-5">Predict pump performance after a speed change (e.g., VFD adjustment)</p>
               <div className="grid sm:grid-cols-2 gap-6">
                 <div className="space-y-4">
-                  <h4 className="text-slate-300 font-semibold text-sm">Known Conditions (Speed N₁)</h4>
+                  <h4 className="text-slate-700 font-semibold text-sm">Known Conditions (Speed N₁)</h4>
                   <div className="space-y-3">
                     <div>
-                      <label className="text-slate-400 text-xs block mb-1">Speed N₁ (rpm): <span className="text-white font-bold">{n1}</span></label>
+                      <label className="text-slate-500 text-xs block mb-1">Speed N₁ (rpm): <span className="text-slate-900 font-bold">{n1}</span></label>
                       <input type="range" min={800} max={3600} step={50} value={n1} onChange={e => setN1(Number(e.target.value))} className="w-full accent-blue-500" />
                     </div>
                     <div>
-                      <label className="text-slate-400 text-xs block mb-1">Flow Q₁ (L/s): <span className="text-white font-bold">{q1}</span></label>
+                      <label className="text-slate-500 text-xs block mb-1">Flow Q₁ (L/s): <span className="text-slate-900 font-bold">{q1}</span></label>
                       <input type="range" min={10} max={140} step={5} value={q1} onChange={e => setQ1(Number(e.target.value))} className="w-full accent-blue-500" />
                     </div>
                     <div>
-                      <label className="text-slate-400 text-xs block mb-1">Head H₁ (m): <span className="text-white font-bold">{h1}</span></label>
+                      <label className="text-slate-500 text-xs block mb-1">Head H₁ (m): <span className="text-slate-900 font-bold">{h1}</span></label>
                       <input type="range" min={5} max={60} step={1} value={h1} onChange={e => setH1(Number(e.target.value))} className="w-full accent-blue-500" />
                     </div>
                     <div>
-                      <label className="text-slate-400 text-xs block mb-1">New Speed N₂ (rpm): <span className="text-white font-bold">{n2}</span></label>
+                      <label className="text-slate-500 text-xs block mb-1">New Speed N₂ (rpm): <span className="text-slate-900 font-bold">{n2}</span></label>
                       <input type="range" min={800} max={3600} step={50} value={n2} onChange={e => setN2(Number(e.target.value))} className="w-full accent-purple-500" />
                     </div>
                   </div>
                 </div>
-                <div className="bg-slate-900 rounded-xl p-5 space-y-4">
-                  <h4 className="text-slate-300 font-semibold text-sm">Predicted Conditions (Speed N₂ = {n2} rpm)</h4>
+                <div className="rounded-xl p-5 space-y-4" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
+                  <h4 className="text-slate-700 font-semibold text-sm">Predicted Conditions (Speed N₂ = {n2} rpm)</h4>
                   <div className="space-y-3">
                     {[
                       { label: "New Flow Q₂", value: `${q2} L/s`, formula: `Q₁ × (N₂/N₁) = ${q1} × ${ratio.toFixed(2)}`, color: "#3B82F6" },
                       { label: "New Head H₂", value: `${h2} m`, formula: `H₁ × (N₂/N₁)² = ${h1} × ${ratio.toFixed(2)}²`, color: "#A78BFA" },
                       { label: "Power Ratio P₂/P₁", value: `${p2Ratio}×`, formula: `(N₂/N₁)³ = ${ratio.toFixed(2)}³`, color: "#F59E0B" },
                     ].map(r => (
-                      <div key={r.label} className="border border-slate-700 rounded-lg p-3">
+                      <div key={r.label} className="rounded-lg p-3" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                         <div className="flex justify-between items-start">
-                          <span className="text-slate-400 text-xs">{r.label}</span>
+                          <span className="text-slate-500 text-xs">{r.label}</span>
                           <span className="font-black text-lg" style={{ color: r.color }}>{r.value}</span>
                         </div>
-                        <p className="text-slate-600 text-xs mt-1 font-mono">{r.formula}</p>
+                        <p className="text-slate-400 text-xs mt-1 font-mono">{r.formula}</p>
                       </div>
                     ))}
                   </div>
-                  <div className="bg-blue-950/50 border border-blue-800/50 rounded-lg p-3">
-                    <p className="text-blue-300 text-xs font-semibold mb-1">Speed Ratio</p>
-                    <p className="text-white font-bold text-lg">{ratio.toFixed(3)}</p>
-                    <p className="text-blue-400 text-xs">N₂/N₁ = {n2}/{n1}</p>
+                  <div className="rounded-lg p-3" style={{ background: "#EFF6FF", border: "1px solid #BFDBFE" }}>
+                    <p className="text-blue-600 text-xs font-semibold mb-1">Speed Ratio</p>
+                    <p className="text-blue-900 font-bold text-lg">{ratio.toFixed(3)}</p>
+                    <p className="text-blue-500 text-xs">N₂/N₁ = {n2}/{n1}</p>
                   </div>
                 </div>
               </div>
@@ -455,9 +456,9 @@ export default function PumpingSystems() {
         {/* EXAM TIPS TAB */}
         {activeTab === "tips" && (
           <div className="space-y-5">
-            <div className="bg-blue-950/30 border border-blue-800/40 rounded-2xl p-5 mb-2">
-              <p className="text-blue-200 text-sm leading-relaxed">
-                <span className="font-bold text-blue-100">Pumping systems</span> are heavily tested across all Ontario certification levels. Class 1–2 exams focus on TDH calculations and pump selection; Class 3–4 exams add VFD operation, pump troubleshooting, and system curve analysis. The Affinity Laws appear on virtually every Class 2+ exam.
+            <div className="rounded-2xl p-5 mb-2" style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", borderLeft: "4px solid #1D4ED8" }}>
+              <p className="text-blue-700 text-sm leading-relaxed">
+                <span className="font-bold text-blue-800">Pumping systems</span> are heavily tested across all Ontario certification levels. Class 1–2 exams focus on TDH calculations and pump selection; Class 3–4 exams add VFD operation, pump troubleshooting, and system curve analysis. The Affinity Laws appear on virtually every Class 2+ exam.
               </p>
             </div>
             {EXAM_TIPS.map(section => {
@@ -483,8 +484,8 @@ export default function PumpingSystems() {
             })}
 
             {/* Ontario Regulation box */}
-            <div className="bg-slate-800/60 border border-slate-600 rounded-2xl p-5">
-              <h3 className="text-white font-bold text-lg mb-4">Ontario Regulatory Requirements</h3>
+            <div className="rounded-2xl p-5" style={{ background: "#fff", border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+              <h3 className="text-slate-900 font-bold text-lg mb-4">Ontario Regulatory Requirements</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
                   { reg: "O. Reg. 170/03 — Sch. 8", desc: "Pumping stations must have standby power and emergency pumping capacity for water systems." },
@@ -492,9 +493,9 @@ export default function PumpingSystems() {
                   { reg: "MECP Design Guidelines", desc: "Pumping stations must be designed for peak hourly flow with one pump out of service." },
                   { reg: "CSA B214", desc: "Installation of hydronic heating systems — relevant for booster pump applications." },
                 ].map(r => (
-                  <div key={r.reg} className="bg-slate-900/60 rounded-xl p-4">
-                    <p className="text-blue-300 text-xs font-semibold mb-1">{r.reg}</p>
-                    <p className="text-slate-300 text-sm">{r.desc}</p>
+                  <div key={r.reg} className="rounded-xl p-4" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
+                    <p className="text-blue-600 text-xs font-semibold mb-1">{r.reg}</p>
+                    <p className="text-slate-600 text-sm">{r.desc}</p>
                   </div>
                 ))}
               </div>

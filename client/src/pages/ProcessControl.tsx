@@ -1,6 +1,6 @@
 /**
  * ProcessControl.tsx
- * Design: Professional SaaS — Clean Dark-Accent (matches PumpingSystems.tsx)
+ * Design: Professional SaaS — Clean Light (matches Process.tsx)
  * Echelon Process Control & Instrumentation Guide:
  * - Tab navigation: Instruments | PID Control | SCADA | Exam Tips
  * - Interactive instrument explorer with clickable instrument cards
@@ -323,11 +323,11 @@ const EXAM_TIPS_DATA = [
 ];
 
 const colorMap: Record<string, { bg: string; border: string; text: string; badge: string }> = {
-  blue:   { bg: "bg-blue-950/40",   border: "border-blue-800/50",   text: "text-blue-300",   badge: "bg-blue-900/60 text-blue-200" },
-  teal:   { bg: "bg-teal-950/40",   border: "border-teal-800/50",   text: "text-teal-300",   badge: "bg-teal-900/60 text-teal-200" },
-  purple: { bg: "bg-purple-950/40", border: "border-purple-800/50", text: "text-purple-300", badge: "bg-purple-900/60 text-purple-200" },
-  amber:  { bg: "bg-amber-950/40",  border: "border-amber-800/50",  text: "text-amber-300",  badge: "bg-amber-900/60 text-amber-200" },
-  green:  { bg: "bg-emerald-950/40",border: "border-emerald-800/50",text: "text-emerald-300",badge: "bg-emerald-900/60 text-emerald-200" },
+  blue:   { bg: "bg-blue-50",   border: "border-blue-200",   text: "text-blue-700",   badge: "bg-blue-100 text-blue-700" },
+  teal:   { bg: "bg-teal-50",   border: "border-teal-200",   text: "text-teal-700",   badge: "bg-teal-100 text-teal-700" },
+  purple: { bg: "bg-purple-50", border: "border-purple-200", text: "text-purple-700", badge: "bg-purple-100 text-purple-700" },
+  amber:  { bg: "bg-amber-50",  border: "border-amber-200",  text: "text-amber-700",  badge: "bg-amber-100 text-amber-700" },
+  green:  { bg: "bg-emerald-50",border: "border-emerald-200",text: "text-emerald-700",badge: "bg-emerald-100 text-emerald-700" },
 };
 
 // ── Component ────────────────────────────────────────────────────────────────
@@ -348,16 +348,16 @@ export default function ProcessControl() {
   const pidError = pidSetpoint - pidMeasured;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen text-slate-900" style={{ background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath={location} />
 
       {/* ── Header ── */}
-      <header className="bg-slate-900 border-b border-slate-800 sticky top-0 z-40">
+      <header style={{ background: "#fff", borderBottom: "1px solid #E5E7EB" }} className="sticky top-0 z-40">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2 text-sm">
-            <Link href="/" className="text-blue-400 hover:text-blue-300 font-medium">Echelon</Link>
-            <span className="text-slate-600 text-lg">/</span>
-            <span className="text-slate-300 font-semibold text-sm">Process Control & Instrumentation</span>
+            <Link href="/" className="text-blue-600 hover:text-blue-700 font-medium">Echelon</Link>
+            <span className="text-slate-400 text-lg">/</span>
+            <span className="text-slate-700 font-semibold text-sm">Process Control & Instrumentation</span>
           </div>
           <div className="hidden md:flex items-center gap-1">
             {[
@@ -367,7 +367,7 @@ export default function ProcessControl() {
               { label: "Career",   href: "/career" },
             ].map(l => (
               <Link key={l.href} href={l.href}>
-                <span className="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 text-xs font-medium transition-colors cursor-pointer">{l.label}</span>
+                <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">{l.label}</span>
               </Link>
             ))}
           </div>
@@ -380,12 +380,12 @@ export default function ProcessControl() {
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-xl">🎛️</div>
-            <div>
-              <div className="text-xs text-blue-400 font-semibold uppercase tracking-wider mb-0.5">Class 3–4 · Ontario & WPI</div>
-              <h1 className="text-2xl font-bold text-white">Process Control & Instrumentation</h1>
-            </div>
+          <div>
+            <div className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-0.5">Class 3–4 · Ontario & WPI</div>
+            <h1 className="text-2xl font-bold text-slate-900">Process Control & Instrumentation</h1>
           </div>
-          <p className="text-slate-400 text-base max-w-2xl">
+          </div>
+          <p className="text-slate-500 text-base max-w-2xl">
             Interactive guide to instrumentation, PID control, and SCADA systems used in Ontario water and wastewater facilities. Covers flow meters, level sensors, analysers, control loops, and alarm management.
           </p>
           <div className="flex flex-wrap gap-3 mt-4">
@@ -396,16 +396,16 @@ export default function ProcessControl() {
               { label: "PID Modes", value: "4 modes" },
               { label: "SCADA Components", value: "5 layers" },
             ].map(s => (
-              <div key={s.label} className="bg-slate-800/60 border border-slate-700 rounded-xl px-3 py-2">
+              <div key={s.label} style={{ background: "#fff", border: "1px solid #E5E7EB" }} className="rounded-xl px-3 py-2">
                 <p className="text-slate-400 text-xs mb-0.5">{s.label}</p>
-                <p className="text-white font-bold text-sm">{s.value}</p>
+                <p className="text-slate-900 font-bold text-sm">{s.value}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* ── Tab bar ── */}
-        <div className="flex gap-1 bg-slate-900 border border-slate-800 rounded-xl p-1 mb-6 overflow-x-auto">
+        <div style={{ background: "#fff", border: "1px solid #E5E7EB" }} className="flex gap-1 rounded-xl p-1 mb-6 overflow-x-auto">
           {TABS.map(tab => (
             <button
               key={tab.id}
@@ -413,7 +413,7 @@ export default function ProcessControl() {
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
                 activeTab === tab.id
                   ? "bg-blue-600 text-white shadow"
-                  : "text-slate-400 hover:text-white hover:bg-slate-800"
+                  : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
               }`}
             >
               <span>{tab.icon}</span>
@@ -436,8 +436,9 @@ export default function ProcessControl() {
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold border transition-all ${
                     activeCat === cat.id
                       ? "bg-blue-600 border-blue-500 text-white"
-                      : "bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white hover:border-slate-600"
+                      : "border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300 hover:bg-white"
                   }`}
+                  style={activeCat !== cat.id ? { background: "#fff" } : {}}
                 >
                   <span>{cat.icon}</span>
                   <span>{cat.label}</span>
@@ -455,75 +456,76 @@ export default function ProcessControl() {
                     onClick={() => setActiveInstrument(i)}
                     className={`text-left p-4 rounded-xl border transition-all ${
                       activeInstrument === i
-                        ? "bg-blue-900/40 border-blue-600 text-white"
-                        : "bg-slate-900 border-slate-800 text-slate-300 hover:border-slate-600 hover:text-white"
+                        ? "border-blue-500 text-slate-900"
+                        : "border-slate-200 text-slate-700 hover:border-slate-300"
                     }`}
+                    style={{ background: activeInstrument === i ? "#EFF6FF" : "#fff" }}
                   >
-                    <p className="font-semibold text-sm leading-snug">{inst.name}</p>
-                    <p className="text-xs text-slate-500 mt-1">{inst.measures}</p>
+                    <p className="font-semibold text-sm leading-snug text-slate-900">{inst.name}</p>
+                    <p className="text-xs text-slate-400 mt-1">{inst.measures}</p>
                   </button>
                 ))}
               </div>
 
               {/* Instrument detail */}
-              <div className="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-6">
-                <h2 className="text-xl font-bold text-white mb-1">{currentInstrument.name}</h2>
-                <p className="text-blue-400 text-sm font-medium mb-4">{currentInstrument.measures}</p>
+              <div className="lg:col-span-2 rounded-2xl p-6" style={{ background: "#fff", border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+                <h2 className="text-xl font-bold text-slate-900 mb-1">{currentInstrument.name}</h2>
+                <p className="text-blue-600 text-sm font-medium mb-4">{currentInstrument.measures}</p>
 
                 <div className="grid grid-cols-2 gap-3 mb-5">
                   {[
                     { label: "Range", value: currentInstrument.range },
                     { label: "Accuracy", value: currentInstrument.accuracy },
                   ].map(s => (
-                    <div key={s.label} className="bg-slate-800/60 border border-slate-700 rounded-xl p-3">
+                    <div key={s.label} className="rounded-xl p-3" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
                       <p className="text-slate-400 text-xs mb-1">{s.label}</p>
-                      <p className="text-white font-semibold text-sm">{s.value}</p>
+                      <p className="text-slate-900 font-semibold text-sm">{s.value}</p>
                     </div>
                   ))}
                 </div>
 
                 <div className="mb-4">
                   <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-2">Operating Principle</p>
-                  <p className="text-slate-200 text-sm leading-relaxed">{currentInstrument.principle}</p>
+                  <p className="text-slate-600 text-sm leading-relaxed">{currentInstrument.principle}</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   <div>
-                    <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2">✓ Advantages</p>
+                    <p className="text-emerald-600 text-xs font-semibold uppercase tracking-wider mb-2">✓ Advantages</p>
                     <ul className="space-y-1">
                       {currentInstrument.advantages.map(a => (
-                        <li key={a} className="text-slate-300 text-xs flex gap-2"><span className="text-emerald-500 mt-0.5">•</span>{a}</li>
+                        <li key={a} className="text-slate-600 text-xs flex gap-2"><span className="text-emerald-500 mt-0.5">•</span>{a}</li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <p className="text-red-400 text-xs font-semibold uppercase tracking-wider mb-2">✗ Limitations</p>
+                    <p className="text-red-500 text-xs font-semibold uppercase tracking-wider mb-2">✗ Limitations</p>
                     <ul className="space-y-1">
                       {currentInstrument.limitations.map(l => (
-                        <li key={l} className="text-slate-300 text-xs flex gap-2"><span className="text-red-500 mt-0.5">•</span>{l}</li>
+                        <li key={l} className="text-slate-600 text-xs flex gap-2"><span className="text-red-400 mt-0.5">•</span>{l}</li>
                       ))}
                     </ul>
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider mb-2">⚠ Common Failure Modes</p>
+                  <p className="text-amber-600 text-xs font-semibold uppercase tracking-wider mb-2">⚠ Common Failure Modes</p>
                   <ul className="space-y-1">
                     {currentInstrument.failureModes.map(f => (
-                      <li key={f} className="text-slate-300 text-xs flex gap-2"><span className="text-amber-500 mt-0.5">→</span>{f}</li>
+                      <li key={f} className="text-slate-600 text-xs flex gap-2"><span className="text-amber-500 mt-0.5">→</span>{f}</li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="bg-blue-950/50 border border-blue-800/50 rounded-xl p-4 mb-3">
-                  <p className="text-blue-300 text-xs font-semibold uppercase tracking-wider mb-1">🎯 Exam Tip</p>
-                  <p className="text-blue-100 text-sm">{currentInstrument.examTip}</p>
+                <div className="rounded-xl p-4 mb-3" style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", borderLeft: "4px solid #1D4ED8" }}>
+                  <p className="text-blue-700 text-xs font-semibold uppercase tracking-wider mb-1">🎯 Exam Tip</p>
+                  <p className="text-blue-800 text-sm">{currentInstrument.examTip}</p>
                 </div>
 
                 {currentInstrument.regulation && (
-                  <div className="bg-purple-950/40 border border-purple-800/40 rounded-xl p-3">
-                    <p className="text-purple-300 text-xs font-semibold uppercase tracking-wider mb-1">📋 Regulation</p>
-                    <p className="text-purple-100 text-xs">{currentInstrument.regulation}</p>
+                  <div className="rounded-xl p-3" style={{ background: "#F5F3FF", border: "1px solid #DDD6FE", borderLeft: "4px solid #7C3AED" }}>
+                    <p className="text-purple-700 text-xs font-semibold uppercase tracking-wider mb-1">📋 Regulation</p>
+                    <p className="text-purple-800 text-xs">{currentInstrument.regulation}</p>
                   </div>
                 )}
               </div>
@@ -537,16 +539,16 @@ export default function ProcessControl() {
         {activeTab === "pid" && (
           <div>
             {/* Live PID error visualiser */}
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-6">
-              <h2 className="text-white font-bold text-lg mb-1">Live Control Loop Visualiser</h2>
-              <p className="text-slate-400 text-sm mb-5">Adjust setpoint and measured value to see how error drives PID output.</p>
+            <div className="rounded-2xl p-6 mb-6" style={{ background: "#fff", border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+              <h2 className="text-slate-900 font-bold text-lg mb-1">Live Control Loop Visualiser</h2>
+              <p className="text-slate-500 text-sm mb-5">Adjust setpoint and measured value to see how error drives PID output.</p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
-                  <label className="text-slate-400 text-xs block mb-1">Setpoint (SP): <span className="text-white font-bold">{pidSetpoint}%</span></label>
+                  <label className="text-slate-500 text-xs block mb-1">Setpoint (SP): <span className="text-slate-900 font-bold">{pidSetpoint}%</span></label>
                   <input type="range" min={0} max={100} value={pidSetpoint} onChange={e => setPidSetpoint(+e.target.value)} className="w-full accent-blue-500" />
                 </div>
                 <div>
-                  <label className="text-slate-400 text-xs block mb-1">Measured Value (PV): <span className="text-white font-bold">{pidMeasured}%</span></label>
+                  <label className="text-slate-500 text-xs block mb-1">Measured Value (PV): <span className="text-slate-900 font-bold">{pidMeasured}%</span></label>
                   <input type="range" min={0} max={100} value={pidMeasured} onChange={e => setPidMeasured(+e.target.value)} className="w-full accent-emerald-500" />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -555,8 +557,8 @@ export default function ProcessControl() {
                     { label: "P Action", value: `${(pidError * 2).toFixed(1)}% output`, color: "#3B82F6" },
                     { label: "Direction", value: pidError > 0 ? "Increase output ↑" : pidError < 0 ? "Decrease output ↓" : "No action ✓", color: pidError === 0 ? "#10B981" : "#F59E0B" },
                   ].map(r => (
-                    <div key={r.label} className="bg-slate-800/60 border border-slate-700 rounded-xl p-3 flex justify-between items-center">
-                      <span className="text-slate-400 text-xs">{r.label}</span>
+                    <div key={r.label} className="rounded-xl p-3 flex justify-between items-center" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
+                      <span className="text-slate-500 text-xs">{r.label}</span>
                       <span className="font-bold text-sm" style={{ color: r.color }}>{r.value}</span>
                     </div>
                   ))}
@@ -571,54 +573,54 @@ export default function ProcessControl() {
                   key={p.id}
                   onClick={() => setActivePID(p.id)}
                   className={`px-5 py-2 rounded-xl text-sm font-bold border transition-all ${
-                    activePID === p.id ? "text-white border-transparent" : "bg-slate-800/60 border-slate-700 text-slate-400 hover:text-white"
+                    activePID === p.id ? "text-white border-transparent" : "border-slate-200 text-slate-600 hover:text-slate-900"
                   }`}
-                  style={activePID === p.id ? { background: p.color, borderColor: p.color } : {}}
+                  style={activePID === p.id ? { background: p.color, borderColor: p.color } : { background: "#fff" }}
                 >
                   {p.name}
                 </button>
               ))}
             </div>
 
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-6">
-              <h3 className="text-xl font-bold text-white mb-1">{currentPID.name}</h3>
-              <p className="text-slate-400 text-sm mb-4">{currentPID.description}</p>
+            <div className="rounded-2xl p-6 mb-6" style={{ background: "#fff", border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+              <h3 className="text-xl font-bold text-slate-900 mb-1">{currentPID.name}</h3>
+              <p className="text-slate-500 text-sm mb-4">{currentPID.description}</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div className="bg-slate-800/60 border border-slate-700 rounded-xl p-4">
+                <div className="rounded-xl p-4" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
                   <p className="text-slate-400 text-xs mb-1">Formula</p>
-                  <p className="text-white font-mono font-bold">{currentPID.formula}</p>
+                  <p className="text-slate-900 font-mono font-bold">{currentPID.formula}</p>
                 </div>
-                <div className="bg-slate-800/60 border border-slate-700 rounded-xl p-4">
+                <div className="rounded-xl p-4" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
                   <p className="text-slate-400 text-xs mb-1">Typical Setting</p>
-                  <p className="text-white font-semibold text-sm">{currentPID.typical}</p>
+                  <p className="text-slate-900 font-semibold text-sm">{currentPID.typical}</p>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div className="bg-red-950/30 border border-red-800/40 rounded-xl p-4">
-                  <p className="text-red-400 text-xs font-semibold mb-1">Too Low →</p>
-                  <p className="text-red-100 text-sm">{currentPID.tooLow}</p>
+                <div className="rounded-xl p-4" style={{ background: "#FEF2F2", border: "1px solid #FECACA" }}>
+                  <p className="text-red-600 text-xs font-semibold mb-1">Too Low →</p>
+                  <p className="text-red-700 text-sm">{currentPID.tooLow}</p>
                 </div>
-                <div className="bg-orange-950/30 border border-orange-800/40 rounded-xl p-4">
-                  <p className="text-orange-400 text-xs font-semibold mb-1">Too High →</p>
-                  <p className="text-orange-100 text-sm">{currentPID.tooHigh}</p>
+                <div className="rounded-xl p-4" style={{ background: "#FFF7ED", border: "1px solid #FED7AA" }}>
+                  <p className="text-orange-600 text-xs font-semibold mb-1">Too High →</p>
+                  <p className="text-orange-700 text-sm">{currentPID.tooHigh}</p>
                 </div>
               </div>
-              <div className="bg-blue-950/50 border border-blue-800/50 rounded-xl p-4">
-                <p className="text-blue-300 text-xs font-semibold uppercase tracking-wider mb-1">🎯 Exam Tip</p>
-                <p className="text-blue-100 text-sm">{currentPID.examTip}</p>
+              <div className="rounded-xl p-4" style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", borderLeft: "4px solid #1D4ED8" }}>
+                <p className="text-blue-700 text-xs font-semibold uppercase tracking-wider mb-1">🎯 Exam Tip</p>
+                <p className="text-blue-800 text-sm">{currentPID.examTip}</p>
               </div>
             </div>
 
             {/* Control modes */}
-            <h3 className="text-white font-bold text-lg mb-3">Control Modes</h3>
+            <h3 className="text-slate-900 font-bold text-lg mb-3">Control Modes</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {CONTROL_MODES.map(m => (
-                <div key={m.id} className="bg-slate-900 border border-slate-800 rounded-xl p-4">
+                <div key={m.id} className="rounded-xl p-4" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
                   <div className="flex items-center gap-2 mb-2">
                     <span className="w-2 h-2 rounded-full" style={{ background: m.color }} />
-                    <p className="text-white font-bold text-sm">{m.label}</p>
+                    <p className="text-slate-900 font-bold text-sm">{m.label}</p>
                   </div>
-                  <p className="text-slate-300 text-sm">{m.desc}</p>
+                  <p className="text-slate-600 text-sm">{m.desc}</p>
                 </div>
               ))}
             </div>
@@ -630,9 +632,9 @@ export default function ProcessControl() {
         {/* ══════════════════════════════════════════════════════════════════ */}
         {activeTab === "scada" && (
           <div>
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 mb-6">
-              <h2 className="text-white font-bold text-lg mb-1">SCADA System Architecture</h2>
-              <p className="text-slate-400 text-sm mb-5">
+            <div className="rounded-2xl p-6 mb-6" style={{ background: "#fff", border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+              <h2 className="text-slate-900 font-bold text-lg mb-1">SCADA System Architecture</h2>
+              <p className="text-slate-500 text-sm mb-5">
                 SCADA (Supervisory Control and Data Acquisition) systems monitor and control water and wastewater infrastructure across multiple sites. Click each layer to explore its role.
               </p>
 
@@ -644,10 +646,10 @@ export default function ProcessControl() {
                     onClick={() => setActiveSCADA(comp.id)}
                     className={`flex items-center gap-4 p-4 rounded-xl border text-left transition-all ${
                       activeSCADA === comp.id
-                        ? "border-opacity-100 bg-slate-800"
-                        : "border-slate-800 bg-slate-900/50 hover:bg-slate-800/50"
+                        ? "border-opacity-100"
+                        : "border-slate-200 hover:bg-slate-50"
                     }`}
-                    style={{ borderColor: activeSCADA === comp.id ? comp.color : undefined }}
+                    style={{ background: activeSCADA === comp.id ? "#F0F9FF" : "#fff", borderColor: activeSCADA === comp.id ? comp.color : undefined }}
                   >
                     <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0" style={{ background: `${comp.color}20` }}>
                       {comp.icon}
@@ -656,26 +658,26 @@ export default function ProcessControl() {
                       <div className="flex items-center gap-2 mb-0.5">
                         <span className="text-xs font-bold uppercase tracking-wider" style={{ color: comp.color }}>Layer {i + 1}</span>
                       </div>
-                      <p className="text-white font-semibold text-sm">{comp.label}</p>
+                      <p className="text-slate-900 font-semibold text-sm">{comp.label}</p>
                       <p className="text-slate-400 text-xs truncate">{comp.desc}</p>
                     </div>
-                    <span className="text-slate-600 text-xs flex-shrink-0">{activeSCADA === comp.id ? "▼" : "▶"}</span>
+                    <span className="text-slate-400 text-xs flex-shrink-0">{activeSCADA === comp.id ? "▼" : "▶"}</span>
                   </button>
                 ))}
               </div>
 
               {/* Detail panel */}
-              <div className="bg-slate-800/60 border border-slate-700 rounded-xl p-5">
+              <div className="rounded-xl p-5" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-2xl">{currentSCADA.icon}</span>
                   <div>
-                    <p className="text-white font-bold">{currentSCADA.label}</p>
-                    <p className="text-slate-400 text-sm">{currentSCADA.desc}</p>
+                    <p className="text-slate-900 font-bold">{currentSCADA.label}</p>
+                    <p className="text-slate-500 text-sm">{currentSCADA.desc}</p>
                   </div>
                 </div>
                 <ul className="space-y-2">
                   {currentSCADA.details.map(d => (
-                    <li key={d} className="flex gap-2 text-slate-300 text-sm">
+                    <li key={d} className="flex gap-2 text-slate-600 text-sm">
                       <span style={{ color: currentSCADA.color }} className="mt-0.5 flex-shrink-0">→</span>
                       {d}
                     </li>
@@ -685,9 +687,9 @@ export default function ProcessControl() {
             </div>
 
             {/* 4-20mA reference */}
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-              <h3 className="text-white font-bold text-lg mb-4">4–20 mA Signal Standard</h3>
-              <p className="text-slate-400 text-sm mb-4">The 4–20 mA current loop is the universal standard for transmitting process measurements in industrial facilities.</p>
+            <div className="rounded-2xl p-6" style={{ background: "#fff", border: "1px solid #E5E7EB", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+              <h3 className="text-slate-900 font-bold text-lg mb-4">4–20 mA Signal Standard</h3>
+              <p className="text-slate-500 text-sm mb-4">The 4–20 mA current loop is the universal standard for transmitting process measurements in industrial facilities.</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
                 {[
                   { ma: "4 mA",    meaning: "0% (minimum range)",     color: "#3B82F6" },
@@ -695,15 +697,15 @@ export default function ProcessControl() {
                   { ma: "20 mA",   meaning: "100% (maximum range)",   color: "#F59E0B" },
                   { ma: "<3.8 mA", meaning: "Broken wire / fault",    color: "#EF4444" },
                 ].map(s => (
-                  <div key={s.ma} className="bg-slate-800/60 border border-slate-700 rounded-xl p-3 text-center">
+                  <div key={s.ma} className="rounded-xl p-3 text-center" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
                     <p className="font-bold text-lg mb-1" style={{ color: s.color }}>{s.ma}</p>
-                    <p className="text-slate-300 text-xs">{s.meaning}</p>
+                    <p className="text-slate-600 text-xs">{s.meaning}</p>
                   </div>
                 ))}
               </div>
-              <div className="bg-amber-950/40 border border-amber-800/40 rounded-xl p-4">
-                <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-1">⚠ Exam Tip</p>
-                <p className="text-amber-100 text-sm">The 4 mA live zero (not 0 mA) allows the system to detect a broken wire — if the signal drops below ~3.8 mA, an alarm is triggered. This is a key advantage over 0–10V voltage signals.</p>
+              <div className="rounded-xl p-4" style={{ background: "#FFFBEB", border: "1px solid #FDE68A", borderLeft: "4px solid #D97706" }}>
+                <p className="text-amber-700 text-xs font-semibold uppercase tracking-wider mb-1">⚠ Exam Tip</p>
+                <p className="text-amber-800 text-sm">The 4 mA live zero (not 0 mA) allows the system to detect a broken wire — if the signal drops below ~3.8 mA, an alarm is triggered. This is a key advantage over 0–10V voltage signals.</p>
               </div>
             </div>
           </div>
@@ -714,9 +716,9 @@ export default function ProcessControl() {
         {/* ══════════════════════════════════════════════════════════════════ */}
         {activeTab === "tips" && (
           <div>
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 mb-6">
-              <p className="text-slate-300 text-sm">
-                <span className="font-bold text-white">Process control and instrumentation</span> is tested at Class 3 and 4 levels in both Ontario and WPI streams. Questions focus on instrument selection, failure modes, PID tuning, and SCADA alarm management. These topics rarely appear at Class 1–2 but are heavily weighted at senior levels.
+            <div className="rounded-xl p-4 mb-6" style={{ background: "#fff", border: "1px solid #E5E7EB" }}>
+              <p className="text-slate-600 text-sm">
+                <span className="font-bold text-slate-900">Process control and instrumentation</span> is tested at Class 3 and 4 levels in both Ontario and WPI streams. Questions focus on instrument selection, failure modes, PID tuning, and SCADA alarm management. These topics rarely appear at Class 1–2 but are heavily weighted at senior levels.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -727,8 +729,8 @@ export default function ProcessControl() {
                     <h3 className={`font-bold text-lg mb-4 ${c.text}`}>{section.category}</h3>
                     <div className="space-y-3">
                       {section.tips.map((tip, i) => (
-                        <div key={i} className="bg-slate-900/60 rounded-xl p-3">
-                          <p className="text-white text-sm font-medium mb-1">{tip.q}</p>
+                        <div key={i} className="rounded-xl p-3" style={{ background: "#fff" }}>
+                          <p className="text-slate-900 text-sm font-medium mb-1">{tip.q}</p>
                           <p className={`text-xs font-mono ${c.text}`}>{tip.formula}</p>
                         </div>
                       ))}
