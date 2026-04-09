@@ -305,6 +305,7 @@ export default function MockExamShell({
         @media (max-width: 768px) {
           .mes-active-grid { grid-template-columns: 1fr !important; }
           .mes-navigator { display: none !important; }
+          .mes-mobile-progress { display: block !important; }
         }
         @media (max-width: 640px) {
           .mes-results-hero-btns { flex-direction: column !important; }
@@ -587,6 +588,28 @@ export default function MockExamShell({
             >
               Submit ✓
             </button>
+          </div>
+        </div>
+
+        {/* Mobile-only progress bar — hidden on desktop where the navigator sidebar is visible */}
+        <div className="mes-mobile-progress" style={{ maxWidth: 1100, margin: "6px auto 0", display: "none" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
+            <span style={{ fontSize: 11, fontWeight: 600, color: "#64748B" }}>
+              {answered} / {EXAM_QUESTIONS} answered
+            </span>
+            <span style={{ fontSize: 11, fontWeight: 600, color: flagged.length > 0 ? "#D97706" : "#94A3B8" }}>
+              {flagged.length > 0 ? `🚩 ${flagged.length} flagged` : `Q${currentIdx + 1} of ${EXAM_QUESTIONS}`}
+            </span>
+          </div>
+          {/* Track bar */}
+          <div style={{ height: 5, borderRadius: 99, background: "#E2E8F0", overflow: "hidden" }}>
+            <div style={{
+              height: "100%",
+              borderRadius: 99,
+              background: `linear-gradient(90deg, ${accentColor}, ${accentColor2})`,
+              width: `${(answered / EXAM_QUESTIONS) * 100}%`,
+              transition: "width 0.3s ease",
+            }} />
           </div>
         </div>
       </div>
