@@ -81,6 +81,7 @@ export const NAV_LINKS = [
 ];
 
 // Grouped sections for the mobile drawer
+// Each section has a compact 2-column grid of links
 const DRAWER_SECTIONS = [
   {
     key: "oit",
@@ -197,7 +198,9 @@ function getContextualPrimary(currentPath: string): string[] {
   if (currentPath.startsWith("/wqa")) return ["/wqa", "/wqa-mock", "/formulas-wqa", "/career", "/pricing", "/account"];
   // Formula / tool pages
   if (currentPath.startsWith("/formulas")) return ["/formulas", "/quiz", "/career", "/pricing", "/about", "/account"];
-  if (currentPath === "/instrumentation") return ["/instrumentation", "/pumping", "/process", "/formulas", "/career", "/account"];
+  if (currentPath === "/instrumentation") return ["/instrumentation", "/quiz", "/formulas", "/career", "/pricing", "/account"];
+  if (currentPath === "/process") return ["/process", "/wastewater", "/quiz", "/formulas", "/career", "/account"];
+  if (currentPath === "/wastewater") return ["/wastewater", "/process", "/quiz", "/formulas", "/career", "/account"];
   if (currentPath === "/career") return ["/career", "/quiz", "/formulas", "/pricing", "/about", "/account"];
   if (currentPath === "/pricing") return ["/pricing", "/quiz", "/formulas", "/career", "/about", "/account"];
   if (currentPath === "/account") return ["/account", "/quiz", "/formulas", "/career", "/pricing", "/about"];
@@ -233,6 +236,9 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
     };
   }, [open]);
 
+  // Close drawer on navigation
+  const close = () => setOpen(false);
+
   // Contextual primary links based on current page
   const PRIMARY = getContextualPrimary(currentPath);
 
@@ -243,14 +249,36 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
     setExpandedSection(prev => prev === key ? null : key);
   };
 
+  // Which section is currently shown open (either user-tapped or auto-expanded for active page)
+  const openSection = expandedSection ?? activeSection;
+
   return (
     <>
       <style>{`
         @media (max-width: 640px) {
           .site-nav-desktop { display: none !important; }
         }
-        .drawer-section-link:hover {
-          background: rgba(255,255,255,0.06) !important;
+        .drawer-link-btn {
+          display: block;
+          width: 100%;
+          padding: 9px 12px;
+          border-radius: 8px;
+          font-size: 13px;
+          font-weight: 500;
+          color: rgba(255,255,255,0.75);
+          background: transparent;
+          border: none;
+          text-align: left;
+          cursor: pointer;
+          font-family: inherit;
+          transition: background 0.12s, color 0.12s;
+        }
+        .drawer-link-btn:hover {
+          background: rgba(255,255,255,0.07);
+          color: #fff;
+        }
+        .drawer-link-btn.active {
+          font-weight: 700;
         }
       `}</style>
       <nav style={{
@@ -353,7 +381,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
       {/* Full-screen backdrop */}
       {open && (
         <div
-          onClick={() => setOpen(false)}
+          onClick={close}
           style={{
             position: "fixed",
             inset: 0,
@@ -363,181 +391,146 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
         />
       )}
 
-      {/* Full-width drawer panel */}
+      {/* Drawer panel — slides down from the nav bar, height is auto (content-driven, no scroll) */}
       <div style={{
         position: "fixed",
         top: 56,
         left: 0,
         right: 0,
-        bottom: 0,
         background: "#0F172A",
         zIndex: 199,
-        transform: open ? "translateY(0)" : "translateY(-100%)",
+        transform: open ? "translateY(0)" : "translateY(calc(-100% - 56px))",
         transition: "transform 0.28s cubic-bezier(0.4,0,0.2,1)",
-        overflowY: "auto",
-        display: "flex",
-        flexDirection: "column",
+        borderBottom: "1px solid rgba(255,255,255,0.1)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
       }}>
-        {/* Quick actions row */}
+        {/* Quick actions — 4 tiles */}
         <div style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 10,
-          padding: "16px 16px 12px",
+          gridTemplateColumns: "1fr 1fr 1fr 1fr",
+          gap: 8,
+          padding: "12px 16px 10px",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
         }}>
-          <Link href="/quiz">
-            <div onClick={() => setOpen(false)} style={{
-              padding: "14px 12px",
-              borderRadius: 12,
-              background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
-              color: "#fff",
-              fontSize: 13,
-              fontWeight: 700,
-              textAlign: "center",
-              cursor: "pointer",
-            }}>
-              📝 OIT Practice
-            </div>
-          </Link>
-          <Link href="/process">
-            <div onClick={() => setOpen(false)} style={{
-              padding: "14px 12px",
-              borderRadius: 12,
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              color: "#fff",
-              fontSize: 13,
-              fontWeight: 600,
-              textAlign: "center",
-              cursor: "pointer",
-            }}>
-              🏭 Process Guide
-            </div>
-          </Link>
-          <Link href="/formulas">
-            <div onClick={() => setOpen(false)} style={{
-              padding: "14px 12px",
-              borderRadius: 12,
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              color: "#fff",
-              fontSize: 13,
-              fontWeight: 600,
-              textAlign: "center",
-              cursor: "pointer",
-            }}>
-              📐 Formulas
-            </div>
-          </Link>
-          <Link href="/career">
-            <div onClick={() => setOpen(false)} style={{
-              padding: "14px 12px",
-              borderRadius: 12,
-              background: "rgba(255,255,255,0.07)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              color: "#fff",
-              fontSize: 13,
-              fontWeight: 600,
-              textAlign: "center",
-              cursor: "pointer",
-            }}>
-              🗺️ Career Map
-            </div>
-          </Link>
+          {[
+            { label: "📝 OIT Practice", href: "/quiz", accent: "linear-gradient(135deg, #1D4ED8, #0E7490)" },
+            { label: "🏭 Process Guide", href: "/process", accent: null },
+            { label: "📐 Formulas", href: "/formulas", accent: null },
+            { label: "🗺️ Career Map", href: "/career", accent: null },
+          ].map(tile => (
+            <Link key={tile.href} href={tile.href}>
+              <div
+                onClick={close}
+                style={{
+                  padding: "10px 6px",
+                  borderRadius: 10,
+                  background: tile.accent ?? "rgba(255,255,255,0.07)",
+                  border: tile.accent ? "none" : "1px solid rgba(255,255,255,0.1)",
+                  color: "#fff",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  textAlign: "center",
+                  cursor: "pointer",
+                  lineHeight: 1.3,
+                }}
+              >
+                {tile.label}
+              </div>
+            </Link>
+          ))}
         </div>
 
-        {/* Collapsible sections */}
-        <div style={{ flex: 1, overflowY: "auto", padding: "8px 0 32px" }}>
+        {/* Section tabs row */}
+        <div style={{
+          display: "flex",
+          overflowX: "auto",
+          gap: 0,
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
+          scrollbarWidth: "none",
+        }}>
           {DRAWER_SECTIONS.map(section => {
-            const isExpanded = expandedSection === section.key || activeSection === section.key;
-            const hasActive = section.links.some(l => l.href === currentPath);
+            const isOpen = openSection === section.key;
             return (
-              <div key={section.key}>
-                {/* Section header */}
-                <button
-                  onClick={() => toggleSection(section.key)}
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    padding: "14px 20px",
-                    background: hasActive ? "rgba(255,255,255,0.04)" : "transparent",
-                    border: "none",
-                    borderBottom: "1px solid rgba(255,255,255,0.06)",
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                  }}
-                >
-                  <span style={{
-                    fontSize: 13,
-                    fontWeight: 700,
-                    color: hasActive ? section.color : "rgba(255,255,255,0.85)",
-                    letterSpacing: "-0.01em",
-                  }}>
-                    {section.label}
-                  </span>
-                  <span style={{
-                    fontSize: 12,
-                    color: "rgba(255,255,255,0.4)",
-                    transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
-                    transition: "transform 0.2s",
-                    display: "inline-block",
-                  }}>▾</span>
-                </button>
-
-                {/* Section links */}
-                {isExpanded && (
-                  <div style={{ background: "rgba(0,0,0,0.2)" }}>
-                    {section.links.map(link => (
-                      <Link key={link.href} href={link.href}>
-                        <div
-                          className="drawer-section-link"
-                          onClick={() => setOpen(false)}
-                          style={{
-                            padding: "12px 20px 12px 32px",
-                            color: currentPath === link.href ? section.color : "rgba(255,255,255,0.65)",
-                            fontSize: 14,
-                            fontWeight: currentPath === link.href ? 700 : 400,
-                            cursor: "pointer",
-                            borderLeft: currentPath === link.href ? `3px solid ${section.color}` : "3px solid transparent",
-                            background: currentPath === link.href ? "rgba(255,255,255,0.04)" : "transparent",
-                            transition: "background 0.12s",
-                          }}
-                        >
-                          {link.label}
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <button
+                key={section.key}
+                onClick={() => toggleSection(section.key)}
+                style={{
+                  flexShrink: 0,
+                  padding: "10px 14px",
+                  background: "transparent",
+                  border: "none",
+                  borderBottom: isOpen ? `2px solid ${section.color}` : "2px solid transparent",
+                  color: isOpen ? section.color : "rgba(255,255,255,0.5)",
+                  fontSize: 11,
+                  fontWeight: isOpen ? 700 : 500,
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                  whiteSpace: "nowrap",
+                  transition: "color 0.15s, border-color 0.15s",
+                }}
+              >
+                {section.label.split(" — ")[0]}
+              </button>
             );
           })}
+        </div>
 
-          {/* Account / misc links */}
-          <div style={{ padding: "16px 20px 0", marginTop: 8, borderTop: "1px solid rgba(255,255,255,0.08)", display: "flex", gap: 12, flexWrap: "wrap" }}>
-            {[
-              { label: "🎫 My Passes", href: "/account" },
-              { label: "ℹ️ About", href: "/about" },
-              { label: "💰 Pricing", href: "/pricing" },
-            ].map(l => (
-              <Link key={l.href} href={l.href}>
-                <span
-                  onClick={() => setOpen(false)}
-                  style={{
-                    fontSize: 13,
-                    color: currentPath === l.href ? "#60A5FA" : "rgba(255,255,255,0.5)",
-                    fontWeight: currentPath === l.href ? 700 : 400,
-                    cursor: "pointer",
-                  }}
-                >
-                  {l.label}
-                </span>
-              </Link>
-            ))}
-          </div>
+        {/* Active section links — 2-column grid, compact */}
+        {openSection && (() => {
+          const section = DRAWER_SECTIONS.find(s => s.key === openSection);
+          if (!section) return null;
+          return (
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 2,
+              padding: "8px 12px 12px",
+            }}>
+              {section.links.map(link => (
+                <Link key={link.href} href={link.href}>
+                  <button
+                    className={`drawer-link-btn${currentPath === link.href ? " active" : ""}`}
+                    onClick={close}
+                    style={{
+                      color: currentPath === link.href ? section.color : undefined,
+                      background: currentPath === link.href ? "rgba(255,255,255,0.05)" : undefined,
+                    }}
+                  >
+                    {link.label}
+                  </button>
+                </Link>
+              ))}
+            </div>
+          );
+        })()}
+
+        {/* Footer row — account / misc */}
+        <div style={{
+          display: "flex",
+          gap: 16,
+          padding: "10px 16px 14px",
+          borderTop: "1px solid rgba(255,255,255,0.07)",
+          flexWrap: "wrap",
+        }}>
+          {[
+            { label: "🎫 My Passes", href: "/account" },
+            { label: "💰 Pricing", href: "/pricing" },
+            { label: "ℹ️ About", href: "/about" },
+          ].map(l => (
+            <Link key={l.href} href={l.href}>
+              <span
+                onClick={close}
+                style={{
+                  fontSize: 12,
+                  color: currentPath === l.href ? "#60A5FA" : "rgba(255,255,255,0.45)",
+                  fontWeight: currentPath === l.href ? 700 : 400,
+                  cursor: "pointer",
+                }}
+              >
+                {l.label}
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
     </>
