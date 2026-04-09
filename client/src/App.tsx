@@ -13,6 +13,7 @@ import Process from "./pages/Process";
 import Wastewater from "./pages/Wastewater";
 import CareerMap from "./pages/CareerMap";
 import PumpingSystems from "./pages/PumpingSystems";
+import ProcessControl from "./pages/ProcessControl";
 import MockExam from "./pages/MockExam";
 import ChemCalc from "./pages/ChemCalc";
 import MathPractice from "./pages/MathPractice";
@@ -112,6 +113,7 @@ function Router() {
       <Route path={"/wastewater"} component={Wastewater} />
       <Route path={"/career"} component={CareerMap} />
       <Route path={"/pumping"} component={PumpingSystems} />
+      <Route path={"/instrumentation"} component={ProcessControl} />
       <Route path={"/mock-exam"} component={MockExam} />
       <Route path={"/chem-calc"} component={ChemCalc} />
       <Route path={"/math-practice"} component={MathPractice} />

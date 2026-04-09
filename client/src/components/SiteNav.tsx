@@ -70,6 +70,7 @@ export const NAV_LINKS = [
   { label: "🏭 Process Guide", href: "/process" },
   { label: "♻️ Wastewater",    href: "/wastewater" },
   { label: "⚙️ Pumping",       href: "/pumping" },
+  { label: "🎛️ Instrumentation", href: "/instrumentation" },
   { label: "🧮 Math Practice", href: "/math-practice" },
   { label: "🧪 Chem Calc",     href: "/chem-calc" },
   { label: "🔬 Lab",           href: "/lab" },
@@ -118,6 +119,7 @@ function getContextualPrimary(currentPath: string): string[] {
   if (currentPath.startsWith("/wqa")) return ["/wqa", "/wqa-mock", "/formulas-wqa", "/career", "/pricing", "/account"];
   // Formula / tool pages
   if (currentPath.startsWith("/formulas")) return ["/formulas", "/quiz", "/career", "/pricing", "/about", "/account"];
+  if (currentPath === "/instrumentation") return ["/instrumentation", "/pumping", "/process", "/formulas", "/career", "/account"];
   if (currentPath === "/career") return ["/career", "/quiz", "/formulas", "/pricing", "/about", "/account"];
   if (currentPath === "/pricing") return ["/pricing", "/quiz", "/formulas", "/career", "/about", "/account"];
   if (currentPath === "/account") return ["/account", "/quiz", "/formulas", "/career", "/pricing", "/about"];
