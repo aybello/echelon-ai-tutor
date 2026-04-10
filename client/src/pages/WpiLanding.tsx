@@ -130,28 +130,28 @@ const CURRICULUM = [
     classes: [
       {
         label: "Class I",
-        questions: 150,
+        questions: 501,
         color: "#0369A1",
         quizHref: "/wpi-class1-water-dist",
         topics: ["Distribution system basics & pipe materials", "Pressure & flow fundamentals", "Chlorine residual maintenance", "Valve & hydrant operation", "Regulations & safety"],
       },
       {
         label: "Class II",
-        questions: 136,
+        questions: 500,
         color: "#0F766E",
         quizHref: "/wpi-class2-water-dist",
         topics: ["Hydraulic analysis & pressure zone design", "Water quality management in distribution", "Cross-connection control & backflow prevention", "System maintenance & rehabilitation", "Regulatory compliance"],
       },
       {
         label: "Class III",
-        questions: 150,
+        questions: 500,
         color: "#1D4ED8",
         quizHref: "/wpi-class3-water-dist",
         topics: ["Advanced hydraulic modelling", "Transmission main design & multi-zone systems", "SCADA & automation", "Water quality monitoring programs", "Senior operator responsibilities"],
       },
       {
         label: "Class IV",
-        questions: 150,
+        questions: 500,
         color: "#4C1D95",
         quizHref: "/wpi-class4-water-dist",
         topics: ["Large-scale system management", "Asset management & capital planning", "Advanced water quality & DWQMS", "Strategic regulatory compliance", "Emergency response & resilience"],
@@ -163,28 +163,28 @@ const CURRICULUM = [
     classes: [
       {
         label: "Class I",
-        questions: 150,
+        questions: 500,
         color: "#065F46",
         quizHref: "/wpi-class1-water-coll",
         topics: ["Collection system components & pipe materials", "Lift station operation & maintenance", "Confined space & safety regulations", "Basic hydraulics & flow calculations", "Environmental & public health"],
       },
       {
         label: "Class II",
-        questions: 150,
+        questions: 504,
         color: "#1E3A5F",
         quizHref: "/wpi-class2-water-coll",
         topics: ["Advanced collection system design", "Intermediate lift station operations", "System maintenance & rehabilitation", "Hydraulics & flow analysis", "Regulatory compliance & reporting"],
       },
       {
         label: "Class III",
-        questions: 150,
+        questions: 504,
         color: "#7C3AED",
         quizHref: "/wpi-class3-water-coll",
         topics: ["Complex system operations & SCADA", "Advanced pump station engineering", "System hydraulic modelling", "Advanced maintenance management", "Leadership, safety & regulatory management"],
       },
       {
         label: "Class IV",
-        questions: 150,
+        questions: 504,
         color: "#7F1D1D",
         quizHref: "/wpi-class4-water-coll",
         topics: ["System planning & capital improvement", "Advanced engineering & design", "Utility management & leadership", "Advanced regulatory & environmental management", "Emerging technologies & innovation"],
@@ -207,17 +207,17 @@ const WW_CLASSES = [
 ];
 
 const DIST_CLASSES = [
-  { level: "CLASS I", questions: "150", price: "CA$99", priceNum: 9900, color: "#0369A1", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class1-water-dist" },
-  { level: "CLASS II", questions: "150", price: "CA$149", priceNum: 14900, color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-water-dist" },
-  { level: "CLASS III", questions: "150", price: "CA$249", priceNum: 24900, color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-water-dist" },
-  { level: "CLASS IV", questions: "150", price: "CA$299", priceNum: 29900, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", quizHref: "/wpi-class4-water-dist", badge: "👑 Chief Operator" },
+  { level: "CLASS I", questions: "501", price: "CA$99", priceNum: 9900, color: "#0369A1", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class1-water-dist" },
+  { level: "CLASS II", questions: "500", price: "CA$149", priceNum: 14900, color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-water-dist" },
+  { level: "CLASS III", questions: "500", price: "CA$249", priceNum: 24900, color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-water-dist" },
+  { level: "CLASS IV", questions: "500", price: "CA$299", priceNum: 29900, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", quizHref: "/wpi-class4-water-dist", badge: "👑 Chief Operator" },
 ];
 
 const COLL_CLASSES = [
-  { level: "CLASS I", questions: "150", price: "CA$99", priceNum: 9900, color: "#065F46", bg: "#ECFDF5", border: "#A7F3D0", quizHref: "/wpi-class1-water-coll" },
-  { level: "CLASS II", questions: "150", price: "CA$149", priceNum: 14900, color: "#1E3A5F", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class2-water-coll" },
-  { level: "CLASS III", questions: "150", price: "CA$249", priceNum: 24900, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", quizHref: "/wpi-class3-water-coll" },
-  { level: "CLASS IV", questions: "150", price: "CA$299", priceNum: 29900, color: "#7F1D1D", bg: "#FEF2F2", border: "#FECACA", quizHref: "/wpi-class4-water-coll", badge: "👑 Chief Operator" },
+  { level: "CLASS I", questions: "500", price: "CA$99", priceNum: 9900, color: "#065F46", bg: "#ECFDF5", border: "#A7F3D0", quizHref: "/wpi-class1-water-coll" },
+  { level: "CLASS II", questions: "504", price: "CA$149", priceNum: 14900, color: "#1E3A5F", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class2-water-coll" },
+  { level: "CLASS III", questions: "504", price: "CA$249", priceNum: 24900, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", quizHref: "/wpi-class3-water-coll" },
+  { level: "CLASS IV", questions: "504", price: "CA$299", priceNum: 29900, color: "#7F1D1D", bg: "#FEF2F2", border: "#FECACA", quizHref: "/wpi-class4-water-coll", badge: "👑 Chief Operator" },
 ];
 
 const FAQS = [

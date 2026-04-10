@@ -1559,4 +1559,3261 @@ export const WPI_CLASS3_WATER_DIST_MODULES = [
   { id: "equipment-installation-om-repair", name: "Equipment Installation, O&M & Repair", icon: "⚙️", count: 25 },
   { id: "water-quality-monitoring-lab", name: "Water Quality Monitoring & Lab", icon: "🧪", count: 25 },
   { id: "security-safety-admin", name: "Security, Safety, Admin & Public Interactions", icon: "🛡️", count: 27 },
+,
+  {
+    id: 119,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a hydraulic transient analysis in distribution system design?",
+    options: ["Calculate average daily demand", "Identify pressure surges and negative pressures caused by rapid flow changes", "Design pipe diameters for peak flow", "Determine reservoir sizing"],
+    answer: 1,
+    explanation: "Hydraulic transient analysis (water hammer analysis) identifies pressure surges and potential negative pressures caused by rapid valve closures, pump starts/stops, or pipe breaks, enabling protective measures to be designed."
+  },
+  {
+    id: 120,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a pressure management zone (PMZ) in a distribution system?",
+    options: ["Separate water of different quality", "Reduce average system pressure to decrease leakage and pipe stress", "Isolate contaminated sections", "Separate fire flow from domestic supply"],
+    answer: 1,
+    explanation: "Pressure management zones use PRVs to reduce average system pressure. Lower pressure reduces leakage rates (leakage is proportional to pressure), extends pipe life, and reduces burst frequency."
+  },
+  {
+    id: 121,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "A distribution system has an average pressure of 80 psi. A pressure management program reduces it to 60 psi. Using the Fixed and Variable Area Discharge (FAVAD) concept, what is the approximate reduction in leakage?",
+    options: ["25%", "33%", "50%", "Depends on pipe material only"],
+    answer: 0,
+    explanation: "Using FAVAD, leakage reduction ≈ (P1-P2)/P1 × N1 where N1 is the leakage exponent (typically 0.5-1.5). For a rough estimate with N1=1: (80-60)/80 = 25% reduction. Actual reduction depends on pipe condition."
+  },
+  {
+    id: 122,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a surge suppressor (surge tank) in a pump station?",
+    options: ["Increase pump efficiency", "Absorb pressure transients caused by pump starts and stops", "Store water for peak demand", "Reduce pump noise"],
+    answer: 1,
+    explanation: "Surge suppressors absorb the pressure wave (water hammer) created when pumps start or stop suddenly, protecting pipes and equipment from damage caused by pressure transients."
+  },
+  {
+    id: 123,
+    module: "Distribution System Components",
+    difficulty: "easy",
+    question: "What is the minimum diameter for a water main to be considered a 'distribution main' (as opposed to a service line) in most Canadian standards?",
+    options: ["25 mm (1 inch)", "50 mm (2 inch)", "100 mm (4 inch)", "150 mm (6 inch)"],
+    answer: 2,
+    explanation: "Most Canadian standards define distribution mains as pipes 100 mm (4 inch) diameter and larger. Pipes smaller than 100 mm are typically service lines or small-diameter mains."
+  },
+  {
+    id: 124,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a flow control valve (FCV) at a pressure zone boundary?",
+    options: ["Prevent backflow between zones", "Limit the flow from a high-pressure zone to a low-pressure zone", "Measure flow between zones", "Reduce pressure in the high zone"],
+    answer: 1,
+    explanation: "An FCV limits flow from a high-pressure zone to a low-pressure zone to a set maximum, preventing excessive flow that could deplete the high zone or cause pressure problems in the low zone."
+  },
+  {
+    id: 125,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'pipe burst' detection system?",
+    options: ["Prevent pipe bursts through pressure control", "Detect sudden large pressure drops or flow increases that indicate a main break", "Monitor pipe corrosion", "Measure pipe wall thickness"],
+    answer: 1,
+    explanation: "Pipe burst detection systems use pressure and flow sensors to identify the sudden changes (pressure drop, flow increase) that indicate a main break, enabling rapid response to minimize water loss and service disruption."
+  },
+  {
+    id: 126,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a cathodic protection test station?",
+    options: ["Test water quality at the pipe", "Monitor the effectiveness of cathodic protection on buried metal pipes", "Test pipe pressure", "Measure flow in the pipe"],
+    answer: 1,
+    explanation: "Cathodic protection test stations provide access points to measure pipe-to-soil potential, verifying that the cathodic protection system is maintaining adequate protection levels on buried metal pipes."
+  },
+  {
+    id: 127,
+    module: "Distribution System Components",
+    difficulty: "easy",
+    question: "What is the purpose of a thrust block at a pipe fitting?",
+    options: ["Support the pipe weight", "Resist the unbalanced hydraulic thrust forces at bends, tees, and dead ends", "Prevent pipe corrosion", "Anchor the pipe against settlement"],
+    answer: 1,
+    explanation: "Thrust blocks are concrete structures placed at pipe fittings (bends, tees, reducers, dead ends) to resist the unbalanced hydraulic thrust forces that would otherwise push the pipe apart at joints."
+  },
+  {
+    id: 128,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a pipe bedding material in a trench?",
+    options: ["Prevent pipe corrosion", "Provide uniform support for the pipe and protect it from point loads", "Improve drainage around the pipe", "Prevent frost heave"],
+    answer: 1,
+    explanation: "Proper pipe bedding (typically granular material) provides uniform support along the pipe barrel, distributing loads evenly and preventing point loads that could crack or deform the pipe."
+  },
+  {
+    id: 129,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'pressure-dependent demand' model in hydraulic analysis?",
+    options: ["Model demand as constant regardless of pressure", "Model demand as varying with pressure, more accurately representing real system behaviour", "Calculate fire flow requirements", "Design pump curves"],
+    answer: 1,
+    explanation: "Pressure-dependent demand models recognize that actual demand varies with pressure — at very low pressures, demand decreases (taps don't flow as much). This is more realistic than assuming constant demand regardless of pressure."
+  },
+  {
+    id: 130,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water age' analysis in a distribution system model?",
+    options: ["Determine pipe age for replacement planning", "Estimate how long water has been in the system to assess disinfectant decay and quality", "Calculate system hydraulic age", "Determine meter replacement schedules"],
+    answer: 1,
+    explanation: "Water age analysis estimates the time water has spent in the distribution system. Older water has lower disinfectant residuals and higher DBP concentrations, identifying areas at risk of water quality problems."
+  },
+  {
+    id: 131,
+    module: "Distribution System Components",
+    difficulty: "easy",
+    question: "What is the purpose of a valve box (valve cover)?",
+    options: ["Protect the valve from traffic loads and provide access for operation", "Prevent valve corrosion", "Measure valve position", "Anchor the valve in the trench"],
+    answer: 0,
+    explanation: "A valve box (curb box) protects the buried valve from traffic loads and soil pressure while providing a surface access point for operating the valve with a valve key without excavation."
+  },
+  {
+    id: 132,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pipe condition index' (PCI)?",
+    options: ["Measure water pressure in the pipe", "Provide a standardized rating of pipe structural condition to prioritize rehabilitation", "Calculate pipe flow capacity", "Determine pipe material"],
+    answer: 1,
+    explanation: "A PCI provides a standardized numerical rating (typically 0-100) of pipe structural condition based on inspection data, enabling consistent comparison and prioritization of rehabilitation or replacement."
+  },
+  {
+    id: 133,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'risk matrix' in distribution system asset management?",
+    options: ["Calculate replacement costs", "Combine probability of failure with consequence of failure to prioritize interventions", "Determine pipe age", "Schedule routine maintenance"],
+    answer: 1,
+    explanation: "A risk matrix plots probability of failure (PoF) against consequence of failure (CoF) for each asset. High-risk assets (high PoF × high CoF) are prioritized for inspection, rehabilitation, or replacement."
+  },
+  {
+    id: 134,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'service connection' in a distribution system?",
+    options: ["Connect two water mains", "Deliver water from the distribution main to individual customers", "Connect pressure zones", "Connect the system to the treatment plant"],
+    answer: 1,
+    explanation: "A service connection (service line) delivers water from the distribution main to an individual customer's property, typically including a corporation stop, service pipe, curb stop, and meter."
+  },
+  {
+    id: 135,
+    module: "Distribution System Components",
+    difficulty: "easy",
+    question: "What is the purpose of a 'tracer wire' installed with a non-metallic pipe?",
+    options: ["Carry electrical current for cathodic protection", "Enable electronic location of the buried non-metallic pipe", "Measure pipe temperature", "Prevent pipe flotation"],
+    answer: 1,
+    explanation: "Tracer wire (locating wire) is installed alongside non-metallic pipes (PVC, HDPE) to enable electronic pipe locating. Without tracer wire, non-metallic pipes are very difficult to locate after burial."
+  },
+  {
+    id: 136,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'line stop' (line stopping) procedure?",
+    options: ["Stop water flow in a main without shutting off service to customers", "Test pipe pressure", "Install a new valve in a live main", "Repair a leak without excavation"],
+    answer: 0,
+    explanation: "Line stopping temporarily plugs a live water main using a specialized fitting and plug, allowing repairs or modifications downstream without shutting off service to customers. It is used when no isolation valve is available."
+  },
+  {
+    id: 137,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'hot tap' (wet tap) procedure?",
+    options: ["Repair a leak in a pressurized main", "Connect a new branch to a live pressurized main without shutting down service", "Test pipe pressure", "Install a valve in a live main"],
+    answer: 1,
+    explanation: "A hot tap (wet tap) allows a new branch connection to be made to a live pressurized main using a drilling machine and corporation stop, without interrupting service to existing customers."
+  },
+  {
+    id: 138,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'clamp repair' on a water main?",
+    options: ["Permanently replace a damaged pipe section", "Provide a temporary or permanent repair for a leak or crack in a pipe", "Increase pipe pressure rating", "Install a new service connection"],
+    answer: 1,
+    explanation: "Repair clamps (full-circle clamps, saddle clamps) are installed over a leak or crack in a water main to stop the leak. They can be temporary (until permanent repair) or permanent for minor defects."
+  },
+  {
+    id: 139,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'pressure test' after installing a new water main?",
+    options: ["Verify the pipe material", "Verify the integrity of the pipe and joints before putting the main into service", "Measure flow capacity", "Test valve operation"],
+    answer: 1,
+    explanation: "Pressure testing (hydrostatic testing) verifies that a newly installed main and all joints can withstand the design pressure without leaking, before the main is put into service."
+  },
+  {
+    id: 140,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the standard pressure test requirement for a new water main in most Canadian jurisdictions?",
+    options: ["Test at operating pressure for 1 hour", "Test at 1.5× working pressure for 2 hours with acceptable leakage limits", "Test at 200 psi for 24 hours", "Test at 100 psi for 30 minutes"],
+    answer: 1,
+    explanation: "Most standards (AWWA C600, CSA B64) require new mains to be pressure tested at 1.5 times the working pressure for 2 hours, with leakage not exceeding specified limits based on pipe diameter and length."
+  },
+  {
+    id: 141,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'disinfection' procedure after installing or repairing a water main?",
+    options: ["Test pipe pressure", "Eliminate any contamination introduced during construction before putting the main into service", "Measure pipe flow capacity", "Test valve operation"],
+    answer: 1,
+    explanation: "New or repaired mains must be disinfected (typically with chlorine solution per AWWA C651) to eliminate any contamination (bacteria, soil, construction materials) introduced during installation before connecting to the distribution system."
+  },
+  {
+    id: 142,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'megalug' or 'restrained joint' fitting?",
+    options: ["Increase pipe flow capacity", "Mechanically restrain pipe joints to resist thrust forces without concrete thrust blocks", "Repair a leaking joint", "Connect pipes of different materials"],
+    answer: 1,
+    explanation: "Restrained joints (megalugs, retainer glands) use mechanical gripping to resist thrust forces at fittings and bends, eliminating the need for concrete thrust blocks in many applications."
+  },
+  {
+    id: 143,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the minimum chlorine concentration required for disinfecting a new water main using the continuous feed method (AWWA C651)?",
+    options: ["0.5 mg/L for 24 hours", "25 mg/L for 24 hours", "50 mg/L for 24 hours", "100 mg/L for 1 hour"],
+    answer: 1,
+    explanation: "AWWA C651 requires a minimum free chlorine residual of 25 mg/L maintained for 24 hours using the continuous feed method for new main disinfection."
+  },
+  {
+    id: 144,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pipe locating' survey before excavation?",
+    options: ["Measure pipe flow", "Identify the location of all buried utilities to prevent damage during excavation", "Test pipe pressure", "Inspect pipe condition"],
+    answer: 1,
+    explanation: "Pipe locating surveys identify the location and depth of all buried utilities (water, sewer, gas, electrical, telecom) before excavation to prevent accidental damage, service disruption, and safety hazards."
+  },
+  {
+    id: 145,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'pipe bursting' rehabilitation method?",
+    options: ["Repair a burst pipe", "Replace an existing pipe by fracturing it outward while simultaneously pulling in a new pipe", "Test pipe structural integrity", "Clean the interior of a pipe"],
+    answer: 1,
+    explanation: "Pipe bursting is a trenchless rehabilitation method where a bursting head fractures the existing pipe outward while simultaneously pulling in a new pipe of equal or larger diameter, minimizing excavation."
+  },
+  {
+    id: 146,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'joint restraint' system in a ductile iron pipe installation?",
+    options: ["Prevent pipe corrosion", "Prevent pipe joints from separating under thrust forces or ground movement", "Improve pipe flow capacity", "Connect pipes of different diameters"],
+    answer: 1,
+    explanation: "Joint restraint systems (harnesses, tie rods, restrained couplings) prevent ductile iron pipe joints from separating under hydraulic thrust forces, ground movement, or pressure surges."
+  },
+  {
+    id: 147,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'valve exercising' program?",
+    options: ["Test valve water quality", "Operate valves regularly to ensure they function properly and can be fully closed in an emergency", "Measure valve flow capacity", "Lubricate valve stems only"],
+    answer: 1,
+    explanation: "Valve exercising programs operate all distribution valves on a regular schedule to ensure they function properly, can be fully closed, and are not seized — critical for emergency isolation capability."
+  },
+  {
+    id: 148,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump curve' in pump selection and operation?",
+    options: ["Show pump maintenance schedule", "Show the relationship between pump head and flow rate for a specific pump", "Calculate pump power consumption", "Determine pump installation requirements"],
+    answer: 1,
+    explanation: "A pump curve (head-flow curve) shows how the pump head (pressure) varies with flow rate. The operating point is where the pump curve intersects the system curve, determining actual flow and head delivered."
+  },
+  {
+    id: 149,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'variable frequency drive' (VFD) on a distribution pump?",
+    options: ["Protect the motor from overload", "Control pump speed to match system demand, improving efficiency and reducing water hammer", "Increase pump pressure", "Monitor pump vibration"],
+    answer: 1,
+    explanation: "VFDs adjust pump motor speed to match actual system demand, eliminating the need for on/off cycling. This improves energy efficiency, reduces water hammer from pump starts/stops, and extends pump life."
+  },
+  {
+    id: 150,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump efficiency test'?",
+    options: ["Verify pump flow rate only", "Compare actual pump performance to the design curve to identify deterioration", "Test pump motor insulation", "Measure pump noise levels"],
+    answer: 1,
+    explanation: "Pump efficiency tests measure actual head, flow, and power consumption and compare them to the design curve. Deterioration in efficiency (worn impeller, seal wear) indicates the need for maintenance or replacement."
+  },
+  {
+    id: 151,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'pump priming' procedure?",
+    options: ["Add chemicals to the pump", "Fill the pump casing with water to prevent dry running and enable the pump to develop suction", "Test pump pressure", "Lubricate the pump bearings"],
+    answer: 1,
+    explanation: "Priming fills the pump casing and suction line with water, removing air. Centrifugal pumps cannot develop suction when air-filled (they are not self-priming), so priming is required before starting."
+  },
+  {
+    id: 152,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'mechanical seal' in a centrifugal pump?",
+    options: ["Seal the pump discharge", "Prevent water from leaking along the pump shaft where it exits the casing", "Seal the pump suction", "Prevent air from entering the pump"],
+    answer: 1,
+    explanation: "Mechanical seals prevent water from leaking along the rotating pump shaft where it passes through the pump casing. They replace traditional packing and require less maintenance."
+  },
+  {
+    id: 153,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'net positive suction head' (NPSH) calculation in pump design?",
+    options: ["Calculate pump discharge pressure", "Ensure the pump suction conditions prevent cavitation", "Determine pump flow rate", "Calculate pump efficiency"],
+    answer: 1,
+    explanation: "NPSH analysis ensures the available suction head (NPSHa) exceeds the pump's required suction head (NPSHr). If NPSHa < NPSHr, cavitation occurs — vapor bubbles form and collapse violently, damaging the impeller."
+  },
+  {
+    id: 154,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station wet well'?",
+    options: ["Store treated water", "Collect water from the distribution system before pumping", "Provide suction head for pumps", "Store chemicals for dosing"],
+    answer: 2,
+    explanation: "A pump station wet well provides a buffer storage volume that gives pumps adequate suction head and allows them to operate efficiently without short-cycling. It also accommodates variations in inflow."
+  },
+  {
+    id: 155,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'check valve' on a pump discharge?",
+    options: ["Control pump speed", "Prevent backflow through the pump when it stops", "Measure pump flow", "Reduce pump pressure"],
+    answer: 1,
+    explanation: "A check valve on the pump discharge prevents reverse flow through the pump when it stops, protecting the pump from reverse rotation damage and preventing system drainage."
+  },
+  {
+    id: 156,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station emergency generator'?",
+    options: ["Provide power for lighting only", "Maintain pump operations during power outages to ensure continuous water supply", "Charge backup batteries", "Power SCADA systems only"],
+    answer: 1,
+    explanation: "Emergency generators provide backup power to maintain pump operations during power outages, ensuring continuous water supply for domestic use, fire fighting, and critical facilities."
+  },
+  {
+    id: 157,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'pump station automation' system?",
+    options: ["Replace operators entirely", "Automatically control pump operations based on level, pressure, and demand signals", "Monitor water quality", "Control chemical dosing"],
+    answer: 1,
+    explanation: "Pump station automation uses PLCs and SCADA to automatically start/stop pumps based on reservoir levels, system pressure, and demand patterns, optimizing operations and reducing manual intervention."
+  },
+  {
+    id: 158,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'vibration analysis' on pump equipment?",
+    options: ["Measure pump flow", "Detect bearing wear, imbalance, or misalignment before failure occurs", "Measure pump pressure", "Test motor insulation"],
+    answer: 1,
+    explanation: "Vibration analysis measures pump and motor vibration signatures. Changes in vibration patterns indicate developing problems (bearing wear, impeller imbalance, misalignment) before they cause catastrophic failure."
+  },
+  {
+    id: 159,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'motor insulation resistance test' (megger test)?",
+    options: ["Measure motor speed", "Test the integrity of motor winding insulation to detect deterioration", "Measure motor power consumption", "Test motor bearing condition"],
+    answer: 1,
+    explanation: "A megger test applies high DC voltage to motor windings and measures insulation resistance. Low resistance indicates deteriorated insulation that could lead to winding failure or short circuits."
+  },
+  {
+    id: 160,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station log book'?",
+    options: ["Record customer complaints", "Document operational data, maintenance activities, and unusual events for regulatory and operational purposes", "Record water quality results only", "Document employee hours"],
+    answer: 1,
+    explanation: "Pump station log books record operational parameters (flows, pressures, levels, run times), maintenance activities, equipment failures, and unusual events. They provide an operational history and support regulatory compliance."
+  },
+  {
+    id: 161,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'sampling plan' for distribution system monitoring?",
+    options: ["Schedule operator shifts", "Define sampling locations, frequencies, parameters, and procedures to ensure representative monitoring", "Plan pipe maintenance", "Schedule valve exercising"],
+    answer: 1,
+    explanation: "A sampling plan defines where, when, and how often to collect samples, what parameters to test, and the procedures to follow, ensuring monitoring is representative of the entire distribution system."
+  },
+  {
+    id: 162,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "easy",
+    question: "What is the purpose of a 'field blank' in water quality sampling?",
+    options: ["Measure background contamination in the sampling equipment and process", "Test the laboratory equipment", "Calibrate field instruments", "Measure ambient contamination at the sampling site"],
+    answer: 0,
+    explanation: "A field blank is reagent-grade water processed through the sampling equipment in the field. It detects contamination introduced by the sampling equipment, containers, or field procedures."
+  },
+  {
+    id: 163,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'duplicate sample' in water quality monitoring?",
+    options: ["Provide a backup sample in case the first is lost", "Assess the precision and reproducibility of the sampling and analytical process", "Test different analytical methods", "Provide a sample for a different laboratory"],
+    answer: 1,
+    explanation: "Duplicate samples (split samples or field duplicates) are collected simultaneously and analyzed separately to assess the precision of the sampling and analytical process. Large differences indicate variability problems."
+  },
+  {
+    id: 164,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "hard",
+    question: "What is the purpose of a 'method detection limit' (MDL) in laboratory analysis?",
+    options: ["The maximum concentration the method can measure", "The minimum concentration that can be reliably detected above background noise", "The concentration at which the method becomes inaccurate", "The regulatory limit for the parameter"],
+    answer: 1,
+    explanation: "The MDL is the minimum concentration of a substance that can be reliably detected above background noise with a stated level of confidence. Results below the MDL are reported as 'not detected' or '<MDL'."
+  },
+  {
+    id: 165,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'turbidimeter' in distribution system monitoring?",
+    options: ["Measure chlorine residual", "Measure the cloudiness of water caused by suspended particles", "Measure pH", "Measure conductivity"],
+    answer: 1,
+    explanation: "A turbidimeter measures the turbidity (cloudiness) of water caused by suspended particles. High turbidity in the distribution system may indicate main disturbance, corrosion, or contamination."
+  },
+  {
+    id: 166,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "easy",
+    question: "What is the purpose of a 'colorimetric' test for chlorine residual?",
+    options: ["Measure water colour", "Determine chlorine concentration by measuring the colour intensity of a chemical reaction", "Test for coliform bacteria", "Measure pH"],
+    answer: 1,
+    explanation: "Colorimetric chlorine tests (DPD method) add a reagent that reacts with chlorine to produce a colour. The colour intensity is proportional to chlorine concentration, measured with a colorimeter or comparator."
+  },
+  {
+    id: 167,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'membrane filtration' method for coliform detection?",
+    options: ["Remove bacteria from water", "Concentrate bacteria on a membrane for counting after incubation", "Filter turbidity from samples", "Separate chlorine from water"],
+    answer: 1,
+    explanation: "Membrane filtration passes a water sample through a membrane filter that retains bacteria. The membrane is incubated on selective media, and bacterial colonies are counted to determine coliform concentration."
+  },
+  {
+    id: 168,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "hard",
+    question: "What is the purpose of a 'presence/absence' (P/A) test for coliform bacteria?",
+    options: ["Count the exact number of coliform bacteria", "Determine whether coliform bacteria are present or absent in a sample", "Identify the species of coliform", "Measure coliform concentration in mg/L"],
+    answer: 1,
+    explanation: "P/A tests determine whether coliform bacteria are present or absent in a defined volume of water (typically 100 mL). They are simpler than quantitative methods and are used for regulatory compliance monitoring."
+  },
+  {
+    id: 169,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'temperature correction' in chlorine residual measurement?",
+    options: ["Adjust the sample temperature before testing", "Correct the measured value for the effect of temperature on the colorimetric reaction", "Measure chlorine at a standard temperature", "Prevent chlorine decay during transport"],
+    answer: 1,
+    explanation: "Temperature affects the colorimetric reaction used to measure chlorine. Temperature corrections ensure accurate results across different sample temperatures, particularly important in cold climates."
+  },
+  {
+    id: 170,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "easy",
+    question: "What is the purpose of a 'sample preservation' technique?",
+    options: ["Improve sample taste", "Prevent changes in sample composition during transport and storage", "Concentrate the sample", "Remove interfering substances"],
+    answer: 1,
+    explanation: "Sample preservation techniques (cooling, chemical addition, specific containers) prevent changes in sample composition (biological activity, chemical reactions, volatilization) between collection and laboratory analysis."
+  },
+  {
+    id: 171,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'spike recovery' test in laboratory quality control?",
+    options: ["Test laboratory equipment calibration", "Verify that the analytical method accurately measures a known added concentration", "Detect laboratory contamination", "Measure background concentration"],
+    answer: 1,
+    explanation: "A spike recovery test adds a known concentration of the target analyte to a sample and measures the recovery percentage. Low recovery indicates matrix interference or method problems."
+  },
+  {
+    id: 172,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "hard",
+    question: "What is the purpose of a 'control chart' in laboratory quality assurance?",
+    options: ["Control laboratory temperature", "Track analytical results over time to detect systematic bias or random error", "Control sample holding times", "Monitor laboratory staff performance"],
+    answer: 1,
+    explanation: "Control charts plot analytical results for quality control samples over time. Warning limits (±2σ) and control limits (±3σ) identify when the analytical process is out of control, triggering corrective action."
+  },
+  {
+    id: 173,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'grab sample' versus a 'composite sample'?",
+    options: ["Grab samples are more accurate; composite samples are less accurate", "Grab samples represent conditions at a single point in time; composite samples represent average conditions over time", "Grab samples are used for bacteria; composite samples for chemistry", "No difference — both are equivalent"],
+    answer: 1,
+    explanation: "Grab samples capture conditions at a single moment and location, ideal for parameters that change rapidly (bacteria, chlorine). Composite samples (multiple grabs mixed) represent average conditions over time, used for parameters that vary slowly."
+  },
+  {
+    id: 174,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "easy",
+    question: "What is the maximum holding time for a bacteriological water sample before analysis?",
+    options: ["1 hour", "6 hours", "24 hours", "48 hours"],
+    answer: 2,
+    explanation: "Bacteriological samples must be analyzed within 24 hours of collection (30 hours for some methods). Longer holding times allow bacterial populations to change, making results unreliable."
+  },
+  {
+    id: 175,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'residual chlorine decay test' in distribution system management?",
+    options: ["Measure chlorine production at the treatment plant", "Determine the rate at which chlorine residual decreases in the distribution system", "Test chlorine analyzer calibration", "Measure chlorine demand of the source water"],
+    answer: 1,
+    explanation: "Chlorine decay tests measure how quickly chlorine residual decreases in distribution system water under controlled conditions. This data is used to calibrate hydraulic models and optimize chlorine dosing."
+  },
+  {
+    id: 176,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'confined space entry permit' in water distribution operations?",
+    options: ["Document routine maintenance", "Authorize entry into a confined space after hazard assessment and safety measures are in place", "Record employee training", "Document equipment maintenance"],
+    answer: 1,
+    explanation: "A confined space entry permit documents the hazard assessment, atmospheric testing results, safety measures (ventilation, rescue plan, attendant), and authorization for entry into a confined space such as a valve vault or reservoir."
+  },
+  {
+    id: 177,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "easy",
+    question: "What is the purpose of a 'lockout/tagout' (LOTO) procedure?",
+    options: ["Lock the pump station at night", "Prevent accidental energization of equipment during maintenance by isolating energy sources", "Tag equipment for replacement", "Lock valves in the open position"],
+    answer: 1,
+    explanation: "LOTO procedures prevent accidental energization of electrical, hydraulic, or pneumatic equipment during maintenance. Energy sources are isolated and locked, and tags are applied to warn others not to re-energize."
+  },
+  {
+    id: 178,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'job hazard analysis' (JHA) before starting a maintenance task?",
+    options: ["Estimate job cost", "Identify potential hazards and establish safe work procedures before starting a task", "Schedule the job", "Document completed work"],
+    answer: 1,
+    explanation: "A JHA identifies potential hazards associated with each step of a maintenance task and establishes control measures to eliminate or minimize risk before work begins."
+  },
+  {
+    id: 179,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "hard",
+    question: "What is the purpose of a 'utility locate' (one-call) system before excavation?",
+    options: ["Schedule excavation equipment", "Notify all utilities to mark their buried infrastructure before excavation to prevent damage", "Obtain an excavation permit", "Notify customers of service disruption"],
+    answer: 1,
+    explanation: "One-call systems (Ontario One Call, BC One Call) notify all utilities to mark their buried infrastructure before excavation. This prevents accidental damage to water, gas, electrical, and telecom lines."
+  },
+  {
+    id: 180,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'public notification' when a water main is being shut down for maintenance?",
+    options: ["Comply with media requirements", "Inform affected customers of the planned service interruption and expected duration", "Notify regulators only", "Document the shutdown for records"],
+    answer: 1,
+    explanation: "Public notification of planned shutdowns allows customers to prepare (store water, adjust schedules) and reduces complaints. It is also a customer service requirement and may be mandated by regulation."
+  },
+  {
+    id: 181,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "easy",
+    question: "What is the purpose of a 'traffic control plan' when working in a road allowance?",
+    options: ["Schedule delivery vehicles", "Protect workers and the public from traffic hazards during road work", "Notify the municipality of the work", "Plan the excavation route"],
+    answer: 1,
+    explanation: "A traffic control plan establishes signage, barriers, flagging, and detour routes to protect workers and the public from traffic hazards when working in or near a road allowance."
+  },
+  {
+    id: 182,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'personal protective equipment' (PPE) assessment?",
+    options: ["Document PPE inventory", "Identify the appropriate PPE required for specific tasks to protect workers from identified hazards", "Train workers on PPE use only", "Purchase PPE"],
+    answer: 1,
+    explanation: "A PPE assessment identifies the hazards present in a task and determines the appropriate PPE (gloves, safety glasses, hard hat, high-visibility vest, respiratory protection) needed to protect workers."
+  },
+  {
+    id: 183,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "hard",
+    question: "What is the purpose of a 'security incident report' in a water utility?",
+    options: ["Document routine security checks", "Record and investigate any security breach, threat, or suspicious activity at water infrastructure", "Schedule security patrols", "Document employee access"],
+    answer: 1,
+    explanation: "Security incident reports document security breaches, threats, vandalism, or suspicious activities at water infrastructure. They support investigation, trend analysis, and improvement of security measures."
+  },
+  {
+    id: 184,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'customer service response protocol' for water quality complaints?",
+    options: ["Dismiss customer concerns", "Provide a standardized process for investigating and responding to water quality complaints", "Document complaints for legal purposes only", "Measure customer satisfaction"],
+    answer: 1,
+    explanation: "A customer service response protocol ensures water quality complaints are investigated systematically, root causes are identified, corrective actions are taken, and customers receive timely, informative responses."
+  },
+  {
+    id: 185,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "easy",
+    question: "What is the purpose of a 'media relations policy' for a water utility?",
+    options: ["Promote the utility's services", "Establish guidelines for communicating with the media, particularly during emergencies", "Manage advertising", "Control social media accounts"],
+    answer: 1,
+    explanation: "A media relations policy establishes who is authorized to speak to the media, what information can be shared, and how to communicate effectively during normal operations and emergencies."
+  },
+  {
+    id: 186,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'work order system' in water distribution operations?",
+    options: ["Schedule employee vacations", "Track, prioritize, assign, and document maintenance and repair work", "Monitor water quality", "Control chemical inventory"],
+    answer: 1,
+    explanation: "A work order system creates, assigns, tracks, and documents maintenance and repair tasks. It provides a record of all work performed, supports asset management, and enables performance measurement."
+  },
+  {
+    id: 187,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "hard",
+    question: "What is the purpose of a 'succession planning' program in a water utility?",
+    options: ["Plan for system expansion", "Ensure continuity of operations by identifying and developing future leaders and key personnel", "Plan for infrastructure replacement", "Schedule operator certification renewals"],
+    answer: 1,
+    explanation: "Succession planning identifies critical positions and develops internal candidates to fill them when incumbents retire or leave, ensuring operational continuity and institutional knowledge transfer."
+  },
+  {
+    id: 188,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'performance indicator' (KPI) in water utility management?",
+    options: ["Measure employee performance only", "Measure and track utility performance against defined targets to support continuous improvement", "Calculate water rates", "Measure water quality"],
+    answer: 1,
+    explanation: "KPIs (e.g., non-revenue water %, main break rate, customer complaint rate, compliance rate) measure utility performance against targets, enabling management to identify areas for improvement and track progress."
+  },
+  {
+    id: 189,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "easy",
+    question: "What is the purpose of a 'training record' for water distribution operators?",
+    options: ["Document employee attendance", "Verify that operators have completed required training and maintain required certifications", "Schedule future training", "Document operator performance"],
+    answer: 1,
+    explanation: "Training records document completed training, certifications, and continuing education for each operator. They verify compliance with regulatory certification requirements and support workforce development."
+  },
+  {
+    id: 190,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'public education program' for a water utility?",
+    options: ["Promote water rate increases", "Inform customers about water quality, conservation, and how to protect the water supply", "Recruit new employees", "Market utility services"],
+    answer: 1,
+    explanation: "Public education programs inform customers about drinking water quality, conservation practices, cross-connection hazards, and how to protect the water supply, building trust and promoting responsible water use."
+  },
+  {
+    id: 191,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water distribution system model calibration'?",
+    options: ["Install new pipes in the model", "Adjust model parameters so that simulated results match field measurements", "Calculate water demand", "Design new pressure zones"],
+    answer: 1,
+    explanation: "Model calibration adjusts pipe roughness coefficients, demands, and other parameters until the model's predicted pressures and flows match field measurements, ensuring the model accurately represents the real system."
+  },
+  {
+    id: 192,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'fire flow test' in distribution system assessment?",
+    options: ["Test hydrant paint quality", "Measure available fire flow and residual pressure to verify fire protection capability", "Test valve operation", "Measure water age"],
+    answer: 1,
+    explanation: "Fire flow tests measure the flow available at a hydrant while maintaining minimum residual pressure. Results verify whether the system meets fire protection requirements and identify deficiencies."
+  },
+  {
+    id: 193,
+    module: "Distribution System Components",
+    difficulty: "easy",
+    question: "What is the purpose of a 'pressure reducing valve' (PRV) bypass?",
+    options: ["Increase pressure in the low zone", "Allow flow to bypass the PRV during maintenance or failure", "Measure PRV flow", "Test PRV operation"],
+    answer: 1,
+    explanation: "A PRV bypass allows water to flow around the PRV during maintenance, testing, or failure. The bypass typically includes a manual valve and may include a smaller PRV to maintain pressure control."
+  },
+  {
+    id: 194,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'zone metering' program?",
+    options: ["Meter individual customers only", "Measure flow into defined zones to detect leakage and manage water balance", "Measure treatment plant output", "Control pump operations"],
+    answer: 1,
+    explanation: "Zone metering installs meters at zone boundaries to measure inflow and outflow. Comparing metered inflow to billed consumption identifies leakage and enables targeted leak detection within each zone."
+  },
+  {
+    id: 195,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'pipe acoustic leak detection' survey?",
+    options: ["Measure pipe flow", "Locate leaks by detecting the sound generated by water escaping from pressurized pipes", "Inspect pipe interior condition", "Measure pipe pressure"],
+    answer: 1,
+    explanation: "Acoustic leak detection uses correlators or listening devices to detect the sound generated by water escaping from pressurized pipes. The sound frequency and correlation between sensors pinpoints leak locations."
+  },
+  {
+    id: 196,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pipe inspection camera' (CCTV)?",
+    options: ["Monitor pipe flow", "Visually inspect the interior of pipes for defects, corrosion, and blockages", "Measure pipe diameter", "Test pipe pressure"],
+    answer: 1,
+    explanation: "CCTV pipe inspection cameras travel through pipes to provide visual documentation of interior conditions, identifying corrosion, cracks, joint defects, blockages, and other defects."
+  },
+  {
+    id: 197,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'pipe flushing velocity' requirement?",
+    options: ["Prevent pipe damage from high velocity", "Ensure sufficient velocity to transport and remove sediment from the pipe", "Measure pipe flow capacity", "Test pipe pressure"],
+    answer: 1,
+    explanation: "Flushing velocity requirements (typically 0.9-1.5 m/s or 3-5 ft/s) ensure that water flows fast enough to suspend and transport sediment, biofilm, and other deposits out of the pipe."
+  },
+  {
+    id: 198,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'unidirectional flushing' (UDF) program?",
+    options: ["Flush pipes in one direction only for convenience", "Systematically flush pipes in a controlled direction to maximize velocity and cleaning effectiveness", "Flush dead-end mains only", "Flush the entire system simultaneously"],
+    answer: 1,
+    explanation: "UDF programs systematically close valves to direct flow through selected pipes in one direction, achieving high velocities (>0.9 m/s) that effectively remove sediment and biofilm. It is more effective than conventional flushing."
+  },
+  {
+    id: 199,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "hard",
+    question: "What is the purpose of a 'lead and copper rule' sampling program?",
+    options: ["Monitor lead and copper in source water", "Monitor lead and copper at customer taps to assess corrosion control effectiveness", "Monitor pipe corrosion rates", "Monitor treatment plant performance"],
+    answer: 1,
+    explanation: "Lead and copper rule sampling collects first-draw samples from customer taps (particularly those with lead service lines or copper plumbing with lead solder) to assess whether corrosion control treatment is effective."
+  },
+  {
+    id: 200,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'disinfection by-product' (DBP) monitoring program?",
+    options: ["Monitor disinfectant residuals", "Monitor THM and HAA concentrations to ensure compliance with health-based limits", "Monitor source water quality", "Monitor treatment plant performance"],
+    answer: 1,
+    explanation: "DBP monitoring measures trihalomethane (THM) and haloacetic acid (HAA) concentrations in the distribution system to ensure they remain below health-based limits and to guide operational adjustments."
+  },
+  {
+    id: 201,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'system pressure map' in distribution system management?",
+    options: ["Show pipe locations", "Display pressure distribution throughout the system to identify high and low pressure areas", "Show valve locations", "Display water quality data"],
+    answer: 1,
+    explanation: "A system pressure map displays pressure at all points in the distribution system, identifying areas with excessive pressure (>100 psi), low pressure (<40 psi), or pressure that varies significantly with demand."
+  },
+  {
+    id: 202,
+    module: "Distribution System Components",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water system map' (as-built drawing)?",
+    options: ["Show customer locations", "Document the location, size, material, and age of all system components for operations and planning", "Show property boundaries", "Show traffic routes"],
+    answer: 1,
+    explanation: "As-built drawings (system maps) document the actual installed location, size, material, age, and condition of all system components. They are essential for operations, maintenance, emergency response, and capital planning."
+  },
+  {
+    id: 203,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pipe rehabilitation' program?",
+    options: ["Replace all old pipes immediately", "Extend the service life of deteriorating pipes through lining, coating, or structural repair", "Install new pipes in new areas", "Increase pipe pressure ratings"],
+    answer: 1,
+    explanation: "Pipe rehabilitation programs extend the service life of deteriorating pipes using methods such as cement-mortar lining, CIPP lining, or slip lining, deferring costly replacement and reducing leakage."
+  },
+  {
+    id: 204,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'pipe replacement prioritization' model?",
+    options: ["Schedule pipe replacements in alphabetical order by street name", "Rank pipes for replacement based on risk, condition, and strategic importance", "Replace the oldest pipes first", "Replace the smallest pipes first"],
+    answer: 1,
+    explanation: "Prioritization models rank pipes for replacement using multiple factors: break history, pipe age and material, condition assessment results, consequence of failure, and strategic importance, ensuring limited capital is invested where it has the greatest impact."
+  },
+  {
+    id: 205,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'regulatory compliance calendar' in water utility management?",
+    options: ["Schedule employee vacations", "Track all regulatory reporting deadlines, sampling requirements, and certification renewals", "Schedule capital projects", "Track customer billing"],
+    answer: 1,
+    explanation: "A regulatory compliance calendar tracks all required sampling dates, reporting deadlines, operator certification renewals, and other regulatory obligations to ensure nothing is missed."
+  },
+  {
+    id: 206,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'demand forecast' in distribution system planning?",
+    options: ["Calculate current water usage", "Project future water demand to guide capacity planning and infrastructure investment", "Measure current system capacity", "Calculate current pipe flows"],
+    answer: 1,
+    explanation: "Demand forecasts project future water demand based on population growth, land use changes, conservation programs, and climate factors. They guide decisions about system expansion, storage, and treatment capacity."
+  },
+  {
+    id: 207,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'peak demand factor' in system design?",
+    options: ["Calculate average daily demand", "Account for demand variations above average to ensure adequate system capacity", "Measure instantaneous flow", "Calculate annual water production"],
+    answer: 1,
+    explanation: "Peak demand factors (peak hour, maximum day) account for demand variations above the average. Systems must be designed to meet peak demands while maintaining adequate pressure and fire flow."
+  },
+  {
+    id: 208,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "easy",
+    question: "What is the purpose of a 'portable chlorine analyzer' in distribution system operations?",
+    options: ["Treat water with chlorine in the field", "Measure chlorine residual at any location in the distribution system without laboratory equipment", "Calibrate treatment plant chlorine analyzers", "Measure chlorine demand"],
+    answer: 1,
+    explanation: "Portable chlorine analyzers allow operators to measure chlorine residual at any location in the distribution system during routine monitoring, complaint investigations, or emergency response."
+  },
+  {
+    id: 209,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pipe joint' in a water distribution main?",
+    options: ["Increase pipe pressure rating", "Connect pipe sections while allowing for thermal expansion, ground movement, and installation tolerance", "Measure pipe flow", "Anchor the pipe in the trench"],
+    answer: 1,
+    explanation: "Pipe joints connect individual pipe sections while accommodating thermal expansion/contraction, ground settlement, and installation alignment tolerances. Different joint types (push-on, mechanical, flanged) have different performance characteristics."
+  },
+  {
+    id: 210,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'system energy audit' for a water distribution utility?",
+    options: ["Audit employee energy use", "Identify opportunities to reduce energy consumption in pumping and treatment operations", "Measure pipe friction losses only", "Calculate pump power consumption"],
+    answer: 1,
+    explanation: "A system energy audit analyzes all energy uses in the utility (pumping, treatment, buildings) and identifies opportunities for efficiency improvements such as pump optimization, VFDs, off-peak pumping, and pressure management."
+  },
+  {
+    id: 211,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pipe material selection' process in distribution system design?",
+    options: ["Choose the cheapest pipe material", "Select the most appropriate pipe material based on soil conditions, water quality, pressure, and life-cycle cost", "Use only one standard pipe material", "Choose the lightest pipe material"],
+    answer: 1,
+    explanation: "Pipe material selection considers soil corrosivity, water quality (aggressiveness), operating pressure, installation conditions, and life-cycle cost to choose the most appropriate material (ductile iron, PVC, HDPE, etc.)."
+  },
+  {
+    id: 212,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'service line replacement' program?",
+    options: ["Replace all service lines on a fixed schedule", "Replace lead service lines and other deteriorating service lines to protect water quality and reduce leakage", "Replace meters only", "Replace curb stops only"],
+    answer: 1,
+    explanation: "Service line replacement programs target lead service lines (which can leach lead into drinking water) and other deteriorating service lines to improve water quality, reduce leakage, and improve service reliability."
+  },
+  {
+    id: 213,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality complaint map'?",
+    options: ["Show customer locations", "Identify spatial patterns in water quality complaints to target investigations and improvements", "Show pipe locations", "Display sampling results"],
+    answer: 1,
+    explanation: "Mapping water quality complaints by location reveals spatial patterns — clusters of complaints may indicate localized problems such as old pipes, dead ends, low chlorine zones, or corrosion issues."
+  },
+  {
+    id: 214,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "hard",
+    question: "What is the purpose of a 'business continuity plan' for a water utility?",
+    options: ["Plan for business expansion", "Ensure critical water services continue during major disruptions (pandemics, natural disasters, cyberattacks)", "Plan for staff reductions", "Document routine operations"],
+    answer: 1,
+    explanation: "A business continuity plan identifies critical functions, resources, and procedures to maintain essential water services during major disruptions, including pandemics, natural disasters, infrastructure failures, and cyberattacks."
+  },
+  {
+    id: 215,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'system interconnection' between two water utilities?",
+    options: ["Share billing data", "Provide emergency water supply between utilities during outages or high demand", "Combine treatment operations", "Share regulatory compliance records"],
+    answer: 1,
+    explanation: "System interconnections allow water utilities to share water supply during emergencies (main breaks, drought, equipment failure) or high demand periods, improving resilience for both utilities."
+  },
+  {
+    id: 216,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pipe condition monitoring' program using acoustic sensors?",
+    options: ["Monitor pipe flow", "Continuously monitor pipe structural condition to detect deterioration before failure", "Measure pipe pressure", "Monitor water quality"],
+    answer: 1,
+    explanation: "Acoustic pipe condition monitoring systems use sensors attached to pipes to detect acoustic emissions from developing cracks, corrosion, and joint failures, enabling proactive intervention before catastrophic failure."
+  },
+  {
+    id: 217,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water quality trend analysis'?",
+    options: ["Measure current water quality only", "Identify patterns and changes in water quality over time to detect emerging problems", "Calculate average water quality", "Compare water quality to other utilities"],
+    answer: 1,
+    explanation: "Trend analysis examines water quality data over time to identify seasonal patterns, long-term changes, and emerging problems before they become regulatory violations or public health issues."
+  },
+  {
+    id: 218,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water utility rate study'?",
+    options: ["Determine how much water customers use", "Analyze costs and revenues to establish rates that recover the full cost of providing water service", "Compare rates with other utilities", "Calculate water production costs only"],
+    answer: 1,
+    explanation: "A rate study analyzes all utility costs (operations, maintenance, debt service, capital reserves) and designs rates that recover the full cost of service while meeting equity and affordability objectives."
+  },
+  {
+    id: 219,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'life-cycle cost analysis' in pipe material selection?",
+    options: ["Calculate only the initial installation cost", "Compare total costs (installation, maintenance, rehabilitation, replacement) over the pipe's service life", "Calculate only the replacement cost", "Compare pipe materials by weight"],
+    answer: 1,
+    explanation: "Life-cycle cost analysis compares the total cost of different pipe materials over their service life, including installation, maintenance, rehabilitation, and replacement costs, enabling the most economical choice."
+  },
+  {
+    id: 220,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station energy management' program?",
+    options: ["Reduce pump station lighting costs", "Optimize pump scheduling to minimize energy costs while meeting system demands", "Install solar panels at pump stations", "Reduce pump station staffing"],
+    answer: 1,
+    explanation: "Pump station energy management optimizes pump scheduling (off-peak pumping, VFD operation, pump sequencing) to minimize energy costs while maintaining adequate system pressures and storage levels."
+  },
+  {
+    id: 221,
+    module: "Distribution System Components",
+    difficulty: "easy",
+    question: "What is the purpose of a 'fire hydrant spacing' requirement?",
+    options: ["Ensure hydrants are evenly spaced for aesthetic reasons", "Ensure fire hoses can reach any building from a hydrant within the maximum hose lay distance", "Minimize the number of hydrants required", "Ensure hydrants are visible from the road"],
+    answer: 1,
+    explanation: "Hydrant spacing requirements ensure that fire hoses (typically 150 m or 500 ft maximum lay) can reach any building from a hydrant, providing adequate fire protection coverage throughout the service area."
+  },
+  {
+    id: 222,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'source water quality monitoring' program?",
+    options: ["Monitor distribution system water quality", "Track changes in raw water quality to optimize treatment and anticipate distribution system impacts", "Monitor treated water quality only", "Monitor groundwater levels"],
+    answer: 1,
+    explanation: "Source water monitoring tracks raw water quality parameters (turbidity, TOC, algae, temperature) to optimize treatment processes and anticipate potential distribution system water quality issues."
+  },
+  {
+    id: 223,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water utility financial reserve fund'?",
+    options: ["Store cash for employee bonuses", "Accumulate funds for capital asset replacement without requiring debt financing", "Pay for emergency repairs only", "Fund regulatory compliance activities"],
+    answer: 1,
+    explanation: "Capital reserve funds accumulate money over time to fund the replacement of aging infrastructure. Without reserves, utilities must rely entirely on debt financing for major capital projects, increasing long-term costs."
+  },
+  {
+    id: 224,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water system master plan'?",
+    options: ["Document current system conditions only", "Provide a long-term plan for system improvements, expansions, and replacements to meet future needs", "Schedule routine maintenance", "Document regulatory compliance"],
+    answer: 1,
+    explanation: "A water system master plan assesses current system conditions, projects future demands, identifies deficiencies, and recommends capital improvements with cost estimates and implementation timelines."
+  },
+  {
+    id: 225,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'pipe coupling' (repair coupling)?",
+    options: ["Connect pipes of the same diameter without special fittings", "Repair a section of damaged pipe or connect pipes of different materials", "Measure pipe flow", "Test pipe pressure"],
+    answer: 1,
+    explanation: "Repair couplings (Dresser couplings, Romac couplings) connect pipe sections without special end preparation, repair damaged pipe sections, or connect pipes of different materials or slightly different diameters."
+  },
+  {
+    id: 226,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water distribution system security assessment'?",
+    options: ["Assess employee security clearances", "Identify physical, cyber, and operational vulnerabilities to inform security improvements", "Assess water quality security", "Assess financial security"],
+    answer: 1,
+    explanation: "A security assessment systematically identifies vulnerabilities in physical infrastructure, SCADA/cyber systems, and operational procedures, and recommends countermeasures to reduce the risk of intentional attacks."
+  },
+  {
+    id: 227,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'continuous online monitoring' system in a distribution system?",
+    options: ["Replace laboratory analysis entirely", "Provide real-time water quality data to detect changes and contamination events rapidly", "Monitor pipe pressure only", "Monitor pump operations"],
+    answer: 1,
+    explanation: "Continuous online monitoring systems measure water quality parameters (chlorine, turbidity, pH, conductivity) in real time, enabling rapid detection of quality changes or contamination events that would be missed by grab sampling."
+  },
+  {
+    id: 228,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water utility strategic plan'?",
+    options: ["Document daily operations", "Define the utility's long-term vision, goals, and strategies for achieving them", "Schedule capital projects only", "Document regulatory compliance"],
+    answer: 1,
+    explanation: "A strategic plan defines the utility's mission, vision, and long-term goals, and establishes strategies and performance measures to guide decision-making and resource allocation over a 5-10 year horizon."
+  },
+  {
+    id: 229,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'pipe stress analysis' in distribution system design?",
+    options: ["Calculate pipe weight", "Determine the stresses in a pipe due to internal pressure, temperature changes, and external loads", "Measure pipe flow", "Calculate pipe installation cost"],
+    answer: 1,
+    explanation: "Pipe stress analysis calculates stresses from internal pressure, thermal expansion/contraction, soil loads, traffic loads, and water hammer to ensure the pipe can withstand all expected loads without failure."
+  },
+  {
+    id: 230,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'storage facility inspection' program?",
+    options: ["Inspect water quality in storage", "Inspect the structural integrity, security, and condition of reservoirs and tanks", "Measure storage volume", "Monitor storage levels"],
+    answer: 1,
+    explanation: "Storage facility inspections assess the structural condition, coating integrity, security measures, and operational features of reservoirs and tanks to identify maintenance needs and ensure safe, reliable operation."
+  },
+  {
+    id: 231,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'reservoir mixing system'?",
+    options: ["Increase reservoir storage capacity", "Prevent thermal stratification and stagnation, maintaining uniform water quality throughout the reservoir", "Measure reservoir water quality", "Control reservoir level"],
+    answer: 1,
+    explanation: "Reservoir mixing systems (mechanical mixers, inlet/outlet design, baffles) prevent thermal stratification and stagnation, ensuring uniform water quality and disinfectant residuals throughout the storage volume."
+  },
+  {
+    id: 232,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality index' (WQI)?",
+    options: ["Measure a single water quality parameter", "Combine multiple water quality parameters into a single score to communicate overall water quality", "Calculate regulatory compliance", "Measure treatment plant performance"],
+    answer: 1,
+    explanation: "A WQI combines multiple water quality parameters (turbidity, pH, bacteria, chemicals) into a single numerical score that communicates overall water quality in a simple, understandable way for management and public reporting."
+  },
+  {
+    id: 233,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "hard",
+    question: "What is the purpose of a 'full-scale exercise' for emergency response?",
+    options: ["Test individual procedures only", "Deploy actual resources and personnel to test the entire emergency response system in a realistic scenario", "Train new operators on routine operations", "Test SCADA systems only"],
+    answer: 1,
+    explanation: "Full-scale exercises deploy actual equipment, personnel, and resources in a realistic emergency scenario, testing the entire response system including communication, coordination, logistics, and decision-making."
+  },
+  {
+    id: 234,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pipe network analysis' using the Hardy Cross method?",
+    options: ["Design individual pipe sections", "Solve for flows and pressures in a looped pipe network by iterative balancing of head losses", "Calculate pipe material requirements", "Design pump stations"],
+    answer: 1,
+    explanation: "The Hardy Cross method iteratively adjusts assumed flows in a looped pipe network until head losses around each loop balance (sum to zero), solving for the actual flow distribution and pressures."
+  },
+  {
+    id: 235,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump impeller trimming'?",
+    options: ["Increase pump flow", "Reduce pump head and flow by reducing impeller diameter to match system requirements", "Repair a damaged impeller", "Balance the impeller"],
+    answer: 1,
+    explanation: "Impeller trimming reduces the impeller diameter to lower the pump's head-flow curve, matching it to system requirements without replacing the pump. It is a cost-effective way to reduce pump output when a pump is oversized."
+  },
+  {
+    id: 236,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "easy",
+    question: "What is the purpose of a 'turbidity spike' investigation in the distribution system?",
+    options: ["Measure pipe flow", "Identify the cause of elevated turbidity, which may indicate main disturbance, contamination, or corrosion", "Test pipe pressure", "Measure chlorine residual"],
+    answer: 1,
+    explanation: "Turbidity spikes in the distribution system may indicate main breaks, valve operations, high-velocity flushing, corrosion products, or contamination. Investigation identifies the cause and appropriate corrective action."
+  },
+  {
+    id: 237,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water utility annual budget'?",
+    options: ["Document past expenditures only", "Plan and authorize expenditures for operations, maintenance, and capital improvements", "Calculate water rates only", "Document regulatory compliance costs"],
+    answer: 1,
+    explanation: "The annual budget plans and authorizes all utility expenditures (salaries, chemicals, energy, maintenance, capital) for the coming year, ensuring adequate resources for safe, reliable operations."
+  },
+  {
+    id: 238,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water distribution system optimization' study?",
+    options: ["Minimize system size", "Identify operational and capital improvements to minimize cost while meeting performance objectives", "Maximize system pressure", "Maximize system flow capacity"],
+    answer: 1,
+    explanation: "System optimization studies use hydraulic models and optimization algorithms to identify the most cost-effective combination of operational changes (pump scheduling, pressure management) and capital improvements to meet performance objectives."
+  },
+  {
+    id: 239,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station odour control' system?",
+    options: ["Improve water taste", "Prevent nuisance odours from pump station operations from affecting nearby residents", "Detect gas leaks", "Monitor air quality for worker safety"],
+    answer: 1,
+    explanation: "Odour control systems (ventilation, chemical scrubbers, biofilters) prevent nuisance odours from pump station operations (particularly wet wells and chemical storage) from affecting nearby residents and workers."
+  },
+  {
+    id: 240,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'biofilm monitoring' program in distribution systems?",
+    options: ["Monitor pipe corrosion only", "Detect and manage bacterial biofilm growth on pipe surfaces that can affect water quality", "Monitor water temperature only", "Monitor pipe flow"],
+    answer: 1,
+    explanation: "Biofilm monitoring programs use HPC, ATP, or other methods to detect bacterial biofilm growth on pipe surfaces. Biofilm can harbor pathogens, consume disinfectant, and cause taste/odour problems."
+  },
+  {
+    id: 241,
+    module: "Distribution System Components",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water main flushing' program?",
+    options: ["Test pipe pressure", "Remove accumulated sediment, biofilm, and stale water to maintain water quality", "Measure pipe flow capacity", "Test valve operation"],
+    answer: 1,
+    explanation: "Flushing programs remove accumulated sediment, biofilm, corrosion products, and stale water from distribution mains, improving water quality, restoring chlorine residuals, and reducing customer complaints."
+  },
+  {
+    id: 242,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water utility governance framework'?",
+    options: ["Document technical operations", "Define the roles, responsibilities, and accountability structures for managing the utility", "Schedule capital projects", "Document regulatory compliance"],
+    answer: 1,
+    explanation: "A governance framework defines the roles and responsibilities of the utility's governing body (council, board), management, and staff, establishing clear accountability for decision-making and performance."
+  },
+  {
+    id: 243,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station wet well cleaning' program?",
+    options: ["Improve water quality in the wet well", "Remove accumulated sediment and debris to maintain wet well capacity and prevent pump damage", "Measure wet well volume", "Test wet well level sensors"],
+    answer: 1,
+    explanation: "Wet well cleaning removes accumulated sediment, debris, and biofilm that can reduce effective wet well volume, damage pumps, and cause odour problems. Regular cleaning maintains operational efficiency."
+  },
+  {
+    id: 244,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality sampling station' in the distribution system?",
+    options: ["Store water samples", "Provide a dedicated, accessible point for collecting representative water quality samples", "Measure pipe flow", "Control chlorine dosing"],
+    answer: 1,
+    explanation: "Dedicated sampling stations provide consistent, accessible points for collecting representative water quality samples, eliminating variability from different sampling locations and improving data quality."
+  },
+  {
+    id: 245,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'pump station security camera'?",
+    options: ["Monitor pump operations", "Deter and detect unauthorized access or vandalism at pump stations", "Monitor water quality", "Monitor employee performance"],
+    answer: 1,
+    explanation: "Security cameras at pump stations deter unauthorized access and vandalism, provide evidence for investigations, and may alert operators to security incidents through integration with SCADA or alarm systems."
+  },
+  {
+    id: 246,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality event detection' algorithm?",
+    options: ["Schedule water quality sampling", "Automatically analyze sensor data to detect anomalies that may indicate contamination events", "Calculate water quality indices", "Control chemical dosing"],
+    answer: 1,
+    explanation: "Event detection algorithms analyze real-time sensor data (chlorine, turbidity, pH, conductivity) using statistical methods to identify anomalies that deviate from expected patterns, potentially indicating contamination events."
+  },
+  {
+    id: 247,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water conservation program'?",
+    options: ["Reduce water rates", "Reduce water demand to extend system capacity and reduce operational costs", "Increase water production", "Reduce regulatory requirements"],
+    answer: 1,
+    explanation: "Water conservation programs reduce demand through education, incentives, and regulations, extending the capacity of existing infrastructure, deferring capital investments, and reducing operational costs."
+  },
+  {
+    id: 248,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water distribution system resilience assessment'?",
+    options: ["Assess pipe condition only", "Evaluate the system's ability to withstand and recover from disruptions", "Assess treatment plant resilience", "Assess financial resilience only"],
+    answer: 1,
+    explanation: "Resilience assessments evaluate the distribution system's ability to withstand disruptions (main breaks, contamination, power outages, natural disasters) and recover quickly, identifying vulnerabilities and improvement opportunities."
+  },
+  {
+    id: 249,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pipe lining' program using cement-mortar?",
+    options: ["Increase pipe diameter", "Restore hydraulic capacity and reduce corrosion in deteriorating metal pipes", "Repair structural cracks", "Increase pipe pressure rating"],
+    answer: 1,
+    explanation: "Cement-mortar lining restores the hydraulic capacity of tuberculated or corroded metal pipes by providing a smooth, protective coating on the pipe interior, reducing friction losses and preventing further corrosion."
+  },
+  {
+    id: 250,
+    module: "Distribution System Components",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water system inventory'?",
+    options: ["Count water customers", "Document all system assets (pipes, valves, hydrants, pumps, reservoirs) with their attributes", "Measure water production", "Document water quality results"],
+    answer: 1,
+    explanation: "A system inventory documents all infrastructure assets with their attributes (location, size, material, age, condition), providing the foundation for asset management, maintenance planning, and capital budgeting."
+  },
+  {
+    id: 251,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water system hydraulic capacity analysis'?",
+    options: ["Calculate water quality", "Determine whether the system can meet current and future demands while maintaining adequate pressure", "Calculate pipe age", "Measure water production"],
+    answer: 1,
+    explanation: "Hydraulic capacity analysis uses a calibrated model to determine whether the system can meet current and projected future demands (domestic, fire flow) while maintaining minimum pressure requirements."
+  },
+  {
+    id: 252,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'pump station design review'?",
+    options: ["Review pump station aesthetics", "Verify that the design meets operational, safety, regulatory, and reliability requirements before construction", "Review construction costs only", "Review pump station location"],
+    answer: 1,
+    explanation: "Design reviews verify that pump station designs meet all operational requirements (capacity, redundancy, automation), safety requirements (confined space, electrical, chemical), regulatory requirements, and reliability standards before construction."
+  },
+  {
+    id: 253,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality report card'?",
+    options: ["Grade individual operators", "Communicate water quality performance to stakeholders in a simple, understandable format", "Document regulatory violations only", "Grade laboratory performance"],
+    answer: 1,
+    explanation: "A water quality report card summarizes key water quality indicators and compliance results in a simple format accessible to non-technical stakeholders, supporting transparency and public trust."
+  },
+  {
+    id: 254,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water utility organizational chart'?",
+    options: ["Show water system layout", "Define the reporting structure and roles within the utility organization", "Show pipe network layout", "Document regulatory requirements"],
+    answer: 1,
+    explanation: "An organizational chart shows the reporting relationships, roles, and responsibilities within the utility, clarifying accountability and communication channels for all staff."
+  },
+  {
+    id: 255,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water distribution system expansion' plan?",
+    options: ["Document existing system only", "Plan the extension of water service to new development areas", "Document system maintenance", "Plan system rehabilitation"],
+    answer: 1,
+    explanation: "System expansion plans identify the infrastructure required to extend water service to new development areas, including pipe sizing, pressure zone design, storage requirements, and connection to the existing system."
+  },
+  {
+    id: 256,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pipe joint gasket' in a water main?",
+    options: ["Increase pipe strength", "Provide a watertight seal between pipe sections", "Prevent pipe corrosion", "Anchor the pipe in the trench"],
+    answer: 1,
+    explanation: "Pipe joint gaskets (typically rubber) provide a watertight seal between pipe sections, preventing leakage at joints under operating pressure while accommodating minor misalignment and thermal movement."
+  },
+  {
+    id: 257,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "hard",
+    question: "What is the purpose of a 'quantitative polymerase chain reaction' (qPCR) test in water quality monitoring?",
+    options: ["Measure chemical concentrations", "Detect and quantify specific microorganisms (including pathogens) by amplifying their DNA", "Measure turbidity", "Detect disinfection by-products"],
+    answer: 1,
+    explanation: "qPCR detects and quantifies specific microorganisms by amplifying and measuring their DNA. It is faster and more sensitive than culture methods and can detect pathogens that don't grow on standard media."
+  },
+  {
+    id: 258,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water utility risk management framework'?",
+    options: ["Manage financial risk only", "Systematically identify, assess, and manage all risks to the utility's operations and objectives", "Manage regulatory compliance risk only", "Manage infrastructure risk only"],
+    answer: 1,
+    explanation: "A risk management framework systematically identifies, assesses, and manages all risks (operational, financial, regulatory, reputational, security) that could affect the utility's ability to achieve its objectives."
+  },
+  {
+    id: 259,
+    module: "Distribution System Components",
+    difficulty: "easy",
+    question: "What is the purpose of a 'pressure gauge' at a pump station?",
+    options: ["Measure flow rate", "Monitor system pressure to verify pump performance and system conditions", "Measure water quality", "Control pump speed"],
+    answer: 1,
+    explanation: "Pressure gauges at pump stations monitor suction and discharge pressures, verifying pump performance, detecting system problems, and providing data for operational decisions."
+  },
+  {
+    id: 260,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'pipe condition index' (PCI) in rehabilitation planning?",
+    options: ["Calculate pipe replacement cost", "Provide a standardized rating of pipe condition to prioritize rehabilitation and replacement", "Measure pipe flow capacity", "Determine pipe material"],
+    answer: 1,
+    explanation: "A PCI provides a standardized numerical rating (typically 0-100) of pipe structural condition based on inspection data, enabling consistent comparison and prioritization of rehabilitation or replacement investments."
+  },
+  {
+    id: 261,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality baseline study'?",
+    options: ["Document current water quality only", "Establish reference conditions for detecting future changes and evaluating treatment effectiveness", "Compare water quality to other utilities", "Document regulatory compliance"],
+    answer: 1,
+    explanation: "A baseline study documents current water quality conditions across all parameters and locations, providing a reference point for detecting future changes, evaluating treatment effectiveness, and identifying emerging trends."
+  },
+  {
+    id: 262,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water utility customer portal'?",
+    options: ["Replace customer service staff", "Allow customers to view their water usage, bills, and water quality information online", "Manage utility operations", "Control water pressure"],
+    answer: 1,
+    explanation: "Customer portals provide self-service access to water usage data, billing information, water quality reports, and service requests, improving customer service and reducing call centre volume."
+  },
+  {
+    id: 263,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water distribution system reliability analysis'?",
+    options: ["Measure current system performance", "Evaluate the probability that the system will meet demand requirements under various failure scenarios", "Calculate system capacity", "Design system redundancy"],
+    answer: 1,
+    explanation: "Reliability analysis evaluates the probability that the system will meet demand requirements under various failure scenarios (pipe breaks, pump failures, power outages), identifying vulnerabilities and guiding redundancy investments."
+  },
+  {
+    id: 264,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station emergency response plan'?",
+    options: ["Document routine operations", "Provide procedures for responding to pump station emergencies (power failure, equipment failure, flooding)", "Schedule preventive maintenance", "Document regulatory compliance"],
+    answer: 1,
+    explanation: "A pump station emergency response plan provides step-by-step procedures for responding to emergencies (power failure, pump failure, flooding, chemical spill), ensuring rapid, effective response to minimize service disruption."
+  },
+  {
+    id: 265,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water quality sampling bottle' selection?",
+    options: ["Ensure the bottle is large enough for the sample", "Select the appropriate container material and preservative for the parameter being measured", "Use the cheapest available bottle", "Use the same bottle for all parameters"],
+    answer: 1,
+    explanation: "Different parameters require specific container materials (glass vs. plastic) and preservatives to prevent changes in sample composition. Using the wrong container can cause false results."
+  },
+  {
+    id: 266,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water utility asset management plan'?",
+    options: ["Document current asset condition only", "Provide a long-term framework for managing infrastructure assets to deliver required service levels at minimum cost", "Schedule all maintenance activities", "Document regulatory compliance"],
+    answer: 1,
+    explanation: "An asset management plan provides a long-term framework for managing infrastructure assets through their entire life cycle, balancing service levels, risk, and cost to achieve sustainable, affordable water service."
+  },
+  {
+    id: 267,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water system pressure zone boundary valve' management protocol?",
+    options: ["Open all boundary valves during emergencies", "Define procedures for operating boundary valves to maintain pressure zone integrity and respond to emergencies", "Close all boundary valves permanently", "Measure flow between pressure zones"],
+    answer: 1,
+    explanation: "Boundary valve management protocols define when and how to operate valves between pressure zones, maintaining zone integrity during normal operations and enabling controlled interconnection during emergencies."
+  },
+  {
+    id: 268,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station chemical storage' safety program?",
+    options: ["Store chemicals for water treatment only", "Ensure safe storage, handling, and use of chemicals to protect workers and the environment", "Reduce chemical costs", "Monitor chemical quality"],
+    answer: 1,
+    explanation: "Chemical storage safety programs ensure chemicals (chlorine, fluoride, corrosion inhibitors) are stored, handled, and used safely, with appropriate containment, ventilation, PPE, and emergency response procedures."
+  },
+  {
+    id: 269,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality exceedance notification' procedure?",
+    options: ["Document routine results", "Define the steps to take when a water quality result exceeds a regulatory standard or action level", "Schedule follow-up sampling only", "Notify customers of all results"],
+    answer: 1,
+    explanation: "An exceedance notification procedure defines the required actions when results exceed standards: repeat sampling, regulatory notification, public notification, investigation, and corrective action."
+  },
+  {
+    id: 270,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water utility website' in public communications?",
+    options: ["Market utility services", "Provide public access to water quality information, service updates, and customer resources", "Recruit employees", "Document regulatory compliance"],
+    answer: 1,
+    explanation: "A utility website provides public access to water quality reports, service disruption notices, conservation tips, billing information, and contact details, supporting transparency and customer service."
+  },
+  {
+    id: 271,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water distribution system energy recovery' system?",
+    options: ["Generate electricity from pump motors", "Recover energy from pressure reduction at PRV stations using micro-turbines or pressure exchangers", "Store solar energy for pump operations", "Recover heat from pump motors"],
+    answer: 1,
+    explanation: "Energy recovery systems (micro-turbines, pressure exchangers) capture the energy that would otherwise be dissipated as heat at PRV stations, converting it to electricity or mechanical energy and reducing net energy costs."
+  },
+  {
+    id: 272,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station flood protection' design?",
+    options: ["Prevent pump station flooding from pipe breaks", "Protect pump station equipment from damage during flood events", "Prevent flooding of nearby properties", "Protect against groundwater infiltration only"],
+    answer: 1,
+    explanation: "Flood protection measures (elevated equipment, flood barriers, waterproof enclosures, backup power on upper floors) protect pump station equipment from damage during flood events, maintaining service continuity."
+  },
+  {
+    id: 273,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality parameter correlation analysis'?",
+    options: ["Calculate average water quality", "Identify relationships between parameters to improve monitoring efficiency and understanding", "Compare water quality to standards", "Calculate regulatory compliance"],
+    answer: 1,
+    explanation: "Correlation analysis identifies relationships between water quality parameters (e.g., turbidity and bacteria, TOC and DBPs, temperature and chlorine decay), enabling more efficient monitoring and better understanding of system behaviour."
+  },
+  {
+    id: 274,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water utility climate change adaptation plan'?",
+    options: ["Reduce carbon emissions only", "Identify and manage risks to water supply and infrastructure from climate change impacts", "Plant trees to offset carbon", "Reduce energy consumption only"],
+    answer: 1,
+    explanation: "Climate change adaptation plans identify how climate change (more intense storms, droughts, temperature changes) will affect water supply, quality, and infrastructure, and develop strategies to manage these risks."
+  },
+  {
+    id: 275,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water system interconnection agreement'?",
+    options: ["Share billing data between utilities", "Define the terms, conditions, and responsibilities for sharing water between interconnected utilities", "Combine utility operations", "Share regulatory compliance records"],
+    answer: 1,
+    explanation: "Interconnection agreements define the terms for sharing water between utilities: flow rates, pressure requirements, water quality standards, cost sharing, and operational responsibilities during normal and emergency conditions."
+  },
+  {
+    id: 276,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'pump station inspection checklist'?",
+    options: ["Document equipment purchases", "Ensure all critical equipment and conditions are checked during routine inspections", "Schedule maintenance activities", "Document water quality results"],
+    answer: 1,
+    explanation: "Inspection checklists ensure that all critical equipment (pumps, motors, valves, instruments, alarms) and conditions (leaks, unusual noises, vibration, odours) are checked during routine inspections, preventing missed deficiencies."
+  },
+  {
+    id: 277,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality seasonal monitoring' program?",
+    options: ["Monitor water quality only in summer", "Adjust monitoring frequency and parameters to capture seasonal water quality variations", "Monitor water quality only in winter", "Monitor water quality at the same frequency year-round"],
+    answer: 1,
+    explanation: "Seasonal monitoring programs adjust sampling frequency and parameters to capture seasonal variations in water quality (algal blooms in summer, snowmelt turbidity in spring, DBP formation in warm weather)."
+  },
+  {
+    id: 278,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water utility employee wellness program'?",
+    options: ["Reduce employee sick days only", "Support employee physical and mental health to improve retention, productivity, and safety", "Reduce health insurance costs only", "Comply with labour regulations only"],
+    answer: 1,
+    explanation: "Employee wellness programs support physical and mental health through fitness programs, mental health resources, and work-life balance initiatives, improving retention, productivity, and safety in a physically demanding and high-responsibility profession."
+  },
+  {
+    id: 279,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water distribution system contamination source tracking' analysis?",
+    options: ["Track pipe corrosion sources", "Identify the origin and spread of contamination in the distribution system using hydraulic modelling", "Track chemical dosing sources", "Track customer complaint sources"],
+    answer: 1,
+    explanation: "Contamination source tracking uses hydraulic models to simulate how a contaminant introduced at a specific location would spread through the distribution system, supporting emergency response and system design."
+  },
+  {
+    id: 280,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station preventive maintenance schedule'?",
+    options: ["Document past maintenance", "Define the frequency and scope of maintenance tasks to prevent equipment failures", "Schedule emergency repairs", "Document equipment purchases"],
+    answer: 1,
+    explanation: "A preventive maintenance schedule defines what maintenance tasks (lubrication, belt replacement, bearing inspection, valve exercising) should be performed at what intervals to prevent failures and extend equipment life."
+  },
+  {
+    id: 281,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water quality laboratory accreditation'?",
+    options: ["Accredit laboratory staff", "Verify that the laboratory meets defined quality standards and produces reliable results", "Accredit the utility", "Accredit sampling procedures"],
+    answer: 1,
+    explanation: "Laboratory accreditation (by bodies like CALA or A2LA) verifies that a laboratory meets defined quality standards for equipment, procedures, staff competency, and quality control, ensuring reliable analytical results."
+  },
+  {
+    id: 282,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water utility procurement policy'?",
+    options: ["Purchase water from other utilities", "Define the process for purchasing goods and services to ensure value, fairness, and compliance", "Procure regulatory approvals", "Purchase water rights"],
+    answer: 1,
+    explanation: "A procurement policy defines the process for purchasing goods and services (competitive bidding thresholds, sole-source justification, conflict of interest rules) to ensure value for money, fairness, and regulatory compliance."
+  },
+  {
+    id: 283,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water system pressure monitoring network'?",
+    options: ["Control system pressure", "Continuously monitor pressure at strategic locations to detect anomalies and optimize operations", "Measure flow at all locations", "Monitor water quality"],
+    answer: 1,
+    explanation: "A pressure monitoring network uses sensors at strategic locations to continuously monitor system pressure, detecting anomalies (main breaks, pump failures, valve problems) and providing data for operational optimization."
+  },
+  {
+    id: 284,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'pump station reliability-centred maintenance' (RCM) analysis?",
+    options: ["Schedule all maintenance on a fixed calendar basis", "Identify the most effective maintenance strategy for each component based on failure modes and consequences", "Eliminate all preventive maintenance", "Maximize maintenance frequency"],
+    answer: 1,
+    explanation: "RCM analysis identifies the failure modes and consequences for each component and selects the most effective maintenance strategy (preventive, predictive, run-to-failure) based on the risk and cost of each failure mode."
+  },
+  {
+    id: 285,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality data management system' (LIMS)?",
+    options: ["Control laboratory equipment", "Store, manage, and report water quality data to support operations, compliance, and decision-making", "Schedule laboratory staff", "Manage laboratory supplies"],
+    answer: 1,
+    explanation: "A Laboratory Information Management System (LIMS) stores all water quality data, manages sample tracking and chain of custody, generates compliance reports, and supports trend analysis and decision-making."
+  },
+  {
+    id: 286,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water utility emergency contact list'?",
+    options: ["List all customers", "Provide contact information for key personnel and agencies needed during emergencies", "List all suppliers", "List all regulatory contacts only"],
+    answer: 1,
+    explanation: "An emergency contact list provides current phone numbers and contact information for key utility personnel, regulators, public health authorities, mutual aid partners, and emergency services needed during incidents."
+  },
+  {
+    id: 287,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water system capital improvement plan' (CIP)?",
+    options: ["Document past capital projects", "Plan and prioritize capital investments over a multi-year period to maintain and improve the system", "Schedule routine maintenance", "Document regulatory compliance"],
+    answer: 1,
+    explanation: "A CIP identifies, prioritizes, and schedules capital investments (pipe replacement, pump station upgrades, storage expansion) over a 5-20 year period, aligned with the asset management plan and financial capacity."
+  },
+  {
+    id: 288,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station electrical system inspection'?",
+    options: ["Measure water quality", "Verify the safety and reliability of electrical systems including switchgear, motors, and controls", "Measure pump flow", "Inspect pipe condition"],
+    answer: 1,
+    explanation: "Electrical system inspections verify that switchgear, motor controls, wiring, grounding, and protective devices are in safe operating condition, preventing electrical failures and ensuring worker safety."
+  },
+  {
+    id: 289,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water quality risk assessment' for a distribution system?",
+    options: ["Assess laboratory risk", "Identify and prioritize water quality risks from source to tap to guide monitoring and control measures", "Assess regulatory compliance risk", "Assess financial risk"],
+    answer: 1,
+    explanation: "A water quality risk assessment identifies all potential hazards and risks to water quality from source to tap (source contamination, treatment failures, distribution system contamination), enabling prioritization of monitoring and control measures."
+  },
+  {
+    id: 290,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water utility insurance program'?",
+    options: ["Insure water quality", "Protect the utility from financial losses due to accidents, liability claims, and property damage", "Insure regulatory compliance", "Insure employee health only"],
+    answer: 1,
+    explanation: "Insurance programs protect the utility from financial losses due to accidents, liability claims (property damage, personal injury), equipment failures, and other insurable risks, ensuring financial stability."
+  },
+  {
+    id: 291,
+    module: "Distribution System Components",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water main depth of cover' requirement?",
+    options: ["Protect the pipe from traffic loads only", "Protect the pipe from freezing, traffic loads, and physical damage", "Minimize excavation depth", "Reduce pipe installation cost"],
+    answer: 1,
+    explanation: "Minimum depth of cover requirements protect water mains from freezing (below frost depth), traffic loads (structural protection), and physical damage from surface activities."
+  },
+  {
+    id: 292,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station telemetry system'?",
+    options: ["Control pump operations manually", "Transmit operational data from remote pump stations to a central monitoring point", "Measure water quality at pump stations", "Control chemical dosing"],
+    answer: 1,
+    explanation: "Telemetry systems transmit operational data (flows, pressures, levels, pump status, alarms) from remote pump stations to a central SCADA system, enabling monitoring and control without on-site operators."
+  },
+  {
+    id: 293,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality audit' by a regulatory authority?",
+    options: ["Assess laboratory equipment", "Verify that the utility is meeting all regulatory requirements for water quality monitoring and reporting", "Assess utility financial performance", "Assess utility staffing levels"],
+    answer: 1,
+    explanation: "Regulatory water quality audits verify that utilities are collecting required samples, using approved methods, meeting reporting deadlines, and complying with all water quality standards and regulations."
+  },
+  {
+    id: 294,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water utility knowledge management system'?",
+    options: ["Manage water quality data", "Capture, organize, and share institutional knowledge to prevent loss when experienced staff retire", "Manage regulatory compliance data", "Manage financial data"],
+    answer: 1,
+    explanation: "Knowledge management systems capture and organize institutional knowledge (operational procedures, system history, lessons learned) to prevent the loss of critical expertise when experienced staff retire or leave."
+  },
+  {
+    id: 295,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water system vulnerability analysis' for natural hazards?",
+    options: ["Assess financial vulnerability", "Identify system components vulnerable to natural hazards (earthquakes, floods, ice storms) and plan mitigation", "Assess regulatory vulnerability", "Assess water quality vulnerability"],
+    answer: 1,
+    explanation: "Natural hazard vulnerability analysis identifies system components (pipes, pump stations, reservoirs) at risk from earthquakes, floods, ice storms, and other natural hazards, enabling targeted hardening and emergency planning."
+  },
+  {
+    id: 296,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'pump station access road' maintenance program?",
+    options: ["Improve pump station aesthetics", "Ensure reliable access for operations, maintenance, and emergency response vehicles", "Reduce noise from pump stations", "Improve drainage around pump stations"],
+    answer: 1,
+    explanation: "Maintaining access roads ensures that operations and maintenance vehicles can reach pump stations reliably, particularly during emergencies when rapid access is critical."
+  },
+  {
+    id: 297,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality sampling frequency review'?",
+    options: ["Reduce sampling costs only", "Evaluate whether current sampling frequencies are adequate to detect water quality problems and meet regulations", "Increase sampling frequency for all parameters", "Reduce regulatory requirements"],
+    answer: 1,
+    explanation: "Sampling frequency reviews evaluate whether current monitoring programs are adequate to detect water quality problems, meet regulatory requirements, and provide sufficient data for operational decision-making."
+  },
+  {
+    id: 298,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water utility environmental management system' (EMS)?",
+    options: ["Manage water quality only", "Systematically manage environmental impacts of utility operations (energy, chemicals, waste, emissions)", "Manage regulatory compliance only", "Manage financial impacts only"],
+    answer: 1,
+    explanation: "An EMS (ISO 14001) systematically identifies and manages the environmental impacts of utility operations, including energy consumption, chemical use, waste generation, and greenhouse gas emissions."
+  },
+  {
+    id: 299,
+    module: "Distribution System Components",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water distribution system digital twin'?",
+    options: ["Replace the physical system", "Create a real-time virtual replica of the system for monitoring, analysis, and decision support", "Design new pipe networks", "Calculate water bills"],
+    answer: 1,
+    explanation: "A digital twin is a real-time virtual replica of the distribution system that integrates SCADA data, hydraulic models, and asset information, enabling continuous monitoring, predictive analysis, and operational optimization."
+  },
+  {
+    id: 300,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station condition assessment'?",
+    options: ["Measure pump station water quality", "Evaluate the condition of all pump station components to prioritize maintenance and capital investment", "Measure pump station flow", "Assess pump station security"],
+    answer: 1,
+    explanation: "A pump station condition assessment evaluates the structural, mechanical, electrical, and instrumentation condition of all components, identifying deficiencies and prioritizing maintenance and rehabilitation investments."
+  },
+  {
+    id: 301,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water quality complaint log'?",
+    options: ["Document customer billing complaints", "Record all water quality complaints to identify patterns and support investigations", "Document regulatory violations only", "Record employee performance issues"],
+    answer: 1,
+    explanation: "A water quality complaint log records all complaints (date, location, nature of complaint, investigation results, corrective action) to identify patterns, support investigations, and demonstrate regulatory compliance."
+  },
+  {
+    id: 302,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water utility social media policy'?",
+    options: ["Promote utility services on social media", "Define guidelines for employee use of social media and official utility social media communications", "Monitor customer social media", "Manage utility advertising"],
+    answer: 1,
+    explanation: "A social media policy defines how employees should use social media (both personal and official accounts) regarding utility matters, protecting the utility's reputation and ensuring consistent, accurate communications."
+  },
+  {
+    id: 303,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water system pressure transient monitoring' program?",
+    options: ["Monitor average system pressure", "Detect and characterize pressure transients (water hammer) to identify causes and assess pipe damage risk", "Monitor pump pressure only", "Monitor PRV performance"],
+    answer: 1,
+    explanation: "Pressure transient monitoring uses high-frequency data loggers to detect and characterize water hammer events, identifying their sources, magnitude, and frequency to assess pipe damage risk and guide mitigation."
+  },
+  {
+    id: 304,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "hard",
+    question: "What is the purpose of a 'pump station seismic assessment'?",
+    options: ["Assess pump station noise levels", "Evaluate the pump station's ability to withstand earthquake forces and identify retrofitting needs", "Assess pump station flood risk", "Assess pump station security"],
+    answer: 1,
+    explanation: "Seismic assessments evaluate whether pump station structures, equipment, and piping can withstand expected earthquake forces, identifying components that need retrofitting to maintain service after a seismic event."
+  },
+  {
+    id: 305,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality inter-laboratory comparison' study?",
+    options: ["Compare water quality between utilities", "Verify laboratory accuracy by comparing results for the same sample analyzed by multiple laboratories", "Compare analytical methods", "Compare laboratory costs"],
+    answer: 1,
+    explanation: "Inter-laboratory comparison studies (proficiency testing) verify that a laboratory produces accurate results by comparing its results for a reference sample to those of other accredited laboratories."
+  },
+  {
+    id: 306,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water utility diversity and inclusion program'?",
+    options: ["Meet regulatory requirements only", "Build a diverse workforce that reflects the community and fosters an inclusive work environment", "Reduce hiring costs", "Manage employee conflicts"],
+    answer: 1,
+    explanation: "Diversity and inclusion programs build a workforce that reflects the community served and creates an inclusive environment where all employees can contribute fully, improving decision-making and community trust."
+  },
+  {
+    id: 307,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water system flow measurement' program?",
+    options: ["Measure customer water usage only", "Measure flows throughout the system to support water balance, leak detection, and hydraulic model calibration", "Measure treatment plant output only", "Measure fire flow only"],
+    answer: 1,
+    explanation: "System flow measurement programs measure flows at key points (zone entries, pump stations, interconnections) to support water balance calculations, leak detection, and hydraulic model calibration."
+  },
+  {
+    id: 308,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station electrical grounding' system?",
+    options: ["Improve pump efficiency", "Protect workers and equipment from electrical faults by providing a low-resistance path to earth", "Reduce electrical costs", "Monitor electrical consumption"],
+    answer: 1,
+    explanation: "Electrical grounding systems provide a low-resistance path to earth for fault currents, protecting workers from electric shock and equipment from damage during electrical faults."
+  },
+  {
+    id: 309,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water quality predictive model'?",
+    options: ["Replace water quality monitoring", "Use historical data and system parameters to predict future water quality conditions", "Calculate regulatory compliance", "Design treatment processes"],
+    answer: 1,
+    explanation: "Predictive water quality models use historical data, hydraulic models, and statistical methods to forecast future conditions (chlorine residuals, DBP formation, bacterial growth), enabling proactive operational adjustments."
+  },
+  {
+    id: 310,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water utility innovation program'?",
+    options: ["Develop new water treatment technologies", "Foster a culture of continuous improvement and adoption of new technologies and practices", "Reduce operational costs only", "Comply with regulatory requirements"],
+    answer: 1,
+    explanation: "Innovation programs encourage staff to identify and implement improvements in operations, technology, and service delivery, fostering a culture of continuous improvement and keeping the utility current with best practices."
+  },
+  {
+    id: 311,
+    module: "Distribution System Components",
+    difficulty: "easy",
+    question: "What is the purpose of a 'water system isolation valve' strategy?",
+    options: ["Isolate the entire system for maintenance", "Enable sections of the system to be isolated for maintenance or repair with minimal customer impact", "Isolate pressure zones permanently", "Isolate treatment from distribution"],
+    answer: 1,
+    explanation: "An isolation valve strategy ensures that valves are positioned throughout the system so that any section can be isolated for maintenance or repair while minimizing the number of customers affected."
+  },
+  {
+    id: 312,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "medium",
+    question: "What is the purpose of a 'pump station structural inspection'?",
+    options: ["Inspect pump mechanical condition", "Evaluate the structural integrity of the pump station building, foundation, and civil works", "Inspect electrical systems", "Inspect pipe condition"],
+    answer: 1,
+    explanation: "Structural inspections evaluate the condition of the pump station building, foundation, walls, roof, and civil works, identifying deterioration, cracking, settlement, or other structural deficiencies requiring repair."
+  },
+  {
+    id: 313,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality reporting dashboard'?",
+    options: ["Replace regulatory reports", "Provide real-time or near-real-time visualization of water quality data for operational decision-making", "Generate customer bills", "Control treatment processes"],
+    answer: 1,
+    explanation: "A water quality dashboard provides operators and managers with real-time or near-real-time visualization of key water quality parameters, enabling rapid identification of problems and informed operational decisions."
+  },
+  {
+    id: 314,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "hard",
+    question: "What is the purpose of a 'water utility long-term financial plan'?",
+    options: ["Document past financial performance", "Project revenues, expenses, and capital needs over 10-30 years to ensure financial sustainability", "Calculate current water rates", "Document regulatory compliance costs"],
+    answer: 1,
+    explanation: "A long-term financial plan projects revenues, operating costs, capital investments, debt service, and reserve fund contributions over 10-30 years, identifying funding gaps and guiding rate-setting decisions."
+  },
+  {
+    id: 315,
+    module: "Distribution System Components",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water system demand management' program?",
+    options: ["Manage water quality demands", "Reduce peak demands through conservation, pricing, and demand response to optimize system capacity", "Manage regulatory demands", "Manage customer service demands"],
+    answer: 1,
+    explanation: "Demand management programs reduce peak demands through water conservation, time-of-use pricing, and demand response programs, deferring or avoiding costly system expansions."
+  },
+  {
+    id: 316,
+    module: "Equipment Installation, O&M & Repair",
+    difficulty: "easy",
+    question: "What is the purpose of a 'pump station signage' program?",
+    options: ["Advertise the utility", "Provide safety warnings, operational information, and emergency contacts at pump stations", "Mark pump station boundaries", "Identify pump station ownership"],
+    answer: 1,
+    explanation: "Pump station signage provides safety warnings (electrical hazards, confined spaces, chemical hazards), operational information (valve positions, equipment labels), and emergency contacts for workers and emergency responders."
+  },
+  {
+    id: 317,
+    module: "Water Quality Monitoring & Lab",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water quality exceedance investigation report'?",
+    options: ["Document routine results", "Document the investigation, root cause analysis, and corrective actions for a water quality exceedance", "Schedule follow-up sampling only", "Notify regulators only"],
+    answer: 1,
+    explanation: "An exceedance investigation report documents the investigation process, identifies the root cause of the exceedance, describes corrective actions taken, and demonstrates to regulators that the problem has been addressed."
+  },
+  {
+    id: 318,
+    module: "Security, Safety, Admin & Public Interactions",
+    difficulty: "medium",
+    question: "What is the purpose of a 'water utility community engagement program'?",
+    options: ["Market utility services", "Build relationships with the community to understand their needs and build trust in the utility", "Recruit employees", "Manage regulatory relationships"],
+    answer: 1,
+    explanation: "Community engagement programs build relationships with customers and stakeholders through public meetings, surveys, advisory committees, and outreach activities, ensuring the utility understands community needs and maintains public trust."
+  },
+  {
+    id: 319,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a pressure-reducing valve (PRV) in a distribution system?",
+    options: ["Increase pressure in low-pressure zones", "Reduce pressure to protect downstream piping and fixtures", "Eliminate water hammer", "Control flow direction"],
+    answer: 1,
+    explanation: "PRVs reduce upstream pressure to a safe, preset downstream pressure, protecting pipes, meters, and fixtures from excessive pressure damage."
+  },
+  {
+    id: 320,
+    module: "Hydraulics & System Design",
+    question: "A distribution main has a friction loss of 4.2 m per km. If the main is 2.5 km long, what is the total friction head loss?",
+    options: ["8.4 m", "10.5 m", "12.6 m", "6.3 m"],
+    answer: 1,
+    explanation: "Total friction loss = 4.2 m/km × 2.5 km = 10.5 m."
+  },
+  {
+    id: 321,
+    module: "Hydraulics & System Design",
+    question: "Which pipe material is most resistant to corrosion in aggressive soils?",
+    options: ["Ductile iron without lining", "Steel", "High-density polyethylene (HDPE)", "Cast iron"],
+    answer: 2,
+    explanation: "HDPE is chemically inert and highly resistant to corrosion, making it ideal for aggressive soil conditions."
+  },
+  {
+    id: 322,
+    module: "Hydraulics & System Design",
+    question: "What is the primary purpose of a surge tank in a water distribution system?",
+    options: ["Store treated water for peak demand", "Absorb pressure surges caused by rapid flow changes", "Increase system pressure", "Provide chemical dosing"],
+    answer: 1,
+    explanation: "Surge tanks absorb hydraulic transients (water hammer) by providing a volume of water that can expand or contract to dampen pressure waves."
+  },
+  {
+    id: 323,
+    module: "Hydraulics & System Design",
+    question: "The Hazen-Williams coefficient (C) for new PVC pipe is approximately:",
+    options: ["100", "120", "140", "150"],
+    answer: 2,
+    explanation: "New PVC pipe has a Hazen-Williams C value of approximately 140-150, indicating very smooth interior walls and low friction losses."
+  },
+  {
+    id: 324,
+    module: "Hydraulics & System Design",
+    question: "What is the minimum cover depth for water mains in frost-prone areas in most Canadian provinces?",
+    options: ["0.6 m", "1.2 m", "1.8 m", "2.4 m"],
+    answer: 1,
+    explanation: "In frost-prone areas, water mains are typically installed at a minimum depth of 1.2 m (4 feet) below grade, though local frost depth requirements may require deeper installation."
+  },
+  {
+    id: 325,
+    module: "Hydraulics & System Design",
+    question: "A dead-end main is most problematic because it:",
+    options: ["Has higher pressure than looped mains", "Allows stagnant water to accumulate, reducing water quality", "Requires larger pipe diameter", "Cannot be isolated for repairs"],
+    answer: 1,
+    explanation: "Dead-end mains have no flow-through circulation, allowing water to stagnate, lose disinfectant residual, and develop taste, odour, and biological quality issues."
+  },
+  {
+    id: 326,
+    module: "Hydraulics & System Design",
+    question: "Which valve type provides the best throttling control in a distribution system?",
+    options: ["Gate valve", "Ball valve", "Butterfly valve", "Globe valve"],
+    answer: 3,
+    explanation: "Globe valves provide excellent throttling control due to their design, which allows precise flow regulation. Gate valves are designed for fully open/closed operation, not throttling."
+  },
+  {
+    id: 327,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a blow-off valve on a distribution main?",
+    options: ["Release air from the system", "Drain the main for maintenance or flush sediment", "Control pressure surges", "Regulate flow to service connections"],
+    answer: 1,
+    explanation: "Blow-off valves (drain valves) are installed at low points in the distribution system to allow draining of the main for maintenance, repair, or flushing of accumulated sediment."
+  },
+  {
+    id: 328,
+    module: "Hydraulics & System Design",
+    question: "In a looped distribution system, what happens to flow when a section of main is taken out of service?",
+    options: ["The entire system loses pressure", "Flow is redirected through alternate paths to maintain service", "All customers on the loop lose water", "Pressure doubles in the remaining pipes"],
+    answer: 1,
+    explanation: "The looped design allows water to flow from multiple directions, so when one section is isolated, flow is redirected through alternate paths, maintaining service to most customers."
+  },
+  {
+    id: 329,
+    module: "Water Quality Management",
+    question: "What is the maximum acceptable chloramine residual in a distribution system under Health Canada guidelines?",
+    options: ["1.0 mg/L", "2.0 mg/L", "3.0 mg/L", "4.0 mg/L"],
+    answer: 3,
+    explanation: "Health Canada's Guidelines for Canadian Drinking Water Quality set a maximum acceptable concentration of 3.0 mg/L for chloramines in drinking water."
+  },
+  {
+    id: 330,
+    module: "Water Quality Management",
+    question: "Nitrification in a chloraminated distribution system is caused by:",
+    options: ["Excess chlorine reacting with ammonia", "Ammonia-oxidizing bacteria converting ammonia to nitrite", "Pipe corrosion releasing nitrogen compounds", "Seasonal temperature changes"],
+    answer: 1,
+    explanation: "Nitrification occurs when ammonia-oxidizing bacteria (AOB) convert free ammonia (from chloramine decomposition) to nitrite, which can then be further oxidized to nitrate, depleting the chloramine residual."
+  },
+  {
+    id: 331,
+    module: "Water Quality Management",
+    question: "The CT concept in disinfection refers to:",
+    options: ["Chlorine type and temperature", "Concentration × contact time, used to measure disinfection effectiveness", "Chlorine turbidity ratio", "Chemical treatment protocol"],
+    answer: 1,
+    explanation: "CT (concentration × time) is a measure of disinfection effectiveness. Higher CT values indicate more effective inactivation of pathogens. CT requirements vary by pathogen and disinfectant type."
+  },
+  {
+    id: 332,
+    module: "Water Quality Management",
+    question: "What causes red water complaints in a distribution system?",
+    options: ["Excess chlorine reacting with organics", "Iron corrosion products being released from unlined iron pipes", "High manganese levels in source water", "Biofilm growth in the system"],
+    answer: 1,
+    explanation: "Red water is typically caused by iron corrosion products (iron oxides/hydroxides) being released from unlined cast iron or ductile iron pipes, often triggered by flow changes or pressure fluctuations."
+  },
+  {
+    id: 333,
+    module: "Water Quality Management",
+    question: "Which parameter is most indicative of recent fecal contamination in a distribution system?",
+    options: ["Total coliform", "Heterotrophic plate count (HPC)", "E. coli", "Turbidity"],
+    answer: 2,
+    explanation: "E. coli is the most specific indicator of recent fecal contamination, as it is found almost exclusively in the intestines of warm-blooded animals. Its presence indicates a serious public health risk."
+  },
+  {
+    id: 334,
+    module: "Water Quality Management",
+    question: "Biofilm in distribution systems can cause all of the following EXCEPT:",
+    options: ["Increased chlorine demand", "Taste and odour complaints", "Reduced pipe diameter", "Increased pipe pressure"],
+    answer: 3,
+    explanation: "Biofilm increases chlorine demand, causes taste/odour issues, and can reduce effective pipe diameter over time. It does not increase pipe pressure — in fact, it can increase friction losses and reduce flow."
+  },
+  {
+    id: 335,
+    module: "Water Quality Management",
+    question: "The Langelier Saturation Index (LSI) is used to assess:",
+    options: ["Disinfection effectiveness", "Corrosivity or scale-forming tendency of water", "Bacterial contamination risk", "Turbidity removal efficiency"],
+    answer: 1,
+    explanation: "The LSI predicts whether water will tend to dissolve calcium carbonate (corrosive, negative LSI) or deposit it as scale (scale-forming, positive LSI). It helps operators manage corrosion control."
+  },
+  {
+    id: 336,
+    module: "Water Quality Management",
+    question: "What is the primary purpose of orthophosphate addition in a distribution system?",
+    options: ["Disinfection", "pH adjustment", "Corrosion inhibition by forming a protective film on pipe walls", "Taste and odour control"],
+    answer: 2,
+    explanation: "Orthophosphate forms a thin protective film of calcium phosphate or iron phosphate on pipe walls, reducing the release of lead, copper, and iron into the water."
+  },
+  {
+    id: 337,
+    module: "Water Quality Management",
+    question: "A distribution system sample tests positive for total coliform but negative for E. coli. The most appropriate response is to:",
+    options: ["Issue a boil water advisory immediately", "Investigate the source, resample, and check for cross-connections", "Increase chlorine dosage to maximum", "Flush all mains in the system"],
+    answer: 1,
+    explanation: "Total coliform without E. coli may indicate environmental contamination (soil bacteria) rather than fecal contamination. The appropriate response is to investigate, resample, and check for cross-connections before escalating."
+  },
+  {
+    id: 338,
+    module: "Water Quality Management",
+    question: "Trihalomethanes (THMs) form when chlorine reacts with:",
+    options: ["Ammonia in the water", "Natural organic matter (NOM)", "Iron and manganese", "Calcium and magnesium"],
+    answer: 1,
+    explanation: "THMs are disinfection byproducts (DBPs) formed when chlorine reacts with natural organic matter (NOM) such as humic and fulvic acids present in source water."
+  },
+  {
+    id: 339,
+    module: "Water Quality Management",
+    question: "The maximum acceptable concentration (MAC) for lead in drinking water under Health Canada guidelines is:",
+    options: ["0.005 mg/L", "0.010 mg/L", "0.015 mg/L", "0.050 mg/L"],
+    answer: 1,
+    explanation: "Health Canada's Guidelines for Canadian Drinking Water Quality set a MAC of 0.010 mg/L (10 µg/L) for lead in drinking water."
+  },
+  {
+    id: 340,
+    module: "Water Quality Management",
+    question: "Which flushing method is most effective at removing sediment and biofilm from distribution mains?",
+    options: ["Conventional flushing", "Unidirectional flushing (UDF)", "Hydrant flushing", "Pressure flushing"],
+    answer: 1,
+    explanation: "Unidirectional flushing (UDF) systematically closes valves to create high-velocity flow in one direction through each main, effectively scouring sediment and biofilm from pipe walls."
+  },
+  {
+    id: 341,
+    module: "System Operations",
+    question: "What is the purpose of a pressure zone in a water distribution system?",
+    options: ["To separate water of different quality", "To maintain pressures within acceptable ranges for different elevation areas", "To isolate contaminated sections", "To reduce pumping costs"],
+    answer: 1,
+    explanation: "Pressure zones divide the distribution system into areas where pressure is maintained within acceptable limits (typically 275-700 kPa or 40-100 psi), accounting for elevation differences."
+  },
+  {
+    id: 342,
+    module: "System Operations",
+    question: "A booster pump station is required when:",
+    options: ["The system has too much pressure", "Elevation or distance causes pressure to drop below minimum acceptable levels", "The storage reservoir is full", "Demand exceeds supply"],
+    answer: 1,
+    explanation: "Booster pumps are installed to increase pressure in areas where gravity or distance causes pressure to fall below the minimum acceptable level (typically 275 kPa or 40 psi)."
+  },
+  {
+    id: 343,
+    module: "System Operations",
+    question: "What is the recommended minimum residual chlorine at the extremities of a distribution system?",
+    options: ["0.05 mg/L", "0.10 mg/L", "0.20 mg/L", "0.50 mg/L"],
+    answer: 1,
+    explanation: "Most regulatory guidelines recommend a minimum free chlorine residual of 0.10 mg/L (some jurisdictions require 0.20 mg/L) at the extremities of the distribution system to provide a safety buffer against contamination."
+  },
+  {
+    id: 344,
+    module: "System Operations",
+    question: "During a main break repair, the repaired section should be disinfected by:",
+    options: ["Flushing with high-velocity water", "Swabbing with chlorine solution and pressure testing before returning to service", "Injecting chlorine gas", "Waiting 24 hours after repair"],
+    answer: 1,
+    explanation: "After repair, the affected section must be disinfected (typically by swabbing with high-concentration chlorine solution or continuous chlorination), pressure tested, and bacteriologically tested before returning to service."
+  },
+  {
+    id: 345,
+    module: "System Operations",
+    question: "What is the primary purpose of a cathodic protection system on a buried metal pipe?",
+    options: ["Prevent biological growth inside the pipe", "Prevent external corrosion by making the pipe a cathode in the electrochemical cell", "Reduce internal scaling", "Detect pipe leaks"],
+    answer: 1,
+    explanation: "Cathodic protection applies a small electrical current to make the metal pipe the cathode (rather than the anode) in an electrochemical cell, preventing oxidation (corrosion) of the pipe metal."
+  },
+  {
+    id: 346,
+    module: "System Operations",
+    question: "A service connection pressure regulator is installed to:",
+    options: ["Increase pressure to the customer", "Reduce distribution main pressure to an acceptable level for the customer's plumbing", "Prevent backflow", "Measure water consumption"],
+    answer: 1,
+    explanation: "Service connection pressure regulators reduce the distribution system pressure (which may be 550+ kPa) to a level safe for the customer's internal plumbing (typically 275-415 kPa)."
+  },
+  {
+    id: 347,
+    module: "System Operations",
+    question: "Which type of storage reservoir provides the most consistent pressure to the distribution system?",
+    options: ["Ground-level reservoir", "Elevated tank (standpipe or elevated storage)", "Buried reservoir", "Hydropneumatic tank"],
+    answer: 1,
+    explanation: "Elevated storage tanks provide gravity-fed pressure that remains relatively constant as the water level changes only slightly during normal operations, unlike hydropneumatic systems where pressure varies significantly."
+  },
+  {
+    id: 348,
+    module: "System Operations",
+    question: "What is the purpose of a pressure relief valve on a hydropneumatic tank?",
+    options: ["Maintain minimum pressure", "Prevent tank over-pressurization", "Control flow rate", "Vent air from the system"],
+    answer: 1,
+    explanation: "Pressure relief valves protect hydropneumatic tanks from over-pressurization by opening automatically when pressure exceeds the set point, releasing water or air to prevent tank failure."
+  },
+  {
+    id: 349,
+    module: "System Operations",
+    question: "When should a water main be pressure tested after installation?",
+    options: ["Before backfilling", "After backfilling but before connection to the system", "After connection to the system", "Both before and after backfilling"],
+    answer: 1,
+    explanation: "Pressure testing is typically performed after backfilling but before connection to the live system, allowing detection of leaks at joints and fittings under realistic soil loading conditions."
+  },
+  {
+    id: 350,
+    module: "System Operations",
+    question: "A water utility's system water loss (non-revenue water) is calculated as:",
+    options: ["Total water produced minus water billed to customers", "Total water produced minus water treated", "Peak demand minus average demand", "Water stored minus water distributed"],
+    answer: 0,
+    explanation: "Non-revenue water (NRW) = Total water produced (or purchased) minus total water billed. It includes real losses (leakage), apparent losses (meter errors, theft), and unbilled authorized consumption."
+  },
+  {
+    id: 351,
+    module: "Emergency Response",
+    question: "What is the first priority during a water main break response?",
+    options: ["Notify the media", "Isolate the break to minimize water loss and service disruption", "File an incident report", "Test water quality at the break site"],
+    answer: 1,
+    explanation: "The first priority is to isolate the break by closing the nearest isolation valves, minimizing water loss, property damage, and service disruption while the repair is organized."
+  },
+  {
+    id: 352,
+    module: "Emergency Response",
+    question: "A boil water advisory (BWA) should be issued when:",
+    options: ["Chlorine residual drops below 0.5 mg/L", "There is confirmed or suspected microbiological contamination of the distribution system", "A main break occurs", "Turbidity exceeds 1 NTU"],
+    answer: 1,
+    explanation: "BWAs are issued when there is confirmed microbiological contamination (positive E. coli results), a significant loss of pressure (potential for contamination entry), or other events that compromise the safety of the water supply."
+  },
+  {
+    id: 353,
+    module: "Emergency Response",
+    question: "During a contamination event, the MOST important immediate action is to:",
+    options: ["Increase chlorine dosage", "Identify and isolate the contamination source", "Flush all hydrants", "Notify the media"],
+    answer: 1,
+    explanation: "Identifying and isolating the contamination source prevents further spread of the contaminant through the system. This is the critical first step before remediation can begin."
+  },
+  {
+    id: 354,
+    module: "Emergency Response",
+    question: "What is the purpose of a distribution system emergency response plan (ERP)?",
+    options: ["Provide procedures for routine maintenance", "Define roles, responsibilities, and actions for responding to emergencies", "Document water quality testing results", "Outline capital improvement projects"],
+    answer: 1,
+    explanation: "An ERP defines clear roles, responsibilities, communication protocols, and step-by-step procedures for responding to various emergency scenarios, ensuring a coordinated and effective response."
+  },
+  {
+    id: 355,
+    module: "Emergency Response",
+    question: "When lifting a boil water advisory, water samples must show:",
+    options: ["Zero total coliform for one sample", "Two consecutive satisfactory samples collected 24 hours apart", "Chlorine residual above 0.5 mg/L", "Turbidity below 0.1 NTU"],
+    answer: 1,
+    explanation: "Most regulatory frameworks require at least two consecutive satisfactory bacteriological samples (absent for total coliform and E. coli) collected at least 24 hours apart before a BWA can be lifted."
+  },
+  {
+    id: 356,
+    module: "Emergency Response",
+    question: "A cross-connection is best defined as:",
+    options: ["A pipe that crosses another pipe", "Any actual or potential connection between the potable water supply and a source of contamination", "A valve that connects two pressure zones", "A bypass around a meter"],
+    answer: 1,
+    explanation: "A cross-connection is any physical connection between the potable water supply and any source of contamination or pollution, creating a potential pathway for contaminants to enter the drinking water system."
+  },
+  {
+    id: 357,
+    module: "Emergency Response",
+    question: "Backsiphonage occurs when:",
+    options: ["Pressure in the supply exceeds pressure in the customer's system", "Negative pressure in the supply line draws contaminated water back into the potable system", "A backflow preventer fails in the open position", "A pump fails to maintain adequate pressure"],
+    answer: 1,
+    explanation: "Backsiphonage is caused by negative pressure (vacuum) in the supply line, which can draw contaminated water back into the potable system. It can occur during main breaks, firefighting, or high demand events."
+  },
+  {
+    id: 358,
+    module: "Emergency Response",
+    question: "Which backflow prevention device provides the highest level of protection?",
+    options: ["Atmospheric vacuum breaker", "Pressure vacuum breaker", "Double check valve assembly", "Reduced pressure zone (RPZ) device"],
+    answer: 3,
+    explanation: "The RPZ (reduced pressure zone) device provides the highest level of backflow protection. It maintains a zone of reduced pressure between two check valves and vents to atmosphere if either check valve fails."
+  },
+  {
+    id: 359,
+    module: "Emergency Response",
+    question: "During a power outage affecting pump stations, the FIRST action should be to:",
+    options: ["Call the power utility", "Check storage levels and estimate how long the system can operate without pumping", "Issue a boil water advisory", "Reduce pressure throughout the system"],
+    answer: 1,
+    explanation: "The first step is to assess storage levels to determine how long the system can maintain service without pumping. This determines the urgency of response and whether demand restrictions are needed."
+  },
+  {
+    id: 360,
+    module: "Emergency Response",
+    question: "What is the minimum acceptable system pressure during a fire flow event?",
+    options: ["70 kPa (10 psi)", "140 kPa (20 psi)", "275 kPa (40 psi)", "415 kPa (60 psi)"],
+    answer: 1,
+    explanation: "During fire flow events, the minimum residual pressure at any point in the distribution system must be maintained at 140 kPa (20 psi) to prevent contamination entry and maintain some service to other customers."
+  },
+  {
+    id: 361,
+    module: "SCADA & Instrumentation",
+    question: "What does SCADA stand for?",
+    options: ["System Control and Data Acquisition", "Supervisory Control and Data Acquisition", "Sequential Control and Digital Automation", "System Calibration and Data Analysis"],
+    answer: 1,
+    explanation: "SCADA stands for Supervisory Control and Data Acquisition — a system that monitors and controls industrial processes remotely, collecting real-time data from field instruments and allowing operators to make adjustments."
+  },
+  {
+    id: 362,
+    module: "SCADA & Instrumentation",
+    question: "A PLC (Programmable Logic Controller) in a water distribution system is used to:",
+    options: ["Log water quality data", "Execute automated control logic for pumps, valves, and other equipment", "Communicate with customers", "Generate billing information"],
+    answer: 1,
+    explanation: "PLCs execute pre-programmed control logic to automatically operate pumps, valves, and other equipment based on sensor inputs such as pressure, level, and flow readings."
+  },
+  {
+    id: 363,
+    module: "SCADA & Instrumentation",
+    question: "An HMI (Human-Machine Interface) in a SCADA system provides:",
+    options: ["Physical control of field equipment", "A graphical interface for operators to monitor and control the system", "Cybersecurity protection", "Data storage for historical records"],
+    answer: 1,
+    explanation: "The HMI provides operators with a graphical display of system status, alarms, and trends, and allows them to issue commands to field equipment through the SCADA system."
+  },
+  {
+    id: 364,
+    module: "SCADA & Instrumentation",
+    question: "What type of sensor is used to measure water level in a storage reservoir?",
+    options: ["Turbidity sensor", "Pressure transducer or ultrasonic level sensor", "Flow meter", "Conductivity probe"],
+    answer: 1,
+    explanation: "Water level in reservoirs is commonly measured using pressure transducers (which measure hydrostatic pressure proportional to water depth) or ultrasonic level sensors (which measure the time for a sound pulse to reflect off the water surface)."
+  },
+  {
+    id: 365,
+    module: "SCADA & Instrumentation",
+    question: "A 4-20 mA signal in instrumentation represents:",
+    options: ["A digital on/off signal", "An analog signal where 4 mA = 0% and 20 mA = 100% of the measured range", "A power supply voltage", "A communication protocol"],
+    answer: 1,
+    explanation: "The 4-20 mA current loop is a standard analog signal used in industrial instrumentation. 4 mA represents 0% (minimum) and 20 mA represents 100% (maximum) of the sensor's measurement range. The live zero (4 mA) allows detection of broken wires."
+  },
+  {
+    id: 366,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of an alarm setpoint in a SCADA system?",
+    options: ["Set the target operating value", "Trigger an alert when a measured value exceeds acceptable limits", "Calibrate the sensor", "Record data at regular intervals"],
+    answer: 1,
+    explanation: "Alarm setpoints define the threshold values at which the SCADA system generates an alert, notifying operators that a measured parameter (pressure, level, flow, water quality) has exceeded acceptable limits."
+  },
+  {
+    id: 367,
+    module: "SCADA & Instrumentation",
+    question: "Cybersecurity for water utility SCADA systems is important because:",
+    options: ["SCADA systems store customer billing data", "Unauthorized access could allow manipulation of water treatment or distribution operations", "SCADA systems are connected to the internet for remote monitoring", "All of the above"],
+    answer: 1,
+    explanation: "SCADA cybersecurity is critical because unauthorized access could allow malicious actors to manipulate chemical dosing, pump operations, or valve positions, potentially compromising public health and safety."
+  },
+  {
+    id: 368,
+    module: "SCADA & Instrumentation",
+    question: "A magnetic flow meter (magmeter) measures flow by:",
+    options: ["Measuring the pressure differential across a constriction", "Detecting the voltage induced in a conductive fluid moving through a magnetic field", "Counting the rotations of a turbine", "Measuring the time for ultrasonic pulses to travel upstream and downstream"],
+    answer: 1,
+    explanation: "Magnetic flow meters apply Faraday's law of electromagnetic induction — a conductive fluid moving through a magnetic field generates a voltage proportional to the flow velocity."
+  },
+  {
+    id: 369,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a data historian in a SCADA system?",
+    options: ["Display real-time system status", "Store historical process data for trend analysis and reporting", "Control field equipment", "Manage user access permissions"],
+    answer: 1,
+    explanation: "A data historian is a specialized database that stores time-series process data from the SCADA system, enabling trend analysis, performance reporting, regulatory compliance documentation, and troubleshooting."
+  },
+  {
+    id: 370,
+    module: "SCADA & Instrumentation",
+    question: "RTUs (Remote Terminal Units) in a SCADA system are used to:",
+    options: ["Display data at the control room", "Collect data from field instruments and transmit it to the central SCADA system", "Store historical data", "Generate work orders"],
+    answer: 1,
+    explanation: "RTUs are field devices that interface with local sensors and equipment, collecting data and transmitting it to the central SCADA system, and receiving control commands to operate local equipment."
+  },
+  {
+    id: 371,
+    module: "Regulatory Compliance",
+    question: "Under the Safe Drinking Water Act in Ontario, operators must report a boil water advisory to the local Medical Officer of Health within:",
+    options: ["1 hour", "4 hours", "24 hours", "48 hours"],
+    answer: 1,
+    explanation: "Ontario's Safe Drinking Water Act requires immediate notification to the local Medical Officer of Health (within hours) when a boil water advisory is issued, to allow public health authorities to take protective action."
+  },
+  {
+    id: 372,
+    module: "Regulatory Compliance",
+    question: "The purpose of a Drinking Water Quality Management Standard (DWQMS) is to:",
+    options: ["Set maximum contaminant levels", "Provide a framework for managing drinking water quality through documented processes and continuous improvement", "Define operator certification requirements", "Regulate water rates"],
+    answer: 1,
+    explanation: "DWQMS (used in Ontario) provides a quality management framework for water systems, requiring documented operational plans, risk assessments, and continuous improvement processes to ensure safe drinking water."
+  },
+  {
+    id: 373,
+    module: "Regulatory Compliance",
+    question: "A Tier 1 adverse result under Ontario's drinking water regulations requires notification within:",
+    options: ["24 hours", "72 hours", "As soon as reasonably possible (within hours)", "7 days"],
+    answer: 2,
+    explanation: "Tier 1 adverse results (E. coli, total coliform in treated water, HPC exceeding limits) require immediate notification — as soon as reasonably possible, typically within hours — to the local Medical Officer of Health and the Ministry."
+  },
+  {
+    id: 374,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's Operational Plan under DWQMS?",
+    options: ["Document capital improvement projects", "Describe how the system is operated and managed to ensure safe drinking water", "Provide financial statements", "List all customer connections"],
+    answer: 1,
+    explanation: "The Operational Plan documents all aspects of system operation, including treatment processes, monitoring programs, emergency response procedures, and management practices, serving as the primary reference for DWQMS compliance."
+  },
+  {
+    id: 375,
+    module: "Regulatory Compliance",
+    question: "Under Canadian drinking water regulations, the maximum turbidity for treated water entering the distribution system is typically:",
+    options: ["0.1 NTU", "0.3 NTU", "1.0 NTU", "5.0 NTU"],
+    answer: 1,
+    explanation: "Health Canada's guidelines recommend that treated water entering the distribution system have a turbidity of ≤0.3 NTU, with a target of ≤0.1 NTU. Higher turbidity can shield microorganisms from disinfection."
+  },
+  {
+    id: 376,
+    module: "Regulatory Compliance",
+    question: "The purpose of a cross-connection control program is to:",
+    options: ["Monitor water pressure throughout the system", "Prevent contamination of the potable water supply through backflow", "Manage water loss from leaks", "Control chemical dosing"],
+    answer: 1,
+    explanation: "Cross-connection control programs identify potential backflow hazards, require installation of appropriate backflow prevention devices, and include regular inspection and testing to protect the potable water supply."
+  },
+  {
+    id: 377,
+    module: "Regulatory Compliance",
+    question: "Water system operators in most Canadian provinces must maintain their certification by:",
+    options: ["Passing an exam every year", "Completing continuing education requirements and renewing their certificate periodically", "Working at the same utility for 5 years", "Submitting monthly water quality reports"],
+    answer: 1,
+    explanation: "Operator certification maintenance typically requires completing continuing education units (CEUs) or professional development hours and renewing the certificate on a regular cycle (e.g., every 3-5 years)."
+  },
+  {
+    id: 378,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's annual report to the public?",
+    options: ["Provide financial statements to ratepayers", "Inform the public about water quality, system performance, and any regulatory issues", "List all capital projects completed during the year", "Document operator training records"],
+    answer: 1,
+    explanation: "Annual reports (Consumer Confidence Reports in the US, or similar documents in Canada) inform the public about water quality monitoring results, any exceedances of standards, and the overall performance of the water system."
+  },
+  {
+    id: 379,
+    module: "Regulatory Compliance",
+    question: "A significant adverse result in a distribution system sample requires the operator to:",
+    options: ["Continue normal operations and resample at the next scheduled interval", "Immediately notify the regulatory authority and take corrective action", "Increase chlorine dosage and wait 48 hours", "Shut down the entire system"],
+    answer: 1,
+    explanation: "Significant adverse results (such as E. coli detection) require immediate notification to the regulatory authority and the local Medical Officer of Health, followed by investigation and corrective action."
+  },
+  {
+    id: 380,
+    module: "Regulatory Compliance",
+    question: "The Safe Drinking Water Act (SDWA) in Ontario applies to:",
+    options: ["All water systems serving more than 25 people", "Municipal drinking water systems and certain other regulated systems", "Only systems using surface water sources", "Private wells and small systems only"],
+    answer: 1,
+    explanation: "Ontario's SDWA applies to municipal drinking water systems (those serving 6 or more private residences) and other regulated systems, establishing licensing, operational, and reporting requirements."
+  },
+  {
+    id: 381,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a check valve in a pump discharge line?",
+    options: ["Control flow rate", "Prevent backflow when the pump stops", "Reduce water hammer", "Measure flow"],
+    answer: 1,
+    explanation: "Check valves in pump discharge lines prevent backflow through the pump when it stops, protecting the pump from reverse rotation and preventing water hammer from the returning flow."
+  },
+  {
+    id: 382,
+    module: "Hydraulics & System Design",
+    question: "The energy grade line (EGL) in a pipe system represents:",
+    options: ["The elevation of the pipe above sea level", "The total energy (pressure + velocity + elevation head) at each point in the system", "The pressure head only", "The velocity head only"],
+    answer: 1,
+    explanation: "The EGL represents the total hydraulic energy at each point in the system, combining pressure head, velocity head, and elevation head. It always slopes downward in the direction of flow due to friction losses."
+  },
+  {
+    id: 383,
+    module: "Hydraulics & System Design",
+    question: "What is cavitation in a pump?",
+    options: ["Excessive vibration from imbalanced impeller", "Formation and collapse of vapor bubbles due to low pressure, causing damage to pump components", "Air entrainment in the suction line", "Overheating of pump bearings"],
+    answer: 1,
+    explanation: "Cavitation occurs when local pressure drops below the vapor pressure of water, forming vapor bubbles that collapse violently when they reach higher-pressure regions, causing pitting, noise, vibration, and damage to pump impellers and casings."
+  },
+  {
+    id: 384,
+    module: "Hydraulics & System Design",
+    question: "The Net Positive Suction Head Available (NPSHa) must be:",
+    options: ["Equal to the NPSHr", "Greater than the Net Positive Suction Head Required (NPSHr) to prevent cavitation", "Less than the NPSHr", "Zero for optimal pump performance"],
+    answer: 1,
+    explanation: "NPSHa must exceed NPSHr (with an adequate safety margin, typically 1.0-1.5 m) to ensure that the pressure at the pump suction is high enough to prevent cavitation."
+  },
+  {
+    id: 385,
+    module: "Hydraulics & System Design",
+    question: "In a parallel pump configuration, pumps are connected so that:",
+    options: ["Flow is additive while head remains the same", "Head is additive while flow remains the same", "Both flow and head are additive", "Flow and head are both reduced"],
+    answer: 0,
+    explanation: "Pumps in parallel discharge into a common header, so their flows add together while the total head remains the same as a single pump. This configuration is used to increase system capacity."
+  },
+  {
+    id: 386,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a variable frequency drive (VFD) on a distribution pump?",
+    options: ["Provide backup power during outages", "Vary pump speed to match flow demand and maintain constant pressure", "Protect the motor from overheating", "Measure pump efficiency"],
+    answer: 1,
+    explanation: "VFDs vary the motor speed (and thus pump speed) to match the actual flow demand, maintaining constant pressure while reducing energy consumption compared to constant-speed pumps with throttling valves."
+  },
+  {
+    id: 387,
+    module: "Hydraulics & System Design",
+    question: "What is the Darcy-Weisbach equation used for?",
+    options: ["Calculate pump efficiency", "Calculate head loss due to friction in a pipe", "Determine pipe wall thickness", "Calculate water hammer pressure"],
+    answer: 1,
+    explanation: "The Darcy-Weisbach equation calculates friction head loss in a pipe: hf = f × (L/D) × (V²/2g), where f is the friction factor, L is pipe length, D is pipe diameter, V is velocity, and g is gravitational acceleration."
+  },
+  {
+    id: 388,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of an air release valve (ARV) at a high point in a pipeline?",
+    options: ["Release excess pressure", "Remove air pockets that accumulate at high points and reduce flow capacity", "Allow air into the pipe during draining", "Prevent vacuum formation"],
+    answer: 1,
+    explanation: "Air pockets accumulate at high points in pipelines, reducing effective pipe diameter and increasing friction losses. ARVs automatically release trapped air while keeping water in the pipe."
+  },
+  {
+    id: 389,
+    module: "Hydraulics & System Design",
+    question: "A combination air valve performs which functions?",
+    options: ["Air release only", "Air/vacuum only", "Both air release (small orifice) and air/vacuum (large orifice) functions", "Pressure regulation and air release"],
+    answer: 2,
+    explanation: "Combination air valves combine the functions of an air release valve (releases small amounts of air during operation) and an air/vacuum valve (admits large volumes of air during pipe draining, releases large volumes during filling)."
+  },
+  {
+    id: 390,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a flow control valve (FCV) in a distribution system?",
+    options: ["Prevent backflow", "Limit flow to a preset maximum regardless of pressure differential", "Reduce pressure", "Measure flow"],
+    answer: 1,
+    explanation: "FCVs limit flow to a preset maximum value regardless of the pressure differential across the valve, preventing excessive flow to certain areas and ensuring equitable distribution."
+  },
+  {
+    id: 391,
+    module: "Water Quality Management",
+    question: "What is the primary concern with copper pipe corrosion in a distribution system?",
+    options: ["Structural failure of the pipe", "Release of copper into drinking water, which can cause health effects at elevated concentrations", "Increased friction losses", "Biofilm growth"],
+    answer: 1,
+    explanation: "Copper corrosion releases copper ions into drinking water. While copper is an essential nutrient, elevated concentrations (above 1.0 mg/L aesthetic objective; 2.0 mg/L MAC) can cause gastrointestinal effects and, with long-term exposure, liver or kidney damage."
+  },
+  {
+    id: 392,
+    module: "Water Quality Management",
+    question: "The purpose of pH adjustment in corrosion control is to:",
+    options: ["Improve taste", "Raise pH to reduce the corrosivity of water and promote formation of protective scale", "Improve disinfection efficiency", "Reduce hardness"],
+    answer: 1,
+    explanation: "Raising pH (typically to 7.5-8.5) reduces the corrosivity of water by promoting the formation of calcium carbonate scale on pipe walls, which acts as a protective barrier against metal dissolution."
+  },
+  {
+    id: 393,
+    module: "Water Quality Management",
+    question: "What is the aesthetic objective for chlorine in drinking water under Health Canada guidelines?",
+    options: ["0.5 mg/L", "1.0 mg/L", "2.0 mg/L", "4.0 mg/L"],
+    answer: 1,
+    explanation: "Health Canada's aesthetic objective for chlorine is ≤1.0 mg/L (as free chlorine) to minimize taste and odour complaints, while the operational guideline for maintaining a residual is ≥0.05 mg/L at the consumer's tap."
+  },
+  {
+    id: 394,
+    module: "Water Quality Management",
+    question: "Manganese in drinking water primarily causes:",
+    options: ["Gastrointestinal illness", "Black or brownish-black staining of fixtures and laundry", "Increased hardness", "Taste and odour problems"],
+    answer: 1,
+    explanation: "Manganese causes black or brownish-black staining of plumbing fixtures, laundry, and water-using appliances. It can also cause black water complaints when manganese deposits are disturbed by flow changes."
+  },
+  {
+    id: 395,
+    module: "Water Quality Management",
+    question: "What is the purpose of a residual disinfectant in the distribution system?",
+    options: ["Continue treating water after it leaves the treatment plant", "Provide a safety buffer against recontamination and indicate system integrity", "Improve taste and odour", "Prevent pipe corrosion"],
+    answer: 1,
+    explanation: "Residual disinfectant serves two purposes: it provides ongoing inactivation of any microorganisms that enter the distribution system, and its presence (or absence) indicates whether the system has been compromised."
+  },
+  {
+    id: 396,
+    module: "Water Quality Management",
+    question: "Which disinfection byproduct (DBP) class is associated with the use of chloramines?",
+    options: ["Trihalomethanes (THMs)", "Haloacetic acids (HAAs)", "Nitrosamines", "Bromate"],
+    answer: 2,
+    explanation: "Chloramination can produce nitrosamines (particularly NDMA — N-nitrosodimethylamine) as disinfection byproducts, especially when the source water contains certain precursor compounds. THMs and HAAs are primarily associated with free chlorine."
+  },
+  {
+    id: 397,
+    module: "Water Quality Management",
+    question: "A heterotrophic plate count (HPC) test measures:",
+    options: ["The concentration of fecal indicator bacteria", "The total number of aerobic and facultatively anaerobic bacteria in a water sample", "The presence of specific pathogens", "Viral contamination"],
+    answer: 1,
+    explanation: "HPC measures the total number of culturable heterotrophic bacteria in a water sample. While not a direct health indicator, elevated HPC can indicate treatment or distribution system problems and may interfere with coliform detection."
+  },
+  {
+    id: 398,
+    module: "Water Quality Management",
+    question: "What is the significance of total dissolved solids (TDS) in drinking water?",
+    options: ["TDS indicates the presence of pathogens", "High TDS can cause aesthetic problems (taste) and may indicate the presence of contaminants", "TDS determines the disinfection requirement", "TDS is not regulated in Canada"],
+    answer: 1,
+    explanation: "High TDS can cause salty, bitter, or metallic taste. Health Canada's aesthetic objective for TDS is ≤500 mg/L. While TDS itself is not a direct health concern, it can indicate the presence of specific dissolved contaminants."
+  },
+  {
+    id: 399,
+    module: "Water Quality Management",
+    question: "The purpose of a distribution system monitoring plan is to:",
+    options: ["Document all pipe repairs", "Define sampling locations, frequency, and parameters to verify water quality throughout the system", "Track customer complaints", "Schedule hydrant flushing"],
+    answer: 1,
+    explanation: "A monitoring plan specifies where, when, and what to sample in the distribution system to verify that water quality meets regulatory requirements and to detect any deterioration before it reaches customers."
+  },
+  {
+    id: 400,
+    module: "Water Quality Management",
+    question: "What is the purpose of a sentinel site in a distribution system monitoring program?",
+    options: ["Monitor pressure at critical points", "Provide early warning of water quality deterioration at vulnerable locations", "Measure flow at key junctions", "Test new treatment chemicals"],
+    answer: 1,
+    explanation: "Sentinel sites are strategically selected monitoring locations (often at system extremities or areas with long water age) that provide early warning of water quality deterioration, such as loss of residual or bacterial regrowth."
+  },
+  {
+    id: 401,
+    module: "System Operations",
+    question: "What is the purpose of a master meter in a water distribution system?",
+    options: ["Measure pressure at the highest point in the system", "Measure the total volume of water entering the distribution system for water balance calculations", "Control flow from the treatment plant", "Monitor water quality at the source"],
+    answer: 1,
+    explanation: "Master meters measure the total volume of water produced or purchased, which is compared to the total volume billed to customers to calculate system water loss (non-revenue water)."
+  },
+  {
+    id: 402,
+    module: "System Operations",
+    question: "What is the recommended frequency for exercising (operating) distribution system valves?",
+    options: ["Monthly", "Annually", "Every 5 years", "Only when needed for repairs"],
+    answer: 1,
+    explanation: "Valves should be exercised (opened and closed) at least annually to ensure they remain operable. Valves that are not exercised regularly can seize, making them unavailable during emergencies."
+  },
+  {
+    id: 403,
+    module: "System Operations",
+    question: "A water audit is used to:",
+    options: ["Verify customer billing accuracy", "Quantify all water inputs and outputs to identify and reduce water losses", "Assess water quality compliance", "Evaluate operator performance"],
+    answer: 1,
+    explanation: "A water audit (following the IWA/AWWA methodology) quantifies all components of water entering and leaving the system, separating authorized consumption from real and apparent losses to prioritize loss reduction efforts."
+  },
+  {
+    id: 404,
+    module: "System Operations",
+    question: "What is the purpose of a pressure management zone (PMZ) in reducing leakage?",
+    options: ["Increase pressure for fire protection", "Reduce average zone pressure to minimize leak flow rates and pipe burst frequency", "Isolate contaminated sections", "Improve disinfection residual"],
+    answer: 1,
+    explanation: "Pressure management reduces average zone pressure to the minimum required for service, which directly reduces leak flow rates (leakage is proportional to pressure) and reduces the frequency of pipe bursts."
+  },
+  {
+    id: 405,
+    module: "System Operations",
+    question: "What is the purpose of a district metered area (DMA) in a distribution system?",
+    options: ["Provide separate water quality zones", "Isolate a defined area for water balance monitoring and leak detection", "Separate pressure zones", "Manage customer billing"],
+    answer: 1,
+    explanation: "A DMA is a defined area of the distribution system with controlled inflows and outflows, allowing precise water balance calculations and minimum night flow analysis for leak detection and quantification."
+  },
+  {
+    id: 406,
+    module: "System Operations",
+    question: "Minimum night flow (MNF) analysis is used to:",
+    options: ["Determine peak demand", "Estimate real water losses (leakage) in a district metered area", "Calculate storage requirements", "Assess pump efficiency"],
+    answer: 1,
+    explanation: "During minimum night flow periods (typically 2-4 AM), legitimate customer consumption is minimal, so the flow into a DMA is primarily composed of leakage. MNF analysis quantifies this leakage."
+  },
+  {
+    id: 407,
+    module: "System Operations",
+    question: "What is the purpose of a leak noise correlator?",
+    options: ["Measure the volume of water lost from a leak", "Pinpoint the location of a leak by analyzing sound waves traveling through the pipe", "Detect leaks in service connections", "Monitor pressure at hydrants"],
+    answer: 1,
+    explanation: "Leak noise correlators use sensors placed at two points on a pipe to detect the sound of a leak. By analyzing the time difference in sound arrival at each sensor, the correlator calculates the leak location."
+  },
+  {
+    id: 408,
+    module: "System Operations",
+    question: "What is the purpose of a pipe condition assessment program?",
+    options: ["Monitor water quality in the distribution system", "Evaluate the structural integrity and remaining service life of pipes to prioritize rehabilitation or replacement", "Assess pump performance", "Document valve locations"],
+    answer: 1,
+    explanation: "Pipe condition assessment programs use various inspection methods (CCTV, acoustic, electromagnetic) to evaluate pipe condition, identify deterioration, and prioritize rehabilitation or replacement to prevent failures."
+  },
+  {
+    id: 409,
+    module: "System Operations",
+    question: "What is the Infrastructure Leakage Index (ILI)?",
+    options: ["The percentage of water lost to leakage", "A dimensionless ratio comparing actual leakage to unavoidable annual real losses (UARL)", "The number of pipe breaks per year per km", "The cost of leakage per cubic meter"],
+    answer: 1,
+    explanation: "The ILI is a key performance indicator for leakage management. ILI = Current Annual Real Losses (CARL) / Unavoidable Annual Real Losses (UARL). An ILI of 1.0 indicates the system is performing at the theoretical minimum leakage level."
+  },
+  {
+    id: 410,
+    module: "System Operations",
+    question: "What is the purpose of a hydraulic model of a distribution system?",
+    options: ["Replace the SCADA system", "Simulate system behavior under various conditions to support planning, operations, and emergency response", "Document pipe materials and sizes", "Calculate customer bills"],
+    answer: 1,
+    explanation: "Hydraulic models (such as EPANET) simulate pressure, flow, and water quality throughout the distribution system, supporting capital planning, operational optimization, fire flow analysis, and emergency response planning."
+  },
+  {
+    id: 411,
+    module: "Emergency Response",
+    question: "What is the purpose of a water system's vulnerability assessment?",
+    options: ["Evaluate operator competency", "Identify threats, vulnerabilities, and consequences to prioritize security improvements", "Assess financial risks", "Review regulatory compliance"],
+    answer: 1,
+    explanation: "Vulnerability assessments systematically identify physical, cyber, and operational threats to the water system, evaluate the likelihood and consequences of various scenarios, and prioritize countermeasures to reduce risk."
+  },
+  {
+    id: 412,
+    module: "Emergency Response",
+    question: "What is the Incident Command System (ICS) used for in water utility emergencies?",
+    options: ["Manage customer communications", "Provide a standardized organizational structure for emergency response", "Document water quality incidents", "Coordinate with the media"],
+    answer: 1,
+    explanation: "ICS provides a standardized, scalable organizational structure for emergency response, defining clear roles, responsibilities, and communication channels to ensure effective coordination among all responding parties."
+  },
+  {
+    id: 413,
+    module: "Emergency Response",
+    question: "During a water quality emergency, the primary communication priority is to notify:",
+    options: ["The media", "The regulatory authority and local Medical Officer of Health", "Customers directly", "The utility's board of directors"],
+    answer: 1,
+    explanation: "The first communication priority is to notify the regulatory authority and local Medical Officer of Health, who have the authority and expertise to assess public health risk and coordinate the public response."
+  },
+  {
+    id: 414,
+    module: "Emergency Response",
+    question: "What is the purpose of mutual aid agreements between water utilities?",
+    options: ["Share water quality data", "Provide access to equipment, personnel, and resources during emergencies", "Coordinate billing systems", "Standardize operator training"],
+    answer: 1,
+    explanation: "Mutual aid agreements allow water utilities to request and provide assistance (equipment, personnel, materials) during emergencies that exceed the utility's own resources, improving resilience and response capability."
+  },
+  {
+    id: 415,
+    module: "Emergency Response",
+    question: "After a significant contamination event, the distribution system should be returned to service by:",
+    options: ["Flushing and immediately resuming normal operations", "Systematic flushing, superchlorination, and bacteriological testing before lifting the advisory", "Waiting 72 hours after the source is identified", "Increasing chlorine dosage for 24 hours"],
+    answer: 1,
+    explanation: "System restoration requires systematic flushing to remove contaminated water, superchlorination to disinfect the system, followed by bacteriological testing to confirm safety before lifting any advisories."
+  },
+  {
+    id: 416,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a SCADA system's alarm management strategy?",
+    options: ["Log all process data", "Prioritize alarms so operators can focus on the most critical conditions", "Automatically shut down the system during emergencies", "Generate regulatory reports"],
+    answer: 1,
+    explanation: "Effective alarm management prioritizes alarms by severity (critical, high, medium, low) so operators are not overwhelmed by nuisance alarms and can focus attention on conditions requiring immediate action."
+  },
+  {
+    id: 417,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a redundant communication path in a SCADA system?",
+    options: ["Increase data transmission speed", "Ensure continued monitoring and control if the primary communication path fails", "Reduce cybersecurity risks", "Lower system costs"],
+    answer: 1,
+    explanation: "Redundant communication paths (e.g., primary fiber + backup cellular) ensure that SCADA monitoring and control functions continue even if the primary communication link fails, maintaining operational visibility."
+  },
+  {
+    id: 418,
+    module: "SCADA & Instrumentation",
+    question: "A turbidity meter in a distribution system is used to:",
+    options: ["Measure chlorine residual", "Detect changes in water clarity that may indicate contamination or treatment problems", "Monitor pressure", "Measure flow velocity"],
+    answer: 1,
+    explanation: "Online turbidity meters provide continuous monitoring of water clarity. Sudden turbidity increases in the distribution system can indicate main breaks, sediment disturbance, or potential contamination events."
+  },
+  {
+    id: 419,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a SCADA system's trending function?",
+    options: ["Generate work orders", "Display historical data over time to identify patterns, trends, and anomalies", "Control pump speeds", "Calculate water bills"],
+    answer: 1,
+    explanation: "Trending displays historical process data graphically over time, allowing operators to identify patterns (diurnal demand cycles), trends (gradual pressure decline), and anomalies (sudden changes) that may indicate problems."
+  },
+  {
+    id: 420,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a flow totalizer in a distribution system?",
+    options: ["Measure instantaneous flow rate", "Accumulate and display the total volume of water that has passed through a meter", "Control pump speed", "Monitor pressure"],
+    answer: 1,
+    explanation: "A flow totalizer accumulates the total volume of water passing through a meter over time, providing data for water balance calculations, billing, and system performance monitoring."
+  },
+  {
+    id: 421,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a source water protection plan?",
+    options: ["Regulate water treatment processes", "Identify and manage risks to drinking water sources before they reach the treatment plant", "Define distribution system monitoring requirements", "Set operator certification standards"],
+    answer: 1,
+    explanation: "Source water protection plans identify threats to drinking water sources (surface water and groundwater), establish protection zones, and implement measures to prevent contamination before it reaches the treatment plant."
+  },
+  {
+    id: 422,
+    module: "Regulatory Compliance",
+    question: "Under Ontario's Clean Water Act, a Source Protection Plan is developed by:",
+    options: ["The provincial government", "Source Protection Committees representing local stakeholders", "Individual water utilities", "The federal government"],
+    answer: 1,
+    explanation: "Ontario's Clean Water Act established Source Protection Committees representing municipalities, conservation authorities, agricultural interests, and other stakeholders to develop and implement local source protection plans."
+  },
+  {
+    id: 423,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a works approval or permit to take water?",
+    options: ["Authorize the construction or modification of water works", "Both authorize construction and regulate the quantity of water that can be withdrawn from a source", "Certify operator competency", "Approve water rates"],
+    answer: 1,
+    explanation: "Works approvals authorize the construction or modification of water infrastructure, while permits to take water regulate the quantity of water that can be withdrawn from a source, ensuring sustainable use of water resources."
+  },
+  {
+    id: 424,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a drinking water system's license in Ontario?",
+    options: ["Certify individual operators", "Authorize the system to operate and establish conditions for safe operation", "Regulate water rates", "Approve capital projects"],
+    answer: 1,
+    explanation: "A drinking water system license (required under Ontario's Safe Drinking Water Act) authorizes the system to operate and establishes conditions that must be met to ensure safe drinking water, including DWQMS accreditation."
+  },
+  {
+    id: 425,
+    module: "Regulatory Compliance",
+    question: "The purpose of a water system's quality management system (QMS) audit is to:",
+    options: ["Test water quality at customer taps", "Verify that the system is operating in accordance with its documented processes and regulatory requirements", "Assess financial performance", "Evaluate capital infrastructure"],
+    answer: 1,
+    explanation: "QMS audits (internal and external) verify that the water system is operating as documented in its Operational Plan and in compliance with regulatory requirements, identifying gaps and opportunities for improvement."
+  },
+  {
+    id: 426,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a thrust block at a pipe bend?",
+    options: ["Support the pipe weight", "Resist the unbalanced hydraulic forces at changes in pipe direction or size", "Prevent pipe corrosion", "Reduce water hammer"],
+    answer: 1,
+    explanation: "Thrust blocks are concrete structures cast against undisturbed soil at bends, tees, reducers, and dead ends to resist the unbalanced hydraulic forces that would otherwise push pipe joints apart."
+  },
+  {
+    id: 427,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a mechanical joint (MJ) restraint on a ductile iron pipe?",
+    options: ["Prevent corrosion at the joint", "Provide additional resistance to joint separation under thrust forces", "Allow pipe movement for thermal expansion", "Seal the joint against leakage"],
+    answer: 1,
+    explanation: "Mechanical joint restraints (such as retainer glands or harness rods) provide additional resistance to joint separation under thrust forces, supplementing or replacing concrete thrust blocks in areas where thrust blocks cannot be used."
+  },
+  {
+    id: 428,
+    module: "Hydraulics & System Design",
+    question: "What is the minimum pipe size typically required for a fire hydrant lateral?",
+    options: ["50 mm (2 in)", "100 mm (4 in)", "150 mm (6 in)", "200 mm (8 in)"],
+    answer: 2,
+    explanation: "Fire hydrant laterals are typically a minimum of 150 mm (6 in) diameter to provide adequate fire flow. The connecting main should be at least 150 mm (6 in) for residential areas and 200 mm (8 in) or larger for commercial/industrial areas."
+  },
+  {
+    id: 429,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a corporation stop (curb stop) on a service connection?",
+    options: ["Measure water consumption", "Provide a shutoff point at the main for the service connection", "Prevent backflow", "Regulate service pressure"],
+    answer: 1,
+    explanation: "A corporation stop is a small valve installed directly in the distribution main at the service connection tap, providing a shutoff point at the main. A curb stop is a separate valve near the property line."
+  },
+  {
+    id: 430,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a meter pit (meter box) in a service connection?",
+    options: ["Protect the meter from traffic loads and weather", "Provide access to the meter for reading and maintenance", "Both A and B", "Prevent backflow at the service connection"],
+    answer: 2,
+    explanation: "Meter pits (boxes) serve dual purposes: they protect the water meter from traffic loads, frost, and weather damage, and provide convenient access for meter reading, maintenance, and replacement."
+  },
+  {
+    id: 431,
+    module: "System Operations",
+    question: "What is the purpose of a hydrant flow test?",
+    options: ["Test hydrant operability", "Measure available fire flow and system pressure at a specific location", "Flush the distribution main", "Test backflow prevention"],
+    answer: 1,
+    explanation: "Hydrant flow tests measure the static pressure, residual pressure at a specified flow rate, and pitot pressure at the flowing hydrant to calculate available fire flow and assess system hydraulic capacity."
+  },
+  {
+    id: 432,
+    module: "System Operations",
+    question: "What is the purpose of a valve box in a distribution system?",
+    options: ["Protect the valve from corrosion", "Provide surface access to underground valves for operation and maintenance", "Prevent unauthorized valve operation", "Measure flow through the valve"],
+    answer: 1,
+    explanation: "Valve boxes extend from the buried valve to the ground surface, providing access for valve operation (using a valve key) and maintenance without excavation."
+  },
+  {
+    id: 433,
+    module: "System Operations",
+    question: "What information should be included in a valve record (valve card)?",
+    options: ["Valve location, type, size, and number of turns to close", "Valve manufacturer and purchase price only", "Valve installation date only", "Valve maintenance history only"],
+    answer: 0,
+    explanation: "Valve records should include location (GPS coordinates, address, depth), valve type and size, direction and number of turns to close, condition, maintenance history, and any special notes — all critical for emergency response."
+  },
+  {
+    id: 434,
+    module: "System Operations",
+    question: "What is the purpose of a hydrant record (hydrant card)?",
+    options: ["Document hydrant purchase cost", "Record hydrant location, type, flow capacity, and maintenance history for operational use", "Track customer complaints about hydrants", "Document hydrant painting schedule"],
+    answer: 1,
+    explanation: "Hydrant records document location, type, size, flow capacity, date of last inspection/maintenance, and any deficiencies — essential for fire department pre-planning and utility maintenance management."
+  },
+  {
+    id: 435,
+    module: "System Operations",
+    question: "What is the purpose of a geographic information system (GIS) in distribution system management?",
+    options: ["Monitor water quality in real time", "Provide a spatial database of infrastructure assets for planning, operations, and maintenance", "Control SCADA systems", "Generate customer bills"],
+    answer: 1,
+    explanation: "GIS provides a spatially referenced database of all distribution system assets (pipes, valves, hydrants, meters), enabling efficient operations, maintenance planning, emergency response, and capital planning."
+  },
+  {
+    id: 436,
+    module: "System Operations",
+    question: "What is the purpose of an asset management plan for a water distribution system?",
+    options: ["Document regulatory compliance", "Provide a long-term strategy for maintaining, rehabilitating, and replacing infrastructure assets", "Track operator training", "Manage customer accounts"],
+    answer: 1,
+    explanation: "Asset management plans inventory all infrastructure assets, assess their condition and remaining service life, and develop long-term strategies for maintenance, rehabilitation, and replacement to manage risk and optimize lifecycle costs."
+  },
+  {
+    id: 437,
+    module: "System Operations",
+    question: "What is the purpose of a capital improvement plan (CIP) for a water utility?",
+    options: ["Document annual operating expenses", "Plan and budget for major infrastructure investments over a multi-year horizon", "Track regulatory compliance", "Manage operator certification"],
+    answer: 1,
+    explanation: "A CIP identifies, prioritizes, and schedules major capital investments (new infrastructure, rehabilitation, replacement) over a 5-20 year horizon, providing a framework for long-term financial planning and rate setting."
+  },
+  {
+    id: 438,
+    module: "System Operations",
+    question: "What is the purpose of a service level agreement (SLA) in a water utility?",
+    options: ["Define water quality standards", "Define the expected level of service to be provided to customers", "Set operator certification requirements", "Establish water rates"],
+    answer: 1,
+    explanation: "SLAs define measurable service standards (pressure, reliability, response time, water quality) that the utility commits to providing, forming the basis for performance monitoring and customer accountability."
+  },
+  {
+    id: 439,
+    module: "System Operations",
+    question: "What is the purpose of a work order system in a water utility?",
+    options: ["Track customer payments", "Document, assign, track, and close maintenance and repair activities", "Monitor water quality", "Generate regulatory reports"],
+    answer: 1,
+    explanation: "Work order systems document all maintenance and repair activities, assign work to crews, track completion status, and record materials and labor used — essential for asset management and performance monitoring."
+  },
+  {
+    id: 440,
+    module: "System Operations",
+    question: "What is the purpose of a preventive maintenance (PM) program for distribution system equipment?",
+    options: ["Respond to equipment failures", "Perform scheduled maintenance to prevent failures and extend equipment life", "Document regulatory compliance", "Train new operators"],
+    answer: 1,
+    explanation: "PM programs schedule regular maintenance activities (lubrication, inspection, calibration, exercising) based on manufacturer recommendations and operational experience to prevent failures, reduce downtime, and extend equipment life."
+  },
+  {
+    id: 441,
+    module: "Emergency Response",
+    question: "What is the purpose of a water system's continuity of operations plan (COOP)?",
+    options: ["Document routine operating procedures", "Ensure essential functions can continue during and after a major disruption", "Plan capital improvements", "Manage customer communications"],
+    answer: 1,
+    explanation: "A COOP identifies essential functions, establishes alternate operating locations and procedures, and ensures that critical water system operations can continue even during major disruptions such as natural disasters or infrastructure failures."
+  },
+  {
+    id: 442,
+    module: "Emergency Response",
+    question: "What is the purpose of a tabletop exercise for a water utility?",
+    options: ["Train operators on equipment operation", "Practice emergency response procedures in a discussion-based format without deploying resources", "Test SCADA system functionality", "Evaluate water quality monitoring"],
+    answer: 1,
+    explanation: "Tabletop exercises walk participants through an emergency scenario in a discussion format, identifying gaps in plans, clarifying roles and responsibilities, and improving coordination without the cost and disruption of a full-scale exercise."
+  },
+  {
+    id: 443,
+    module: "Emergency Response",
+    question: "What is the purpose of a water utility's public information plan during an emergency?",
+    options: ["Manage media relations only", "Ensure timely, accurate, and consistent information reaches all affected stakeholders", "Document the emergency for regulatory reporting", "Coordinate with other utilities"],
+    answer: 1,
+    explanation: "A public information plan defines messages, communication channels, spokespersons, and processes for communicating with customers, media, regulatory authorities, and other stakeholders during emergencies."
+  },
+  {
+    id: 444,
+    module: "Emergency Response",
+    question: "What is the purpose of a post-incident review after a water system emergency?",
+    options: ["Assign blame for the incident", "Identify lessons learned and improve plans, procedures, and training", "Document regulatory compliance", "Calculate the cost of the incident"],
+    answer: 1,
+    explanation: "Post-incident reviews (after-action reviews) analyze what happened, what worked well, and what needs improvement, translating lessons learned into updates to plans, procedures, training, and infrastructure."
+  },
+  {
+    id: 445,
+    module: "Emergency Response",
+    question: "What is the purpose of a water system's cybersecurity incident response plan?",
+    options: ["Prevent all cyber attacks", "Define procedures for detecting, responding to, and recovering from cyber incidents", "Train operators on computer use", "Manage SCADA system updates"],
+    answer: 1,
+    explanation: "A cybersecurity incident response plan defines the steps to detect, contain, eradicate, and recover from cyber incidents affecting SCADA and other operational technology systems, minimizing impact on water system operations."
+  },
+  {
+    id: 446,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a SCADA system's failsafe mode?",
+    options: ["Maximize system performance during normal operations", "Ensure the system moves to a safe state if communication or control is lost", "Reduce energy consumption", "Generate regulatory reports"],
+    answer: 1,
+    explanation: "Failsafe modes define the default state of controlled equipment (e.g., valves close, pumps stop) if SCADA communication or control is lost, ensuring the system moves to a safe condition rather than an undefined or dangerous state."
+  },
+  {
+    id: 447,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a SCADA system's historian data backup?",
+    options: ["Provide real-time data to operators", "Protect historical process data against loss due to hardware failure or cyber incidents", "Reduce system response time", "Improve alarm management"],
+    answer: 1,
+    explanation: "Regular backups of historian data protect against loss of valuable historical process data due to hardware failure, cyber incidents, or human error, ensuring data is available for regulatory reporting, troubleshooting, and trend analysis."
+  },
+  {
+    id: 448,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a SCADA system's role-based access control?",
+    options: ["Improve system performance", "Limit access to system functions based on each user's role and responsibilities", "Enable remote monitoring", "Automate routine operations"],
+    answer: 1,
+    explanation: "Role-based access control ensures that users can only access and control the SCADA functions appropriate to their role, reducing the risk of unauthorized changes, human error, and insider threats."
+  },
+  {
+    id: 449,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a SCADA system's event log?",
+    options: ["Display real-time system status", "Record all operator actions, alarms, and system events for audit and troubleshooting", "Control field equipment", "Generate customer bills"],
+    answer: 1,
+    explanation: "Event logs record all operator actions (setpoint changes, manual overrides), alarms (occurrence, acknowledgment, clearance), and system events (communication failures, power outages) with timestamps for audit trails and troubleshooting."
+  },
+  {
+    id: 450,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a SCADA system's network segmentation?",
+    options: ["Improve data transmission speed", "Isolate the operational technology (OT) network from the corporate IT network to reduce cybersecurity risk", "Reduce equipment costs", "Enable remote access for operators"],
+    answer: 1,
+    explanation: "Network segmentation (using firewalls, DMZs, and air gaps) isolates the SCADA/OT network from the corporate IT network and the internet, reducing the attack surface and preventing cyber threats from propagating to operational systems."
+  },
+  {
+    id: 451,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's sampling plan?",
+    options: ["Document pipe repair locations", "Define the locations, frequency, and parameters for regulatory water quality monitoring", "Schedule hydrant flushing", "Plan capital improvements"],
+    answer: 1,
+    explanation: "A sampling plan specifies the regulatory monitoring requirements (locations, frequency, parameters) to demonstrate compliance with drinking water standards and detect any water quality issues in the distribution system."
+  },
+  {
+    id: 452,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's corrective action report?",
+    options: ["Document routine maintenance", "Document the cause of a regulatory exceedance and the steps taken to correct it", "Report capital project completion", "Track operator training"],
+    answer: 1,
+    explanation: "Corrective action reports document the investigation findings, root cause analysis, immediate corrective actions, and long-term preventive measures taken in response to a regulatory exceedance or adverse result."
+  },
+  {
+    id: 453,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's operator logbook?",
+    options: ["Track customer complaints", "Document daily operations, observations, and actions for regulatory compliance and operational continuity", "Record capital expenditures", "Monitor water rates"],
+    answer: 1,
+    explanation: "Operator logbooks document daily readings, observations, maintenance activities, and unusual events, providing a continuous record of system operations for regulatory compliance, troubleshooting, and knowledge transfer."
+  },
+  {
+    id: 454,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's emergency contact list?",
+    options: ["List all customers in the service area", "Provide contact information for key personnel and agencies needed during emergencies", "Document equipment suppliers", "List regulatory requirements"],
+    answer: 1,
+    explanation: "Emergency contact lists provide current contact information for utility personnel, regulatory authorities, emergency services, contractors, and other key parties needed to respond effectively to water system emergencies."
+  },
+  {
+    id: 455,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's training records?",
+    options: ["Document operator certification status and training history for regulatory compliance", "Track customer service calls", "Record equipment maintenance", "Document water quality results"],
+    answer: 0,
+    explanation: "Training records document each operator's certification status, continuing education, and training history, demonstrating regulatory compliance and ensuring that operators maintain the competency required for their certification level."
+  },
+  {
+    id: 456,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a pressure sustaining valve (PSV) in a distribution system?",
+    options: ["Reduce pressure downstream", "Maintain a minimum upstream pressure regardless of downstream demand", "Control flow rate", "Prevent backflow"],
+    answer: 1,
+    explanation: "PSVs maintain a minimum upstream pressure by throttling flow when upstream pressure drops to the setpoint, ensuring adequate pressure for upstream customers even during high downstream demand."
+  },
+  {
+    id: 457,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a flow modulating valve in a distribution system?",
+    options: ["Prevent backflow", "Automatically adjust valve opening to maintain a target flow rate", "Reduce pressure", "Release air"],
+    answer: 1,
+    explanation: "Flow modulating valves automatically adjust their opening position to maintain a preset target flow rate, regardless of pressure variations in the system."
+  },
+  {
+    id: 458,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a pressure independent control valve (PICV) in a distribution system?",
+    options: ["Maintain constant pressure", "Maintain a constant flow rate regardless of pressure differential variations", "Prevent water hammer", "Control chemical dosing"],
+    answer: 1,
+    explanation: "PICVs combine a flow control valve and a differential pressure regulator, maintaining a constant flow rate regardless of pressure variations in the system, improving system efficiency and stability."
+  },
+  {
+    id: 459,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a solenoid valve in a distribution system?",
+    options: ["Measure flow rate", "Provide electrically operated on/off control of flow", "Regulate pressure", "Release air"],
+    answer: 1,
+    explanation: "Solenoid valves use an electromagnetic coil to open or close the valve, providing remote, automated on/off control of flow in response to electrical signals from SCADA or control systems."
+  },
+  {
+    id: 460,
+    module: "Hydraulics & System Design",
+    question: "What is the purpose of a pressure zone interface valve in a distribution system?",
+    options: ["Prevent backflow between zones", "Control the pressure differential between adjacent pressure zones and allow flow transfer when needed", "Measure flow between zones", "Release air at zone boundaries"],
+    answer: 1,
+    explanation: "Pressure zone interface valves (often PRVs or PSVs) control the pressure differential between adjacent pressure zones, allowing controlled flow transfer while maintaining appropriate pressures in each zone."
+  },
+  {
+    id: 461,
+    module: "Water Quality Management",
+    question: "What is the purpose of a water quality monitoring station in a distribution system?",
+    options: ["Control chemical dosing", "Provide continuous, real-time measurement of water quality parameters at key locations", "Measure flow rate", "Monitor pressure"],
+    answer: 1,
+    explanation: "Online water quality monitoring stations provide continuous real-time data on parameters such as chlorine residual, turbidity, pH, and temperature at strategic locations, enabling rapid detection of water quality changes."
+  },
+  {
+    id: 462,
+    module: "Water Quality Management",
+    question: "What is the purpose of a chlorine booster station in a distribution system?",
+    options: ["Increase water pressure", "Replenish chlorine residual that has decayed in long distribution mains", "Remove excess chlorine", "Treat taste and odour"],
+    answer: 1,
+    explanation: "Chlorine booster stations inject additional chlorine at strategic points in the distribution system to replenish residual that has decayed due to reactions with pipe materials, biofilm, and organic matter during transit."
+  },
+  {
+    id: 463,
+    module: "Water Quality Management",
+    question: "What is the purpose of a water age model in distribution system management?",
+    options: ["Track pipe installation dates", "Estimate the time water has spent in the distribution system to identify areas with poor water quality", "Schedule pipe replacement", "Calculate pump runtime"],
+    answer: 1,
+    explanation: "Water age models estimate how long water has been in the distribution system at any point. High water age areas are prone to disinfectant residual decay, bacterial regrowth, and DBP formation."
+  },
+  {
+    id: 464,
+    module: "Water Quality Management",
+    question: "What is the purpose of a taste and odour investigation protocol?",
+    options: ["Document customer complaints", "Systematically identify the source and cause of taste and odour problems to enable corrective action", "Increase chlorine dosage", "Flush the distribution system"],
+    answer: 1,
+    explanation: "Taste and odour investigation protocols provide a systematic approach to identifying whether the problem originates at the source, treatment plant, or distribution system, and determining the specific cause to guide corrective action."
+  },
+  {
+    id: 465,
+    module: "Water Quality Management",
+    question: "What is the purpose of a pipe swabbing program in a distribution system?",
+    options: ["Apply protective coatings to pipe interiors", "Remove sediment, biofilm, and tuberculation from pipe interiors using foam or rubber swabs", "Inspect pipe condition", "Disinfect the pipe"],
+    answer: 1,
+    explanation: "Pipe swabbing uses foam or rubber swabs propelled by water pressure to physically remove sediment, biofilm, and loose tuberculation from pipe interiors, improving water quality and hydraulic capacity."
+  },
+  {
+    id: 466,
+    module: "Water Quality Management",
+    question: "What is the purpose of a water quality complaint response protocol?",
+    options: ["Document complaints for billing purposes", "Systematically investigate and resolve water quality complaints while communicating with customers", "Increase chlorine dosage in response to complaints", "Flush hydrants near complaint locations"],
+    answer: 1,
+    explanation: "Complaint response protocols define how to receive, document, investigate, and resolve water quality complaints, including sampling, root cause analysis, corrective action, and customer communication."
+  },
+  {
+    id: 467,
+    module: "Water Quality Management",
+    question: "What is the purpose of a distribution system flushing program?",
+    options: ["Test hydrant operability", "Remove stale water, sediment, and biofilm to maintain water quality throughout the system", "Reduce system pressure", "Test pipe integrity"],
+    answer: 1,
+    explanation: "Systematic flushing programs remove stale water (high water age), sediment, and biofilm from distribution mains, maintaining water quality, reducing taste and odour complaints, and improving disinfectant residuals."
+  },
+  {
+    id: 468,
+    module: "Water Quality Management",
+    question: "What is the purpose of a pipe lining program in a distribution system?",
+    options: ["Increase pipe diameter", "Restore pipe hydraulic capacity and prevent corrosion by applying a protective lining to deteriorated pipes", "Disinfect old pipes", "Detect pipe leaks"],
+    answer: 1,
+    explanation: "Pipe lining programs (using cement mortar, epoxy, or other materials) restore hydraulic capacity lost to tuberculation, prevent further corrosion, and improve water quality in deteriorated pipes without full replacement."
+  },
+  {
+    id: 469,
+    module: "Water Quality Management",
+    question: "What is the purpose of a distribution system water quality model?",
+    options: ["Replace physical water quality sampling", "Simulate chlorine decay, water age, and contaminant transport to support operations and planning", "Control chemical dosing", "Monitor pressure"],
+    answer: 1,
+    explanation: "Water quality models (such as EPANET's water quality module) simulate chlorine decay, water age, and contaminant transport throughout the distribution system, supporting operational decisions and capital planning."
+  },
+  {
+    id: 470,
+    module: "Water Quality Management",
+    question: "What is the purpose of a lead service line replacement program?",
+    options: ["Reduce system pressure", "Eliminate lead service lines to prevent lead leaching into drinking water", "Improve fire flow capacity", "Reduce system water loss"],
+    answer: 1,
+    explanation: "Lead service line replacement programs systematically identify and replace lead service lines (both utility-owned and customer-owned portions) to eliminate the primary source of lead exposure in drinking water."
+  },
+  {
+    id: 471,
+    module: "System Operations",
+    question: "What is the purpose of a pump efficiency test?",
+    options: ["Verify pump safety features", "Determine if pump performance has degraded and whether maintenance or replacement is needed", "Calibrate flow meters", "Test motor insulation"],
+    answer: 1,
+    explanation: "Pump efficiency tests compare current pump performance (flow, head, power) against the original pump curve to identify performance degradation due to wear, impeller damage, or other issues, triggering maintenance or replacement."
+  },
+  {
+    id: 472,
+    module: "System Operations",
+    question: "What is the purpose of a pump curve?",
+    options: ["Show pump dimensions", "Graphically represent the relationship between pump head and flow rate at a given speed", "Document pump maintenance history", "Show motor power requirements"],
+    answer: 1,
+    explanation: "A pump curve graphically shows how the pump's discharge head varies with flow rate at a given speed. The operating point is where the pump curve intersects the system curve, determining actual flow and head delivered."
+  },
+  {
+    id: 473,
+    module: "System Operations",
+    question: "What is the purpose of a system curve in pump selection?",
+    options: ["Show the pump's performance characteristics", "Represent the total head required by the system at various flow rates, including static head and friction losses", "Document pipe sizes and lengths", "Show valve positions"],
+    answer: 1,
+    explanation: "The system curve represents the total head required to move water through the system at various flow rates, combining static head (elevation difference) and friction losses. The pump operating point is where the pump curve intersects the system curve."
+  },
+  {
+    id: 474,
+    module: "System Operations",
+    question: "What is the purpose of a pump priming procedure?",
+    options: ["Lubricate pump bearings", "Fill the pump casing with water to remove air before starting, preventing dry running", "Test pump motor insulation", "Calibrate pump controls"],
+    answer: 1,
+    explanation: "Priming fills the pump casing and suction line with water, removing air that would prevent the pump from developing suction. Centrifugal pumps cannot pump air and will be damaged by dry running."
+  },
+  {
+    id: 475,
+    module: "System Operations",
+    question: "What is the purpose of a pump seal inspection?",
+    options: ["Test pump efficiency", "Check for leakage at the shaft seal and assess seal condition to prevent water loss and bearing damage", "Verify pump alignment", "Test motor performance"],
+    answer: 1,
+    explanation: "Shaft seal inspection checks for excessive leakage (indicating seal wear), which can cause water loss, bearing damage, and motor failure. Mechanical seals and packing glands require regular inspection and adjustment."
+  },
+  {
+    id: 476,
+    module: "System Operations",
+    question: "What is the purpose of a pump vibration analysis?",
+    options: ["Measure pump flow rate", "Detect mechanical problems such as imbalance, misalignment, bearing wear, or cavitation", "Test pump efficiency", "Calibrate pump controls"],
+    answer: 1,
+    explanation: "Vibration analysis measures pump vibration signatures to detect mechanical problems (imbalance, misalignment, bearing defects, cavitation) before they cause catastrophic failure, enabling planned maintenance."
+  },
+  {
+    id: 477,
+    module: "System Operations",
+    question: "What is the purpose of a pump motor insulation resistance test?",
+    options: ["Measure motor speed", "Detect moisture ingress or insulation degradation that could cause motor failure", "Test pump efficiency", "Calibrate motor controls"],
+    answer: 1,
+    explanation: "Insulation resistance testing (using a megohmmeter) detects moisture ingress or insulation degradation in motor windings that could lead to short circuits, ground faults, and motor failure."
+  },
+  {
+    id: 478,
+    module: "System Operations",
+    question: "What is the purpose of a pump alignment check?",
+    options: ["Verify pump installation depth", "Ensure the pump and motor shafts are properly aligned to prevent vibration, bearing wear, and seal failure", "Test pump efficiency", "Calibrate pump controls"],
+    answer: 1,
+    explanation: "Shaft misalignment between the pump and motor causes excessive vibration, premature bearing failure, seal leakage, and reduced efficiency. Regular alignment checks and corrections extend equipment life."
+  },
+  {
+    id: 479,
+    module: "System Operations",
+    question: "What is the purpose of a pump bearing lubrication schedule?",
+    options: ["Prevent corrosion of pump casing", "Maintain proper lubrication to prevent bearing overheating and premature failure", "Improve pump efficiency", "Reduce water hammer"],
+    answer: 1,
+    explanation: "Regular bearing lubrication (grease or oil, per manufacturer specifications) prevents metal-to-metal contact, overheating, and premature bearing failure, which is one of the most common causes of pump downtime."
+  },
+  {
+    id: 480,
+    module: "System Operations",
+    question: "What is the purpose of a pump run-time log?",
+    options: ["Track operator hours", "Record pump operating hours to schedule preventive maintenance based on runtime", "Document water quality", "Monitor energy consumption"],
+    answer: 1,
+    explanation: "Run-time logs track the total operating hours of each pump, enabling maintenance scheduling based on runtime (e.g., bearing lubrication every 2,000 hours, seal replacement every 8,000 hours) rather than calendar time."
+  },
+  {
+    id: 481,
+    module: "Emergency Response",
+    question: "What is the purpose of a water system's emergency power plan?",
+    options: ["Reduce energy costs", "Ensure critical water system operations can continue during power outages", "Document electrical equipment", "Train operators on electrical safety"],
+    answer: 1,
+    explanation: "Emergency power plans identify critical facilities requiring backup power, specify generator capacity and fuel requirements, and define procedures for switching to and operating on emergency power during outages."
+  },
+  {
+    id: 482,
+    module: "Emergency Response",
+    question: "What is the purpose of a generator load test?",
+    options: ["Measure generator fuel consumption", "Verify that the generator can carry the full connected load under realistic conditions", "Test generator noise levels", "Calibrate generator controls"],
+    answer: 1,
+    explanation: "Load testing verifies that the generator can start reliably and carry the full connected electrical load (pumps, controls, lighting) under realistic conditions, identifying any deficiencies before an actual emergency."
+  },
+  {
+    id: 483,
+    module: "Emergency Response",
+    question: "What is the purpose of a water system's fuel management plan?",
+    options: ["Reduce fuel costs", "Ensure adequate fuel supply for generators and other equipment during extended emergencies", "Document fuel purchases", "Monitor fuel quality"],
+    answer: 1,
+    explanation: "Fuel management plans specify minimum fuel storage requirements, fuel rotation schedules, supplier agreements for emergency resupply, and fuel quality monitoring to ensure generators can operate for extended periods during emergencies."
+  },
+  {
+    id: 484,
+    module: "Emergency Response",
+    question: "What is the purpose of a water system's spare parts inventory?",
+    options: ["Reduce procurement costs", "Ensure critical replacement parts are available to minimize downtime during equipment failures", "Document equipment specifications", "Track equipment warranties"],
+    answer: 1,
+    explanation: "Spare parts inventories ensure that critical replacement parts (pump impellers, seals, bearings, valve components, electrical parts) are available on-site or through rapid procurement channels to minimize repair time during emergencies."
+  },
+  {
+    id: 485,
+    module: "Emergency Response",
+    question: "What is the purpose of a water system's contractor pre-qualification program?",
+    options: ["Reduce contractor costs", "Identify and pre-qualify contractors who can be rapidly mobilized for emergency repairs", "Document contractor performance", "Train contractors on water system operations"],
+    answer: 1,
+    explanation: "Pre-qualification programs identify contractors with the skills, equipment, and availability to perform emergency repairs, establishing agreements in advance so they can be rapidly mobilized without time-consuming procurement during an emergency."
+  },
+  {
+    id: 486,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a SCADA system's uninterruptible power supply (UPS)?",
+    options: ["Provide backup power for field equipment", "Maintain SCADA system operation during brief power interruptions and allow orderly shutdown during extended outages", "Reduce energy costs", "Protect against power surges"],
+    answer: 1,
+    explanation: "UPS systems provide immediate backup power to SCADA servers, workstations, and communication equipment during power interruptions, allowing continued monitoring and control during brief outages and orderly shutdown during extended ones."
+  },
+  {
+    id: 487,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a SCADA system's remote access capability?",
+    options: ["Allow customers to monitor their water usage", "Enable authorized operators to monitor and control the system from off-site locations", "Provide public transparency", "Reduce on-site staffing permanently"],
+    answer: 1,
+    explanation: "Remote access allows authorized operators to monitor system status, acknowledge alarms, and make control adjustments from off-site locations (home, mobile devices), improving response time and reducing the need for after-hours site visits."
+  },
+  {
+    id: 488,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a SCADA system's patch management program?",
+    options: ["Improve system performance", "Keep software and firmware updated to address security vulnerabilities while maintaining system stability", "Add new features to the system", "Reduce system complexity"],
+    answer: 1,
+    explanation: "Patch management programs systematically evaluate, test, and apply software and firmware updates to address security vulnerabilities in SCADA systems, balancing the need for security with the requirement for system stability and availability."
+  },
+  {
+    id: 489,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a SCADA system's disaster recovery plan?",
+    options: ["Document system configuration", "Define procedures for restoring SCADA system functionality after a major failure or cyber incident", "Train operators on system use", "Manage system upgrades"],
+    answer: 1,
+    explanation: "Disaster recovery plans define the steps to restore SCADA system functionality after a major failure (hardware failure, cyber attack, natural disaster), including backup restoration, system reconfiguration, and testing procedures."
+  },
+  {
+    id: 490,
+    module: "SCADA & Instrumentation",
+    question: "What is the purpose of a SCADA system's change management process?",
+    options: ["Track system costs", "Control and document changes to SCADA hardware, software, and configuration to prevent unintended consequences", "Manage operator training", "Schedule system maintenance"],
+    answer: 1,
+    explanation: "Change management processes ensure that all changes to SCADA systems are properly reviewed, tested, approved, documented, and implemented in a controlled manner, preventing unintended operational impacts."
+  },
+  {
+    id: 491,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's financial plan?",
+    options: ["Document capital project costs", "Ensure adequate funding for operations, maintenance, and capital renewal to sustain long-term service delivery", "Track operator salaries", "Monitor water rates"],
+    answer: 1,
+    explanation: "Financial plans project revenues and expenditures over a multi-year horizon, ensuring that rates and reserves are adequate to fund operations, maintenance, and capital renewal while maintaining financial sustainability."
+  },
+  {
+    id: 492,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's rate study?",
+    options: ["Evaluate operator performance", "Determine the water rates needed to recover the full cost of providing water service", "Document regulatory compliance", "Plan capital improvements"],
+    answer: 1,
+    explanation: "Rate studies analyze the full cost of providing water service (operations, maintenance, debt service, capital renewal) and determine the rates needed to recover those costs in an equitable and financially sustainable manner."
+  },
+  {
+    id: 493,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's infrastructure renewal fund?",
+    options: ["Fund emergency repairs", "Accumulate reserves for planned replacement of aging infrastructure", "Pay operator salaries", "Fund regulatory compliance activities"],
+    answer: 1,
+    explanation: "Infrastructure renewal funds (asset replacement reserves) accumulate funds over time to pay for planned replacement of aging infrastructure, avoiding the need for large rate increases or debt when major assets reach end of life."
+  },
+  {
+    id: 494,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's performance benchmarking program?",
+    options: ["Compare operator salaries", "Compare system performance against peers and best practices to identify improvement opportunities", "Document regulatory compliance", "Evaluate capital projects"],
+    answer: 1,
+    explanation: "Benchmarking compares key performance indicators (water loss, energy efficiency, cost per connection, customer satisfaction) against peer utilities and best practices, identifying areas where performance can be improved."
+  },
+  {
+    id: 495,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's customer satisfaction survey?",
+    options: ["Collect payment information", "Measure customer perceptions of service quality and identify areas for improvement", "Document regulatory compliance", "Track water usage patterns"],
+    answer: 1,
+    explanation: "Customer satisfaction surveys measure how customers perceive water quality, service reliability, billing accuracy, and customer service, providing feedback to guide service improvements and demonstrate accountability."
+  },
+  {
+    id: 496,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's environmental management plan?",
+    options: ["Manage source water quality", "Identify and manage the environmental impacts of water system operations", "Document regulatory compliance", "Plan capital improvements"],
+    answer: 1,
+    explanation: "Environmental management plans identify the environmental impacts of water system operations (energy use, chemical handling, waste disposal, spill risk), establish mitigation measures, and monitor environmental performance."
+  },
+  {
+    id: 497,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's chemical management plan?",
+    options: ["Reduce chemical costs", "Ensure safe storage, handling, and use of treatment chemicals while managing spill risk", "Document chemical purchases", "Monitor water quality"],
+    answer: 1,
+    explanation: "Chemical management plans specify requirements for safe storage, handling, and use of treatment chemicals (chlorine, fluoride, coagulants), including spill prevention, containment, emergency response, and worker safety."
+  },
+  {
+    id: 498,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's confined space entry program?",
+    options: ["Document confined space locations", "Ensure worker safety when entering confined spaces such as reservoirs, valve chambers, and pump stations", "Train operators on confined space hazards", "All of the above"],
+    answer: 3,
+    explanation: "Confined space entry programs encompass all aspects of safe confined space work: identifying and documenting confined spaces, training workers on hazards and procedures, and implementing safe entry procedures (atmospheric testing, ventilation, rescue)."
+  },
+  {
+    id: 499,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's contractor safety program?",
+    options: ["Reduce contractor costs", "Ensure contractors working on the water system meet safety requirements and follow safe work practices", "Document contractor qualifications", "Track contractor performance"],
+    answer: 1,
+    explanation: "Contractor safety programs establish minimum safety requirements for contractors working on the water system, including pre-qualification, site orientation, permit-to-work systems, and monitoring to ensure compliance with safety standards."
+  },
+  {
+    id: 500,
+    module: "Regulatory Compliance",
+    question: "What is the purpose of a water system's occupational health and safety (OHS) program?",
+    options: ["Document workplace injuries", "Protect workers from workplace hazards through hazard identification, controls, training, and emergency response", "Reduce workers' compensation costs", "Meet regulatory requirements only"],
+    answer: 1,
+    explanation: "OHS programs protect workers from workplace hazards through a systematic approach: hazard identification and risk assessment, implementation of controls (elimination, substitution, engineering, administrative, PPE), training, and emergency response planning."
+  }
 ];
