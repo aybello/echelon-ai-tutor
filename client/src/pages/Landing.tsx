@@ -1059,14 +1059,17 @@ export default function Landing() {
   const careerMapHref = province ? `/career?province=${province}` : "/career";
   const NAV_LINKS = [
     { label: "Courses", href: "#courses" },
-    { label: "Study Tools", href: "#tools" },
     { label: "WPI 🌊", href: "/wpi" },
     { label: "Pricing", href: "/pricing" },
-    { label: "Formulas", href: "/formulas" },
-    { label: "Career Map", href: careerMapHref },
     { label: "About", href: "#about" },
-    { label: "Contact", href: "/#contact" },
   ];
+  const RESOURCES_LINKS = [
+    { label: "📐 Formulas", href: "/formulas" },
+    { label: "🗺️ Career Map", href: careerMapHref },
+    { label: "🏭 Study Tools", href: "#tools" },
+    { label: "✉️ Contact", href: "/#contact" },
+  ];
+  const [resourcesOpen, setResourcesOpen] = useState(false);
 
   return (
     <div style={{ fontFamily: "Sora, Nunito, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
@@ -1136,6 +1139,45 @@ export default function Landing() {
               {item.label}
             </a>
           ))}
+          {/* Resources dropdown */}
+          <div style={{ position: "relative" }}>
+            <button
+              onClick={() => setResourcesOpen(o => !o)}
+              onBlur={() => setTimeout(() => setResourcesOpen(false), 150)}
+              style={{
+                padding: "6px 14px", borderRadius: 8,
+                color: "#475569", fontSize: 13, fontWeight: 600,
+                background: "transparent", border: "none",
+                cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+                display: "flex", alignItems: "center", gap: 4,
+              }}
+            >
+              Resources <span style={{ fontSize: 9, opacity: 0.6 }}>{resourcesOpen ? "▲" : "▼"}</span>
+            </button>
+            {resourcesOpen && (
+              <div style={{
+                position: "absolute", top: "calc(100% + 6px)", left: 0,
+                background: "#FFFFFF", border: "1px solid #E2E8F0",
+                borderRadius: 10, boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+                minWidth: 180, zIndex: 200, padding: "6px 0",
+              }}>
+                {RESOURCES_LINKS.map(item => (
+                  <a key={item.href} href={item.href}
+                    onClick={() => setResourcesOpen(false)}
+                    style={{
+                      display: "block", padding: "9px 16px",
+                      fontSize: 13, color: "#334155", fontWeight: 500,
+                      textDecoration: "none",
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.background = "#F8FAFC")}
+                    onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
           <Link href="/quiz">
             <button style={{
               padding: "8px 20px", borderRadius: 10,
@@ -1211,10 +1253,10 @@ export default function Landing() {
           borderBottom: "1px solid #F1F5F9",
         }}>
           {[
-            { label: "📝 OIT Practice", href: "/quiz", accent: true },
-            { label: "🏭 Process Guide", href: "/process", accent: false },
-            { label: "📐 Formulas", href: "/formulas", accent: false },
-            { label: "🗺️ Career Map", href: "/career", accent: false },
+            { label: "📝 Try Free", href: "/quiz", accent: true },
+            { label: "🌊 WPI", href: "/wpi", accent: false },
+            { label: "💰 Pricing", href: "/pricing", accent: false },
+            { label: "🎫 My Passes", href: "/account", accent: false },
           ].map(tile => (
             <Link key={tile.href} href={tile.href}>
               <div
