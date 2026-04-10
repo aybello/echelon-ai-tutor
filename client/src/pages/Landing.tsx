@@ -3,7 +3,7 @@
 // Audience: Canadian water/wastewater operators seeking certification
 
 import { Link } from "wouter";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import NotifyModal from "@/components/NotifyModal";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
@@ -1070,6 +1070,12 @@ export default function Landing() {
     { label: "✉️ Contact", href: "/#contact" },
   ];
   const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div style={{ fontFamily: "Sora, Nunito, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
@@ -1108,12 +1114,14 @@ export default function Landing() {
       {/* ── Navigation ── */}
       <nav style={{
         background: "#FFFFFF",
-        borderBottom: "1px solid #E2E8F0",
+        borderBottom: scrolled ? "1px solid transparent" : "1px solid #E2E8F0",
+        boxShadow: scrolled ? "0 4px 20px rgba(0,0,0,0.10)" : "none",
         padding: "0 24px",
         position: "sticky", top: 0, zIndex: 100,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         height: 64,
         gap: 12,
+        transition: "box-shadow 0.25s ease, border-color 0.25s ease",
       }}>
         {/* Brand */}
         <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
@@ -1130,19 +1138,27 @@ export default function Landing() {
 
         {/* Desktop nav links */}
         <div className="landing-nav-links" style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "nowrap" }}>
-          {NAV_LINKS.map(item => (
-            <a key={item.label} href={item.href}
-              style={{
-                padding: "6px 14px", borderRadius: 8,
-                color: "#475569", fontSize: 13, fontWeight: 600,
-                textDecoration: "none", transition: "color 0.15s, background 0.15s", whiteSpace: "nowrap",
-              }}
-              onMouseEnter={e => { e.currentTarget.style.color = "#1D4ED8"; e.currentTarget.style.background = "rgba(29,78,216,0.06)"; }}
-              onMouseLeave={e => { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; }}
-            >
-              {item.label}
-            </a>
-          ))}
+          {NAV_LINKS.map(item => {
+            const isActive = item.href === "/" ? location.pathname === "/" : location.pathname.startsWith(item.href.replace("#", ""));
+            return (
+              <a key={item.label} href={item.href}
+                style={{
+                  padding: "6px 14px",
+                  borderRadius: "8px 8px 0 0",
+                  color: isActive ? "#1D4ED8" : "#475569",
+                  fontSize: 13, fontWeight: isActive ? 700 : 600,
+                  textDecoration: "none",
+                  transition: "color 0.15s, background 0.15s",
+                  whiteSpace: "nowrap",
+                  borderBottom: isActive ? "2px solid #1D4ED8" : "2px solid transparent",
+                }}
+                onMouseEnter={e => { if (!isActive) { e.currentTarget.style.color = "#1D4ED8"; e.currentTarget.style.background = "rgba(29,78,216,0.06)"; } }}
+                onMouseLeave={e => { if (!isActive) { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; } }}
+              >
+                {item.label}
+              </a>
+            );
+          })}
           {/* Resources dropdown */}
           <div style={{ position: "relative" }}>
             <button
