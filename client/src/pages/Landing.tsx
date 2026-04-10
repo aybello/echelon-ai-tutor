@@ -835,7 +835,7 @@ function CourseCard({ course }: { course: CourseType }) {
   const [expanded, setExpanded] = useState(false);
   const [notifyOpen, setNotifyOpen] = useState(false);
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
-    onSuccess: (data) => { if (data.url) window.open(data.url, '_blank'); },
+    onSuccess: (data) => { if (data.url) window.location.href = data.url; },
     onError: () => alert("Something went wrong. Please try again."),
   });
   function handleGetPass() {

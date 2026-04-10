@@ -88,6 +88,38 @@ const PRODUCT_PATHS: Record<string, { label: string; path: string }[]> = {
     { label: "WPI Class 4 Wastewater Practice Quiz", path: "/wpi-class4-wastewater" },
     { label: "WPI Class 4 Wastewater Mock Exam", path: "/wpi-class4-wastewater-mock" },
   ],
+  "wpi-class1-water-dist": [
+    { label: "WPI Class 1 Distribution Practice Quiz", path: "/wpi-class1-water-dist" },
+    { label: "WPI Class 1 Distribution Mock Exam", path: "/wpi-class1-water-dist-mock" },
+  ],
+  "wpi-class2-water-dist": [
+    { label: "WPI Class 2 Distribution Practice Quiz", path: "/wpi-class2-water-dist" },
+    { label: "WPI Class 2 Distribution Mock Exam", path: "/wpi-class2-water-dist-mock" },
+  ],
+  "wpi-class3-water-dist": [
+    { label: "WPI Class 3 Distribution Practice Quiz", path: "/wpi-class3-water-dist" },
+    { label: "WPI Class 3 Distribution Mock Exam", path: "/wpi-class3-water-dist-mock" },
+  ],
+  "wpi-class4-water-dist": [
+    { label: "WPI Class 4 Distribution Practice Quiz", path: "/wpi-class4-water-dist" },
+    { label: "WPI Class 4 Distribution Mock Exam", path: "/wpi-class4-water-dist-mock" },
+  ],
+  "wpi-class1-water-coll": [
+    { label: "WPI Class 1 Collection Practice Quiz", path: "/wpi-class1-water-coll" },
+    { label: "WPI Class 1 Collection Mock Exam", path: "/wpi-class1-water-coll-mock" },
+  ],
+  "wpi-class2-water-coll": [
+    { label: "WPI Class 2 Collection Practice Quiz", path: "/wpi-class2-water-coll" },
+    { label: "WPI Class 2 Collection Mock Exam", path: "/wpi-class2-water-coll-mock" },
+  ],
+  "wpi-class3-water-coll": [
+    { label: "WPI Class 3 Collection Practice Quiz", path: "/wpi-class3-water-coll" },
+    { label: "WPI Class 3 Collection Mock Exam", path: "/wpi-class3-water-coll-mock" },
+  ],
+  "wpi-class4-water-coll": [
+    { label: "WPI Class 4 Collection Practice Quiz", path: "/wpi-class4-water-coll" },
+    { label: "WPI Class 4 Collection Mock Exam", path: "/wpi-class4-water-coll-mock" },
+  ],
 };
 
 const REDIRECT_DELAY = 5; // seconds
