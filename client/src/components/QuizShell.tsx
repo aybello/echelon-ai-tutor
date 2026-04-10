@@ -280,7 +280,10 @@ export default function QuizShell({
           .qs-session-btns a, .qs-session-btns button { width: 100% !important; min-height: 48px !important; }
         }
         @media (max-width: 480px) {
-          .qs-header-actions { display: none !important; }
+          .qs-header-title-row { flex-direction: column !important; align-items: flex-start !important; }
+          .qs-header-actions { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; gap: 6px !important; padding-bottom: 2px !important; margin-top: 10px !important; width: 100% !important; }
+          .qs-header-actions::-webkit-scrollbar { display: none; }
+          .qs-header-actions button { white-space: nowrap !important; flex-shrink: 0 !important; font-size: 11px !important; padding: 6px 10px !important; }
           .qs-module-pills { gap: 4px !important; }
           .qs-module-pills button { font-size: 10px !important; padding: 4px 8px !important; }
           .qs-question-card { padding: 16px 14px 14px !important; }
@@ -295,7 +298,7 @@ export default function QuizShell({
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
 
           {/* Top row: title + action buttons */}
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
+          <div className="qs-header-title-row" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               {headerIcon && (
                 <div style={{
