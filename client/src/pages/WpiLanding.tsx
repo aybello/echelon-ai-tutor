@@ -137,6 +137,13 @@ const WW_CLASSES = [
   { level: "CLASS IV", questions: "606", price: "CA$299", color: "#6D28D9", bg: "#F5F3FF", border: "#C4B5FD", quizHref: "/wpi-class4-wastewater", badge: "👑 Chief Operator" },
 ];
 
+const DIST_CLASSES = [
+  { level: "CLASS I", questions: "150", price: "CA$99", priceNum: 9900, color: "#0369A1", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class1-water-dist" },
+  { level: "CLASS II", questions: "150", price: "CA$149", priceNum: 14900, color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-water-dist" },
+  { level: "CLASS III", questions: "150", price: "CA$249", priceNum: 24900, color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-water-dist" },
+  { level: "CLASS IV", questions: "150", price: "CA$299", priceNum: 29900, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", quizHref: "/wpi-class4-water-dist", badge: "👑 Chief Operator" },
+];
+
 const FAQS = [
   {
     q: "What is the WPI exam format?",
@@ -619,6 +626,56 @@ export default function WpiLanding() {
               ))}
             </div>
 
+          </div>
+
+          {/* Water Distribution */}
+          <div style={{ marginTop: 40 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
+              🚰 Water Distribution
+            </div>
+            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 14, flexWrap: "wrap" as const, justifyContent: "center" }}>
+              {DIST_CLASSES.map(cls => (
+                <div key={cls.level} className="wpi-pricing-card" style={{
+                  background: cls.bg,
+                  border: `2px solid ${cls.border}`,
+                  borderRadius: 18,
+                  padding: "22px 18px",
+                  width: 210,
+                  textAlign: "left" as const,
+                  flexShrink: 0,
+                }}>
+                  {(cls as any).badge && (
+                    <div style={{ display: "inline-block", background: cls.color, color: "#FFFFFF", fontSize: 10, fontWeight: 700, borderRadius: 6, padding: "2px 8px", marginBottom: 8 }}>{(cls as any).badge}</div>
+                  )}
+                  <div style={{ fontSize: 10, fontWeight: 700, color: cls.color, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>WPI {cls.level} DIST</div>
+                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>{cls.price}</div>
+                  <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>Unlimited · {cls.questions} questions</div>
+                  <ul style={{ listStyle: "none", padding: 0, margin: "0 0 14px", display: "flex", flexDirection: "column" as const, gap: 5 }}>
+                    {["Practice questions", "Timed mock exam", "Flashcards", "Study notes", "AI Tutor", "Score history"].map(f => (
+                      <li key={f} style={{ fontSize: 12, color: "#0F172A", display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ color: cls.color, fontWeight: 700, fontSize: 11 }}>✓</span> {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/pricing">
+                    <button style={{
+                      width: "100%",
+                      background: cls.color,
+                      color: "#FFFFFF",
+                      border: "none",
+                      borderRadius: 8,
+                      padding: "10px",
+                      fontSize: 13,
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      fontFamily: "inherit",
+                    }}>
+                      Get {cls.level} Dist Pass →
+                    </button>
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

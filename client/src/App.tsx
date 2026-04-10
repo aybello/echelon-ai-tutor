@@ -102,6 +102,18 @@ import WpiClass3WaterFlashcards from "@/pages/WpiClass3WaterFlashcards";
 import WpiClass3WastewaterFlashcards from "@/pages/WpiClass3WastewaterFlashcards";
 import WpiClass4WaterFlashcards from "@/pages/WpiClass4WaterFlashcards";
 import WpiClass4WastewaterFlashcards from "@/pages/WpiClass4WastewaterFlashcards";
+import WpiClass1WaterDistQuiz from "@/pages/WpiClass1WaterDistQuiz";
+import WpiClass1WaterDistFlashcards from "@/pages/WpiClass1WaterDistFlashcards";
+import WpiClass1WaterDistMockExam from "@/pages/WpiClass1WaterDistMockExam";
+import WpiClass2WaterDistQuiz from "@/pages/WpiClass2WaterDistQuiz";
+import WpiClass2WaterDistFlashcards from "@/pages/WpiClass2WaterDistFlashcards";
+import WpiClass2WaterDistMockExam from "@/pages/WpiClass2WaterDistMockExam";
+import WpiClass3WaterDistQuiz from "@/pages/WpiClass3WaterDistQuiz";
+import WpiClass3WaterDistFlashcards from "@/pages/WpiClass3WaterDistFlashcards";
+import WpiClass3WaterDistMockExam from "@/pages/WpiClass3WaterDistMockExam";
+import WpiClass4WaterDistQuiz from "@/pages/WpiClass4WaterDistQuiz";
+import WpiClass4WaterDistFlashcards from "@/pages/WpiClass4WaterDistFlashcards";
+import WpiClass4WaterDistMockExam from "@/pages/WpiClass4WaterDistMockExam";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -197,6 +209,19 @@ function Router() {
       <Route path={"/wpi-class3-wastewater-flashcards"} component={WpiClass3WastewaterFlashcards} />
       <Route path={"/wpi-class4-water-flashcards"} component={WpiClass4WaterFlashcards} />
       <Route path={"/wpi-class4-wastewater-flashcards"} component={WpiClass4WastewaterFlashcards} />
+      {/* WPI Water Distribution routes */}
+      <Route path={"/wpi-class1-water-dist"} component={WpiClass1WaterDistQuiz} />
+      <Route path={"/wpi-class1-water-dist-flashcards"} component={WpiClass1WaterDistFlashcards} />
+      <Route path={"/wpi-class1-water-dist-mock"} component={WpiClass1WaterDistMockExam} />
+      <Route path={"/wpi-class2-water-dist"} component={WpiClass2WaterDistQuiz} />
+      <Route path={"/wpi-class2-water-dist-flashcards"} component={WpiClass2WaterDistFlashcards} />
+      <Route path={"/wpi-class2-water-dist-mock"} component={WpiClass2WaterDistMockExam} />
+      <Route path={"/wpi-class3-water-dist"} component={WpiClass3WaterDistQuiz} />
+      <Route path={"/wpi-class3-water-dist-flashcards"} component={WpiClass3WaterDistFlashcards} />
+      <Route path={"/wpi-class3-water-dist-mock"} component={WpiClass3WaterDistMockExam} />
+      <Route path={"/wpi-class4-water-dist"} component={WpiClass4WaterDistQuiz} />
+      <Route path={"/wpi-class4-water-dist-flashcards"} component={WpiClass4WaterDistFlashcards} />
+      <Route path={"/wpi-class4-water-dist-mock"} component={WpiClass4WaterDistMockExam} />
       <Route path={"/preview"} component={PreviewMode} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/pricing"} component={Pricing} />

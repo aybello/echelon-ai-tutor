@@ -5817,3 +5817,377 @@ export const WPI_CLASS4_WASTEWATER_OVERVIEWS: Record<string, import("./moduleOve
     formulaHint: "Joukowsky surge: ΔH = a × ΔV / g | NSE = 1 − [Σ(Q_obs − Q_sim)² / Σ(Q_obs − Q_mean)²] | Risk = PoF × CoF | Annual reinvestment = 1–2% × replacement value",
   },
 };
+
+// ─── WPI Water Distribution Overviews ────────────────────────────────────────
+
+export const WPI_CLASS1_WATER_DIST_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Distribution System Components": {
+    title: "Distribution System Components",
+    intro: "This module covers the physical infrastructure of a water distribution system: pipes, valves, hydrants, meters, storage tanks, and service connections. Class I operators must understand pipe materials, pressure requirements, valve types, and the purpose of each component.",
+    keyPoints: [
+      { heading: "Pipe Materials & Selection", body: "Common pipe materials include ductile iron (DI), PVC, HDPE, and asbestos cement (AC — legacy). DI is strong and durable; PVC is lightweight and corrosion-resistant; HDPE is flexible for directional drilling. Velocity in distribution mains should be 0.6–3.0 m/s to prevent sedimentation and excessive headloss." },
+      { heading: "Pressure Standards", body: "Minimum residual pressure during normal operations: 275 kPa (40 psi) at service connections. Minimum during fire flow: 140 kPa (20 psi). Maximum system pressure: typically 690 kPa (100 psi). Pressure reducing valves (PRVs) step down pressure in lower elevation zones." },
+      { heading: "Valves", body: "Gate valves are used for isolation — fully open or fully closed only. Butterfly valves can throttle flow. Air release/vacuum valves (ARVs) release trapped air at high points. Blow-off valves flush sediment from dead ends. Valves should be exercised annually to prevent seizing." },
+      { heading: "Hydrants & Fire Flow", body: "Dry-barrel hydrants drain automatically when closed — the main valve is below the frost line. Wet-barrel hydrants have water in the barrel at all times. Hydrant flow testing measures available fire flow at 140 kPa (20 psi) residual. Hydrants should be flushed and inspected annually." },
+      { heading: "Storage Tanks & Reservoirs", body: "Elevated tanks provide pressure through hydraulic head. Storage volume must meet equalization demand, fire storage, and emergency reserve. Tanks must be inspected, cleaned, and disinfected per AWWA standards." },
+    ],
+    tableHeadings: ["Component", "Key Parameter", "Typical Value/Standard"],
+    tableRows: [
+      ["Service connection pressure (normal)", "Minimum residual", "275 kPa (40 psi)"],
+      ["Service connection pressure (fire flow)", "Minimum residual", "140 kPa (20 psi)"],
+      ["Distribution main velocity", "Acceptable range", "0.6 – 3.0 m/s"],
+      ["Hydrant inspection frequency", "Minimum", "Annually"],
+      ["Gate valve exercise frequency", "Minimum", "Annually"],
+    ],
+    examTips: [
+      "Minimum residual pressure at service connection = 275 kPa (40 psi)",
+      "Dry-barrel hydrants drain automatically — wet-barrel hydrants do not (freeze risk)",
+      "Gate valves = isolation only (fully open/closed); butterfly valves can throttle",
+      "Air release valves go at high points in the system to release trapped air",
+    ],
+  },
+  "Equipment Installation, O&M & Repair": {
+    title: "Equipment Installation, O&M & Repair",
+    intro: "This module covers the installation, operation, maintenance, and repair of distribution system equipment. Class I operators must know how to safely install and repair pipes, disinfect new mains, and maintain pumping equipment.",
+    keyPoints: [
+      { heading: "New Main Disinfection (AWWA C651)", body: "New or repaired water mains must be disinfected before being placed in service. Continuous feed method: fill with 25 mg/L chlorinated water, hold for 24 hours. Slug method: push a slug of 100 mg/L chlorinated water through the main. After disinfection, flush until residual is within 1 mg/L of system residual, then collect two consecutive days of negative bacteriological samples." },
+      { heading: "Pipe Repair", body: "Common repairs include mechanical repair clamps and full-circle repair clamps. Before any repair, isolate the section, dewater, and follow confined space entry procedures. After repair, disinfect per AWWA C651 before returning to service." },
+      { heading: "Service Connection Installation", body: "A corporation stop is installed at the main tap. The service line runs from the corp stop to the curb stop (at the property line) and then to the meter. Backflow prevention devices are required on services with cross-connection hazards." },
+      { heading: "Pump Operation & Maintenance", body: "TDH (total dynamic head) = static head + friction losses + velocity head. NPSH must be available to prevent cavitation. Maintenance includes checking packing/mechanical seals, lubricating bearings, monitoring vibration and temperature, and testing check valves." },
+      { heading: "Leak Detection & Water Loss", body: "Non-revenue water (NRW) = water produced − water billed. Leak detection methods: acoustic listening devices, pressure testing, and district metering. Minimum night flow analysis identifies leakage." },
+    ],
+    tableHeadings: ["Procedure", "Standard/Requirement", "Key Value"],
+    tableRows: [
+      ["New main disinfection (continuous feed)", "AWWA C651", "25 mg/L Cl2, 24 hr contact"],
+      ["New main disinfection (slug method)", "AWWA C651", "100 mg/L Cl2 slug"],
+      ["Bacteriological clearance samples", "Before service", "2 consecutive days, all negative"],
+      ["Flush after disinfection", "Target residual", "Within 1 mg/L of system residual"],
+    ],
+    examTips: [
+      "New main disinfection: continuous feed = 25 mg/L for 24 hours; slug = 100 mg/L",
+      "Two consecutive days of negative bacteriological samples required before placing in service",
+      "Cavitation in pumps is caused by insufficient NPSH — symptoms: noise, vibration, reduced flow",
+      "Non-revenue water = produced minus billed; includes real losses (leaks) and apparent losses (meter error)",
+    ],
+  },
+  "Water Quality Monitoring & Lab": {
+    title: "Water Quality Monitoring & Lab",
+    intro: "Distribution system water quality monitoring ensures that treated water maintains its quality from the plant to the customer's tap. Class I operators must understand chlorine residual maintenance, bacteriological sampling, cross-connection control, and regulatory requirements.",
+    keyPoints: [
+      { heading: "Chlorine Residual Maintenance", body: "Minimum free chlorine residual: 0.2 mg/L (typical regulatory minimum at the extremities). Chlorine residual decreases with distance, higher temperature, longer residence time, and reaction with pipe materials and biofilm. Chloramines are more stable than free chlorine and are used in large systems to maintain residual at distant points." },
+      { heading: "Bacteriological Sampling", body: "Total coliform sampling is required under provincial regulations. Positive total coliform results trigger repeat sampling, investigation, and corrective action. E. coli positive results indicate fecal contamination — immediate boil water advisory may be required. Sample collection: flush the tap 2–3 minutes, collect in sterile bottle with sodium thiosulfate." },
+      { heading: "Cross-Connection Control & Backflow Prevention", body: "A cross-connection is any physical link between the potable water system and a non-potable source. Backpressure backflow: downstream pressure exceeds supply pressure. Backsiphonage: negative pressure draws contaminated water in. Backflow prevention: air gap (most reliable), RPZ assembly (high hazard), double check valve assembly (medium hazard)." },
+      { heading: "Disinfection By-Products (DBPs)", body: "DBPs form when chlorine reacts with natural organic matter. Total THMs (TTHMs) and HAA5 are regulated. DBP formation increases with higher NOM, higher chlorine dose, higher temperature, and longer contact time." },
+    ],
+    tableHeadings: ["Parameter", "Regulatory Standard", "Action Level"],
+    tableRows: [
+      ["Free chlorine residual (distribution)", "Min 0.2 mg/L (typical)", "Investigate if below 0.2 mg/L"],
+      ["Total coliforms", "0 per 100 mL", "Repeat sample + investigation"],
+      ["E. coli", "0 per 100 mL", "Immediate action, possible BWA"],
+      ["Total THMs (TTHMs)", "0.10 mg/L (Health Canada)", "Reduce NOM, optimize treatment"],
+    ],
+    examTips: [
+      "Minimum free chlorine residual in distribution = 0.2 mg/L (typical minimum)",
+      "Backsiphonage = negative pressure pulls contamination in; backpressure = downstream pressure exceeds supply",
+      "RPZ assembly = highest protection for high-hazard cross-connections",
+      "DBPs increase with higher NOM, higher chlorine dose, higher temperature, longer contact time",
+    ],
+  },
+  "Security, Safety, Admin & Public Interactions": {
+    title: "Security, Safety, Admin & Public Interactions",
+    intro: "Distribution system operators must ensure the security of the water system, follow safety procedures, maintain accurate records, and communicate effectively with the public. Class I operators must understand confined space entry, traffic control, LOTO, emergency response, and record-keeping requirements.",
+    keyPoints: [
+      { heading: "Confined Space Entry", body: "Permit-required confined spaces include valve chambers, pump stations, and manholes. Entry requirements: atmospheric testing (O2 19.5–23.5%, LEL < 10%, toxic gases below TLV), ventilation, attendant outside, rescue plan, and entry permit. Never enter a confined space alone. Hydrogen sulfide (H2S) deadens the sense of smell at high concentrations." },
+      { heading: "Lockout/Tagout (LOTO)", body: "LOTO prevents accidental energization of equipment during maintenance. Steps: notify affected employees, identify all energy sources, shut down equipment, isolate energy sources, apply lockout devices and personal locks, release stored energy, verify isolation. Each worker applies their own lock." },
+      { heading: "Traffic Control & Excavation Safety", body: "Traffic control plans (TCPs) are required for roadway work. Trench safety: protection required for trenches > 1.2 m (4 ft) deep — sloping, shoring, or trench box. Spoil pile must be at least 0.6 m (2 ft) from the trench edge. Locate underground utilities before excavation." },
+      { heading: "Emergency Response & Boil Water Advisories", body: "Boil water advisories (BWAs) are issued when there is a risk of microbial contamination. After a BWA, flush, disinfect, and collect two consecutive days of negative bacteriological samples before lifting the advisory." },
+    ],
+    tableHeadings: ["Safety Topic", "Key Requirement", "Standard/Regulation"],
+    tableRows: [
+      ["Confined space O2 level", "Acceptable range", "19.5 – 23.5%"],
+      ["Confined space LEL", "Entry limit", "< 10% LEL"],
+      ["Trench protection depth", "Required at", "> 1.2 m (4 ft)"],
+      ["Spoil pile setback", "Minimum from trench edge", "0.6 m (2 ft)"],
+      ["BWA clearance samples", "Before lifting advisory", "2 consecutive days, all negative"],
+    ],
+    examTips: [
+      "Confined space O2 acceptable range: 19.5–23.5% — below 19.5% is oxygen-deficient",
+      "Each worker applies their own LOTO lock — all locks removed before re-energization",
+      "Trench protection required at > 1.2 m (4 ft) depth — never enter an unprotected trench",
+      "BWA clearance: flush, disinfect, 2 consecutive days of negative bacteriological samples",
+    ],
+  },
+};
+
+export const WPI_CLASS2_WATER_DIST_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Distribution System Components": {
+    title: "Distribution System Components",
+    intro: "Class II Water Distribution builds on Class I knowledge with greater emphasis on hydraulic analysis, system design principles, and advanced infrastructure management. Operators must understand hydraulic grade lines, pressure zone design, looped vs. branched systems, and water hammer.",
+    keyPoints: [
+      { heading: "Hydraulic Grade Line (HGL)", body: "The HGL represents pressure head + elevation head at any point. It slopes downward in the direction of flow due to friction losses. A pump raises the HGL; a PRV lowers it. The HGL must remain above the pipe at all points to maintain positive pressure." },
+      { heading: "Hazen-Williams Equation", body: "hf = 10.67 x L x Q^1.852 / (C^1.852 x D^4.87). Higher C = smoother pipe = less headloss. Typical C values: new DI = 130-140; PVC = 140-150; old cast iron = 80-100; concrete = 100-120." },
+      { heading: "Looped vs. Branched Systems", body: "Looped systems provide multiple flow paths — if one main is shut down, water can still reach customers from another direction. Branched systems have dead ends — water quality deteriorates due to stagnation and chlorine decay. Flushing programs are required to maintain quality at dead ends." },
+      { heading: "Water Hammer", body: "Water hammer occurs when flow velocity changes rapidly — valve closure, pump start/stop, or pipe break. Prevention: slow valve closure, surge tanks, air chambers, pressure relief valves, and VFDs on pumps." },
+      { heading: "Pressure Zone Design", body: "Pressure zones divide the system into areas with similar pressure ranges using PRVs and PSVs. Zone design must ensure minimum 275 kPa (40 psi) at the highest service connection and maximum 690 kPa (100 psi) at the lowest." },
+    ],
+    tableHeadings: ["Hazen-Williams C Values", "Pipe Material", "Typical C"],
+    tableRows: [
+      ["New ductile iron", "DI", "130 – 140"],
+      ["PVC", "PVC", "140 – 150"],
+      ["Old cast iron (tuberculated)", "CI", "80 – 100"],
+      ["Concrete", "Concrete", "100 – 120"],
+    ],
+    examTips: [
+      "HGL must stay above the pipe at all points — if it drops below, negative pressure occurs",
+      "Higher Hazen-Williams C = smoother pipe = less headloss",
+      "Looped systems = better reliability and water quality; dead ends cause water quality problems",
+      "Water hammer prevention: slow valve closure, surge tanks, VFDs on pumps",
+    ],
+  },
+  "Equipment Installation, O&M & Repair": {
+    title: "Equipment Installation, O&M & Repair",
+    intro: "Class II operators take on greater responsibility for equipment installation, pump system design, and advanced maintenance. This module covers pump curve analysis, pipe rehabilitation techniques, advanced leak detection, and asset management.",
+    keyPoints: [
+      { heading: "Pump Curves & System Curves", body: "The operating point is where the pump curve intersects the system curve. Parallel pumps: flow adds, head stays the same. Series pumps: head adds, flow stays the same. Affinity laws: Q2/Q1 = N2/N1; H2/H1 = (N2/N1)^2; P2/P1 = (N2/N1)^3 — reducing pump speed by 50% reduces power by 87.5%." },
+      { heading: "Pipe Rehabilitation", body: "CIPP (cured-in-place pipe) lining restores structural integrity and reduces roughness. Slip lining inserts a smaller pipe inside the existing pipe. Pipe bursting fractures the old pipe outward while pulling in a new pipe. Epoxy lining seals corrosion and reduces leaching." },
+      { heading: "Advanced Leak Detection", body: "Acoustic correlators use two sensors to pinpoint leak location. District metering areas (DMAs) quantify leakage by zone. Pressure management reduces leakage — lower pressure = less leakage." },
+      { heading: "Asset Management", body: "Asset management tracks condition, remaining useful life, and replacement cost. Key tools: GIS for spatial mapping, CMMS for work order tracking, condition assessment. Risk-based prioritization: likelihood of failure x consequence of failure = risk score." },
+    ],
+    tableHeadings: ["Affinity Law", "Formula", "Application"],
+    tableRows: [
+      ["Flow ratio", "Q2/Q1 = N2/N1", "Speed change to flow change"],
+      ["Head ratio", "H2/H1 = (N2/N1)^2", "Speed change to head change"],
+      ["Power ratio", "P2/P1 = (N2/N1)^3", "Speed change to power change"],
+      ["Parallel pumps", "Q total = Q1 + Q2", "Increase flow capacity"],
+      ["Series pumps", "H total = H1 + H2", "Increase pressure/head"],
+    ],
+    examTips: [
+      "Pump affinity laws: power changes as the cube of speed — 50% speed = 12.5% power",
+      "Parallel pumps add flow; series pumps add head",
+      "CIPP lining restores structural integrity and reduces roughness (increases C value)",
+      "Pressure management reduces leakage — lower pressure = less leakage",
+    ],
+  },
+  "Water Quality Monitoring & Lab": {
+    title: "Water Quality Monitoring & Lab",
+    intro: "Class II operators must understand advanced water quality monitoring, nitrification in chloraminated systems, DBP formation and control, and water age management.",
+    keyPoints: [
+      { heading: "Nitrification in Chloraminated Systems", body: "Nitrification occurs when ammonia-oxidizing bacteria (AOB) convert free ammonia to nitrite, consuming the chloramine residual. Indicators: declining chloramine residual, increasing nitrite, decreasing pH. Control: increase chloramine dose, reduce water age, flush dead ends, or breakpoint chlorination." },
+      { heading: "Water Age & Water Quality", body: "High water age causes chlorine residual decay, DBP formation, microbial regrowth, taste and odour complaints, and temperature increase. Strategies to reduce water age: optimize tank operations (fill/draw cycles), eliminate dead ends, increase system turnover." },
+      { heading: "Lead & Copper Rule", body: "Action level: lead > 15 ug/L or copper > 1.3 mg/L in > 10% of first-draw samples triggers action. Corrosion control treatment (CCT) — pH adjustment, orthophosphate addition — reduces lead and copper leaching." },
+      { heading: "Turbidity & Particle Monitoring", body: "Turbidity in the distribution system can indicate main breaks, biofilm sloughing, or corrosion products. Unidirectional flushing (UDF) is a systematic flushing technique that moves water in one direction to scour sediment from mains." },
+    ],
+    tableHeadings: ["Water Quality Parameter", "Standard/Guideline", "Action"],
+    tableRows: [
+      ["Lead (LCR action level)", "> 15 ug/L in > 10% samples", "Corrosion control, LSL replacement"],
+      ["Copper (LCR action level)", "> 1.3 mg/L in > 10% samples", "Corrosion control treatment"],
+      ["Nitrite (nitrification indicator)", "Increasing trend", "Investigate, flush, boost Cl2"],
+      ["Free chlorine residual (distribution)", "Min 0.2 mg/L", "Investigate source of decay"],
+    ],
+    examTips: [
+      "Nitrification in chloraminated systems: AOB consume ammonia — chloramine residual drops",
+      "Lead action level: > 15 ug/L in > 10% of first-draw samples",
+      "Orthophosphate addition is a common corrosion control treatment to reduce lead leaching",
+      "Unidirectional flushing (UDF) is more effective than conventional flushing for removing sediment",
+    ],
+  },
+  "Security, Safety, Admin & Public Interactions": {
+    title: "Security, Safety, Admin & Public Interactions",
+    intro: "Class II operators take on more responsibility for emergency planning, vulnerability assessments, and public communication. This module covers water security, emergency response planning, customer communication, and regulatory reporting.",
+    keyPoints: [
+      { heading: "Water System Security & Vulnerability Assessment", body: "Physical security: perimeter fencing, access control, CCTV, lighting, and intrusion alarms. Cyber security: SCADA systems must be protected — network segmentation, strong passwords, regular patching. Vulnerability assessments identify critical assets, threats, and consequences." },
+      { heading: "Emergency Response Planning", body: "Emergency response plans (ERPs) must address main breaks, contamination events, power outages, natural disasters, and cyber attacks. Mutual aid agreements with neighboring utilities provide backup resources. ERPs must be tested regularly and updated after each incident." },
+      { heading: "Public Communication", body: "Boil water advisories must be issued promptly when there is a risk of contamination. Public notification requirements specify the timeframe and method for reporting regulatory violations. Proactive communication (annual water quality reports, public meetings) builds trust." },
+      { heading: "Regulatory Reporting & Record-Keeping", body: "Monthly and annual reports must be submitted to the regulatory authority. Exceedance reporting: notify the authority within the required timeframe (often 24 hours for acute health risks). Records must be retained for the specified period (typically 5–10 years)." },
+    ],
+    tableHeadings: ["Emergency Type", "Key Response Action", "Notification Timeframe"],
+    tableRows: [
+      ["Boil water advisory (BWA)", "Issue advisory, notify public and authority", "As soon as possible"],
+      ["Main break (pressure loss)", "Isolate, repair, disinfect, bacteriological clearance", "Notify authority per regulation"],
+      ["Positive E. coli sample", "Immediate repeat sampling, possible BWA", "Notify authority within 24 hours"],
+    ],
+    examTips: [
+      "BWA clearance: flush, disinfect, 2 consecutive days of negative bacteriological samples",
+      "E. coli positive = immediate action — notify authority within 24 hours",
+      "Emergency response plans must be tested regularly and updated after incidents",
+    ],
+  },
+};
+
+export const WPI_CLASS3_WATER_DIST_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Distribution System Components": {
+    title: "Distribution System Components",
+    intro: "Class III Water Distribution operators manage complex systems with multiple pressure zones, large transmission mains, and advanced SCADA control. This module covers advanced hydraulic modeling, transmission main design, and system optimization.",
+    keyPoints: [
+      { heading: "Transmission Mains vs. Distribution Mains", body: "Transmission mains carry large volumes from source/treatment plant to distribution reservoirs — typically > 400 mm diameter, designed for high velocity (up to 3 m/s). Distribution mains serve customers directly — typically 150–400 mm diameter. Transmission main failures have high consequence — redundancy is critical." },
+      { heading: "Advanced Hydraulic Modeling (EPANET)", body: "EPANET simulates pressure, flow, pump operation, valve settings, storage tank levels, and water quality. Extended period simulation (EPS) models 24-hour demand patterns. Calibration: compare model to field measurements and adjust until they match." },
+      { heading: "Storage Tank Operations", body: "Turnover rate = volume drawn per day / tank volume — target > 3 turnovers per week. Tanks with low turnover develop stratification and water quality problems. Mixing systems (jet mixers, impellers) improve turnover and prevent stratification." },
+      { heading: "Cathodic Protection", body: "Sacrificial anode: a more active metal (zinc, magnesium) corrodes preferentially, protecting the pipe. Impressed current: external DC power source drives current from an inert anode to the pipe. Target: pipe-to-soil potential more negative than -0.85 V (CSE). Annual testing verifies protection." },
+    ],
+    tableHeadings: ["System Component", "Key Design Parameter", "Typical Value"],
+    tableRows: [
+      ["Transmission main velocity", "Maximum design velocity", "3.0 m/s"],
+      ["Distribution main velocity", "Normal operating range", "0.6 – 2.0 m/s"],
+      ["Storage tank turnover", "Target frequency", "> 3 times per week"],
+      ["Cathodic protection potential", "Target (CSE)", "More negative than -0.85 V"],
+    ],
+    examTips: [
+      "Transmission mains: high flow, few services, high consequence of failure",
+      "EPANET calibration: compare model to field measurements and adjust until they match",
+      "Tank turnover > 3 times/week prevents stratification and water quality problems",
+      "Cathodic protection target: pipe-to-soil potential more negative than -0.85 V (CSE)",
+    ],
+  },
+  "Equipment Installation, O&M & Repair": {
+    title: "Equipment Installation, O&M & Repair",
+    intro: "Class III operators oversee complex equipment programs including advanced pump system management, SCADA integration, and large-scale rehabilitation projects.",
+    keyPoints: [
+      { heading: "Pump Station Design & Operation", body: "Large pump stations require multiple pumps (duty/standby), VFDs, emergency power (diesel generators), SCADA control, and surge protection. Duty/standby: both pumps must be exercised regularly. VFDs allow pump speed to match demand, saving energy and reducing water hammer." },
+      { heading: "SCADA Systems", body: "SCADA monitors tank levels, pressures, flows, pump status, chlorine residuals, and alarms. Operators can control pumps, valves, and chemical feed remotely. SCADA data is used for operational decisions, regulatory reporting, and system optimization. Cybersecurity is critical." },
+      { heading: "Large Diameter Pipe Rehabilitation", body: "CIPP for large diameters uses UV-cured or steam-cured liners. Spray-applied mortar lining restores structural integrity. Condition assessment: CCTV inspection, acoustic emission testing, RFEC for metallic pipe. Shutdown planning for transmission mains requires alternate supply, customer notification, and emergency response." },
+    ],
+    tableHeadings: ["SCADA Component", "Function", "Key Monitoring Parameter"],
+    tableRows: [
+      ["RTU (Remote Terminal Unit)", "Data collection and local control", "Tank level, pressure, flow, pump status"],
+      ["HMI (Human-Machine Interface)", "Operator interface", "System overview, alarms, trends"],
+      ["Historian", "Long-term data storage", "Trend analysis, regulatory reporting"],
+    ],
+    examTips: [
+      "Duty/standby pump configuration: both pumps must be exercised regularly",
+      "VFDs reduce energy consumption and water hammer from pump starts/stops",
+      "SCADA cybersecurity: network segmentation, strong passwords, regular patching",
+    ],
+  },
+  "Water Quality Monitoring & Lab": {
+    title: "Water Quality Monitoring & Lab",
+    intro: "Class III operators must manage comprehensive water quality monitoring programs, including online instrumentation, advanced sampling strategies, and regulatory compliance for complex systems. The WPI Class III exam heavily weights water quality monitoring — 25 of 100 questions.",
+    keyPoints: [
+      { heading: "Online Water Quality Monitoring", body: "Online monitoring provides real-time data: chlorine residual, turbidity, pH, conductivity, temperature, and TOC. Enables rapid detection of water quality events. Sensors require regular calibration and maintenance. Data is integrated with SCADA for alarming and trending." },
+      { heading: "Sampling Program Design", body: "Regulatory compliance samples: total coliforms, E. coli, DBPs, lead/copper. Operational monitoring: chlorine residual, turbidity, pH. Laboratory QA/QC: blanks, duplicates, and spikes verify analytical accuracy. Chain of custody documentation is required for all regulatory compliance samples." },
+      { heading: "DBP Monitoring & Control", body: "THM and HAA monitoring is required quarterly. DBPs are highest in summer (higher temperature, higher NOM). Control: enhanced coagulation, GAC adsorption, UV/H2O2 advanced oxidation, and optimization of chlorine dose. Chloramine conversion reduces THMs but can increase HAAs." },
+      { heading: "Emerging Contaminants", body: "PFAS: GAC and high-pressure membranes (NF, RO) are effective. Cyanotoxins: PAC and oxidation (ozone, UV/H2O2). Operators must stay current on regulatory developments and emerging contaminant guidance." },
+    ],
+    tableHeadings: ["Online Monitoring Parameter", "Measurement Method", "Key Application"],
+    tableRows: [
+      ["Free chlorine residual", "Amperometric or colorimetric", "Residual maintenance, compliance"],
+      ["Turbidity", "Nephelometric (NTU)", "Particle removal, contamination detection"],
+      ["pH", "Electrode", "Corrosion control, disinfection efficiency"],
+      ["TOC", "UV/persulfate oxidation", "NOM tracking, DBP precursor control"],
+    ],
+    examTips: [
+      "Online monitoring provides real-time data — enables rapid response to water quality events",
+      "DBPs are highest in summer — higher temperature and NOM increase formation",
+      "PFAS treatment: GAC and high-pressure membranes (NF, RO) are effective",
+      "Chain of custody documentation is required for all regulatory compliance samples",
+    ],
+  },
+  "Security, Safety, Admin & Public Interactions": {
+    title: "Security, Safety, Admin & Public Interactions",
+    intro: "Class III operators take on supervisory responsibilities and must manage safety programs, regulatory compliance, and public relations for complex systems. The WPI Class III exam weights this module at 27 questions — the highest of any class level.",
+    keyPoints: [
+      { heading: "Safety Program Management", body: "Class III operators may supervise other operators and must ensure safety program compliance. Incident investigation: root cause analysis (RCA) identifies the underlying cause of accidents and near-misses. Safety training records must be maintained. Joint health and safety committees (JHSC) are required in larger workplaces." },
+      { heading: "Regulatory Compliance Management", body: "Compliance schedules: monitoring frequencies, reporting deadlines, and permit conditions. Non-compliance response: immediate corrective action, regulatory notification within required timeframe, and root cause analysis. Variance requests: operators can request variances if they can demonstrate equivalent protection." },
+      { heading: "Operator Training & Certification", body: "Class III operators may be responsible for training junior operators. Training program elements: on-the-job training, formal courses, and mentorship. Succession planning: identifying and developing future operators to address the aging workforce challenge." },
+      { heading: "Financial Management", body: "Operating budget: labour, chemicals, energy, maintenance, and overhead. Capital budget: pipe replacement, equipment upgrades, and new infrastructure. Full-cost pricing: rates should reflect the true cost of providing water service, including infrastructure replacement." },
+    ],
+    tableHeadings: ["Safety Program Element", "Key Requirement", "Documentation"],
+    tableRows: [
+      ["Confined space entry", "Permit required, atmospheric testing, attendant", "Entry permit, atmospheric test records"],
+      ["LOTO", "Each worker applies own lock", "LOTO procedure, training records"],
+      ["Incident investigation", "Root cause analysis, corrective action", "Incident report, corrective action plan"],
+    ],
+    examTips: [
+      "Root cause analysis identifies the underlying cause — not just the immediate cause",
+      "Regulatory non-compliance: immediate corrective action + notify authority within required timeframe",
+      "Full-cost pricing: rates should cover operating costs, debt service, AND capital reserves",
+    ],
+  },
+};
+
+export const WPI_CLASS4_WATER_DIST_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Distribution System Components": {
+    title: "Distribution System Components",
+    intro: "Class IV Water Distribution operators manage the most complex systems — regional water authorities, large municipalities, and interconnected systems. This module covers master planning, regional system design, and advanced infrastructure management at the highest level.",
+    keyPoints: [
+      { heading: "Master Planning & Capital Planning", body: "A water distribution master plan is a long-term (20–50 year) planning document that assesses current system capacity, projects future demand, identifies infrastructure deficiencies, and recommends capital improvements. Capital improvement programs (CIPs) prioritize projects based on risk, need, and available funding." },
+      { heading: "Regional System Integration", body: "Regional water systems serve multiple municipalities. Governance: regional authorities, inter-municipal agreements, or wholesale/retail arrangements. Interconnections between systems provide emergency backup and allow load balancing." },
+      { heading: "Advanced Infrastructure Management", body: "Comprehensive asset management: inventory (GIS), condition assessment, performance monitoring, risk assessment (likelihood x consequence), and renewal planning. Lifecycle cost analysis compares rehabilitation vs. replacement. Predictive maintenance uses data analytics to predict failures before they occur." },
+      { heading: "Climate Change Adaptation", body: "Climate change affects distribution systems: increased drought, more intense precipitation, higher temperatures, sea level rise. Adaptation strategies: diversify water sources, increase storage capacity, implement water conservation programs, and design infrastructure for extreme weather events." },
+    ],
+    tableHeadings: ["Master Plan Element", "Purpose", "Typical Planning Horizon"],
+    tableRows: [
+      ["Demand projection", "Forecast future water needs", "20 – 50 years"],
+      ["Capital improvement program (CIP)", "Prioritize and budget improvements", "10 – 20 years"],
+      ["Asset management plan", "Track condition and plan renewals", "Long-term (asset life)"],
+      ["Financial plan", "Ensure sustainable funding", "10 – 20 years"],
+    ],
+    examTips: [
+      "Master planning horizon: 20–50 years for infrastructure, 10–20 years for CIP",
+      "Regional systems: governance, bulk water pricing, and regulatory complexity are key challenges",
+      "Predictive maintenance uses data analytics to predict failures before they occur",
+    ],
+  },
+  "Equipment Installation, O&M & Repair": {
+    title: "Equipment Installation, O&M & Repair",
+    intro: "Class IV operators oversee major capital projects, advanced pump system optimization, and enterprise-level maintenance programs.",
+    keyPoints: [
+      { heading: "Major Capital Project Management", body: "Project management phases: planning (scope, schedule, budget), design, procurement, construction, and commissioning. Project delivery methods: design-bid-build, design-build, and P3 (public-private partnership). Change order management: scope changes must be documented and approved before work proceeds." },
+      { heading: "Energy Management", body: "Energy management strategies: VFDs on pumps, off-peak pumping (fill tanks at night when electricity rates are lower), pump optimization, and energy audits. Energy benchmarking: kWh per m3 pumped. Renewable energy: solar panels at pump stations, micro-hydro at PRV stations." },
+      { heading: "Maintenance Program Management", body: "Preventive maintenance (PM): scheduled maintenance based on time or usage. Predictive maintenance (PdM): condition monitoring (vibration analysis, oil analysis, thermography) predicts failures. Reliability-centered maintenance (RCM): maintenance strategies based on failure modes and consequences. KPIs: MTBF, MTTR, maintenance cost per unit." },
+    ],
+    tableHeadings: ["Energy Management Strategy", "Mechanism", "Typical Savings"],
+    tableRows: [
+      ["VFDs on pumps", "Match pump speed to demand", "20 – 50% energy reduction"],
+      ["Off-peak pumping", "Fill tanks at night (lower rates)", "10 – 30% cost reduction"],
+      ["Pump optimization", "Operate most efficient pumps", "5 – 15% energy reduction"],
+    ],
+    examTips: [
+      "VFDs: power varies as cube of speed — 80% speed = 51% power",
+      "Off-peak pumping: fill tanks at night when electricity rates are lower",
+      "RCM: maintenance strategy based on failure modes and consequences",
+    ],
+  },
+  "Water Quality Monitoring & Lab": {
+    title: "Water Quality Monitoring & Lab",
+    intro: "Class IV operators manage enterprise-level water quality programs, including advanced treatment for emerging contaminants, comprehensive monitoring networks, and regulatory leadership. The WPI Class IV exam weights water quality at 30 questions — the highest of any module.",
+    keyPoints: [
+      { heading: "Advanced Treatment for Emerging Contaminants", body: "PFAS: GAC and high-pressure membranes (NF, RO) are most effective; ion exchange (IX) is also used. Cyanotoxins: PAC and oxidation (ozone, UV/H2O2). Pharmaceuticals (PPCPs): advanced oxidation processes (AOPs). Microplastics: membrane filtration is most effective." },
+      { heading: "Comprehensive Water Quality Monitoring Networks", body: "Event detection systems (EDS) use multiparameter online monitoring and algorithms to detect anomalous water quality events in real time. Integration with SCADA enables automated response. Water quality modeling (EPANET) predicts contaminant transport and guides sampling location selection." },
+      { heading: "Source Water Protection", body: "Wellhead protection areas (WHPAs) and intake protection zones (IPZs) are delineated based on hydrogeology and travel time. Land use controls restrict activities near sources. Multi-barrier approach: source protection + treatment + distribution system protection." },
+      { heading: "Regulatory Leadership & Policy", body: "Class IV operators engage with regulators on policy development, regulatory interpretation, and variance requests. They must understand the scientific basis for drinking water guidelines and how they are derived. Participation in industry associations (AWWA, CWWA) contributes to the development of standards and best practices." },
+    ],
+    tableHeadings: ["Emerging Contaminant", "Effective Treatment", "Health Canada Guideline"],
+    tableRows: [
+      ["PFAS (PFOA, PFOS)", "GAC, NF/RO, IX", "0.0002 mg/L (PFOA + PFOS combined)"],
+      ["Cyanotoxins (microcystin)", "PAC, ozone, UV/H2O2", "0.0015 mg/L (microcystin-LR)"],
+      ["Microplastics", "Membrane filtration", "Under development"],
+    ],
+    examTips: [
+      "PFAS treatment: GAC and high-pressure membranes (NF, RO) are most effective",
+      "Cyanotoxins: PAC and oxidation (ozone, UV/H2O2) — conventional treatment alone insufficient",
+      "Event detection systems (EDS) use multiparameter monitoring + algorithms for real-time detection",
+    ],
+  },
+  "Security, Safety, Admin & Public Interactions": {
+    title: "Security, Safety, Admin & Public Interactions",
+    intro: "Class IV operators hold the highest level of responsibility for system security, organizational leadership, and strategic management.",
+    keyPoints: [
+      { heading: "Organizational Leadership & Management", body: "Class IV operators may serve as chief operators or managers, responsible for organizational structure, budget management, strategic planning, and regulatory compliance. Performance management: setting KPIs, monitoring performance, and taking corrective action. Succession planning: ensuring organizational knowledge and capability are maintained." },
+      { heading: "Strategic Planning", body: "Elements: mission and vision statements, SWOT analysis (strengths, weaknesses, opportunities, threats), strategic objectives, action plans, and performance measures. Plans are reviewed and updated every 3–5 years." },
+      { heading: "Stakeholder Relations & Governance", body: "Class IV operators engage with elected officials, regulators, customers, neighboring utilities, and the public. Transparency and accountability: public reporting on utility performance. Advocacy: representing the utility's interests in regulatory proceedings and policy development." },
+      { heading: "Financial Sustainability", body: "Full-cost pricing: rates must cover all costs — operating, debt service, and capital reserves. Asset management: long-term financial planning based on asset condition and replacement schedules. Grant and funding programs: federal and provincial infrastructure programs can offset capital costs." },
+    ],
+    tableHeadings: ["Strategic Planning Element", "Purpose", "Review Frequency"],
+    tableRows: [
+      ["Mission and vision", "Define organizational purpose and direction", "Every 5 – 10 years"],
+      ["SWOT analysis", "Assess internal and external factors", "Every 3 – 5 years"],
+      ["Capital improvement program", "Plan and budget infrastructure investments", "Annually"],
+      ["Financial plan", "Ensure sustainable funding", "Annually"],
+    ],
+    examTips: [
+      "Full-cost pricing: rates must cover operating costs, debt service, AND capital reserves",
+      "SWOT: Strengths, Weaknesses (internal); Opportunities, Threats (external)",
+      "Succession planning: critical for maintaining organizational capability as staff retire",
+    ],
+  },
+};
