@@ -67,9 +67,17 @@ export const NAV_LINKS = [
   { label: "📐 WPI C4 WW Formulas",    href: "/formulas-wpi-class4-ww" },
   // WPI Distribution
   { label: "🚰 WPI C1 Dist Practice",  href: "/wpi-class1-water-dist" },
+  { label: "📋 WPI C1 Dist Mock",       href: "/wpi-class1-water-dist-mock" },
+  { label: "📐 WPI C1 Dist Formulas",   href: "/formulas-wpi-class1-dist" },
   { label: "🚰 WPI C2 Dist Practice",  href: "/wpi-class2-water-dist" },
+  { label: "📋 WPI C2 Dist Mock",       href: "/wpi-class2-water-dist-mock" },
+  { label: "📐 WPI C2 Dist Formulas",   href: "/formulas-wpi-class2-dist" },
   { label: "🚰 WPI C3 Dist Practice",  href: "/wpi-class3-water-dist" },
+  { label: "📋 WPI C3 Dist Mock",       href: "/wpi-class3-water-dist-mock" },
+  { label: "📐 WPI C3 Dist Formulas",   href: "/formulas-wpi-class3-dist" },
   { label: "🚰 WPI C4 Dist Practice",  href: "/wpi-class4-water-dist" },
+  { label: "📋 WPI C4 Dist Mock",       href: "/wpi-class4-water-dist-mock" },
+  { label: "📐 WPI C4 Dist Formulas",   href: "/formulas-wpi-class4-dist" },
   // WPI Collection
   { label: "🔩 WPI C1 Coll Practice",  href: "/wpi-class1-water-coll" },
   { label: "📋 WPI C1 Coll Mock",       href: "/wpi-class1-water-coll-mock" },
@@ -205,10 +213,10 @@ function getContextualPrimary(currentPath: string): string[] {
   if (currentPath.startsWith("/wpi-class3-water-coll")) return ["/wpi-class3-water-coll", "/wpi-class3-water-coll-mock", "/formulas-wpi-class3-coll", "/wpi", "/career", "/account"];
   if (currentPath.startsWith("/wpi-class4-water-coll")) return ["/wpi-class4-water-coll", "/wpi-class4-water-coll-mock", "/formulas-wpi-class4-coll", "/wpi", "/career", "/account"];
   // WPI Distribution pages (must come before generic wpi-class*-water rules)
-  if (currentPath.startsWith("/wpi-class1-water-dist")) return ["/wpi-class1-water-dist", "/wpi", "/pricing", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class2-water-dist")) return ["/wpi-class2-water-dist", "/wpi", "/pricing", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class3-water-dist")) return ["/wpi-class3-water-dist", "/wpi", "/pricing", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class4-water-dist")) return ["/wpi-class4-water-dist", "/wpi", "/pricing", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class1-water-dist")) return ["/wpi-class1-water-dist", "/wpi-class1-water-dist-mock", "/formulas-wpi-class1-dist", "/wpi", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class2-water-dist")) return ["/wpi-class2-water-dist", "/wpi-class2-water-dist-mock", "/formulas-wpi-class2-dist", "/wpi", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class3-water-dist")) return ["/wpi-class3-water-dist", "/wpi-class3-water-dist-mock", "/formulas-wpi-class3-dist", "/wpi", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class4-water-dist")) return ["/wpi-class4-water-dist", "/wpi-class4-water-dist-mock", "/formulas-wpi-class4-dist", "/wpi", "/career", "/account"];
   // WPI Water pages
   if (currentPath.startsWith("/wpi-class1-water")) return ["/wpi-class1-water", "/wpi-class1-water-mock", "/formulas-wpi-class1", "/wpi", "/career", "/account"];
   if (currentPath.startsWith("/wpi-class2-water")) return ["/wpi-class2-water", "/wpi-class2-water-mock", "/formulas-wpi-class2", "/wpi", "/career", "/account"];
