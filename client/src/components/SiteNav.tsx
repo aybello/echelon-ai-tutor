@@ -62,9 +62,14 @@ export const NAV_LINKS = [
   { label: "🌊 WPI C3 WW Practice",    href: "/wpi-class3-wastewater" },
   { label: "📋 WPI C3 WW Mock",        href: "/wpi-class3-wastewater-mock" },
   { label: "📐 WPI C3 WW Formulas",    href: "/formulas-wpi-class3-ww" },
-  { label: "🏛️ WPI C4 WW Practice",    href: "/wpi-class4-wastewater" },
+  { label: "🏔️ WPI C4 WW Practice",    href: "/wpi-class4-wastewater" },
   { label: "📋 WPI C4 WW Mock",        href: "/wpi-class4-wastewater-mock" },
   { label: "📐 WPI C4 WW Formulas",    href: "/formulas-wpi-class4-ww" },
+  // WPI Distribution
+  { label: "🚰 WPI C1 Dist Practice",  href: "/wpi-class1-water-dist" },
+  { label: "🚰 WPI C2 Dist Practice",  href: "/wpi-class2-water-dist" },
+  { label: "🚰 WPI C3 Dist Practice",  href: "/wpi-class3-water-dist" },
+  { label: "🚰 WPI C4 Dist Practice",  href: "/wpi-class4-water-dist" },
   { label: "🌊 WPI Overview",         href: "/wpi" },
   { label: "📐 Formulas",      href: "/formulas" },
   { label: "🏭 Process Guide", href: "/process" },
@@ -131,8 +136,16 @@ const DRAWER_SECTIONS = [
       { label: "WPI Overview", href: "/wpi" },
       { label: "C1 Water Practice", href: "/wpi-class1-water" },
       { label: "C2 Water Practice", href: "/wpi-class2-water" },
+      { label: "C3 Water Practice", href: "/wpi-class3-water" },
+      { label: "C4 Water Practice", href: "/wpi-class4-water" },
       { label: "C1 WW Practice", href: "/wpi-class1-wastewater" },
       { label: "C2 WW Practice", href: "/wpi-class2-wastewater" },
+      { label: "C3 WW Practice", href: "/wpi-class3-wastewater" },
+      { label: "C4 WW Practice", href: "/wpi-class4-wastewater" },
+      { label: "🚰 C1 Distribution", href: "/wpi-class1-water-dist" },
+      { label: "🚰 C2 Distribution", href: "/wpi-class2-water-dist" },
+      { label: "🚰 C3 Distribution", href: "/wpi-class3-water-dist" },
+      { label: "🚰 C4 Distribution", href: "/wpi-class4-water-dist" },
     ],
   },
   {
@@ -169,6 +182,11 @@ interface SiteNavProps {
 
 /** Returns the 5-6 most contextually relevant desktop nav links for the current path. */
 function getContextualPrimary(currentPath: string): string[] {
+  // WPI Distribution pages (must come before generic wpi-class*-water rules)
+  if (currentPath.startsWith("/wpi-class1-water-dist")) return ["/wpi-class1-water-dist", "/wpi", "/pricing", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class2-water-dist")) return ["/wpi-class2-water-dist", "/wpi", "/pricing", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class3-water-dist")) return ["/wpi-class3-water-dist", "/wpi", "/pricing", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class4-water-dist")) return ["/wpi-class4-water-dist", "/wpi", "/pricing", "/career", "/account"];
   // WPI Water pages
   if (currentPath.startsWith("/wpi-class1-water")) return ["/wpi-class1-water", "/wpi-class1-water-mock", "/formulas-wpi-class1", "/wpi", "/career", "/account"];
   if (currentPath.startsWith("/wpi-class2-water")) return ["/wpi-class2-water", "/wpi-class2-water-mock", "/formulas-wpi-class2", "/wpi", "/career", "/account"];
