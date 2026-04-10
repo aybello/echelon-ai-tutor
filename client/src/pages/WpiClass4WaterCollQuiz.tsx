@@ -100,7 +100,7 @@ export default function WpiClass4WaterCollQuiz() {
         productName="WPI Class IV Wastewater Collection Practice Pass"
         priceLabel="CA$299"
         paidFeatures={[
-          "150 WPI Class IV Collection questions — unlimited attempts",
+          "504 WPI Class IV Collection questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
           "AI Tutor explanations on every question",
           "Module-by-module performance tracking",
@@ -118,7 +118,7 @@ export default function WpiClass4WaterCollQuiz() {
         currentPath="/wpi-class4-water-coll"
         courseLabel="WPI Class IV · Wastewater Collection"
         courseTitle="WPI Class IV Wastewater Collection Quiz"
-        courseSubtitle="150 questions · BC (EOCP Level IV) · Alberta (AWWOA Class IV) · SK · MB"
+        courseSubtitle="504 questions · BC (EOCP Level IV) · Alberta (AWWOA Class IV) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="🚧"
         headerActions={[

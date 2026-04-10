@@ -100,7 +100,7 @@ export default function WpiClass1WaterCollQuiz() {
         productName="WPI Class I Wastewater Collection Practice Pass"
         priceLabel="CA$99"
         paidFeatures={[
-          "150 WPI Class I Collection questions — unlimited attempts",
+          "500 WPI Class I Collection questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
           "AI Tutor explanations on every question",
           "Module-by-module performance tracking",
@@ -118,7 +118,7 @@ export default function WpiClass1WaterCollQuiz() {
       currentPath="/wpi-class1-water-coll"
       courseLabel="WPI Class I · Wastewater Collection"
       courseTitle="WPI Class I Wastewater Collection Quiz"
-      courseSubtitle="150 questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB"
+      courseSubtitle="500 questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB"
       headerGradient={HEADER_GRADIENT}
       headerIcon="🪣"
       headerActions={[
