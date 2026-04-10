@@ -5,7 +5,7 @@
  * Usage:
  *   <SiteNav currentPath="/quiz" />
  */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { ReactNode } from "react";
 import { Link } from "wouter";
 
@@ -205,6 +205,11 @@ interface SiteNavProps {
   rightSlot?: ReactNode;
 }
 
+/** Returns true when the current path is a "marketing" page (not a deep quiz/exam page). */
+function isMarketingPage(path: string): boolean {
+  return path === "/" || path === "/wpi" || path === "/pricing" || path === "/about" || path === "/career" || path === "/formulas" || path === "/process" || path === "/wastewater" || path === "/quiz" || path === "/oit-mock" || path === "/oit-ww" || path === "/oit-ww-mock";
+}
+
 /** Returns the 5-6 most contextually relevant desktop nav links for the current path. */
 function getContextualPrimary(currentPath: string): string[] {
   // WPI Collection pages (must come before generic wpi-class*-water rules)
@@ -254,6 +259,90 @@ function getContextualPrimary(currentPath: string): string[] {
   if (currentPath === "/account") return ["/account", "/quiz", "/formulas", "/career", "/pricing", "/about"];
   // Default (home, about, tools etc.)
   return ["/quiz", "/formulas", "/career", "/pricing", "/about", "/account"];
+}
+
+/** Resources dropdown component for the desktop nav */
+function ResourcesDropdown({ currentPath }: { currentPath: string }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const resourcePaths = ["/formulas", "/career", "/process", "/wastewater", "/about", "/contact"];
+  const isActive = resourcePaths.some(p => currentPath.startsWith(p));
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  const items = [
+    { label: "📐 Formulas", href: "/formulas" },
+    { label: "🗺️ Career Map", href: "/career" },
+    { label: "🏭 Study Tools", href: "/process" },
+    { label: "ℹ️ Contact", href: "/about" },
+  ];
+
+  return (
+    <div ref={ref} style={{ position: "relative" }}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          background: isActive ? "rgba(96,165,250,0.1)" : "transparent",
+          border: "none",
+          color: isActive ? "#60A5FA" : "rgba(255,255,255,0.65)",
+          fontSize: 13,
+          fontWeight: isActive ? 700 : 500,
+          padding: "5px 12px",
+          borderRadius: 7,
+          cursor: "pointer",
+          whiteSpace: "nowrap",
+          fontFamily: "inherit",
+          display: "flex",
+          alignItems: "center",
+          gap: 4,
+          transition: "color 0.15s, background 0.15s",
+        }}
+      >
+        Resources
+        <span style={{ fontSize: 10, opacity: 0.7 }}>{open ? "▲" : "▼"}</span>
+      </button>
+      {open && (
+        <div style={{
+          position: "absolute",
+          top: "calc(100% + 8px)",
+          left: 0,
+          background: "#1E293B",
+          border: "1px solid rgba(255,255,255,0.1)",
+          borderRadius: 10,
+          boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
+          minWidth: 180,
+          zIndex: 300,
+          padding: "6px 0",
+        }}>
+          {items.map(item => (
+            <Link key={item.href} href={item.href}>
+              <div
+                onClick={() => setOpen(false)}
+                style={{
+                  padding: "9px 16px",
+                  fontSize: 13,
+                  color: currentPath === item.href ? "#60A5FA" : "rgba(255,255,255,0.8)",
+                  fontWeight: currentPath === item.href ? 700 : 400,
+                  cursor: "pointer",
+                  transition: "background 0.12s",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
+                onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+              >
+                {item.label}
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default function SiteNav({ currentPath, brandName = "Echelon Institute", rightSlot }: SiteNavProps) {
@@ -377,23 +466,68 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
           alignItems: "center",
           overflow: "hidden",
         }} className="site-nav-desktop">
-          {NAV_LINKS.filter(l => PRIMARY.includes(l.href)).map(l => (
-            <Link key={l.href} href={l.href}>
-              <span style={{
-                color: currentPath === l.href ? "#60A5FA" : "rgba(255,255,255,0.65)",
-                fontSize: 12,
-                fontWeight: currentPath === l.href ? 700 : 500,
-                padding: "5px 12px",
-                borderRadius: 7,
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-                background: currentPath === l.href ? "rgba(96,165,250,0.1)" : "transparent",
-                transition: "color 0.15s, background 0.15s",
-              }}>
-                {l.label}
-              </span>
-            </Link>
-          ))}
+          {isMarketingPage(currentPath) ? (
+            // Marketing pages: show clean 5-item nav with Resources dropdown
+            <>
+              {([
+                { label: "Courses", href: "/" },
+                { label: "WPI 🌊", href: "/wpi" },
+                { label: "Pricing", href: "/pricing" },
+              ] as { label: string; href: string }[]).map(l => (
+                <Link key={l.href} href={l.href}>
+                  <span style={{
+                    color: currentPath === l.href ? "#60A5FA" : "rgba(255,255,255,0.65)",
+                    fontSize: 13,
+                    fontWeight: currentPath === l.href ? 700 : 500,
+                    padding: "5px 12px",
+                    borderRadius: 7,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                    background: currentPath === l.href ? "rgba(96,165,250,0.1)" : "transparent",
+                    transition: "color 0.15s, background 0.15s",
+                  }}>
+                    {l.label}
+                  </span>
+                </Link>
+              ))}
+              {/* Resources dropdown */}
+              <ResourcesDropdown currentPath={currentPath} />
+              <Link href="/about">
+                <span style={{
+                  color: currentPath === "/about" ? "#60A5FA" : "rgba(255,255,255,0.65)",
+                  fontSize: 13,
+                  fontWeight: currentPath === "/about" ? 700 : 500,
+                  padding: "5px 12px",
+                  borderRadius: 7,
+                  cursor: "pointer",
+                  whiteSpace: "nowrap",
+                  background: currentPath === "/about" ? "rgba(96,165,250,0.1)" : "transparent",
+                  transition: "color 0.15s, background 0.15s",
+                }}>
+                  About
+                </span>
+              </Link>
+            </>
+          ) : (
+            // Deep quiz/exam pages: show contextual links
+            NAV_LINKS.filter(l => PRIMARY.includes(l.href)).map(l => (
+              <Link key={l.href} href={l.href}>
+                <span style={{
+                  color: currentPath === l.href ? "#60A5FA" : "rgba(255,255,255,0.65)",
+                  fontSize: 12,
+                  fontWeight: currentPath === l.href ? 700 : 500,
+                  padding: "5px 12px",
+                  borderRadius: 7,
+                  cursor: "pointer",
+                  whiteSpace: "nowrap",
+                  background: currentPath === l.href ? "rgba(96,165,250,0.1)" : "transparent",
+                  transition: "color 0.15s, background 0.15s",
+                }}>
+                  {l.label}
+                </span>
+              </Link>
+            ))
+          )}
         </div>
 
         {/* Right slot (optional action buttons) */}
