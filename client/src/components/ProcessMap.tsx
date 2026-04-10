@@ -1,5 +1,5 @@
 // ProcessMap.tsx — Unified Drinking Water Treatment Process Diagram
-// Single straight horizontal row, all 7 steps, large visible arrows
+// Snake layout (row 1 left→right, row 2 right→left), clean proportioned arrows
 
 import { STEPS } from "@/lib/processData";
 
@@ -17,224 +17,167 @@ const PIPE_LABELS: string[] = [
   "Disinfected\nCl₂ residual",
 ];
 
-const SW = 120;   // step card width
-const SH = 120;   // step card height
-const GAP = 72;   // gap between cards (connector zone)
-const PAD = 20;   // left/right padding
+// Layout constants — 4 per row, snake down
+const COLS = 4;
+const SW = 130;   // card width
+const SH = 130;   // card height
+const HGAP = 56;  // horizontal gap between cards
+const VGAP = 72;  // vertical gap between rows
+const PAD = 16;
+
+function pos(idx: number) {
+  const row = Math.floor(idx / COLS);
+  const col = row % 2 === 0 ? idx % COLS : COLS - 1 - (idx % COLS);
+  return { x: PAD + col * (SW + HGAP), y: PAD + row * (SH + VGAP) };
+}
 
 export default function ProcessMap({ onStepClick, activeStepId }: ProcessMapProps) {
   const steps = STEPS;
-  const totalW = PAD * 2 + steps.length * SW + (steps.length - 1) * GAP;
-  const totalH = SH + 80; // extra for pipe labels above + safe drinking water label below
+  const rows = Math.ceil(steps.length / COLS);
+  const totalW = PAD * 2 + COLS * SW + (COLS - 1) * HGAP;
+  const totalH = PAD * 2 + rows * SH + (rows - 1) * VGAP + 24;
+
+  // Build connector paths between consecutive steps
+  const connectors = steps.slice(0, -1).map((s, i) => {
+    const from = pos(i);
+    const to = pos(i + 1);
+    const fromRow = Math.floor(i / COLS);
+    const toRow = Math.floor((i + 1) / COLS);
+    const label = PIPE_LABELS[i] ?? "";
+
+    let d: string;
+    let labelX: number;
+    let labelY: number;
+
+    if (fromRow === toRow) {
+      // Same row — horizontal connector
+      const fromRow0 = fromRow % 2 === 0;
+      const x1 = fromRow0 ? from.x + SW : from.x;
+      const x2 = fromRow0 ? to.x : to.x + SW;
+      const cy = from.y + SH / 2;
+      d = `M${x1},${cy} L${x2},${cy}`;
+      labelX = (x1 + x2) / 2;
+      labelY = cy - 18;
+    } else {
+      // Row transition — U-turn connector
+      const fromRow0 = fromRow % 2 === 0;
+      // From bottom of last card in row → down → across → up to first card of next row
+      const x1 = from.x + SW / 2;
+      const y1 = from.y + SH;
+      const x2 = to.x + SW / 2;
+      const y2 = to.y;
+      const midY = y1 + VGAP / 2;
+      d = `M${x1},${y1} L${x1},${midY} L${x2},${midY} L${x2},${y2}`;
+      labelX = (x1 + x2) / 2;
+      labelY = midY - 4;
+    }
+
+    return { d, label, labelX, labelY, color: s.color, id: s.id };
+  });
 
   return (
-    <div style={{ width: "100%", overflowX: "auto", overflowY: "visible" }}>
+    <div style={{ width: "100%", overflowX: "auto" }}>
       <style>{`
-        @keyframes pmFlow { from { stroke-dashoffset: 24 } to { stroke-dashoffset: 0 } }
-        .pm-pipe { animation: pmFlow 0.7s linear infinite; }
-        .pm-node { cursor: pointer; }
-        .pm-node:hover rect.pm-card { filter: brightness(1.06) drop-shadow(0 6px 18px rgba(0,0,0,0.16)) !important; }
+        @keyframes pmSnakeFlow { from { stroke-dashoffset: 20 } to { stroke-dashoffset: 0 } }
+        .pm-snake-pipe { animation: pmSnakeFlow 0.75s linear infinite; }
+        .pm-snake-node { cursor: pointer; }
+        .pm-snake-node:hover .pm-snake-card { filter: brightness(1.07) drop-shadow(0 6px 18px rgba(0,0,0,0.15)) !important; }
       `}</style>
       <svg
         viewBox={`0 0 ${totalW} ${totalH}`}
-        style={{ width: "100%", minWidth: Math.min(totalW, 900), display: "block" }}
+        style={{ width: "100%", minWidth: 560, display: "block" }}
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          {steps.map((s) => (
-            <marker
-              key={s.id}
-              id={`arr-${s.id}`}
-              markerWidth="5"
-              markerHeight="5"
-              refX="4"
-              refY="2.5"
-              orient="auto"
-            >
-              <path d="M0,0.5 L4,2.5 L0,4.5 Z" fill={s.color} />
+          {connectors.map((c) => (
+            <marker key={c.id} id={`pm-arr-${c.id}`} markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0.5 L5,3 L0,5.5 Z" fill={c.color} />
             </marker>
           ))}
         </defs>
 
-        {/* ── CONNECTORS ── */}
-        {steps.slice(0, -1).map((s, i) => {
-          const fromX = PAD + i * (SW + GAP) + SW;
-          const toX = PAD + (i + 1) * (SW + GAP);
-          const midX = (fromX + toX) / 2;
-          const cy = 40 + SH / 2; // vertical centre of cards
-
-          const label = PIPE_LABELS[i] ?? "";
-
-          return (
-            <g key={s.id}>
-              {/* Pipe track */}
-              <line
-                x1={fromX} y1={cy}
-                x2={toX - 2} y2={cy}
-                stroke="#E2E8F0"
-                strokeWidth={8}
-                strokeLinecap="round"
-              />
-              {/* Animated flow */}
-              <line
-                x1={fromX} y1={cy}
-                x2={toX - 6} y2={cy}
-                stroke={s.color}
-                strokeWidth={5}
-                strokeLinecap="round"
-                strokeDasharray="10 7"
-                className="pm-pipe"
-                markerEnd={`url(#arr-${s.id})`}
-                opacity={0.85}
-              />
-              {/* Label pill */}
-              {label && (
-                <g>
-                  <rect
-                    x={midX - 38} y={cy - 28}
-                    width={76} height={22}
-                    rx={11}
-                    fill="white"
-                    stroke={s.color}
-                    strokeWidth={1.2}
-                    opacity={0.95}
-                  />
-                  <text
-                    x={midX} y={cy - 20}
-                    textAnchor="middle"
-                    fontSize={7.5}
-                    fill={s.color}
-                    fontFamily="'Sora', sans-serif"
-                    fontWeight={700}
-                  >
-                    {label.split("\n")[0]}
+        {/* Connectors */}
+        {connectors.map((c) => (
+          <g key={c.id}>
+            {/* Track */}
+            <path d={c.d} stroke="#E2E8F0" strokeWidth={7} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            {/* Animated flow */}
+            <path
+              d={c.d} stroke={c.color} strokeWidth={4} fill="none"
+              strokeLinecap="round" strokeLinejoin="round"
+              strokeDasharray="9 6" className="pm-snake-pipe"
+              markerEnd={`url(#pm-arr-${c.id})`} opacity={0.82}
+            />
+            {/* Label pill */}
+            {c.label && (
+              <g>
+                <rect x={c.labelX - 38} y={c.labelY - 13} width={76} height={22} rx={11}
+                  fill="white" stroke={c.color} strokeWidth={1.2} opacity={0.96} />
+                <text x={c.labelX} y={c.labelY - 4} textAnchor="middle" fontSize={7.5}
+                  fill={c.color} fontFamily="'Sora', sans-serif" fontWeight={700}>
+                  {c.label.split("\n")[0]}
+                </text>
+                {c.label.split("\n")[1] && (
+                  <text x={c.labelX} y={c.labelY + 5} textAnchor="middle" fontSize={7.5}
+                    fill="#64748B" fontFamily="'Sora', sans-serif" fontWeight={600}>
+                    {c.label.split("\n")[1]}
                   </text>
-                  {label.split("\n")[1] && (
-                    <text
-                      x={midX} y={cy - 11}
-                      textAnchor="middle"
-                      fontSize={7.5}
-                      fill="#64748B"
-                      fontFamily="'Sora', sans-serif"
-                      fontWeight={600}
-                    >
-                      {label.split("\n")[1]}
-                    </text>
-                  )}
-                </g>
-              )}
-            </g>
-          );
-        })}
+                )}
+              </g>
+            )}
+          </g>
+        ))}
 
-        {/* ── STEP CARDS ── */}
+        {/* Step cards */}
         {steps.map((step, i) => {
-          const x = PAD + i * (SW + GAP);
-          const y = 40;
+          const { x, y } = pos(i);
           const isActive = activeStepId === step.id;
+          const words = step.label.split(" ");
+          const mid = Math.ceil(words.length / 2);
+          const line1 = words.slice(0, mid).join(" ");
+          const line2 = words.slice(mid).join(" ");
+          const twoLine = step.label.length > 13 && words.length > 1;
 
           return (
-            <g
-              key={step.id}
-              className="pm-node"
-              onClick={() => onStepClick(step.id)}
-              transform={`translate(${x}, ${y})`}
-            >
-              {/* Glow ring when active */}
+            <g key={step.id} className="pm-snake-node" onClick={() => onStepClick(step.id)} transform={`translate(${x},${y})`}>
               {isActive && (
-                <rect
-                  x={-5} y={-5}
-                  width={SW + 10} height={SH + 10}
-                  rx={22}
-                  fill="none"
-                  stroke={step.color}
-                  strokeWidth={3}
-                  opacity={0.45}
-                />
+                <rect x={-5} y={-5} width={SW + 10} height={SH + 10} rx={22}
+                  fill="none" stroke={step.color} strokeWidth={3} opacity={0.4} />
               )}
-              {/* Card */}
               <rect
-                className="pm-card"
-                x={0} y={0}
-                width={SW} height={SH}
-                rx={18}
+                className="pm-snake-card"
+                x={0} y={0} width={SW} height={SH} rx={18}
                 fill={isActive ? step.bg : "#FFFFFF"}
                 stroke={isActive ? step.color : "#E2E8F0"}
                 strokeWidth={isActive ? 2.5 : 1.5}
-                style={{
-                  filter: isActive
-                    ? `drop-shadow(0 4px 16px ${step.color}45)`
-                    : "drop-shadow(0 2px 8px rgba(0,0,0,0.07))",
-                }}
+                style={{ filter: isActive ? `drop-shadow(0 4px 16px ${step.color}45)` : "drop-shadow(0 2px 8px rgba(0,0,0,0.07))" }}
               />
-              {/* Step number badge */}
+              {/* Step badge */}
               <rect x={8} y={8} width={24} height={17} rx={8.5} fill={step.color} />
-              <text
-                x={20} y={20}
-                textAnchor="middle"
-                fontSize={9.5}
-                fill="white"
-                fontWeight={800}
-                fontFamily="'Sora', sans-serif"
-              >
-                {step.num}
-              </text>
+              <text x={20} y={20} textAnchor="middle" fontSize={9.5} fill="white" fontWeight={800} fontFamily="'Sora', sans-serif">{step.num}</text>
               {/* Icon */}
-              <text x={SW / 2} y={58} textAnchor="middle" fontSize={28}>
-                {step.icon}
-              </text>
-              {/* Label — up to 2 lines */}
-              {(() => {
-                const words = step.label.split(" ");
-                if (step.label.length <= 13 || words.length === 1) {
-                  return (
-                    <text x={SW / 2} y={76} textAnchor="middle" fontSize={10} fontWeight={700}
-                      fill={isActive ? step.color : "#1E293B"} fontFamily="'Sora', sans-serif">
-                      {step.label}
-                    </text>
-                  );
-                }
-                const mid = Math.ceil(words.length / 2);
-                const line1 = words.slice(0, mid).join(" ");
-                const line2 = words.slice(mid).join(" ");
-                return (
-                  <>
-                    <text x={SW / 2} y={74} textAnchor="middle" fontSize={10} fontWeight={700}
-                      fill={isActive ? step.color : "#1E293B"} fontFamily="'Sora', sans-serif">
-                      {line1}
-                    </text>
-                    <text x={SW / 2} y={86} textAnchor="middle" fontSize={10} fontWeight={700}
-                      fill={isActive ? step.color : "#1E293B"} fontFamily="'Sora', sans-serif">
-                      {line2}
-                    </text>
-                  </>
-                );
-              })()}
+              <text x={SW / 2} y={62} textAnchor="middle" fontSize={30}>{step.icon}</text>
+              {/* Label */}
+              {twoLine ? (
+                <>
+                  <text x={SW / 2} y={82} textAnchor="middle" fontSize={10.5} fontWeight={700} fill={isActive ? step.color : "#1E293B"} fontFamily="'Sora', sans-serif">{line1}</text>
+                  <text x={SW / 2} y={95} textAnchor="middle" fontSize={10.5} fontWeight={700} fill={isActive ? step.color : "#1E293B"} fontFamily="'Sora', sans-serif">{line2}</text>
+                </>
+              ) : (
+                <text x={SW / 2} y={84} textAnchor="middle" fontSize={10.5} fontWeight={700} fill={isActive ? step.color : "#1E293B"} fontFamily="'Sora', sans-serif">{step.label}</text>
+              )}
               {/* Tap hint */}
-              <text
-                x={SW / 2} y={SH - 7}
-                textAnchor="middle"
-                fontSize={7}
-                fill={step.color}
-                fontFamily="'Sora', sans-serif"
-                fontWeight={600}
-                opacity={0.75}
-              >
-                tap to explore →
-              </text>
+              <text x={SW / 2} y={SH - 7} textAnchor="middle" fontSize={7.5} fill={step.color} fontFamily="'Sora', sans-serif" fontWeight={600} opacity={0.7}>tap to explore →</text>
             </g>
           );
         })}
 
-        {/* ✓ SAFE DRINKING WATER label */}
+        {/* End label */}
         <text
-          x={PAD + steps.length * SW + (steps.length - 1) * GAP - SW / 2}
-          y={40 + SH + 20}
-          textAnchor="middle"
-          fontSize={9}
-          fill="#059669"
-          fontFamily="'Sora', sans-serif"
-          fontWeight={700}
+          x={pos(steps.length - 1).x + SW / 2}
+          y={pos(steps.length - 1).y + SH + 18}
+          textAnchor="middle" fontSize={9} fill="#059669"
+          fontFamily="'Sora', sans-serif" fontWeight={700}
         >
           ✓ SAFE DRINKING WATER
         </text>
