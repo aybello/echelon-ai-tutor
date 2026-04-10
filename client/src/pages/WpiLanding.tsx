@@ -15,7 +15,7 @@ const PROVINCES = [
     certBodyFull: "Environmental Operators Certification Program",
     examName: "EOCP Water Treatment, Wastewater & Distribution Level I–IV",
     levels: ["Level I", "Level II", "Level III", "Level IV"],
-    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution"],
+    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution", "🔩 Collection"],
     color: "#0369A1",
     bg: "#E0F2FE",
   },
@@ -27,7 +27,7 @@ const PROVINCES = [
     certBodyFull: "Alberta Water & Wastewater Operators Association",
     examName: "AWWOA Water Treatment, Wastewater & Distribution Class I–IV",
     levels: ["Class I", "Class II", "Class III", "Class IV"],
-    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution"],
+    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution", "🔩 Collection"],
     color: "#B45309",
     bg: "#FEF3C7",
   },
@@ -39,7 +39,7 @@ const PROVINCES = [
     certBodyFull: "Saskatchewan Association of Health Organizations",
     examName: "SAHO Water Treatment, Wastewater & Distribution Class I–IV",
     levels: ["Class I", "Class II", "Class III", "Class IV"],
-    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution"],
+    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution", "🔩 Collection"],
     color: "#15803D",
     bg: "#DCFCE7",
   },
@@ -51,7 +51,7 @@ const PROVINCES = [
     certBodyFull: "Manitoba Water & Wastewater Association",
     examName: "MWWA Water Treatment, Wastewater & Distribution Class I–IV",
     levels: ["Class I", "Class II", "Class III", "Class IV"],
-    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution"],
+    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution", "🔩 Collection"],
     color: "#7C3AED",
     bg: "#EDE9FE",
   },
@@ -511,6 +511,21 @@ export default function WpiLanding() {
                   textAlign: "center" as const,
                 }}>
                   🚰 Try Class I Distribution Free →
+                </div>
+              </Link>
+              <Link href="/wpi-class1-water-coll">
+                <div style={{
+                  background: "rgba(6,95,70,0.08)",
+                  color: "#065F46",
+                  border: "2px solid #A7F3D0",
+                  borderRadius: 10,
+                  padding: "12px 20px",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  cursor: "pointer",
+                  textAlign: "center" as const,
+                }}>
+                  🔩 Try Class I Collection Free →
                 </div>
               </Link>
               <Link href="/pricing">

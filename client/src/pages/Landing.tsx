@@ -1028,7 +1028,7 @@ function CourseCard({ course }: { course: CourseType }) {
 export default function Landing() {
   usePageMeta({
     title: "Water & Wastewater Operator Exam Prep",
-    description: "Canada's exam prep platform for water and wastewater operators. Adaptive practice questions, interactive process guides, and an AI tutor.",
+    description: "Canada's exam prep platform for water and wastewater operators. 23 certification courses, 8,500+ practice questions, interactive process guides, and an AI tutor.",
     keywords: "water operator exam prep, OIT exam, wastewater certification Canada, operator practice questions, EOCP exam",
     path: "/",
   });
@@ -1410,7 +1410,7 @@ export default function Landing() {
             }}
           >
             Canada's AI-powered exam prep platform for water and wastewater operators.
-            Adaptive practice questions, module study notes, 400+ flashcards, interactive process guides, and an AI tutor available 24/7.
+            Adaptive practice questions, module study notes, 500+ flashcards per course, interactive process guides, and an AI tutor available 24/7.
           </motion.p>
 
           {/* Province-aware hero CTA */}
@@ -1541,7 +1541,7 @@ export default function Landing() {
             Choose Your Certification Track
           </h2>
           <p style={{ fontSize: 16, color: "#64748B", maxWidth: 560, margin: "0 auto 32px" }}>
-            Five certification tracks — Ontario Water (5 levels), Ontario Wastewater (5 levels), WQA, plus WPI Water (Class I–IV) and WPI Wastewater (Class I–IV) for BC, AB, SK, and MB operators. Every course includes hundreds of practice questions and full AI Tutor access.
+            Six certification tracks — Ontario Water (5 levels), Ontario Wastewater (5 levels), WQA, plus WPI Water (Class I–IV), WPI Wastewater (Class I–IV), WPI Distribution (Class I–IV), and WPI Collection (Class I–IV) for BC, AB, SK, and MB operators. Every course includes 500+ practice questions and full AI Tutor access.
           </p>
 
           {/* Track Toggle */}

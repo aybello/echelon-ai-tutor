@@ -70,6 +70,11 @@ export const NAV_LINKS = [
   { label: "🚰 WPI C2 Dist Practice",  href: "/wpi-class2-water-dist" },
   { label: "🚰 WPI C3 Dist Practice",  href: "/wpi-class3-water-dist" },
   { label: "🚰 WPI C4 Dist Practice",  href: "/wpi-class4-water-dist" },
+  // WPI Collection
+  { label: "🔩 WPI C1 Coll Practice",  href: "/wpi-class1-water-coll" },
+  { label: "🔩 WPI C2 Coll Practice",  href: "/wpi-class2-water-coll" },
+  { label: "🔩 WPI C3 Coll Practice",  href: "/wpi-class3-water-coll" },
+  { label: "🔩 WPI C4 Coll Practice",  href: "/wpi-class4-water-coll" },
   { label: "🌊 WPI Overview",         href: "/wpi" },
   { label: "📐 Formulas",      href: "/formulas" },
   { label: "🏭 Process Guide", href: "/process" },
@@ -146,6 +151,10 @@ const DRAWER_SECTIONS = [
       { label: "🚰 C2 Distribution", href: "/wpi-class2-water-dist" },
       { label: "🚰 C3 Distribution", href: "/wpi-class3-water-dist" },
       { label: "🚰 C4 Distribution", href: "/wpi-class4-water-dist" },
+      { label: "🔩 C1 Collection", href: "/wpi-class1-water-coll" },
+      { label: "🔩 C2 Collection", href: "/wpi-class2-water-coll" },
+      { label: "🔩 C3 Collection", href: "/wpi-class3-water-coll" },
+      { label: "🔩 C4 Collection", href: "/wpi-class4-water-coll" },
     ],
   },
   {
@@ -182,6 +191,11 @@ interface SiteNavProps {
 
 /** Returns the 5-6 most contextually relevant desktop nav links for the current path. */
 function getContextualPrimary(currentPath: string): string[] {
+  // WPI Collection pages (must come before generic wpi-class*-water rules)
+  if (currentPath.startsWith("/wpi-class1-water-coll")) return ["/wpi-class1-water-coll", "/wpi-class1-water-coll-mock", "/wpi", "/pricing", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class2-water-coll")) return ["/wpi-class2-water-coll", "/wpi-class2-water-coll-mock", "/wpi", "/pricing", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class3-water-coll")) return ["/wpi-class3-water-coll", "/wpi-class3-water-coll-mock", "/wpi", "/pricing", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class4-water-coll")) return ["/wpi-class4-water-coll", "/wpi-class4-water-coll-mock", "/wpi", "/pricing", "/career", "/account"];
   // WPI Distribution pages (must come before generic wpi-class*-water rules)
   if (currentPath.startsWith("/wpi-class1-water-dist")) return ["/wpi-class1-water-dist", "/wpi", "/pricing", "/career", "/account"];
   if (currentPath.startsWith("/wpi-class2-water-dist")) return ["/wpi-class2-water-dist", "/wpi", "/pricing", "/career", "/account"];
