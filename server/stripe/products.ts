@@ -154,6 +154,35 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     priceCAD: 29900,
     examTypes: ["wpi-class4-wastewater"],
   },
+  // ── WPI Water Distribution (BC / AB / SK / MB) ─────────────────────────────────────────────
+  {
+    key: "wpi-class1-water-dist",
+    name: "WPI Class I Water Distribution Practice Pass",
+    description: "WPI Class I Water Distribution — 150 questions covering distribution system basics, pipe materials, pressure & flow fundamentals, chlorine residual maintenance, valve & hydrant operation, and regulations & safety. Aligned with WPI Class I Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 9900,
+    examTypes: ["wpi-class1-water-dist"],
+  },
+  {
+    key: "wpi-class2-water-dist",
+    name: "WPI Class II Water Distribution Practice Pass",
+    description: "WPI Class II Water Distribution — 136 questions covering hydraulic analysis & pressure zone design, water quality management in distribution, cross-connection control & backflow prevention, system maintenance & rehabilitation, and regulatory compliance. Aligned with WPI Class II Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 14900,
+    examTypes: ["wpi-class2-water-dist"],
+  },
+  {
+    key: "wpi-class3-water-dist",
+    name: "WPI Class III Water Distribution Practice Pass",
+    description: "WPI Class III Water Distribution — 150 questions covering advanced hydraulic modelling, transmission main design & multi-zone systems, SCADA & automation, water quality monitoring programs, and senior operator responsibilities. Aligned with WPI Class III Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 24900,
+    examTypes: ["wpi-class3-water-dist"],
+  },
+  {
+    key: "wpi-class4-water-dist",
+    name: "WPI Class IV Water Distribution Practice Pass",
+    description: "WPI Class IV Water Distribution — 150 questions covering large-scale system management, asset management & capital planning, advanced water quality & DWQMS, strategic regulatory compliance, and emergency response & resilience. Aligned with WPI Class IV Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 29900,
+    examTypes: ["wpi-class4-water-dist"],
+  },
 ];
 
 export const ALL_PRODUCTS = [...INDIVIDUAL_PRODUCTS];
@@ -178,7 +207,11 @@ export const PRODUCT_STUDY_PATHS: Record<string, { quizPath: string; mockPath: s
   "wpi-class1-wastewater": { quizPath: "/wpi-class1-wastewater",     mockPath: "/wpi-class1-wastewater-mock" },
   "wpi-class2-wastewater": { quizPath: "/wpi-class2-wastewater",     mockPath: "/wpi-class2-wastewater-mock" },
   "wpi-class3-wastewater": { quizPath: "/wpi-class3-wastewater",     mockPath: "/wpi-class3-wastewater-mock" },
-  "wpi-class4-wastewater": { quizPath: "/wpi-class4-wastewater",     mockPath: "/wpi-class4-wastewater-mock" },
+  "wpi-class4-wastewater":      { quizPath: "/wpi-class4-wastewater",          mockPath: "/wpi-class4-wastewater-mock" },
+  "wpi-class1-water-dist":      { quizPath: "/wpi-class1-water-dist",          mockPath: "/wpi-class1-water-dist-mock" },
+  "wpi-class2-water-dist":      { quizPath: "/wpi-class2-water-dist",          mockPath: "/wpi-class2-water-dist-mock" },
+  "wpi-class3-water-dist":      { quizPath: "/wpi-class3-water-dist",          mockPath: "/wpi-class3-water-dist-mock" },
+  "wpi-class4-water-dist":      { quizPath: "/wpi-class4-water-dist",          mockPath: "/wpi-class4-water-dist-mock" },
 };
 
 /** Given a product key, return all exam types it unlocks */

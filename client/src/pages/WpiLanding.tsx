@@ -13,8 +13,9 @@ const PROVINCES = [
     flag: "🏔️",
     certBody: "EOCP",
     certBodyFull: "Environmental Operators Certification Program",
-    examName: "EOCP Water Treatment Level I–IV",
+    examName: "EOCP Water Treatment, Wastewater & Distribution Level I–IV",
     levels: ["Level I", "Level II", "Level III", "Level IV"],
+    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution"],
     color: "#0369A1",
     bg: "#E0F2FE",
   },
@@ -24,8 +25,9 @@ const PROVINCES = [
     flag: "🛢️",
     certBody: "AWWOA",
     certBodyFull: "Alberta Water & Wastewater Operators Association",
-    examName: "AWWOA Water Treatment Class I–IV",
+    examName: "AWWOA Water Treatment, Wastewater & Distribution Class I–IV",
     levels: ["Class I", "Class II", "Class III", "Class IV"],
+    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution"],
     color: "#B45309",
     bg: "#FEF3C7",
   },
@@ -35,8 +37,9 @@ const PROVINCES = [
     flag: "🌾",
     certBody: "SAHO",
     certBodyFull: "Saskatchewan Association of Health Organizations",
-    examName: "SAHO Water Treatment Class I–IV",
+    examName: "SAHO Water Treatment, Wastewater & Distribution Class I–IV",
     levels: ["Class I", "Class II", "Class III", "Class IV"],
+    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution"],
     color: "#15803D",
     bg: "#DCFCE7",
   },
@@ -46,8 +49,9 @@ const PROVINCES = [
     flag: "🦬",
     certBody: "MWWA",
     certBodyFull: "Manitoba Water & Wastewater Association",
-    examName: "MWWA Water Treatment Class I–IV",
+    examName: "MWWA Water Treatment, Wastewater & Distribution Class I–IV",
     levels: ["Class I", "Class II", "Class III", "Class IV"],
+    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution"],
     color: "#7C3AED",
     bg: "#EDE9FE",
   },
@@ -118,6 +122,39 @@ const CURRICULUM = [
         color: "#6D28D9",
         quizHref: "/wpi-class4-wastewater",
         topics: ["Advanced process control & resource recovery", "Emerging technologies & innovation", "Plant management, leadership & budgeting", "Strategic emergency response planning", "Regulatory compliance & enforcement"],
+      },
+    ],
+  },
+  {
+    track: "🚰 Water Distribution",
+    classes: [
+      {
+        label: "Class I",
+        questions: 150,
+        color: "#0369A1",
+        quizHref: "/wpi-class1-water-dist",
+        topics: ["Distribution system basics & pipe materials", "Pressure & flow fundamentals", "Chlorine residual maintenance", "Valve & hydrant operation", "Regulations & safety"],
+      },
+      {
+        label: "Class II",
+        questions: 136,
+        color: "#0F766E",
+        quizHref: "/wpi-class2-water-dist",
+        topics: ["Hydraulic analysis & pressure zone design", "Water quality management in distribution", "Cross-connection control & backflow prevention", "System maintenance & rehabilitation", "Regulatory compliance"],
+      },
+      {
+        label: "Class III",
+        questions: 150,
+        color: "#1D4ED8",
+        quizHref: "/wpi-class3-water-dist",
+        topics: ["Advanced hydraulic modelling", "Transmission main design & multi-zone systems", "SCADA & automation", "Water quality monitoring programs", "Senior operator responsibilities"],
+      },
+      {
+        label: "Class IV",
+        questions: 150,
+        color: "#4C1D95",
+        quizHref: "/wpi-class4-water-dist",
+        topics: ["Large-scale system management", "Asset management & capital planning", "Advanced water quality & DWQMS", "Strategic regulatory compliance", "Emergency response & resilience"],
       },
     ],
   },
@@ -248,7 +285,7 @@ export default function WpiLanding() {
             maxWidth: 560,
             margin: "0 auto 32px",
           }}>
-            4,000+ practice questions for WPI Class I–IV Water Treatment and Class I–IV Wastewater — aligned with the Need-to-Know Criteria used by <strong style={{ color: "#BAE6FD" }}>EOCP (BC)</strong>, <strong style={{ color: "#BAE6FD" }}>AWWOA (AB)</strong>, <strong style={{ color: "#BAE6FD" }}>SAHO (SK)</strong>, and <strong style={{ color: "#BAE6FD" }}>MWWA (MB)</strong>.
+            4,000+ practice questions for WPI Class I–IV Water Treatment, Class I–IV Wastewater, and Class I–IV Water Distribution — aligned with the Need-to-Know Criteria used by <strong style={{ color: "#BAE6FD" }}>EOCP (BC)</strong>, <strong style={{ color: "#BAE6FD" }}>AWWOA (AB)</strong>, <strong style={{ color: "#BAE6FD" }}>SAHO (SK)</strong>, and <strong style={{ color: "#BAE6FD" }}>MWWA (MB)</strong>.
           </p>
 
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -287,8 +324,8 @@ export default function WpiLanding() {
           {/* Stats */}
           <div style={{ display: "flex", gap: 32, justifyContent: "center", marginTop: 48, flexWrap: "wrap" }}>
             {[
-              { value: "4,000+", label: "Practice Questions" },
-              { value: "8", label: "Exam Levels" },
+              { value: "4,600+", label: "Practice Questions" },
+              { value: "12", label: "Exam Levels" },
               { value: "4", label: "WPI Provinces" },
               { value: "70%", label: "Pass Mark" },
             ].map(stat => (
@@ -357,19 +394,38 @@ export default function WpiLanding() {
               <div style={{ fontSize: 12, color: "#64748B", marginBottom: 14 }}>
                 <strong>Exam:</strong> {province.examName}
               </div>
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                {province.levels.map(level => (
-                  <span key={level} style={{
-                    background: province.color,
-                    borderRadius: 6,
-                    color: "#FFFFFF",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    padding: "4px 10px",
-                  }}>
-                    {level}
-                  </span>
-                ))}
+              <div style={{ marginBottom: 8 }}>
+                <div style={{ fontSize: 11, color: "#64748B", marginBottom: 6 }}>Certification Levels:</div>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
+                  {province.levels.map(level => (
+                    <span key={level} style={{
+                      background: province.color,
+                      borderRadius: 6,
+                      color: "#FFFFFF",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      padding: "4px 10px",
+                    }}>
+                      {level}
+                    </span>
+                  ))}
+                </div>
+                <div style={{ fontSize: 11, color: "#64748B", marginBottom: 6 }}>Exam Tracks:</div>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                  {province.tracks.map(track => (
+                    <span key={track} style={{
+                      background: "#F1F5F9",
+                      borderRadius: 6,
+                      color: "#475569",
+                      fontSize: 11,
+                      fontWeight: 600,
+                      padding: "4px 10px",
+                      border: "1px solid #E2E8F0",
+                    }}>
+                      {track}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -401,6 +457,21 @@ export default function WpiLanding() {
                   textAlign: "center" as const,
                 }}>
                   Try Class I Wastewater Free →
+                </div>
+              </Link>
+              <Link href="/wpi-class1-water-dist">
+                <div style={{
+                  background: "rgba(3,105,161,0.08)",
+                  color: "#0369A1",
+                  border: "2px solid #BAE6FD",
+                  borderRadius: 10,
+                  padding: "12px 20px",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  cursor: "pointer",
+                  textAlign: "center" as const,
+                }}>
+                  🚰 Try Class I Distribution Free →
                 </div>
               </Link>
               <Link href="/pricing">
