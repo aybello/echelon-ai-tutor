@@ -45,13 +45,13 @@ export default function ProcessMap({ onStepClick, activeStepId }: ProcessMapProp
             <marker
               key={s.id}
               id={`arr-${s.id}`}
-              markerWidth="10"
-              markerHeight="10"
-              refX="9"
-              refY="5"
+              markerWidth="5"
+              markerHeight="5"
+              refX="4"
+              refY="2.5"
               orient="auto"
             >
-              <path d="M1,1 L9,5 L1,9 Z" fill={s.color} />
+              <path d="M0,0.5 L4,2.5 L0,4.5 Z" fill={s.color} />
             </marker>
           ))}
         </defs>
@@ -78,7 +78,7 @@ export default function ProcessMap({ onStepClick, activeStepId }: ProcessMapProp
               {/* Animated flow */}
               <line
                 x1={fromX} y1={cy}
-                x2={toX - 12} y2={cy}
+                x2={toX - 6} y2={cy}
                 stroke={s.color}
                 strokeWidth={5}
                 strokeLinecap="round"

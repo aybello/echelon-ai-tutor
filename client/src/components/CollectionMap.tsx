@@ -41,8 +41,8 @@ export default function CollectionMap({ onStepClick, activeStepId }: CollectionM
       >
         <defs>
           {steps.map((s) => (
-            <marker key={s.id} id={`collarr-${s.id}`} markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
-              <path d="M1,1 L9,5 L1,9 Z" fill={s.color} />
+            <marker key={s.id} id={`collarr-${s.id}`} markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+              <path d="M0,0.5 L4,2.5 L0,4.5 Z" fill={s.color} />
             </marker>
           ))}
         </defs>
@@ -56,7 +56,7 @@ export default function CollectionMap({ onStepClick, activeStepId }: CollectionM
           return (
             <g key={s.id}>
               <line x1={fromX} y1={cy} x2={toX - 2} y2={cy} stroke="#E2E8F0" strokeWidth={8} strokeLinecap="round" />
-              <line x1={fromX} y1={cy} x2={toX - 12} y2={cy} stroke={s.color} strokeWidth={5} strokeLinecap="round"
+              <line x1={fromX} y1={cy} x2={toX - 6} y2={cy} stroke={s.color} strokeWidth={5} strokeLinecap="round"
                 strokeDasharray="10 7" className="coll-pipe" markerEnd={`url(#collarr-${s.id})`} opacity={0.85} />
               {label && (
                 <g>
