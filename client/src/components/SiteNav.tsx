@@ -475,17 +475,22 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
                 { label: "Pricing", href: "/pricing" },
               ] as { label: string; href: string }[]).map(l => (
                 <Link key={l.href} href={l.href}>
-                  <span style={{
-                    color: currentPath === l.href ? "#60A5FA" : "rgba(255,255,255,0.65)",
-                    fontSize: 13,
-                    fontWeight: currentPath === l.href ? 700 : 500,
-                    padding: "5px 12px",
-                    borderRadius: 7,
-                    cursor: "pointer",
-                    whiteSpace: "nowrap",
-                    background: currentPath === l.href ? "rgba(96,165,250,0.1)" : "transparent",
-                    transition: "color 0.15s, background 0.15s",
-                  }}>
+                  <span
+                    style={{
+                      color: currentPath === l.href ? "#60A5FA" : "rgba(255,255,255,0.65)",
+                      fontSize: 13,
+                      fontWeight: currentPath === l.href ? 700 : 500,
+                      padding: "5px 12px",
+                      borderRadius: 7,
+                      cursor: "pointer",
+                      whiteSpace: "nowrap",
+                      background: currentPath === l.href ? "rgba(96,165,250,0.1)" : "transparent",
+                      transition: "color 0.15s, background 0.15s",
+                      display: "inline-block",
+                    }}
+                    onMouseEnter={e => { if (currentPath !== l.href) { (e.currentTarget as HTMLElement).style.color = "#93C5FD"; (e.currentTarget as HTMLElement).style.background = "rgba(96,165,250,0.08)"; } }}
+                    onMouseLeave={e => { if (currentPath !== l.href) { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.65)"; (e.currentTarget as HTMLElement).style.background = "transparent"; } }}
+                  >
                     {l.label}
                   </span>
                 </Link>
@@ -493,17 +498,22 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
               {/* Resources dropdown */}
               <ResourcesDropdown currentPath={currentPath} />
               <Link href="/about">
-                <span style={{
-                  color: currentPath === "/about" ? "#60A5FA" : "rgba(255,255,255,0.65)",
-                  fontSize: 13,
-                  fontWeight: currentPath === "/about" ? 700 : 500,
-                  padding: "5px 12px",
-                  borderRadius: 7,
-                  cursor: "pointer",
-                  whiteSpace: "nowrap",
-                  background: currentPath === "/about" ? "rgba(96,165,250,0.1)" : "transparent",
-                  transition: "color 0.15s, background 0.15s",
-                }}>
+                <span
+                  style={{
+                    color: currentPath === "/about" ? "#60A5FA" : "rgba(255,255,255,0.65)",
+                    fontSize: 13,
+                    fontWeight: currentPath === "/about" ? 700 : 500,
+                    padding: "5px 12px",
+                    borderRadius: 7,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                    background: currentPath === "/about" ? "rgba(96,165,250,0.1)" : "transparent",
+                    transition: "color 0.15s, background 0.15s",
+                    display: "inline-block",
+                  }}
+                  onMouseEnter={e => { if (currentPath !== "/about") { (e.currentTarget as HTMLElement).style.color = "#93C5FD"; (e.currentTarget as HTMLElement).style.background = "rgba(96,165,250,0.08)"; } }}
+                  onMouseLeave={e => { if (currentPath !== "/about") { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.65)"; (e.currentTarget as HTMLElement).style.background = "transparent"; } }}
+                >
                   About
                 </span>
               </Link>
@@ -512,17 +522,22 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
             // Deep quiz/exam pages: show contextual links
             NAV_LINKS.filter(l => PRIMARY.includes(l.href)).map(l => (
               <Link key={l.href} href={l.href}>
-                <span style={{
-                  color: currentPath === l.href ? "#60A5FA" : "rgba(255,255,255,0.65)",
-                  fontSize: 12,
-                  fontWeight: currentPath === l.href ? 700 : 500,
-                  padding: "5px 12px",
-                  borderRadius: 7,
-                  cursor: "pointer",
-                  whiteSpace: "nowrap",
-                  background: currentPath === l.href ? "rgba(96,165,250,0.1)" : "transparent",
-                  transition: "color 0.15s, background 0.15s",
-                }}>
+                <span
+                  style={{
+                    color: currentPath === l.href ? "#60A5FA" : "rgba(255,255,255,0.65)",
+                    fontSize: 12,
+                    fontWeight: currentPath === l.href ? 700 : 500,
+                    padding: "5px 12px",
+                    borderRadius: 7,
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                    background: currentPath === l.href ? "rgba(96,165,250,0.1)" : "transparent",
+                    transition: "color 0.15s, background 0.15s",
+                    display: "inline-block",
+                  }}
+                  onMouseEnter={e => { if (currentPath !== l.href) { (e.currentTarget as HTMLElement).style.color = "#93C5FD"; (e.currentTarget as HTMLElement).style.background = "rgba(96,165,250,0.08)"; } }}
+                  onMouseLeave={e => { if (currentPath !== l.href) { (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.65)"; (e.currentTarget as HTMLElement).style.background = "transparent"; } }}
+                >
                   {l.label}
                 </span>
               </Link>

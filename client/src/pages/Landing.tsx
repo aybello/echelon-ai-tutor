@@ -1131,11 +1131,15 @@ export default function Landing() {
         {/* Desktop nav links */}
         <div className="landing-nav-links" style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "nowrap" }}>
           {NAV_LINKS.map(item => (
-            <a key={item.label} href={item.href} style={{
-              padding: "6px 14px", borderRadius: 8,
-              color: "#475569", fontSize: 13, fontWeight: 600,
-              textDecoration: "none", transition: "color 0.15s", whiteSpace: "nowrap",
-            }}>
+            <a key={item.label} href={item.href}
+              style={{
+                padding: "6px 14px", borderRadius: 8,
+                color: "#475569", fontSize: 13, fontWeight: 600,
+                textDecoration: "none", transition: "color 0.15s, background 0.15s", whiteSpace: "nowrap",
+              }}
+              onMouseEnter={e => { e.currentTarget.style.color = "#1D4ED8"; e.currentTarget.style.background = "rgba(29,78,216,0.06)"; }}
+              onMouseLeave={e => { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; }}
+            >
               {item.label}
             </a>
           ))}
@@ -1144,12 +1148,15 @@ export default function Landing() {
             <button
               onClick={() => setResourcesOpen(o => !o)}
               onBlur={() => setTimeout(() => setResourcesOpen(false), 150)}
+              onMouseEnter={e => { e.currentTarget.style.color = "#1D4ED8"; e.currentTarget.style.background = "rgba(29,78,216,0.06)"; }}
+              onMouseLeave={e => { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; }}
               style={{
                 padding: "6px 14px", borderRadius: 8,
                 color: "#475569", fontSize: 13, fontWeight: 600,
                 background: "transparent", border: "none",
                 cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
                 display: "flex", alignItems: "center", gap: 4,
+                transition: "color 0.15s, background 0.15s",
               }}
             >
               Resources <span style={{ fontSize: 9, opacity: 0.6 }}>{resourcesOpen ? "▲" : "▼"}</span>
