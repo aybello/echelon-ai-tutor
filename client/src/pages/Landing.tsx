@@ -569,6 +569,89 @@ const WPI_WATER_DIST_COURSES = [
   },
 ];
 
+const WPI_WATER_COLL_COURSES = [
+  {
+    code: "WPI-C1",
+    title: "WPI Class I Wastewater Collection",
+    subtitle: "WPI Wastewater Collection — Class I",
+    duration: "3–4 weeks",
+    questions: 500,
+    description: "WPI Class I Wastewater Collection prep aligned with WPI Need-to-Know Criteria. Covers gravity sewer basics, pipe materials, lift station fundamentals, H₂S safety, and regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    topics: ["Gravity Sewer Basics", "Pipe Materials & Joints", "Lift Station Fundamentals", "H₂S Safety", "Regulations & Safety"],
+    badge: "WPI",
+    badgeColor: "#065F46",
+    color: "#065F46",
+    bg: "#ECFDF5",
+    border: "#A7F3D0",
+    comingSoon: false,
+    price: 99,
+    productKey: "wpi-class1-water-coll",
+    quizHref: "/wpi-class1-water-coll",
+    mockHref: "/wpi-class1-water-coll-mock",
+    flashcardHref: "/wpi-class1-water-coll-flashcards",
+  },
+  {
+    code: "WPI-C2",
+    title: "WPI Class II Wastewater Collection",
+    subtitle: "WPI Wastewater Collection — Class II",
+    duration: "4–6 weeks",
+    questions: 504,
+    description: "WPI Class II Wastewater Collection prep. Covers hydraulic analysis, sewer system design, inflow & infiltration control, force mains, and regulatory compliance. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    topics: ["Hydraulic Analysis", "Sewer System Design", "Inflow & Infiltration", "Force Main Operations", "Regulatory Compliance"],
+    badge: "WPI",
+    badgeColor: "#047857",
+    color: "#047857",
+    bg: "#F0FDF4",
+    border: "#BBF7D0",
+    comingSoon: false,
+    price: 149,
+    productKey: "wpi-class2-water-coll",
+    quizHref: "/wpi-class2-water-coll",
+    mockHref: "/wpi-class2-water-coll-mock",
+    flashcardHref: "/wpi-class2-water-coll-flashcards",
+  },
+  {
+    code: "WPI-C3",
+    title: "WPI Class III Wastewater Collection",
+    subtitle: "WPI Wastewater Collection — Class III",
+    duration: "6–8 weeks",
+    questions: 504,
+    description: "Senior-level WPI Class III Wastewater Collection prep. Covers advanced collection system management, CSO/SSO control, trenchless rehabilitation, SCADA, and senior operator responsibilities. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    topics: ["CSO/SSO Control", "Trenchless Rehabilitation", "Advanced System Management", "SCADA & Automation", "Senior Operator Responsibilities"],
+    badge: "WPI",
+    badgeColor: "#065F46",
+    color: "#065F46",
+    bg: "#ECFDF5",
+    border: "#6EE7B7",
+    comingSoon: false,
+    price: 249,
+    productKey: "wpi-class3-water-coll",
+    quizHref: "/wpi-class3-water-coll",
+    mockHref: "/wpi-class3-water-coll-mock",
+    flashcardHref: "/wpi-class3-water-coll-flashcards",
+  },
+  {
+    code: "WPI-C4",
+    title: "WPI Class IV Wastewater Collection",
+    subtitle: "WPI Wastewater Collection — Class IV",
+    duration: "8–10 weeks",
+    questions: 504,
+    description: "Chief operator-level WPI Class IV Wastewater Collection prep. The highest WPI collection certification. Covers large-scale collection system management, asset management, advanced I/I control, CMMS, and strategic regulatory compliance. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    topics: ["Large-Scale System Management", "Asset Management & CMMS", "Advanced I/I Control", "DWQMS & Regulatory Compliance", "Emergency Response"],
+    badge: "WPI",
+    badgeColor: "#14532D",
+    color: "#14532D",
+    bg: "#F0FDF4",
+    border: "#86EFAC",
+    comingSoon: false,
+    price: 299,
+    productKey: "wpi-class4-water-coll",
+    quizHref: "/wpi-class4-water-coll",
+    mockHref: "/wpi-class4-water-coll-mock",
+    flashcardHref: "/wpi-class4-water-coll-flashcards",
+  },
+];
+
 const WPI_WASTEWATER_COURSES = [
   {
     code: "WPI-WW1",
@@ -741,12 +824,12 @@ const FEATURES = [
 
 const STATS = [
   { value: "8,500+", label: "Practice Questions" },
-  { value: "19", label: "Certification Courses" },
-  { value: "5", label: "Specialization Tracks" },
+  { value: "23", label: "Certification Courses" },
+  { value: "6", label: "Specialization Tracks" },
   { value: "Free", label: "OIT Access" },
 ];
 
-type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number] | (typeof WPI_WATER_COURSES)[number] | (typeof WPI_WASTEWATER_COURSES)[number] | (typeof WPI_WATER_DIST_COURSES)[number];
+type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number] | (typeof WPI_WATER_COURSES)[number] | (typeof WPI_WASTEWATER_COURSES)[number] | (typeof WPI_WATER_DIST_COURSES)[number] | (typeof WPI_WATER_COLL_COURSES)[number];
 
 function CourseCard({ course }: { course: CourseType }) {
   const [expanded, setExpanded] = useState(false);
@@ -954,7 +1037,7 @@ export default function Landing() {
   const updateProvinceMutation = trpc.auth.updateProvince.useMutation();
   // Default active track based on province: WPI for western provinces, ontario water for ON
   const defaultTrack = (province === "bc" || province === "ab" || province === "sk" || province === "mb") ? "wpi-water" : "water";
-  const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa" | "wpi-water" | "wpi-wastewater" | "wpi-dist">(defaultTrack);
+  const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa" | "wpi-water" | "wpi-wastewater" | "wpi-dist" | "wpi-coll">(defaultTrack as any);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [nationalWaitlistOpen, setNationalWaitlistOpen] = useState(false);
   const [nationalWaitlistProvince, setNationalWaitlistProvince] = useState("");
@@ -1540,6 +1623,18 @@ export default function Landing() {
             >
               🚰 WPI Distribution
             </button>
+            <button
+              onClick={() => setActiveTrack("wpi-coll")}
+              style={{
+                padding: "10px 20px", borderRadius: 10, border: "none",
+                background: activeTrack === "wpi-coll" ? "#065F46" : "transparent",
+                color: activeTrack === "wpi-coll" ? "#fff" : "#64748B",
+                fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                transition: "all 0.2s", whiteSpace: "nowrap",
+              }}
+            >
+              🔩 WPI Collection
+            </button>
           </div>
         </div>
         </FadeUp>
@@ -1549,7 +1644,7 @@ export default function Landing() {
           gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
           gap: 24,
         }}>
-          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : activeTrack === "wpi-dist" ? WPI_WATER_DIST_COURSES : WQA_COURSES).map(course => (
+          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : activeTrack === "wpi-dist" ? WPI_WATER_DIST_COURSES : activeTrack === "wpi-coll" ? WPI_WATER_COLL_COURSES : WQA_COURSES).map(course => (
             <CourseCard key={course.code} course={course} />
           ))}
         </div>
