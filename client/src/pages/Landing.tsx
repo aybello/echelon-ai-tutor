@@ -1091,11 +1091,15 @@ export default function Landing() {
           .landing-nav-cta { display: none !important; }
           .landing-hamburger { display: flex !important; }
           .landing-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .landing-track-toggle { flex-direction: column !important; width: 100% !important; }
+          .landing-track-toggle { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; width: 100% !important; flex-direction: unset !important; }
           .landing-track-toggle button { width: 100% !important; text-align: center; }
           .landing-footer-links { flex-wrap: wrap !important; gap: 12px !important; justify-content: center !important; }
           .landing-hero-btns { flex-direction: column !important; align-items: stretch !important; }
           .landing-hero-btns a, .landing-hero-btns button { width: 100% !important; box-sizing: border-box; }
+          .landing-wpi-secondary-btns { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; width: 100% !important; }
+          .landing-wpi-secondary-btns a { width: 100% !important; }
+          .landing-wpi-secondary-btns button { width: 100% !important; font-size: 12px !important; padding: 10px 8px !important; }
+          .landing-tools-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
           .landing-session-complete-pad { padding: 32px 20px !important; }
           .contact-grid { grid-template-columns: 1fr !important; }
           .contact-info-row { flex-direction: row !important; flex-wrap: wrap !important; gap: 12px !important; }
@@ -1502,7 +1506,7 @@ export default function Landing() {
               </button>
             </Link>
             {isWestern && (
-              <>
+              <div className="landing-wpi-secondary-btns" style={{ display: "flex", flexDirection: "column", gap: 8, width: "100%" }}>
                 <Link href="/wpi-class1-water-dist" style={{ width: "100%" }}>
                   <button style={{
                     padding: "12px 24px", borderRadius: 12,
@@ -1536,7 +1540,7 @@ export default function Landing() {
                     🔩 Try WPI Collection Free →
                   </button>
                 </Link>
-              </>
+              </div>
             )}
             <Link href="/pricing" style={{ width: "100%" }}>
               <button style={{
@@ -1770,7 +1774,7 @@ export default function Landing() {
           </FadeUp>
 
           <StaggerContainer>
-          <div style={{
+          <div className="landing-tools-grid" style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
             gap: 20,
