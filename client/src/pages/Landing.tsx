@@ -389,7 +389,7 @@ const WQA_COURSES = [
     subtitle: "Ontario WQA Certification Prep",
     duration: "6–8 weeks",
     questions: 475,
-    description: "Complete preparation for the Ontario Water Quality Analyst certification under O. Reg. 128/04. Covers sampling protocols, analytical methods, QA/QC programs, chain of custody, and regulatory reporting for accredited drinking water labs. 475 questions across 10 modules.",
+    description: "Complete preparation for the Ontario Water Quality Analyst certification under O. Reg. 128/04. Covers sampling protocols, analytical methods, QA/QC programs, chain of custody, and regulatory reporting for accredited drinking water labs. 500 questions across 10 modules.",
     topics: ["Sampling Techniques & Chain of Custody", "Analytical Methods & Lab Equipment", "QA/QC Programs & Method Validation", "O. Reg. 128/04 Requirements", "Regulatory Reporting & Documentation"],
     badge: "Single Certification",
     badgeColor: "#7C3AED",
@@ -430,7 +430,7 @@ const WPI_WATER_COURSES = [
     subtitle: "WPI Water Treatment — Class II",
     duration: "6–8 weeks",
     questions: 501,
-    description: "Advanced WPI Class II Water Treatment prep. Covers advanced treatment processes, system design, lab monitoring, source water management, and regulatory compliance. 501 questions across 5 modules.",
+    description: "Advanced WPI Class II Water Treatment prep. Covers advanced treatment processes, system design, lab monitoring, source water management, and regulatory compliance. 500 questions across 5 modules.",
     topics: ["Advanced Treatment Processes", "System Design & Hydraulics", "Lab Monitoring & QC", "Source Water Management", "Regulatory Compliance"],
     badge: "WPI",
     badgeColor: "#0E7490",
@@ -513,7 +513,7 @@ const WPI_WATER_DIST_COURSES = [
     subtitle: "WPI Water Distribution — Class II",
     duration: "4–6 weeks",
     questions: 136,
-    description: "WPI Class II Water Distribution prep. Covers hydraulic analysis, pressure zone design, water quality management, cross-connection control, and regulatory compliance. 136 questions. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "WPI Class II Water Distribution prep. Covers hydraulic analysis, pressure zone design, water quality management, cross-connection control, and regulatory compliance. 500 questions. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
     topics: ["Hydraulic Analysis", "Pressure Zone Design", "Water Quality Management", "Cross-Connection Control", "Regulatory Compliance"],
     badge: "WPI",
     badgeColor: "#0F766E",
@@ -679,7 +679,7 @@ const WPI_WASTEWATER_COURSES = [
     subtitle: "WPI Wastewater Treatment — Class II",
     duration: "6–8 weeks",
     questions: 501,
-    description: "Advanced WPI Class II Wastewater Treatment prep. Covers biological nutrient removal, sludge management, advanced lab analysis, and process optimization. 501 questions across 8 modules.",
+    description: "Advanced WPI Class II Wastewater Treatment prep. Covers biological nutrient removal, sludge management, advanced lab analysis, and process optimization. 500 questions across 8 modules.",
     topics: ["Biological Nutrient Removal", "Sludge Processing & Dewatering", "SRT & SVI Calculations", "Advanced Lab Analysis", "Process Optimization"],
     badge: "WPI",
     badgeColor: "#0F766E",
@@ -699,7 +699,7 @@ const WPI_WASTEWATER_COURSES = [
     subtitle: "WPI Wastewater Treatment — Class III",
     duration: "8–10 weeks",
     questions: 502,
-    description: "Senior-level WPI Class III Wastewater Treatment prep. Covers advanced BNR, membrane bioreactors, industrial pretreatment, advanced biosolids, and regulatory compliance. 502 questions across 8 modules.",
+    description: "Senior-level WPI Class III Wastewater Treatment prep. Covers advanced BNR, membrane bioreactors, industrial pretreatment, advanced biosolids, and regulatory compliance. 500 questions across 8 modules.",
     topics: ["Advanced BNR & MBR", "Industrial Pretreatment", "Advanced Biosolids Management", "Regulatory Compliance", "Emergency Response"],
     badge: "WPI",
     badgeColor: "#1D4ED8",
@@ -719,7 +719,7 @@ const WPI_WASTEWATER_COURSES = [
     subtitle: "WPI Wastewater Treatment — Class IV",
     duration: "10–12 weeks",
     questions: 502,
-    description: "Chief operator-level WPI Class IV Wastewater Treatment prep. The highest WPI wastewater certification. Covers advanced process control, BNR & resource recovery, plant management, and strategic regulatory compliance. 502 questions across 7 modules.",
+    description: "Chief operator-level WPI Class IV Wastewater Treatment prep. The highest WPI wastewater certification. Covers advanced process control, BNR & resource recovery, plant management, and strategic regulatory compliance. 500 questions across 7 modules.",
     topics: ["Advanced Process Control", "BNR & Resource Recovery", "Plant Management & Leadership", "Regulatory Compliance", "Emergency Response"],
     badge: "WPI",
     badgeColor: "#6D28D9",
@@ -823,7 +823,7 @@ const FEATURES = [
 ];
 
 const STATS = [
-  { value: "8,500+", label: "Practice Questions" },
+  { value: "11,000+", label: "Practice Questions" },
   { value: "23", label: "Certification Courses" },
   { value: "6", label: "Specialization Tracks" },
   { value: "Free", label: "OIT Access" },
@@ -1856,7 +1856,7 @@ export default function Landing() {
             </h2>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 auto" }}>
               BC, Alberta, Saskatchewan, and Manitoba operators can now practice with our WPI-aligned question banks.
-              Over 4,000 questions across 8 WPI courses — Class I–IV Water and Class I–IV Wastewater — all live now.
+              Over 8,000 questions across 16 WPI courses — Class I–IV Water and Class I–IV Wastewater — all live now.
             </p>
           </div>
 

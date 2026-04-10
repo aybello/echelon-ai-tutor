@@ -231,7 +231,7 @@ const FAQS = [
   },
   {
     q: "How many questions are on the WPI Class I Water Treatment exam?",
-    a: "The WPI Class I Water Treatment exam has 100 questions. Our practice bank has 502 questions aligned with the WPI Class I Need-to-Know Criteria, giving you comprehensive coverage of all exam topics.",
+    a: "The WPI Class I Water Treatment exam has 100 questions. Our practice bank has 500 questions aligned with the WPI Class I Need-to-Know Criteria, giving you comprehensive coverage of all exam topics.",
   },
   {
     q: "What score do I need to pass the WPI exam?",
@@ -239,15 +239,15 @@ const FAQS = [
   },
   {
     q: "Does Echelon cover the full WPI Water Treatment ladder (Class I–IV)?",
-    a: "Yes. We have dedicated practice banks for all four WPI Water Treatment class levels: Class I (502 questions), Class II (598 questions), Class III (531 questions), and Class IV (592 questions). Each bank is aligned with the respective WPI Need-to-Know Criteria and includes timed mock exams, AI Tutor, formula sheet, and score history.",
+    a: "Yes. We have dedicated practice banks for all four WPI Water Treatment class levels: Class I (500 questions), Class II (500 questions), Class III (500 questions), and Class IV (500 questions). Each bank is aligned with the respective WPI Need-to-Know Criteria and includes timed mock exams, AI Tutor, formula sheet, and score history.",
   },
   {
     q: "Is WPI Wastewater Treatment prep available?",
-    a: "Yes — all four WPI Wastewater Treatment classes are live. Class I (594 questions) covers Primary & Secondary Treatment, Solids Handling, Lab & Monitoring, and Safety. Classes II–IV cover progressively advanced topics including BNR, MBR, resource recovery, and plant management. Each class is available individually — no bundles required.",
+    a: "Yes — all four WPI Wastewater Treatment classes are live. Class I (500 questions) covers Primary & Secondary Treatment, Solids Handling, Lab & Monitoring, and Safety. Classes II–IV cover progressively advanced topics including BNR, MBR, resource recovery, and plant management. Each class is available individually — no bundles required.",
   },
   {
     q: "Is WPI Water Distribution prep available?",
-    a: "Yes — all four WPI Water Distribution classes are live. Class I (501 questions) covers distribution system basics, pipe materials, pressure & flow, chlorine residual, and valve & hydrant operation. Classes II–IV cover hydraulic analysis, pressure zone design, advanced modelling, SCADA, and large-scale system management. Each class is available individually at CA$99–$299.",
+    a: "Yes — all four WPI Water Distribution classes are live. Class I (500 questions) covers distribution system basics, pipe materials, pressure & flow, chlorine residual, and valve & hydrant operation. Classes II–IV cover hydraulic analysis, pressure zone design, advanced modelling, SCADA, and large-scale system management. Each class is available individually at CA$99–$299.",
   },
   {
     q: "Is WPI Wastewater Collection prep available?",
@@ -255,7 +255,7 @@ const FAQS = [
   },
   {
     q: "How many WPI courses does Echelon offer in total?",
-    a: "Echelon offers 16 WPI courses across four tracks: Class I–IV Water Treatment (4 courses), Class I–IV Wastewater Treatment (4 courses), Class I–IV Water Distribution (4 courses), and Class I–IV Wastewater Collection (4 courses). All 16 are live and available individually. Every course includes 500+ practice questions, a timed mock exam, AI Tutor, formula sheet, and score history.",
+    a: "Echelon offers 16 WPI courses across four tracks: Class I–IV Water Treatment (4 courses), Class I–IV Wastewater Treatment (4 courses), Class I–IV Water Distribution (4 courses), and Class I–IV Wastewater Collection (4 courses). All 16 are live and available individually. Every course includes 500 practice questions, a timed mock exam, AI Tutor, formula sheet, and score history.",
   },
 ];
 
