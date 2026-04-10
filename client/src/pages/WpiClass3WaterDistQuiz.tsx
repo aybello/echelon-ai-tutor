@@ -107,7 +107,7 @@ export default function WpiClass3WaterDistQuiz() {
         productName="WPI Class III Water Distribution Practice Pass"
         priceLabel="CA$99"
         paidFeatures={[
-          "150 WPI Class III Distribution questions — unlimited attempts",
+          "504 WPI Class III Distribution questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
           "AI Tutor explanations on every question",
           "Module-by-module performance tracking",
@@ -126,7 +126,7 @@ export default function WpiClass3WaterDistQuiz() {
         currentPath="/wpi-class3-water-dist"
         courseLabel="WPI Class III · Water Distribution"
         courseTitle="WPI Class III Water Distribution Quiz"
-        courseSubtitle="150 questions · BC (EOCP Level III) · Alberta (AWWOA Class III) · SK · MB"
+        courseSubtitle="504 questions · BC (EOCP Level III) · Alberta (AWWOA Class III) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="🚰"
         headerActions={[

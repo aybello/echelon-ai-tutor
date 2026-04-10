@@ -112,7 +112,7 @@ export default function WpiClass1WaterDistQuiz() {
         productName="WPI Class I Water Distribution Practice Pass"
         priceLabel="CA$99"
         paidFeatures={[
-          "150 WPI Class I Distribution questions — unlimited attempts",
+          "501 WPI Class I Distribution questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
           "AI Tutor explanations on every question",
           "Module-by-module performance tracking",
@@ -131,7 +131,7 @@ export default function WpiClass1WaterDistQuiz() {
         currentPath="/wpi-class1-water-dist"
         courseLabel="WPI Class I · Water Distribution"
         courseTitle="WPI Class I Water Distribution Quiz"
-        courseSubtitle="150 questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB"
+        courseSubtitle="501 questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="🚰"
         headerActions={[

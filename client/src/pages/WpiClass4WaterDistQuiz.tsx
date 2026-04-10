@@ -111,7 +111,7 @@ export default function WpiClass4WaterDistQuiz() {
         productName="WPI Class IV Water Distribution Practice Pass"
         priceLabel="CA$99"
         paidFeatures={[
-          "150 WPI Class IV Distribution questions — unlimited attempts",
+          "500 WPI Class IV Distribution questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
           "AI Tutor explanations on every question",
           "Module-by-module performance tracking",
@@ -130,7 +130,7 @@ export default function WpiClass4WaterDistQuiz() {
         currentPath="/wpi-class4-water-dist"
         courseLabel="WPI Class IV · Water Distribution"
         courseTitle="WPI Class IV Water Distribution Quiz"
-        courseSubtitle="150 questions · BC (EOCP Level IV) · Alberta (AWWOA Class IV) · SK · MB"
+        courseSubtitle="500 questions · BC (EOCP Level IV) · Alberta (AWWOA Class IV) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="🚰"
         headerActions={[
