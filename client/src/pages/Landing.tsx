@@ -1449,6 +1449,17 @@ export default function Landing() {
                     🚰 Try WPI Distribution Free →
                   </button>
                 </Link>
+                <Link href="/wpi-class1-wastewater" style={{ width: "100%" }}>
+                  <button style={{
+                    padding: "12px 24px", borderRadius: 12,
+                    background: "rgba(15,118,110,0.18)", backdropFilter: "blur(8px)",
+                    color: "#99F6E4", border: "1px solid rgba(153,246,228,0.3)",
+                    fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
+                    width: "100%",
+                  }}>
+                    ♻️ Try WPI Wastewater Free →
+                  </button>
+                </Link>
                 <Link href="/wpi-class1-water-coll" style={{ width: "100%" }}>
                   <button style={{
                     padding: "12px 24px", borderRadius: 12,
@@ -1496,7 +1507,7 @@ export default function Landing() {
         >
           <StaggerContainer style={{ display: "contents" } as React.CSSProperties}>
           <StaggerItem>
-            <AnimatedStat value={8500} suffix="+" label="Practice Questions" />
+            <AnimatedStat value={11000} suffix="+" label="Practice Questions" />
           </StaggerItem>
           <StaggerItem>
             <AnimatedStat value={23} label="Certification Courses" />
