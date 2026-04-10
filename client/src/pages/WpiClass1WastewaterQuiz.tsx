@@ -141,7 +141,7 @@ export default function WpiClass1WastewaterQuiz() {
         productName="WPI Class I Wastewater Treatment Practice Pass"
         priceLabel="CA$99"
         paidFeatures={[
-          "502 WPI Class I Wastewater questions — unlimited attempts",
+          "500 WPI Class I Wastewater questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
           "AI Tutor explanations on every question",
           "Module-by-module performance tracking",
@@ -160,7 +160,7 @@ export default function WpiClass1WastewaterQuiz() {
         currentPath="/wpi-class1-wastewater"
         courseLabel="WPI Class I · Wastewater Treatment"
         courseTitle="WPI Class I Wastewater Practice Quiz"
-        courseSubtitle="502 questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB"
+        courseSubtitle="500 questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="🌊"
         headerActions={[{ label: "📝 Mock Exam →", href: "/wpi-class1-wastewater-mock" }, { label: "🃏 Flashcards", href: "/wpi-class1-wastewater-flashcards" }]}

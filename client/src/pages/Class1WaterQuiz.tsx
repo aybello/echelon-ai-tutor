@@ -182,7 +182,7 @@ export default function Class1WaterQuiz() {
         productName="Class 1 Water Treatment Practice Pass"
         priceLabel="CA$99"
         paidFeatures={[
-          "500+ Class 1 Water questions — unlimited attempts",
+          "500 Class 1 Water questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
           "AI Tutor explanations on every question",
           "Module-by-module performance tracking",

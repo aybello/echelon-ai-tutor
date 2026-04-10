@@ -118,7 +118,7 @@ export default function WpiClass2WaterCollQuiz() {
         currentPath="/wpi-class2-water-coll"
         courseLabel="WPI Class II · Wastewater Collection"
         courseTitle="WPI Class II Wastewater Collection Quiz"
-        courseSubtitle="504 questions · BC (EOCP Level II) · Alberta (AWWOA Class II) · SK · MB"
+        courseSubtitle="500 questions · BC (EOCP Level II) · Alberta (AWWOA Class II) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="🚧"
         headerActions={[

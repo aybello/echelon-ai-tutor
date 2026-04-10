@@ -160,7 +160,7 @@ export default function WpiClass4WastewaterQuiz() {
         currentPath="/wpi-class4-wastewater"
         courseLabel="WPI Class IV · Wastewater Treatment"
         courseTitle="WPI Class IV Wastewater Practice Quiz"
-        courseSubtitle="502 questions · BC (EOCP Level IV) · Alberta (AWWOA Class IV) · Chief Operator"
+        courseSubtitle="500 questions · BC (EOCP Level IV) · Alberta (AWWOA Class IV) · Chief Operator"
         headerGradient={HEADER_GRADIENT}
         headerIcon="👑"
         headerActions={[{ label: "📝 Mock Exam →", href: "/wpi-class4-wastewater-mock" }, { label: "🃏 Flashcards", href: "/wpi-class4-wastewater-flashcards" }]}

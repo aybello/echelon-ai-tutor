@@ -160,7 +160,7 @@ export default function WpiClass2WaterQuiz() {
         currentPath="/wpi-class2-water"
         courseLabel="WPI Class II · Water Treatment"
         courseTitle="WPI Class II Water Practice Quiz"
-        courseSubtitle="501 questions · BC (EOCP Level II) · Alberta (AWWOA Class II) · SK · MB"
+        courseSubtitle="500 questions · BC (EOCP Level II) · Alberta (AWWOA Class II) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="⚗️"
         headerActions={[{ label: "📝 Mock Exam →", href: "/wpi-class2-water-mock" }, { label: "🃏 Flashcards", href: "/wpi-class2-water-flashcards" }]}

@@ -169,7 +169,7 @@ export default function Class3WastewaterQuiz() {
         productName="Class 3 Wastewater Treatment Practice Pass"
         priceLabel="CA$249"
         paidFeatures={[
-          "500+ Class 3 Wastewater questions — unlimited attempts",
+          "500 Class 3 Wastewater questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
           "AI Tutor explanations on every question",
           "Module-by-module performance tracking",

@@ -118,7 +118,7 @@ export default function WpiClass3WaterCollQuiz() {
         currentPath="/wpi-class3-water-coll"
         courseLabel="WPI Class III · Wastewater Collection"
         courseTitle="WPI Class III Wastewater Collection Quiz"
-        courseSubtitle="504 questions · BC (EOCP Level III) · Alberta (AWWOA Class III) · SK · MB"
+        courseSubtitle="500 questions · BC (EOCP Level III) · Alberta (AWWOA Class III) · SK · MB"
         headerGradient={HEADER_GRADIENT}
         headerIcon="🚧"
         headerActions={[

@@ -169,7 +169,7 @@ export default function Class4WastewaterQuiz() {
         productName="Class 4 Wastewater Treatment Practice Pass"
         priceLabel="CA$299"
         paidFeatures={[
-          "500+ Class 4 Wastewater questions — unlimited attempts",
+          "500 Class 4 Wastewater questions — unlimited attempts",
           "Timed mock exam (100 questions, 2 hrs)",
           "AI Tutor explanations on every question",
           "Module-by-module performance tracking",
