@@ -71,7 +71,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#EFF6FF",
     border: "#BFDBFE",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "400+ flashcards", "Module study notes"],
+    features: ["500 practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "400+ flashcards", "Module study notes"],
   },
   {
     key: "class1-water",
@@ -116,7 +116,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["552 practice questions", "Timed mock exam", "Water3 formula sheet", "Module study notes", "AI Tutor", "400+ flashcards"],
+    features: ["500 practice questions", "Timed mock exam", "Water3 formula sheet", "Module study notes", "AI Tutor", "400+ flashcards"],
   },
   {
     key: "class4-water",
@@ -131,7 +131,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F5F3FF",
     border: "#DDD6FE",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Water4 formula sheet", "AI Tutor", "400+ flashcards"],
+    features: ["500 practice questions", "Timed mock exam", "Water4 formula sheet", "AI Tutor", "400+ flashcards"],
   },
   {
     key: "oit-ww",
@@ -146,7 +146,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "400+ flashcards", "Module study notes"],
+    features: ["500 practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "400+ flashcards", "Module study notes"],
   },
   {
     key: "class1-ww",
@@ -161,7 +161,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#F0FDFA",
     border: "#99F6E4",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "WW1 formula sheet", "AI Tutor", "400+ flashcards", "Module study notes"],
+    features: ["500 practice questions", "Timed mock exam", "WW1 formula sheet", "AI Tutor", "400+ flashcards", "Module study notes"],
   },
   {
     key: "class2-ww",
@@ -176,7 +176,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFDF5",
     border: "#6EE7B7",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "WW2 formula sheet", "AI Tutor", "400+ flashcards", "Module study notes"],
+    features: ["500 practice questions", "Timed mock exam", "WW2 formula sheet", "AI Tutor", "400+ flashcards", "Module study notes"],
   },
   {
     key: "class3-ww",
@@ -191,7 +191,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFDF5",
     border: "#6EE7B7",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "WW3 formula sheet", "Module study notes", "AI Tutor", "400+ flashcards"],
+    features: ["500 practice questions", "Timed mock exam", "WW3 formula sheet", "Module study notes", "AI Tutor", "400+ flashcards"],
   },
   {
     key: "class4-ww",
@@ -206,7 +206,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFDF5",
     border: "#6EE7B7",
     available: true,
-    features: ["500+ practice questions", "Timed mock exam", "WW4 formula sheet", "AI Tutor", "400+ flashcards"],
+    features: ["500 practice questions", "Timed mock exam", "WW4 formula sheet", "AI Tutor", "400+ flashcards"],
   },
   {
     key: "wqa",
@@ -221,7 +221,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#FFFBEB",
     border: "#FDE68A",
     available: true,
-    features: ["475 practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "400+ flashcards", "Module study notes"],
+    features: ["500 practice questions", "Timed mock exam", "Formula sheet", "AI Tutor", "400+ flashcards", "Module study notes"],
   },
   {
     key: "wpi-class1-water",
@@ -236,7 +236,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     available: true,
-    features: ["502 practice questions", "Timed mock exam", "WPI formula sheet", "AI Tutor", "BC / AB / SK / MB", "400+ flashcards"],
+    features: ["500 practice questions", "Timed mock exam", "WPI formula sheet", "AI Tutor", "BC / AB / SK / MB", "400+ flashcards"],
   },
   {
     key: "wpi-class2-water",
@@ -251,7 +251,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     available: true,
-    features: ["501 advanced questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB", "400+ flashcards"],
+    features: ["500 advanced questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB", "400+ flashcards"],
   },
   {
     key: "wpi-class3-water",
@@ -266,7 +266,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     available: true,
-    features: ["502 advanced questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB", "400+ flashcards"],
+    features: ["500 advanced questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB", "400+ flashcards"],
   },
   {
     key: "wpi-class4-water",
@@ -281,7 +281,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFEFF",
     border: "#A5F3FC",
     available: true,
-    features: ["501 chief-operator questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB", "400+ flashcards"],
+    features: ["500 chief-operator questions", "Timed mock exam", "AI Tutor", "Score history", "BC / AB / SK / MB", "400+ flashcards"],
   },
   {
     key: "wpi-class1-wastewater",
