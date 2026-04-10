@@ -243,7 +243,19 @@ const FAQS = [
   },
   {
     q: "Is WPI Wastewater Treatment prep available?",
-    a: "Yes — all four WPI Wastewater classes are live. Class I (594 questions) covers Collection Systems, Primary & Secondary Treatment, Solids Handling, Lab & Monitoring, and Safety. Classes II–IV cover progressively advanced topics including BNR, MBR, resource recovery, and plant management. Each class is available individually — no bundles required.",
+    a: "Yes — all four WPI Wastewater Treatment classes are live. Class I (594 questions) covers Primary & Secondary Treatment, Solids Handling, Lab & Monitoring, and Safety. Classes II–IV cover progressively advanced topics including BNR, MBR, resource recovery, and plant management. Each class is available individually — no bundles required.",
+  },
+  {
+    q: "Is WPI Water Distribution prep available?",
+    a: "Yes — all four WPI Water Distribution classes are live. Class I (501 questions) covers distribution system basics, pipe materials, pressure & flow, chlorine residual, and valve & hydrant operation. Classes II–IV cover hydraulic analysis, pressure zone design, advanced modelling, SCADA, and large-scale system management. Each class is available individually at CA$99–$299.",
+  },
+  {
+    q: "Is WPI Wastewater Collection prep available?",
+    a: "Yes — all four WPI Wastewater Collection classes are live. Class I (500 questions) covers gravity sewer basics, pipe materials, lift station fundamentals, H₂S safety, and regulations. Classes II–IV cover advanced collection system design, CSO/SSO control, trenchless rehabilitation, SCADA, and large-scale collection system management. Each class is available individually at CA$99–$299.",
+  },
+  {
+    q: "How many WPI courses does Echelon offer in total?",
+    a: "Echelon offers 16 WPI courses across four tracks: Class I–IV Water Treatment (4 courses), Class I–IV Wastewater Treatment (4 courses), Class I–IV Water Distribution (4 courses), and Class I–IV Wastewater Collection (4 courses). All 16 are live and available individually. Every course includes 500+ practice questions, a timed mock exam, AI Tutor, formula sheet, and score history.",
   },
 ];
 
@@ -251,7 +263,7 @@ export default function WpiLanding() {
   usePageMeta({
     title: "WPI Water Treatment Exam Prep — BC EOCP, Alberta AWWOA, SK, MB | Echelon Institute",
     description:
-      "Prepare for the WPI Water & Wastewater Treatment exams with 4,000+ practice questions for Class I–IV Water and Class I–IV Wastewater. Covers BC (EOCP), Alberta (AWWOA), Saskatchewan (SAHO), and Manitoba (MWWA).",
+      "Prepare for the WPI Water & Wastewater exams with 8,000+ practice questions for Class I–IV Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Covers BC (EOCP), Alberta (AWWOA), Saskatchewan (SAHO), and Manitoba (MWWA).",
     path: "/wpi",
     keywords:
       "WPI exam prep, BC EOCP water treatment, Alberta AWWOA water operator, Saskatchewan SAHO water, Manitoba MWWA water, WPI Class I practice questions, WPI Class II practice questions, WPI Class III wastewater, WPI Class IV wastewater",

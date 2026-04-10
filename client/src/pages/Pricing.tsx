@@ -902,7 +902,7 @@ export default function Pricing() {
           )}
           {isWpi && (
             <div className="product-grid-4">
-              {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-water")).map(product => (
+              {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-water") && !p.key.includes("-water-dist") && !p.key.includes("-water-coll")).map(product => (
                 <ProductCard key={product.key} product={product} isWpi={true} wpiLabel={WPI_WATER_LABELS[product.key]} />
               ))}
             </div>
@@ -930,6 +930,36 @@ export default function Pricing() {
             </div>
           )}
         </div>
+
+        {/* Water Distribution section — WPI only */}
+        {isWpi && (
+          <div style={{ marginBottom: 48 }}>
+            <div className="section-header">
+              <div className="section-bar" style={{ background: "linear-gradient(180deg, #0369A1, #0284C7)" }} />
+              <h2>🚰 Water Distribution</h2>
+            </div>
+            <div className="product-grid-4">
+              {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-water-dist")).map(product => (
+                <ProductCard key={product.key} product={product} isWpi={true} wpiLabel={WPI_WATER_LABELS[product.key]} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Wastewater Collection section — WPI only */}
+        {isWpi && (
+          <div style={{ marginBottom: 48 }}>
+            <div className="section-header">
+              <div className="section-bar" style={{ background: "linear-gradient(180deg, #065F46, #047857)" }} />
+              <h2>🔩 Wastewater Collection</h2>
+            </div>
+            <div className="product-grid-4">
+              {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-water-coll")).map(product => (
+                <ProductCard key={product.key} product={product} isWpi={true} wpiLabel={WPI_WATER_LABELS[product.key]} />
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* WQA section */}
         <div style={{ marginBottom: 48 }}>
