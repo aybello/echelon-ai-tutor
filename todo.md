@@ -396,3 +396,7 @@
 ## AI Tutor Fix for WPI Quiz Pages (Apr 8 2026)
 - [x] Diagnose why AI Tutor in WPI quiz pages doesn't recognize the current question
 - [x] Fix all 8 WPI quiz pages to pass correct question context to AI Tutor
+- [x] Water Distribution interactive process guide (/distribution-guide) — 7 steps, animated SVG diagrams, clickable labels
+- [x] Wastewater Collection interactive process guide (/collection-guide) — 7 steps, animated SVG diagrams, clickable labels
+- [x] SiteNav mobile drawer quick-action tiles updated to 6-tile 3-column grid including Distribution and Collection guides
+- [x] Study Guides & Tools drawer section updated with Distribution and Collection guide links

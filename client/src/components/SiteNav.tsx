@@ -93,8 +93,10 @@ export const NAV_LINKS = [
   { label: "📐 WPI C4 Coll Formulas",   href: "/formulas-wpi-class4-coll" },
   { label: "🌊 WPI Overview",         href: "/wpi" },
   { label: "📐 Formulas",      href: "/formulas" },
-  { label: "🏭 Process Guide", href: "/process" },
-  { label: "♻️ Wastewater",    href: "/wastewater" },
+  { label: "🏭 Process Guide",      href: "/process" },
+  { label: "♻️ Wastewater Guide",   href: "/wastewater" },
+  { label: "🚰 Distribution Guide", href: "/distribution-guide" },
+  { label: "🔩 Collection Guide",   href: "/collection-guide" },
   { label: "⚙️ Pumping",       href: "/pumping" },
   { label: "🎛️ Instrumentation", href: "/instrumentation" },
   { label: "🧮 Math Practice", href: "/math-practice" },
@@ -190,6 +192,8 @@ const DRAWER_SECTIONS = [
     links: [
       { label: "💧 Process Guide", href: "/process" },
       { label: "♻️ Wastewater Guide", href: "/wastewater" },
+      { label: "🚰 Distribution Guide", href: "/distribution-guide" },
+      { label: "🔩 Collection Guide", href: "/collection-guide" },
       { label: "📐 Formulas", href: "/formulas" },
       { label: "🗺️ Career Map", href: "/career" },
       { label: "🎫 My Passes", href: "/account" },
@@ -601,10 +605,10 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
         borderBottom: "1px solid rgba(255,255,255,0.1)",
         boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
       }}>
-        {/* Quick actions — 4 tiles */}
+        {/* Quick actions — 6 tiles */}
         <div style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr",
+          gridTemplateColumns: "1fr 1fr 1fr",
           gap: 8,
           padding: "12px 16px 10px",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
@@ -612,7 +616,9 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
           {[
             { label: "📝 OIT Practice", href: "/quiz", accent: "linear-gradient(135deg, #1D4ED8, #0E7490)" },
             { label: "🏭 Process Guide", href: "/process", accent: null },
-            { label: "📐 Formulas", href: "/formulas", accent: null },
+            { label: "♻️ Wastewater", href: "/wastewater", accent: null },
+            { label: "🚰 Distribution", href: "/distribution-guide", accent: null },
+            { label: "🔩 Collection", href: "/collection-guide", accent: null },
             { label: "🎫 My Passes", href: "/account", accent: "linear-gradient(135deg, #7C3AED, #1D4ED8)" },
           ].map(tile => (
             <Link key={tile.href} href={tile.href}>

@@ -82,6 +82,8 @@ import WpiClass4WastewaterQuiz from "@/pages/WpiClass4WastewaterQuiz";
 import WpiClass4WastewaterMockExam from "@/pages/WpiClass4WastewaterMockExam";
 import FormulasWpiClass4Ww from "@/pages/FormulasWpiClass4Ww";
 import PreviewMode from "@/pages/PreviewMode";
+import WaterDistributionGuide from "@/pages/WaterDistribution";
+import WastewaterCollectionGuide from "@/pages/WastewaterCollection";
 // Flashcard pages
 import OITWaterFlashcards from "@/pages/OITWaterFlashcards";
 import OITWastewaterFlashcards from "@/pages/OITWastewaterFlashcards";
@@ -246,6 +248,8 @@ function Router() {
       <Route path={"/wpi-class4-water-coll"} component={WpiClass4WaterCollQuiz} />
       <Route path={"/wpi-class4-water-coll-flashcards"} component={WpiClass4WaterCollFlashcards} />
       <Route path={"/wpi-class4-water-coll-mock"} component={WpiClass4WaterCollMockExam} />
+      <Route path={"/distribution-guide"} component={WaterDistributionGuide} />
+      <Route path={"/collection-guide"} component={WastewaterCollectionGuide} />
       <Route path={"/preview"} component={PreviewMode} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/pricing"} component={Pricing} />
