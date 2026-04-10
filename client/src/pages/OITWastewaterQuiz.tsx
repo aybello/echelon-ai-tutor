@@ -59,7 +59,10 @@ export default function OITWastewaterQuiz() {
   const [history, setHistory]         = useState<HistoryEntry[]>([]);
   const [usedIds, setUsedIds]         = useState<Set<number | string>>(new Set());
   const [current, setCurrent]         = useState<Class1WastewaterQuestion | null>(() => {
-    const q = allQuestions[Math.floor(Math.random() * allQuestions.length)];
+    // Trial phase: start with medium/hard questions
+    const trialPool = allQuestions.filter(q => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
+    const startPool = trialPool.length >= 15 ? trialPool : allQuestions;
+    const q = startPool[Math.floor(Math.random() * startPool.length)];
     return q ?? null;
   });
   const [selected, setSelected]       = useState<number | null>(null);
@@ -103,8 +106,14 @@ export default function OITWastewaterQuiz() {
       setShowGate(true);
       return;
     }
-    const next = pool.length > 0
-      ? pool[Math.floor(Math.random() * pool.length)]
+    // For trial phase, prefer medium/hard questions
+    let trialPool = pool;
+    if (!trialUnlocked && history.length < SESSION_SIZE) {
+      const hardPool = pool.filter(q => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
+      if (hardPool.length > 0) trialPool = hardPool;
+    }
+    const next = trialPool.length > 0
+      ? trialPool[Math.floor(Math.random() * trialPool.length)]
       : allQuestions[Math.floor(Math.random() * allQuestions.length)];
     setCurrent(next ?? null);
     setSelected(null);

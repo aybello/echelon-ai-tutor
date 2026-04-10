@@ -13,7 +13,6 @@ import {
 } from "@/lib/wpiClass1WaterQuestions";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import PurchaseGate from "@/components/PurchaseGate";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import { shuffle } from "@/lib/utils";
 import { WPI_CLASS1_WATER_OVERVIEWS } from "@/lib/moduleOverviews";
@@ -163,15 +162,8 @@ export default function WpiClass1WaterQuiz() {
   }
 
   return (
-    <PurchaseGate
-      backPath="/wpi"
-      examType="wpi-class1-water"
-      productKey="wpi-class1-water"
-      productName="WPI Class I Water Treatment Practice Pass"
-      price={99}
-    >
-      <QuizShell
-        currentPath="/wpi-class1-water"
+    <QuizShell
+      currentPath="/wpi-class1-water"
         courseLabel="WPI Class I · Water Treatment"
         courseTitle="WPI Class I Water Practice Quiz"
         courseSubtitle="502 questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB"
@@ -218,6 +210,5 @@ export default function WpiClass1WaterQuiz() {
           />
         )}
       />
-    </PurchaseGate>
   );
 }

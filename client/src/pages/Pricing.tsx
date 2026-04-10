@@ -637,7 +637,7 @@ const PRICING_STYLES = `
     .product-grid-4 { grid-template-columns: repeat(2, 1fr); }
   }
 
-  /* ── Mobile: 1–2 columns ── */
+  /* ── Mobile: 1 column ── */
   @media (max-width: 600px) {
     .pricing-nav { padding: 0 16px; }
     .pricing-nav-logo span { font-size: 14px; }
@@ -651,20 +651,14 @@ const PRICING_STYLES = `
 
     .pricing-content { padding: 28px 16px 60px; }
 
-    .product-grid-5 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .product-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .product-grid-5 { grid-template-columns: 1fr; gap: 12px; }
+    .product-grid-4 { grid-template-columns: 1fr; gap: 12px; }
     .product-grid-1 { grid-template-columns: 1fr; }
 
     .trust-grid { grid-template-columns: repeat(2, 1fr); }
 
     .section-header h2 { font-size: 17px; }
     .faq-item { padding: 14px 16px; }
-  }
-
-  /* ── Very small: 1 column ── */
-  @media (max-width: 380px) {
-    .product-grid-5 { grid-template-columns: 1fr; }
-    .product-grid-4 { grid-template-columns: 1fr; }
   }
 `;
 

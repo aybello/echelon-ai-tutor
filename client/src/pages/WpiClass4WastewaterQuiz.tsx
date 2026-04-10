@@ -9,7 +9,6 @@ import {
 } from "@/lib/wpiClass4WastewaterQuestions";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import PurchaseGate from "@/components/PurchaseGate";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import { shuffle } from "@/lib/utils";
 import { WPI_CLASS4_WASTEWATER_OVERVIEWS } from "@/lib/moduleOverviews";
@@ -157,13 +156,6 @@ export default function WpiClass4WastewaterQuiz() {
   }
 
   return (
-    <PurchaseGate
-      backPath="/wpi"
-      examType="wpi-class4-wastewater"
-      productKey="wpi-class4-wastewater"
-      productName="WPI Class IV Wastewater Practice Pass"
-      price={299}
-    >
       <QuizShell
         currentPath="/wpi-class4-wastewater"
         courseLabel="WPI Class IV · Wastewater Treatment"
@@ -212,6 +204,5 @@ export default function WpiClass4WastewaterQuiz() {
           />
         )}
       />
-    </PurchaseGate>
   );
 }

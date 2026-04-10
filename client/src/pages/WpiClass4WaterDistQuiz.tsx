@@ -2,7 +2,6 @@
 import { useState, useCallback } from "react";
 import QuizShell from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
-import PurchaseGate from "@/components/PurchaseGate";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import { wpiClass4WaterDistQuestions, WPI_CLASS4_WATER_DIST_MODULES } from "@/lib/wpiClass4WaterDistQuestions";
 import { WPI_CLASS4_WATER_DIST_OVERVIEWS } from "@/lib/moduleOverviews";
@@ -127,13 +126,6 @@ export default function WpiClass4WaterDistQuiz() {
   }
 
   return (
-    <PurchaseGate
-      backPath="/wpi"
-      examType="wpi-class4-water-dist"
-      productKey="wpi-class4-water-dist"
-      productName="WPI Class IV Water Distribution Practice Pass"
-      price={99}
-    >
       <QuizShell
         currentPath="/wpi-class4-water-dist"
         courseLabel="WPI Class IV · Water Distribution"
@@ -185,6 +177,5 @@ export default function WpiClass4WaterDistQuiz() {
           />
         )}
       />
-    </PurchaseGate>
   );
 }

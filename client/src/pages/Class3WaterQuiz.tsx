@@ -2,7 +2,6 @@ import { useState, useMemo, useCallback } from "react";
 import QuizShell from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import PurchaseGate from "@/components/PurchaseGate";
 import { QUESTIONS as CLASS3_WATER_QUESTIONS, MODULES as CLASS3_WATER_MODULES } from '@/lib/class3WaterQuestions';
 import { CLASS3_WATER_OVERVIEWS } from '@/lib/moduleOverviews';
 
@@ -39,7 +38,10 @@ export default function Class3WaterQuiz() {
   const [history, setHistory]       = useState<HistoryEntry[]>([]);
   const [usedIds, setUsedIds]       = useState<Set<number | string>>(new Set());
   const [current, setCurrent]       = useState<any | null>(() => {
-    const q = allQuestions[Math.floor(Math.random() * allQuestions.length)];
+    // Trial phase: start with medium/hard questions
+    const trialPool = allQuestions.filter(q => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
+    const startPool = trialPool.length >= 15 ? trialPool : allQuestions;
+    const q = startPool[Math.floor(Math.random() * startPool.length)];
     return q ?? null;
   });
   const [selected, setSelected]     = useState<number | null>(null);
@@ -80,14 +82,24 @@ export default function Class3WaterQuiz() {
 
   // ── Next question ─────────────────────────────────────────────────────────
   const handleNext = useCallback(() => {
-    const next = getNext(pool);
+    if (!trialUnlocked && history.length >= SESSION_SIZE) {
+      setTrialDone(true);
+      return;
+    }
+    // For trial phase, prefer medium/hard questions
+    let nextPool = pool;
+    if (!trialUnlocked && history.length < SESSION_SIZE) {
+      const hardPool = pool.filter(q => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
+      if (hardPool.length > 0) nextPool = hardPool;
+    }
+    const next = getNext(nextPool);
     setCurrent(next);
     setSelected(null);
     setConfidence(null);
     setConfirmed(false);
     setShowSteps(false);
     setTutorOpen(false);
-  }, [pool, getNext]);
+  }, [pool, getNext, history, trialUnlocked]);
 
   // ── Go back ───────────────────────────────────────────────────────────────
   const goBack = useCallback(() => {
@@ -186,12 +198,6 @@ export default function Class3WaterQuiz() {
   }
 
   return (
-    <PurchaseGate
-      examType="class3-water"
-      productKey="class3-water"
-      productName="Ontario Class 3 · Water Treatment"
-      price={249}
-    >
       <QuizShell
         currentPath="/class3-water"
         courseLabel="Ontario Class 3 · Water Treatment"
@@ -244,6 +250,5 @@ export default function Class3WaterQuiz() {
           />
         )}
       />
-    </PurchaseGate>
   );
 }

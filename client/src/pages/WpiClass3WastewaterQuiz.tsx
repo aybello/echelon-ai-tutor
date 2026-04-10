@@ -9,7 +9,6 @@ import {
 } from "@/lib/wpiClass3WastewaterQuestions";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import PurchaseGate from "@/components/PurchaseGate";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import { shuffle } from "@/lib/utils";
 import { WPI_CLASS3_WASTEWATER_OVERVIEWS } from "@/lib/moduleOverviews";
@@ -157,13 +156,6 @@ export default function WpiClass3WastewaterQuiz() {
   }
 
   return (
-    <PurchaseGate
-      backPath="/wpi"
-      examType="wpi-class3-wastewater"
-      productKey="wpi-class3-wastewater"
-      productName="WPI Class III Wastewater Practice Pass"
-      price={249}
-    >
       <QuizShell
         currentPath="/wpi-class3-wastewater"
         courseLabel="WPI Class III · Wastewater Treatment"
@@ -212,6 +204,5 @@ export default function WpiClass3WastewaterQuiz() {
           />
         )}
       />
-    </PurchaseGate>
   );
 }

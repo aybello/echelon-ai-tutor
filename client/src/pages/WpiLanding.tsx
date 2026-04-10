@@ -193,8 +193,8 @@ export default function WpiLanding() {
         @media (max-width: 640px) {
           .wpi-province-card { flex-direction: column !important; }
           .wpi-province-btns { min-width: 0 !important; width: 100% !important; }
-          .wpi-pricing-cards { gap: 10px !important; }
-          .wpi-pricing-card { width: calc(50% - 5px) !important; min-width: 140px !important; padding: 16px 12px !important; }
+          .wpi-pricing-cards { gap: 10px !important; flex-direction: column !important; align-items: stretch !important; }
+          .wpi-pricing-card { width: 100% !important; min-width: 0 !important; padding: 16px 12px !important; }
           .wpi-hero-section { padding: 48px 16px 36px !important; }
           .wpi-province-tabs { flex-wrap: wrap !important; gap: 6px !important; }
           .wpi-province-tab { flex: 1 1 auto !important; }
@@ -202,7 +202,6 @@ export default function WpiLanding() {
           .wpi-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 380px) {
-          .wpi-pricing-card { width: 100% !important; }
         }
       `}</style>
       <SiteNav currentPath="/wpi" />

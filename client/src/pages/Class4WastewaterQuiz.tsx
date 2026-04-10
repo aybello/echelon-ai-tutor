@@ -2,7 +2,6 @@ import { useState, useMemo, useCallback } from "react";
 import QuizShell from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import PurchaseGate from "@/components/PurchaseGate";
 import { CLASS4_WW_QUESTIONS, CLASS4_WASTEWATER_MODULES, CLASS4_WW_FORMULA_LINKS, type C4WWQuestion } from '@/lib/class4WastewaterQuestions';
 import { CLASS4_WASTEWATER_OVERVIEWS } from '@/lib/moduleOverviews';
 
@@ -29,7 +28,10 @@ export default function Class4WastewaterQuiz() {
   const [history, setHistory]       = useState<HistoryEntry[]>([]);
   const [usedIds, setUsedIds]       = useState<Set<number | string>>(new Set());
   const [current, setCurrent]       = useState<C4WWQuestion | null>(() => {
-    const q = allQuestions[Math.floor(Math.random() * allQuestions.length)];
+    // Trial phase: start with medium/hard questions
+    const trialPool = allQuestions.filter(q => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
+    const startPool = trialPool.length >= 15 ? trialPool : allQuestions;
+    const q = startPool[Math.floor(Math.random() * startPool.length)];
     return q ?? null;
   });
   const [selected, setSelected]     = useState<number | null>(null);
@@ -70,14 +72,24 @@ export default function Class4WastewaterQuiz() {
 
   // ── Next question ─────────────────────────────────────────────────────────
   const handleNext = useCallback(() => {
-    const next = getNext(pool);
+    if (!trialUnlocked && history.length >= SESSION_SIZE) {
+      setTrialDone(true);
+      return;
+    }
+    // For trial phase, prefer medium/hard questions
+    let nextPool = pool;
+    if (!trialUnlocked && history.length < SESSION_SIZE) {
+      const hardPool = pool.filter(q => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
+      if (hardPool.length > 0) nextPool = hardPool;
+    }
+    const next = getNext(nextPool);
     setCurrent(next);
     setSelected(null);
     setConfidence(null);
     setConfirmed(false);
     setShowSteps(false);
     setTutorOpen(false);
-  }, [pool, getNext]);
+  }, [pool, getNext, history, trialUnlocked]);
 
   // ── Go back ───────────────────────────────────────────────────────────────
   const goBack = useCallback(() => {
@@ -176,12 +188,6 @@ export default function Class4WastewaterQuiz() {
   }
 
   return (
-    <PurchaseGate
-      examType="class4-ww"
-      productKey="class4-ww"
-      productName="Ontario Class 4 · Wastewater Treatment"
-      price={299}
-    >
       <QuizShell
         currentPath="/class4-ww"
         courseLabel="Ontario Class 4 · Wastewater Treatment"
@@ -235,6 +241,5 @@ export default function Class4WastewaterQuiz() {
           />
         )}
       />
-    </PurchaseGate>
   );
 }

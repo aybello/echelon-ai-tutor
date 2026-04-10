@@ -2,7 +2,6 @@
 import { useState, useCallback } from "react";
 import QuizShell from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
-import PurchaseGate from "@/components/PurchaseGate";
 
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import { wpiClass1WaterDistQuestions, WPI_CLASS1_WATER_DIST_MODULES } from "@/lib/wpiClass1WaterDistQuestions";
@@ -128,13 +127,6 @@ export default function WpiClass1WaterDistQuiz() {
   }
 
   return (
-    <PurchaseGate
-      backPath="/wpi"
-      examType="wpi-class1-water-dist"
-      productKey="wpi-class1-water-dist"
-      productName="WPI Class I Water Distribution Practice Pass"
-      price={99}
-    >
       <QuizShell
         currentPath="/wpi-class1-water-dist"
         courseLabel="WPI Class I · Water Distribution"
@@ -186,6 +178,5 @@ export default function WpiClass1WaterDistQuiz() {
           />
         )}
       />
-    </PurchaseGate>
   );
 }

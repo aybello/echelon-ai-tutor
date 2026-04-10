@@ -9,7 +9,6 @@ import {
 } from "@/lib/wpiClass4WaterQuestions";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import PurchaseGate from "@/components/PurchaseGate";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import { shuffle } from "@/lib/utils";
 import { WPI_CLASS4_WATER_OVERVIEWS } from "@/lib/moduleOverviews";
@@ -159,13 +158,6 @@ export default function WpiClass4WaterQuiz() {
   }
 
   return (
-    <PurchaseGate
-      backPath="/wpi"
-      examType="wpi-class4-water"
-      productKey="wpi-class4-water"
-      productName="WPI Class IV Water Treatment Practice Pass"
-      price={299}
-    >
       <QuizShell
         currentPath="/wpi-class4-water"
         courseLabel="WPI Class IV · Water Treatment"
@@ -214,6 +206,5 @@ export default function WpiClass4WaterQuiz() {
           />
         )}
       />
-    </PurchaseGate>
   );
 }

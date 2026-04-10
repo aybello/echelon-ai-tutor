@@ -9,7 +9,6 @@ import {
 } from "@/lib/wpiClass2WastewaterQuestions";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import PurchaseGate from "@/components/PurchaseGate";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import { shuffle } from "@/lib/utils";
 import { WPI_CLASS2_WASTEWATER_OVERVIEWS } from "@/lib/moduleOverviews";
@@ -157,13 +156,6 @@ export default function WpiClass2WastewaterQuiz() {
   }
 
   return (
-    <PurchaseGate
-      backPath="/wpi"
-      examType="wpi-class2-wastewater"
-      productKey="wpi-class2-wastewater"
-      productName="WPI Class II Wastewater Treatment Practice Pass"
-      price={149}
-    >
       <QuizShell
         currentPath="/wpi-class2-wastewater"
         courseLabel="WPI Class II · Wastewater Treatment"
@@ -212,6 +204,5 @@ export default function WpiClass2WastewaterQuiz() {
           />
         )}
       />
-    </PurchaseGate>
   );
 }

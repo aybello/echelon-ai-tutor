@@ -9,7 +9,6 @@ import {
 } from "@/lib/wpiClass3WaterQuestions";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import PurchaseGate from "@/components/PurchaseGate";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import { shuffle } from "@/lib/utils";
 import { WPI_CLASS3_WATER_OVERVIEWS } from "@/lib/moduleOverviews";
@@ -157,13 +156,6 @@ export default function WpiClass3WaterQuiz() {
   }
 
   return (
-    <PurchaseGate
-      backPath="/wpi"
-      examType="wpi-class3-water"
-      productKey="wpi-class3-water"
-      productName="WPI Class III Water Treatment Practice Pass"
-      price={249}
-    >
       <QuizShell
         currentPath="/wpi-class3-water"
         courseLabel="WPI Class III · Water Treatment"
@@ -212,6 +204,5 @@ export default function WpiClass3WaterQuiz() {
           />
         )}
       />
-    </PurchaseGate>
   );
 }
