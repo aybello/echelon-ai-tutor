@@ -1283,7 +1283,7 @@ export default function Landing() {
             { label: "📝 Try Free", href: "/quiz", accent: true },
             { label: "🌊 WPI", href: "/wpi", accent: false },
             { label: "💰 Pricing", href: "/pricing", accent: false },
-            { label: "🎫 My Passes", href: "/account", accent: false },
+            { label: "🎫 My Passes", href: "/account", accent: "purple" },
           ].map(tile => (
             <Link key={tile.href} href={tile.href}>
               <div
@@ -1291,7 +1291,7 @@ export default function Landing() {
                 style={{
                   padding: "10px 6px",
                   borderRadius: 10,
-                  background: tile.accent ? "linear-gradient(135deg, #1D4ED8, #0E7490)" : "#F8FAFC",
+                  background: tile.accent === true ? "linear-gradient(135deg, #1D4ED8, #0E7490)" : tile.accent === "purple" ? "linear-gradient(135deg, #7C3AED, #1D4ED8)" : "#F8FAFC",
                   border: tile.accent ? "none" : "1px solid #E2E8F0",
                   color: tile.accent ? "#fff" : "#0F172A",
                   fontSize: 11,

@@ -613,7 +613,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
             { label: "📝 OIT Practice", href: "/quiz", accent: "linear-gradient(135deg, #1D4ED8, #0E7490)" },
             { label: "🏭 Process Guide", href: "/process", accent: null },
             { label: "📐 Formulas", href: "/formulas", accent: null },
-            { label: "🗺️ Career Map", href: "/career", accent: null },
+            { label: "🎫 My Passes", href: "/account", accent: "linear-gradient(135deg, #7C3AED, #1D4ED8)" },
           ].map(tile => (
             <Link key={tile.href} href={tile.href}>
               <div
