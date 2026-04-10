@@ -154,6 +154,35 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     priceCAD: 29900,
     examTypes: ["wpi-class4-wastewater"],
   },
+  // ── WPI Wastewater Collection (BC / AB / SK / MB) ──────────────────────────────────────────
+  {
+    key: "wpi-class1-water-coll",
+    name: "WPI Class I Wastewater Collection Practice Pass",
+    description: "WPI Class I Wastewater Collection — 150 questions covering collection system components, lift station operation & maintenance, confined space safety, basic hydraulics & calculations, and environmental & public health. Aligned with WPI Class I Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 9900,
+    examTypes: ["wpi-class1-water-coll"],
+  },
+  {
+    key: "wpi-class2-water-coll",
+    name: "WPI Class II Wastewater Collection Practice Pass",
+    description: "WPI Class II Wastewater Collection — 150 questions covering advanced collection system design, intermediate lift station operations, system maintenance & rehabilitation, hydraulics & flow analysis, and regulatory compliance & reporting. Aligned with WPI Class II Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 14900,
+    examTypes: ["wpi-class2-water-coll"],
+  },
+  {
+    key: "wpi-class3-water-coll",
+    name: "WPI Class III Wastewater Collection Practice Pass",
+    description: "WPI Class III Wastewater Collection — 150 questions covering complex system operations & SCADA, advanced pump station engineering, system hydraulic modelling, advanced maintenance management, and leadership, safety & regulatory management. Aligned with WPI Class III Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 24900,
+    examTypes: ["wpi-class3-water-coll"],
+  },
+  {
+    key: "wpi-class4-water-coll",
+    name: "WPI Class IV Wastewater Collection Practice Pass",
+    description: "WPI Class IV Wastewater Collection — 150 questions covering system planning & capital improvement, advanced engineering & design, utility management & leadership, advanced regulatory & environmental management, and emerging technologies & innovation. Aligned with WPI Class IV Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 29900,
+    examTypes: ["wpi-class4-water-coll"],
+  },
   // ── WPI Water Distribution (BC / AB / SK / MB) ─────────────────────────────────────────────
   {
     key: "wpi-class1-water-dist",
@@ -212,6 +241,10 @@ export const PRODUCT_STUDY_PATHS: Record<string, { quizPath: string; mockPath: s
   "wpi-class2-water-dist":      { quizPath: "/wpi-class2-water-dist",          mockPath: "/wpi-class2-water-dist-mock" },
   "wpi-class3-water-dist":      { quizPath: "/wpi-class3-water-dist",          mockPath: "/wpi-class3-water-dist-mock" },
   "wpi-class4-water-dist":      { quizPath: "/wpi-class4-water-dist",          mockPath: "/wpi-class4-water-dist-mock" },
+  "wpi-class1-water-coll":      { quizPath: "/wpi-class1-water-coll",          mockPath: "/wpi-class1-water-coll-mock" },
+  "wpi-class2-water-coll":      { quizPath: "/wpi-class2-water-coll",          mockPath: "/wpi-class2-water-coll-mock" },
+  "wpi-class3-water-coll":      { quizPath: "/wpi-class3-water-coll",          mockPath: "/wpi-class3-water-coll-mock" },
+  "wpi-class4-water-coll":      { quizPath: "/wpi-class4-water-coll",          mockPath: "/wpi-class4-water-coll-mock" },
 };
 
 /** Given a product key, return all exam types it unlocks */

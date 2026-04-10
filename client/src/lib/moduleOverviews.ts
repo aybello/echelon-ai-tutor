@@ -6191,3 +6191,456 @@ export const WPI_CLASS4_WATER_DIST_OVERVIEWS: Record<string, ModuleOverview> = {
     ],
   },
 };
+
+// ─── WPI Wastewater Collection Class I Module Overviews ──────────────────────
+export const WPI_CLASS1_WASTEWATER_COLL_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Collection System Components": {
+    title: "Collection System Components",
+    intro: "The wastewater collection system is the network of pipes, manholes, and appurtenances that conveys sewage from homes and businesses to the treatment plant. Class I operators must know the basic components, materials, and how they work together.",
+    keyPoints: [
+      { heading: "Pipe Materials & Joints", body: "Common pipe materials: PVC (most common for new construction), concrete (gravity sewers, large diameter), ductile iron (force mains, high-pressure), HDPE (flexible, trenchless). Joints must be watertight to prevent infiltration (groundwater entering) and exfiltration (sewage leaking out)." },
+      { heading: "Manholes & Access Structures", body: "Manholes provide access for inspection, cleaning, and maintenance. Components: frame and cover, cone section, barrel rings, base slab, invert channel. Spacing: typically every 90-120 m on straight runs, at every change in direction, grade, or pipe size." },
+      { heading: "Gravity vs. Pressure Systems", body: "Gravity sewers use slope to move sewage — minimum slope 0.5-1% to maintain self-cleaning velocity (0.6 m/s minimum). Pressure sewers use pumps (lift stations) to move sewage uphill. Force mains are pressurized pipes from lift stations." },
+      { heading: "Infiltration & Inflow (I/I)", body: "Infiltration: groundwater entering through cracks and joints. Inflow: stormwater entering through illegal connections and manhole covers. I/I increases flows to the treatment plant and can cause overflows. Reduction through CCTV inspection and rehabilitation." },
+    ],
+    tableHeadings: ["Pipe Material", "Typical Use", "Key Advantage"],
+    tableRows: [
+      ["PVC", "Residential and commercial laterals, small gravity sewers", "Lightweight, corrosion-resistant, low cost"],
+      ["Concrete", "Large-diameter gravity trunk sewers", "High strength, long service life"],
+      ["Ductile iron", "Force mains, high-pressure applications", "High pressure rating, impact resistance"],
+      ["HDPE", "Trenchless rehabilitation, flexible applications", "Flexible, leak-free fused joints"],
+    ],
+    examTips: [
+      "Minimum self-cleaning velocity in gravity sewers: 0.6 m/s (2 ft/s)",
+      "Infiltration = groundwater IN; Inflow = stormwater IN (both are I/I)",
+      "Manholes are typically spaced every 90-120 m on straight runs",
+    ],
+  },
+  "Equipment Operation & Maintenance": {
+    title: "Equipment Operation & Maintenance",
+    intro: "Lift stations (pump stations) are the key mechanical components of a wastewater collection system. Class I operators must be able to operate and maintain pumps, controls, and associated equipment safely and effectively.",
+    keyPoints: [
+      { heading: "Lift Station Components", body: "Wet well: collects sewage before pumping. Pumps: submersible or dry-pit centrifugal pumps. Controls: float switches or level sensors control pump on/off. Valves: check valves (prevent backflow), gate valves (isolation). Ventilation: wet wells require forced ventilation due to H2S and methane. Backup power: generator for power outages." },
+      { heading: "Pump Operation", body: "Centrifugal pumps are most common. Key concepts: head (pressure the pump must overcome), flow rate (volume per unit time), pump curve (relationship between head and flow). Pumps operate at the intersection of the pump curve and system curve. Cavitation occurs when suction pressure is too low." },
+      { heading: "Routine Maintenance", body: "Daily checks: pump operation, wet well level, alarms, odours. Weekly: clean wet well, check valves and controls. Monthly: lubricate bearings, check motor amperage, test backup systems. Annual: pump inspection, impeller wear check, valve exercise. Maintenance records are essential for regulatory compliance." },
+      { heading: "Alarms & Emergency Response", body: "Common alarms: high wet well level (pump failure or high flows), low wet well level (pump running dry), power failure, high temperature. Response: check pump operation, check for blockages, activate backup pump or generator, notify supervisor. SSOs must be reported to the regulator." },
+    ],
+    tableHeadings: ["Alarm Type", "Likely Cause", "Immediate Action"],
+    tableRows: [
+      ["High wet well level", "Pump failure, blockage, or high inflow", "Check pumps, clear blockage, activate backup"],
+      ["Power failure", "Utility outage", "Start generator, check pump operation"],
+      ["High temperature (motor)", "Overload, bearing failure, poor ventilation", "Stop pump, check motor, call for service"],
+      ["Low wet well level", "Pump running dry", "Stop pump, check for flow, investigate cause"],
+    ],
+    examTips: [
+      "Check valves prevent backflow in force mains — critical when pump stops",
+      "H2S is heavier than air and accumulates in wet wells — always ventilate before entry",
+      "Cavitation: low suction pressure causes vapour bubbles and impeller damage",
+    ],
+  },
+  "Safety & Regulations": {
+    title: "Safety & Regulations",
+    intro: "Working in and around wastewater collection systems involves serious hazards including confined spaces, toxic gases, traffic, and biological agents. Class I operators must follow safety regulations and know the regulatory framework governing collection systems.",
+    keyPoints: [
+      { heading: "Confined Space Entry", body: "Manholes and wet wells are permit-required confined spaces. Requirements: atmospheric testing (O2, H2S, LEL), ventilation, attendant outside, rescue plan, entry permit. O2 levels: safe 19.5-23.5%; H2S: IDLH 100 ppm, TWA 1 ppm; LEL: explosive if >10% of lower explosive limit. Never enter without testing and proper PPE." },
+      { heading: "Hazardous Gases", body: "H2S (hydrogen sulphide): rotten egg odour, toxic, explosive, heavier than air. Methane (CH4): odourless, explosive, lighter than air. CO (carbon monoxide): odourless, toxic. Oxygen deficiency: can occur from biological activity or displacement by other gases. Multi-gas detector required before entry." },
+      { heading: "Regulatory Framework", body: "Collection systems are regulated under provincial environmental legislation. Operators must hold valid certification (EOCP in BC, AWWOA in AB). Sanitary sewer overflows (SSOs) must be reported. Spill response plans required." },
+      { heading: "Personal Protective Equipment", body: "Required PPE: safety glasses, gloves, safety boots, high-visibility vest, hard hat. For confined space: harness and lifeline, supplied-air respirator or SCBA if atmospheric hazards present. Hepatitis A and B vaccination recommended for collection system workers." },
+    ],
+    tableHeadings: ["Gas", "Hazard", "Action Level / IDLH"],
+    tableRows: [
+      ["H2S", "Toxic, explosive", "TWA 1 ppm; IDLH 100 ppm"],
+      ["CH4 (methane)", "Explosive", "LEL alarm at 10% of lower explosive limit"],
+      ["CO", "Toxic", "TWA 25 ppm; IDLH 1,200 ppm"],
+      ["O2 deficiency", "Asphyxiation", "Alarm <19.5%; IDLH <16%"],
+    ],
+    examTips: [
+      "Permit-required confined space: contains or has potential to contain serious hazard",
+      "H2S: heavier than air, accumulates in low points (manholes, wet wells)",
+      "Minimum 3-person crew for confined space entry: entrant, attendant, supervisor/rescue",
+    ],
+  },
+  "Math & Calculations": {
+    title: "Math & Calculations",
+    intro: "Class I Wastewater Collection operators must perform basic calculations related to flow, pipe capacity, pump performance, and chemical dosing.",
+    keyPoints: [
+      { heading: "Flow Rate Calculations", body: "Q = A x V (flow = cross-sectional area x velocity). For a circular pipe flowing full: A = pi x d^2 / 4. Units: Q in m3/s or L/s; A in m2; V in m/s. Conversion: 1 m3/s = 1,000 L/s. Manning's equation for gravity flow: V = (1/n) x R^(2/3) x S^(1/2)." },
+      { heading: "Pump Calculations", body: "Total dynamic head (TDH) = static head + friction losses + velocity head. Hydraulic power: P = density x g x Q x H. Pump efficiency = (hydraulic power / shaft power) x 100%." },
+      { heading: "Wet Well Calculations", body: "Wet well volume: V = L x W x D (rectangular) or V = pi x r2 x D (circular). Pump-down rate = pump flow rate minus inflow rate. Average daily flow (ADF) = total daily volume / 86,400 s. Peak flow factor: typically 2-4 for residential areas." },
+      { heading: "Unit Conversions", body: "1 m3 = 1,000 L; 1 L = 0.001 m3. 1 m3/s = 1,000 L/s = 86,400 m3/day. Pipe slope: 1% = 0.01 m/m = 10 mm/m. Pressure: 1 m of water = 9.81 kPa. 1 psi = 6.895 kPa." },
+    ],
+    tableHeadings: ["Formula", "Variables", "Use"],
+    tableRows: [
+      ["Q = A x V", "Q = flow, A = area, V = velocity", "Flow in a pipe or channel"],
+      ["A = pi x d2 / 4", "d = pipe diameter", "Cross-sectional area of circular pipe"],
+      ["TDH = Hs + hf + hv", "Hs = static head, hf = friction, hv = velocity head", "Total head a pump must overcome"],
+    ],
+    examTips: [
+      "Manning's n for PVC = 0.009-0.011; concrete = 0.012-0.015",
+      "Minimum self-cleaning velocity: 0.6 m/s; maximum to prevent erosion: 3 m/s",
+      "Peak flow factor for residential: 2-4x ADF; use 3x for exam unless stated",
+    ],
+  },
+  "Environmental & Public Health": {
+    title: "Environmental & Public Health",
+    intro: "Wastewater collection systems protect public health and the environment by safely conveying sewage to treatment. Class I operators must understand the health risks of sewage, the environmental impacts of spills, and basic spill response.",
+    keyPoints: [
+      { heading: "Public Health Hazards", body: "Untreated sewage contains pathogens: bacteria (E. coli, Salmonella), viruses (norovirus, hepatitis A), protozoa (Cryptosporidium, Giardia). SSOs can contaminate drinking water sources, recreational waters, and shellfish harvesting areas." },
+      { heading: "Spill Response", body: "SSO response: stop the overflow if possible, contain the spill, notify supervisor and regulator, document the event. Cleanup: disinfect affected area, collect samples, restore normal operation. Spill reports must include: volume, location, cause, duration, corrective action." },
+      { heading: "Odour Control", body: "H2S is the primary odour compound in collection systems — produced by anaerobic bacteria in septic conditions. Prevention: maintain flow velocity (>0.6 m/s), minimize retention time, add air or oxygen to wet wells, use chemical treatment (iron salts, hydrogen peroxide, nitrates)." },
+      { heading: "Environmental Regulations", body: "Collection systems must comply with environmental regulations: no unauthorized discharges, SSOs must be reported, spill response plans required. FOG (fats, oils, grease) programs require grease interceptors and regular cleaning. Illegal connections must be investigated and eliminated." },
+    ],
+    tableHeadings: ["Pathogen Type", "Example", "Primary Concern"],
+    tableRows: [
+      ["Bacteria", "E. coli, Salmonella", "Gastroenteritis, waterborne illness"],
+      ["Viruses", "Norovirus, Hepatitis A", "Gastroenteritis, liver disease"],
+      ["Protozoa", "Cryptosporidium, Giardia", "Gastroenteritis, resistant to chlorine"],
+    ],
+    examTips: [
+      "SSO = Sanitary Sewer Overflow — must be reported to regulator immediately",
+      "H2S is produced in septic (anaerobic) conditions — prevent by maintaining flow velocity",
+      "FOG (fats, oils, grease) is the leading cause of collection system blockages",
+    ],
+  },
+};
+
+// ─── WPI Wastewater Collection Class II Module Overviews ─────────────────────
+export const WPI_CLASS2_WASTEWATER_COLL_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Advanced Collection System Design": {
+    title: "Advanced Collection System Design",
+    intro: "Class II operators work with more complex collection systems including trunk sewers, interceptors, and systems serving multiple communities. This module covers advanced design principles, capacity analysis, and system planning.",
+    keyPoints: [
+      { heading: "Hydraulic Design Principles", body: "Gravity sewer design uses Manning's equation to size pipes for the design flow (peak wet weather flow). Design criteria: minimum velocity 0.6 m/s at peak flow, maximum velocity 3 m/s, minimum cover 1.2 m (frost protection), minimum pipe size 200 mm for public sewers." },
+      { heading: "Pressure Zone Management", body: "Large collection systems may have multiple pressure zones separated by lift stations. Pressure surges (water hammer) in force mains can damage pipes and equipment — controlled by slow-closing valves, surge tanks, or air release valves." },
+      { heading: "Capacity Analysis", body: "System capacity is evaluated by comparing current and projected flows to pipe capacity. Capacity assessment: CCTV inspection to identify defects, flow monitoring to measure I/I, hydraulic modelling to identify bottlenecks." },
+      { heading: "Sewer System Master Planning", body: "Master plans assess current system condition and capacity, project future flows based on growth, identify deficiencies, and recommend capital improvements. Planning horizons: 20-50 years for infrastructure, 10-year capital improvement programs (CIPs)." },
+    ],
+    tableHeadings: ["Design Parameter", "Minimum Value", "Purpose"],
+    tableRows: [
+      ["Pipe velocity (minimum)", "0.6 m/s", "Self-cleaning — prevents solids deposition"],
+      ["Pipe velocity (maximum)", "3.0 m/s", "Prevents pipe erosion"],
+      ["Minimum pipe size (public)", "200 mm", "Maintenance access and capacity"],
+      ["Minimum cover", "1.2 m", "Frost protection and traffic loading"],
+    ],
+    examTips: [
+      "Design flow = peak wet weather flow (PWWF) = typically 4-6x ADF",
+      "Manning's n for PVC = 0.009; concrete = 0.013",
+      "Trunk sewers serve multiple sub-catchments; interceptors collect from multiple trunk sewers",
+    ],
+  },
+  "Intermediate Lift Station Operations": {
+    title: "Intermediate Lift Station Operations",
+    intro: "Class II operators manage more complex lift stations with multiple pumps, variable speed drives, and advanced control systems. This module covers pump selection, system curve analysis, and troubleshooting.",
+    keyPoints: [
+      { heading: "Pump Selection & Sizing", body: "Pumps are selected based on the required flow rate and total dynamic head (TDH). Pump curve: shows relationship between head and flow. System curve: shows head required at each flow rate. Operating point: intersection of pump curve and system curve. Multiple pumps in parallel increase flow; in series increase head." },
+      { heading: "Variable Speed Drives (VSDs)", body: "VSDs adjust pump speed to match flow demand. Benefits: energy savings (power proportional to speed cubed), reduced wear, better flow control. Affinity laws: Q proportional to N, H proportional to N squared, P proportional to N cubed." },
+      { heading: "Pump Performance Monitoring", body: "Key performance indicators: flow rate, head, power consumption, efficiency, vibration, temperature. Pump efficiency decreases as impeller wears. Amp draw monitoring: increased amps may indicate blockage or mechanical problem." },
+      { heading: "Troubleshooting", body: "Common problems: reduced flow (worn impeller, partially closed valve, air entrainment), no flow (blocked impeller, closed valve, loss of prime), excessive vibration (cavitation, imbalance, bearing failure), overheating (overload, poor ventilation, bearing failure)." },
+    ],
+    tableHeadings: ["Affinity Law", "Relationship", "Practical Implication"],
+    tableRows: [
+      ["Flow", "Q2/Q1 = N2/N1", "Halving speed halves flow"],
+      ["Head", "H2/H1 = (N2/N1)^2", "Halving speed reduces head to 25%"],
+      ["Power", "P2/P1 = (N2/N1)^3", "Halving speed reduces power to 12.5%"],
+    ],
+    examTips: [
+      "Pumps in parallel: same head, flows add — use for high flow, low head systems",
+      "Pumps in series: same flow, heads add — use for high head, low flow systems",
+      "VSD energy savings: reducing speed 20% saves approximately 50% of power (P proportional to N cubed)",
+    ],
+  },
+  "System Maintenance & Rehabilitation": {
+    title: "System Maintenance & Rehabilitation",
+    intro: "Class II operators plan and manage maintenance programs for collection systems. This module covers preventive maintenance, CCTV inspection, and rehabilitation methods for aging infrastructure.",
+    keyPoints: [
+      { heading: "Preventive Maintenance Programs", body: "PM activities: routine cleaning (hydraulic jetting), CCTV inspection, manhole inspection, valve exercising, lift station maintenance. PM frequency based on pipe age, material, history, and criticality. Asset management systems track maintenance history and schedule future work." },
+      { heading: "CCTV Inspection", body: "PACP (Pipeline Assessment and Certification Program) provides standardized defect coding. Defect codes: structural (cracks, breaks, deformation), operational (roots, deposits, blockages), construction (joint offset, grade issues). CCTV data drives rehabilitation planning." },
+      { heading: "Cleaning Methods", body: "Hydraulic jetting (high-pressure water): most common method, effective for roots, grease, and debris. Mechanical cleaning: for severe blockages. Chemical cleaning: root control (copper sulphate, metam sodium), grease control (enzyme treatments). Cleaning frequency: 1-5 years depending on pipe condition and history." },
+      { heading: "Rehabilitation Methods", body: "CIPP (cured-in-place pipe lining): resin-impregnated liner cured in place, restores structural integrity. Pipe bursting: new pipe pulled through old pipe while fracturing it. Sliplining: smaller pipe inserted inside existing pipe. Excavation and replacement for severely deteriorated pipes." },
+    ],
+    tableHeadings: ["Rehabilitation Method", "Best For", "Key Advantage"],
+    tableRows: [
+      ["CIPP lining", "Cracked, leaking pipes with intact shape", "Minimal disruption, restores structural integrity"],
+      ["Pipe bursting", "Severely deteriorated pipes needing upsizing", "Can increase pipe diameter"],
+      ["Sliplining", "Large-diameter pipes", "Cost-effective for large pipes"],
+      ["Excavation & replacement", "Collapsed pipes, poor alignment", "Complete replacement"],
+    ],
+    examTips: [
+      "PACP: Pipeline Assessment and Certification Program — standardized CCTV defect coding",
+      "CIPP: Cured-In-Place Pipe — most common trenchless rehabilitation method",
+      "Hydraulic jetting pressure: typically 7,000-20,000 kPa (1,000-3,000 psi)",
+    ],
+  },
+  "Hydraulics & Flow Analysis": {
+    title: "Hydraulics & Flow Analysis",
+    intro: "Class II operators must understand collection system hydraulics to manage flows, prevent overflows, and plan capacity improvements. This module covers flow measurement, hydraulic modelling, and wet weather flow management.",
+    keyPoints: [
+      { heading: "Flow Measurement Methods", body: "In-pipe flow meters: electromagnetic (mag meters) for full-pipe flow, ultrasonic for full or partial flow, Doppler for partial flow with suspended solids. Weirs and flumes: V-notch weir (low flows), Parshall flume (wide range), Palmer-Bowlus flume (in-pipe)." },
+      { heading: "Hydraulic Modelling", body: "Hydraulic models simulate collection system behaviour under different flow conditions. Model inputs: pipe network, manholes, lift stations, flow data. Model outputs: pipe velocities, depths, surcharge conditions, overflow locations. Models are used for capacity analysis, master planning, and evaluating rehabilitation options." },
+      { heading: "Wet Weather Flow Management", body: "Wet weather flows (WWF) include infiltration and inflow (I/I) in addition to dry weather flows. Peak wet weather flow (PWWF) can be 4-10x dry weather flow in systems with high I/I. Management strategies: I/I reduction, storage (equalization basins), real-time control (RTC), overflow management." },
+      { heading: "Sanitary Sewer Overflow Prevention", body: "SSOs occur when collection system capacity is exceeded. Prevention: maintain system capacity (cleaning, rehabilitation), reduce I/I, manage wet weather flows, maintain lift station reliability. SSO response plan: immediate notification, containment, cleanup, reporting." },
+    ],
+    tableHeadings: ["Flow Meter Type", "Application", "Key Feature"],
+    tableRows: [
+      ["Electromagnetic (mag meter)", "Full-pipe flow, clean water", "Highly accurate, no moving parts"],
+      ["Doppler ultrasonic", "Partial-pipe flow, suspended solids", "Non-invasive, works with dirty water"],
+      ["V-notch weir", "Low flows in open channels", "Simple, accurate at low flows"],
+      ["Parshall flume", "Wide flow range in open channels", "Accurate over wide range"],
+    ],
+    examTips: [
+      "I/I assessment: compare wet weather flow to dry weather flow — difference is I/I",
+      "PWWF = peak wet weather flow; PDWF = peak dry weather flow",
+      "SSO reporting: typically required within 24 hours of discovery",
+    ],
+  },
+  "Regulatory Compliance & Reporting": {
+    title: "Regulatory Compliance & Reporting",
+    intro: "Class II operators have increased responsibility for regulatory compliance and reporting. This module covers the regulatory framework, permit requirements, reporting obligations, and enforcement.",
+    keyPoints: [
+      { heading: "Regulatory Framework", body: "Collection systems are regulated under provincial environmental legislation. Key regulations: BC Environmental Management Act, AB Environmental Protection and Enhancement Act, SK Environmental Management and Protection Act, MB Environment Act. Federal: Fisheries Act, Canadian Environmental Protection Act." },
+      { heading: "Permit Requirements", body: "Collection system permits specify: design standards, operating requirements, monitoring and reporting, spill response, operator certification. Permits must be kept current — changes to the system may require permit amendments. Permit conditions are legally binding." },
+      { heading: "Reporting Requirements", body: "Regular reports: annual operating reports, monthly reports (flows, lift station performance). Event reports: SSOs (within 24 hours), spills, equipment failures. Records: maintenance logs, inspection records, training records, must be kept for specified periods (typically 5-10 years)." },
+      { heading: "Enforcement & Penalties", body: "Regulators can issue: orders (to correct violations), administrative penalties (fines), prosecution (for serious violations). Operators can be personally liable for violations. Proactive compliance is always better than reactive enforcement." },
+    ],
+    tableHeadings: ["Report Type", "Trigger", "Typical Deadline"],
+    tableRows: [
+      ["SSO report", "Sanitary sewer overflow occurs", "Within 24 hours of discovery"],
+      ["Annual operating report", "End of calendar year", "March 31 of following year (varies)"],
+      ["Spill report", "Unauthorized discharge to environment", "Immediately / within 24 hours"],
+      ["Permit amendment application", "System change or expansion", "Before construction begins"],
+    ],
+    examTips: [
+      "SSO reporting: 24 hours is the typical deadline",
+      "Permit conditions are legally binding — violations can result in fines or prosecution",
+      "Annual operating reports must be submitted even if no incidents occurred",
+    ],
+  },
+};
+
+// ─── WPI Wastewater Collection Class III Module Overviews ────────────────────
+export const WPI_CLASS3_WASTEWATER_COLL_OVERVIEWS: Record<string, ModuleOverview> = {
+  "Complex System Operations & SCADA": {
+    title: "Complex System Operations & SCADA",
+    intro: "Class III operators manage large, complex collection systems with multiple lift stations, interconnected networks, and SCADA control systems. This module covers SCADA operation, system optimization, and real-time control.",
+    keyPoints: [
+      { heading: "SCADA Systems", body: "SCADA (Supervisory Control and Data Acquisition) monitors and controls collection system components remotely. Components: field devices (sensors, actuators), RTUs or PLCs, communication network, SCADA server, HMI. Data: flow rates, wet well levels, pump status, alarms, power consumption." },
+      { heading: "Real-Time Control (RTC)", body: "RTC uses SCADA data to optimize system operation in real time. Applications: wet well level management, wet weather flow management, energy optimization. RTC can significantly reduce SSOs and energy costs." },
+      { heading: "System Optimization", body: "Optimization objectives: minimize SSOs, minimize energy costs, maximize asset life, maintain service levels. Tools: hydraulic modelling, SCADA data analysis, performance benchmarking. Key performance indicators: SSO frequency and volume, energy consumption per m3 pumped, maintenance cost per km of sewer." },
+      { heading: "Cybersecurity", body: "SCADA systems are critical infrastructure — cybersecurity is essential. Threats: unauthorized access, malware, ransomware. Controls: network segmentation, access control, patch management, incident response plan." },
+    ],
+    tableHeadings: ["SCADA Component", "Function", "Example"],
+    tableRows: [
+      ["Sensor/transmitter", "Measure process variable", "Ultrasonic level sensor in wet well"],
+      ["RTU/PLC", "Local control and data acquisition", "Lift station control panel"],
+      ["Communication network", "Transmit data to SCADA server", "Cellular, radio, fibre optic"],
+      ["HMI", "Operator interface", "Touchscreen display or computer workstation"],
+    ],
+    examTips: [
+      "SCADA historian: stores time-series data for analysis and reporting",
+      "RTC: real-time control uses SCADA data to optimize system operation dynamically",
+      "OT (operational technology) networks must be separated from IT networks for security",
+    ],
+  },
+  "Advanced Pump Station Engineering": {
+    title: "Advanced Pump Station Engineering",
+    intro: "Class III operators design and manage complex pump stations with multiple pumps, variable speed drives, and sophisticated control systems. This module covers advanced pump station design, energy management, and reliability engineering.",
+    keyPoints: [
+      { heading: "Pump Station Design", body: "Design considerations: peak flow capacity, redundancy (N+1 minimum), wet well sizing, force main design (surge protection, air release valves), electrical systems (backup power, motor control centres). Design standards: Ten States Standards (Recommended Standards for Wastewater Facilities)." },
+      { heading: "Energy Management", body: "Lift stations are major energy consumers. Energy optimization: variable speed drives (VSDs) reduce energy at partial loads, off-peak pumping (time-of-use rates), pump efficiency monitoring and maintenance, wet well level optimization. Energy benchmarking: kWh/m3 pumped." },
+      { heading: "Reliability Engineering", body: "Reliability-centred maintenance (RCM): identify critical components, failure modes, and optimal maintenance strategies. Redundancy: backup pumps, backup power, backup controls. Mean time between failures (MTBF) and mean time to repair (MTTR) are key metrics." },
+      { heading: "Surge Analysis & Protection", body: "Water hammer (surge) occurs when flow is suddenly stopped or started in a force main. Pressure wave travels at ~1,200 m/s. Protection: slow-closing check valves, surge tanks (air chambers), pressure relief valves, pump start/stop procedures." },
+    ],
+    tableHeadings: ["Surge Protection Device", "Mechanism", "Best Application"],
+    tableRows: [
+      ["Slow-closing check valve", "Gradually closes to reduce pressure wave", "Most lift stations"],
+      ["Air/vacuum relief valve", "Releases air on startup, prevents vacuum on shutdown", "High points in force mains"],
+      ["Surge tank (air chamber)", "Absorbs pressure wave with compressed air", "High-risk force mains"],
+      ["Pressure relief valve", "Opens to release excess pressure", "Downstream protection"],
+    ],
+    examTips: [
+      "N+1 redundancy: always one more pump than needed for peak flow",
+      "Water hammer velocity in water: ~1,200 m/s",
+      "Ten States Standards: widely used design standard for wastewater facilities in North America",
+    ],
+  },
+  "System Hydraulic Modelling": {
+    title: "System Hydraulic Modelling",
+    intro: "Class III operators use hydraulic models to analyze complex collection systems, plan capital improvements, and manage wet weather events. This module covers model development, calibration, and application.",
+    keyPoints: [
+      { heading: "Model Development", body: "Hydraulic model inputs: pipe network (GIS data), manholes, lift stations, flow data (dry weather and wet weather), catchment data. Model software: InfoSWMM, MIKE URBAN, SewerGEMS. Model must be validated against measured data before use." },
+      { heading: "Model Calibration & Validation", body: "Calibration: adjust model parameters to match measured data. Key parameters: Manning's n, catchment parameters, I/I parameters. Validation: test calibrated model against independent data set. Calibration targets: flow rates within +/-10%, peak flows within +/-15%." },
+      { heading: "Capacity Analysis Applications", body: "Hydraulic models are used to: identify capacity deficiencies, evaluate rehabilitation alternatives, assess impact of new development, plan for climate change. Model results guide capital investment decisions." },
+      { heading: "Wet Weather Modelling", body: "Design storms: 2-year, 5-year, 10-year, 25-year return period storms. Climate change: increase design storm intensity by 10-30% depending on jurisdiction and planning horizon. Model outputs: peak flows, overflow locations and volumes, flood depths." },
+    ],
+    tableHeadings: ["Model Application", "Purpose", "Output"],
+    tableRows: [
+      ["Capacity analysis", "Identify surcharging pipes and overflows", "Pipe loading ratios, overflow volumes"],
+      ["Rehabilitation planning", "Evaluate pipe upsizing or lining", "Reduced surcharging, cost-benefit"],
+      ["Development impact", "Assess new development flows", "Required system upgrades"],
+      ["Climate change", "Assess future flow increases", "Adaptation measures needed"],
+    ],
+    examTips: [
+      "Model calibration: adjust parameters to match measured data (+/-10% for flows)",
+      "Design storm return period: 2-year for local sewers, 10-year for trunk sewers (typical)",
+      "Climate change: increase design storm intensity 10-30% for long-term planning",
+    ],
+  },
+  "Advanced Maintenance Management": {
+    title: "Advanced Maintenance Management",
+    intro: "Class III operators develop and manage comprehensive maintenance programs for complex collection systems. This module covers asset management, maintenance optimization, and performance measurement.",
+    keyPoints: [
+      { heading: "Asset Management", body: "Asset management: systematic approach to managing infrastructure assets to minimize lifecycle cost while maintaining service levels. Components: asset inventory (GIS, database), condition assessment (CCTV, inspection), risk assessment (likelihood x consequence of failure), lifecycle cost analysis, renewal planning." },
+      { heading: "Maintenance Optimization", body: "Maintenance strategies: reactive (fix when broken), preventive (scheduled maintenance), predictive (condition-based). Optimization: use condition data to prioritize maintenance, focus resources on highest-risk assets. CMMS (computerized maintenance management system) tracks work orders, costs, and history." },
+      { heading: "Performance Measurement", body: "Key performance indicators (KPIs): SSO frequency (events/100 km/year), pipe cleaning frequency (km cleaned/year), CCTV inspection frequency (km inspected/year), response time to blockages, maintenance cost per km. Benchmarking: compare KPIs to industry standards and peer utilities." },
+      { heading: "Condition Assessment Programs", body: "Systematic condition assessment: CCTV inspection of all pipes on a rotating schedule (typically 10-20 year cycle), manhole inspection, lift station inspection. PACP/MACP coding for standardized defect assessment. Risk-based prioritization: inspect highest-risk assets first." },
+    ],
+    tableHeadings: ["Maintenance Strategy", "Trigger", "Cost Profile"],
+    tableRows: [
+      ["Reactive", "Equipment failure", "High (emergency repairs, collateral damage)"],
+      ["Preventive", "Time or usage interval", "Moderate (some unnecessary work)"],
+      ["Predictive/condition-based", "Condition monitoring data", "Optimal (work done when needed)"],
+      ["Proactive/reliability-centred", "Failure mode analysis", "Lowest lifecycle cost"],
+    ],
+    examTips: [
+      "CMMS: Computerized Maintenance Management System — tracks work orders, costs, history",
+      "PACP: Pipeline Assessment and Certification Program — standardized CCTV coding",
+      "Risk = Likelihood of failure x Consequence of failure — prioritize high-risk assets",
+    ],
+  },
+  "Leadership, Safety & Regulatory Management": {
+    title: "Leadership, Safety & Regulatory Management",
+    intro: "Class III operators take on supervisory and leadership responsibilities. This module covers team leadership, safety program management, regulatory compliance, and emergency response planning.",
+    keyPoints: [
+      { heading: "Supervisory Leadership", body: "Class III operators supervise Class I and II operators. Leadership responsibilities: work planning and scheduling, performance management, training and development, safety oversight. Communication: clear work instructions, safety briefings, incident reporting." },
+      { heading: "Safety Program Management", body: "Safety programs: hazard identification and risk assessment, safe work procedures (SWPs), training and competency verification, incident investigation and reporting, safety audits and inspections. Confined space program: entry permits, atmospheric testing equipment, rescue equipment, training." },
+      { heading: "Emergency Response Planning", body: "Emergency response plan (ERP) covers: SSOs, lift station failures, force main breaks, power outages, natural disasters. ERP components: hazard assessment, response procedures, notification lists, resource inventory, training and exercises. Mutual aid agreements with neighbouring utilities provide backup resources." },
+      { heading: "Regulatory Compliance Management", body: "Class III operators ensure the utility meets all regulatory requirements. Compliance management: maintain permit conditions, submit reports on time, respond to regulator inquiries, manage inspections. Non-compliance: investigate root cause, implement corrective action, report to regulator." },
+    ],
+    tableHeadings: ["Emergency Type", "Immediate Response", "Notification Required"],
+    tableRows: [
+      ["SSO (sanitary sewer overflow)", "Stop overflow, contain, cleanup", "Regulator within 24 hours"],
+      ["Lift station failure", "Activate backup, bypass pump", "Supervisor, on-call crew"],
+      ["Force main break", "Isolate, contain, repair", "Regulator if spill to environment"],
+      ["Power outage", "Start generator, check pumps", "Supervisor, utility"],
+    ],
+    examTips: [
+      "ERP: Emergency Response Plan — must be tested with regular drills",
+      "Mutual aid: agreements with neighbouring utilities for emergency resource sharing",
+      "Near-miss reporting: critical for safety culture — investigate and learn from near-misses",
+    ],
+  },
+};
+
+// ─── WPI Wastewater Collection Class IV Module Overviews ─────────────────────
+export const WPI_CLASS4_WASTEWATER_COLL_OVERVIEWS: Record<string, ModuleOverview> = {
+  "System Planning & Capital Improvement": {
+    title: "System Planning & Capital Improvement",
+    intro: "Class IV operators lead long-term system planning and capital investment programs. This module covers master planning, capital improvement programming, financial planning, and growth management.",
+    keyPoints: [
+      { heading: "Collection System Master Planning", body: "A collection system master plan is a long-term (20-50 year) planning document that: assesses current system condition and capacity, projects future flows based on population and land use growth, identifies infrastructure deficiencies, recommends capital improvements, and develops a financial plan." },
+      { heading: "Capital Improvement Programming", body: "Capital improvement programs (CIPs) prioritize and schedule capital projects over a 10-year horizon. CIP development: identify all capital needs, estimate costs, prioritize based on risk and need, develop funding strategy, obtain approvals. CIPs are updated annually." },
+      { heading: "Growth Management", body: "Collection systems must accommodate growth: new development, densification, intensification. Developer contributions: development charges, latecomer agreements, oversizing agreements. Growth projections from official community plans and regional growth strategies." },
+      { heading: "Climate Change Adaptation", body: "Climate change affects collection systems: increased rainfall intensity, sea level rise, permafrost thaw. Adaptation strategies: increase system capacity, improve I/I control, implement real-time control, design for extreme events. Climate change must be incorporated in master planning." },
+    ],
+    tableHeadings: ["Planning Element", "Purpose", "Typical Horizon"],
+    tableRows: [
+      ["Master plan", "Long-term system planning", "20-50 years"],
+      ["Capital improvement program (CIP)", "Prioritize and budget capital projects", "10 years"],
+      ["Asset management plan", "Manage infrastructure lifecycle", "Asset life (50-100 years)"],
+      ["Financial plan", "Ensure sustainable funding", "10-20 years"],
+    ],
+    examTips: [
+      "Master plan horizon: 20-50 years for infrastructure planning",
+      "CIP: updated annually, typically covers 10-year horizon",
+      "Developer contributions: development charges, latecomer agreements fund growth-related infrastructure",
+    ],
+  },
+  "Advanced Engineering & Design": {
+    title: "Advanced Engineering & Design",
+    intro: "Class IV operators provide technical leadership for complex engineering projects. This module covers advanced design standards, project management, and quality assurance for collection system infrastructure.",
+    keyPoints: [
+      { heading: "Advanced Design Standards", body: "Design standards: Ten States Standards (Recommended Standards for Wastewater Facilities), ASCE Manual of Engineering Practice, provincial design guidelines. Advanced design considerations: seismic design, corrosion protection (H2S environments), climate change resilience, energy efficiency." },
+      { heading: "Project Management", body: "Capital project delivery: planning, design, procurement, construction, commissioning, operation. Project management: scope, schedule, budget, quality, risk management. Procurement methods: design-bid-build (traditional), design-build (single contract), public-private partnership (P3)." },
+      { heading: "Corrosion Prevention & Control", body: "H2S-induced corrosion is the primary cause of concrete sewer deterioration. Mechanism: H2S gas oxidized to H2SO4 by bacteria on pipe walls, attacks concrete. Prevention: maintain aerobic conditions, use corrosion-resistant materials (PVC, HDPE, epoxy-lined concrete), protective coatings." },
+      { heading: "Trenchless Technology Applications", body: "Trenchless technologies minimize surface disruption. Installation: horizontal directional drilling (HDD), microtunnelling, pipe jacking. Rehabilitation: CIPP lining, pipe bursting, spray-applied lining. Selection criteria: pipe size, depth, soil conditions, surface constraints, cost." },
+    ],
+    tableHeadings: ["Trenchless Method", "Application", "Diameter Range"],
+    tableRows: [
+      ["HDD (horizontal directional drilling)", "New pipe installation under obstacles", "50-1,200 mm"],
+      ["Microtunnelling/pipe jacking", "New gravity sewers, precise grade control", "300-3,000 mm"],
+      ["CIPP lining", "Rehabilitation of existing pipes", "100-2,700 mm"],
+      ["Pipe bursting", "Replacement with same or larger diameter", "100-600 mm"],
+    ],
+    examTips: [
+      "H2SO4 (sulphuric acid) from H2S oxidation is the primary cause of concrete sewer corrosion",
+      "CIPP: most widely used trenchless rehabilitation method",
+      "Design-build: single contract for design and construction — faster delivery",
+    ],
+  },
+  "Utility Management & Leadership": {
+    title: "Utility Management & Leadership",
+    intro: "Class IV operators may serve as chief operators or utility managers. This module covers organizational leadership, financial management, human resources, and strategic planning.",
+    keyPoints: [
+      { heading: "Organizational Leadership", body: "Chief operators and utility managers are responsible for: organizational structure and staffing, budget development and management, strategic planning, regulatory compliance, stakeholder relations. Leadership competencies: technical expertise, communication, decision-making, team building, change management." },
+      { heading: "Financial Management", body: "Utility financial management: operating budget (O&M costs), capital budget (infrastructure investment), rate setting (full-cost pricing), reserve funds. Financial sustainability: rates must cover all costs — operating, debt service, and capital reserves." },
+      { heading: "Human Resources Management", body: "HR responsibilities: recruitment and selection, training and development, performance management, labour relations, succession planning. Operator certification: ensure all operators hold required certification, support continuing education." },
+      { heading: "Strategic Planning", body: "Strategic planning: mission and vision statements, SWOT analysis, strategic objectives, action plans, performance measures. Plans are reviewed and updated every 3-5 years. Stakeholder engagement: involve customers, elected officials, regulators, and staff in planning." },
+    ],
+    tableHeadings: ["Financial Element", "Purpose", "Funding Source"],
+    tableRows: [
+      ["Operating budget", "Day-to-day O&M costs", "User rates"],
+      ["Capital budget", "Infrastructure investment", "Rates, debt, grants"],
+      ["Rate stabilization reserve", "Smooth rate increases", "Accumulated from rates"],
+      ["Asset replacement reserve", "Fund future asset replacement", "Accumulated from rates"],
+    ],
+    examTips: [
+      "Full-cost pricing: rates must cover operating costs, debt service, AND capital reserves",
+      "SWOT: Strengths, Weaknesses (internal); Opportunities, Threats (external)",
+      "Succession planning: critical for maintaining organizational capability as staff retire",
+    ],
+  },
+  "Advanced Regulatory & Environmental Management": {
+    title: "Advanced Regulatory & Environmental Management",
+    intro: "Class IV operators lead regulatory compliance programs and manage complex environmental issues. This module covers advanced regulatory compliance, environmental management systems, and stakeholder engagement.",
+    keyPoints: [
+      { heading: "Environmental Management Systems", body: "Environmental management systems (EMS): ISO 14001 provides a framework for managing environmental impacts. EMS components: environmental policy, aspects and impacts assessment, objectives and targets, operational controls, monitoring and measurement, internal audit, management review." },
+      { heading: "Advanced Regulatory Compliance", body: "Class IV operators manage compliance with multiple regulatory frameworks: provincial environmental legislation, federal Fisheries Act, municipal bylaws, permit conditions. Compliance management: compliance calendar, regulatory tracking, internal audits, corrective action management." },
+      { heading: "Environmental Impact Assessment", body: "Major collection system projects require environmental assessment (EA). EA process: project description, baseline environmental conditions, impact assessment, mitigation measures, monitoring plan. Triggers: new infrastructure, major expansions, projects near sensitive environments." },
+      { heading: "Stakeholder & Public Engagement", body: "Stakeholder engagement: identify stakeholders, develop engagement plan, communicate proactively, respond to concerns. Public consultation: required for major projects and rate increases. Indigenous consultation: duty to consult on projects affecting Indigenous rights and title." },
+    ],
+    tableHeadings: ["Regulatory Framework", "Jurisdiction", "Key Requirement"],
+    tableRows: [
+      ["Environmental Management Act (BC)", "Provincial (BC)", "Permit to operate, spill reporting"],
+      ["Environmental Protection and Enhancement Act (AB)", "Provincial (AB)", "Approval to operate, spill reporting"],
+      ["Fisheries Act", "Federal", "No harmful alteration of fish habitat"],
+      ["ISO 14001", "International standard", "Environmental management system framework"],
+    ],
+    examTips: [
+      "ISO 14001: international standard for environmental management systems",
+      "Duty to consult: Crown obligation to consult Indigenous peoples on projects affecting their rights",
+      "EA triggers: new infrastructure, major expansions, projects near sensitive environments",
+    ],
+  },
+  "Emerging Technologies & Innovation": {
+    title: "Emerging Technologies & Innovation",
+    intro: "Class IV operators lead technology adoption and innovation in collection system management. This module covers emerging technologies, digital transformation, and innovation management.",
+    keyPoints: [
+      { heading: "Smart Sewer Technologies", body: "Smart sewer technologies use sensors, data analytics, and automation to improve collection system management. Applications: real-time flow monitoring (IoT sensors), predictive maintenance (AI/ML analysis of sensor data), automated CCTV inspection (robotic systems), digital twin (virtual model of the physical system)." },
+      { heading: "Digital Transformation", body: "Digital transformation: integration of digital technologies across all aspects of utility operations. Key technologies: GIS, CMMS, SCADA, hydraulic modelling, asset management systems. Data integration: connect disparate systems to enable data-driven decision-making." },
+      { heading: "AI & Machine Learning Applications", body: "AI/ML applications in collection systems: predictive maintenance, anomaly detection, root cause analysis, demand forecasting. AI requires large amounts of high-quality data." },
+      { heading: "Innovation Management", body: "Innovation management: identify opportunities, evaluate technologies, pilot and implement. Innovation process: problem identification, solution search, technology evaluation, pilot project, full-scale implementation, performance monitoring. Partnerships: universities, technology vendors, other utilities." },
+    ],
+    tableHeadings: ["Technology", "Application", "Key Benefit"],
+    tableRows: [
+      ["IoT sensors", "Real-time flow and level monitoring", "Continuous data, early warning"],
+      ["AI/ML analytics", "Predictive maintenance, anomaly detection", "Reduced failures, lower costs"],
+      ["Digital twin", "Virtual system model for planning and operations", "Risk-free scenario testing"],
+      ["Robotic CCTV", "Automated pipe inspection", "Faster, more consistent inspection"],
+    ],
+    examTips: [
+      "Digital twin: virtual model of the physical system — enables risk-free scenario testing",
+      "IoT: Internet of Things — network of sensors and devices connected to the internet",
+      "AI/ML requires large amounts of high-quality data — data quality is critical",
+    ],
+  },
+};

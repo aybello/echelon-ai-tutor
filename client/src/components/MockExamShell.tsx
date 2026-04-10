@@ -43,7 +43,8 @@ export type ExamProductKey =
   | "class3-water" | "class3-ww" | "class4-water" | "class4-ww"
   | "wpi-class1-water" | "wpi-class2-water" | "wpi-class3-water" | "wpi-class4-water"
   | "wpi-class1-wastewater" | "wpi-class2-wastewater" | "wpi-class3-wastewater" | "wpi-class4-wastewater"
-  | "wpi-class1-water-dist" | "wpi-class2-water-dist" | "wpi-class3-water-dist" | "wpi-class4-water-dist";
+  | "wpi-class1-water-dist" | "wpi-class2-water-dist" | "wpi-class3-water-dist" | "wpi-class4-water-dist"
+  | "wpi-class1-water-coll" | "wpi-class2-water-coll" | "wpi-class3-water-coll" | "wpi-class4-water-coll";
 
 export interface MockExamConfig {
   /** Page title shown in intro card, e.g. "Class 2 Water Treatment Mock Exam" */
