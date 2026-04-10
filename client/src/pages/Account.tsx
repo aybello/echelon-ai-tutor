@@ -144,6 +144,9 @@ export default function Account() {
           .pass-row { flex-direction: column; align-items: flex-start; gap: 10px; }
           .pass-actions { flex-wrap: wrap; }
           .purchase-history-row { grid-template-columns: 1fr; gap: 4px; }
+          .restore-form-row { flex-direction: column !important; }
+          .restore-form-row input { width: 100% !important; }
+          .restore-form-row button { width: 100% !important; min-height: 48px !important; }
         }
       `}</style>
 
@@ -185,7 +188,7 @@ export default function Account() {
             <label htmlFor="restore-email" style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#CBD5E1", marginBottom: 8, letterSpacing: "0.02em" }}>
               Purchase email address
             </label>
-            <div style={{ display: "flex", gap: 10 }}>
+            <div className="restore-form-row" style={{ display: "flex", gap: 10 }}>
               <input
                 id="restore-email"
                 type="email"

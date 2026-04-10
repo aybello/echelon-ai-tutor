@@ -66,7 +66,7 @@ export default function DistributionMap({ onStepClick, activeStepId }: Distribut
   });
 
   return (
-    <div style={{ width: "100%", overflowX: "auto" }}>
+    <div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch" as const }}>
       <style>{`
         @keyframes distSnakeFlow { from { stroke-dashoffset: 20 } to { stroke-dashoffset: 0 } }
         .dist-snake-pipe { animation: distSnakeFlow 0.75s linear infinite; }

@@ -76,7 +76,7 @@ export default function ProcessMap({ onStepClick, activeStepId }: ProcessMapProp
   });
 
   return (
-    <div style={{ width: "100%", overflowX: "auto" }}>
+    <div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch" as const }}>
       <style>{`
         @keyframes pmSnakeFlow { from { stroke-dashoffset: 20 } to { stroke-dashoffset: 0 } }
         .pm-snake-pipe { animation: pmSnakeFlow 0.75s linear infinite; }

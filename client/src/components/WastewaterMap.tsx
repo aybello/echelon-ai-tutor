@@ -66,7 +66,7 @@ export default function WastewaterMap({ onStepClick, activeStepId }: WastewaterM
   });
 
   return (
-    <div style={{ width: "100%", overflowX: "auto" }}>
+    <div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch" as const }}>
       <style>{`
         @keyframes wwSnakeFlow { from { stroke-dashoffset: 20 } to { stroke-dashoffset: 0 } }
         .ww-snake-pipe { animation: wwSnakeFlow 0.75s linear infinite; }

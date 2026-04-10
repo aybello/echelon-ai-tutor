@@ -66,7 +66,7 @@ export default function CollectionMap({ onStepClick, activeStepId }: CollectionM
   });
 
   return (
-    <div style={{ width: "100%", overflowX: "auto" }}>
+    <div style={{ width: "100%", overflowX: "auto", WebkitOverflowScrolling: "touch" as const }}>
       <style>{`
         @keyframes collSnakeFlow { from { stroke-dashoffset: 20 } to { stroke-dashoffset: 0 } }
         .coll-snake-pipe { animation: collSnakeFlow 0.75s linear infinite; }

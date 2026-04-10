@@ -203,11 +203,11 @@ function SalaryChart({ province }: { province: ProvinceData }) {
   const maxSalary  = 130000;
 
   const BarRow = ({ l }: { l: CertLevel }) => (
-    <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-      <div style={{ width: 70, fontSize: 11, fontWeight: 700, color: l.color, textAlign: "right", flexShrink: 0 }}>
+    <div className="career-bar-row" style={{ display: "flex", alignItems: "center", gap: 14 }}>
+      <div className="career-bar-label" style={{ width: 70, fontSize: 11, fontWeight: 700, color: l.color, textAlign: "right", flexShrink: 0 }}>
         {l.short}
       </div>
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ position: "relative", height: 28, background: "#F1F5F9", borderRadius: 99 }}>
           <div style={{
             position: "absolute",
@@ -219,7 +219,7 @@ function SalaryChart({ province }: { province: ProvinceData }) {
           }} />
         </div>
       </div>
-      <div style={{ width: 160, flexShrink: 0 }}>
+      <div className="career-bar-salary" style={{ width: 160, flexShrink: 0 }}>
         <div style={{ fontSize: 11, fontWeight: 700, color: l.color }}>
           {fmtSalary(l.annual.min)} – {fmtSalary(l.annual.max)}
         </div>
@@ -560,6 +560,9 @@ export default function CareerMap() {
           .career-detail-metrics { grid-template-columns: 1fr 1fr !important; }
           .career-detail-info { grid-template-columns: 1fr !important; }
           .career-view-toggles { padding: 10px 14px !important; }
+          .career-bar-row { flex-wrap: wrap !important; gap: 8px !important; }
+          .career-bar-label { width: auto !important; text-align: left !important; min-width: 50px !important; }
+          .career-bar-salary { width: auto !important; flex: 1 1 100% !important; }
         }
       `}</style>
 

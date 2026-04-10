@@ -284,10 +284,15 @@ export default function QuizShell({
           .qs-header-actions { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; gap: 6px !important; padding-bottom: 2px !important; margin-top: 10px !important; width: 100% !important; }
           .qs-header-actions::-webkit-scrollbar { display: none; }
           .qs-header-actions button { white-space: nowrap !important; flex-shrink: 0 !important; font-size: 11px !important; padding: 6px 10px !important; }
-          .qs-module-pills { gap: 4px !important; }
-          .qs-module-pills button { font-size: 10px !important; padding: 4px 8px !important; }
+          .qs-module-pills { gap: 4px !important; overflow-x: auto !important; flex-wrap: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 2px !important; }
+          .qs-module-pills::-webkit-scrollbar { display: none; }
+          .qs-module-pills button { font-size: 10px !important; padding: 4px 8px !important; flex-shrink: 0 !important; white-space: nowrap !important; }
           .qs-question-card { padding: 16px 14px 14px !important; }
           .qs-session-card { padding: 28px 18px !important; }
+          .qs-badges-row { flex-wrap: wrap !important; }
+          .qs-q-counter { margin-left: 0 !important; margin-top: 4px !important; }
+          .qs-stats-row { gap: 6px !important; }
+          .qs-stats-row > div { min-width: 48px !important; padding: 4px 8px !important; }
         }
       `}</style>
 
@@ -377,7 +382,7 @@ export default function QuizShell({
           </div>
 
           {/* Stats row */}
-          <div style={{ display: "flex", gap: 10, marginTop: 14, flexWrap: "wrap", alignItems: "center" }}>
+          <div className="qs-stats-row" style={{ display: "flex", gap: 10, marginTop: 14, flexWrap: "wrap", alignItems: "center" }}>
             {[
               { label: "Answered", value: history.length },
               { label: "Correct", value: correctCount },
@@ -501,7 +506,7 @@ export default function QuizShell({
           animation: "fadeUp 0.2s ease",
         }}>
           {/* Badges row */}
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14, alignItems: "center" }}>
+          <div className="qs-badges-row" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14, alignItems: "center" }}>
             {current.module && (
               <span style={{
                 padding: "3px 10px",
@@ -527,7 +532,7 @@ export default function QuizShell({
                 {current.difficulty}
               </span>
             )}
-            <span style={{ fontSize: 11, color: "#94A3B8", marginLeft: "auto" }}>
+            <span className="qs-q-counter" style={{ fontSize: 11, color: "#94A3B8", marginLeft: "auto" }}>
               Q{history.length + 1}
             </span>
           </div>
