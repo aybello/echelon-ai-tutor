@@ -1095,7 +1095,7 @@ export default function Pricing() {
               },
               {
                 q: "Which certification levels are available right now?",
-                a: "All 11 Ontario courses are live: OIT Water (CA$49), OIT Wastewater (CA$49), Class 1–4 Water Treatment (CA$99–$299), Class 1–4 Wastewater Treatment (CA$99–$299), and WQA (CA$149). WPI courses for BC, Alberta, Saskatchewan, and Manitoba are also available at the same price points. Every course includes a practice quiz, timed mock exam, formula sheet, and AI Tutor.",
+                a: "All 23 courses are live. Ontario (11 courses): OIT Water (CA$49), OIT Wastewater (CA$49), Class 1–4 Water Treatment (CA$99–$299), Class 1–4 Wastewater Treatment (CA$99–$299), and WQA (CA$149). WPI — BC, AB, SK, MB (16 courses): Class I–IV Water Treatment, Class I–IV Wastewater Treatment, Class I–IV Water Distribution, and Class I–IV Wastewater Collection — all at CA$99–$299. Every course includes 500+ practice questions, a timed mock exam, AI Tutor, formula sheet, and score history.",
               },
             ].map(faq => (
               <div key={faq.q} className="faq-item">

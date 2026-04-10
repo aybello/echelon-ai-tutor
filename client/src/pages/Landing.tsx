@@ -1417,14 +1417,14 @@ export default function Landing() {
           {(() => {
             const isWestern = province === "bc" || province === "ab" || province === "sk" || province === "mb";
             const ctaHref = isWestern ? "/wpi-class1-water" : "/quiz";
-            const ctaLabel = isWestern ? `Try Free WPI Class I Practice →` : "Try Free OIT Practice →";
+            const ctaLabel = isWestern ? `💧 Try WPI Water Treatment Free →` : "Try Free OIT Practice →";
             return (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.7 }}
             className="landing-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href={ctaHref}>
+            <Link href={ctaHref} style={{ width: "100%" }}>
               <button style={{
                 padding: "14px 32px", borderRadius: 12,
                 background: "linear-gradient(135deg, #2563EB, #0E7490)",
@@ -1436,6 +1436,32 @@ export default function Landing() {
                 {ctaLabel}
               </button>
             </Link>
+            {isWestern && (
+              <>
+                <Link href="/wpi-class1-water-dist" style={{ width: "100%" }}>
+                  <button style={{
+                    padding: "12px 24px", borderRadius: 12,
+                    background: "rgba(3,105,161,0.18)", backdropFilter: "blur(8px)",
+                    color: "#BAE6FD", border: "1px solid rgba(186,230,253,0.3)",
+                    fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
+                    width: "100%",
+                  }}>
+                    🚰 Try WPI Distribution Free →
+                  </button>
+                </Link>
+                <Link href="/wpi-class1-water-coll" style={{ width: "100%" }}>
+                  <button style={{
+                    padding: "12px 24px", borderRadius: 12,
+                    background: "rgba(6,95,70,0.18)", backdropFilter: "blur(8px)",
+                    color: "#6EE7B7", border: "1px solid rgba(110,231,183,0.3)",
+                    fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
+                    width: "100%",
+                  }}>
+                    🔩 Try WPI Collection Free →
+                  </button>
+                </Link>
+              </>
+            )}
             <Link href="/pricing" style={{ width: "100%" }}>
               <button style={{
                 padding: "14px 32px", borderRadius: 12,
@@ -1473,10 +1499,10 @@ export default function Landing() {
             <AnimatedStat value={8500} suffix="+" label="Practice Questions" />
           </StaggerItem>
           <StaggerItem>
-            <AnimatedStat value={19} label="Certification Courses" />
+            <AnimatedStat value={23} label="Certification Courses" />
           </StaggerItem>
           <StaggerItem>
-            <AnimatedStat value={5} label="Specialization Tracks" />
+            <AnimatedStat value={6} label="Specialization Tracks" />
           </StaggerItem>
           <StaggerItem>
             <div>
