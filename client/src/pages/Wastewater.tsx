@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { WW_STEPS, WW_LABEL_INFO, type WastewaterStep } from "@/lib/wastewaterData";
 import { WWDiagramFor } from "@/components/WastewaterDiagrams";
+import WastewaterMap from "@/components/WastewaterMap";
 import SiteNav from "@/components/SiteNav";
 
 function WQCard({ quality, color }: { quality: Record<string, string>; color: string }) {
@@ -77,7 +78,7 @@ function FlowMap({ active, onSelect }: { active: WastewaterStep; onSelect: (s: W
 export default function Wastewater() {
   const [activeStep, setActiveStep] = useState<WastewaterStep>(WW_STEPS[0]);
   const [activeLabel, setActiveLabel] = useState<string | null>(null);
-  const [view, setView] = useState<"learn" | "overview">("learn");
+  const [view, setView] = useState<"learn" | "overview" | "map">("learn");
 
   const labelDesc = activeLabel ? (WW_LABEL_INFO[activeLabel] || null) : null;
 
@@ -124,7 +125,7 @@ export default function Wastewater() {
           <Link href="/collection-guide" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>🔩 Collection</Link>
         </div>
         <div className="view-divider" style={{ width: 1, height: 22, background: "#E5E7EB", marginRight: 6 }} />
-        {([['learn', '🔬 Step Explorer'], ['overview', '📋 Full Overview']] as const).map(([v, l]) => (
+        {([['learn', '🔬 Step Explorer'], ['map', '🗺️ Process Map'], ['overview', '📋 Full Overview']] as const).map(([v, l]) => (
           <button key={v} className="view-btn" onClick={() => setView(v)} style={{
             padding: "7px 16px", borderRadius: 8,
             border: `1px solid ${view === v ? "#7C3AED" : "#E5E7EB"}`,
@@ -149,6 +150,52 @@ export default function Wastewater() {
           </div>
           <FlowMap active={activeStep} onSelect={handleStepSelect} />
         </div>
+
+        {/* ── PROCESS MAP ── */}
+        {view === "map" && (
+          <div style={{ animation: "fadeUp 0.35s ease both" }}>
+            <div style={{ background: "#fff", borderRadius: 16, padding: "28px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", border: "1px solid #E5E7EB" }}>
+              <div style={{ marginBottom: 18 }}>
+                <div style={{ fontSize: 14, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>Complete Wastewater Treatment Process</div>
+                <div style={{ fontSize: 11, color: "#64748B" }}>All 7 treatment stages in sequence — tap any step to open it in the Step Explorer</div>
+              </div>
+              <WastewaterMap
+                activeStepId={activeStep.id}
+                onStepClick={(id) => {
+                  const step = WW_STEPS.find(s => s.id === id);
+                  if (step) { handleStepSelect(step); setView("learn"); }
+                }}
+              />
+              <div style={{ marginTop: 24, borderTop: "1px solid #F1F5F9", paddingTop: 20 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 12 }}>BOD REDUCTION THROUGH TREATMENT</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 0, overflowX: "auto" }}>
+                  {[
+                    { label: "Raw Sewage", value: "200–300 mg/L", color: "#7C3AED", bg: "#EDE9FE" },
+                    { label: "Post-Primary", value: "~150 mg/L", color: "#B45309", bg: "#FEF3C7" },
+                    { label: "Post-Aeration", value: "~30 mg/L", color: "#0369A1", bg: "#E0F2FE" },
+                    { label: "Post-Secondary", value: "20–30 mg/L", color: "#0F766E", bg: "#CCFBF1" },
+                    { label: "Post-Disinfect", value: "<20 mg/L", color: "#D97706", bg: "#FEF9C3" },
+                    { label: "Post-Tertiary", value: "<10 mg/L", color: "#BE185D", bg: "#FCE7F3" },
+                    { label: "Discharge", value: "<10 mg/L ✓", color: "#059669", bg: "#D1FAE5" },
+                  ].map((q, qi, arr) => (
+                    <div key={qi} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+                      <div style={{ background: q.bg, border: `1px solid ${q.color}40`, borderRadius: 10, padding: "8px 12px", textAlign: "center", minWidth: 90 }}>
+                        <div style={{ fontSize: 9, fontWeight: 700, color: q.color, marginBottom: 2 }}>{q.label}</div>
+                        <div style={{ fontSize: 10, fontWeight: 600, color: "#374151" }}>{q.value}</div>
+                      </div>
+                      {qi < arr.length - 1 && (
+                        <div style={{ display: "flex", alignItems: "center", padding: "0 4px" }}>
+                          <div style={{ width: 16, height: 2, background: "#E2E8F0" }} />
+                          <span style={{ fontSize: 10, color: "#CBD5E1" }}>›</span>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* ── STEP EXPLORER ── */}
         {view === "learn" && (
