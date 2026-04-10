@@ -486,6 +486,89 @@ const WPI_WATER_COURSES = [
   },
 ];
 
+const WPI_WATER_DIST_COURSES = [
+  {
+    code: "WPI-D1",
+    title: "WPI Class I Water Distribution",
+    subtitle: "WPI Water Distribution — Class I",
+    duration: "3–4 weeks",
+    questions: 150,
+    description: "WPI Class I Water Distribution prep aligned with WPI Need-to-Know Criteria. Covers distribution system basics, pipe materials, pressure and flow, water quality maintenance, and regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    topics: ["Pipe Materials & Fittings", "Pressure & Flow Basics", "Chlorine Residual Maintenance", "Valve & Hydrant Operation", "Regulations & Safety"],
+    badge: "WPI",
+    badgeColor: "#0369A1",
+    color: "#0369A1",
+    bg: "#E0F2FE",
+    border: "#BAE6FD",
+    comingSoon: false,
+    price: 99,
+    productKey: "wpi-class1-water-dist",
+    quizHref: "/wpi-class1-water-dist",
+    mockHref: "/wpi-class1-water-dist-mock",
+    flashcardHref: "/wpi-class1-water-dist-flashcards",
+  },
+  {
+    code: "WPI-D2",
+    title: "WPI Class II Water Distribution",
+    subtitle: "WPI Water Distribution — Class II",
+    duration: "4–6 weeks",
+    questions: 136,
+    description: "WPI Class II Water Distribution prep. Covers hydraulic analysis, pressure zone design, water quality management, cross-connection control, and regulatory compliance. 136 questions. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    topics: ["Hydraulic Analysis", "Pressure Zone Design", "Water Quality Management", "Cross-Connection Control", "Regulatory Compliance"],
+    badge: "WPI",
+    badgeColor: "#0F766E",
+    color: "#0F766E",
+    bg: "#F0FDFA",
+    border: "#99F6E4",
+    comingSoon: false,
+    price: 149,
+    productKey: "wpi-class2-water-dist",
+    quizHref: "/wpi-class2-water-dist",
+    mockHref: "/wpi-class2-water-dist-mock",
+    flashcardHref: "/wpi-class2-water-dist-flashcards",
+  },
+  {
+    code: "WPI-D3",
+    title: "WPI Class III Water Distribution",
+    subtitle: "WPI Water Distribution — Class III",
+    duration: "6–8 weeks",
+    questions: 150,
+    description: "Senior-level WPI Class III Water Distribution prep. Covers advanced hydraulic modeling, transmission main design, multi-zone systems, SCADA, and senior operator responsibilities. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    topics: ["Advanced Hydraulic Modeling", "Transmission Main Design", "Multi-Zone Systems", "SCADA & Automation", "Senior Operator Responsibilities"],
+    badge: "WPI",
+    badgeColor: "#1E40AF",
+    color: "#1E40AF",
+    bg: "#EFF6FF",
+    border: "#BFDBFE",
+    comingSoon: false,
+    price: 249,
+    productKey: "wpi-class3-water-dist",
+    quizHref: "/wpi-class3-water-dist",
+    mockHref: "/wpi-class3-water-dist-mock",
+    flashcardHref: "/wpi-class3-water-dist-flashcards",
+  },
+  {
+    code: "WPI-D4",
+    title: "WPI Class IV Water Distribution",
+    subtitle: "WPI Water Distribution — Class IV",
+    duration: "8–10 weeks",
+    questions: 150,
+    description: "Chief operator-level WPI Class IV Water Distribution prep. The highest WPI distribution certification. Covers large-scale system management, asset management, advanced water quality, DWQMS, and strategic regulatory compliance. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    topics: ["Large-Scale System Management", "Asset Management", "Advanced Water Quality", "DWQMS Implementation", "Strategic Regulatory Compliance"],
+    badge: "WPI",
+    badgeColor: "#4C1D95",
+    color: "#4C1D95",
+    bg: "#F5F3FF",
+    border: "#DDD6FE",
+    comingSoon: false,
+    price: 299,
+    productKey: "wpi-class4-water-dist",
+    quizHref: "/wpi-class4-water-dist",
+    mockHref: "/wpi-class4-water-dist-mock",
+    flashcardHref: "/wpi-class4-water-dist-flashcards",
+  },
+];
+
 const WPI_WASTEWATER_COURSES = [
   {
     code: "WPI-WW1",
@@ -663,7 +746,7 @@ const STATS = [
   { value: "Free", label: "OIT Access" },
 ];
 
-type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number] | (typeof WPI_WATER_COURSES)[number] | (typeof WPI_WASTEWATER_COURSES)[number];
+type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number] | (typeof WPI_WATER_COURSES)[number] | (typeof WPI_WASTEWATER_COURSES)[number] | (typeof WPI_WATER_DIST_COURSES)[number];
 
 function CourseCard({ course }: { course: CourseType }) {
   const [expanded, setExpanded] = useState(false);
@@ -871,7 +954,7 @@ export default function Landing() {
   const updateProvinceMutation = trpc.auth.updateProvince.useMutation();
   // Default active track based on province: WPI for western provinces, ontario water for ON
   const defaultTrack = (province === "bc" || province === "ab" || province === "sk" || province === "mb") ? "wpi-water" : "water";
-  const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa" | "wpi-water" | "wpi-wastewater">(defaultTrack);
+  const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa" | "wpi-water" | "wpi-wastewater" | "wpi-dist">(defaultTrack);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [nationalWaitlistOpen, setNationalWaitlistOpen] = useState(false);
   const [nationalWaitlistProvince, setNationalWaitlistProvince] = useState("");
@@ -1445,6 +1528,18 @@ export default function Landing() {
             >
               🌿 WPI Wastewater
             </button>
+            <button
+              onClick={() => setActiveTrack("wpi-dist")}
+              style={{
+                padding: "10px 20px", borderRadius: 10, border: "none",
+                background: activeTrack === "wpi-dist" ? "#0369A1" : "transparent",
+                color: activeTrack === "wpi-dist" ? "#fff" : "#64748B",
+                fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                transition: "all 0.2s", whiteSpace: "nowrap",
+              }}
+            >
+              🚰 WPI Distribution
+            </button>
           </div>
         </div>
         </FadeUp>
@@ -1454,7 +1549,7 @@ export default function Landing() {
           gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
           gap: 24,
         }}>
-          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : WQA_COURSES).map(course => (
+          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : activeTrack === "wpi-dist" ? WPI_WATER_DIST_COURSES : WQA_COURSES).map(course => (
             <CourseCard key={course.code} course={course} />
           ))}
         </div>
