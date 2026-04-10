@@ -78,7 +78,7 @@ function FlowMap({ active, onSelect }: { active: CollectionStep; onSelect: (s: C
 export default function WastewaterCollectionGuide() {
   const [activeStep, setActiveStep] = useState<CollectionStep>(COLL_STEPS[0]);
   const [activeLabel, setActiveLabel] = useState<string | null>(null);
-  const [view, setView] = useState<"learn" | "overview" | "map">("learn");
+  const [view, setView] = useState<"learn" | "overview" | "map">("map");
 
   const labelDesc = activeLabel ? (COLL_LABEL_INFO[activeLabel] || null) : null;
 
@@ -127,7 +127,7 @@ export default function WastewaterCollectionGuide() {
           <span style={{ padding: "6px 14px", borderRadius: 8, background: "#7C3AED", color: "#fff", fontSize: 11, fontWeight: 700, cursor: "default" }}>🔩 Collection</span>
         </div>
         <div className="view-divider" style={{ width: 1, height: 22, background: "#E5E7EB", marginRight: 6 }} />
-        {([['learn', '🔬 Step Explorer'], ['map', '🗺️ Process Map'], ['overview', '📋 Full Overview']] as const).map(([v, l]) => (
+        {([['map', '🗺️ Process Map'], ['learn', '🔬 Step Explorer'], ['overview', '📋 Full Overview']] as const).map(([v, l]) => (
           <button key={v} className="view-btn" onClick={() => setView(v)} style={{
             padding: "7px 16px", borderRadius: 8,
             border: `1px solid ${view === v ? "#7C3AED" : "#E5E7EB"}`,

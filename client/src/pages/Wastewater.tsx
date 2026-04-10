@@ -78,7 +78,7 @@ function FlowMap({ active, onSelect }: { active: WastewaterStep; onSelect: (s: W
 export default function Wastewater() {
   const [activeStep, setActiveStep] = useState<WastewaterStep>(WW_STEPS[0]);
   const [activeLabel, setActiveLabel] = useState<string | null>(null);
-  const [view, setView] = useState<"learn" | "overview" | "map">("learn");
+  const [view, setView] = useState<"learn" | "overview" | "map">("map");
 
   const labelDesc = activeLabel ? (WW_LABEL_INFO[activeLabel] || null) : null;
 
@@ -125,7 +125,7 @@ export default function Wastewater() {
           <Link href="/collection-guide" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>🔩 Collection</Link>
         </div>
         <div className="view-divider" style={{ width: 1, height: 22, background: "#E5E7EB", marginRight: 6 }} />
-        {([['learn', '🔬 Step Explorer'], ['map', '🗺️ Process Map'], ['overview', '📋 Full Overview']] as const).map(([v, l]) => (
+        {([['map', '🗺️ Process Map'], ['learn', '🔬 Step Explorer'], ['overview', '📋 Full Overview']] as const).map(([v, l]) => (
           <button key={v} className="view-btn" onClick={() => setView(v)} style={{
             padding: "7px 16px", borderRadius: 8,
             border: `1px solid ${view === v ? "#7C3AED" : "#E5E7EB"}`,
