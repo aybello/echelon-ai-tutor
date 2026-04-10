@@ -106,6 +106,20 @@
       "when": 1775557475332,
       "tag": "0014_adorable_thundra",
       "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "5",
+      "when": 1775864300565,
+      "tag": "0015_round_purifiers",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "5",
+      "when": 1775865094835,
+      "tag": "0016_right_hitman",
+      "breakpoints": true
     }
   ]
 }

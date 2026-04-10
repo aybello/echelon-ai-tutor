@@ -143,3 +143,51 @@ export const examDates = mysqlTable("exam_dates", {
 });
 export type ExamDate = typeof examDates.$inferSelect;
 export type InsertExamDate = typeof examDates.$inferInsert;
+
+/** Question attempts — logs every quiz answer for topic tracking, missed questions, and agentic features */
+export const questionAttempts = mysqlTable("question_attempts", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"), // null for guest users
+  guestToken: varchar("guestToken", { length: 64 }), // localStorage token for guest tracking
+  examType: varchar("examType", { length: 64 }).notNull(), // e.g. 'oit', 'class1-water', 'wpi-class2-wastewater'
+  topic: varchar("topic", { length: 128 }).notNull(), // e.g. 'Disinfection', 'Hydraulics'
+  questionId: int("questionId").notNull(),
+  correct: mysqlEnum("correct", ["yes", "no"]).notNull(),
+  difficulty: varchar("difficulty", { length: 16 }), // 'easy' | 'medium' | 'hard'
+  quizMode: varchar("quizMode", { length: 32 }).default("standard"), // 'standard' | 'quick10' | 'missed' | 'qotd'
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+export type QuestionAttempt = typeof questionAttempts.$inferSelect;
+export type InsertQuestionAttempt = typeof questionAttempts.$inferInsert;
+
+/** Student profiles — live topic accuracy snapshot, updated after each quiz session */
+export const studentProfiles = mysqlTable("student_profiles", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().unique(),
+  examType: varchar("examType", { length: 64 }).notNull(), // primary exam type
+  topicAccuracy: text("topicAccuracy").notNull(), // JSON: { "Disinfection": { correct: 18, total: 22 } } — default '{}' set in app code
+  weakTopics: text("weakTopics").notNull(), // JSON array of topic names with <65% accuracy — default '[]' set in app code
+  strongTopics: text("strongTopics").notNull(), // JSON array of topic names with >80% accuracy — default '[]' set in app code
+  totalAttempts: int("totalAttempts").notNull().default(0),
+  totalSessions: int("totalSessions").notNull().default(0),
+  currentStreak: int("currentStreak").notNull().default(0), // consecutive days active
+  longestStreak: int("longestStreak").notNull().default(0),
+  lastActiveDate: varchar("lastActiveDate", { length: 10 }), // YYYY-MM-DD for streak calculation
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type StudentProfile = typeof studentProfiles.$inferSelect;
+export type InsertStudentProfile = typeof studentProfiles.$inferInsert;
+
+/** QOTD completions — tracks which users completed each day's Question of the Day */
+export const qotdCompletions = mysqlTable("qotd_completions", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"), // null for guests
+  guestToken: varchar("guestToken", { length: 64 }),
+  examType: varchar("examType", { length: 64 }).notNull(),
+  questionId: int("questionId").notNull(),
+  dateKey: varchar("dateKey", { length: 10 }).notNull(), // YYYY-MM-DD
+  correct: mysqlEnum("correct", ["yes", "no"]).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+export type QotdCompletion = typeof qotdCompletions.$inferSelect;
+export type InsertQotdCompletion = typeof qotdCompletions.$inferInsert;

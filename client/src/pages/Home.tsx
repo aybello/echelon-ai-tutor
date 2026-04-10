@@ -12,6 +12,8 @@ import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import QuizShell from "@/components/QuizShell";
 import { OIT_WATER_OVERVIEWS } from "@/lib/moduleOverviews";
+import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
+import { trpc } from "@/lib/trpc";
 
 const SESSION_SIZE = 15;
 
@@ -49,17 +51,34 @@ export default function Home() {
   const [calcOnly, setCalcOnly]       = useState(false);
   const [trialUnlocked, setTrialUnlockedState] = useState<boolean>(() => isTrialUnlocked());
   const [showGate, setShowGate]       = useState(false);
+  const [quizMode, setQuizMode]       = useState<QuizMode>("standard");
+  const [missedIds, setMissedIds]     = useState<number[]>([]);
+
+  // Attempt logger — fires silently on every confirmed answer
+  const logAttempt = useAttemptLogger("oit", quizMode);
+
+  // Fetch missed question IDs for the Missed Quiz mode
+  const { data: missedData } = trpc.quiz.getMissedQuestions.useQuery(
+    { examType: "oit", limit: 30 },
+    { refetchOnWindowFocus: false }
+  );
 
   const correctCount = history.filter(h => h.correct).length;
   const wrongCount   = history.filter(h => !h.correct).length;
+  const missedCount  = missedData?.total ?? 0;
 
   // ── Filtered pool ──────────────────────────────────────────────────────────
   const pool = useMemo(() => {
     let qs = QUESTIONS.filter(q => !usedIds.has(q.id));
-    if (selectedModule) qs = qs.filter(q => q.module === selectedModule);
-    if (calcOnly) qs = qs.filter(q => q.isCalc === true);
+    if (quizMode === "missed" && missedIds.length > 0) {
+      const missedSet = new Set(missedIds);
+      qs = QUESTIONS.filter(q => missedSet.has(q.id) && !usedIds.has(q.id));
+    } else {
+      if (selectedModule) qs = qs.filter(q => q.module === selectedModule);
+      if (calcOnly) qs = qs.filter(q => q.isCalc === true);
+    }
     return qs;
-  }, [usedIds, selectedModule, calcOnly]);
+  }, [usedIds, selectedModule, calcOnly, quizMode, missedIds]);
 
   // ── Confirm answer ─────────────────────────────────────────────────────────
   const handleConfirm = useCallback(() => {
@@ -79,15 +98,19 @@ export default function Home() {
     setHistory(updatedHistory);
     setUsedIds(s => new Set([...Array.from(s), current.id]));
     setConfirmed(true);
+    // Log attempt silently for topic tracking and missed questions
+    logAttempt({ topic: current.module, questionId: current.id, correct: isCorrect, difficulty: current.difficulty });
     // Fire gate after SESSION_SIZE answers for non-unlocked users
-    if (updatedHistory.length >= SESSION_SIZE && !trialUnlocked) {
+    const effectiveSize = quizMode === "quick10" ? 10 : SESSION_SIZE;
+    if (updatedHistory.length >= effectiveSize && !trialUnlocked) {
       setShowGate(true);
     }
-  }, [selected, confidence, current, history, trialUnlocked]);
+  }, [selected, confidence, current, history, trialUnlocked, logAttempt, quizMode]);
 
   // ── Next question ──────────────────────────────────────────────────────────
   const handleNext = useCallback(() => {
-    if (history.length >= SESSION_SIZE && !trialUnlocked) {
+    const effectiveSize = quizMode === "quick10" ? 10 : SESSION_SIZE;
+    if (history.length >= effectiveSize && !trialUnlocked) {
       setShowGate(true);
       return;
     }
@@ -102,7 +125,7 @@ export default function Home() {
     setConfirmed(false);
     setShowSteps(false);
     setTutorOpen(false);
-  }, [history, pool, trialUnlocked]);
+  }, [history, pool, trialUnlocked, quizMode]);
 
   // ── Go back ────────────────────────────────────────────────────────────────
   const goBack = useCallback(() => {
@@ -136,6 +159,36 @@ export default function Home() {
     const q = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)];
     setCurrent(q ?? null);
   }, []);
+
+  // ── Mode change ────────────────────────────────────────────────────────────
+  const handleModeChange = useCallback((mode: QuizMode) => {
+    setQuizMode(mode);
+    setHistory([]);
+    setUsedIds(new Set());
+    setSelected(null);
+    setConfidence(null);
+    setConfirmed(false);
+    setShowSteps(false);
+    setTutorOpen(false);
+    if (mode === "missed") {
+      const ids = missedData?.questionIds ?? [];
+      setMissedIds(ids);
+      if (ids.length > 0) {
+        const missedSet = new Set(ids);
+        const pool = QUESTIONS.filter(q => missedSet.has(q.id));
+        const q = pool[Math.floor(Math.random() * pool.length)];
+        setCurrent(q ?? null);
+      } else {
+        setCurrent(null);
+      }
+    } else if (mode === "quick10") {
+      const q = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)];
+      setCurrent(q ?? null);
+    } else {
+      const q = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)];
+      setCurrent(q ?? null);
+    }
+  }, [missedData]);
 
   // ── Calc Only toggle ───────────────────────────────────────────────────────
   const handleCalcOnlyToggle = useCallback(() => {
@@ -173,6 +226,12 @@ export default function Home() {
 
   return (
     <>
+      <QuizModeBar
+        examType="oit"
+        currentMode={quizMode}
+        onModeChange={handleModeChange}
+        missedCount={missedCount}
+      />
       <QuizShell
         currentPath="/quiz"
         courseLabel="Ontario OIT · Water Treatment"
