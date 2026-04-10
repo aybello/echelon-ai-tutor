@@ -120,6 +120,8 @@ export default function Wastewater() {
         <div className="stream-switcher" style={{ display: "flex", gap: 4, marginRight: 12, background: "#F1F5F9", borderRadius: 10, padding: 3 }}>
           <Link href="/process" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>💧 Drinking Water</Link>
           <span style={{ padding: "6px 14px", borderRadius: 8, background: "#7C3AED", color: "#fff", fontSize: 11, fontWeight: 700, cursor: "default" }}>♻️ Wastewater</span>
+          <Link href="/distribution-guide" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>🚰 Distribution</Link>
+          <Link href="/collection-guide" style={{ padding: "6px 14px", borderRadius: 8, background: "transparent", color: "#64748B", fontSize: 11, fontWeight: 600, cursor: "pointer", textDecoration: "none", display: "inline-flex", alignItems: "center" }}>🔩 Collection</Link>
         </div>
         <div className="view-divider" style={{ width: 1, height: 22, background: "#E5E7EB", marginRight: 6 }} />
         {([['learn', '🔬 Step Explorer'], ['overview', '📋 Full Overview']] as const).map(([v, l]) => (
