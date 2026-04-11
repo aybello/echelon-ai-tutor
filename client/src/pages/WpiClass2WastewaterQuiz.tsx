@@ -192,27 +192,7 @@ export default function WpiClass2WastewaterQuiz() {
 
   const correctCount = history.filter(h => h.correct).length;
 
-  if (trialDone && !trialUnlocked) {
-    return (
-      <QuizGate
-        questionsAnswered={history.length}
-        productKey="wpi-class2-wastewater"
-        productName="WPI Class II Wastewater Treatment Practice Pass"
-        priceLabel="CA$149"
-        paidFeatures={[
-          "501 WPI Class II Wastewater questions — unlimited attempts",
-          "Timed mock exam (100 questions, 2 hrs)",
-          "AI Tutor explanations on every question",
-          "Module-by-module performance tracking",
-        ]}
-        onUnlocked={() => {
-          setTrialUnlocked(); setTrialDone(false);
-          setCurrent(getNext());
-          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-        }}
-      />
-    );
-  }
+
 
   return (
       <QuizShell
@@ -283,6 +263,25 @@ export default function WpiClass2WastewaterQuiz() {
             onClose={() => setTutorOpen(false)}
           />
         )}
+        gate={trialDone && !trialUnlocked ? (
+          <QuizGate
+            questionsAnswered={history.length}
+            productKey="wpi-class2-wastewater"
+            productName="WPI Class II Wastewater Treatment Practice Pass"
+            priceLabel="CA$149"
+            paidFeatures={[
+              "501 WPI Class II Wastewater questions — unlimited attempts",
+              "Timed mock exam (100 questions, 2 hrs)",
+              "AI Tutor explanations on every question",
+              "Module-by-module performance tracking",
+            ]}
+            onUnlocked={() => {
+              setTrialUnlocked(); setTrialDone(false);
+              setCurrent(getNext());
+              setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+            }}
+          />
+        ) : undefined}
       />
   );
 }

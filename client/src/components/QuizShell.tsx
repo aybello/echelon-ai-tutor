@@ -118,6 +118,9 @@ export interface QuizShellProps {
   timedSeconds?: number;
   // Optional: callback when timer expires (caller should auto-confirm/advance)
   onTimeUp?: () => void;
+  // Optional: paywall/gate overlay — rendered on top of the quiz when provided.
+  // Use this instead of an early return so the page stays mounted on mobile.
+  gate?: ReactNode;
 }
 
 // ─── Constants ───────────────────────────────────────────────────────────────
@@ -178,6 +181,7 @@ export default function QuizShell({
   headerExtra,
   timedSeconds = 0,
   onTimeUp,
+  gate,
 }: QuizShellProps) {
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
@@ -301,7 +305,7 @@ export default function QuizShell({
     ?? (formulaLinks && current.module ? formulaLinks[current.module] : undefined);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
@@ -572,7 +576,7 @@ export default function QuizShell({
         </div>
       )}
       {/* ── Body ── */}
-      <div style={{ maxWidth: 760, margin: "0 auto", padding: "20px 16px 80px" }}>
+      <div style={{ maxWidth: 760, margin: "0 auto", padding: "20px 16px 120px" }}>
 
         {/* Module Overview panel — shown when a specific module is selected */}
         {moduleOverviews && selectedModule && moduleOverviews[selectedModule] && (
@@ -1006,6 +1010,8 @@ export default function QuizShell({
           </div>
         </div>
       )}
+      {/* ── Gate overlay (paywall) — rendered on top of the quiz ── */}
+      {gate}
     </div>
   );
 }

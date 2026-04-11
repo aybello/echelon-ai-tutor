@@ -232,31 +232,7 @@ export default function Class2WaterQuiz() {
     }
   }, [allQuestions, usedIds, calcOnly]);
 
-  if (trialDone && !trialUnlocked) {
-    return (
-      <QuizGate
-        questionsAnswered={history.length}
-        productKey="class2-water"
-        productName="Class 2 Water Treatment Practice Pass"
-        priceLabel="CA$149"
-        paidFeatures={[
-          "500 Class 2 Water questions — unlimited attempts",
-          "Timed mock exam (100 questions, 2 hrs)",
-          "AI Tutor explanations on every question",
-          "Module-by-module performance tracking",
-        ]}
-        onUnlocked={() => {
-          setTrialUnlocked();
-          setTrialDone(false);
-          setSelected(null);
-          setConfidence(null);
-          setConfirmed(false);
-          setShowSteps(false);
-          setTutorOpen(false);
-        }}
-      />
-    );
-  }
+
 
   return (
       <QuizShell
@@ -332,6 +308,29 @@ export default function Class2WaterQuiz() {
             onClose={() => setTutorOpen(false)}
           />
         )}
+        gate={trialDone && !trialUnlocked ? (
+          <QuizGate
+            questionsAnswered={history.length}
+            productKey="class2-water"
+            productName="Class 2 Water Treatment Practice Pass"
+            priceLabel="CA$149"
+            paidFeatures={[
+              "500 Class 2 Water questions — unlimited attempts",
+              "Timed mock exam (100 questions, 2 hrs)",
+              "AI Tutor explanations on every question",
+              "Module-by-module performance tracking",
+            ]}
+            onUnlocked={() => {
+              setTrialUnlocked();
+              setTrialDone(false);
+              setSelected(null);
+              setConfidence(null);
+              setConfirmed(false);
+              setShowSteps(false);
+              setTutorOpen(false);
+            }}
+          />
+        ) : undefined}
       />
   );
 }

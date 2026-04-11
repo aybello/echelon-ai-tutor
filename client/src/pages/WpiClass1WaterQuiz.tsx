@@ -197,29 +197,6 @@ export default function WpiClass1WaterQuiz() {
 
   const correctCount = history.filter(h => h.correct).length;
 
-  // ── Trial gate ─────────────────────────────────────────────────────────────
-  if (trialDone && !trialUnlocked) {
-    return (
-      <QuizGate
-        questionsAnswered={history.length}
-        productKey="wpi-class1-water"
-        productName="WPI Class I Water Treatment Practice Pass"
-        priceLabel="CA$99"
-        paidFeatures={[
-          "502 WPI Class I questions — unlimited attempts",
-          "Timed mock exam (100 questions, 2 hrs)",
-          "AI Tutor explanations on every question",
-          "Module-by-module performance tracking",
-        ]}
-        onUnlocked={() => {
-          setTrialUnlocked(); setTrialDone(false);
-          setCurrent(getNext());
-          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-        }}
-      />
-    );
-  }
-
   return (
     <QuizShell
       currentPath="/wpi-class1-water"
@@ -289,6 +266,25 @@ export default function WpiClass1WaterQuiz() {
             onClose={() => setTutorOpen(false)}
           />
         )}
+        gate={trialDone && !trialUnlocked ? (
+          <QuizGate
+            questionsAnswered={history.length}
+            productKey="wpi-class1-water"
+            productName="WPI Class I Water Treatment Practice Pass"
+            priceLabel="CA$99"
+            paidFeatures={[
+              "502 WPI Class I questions — unlimited attempts",
+              "Timed mock exam (100 questions, 2 hrs)",
+              "AI Tutor explanations on every question",
+              "Module-by-module performance tracking",
+            ]}
+            onUnlocked={() => {
+              setTrialUnlocked(); setTrialDone(false);
+              setCurrent(getNext());
+              setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+            }}
+          />
+        ) : undefined}
       />
   );
 }

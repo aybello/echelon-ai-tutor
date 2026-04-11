@@ -222,31 +222,7 @@ export default function Class1WastewaterQuiz() {
     }
   }, [allQuestions, usedIds, calcOnly]);
 
-  if (trialDone && !trialUnlocked) {
-    return (
-      <QuizGate
-        questionsAnswered={history.length}
-        productKey="class1-ww"
-        productName="Class 1 Wastewater Treatment Practice Pass"
-        priceLabel="CA$99"
-        paidFeatures={[
-          "500 Class 1 Wastewater questions — unlimited attempts",
-          "Timed mock exam (100 questions, 2 hrs)",
-          "AI Tutor explanations on every question",
-          "Module-by-module performance tracking",
-        ]}
-        onUnlocked={() => {
-          setTrialUnlocked();
-          setTrialDone(false);
-          setSelected(null);
-          setConfidence(null);
-          setConfirmed(false);
-          setShowSteps(false);
-          setTutorOpen(false);
-        }}
-      />
-    );
-  }
+
 
   return (
       <QuizShell
@@ -321,6 +297,29 @@ export default function Class1WastewaterQuiz() {
             onClose={() => setTutorOpen(false)}
           />
         )}
+        gate={trialDone && !trialUnlocked ? (
+          <QuizGate
+            questionsAnswered={history.length}
+            productKey="class1-ww"
+            productName="Class 1 Wastewater Treatment Practice Pass"
+            priceLabel="CA$99"
+            paidFeatures={[
+              "500 Class 1 Wastewater questions — unlimited attempts",
+              "Timed mock exam (100 questions, 2 hrs)",
+              "AI Tutor explanations on every question",
+              "Module-by-module performance tracking",
+            ]}
+            onUnlocked={() => {
+              setTrialUnlocked();
+              setTrialDone(false);
+              setSelected(null);
+              setConfidence(null);
+              setConfirmed(false);
+              setShowSteps(false);
+              setTutorOpen(false);
+            }}
+          />
+        ) : undefined}
       />
   );
 }

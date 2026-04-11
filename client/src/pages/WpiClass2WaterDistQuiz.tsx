@@ -164,27 +164,7 @@ export default function WpiClass2WaterDistQuiz() {
 
   const correctCount = history.filter(h => h.correct).length;
 
-  if (trialDone && !trialUnlocked) {
-    return (
-      <QuizGate
-        questionsAnswered={history.length}
-        productKey="wpi-class2-water-dist"
-        productName="WPI Class II Water Distribution Practice Pass"
-        priceLabel="CA$99"
-        paidFeatures={[
-          "506 WPI Class II Distribution questions — unlimited attempts",
-          "Timed mock exam (100 questions, 2 hrs)",
-          "AI Tutor explanations on every question",
-          "Module-by-module performance tracking",
-        ]}
-        onUnlocked={() => {
-          setTrialUnlocked(); setTrialDone(false);
-          setCurrent(getNext());
-          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-        }}
-      />
-    );
-  }
+
 
   return (
       <QuizShell
@@ -258,6 +238,25 @@ export default function WpiClass2WaterDistQuiz() {
             onClose={() => setTutorOpen(false)}
           />
         )}
+        gate={trialDone && !trialUnlocked ? (
+          <QuizGate
+            questionsAnswered={history.length}
+            productKey="wpi-class2-water-dist"
+            productName="WPI Class II Water Distribution Practice Pass"
+            priceLabel="CA$99"
+            paidFeatures={[
+              "506 WPI Class II Distribution questions — unlimited attempts",
+              "Timed mock exam (100 questions, 2 hrs)",
+              "AI Tutor explanations on every question",
+              "Module-by-module performance tracking",
+            ]}
+            onUnlocked={() => {
+              setTrialUnlocked(); setTrialDone(false);
+              setCurrent(getNext());
+              setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+            }}
+          />
+        ) : undefined}
       />
   );
 }

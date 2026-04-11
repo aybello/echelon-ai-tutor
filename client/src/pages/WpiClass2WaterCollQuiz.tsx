@@ -151,27 +151,7 @@ export default function WpiClass2WaterCollQuiz() {
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
   }
   const correctCount = history.filter(h => h.correct).length;
-  if (trialDone && !trialUnlocked) {
-    return (
-      <QuizGate
-        questionsAnswered={history.length}
-        productKey="wpi-class2-water-coll"
-        productName="WPI Class II Wastewater Collection Practice Pass"
-        priceLabel="CA$149"
-        paidFeatures={[
-          "504 WPI Class II Collection questions — unlimited attempts",
-          "Timed mock exam (100 questions, 2 hrs)",
-          "AI Tutor explanations on every question",
-          "Module-by-module performance tracking",
-        ]}
-        onUnlocked={() => {
-          setTrialUnlocked(); setTrialDone(false);
-          setCurrent(getNext());
-          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-        }}
-      />
-    );
-  }
+
   return (
       <QuizShell
         currentPath="/wpi-class2-water-coll"
@@ -244,6 +224,25 @@ export default function WpiClass2WaterCollQuiz() {
             onClose={() => setTutorOpen(false)}
           />
         )}
+        gate={trialDone && !trialUnlocked ? (
+          <QuizGate
+            questionsAnswered={history.length}
+            productKey="wpi-class2-water-coll"
+            productName="WPI Class II Wastewater Collection Practice Pass"
+            priceLabel="CA$149"
+            paidFeatures={[
+              "504 WPI Class II Collection questions — unlimited attempts",
+              "Timed mock exam (100 questions, 2 hrs)",
+              "AI Tutor explanations on every question",
+              "Module-by-module performance tracking",
+            ]}
+            onUnlocked={() => {
+              setTrialUnlocked(); setTrialDone(false);
+              setCurrent(getNext());
+              setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+            }}
+          />
+        ) : undefined}
       />
   );
 }

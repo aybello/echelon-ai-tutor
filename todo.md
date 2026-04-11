@@ -463,3 +463,7 @@
 - [x] Root cause: SiteNav set position:fixed on body which broke child fixed elements
 - [x] Fix 1: QuizGate now uses createPortal to render into document.body directly
 - [x] Fix 2: SiteNav scroll lock now uses overflow:hidden only (not position:fixed)
+
+## Mobile Scroll Bounce Bug (Apr 11, 2026)
+- [x] Fix scroll bounce on mobile — increased bottom padding to 120px + overscrollBehavior:none on quiz container
+- [x] Fix blank white page on mobile Chrome after question 15 — all 25 quiz pages now pass gate as prop to QuizShell instead of early return, keeping page mounted

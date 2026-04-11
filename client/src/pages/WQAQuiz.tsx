@@ -221,30 +221,7 @@ export default function WQAQuiz() {
     }
   }, [allQuestions, usedIds, calcOnly]);
 
-  if (trialDone && !trialUnlocked) {
-    return (
-      <QuizGate
-        questionsAnswered={history.length}
-        productKey="wqa"
-        productName="WQA Practice Pass"
-        priceLabel="CA$149"
-        paidFeatures={[
-          "475 WQA questions — unlimited attempts",
-          "Timed mock exam (100 questions, 2 hrs)",
-          "AI Tutor explanations on every question",
-          "Module-by-module performance tracking",
-        ]}
-        onUnlocked={() => {
-          setTrialUnlocked();
-          setTrialDone(false);
-          setSelected(null);
-          setConfidence(null);
-          setConfirmed(false);
-          setShowSteps(false);
-        }}
-      />
-    );
-  }
+
 
   return (
       <QuizShell
@@ -320,6 +297,28 @@ export default function WQAQuiz() {
             onClose={() => setTutorOpen(false)}
           />
         )}
+        gate={trialDone && !trialUnlocked ? (
+          <QuizGate
+            questionsAnswered={history.length}
+            productKey="wqa"
+            productName="WQA Practice Pass"
+            priceLabel="CA$149"
+            paidFeatures={[
+              "475 WQA questions — unlimited attempts",
+              "Timed mock exam (100 questions, 2 hrs)",
+              "AI Tutor explanations on every question",
+              "Module-by-module performance tracking",
+            ]}
+            onUnlocked={() => {
+              setTrialUnlocked();
+              setTrialDone(false);
+              setSelected(null);
+              setConfidence(null);
+              setConfirmed(false);
+              setShowSteps(false);
+            }}
+          />
+        ) : undefined}
       />
   );
 }
