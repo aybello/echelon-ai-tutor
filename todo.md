@@ -446,3 +446,9 @@
 - [x] Bug 16f: WQAMockExam — added Time's up toast to timer expiry
 - [x] Bug 16g: OITWastewaterMockExam — added Time's up toast to timer expiry
 - [x] Bug 17: /mock-exam route already redirects to /oit-mock (fixed in earlier pass)
+
+## Critical Bug: Skewed Answer Distribution (Apr 11, 2026)
+- [x] Fix answer distribution in ALL WPI question banks (80-100% of correct answers are B)
+- [x] Fix answer distribution in non-WPI banks (class1, class1Water, class2WW, OIT questions)
+- [x] Verify all banks have ~25% per option (A/B/C/D) after fix
+- [x] Ensure explanations and correct index stay in sync after shuffling

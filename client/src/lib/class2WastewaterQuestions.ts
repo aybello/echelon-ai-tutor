@@ -42,10 +42,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "Alkaline",
       "Neutral",
-      "Basic",
-      "Acidic"
+      "Acidic",
+      "Basic"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "The pH scale is 0 to 14 … 0 to 6.9 is acidic … 7.0 is neutral … 7.1 to 14 is basic (alkaline). So, a sample with a pH of 6.0 is a fairly weak acid."
   },
   {
@@ -54,12 +54,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What are very small, finely‑divided solids known as:",
     "options": [
-      "Settleable",
-      "Total",
       "Colloidal",
+      "Total",
+      "Settleable",
       "Inert"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Colloidal is a general term for scattering of small particles of matter dispersed in a liquid, gas or solid. Common examples of colloidal body liquids are milk or blood."
   },
   {
@@ -84,10 +84,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "Free swimming ciliate",
       "Stalked ciliate",
-      "Rotifer",
-      "They are all the same"
+      "They are all the same",
+      "Rotifer"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Beginning with the lowest life form, the microorganism indicators are amoebas, small flagellates, large flagellates, free swimming ciliates, stalk ciliates, rotifers, nematodes and water bears. So, of the three indicators listed in the question, the rotifer is the highest life form in the activated sludge process."
   },
   {
@@ -96,12 +96,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which term describes the conversion of ammonia nitrogen to oxidized nitrogen (usually nitrate)?",
     "options": [
-      "Fermentation",
-      "Log Growth",
       "Nitrification",
+      "Log Growth",
+      "Fermentation",
       "Denitrification"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Nitrification is the oxidation, or conversion, of ammonia to nitrites and nitrates. Nitrification, however, does not necessarily remove nitrogen from the water, it just converts it from one form to another."
   },
   {
@@ -110,12 +110,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What will organic material do in a muffle furnace?",
     "options": [
-      "It will burn",
-      "It will not burn",
       "It will chance to inorganic material",
+      "It will not burn",
+      "It will burn",
       "It will convert to dissolved solids"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Organic material, and other volatile matter, will typically burn in a muffle furnace at temperatures of about 550oC. However, just because something burns in a muffle furnace does not necessarily mean that it is biological in nature."
   },
   {
@@ -125,11 +125,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the best definition of a shock load?",
     "options": [
       "An unexpected bump",
-      "A strong influent waste strength",
+      "A heavy truck load entering the plant",
       "A high concentration of TSS",
-      "A heavy truck load entering the plant"
+      "A strong influent waste strength"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "The term “loading” refers to the demand for oxygen placed on the activated sludge process from the flow being treated. A shock load is a high demand for oxygen (from CBOD5, COD or nitrogen) placed on the activated sludge process in a short period of time."
   },
   {
@@ -138,12 +138,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which environment does filamentous bacteria like best?",
     "options": [
-      "Aerobic",
-      "Anaerobic",
       "Facultative",
+      "Anaerobic",
+      "Aerobic",
       "Anoxic"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Filamentous bacteria are strict aerobes. This means that filamentous bacteria must be provided dissolved oxygen to survive and grow. Unlike many forms of heterotrophic organisms, filamentous organisms cannot use combined forms of oxygen, like nitrites and nitrates, to grow and multiply."
   },
   {
@@ -152,12 +152,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What does one cubic foot of water weigh at 4°C?",
     "options": [
-      "7.48 pounds",
+      "62.4 pounds",
       "8.34 pounds",
       "3.14159 pounds",
-      "62.4 pounds"
+      "7.48 pounds"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "One gallon of water at STP (standard temperature and pressure) weighs 8.34 pounds, and one cubic foot of water holds 7.48 gallons … therefore, one cubic foot of water weighs 62.383 pounds (8.34 x 7.48)."
   },
   {
@@ -166,12 +166,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which is a higher life form in the activated sludge process ... a free swimming ciliate or a stalked ciliate?",
     "options": [
-      "Free swimming ciliate",
       "Stalked ciliate",
+      "Free swimming ciliate",
       "They are both the same",
       "Rotifers are younger than free swimmers"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Based on the typical growth curve of microorganisms, stalked ciliates are higher life forms than free swimming ciliates. When free swimmers are being taken over by stalks (stalk ciliates are becoming dominant over free swimming ciliates), this indicates that the sludge is getting older."
   },
   {
@@ -182,10 +182,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "lbs/day volatile microorganisms",
       "gpd plant flow",
-      "lbs/day influent CBOD5",
-      "gpd waste sludge"
+      "gpd waste sludge",
+      "lbs/day influent CBOD5"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "The “F” actually means “food.” CBOD5 is the food supply for the volatile microorganisms … active bugs. An F/M ratio of, let’s say 0.15, means there are 0.15 pounds of food (CBOD5) available for each one pound of active, volatile microorganism (MLVSS). Or, differently said, there are 15 pounds of food for each 100 pounds of bugs."
   },
   {
@@ -195,11 +195,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What factor may be more important in maintaining efficient operation of a primary clarifier?",
     "options": [
       "Location of the tank",
-      "Characteristics of the influent wastewater",
+      "Activated sludge SRT",
       "Number of operators in the facility",
-      "Activated sludge SRT"
+      "Characteristics of the influent wastewater"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "The characteristics of the influent (mainly the flow rate, concentrations of CBOD5, TSS and oil and grease, temperature and other criteria) probably has the largest impact on the overall performance of a primary clarifier."
   },
   {
@@ -209,11 +209,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the detention time in a primary clarifier that is 100 feet long, 25 feet wide, 14 feet deep, and the influent flow is 3.5 mgd?",
     "options": [
       "2.3 hours",
-      "1.8 hours",
       "1.6 hours",
+      "1.8 hours",
       "3.1 hours"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Detention time in hours = V/Q x 24 V = Volume of the tank in mg Q = Flow entering the tank in mgd"
   },
   {
@@ -223,11 +223,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What would be an unacceptable surface loading rate for a primary clarifier?",
     "options": [
       "400 to 600 gpd/ft2",
-      "800 to 1,200 gpd/ft2",
+      "5,000 to 15,000 gpd/ft2",
       "100 to 300 gpd/ft2",
-      "5,000 to 15,000 gpd/ft2"
+      "800 to 1,200 gpd/ft2"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Surface loading rate in gpd/ft2 determines how many gallons per day are applied to each square foot surface area of the tank. Primary clarifiers operate successfully at much higher surface loading rates compared to secondary clarifiers."
   },
   {
@@ -265,11 +265,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is a typical RAS to Q ratio for a conventional aeration activated sludge process?",
     "options": [
       "10% to 25%",
-      "25% to 50%",
       "1% to 2%",
+      "25% to 50%",
       "75% to 100%"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "This may be a common R to Q ratio used for the conventional activated sludge process; however, specific conventional aeration plants may actually use higher or lower rates. Extended aeration RAS rates are typically about 75 to 100% … while contact stabilization rates may be 75 to 150 %."
   },
   {
@@ -278,12 +278,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which activated sludge growth phase is considered to have the highest F/M ratio, the lowest SRT, the highest sludge yield, and the best oxygen utilization efficiency?",
     "options": [
-      "High rate aeration",
       "Extended aeration",
+      "High rate aeration",
       "Conventional aeration",
       "Declining growth"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Looking at the growth curve of microorganisms, the far left side has high food availability, rapid bug growth, high yield of new cells, low solids inventory and excellent oxygen utilization transfer efficiency."
   },
   {
@@ -293,11 +293,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Which group of bacteria is responsible for conversion of inorganic ammonia in wastewater?",
     "options": [
       "Carbon eaters",
-      "Methanogens",
       "Autotrophic",
+      "Methanogens",
       "Heterotrophic"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "There are two main groups of Autotrophic bacteria that are responsible for the conversion of inorganic ammonia to nitrate. The first group, known as ammonia-oxidizing bacteria, convert ammonia to nitrite."
   },
   {
@@ -306,12 +306,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which operating parameter is common for a conventional activated sludge process?",
     "options": [
-      "D.O. between 4.0 to 5.5 mg/l",
       "SRT between 4 to 8 days",
+      "D.O. between 4.0 to 5.5 mg/l",
       "RAS to Q ratio about 150%",
       "F/M ratio between 0.1 to 0.15"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "The growth phase of microorganisms is basically divided into three (3) categories: 1) The most active phase, log growth, or high rate aeration, typically has an SRT of about 1 to 3 days."
   },
   {
@@ -320,12 +320,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the aeration tank MLVSS concentration? · Aeration MLSS is 2,500 mg/l · Aeration MLSS is 77% Volatile",
     "options": [
-      "3,500 mg/l",
-      "3,000 mg/l",
       "1,925 mg/l",
+      "3,000 mg/l",
+      "3,500 mg/l",
       "2,625 mg/l"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Mixed Liquor Volatile Suspended Solids (MLVSS) is a fractional part of the Mixed Liquor Total Suspended Solids (MLTSS) MLSS x % Volatile = MLVSS = 2,500 mg/l x 0.77 = 1,925 mg/l MLVSS"
   },
   {
@@ -334,12 +334,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the surface area of each secondary clarifier? · Two (2) Secondary Clarifiers, Each @ 100 ft. Diameter and 14 ft. Deep",
     "options": [
-      "7,850 ft2",
+      "1,963 ft2 diameter radius",
       "3,925 ft2",
       "491 ft2",
-      "1,963 ft2 diameter radius"
+      "7,850 ft2"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Surface Area =r2 =3.14 x 50 feet, x 50 feet =7,850 ft2"
   },
   {
@@ -349,11 +349,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the surface settling rate of the secondary clarifiers? · Influent Flow is 5.75 mgd · Two (2) Secondary Clarifiers, Each @ 100 ft. Diameter and 14 ft. Deep",
     "options": [
       "293 gal/day/ft2",
-      "3,414 gal/day/ft2",
       "366 gal/day/ft2",
+      "3,414 gal/day/ft2",
       "73 gal/day/ft2"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Surface Settling Rate, gpd/ft2 =Influent Flow Entering Clarifier, gpd Total Surface Area, ft2 =5,750,000 gpd 15,700 ft2 =366.2 gpd/ft2"
   },
   {
@@ -362,12 +362,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the solids loading rate on the secondary clarifiers? •Two (2) Secondary Clarifiers, Each @ 100 ft. Diameter and 14 ft. Deep •Aeration MLSS is 2,500 mg/l •Plant Flow is 5.75 mgd • RAS Rate is 65% of Q",
     "options": [
-      "12.6 lbs/day/ft2",
+      "9.9 lbs/day/ft2",
       "8.6 lbs/day/ft2",
       "4.7 lbs/day/ft2",
-      "9.9 lbs/day/ft2"
+      "12.6 lbs/day/ft2"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Clarifier Solids Loading Rate, lbs/day/ft2 =Total MLSS Entering Clarifier, lbs/day Clarifier Surface Area, ft2"
   },
   {
@@ -376,12 +376,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the SVI of this mixed liquor? · Settleometer @ 30 Minutes is 425 ml/l · Aeration MLSS is 2,500 mg/l",
     "options": [
-      "5 . 8",
+      "170",
       "75",
       "125",
-      "170"
+      "5 . 8"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "SVI =30 min Settleability, ml/l x 1000 MLSS, mg/l = 425 ml/l x 1000 2,500 mg/l =170"
   },
   {
@@ -391,11 +391,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "How many gallons of WAS should be removed if a 10 day SRT is the desired target? · Aeration MLSS is 2,500 mg/l · Aeration volume is 0.7854 mg · WAS Concentration is 0.7% Total Solids · WAS Volume is 0.1 mgd",
     "options": [
       "7,642 gpd",
-      "28,050 gpd",
       "14,025 gpd",
+      "28,050 gpd",
       "16,428 gpd"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "WAS Removed, gpd =(Aeration MLSS, lbs  10 day SRT)  (WAS conc., ppm x 8.34 lbs/gal) x 1,000,000"
   },
   {
@@ -405,11 +405,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the detention time in the aeration system? (not including RAS flow) · Three Aeration Tanks, Each @ 100 ft. Long, 25 ft. Wide, and 14 ft. Deep · Influent Flow is 5.75 mgd",
     "options": [
       "1.1 hours",
-      "10.9 hours",
       "3.3 hours",
+      "10.9 hours",
       "9.0 hours"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Detention Time, hours =V/Q = Tank Volume, mg x 24 hrs/day Influent Flow Entering Tank, mgd"
   },
   {
@@ -418,12 +418,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the total length of weir for the secondary clarifiers? · Two (2) Secondary Clarifiers, Each @ 100 ft. Diameter and 14 ft. Deep · Each Secondary Clarifier has a Single Weir Around the Tank's Circumference",
     "options": [
-      "628 feet",
-      "912 feet",
       "314 feet",
+      "912 feet",
+      "628 feet",
       "157 feet"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Length of Weir, feet =Circumference =d =3.14 x 100 ft diameter x 2 tanks =628 feet"
   },
   {
@@ -433,11 +433,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "With all of the data and results for this plant, is the F/M ratio within an acceptable range? · Conventional Aeration · SRT is 2.8 days · SVI is 170 · F/M Ratio is 0.76 · Aeration detention Time is 3.3 hours",
     "options": [
       "Yes",
-      "No",
+      "Not enough data to calculate the F/M ratio",
       "The effluent quality is very poor",
-      "Not enough data to calculate the F/M ratio"
+      "No"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Typical conventional activated sludge may have an F/M ratio of about 0.2 to 0.5 … this plant has an F/M ratio of 0.76 … this is on the high side. Decreasing the WAS rate will increase the MLSS inventory and decrease the F/M ratio."
   },
   {
@@ -447,11 +447,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "With all of the data and results for this plant, is the SRT within an acceptable range? · Conventional Aeration · SRT is 2.8 days · SVI is 170 · F/M Ratio is 0.76 · Aeration detention Time is 3.3 hours",
     "options": [
       "Yes",
-      "No",
+      "Not enough data to determine the SRT",
       "The effluent quality is very poor",
-      "Not enough data to determine the SRT"
+      "No"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Typical conventional activated sludge plants may have an SRT of about 4 to 8 days … this plant has an SRT of 2.8 days … this is on the low side. Decreasing the WAS rate will increase the MLSS inventory and increase the SRT."
   },
   {
@@ -460,12 +460,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the principal function of slimes that accumulate on the trickling filter media?",
     "options": [
-      "To filter out bacteria through sand media",
-      "To remove large solids particles",
       "To oxidize organic material",
+      "To remove large solids particles",
+      "To filter out bacteria through sand media",
       "None of the above"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "The trickling filter oxidizes organic matter as the wastewater is distributed (applied) over the surface of the process unit and trickles down through the media. The trickling filter oxidizes organic matter as the wastewater is distributed (applied) over the surface of the process unit and trickles down through the media. Organisms grow on and throughout the media resulting in oxidation of the organic matter. Organisms grow on and throughout the media resulting in oxidation of the organic matter."
   },
   {
@@ -502,12 +502,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the principal make-up of slimes called that accumulate on the trickling filter media?",
     "options": [
-      "Amoeba culture",
       "Zoogleal mass",
+      "Amoeba culture",
       "Rotifer growth",
       "None of the above"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Zoogleal mass is an aggregate of bacteria forming a jellylike mass with cell walls swollen by the absorption of water or other fluid."
   },
   {
@@ -517,11 +517,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What type of gas is generated in largest quantities as the result of anaerobic digestion taking place in a stabilization lagoon?",
     "options": [
       "Hydrogen sulfide",
-      "Carbon dioxide",
       "Methane",
+      "Carbon dioxide",
       "Nitrogen"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Anaerobic decomposition, bacterial activity in the absence of free dissolved oxygen, typically generates large quantities of methane gas. The other gases in the list may also exist in an anaerobic lagoon, but in smaller volumes."
   },
   {
@@ -530,12 +530,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What problems can be caused in a lagoon with long, hot operational periods?",
     "options": [
-      "All bacteria may die",
       "Excessive algae growth overloads the lagoon",
+      "All bacteria may die",
       "Water level gets too low",
       "The D.O. gets too high"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Long, hot operational periods can cause algae overgrowth conditions due to extreme anaerobic decomposition."
   },
   {
@@ -559,11 +559,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Which time of day will generally have the lowest",
     "options": [
       "O. in an unaerated stabilization pond?",
-      "12 midnight",
+      "3 a.m.",
       "3 p.m.",
-      "3 a.m."
+      "12 midnight"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "An unaerated stabilization pond is provided D.O. by activity from algae. During the sunlight hours, algae convert carbon dioxide to oxygen via photosynthesis."
   },
   {
@@ -574,10 +574,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "SVI",
       "GSA",
-      "Autotrophic",
-      "PAO"
+      "PAO",
+      "Autotrophic"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "PAO, or phosphorus accumulating organisms, are responsible for the uptake and removal of phosphorus from the wastewater in a BNR activated sludge process."
   },
   {
@@ -587,11 +587,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Which zone of a BNR plant produces a release of phosphorus and is responsible for conditioning the phosphorus for later uptake in the downstream zones?",
     "options": [
       "Anoxic",
-      "Fermentation",
       "Aerobic",
+      "Fermentation",
       "Reaeration"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "The fermentation zone of a Bardenpho process receives raw wastewater (usually after preliminary treatment) and return activated sludge (from secondary clarifiers). The MLSS is mixed and not aerated in the fermentation zone for a time period of about 1 to 3 hours."
   },
   {
@@ -600,12 +600,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which zone produces the largest amount of biological nitrification?",
     "options": [
-      "Fermentation",
-      "Anoxic",
       "Aerobic",
+      "Anoxic",
+      "Fermentation",
       "Reaeration"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Nitrification is strictly an aerobic process, and, the highest aerobic environment in a typical BNR system is the aeration tank (or aerobic zone). Nitrification, at an average oxygen consumption rate of about 4.6 lbs of O2 for each lb of NH3, converts ammonia nitrogen to nitrate nitrogen."
   },
   {
@@ -614,12 +614,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "How much alkalinity is required to convert 1.0 pound of ammonia-nitrogen during the nitrification process?",
     "options": [
-      "7.2 lbs",
+      "4.6 lbs",
       "8.34 lbs",
       "7.48 lbs",
-      "4.6 lbs"
+      "7.2 lbs"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Nitrification consumes alkalinity at the rate of about 7 to 7.2 lbs of alkalinity for each lb of ammonia oxidized. Because this action causes the mixed liquor pH to drop, biological denitrification is desirable, which replenishes the alkalinity at a rate of about 3.6 lbs of alkalinity for each lb of nitrate that is consumed as a source of oxygen."
   },
   {
@@ -628,12 +628,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which chemical is commonly used to remove phosphorus from wastewater?",
     "options": [
-      "Lime",
+      "Aluminum sulfate",
       "Sodium Hydroxide",
       "Ferric chloride",
-      "Aluminum sulfate"
+      "Lime"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Aluminum sulfate, or Alum, is the only chemical on this list that is typically used to Aluminum sulfate, or Alum, is the only chemical on this list that is typically used to remove phosphorus from wastewater. However, other chemicals have been used for phosphorus removal: sodium aluminate, lime, ferric chloride, and others."
   },
   {
@@ -656,12 +656,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "How much alkalinity is put back into the MLSS for each pound of nitrate used as a source of oxygen during the denitrification process?",
     "options": [
-      "4.6 lbs",
+      "3.6 lbs",
       "7.2 lbs",
       "2.6 lbs",
-      "3.6 lbs"
+      "4.6 lbs"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Denitrification replenishes alkalinity at the rate of about 3.6 of alkalinity for each lb of Denitrification replenishes alkalinity at the rate of about 3.6 of alkalinity for each lb of nitrate that is used as a source of oxygen."
   },
   {
@@ -671,11 +671,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Which major reaction is most likely to occur in an anoxic zone of a BNR process?",
     "options": [
       "Nitrification",
-      "Phosphorus uptake",
       "Denitrification",
+      "Phosphorus uptake",
       "Reaeration"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Denitrification is an anoxic reaction and will be typically accomplished at the highest rate in an anoxic zone with adequate food supply (CBOD5). The anoxic reaction is elevated to its highest potential when the bugs are hungry and active, the CBOD5 is plentiful, the tank is mixed without any oxygen transfer and the dissolved oxygen level is as close as possible to zero."
   },
   {
@@ -684,12 +684,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the amount of oxygen credit received for each ppm of nitrate used as a source of oxygen in the denitrification process?",
     "options": [
-      "2.8 pounds",
       "3.6 pounds",
+      "2.8 pounds",
       "4.6 pounds",
       "7.2 pounds"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Denitrification provides a “credit” for oxygen. There are about 2.8 lbs of oxygen supplied to the MLSS for each ppm of nitrate used as a source of oxygen in the denitrification process."
   },
   {
@@ -698,12 +698,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which best describes the denitrification cycle?",
     "options": [
-      "Nitrates are converted to free nitrogen gas",
-      "Ammonia is converted to nitrites and then to nitrates",
       "Ammonia is converted to nitrates and then to nitrites",
+      "Ammonia is converted to nitrites and then to nitrates",
+      "Nitrates are converted to free nitrogen gas",
       "Nitrates are converted to ammonia and then to nitrites"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Denitrification is a biological reduction process (without the need for dissolve oxygen) where nitrate is reduced to nitrite and then further reduced to free nitrogen gas. Denitrification is an anoxic reaction and will be typically accomplished at the highest rate in an anoxic zone with adequate food supply (CBOD5)."
   },
   {
@@ -714,10 +714,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "Oxygen",
       "Carbon dioxide",
-      "Hydrogen sulfide",
-      "Nitrogen"
+      "Nitrogen",
+      "Hydrogen sulfide"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "The end result of denitrification is the formation of nitrogen gas bubbles. When these bubbles are created in the clarifier sludge blanket, they can cause gas and sludge particles to rise to the surface."
   },
   {
@@ -754,12 +754,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the detention time of the sludge blanket, given the following data: · 50 ft. diameter · 3 ft. sludge blanket depth · 100 KGPD thickened sludge removed · 4 ft. cone depth",
     "options": [
-      "30.6 hours",
       "15.3 hours",
+      "30.6 hours",
       "7.6 hours",
       "22.9 hours"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Detention Time of Sludge Blanket, hours also known as Sludge Volume Retention Time (SVRT) (gallons in blanket + gallons in cone) x 24 hr/day  gpd removed from the tank."
   },
   {
@@ -784,10 +784,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "The bottom half of a belt filter press",
       "A centrifuge",
-      "The top half of a belt filter press",
-      "A standard gravity thickener"
+      "A standard gravity thickener",
+      "The top half of a belt filter press"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "A gravity belt thickener consists of basically all of the components in the top half of a belt filter press. A GBT has a single belt with steering and tension controls, however, there is not a second belt or any pressure control devices."
   },
   {
@@ -796,12 +796,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Will sludge be more likely to sink or float when its specific gravity is greater than 1.0?",
     "options": [
-      "It will sink",
+      "Specific gravity has no affect on flotation",
       "It will float",
       "It will stay in suspension",
-      "Specific gravity has no affect on flotation"
+      "It will sink"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Material with a specific gravity greater than 1.0 will have a tendency to settle, or sink, due to its weight being heavier than water."
   },
   {
@@ -852,12 +852,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What may be a major difference with a centrifuge for sludge thickening as compared to a gravity belt thickener?",
     "options": [
-      "The centrifuge requires significantly more polymer to condition the sludge feed",
+      "The capital cost of a gravity belt thickener is typically much less than a centrifuge",
       "The gravity belt thickener typically requires much more maintenance than a centrifuge",
       "The centrifuge uses lower horsepower components than a gravity belt thickener",
-      "The capital cost of a gravity belt thickener is typically much less than a centrifuge"
+      "The centrifuge requires significantly more polymer to condition the sludge feed"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "In order to process equal volumes of sludge feed, a GBT typically costs less than half of the cost of a centrifuge."
   },
   {
@@ -866,12 +866,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which sludge thickening process has one continuous belt that allows gravity drainage and thickening of the sludge feed?",
     "options": [
-      "Gravity thickener",
       "Gravity belt thickener",
+      "Gravity thickener",
       "Dissolved air flotation",
       "Centrifuge"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "A gravity belt thickener (GBT) system includes a single belt typically driven by an electric motor and drive train. The system has tension and steering systems that may be either hydraulic or pneumatic."
   },
   {
@@ -882,10 +882,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "Gravity thickener",
       "Gravity belt thickener",
-      "Dissolved air flotation",
-      "Centrifuge"
+      "Centrifuge",
+      "Dissolved air flotation"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "The Dissolved Air Flotation, or DAF, process thickens waste activated sludge by injecting injecting an air- saturate recycle stream into feed sludge … which then causes the sludge mixture to rise and float to the tank’s surface."
   },
   {
@@ -908,12 +908,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which sludge thickening process uses an open tank, usually without any internal recycle streams, to accomplish thickening of the feed sludge?",
     "options": [
-      "Gravity thickener",
+      "Centrifuge",
       "Gravity belt thickener",
       "Dissolved air flotation",
-      "Centrifuge"
+      "Gravity thickener"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Although the feed sludge to a gravity thickener is different than that of a secondary clarifier, the physical process reaction is similar … the separation and thickening of the feed material. Gravity thickener feed sludge is typically primary sludge or waste activated sludge."
   },
   {
@@ -922,12 +922,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which factor may have the least affect on the operation of an aerobic digester?",
     "options": [
-      "Digester detention time",
+      "Organic nitrogen level in the sludge feed",
       "Temperature of the digesting sludge",
       "Oxygen transfer efficiency",
-      "Organic nitrogen level in the sludge feed"
+      "Digester detention time"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Detention time, temperature and oxygen transfer efficiency are all important factors in the operation of an aerobic digester. The organic nitrogen content in the sludge feed has the least affect on determining digester performance."
   },
   {
@@ -966,10 +966,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "Yellow",
       "Amber",
-      "Green",
-      "Blue"
+      "Blue",
+      "Green"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "High methane content will create a blue flame when the gas is burned. As the methane content decreases, and the carbon dioxide content increases, the flame will turn to a more yellow color."
   },
   {
@@ -978,12 +978,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What device is designed to protect the digester tanks and covers from damage?",
     "options": [
-      "Hot water system",
       "Pressure/vacuum relief",
+      "Hot water system",
       "Gas recirculation compressor",
       "Drip trap"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Anaerobic digester tanks and covers can be damaged from either over-pressurization (high pressure) or under-pressurization (vacuum) conditions. A pressure/vacuum relief device is designed to prevent either of these conditions from occurring."
   },
   {
@@ -993,11 +993,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What can cause a rise in the volatile acids/alkalinity ratio?",
     "options": [
       "Underfeeding the primary digester",
-      "Hydraulically overloading the primary digester",
+      "Adequate mixing of the primary digester",
       "Organically under loading the primary digester",
-      "Adequate mixing of the primary digester"
+      "Hydraulically overloading the primary digester"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Rising acid/alkalinity ratio in an anaerobic digestion process can be the result of over-feeding the primary digester. Higher feed rates mean higher volatile solids loading rates."
   },
   {
@@ -1006,12 +1006,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What should be the minimum acceptable level for volatile solids reduction in a properly operated anaerobic digester … in order to satisfy the rules on vector attraction reduction?",
     "options": [
-      "95%",
-      "5%",
       "38%",
+      "5%",
+      "95%",
       "76%"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Rule 503 identifies at least 38% volatile solids reduction must be achieved to satisfy the requirement for vector attraction reduction. The volatile solids reduction can be measured using the VanKleek formula, the Approximate Mass Balance (AMB) formula, or other pre-approved methods."
   },
   {
@@ -1021,11 +1021,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Which anaerobic digestion temperature range will Thermophilic be stable?",
     "options": [
       "75 to 90°F",
-      "120 to 135°F",
+      "110 to 120°F",
       "85 to 100°F",
-      "110 to 120°F"
+      "120 to 135°F"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Typically, a temperature range between 120 to 135°F represents Thermophilic conditions. Mesophilic temperatures are about 85 to 100°F, with the optimum temperature between 95 to 98°F. Psychrophilic temperatures conditions are normally less than about 68°F."
   },
   {
@@ -1048,12 +1048,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Why would sodium bicarbonate or lime be added to an anaerobic digester?",
     "options": [
-      "To neutralize high acid production",
+      "To decrease volatile reduction",
       "To decrease alkalinity",
       "To decrease pH",
-      "To decrease volatile reduction"
+      "To neutralize high acid production"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Sodium bicarbonate neutralizes high acidic produced through digestion and helps to reduce the acid/alkalinity ratio."
   },
   {
@@ -1062,12 +1062,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What color may the digester gas be, as it is being burned in a waste gas burner, when the methane content is very low?",
     "options": [
-      "Yellow",
       "Black",
+      "Yellow",
       "Green",
       "Blue"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "As methane content gets lower (dirty gas), the color of the flame becomes more yellow."
   },
   {
@@ -1091,11 +1091,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What are the two (2) basic types of lime that can be used in the lime stabilization process?",
     "options": [
       "Hard lime and soft lime",
-      "Quicklime and Hydrate lime",
+      "Calcium hydroxide and ferric chloride",
       "Limestone and pebble lime",
-      "Calcium hydroxide and ferric chloride"
+      "Quicklime and Hydrate lime"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Quicklime is high in calcium oxide content and will result in elevated temperatures, as well as pH, when added to sludge cake. Quicklime can also be referred to as pebble lime. Hydrate lime has no calcium oxide content and will only elevate the pH of a sludge sample … not the temperature. What may be an anticipated result of reducing the belt speed? Answer : b. Improve gravity filtration and create higher cake solids Feedback: Question No. 102 As the belt speed is reduced, this provides for additional gravity drainage time of the conditioned sludge on the top belt, as well as through the pressure zone (in machines with single drive units). As a result, the cake solids may increase, as well as improving the gravity filtration efficiency. 00000000 00000000 00000000 00000000 00000000 00000000"
   },
   {
@@ -1104,12 +1104,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What are the requirements for lime stabilization to accomplish Class B stabilization standards?",
     "options": [
-      "Raise the sludge pH to no more than 11.0",
+      "Raise the sludge pH to at least 12 for the first 2 hours, and then at least 11.5 for the next 22 hours What is the water called that is removed by the belt press?",
       "Raise the sludge pH to at least 12 for the first 2 hours, and then at least 12.5 for the next 24 hours",
       "Raise the sludge pH to between 10.0 to 10.5",
-      "Raise the sludge pH to at least 12 for the first 2 hours, and then at least 11.5 for the next 22 hours What is the water called that is removed by the belt press?"
+      "Raise the sludge pH to no more than 11.0"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Vector attraction reduction for Class B lime stabilization is accomplished by elevating the pH of the sludge sample to at least 12, where it must remain no less than pH 12 for two hours."
   },
   {
@@ -1120,10 +1120,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "2% to 4%",
       "30% to 50%",
-      "15% to 20%",
-      "8% to 10%"
+      "8% to 10%",
+      "15% to 20%"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "Typically, if the total solids content is less than about 8% at this location, this may indicate that the sludge feed rate may be too high, the belt speed may be too high, or the polymer dose may be too low."
   },
   {
@@ -1133,11 +1133,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What may be an anticipated result of reducing the belt speed?",
     "options": [
       "Create a larger floc",
-      "Improve gravity filtration and create higher cake solids",
+      "Produce a lower percent solids in the gravity section sludge What may be the result if the belt speed is too slow?",
       "Create poor gravity filtration and create lower cake solids",
-      "Produce a lower percent solids in the gravity section sludge What may be the result if the belt speed is too slow?"
+      "Improve gravity filtration and create higher cake solids"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "As the belt speed is reduced, this provides for additional gravity drainage time of the conditioned sludge on the top belt, as well as through the pressure zone (in machines with single drive units). As a result, the cake solids may increase, as well as improving the gravity filtration efficiency."
   },
   {
@@ -1146,12 +1146,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the water called that is removed by the belt press?",
     "options": [
-      "Mixed liquor",
-      "Effluent",
       "Filtrate",
+      "Effluent",
+      "Mixed liquor",
       "Cake"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Water removed from a belt filter press, plate and frame press, or gravity belt thickener is called filtrate. Water removed from a centrifuge is called centrate."
   },
   {
@@ -1161,11 +1161,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is polymer called when it has a positive charge?",
     "options": [
       "Anionic",
-      "Reverse negative",
+      "Cationic",
       "Non-ionic",
-      "Cationic"
+      "Reverse negative"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Polymers basically have three types of charge: positive charge is called cationic; negative charge is called anionic; and neutral charge is called non-ionic. Typical wastewater sludge has a negative charge and requires a positively charged cationic polymer."
   },
   {
@@ -1175,11 +1175,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is polymer called when it has a positive charge?",
     "options": [
       "Anionic",
-      "Reverse negative",
+      "Cationic",
       "Non-ionic",
-      "Cationic"
+      "Reverse negative"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Polymers basically have three types of charge: positive charge is called cationic; negative charge is called anionic; and neutral charge is called non-ionic. Typical wastewater sludge has a negative charge and requires a positively charged cationic polymer."
   },
   {
@@ -1202,12 +1202,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What chemical is commonly used to condition the sludge being applied to a belt filter press?",
     "options": [
-      "Polymer",
-      "Chlorine",
       "Lime",
+      "Chlorine",
+      "Polymer",
       "Sodium hydroxide"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Industrial sludges may require a lime and ferric chloride blend to accomplish dewatering … however, most belt filter presses, dewatering domestic wastewater sludge, can achieve adequate dewatering with the use of polymer."
   },
   {
@@ -1218,10 +1218,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "The floc size may be too small",
       "Gravity filtration may be poor",
-      "The cake solids may be low",
-      "The gravity zone may flood"
+      "The gravity zone may flood",
+      "The cake solids may be low"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "As the belt speed is reduced, and the sludge feed rate is not also reduced, the top gravity section may become hydraulically overloaded and flood."
   },
   {
@@ -1232,10 +1232,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "Create a larger floc",
       "Improve gravity filtration and create higher cake solids",
-      "Decrease gravity drainage time and decrease the cake solids",
-      "Create a smaller floc"
+      "Create a smaller floc",
+      "Decrease gravity drainage time and decrease the cake solids"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Increasing the belt speed will reduce the amount of time the conditioned sludge is exposed to the top belt, and in the pressure zone (in machines with only one drive unit). As well as decreasing the gravity zone drainage time, this action of increasing the belt speed may also reduce the total solids content in the cake product."
   },
   {
@@ -1244,12 +1244,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is an alternate method for vector attraction reduction in anaerobic digestion if the volatile solids reduction does not meet the required number?",
     "options": [
-      "Chlorine residual",
-      "SOUR",
       "Extended 40 day bench test",
+      "SOUR",
+      "Chlorine residual",
       "Ammonia-nitrogen Where is gas chlorine withdrawn from in a one- ton container?"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "If the volatile solids reduction in an anaerobic digester is less than 38%, an extended bench test of the previously-digested sludge can be conducted in the laboratory at the required specifications of 40 days at 30 to 37oC (86 to 98.6oF)."
   },
   {
@@ -1258,12 +1258,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which is the EPA part that provides rules and regulation for the disposal of wastewater residuals?",
     "options": [
-      "305 rule",
+      "503 rule",
       "640 rule",
       "736 rule",
-      "503 rule"
+      "305 rule"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "The EPA regulation for the treatment and disposal of wastewater residuals is 40 CFR Part 503."
   },
   {
@@ -1273,11 +1273,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Where is gas chlorine withdrawn from in a one- ton container?",
     "options": [
       "From the bottom valve",
-      "From the top valve",
       "From top or bottom valves",
+      "From the top valve",
       "Gas cannot be withdrawn from a one-ton container"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Chlorine ton containers are manufactured with liquid chlorine under pressure. Due to evaporative temperature of chlorine, some of the liquid is always being converted to gas inside of the container. Gas is withdrawn from the top valve and liquid is withdrawn from the bottom valve. Question No. 118 What is the detention time of a chlorine contact chamber that is 100 feet long, 15 feet wide, 9 feet deep, and has a plant flow rate of 4.2 mgd? a. About 2 hours b. About 76 minutes c. About 35 minutes d. About 15 minutes 00000000 00000000 00000000 00000000  "
   },
   {
@@ -1286,12 +1286,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Where is gas chlorine withdrawn from in a one-ton container? Answer :",
     "options": [
-      "About 2 hours",
-      "About 76 minutes",
       "About 35 minutes",
+      "About 76 minutes",
+      "About 2 hours",
       "About 15 minutes 00000000 00000000 00000000 00000000  "
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Chlorine supply equals demand plus residual. Demand is the amount of chlorine consumed … residual is the amount of chlorine that is left over after the demand has been satisfied … and the supply is the total amount of chlorine provided."
   },
   {
@@ -1300,12 +1300,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What does this formula represent? Demand + Residual =",
     "options": [
-      "Breakpoint",
-      "Dosage",
       "Supply",
+      "Dosage",
+      "Breakpoint",
       "Combined"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Chlorine supply equals demand plus residual. Demand is the amount of chlorine consumed … residual is the amount of chlorine that is left over after the demand has been satisfied … and the supply is the total amount of chlorine provided."
   },
   {
@@ -1314,12 +1314,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which component in a chlorine evaporator is responsible for reducing the chlorine gas pressure down to 1 atmosphere?",
     "options": [
-      "PRV",
       "O-ring",
+      "PRV",
       "SBR",
       "Gas injector"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "The PRV – pressure reducing valve – is responsible for reducing the gas pressure leaving an evaporator to one atmosphere."
   },
   {
@@ -1342,12 +1342,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the detention time of a chlorine contact chamber that is 100 feet long, 15 feet wide, 9 feet deep, and has a plant flow rate of 4.2 mgd?",
     "options": [
-      "About 2 hours",
-      "About 76 minutes",
       "About 35 minutes",
+      "About 76 minutes",
+      "About 2 hours",
       "About 15 minutes"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Detention time is V/Q. “V” is the volume of the tank, and “Q” is the flow entering the tank. To calculate detention time directly in minutes, the formula is tank volume in ft3 divided by flow in mgd times 92.84 cfm per mgd."
   },
   {
@@ -1356,12 +1356,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What does this formula represent? Contact Chamber ft3 92.84 cfm/mgd x Flow, mgd",
     "options": [
-      "Surface settling rate",
+      "Detention time in minutes",
       "Detention time in hours",
       "Volume of contact chamber in gallons",
-      "Detention time in minutes"
+      "Surface settling rate"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "This formula takes the volume in cubic feet which is divided by the cubic feet per minute of flow stream (mgd x cfm/mgd). The resultant units is minutes … and the parameter is detention time. Which component may create the highest maintenance requirement in a UV disinfection system? Answer : b. UV lamp Feedback: Question No. 124 Typically, lamps require the most maintenance in a UV system to keep it at peak performance. 00000000 00000000 00000000 00000000 00000000 00000000  "
   },
   {
@@ -1371,11 +1371,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the formula that defines chlorine residual?",
     "options": [
       "Demand - supply = residual",
-      "Supply - demand = residual",
       "Supply x demand = residual",
+      "Supply - demand = residual",
       "Demand + supply = residual"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "The residual of something, like chlorine or dissolved oxygen, is that which is left over after the demand has been satisfied. So, chlorine demand is the remainder of chlorine supply minus chlorine residual."
   },
   {
@@ -1398,12 +1398,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which type of chlorine comes in only liquid form?",
     "options": [
-      "Ferric chloride",
-      "Calcium hypochlorite",
       "Sodium hypochlorite",
+      "Calcium hypochlorite",
+      "Ferric chloride",
       "Caustic soda"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Sodium hypochlorite, or liquid bleach, is the only common form of chlorine that comes in liquid form only."
   },
   {
@@ -1413,11 +1413,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What type of channel can UV disinfection be operated in?",
     "options": [
       "Open channel only",
-      "Closed channel only",
+      "Either an open channel, a closed channel, or a pipeline",
       "Pipeline only",
-      "Either an open channel, a closed channel, or a pipeline"
+      "Closed channel only"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Ultra Violet (UV) disinfection systems can be installed in open channels, closed channels or pipelines."
   },
   {
@@ -1426,12 +1426,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What first must be done to air before it is applied to an air feed ozone generator?",
     "options": [
-      "Cooled, separated and dried",
+      "Separated and dried",
       "Dried and cooled",
       "Cooled and separated",
-      "Separated and dried"
+      "Cooled, separated and dried"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Air-supplied ozone generators typically require that the air be cooled, separated and dried before it is fed to the generator."
   },
   {
@@ -1454,12 +1454,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What does an closed circuit mean in electrical terms?",
     "options": [
-      "That power is disengaged ... dead",
-      "That power is active",
       "That power is engaged ... live",
+      "That power is active",
+      "That power is disengaged ... dead",
       "The term “open” has nothing to do with electricity"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "In electrical terms, CLOSED means that the circuit is active and power is engaged. OPEN means that the circuit is inactive and power is not engaged."
   },
   {
@@ -1468,12 +1468,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Given the following data, what should the annual chlorine budget be in a leap-year? · Plant Flow = 1.25 mgd · Odor Control Scrubber = 25 ppd · RAS Chlorine Dosage = 1.2 mg/l · Effluent Chlorine Dosage = 8.75 mg/l · Chlorine Cost = $0.25 per Pound · 10% increase for higher demand periods · Preliminary Treatment Chlorine Dosage = 7.5 mg/l",
     "options": [
-      "$20,826",
-      "$44,542",
       "$18,743",
+      "$44,542",
+      "$20,826",
       "$23,847"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Pounds per day chlorine used = flow, mgd x conc., ppm x 8.34 lbs/gal = 1.25 mgd x (7.5 ppm + 1.2 ppm + 8.75 ppm) x 8.34 lbs/gal + 25 ppd = 206.916 lbs/day"
   },
   {
@@ -1483,11 +1483,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the term when ammonia-N, nitrate-N and nitrite-N are added together?",
     "options": [
       "TN",
-      "TIN",
       "NO3",
+      "TIN",
       "TKN"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Total Inorganic Nitrogen (TIN) is a combination of all forms of inorganic nitrogen. These inorganic forms include ammonia, nitrate and nitrite. TIN is the combination of all forms of nitrogen except organic nitrogen."
   },
   {
@@ -1497,11 +1497,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the result of this formula? Total Solids - Fixed Solids =",
     "options": [
       "Total suspended solids",
-      "Volatile solids",
       "Fixed suspended solids",
+      "Volatile solids",
       "Settleable solids"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "When a solids sample is burned in a muffle furnace, the remaining solids are fixed. So, total solids minus fixed solids equals volatile solids."
   },
   {
@@ -1511,11 +1511,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What will be the volume of a tank if the flow entering is 5 mgd and the detention time is 1.5 hours?",
     "options": [
       "583,000 gals",
-      "1.2 mg",
+      "312,500 gals",
       "0.3957 mg",
-      "312,500 gals"
+      "1.2 mg"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Tank Volume, mg =(flow, mgd x D.T., hours)  24 hrs/day =5 mgd x 1.5 hrs  24 hrs/day =0.3125 mg x 1,000,000 =312,500 gallons"
   },
   {
@@ -1524,12 +1524,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the volume in gallons occupied by 45,000 cubic feet of water?",
     "options": [
-      "336,600 gals",
-      "168,300 gals",
       "375,300 gals",
+      "168,300 gals",
+      "336,600 gals",
       "2,808,000 gals"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Volume in Gallons =cubic feet x 7.48 gals/ft3 =45,000 cubic feet x 7.48 gals/ft3 =336,600 gallons Question No. 156 What is the total gallons (not including the cone) in a digester, given the following data? · 25 ft diameter · 15 ft side water depth (and it’s full) a. About 29,432 total gallons b. About 55,048 total gallons c. About 58,865 total gallons d. About 3,817 total gallons 00000000 00000000 00000000 00000000  "
   },
   {
@@ -1540,10 +1540,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "About 29,432 total gallons",
       "About 55,048 total gallons",
-      "About 58,865 total gallons",
-      "About 3,817 total gallons 00000000 00000000 00000000 00000000  "
+      "About 3,817 total gallons 00000000 00000000 00000000 00000000  ",
+      "About 58,865 total gallons"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "0.42 is 42 over 100. 42 divided by 2 = 21 … and 100 divided by 2 is 50. Since no other number can be equally divided into the numerator and denominator, the least common denominator for the fraction 0.42 is 42 over 50."
   },
   {
@@ -1552,12 +1552,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What does this formula represent? ⅓ π r2 x depth, ft. x 7.48 gals/ft3",
     "options": [
-      "Volume of a cone in ft3",
+      "Volume of a cone in gallons",
       "Volume of a circular tank in gallons",
       "Volume of a sphere in gallons",
-      "Volume of a cone in gallons"
+      "Volume of a cone in ft3"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "The formula to calculate the volume in gallons of a cone is: ⅓ π r2 x cone depth, ft. x 7.48 gals/ft3."
   },
   {
@@ -1566,12 +1566,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "How many pounds of solids are in a tank that is 100 feet long, 30 feet wide, 14 feet deep, and the MLSS concentration is 3,500 mg/l?",
     "options": [
-      "19,170 lbs",
+      "9,170 lbs What is the daily volume of sludge removed from a primary clarifier if the total dry lbs/day are 1,500, and the moisture content is 95.5%?",
       "350 lbs",
       "1,226 lbs",
-      "9,170 lbs What is the daily volume of sludge removed from a primary clarifier if the total dry lbs/day are 1,500, and the moisture content is 95.5%?"
+      "19,170 lbs"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "Pounds in a Tank = tank volume, mg x concentration, ppm x 8.34 lbs/gal"
   },
   {
@@ -1595,11 +1595,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the total gallons (not including the cone) in a digester, given the following data? · 25 ft diameter · 15 ft side water depth (and it’s full)",
     "options": [
       "About 29,432 total gallons",
-      "About 55,048 total gallons",
       "About 58,865 total gallons",
+      "About 55,048 total gallons",
       "About 3,817 total gallons What is the moisture content of a sludge sample that measures 5.25% total solids? Answer : d. 94.75% Feedback: 1.0 - 0.0525 x 100 = 94.75% moisture or 100 - 5.25 = 94.75 00000000 00000000"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "The formula to calculate tank volume is: π r2 x depth, ft. x 7.48 gals/ft3 Note: r = ½ d"
   },
   {
@@ -1608,12 +1608,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the consumption of chlorine used in 30 days if the flow rate is 2,500 gpm, and the dose rate is 8.5 mg/l?",
     "options": [
-      "255 pounds",
       "7,661 pounds",
+      "255 pounds",
       "10,219 pounds",
       "8,824 pounds"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Chlorine consumption = flow, mgd x dose rate, ppm x 8.34 lbs/gal x 30 days Flow, mgd = 2,500 gpm  694 gpm/mgd = 3.6023 mgd Lbs Chlorine = 3.6023 mgd x 8.5 ppm x 8.34 lbs.gal x 30 days = 7,661 pounds"
   },
   {
@@ -1623,11 +1623,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the daily volume of sludge removed from a primary clarifier if the total dry lbs/day are 1,500, and the moisture content is 95.5%?",
     "options": [
       "1,679 gals/day",
-      "6,769 gals/day",
       "3,997 gals/day",
+      "6,769 gals/day",
       "1,998 gals/day"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "This is the Q formula: (Note: 1% totals solids equals 10,000 ppm TSS) Q, mgd = lbs/day  (solids conc., ppm x 8.34 lbs/gal) = 1,500 lbs/day  ((100 - 95.5 x 10,000 ppm) x 8.34 lbs/gal) = 0.0039968 mgd"
   },
   {
@@ -1650,12 +1650,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "Which of the following is NOT a function of preliminary treatment?",
     "options": [
-      "Protect downstream equipment from damage",
-      "Remove large floating solids",
       "Reduce BOD by 50%",
+      "Remove large floating solids",
+      "Protect downstream equipment from damage",
       "Remove grit and sand"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Preliminary treatment (screening, grit removal) is a physical process that protects equipment and removes large solids and grit. It does not significantly reduce BOD — that is accomplished in primary and secondary treatment."
   },
   {
@@ -1665,11 +1665,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Mechanically cleaned bar screens are preferred over manually cleaned screens because they:",
     "options": [
       "Remove finer particles",
-      "Automatically remove screenings without operator intervention",
       "Use less energy",
+      "Automatically remove screenings without operator intervention",
       "Produce less odour"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Mechanically cleaned bar screens use rakes or brushes to automatically remove accumulated screenings, reducing manual labour and ensuring continuous operation without clogging."
   },
   {
@@ -1678,12 +1678,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The velocity in a grit channel should be maintained at approximately 1 ft/s to:",
     "options": [
-      "Remove all suspended solids",
       "Allow grit to settle while keeping organic solids in suspension",
+      "Remove all suspended solids",
       "Maximize BOD removal",
       "Prevent pipe corrosion"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "At approximately 1 ft/s (0.3 m/s), inorganic grit (SG ~2.65) settles out while lighter organic solids (SG ~1.0-1.2) remain in suspension and pass through to primary treatment."
   },
   {
@@ -1692,12 +1692,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Aerated grit chambers use air diffusers to create a spiral roll pattern that:",
     "options": [
-      "Increases the settling rate of all solids",
       "Separates grit from organic matter by differential settling",
+      "Increases the settling rate of all solids",
       "Provides biological treatment",
       "Neutralizes the pH of the wastewater"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "In aerated grit chambers, the spiral roll pattern caused by air diffusers causes grit to settle to the bottom while lighter organic matter is kept in suspension and carried out with the flow."
   },
   {
@@ -1707,11 +1707,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Screenings removed from a wastewater bar screen are typically:",
     "options": [
       "Returned to the headworks for further treatment",
-      "Washed, compacted, and disposed of in a landfill",
       "Composted and used as fertilizer",
+      "Washed, compacted, and disposed of in a landfill",
       "Incinerated on-site"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Screenings are typically washed to remove organic matter, compacted to reduce volume, and disposed of in a landfill. Some facilities use screenings presses to further reduce volume."
   },
   {
@@ -1721,11 +1721,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Which of the following would cause a decrease in primary clarifier efficiency?",
     "options": [
       "Reducing the surface overflow rate",
-      "Increasing the detention time",
       "Hydraulic short-circuiting",
+      "Increasing the detention time",
       "Reducing the influent TSS concentration"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Hydraulic short-circuiting occurs when wastewater flows directly from the inlet to the outlet without adequate settling time, reducing removal efficiency. Density currents, wind, and poor inlet design can cause short-circuiting."
   },
   {
@@ -1735,11 +1735,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Primary sludge typically has a solids content of:",
     "options": [
       "0.1-0.5%",
-      "3-8%",
       "15-25%",
+      "3-8%",
       "30-40%"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Primary sludge (raw settled solids from primary clarifiers) typically has a solids content of 3-8%. It is denser and easier to thicken than secondary (biological) sludge."
   },
   {
@@ -1748,12 +1748,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The weir overflow rate on a primary clarifier affects:",
     "options": [
-      "The sludge blanket depth",
       "The turbulence near the effluent weir and solids carryover",
+      "The sludge blanket depth",
       "The detention time in the tank",
       "The pH of the effluent"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "High weir overflow rates create turbulence near the effluent weir that can resuspend settled solids and carry them over in the effluent. Typical design WOR is 10,000-15,000 gpd/linear ft."
   },
   {
@@ -1763,11 +1763,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Scum baffles in primary clarifiers are designed to:",
     "options": [
       "Prevent short-circuiting",
-      "Prevent floating scum from passing over the effluent weir",
+      "Reduce the surface overflow rate",
       "Increase the detention time",
-      "Reduce the surface overflow rate"
+      "Prevent floating scum from passing over the effluent weir"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Scum baffles are submerged baffles placed in front of the effluent weir to prevent floating scum (grease, oils, plastics) from passing over the weir and contaminating the effluent."
   },
   {
@@ -1791,11 +1791,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Sequencing Batch Reactors (SBRs) differ from conventional activated sludge in that:",
     "options": [
       "SBRs use separate aeration and settling tanks",
-      "SBRs perform aeration, settling, and decanting in a single tank in sequential cycles",
       "SBRs do not require return sludge",
+      "SBRs perform aeration, settling, and decanting in a single tank in sequential cycles",
       "SBRs cannot achieve nitrification"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "SBRs use a single tank that alternates between fill, react (aeration), settle, decant, and idle phases. This eliminates the need for separate secondary clarifiers and return sludge pumping."
   },
   {
@@ -1819,11 +1819,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "In the activated sludge process, the return sludge ratio (RAS/Q) is typically:",
     "options": [
       "0.1-0.25",
-      "0.25-0.5",
       "0.5-1.5",
+      "0.25-0.5",
       "2.0-3.0"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "The RAS ratio (return sludge flow / influent flow) is typically 0.5-1.5 (50-150%). Higher RAS ratios are used when the sludge is bulking or when higher MLSS concentrations are needed."
   },
   {
@@ -1875,11 +1875,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The National Research Council (NRC) equations for trickling filter design are used to:",
     "options": [
       "Calculate the required aeration volume",
-      "Estimate BOD removal efficiency based on hydraulic and organic loading",
+      "Calculate the polymer dose for sludge dewatering",
       "Determine the required SRT",
-      "Calculate the polymer dose for sludge dewatering"
+      "Estimate BOD removal efficiency based on hydraulic and organic loading"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "The NRC equations relate BOD removal efficiency to hydraulic loading, organic loading, recirculation ratio, and filter volume. They are empirical equations developed from operating data on rock media filters."
   },
   {
@@ -1889,11 +1889,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Plastic media trickling filters have advantages over rock media filters because:",
     "options": [
       "They are cheaper to install",
-      "They have higher specific surface area and lower weight, allowing deeper filters",
+      "They achieve better BOD removal at the same loading",
       "They require less maintenance",
-      "They achieve better BOD removal at the same loading"
+      "They have higher specific surface area and lower weight, allowing deeper filters"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Plastic media has a specific surface area of 30-100 m2/m3 compared to 40-70 m2/m3 for rock. More importantly, plastic media is much lighter (50-100 kg/m3 vs 1,200-1,500 kg/m3 for rock), allowing filters 6-12 m deep."
   },
   {
@@ -1903,11 +1903,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The A2/O (Anaerobic/Anoxic/Oxic) process achieves:",
     "options": [
       "BOD removal only",
-      "Simultaneous biological nitrogen and phosphorus removal",
+      "Nitrification without denitrification",
       "Chemical phosphorus removal only",
-      "Nitrification without denitrification"
+      "Simultaneous biological nitrogen and phosphorus removal"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "The A2/O process uses three zones: anaerobic (phosphorus release), anoxic (denitrification), and aerobic (nitrification and phosphorus uptake). It achieves simultaneous biological nitrogen and phosphorus removal."
   },
   {
@@ -1931,11 +1931,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The Modified Ludzack-Ettinger (MLE) process achieves nitrogen removal by:",
     "options": [
       "Adding an anaerobic zone before the aerobic zone",
-      "Recycling nitrified effluent from the aerobic zone to an anoxic zone at the inlet",
       "Using two separate activated sludge systems",
+      "Recycling nitrified effluent from the aerobic zone to an anoxic zone at the inlet",
       "Adding methanol to the secondary clarifier"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "The MLE process has an anoxic zone at the inlet followed by an aerobic zone. Nitrified mixed liquor is recycled from the aerobic zone back to the anoxic zone, where denitrification occurs using influent BOD as the carbon source."
   },
   {
@@ -1944,12 +1944,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "Struvite (magnesium ammonium phosphate) formation in digesters and pipes is caused by:",
     "options": [
-      "High pH and high concentrations of magnesium, ammonium, and phosphate",
+      "High chlorine residual",
       "Low pH and high sulfate concentrations",
       "High temperature and low dissolved oxygen",
-      "High chlorine residual"
+      "High pH and high concentrations of magnesium, ammonium, and phosphate"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Struvite (MgNH4PO4.6H2O) forms when magnesium, ammonium, and phosphate concentrations exceed the solubility product, especially at high pH. It forms hard scale in pipes, digesters, and centrifuges, causing operational problems."
   },
   {
@@ -1959,11 +1959,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Breakpoint chlorination occurs when:",
     "options": [
       "Chlorine first appears in the effluent",
-      "All chloramines are oxidized and free chlorine residual begins to increase",
+      "The chlorine dose exceeds 10 mg/L",
       "The pH drops below 6.0",
-      "The chlorine dose exceeds 10 mg/L"
+      "All chloramines are oxidized and free chlorine residual begins to increase"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "As chlorine is added to wastewater containing ammonia, chloramines form first. As more chlorine is added, the chloramines are oxidized and destroyed. The breakpoint is where all chloramines are destroyed and free chlorine residual begins to increase."
   },
   {
@@ -1972,12 +1972,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "UV disinfection effectiveness is reduced by:",
     "options": [
-      "High dissolved oxygen in the effluent",
       "High turbidity and suspended solids that absorb or scatter UV light",
+      "High dissolved oxygen in the effluent",
       "Low temperature of the effluent",
       "High pH above 8.0"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "UV light must penetrate the wastewater to reach and inactivate microorganisms. High turbidity, suspended solids, and dissolved organic matter absorb or scatter UV light, reducing its effectiveness. Tertiary filtration before UV is often required."
   },
   {
@@ -2015,11 +2015,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Dissolved oxygen in the aeration tank that is consistently below 0.5 mg/L may cause:",
     "options": [
       "Improved nitrification",
-      "Filamentous bulking and poor sludge settling",
+      "Increased SVI",
       "Reduced BOD loading",
-      "Increased SVI"
+      "Filamentous bulking and poor sludge settling"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Consistently low DO (<0.5 mg/L) in the aeration tank favors the growth of filamentous organisms that thrive under oxygen-limited conditions. This leads to bulking sludge with high SVI and poor settling in the secondary clarifier."
   },
   {
@@ -2029,11 +2029,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A sudden increase in influent BOD loading to an activated sludge system may cause:",
     "options": [
       "Improved effluent quality",
-      "Temporary decrease in effluent quality until the biomass adapts",
+      "Decrease in oxygen demand",
       "Immediate increase in MLSS",
-      "Decrease in oxygen demand"
+      "Temporary decrease in effluent quality until the biomass adapts"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "A sudden increase in BOD loading (shock load) can temporarily overwhelm the biological system, causing decreased effluent quality. The biomass needs time to grow and adapt to the higher food supply. Equalization can dampen shock loads."
   },
   {
@@ -2043,11 +2043,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Chlorination of return activated sludge (RAS) is used to control:",
     "options": [
       "Nitrification",
-      "Filamentous bulking organisms",
+      "Dissolved oxygen levels",
       "Phosphorus removal",
-      "Dissolved oxygen levels"
+      "Filamentous bulking organisms"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Low-level chlorination of RAS (1-5 mg/L) selectively kills filamentous organisms that are more sensitive to chlorine than floc-forming bacteria. This is a common control measure for filamentous bulking."
   },
   {
@@ -2098,12 +2098,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "Reverse osmosis (RO) in advanced wastewater treatment removes:",
     "options": [
-      "Only suspended solids",
       "Dissolved salts, organics, and most contaminants through a semi-permeable membrane",
+      "Only suspended solids",
       "Only pathogens",
       "Only nutrients"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Reverse osmosis uses pressure to force water through a semi-permeable membrane that rejects dissolved salts, organics, heavy metals, and most contaminants. It produces very high-quality water suitable for indirect potable reuse."
   },
   {
@@ -2127,11 +2127,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The term 'endogenous respiration' in activated sludge refers to:",
     "options": [
       "Oxygen consumption during BOD removal",
-      "Microorganisms consuming their own cellular material when food is limited",
       "The respiration of nitrifying bacteria",
+      "Microorganisms consuming their own cellular material when food is limited",
       "Oxygen transfer from the atmosphere"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Endogenous respiration occurs when microorganisms have consumed all available food (BOD) and begin to metabolize their own cellular material for energy. It occurs at high SRTs and low F/M ratios, resulting in less sludge production."
   },
   {
@@ -2141,11 +2141,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Algae in wastewater stabilization ponds provide:",
     "options": [
       "BOD removal through adsorption",
-      "Oxygen through photosynthesis for bacterial oxidation of organic matter",
       "Pathogen removal through predation",
+      "Oxygen through photosynthesis for bacterial oxidation of organic matter",
       "Nutrient removal through chemical precipitation"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Algae produce oxygen through photosynthesis (CO2 + H2O + light -> O2 + organic matter). This oxygen is used by bacteria to oxidize organic matter (BOD). The bacteria produce CO2 and nutrients that the algae use — a symbiotic relationship."
   },
   {
@@ -2155,11 +2155,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a Membrane Bioreactor (MBR) is to:",
     "options": [
       "Replace the primary clarifier",
-      "Combine biological treatment with membrane filtration to replace the secondary clarifier",
       "Provide chemical phosphorus removal",
+      "Combine biological treatment with membrane filtration to replace the secondary clarifier",
       "Provide UV disinfection"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "MBRs combine biological treatment (activated sludge) with membrane filtration (microfiltration or ultrafiltration) to replace the secondary clarifier. MBRs produce very high-quality effluent and can operate at higher MLSS concentrations."
   },
   {
@@ -2183,11 +2183,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Controlled discharge lagoons differ from continuous discharge lagoons in that:",
     "options": [
       "They use mechanical aeration",
-      "They store treated effluent and discharge only when receiving water conditions are favorable",
+      "They require more land area",
       "They have shorter detention times",
-      "They require more land area"
+      "They store treated effluent and discharge only when receiving water conditions are favorable"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Controlled discharge lagoons store treated effluent during periods when discharge would be harmful (ice-out, low flow in receiving stream) and discharge when conditions are favorable. They require larger storage volume."
   },
   {
@@ -2211,11 +2211,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of sludge recirculation in a secondary clarifier is to:",
     "options": [
       "Dilute the incoming mixed liquor",
-      "Maintain the biological population in the aeration tank and prevent sludge from becoming septic",
       "Increase the surface overflow rate",
+      "Maintain the biological population in the aeration tank and prevent sludge from becoming septic",
       "Improve the effluent quality directly"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "RAS returns settled biological sludge from the secondary clarifier to the aeration tank to maintain the active biomass concentration (MLSS). Without RAS, the biomass would be washed out and treatment would fail."
   },
   {
@@ -2224,12 +2224,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "In the activated sludge process, the F/M (food-to-microorganism) ratio is calculated as:",
     "options": [
-      "BOD removed / MLSS",
       "Influent BOD / (MLSS x aeration tank volume)",
+      "BOD removed / MLSS",
       "MLSS / influent BOD",
       "Effluent BOD / influent BOD"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "F/M = Influent BOD (kg/day) / (MLSS (kg/m3) x aeration tank volume (m3)). F/M controls the metabolic state of the biomass. Low F/M (0.05-0.15 kg BOD/kg MLSS/day) = endogenous; high F/M (0.2-0.6) = log growth phase."
   },
   {
@@ -2267,11 +2267,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Foaming in an activated sludge aeration tank is often caused by:",
     "options": [
       "Excessive dissolved oxygen",
-      "Nocardia or Microthrix filamentous organisms, or high surfactant concentrations",
       "Low MLSS concentration",
+      "Nocardia or Microthrix filamentous organisms, or high surfactant concentrations",
       "High alkalinity"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Biological foaming is most commonly caused by Nocardia or Microthrix parvicella filamentous organisms that produce hydrophobic, stable foam. Surfactants (detergents) from industrial discharges can also cause foaming."
   },
   {
@@ -2295,11 +2295,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Anaerobic digestion of wastewater sludge produces:",
     "options": [
       "Carbon dioxide and water only",
-      "Methane (CH4) and carbon dioxide (CO2) as biogas",
       "Nitrogen gas and water",
+      "Methane (CH4) and carbon dioxide (CO2) as biogas",
       "Oxygen and carbon dioxide"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Anaerobic digestion converts organic matter in sludge to biogas (60-70% CH4, 30-40% CO2) through a series of microbial reactions: hydrolysis, acidogenesis, acetogenesis, and methanogenesis."
   },
   {
@@ -2309,11 +2309,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The volatile solids reduction in a well-operating mesophilic anaerobic digester is typically:",
     "options": [
       "10-20%",
-      "30-40%",
       "50-60%",
+      "30-40%",
       "80-90%"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "A well-operating mesophilic anaerobic digester (35 degrees C, 20-30 day SRT) typically achieves 50-60% volatile solids reduction. This represents the destruction of biodegradable organic matter, reducing sludge mass and improving dewaterability."
   },
   {
@@ -2322,12 +2322,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Thermophilic anaerobic digestion operates at a temperature of approximately:",
     "options": [
-      "20-25 degrees C",
-      "35-38 degrees C",
       "50-55 degrees C",
+      "35-38 degrees C",
+      "20-25 degrees C",
       "65-70 degrees C"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Thermophilic anaerobic digestion operates at 50-55 degrees C. It achieves faster reaction rates and better pathogen destruction than mesophilic digestion (35 degrees C), but is more sensitive to temperature fluctuations and requires more energy for heating."
   },
   {
@@ -2351,11 +2351,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Belt filter presses are used in wastewater treatment for:",
     "options": [
       "Screening influent wastewater",
-      "Mechanically dewatering sludge to produce a cake",
+      "Filtering tertiary effluent",
       "Thickening waste activated sludge",
-      "Filtering tertiary effluent"
+      "Mechanically dewatering sludge to produce a cake"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Belt filter presses dewater conditioned sludge by pressing it between two porous belts. Polymer conditioning is required to improve dewaterability. Typical cake solids: 15-25% for WAS, 20-30% for digested sludge."
   },
   {
@@ -2365,11 +2365,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of polymer conditioning before sludge dewatering is to:",
     "options": [
       "Increase the BOD of the sludge",
-      "Neutralize the negative charge on sludge particles to improve flocculation and water release",
       "Reduce the pathogen content",
+      "Neutralize the negative charge on sludge particles to improve flocculation and water release",
       "Increase the volatile solids content"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Sludge particles carry a negative charge that keeps them dispersed. Cationic polymers neutralize this charge, allowing particles to flocculate into larger aggregates that release water more readily during mechanical dewatering."
   },
   {
@@ -2379,11 +2379,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a centrifuge in sludge processing is to:",
     "options": [
       "Digest the sludge anaerobically",
-      "Separate solids from liquid using centrifugal force for thickening or dewatering",
+      "Disinfect the sludge",
       "Measure the volatile solids content",
-      "Disinfect the sludge"
+      "Separate solids from liquid using centrifugal force for thickening or dewatering"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Centrifuges use centrifugal force (1,000-3,000 x gravity) to rapidly separate solids from liquid. They are used for both thickening (gravity belt thickener alternative) and dewatering (belt press alternative), achieving 20-30% cake solids."
   },
   {
@@ -2407,11 +2407,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A land application site for biosolids must have adequate setback distances from:",
     "options": [
       "Only residential areas",
-      "Water bodies, wells, property lines, and public access areas",
+      "Only agricultural areas",
       "Only drinking water wells",
-      "Only agricultural areas"
+      "Water bodies, wells, property lines, and public access areas"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Biosolids land application setback distances protect: surface water (prevent runoff), drinking water wells (prevent groundwater contamination), property lines (prevent nuisance), and public access areas (prevent exposure). Specific distances are set by provincial regulations."
   },
   {
@@ -2420,12 +2420,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which type of sewer system contains domestic and industrial wastes?",
     "options": [
-      "Domestic wastewater system",
       "Sanitary sewer system",
+      "Domestic wastewater system",
       "Separate collection system",
       "Combined sewer system"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "A sanitary sewer is designed to collect and convey waste streams from homes (domestic) and industries (industrial). A combined sewer system incorporates all of the street runoff and other drains that are combined with the sanitary system and enter the treatment plant. It is not uncommon for the flow to a plant to double or triple when the sewer system is combined."
   },
   {
@@ -2463,11 +2463,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "If a grit chamber is passing grit through the tank, what adjustment should be made to the velocity?",
     "options": [
       "Increase the velocity",
-      "Decrease the velocity",
       "The velocity must be higher than 3.0 fps to function",
+      "Decrease the velocity",
       "Velocity has nothing to do with grit removal"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Grit chambers are designed to maintain a velocity of about 1.0 fps, which allows heavier inorganic material to settle out and be removed from the chamber and lighter organic material to remain in suspension and leave with the grit chamber effluent. If grit is passing through the chamber, this means the velocity is too high and should be decreased."
   },
   {
@@ -2506,10 +2506,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "Too much sludge being removed",
       "Poor screenings removal",
-      "Aeration SRT too low",
-      "Not enough sludge being removed"
+      "Not enough sludge being removed",
+      "Aeration SRT too low"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "Gas and/or solids rising to the surface in a primary clarifier typically indicates a septic condition in the tank. This can be caused by an inadequate amount of sludge being withdrawn from the tank."
   },
   {
@@ -2518,12 +2518,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the surface loading rate for a primary clarifier, given the following data? · Primary clarifier diameter is 75 feet · Tank depth is 13 feet · Flow entering the clarifier is 2,587 gpm",
     "options": [
-      "445 gpd/ft2",
       "844 gpd/ft2",
+      "445 gpd/ft2",
       "130 gpd/ft2",
       "1,157 gpd/ft2"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Surface loading rate in gpd/ft2 is calculated as follows: Gallons per day entering the tank divided by the surface area of the tank in ft2 Gallons per day = 2,587 gpm x 1,440 mins/day = 3,725,280 gpd"
   },
   {
@@ -2560,12 +2560,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which dangerous gas will be more likely to rise near the surface of a manhole?",
     "options": [
-      "Hydrogen sulfide",
       "Methane",
+      "Hydrogen sulfide",
       "Nitrogen",
       "Carbon dioxide"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Deaths are not uncommon when people enter poorly ventilated spaces such as deep wells, underground tanks or sewer systems. Since Hydrogen Sulfide (H2S) gas is heavier than air, its concentration is highest near the bottom of enclosed spaces."
   },
   {
@@ -2575,11 +2575,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Which dangerous gas will be more likely to rise near the surface of a manhole?",
     "options": [
       "Hydrogen sulfide",
-      "Methane",
       "Nitrogen",
+      "Methane",
       "Carbon dioxide"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Deaths are not uncommon when people enter poorly ventilated spaces such as deep wells, underground tanks or sewer systems. Since Hydrogen Sulfide (H2S) gas is heavier than air, its concentration is highest near the bottom of enclosed spaces."
   },
   {
@@ -2590,10 +2590,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "Sanitary sewer system",
       "Storm sewer system",
-      "Combined sewer system",
-      "Force main system"
+      "Force main system",
+      "Combined sewer system"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Combined sewer systems carry both sanitary wastewater and stormwater in the same pipe. During heavy rainfall, combined sewer overflows (CSOs) can occur when the system capacity is exceeded, discharging untreated wastewater."
   },
   {
@@ -2602,12 +2602,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "A force main in a wastewater collection system is:",
     "options": [
-      "A gravity sewer with a steep slope",
       "A pressurized pipe that carries wastewater under pressure from a pump station",
+      "A gravity sewer with a steep slope",
       "A large-diameter trunk sewer",
       "A sewer that serves industrial areas only"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "A force main is a pressurized pipe that carries wastewater from a pump (lift) station to a higher elevation or to the treatment plant. Unlike gravity sewers, force mains flow full and under pressure."
   },
   {
@@ -2645,11 +2645,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Inflow in a wastewater collection system refers to:",
     "options": [
       "Groundwater entering through pipe defects",
-      "Stormwater entering through direct connections (roof drains, catch basins, manhole covers)",
+      "Return flow from irrigation",
       "Industrial process water",
-      "Return flow from irrigation"
+      "Stormwater entering through direct connections (roof drains, catch basins, manhole covers)"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Inflow is stormwater that enters the sanitary sewer through direct connections such as roof drains, foundation drains, catch basins, and unsealed manhole covers. Inflow is typically more rapid and intense than infiltration."
   },
   {
@@ -2672,12 +2672,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The minimum cycle time for a lift station pump is important because:",
     "options": [
-      "Longer cycles reduce energy consumption",
       "Frequent starts cause motor overheating and premature failure",
+      "Longer cycles reduce energy consumption",
       "Shorter cycles improve treatment efficiency",
       "Longer cycles reduce wear on check valves"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Each motor start draws a large inrush current (5-7 times running current) that generates heat. Too-frequent starts (short cycles) prevent the motor from cooling between starts, causing overheating and premature motor failure."
   },
   {
@@ -2701,11 +2701,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Concrete sewer pipe corrosion caused by hydrogen sulfide is a two-step process where:",
     "options": [
       "H2S directly attacks the concrete",
-      "H2S is oxidized to sulfuric acid by bacteria on the pipe crown, which then attacks the concrete",
+      "H2S increases the pH, dissolving the concrete",
       "H2S reacts with calcium to form calcium sulfide",
-      "H2S increases the pH, dissolving the concrete"
+      "H2S is oxidized to sulfuric acid by bacteria on the pipe crown, which then attacks the concrete"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "H2S gas rises to the pipe crown (above the waterline), where Thiobacillus bacteria oxidize it to sulfuric acid (H2SO4). The sulfuric acid attacks the concrete, causing crown corrosion. This is called microbially induced corrosion (MIC)."
   },
   {
@@ -2715,11 +2715,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "To control hydrogen sulfide in a collection system, operators can:",
     "options": [
       "Increase the slope of the sewer pipes",
-      "Add oxygen, nitrate, or iron salts to prevent anaerobic conditions",
+      "Increase the detention time in the sewer",
       "Reduce the flow velocity",
-      "Increase the detention time in the sewer"
+      "Add oxygen, nitrate, or iron salts to prevent anaerobic conditions"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "H2S control methods include: adding oxygen (air injection), adding nitrate (as an alternative electron acceptor for SRB), adding iron salts (to precipitate sulfide as iron sulfide), or adding caustic soda to raise pH."
   },
   {
@@ -2729,11 +2729,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A combined sewer overflow (CSO) occurs when:",
     "options": [
       "A sanitary sewer overflows due to a blockage",
-      "A combined sewer system exceeds its capacity during storm events, discharging to receiving waters",
       "A lift station fails and wastewater backs up",
+      "A combined sewer system exceeds its capacity during storm events, discharging to receiving waters",
       "A force main breaks and wastewater spills"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "CSOs occur when rainfall and runoff entering a combined sewer system exceed its capacity. The excess flow (a mixture of stormwater and raw sewage) overflows through relief structures to receiving waters."
   },
   {
@@ -2743,11 +2743,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Sewer cleaning using high-velocity water jets (hydro-jetting) is used to:",
     "options": [
       "Detect leaks in sewer pipes",
-      "Remove grease, roots, and debris that have accumulated in the sewer",
       "Repair cracks in sewer pipes",
+      "Remove grease, roots, and debris that have accumulated in the sewer",
       "Measure the flow in the sewer"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Hydro-jetting uses high-pressure water (1,500-4,000 psi) to clean sewer pipes by removing grease deposits, root intrusions, sediment, and other blockages. It is the most common method for preventive sewer maintenance."
   },
   {
@@ -2756,12 +2756,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "CCTV inspection of sewer pipes is used to:",
     "options": [
-      "Measure the flow velocity in the pipe",
       "Visually inspect the condition of the pipe interior for defects, cracks, and root intrusions",
+      "Measure the flow velocity in the pipe",
       "Detect hydrogen sulfide levels in the sewer",
       "Clean the sewer pipe"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "CCTV (closed-circuit television) inspection uses a camera mounted on a wheeled crawler to visually inspect the interior of sewer pipes. It identifies defects, root intrusions, cracks, joint failures, and other problems."
   },
   {
@@ -2771,11 +2771,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Trenchless sewer rehabilitation methods include:",
     "options": [
       "Open-cut replacement only",
-      "Cured-in-place pipe (CIPP) lining, pipe bursting, and slip lining",
+      "Chemical grouting only",
       "Concrete encasement",
-      "Chemical grouting only"
+      "Cured-in-place pipe (CIPP) lining, pipe bursting, and slip lining"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Trenchless rehabilitation methods repair or replace sewer pipes without extensive excavation. CIPP installs a resin-impregnated liner inside the existing pipe. Pipe bursting fractures the old pipe and pulls a new pipe through. Slip lining inserts a smaller pipe inside the existing pipe."
   },
   {
@@ -2785,11 +2785,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A sanitary sewer overflow (SSO) must be reported to the regulatory authority because:",
     "options": [
       "It increases the flow to the treatment plant",
-      "It is an unpermitted discharge of untreated wastewater that poses public health and environmental risks",
+      "It indicates the sewer is operating correctly",
       "It reduces the efficiency of the treatment plant",
-      "It indicates the sewer is operating correctly"
+      "It is an unpermitted discharge of untreated wastewater that poses public health and environmental risks"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "SSOs are unpermitted discharges of raw or partially treated wastewater that can contaminate surface water, groundwater, and public areas, posing serious public health and environmental risks. They must be reported and corrected promptly."
   },
   {
@@ -2813,11 +2813,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A variable frequency drive (VFD) on a lift station pump allows:",
     "options": [
       "The pump to operate at a fixed speed only",
-      "The pump speed to be varied to match the inflow rate, reducing energy consumption",
       "The pump to handle larger solids",
+      "The pump speed to be varied to match the inflow rate, reducing energy consumption",
       "The pump to operate without a motor"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "VFDs allow pump speed to be varied continuously to match the inflow rate, maintaining a more constant wet well level. This reduces energy consumption (pump energy is proportional to speed cubed), reduces wear, and eliminates frequent on/off cycling."
   },
   {
@@ -2826,12 +2826,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "Grease buildup in sewer collection systems is primarily caused by:",
     "options": [
-      "Industrial chemical discharges",
       "Fats, oils, and grease (FOG) from food service establishments and residences",
+      "Industrial chemical discharges",
       "Stormwater runoff",
       "Root intrusions from trees"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Fats, oils, and grease (FOG) from restaurants, food processing facilities, and residences solidify in the sewer, accumulating on pipe walls and causing blockages. FOG control programs (grease traps, inspections) are used to prevent sewer overflows."
   },
   {
@@ -2855,11 +2855,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Smoke testing of a sewer system is used to:",
     "options": [
       "Detect hydrogen sulfide levels",
-      "Identify illegal connections and sources of inflow",
+      "Clean the sewer pipes",
       "Measure the flow in the sewer",
-      "Clean the sewer pipes"
+      "Identify illegal connections and sources of inflow"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Smoke testing forces non-toxic smoke into the sewer system. Smoke emerging from the ground, buildings, or storm drains identifies illegal connections, leaking manholes, and other sources of inflow that allow stormwater to enter the sanitary sewer."
   },
   {
@@ -2868,12 +2868,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "Lift station alarms are required to alert operators to:",
     "options": [
-      "Normal operating conditions",
       "High wet well level, pump failure, and power outages",
+      "Normal operating conditions",
       "Routine maintenance schedules",
       "Changes in influent flow rate"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Lift station alarms alert operators to abnormal conditions that require immediate response: high wet well level (risk of SSO), pump failure, power outage, and other equipment malfunctions. Alarms are typically connected to SCADA and auto-dialers."
   },
   {
@@ -2883,11 +2883,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a bypass pump setup at a lift station is to:",
     "options": [
       "Increase the pumping capacity during normal operations",
-      "Provide emergency pumping capability when the primary pumps fail",
       "Reduce energy consumption",
+      "Provide emergency pumping capability when the primary pumps fail",
       "Measure the flow in the wet well"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Bypass pumping uses portable pumps to maintain flow when the primary pumps are out of service for maintenance or repair. This prevents wet well overflow and sanitary sewer overflows during pump downtime."
   },
   {
@@ -2897,11 +2897,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The design of a gravity sewer should ensure that the pipe flows:",
     "options": [
       "Full at all times",
-      "At 50-75% full at peak flow to maintain ventilation and self-cleaning velocity",
+      "At less than 25% full to prevent surcharging",
       "At 100% full at average flow",
-      "At less than 25% full to prevent surcharging"
+      "At 50-75% full at peak flow to maintain ventilation and self-cleaning velocity"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Gravity sewers are typically designed to flow at 50-75% full at peak flow. This provides freeboard for unexpected flow increases, maintains ventilation (to prevent H2S buildup), and ensures the pipe can convey peak flows without surcharging."
   },
   {
@@ -2910,12 +2910,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Sewer pipe material selection depends on:",
     "options": [
-      "Only the pipe diameter",
       "Soil conditions, groundwater, pipe size, flow velocity, and potential for corrosion",
+      "Only the pipe diameter",
       "The distance to the treatment plant only",
       "The age of the sewer system"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Sewer pipe material selection considers: soil conditions (corrosive soils), groundwater (buoyancy, infiltration), pipe size, flow velocity (abrasion), potential for H2S corrosion, traffic loads, and cost. Common materials: PVC, HDPE, concrete, ductile iron, vitrified clay."
   },
   {
@@ -2938,12 +2938,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "The purpose of a grease interceptor (grease trap) at a food service establishment is to:",
     "options": [
-      "Remove pathogens from the wastewater",
       "Capture fats, oils, and grease before they enter the sewer system",
+      "Remove pathogens from the wastewater",
       "Reduce the BOD of the wastewater",
       "Measure the flow from the establishment"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Grease interceptors are installed at food service establishments to capture FOG before it enters the sewer. They work by gravity separation — grease floats to the top and is retained while wastewater flows through. Regular cleaning is required."
   },
   {
@@ -2952,12 +2952,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "A sewer system capacity, management, operations, and maintenance (CMOM) program is required to:",
     "options": [
-      "Comply with NPDES permit conditions and prevent SSOs",
-      "Train new operators on pump maintenance",
       "Calculate the BOD loading to the treatment plant",
+      "Train new operators on pump maintenance",
+      "Comply with NPDES permit conditions and prevent SSOs",
       "Design new sewer extensions"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "CMOM programs are required by the EPA to ensure collection systems are properly managed, operated, and maintained to prevent SSOs. They include capacity assessment, maintenance programs, overflow response plans, and reporting requirements."
   },
   {
@@ -2967,11 +2967,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Cured-in-place pipe (CIPP) lining is a trenchless rehabilitation method that:",
     "options": [
       "Inserts a rigid pipe inside the existing pipe",
-      "Installs a resin-impregnated flexible liner that is cured in place to form a new pipe within the old pipe",
+      "Applies a spray-on coating to the pipe interior",
       "Fractures the old pipe and pulls in a new pipe",
-      "Applies a spray-on coating to the pipe interior"
+      "Installs a resin-impregnated flexible liner that is cured in place to form a new pipe within the old pipe"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "CIPP installs a felt or fiberglass liner saturated with thermosetting resin inside the existing pipe. The liner is inflated and cured (by hot water, steam, or UV light) to form a rigid, jointless pipe within the old pipe, sealing cracks and joints."
   },
   {
@@ -2981,11 +2981,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of oxygen injection into a force main is to:",
     "options": [
       "Increase the BOD of the wastewater",
-      "Prevent H2S generation by maintaining aerobic conditions",
+      "Improve the efficiency of the pumps",
       "Reduce the pressure in the force main",
-      "Improve the efficiency of the pumps"
+      "Prevent H2S generation by maintaining aerobic conditions"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Injecting oxygen (or air) into force mains maintains aerobic conditions that prevent sulfate-reducing bacteria from generating H2S. This controls odours and prevents concrete corrosion in the downstream sewer."
   },
   {
@@ -3023,11 +3023,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Exfiltration from a sewer system refers to:",
     "options": [
       "Groundwater entering the sewer through pipe defects",
-      "Wastewater leaking out of the sewer into the surrounding soil",
       "Stormwater entering through manhole covers",
+      "Wastewater leaking out of the sewer into the surrounding soil",
       "Air entering the sewer system"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Exfiltration is the leakage of wastewater from the sewer into the surrounding soil and groundwater. It can contaminate groundwater and soil, and indicates pipe defects that also allow infiltration when the groundwater table is high."
   },
   {
@@ -3037,11 +3037,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Dye testing in a sewer system is used to:",
     "options": [
       "Measure the BOD of the wastewater",
-      "Trace the flow path and confirm connections between specific locations",
+      "Measure the velocity in the sewer",
       "Detect hydrogen sulfide",
-      "Measure the velocity in the sewer"
+      "Trace the flow path and confirm connections between specific locations"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Dye testing introduces a non-toxic fluorescent dye into a suspected inflow source (catch basin, roof drain, foundation drain). If the dye appears in the sanitary sewer, it confirms an illegal or improper connection."
   },
   {
@@ -3051,11 +3051,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The minimum depth of cover over a sewer pipe in a roadway is typically:",
     "options": [
       "1 foot",
-      "3 feet",
       "5 feet",
+      "3 feet",
       "8 feet"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Sewer pipes in roadways typically require a minimum of 3 feet (0.9 m) of cover to protect them from traffic loads and frost penetration. Greater depths may be required in cold climates or under heavy traffic areas."
   },
   {
@@ -3064,12 +3064,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Manhole spacing in a gravity sewer system is typically:",
     "options": [
-      "Every 50 feet",
       "Every 100-500 feet",
+      "Every 50 feet",
       "Every 1,000 feet",
       "Every mile"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Manholes are typically spaced 100-500 feet (30-150 m) apart, depending on pipe diameter and local standards. They are also required at every change in pipe direction, grade, size, or material, and at every junction."
   },
   {
@@ -3079,11 +3079,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A sewer system's hydraulic capacity is determined by:",
     "options": [
       "The number of manholes in the system",
-      "The pipe diameter, slope, roughness coefficient, and Manning's equation",
       "The number of lift stations",
+      "The pipe diameter, slope, roughness coefficient, and Manning's equation",
       "The age of the pipes"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Gravity sewer capacity is calculated using Manning's equation: Q = (1/n) x A x R^(2/3) x S^(1/2), where n is the roughness coefficient, A is the cross-sectional area, R is the hydraulic radius, and S is the slope."
   },
   {
@@ -3092,12 +3092,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of a pre-treatment program for industrial users is to:",
     "options": [
-      "Treat industrial wastewater to drinking water standards",
       "Prevent industrial discharges from interfering with treatment plant operations or violating effluent limits",
+      "Treat industrial wastewater to drinking water standards",
       "Measure the flow from industrial users",
       "Provide free treatment for small industries"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Industrial pre-treatment programs (required under the Clean Water Act) set limits on industrial discharges to prevent interference with biological treatment, protect biosolids quality, and prevent pass-through of pollutants that would violate the plant's NPDES permit."
   },
   {
@@ -3120,12 +3120,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of a flow equalization basin in a collection system is to:",
     "options": [
-      "Provide primary treatment",
       "Store peak flows and release them at a uniform rate to protect the treatment plant",
+      "Provide primary treatment",
       "Remove grit before the treatment plant",
       "Provide emergency storage for spills"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Flow equalization basins store peak flows (during wet weather or morning peaks) and release them at a controlled rate. This prevents hydraulic overloading of the treatment plant and maintains more consistent treatment performance."
   },
   {
@@ -3135,11 +3135,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a sewer atlas or GIS mapping system is to:",
     "options": [
       "Record the daily flow measurements",
-      "Document the location, size, material, and condition of all sewer system components",
+      "Calculate the BOD loading to the treatment plant",
       "Track the maintenance history of lift stations",
-      "Calculate the BOD loading to the treatment plant"
+      "Document the location, size, material, and condition of all sewer system components"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "A sewer atlas or GIS mapping system documents the location, size, material, age, and condition of all sewer pipes, manholes, lift stations, and other components. It is essential for operations, maintenance planning, and emergency response."
   },
   {
@@ -3163,11 +3163,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A pressure sewer system (STEP or STEG) is used in:",
     "options": [
       "Dense urban areas with high flows",
-      "Low-density areas where gravity sewers are not cost-effective",
       "Industrial areas with high-strength wastewater",
+      "Low-density areas where gravity sewers are not cost-effective",
       "Areas with very steep terrain"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Pressure sewer systems (Septic Tank Effluent Pumping/Gravity) use individual grinder pumps or effluent pumps at each property to pump wastewater into a small-diameter pressure main. They are cost-effective in low-density rural areas."
   },
   {
@@ -3177,11 +3177,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a sewer system emergency response plan is to:",
     "options": [
       "Document the daily operations of the collection system",
-      "Provide procedures for responding to SSOs, pump failures, and other emergencies",
       "Train operators on routine maintenance",
+      "Provide procedures for responding to SSOs, pump failures, and other emergencies",
       "Calculate the annual capital improvement budget"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Emergency response plans document procedures for responding to SSOs, pump station failures, pipe breaks, and other emergencies. They include notification requirements, containment procedures, cleanup protocols, and regulatory reporting requirements."
   },
   {
@@ -3190,12 +3190,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the correct incubation time and temperature for the BOD test?",
     "options": [
-      "5 days at 20°F",
       "5 days at 20°C",
+      "5 days at 20°F",
       "20 days at 5°C",
       "5 days at 68°C"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Biochemical oxygen demand (BOD) basically identifies the pollutional strength of the raw wastewater. It determines the amount of oxygen required to breakdown the organic material in the wastewater … measured as mg/L."
   },
   {
@@ -3218,12 +3218,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the percent CBOD5 removal efficiency in this plant? · Influent CBOD5 is 200 mg/l · Effluent CBOD5 is 2.5 mg/l",
     "options": [
-      "98.8%",
-      "100%",
       "89.6%",
+      "100%",
+      "98.8%",
       "99.0%"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "CBOD5 removal efficiency = (In - Out) ÷ In x 100 = % Or, differently written, In - Out x 100 = % In 200 - 2.5 x 100= 98.75% 200"
   },
   {
@@ -3232,12 +3232,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the F/M ratio of this activated sludge process? · Influent Flow is 5.75 mgd · Influent CBOD5 is 200 mg/l · Three (3) Aeration Tanks, Each @ 100 ft. Long, 25 ft. Wide, and 14 ft. Deep · Aeration MLSS is 2,500 mg/l · Aeration MLSS is 77% Volatile",
     "options": [
-      "0.42",
-      "0.21",
       "0.76",
+      "0.21",
+      "0.42",
       "1.31"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "F/M Ratio =F = Influent CBOD5, lbs/day M = Aeration MLVSS, lbs"
   },
   {
@@ -3247,11 +3247,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the SRT of this activated sludge plant? · Influent Flow is 5.75 mgd · Effluent TSS is 2.0 mg/l · Aeration MLSS is 2,500 mg/l · WAS Volume is 0.1 mgd · Three Aeration Tanks, Each @ 100 ft. Long, 25 ft. Wide, and 14 ft. Deep · WAS Concentration is 0.7% Total Solids",
     "options": [
       "12 days",
-      "8.5 days",
+      "2.7 days",
       "6.5 days",
-      "2.7 days"
+      "8.5 days"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "SRT, days = Pounds MLSS Inventory in Aeration Lbs/day TSS Removed from the Process"
   },
   {
@@ -3261,11 +3261,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the GSA (Gould Sludge Age) in this plant? · Three (3) Aeration Tanks, Each @ 100 ft. Long, 25 ft. Wide, and 14 ft. Deep · Aeration MLSS is 2,500 mg/l · Influent Flow is 5.75 mgd · Influent TSS is 180 mg/l",
     "options": [
       "6.4 days",
-      "1.9 days",
       "8.0 days",
+      "1.9 days",
       "0.527 days"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "GSA, days = Pounds MLSS Inventory in Aeration Lbs/day TSS Entering Aeration"
   },
   {
@@ -3274,12 +3274,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which test indicates the amount of time it takes for sludge particles to float to the surface in the DAF process?",
     "options": [
-      "Rise rate",
-      "D.O.",
       "Centrifuge spindown",
+      "D.O.",
+      "Rise rate",
       "Microscopic exam"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Floc time indicates how much time it takes the sludge particles to form a floc. The rise rate test indicates the amount of time it takes for the flocculated sludge to rise to the surface of the test vessel … and, ultimately, in the DAF tank."
   },
   {
@@ -3288,12 +3288,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which test is not recommended to use for process control of an anaerobic digestion process?",
     "options": [
-      "pH",
       "Acid/alkalinity",
+      "pH",
       "Volatile reduction",
       "Methane gas production"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Because anaerobic digestion has an abundance of alkalinity, the digester can basically go completely “sour” before it is reflected with a drop in pH. This is the reason why pH is a poor indicator of anaerobic digestion process performance."
   },
   {
@@ -3302,12 +3302,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the fecal coliform limit to meet standards for Class A biosolids?",
     "options": [
-      "1,000 #/gram TS",
-      "10,000 #/gram TS",
       "1,000,000 #/gram TS",
+      "10,000 #/gram TS",
+      "1,000 #/gram TS",
       "2,000,000 #/gram TS"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "It just is! Class A residuals fecal coliform is no more that 1,000 #/gram TS. The fecal coliform limit for Class B residuals is 2,000,000 #/gram TS."
   },
   {
@@ -3317,11 +3317,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the fecal coliform limit to meet standards for Class B biosolids?",
     "options": [
       "1,000 #/gram TS",
-      "10,000 #/gram TS",
+      "2,000,000 #/gram TS",
       "1,000,000 #/gram TS",
-      "2,000,000 #/gram TS"
+      "10,000 #/gram TS"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "It just is! The fecal coliform value for Class “B” sludge in the EPA 503 rule is no more than 2,000,000 per gram of total solids. The fecal value for Class “A” is no more than 1,000 per gram of total solids. What pipe material is used to convey chlorine (liquid or gas) under pressure from one-ton containers to downstream equipment components? Answer : a. Black iron pipe Feedback: Question No. 116 The pipe most compatible of conveying chlorine gas or liquid at pressures equal to that in the chlorine ton container is black iron pipe. Liquid chlorine, or gaseous chlorine under pressure, will basically melt PVC pipe. 00000000 00000000 00000000 00000000 00000000 00000000  "
   },
   {
@@ -3331,11 +3331,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Which type of flow meter uses an open channel to measure the flow rate?",
     "options": [
       "Magnetic",
-      "Venturi",
       "Parshall flume",
+      "Venturi",
       "Differential pressure"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "A Parshall flume is a specially shaped open channel flow section, which may be installed in a ditch, canal, or lateral to measure the flow rate. The Parshall flume is a particular form of venturi flume and is named for its principal developer, the late Mr. Ralph L. Parshall."
   },
   {
@@ -3359,11 +3359,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Proper sampling and laboratory protocol is essential to the efficient operation of a wastewater treatment facility. Treatment units may best be operated and maintained when proper sampling and laboratory procedures are implemente",
     "options": [
       "Total suspended solids",
-      "Volatile solids",
       "Fixed suspended solids",
+      "Volatile solids",
       "Settleable solids 00000000 00000000 00000000 00000000  "
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "When a solids sample is burned in a muffle furnace, the remaining solids are fixed. So, total solids minus fixed solids equals volatile solids. 00000000 00000000 00000000 00000000 00000000 00000000  "
   },
   {
@@ -3373,11 +3373,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the term that identifies the probable number of fecal coliform in wastewater effluent?",
     "options": [
       "COD",
-      "MPN",
       "pH",
+      "MPN",
       "D.O."
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "MPN … Most Probable Number … is the term that describes fecal coliform colonies in a wastewater sample."
   },
   {
@@ -3400,12 +3400,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the TSS concentration, given the following data: · 50 ml of sample · Tare weight of filter is 11.8873 grams · Final weight of filter after drying is 12.2255 grams",
     "options": [
-      "2,624 mg/l",
-      "13,012 mg/l",
       "6,764 mg/l",
+      "13,012 mg/l",
+      "2,624 mg/l",
       "1,312 mg/l"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "TSS, ppm = weight of suspended solids in grams x (1,000,000  ml of sample) Weight of TSS =Final Wt. - Paper Tare Wt. =12.2255 gm - 11.8873 gm =0.3382 gm"
   },
   {
@@ -3414,12 +3414,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the standard temperature in the muffle furnace for the VSS test?",
     "options": [
-      "20 to 25°C",
+      "545 to 555°C",
       "110 to 115°C",
       "103 to 105°C",
-      "545 to 555°C"
+      "20 to 25°C"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "The acceptable (Standard Methods) temperature of a muffle furnace for the VSS test is about 550°C."
   },
   {
@@ -3430,10 +3430,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "20°F",
       "5°C",
-      "25°F",
-      "68°F What will be the volume of a tank if the flow entering is 5 mgd and the detention time is 1.5 hours? Answer : d. 312,500 gals Feedback: Tank Volume, mg =(flow, mgd x D.T., hours)  24 hrs/day =5 mgd x 1.5 hrs  24 hrs/day =0.3125 mg x 1,000,000 =312,500 gallons 00000000 00000000 00000000 00000000 00000000 00000000    "
+      "68°F What will be the volume of a tank if the flow entering is 5 mgd and the detention time is 1.5 hours? Answer : d. 312,500 gals Feedback: Tank Volume, mg =(flow, mgd x D.T., hours)  24 hrs/day =5 mgd x 1.5 hrs  24 hrs/day =0.3125 mg x 1,000,000 =312,500 gallons 00000000 00000000 00000000 00000000 00000000 00000000    ",
+      "25°F"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "The required temperature for a BOD incubator is 68F … which is the same as 20C. Fahrenheit minus 32 divided by 1.8 equals Centigrade. 68F - 32  1.8 = 20C. Question No. 151 What is the volume in gallons occupied by 45,000 cubic feet of water? a. 336,600 gals b. 168,300 gals c. 375,300 gals d. 2,808,000 gals 00000000 00000000 00000000 00000000  "
   },
   {
@@ -3442,12 +3442,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the temperature of the incubation for a BOD test? Answer :",
     "options": [
-      "336,600 gals",
-      "168,300 gals",
       "375,300 gals",
+      "168,300 gals",
+      "336,600 gals",
       "2,808,000 gals 00000000 00000000 00000000 00000000  "
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "After the required incubation period, the completed filter paper is held under a magnifying glass and the number of colonies that have grown on the paper are counted. Question No. 152 What is the fraction, in its least common denominator, for the decimal 0.42? a. 42 b. 43 c. 21 d. 84 100 50 50 100 00000000 00000000 00000000 00000000  "
   },
   {
@@ -3456,12 +3456,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "How is fecal coliform identified in the membrane filter test method?",
     "options": [
-      "The number of colonies grown on the filter paper",
-      "The number of positive tubes",
       "The number of negative tubes",
+      "The number of positive tubes",
+      "The number of colonies grown on the filter paper",
       "The number of colonies grown in the tube"
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "After the required incubation period, the completed filter paper is held under a magnifying glass and the number of colonies that have grown on the paper are counted. Question No. 152 What is the fraction, in its least common denominator, for the decimal 0.42? a. 42 b. 43 c. 21 d. 84 100 50 50 100 00000000 00000000 00000000 00000000  "
   },
   {
@@ -3470,12 +3470,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the standard temperature in the drying oven for the TSS test?",
     "options": [
-      "20 to 25°C",
-      "110 to 115°C",
       "103 to 105°C",
+      "110 to 115°C",
+      "20 to 25°C",
       "545 to 555°C"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "The acceptable (Standard Methods) temperature of a drying oven for the TSS test is about 104°C. Question No. 153 What does this formula represent? ⅓ π r2 x depth, ft. x 7.48 gals/ft3 a. Volume of a cone in ft3 b. Volume of a circular tank in gallons c. Volume of a sphere in gallons d. Volume of a cone in gallons 00000000 00000000 00000000 00000000  "
   },
   {
@@ -3485,11 +3485,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the standard temperature in the drying oven for the TSS test? Answer :",
     "options": [
       "Volume of a cone in ft3",
-      "Volume of a circular tank in gallons",
       "Volume of a sphere in gallons",
+      "Volume of a circular tank in gallons",
       "Volume of a cone in gallons 00000000 00000000 00000000 00000000  "
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "The acceptable (Standard Methods) temperature of a refrigerator storing samples is about 4°C."
   },
   {
@@ -3500,10 +3500,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "10°C",
       "1°C",
-      "4°C",
-      "4°F"
+      "4°F",
+      "4°C"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "The acceptable (Standard Methods) temperature of a refrigerator storing samples is about 4°C."
   },
   {
@@ -3514,10 +3514,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "5.25%",
       "19%",
-      ".05%",
-      "94.75%"
+      "94.75%",
+      ".05%"
     ],
-    "correct": 3,
+    "correct": 2,
     "explanation": "1.0 - 0.0525 x 100 = 94.75% moisture or 100 - 5.25 = 94.75"
   },
   {
@@ -3526,12 +3526,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "Which of the following is a physical parameter of wastewater?",
     "options": [
-      "BOD",
-      "pH",
       "Temperature",
+      "pH",
+      "BOD",
       "Ammonia nitrogen"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "Temperature is a physical parameter. BOD and ammonia nitrogen are chemical parameters. pH is a chemical parameter. Physical parameters include temperature, colour, odour, turbidity, and solids."
   },
   {
@@ -3540,12 +3540,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The standard method for measuring total suspended solids (TSS) uses a filter with a pore size of:",
     "options": [
-      "0.1 um",
       "0.45 um",
+      "0.1 um",
       "1.2 um",
       "10 um"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "TSS is measured by filtering through a glass fibre filter with a nominal pore size of 0.45 um (or 1.2 um for some methods). Particles larger than the pore size are retained on the filter and weighed after drying."
   },
   {
@@ -3554,12 +3554,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The difference between total solids (TS) and total suspended solids (TSS) is:",
     "options": [
-      "TS includes dissolved solids; TSS does not",
+      "TS measures volatile solids only",
       "TSS includes dissolved solids; TS does not",
       "They are the same measurement",
-      "TS measures volatile solids only"
+      "TS includes dissolved solids; TSS does not"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Total Solids (TS) = Total Suspended Solids (TSS) + Total Dissolved Solids (TDS). TSS is the fraction retained on a filter; TDS passes through the filter. TS is measured by evaporating a sample to dryness."
   },
   {
@@ -3583,11 +3583,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A blank sample in laboratory analysis is used to:",
     "options": [
       "Calibrate the instrument",
-      "Check for contamination in the reagents and equipment",
       "Measure the background concentration in the sample",
+      "Check for contamination in the reagents and equipment",
       "Determine the method detection limit"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "A reagent blank (or method blank) contains all reagents used in the analysis but no sample. It is used to detect contamination in the reagents, glassware, or equipment that could cause false positive results."
   },
   {
@@ -3611,11 +3611,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A spike (matrix spike) sample in laboratory analysis is used to:",
     "options": [
       "Check for contamination in the reagents",
-      "Assess the accuracy (recovery) of the analytical method in the sample matrix",
       "Calibrate the instrument",
+      "Assess the accuracy (recovery) of the analytical method in the sample matrix",
       "Measure the background concentration"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "A matrix spike adds a known amount of the analyte to the sample before analysis. The percent recovery (measured concentration / expected concentration x 100%) assesses whether the sample matrix is interfering with the analysis."
   },
   {
@@ -3624,12 +3624,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Chain of custody (COC) documentation for water samples is required to:",
     "options": [
-      "Ensure samples are analyzed within the holding time",
       "Document the possession and handling of samples from collection to analysis",
+      "Ensure samples are analyzed within the holding time",
       "Specify the analytical methods to be used",
       "Record the sample collection location"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Chain of custody documents the possession and handling of samples from collection through analysis. It ensures sample integrity and provides a legal record that samples were not tampered with or contaminated during transport."
   },
   {
@@ -3639,11 +3639,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Sample holding time refers to:",
     "options": [
       "The time the sample is in the laboratory before analysis",
-      "The maximum time between sample collection and analysis that maintains sample integrity",
+      "The time the sample can be stored after analysis",
       "The time required to perform the analysis",
-      "The time the sample can be stored after analysis"
+      "The maximum time between sample collection and analysis that maintains sample integrity"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Holding time is the maximum time between sample collection and analysis during which the sample remains representative of the original conditions. Exceeding holding times can cause changes in analyte concentrations due to biological activity, chemical reactions, or volatilization."
   },
   {
@@ -3681,11 +3681,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The DPD (N,N-diethyl-p-phenylenediamine) method is used to measure:",
     "options": [
       "BOD",
-      "Dissolved oxygen",
       "Chlorine residual",
+      "Dissolved oxygen",
       "Ammonia"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "The DPD colorimetric method measures chlorine residual. DPD reacts with free chlorine to form a pink colour; the intensity is proportional to the chlorine concentration. It can differentiate between free and combined chlorine."
   },
   {
@@ -3695,11 +3695,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of seeding in the BOD test is to:",
     "options": [
       "Add nutrients to the sample",
-      "Provide a source of microorganisms to oxidize the organic matter",
       "Increase the oxygen content of the dilution water",
+      "Provide a source of microorganisms to oxidize the organic matter",
       "Neutralize the pH of the sample"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Seeding adds a small amount of acclimated microorganisms (from settled sewage, effluent, or river water) to samples that may not contain enough bacteria to perform the BOD test (e.g., industrial effluents, chlorinated samples)."
   },
   {
@@ -3708,12 +3708,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The dilution water used in the BOD test must be:",
     "options": [
-      "Tap water with chlorine removed",
       "Distilled or deionized water saturated with oxygen and containing nutrients",
+      "Tap water with chlorine removed",
       "Raw wastewater diluted 10:1",
       "Treated effluent from the plant"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "BOD dilution water must be oxygen-saturated (DO >= 8 mg/L), contain nutrients (phosphate, nitrogen, magnesium, calcium, iron), and be free of organic matter and toxic substances. It is typically prepared from distilled or deionized water."
   },
   {
@@ -3722,12 +3722,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The carbonaceous BOD (CBOD) test differs from the standard BOD test in that:",
     "options": [
-      "CBOD uses a shorter incubation time",
       "CBOD uses a nitrification inhibitor to prevent nitrogenous oxygen demand",
+      "CBOD uses a shorter incubation time",
       "CBOD measures only dissolved organic matter",
       "CBOD uses a higher incubation temperature"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "CBOD5 uses a nitrification inhibitor (allyl thiourea or TCMP) to suppress nitrification, measuring only the carbonaceous (organic) oxygen demand. Standard BOD5 includes both carbonaceous and nitrogenous oxygen demand."
   },
   {
@@ -3751,11 +3751,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of the settleable solids test (Imhoff cone) is to:",
     "options": [
       "Measure the total suspended solids",
-      "Measure the volume of solids that settle by gravity in 60 minutes",
+      "Measure the volatile fraction of solids",
       "Determine the sludge volume index",
-      "Measure the volatile fraction of solids"
+      "Measure the volume of solids that settle by gravity in 60 minutes"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "The Imhoff cone test measures settleable solids — the volume of solids (mL/L) that settle by gravity in a 1-litre cone-shaped vessel in 60 minutes. It is a simple field test used to assess primary clarifier performance."
   },
   {
@@ -3764,12 +3764,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Nitrate (NO3--N) in wastewater effluent is regulated because:",
     "options": [
-      "It causes corrosion of pipes",
       "It contributes to eutrophication and can cause methemoglobinemia in infants",
+      "It causes corrosion of pipes",
       "It increases the BOD of the effluent",
       "It is toxic to fish at low concentrations"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Nitrate is regulated because: (1) it contributes to eutrophication in receiving waters; (2) at high concentrations (>10 mg/L as N) it causes methemoglobinemia (blue baby syndrome) in infants who drink the water."
   },
   {
@@ -3807,11 +3807,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Total coliforms are incubated at what temperature for the membrane filtration method?",
     "options": [
       "20 degrees C",
-      "35 degrees C",
       "44.5 degrees C",
+      "35 degrees C",
       "55 degrees C"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Total coliforms are incubated at 35 degrees C (+/-0.5 degrees C) for 24 hours on M-Endo agar. Total coliforms include both fecal and non-fecal coliforms. The higher incubation temperature (44.5 degrees C) selects specifically for fecal coliforms."
   },
   {
@@ -3835,11 +3835,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of the 30-minute settling test in activated sludge operations is to:",
     "options": [
       "Measure the BOD of the mixed liquor",
-      "Determine the volume of sludge that settles in 30 minutes (used to calculate SVI)",
+      "Determine the MLSS concentration",
       "Measure the dissolved oxygen in the aeration tank",
-      "Determine the MLSS concentration"
+      "Determine the volume of sludge that settles in 30 minutes (used to calculate SVI)"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "The 30-minute settling test measures the volume of sludge (mL/L) that settles in a 1-litre graduated cylinder in 30 minutes. Combined with MLSS, it is used to calculate SVI = (settled volume x 1000) / MLSS."
   },
   {
@@ -3849,11 +3849,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Dissolved oxygen (DO) meters must be calibrated:",
     "options": [
       "Once per year",
-      "Before each use or at least daily",
+      "After every 100 measurements",
       "Only when the probe is replaced",
-      "After every 100 measurements"
+      "Before each use or at least daily"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "DO meters should be calibrated before each use or at least daily. Calibration is typically done in air (air-saturated water or water-saturated air) at a known temperature and barometric pressure. Membrane fouling and electrolyte depletion affect accuracy."
   },
   {
@@ -3863,11 +3863,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "pH meters must be calibrated using:",
     "options": [
       "Distilled water only",
-      "At least two buffer solutions that bracket the expected sample pH",
       "A single buffer at pH 7.0",
+      "At least two buffer solutions that bracket the expected sample pH",
       "Tap water with known pH"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "pH meters should be calibrated with at least two buffer solutions that bracket the expected sample pH range (e.g., pH 4 and 7, or pH 7 and 10). Two-point calibration corrects for both slope and offset errors."
   },
   {
@@ -3877,11 +3877,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of the jar test in wastewater treatment is to:",
     "options": [
       "Measure the BOD of the wastewater",
-      "Optimize coagulant/polymer dose for chemical treatment or sludge conditioning",
+      "Determine the chlorine demand",
       "Measure the settleability of activated sludge",
-      "Determine the chlorine demand"
+      "Optimize coagulant/polymer dose for chemical treatment or sludge conditioning"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "The jar test simulates coagulation, flocculation, and settling in bench-scale jars. It is used to optimize coagulant type and dose, polymer dose, pH, and mixing conditions for chemical phosphorus removal, sludge conditioning, or other chemical treatment processes."
   },
   {
@@ -3904,12 +3904,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "The purpose of measuring mixed liquor suspended solids (MLSS) in an activated sludge system is to:",
     "options": [
-      "Measure the BOD removal efficiency",
       "Monitor the concentration of biological solids in the aeration tank for process control",
+      "Measure the BOD removal efficiency",
       "Determine the settling rate of the sludge",
       "Measure the dissolved oxygen in the aeration tank"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "MLSS monitoring is essential for activated sludge process control. It is used to calculate SVI, F/M ratio, SRT, and to determine when to waste sludge. Maintaining MLSS in the target range (1,500-4,000 mg/L) ensures optimal treatment."
   },
   {
@@ -3933,11 +3933,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Bioassay testing of wastewater effluent is used to:",
     "options": [
       "Measure the BOD of the effluent",
-      "Assess the toxicity of the effluent to aquatic organisms",
       "Measure the coliform count in the effluent",
+      "Assess the toxicity of the effluent to aquatic organisms",
       "Determine the nutrient content of the effluent"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Whole effluent toxicity (WET) testing exposes test organisms (fish, invertebrates, algae) to the effluent to assess its toxicity. WET tests are required by NPDES permits to ensure the effluent does not cause acute or chronic toxicity in receiving waters."
   },
   {
@@ -3946,12 +3946,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The purpose of measuring volatile fatty acids (VFAs) in an anaerobic digester is to:",
     "options": [
-      "Measure the BOD of the digester contents",
       "Monitor digester stability — high VFAs indicate digester stress or overloading",
+      "Measure the BOD of the digester contents",
       "Determine the methane production rate",
       "Measure the alkalinity of the digester"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "VFAs (acetic, propionic, butyric acids) are intermediates in anaerobic digestion. Elevated VFAs indicate that acid-forming bacteria are producing acids faster than methane-forming bacteria can consume them, signaling digester stress or overloading."
   },
   {
@@ -3961,11 +3961,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Digester gas analysis typically measures:",
     "options": [
       "BOD and COD of the gas",
-      "Methane (CH4) and carbon dioxide (CO2) percentages",
+      "Dissolved oxygen in the gas",
       "Hydrogen sulfide and ammonia only",
-      "Dissolved oxygen in the gas"
+      "Methane (CH4) and carbon dioxide (CO2) percentages"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Digester gas (biogas) is analyzed for methane (CH4) and carbon dioxide (CO2) content. Healthy digesters produce 60-70% CH4 and 30-40% CO2. Low methane content indicates poor digestion or inhibition of methanogens."
   },
   {
@@ -4003,11 +4003,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of measuring alkalinity in an anaerobic digester is to:",
     "options": [
       "Determine the BOD of the digester contents",
-      "Monitor the buffer capacity and stability of the digestion process",
+      "Determine the polymer dose for sludge dewatering",
       "Measure the methane content of the biogas",
-      "Determine the polymer dose for sludge dewatering"
+      "Monitor the buffer capacity and stability of the digestion process"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Digester alkalinity (typically 2,000-5,000 mg/L as CaCO3) provides buffering capacity to resist pH drops caused by VFA accumulation. A declining alkalinity/VFA ratio indicates digester stress. Alkalinity monitoring is essential for stable digester operation."
   },
   {
@@ -4017,11 +4017,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Residual chlorine in a treated wastewater effluent sample must be neutralized before:",
     "options": [
       "pH measurement",
-      "BOD analysis to prevent killing the seed microorganisms",
+      "COD analysis",
       "TSS measurement",
-      "COD analysis"
+      "BOD analysis to prevent killing the seed microorganisms"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Residual chlorine in the effluent sample must be neutralized (with sodium thiosulfate) before BOD analysis. Chlorine would kill the seed microorganisms used in the BOD test, giving falsely low BOD results."
   },
   {
@@ -4031,11 +4031,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of measuring total volatile solids (TVS) in sludge is to:",
     "options": [
       "Determine the total solids content",
-      "Estimate the organic (biodegradable) fraction of the sludge",
       "Measure the pathogen content",
+      "Estimate the organic (biodegradable) fraction of the sludge",
       "Determine the polymer dose for dewatering"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "TVS (total volatile solids) is the fraction of total solids that burns off at 550 degrees C, representing the organic content. TVS is used to calculate volatile solids loading to digesters, assess digestion efficiency, and estimate the biodegradable fraction."
   },
   {
@@ -4045,11 +4045,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The oxygen saturation concentration in water decreases as:",
     "options": [
       "Temperature decreases",
-      "Temperature increases",
+      "Salinity decreases",
       "Altitude decreases",
-      "Salinity decreases"
+      "Temperature increases"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Oxygen solubility (saturation) decreases as temperature increases (warm water holds less oxygen) and as salinity increases. At sea level: DO saturation is approximately 14.6 mg/L at 0 degrees C, 9.1 mg/L at 20 degrees C, 7.6 mg/L at 30 degrees C."
   },
   {
@@ -4073,11 +4073,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Total organic carbon (TOC) analysis measures:",
     "options": [
       "The BOD of the wastewater",
-      "The total concentration of organic carbon in the sample",
+      "The chemical oxygen demand",
       "The volatile suspended solids",
-      "The chemical oxygen demand"
+      "The total concentration of organic carbon in the sample"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "TOC measures the total concentration of carbon in organic compounds in the sample. It is a rapid alternative to BOD and COD for monitoring organic loading. TOC analyzers oxidize organic carbon to CO2 and measure it with an infrared detector."
   },
   {
@@ -4087,11 +4087,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of measuring biogas production rate in an anaerobic digester is to:",
     "options": [
       "Measure the BOD of the digester contents",
-      "Monitor digester performance and calculate volatile solids destruction efficiency",
       "Determine the polymer dose for sludge dewatering",
+      "Monitor digester performance and calculate volatile solids destruction efficiency",
       "Measure the alkalinity of the digester"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Biogas production rate (m3/day or ft3/day) is a key performance indicator for anaerobic digesters. Normal production is 12-18 ft3/lb VS destroyed. Declining gas production indicates digester stress, inhibition, or reduced organic loading."
   },
   {
@@ -4101,11 +4101,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of measuring sludge cake solids content after dewatering is to:",
     "options": [
       "Determine the BOD of the sludge",
-      "Assess dewatering performance and calculate the mass of solids for disposal",
       "Measure the pathogen content of the sludge",
+      "Assess dewatering performance and calculate the mass of solids for disposal",
       "Determine the polymer dose required"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Sludge cake solids content (% dry weight) measures the effectiveness of dewatering. Higher solids content means less water in the cake, reducing transportation and disposal costs. Typical targets: belt filter press 15-25%, centrifuge 20-30%."
   },
   {
@@ -4129,11 +4129,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of measuring effluent turbidity before UV disinfection is to:",
     "options": [
       "Determine the chlorine dose required",
-      "Ensure the turbidity is low enough for effective UV disinfection",
+      "Determine the BOD of the effluent",
       "Measure the coliform count",
-      "Determine the BOD of the effluent"
+      "Ensure the turbidity is low enough for effective UV disinfection"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Turbidity must be measured before UV disinfection because high turbidity (suspended solids) absorbs and scatters UV light, reducing the UV dose delivered to pathogens. Most UV systems require turbidity < 2 NTU for reliable disinfection."
   },
   {
@@ -4143,11 +4143,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a quality control (QC) chart in a laboratory is to:",
     "options": [
       "Document the chain of custody for samples",
-      "Monitor the performance of analytical methods over time and detect problems",
+      "Record the calibration of instruments",
       "Specify the holding times for samples",
-      "Record the calibration of instruments"
+      "Monitor the performance of analytical methods over time and detect problems"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "QC charts (control charts) plot the results of QC samples (blanks, duplicates, spikes) over time to detect trends, shifts, or out-of-control conditions in the analytical method. They are essential for maintaining data quality."
   },
   {
@@ -4171,11 +4171,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of measuring total dissolved solids (TDS) in wastewater effluent is to:",
     "options": [
       "Assess the biological activity in the effluent",
-      "Evaluate the suitability of the effluent for irrigation or reuse",
       "Measure the organic content of the effluent",
+      "Evaluate the suitability of the effluent for irrigation or reuse",
       "Determine the chlorine demand"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "TDS measures the concentration of dissolved salts and minerals in the effluent. High TDS can limit the use of reclaimed water for irrigation (can damage salt-sensitive plants) and indicates the presence of dissolved pollutants."
   },
   {
@@ -4185,11 +4185,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of the chlorine demand test is to:",
     "options": [
       "Measure the residual chlorine in the effluent",
-      "Determine the amount of chlorine consumed by the wastewater before a residual appears",
+      "Determine the dechlorination dose required",
       "Measure the coliform count in the effluent",
-      "Determine the dechlorination dose required"
+      "Determine the amount of chlorine consumed by the wastewater before a residual appears"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "The chlorine demand test determines how much chlorine is consumed by reactions with organic matter, ammonia, and other substances in the wastewater. Chlorine dose = Chlorine demand + Desired residual. This information is used to optimize the chlorine dose."
   },
   {
@@ -4198,12 +4198,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What happens to the activity rate of activated sludge microorganisms when the temperature decreases?",
     "options": [
-      "The activity rate decreases",
+      "Temperature has no effect on activity rate",
       "The activity rate increases",
       "The activity rate remains the same",
-      "Temperature has no effect on activity rate"
+      "The activity rate decreases"
     ],
-    "correct": 0,
+    "correct": 3,
     "explanation": "Bugs are a lot like people … when the temperature drops, the rate of activity is typically reduced. Microorganism activity rate is in proportion to the water temperature … higher temp increase the rate … and lower temp decreases the rate."
   },
   {
@@ -4212,12 +4212,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What generally happens to the thickened sludge concentration if too much sludge is removed from the bottom of the gravity thickener?",
     "options": [
-      "It gets thicker",
       "It gets thinner",
+      "It gets thicker",
       "Pumping has no affect on the thickened sludge concentration",
       "The blanket gets deeper"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Typically, when too much sludge is removed from a gravity thickener, the sludge concentration is reduced (thins out). This is provided that the blanket does not “rathole,” with a high rate of sludge withdrawal from the tank."
   },
   {
@@ -4228,10 +4228,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "The solids content decreased",
       "The solids content is cut in half",
-      "The solids content is increased",
-      "Belt speed has nothing to do with thickened sludge solids content"
+      "Belt speed has nothing to do with thickened sludge solids content",
+      "The solids content is increased"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "When the belt speed of a GBT is decreased (slowed down), this typically increases the gravity dewatering time and allows more water to be removed. As more water is removed, the resultant sludge cake concentration is increased."
   },
   {
@@ -4254,12 +4254,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What would happen to the pH of the digesting sludge if the aeration to the aerobic digestion system was periodically shut off?",
     "options": [
-      "The pH would decrease",
       "The pH would increase",
+      "The pH would decrease",
       "Aeration of the digester has nothing to do with pH",
       "The alkalinity would decrease"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Shutting off air to an aerobic digester will encourage biological denitrification to take place. Denitrification consumes nitrates as a source of oxygen, which are acidic in nature."
   },
   {
@@ -4283,11 +4283,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What happens to the quality of the effluent after ozone is added to it?",
     "options": [
       "The color and odor are increased",
-      "The color gets darker but the odor is neutral",
+      "The color improves and the odor is neutral",
       "The color is unaffected but the odor is greater",
-      "The color improves and the odor is neutral"
+      "The color gets darker but the odor is neutral"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Because ozone is an oxidizer, it helps to improve the color of the water, as well as to reduce its odor characteristics. Question No. 131 What component of a pump keeps the material in the discharge pipe from emptying out through the pump suction when the pump is off? a. Pressure relief b. Check valve c. Mechanical seal d. Volute 00000000 00000000 00000000 00000000  "
   },
   {
@@ -4296,12 +4296,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What happens to the quality of the effluent after ozone is added to it? Answer :",
     "options": [
-      "Pressure relief",
-      "Check valve",
       "Mechanical seal",
+      "Check valve",
+      "Pressure relief",
       "Volute 00000000 00000000 00000000 00000000  "
     ],
-    "correct": 0,
+    "correct": 2,
     "explanation": "Air-supplied ozone generators typically require that the air be cooled, separated and dried before it is fed to the generator."
   },
   {
@@ -4312,10 +4312,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "Rotten eggs",
       "Cabbage",
-      "No smell",
-      "Sweet orange"
+      "Sweet orange",
+      "No smell"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "Hydrogen Sulfide (H2S) is a colorless gas that smells like rotten eggs at low concentrations (from the sulphur). Often referred to as \"sewer gas,\" hydrogen sulfide is highly poisonous."
   },
   {
@@ -4325,11 +4325,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Under Ontario Regulation 128/04, an Overall Responsible Operator (ORO) must:",
     "options": [
       "Be present at the facility at all times",
-      "Hold the appropriate class of certificate for the facility and be designated in writing",
+      "Hold both water and wastewater certificates",
       "Have at least 10 years of experience",
-      "Hold both water and wastewater certificates"
+      "Hold the appropriate class of certificate for the facility and be designated in writing"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "O. Reg. 128/04 requires that each regulated facility designate an ORO who holds the appropriate class of certificate. The ORO is responsible for the overall operation of the facility and must be designated in writing to the operating authority."
   },
   {
@@ -4339,11 +4339,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The Environmental Compliance Approval (ECA) for a wastewater treatment plant specifies:",
     "options": [
       "The operator certification requirements only",
-      "Effluent quality limits, monitoring requirements, and operating conditions",
+      "The salary of the operators",
       "The design of the treatment process",
-      "The salary of the operators"
+      "Effluent quality limits, monitoring requirements, and operating conditions"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "The ECA (formerly Certificate of Approval) issued by the MECP specifies the permitted effluent quality limits, monitoring and reporting requirements, operating conditions, and any special conditions applicable to the specific facility."
   },
   {
@@ -4367,11 +4367,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of an operating log at a wastewater treatment plant is to:",
     "options": [
       "Record the salaries of all operators",
-      "Document daily operations, maintenance activities, and process data for regulatory compliance",
       "Plan the annual capital budget",
+      "Document daily operations, maintenance activities, and process data for regulatory compliance",
       "Train new operators"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Operating logs document daily process data (flows, DO, MLSS, effluent quality), maintenance activities, chemical usage, equipment problems, and any unusual events. They are required by the ECA and are essential for regulatory compliance and troubleshooting."
   },
   {
@@ -4381,11 +4381,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Confined space entry in Ontario is governed by:",
     "options": [
       "Ontario Regulation 128/04",
-      "Ontario Regulation 632/05 (Confined Spaces)",
       "The Ontario Building Code",
+      "Ontario Regulation 632/05 (Confined Spaces)",
       "The Environmental Protection Act"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Confined space entry in Ontario is governed by O. Reg. 632/05 (Confined Spaces) under the Occupational Health and Safety Act (OHSA). It requires written confined space programs, atmospheric testing, rescue plans, and trained entry supervisors."
   },
   {
@@ -4395,11 +4395,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The Occupational Health and Safety Act (OHSA) in Ontario requires employers to:",
     "options": [
       "Provide free meals to workers",
-      "Take every precaution reasonable to protect workers from workplace hazards",
       "Hire only certified operators",
+      "Take every precaution reasonable to protect workers from workplace hazards",
       "Report all accidents to the MECP"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "The OHSA requires employers to take every precaution reasonable in the circumstances to protect workers from workplace hazards. This includes providing safe equipment, training, PPE, and written procedures for hazardous work."
   },
   {
@@ -4409,11 +4409,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A worker's right to refuse unsafe work under the OHSA means:",
     "options": [
       "Workers can refuse any work they dislike",
-      "Workers can refuse work they believe is likely to endanger themselves or another worker",
       "Workers can refuse work without any consequences",
+      "Workers can refuse work they believe is likely to endanger themselves or another worker",
       "Workers must get written approval before refusing work"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Under the OHSA, workers have the right to refuse work they believe is likely to endanger themselves or another worker. The refusal process involves notifying the supervisor, investigation, and if unresolved, involving the Ministry of Labour."
   },
   {
@@ -4422,12 +4422,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "A Joint Health and Safety Committee (JHSC) is required at workplaces with:",
     "options": [
-      "More than 5 workers",
       "20 or more workers",
+      "More than 5 workers",
       "50 or more workers",
       "100 or more workers"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Under the OHSA, a JHSC is required at workplaces with 20 or more regularly employed workers. The JHSC identifies workplace hazards, recommends improvements, and conducts workplace inspections."
   },
   {
@@ -4436,12 +4436,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "The WHMIS (Workplace Hazardous Materials Information System) program requires:",
     "options": [
-      "Annual medical examinations for all workers",
       "Labels on hazardous products and Safety Data Sheets (SDS) accessible to workers",
+      "Annual medical examinations for all workers",
       "Monthly chemical inventory audits",
       "Quarterly safety training for all workers"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "WHMIS requires: (1) labels on hazardous products with hazard symbols and safety information; (2) Safety Data Sheets (SDS) accessible to workers; (3) worker education and training on hazardous products in the workplace."
   },
   {
@@ -4451,11 +4451,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The lower explosive limit (LEL) for methane (CH4) is approximately:",
     "options": [
       "1%",
-      "5%",
+      "25%",
       "15%",
-      "25%"
+      "5%"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Methane has an LEL of approximately 5% (50,000 ppm) in air. Below the LEL, the mixture is too lean to ignite. Above the upper explosive limit (UEL, ~15%), it is too rich. Gas detectors typically alarm at 10-20% of LEL."
   },
   {
@@ -4465,11 +4465,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "When working with chlorine gas, the minimum respiratory protection required is:",
     "options": [
       "A dust mask",
-      "A half-face respirator with acid gas cartridges",
       "A full-face respirator with SCBA",
+      "A half-face respirator with acid gas cartridges",
       "No respiratory protection is needed below 1 ppm"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "Chlorine gas is highly toxic (IDLH = 10 ppm). For concentrations above the IDLH or in unknown concentrations, SCBA (self-contained breathing apparatus) or supplied-air respirator is required. For lower concentrations, a full-face respirator with chlorine cartridges may be used."
   },
   {
@@ -4479,11 +4479,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a safety shower and eyewash station near chemical storage areas is to:",
     "options": [
       "Provide drinking water for workers",
-      "Allow immediate flushing of chemicals from the skin or eyes in case of a spill or splash",
       "Provide cooling water for equipment",
+      "Allow immediate flushing of chemicals from the skin or eyes in case of a spill or splash",
       "Wash chemical containers before disposal"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Safety showers and eyewash stations provide immediate first aid for chemical splashes. ANSI/ISEA Z358.1 requires they be located within 10 seconds (approximately 55 feet) of the hazard and deliver tepid water for at least 15 minutes."
   },
   {
@@ -4493,11 +4493,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a pre-entry atmospheric test in a confined space is to:",
     "options": [
       "Determine if the space is clean enough to enter without PPE",
-      "Verify that oxygen, flammable gas, and toxic gas levels are within safe limits before entry",
       "Measure the temperature inside the confined space",
+      "Verify that oxygen, flammable gas, and toxic gas levels are within safe limits before entry",
       "Determine if the space requires cleaning before entry"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Pre-entry atmospheric testing verifies: (1) oxygen 19.5-23.5%; (2) flammable gases < 10% LEL; (3) toxic gases below PELs (H2S < 10 ppm, CO < 35 ppm). Testing must be done from outside the space before entry."
   },
   {
@@ -4521,11 +4521,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Mechanical ventilation of a confined space before entry is used to:",
     "options": [
       "Increase the temperature inside the space",
-      "Purge hazardous gases and ensure adequate oxygen levels",
+      "Cool the equipment inside the space",
       "Reduce the humidity inside the space",
-      "Cool the equipment inside the space"
+      "Purge hazardous gases and ensure adequate oxygen levels"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Mechanical ventilation (blowers or fans) purges hazardous gases (H2S, CH4, CO) from the confined space and supplies fresh air to maintain safe oxygen levels. Ventilation must continue during the entire entry operation."
   },
   {
@@ -4535,11 +4535,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a confined space entry permit is to:",
     "options": [
       "Authorize the purchase of confined space equipment",
-      "Document the hazard assessment, safety measures, and authorization for entry",
+      "Calculate the cost of the confined space work",
       "Record the maintenance history of the confined space",
-      "Calculate the cost of the confined space work"
+      "Document the hazard assessment, safety measures, and authorization for entry"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "A confined space entry permit documents: the space to be entered, hazards identified, atmospheric test results, required PPE and equipment, rescue procedures, authorized entrants and attendant, and supervisor authorization. It must be completed before each entry."
   },
   {
@@ -4549,11 +4549,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Fall protection is required when working at heights above:",
     "options": [
       "1 metre (3.3 feet)",
-      "3 metres (10 feet)",
       "6 metres (20 feet)",
+      "3 metres (10 feet)",
       "10 metres (33 feet)"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Under Ontario's OHSA (O. Reg. 213/91), fall protection is required when working at heights of 3 metres (10 feet) or more, or where there is a risk of falling into operating machinery, electrical equipment, or water. This includes working near open tanks and clarifiers."
   },
   {
@@ -4563,11 +4563,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a Material Safety Data Sheet (MSDS) / Safety Data Sheet (SDS) is to:",
     "options": [
       "Document the purchase history of chemicals",
-      "Provide information on chemical hazards, safe handling, emergency response, and disposal",
       "Calculate the chemical dose for treatment",
+      "Provide information on chemical hazards, safe handling, emergency response, and disposal",
       "Record the chemical inventory"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "SDS (formerly MSDS) provides 16 sections of information: chemical identity, hazards, composition, first aid, fire-fighting, accidental release, handling/storage, exposure controls/PPE, physical/chemical properties, stability/reactivity, toxicology, ecology, disposal, transport, regulatory, and other information."
   },
   {
@@ -4577,11 +4577,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Hearing protection is required when noise levels exceed:",
     "options": [
       "70 dBA",
-      "85 dBA",
+      "100 dBA",
       "90 dBA",
-      "100 dBA"
+      "85 dBA"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Under Ontario's OHSA, hearing protection is required when workers are exposed to noise levels of 85 dBA or more (8-hour TWA). Wastewater treatment plants have many high-noise areas: pump rooms, blower buildings, and dewatering areas."
   },
   {
@@ -4591,11 +4591,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a safety harness and lifeline during confined space entry is to:",
     "options": [
       "Prevent the worker from falling while climbing",
-      "Allow non-entry rescue of an incapacitated worker from outside the space",
+      "Prevent the worker from being swept away by flow",
       "Support the worker while performing overhead work",
-      "Prevent the worker from being swept away by flow"
+      "Allow non-entry rescue of an incapacitated worker from outside the space"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "A safety harness and lifeline (retrieval system) allows attendants to retrieve an incapacitated worker from outside the confined space without entering. Non-entry rescue is preferred because entering to rescue is extremely dangerous and has caused many fatalities."
   },
   {
@@ -4605,11 +4605,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Chemical burns from sodium hydroxide (caustic soda) should be treated by:",
     "options": [
       "Applying vinegar to neutralize the alkali",
-      "Immediately flushing with large amounts of water for at least 15-20 minutes",
       "Applying a bandage without flushing",
+      "Immediately flushing with large amounts of water for at least 15-20 minutes",
       "Applying ice to the affected area"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Chemical burns from caustic soda should be immediately flushed with large amounts of water for at least 15-20 minutes. Do not try to neutralize with acid — this generates heat and can worsen the burn. Seek medical attention after flushing."
   },
   {
@@ -4619,11 +4619,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Operator certification in Ontario is governed by:",
     "options": [
       "The Environmental Protection Act",
-      "Ontario Regulation 128/04 under the Ontario Water Resources Act",
+      "The Clean Water Act",
       "The Occupational Health and Safety Act",
-      "The Clean Water Act"
+      "Ontario Regulation 128/04 under the Ontario Water Resources Act"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Operator certification for wastewater treatment in Ontario is governed by O. Reg. 128/04 (Licensing of Sewage Works Operators) under the Ontario Water Resources Act. It establishes certification classes, examination requirements, and continuing education requirements."
   },
   {
@@ -4633,11 +4633,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Biosolids land application in Ontario is regulated by:",
     "options": [
       "The Ontario Building Code",
-      "Ontario Regulation 267/03 (Nutrient Management Act)",
       "The Clean Water Act",
+      "Ontario Regulation 267/03 (Nutrient Management Act)",
       "The Environmental Assessment Act"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Biosolids land application in Ontario is regulated under O. Reg. 267/03 (Nutrient Management Act), which sets standards for biosolids quality, application rates, setback distances, record-keeping, and nutrient management planning."
   },
   {
@@ -4647,11 +4647,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "An operator who discovers a significant equipment failure that could affect effluent quality should:",
     "options": [
       "Wait until the next scheduled maintenance period to address it",
-      "Immediately notify the supervisor and take corrective action, documenting the event in the operating log",
       "Reduce the influent flow to compensate",
+      "Immediately notify the supervisor and take corrective action, documenting the event in the operating log",
       "Increase the chemical dosing rates"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Significant equipment failures must be reported immediately to the supervisor and documented in the operating log. Corrective action should be taken as quickly as possible to minimize the impact on effluent quality and prevent regulatory violations."
   },
   {
@@ -4661,11 +4661,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of an annual performance report for a wastewater treatment plant is to:",
     "options": [
       "Document the salaries of all operators",
-      "Summarize the plant's performance against permit limits and report to the regulatory authority",
       "Plan the annual capital improvement budget",
+      "Summarize the plant's performance against permit limits and report to the regulatory authority",
       "Train new operators on plant operations"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Annual performance reports summarize the plant's performance over the year, including effluent quality data, permit compliance, operational events, and maintenance activities. They are submitted to the MECP as required by the ECA."
   },
   {
@@ -4689,11 +4689,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a root cause analysis (RCA) after a treatment plant upset or equipment failure is to:",
     "options": [
       "Assign blame to the responsible operator",
-      "Identify the underlying cause of the problem to prevent recurrence",
       "Document the cost of the failure",
+      "Identify the underlying cause of the problem to prevent recurrence",
       "Calculate the regulatory penalties"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Root cause analysis identifies the fundamental cause(s) of a problem (not just the symptoms) so that effective corrective actions can be implemented to prevent recurrence. RCA is a key element of a continuous improvement program."
   },
   {
@@ -4758,12 +4758,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of calibration of flow meters and other instruments at a wastewater treatment plant is:",
     "options": [
-      "It is required by the equipment manufacturer only",
       "Accurate measurements are essential for process control, regulatory compliance, and billing",
+      "It is required by the equipment manufacturer only",
       "It reduces the cost of chemicals",
       "It improves the efficiency of the pumps"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Accurate flow measurement is essential for: calculating chemical doses, monitoring permit compliance, billing for sewer services, and process control. Flow meters must be regularly calibrated and maintained to ensure accuracy."
   },
   {
@@ -4786,12 +4786,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of a public notification requirement for wastewater treatment plant bypasses is to:",
     "options": [
-      "Advertise the plant's services",
       "Inform the public of potential health risks from untreated wastewater discharges",
+      "Advertise the plant's services",
       "Attract new industrial customers",
       "Report the plant's performance to the regulatory authority"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Public notification requirements ensure that the public is informed when untreated or partially treated wastewater is discharged (bypass), allowing them to take precautions (avoiding contact with affected water bodies). Notification requirements are specified in the ECA."
   },
   {
@@ -4801,11 +4801,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a risk assessment for a wastewater treatment plant is to:",
     "options": [
       "Calculate the annual operating budget",
-      "Identify hazards, assess their likelihood and consequences, and prioritize risk reduction measures",
+      "Plan the annual maintenance schedule",
       "Determine the staffing requirements",
-      "Plan the annual maintenance schedule"
+      "Identify hazards, assess their likelihood and consequences, and prioritize risk reduction measures"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Risk assessments identify potential hazards (chemical spills, equipment failures, natural disasters, security threats), assess their likelihood and potential consequences, and prioritize risk reduction measures to protect workers, the public, and the environment."
   },
   {
@@ -4829,11 +4829,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of continuing education requirements for certified operators is to:",
     "options": [
       "Increase the cost of certification",
-      "Ensure operators maintain and update their knowledge and skills",
       "Reduce the number of certified operators",
+      "Ensure operators maintain and update their knowledge and skills",
       "Provide employment for training instructors"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Continuing education (CE) requirements ensure that certified operators stay current with new technologies, regulations, and best practices. Ontario requires operators to complete a specified number of CE hours per certification period to maintain their certification."
   },
   {
@@ -4843,11 +4843,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of an asset management plan for a wastewater treatment plant is to:",
     "options": [
       "Document the daily operations of the plant",
-      "Plan for the long-term maintenance, rehabilitation, and replacement of plant assets",
+      "Train operators on equipment maintenance",
       "Calculate the annual operating budget",
-      "Train operators on equipment maintenance"
+      "Plan for the long-term maintenance, rehabilitation, and replacement of plant assets"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Asset management plans document the condition of all plant assets, estimate their remaining useful life, and develop long-term plans for maintenance, rehabilitation, and replacement. They help utilities plan capital expenditures and maintain service levels."
   },
   {
@@ -4870,12 +4870,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What pipe material can used to convey chlorine gas, after the pressure has been reduced to one atmosphere, from one-ton containers to downstream equipment components?",
     "options": [
-      "Only black iron pipe",
       "PVC pipe",
+      "Only black iron pipe",
       "Ductile clay pipe",
       "Pre-stressed concrete pipe"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "PVC pipe is very adequate to convey gaseous chlorine after pressure reduction, and chlorine solution. However, liquid chlorine, or gaseous chlorine under pressure, will basically melt PVC pipe."
   },
   {
@@ -4884,12 +4884,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Which component may create the highest maintenance requirement in a UV disinfection system?",
     "options": [
-      "UV monitor",
       "UV lamp",
+      "UV monitor",
       "UV abilitator",
       "UV residual"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Typically, lamps require the most maintenance in a UV system to keep it at peak performance."
   },
   {
@@ -4899,11 +4899,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Which components are incorporated in a typical centrifugal pump?",
     "options": [
       "Check valve",
-      "Impeller",
+      "All of the above",
       "Bearings",
-      "All of the above"
+      "Impeller"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Check valves, impellers and bearings are all components of a centrifugal pump."
   },
   {
@@ -4913,11 +4913,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Which component may prevent excessive grease pressure from damaging the bearings?",
     "options": [
       "Vibration sensor",
-      "Relief plug",
+      "Oil pressure gauge",
       "Temperature sensor",
-      "Oil pressure gauge"
+      "Relief plug"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Most pumps have relief plugs designed to prevent bearing damage from over-pressurization during greasing of the bearings."
   },
   {
@@ -4927,11 +4927,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What component of a pump keeps the material in the discharge pipe from emptying out through the pump suction when the pump is off?",
     "options": [
       "Pressure relief",
-      "Check valve",
       "Mechanical seal",
+      "Check valve",
       "Volute"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Check valves are installed on the discharge side to prevent the pump from emptying when it is off. Also, check valves prevent the pumped fluid, from a common discharge line, from backflowing through a non-operational pump. Which type of flow meter uses an open channel to measure the flow rate? Answer : c. Parshall flume Feedback: Question No. 135 A Parshall flume is a specially shaped open channel flow section, which may be installed in a ditch, canal, or lateral to measure the flow rate. The Parshall flume is a particular form of venturi flume and is named for its principal developer, the late Mr. Ralph L. Parshall. 00000000 00000000 00000000 00000000 00000000 00000000  "
   },
   {
@@ -4940,12 +4940,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What may be the problem if a centrifugal pump rotates freely but will not discharge water?",
     "options": [
-      "Partially clogged impeller or clogged suction pipe",
       "Impeller is jammed frozen or the discharge pipe is plugged",
+      "Partially clogged impeller or clogged suction pipe",
       "Cavitation",
       "NPSH too high"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "If a centrifugal pump rotates freely, but does not discharge the anticipated volume, the impeller may be partially clogged, or the pump suction pipe may be plugged."
   },
   {
@@ -4970,10 +4970,10 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "options": [
       "Equipment data",
       "Maintenance frequencies",
-      "Maintenance equipment history",
-      "List of emergency phone numbers"
+      "List of emergency phone numbers",
+      "Maintenance equipment history"
     ],
-    "correct": 2,
+    "correct": 3,
     "explanation": "An accurate maintenance history record will help to determine if replacement of the component may be more cost effective as compared to continued corrective maintenance of the device."
   },
   {
@@ -4983,11 +4983,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What will the pressure gauge read on the suction of a pump if the pump is located at floor elevation of the tank and the tank has 15 feet of static water level?",
     "options": [
       "About 34.7 psi",
-      "About 27.7 psi",
+      "About 6.5 psi",
       "About 12.0 psi",
-      "About 6.5 psi"
+      "About 27.7 psi"
     ],
-    "correct": 3,
+    "correct": 1,
     "explanation": "Each static foot of head exerts 0.433 psi pressure 15 feet of head x 0.433 psi per foot of head = 6.495 psi Each psi of pressure represents 2.31 feet of head 15 feet of head  2.31 feet per psi = 6.494 psi"
   },
   {
@@ -5010,12 +5010,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "A screw pump (Archimedes screw) is used in wastewater treatment for:",
     "options": [
-      "Chemical dosing",
       "Lifting large volumes of wastewater at low heads",
+      "Chemical dosing",
       "Pumping sludge at high pressure",
       "Aerating the mixed liquor"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Screw pumps (Archimedes screws) lift wastewater using a rotating helical screw in an inclined trough. They are used for low-head, high-flow applications (e.g., lifting raw wastewater from the headworks) and can handle solids and rags without clogging."
   },
   {
@@ -5025,11 +5025,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Pump affinity laws state that when pump speed is doubled:",
     "options": [
       "Flow doubles, head doubles, and power doubles",
-      "Flow doubles, head quadruples, and power increases 8 times",
       "Flow doubles, head stays the same, and power doubles",
+      "Flow doubles, head quadruples, and power increases 8 times",
       "Flow stays the same, head doubles, and power doubles"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Affinity laws: Flow is proportional to speed; Head is proportional to speed squared; Power is proportional to speed cubed. If speed doubles: flow doubles, head quadruples, and power increases 8 times. This is why VFDs save significant energy by reducing pump speed during low-flow periods."
   },
   {
@@ -5038,12 +5038,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of a pressure relief valve on a chemical feed system is to:",
     "options": [
-      "Increase the chemical dose",
       "Protect the system from over-pressure by releasing pressure when it exceeds a set point",
+      "Increase the chemical dose",
       "Measure the chemical flow rate",
       "Control the chemical dose automatically"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Pressure relief valves protect chemical feed systems (pumps, pipes, tanks) from over-pressure by automatically opening and releasing pressure when it exceeds the set point. Over-pressure can rupture pipes and cause chemical spills."
   },
   {
@@ -5053,11 +5053,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A dissolved air flotation (DAF) unit is used in wastewater treatment for:",
     "options": [
       "Aerating the mixed liquor",
-      "Removing suspended solids and grease by floating them to the surface using dissolved air bubbles",
+      "Filtering the secondary effluent",
       "Digesting the primary sludge",
-      "Filtering the secondary effluent"
+      "Removing suspended solids and grease by floating them to the surface using dissolved air bubbles"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "DAF units dissolve air into pressurized water, then release it in the flotation tank. The released air bubbles attach to suspended solids and grease, causing them to float to the surface where they are skimmed off. Used for primary treatment, sludge thickening, and grease removal."
   },
   {
@@ -5067,11 +5067,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a sludge blanket detector in a secondary clarifier is to:",
     "options": [
       "Measure the MLSS concentration",
-      "Monitor the depth of the sludge blanket to prevent sludge carryover in the effluent",
+      "Detect the presence of filamentous organisms",
       "Measure the dissolved oxygen in the clarifier",
-      "Detect the presence of filamentous organisms"
+      "Monitor the depth of the sludge blanket to prevent sludge carryover in the effluent"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Sludge blanket detectors (ultrasonic or optical sensors) continuously monitor the depth of the sludge blanket in secondary clarifiers. Operators use this information to adjust RAS rates and prevent the blanket from rising too high and causing sludge carryover."
   },
   {
@@ -5080,12 +5080,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of a dissolved oxygen (DO) control system in an activated sludge aeration tank is to:",
     "options": [
-      "Maximize the aeration rate at all times",
       "Automatically adjust the aeration rate to maintain DO at the set point, saving energy",
+      "Maximize the aeration rate at all times",
       "Measure the BOD of the mixed liquor",
       "Control the return sludge rate"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Automatic DO control systems use DO sensors and variable speed drives or air flow control valves to maintain DO at the set point (typically 2 mg/L). This prevents over-aeration (wastes energy) and under-aeration (reduces treatment efficiency)."
   },
   {
@@ -5095,11 +5095,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a heat exchanger on an anaerobic digester is to:",
     "options": [
       "Cool the biogas before use",
-      "Maintain the digester at the optimal temperature by heating the incoming sludge",
+      "Cool the digester contents during summer",
       "Recover heat from the effluent",
-      "Cool the digester contents during summer"
+      "Maintain the digester at the optimal temperature by heating the incoming sludge"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Heat exchangers heat the incoming raw sludge to the digester operating temperature (35 degrees C for mesophilic) using hot water from the boiler or engine cooling water. Maintaining temperature is critical for stable digestion and gas production."
   },
   {
@@ -5123,11 +5123,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a flame trap (flame arrester) on a digester gas system is to:",
     "options": [
       "Measure the methane content of the biogas",
-      "Prevent a flame from traveling back through the gas piping and causing an explosion",
       "Remove moisture from the biogas",
+      "Prevent a flame from traveling back through the gas piping and causing an explosion",
       "Control the gas pressure"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Flame arresters prevent flames from propagating through gas piping by cooling the flame below the ignition temperature. They are required on all digester gas piping to prevent explosions caused by flashback from gas utilization equipment."
   },
   {
@@ -5151,11 +5151,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a hydrogen sulfide (H2S) scrubber on a digester gas system is to:",
     "options": [
       "Measure the H2S content of the biogas",
-      "Remove H2S to protect gas utilization equipment from corrosion",
       "Add H2S to the biogas for odour detection",
+      "Remove H2S to protect gas utilization equipment from corrosion",
       "Control the gas pressure"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "H2S in biogas is corrosive to engines, boilers, and other gas utilization equipment. H2S scrubbers (iron sponge, biological, or chemical scrubbers) remove H2S before the gas is used, extending equipment life."
   },
   {
@@ -5179,11 +5179,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a secondary containment system around chemical storage tanks is to:",
     "options": [
       "Protect the tanks from UV light",
-      "Contain chemical spills and prevent them from reaching the environment",
       "Provide additional storage capacity",
+      "Contain chemical spills and prevent them from reaching the environment",
       "Protect the tanks from freezing"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Secondary containment (berms, dikes, or containment basins) surrounds chemical storage tanks to contain spills and prevent chemicals from reaching the environment. The containment volume is typically 110% of the largest tank volume."
   },
   {
@@ -5192,12 +5192,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of a polymer make-down system is to:",
     "options": [
-      "Dissolve polymer in water at the correct concentration for dosing",
       "Store dry polymer before use",
+      "Dissolve polymer in water at the correct concentration for dosing",
       "Measure the polymer dose",
       "Mix the polymer with the sludge"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Polymer make-down (preparation) systems dissolve dry or neat polymer in water at the correct concentration (0.1-0.5%) for dosing. Proper dilution and mixing time are critical for activating the polymer's charge and maximizing its effectiveness."
   },
   {
@@ -5221,11 +5221,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Cavitation in a centrifugal pump is caused by:",
     "options": [
       "Excessive discharge pressure",
-      "Formation and collapse of vapor bubbles due to low suction pressure",
+      "Excessive pump speed",
       "High viscosity of the pumped fluid",
-      "Excessive pump speed"
+      "Formation and collapse of vapor bubbles due to low suction pressure"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Cavitation occurs when the pressure at the pump suction drops below the vapor pressure of the liquid, causing vapor bubbles to form. When these bubbles collapse in the high-pressure zone of the impeller, they cause noise, vibration, and damage to the impeller."
   },
   {
@@ -5263,11 +5263,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a SCADA (Supervisory Control and Data Acquisition) system at a wastewater treatment plant is to:",
     "options": [
       "Replace the need for operators",
-      "Monitor and control plant processes remotely, collect data, and generate alarms",
+      "Calculate the chemical doses automatically",
       "Perform laboratory analysis automatically",
-      "Calculate the chemical doses automatically"
+      "Monitor and control plant processes remotely, collect data, and generate alarms"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "SCADA systems monitor process variables (flows, levels, DO, pH), control equipment (pumps, valves, aerators), generate alarms for abnormal conditions, and collect data for reporting. They improve operational efficiency and allow remote monitoring."
   },
   {
@@ -5276,12 +5276,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of a variable frequency drive (VFD) on an aeration blower is to:",
     "options": [
-      "Increase the maximum air flow capacity",
       "Vary the blower speed to match the oxygen demand, saving energy",
+      "Increase the maximum air flow capacity",
       "Filter the air before it enters the diffusers",
       "Measure the air flow rate"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "VFDs on aeration blowers vary the blower speed to match the oxygen demand of the activated sludge process. Since blower power is proportional to speed cubed, reducing speed during low-demand periods saves significant energy."
   },
   {
@@ -5290,12 +5290,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Fine bubble diffusers in an activated sludge aeration tank are preferred over coarse bubble diffusers because:",
     "options": [
-      "They are easier to maintain",
       "They produce smaller bubbles with higher surface area, achieving better oxygen transfer efficiency",
+      "They are easier to maintain",
       "They require less air pressure",
       "They are less expensive"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Fine bubble diffusers produce bubbles 1-3 mm in diameter, compared to 10-25 mm for coarse bubble diffusers. The smaller bubbles have much higher surface area per unit volume, achieving oxygen transfer efficiencies of 20-40% vs. 8-12% for coarse bubble."
   },
   {
@@ -5304,12 +5304,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of a belt filter press in sludge dewatering is to:",
     "options": [
-      "Thicken sludge by gravity settling",
       "Mechanically dewater conditioned sludge by pressing it between two porous belts",
+      "Thicken sludge by gravity settling",
       "Stabilize sludge by anaerobic digestion",
       "Disinfect sludge before land application"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Belt filter presses dewater polymer-conditioned sludge by gravity drainage followed by mechanical pressing between two porous belts. They produce a cake with 15-25% solids for WAS and 20-30% for digested sludge."
   },
   {
@@ -5319,11 +5319,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a centrifuge in sludge processing is to:",
     "options": [
       "Digest the sludge anaerobically",
-      "Separate solids from liquid using centrifugal force for thickening or dewatering",
+      "Disinfect the sludge",
       "Measure the volatile solids content",
-      "Disinfect the sludge"
+      "Separate solids from liquid using centrifugal force for thickening or dewatering"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Centrifuges use centrifugal force (1,000-3,000 x gravity) to rapidly separate solids from liquid. They are used for both thickening (gravity belt thickener alternative) and dewatering (belt press alternative), achieving 20-30% cake solids."
   },
   {
@@ -5333,11 +5333,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a check valve in a pump discharge line is to:",
     "options": [
       "Control the flow rate",
-      "Prevent backflow when the pump stops",
+      "Measure the flow in the discharge line",
       "Reduce the pressure in the discharge line",
-      "Measure the flow in the discharge line"
+      "Prevent backflow when the pump stops"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Check valves (non-return valves) prevent wastewater from flowing back through the pump when it stops. Without check valves, the weight of water in the discharge pipe would cause reverse flow, potentially damaging the pump and causing wet well overflow."
   },
   {
@@ -5347,11 +5347,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a UV intensity sensor in a UV disinfection system is to:",
     "options": [
       "Measure the turbidity of the effluent",
-      "Monitor the UV output of the lamps to ensure adequate disinfection dose",
+      "Control the flow rate through the UV system",
       "Measure the coliform count in the effluent",
-      "Control the flow rate through the UV system"
+      "Monitor the UV output of the lamps to ensure adequate disinfection dose"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "UV intensity sensors (radiometers) monitor the UV output of the lamps in real time. As lamps age and quartz sleeves foul, UV output decreases. The sensor triggers alarms when output falls below the minimum required for adequate disinfection."
   },
   {
@@ -5361,11 +5361,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of quartz sleeve cleaning in a UV disinfection system is to:",
     "options": [
       "Increase the UV wavelength",
-      "Remove fouling deposits that reduce UV transmission to the wastewater",
       "Cool the UV lamps",
+      "Remove fouling deposits that reduce UV transmission to the wastewater",
       "Measure the UV dose"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Quartz sleeves protect UV lamps from the wastewater. Mineral deposits, biofilm, and organic matter accumulate on the sleeves, reducing UV transmission. Regular cleaning (mechanical wipers or chemical cleaning) maintains UV output."
   },
   {
@@ -5389,11 +5389,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Impeller wear in a centrifugal pump causes:",
     "options": [
       "Increased flow and pressure",
-      "Reduced flow and efficiency due to increased clearance between impeller and casing",
       "Increased power consumption",
+      "Reduced flow and efficiency due to increased clearance between impeller and casing",
       "Cavitation"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "As the impeller wears, the clearance between the impeller and the casing increases, allowing more recirculation of flow within the pump. This reduces the flow and efficiency of the pump without necessarily causing obvious symptoms."
   },
   {
@@ -5430,12 +5430,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of a gravity belt thickener (GBT) in sludge processing is to:",
     "options": [
-      "Dewater sludge to a dry cake",
       "Thicken waste activated sludge from ~0.5-1% to 4-6% solids before digestion or dewatering",
+      "Dewater sludge to a dry cake",
       "Stabilize sludge by anaerobic digestion",
       "Disinfect sludge before land application"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Gravity belt thickeners thicken WAS from ~0.5-1% to 4-6% solids by gravity drainage on a moving porous belt. Polymer conditioning is required. Thickening reduces the volume of sludge to be processed in digesters or dewatering equipment."
   },
   {
@@ -5458,12 +5458,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The purpose of a thermal dryer in biosolids processing is to:",
     "options": [
-      "Stabilize biosolids by anaerobic digestion",
       "Reduce the moisture content of biosolids to produce a dry, granular product for beneficial use",
+      "Stabilize biosolids by anaerobic digestion",
       "Disinfect biosolids to Class A standards",
       "Reduce the volume of biosolids for landfill disposal"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Thermal dryers reduce the moisture content of dewatered biosolids from ~20-30% solids to 90%+ solids by evaporating water using heat. The dry granular product can be used as fertilizer or soil amendment, reducing disposal costs."
   },
   {
@@ -5473,11 +5473,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a screw conveyor in sludge handling is to:",
     "options": [
       "Pump liquid sludge under pressure",
-      "Transport dewatered sludge cake horizontally or at a slight incline",
       "Thicken liquid sludge by gravity",
+      "Transport dewatered sludge cake horizontally or at a slight incline",
       "Measure the flow of liquid sludge"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Screw conveyors transport dewatered sludge cake (a semi-solid material) from dewatering equipment to storage bins, trucks, or other processing equipment. They are enclosed, reducing odour and spillage."
   },
   {
@@ -5487,11 +5487,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of an emergency generator at a wastewater treatment plant is to:",
     "options": [
       "Reduce the normal power consumption",
-      "Maintain critical operations (pumping, aeration, controls) during power outages",
       "Provide power for laboratory equipment only",
+      "Maintain critical operations (pumping, aeration, controls) during power outages",
       "Reduce the peak demand charge from the utility"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Emergency generators provide backup power to maintain critical operations during power outages: lift station pumps (to prevent SSOs), aeration blowers (to maintain biological treatment), and plant controls. They are required by most regulatory agencies."
   },
   {
@@ -5500,12 +5500,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The purpose of a biogas engine-generator at a wastewater treatment plant is to:",
     "options": [
-      "Compress biogas for sale to the natural gas grid",
       "Convert biogas to electricity and heat for plant use, reducing energy costs",
+      "Compress biogas for sale to the natural gas grid",
       "Remove hydrogen sulfide from the biogas",
       "Detect gas leaks in the biogas piping"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Biogas engine-generators (cogeneration units) convert biogas to electricity and recover waste heat from the engine cooling water and exhaust. This combined heat and power (CHP) approach can supply 30-50% of the plant's energy needs."
   },
   {
@@ -5515,11 +5515,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a UV lamp replacement schedule is to:",
     "options": [
       "Reduce the cost of UV lamps",
-      "Ensure UV lamps are replaced before their output drops below the minimum required for disinfection",
+      "Reduce the maintenance frequency",
       "Increase the UV dose delivered to the wastewater",
-      "Reduce the maintenance frequency"
+      "Ensure UV lamps are replaced before their output drops below the minimum required for disinfection"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "UV lamps lose output over time (typically 10-20% per year). Replacement schedules ensure lamps are replaced before their output drops below the minimum required for adequate disinfection, typically after 8,000-12,000 hours of operation."
   },
   {
@@ -5528,12 +5528,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The purpose of a sludge blanket level control in a secondary clarifier is to:",
     "options": [
-      "Measure the MLSS concentration in the aeration tank",
       "Automatically adjust the RAS rate to maintain the sludge blanket at the target depth",
+      "Measure the MLSS concentration in the aeration tank",
       "Measure the effluent TSS concentration",
       "Control the influent flow to the clarifier"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Automatic sludge blanket level control uses sensors to monitor blanket depth and automatically adjusts the RAS pumping rate to maintain the blanket at the target depth. This prevents sludge carryover and optimizes clarifier performance."
   },
   {
@@ -5542,12 +5542,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The purpose of a flow equalization tank before a UV disinfection system is to:",
     "options": [
-      "Provide additional detention time for disinfection",
       "Dampen flow variations to maintain consistent UV dose at varying flows",
+      "Provide additional detention time for disinfection",
       "Remove suspended solids before UV treatment",
       "Provide backup storage if the UV system fails"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "UV dose = UV intensity x contact time. At high flows, contact time decreases, reducing UV dose. Flow equalization dampens peak flows, maintaining more consistent contact time and UV dose across the range of plant flows."
   },
   {
@@ -5557,11 +5557,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the primary purpose of a wastewater collection system?",
     "options": [
       "Treat wastewater to drinking water standards",
-      "Convey wastewater from sources to the treatment plant",
+      "Remove solids from wastewater before discharge",
       "Store wastewater during peak flow periods",
-      "Remove solids from wastewater before discharge"
+      "Convey wastewater from sources to the treatment plant"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "The primary purpose of a wastewater collection system is to convey sewage from homes, businesses, and industries to the treatment plant. The system includes pipes, manholes, lift stations, and force mains."
   },
   {
@@ -5598,12 +5598,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "The minimum slope for a 200 mm sanitary sewer to achieve self-cleaning velocity is approximately:",
     "options": [
-      "0.1%",
       "0.4%",
+      "0.1%",
       "1.0%",
       "2.0%"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "A 200 mm (8-inch) sanitary sewer requires a minimum slope of approximately 0.4% (4 mm/m) to achieve the self-cleaning velocity of 0.6 m/s. This prevents solids from settling in the pipe."
   },
   {
@@ -5612,12 +5612,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "What is the self-cleaning velocity for sanitary sewers?",
     "options": [
-      "0.3 m/s",
       "0.6 m/s",
+      "0.3 m/s",
       "1.2 m/s",
       "2.0 m/s"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "The minimum self-cleaning velocity for sanitary sewers is 0.6 m/s (2 ft/s). At this velocity, the flow has enough energy to keep solids suspended and prevent buildup in the pipe."
   },
   {
@@ -5626,12 +5626,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "A manhole is installed in a collection system primarily to:",
     "options": [
-      "Increase flow velocity in the sewer",
       "Provide access for inspection, cleaning, and maintenance",
+      "Increase flow velocity in the sewer",
       "Reduce the pressure in force mains",
       "Store flow during peak periods"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Manholes provide access points for inspection, cleaning, and maintenance of the sewer system. They are installed at pipe junctions, changes in direction, changes in grade, and at regular intervals along straight runs."
   },
   {
@@ -5640,12 +5640,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "What is the maximum spacing for manholes on a straight sewer run?",
     "options": [
-      "50 m",
       "100 m",
+      "50 m",
       "150 m",
       "300 m"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Ontario guidelines generally require manholes at maximum 100–120 m intervals on straight runs, though some jurisdictions allow up to 150 m. Closer spacing is required at junctions, grade changes, and direction changes."
   },
   {
@@ -5655,11 +5655,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A lift station (pump station) is required in a collection system when:",
     "options": [
       "The pipe diameter exceeds 600 mm",
-      "The sewer cannot flow by gravity to the treatment plant",
+      "The wastewater temperature drops below 10°C",
       "The flow velocity exceeds 3 m/s",
-      "The wastewater temperature drops below 10°C"
+      "The sewer cannot flow by gravity to the treatment plant"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Lift stations are required when the terrain prevents gravity flow to the treatment plant. They pump wastewater uphill through a force main to a point where gravity flow can resume."
   },
   {
@@ -5668,12 +5668,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "What type of pipe is most commonly used for new sanitary sewer construction in Canada?",
     "options": [
-      "Cast iron",
-      "Vitrified clay",
       "PVC (polyvinyl chloride)",
+      "Vitrified clay",
+      "Cast iron",
       "Concrete"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "PVC pipe is the most commonly used material for new sanitary sewer construction due to its corrosion resistance, smooth interior surface (low friction), light weight, ease of installation, and long service life."
   },
   {
@@ -5683,11 +5683,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The invert of a pipe is:",
     "options": [
       "The top inside surface of the pipe",
-      "The bottom inside surface of the pipe",
       "The centerline elevation of the pipe",
+      "The bottom inside surface of the pipe",
       "The outside diameter of the pipe"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "The invert is the lowest point of the inside of the pipe — the bottom interior surface. Invert elevations are used to calculate pipe slopes and ensure proper drainage."
   },
   {
@@ -5697,11 +5697,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Hydrogen sulfide (H₂S) gas in sewers is produced by:",
     "options": [
       "Aerobic bacteria breaking down proteins",
-      "Anaerobic bacteria reducing sulfate compounds",
+      "Photosynthesis by algae in the sewer",
       "Chemical reaction between chlorine and ammonia",
-      "Photosynthesis by algae in the sewer"
+      "Anaerobic bacteria reducing sulfate compounds"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "H₂S is produced when anaerobic (sulfate-reducing) bacteria metabolize sulfate compounds in the absence of oxygen. It is common in force mains, long flat sewers, and warm climates where wastewater becomes septic."
   },
   {
@@ -5710,12 +5710,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The primary hazard of hydrogen sulfide in sewers is:",
     "options": [
-      "It corrodes plastic pipes",
-      "It is flammable and can cause explosions only",
       "It is toxic at low concentrations and can cause rapid incapacitation",
+      "It is flammable and can cause explosions only",
+      "It corrodes plastic pipes",
       "It increases the BOD of wastewater"
     ],
-    "correct": 2,
+    "correct": 0,
     "explanation": "H₂S is highly toxic. At 100 ppm it causes rapid incapacitation; at 700+ ppm it can be immediately fatal. It also causes odour complaints at 0.5 ppm and corrodes concrete and metal infrastructure through biogenic sulfuric acid."
   },
   {
@@ -5739,11 +5739,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A force main differs from a gravity sewer in that it:",
     "options": [
       "Carries treated effluent only",
-      "Operates under pressure and flows full at all times",
+      "Has a larger diameter than gravity sewers",
       "Is always made of concrete",
-      "Has a larger diameter than gravity sewers"
+      "Operates under pressure and flows full at all times"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "A force main is a pressurized pipe that carries wastewater pumped by a lift station. Unlike gravity sewers, it flows full under pressure and can be installed at any grade, including uphill."
   },
   {
@@ -5767,11 +5767,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the purpose of a check valve on a lift station discharge?",
     "options": [
       "Regulate flow to the treatment plant",
-      "Prevent backflow into the wet well when pumps stop",
       "Measure the flow rate in the force main",
+      "Prevent backflow into the wet well when pumps stop",
       "Reduce pressure surges in the force main"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Check valves (non-return valves) prevent wastewater from flowing back into the wet well when pumps stop. Without them, the column of water in the force main would drain back, causing water hammer and potential pump damage."
   },
   {
@@ -5865,11 +5865,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The most common cause of sanitary sewer overflows (SSOs) is:",
     "options": [
       "Pipe corrosion",
-      "Blockages from grease, rags, and debris",
       "Pump station failures",
+      "Blockages from grease, rags, and debris",
       "Excessive I/I during wet weather"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Blockages from grease buildup, rags, wipes, and debris are the most common cause of SSOs. Grease from restaurants and homes accumulates on pipe walls, eventually restricting flow and causing backups."
   },
   {
@@ -5878,12 +5878,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "A grease trap is installed at a food service establishment to:",
     "options": [
-      "Remove BOD from wastewater",
       "Intercept fats, oils, and grease before they enter the sewer",
+      "Remove BOD from wastewater",
       "Reduce the temperature of wastewater",
       "Neutralize acidic wastewater from dishwashers"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Grease traps (interceptors) use gravity separation to remove fats, oils, and grease (FOG) from commercial kitchen wastewater before it enters the sewer. They prevent grease accumulation in the collection system."
   },
   {
@@ -5893,11 +5893,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The term 'sewer shed' refers to:",
     "options": [
       "A building that houses sewer maintenance equipment",
-      "The drainage area that contributes flow to a specific point in the sewer system",
+      "The area downstream of a lift station",
       "A type of manhole cover",
-      "The area downstream of a lift station"
+      "The drainage area that contributes flow to a specific point in the sewer system"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "A sewer shed (or sewershed) is the area that drains to a specific point in the collection system — analogous to a watershed in stormwater management. It is used for flow analysis and capacity planning."
   },
   {
@@ -5907,11 +5907,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The Hazen-Williams equation is used in collection system design to:",
     "options": [
       "Calculate the BOD loading to the treatment plant",
-      "Determine head loss due to friction in pressurized pipes",
       "Calculate the oxygen demand in force mains",
+      "Determine head loss due to friction in pressurized pipes",
       "Estimate the peak flow factor for a sewer system"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "The Hazen-Williams equation calculates friction head loss in pressurized pipes (force mains). It uses the pipe's C-factor (roughness coefficient), diameter, and flow velocity. Manning's equation is used for gravity sewers."
   },
   {
@@ -5949,11 +5949,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a drop manhole is to:",
     "options": [
       "Increase flow velocity at a junction",
-      "Connect a higher-elevation incoming sewer to a lower-elevation sewer without causing turbulence",
+      "Provide emergency overflow storage",
       "Measure flow in the sewer",
-      "Provide emergency overflow storage"
+      "Connect a higher-elevation incoming sewer to a lower-elevation sewer without causing turbulence"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "A drop manhole (or drop connection) allows a sewer entering at a significantly higher elevation to discharge into the manhole without free-falling and causing turbulence, erosion, and H₂S generation. The flow is directed down the outside of the manhole."
   },
   {
@@ -5963,11 +5963,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "In a combined sewer overflow (CSO) event, the overflow:",
     "options": [
       "Is fully treated before discharge",
-      "Contains a mixture of stormwater and raw sewage",
+      "Is diverted to a holding tank for later treatment",
       "Contains only stormwater",
-      "Is diverted to a holding tank for later treatment"
+      "Contains a mixture of stormwater and raw sewage"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "During heavy rainfall, combined sewers (carrying both sewage and stormwater) can exceed treatment plant capacity. CSO structures allow the excess — a mixture of diluted raw sewage and stormwater — to overflow directly to receiving waters."
   },
   {
@@ -5976,12 +5976,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The purpose of a flow equalization basin in a collection system is to:",
     "options": [
-      "Treat wastewater before it reaches the plant",
       "Store peak flows and release them at a controlled rate to reduce treatment plant loading",
+      "Treat wastewater before it reaches the plant",
       "Remove grit from stormwater",
       "Provide emergency storage for SSO events"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Flow equalization basins store peak wet-weather flows and release them at a controlled rate during off-peak periods. This reduces the peak hydraulic and pollutant loading on the treatment plant, improving process stability."
   },
   {
@@ -6005,11 +6005,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The rehabilitation method of pipe lining (CIPP — cured-in-place pipe) is used to:",
     "options": [
       "Replace a deteriorated pipe by excavation",
-      "Create a new structural pipe within the existing deteriorated host pipe without excavation",
+      "Install a new force main parallel to an existing one",
       "Increase the diameter of an undersized pipe",
-      "Install a new force main parallel to an existing one"
+      "Create a new structural pipe within the existing deteriorated host pipe without excavation"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "CIPP lining inserts a resin-impregnated felt liner into the existing pipe and cures it in place (using heat or UV light) to form a new structural pipe. It restores structural integrity and stops infiltration without excavation."
   },
   {
@@ -6018,12 +6018,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "Slip lining as a sewer rehabilitation method involves:",
     "options": [
-      "Inserting a smaller-diameter pipe inside the existing pipe",
       "Spraying a cement mortar lining on the pipe interior",
+      "Inserting a smaller-diameter pipe inside the existing pipe",
       "Replacing the pipe by pipe bursting",
       "Injecting chemical grout into joints"
     ],
-    "correct": 0,
+    "correct": 1,
     "explanation": "Slip lining inserts a smaller-diameter pipe (usually HDPE or PVC) inside the existing deteriorated pipe. The annular space between the two pipes is grouted. It reduces the pipe's hydraulic capacity slightly but restores structural integrity."
   },
   {
@@ -6033,11 +6033,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Pipe bursting is a trenchless sewer rehabilitation method that:",
     "options": [
       "Repairs cracks by injecting epoxy resin",
-      "Replaces the existing pipe by fracturing it outward while simultaneously pulling in a new pipe",
+      "Cleans the pipe using high-pressure water jetting",
       "Inserts a flexible liner inside the existing pipe",
-      "Cleans the pipe using high-pressure water jetting"
+      "Replaces the existing pipe by fracturing it outward while simultaneously pulling in a new pipe"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Pipe bursting uses a bursting head pulled through the existing pipe to fracture it outward into the surrounding soil, while simultaneously pulling in a new pipe (usually HDPE) of the same or larger diameter. It replaces rather than rehabilitates the pipe."
   },
   {
@@ -6046,12 +6046,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The design standard for sanitary sewer capacity in Ontario typically requires the pipe to handle:",
     "options": [
-      "Average daily flow only",
       "Peak hourly flow with a safety factor",
+      "Average daily flow only",
       "Maximum instantaneous flow plus I/I allowance",
       "Minimum dry-weather flow"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Ontario design standards require sanitary sewers to be sized for peak hourly flow (typically 2.5–4× average daily flow depending on population) plus an allowance for I/I. This ensures the system handles wet-weather peaks without surcharging."
   },
   {
@@ -6060,12 +6060,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "What is the purpose of a cleanout in a building sewer?",
     "options": [
-      "Measure the flow from the building",
       "Provide access for cleaning and inspection of the building drain",
+      "Measure the flow from the building",
       "Prevent backflow from the sewer into the building",
       "Reduce the velocity of flow entering the sewer"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "A cleanout is an access fitting installed in the building sewer that allows cleaning equipment (rods, hydrojetting nozzles) to be inserted to clear blockages. It is typically located near the building foundation and at changes in direction."
   },
   {
@@ -6075,11 +6075,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "High-velocity water jetting (hydrojetting) is used in sewer maintenance to:",
     "options": [
       "Test the structural integrity of the pipe",
-      "Remove grease, roots, and debris from pipe walls",
       "Apply a protective coating to the pipe interior",
+      "Remove grease, roots, and debris from pipe walls",
       "Measure the flow velocity in the sewer"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Hydrojetting uses high-pressure water (typically 10,000–20,000 psi) directed through a nozzle to cut through grease, roots, and debris and flush them downstream to a manhole where they are vacuumed out by a combination unit."
   },
   {
@@ -6089,11 +6089,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A vactor truck (combination unit) is used in sewer maintenance to:",
     "options": [
       "Pump wastewater from a flooded lift station",
-      "Simultaneously jet and vacuum clean a sewer",
+      "Perform CCTV inspections of sewers",
       "Apply chemical root control treatments",
-      "Perform CCTV inspections of sewers"
+      "Simultaneously jet and vacuum clean a sewer"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "A combination unit (vactor truck) has both a high-pressure water jetting system and a powerful vacuum system. It jets the sewer to loosen debris and simultaneously vacuums the debris and water back into the truck's tank."
   },
   {
@@ -6103,11 +6103,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Chemical root control in sewers typically uses:",
     "options": [
       "Chlorine gas",
-      "Copper sulfate or metam sodium (dichlobenil)",
+      "Hydrogen peroxide",
       "Sodium hydroxide",
-      "Hydrogen peroxide"
+      "Copper sulfate or metam sodium (dichlobenil)"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Copper sulfate and metam sodium (a systemic herbicide) are the most common chemical root control agents. They are applied as a foam or liquid to kill roots in the pipe without harming the tree. Treatment is typically repeated every 2–5 years."
   },
   {
@@ -6117,11 +6117,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a sewer system master plan is to:",
     "options": [
       "Document the location of all manholes",
-      "Assess current system capacity and plan for future growth and rehabilitation",
       "Calculate the BOD loading to the treatment plant",
+      "Assess current system capacity and plan for future growth and rehabilitation",
       "Determine the staffing requirements for the collection system"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "A sewer system master plan evaluates current capacity, identifies deficiencies (capacity, structural, I/I), models future growth scenarios, and prioritizes capital projects for rehabilitation and expansion over a 20–30 year planning horizon."
   },
   {
@@ -6130,12 +6130,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Smoke testing of a sewer system is used to:",
     "options": [
-      "Detect H₂S gas in the sewer",
       "Locate illegal stormwater connections and defects in the sewer",
+      "Detect H₂S gas in the sewer",
       "Measure the flow rate in the sewer",
       "Test the structural integrity of manholes"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Smoke testing involves blowing non-toxic smoke into the sewer and observing where it exits. Smoke appearing from storm drains, catch basins, or building vents indicates illegal cross-connections. Smoke appearing from the ground indicates pipe defects."
   },
   {
@@ -6158,12 +6158,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The Rational Method for estimating peak stormwater runoff uses the formula Q = CiA, where 'C' represents:",
     "options": [
-      "Pipe roughness coefficient",
       "Runoff coefficient (ratio of runoff to rainfall)",
+      "Pipe roughness coefficient",
       "Hazen-Williams C-factor",
       "Concentration time"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "In Q = CiA, C is the runoff coefficient (dimensionless, 0–1) representing the fraction of rainfall that becomes runoff. It depends on land use: C ≈ 0.9 for paved areas, 0.1–0.3 for lawns. 'i' is rainfall intensity and 'A' is drainage area."
   },
   {
@@ -6173,11 +6173,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "In a collection system, the term 'hydraulic grade line' (HGL) refers to:",
     "options": [
       "The elevation of the pipe invert",
-      "The line representing the pressure head plus elevation head in the system",
       "The slope of the pipe",
+      "The line representing the pressure head plus elevation head in the system",
       "The water surface elevation in the wet well"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "The hydraulic grade line (HGL) represents the total piezometric head (pressure head + elevation head) at any point in the system. For gravity sewers flowing partially full, the HGL is the water surface. For pressurized pipes, it is above the pipe crown."
   },
   {
@@ -6200,12 +6200,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The maximum velocity in a sanitary sewer to prevent pipe erosion is typically:",
     "options": [
-      "1.5 m/s",
       "3.0 m/s",
+      "1.5 m/s",
       "4.5 m/s",
       "6.0 m/s"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Maximum velocity in sanitary sewers is typically limited to 3.0 m/s to prevent erosion of the pipe interior. At higher velocities, abrasive solids in the flow can erode pipe walls, especially in concrete and clay pipes."
   },
   {
@@ -6215,11 +6215,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A lift station's 'firm capacity' is defined as:",
     "options": [
       "The total pumping capacity of all pumps running simultaneously",
-      "The pumping capacity with the largest pump out of service",
+      "The minimum flow the station can handle without short-cycling",
       "The capacity at the design peak flow",
-      "The minimum flow the station can handle without short-cycling"
+      "The pumping capacity with the largest pump out of service"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Firm capacity is the pumping capacity available with the largest pump out of service for maintenance or repair. Regulations typically require lift stations to handle peak design flows at firm capacity to ensure reliability."
   },
   {
@@ -6229,11 +6229,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a wet well level control system is to:",
     "options": [
       "Measure the BOD of the incoming wastewater",
-      "Automatically start and stop pumps based on wet well water level",
       "Control the flow rate to the treatment plant",
+      "Automatically start and stop pumps based on wet well water level",
       "Detect hydrogen sulfide in the wet well"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Level control systems (using float switches, ultrasonic sensors, or pressure transducers) monitor the wet well level and automatically start pumps when the level reaches the 'pump on' setpoint and stop them at the 'pump off' setpoint."
   },
   {
@@ -6243,11 +6243,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "What is the purpose of a bypass pumping arrangement at a lift station?",
     "options": [
       "Increase the pumping capacity during peak flows",
-      "Allow maintenance of the station while maintaining flow",
       "Reduce energy costs during off-peak hours",
+      "Allow maintenance of the station while maintaining flow",
       "Provide backup power during outages"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Bypass pumping uses portable pumps to maintain flow during planned or emergency shutdowns of the permanent station. It prevents sewage backups and SSOs while the station is being repaired or maintained."
   },
   {
@@ -6257,11 +6257,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The pump affinity laws state that when pump speed is doubled:",
     "options": [
       "Flow doubles, head doubles, power doubles",
-      "Flow doubles, head quadruples, power increases 8-fold",
       "Flow doubles, head stays constant, power doubles",
+      "Flow doubles, head quadruples, power increases 8-fold",
       "Flow stays constant, head doubles, power doubles"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "The pump affinity laws: Q ∝ N (flow proportional to speed), H ∝ N² (head proportional to speed squared), P ∝ N³ (power proportional to speed cubed). Doubling speed doubles flow, quadruples head, and increases power 8-fold."
   },
   {
@@ -6271,11 +6271,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Variable frequency drives (VFDs) on lift station pumps are used to:",
     "options": [
       "Increase the maximum pumping capacity",
-      "Reduce energy consumption by matching pump speed to flow demand",
       "Prevent water hammer by eliminating check valves",
+      "Reduce energy consumption by matching pump speed to flow demand",
       "Increase the wet well storage volume"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "VFDs control pump motor speed to match pumping rate to inflow, eliminating the on/off cycling of fixed-speed pumps. This reduces energy consumption (following the affinity law P ∝ N³), reduces water hammer, and extends pump life."
   },
   {
@@ -6284,12 +6284,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Odour control at a lift station wet well is commonly achieved by:",
     "options": [
-      "Adding chlorine to the wet well",
       "Installing activated carbon or chemical scrubbers on the vent",
+      "Adding chlorine to the wet well",
       "Increasing the pumping rate to reduce detention time",
       "Sealing all openings to prevent odour escape"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Activated carbon adsorption and chemical scrubbers (using NaOH/NaOCl or iron salts) are the most common odour control methods at lift stations. They treat the air extracted from the wet well before releasing it to atmosphere."
   },
   {
@@ -6312,12 +6312,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "A force main's hydraulic analysis must account for:",
     "options": [
-      "Manning's roughness only",
       "Static head, friction losses, and minor losses",
+      "Manning's roughness only",
       "Pipe diameter only",
       "The BOD of the wastewater"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Force main design requires calculating: (1) static head (elevation difference between wet well and discharge point), (2) friction losses (Hazen-Williams or Darcy-Weisbach), and (3) minor losses (fittings, valves). The pump must overcome the total dynamic head (TDH)."
   },
   {
@@ -6326,12 +6326,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The system curve for a force main is a plot of:",
     "options": [
-      "Flow rate vs. pump efficiency",
       "Total dynamic head vs. flow rate",
+      "Flow rate vs. pump efficiency",
       "Pump speed vs. power consumption",
       "Wet well level vs. time"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "The system curve plots the total dynamic head (TDH) required to overcome static head and friction losses at various flow rates. The operating point is where the pump curve intersects the system curve, defining the actual flow and head delivered."
   },
   {
@@ -6369,11 +6369,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A sanitary sewer overflow (SSO) must be reported to the Ministry of the Environment because:",
     "options": [
       "It increases the BOD loading to the treatment plant",
-      "It discharges untreated sewage to the environment, posing public health and environmental risks",
       "It reduces the flow to the treatment plant",
+      "It discharges untreated sewage to the environment, posing public health and environmental risks",
       "It indicates the lift station is operating above capacity"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "SSOs discharge raw or partially treated sewage to the environment, potentially contaminating drinking water sources, recreational waters, and ecosystems. Ontario's Environmental Protection Act and O. Reg. 170/03 require immediate reporting and remediation."
   },
   {
@@ -6397,11 +6397,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a Safety Data Sheet (SDS) is to:",
     "options": [
       "Record the results of workplace safety inspections",
-      "Provide information on the hazards, safe handling, and emergency procedures for a chemical",
+      "List the personal protective equipment required for all tasks",
       "Document worker training records",
-      "List the personal protective equipment required for all tasks"
+      "Provide information on the hazards, safe handling, and emergency procedures for a chemical"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "An SDS (formerly MSDS) provides comprehensive information about a chemical substance including: physical/chemical properties, health hazards, exposure limits, safe handling and storage, PPE requirements, and emergency response procedures."
   },
   {
@@ -6425,11 +6425,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The minimum number of people required to safely enter a confined space is:",
     "options": [
       "One (the entrant only)",
-      "Two (one entrant and one attendant)",
       "Three (two entrants and one attendant)",
+      "Two (one entrant and one attendant)",
       "Four (two entrants, one attendant, one rescue standby)"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Ontario's confined space regulations (O. Reg. 632/05) require at minimum an entrant and an attendant (standby person) outside the space. The attendant monitors conditions, maintains communication, and initiates rescue if needed."
   },
   {
@@ -6439,11 +6439,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Before entering a confined space, the atmosphere must be tested for:",
     "options": [
       "Temperature and humidity only",
-      "Oxygen content, flammable gases, and toxic gases",
+      "BOD and TSS",
       "pH and conductivity",
-      "BOD and TSS"
+      "Oxygen content, flammable gases, and toxic gases"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Pre-entry atmospheric testing must check: (1) oxygen content (19.5–23% is acceptable), (2) flammable/explosive gases (below 10% of LEL), and (3) toxic gases such as H₂S and CO. Testing must be done before entry and continuously during work."
   },
   {
@@ -6452,12 +6452,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "easy",
     "question": "The lower explosive limit (LEL) of a gas is:",
     "options": [
-      "The concentration at which the gas becomes toxic",
       "The minimum concentration in air at which the gas can ignite",
+      "The concentration at which the gas becomes toxic",
       "The maximum concentration at which the gas can ignite",
       "The concentration that immediately endangers life and health"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "The LEL is the minimum concentration of a flammable gas in air that can ignite when exposed to an ignition source. Below the LEL, the mixture is too lean to ignite. Work in confined spaces requires gas concentrations below 10% of the LEL."
   },
   {
@@ -6481,11 +6481,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A lockout/tagout (LOTO) procedure is used to:",
     "options": [
       "Lock the workplace after hours",
-      "Isolate energy sources and prevent equipment from being accidentally energized during maintenance",
+      "Lock chemicals in storage cabinets",
       "Tag equipment that needs repair",
-      "Lock chemicals in storage cabinets"
+      "Isolate energy sources and prevent equipment from being accidentally energized during maintenance"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "LOTO procedures ensure that equipment is de-energized and cannot be accidentally restarted while workers are performing maintenance. All energy sources (electrical, hydraulic, pneumatic, gravity) must be isolated and locked before work begins."
   },
   {
@@ -6495,11 +6495,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a job hazard analysis (JHA) is to:",
     "options": [
       "Document the cost of a job",
-      "Identify hazards associated with each step of a task and determine controls",
       "Schedule maintenance tasks",
+      "Identify hazards associated with each step of a task and determine controls",
       "Calculate the time required to complete a job"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "A JHA (also called a job safety analysis or JSA) breaks a task into steps, identifies the hazards at each step, and determines appropriate controls. It is a proactive safety tool used before starting hazardous tasks."
   },
   {
@@ -6509,11 +6509,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Under Ontario's OHSA, an employer is required to post which document in the workplace?",
     "options": [
       "The company's financial statements",
-      "The OHSA and the workplace's health and safety policy",
+      "The emergency contact list for all supervisors",
       "The personal information of all workers",
-      "The emergency contact list for all supervisors"
+      "The OHSA and the workplace's health and safety policy"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Ontario's OHSA requires employers to post a copy of the Act and the workplace's health and safety policy in a conspicuous location accessible to all workers. The Joint Health and Safety Committee (JHSC) posting requirements also apply."
   },
   {
@@ -6536,12 +6536,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The hierarchy of controls for workplace hazards, from most to least effective, is:",
     "options": [
-      "PPE → Administrative → Engineering → Substitution → Elimination",
       "Elimination → Substitution → Engineering → Administrative → PPE",
+      "PPE → Administrative → Engineering → Substitution → Elimination",
       "Administrative → Engineering → PPE → Substitution → Elimination",
       "Engineering → Elimination → Administrative → PPE → Substitution"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "The hierarchy of controls: (1) Elimination — remove the hazard entirely; (2) Substitution — replace with less hazardous alternative; (3) Engineering controls — isolate workers from hazard; (4) Administrative controls — change work practices; (5) PPE — protect the worker."
   },
   {
@@ -6551,11 +6551,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The IDLH (Immediately Dangerous to Life and Health) concentration for hydrogen sulfide is:",
     "options": [
       "1 ppm",
-      "10 ppm",
       "100 ppm",
+      "10 ppm",
       "1000 ppm"
     ],
-    "correct": 2,
+    "correct": 1,
     "explanation": "NIOSH has established the IDLH for H₂S at 100 ppm. At this concentration, exposure for 30 minutes can cause serious irreversible health effects or impair escape. Ontario's OEL (TWA) for H₂S is 1 ppm; STEL is 5 ppm."
   },
   {
@@ -6565,11 +6565,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A permit-required confined space differs from a non-permit confined space in that it:",
     "options": [
       "Is larger in volume",
-      "Contains or has the potential to contain a serious safety or health hazard",
+      "Is located underground",
       "Requires more than one worker to enter",
-      "Is located underground"
+      "Contains or has the potential to contain a serious safety or health hazard"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "A permit-required confined space has one or more of: (1) hazardous atmosphere, (2) material that could engulf an entrant, (3) internal configuration that could trap/asphyxiate, or (4) any other recognized serious safety hazard. A written entry permit is required."
   },
   {
@@ -6578,12 +6578,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of an emergency response plan (ERP) at a wastewater treatment plant is to:",
     "options": [
-      "Document the plant's operating budget",
       "Provide procedures for responding to emergencies such as chemical spills, equipment failures, and natural disasters",
+      "Document the plant's operating budget",
       "Schedule routine maintenance activities",
       "Record the results of effluent monitoring"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "An ERP outlines procedures, responsibilities, and resources for responding to emergencies. It covers scenarios such as chemical spills, power failures, equipment breakdowns, flooding, and security incidents, ensuring a coordinated and effective response."
   },
   {
@@ -6607,11 +6607,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a Material Safety Data Sheet (SDS) Section 8 (Exposure Controls/PPE) is to:",
     "options": [
       "Describe the chemical's physical properties",
-      "Specify the occupational exposure limits and required PPE",
+      "Describe the environmental hazards of the chemical",
       "Provide first aid instructions",
-      "Describe the environmental hazards of the chemical"
+      "Specify the occupational exposure limits and required PPE"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "SDS Section 8 provides occupational exposure limits (OELs such as TWA and STEL), engineering controls, and specific PPE requirements (respirator type, glove material, eye protection) for safe handling of the chemical."
   },
   {
@@ -6635,11 +6635,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a confined space rescue plan is to:",
     "options": [
       "Prevent workers from entering confined spaces",
-      "Ensure that a trained rescue team and equipment are available to retrieve an incapacitated entrant",
       "Document the hazards in each confined space",
+      "Ensure that a trained rescue team and equipment are available to retrieve an incapacitated entrant",
       "Schedule confined space entries"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "A rescue plan must be prepared before any confined space entry. It specifies: rescue personnel and their training, rescue equipment (retrieval system, SCBA), communication procedures, and the rescue method (non-entry retrieval preferred over entry rescue)."
   },
   {
@@ -6648,12 +6648,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "Chlorine gas cylinders at a wastewater treatment plant should be stored:",
     "options": [
-      "In a heated room to prevent freezing",
       "In a cool, dry, well-ventilated area away from heat sources and incompatible materials",
+      "In a heated room to prevent freezing",
       "Horizontally to prevent valve damage",
       "In the same room as ammonia cylinders to save space"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Chlorine cylinders must be stored upright (to keep the liquid/gas interface at the valve), in a cool, dry, well-ventilated area, away from heat sources, and segregated from incompatible materials (especially ammonia, which forms explosive chloramines)."
   },
   {
@@ -6662,12 +6662,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of a safety shower and eyewash station near chemical handling areas is to:",
     "options": [
-      "Provide drinking water for workers",
       "Immediately flush chemicals from the skin and eyes in case of accidental exposure",
+      "Provide drinking water for workers",
       "Clean chemical spills from the floor",
       "Test the purity of chemicals before use"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "Safety showers and eyewash stations provide immediate decontamination for chemical splashes. ANSI Z358.1 requires them to be within 10 seconds travel time (approximately 16 m) of the hazard, delivering tepid water (16–38°C) for at least 15 minutes."
   },
   {
@@ -6691,11 +6691,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Ontario Regulation 128/04 (Certification of Drinking Water System Operators and Water Quality Analysts) requires operators to:",
     "options": [
       "Hold a valid first aid certificate",
-      "Hold a certificate of qualification appropriate to the class of the system they operate",
       "Complete 40 hours of continuing education per year",
+      "Hold a certificate of qualification appropriate to the class of the system they operate",
       "Be licensed by the Professional Engineers of Ontario"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "O. Reg. 128/04 requires that drinking water systems be operated by certified operators holding a certificate of qualification at or above the class of the system. The system class is determined by the system's size, complexity, and treatment processes."
   },
   {
@@ -6705,11 +6705,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of an operator's log book (operating journal) is to:",
     "options": [
       "Record the operator's personal notes",
-      "Provide a legal record of plant operations, including process parameters, maintenance, and unusual events",
       "Calculate the plant's energy consumption",
+      "Provide a legal record of plant operations, including process parameters, maintenance, and unusual events",
       "Document the plant's capital expenditures"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "The operating journal is a legal document that records: daily process parameters, equipment operations, maintenance activities, chemical additions, sampling results, unusual events, and corrective actions. It demonstrates regulatory compliance and supports troubleshooting."
   },
   {
@@ -6718,12 +6718,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "Under Ontario's Safe Drinking Water Act (SDWA), an adverse water quality incident (AWQI) must be reported to the Medical Officer of Health and the Ministry within:",
     "options": [
-      "24 hours",
+      "As soon as reasonably possible (within 24 hours)",
       "12 hours",
       "1 hour",
-      "As soon as reasonably possible (within 24 hours)"
+      "24 hours"
     ],
-    "correct": 3,
+    "correct": 0,
     "explanation": "O. Reg. 170/03 requires that AWQIs (adverse test results, equipment failures, or other events that may affect drinking water safety) be reported to the Medical Officer of Health and the Ministry of the Environment as soon as reasonably possible and no later than 24 hours after the owner/operator becomes aware."
   },
   {
@@ -6732,12 +6732,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The purpose of a management of change (MOC) procedure at a wastewater treatment plant is to:",
     "options": [
-      "Manage staff turnover and training",
       "Ensure that changes to processes, equipment, or procedures are evaluated for safety and operational impacts before implementation",
+      "Manage staff turnover and training",
       "Document the plant's budget changes",
       "Schedule equipment replacement projects"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "MOC procedures ensure that any change (process modification, chemical substitution, equipment upgrade, procedure change) is reviewed for safety, environmental, and operational impacts before implementation. They prevent unintended consequences and ensure proper documentation and training."
   },
   {
@@ -6747,11 +6747,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A plant's emergency action plan (EAP) should include:",
     "options": [
       "The plant's financial statements",
-      "Evacuation routes, assembly points, emergency contacts, and procedures for specific emergency scenarios",
       "The operator's certification requirements",
+      "Evacuation routes, assembly points, emergency contacts, and procedures for specific emergency scenarios",
       "The plant's energy consumption data"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "An EAP must include: evacuation routes and assembly points, emergency contact numbers (fire, police, ambulance, utility, Ministry), procedures for specific scenarios (fire, chemical spill, power failure, flooding), and the roles and responsibilities of designated emergency response personnel."
   },
   {
@@ -6760,12 +6760,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of a preventive maintenance (PM) program is to:",
     "options": [
-      "Repair equipment after it fails",
       "Perform scheduled maintenance to prevent equipment failures and extend service life",
+      "Repair equipment after it fails",
       "Document all equipment failures",
       "Calculate the cost of equipment replacement"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "A PM program schedules maintenance tasks (lubrication, inspection, calibration, filter replacement) at regular intervals based on manufacturer recommendations and operational experience. It reduces unplanned failures, extends equipment life, and reduces overall maintenance costs."
   },
   {
@@ -6788,12 +6788,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "medium",
     "question": "The purpose of a safety audit at a wastewater treatment plant is to:",
     "options": [
-      "Calculate the plant's insurance premiums",
       "Systematically evaluate the plant's safety program, identify deficiencies, and recommend improvements",
+      "Calculate the plant's insurance premiums",
       "Document the plant's operating costs",
       "Schedule worker vacations"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "A safety audit is a systematic review of the plant's safety program, practices, and conditions. It identifies gaps between actual practices and regulatory requirements or best practices, and recommends corrective actions to improve worker safety."
   },
   {
@@ -6803,11 +6803,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Under Ontario's OHSA, a 'competent person' is defined as someone who:",
     "options": [
       "Has a university degree in engineering",
-      "Is qualified because of knowledge, training, and experience to organize and perform work safely",
       "Has more than 5 years of experience",
+      "Is qualified because of knowledge, training, and experience to organize and perform work safely",
       "Holds a valid first aid certificate"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "OHSA defines a competent person as someone qualified by knowledge, training, and experience to organize and perform work, familiar with the OHSA and regulations applicable to the work, and knowledgeable about potential or actual hazards in the workplace."
   },
   {
@@ -6831,11 +6831,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Ontario's Regulation 851 (Industrial Establishments) requires that:",
     "options": [
       "All workers wear hard hats at all times",
-      "Employers assess and control workplace hazards, maintain equipment, and provide worker training",
+      "All equipment be replaced every 10 years",
       "Workers complete 40 hours of safety training annually",
-      "All equipment be replaced every 10 years"
+      "Employers assess and control workplace hazards, maintain equipment, and provide worker training"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "O. Reg. 851 under the OHSA sets out specific requirements for industrial establishments including: machine guarding, electrical safety, material handling, fire prevention, first aid, and general workplace conditions. It applies to most wastewater treatment plants."
   },
   {
@@ -6845,11 +6845,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a spill prevention, control, and countermeasure (SPCC) plan is to:",
     "options": [
       "Prevent chemical spills by restricting chemical use",
-      "Outline procedures to prevent spills, contain them if they occur, and minimize environmental damage",
+      "Calculate the cost of spill cleanup",
       "Document the plant's chemical inventory",
-      "Calculate the cost of spill cleanup"
+      "Outline procedures to prevent spills, contain them if they occur, and minimize environmental damage"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "An SPCC plan identifies potential spill scenarios, describes containment structures (berms, secondary containment), outlines response procedures, identifies responsible personnel, and specifies notification requirements. It is required for facilities storing significant quantities of hazardous materials."
   },
   {
@@ -6859,11 +6859,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of secondary containment around chemical storage tanks is to:",
     "options": [
       "Increase the storage capacity of the tank",
-      "Contain the contents of the tank in case of a leak or rupture, preventing environmental contamination",
       "Protect the tank from physical damage",
+      "Contain the contents of the tank in case of a leak or rupture, preventing environmental contamination",
       "Reduce the evaporation of chemicals from the tank"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Secondary containment (berms, dikes, or containment basins) surrounds chemical storage tanks to capture the tank's contents in case of a leak, rupture, or overfill. Ontario regulations typically require containment capacity of 110% of the largest tank volume."
   },
   {
@@ -6873,11 +6873,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "A safety inspection checklist for a wastewater treatment plant should include:",
     "options": [
       "The plant's financial performance indicators",
-      "Checks for slip/trip hazards, equipment guarding, PPE availability, emergency equipment condition, and chemical storage compliance",
       "The operator's training records",
+      "Checks for slip/trip hazards, equipment guarding, PPE availability, emergency equipment condition, and chemical storage compliance",
       "The plant's energy consumption data"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "A comprehensive safety inspection checklist covers: housekeeping (slip/trip hazards), machine guarding, electrical safety, PPE availability and condition, emergency equipment (eyewash, fire extinguishers, first aid), confined space signage, and chemical storage compliance."
   },
   {
@@ -6887,11 +6887,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a near-miss reporting program is to:",
     "options": [
       "Punish workers who make mistakes",
-      "Identify and correct hazardous conditions before they result in an injury or incident",
+      "Calculate the plant's lost-time injury rate",
       "Document the plant's safety record for insurance purposes",
-      "Calculate the plant's lost-time injury rate"
+      "Identify and correct hazardous conditions before they result in an injury or incident"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "Near-miss reporting captures incidents where no injury occurred but could have. Analyzing near-misses identifies systemic hazards and allows corrective action before a serious injury occurs. A non-punitive reporting culture is essential for program effectiveness."
   },
   {
@@ -6901,11 +6901,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The Total Recordable Incident Rate (TRIR) is calculated as:",
     "options": [
       "(Number of incidents / Number of workers) × 100",
-      "(Number of recordable incidents × 200,000) / Total hours worked",
+      "Number of incidents per year",
       "(Number of lost-time injuries / Total hours worked) × 1,000,000",
-      "Number of incidents per year"
+      "(Number of recordable incidents × 200,000) / Total hours worked"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "TRIR = (Number of recordable incidents × 200,000) / Total hours worked. The 200,000 factor represents 100 full-time workers working 2,000 hours/year, allowing comparison between organizations of different sizes."
   },
   {
@@ -6929,11 +6929,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a toolbox talk (safety talk) is to:",
     "options": [
       "Formally document all safety hazards",
-      "Provide a brief, informal safety discussion at the start of a work shift or task",
       "Replace the formal safety training program",
+      "Provide a brief, informal safety discussion at the start of a work shift or task",
       "Document worker attendance at safety meetings"
     ],
-    "correct": 1,
+    "correct": 2,
     "explanation": "Toolbox talks are short (5–15 minute) safety discussions held at the worksite before starting a task or shift. They address specific hazards relevant to the day's work, reinforce safe practices, and provide a forum for workers to raise safety concerns."
   },
   {
@@ -6943,11 +6943,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a safety orientation for new workers at a wastewater treatment plant is to:",
     "options": [
       "Test the worker's technical knowledge of wastewater treatment",
-      "Familiarize the worker with workplace hazards, emergency procedures, PPE requirements, and safety rules before they begin work",
+      "Assign the worker to their first task",
       "Document the worker's qualifications",
-      "Assign the worker to their first task"
+      "Familiarize the worker with workplace hazards, emergency procedures, PPE requirements, and safety rules before they begin work"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "New worker orientation ensures workers understand the specific hazards of the wastewater treatment environment (confined spaces, H₂S, chlorine, biological hazards, electrical equipment) and know the emergency procedures, PPE requirements, and safety rules before they begin work."
   },
   {
@@ -6957,11 +6957,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "Ontario's O. Reg. 632/05 (Confined Spaces) requires that before a worker enters a confined space, the employer must:",
     "options": [
       "Notify the Ministry of Labour",
-      "Prepare a written program, assess the space, develop an entry plan, and ensure rescue arrangements are in place",
+      "Ensure the worker holds a confined space entry certificate",
       "Obtain a permit from the municipality",
-      "Ensure the worker holds a confined space entry certificate"
+      "Prepare a written program, assess the space, develop an entry plan, and ensure rescue arrangements are in place"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "O. Reg. 632/05 requires: (1) a written confined space program, (2) assessment of each confined space, (3) a written entry plan for each entry, (4) atmospheric testing, (5) ventilation where required, (6) rescue arrangements, and (7) an attendant outside the space."
   },
   {
@@ -6971,11 +6971,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a plant's asset management plan (AMP) is to:",
     "options": [
       "Document the plant's daily operating procedures",
-      "Systematically manage infrastructure assets to optimize performance, manage risk, and minimize lifecycle costs",
+      "Schedule operator certification renewals",
       "Calculate the plant's annual operating budget",
-      "Schedule operator certification renewals"
+      "Systematically manage infrastructure assets to optimize performance, manage risk, and minimize lifecycle costs"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "An AMP provides a framework for managing infrastructure assets (pipes, pumps, tanks, buildings) over their full lifecycle. It includes asset inventory, condition assessment, risk assessment, maintenance strategies, and long-term capital investment planning to optimize performance and minimize total cost of ownership."
   },
   {
@@ -6985,11 +6985,11 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "question": "The purpose of a confined space entry permit is to:",
     "options": [
       "Grant legal permission from the municipality to enter the space",
-      "Document that all required safety precautions have been completed before entry",
+      "Notify the Ministry of Labour of the planned entry",
       "Record the time workers spend in the confined space for payroll purposes",
-      "Notify the Ministry of Labour of the planned entry"
+      "Document that all required safety precautions have been completed before entry"
     ],
-    "correct": 1,
+    "correct": 3,
     "explanation": "A confined space entry permit documents that all required precautions have been completed: atmospheric testing results, ventilation in place, rescue arrangements confirmed, PPE assigned, and authorized personnel identified. It is a communication and accountability tool, not a legal permit from a government authority."
   },
   {
@@ -7012,12 +7012,12 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "difficulty": "hard",
     "question": "The Darcy-Weisbach equation for head loss in a pipe is hf = f(L/D)(V²/2g). In this equation, 'f' represents:",
     "options": [
-      "Manning's roughness coefficient",
       "The Darcy-Weisbach friction factor, which depends on Reynolds number and pipe roughness",
+      "Manning's roughness coefficient",
       "The Hazen-Williams C-factor",
       "The flow velocity in m/s"
     ],
-    "correct": 1,
+    "correct": 0,
     "explanation": "In the Darcy-Weisbach equation, 'f' is the dimensionless Darcy friction factor. For laminar flow (Re < 2000), f = 64/Re. For turbulent flow, f depends on both the Reynolds number and the relative roughness (ε/D) of the pipe, determined from the Moody diagram or Colebrook-White equation."
   }
 ,
@@ -7035,8 +7035,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 502,
     "module": "Treatment Process",
     "question": "A secondary treatment plant receives influent BOD of 250 mg/L and produces effluent BOD of 20 mg/L. What is the BOD removal efficiency?",
-    "options": ["92%", "80%", "88%", "95%"],
-    "correct": 0,
+    "options": ["88%", "80%", "92%", "95%"],
+    "correct": 2,
     "explanation": "Efficiency = (Influent - Effluent) / Influent × 100 = (250 - 20) / 250 × 100 = 92%.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7045,8 +7045,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 503,
     "module": "Treatment Process",
     "question": "An aeration tank has a volume of 3,000 m³ and receives a flow of 8,000 m³/d. What is the hydraulic retention time in hours?",
-    "options": ["9.0 h", "0.375 h", "24 h", "3.75 h"],
-    "correct": 0,
+    "options": ["3.75 h", "0.375 h", "24 h", "9.0 h"],
+    "correct": 3,
     "explanation": "HRT = V/Q = 3,000/8,000 d = 0.375 d × 24 h/d = 9.0 h.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7055,8 +7055,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 504,
     "module": "Treatment Process",
     "question": "An aeration tank has a volume of 3,000 m³, MLSS of 3,500 mg/L (VSS fraction = 0.80), and receives a BOD load of 2,000 kg/d. What is the F:M ratio (kg BOD/kg VSS·d)?",
-    "options": ["0.24 kg BOD/kg VSS·d", "0.19 kg BOD/kg VSS·d", "0.30 kg BOD/kg VSS·d", "2.38 kg BOD/kg VSS·d"],
-    "correct": 0,
+    "options": ["2.38 kg BOD/kg VSS·d", "0.19 kg BOD/kg VSS·d", "0.30 kg BOD/kg VSS·d", "0.24 kg BOD/kg VSS·d"],
+    "correct": 3,
     "explanation": "MLVSS = 3,500 × 0.80 = 2,800 mg/L. Biomass = 2,800 × 3,000/1,000 = 8,400 kg. F:M = 2,000/8,400 = 0.238 ≈ 0.24.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7075,8 +7075,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 506,
     "module": "Treatment Process",
     "question": "A plant has an influent flow of 8,000 m³/d, desired MLSS of 3,000 mg/L, and RAS concentration of 8,000 mg/L. What RAS flow rate is required?",
-    "options": ["4,800 m³/d", "3,000 m³/d", "8,000 m³/d", "2,400 m³/d"],
-    "correct": 0,
+    "options": ["3,000 m³/d", "4,800 m³/d", "8,000 m³/d", "2,400 m³/d"],
+    "correct": 1,
     "explanation": "RAS = Q × MLSS / (RAS conc - MLSS) = 8,000 × 3,000 / (8,000 - 3,000) = 24,000,000 / 5,000 = 4,800 m³/d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7085,8 +7085,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 507,
     "module": "Treatment Process",
     "question": "To maintain an SRT of 10 days, a plant has an aeration tank volume of 3,000 m³, MLSS of 3,000 mg/L, and WAS concentration of 8,000 mg/L. What is the required WAS flow rate in m³/d?",
-    "options": ["112.5 m³/d", "300 m³/d", "30 m³/d", "1,125 m³/d"],
-    "correct": 0,
+    "options": ["1,125 m³/d", "300 m³/d", "30 m³/d", "112.5 m³/d"],
+    "correct": 3,
     "explanation": "WAS = (V × MLSS) / (SRT × WAS conc) = (3,000 × 3,000) / (10 × 8,000) = 9,000,000 / 80,000 = 112.5 m³/d.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7105,8 +7105,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 509,
     "module": "Treatment Process",
     "question": "A secondary clarifier has a surface area of 500 m² and receives an influent flow of 8,000 m³/d. What is the surface overflow rate?",
-    "options": ["16 m³/m²·d", "0.0625 m³/m²·d", "4,000,000 m³/m²·d", "160 m³/m²·d"],
-    "correct": 0,
+    "options": ["4,000,000 m³/m²·d", "0.0625 m³/m²·d", "16 m³/m²·d", "160 m³/m²·d"],
+    "correct": 2,
     "explanation": "SOR = Q / A = 8,000 / 500 = 16 m³/m²·d.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7115,8 +7115,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 510,
     "module": "Treatment Process",
     "question": "A primary clarifier receives wastewater with TSS of 220 mg/L and achieves 55% TSS removal. What is the effluent TSS concentration?",
-    "options": ["99 mg/L", "121 mg/L", "55 mg/L", "165 mg/L"],
-    "correct": 0,
+    "options": ["55 mg/L", "121 mg/L", "99 mg/L", "165 mg/L"],
+    "correct": 2,
     "explanation": "Effluent TSS = Influent × (1 - removal) = 220 × (1 - 0.55) = 220 × 0.45 = 99 mg/L.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7125,8 +7125,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 511,
     "module": "Disinfection",
     "question": "Treated wastewater has a chlorine demand of 6.5 mg/L. The required effluent chlorine residual is 0.5 mg/L. What chlorine dose is needed?",
-    "options": ["7.0 mg/L", "6.0 mg/L", "6.5 mg/L", "13.0 mg/L"],
-    "correct": 0,
+    "options": ["13.0 mg/L", "6.0 mg/L", "6.5 mg/L", "7.0 mg/L"],
+    "correct": 3,
     "explanation": "Cl₂ dose = Demand + Residual = 6.5 + 0.5 = 7.0 mg/L.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7145,8 +7145,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 513,
     "module": "Disinfection",
     "question": "Chlorinated effluent has a residual of 0.5 mg/L Cl₂. Sodium bisulfite (NaHSO₃) is used for dechlorination at a ratio of 1.46 mg NaHSO₃ per mg Cl₂. What dose of NaHSO₃ is required?",
-    "options": ["0.73 mg/L", "0.50 mg/L", "1.46 mg/L", "2.92 mg/L"],
-    "correct": 0,
+    "options": ["2.92 mg/L", "0.50 mg/L", "1.46 mg/L", "0.73 mg/L"],
+    "correct": 3,
     "explanation": "NaHSO₃ dose = Cl₂ residual × ratio = 0.5 × 1.46 = 0.73 mg/L.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7155,8 +7155,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 514,
     "module": "Disinfection",
     "question": "A UV disinfection system has an average intensity of 40 mW/cm² and a contact time of 5 seconds. What is the UV dose in mJ/cm²?",
-    "options": ["200 mJ/cm²", "8 mJ/cm²", "40 mJ/cm²", "800 mJ/cm²"],
-    "correct": 0,
+    "options": ["40 mJ/cm²", "8 mJ/cm²", "200 mJ/cm²", "800 mJ/cm²"],
+    "correct": 2,
     "explanation": "UV dose = Intensity × Time = 40 mW/cm² × 5 s = 200 mJ/cm² (since 1 mW·s = 1 mJ).",
     "isCalc": true,
     "difficulty": "medium"
@@ -7165,8 +7165,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 515,
     "module": "Sludge Management",
     "question": "A primary clarifier processes 8,000 m³/d with influent TSS of 220 mg/L and 55% TSS removal. How many kg/d of primary sludge solids are produced?",
-    "options": ["968 kg/d", "440 kg/d", "1,760 kg/d", "121 kg/d"],
-    "correct": 0,
+    "options": ["1,760 kg/d", "440 kg/d", "968 kg/d", "121 kg/d"],
+    "correct": 2,
     "explanation": "TSS removed = 220 × 0.55 = 121 mg/L. Sludge = Q × TSS removed / 1,000 = 8,000 × 121 / 1,000 = 968 kg/d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7175,8 +7175,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 516,
     "module": "Sludge Management",
     "question": "A primary clarifier produces 968 kg/d of sludge solids at 4% solids concentration (density = 1,000 kg/m³). What is the daily sludge volume in m³?",
-    "options": ["24.2 m³/d", "968 m³/d", "4.0 m³/d", "242 m³/d"],
-    "correct": 0,
+    "options": ["242 m³/d", "968 m³/d", "4.0 m³/d", "24.2 m³/d"],
+    "correct": 3,
     "explanation": "Volume = Mass / (% solids × density) = 968 / (0.04 × 1,000) = 968 / 40 = 24.2 m³/d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7195,8 +7195,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 518,
     "module": "Sludge Management",
     "question": "An anaerobic digester has a volume of 1,500 m³ and receives 24 m³/d of sludge. What is the hydraulic retention time in days?",
-    "options": ["62.5 days", "0.016 days", "36,000 days", "24 days"],
-    "correct": 0,
+    "options": ["36,000 days", "0.016 days", "62.5 days", "24 days"],
+    "correct": 2,
     "explanation": "HRT = V / Q = 1,500 / 24 = 62.5 days.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7205,8 +7205,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 519,
     "module": "Sludge Management",
     "question": "An anaerobic digester receives 1,200 kg VS/d and achieves 55% VS destruction. How many kg VS/d leave the digester?",
-    "options": ["540 kg VS/d", "660 kg VS/d", "1,200 kg VS/d", "1,760 kg VS/d"],
-    "correct": 0,
+    "options": ["660 kg VS/d", "540 kg VS/d", "1,200 kg VS/d", "1,760 kg VS/d"],
+    "correct": 1,
     "explanation": "VS out = VS in × (1 - destruction) = 1,200 × (1 - 0.55) = 1,200 × 0.45 = 540 kg VS/d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7255,8 +7255,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 524,
     "module": "Treatment Process",
     "question": "A plant treats 8,000 m³/d with influent NH₄-N of 30 mg/L. The oxygen demand for nitrification is 4.57 kg O₂/kg NH₄-N. What is the nitrification oxygen demand in kg/d?",
-    "options": ["1,097 kg/d", "240 kg/d", "4,570 kg/d", "365 kg/d"],
-    "correct": 0,
+    "options": ["240 kg/d", "1,097 kg/d", "4,570 kg/d", "365 kg/d"],
+    "correct": 1,
     "explanation": "NH₄ load = 8,000 × 30 / 1,000 = 240 kg/d. O₂ = 240 × 4.57 = 1,097 kg/d.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7265,8 +7265,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 525,
     "module": "Treatment Process",
     "question": "A nitrifying activated sludge system receives influent NH₄-N of 30 mg/L and achieves 90% removal. What is the effluent NH₄-N concentration?",
-    "options": ["3.0 mg/L", "27.0 mg/L", "0.3 mg/L", "30.0 mg/L"],
-    "correct": 0,
+    "options": ["30.0 mg/L", "27.0 mg/L", "0.3 mg/L", "3.0 mg/L"],
+    "correct": 3,
     "explanation": "Effluent NH₄-N = 30 × (1 - 0.90) = 30 × 0.10 = 3.0 mg/L.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7275,8 +7275,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 526,
     "module": "Treatment Process",
     "question": "A denitrification system receives effluent with NO₃-N of 25 mg/L and achieves 80% removal. What is the effluent NO₃-N?",
-    "options": ["5.0 mg/L", "20.0 mg/L", "25.0 mg/L", "0.5 mg/L"],
-    "correct": 0,
+    "options": ["0.5 mg/L", "20.0 mg/L", "25.0 mg/L", "5.0 mg/L"],
+    "correct": 3,
     "explanation": "Effluent NO₃-N = 25 × (1 - 0.80) = 25 × 0.20 = 5.0 mg/L.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7285,8 +7285,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 527,
     "module": "Treatment Process",
     "question": "A plant must reduce effluent phosphorus from 6.0 mg/L to 0.5 mg/L. Alum is dosed at 9.6 mg alum per mg P removed. What alum dose is required?",
-    "options": ["52.8 mg/L", "57.6 mg/L", "9.6 mg/L", "5.5 mg/L"],
-    "correct": 0,
+    "options": ["5.5 mg/L", "57.6 mg/L", "9.6 mg/L", "52.8 mg/L"],
+    "correct": 3,
     "explanation": "P removed = 6.0 - 0.5 = 5.5 mg/L. Alum dose = 5.5 × 9.6 = 52.8 mg/L.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7295,8 +7295,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 528,
     "module": "Treatment Process",
     "question": "A trickling filter has a media volume of 2,000 m³ and receives a BOD load of 1,500 kg/d. What is the volumetric BOD loading rate?",
-    "options": ["0.75 kg BOD/m³·d", "750 kg BOD/m³·d", "0.0005 kg BOD/m³·d", "1.33 kg BOD/m³·d"],
-    "correct": 0,
+    "options": ["750 kg BOD/m³·d", "0.75 kg BOD/m³·d", "0.0005 kg BOD/m³·d", "1.33 kg BOD/m³·d"],
+    "correct": 1,
     "explanation": "Loading = BOD load / Volume = 1,500 / 2,000 = 0.75 kg BOD/m³·d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7305,8 +7305,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 529,
     "module": "Treatment Process",
     "question": "A trickling filter has a surface area of 400 m² and receives a flow of 8,000 m³/d. What is the hydraulic application rate?",
-    "options": ["20 m³/m²·d", "0.05 m³/m²·d", "3,200,000 m³/m²·d", "200 m³/m²·d"],
-    "correct": 0,
+    "options": ["0.05 m³/m²·d", "20 m³/m²·d", "3,200,000 m³/m²·d", "200 m³/m²·d"],
+    "correct": 1,
     "explanation": "HAR = Q / A = 8,000 / 400 = 20 m³/m²·d.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7315,8 +7315,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 530,
     "module": "Treatment Process",
     "question": "A trickling filter has an influent flow of 8,000 m³/d and a recirculation flow of 4,000 m³/d. What is the recirculation ratio?",
-    "options": ["0.5", "2.0", "0.33", "4,000"],
-    "correct": 0,
+    "options": ["0.33", "2.0", "0.5", "4,000"],
+    "correct": 2,
     "explanation": "Recirculation ratio R = Q_rec / Q_inf = 4,000 / 8,000 = 0.5.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7325,8 +7325,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 531,
     "module": "Treatment Process",
     "question": "Using the NRC equation, a single-stage trickling filter has W = 1,500 kg BOD/d, V = 2,000 m³, F = 1.0. What is the BOD removal efficiency? (NRC: E = 1 / (1 + 0.4432√(W/VF)))",
-    "options": ["72.3%", "58.8%", "41.2%", "88.0%"],
-    "correct": 0,
+    "options": ["88.0%", "58.8%", "41.2%", "72.3%"],
+    "correct": 3,
     "explanation": "E = 1/(1 + 0.4432 × √(W/VF)) = 1/(1 + 0.4432 × √(1500/2000)) = 1/(1 + 0.4432 × 0.866) = 1/1.384 = 0.723 = 72.3%.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7335,8 +7335,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 532,
     "module": "Treatment Process",
     "question": "An aeration tank has V = 3,000 m³, MLSS = 3,000 mg/L, WAS flow = 112.5 m³/d, WAS concentration = 8,000 mg/L. What is the SRT in days?",
-    "options": ["10 days", "30 days", "3 days", "100 days"],
-    "correct": 0,
+    "options": ["100 days", "30 days", "3 days", "10 days"],
+    "correct": 3,
     "explanation": "SRT = (V × MLSS) / (WAS × WAS conc) = (3,000 × 3,000/1,000) / (112.5 × 8,000/1,000) = 9,000 / 900 = 10 days.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7345,8 +7345,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 533,
     "module": "Treatment Process",
     "question": "A secondary clarifier produces effluent with TSS of 15 mg/L at a flow of 8,000 m³/d. What is the daily TSS mass leaving in the effluent?",
-    "options": ["120 kg/d", "15 kg/d", "1,200 kg/d", "0.12 kg/d"],
-    "correct": 0,
+    "options": ["1,200 kg/d", "15 kg/d", "120 kg/d", "0.12 kg/d"],
+    "correct": 2,
     "explanation": "TSS load = Q × TSS / 1,000 = 8,000 × 15 / 1,000 = 120 kg/d.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7355,8 +7355,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 534,
     "module": "Treatment Process",
     "question": "A tertiary sand filter has a surface area of 100 m² and receives 2,000 m³/d. What is the hydraulic loading rate?",
-    "options": ["20 m³/m²·d", "0.05 m³/m²·d", "200,000 m³/m²·d", "2 m³/m²·d"],
-    "correct": 0,
+    "options": ["0.05 m³/m²·d", "20 m³/m²·d", "200,000 m³/m²·d", "2 m³/m²·d"],
+    "correct": 1,
     "explanation": "HL = Q / A = 2,000 / 100 = 20 m³/m²·d.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7375,8 +7375,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 536,
     "module": "Treatment Process",
     "question": "A surface aerator has a SOTR of 100 kg O₂/h. At process conditions (α=0.85, β=0.95, T=25°C, DO=2.0 mg/L, DO_sat_clean=9.1 mg/L), what is the actual OTR? (θ=1.024)",
-    "options": ["72.2 kg O₂/h", "85 kg O₂/h", "100 kg O₂/h", "57.4 kg O₂/h"],
-    "correct": 0,
+    "options": ["57.4 kg O₂/h", "85 kg O₂/h", "100 kg O₂/h", "72.2 kg O₂/h"],
+    "correct": 3,
     "explanation": "DO_sat at 25°C = 9.1 × 1.024^5 = 10.25 mg/L. OTR = SOTR × α × (β×DO_sat - DO) / DO_sat_clean = 100 × 0.85 × (0.95×10.25 - 2.0) / 9.1 = 72.2 kg/h.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7385,8 +7385,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 537,
     "module": "Treatment Process",
     "question": "At 20°C, the DO saturation is 9.1 mg/L. The measured DO in the aeration tank is 2.0 mg/L. What is the DO deficit?",
-    "options": ["7.1 mg/L", "11.1 mg/L", "2.0 mg/L", "9.1 mg/L"],
-    "correct": 0,
+    "options": ["11.1 mg/L", "7.1 mg/L", "2.0 mg/L", "9.1 mg/L"],
+    "correct": 1,
     "explanation": "DO deficit = DO_sat - DO_actual = 9.1 - 2.0 = 7.1 mg/L.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7395,8 +7395,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 538,
     "module": "Sludge Management",
     "question": "A gravity thickener receives 24 m³/d of sludge at 4% solids (40,000 mg/L). The thickened sludge is 6% solids (60,000 mg/L). What is the thickened sludge volume?",
-    "options": ["16 m³/d", "24 m³/d", "36 m³/d", "6 m³/d"],
-    "correct": 0,
+    "options": ["6 m³/d", "24 m³/d", "36 m³/d", "16 m³/d"],
+    "correct": 3,
     "explanation": "Using mass balance: Q_in × C_in = Q_out × C_out. Q_out = 24 × 40,000 / 60,000 = 16 m³/d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7415,8 +7415,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 540,
     "module": "Sludge Management",
     "question": "A belt filter press processes 16 m³/d of sludge at 4% solids. Polymer is dosed at 5 kg/tonne dry solids. How many kg/d of polymer is required?",
-    "options": ["3.2 kg/d", "32 kg/d", "0.32 kg/d", "640 kg/d"],
-    "correct": 0,
+    "options": ["32 kg/d", "3.2 kg/d", "0.32 kg/d", "640 kg/d"],
+    "correct": 1,
     "explanation": "Dry solids = 16 m³/d × 40,000 mg/L / 1,000 = 640 kg/d = 0.64 tonnes/d. Polymer = 0.64 × 5 = 3.2 kg/d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7435,8 +7435,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 542,
     "module": "Treatment Process",
     "question": "A plant receives influent TP of 6.0 mg/L and achieves 91.7% TP removal. What is the effluent TP?",
-    "options": ["0.5 mg/L", "5.5 mg/L", "6.0 mg/L", "0.917 mg/L"],
-    "correct": 0,
+    "options": ["5.5 mg/L", "0.5 mg/L", "6.0 mg/L", "0.917 mg/L"],
+    "correct": 1,
     "explanation": "Effluent TP = 6.0 × (1 - 0.917) = 6.0 × 0.083 = 0.5 mg/L.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7445,8 +7445,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 543,
     "module": "Sludge Management",
     "question": "The agronomic nitrogen rate for a crop is 200 kg N/ha·yr. Biosolids contain 30 kg N/tonne dry solids. What is the maximum biosolids application rate in tonnes/ha·yr?",
-    "options": ["6.7 t/ha·yr", "0.15 t/ha·yr", "200 t/ha·yr", "6,000 t/ha·yr"],
-    "correct": 0,
+    "options": ["200 t/ha·yr", "0.15 t/ha·yr", "6.7 t/ha·yr", "6,000 t/ha·yr"],
+    "correct": 2,
     "explanation": "Application rate = Agronomic N rate / N in biosolids = 200 / 30 = 6.67 t/ha·yr.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7455,8 +7455,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 544,
     "module": "Disinfection",
     "question": "A chlorination system achieves a CT of 7.0 mg·min/L. Using a first-order model with k = 0.23 min⁻¹/(mg/L), what is the approximate log reduction of coliforms?",
-    "options": ["0.70 log", "1.61 log", "0.23 log", "7.0 log"],
-    "correct": 0,
+    "options": ["7.0 log", "1.61 log", "0.23 log", "0.70 log"],
+    "correct": 3,
     "explanation": "N/N₀ = e^(-k×CT) = e^(-0.23×7.0) = e^(-1.61) = 0.20. Log reduction = -log₁₀(0.20) = 0.70 log.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7475,8 +7475,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 546,
     "module": "Hydraulics",
     "question": "A pump system has a static head of 15 m, friction head losses of 8 m, and velocity head of 0.5 m. What is the total dynamic head (TDH)?",
-    "options": ["23.5 m", "15 m", "8 m", "23 m"],
-    "correct": 0,
+    "options": ["8 m", "15 m", "23.5 m", "23 m"],
+    "correct": 2,
     "explanation": "TDH = Static head + Friction head + Velocity head = 15 + 8 + 0.5 = 23.5 m.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7505,8 +7505,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 549,
     "module": "Hydraulics",
     "question": "Using the Hazen-Williams equation, calculate the head loss in a 500 m long, 300 mm diameter pipe (C=100) carrying 0.1 m³/s. (h_f = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87))",
-    "options": ["5.2 m", "0.9 m", "22.5 m", "1.8 m"],
-    "correct": 0,
+    "options": ["1.8 m", "0.9 m", "22.5 m", "5.2 m"],
+    "correct": 3,
     "explanation": "h_f = 10.67 × 500 × 0.1^1.852 / (100^1.852 × 0.3^4.87) ≈ 5.2 m.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7515,8 +7515,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 550,
     "module": "Hydraulics",
     "question": "A concrete channel (n=0.013) has a cross-sectional area of 2.0 m², hydraulic radius of 0.5 m, and slope of 0.001. Using Manning's equation, what is the flow rate? (Q = (1/n) × A × R^(2/3) × S^(1/2))",
-    "options": ["3.07 m³/s", "0.29 m³/s", "6.88 m³/s", "1.72 m³/s"],
-    "correct": 0,
+    "options": ["1.72 m³/s", "0.29 m³/s", "6.88 m³/s", "3.07 m³/s"],
+    "correct": 3,
     "explanation": "Q = (1/0.013) × 2.0 × 0.5^(2/3) × 0.001^(1/2) = 76.9 × 2.0 × 0.630 × 0.0316 = 3.07 m³/s.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7525,8 +7525,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 551,
     "module": "Treatment Process",
     "question": "A biological treatment system achieves effluent BOD of 200 mg/L at 20°C. Using θ=1.047, what is the expected effluent BOD at 15°C?",
-    "options": ["158 mg/L", "252 mg/L", "200 mg/L", "127 mg/L"],
-    "correct": 0,
+    "options": ["252 mg/L", "158 mg/L", "200 mg/L", "127 mg/L"],
+    "correct": 1,
     "explanation": "BOD_15 = BOD_20 × θ^(T2-T1) = 200 × 1.047^(15-20) = 200 × 1.047^(-5) = 200 × 0.794 = 158 mg/L.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7535,8 +7535,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 552,
     "module": "Treatment Process",
     "question": "An aeration tank has an OUR of 50 mg O₂/L·h and MLVSS of 2,500 mg/L. What is the SOUR in mg O₂/g VSS·h?",
-    "options": ["20 mg O₂/g VSS·h", "125 mg O₂/g VSS·h", "0.02 mg O₂/g VSS·h", "50 mg O₂/g VSS·h"],
-    "correct": 0,
+    "options": ["0.02 mg O₂/g VSS·h", "125 mg O₂/g VSS·h", "20 mg O₂/g VSS·h", "50 mg O₂/g VSS·h"],
+    "correct": 2,
     "explanation": "SOUR = OUR / MLVSS × 1,000 = 50 / 2,500 × 1,000 = 20 mg O₂/g VSS·h.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7555,8 +7555,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 554,
     "module": "Treatment Process",
     "question": "A wastewater has BOD of 300 mg/L and sulphate (SO₄) of 80 mg/L. What is the BOD:SO₄ ratio, and is the wastewater likely to turn septic?",
-    "options": ["3.75 — likely septic", "0.27 — not septic", "3.75 — not septic", "0.27 — likely septic"],
-    "correct": 0,
+    "options": ["3.75 — not septic", "0.27 — not septic", "3.75 — likely septic", "0.27 — likely septic"],
+    "correct": 2,
     "explanation": "BOD:SO₄ = 300/80 = 3.75. A ratio >3 indicates high risk of septicity as sulphate-reducing bacteria can produce H₂S.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7575,8 +7575,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 556,
     "module": "Treatment Process",
     "question": "A plant processes 8 ML/d of wastewater. The screenings yield is 0.015 m³/ML. What volume of screenings is produced per day?",
-    "options": ["0.12 m³/d", "0.015 m³/d", "120 m³/d", "1.2 m³/d"],
-    "correct": 0,
+    "options": ["1.2 m³/d", "0.015 m³/d", "120 m³/d", "0.12 m³/d"],
+    "correct": 3,
     "explanation": "Screenings = 8 ML/d × 0.015 m³/ML = 0.12 m³/d.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7585,8 +7585,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 557,
     "module": "Treatment Process",
     "question": "A plant processes 8 ML/d. The grit yield is 0.04 m³/ML. How much grit is produced per day?",
-    "options": ["0.32 m³/d", "0.04 m³/d", "3.2 m³/d", "32 m³/d"],
-    "correct": 0,
+    "options": ["32 m³/d", "0.04 m³/d", "3.2 m³/d", "0.32 m³/d"],
+    "correct": 3,
     "explanation": "Grit = 8 ML/d × 0.04 m³/ML = 0.32 m³/d.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7595,8 +7595,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 558,
     "module": "Laboratory",
     "question": "A sample is expected to have a BOD of 250 mg/L. A 1:20 dilution is used in the BOD bottle. What BOD concentration is expected in the diluted sample?",
-    "options": ["12.5 mg/L", "250 mg/L", "5,000 mg/L", "0.05 mg/L"],
-    "correct": 0,
+    "options": ["250 mg/L", "12.5 mg/L", "5,000 mg/L", "0.05 mg/L"],
+    "correct": 1,
     "explanation": "BOD in bottle = 250 / 20 = 12.5 mg/L.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7605,8 +7605,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 559,
     "module": "Laboratory",
     "question": "A BOD test uses a 1:20 dilution. Initial DO = 8.5 mg/L, final DO after 5 days = 3.2 mg/L. What is the BOD₅?",
-    "options": ["106 mg/L", "5.3 mg/L", "212 mg/L", "53 mg/L"],
-    "correct": 0,
+    "options": ["212 mg/L", "5.3 mg/L", "106 mg/L", "53 mg/L"],
+    "correct": 2,
     "explanation": "BOD₅ = (DO_i - DO_f) × dilution factor = (8.5 - 3.2) × 20 = 5.3 × 20 = 106 mg/L.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7645,8 +7645,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 563,
     "module": "Treatment Process",
     "question": "Nitrification consumes 7.14 mg alkalinity (as CaCO₃) per mg NH₄-N oxidized. If 30 mg/L NH₄-N is nitrified, how much alkalinity is consumed?",
-    "options": ["214 mg/L as CaCO₃", "7.14 mg/L as CaCO₃", "30 mg/L as CaCO₃", "4.3 mg/L as CaCO₃"],
-    "correct": 0,
+    "options": ["4.3 mg/L as CaCO₃", "7.14 mg/L as CaCO₃", "30 mg/L as CaCO₃", "214 mg/L as CaCO₃"],
+    "correct": 3,
     "explanation": "Alkalinity consumed = 30 × 7.14 = 214.2 mg/L as CaCO₃.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7675,8 +7675,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 566,
     "module": "Treatment Process",
     "question": "A plant's effluent has BOD=25 mg/L, TSS=20 mg/L, NH₄-N=3 mg/L. The permit limits are BOD≤25, TSS≤25, NH₄-N≤3 mg/L. Is the plant in compliance?",
-    "options": ["Yes — all parameters at or below limits", "No — BOD exceeds limit", "No — TSS exceeds limit", "No — NH₄-N exceeds limit"],
-    "correct": 0,
+    "options": ["No — BOD exceeds limit", "Yes — all parameters at or below limits", "No — TSS exceeds limit", "No — NH₄-N exceeds limit"],
+    "correct": 1,
     "explanation": "BOD: 25 ≤ 25 ✓. TSS: 20 ≤ 25 ✓. NH₄-N: 3 ≤ 3 ✓. All parameters meet permit limits.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7685,8 +7685,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 567,
     "module": "Hydraulics",
     "question": "A pump station receives an average inflow of 0.2 m³/s. The pump operates for 5 minutes before the wet well empties. What is the minimum wet well working volume?",
-    "options": ["60 m³", "0.2 m³", "12 m³", "300 m³"],
-    "correct": 0,
+    "options": ["300 m³", "0.2 m³", "12 m³", "60 m³"],
+    "correct": 3,
     "explanation": "Volume = Q × time = 0.2 m³/s × (5 × 60 s) = 0.2 × 300 = 60 m³.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7695,8 +7695,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 568,
     "module": "Disinfection",
     "question": "A chlorine contact chamber maintains a residual of 2.0 mg/L for 30 minutes. What is the CT value?",
-    "options": ["60 mg·min/L", "0.067 mg·min/L", "30 mg·min/L", "2.0 mg·min/L"],
-    "correct": 0,
+    "options": ["30 mg·min/L", "0.067 mg·min/L", "60 mg·min/L", "2.0 mg·min/L"],
+    "correct": 2,
     "explanation": "CT = Concentration × Time = 2.0 × 30 = 60 mg·min/L.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7715,8 +7715,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 570,
     "module": "Disinfection",
     "question": "A chlorine contact chamber has a residual of 2.0 mg/L and T10 of 21 minutes. What is the effective CT?",
-    "options": ["42 mg·min/L", "60 mg·min/L", "2.0 mg·min/L", "21 mg·min/L"],
-    "correct": 0,
+    "options": ["21 mg·min/L", "60 mg·min/L", "2.0 mg·min/L", "42 mg·min/L"],
+    "correct": 3,
     "explanation": "Effective CT = C × T10 = 2.0 × 21 = 42 mg·min/L.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7725,8 +7725,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 571,
     "module": "Disinfection",
     "question": "Secondary effluent has E. coli of 10⁶ CFU/100 mL. A UV dose of 40 mJ/cm² achieves 2-log reduction. What is the effluent E. coli?",
-    "options": ["10,000 CFU/100 mL", "100,000 CFU/100 mL", "1,000 CFU/100 mL", "10⁶ CFU/100 mL"],
-    "correct": 0,
+    "options": ["100,000 CFU/100 mL", "10,000 CFU/100 mL", "1,000 CFU/100 mL", "10⁶ CFU/100 mL"],
+    "correct": 1,
     "explanation": "Effluent E. coli = 10⁶ / 10² = 10⁴ = 10,000 CFU/100 mL.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7735,8 +7735,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 572,
     "module": "Laboratory",
     "question": "A solution contains 500 mg/L of glucose (C₆H₁₂O₆, MW=180). What is the theoretical oxygen demand (ThOD)? (C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O; MW O₂=32)",
-    "options": ["533 mg/L", "500 mg/L", "192 mg/L", "1,067 mg/L"],
-    "correct": 0,
+    "options": ["500 mg/L", "533 mg/L", "192 mg/L", "1,067 mg/L"],
+    "correct": 1,
     "explanation": "O₂ per glucose = 6 × 32 / 180 = 1.067 g O₂/g glucose. ThOD = 500 × 1.067 = 533 mg/L.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7745,8 +7745,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 573,
     "module": "Sludge Management",
     "question": "A belt filter press dewaters 16 m³/d of sludge at 4% solids to produce cake at 22% solids (density=1,000 kg/m³). What is the daily cake volume?",
-    "options": ["2.9 m³/d", "16 m³/d", "0.22 m³/d", "7.3 m³/d"],
-    "correct": 0,
+    "options": ["7.3 m³/d", "16 m³/d", "0.22 m³/d", "2.9 m³/d"],
+    "correct": 3,
     "explanation": "Dry solids = 16 × 40,000 / 1,000 = 640 kg/d. Cake volume = 640 / (0.22 × 1,000) = 2.9 m³/d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7755,8 +7755,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 574,
     "module": "Treatment Process",
     "question": "A biological phosphorus removal system receives influent TP of 6.0 mg/L and achieves 75% removal. What is the effluent TP?",
-    "options": ["1.5 mg/L", "4.5 mg/L", "6.0 mg/L", "0.75 mg/L"],
-    "correct": 0,
+    "options": ["0.75 mg/L", "4.5 mg/L", "6.0 mg/L", "1.5 mg/L"],
+    "correct": 3,
     "explanation": "Effluent TP = 6.0 × (1 - 0.75) = 6.0 × 0.25 = 1.5 mg/L.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7765,8 +7765,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 575,
     "module": "Treatment Process",
     "question": "To remove 5.5 mg/L of phosphorus using FeCl₃ at a Fe:P molar ratio of 1.8:1, what is the approximate FeCl₃ dose? (MW: Fe=56, P=31, FeCl₃=162.2)",
-    "options": ["92.6 mg/L", "52.5 mg/L", "9.9 mg/L", "288 mg/L"],
-    "correct": 0,
+    "options": ["288 mg/L", "52.5 mg/L", "9.9 mg/L", "92.6 mg/L"],
+    "correct": 3,
     "explanation": "Fe needed = 5.5 × (56/31) × 1.8 = 5.5 × 1.806 × 1.8 = 17.8 mg/L. FeCl₃ = 17.8 × (162.2/56) = 17.8 × 2.896 = 51.6 mg/L. (Approximately 52–93 mg/L depending on exact calculation method.)",
     "isCalc": true,
     "difficulty": "hard"
@@ -7775,8 +7775,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 576,
     "module": "Treatment Process",
     "question": "An anaerobic pond has a volume of 50,000 m³ and receives 1,000 m³/d of wastewater. What is the HRT in days?",
-    "options": ["50 days", "0.02 days", "50,000 days", "1,000 days"],
-    "correct": 0,
+    "options": ["0.02 days", "50 days", "50,000 days", "1,000 days"],
+    "correct": 1,
     "explanation": "HRT = V / Q = 50,000 / 1,000 = 50 days.",
     "isCalc": true,
     "difficulty": "easy"
@@ -7785,8 +7785,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 577,
     "module": "Treatment Process",
     "question": "A facultative pond receives 1,000 m³/d with BOD of 200 mg/L. The pond area is 20,000 m² (2 ha). What is the BOD surface loading rate?",
-    "options": ["100 kg BOD/ha·d", "200 kg BOD/ha·d", "50 kg BOD/ha·d", "10 kg BOD/ha·d"],
-    "correct": 0,
+    "options": ["50 kg BOD/ha·d", "200 kg BOD/ha·d", "100 kg BOD/ha·d", "10 kg BOD/ha·d"],
+    "correct": 2,
     "explanation": "BOD load = 1,000 × 200 / 1,000 = 200 kg/d. Area = 2 ha. SLR = 200 / 2 = 100 kg BOD/ha·d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7795,8 +7795,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 578,
     "module": "Treatment Process",
     "question": "A completely mixed pond receives BOD of 200 mg/L, has k=0.15 d⁻¹, and HRT=50 days. Using the first-order model, what is the effluent BOD? (BOD_out = BOD_in / (1 + k×HRT))",
-    "options": ["21 mg/L", "170 mg/L", "200 mg/L", "0.75 mg/L"],
-    "correct": 0,
+    "options": ["0.75 mg/L", "170 mg/L", "200 mg/L", "21 mg/L"],
+    "correct": 3,
     "explanation": "BOD_out = 200 / (1 + 0.15 × 50) = 200 / (1 + 7.5) = 200 / 8.5 = 23.5 mg/L ≈ 21 mg/L.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7805,8 +7805,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 579,
     "module": "Treatment Process",
     "question": "A plug-flow pond receives BOD of 200 mg/L, has k=0.15 d⁻¹, and HRT=50 days. Using the plug-flow model, what is the effluent BOD? (BOD_out = BOD_in × e^(-k×HRT))",
-    "options": ["0.38 mg/L", "21 mg/L", "200 mg/L", "7.5 mg/L"],
-    "correct": 0,
+    "options": ["7.5 mg/L", "21 mg/L", "200 mg/L", "0.38 mg/L"],
+    "correct": 3,
     "explanation": "BOD_out = 200 × e^(-0.15 × 50) = 200 × e^(-7.5) = 200 × 0.00055 = 0.11 mg/L ≈ 0.38 mg/L.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7815,8 +7815,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 580,
     "module": "Treatment Process",
     "question": "A plant treats 8,000 m³/d with BOD removal of 225 mg/L. Using Y=0.6 kg VSS/kg BOD, kd=0.06 d⁻¹, SRT=10 d, what is the net VSS production? (P_x = Q×BOD_rem/1000 × Y/(1+kd×SRT))",
-    "options": ["675 kg VSS/d", "1,080 kg VSS/d", "540 kg VSS/d", "900 kg VSS/d"],
-    "correct": 0,
+    "options": ["540 kg VSS/d", "1,080 kg VSS/d", "675 kg VSS/d", "900 kg VSS/d"],
+    "correct": 2,
     "explanation": "P_x = 8,000 × 225/1,000 × 0.6/(1 + 0.06×10) = 1,800 × 0.6/1.6 = 1,800 × 0.375 = 675 kg VSS/d.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7845,8 +7845,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 585,
     "module": "Treatment Process",
     "question": "Alum (150 mg/L) is added to remove phosphorus. Alum MW=342, Al MW=27, P MW=31. Influent TP=5 mg/L. Approximately how much P can be removed by AlPO₄ precipitation (1:1 Al:P molar ratio)?",
-    "options": ["~4.3 mg/L", "~1.0 mg/L", "~5.0 mg/L", "~0.5 mg/L"],
-    "correct": 0,
+    "options": ["~1.0 mg/L", "~4.3 mg/L", "~5.0 mg/L", "~0.5 mg/L"],
+    "correct": 1,
     "explanation": "Al from alum = 150 × 27/342 = 11.8 mg/L Al. P removed = 11.8 × 31/27 = 13.6 mg/L > 5 mg/L influent, so nearly all TP removed (~4.3 mg/L at typical efficiency).",
     "isCalc": true,
     "difficulty": "medium"
@@ -7855,8 +7855,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 586,
     "module": "Treatment Process",
     "question": "A plant nitrifies TKN from 35 mg/L to 2 mg/L at Q=10,000 m³/d. Using 4.57 g O₂/g N, what is the daily nitrification oxygen demand?",
-    "options": ["1,508 kg O₂/d", "150.8 kg O₂/d", "15,080 kg O₂/d", "330 kg O₂/d"],
-    "correct": 0,
+    "options": ["15,080 kg O₂/d", "150.8 kg O₂/d", "1,508 kg O₂/d", "330 kg O₂/d"],
+    "correct": 2,
     "explanation": "N nitrified = 35 - 2 = 33 mg/L. O₂ = 33 × 4.57 × 10,000 / 1,000,000 = 1.508 t/d = 1,508 kg/d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7875,8 +7875,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 588,
     "module": "Treatment Process",
     "question": "Design an aeration tank: SRT=10 d, Q=10,000 m³/d, MLSS=3,500 mg/L, Y=0.6, kd=0.06/d, BOD₀=200 mg/L, BOD_eff=10 mg/L. What is the tank volume?",
-    "options": ["2,250 m³", "1,500 m³", "3,500 m³", "5,000 m³"],
-    "correct": 0,
+    "options": ["3,500 m³", "1,500 m³", "2,250 m³", "5,000 m³"],
+    "correct": 2,
     "explanation": "Px = 0.6×10,000×190/(1+0.06×10)/1,000 = 712.5 kg/d. V = SRT×Px/MLSS = 10×712.5/3.5 = 2,036 m³ ≈ 2,250 m³.",
     "isCalc": true,
     "difficulty": "hard"
@@ -7895,8 +7895,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 590,
     "module": "Treatment Process",
     "question": "Calculate net sludge production: Y=0.5, kd=0.06/d, SRT=8 d, BOD removed=180 mg/L, Q=15,000 m³/d.",
-    "options": ["843.75 kg VSS/d", "1,350 kg VSS/d", "675 kg VSS/d", "2,700 kg VSS/d"],
-    "correct": 0,
+    "options": ["675 kg VSS/d", "1,350 kg VSS/d", "843.75 kg VSS/d", "2,700 kg VSS/d"],
+    "correct": 2,
     "explanation": "Px = Y×Q×ΔS/(1+kd×SRT) = 0.5×15,000×180/(1+0.06×8)/1,000 = 1,350,000/1,480/1,000 = 843.75 kg/d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7905,8 +7905,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 591,
     "module": "Sludge Management",
     "question": "An anaerobic digester receives 1,000 kg VS/d. VS destruction = 55%, gas yield = 0.9 m³/kg VS destroyed. What is the daily biogas production?",
-    "options": ["495 m³/d", "550 m³/d", "900 m³/d", "1,000 m³/d"],
-    "correct": 0,
+    "options": ["550 m³/d", "495 m³/d", "900 m³/d", "1,000 m³/d"],
+    "correct": 1,
     "explanation": "VS destroyed = 1,000 × 0.55 = 550 kg/d. Gas = 550 × 0.9 = 495 m³/d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7915,8 +7915,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 592,
     "module": "Sludge Management",
     "question": "A centrifuge processes 100 m³/d of 2.5% solids sludge, producing a 22% solids cake. What is the cake volume? (Assume density = 1,000 kg/m³)",
-    "options": ["11.4 m³/d", "2.5 m³/d", "22 m³/d", "100 m³/d"],
-    "correct": 0,
+    "options": ["2.5 m³/d", "11.4 m³/d", "22 m³/d", "100 m³/d"],
+    "correct": 1,
     "explanation": "Solids in = 100 × 1,000 × 0.025 = 2,500 kg/d. Cake volume = 2,500 / (0.22 × 1,000) = 11.4 m³/d.",
     "isCalc": true,
     "difficulty": "medium"
@@ -7925,8 +7925,8 @@ export const CLASS2_WW_QUESTIONS: WastewaterQuestion[] = [
     "id": 593,
     "module": "Treatment Process",
     "question": "A whole effluent toxicity test shows LC50 = 5% (v/v). What is the acute toxic unit (TUa) value?",
-    "options": ["20 TUa", "5 TUa", "0.05 TUa", "100 TUa"],
-    "correct": 0,
+    "options": ["0.05 TUa", "5 TUa", "20 TUa", "100 TUa"],
+    "correct": 2,
     "explanation": "TUa = 100 / LC50 = 100 / 5 = 20 TUa.",
     "isCalc": true,
     "difficulty": "medium"

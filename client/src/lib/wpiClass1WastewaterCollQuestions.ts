@@ -30,12 +30,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What is the primary purpose of a wastewater collection system?",
     options: [
-      "To treat wastewater to drinking water standards",
       "To convey wastewater from homes and businesses to a treatment facility",
+      "To treat wastewater to drinking water standards",
       "To store wastewater for agricultural reuse",
       "To pump stormwater to receiving waters"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "A wastewater collection system collects and conveys sewage from residences, commercial buildings, and industrial facilities to a wastewater treatment plant (WWTP). It protects public health and the environment by preventing untreated sewage from reaching waterways or groundwater.",
   },
   {
@@ -68,8 +68,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 4,
     module: "Collection System Components",
     question: "What minimum slope is typically required for a 200 mm (8-inch) sanitary sewer to achieve self-cleansing velocity?",
-    options: ["0.08%", "0.28%", "0.40%", "1.00%"],
-    correctAnswer: 1,
+    options: ["0.28%", "0.08%", "0.40%", "1.00%"],
+    correctAnswer: 0,
     explanation: "A 200 mm (8-inch) sewer typically requires a minimum slope of approximately 0.28% (2.8 mm per metre) to achieve a self-cleansing velocity of at least 0.6 m/s (2 ft/s). This prevents solids from settling in the pipe.",
     isCalc: true,
   },
@@ -92,11 +92,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a lift station (pump station) in a wastewater collection system?",
     options: [
       "A structure that uses gravity to move sewage downhill",
-      "A facility that uses pumps to move sewage from a lower elevation to a higher elevation",
+      "A manhole used for inspection purposes only",
       "A treatment unit that removes solids from sewage",
-      "A manhole used for inspection purposes only"
+      "A facility that uses pumps to move sewage from a lower elevation to a higher elevation"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "A lift station (also called a pump station) uses pumps to move sewage from a lower elevation to a higher elevation when gravity flow is not possible. They are essential in flat terrain or where sewers must cross ridges. Lift stations require regular maintenance and monitoring.",
   },
   {
@@ -105,11 +105,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a force main?",
     options: [
       "A large-diameter gravity sewer that carries the main flow",
-      "A pressurized pipe that carries sewage from a lift station to a gravity sewer or treatment plant",
       "A pipe that carries only stormwater under pressure",
+      "A pressurized pipe that carries sewage from a lift station to a gravity sewer or treatment plant",
       "A main valve used to isolate sections of the sewer"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "A force main is a pressurized pipeline that carries sewage pumped by a lift station. Unlike gravity sewers, force mains operate under pressure and can be laid at any grade. They connect the lift station discharge to a gravity sewer or directly to the treatment plant.",
   },
   {
@@ -126,11 +126,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a manhole in a wastewater collection system?",
     options: [
       "A large-diameter pipe used for high-flow conditions",
-      "An access structure that allows inspection, cleaning, and maintenance of sewers",
       "A valve used to isolate sections of the collection system",
+      "An access structure that allows inspection, cleaning, and maintenance of sewers",
       "A structure that stores sewage during peak flow events"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Manholes are access structures placed at regular intervals (typically every 90–120 m) along sewer lines, at changes in direction, grade, or pipe size, and at junctions. They allow operators to inspect, clean, and repair the sewer system and provide ventilation.",
   },
   {
@@ -139,11 +139,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What pipe material is most commonly used for new sanitary sewer construction?",
     options: [
       "Cast iron (CI)",
-      "Vitrified clay pipe (VCP)",
       "PVC (polyvinyl chloride) and HDPE",
+      "Vitrified clay pipe (VCP)",
       "Concrete pressure pipe"
     ],
-    correctAnswer: 2,
+    correctAnswer: 1,
     explanation: "PVC (polyvinyl chloride) and HDPE (high-density polyethylene) are the most common materials for new sanitary sewer construction due to their corrosion resistance, smooth interior surface (low friction), light weight, and ease of installation. Older systems may use vitrified clay, concrete, or cast iron.",
   },
   {
@@ -152,11 +152,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a service lateral (building sewer)?",
     options: [
       "The main sewer line running down the centre of a street",
-      "The pipe connecting an individual property's plumbing to the public sewer main",
+      "A large-diameter trunk sewer",
       "A sewer that runs parallel to a watercourse",
-      "A large-diameter trunk sewer"
+      "The pipe connecting an individual property's plumbing to the public sewer main"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "A service lateral (building sewer) is the private pipe that connects the plumbing of a building to the public sanitary sewer main. Responsibility for maintenance is typically split: the property owner maintains the lateral from the building to the property line (or the sewer main), while the municipality maintains the main.",
   },
   {
@@ -165,11 +165,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a trunk sewer?",
     options: [
       "A small-diameter sewer serving individual properties",
-      "A large-diameter sewer that collects flow from multiple branch sewers and conveys it to the treatment plant",
       "A sewer used only for industrial waste",
+      "A large-diameter sewer that collects flow from multiple branch sewers and conveys it to the treatment plant",
       "A sewer installed in a tree-lined boulevard"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "A trunk sewer (also called an interceptor sewer) is a large-diameter sewer that collects wastewater from multiple branch or collector sewers and conveys it to the treatment plant. Trunk sewers carry the combined flow from large service areas.",
   },
   {
@@ -178,11 +178,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a cleanout in a sewer system?",
     options: [
       "To provide a sampling point for wastewater quality testing",
-      "To provide access for cleaning equipment without requiring a manhole",
+      "To measure flow in the sewer",
       "To regulate flow velocity in the sewer",
-      "To measure flow in the sewer"
+      "To provide access for cleaning equipment without requiring a manhole"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "A cleanout is a capped access point installed in a sewer line (typically on service laterals) that allows cleaning equipment (rods, jets) to be inserted without requiring a full manhole. They are commonly used on building service laterals.",
   },
   {
@@ -190,20 +190,20 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What is a sewer inverted siphon (depressed sewer)?",
     options: [
-      "A sewer that rises above ground to cross an obstacle",
       "A sewer section that dips below normal grade to pass under an obstacle such as a stream or utility",
+      "A sewer that rises above ground to cross an obstacle",
       "A sewer that uses suction to move wastewater",
       "A type of pump used in lift stations"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "An inverted siphon (depressed sewer) is a section of sewer that dips below the hydraulic grade line to pass under an obstacle (stream, railway, utility). The sewer flows full under pressure. Multiple barrels are often used to maintain self-cleansing velocity at different flow conditions.",
   },
   {
     id: 15,
     module: "Collection System Components",
     question: "What is the minimum cover depth typically required over a sanitary sewer in a road allowance in cold climates?",
-    options: ["0.5 m (1.6 ft)", "1.2 m (4 ft)", "2.4 m (8 ft)", "3.0 m (10 ft)"],
-    correctAnswer: 1,
+    options: ["0.5 m (1.6 ft)", "3.0 m (10 ft)", "2.4 m (8 ft)", "1.2 m (4 ft)"],
+    correctAnswer: 3,
     explanation: "In cold climates (such as western Canada), sanitary sewers are typically installed with a minimum cover of 1.2–1.8 m (4–6 ft) to protect against freezing. The exact depth depends on local frost penetration depth and municipal standards.",
   },
   {
@@ -212,11 +212,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a wet well in a lift station?",
     options: [
       "A dry chamber housing the pumps and electrical equipment",
-      "A chamber that collects and stores incoming sewage before it is pumped",
+      "A tank used to store treated effluent",
       "A well used to monitor groundwater levels near the sewer",
-      "A tank used to store treated effluent"
+      "A chamber that collects and stores incoming sewage before it is pumped"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "The wet well is the chamber in a lift station that receives and temporarily stores incoming sewage. The pumps are activated when the sewage level in the wet well rises to a set point (high level), and shut off when the level drops to a low set point. Wet well volume provides operational storage.",
   },
   {
@@ -225,11 +225,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a dry well in a lift station?",
     options: [
       "A chamber that collects incoming sewage",
-      "A separate chamber adjacent to the wet well that houses the pumps and electrical equipment in a dry environment",
+      "A storage tank for emergency use",
       "A monitoring well for groundwater",
-      "A storage tank for emergency use"
+      "A separate chamber adjacent to the wet well that houses the pumps and electrical equipment in a dry environment"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "A dry well is a separate, sealed chamber adjacent to the wet well that houses the pumps, motors, valves, and electrical equipment in a dry environment. This design (dry-pit/wet-pit) protects equipment from corrosion and allows easier maintenance compared to submersible pumps.",
   },
   {
@@ -251,11 +251,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a gate valve used for in a collection system?",
     options: [
       "To measure flow in a sewer",
-      "To isolate sections of the collection system for maintenance or repair",
+      "To regulate pressure in a force main",
       "To prevent backflow in a force main",
-      "To regulate pressure in a force main"
+      "To isolate sections of the collection system for maintenance or repair"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Gate valves (isolation valves) are used to shut off flow to sections of the collection system for maintenance, repair, or emergency response. They are typically installed on force mains and at lift stations. Gate valves are designed for fully open or fully closed operation, not flow regulation.",
   },
   {
@@ -264,11 +264,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a flow meter used for in a wastewater collection system?",
     options: [
       "To measure the pressure in the force main",
-      "To measure the volume of wastewater flowing through the system",
       "To detect hydrogen sulfide gas in the sewer",
+      "To measure the volume of wastewater flowing through the system",
       "To control pump speed"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Flow meters measure the volume of wastewater flowing through the collection system. Common types include electromagnetic (mag-meter) flow meters for force mains and open-channel flow meters (flumes, weirs, ultrasonic) for gravity sewers. Flow data is used for billing, capacity planning, and I/I analysis.",
   },
   {
@@ -276,12 +276,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What is a sewer overflow relief structure?",
     options: [
-      "A structure that increases flow capacity in a sewer",
       "A structure designed to release sewage to a designated location during surcharge conditions to prevent basement flooding",
+      "A structure that increases flow capacity in a sewer",
       "A valve that prevents sewage from entering the collection system",
       "A pump used to boost flow in a sewer"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "A sewer overflow relief structure (also called a relief sewer or overflow weir) is designed to divert excess sewage flow during surcharge conditions (e.g., heavy rain causing I/I) to a designated overflow point, preventing sewage from backing up into buildings. The overflow is typically to a storm sewer or receiving water.",
   },
   {
@@ -289,12 +289,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What is the purpose of pipe bedding in sewer installation?",
     options: [
-      "To provide a stable, uniform support for the pipe and distribute loads evenly",
+      "To allow groundwater to drain away from the pipe",
       "To prevent corrosion of the pipe exterior",
       "To provide insulation against freezing",
-      "To allow groundwater to drain away from the pipe"
+      "To provide a stable, uniform support for the pipe and distribute loads evenly"
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation: "Pipe bedding provides a stable, uniform support for the sewer pipe and distributes the load from the backfill and surface loads evenly around the pipe. Proper bedding prevents point loading that could crack the pipe. Granular material (sand, crushed stone) is typically used.",
   },
   {
@@ -302,12 +302,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What is a sewer easement?",
     options: [
-      "A legal right granted to the municipality to install and maintain a sewer on private property",
-      "A permit required to connect to the municipal sewer",
       "A financial arrangement for sewer construction",
+      "A permit required to connect to the municipal sewer",
+      "A legal right granted to the municipality to install and maintain a sewer on private property",
       "A type of sewer pipe joint"
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation: "A sewer easement is a legal right granted to the municipality to install, operate, and maintain a sewer line on private property. The property owner retains ownership but cannot build structures or plant trees over the easement. Easements are registered on the property title.",
   },
   {
@@ -316,11 +316,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a drop manhole?",
     options: [
       "A manhole with a very deep access shaft",
-      "A manhole with an outside drop pipe that allows a high-elevation sewer to connect to a lower-elevation sewer without causing turbulence",
       "A manhole used only in combined sewer systems",
+      "A manhole with an outside drop pipe that allows a high-elevation sewer to connect to a lower-elevation sewer without causing turbulence",
       "A manhole with a built-in pump"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "A drop manhole (outside drop) is used when an incoming sewer enters a manhole at a significantly higher elevation than the outgoing sewer. An outside drop pipe carries the flow down the outside of the manhole barrel to the invert level, preventing turbulence, erosion, and H₂S generation inside the manhole.",
   },
   {
@@ -341,12 +341,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What causes root intrusion in sewer pipes?",
     options: [
-      "Roots are attracted to the moisture and nutrients in sewage and grow into the pipe through cracks and joints",
-      "Roots grow into pipes only when the soil is dry",
       "Roots enter pipes through the manhole covers",
+      "Roots grow into pipes only when the soil is dry",
+      "Roots are attracted to the moisture and nutrients in sewage and grow into the pipe through cracks and joints",
       "Root intrusion only occurs in plastic pipes"
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation: "Tree and shrub roots are attracted to the warm, moist, nutrient-rich environment inside sewer pipes. They enter through cracks, defective joints, or deteriorated pipe walls and can grow to fill the pipe, causing blockages and structural damage. Root intrusion is a major cause of sewer maintenance problems.",
   },
   {
@@ -354,12 +354,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What is a sewer system's hydraulic capacity?",
     options: [
-      "The maximum flow the system can convey without surcharging (flowing under pressure)",
+      "The minimum flow required to keep the system operational",
       "The total length of sewer pipe in the system",
       "The number of lift stations in the system",
-      "The minimum flow required to keep the system operational"
+      "The maximum flow the system can convey without surcharging (flowing under pressure)"
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation: "Hydraulic capacity is the maximum flow a sewer can convey while flowing at or below full-pipe conditions (gravity sewers) or within design pressure limits (force mains). When flows exceed capacity, the sewer surcharges (flows under pressure), which can cause overflows, backups, and structural stress.",
   },
   {
@@ -367,12 +367,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What is a sewer bypass?",
     options: [
-      "A temporary pipe or pumping arrangement used to divert sewage flow around a section of sewer being repaired",
-      "A permanent alternate route for sewage flow",
       "A pipe that connects two sewer mains",
+      "A permanent alternate route for sewage flow",
+      "A temporary pipe or pumping arrangement used to divert sewage flow around a section of sewer being repaired",
       "A valve used to redirect flow in a lift station"
     ],
-    correctAnswer: 0,
+    correctAnswer: 2,
     explanation: "A sewer bypass is a temporary arrangement (using portable pumps and hoses or pipes) to divert sewage flow around a section of sewer that is being repaired, cleaned, or inspected. Bypassing prevents sewage backups during maintenance and allows work to proceed safely.",
   },
   {
@@ -380,12 +380,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What is a grease interceptor (grease trap)?",
     options: [
-      "A device installed at restaurants and food service facilities to capture fats, oils, and grease before they enter the sewer",
       "A filter used at the treatment plant to remove grease",
+      "A device installed at restaurants and food service facilities to capture fats, oils, and grease before they enter the sewer",
       "A valve used to prevent grease from entering the lift station",
       "A chemical injected into the sewer to dissolve grease"
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation: "A grease interceptor (grease trap) is a plumbing device installed at food service establishments to capture fats, oils, and grease (FOG) before they enter the sanitary sewer. FOG can solidify in sewers, causing blockages. Grease interceptors must be regularly pumped out and maintained.",
   },
   {
@@ -393,12 +393,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What is the purpose of a sewer air release valve?",
     options: [
-      "To release air that accumulates at high points in force mains, preventing air locks",
       "To release sewage gases from manholes",
+      "To release air that accumulates at high points in force mains, preventing air locks",
       "To allow air into the sewer to prevent siphoning",
       "To measure air pressure in the force main"
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation: "Air release valves (ARVs) are installed at high points in force mains to automatically release air that accumulates and could form air locks, reducing pump efficiency and flow capacity. They must be maintained to ensure proper operation.",
   },
   {
@@ -407,11 +407,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a vacuum sewer system?",
     options: [
       "A sewer system that uses gravity and vacuum to convey sewage",
-      "A sewer system that uses a central vacuum station to create negative pressure, drawing sewage through small-diameter pipes",
+      "A sewer system used only for industrial waste",
       "A sewer system that uses high-pressure pumps to force sewage through pipes",
-      "A sewer system used only for industrial waste"
+      "A sewer system that uses a central vacuum station to create negative pressure, drawing sewage through small-diameter pipes"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "A vacuum sewer system uses a central vacuum station to create negative pressure (vacuum) in the collection pipes. Sewage is drawn into the system through interface valves at each property. Vacuum systems are used in flat terrain, areas with high groundwater, or where conventional gravity sewers are impractical.",
   },
   {
@@ -420,11 +420,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a pressure sewer (STEP or GRINDER pump system)?",
     options: [
       "A conventional gravity sewer operating under pressure",
-      "A system where each property has a small pump (grinder pump or septic tank effluent pump) that pumps sewage through small-diameter pressure pipes",
+      "A sewer that operates under pressure only during wet weather",
       "A system that uses municipal pumps to pressurize the entire collection system",
-      "A sewer that operates under pressure only during wet weather"
+      "A system where each property has a small pump (grinder pump or septic tank effluent pump) that pumps sewage through small-diameter pressure pipes"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "A pressure sewer system uses individual pumps at each property (grinder pumps or STEP — Septic Tank Effluent Pumps) to pump sewage into small-diameter pressure pipes. These systems are cost-effective in areas with challenging topography, low density, or high groundwater where conventional gravity sewers are expensive.",
   },
   {
@@ -446,11 +446,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a sewer system's peak flow?",
     options: [
       "The average daily flow over a year",
-      "The maximum instantaneous or short-duration flow that occurs during peak demand periods or wet weather events",
       "The flow at which the sewer begins to overflow",
+      "The maximum instantaneous or short-duration flow that occurs during peak demand periods or wet weather events",
       "The minimum flow in the sewer during the night"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Peak flow is the maximum flow rate that occurs in the collection system, typically during morning peak usage (peak hour factor) or during wet weather events (due to I/I). Sewers and lift stations must be designed to handle peak flows without surcharging or overflowing.",
   },
   {
@@ -459,11 +459,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a sewer system map (as-built drawing)?",
     options: [
       "A drawing showing the proposed design of a new sewer",
-      "A record drawing showing the actual installed location, size, material, and grade of all sewer components",
+      "A drawing used only for billing purposes",
       "A map showing the locations of all manholes only",
-      "A drawing used only for billing purposes"
+      "A record drawing showing the actual installed location, size, material, and grade of all sewer components"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "As-built (record) drawings show the actual installed location, depth, size, material, slope, and connections of all sewer components. They are essential for operations, maintenance, emergency response, and future planning. Accurate as-builts prevent accidental damage to sewers during excavation.",
   },
   {
@@ -471,12 +471,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What is a sewer pipe joint?",
     options: [
-      "The connection between two sections of pipe that must be watertight to prevent I/I",
+      "A manhole connection to the sewer",
       "A fitting used to change the direction of a sewer",
       "A valve used to isolate a section of sewer",
-      "A manhole connection to the sewer"
+      "The connection between two sections of pipe that must be watertight to prevent I/I"
     ],
-    correctAnswer: 0,
+    correctAnswer: 3,
     explanation: "Pipe joints connect individual pipe sections and must be watertight to prevent infiltration (groundwater entering) and exfiltration (sewage leaking out). Common joint types include rubber gasket joints (for PVC and concrete pipe) and compression joints. Defective joints are a major source of I/I.",
   },
   {
@@ -484,12 +484,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What is a sewer CCTV inspection?",
     options: [
-      "A visual inspection of manholes from the surface",
       "A closed-circuit television camera inspection of the interior of sewer pipes to identify defects, blockages, and root intrusion",
+      "A visual inspection of manholes from the surface",
       "A security camera system monitoring lift stations",
       "An inspection of the treatment plant using cameras"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "CCTV (closed-circuit television) inspection uses a remote-controlled camera that travels through the sewer pipe, recording video of the pipe interior. It identifies defects (cracks, joint failures, root intrusion, corrosion, blockages, and misalignments) without excavation. CCTV is the primary tool for condition assessment.",
   },
   {
@@ -498,11 +498,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a sewer overflow (SSO — Sanitary Sewer Overflow)?",
     options: [
       "The normal discharge of treated effluent from the treatment plant",
-      "An unintended release of raw or partially treated sewage from the collection system to the environment",
       "The overflow of stormwater from a combined sewer",
+      "An unintended release of raw or partially treated sewage from the collection system to the environment",
       "The release of sewage from a grease interceptor"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "A Sanitary Sewer Overflow (SSO) is an unintended release of raw or partially treated sewage from the collection system. SSOs can occur due to pipe blockages, structural failures, I/I overloading, or pump station failures. SSOs pose serious public health and environmental risks and must be reported to regulatory authorities.",
   },
   {
@@ -510,12 +510,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Collection System Components",
     question: "What is the purpose of a sewer vent pipe?",
     options: [
-      "To allow air into the sewer to prevent siphoning and release sewer gases safely above the roofline",
       "To measure pressure in the sewer",
+      "To allow air into the sewer to prevent siphoning and release sewer gases safely above the roofline",
       "To provide access for cleaning equipment",
       "To allow stormwater to enter the sanitary sewer"
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation: "Vent pipes (plumbing vents) allow air into the building's drainage system to prevent siphoning of trap seals and allow sewer gases (including H₂S and methane) to escape above the roofline rather than into the building. They are part of the building's plumbing system, not the public sewer.",
   },
   {
@@ -539,12 +539,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Equipment Operation & Maintenance",
     question: "What type of pump is most commonly used in wastewater lift stations?",
     options: [
-      "Positive displacement pump",
       "Centrifugal pump (submersible or dry-pit)",
+      "Positive displacement pump",
       "Peristaltic pump",
       "Diaphragm pump"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Centrifugal pumps are the most common type used in wastewater lift stations. They can be submersible (installed in the wet well) or dry-pit (installed in a separate dry chamber). Centrifugal pumps are reliable, efficient, and capable of handling large flows with solids.",
   },
   {
@@ -552,12 +552,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Equipment Operation & Maintenance",
     question: "What is the purpose of a pump impeller?",
     options: [
-      "To filter solids from the sewage before pumping",
       "To impart velocity to the liquid, converting mechanical energy to kinetic energy",
+      "To filter solids from the sewage before pumping",
       "To seal the pump shaft from the sewage",
       "To measure the flow rate through the pump"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "The impeller is the rotating component of a centrifugal pump that imparts velocity (kinetic energy) to the liquid. As the liquid passes through the volute casing, velocity is converted to pressure energy. Impeller design affects pump efficiency and ability to handle solids.",
   },
   {
@@ -565,12 +565,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Equipment Operation & Maintenance",
     question: "What is pump cavitation?",
     options: [
-      "The normal vibration of a pump during operation",
       "The formation and collapse of vapour bubbles in the pump due to low suction pressure, causing noise, vibration, and impeller damage",
+      "The normal vibration of a pump during operation",
       "The buildup of grease on the pump impeller",
       "The overheating of the pump motor"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Cavitation occurs when the pressure at the pump suction drops below the vapour pressure of the liquid, causing vapour bubbles to form. When these bubbles collapse (implode) in higher-pressure zones, they create shock waves that erode the impeller and casing. Cavitation causes noise (like gravel in the pump), vibration, and reduced performance.",
   },
   {
@@ -578,12 +578,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Equipment Operation & Maintenance",
     question: "What is the purpose of a pump seal (mechanical seal or packing)?",
     options: [
-      "To prevent sewage from leaking along the pump shaft where it exits the casing",
       "To prevent air from entering the pump suction",
+      "To prevent sewage from leaking along the pump shaft where it exits the casing",
       "To filter solids from the sewage",
       "To measure the pump's discharge pressure"
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation: "Pump seals (mechanical seals or packing) prevent sewage from leaking along the rotating shaft where it exits the pump casing. Mechanical seals are preferred for wastewater pumps as they require less maintenance and provide better sealing than traditional packing. Seal failure leads to sewage leakage.",
   },
   {
@@ -592,11 +592,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a pump's total dynamic head (TDH)?",
     options: [
       "The static head only (elevation difference between wet well and discharge point)",
-      "The total head the pump must overcome, including static head, friction losses, and velocity head",
+      "The suction head at the pump inlet",
       "The pressure at the pump discharge only",
-      "The suction head at the pump inlet"
+      "The total head the pump must overcome, including static head, friction losses, and velocity head"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Total Dynamic Head (TDH) is the total head the pump must overcome to move sewage from the wet well to the discharge point. TDH = static head (elevation difference) + friction losses in the force main + minor losses (fittings, valves) + velocity head. TDH determines the pump's operating point on its performance curve.",
     isCalc: true,
   },
@@ -605,12 +605,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Equipment Operation & Maintenance",
     question: "What is a pump performance curve?",
     options: [
-      "A graph showing pump efficiency vs. time",
       "A graph showing the relationship between flow rate (Q) and head (H) for a specific pump",
+      "A graph showing pump efficiency vs. time",
       "A graph showing pump motor temperature vs. flow",
       "A graph showing the relationship between pump speed and power consumption"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "A pump performance curve (H-Q curve) shows the relationship between flow rate (Q) and head (H) for a specific pump at a given speed. As flow increases, head decreases. The operating point is where the pump curve intersects the system curve. Performance curves also show efficiency and power consumption.",
   },
   {
@@ -619,11 +619,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a wet well level control system?",
     options: [
       "To measure the quality of sewage in the wet well",
-      "To automatically start and stop pumps based on sewage level in the wet well",
       "To control the flow rate of sewage entering the wet well",
+      "To automatically start and stop pumps based on sewage level in the wet well",
       "To detect hydrogen sulfide in the wet well"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Level control systems (float switches, ultrasonic sensors, pressure transducers) monitor the sewage level in the wet well and automatically start pumps when the level reaches a high set point and stop them when it drops to a low set point. This maintains the wet well within its operating range and prevents overflow or pump dry-running.",
   },
   {
@@ -632,11 +632,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a variable frequency drive (VFD) used for in a lift station?",
     options: [
       "To provide backup power during outages",
-      "To vary the speed of the pump motor to match the required flow, improving energy efficiency",
       "To filter solids from the sewage before pumping",
+      "To vary the speed of the pump motor to match the required flow, improving energy efficiency",
       "To measure the flow in the force main"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "A Variable Frequency Drive (VFD) controls the speed of the pump motor by varying the frequency of the electrical supply. By matching pump speed to the required flow, VFDs reduce energy consumption, extend pump life, reduce water hammer, and provide smoother operation compared to on/off control.",
   },
   {
@@ -645,11 +645,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is water hammer in a force main?",
     options: [
       "The normal pressure fluctuations in a force main during pump operation",
-      "A pressure surge caused by the sudden change in flow velocity, typically when a pump starts or stops suddenly",
       "The buildup of sediment in a force main",
+      "A pressure surge caused by the sudden change in flow velocity, typically when a pump starts or stops suddenly",
       "The vibration of a force main due to high flow velocity"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Water hammer is a pressure surge (shock wave) in a force main caused by the sudden change in flow velocity — typically when a pump stops suddenly or a valve closes rapidly. The pressure wave can be several times the normal operating pressure and can damage pipes, fittings, and valves. Prevention includes slow-closing valves and surge tanks.",
   },
   {
@@ -671,11 +671,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is SCADA in the context of a wastewater collection system?",
     options: [
       "A type of pump used in lift stations",
-      "Supervisory Control and Data Acquisition — a system for remote monitoring and control of lift stations and collection system components",
+      "A type of pipe material used in force mains",
       "A chemical used to control odours in sewers",
-      "A type of pipe material used in force mains"
+      "Supervisory Control and Data Acquisition — a system for remote monitoring and control of lift stations and collection system components"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "SCADA (Supervisory Control and Data Acquisition) is a system that allows operators to remotely monitor and control lift stations and other collection system components from a central location. SCADA collects data (wet well levels, pump status, flow, alarms) and can send alerts when problems occur.",
   },
   {
@@ -684,11 +684,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of sewer jetting (high-pressure water jetting)?",
     options: [
       "To test the structural integrity of sewer pipes",
-      "To clean sewer pipes by using high-pressure water to dislodge and flush away blockages, grease, roots, and debris",
+      "To measure flow in sewer pipes",
       "To seal cracks in sewer pipes",
-      "To measure flow in sewer pipes"
+      "To clean sewer pipes by using high-pressure water to dislodge and flush away blockages, grease, roots, and debris"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "High-pressure water jetting (hydro-jetting) uses a specialized nozzle that propels water at high pressure (typically 7,000–20,000 kPa / 1,000–3,000 psi) to clean sewer pipes. The forward-facing jets cut through blockages and the rearward-facing jets propel the nozzle and flush debris toward the downstream manhole.",
   },
   {
@@ -722,12 +722,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Equipment Operation & Maintenance",
     question: "What is a pump's net positive suction head available (NPSHa)?",
     options: [
-      "The head required by the pump to prevent cavitation",
       "The actual suction head available at the pump inlet, accounting for atmospheric pressure, suction lift, friction losses, and vapour pressure",
+      "The head required by the pump to prevent cavitation",
       "The total dynamic head the pump must overcome",
       "The head at the pump discharge"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "NPSHa (Net Positive Suction Head available) is the actual suction head available at the pump inlet. It must exceed the pump's NPSHr (required) to prevent cavitation. NPSHa = atmospheric pressure head + suction head − friction losses − vapour pressure head. Submersible pumps in wet wells typically have adequate NPSHa.",
     isCalc: true,
   },
@@ -737,11 +737,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a pump run time log?",
     options: [
       "To record the chemical dosage applied to the sewage",
-      "To track how long each pump operates, enabling calculation of flow volumes and identification of abnormal operation",
+      "To document maintenance activities only",
       "To record the wet well level at all times",
-      "To document maintenance activities only"
+      "To track how long each pump operates, enabling calculation of flow volumes and identification of abnormal operation"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Pump run time logs record the duration of each pump cycle. This data allows operators to calculate approximate flow volumes (run time × pump flow rate), identify trends (increasing run times may indicate I/I or pump wear), and schedule maintenance. Run time logs are essential for operations management.",
   },
   {
@@ -749,12 +749,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Equipment Operation & Maintenance",
     question: "What is the purpose of a lift station alarm system?",
     options: [
-      "To notify operators of abnormal conditions (high wet well level, pump failure, power outage) so they can respond before an overflow occurs",
       "To automatically stop all pumps during a power outage",
+      "To notify operators of abnormal conditions (high wet well level, pump failure, power outage) so they can respond before an overflow occurs",
       "To measure the quality of sewage in the wet well",
       "To control the flow rate entering the wet well"
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation: "Alarm systems monitor critical parameters (wet well level, pump status, power supply, H₂S levels) and alert operators when abnormal conditions occur. Alarms can be local (horn, light) or remote (phone, pager, SCADA). Prompt response to alarms prevents sewage overflows and equipment damage.",
   },
   {
@@ -763,11 +763,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the correct procedure when a pump fails at a lift station?",
     options: [
       "Immediately shut off power to the entire station and wait for the repair crew",
-      "Switch to the standby pump, notify the supervisor, monitor the wet well level, and arrange for repair",
       "Allow the wet well to overflow and then repair the pump",
+      "Switch to the standby pump, notify the supervisor, monitor the wet well level, and arrange for repair",
       "Increase the speed of the remaining pump beyond its rated capacity"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "When a pump fails, the operator should: (1) switch to the standby pump, (2) notify the supervisor and maintenance crew, (3) monitor the wet well level closely, (4) arrange for emergency bypass pumping if needed, and (5) document the failure. The goal is to maintain pumping capacity and prevent overflow.",
   },
   {
@@ -776,11 +776,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer smoke test?",
     options: [
       "To detect hydrogen sulfide in the sewer",
-      "To identify illegal connections, defects, and sources of inflow by pumping non-toxic smoke into the sewer and observing where it emerges",
+      "To measure flow in the sewer",
       "To test the structural integrity of sewer pipes",
-      "To measure flow in the sewer"
+      "To identify illegal connections, defects, and sources of inflow by pumping non-toxic smoke into the sewer and observing where it emerges"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "A smoke test involves pumping non-toxic, non-staining smoke into a sewer section and observing where smoke emerges. Smoke coming from unexpected locations (yard drains, downspouts, foundation drains, ground surface) indicates illegal connections or defects that allow inflow. Smoke tests are an effective, low-cost I/I investigation tool.",
   },
   {
@@ -789,11 +789,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is a sewer dye test used for?",
     options: [
       "To colour the sewage for identification purposes",
-      "To trace the source of flow in a sewer by adding non-toxic dye to a suspected source and observing where it appears in the sewer",
       "To test the chemical composition of sewage",
+      "To trace the source of flow in a sewer by adding non-toxic dye to a suspected source and observing where it appears in the sewer",
       "To mark the location of underground sewers"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "A dye test uses a non-toxic, brightly coloured dye (typically fluorescein) added to a suspected inflow source (e.g., a roof drain, yard drain, or storm sewer). If the dye appears in the sanitary sewer, it confirms an illegal or improper connection. Dye tests are used to confirm specific sources of inflow identified during smoke testing.",
   },
   {
@@ -802,11 +802,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer flow meter?",
     options: [
       "To measure the pressure in the sewer",
-      "To measure the volume and rate of wastewater flow for billing, capacity analysis, and I/I quantification",
+      "To control the flow rate in the sewer",
       "To detect hydrogen sulfide in the sewer",
-      "To control the flow rate in the sewer"
+      "To measure the volume and rate of wastewater flow for billing, capacity analysis, and I/I quantification"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Flow meters measure the volume and rate of wastewater flow in the collection system. Data is used for: billing industrial users, quantifying I/I (comparing wet vs. dry weather flows), capacity analysis, treatment plant loading calculations, and regulatory reporting. Common types include electromagnetic meters (force mains) and area-velocity meters (gravity sewers).",
   },
   {
@@ -827,12 +827,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Equipment Operation & Maintenance",
     question: "What is the minimum frequency for routine inspection of a lift station?",
     options: [
-      "Once per year",
-      "Once per month",
       "Daily or as required by the operating permit and risk assessment",
+      "Once per month",
+      "Once per year",
       "Once per week only"
     ],
-    correctAnswer: 2,
+    correctAnswer: 0,
     explanation: "Lift stations should be inspected daily (or at a frequency specified by the operating permit and risk assessment). Daily inspections check wet well level, pump operation, alarm systems, generator fuel, and general condition. Higher-risk stations (no backup power, high-consequence overflow locations) may require more frequent inspection.",
   },
   {
@@ -840,12 +840,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Equipment Operation & Maintenance",
     question: "What is a pump's efficiency?",
     options: [
-      "The ratio of water power output to shaft power input",
       "The ratio of shaft power input to water power output",
+      "The ratio of water power output to shaft power input",
       "The ratio of flow rate to pump speed",
       "The ratio of head to flow rate"
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation: "Pump efficiency = (water power output / shaft power input) × 100%. Water power = ρgQH (density × gravity × flow × head). Shaft power is the mechanical power delivered to the pump by the motor. Typical centrifugal pump efficiencies range from 60–85%. Operating near the best efficiency point (BEP) minimizes energy consumption.",
     isCalc: true,
   },
@@ -854,12 +854,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Equipment Operation & Maintenance",
     question: "What is the purpose of a pump strainer (screen) in a lift station?",
     options: [
-      "To measure the flow rate through the pump",
       "To remove large solids and debris from the sewage before it reaches the pump, preventing clogging",
+      "To measure the flow rate through the pump",
       "To filter out hydrogen sulfide from the sewage",
       "To regulate the pressure at the pump inlet"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Pump strainers (bar screens or coarse screens) remove large solids (rags, wipes, debris) from the sewage before it reaches the pumps. This prevents pump clogging, impeller damage, and reduced efficiency. Strainers must be cleaned regularly to prevent flow restriction.",
   },
   {
@@ -868,11 +868,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of pump alternation in a lift station with multiple pumps?",
     options: [
       "To increase the total flow capacity of the station",
-      "To equalize wear on all pumps by rotating which pump runs first, extending the life of all pumps",
+      "To prevent water hammer in the force main",
       "To reduce energy consumption by running only one pump at a time",
-      "To prevent water hammer in the force main"
+      "To equalize wear on all pumps by rotating which pump runs first, extending the life of all pumps"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Pump alternation (lead-lag rotation) ensures that all pumps in a station accumulate similar run hours, equalizing wear and extending the service life of all pumps. It also ensures that the standby pump is exercised regularly and remains operational. Most modern control systems alternate pumps automatically.",
   },
   {
@@ -881,11 +881,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer pipe pressure test (air or water test)?",
     options: [
       "To measure the flow capacity of a new sewer",
-      "To verify the watertightness of a newly installed sewer pipe and joints before backfilling",
       "To test the structural strength of a new sewer",
+      "To verify the watertightness of a newly installed sewer pipe and joints before backfilling",
       "To flush the new sewer before commissioning"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Pressure tests (low-pressure air test or water exfiltration test) are performed on newly installed gravity sewers to verify that the pipe and joints are watertight before backfilling. The test confirms that the installation meets specifications and will not allow significant I/I or exfiltration.",
   },
   {
@@ -907,11 +907,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer bypass pump during maintenance?",
     options: [
       "To increase flow capacity in the sewer during peak periods",
-      "To divert sewage flow around a section of sewer being repaired, preventing backup and overflow",
       "To pump sewage from the wet well to the treatment plant",
+      "To divert sewage flow around a section of sewer being repaired, preventing backup and overflow",
       "To test the capacity of a new sewer"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "A bypass pump diverts sewage flow around a section of sewer that is being repaired, cleaned, or inspected. The bypass typically uses portable pumps and hoses to move sewage from an upstream manhole to a downstream manhole, bypassing the work area. Proper bypass setup prevents sewage backups and overflows.",
   },
   {
@@ -920,11 +920,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer odour control system?",
     options: [
       "To remove all bacteria from the sewage",
-      "To reduce or eliminate hydrogen sulfide and other odorous gases in the collection system to protect worker safety and prevent nuisance complaints",
       "To improve the efficiency of the treatment plant",
+      "To reduce or eliminate hydrogen sulfide and other odorous gases in the collection system to protect worker safety and prevent nuisance complaints",
       "To prevent corrosion of force mains only"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Odour control systems reduce hydrogen sulfide (H₂S) and other odorous compounds in the collection system. Methods include chemical dosing (iron salts, nitrates, caustic), air injection, biofiltration, and chemical scrubbers at lift stations. Odour control protects worker safety, prevents corrosion, and reduces community complaints.",
   },
   {
@@ -932,12 +932,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Equipment Operation & Maintenance",
     question: "What is the purpose of a sewer pipe lining (CIPP)?",
     options: [
-      "To increase the diameter of an existing sewer",
       "To rehabilitate a deteriorated sewer by installing a resin-impregnated liner that cures in place, restoring structural integrity and reducing I/I",
+      "To increase the diameter of an existing sewer",
       "To provide thermal insulation for the sewer",
       "To prevent root intrusion in new sewers"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Cured-In-Place Pipe (CIPP) lining inserts a flexible, resin-impregnated felt tube into an existing deteriorated sewer and cures it (using hot water, steam, or UV light) to form a new structural pipe within the old pipe. CIPP restores structural integrity, reduces I/I, and extends service life without excavation.",
   },
   {
@@ -946,11 +946,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer pipe bursting?",
     options: [
       "To destroy a sewer pipe that is no longer needed",
-      "To replace an existing pipe by pulling a bursting head through it, fracturing the old pipe outward and simultaneously pulling in a new pipe",
+      "To clean a sewer pipe by creating a pressure wave",
       "To increase the pressure in a force main",
-      "To clean a sewer pipe by creating a pressure wave"
+      "To replace an existing pipe by pulling a bursting head through it, fracturing the old pipe outward and simultaneously pulling in a new pipe"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Pipe bursting is a trenchless pipe replacement method where a bursting head is pulled through the existing pipe, fracturing it outward into the surrounding soil, while simultaneously pulling in a new pipe (typically HDPE) of the same or larger diameter. It avoids full excavation and is used when the existing pipe is too deteriorated for lining.",
   },
   {
@@ -959,11 +959,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer manhole frame and cover?",
     options: [
       "To provide structural support for the manhole barrel",
-      "To provide access to the sewer while preventing unauthorized entry, surface water inflow, and traffic loads from damaging the manhole",
       "To measure the flow in the sewer",
+      "To provide access to the sewer while preventing unauthorized entry, surface water inflow, and traffic loads from damaging the manhole",
       "To provide ventilation for the sewer"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Manhole frames and covers provide access to the sewer system while preventing unauthorized entry, surface water inflow (a major source of I/I), and protecting the manhole from traffic loads. Covers should be watertight in areas prone to flooding. Damaged or improperly seated covers are a significant source of inflow.",
   },
   {
@@ -972,11 +972,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer pipe inspection using sonar?",
     options: [
       "To measure the flow velocity in a sewer",
-      "To inspect the interior of a sewer that is flowing full or partially full, where CCTV cannot see the pipe walls below the waterline",
+      "To measure the pipe diameter",
       "To detect hydrogen sulfide in the sewer",
-      "To measure the pipe diameter"
+      "To inspect the interior of a sewer that is flowing full or partially full, where CCTV cannot see the pipe walls below the waterline"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Sonar inspection uses acoustic signals to profile the interior of a sewer pipe that is flowing full or partially full (where CCTV cannot see below the waterline). Sonar can detect sediment accumulation, structural defects, and obstructions below the waterline. It is often combined with CCTV for a complete assessment.",
   },
   {
@@ -1013,19 +1013,19 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What are the primary hazardous gases found in sewers?",
     options: [
       "Carbon dioxide (CO₂) and nitrogen (N₂)",
-      "Hydrogen sulfide (H₂S), methane (CH₄), carbon dioxide (CO₂), and oxygen deficiency",
       "Chlorine (Cl₂) and ammonia (NH₃)",
+      "Hydrogen sulfide (H₂S), methane (CH₄), carbon dioxide (CO₂), and oxygen deficiency",
       "Carbon monoxide (CO) and sulfur dioxide (SO₂)"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "The primary hazardous gases in sewers are: (1) Hydrogen sulfide (H₂S) — toxic, flammable, rotten egg odour; (2) Methane (CH₄) — explosive, odourless; (3) Carbon dioxide (CO₂) — asphyxiant, displaces oxygen; (4) Oxygen deficiency — normal air is 20.9% O₂; below 19.5% is hazardous. All require atmospheric testing before confined space entry.",
   },
   {
     id: 78,
     module: "Safety & Regulations",
     question: "What is the IDLH (Immediately Dangerous to Life or Health) concentration of hydrogen sulfide (H₂S)?",
-    options: ["1 ppm", "10 ppm", "100 ppm", "500 ppm"],
-    correctAnswer: 2,
+    options: ["1 ppm", "100 ppm", "10 ppm", "500 ppm"],
+    correctAnswer: 1,
     explanation: "The IDLH concentration of H₂S is 100 ppm. At this concentration, H₂S can cause immediate incapacitation and death. The TLV-TWA (8-hour time-weighted average) is 1 ppm. H₂S is particularly dangerous because it paralyzes the olfactory nerve at concentrations above 100–150 ppm, so workers can no longer smell it.",
   },
   {
@@ -1034,11 +1034,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What atmospheric testing must be performed before entering a confined space?",
     options: [
       "Test for hydrogen sulfide only",
-      "Test for oxygen level, flammable/explosive gases (LEL), and toxic gases (H₂S, CO) using a calibrated multi-gas detector",
+      "Test for methane only",
       "Test for carbon dioxide only",
-      "Test for methane only"
+      "Test for oxygen level, flammable/explosive gases (LEL), and toxic gases (H₂S, CO) using a calibrated multi-gas detector"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Before confined space entry, test for: (1) Oxygen level (acceptable: 19.5–23.5%); (2) Flammable/explosive gases — LEL should be <10% of the lower explosive limit; (3) Toxic gases — H₂S (<10 ppm for entry), CO (<25 ppm). Testing must be done with a calibrated multi-gas detector before entry and continuously during work.",
   },
   {
@@ -1046,12 +1046,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Safety & Regulations",
     question: "What is the purpose of a confined space entry permit?",
     options: [
-      "To authorize the purchase of confined space equipment",
       "To document the hazards, control measures, atmospheric testing results, and personnel involved in a confined space entry",
+      "To authorize the purchase of confined space equipment",
       "To notify the public of sewer maintenance work",
       "To record the time spent in a confined space"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "A confined space entry permit documents: the space to be entered, hazards identified, control measures in place, atmospheric testing results, equipment required, personnel involved (entrants, attendant, supervisor), emergency procedures, and authorization. The permit must be completed and signed before entry and posted at the entry point.",
   },
   {
@@ -1060,11 +1060,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the role of the confined space attendant?",
     options: [
       "To enter the confined space and perform the work",
-      "To remain outside the confined space, monitor the entrants, maintain communication, and initiate rescue if needed",
+      "To operate the rescue equipment from inside the space",
       "To test the atmosphere inside the confined space",
-      "To operate the rescue equipment from inside the space"
+      "To remain outside the confined space, monitor the entrants, maintain communication, and initiate rescue if needed"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "The attendant remains outside the confined space at all times, maintains continuous communication with entrants, monitors the atmosphere and conditions, tracks entrants in and out, and initiates rescue (calling for help, using retrieval equipment) if an emergency occurs. The attendant must NOT enter the space to attempt rescue.",
   },
   {
@@ -1072,12 +1072,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Safety & Regulations",
     question: "What personal protective equipment (PPE) is required for sewer maintenance work?",
     options: [
-      "Safety glasses and work gloves only",
       "Appropriate PPE including rubber boots, waterproof gloves, coveralls, hard hat, safety glasses, and respiratory protection as required by the hazard assessment",
+      "Safety glasses and work gloves only",
       "Only a hard hat and safety vest",
       "Full chemical protective suit at all times"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "PPE for sewer work includes: rubber boots (waterproof), waterproof gloves, coveralls or protective clothing, hard hat, safety glasses/face shield, high-visibility vest, and respiratory protection (supplied-air or SCBA for confined space entry with atmospheric hazards). PPE selection is based on a hazard assessment for the specific task.",
   },
   {
@@ -1085,12 +1085,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Safety & Regulations",
     question: "What is the purpose of lockout/tagout (LOTO) in lift station maintenance?",
     options: [
-      "To lock the lift station building when not in use",
       "To isolate and de-energize equipment (pumps, electrical panels) before maintenance to prevent accidental startup and injury",
+      "To lock the lift station building when not in use",
       "To prevent unauthorized access to the lift station",
       "To record the maintenance activities performed"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Lockout/tagout (LOTO) is a safety procedure that isolates and de-energizes equipment (electrical, hydraulic, pneumatic) before maintenance or repair. It prevents accidental startup that could injure workers. LOTO involves: shutting off energy sources, applying locks and tags, verifying isolation, and releasing stored energy before work begins.",
   },
   {
@@ -1099,11 +1099,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of traffic control during sewer maintenance on a road?",
     options: [
       "To speed up the maintenance work",
-      "To protect workers and the public from traffic hazards during roadway maintenance activities",
+      "To notify residents of the maintenance work",
       "To prevent sewage from flowing into the road",
-      "To notify residents of the maintenance work"
+      "To protect workers and the public from traffic hazards during roadway maintenance activities"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Traffic control (signs, cones, barriers, flaggers) protects workers and the public during roadway sewer maintenance. Proper traffic control is required by law and must comply with the applicable traffic control manual (e.g., MUTCD, provincial standards). Inadequate traffic control is a leading cause of worker fatalities.",
   },
   {
@@ -1111,12 +1111,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Safety & Regulations",
     question: "What is the purpose of a sanitary sewer overflow (SSO) report?",
     options: [
-      "To document the volume of sewage treated at the treatment plant",
       "To notify regulatory authorities of an unplanned release of sewage from the collection system, as required by operating permits",
+      "To document the volume of sewage treated at the treatment plant",
       "To record routine maintenance activities",
       "To report the results of CCTV inspections"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "SSO reports are required by operating permits and regulations to notify regulatory authorities (e.g., provincial environment ministry) of unplanned sewage releases. Reports typically include: date, time, location, estimated volume, cause, receiving environment, corrective actions taken, and preventive measures. Timely reporting is a regulatory requirement.",
   },
   {
@@ -1125,19 +1125,19 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer use bylaw?",
     options: [
       "To regulate the construction of new sewers",
-      "To regulate what materials can be discharged into the sanitary sewer to protect the collection system, treatment plant, and receiving environment",
       "To set the rates for sewer service",
+      "To regulate what materials can be discharged into the sanitary sewer to protect the collection system, treatment plant, and receiving environment",
       "To regulate the maintenance of private sewer laterals"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "A sewer use bylaw (also called a sewer use regulation or industrial pretreatment bylaw) regulates what can be discharged into the sanitary sewer. It prohibits or limits substances that could damage the collection system (e.g., solvents, fats/oils/grease), interfere with treatment, or harm the receiving environment. It also establishes industrial pretreatment requirements.",
   },
   {
     id: 87,
     module: "Safety & Regulations",
     question: "What is the lower explosive limit (LEL) of methane in air?",
-    options: ["1%", "5%", "10%", "15%"],
-    correctAnswer: 1,
+    options: ["1%", "10%", "5%", "15%"],
+    correctAnswer: 2,
     explanation: "The lower explosive limit (LEL) of methane is 5% by volume in air. The upper explosive limit (UEL) is 15%. Methane concentrations between 5% and 15% are explosive. Atmospheric testing in confined spaces checks for methane (as a percentage of LEL); entry is not permitted if readings exceed 10% of LEL (0.5% methane).",
   },
   {
@@ -1145,12 +1145,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Safety & Regulations",
     question: "What is the purpose of a sewer operator certification?",
     options: [
-      "To ensure that sewer operators have the knowledge and skills to operate collection systems safely and effectively",
       "To allow operators to design new sewer systems",
+      "To ensure that sewer operators have the knowledge and skills to operate collection systems safely and effectively",
       "To authorize operators to perform plumbing work",
       "To certify that operators have completed a specific number of work hours"
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     explanation: "Operator certification ensures that wastewater collection system operators have the knowledge, skills, and competencies to operate and maintain collection systems safely, protect public health, and comply with environmental regulations. Certification is required by provincial regulations in BC (EOCP), Alberta (AWWOA), Saskatchewan, and Manitoba.",
   },
   {
@@ -1159,11 +1159,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a spill response plan for a lift station?",
     options: [
       "To document routine maintenance procedures",
-      "To outline the steps to be taken in the event of a sewage spill, including notification, containment, cleanup, and reporting",
       "To plan for the replacement of lift station equipment",
+      "To outline the steps to be taken in the event of a sewage spill, including notification, containment, cleanup, and reporting",
       "To document the design specifications of the lift station"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "A spill response plan outlines the procedures for responding to a sewage spill: (1) notification (supervisor, regulatory authority, public health), (2) containment (preventing spread to waterways), (3) cleanup (pumping, disinfection), (4) reporting (SSO report), and (5) corrective action (preventing recurrence). Having a plan enables a fast, effective response.",
   },
   {
@@ -1172,11 +1172,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer system asset management plan?",
     options: [
       "To document the financial value of the sewer system for accounting purposes",
-      "To systematically manage sewer system assets over their lifecycle to optimize performance, manage risk, and minimize lifecycle costs",
       "To plan for the construction of new sewers only",
+      "To systematically manage sewer system assets over their lifecycle to optimize performance, manage risk, and minimize lifecycle costs",
       "To document the locations of all sewer pipes"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "An asset management plan systematically manages sewer system assets (pipes, manholes, lift stations) over their lifecycle. It includes: inventory and condition assessment, risk analysis, maintenance strategies, rehabilitation/replacement planning, and financial planning. Asset management optimizes investment decisions and ensures long-term system sustainability.",
   },
   {
@@ -1185,11 +1185,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer system emergency response plan?",
     options: [
       "To document routine maintenance schedules",
-      "To outline procedures for responding to emergencies (pipe failures, pump station failures, major blockages, SSOs) to minimize impacts on public health and the environment",
       "To plan for the construction of new sewers",
+      "To outline procedures for responding to emergencies (pipe failures, pump station failures, major blockages, SSOs) to minimize impacts on public health and the environment",
       "To document the locations of all sewer pipes"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "An emergency response plan (ERP) outlines procedures for responding to sewer system emergencies: pipe failures, lift station failures, major blockages, and SSOs. It includes: notification lists, response procedures, resource inventories (bypass pumps, equipment), and communication protocols. ERPs enable a fast, coordinated response to minimize public health and environmental impacts.",
   },
   {
@@ -1211,11 +1211,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer system hydraulic model?",
     options: [
       "To physically test the capacity of a sewer pipe",
-      "To mathematically simulate the behaviour of the collection system under various flow conditions to support planning, design, and operations",
+      "To design the treatment plant",
       "To measure the actual flow in the sewer",
-      "To design the treatment plant"
+      "To mathematically simulate the behaviour of the collection system under various flow conditions to support planning, design, and operations"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "A hydraulic model (computer simulation) mathematically represents the collection system and simulates flow under various conditions (dry weather, wet weather, future growth). It identifies capacity deficiencies, evaluates rehabilitation options, and supports planning and design decisions. Models must be calibrated with field flow data.",
   },
   {
@@ -1224,11 +1224,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer system capacity assessment?",
     options: [
       "To determine the financial value of the sewer system",
-      "To evaluate whether the existing collection system has sufficient capacity to handle current and future flows without surcharging or overflowing",
+      "To plan for the construction of new sewers",
       "To assess the structural condition of sewer pipes",
-      "To plan for the construction of new sewers"
+      "To evaluate whether the existing collection system has sufficient capacity to handle current and future flows without surcharging or overflowing"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "A capacity assessment evaluates whether the collection system can handle current and projected future flows (including I/I) without surcharging, overflowing, or causing basement flooding. It identifies capacity-deficient areas and informs rehabilitation and expansion planning. Capacity assessments are often required by regulators before approving new development.",
   },
   {
@@ -1237,11 +1237,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer system condition assessment?",
     options: [
       "To measure the flow in the sewer system",
-      "To evaluate the structural and operational condition of sewer assets to prioritize maintenance, rehabilitation, and replacement",
+      "To plan for the construction of new sewers",
       "To assess the financial condition of the utility",
-      "To plan for the construction of new sewers"
+      "To evaluate the structural and operational condition of sewer assets to prioritize maintenance, rehabilitation, and replacement"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "A condition assessment evaluates the structural and operational condition of sewer pipes, manholes, and lift stations using CCTV, sonar, laser profiling, and manhole inspections. Results are used to prioritize maintenance (cleaning, root control), rehabilitation (lining, grouting), and replacement. Condition assessment is the foundation of asset management.",
   },
 
@@ -1250,8 +1250,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 96,
     module: "Math & Calculations",
     question: "A sewer pipe has a diameter of 300 mm and a slope of 0.5%. Using Manning's equation (n=0.013), what is the approximate full-pipe flow velocity?",
-    options: ["0.6 m/s", "0.9 m/s", "1.1 m/s", "1.4 m/s"],
-    correctAnswer: 2,
+    options: ["1.1 m/s", "0.9 m/s", "0.6 m/s", "1.4 m/s"],
+    correctAnswer: 0,
     explanation: "Manning's equation: V = (1/n) × R^(2/3) × S^(1/2). For a full circular pipe, hydraulic radius R = D/4 = 0.3/4 = 0.075 m. S = 0.005 (0.5%). V = (1/0.013) × (0.075)^(2/3) × (0.005)^(1/2) = 76.9 × 0.179 × 0.0707 ≈ 0.97 m/s ≈ 1.0 m/s. Closest answer is 1.1 m/s.",
     isCalc: true,
     steps: [
@@ -1265,8 +1265,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 97,
     module: "Math & Calculations",
     question: "A lift station wet well is 4 m × 4 m in plan. The pumps start at an elevation of 2.0 m and stop at 0.5 m. What is the wet well storage volume between these levels?",
-    options: ["8 m³", "16 m³", "24 m³", "32 m³"],
-    correctAnswer: 2,
+    options: ["24 m³", "16 m³", "8 m³", "32 m³"],
+    correctAnswer: 0,
     explanation: "Storage volume = plan area × depth between start and stop levels = (4 m × 4 m) × (2.0 m − 0.5 m) = 16 m² × 1.5 m = 24 m³.",
     isCalc: true,
     steps: [
@@ -1279,8 +1279,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 98,
     module: "Math & Calculations",
     question: "A lift station pump delivers 50 L/s against a total dynamic head of 20 m. What is the water power (hydraulic power) in kilowatts?",
-    options: ["5.0 kW", "9.8 kW", "10.0 kW", "19.6 kW"],
-    correctAnswer: 1,
+    options: ["5.0 kW", "10.0 kW", "9.8 kW", "19.6 kW"],
+    correctAnswer: 2,
     explanation: "Water power (kW) = ρ × g × Q × H / 1000 = 1000 kg/m³ × 9.81 m/s² × 0.050 m³/s × 20 m / 1000 = 9.81 kW.",
     isCalc: true,
     steps: [
@@ -1321,8 +1321,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 101,
     module: "Math & Calculations",
     question: "A wet well receives an average inflow of 30 L/s. A single pump runs for 8 minutes and then stops. What volume of sewage (in m³) was pumped during the 8-minute run?",
-    options: ["2.4 m³", "14.4 m³", "240 m³", "1440 m³"],
-    correctAnswer: 1,
+    options: ["2.4 m³", "240 m³", "14.4 m³", "1440 m³"],
+    correctAnswer: 2,
     explanation: "Volume = flow rate × time = 30 L/s × (8 min × 60 s/min) = 30 × 480 = 14,400 L = 14.4 m³.",
     isCalc: true,
     steps: [
@@ -1335,8 +1335,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 102,
     module: "Math & Calculations",
     question: "A force main is 150 mm in diameter and 800 m long. The pump delivers 25 L/s. What is the flow velocity in the force main?",
-    options: ["0.94 m/s", "1.41 m/s", "1.89 m/s", "2.83 m/s"],
-    correctAnswer: 1,
+    options: ["1.41 m/s", "0.94 m/s", "1.89 m/s", "2.83 m/s"],
+    correctAnswer: 0,
     explanation: "Velocity = Q / A = (25/1000 m³/s) / (π/4 × 0.15² m²) = 0.025 / 0.01767 = 1.41 m/s.",
     isCalc: true,
     steps: [
@@ -1349,8 +1349,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 103,
     module: "Math & Calculations",
     question: "A lift station pumps 40 L/s. The inflow to the wet well is 25 L/s. At what rate is the wet well level dropping (net pumping rate)?",
-    options: ["15 L/s", "25 L/s", "40 L/s", "65 L/s"],
-    correctAnswer: 0,
+    options: ["65 L/s", "25 L/s", "40 L/s", "15 L/s"],
+    correctAnswer: 3,
     explanation: "Net pumping rate = pump rate − inflow rate = 40 L/s − 25 L/s = 15 L/s. The wet well level is dropping at 15 L/s.",
     isCalc: true,
     steps: [
@@ -1362,8 +1362,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 104,
     module: "Math & Calculations",
     question: "A sewer has a slope of 1 in 200. What is this expressed as a percentage?",
-    options: ["0.05%", "0.5%", "2.0%", "5.0%"],
-    correctAnswer: 1,
+    options: ["0.05%", "2.0%", "0.5%", "5.0%"],
+    correctAnswer: 2,
     explanation: "Slope = 1/200 = 0.005 = 0.5%. A slope of 1 in 200 means the pipe drops 1 m for every 200 m of horizontal distance.",
     isCalc: true,
     steps: [
@@ -1388,8 +1388,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 106,
     module: "Math & Calculations",
     question: "A wet well is 3 m in diameter (circular). The pump starts at 2.5 m depth and stops at 1.0 m depth. What is the storage volume between these levels?",
-    options: ["5.3 m³", "7.1 m³", "10.6 m³", "14.1 m³"],
-    correctAnswer: 2,
+    options: ["10.6 m³", "7.1 m³", "5.3 m³", "14.1 m³"],
+    correctAnswer: 0,
     explanation: "Plan area = π/4 × D² = π/4 × 3² = 7.069 m². Storage volume = 7.069 × (2.5 − 1.0) = 7.069 × 1.5 = 10.6 m³.",
     isCalc: true,
     steps: [
@@ -1402,8 +1402,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 107,
     module: "Math & Calculations",
     question: "A pump runs for 6 hours per day and delivers 35 L/s. What is the daily volume pumped in m³?",
-    options: ["126 m³", "756 m³", "1260 m³", "7560 m³"],
-    correctAnswer: 1,
+    options: ["126 m³", "7560 m³", "1260 m³", "756 m³"],
+    correctAnswer: 3,
     explanation: "Volume = flow rate × time = 35 L/s × (6 h × 3600 s/h) = 35 × 21,600 = 756,000 L = 756 m³.",
     isCalc: true,
     steps: [
@@ -1416,8 +1416,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 108,
     module: "Math & Calculations",
     question: "A sewer serves 500 residential units with an average sewage generation of 250 L/person/day and an average occupancy of 2.5 persons/unit. What is the average daily flow in L/s?",
-    options: ["0.9 L/s", "1.8 L/s", "3.6 L/s", "7.2 L/s"],
-    correctAnswer: 1,
+    options: ["1.8 L/s", "0.9 L/s", "3.6 L/s", "7.2 L/s"],
+    correctAnswer: 0,
     explanation: "Population = 500 units × 2.5 persons/unit = 1,250 persons. Daily flow = 1,250 × 250 L/person/day = 312,500 L/day. Convert to L/s: 312,500 / 86,400 s/day = 3.6 L/s. Wait — that's 3.6 L/s. Let me recheck: 312,500 / 86,400 = 3.62 L/s. Closest is 3.6 L/s.",
     isCalc: true,
     steps: [
@@ -1430,8 +1430,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 109,
     module: "Math & Calculations",
     question: "A sewer pipe has a self-cleansing velocity of 0.6 m/s. The pipe diameter is 200 mm. What is the minimum flow rate (in L/s) required to achieve self-cleansing?",
-    options: ["1.9 L/s", "3.8 L/s", "7.5 L/s", "18.8 L/s"],
-    correctAnswer: 0,
+    options: ["18.8 L/s", "3.8 L/s", "7.5 L/s", "1.9 L/s"],
+    correctAnswer: 3,
     explanation: "Flow area = π/4 × (0.2)² = 0.03142 m². Flow rate = V × A = 0.6 × 0.03142 = 0.01885 m³/s = 18.85 L/s. Wait — that's 18.85 L/s. But the question asks for minimum flow at self-cleansing velocity. Q = 0.6 m/s × 0.03142 m² = 0.01885 m³/s = 18.85 L/s. Closest is 18.8 L/s. Let me re-examine the options — 1.9 L/s seems too low. The correct answer should be 18.8 L/s.",
     isCalc: true,
     steps: [
@@ -1458,8 +1458,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 111,
     module: "Math & Calculations",
     question: "A sewer has an average dry weather flow (ADWF) of 200 L/s. During a storm, the flow increases to 800 L/s. What is the wet weather flow as a multiple of ADWF?",
-    options: ["2×", "3×", "4×", "6×"],
-    correctAnswer: 2,
+    options: ["2×", "3×", "6×", "4×"],
+    correctAnswer: 3,
     explanation: "Wet weather flow / ADWF = 800 / 200 = 4×. This means the wet weather flow is 4 times the average dry weather flow, indicating significant I/I.",
     isCalc: true,
     steps: [
@@ -1471,8 +1471,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 112,
     module: "Math & Calculations",
     question: "A sewer pipe is to be installed at a slope of 0.4%. If the pipe starts at an invert elevation of 100.00 m and is 250 m long, what is the downstream invert elevation?",
-    options: ["99.00 m", "99.60 m", "100.40 m", "101.00 m"],
-    correctAnswer: 1,
+    options: ["99.00 m", "101.00 m", "100.40 m", "99.60 m"],
+    correctAnswer: 3,
     explanation: "Drop = slope × length = 0.004 × 250 = 1.0 m. Downstream invert = 100.00 − 1.0 = 99.00 m. Wait — 0.4% = 0.004. Drop = 0.004 × 250 = 1.0 m. Downstream invert = 100.00 − 1.0 = 99.00 m.",
     isCalc: true,
     steps: [
@@ -1485,8 +1485,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 113,
     module: "Math & Calculations",
     question: "A pump delivers 45 L/s. What is this flow rate in m³/hour?",
-    options: ["45 m³/h", "162 m³/h", "270 m³/h", "2700 m³/h"],
-    correctAnswer: 1,
+    options: ["45 m³/h", "2700 m³/h", "270 m³/h", "162 m³/h"],
+    correctAnswer: 3,
     explanation: "Flow rate = 45 L/s × 3600 s/h = 162,000 L/h = 162 m³/h.",
     isCalc: true,
     steps: [
@@ -1499,8 +1499,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 114,
     module: "Math & Calculations",
     question: "A sewer serves an area with a population density of 50 persons/hectare and covers 20 hectares. Using a sewage generation rate of 300 L/person/day, what is the average daily flow in m³/day?",
-    options: ["3,000 m³/day", "30,000 m³/day", "300,000 m³/day", "3,000,000 m³/day"],
-    correctAnswer: 0,
+    options: ["300,000 m³/day", "30,000 m³/day", "3,000 m³/day", "3,000,000 m³/day"],
+    correctAnswer: 2,
     explanation: "Population = 50 persons/ha × 20 ha = 1,000 persons. Daily flow = 1,000 × 300 L/person/day = 300,000 L/day = 300 m³/day. Wait — 300,000 L / 1000 = 300 m³/day. Closest answer is 3,000 m³/day — let me recheck. 1,000 × 300 = 300,000 L/day = 300 m³/day. The answer should be 300 m³/day, but that's not an option. Let me re-examine: 50 × 20 = 1,000 persons × 300 L = 300,000 L = 300 m³. The closest option is 3,000 m³/day.",
     isCalc: true,
     steps: [
@@ -1513,8 +1513,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 115,
     module: "Math & Calculations",
     question: "A pump station has two identical pumps, each rated at 30 L/s. When both pumps run simultaneously in parallel, the combined flow is approximately:",
-    options: ["30 L/s (same as one pump)", "45 L/s", "60 L/s (double)", "Less than 60 L/s due to increased system head"],
-    correctAnswer: 3,
+    options: ["30 L/s (same as one pump)", "45 L/s", "Less than 60 L/s due to increased system head", "60 L/s (double)"],
+    correctAnswer: 2,
     explanation: "When two identical pumps run in parallel, the combined flow is less than double the single-pump flow. Running two pumps in parallel doubles the flow at any given head, but the increased flow increases friction losses in the force main, raising the system head and moving the operating point to a lower flow on the combined pump curve. The actual combined flow is typically 1.5–1.8× the single pump flow.",
     isCalc: true,
   },
@@ -1522,8 +1522,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 116,
     module: "Math & Calculations",
     question: "A sewer pipe has a diameter of 375 mm and flows at 60% full. What is the approximate flow depth?",
-    options: ["150 mm", "225 mm", "250 mm", "300 mm"],
-    correctAnswer: 1,
+    options: ["150 mm", "300 mm", "250 mm", "225 mm"],
+    correctAnswer: 3,
     explanation: "Flow depth = 60% × diameter = 0.60 × 375 mm = 225 mm.",
     isCalc: true,
     steps: [
@@ -1534,8 +1534,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 117,
     module: "Math & Calculations",
     question: "A force main is 100 mm in diameter and 600 m long. The pump delivers 10 L/s. Using the Hazen-Williams equation (C = 120), what is the approximate friction head loss?",
-    options: ["5 m", "15 m", "25 m", "50 m"],
-    correctAnswer: 2,
+    options: ["25 m", "15 m", "5 m", "50 m"],
+    correctAnswer: 0,
     explanation: "Using Hazen-Williams: hf = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87). Q = 0.010 m³/s, D = 0.1 m, L = 600 m, C = 120. hf = 10.67 × 600 × (0.010)^1.852 / (120^1.852 × (0.1)^4.87) ≈ 25 m (approximate). The exact calculation gives approximately 25 m.",
     isCalc: true,
     steps: [
@@ -1548,8 +1548,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 118,
     module: "Math & Calculations",
     question: "A lift station pumps an average of 500 m³/day. The treatment plant charges $0.80/m³ for treatment. What is the monthly treatment cost (30 days)?",
-    options: ["$400", "$1,200", "$12,000", "$120,000"],
-    correctAnswer: 2,
+    options: ["$12,000", "$1,200", "$400", "$120,000"],
+    correctAnswer: 0,
     explanation: "Monthly volume = 500 m³/day × 30 days = 15,000 m³. Monthly cost = 15,000 × $0.80 = $12,000.",
     isCalc: true,
     steps: [
@@ -1561,8 +1561,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 119,
     module: "Math & Calculations",
     question: "A sewer has an invert elevation of 98.50 m at the upstream manhole and 97.90 m at the downstream manhole. The distance between manholes is 150 m. What is the pipe slope?",
-    options: ["0.2%", "0.4%", "0.6%", "1.0%"],
-    correctAnswer: 1,
+    options: ["0.2%", "0.6%", "0.4%", "1.0%"],
+    correctAnswer: 2,
     explanation: "Slope = (upstream invert − downstream invert) / length × 100% = (98.50 − 97.90) / 150 × 100% = 0.60 / 150 × 100% = 0.4%.",
     isCalc: true,
     steps: [
@@ -1574,8 +1574,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 120,
     module: "Math & Calculations",
     question: "A pump's motor draws 15 kW of electrical power and the pump has an overall efficiency of 70%. What is the useful water power output?",
-    options: ["7.5 kW", "10.5 kW", "15.0 kW", "21.4 kW"],
-    correctAnswer: 1,
+    options: ["7.5 kW", "15.0 kW", "10.5 kW", "21.4 kW"],
+    correctAnswer: 2,
     explanation: "Water power = Motor power × Overall efficiency = 15 kW × 0.70 = 10.5 kW.",
     isCalc: true,
     steps: [
@@ -1588,8 +1588,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 121,
     module: "Math & Calculations",
     question: "A sewer pipe is 450 mm in diameter. What is the pipe's cross-sectional area in m²?",
-    options: ["0.079 m²", "0.159 m²", "0.318 m²", "0.636 m²"],
-    correctAnswer: 1,
+    options: ["0.159 m²", "0.079 m²", "0.318 m²", "0.636 m²"],
+    correctAnswer: 0,
     explanation: "Area = π/4 × D² = π/4 × (0.45)² = 0.7854 × 0.2025 = 0.159 m².",
     isCalc: true,
     steps: [
@@ -1614,8 +1614,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 123,
     module: "Math & Calculations",
     question: "A sewer serves 200 residential connections. The average sewage flow is 0.5 L/s per connection. Using a peaking factor of 3.5, what is the design peak flow?",
-    options: ["70 L/s", "100 L/s", "175 L/s", "350 L/s"],
-    correctAnswer: 2,
+    options: ["70 L/s", "175 L/s", "100 L/s", "350 L/s"],
+    correctAnswer: 1,
     explanation: "Average flow = 200 × 0.5 = 100 L/s. Peak flow = Average flow × Peaking factor = 100 × 3.5 = 350 L/s. Wait — 100 × 3.5 = 350 L/s. That's option D. Let me recheck: 200 × 0.5 = 100 L/s × 3.5 = 350 L/s.",
     isCalc: true,
     steps: [
@@ -1627,8 +1627,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 124,
     module: "Math & Calculations",
     question: "A sewer pipe drops 1.5 m over its length. The pipe slope is 0.3%. What is the pipe length?",
-    options: ["45 m", "200 m", "500 m", "4,500 m"],
-    correctAnswer: 2,
+    options: ["45 m", "200 m", "4,500 m", "500 m"],
+    correctAnswer: 3,
     explanation: "Length = drop / slope = 1.5 m / 0.003 = 500 m.",
     isCalc: true,
     steps: [
@@ -1656,12 +1656,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Environmental & Public Health",
     question: "What is the primary public health risk of a sanitary sewer overflow (SSO)?",
     options: [
-      "Increased water treatment costs",
       "Contamination of drinking water sources, recreational waters, and the environment with pathogens",
+      "Increased water treatment costs",
       "Damage to sewer infrastructure",
       "Increased energy costs at the treatment plant"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "SSOs release raw or partially treated sewage containing pathogens (bacteria, viruses, parasites) that can contaminate drinking water sources, recreational waters, shellfish beds, and the environment. This poses risks of waterborne disease outbreaks (gastroenteritis, hepatitis A, cholera). SSOs also cause environmental damage and public nuisance.",
   },
   {
@@ -1669,12 +1669,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Environmental & Public Health",
     question: "What is hydrogen sulfide (H₂S) and why is it a concern in sewers?",
     options: [
-      "A harmless gas produced by bacteria in sewers",
       "A toxic, flammable gas produced by anaerobic bacteria that causes odour, corrosion, and is immediately dangerous to life at high concentrations",
+      "A harmless gas produced by bacteria in sewers",
       "A gas that improves the efficiency of the treatment plant",
       "A gas found only in industrial sewers"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "H₂S is produced by anaerobic (sulfate-reducing) bacteria in sewers, particularly in warm, slow-moving sewage. It causes: (1) rotten egg odour (detectable at 0.5 ppb); (2) corrosion of concrete and metal (biogenic sulfuric acid corrosion); (3) toxicity — IDLH is 100 ppm, can cause rapid incapacitation and death; (4) flammability (LEL 4.3%).",
   },
   {
@@ -1683,11 +1683,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is biogenic sulfuric acid corrosion (crown corrosion) in sewers?",
     options: [
       "Corrosion caused by the direct contact of sewage with the pipe wall",
-      "Corrosion of the pipe crown caused by H₂S gas being converted to sulfuric acid by bacteria on the pipe wall above the waterline",
+      "Corrosion caused by industrial chemicals discharged to the sewer",
       "Corrosion caused by stormwater entering the sewer",
-      "Corrosion caused by industrial chemicals discharged to the sewer"
+      "Corrosion of the pipe crown caused by H₂S gas being converted to sulfuric acid by bacteria on the pipe wall above the waterline"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Crown corrosion occurs when H₂S gas in the sewer atmosphere is absorbed by condensation on the pipe crown (above the waterline) and converted to sulfuric acid (H₂SO₄) by Thiobacillus bacteria. The acid attacks concrete and mortar, causing severe structural deterioration. PVC and HDPE pipes are resistant to this type of corrosion.",
   },
   {
@@ -1696,11 +1696,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a grease interceptor (grease trap) at a restaurant?",
     options: [
       "To treat the restaurant's wastewater to drinking water standards",
-      "To capture fats, oils, and grease (FOG) before they enter the sewer, preventing blockages and treatment plant problems",
       "To filter solids from the restaurant's wastewater",
+      "To capture fats, oils, and grease (FOG) before they enter the sewer, preventing blockages and treatment plant problems",
       "To measure the volume of wastewater from the restaurant"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Grease interceptors capture FOG (fats, oils, and grease) from food service establishments before they enter the sanitary sewer. FOG can solidify in sewers, causing blockages (fatbergs), reducing capacity, and causing SSOs. At the treatment plant, FOG can interfere with biological treatment. Interceptors must be regularly pumped out.",
   },
   {
@@ -1708,12 +1708,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Environmental & Public Health",
     question: "What is a fatberg?",
     options: [
-      "A large accumulation of fat deposits in a person's arteries",
       "A large, rock-like mass of congealed fat, wet wipes, and other non-flushable materials that forms in sewers",
+      "A large accumulation of fat deposits in a person's arteries",
       "A type of pump used in lift stations",
       "A sediment deposit in a wet well"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "A fatberg is a large, rock-like mass that forms in sewers when fats, oils, and grease (FOG) congeal around non-flushable items (wet wipes, cotton swabs, sanitary products). Fatbergs can completely block sewers, causing SSOs and requiring expensive removal. They are a growing problem in many cities.",
   },
   {
@@ -1721,12 +1721,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Environmental & Public Health",
     question: "What is the environmental impact of a sewage spill into a waterway?",
     options: [
-      "No significant impact if the spill is small",
       "Oxygen depletion, pathogen contamination, nutrient loading (eutrophication), and harm to aquatic life and recreational users",
+      "No significant impact if the spill is small",
       "Improvement of water quality due to nutrient addition",
       "Impact only on the immediate area of the spill"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "A sewage spill into a waterway causes: (1) oxygen depletion — BOD from sewage consumes dissolved oxygen, harming fish and aquatic life; (2) pathogen contamination — risk to recreational users and downstream drinking water intakes; (3) nutrient loading — nitrogen and phosphorus cause algal blooms (eutrophication); (4) aesthetic impacts — odour, floating solids.",
   },
   {
@@ -1735,11 +1735,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of wastewater sampling in the collection system?",
     options: [
       "To test the drinking water quality",
-      "To characterize the wastewater quality, monitor for illegal discharges, and provide data for treatment plant operations",
       "To measure the flow rate in the sewer",
+      "To characterize the wastewater quality, monitor for illegal discharges, and provide data for treatment plant operations",
       "To detect hydrogen sulfide in the sewer"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Wastewater sampling characterizes the quality of sewage (BOD, TSS, nutrients, metals, pH) for: treatment plant process control, regulatory compliance reporting, industrial pretreatment monitoring (detecting illegal discharges), and I/I analysis (comparing wet vs. dry weather quality). Samples can be grab or composite.",
   },
   {
@@ -1747,12 +1747,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Environmental & Public Health",
     question: "What is biochemical oxygen demand (BOD) and why is it important?",
     options: [
-      "The amount of oxygen in the sewage",
       "A measure of the amount of dissolved oxygen required by microorganisms to decompose organic matter in the wastewater",
+      "The amount of oxygen in the sewage",
       "The amount of oxygen produced by the treatment plant",
       "The amount of oxygen required to disinfect the sewage"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "BOD (Biochemical Oxygen Demand) measures the amount of dissolved oxygen consumed by microorganisms to decompose organic matter in wastewater over 5 days at 20°C (BOD₅). High BOD indicates high organic content. When sewage is discharged to a waterway, the BOD exerts an oxygen demand that can deplete dissolved oxygen, harming aquatic life.",
   },
   {
@@ -1761,11 +1761,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer system's pretreatment program?",
     options: [
       "To treat sewage before it enters the collection system",
-      "To require industrial and commercial users to treat their wastewater before discharging to the sewer to protect the collection system, treatment plant, and receiving environment",
       "To pre-treat drinking water before it enters the distribution system",
+      "To require industrial and commercial users to treat their wastewater before discharging to the sewer to protect the collection system, treatment plant, and receiving environment",
       "To treat stormwater before it enters the combined sewer"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "An industrial pretreatment program requires industrial and commercial users (significant industrial users — SIUs) to treat their wastewater to meet discharge limits before discharging to the sanitary sewer. This protects: collection system infrastructure (from corrosive or toxic discharges), treatment plant operations (from inhibitory substances), and the receiving environment (from pollutants that pass through treatment).",
   },
   {
@@ -1774,11 +1774,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the public health significance of E. coli in wastewater?",
     options: [
       "E. coli is harmless and has no public health significance",
-      "E. coli is an indicator organism for fecal contamination; its presence indicates potential contamination with pathogens from human or animal waste",
       "E. coli is a beneficial organism that improves wastewater treatment",
+      "E. coli is an indicator organism for fecal contamination; its presence indicates potential contamination with pathogens from human or animal waste",
       "E. coli is only found in industrial wastewater"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "E. coli (Escherichia coli) is a fecal indicator organism — its presence in water indicates fecal contamination and the potential presence of pathogens (Salmonella, Cryptosporidium, norovirus). E. coli itself can cause illness (some strains like E. coli O157:H7 are pathogenic). It is used to assess the microbiological quality of wastewater and receiving waters.",
   },
   {
@@ -1800,11 +1800,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer system's I/I reduction program?",
     options: [
       "To increase the flow to the treatment plant",
-      "To reduce stormwater and groundwater entering the sanitary sewer, reducing treatment costs, preventing overflows, and extending system capacity",
+      "To reduce the number of lift stations in the system",
       "To reduce the BOD of the sewage",
-      "To reduce the number of lift stations in the system"
+      "To reduce stormwater and groundwater entering the sanitary sewer, reducing treatment costs, preventing overflows, and extending system capacity"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "I/I reduction programs identify and eliminate sources of stormwater inflow and groundwater infiltration entering the sanitary sewer. Benefits include: reduced treatment costs (less flow to treat), prevention of SSOs (less hydraulic overloading), extended system capacity (deferring expensive upgrades), and reduced energy costs at lift stations.",
   },
   {
@@ -1813,11 +1813,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer system's public education program?",
     options: [
       "To teach the public how to repair their own sewer laterals",
-      "To educate the public about what can and cannot be flushed or poured down the drain to prevent blockages and system problems",
+      "To recruit new sewer operators",
       "To inform the public about sewer rates",
-      "To recruit new sewer operators"
+      "To educate the public about what can and cannot be flushed or poured down the drain to prevent blockages and system problems"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Public education programs teach residents and businesses what can and cannot be flushed or poured down the drain. Key messages include: don't flush wipes (even 'flushable' ones), don't pour FOG down the drain, don't connect sump pumps or downspouts to the sanitary sewer. Education reduces blockages, fatbergs, and I/I.",
   },
   {
@@ -1826,11 +1826,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer system's cross-connection control program?",
     options: [
       "To prevent sewage from flowing backwards into the water distribution system",
-      "To prevent illegal connections between the sanitary sewer and the storm sewer or other non-sanitary sources",
       "To control the connections between different sewer mains",
+      "To prevent illegal connections between the sanitary sewer and the storm sewer or other non-sanitary sources",
       "To prevent stormwater from entering the sanitary sewer at manholes"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "A cross-connection control program identifies and eliminates illegal connections between the sanitary sewer and storm sewers, foundation drains, roof drains, and other non-sanitary sources. These illegal connections are a major source of inflow. Programs typically involve inspection of properties and enforcement of the sewer use bylaw.",
   },
   {
@@ -1838,12 +1838,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Environmental & Public Health",
     question: "What is the environmental significance of nutrients (nitrogen and phosphorus) in sewage?",
     options: [
-      "Nutrients are beneficial to aquatic ecosystems and have no negative impacts",
       "Excess nutrients cause eutrophication — algal blooms that deplete oxygen, harm aquatic life, and degrade water quality",
+      "Nutrients are beneficial to aquatic ecosystems and have no negative impacts",
       "Nutrients only affect drinking water quality",
       "Nutrients are only a concern in industrial wastewater"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Excess nitrogen and phosphorus in sewage discharged to receiving waters cause eutrophication: algal blooms that block sunlight, and when they die and decompose, deplete dissolved oxygen (hypoxia/anoxia), killing fish and other aquatic life. Eutrophication also causes taste and odour problems in drinking water sources and reduces recreational value.",
   },
   {
@@ -1865,11 +1865,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer system's asset management program?",
     options: [
       "To document the financial value of the sewer system",
-      "To systematically manage sewer assets over their lifecycle to optimize performance, manage risk, and minimize lifecycle costs",
+      "To document the locations of all sewer pipes",
       "To plan for the construction of new sewers only",
-      "To document the locations of all sewer pipes"
+      "To systematically manage sewer assets over their lifecycle to optimize performance, manage risk, and minimize lifecycle costs"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Asset management systematically manages sewer assets (pipes, manholes, lift stations) over their lifecycle. It includes: inventory, condition assessment, risk analysis, maintenance strategies, rehabilitation/replacement planning, and financial planning. Asset management ensures long-term system sustainability and optimizes investment decisions.",
   },
   {
@@ -1878,11 +1878,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer system's climate change adaptation plan?",
     options: [
       "To reduce greenhouse gas emissions from the sewer system",
-      "To assess and address the impacts of climate change (increased rainfall intensity, flooding, sea level rise) on the collection system",
       "To plan for the construction of new sewers",
+      "To assess and address the impacts of climate change (increased rainfall intensity, flooding, sea level rise) on the collection system",
       "To reduce energy consumption at lift stations"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "Climate change adaptation plans assess how climate change will affect the collection system: increased rainfall intensity (more I/I, more SSOs), flooding (inundation of manholes and lift stations), sea level rise (coastal systems), and temperature changes (affecting H₂S generation). Plans identify adaptation measures to maintain system performance.",
   },
   {
@@ -1904,11 +1904,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the purpose of a sewer system's water quality monitoring program at the receiving environment?",
     options: [
       "To monitor the quality of the sewage in the collection system",
-      "To assess the impact of the collection system on the receiving environment (streams, rivers, lakes, coastal waters) and verify compliance with environmental regulations",
+      "To measure the flow in the receiving environment",
       "To monitor the quality of drinking water",
-      "To measure the flow in the receiving environment"
+      "To assess the impact of the collection system on the receiving environment (streams, rivers, lakes, coastal waters) and verify compliance with environmental regulations"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "Receiving environment monitoring assesses the impact of the collection system (SSOs, combined sewer overflows, treatment plant effluent) on water quality in streams, rivers, lakes, and coastal waters. Monitoring parameters typically include: E. coli/fecal coliforms, dissolved oxygen, BOD, nutrients, and turbidity. Results verify compliance with environmental regulations.",
   },
   {
@@ -1916,12 +1916,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Environmental & Public Health",
     question: "What is the purpose of a sewer system's public notification program for SSOs?",
     options: [
-      "To notify the public of routine maintenance activities",
       "To inform affected residents, recreational users, and downstream water users of sewage spills so they can take protective actions",
+      "To notify the public of routine maintenance activities",
       "To notify the public of sewer rate increases",
       "To recruit volunteers to help clean up sewage spills"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "Public notification programs inform affected parties (residents, recreational users, downstream water utilities) of SSOs so they can take protective actions (avoid contact with contaminated water, boil water if necessary). Notification is required by regulations and is essential for protecting public health.",
   },
   {
@@ -1943,11 +1943,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the significance of a sewer system's service area boundary?",
     options: [
       "It defines the area where the municipality can charge sewer rates",
-      "It defines the geographic area served by the collection system, which determines the population and flows the system must handle",
+      "It defines the area where the municipality can enforce the sewer use bylaw",
       "It defines the area where the municipality can build new sewers",
-      "It defines the area where the municipality can enforce the sewer use bylaw"
+      "It defines the geographic area served by the collection system, which determines the population and flows the system must handle"
     ],
-    correctAnswer: 1,
+    correctAnswer: 3,
     explanation: "The service area boundary defines the geographic area served by the collection system. It determines: the population and flows the system must handle (current and future), the area where the municipality can require connection to the sewer, and the area for which the municipality is responsible for sewer service.",
   },
   {
@@ -1955,12 +1955,12 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     module: "Environmental & Public Health",
     question: "What is the purpose of a sewer system's risk assessment?",
     options: [
-      "To assess the financial risk of sewer construction",
       "To identify and prioritize risks to the collection system and develop mitigation strategies",
+      "To assess the financial risk of sewer construction",
       "To assess the risk of worker injury during maintenance",
       "To assess the risk of sewer rate increases"
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     explanation: "A risk assessment identifies hazards (pipe failures, SSOs, pump station failures, I/I), assesses their likelihood and consequence, and prioritizes risks for mitigation. High-risk assets receive priority for maintenance, rehabilitation, or upgrade.",
   },
   {
@@ -1969,11 +1969,11 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     question: "What is the role of a Class I Wastewater Collection Operator?",
     options: [
       "To design new wastewater collection systems",
-      "To operate and maintain basic collection system components under supervision, ensuring safe and compliant operation",
       "To manage the entire utility including financial planning",
+      "To operate and maintain basic collection system components under supervision, ensuring safe and compliant operation",
       "To perform advanced CCTV inspections and rehabilitation design"
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     explanation: "A Class I Wastewater Collection Operator operates and maintains basic collection system components — gravity sewers, manholes, simple lift stations — typically under the supervision of a higher-class operator. Responsibilities include: routine inspections, basic maintenance (cleaning, root control), responding to blockages, monitoring lift station operation, and maintaining records.",
   },
   {
@@ -1988,8 +1988,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 153,
     module: "Collection System Components",
     question: "The minimum slope for a 200 mm (8-inch) gravity sewer is typically:",
-    options: ["0.05%", "0.28%", "1.0%", "2.0%"],
-    correctAnswer: 1,
+    options: ["0.05%", "1.0%", "0.28%", "2.0%"],
+    correctAnswer: 2,
     explanation: "A minimum slope of approximately 0.28% (1 in 357) maintains a self-cleaning velocity of 0.6 m/s (2 fps) in an 8-inch sewer."
   },
   {
@@ -2004,8 +2004,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 155,
     module: "Collection System Components",
     question: "A manhole is installed in a sewer system primarily to:",
-    options: ["Reduce pipe pressure", "Provide access for inspection, maintenance, and cleaning", "Store overflow during storms", "Measure flow velocity"],
-    correctAnswer: 1,
+    options: ["Reduce pipe pressure", "Measure flow velocity", "Store overflow during storms", "Provide access for inspection, maintenance, and cleaning"],
+    correctAnswer: 3,
     explanation: "Manholes provide access points for inspection, cleaning, CCTV, and maintenance of the sewer system."
   },
   {
@@ -2020,16 +2020,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 157,
     module: "Collection System Components",
     question: "A drop manhole is used when:",
-    options: ["The sewer is very deep", "An incoming sewer enters significantly higher than the outgoing sewer", "The manhole is in a traffic area", "The sewer changes direction"],
-    correctAnswer: 1,
+    options: ["An incoming sewer enters significantly higher than the outgoing sewer", "The sewer is very deep", "The manhole is in a traffic area", "The sewer changes direction"],
+    correctAnswer: 0,
     explanation: "Drop manholes prevent turbulence and H₂S generation by safely lowering flow from a high incoming sewer to a lower outgoing sewer."
   },
   {
     id: 158,
     module: "Collection System Components",
     question: "PVC sewer pipe is joined using:",
-    options: ["Solvent cement only", "Rubber gasket bell-and-spigot joints", "Mechanical couplings only", "Heat fusion"],
-    correctAnswer: 1,
+    options: ["Solvent cement only", "Mechanical couplings only", "Rubber gasket bell-and-spigot joints", "Heat fusion"],
+    correctAnswer: 2,
     explanation: "PVC sewer pipe uses rubber gasket bell-and-spigot joints (SDR 35) that allow slight deflection and provide a watertight seal."
   },
   {
@@ -2044,40 +2044,40 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 160,
     module: "Collection System Components",
     question: "A force main differs from a gravity sewer in that:",
-    options: ["It carries only stormwater", "It conveys wastewater under pressure from a pump station", "It is always larger in diameter", "It does not require maintenance"],
-    correctAnswer: 1,
+    options: ["It carries only stormwater", "It does not require maintenance", "It is always larger in diameter", "It conveys wastewater under pressure from a pump station"],
+    correctAnswer: 3,
     explanation: "Force mains (pressure mains) convey wastewater under pressure from a lift station to a higher elevation or distant point."
   },
   {
     id: 161,
     module: "Collection System Components",
     question: "An air release valve on a force main is installed to:",
-    options: ["Release pressure during emergencies", "Release trapped air that accumulates at high points", "Prevent backflow", "Measure flow velocity"],
-    correctAnswer: 1,
+    options: ["Release trapped air that accumulates at high points", "Release pressure during emergencies", "Prevent backflow", "Measure flow velocity"],
+    correctAnswer: 0,
     explanation: "Air pockets at high points in force mains reduce hydraulic capacity; air release valves automatically vent trapped air."
   },
   {
     id: 162,
     module: "Collection System Components",
     question: "A cleanout in a sewer system provides:",
-    options: ["Access for cleaning without entering a manhole", "Emergency overflow capacity", "Flow measurement capability", "Pressure relief"],
-    correctAnswer: 0,
+    options: ["Flow measurement capability", "Emergency overflow capacity", "Access for cleaning without entering a manhole", "Pressure relief"],
+    correctAnswer: 2,
     explanation: "Cleanouts provide access points for rodding and jetting equipment in smaller sewers without requiring a full manhole."
   },
   {
     id: 163,
     module: "Collection System Components",
     question: "The invert of a sewer pipe refers to:",
-    options: ["The top of the pipe", "The lowest point of the pipe interior", "The pipe centerline", "The outside bottom of the pipe"],
-    correctAnswer: 1,
+    options: ["The lowest point of the pipe interior", "The top of the pipe", "The pipe centerline", "The outside bottom of the pipe"],
+    correctAnswer: 0,
     explanation: "The invert is the lowest interior point of the pipe; invert elevations are used to calculate pipe slope and flow depth."
   },
   {
     id: 164,
     module: "Collection System Components",
     question: "A sewer lateral (service connection) connects:",
-    options: ["Two manholes", "A building's plumbing to the public sewer main", "Two sewer mains", "A lift station to the main sewer"],
-    correctAnswer: 1,
+    options: ["Two manholes", "Two sewer mains", "A building's plumbing to the public sewer main", "A lift station to the main sewer"],
+    correctAnswer: 2,
     explanation: "Sewer laterals (building connections) convey wastewater from individual properties to the public collection system."
   },
   {
@@ -2092,24 +2092,24 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 166,
     module: "Equipment Operation & Maintenance",
     question: "A submersible pump in a lift station is submerged in the wet well because:",
-    options: ["It is cheaper to install", "It eliminates priming requirements and reduces noise", "It is more efficient than dry-pit pumps", "It requires no maintenance"],
-    correctAnswer: 1,
+    options: ["It is cheaper to install", "It requires no maintenance", "It is more efficient than dry-pit pumps", "It eliminates priming requirements and reduces noise"],
+    correctAnswer: 3,
     explanation: "Submersible pumps are self-priming (always flooded), compact, and reduce noise since the motor is submerged."
   },
   {
     id: 167,
     module: "Equipment Operation & Maintenance",
     question: "The wet well in a lift station serves to:",
-    options: ["Treat the wastewater", "Provide storage to equalize flow and allow pump cycling", "Remove solids from the wastewater", "Measure flow rate"],
-    correctAnswer: 1,
+    options: ["Treat the wastewater", "Measure flow rate", "Remove solids from the wastewater", "Provide storage to equalize flow and allow pump cycling"],
+    correctAnswer: 3,
     explanation: "The wet well provides storage to equalize variable inflow, allowing pumps to cycle on and off rather than run continuously."
   },
   {
     id: 168,
     module: "Equipment Operation & Maintenance",
     question: "Float switches in a lift station wet well are used to:",
-    options: ["Measure flow rate", "Control pump start and stop levels", "Detect gas concentrations", "Measure pH"],
-    correctAnswer: 1,
+    options: ["Measure flow rate", "Measure pH", "Detect gas concentrations", "Control pump start and stop levels"],
+    correctAnswer: 3,
     explanation: "Float switches trigger pump starts (at high level) and stops (at low level) based on wet well water level."
   },
   {
@@ -2124,8 +2124,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 170,
     module: "Equipment Operation & Maintenance",
     question: "Pump runtime hours should be logged to:",
-    options: ["Calculate electricity costs only", "Track maintenance intervals and detect performance changes", "Satisfy regulatory requirements only", "Measure flow rate"],
-    correctAnswer: 1,
+    options: ["Calculate electricity costs only", "Satisfy regulatory requirements only", "Track maintenance intervals and detect performance changes", "Measure flow rate"],
+    correctAnswer: 2,
     explanation: "Runtime logging tracks maintenance intervals (oil changes, seal replacement) and detects changes indicating pump problems."
   },
   {
@@ -2140,16 +2140,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 172,
     module: "Equipment Operation & Maintenance",
     question: "Grease accumulation in a wet well is a problem because:",
-    options: ["It improves pump efficiency", "It can coat pump impellers, reduce capacity, and cause pump failure", "It reduces odour", "It has no effect on operations"],
-    correctAnswer: 1,
+    options: ["It improves pump efficiency", "It reduces odour", "It can coat pump impellers, reduce capacity, and cause pump failure", "It has no effect on operations"],
+    correctAnswer: 2,
     explanation: "Grease accumulates on wet well walls and pump components, reducing capacity and causing blockages and pump failures."
   },
   {
     id: 173,
     module: "Equipment Operation & Maintenance",
     question: "Ragging (rag accumulation) on pump impellers is caused by:",
-    options: ["High flow velocities", "Wipes, rags, and fibrous materials entering the sewer system", "Grease buildup only", "Corrosion of the impeller"],
-    correctAnswer: 1,
+    options: ["High flow velocities", "Corrosion of the impeller", "Grease buildup only", "Wipes, rags, and fibrous materials entering the sewer system"],
+    correctAnswer: 3,
     explanation: "Non-dispersible wipes and fibrous materials accumulate on pump impellers, reducing flow and causing pump failure."
   },
   {
@@ -2164,32 +2164,32 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 175,
     module: "Equipment Operation & Maintenance",
     question: "A gate valve on a pump suction is used to:",
-    options: ["Regulate pump flow", "Isolate the pump for maintenance without dewatering the wet well", "Prevent backflow", "Measure suction pressure"],
-    correctAnswer: 1,
+    options: ["Regulate pump flow", "Prevent backflow", "Isolate the pump for maintenance without dewatering the wet well", "Measure suction pressure"],
+    correctAnswer: 2,
     explanation: "Suction isolation valves allow pump removal for maintenance without dewatering the entire wet well."
   },
   {
     id: 176,
     module: "Equipment Operation & Maintenance",
     question: "Pump seal failure is indicated by:",
-    options: ["Increased pump efficiency", "Water leaking from the pump shaft area", "Reduced pump noise", "Increased flow rate"],
-    correctAnswer: 1,
+    options: ["Increased pump efficiency", "Increased flow rate", "Reduced pump noise", "Water leaking from the pump shaft area"],
+    correctAnswer: 3,
     explanation: "Mechanical seal failure allows wastewater to leak from the pump shaft area, requiring immediate attention."
   },
   {
     id: 177,
     module: "Equipment Operation & Maintenance",
     question: "The purpose of lubricating pump bearings is to:",
-    options: ["Increase pump speed", "Reduce friction, prevent wear, and extend bearing life", "Improve pump efficiency", "Reduce noise only"],
-    correctAnswer: 1,
+    options: ["Increase pump speed", "Reduce noise only", "Improve pump efficiency", "Reduce friction, prevent wear, and extend bearing life"],
+    correctAnswer: 3,
     explanation: "Proper lubrication reduces friction and heat in bearings, preventing premature wear and extending service life."
   },
   {
     id: 178,
     module: "Equipment Operation & Maintenance",
     question: "A pump motor that is running hot may indicate:",
-    options: ["Normal operation", "Overloading, poor ventilation, or bearing failure", "High efficiency", "Low flow conditions"],
-    correctAnswer: 1,
+    options: ["Normal operation", "Low flow conditions", "High efficiency", "Overloading, poor ventilation, or bearing failure"],
+    correctAnswer: 3,
     explanation: "Motor overheating indicates overloading (pump running too far from BEP), poor ventilation, or bearing/winding problems."
   },
   {
@@ -2204,8 +2204,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 180,
     module: "Equipment Operation & Maintenance",
     question: "A lift station's emergency overflow structure is designed to:",
-    options: ["Increase pump capacity", "Provide a controlled release point if the wet well overflows", "Bypass the pump station", "Measure peak flows"],
-    correctAnswer: 1,
+    options: ["Provide a controlled release point if the wet well overflows", "Increase pump capacity", "Bypass the pump station", "Measure peak flows"],
+    correctAnswer: 0,
     explanation: "Emergency overflows provide a controlled discharge point to prevent uncontrolled sewage overflow during pump failures or extreme flows."
   },
   {
@@ -2220,64 +2220,64 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 182,
     module: "Math & Calculations",
     question: "A sewer main has a diameter of 300 mm and is flowing half-full. The cross-sectional flow area is approximately:",
-    options: ["0.035 m²", "0.071 m²", "0.141 m²", "0.283 m²"],
-    correctAnswer: 0,
+    options: ["0.071 m²", "0.035 m²", "0.141 m²", "0.283 m²"],
+    correctAnswer: 1,
     explanation: "Full pipe area = π(0.15)² = 0.0707 m²; half-full area = 0.0707/2 ≈ 0.035 m²."
   },
   {
     id: 183,
     module: "Math & Calculations",
     question: "A sewer pipe has an invert elevation of 45.23 m at the upstream manhole and 44.87 m at the downstream manhole. The pipe length is 90 m. The pipe slope is:",
-    options: ["0.004 (0.4%)", "0.40%", "0.004 m/m", "Both A and C are correct"],
-    correctAnswer: 3,
+    options: ["0.004 (0.4%)", "0.40%", "Both A and C are correct", "0.004 m/m"],
+    correctAnswer: 2,
     explanation: "Slope = (45.23 - 44.87) / 90 = 0.36/90 = 0.004 m/m = 0.4%. Both A (0.4%) and C (0.004 m/m) express the same value."
   },
   {
     id: 184,
     module: "Math & Calculations",
     question: "A lift station pumps 150 L/s. The force main is 200 mm diameter. The flow velocity in the force main is approximately:",
-    options: ["2.4 m/s", "4.8 m/s", "1.2 m/s", "9.6 m/s"],
-    correctAnswer: 1,
+    options: ["2.4 m/s", "1.2 m/s", "4.8 m/s", "9.6 m/s"],
+    correctAnswer: 2,
     explanation: "Area = π(0.1)² = 0.0314 m²; V = Q/A = 0.150/0.0314 = 4.78 ≈ 4.8 m/s."
   },
   {
     id: 185,
     module: "Math & Calculations",
     question: "A pump cycles 8 times per hour. Each cycle, the wet well level rises 0.4 m before the pump starts. The wet well is 2.5 m × 2.5 m. The average inflow rate is:",
-    options: ["0.56 L/s", "5.6 L/s", "0.056 L/s", "56 L/s"],
-    correctAnswer: 1,
+    options: ["0.56 L/s", "0.056 L/s", "5.6 L/s", "56 L/s"],
+    correctAnswer: 2,
     explanation: "Volume per cycle = 2.5 × 2.5 × 0.4 = 2.5 m³; 8 cycles/hr × 2.5 m³ = 20 m³/hr = 20,000 L/3,600 s = 5.56 ≈ 5.6 L/s."
   },
   {
     id: 186,
     module: "Math & Calculations",
     question: "Convert 250 L/s to m³/day:",
-    options: ["2,160 m³/day", "21,600 m³/day", "216,000 m³/day", "2,160,000 m³/day"],
-    correctAnswer: 1,
+    options: ["2,160 m³/day", "2,160,000 m³/day", "216,000 m³/day", "21,600 m³/day"],
+    correctAnswer: 3,
     explanation: "250 L/s × 86,400 s/day = 21,600,000 L/day = 21,600 m³/day."
   },
   {
     id: 187,
     module: "Math & Calculations",
     question: "A sewer main is 400 m long with a slope of 0.5%. The elevation difference between the upstream and downstream inverts is:",
-    options: ["0.5 m", "1.0 m", "2.0 m", "4.0 m"],
-    correctAnswer: 2,
+    options: ["0.5 m", "1.0 m", "4.0 m", "2.0 m"],
+    correctAnswer: 3,
     explanation: "Elevation difference = length × slope = 400 m × 0.005 = 2.0 m."
   },
   {
     id: 188,
     module: "Math & Calculations",
     question: "A pump delivers 80 L/s against a total dynamic head of 15 m. The hydraulic power (water power) is approximately:",
-    options: ["1.2 kW", "11.8 kW", "118 kW", "1,180 kW"],
-    correctAnswer: 1,
+    options: ["1.2 kW", "118 kW", "11.8 kW", "1,180 kW"],
+    correctAnswer: 2,
     explanation: "Power = ρgQH = 1,000 × 9.81 × 0.080 × 15 = 11,772 W ≈ 11.8 kW."
   },
   {
     id: 189,
     module: "Math & Calculations",
     question: "If a pump has a hydraulic efficiency of 75% and delivers 11.8 kW of water power, the shaft power required is:",
-    options: ["8.9 kW", "11.8 kW", "15.7 kW", "23.6 kW"],
-    correctAnswer: 2,
+    options: ["8.9 kW", "11.8 kW", "23.6 kW", "15.7 kW"],
+    correctAnswer: 3,
     explanation: "Shaft power = water power / efficiency = 11.8 / 0.75 = 15.7 kW."
   },
   {
@@ -2292,8 +2292,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 191,
     module: "Math & Calculations",
     question: "The peaking factor for a sewer system is the ratio of:",
-    options: ["Maximum daily flow to minimum daily flow", "Peak flow to average flow", "Wet weather flow to dry weather flow", "Pump capacity to average flow"],
-    correctAnswer: 1,
+    options: ["Maximum daily flow to minimum daily flow", "Pump capacity to average flow", "Wet weather flow to dry weather flow", "Peak flow to average flow"],
+    correctAnswer: 3,
     explanation: "The peaking factor = peak flow / average flow; it accounts for diurnal and seasonal flow variations in system design."
   },
   {
@@ -2316,24 +2316,24 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 194,
     module: "Math & Calculations",
     question: "Manning's equation for pipe flow uses which roughness coefficient for concrete pipe?",
-    options: ["n = 0.009", "n = 0.013", "n = 0.020", "n = 0.025"],
-    correctAnswer: 1,
+    options: ["n = 0.009", "n = 0.020", "n = 0.013", "n = 0.025"],
+    correctAnswer: 2,
     explanation: "Manning's n for concrete pipe is typically 0.013; PVC is 0.009–0.011; rough concrete or brick is higher."
   },
   {
     id: 195,
     module: "Safety & Regulations",
     question: "The minimum oxygen concentration for safe entry into a confined space is:",
-    options: ["15%", "19.5%", "21%", "23%"],
-    correctAnswer: 1,
+    options: ["15%", "23%", "21%", "19.5%"],
+    correctAnswer: 3,
     explanation: "OSHA requires a minimum of 19.5% oxygen for safe confined space entry; below this is oxygen-deficient."
   },
   {
     id: 196,
     module: "Safety & Regulations",
     question: "Hydrogen sulfide (H₂S) in sewers is dangerous because:",
-    options: ["It is explosive only", "It is toxic, flammable, and deadens the sense of smell at high concentrations", "It corrodes only plastic pipes", "It is heavier than air but not toxic"],
-    correctAnswer: 1,
+    options: ["It is explosive only", "It corrodes only plastic pipes", "It is toxic, flammable, and deadens the sense of smell at high concentrations", "It is heavier than air but not toxic"],
+    correctAnswer: 2,
     explanation: "H₂S is toxic (IDLH 50 ppm), flammable, and paralyzes the olfactory nerve at high concentrations — making it extremely dangerous."
   },
   {
@@ -2348,16 +2348,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 198,
     module: "Safety & Regulations",
     question: "Before entering a manhole, the atmosphere must be tested for:",
-    options: ["Oxygen only", "Oxygen, flammable gases, and toxic gases (H₂S, CO)", "H₂S only", "Temperature only"],
-    correctAnswer: 1,
+    options: ["Oxygen, flammable gases, and toxic gases (H₂S, CO)", "Oxygen only", "H₂S only", "Temperature only"],
+    correctAnswer: 0,
     explanation: "Multi-gas monitors test for oxygen deficiency/enrichment, flammable gases (LEL), H₂S, and CO before confined space entry."
   },
   {
     id: 199,
     module: "Safety & Regulations",
     question: "A permit-required confined space requires:",
-    options: ["Only a trained entrant", "A written permit, attendant, entry supervisor, and rescue plan", "Only ventilation before entry", "Only atmospheric testing"],
-    correctAnswer: 1,
+    options: ["Only a trained entrant", "Only ventilation before entry", "A written permit, attendant, entry supervisor, and rescue plan", "Only atmospheric testing"],
+    correctAnswer: 2,
     explanation: "Permit-required confined spaces (with actual or potential hazards) require a written permit, attendant outside, supervisor, and rescue procedures."
   },
   {
@@ -2380,24 +2380,24 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 202,
     module: "Safety & Regulations",
     question: "Personal protective equipment for working in sewers includes:",
-    options: ["Safety glasses only", "Waterproof gloves, boots, coveralls, and eye protection at minimum", "Hard hat only", "Hearing protection only"],
-    correctAnswer: 1,
+    options: ["Safety glasses only", "Hearing protection only", "Hard hat only", "Waterproof gloves, boots, coveralls, and eye protection at minimum"],
+    correctAnswer: 3,
     explanation: "Sewer work requires protection against biological hazards: waterproof gloves, boots, coveralls, and eye/face protection."
   },
   {
     id: 203,
     module: "Safety & Regulations",
     question: "After working in a sewer, workers should:",
-    options: ["Wipe hands on clothing", "Wash hands and face thoroughly before eating, drinking, or touching face", "Use hand sanitizer only", "Change shoes only"],
-    correctAnswer: 1,
+    options: ["Wipe hands on clothing", "Change shoes only", "Use hand sanitizer only", "Wash hands and face thoroughly before eating, drinking, or touching face"],
+    correctAnswer: 3,
     explanation: "Thorough handwashing prevents ingestion of pathogens (Hepatitis A, Leptospira, E. coli) present in sewage."
   },
   {
     id: 204,
     module: "Safety & Regulations",
     question: "Traffic control when working in a roadway requires:",
-    options: ["Only orange cones", "A traffic control plan with signs, cones, flaggers, and proper setbacks", "Only a safety vest", "Only flashing lights on the vehicle"],
-    correctAnswer: 1,
+    options: ["A traffic control plan with signs, cones, flaggers, and proper setbacks", "Only orange cones", "Only a safety vest", "Only flashing lights on the vehicle"],
+    correctAnswer: 0,
     explanation: "Roadway work requires a formal traffic control plan following MUTCD standards with appropriate signs, cones, and flaggers."
   },
   {
@@ -2412,24 +2412,24 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 206,
     module: "Safety & Regulations",
     question: "A class B soil in a trench excavation can be sloped at a maximum angle of:",
-    options: ["90° (vertical)", "75° (¾H:1V)", "63° (1H:½V)", "45° (1H:1V)"],
-    correctAnswer: 3,
+    options: ["45° (1H:1V)", "75° (¾H:1V)", "63° (1H:½V)", "90° (vertical)"],
+    correctAnswer: 0,
     explanation: "OSHA classifies Type B soil with a maximum slope of 1H:1V (45°); Type A is ¾H:1V; Type C is 1½H:1V."
   },
   {
     id: 207,
     module: "Safety & Regulations",
     question: "A sanitary sewer overflow (SSO) must be reported to:",
-    options: ["Only the utility manager", "The regulatory authority within the required timeframe", "Only neighboring utilities", "The media first"],
-    correctAnswer: 1,
+    options: ["Only the utility manager", "The media first", "Only neighboring utilities", "The regulatory authority within the required timeframe"],
+    correctAnswer: 3,
     explanation: "SSOs are regulatory violations requiring prompt reporting to the provincial/state environmental authority within specified timeframes."
   },
   {
     id: 208,
     module: "Safety & Regulations",
     question: "Inflow and infiltration (I/I) in a sewer system refers to:",
-    options: ["Sewage leaking out of the pipe", "Stormwater and groundwater entering the sanitary sewer", "Industrial discharge into the sewer", "Pump station overflow"],
-    correctAnswer: 1,
+    options: ["Sewage leaking out of the pipe", "Pump station overflow", "Industrial discharge into the sewer", "Stormwater and groundwater entering the sanitary sewer"],
+    correctAnswer: 3,
     explanation: "Inflow is stormwater entering through defects (manholes, connections); infiltration is groundwater entering through cracks and joints."
   },
   {
@@ -2444,8 +2444,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 210,
     module: "Safety & Regulations",
     question: "Fats, oils, and grease (FOG) are regulated in sewer use bylaws because:",
-    options: ["They improve pump efficiency", "They cause blockages in sewers and lift stations", "They are toxic to treatment plant bacteria", "They corrode concrete pipes"],
-    correctAnswer: 1,
+    options: ["They improve pump efficiency", "They corrode concrete pipes", "They are toxic to treatment plant bacteria", "They cause blockages in sewers and lift stations"],
+    correctAnswer: 3,
     explanation: "FOG solidifies in sewers, causing blockages (fatbergs) that lead to SSOs and increased maintenance costs."
   },
   {
@@ -2460,32 +2460,32 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 212,
     module: "Safety & Regulations",
     question: "The purpose of a sewer system capacity assessment is to:",
-    options: ["Calculate water rates", "Identify capacity deficiencies that could cause SSOs during wet weather", "Evaluate treatment plant performance", "Assess pump station energy use"],
-    correctAnswer: 1,
+    options: ["Calculate water rates", "Assess pump station energy use", "Evaluate treatment plant performance", "Identify capacity deficiencies that could cause SSOs during wet weather"],
+    correctAnswer: 3,
     explanation: "Capacity assessments identify where I/I or system deficiencies cause capacity exceedances and SSO risk during wet weather."
   },
   {
     id: 213,
     module: "Environmental & Public Health",
     question: "Wastewater contains pathogens that can cause:",
-    options: ["Only respiratory illness", "Gastrointestinal illness, hepatitis, typhoid, and other diseases", "Only skin infections", "No health effects if diluted"],
-    correctAnswer: 1,
+    options: ["Only respiratory illness", "No health effects if diluted", "Only skin infections", "Gastrointestinal illness, hepatitis, typhoid, and other diseases"],
+    correctAnswer: 3,
     explanation: "Wastewater contains bacteria (E. coli, Salmonella), viruses (Hepatitis A, norovirus), and parasites (Giardia, Cryptosporidium) causing various diseases."
   },
   {
     id: 214,
     module: "Environmental & Public Health",
     question: "A sanitary sewer overflow (SSO) into a waterway is an environmental concern because:",
-    options: ["It increases water temperature only", "It introduces pathogens, nutrients, and oxygen-depleting organics", "It increases water clarity", "It has no effect if the waterway is large"],
-    correctAnswer: 1,
+    options: ["It increases water temperature only", "It has no effect if the waterway is large", "It increases water clarity", "It introduces pathogens, nutrients, and oxygen-depleting organics"],
+    correctAnswer: 3,
     explanation: "SSOs introduce pathogens, BOD (oxygen demand), and nutrients that harm aquatic ecosystems and pose public health risks."
   },
   {
     id: 215,
     module: "Environmental & Public Health",
     question: "Biochemical Oxygen Demand (BOD) in wastewater represents:",
-    options: ["The amount of dissolved oxygen in the wastewater", "The amount of oxygen needed to biologically decompose organic matter", "The bacterial count in the wastewater", "The chemical oxygen content"],
-    correctAnswer: 1,
+    options: ["The amount of oxygen needed to biologically decompose organic matter", "The amount of dissolved oxygen in the wastewater", "The bacterial count in the wastewater", "The chemical oxygen content"],
+    correctAnswer: 0,
     explanation: "BOD measures the oxygen demand exerted by microorganisms decomposing organic matter; high BOD depletes dissolved oxygen in receiving waters."
   },
   {
@@ -2500,32 +2500,32 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 217,
     module: "Environmental & Public Health",
     question: "Concrete sewer pipe corrosion caused by H₂S is called:",
-    options: ["Galvanic corrosion", "Microbiologically influenced corrosion (MIC) or biogenic sulfide corrosion", "Electrolytic corrosion", "Chemical corrosion from chlorine"],
-    correctAnswer: 1,
+    options: ["Galvanic corrosion", "Chemical corrosion from chlorine", "Electrolytic corrosion", "Microbiologically influenced corrosion (MIC) or biogenic sulfide corrosion"],
+    correctAnswer: 3,
     explanation: "H₂S oxidizes to sulfuric acid on moist concrete surfaces above the waterline, causing severe biogenic sulfide corrosion."
   },
   {
     id: 218,
     module: "Environmental & Public Health",
     question: "To reduce H₂S generation in a sewer system, operators can:",
-    options: ["Increase pipe slope to reduce retention time", "Add oxygen, nitrate, or iron salts to the wastewater", "Reduce flow velocity", "Both A and B"],
-    correctAnswer: 3,
+    options: ["Increase pipe slope to reduce retention time", "Add oxygen, nitrate, or iron salts to the wastewater", "Both A and B", "Reduce flow velocity"],
+    correctAnswer: 2,
     explanation: "Reducing retention time (steeper slopes, higher velocity) and adding oxidants (air, O₂, nitrate) or iron salts controls H₂S generation."
   },
   {
     id: 219,
     module: "Environmental & Public Health",
     question: "Odour complaints from a sewer system are most commonly caused by:",
-    options: ["High flow velocities", "H₂S and other volatile organic compounds from anaerobic conditions", "High pipe pressure", "Clean water infiltration"],
-    correctAnswer: 1,
+    options: ["High flow velocities", "High pipe pressure", "H₂S and other volatile organic compounds from anaerobic conditions", "Clean water infiltration"],
+    correctAnswer: 2,
     explanation: "H₂S (rotten egg odour) and VOCs from anaerobic decomposition are the primary causes of sewer odour complaints."
   },
   {
     id: 220,
     module: "Environmental & Public Health",
     question: "Hepatitis A vaccination is recommended for wastewater collection operators because:",
-    options: ["It is required by law", "Wastewater contains Hepatitis A virus and operators have elevated exposure risk", "It protects against H₂S exposure", "It is required for confined space entry"],
-    correctAnswer: 1,
+    options: ["It is required by law", "It protects against H₂S exposure", "Wastewater contains Hepatitis A virus and operators have elevated exposure risk", "It is required for confined space entry"],
+    correctAnswer: 2,
     explanation: "Wastewater operators have elevated exposure to Hepatitis A virus; vaccination is strongly recommended for health protection."
   },
   {
@@ -2556,8 +2556,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 224,
     module: "Collection System Maintenance",
     question: "A combination unit (vac-jet truck) is used for:",
-    options: ["CCTV inspection only", "Simultaneous jetting and vacuuming of sewer pipes and manholes", "Smoke testing only", "Flow measurement only"],
-    correctAnswer: 1,
+    options: ["CCTV inspection only", "Smoke testing only", "Simultaneous jetting and vacuuming of sewer pipes and manholes", "Flow measurement only"],
+    correctAnswer: 2,
     explanation: "Combination units jet the pipe to loosen debris while simultaneously vacuuming it out, cleaning sewers efficiently."
   },
   {
@@ -2572,16 +2572,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 226,
     module: "Collection System Maintenance",
     question: "Chemical root control in sewers uses:",
-    options: ["Chlorine", "Metam sodium or dichlobenil (herbicides) applied to kill roots in pipes", "Caustic soda", "Hydrogen peroxide"],
-    correctAnswer: 1,
+    options: ["Chlorine", "Hydrogen peroxide", "Caustic soda", "Metam sodium or dichlobenil (herbicides) applied to kill roots in pipes"],
+    correctAnswer: 3,
     explanation: "Herbicides (metam sodium, dichlobenil) are applied by foam or liquid to kill roots in pipe joints without damaging the pipe."
   },
   {
     id: 227,
     module: "Collection System Maintenance",
     question: "CCTV (closed-circuit television) inspection of sewers is used to:",
-    options: ["Measure flow rates", "Assess pipe condition, identify defects, and locate blockages", "Test pipe pressure", "Detect gas leaks"],
-    correctAnswer: 1,
+    options: ["Assess pipe condition, identify defects, and locate blockages", "Measure flow rates", "Test pipe pressure", "Detect gas leaks"],
+    correctAnswer: 0,
     explanation: "CCTV inspection provides visual assessment of pipe interior condition, identifying cracks, joint defects, root intrusion, and blockages."
   },
   {
@@ -2596,8 +2596,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 229,
     module: "Collection System Maintenance",
     question: "Dye testing in a sewer system is used to:",
-    options: ["Measure flow velocity", "Confirm connections and trace flow paths", "Test pipe strength", "Detect root intrusion"],
-    correctAnswer: 1,
+    options: ["Measure flow velocity", "Test pipe strength", "Confirm connections and trace flow paths", "Detect root intrusion"],
+    correctAnswer: 2,
     explanation: "Dye (fluorescent) testing traces flow from a suspected source to confirm connections and identify illegal cross-connections."
   },
   {
@@ -2612,48 +2612,48 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 231,
     module: "Collection System Maintenance",
     question: "A sewer blockage caused by grease is best addressed by:",
-    options: ["Chemical dissolvers only", "High-pressure jetting to break up and remove the grease", "Pipe replacement", "Increasing flow velocity"],
-    correctAnswer: 1,
+    options: ["Chemical dissolvers only", "Increasing flow velocity", "Pipe replacement", "High-pressure jetting to break up and remove the grease"],
+    correctAnswer: 3,
     explanation: "High-pressure jetting effectively breaks up and removes grease accumulations; source control (grease traps) prevents recurrence."
   },
   {
     id: 232,
     module: "Collection System Maintenance",
     question: "After clearing a sewer blockage, the operator should:",
-    options: ["Leave immediately", "Verify flow is restored and document the blockage location and cause", "Add chemical treatment", "Notify all customers"],
-    correctAnswer: 1,
+    options: ["Verify flow is restored and document the blockage location and cause", "Leave immediately", "Add chemical treatment", "Notify all customers"],
+    correctAnswer: 0,
     explanation: "Post-clearing verification confirms flow restoration; documentation helps identify recurring problem areas for PM scheduling."
   },
   {
     id: 233,
     module: "Collection System Maintenance",
     question: "A sewer pipe that shows significant joint offset in CCTV inspection should be:",
-    options: ["Ignored if flow is not blocked", "Documented and assessed for structural repair or rehabilitation", "Cleaned with jetting", "Chemically treated"],
-    correctAnswer: 1,
+    options: ["Ignored if flow is not blocked", "Chemically treated", "Cleaned with jetting", "Documented and assessed for structural repair or rehabilitation"],
+    correctAnswer: 3,
     explanation: "Joint offset indicates ground movement or structural failure; it allows I/I and may worsen, requiring rehabilitation or replacement."
   },
   {
     id: 234,
     module: "Collection System Maintenance",
     question: "Manhole rehabilitation may include:",
-    options: ["Only replacing the frame and cover", "Grouting, lining, or coating to repair cracks and prevent I/I", "Only cleaning", "Only replacing the steps"],
-    correctAnswer: 1,
+    options: ["Only replacing the frame and cover", "Only cleaning", "Grouting, lining, or coating to repair cracks and prevent I/I", "Only replacing the steps"],
+    correctAnswer: 2,
     explanation: "Manhole rehabilitation addresses structural defects and I/I through grouting cracks, applying liners, or spray-applied coatings."
   },
   {
     id: 235,
     module: "Collection System Maintenance",
     question: "The purpose of a sewer system map (GIS) is to:",
-    options: ["Calculate water rates", "Document pipe locations, sizes, materials, and maintenance history", "Measure flow rates", "Track employee performance"],
-    correctAnswer: 1,
+    options: ["Calculate water rates", "Track employee performance", "Measure flow rates", "Document pipe locations, sizes, materials, and maintenance history"],
+    correctAnswer: 3,
     explanation: "GIS maps document the collection system's physical assets, enabling efficient maintenance planning and emergency response."
   },
   {
     id: 236,
     module: "Collection System Maintenance",
     question: "A work order system in a collection utility is used to:",
-    options: ["Track customer complaints only", "Document, assign, and track maintenance activities and costs", "Calculate pump runtime", "Monitor regulatory compliance"],
-    correctAnswer: 1,
+    options: ["Track customer complaints only", "Monitor regulatory compliance", "Calculate pump runtime", "Document, assign, and track maintenance activities and costs"],
+    correctAnswer: 3,
     explanation: "Work order systems document maintenance activities, track costs, and provide data for performance analysis and asset management."
   },
   {
@@ -2668,48 +2668,48 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 238,
     module: "Collection System Maintenance",
     question: "Inflow to a sewer system is identified by:",
-    options: ["Gradual flow increase over days", "Rapid flow increase during and immediately after rain events", "Flow increase only in spring", "Constant elevated flow"],
-    correctAnswer: 1,
+    options: ["Gradual flow increase over days", "Flow increase only in spring", "Rapid flow increase during and immediately after rain events", "Constant elevated flow"],
+    correctAnswer: 2,
     explanation: "Inflow (stormwater) causes rapid, immediate flow increases during rain events, distinct from the slower response of infiltration."
   },
   {
     id: 239,
     module: "Collection System Maintenance",
     question: "A flow meter in a sewer manhole measures flow using:",
-    options: ["Pressure only", "Velocity (Doppler or electromagnetic) and depth to calculate flow rate", "Temperature", "Chemical concentration"],
-    correctAnswer: 1,
+    options: ["Velocity (Doppler or electromagnetic) and depth to calculate flow rate", "Pressure only", "Temperature", "Chemical concentration"],
+    correctAnswer: 0,
     explanation: "Sewer flow meters measure velocity (Doppler ultrasonic or electromagnetic) and depth, calculating flow using the area-velocity method."
   },
   {
     id: 240,
     module: "Collection System Maintenance",
     question: "A sewer system capacity, management, operations, and maintenance (CMOM) program is required by:",
-    options: ["AWWA", "EPA as part of SSO reduction and compliance", "OSHA", "Local municipalities only"],
-    correctAnswer: 1,
+    options: ["AWWA", "OSHA", "EPA as part of SSO reduction and compliance", "Local municipalities only"],
+    correctAnswer: 2,
     explanation: "EPA's CMOM program requirements help utilities manage collection systems to prevent SSOs and comply with the Clean Water Act."
   },
   {
     id: 241,
     module: "Equipment Operation & Maintenance",
     question: "A centrifugal pump's impeller converts:",
-    options: ["Pressure energy to velocity energy", "Mechanical energy to hydraulic energy (velocity and pressure)", "Electrical energy directly to pressure", "Velocity energy to mechanical energy"],
-    correctAnswer: 1,
+    options: ["Mechanical energy to hydraulic energy (velocity and pressure)", "Pressure energy to velocity energy", "Electrical energy directly to pressure", "Velocity energy to mechanical energy"],
+    correctAnswer: 0,
     explanation: "The impeller imparts velocity to the fluid; the volute/diffuser converts velocity to pressure, producing the pump's head."
   },
   {
     id: 242,
     module: "Equipment Operation & Maintenance",
     question: "A pump's total dynamic head (TDH) includes:",
-    options: ["Static head only", "Static head + friction losses + minor losses + velocity head", "Friction losses only", "Static head + pump efficiency"],
-    correctAnswer: 1,
+    options: ["Static head only", "Friction losses only", "Static head + friction losses + minor losses + velocity head", "Static head + pump efficiency"],
+    correctAnswer: 2,
     explanation: "TDH = static head (elevation difference) + friction head losses + minor losses + velocity head at discharge."
   },
   {
     id: 243,
     module: "Equipment Operation & Maintenance",
     question: "Cavitation in a centrifugal pump is caused by:",
-    options: ["High discharge pressure", "Suction pressure dropping below the liquid's vapor pressure", "Pump running too slowly", "Excessive lubrication"],
-    correctAnswer: 1,
+    options: ["High discharge pressure", "Excessive lubrication", "Pump running too slowly", "Suction pressure dropping below the liquid's vapor pressure"],
+    correctAnswer: 3,
     explanation: "Cavitation occurs when suction pressure drops below vapor pressure, forming vapor bubbles that collapse violently, damaging the impeller."
   },
   {
@@ -2732,8 +2732,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 246,
     module: "Equipment Operation & Maintenance",
     question: "A pump's system curve represents:",
-    options: ["The pump's head-flow relationship", "The head required to move flow through the system at various flow rates", "The pump's efficiency curve", "The motor's power curve"],
-    correctAnswer: 1,
+    options: ["The pump's head-flow relationship", "The motor's power curve", "The pump's efficiency curve", "The head required to move flow through the system at various flow rates"],
+    correctAnswer: 3,
     explanation: "The system curve shows the total head required (static + friction) to move various flow rates through the piping system."
   },
   {
@@ -2748,48 +2748,48 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 248,
     module: "Equipment Operation & Maintenance",
     question: "A variable frequency drive (VFD) on a pump motor allows:",
-    options: ["Only on/off control", "Variable speed operation to match pump output to system demand", "Increased motor voltage", "Bypassing the pump curve"],
-    correctAnswer: 1,
+    options: ["Variable speed operation to match pump output to system demand", "Only on/off control", "Increased motor voltage", "Bypassing the pump curve"],
+    correctAnswer: 0,
     explanation: "VFDs vary motor speed (and thus pump speed) to match output to demand, saving energy and reducing wear."
   },
   {
     id: 249,
     module: "Equipment Operation & Maintenance",
     question: "The purpose of a pump station's emergency generator is to:",
-    options: ["Reduce electricity costs", "Maintain pump operation during power outages to prevent SSOs", "Power SCADA only", "Provide backup lighting only"],
-    correctAnswer: 1,
+    options: ["Reduce electricity costs", "Power SCADA only", "Maintain pump operation during power outages to prevent SSOs", "Provide backup lighting only"],
+    correctAnswer: 2,
     explanation: "Emergency generators maintain pump operation during power outages, preventing wet well overflow and SSOs."
   },
   {
     id: 250,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's automatic transfer switch (ATS) is used to:",
-    options: ["Control pump speed", "Automatically switch from utility power to generator power during outages", "Measure power consumption", "Control pump sequencing"],
-    correctAnswer: 1,
+    options: ["Control pump speed", "Measure power consumption", "Automatically switch from utility power to generator power during outages", "Control pump sequencing"],
+    correctAnswer: 2,
     explanation: "The ATS automatically detects power outages and switches the pump station to generator power without manual intervention."
   },
   {
     id: 251,
     module: "Collection System Components",
     question: "A sewer inverted siphon (depressed sewer) is used when:",
-    options: ["The sewer needs to go over an obstacle", "The sewer must pass under an obstacle (stream, highway) below the hydraulic grade line", "Extra storage is needed", "Flow measurement is required"],
-    correctAnswer: 1,
+    options: ["The sewer must pass under an obstacle (stream, highway) below the hydraulic grade line", "The sewer needs to go over an obstacle", "Extra storage is needed", "Flow measurement is required"],
+    correctAnswer: 0,
     explanation: "Inverted siphons allow sewers to pass under obstacles by flowing under pressure; they require higher velocities to prevent solids deposition."
   },
   {
     id: 252,
     module: "Collection System Components",
     question: "The minimum velocity in an inverted siphon should be at least:",
-    options: ["0.3 m/s", "0.9 m/s (3 fps)", "0.6 m/s", "1.5 m/s"],
-    correctAnswer: 1,
+    options: ["0.3 m/s", "1.5 m/s", "0.6 m/s", "0.9 m/s (3 fps)"],
+    correctAnswer: 3,
     explanation: "Inverted siphons require higher velocities (minimum 0.9 m/s or 3 fps) to prevent solids deposition in the pressurized section."
   },
   {
     id: 253,
     module: "Collection System Components",
     question: "A combined sewer system carries:",
-    options: ["Only sanitary wastewater", "Both sanitary wastewater and stormwater in the same pipe", "Only stormwater", "Industrial waste only"],
-    correctAnswer: 1,
+    options: ["Only sanitary wastewater", "Industrial waste only", "Only stormwater", "Both sanitary wastewater and stormwater in the same pipe"],
+    correctAnswer: 3,
     explanation: "Combined sewers carry both sanitary sewage and stormwater; during heavy rain, they can overflow (CSOs) at relief structures."
   },
   {
@@ -2804,56 +2804,56 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 255,
     module: "Collection System Components",
     question: "A sanitary sewer vent is installed to:",
-    options: ["Release pressure from the force main", "Allow air circulation to prevent siphoning and reduce H₂S buildup", "Measure flow rates", "Provide emergency overflow"],
-    correctAnswer: 1,
+    options: ["Release pressure from the force main", "Provide emergency overflow", "Measure flow rates", "Allow air circulation to prevent siphoning and reduce H₂S buildup"],
+    correctAnswer: 3,
     explanation: "Sewer vents allow air exchange, preventing siphoning of building traps and reducing H₂S accumulation in the sewer."
   },
   {
     id: 256,
     module: "Collection System Components",
     question: "A building trap (house trap) is used to:",
-    options: ["Prevent stormwater from entering the sewer", "Prevent sewer gases from entering the building", "Measure building wastewater flow", "Prevent backflow into the building"],
-    correctAnswer: 1,
+    options: ["Prevent stormwater from entering the sewer", "Prevent backflow into the building", "Measure building wastewater flow", "Prevent sewer gases from entering the building"],
+    correctAnswer: 3,
     explanation: "Building traps maintain a water seal that prevents sewer gases (H₂S, methane) from entering the building through the drain system."
   },
   {
     id: 257,
     module: "Collection System Components",
     question: "A backwater valve on a building sewer is used to:",
-    options: ["Prevent sewer gas entry", "Prevent sewage backup into the building during high sewer levels", "Measure building flow", "Reduce infiltration"],
-    correctAnswer: 1,
+    options: ["Prevent sewer gas entry", "Reduce infiltration", "Measure building flow", "Prevent sewage backup into the building during high sewer levels"],
+    correctAnswer: 3,
     explanation: "Backwater valves (backflow preventers) close automatically when sewer levels rise, preventing sewage backup into basements."
   },
   {
     id: 258,
     module: "Collection System Components",
     question: "The purpose of a wet well dividing wall in a duplex pump station is to:",
-    options: ["Increase wet well volume", "Allow one side to be isolated for maintenance while the other remains operational", "Reduce H₂S generation", "Improve pump efficiency"],
-    correctAnswer: 1,
+    options: ["Allow one side to be isolated for maintenance while the other remains operational", "Increase wet well volume", "Reduce H₂S generation", "Improve pump efficiency"],
+    correctAnswer: 0,
     explanation: "A dividing wall allows one wet well compartment to be dewatered for maintenance while the other continues to receive flow."
   },
   {
     id: 259,
     module: "Collection System Components",
     question: "A bar screen at a pump station wet well is used to:",
-    options: ["Measure flow rate", "Remove large solids and debris that could damage pumps", "Reduce H₂S", "Control wet well level"],
-    correctAnswer: 1,
+    options: ["Remove large solids and debris that could damage pumps", "Measure flow rate", "Reduce H₂S", "Control wet well level"],
+    correctAnswer: 0,
     explanation: "Bar screens remove rags, wipes, and large debris before they reach the pumps, preventing pump clogging and damage."
   },
   {
     id: 260,
     module: "Collection System Components",
     question: "A comminutor (grinder) at a pump station is used to:",
-    options: ["Measure flow", "Shred solids to prevent pump clogging", "Remove grease", "Aerate the wastewater"],
-    correctAnswer: 1,
+    options: ["Measure flow", "Aerate the wastewater", "Remove grease", "Shred solids to prevent pump clogging"],
+    correctAnswer: 3,
     explanation: "Comminutors shred solids (rags, wipes) to a uniform size, preventing pump clogging while keeping solids in the flow stream."
   },
   {
     id: 261,
     module: "Safety & Regulations",
     question: "The Workplace Hazardous Materials Information System (WHMIS) requires:",
-    options: ["Only labeling of chemicals", "Labeling, Safety Data Sheets (SDS), and worker training for hazardous materials", "Only worker training", "Only SDS availability"],
-    correctAnswer: 1,
+    options: ["Labeling, Safety Data Sheets (SDS), and worker training for hazardous materials", "Only labeling of chemicals", "Only worker training", "Only SDS availability"],
+    correctAnswer: 0,
     explanation: "WHMIS (Canada's hazard communication system) requires proper labeling, SDS availability, and worker training for all controlled products."
   },
   {
@@ -2868,80 +2868,80 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 263,
     module: "Safety & Regulations",
     question: "Hearing protection is required when noise levels exceed:",
-    options: ["70 dBA", "85 dBA for 8 hours", "90 dBA for any duration", "100 dBA"],
-    correctAnswer: 1,
+    options: ["85 dBA for 8 hours", "70 dBA", "90 dBA for any duration", "100 dBA"],
+    correctAnswer: 0,
     explanation: "OSHA and most jurisdictions require hearing protection when exposure exceeds 85 dBA for an 8-hour time-weighted average."
   },
   {
     id: 264,
     module: "Safety & Regulations",
     question: "A lockout/tagout (LOTO) procedure for a pump requires:",
-    options: ["Only turning off the switch", "Isolating energy sources, locking them out, and verifying zero energy state", "Only tagging the equipment", "Only notifying the supervisor"],
-    correctAnswer: 1,
+    options: ["Only turning off the switch", "Only notifying the supervisor", "Only tagging the equipment", "Isolating energy sources, locking them out, and verifying zero energy state"],
+    correctAnswer: 3,
     explanation: "LOTO requires: identify all energy sources, isolate each, apply locks/tags, release stored energy, and verify zero energy state."
   },
   {
     id: 265,
     module: "Safety & Regulations",
     question: "A near-miss incident should be reported because:",
-    options: ["It is required only if injury occurred", "It identifies hazards before they cause injury, enabling corrective action", "It affects insurance rates only", "It is only relevant if equipment was damaged"],
-    correctAnswer: 1,
+    options: ["It is required only if injury occurred", "It is only relevant if equipment was damaged", "It affects insurance rates only", "It identifies hazards before they cause injury, enabling corrective action"],
+    correctAnswer: 3,
     explanation: "Near-miss reporting identifies hazardous conditions and behaviors before they cause injury, enabling proactive hazard elimination."
   },
   {
     id: 266,
     module: "Safety & Regulations",
     question: "The purpose of a Job Safety Analysis (JSA) is to:",
-    options: ["Evaluate employee performance", "Identify hazards in each step of a task and establish controls", "Document completed work", "Calculate project costs"],
-    correctAnswer: 1,
+    options: ["Identify hazards in each step of a task and establish controls", "Evaluate employee performance", "Document completed work", "Calculate project costs"],
+    correctAnswer: 0,
     explanation: "JSAs break tasks into steps, identify hazards at each step, and establish controls to prevent injuries."
   },
   {
     id: 267,
     module: "Safety & Regulations",
     question: "Fall protection is required when working at heights above:",
-    options: ["1 m (3 ft)", "1.2–1.5 m (4–6 ft) depending on jurisdiction", "3 m (10 ft)", "4.5 m (15 ft)"],
-    correctAnswer: 1,
+    options: ["1 m (3 ft)", "4.5 m (15 ft)", "3 m (10 ft)", "1.2–1.5 m (4–6 ft) depending on jurisdiction"],
+    correctAnswer: 3,
     explanation: "Fall protection requirements vary by jurisdiction but generally apply at heights of 1.2–1.5 m (4–6 ft) for construction work."
   },
   {
     id: 268,
     module: "Safety & Regulations",
     question: "Biological hazards in wastewater collection work include:",
-    options: ["Chemical burns only", "Bacteria, viruses, parasites, and fungi present in sewage", "Electrical hazards only", "Noise hazards only"],
-    correctAnswer: 1,
+    options: ["Bacteria, viruses, parasites, and fungi present in sewage", "Chemical burns only", "Electrical hazards only", "Noise hazards only"],
+    correctAnswer: 0,
     explanation: "Wastewater contains numerous biological hazards: pathogenic bacteria, viruses, parasites, and fungi that can cause illness."
   },
   {
     id: 269,
     module: "Safety & Regulations",
     question: "Immunizations recommended for wastewater collection operators include:",
-    options: ["Flu shot only", "Hepatitis A, Hepatitis B, tetanus, and typhoid", "Only tetanus", "No immunizations are needed"],
-    correctAnswer: 1,
+    options: ["Flu shot only", "No immunizations are needed", "Only tetanus", "Hepatitis A, Hepatitis B, tetanus, and typhoid"],
+    correctAnswer: 3,
     explanation: "Wastewater operators should be immunized against Hepatitis A, Hepatitis B, tetanus (and typhoid in some regions) due to sewage exposure."
   },
   {
     id: 270,
     module: "Safety & Regulations",
     question: "When working with a high-pressure water jet, the minimum safe distance from the nozzle is:",
-    options: ["0.5 m", "As specified in the equipment manual; high-pressure water can penetrate skin", "1 m always", "No minimum distance required"],
-    correctAnswer: 1,
+    options: ["0.5 m", "1 m always", "As specified in the equipment manual; high-pressure water can penetrate skin", "No minimum distance required"],
+    correctAnswer: 2,
     explanation: "High-pressure water jets can penetrate skin and cause serious injury; safe operating distances and PPE are specified by the manufacturer."
   },
   {
     id: 271,
     module: "Math & Calculations",
     question: "A sewer main is 600 m long. The upstream invert is at elevation 52.40 m and the downstream invert is at 51.10 m. The pipe slope is:",
-    options: ["0.13%", "0.22%", "0.43%", "0.87%"],
-    correctAnswer: 1,
+    options: ["0.13%", "0.43%", "0.22%", "0.87%"],
+    correctAnswer: 2,
     explanation: "Slope = (52.40 - 51.10) / 600 = 1.30 / 600 = 0.00217 = 0.22%."
   },
   {
     id: 272,
     module: "Math & Calculations",
     question: "A pump delivers 200 L/s and runs for 6 hours. The total volume pumped is:",
-    options: ["1,200 L", "4,320 m³", "720 m³", "43,200 m³"],
-    correctAnswer: 1,
+    options: ["1,200 L", "720 m³", "4,320 m³", "43,200 m³"],
+    correctAnswer: 2,
     explanation: "Volume = 200 L/s × 6 hr × 3,600 s/hr = 4,320,000 L = 4,320 m³."
   },
   {
@@ -2956,8 +2956,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 274,
     module: "Math & Calculations",
     question: "A wet well is 4 m diameter (circular). The water level drops 0.8 m in 5 minutes with the pump running and no inflow. The pump flow rate is:",
-    options: ["0.67 m³/min", "2.01 m³/min", "3.35 m³/min", "10.05 m³/min"],
-    correctAnswer: 1,
+    options: ["2.01 m³/min", "0.67 m³/min", "3.35 m³/min", "10.05 m³/min"],
+    correctAnswer: 0,
     explanation: "Area = π(2)² = 12.57 m²; Volume = 12.57 × 0.8 = 10.05 m³; Flow = 10.05/5 = 2.01 m³/min."
   },
   {
@@ -2972,8 +2972,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 276,
     module: "Math & Calculations",
     question: "A 450 mm sewer pipe flows full at a slope of 0.4%. Using Manning's equation with n=0.013, the approximate full-pipe velocity is:",
-    options: ["0.5 m/s", "0.9 m/s", "1.2 m/s", "1.8 m/s"],
-    correctAnswer: 2,
+    options: ["1.2 m/s", "0.9 m/s", "0.5 m/s", "1.8 m/s"],
+    correctAnswer: 0,
     explanation: "V = (1/n) × R^(2/3) × S^(1/2); R = 0.45/4 = 0.1125; V = (1/0.013) × 0.1125^(2/3) × 0.004^(1/2) ≈ 1.2 m/s."
   },
   {
@@ -2988,32 +2988,32 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 278,
     module: "Math & Calculations",
     question: "A pump operates at 1,750 RPM and delivers 120 L/s. If the speed is reduced to 1,400 RPM using a VFD, the new flow rate is approximately:",
-    options: ["60 L/s", "96 L/s", "150 L/s", "108 L/s"],
-    correctAnswer: 1,
+    options: ["96 L/s", "60 L/s", "150 L/s", "108 L/s"],
+    correctAnswer: 0,
     explanation: "By affinity laws, Q₂ = Q₁ × (N₂/N₁) = 120 × (1,400/1,750) = 120 × 0.8 = 96 L/s."
   },
   {
     id: 279,
     module: "Math & Calculations",
     question: "A sewer serves 3,000 residential connections averaging 4 persons per connection. The average daily per capita flow is 280 L/person/day. The average daily flow is:",
-    options: ["840 m³/day", "3,360 m³/day", "840,000 m³/day", "336 m³/day"],
-    correctAnswer: 1,
+    options: ["3,360 m³/day", "840 m³/day", "840,000 m³/day", "336 m³/day"],
+    correctAnswer: 0,
     explanation: "Population = 3,000 × 4 = 12,000; Flow = 12,000 × 280 L/day = 3,360,000 L/day = 3,360 m³/day."
   },
   {
     id: 280,
     module: "Math & Calculations",
     question: "The Babbitt peaking factor formula estimates peak flow as a multiple of average flow based on:",
-    options: ["Pipe slope", "Population served", "Pipe diameter", "Pump capacity"],
-    correctAnswer: 1,
+    options: ["Population served", "Pipe slope", "Pipe diameter", "Pump capacity"],
+    correctAnswer: 0,
     explanation: "The Babbitt formula (PF = 5/P^0.2, where P is population in thousands) estimates peak flow factors based on population."
   },
   {
     id: 281,
     module: "Environmental & Public Health",
     question: "Total suspended solids (TSS) in wastewater refers to:",
-    options: ["Dissolved solids only", "Solid particles that can be removed by filtration", "Only organic solids", "Only inorganic solids"],
-    correctAnswer: 1,
+    options: ["Dissolved solids only", "Only inorganic solids", "Only organic solids", "Solid particles that can be removed by filtration"],
+    correctAnswer: 3,
     explanation: "TSS includes all solid particles (organic and inorganic) retained on a filter; it is a key wastewater quality parameter."
   },
   {
@@ -3036,16 +3036,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 284,
     module: "Environmental & Public Health",
     question: "The pH of normal domestic wastewater is typically:",
-    options: ["4–5 (acidic)", "6.5–8.0 (near neutral)", "9–10 (alkaline)", "11–12 (strongly alkaline)"],
-    correctAnswer: 1,
+    options: ["4–5 (acidic)", "11–12 (strongly alkaline)", "9–10 (alkaline)", "6.5–8.0 (near neutral)"],
+    correctAnswer: 3,
     explanation: "Normal domestic wastewater has a pH of approximately 6.5–8.0, near neutral; extreme pH indicates industrial discharge."
   },
   {
     id: 285,
     module: "Environmental & Public Health",
     question: "Septic conditions in a sewer occur when:",
-    options: ["Flow velocity is too high", "Dissolved oxygen is depleted and anaerobic decomposition begins", "The sewer is too clean", "pH is above 8"],
-    correctAnswer: 1,
+    options: ["Dissolved oxygen is depleted and anaerobic decomposition begins", "Flow velocity is too high", "The sewer is too clean", "pH is above 8"],
+    correctAnswer: 0,
     explanation: "Septic conditions develop when DO is depleted (long retention times, warm temperatures), causing anaerobic decomposition and H₂S generation."
   },
   {
@@ -3060,8 +3060,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 287,
     module: "Environmental & Public Health",
     question: "Microplastics in wastewater are primarily from:",
-    options: ["Industrial discharge only", "Synthetic fibers, personal care products, and degraded plastic waste", "Pipe materials", "Treatment chemicals"],
-    correctAnswer: 1,
+    options: ["Industrial discharge only", "Pipe materials", "Synthetic fibers, personal care products, and degraded plastic waste", "Treatment chemicals"],
+    correctAnswer: 2,
     explanation: "Microplastics enter sewers from synthetic clothing fibers, microbeads in personal care products, and degraded plastic waste."
   },
   {
@@ -3076,8 +3076,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 289,
     module: "Environmental & Public Health",
     question: "Bioaerosols from sewer systems can cause:",
-    options: ["Only odour problems", "Respiratory illness and infection in exposed workers and nearby residents", "Only equipment corrosion", "No health effects"],
-    correctAnswer: 1,
+    options: ["Respiratory illness and infection in exposed workers and nearby residents", "Only odour problems", "Only equipment corrosion", "No health effects"],
+    correctAnswer: 0,
     explanation: "Bioaerosols (aerosolized bacteria, viruses, endotoxins) from sewers can cause respiratory illness in workers and nearby residents."
   },
   {
@@ -3092,16 +3092,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 291,
     module: "Collection System Maintenance",
     question: "A sewer pipe that has collapsed should be:",
-    options: ["Cleaned with jetting", "Immediately isolated and repaired or replaced", "Left in service if flow is not blocked", "Monitored for 30 days before action"],
-    correctAnswer: 1,
+    options: ["Cleaned with jetting", "Left in service if flow is not blocked", "Immediately isolated and repaired or replaced", "Monitored for 30 days before action"],
+    correctAnswer: 2,
     explanation: "A collapsed pipe is a structural failure requiring immediate isolation and repair to prevent SSO and further damage."
   },
   {
     id: 292,
     module: "Collection System Maintenance",
     question: "Pipe bursting is a trenchless rehabilitation method that:",
-    options: ["Cleans the existing pipe", "Fractures the old pipe outward while pulling in a new pipe", "Lines the existing pipe with a new material", "Seals pipe joints with grout"],
-    correctAnswer: 1,
+    options: ["Fractures the old pipe outward while pulling in a new pipe", "Cleans the existing pipe", "Lines the existing pipe with a new material", "Seals pipe joints with grout"],
+    correctAnswer: 0,
     explanation: "Pipe bursting fractures the existing pipe radially while simultaneously pulling a new pipe into place, increasing or maintaining diameter."
   },
   {
@@ -3124,8 +3124,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 295,
     module: "Collection System Maintenance",
     question: "A sewer system's maintenance management system (MMS) should track:",
-    options: ["Customer complaints only", "Asset inventory, maintenance history, costs, and work orders", "Employee schedules only", "Regulatory compliance only"],
-    correctAnswer: 1,
+    options: ["Asset inventory, maintenance history, costs, and work orders", "Customer complaints only", "Employee schedules only", "Regulatory compliance only"],
+    correctAnswer: 0,
     explanation: "An MMS tracks all assets, maintenance activities, costs, and work orders to support efficient operations and asset management."
   },
   {
@@ -3140,8 +3140,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 297,
     module: "Collection System Maintenance",
     question: "Preventive maintenance (PM) in a collection system is designed to:",
-    options: ["Respond to failures quickly", "Prevent failures before they occur through scheduled maintenance", "Reduce capital costs only", "Satisfy regulatory requirements only"],
-    correctAnswer: 1,
+    options: ["Respond to failures quickly", "Reduce capital costs only", "Prevent failures before they occur through scheduled maintenance", "Satisfy regulatory requirements only"],
+    correctAnswer: 2,
     explanation: "PM programs (scheduled cleaning, inspection, lubrication) prevent failures, extend asset life, and reduce costly emergency repairs."
   },
   {
@@ -3164,16 +3164,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 300,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's odour control system may use:",
-    options: ["Chlorination only", "Chemical scrubbers, biofilters, or activated carbon to treat exhaust air", "Ventilation fans only", "UV treatment"],
-    correctAnswer: 1,
+    options: ["Chemical scrubbers, biofilters, or activated carbon to treat exhaust air", "Chlorination only", "Ventilation fans only", "UV treatment"],
+    correctAnswer: 0,
     explanation: "Odour control systems treat exhaust air from wet wells using chemical scrubbers (NaOH, NaOCl), biofilters, or activated carbon."
   },
   {
     id: 301,
     module: "Collection System Components",
     question: "A sewer system's peak wet weather flow (PWWF) is used to:",
-    options: ["Calculate average daily flows", "Design system capacity to prevent SSOs during storm events", "Set pump station operating levels", "Calculate treatment plant capacity"],
-    correctAnswer: 1,
+    options: ["Design system capacity to prevent SSOs during storm events", "Calculate average daily flows", "Set pump station operating levels", "Calculate treatment plant capacity"],
+    correctAnswer: 0,
     explanation: "PWWF determines the maximum capacity required to convey wet weather flows without causing SSOs."
   },
   {
@@ -3188,24 +3188,24 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 303,
     module: "Collection System Components",
     question: "A sewer system's infiltration rate is typically expressed as:",
-    options: ["L/s", "L/day/mm diameter/km of pipe", "m³/day", "% of total flow"],
-    correctAnswer: 1,
+    options: ["L/s", "% of total flow", "m³/day", "L/day/mm diameter/km of pipe"],
+    correctAnswer: 3,
     explanation: "Infiltration is typically expressed as L/day per mm of pipe diameter per km of pipe, normalizing for pipe size and length."
   },
   {
     id: 304,
     module: "Collection System Components",
     question: "A sewer system's hydraulic grade line (HGL) should remain:",
-    options: ["Above the crown of the pipe", "Below the crown of the pipe to maintain gravity flow", "At the pipe centerline", "At the pipe invert"],
-    correctAnswer: 1,
+    options: ["Above the crown of the pipe", "At the pipe centerline", "Below the crown of the pipe to maintain gravity flow", "At the pipe invert"],
+    correctAnswer: 2,
     explanation: "For gravity flow, the HGL must remain below the pipe crown; when HGL exceeds the crown, the pipe flows under pressure (surcharged)."
   },
   {
     id: 305,
     module: "Collection System Components",
     question: "A surcharged sewer pipe is one that:",
-    options: ["Is flowing at half capacity", "Is flowing under pressure with the HGL above the pipe crown", "Has a slope greater than 1%", "Is flowing at design capacity"],
-    correctAnswer: 1,
+    options: ["Is flowing at half capacity", "Is flowing at design capacity", "Has a slope greater than 1%", "Is flowing under pressure with the HGL above the pipe crown"],
+    correctAnswer: 3,
     explanation: "A surcharged pipe flows full under pressure; sustained surcharging can cause manholes to overflow and structural damage."
   },
   {
@@ -3220,32 +3220,32 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 307,
     module: "Math & Calculations",
     question: "A pump station's wet well receives an average inflow of 45 L/s. The pump capacity is 90 L/s. The pump duty cycle (% time running) at average flow is:",
-    options: ["25%", "50%", "75%", "100%"],
-    correctAnswer: 1,
+    options: ["25%", "75%", "50%", "100%"],
+    correctAnswer: 2,
     explanation: "Duty cycle = inflow / pump capacity = 45 / 90 = 50%; the pump runs 50% of the time at average flow."
   },
   {
     id: 308,
     module: "Math & Calculations",
     question: "A force main is 2 km long with a diameter of 250 mm. The Hazen-Williams C factor is 120. At a flow of 60 L/s, the approximate friction head loss is:",
-    options: ["5 m", "15 m", "25 m", "40 m"],
-    correctAnswer: 2,
+    options: ["25 m", "15 m", "5 m", "40 m"],
+    correctAnswer: 0,
     explanation: "Using Hazen-Williams: V = 0.849 × C × R^0.63 × S^0.54; solving for S and multiplying by length gives approximately 25 m head loss."
   },
   {
     id: 309,
     module: "Math & Calculations",
     question: "A wet well level drops from 3.2 m to 1.8 m in 8 minutes with the pump running. The wet well is 3.5 m × 3.5 m. If inflow is 30 L/s, the pump flow rate is approximately:",
-    options: ["100 L/s", "132 L/s", "162 L/s", "72 L/s"],
-    correctAnswer: 1,
+    options: ["100 L/s", "162 L/s", "132 L/s", "72 L/s"],
+    correctAnswer: 2,
     explanation: "Volume pumped = 3.5 × 3.5 × 1.4 = 17.15 m³ in 8 min = 2.14 m³/min = 35.7 L/s net; pump flow = 35.7 + 30 = 65.7... let me recalculate: 17,150 L / 480 s = 35.7 L/s net drawdown + 30 L/s inflow = 65.7 L/s. Closest answer is B) 132 L/s — this question uses different numbers. Pump flow = (17,150 L + 30 L/s × 480 s) / 480 s = (17,150 + 14,400) / 480 = 31,550 / 480 ≈ 65.7 L/s."
   },
   {
     id: 310,
     module: "Math & Calculations",
     question: "The flow velocity in a 300 mm pipe carrying 50 L/s is approximately:",
-    options: ["0.44 m/s", "0.71 m/s", "1.06 m/s", "1.42 m/s"],
-    correctAnswer: 1,
+    options: ["0.44 m/s", "1.06 m/s", "0.71 m/s", "1.42 m/s"],
+    correctAnswer: 2,
     explanation: "Area = π(0.15)² = 0.0707 m²; V = Q/A = 0.050 / 0.0707 = 0.71 m/s."
   },
   {
@@ -3260,16 +3260,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 312,
     module: "Collection System Maintenance",
     question: "A sewer pipe with a PACP (Pipeline Assessment and Certification Program) score of 5 indicates:",
-    options: ["Excellent condition", "Immediate action required (worst condition)", "Moderate defects", "Minor defects only"],
-    correctAnswer: 1,
+    options: ["Excellent condition", "Minor defects only", "Moderate defects", "Immediate action required (worst condition)"],
+    correctAnswer: 3,
     explanation: "PACP scores range from 1 (best) to 5 (worst); a score of 5 indicates severe defects requiring immediate attention."
   },
   {
     id: 313,
     module: "Collection System Maintenance",
     question: "The purpose of a sewer system's emergency response plan (ERP) is to:",
-    options: ["Schedule routine maintenance", "Guide rapid, coordinated response to SSOs, blockages, and other emergencies", "Document capital projects", "Track employee training"],
-    correctAnswer: 1,
+    options: ["Guide rapid, coordinated response to SSOs, blockages, and other emergencies", "Schedule routine maintenance", "Document capital projects", "Track employee training"],
+    correctAnswer: 0,
     explanation: "An ERP provides procedures, contacts, and resources for rapid response to collection system emergencies."
   },
   {
@@ -3284,56 +3284,56 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 315,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's wet well should be cleaned:",
-    options: ["Only when a blockage occurs", "Regularly to remove accumulated grease, grit, and debris", "Annually regardless of condition", "Only when odour complaints are received"],
-    correctAnswer: 1,
+    options: ["Regularly to remove accumulated grease, grit, and debris", "Only when a blockage occurs", "Annually regardless of condition", "Only when odour complaints are received"],
+    correctAnswer: 0,
     explanation: "Regular wet well cleaning removes accumulated grease, grit, and rags that reduce capacity and cause pump problems."
   },
   {
     id: 316,
     module: "Equipment Operation & Maintenance",
     question: "The purpose of a pump station's ventilation system is to:",
-    options: ["Cool the pump motors", "Remove hazardous gases (H₂S, methane) and maintain safe atmosphere", "Reduce odours only", "Provide fresh air for operators working inside"],
-    correctAnswer: 1,
+    options: ["Cool the pump motors", "Reduce odours only", "Remove hazardous gases (H₂S, methane) and maintain safe atmosphere", "Provide fresh air for operators working inside"],
+    correctAnswer: 2,
     explanation: "Ventilation dilutes and removes H₂S, methane, and other hazardous gases from wet wells and pump rooms."
   },
   {
     id: 317,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's control panel should include:",
-    options: ["Only on/off switches", "Pump status indicators, alarms, level displays, and manual override controls", "Only alarm indicators", "Only automatic controls"],
-    correctAnswer: 1,
+    options: ["Pump status indicators, alarms, level displays, and manual override controls", "Only on/off switches", "Only alarm indicators", "Only automatic controls"],
+    correctAnswer: 0,
     explanation: "Control panels provide pump status, wet well level, alarm indicators, and manual override capability for operator control."
   },
   {
     id: 318,
     module: "Equipment Operation & Maintenance",
     question: "The purpose of a pump station's flow meter is to:",
-    options: ["Control pump speed", "Measure the volume of wastewater pumped for billing and reporting", "Detect blockages", "Control wet well level"],
-    correctAnswer: 1,
+    options: ["Measure the volume of wastewater pumped for billing and reporting", "Control pump speed", "Detect blockages", "Control wet well level"],
+    correctAnswer: 0,
     explanation: "Flow meters quantify pumped volumes for regulatory reporting, billing (where applicable), and system performance monitoring."
   },
   {
     id: 319,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's power factor correction capacitors are used to:",
-    options: ["Increase pump speed", "Improve electrical efficiency by reducing reactive power demand", "Provide backup power", "Control motor temperature"],
-    correctAnswer: 1,
+    options: ["Increase pump speed", "Provide backup power", "Improve electrical efficiency by reducing reactive power demand", "Control motor temperature"],
+    correctAnswer: 2,
     explanation: "Power factor correction capacitors reduce reactive power demand, improving electrical efficiency and reducing utility demand charges."
   },
   {
     id: 320,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's surge suppressor (surge tank or air vessel) is used to:",
-    options: ["Increase pump capacity", "Absorb pressure surges when pumps start or stop", "Store wastewater during peak flows", "Measure pump flow"],
-    correctAnswer: 1,
+    options: ["Increase pump capacity", "Measure pump flow", "Store wastewater during peak flows", "Absorb pressure surges when pumps start or stop"],
+    correctAnswer: 3,
     explanation: "Surge suppressors absorb pressure transients from pump starts/stops, protecting force mains and fittings from water hammer damage."
   },
   {
     id: 321,
     module: "Collection System Components",
     question: "A sewer system's design flow includes:",
-    options: ["Average daily flow only", "Average daily flow plus an allowance for I/I and peaking", "Peak wet weather flow only", "Minimum flow only"],
-    correctAnswer: 1,
+    options: ["Average daily flow only", "Minimum flow only", "Peak wet weather flow only", "Average daily flow plus an allowance for I/I and peaking"],
+    correctAnswer: 3,
     explanation: "Design flow includes average daily flow, I/I allowance, and a peaking factor to accommodate flow variations."
   },
   {
@@ -3348,16 +3348,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 323,
     module: "Collection System Components",
     question: "A sewer system's hydraulic model is used to:",
-    options: ["Track maintenance activities", "Simulate flow conditions and identify capacity deficiencies", "Calculate water rates", "Monitor water quality"],
-    correctAnswer: 1,
+    options: ["Simulate flow conditions and identify capacity deficiencies", "Track maintenance activities", "Calculate water rates", "Monitor water quality"],
+    correctAnswer: 0,
     explanation: "Hydraulic models simulate flow in the collection system, identifying capacity deficiencies and evaluating improvement options."
   },
   {
     id: 324,
     module: "Collection System Components",
     question: "A sewer system's flow monitoring program measures:",
-    options: ["Water quality only", "Flow rates and volumes at key locations to characterize system performance", "Pipe condition only", "Customer demand only"],
-    correctAnswer: 1,
+    options: ["Water quality only", "Customer demand only", "Pipe condition only", "Flow rates and volumes at key locations to characterize system performance"],
+    correctAnswer: 3,
     explanation: "Flow monitoring characterizes dry and wet weather flows, I/I contributions, and system performance at key locations."
   },
   {
@@ -3372,16 +3372,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 326,
     module: "Safety & Regulations",
     question: "A utility's incident investigation process should identify:",
-    options: ["Who is at fault", "Root causes and contributing factors to prevent recurrence", "Only direct causes", "Only equipment failures"],
-    correctAnswer: 1,
+    options: ["Root causes and contributing factors to prevent recurrence", "Who is at fault", "Only direct causes", "Only equipment failures"],
+    correctAnswer: 0,
     explanation: "Effective incident investigation identifies root causes (management system failures) and contributing factors to prevent recurrence."
   },
   {
     id: 327,
     module: "Safety & Regulations",
     question: "A utility operator's professional responsibility includes:",
-    options: ["Following orders regardless of safety concerns", "Refusing unsafe work and reporting hazards", "Only performing assigned tasks", "Only following written procedures"],
-    correctAnswer: 1,
+    options: ["Following orders regardless of safety concerns", "Only following written procedures", "Only performing assigned tasks", "Refusing unsafe work and reporting hazards"],
+    correctAnswer: 3,
     explanation: "Operators have both the right and responsibility to refuse unsafe work and report hazards to protect themselves and coworkers."
   },
   {
@@ -3396,136 +3396,136 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 329,
     module: "Safety & Regulations",
     question: "A utility operator should report a suspected illegal discharge to the sewer to:",
-    options: ["The media first", "The supervisor and regulatory authority as required by the sewer use bylaw", "Only the customer", "Only internal management"],
-    correctAnswer: 1,
+    options: ["The supervisor and regulatory authority as required by the sewer use bylaw", "The media first", "Only the customer", "Only internal management"],
+    correctAnswer: 0,
     explanation: "Suspected illegal discharges must be reported to supervisors and the regulatory authority for investigation and enforcement."
   },
   {
     id: 330,
     module: "Safety & Regulations",
     question: "The purpose of a utility's environmental management system (EMS) is to:",
-    options: ["Track employee performance", "Systematically manage environmental impacts and ensure regulatory compliance", "Calculate water rates", "Manage capital projects only"],
-    correctAnswer: 1,
+    options: ["Systematically manage environmental impacts and ensure regulatory compliance", "Track employee performance", "Calculate water rates", "Manage capital projects only"],
+    correctAnswer: 0,
     explanation: "An EMS (e.g., ISO 14001) provides a systematic framework for managing environmental impacts, compliance, and continuous improvement."
   },
   {
     id: 331,
     module: "Math & Calculations",
     question: "A sewer main is designed to carry a peak flow of 180 L/s in a 450 mm pipe. The flow velocity at peak flow is approximately:",
-    options: ["0.57 m/s", "1.13 m/s", "2.26 m/s", "4.52 m/s"],
-    correctAnswer: 1,
+    options: ["1.13 m/s", "0.57 m/s", "2.26 m/s", "4.52 m/s"],
+    correctAnswer: 0,
     explanation: "Area = π(0.225)² = 0.159 m²; V = Q/A = 0.180 / 0.159 = 1.13 m/s."
   },
   {
     id: 332,
     module: "Math & Calculations",
     question: "A pump delivers 95 L/s against a TDH of 22 m with an efficiency of 72%. The motor power required is approximately:",
-    options: ["14 kW", "28 kW", "56 kW", "112 kW"],
-    correctAnswer: 1,
+    options: ["14 kW", "56 kW", "28 kW", "112 kW"],
+    correctAnswer: 2,
     explanation: "Water power = ρgQH = 1,000 × 9.81 × 0.095 × 22 = 20,490 W; Motor power = 20,490 / 0.72 ≈ 28,458 W ≈ 28 kW."
   },
   {
     id: 333,
     module: "Math & Calculations",
     question: "A sewer system serves a population of 8,500 with an average per capita flow of 300 L/day. The average daily flow in L/s is approximately:",
-    options: ["15 L/s", "30 L/s", "45 L/s", "60 L/s"],
-    correctAnswer: 1,
+    options: ["15 L/s", "60 L/s", "45 L/s", "30 L/s"],
+    correctAnswer: 3,
     explanation: "Total = 8,500 × 300 = 2,550,000 L/day; 2,550,000 / 86,400 s/day ≈ 29.5 ≈ 30 L/s."
   },
   {
     id: 334,
     module: "Math & Calculations",
     question: "A wet well is 5 m × 4 m. The pump starts at an elevation of 2.8 m and stops at 1.2 m. The pump-on volume is:",
-    options: ["16 m³", "32 m³", "8 m³", "64 m³"],
-    correctAnswer: 1,
+    options: ["16 m³", "64 m³", "8 m³", "32 m³"],
+    correctAnswer: 3,
     explanation: "Volume = 5 × 4 × (2.8 - 1.2) = 20 × 1.6 = 32 m³."
   },
   {
     id: 335,
     module: "Math & Calculations",
     question: "If a 300 mm sewer pipe flows at 80% of full capacity, the flow depth is approximately:",
-    options: ["180 mm", "240 mm", "260 mm", "300 mm"],
-    correctAnswer: 2,
+    options: ["180 mm", "260 mm", "240 mm", "300 mm"],
+    correctAnswer: 1,
     explanation: "For circular pipes, 80% of full flow occurs at approximately 87% of full depth: 0.87 × 300 = 261 ≈ 260 mm."
   },
   {
     id: 336,
     module: "Collection System Maintenance",
     question: "A sewer system's annual maintenance cost per km of pipe is a useful metric for:",
-    options: ["Setting water rates", "Benchmarking maintenance efficiency against peer utilities", "Calculating depreciation", "Regulatory reporting"],
-    correctAnswer: 1,
+    options: ["Benchmarking maintenance efficiency against peer utilities", "Setting water rates", "Calculating depreciation", "Regulatory reporting"],
+    correctAnswer: 0,
     explanation: "Cost per km benchmarks allow comparison with peer utilities to identify whether maintenance spending is appropriate."
   },
   {
     id: 337,
     module: "Collection System Maintenance",
     question: "The purpose of a sewer system's condition assessment program is to:",
-    options: ["Measure flow rates", "Identify defects and prioritize rehabilitation and replacement", "Monitor water quality", "Track customer complaints"],
-    correctAnswer: 1,
+    options: ["Identify defects and prioritize rehabilitation and replacement", "Measure flow rates", "Monitor water quality", "Track customer complaints"],
+    correctAnswer: 0,
     explanation: "Condition assessment (CCTV, sonar) identifies structural and operational defects, informing rehabilitation prioritization."
   },
   {
     id: 338,
     module: "Collection System Maintenance",
     question: "A sewer system's asset register should include:",
-    options: ["Only pipe sizes", "Pipe material, diameter, age, location, condition, and maintenance history", "Only maintenance costs", "Only pipe locations"],
-    correctAnswer: 1,
+    options: ["Only pipe sizes", "Only maintenance costs", "Pipe material, diameter, age, location, condition, and maintenance history", "Only pipe locations"],
+    correctAnswer: 2,
     explanation: "A complete asset register includes all physical attributes, condition data, and maintenance history for each asset."
   },
   {
     id: 339,
     module: "Collection System Maintenance",
     question: "The purpose of a sewer system's customer service program is to:",
-    options: ["Collect fees", "Respond to complaints, provide information, and maintain public trust", "Satisfy regulatory requirements only", "Track system performance"],
-    correctAnswer: 1,
+    options: ["Respond to complaints, provide information, and maintain public trust", "Collect fees", "Satisfy regulatory requirements only", "Track system performance"],
+    correctAnswer: 0,
     explanation: "Customer service programs respond to complaints (odours, backups), provide information, and maintain community trust in the utility."
   },
   {
     id: 340,
     module: "Collection System Maintenance",
     question: "A sewer system's public education program should include information about:",
-    options: ["Rate structures only", "What not to flush (wipes, FOG, medications) to prevent blockages", "Treatment plant operations", "Regulatory requirements"],
-    correctAnswer: 1,
+    options: ["Rate structures only", "Treatment plant operations", "What not to flush (wipes, FOG, medications) to prevent blockages", "Regulatory requirements"],
+    correctAnswer: 2,
     explanation: "Public education about proper disposal practices (no wipes, no FOG, no medications) reduces blockages and environmental impacts."
   },
   {
     id: 341,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's maintenance log should record:",
-    options: ["Only major repairs", "All maintenance activities, observations, and equipment readings", "Only alarms", "Only pump runtime"],
-    correctAnswer: 1,
+    options: ["Only major repairs", "Only alarms", "All maintenance activities, observations, and equipment readings", "Only pump runtime"],
+    correctAnswer: 2,
     explanation: "Maintenance logs document all activities, observations, and readings, providing a history for troubleshooting and planning."
   },
   {
     id: 342,
     module: "Equipment Operation & Maintenance",
     question: "The purpose of a pump station's daily inspection is to:",
-    options: ["Replace worn parts", "Verify normal operation, check for alarms, and identify developing problems", "Clean the wet well", "Test the backup generator"],
-    correctAnswer: 1,
+    options: ["Verify normal operation, check for alarms, and identify developing problems", "Replace worn parts", "Clean the wet well", "Test the backup generator"],
+    correctAnswer: 0,
     explanation: "Daily inspections verify normal operation, check alarm status, and identify developing problems before they cause failures."
   },
   {
     id: 343,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's wet well level should be maintained:",
-    options: ["As high as possible", "Within the normal operating range to prevent overflow and dry running", "As low as possible", "At a fixed level always"],
-    correctAnswer: 1,
+    options: ["Within the normal operating range to prevent overflow and dry running", "As high as possible", "As low as possible", "At a fixed level always"],
+    correctAnswer: 0,
     explanation: "Wet well level must be kept within the operating range: high enough to prevent pump cavitation, low enough to prevent overflow."
   },
   {
     id: 344,
     module: "Equipment Operation & Maintenance",
     question: "A pump that runs continuously without cycling off may indicate:",
-    options: ["Normal operation at peak flow", "Inflow exceeding pump capacity, or a pump that is undersized", "Pump is operating efficiently", "Wet well level is too low"],
-    correctAnswer: 1,
+    options: ["Normal operation at peak flow", "Pump is operating efficiently", "Inflow exceeding pump capacity, or a pump that is undersized", "Wet well level is too low"],
+    correctAnswer: 2,
     explanation: "Continuous pump operation without cycling off indicates inflow exceeds pump capacity, risking wet well overflow."
   },
   {
     id: 345,
     module: "Equipment Operation & Maintenance",
     question: "A pump that cycles too frequently (short cycling) may indicate:",
-    options: ["High inflow", "Wet well volume is too small or pump capacity is too large", "Pump is operating efficiently", "Low inflow only"],
-    correctAnswer: 1,
+    options: ["Wet well volume is too small or pump capacity is too large", "High inflow", "Pump is operating efficiently", "Low inflow only"],
+    correctAnswer: 0,
     explanation: "Short cycling (too many starts per hour) indicates insufficient wet well storage relative to pump capacity, causing excessive motor wear."
   },
   {
@@ -3540,24 +3540,24 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 347,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's high-high level alarm indicates:",
-    options: ["Normal high water level", "Critical level requiring immediate response to prevent overflow", "Pump start signal", "Low level warning"],
-    correctAnswer: 1,
+    options: ["Normal high water level", "Low level warning", "Pump start signal", "Critical level requiring immediate response to prevent overflow"],
+    correctAnswer: 3,
     explanation: "High-high alarms indicate the wet well is approaching overflow; immediate response is required to prevent SSO."
   },
   {
     id: 348,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's dry-run protection prevents:",
-    options: ["Pump from running too fast", "Pump from operating without water, which causes overheating and damage", "Pump from starting too frequently", "Pump from running during power outages"],
-    correctAnswer: 1,
+    options: ["Pump from running too fast", "Pump from running during power outages", "Pump from starting too frequently", "Pump from operating without water, which causes overheating and damage"],
+    correctAnswer: 3,
     explanation: "Dry-run protection (level switches, thermal overloads) shuts down pumps if the wet well drops too low, preventing damage."
   },
   {
     id: 349,
     module: "Equipment Operation & Maintenance",
     question: "The purpose of alternating lead and lag pumps in a duplex station is to:",
-    options: ["Increase total pump capacity", "Equalize wear and ensure both pumps remain operational", "Reduce energy consumption", "Prevent short cycling"],
-    correctAnswer: 1,
+    options: ["Equalize wear and ensure both pumps remain operational", "Increase total pump capacity", "Reduce energy consumption", "Prevent short cycling"],
+    correctAnswer: 0,
     explanation: "Alternating lead/lag pumps equalizes runtime and wear on both pumps, ensuring both remain in working condition."
   },
   {
@@ -3580,80 +3580,80 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 352,
     module: "Collection System Components",
     question: "The purpose of a sewer system's overflow structure (weir) is to:",
-    options: ["Measure flow rates", "Provide a controlled discharge point when system capacity is exceeded", "Reduce pipe velocity", "Prevent backflow"],
-    correctAnswer: 1,
+    options: ["Measure flow rates", "Prevent backflow", "Reduce pipe velocity", "Provide a controlled discharge point when system capacity is exceeded"],
+    correctAnswer: 3,
     explanation: "Overflow weirs provide a controlled discharge point during capacity exceedances, directing overflow to a designated location."
   },
   {
     id: 353,
     module: "Collection System Components",
     question: "A sewer pipe's bedding material is important because:",
-    options: ["It improves flow velocity", "It provides uniform support to prevent pipe deflection and cracking", "It prevents root intrusion", "It reduces pipe corrosion"],
-    correctAnswer: 1,
+    options: ["It provides uniform support to prevent pipe deflection and cracking", "It improves flow velocity", "It prevents root intrusion", "It reduces pipe corrosion"],
+    correctAnswer: 0,
     explanation: "Proper bedding distributes loads evenly along the pipe, preventing point loading that causes deflection and cracking."
   },
   {
     id: 354,
     module: "Collection System Components",
     question: "Pipe deflection in flexible pipes (PVC, HDPE) is a concern because:",
-    options: ["It increases flow capacity", "Excessive deflection can cause joint failure and structural collapse", "It reduces friction losses", "It improves pipe flexibility"],
-    correctAnswer: 1,
+    options: ["It increases flow capacity", "It reduces friction losses", "Excessive deflection can cause joint failure and structural collapse", "It improves pipe flexibility"],
+    correctAnswer: 2,
     explanation: "Excessive deflection (>5% of diameter) in flexible pipes causes joint failure, cracking, and eventual structural collapse."
   },
   {
     id: 355,
     module: "Collection System Components",
     question: "The purpose of a sewer system's air gap at a manhole is to:",
-    options: ["Provide ventilation", "Prevent pressure surges from traveling upstream", "Measure flow", "Reduce odours"],
-    correctAnswer: 1,
+    options: ["Provide ventilation", "Measure flow", "Prevent pressure surges from traveling upstream", "Reduce odours"],
+    correctAnswer: 2,
     explanation: "Air gaps at manholes break pressure surges and prevent them from propagating upstream in the gravity sewer."
   },
   {
     id: 356,
     module: "Collection System Components",
     question: "A sewer system's service lateral inspection is important because:",
-    options: ["Laterals carry most of the flow", "Defective laterals are a major source of I/I and SSOs", "Laterals are the largest pipes", "Laterals are always in good condition"],
-    correctAnswer: 1,
+    options: ["Defective laterals are a major source of I/I and SSOs", "Laterals carry most of the flow", "Laterals are the largest pipes", "Laterals are always in good condition"],
+    correctAnswer: 0,
     explanation: "Defective building laterals (cracked, offset joints) are a significant source of I/I and can cause basement backups."
   },
   {
     id: 357,
     module: "Equipment Operation & Maintenance",
     question: "A pump's impeller clearance should be checked because:",
-    options: ["It affects motor speed", "Excessive clearance reduces pump efficiency and capacity", "It affects electrical consumption only", "It has no effect on performance"],
-    correctAnswer: 1,
+    options: ["It affects motor speed", "It has no effect on performance", "It affects electrical consumption only", "Excessive clearance reduces pump efficiency and capacity"],
+    correctAnswer: 3,
     explanation: "Impeller clearance (gap between impeller and wear ring) increases with wear, reducing pump efficiency and capacity."
   },
   {
     id: 358,
     module: "Equipment Operation & Maintenance",
     question: "A pump's wear rings are replaced when:",
-    options: ["They are visually dirty", "Clearance exceeds manufacturer's specification, reducing efficiency", "The pump is 5 years old", "The motor is replaced"],
-    correctAnswer: 1,
+    options: ["They are visually dirty", "The motor is replaced", "The pump is 5 years old", "Clearance exceeds manufacturer's specification, reducing efficiency"],
+    correctAnswer: 3,
     explanation: "Wear rings are replaced when clearance exceeds specifications (typically 2–3× original clearance), restoring pump efficiency."
   },
   {
     id: 359,
     module: "Equipment Operation & Maintenance",
     question: "A pump's shaft alignment is important because:",
-    options: ["It affects pump color", "Misalignment causes vibration, bearing wear, and seal failure", "It affects flow direction", "It affects motor voltage"],
-    correctAnswer: 1,
+    options: ["Misalignment causes vibration, bearing wear, and seal failure", "It affects pump color", "It affects flow direction", "It affects motor voltage"],
+    correctAnswer: 0,
     explanation: "Shaft misalignment causes vibration, premature bearing and seal failure, and reduced pump life."
   },
   {
     id: 360,
     module: "Equipment Operation & Maintenance",
     question: "Vibration analysis of a pump motor can detect:",
-    options: ["Flow rate", "Bearing wear, imbalance, misalignment, and cavitation", "Motor voltage", "Wet well level"],
-    correctAnswer: 1,
+    options: ["Bearing wear, imbalance, misalignment, and cavitation", "Flow rate", "Motor voltage", "Wet well level"],
+    correctAnswer: 0,
     explanation: "Vibration analysis identifies developing mechanical problems (bearing wear, imbalance, misalignment) before they cause failure."
   },
   {
     id: 361,
     module: "Equipment Operation & Maintenance",
     question: "A pump's motor insulation resistance should be tested with a:",
-    options: ["Voltmeter", "Megohmmeter (megger)", "Ammeter", "Oscilloscope"],
-    correctAnswer: 1,
+    options: ["Voltmeter", "Ammeter", "Megohmmeter (megger)", "Oscilloscope"],
+    correctAnswer: 2,
     explanation: "A megohmmeter tests motor winding insulation resistance; low resistance indicates moisture ingress or insulation breakdown."
   },
   {
@@ -3684,8 +3684,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 365,
     module: "Equipment Operation & Maintenance",
     question: "The purpose of a pump station's flow totalizer is to:",
-    options: ["Control pump speed", "Accumulate total volume pumped over time for reporting", "Measure instantaneous flow only", "Control wet well level"],
-    correctAnswer: 1,
+    options: ["Control pump speed", "Control wet well level", "Measure instantaneous flow only", "Accumulate total volume pumped over time for reporting"],
+    correctAnswer: 3,
     explanation: "Flow totalizers accumulate total pumped volume, providing data for regulatory reporting, billing, and system analysis."
   },
   {
@@ -3700,8 +3700,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 367,
     module: "Math & Calculations",
     question: "A pump delivers 75 L/s. The force main is 150 mm diameter. The flow velocity is approximately:",
-    options: ["2.1 m/s", "4.2 m/s", "6.4 m/s", "8.5 m/s"],
-    correctAnswer: 1,
+    options: ["2.1 m/s", "8.5 m/s", "6.4 m/s", "4.2 m/s"],
+    correctAnswer: 3,
     explanation: "Area = π(0.075)² = 0.01767 m²; V = 0.075 / 0.01767 = 4.25 ≈ 4.2 m/s."
   },
   {
@@ -3724,16 +3724,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 370,
     module: "Math & Calculations",
     question: "A 200 mm force main is 800 m long. The pump delivers 40 L/s. The Hazen-Williams C is 130. The approximate friction head loss is:",
-    options: ["8 m", "18 m", "28 m", "38 m"],
-    correctAnswer: 2,
+    options: ["8 m", "28 m", "18 m", "38 m"],
+    correctAnswer: 1,
     explanation: "Using Hazen-Williams for 200 mm pipe at 40 L/s with C=130 over 800 m gives approximately 25-30 m head loss."
   },
   {
     id: 371,
     module: "Math & Calculations",
     question: "A pump station has 2 pumps each rated at 60 L/s. The system requires 100 L/s at peak. The pumps should be operated:",
-    options: ["Both pumps at 50 L/s each", "Both pumps in parallel to deliver 100 L/s (assuming system curve allows)", "One pump only", "Pumps in series"],
-    correctAnswer: 1,
+    options: ["Both pumps in parallel to deliver 100 L/s (assuming system curve allows)", "Both pumps at 50 L/s each", "One pump only", "Pumps in series"],
+    correctAnswer: 0,
     explanation: "Parallel operation combines pump flows; with two 60 L/s pumps in parallel, the combined capacity can meet the 100 L/s peak demand."
   },
   {
@@ -3748,16 +3748,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 373,
     module: "Math & Calculations",
     question: "A sewer pipe carries 120 L/s at a velocity of 1.5 m/s. The pipe cross-sectional area is:",
-    options: ["0.04 m²", "0.08 m²", "0.12 m²", "0.16 m²"],
-    correctAnswer: 1,
+    options: ["0.08 m²", "0.04 m²", "0.12 m²", "0.16 m²"],
+    correctAnswer: 0,
     explanation: "Area = Q/V = 0.120 / 1.5 = 0.08 m²."
   },
   {
     id: 374,
     module: "Math & Calculations",
     question: "A circular pipe with area = 0.08 m² has a diameter of approximately:",
-    options: ["250 mm", "320 mm", "400 mm", "500 mm"],
-    correctAnswer: 1,
+    options: ["320 mm", "250 mm", "400 mm", "500 mm"],
+    correctAnswer: 0,
     explanation: "A = πD²/4; D = √(4A/π) = √(4 × 0.08 / π) = √(0.1019) = 0.319 m ≈ 320 mm."
   },
   {
@@ -3772,8 +3772,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 376,
     module: "Environmental & Public Health",
     question: "Wastewater epidemiology (wastewater-based surveillance) can be used to:",
-    options: ["Measure BOD only", "Monitor community health by detecting pathogens and chemicals in sewage", "Measure pipe flow", "Detect pipe defects"],
-    correctAnswer: 1,
+    options: ["Monitor community health by detecting pathogens and chemicals in sewage", "Measure BOD only", "Measure pipe flow", "Detect pipe defects"],
+    correctAnswer: 0,
     explanation: "Wastewater surveillance detects viruses (COVID-19, polio), drugs, and other markers in sewage to monitor community health trends."
   },
   {
@@ -3788,48 +3788,48 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 378,
     module: "Environmental & Public Health",
     question: "Cryptosporidium and Giardia in wastewater are concerns because:",
-    options: ["They corrode pipes", "They are resistant to chlorine disinfection and can cause waterborne illness", "They increase BOD", "They generate H₂S"],
-    correctAnswer: 1,
+    options: ["They corrode pipes", "They increase BOD", "They are resistant to chlorine disinfection and can cause waterborne illness", "They generate H₂S"],
+    correctAnswer: 2,
     explanation: "Cryptosporidium and Giardia cysts/oocysts are resistant to chlorine; if they reach drinking water, they cause gastrointestinal illness."
   },
   {
     id: 379,
     module: "Environmental & Public Health",
     question: "The purpose of a utility's spill response plan is to:",
-    options: ["Satisfy insurance requirements", "Minimize environmental and public health impacts from sewage spills", "Track employee performance", "Calculate spill volumes only"],
-    correctAnswer: 1,
+    options: ["Satisfy insurance requirements", "Track employee performance", "Minimize environmental and public health impacts from sewage spills", "Calculate spill volumes only"],
+    correctAnswer: 2,
     explanation: "Spill response plans provide procedures to contain, clean up, and report sewage spills, minimizing environmental and health impacts."
   },
   {
     id: 380,
     module: "Environmental & Public Health",
     question: "A utility's public notification requirement after an SSO is to:",
-    options: ["Notify only internal staff", "Notify the public and regulatory authority within required timeframes", "Notify only neighboring utilities", "Notify only the media"],
-    correctAnswer: 1,
+    options: ["Notify only internal staff", "Notify only the media", "Notify only neighboring utilities", "Notify the public and regulatory authority within required timeframes"],
+    correctAnswer: 3,
     explanation: "SSO notification requirements vary by jurisdiction but typically require public and regulatory notification within 24–48 hours."
   },
   {
     id: 381,
     module: "Collection System Maintenance",
     question: "A sewer system's root control program should include:",
-    options: ["Only chemical treatment", "Chemical treatment, mechanical cutting, and pipe rehabilitation as needed", "Only mechanical cutting", "Only pipe replacement"],
-    correctAnswer: 1,
+    options: ["Only chemical treatment", "Only mechanical cutting", "Chemical treatment, mechanical cutting, and pipe rehabilitation as needed", "Only pipe replacement"],
+    correctAnswer: 2,
     explanation: "Effective root control combines chemical treatment (to kill roots), mechanical cutting (to remove them), and rehabilitation (to seal entry points)."
   },
   {
     id: 382,
     module: "Collection System Maintenance",
     question: "A sewer system's grease control program should include:",
-    options: ["Only grease trap inspections", "Grease trap inspections, public education, and enforcement of sewer use bylaws", "Only public education", "Only jetting of grease-blocked pipes"],
-    correctAnswer: 1,
+    options: ["Grease trap inspections, public education, and enforcement of sewer use bylaws", "Only grease trap inspections", "Only public education", "Only jetting of grease-blocked pipes"],
+    correctAnswer: 0,
     explanation: "Effective grease control requires grease trap inspection/maintenance, public education about FOG disposal, and enforcement."
   },
   {
     id: 383,
     module: "Collection System Maintenance",
     question: "A sewer system's I/I reduction program may include:",
-    options: ["Only pipe replacement", "Manhole rehabilitation, pipe lining, lateral inspection, and joint sealing", "Only flow monitoring", "Only smoke testing"],
-    correctAnswer: 1,
+    options: ["Manhole rehabilitation, pipe lining, lateral inspection, and joint sealing", "Only pipe replacement", "Only flow monitoring", "Only smoke testing"],
+    correctAnswer: 0,
     explanation: "I/I reduction requires a combination of source identification (smoke testing, flow monitoring) and rehabilitation (lining, grouting, sealing)."
   },
   {
@@ -3844,80 +3844,80 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 385,
     module: "Collection System Maintenance",
     question: "A sewer system's level of service (LOS) standards define:",
-    options: ["Employee performance standards", "Acceptable performance targets for SSO frequency, response time, and maintenance", "Regulatory compliance requirements only", "Capital project priorities"],
-    correctAnswer: 1,
+    options: ["Employee performance standards", "Capital project priorities", "Regulatory compliance requirements only", "Acceptable performance targets for SSO frequency, response time, and maintenance"],
+    correctAnswer: 3,
     explanation: "LOS standards define acceptable performance targets (e.g., <1 SSO/100 km/year, <2 hour response time) for the collection system."
   },
   {
     id: 386,
     module: "Safety & Regulations",
     question: "A utility's confined space entry program must include:",
-    options: ["Only atmospheric testing procedures", "Written program, training, permits, equipment, and rescue procedures", "Only rescue procedures", "Only permit requirements"],
-    correctAnswer: 1,
+    options: ["Only atmospheric testing procedures", "Only rescue procedures", "Written program, training, permits, equipment, and rescue procedures", "Only permit requirements"],
+    correctAnswer: 2,
     explanation: "A complete confined space program includes written procedures, training, permit system, required equipment, and rescue plan."
   },
   {
     id: 387,
     module: "Safety & Regulations",
     question: "The purpose of a utility's hot work permit is to:",
-    options: ["Allow welding without safety checks", "Control fire and explosion risks during welding, cutting, and grinding", "Satisfy insurance requirements only", "Document completed work"],
-    correctAnswer: 1,
+    options: ["Control fire and explosion risks during welding, cutting, and grinding", "Allow welding without safety checks", "Satisfy insurance requirements only", "Document completed work"],
+    correctAnswer: 0,
     explanation: "Hot work permits ensure fire/explosion hazards are identified and controlled before welding, cutting, or grinding operations."
   },
   {
     id: 388,
     module: "Safety & Regulations",
     question: "A utility's excavation permit ensures:",
-    options: ["Only that the excavation is deep enough", "Underground utilities are located, safety measures are in place, and work is authorized", "Only that the work is completed on time", "Only regulatory compliance"],
-    correctAnswer: 1,
+    options: ["Underground utilities are located, safety measures are in place, and work is authorized", "Only that the excavation is deep enough", "Only that the work is completed on time", "Only regulatory compliance"],
+    correctAnswer: 0,
     explanation: "Excavation permits require utility locates (Call Before You Dig), trench safety measures, and authorization before digging."
   },
   {
     id: 389,
     module: "Safety & Regulations",
     question: "A utility's vehicle safety program should include:",
-    options: ["Only driver licensing checks", "Pre-trip inspections, defensive driving training, and load securement", "Only speed limits", "Only accident reporting"],
-    correctAnswer: 1,
+    options: ["Only driver licensing checks", "Only accident reporting", "Only speed limits", "Pre-trip inspections, defensive driving training, and load securement"],
+    correctAnswer: 3,
     explanation: "Vehicle safety programs include pre-trip inspections, driver training, load securement, and accident reporting and investigation."
   },
   {
     id: 390,
     module: "Safety & Regulations",
     question: "A utility's ergonomics program addresses:",
-    options: ["Office furniture only", "Musculoskeletal injury risks from lifting, repetitive motion, and awkward postures", "Noise exposure only", "Chemical exposure only"],
-    correctAnswer: 1,
+    options: ["Office furniture only", "Noise exposure only", "Musculoskeletal injury risks from lifting, repetitive motion, and awkward postures", "Chemical exposure only"],
+    correctAnswer: 2,
     explanation: "Ergonomics programs address MSI risks from manual material handling, repetitive tasks, and awkward postures in field work."
   },
   {
     id: 391,
     module: "Safety & Regulations",
     question: "A utility's violence and harassment prevention program is required to:",
-    options: ["Only address physical violence", "Address all forms of workplace harassment and violence, including verbal and psychological", "Only satisfy legal requirements", "Only apply to office workers"],
-    correctAnswer: 1,
+    options: ["Address all forms of workplace harassment and violence, including verbal and psychological", "Only address physical violence", "Only satisfy legal requirements", "Only apply to office workers"],
+    correctAnswer: 0,
     explanation: "Workplace violence and harassment programs must address all forms (physical, verbal, psychological) and apply to all workers."
   },
   {
     id: 392,
     module: "Safety & Regulations",
     question: "A utility's return-to-work program is designed to:",
-    options: ["Reduce employee benefits", "Facilitate injured workers' safe return to productive work", "Avoid workers' compensation costs only", "Satisfy legal requirements only"],
-    correctAnswer: 1,
+    options: ["Reduce employee benefits", "Satisfy legal requirements only", "Avoid workers' compensation costs only", "Facilitate injured workers' safe return to productive work"],
+    correctAnswer: 3,
     explanation: "Return-to-work programs support injured workers' recovery and safe return to productive employment, benefiting both worker and employer."
   },
   {
     id: 393,
     module: "Safety & Regulations",
     question: "A utility's emergency response plan should be:",
-    options: ["Developed once and never updated", "Regularly reviewed, updated, and tested through drills", "Only available to management", "Only for major emergencies"],
-    correctAnswer: 1,
+    options: ["Developed once and never updated", "Only available to management", "Regularly reviewed, updated, and tested through drills", "Only for major emergencies"],
+    correctAnswer: 2,
     explanation: "Emergency response plans must be regularly reviewed, updated to reflect changes, and tested through exercises and drills."
   },
   {
     id: 394,
     module: "Safety & Regulations",
     question: "A utility's regulatory compliance calendar tracks:",
-    options: ["Employee vacation schedules", "Reporting deadlines, permit renewals, and inspection requirements", "Capital project milestones", "Customer billing cycles"],
-    correctAnswer: 1,
+    options: ["Employee vacation schedules", "Customer billing cycles", "Capital project milestones", "Reporting deadlines, permit renewals, and inspection requirements"],
+    correctAnswer: 3,
     explanation: "Compliance calendars track all regulatory deadlines (reports, permits, inspections) to ensure timely compliance."
   },
   {
@@ -3932,8 +3932,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 396,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's energy audit is conducted to:",
-    options: ["Satisfy regulatory requirements", "Identify opportunities to reduce energy consumption and costs", "Calculate pump capacity", "Verify pump performance only"],
-    correctAnswer: 1,
+    options: ["Satisfy regulatory requirements", "Verify pump performance only", "Calculate pump capacity", "Identify opportunities to reduce energy consumption and costs"],
+    correctAnswer: 3,
     explanation: "Energy audits identify inefficiencies (pump operating off BEP, VFD opportunities, lighting) to reduce energy costs."
   },
   {
@@ -3948,8 +3948,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 398,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's energy consumption is primarily determined by:",
-    options: ["Wet well size", "Flow rate, total dynamic head, and pump efficiency", "Pipe material", "Number of pumps"],
-    correctAnswer: 1,
+    options: ["Flow rate, total dynamic head, and pump efficiency", "Wet well size", "Pipe material", "Number of pumps"],
+    correctAnswer: 0,
     explanation: "Energy consumption = ρgQH / efficiency; it depends on flow rate, TDH, and pump/motor efficiency."
   },
   {
@@ -3964,32 +3964,32 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 400,
     module: "Collection System Components",
     question: "A sewer system's overflow relief structure is designed to activate:",
-    options: ["During normal dry weather flows", "Only when system capacity is exceeded during wet weather", "When the pump station is offline", "During peak dry weather flows"],
-    correctAnswer: 1,
+    options: ["During normal dry weather flows", "During peak dry weather flows", "When the pump station is offline", "Only when system capacity is exceeded during wet weather"],
+    correctAnswer: 3,
     explanation: "Overflow relief structures activate only when wet weather flows exceed system capacity, providing a controlled overflow point."
   },
   {
     id: 401,
     module: "Collection System Components",
     question: "The purpose of a sewer system's flow equalization basin is to:",
-    options: ["Treat wastewater", "Store peak flows and release them at a controlled rate to the treatment plant", "Measure flow rates", "Remove solids from wastewater"],
-    correctAnswer: 1,
+    options: ["Treat wastewater", "Measure flow rates", "Store peak flows and release them at a controlled rate to the treatment plant", "Remove solids from wastewater"],
+    correctAnswer: 2,
     explanation: "Equalization basins store peak wet weather flows and release them at a controlled rate, reducing treatment plant loading."
   },
   {
     id: 402,
     module: "Collection System Components",
     question: "A sewer system's pump station force main should be designed with a minimum velocity of:",
-    options: ["0.3 m/s", "0.6–0.9 m/s to prevent solids deposition", "1.5 m/s", "3.0 m/s"],
-    correctAnswer: 1,
+    options: ["0.3 m/s", "1.5 m/s", "0.6–0.9 m/s to prevent solids deposition", "3.0 m/s"],
+    correctAnswer: 2,
     explanation: "Force mains require minimum velocities of 0.6–0.9 m/s (2–3 fps) to prevent solids deposition and septicity."
   },
   {
     id: 403,
     module: "Collection System Components",
     question: "A sewer system's force main should be designed with a maximum velocity of approximately:",
-    options: ["1.0 m/s", "3.0 m/s to prevent water hammer and pipe erosion", "5.0 m/s", "0.5 m/s"],
-    correctAnswer: 1,
+    options: ["1.0 m/s", "5.0 m/s", "3.0 m/s to prevent water hammer and pipe erosion", "0.5 m/s"],
+    correctAnswer: 2,
     explanation: "Maximum force main velocity is typically limited to 3.0 m/s (10 fps) to prevent excessive water hammer and pipe erosion."
   },
   {
@@ -4020,32 +4020,32 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 407,
     module: "Math & Calculations",
     question: "A pump station's average daily energy consumption is 450 kWh. The electricity rate is $0.12/kWh. The annual energy cost is approximately:",
-    options: ["$19,710", "$19,710", "$197,100", "$1,971"],
-    correctAnswer: 0,
+    options: ["$197,100", "$19,710", "$19,710", "$1,971"],
+    correctAnswer: 2,
     explanation: "Annual cost = 450 kWh/day × 365 days × $0.12/kWh = 164,250 kWh × $0.12 = $19,710."
   },
   {
     id: 408,
     module: "Math & Calculations",
     question: "A sewer system has 85 km of pipe. The average blockage rate is 0.8 blockages per km per year. The expected annual number of blockages is:",
-    options: ["34", "68", "85", "106"],
-    correctAnswer: 1,
+    options: ["68", "34", "85", "106"],
+    correctAnswer: 0,
     explanation: "Annual blockages = 85 km × 0.8 blockages/km/year = 68 blockages/year."
   },
   {
     id: 409,
     module: "Math & Calculations",
     question: "A wet well is 3 m × 4 m. The pump starts at 2.5 m depth and stops at 0.8 m depth. The pump-on volume is:",
-    options: ["10.2 m³", "20.4 m³", "30.6 m³", "40.8 m³"],
-    correctAnswer: 1,
+    options: ["20.4 m³", "10.2 m³", "30.6 m³", "40.8 m³"],
+    correctAnswer: 0,
     explanation: "Volume = 3 × 4 × (2.5 - 0.8) = 12 × 1.7 = 20.4 m³."
   },
   {
     id: 410,
     module: "Math & Calculations",
     question: "A pump delivers 110 L/s. The wet well volume between pump start and stop is 25 m³. If inflow is 60 L/s, the pump runtime per cycle is approximately:",
-    options: ["0.5 min", "1.0 min", "1.5 min", "2.0 min"],
-    correctAnswer: 1,
+    options: ["1.0 min", "0.5 min", "1.5 min", "2.0 min"],
+    correctAnswer: 0,
     explanation: "Net pumping rate = 110 - 60 = 50 L/s = 3 m³/min; Runtime = 25 m³ / 3 m³/min ≈ 8.3 min. Wait — fill time: 25 m³ / 0.060 m³/s = 417 s; pump runtime: 25 m³ / (0.110 - 0.060) m³/s = 25/0.050 = 500 s ≈ 8.3 min."
   },
   {
@@ -4076,24 +4076,24 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 414,
     module: "Math & Calculations",
     question: "A sewer main is 500 mm diameter and 1.5 km long. At a slope of 0.2%, the full-pipe flow capacity (Manning's n=0.013) is approximately:",
-    options: ["200 L/s", "400 L/s", "600 L/s", "800 L/s"],
-    correctAnswer: 1,
+    options: ["400 L/s", "200 L/s", "600 L/s", "800 L/s"],
+    correctAnswer: 0,
     explanation: "R = 0.125 m; V = (1/0.013) × 0.125^(2/3) × 0.002^(1/2) = 76.9 × 0.25 × 0.0447 = 0.86 m/s; Q = 0.86 × π(0.25)² = 0.86 × 0.196 = 0.169 m³/s ≈ 170 L/s. Closest is A) 200 L/s."
   },
   {
     id: 415,
     module: "Collection System Maintenance",
     question: "A sewer system's CCTV inspection program should inspect each pipe segment at least every:",
-    options: ["1 year", "5–10 years depending on pipe age, material, and risk", "20 years", "50 years"],
-    correctAnswer: 1,
+    options: ["1 year", "20 years", "5–10 years depending on pipe age, material, and risk", "50 years"],
+    correctAnswer: 2,
     explanation: "CCTV inspection frequency depends on pipe risk; high-risk pipes may be inspected every 5 years, lower-risk every 10 years."
   },
   {
     id: 416,
     module: "Collection System Maintenance",
     question: "A sewer system's flow monitoring program should include monitoring during:",
-    options: ["Dry weather only", "Both dry and wet weather to characterize I/I", "Wet weather only", "Only during regulatory inspections"],
-    correctAnswer: 1,
+    options: ["Dry weather only", "Wet weather only", "Both dry and wet weather to characterize I/I", "Only during regulatory inspections"],
+    correctAnswer: 2,
     explanation: "Flow monitoring during both dry and wet weather characterizes baseline flows and I/I contributions."
   },
   {
@@ -4124,64 +4124,64 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 420,
     module: "Collection System Maintenance",
     question: "A sewer system's risk assessment considers:",
-    options: ["Only pipe age", "Probability of failure and consequence of failure for each asset", "Only pipe material", "Only maintenance costs"],
-    correctAnswer: 1,
+    options: ["Probability of failure and consequence of failure for each asset", "Only pipe age", "Only pipe material", "Only maintenance costs"],
+    correctAnswer: 0,
     explanation: "Risk = probability of failure × consequence of failure; risk assessment prioritizes assets where both are high."
   },
   {
     id: 421,
     module: "Environmental & Public Health",
     question: "A sewer system's odour control chemical (iron salt) works by:",
-    options: ["Killing bacteria", "Precipitating sulfide as insoluble iron sulfide, preventing H₂S generation", "Raising pH to inhibit bacteria", "Oxidizing sulfide to sulfate"],
-    correctAnswer: 1,
+    options: ["Precipitating sulfide as insoluble iron sulfide, preventing H₂S generation", "Killing bacteria", "Raising pH to inhibit bacteria", "Oxidizing sulfide to sulfate"],
+    correctAnswer: 0,
     explanation: "Iron salts (FeCl₃, FeSO₄) react with sulfide to form insoluble iron sulfide, removing it from solution and preventing H₂S release."
   },
   {
     id: 422,
     module: "Environmental & Public Health",
     question: "Nitrate addition to a sewer system controls H₂S by:",
-    options: ["Killing sulfate-reducing bacteria", "Providing an alternative electron acceptor, suppressing sulfate reduction", "Raising pH", "Precipitating sulfide"],
-    correctAnswer: 1,
+    options: ["Killing sulfate-reducing bacteria", "Raising pH", "Providing an alternative electron acceptor, suppressing sulfate reduction", "Precipitating sulfide"],
+    correctAnswer: 2,
     explanation: "Nitrate provides an alternative electron acceptor for bacteria, suppressing sulfate-reducing bacteria and H₂S generation."
   },
   {
     id: 423,
     module: "Environmental & Public Health",
     question: "Oxygen injection into a force main controls H₂S by:",
-    options: ["Killing bacteria", "Maintaining aerobic conditions that prevent sulfate-reducing bacteria activity", "Raising pH", "Precipitating sulfide"],
-    correctAnswer: 1,
+    options: ["Killing bacteria", "Precipitating sulfide", "Raising pH", "Maintaining aerobic conditions that prevent sulfate-reducing bacteria activity"],
+    correctAnswer: 3,
     explanation: "Oxygen injection maintains aerobic conditions in the force main, preventing the anaerobic conditions needed for H₂S generation."
   },
   {
     id: 424,
     module: "Environmental & Public Health",
     question: "A sewer system's odour monitoring program measures:",
-    options: ["Only H₂S", "H₂S, ammonia, VOCs, and odour intensity at key locations", "Only flow rates", "Only pipe condition"],
-    correctAnswer: 1,
+    options: ["Only H₂S", "Only flow rates", "H₂S, ammonia, VOCs, and odour intensity at key locations", "Only pipe condition"],
+    correctAnswer: 2,
     explanation: "Odour monitoring measures multiple compounds (H₂S, ammonia, VOCs) and odour intensity to characterize and manage odour impacts."
   },
   {
     id: 425,
     module: "Environmental & Public Health",
     question: "A sewer system's environmental impact assessment considers:",
-    options: ["Only SSO frequency", "Receiving water quality, aquatic habitat, and public health impacts", "Only treatment plant performance", "Only regulatory compliance"],
-    correctAnswer: 1,
+    options: ["Only SSO frequency", "Only treatment plant performance", "Receiving water quality, aquatic habitat, and public health impacts", "Only regulatory compliance"],
+    correctAnswer: 2,
     explanation: "Environmental impact assessments evaluate SSO impacts on receiving water quality, aquatic ecosystems, and public health."
   },
   {
     id: 426,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's preventive maintenance schedule should be based on:",
-    options: ["Calendar time only", "Manufacturer recommendations, operating hours, and condition monitoring data", "Equipment age only", "Regulatory requirements only"],
-    correctAnswer: 1,
+    options: ["Calendar time only", "Equipment age only", "Manufacturer recommendations, operating hours, and condition monitoring data", "Regulatory requirements only"],
+    correctAnswer: 2,
     explanation: "PM schedules combine manufacturer recommendations, runtime hours, and condition monitoring data for optimal maintenance timing."
   },
   {
     id: 427,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's condition-based maintenance (CBM) program uses:",
-    options: ["Calendar-based intervals only", "Vibration, temperature, and performance data to trigger maintenance", "Only visual inspection", "Only runtime hours"],
-    correctAnswer: 1,
+    options: ["Calendar-based intervals only", "Only visual inspection", "Vibration, temperature, and performance data to trigger maintenance", "Only runtime hours"],
+    correctAnswer: 2,
     explanation: "CBM uses real-time condition data (vibration, temperature, performance trends) to trigger maintenance only when needed."
   },
   {
@@ -4204,24 +4204,24 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 430,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's maintenance budget should be based on:",
-    options: ["Previous year's budget only", "Asset inventory, condition, maintenance history, and planned activities", "Regulatory requirements only", "Available funding only"],
-    correctAnswer: 1,
+    options: ["Previous year's budget only", "Available funding only", "Regulatory requirements only", "Asset inventory, condition, maintenance history, and planned activities"],
+    correctAnswer: 3,
     explanation: "Maintenance budgets should be based on asset inventory, condition assessment, maintenance history, and planned activities."
   },
   {
     id: 431,
     module: "Collection System Components",
     question: "A sewer system's pipe joint type affects:",
-    options: ["Only flow capacity", "I/I susceptibility, structural integrity, and flexibility", "Only pipe material", "Only installation cost"],
-    correctAnswer: 1,
+    options: ["Only flow capacity", "Only installation cost", "Only pipe material", "I/I susceptibility, structural integrity, and flexibility"],
+    correctAnswer: 3,
     explanation: "Joint type affects I/I susceptibility (rubber gasket vs. mortar), structural integrity (rigid vs. flexible), and deflection tolerance."
   },
   {
     id: 432,
     module: "Collection System Components",
     question: "A sewer system's pipe lining material (CIPP) provides:",
-    options: ["Only structural reinforcement", "Structural reinforcement, corrosion resistance, and I/I reduction", "Only I/I reduction", "Only corrosion resistance"],
-    correctAnswer: 1,
+    options: ["Only structural reinforcement", "Only corrosion resistance", "Only I/I reduction", "Structural reinforcement, corrosion resistance, and I/I reduction"],
+    correctAnswer: 3,
     explanation: "CIPP liners provide structural reinforcement, corrosion resistance, and seal joints to reduce I/I."
   },
   {
@@ -4236,40 +4236,40 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 434,
     module: "Collection System Components",
     question: "A sewer system's manhole frame and cover should be:",
-    options: ["Set above grade to prevent flooding", "Set at grade to prevent trip hazards and allow traffic flow", "Set below grade to reduce visibility", "Set 50 mm above grade always"],
-    correctAnswer: 1,
+    options: ["Set above grade to prevent flooding", "Set 50 mm above grade always", "Set below grade to reduce visibility", "Set at grade to prevent trip hazards and allow traffic flow"],
+    correctAnswer: 3,
     explanation: "Manhole frames and covers should be set at grade to prevent trip hazards; in flood-prone areas, watertight covers may be used."
   },
   {
     id: 435,
     module: "Collection System Components",
     question: "A sewer system's pipe bedding class determines:",
-    options: ["Only pipe cost", "The load-bearing capacity and deflection resistance of the pipe installation", "Only installation method", "Only pipe material"],
-    correctAnswer: 1,
+    options: ["Only pipe cost", "Only installation method", "The load-bearing capacity and deflection resistance of the pipe installation", "Only pipe material"],
+    correctAnswer: 2,
     explanation: "Bedding class (ASTM A, B, C, D) determines the load distribution and structural support provided to the pipe."
   },
   {
     id: 436,
     module: "Math & Calculations",
     question: "A sewer system has an average daily flow of 3,200 m³/day. The I/I allowance is 20% of average daily flow. The design flow is:",
-    options: ["3,200 m³/day", "3,840 m³/day", "6,400 m³/day", "2,560 m³/day"],
-    correctAnswer: 1,
+    options: ["3,840 m³/day", "3,200 m³/day", "6,400 m³/day", "2,560 m³/day"],
+    correctAnswer: 0,
     explanation: "Design flow = average flow + I/I = 3,200 + (0.20 × 3,200) = 3,200 + 640 = 3,840 m³/day."
   },
   {
     id: 437,
     module: "Math & Calculations",
     question: "A pump operates at 1,450 RPM and delivers 80 L/s at 15 m TDH. If speed is reduced to 1,100 RPM, the new TDH is approximately:",
-    options: ["5.8 m", "8.6 m", "11.4 m", "15 m"],
-    correctAnswer: 1,
+    options: ["5.8 m", "15 m", "11.4 m", "8.6 m"],
+    correctAnswer: 3,
     explanation: "By affinity laws, H₂ = H₁ × (N₂/N₁)² = 15 × (1,100/1,450)² = 15 × 0.575 = 8.6 m."
   },
   {
     id: 438,
     module: "Math & Calculations",
     question: "A sewer system serves a population of 12,000 with an average per capita flow of 320 L/day. The peak flow factor is 3.0. The design peak flow in L/s is approximately:",
-    options: ["44 L/s", "133 L/s", "400 L/s", "1,333 L/s"],
-    correctAnswer: 1,
+    options: ["44 L/s", "1,333 L/s", "400 L/s", "133 L/s"],
+    correctAnswer: 3,
     explanation: "Average flow = 12,000 × 320 = 3,840,000 L/day = 44.4 L/s; Peak = 44.4 × 3.0 = 133 L/s."
   },
   {
@@ -4284,8 +4284,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 440,
     module: "Math & Calculations",
     question: "A wet well is 4 m × 4 m. The inflow is 50 L/s and the pump capacity is 120 L/s. The time to pump down 1.5 m of wet well is approximately:",
-    options: ["1.7 min", "3.4 min", "6.8 min", "13.6 min"],
-    correctAnswer: 1,
+    options: ["1.7 min", "13.6 min", "6.8 min", "3.4 min"],
+    correctAnswer: 3,
     explanation: "Net pumping rate = 120 - 50 = 70 L/s = 4.2 m³/min; Volume = 4 × 4 × 1.5 = 24 m³; Time = 24 / 4.2 = 5.7 min ≈ closest to B) 3.4 min. Recalculating: 70 L/s × 60 = 4,200 L/min = 4.2 m³/min; 24 m³ / 4.2 = 5.7 min. Closest answer is B."
   },
   {
@@ -4300,24 +4300,24 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 442,
     module: "Safety & Regulations",
     question: "A utility's stormwater pollution prevention plan (SWPPP) is required to:",
-    options: ["Manage sanitary sewer overflows", "Prevent stormwater from carrying pollutants from utility facilities to waterways", "Manage treatment plant effluent", "Control groundwater contamination"],
-    correctAnswer: 1,
+    options: ["Manage sanitary sewer overflows", "Control groundwater contamination", "Manage treatment plant effluent", "Prevent stormwater from carrying pollutants from utility facilities to waterways"],
+    correctAnswer: 3,
     explanation: "SWPPPs identify and control pollutant sources at utility facilities that could be carried by stormwater to receiving waters."
   },
   {
     id: 443,
     module: "Safety & Regulations",
     question: "A utility's collection system permit (NPDES/PWQO) typically requires:",
-    options: ["Only flow monitoring", "SSO reporting, I/I reduction, capacity management, and maintenance programs", "Only treatment plant compliance", "Only capital project reporting"],
-    correctAnswer: 1,
+    options: ["Only flow monitoring", "Only capital project reporting", "Only treatment plant compliance", "SSO reporting, I/I reduction, capacity management, and maintenance programs"],
+    correctAnswer: 3,
     explanation: "Collection system permits require SSO reporting, I/I reduction programs, capacity management, and maintenance documentation."
   },
   {
     id: 444,
     module: "Safety & Regulations",
     question: "A utility's operator certification requirement ensures that:",
-    options: ["All employees are certified", "Operators have demonstrated competency to safely operate the collection system", "Only supervisors are certified", "Certification is optional"],
-    correctAnswer: 1,
+    options: ["Operators have demonstrated competency to safely operate the collection system", "All employees are certified", "Only supervisors are certified", "Certification is optional"],
+    correctAnswer: 0,
     explanation: "Operator certification ensures that collection system operators have demonstrated the knowledge and skills for safe, compliant operation."
   },
   {
@@ -4332,40 +4332,40 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 446,
     module: "Collection System Maintenance",
     question: "A sewer system's annual inspection program should include:",
-    options: ["Only CCTV inspection", "Visual inspection of manholes, pump stations, and high-risk pipe segments", "Only pump station inspection", "Only manhole inspection"],
-    correctAnswer: 1,
+    options: ["Visual inspection of manholes, pump stations, and high-risk pipe segments", "Only CCTV inspection", "Only pump station inspection", "Only manhole inspection"],
+    correctAnswer: 0,
     explanation: "Annual inspections cover manholes, pump stations, and high-risk pipe segments to identify problems early."
   },
   {
     id: 447,
     module: "Collection System Maintenance",
     question: "A sewer system's manhole inspection should check for:",
-    options: ["Only cover condition", "Cover condition, frame alignment, wall cracks, step condition, and I/I signs", "Only wall condition", "Only I/I signs"],
-    correctAnswer: 1,
+    options: ["Only cover condition", "Only wall condition", "Cover condition, frame alignment, wall cracks, step condition, and I/I signs", "Only I/I signs"],
+    correctAnswer: 2,
     explanation: "Manhole inspections assess all components: cover, frame, walls, steps, benching, and signs of I/I or structural problems."
   },
   {
     id: 448,
     module: "Collection System Maintenance",
     question: "A sewer system's pump station inspection should check for:",
-    options: ["Only pump operation", "Pump operation, wet well condition, electrical systems, alarms, and generator", "Only alarm systems", "Only wet well level"],
-    correctAnswer: 1,
+    options: ["Only pump operation", "Only alarm systems", "Pump operation, wet well condition, electrical systems, alarms, and generator", "Only wet well level"],
+    correctAnswer: 2,
     explanation: "Pump station inspections cover all systems: pumps, wet well, electrical, controls, alarms, generator, and odour control."
   },
   {
     id: 449,
     module: "Collection System Maintenance",
     question: "A sewer system's force main inspection may use:",
-    options: ["CCTV only", "Acoustic leak detection, pressure testing, or inline inspection tools", "Only visual inspection", "Only flow monitoring"],
-    correctAnswer: 1,
+    options: ["CCTV only", "Only visual inspection", "Acoustic leak detection, pressure testing, or inline inspection tools", "Only flow monitoring"],
+    correctAnswer: 2,
     explanation: "Force main inspection uses acoustic leak detection, pressure testing, or inline inspection (smart pigs) to assess condition."
   },
   {
     id: 450,
     module: "Collection System Maintenance",
     question: "A sewer system's emergency bypass pumping capability is important because:",
-    options: ["It reduces normal pump station costs", "It allows wastewater to be conveyed during pump station failures or maintenance", "It increases system capacity", "It reduces energy costs"],
-    correctAnswer: 1,
+    options: ["It allows wastewater to be conveyed during pump station failures or maintenance", "It reduces normal pump station costs", "It increases system capacity", "It reduces energy costs"],
+    correctAnswer: 0,
     explanation: "Emergency bypass pumping maintains wastewater conveyance during pump station failures, preventing SSOs."
   },
   {
@@ -4380,32 +4380,32 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 452,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's monthly maintenance should include:",
-    options: ["Bearing replacement", "Pump runtime check, wet well cleaning, alarm testing, and generator exercise", "Impeller replacement", "Complete pump overhaul"],
-    correctAnswer: 1,
+    options: ["Pump runtime check, wet well cleaning, alarm testing, and generator exercise", "Bearing replacement", "Impeller replacement", "Complete pump overhaul"],
+    correctAnswer: 0,
     explanation: "Monthly maintenance includes runtime checks, wet well cleaning, alarm testing, and generator exercise to verify readiness."
   },
   {
     id: 453,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's weekly maintenance should include:",
-    options: ["Bearing replacement", "Visual inspection, wet well level check, alarm verification, and pump operation check", "Complete cleaning", "Electrical testing"],
-    correctAnswer: 1,
+    options: ["Visual inspection, wet well level check, alarm verification, and pump operation check", "Bearing replacement", "Complete cleaning", "Electrical testing"],
+    correctAnswer: 0,
     explanation: "Weekly maintenance includes visual inspection, level checks, alarm verification, and confirmation of normal pump operation."
   },
   {
     id: 454,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's emergency generator should be tested under load:",
-    options: ["Only when power fails", "Monthly to verify it will start and carry the load during a power outage", "Annually only", "Weekly"],
-    correctAnswer: 1,
+    options: ["Only when power fails", "Annually only", "Monthly to verify it will start and carry the load during a power outage", "Weekly"],
+    correctAnswer: 2,
     explanation: "Monthly load testing verifies the generator will start, transfer load, and operate the pump station during actual power outages."
   },
   {
     id: 455,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's fuel supply for the emergency generator should be:",
-    options: ["Refilled only after power outages", "Maintained at adequate levels and tested for quality regularly", "Stored off-site only", "Checked annually only"],
-    correctAnswer: 1,
+    options: ["Refilled only after power outages", "Stored off-site only", "Maintained at adequate levels and tested for quality regularly", "Checked annually only"],
+    correctAnswer: 2,
     explanation: "Generator fuel must be maintained at adequate levels and tested for quality (fuel degradation) to ensure reliability during outages."
   },
   {
@@ -4420,32 +4420,32 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 457,
     module: "Math & Calculations",
     question: "A pump delivers 200 L/s at 1,750 RPM. If the speed is increased to 2,100 RPM, the new flow rate is approximately:",
-    options: ["167 L/s", "240 L/s", "288 L/s", "345 L/s"],
-    correctAnswer: 1,
+    options: ["240 L/s", "167 L/s", "288 L/s", "345 L/s"],
+    correctAnswer: 0,
     explanation: "By affinity laws, Q₂ = Q₁ × (N₂/N₁) = 200 × (2,100/1,750) = 200 × 1.2 = 240 L/s."
   },
   {
     id: 458,
     module: "Math & Calculations",
     question: "A sewer main has a diameter of 600 mm and a slope of 0.15%. Using Manning's n=0.013, the full-pipe flow rate is approximately:",
-    options: ["250 L/s", "500 L/s", "750 L/s", "1,000 L/s"],
-    correctAnswer: 1,
+    options: ["250 L/s", "750 L/s", "500 L/s", "1,000 L/s"],
+    correctAnswer: 2,
     explanation: "R = 0.15 m; V = (1/0.013) × 0.15^(2/3) × 0.0015^(1/2) = 76.9 × 0.282 × 0.0387 = 0.840 m/s; Q = 0.840 × π(0.3)² = 0.840 × 0.283 = 0.238 m³/s ≈ 240 L/s ≈ 250 L/s."
   },
   {
     id: 459,
     module: "Math & Calculations",
     question: "A utility's sewer system has 120 km of pipe with an average replacement cost of $800/m. The total replacement value is:",
-    options: ["$9.6 million", "$96 million", "$960 million", "$9.6 billion"],
-    correctAnswer: 1,
+    options: ["$9.6 million", "$960 million", "$96 million", "$9.6 billion"],
+    correctAnswer: 2,
     explanation: "Total value = 120 km × 1,000 m/km × $800/m = 120,000 m × $800 = $96,000,000 = $96 million."
   },
   {
     id: 460,
     module: "Math & Calculations",
     question: "A pump station's energy intensity is 0.35 kWh/m³. The annual flow is 2,500,000 m³. The annual energy consumption is:",
-    options: ["875,000 kWh", "875 MWh", "Both A and B are correct", "8,750 MWh"],
-    correctAnswer: 2,
+    options: ["875,000 kWh", "Both A and B are correct", "875 MWh", "8,750 MWh"],
+    correctAnswer: 1,
     explanation: "Energy = 0.35 kWh/m³ × 2,500,000 m³ = 875,000 kWh = 875 MWh; both A and B express the same value."
   },
   {
@@ -4460,120 +4460,120 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 462,
     module: "Collection System Components",
     question: "A sewer system's pipe material affects:",
-    options: ["Only cost", "Corrosion resistance, structural strength, joint integrity, and service life", "Only flow capacity", "Only installation method"],
-    correctAnswer: 1,
+    options: ["Only cost", "Only installation method", "Only flow capacity", "Corrosion resistance, structural strength, joint integrity, and service life"],
+    correctAnswer: 3,
     explanation: "Pipe material determines corrosion resistance, structural strength, joint type, and expected service life."
   },
   {
     id: 463,
     module: "Collection System Components",
     question: "HDPE pipe in a sewer system is used because:",
-    options: ["It is the cheapest option", "It is corrosion-resistant, flexible, and has heat-fused joints that resist I/I", "It is the strongest pipe material", "It is the easiest to install"],
-    correctAnswer: 1,
+    options: ["It is corrosion-resistant, flexible, and has heat-fused joints that resist I/I", "It is the cheapest option", "It is the strongest pipe material", "It is the easiest to install"],
+    correctAnswer: 0,
     explanation: "HDPE is corrosion-resistant, flexible (accommodates ground movement), and heat-fused joints provide excellent I/I resistance."
   },
   {
     id: 464,
     module: "Collection System Components",
     question: "Reinforced concrete pipe (RCP) in a sewer system is susceptible to:",
-    options: ["Root intrusion only", "Biogenic sulfide corrosion from H₂S attack on the concrete", "Deflection only", "Joint failure only"],
-    correctAnswer: 1,
+    options: ["Root intrusion only", "Deflection only", "Biogenic sulfide corrosion from H₂S attack on the concrete", "Joint failure only"],
+    correctAnswer: 2,
     explanation: "RCP is susceptible to biogenic sulfide corrosion (H₂S → H₂SO₄) that attacks the concrete above the waterline."
   },
   {
     id: 465,
     module: "Collection System Components",
     question: "Ductile iron pipe in a sewer system requires:",
-    options: ["No protection", "Corrosion protection (lining, coating, cathodic protection) in corrosive soils", "Only cement lining", "Only external coating"],
-    correctAnswer: 1,
+    options: ["No protection", "Only external coating", "Only cement lining", "Corrosion protection (lining, coating, cathodic protection) in corrosive soils"],
+    correctAnswer: 3,
     explanation: "Ductile iron requires both internal lining (cement mortar) and external coating or cathodic protection in corrosive soils."
   },
   {
     id: 466,
     module: "Environmental & Public Health",
     question: "A sewer system's receiving water quality monitoring program measures:",
-    options: ["Only flow rates", "Pathogens, nutrients, dissolved oxygen, and other parameters affected by SSOs", "Only temperature", "Only pH"],
-    correctAnswer: 1,
+    options: ["Only flow rates", "Only temperature", "Pathogens, nutrients, dissolved oxygen, and other parameters affected by SSOs", "Only pH"],
+    correctAnswer: 2,
     explanation: "Receiving water monitoring measures parameters affected by SSOs: pathogens, nutrients, DO, turbidity, and other indicators."
   },
   {
     id: 467,
     module: "Environmental & Public Health",
     question: "A sewer system's climate change adaptation plan considers:",
-    options: ["Only temperature increases", "Increased storm intensity, sea level rise, and their effects on system capacity", "Only drought conditions", "Only regulatory changes"],
-    correctAnswer: 1,
+    options: ["Increased storm intensity, sea level rise, and their effects on system capacity", "Only temperature increases", "Only drought conditions", "Only regulatory changes"],
+    correctAnswer: 0,
     explanation: "Climate adaptation plans address increased storm intensity (more I/I), sea level rise (flooding), and other climate impacts on collection systems."
   },
   {
     id: 468,
     module: "Environmental & Public Health",
     question: "A sewer system's green infrastructure (GI) program reduces:",
-    options: ["Pipe maintenance costs only", "Stormwater runoff and I/I by managing rainfall at the source", "Treatment plant costs only", "Pump station energy costs"],
-    correctAnswer: 1,
+    options: ["Stormwater runoff and I/I by managing rainfall at the source", "Pipe maintenance costs only", "Treatment plant costs only", "Pump station energy costs"],
+    correctAnswer: 0,
     explanation: "Green infrastructure (bioretention, permeable pavement, green roofs) reduces stormwater runoff and I/I by infiltrating and retaining rainfall."
   },
   {
     id: 469,
     module: "Environmental & Public Health",
     question: "A sewer system's nutrient management program addresses:",
-    options: ["Only nitrogen", "Nitrogen and phosphorus loading to receiving waters from SSOs", "Only phosphorus", "Only BOD"],
-    correctAnswer: 1,
+    options: ["Only nitrogen", "Only phosphorus", "Nitrogen and phosphorus loading to receiving waters from SSOs", "Only BOD"],
+    correctAnswer: 2,
     explanation: "Nutrient management addresses both nitrogen and phosphorus from SSOs, which contribute to eutrophication in receiving waters."
   },
   {
     id: 470,
     module: "Environmental & Public Health",
     question: "A sewer system's water quality impact assessment after an SSO should include:",
-    options: ["Only visual inspection", "Sampling for pathogens, nutrients, and other indicators in the receiving water", "Only flow measurement", "Only regulatory notification"],
-    correctAnswer: 1,
+    options: ["Sampling for pathogens, nutrients, and other indicators in the receiving water", "Only visual inspection", "Only flow measurement", "Only regulatory notification"],
+    correctAnswer: 0,
     explanation: "Post-SSO water quality assessment samples for pathogens, nutrients, and other parameters to assess environmental impact."
   },
   {
     id: 471,
     module: "Safety & Regulations",
     question: "A utility's chemical handling procedure for H₂S control chemicals should include:",
-    options: ["Only storage requirements", "Handling, storage, spill response, PPE requirements, and SDS review", "Only PPE requirements", "Only spill response"],
-    correctAnswer: 1,
+    options: ["Only storage requirements", "Only spill response", "Only PPE requirements", "Handling, storage, spill response, PPE requirements, and SDS review"],
+    correctAnswer: 3,
     explanation: "Chemical handling procedures cover all aspects: handling, storage, spill response, PPE, and SDS information."
   },
   {
     id: 472,
     module: "Safety & Regulations",
     question: "A utility's contractor safety program ensures that:",
-    options: ["Only utility employees follow safety rules", "Contractors working on utility systems meet the same safety standards as employees", "Contractors are not responsible for safety", "Contractors follow only their own safety rules"],
-    correctAnswer: 1,
+    options: ["Contractors working on utility systems meet the same safety standards as employees", "Only utility employees follow safety rules", "Contractors are not responsible for safety", "Contractors follow only their own safety rules"],
+    correctAnswer: 0,
     explanation: "Contractor safety programs ensure contractors meet the utility's safety standards, protecting workers and the public."
   },
   {
     id: 473,
     module: "Safety & Regulations",
     question: "A utility's public safety program for sewer work includes:",
-    options: ["Only traffic control", "Traffic control, public notification, and hazard identification/mitigation", "Only public notification", "Only hazard signs"],
-    correctAnswer: 1,
+    options: ["Only traffic control", "Only public notification", "Traffic control, public notification, and hazard identification/mitigation", "Only hazard signs"],
+    correctAnswer: 2,
     explanation: "Public safety programs protect the public through traffic control, advance notification, and hazard identification during sewer work."
   },
   {
     id: 474,
     module: "Safety & Regulations",
     question: "A utility's emergency contact list should be:",
-    options: ["Updated annually only", "Maintained current and accessible to all operators at all times", "Available only to management", "Posted only in the office"],
-    correctAnswer: 1,
+    options: ["Updated annually only", "Available only to management", "Maintained current and accessible to all operators at all times", "Posted only in the office"],
+    correctAnswer: 2,
     explanation: "Emergency contact lists must be current and accessible to all operators (in vehicles, at stations) for immediate use."
   },
   {
     id: 475,
     module: "Safety & Regulations",
     question: "A utility's mutual aid agreement with neighboring utilities provides:",
-    options: ["Only equipment sharing", "Access to additional resources (equipment, personnel) during emergencies", "Only personnel sharing", "Only financial assistance"],
-    correctAnswer: 1,
+    options: ["Access to additional resources (equipment, personnel) during emergencies", "Only equipment sharing", "Only personnel sharing", "Only financial assistance"],
+    correctAnswer: 0,
     explanation: "Mutual aid agreements provide access to additional resources from neighboring utilities during major emergencies."
   },
   {
     id: 476,
     module: "Collection System Maintenance",
     question: "A sewer system's pipe rehabilitation priority is determined by:",
-    options: ["Pipe age only", "Condition score, consequence of failure, and cost-benefit analysis", "Pipe material only", "Maintenance cost only"],
-    correctAnswer: 1,
+    options: ["Pipe age only", "Maintenance cost only", "Pipe material only", "Condition score, consequence of failure, and cost-benefit analysis"],
+    correctAnswer: 3,
     explanation: "Rehabilitation priority combines condition (PACP score), consequence of failure (location, criticality), and cost-benefit analysis."
   },
   {
@@ -4612,8 +4612,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 481,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's electrical panel inspection should check for:",
-    options: ["Only breaker positions", "Loose connections, corrosion, overheating signs, and proper labeling", "Only voltage levels", "Only ground fault protection"],
-    correctAnswer: 1,
+    options: ["Only breaker positions", "Only ground fault protection", "Only voltage levels", "Loose connections, corrosion, overheating signs, and proper labeling"],
+    correctAnswer: 3,
     explanation: "Electrical panel inspections check for loose connections, corrosion, thermal damage, proper labeling, and breaker condition."
   },
   {
@@ -4628,8 +4628,8 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 483,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's power quality monitoring can detect:",
-    options: ["Only voltage levels", "Voltage sags, harmonics, and power factor issues that affect equipment life", "Only power factor", "Only current draw"],
-    correctAnswer: 1,
+    options: ["Only voltage levels", "Only current draw", "Only power factor", "Voltage sags, harmonics, and power factor issues that affect equipment life"],
+    correctAnswer: 3,
     explanation: "Power quality monitoring detects voltage sags, harmonics, power factor issues, and other disturbances that damage equipment."
   },
   {
@@ -4644,72 +4644,72 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 485,
     module: "Equipment Operation & Maintenance",
     question: "A pump station's arc flash hazard analysis is required to:",
-    options: ["Satisfy insurance requirements", "Identify arc flash boundaries and required PPE for electrical work", "Calculate energy costs", "Test electrical equipment"],
-    correctAnswer: 1,
+    options: ["Identify arc flash boundaries and required PPE for electrical work", "Satisfy insurance requirements", "Calculate energy costs", "Test electrical equipment"],
+    correctAnswer: 0,
     explanation: "Arc flash analysis identifies incident energy levels, establishes boundaries, and specifies required PPE for electrical work."
   },
   {
     id: 486,
     module: "Collection System Components",
     question: "A sewer system's pipe network model (hydraulic model) is calibrated using:",
-    options: ["Design flows only", "Field-measured flow and level data from the actual system", "Population data only", "Theoretical calculations only"],
-    correctAnswer: 1,
+    options: ["Field-measured flow and level data from the actual system", "Design flows only", "Population data only", "Theoretical calculations only"],
+    correctAnswer: 0,
     explanation: "Hydraulic models are calibrated using field-measured flow rates and water levels to accurately represent actual system behavior."
   },
   {
     id: 487,
     module: "Collection System Components",
     question: "A sewer system's GIS (Geographic Information System) is used to:",
-    options: ["Only display pipe locations", "Manage asset data, support maintenance planning, and analyze system performance", "Only track maintenance costs", "Only satisfy regulatory requirements"],
-    correctAnswer: 1,
+    options: ["Manage asset data, support maintenance planning, and analyze system performance", "Only display pipe locations", "Only track maintenance costs", "Only satisfy regulatory requirements"],
+    correctAnswer: 0,
     explanation: "GIS integrates asset data, maintenance history, and spatial analysis to support operations, maintenance planning, and reporting."
   },
   {
     id: 488,
     module: "Collection System Components",
     question: "A sewer system's digital twin is a:",
-    options: ["Backup copy of GIS data", "Real-time virtual model that mirrors the physical system for monitoring and analysis", "CCTV inspection record", "Hydraulic model only"],
-    correctAnswer: 1,
+    options: ["Backup copy of GIS data", "CCTV inspection record", "Real-time virtual model that mirrors the physical system for monitoring and analysis", "Hydraulic model only"],
+    correctAnswer: 2,
     explanation: "A digital twin integrates real-time sensor data with hydraulic models to create a virtual replica for monitoring, analysis, and decision support."
   },
   {
     id: 489,
     module: "Collection System Components",
     question: "A sewer system's IoT (Internet of Things) sensors can monitor:",
-    options: ["Only wet well levels", "Flow, level, pressure, gas concentrations, and equipment status in real time", "Only pump operation", "Only pipe condition"],
-    correctAnswer: 1,
+    options: ["Only wet well levels", "Only pump operation", "Flow, level, pressure, gas concentrations, and equipment status in real time", "Only pipe condition"],
+    correctAnswer: 2,
     explanation: "IoT sensors provide real-time monitoring of multiple parameters (flow, level, pressure, gases, equipment) across the collection system."
   },
   {
     id: 490,
     module: "Collection System Components",
     question: "A sewer system's predictive analytics program uses data to:",
-    options: ["Replace operator judgment", "Predict failures and maintenance needs before they occur", "Satisfy regulatory requirements", "Calculate water rates"],
-    correctAnswer: 1,
+    options: ["Replace operator judgment", "Satisfy regulatory requirements", "Predict failures and maintenance needs before they occur", "Calculate water rates"],
+    correctAnswer: 2,
     explanation: "Predictive analytics uses historical data and machine learning to predict equipment failures and maintenance needs, enabling proactive action."
   },
   {
     id: 491,
     module: "Math & Calculations",
     question: "A sewer system's rehabilitation program costs $2.5 million per year. The system has 200 km of pipe. The annual rehabilitation rate per km is:",
-    options: ["$1,250/km", "$12,500/km", "$125,000/km", "$1,250,000/km"],
-    correctAnswer: 1,
+    options: ["$1,250/km", "$125,000/km", "$12,500/km", "$1,250,000/km"],
+    correctAnswer: 2,
     explanation: "Cost per km = $2,500,000 / 200 km = $12,500/km."
   },
   {
     id: 492,
     module: "Math & Calculations",
     question: "A pump station's energy cost is $0.10/kWh. The pump delivers 100 L/s at 20 m TDH with 70% efficiency. The hourly energy cost is approximately:",
-    options: ["$0.39", "$2.80", "$3.90", "$28.00"],
-    correctAnswer: 1,
+    options: ["$0.39", "$3.90", "$2.80", "$28.00"],
+    correctAnswer: 2,
     explanation: "Power = 1,000 × 9.81 × 0.100 × 20 / 0.70 = 28,029 W = 28 kW; Cost = 28 kW × $0.10/kWh = $2.80/hr."
   },
   {
     id: 493,
     module: "Math & Calculations",
     question: "A sewer system's average pipe age is 45 years. The expected service life is 80 years. The system is approximately what percentage through its service life?",
-    options: ["45%", "56%", "65%", "80%"],
-    correctAnswer: 1,
+    options: ["56%", "45%", "65%", "80%"],
+    correctAnswer: 0,
     explanation: "Percentage = 45/80 × 100 = 56.25% ≈ 56%."
   },
   {
@@ -4724,16 +4724,16 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 495,
     module: "Math & Calculations",
     question: "A sewer system's capital budget is $5 million. The system has 150 km of pipe. The capital investment per km is:",
-    options: ["$3,333/km", "$33,333/km", "$333,333/km", "$3,333,333/km"],
-    correctAnswer: 1,
+    options: ["$3,333/km", "$333,333/km", "$33,333/km", "$3,333,333/km"],
+    correctAnswer: 2,
     explanation: "Investment per km = $5,000,000 / 150 km = $33,333/km."
   },
   {
     id: 496,
     module: "Collection System Maintenance",
     question: "A sewer system's maintenance crew productivity is measured by:",
-    options: ["Number of employees", "Km of pipe cleaned, manholes inspected, or work orders completed per crew per day", "Hours worked only", "Equipment used"],
-    correctAnswer: 1,
+    options: ["Km of pipe cleaned, manholes inspected, or work orders completed per crew per day", "Number of employees", "Hours worked only", "Equipment used"],
+    correctAnswer: 0,
     explanation: "Productivity metrics (km cleaned/day, manholes inspected/day) measure maintenance crew efficiency and program effectiveness."
   },
   {
@@ -4748,24 +4748,24 @@ export const wpiClass1WastewaterCollQuestions: WpiClass1WastewaterCollQuestion[]
     id: 498,
     module: "Collection System Maintenance",
     question: "A sewer system's first-time fix rate measures:",
-    options: ["How fast crews respond", "The percentage of service calls resolved on the first visit", "How many calls are received", "The cost per service call"],
-    correctAnswer: 1,
+    options: ["How fast crews respond", "How many calls are received", "The percentage of service calls resolved on the first visit", "The cost per service call"],
+    correctAnswer: 2,
     explanation: "First-time fix rate measures the percentage of service calls resolved without a return visit, indicating crew effectiveness."
   },
   {
     id: 499,
     module: "Collection System Maintenance",
     question: "A sewer system's customer satisfaction survey measures:",
-    options: ["Only complaint frequency", "Public perception of service quality, responsiveness, and communication", "Only response time", "Only technical performance"],
-    correctAnswer: 1,
+    options: ["Only complaint frequency", "Only response time", "Public perception of service quality, responsiveness, and communication", "Only technical performance"],
+    correctAnswer: 2,
     explanation: "Customer satisfaction surveys measure public perception of service quality, responsiveness, and communication effectiveness."
   },
   {
     id: 500,
     module: "Collection System Maintenance",
     question: "A sewer system's continuous improvement program uses:",
-    options: ["Only regulatory requirements as targets", "Performance data, benchmarking, and best practices to drive ongoing improvement", "Only customer complaints", "Only budget constraints"],
-    correctAnswer: 1,
+    options: ["Only regulatory requirements as targets", "Only budget constraints", "Only customer complaints", "Performance data, benchmarking, and best practices to drive ongoing improvement"],
+    correctAnswer: 3,
     explanation: "Continuous improvement programs use performance data, peer benchmarking, and best practices to identify and implement improvements."
   }
 ];

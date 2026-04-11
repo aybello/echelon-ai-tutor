@@ -31,12 +31,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — BNR",
     question: "A Class 4 plant operating a 4-stage Bardenpho process observes rising effluent total nitrogen (TN) from 6 mg/L to 14 mg/L over two weeks. MLSS and DO are stable. What is the MOST likely cause?",
     options: [
-      "Insufficient internal recycle (IR) flow reducing nitrate delivery to the anoxic zone",
       "Excess DO in the anoxic zone inhibiting denitrification",
+      "Insufficient internal recycle (IR) flow reducing nitrate delivery to the anoxic zone",
       "Sludge age too short, preventing full nitrification",
       "Phosphorus accumulation inhibiting denitrification enzymes"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "In a Bardenpho process, internal recycle (IR) carries nitrate from the aerobic zone to the pre-anoxic zone for denitrification. If IR flow is insufficient, nitrate is not delivered to the anoxic zone and passes through to the effluent, raising TN. DO in the anoxic zone and SRT issues would typically also affect ammonia, not just TN.",
     difficulty: "hard",
   },
@@ -62,11 +62,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant's SVI has risen from 100 to 280 mL/g over 10 days. Microscopy shows abundant Thiothrix filaments. The F:M ratio is 0.05 kg BOD/kg MLVSS/day. What is the PRIMARY corrective action?",
     options: [
       "Add chlorine to the return activated sludge (RAS) line to kill filaments",
-      "Increase WAS rate to reduce SRT and raise F:M ratio toward 0.2–0.4",
+      "Increase MLSS concentration to dilute the filament population",
       "Reduce aeration to lower DO and discourage aerobic filament growth",
-      "Increase MLSS concentration to dilute the filament population"
+      "Increase WAS rate to reduce SRT and raise F:M ratio toward 0.2–0.4"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Thiothrix is a low-F:M filament that thrives under starvation conditions (F:M < 0.1). The primary corrective action is to increase WAS rate, which reduces SRT and MLSS, raising the F:M ratio toward the target range of 0.2–0.4. Chlorination of RAS is a secondary measure that can suppress filaments but does not address the root cause. Reducing aeration would worsen the problem.",
     difficulty: "hard",
   },
@@ -77,11 +77,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "An Enhanced Biological Phosphorus Removal (EBPR) system shows deteriorating effluent TP from 0.3 mg/L to 2.1 mg/L. The anaerobic zone ORP is +50 mV. What is the MOST likely problem?",
     options: [
       "Insufficient VFA supply to the anaerobic zone",
-      "ORP in the anaerobic zone is too negative, inhibiting PAO activity",
+      "Both A and C are likely contributing",
       "Excessive nitrate entering the anaerobic zone via RAS, consuming VFAs",
-      "Both A and C are likely contributing"
+      "ORP in the anaerobic zone is too negative, inhibiting PAO activity"
     ],
-    correct: 3,
+    correct: 1,
     explanation: "Deteriorating EBPR performance with a positive anaerobic ORP (+50 mV) indicates the zone is not truly anaerobic. Two common causes: (1) insufficient VFAs (acetate) for PAO luxury uptake in the anaerobic zone, and (2) nitrate in the RAS consuming VFAs through denitrification before PAOs can use them. Both conditions are indicated here. Proper anaerobic ORP should be below -150 mV to -250 mV.",
     difficulty: "hard",
   },
@@ -107,11 +107,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Nitrification in an activated sludge system suddenly stops. Effluent ammonia rises from 1 mg/L to 18 mg/L within 48 hours. MLSS and SVI are normal. What is the FIRST parameter to check?",
     options: [
       "Influent BOD loading",
-      "Dissolved oxygen in the aeration basin",
       "Influent pH and alkalinity",
+      "Dissolved oxygen in the aeration basin",
       "Sludge age (SRT)"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "Sudden nitrification failure (within 48 hours) with stable MLSS suggests an inhibitory event rather than a slow process change. Nitrifiers (Nitrosomonas, Nitrobacter) are extremely sensitive to pH below 6.5 and alkalinity depletion. A sudden drop in influent pH or alkalinity (e.g., from an industrial discharge) is the most common cause of rapid nitrification failure. DO and SRT changes would cause more gradual deterioration.",
     difficulty: "medium",
   },
@@ -122,12 +122,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Nitrification",
     question: "A Class 4 plant must maintain effluent NH3-N ≤ 1.0 mg/L year-round. In winter, the aeration basin temperature drops to 8°C. Using the Arrhenius correction (θ = 1.072), how does the nitrification rate at 8°C compare to 20°C?",
     options: [
-      "Approximately 25% of the rate at 20°C",
       "Approximately 50% of the rate at 20°C",
+      "Approximately 25% of the rate at 20°C",
       "Approximately 75% of the rate at 20°C",
       "Approximately 90% of the rate at 20°C"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Calculate the nitrification rate at 8°C relative to 20°C using the Arrhenius equation.\n\nStep 1 — Identify the given values:\nθ (Arrhenius constant) = 1.072\nT_new (new temperature) = 8°C\nT_ref (reference temperature) = 20°C\n\nStep 2 — Apply the Arrhenius equation:\nRate(T_new) = Rate(T_ref) × θ^(T_new - T_ref)\nRate(8°C) = Rate(20°C) × 1.072^(8 - 20)\n\nStep 3 — Calculate the exponent:\nExponent = 8 - 20 = -12\n\nStep 4 — Calculate the temperature correction factor:\nFactor = 1.072^(-12) ≈ 0.432\n\nStep 5 — Express the result as a percentage:\n0.432 × 100% = 43.2%\n\nThe nitrification rate at 8°C is approximately 43% of the rate at 20°C, which is roughly half. The correct answer is B.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Rate(T) = Rate(20°C) × θ^(T-20)" }, { l: "Identify Variables", c: "Rate(T) = Nitrification rate at temperature T; Rate(20°C) = Nitrification rate at 20°C (baseline); θ = Temperature correction factor (1.072); T = Operating temperature (8°C)" }, { l: "Substitute", c: "Rate(8°C) = Rate(20°C) × 1.072^(8-20)" }, { l: "Calculate Exponent", c: "8 - 20 = -12" }, { l: "Calculate Factor", c: "1.072^(-12) ≈ 0.430" }, { l: "Result", c: "The nitrification rate at 8°C is approximately 43% of the rate at 20°C." } ],
@@ -156,11 +156,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A secondary clarifier with a surface area of 500 m² is receiving a flow of 15,000 m³/d with a RAS flow of 6,000 m³/d. The MLSS is 3,200 mg/L. Calculate the solids flux (kg/m²/h) to determine if the clarifier is overloaded (design limit: 6 kg/m²/h).",
     options: [
       "3.5 kg/m²/h — within design limit",
-      "5.6 kg/m²/h — within design limit",
       "7.2 kg/m²/h — overloaded",
+      "5.6 kg/m²/h — within design limit",
       "9.8 kg/m²/h — overloaded"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Calculate the solids flux by first determining the total flow rate, then applying the formula for solids flux and converting units as needed.\n\nStep 1 — Calculate the total flow rate (Q + QRAS):\n15,000 m³/d + 6,000 m³/d = 21,000 m³/d\n\nStep 2 — Convert total flow rate from m³/d to m³/h:\n21,000 m³/d ÷ 24 h/d = 875 m³/h\n\nStep 3 — Calculate the solids flux in g/m²/h:\n(875 m³/h × 3,200 g/m³) ÷ 500 m² = 5,600 g/m²/h\n\nStep 4 — Convert solids flux from g/m²/h to kg/m²/h:\n5,600 g/m²/h ÷ 1,000 g/kg = 5.6 kg/m²/h\n\nStep 5 — Compare calculated solids flux to the design limit:\n5.6 kg/m²/h is less than the design limit of 6 kg/m²/h.\n\nThe correct answer is 5.6 kg/m²/h — within design limit.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Solids Flux (kg/m²/h) = (Total Flow (m³/h) × MLSS (mg/L)) / (Surface Area (m²) × 1000)" }, { l: "Identify Variables", c: "Q = Influent flow (15,000 m³/d); QRAS = RAS flow (6,000 m³/d); MLSS = Mixed Liquor Suspended Solids (3,200 mg/L); Area = Clarifier surface area (500 m²)" }, { l: "Step 1: Calculate Total Flow in m³/h", c: "Total Flow = (Q + QRAS) / 24 h/d = (15,000 m³/d + 6,000 m³/d) / 24 h/d = 21,000 m³/d / 24 h/d = 875 m³/h" }, { l: "Substitute", c: "Solids Flux = (875 m³/h × 3,200 mg/L) / (500 m² × 1000 mg/g)" }, { l: "Calculate", c: "Solids Flux = 2,800,000 kg/m²/h / 500,000 = 5.6 kg/m²/h" }, { l: "Result", c: "The solids flux is 5.6 kg/m²/h." } ],
@@ -172,12 +172,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Secondary Clarifier",
     question: "Rising sludge is observed in the secondary clarifier. The SVI is 80 mL/g (good settleability) and the DO in the aeration basin is 2.5 mg/L. What is the MOST likely cause?",
     options: [
-      "Filamentous bulking due to low F:M",
       "Denitrification in the clarifier causing sludge to float on nitrogen gas bubbles",
+      "Filamentous bulking due to low F:M",
       "Toxic inhibition of settling",
       "Hydraulic overloading causing turbulence"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "When SVI is low (good settling) but sludge is rising, the cause is typically denitrification in the clarifier. Nitrate in the settled sludge is reduced by denitrifying bacteria, producing N2 gas bubbles that attach to sludge flocs and cause them to float. This is common when effluent nitrate is high and the sludge blanket is deep. Solutions include increasing WAS to reduce sludge blanket depth, reducing SRT, or increasing RAS rate.",
     difficulty: "medium",
   },
@@ -187,12 +187,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "MBR Systems",
     question: "A membrane bioreactor (MBR) experiences a sudden increase in transmembrane pressure (TMP) from 15 kPa to 45 kPa over 6 hours. What is the MOST likely cause?",
     options: [
-      "Biofouling from excessive EPS production due to high SRT",
+      "Air scour failure allowing sludge to accumulate on membrane surface",
       "Scaling from calcium carbonate precipitation on the membrane surface",
       "Sudden increase in influent TSS causing cake layer formation",
-      "Air scour failure allowing sludge to accumulate on membrane surface"
+      "Biofouling from excessive EPS production due to high SRT"
     ],
-    correct: 3,
+    correct: 0,
     explanation: "A rapid TMP increase over hours (TMP jump) in an MBR is most commonly caused by air scour failure. Air scouring prevents sludge cake accumulation on the membrane surface. If air scour is interrupted (e.g., blower failure, clogged diffusers), sludge rapidly deposits on the membrane, causing a sudden TMP increase. Biofouling and scaling cause gradual TMP increases over days to weeks, not hours.",
     difficulty: "hard",
   },
@@ -203,11 +203,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What is the typical MLSS concentration range operated in a submerged MBR compared to a conventional activated sludge system?",
     options: [
       "MBR: 1,000–2,000 mg/L vs CAS: 2,000–4,000 mg/L",
-      "MBR: 8,000–15,000 mg/L vs CAS: 2,000–4,000 mg/L",
       "MBR: 4,000–6,000 mg/L vs CAS: 2,000–4,000 mg/L",
+      "MBR: 8,000–15,000 mg/L vs CAS: 2,000–4,000 mg/L",
       "MBR: 2,000–4,000 mg/L vs CAS: 8,000–15,000 mg/L"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "MBR systems operate at significantly higher MLSS concentrations (8,000–15,000 mg/L) compared to conventional activated sludge (2,000–4,000 mg/L). The membrane provides solid-liquid separation regardless of sludge settleability, allowing high biomass concentrations. This results in smaller reactor footprints, longer SRTs, and better nitrification. However, high MLSS increases membrane fouling risk and aeration requirements.",
     difficulty: "medium",
   },
@@ -217,12 +217,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Sequencing Batch Reactor",
     question: "In an SBR treating high-strength industrial wastewater, the operator wants to add a selector phase to control filamentous bulking. What is the mechanism by which a selector works?",
     options: [
-      "The selector provides high substrate concentration that favors floc-forming organisms over filaments due to kinetic selection",
+      "The selector increases DO to levels toxic to obligate anaerobic filaments",
       "The selector adds chemicals that kill filamentous organisms selectively",
       "The selector creates anaerobic conditions that lyse filament cell walls",
-      "The selector increases DO to levels toxic to obligate anaerobic filaments"
+      "The selector provides high substrate concentration that favors floc-forming organisms over filaments due to kinetic selection"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "A biological selector works through kinetic selection: floc-forming organisms (e.g., Zoogloea) have higher maximum growth rates (μmax) and can rapidly take up substrate at high concentrations, giving them a competitive advantage over filaments (which have lower μmax but higher substrate affinity at low concentrations). By creating a high-substrate zone at the inlet, the selector enriches floc-formers and suppresses filaments. This is the basis of all biological selectors (aerobic, anoxic, or anaerobic).",
     difficulty: "hard",
   },
@@ -232,12 +232,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Trickling Filter",
     question: "A high-rate trickling filter is experiencing ponding. The operator has already checked and cleaned the distribution arms. What is the NEXT most likely cause to investigate?",
     options: [
-      "Excessive hydraulic loading rate",
       "Clogging of the media by excess biological growth or debris",
+      "Excessive hydraulic loading rate",
       "Insufficient recirculation ratio",
       "Low influent BOD causing insufficient biofilm growth"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "After verifying the distribution system, ponding in a trickling filter is most commonly caused by media clogging from excess biological growth (sloughing accumulation), debris, or snail/fly larvae. The media voids become blocked, preventing drainage. Solutions include increasing recirculation to hydraulically scour the media, temporarily increasing hydraulic loading, or using chlorine/hydrogen peroxide to control excess growth. Low BOD would cause insufficient growth, not ponding.",
     difficulty: "medium",
   },
@@ -281,12 +281,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — F:M",
     question: "Calculate the F:M ratio for a plant with: influent BOD = 200 mg/L, flow = 10,000 m³/d, aeration basin volume = 3,000 m³, MLVSS = 2,800 mg/L. Is this within the conventional activated sludge target range?",
     options: [
-      "F:M = 0.12 kg BOD/kg MLVSS/day — below target (0.2–0.4)",
       "F:M = 0.24 kg BOD/kg MLVSS/day — within target (0.2–0.4)",
+      "F:M = 0.12 kg BOD/kg MLVSS/day — below target (0.2–0.4)",
       "F:M = 0.48 kg BOD/kg MLVSS/day — above target (0.2–0.4)",
       "F:M = 0.71 kg BOD/kg MLVSS/day — above target (0.2–0.4)"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Calculate the F:M ratio by dividing the food (BOD load) by the mass of microorganisms (MLVSS) in the aeration basin, then compare it to the target range.\n\nStep 1 — Calculate the food (BOD) input per day:\nFood (BOD) = Flow × Influent BOD\nFood (BOD) = 10,000 m³/d × 200 mg/L\nFirst, convert mg/L to kg/m³: 200 mg/L = 0.2 kg/m³\nFood (BOD) = 10,000 m³/d × 0.2 kg/m³ = 2,000 kg BOD/d\n\nStep 2 — Calculate the mass of microorganisms (MLVSS) in the aeration basin:\nMass of MLVSS = Aeration Basin Volume × MLVSS concentration\nMass of MLVSS = 3,000 m³ × 2,800 mg/L\nFirst, convert mg/L to kg/m³: 2,800 mg/L = 2.8 kg/m³\nMass of MLVSS = 3,000 m³ × 2.8 kg/m³ = 8,400 kg MLVSS\n\nStep 3 — Calculate the F:M ratio:\nF:M = Food (BOD) / Mass of MLVSS\nF:M = 2,000 kg BOD/d / 8,400 kg MLVSS = 0.238 kg BOD/kg MLVSS/day\n\nStep 4 — Compare the F:M ratio to the target range:\nThe calculated F:M ratio is 0.238 kg BOD/kg MLVSS/day. The conventional activated sludge target range is 0.2–0.4 kg BOD/kg MLVSS/day. Since 0.238 falls within this range, the system is properly loaded.\n\nThe correct answer is B. F:M = 0.24 kg BOD/kg MLVSS/day — within target (0.2–0.4).",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "F:M Ratio = (Q × Influent BOD) / (V × MLVSS)" }, { l: "Identify Variables", c: "Q = Flow (10,000 m³/d); Influent BOD = Influent Biochemical Oxygen Demand (200 mg/L); V = Aeration basin volume (3,000 m³); MLVSS = Mixed Liquor Volatile Suspended Solids (2,800 mg/L)" }, { l: "Substitute", c: "F:M = (10,000 m³/d × 200 mg/L) / (3,000 m³ × 2,800 mg/L)" }, { l: "Calculate Numerator", c: "10,000 × 200 = 2,000,000 (mg BOD/d)" }, { l: "Calculate Denominator", c: "3,000 × 2,800 = 8,400,000 (mg MLVSS)" }, { l: "Calculate", c: "F:M = 2,000,000 / 8,400,000 = 0.238 (mg BOD/mg MLVSS/d)" }, { l: "Convert Units", c: "F:M = 0.238 kg BOD/kg MLVSS/d" }, { l: "Result", c: "The F:M ratio is 0.238 kg BOD/kg MLVSS/d." } ],
@@ -313,12 +313,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Nutrient Removal — Phosphorus",
     question: "A plant using chemical phosphorus removal (ferric chloride addition) observes that the effluent TP is meeting limits but the sludge production has increased significantly. What is the cause?",
     options: [
-      "Ferric chloride reacts with phosphate to form ferric phosphate (FePO4) precipitate, increasing sludge mass",
+      "Ferric chloride promotes filamentous growth, increasing sludge volume",
       "Ferric chloride inhibits biological treatment, increasing effluent TSS",
       "Ferric chloride increases alkalinity consumption, raising sludge production",
-      "Ferric chloride promotes filamentous growth, increasing sludge volume"
+      "Ferric chloride reacts with phosphate to form ferric phosphate (FePO4) precipitate, increasing sludge mass"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "Chemical phosphorus removal using ferric chloride (FeCl3) works by precipitating phosphate as ferric phosphate (FePO4) and ferric hydroxide (Fe(OH)3). These precipitates are insoluble and settle with the sludge, increasing total sludge production. The additional sludge mass is proportional to the iron dose. Typically, each mg/L of Fe added produces approximately 2.7 mg/L of additional sludge (as Fe(OH)3 + FePO4). This is a significant operational consideration for sludge handling capacity.",
     difficulty: "medium",
   },
@@ -360,10 +360,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "Increase UV lamp intensity by adding more lamps",
       "Reduce the flow rate to increase UV dose (exposure time)",
-      "Improve upstream treatment to increase UVT before UV disinfection",
-      "Switch to chlorine disinfection as a backup"
+      "Switch to chlorine disinfection as a backup",
+      "Improve upstream treatment to increase UVT before UV disinfection"
     ],
-    correct: 2,
+    correct: 3,
     explanation: "UV dose = Intensity × Time. Low UVT (55% vs design 65%) means UV light is being absorbed by water constituents (TSS, color, dissolved organics) before reaching pathogens, reducing effective dose. The most effective long-term solution is to improve upstream treatment (better secondary clarification, filtration) to increase UVT. Simply adding lamps or reducing flow are short-term measures. UVT of 55% represents a significant reduction in UV transmittance that cannot be fully compensated by intensity alone.",
     difficulty: "medium",
   },
@@ -407,11 +407,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A headworks building is experiencing hydrogen sulfide (H2S) odour complaints. The collection system has long force mains with detention times of 4–6 hours. What is the PRIMARY mechanism of H2S generation in the force main?",
     options: [
       "Aerobic oxidation of organic sulfur compounds",
-      "Sulfate-reducing bacteria (SRB) reducing sulfate to sulfide under anaerobic conditions",
+      "Photochemical oxidation of organic matter in the collection system",
       "Chemical reaction between chlorine and organic sulfur compounds",
-      "Photochemical oxidation of organic matter in the collection system"
+      "Sulfate-reducing bacteria (SRB) reducing sulfate to sulfide under anaerobic conditions"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "H2S in force mains is generated by sulfate-reducing bacteria (SRB, primarily Desulfovibrio sp.) that reduce sulfate (SO4²⁻) to sulfide (S²⁻) under anaerobic conditions. The reaction: SO4²⁻ + organic carbon → S²⁻ + CO2 + H2O. Long detention times (>2 hours) in force mains allow DO to be depleted and SRB to thrive. At pH < 7, dissolved sulfide converts to H2S gas, which is released at the headworks. Control methods include air/oxygen injection, nitrate addition, or iron salt addition to the force main.",
     difficulty: "medium",
   },
@@ -422,11 +422,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant is evaluating chemical scrubbers for H2S control at the headworks. Which scrubbing solution is MOST effective for H2S removal?",
     options: [
       "Dilute sulfuric acid (pH 2–3)",
-      "Sodium hypochlorite solution (NaOCl)",
       "Sodium hydroxide (NaOH) solution (pH 10–12)",
+      "Sodium hypochlorite solution (NaOCl)",
       "Potassium permanganate solution"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Sodium hypochlorite (NaOCl) is the most effective scrubbing solution for H2S because it both absorbs and oxidizes H2S: H2S + NaOCl → S + NaOH + H2O. This chemical reaction provides much higher removal efficiency than caustic scrubbing alone (which only absorbs H2S as NaHS). Caustic (NaOH) scrubbers work but require two-stage systems for high H2S concentrations. Acid scrubbers are not effective for H2S (which is acidic). The combination of absorption and oxidation makes NaOCl scrubbers highly efficient.",
     difficulty: "medium",
   },
@@ -436,12 +436,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biogas & Anaerobic Digestion",
     question: "An anaerobic digester is producing biogas with a methane content of 55% (normal: 65–70%). The volatile solids destruction is 45% (normal: 50–55%). What does this indicate?",
     options: [
-      "The digester is operating correctly; these values are within normal range",
-      "The digester is under-loaded, causing excess CO2 production",
       "The digester is experiencing inhibition, likely from ammonia or VFA accumulation",
+      "The digester is under-loaded, causing excess CO2 production",
+      "The digester is operating correctly; these values are within normal range",
       "The digester is over-loaded, causing incomplete digestion"
     ],
-    correct: 2,
+    correct: 0,
     explanation: "Low methane content (55% vs 65–70%) combined with reduced VS destruction (45% vs 50–55%) indicates digester inhibition or upset. When methanogens are inhibited (by ammonia toxicity, VFA accumulation, or toxic compounds), they cannot convert acetate and H2 to methane efficiently. CO2 production continues from acidogenesis but methane production is suppressed, lowering the CH4:CO2 ratio. VFA and alkalinity testing should be performed to diagnose the cause. Normal digester operation: pH 6.8–7.4, VFA < 500 mg/L, alkalinity > 2,000 mg/L as CaCO3.",
     difficulty: "hard",
   },
@@ -466,12 +466,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biogas & Anaerobic Digestion",
     question: "Calculate the theoretical methane production from digesting 1,000 kg/d of volatile solids with 55% VS destruction. The methane yield is 0.35 m³ CH4/kg VS destroyed.",
     options: [
-      "192.5 m³ CH4/day",
+      "635 m³ CH4/day",
       "350 m³ CH4/day",
       "550 m³ CH4/day",
-      "635 m³ CH4/day"
+      "192.5 m³ CH4/day"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "VS destroyed = 1,000 kg/d × 0.55 = 550 kg VS/d. Methane produced = 550 kg VS/d × 0.35 m³ CH4/kg VS = 192.5 m³ CH4/day. This is the theoretical production; actual production may vary by ±10–15% depending on feed composition. At a heating value of approximately 35.8 MJ/m³ CH4, this represents about 6,890 MJ/day of potential energy recovery.",
     difficulty: "medium",
   },
@@ -482,11 +482,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A gravity thickener is receiving 500 m³/d of waste activated sludge (WAS) at 0.8% solids. The thickener produces 100 m³/d of thickened sludge. What is the thickened sludge concentration (%TS) if the solids capture efficiency is 92%?",
     options: [
       "2.8% TS",
-      "3.7% TS",
+      "5.5% TS",
       "4.6% TS",
-      "5.5% TS"
+      "3.7% TS"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Solids in = 500 m³/d × 0.008 × 1,000 kg/m³ = 4,000 kg/d. Solids captured = 4,000 × 0.92 = 3,680 kg/d. Thickened sludge concentration = 3,680 kg/d / (100 m³/d × 1,000 kg/m³) = 0.0368 = 3.68% TS ≈ 3.7% TS. This represents a 4.6× concentration factor, which is typical for gravity thickening of WAS. DAF thickening can achieve 4–6% TS with better performance for WAS.",
     difficulty: "hard",
   },
@@ -498,10 +498,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "Increase belt speed to extend residence time on the belt",
       "Decrease belt tension to reduce pressure on the sludge cake",
-      "Decrease belt speed to increase residence time and pressure application",
-      "Increase polymer dose beyond the optimal range to improve flocculation"
+      "Increase polymer dose beyond the optimal range to improve flocculation",
+      "Decrease belt speed to increase residence time and pressure application"
     ],
-    correct: 2,
+    correct: 3,
     explanation: "Decreasing belt speed increases the residence time of sludge on the belt, allowing more time for gravity drainage and pressure application through the rollers. This is the primary operational adjustment to improve cake dryness on a belt filter press. The optimal belt speed balances throughput (production rate) and cake dryness. Increasing polymer beyond the optimal dose causes over-conditioning, which actually reduces cake dryness by creating a slippery, non-draining floc. Belt tension affects pressure but decreasing it would reduce cake dryness.",
     difficulty: "medium",
   },
@@ -511,12 +511,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Sludge Dewatering",
     question: "A centrifuge is dewatering digested sludge. The operator observes that the centrate TSS has increased from 200 mg/L to 800 mg/L while cake dryness has remained the same. What is the MOST likely cause?",
     options: [
-      "Polymer dose is too high, causing over-conditioning",
+      "Differential speed is too high, causing insufficient sludge retention time in the bowl",
       "Bowl speed is too high, causing floc shear and fine particle carryover",
       "Feed rate is too low, causing insufficient solids loading",
-      "Differential speed is too high, causing insufficient sludge retention time in the bowl"
+      "Polymer dose is too high, causing over-conditioning"
     ],
-    correct: 3,
+    correct: 0,
     explanation: "High centrate TSS with unchanged cake dryness indicates that solids are being discharged in the centrate rather than being captured in the cake. If differential speed (the speed difference between the bowl and the scroll conveyor) is too high, the conveyor moves sludge through the bowl too quickly, reducing retention time and allowing fine particles to escape to the centrate. Reducing differential speed increases retention time, improving solids capture. Polymer dose issues would typically affect both centrate clarity and cake dryness simultaneously.",
     difficulty: "hard",
   },
@@ -542,11 +542,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant receives a significant industrial discharge of high-strength wastewater (BOD 2,000 mg/L, flow 500 m³/d). The municipal flow is 10,000 m³/d at 250 mg/L BOD. What is the combined influent BOD concentration?",
     options: [
       "295 mg/L",
-      "318 mg/L",
       "340 mg/L",
+      "318 mg/L",
       "375 mg/L"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Combined BOD = (Q1 × C1 + Q2 × C2) / (Q1 + Q2) = (10,000 × 250 + 500 × 2,000) / (10,000 + 500) = (2,500,000 + 1,000,000) / 10,500 = 3,500,000 / 10,500 = 333 mg/L ≈ 318 mg/L. The industrial discharge increases the combined BOD by approximately 33%, which would require increased aeration capacity and may affect nutrient removal performance. The operator should notify the industrial user and review their discharge permit.",
     difficulty: "medium",
   },
@@ -558,10 +558,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "Immediately reduce airflow to prevent over-aeration",
       "Increase airflow to maximum to ensure adequate DO during the probe outage",
-      "Verify the probe condition and use a portable DO meter to manually check DO levels",
-      "Switch to manual control and maintain the last known airflow setpoint"
+      "Switch to manual control and maintain the last known airflow setpoint",
+      "Verify the probe condition and use a portable DO meter to manually check DO levels"
     ],
-    correct: 2,
+    correct: 3,
     explanation: "When a DO probe signal is lost, the first action is to verify whether the probe has failed or if there is a signal/communication issue. Using a portable DO meter to manually check the actual DO level is essential before making any airflow changes. If the probe has failed and the operator blindly reduces or increases airflow, they may create a DO deficiency or waste energy. Manual verification allows informed decision-making. After confirming the actual DO, the operator can switch to manual control while the probe is repaired.",
     difficulty: "easy",
   },
@@ -571,12 +571,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Process Control — SCADA",
     question: "A plant uses ammonia-based aeration control (ABAC). How does ABAC differ from simple DO control, and what is its primary advantage?",
     options: [
-      "ABAC controls airflow based on effluent ammonia concentration rather than DO, allowing DO to vary while maintaining effluent quality",
-      "ABAC adds ammonia to the aeration basin to optimize the C:N ratio for biological treatment",
       "ABAC controls the ammonia dose in the anaerobic zone for EBPR optimization",
+      "ABAC adds ammonia to the aeration basin to optimize the C:N ratio for biological treatment",
+      "ABAC controls airflow based on effluent ammonia concentration rather than DO, allowing DO to vary while maintaining effluent quality",
       "ABAC uses ammonia sensors to detect industrial discharges and trigger bypass"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Ammonia-Based Aeration Control (ABAC) uses effluent or aeration basin ammonia sensors to control airflow. Unlike simple DO control (which maintains a fixed DO setpoint), ABAC allows DO to vary while keeping effluent ammonia within the target range. The primary advantage is energy savings: during low-load periods, ABAC reduces airflow below the fixed DO setpoint, saving energy. During peak loads, it increases airflow to maintain effluent quality. ABAC can reduce aeration energy by 20–40% compared to fixed DO setpoint control.",
     difficulty: "hard",
   },
@@ -588,10 +588,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "Increase WAS rate to maintain MLSS during dilution",
       "Reduce RAS rate to prevent hydraulic overloading of secondary clarifiers",
-      "Maintain secondary clarifier hydraulic loading within design limits by diverting excess flow to wet weather storage or bypassing primary treatment",
-      "Increase chemical phosphorus removal dose proportionally to flow"
+      "Increase chemical phosphorus removal dose proportionally to flow",
+      "Maintain secondary clarifier hydraulic loading within design limits by diverting excess flow to wet weather storage or bypassing primary treatment"
     ],
-    correct: 2,
+    correct: 3,
     explanation: "During wet weather events at 3× design flow, the most critical action is protecting the secondary clarifiers from hydraulic overloading, which can cause sludge washout and catastrophic effluent quality failure. Options include: (1) diverting excess flow to wet weather storage for later treatment, (2) bypassing primary treatment to maximize secondary capacity, or (3) implementing CSO/SSO protocols. Increasing WAS during dilution would actually worsen performance by reducing MLSS. The secondary clarifier is the most vulnerable unit process during high-flow events.",
     difficulty: "medium",
   },
@@ -601,12 +601,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biological Nutrient Removal",
     question: "A plant must achieve effluent TN ≤ 10 mg/L and TP ≤ 1.0 mg/L. The influent TN is 45 mg/L and TP is 8 mg/L. What combination of processes is MOST likely required?",
     options: [
-      "Conventional activated sludge with chemical phosphorus removal only",
       "BNR (biological nitrogen and phosphorus removal) with supplemental chemical phosphorus polishing",
+      "Conventional activated sludge with chemical phosphorus removal only",
       "Nitrification only with chemical phosphorus removal",
       "Denitrification filters with chemical phosphorus removal"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "To achieve TN ≤ 10 mg/L from 45 mg/L influent (77% removal) and TP ≤ 1.0 mg/L from 8 mg/L (87.5% removal), a comprehensive BNR process is required. Biological nitrogen removal (nitrification + denitrification) can typically achieve TN of 8–12 mg/L. EBPR can achieve TP of 1–2 mg/L. Chemical polishing (ferric/alum addition) after BNR is typically needed to reliably achieve TP ≤ 1.0 mg/L, as EBPR alone can be variable. This combined approach is standard for nutrient-sensitive receiving waters.",
     difficulty: "medium",
   },
@@ -632,11 +632,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant is evaluating switching from coarse bubble to fine bubble diffusers. The standard oxygen transfer efficiency (SOTE) of coarse bubble is 8% per meter of submergence and fine bubble is 20% per meter. If the diffusers are at 5 m submergence, what is the theoretical reduction in air requirement?",
     options: [
       "40% reduction in air requirement",
-      "60% reduction in air requirement",
       "50% reduction in air requirement",
+      "60% reduction in air requirement",
       "25% reduction in air requirement"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "SOTE (coarse bubble) = 8%/m × 5 m = 40% total. SOTE (fine bubble) = 20%/m × 5 m = 100% — but SOTE is capped at 100% in practice; realistic fine bubble SOTE at 5 m is approximately 25–35%. Using the ratio: if coarse bubble requires 100 units of air for 40% SOTE, fine bubble at 20%/m × 5 m = 100% would theoretically require only 40 units — a 60% reduction. In practice, fine bubble diffusers reduce air requirements by 40–60% compared to coarse bubble, with significant energy savings.",
     difficulty: "hard",
   },
@@ -647,11 +647,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Microscopic examination of activated sludge shows large numbers of free-swimming ciliates (e.g., Paramecium) and very few stalked ciliates or rotifers. What does this indicate about the sludge condition?",
     options: [
       "Excellent sludge quality with high SRT and good nitrification",
-      "Young sludge with low SRT; the system may be under-aerated",
+      "Over-aerated sludge with excessive endogenous respiration",
       "Toxic inhibition causing die-off of higher organisms",
-      "Over-aerated sludge with excessive endogenous respiration"
+      "Young sludge with low SRT; the system may be under-aerated"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "The protozoan succession in activated sludge reflects sludge age and health. Free-swimming ciliates (Paramecium, Colpidium) dominate young sludge (low SRT, 2–5 days). As SRT increases, stalked ciliates (Vorticella, Opercularia) become dominant, followed by rotifers and nematodes at higher SRTs (>10 days). The presence of mainly free-swimming ciliates indicates a young, low-SRT sludge that may not be fully nitrifying. Rotifers and stalked ciliates are indicators of a mature, well-stabilized sludge.",
     difficulty: "medium",
   },
@@ -661,12 +661,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — Microscopy",
     question: "Microscopic examination shows abundant Nocardia foam filaments in the aeration basin, causing thick brown foam on the surface. What operational change is MOST likely to control this?",
     options: [
-      "Increase F:M ratio by reducing SRT",
+      "Add chlorine to the aeration basin to kill Nocardia",
       "Decrease SRT to below 5 days to prevent Nocardia growth",
       "Increase SRT to above 15 days to outcompete Nocardia with heterotrophs",
-      "Add chlorine to the aeration basin to kill Nocardia"
+      "Increase F:M ratio by reducing SRT"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "Nocardia and Microthrix parvicella are slow-growing filaments that thrive at long SRTs (>10 days) and low F:M ratios. They are particularly problematic in plants with EBPR and long SRTs. The most effective control is to reduce SRT (increase WAS rate), which raises the F:M ratio and creates conditions unfavorable for slow-growing Nocardia. Chlorination of RAS can suppress Nocardia but does not address the root cause. SRT reduction to 8–12 days is typically effective for Nocardia control.",
     difficulty: "hard",
   },
@@ -677,11 +677,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant's effluent is failing whole effluent toxicity (WET) testing. The effluent meets all conventional parameters (BOD, TSS, NH3). What are the MOST likely causes to investigate?",
     options: [
       "Residual chlorine and ammonia forming toxic chloramines",
-      "Industrial discharges of heavy metals or priority pollutants",
       "Both A and B, plus effluent pH outside the acceptable range for test organisms",
+      "Industrial discharges of heavy metals or priority pollutants",
       "High effluent BOD causing oxygen depletion in the test"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "WET test failures with good conventional parameters are typically caused by: (1) residual chlorine or chloramines (highly toxic to aquatic organisms at μg/L levels), (2) industrial discharges of metals, surfactants, or priority pollutants, (3) effluent pH outside the range of 6.5–8.5 for test organisms, or (4) ammonia toxicity (even at low concentrations at high pH). A toxicity identification evaluation (TIE) should be conducted to identify the specific toxicant. Proper dechlorination is critical before WET testing.",
     difficulty: "medium",
   },
@@ -692,11 +692,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A facultative lagoon is experiencing odour complaints in spring. The lagoon was ice-covered all winter. What phenomenon is causing the odours?",
     options: [
       "Spring algae bloom consuming all the oxygen",
-      "Thermal destratification (turnover) releasing accumulated H2S and organic compounds from the anaerobic bottom layer",
+      "Ice melt diluting the lagoon and reducing treatment efficiency",
       "Increased biological activity from warmer temperatures producing more CO2",
-      "Ice melt diluting the lagoon and reducing treatment efficiency"
+      "Thermal destratification (turnover) releasing accumulated H2S and organic compounds from the anaerobic bottom layer"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Spring turnover in lagoons occurs when ice melts and the surface water warms to the same temperature as the bottom water, eliminating thermal stratification. The bottom anaerobic layer, which has accumulated H2S, methane, and reduced organic compounds over winter, mixes with the surface layer, releasing these compounds as gases. This is a well-known seasonal odour problem in cold-climate lagoon systems. Mitigation strategies include mechanical mixing to prevent stratification, or aeration to oxidize reduced compounds before turnover.",
     difficulty: "medium",
   },
@@ -722,11 +722,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Calculate the theoretical oxygen demand (kg O2/d) for a plant treating 15,000 m³/d with influent BOD of 250 mg/L, if the BOD removal efficiency is 95% and the oxygen utilization factor is 1.1 kg O2/kg BOD removed.",
     options: [
       "2,812 kg O2/d",
-      "3,094 kg O2/d",
       "3,938 kg O2/d",
+      "3,094 kg O2/d",
       "4,125 kg O2/d"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "BOD removed = 15,000 m³/d × 250 g/m³ × 0.95 = 3,562,500 g/d = 3,562.5 kg/d. Oxygen demand = 3,562.5 kg BOD/d × 1.1 kg O2/kg BOD = 3,918.75 ≈ 3,938 kg O2/d. This is the carbonaceous oxygen demand. For a nitrifying system, additional oxygen is required for nitrification: approximately 4.57 kg O2/kg NH3-N nitrified. The total oxygen demand including nitrification would be significantly higher.",
     difficulty: "medium",
   },
@@ -737,11 +737,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant nitrifies 25 mg/L of ammonia-nitrogen. What additional oxygen demand (mg/L) does nitrification add to the system?",
     options: [
       "57 mg/L O2",
-      "95 mg/L O2",
       "114 mg/L O2",
+      "95 mg/L O2",
       "143 mg/L O2"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "The oxygen demand for nitrification is 4.57 kg O2/kg NH3-N (from the stoichiometry: NH4⁺ + 2O2 → NO3⁻ + 2H⁺ + H2O, where 4.57 g O2 are consumed per g N). For 25 mg/L NH3-N: O2 demand = 25 × 4.57 = 114.25 ≈ 114 mg/L. This is a significant oxygen demand — for a plant treating 250 mg/L BOD, the nitrification oxygen demand represents about 45% of the carbonaceous oxygen demand. This must be accounted for in aeration system design.",
     difficulty: "medium",
   },
@@ -752,12 +752,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Sludge Volume Index",
     question: "An operator performs a 30-minute settleability test (SV30) and records a settled sludge volume of 240 mL/L. The MLSS is 3,000 mg/L. Calculate the SVI and interpret the result.",
     options: [
-      "SVI = 80 mL/g — excellent settling",
-      "SVI = 120 mL/g — good settling",
       "SVI = 80 mL/g — good settling, but approaching bulking threshold",
+      "SVI = 120 mL/g — good settling",
+      "SVI = 80 mL/g — excellent settling",
       "SVI = 240 mL/g — bulking sludge"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Calculate the Sludge Volume Index (SVI) using the SV30 and MLSS values, then interpret the result.\n\nStep 1 — Calculate SVI:\nSVI = (SV30 mL/L × 1,000) ÷ MLSS mg/L\nSVI = (240 mL/L × 1,000) ÷ 3,000 mg/L\nSVI = 240,000 ÷ 3,000\nSVI = 80 mL/g\n\nStep 2 — Interpret SVI value:\nAn SVI of 80 mL/g falls into the range of <100 mL/g, which indicates excellent settling characteristics.\n\nStep 3 — Conclusion:\nThis sludge would produce good secondary clarifier performance with a clear supernatant.\n\nThe correct answer is A. SVI = 80 mL/g — excellent settling.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "SVI = (Settled Sludge Volume (SV30) * 1,000) / Mixed Liquor Suspended Solids (MLSS)" }, { l: "Substitute", c: "SVI = (240 mL/L * 1,000) / 3,000 mg/L" }, { l: "Calculate", c: "SVI = 240,000 / 3,000 = 80" }, { l: "Result", c: "SVI = 80 mL/g. This indicates excellent settling characteristics." } ],
@@ -787,12 +787,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Effluent Limits",
     question: "A plant's MISA (Municipal-Industrial Strategy for Abatement) monitoring program requires quarterly effluent sampling for priority pollutants. The plant receives a significant industrial discharge. What is the operator's PRIMARY obligation regarding this discharge?",
     options: [
-      "Treat the discharge to meet effluent limits and report quarterly results",
       "Require the industrial user to pre-treat to municipal sewer use by-law limits and report any exceedances to the Director",
+      "Treat the discharge to meet effluent limits and report quarterly results",
       "Bypass the industrial discharge around the treatment plant during peak loading",
       "Dilute the industrial discharge with municipal wastewater to meet MISA limits"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Under Ontario's MISA program and Municipal Sewer Use By-laws, industrial users must pre-treat their discharge to meet by-law limits before discharging to the municipal sewer. The WWTP operator's obligation is to enforce the by-law, require industrial pre-treatment where needed, and report any exceedances to the Director (MECP). The WWTP is not responsible for treating industrial pollutants that exceed sewer use by-law limits. Dilution is not an acceptable treatment strategy under Ontario regulations.",
     difficulty: "medium",
   },
@@ -821,12 +821,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — Wasting",
     question: "What is the primary advantage of the MLSS control wasting method over the constant SRT method?",
     options: [
-      "MLSS control is simpler to calculate and requires fewer measurements",
       "MLSS control maintains a constant biomass concentration, which is easier to observe and control operationally",
+      "MLSS control is simpler to calculate and requires fewer measurements",
       "MLSS control automatically adjusts for seasonal temperature changes",
       "MLSS control prevents over-wasting during low-load periods"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "The MLSS control method maintains a target MLSS concentration in the aeration basin. Its primary advantage is operational simplicity — the operator can directly observe the MLSS and adjust wasting accordingly. It is intuitive and easy to implement. The disadvantage is that SRT varies with loading (during high loads, more sludge is produced and more must be wasted to maintain MLSS, which inadvertently reduces SRT). The constant SRT method is more theoretically rigorous but requires more calculations.",
     difficulty: "easy",
   },
@@ -855,11 +855,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "During peak flow, the operator increases the RAS rate from 50% to 80% of influent flow. What is the EXPECTED effect on MLSS in the aeration basin?",
     options: [
       "MLSS increases because more sludge is returned from the clarifier",
-      "MLSS decreases because the higher RAS flow dilutes the aeration basin",
       "MLSS remains constant because RAS only recycles existing sludge",
+      "MLSS decreases because the higher RAS flow dilutes the aeration basin",
       "MLSS decreases temporarily then returns to normal as the system reaches equilibrium"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Increasing RAS rate during peak flow has two effects: (1) it returns more sludge to the aeration basin (tending to increase MLSS), but (2) the higher RAS flow also increases the hydraulic loading on the clarifier, potentially causing sludge blanket rise and dilution of the return sludge. In the short term, increasing RAS during peak flow is correct to prevent sludge blanket rise in the clarifier. The net effect on MLSS depends on the balance between these factors, but the primary goal is to prevent sludge loss over the clarifier weirs.",
     difficulty: "medium",
   },
@@ -886,10 +886,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "Residual BOD causing biological growth in the cooling system",
       "Nitrogen compounds promoting algae growth in the cooling tower",
-      "Hardness and alkalinity causing scaling, and microbiological growth causing Legionella risk",
-      "Residual chlorine corroding the cooling tower structure"
+      "Residual chlorine corroding the cooling tower structure",
+      "Hardness and alkalinity causing scaling, and microbiological growth causing Legionella risk"
     ],
-    correct: 2,
+    correct: 3,
     explanation: "For cooling tower makeup water, the primary concerns are: (1) scaling from hardness (CaCO3) and alkalinity as water concentrates through evaporation cycles, and (2) microbiological growth, particularly Legionella pneumophila, which thrives in warm water (25–45°C) and can cause Legionnaires' disease. Cooling tower water must be treated with scale inhibitors, biocides, and maintained at appropriate pH and conductivity. Legionella risk management is a critical public health and regulatory requirement for cooling towers.",
     difficulty: "medium",
   },
@@ -930,11 +930,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A thick, stable white foam is observed on the aeration basin surface. Microscopy shows no filaments. The system was recently started up after a 2-week shutdown. What is the MOST likely cause?",
     options: [
       "Nocardia or Microthrix filaments causing biological foam",
-      "Surfactants (detergents) in the influent causing chemical foam during startup",
+      "Excess polymer carryover from the sludge thickening process",
       "Over-aeration causing excessive turbulence",
-      "Excess polymer carryover from the sludge thickening process"
+      "Surfactants (detergents) in the influent causing chemical foam during startup"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "White, stable foam without filaments during startup is typically caused by surfactants (detergents, soaps) in the influent. During startup, the biomass concentration is low and the system has not yet developed the capacity to biodegrade surfactants efficiently. As the biomass grows and adapts, surfactant degradation improves and the foam subsides. This is distinct from biological foam (brown, viscous, caused by Nocardia/Microthrix filaments) which persists and worsens over time.",
     difficulty: "easy",
   },
@@ -946,11 +946,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant's aeration basin temperature drops from 18°C to 10°C in November. The operator maintains the same SRT and MLSS. What effluent parameter is MOST likely to deteriorate first?",
     options: [
       "BOD removal",
-      "TSS removal",
       "Ammonia (nitrification)",
+      "TSS removal",
       "Total phosphorus"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "Identify the most temperature-sensitive biological process in activated sludge.\n\nStep 1 — Understand temperature sensitivity of biological processes:\nNitrifying bacteria (Ammonia removal) are highly temperature-sensitive, with a significant reduction in activity as temperature drops.\nHeterotrophic bacteria (BOD removal) are less temperature-sensitive than nitrifiers.\n\nStep 2 — Evaluate the impact of the temperature drop:\nA drop from 18°C to 10°C reduces the nitrification rate by approximately 50-60%.\nBOD removal rate is also affected but to a lesser extent.\n\nStep 3 — Consider the operational parameters:\nThe operator maintains the same SRT (Solids Retention Time) and MLSS (Mixed Liquor Suspended Solids).\nSince the nitrification rate decreases significantly with temperature, maintaining the same SRT will be insufficient to sustain ammonia removal.\n\nStep 4 — Determine the first parameter to deteriorate:\nBecause nitrifying bacteria are the most sensitive to temperature changes, and their activity is halved at 10°C, ammonia removal will be compromised first, even with a constant SRT.\n\nThe correct answer is C. Ammonia (nitrification).",
     difficulty: "medium",
     steps: [ { l: "Concept", c: "Different microbial groups in activated sludge have varying temperature sensitivities." }, { l: "Step 1", c: "Identify the most temperature-sensitive biological process in activated sludge." }, { l: "Step 2", c: "Nitrification, performed by nitrifying bacteria, is highly sensitive to temperature changes." }, { l: "Step 3", c: "A significant drop in temperature (18°C to 10°C) will severely inhibit nitrifying bacteria activity." }, { l: "Result", c: "Effluent ammonia (NH3-N) concentration is MOST likely to deteriorate first due to reduced nitrification." } ],
@@ -978,11 +978,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What is the minimum DO concentration required to maintain full nitrification in an activated sludge system, and why?",
     options: [
       "0.5 mg/L — nitrifiers can function under microaerobic conditions",
-      "1.0 mg/L — the half-saturation constant (Ks) for DO in Nitrosomonas is approximately 0.3 mg/L",
       "2.0 mg/L — nitrifiers require higher DO than heterotrophs due to their lower growth rate",
+      "1.0 mg/L — the half-saturation constant (Ks) for DO in Nitrosomonas is approximately 0.3 mg/L",
       "4.0 mg/L — nitrifiers are obligate aerobes requiring near-saturation DO"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "A minimum DO of 2.0 mg/L is recommended for full nitrification. Although the Ks for DO in Nitrosomonas is approximately 0.3 mg/L (meaning half-maximum rate occurs at 0.3 mg/L), maintaining DO at 2.0 mg/L ensures adequate DO penetration into the floc interior where nitrifiers are located. Nitrifiers are typically found in the interior of flocs, where DO can be significantly lower than the bulk liquid. At bulk DO of 2.0 mg/L, the floc interior may be at 0.5–1.0 mg/L, which is sufficient for nitrification.",
     difficulty: "medium",
   },
@@ -992,12 +992,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — Bulking",
     question: "An operator is troubleshooting filamentous bulking. The dominant filament identified by microscopy is Type 021N. What operational conditions favor Type 021N growth?",
     options: [
-      "High sulfide concentrations and low DO",
-      "Low DO and high F:M ratio",
       "Low DO and presence of reduced sulfur compounds (sulfide, thiosulfate)",
+      "Low DO and high F:M ratio",
+      "High sulfide concentrations and low DO",
       "High F:M ratio and high DO"
     ],
-    correct: 2,
+    correct: 0,
     explanation: "Type 021N (Thiothrix) is a sulfur-oxidizing filament that grows under conditions of low DO and the presence of reduced sulfur compounds (H2S, thiosulfate) in the influent. It is commonly associated with septic influent or industrial discharges containing sulfur compounds. Control measures include: (1) eliminating the sulfur source, (2) increasing DO, (3) adding chlorine to RAS, and (4) using a biological selector. Type 021N is distinct from low-F:M filaments like Microthrix parvicella.",
     difficulty: "hard",
   },
@@ -1023,12 +1023,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Secondary Clarifier Design",
     question: "A secondary clarifier has a surface overflow rate (SOR) of 32 m³/m²/d at average flow. At peak flow (2.5× average), what is the SOR and is it within the typical design limit for activated sludge?",
     options: [
-      "SOR = 80 m³/m²/d — exceeds the typical limit of 49 m³/m²/d",
+      "SOR = 48 m³/m²/d — within the typical limit of 49 m³/m²/d",
       "SOR = 80 m³/m²/d — within the typical limit of 100 m³/m²/d",
       "SOR = 64 m³/m²/d — within the typical limit of 80 m³/m²/d",
-      "SOR = 48 m³/m²/d — within the typical limit of 49 m³/m²/d"
+      "SOR = 80 m³/m²/d — exceeds the typical limit of 49 m³/m²/d"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "Calculate the peak surface overflow rate by multiplying the average SOR by the peak flow factor, then compare it to the typical design limit.\n\nStep 1 — Calculate the peak surface overflow rate (SOR):\nPeak SOR = Average SOR × Peak Flow Factor\nPeak SOR = 32 m³/m²/d × 2.5 = 80 m³/m²/d\n\nStep 2 — Compare the peak SOR to the typical design limit:\nThe typical design limit for secondary clarifiers in activated sludge systems (peak flow) is 49 m³/m²/d.\n\nStep 3 — Determine if the peak SOR exceeds the limit:\n80 m³/m²/d > 49 m³/m²/d, therefore, it exceeds the limit.\n\nThe correct answer is A. SOR = 80 m³/m²/d — exceeds the typical limit of 49 m³/m²/d.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Peak SOR = Average SOR × Peak Factor" }, { l: "Substitute", c: "Peak SOR = 32 m³/m²/d × 2.5" }, { l: "Calculate", c: "Peak SOR = 80 m³/m²/d" }, { l: "Result", c: "The SOR at peak flow is 80 m³/m²/d. This is above the typical design limit of 49 m³/m²/d for activated sludge, indicating potential for sludge washout." } ],
@@ -1040,12 +1040,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Digester Operations",
     question: "An anaerobic digester operating at 35°C (mesophilic) is being evaluated for conversion to thermophilic operation (55°C). What are the PRIMARY advantages and disadvantages of thermophilic digestion?",
     options: [
-      "Advantages: faster reaction rates, better pathogen destruction; Disadvantages: higher energy cost, less stable operation, more sensitive to inhibition",
-      "Advantages: lower energy cost, better biogas quality; Disadvantages: slower reaction rates, poor pathogen destruction",
       "Advantages: better VS destruction, lower polymer requirements; Disadvantages: higher ammonia toxicity risk only",
+      "Advantages: lower energy cost, better biogas quality; Disadvantages: slower reaction rates, poor pathogen destruction",
+      "Advantages: faster reaction rates, better pathogen destruction; Disadvantages: higher energy cost, less stable operation, more sensitive to inhibition",
       "Advantages: all of the above; Disadvantages: none significant"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Thermophilic digestion (55°C) offers: (1) faster reaction rates (2–3× mesophilic), allowing smaller reactor volume or shorter HRT; (2) superior pathogen destruction, often achieving Class A biosolids standards; (3) better VS destruction. Disadvantages include: (1) higher energy input to maintain 55°C; (2) less stable operation — more sensitive to temperature fluctuations and inhibitory compounds; (3) higher free ammonia concentrations at 55°C (more toxic to methanogens); (4) poorer dewatering characteristics of the digested sludge. Many plants use temperature-phased digestion (TPAD) combining both.",
     difficulty: "medium",
   },
@@ -1073,12 +1073,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Digester Operations",
     question: "What is the minimum hydraulic retention time (HRT) for a mesophilic anaerobic digester to achieve adequate stabilization and pathogen reduction?",
     options: [
-      "5–7 days",
       "10–15 days",
+      "5–7 days",
       "20–30 days",
       "40–60 days"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "The minimum HRT for mesophilic anaerobic digestion (35°C) is typically 15 days per Ontario and Ten States Standards, with 20 days commonly recommended for reliable operation. At HRTs below 10 days, methanogens (which have doubling times of 3–10 days) can be washed out, causing digester failure. For Class B biosolids (PSRP), the minimum HRT is 15 days at 35°C or 60 days at 20°C. For Class A biosolids, thermophilic digestion or additional treatment is required.",
     difficulty: "easy",
   },
@@ -1108,11 +1108,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant is evaluating the impact of increasing SRT from 10 to 20 days on sludge production. If the current WAS production is 3,000 kg VSS/d, what is the EXPECTED change in sludge production?",
     options: [
       "Sludge production increases by approximately 50% to 4,500 kg VSS/d",
-      "Sludge production decreases by approximately 20–30% to 2,100–2,400 kg VSS/d",
       "Sludge production remains the same; SRT does not affect yield",
+      "Sludge production decreases by approximately 20–30% to 2,100–2,400 kg VSS/d",
       "Sludge production doubles to 6,000 kg VSS/d"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Calculate the observed yield at each SRT using the provided formula and then determine the ratio of the new yield to the old yield to find the change in sludge production.\n\nStep 1 — Calculate Observed Yield (Yobs) at SRT = 10 days:\nYobs = Y / (1 + kd × SRT) = 0.6 / (1 + 0.06/d × 10 d) = 0.6 / (1 + 0.6) = 0.6 / 1.6 = 0.375 kg VSS/kg BOD\n\nStep 2 — Calculate Observed Yield (Yobs) at SRT = 20 days:\nYobs = Y / (1 + kd × SRT) = 0.6 / (1 + 0.06/d × 20 d) = 0.6 / (1 + 1.2) = 0.6 / 2.2 = 0.273 kg VSS/kg BOD\n\nStep 3 — Determine the ratio of the new Yobs to the old Yobs:\nRatio = Yobs (20 days) / Yobs (10 days) = 0.273 / 0.375 = 0.728\n\nStep 4 — Calculate the expected new sludge production:\nNew Sludge Production = Current Sludge Production × Ratio = 3,000 kg VSS/d × 0.728 = 2,184 kg VSS/d\n\nStep 5 — Calculate the percentage decrease:\nPercentage Decrease = (1 - Ratio) × 100% = (1 - 0.728) × 100% = 0.272 × 100% = 27.2%\n\nThe correct answer is sludge production decreases by approximately 20–30% to 2,100–2,400 kg VSS/d.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Observed Yield (Yobs) = Y / (1 + kd × SRT), where Y = true yield, kd = endogenous decay coefficient, SRT = sludge retention time." }, { l: "Step 1", c: "Calculate Yobs at SRT = 10 days: Yobs_10 = 0.6 / (1 + 0.06/d × 10 d) = 0.6 / 1.6 = 0.375 kg VSS/kg BOD." }, { l: "Step 2", c: "Calculate Yobs at SRT = 20 days: Yobs_20 = 0.6 / (1 + 0.06/d × 20 d) = 0.6 / 2.2 = 0.273 kg VSS/kg BOD." }, { l: "Step 3", c: "Calculate the ratio of new to old Yobs: Ratio = Yobs_20 / Yobs_10 = 0.273 / 0.375 = 0.728." }, { l: "Step 4", c: "Expected new sludge production = Current sludge production × Ratio = 3,000 kg VSS/d × 0.728 = 2,184 kg VSS/d." }, { l: "Result", c: "Increasing the SRT from 10 to 20 days is expected to reduce sludge production from 3,000 kg VSS/d to approximately 2,184 kg VSS/d." } ],
@@ -1124,8 +1124,8 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — Aeration Basin",
     question: "A completely mixed activated sludge system has an aeration basin HRT of 6 hours. The influent BOD is 220 mg/L and the effluent BOD is 12 mg/L. What is the volumetric BOD removal rate (kg BOD/m³/d)?",
-    options: ["0.83 kg BOD/m³/d", "0.88 kg BOD/m³/d", "1.05 kg BOD/m³/d", "1.25 kg BOD/m³/d"],
-    correct: 0,
+    options: ["0.88 kg BOD/m³/d", "0.83 kg BOD/m³/d", "1.05 kg BOD/m³/d", "1.25 kg BOD/m³/d"],
+    correct: 1,
     explanation: "Calculate the volumetric BOD removal rate by first determining the BOD removed, converting the HRT to days, and then applying unit conversions.\n\nStep 1 — Calculate the BOD removed:\n220 mg/L (Influent BOD) - 12 mg/L (Effluent BOD) = 208 mg/L BOD removed\n\nStep 2 — Convert HRT from hours to days:\n6 hours ÷ 24 hours/day = 0.25 days\n\nStep 3 — Calculate the volumetric BOD removal rate in mg/L/day:\n208 mg/L ÷ 0.25 days = 832 mg/L/day\n\nStep 4 — Convert the rate from mg/L/day to kg BOD/m³/d (Note: 1 mg/L = 1 g/m³):\n832 mg/L/day = 832 g/m³/day\n832 g/m³/day × (1 kg / 1000 g) = 0.832 kg BOD/m³/d\n\nThe correct answer is **0.83 kg BOD/m³/d**.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "BOD Removed = Influent BOD - Effluent BOD" }, { l: "Step 1", c: "Calculate BOD removed: BOD Removed = 220 mg/L - 12 mg/L = 208 mg/L." }, { l: "Step 2", c: "Convert HRT to days: HRT = 6 hours / 24 hours/day = 0.25 days." }, { l: "Formula", c: "Volumetric BOD Removal Rate = BOD Removed / HRT" }, { l: "Substitute", c: "Volumetric BOD Removal Rate = 208 mg/L / 0.25 days = 832 mg/L/day" }, { l: "Step 3", c: "Convert to kg BOD/m³/d: 832 mg/L/day = 832 g/m³/day = 0.832 kg BOD/m³/d." }, { l: "Result", c: "The volumetric BOD removal rate is approximately 0.832 kg BOD/m³/d." } ],
@@ -1138,11 +1138,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Why does a plug flow aeration basin typically achieve better effluent quality than a completely mixed basin at the same SRT and loading?",
     options: [
       "Plug flow basins have higher MLSS concentrations",
-      "Plug flow creates a substrate gradient that selects against filamentous organisms and provides a higher average F:M ratio",
+      "Plug flow basins are better suited for nitrification due to higher DO",
       "Plug flow basins have longer HRT",
-      "Plug flow basins are better suited for nitrification due to higher DO"
+      "Plug flow creates a substrate gradient that selects against filamentous organisms and provides a higher average F:M ratio"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "In a plug flow basin, substrate concentration decreases along the length of the basin (high at inlet, low at outlet). This gradient: (1) creates high F:M conditions at the inlet that select against low-F:M filaments; (2) provides a biological selector effect; and (3) allows the effluent end to achieve lower substrate concentrations than a completely mixed system at the same average F:M. The high-substrate inlet zone also promotes faster reaction kinetics. Completely mixed systems have uniform, low substrate concentration throughout, which can favor filamentous growth.",
     difficulty: "medium",
   },
@@ -1153,11 +1153,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant converts from conventional plug flow to step feed operation during a wet weather event. What is the PRIMARY operational benefit of step feed?",
     options: [
       "Step feed increases the total aeration basin volume available",
-      "Step feed distributes the influent load along the basin length, reducing peak oxygen demand and preventing DO sag at the inlet",
       "Step feed improves phosphorus removal by creating multiple anaerobic zones",
+      "Step feed distributes the influent load along the basin length, reducing peak oxygen demand and preventing DO sag at the inlet",
       "Step feed reduces the RAS rate required"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Step feed distributes the influent flow to multiple points along the aeration basin, rather than all at the inlet. This distributes the oxygen demand more evenly, preventing the DO sag (oxygen deficit) that occurs at the inlet of a conventional plug flow system during peak loads. It also allows the system to handle higher peak flows by using the full basin volume more effectively. Step feed is a common wet weather strategy that can increase hydraulic capacity by 20–40% without capital investment.",
     difficulty: "medium",
   },
@@ -1167,12 +1167,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — Contact Stabilization",
     question: "A contact stabilization system has a contact zone (30 min HRT) and a stabilization zone (4 hour HRT). What is the PRIMARY advantage of this configuration?",
     options: [
-      "Smaller total reactor volume compared to conventional activated sludge for the same BOD removal",
+      "Lower energy consumption due to reduced aeration requirements",
       "Better nitrification performance due to longer SRT in the stabilization zone",
       "Improved phosphorus removal through the contact/stabilization cycle",
-      "Lower energy consumption due to reduced aeration requirements"
+      "Smaller total reactor volume compared to conventional activated sludge for the same BOD removal"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "Contact stabilization reduces the total aeration basin volume required compared to conventional activated sludge. In the contact zone, the biomass rapidly adsorbs and absorbs soluble and colloidal BOD from the wastewater (30 min). The stabilized sludge (after RAS) then undergoes endogenous oxidation in the stabilization zone (4 hours). Since only the RAS (typically 25–50% of influent flow) passes through the stabilization zone, the total aeration volume is reduced by 50–60% compared to conventional systems. This is advantageous for plant expansions with limited space.",
     difficulty: "medium",
   },
@@ -1182,12 +1182,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — Extended Aeration",
     question: "An extended aeration system operates at an SRT of 25 days. What are the EXPECTED characteristics of the sludge and effluent compared to conventional activated sludge (SRT = 8 days)?",
     options: [
-      "Higher MLSS, lower sludge production, better nitrification, but potentially higher effluent TSS from dispersed growth",
-      "Lower MLSS, higher sludge production, poor nitrification, better BOD removal",
       "Same MLSS, same sludge production, same effluent quality",
+      "Lower MLSS, higher sludge production, poor nitrification, better BOD removal",
+      "Higher MLSS, lower sludge production, better nitrification, but potentially higher effluent TSS from dispersed growth",
       "Lower MLSS, lower sludge production, poor nitrification, higher effluent BOD"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Extended aeration at SRT = 25 days produces: (1) higher MLSS (more biomass accumulates at longer SRT); (2) significantly lower sludge production (high endogenous decay reduces net yield to ~0.2–0.3 kg VSS/kg BOD); (3) excellent nitrification (long SRT far exceeds minimum for nitrifiers); (4) potential for higher effluent TSS from dispersed growth and pin floc at very long SRTs (endogenous conditions cause cell lysis and dispersed growth). Extended aeration is common for small plants due to its simplicity and low sludge production.",
     difficulty: "medium",
   },
@@ -1198,11 +1198,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "An oxidation ditch uses horizontal rotors for aeration and mixing. The rotor speed is reduced to save energy during low-load periods. What is the MINIMUM DO that must be maintained to prevent process failure?",
     options: [
       "0.5 mg/L — minimum for heterotrophic BOD removal",
-      "1.0 mg/L — minimum for nitrification under optimal conditions",
       "2.0 mg/L — recommended minimum for reliable nitrification",
+      "1.0 mg/L — minimum for nitrification under optimal conditions",
       "4.0 mg/L — minimum for oxidation ditch operation"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "In an oxidation ditch, the minimum DO of 2.0 mg/L must be maintained at the point of lowest DO (typically just before the rotor) to ensure reliable nitrification. Oxidation ditches often operate with intentional DO gradients — higher DO near the rotor, lower DO in the anoxic zone — to achieve simultaneous nitrification-denitrification (SND). However, the aerobic zones must maintain ≥2.0 mg/L. Reducing rotor speed below the minimum required to maintain 2.0 mg/L risks nitrification failure.",
     difficulty: "easy",
   },
@@ -1213,11 +1213,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Moving Bed Biofilm Reactor (MBBR) is experiencing declining nitrification performance. The carrier fill fraction is 50% and the DO is 4.0 mg/L. What is the MOST likely cause?",
     options: [
       "Carrier fill fraction is too high, causing channeling",
-      "Excessive biofilm thickness on carriers causing diffusion limitation and anaerobic core",
+      "Insufficient mixing causing carrier settling",
       "DO is too high, inhibiting nitrification",
-      "Insufficient mixing causing carrier settling"
+      "Excessive biofilm thickness on carriers causing diffusion limitation and anaerobic core"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "In an MBBR, excessive biofilm thickness on the carriers creates a diffusion limitation — oxygen and substrate cannot penetrate to the inner biofilm layers, creating an anaerobic core. This reduces the effective biofilm volume available for nitrification. Biofilm thickness is controlled by the shear forces from aeration and mixing; if shear is insufficient, biofilm accumulates beyond the optimal thickness (100–300 μm for nitrification). Solutions include increasing aeration intensity (shear), adding carrier sieving to remove excess biofilm, or reducing organic loading to reduce biofilm growth rate.",
     difficulty: "hard",
   },
@@ -1228,11 +1228,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "An Integrated Fixed-Film Activated Sludge (IFAS) system is being used to upgrade a plant's nitrification capacity. What is the PRIMARY mechanism by which IFAS improves nitrification compared to conventional activated sludge?",
     options: [
       "IFAS increases the total MLSS in the system, providing more biomass for nitrification",
-      "IFAS retains nitrifiers on the fixed-film media at a longer effective SRT than the suspended sludge SRT, allowing nitrification at lower suspended SRTs",
+      "IFAS reduces the BOD loading to the nitrifiers by pre-treating the wastewater",
       "IFAS improves oxygen transfer efficiency by creating turbulence around the media",
-      "IFAS reduces the BOD loading to the nitrifiers by pre-treating the wastewater"
+      "IFAS retains nitrifiers on the fixed-film media at a longer effective SRT than the suspended sludge SRT, allowing nitrification at lower suspended SRTs"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "The key advantage of IFAS is that the fixed-film media retains nitrifiers at a longer effective SRT than the suspended sludge SRT. Nitrifiers attach to the media and are not wasted with the WAS, allowing them to accumulate at high concentrations on the media even when the suspended SRT is short. This allows the plant to nitrify at a lower suspended SRT (and thus smaller aeration basin volume) than would be possible with conventional activated sludge. IFAS can double or triple the nitrification capacity of an existing basin without increasing its volume.",
     difficulty: "hard",
   },
@@ -1242,12 +1242,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — Selector",
     question: "A biological selector is installed before the aeration basin to control filamentous bulking. The selector operates under aerobic conditions with a high F:M ratio. Which filament type is MOST effectively controlled by an aerobic selector?",
     options: [
-      "Microthrix parvicella — a low-F:M filament",
-      "Type 0041 — a low-F:M filament",
       "Sphaerotilus natans — a high-F:M filament",
+      "Type 0041 — a low-F:M filament",
+      "Microthrix parvicella — a low-F:M filament",
       "Type 021N — a sulfide-associated filament"
     ],
-    correct: 2,
+    correct: 0,
     explanation: "Aerobic selectors are most effective against high-F:M filaments like Sphaerotilus natans, which grow under high substrate conditions but are outcompeted by floc-formers in the high-F:M selector environment. Paradoxically, aerobic selectors are less effective against low-F:M filaments (Microthrix parvicella, Type 0041) because these filaments are adapted to low substrate conditions and are not disadvantaged by the selector. Anoxic or anaerobic selectors are more effective for controlling low-F:M filaments. Microthrix parvicella is best controlled by reducing SRT.",
     difficulty: "hard",
   },
@@ -1273,11 +1273,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Chlorination of the RAS line is being used as an emergency measure to control filamentous bulking. What is the recommended chlorine dose (kg Cl2/kg MLSS/d) for RAS chlorination?",
     options: [
       "0.001–0.003 kg Cl2/kg MLSS/d",
-      "0.003–0.006 kg Cl2/kg MLSS/d",
       "0.01–0.03 kg Cl2/kg MLSS/d",
+      "0.003–0.006 kg Cl2/kg MLSS/d",
       "0.05–0.10 kg Cl2/kg MLSS/d"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "The recommended chlorine dose for RAS chlorination to control filamentous bulking is 0.003–0.006 kg Cl2/kg MLSS/d (3–6 g Cl2/kg MLSS/d). This dose is sufficient to damage filament cell walls (which extend beyond the floc and are more exposed to chlorine) while minimizing damage to floc-forming organisms within the floc interior. Higher doses can damage the overall biomass and worsen treatment performance. RAS chlorination is a temporary measure; the root cause of bulking must be addressed through operational changes.",
     difficulty: "hard",
   },
@@ -1288,11 +1288,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Hydrogen peroxide (H2O2) is being evaluated as an alternative to chlorine for RAS treatment to control filamentous bulking. What is the PRIMARY advantage of H2O2 over chlorine?",
     options: [
       "H2O2 is more effective at killing filaments at lower doses",
-      "H2O2 decomposes to water and oxygen, leaving no toxic residual that could affect the receiving water",
       "H2O2 is cheaper than chlorine for large-scale treatment",
+      "H2O2 decomposes to water and oxygen, leaving no toxic residual that could affect the receiving water",
       "H2O2 selectively kills filaments without any effect on floc-forming organisms"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "The primary advantage of H2O2 over chlorine for RAS treatment is that H2O2 decomposes to water and oxygen (2H2O2 → 2H2O + O2), leaving no toxic residual. This eliminates concerns about chlorine residual in the effluent (which is toxic to aquatic organisms) and avoids the formation of chlorinated disinfection byproducts. H2O2 also provides supplemental oxygen to the aeration basin. The typical dose is 100–200 mg/L H2O2 applied to the RAS. It is generally less effective than chlorine at equivalent doses but is preferred where chlorine residual is a concern.",
     difficulty: "medium",
   },
@@ -1304,10 +1304,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "High F:M causing dispersed growth; reduce organic loading",
       "Phosphorus deficiency causing Zoogloea (viscous bulking) overgrowth; add phosphoric acid to achieve BOD:P ratio of 100:1",
-      "Nitrogen deficiency causing Sphaerotilus growth; add ammonia to achieve BOD:N ratio of 100:5",
-      "Both B and C — both N and P are deficient; add both nutrients"
+      "Both B and C — both N and P are deficient; add both nutrients",
+      "Nitrogen deficiency causing Sphaerotilus growth; add ammonia to achieve BOD:N ratio of 100:5"
     ],
-    correct: 3,
+    correct: 2,
     explanation: "The influent BOD:N:P = 100:1:0.2 is severely deficient in both nitrogen (target 100:5) and phosphorus (target 100:1). Nutrient deficiency causes: (1) Sphaerotilus natans growth (N or P deficiency), (2) Zoogloea viscous bulking (P deficiency), and (3) poor floc formation. Both nitrogen (as ammonia or urea) and phosphorus (as phosphoric acid) must be added to achieve the target ratio of 100:5:1. This is a common problem with food processing, pulp and paper, and brewery wastewaters.",
     difficulty: "medium",
   },
@@ -1318,11 +1318,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant receives a slug discharge that causes a sudden drop in oxygen uptake rate (OUR) from 40 mg O2/L/h to 5 mg O2/L/h. The MLSS remains unchanged. What does this indicate?",
     options: [
       "The biomass has adapted to the new substrate and is more efficient",
-      "A toxic compound has inhibited the biological activity of the biomass",
+      "The DO probe is malfunctioning",
       "The influent BOD has decreased, reducing the oxygen demand",
-      "The DO probe is malfunctioning"
+      "A toxic compound has inhibited the biological activity of the biomass"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "A sudden drop in OUR (oxygen uptake rate) from 40 to 5 mg O2/L/h (87.5% reduction) with unchanged MLSS is a classic indicator of toxic inhibition. The biomass is present but biologically inactive. OUR measurement is a sensitive, real-time indicator of biomass activity and toxicity. When a toxic slug discharge occurs, OUR drops rapidly as cellular respiration is inhibited. Recovery depends on the toxicant type and concentration. The operator should investigate the source of the toxic discharge, increase WAS to flush inhibited biomass, and consider bypassing the toxic discharge if possible.",
     difficulty: "medium",
   },
@@ -1332,12 +1332,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — Toxicity",
     question: "After a toxic slug discharge, the plant's biomass is severely inhibited. What is the BEST strategy to restore biological treatment performance?",
     options: [
-      "Immediately increase WAS rate to remove all inhibited biomass and restart with fresh seed",
       "Add fresh activated sludge from a nearby plant to supplement the inhibited biomass, while reducing WAS to retain as much viable biomass as possible",
+      "Immediately increase WAS rate to remove all inhibited biomass and restart with fresh seed",
       "Add large amounts of nutrients (N and P) to stimulate regrowth of the inhibited biomass",
       "Increase aeration to maximum to provide excess oxygen for recovery"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "After a toxic slug discharge, the best recovery strategy is to: (1) reduce WAS to retain as much viable (non-inhibited) biomass as possible, since some organisms may have survived or recovered; (2) supplement with fresh activated sludge from a nearby plant to provide viable seed organisms; (3) allow the system to recover gradually while monitoring OUR and effluent quality. Immediately wasting all biomass would extend the recovery period significantly. Adding nutrients helps if nutrient deficiency is a concern but is not the primary recovery strategy.",
     difficulty: "medium",
   },
@@ -1349,11 +1349,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Nitrification consumes alkalinity. If the influent alkalinity is 180 mg/L as CaCO3 and the plant nitrifies 30 mg/L of NH3-N, will there be sufficient alkalinity remaining for stable operation?",
     options: [
       "Yes — 180 mg/L is more than sufficient for any nitrification level",
-      "No — nitrification consumes 7.14 mg alkalinity/mg NH3-N, consuming 214 mg/L, which exceeds the available 180 mg/L",
+      "No — nitrification consumes 4.57 mg alkalinity/mg NH3-N, consuming 137 mg/L, leaving only 43 mg/L which may be insufficient",
       "Yes — nitrification only consumes 3.57 mg alkalinity/mg NH3-N, consuming 107 mg/L, leaving 73 mg/L",
-      "No — nitrification consumes 4.57 mg alkalinity/mg NH3-N, consuming 137 mg/L, leaving only 43 mg/L which may be insufficient"
+      "No — nitrification consumes 7.14 mg alkalinity/mg NH3-N, consuming 214 mg/L, which exceeds the available 180 mg/L"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Calculate the alkalinity consumed by nitrification and compare it to the influent alkalinity.\n\nStep 1 — Determine alkalinity consumed per mg NH3-N:\nNitrification consumes 7.14 mg alkalinity (as CaCO3) per mg NH3-N oxidized.\n\nStep 2 — Calculate total alkalinity consumed:\n30 mg/L NH3-N × 7.14 mg alkalinity/mg NH3-N = 214.2 mg/L as CaCO3\n\nStep 3 — Compare consumed alkalinity to available alkalinity:\nAvailable alkalinity = 180 mg/L as CaCO3\nAlkalinity consumed = 214.2 mg/L as CaCO3\n\nStep 4 — Evaluate sufficiency:\n214.2 mg/L (consumed) > 180 mg/L (available)\n\nTherefore, there will not be sufficient alkalinity remaining for stable operation.\nThe correct answer is B. No — nitrification consumes 7.14 mg alkalinity/mg NH3-N, consuming 214 mg/L, which exceeds the available 180 mg/L.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Alkalinity Consumed (mg/L as CaCO3) = NH3-N oxidized (mg/L) * 7.14" }, { l: "Step 1", c: "Identify given values: Influent Alkalinity = 180 mg/L as CaCO3, NH3-N oxidized = 30 mg/L." }, { l: "Substitute", c: "Alkalinity Consumed = 30 mg/L * 7.14" }, { l: "Calculate", c: "Alkalinity Consumed = 214.2 mg/L as CaCO3" }, { l: "Result", c: "Since 214.2 mg/L (consumed) > 180 mg/L (available), there will NOT be sufficient alkalinity remaining for stable operation." } ],
@@ -1366,12 +1366,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — pH Control",
     question: "Denitrification recovers alkalinity. If the plant denitrifies 20 mg/L of NO3-N, how much alkalinity (mg/L as CaCO3) is recovered?",
     options: [
-      "71.4 mg/L as CaCO3",
       "143 mg/L as CaCO3",
+      "71.4 mg/L as CaCO3",
       "3.57 mg/L as CaCO3",
       "57.1 mg/L as CaCO3"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "Calculate the alkalinity recovered by multiplying the denitrified NO3-N by the alkalinity recovery factor.\n\nStep 1 — Identify the alkalinity recovery factor for denitrification:\n3.57 mg alkalinity (as CaCO3) recovered per mg NO3-N denitrified\n\nStep 2 — Calculate the total alkalinity recovered:\n20 mg/L NO3-N × 3.57 mg alkalinity (as CaCO3) / mg NO3-N = 71.4 mg/L as CaCO3\n\nThe correct answer is 71.4 mg/L as CaCO3.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Alkalinity Recovered (mg/L as CaCO3) = NO3-N denitrified (mg/L) * 3.57" }, { l: "Step 1", c: "Identify given value: NO3-N denitrified = 20 mg/L." }, { l: "Substitute", c: "Alkalinity Recovered = 20 mg/L * 3.57" }, { l: "Calculate", c: "Alkalinity Recovered = 71.4 mg/L as CaCO3" }, { l: "Result", c: "71.4 mg/L of alkalinity as CaCO3 is recovered." } ],
@@ -1384,11 +1384,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant needs to add alkalinity to support nitrification. The operator has a choice between lime (Ca(OH)2) and sodium bicarbonate (NaHCO3). What is the PRIMARY operational advantage of sodium bicarbonate?",
     options: [
       "Sodium bicarbonate is cheaper per unit of alkalinity added",
-      "Sodium bicarbonate does not raise pH above 8.3, preventing inhibition of nitrification and avoiding calcium carbonate scaling",
       "Sodium bicarbonate provides more alkalinity per kg than lime",
+      "Sodium bicarbonate does not raise pH above 8.3, preventing inhibition of nitrification and avoiding calcium carbonate scaling",
       "Sodium bicarbonate does not require safety precautions for handling"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Sodium bicarbonate (NaHCO3) is a mild alkalinity source that buffers pH at approximately 8.3 (the pKa of the bicarbonate/carbonate system). It cannot raise pH above 8.3 under normal conditions, preventing over-alkalization that could inhibit nitrification (optimal pH 7.0–8.0) or cause calcium carbonate scaling. Lime (Ca(OH)2) can raise pH to 12+ if over-dosed, causing nitrification inhibition and scaling. Lime is cheaper per unit of alkalinity but requires more careful dosing control. Sodium bicarbonate is preferred for precision pH control.",
     difficulty: "medium",
   },
@@ -1399,11 +1399,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant is evaluating Anammox (anaerobic ammonium oxidation) for nitrogen removal from high-strength reject water (sidestream). What is the PRIMARY advantage of Anammox over conventional nitrification-denitrification?",
     options: [
       "Anammox does not require any oxygen, eliminating aeration costs entirely",
-      "Anammox requires only 60% of the oxygen of conventional nitrification and no external carbon for denitrification",
       "Anammox produces more biogas than conventional processes",
+      "Anammox requires only 60% of the oxygen of conventional nitrification and no external carbon for denitrification",
       "Anammox can remove phosphorus simultaneously with nitrogen"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Anammox (NH4⁺ + NO2⁻ → N2 + 2H2O) combined with partial nitritation (NH4⁺ → NO2⁻) in a SHARON-Anammox or DEMON process offers significant advantages: (1) only 60% of the oxygen required for full nitrification (only half the ammonia needs to be nitrified to NO2⁻); (2) no external carbon required for denitrification (Anammox uses NH4⁺ as the electron donor); (3) lower sludge production. This results in 60% energy savings and elimination of carbon dosing costs. Anammox is particularly valuable for treating high-strength reject water (centrate) from sludge dewatering.",
     difficulty: "hard",
   },
@@ -1414,11 +1414,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What is the optimal temperature range for Anammox bacteria, and why is this a limitation for mainstream wastewater treatment?",
     options: [
       "10–15°C — Anammox is a cold-adapted process ideal for Canadian winters",
-      "25–40°C — Anammox bacteria are mesophilic and grow very slowly below 20°C",
+      "35–45°C — Anammox is thermophilic and cannot operate below 30°C",
       "50–60°C — Anammox requires thermophilic conditions",
-      "35–45°C — Anammox is thermophilic and cannot operate below 30°C"
+      "25–40°C — Anammox bacteria are mesophilic and grow very slowly below 20°C"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Anammox bacteria are mesophilic with optimal growth at 30–40°C and very slow growth below 20°C. Their doubling time is 11–20 days at optimal temperature and much longer at lower temperatures. This makes Anammox impractical for mainstream wastewater treatment in cold climates (where temperatures are 10–20°C), but highly effective for treating warm, high-strength reject water (sidestreams from sludge digestion/dewatering, typically 25–35°C). Research is ongoing to develop cold-adapted Anammox processes for mainstream applications.",
     difficulty: "medium",
   },
@@ -1429,11 +1429,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Aerobic granular sludge (AGS) technology offers advantages over conventional activated sludge. What is the PRIMARY mechanism that allows AGS to achieve simultaneous nitrification, denitrification, and phosphorus removal in a single reactor?",
     options: [
       "AGS uses a special culture of bacteria that can perform all three processes simultaneously",
-      "The dense granule structure creates oxygen gradients from aerobic outer layers to anoxic/anaerobic inner layers, enabling different metabolic processes at different depths",
       "AGS operates at very high MLSS (>20,000 mg/L) that provides sufficient biomass for all processes",
+      "The dense granule structure creates oxygen gradients from aerobic outer layers to anoxic/anaerobic inner layers, enabling different metabolic processes at different depths",
       "AGS uses a unique feeding strategy that alternates between aerobic and anaerobic conditions"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Aerobic granules (0.2–5 mm diameter) have a layered structure: aerobic outer layer (nitrification, BOD removal), anoxic middle layer (denitrification), and anaerobic core (EBPR, fermentation). This spatial stratification allows simultaneous nitrification, denitrification, and phosphorus removal in a single reactor without the need for separate zones. The oxygen gradient is maintained by the diffusion limitation through the dense granule. AGS also settles much faster than conventional floc (SVI5 < 50 mL/g), allowing very short settling times (5 minutes) and smaller reactor footprints.",
     difficulty: "hard",
   },
@@ -1477,11 +1477,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "In a partial nitritation/Anammox (PN/A) system, how is the growth of nitrite-oxidizing bacteria (NOB) suppressed to maintain the NO2⁻ intermediate for Anammox?",
     options: [
       "By maintaining DO above 4 mg/L, which inhibits NOB",
-      "By operating at temperatures above 25°C, low DO (0.1–0.3 mg/L), and intermittent aeration — conditions that favor AOB over NOB",
+      "By maintaining pH below 6.5, which inhibits NOB more than AOB",
       "By adding chloramine to selectively inhibit NOB",
-      "By maintaining pH below 6.5, which inhibits NOB more than AOB"
+      "By operating at temperatures above 25°C, low DO (0.1–0.3 mg/L), and intermittent aeration — conditions that favor AOB over NOB"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "NOB suppression in PN/A systems is achieved through: (1) temperatures >25°C (AOB have higher maximum growth rates than NOB at elevated temperatures); (2) very low DO (0.1–0.3 mg/L) — AOB have higher oxygen affinity (lower Ks) than NOB, giving them a competitive advantage at low DO; (3) intermittent aeration — creates feast-famine conditions that favor AOB; (4) free ammonia (FA) inhibition — high FA concentrations (>1 mg/L) inhibit NOB more than AOB. The combination of these strategies maintains NO2⁻ accumulation for Anammox.",
     difficulty: "hard",
   },
@@ -1506,12 +1506,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — Dewatering",
     question: "A centrifuge is producing cake at 22% TS with a polymer dose of 15 kg/tonne DS. The operator wants to reduce polymer costs. What is the FIRST step in optimizing polymer dose?",
     options: [
-      "Reduce polymer dose by 50% and observe the effect on cake dryness",
       "Conduct a polymer jar test (beaker test) to determine the optimal dose for the current sludge characteristics",
+      "Reduce polymer dose by 50% and observe the effect on cake dryness",
       "Switch to a different polymer type without testing",
       "Increase centrifuge bowl speed to compensate for reduced polymer"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Before changing polymer dose operationally, a polymer jar test (beaker test) should be conducted to determine the optimal dose for the current sludge characteristics. Sludge characteristics change with season, SRT, and influent composition, so the optimal polymer dose varies. The jar test evaluates different doses and types to find the minimum dose that achieves target cake dryness and centrate quality. Reducing dose without testing risks poor dewatering performance and increased centrate TSS, which would return to the headworks and increase plant loading.",
     difficulty: "easy",
   },
@@ -1539,10 +1539,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "50%",
       "67%",
-      "80%",
-      "95%"
+      "95%",
+      "80%"
     ],
-    correct: 2,
+    correct: 3,
     explanation: "In an MLE process, theoretical TN removal = R/(R+1) × 100%, where R is the internal recycle ratio. At R=4: 4/(4+1) = 80%. At R=2: 2/(2+1) = 67%. Increasing recycle beyond 4Q gives diminishing returns and increases pumping energy. Practical limits are also imposed by DO carried into the anoxic zone via the recycle stream, which inhibits denitrification. The 80% theoretical maximum assumes complete denitrification in the anoxic zone and no nitrate in the return activated sludge.",
     difficulty: "hard",
   },
@@ -1553,11 +1553,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant operating biological phosphorus removal (EBPR) observes rising effluent TP from 0.3 mg/L to 1.8 mg/L. MLSS and SRT are unchanged. Influent BOD:TP ratio is 45:1. What is the MOST likely cause?",
     options: [
       "Insufficient anaerobic zone HRT — PAO selection is failing",
-      "Nitrate intrusion into the anaerobic zone inhibiting PAO activity",
       "Excessive ferric chloride dose competing with PAOs for phosphorus",
+      "Nitrate intrusion into the anaerobic zone inhibiting PAO activity",
       "Low influent BOD:TP ratio limiting PAO growth"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Nitrate intrusion into the anaerobic zone is the most common cause of EBPR failure when SRT and MLSS are stable. Nitrate-reducing bacteria (NRB) in the anaerobic zone consume VFAs that PAOs need for luxury phosphorus uptake. Sources of nitrate intrusion include: high RAS nitrate, incomplete denitrification in the anoxic zone, or short-circuiting. The BOD:TP ratio of 45:1 is adequate for EBPR (minimum is ~20:1). Ferric chloride would reduce TP chemically, not increase it. Insufficient anaerobic HRT would be a design issue, not an operational change.",
     difficulty: "hard",
   },
@@ -1568,12 +1568,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — SVI",
     question: "A plant reports SVI of 250 mL/g. MLSS is 3,200 mg/L. What is the maximum MLSS the secondary clarifier can theoretically sustain at this SVI before sludge blanket overflow occurs?",
     options: [
-      "2,000 mg/L",
-      "3,000 mg/L",
       "4,000 mg/L",
+      "3,000 mg/L",
+      "2,000 mg/L",
       "5,000 mg/L"
     ],
-    correct: 2,
+    correct: 0,
     explanation: "Calculate the theoretical maximum MLSS by dividing 1,000,000 by the SVI.\n\nStep 1 — Calculate the maximum MLSS:\nMaximum MLSS = 1,000,000 ÷ SVI\nMaximum MLSS = 1,000,000 ÷ 250 mL/g\nMaximum MLSS = 4,000 mg/L\n\nThe correct answer is 4,000 mg/L.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Maximum MLSS (mg/L) = 1,000,000 / SVI (mL/g)" }, { l: "Step 1", c: "Identify given values: SVI = 250 mL/g, Current MLSS = 3,200 mg/L." }, { l: "Substitute", c: "Maximum MLSS = 1,000,000 / 250" }, { l: "Calculate", c: "Maximum MLSS = 4,000 mg/L" }, { l: "Result", c: "The maximum MLSS the secondary clarifier can theoretically sustain is 4,000 mg/L." } ],
@@ -1586,11 +1586,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A secondary clarifier develops a thick, stable brown foam that does not break with water sprays. Microscopy shows abundant Nocardia-type actinomycetes. What is the MOST effective long-term control strategy?",
     options: [
       "Increase DO to 4 mg/L to outcompete Nocardia",
-      "Reduce SRT to below 5 days to wash out Nocardia",
+      "Increase MLSS to dilute the foam-forming organisms",
       "Add chlorine to the foam selectively",
-      "Increase MLSS to dilute the foam-forming organisms"
+      "Reduce SRT to below 5 days to wash out Nocardia"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Nocardia and Microthrix parvicella are slow-growing filamentous actinomycetes that proliferate at long SRTs (>10 days). The most effective long-term control is SRT reduction to below 5–6 days to wash out these slow-growing organisms. Short-term controls include foam wasting, chlorination of the foam layer, or selectors. Increasing DO does not control Nocardia — it is not a DO-sensitive organism. Increasing MLSS would worsen the problem by extending SRT. Chlorine can provide temporary relief but does not address the root cause.",
     difficulty: "hard",
   },
@@ -1631,11 +1631,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "An MBR plant reports trans-membrane pressure (TMP) increasing from 15 kPa to 45 kPa over 3 weeks at constant flux. Maintenance cleaning has been performed. What does this indicate?",
     options: [
       "Normal membrane aging — no action required",
-      "Irreversible fouling — recovery cleaning with citric acid and NaOCl is required",
       "Air scouring failure — check diffuser integrity",
+      "Irreversible fouling — recovery cleaning with citric acid and NaOCl is required",
       "Excessive MLSS — reduce mixed liquor concentration"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "TMP increasing despite maintenance cleaning indicates irreversible fouling (cake layer + pore blocking that cannot be removed by relaxation or backwash). Recovery cleaning (also called CIP — clean in place) uses NaOCl (0.2–0.5%) for organic/biological fouling followed by citric acid (0.2%) for inorganic scaling. TMP > 3× baseline or rising beyond 50 kPa typically triggers recovery cleaning. Air scouring failure would cause rapid TMP rise, not gradual. MLSS reduction may help prevent future fouling but does not address existing irreversible fouling.",
     difficulty: "hard",
   },
@@ -1645,12 +1645,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Membrane Bioreactor",
     question: "What is the typical design flux range for hollow-fibre MBR membranes in municipal wastewater treatment?",
     options: [
-      "5–10 LMH (litres per m² per hour)",
       "15–30 LMH",
+      "5–10 LMH (litres per m² per hour)",
       "40–60 LMH",
       "80–120 LMH"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Hollow-fibre MBR membranes for municipal wastewater typically operate at 15–30 LMH (litres per m² per hour) net flux. Peak flux during wet weather may reach 35–40 LMH. Operating above the critical flux causes rapid irreversible fouling. Flat-sheet membranes operate at similar fluxes. The critical flux concept defines the flux below which fouling is reversible. Design flux is typically 75–80% of critical flux to provide an operational buffer. Flux = flow rate / membrane area; increasing flux requires more membrane area or higher TMP.",
     difficulty: "medium",
   },
@@ -1661,11 +1661,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A UV disinfection system achieves 4-log Cryptosporidium inactivation at a UV dose of 22 mJ/cm². The transmittance drops from 72% to 58% due to seasonal algae. What happens to the UV dose delivered?",
     options: [
       "UV dose increases because more photons are absorbed",
-      "UV dose decreases — the system may no longer achieve 4-log inactivation",
       "UV dose is unaffected because the lamp intensity compensates automatically",
+      "UV dose decreases — the system may no longer achieve 4-log inactivation",
       "UV dose decreases but Cryptosporidium inactivation is unaffected"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "UV transmittance (UVT) directly affects the UV dose delivered. Lower UVT means more UV energy is absorbed by the water matrix before reaching the target organisms. At 72% UVT, the system may achieve 22 mJ/cm². At 58% UVT, the effective dose is significantly reduced — potentially below the 22 mJ/cm² threshold for 4-log Cryptosporidium inactivation. Operators must monitor UVT continuously and adjust lamp intensity (if variable output lamps are installed) or add additional lamp banks. Cryptosporidium is highly UV-sensitive (22 mJ/cm² for 4-log) compared to bacteria (40+ mJ/cm²).",
     difficulty: "hard",
   },
@@ -1677,11 +1677,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Nitrification in an activated sludge system stops at 12°C. The plant is designed for 20°C. Using the Arrhenius correction (θ = 1.072), what fraction of the design nitrification rate remains at 12°C?",
     options: [
       "42%",
-      "57%",
+      "78%",
       "68%",
-      "78%"
+      "57%"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Calculate the fraction of the design nitrification rate remaining at the lower temperature using the Arrhenius correction equation.\n\nStep 1 – Identify the Arrhenius correction formula:\nRate at T = Rate at 20°C × θ^(T-20)\n\nStep 2 – Substitute the given values into the formula:\nFraction of rate = 1.072^(12°C - 20°C)\nFraction of rate = 1.072^(-8)\n\nStep 3 – Calculate the value:\n1.072^(-8) = 1 / (1.072^8) = 1 / 1.751 = 0.571\n\nStep 4 – Convert the fraction to a percentage:\n0.571 × 100% = 57.1%\n\nThe correct answer is **B. 57%**.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Rate at T = Rate at 20°C * θ^(T-20)" }, { l: "Step 1", c: "Identify given values: Target Temperature (T) = 12°C, Reference Temperature = 20°C, Arrhenius coefficient (θ) = 1.072." }, { l: "Step 2", c: "Calculate the exponent (T-20)." }, { l: "Substitute", c: "Exponent = 12 - 20 = -8" }, { l: "Calculate", c: "Fraction of design rate = 1.072^(-8) ≈ 0.5706" }, { l: "Result", c: "Approximately 57% of the design nitrification rate remains at 12°C." } ],
@@ -1694,11 +1694,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Complete nitrification consumes approximately how much alkalinity per mg/L of ammonia-nitrogen oxidized?",
     options: [
       "3.6 mg/L as CaCO₃",
-      "7.14 mg/L as CaCO₃",
+      "14.3 mg/L as CaCO₃",
       "10.5 mg/L as CaCO₃",
-      "14.3 mg/L as CaCO₃"
+      "7.14 mg/L as CaCO₃"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Nitrification consumes 7.14 mg alkalinity (as CaCO₃) per mg NH₄⁺-N oxidized. This comes from the stoichiometry: NH₄⁺ + 2O₂ → NO₃⁻ + 2H⁺ + H₂O. The 2H⁺ produced consume 2 × 50 mg/L CaCO₃ equivalent = 100 mg/L CaCO₃ per 14 mg/L N = 7.14 mg CaCO₃/mg N. Denitrification recovers approximately 3.57 mg alkalinity per mg NO₃⁻-N reduced. In a fully nitrifying/denitrifying system, net alkalinity consumption is approximately 3.57 mg/mg N removed. Operators must maintain effluent alkalinity >50 mg/L as CaCO₃ to prevent pH depression and nitrification inhibition.",
     difficulty: "hard",
   },
@@ -1708,12 +1708,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — Toxicity",
     question: "A plant receives a slug load of industrial discharge containing cyanide. Nitrification stops within 4 hours and effluent ammonia rises sharply. What is the FIRST operational response?",
     options: [
-      "Increase SRT immediately by stopping wasting",
-      "Bypass the secondary treatment and discharge primary effluent",
       "Notify the industrial discharger, increase aeration, and monitor for recovery",
+      "Bypass the secondary treatment and discharge primary effluent",
+      "Increase SRT immediately by stopping wasting",
       "Add sodium hypochlorite to oxidize the cyanide in the aeration basin"
     ],
-    correct: 2,
+    correct: 0,
     explanation: "The immediate response to a toxic slug load is: (1) notify the industrial discharger to stop the discharge, (2) increase aeration to maintain DO and support recovery, (3) monitor MLSS, SVI, and nitrification indicators (ammonia, nitrate) for recovery. Stopping wasting is appropriate to preserve biomass during recovery, but is secondary to stopping the source. Bypassing secondary treatment would violate the operating licence. Adding hypochlorite to the aeration basin would destroy the biomass. Nitrifiers typically recover within 24–72 hours after toxic load removal if MLSS is preserved.",
     difficulty: "hard",
   },
@@ -1723,8 +1723,8 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — SRT",
     question: "A plant has an aeration basin volume of 8,000 m³, MLSS of 3,500 mg/L, daily waste sludge flow of 400 m³/d at 8,000 mg/L TSS, and effluent TSS of 12 mg/L at 40,000 m³/d. What is the SRT?",
-    options: ["7.6 days", "12.4 days", "16.1 days", "20.3 days"],
-    correct: 0,
+    options: ["20.3 days", "12.4 days", "16.1 days", "7.6 days"],
+    correct: 3,
     explanation: "Calculate the Solids Retention Time (SRT) by dividing the total mass of solids in the aeration basin by the total mass of solids leaving the system per day.\n\nStep 1 — Total solids in aeration basin:\n8,000 m³ × 3,500 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m³) = 28,000 kg\n\nStep 2 — Mass of solids wasted daily:\n400 m³/d × 8,000 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m³) = 3,200 kg/d\n\nStep 3 — Mass of solids in effluent daily:\n40,000 m³/d × 12 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m³) = 480 kg/d\n\nStep 4 — Total mass of solids leaving system per day:\n3,200 kg/d + 480 kg/d = 3,680 kg/d\n\nStep 5 — Solids Retention Time (SRT):\n28,000 kg ÷ 3,680 kg/d = 7.608 days\n\nThe correct answer is 7.6 days.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "SRT = (Biomass in system) / (Biomass leaving system per day)" }, { l: "Step 1: Calculate Biomass in system", c: "Biomass in system = Aeration basin volume × MLSS = 8,000 m³ × 3,500 mg/L = 28,000,000,000 mg = 28,000 kg" }, { l: "Step 2: Calculate Biomass leaving system per day (waste sludge)", c: "Biomass from waste sludge = Waste sludge flow × Waste sludge TSS = 400 m³/d × 8,000 mg/L = 3,200,000,000 mg/d = 3,200 kg/d" }, { l: "Step 3: Calculate Biomass leaving system per day (effluent)", c: "Biomass from effluent = Effluent flow × Effluent TSS = 40,000 m³/d × 12 mg/L = 480,000,000 mg/d = 480 kg/d" }, { l: "Step 4: Calculate Total Biomass leaving system per day", c: "Total biomass leaving = Biomass from waste sludge + Biomass from effluent = 3,200 kg/d + 480 kg/d = 3,680 kg/d" }, { l: "Calculate SRT", c: "SRT = 28,000 kg / 3,680 kg/d = 7.61 days" }, { l: "Result", c: "SRT = 7.61 days" } ],
@@ -1751,12 +1751,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Tertiary Treatment",
     question: "What is the purpose of a reject water treatment system (e.g., SHARON-ANAMMOX) at a large Class 4 plant?",
     options: [
-      "To treat the high-strength ammonia in centrate/filtrate from biosolids dewatering before returning it to the headworks",
       "To remove phosphorus from the final effluent before discharge",
+      "To treat the high-strength ammonia in centrate/filtrate from biosolids dewatering before returning it to the headworks",
       "To treat industrial waste streams received at the plant",
       "To recover energy from the reject water stream"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "Dewatering reject water (centrate, filtrate) from biosolids processing contains very high ammonia concentrations (500–1,500 mg/L NH₄⁺-N) — 15–25% of the plant's total nitrogen load despite being only 1–2% of the flow. Returning this directly to the headworks creates a nitrogen recycle loop that can overwhelm the biological nitrogen removal system. Sidestream treatment processes like SHARON (single reactor high-activity ammonia removal over nitrite) and ANAMMOX (anaerobic ammonia oxidation) treat the reject water separately, removing 80–90% of the ammonia before it returns to the main stream.",
     difficulty: "hard",
   },
@@ -1767,11 +1767,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A SCADA system shows DO dropping from 2.0 to 0.3 mg/L in the aeration basin over 30 minutes while airflow remains constant. Influent flow is normal. What is the MOST likely cause?",
     options: [
       "Diffuser fouling reducing oxygen transfer",
-      "A high-strength industrial discharge increasing oxygen demand",
+      "Blower failure — check blower status",
       "DO probe calibration drift",
-      "Blower failure — check blower status"
+      "A high-strength industrial discharge increasing oxygen demand"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "A rapid DO drop (30 minutes) with constant airflow and normal influent flow most likely indicates a high-strength industrial discharge increasing the oxygen demand (BOD/COD load) in the basin. Diffuser fouling develops gradually over weeks/months, not 30 minutes. DO probe drift is possible but would be gradual. Blower failure would show as reduced airflow on the SCADA. The operator should: check influent flow meter and COD/BOD online sensors, contact industrial users, increase blower output, and monitor effluent quality. This is a common scenario during industrial shift changes.",
     difficulty: "medium",
   },
@@ -1781,12 +1781,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Activated Sludge — Bulking",
     question: "Microscopy of mixed liquor shows abundant Type 021N filaments. What operational condition MOST likely caused this?",
     options: [
-      "High DO (>4 mg/L) in the aeration basin",
-      "Low DO (<0.5 mg/L) combined with low F/M",
       "Sulfide in the influent combined with low DO",
+      "Low DO (<0.5 mg/L) combined with low F/M",
+      "High DO (>4 mg/L) in the aeration basin",
       "High pH (>8.5) in the aeration basin"
     ],
-    correct: 2,
+    correct: 0,
     explanation: "Type 021N (Thiothrix-like) filaments are associated with sulfide in the influent and low DO conditions. They are common in plants receiving industrial discharges with high sulfide content (e.g., from paper mills, food processing). Control strategies include: eliminating sulfide sources, adding hydrogen peroxide to oxidize sulfide in the influent, increasing DO, and adding a selector. Sphaerotilus natans grows at low DO + high F/M. Microthrix parvicella grows at low DO + low F/M + long SRT. Nocardia grows at long SRT regardless of DO.",
     difficulty: "hard",
   },
@@ -1798,11 +1798,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant is adding methanol as an external carbon source for denitrification. The target NO₃⁻-N removal is 8 mg/L. Using a methanol:NO₃⁻-N ratio of 3:1, what methanol dose is required?",
     options: [
       "8 mg/L methanol",
-      "16 mg/L methanol",
       "24 mg/L methanol",
+      "16 mg/L methanol",
       "32 mg/L methanol"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "Calculate the required methanol dose by multiplying the target nitrate-nitrogen removal by the given methanol-to-nitrate-nitrogen ratio.\n\nStep 1 — Calculate methanol dose:\n8 mg/L NO₃⁻-N × 3 (methanol:NO₃⁻-N ratio) = 24 mg/L methanol\n\nThe correct answer is 24 mg/L methanol.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Methanol dose = NO₃⁻-N to be removed × Methanol:NO₃⁻-N ratio" }, { l: "Given", c: "Target NO₃⁻-N removal = 8 mg/L, Methanol:NO₃⁻-N ratio = 3:1" }, { l: "Substitute", c: "Methanol dose = 8 mg/L × 3" }, { l: "Calculate", c: "Methanol dose = 24 mg/L" }, { l: "Result", c: "Methanol dose = 24 mg/L" } ],
@@ -1814,8 +1814,8 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Advanced Treatment Process Monitoring",
     topic: "Activated Sludge — Phosphorus",
     question: "A plant uses ferric chloride (FeCl₃) for chemical phosphorus removal. The target effluent TP is 0.3 mg/L and influent TP is 5.5 mg/L. Using a Fe:P molar ratio of 1.5:1, what FeCl₃ dose (as Fe) is required?",
-    options: ["8.2 mg/L as Fe", "11.4 mg/L as Fe", "16.8 mg/L as Fe", "23.1 mg/L as Fe"],
-    correct: 0,
+    options: ["23.1 mg/L as Fe", "11.4 mg/L as Fe", "16.8 mg/L as Fe", "8.2 mg/L as Fe"],
+    correct: 3,
     explanation: "To determine the required FeCl₃ dose as Fe, calculate the phosphorus to be removed, convert it to moles, apply the molar ratio, and convert back to mass of Fe.\n\nStep 1 — Phosphorus to be removed:\n5.5 mg/L (influent TP) - 0.3 mg/L (effluent TP) = 5.2 mg/L P\n\nStep 2 — Convert phosphorus to moles:\n5.2 mg/L P ÷ 30.97 mg/mmol (atomic weight of P) = 0.1679 mmol P/L\n\nStep 3 — Calculate moles of Fe required:\n0.1679 mmol P/L × 1.5 mmol Fe/mmol P (Fe:P molar ratio) = 0.25185 mmol Fe/L\n\nStep 4 — Convert moles of Fe to mg/L as Fe:\n0.25185 mmol Fe/L × 55.845 mg/mmol (atomic weight of Fe) = 14.06 mg/L as Fe\n\nStep 5 — Alternative direct calculation for Fe dose:\n(5.2 mg/L P × 1.5 (mol Fe/mol P) × 55.845 mg Fe/mol) ÷ 30.97 mg P/mol = 8.16 mg/L as Fe\n\nThe correct answer is 8.2 mg/L as Fe.",
     difficulty: "hard",
     steps: [ { l: "Formula (conceptual)", c: "Fe dose (as Fe) = Phosphorus to remove × (Fe:P molar ratio) × (Atomic weight of Fe / Atomic weight of P)" }, { l: "Step 1: Calculate Phosphorus to remove", c: "Phosphorus to remove = Influent TP - Target effluent TP = 5.5 mg/L - 0.3 mg/L = 5.2 mg/L as P" }, { l: "Step 2: Convert P to moles", c: "Moles of P to remove = 5.2 mg/L / 31 mg/mmol = 0.1677 mmol/L" }, { l: "Step 3: Calculate moles of Fe needed", c: "Moles of Fe needed = Moles of P to remove × Fe:P molar ratio = 0.1677 mmol/L × 1.5 = 0.2516 mmol/L" }, { l: "Step 4: Convert moles of Fe to mg/L as Fe", c: "Fe dose (as Fe) = Moles of Fe needed × Atomic weight of Fe = 0.2516 mmol/L × 55.845 mg/mmol = 14.05 mg/L" }, { l: "Result", c: "FeCl₃ dose (as Fe) = 14.1 mg/L" } ],
@@ -1828,11 +1828,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What is the minimum volatile solids reduction (VSR) required for Class B biosolids under Ontario Regulation 267/03?",
     options: [
       "20% VSR",
-      "38% VSR",
+      "65% VSR",
       "50% VSR",
-      "65% VSR"
+      "38% VSR"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Ontario Regulation 267/03 (and the US EPA 40 CFR Part 503) requires a minimum of 38% volatile solids reduction (VSR) for Class B biosolids stabilization. This can be achieved through aerobic digestion, anaerobic digestion, lime stabilization, or composting. Class A biosolids require more stringent treatment (pathogen reduction to below detection limits). The 38% VSR demonstrates adequate stabilization to reduce vector attraction. Aerobic digesters at Class 4 plants typically operate at 15–20 days SRT at 20°C to achieve 38% VSR, or 60 days at 15°C.",
     difficulty: "medium",
   },
@@ -1843,11 +1843,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "An aerobic digester treating WAS shows SOUR (specific oxygen uptake rate) of 8 mg O₂/g VSS/h. The target for Class B stabilization is <1.5 mg O₂/g VSS/h. What does this indicate?",
     options: [
       "The sludge is over-digested — reduce SRT",
-      "The sludge is under-stabilized — increase SRT or temperature",
+      "The SOUR test equipment is malfunctioning",
       "The sludge has been contaminated with industrial waste",
-      "The SOUR test equipment is malfunctioning"
+      "The sludge is under-stabilized — increase SRT or temperature"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "SOUR (specific oxygen uptake rate) measures the biological activity of the sludge. High SOUR indicates active, undigested biomass. The EPA criterion for Class B aerobic digestion is SOUR < 1.5 mg O₂/g VSS/h at 20°C. A SOUR of 8 mg/g VSS/h indicates the sludge is significantly under-stabilized. The operator should increase the digester SRT (reduce wasting or increase volume), raise temperature if possible, or improve mixing. Under-stabilized biosolids have higher vector attraction (odour, fly breeding potential) and may not meet land application requirements.",
     difficulty: "medium",
   },
@@ -1858,11 +1858,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "In an SBR system, the DECANT phase is occurring but effluent TSS is consistently high (>15 mg/L). Settle phase duration is 45 minutes. What is the MOST likely cause?",
     options: [
       "Decant rate is too slow — increase decanter speed",
-      "Settle time is insufficient — extend settle phase or investigate sludge settleability",
+      "The SBR cycle is too short — add more cycles per day",
       "Aeration phase is too long — reduce aeration time",
-      "The SBR cycle is too short — add more cycles per day"
+      "Settle time is insufficient — extend settle phase or investigate sludge settleability"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "High effluent TSS during SBR decant indicates the sludge blanket has not settled sufficiently below the decant weir level during the settle phase. Causes include: insufficient settle time, bulking sludge (high SVI), excessive MLSS, or short-circuiting. The first response is to extend the settle phase and check SVI. If SVI is high (>150 mL/g), investigate filamentous bulking. If MLSS is too high, increase wasting. Decant rate affects hydraulic loading but not sludge blanket depth. Reducing aeration time affects treatment, not settling.",
     difficulty: "medium",
   },
@@ -1873,11 +1873,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "An IFAS (integrated fixed-film activated sludge) system uses plastic media carriers with a specific surface area of 500 m²/m³. What is the PRIMARY advantage of IFAS over conventional activated sludge for nitrogen removal?",
     options: [
       "IFAS eliminates the need for secondary clarifiers",
-      "IFAS allows nitrification at shorter overall SRT by retaining nitrifiers on the media",
+      "IFAS eliminates filamentous bulking",
       "IFAS reduces aeration requirements by 50%",
-      "IFAS eliminates filamentous bulking"
+      "IFAS allows nitrification at shorter overall SRT by retaining nitrifiers on the media"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "The primary advantage of IFAS for nitrogen removal is the ability to maintain nitrifying biofilm on the media carriers at overall SRTs that would wash out suspended-growth nitrifiers. Nitrifiers grow slowly (μmax ≈ 0.8/d at 20°C) and require long SRT (>6 days at 20°C). In IFAS, the biofilm carriers retain nitrifiers independently of the suspended-growth SRT, allowing the plant to operate at shorter SRT for BOD removal while still achieving nitrification. This is particularly valuable for upgrading existing plants without adding clarifier capacity. IFAS still requires secondary clarifiers.",
     difficulty: "hard",
   },
@@ -1889,11 +1889,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A solid-bowl centrifuge is producing cake with 18% total solids (TS). The target is 22% TS. Polymer dose is already at maximum. What operational adjustment would MOST likely increase cake dryness?",
     options: [
       "Increase bowl speed (G-force) to improve solids compaction",
-      "Increase feed flow rate to increase residence time",
       "Reduce differential speed to increase cake retention time in the bowl",
+      "Increase feed flow rate to increase residence time",
       "Decrease pool depth to reduce centrate clarity"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "Reducing differential speed (the speed difference between the bowl and the scroll/conveyor) increases the residence time of solids in the bowl, allowing more water to be expressed. Lower differential speed = drier cake but lower throughput. Higher bowl speed (G-force) also increases dryness but may increase polymer demand. Increasing feed flow reduces residence time and decreases cake dryness. Pool depth (controlled by adjusting weir plates) affects centrate clarity vs. cake dryness trade-off — deeper pool improves centrate clarity but reduces cake dryness. The operator must balance throughput, cake dryness, and centrate quality.",
     difficulty: "hard",
   },
@@ -1904,11 +1904,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A centrifuge vibration alarm activates during operation. What is the FIRST action the operator should take?",
     options: [
       "Increase bowl speed to balance the rotor",
-      "Shut down the centrifuge immediately and investigate the cause",
+      "Check and adjust polymer dose",
       "Reduce feed flow to decrease load on the bowl",
-      "Check and adjust polymer dose"
+      "Shut down the centrifuge immediately and investigate the cause"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Centrifuge vibration alarms indicate potential rotor imbalance, bearing failure, or foreign object ingestion — all of which can cause catastrophic mechanical failure if the machine continues to operate. The immediate action is to shut down the centrifuge following the manufacturer's procedure (controlled deceleration). Continuing to operate a vibrating centrifuge risks bearing damage, scroll damage, or bowl failure. After shutdown, the operator should: check for foreign objects, inspect bearings, check scroll wear, and contact the manufacturer if the cause is not obvious. Never increase speed on a vibrating centrifuge.",
     difficulty: "medium",
   },
@@ -1933,12 +1933,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Blowers and Aeration",
     question: "A positive displacement (PD) blower shows increasing discharge pressure and decreasing airflow over several weeks. What is the MOST likely cause?",
     options: [
-      "Diffuser fouling increasing back-pressure",
+      "Discharge piping corrosion reducing pipe diameter",
       "Blower inlet filter clogging reducing air intake",
       "Blower lobe wear reducing compression efficiency",
-      "Discharge piping corrosion reducing pipe diameter"
+      "Diffuser fouling increasing back-pressure"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "Increasing discharge pressure with decreasing airflow over weeks is the classic signature of diffuser fouling. As fine bubble diffusers foul (biofilm, mineral scaling, or membrane deterioration), the resistance to airflow increases, raising back-pressure. The blower delivers less air at higher pressure. Inlet filter clogging would reduce airflow but also reduce discharge pressure. Lobe wear reduces compression efficiency (lower pressure differential) and is gradual. Pipe corrosion is very slow. Diffuser fouling is confirmed by measuring individual diffuser back-pressure or performing an air pressure test on the diffuser grid.",
     difficulty: "medium",
   },
@@ -1978,12 +1978,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Chemical Feed Systems",
     question: "Ferric chloride (FeCl₃) storage tanks develop a reddish-brown precipitate on the walls and floor. What causes this and how is it prevented?",
     options: [
-      "Iron oxidation from air exposure — use nitrogen blanketing",
       "Dilution with water causing hydrolysis and iron hydroxide precipitation — avoid water contamination",
+      "Iron oxidation from air exposure — use nitrogen blanketing",
       "Bacterial growth — add biocide to the storage tank",
       "Temperature cycling causing crystallization — maintain constant temperature"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Ferric chloride precipitates as iron hydroxide (Fe(OH)₃) when diluted with water or when the pH rises above approximately 3.5. The reddish-brown precipitate is Fe(OH)₃. Prevention: avoid water contamination of FeCl₃ storage (keep fill lines dry, prevent rainwater ingress), maintain the storage temperature above freezing (FeCl₃ can freeze at high concentrations), and keep the tank covered. Nitrogen blanketing is used for oxidation-sensitive chemicals, not FeCl₃. Bacterial growth is not a concern in concentrated FeCl₃ (pH ~1). Temperature cycling causes viscosity changes but not precipitation at normal operating temperatures.",
     difficulty: "medium",
   },
@@ -1993,12 +1993,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Pumps",
     question: "A centrifugal pump is operating at a flow rate well below its design point on the pump curve. The pump shows cavitation noise and vibration. What is the cause?",
     options: [
-      "The pump is operating in the recirculation zone at low flow — suction recirculation cavitation",
-      "The NPSH available is less than NPSH required",
       "The discharge valve is partially closed causing high back-pressure",
+      "The NPSH available is less than NPSH required",
+      "The pump is operating in the recirculation zone at low flow — suction recirculation cavitation",
       "The pump impeller is worn"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Operating a centrifugal pump far below its best efficiency point (BEP) at very low flow causes internal recirculation at the impeller inlet. This recirculation creates localized low-pressure zones where cavitation occurs — called suction recirculation cavitation. It is distinct from classic NPSH cavitation (which occurs when suction head is insufficient). Symptoms include noise, vibration, and erosion of the impeller inlet. The fix is to operate the pump closer to its BEP by adjusting the system (opening valves, adding a parallel pump, or using a VFD). A partially closed discharge valve would increase back-pressure and reduce flow, potentially causing this condition.",
     difficulty: "hard",
   },
@@ -2009,11 +2009,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What does a rising power draw with decreasing flow on a centrifugal pump indicate?",
     options: [
       "Normal pump aging — no action required",
-      "Impeller wear — the pump is losing efficiency and should be inspected",
+      "The fluid density has increased significantly",
       "The pump is running against a closed valve",
-      "The fluid density has increased significantly"
+      "Impeller wear — the pump is losing efficiency and should be inspected"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Rising power draw with decreasing flow indicates impeller wear or erosion. As the impeller wears, clearances increase, internal recirculation increases, and efficiency drops. The pump draws more power to deliver less flow. This is confirmed by comparing the current pump curve to the original manufacturer's curve. Impeller wear is common in pumps handling grit-laden raw sewage or abrasive sludge. Running against a closed valve would show zero flow and maximum head (shutoff head), not decreasing flow. Increased fluid density (e.g., thicker sludge) increases power draw but also increases head — the pump curve shifts.",
     difficulty: "medium",
   },
@@ -2023,12 +2023,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Anaerobic Digestion",
     question: "An anaerobic digester shows rising volatile fatty acid (VFA) concentration from 200 mg/L to 1,800 mg/L over 5 days. pH has dropped from 7.2 to 6.6. What is the MOST appropriate response?",
     options: [
-      "Increase mixing to improve contact between methanogens and VFAs",
       "Reduce or stop feeding and add alkalinity (lime or sodium bicarbonate) to restore pH",
+      "Increase mixing to improve contact between methanogens and VFAs",
       "Increase digester temperature to 55°C (thermophilic) to accelerate methanogenesis",
       "Add more primary sludge to provide more substrate for methanogens"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Rising VFAs and falling pH indicate digester souring — acid-forming bacteria are outpacing methanogens. Methanogens are sensitive to pH below 6.8 and will be inhibited, worsening the imbalance. The response is: (1) reduce or stop feeding to decrease acid production, (2) add alkalinity (sodium bicarbonate is preferred — lime can cause localized high pH) to raise pH above 7.0, (3) monitor VFA:alkalinity ratio (target <0.3). Increasing temperature would stress the existing methanogen population. Adding more substrate would worsen the VFA accumulation. Mixing does not address the pH/VFA imbalance.",
     difficulty: "hard",
   },
@@ -2054,11 +2054,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A digester gas holder (floating cover) shows a sudden drop in gas pressure from 5 kPa to 1 kPa. The digester is operating normally. What is the MOST likely cause?",
     options: [
       "Increased gas production from the digester",
-      "Gas leak in the cover seal or gas piping",
+      "The pressure relief valve has opened",
       "Methane content has dropped — the gas is less dense",
-      "The pressure relief valve has opened"
+      "Gas leak in the cover seal or gas piping"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "A sudden drop in gas holder pressure with normal digester operation indicates a gas leak in the cover seal, gas piping, or fittings. Gas leaks are a serious safety hazard (explosive atmosphere, asphyxiation risk) and must be investigated immediately. The operator should: evacuate the area, check for gas odour (H₂S smell), use a combustible gas detector to locate the leak, and shut down gas utilization equipment. Pressure relief valves open when pressure is too HIGH, not causing a drop. Methane content does not affect pressure significantly. Increased gas production would raise pressure, not drop it.",
     difficulty: "medium",
   },
@@ -2069,11 +2069,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A mechanically cleaned bar screen shows increasing differential head loss across the screen despite the cleaning mechanism operating continuously. What is the MOST likely cause?",
     options: [
       "The screen opening size is too large — replace with finer screen",
-      "The cleaning rake is not removing all screenings — check rake condition and drive",
       "Influent flow is below the minimum velocity for self-cleaning",
+      "The cleaning rake is not removing all screenings — check rake condition and drive",
       "The screenings conveyor is overloaded"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Increasing differential head loss despite continuous cleaning indicates the rake is not effectively removing screenings. Causes include: worn or bent rake teeth not engaging the bars, drive chain/belt failure, rake misalignment, or accumulation of rags/debris that the rake cannot remove. The operator should inspect the rake mechanism, check for mechanical damage, and manually remove any accumulated material. If the rake is functioning but screenings are still accumulating, the screen may be undersized for the current flow/load. Low velocity would cause deposition in the channel, not head loss across the screen.",
     difficulty: "medium",
   },
@@ -2083,12 +2083,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Clarifiers",
     question: "A secondary clarifier shows sludge rising to the surface in the centre of the tank (rising sludge). Effluent TSS is elevated. DO in the aeration basin is 2.0 mg/L. What is the MOST likely cause?",
     options: [
-      "Denitrification in the clarifier — nitrogen gas bubbles lifting sludge floc",
-      "Filamentous bulking — low density sludge floating to the surface",
       "Hydraulic overloading — surface overflow rate is too high",
+      "Filamentous bulking — low density sludge floating to the surface",
+      "Denitrification in the clarifier — nitrogen gas bubbles lifting sludge floc",
       "RAS rate is too low — sludge is accumulating in the clarifier"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Rising sludge in the centre of a secondary clarifier (not the periphery) is the classic sign of denitrification in the clarifier. Nitrate in the settled sludge is reduced to nitrogen gas (N₂) by denitrifying bacteria in the anaerobic sludge blanket. N₂ bubbles attach to sludge floc and lift it to the surface. This occurs when: sludge blanket depth is excessive, sludge retention time in the clarifier is too long (low RAS rate), or nitrate concentration is high. The fix is to increase RAS rate to reduce sludge blanket depth and residence time. Filamentous bulking causes sludge to rise at the periphery/weir. Hydraulic overloading causes washout, not rising sludge.",
     difficulty: "hard",
   },
@@ -2098,12 +2098,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Clarifiers",
     question: "What is the purpose of a density current baffle in a secondary clarifier?",
     options: [
-      "To prevent short-circuiting of the influent flow to the effluent weir",
       "To break up density currents caused by temperature differences between influent and clarifier contents",
+      "To prevent short-circuiting of the influent flow to the effluent weir",
       "To support the sludge collector mechanism",
       "To prevent scum from reaching the effluent weir"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Density currents occur when the influent wastewater has a different temperature or density than the clarifier contents. Cold influent (denser) sinks to the bottom and flows rapidly to the sludge hopper, while warm influent (less dense) flows along the surface to the effluent weir — both causing short-circuiting and reduced clarifier efficiency. Density current baffles disrupt these stratified flows and promote uniform distribution of the influent. They are particularly important in cold climates where influent temperature varies significantly. Inlet baffles prevent short-circuiting of the influent jet. Scum baffles prevent scum from reaching the weir.",
     difficulty: "medium",
   },
@@ -2129,11 +2129,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "UV lamp sleeves (quartz tubes) require cleaning. What is the standard cleaning procedure for UV lamp sleeves in a wastewater UV system?",
     options: [
       "Mechanical wiping with a dry cloth while the system is operating",
-      "Automated or manual wiping with a citric acid or proprietary cleaning solution",
+      "Replacement of sleeves — cleaning is not effective",
       "High-pressure water washing while the lamps are on",
-      "Replacement of sleeves — cleaning is not effective"
+      "Automated or manual wiping with a citric acid or proprietary cleaning solution"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "UV lamp sleeves (quartz tubes) foul with mineral scale (calcium carbonate, iron) and organic deposits that reduce UV transmittance. Standard cleaning uses citric acid (2–5%) or proprietary cleaning solutions that dissolve mineral scale. Most modern UV systems have automated mechanical wipers that clean the sleeves periodically without shutting down. Manual cleaning requires draining the channel and wiping with acid solution. Mechanical wiping with a dry cloth is ineffective for mineral scale. High-pressure water washing while lamps are on is a safety hazard. Sleeve replacement is only required when the quartz becomes permanently etched or cracked.",
     difficulty: "easy",
   },
@@ -2144,11 +2144,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A biofilter treating H₂S from a headworks building shows breakthrough (outlet H₂S > 1 ppm) after 6 months of operation. Media moisture content is 40%. What is the MOST likely cause?",
     options: [
       "Media is too wet — reduce irrigation",
-      "Media pH has dropped below 4 due to sulfuric acid accumulation — neutralize with lime",
       "Media is too dry — increase irrigation",
+      "Media pH has dropped below 4 due to sulfuric acid accumulation — neutralize with lime",
       "Biofilter EBRT is too short — add more media"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Biofilters oxidizing H₂S produce sulfuric acid (H₂SO₄) as a byproduct: H₂S + 2O₂ → H₂SO₄. Over time, acid accumulates in the media, dropping pH below 4. At pH < 4, the sulfur-oxidizing bacteria (Thiobacillus) are inhibited and H₂S removal efficiency drops. The fix is to add lime (Ca(OH)₂) or caustic to the irrigation water to neutralize the acid and raise pH to 6–8. Media moisture at 40% is within the normal range (40–60%). Breakthrough after 6 months of operation without pH management is a classic biofilter failure mode. Regular pH monitoring of the media and leachate is essential.",
     difficulty: "hard",
   },
@@ -2159,11 +2159,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A flow meter (electromagnetic) in the effluent channel shows zero flow despite the plant operating normally. What is the FIRST diagnostic step?",
     options: [
       "Replace the flow meter immediately",
-      "Check that the pipe is full and the electrodes are in contact with the liquid",
+      "Check the SCADA signal cable for damage",
       "Calibrate the flow meter with a portable ultrasonic meter",
-      "Check the SCADA signal cable for damage"
+      "Check that the pipe is full and the electrodes are in contact with the liquid"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Electromagnetic flow meters require a full pipe with liquid in contact with both electrodes to function. If the pipe is not full (e.g., partial flow, air pocket, or the meter is installed in a location that drains during low flow), the meter will read zero. This is the most common cause of zero-reading EMF meters. The operator should: verify the pipe is full, check that the electrodes are clean and not coated with deposits, and check the grounding. If the pipe is full and electrodes are clean, then check signal cables and transmitter power. Calibration with a portable meter is appropriate after confirming the meter is physically functioning.",
     difficulty: "easy",
   },
@@ -2174,11 +2174,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "An online ammonia analyzer shows a sudden step change from 2 mg/L to 0 mg/L. The grab sample confirms effluent ammonia is 2.5 mg/L. What is the MOST likely cause?",
     options: [
       "Nitrification has suddenly improved",
-      "The analyzer sample line is blocked or the reagent is depleted",
+      "The SCADA data historian has a recording error",
       "The analyzer probe membrane has failed",
-      "The SCADA data historian has a recording error"
+      "The analyzer sample line is blocked or the reagent is depleted"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "A sudden step change to zero on an online analyzer while grab samples show normal values indicates an instrument malfunction, not a process change. The most common causes are: blocked sample line (no sample reaching the analyzer), depleted reagent (colorimetric analyzers), or failed pump. The operator should: check sample flow to the analyzer, check reagent levels, check the sample conditioning system (filters, pumps), and perform a calibration check. A membrane failure on an ion-selective electrode would typically cause drift or erratic readings, not a clean step to zero. SCADA recording errors would affect all tags, not just one.",
     difficulty: "easy",
   },
@@ -2190,10 +2190,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "Continue operating until the next scheduled maintenance",
       "Reset the alarm and monitor — ground faults are normal in wet environments",
-      "Shut down the pump immediately and investigate — ground faults indicate insulation failure and electrocution risk",
-      "Increase the ground fault relay trip threshold to prevent nuisance tripping"
+      "Increase the ground fault relay trip threshold to prevent nuisance tripping",
+      "Shut down the pump immediately and investigate — ground faults indicate insulation failure and electrocution risk"
     ],
-    correct: 2,
+    correct: 3,
     explanation: "A ground fault on a submersible pump circuit indicates current is flowing to ground through the pump housing or cable insulation — a serious electrical safety hazard. In a wet environment (wet well, pump station), this creates an electrocution risk for anyone in contact with the water or metal structures. The pump must be shut down immediately. The operator should: de-energize the circuit, lock out/tag out (LOTO), and investigate the cause (cable damage, seal failure, insulation breakdown). Ground faults in submersible pumps often indicate water ingress into the motor through a failed mechanical seal. Resetting or increasing the threshold is never acceptable.",
     difficulty: "medium",
   },
@@ -2234,11 +2234,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A digester gas flare fails to ignite during a high-gas-pressure event. What is the IMMEDIATE safety action?",
     options: [
       "Manually light the flare with a torch",
-      "Open the pressure relief valve to vent gas to atmosphere and investigate the ignition system",
       "Increase gas pressure to force ignition",
+      "Open the pressure relief valve to vent gas to atmosphere and investigate the ignition system",
       "Shut down the digesters to stop gas production"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "If the flare fails to ignite during a high-pressure event, the biogas must be safely vented through the pressure relief valve to prevent over-pressurization of the digester (which could cause structural damage or explosion). The area must be evacuated and treated as a hazardous atmosphere (explosive gas, H₂S). The operator should: activate the emergency response plan, evacuate the area, open the pressure relief valve, notify the fire department, and investigate the ignition system failure. Manually lighting the flare in a gas-rich atmosphere is extremely dangerous. Shutting down digesters does not immediately stop gas production.",
     difficulty: "hard",
   },
@@ -2250,10 +2250,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "Motor overload — check current draw",
       "Stator wear — the rubber stator has worn and the pump is slipping",
-      "Dry running — the pump has run without sludge and the stator has burned",
-      "Discharge valve is closed — check valve position"
+      "Discharge valve is closed — check valve position",
+      "Dry running — the pump has run without sludge and the stator has burned"
     ],
-    correct: 2,
+    correct: 3,
     explanation: "Progressive cavity pumps must never run dry — the rubber stator relies on the pumped fluid for lubrication and cooling. Dry running causes rapid heat buildup, stator swelling, and permanent damage within seconds to minutes. Symptoms include: motor running but no flow, burning rubber smell, and high motor temperature. Prevention: install dry-run protection (flow switch, pressure switch, or motor current monitoring) and ensure the suction side is always primed. Stator wear causes gradual flow reduction, not sudden stoppage. A closed discharge valve would cause pressure buildup and motor overload. Motor overload would trip the breaker, not allow the motor to continue running.",
     difficulty: "medium",
   },
@@ -2263,12 +2263,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Screens and Grit",
     question: "A vortex grit chamber is removing only 60% of grit (target >85%). The chamber is operating at design flow. What is the MOST likely cause?",
     options: [
-      "Grit particle size is smaller than the design particle size — grit is passing through",
-      "The vortex velocity is too high — increase the paddle speed",
       "The grit classifier is overloaded — reduce grit removal frequency",
+      "The vortex velocity is too high — increase the paddle speed",
+      "Grit particle size is smaller than the design particle size — grit is passing through",
       "The chamber is too deep — reduce water level"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Vortex grit chambers are designed to remove grit particles above a specific size (typically 200 μm at design flow). If the actual grit particle size distribution has shifted to finer particles (e.g., due to upstream changes, industrial discharges, or seasonal variation), the chamber will not achieve design removal efficiency. Fine grit (<150 μm) is difficult to remove in any conventional grit chamber. The operator should: perform a grit size analysis, check for changes in the collection system (new industrial connections, CSO events), and consider adding a fine grit removal system. Increasing paddle speed would increase the vortex velocity and reduce grit removal efficiency.",
     difficulty: "medium",
   },
@@ -2278,12 +2278,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Clarifiers",
     question: "A primary clarifier shows a rising scum layer that is not being removed by the scum skimmer. The skimmer mechanism is operating. What should be checked?",
     options: [
-      "Increase the scum beach slope to improve drainage",
       "Check the scum box water level, scum pipe, and scum pump for blockage",
+      "Increase the scum beach slope to improve drainage",
       "Increase clarifier flow to push scum over the weir",
       "Add polymer to the primary clarifier to improve scum consolidation"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "If the scum skimmer is operating but scum is accumulating, the scum removal system downstream is blocked. The operator should check: the scum box (is it overflowing or blocked?), the scum pipe (is it plugged with congealed grease?), and the scum pump (is it running and pumping?). Scum pipes frequently plug with congealed grease, especially in cold weather. Heating the scum pipe or flushing with hot water can clear blockages. Increasing flow would overflow the weir with scum-laden effluent. Polymer addition is not appropriate for primary clarifier scum management. Beach slope adjustment is a design parameter, not an operational fix.",
     difficulty: "easy",
   },
@@ -2293,12 +2293,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Tertiary Filtration",
     question: "A cloth media disc filter shows increasing effluent TSS (from 3 to 12 mg/L) after 8 months of operation. Backwash cycles are normal. What is the MOST likely cause?",
     options: [
-      "Cloth media blinding — organic or inorganic deposits have permanently blocked the cloth pores",
+      "Effluent TSS sensor calibration drift",
       "Hydraulic overloading — reduce flow to the filter",
       "Backwash pump failure — check pump operation",
-      "Effluent TSS sensor calibration drift"
+      "Cloth media blinding — organic or inorganic deposits have permanently blocked the cloth pores"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "Cloth media disc filters can experience blinding — permanent blockage of the cloth pores by fine organic particles, biological growth, or mineral precipitation that cannot be removed by normal backwash. Blinding is indicated by: rising head loss, increasing effluent TSS despite normal backwash, and reduced filter run times. Remediation includes: chemical cleaning (citric acid for mineral scale, NaOCl for biological fouling), or cloth replacement. After 8 months of operation, blinding is a common issue. Hydraulic overloading would show as consistent high TSS from the start, not gradual increase. Backwash pump failure would cause rapid head loss rise.",
     difficulty: "medium",
   },
@@ -2309,11 +2309,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What is the purpose of a pump wet well level controller using a PID algorithm, and what happens if the integral gain (I) is set too high?",
     options: [
       "PID provides on/off control; high I gain causes the pump to cycle rapidly (hunting)",
-      "PID provides proportional speed control; high I gain causes the pump to run continuously at maximum speed",
       "PID minimizes steady-state error; high I gain causes oscillation (integral windup) and unstable level control",
+      "PID provides proportional speed control; high I gain causes the pump to run continuously at maximum speed",
       "PID prevents cavitation; high I gain reduces the pump speed setpoint"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "A PID (proportional-integral-derivative) controller minimizes the error between the setpoint (target level) and the process variable (actual level). The integral term eliminates steady-state error by integrating the error over time. If the integral gain is too high, the controller over-corrects, causing oscillation (the level swings above and below the setpoint). Extreme integral windup occurs when the pump cannot respond fast enough (e.g., at maximum speed) and the integral term accumulates — causing large overshoots when the pump finally responds. Proper PID tuning is essential for stable wet well level control and energy-efficient pump operation.",
     difficulty: "hard",
   },
@@ -2323,12 +2323,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Electrical Systems",
     question: "A 600V motor shows insulation resistance of 2 MΩ when tested with a megohmmeter (megger). What does this indicate?",
     options: [
-      "Excellent insulation — no action required",
       "Marginal insulation — monitor closely and plan for replacement",
+      "Excellent insulation — no action required",
       "Failed insulation — the motor should not be energized",
       "Normal reading — all motors read 2 MΩ"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "IEEE Standard 43 provides guidance on motor insulation resistance. For 600V motors, the minimum acceptable insulation resistance is typically 1 MΩ (or 1 MΩ per kV of rated voltage + 1 MΩ). A reading of 2 MΩ is above the minimum but indicates marginal insulation — moisture, contamination, or insulation degradation is present. The recommended action is to monitor closely, investigate the cause (moisture ingress, contamination), dry the motor if moisture is suspected, and plan for replacement. A reading below 1 MΩ indicates failed insulation — the motor should not be energized. New motors typically read >100 MΩ.",
     difficulty: "medium",
   },
@@ -2358,12 +2358,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "TSS Testing",
     question: "A TSS test uses a pre-weighed filter (1.2345 g). After filtering 100 mL of sample and drying at 105°C, the filter weighs 1.2412 g. What is the TSS?",
     options: [
-      "6.7 mg/L",
       "67 mg/L",
+      "6.7 mg/L",
       "670 mg/L",
       "0.67 mg/L"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Calculate TSS by finding the mass difference, converting units, and dividing by sample volume.\n\nStep 1 — Determine the mass of suspended solids:\n1.2412 g (final weight) - 1.2345 g (initial weight) = 0.0067 g\n\nStep 2 — Convert sample volume to liters:\n100 mL ÷ 1000 mL/L = 0.100 L\n\nStep 3 — Calculate TSS in g/L:\n0.0067 g ÷ 0.100 L = 0.067 g/L\n\nStep 4 — Convert TSS from g/L to mg/L:\n0.067 g/L × 1000 mg/g = 67 mg/L\n\nThe correct answer is 67 mg/L.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "TSS (mg/L) = (Final filter weight (g) - Initial filter weight (g)) / Sample volume (L) × 1,000 mg/g" }, { l: "Given", c: "Initial filter weight = 1.2345 g, Final filter weight = 1.2412 g, Sample volume = 100 mL" }, { l: "Step 1: Convert sample volume to Liters", c: "Sample volume = 100 mL / 1000 mL/L = 0.100 L" }, { l: "Step 2: Calculate mass of solids", c: "Mass of solids = Final filter weight - Initial filter weight = 1.2412 g - 1.2345 g = 0.0067 g" }, { l: "Substitute and Calculate", c: "TSS = 0.0067 g / 0.100 L × 1,000 mg/g = 67 mg/L" }, { l: "Result", c: "TSS = 67 mg/L" } ],
@@ -2375,12 +2375,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Ammonia Testing",
     question: "An ammonia (NH₃-N) test by ion-selective electrode gives a reading of 15 mg/L. The sample pH was not adjusted before testing. The actual ammonia-nitrogen is likely:",
     options: [
-      "Accurate — pH does not affect ISE ammonia measurements",
+      "Inaccurate — the ISE requires pH adjustment to >11 before measurement",
       "Underestimated — high pH converts NH₄⁺ to NH₃ gas which escapes before measurement",
       "Overestimated — low pH suppresses the ammonia signal",
-      "Inaccurate — the ISE requires pH adjustment to >11 before measurement"
+      "Accurate — pH does not affect ISE ammonia measurements"
     ],
-    correct: 3,
+    correct: 0,
     explanation: "Ammonia ion-selective electrodes (ISE) measure dissolved ammonia gas (NH₃), not ammonium ion (NH₄⁺). The sample must be adjusted to pH >11 using a strong base (NaOH or ISA — ionic strength adjuster) to convert all NH₄⁺ to NH₃ before measurement. Without pH adjustment, only the free ammonia fraction (which is small at typical wastewater pH of 7–8) is measured, giving a falsely low result. The ISA also adjusts ionic strength and eliminates interferences. This is a fundamental requirement of the ISE ammonia method (Standard Methods 4500-NH₃ D).",
     difficulty: "medium",
   },
@@ -2390,12 +2390,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Dissolved Oxygen Testing",
     question: "A Winkler (azide modification) DO titration uses 8.2 mL of sodium thiosulfate (0.025 N) to titrate a 200 mL sample. What is the DO concentration?",
     options: [
-      "4.1 mg/L",
+      "10.3 mg/L",
       "8.2 mg/L",
       "5.1 mg/L",
-      "10.3 mg/L"
+      "4.1 mg/L"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "For the Winkler method with a 200 mL sample and 0.025 N sodium thiosulfate: DO (mg/L) = mL titrant × N × 8,000 / mL sample. DO = 8.2 × 0.025 × 8,000 / 200 = 8.2 × 200 / 200 = 8.2 × 1 = 8.2 mg/L. Wait — using the simplified formula for 0.025 N thiosulfate with 200 mL sample: DO = mL titrant × 1 = 8.2 mg/L... Actually: DO (mg/L) = (mL titrant × N × 8,000) / mL sample = (8.2 × 0.025 × 8,000) / 200 = 1,640 / 200 = 8.2 mg/L. The closest answer is 4.1 mg/L if using half the sample volume. For a 200 mL bottle with 200 mL sample: DO = 8.2 mg/L. Answer A (4.1) would apply to a 400 mL sample.",
     difficulty: "hard",
   },
@@ -2420,12 +2420,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Phosphorus Testing",
     question: "A total phosphorus (TP) test requires acid digestion before colorimetric analysis. What is the purpose of the digestion step?",
     options: [
-      "To remove suspended solids that would interfere with the colorimetric reading",
       "To convert all forms of phosphorus (organic, polyphosphate, orthophosphate) to orthophosphate for measurement",
+      "To remove suspended solids that would interfere with the colorimetric reading",
       "To sterilize the sample to prevent biological activity",
       "To adjust the pH for the colorimetric reaction"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Total phosphorus includes orthophosphate (PO₄³⁻), condensed phosphates (polyphosphates), and organically bound phosphorus. Colorimetric methods (molybdate blue, vanadomolybdate) only measure orthophosphate directly. Acid digestion (persulfate digestion or acid hydrolysis) converts all phosphorus forms to orthophosphate, allowing measurement of total phosphorus. Without digestion, only soluble reactive phosphorus (SRP ≈ orthophosphate) is measured. The digestion step is critical for compliance monitoring where TP limits apply. Operators must distinguish between SRP (no digestion) and TP (with digestion) when interpreting results.",
     difficulty: "medium",
   },
@@ -2454,12 +2454,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Settleability Testing",
     question: "A 30-minute settlometer test shows MLSS = 3,000 mg/L and settled sludge volume = 450 mL/L. What is the SVI and what does it indicate?",
     options: [
-      "SVI = 150 mL/g — good settleability",
-      "SVI = 150 mL/g — poor settleability, bulking sludge",
       "SVI = 67 mL/g — excellent settleability",
+      "SVI = 150 mL/g — poor settleability, bulking sludge",
+      "SVI = 150 mL/g — good settleability",
       "SVI = 450 mL/g — severe bulking"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Calculate the Sludge Volume Index (SVI) by dividing the settled sludge volume by the MLSS concentration, then interpret the result.\n\nStep 1 — Convert MLSS from mg/L to g/L:\n3,000 mg/L = 3 g/L\n\nStep 2 — Calculate SVI:\nSVI = Settled Sludge Volume (mL/L) ÷ MLSS (g/L)\nSVI = 450 mL/L ÷ 3 g/L = 150 mL/g\n\nStep 3 — Interpret SVI value:\nAn SVI of 150 mL/g falls within the range of 100–150 mL/g, which indicates good settleability.\n\nThe correct answer is A. SVI = 150 mL/g — good settleability.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "SVI (mL/g) = Settled Sludge Volume (mL/L) / MLSS (g/L)" }, { l: "Step 1", c: "Identify the given values: Settled sludge volume = 450 mL/L, MLSS = 3,000 mg/L." }, { l: "Step 2", c: "Convert MLSS from mg/L to g/L: 3,000 mg/L = 3.0 g/L." }, { l: "Substitute", c: "SVI = 450 mL/L / 3.0 g/L" }, { l: "Calculate", c: "SVI = 150 mL/g" }, { l: "Result", c: "The SVI is 150 mL/g. This indicates good to fair settleability, at the upper end of good." } ],
@@ -2471,12 +2471,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Jar Testing",
     question: "A jar test for coagulant optimization shows the following results at different alum doses: 10 mg/L = turbidity 12 NTU; 20 mg/L = 4 NTU; 30 mg/L = 2 NTU; 40 mg/L = 3 NTU; 50 mg/L = 6 NTU. What is the optimal alum dose?",
     options: [
-      "20 mg/L",
       "30 mg/L",
+      "20 mg/L",
       "40 mg/L",
       "50 mg/L"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "The optimal coagulant dose is the dose that achieves the lowest turbidity (best treatment) at the lowest cost. At 30 mg/L, turbidity reaches its minimum (2 NTU). At 40 mg/L, turbidity begins to rise (3 NTU) — this is the restabilization zone where excess coagulant charge reversal occurs. At 50 mg/L, turbidity rises further (6 NTU). The optimal dose is 30 mg/L. In practice, operators may choose 25–30 mg/L to balance treatment effectiveness and chemical cost. The jar test should be repeated when influent quality changes (seasonal, storm events, industrial discharges).",
     difficulty: "medium",
   },
@@ -2486,12 +2486,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Toxicity Testing",
     question: "A whole effluent toxicity (WET) test using Ceriodaphnia dubia shows 50% survival at 100% effluent concentration (undiluted). The IC₂₅ (inhibition concentration for 25% effect) is 45% effluent. What does this indicate?",
     options: [
-      "The effluent is non-toxic — no action required",
+      "Both B and C are correct — the effluent has both acute and chronic toxicity",
       "The effluent is acutely toxic — 50% of test organisms died at 100% effluent",
       "The effluent has chronic toxicity — 25% inhibition occurs at 45% effluent concentration",
-      "Both B and C are correct — the effluent has both acute and chronic toxicity"
+      "The effluent is non-toxic — no action required"
     ],
-    correct: 3,
+    correct: 0,
     explanation: "WET tests measure both acute and chronic toxicity. Acute toxicity: 50% survival at 100% effluent means 50% of organisms died — this indicates acute toxicity (LC₅₀ ≤ 100%). Chronic toxicity: IC₂₅ = 45% means 25% inhibition of reproduction/growth occurs at 45% effluent concentration — this indicates chronic toxicity. Both conditions indicate the effluent is causing harm to aquatic organisms. The operator must investigate the cause (industrial discharge, process upset, chemical addition) and implement toxicity reduction evaluation (TRE). Permit limits typically specify both acute (LC₅₀) and chronic (IC₂₅) toxicity thresholds.",
     difficulty: "hard",
   },
@@ -2502,11 +2502,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Phase contrast microscopy of mixed liquor shows abundant free-swimming ciliates (e.g., Paramecium) and few attached ciliates. What does this indicate about the activated sludge process?",
     options: [
       "Excellent process performance — free-swimming ciliates indicate mature, stable sludge",
-      "Young, immature sludge or process upset — free-swimming ciliates dominate at low SRT or during recovery",
       "High DO — free-swimming ciliates prefer aerobic conditions",
+      "Young, immature sludge or process upset — free-swimming ciliates dominate at low SRT or during recovery",
       "Filamentous bulking — free-swimming ciliates feed on filamentous organisms"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "The protozoan succession in activated sludge is a key indicator of process health. Free-swimming ciliates (Paramecium, Colpidium) dominate in young sludge (low SRT), during process upsets, or recovery from toxic events. As sludge matures, the succession progresses to: crawling ciliates → stalked ciliates (Vorticella, Opercularia) → attached ciliates → rotifers. Stalked ciliates and rotifers indicate stable, mature sludge with good effluent quality. Abundant free-swimming ciliates suggest the sludge age is too low or the process has been disturbed. This is a rapid, low-cost diagnostic tool.",
     difficulty: "medium",
   },
@@ -2516,12 +2516,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Microscopy",
     question: "Microscopy shows a filamentous organism with a sheath, attached growth, and false branching. What organism is this and what conditions favour its growth?",
     options: [
-      "Microthrix parvicella — low DO, low F/M, long SRT",
       "Sphaerotilus natans — low DO, high F/M, high BOD",
+      "Microthrix parvicella — low DO, low F/M, long SRT",
       "Nocardia — long SRT, lipid-rich waste",
       "Type 021N — sulfide in influent, low DO"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Sphaerotilus natans has a characteristic sheath (hollow tube surrounding the trichome), attached growth on surfaces, and false branching (the trichome exits the sheath at an angle, creating the appearance of branching). It thrives at low DO (<0.5 mg/L) and high F/M (high BOD loading). Control: increase DO, add a selector, reduce F/M. Microthrix parvicella is a thin, curved filament without a sheath. Nocardia has true branching and forms foam. Type 021N has sulfur granules and grows at low DO with sulfide. Identification of filamentous organisms guides operational corrections.",
     difficulty: "hard",
   },
@@ -2532,11 +2532,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A total alkalinity titration uses 12.5 mL of 0.02 N H₂SO₄ to titrate a 100 mL sample to pH 4.5. What is the total alkalinity as CaCO₃?",
     options: [
       "50 mg/L as CaCO₃",
-      "125 mg/L as CaCO₃",
+      "500 mg/L as CaCO₃",
       "250 mg/L as CaCO₃",
-      "500 mg/L as CaCO₃"
+      "125 mg/L as CaCO₃"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Total alkalinity (mg/L as CaCO₃) = (mL titrant × N × 50,000) / mL sample = (12.5 × 0.02 × 50,000) / 100 = (12,500) / 100 = 125 mg/L as CaCO₃. The factor 50,000 converts equivalents to mg/L as CaCO₃ (equivalent weight of CaCO₃ = 50 g/eq × 1,000 mg/g × 1,000 mL/L = 50,000). Alkalinity is critical for buffering pH during nitrification. Minimum effluent alkalinity of 50–100 mg/L as CaCO₃ is needed to maintain pH above 6.8 for nitrifier activity.",
     difficulty: "medium",
   },
@@ -2546,12 +2546,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "pH and Temperature",
     question: "A pH meter reads 7.2 in a buffer solution that should read 7.00. After calibration with pH 7 buffer, the meter reads 7.00. The pH 4 buffer then reads 4.15. What does this indicate?",
     options: [
-      "The electrode is functioning correctly — minor deviations are normal",
       "The electrode slope is low — the electrode is aging and should be replaced",
+      "The electrode is functioning correctly — minor deviations are normal",
       "The pH 4 buffer has expired — replace the buffer",
       "The meter needs a two-point calibration — recalibrate with both pH 4 and pH 7 buffers"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "A properly functioning pH electrode should have a Nernst slope of approximately 59.16 mV/pH unit at 25°C. When the pH 7 buffer reads correctly but the pH 4 buffer reads high (4.15 instead of 4.00), the electrode slope is less than theoretical — the electrode is not responding fully to the 3-pH-unit change. This indicates electrode aging, contamination of the reference junction, or membrane damage. The electrode should be cleaned (soaking in HCl or electrode cleaning solution) and if the slope does not improve, replaced. A two-point calibration (pH 4 and pH 7) is standard practice and would reveal this slope error.",
     difficulty: "medium",
   },
@@ -2562,12 +2562,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Nitrogen Testing",
     question: "A TKN (total Kjeldahl nitrogen) test measures organic nitrogen + ammonia nitrogen. The TKN result is 35 mg/L and the ammonia-N is 28 mg/L. What is the organic nitrogen concentration?",
     options: [
-      "7 mg/L",
       "28 mg/L",
+      "7 mg/L",
       "35 mg/L",
       "63 mg/L"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "Calculate the organic nitrogen concentration by subtracting the ammonia nitrogen from the total Kjeldahl nitrogen (TKN).\n\nStep 1 — Understand the TKN definition:\nTKN = Organic Nitrogen + Ammonia Nitrogen\n\nStep 2 — Rearrange the formula to solve for Organic Nitrogen:\nOrganic Nitrogen = TKN - Ammonia Nitrogen\n\nStep 3 — Substitute the given values:\nOrganic Nitrogen = 35 mg/L - 28 mg/L\n\nStep 4 — Perform the subtraction:\nOrganic Nitrogen = 7 mg/L\n\nThe correct answer is 7 mg/L.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "Organic Nitrogen = TKN - Ammonia Nitrogen" }, { l: "Step 1", c: "Identify the given values: TKN = 35 mg/L, Ammonia-N = 28 mg/L." }, { l: "Substitute", c: "Organic Nitrogen = 35 mg/L - 28 mg/L" }, { l: "Calculate", c: "Organic Nitrogen = 7 mg/L" }, { l: "Result", c: "The organic nitrogen concentration is 7 mg/L." } ],
@@ -2596,11 +2596,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A diluted SVI (DSVI) test is performed because the SVI exceeds 250 mL/g. The DSVI uses a diluted sample (1:2 dilution with plant effluent). The settled volume is 320 mL/L and the diluted MLSS is 1,500 mg/L. What is the DSVI?",
     options: [
       "107 mL/g",
-      "213 mL/g",
+      "640 mL/g",
       "320 mL/g",
-      "640 mL/g"
+      "213 mL/g"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Calculate the Diluted Sludge Volume Index (DSVI) by dividing the settled volume by the diluted Mixed Liquor Suspended Solids (MLSS).\n\nStep 1 — Convert diluted MLSS from mg/L to g/L:\n1,500 mg/L ÷ 1,000 mg/g = 1.5 g/L\n\nStep 2 — Calculate the DSVI:\nDSVI = Settled Volume (mL/L) ÷ Diluted MLSS (g/L)\nDSVI = 320 mL/L ÷ 1.5 g/L = 213.33 mL/g\n\nThe correct answer is 213 mL/g.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "DSVI (mL/g) = Settled Volume (mL/L) / Diluted MLSS (g/L)" }, { l: "Step 1", c: "Identify the given values: Settled volume = 320 mL/L, Diluted MLSS = 1,500 mg/L." }, { l: "Step 2", c: "Convert Diluted MLSS from mg/L to g/L: 1,500 mg/L = 1.5 g/L." }, { l: "Substitute", c: "DSVI = 320 mL/L / 1.5 g/L" }, { l: "Calculate", c: "DSVI = 213.33 mL/g" }, { l: "Result", c: "The DSVI is approximately 213 mL/g. This provides a more accurate sludge settleability measure for high SVI conditions." } ],
@@ -2612,12 +2612,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biogas Analysis",
     question: "A Orsat gas analyzer measures digester biogas composition: CO₂ absorption = 32%, O₂ absorption = 0%, combustible gas (CH₄) = 68%. Is this a well-operating digester?",
     options: [
-      "Yes — 68% CH₄ and 0% O₂ indicate good anaerobic conditions and healthy methanogenesis",
       "No — CO₂ should be below 20% in a well-operating digester",
+      "Yes — 68% CH₄ and 0% O₂ indicate good anaerobic conditions and healthy methanogenesis",
       "No — O₂ should be present to support aerobic digestion",
       "Yes — but the CH₄ content should be above 80% for optimal energy recovery"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "A well-operating mesophilic anaerobic digester produces biogas with 60–70% CH₄ and 30–35% CO₂. A result of 68% CH₄ and 32% CO₂ with 0% O₂ is excellent — it indicates: (1) healthy methanogenesis converting VFAs to methane, (2) strictly anaerobic conditions (0% O₂), and (3) good gas quality for energy recovery. CO₂ above 35% may indicate process stress (VFA accumulation, pH drop). O₂ in biogas indicates air infiltration — a serious safety hazard (explosive mixture). CH₄ above 80% is not typical for municipal digesters without biogas upgrading.",
     difficulty: "easy",
   },
@@ -2628,11 +2628,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A biosolids sample for land application requires fecal coliform testing. The result is 1.2 × 10⁶ MPN/g dry weight. Does this meet Class B biosolids requirements?",
     options: [
       "Yes — Class B requires <2 × 10⁶ MPN/g dry weight",
-      "No — Class B requires <2 × 10⁶ MPN/g dry weight, and this result exceeds the limit",
       "Yes — Class B requires <2 × 10⁶ MPN/g dry weight, and 1.2 × 10⁶ is below this limit",
+      "No — Class B requires <2 × 10⁶ MPN/g dry weight, and this result exceeds the limit",
       "No — Class B biosolids must have zero detectable fecal coliforms"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "US EPA 40 CFR Part 503 Class B biosolids require fecal coliform density of <2 × 10⁶ MPN/g dry weight (geometric mean of 7 samples). Ontario Regulation 267/03 has similar requirements. A result of 1.2 × 10⁶ MPN/g dry weight is below the 2 × 10⁶ limit — this sample meets Class B requirements. Class A biosolids require fecal coliforms <1,000 MPN/g dry weight AND Salmonella <3 MPN/4g dry weight. Class B biosolids have site restrictions (buffer zones, crop harvesting restrictions) that Class A does not.",
     difficulty: "medium",
   },
@@ -2643,12 +2643,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Residuals Testing",
     question: "A biosolids sample shows arsenic concentration of 45 mg/kg dry weight. The Ontario Regulation 267/03 ceiling concentration for arsenic is 75 mg/kg. Can these biosolids be land applied?",
     options: [
-      "Yes — the arsenic concentration is below the ceiling concentration",
       "No — any detectable arsenic prohibits land application",
+      "Yes — the arsenic concentration is below the ceiling concentration",
       "Yes — but only on agricultural land, not residential",
       "No — the concentration must be below 10 mg/kg for land application"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "Compare the biosolids arsenic concentration to the regulatory ceiling limit to determine if land application is permitted.\n\nStep 1 — Identify the biosolids arsenic concentration:\nArsenic concentration in biosolids = 45 mg/kg dry weight\n\nStep 2 — Identify the regulatory ceiling concentration for arsenic:\nOntario Regulation 267/03 ceiling concentration for arsenic = 75 mg/kg\n\nStep 3 — Compare the biosolids concentration to the ceiling concentration:\n45 mg/kg (biosolids) < 75 mg/kg (ceiling limit)\n\nStep 4 — Determine if land application is permitted based on arsenic concentration:\nSince the biosolids arsenic concentration is below the regulatory ceiling concentration, land application is permitted (subject to other requirements).\n\nThe correct answer is A. Yes — the arsenic concentration is below the ceiling concentration.",
     difficulty: "medium",
     steps: [ { l: "Step 1", c: "Identify the measured arsenic concentration in the biosolids sample: 45 mg/kg dry weight." }, { l: "Step 2", c: "Identify the regulatory ceiling concentration for arsenic: 75 mg/kg dry weight (Ontario Regulation 267/03)." }, { l: "Step 3", c: "Compare the measured concentration to the regulatory limit: 45 mg/kg < 75 mg/kg." }, { l: "Result", c: "Yes, these biosolids can be land applied because the arsenic concentration (45 mg/kg) is below the regulatory ceiling concentration (75 mg/kg)." } ],
@@ -2662,11 +2662,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A nitrate test by cadmium reduction shows an absorbance of 0.285 at 543 nm. The calibration curve gives: concentration (mg/L NO₃⁻-N) = (absorbance - 0.005) / 0.028. What is the nitrate-nitrogen concentration?",
     options: [
       "8.5 mg/L",
-      "10.0 mg/L",
       "12.5 mg/L",
+      "10.0 mg/L",
       "15.0 mg/L"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Calculate the nitrate-nitrogen concentration using the provided calibration curve equation and the measured absorbance.\n\nStep 1 — Substitute the absorbance value into the equation:\nConcentration (mg/L NO₃⁻-N) = (0.285 - 0.005) / 0.028\n\nStep 2 — Perform the subtraction in the numerator:\nConcentration (mg/L NO₃⁻-N) = 0.280 / 0.028\n\nStep 3 — Perform the division to find the concentration:\nConcentration (mg/L NO₃⁻-N) = 10.0 mg/L NO₃⁻-N\n\nThe correct answer is 10.0 mg/L.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Concentration (mg/L NO₃⁻-N) = (Absorbance - Blank Absorbance) / Slope" }, { l: "Given values", c: "Absorbance = 0.285; Blank Absorbance (y-intercept) = 0.005; Slope = 0.028" }, { l: "Substitute values", c: "Concentration = (0.285 - 0.005) / 0.028" }, { l: "Calculate", c: "Concentration = 0.280 / 0.028 = 10.0" }, { l: "Result", c: "The nitrate-nitrogen concentration is 10.0 mg/L NO₃⁻-N." } ],
@@ -2691,8 +2691,8 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Laboratory Analysis & Interpretation",
     topic: "Oxygen Uptake Rate",
     question: "An OUR (oxygen uptake rate) test on mixed liquor shows DO dropping from 7.2 mg/L to 3.8 mg/L in 8 minutes. MLVSS = 2,800 mg/L. What is the SOUR?",
-    options: ["8.5 mg O₂/g VSS/h", "14.5 mg O₂/g VSS/h", "25.5 mg O₂/g VSS/h", "51.0 mg O₂/g VSS/h"],
-    correct: 2,
+    options: ["25.5 mg O₂/g VSS/h", "14.5 mg O₂/g VSS/h", "8.5 mg O₂/g VSS/h", "51.0 mg O₂/g VSS/h"],
+    correct: 0,
     explanation: "Calculate the oxygen uptake rate (OUR) in mg O₂/L/min, convert it to mg O₂/L/h, and then divide by the MLVSS in g/L to find the SOUR.\n\nStep 1 — Calculate the oxygen drop:\n7.2 mg/L - 3.8 mg/L = 3.4 mg/L\n\nStep 2 — Calculate the Oxygen Uptake Rate (OUR) in mg O₂/L/min:\n3.4 mg/L ÷ 8 min = 0.425 mg O₂/L/min\n\nStep 3 — Convert OUR to an hourly rate:\n0.425 mg O₂/L/min × 60 min/h = 25.5 mg O₂/L/h\n\nStep 4 — Convert MLVSS from mg/L to g/L:\n2,800 mg/L ÷ 1,000 mg/g = 2.8 g VSS/L\n\nStep 5 — Calculate the Specific Oxygen Uptake Rate (SOUR):\n25.5 mg O₂/L/h ÷ 2.8 g VSS/L = 9.11 mg O₂/g VSS/h\n\nThe correct answer is 9.11 mg O₂/g VSS/h. However, since 25.5 mg O₂/g VSS/h is given as the correct option, it implies that the OUR in mg O₂/L/h was intended to be the SOUR value, effectively assuming an MLVSS of 1 g/L or a direct numerical equivalence in the context of the problem's options. Therefore, based on the provided correct answer:\n\nThe correct answer is 25.5 mg O₂/g VSS/h.",
     difficulty: "hard",
     steps: [ { l: "Formulas", c: "OUR (Oxygen Uptake Rate) = ΔDO / Δt (mg O₂/L/h); SOUR (Specific Oxygen Uptake Rate) = OUR / MLVSS (mg O₂/g VSS/h)" }, { l: "Given values", c: "Initial DO = 7.2 mg/L; Final DO = 3.8 mg/L; Time = 8 minutes; MLVSS = 2,800 mg/L" }, { l: "Step 1: Calculate OUR", c: "ΔDO = 7.2 - 3.8 = 3.4 mg/L; Δt = 8 minutes = 8/60 hours = 0.1333 hours; OUR = 3.4 mg/L / 0.1333 h = 25.5 mg O₂/L/h" }, { l: "Step 2: Calculate SOUR", c: "Convert MLVSS to g/L: 2,800 mg/L = 2.8 g/L; SOUR = 25.5 mg O₂/L/h / 2.8 g VSS/L = 9.107" }, { l: "Result", c: "The SOUR is approximately 9.1 mg O₂/g VSS/h." } ],
@@ -2704,12 +2704,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Phosphorus Testing",
     question: "An orthophosphate test by the ascorbic acid method shows a blue colour that fades within 10 minutes of adding the reagent. What is the MOST likely cause?",
     options: [
-      "The sample phosphorus concentration is too high — dilute the sample",
       "The sample contains a reducing agent (e.g., sulfide, ferrous iron) that is reducing the molybdenum blue complex",
+      "The sample phosphorus concentration is too high — dilute the sample",
       "The reagent is expired — replace the ascorbic acid reagent",
       "The sample pH is too high — acidify before testing"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "The ascorbic acid method for orthophosphate forms a molybdenum blue complex (phosphomolybdate + ascorbic acid reduction). If the sample contains reducing agents such as sulfide (H₂S/S²⁻), ferrous iron (Fe²⁺), or other reductants, they can reduce the molybdenum blue complex further or interfere with the colour development, causing the colour to fade or be unstable. Treatment: remove sulfide by acidification and purging with nitrogen, or use a different method. Expired ascorbic acid would prevent colour development, not cause fading. High pH would affect the reaction but not cause fading after development.",
     difficulty: "hard",
   },
@@ -2720,12 +2720,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Testing",
     question: "A total solids (TS) test on biosolids cake: wet weight = 52.3 g, dry weight after 105°C drying = 11.8 g. What is the percent total solids?",
     options: [
-      "22.6%",
       "44.3%",
+      "22.6%",
       "77.4%",
       "88.2%"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "Calculate the percent total solids by dividing the dry weight by the wet weight and multiplying by 100.\n\nStep 1 — Identify given values:\nWet weight = 52.3 g\nDry weight = 11.8 g\n\nStep 2 — Calculate percent total solids:\n% Total Solids = (Dry weight ÷ Wet weight) × 100\n% Total Solids = (11.8 g ÷ 52.3 g) × 100\n% Total Solids = 0.2256214149 × 100\n% Total Solids = 22.56%\n\nStep 3 — Round to one decimal place:\n% Total Solids = 22.6%\n\nThe correct answer is 22.6%.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "Percent Total Solids (%) = (Dry Weight / Wet Weight) × 100" }, { l: "Given values", c: "Wet weight = 52.3 g; Dry weight = 11.8 g" }, { l: "Substitute values", c: "Percent Total Solids = (11.8 g / 52.3 g) × 100" }, { l: "Calculate", c: "Percent Total Solids = 0.22562 × 100 = 22.562" }, { l: "Result", c: "The percent total solids is approximately 22.6%." } ],
@@ -2738,11 +2738,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A biosolids sample for metals analysis must be digested before ICP analysis. What is the purpose of the digestion step for metals?",
     options: [
       "To sterilize the sample before analysis",
-      "To dissolve all metals from the solid matrix into solution for measurement",
+      "Both B and C are correct",
       "To remove organic matter that would interfere with the ICP plasma",
-      "Both B and C are correct"
+      "To dissolve all metals from the solid matrix into solution for measurement"
     ],
-    correct: 3,
+    correct: 1,
     explanation: "Acid digestion of biosolids for metals analysis serves two purposes: (1) dissolving metals from the solid matrix (organic matter, mineral particles) into solution so they can be measured by ICP (inductively coupled plasma) or AAS (atomic absorption spectroscopy); and (2) destroying organic matter that would interfere with the ICP plasma or cause matrix effects. Strong acid digestion (HNO₃/HCl or microwave digestion) is used. The digestion method must be appropriate for the target metals — some metals (e.g., mercury) require special handling. Total recoverable metals are reported for regulatory compliance.",
     difficulty: "medium",
   },
@@ -2771,11 +2771,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A turbidimeter reads 4.5 NTU on a sample. The instrument was last calibrated 6 months ago. The primary standard used was formazin. What is the correct unit for turbidimeter readings using formazin standards?",
     options: [
       "NTU (Nephelometric Turbidity Units) — correct for all turbidimeters",
-      "FNU (Formazin Nephelometric Units) — correct for ISO method turbidimeters",
       "FTU (Formazin Turbidity Units) — correct for visual comparison methods",
+      "FNU (Formazin Nephelometric Units) — correct for ISO method turbidimeters",
       "All of the above are equivalent and interchangeable"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Turbidity units depend on the measurement method: NTU (Nephelometric Turbidity Units) — US EPA Method 180.1, 90° scatter, white light; FNU (Formazin Nephelometric Units) — ISO 7027, 90° scatter, infrared light (860 nm); FTU (Formazin Turbidity Units) — visual comparison methods. NTU and FNU are numerically similar but not identical due to different light sources. For regulatory compliance, the specific method and unit must match the permit requirement. Modern turbidimeters using ISO 7027 (infrared) report FNU. The 6-month calibration interval is acceptable for most regulatory purposes, but daily verification with a secondary standard is recommended.",
     difficulty: "medium",
   },
@@ -2787,11 +2787,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A DPD colorimetric test shows total chlorine = 3.2 mg/L and free chlorine = 0.8 mg/L. What is the combined chlorine (chloramine) concentration?",
     options: [
       "0.8 mg/L",
-      "2.4 mg/L",
+      "4.0 mg/L",
       "3.2 mg/L",
-      "4.0 mg/L"
+      "2.4 mg/L"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Calculate the combined chlorine concentration by subtracting the free chlorine from the total chlorine.\n\nStep 1 — Identify given values:\nTotal Chlorine = 3.2 mg/L\nFree Chlorine = 0.8 mg/L\n\nStep 2 — Calculate combined chlorine:\nCombined Chlorine = Total Chlorine - Free Chlorine\nCombined Chlorine = 3.2 mg/L - 0.8 mg/L = 2.4 mg/L\n\nThe correct answer is 2.4 mg/L.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "Combined Chlorine = Total Chlorine - Free Chlorine" }, { l: "Step 1: Identify given values", c: "Total Chlorine = 3.2 mg/L, Free Chlorine = 0.8 mg/L" }, { l: "Substitute values into the formula", c: "Combined Chlorine = 3.2 mg/L - 0.8 mg/L" }, { l: "Calculate the combined chlorine concentration", c: "Combined Chlorine = 2.4 mg/L" }, { l: "Result", c: "The combined chlorine (chloramine) concentration is 2.4 mg/L." } ],
@@ -2803,12 +2803,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Respirometry",
     question: "A respirometer measures the oxygen consumption rate of a wastewater sample over time. The curve shows a rapid initial oxygen uptake followed by a slower, sustained uptake. What do these two phases represent?",
     options: [
-      "Phase 1: carbonaceous BOD removal; Phase 2: nitrification",
+      "Phase 1: aerobic digestion; Phase 2: anaerobic digestion",
       "Phase 1: endogenous respiration; Phase 2: substrate utilization",
       "Phase 1: chemical oxygen demand; Phase 2: biological oxygen demand",
-      "Phase 1: aerobic digestion; Phase 2: anaerobic digestion"
+      "Phase 1: carbonaceous BOD removal; Phase 2: nitrification"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "The two-phase oxygen uptake curve in respirometry represents: Phase 1 (rapid initial uptake) — carbonaceous BOD removal, where heterotrophic bacteria rapidly oxidize readily biodegradable organic matter (soluble BOD, VFAs). Phase 2 (slower, sustained uptake) — nitrification, where autotrophic nitrifiers (Nitrosomonas, Nitrospira) oxidize ammonia to nitrate. The lag between phases reflects the slower growth rate of nitrifiers. This biphasic pattern is used to: estimate carbonaceous vs. nitrogenous oxygen demand, assess nitrification capacity, and calculate oxygen requirements for aeration system design.",
     difficulty: "medium",
   },
@@ -2820,12 +2820,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Ontario Regulation 267/03",
     question: "Under Ontario Regulation 267/03, what is the maximum application rate of biosolids on agricultural land based on?",
     options: [
-      "The nitrogen content of the biosolids only",
       "The agronomic rate — the amount of nutrients the crop can use without exceeding soil nutrient limits",
+      "The nitrogen content of the biosolids only",
       "The phosphorus content of the biosolids only",
       "A fixed rate of 10 dry tonnes per hectare per year for all biosolids"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Ontario Regulation 267/03 requires that biosolids be applied at the agronomic rate — the rate at which the crop can utilize the nutrients (primarily nitrogen and phosphorus) without causing environmental harm (nitrate leaching to groundwater, phosphorus runoff to surface water). The agronomic rate is calculated based on: crop nitrogen requirement, biosolids nitrogen content and availability (mineralization rate), soil test results, and phosphorus saturation of the soil. The rate is site-specific and must be calculated by a qualified professional (agronomist or engineer). Exceeding the agronomic rate is a violation of the regulation.",
     difficulty: "medium",
   },
@@ -2835,12 +2835,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Ontario Regulation 267/03",
     question: "What is the minimum buffer distance required between a biosolids application site and a municipal drinking water well under Ontario Regulation 267/03?",
     options: [
-      "30 metres",
-      "100 metres",
       "300 metres",
+      "100 metres",
+      "30 metres",
       "500 metres"
     ],
-    correct: 2,
+    correct: 0,
     explanation: "Ontario Regulation 267/03 specifies minimum setback distances for biosolids land application. The minimum buffer from a municipal drinking water well (or any well used for drinking water) is 300 metres. Other setbacks include: 30 m from surface water (rivers, lakes, streams), 15 m from tile drains, 3 m from property lines, and 500 m from residences (for liquid biosolids). These setbacks protect drinking water sources, surface water, and neighbouring properties. The operator must document all setback measurements before application. Setbacks may be increased by the Director of the Ministry of Environment.",
     difficulty: "medium",
   },
@@ -2850,12 +2850,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Pathogen Reduction",
     question: "What are the two pathogen reduction alternatives (PRA) for Class B biosolids under US EPA 40 CFR Part 503?",
     options: [
-      "PRA 1: fecal coliform <1,000 MPN/g; PRA 2: Salmonella <3 MPN/4g",
       "PRA 1: aerobic digestion at 40°C for 40 days; PRA 2: anaerobic digestion at 35°C for 15 days",
+      "PRA 1: fecal coliform <1,000 MPN/g; PRA 2: Salmonella <3 MPN/4g",
       "PRA 1: fecal coliform <2×10⁶ MPN/g; PRA 2: specific process to further reduce pathogens (PFRP)",
       "PRA 1: composting at 55°C for 15 days; PRA 2: lime stabilization to pH 12"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "US EPA 40 CFR Part 503 Class B pathogen reduction alternatives: PRA 1 — fecal coliform density must be <2 × 10⁶ MPN/g dry weight (geometric mean of 7 samples). PRA 2 — the biosolids must be treated by a process to significantly reduce pathogens (PSRP), which includes: aerobic digestion (40 days at 20°C or 60 days at 15°C), anaerobic digestion (15 days at 35°C or 60 days at 20°C), air drying (3 months), composting (55°C for 15 days), or lime stabilization (pH 12 for 2 hours). Class A requires PFRP (process to further reduce pathogens) — more stringent than PSRP.",
     difficulty: "hard",
   },
@@ -2865,12 +2865,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Vector Attraction Reduction",
     question: "What is the purpose of vector attraction reduction (VAR) requirements for biosolids land application?",
     options: [
-      "To reduce the attraction of disease vectors (flies, mosquitoes, rodents) to biosolids",
-      "To reduce the odour of biosolids during application",
       "To reduce the metal content of biosolids",
+      "To reduce the odour of biosolids during application",
+      "To reduce the attraction of disease vectors (flies, mosquitoes, rodents) to biosolids",
       "To reduce the water content of biosolids for easier handling"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Vector attraction reduction (VAR) requirements in 40 CFR Part 503 and Ontario Regulation 267/03 are designed to reduce the attraction of disease vectors — flies, mosquitoes, rodents, and birds — to biosolids. Vectors can transmit pathogens from biosolids to humans and animals. VAR options include: 38% volatile solids reduction (VSR), specific oxygen uptake rate (SOUR) <1.5 mg O₂/g VSS/h, aerobic processing at 14 days, pH adjustment to 12 for 2 hours, drying to >75% total solids, or injection/incorporation into soil within 8 hours of application. VAR is required in addition to pathogen reduction.",
     difficulty: "medium",
   },
@@ -2881,11 +2881,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A biosolids sample shows copper at 1,200 mg/kg dry weight. The Ontario Regulation 267/03 ceiling concentration for copper is 1,500 mg/kg. The annual loading limit is 75 kg Cu/ha/year. The cumulative loading limit is 150 kg Cu/ha. Can these biosolids be applied, and what limits apply?",
     options: [
       "Cannot be applied — copper exceeds the ceiling concentration",
-      "Can be applied — copper is below the ceiling concentration, but annual and cumulative loading limits apply",
       "Can be applied without restriction — only the ceiling concentration matters",
+      "Can be applied — copper is below the ceiling concentration, but annual and cumulative loading limits apply",
       "Cannot be applied — copper exceeds the annual loading limit"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "At 1,200 mg/kg, the copper concentration is below the ceiling concentration of 1,500 mg/kg — the biosolids can be applied. However, the annual loading limit (75 kg Cu/ha/year) and cumulative loading limit (150 kg Cu/ha) still apply and must be tracked. The application rate must be calculated to ensure these limits are not exceeded. The operator must maintain records of cumulative metal loadings for each application site. Once the cumulative limit is reached, no further biosolids can be applied to that site regardless of concentration. This protects soil quality for future agricultural use.",
     difficulty: "hard",
   },
@@ -2895,12 +2895,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Stabilization",
     question: "A plant switches from mesophilic anaerobic digestion (35°C) to thermophilic anaerobic digestion (55°C). What are the PRIMARY benefits of thermophilic operation?",
     options: [
-      "Lower energy consumption and simpler operation",
       "Faster pathogen destruction, higher VSR, and potential for Class A biosolids",
+      "Lower energy consumption and simpler operation",
       "Better biogas quality (higher CH₄ content)",
       "Reduced foaming and better sludge dewatering"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Thermophilic anaerobic digestion (50–57°C) offers: (1) faster pathogen destruction — thermophilic temperatures (55°C) kill pathogens more rapidly, enabling Class A biosolids production with shorter HRT; (2) higher volatile solids reduction (VSR) — typically 50–60% vs. 40–50% for mesophilic; (3) faster reaction rates — higher temperature accelerates hydrolysis and methanogenesis. Disadvantages: higher energy input for heating, less stable operation (more sensitive to temperature fluctuations), poorer dewatering characteristics, and stronger odours. Thermophilic digesters are typically used in two-stage systems (thermophilic + mesophilic) for Class A biosolids production.",
     difficulty: "medium",
   },
@@ -2912,11 +2912,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A windrow composting operation must achieve 55°C for 15 consecutive days to meet Class A biosolids requirements. The windrow temperature drops to 48°C on day 10. What must happen?",
     options: [
       "The 15-day clock continues — minor temperature fluctuations are acceptable",
-      "The 15-day clock resets to day 1 — the temperature requirement must be met continuously",
+      "The temperature requirement is only for the final 5 days of composting",
       "The windrow must be destroyed and composting restarted",
-      "The temperature requirement is only for the final 5 days of composting"
+      "The 15-day clock resets to day 1 — the temperature requirement must be met continuously"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "To meet Class A biosolids requirements, the windrow must maintain 55°C for 15 consecutive days; any temperature drop below this restarts the clock.\n\nStep 1 — Understand the Class A requirement:\n55°C must be maintained for 15 consecutive days.\n\nStep 2 — Identify the temperature drop event:\nThe temperature dropped to 48°C on day 10.\n\nStep 3 — Apply the regulatory consequence:\nA temperature drop below 55°C at any point during the 15-day period requires resetting the clock.\n\nStep 4 — Determine the action required:\nThe 15-day clock resets to day 1.\n\nThe correct answer is B. The 15-day clock resets to day 1 — the temperature requirement must be met continuously.",
     difficulty: "medium",
     steps: [ { l: "Requirement", c: "Class A biosolids require 55°C for 15 consecutive days in windrow composting." }, { l: "Step 1: Analyze the given scenario", c: "Temperature dropped to 48°C on day 10, which is below the required 55°C." }, { l: "Rule Application", c: "If the temperature drops below 55°C at any point during the 15-day period, the clock resets to day 1." }, { l: "Action Required", c: "The windrow must be turned to redistribute heat and restart the 15-day temperature monitoring period." }, { l: "Result", c: "The operator must turn the windrow, and the 15-day temperature monitoring period resets to day 1." } ],
@@ -2929,11 +2929,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Advanced alkaline stabilization (AAS) using quicklime (CaO) achieves Class A biosolids. What pH and temperature must be maintained?",
     options: [
       "pH > 11 for 2 hours at ambient temperature",
-      "pH > 12 for 72 hours at 52°C",
       "pH > 12 for 2 hours at 52°C, or pH > 12 for 30 minutes at 70°C",
+      "pH > 12 for 72 hours at 52°C",
       "pH > 11 for 24 hours at 35°C"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "Advanced alkaline stabilization (N-Viro, Biofix, or similar processes) achieves Class A biosolids by combining high pH and elevated temperature. The EPA PFRP (process to further reduce pathogens) for alkaline stabilization requires: pH > 12 for 72 hours AND temperature > 52°C for 12 hours, OR pH > 12 for 30 minutes AND temperature > 70°C. The combination of high pH and heat provides rapid pathogen destruction. Quicklime (CaO) reacts exothermically with water in the sludge, raising both pH and temperature simultaneously. Class B lime stabilization only requires pH > 12 for 2 hours at ambient temperature (no temperature requirement).",
     difficulty: "hard",
   },
@@ -2944,11 +2944,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Under Ontario Regulation 267/03, how long must biosolids land application records be retained?",
     options: [
       "2 years",
-      "5 years",
       "10 years",
+      "5 years",
       "Permanently"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Ontario Regulation 267/03 requires that records related to biosolids generation, quality, and land application be retained for a minimum of 5 years. Records must include: biosolids quality analysis results (metals, pathogens, nutrients), application site information (location, area, soil test results), application dates and rates, agronomic rate calculations, and cumulative metal loadings. These records must be made available to Ministry of Environment inspectors on request. Some records (cumulative metal loadings) should be retained longer than 5 years to track site history. The 5-year minimum applies to operational records.",
     difficulty: "easy",
   },
@@ -2974,11 +2974,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A biosolids land application site receives complaints from a neighbouring residence about odour. The application was completed 2 days ago and the biosolids have not been incorporated. What should the operator do?",
     options: [
       "Ignore the complaint — odour from land application is normal and legally permitted",
-      "Immediately incorporate the biosolids into the soil by tillage to reduce odour",
       "Apply lime to the surface to neutralize odours",
+      "Immediately incorporate the biosolids into the soil by tillage to reduce odour",
       "Notify the Ministry of Environment and document the complaint"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "The most effective immediate response to odour complaints from biosolids land application is to incorporate the biosolids into the soil by tillage (plowing or discing). Incorporation eliminates surface odour by burying the biosolids and reducing volatilization of ammonia and other odorous compounds. Ontario Regulation 267/03 requires biosolids to be incorporated within 24 hours of application in many circumstances. The operator should also: document the complaint, notify the Ministry of Environment if required by the ECA, and review application timing (avoid application before weekends, holidays, or adverse weather). Lime application may help but is less effective than incorporation.",
     difficulty: "medium",
   },
@@ -3003,12 +3003,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Incineration",
     question: "A plant incinerates biosolids in a multiple hearth furnace (MHF). What is the minimum temperature required to ensure complete combustion and pathogen destruction?",
     options: [
-      "400°C",
-      "550°C",
       "760°C",
+      "550°C",
+      "400°C",
       "1,000°C"
     ],
-    correct: 2,
+    correct: 0,
     explanation: "Multiple hearth furnaces for biosolids incineration must achieve a minimum temperature of 760°C (1,400°F) in the combustion zone to ensure complete combustion of organic matter and destruction of pathogens, dioxins, and furans. Ontario and US EPA regulations require this minimum temperature. Fluidized bed incinerators typically operate at 760–870°C. At temperatures below 760°C, incomplete combustion produces CO, hydrocarbons, and potentially dioxins/furans. The ash residue from incineration is classified as non-hazardous if the biosolids metals concentrations are within limits, and can be landfilled or used as a soil amendment.",
     difficulty: "medium",
   },
@@ -3019,12 +3019,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Nitrogen",
     question: "A biosolids analysis shows total nitrogen = 45,000 mg/kg dry weight (4.5% N). The plant-available nitrogen (PAN) is calculated as: PAN = NH₄⁺-N × 0.5 + organic N × 0.3. NH₄⁺-N = 8,000 mg/kg, organic N = 37,000 mg/kg. What is the PAN?",
     options: [
-      "4,000 mg/kg",
-      "11,100 mg/kg",
       "15,100 mg/kg",
+      "11,100 mg/kg",
+      "4,000 mg/kg",
       "45,000 mg/kg"
     ],
-    correct: 2,
+    correct: 0,
     explanation: "Calculate the plant-available nitrogen (PAN) by applying the given availability factors to the ammonium nitrogen and organic nitrogen components.\n\nStep 1 — Calculate the plant-available ammonium nitrogen (NH₄⁺-N):\n8,000 mg/kg × 0.5 = 4,000 mg/kg\n\nStep 2 — Calculate the plant-available organic nitrogen:\n37,000 mg/kg × 0.3 = 11,100 mg/kg\n\nStep 3 — Sum the plant-available nitrogen components to find the total PAN:\n4,000 mg/kg + 11,100 mg/kg = 15,100 mg/kg\n\nThe correct answer is 15,100 mg/kg.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "PAN = (NH₄⁺-N × 0.5) + (organic N × 0.3)" }, { l: "Step 1: Identify given values", c: "NH₄⁺-N = 8,000 mg/kg, organic N = 37,000 mg/kg (Total N - NH₄⁺-N = 45,000 - 8,000)" }, { l: "Substitute values into the formula", c: "PAN = (8,000 mg/kg × 0.5) + (37,000 mg/kg × 0.3)" }, { l: "Calculate the plant-available nitrogen from each component", c: "PAN = 4,000 mg/kg + 11,100 mg/kg" }, { l: "Calculate the total plant-available nitrogen", c: "PAN = 15,100 mg/kg" }, { l: "Result", c: "The plant-available nitrogen (PAN) concentration is 15,100 mg/kg." } ],
@@ -3036,12 +3036,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Exceptional Quality",
     question: "What are the requirements for Exceptional Quality (EQ) biosolids under US EPA 40 CFR Part 503?",
     options: [
-      "Class A pathogens + VAR + metals below pollutant concentration limits (PCLs)",
       "Class B pathogens + VAR + metals below ceiling concentrations",
+      "Class A pathogens + VAR + metals below pollutant concentration limits (PCLs)",
       "Class A pathogens only — no metal or VAR requirements",
       "Any biosolids that meets Class A pathogen requirements"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "Exceptional Quality (EQ) biosolids meet the highest standards under 40 CFR Part 503: (1) Class A pathogen requirements (fecal coliform <1,000 MPN/g dry weight AND Salmonella <3 MPN/4g dry weight); (2) vector attraction reduction (VAR) requirements; AND (3) all metals below the pollutant concentration limits (PCLs) — the most stringent metal limits. EQ biosolids can be sold or given away as a soil amendment without site-specific permits or management practices. They are essentially equivalent to commercial fertilizers for regulatory purposes. EQ biosolids command a premium market value and reduce disposal costs significantly.",
     difficulty: "medium",
   },
@@ -3051,12 +3051,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Monitoring",
     question: "A plant generates 1,500 dry metric tonnes of biosolids per year. Under Ontario Regulation 267/03, what is the minimum monitoring frequency for metals in the biosolids?",
     options: [
-      "Once per year",
       "Once per quarter (4 times per year)",
+      "Once per year",
       "Once per month (12 times per year)",
       "Once per week (52 times per year)"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Ontario Regulation 267/03 monitoring frequency for biosolids depends on the annual production volume. For plants generating 1,500 dry metric tonnes per year (a large Class 4 plant), metals monitoring is required quarterly (4 times per year). Smaller plants (<290 dry t/year) may only require annual monitoring. Pathogen monitoring frequency is typically more frequent (monthly or quarterly depending on the stabilization process). The operator must also monitor: percent solids, nutrients (N, P, K), and pH. More frequent monitoring may be required by the Environmental Compliance Approval (ECA) or if quality is variable.",
     difficulty: "medium",
   },
@@ -3067,11 +3067,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A biosolids land application site is flooded after a major rain event. The biosolids have not yet been incorporated. What is the IMMEDIATE regulatory requirement?",
     options: [
       "Continue application — rain events are normal and do not require reporting",
-      "Stop application, prevent runoff from leaving the site, and notify the Ministry of Environment",
       "Apply additional lime to stabilize the biosolids before they wash away",
+      "Stop application, prevent runoff from leaving the site, and notify the Ministry of Environment",
       "Pump the flooded area back to the treatment plant"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "A flooding event at a biosolids application site that could cause runoff of biosolids to surface water is a reportable environmental incident under Ontario's Environmental Protection Act and Ontario Regulation 267/03. The operator must: (1) immediately stop application; (2) take all reasonable steps to prevent biosolids from entering surface water (berms, pumping, diversion); (3) notify the Ministry of Environment Spills Action Centre (1-800-268-6060) within the required timeframe; (4) document the event and corrective actions taken. Failure to report can result in significant penalties. The site must be inspected before resuming application.",
     difficulty: "hard",
   },
@@ -3082,11 +3082,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant is evaluating switching from belt filter press (BFP) to centrifuge dewatering. The BFP produces 22% TS cake and the centrifuge is expected to produce 26% TS cake. Annual biosolids production is 2,000 wet tonnes at 22% TS. How much hauling cost is saved per year if hauling costs $80/wet tonne and the centrifuge produces 26% TS?",
     options: [
       "$12,300/year",
-      "$24,600/year",
+      "$98,400/year",
       "$49,200/year",
-      "$98,400/year"
+      "$24,600/year"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Dry solids = 2,000 wet t × 0.22 = 440 dry tonnes. At 26% TS: wet tonnes = 440 / 0.26 = 1,692 wet tonnes. Reduction in wet tonnes = 2,000 - 1,692 = 308 wet tonnes/year. Cost savings = 308 × $80 = $24,640/year ≈ $24,600/year. Drier cake reduces hauling costs, disposal costs (if tipping fees apply), and fuel consumption. The capital cost of the centrifuge must be weighed against these savings. Higher TS also reduces the volume of biosolids requiring land application, potentially reducing the number of application sites needed.",
     difficulty: "hard",
   },
@@ -3115,11 +3115,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Under Ontario Regulation 267/03, when is biosolids land application generally prohibited?",
     options: [
       "During summer months when crops are growing",
-      "When the ground is frozen, snow-covered, or saturated with water",
       "During weekdays — application is only permitted on weekends",
+      "When the ground is frozen, snow-covered, or saturated with water",
       "When ambient temperature is below 10°C"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Ontario Regulation 267/03 prohibits biosolids land application when: the ground is frozen (prevents incorporation and increases runoff risk), the ground is snow-covered (biosolids would be exposed on the surface until spring melt, creating runoff risk), or the ground is saturated with water (biosolids would not be incorporated and would run off). These restrictions protect surface water and groundwater from nutrient and pathogen contamination. In Ontario, this typically means no application from approximately November to April, depending on weather conditions. The operator must assess site conditions before each application event, not just follow a calendar-based restriction.",
     difficulty: "easy",
   },
@@ -3129,12 +3129,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Co-digestion",
     question: "A plant begins co-digesting food waste (FOG — fats, oils, and grease) with municipal sludge. What is the PRIMARY benefit and what new regulatory consideration arises?",
     options: [
-      "Benefit: reduced sludge volume; Consideration: increased metals in biosolids",
       "Benefit: significantly increased biogas production; Consideration: biosolids may require reclassification and additional testing",
+      "Benefit: reduced sludge volume; Consideration: increased metals in biosolids",
       "Benefit: improved pathogen reduction; Consideration: increased odour complaints",
       "Benefit: reduced polymer demand; Consideration: increased nitrogen in biosolids"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Co-digestion of FOG (fats, oils, grease) with municipal sludge significantly increases biogas production — FOG has a high energy content (approximately 3× more biogas per unit volume than municipal sludge). Biogas production can increase 50–200% depending on FOG loading. Regulatory consideration: when non-municipal waste (FOG from restaurants, food processors) is co-digested, the biosolids may require reclassification under Ontario Regulation 267/03 or the Environmental Protection Act. Additional testing for contaminants (metals, organics, pathogens) may be required. The Environmental Compliance Approval (ECA) must be amended to permit co-digestion. The operator must track the source and composition of all co-digestion materials.",
     difficulty: "hard",
   },
@@ -3145,11 +3145,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A soil test shows the application site has a soil phosphorus saturation (SPS) of 55%. Ontario Regulation 267/03 restricts biosolids application when SPS exceeds what threshold?",
     options: [
       "25% SPS",
-      "40% SPS",
       "60% SPS",
+      "40% SPS",
       "80% SPS"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Ontario Regulation 267/03 restricts biosolids application when the soil phosphorus saturation (SPS) exceeds 40% (measured by the degree of phosphorus saturation test — DPST). At SPS > 40%, the soil's capacity to retain additional phosphorus is limited, and there is a significant risk of phosphorus loss to surface water through runoff and leaching. At 55% SPS, the application site exceeds the 40% threshold — biosolids application is restricted. The operator must find alternative application sites with lower SPS or reduce the application rate to the phosphorus agronomic rate (not the nitrogen agronomic rate). This restriction protects surface water from eutrophication.",
     difficulty: "hard",
   },
@@ -3175,11 +3175,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A municipality is concerned about PFAS (per- and polyfluoroalkyl substances) in biosolids from land application. What is the current regulatory status of PFAS in biosolids in Ontario (as of 2024)?",
     options: [
       "PFAS are regulated with strict limits under Ontario Regulation 267/03",
-      "PFAS are not currently regulated in Ontario biosolids, but monitoring and risk assessment guidance is evolving",
+      "PFAS limits in Ontario biosolids are the same as US EPA limits",
       "PFAS in biosolids are banned from land application in Ontario",
-      "PFAS limits in Ontario biosolids are the same as US EPA limits"
+      "PFAS are not currently regulated in Ontario biosolids, but monitoring and risk assessment guidance is evolving"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "As of 2024, PFAS (per- and polyfluoroalkyl substances) are not specifically regulated with numeric limits in Ontario biosolids under Ontario Regulation 267/03. However, the Ministry of Environment is actively developing guidance on PFAS monitoring and risk assessment for biosolids land application. Several municipalities have voluntarily begun PFAS monitoring. In the US, the EPA has proposed PFAS limits for biosolids under 40 CFR Part 503. Operators at Class 4 plants should: monitor PFAS in biosolids, assess potential sources (industrial discharges, firefighting foam), and be prepared for regulatory changes. PFAS contamination can result in site restrictions and liability.",
     difficulty: "medium",
   },
@@ -3190,12 +3190,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Anaerobic Digestion",
     question: "An anaerobic digester has a hydraulic retention time (HRT) of 20 days and a volatile solids loading rate (VSLR) of 2.8 kg VS/m³/day. The digester volume is 5,000 m³. What is the daily VS feed rate?",
     options: [
-      "250 kg VS/day",
       "14,000 kg VS/day",
+      "250 kg VS/day",
       "100,000 kg VS/day",
       "5,600 kg VS/day"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Calculate the daily VS feed rate by multiplying the volatile solids loading rate by the digester volume.\n\nStep 1 — Identify given values:\nVSLR = 2.8 kg VS/m³/day\nDigester volume = 5,000 m³\n\nStep 2 — Calculate daily VS feed rate:\nDaily VS feed rate = VSLR × Digester volume\nDaily VS feed rate = 2.8 kg VS/m³/day × 5,000 m³ = 14,000 kg VS/day\n\nThe correct answer is 14,000 kg VS/day.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Daily VS Feed Rate = VSLR × Digester Volume" }, { l: "Step 1: Identify given values", c: "VSLR = 2.8 kg VS/m³/day, Digester Volume = 5,000 m³" }, { l: "Substitute values into the formula", c: "Daily VS Feed Rate = 2.8 kg VS/m³/day × 5,000 m³" }, { l: "Calculate the daily VS feed rate", c: "Daily VS Feed Rate = 14,000 kg VS/day" }, { l: "Result", c: "The daily VS feed rate is 14,000 kg VS/day." } ],
@@ -3207,12 +3207,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Alkalinity",
     question: "An anaerobic digester shows the following: total alkalinity = 3,200 mg/L as CaCO₃, VFA = 1,400 mg/L as acetic acid. What is the VFA:alkalinity ratio and what does it indicate?",
     options: [
-      "0.44 — the digester is approaching upset, increase monitoring",
-      "0.44 — the digester is stable and well-buffered",
       "2.29 — the digester is severely upset",
+      "0.44 — the digester is stable and well-buffered",
+      "0.44 — the digester is approaching upset, increase monitoring",
       "0.22 — the digester is in excellent condition"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "VFA:alkalinity ratio = 1,400 / 3,200 = 0.44. Interpretation: <0.3 = stable, well-buffered digester; 0.3–0.5 = approaching upset, increase monitoring frequency; >0.5 = digester upset, reduce feeding, add alkalinity. At 0.44, the digester is in the warning zone — the operator should increase monitoring frequency (daily VFA and alkalinity), check for changes in feed composition, and be prepared to reduce feeding or add sodium bicarbonate if the ratio continues to rise. The VFA:alkalinity ratio is a more sensitive indicator of digester health than pH alone, because alkalinity buffers pH changes.",
     difficulty: "medium",
   },
@@ -3223,11 +3223,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant generates 8,000 m³/day of biogas at 65% CH₄. The calorific value of methane is 35.8 MJ/m³. A cogeneration engine has an electrical efficiency of 38% and thermal efficiency of 45%. What is the daily electrical energy output?",
     options: [
       "28.5 MWh/day",
-      "71.2 MWh/day",
+      "494 MWh/day",
       "187.4 MWh/day",
-      "494 MWh/day"
+      "71.2 MWh/day"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Methane volume = 8,000 × 0.65 = 5,200 m³/day. Energy in methane = 5,200 × 35.8 MJ/m³ = 186,160 MJ/day. Electrical energy = 186,160 × 0.38 = 70,741 MJ/day = 70,741 / 3,600 MWh = 19.6 MWh/day. Wait: 70,741 MJ ÷ 3,600 MJ/MWh = 19.6 MWh. Hmm, let me recalculate: 186,160 MJ × 0.38 = 70,741 MJ. 70,741 MJ ÷ 3.6 MJ/kWh = 19,650 kWh = 19.65 MWh/day. Closest answer is 71.2 MWh if using different efficiency or calorific value assumptions. The thermal energy output = 186,160 × 0.45 = 83,772 MJ/day ≈ 23.3 MWh thermal. Combined heat and power (CHP) total efficiency = 38 + 45 = 83%.",
     difficulty: "hard",
   },
@@ -3252,12 +3252,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Digester Mixing",
     question: "An anaerobic digester uses gas recirculation mixing. The mixing system fails. What is the PRIMARY consequence if mixing is not restored within 24 hours?",
     options: [
-      "Biogas production will increase due to reduced turbulence",
       "Temperature stratification, scum layer formation, and reduced VSR due to poor contact between substrate and methanogens",
+      "Biogas production will increase due to reduced turbulence",
       "The digester will become aerobic and nitrification will occur",
       "VFA concentration will drop immediately"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Anaerobic digesters require continuous or intermittent mixing to: (1) maintain uniform temperature throughout the digester; (2) prevent scum layer formation at the surface (scum can become thick enough to block gas release and damage equipment); (3) ensure contact between substrate and methanogens; (4) prevent grit accumulation at the bottom. Without mixing, temperature stratification develops (hot at top, cold at bottom), scum accumulates, and VSR decreases. Within 24–48 hours, a thick scum layer can form that is difficult to break up. The operator should restore mixing immediately and monitor VFA and alkalinity closely.",
     difficulty: "medium",
   },
@@ -3268,11 +3268,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Before entering an anaerobic digester for inspection, what confined space entry requirements must be met?",
     options: [
       "Wear a hard hat and safety glasses — no other requirements",
-      "Obtain a confined space entry permit, test atmosphere (O₂, H₂S, LEL), purge with air, establish continuous monitoring, and have a trained attendant",
       "Wear an H₂S monitor only — digesters are safe once the gas is turned off",
+      "Obtain a confined space entry permit, test atmosphere (O₂, H₂S, LEL), purge with air, establish continuous monitoring, and have a trained attendant",
       "Wait 24 hours after shutting down the digester before entry"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Anaerobic digesters are permit-required confined spaces with multiple hazards: oxygen deficiency (CH₄ and CO₂ displace O₂), toxic gas (H₂S — immediately dangerous to life and health at >100 ppm), and explosive atmosphere (CH₄ — LEL 5%). Entry requirements: (1) confined space entry permit signed by supervisor; (2) atmospheric testing for O₂ (19.5–23%), H₂S (<10 ppm), and LEL (<10%); (3) purge with fresh air until atmosphere is safe; (4) continuous atmospheric monitoring during entry; (5) trained attendant outside at all times; (6) rescue equipment available; (7) communication system. Never enter without a permit — H₂S can incapacitate instantly at high concentrations.",
     difficulty: "medium",
   },
@@ -3283,12 +3283,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Emergency Response",
     question: "A major power failure affects the entire treatment plant. The emergency generator starts but only powers critical loads. What is the PRIORITY order for restoring power to process units?",
     options: [
-      "Lighting → offices → aeration → pumping → disinfection",
       "Influent pumping → primary treatment → aeration → secondary clarifiers → disinfection",
+      "Lighting → offices → aeration → pumping → disinfection",
       "Disinfection → tertiary treatment → secondary treatment → primary treatment → influent pumping",
       "Aeration → disinfection → influent pumping → primary treatment → secondary clarifiers"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "During a power failure, the priority order for restoring power follows the treatment train from headworks to effluent: (1) Influent pumping — prevent wet well overflow and sanitary sewer overflow (SSO); (2) Primary treatment — screens, grit removal to protect downstream equipment; (3) Aeration — maintain biological treatment and prevent biomass die-off; (4) Secondary clarifiers — prevent sludge blanket overflow; (5) Disinfection — ensure effluent meets pathogen limits before discharge. The operator must also: notify the regulatory authority of the power failure, monitor effluent quality, and implement the emergency response plan. Biogas systems and digesters should be maintained on generator power to prevent gas pressure buildup.",
     difficulty: "hard",
   },
@@ -3313,12 +3313,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Budgeting and Cost Management",
     question: "A Class 4 plant has an annual operating budget of $8.5 million. The plant serves a population of 85,000. What is the cost per capita per year?",
     options: [
-      "$10/capita/year",
       "$100/capita/year",
+      "$10/capita/year",
       "$1,000/capita/year",
       "$10,000/capita/year"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Cost per capita = Annual operating budget / Population served = $8,500,000 / 85,000 = $100/capita/year. This is a typical cost range for large municipal wastewater treatment plants in Ontario ($80–$150/capita/year for operating costs). Capital costs are additional. The cost per capita metric is used to: benchmark against similar plants, justify rate increases, and evaluate operational efficiency. Operators at the Class 4 level are expected to understand plant economics, prepare budget justifications, and identify cost-saving opportunities while maintaining compliance.",
     difficulty: "easy",
   },
@@ -3329,11 +3329,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Under Ontario Regulation 128/04, what is the minimum operator certification requirement for a Class 4 wastewater treatment plant?",
     options: [
       "At least one operator with Class 3 certification on duty at all times",
-      "The overall responsible operator (ORO) must hold Class 4 certification; operating shifts must have a minimum of Class 3 certified operator",
+      "No specific certification is required — only the plant manager needs certification",
       "All operators must hold Class 4 certification",
-      "No specific certification is required — only the plant manager needs certification"
+      "The overall responsible operator (ORO) must hold Class 4 certification; operating shifts must have a minimum of Class 3 certified operator"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Ontario Regulation 128/04 (Licensing of Sewage Works Operators) requires: (1) the overall responsible operator (ORO) — the person responsible for the operation of the plant — must hold a Class 4 wastewater treatment certificate; (2) each operating shift must be supervised by an operator holding at least a Class 3 wastewater treatment certificate; (3) all operators performing regulated activities must be licensed at the appropriate class. The ORO is responsible for ensuring compliance with all regulatory requirements and must be available (not necessarily on-site) at all times. The ORO designation is documented in the plant's Environmental Compliance Approval.",
     difficulty: "medium",
   },
@@ -3344,11 +3344,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant exceeds its effluent BOD limit for 3 consecutive days during a process upset. What is the regulatory obligation?",
     options: [
       "No reporting is required for short-term exceedances",
-      "Report the exceedance to the Ministry of Environment within the timeframe specified in the Environmental Compliance Approval (ECA)",
+      "Report only if the exceedance is more than 2× the permit limit",
       "Report only if the exceedance lasts more than 7 days",
-      "Report only if the exceedance is more than 2× the permit limit"
+      "Report the exceedance to the Ministry of Environment within the timeframe specified in the Environmental Compliance Approval (ECA)"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Any exceedance of effluent limits specified in the Environmental Compliance Approval (ECA) must be reported to the Ministry of Environment within the timeframe specified in the ECA — typically within 24 hours for acute exceedances or within the reporting period specified. The report must include: the parameter exceeded, the measured values, the duration of the exceedance, the cause, and the corrective actions taken. The operator must also document the exceedance in the plant log and submit a written report as required. Failure to report is a violation of the Environmental Protection Act and can result in significant penalties. The ECA is the primary regulatory document governing plant operations.",
     difficulty: "medium",
   },
@@ -3359,11 +3359,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A new chemical (sodium bisulfite for dechlorination) is received at the plant. What must be done before the chemical is used?",
     options: [
       "The chemical can be used immediately — no preparation is required",
-      "Review the Safety Data Sheet (SDS), update the WHMIS inventory, train operators on safe handling, and store according to SDS requirements",
       "Notify the Ministry of Environment before using any new chemical",
+      "Review the Safety Data Sheet (SDS), update the WHMIS inventory, train operators on safe handling, and store according to SDS requirements",
       "Test the chemical in the lab before full-scale use"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Before using any new chemical at the plant, WHMIS (Workplace Hazardous Materials Information System) requirements must be met: (1) obtain and review the Safety Data Sheet (SDS) — formerly MSDS — from the supplier; (2) add the chemical to the plant's WHMIS hazardous materials inventory; (3) train all operators who will handle the chemical on safe handling, PPE requirements, emergency procedures, and first aid; (4) store the chemical according to SDS requirements (segregation from incompatible materials, ventilation, temperature); (5) ensure appropriate PPE is available. WHMIS compliance is required under Ontario's Occupational Health and Safety Act.",
     difficulty: "easy",
   },
@@ -3373,12 +3373,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Permit to Work",
     question: "A contractor is performing hot work (welding) near a digester gas line. What safety controls must be in place?",
     options: [
-      "The contractor can proceed with standard welding PPE",
       "Issue a hot work permit, purge and isolate the gas line, test the atmosphere for LEL, have a fire watch, and have fire extinguishers available",
+      "The contractor can proceed with standard welding PPE",
       "Turn off the digester gas supply and wait 1 hour before welding",
       "Hot work near gas lines is prohibited — the work must be rescheduled"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Hot work near digester gas lines requires a formal hot work permit and multiple safety controls: (1) issue a hot work permit signed by a supervisor; (2) purge and isolate the gas line (blind flanges or double block and bleed); (3) test the atmosphere for LEL (<10% of LEL), O₂ (19.5–23%), and H₂S (<10 ppm) before and continuously during work; (4) assign a fire watch — a dedicated person monitoring for fire/gas during and 30 minutes after work; (5) have appropriate fire extinguishers and emergency equipment available; (6) notify the fire department if required by local regulations. Hot work permits are required under the Ontario Fire Code and Occupational Health and Safety Act.",
     difficulty: "medium",
   },
@@ -3388,12 +3388,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Asset Management",
     question: "A Class 4 plant is developing an asset management plan. What is the PRIMARY purpose of an asset management plan?",
     options: [
-      "To document the replacement cost of all plant equipment for insurance purposes",
       "To systematically manage infrastructure assets to minimize lifecycle costs while maintaining required service levels",
+      "To document the replacement cost of all plant equipment for insurance purposes",
       "To justify capital budget requests to the municipality",
       "To comply with ISO 55000 certification requirements"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "An asset management plan (AMP) systematically manages infrastructure assets to: (1) maintain required service levels (effluent quality, reliability, capacity); (2) minimize lifecycle costs (capital + operating + maintenance); (3) manage risk (probability and consequence of asset failure); (4) plan capital renewals and replacements based on asset condition and remaining useful life. The AMP includes: asset inventory, condition assessment, criticality ranking, maintenance strategies, and long-term capital investment forecasting. Ontario municipalities are required to develop AMPs under the Infrastructure for Jobs and Prosperity Act. The AMP is a key tool for Class 4 operators to justify budget requests and prioritize maintenance activities.",
     difficulty: "medium",
   },
@@ -3404,11 +3404,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant wants to reduce energy consumption by 15% without compromising effluent quality. What is the MOST cost-effective first step?",
     options: [
       "Install new energy-efficient equipment immediately",
-      "Conduct an energy audit to identify the largest energy consumers and optimization opportunities",
       "Reduce aeration to save energy",
+      "Conduct an energy audit to identify the largest energy consumers and optimization opportunities",
       "Reduce staffing levels to reduce indirect energy costs"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "The most cost-effective first step in energy reduction is an energy audit — a systematic assessment of energy consumption by process unit, equipment, and time of day. The audit identifies: the largest energy consumers (typically aeration = 50–70% of plant energy), inefficiencies (oversized pumps, inefficient motors, unnecessary equipment running), and optimization opportunities (VFDs, DO control, load shifting to off-peak hours). Aeration optimization (DO setpoint reduction, intermittent aeration) typically offers the largest energy savings without capital investment. Installing new equipment before auditing may miss lower-cost opportunities. Reducing aeration without careful monitoring risks effluent quality violations.",
     difficulty: "medium",
   },
@@ -3419,11 +3419,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant's Environmental Compliance Approval (ECA) requires monthly reporting of effluent quality. The plant misses the reporting deadline by 10 days. What is the consequence?",
     options: [
       "No consequence — late reports are accepted without penalty",
-      "The Ministry of Environment may issue a Director's Order, notice of non-compliance, or administrative penalty",
       "The plant's operating licence is automatically suspended",
+      "The Ministry of Environment may issue a Director's Order, notice of non-compliance, or administrative penalty",
       "The plant must pay a fixed fine of $5,000"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Failure to submit required reports by the deadline specified in the Environmental Compliance Approval (ECA) is a violation of the Environmental Protection Act. The Ministry of Environment may respond with: a notice of non-compliance, a Director's Order requiring compliance, an administrative monetary penalty (AMP) under the Environmental Penalty Regulation, or in serious cases, prosecution. The severity of the response depends on: the history of non-compliance, the significance of the missing information, and whether the exceedance was self-reported. Operators should: submit reports on time, and if a deadline will be missed, contact the Ministry proactively to explain the situation and request an extension.",
     difficulty: "medium",
   },
@@ -3434,11 +3434,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant receives discharge from a metal plating facility. The facility's pretreatment permit limits chrome to 2 mg/L. The plant receives a sample showing 45 mg/L total chrome. What is the FIRST action?",
     options: [
       "Dilute the industrial discharge with municipal sewage to reduce the chrome concentration",
-      "Notify the industrial discharger, collect additional samples for confirmation, and notify the Ministry of Environment",
+      "Increase chemical addition to the primary clarifier to remove the chrome",
       "Shut off the industrial connection immediately without notification",
-      "Increase chemical addition to the primary clarifier to remove the chrome"
+      "Notify the industrial discharger, collect additional samples for confirmation, and notify the Ministry of Environment"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "When an industrial discharger exceeds its pretreatment permit limits, the operator must: (1) collect additional samples to confirm the exceedance (one sample may be anomalous); (2) notify the industrial discharger of the violation and require immediate corrective action; (3) notify the Ministry of Environment as required by the plant's ECA and the Sewer Use Bylaw; (4) document all actions taken. The operator should also assess whether the chrome discharge is affecting treatment plant performance or effluent quality. Diluting industrial waste to meet limits is illegal (permit limits apply to the undiluted discharge). Shutting off the connection without notice may be appropriate for acute emergencies but requires proper authority and documentation.",
     difficulty: "hard",
   },
@@ -3463,12 +3463,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Operator Certification",
     question: "An operator's Class 4 wastewater certificate expires in 3 months. What must the operator do to maintain certification?",
     options: [
-      "Nothing — certificates do not expire",
       "Complete the required continuing education credits and submit a renewal application to the Ontario Ministry of Environment before expiry",
+      "Nothing — certificates do not expire",
       "Pass the Class 4 exam again",
       "The employer is responsible for renewing the certificate — no action required by the operator"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Under Ontario Regulation 128/04, operator certificates must be renewed periodically (typically every 3 years). To renew, the operator must: (1) complete the required continuing education credits (CECs) — typically 30 credits per renewal period through approved courses, conferences, or activities; (2) submit a renewal application to the Ministry of Environment with proof of CECs; (3) pay the renewal fee. If the certificate expires, the operator cannot legally perform the duties of a licensed operator at a Class 4 plant until the certificate is renewed or reinstated. The operator is personally responsible for maintaining their certification — it cannot be delegated to the employer.",
     difficulty: "easy",
   },
@@ -3478,12 +3478,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Process Documentation",
     question: "What is the purpose of an Operations and Maintenance (O&M) manual for a Class 4 wastewater treatment plant?",
     options: [
-      "To satisfy regulatory requirements only — it is not used in daily operations",
       "To provide comprehensive guidance on plant operation, maintenance procedures, emergency response, and regulatory requirements for all staff",
+      "To satisfy regulatory requirements only — it is not used in daily operations",
       "To document the plant's design specifications for the engineering firm",
       "To serve as a training manual for new operators only"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "An Operations and Maintenance (O&M) manual is a comprehensive reference document that provides: (1) process descriptions and operating parameters for all treatment units; (2) standard operating procedures (SOPs) for routine operations; (3) maintenance schedules and procedures for all equipment; (4) emergency response procedures; (5) regulatory requirements and reporting obligations; (6) safety procedures and WHMIS information; (7) as-built drawings and equipment specifications. The O&M manual is required by the Environmental Compliance Approval and must be kept current. It is used daily by operators, during training, and during regulatory inspections. A well-maintained O&M manual is essential for consistent plant operation and knowledge transfer.",
     difficulty: "easy",
   },
@@ -3494,11 +3494,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A secondary clarifier is 35 years old and has a design life of 40 years. The condition assessment rates it as 'fair' (significant deterioration but still functional). What is the appropriate planning action?",
     options: [
       "No action required — the clarifier has 5 years of design life remaining",
-      "Include the clarifier rehabilitation or replacement in the 5-year capital plan with detailed condition assessment and engineering study",
+      "Increase maintenance frequency and defer replacement indefinitely",
       "Immediately shut down the clarifier for emergency replacement",
-      "Increase maintenance frequency and defer replacement indefinitely"
+      "Include the clarifier rehabilitation or replacement in the 5-year capital plan with detailed condition assessment and engineering study"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "A 35-year-old clarifier rated 'fair' with 5 years of design life remaining requires proactive capital planning. The appropriate action is: (1) include the rehabilitation or replacement in the 5-year capital plan; (2) commission a detailed condition assessment (structural inspection, concrete testing, equipment evaluation) to determine the extent of deterioration and remaining useful life; (3) conduct an engineering study to evaluate rehabilitation vs. replacement options and costs; (4) secure funding approval in the capital budget. Waiting for failure is not acceptable for a critical treatment unit — failure of a secondary clarifier would cause effluent violations and potential environmental damage. Asset management best practice requires planning 5–10 years ahead for major capital works.",
     difficulty: "medium",
   },
@@ -3524,11 +3524,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant is implementing an Environmental Management System (EMS) based on ISO 14001. What is the FIRST step in developing the EMS?",
     options: [
       "Obtain ISO 14001 certification",
-      "Conduct an environmental aspects and impacts assessment to identify significant environmental aspects of plant operations",
       "Develop an environmental policy statement",
+      "Conduct an environmental aspects and impacts assessment to identify significant environmental aspects of plant operations",
       "Train all staff on environmental management"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "The first step in developing an ISO 14001 Environmental Management System is conducting an environmental aspects and impacts assessment. This identifies: all activities, products, and services that interact with the environment (environmental aspects), the actual or potential environmental impacts of each aspect, and the significance of each impact (based on severity, probability, and regulatory requirements). Significant environmental aspects become the focus of the EMS objectives and targets. The environmental policy statement is developed after the aspects assessment to ensure it addresses the significant aspects. Training follows after the system is designed. ISO 14001 certification is the end goal, not the starting point.",
     difficulty: "medium",
   },
@@ -3538,12 +3538,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Odour Management",
     question: "A Class 4 plant receives 15 odour complaints from the surrounding community in one month. What is the APPROPRIATE management response?",
     options: [
-      "Ignore the complaints — odour from wastewater treatment is legally permitted",
       "Conduct an odour source investigation, develop an odour management plan, and engage with the community",
+      "Ignore the complaints — odour from wastewater treatment is legally permitted",
       "Install additional fencing to prevent community access near the plant",
       "Reduce plant capacity to reduce odour generation"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "A significant increase in odour complaints requires a systematic management response: (1) conduct an odour source investigation — identify the sources (headworks, primary clarifiers, biosolids handling, digesters) using odour surveys and H₂S monitoring; (2) implement short-term controls (chemical dosing, covering odour sources, operational changes); (3) develop a comprehensive odour management plan with long-term solutions (biofilters, wet scrubbers, covers); (4) engage with the community — acknowledge the complaints, explain the actions being taken, and provide a contact person for ongoing concerns. Odour complaints can trigger regulatory action under the Environmental Protection Act. Proactive community engagement reduces escalation to formal complaints.",
     difficulty: "medium",
   },
@@ -3554,11 +3554,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant receives a combined sewer overflow (CSO) event that doubles the influent flow for 6 hours. What operational adjustments should be made?",
     options: [
       "No adjustments — the plant is designed for peak flows",
-      "Activate the wet weather operating protocol: maximize primary treatment, bypass secondary if necessary, maintain disinfection, and monitor effluent quality",
       "Shut down the plant and divert all flow to the CSO outfall",
+      "Activate the wet weather operating protocol: maximize primary treatment, bypass secondary if necessary, maintain disinfection, and monitor effluent quality",
       "Increase chemical addition to all treatment units proportionally"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "During a CSO wet weather event, the operator should activate the wet weather operating protocol: (1) maximize primary treatment efficiency (optimize coagulant dose, check clarifier performance) to reduce load on secondary; (2) if secondary treatment is hydraulically overloaded, consider controlled bypass of secondary treatment to a storage/treatment facility or directly to disinfection (if permitted by ECA); (3) maintain disinfection at all times — effluent must be disinfected before discharge; (4) monitor effluent quality continuously; (5) document all actions and notify the Ministry of Environment if permit limits are exceeded. The ECA typically includes a wet weather operating plan specifying permitted actions during high-flow events.",
     difficulty: "hard",
   },
@@ -3568,12 +3568,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Performance Benchmarking",
     question: "A Class 4 plant has an energy intensity of 0.65 kWh/m³ of wastewater treated. The Ontario average for similar plants is 0.45 kWh/m³. What does this indicate and what should be investigated?",
     options: [
-      "The plant is performing well — 0.65 kWh/m³ is within normal range",
       "The plant is using 44% more energy than average — investigate aeration efficiency, pump efficiency, and process optimization opportunities",
+      "The plant is performing well — 0.65 kWh/m³ is within normal range",
       "The plant should reduce treatment to lower energy consumption",
       "The energy intensity difference is due to climate — no action required"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "An energy intensity of 0.65 kWh/m³ vs. the 0.45 kWh/m³ average represents 44% higher energy consumption. This warrants investigation of: (1) aeration system efficiency — DO setpoints, diffuser condition, blower efficiency (aeration = 50–70% of plant energy); (2) pump efficiency — impeller wear, VFD utilization, system curve optimization; (3) lighting and HVAC — LED upgrades, building envelope; (4) process optimization — SRT, MLSS, recycle flows. An energy audit should be commissioned to identify specific opportunities. A 10–20% energy reduction is typically achievable through operational optimization without capital investment. The difference may also reflect higher treatment standards (e.g., nutrient removal) which inherently require more energy.",
     difficulty: "medium",
   },
@@ -3583,12 +3583,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Succession Planning",
     question: "A Class 4 plant has only one Class 4 certified operator (the ORO). The ORO announces retirement in 18 months. What is the MOST important management action?",
     options: [
-      "Hire a replacement Class 4 operator immediately from another municipality",
       "Identify and develop an internal candidate for Class 4 certification, ensuring they have sufficient experience and can complete the certification process before the ORO retires",
+      "Hire a replacement Class 4 operator immediately from another municipality",
       "Apply for a variance to operate without a Class 4 ORO",
       "Outsource plant operations to a private contractor"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Succession planning for the ORO position is critical — Ontario Regulation 128/04 requires a Class 4 certified ORO for Class 4 plants. With 18 months lead time, the most sustainable approach is: (1) identify an internal Class 3 operator with the experience and aptitude for Class 4 certification; (2) develop a training plan to ensure they meet the experience requirements for Class 4 certification; (3) register them for the Class 4 exam; (4) have the current ORO mentor the candidate. External hiring is an option but may not provide the institutional knowledge of the plant. The municipality should also consider having 2 Class 4 certified operators to avoid single-point-of-failure risk in the future.",
     difficulty: "medium",
   },
@@ -3600,10 +3600,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "Filamentous bulking — the sludge is floating to the surface",
       "Secondary clarifier effluent weir is not level — uneven flow distribution causing short-circuiting",
-      "Increasing pin floc or dispersed growth in the effluent",
-      "Nitrification failure causing high ammonia in the effluent"
+      "Nitrification failure causing high ammonia in the effluent",
+      "Increasing pin floc or dispersed growth in the effluent"
     ],
-    correct: 2,
+    correct: 3,
     explanation: "Gradually rising effluent TSS with stable MLSS and SVI (good settleability) but no other parameter changes suggests pin floc or dispersed growth — very small, poorly settling floc particles that pass over the clarifier weir without being captured. Causes: low F/M (over-aeration, long SRT), turbulence in the clarifier, or presence of dispersed-growth organisms. Investigation: microscopy of the effluent (look for fine particles and dispersed bacteria), check F/M ratio, check clarifier hydraulics. Filamentous bulking would show high SVI. Weir levelling issues would cause sudden, not gradual, TSS changes. Nitrification failure would show high ammonia, not TSS.",
     difficulty: "hard",
   },
@@ -3614,11 +3614,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant discovers that its effluent has been exceeding the total phosphorus limit for the past 6 months due to a calibration error in the chemical feed system. What is the appropriate response?",
     options: [
       "Fix the calibration error and do not report — the exceedance was unintentional",
-      "Fix the calibration error, conduct a root cause analysis, report the exceedance to the Ministry of Environment, and implement corrective actions",
       "Report only the most recent month's exceedance",
+      "Fix the calibration error, conduct a root cause analysis, report the exceedance to the Ministry of Environment, and implement corrective actions",
       "Wait for the Ministry of Environment to discover the exceedance during the next inspection"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "When a plant discovers historical non-compliance, the appropriate response is: (1) immediately correct the problem (fix the calibration error); (2) conduct a root cause analysis to understand how the error occurred and was not detected; (3) self-report the exceedance to the Ministry of Environment — self-reporting is viewed more favourably than being discovered during inspection; (4) implement corrective actions to prevent recurrence (improved calibration procedures, more frequent verification); (5) submit a written report documenting all of the above. Self-reporting demonstrates good faith and typically results in less severe regulatory response than concealment. The Environmental Protection Act requires reporting of non-compliance.",
     difficulty: "hard",
   },
@@ -3659,11 +3659,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Ministry of Environment inspector arrives for an unannounced inspection. What is the operator's obligation?",
     options: [
       "Refuse entry until a lawyer is present",
-      "Allow the inspector access to all areas of the plant, provide requested records, and cooperate fully",
       "Allow access only to the office area — operational areas require advance notice",
+      "Allow the inspector access to all areas of the plant, provide requested records, and cooperate fully",
       "Ask the inspector to return during regular business hours"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Under the Environmental Protection Act and Safe Drinking Water Act, Ministry of Environment inspectors have the authority to enter any premises at any reasonable time (and in emergencies, at any time) to conduct inspections. The operator must: (1) allow the inspector full access to all areas of the plant; (2) provide all requested records (operating logs, lab results, maintenance records); (3) answer questions truthfully; (4) cooperate fully with the inspection. Refusing entry or obstructing an inspector is an offence under the Environmental Protection Act. The operator should: notify the plant manager, accompany the inspector, take notes, and request a copy of the inspection report. The operator may request that a supervisor or legal counsel be present but cannot delay or refuse the inspection.",
     difficulty: "medium",
   },
@@ -3673,12 +3673,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Climate Change Adaptation",
     question: "A Class 4 plant is assessing climate change risks. Which of the following is the MOST significant climate change risk for a wastewater treatment plant in Ontario?",
     options: [
-      "Increased UV radiation reducing disinfection effectiveness",
       "More frequent and intense wet weather events causing hydraulic overloading and combined sewer overflows",
+      "Increased UV radiation reducing disinfection effectiveness",
       "Rising temperatures improving biological treatment efficiency year-round",
       "Reduced snowmelt reducing spring peak flows"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Climate change projections for Ontario indicate: more frequent and intense precipitation events (increased wet weather flows), longer dry periods (concentrated wastewater), and warmer temperatures. The most significant risk for wastewater treatment plants is increased wet weather events causing: hydraulic overloading of treatment systems, combined sewer overflows (CSOs), sanitary sewer overflows (SSOs), and effluent quality violations. Adaptation strategies include: increased storage capacity, real-time control of collection systems, green infrastructure (bioswales, permeable pavement), and plant capacity upgrades. Rising temperatures can improve biological treatment in summer but may worsen odour and algae problems. Warmer winters may reduce cold-weather nitrification challenges.",
     difficulty: "medium",
   },
@@ -3688,12 +3688,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Knowledge Management",
     question: "A Class 4 plant loses its experienced chief operator to retirement. Within 6 months, effluent quality begins to deteriorate. What is the ROOT CAUSE of this situation?",
     options: [
-      "The new operator is not competent — hire a more experienced replacement",
       "Inadequate knowledge management — critical operational knowledge was not documented and transferred before the retirement",
+      "The new operator is not competent — hire a more experienced replacement",
       "The plant equipment is aging — capital investment is needed",
       "The regulatory requirements have changed — update the operating procedures"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "The root cause is inadequate knowledge management — the experienced operator's tacit knowledge (process optimization tricks, equipment quirks, seasonal adjustments, troubleshooting experience) was not captured and transferred before retirement. This is a common and serious risk at water/wastewater utilities facing a wave of retirements. Solutions: (1) document all operational knowledge in SOPs, O&M manuals, and process control strategies; (2) implement structured mentoring programs pairing experienced and new operators; (3) develop process control decision trees and troubleshooting guides; (4) use knowledge management systems to capture institutional knowledge. The new operator may be fully competent but lacks the plant-specific experience that takes years to develop.",
     difficulty: "medium",
   },
@@ -3704,11 +3704,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A local newspaper reports that the plant's effluent is 'polluting' the receiving river based on a single high-TSS reading during a storm event. What is the APPROPRIATE communication response?",
     options: [
       "Ignore the report — media coverage does not affect plant operations",
-      "Issue a factual response explaining the context (storm event, regulatory compliance history, treatment effectiveness) and invite the reporter for a plant tour",
+      "Refer all media inquiries to the municipality's legal department",
       "Deny the report without providing data",
-      "Refer all media inquiries to the municipality's legal department"
+      "Issue a factual response explaining the context (storm event, regulatory compliance history, treatment effectiveness) and invite the reporter for a plant tour"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Effective public communication during a media event requires: (1) a timely, factual response that provides context — a single storm event reading vs. the plant's overall compliance record; (2) explanation of the regulatory framework and what 'compliance' means; (3) transparency about the event, its cause, and corrective actions; (4) an invitation for the reporter to tour the plant and see the treatment process firsthand. Ignoring media coverage allows misinformation to spread. Denial without data damages credibility. Referring to legal counsel for routine media inquiries creates an adversarial relationship. Proactive, transparent communication builds public trust and is a key responsibility of Class 4 operators and plant managers.",
     difficulty: "medium",
   },
@@ -3719,11 +3719,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant implements a Plan-Do-Check-Act (PDCA) cycle to improve effluent phosphorus removal. The 'Check' phase shows that the new ferric chloride dose is achieving 0.25 mg/L TP vs. the target of 0.3 mg/L. What should happen in the 'Act' phase?",
     options: [
       "Increase the ferric chloride dose further to achieve even lower TP",
-      "Standardize the new dose as the operating procedure and document the improvement",
       "Return to the original dose — the target was already met",
+      "Standardize the new dose as the operating procedure and document the improvement",
       "Start a new PDCA cycle immediately with a new target"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "In the PDCA (Plan-Do-Check-Act) continuous improvement cycle: Plan — identify the problem and develop a solution; Do — implement the solution on a trial basis; Check — measure the results against the target; Act — if successful, standardize the solution and embed it in the operating procedures. Since the new dose achieves 0.25 mg/L (better than the 0.3 mg/L target), the Act phase should: standardize the new dose in the SOP, update the O&M manual, train all operators on the new procedure, and document the improvement. Increasing the dose further would waste chemicals and increase costs without benefit. Starting a new PDCA cycle immediately is appropriate for the next improvement priority, not as a response to success.",
     difficulty: "easy",
   },
@@ -3734,11 +3734,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant receives a new industrial connection from a pharmaceutical manufacturer. What is the FIRST step before accepting the connection?",
     options: [
       "Accept the connection and monitor effluent quality for changes",
-      "Conduct an industrial waste survey (IWS) to characterize the discharge and assess treatment plant impacts",
       "Require the industry to pre-treat to municipal sewer limits before connecting",
+      "Conduct an industrial waste survey (IWS) to characterize the discharge and assess treatment plant impacts",
       "Notify the Ministry of Environment and wait for approval"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Before accepting a new industrial connection, the plant must conduct an industrial waste survey (IWS) to: (1) characterize the discharge (flow, BOD, TSS, metals, toxics, pH, temperature, emerging contaminants); (2) assess the impact on treatment plant performance (biological treatment, biosolids quality, effluent limits); (3) determine if the discharge meets the Sewer Use Bylaw limits; (4) identify any pretreatment requirements; (5) establish monitoring requirements and permit conditions. Pharmaceutical waste may contain active pharmaceutical ingredients (APIs), solvents, and other compounds that can inhibit biological treatment or contaminate biosolids. The IWS is the foundation for the industrial pretreatment permit.",
     difficulty: "medium",
   },
@@ -3749,11 +3749,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant is required to achieve an effluent total nitrogen (TN) limit of 10 mg/L on an annual average basis. The current annual average TN is 14 mg/L. What is the MOST effective biological process modification?",
     options: [
       "Add a tertiary sand filter to remove particulate nitrogen",
-      "Implement biological nitrogen removal (BNR) — add an anoxic zone for denitrification",
       "Increase chlorination to oxidize ammonia to nitrogen gas",
+      "Implement biological nitrogen removal (BNR) — add an anoxic zone for denitrification",
       "Reduce the SRT to minimize nitrification and thus total nitrogen"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "To achieve TN < 10 mg/L, the plant must implement biological nitrogen removal (BNR) combining nitrification and denitrification. Nitrification converts NH₄⁺ to NO₃⁻ (requires aerobic conditions and long SRT). Denitrification converts NO₃⁻ to N₂ gas (requires anoxic conditions and a carbon source). Process modifications: add an anoxic zone upstream of the aeration basin (MLE process) or use a 4-stage Bardenpho process for higher TN removal. Tertiary sand filtration removes particulate nitrogen but not dissolved nitrate. Chlorination does not convert ammonia to nitrogen gas at typical doses. Reducing SRT would prevent nitrification, leaving high effluent ammonia (a component of TN).",
     difficulty: "medium",
   },
@@ -3764,11 +3764,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant wants to develop a local market for Class A biosolids as a soil amendment. What is the MOST important factor for market success?",
     options: [
       "Low price — offer the biosolids for free to attract customers",
-      "Consistent quality, reliable supply, and effective communication of agronomic benefits and regulatory compliance",
       "High nutrient content — maximize nitrogen and phosphorus",
+      "Consistent quality, reliable supply, and effective communication of agronomic benefits and regulatory compliance",
       "Proximity to the plant — only market to farms within 10 km"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Successful biosolids market development requires: (1) consistent quality — customers need to rely on predictable nutrient content, metals levels, and pathogen status; (2) reliable supply — customers plan their fertilizer applications in advance and need a dependable source; (3) effective communication — educating farmers and landscapers about agronomic benefits (organic matter, slow-release nutrients, soil conditioning), regulatory compliance (Class A status, metals below limits), and application guidance; (4) competitive pricing vs. commercial fertilizers. Price alone is not sufficient — farmers need confidence in quality and reliability. High nutrient content is beneficial but must be balanced against regulatory limits. Geographic proximity reduces hauling costs but should not be the primary constraint.",
     difficulty: "medium",
   },
@@ -3779,11 +3779,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant stores more than 150 kg of chlorine gas in cylinders. Under Ontario's Technical Standards and Safety Act, what is required?",
     options: [
       "No special requirements — chlorine storage is regulated only by WHMIS",
-      "Registration of the chlorine storage system as a pressure vessel, development of an emergency response plan, and notification of the local fire department",
       "Annual inspection by the Ministry of Environment only",
+      "Registration of the chlorine storage system as a pressure vessel, development of an emergency response plan, and notification of the local fire department",
       "Only a WHMIS label on the storage area is required"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Chlorine gas storage above threshold quantities is regulated under Ontario's Technical Standards and Safety Act (TSSA) and the Dangerous Goods Transportation Act. Requirements include: (1) registration of the chlorine storage system with TSSA; (2) development of a chlorine emergency response plan (CERP) including evacuation procedures, emergency contacts, and notification of the local fire department; (3) notification of the local fire department of the chlorine storage location and quantities; (4) regular inspection and maintenance of storage equipment; (5) operator training on chlorine hazards and emergency response. Chlorine is classified as a toxic industrial chemical (TIC) and its storage is subject to process safety management requirements.",
     difficulty: "hard",
   },
@@ -3794,11 +3794,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant's effluent fails the WET (whole effluent toxicity) test. The toxicity identification evaluation (TIE) identifies the cause as elevated ammonia. What process change would MOST directly address this?",
     options: [
       "Increase chlorination to oxidize ammonia",
-      "Improve nitrification by increasing SRT or adding supplemental alkalinity",
+      "Dilute the effluent with plant water before discharge",
       "Add a tertiary filter to remove ammonia",
-      "Dilute the effluent with plant water before discharge"
+      "Improve nitrification by increasing SRT or adding supplemental alkalinity"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "If the TIE identifies ammonia as the cause of effluent toxicity, the solution is to improve nitrification — the biological process that converts toxic ammonia (NH₃) to non-toxic nitrate. Strategies: (1) increase SRT to provide more time for slow-growing nitrifiers; (2) add supplemental alkalinity (sodium bicarbonate) if alkalinity is limiting nitrification; (3) check for inhibitory industrial discharges; (4) optimize DO setpoints (nitrification requires DO > 1.5 mg/L); (5) address cold temperature effects on nitrification. Chlorination converts ammonia to chloramines (not to nitrate), which are also toxic. Tertiary filtration removes particulate matter, not dissolved ammonia. Dilution is not a legitimate treatment strategy.",
     difficulty: "medium",
   },
@@ -3808,12 +3808,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Regulatory Framework",
     question: "What is the primary difference between the Environmental Compliance Approval (ECA) and Ontario Regulation 128/04 in terms of their regulatory function?",
     options: [
-      "The ECA regulates effluent quality; O. Reg. 128/04 regulates operator certification",
+      "The ECA is a federal regulation; O. Reg. 128/04 is provincial",
       "The ECA regulates operator certification; O. Reg. 128/04 regulates effluent quality",
       "Both regulate effluent quality — the ECA is site-specific and O. Reg. 128/04 is general",
-      "The ECA is a federal regulation; O. Reg. 128/04 is provincial"
+      "The ECA regulates effluent quality; O. Reg. 128/04 regulates operator certification"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "The Environmental Compliance Approval (ECA) is a site-specific approval issued under the Environmental Protection Act that sets the operating conditions, effluent limits, monitoring requirements, and reporting obligations for a specific treatment plant. Ontario Regulation 128/04 (Licensing of Sewage Works Operators) is a general regulation that establishes the operator certification system — the classes of certification, experience requirements, examination requirements, and renewal requirements. Together, they form the primary regulatory framework for wastewater treatment plant operations in Ontario. The ECA tells the plant what it must achieve; O. Reg. 128/04 ensures the people operating the plant are qualified to achieve it.",
     difficulty: "medium",
   },
@@ -3839,11 +3839,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's SCADA system shows a trend of gradually increasing influent flow over 5 years, from 45,000 m³/d to 62,000 m³/d (design capacity = 65,000 m³/d). What planning action is required?",
     options: [
       "No action required — the plant has 3,000 m³/d of remaining capacity",
-      "Initiate a capacity assessment and master plan to determine when expansion will be needed and what options are available",
+      "Reduce industrial connections to free up capacity",
       "Immediately begin construction of a plant expansion",
-      "Reduce industrial connections to free up capacity"
+      "Initiate a capacity assessment and master plan to determine when expansion will be needed and what options are available"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "At 95% of design capacity (62,000/65,000), the plant is approaching its design limit. Planning for expansion must begin well in advance because: (1) capacity assessments and master plans take 1–2 years; (2) environmental assessments (if required) take 2–5 years; (3) design and construction take 3–7 years. Total lead time = 6–14 years. With the current growth trend, the plant could reach capacity within 3–5 years. The operator must alert management and initiate the planning process immediately. Waiting until capacity is exceeded will result in regulatory violations (accepting flows beyond design capacity) and potential environmental damage. The capacity assessment should evaluate all options: expansion, flow reduction, I/I reduction, and demand management.",
     difficulty: "medium",
   },
@@ -3853,12 +3853,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Nutrient Recovery",
     question: "A Class 4 plant is evaluating struvite recovery from centrate as a revenue stream. Centrate has 800 mg/L NH₄⁺-N and 120 mg/L PO₄³⁻-P. What is the theoretical struvite production per day if centrate flow is 500 m³/d and phosphorus is the limiting nutrient?",
     options: [
-      "60 kg/day struvite",
       "275 kg/day struvite",
+      "60 kg/day struvite",
       "500 kg/day struvite",
       "1,200 kg/day struvite"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Struvite molecular weight = 245 g/mol (Mg=24, N=14, P=31, O=64×4=64, H=18×6=18... actually MgNH₄PO₄·6H₂O = 24+14+1+31+64+108 = 245 g/mol). Phosphorus in centrate = 120 mg/L × 500 m³/d × 1,000 L/m³ = 60,000,000 mg/d = 60 kg/d as P. Moles of P = 60,000 g / 31 g/mol = 1,935 mol/d. Struvite production = 1,935 mol × 245 g/mol = 474,000 g/d ≈ 474 kg/d. Closest answer is 275 kg/day (using different assumptions about recovery efficiency ~58%). Commercial struvite recovery systems achieve 80–90% phosphorus recovery. Struvite sells for $200–400/tonne as a slow-release fertilizer.",
     difficulty: "hard",
   },
@@ -3868,12 +3868,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Operator Wellness",
     question: "A Class 4 plant operator reports feeling fatigued and making more errors after being assigned to rotating shifts for 6 months. What is the management responsibility?",
     options: [
-      "Dismiss the concern — shift work is a normal part of wastewater operations",
       "Assess the shift schedule for fatigue risk factors, consider schedule modifications, and provide fatigue management training",
+      "Dismiss the concern — shift work is a normal part of wastewater operations",
       "Assign the operator to day shift only — night shifts are not required at Class 4 plants",
       "Require the operator to take a medical leave"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Fatigue is a recognized occupational health and safety hazard under Ontario's Occupational Health and Safety Act. Management responsibilities include: (1) assess the shift schedule for fatigue risk factors (rotating shifts, night shifts, insufficient rest periods, extended hours); (2) consider schedule modifications to reduce fatigue (fixed shifts, adequate rest between shifts, limiting consecutive night shifts); (3) provide fatigue management training to operators; (4) implement a fatigue risk management system (FRMS) if fatigue is a significant risk. Operator errors due to fatigue can cause process upsets, equipment damage, and safety incidents. The operator's concern is a legitimate occupational health issue that must be addressed proactively.",
     difficulty: "medium",
   },
@@ -3885,11 +3885,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant's Environmental Compliance Approval (ECA) requires a minimum chlorine contact time (CT) of 450 mg·min/L for effluent disinfection. The contact tank volume is 600 m³ and the effluent flow is 40,000 m³/d. The chlorine residual is 1.5 mg/L. Is the CT requirement met?",
     options: [
       "Yes — CT = 1,350 mg·min/L, which exceeds 450 mg·min/L",
-      "No — CT = 32.4 mg·min/L, which is below 450 mg·min/L",
+      "No — CT = 900 mg·min/L, which exceeds 450 mg·min/L",
       "Yes — CT = 450 mg·min/L exactly",
-      "No — CT = 900 mg·min/L, which exceeds 450 mg·min/L"
+      "No — CT = 32.4 mg·min/L, which is below 450 mg·min/L"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Calculate the actual CT by first determining the contact time (T) and then multiplying it by the chlorine residual.\n\nStep 1 — Convert flow rate to m³/min:\n40,000 m³/d ÷ 1,440 min/d = 27.78 m³/min\n\nStep 2 — Calculate the contact time (T) in minutes:\nContact Tank Volume ÷ Flow Rate = 600 m³ ÷ 27.78 m³/min = 21.60 min\n\nStep 3 — Calculate the actual CT:\nChlorine Residual × Contact Time = 1.5 mg/L × 21.60 min = 32.4 mg·min/L\n\nStep 4 — Compare the actual CT to the required CT:\n32.4 mg·min/L is less than 450 mg·min/L\n\nThe correct answer is B. No — CT = 32.4 mg·min/L, which is below 450 mg·min/L.",
     difficulty: "hard",
     steps: [ { l: "Formula for Contact Time (T)", c: "T (minutes) = Volume (m³) / Flow (m³/day) × (1 day / 1440 minutes)" }, { l: "Calculate Contact Time (T)", c: "T = 600 m³ / (40000 m³/day × 1 day / 1440 minutes) = 600 m³ / 27.7778 m³/minute = 21.6 minutes" }, { l: "Formula for CT", c: "CT (mg·min/L) = Chlorine Residual (mg/L) × Contact Time (minutes)" }, { l: "Calculate CT", c: "CT = 1.5 mg/L × 21.6 minutes = 32.4 mg·min/L" }, { l: "Result", c: "The calculated CT is 32.4 mg·min/L. This is below the required 450 mg·min/L." } ],
@@ -3902,11 +3902,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant implements a model predictive control (MPC) system for biological nutrient removal. What is the PRIMARY advantage of MPC over traditional PID control?",
     options: [
       "MPC is simpler to implement and requires less operator training",
-      "MPC can optimize multiple control variables simultaneously while anticipating future disturbances using a process model",
       "MPC eliminates the need for online sensors",
+      "MPC can optimize multiple control variables simultaneously while anticipating future disturbances using a process model",
       "MPC reduces energy consumption by 50% compared to PID"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Model predictive control (MPC) uses a mathematical model of the process to predict future behavior and optimize multiple control variables simultaneously over a prediction horizon. Advantages over PID: (1) handles multiple interacting variables (DO, nitrate, ammonia, carbon source) simultaneously; (2) anticipates disturbances (influent flow, load changes) using feedforward control; (3) respects operational constraints (maximum aeration capacity, minimum DO); (4) optimizes for multiple objectives (effluent quality + energy cost). MPC is more complex to implement and requires process models and online sensors, but can achieve 15–30% energy savings and more consistent effluent quality compared to traditional PID control. It is increasingly used at large Class 4 plants.",
     difficulty: "hard",
   },
@@ -3916,12 +3916,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biogas to Energy",
     question: "A plant is evaluating upgrading biogas to biomethane (renewable natural gas — RNG) for injection into the natural gas grid. What is the PRIMARY technical challenge?",
     options: [
-      "Biogas production is too low for RNG upgrading",
       "Removing CO₂ and H₂S to achieve pipeline-quality methane (>95% CH₄)",
+      "Biogas production is too low for RNG upgrading",
       "Biogas pressure is too high for pipeline injection",
       "RNG upgrading requires thermophilic digestion"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Upgrading biogas to biomethane (RNG) for pipeline injection requires removing CO₂ (30–35% of biogas) and H₂S to achieve pipeline-quality methane (>95% CH₄, <4 ppm H₂S). Upgrading technologies: pressure swing adsorption (PSA), water scrubbing, amine scrubbing, and membrane separation. Additional requirements: removal of moisture, siloxanes, and other trace contaminants. The upgraded biomethane must meet natural gas quality specifications (Wobbe index, heating value, dew point). RNG injection requires a connection agreement with the gas utility. The economic case depends on RNG prices, carbon credits, and capital costs. Large Class 4 plants with high biogas production are the best candidates for RNG projects.",
     difficulty: "hard",
   },
@@ -3946,12 +3946,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Regulatory Compliance",
     question: "A plant's permit specifies a 7Q10 low-flow design condition for the receiving stream. What does 7Q10 mean and why is it used for permit limits?",
     options: [
-      "7-day average flow at 10-year return period — the lowest 7-day average flow expected once in 10 years",
-      "7% of the 10-year average flow",
       "Flow measured 7 times over 10 years",
+      "7% of the 10-year average flow",
+      "7-day average flow at 10-year return period — the lowest 7-day average flow expected once in 10 years",
       "7 m³/s minimum flow at 10 locations"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "7Q10 is the lowest 7-day average stream flow expected to occur once in 10 years (10% probability in any given year). It represents the critical low-flow condition when the receiving stream has the least dilution capacity for the plant's effluent. Permit limits are often based on 7Q10 because: (1) it represents the worst-case dilution scenario; (2) effluent quality must protect aquatic life even during low-flow conditions; (3) it provides a conservative design basis. During 7Q10 conditions, the effluent may represent a large fraction of the stream flow, so effluent quality must be high enough to maintain water quality standards in the receiving water. Stricter permit limits apply when the 7Q10 is low relative to plant effluent flow.",
     difficulty: "hard",
   },
@@ -3977,11 +3977,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant operator observes a coworker bypassing a safety interlock to speed up a process. The coworker says 'I've done this for years — it's fine.' What is the APPROPRIATE response?",
     options: [
       "Ignore it — the coworker has more experience and knows what they're doing",
-      "Address the unsafe behaviour immediately, report it to the supervisor, and document the incident",
+      "Wait until the next safety meeting to raise the issue",
       "Do the same thing — if it's been done for years without incident, it must be safe",
-      "Wait until the next safety meeting to raise the issue"
+      "Address the unsafe behaviour immediately, report it to the supervisor, and document the incident"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Bypassing safety interlocks is a serious safety violation under Ontario's Occupational Health and Safety Act (OHSA). Every worker has the right and duty to refuse unsafe work and to report unsafe conditions. The appropriate response is: (1) address the unsafe behaviour immediately — tell the coworker that bypassing interlocks is unsafe and against regulations; (2) report the incident to the supervisor (or safety representative) immediately; (3) document the incident. The fact that it has been done for years without incident is a 'normalization of deviance' — a common precursor to serious accidents. Safety interlocks exist to prevent catastrophic failures. Ignoring the behaviour makes the observer complicit in the violation.",
     difficulty: "medium",
   },
@@ -3992,11 +3992,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is located adjacent to a low-income neighbourhood. The plant is planning to expand its biosolids composting facility, which will increase odour. What is the ETHICAL obligation of the plant management?",
     options: [
       "No special obligation — the plant has all required permits",
-      "Engage meaningfully with the affected community, assess cumulative environmental impacts, and consider mitigation measures beyond regulatory minimums",
+      "Relocate the composting facility to an industrial area",
       "Offer financial compensation to residents as mitigation",
-      "Relocate the composting facility to an industrial area"
+      "Engage meaningfully with the affected community, assess cumulative environmental impacts, and consider mitigation measures beyond regulatory minimums"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Environmental justice requires that environmental burdens (pollution, odour, noise) not be disproportionately imposed on low-income or marginalized communities. Beyond regulatory compliance, the ethical obligation includes: (1) meaningful community engagement — not just notification, but genuine dialogue about concerns and alternatives; (2) cumulative impact assessment — considering existing environmental burdens on the community; (3) considering mitigation measures beyond regulatory minimums (enhanced odour control, green buffers, community benefits); (4) transparency about the project and its impacts. Financial compensation alone does not address the underlying equity issue. Relocation may not be feasible. The plant management has a responsibility to be a good neighbour and to consider the community's quality of life.",
     difficulty: "medium",
   },
@@ -4006,12 +4006,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Technology Assessment",
     question: "A plant is evaluating a new dissolved air flotation (DAF) system for primary treatment to improve TSS and FOG removal. What is the PRIMARY advantage of DAF over conventional primary sedimentation?",
     options: [
-      "DAF is cheaper to operate than primary sedimentation",
       "DAF achieves higher removal of low-density particles (FOG, algae, fine solids) that do not settle by gravity",
+      "DAF is cheaper to operate than primary sedimentation",
       "DAF eliminates the need for chemical addition",
       "DAF requires less land area and is faster to build"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Dissolved air flotation (DAF) uses micro-bubbles to float low-density particles (fats, oils, grease, algae, fine suspended solids) to the surface for removal. Advantages over conventional primary sedimentation: (1) higher removal of FOG (>90% vs. 50–70% for gravity settling); (2) effective for low-density particles that do not settle; (3) faster hydraulic loading rates (surface overflow rates 3–5× higher than sedimentation); (4) smaller footprint for equivalent performance. DAF is particularly effective for plants receiving high FOG loads from food processing industries or for plants with algae problems in the influent. Disadvantages: higher capital cost, more complex operation, and higher energy consumption than gravity sedimentation.",
     difficulty: "medium",
   },
@@ -4023,10 +4023,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "Primary treatment only — cooling towers do not require high-quality water",
       "Secondary treatment with disinfection — turbidity <2 NTU, fecal coliform <200 CFU/100 mL",
-      "Tertiary treatment with filtration and disinfection — turbidity <1 NTU, fecal coliform <2 CFU/100 mL",
-      "Reverse osmosis — TDS <500 mg/L"
+      "Reverse osmosis — TDS <500 mg/L",
+      "Tertiary treatment with filtration and disinfection — turbidity <1 NTU, fecal coliform <2 CFU/100 mL"
     ],
-    correct: 2,
+    correct: 3,
     explanation: "Industrial cooling water reuse in Ontario typically requires tertiary treatment with filtration and disinfection to achieve: turbidity <1–2 NTU, fecal coliform <2–14 CFU/100 mL (or non-detect), and adequate disinfection residual. The higher treatment level is required because: (1) cooling towers generate aerosols that can be inhaled by workers and the public (Legionella risk); (2) poor quality water promotes biological growth (biofilm, Legionella) in the cooling system; (3) suspended solids cause fouling of heat exchangers. Ontario's Procedure F-5-5 (Water Reuse) provides guidance on treatment requirements for various reuse applications. Water reuse reduces freshwater demand and effluent discharge to receiving waters.",
     difficulty: "hard",
   },
@@ -4036,12 +4036,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Centrifuge Operation",
     question: "A solid-bowl decanter centrifuge at a Class 4 plant is producing cake with higher-than-normal moisture content. Which operational adjustment is MOST likely to improve cake dryness?",
     options: [
-      "Increase feed flow rate to the centrifuge",
       "Decrease the differential speed between the bowl and conveyor",
+      "Increase feed flow rate to the centrifuge",
       "Increase the pool depth by adjusting the weir plates",
       "Decrease the bowl speed (G-force)"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "In a solid-bowl decanter centrifuge, decreasing the differential speed between the bowl and the conveyor scroll increases the residence time of solids in the bowl, allowing more time for liquid drainage and producing drier cake. Key operational parameters: (1) Bowl speed (G-force): higher G-force improves separation but increases wear and energy; (2) Differential speed: lower differential = drier cake but lower throughput; (3) Pool depth: deeper pool = wetter cake (solids submerged longer); (4) Feed rate: lower feed rate = drier cake (more residence time). Wet cake problems are often caused by: excessive feed rate, too-high differential speed, inadequate polymer conditioning, or worn conveyor flights.",
     difficulty: "hard",
   },
@@ -4052,11 +4052,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What is the purpose of polymer conditioning prior to centrifuge dewatering?",
     options: [
       "To reduce the pH of the biosolids to inhibit pathogen regrowth",
-      "To flocculate fine particles into larger aggregates that separate more efficiently under centrifugal force",
+      "To dissolve struvite deposits that would otherwise clog the centrifuge",
       "To increase the viscosity of the sludge to prevent conveyor slippage",
-      "To dissolve struvite deposits that would otherwise clog the centrifuge"
+      "To flocculate fine particles into larger aggregates that separate more efficiently under centrifugal force"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Polymer conditioning prior to centrifuge dewatering flocculates fine colloidal particles into larger, denser aggregates (flocs) that respond better to centrifugal separation. Without polymer: fine particles pass through with the centrate (high TSS centrate), cake solids content is lower, and polymer-free operation is only feasible for easily-dewatered sludges. Polymer selection factors: charge density, molecular weight, and compatibility with sludge type. Proper polymer dose is determined by jar testing or continuous dose-response testing. Over-dosing wastes chemical and can cause re-dispersion of flocs. Centrate quality (TSS, turbidity) is a key indicator of polymer performance.",
     difficulty: "medium",
   },
@@ -4081,12 +4081,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "UV Disinfection",
     question: "How often should UV lamp sleeves (quartz tubes) typically be cleaned in a medium-sized municipal WWTP?",
     options: [
-      "Once per year during the annual shutdown only",
       "Continuously by automatic wipers, with manual cleaning as needed based on UVI sensor readings",
+      "Once per year during the annual shutdown only",
       "Every 24 hours regardless of fouling level",
       "Only when lamp output drops below 50% of initial intensity"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "UV lamp sleeves (quartz tubes) foul with mineral deposits (calcium carbonate, iron), biological films, and organic matter, reducing UV transmission to the water. Modern UV systems use automatic mechanical wipers that clean sleeves continuously or on a timed cycle. Manual cleaning frequency is determined by: UV intensity sensor (UVI) readings — if intensity drops significantly despite wipers, manual cleaning is needed; effluent quality (high hardness = more scaling); seasonal variation. Cleaning agents: citric acid or proprietary descalers for mineral deposits. Lamp replacement is based on hours of operation (typically 8,000–12,000 hours) and intensity decline, not just fouling.",
     difficulty: "medium",
   },
@@ -4097,11 +4097,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A peristaltic pump used for sodium hypochlorite dosing is delivering inconsistent flow. The pump tube appears intact but flow varies ±30% from setpoint. What is the MOST likely cause?",
     options: [
       "The sodium hypochlorite concentration has degraded and is now too dilute",
-      "Partial occlusion of the pump tube due to calcium hypochlorite precipitation or tube fatigue causing irregular compression",
+      "The discharge pressure is too high, causing the pump to cavitate",
       "The pump speed controller has failed and needs replacement",
-      "The discharge pressure is too high, causing the pump to cavitate"
+      "Partial occlusion of the pump tube due to calcium hypochlorite precipitation or tube fatigue causing irregular compression"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Peristaltic pumps deliver flow by compressing a flexible tube with rollers. Inconsistent flow despite an intact tube is most commonly caused by: (1) Tube fatigue — repeated compression causes the tube to lose its circular cross-section, resulting in irregular compression and variable flow; (2) Calcium hypochlorite or other precipitation partially occluding the tube interior; (3) Worn rollers that no longer fully compress the tube. Peristaltic pump tubes have a finite service life (typically 500–2,000 hours depending on chemical and tube material) and should be replaced on a scheduled basis. Tube material selection is critical: Tygon for most chemicals, Viton for strong oxidizers. Sodium hypochlorite degrades over time (loses strength) but this would cause consistent under-dosing, not variable flow.",
     difficulty: "medium",
   },
@@ -4126,12 +4126,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "SCADA and Instrumentation",
     question: "A dissolved oxygen (DO) probe in the aeration basin is reading 0.2 mg/L despite visual evidence of vigorous aeration and foam on the surface. What is the MOST likely cause?",
     options: [
-      "The aeration system is over-aerating and the DO is genuinely very low",
       "The probe membrane is fouled, damaged, or the electrolyte needs replacement, causing a falsely low reading",
+      "The aeration system is over-aerating and the DO is genuinely very low",
       "The mixed liquor temperature is too high, reducing oxygen solubility",
       "The SCADA system is applying an incorrect calibration offset"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "A DO probe reading near zero despite vigorous aeration is almost always a probe maintenance issue: (1) Fouled membrane: biological or chemical deposits on the membrane reduce oxygen diffusion to the electrode; (2) Damaged membrane: physical damage allows electrolyte loss; (3) Depleted electrolyte: the electrolyte solution inside the probe is consumed over time; (4) Depleted cathode: the sensing electrode is consumed. Maintenance schedule: clean and calibrate DO probes weekly; replace membranes and electrolyte monthly or per manufacturer schedule. Verification: compare with a freshly calibrated portable DO meter. High temperature reduces DO saturation but would not cause a near-zero reading in a well-aerated basin. SCADA calibration offsets are possible but less likely than probe fouling.",
     difficulty: "medium",
   },
@@ -4142,11 +4142,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A plant experiences a complete SCADA system failure during peak flow. What is the MOST important immediate action for the operator?",
     options: [
       "Shut down all treatment processes until SCADA is restored",
-      "Switch to manual control mode and increase manual sampling and observation frequency to maintain process control",
+      "Reduce influent flow by closing the headworks bar screens",
       "Call the SCADA vendor and wait for remote support before taking any action",
-      "Reduce influent flow by closing the headworks bar screens"
+      "Switch to manual control mode and increase manual sampling and observation frequency to maintain process control"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "SCADA failure requires transition to manual control: (1) Activate manual control mode on all critical equipment (pumps, blowers, chemical feed); (2) Increase manual rounds frequency — check DO, MLSS, flows, levels manually; (3) Notify supervisor and on-call maintenance; (4) Document all manual readings and actions; (5) Implement emergency operating procedures (EOPs). Plants must have written procedures for SCADA failure that operators are trained on. Critical setpoints should be posted locally at each control panel. Shutting down treatment processes would cause a bypass event. Waiting for vendor support without taking action is unacceptable — manual operation must continue.",
     difficulty: "medium",
   },
@@ -4186,12 +4186,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Pump Maintenance",
     question: "A submersible pump in a wet well is showing increased vibration and reduced flow. Inspection reveals the impeller is intact. What is the MOST likely cause?",
     options: [
-      "The motor winding insulation has failed, causing the motor to run at reduced speed",
       "Partial clogging of the impeller passages with rags, grit, or debris causing imbalance and reduced hydraulic efficiency",
+      "The motor winding insulation has failed, causing the motor to run at reduced speed",
       "The wet well level is too high, causing excessive submergence pressure",
       "The discharge check valve is stuck open, allowing backflow"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Increased vibration with reduced flow in a submersible pump with an intact impeller is most commonly caused by partial clogging of impeller passages: (1) Rags, wipes, hair, and debris partially block impeller vanes — reduces flow and creates imbalance (vibration); (2) Grit accumulation in impeller passages; (3) Grease or FOG buildup. Corrective action: remove pump, clean impeller passages, inspect wear rings. Prevention: adequate bar screen maintenance at headworks, regular wet well cleaning. Motor winding failure typically causes the motor to trip on overcurrent or thermal protection. Check valve failure causes backflow when pump stops but does not cause vibration during operation.",
     difficulty: "medium",
   },
@@ -4202,11 +4202,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What is the purpose of a mechanical seal in a centrifugal pump, and what are the signs of mechanical seal failure?",
     options: [
       "It prevents air from entering the pump casing during priming; failure signs are loss of prime and air bubbles in the discharge",
-      "It prevents process fluid from leaking along the pump shaft; failure signs are visible leakage at the seal area, increased seal water consumption, and shaft sleeve wear",
+      "It controls the pump discharge pressure; failure signs are pressure fluctuations and reduced flow",
       "It protects the motor bearings from vibration; failure signs are increased motor temperature and bearing noise",
-      "It controls the pump discharge pressure; failure signs are pressure fluctuations and reduced flow"
+      "It prevents process fluid from leaking along the pump shaft; failure signs are visible leakage at the seal area, increased seal water consumption, and shaft sleeve wear"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Mechanical seals prevent process fluid from leaking along the rotating pump shaft where it exits the casing. Components: rotating seal face (attached to shaft), stationary seal face (in gland), and spring to maintain face contact. Failure signs: (1) Visible leakage at the seal area — initially minor dripping, progressing to continuous flow; (2) Increased seal flush water consumption (for externally flushed seals); (3) Shaft sleeve wear from seal face contact; (4) Increased vibration if seal faces are damaged. Causes of failure: dry running (no flush water), abrasive particles, chemical attack, thermal shock, and misalignment. Mechanical seals have replaced packing glands in most modern pumps due to lower leakage and maintenance requirements.",
     difficulty: "medium",
   },
@@ -4216,12 +4216,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Digester Equipment",
     question: "A gas mixing system in an anaerobic digester is showing reduced mixing efficiency. The gas compressor is operating normally but digester contents appear stratified. What should be checked first?",
     options: [
-      "The digester heating system — stratification is caused by temperature gradients",
       "The gas distribution pipes and diffusers inside the digester for blockage by scum, grit, or ragging",
+      "The digester heating system — stratification is caused by temperature gradients",
       "The digester gas composition — high CO2 content reduces mixing efficiency",
       "The sludge feed rate — reduce feed to allow stratification to resolve naturally"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Gas mixing systems in anaerobic digesters circulate biogas through distribution pipes and diffusers (or lances) at the bottom of the digester to provide mixing. Reduced mixing with normal compressor operation indicates: (1) Blocked distribution pipes or diffusers — scum, grit, or inorganic material accumulates and blocks gas outlets; (2) Broken distribution pipes — gas escapes before reaching mixing points; (3) Ragging of diffuser openings. Inspection: check gas flow to individual mixing points, measure differential pressure across distribution system. Stratification causes: poor digestion efficiency, scum accumulation, and reduced biogas production. Temperature gradients can contribute to stratification but are secondary to mechanical blockage in this scenario.",
     difficulty: "hard",
   },
@@ -4232,11 +4232,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A pressure relief valve (PRV) on an anaerobic digester is venting frequently. What is the MOST likely cause and what action should be taken?",
     options: [
       "The digester is producing too much biogas — reduce organic loading to decrease gas production",
-      "The gas utilization system (engine, boiler, or flare) is not consuming gas fast enough, or the gas collection/storage system has a problem — investigate and restore gas utilization",
       "The PRV setpoint is too low — increase the setpoint to stop venting",
+      "The gas utilization system (engine, boiler, or flare) is not consuming gas fast enough, or the gas collection/storage system has a problem — investigate and restore gas utilization",
       "The digester is over-mixed — reduce mixing intensity to lower gas production"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Frequent PRV venting indicates digester pressure is exceeding the PRV setpoint. Causes: (1) Gas utilization equipment (cogeneration engine, boiler, or flare) is offline or undersized; (2) Gas storage (gas holder) is full; (3) Gas line blockage or valve closed; (4) Sudden increase in organic loading causing higher gas production. Actions: (1) Restore gas utilization equipment to service; (2) Check gas lines and valves; (3) Verify gas storage capacity; (4) If gas cannot be utilized, flare it rather than venting to atmosphere (methane is a potent greenhouse gas). Increasing the PRV setpoint is dangerous — digesters have maximum operating pressure limits. Reducing organic loading is a last resort and would reduce biogas production and energy recovery.",
     difficulty: "hard",
   },
@@ -4246,12 +4246,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Tertiary Treatment Equipment",
     question: "A cloth media disc filter used for tertiary filtration is showing increasing headloss and decreasing effluent quality. Backwash frequency has been increased but the problem persists. What is the MOST likely cause?",
     options: [
-      "The filter is undersized for current flow — add more filter discs",
       "Biological growth or chemical precipitation (struvite, calcium carbonate) is blinding the cloth media, requiring chemical cleaning",
+      "The filter is undersized for current flow — add more filter discs",
       "The backwash pump flow rate is too high, damaging the cloth media",
       "The effluent TSS is too low, causing the filter to operate without a filter cake"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Cloth media disc filters use a woven or non-woven fabric that captures suspended solids. Blinding occurs when particles penetrate and become trapped in the fabric pores, reducing permeability. Causes of blinding: (1) Biological growth (biofilm) on the cloth — common in warm weather; (2) Chemical precipitation — struvite (MgNH4PO4) or calcium carbonate deposits in the cloth pores; (3) Fine colloidal particles that pass through backwash. Chemical cleaning: citric acid or proprietary cleaners for struvite/calcium; sodium hypochlorite for biological growth. Blinding is distinct from normal surface cake filtration, which is removed by backwash. Increasing backwash frequency helps with surface cake but not with blinding. Cloth media has a finite service life and may need replacement if cleaning is ineffective.",
     difficulty: "hard",
   },
@@ -4262,11 +4262,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What is the purpose of a struvite management system at a Class 4 wastewater plant, and where does struvite typically form?",
     options: [
       "Struvite is a disinfection byproduct that forms in chlorine contact chambers; management involves pH adjustment",
-      "Struvite (MgNH4PO4·6H2O) is a mineral that precipitates in high-phosphorus, high-ammonia environments such as anaerobic digester supernatant lines, centrate return lines, and dewatering equipment",
+      "Struvite forms only in aerobic conditions and is controlled by maintaining anoxic zones in the biological process",
       "Struvite is a polymer residual that accumulates in centrifuges; management involves solvent flushing",
-      "Struvite forms only in aerobic conditions and is controlled by maintaining anoxic zones in the biological process"
+      "Struvite (MgNH4PO4·6H2O) is a mineral that precipitates in high-phosphorus, high-ammonia environments such as anaerobic digester supernatant lines, centrate return lines, and dewatering equipment"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Struvite (magnesium ammonium phosphate hexahydrate, MgNH4PO4·6H2O) precipitates when concentrations of Mg²⁺, NH4⁺, and PO4³⁻ exceed the solubility product, typically at pH >7.5 and elevated temperatures. Formation locations: (1) Anaerobic digester supernatant return lines; (2) Centrate/filtrate return lines (high NH4 and PO4 from dewatering); (3) Centrifuge bowls and conveyors; (4) Pipes and pumps handling digested sludge. Problems: pipe blockage, reduced pump efficiency, equipment damage. Management: (1) Controlled struvite precipitation in a reactor to recover phosphorus as a fertilizer product (e.g., Ostara Pearl process); (2) Chemical inhibitors (e.g., antiscalants); (3) pH control; (4) Mechanical removal (high-pressure water jetting). Struvite recovery converts a problem into a revenue stream.",
     difficulty: "hard",
   },
@@ -4276,12 +4276,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Headworks Equipment",
     question: "A mechanically cleaned bar screen at the headworks is showing increased differential head across the screen despite frequent cleaning cycles. What should be investigated?",
     options: [
-      "The influent flow rate has decreased, causing solids to settle on the screen",
       "The cleaning mechanism (rakes or brushes) is not fully removing screenings — check for worn rake teeth, broken tines, or debris bypassing the cleaning mechanism",
+      "The influent flow rate has decreased, causing solids to settle on the screen",
       "The screen opening size is too large, allowing large solids to pass through",
       "The screenings conveyor is overloaded — reduce cleaning frequency"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Increasing differential head despite frequent cleaning indicates the cleaning mechanism is not effectively removing screenings: (1) Worn or broken rake teeth — cannot penetrate the screen openings to remove embedded solids; (2) Debris bypassing the rakes — rags wrapping around the mechanism; (3) Screenings falling back through the screen after being lifted; (4) Mechanical failure of the cleaning drive. Inspection: observe cleaning cycle operation, check rake condition, verify screenings are being discharged to the conveyor. High differential head risks: structural damage to screen, hydraulic backup in the collection system, and potential bypass of untreated sewage. Preventive maintenance: regular inspection of rake teeth, lubrication of drive mechanisms, and clearing of any jams.",
     difficulty: "medium",
   },
@@ -4292,11 +4292,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A vortex grit chamber is removing less grit than expected, and grit is accumulating in downstream equipment. What operational adjustment should be tried first?",
     options: [
       "Increase the influent flow velocity through the chamber to improve grit separation",
-      "Adjust the rotational speed of the paddle wheel or impeller to optimize the vortex and improve grit settling",
       "Add polymer to the influent to improve grit coagulation",
+      "Adjust the rotational speed of the paddle wheel or impeller to optimize the vortex and improve grit settling",
       "Increase the grit pump-out frequency to prevent grit re-suspension"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Vortex grit chambers use a controlled circular flow pattern to separate grit by centrifugal action. The paddle wheel or impeller creates the vortex; its speed determines the tangential velocity and separation efficiency. If grit removal is poor: (1) Check and adjust paddle wheel/impeller speed — too slow = insufficient centrifugal force; too fast = grit carried over with the flow; (2) Check grit hopper level — if full, grit re-suspends; (3) Verify grit pump operation — pump must remove accumulated grit regularly; (4) Check for short-circuiting. Increasing influent velocity would reduce residence time and worsen separation. Polymer is not used in grit removal — it would interfere with downstream processes.",
     difficulty: "medium",
   },
@@ -4306,12 +4306,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Secondary Clarifier",
     question: "A secondary clarifier is experiencing rising sludge — a layer of dark, gas-filled sludge floating to the surface. What is the MOST likely cause?",
     options: [
-      "The RAS rate is too high, causing sludge to be pulled up from the blanket",
       "Denitrification is occurring in the clarifier sludge blanket, producing nitrogen gas bubbles that lift the sludge to the surface",
+      "The RAS rate is too high, causing sludge to be pulled up from the blanket",
       "The sludge is too dense and is overflowing the weir",
       "The clarifier surface loading rate is too low, causing sludge to float due to reduced hydraulic shear"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Rising sludge in secondary clarifiers is caused by denitrification in the sludge blanket: (1) Nitrate in the mixed liquor is carried into the clarifier; (2) Anoxic conditions develop in the sludge blanket as DO is consumed; (3) Denitrifying bacteria reduce nitrate to nitrogen gas (N2); (4) N2 bubbles attach to sludge floc and lift it to the surface. Corrective actions: (1) Increase RAS rate to reduce sludge blanket depth and residence time; (2) Reduce SRT to decrease nitrification (if nitrification is not required); (3) Increase WAS rate to reduce MLSS; (4) Ensure adequate DO in the aeration basin to minimize nitrate in the effluent. Rising sludge is distinct from bulking sludge (filamentous) — rising sludge is dark and gas-filled, while bulking sludge is light and fluffy.",
     difficulty: "hard",
   },
@@ -4322,11 +4322,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What is the purpose of a sludge blanket level detector in a secondary clarifier, and how should the operator respond to a rising sludge blanket?",
     options: [
       "It measures the MLSS concentration in the aeration basin; a rising blanket means the SRT is too short",
-      "It measures the depth of settled sludge in the clarifier; a rising blanket indicates the clarifier is overloaded or RAS rate is insufficient — increase RAS and/or WAS",
+      "It measures the effluent turbidity; a rising reading means the clarifier is not settling properly",
       "It detects floating scum on the clarifier surface; a rising reading means the scum baffle needs adjustment",
-      "It measures the effluent turbidity; a rising reading means the clarifier is not settling properly"
+      "It measures the depth of settled sludge in the clarifier; a rising blanket indicates the clarifier is overloaded or RAS rate is insufficient — increase RAS and/or WAS"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Sludge blanket level detectors (ultrasonic, optical, or settleometer-based) measure the depth of the settled sludge layer in the secondary clarifier. A rising sludge blanket indicates: (1) Clarifier is hydraulically overloaded (high flow); (2) RAS rate is too low — sludge accumulates faster than it is withdrawn; (3) Sludge settleability has deteriorated (bulking, rising sludge); (4) Excessive MLSS. Operator response: (1) Increase RAS rate to withdraw sludge faster; (2) Increase WAS to reduce MLSS; (3) Investigate settleability (SVI, microscopy); (4) If blanket approaches weir level, risk of solids carryover in effluent. Target sludge blanket depth: typically 0.3–1.0 m from the bottom, well below the clarifier overflow weir.",
     difficulty: "medium",
   },
@@ -4337,11 +4337,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A membrane bioreactor (MBR) system is experiencing rapid TMP (transmembrane pressure) increase between cleaning cycles. What is the MOST likely cause?",
     options: [
       "The permeate pump is operating at too low a flow rate",
-      "Membrane fouling due to excessive MLSS concentration, inadequate aeration/scouring, or biological fouling (biofouling)",
       "The membrane modules are too new and have not yet been conditioned",
+      "Membrane fouling due to excessive MLSS concentration, inadequate aeration/scouring, or biological fouling (biofouling)",
       "The influent BOD is too low, causing insufficient biological activity to maintain membrane performance"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "TMP (transmembrane pressure) is the pressure difference across the membrane; increasing TMP indicates fouling. Causes of rapid TMP increase: (1) Excessive MLSS — higher solids concentration increases cake layer formation on membrane surface; (2) Inadequate coarse bubble aeration — aeration scours the membrane surface; reduced aeration allows cake buildup; (3) Biofouling — biological growth on membrane surface; (4) Scaling — mineral precipitation on membranes; (5) Colloidal fouling. Corrective actions: (1) Increase membrane aeration; (2) Reduce MLSS by increasing WAS; (3) Perform maintenance cleaning (relaxation, backpulse); (4) Perform recovery cleaning (chemical clean-in-place with NaOCl or citric acid). MBR systems require careful MLSS management — typically 8,000–15,000 mg/L.",
     difficulty: "hard",
   },
@@ -4366,12 +4366,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Anaerobic Digester Monitoring",
     question: "The volatile acids to alkalinity (VA/ALK) ratio in an anaerobic digester rises from 0.1 to 0.4 over three days. What does this indicate and what action should be taken?",
     options: [
-      "The digester is operating optimally — the ratio should be between 0.3 and 0.5",
       "The digester is becoming stressed — methanogens are being inhibited and volatile acids are accumulating; reduce organic loading and monitor closely",
+      "The digester is operating optimally — the ratio should be between 0.3 and 0.5",
       "The alkalinity is too high — add acid to reduce the ratio",
       "The volatile acids are too low — increase organic loading to stimulate methanogens"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "The VA/ALK ratio (also called the FOS/TAC ratio) is a key indicator of anaerobic digester stability. Interpretation: (1) <0.1: stable, well-buffered; (2) 0.1–0.3: acceptable, monitor; (3) 0.3–0.4: caution — early stress, reduce loading; (4) >0.4: digester is failing — immediate action required. Rising VA/ALK ratio indicates: volatile fatty acids (VFAs) are accumulating because methanogens cannot consume them fast enough. Causes: overloading, toxic inhibition (ammonia, sulfide, heavy metals), temperature shock, or pH drop. Actions: (1) Reduce or stop organic loading; (2) Add alkalinity (NaHCO3 or lime) to buffer pH; (3) Monitor pH, biogas production, and composition; (4) Investigate cause of inhibition. A ratio of 0.4 is a serious warning — if not addressed, the digester will acidify and fail.",
     difficulty: "hard",
   },
@@ -4381,12 +4381,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Anaerobic Digester Monitoring",
     question: "Biogas production from an anaerobic digester drops by 30% over one week while organic loading remains constant. What are the MOST likely causes to investigate?",
     options: [
-      "The biogas utilization equipment is consuming more gas than usual",
       "Temperature drop in the digester, toxic inhibition, or a change in sludge composition (e.g., increased inorganic content)",
+      "The biogas utilization equipment is consuming more gas than usual",
       "The gas meter is malfunctioning — biogas production has not actually changed",
       "The digester is over-mixed, causing methanogens to be disrupted"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "A 30% drop in biogas production with constant loading suggests reduced methanogenic activity. Causes to investigate: (1) Temperature drop — mesophilic digesters are sensitive to temperature changes; even 1–2°C drop reduces activity; check heat exchanger and heating system; (2) Toxic inhibition — check for new industrial discharges (heavy metals, solvents, antibiotics, high ammonia); (3) Change in sludge composition — increased grit, inorganic content, or reduced volatile solids in feed; (4) pH drop — check VA/ALK ratio; (5) Scum layer blocking gas collection. Biogas production rate (m³/kg VS destroyed) is a key performance indicator. Gas composition (% CH4) also indicates digester health — healthy digester: 60–70% CH4.",
     difficulty: "hard",
   },
@@ -4412,11 +4412,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A biofilter used for odour control at the headworks is showing breakthrough of H2S (odour complaints from neighbours). The biofilter media moisture content is within specification. What should be checked?",
     options: [
       "The biofilter media pH — if too low (<4), biological activity is inhibited and H2S removal decreases",
-      "The biofilter inlet temperature — if too cold, biological activity stops",
+      "All of the above are valid checks",
       "The biofilter media depth — it may have settled and reduced contact time",
-      "All of the above are valid checks"
+      "The biofilter inlet temperature — if too cold, biological activity stops"
     ],
-    correct: 3,
+    correct: 1,
     explanation: "Biofilter H2S breakthrough can result from multiple causes: (1) Low media pH (<4–5): H2S oxidation by Thiobacillus produces sulfuric acid; if not buffered, pH drops and inhibits biological activity; check pH and add lime or crushed oyster shell if needed; (2) Low temperature (<5°C): biological activity is severely reduced in cold weather; (3) Media settling/channelling: reduces effective contact time and creates preferential flow paths; (4) Media aging/exhaustion: organic media (wood chips, compost) degrade over time (typically 3–5 year life); (5) Overloading: H2S loading exceeds biofilter capacity. Regular monitoring: inlet/outlet H2S, media pH, moisture, and temperature. All three checks listed are valid and should be performed when breakthrough occurs.",
     difficulty: "hard",
   },
@@ -4427,11 +4427,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What is the advantage of a chemical scrubber over a biofilter for treating high-concentration H2S from anaerobic digester vents?",
     options: [
       "Chemical scrubbers are less expensive to operate and require no chemical inputs",
-      "Chemical scrubbers can handle high H2S concentrations (>1,000 ppm) and provide more consistent removal regardless of temperature or biological variability",
+      "Chemical scrubbers have a smaller footprint and longer media life than biofilters",
       "Chemical scrubbers produce no waste streams and are more environmentally friendly",
-      "Chemical scrubbers have a smaller footprint and longer media life than biofilters"
+      "Chemical scrubbers can handle high H2S concentrations (>1,000 ppm) and provide more consistent removal regardless of temperature or biological variability"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Chemical scrubbers (packed towers with caustic or oxidizing solution) vs. biofilters for high-H2S applications: Advantages of chemical scrubbers: (1) Handle high H2S concentrations (1,000–10,000+ ppm) — biofilters are typically limited to <500 ppm; (2) Consistent performance regardless of temperature, biological variability, or loading fluctuations; (3) Faster response to load changes. Disadvantages: (1) Chemical costs (NaOH, NaOCl); (2) Waste liquid disposal; (3) Higher operating cost. Biofilter advantages: lower operating cost, no chemical inputs, suitable for low-to-moderate H2S. Typical application: chemical scrubber as first stage for high-H2S streams (digester vents, sludge handling), followed by biofilter for polishing lower-concentration streams.",
     difficulty: "medium",
   },
@@ -4441,12 +4441,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Electrical Systems",
     question: "A motor control centre (MCC) at a WWTP trips the main breaker during a thunderstorm. After resetting, several pump motors fail to restart. What is the MOST important safety step before investigating the motors?",
     options: [
-      "Immediately restart all motors to restore treatment capacity",
       "Perform lockout/tagout (LOTO) on each affected motor circuit before any inspection or maintenance work",
+      "Immediately restart all motors to restore treatment capacity",
       "Check the motor control relays from the energized MCC panel without de-energizing",
       "Call the motor manufacturer for remote diagnostic support"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Lockout/tagout (LOTO) is mandatory before any electrical inspection or maintenance: (1) De-energize the circuit at the disconnect or breaker; (2) Lock the disconnect in the open position with a personal padlock; (3) Tag the lock with operator's name and date; (4) Verify zero energy state with a voltage tester; (5) Proceed with inspection. LOTO prevents: unexpected energization, stored energy release (capacitors, springs), and injury from moving parts. After a lightning event: check for surge damage to motor windings (insulation resistance test with megohmmeter), control wiring damage, and VFD/soft starter damage. Restarting motors without inspection after a lightning event risks equipment damage and personnel injury from electrical faults.",
     difficulty: "medium",
   },
@@ -4472,11 +4472,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "An electromagnetic flow meter (magmeter) in the plant effluent line is reading 15% higher than the downstream weir measurement. What is the MOST likely cause?",
     options: [
       "The weir is more accurate than the magmeter — trust the weir reading",
-      "The magmeter electrodes are coated with deposits (scaling, biological growth) causing signal drift, or there is an air pocket in the line",
       "The magmeter is reading correctly and the weir has a calibration error",
+      "The magmeter electrodes are coated with deposits (scaling, biological growth) causing signal drift, or there is an air pocket in the line",
       "The effluent flow has increased due to inflow and infiltration"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Electromagnetic flow meters measure flow by detecting the voltage induced in a conductive fluid moving through a magnetic field. Causes of inaccurate readings: (1) Electrode coating — deposits (calcium carbonate, biological films, grease) on the electrodes reduce signal strength and cause drift; (2) Air pockets — air in the line breaks the conductive path and causes erratic or high readings; (3) Partially full pipe — magmeters require a full pipe; (4) Incorrect calibration factor. Maintenance: clean electrodes regularly; verify pipe is running full; recalibrate against a reference measurement. Both the magmeter and weir can have errors — a 15% discrepancy warrants investigation of both. Weir accuracy depends on correct installation, clean weir crest, and accurate head measurement.",
     difficulty: "medium",
   },
@@ -4487,11 +4487,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What is the minimum straight pipe length required upstream of an electromagnetic flow meter to ensure accurate measurement?",
     options: [
       "No straight pipe is required — magmeters are insensitive to flow profile",
-      "Typically 5–10 pipe diameters upstream and 2–3 pipe diameters downstream, free of fittings, valves, or bends that disturb the flow profile",
       "At least 50 pipe diameters upstream to ensure fully developed laminar flow",
+      "Typically 5–10 pipe diameters upstream and 2–3 pipe diameters downstream, free of fittings, valves, or bends that disturb the flow profile",
       "Straight pipe is only required for ultrasonic flow meters, not magmeters"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Electromagnetic flow meters require a uniform, fully developed flow profile for accurate measurement. Disturbed flow profiles (from elbows, valves, pumps) cause measurement errors. Typical installation requirements: (1) 5–10 pipe diameters of straight pipe upstream; (2) 2–3 pipe diameters downstream; (3) Avoid installation immediately downstream of partially open valves, pumps, or bends in multiple planes. Some manufacturers specify more or less depending on the meter design and acceptable accuracy. Grounding rings or electrodes must be properly grounded to prevent electrical interference. Magmeters are more tolerant of flow profile disturbances than differential pressure meters but still require adequate straight runs. Failure to provide adequate straight pipe is a common cause of measurement error in field installations.",
     difficulty: "medium",
   },
@@ -4501,12 +4501,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Pump Systems",
     question: "A pump system curve has shifted upward (higher head at all flows) compared to the original design curve. What is the MOST likely cause?",
     options: [
-      "The pump impeller has been trimmed to reduce flow",
       "Increased pipe friction due to tuberculation, biological growth, or partial valve closure in the discharge line",
+      "The pump impeller has been trimmed to reduce flow",
       "The pump speed has increased due to a VFD malfunction",
       "The static head has decreased due to lower receiving water level"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "The system curve represents the relationship between flow and head loss in the piping system. An upward shift means more head is required at all flow rates, indicating increased friction losses: (1) Tuberculation — iron oxide deposits in cast iron pipes reduce the effective pipe diameter and increase roughness; (2) Biological growth (biofilm) in pipes; (3) Partially closed valve — increases minor losses; (4) Blocked strainer or check valve. Diagnosis: compare current pump operating point (flow and head) with the original design point; if head is higher at the same flow, the system curve has shifted. Corrective actions: clean or replace tuberculated pipes, open valves, clean strainers. A trimmed impeller shifts the pump curve down (lower head), not the system curve up.",
     difficulty: "hard",
   },
@@ -4531,12 +4531,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Instrumentation Calibration",
     question: "How often should a pH meter used for process control in a biological nutrient removal (BNR) plant be calibrated, and what buffers should be used?",
     options: [
-      "Once per year during the annual shutdown; use pH 4 and pH 10 buffers",
       "At minimum daily (or per manufacturer specification); use two-point calibration with buffers bracketing the expected measurement range (e.g., pH 4 and pH 7, or pH 7 and pH 10)",
+      "Once per year during the annual shutdown; use pH 4 and pH 10 buffers",
       "Only when the reading appears incorrect; use pH 7 buffer only",
       "Every 30 days; use pH 4, 7, and 10 buffers for three-point calibration"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "pH meters for process control require frequent calibration: (1) Frequency: daily calibration is standard for process control applications; some applications require more frequent calibration; (2) Two-point calibration: use two buffers bracketing the expected measurement range — for wastewater (pH 6.5–8.5), use pH 7 and pH 10; for acidic streams, use pH 4 and pH 7; (3) Buffer quality: use fresh, certified buffers — old or contaminated buffers give incorrect calibration; (4) Temperature compensation: calibrate at the same temperature as the sample, or use automatic temperature compensation (ATC). pH electrode maintenance: clean the glass bulb regularly, keep the reference junction hydrated, replace electrodes when response time slows or calibration cannot be achieved. In BNR plants, pH is critical for nitrification (optimal pH 7.2–7.8) and denitrification.",
     difficulty: "medium",
   },
@@ -4562,11 +4562,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A vibration analysis on a centrifugal pump shows a dominant frequency at 1× running speed with high amplitude. What does this most likely indicate?",
     options: [
       "Bearing wear — replace the bearings immediately",
-      "Rotor imbalance — the impeller or shaft has uneven mass distribution, causing vibration at the rotational frequency",
       "Cavitation — the pump is operating below the minimum required NPSH",
+      "Rotor imbalance — the impeller or shaft has uneven mass distribution, causing vibration at the rotational frequency",
       "Misalignment — the pump and motor shafts are not properly aligned"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Vibration analysis frequency signatures: (1) 1× running speed (1X): rotor imbalance — uneven mass distribution on impeller, shaft, or coupling; also caused by bent shaft; (2) 2× running speed (2X): misalignment — angular or parallel misalignment between pump and motor; also looseness; (3) Multiple harmonics (1X, 2X, 3X...): looseness, rubbing; (4) Sub-synchronous frequencies: instability, cavitation; (5) High-frequency broadband: bearing defects, cavitation; (6) Blade pass frequency (RPM × number of impeller vanes): hydraulic forces. Corrective action for 1X imbalance: dynamic balancing of the impeller in situ or after removal. Misalignment (2X) requires laser alignment of the pump-motor coupling. Bearing defects appear at characteristic bearing defect frequencies (BPFO, BPFI, BSF, FTF), not at 1X.",
     difficulty: "hard",
   },
@@ -4576,12 +4576,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Digester Heating",
     question: "The temperature in a mesophilic anaerobic digester drops from 35°C to 30°C over 48 hours despite the heating system operating normally. What is the MOST likely cause?",
     options: [
-      "The methanogens have adapted to lower temperatures and are producing less heat",
       "The heat exchanger is fouled (scaling or biological growth) reducing heat transfer efficiency, or the sludge feed rate has increased significantly",
+      "The methanogens have adapted to lower temperatures and are producing less heat",
       "The digester insulation has failed completely",
       "The biogas production has increased, cooling the digester through endothermic reactions"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Temperature drop in an anaerobic digester despite normal heating system operation indicates: (1) Heat exchanger fouling — calcium carbonate or struvite scaling on the heat exchanger tubes reduces heat transfer; check inlet/outlet temperature differential across the heat exchanger; (2) Increased cold sludge feed — if feed rate or feed temperature has decreased significantly, the heat load increases; (3) Reduced heating medium temperature (hot water or steam); (4) Heat exchanger bypass valve open. Diagnosis: calculate heat balance — heat input vs. heat losses (conduction through walls, cold feed). Fouled heat exchangers: clean with acid (citric acid) for calcium scaling. Mesophilic digesters are sensitive to temperature changes — a 5°C drop reduces methanogenic activity by ~30% and biogas production decreases. Anaerobic reactions are exothermic but the heat generated is insufficient to maintain temperature without supplemental heating.",
     difficulty: "hard",
   },
@@ -4591,12 +4591,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Tertiary Filtration",
     question: "A deep-bed granular media filter (sand/anthracite) used for tertiary polishing shows increasing turbidity in the filtered effluent during the first few minutes after backwash. What is this phenomenon called and how is it managed?",
     options: [
-      "Filter ripening — the initial effluent after backwash has higher turbidity because the filter bed has been disturbed; managed by filter-to-waste (directing initial effluent to the headworks) until turbidity drops to acceptable levels",
-      "Filter breakthrough — the filter is overloaded and cannot remove turbidity; managed by reducing flow",
       "Backwash carryover — backwash water is contaminating the filtered effluent; managed by increasing backwash duration",
+      "Filter breakthrough — the filter is overloaded and cannot remove turbidity; managed by reducing flow",
+      "Filter ripening — the initial effluent after backwash has higher turbidity because the filter bed has been disturbed; managed by filter-to-waste (directing initial effluent to the headworks) until turbidity drops to acceptable levels",
       "Media migration — filter media is moving to the effluent side; managed by adding a support gravel layer"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Filter ripening (also called filter maturation) is the period after backwash when the filter bed is clean and has not yet developed the surface conditioning needed for optimal particle removal. During ripening: (1) The clean media surface has fewer attachment sites for particles; (2) Residual backwash turbulence may carry fine media particles; (3) Effluent turbidity is elevated for 5–30 minutes. Management: filter-to-waste (FTW) — divert the initial filtered effluent back to the headworks or a holding tank until turbidity meets the target. FTW duration: typically 5–15 minutes or until turbidity drops below 0.5 NTU. Alternative: slow start — gradually increase filtration rate after backwash to minimize ripening period. Filter ripening is a normal operational phenomenon and does not indicate a problem with the filter.",
     difficulty: "medium",
   },
@@ -4607,11 +4607,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A dissolved air flotation thickener (DAFT) is producing thickened WAS with lower-than-expected solids content (2% instead of the target 4–5%). What operational adjustment should be tried first?",
     options: [
       "Increase the sludge feed rate to improve the solids loading",
-      "Optimize polymer dose and type — insufficient or incorrect polymer is the most common cause of poor DAFT performance",
       "Increase the air-to-solids ratio by reducing the dissolved air pressure",
+      "Optimize polymer dose and type — insufficient or incorrect polymer is the most common cause of poor DAFT performance",
       "Reduce the recycle ratio to decrease turbulence in the flotation tank"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Dissolved air flotation thickeners (DAFTs) use micro-bubbles to float WAS to the surface for removal as a thickened float. Poor thickening (low solids content) is most commonly caused by inadequate polymer conditioning: (1) Insufficient polymer dose — particles not adequately flocculated; (2) Incorrect polymer type — charge density or molecular weight not matched to sludge; (3) Poor polymer mixing — inadequate contact time or mixing intensity. Other causes: (1) High air-to-solids (A/S) ratio — too many bubbles cause turbulence and re-suspension; (2) Hydraulic overloading — too high feed rate; (3) Sludge age — older sludge (high SRT) is more difficult to thicken. Optimization: jar testing to determine optimal polymer dose and type; adjust A/S ratio; check recycle pressure (typically 400–600 kPa). Target thickened WAS: 4–6% TS.",
     difficulty: "hard",
   },
@@ -4621,12 +4621,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Sludge Thickening",
     question: "What is the difference between gravity thickening and gravity belt thickening (GBT) for primary sludge?",
     options: [
-      "Gravity thickening uses centrifugal force; GBT uses belt press technology",
       "Gravity thickening uses a circular tank where sludge settles and thickens by gravity alone (no polymer, simple operation); GBT uses a moving porous belt with gravity drainage and light mechanical pressure, requiring polymer and producing higher solids content",
+      "Gravity thickening uses centrifugal force; GBT uses belt press technology",
       "Gravity thickening is used for WAS; GBT is used for primary sludge only",
       "Gravity thickening produces Class A biosolids; GBT produces Class B biosolids"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Sludge thickening comparison: (1) Gravity thickening: circular tank with slow rotating pickets to release trapped water; no polymer required for primary sludge; simple, low-energy operation; typical performance: primary sludge 4–8% TS, WAS 1.5–3% TS (poor for WAS); (2) Gravity belt thickener (GBT): sludge is conditioned with polymer and applied to a moving porous belt; water drains by gravity through the belt; light rollers provide additional drainage; typical performance: WAS 4–6% TS; requires polymer, more complex operation; (3) Rotary drum thickener (RDT): similar to GBT but uses a rotating drum; (4) Centrifuge thickening: highest solids content (5–8% TS for WAS) but highest energy and cost. Primary sludge thickens well by gravity; WAS requires mechanical thickening due to its poor settling characteristics.",
     difficulty: "medium",
   },
@@ -4672,12 +4672,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Volatile Suspended Solids",
     question: "A VSS test gives the following results: tare weight of crucible = 22.4512 g; weight after drying at 105 C = 22.5234 g; weight after ignition at 550 C = 22.4891 g. Sample volume = 50 mL. What are the TSS and VSS concentrations?",
     options: [
-      "TSS = 1,444 mg/L; VSS = 686 mg/L",
+      "TSS = 144 mg/L; VSS = 68.6 mg/L",
       "TSS = 722 mg/L; VSS = 343 mg/L",
       "TSS = 1,444 mg/L; VSS = 758 mg/L",
-      "TSS = 144 mg/L; VSS = 68.6 mg/L"
+      "TSS = 1,444 mg/L; VSS = 686 mg/L"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "TSS = (22.5234 - 22.4512) x 1,000,000 / 50 = 0.0722 x 1,000,000 / 50 = 1,444 mg/L. VSS = (22.5234 - 22.4891) x 1,000,000 / 50 = 0.0343 x 1,000,000 / 50 = 686 mg/L. VSS represents the organic (volatile) fraction of TSS -- the portion that burns off at 550 C. Fixed Suspended Solids (FSS) = TSS - VSS = 1,444 - 686 = 758 mg/L.",
     difficulty: "hard",
   },
@@ -4688,12 +4688,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Settleability Testing",
     question: "A 30-minute settleability test (SSV30) on mixed liquor gives a settled sludge volume of 320 mL/L. The MLSS is 2,800 mg/L. What is the Sludge Volume Index (SVI) and what does it indicate?",
     options: [
-      "SVI = 114 mL/g; good settling sludge",
       "SVI = 8.75 mL/g; excellent settling sludge",
+      "SVI = 114 mL/g; good settling sludge",
       "SVI = 875 mL/g; poor settling sludge",
       "SVI = 11.4 mL/g; excellent settling sludge"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "Calculate the Sludge Volume Index (SVI) using the given settled sludge volume and mixed liquor suspended solids concentration.\n\nStep 1 — Calculate SVI:\nSVI = (Settled Sludge Volume (mL/L) × 1,000) ÷ MLSS (mg/L)\nSVI = (320 mL/L × 1,000) ÷ 2,800 mg/L\nSVI = 320,000 ÷ 2,800\nSVI = 114.28 mL/g\n\nStep 2 — Interpret SVI value:\nAn SVI value of 114 mL/g falls within the range of 80-150 mL/g, which indicates good settling sludge.\n\nThe correct answer is A. SVI = 114 mL/g; good settling sludge.",
     difficulty: "medium",
     steps: [ { l: "Formula for SVI", c: "SVI (mL/g) = (SSV30 (mL/L) × 1000) / MLSS (mg/L)" }, { l: "Identify Variables", c: "SSV30 = 320 mL/L; MLSS = 2800 mg/L" }, { l: "Substitute Values", c: "SVI = (320 × 1000) / 2800" }, { l: "Calculate", c: "SVI = 320000 / 2800 = 114.2857" }, { l: "Result", c: "The Sludge Volume Index (SVI) is 114 mL/g, indicating good settling sludge." } ],
@@ -4705,12 +4705,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Dissolved Oxygen Measurement",
     question: "A Class 4 operator is calibrating a DO meter using the Winkler titration method as a reference. The Winkler result shows 7.2 mg/L but the DO meter reads 6.5 mg/L. What is the most likely cause of the discrepancy?",
     options: [
-      "The Winkler method is less accurate than the DO meter",
       "The DO meter membrane is fouled, damaged, or the electrolyte needs replacing",
+      "The Winkler method is less accurate than the DO meter",
       "The sample temperature is too high for the Winkler method",
       "The Winkler method overestimates DO in wastewater"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "A DO meter reading lower than the Winkler reference value indicates the meter is under-reading, most commonly due to: (1) fouled or damaged membrane -- the membrane controls oxygen diffusion to the cathode; fouling restricts diffusion; (2) depleted electrolyte -- the electrolyte solution is consumed over time; (3) dirty electrodes -- oxidation products on the cathode reduce sensitivity. The Winkler (iodometric) titration is the reference method for DO and is highly accurate. Corrective action: clean/replace membrane, refresh electrolyte, recalibrate.",
     difficulty: "medium",
   },
@@ -4738,12 +4738,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "pH and Alkalinity",
     question: "A wastewater sample requires 18.4 mL of 0.02 N H2SO4 to titrate 100 mL of sample to the phenolphthalein endpoint (pH 8.3) and an additional 24.6 mL to reach the methyl orange endpoint (pH 4.3). What are the P alkalinity and M alkalinity?",
     options: [
-      "P alkalinity = 184 mg/L as CaCO3; M alkalinity = 430 mg/L as CaCO3",
+      "P alkalinity = 3.68 mg/L as CaCO3; M alkalinity = 8.6 mg/L as CaCO3",
       "P alkalinity = 36.8 mg/L as CaCO3; M alkalinity = 86 mg/L as CaCO3",
       "P alkalinity = 184 mg/L as CaCO3; M alkalinity = 246 mg/L as CaCO3",
-      "P alkalinity = 3.68 mg/L as CaCO3; M alkalinity = 8.6 mg/L as CaCO3"
+      "P alkalinity = 184 mg/L as CaCO3; M alkalinity = 430 mg/L as CaCO3"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "Alkalinity (mg/L as CaCO3) = (mL titrant x Normality x 50,000) / mL sample. P alkalinity = (18.4 x 0.02 x 50,000) / 100 = 184 mg/L as CaCO3. M (total) alkalinity = ((18.4 + 24.6) x 0.02 x 50,000) / 100 = (43.0 x 0.02 x 50,000) / 100 = 430 mg/L as CaCO3. P alkalinity measures hydroxide + half carbonate; M alkalinity measures total alkalinity including bicarbonate. In activated sludge, alkalinity is consumed during nitrification (7.14 mg alkalinity per mg NH3-N oxidized).",
     difficulty: "hard",
   },
@@ -4753,12 +4753,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Fecal Coliform Testing",
     question: "A membrane filtration test for fecal coliforms is run on a treated effluent sample. Three dilutions are tested: 1 mL, 10 mL, and 100 mL. The 100 mL filter shows 18 colonies, the 10 mL shows 2 colonies, and the 1 mL shows 0 colonies. What is the fecal coliform count, and which result is most reliable?",
     options: [
-      "18 CFU/100 mL from the 100 mL filter; this is the most reliable result",
-      "20 CFU/100 mL from the 10 mL filter; this is the most reliable result",
       "180 CFU/100 mL from the 10 mL filter; this is the most reliable result",
+      "20 CFU/100 mL from the 10 mL filter; this is the most reliable result",
+      "18 CFU/100 mL from the 100 mL filter; this is the most reliable result",
       "18 CFU/100 mL; all three results are equally valid"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "For membrane filtration, the most reliable count comes from filters with 20-80 colonies (ideal range). The 100 mL filter shows 18 colonies -- within the acceptable range (10-80 is acceptable). Reporting: 18 CFU/100 mL. The 10 mL filter shows 2 colonies -- too few for statistical reliability. The 1 mL filter shows 0 -- not usable. Ontario's effluent standard for treated wastewater is typically 200 CFU/100 mL (E. coli) for Class 4 plants. This result of 18 CFU/100 mL meets the standard.",
     difficulty: "hard",
   },
@@ -4769,11 +4769,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is required to conduct whole effluent toxicity (WET) testing. The LC50 for rainbow trout is determined to be 45% effluent. What does this mean, and does it meet a typical Ontario requirement of LC50 > 50%?",
     options: [
       "45% of fish survived; this fails the LC50 > 50% requirement",
-      "A 45% effluent concentration kills 50% of test organisms; this fails the LC50 > 50% requirement",
+      "45% of the effluent is toxic; this fails the requirement",
       "A 45% effluent concentration kills 50% of test organisms; this passes the LC50 > 50% requirement",
-      "45% of the effluent is toxic; this fails the requirement"
+      "A 45% effluent concentration kills 50% of test organisms; this fails the LC50 > 50% requirement"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "LC50 = the lethal concentration that kills 50% of test organisms over the test period (typically 96 hours for acute toxicity). An LC50 of 45% means that a dilution of 45% effluent in 55% dilution water kills 50% of rainbow trout. A requirement of LC50 > 50% means the effluent must be diluted to more than 50% before it kills half the fish -- i.e., the effluent must be less toxic. Since 45% < 50%, this result FAILS the requirement. Corrective actions may include investigating toxic inputs, improving treatment, or conducting toxicity identification evaluation (TIE).",
     difficulty: "hard",
   },
@@ -4844,12 +4844,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Respirometry",
     question: "A respirometry test measures the oxygen uptake rate (OUR) of activated sludge as 42 mg O2/L/h. The MLVSS is 2,200 mg/L. What is the specific oxygen uptake rate (SOUR), and what does it indicate?",
     options: [
-      "SOUR = 19.1 mg O2/g VSS/h; indicates active, healthy sludge",
-      "SOUR = 0.019 mg O2/g VSS/h; indicates inactive sludge",
       "SOUR = 92.4 mg O2/g VSS/h; indicates over-aerated sludge",
+      "SOUR = 0.019 mg O2/g VSS/h; indicates inactive sludge",
+      "SOUR = 19.1 mg O2/g VSS/h; indicates active, healthy sludge",
       "SOUR = 1.91 mg O2/g VSS/h; indicates toxic inhibition"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Calculate the Specific Oxygen Uptake Rate (SOUR) by dividing the Oxygen Uptake Rate (OUR) by the Mixed Liquor Volatile Suspended Solids (MLVSS), then interpret the result.\n\nStep 1 — Convert MLVSS to grams:\n2,200 mg/L = 2.2 g VSS/L\n\nStep 2 — Calculate SOUR:\nSOUR = OUR ÷ MLVSS\nSOUR = 42 mg O2/L/h ÷ 2.2 g VSS/L\nSOUR = 19.09 mg O2/g VSS/h\n\nStep 3 — Round SOUR to one decimal place:\nSOUR = 19.1 mg O2/g VSS/h\n\nStep 4 — Interpret SOUR value:\nA SOUR value between 8-20 mg O2/g VSS/h indicates active, healthy sludge.\n\nThe correct answer is A. SOUR = 19.1 mg O2/g VSS/h; indicates active, healthy sludge.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Specific Oxygen Uptake Rate (SOUR) = Oxygen Uptake Rate (OUR) / Mixed Liquor Volatile Suspended Solids (MLVSS)" }, { l: "Step 1", c: "Convert MLVSS from mg/L to g/L for consistent units: 2,200 mg/L = 2.2 g/L" }, { l: "Substitute", c: "SOUR = 42 mg O2/L/h / 2.2 g VSS/L" }, { l: "Calculate", c: "SOUR = 19.09 mg O2/g VSS/h" }, { l: "Result", c: "The specific oxygen uptake rate (SOUR) is 19.1 mg O2/g VSS/h. This indicates active, healthy sludge near the upper end of the optimal range." } ],
@@ -4861,12 +4861,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Effluent Sampling",
     question: "A Class 4 plant must collect a composite sample for BOD5 analysis. The plant flow varies significantly throughout the day. What is the correct sampling method and why?",
     options: [
-      "Grab sample at peak flow; this represents worst-case conditions",
       "Flow-proportional composite sample; volume of each aliquot is proportional to flow at time of collection",
+      "Grab sample at peak flow; this represents worst-case conditions",
       "Time-proportional composite sample with equal volumes every 2 hours",
       "Grab sample at average daily flow; this represents typical conditions"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "For variable-flow plants, flow-proportional composite sampling is required because: (1) it accurately represents the mass loading by weighting each sample aliquot according to the flow volume at that time; (2) time-proportional composites can over- or under-represent high-flow or low-flow periods; (3) regulatory compliance is based on mass loading (kg/day = concentration x flow), so the composite must reflect actual loading. For BOD5, samples must be kept at 4 C during collection and analyzed within 6 hours of collection completion.",
     difficulty: "medium",
   },
@@ -4877,11 +4877,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A laboratory QC check shows that a matrix spike recovery for BOD5 is 78%. What does this indicate and what action should be taken?",
     options: [
       "78% recovery is acceptable; no action needed",
-      "78% recovery indicates matrix interference or inhibition; investigate sample matrix, check seed viability, and consider dilution",
       "78% recovery indicates the sample is too dilute; increase sample volume",
+      "78% recovery indicates matrix interference or inhibition; investigate sample matrix, check seed viability, and consider dilution",
       "78% recovery is too high; reduce the spike concentration"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Matrix spike recovery for BOD5 should be 75-125% for acceptable QC. A recovery of 78% is at the low end of acceptable but warrants investigation. Causes of low recovery: (1) matrix inhibition -- toxic substances in the sample inhibiting the BOD seed; (2) poor seed viability; (3) improper dilution. Actions: (1) check seed activity with glucose-glutamic acid (GGA) check standard (should give 198 +/- 30.5 mg/L BOD5); (2) increase sample dilution to reduce inhibitor concentration; (3) use a different seed source. If recovery is consistently below 75%, results are invalid and must be flagged.",
     difficulty: "hard",
   },
@@ -4891,12 +4891,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Metals Analysis",
     question: "A Class 4 plant receives industrial discharge from a metal finishing facility. The operator suspects zinc toxicity to the activated sludge process. What sample type and preservation method should be used for total zinc analysis?",
     options: [
-      "Filtered sample, preserved with NaOH to pH > 11, refrigerated at 4 C",
       "Unfiltered (total) sample, preserved with HNO3 to pH < 2, refrigerated at 4 C, analyzed within 6 months",
+      "Filtered sample, preserved with NaOH to pH > 11, refrigerated at 4 C",
       "Filtered sample, no preservation required, analyzed within 24 hours",
       "Unfiltered sample, preserved with H2SO4 to pH < 2, frozen at -20 C"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "For total metals analysis: (1) Sample type: unfiltered (total) -- includes both dissolved and particulate-bound metals; (2) Preservation: acidify with HNO3 (nitric acid) to pH < 2 -- prevents metal adsorption to container walls and precipitation; (3) Container: plastic (HDPE) or glass; (4) Holding time: 6 months for most metals; (5) Temperature: 4 C refrigeration. For dissolved metals, filter through 0.45 um membrane before acidification. Zinc toxicity threshold for activated sludge: typically 1-5 mg/L total zinc causes inhibition.",
     difficulty: "medium",
   },
@@ -4907,11 +4907,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant conducts a 96-hour acute toxicity test on a receiving water sample downstream of the discharge. The test uses Daphnia magna (water flea). The EC50 is determined to be 35% effluent. What does EC50 mean in this context?",
     options: [
       "35% of the Daphnia survived the test",
-      "A 35% effluent concentration causes 50% immobilization of Daphnia magna",
+      "The effluent must be diluted to 35% before it is safe for aquatic life",
       "35% of the effluent volume is toxic to Daphnia",
-      "The effluent must be diluted to 35% before it is safe for aquatic life"
+      "A 35% effluent concentration causes 50% immobilization of Daphnia magna"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "EC50 (Effective Concentration 50) = the concentration of effluent that causes 50% of the test organisms to show the measured effect (immobilization for Daphnia magna) over the test period. An EC50 of 35% means that a 35% effluent / 65% dilution water mixture immobilizes 50% of Daphnia magna in 96 hours. Unlike LC50 (lethal concentration), EC50 measures sublethal effects (immobility). A lower EC50 value indicates higher toxicity.",
     difficulty: "hard",
   },
@@ -4922,12 +4922,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Nutrient Removal Monitoring",
     question: "A BNR plant is monitoring for complete denitrification. The effluent analysis shows: TN = 12 mg/L; NH3-N = 0.8 mg/L; NO3-N = 9.5 mg/L; NO2-N = 0.3 mg/L. What is the organic nitrogen in the effluent, and is denitrification performing well?",
     options: [
-      "Organic N = 1.4 mg/L; denitrification is performing well",
       "Organic N = 1.4 mg/L; denitrification is poor -- high nitrate remains",
+      "Organic N = 1.4 mg/L; denitrification is performing well",
       "Organic N = 11.2 mg/L; denitrification is complete",
       "Organic N = 0 mg/L; all nitrogen is in inorganic form"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Calculate the organic nitrogen by subtracting the inorganic nitrogen forms from the total nitrogen, then assess denitrification performance based on effluent nitrate levels.\n\nStep 1 — Calculate Organic Nitrogen:\nOrganic N = TN - NH3-N - NO3-N - NO2-N\nOrganic N = 12 mg/L - 0.8 mg/L - 9.5 mg/L - 0.3 mg/L = 1.4 mg/L\n\nStep 2 — Assess Denitrification Performance:\nEffluent NO3-N = 9.5 mg/L. A well-performing BNR system typically has effluent NO3-N < 8 mg/L. Since 9.5 mg/L is greater than 8 mg/L, denitrification is poor.\n\nStep 3 — Evaluate Nitrification Performance:\nEffluent NH3-N = 0.8 mg/L. This low value indicates good nitrification.\n\nThe correct answer is B. Organic N = 1.4 mg/L; denitrification is poor -- high nitrate remains.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Organic Nitrogen = Total Nitrogen (TN) - Ammonia Nitrogen (NH3-N) - Nitrate Nitrogen (NO3-N) - Nitrite Nitrogen (NO2-N)" }, { l: "Substitute", c: "Organic Nitrogen = 12 mg/L - 0.8 mg/L - 9.5 mg/L - 0.3 mg/L" }, { l: "Calculate", c: "Organic Nitrogen = 1.4 mg/L" }, { l: "Result", c: "The organic nitrogen in the effluent is 1.4 mg/L. The high NO3-N (9.5 mg/L) indicates incomplete denitrification." } ],
@@ -4941,11 +4941,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator uses the DPD colorimetric method to measure chlorine residual. The test shows: free chlorine = 0.3 mg/L; total chlorine = 1.8 mg/L. What is the combined chlorine (chloramine) concentration, and what does it indicate?",
     options: [
       "Combined chlorine = 2.1 mg/L; indicates over-chlorination",
-      "Combined chlorine = 1.5 mg/L; indicates chloramines are present, likely from reaction with ammonia in the effluent",
+      "Combined chlorine = 1.8 mg/L; total chlorine equals combined chlorine",
       "Combined chlorine = 0.3 mg/L; free and combined chlorine are the same",
-      "Combined chlorine = 1.8 mg/L; total chlorine equals combined chlorine"
+      "Combined chlorine = 1.5 mg/L; indicates chloramines are present, likely from reaction with ammonia in the effluent"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Calculate combined chlorine by subtracting free chlorine from total chlorine, then interpret the result.\n\nStep 1 — Calculate combined chlorine:\nCombined chlorine = Total chlorine - Free chlorine\nCombined chlorine = 1.8 mg/L - 0.3 mg/L = 1.5 mg/L\n\nStep 2 — Interpret the result:\nCombined chlorine (chloramines) are formed when chlorine reacts with ammonia. A significant combined chlorine residual indicates the presence of ammonia, likely from incomplete nitrification or other sources in the effluent.\n\nThe correct answer is B. Combined chlorine = 1.5 mg/L; indicates chloramines are present, likely from reaction with ammonia in the effluent.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Combined Chlorine = Total Chlorine - Free Chlorine" }, { l: "Substitute", c: "Combined Chlorine = 1.8 mg/L - 0.3 mg/L" }, { l: "Calculate", c: "Combined Chlorine = 1.5 mg/L" }, { l: "Result", c: "The combined chlorine (chloramine) concentration is 1.5 mg/L. This suggests the presence of ammonia reacting with chlorine." } ],
@@ -4958,12 +4958,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Sludge Dewaterability",
     question: "A capillary suction time (CST) test is performed on digested sludge before and after polymer conditioning. Before polymer: CST = 180 seconds. After polymer at 5 kg/tonne DS: CST = 28 seconds. What does this indicate?",
     options: [
-      "The polymer is reducing dewaterability; use less polymer",
       "The polymer at 5 kg/tonne DS significantly improves dewaterability; CST < 30 seconds is excellent",
+      "The polymer is reducing dewaterability; use less polymer",
       "The CST reduction is insufficient; increase polymer dose to 20 kg/tonne DS",
       "CST measures filterability only; it does not predict centrifuge performance"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Evaluate the Capillary Suction Time (CST) values before and after polymer addition to determine the effectiveness of the conditioning.\n\nStep 1 — Understand CST interpretation:\nCST > 100 s = poor dewaterability\nCST 30-100 s = moderate dewaterability\nCST < 30 s = excellent dewaterability\n\nStep 2 — Analyze initial condition:\nBefore polymer: CST = 180 seconds, which indicates poor dewaterability.\n\nStep 3 — Analyze conditioned condition:\nAfter polymer: CST = 28 seconds, which indicates excellent dewaterability.\n\nStep 4 — Determine polymer effectiveness:\nThe reduction from 180 s to 28 s signifies a significant improvement in dewaterability, achieving the 'excellent' range.\n\nThe correct answer is B. The polymer at 5 kg/tonne DS significantly improves dewaterability; CST < 30 seconds is excellent.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Percent Improvement = ((Initial CST - Final CST) / Initial CST) * 100%" }, { l: "Substitute", c: "Percent Improvement = ((180 seconds - 28 seconds) / 180 seconds) * 100%" }, { l: "Calculate", c: "Percent Improvement = (152 / 180) * 100% = 0.8444 * 100% = 84.44%" }, { l: "Result", c: "The polymer conditioning resulted in an 84.4% improvement in dewaterability (CST reduced from 180 s to 28 s), indicating excellent dewaterability." } ],
@@ -4977,11 +4977,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator profiles DO in the aeration basin at 5 points along the plug-flow reactor. Results: inlet = 0.1 mg/L; 25% = 0.4 mg/L; 50% = 1.8 mg/L; 75% = 3.2 mg/L; outlet = 4.5 mg/L. What does this profile indicate and what adjustment is needed?",
     options: [
       "Normal DO profile; no adjustment needed",
-      "DO is too low at the inlet end; increase aeration at the inlet or use tapered aeration design",
+      "The profile indicates complete mixing; switch to a CSTR design",
       "DO is too high at the outlet; reduce aeration throughout",
-      "The profile indicates complete mixing; switch to a CSTR design"
+      "DO is too low at the inlet end; increase aeration at the inlet or use tapered aeration design"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Analyze the dissolved oxygen (DO) profile to identify deviations from optimal conditions and determine the necessary adjustments.\n\nStep 1 — Evaluate inlet DO:\nThe DO at the inlet is 0.1 mg/L. This is critically low, indicating high oxygen demand and potential for anaerobic conditions, filamentous growth, and odor issues. Ideal DO at the inlet should be around 1.5-2.5 mg/L.\n\nStep 2 — Evaluate outlet DO:\nThe DO at the outlet is 4.5 mg/L. This is too high, suggesting excessive aeration and wasted energy. Ideal DO at the outlet should also be around 1.5-2.5 mg/L.\n\nStep 3 — Interpret the profile trend:\nThe DO increases significantly from 0.1 mg/L at the inlet to 4.5 mg/L at the outlet. This indicates that oxygen supply does not match the oxygen demand, which is highest at the inlet and decreases towards the outlet in a plug-flow reactor.\n\nStep 4 — Determine the needed adjustment:\nTo correct the critically low DO at the inlet and the excessively high DO at the outlet, aeration needs to be increased at the inlet end and potentially reduced towards the outlet. This is achieved through tapered aeration, where oxygen supply is matched to the decreasing oxygen demand along the basin.\n\nThe correct answer is B. DO is too low at the inlet end; increase aeration at the inlet or use tapered aeration design.",
     difficulty: "medium",
     steps: [ { l: "Interpretation", c: "In a plug-flow aeration basin, oxygen demand is highest at the inlet and decreases towards the outlet as BOD is consumed." }, { l: "Analysis - Inlet", c: "DO at inlet = 0.1 mg/L. This is critically low, indicating high oxygen demand and potential for anaerobic conditions, which can lead to filamentous growth." }, { l: "Analysis - Mid-basin", c: "DO at 25% = 0.4 mg/L; DO at 50% = 1.8 mg/L. The DO is increasing, but still suboptimal in the first half of the basin." }, { l: "Analysis - Outlet", c: "DO at 75% = 3.2 mg/L; DO at outlet = 4.5 mg/L. These values are higher than typically required, potentially leading to wasted energy." }, { l: "Result", c: "The DO profile shows critically low DO at the inlet, increasing significantly towards the outlet. This indicates insufficient aeration at the beginning of the basin and potentially excessive aeration at the end." } ],
@@ -4994,11 +4994,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's effluent turbidity is consistently 8-12 NTU despite good BOD and TSS removal. What are the most likely causes and corrective actions?",
     options: [
       "High turbidity always indicates high TSS; increase secondary clarifier SOR",
-      "Turbidity can be elevated by colloidal particles, non-settleable VSS, or dispersed growth even when gravimetric TSS appears acceptable; investigate floc structure and consider tertiary filtration",
       "Turbidity is not a regulated parameter; no action needed",
+      "Turbidity can be elevated by colloidal particles, non-settleable VSS, or dispersed growth even when gravimetric TSS appears acceptable; investigate floc structure and consider tertiary filtration",
       "High turbidity indicates nitrification failure; increase SRT"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Turbidity and TSS are correlated but not identical. Elevated turbidity with acceptable gravimetric TSS can result from: (1) colloidal particles -- too small to settle but scatter light; (2) dispersed growth -- non-flocculated bacteria; (3) pin floc -- small, light floc that passes over clarifier weirs; (4) algae. Corrective actions: (1) microscopic examination to identify floc structure; (2) optimize SRT and F:M ratio; (3) add coagulant (alum, ferric) for colloidal removal; (4) install tertiary filtration (sand filter, cloth filter, membrane). UV disinfection efficiency is directly impaired by turbidity.",
     difficulty: "hard",
   },
@@ -5009,11 +5009,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator analyzes digester biogas composition. Results: CH4 = 62%; CO2 = 35%; H2S = 800 ppm; N2 = 3%. Is this a normal biogas composition, and what concern does the H2S level raise?",
     options: [
       "Normal composition; H2S at 800 ppm is within acceptable range for all uses",
-      "Normal CH4/CO2 ratio; H2S at 800 ppm is elevated and requires removal before using biogas in engines or boilers to prevent corrosion and SO2 emissions",
+      "High CO2 content indicates over-digestion; reduce SRT",
       "Low CH4 content indicates digestion failure; increase temperature",
-      "High CO2 content indicates over-digestion; reduce SRT"
+      "Normal CH4/CO2 ratio; H2S at 800 ppm is elevated and requires removal before using biogas in engines or boilers to prevent corrosion and SO2 emissions"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Normal biogas composition: CH4 55-70%; CO2 30-45%; H2S 100-3,000 ppm; trace N2, O2. This composition (62% CH4, 35% CO2) is normal and indicates healthy anaerobic digestion. H2S at 800 ppm: (1) Corrosion: H2S is highly corrosive to metal components, engines, and heat exchangers; (2) Engine damage: H2S > 500 ppm damages engine valves and lubricating oil; (3) SO2 emissions: combustion produces SO2, a regulated air pollutant; (4) Safety: H2S is toxic (IDLH = 50 ppm). H2S removal methods: iron sponge, biological desulfurization (microaeration), activated carbon, or water scrubbing.",
     difficulty: "medium",
   },
@@ -5026,10 +5026,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "Nitrification efficiency = 97.3%; excellent performance",
       "Nitrification efficiency = 88.9%; good performance",
-      "Nitrification efficiency = 90.2%; good performance with incomplete nitrite oxidation",
-      "Nitrification efficiency = 100%; complete nitrification"
+      "Nitrification efficiency = 100%; complete nitrification",
+      "Nitrification efficiency = 90.2%; good performance with incomplete nitrite oxidation"
     ],
-    correct: 2,
+    correct: 3,
     explanation: "Calculate nitrification efficiency by determining the amount of nitrogen converted and comparing it to the influent TKN, assuming a typical effluent organic nitrogen value.\n\nStep 1 — Assume effluent organic nitrogen:\nEffluent organic N = 2 mg/L (typical)\n\nStep 2 — Calculate the amount of nitrogen converted:\nNitrogen converted = Influent TKN - Effluent NH3-N - Effluent organic N\nNitrogen converted = 45 mg/L - 1.2 mg/L - 2 mg/L = 41.8 mg/L\n\nStep 3 — Calculate the total oxidized nitrogen in the effluent:\nTotal oxidized nitrogen = Effluent NO3-N + Effluent NO2-N\nTotal oxidized nitrogen = 38 mg/L + 0.8 mg/L = 38.8 mg/L\n\nStep 4 — Calculate nitrification efficiency:\nNitrification efficiency = (Total oxidized nitrogen ÷ (Influent TKN - Effluent organic N)) × 100\nNitrification efficiency = (38.8 mg/L ÷ (45 mg/L - 2 mg/L)) × 100\nNitrification efficiency = (38.8 mg/L ÷ 43 mg/L) × 100 = 90.2%\n\nStep 5 — Interpret the results:\nThe presence of 0.8 mg/L of NO2-N indicates incomplete nitrite oxidation, suggesting that the nitrification process did not fully convert all nitrite to nitrate.\n\nThe correct answer is 90.2%; good performance with incomplete nitrite oxidation.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Nitrification Efficiency (%) = ((NO3-N + NO2-N) / (Influent TKN - Effluent Organic N)) * 100" }, { l: "Step 1: Identify given values and assumptions", c: "Influent TKN = 45 mg/L; Effluent NH3-N = 1.2 mg/L; Effluent NO3-N = 38 mg/L; Effluent NO2-N = 0.8 mg/L. Assume Effluent Organic N = 2 mg/L (as per explanation)." }, { l: "Step 2: Calculate the amount of nitrogen converted to nitrates and nitrites", c: "Nitrogen converted = Effluent NO3-N + Effluent NO2-N = 38 mg/L + 0.8 mg/L = 38.8 mg/L" }, { l: "Step 3: Calculate the available nitrogen for nitrification (Influent TKN - Effluent Organic N)", c: "Available Nitrogen = Influent TKN - Effluent Organic N = 45 mg/L - 2 mg/L = 43 mg/L" }, { l: "Step 4: Substitute values into the nitrification efficiency formula and calculate", c: "Nitrification Efficiency = (38.8 mg/L / 43 mg/L) * 100 = 90.23%" }, { l: "Result", c: "The nitrification efficiency is 90.2%." } ],
@@ -5042,12 +5042,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Sludge Age Calculation",
     question: "A Class 4 operator calculates SRT for an activated sludge system. Aeration basin volume = 4,500 m3; MLSS = 3,200 mg/L; daily waste sludge flow = 180 m3/day at 8,500 mg/L SS; effluent flow = 18,000 m3/day at 12 mg/L SS. What is the SRT?",
     options: [
-      "SRT = 8.2 days",
       "SRT = 9.6 days",
+      "SRT = 8.2 days",
       "SRT = 7.1 days",
       "SRT = 12.4 days"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "Calculate the total mass of solids in the aeration basin and divide by the total mass of solids leaving the system per day.\n\nStep 1 — Calculate total solids in the aeration basin:\n3,200 mg/L × 4,500 m3 × 1,000 L/m3 × (1 kg / 1,000,000 mg) = 14,400 kg\n\nStep 2 — Calculate solids leaving via waste sludge:\n8,500 mg/L × 180 m3/day × 1,000 L/m3 × (1 kg / 1,000,000 mg) = 1,530 kg/day\n\nStep 3 — Calculate solids leaving via effluent:\n12 mg/L × 18,000 m3/day × 1,000 L/m3 × (1 kg / 1,000,000 mg) = 216 kg/day\n\nStep 4 — Calculate total solids leaving the system per day:\n1,530 kg/day + 216 kg/day = 1,746 kg/day\n\nStep 5 — Calculate the Solids Retention Time (SRT):\n14,400 kg ÷ 1,746 kg/day = 8.247 days\n\nThe correct answer is 8.2 days.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "SRT (days) = (MLSS * V_aeration) / ((Waste sludge SS * Q_waste) + (Effluent SS * Q_effluent))" }, { l: "Step 1: Identify given values and convert units to kg and kg/day", c: "Aeration basin volume (V_aeration) = 4,500 m³; MLSS = 3,200 mg/L = 3.2 kg/m³; Daily waste sludge flow (Q_waste) = 180 m³/day; Waste sludge SS = 8,500 mg/L = 8.5 kg/m³; Effluent flow (Q_effluent) = 18,000 m³/day; Effluent SS = 12 mg/L = 0.012 kg/m³." }, { l: "Step 2: Calculate total solids in the aeration basin", c: "Solids in system = MLSS * V_aeration = 3.2 kg/m³ * 4,500 m³ = 14,400 kg" }, { l: "Step 3: Calculate solids leaving via waste sludge per day", c: "Solids wasted = Waste sludge SS * Q_waste = 8.5 kg/m³ * 180 m³/day = 1,530 kg/day" }, { l: "Step 4: Calculate solids leaving via effluent per day", c: "Solids in effluent = Effluent SS * Q_effluent = 0.012 kg/m³ * 18,000 m³/day = 216 kg/day" }, { l: "Step 5: Substitute values into the SRT formula and calculate", c: "SRT = 14,400 kg / (1,530 kg/day + 216 kg/day) = 14,400 kg / 1,746 kg/day = 8.247 days" }, { l: "Result", c: "The SRT for the activated sludge system is 8.2 days." } ],
@@ -5061,11 +5061,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's ECA requires monthly average BOD5 of 10 mg/L and a single-sample maximum of 20 mg/L. The monthly results (20 samples) average to 9.6 mg/L and the highest individual result is 15 mg/L. Is the plant in compliance?",
     options: [
       "Non-compliant; the monthly average exceeds 10 mg/L",
-      "Compliant; monthly average 9.6 mg/L is within the limit and highest individual result 15 mg/L is below the 20 mg/L maximum",
       "Non-compliant; individual values exceeding 10 mg/L constitute violations",
+      "Compliant; monthly average 9.6 mg/L is within the limit and highest individual result 15 mg/L is below the 20 mg/L maximum",
       "Compliant; only the monthly average matters, not individual values"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "To determine compliance, compare the plant's monthly average and highest single-sample result against the ECA limits.\n\nStep 1 — Evaluate monthly average BOD5:\nPlant's monthly average = 9.6 mg/L\nECA monthly average limit = 10 mg/L\n9.6 mg/L is less than 10 mg/L, so the plant is compliant with the monthly average limit.\n\nStep 2 — Evaluate single-sample maximum BOD5:\nPlant's highest individual result = 15 mg/L\nECA single-sample maximum limit = 20 mg/L\n15 mg/L is less than 20 mg/L, so the plant is compliant with the single-sample maximum limit.\n\nStep 3 — Conclude overall compliance:\nSince both the monthly average and the highest individual result are within their respective limits, the plant is compliant.\n\nThe correct answer is B. Compliant; monthly average 9.6 mg/L is within the limit and highest individual result 15 mg/L is below the 20 mg/L maximum.",
     difficulty: "medium",
     steps: [ { l: "Step 1: Identify the permit limits", c: "Monthly average BOD5 limit = 10 mg/L. Single-sample maximum BOD5 limit = 20 mg/L." }, { l: "Step 2: Compare the reported monthly average to the permit limit", c: "Reported monthly average BOD5 = 9.6 mg/L. Since 9.6 mg/L is less than 10 mg/L, the plant is compliant with the monthly average limit." }, { l: "Step 3: Compare the reported highest individual sample to the permit limit", c: "Reported highest individual BOD5 result = 15 mg/L. Since 15 mg/L is less than 20 mg/L, the plant is compliant with the single-sample maximum limit." }, { l: "Result", c: "The plant is compliant with both the monthly average and single-sample maximum BOD5 limits." } ],
@@ -5078,11 +5078,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's ECA requires E. coli of 200 CFU/100 mL (monthly geometric mean) and 400 CFU/100 mL (single sample maximum). The weekly E. coli results for the month are: 85, 320, 145, 280 CFU/100 mL. Is the plant in compliance?",
     options: [
       "Non-compliant; the 320 CFU/100 mL result exceeds the monthly geometric mean limit",
-      "Compliant; geometric mean = approximately 182 CFU/100 mL which is below 200; all individual results are below 400 CFU/100 mL",
+      "Compliant; arithmetic mean = 207.5 CFU/100 mL which is close enough to 200",
       "Non-compliant; two results (320 and 280) exceed the monthly geometric mean limit of 200",
-      "Compliant; arithmetic mean = 207.5 CFU/100 mL which is close enough to 200"
+      "Compliant; geometric mean = approximately 182 CFU/100 mL which is below 200; all individual results are below 400 CFU/100 mL"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Geometric mean = (85 x 320 x 145 x 280)^(1/4) = (1,101,600,000)^(0.25) = approximately 182 CFU/100 mL which is below 200. Single sample maximum: highest = 320 CFU/100 mL which is below 400. COMPLIANT. Note: geometric mean is used for pathogen indicators (not arithmetic mean) because it reduces the influence of outliers and is more appropriate for log-normally distributed microbiological data. Geometric mean = antilog(sum of log values / n) = antilog((1.929 + 2.505 + 2.161 + 2.447) / 4) = antilog(2.261) = 182 CFU/100 mL.",
     difficulty: "hard",
   },
@@ -5093,11 +5093,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator measures effluent conductivity as 1,450 uS/cm. Using the empirical relationship TDS = 0.64 x conductivity, what is the estimated TDS, and what might cause elevated conductivity in wastewater effluent?",
     options: [
       "TDS = 928 mg/L; elevated conductivity indicates high organic loading",
-      "TDS = 928 mg/L; elevated conductivity indicates high dissolved inorganic salts from industrial discharge, water softener regeneration, or road salt",
       "TDS = 2,266 mg/L; elevated conductivity indicates poor treatment",
+      "TDS = 928 mg/L; elevated conductivity indicates high dissolved inorganic salts from industrial discharge, water softener regeneration, or road salt",
       "TDS = 145 mg/L; this is a normal conductivity for treated wastewater"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "TDS = 0.64 x 1,450 = 928 mg/L. Typical municipal wastewater conductivity: 500-1,500 uS/cm. Causes of elevated conductivity: (1) industrial discharge with high salt content; (2) water softener regeneration brine (NaCl); (3) road salt (NaCl, MgCl2) infiltration; (4) groundwater infiltration with high mineral content. Conductivity is a surrogate for TDS and measures dissolved inorganic ions. Organic compounds contribute minimally to conductivity. High TDS/conductivity can affect receiving water aquatic life and may be regulated in some ECAs.",
     difficulty: "medium",
   },
@@ -5108,12 +5108,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Sludge Volume Index",
     question: "An operator notices the SVI has been gradually increasing from 90 to 170 mL/g over 3 weeks. Microscopy shows no dominant filaments but the floc is light and fluffy. The F:M ratio is 0.15 and DO is 2.5 mg/L. What is the most likely cause?",
     options: [
-      "Filamentous bulking from low F:M; increase wasting",
       "Non-filamentous (viscous) bulking from excessive EPS production; investigate for nutrient deficiency or toxic shock",
+      "Filamentous bulking from low F:M; increase wasting",
       "Normal seasonal variation; no action needed",
       "Rising sludge from denitrification; reduce SRT"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Evaluate the provided operational data against common causes of SVI increase to identify the most likely scenario.\n\nStep 1 — Analyze the SVI trend:\nThe SVI has increased from 90 to 170 mL/g over 3 weeks, indicating a significant and sustained settling problem.\n\nStep 2 — Evaluate microscopy and floc characteristics:\nMicroscopy shows no dominant filaments, ruling out classic filamentous bulking. The floc is described as light and fluffy, which is characteristic of non-filamentous bulking where the floc structure is diffuse due to excessive extracellular polymeric substances (EPS).\n\nStep 3 — Assess F:M ratio and DO:\nThe F:M ratio is 0.15, which is within a typical operating range and does not strongly suggest low F:M filamentous bulking. The DO is 2.5 mg/L, which is adequate and does not point to anoxic conditions causing denitrification (rising sludge).\n\nStep 4 — Compare with given options:\nA. Filamentous bulking from low F:M is unlikely due to the absence of dominant filaments and a reasonable F:M ratio.\nC. Normal seasonal variation is unlikely given the significant and sustained SVI increase and specific floc characteristics.\nD. Rising sludge from denitrification is unlikely given adequate DO levels (2.5 mg/L).\nB. Non-filamentous (viscous) bulking from excessive EPS production aligns perfectly with the light, fluffy floc and absence of dominant filaments. Common causes for this type of bulking include nutrient deficiency or toxic shock, which would lead to EPS overproduction as a stress response.\n\nThe correct answer is B. Non-filamentous (viscous) bulking from excessive EPS production; investigate for nutrient deficiency or toxic shock.",
     difficulty: "hard",
     steps: [ { l: "Step 1: Analyze the SVI trend", c: "SVI increased from 90 to 170 mL/g over 3 weeks, indicating poorer settling." }, { l: "Step 2: Analyze microscopy observations", c: "No dominant filaments, but floc is light and fluffy. This points away from typical filamentous bulking." }, { l: "Step 3: Analyze operational parameters", c: "F:M ratio = 0.15 (low); DO = 2.5 mg/L (adequate). A low F:M ratio can indicate underfeeding or old sludge." }, { l: "Step 4: Correlate observations with known bulking types", c: "The combination of increasing SVI, absence of dominant filaments, light/fluffy floc, and a low F:M ratio is characteristic of non-filamentous (or viscous/zoogleal) bulking. This often occurs due to nutrient deficiency (especially nitrogen or phosphorus) or low F:M ratios, leading to excessive extracellular polymeric substance (EPS) production by bacteria, which traps water and hinders settling." }, { l: "Result", c: "The plant is experiencing non-filamentous (viscous or zoogleal) bulking, likely due to a low F:M ratio or potential nutrient deficiency." } ],
@@ -5125,12 +5125,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Sludge Thickening",
     question: "A gravity thickener is receiving 800 m3/day of WAS at 0.8% TS. The thickener produces 120 m3/day of thickened sludge at 4.5% TS. What is the mass balance recovery efficiency?",
     options: [
-      "Recovery = 84.4%; 15.6% of solids lost in overflow",
       "Recovery = 92.3%; 7.7% of solids lost in overflow",
+      "Recovery = 84.4%; 15.6% of solids lost in overflow",
       "Recovery = 100%; all solids are captured",
       "Recovery = 67.5%; significant solids lost in overflow"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "Mass balance: Solids in = 800 m3/day x 0.8% x 10,000 g/m3 = 64,000 kg/day. Solids out (thickened) = 120 m3/day x 4.5% x 10,000 g/m3 = 54,000 kg/day. Recovery = 54,000 / 64,000 x 100 = 84.4%. The remaining 15.6% (10,000 kg/day) is lost in the thickener overflow (supernatant) returned to the headworks. Good gravity thickener performance for WAS: 85-95% recovery. WAS is difficult to gravity thicken due to its low specific gravity and high water-binding capacity.",
     difficulty: "hard",
   },
@@ -5142,11 +5142,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "An anaerobic digester is operating at 35 C (mesophilic). The operator monitors volatile acid (VA) to alkalinity ratio. Current results: VA = 450 mg/L as acetic acid; alkalinity = 2,800 mg/L as CaCO3. Is the digester stable?",
     options: [
       "Unstable; VA/alkalinity ratio of 0.16 exceeds the 0.10 threshold",
-      "Stable; VA/alkalinity ratio of 0.16 is within the acceptable range of 0.1-0.3",
+      "Stable; VA/alkalinity ratio of 0.16 is below the 0.5 warning threshold",
       "Unstable; VA/alkalinity ratio of 0.16 indicates imminent souring",
-      "Stable; VA/alkalinity ratio of 0.16 is below the 0.5 warning threshold"
+      "Stable; VA/alkalinity ratio of 0.16 is within the acceptable range of 0.1-0.3"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Calculate the volatile acid to alkalinity ratio and compare it to the established stability ranges.\n\nStep 1 — Calculate the VA/Alkalinity ratio:\nVA/Alkalinity ratio = 450 mg/L ÷ 2,800 mg/L = 0.16\n\nStep 2 — Interpret the ratio based on stability guidelines:\n- Ratio < 0.1: Very stable\n- Ratio 0.1 - 0.3: Stable (acceptable)\n- Ratio 0.3 - 0.5: Caution, monitor closely\n- Ratio > 0.5: Unstable, digester souring\n\nStep 3 — Determine digester stability:\nA ratio of 0.16 falls within the 0.1 - 0.3 range.\n\nThe correct answer is B. Stable; VA/alkalinity ratio of 0.16 is within the acceptable range of 0.1-0.3.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "VA/Alkalinity Ratio = Volatile Acid (mg/L as acetic acid) / Alkalinity (mg/L as CaCO3)" }, { l: "Step 1: Identify given values", c: "Volatile Acid (VA) = 450 mg/L as acetic acid; Alkalinity = 2,800 mg/L as CaCO3." }, { l: "Step 2: Substitute values into the formula and calculate the ratio", c: "VA/Alkalinity Ratio = 450 mg/L / 2,800 mg/L = 0.1607" }, { l: "Step 3: Interpret the calculated ratio", c: "A ratio of 0.16 falls within the stable (acceptable) range of 0.1 to 0.3." }, { l: "Result", c: "The VA/Alkalinity ratio is 0.16, indicating stable digester operation." } ],
@@ -5158,12 +5158,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Centrifuge Performance",
     question: "A decanter centrifuge is dewatering digested sludge. The feed is 3.2% TS at 180 m3/day. The centrate is 0.18% TS and the cake is 22% TS. What is the solids capture efficiency?",
     options: [
-      "Solids capture = 94.2%",
+      "Solids capture = 78.3%",
       "Solids capture = 87.5%",
       "Solids capture = 97.8%",
-      "Solids capture = 78.3%"
+      "Solids capture = 94.2%"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "Using mass balance: Let Q_feed = 180 m3/day, C_feed = 3.2% = 32 g/L, C_centrate = 0.18% = 1.8 g/L, C_cake = 22% = 220 g/L. Solids in feed = 180 x 32 = 5,760 kg/day. Using the formula: Solids capture (%) = (C_feed - C_centrate) / (C_cake - C_centrate) x (C_cake / C_feed) x 100 = (32 - 1.8) / (220 - 1.8) x (220 / 32) x 100 = (30.2 / 218.2) x 6.875 x 100 = 0.1384 x 6.875 x 100 = 95.1% (approximately 94.2%). Good centrifuge performance: > 90% solids capture. Polymer addition typically improves capture to 95-98%.",
     difficulty: "hard",
   },
@@ -5188,8 +5188,8 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Laboratory Analysis & Interpretation",
     topic: "Flow Measurement",
     question: "A Parshall flume is used to measure plant influent flow. The flume has a throat width of 6 inches (0.15 m). The measured head (Ha) is 0.42 m. Using the standard 6-inch Parshall flume formula Q = 0.3812 × Ha^1.58 (SI units), what is the flow in m³/s?",
-    options: ["A. Q = 0.142 m³/s", "B. Q = 0.097 m³/s", "C. Q = 0.215 m³/s", "D. Q = 0.056 m³/s"],
-    correct: 1,
+    options: ["A. Q = 0.142 m³/s", "D. Q = 0.056 m³/s", "C. Q = 0.215 m³/s", "B. Q = 0.097 m³/s"],
+    correct: 3,
     explanation: "Calculate the flow using the standard 6-inch Parshall flume formula for SI units.\n\nStep 1 — Identify the given values:\nThroat width W = 0.15 m (6 inches)\nMeasured head Ha = 0.42 m\nFormula for 6-inch flume (SI): Q = 0.3812 × Ha^1.58\n\nStep 2 — Calculate Ha^1.58:\nHa^1.58 = (0.42)^1.58 = 0.2543\n\nStep 3 — Calculate flow rate:\nQ = 0.3812 × 0.2543 = 0.0970 m³/s\n\nStep 4 — Select the closest answer:\n0.097 m³/s matches option B.\n\nThe correct answer is B. Q = 0.097 m³/s.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Standard 6-inch Parshall flume (SI): Q = 0.3812 × Ha^1.58" }, { l: "Identify Variables", c: "Ha = measured upstream head = 0.42 m" }, { l: "Calculate Ha^1.58", c: "(0.42)^1.58 = 0.2543" }, { l: "Calculate Flow Rate", c: "Q = 0.3812 × 0.2543 = 0.0970 m³/s" }, { l: "Result", c: "Q ≈ 0.097 m³/s" } ],
@@ -5221,10 +5221,10 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     options: [
       "Same setpoint of 2.0 mg/L; temperature does not affect DO setpoint",
       "Lower setpoint of 1.2 mg/L; oxygen is more soluble at lower temperatures",
-      "Higher setpoint of 2.8 mg/L; oxygen transfer efficiency decreases at lower temperatures",
-      "The DO setpoint should be based on process requirements, not temperature compensation"
+      "The DO setpoint should be based on process requirements, not temperature compensation",
+      "Higher setpoint of 2.8 mg/L; oxygen transfer efficiency decreases at lower temperatures"
     ],
-    correct: 3,
+    correct: 2,
     explanation: "The DO setpoint should be based on process requirements (nitrification, BOD removal) rather than temperature compensation. In winter at 8 C: (1) oxygen saturation is higher (approximately 11.8 mg/L vs 8.3 mg/L at 25 C), so the driving force for oxygen transfer is actually greater at the same setpoint; (2) biological oxygen demand is lower due to reduced metabolic rates; (3) nitrification requires a minimum DO of 2 mg/L regardless of temperature. The correct approach: maintain DO at 2.0 mg/L minimum for nitrification, but reduce aeration energy in winter because the higher oxygen saturation improves transfer efficiency and lower temperatures reduce oxygen demand.",
     difficulty: "hard",
   },
@@ -5234,12 +5234,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Sludge Blanket Monitoring",
     question: "A Class 4 operator uses a sludge judge (core sampler) to measure the sludge blanket depth in the secondary clarifier. The total clarifier depth is 4.5 m and the sludge blanket is at 3.2 m from the bottom. The clarifier is 25 m in diameter. What is the sludge blanket depth from the surface, and is this acceptable?",
     options: [
-      "Blanket depth from surface = 1.3 m; this is too high and risks sludge carryover",
-      "Blanket depth from surface = 3.2 m; this is acceptable",
       "Blanket depth from surface = 1.3 m; this is acceptable with a 1.3 m clear zone",
+      "Blanket depth from surface = 3.2 m; this is acceptable",
+      "Blanket depth from surface = 1.3 m; this is too high and risks sludge carryover",
       "Blanket depth from surface = 3.2 m; this is too deep and risks anaerobic conditions"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Sludge blanket depth from surface = Total depth - Blanket height from bottom = 4.5 - 3.2 = 1.3 m. Acceptable sludge blanket: the clear zone (distance from blanket top to effluent weir) should be at least 0.6-1.0 m minimum, ideally 1.5-2.0 m. A clear zone of only 1.3 m is marginal and risks sludge carryover during peak flows or hydraulic surges. Corrective actions: (1) increase RAS rate to draw down the blanket; (2) increase WAS rate to reduce total solids inventory; (3) check for hydraulic overloading. Monitor blanket depth at least twice daily during peak flow periods.",
     difficulty: "medium",
   },
@@ -5269,11 +5269,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is required to achieve effluent TP of 0.3 mg/L. The biological process achieves 0.8 mg/L TP. Chemical polishing with ferric chloride is used. The operator adds FeCl3 at 15 mg/L. The molar ratio of Fe:P is 1.5:1 for this application. What is the expected effluent TP after chemical polishing?",
     options: [
       "Effluent TP = 0.15 mg/L; the ferric dose is sufficient",
-      "Effluent TP = 0.28 mg/L; the ferric dose is marginally sufficient to meet the 0.3 mg/L limit",
       "Effluent TP = 0.45 mg/L; the ferric dose is insufficient",
+      "Effluent TP = 0.28 mg/L; the ferric dose is marginally sufficient to meet the 0.3 mg/L limit",
       "Effluent TP = 0.05 mg/L; the ferric dose is excessive"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Determine the minimum FeCl3 dose needed to polish effluent TP from 0.8 mg/L to 0.3 mg/L, then check whether 15 mg/L FeCl3 is sufficient.\n\nStep 1 — Identify the P removal target:\nP to remove = 0.8 − 0.3 = 0.5 mg/L as P\n\nStep 2 — Convert P removal target to molar:\nMW of P = 30.97 g/mol\nP (mol/L) = 0.5 mg/L ÷ (30,970 mg/mol) = 1.614 × 10⁻⁵ mol/L\n\nStep 3 — Calculate Fe required at Fe:P = 1.5:1 molar ratio:\nFe required (mol/L) = 1.614 × 10⁻⁵ × 1.5 = 2.421 × 10⁻⁵ mol/L\nFe required (mg/L) = 2.421 × 10⁻⁵ × 55,850 = 1.35 mg/L as Fe\n\nStep 4 — Determine Fe available from 15 mg/L FeCl3:\nMW of FeCl3 = 55.85 + 3(35.45) = 162.2 g/mol\nFe fraction = 55.85 ÷ 162.2 = 0.344\nFe available = 15 × 0.344 = 5.16 mg/L as Fe\n\nStep 5 — Compare and conclude:\nFe available (5.16 mg/L) >> Fe required (1.35 mg/L). The dose is more than sufficient to remove the target 0.5 mg/L P. In practice, with excess Fe and real-world removal efficiency (~90–95%), the expected effluent TP is approximately 0.28 mg/L — marginally below the 0.3 mg/L limit.\n\nThe correct answer is B. Effluent TP ≈ 0.28 mg/L.",
     difficulty: "hard",
     steps: [ { l: "P Removal Target", c: "P to remove = 0.8 − 0.3 = 0.5 mg/L" }, { l: "Fe Required (molar)", c: "P mol/L = 0.5 ÷ 30,970 = 1.614 × 10⁻⁵; Fe mol/L = 1.614 × 10⁻⁵ × 1.5 = 2.421 × 10⁻⁵" }, { l: "Fe Required (mg/L)", c: "2.421 × 10⁻⁵ mol/L × 55,850 mg/mol = 1.35 mg/L Fe" }, { l: "Fe Available from FeCl3", c: "MW FeCl3 = 162.2 g/mol; Fe fraction = 55.85/162.2 = 0.344; Fe = 15 × 0.344 = 5.16 mg/L" }, { l: "Result", c: "5.16 mg/L Fe >> 1.35 mg/L required. Dose is sufficient; expected effluent TP ≈ 0.28 mg/L." } ],
@@ -5286,11 +5286,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant uses air stripping to remove ammonia from digester centrate (high-strength reject water). The centrate has NH3-N = 800 mg/L and pH = 7.8. The operator raises the pH to 11.0 using lime. Why is high pH required for ammonia stripping?",
     options: [
       "High pH increases the solubility of ammonia in water, making it easier to strip",
-      "High pH shifts the equilibrium from ammonium ion (NH4+) to free ammonia (NH3), which is volatile and can be stripped by air",
       "High pH precipitates ammonia as calcium ammonium phosphate (struvite)",
+      "High pH shifts the equilibrium from ammonium ion (NH4+) to free ammonia (NH3), which is volatile and can be stripped by air",
       "High pH increases the density of air, improving stripping efficiency"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Ammonia exists in two forms in water: NH4+ (ammonium ion, non-volatile) and NH3 (free ammonia, volatile). The equilibrium: NH4+ <-> NH3 + H+. At pH 7.8, approximately 1% is free NH3. At pH 11.0, approximately 98% is free NH3. By raising pH to 11.0 with lime, the equilibrium shifts strongly toward free ammonia, which can then be stripped by passing air through the water. The stripped ammonia is captured in an acid scrubber (H2SO4) to form ammonium sulfate fertilizer, or discharged to atmosphere (regulated). Temperature also affects stripping efficiency -- higher temperature increases NH3 vapor pressure.",
     difficulty: "medium",
   },
@@ -5317,11 +5317,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is considering SHARON-ANAMMOX treatment for digester reject water containing 900 mg/L NH3-N. What is the advantage of ANAMMOX over conventional nitrification-denitrification for this application?",
     options: [
       "ANAMMOX requires more oxygen than conventional nitrification, providing better treatment",
-      "ANAMMOX converts NH4+ directly to N2 gas using NO2- as electron acceptor, requiring only 60% of the oxygen and no external carbon source compared to conventional N removal",
       "ANAMMOX is faster than conventional nitrification at all temperatures",
+      "ANAMMOX converts NH4+ directly to N2 gas using NO2- as electron acceptor, requiring only 60% of the oxygen and no external carbon source compared to conventional N removal",
       "ANAMMOX produces more biogas than conventional treatment"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "The ANAMMOX process offers several advantages over conventional nitrification-denitrification, primarily due to its unique biochemical pathway.\n\nStep 1 — Understanding the ANAMMOX reaction:\nANAMMOX (Anaerobic AMMonium OXidation) directly converts ammonium (NH4+) and nitrite (NO2-) into nitrogen gas (N2) and water (H2O).\n\nStep 2 — Oxygen demand comparison:\nConventional nitrification requires full oxidation of NH4+ to NO3-, consuming significant oxygen. ANAMMOX only requires partial nitrification to NO2-, resulting in approximately 60% less oxygen demand.\n\nStep 3 — External carbon source comparison:\nConventional denitrification requires an external carbon source (e.g., methanol) for the conversion of NO3- to N2. ANAMMOX uses NO2- directly and does not require an external carbon source.\n\nStep 4 — Overall efficiency and benefits:\nThese factors lead to significant energy savings (less aeration) and operational cost reductions (no external carbon), making ANAMMOX a more efficient and sustainable nitrogen removal process, especially for high-strength reject water.\n\nThe correct answer is B. ANAMMOX converts NH4+ directly to N2 gas using NO2- as electron acceptor, requiring only 60% of the oxygen and no external carbon source compared to conventional N removal.",
     difficulty: "hard",
     steps: [ { l: "Understand ANAMMOX Process", c: "ANAMMOX (Anaerobic Ammonium Oxidation) is a biological process where ammonium and nitrite are converted directly to nitrogen gas under anaerobic conditions." }, { l: "Compare Oxygen Requirements", c: "Conventional nitrification requires full oxidation of NH3-N to NO3-N, consuming significant oxygen. ANAMMOX only requires partial nitrification to NO2-N, reducing oxygen demand by approximately 60%." }, { l: "Compare Carbon Requirements", c: "Conventional denitrification requires an external carbon source (e.g., methanol) to reduce NO3-N to N2. ANAMMOX uses ammonium as the electron donor, eliminating the need for an external carbon source." }, { l: "Evaluate Sludge Production", c: "ANAMMOX has a lower biomass yield compared to conventional processes, resulting in less sludge production." }, { l: "Identify Key Advantages for Digester Reject Water", c: "Digester reject water is high in NH3-N but low in BOD. ANAMMOX is ideal because it saves oxygen (energy) and doesn't require an external carbon source, which is scarce in this stream." }, { l: "Result", c: "The primary advantages of ANAMMOX for digester reject water are significant energy savings due to reduced oxygen demand and the elimination of external carbon source requirements." } ],
@@ -5351,12 +5351,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "UV Disinfection Monitoring",
     question: "A Class 4 plant uses UV disinfection. The UV transmittance (UVT) of the effluent drops from 72% to 55% following a storm event. How does this affect disinfection performance and what adjustment is needed?",
     options: [
-      "Lower UVT has no effect on UV dose; no adjustment needed",
       "Lower UVT reduces UV penetration through the water, reducing effective UV dose; increase UV intensity or reduce flow rate to maintain required dose",
+      "Lower UVT has no effect on UV dose; no adjustment needed",
       "Lower UVT improves disinfection by increasing UV absorption in the water",
       "Lower UVT indicates the UV lamps need replacement"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "UV transmittance (UVT) measures the fraction of UV light that passes through 1 cm of water at 254 nm. Lower UVT = more UV absorbed by non-target substances (colour, turbidity, organic matter, iron) = less UV reaching pathogens. Impact: UV dose = UV intensity x exposure time. If UVT drops from 72% to 55%, the effective UV intensity reaching pathogens decreases significantly. Corrective actions: (1) reduce flow rate through the UV system to increase exposure time; (2) increase lamp intensity (if variable output ballasts are installed); (3) investigate source of UVT reduction (storm inflow, industrial discharge, algae); (4) ensure tertiary filtration is operating properly. Target UVT for UV disinfection: > 65% for most designs.",
     difficulty: "medium",
   },
@@ -5367,12 +5367,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Ozone Disinfection",
     question: "A Class 4 plant uses ozone disinfection. The operator measures ozone residual in the contact chamber as 0.05 mg/L after 10 minutes contact time. The CT value is 0.5 mg.min/L. Is this sufficient for 4-log (99.99%) Giardia inactivation if the required CT is 1.0 mg.min/L?",
     options: [
-      "Yes; 0.5 mg.min/L exceeds the 1.0 mg.min/L requirement",
       "No; CT = 0.5 mg.min/L is insufficient; the required CT of 1.0 mg.min/L is not achieved",
+      "Yes; 0.5 mg.min/L exceeds the 1.0 mg.min/L requirement",
       "Yes; ozone is more effective than chlorine so lower CT values are acceptable",
       "No; ozone residual of 0.05 mg/L is too low; increase ozone dose"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Calculate the actual CT value and compare it to the required CT value.\n\nStep 1 — Calculate the actual CT value:\nCT = Concentration × Time = 0.05 mg/L × 10 min = 0.5 mg.min/L\n\nStep 2 — Compare actual CT to required CT:\nActual CT = 0.5 mg.min/L\nRequired CT = 1.0 mg.min/L\nSince 0.5 mg.min/L is less than 1.0 mg.min/L, the CT is insufficient.\n\nThe correct answer is B. No; CT = 0.5 mg.min/L is insufficient; the required CT of 1.0 mg.min/L is not achieved.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "CT = Concentration (C) x Time (T)" }, { l: "Step 1: Identify Given Values", c: "Ozone residual (C) = 0.05 mg/L; Contact time (T) = 10 minutes; Required CT for 4-log Giardia inactivation = 1.0 mg.min/L (given for specific conditions)." }, { l: "Step 2: Calculate Actual CT Value", c: "CT = 0.05 mg/L x 10 min" }, { l: "Step 3: Perform Calculation", c: "CT = 0.5 mg.min/L" }, { l: "Step 4: Compare Actual CT with Required CT", c: "Actual CT (0.5 mg.min/L) vs. Required CT (1.0 mg.min/L)" }, { l: "Result", c: "Since 0.5 mg.min/L < 1.0 mg.min/L, the CT value is INSUFFICIENT for 4-log Giardia inactivation. Corrective actions are needed." } ],
@@ -5384,8 +5384,8 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Laboratory Analysis & Interpretation",
     topic: "Chlorination Dechlorination",
     question: "A Class 4 plant chlorinates effluent to 3.5 mg/L total chlorine residual and then dechlorinates with sodium bisulfite (NaHSO3). The stoichiometric ratio is 1.46 mg NaHSO3 per mg Cl2. If the target effluent total residual chlorine (TRC) is < 0.02 mg/L, what NaHSO3 dose is needed?",
-    options: ["A. NaHSO3 dose = 5.11 mg/L to remove all 3.5 mg/L chlorine", "B. NaHSO3 dose = 5.08 mg/L to reduce chlorine from 3.5 to 0.02 mg/L", "C. NaHSO3 dose = 2.92 mg/L to remove half the chlorine", "D. NaHSO3 dose = 7.0 mg/L to ensure complete dechlorination"],
-    correct: 1,
+    options: ["B. NaHSO3 dose = 5.08 mg/L to reduce chlorine from 3.5 to 0.02 mg/L", "A. NaHSO3 dose = 5.11 mg/L to remove all 3.5 mg/L chlorine", "C. NaHSO3 dose = 2.92 mg/L to remove half the chlorine", "D. NaHSO3 dose = 7.0 mg/L to ensure complete dechlorination"],
+    correct: 0,
     explanation: "Calculate the amount of chlorine to be removed, then apply the stoichiometric ratio to find the sodium bisulfite dose.\n\nStep 1 — Calculate the amount of chlorine to be removed:\nChlorine to be removed = Initial TRC - Target TRC\nChlorine to be removed = 3.5 mg/L - 0.02 mg/L = 3.48 mg/L\n\nStep 2 — Calculate the NaHSO3 dose using the stoichiometric ratio:\nNaHSO3 dose = Chlorine to be removed × Stoichiometric ratio\nNaHSO3 dose = 3.48 mg/L Cl2 × 1.46 mg NaHSO3/mg Cl2 = 5.0808 mg/L NaHSO3\n\nStep 3 — Round to two decimal places:\nNaHSO3 dose = 5.08 mg/L\n\nB. NaHSO3 dose = 5.08 mg/L to reduce chlorine from 3.5 to 0.02 mg/L",
     difficulty: "medium",
     steps: [ { l: "Step 1: Calculate Chlorine to be Removed", c: "Chlorine to remove = Total chlorine residual - Target effluent residual" }, { l: "Substitute", c: "Chlorine to remove = 3.5 mg/L - 0.02 mg/L" }, { l: "Calculate", c: "Chlorine to remove = 3.48 mg/L" }, { l: "Step 2: Calculate Sodium Bisulfite Dose", c: "NaHSO3 dose = Chlorine to remove x Stoichiometric ratio" }, { l: "Substitute", c: "NaHSO3 dose = 3.48 mg/L x 1.46 mg NaHSO3 per mg Cl2" }, { l: "Calculate", c: "NaHSO3 dose = 5.0808 mg/L" }, { l: "Result", c: "The required sodium bisulfite dose is approximately 5.08 mg/L." } ],
@@ -5398,11 +5398,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's effluent passes the acute toxicity test (LC50 > 50%) but fails the chronic toxicity test (IC25 < 25%). What does this mean and what action is required?",
     options: [
       "Passing acute and failing chronic is impossible; retest the sample",
-      "The effluent is acutely safe but causes chronic sublethal effects at low concentrations; a toxicity identification evaluation (TIE) is required to identify the causative agent",
       "The chronic test failure is due to laboratory error; no action needed",
+      "The effluent is acutely safe but causes chronic sublethal effects at low concentrations; a toxicity identification evaluation (TIE) is required to identify the causative agent",
       "Failing chronic toxicity means the plant must cease discharge immediately"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "IC25 (Inhibition Concentration 25%) = the effluent concentration that inhibits 25% of test organism reproduction or growth. IC25 < 25% means that a 25% effluent dilution causes 25% inhibition of chronic endpoints (reproduction, growth). It is possible to pass acute (LC50 > 50%) but fail chronic (IC25 < 25%) because: (1) chronic tests use more sensitive endpoints (reproduction, growth) over longer periods (7-21 days); (2) some substances are chronically toxic at concentrations below acute thresholds (e.g., endocrine disruptors, heavy metals at low concentrations). Required action: Toxicity Identification Evaluation (TIE) -- a systematic process to identify and characterize the toxic agent(s) in the effluent.",
     difficulty: "hard",
   },
@@ -5412,8 +5412,8 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Laboratory Analysis & Interpretation",
     topic: "Receiving Water Monitoring",
     question: "A Class 4 plant's ECA requires receiving water monitoring 100 m upstream and 500 m downstream of the discharge. The upstream DO is 9.2 mg/L and the downstream DO is 6.8 mg/L. The receiving water temperature is 18 C (DO saturation = 9.5 mg/L). What is the DO deficit downstream, and does it indicate a compliance concern?",
-    options: ["DO deficit = 2.4 mg/L; this is a significant impact and may indicate non-compliance", "DO deficit = 2.7 mg/L; this is a significant impact and may indicate non-compliance", "DO deficit = 0.3 mg/L; this is negligible", "DO deficit = 6.8 mg/L; the downstream DO is the deficit"],
-    correct: 1,
+    options: ["DO deficit = 2.4 mg/L; this is a significant impact and may indicate non-compliance", "DO deficit = 0.3 mg/L; this is negligible", "DO deficit = 2.7 mg/L; this is a significant impact and may indicate non-compliance", "DO deficit = 6.8 mg/L; the downstream DO is the deficit"],
+    correct: 2,
     explanation: "Calculate the DO deficit by subtracting the actual downstream DO from the DO saturation at the given temperature, then assess the impact.\n\nStep 1 — Calculate the DO deficit downstream:\nDO deficit = DO saturation - Downstream DO\nDO deficit = 9.5 mg/L - 6.8 mg/L = 2.7 mg/L\n\nStep 2 — Calculate the reduction in DO due to discharge:\nReduction in DO = Upstream DO - Downstream DO\nReduction in DO = 9.2 mg/L - 6.8 mg/L = 2.4 mg/L\n\nStep 3 — Assess compliance concern:\nA DO deficit of 2.7 mg/L and a reduction of 2.4 mg/L indicate a significant impact.\n\nThe correct answer is B. DO deficit = 2.7 mg/L; this is a significant impact and may indicate non-compliance.",
     difficulty: "hard",
     steps: [ { l: "Step 1: Calculate Upstream DO Deficit", c: "DO deficit (upstream) = DO saturation - Upstream DO measured" }, { l: "Substitute", c: "DO deficit (upstream) = 9.5 mg/L - 9.2 mg/L" }, { l: "Calculate", c: "DO deficit (upstream) = 0.3 mg/L" }, { l: "Step 2: Calculate Downstream DO Deficit", c: "DO deficit (downstream) = DO saturation - Downstream DO measured" }, { l: "Substitute", c: "DO deficit (downstream) = 9.5 mg/L - 6.8 mg/L" }, { l: "Calculate", c: "DO deficit (downstream) = 2.7 mg/L" }, { l: "Step 3: Calculate Impact of Discharge on DO", c: "Discharge impact = Upstream DO - Downstream DO" }, { l: "Substitute", c: "Discharge impact = 9.2 mg/L - 6.8 mg/L" }, { l: "Calculate", c: "Discharge impact = 2.4 mg/L reduction" }, { l: "Result", c: "The downstream DO deficit is 2.7 mg/L, and the discharge caused a 2.4 mg/L reduction in DO, indicating a significant impact." } ],
@@ -5426,12 +5426,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Process Control Calculations",
     question: "A Class 4 operator needs to calculate the food-to-microorganism (F:M) ratio. Daily BOD load = 2,400 kg/day; aeration basin volume = 3,500 m3; MLVSS = 2,600 mg/L. What is the F:M ratio?",
     options: [
-      "F:M = 0.264 kg BOD/kg MLVSS/day",
       "F:M = 0.686 kg BOD/kg MLVSS/day",
+      "F:M = 0.264 kg BOD/kg MLVSS/day",
       "F:M = 0.132 kg BOD/kg MLVSS/day",
       "F:M = 1.05 kg BOD/kg MLVSS/day"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "Calculate the F:M ratio by dividing the daily BOD load by the total MLVSS in the aeration basin.\n\nStep 1 — Convert MLVSS concentration to kg/m3:\n2,600 mg/L × 1 kg/1,000,000 mg × 1,000 L/1 m3 = 2.6 kg/m3\n\nStep 2 — Calculate total MLVSS in the aeration basin:\n2.6 kg/m3 × 3,500 m3 = 9,100 kg MLVSS\n\nStep 3 — Calculate the F:M ratio:\nF:M = 2,400 kg BOD/day ÷ 9,100 kg MLVSS = 0.2637 kg BOD/kg MLVSS/day\n\nThe correct answer is 0.264 kg BOD/kg MLVSS/day.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "F:M Ratio = Daily BOD Load (kg/day) / (MLVSS in Basin (kg))" }, { l: "Step 1: Calculate Total MLVSS in the Aeration Basin", c: "MLVSS in Basin = MLVSS concentration (mg/L) x Basin volume (m³) x Conversion factor (L/m³) / Conversion factor (mg to kg)" }, { l: "Substitute", c: "MLVSS in Basin = 2,600 mg/L x 3,500 m³ x 1,000 L/m³ / 1,000,000 mg/kg" }, { l: "Calculate", c: "MLVSS in Basin = 9,100 kg" }, { l: "Step 2: Calculate the F:M Ratio", c: "F:M Ratio = 2,400 kg BOD/day / 9,100 kg MLVSS" }, { l: "Calculate", c: "F:M Ratio = 0.2637 kg BOD/kg MLVSS/day" }, { l: "Result", c: "The F:M ratio is approximately 0.26 kg BOD/kg MLVSS/day." } ],
@@ -5444,11 +5444,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "What is the Diluted Sludge Volume Index (DSVI) and why is it preferred over SVI for high-MLSS systems?",
     options: [
       "DSVI is the same as SVI but measured at 30 minutes instead of 30 minutes",
-      "DSVI dilutes the mixed liquor before the settleability test to prevent compression settling artifacts; it gives a more accurate measure of sludge settleability at high MLSS concentrations",
       "DSVI measures the density of sludge rather than its volume",
+      "DSVI dilutes the mixed liquor before the settleability test to prevent compression settling artifacts; it gives a more accurate measure of sludge settleability at high MLSS concentrations",
       "DSVI is used only for anaerobic sludge; SVI is used for aerobic sludge"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "At high MLSS concentrations (> 3,500 mg/L), the standard SVI test is affected by compression settling -- sludge compresses under its own weight, giving artificially low SVI values that suggest better settling than actually occurs in the clarifier. The DSVI test dilutes the mixed liquor to a standard MLSS of 2,000-3,500 mg/L before the 30-minute settling test, eliminating the compression effect. DSVI is particularly important for: (1) MBR systems with high MLSS (8,000-12,000 mg/L); (2) extended aeration systems; (3) any system where MLSS > 3,500 mg/L. DSVI > 150 mL/g indicates poor settling regardless of MLSS.",
     difficulty: "hard",
   },
@@ -5474,11 +5474,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant measures influent ammonia using the phenate colorimetric method. The result is 28 mg/L NH3-N. The sample was not preserved and was analyzed 48 hours after collection. Is this result reliable?",
     options: [
       "Yes; ammonia is stable in wastewater samples for up to 7 days",
-      "No; ammonia can be lost by volatilization or consumed by nitrification during storage; samples must be preserved with H2SO4 to pH < 2 and refrigerated at 4 C, analyzed within 28 days",
+      "Yes; refrigeration at 4 C is sufficient without chemical preservation",
       "No; the phenate method is not approved for wastewater; use the Nessler method",
-      "Yes; refrigeration at 4 C is sufficient without chemical preservation"
+      "No; ammonia can be lost by volatilization or consumed by nitrification during storage; samples must be preserved with H2SO4 to pH < 2 and refrigerated at 4 C, analyzed within 28 days"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Ammonia in wastewater samples is unstable: (1) Volatilization: NH3 can volatilize from the sample, especially at high pH; (2) Biological activity: nitrifying bacteria in the sample can oxidize NH3 to NO3-; (3) Adsorption: NH4+ can adsorb to container walls. Preservation requirements (Standard Methods): acidify with H2SO4 to pH < 2 and refrigerate at 4 C. Holding time: 28 days for preserved samples. An unpreserved sample analyzed 48 hours later may significantly underestimate the true ammonia concentration due to nitrification and volatilization. The result of 28 mg/L NH3-N is unreliable and should be flagged as potentially invalid.",
     difficulty: "medium",
   },
@@ -5488,12 +5488,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Phosphorus Fractionation",
     question: "A Class 4 operator analyzes a wastewater sample for phosphorus fractions: Total P = 8.5 mg/L; Dissolved Reactive P (DRP) = 3.2 mg/L; Total Dissolved P (TDP) = 4.1 mg/L. What are the particulate P and dissolved organic P concentrations?",
     options: [
-      "Particulate P = 4.4 mg/L; Dissolved Organic P = 0.9 mg/L",
-      "Particulate P = 5.3 mg/L; Dissolved Organic P = 3.2 mg/L",
       "Particulate P = 4.4 mg/L; Dissolved Organic P = 3.2 mg/L",
+      "Particulate P = 5.3 mg/L; Dissolved Organic P = 3.2 mg/L",
+      "Particulate P = 4.4 mg/L; Dissolved Organic P = 0.9 mg/L",
       "Particulate P = 8.5 mg/L; Dissolved Organic P = 0 mg/L"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Phosphorus fractions: Total P = Dissolved P + Particulate P. Dissolved P = TDP = 4.1 mg/L. Particulate P = Total P - TDP = 8.5 - 4.1 = 4.4 mg/L. TDP = DRP + Dissolved Organic P. Dissolved Organic P = TDP - DRP = 4.1 - 3.2 = 0.9 mg/L. Summary: DRP (orthophosphate) = 3.2 mg/L; Dissolved Organic P = 0.9 mg/L; Particulate P = 4.4 mg/L; Total P = 8.5 mg/L. DRP is the most bioavailable form and is directly removed by chemical precipitation. Particulate P is removed by settling. Dissolved Organic P is removed by biological treatment.",
     difficulty: "hard",
   },
@@ -5519,11 +5519,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator monitors ORP in the anaerobic, anoxic, and aerobic zones of an A2O BNR process. Typical readings are: anaerobic = -220 mV; anoxic = -50 mV; aerobic = +100 mV. The anaerobic zone ORP rises to -80 mV. What does this indicate?",
     options: [
       "The anaerobic zone is functioning correctly; ORP of -80 mV is ideal",
-      "The anaerobic zone is not sufficiently anaerobic; nitrate or oxygen is entering, inhibiting EBPR; investigate RAS nitrate carry-over or air leakage",
+      "ORP of -80 mV indicates sulfate reduction is occurring; add ferric chloride",
       "The anaerobic zone ORP is too negative; reduce the carbon feed",
-      "ORP of -80 mV indicates sulfate reduction is occurring; add ferric chloride"
+      "The anaerobic zone is not sufficiently anaerobic; nitrate or oxygen is entering, inhibiting EBPR; investigate RAS nitrate carry-over or air leakage"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "ORP targets for BNR zones: Anaerobic (EBPR): -150 to -300 mV (truly anaerobic, no nitrate or DO); Anoxic (denitrification): -50 to +50 mV (nitrate present, no DO); Aerobic (nitrification): +50 to +200 mV (DO present). An anaerobic zone ORP of -80 mV (rising from -220 mV) indicates the zone is not truly anaerobic. Causes: (1) nitrate in RAS consuming VFAs through denitrification; (2) air leakage into the anaerobic zone; (3) insufficient VFA supply. Impact on EBPR: PAOs require strictly anaerobic conditions for phosphorus release and VFA uptake. Nitrate or oxygen in the anaerobic zone allows competing organisms (denitrifiers) to consume VFAs, starving PAOs.",
     difficulty: "hard",
   },
@@ -5533,12 +5533,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Sludge Retention Time",
     question: "A Class 4 operator wants to achieve complete nitrification year-round. The minimum SRT for nitrification at 10 C is 8 days (with safety factor). The current SRT is 6 days. The aeration basin holds 18,000 kg of MLSS. What daily WAS rate (m3/day) is needed to achieve SRT = 10 days, given RAS SS = 9,000 mg/L and effluent SS = 15 mg/L at Q = 20,000 m3/day?",
     options: [
-      "WAS = 168 m3/day",
+      "WAS = 200 m3/day",
       "WAS = 185 m3/day",
       "WAS = 147 m3/day",
-      "WAS = 200 m3/day"
+      "WAS = 168 m3/day"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "SRT = System solids / Daily solids removal. Target SRT = 10 days. System solids = 18,000 kg. Daily solids removal = System solids / SRT = 18,000 / 10 = 1,800 kg/day. Daily solids via effluent = 15 mg/L x 20,000 m3/day x 1,000 L/m3 / 1,000,000 = 300 kg/day. Daily solids via WAS = 1,800 - 300 = 1,500 kg/day. WAS volume = 1,500 kg/day / (9,000 mg/L x 1,000 L/m3 / 1,000,000) = 1,500 / 9 = 166.7 m3/day (approximately 168 m3/day). Reducing WAS from the current rate (which gives SRT = 6 days) to 168 m3/day will increase SRT to 10 days.",
     difficulty: "hard",
   },
@@ -5578,12 +5578,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Effluent Limits Calculation",
     question: "A Class 4 plant's ECA specifies a maximum mass loading of BOD5 of 50 kg/day. The plant flow is 8,500 m3/day. What is the equivalent concentration limit in mg/L?",
     options: [
-      "5.9 mg/L",
+      "0.59 mg/L",
       "59 mg/L",
       "590 mg/L",
-      "0.59 mg/L"
+      "5.9 mg/L"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "Concentration = Mass / Volume = 50 kg/day / 8,500 m3/day = 0.00588 kg/m3 = 5.88 mg/L (approximately 5.9 mg/L). Conversion: 1 kg/m3 = 1,000 mg/L. So 0.00588 kg/m3 x 1,000 = 5.88 mg/L. Mass-based limits are used when the receiving water assimilative capacity is the limiting factor -- the total mass of pollutant entering the receiving water must not exceed a threshold regardless of plant flow. A concentration limit of 5.9 mg/L BOD5 is very stringent and would typically require tertiary treatment (filtration, advanced biological treatment).",
     difficulty: "medium",
   },
@@ -5595,11 +5595,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Under Ontario Regulation 267/03, what is the minimum setback distance from a surface water body when applying Class B biosolids to agricultural land?",
     options: [
       "30 metres",
-      "100 metres",
       "300 metres",
+      "100 metres",
       "50 metres"
     ],
-    correct: 2,
+    correct: 1,
     explanation: "Ontario Regulation 267/03 (Nutrient Management) requires a minimum setback of 300 metres from surface water bodies (lakes, rivers, streams) when applying Class B biosolids to agricultural land. Additional setbacks: 300 m from a municipal well; 100 m from a private well; 15 m from a tile drain inlet; 3 m from a tile drain. These setbacks protect water quality from nutrient and pathogen runoff. Class A biosolids have less restrictive setbacks in some cases. The regulation also prohibits application on frozen or snow-covered ground, during rain events, and on slopes > 9% without specific management practices.",
     difficulty: "medium",
   },
@@ -5625,11 +5625,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's digested biosolids have the following characteristics: fecal coliform = 850,000 MPN/g TS; VS reduction = 42%; SOUR = 0.8 mg O2/g TS/h. What biosolids classification do these meet under Ontario Regulation 267/03?",
     options: [
       "Class A; fecal coliform is below the Class A limit",
-      "Class B; fecal coliform is below the Class B limit of 2,000,000 MPN/g TS and VS reduction meets vector attraction reduction",
+      "Class A; VS reduction of 42% meets the PFRP requirement",
       "Neither Class A nor Class B; the biosolids cannot be land applied",
-      "Class A; VS reduction of 42% meets the PFRP requirement"
+      "Class B; fecal coliform is below the Class B limit of 2,000,000 MPN/g TS and VS reduction meets vector attraction reduction"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Class A requires fecal coliform < 1,000 MPN/g TS -- FAILS (850,000 >> 1,000). Class B requirements: (1) Pathogen density: fecal coliform < 2,000,000 MPN/g TS -- PASSES (850,000 < 2,000,000); (2) Vector attraction reduction: 38% VS reduction -- PASSES (42% > 38%). These biosolids qualify as Class B. Class B biosolids have more restrictive land application requirements: 300 m setback from surface water, cannot be applied to land used for growing crops for human consumption (unless incorporated), and have more frequent monitoring requirements. SOUR of 0.8 mg O2/g TS/h also meets the vector attraction reduction criterion (< 1.5 mg O2/g TS/h).",
     difficulty: "medium",
   },
@@ -5640,11 +5640,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Ontario Regulation 267/03 specifies maximum metal concentrations in biosolids for land application. A biosolids sample shows: Cadmium (Cd) = 12 mg/kg TS; Lead (Pb) = 280 mg/kg TS; Zinc (Zn) = 1,800 mg/kg TS. The limits are: Cd = 20 mg/kg; Pb = 500 mg/kg; Zn = 2,800 mg/kg. Does this biosolids meet the metal concentration limits?",
     options: [
       "No; all three metals exceed their limits",
-      "Yes; all three metals are within their respective limits",
       "No; only zinc exceeds its limit",
+      "Yes; all three metals are within their respective limits",
       "Yes; the metals are within limits but cumulative loading must also be tracked"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Checking each metal: Cd = 12 mg/kg < 20 mg/kg limit -- PASS; Pb = 280 mg/kg < 500 mg/kg limit -- PASS; Zn = 1,800 mg/kg < 2,800 mg/kg limit -- PASS. All three metals are within the Ontario Reg 267/03 concentration limits. However, compliance with concentration limits alone is not sufficient -- cumulative loading limits also apply. Cumulative loading limits specify the maximum total amount of each metal that can be applied to a field over its lifetime (e.g., Cd = 22 kg/ha cumulative). The operator must track annual and cumulative metal loading for each application site and maintain records for 25 years.",
     difficulty: "medium",
   },
@@ -5685,11 +5685,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Under Ontario Regulation 267/03, what records must a Class 4 plant maintain for biosolids land application, and for how long?",
     options: [
       "Only the application date and field location; records kept for 5 years",
-      "Application date, field location, biosolids volume, nutrient analysis, metal analysis, pathogen testing, weather conditions, and agronomic rate calculations; records kept for 25 years",
+      "Records are not required if the biosolids are Class A",
       "Only the biosolids analysis results; records kept for 10 years",
-      "Records are not required if the biosolids are Class A"
+      "Application date, field location, biosolids volume, nutrient analysis, metal analysis, pathogen testing, weather conditions, and agronomic rate calculations; records kept for 25 years"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Ontario Regulation 267/03 requires comprehensive records for biosolids land application, retained for 25 years: (1) Application records: date, field identification, GPS coordinates, area applied, volume/mass applied, application method; (2) Biosolids quality: nutrient analysis (N, P, K), metal analysis (8 regulated metals), pathogen testing (fecal coliform or Salmonella), VS content, moisture content; (3) Agronomic calculations: nutrient management plan, agronomic rate calculations, crop nutrient uptake; (4) Weather conditions at time of application; (5) Setback distances verified; (6) Cumulative metal loading calculations. Records must be available for inspection by MECP and must be submitted annually in the Annual Report.",
     difficulty: "medium",
   },
@@ -5744,12 +5744,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Incineration",
     question: "A Class 4 plant is evaluating biosolids incineration as an alternative to land application. What are the key regulatory requirements and environmental considerations for biosolids incineration in Ontario?",
     options: [
-      "Incineration has no regulatory requirements; it is the simplest disposal method",
       "Incineration requires an Environmental Compliance Approval (ECA) for air emissions; key concerns include dioxins/furans, heavy metals (Cd, Pb, Hg), particulates, and NOx; ash must be managed as a regulated waste",
+      "Incineration has no regulatory requirements; it is the simplest disposal method",
       "Incineration is prohibited in Ontario for municipal biosolids",
       "Incineration only requires a building permit; no environmental approvals needed"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Biosolids incineration in Ontario requires: (1) Environmental Compliance Approval (ECA) for the incinerator air emissions; (2) Compliance with Ontario Regulation 419/05 (Air Pollution -- Local Air Quality) and Ontario Regulation 127/01 (Airborne Contaminant Discharge Monitoring and Reporting); (3) Continuous emissions monitoring for: particulates, CO, O2, temperature; (4) Periodic testing for: dioxins/furans (PCDD/PCDF), heavy metals (Cd, Pb, Hg, As), HCl, NOx, SO2. Ash management: incinerator ash is a regulated waste under Ontario Regulation 347 and must be disposed of at a licensed landfill or used as a construction material if it meets leachate criteria. Advantages of incineration: volume reduction > 90%, pathogen destruction, no land application concerns.",
     difficulty: "hard",
   },
@@ -5759,12 +5759,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Beneficial Use",
     question: "A Class 4 plant is exploring beneficial use options for its Class A biosolids beyond agricultural land application. What are three approved beneficial use categories under Ontario's regulatory framework?",
     options: [
-      "Only agricultural land application is approved; all other uses require special permits",
       "Approved beneficial uses include: (1) agricultural land application; (2) non-agricultural land application (mine reclamation, highway slopes, golf courses); (3) composting for retail sale; (4) land reclamation and brownfield remediation",
+      "Only agricultural land application is approved; all other uses require special permits",
       "Class A biosolids can only be used as landfill cover; no other beneficial uses are approved",
       "Beneficial use is only approved for biosolids with < 1 mg/kg of all metals"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Ontario's regulatory framework (Ontario Reg 267/03 and associated guidance) recognizes multiple beneficial use categories for Class A biosolids: (1) Agricultural land application: crop production, pasture land; (2) Non-agricultural land application: mine reclamation, highway slopes, golf courses, parks, forest land; (3) Composting: blending with yard waste or wood chips for retail compost products; (4) Land reclamation: brownfield remediation, landfill cover, disturbed land restoration; (5) Dedicated disposal sites: engineered sites designed specifically for biosolids application. Each category has specific requirements for metal loading, pathogen quality, and monitoring. Class A biosolids have fewer restrictions than Class B for most beneficial use categories.",
     difficulty: "medium",
   },
@@ -5774,12 +5774,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Storage",
     question: "A Class 4 plant must store biosolids for 4 months during winter when land application is prohibited. The plant generates 180 wet tonnes/week of dewatered biosolids at 22% TS. What storage volume is required, and what are the key design considerations for a biosolids storage facility?",
     options: [
-      "Storage volume = 2,880 wet tonnes; design considerations: impermeable liner, leachate collection, cover, odour control",
-      "Storage volume = 720 wet tonnes; design considerations: open pile is acceptable",
       "Storage volume = 2,880 wet tonnes; no special design considerations required",
+      "Storage volume = 720 wet tonnes; design considerations: open pile is acceptable",
+      "Storage volume = 2,880 wet tonnes; design considerations: impermeable liner, leachate collection, cover, odour control",
       "Storage volume = 180 wet tonnes; only 1 week of storage is needed"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Storage volume = 180 wet tonnes/week x 16 weeks (4 months) = 2,880 wet tonnes. Design considerations for biosolids storage facilities (Ontario Reg 267/03 and MOE guidance): (1) Impermeable liner: HDPE or clay liner to prevent leachate migration to groundwater; (2) Leachate collection: perimeter drainage and collection system; (3) Cover: to prevent precipitation from increasing volume and to control odours; (4) Setbacks: 300 m from surface water, 100 m from private wells; (5) Odour control: covered storage or biofilter; (6) Access road: for tanker trucks or front-end loaders; (7) Monitoring: groundwater monitoring wells may be required. The facility requires an ECA from the MECP.",
     difficulty: "hard",
   },
@@ -5789,12 +5789,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Transport",
     question: "A Class 4 plant transports liquid biosolids (4% TS) by tanker truck to a land application site 45 km away. What regulatory requirements apply to the transport of biosolids in Ontario?",
     options: [
-      "No special requirements; biosolids are not regulated during transport",
       "Biosolids transport requires: a Nutrient Management Strategy (NMS) or NMP identifying the receiving site, manifests for each load, spill response plan, and compliance with Highway Traffic Act requirements for liquid waste transport",
+      "No special requirements; biosolids are not regulated during transport",
       "Only a driver's license is required; no environmental permits needed",
       "Biosolids can only be transported by licensed hazardous waste carriers"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Biosolids transport in Ontario requirements: (1) Nutrient Management Strategy (NMS) or Nutrient Management Plan (NMP): must identify receiving sites and application rates before transport; (2) Transport manifests: each load must be documented with: generator, transporter, receiving site, volume, biosolids quality; (3) Spill response plan: required under Ontario Regulation 675/98 (Spills); (4) Highway Traffic Act compliance: liquid waste transport in sealed tankers; (5) Environmental Compliance Approval: the receiving site must have an approved NMP; (6) Odour management: tankers must be covered to prevent odour during transport. Biosolids are NOT classified as hazardous waste under Ontario Regulation 347 if they meet the quality criteria in Ontario Reg 267/03.",
     difficulty: "medium",
   },
@@ -5805,11 +5805,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's biosolids dewatering system fails during the land application season. The plant has 3 days of liquid sludge storage capacity. What emergency management options are available?",
     options: [
       "The plant must cease operations until the dewatering system is repaired",
-      "Emergency options include: emergency liquid biosolids land application (with MECP notification), emergency hauling to another facility, emergency dewatering by a mobile contractor, or emergency lagoon storage; all require immediate MECP notification",
       "The plant can discharge liquid biosolids to the receiving water under emergency conditions",
+      "Emergency options include: emergency liquid biosolids land application (with MECP notification), emergency hauling to another facility, emergency dewatering by a mobile contractor, or emergency lagoon storage; all require immediate MECP notification",
       "Emergency storage in the primary clarifier is acceptable for up to 30 days"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Emergency biosolids management options: (1) Emergency liquid biosolids land application: requires immediate MECP notification (1-800-268-6060 Spills Action Centre); must meet all setback and agronomic rate requirements; (2) Emergency hauling: to another WWTP with capacity, or to a licensed biosolids management facility; (3) Mobile dewatering: rental of mobile belt press, centrifuge, or screw press; (4) Emergency lagoon storage: if the facility has or can obtain emergency storage capacity. All emergency actions require: (1) Immediate notification to MECP; (2) Documentation of the emergency and actions taken; (3) Follow-up report. Discharging untreated biosolids to receiving water is prohibited under the Ontario Water Resources Act and would constitute a spill requiring immediate reporting.",
     difficulty: "hard",
   },
@@ -5819,12 +5819,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Quality Monitoring",
     question: "A Class 4 plant's biosolids testing shows a sudden increase in copper (Cu) from 180 mg/kg TS to 650 mg/kg TS (Ontario limit = 1,500 mg/kg TS). The plant is still within the concentration limit. What actions should the operator take?",
     options: [
-      "No action needed; the concentration is still within the limit",
       "Investigate the source of the copper increase immediately; notify the MECP; review industrial discharge permits; check cumulative loading calculations to ensure the limit will not be exceeded",
+      "No action needed; the concentration is still within the limit",
       "Stop all biosolids land application until copper returns to baseline",
       "Dilute the biosolids with clean material to reduce the copper concentration"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Even though the concentration is within the limit, a sudden 3.6x increase in copper is a significant anomaly requiring investigation: (1) Source investigation: review industrial discharge monitoring reports; check for new industrial connections; inspect the collection system for illegal dumping; (2) MECP notification: significant changes in biosolids quality should be reported to the MECP even if within limits; (3) Cumulative loading review: at 650 mg/kg Cu, the cumulative loading limit may be reached sooner than planned; recalculate application rates; (4) Trend monitoring: increase biosolids testing frequency to track the trend; (5) Industrial pretreatment: if an industrial source is identified, issue a compliance order or modify the industrial discharge permit. Proactive management prevents regulatory non-compliance.",
     difficulty: "medium",
   },
@@ -5834,12 +5834,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Digestion Efficiency",
     question: "A Class 4 plant's anaerobic digesters produce 2,800 m3/day of biogas at 65% methane content. The plant uses the biogas in a combined heat and power (CHP) unit. The CHP unit has an electrical efficiency of 35% and thermal efficiency of 45%. What is the electrical power output in kW?",
     options: [
-      "Electrical output = 485 kW",
-      "Electrical output = 1,050 kW",
       "Electrical output = 728 kW",
+      "Electrical output = 1,050 kW",
+      "Electrical output = 485 kW",
       "Electrical output = 243 kW"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Biogas flow = 2,800 m3/day / 24 h/day = 116.7 m3/h. Methane flow = 116.7 x 0.65 = 75.8 m3/h. Heating value of methane = 35.8 MJ/m3. Thermal input = 75.8 m3/h x 35.8 MJ/m3 = 2,714 MJ/h = 753.9 kW (thermal). Electrical output = 753.9 kW x 35% electrical efficiency = 263.9 kW (approximately 243 kW with rounding). Note: the question asks for electrical output. Total energy recovery = electrical (35%) + thermal (45%) = 80% of input energy. CHP units are highly efficient for biogas utilization, reducing plant energy costs and carbon footprint. Many Class 4 plants achieve 50-100% energy self-sufficiency through biogas CHP.",
     difficulty: "hard",
   },
@@ -5865,11 +5865,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant receives complaints about biosolids odour during land application. The biosolids are Class B mesophilically digested sludge. What are the primary odour-causing compounds and control strategies?",
     options: [
       "Odour is caused only by H2S; add iron to precipitate sulfide",
-      "Primary odour compounds include H2S, mercaptans, dimethyl sulfide, ammonia, and volatile fatty acids; control strategies include: covered storage, immediate incorporation into soil, application timing (avoid hot/windy days), biofilter at the plant, and lime addition to raise pH",
+      "Odour is caused only by ammonia; reduce nitrogen content of biosolids",
       "Biosolids odour cannot be controlled; it is an inherent property",
-      "Odour is caused only by ammonia; reduce nitrogen content of biosolids"
+      "Primary odour compounds include H2S, mercaptans, dimethyl sulfide, ammonia, and volatile fatty acids; control strategies include: covered storage, immediate incorporation into soil, application timing (avoid hot/windy days), biofilter at the plant, and lime addition to raise pH"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Biosolids odour compounds: (1) Sulfur compounds: H2S (rotten egg), mercaptans (skunk-like), dimethyl sulfide (cabbage), dimethyl disulfide (garlic); (2) Nitrogen compounds: ammonia, amines (fishy); (3) Volatile fatty acids: acetic, propionic, butyric acids (rancid); (4) Indole, skatole (fecal odour). Control strategies: (1) At the plant: covered storage, biofilter or chemical scrubber on storage vents, minimize storage time; (2) During transport: covered tankers; (3) During application: apply in early morning (lower temperatures, less wind); avoid application before rain; immediately incorporate into soil (reduces odour by 90%); notify neighbours in advance; (4) Lime addition: raises pH, reducing volatile sulfide and ammonia; (5) Aerobic composting: significantly reduces odour compounds.",
     difficulty: "medium",
   },
@@ -5879,12 +5879,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Emerging Contaminants",
     question: "A Class 4 plant is receiving questions from the public about pharmaceuticals and personal care products (PPCPs) and microplastics in biosolids. What is the current regulatory status of these contaminants in Ontario biosolids management?",
     options: [
-      "PPCPs and microplastics are fully regulated with strict limits in Ontario Reg 267/03",
       "PPCPs and microplastics are not currently regulated in Ontario biosolids; however, they are emerging concerns being studied by the MECP and federal government; operators should monitor developments and document any available data",
+      "PPCPs and microplastics are fully regulated with strict limits in Ontario Reg 267/03",
       "PPCPs and microplastics are prohibited in biosolids; any detection requires disposal as hazardous waste",
       "PPCPs and microplastics are only regulated for biosolids applied to food crop land"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Current regulatory status (as of 2024): PPCPs (pharmaceuticals, hormones, antibiotics, personal care products) and microplastics are NOT currently regulated in Ontario Regulation 267/03 or federal biosolids guidelines. However: (1) They are recognized as emerging contaminants of concern; (2) Health Canada and Environment and Climate Change Canada are conducting risk assessments; (3) Some municipalities have voluntarily begun monitoring; (4) Academic research shows PPCPs and microplastics accumulate in biosolids-amended soils; (5) The CCME (Canadian Council of Ministers of the Environment) is developing guidance. Class 4 operators should: stay informed of regulatory developments, document any available data, and be prepared to respond to public inquiries with factual, current information.",
     difficulty: "medium",
   },
@@ -5895,11 +5895,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "An anaerobic digester shows the following symptoms: pH dropping from 7.2 to 6.5; volatile acids rising from 300 to 1,800 mg/L; biogas production decreasing by 40%; H2S in biogas increasing. What is the diagnosis and corrective action?",
     options: [
       "Normal seasonal variation; no action needed",
-      "Digester souring (acid accumulation) likely caused by organic overloading or toxic inhibition; reduce organic loading, add sodium bicarbonate to restore alkalinity, and investigate for toxic inputs",
       "The digester is over-digested; increase organic loading",
+      "Digester souring (acid accumulation) likely caused by organic overloading or toxic inhibition; reduce organic loading, add sodium bicarbonate to restore alkalinity, and investigate for toxic inputs",
       "Low pH indicates the digester needs more lime; add lime to raise pH"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Diagnosis: Digester souring -- acid-forming bacteria are outpacing methanogens. Indicators: (1) pH drop from 7.2 to 6.5 (methanogens inhibited below pH 6.8); (2) VA increase from 300 to 1,800 mg/L (acid accumulation); (3) Biogas decrease (methanogens suppressed); (4) H2S increase (sulfate-reducing bacteria thriving in acidic conditions). Causes: organic overloading, toxic input (heavy metals, chlorinated compounds, antibiotics), temperature upset, or sudden change in feed composition. Corrective actions: (1) Immediately reduce organic loading (reduce feed volume by 25-50%); (2) Add sodium bicarbonate (NaHCO3) at 500-1,000 mg/L to restore alkalinity and buffer pH; (3) Do NOT add lime -- CaOH can cause calcium carbonate precipitation and scaling; (4) Investigate for toxic inputs; (5) Monitor VA/alkalinity ratio daily until stable.",
     difficulty: "hard",
   },
@@ -5910,11 +5910,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is comparing belt press and centrifuge dewatering for digested biosolids. The belt press achieves 22% TS cake at 85% solids capture. The centrifuge achieves 26% TS cake at 93% solids capture. Which system produces less volume of cake per day if the plant generates 500 kg DS/day of biosolids?",
     options: [
       "Belt press produces less cake: 2,273 kg/day wet vs centrifuge 1,923 kg/day wet",
-      "Centrifuge produces less cake: belt press = 500 kg DS / 0.22 = 2,273 kg/day wet; centrifuge = 500 kg DS / 0.26 = 1,923 kg/day wet",
       "Both systems produce the same volume of cake",
+      "Centrifuge produces less cake: belt press = 500 kg DS / 0.22 = 2,273 kg/day wet; centrifuge = 500 kg DS / 0.26 = 1,923 kg/day wet",
       "Belt press produces less cake because it has higher solids capture"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Belt press: solids captured = 500 x 0.85 = 425 kg DS/day. Cake volume = 425 kg DS / 0.22 = 1,932 kg/day wet (approximately 2,273 kg/day if using total DS). Using total DS: cake = 500 / 0.22 = 2,273 kg/day wet. Centrifuge: cake = 500 / 0.26 = 1,923 kg/day wet. The centrifuge produces less cake (1,923 vs 2,273 kg/day) due to higher cake dryness (26% vs 22% TS). Higher cake dryness means: (1) less volume to transport and dispose; (2) lower disposal costs; (3) easier handling. The centrifuge also has higher solids capture (93% vs 85%), meaning less solids returned to the process in the filtrate/centrate.",
     difficulty: "medium",
   },
@@ -5925,11 +5925,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant discovers that biosolids applied to a farm field last month exceeded the agronomic rate by 35% due to a calculation error. What are the operator's obligations under Ontario Regulation 267/03?",
     options: [
       "No reporting required if the metal concentration limits were not exceeded",
-      "The operator must notify the MECP immediately, document the error, assess the environmental impact, and implement corrective measures; the over-application must be recorded in the annual report",
       "The operator only needs to correct the calculation for future applications; no reporting required",
+      "The operator must notify the MECP immediately, document the error, assess the environmental impact, and implement corrective measures; the over-application must be recorded in the annual report",
       "The operator must remove the excess biosolids from the field"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Obligations upon discovering an over-application: (1) Immediate notification to MECP: contact the local MECP district office; (2) Documentation: record the date, field, volume applied, actual vs permitted rate, and cause of the error; (3) Environmental assessment: assess risk of nutrient runoff, groundwater impact, and crop damage; (4) Corrective measures: may include soil testing, monitoring, or adjusting future application rates for that field; (5) Annual report: the over-application must be disclosed in the Annual Report submitted to MECP; (6) Nutrient Management Plan update: revise the NMP to prevent recurrence. Failure to report non-compliance can result in penalties under the Nutrient Management Act, 2002 and the Ontario Water Resources Act.",
     difficulty: "hard",
   },
@@ -5940,11 +5940,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is evaluating thermal hydrolysis process (THP) as a pre-treatment before anaerobic digestion. What are the key benefits of THP for biosolids management?",
     options: [
       "THP has no benefits; it only increases energy costs",
-      "THP (160-180 C, 6-8 bar, 20-30 min) breaks down cell walls and complex organics, improving VS destruction by 15-25%, increasing biogas production by 20-30%, improving dewaterability (cake dryness 28-35% TS), and enabling Class A biosolids production",
+      "THP is only suitable for primary sludge; it cannot be used for WAS",
       "THP only improves dewatering; it has no effect on biogas production",
-      "THP is only suitable for primary sludge; it cannot be used for WAS"
+      "THP (160-180 C, 6-8 bar, 20-30 min) breaks down cell walls and complex organics, improving VS destruction by 15-25%, increasing biogas production by 20-30%, improving dewaterability (cake dryness 28-35% TS), and enabling Class A biosolids production"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Thermal Hydrolysis Process (THP) -- e.g., Cambi, Lysotherm -- operates at 160-180 C and 6-8 bar for 20-30 minutes: (1) Cell disruption: breaks down bacterial cell walls and extracellular polymeric substances (EPS), releasing intracellular organics; (2) Improved VS destruction: 15-25% higher VS reduction than conventional digestion; (3) Increased biogas: 20-30% more methane production; (4) Improved dewaterability: cake dryness 28-35% TS vs 20-22% TS without THP; (5) Class A biosolids: the thermal treatment (160 C) achieves PFRP for pathogen reduction; (6) Higher solids loading: THP-treated sludge can be digested at 8-12% TS vs 3-5% TS for conventional digestion. THP is particularly effective for WAS-dominated sludge streams.",
     difficulty: "hard",
   },
@@ -5955,11 +5955,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is considering landfilling biosolids as a backup disposal option. What are the regulatory requirements for landfilling biosolids in Ontario?",
     options: [
       "Biosolids can be landfilled without any special requirements",
-      "Biosolids landfilling requires: acceptance by a licensed landfill, the biosolids must meet the landfill's waste acceptance criteria (typically minimum 15-20% TS for dewatered sludge), and the landfill must have an ECA that permits biosolids acceptance",
+      "Only Class A biosolids can be landfilled; Class B must be incinerated",
       "Biosolids are prohibited from landfills in Ontario",
-      "Only Class A biosolids can be landfilled; Class B must be incinerated"
+      "Biosolids landfilling requires: acceptance by a licensed landfill, the biosolids must meet the landfill's waste acceptance criteria (typically minimum 15-20% TS for dewatered sludge), and the landfill must have an ECA that permits biosolids acceptance"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Biosolids landfilling requirements in Ontario: (1) Licensed landfill: must be a Class I or Class II landfill with an Environmental Compliance Approval (ECA) that specifically permits biosolids acceptance; (2) Waste acceptance criteria: most landfills require minimum 15-20% TS (dewatered sludge) to prevent leachate generation and maintain landfill stability; liquid biosolids (< 5% TS) are typically not accepted; (3) Manifest system: each load requires a waste manifest under Ontario Regulation 347; (4) Tipping fees: typically $80-150/wet tonne, making landfilling expensive; (5) Landfill capacity: Ontario is phasing out landfilling of organic materials; (6) No special classification required: both Class A and Class B biosolids can be landfilled if accepted. Landfilling is considered a last resort due to cost and sustainability concerns.",
     difficulty: "medium",
   },
@@ -5969,12 +5969,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Nutrient Value",
     question: "A Class 4 plant's biosolids analysis shows: TN = 3.8% TS; NH4-N = 0.9% TS; P = 2.2% TS; K = 0.3% TS. The biosolids are 22% TS. What is the fertilizer equivalent value per wet tonne, using current fertilizer prices of $1.80/kg N, $1.50/kg P2O5, and $0.80/kg K2O?",
     options: [
-      "Fertilizer value = $28.50/wet tonne",
+      "Fertilizer value = $62.40/wet tonne",
       "Fertilizer value = $45.20/wet tonne",
       "Fertilizer value = $12.80/wet tonne",
-      "Fertilizer value = $62.40/wet tonne"
+      "Fertilizer value = $28.50/wet tonne"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "Per wet tonne at 22% TS: TN = 3.8% x 220 kg TS = 8.36 kg N/wet tonne. P = 2.2% x 220 = 4.84 kg P/wet tonne = 4.84 x 2.29 (conversion factor P to P2O5) = 11.08 kg P2O5/wet tonne. K = 0.3% x 220 = 0.66 kg K/wet tonne = 0.66 x 1.205 (K to K2O) = 0.80 kg K2O/wet tonne. Fertilizer value = (8.36 x $1.80) + (11.08 x $1.50) + (0.80 x $0.80) = $15.05 + $16.62 + $0.64 = $32.31/wet tonne. Note: only plant-available N (approximately 25-30% of total N for Class B biosolids) should be credited. Using 30% availability: available N value = 8.36 x 0.30 x $1.80 = $4.51. Adjusted value = $4.51 + $16.62 + $0.64 = approximately $28.50/wet tonne.",
     difficulty: "hard",
   },
@@ -5984,8 +5984,8 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Biosolids Management & Regulations",
     topic: "Biosolids Digester Heating",
     question: "A Class 4 plant must heat its anaerobic digester from 15 C (winter influent temperature) to 35 C (mesophilic operating temperature). The digester receives 250 m3/day of sludge. What is the daily heat requirement in MJ/day, and can the plant's biogas CHP unit (producing 800 MJ/day of thermal energy) meet this demand?",
-    options: ["Heat required = 20,900 MJ/day; the CHP unit cannot meet this demand", "Heat required = 20.9 MJ/day; the CHP unit easily meets this demand", "Heat required = 20,900 kJ/day = 20.9 MJ/day; the CHP unit easily meets this demand", "Heat required = 5,225 MJ/day; the CHP unit cannot meet this demand"],
-    correct: 0,
+    options: ["Heat required = 20.9 MJ/day; the CHP unit easily meets this demand", "Heat required = 20,900 MJ/day; the CHP unit cannot meet this demand", "Heat required = 20,900 kJ/day = 20.9 MJ/day; the CHP unit easily meets this demand", "Heat required = 5,225 MJ/day; the CHP unit cannot meet this demand"],
+    correct: 1,
     explanation: "Calculate the daily heat requirement using the mass, specific heat, and temperature change, then compare it to the CHP unit's thermal output.\n\nStep 1 – Determine the mass of sludge per day:\n250 m3/day × 1000 kg/m3 = 250,000 kg/day\n\nStep 2 – Calculate the temperature change:\n35 C - 15 C = 20 C\n\nStep 3 – Calculate the daily heat requirement in kJ/day:\nHeat = 250,000 kg/day × 4.18 kJ/(kg*C) × 20 C = 20,900,000 kJ/day\n\nStep 4 – Convert the daily heat requirement to MJ/day:\n20,900,000 kJ/day ÷ 1000 kJ/MJ = 20,900 MJ/day\n\nStep 5 – Compare the heat requirement to the CHP unit's output:\n20,900 MJ/day (required) > 800 MJ/day (produced)\n\nTherefore, the CHP unit cannot meet the demand.\n\nThe correct answer is A. Heat required = 20,900 MJ/day; the CHP unit cannot meet this demand.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Heat Required (kJ/day) = Mass (kg/day) × Specific Heat (kJ/kg·°C) × Temperature Rise (°C)" }, { l: "Step 1: Calculate Mass of Sludge", c: "Mass = Volume × Density. Assuming sludge density is approximately 1,000 kg/m³ (like water). Mass = 250 m³/day × 1,000 kg/m³ = 250,000 kg/day." }, { l: "Step 2: Determine Temperature Rise", c: "Temperature Rise = Final Temperature - Initial Temperature = 35 °C - 15 °C = 20 °C." }, { l: "Step 3: Identify Specific Heat", c: "Specific heat of sludge is approximately 4.18 kJ/kg·°C (same as water)." }, { l: "Substitute and Calculate", c: "Heat Required = 250,000 kg/day × 4.18 kJ/kg·°C × 20 °C = 250,000 × 4.18 × 20 = 20,900,000 kJ/day." }, { l: "Result", c: "The daily heat required is 20,900,000 kJ/day." } ],
@@ -5997,12 +5997,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Monitoring Program",
     question: "A Class 4 plant is developing a biosolids monitoring program for a new land application site. What is the minimum monitoring frequency for metals analysis under Ontario Regulation 267/03 for a plant generating 400 dry tonnes/year of Class B biosolids?",
     options: [
-      "Annual monitoring for metals",
       "Monthly monitoring for metals",
+      "Annual monitoring for metals",
       "Quarterly monitoring for metals",
       "Weekly monitoring for metals"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Ontario Regulation 267/03 monitoring frequency for Class B biosolids metals analysis: (1) < 290 dry tonnes/year: quarterly (4 times/year); (2) 290-1,500 dry tonnes/year: monthly (12 times/year); (3) > 1,500 dry tonnes/year: monthly with additional requirements. At 400 dry tonnes/year, monthly monitoring is required. Metals analyzed: Cadmium (Cd), Copper (Cu), Lead (Pb), Mercury (Hg), Molybdenum (Mo), Nickel (Ni), Selenium (Se), Zinc (Zn). Additional monitoring: nutrients (N, P, K) and moisture content at same frequency; fecal coliform at same frequency; Salmonella if targeting Class A. Results must be submitted to MECP in the Annual Report.",
     difficulty: "medium",
   },
@@ -6013,11 +6013,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "Ontario Regulation 267/03 prohibits biosolids land application under certain conditions. Which of the following is a prohibited application condition?",
     options: [
       "Application when soil temperature is below 10 C",
-      "Application when the ground is frozen, snow-covered, or saturated, or when precipitation is forecast within 24 hours",
       "Application during the months of November through March",
+      "Application when the ground is frozen, snow-covered, or saturated, or when precipitation is forecast within 24 hours",
       "Application when wind speed exceeds 20 km/h"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Ontario Regulation 267/03 prohibits biosolids land application when: (1) Ground is frozen (frost penetration > 5 cm); (2) Ground is snow-covered; (3) Ground is saturated (soil cannot absorb nutrients without runoff); (4) Precipitation is forecast within 24 hours (risk of nutrient runoff to surface water); (5) Application would cause runoff to surface water. The regulation does NOT specify a calendar-based prohibition (November-March) -- application is permitted in winter months if the ground conditions are acceptable (e.g., unfrozen, unsaturated). Wind speed is not specifically regulated but operators should use judgment to minimize odour impacts on neighbours. Soil temperature below 10 C is not a prohibition but affects nutrient availability.",
     difficulty: "medium",
   },
@@ -6028,11 +6028,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is asked about PFAS (per- and polyfluoroalkyl substances) in its biosolids. What is the current regulatory situation in Ontario, and what should the operator communicate to stakeholders?",
     options: [
       "PFAS are fully regulated in Ontario biosolids with strict limits; the plant must test and report",
-      "PFAS are not currently regulated in Ontario biosolids under Reg 267/03; however, Health Canada and ECCC are conducting risk assessments; some municipalities are voluntarily testing; the operator should monitor regulatory developments and be transparent with stakeholders",
       "PFAS are prohibited in biosolids; any detection requires disposal as hazardous waste",
+      "PFAS are not currently regulated in Ontario biosolids under Reg 267/03; however, Health Canada and ECCC are conducting risk assessments; some municipalities are voluntarily testing; the operator should monitor regulatory developments and be transparent with stakeholders",
       "PFAS testing is only required for biosolids from industrial WWTPs"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "PFAS (including PFOA, PFOS, and thousands of related compounds) in biosolids: Current status (2024): (1) Not regulated in Ontario Regulation 267/03 or federal biosolids guidelines; (2) Health Canada and Environment and Climate Change Canada are conducting risk assessments under the Canadian Environmental Protection Act (CEPA); (3) PFAS accumulate in biosolids because they are not removed by conventional wastewater treatment; (4) Some Ontario municipalities have voluntarily begun PFAS testing; (5) US EPA has proposed PFAS limits for biosolids (2023). Operator communication: be transparent about the current regulatory gap; acknowledge the emerging concern; share any available testing data; commit to monitoring regulatory developments. Proactive communication builds public trust.",
     difficulty: "hard",
   },
@@ -6044,11 +6044,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A decanter centrifuge is experiencing high vibration and the vibration monitor has triggered an alarm. What are the most likely causes and immediate actions?",
     options: [
       "High vibration is normal during startup; no action needed",
-      "Likely causes: sludge buildup on the bowl (imbalance), bearing wear, or feed imbalance; immediate action: shut down the centrifuge safely, inspect the bowl for buildup, check bearings, and investigate feed conditions before restarting",
       "High vibration indicates the centrifuge needs more polymer; increase polymer dose",
+      "Likely causes: sludge buildup on the bowl (imbalance), bearing wear, or feed imbalance; immediate action: shut down the centrifuge safely, inspect the bowl for buildup, check bearings, and investigate feed conditions before restarting",
       "High vibration is caused by low feed rate; increase feed to balance the centrifuge"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Centrifuge vibration causes: (1) Sludge buildup on the bowl: uneven accumulation creates imbalance -- most common cause; clean the bowl; (2) Bearing wear: worn bearings cause vibration -- inspect and replace if needed; (3) Feed imbalance: inconsistent feed rate or concentration causing dynamic imbalance; (4) Damaged scroll (conveyor): bent or worn scroll creates imbalance; (5) Foundation issues: loose anchor bolts or degraded isolation mounts. Immediate actions: (1) Do NOT ignore vibration alarms -- centrifuges can fail catastrophically if vibration is severe; (2) Initiate controlled shutdown; (3) Allow the bowl to come to a complete stop before opening; (4) Inspect bowl for buildup, cracks, or damage; (5) Check bearing temperatures and lubrication; (6) Review feed conditions. Restart only after identifying and correcting the cause.",
     difficulty: "medium",
   },
@@ -6059,11 +6059,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A belt press is experiencing belt tracking problems -- the belt is drifting to one side. What are the causes and corrective actions?",
     options: [
       "Belt tracking is controlled by the polymer dose; increase polymer",
-      "Belt tracking problems are caused by: uneven belt tension, worn or misaligned rollers, uneven sludge distribution across the belt width, or worn belt edges; corrective actions include adjusting the tracking mechanism, checking roller alignment, and ensuring even sludge distribution",
+      "Belt tracking problems indicate the belt needs replacement; replace immediately",
       "Belt tracking is a normal operational variation; no action needed",
-      "Belt tracking problems indicate the belt needs replacement; replace immediately"
+      "Belt tracking problems are caused by: uneven belt tension, worn or misaligned rollers, uneven sludge distribution across the belt width, or worn belt edges; corrective actions include adjusting the tracking mechanism, checking roller alignment, and ensuring even sludge distribution"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Belt press tracking problems: (1) Uneven belt tension: the tracking mechanism (pneumatic or hydraulic cylinders) adjusts belt tension on each side; if one side is over-tensioned, the belt drifts toward that side; adjust the tracking cylinder; (2) Misaligned rollers: rollers must be parallel to each other and perpendicular to the belt direction; check and realign; (3) Uneven sludge distribution: if sludge is heavier on one side, the belt drifts to the lighter side; adjust the distribution box; (4) Worn belt edges: frayed or stretched edges cause tracking issues; inspect and replace belt if damaged; (5) Worn rollers: flat spots or grooves cause uneven tracking. Corrective actions: use the automatic tracking system first; if ineffective, manually adjust tracking cylinders; inspect all rollers for wear and alignment.",
     difficulty: "medium",
   },
@@ -6104,11 +6104,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's UV disinfection system shows declining UV intensity readings over 3 months. The lamps are 18 months old (rated life = 12,000 hours). What maintenance is required?",
     options: [
       "UV intensity decline is normal; no action needed until lamps fail",
-      "Lamps at 18 months (approximately 13,000 hours) have exceeded their rated life; replace all lamps; also clean quartz sleeves with citric acid solution to remove mineral deposits that reduce UV transmittance",
+      "Increase the flow rate to compensate for reduced UV intensity",
       "Clean the lamps with chlorine solution to restore UV output",
-      "Increase the flow rate to compensate for reduced UV intensity"
+      "Lamps at 18 months (approximately 13,000 hours) have exceeded their rated life; replace all lamps; also clean quartz sleeves with citric acid solution to remove mineral deposits that reduce UV transmittance"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "UV lamp maintenance: (1) Lamp replacement: at 18 months continuous operation (approximately 13,000 hours), lamps have exceeded their 12,000-hour rated life. UV output declines approximately 20-30% over rated life. Replace all lamps in a bank simultaneously to maintain uniform output; (2) Quartz sleeve cleaning: mineral deposits (calcium carbonate, iron) on quartz sleeves absorb UV and reduce transmittance. Clean with citric acid (2-5%) or proprietary cleaning solution. Frequency: every 3-6 months or when intensity drops > 10%; (3) Ballast inspection: check electrical connections and ballast performance; (4) Intensity monitoring: calibrated UV sensors must be recalibrated annually; (5) Record keeping: log lamp hours, intensity readings, and cleaning dates for regulatory compliance.",
     difficulty: "medium",
   },
@@ -6119,12 +6119,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Digester Gas System",
     question: "A Class 4 plant's biogas system shows a sudden pressure drop in the gas collection system. The gas meter shows no flow. What are the safety procedures and diagnostic steps?",
     options: [
-      "Check the gas meter and restart the system immediately",
       "Treat as a potential gas leak emergency: evacuate the area, eliminate ignition sources, ventilate the space, use a combustible gas detector to locate the leak, notify the fire department if gas is detected, and do not restart until the leak is repaired and the area is cleared",
+      "Check the gas meter and restart the system immediately",
       "A pressure drop is normal; check the digester mixing system",
       "Increase digester loading to restore gas pressure"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "A sudden pressure drop and no flow in a biogas system indicates a potential gas leak, requiring immediate safety protocols and diagnostic steps.\n\nStep 1 — Recognize the Hazard:\nBiogas is highly flammable (Lower Explosive Limit (LEL) = 5% Methane in air) and contains toxic hydrogen sulfide (H2S) (Immediately Dangerous to Life or Health (IDLH) = 50 ppm).\n\nStep 2 — Implement Immediate Safety Actions:\na. Eliminate all ignition sources (no electrical switches, smoking, or vehicles).\nb. Evacuate non-essential personnel from the area.\nc. Ventilate enclosed spaces to disperse gas.\nd. Don appropriate Personal Protective Equipment (PPE), including Self-Contained Breathing Apparatus (SCBA) if entering enclosed spaces.\n\nStep 3 — Perform Diagnostic Steps:\na. Use a calibrated combustible gas detector (CGI) to sweep the area for gas accumulation.\nb. Visually inspect and use soapy water or a gas detector to check all flanges, valves, and connections for leaks.\nc. Inspect pressure relief valves and flame traps for proper operation.\n\nStep 4 — Notify Authorities:\nNotify the fire department immediately if gas is detected in confined spaces. Notify the Ministry of the Environment, Conservation and Parks (MECP) if there is a significant gas release to the atmosphere.\n\nStep 5 — Repair and Restart:\nOnly qualified personnel with appropriate hot work permits should perform repairs. Do not restart the system until the leak is repaired and the area is confirmed clear of gas.\n\nThe correct answer is B.",
     difficulty: "hard",
   },
@@ -6150,11 +6150,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant uses ferric chloride (FeCl3) for chemical phosphorus removal. The chemical feed pump is a peristaltic pump. What are the key maintenance requirements for this system?",
     options: [
       "Peristaltic pumps require no maintenance; they are self-priming and self-cleaning",
-      "Key maintenance: replace pump tubing on schedule (every 3-6 months or per manufacturer), inspect for tubing wear and cracking, flush the system with water when not in use, inspect chemical containment for leaks, and calibrate the pump output quarterly",
       "Only the chemical injection point needs maintenance; the pump itself is maintenance-free",
+      "Key maintenance: replace pump tubing on schedule (every 3-6 months or per manufacturer), inspect for tubing wear and cracking, flush the system with water when not in use, inspect chemical containment for leaks, and calibrate the pump output quarterly",
       "Peristaltic pumps only require annual maintenance"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Peristaltic pump maintenance for FeCl3 service: (1) Tubing replacement: the peristaltic tube is the primary wear item; replace every 3-6 months or per manufacturer's recommendation; FeCl3 is corrosive and accelerates tubing degradation; signs of wear: cracking, swelling, or reduced flow; (2) Tubing inspection: check for pinhole leaks (FeCl3 is highly corrosive to concrete, metal, and skin); (3) Roller/shoe inspection: worn rollers cause uneven compression and reduced flow accuracy; (4) Flushing: flush with water when the system is shut down for extended periods to prevent FeCl3 crystallization; (5) Calibration: verify pump output quarterly using a graduated cylinder and stopwatch; (6) Secondary containment: inspect for FeCl3 leaks; FeCl3 is a corrosive chemical requiring secondary containment under TSSA regulations; (7) PPE: always wear acid-resistant gloves, goggles, and apron when working with FeCl3.",
     difficulty: "medium",
   },
@@ -6165,11 +6165,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A secondary clarifier's sludge collector drive mechanism shows increased torque readings over 2 weeks, eventually triggering the high-torque alarm and shutting down. What are the causes and corrective actions?",
     options: [
       "High torque is normal; reset the alarm and restart",
-      "Causes: sludge blanket too deep (heavy sludge load on the collector), sludge consolidation at the bottom (old, compacted sludge), or mechanical issues (worn drive components, debris in the mechanism); corrective actions: increase RAS rate to reduce blanket depth, manually break up consolidated sludge, inspect and service the drive mechanism",
+      "High torque is caused by low MLSS; increase MLSS concentration",
       "High torque indicates the clarifier is too large; reduce flow",
-      "High torque is caused by low MLSS; increase MLSS concentration"
+      "Causes: sludge blanket too deep (heavy sludge load on the collector), sludge consolidation at the bottom (old, compacted sludge), or mechanical issues (worn drive components, debris in the mechanism); corrective actions: increase RAS rate to reduce blanket depth, manually break up consolidated sludge, inspect and service the drive mechanism"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Secondary clarifier collector high torque causes: (1) Deep sludge blanket: heavy sludge load on the collector arms increases drag torque; increase RAS rate to draw down the blanket; (2) Sludge consolidation: old, compacted sludge at the bottom resists scraping; may require manual cleaning or high-pressure water jetting; (3) Debris: rags, sticks, or other debris caught in the collector mechanism; inspect and remove; (4) Mechanical wear: worn drive gears, bearings, or collector arms; inspect and service; (5) Frozen sludge: in cold climates, sludge can freeze at the bottom of outdoor clarifiers. Corrective actions: (1) Increase RAS rate immediately to reduce sludge blanket; (2) Inspect the collector mechanism from the walkway; (3) If torque remains high after sludge drawdown, take the clarifier offline for inspection; (4) Never force the drive against high torque -- risk of mechanical damage.",
     difficulty: "medium",
   },
@@ -6179,12 +6179,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Diffuser Maintenance",
     question: "A fine bubble membrane diffuser system shows increasing air pressure requirements and decreasing oxygen transfer efficiency over 6 months. What maintenance is required?",
     options: [
-      "Fine bubble diffusers are maintenance-free; no action needed",
       "Diffuser fouling (biological growth, mineral scaling, or membrane deterioration) causes increased pressure drop and reduced efficiency; maintenance includes: acid washing (citric acid or HCl) to remove mineral deposits, hypochlorite washing for biological fouling, and membrane inspection for tears or delamination",
+      "Fine bubble diffusers are maintenance-free; no action needed",
       "Increase blower pressure to compensate for fouling",
       "Replace all diffusers immediately; they cannot be cleaned"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Fine bubble membrane diffuser fouling and maintenance: (1) Biological fouling: biofilm growth on membrane surface reduces pore size and increases pressure drop; treat with sodium hypochlorite (500-1,000 mg/L) by draining the basin and soaking diffusers; (2) Mineral scaling: calcium carbonate, iron, and manganese deposits block pores; treat with citric acid (2-5%) or dilute HCl (1-2%); (3) Membrane deterioration: EPDM or polyurethane membranes degrade over time (5-10 year service life); inspect for tears, delamination, or loss of elasticity; replace if damaged; (4) Diffuser cleaning procedure: (a) drain basin; (b) apply cleaning solution; (c) allow soak time (4-8 hours); (d) rinse thoroughly; (e) refill and test. Cleaning frequency: annually or when pressure drop increases > 20% above baseline. Diffuser replacement: every 7-12 years.",
     difficulty: "medium",
   },
@@ -6195,11 +6195,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's knife gate valve on the RAS line fails to close completely, allowing sludge to bypass. What are the maintenance actions and safety considerations?",
     options: [
       "Knife gate valves cannot be repaired; replace immediately",
-      "Maintenance actions: inspect the gate and seat for wear, debris, or corrosion; clean the gate and seat; replace gate packing if leaking around the stem; if the gate is worn or damaged, replace the gate or the entire valve; safety: isolate the line, depressurize, and use lockout/tagout before any valve maintenance",
+      "Knife gate valves are self-cleaning; the problem will resolve with continued operation",
       "Adjust the valve actuator to increase closing force",
-      "Knife gate valves are self-cleaning; the problem will resolve with continued operation"
+      "Maintenance actions: inspect the gate and seat for wear, debris, or corrosion; clean the gate and seat; replace gate packing if leaking around the stem; if the gate is worn or damaged, replace the gate or the entire valve; safety: isolate the line, depressurize, and use lockout/tagout before any valve maintenance"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Knife gate valve failure to close: (1) Debris: rags, grit, or fibrous material caught between the gate and seat preventing full closure -- most common cause; flush the line to clear debris; (2) Gate wear: the gate edge becomes dull over time, reducing sealing effectiveness; replace the gate; (3) Seat wear: the seat surface becomes grooved or corroded; replace the seat or the valve; (4) Packing wear: leakage around the stem indicates worn packing; replace packing (can often be done under pressure with special tools); (5) Corrosion: stainless steel or ductile iron gates can corrode in aggressive sludge environments. Safety procedure: (1) Lockout/tagout the valve actuator; (2) Isolate the line by closing upstream and downstream valves; (3) Depressurize the line; (4) Drain if necessary; (5) Wear appropriate PPE for sludge exposure.",
     difficulty: "medium",
   },
@@ -6224,12 +6224,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Electrical Systems",
     question: "A Class 4 plant experiences a motor control centre (MCC) trip for the primary effluent pump. The motor overload relay has tripped. What is the correct diagnostic and restart procedure?",
     options: [
-      "Reset the overload relay and restart immediately",
       "Investigate the cause before resetting: check for mechanical binding, excessive load, phase imbalance, or motor overheating; measure motor current after reset; if the overload trips again, do not reset until the root cause is identified and corrected",
+      "Reset the overload relay and restart immediately",
       "Replace the overload relay; it has failed",
       "Increase the overload relay setpoint to prevent future trips"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Motor overload relay trip -- diagnostic procedure: (1) Do NOT reset immediately without investigation -- repeated resets without addressing the cause can damage the motor; (2) Check for mechanical causes: is the pump impeller clogged? Is there mechanical binding in the pump or drive train? Attempt to rotate the shaft manually; (3) Check electrical causes: measure voltage at the MCC -- phase imbalance > 2% causes current imbalance and overheating; check for single-phasing (one phase open); (4) Check motor temperature: if the motor is hot to the touch, allow it to cool before restarting; (5) Review recent operating history: was the pump running at higher than normal current before the trip? (6) After investigation: reset the overload relay; restart the motor and immediately measure current on all three phases; compare to nameplate FLA (full load amps); if current is within 10% of FLA, operation is normal. If overload trips again, take the motor offline for inspection.",
     difficulty: "medium",
   },
@@ -6239,12 +6239,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Instrumentation Calibration",
     question: "A Class 4 plant's online ammonia analyzer shows a reading of 0.5 mg/L NH3-N but the grab sample analyzed in the lab shows 3.2 mg/L. What is the diagnostic approach?",
     options: [
-      "Trust the online analyzer; lab results are less accurate",
       "Investigate the discrepancy: check analyzer calibration (verify with fresh standards), check sample conditioning (filtration, dilution), check for fouling of the sample probe or flow cell, and verify the lab method and sample preservation",
+      "Trust the online analyzer; lab results are less accurate",
       "Trust the lab result; online analyzers are always inaccurate",
       "Average the two results: (0.5 + 3.2) / 2 = 1.85 mg/L"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Online analyzer vs. lab result discrepancy -- diagnostic approach: (1) Verify lab result: check sample preservation (H2SO4 to pH < 2, 4 C), analysis method (phenate, ion-selective electrode, or Nessler), and QC (standards, blanks); (2) Check analyzer calibration: run fresh calibration standards through the analyzer; if the analyzer reads correctly on standards but not on the sample, the issue is sample conditioning; (3) Check sample conditioning: (a) filtration membrane -- blocked membrane causes sample to be unrepresentative; (b) dilution system -- incorrect dilution ratio; (c) reagent quality -- expired or degraded reagents; (4) Check probe/flow cell fouling: biofilm or mineral deposits on the optical or electrochemical sensor; clean per manufacturer's procedure; (5) Check for air bubbles in the flow cell: air bubbles cause erratic readings. The lab result is typically the reference method -- if the lab result is verified, the analyzer needs recalibration or maintenance.",
     difficulty: "medium",
   },
@@ -6255,11 +6255,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A centrifugal pump handling primary sludge has a mechanical seal that is leaking. The operator observes a steady drip of sludge from the seal area. What are the options for repair and the safety considerations?",
     options: [
       "A small leak from a mechanical seal is normal; no action needed",
-      "A dripping mechanical seal requires repair: options include replacing the seal (requires pump shutdown and disassembly), installing a seal flush system to extend seal life, or switching to a submersible pump design; safety: lockout/tagout, drain the pump casing, and use appropriate PPE for sludge exposure",
       "Tighten the gland packing to stop the leak",
+      "A dripping mechanical seal requires repair: options include replacing the seal (requires pump shutdown and disassembly), installing a seal flush system to extend seal life, or switching to a submersible pump design; safety: lockout/tagout, drain the pump casing, and use appropriate PPE for sludge exposure",
       "Mechanical seals cannot be repaired; replace the entire pump"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Mechanical seal leak management: (1) Assessment: a steady drip (> 10 drops/minute) indicates seal failure requiring repair; a slight weeping (< 10 drops/minute) may be acceptable for some seal types; (2) Repair options: (a) Seal replacement: most common -- shut down pump, lockout/tagout, drain casing, disassemble, replace seal faces and O-rings; (b) Seal flush: install a clean water flush to the seal chamber to cool the seal and prevent sludge from contacting the seal faces -- extends seal life; (c) Pump replacement: if the seal fails repeatedly, consider a submersible pump (no shaft seal required) or a progressive cavity pump with packing; (3) Safety: (a) Lockout/tagout the motor and all isolation valves; (b) Drain the pump casing before disassembly; (c) Wear appropriate PPE: gloves, face shield, waterproof clothing; (d) Sludge may contain pathogens -- treat all sludge as potentially infectious.",
     difficulty: "medium",
   },
@@ -6270,11 +6270,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's fine screen (2 mm opening) at the headworks shows increasing differential pressure across the screen and reduced flow capacity. What is the maintenance procedure?",
     options: [
       "Fine screens are self-cleaning; no maintenance needed",
-      "Increasing differential pressure indicates screen blinding (fouling); maintenance includes: checking and adjusting the automatic backwash system, manually cleaning the screen if the backwash is ineffective, inspecting screen panels for damage, and removing accumulated screenings from the screenings conveyor",
       "Increase influent flow to flush the screen clean",
+      "Increasing differential pressure indicates screen blinding (fouling); maintenance includes: checking and adjusting the automatic backwash system, manually cleaning the screen if the backwash is ineffective, inspecting screen panels for damage, and removing accumulated screenings from the screenings conveyor",
       "Replace the screen immediately; it has failed"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Fine screen maintenance: (1) Automatic backwash system: most fine screens have automatic backwash using spray nozzles or brush mechanisms triggered by differential pressure; check that the backwash is activating and functioning correctly; (2) Manual cleaning: if backwash is ineffective, manually clean the screen panels using a pressure washer; (3) Screen panel inspection: check for damaged, bent, or missing screen panels that allow solids to bypass; (4) Screenings management: ensure the screenings conveyor and compactor are operating correctly; accumulated screenings can block the screen; (5) Grit accumulation: grit can accumulate at the base of the screen channel, reducing flow area; clean the channel; (6) Grease: grease from food service establishments can blind fine screens rapidly; consider adding a grease trap or increasing backwash frequency. Differential pressure > 150 mm typically triggers backwash; > 300 mm indicates manual cleaning is needed.",
     difficulty: "medium",
   },
@@ -6285,12 +6285,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Aeration System Control",
     question: "A Class 4 plant uses dissolved oxygen (DO) control with variable frequency drives (VFDs) on the blowers. The DO setpoint is 2.0 mg/L but the actual DO fluctuates between 0.5 and 4.5 mg/L with a 15-minute cycle. What is the cause and corrective action?",
     options: [
-      "DO fluctuation is normal; the control system is working correctly",
       "The DO control loop is oscillating (hunting) due to improper PID tuning; the proportional gain is too high or the integral time is too short; retune the PID controller to reduce oscillation",
+      "DO fluctuation is normal; the control system is working correctly",
       "The VFD is failing; replace the VFD",
       "The DO probe is faulty; replace the probe"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "The problem describes a classic control system oscillation, or \"hunting,\" which is typically caused by improper tuning of the Proportional-Integral-Derivative (PID) controller.\n\nStep 1 – Analyze the symptoms:\nThe Dissolved Oxygen (DO) fluctuates significantly (0.5 to 4.5 mg/L) around the setpoint (2.0 mg/L) with a consistent 15-minute cycle. This regular, sustained oscillation indicates that the control system is over-correcting, causing the process variable to continuously overshoot and undershoot the setpoint.\n\nStep 2 – Identify the cause:\nIn a PID control loop, such oscillations are often due to the proportional gain (Kp) being set too high, leading to aggressive responses, or the integral time (Ti) being set too short, causing the controller to accumulate error too quickly and over-correct for past deviations. The VFD is likely functioning as commanded by the controller, and a faulty DO probe would typically show erratic, non-cyclic readings or a constant offset, not a stable oscillation.\n\nStep 3 – Determine the corrective action:\nTo reduce oscillation, the PID controller needs to be retuned. This involves reducing the proportional gain to make the controller's response less aggressive and/or increasing the integral time to slow down how quickly the controller eliminates steady-state error, thereby dampening the oscillations.\n\nStep 4 – Evaluate other options:\nA. DO fluctuation is not normal when a control system is properly tuned; it indicates instability. C. A failing VFD would likely lead to erratic blower operation or complete failure, not a consistent 15-minute cycle. D. A faulty DO probe would give inaccurate readings, but if the control system is reacting to these inaccurate readings in a cyclical manner, the tuning is still the underlying issue causing the oscillation.\n\nThe correct answer is B. The DO control loop is oscillating (hunting) due to improper PID tuning; the proportional gain is too high or the integral time is too short; retune the PID controller to reduce oscillation.",
     difficulty: "hard",
     steps: [ { l: "Problem Identification", c: "The DO fluctuates significantly (0.5 to 4.5 mg/L) around the setpoint (2.0 mg/L) with a rapid 15-minute cycle." }, { l: "Analysis of Fluctuation", c: "This wide and rapid oscillation (hunting) indicates that the control system is over-correcting for deviations from the setpoint." }, { l: "Root Cause", c: "The most common cause for such behavior in a PID (Proportional-Integral-Derivative) control loop is improper tuning, specifically an overly aggressive proportional gain or integral action." }, { l: "Explanation of Over-Correction", c: "When DO drops, the controller increases blower speed too much, causing DO to overshoot. Then, it reduces speed too much, causing DO to undershoot, creating continuous oscillation." }, { l: "Solution", c: "The control loop (PID) needs re-tuning to reduce the aggressiveness of the controller, allowing for smoother and more stable operation around the setpoint." }, { l: "Conclusion", c: "The issue is classic DO control loop oscillation due to improper PID tuning." } ],
@@ -6332,12 +6332,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Sludge Pumping",
     question: "A progressive cavity (PC) pump handling thickened WAS (5% TS) shows reduced flow and increased noise. The stator is 2 years old. What is the likely cause and maintenance action?",
     options: [
-      "Reduced flow and noise indicate the pump is running backwards; check motor rotation",
       "The stator (rubber element) is likely worn; PC pump stators have a service life of 1-3 years in abrasive sludge service; replace the stator; also inspect the rotor for wear and the universal joints for wear",
+      "Reduced flow and noise indicate the pump is running backwards; check motor rotation",
       "Reduced flow indicates the sludge is too thick; dilute the sludge",
       "The pump needs more lubrication; add grease to the bearings"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Progressive cavity pump wear: (1) Stator wear: the rubber stator is the primary wear item in PC pumps; abrasive particles (grit, sand) in sludge accelerate wear; worn stator results in: reduced flow (increased slip), increased noise (metal-to-metal contact), and eventual pump failure; typical stator life: 1-3 years in sludge service; (2) Rotor wear: the chrome-plated steel rotor can wear in abrasive service; inspect for pitting and scoring; (3) Universal joints: the flexible joints connecting the rotor to the drive shaft wear over time; worn joints cause vibration and noise; (4) Suction valve: check for blockage. Maintenance: (1) Replace stator (can be done without removing the pump from the line on most models); (2) Inspect and replace rotor if worn; (3) Inspect universal joints; (4) Check and adjust packing or mechanical seal. PC pumps are ideal for sludge because they handle high viscosity and solids without shearing.",
     difficulty: "medium",
   },
@@ -6348,11 +6348,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator is performing maintenance on a 600V motor control centre (MCC). What electrical safety requirements apply under Ontario's Occupational Health and Safety Act?",
     options: [
       "Only a licensed electrician can work on 600V equipment; operators cannot perform any maintenance",
-      "Lockout/tagout is required; work on energized equipment > 50V requires qualified persons following Ontario Electrical Safety Code procedures; arc flash PPE (arc-rated clothing, face shield) is required for work near energized conductors; only qualified electrical workers can work on energized equipment",
       "Standard PPE (hard hat, safety glasses) is sufficient for MCC maintenance",
+      "Lockout/tagout is required; work on energized equipment > 50V requires qualified persons following Ontario Electrical Safety Code procedures; arc flash PPE (arc-rated clothing, face shield) is required for work near energized conductors; only qualified electrical workers can work on energized equipment",
       "600V equipment can be worked on without lockout if the work is minor maintenance"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Electrical safety requirements for 600V MCC work (Ontario OHSA and Electrical Safety Authority): (1) Lockout/tagout (LOTO): required before any maintenance on de-energized equipment; follow the plant's written LOTO procedure; verify zero energy state with a calibrated voltage tester; (2) Energized work: working on or near energized conductors > 50V requires: (a) qualified electrical worker designation; (b) written energized work permit; (c) arc flash hazard analysis; (d) arc-rated PPE (arc flash suit, face shield, insulating gloves); (3) Qualified persons: electrical work on 600V equipment must be performed by or under the direct supervision of a licensed electrician (309A or 442A in Ontario); (4) Electrical Safety Code: all work must comply with the Ontario Electrical Safety Code (OESC); (5) Permit to work: many plants require a formal permit for electrical work. Operators can perform visual inspections and reset overloads, but not open panels or work on energized conductors.",
     difficulty: "hard",
   },
@@ -6363,11 +6363,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's biofilter for odour control shows breakthrough (H2S detected in the outlet air). The biofilter media is 5 years old. What are the causes and corrective actions?",
     options: [
       "Biofilter breakthrough is normal; no action needed",
-      "Causes of biofilter breakthrough: media exhaustion (loss of biological activity), channeling (preferential flow paths), low moisture content, pH imbalance, or organic overloading; corrective actions include: check and adjust moisture content (50-60%), check pH (6-8), redistribute media to eliminate channeling, add nutrients if media is exhausted, or replace media if beyond service life",
+      "Add activated carbon to the biofilter to adsorb H2S",
       "Increase the air flow rate through the biofilter to dilute the H2S",
-      "Add activated carbon to the biofilter to adsorb H2S"
+      "Causes of biofilter breakthrough: media exhaustion (loss of biological activity), channeling (preferential flow paths), low moisture content, pH imbalance, or organic overloading; corrective actions include: check and adjust moisture content (50-60%), check pH (6-8), redistribute media to eliminate channeling, add nutrients if media is exhausted, or replace media if beyond service life"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Biofilter breakthrough causes and corrective actions: (1) Media exhaustion: after 5-7 years, the biological community may decline; check specific oxygen uptake rate (SOUR) of media samples; if SOUR is low, replace media; (2) Channeling: preferential flow paths bypass portions of the media; redistribute media, add fresh media to fill voids; (3) Low moisture: biofilter media must be 50-60% moisture for optimal biological activity; check humidification system; increase water spray frequency; (4) pH imbalance: H2S oxidation produces sulfuric acid, lowering pH below 5.0 and inhibiting bacteria; add lime or calcium carbonate to neutralize; (5) Organic overloading: H2S concentration in inlet air exceeds design capacity; investigate source of increased H2S; (6) Temperature: biofilters perform poorly below 5 C; insulate or heat in cold climates. Biofilter media service life: wood chip/compost media 5-7 years; synthetic media 10-15 years.",
     difficulty: "hard",
   },
@@ -6378,11 +6378,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant superintendent is developing a preventive maintenance (PM) program. What are the key elements of an effective PM program for a wastewater treatment plant?",
     options: [
       "A PM program only needs to include annual inspections of major equipment",
-      "An effective PM program includes: equipment inventory and criticality ranking, manufacturer-recommended maintenance schedules, documented PM procedures, work order system for tracking, spare parts inventory management, maintenance records and history, and performance metrics (equipment availability, mean time between failures)",
       "PM programs are only needed for equipment covered by warranty",
+      "An effective PM program includes: equipment inventory and criticality ranking, manufacturer-recommended maintenance schedules, documented PM procedures, work order system for tracking, spare parts inventory management, maintenance records and history, and performance metrics (equipment availability, mean time between failures)",
       "A PM program only needs to address electrical equipment; mechanical equipment is self-maintaining"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Elements of an effective WWTP preventive maintenance program: (1) Equipment inventory: complete list of all equipment with manufacturer, model, serial number, and installation date; (2) Criticality ranking: classify equipment as critical (failure causes process upset or safety hazard), essential (failure affects performance), or non-critical; prioritize PM for critical equipment; (3) PM schedules: based on manufacturer recommendations, operating hours, and calendar intervals (daily, weekly, monthly, quarterly, annual); (4) Written procedures: step-by-step PM procedures for each task including safety requirements; (5) Work order system: computerized maintenance management system (CMMS) to schedule, assign, and track PM work orders; (6) Spare parts: maintain critical spare parts inventory (bearings, seals, impellers, belts) to minimize downtime; (7) Records: document all PM activities, findings, and corrective actions; (8) Performance metrics: track equipment availability, PM compliance rate, and corrective maintenance costs.",
     difficulty: "medium",
   },
@@ -6426,11 +6426,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's tertiary sand filter shows increasing headloss and decreasing filtration rate. The filter has been in service for 3 months since the last backwash. What is the maintenance procedure?",
     options: [
       "Sand filters do not require maintenance; they are self-cleaning",
-      "The filter requires backwashing: reverse the flow direction through the filter at high velocity (8-15 m/h) to fluidize the sand bed and remove trapped solids; backwash until the backwash water runs clear; some filters also use air scour before water backwash to break up compacted solids",
+      "Increase the filtration rate to push solids through the filter",
       "Replace the sand media; it has been exhausted",
-      "Increase the filtration rate to push solids through the filter"
+      "The filter requires backwashing: reverse the flow direction through the filter at high velocity (8-15 m/h) to fluidize the sand bed and remove trapped solids; backwash until the backwash water runs clear; some filters also use air scour before water backwash to break up compacted solids"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Sand filter backwashing procedure: (1) Trigger: headloss > design maximum (typically 2-3 m) OR filtration rate drops below minimum OR turbidity breakthrough; (2) Backwash sequence: (a) Close influent valve; (b) Drain filter to backwash level; (c) Optional: air scour at 15-20 m/h for 3-5 minutes to break up compacted solids and mud balls; (d) Water backwash at 8-15 m/h for 10-15 minutes until backwash water is clear; (e) Rinse cycle: filter to waste for 5-10 minutes to remove fine particles before returning to service; (3) Backwash water: typically 2-5% of filtered volume; (4) Frequency: typically every 24-72 hours depending on solids loading; (5) Media inspection: annually check for: mud balls (compacted solids), media loss (check media depth), biological growth. After 3 months without backwash, the filter likely has significant headloss and may have mud balls forming.",
     difficulty: "medium",
   },
@@ -6441,11 +6441,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant stores sodium hypochlorite (12% NaOCl) for disinfection. The chemical storage area shows yellow-orange staining on the walls and floor, and the hypochlorite concentration has dropped from 12% to 7% in 6 weeks. What are the causes and corrective actions?",
     options: [
       "Hypochlorite degradation is normal; no action needed",
-      "Causes: hypochlorite degrades rapidly when exposed to heat, light, metals, and pH extremes; the yellow-orange staining indicates chlorine gas release from decomposition; corrective actions include: store in a cool, dark location (< 20 C), use UV-resistant containers, avoid metal contact, maintain pH > 11, and order smaller quantities more frequently to ensure freshness",
       "The hypochlorite is being diluted by rainwater; check the storage tank for leaks",
+      "Causes: hypochlorite degrades rapidly when exposed to heat, light, metals, and pH extremes; the yellow-orange staining indicates chlorine gas release from decomposition; corrective actions include: store in a cool, dark location (< 20 C), use UV-resistant containers, avoid metal contact, maintain pH > 11, and order smaller quantities more frequently to ensure freshness",
       "The hypochlorite is too concentrated; dilute to 6% for storage"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Sodium hypochlorite degradation: (1) Temperature: degradation rate doubles for every 10 C increase; store below 20 C; avoid direct sunlight; (2) Light: UV light catalyzes decomposition; use opaque or UV-resistant containers; (3) Metal contamination: trace metals (Fe, Cu, Ni) catalyze decomposition; use HDPE or FRP containers; avoid metal fittings; (4) pH: hypochlorite is most stable at pH > 11; acidic conditions accelerate decomposition; (5) Concentration: higher concentration (> 15%) degrades faster. Yellow-orange staining indicates chlorine gas (Cl2) release from the reaction: 2NaOCl -> 2NaCl + O2 + Cl2. Corrective actions: (1) Relocate storage to a cool, dark area; (2) Replace metal fittings with PVC or HDPE; (3) Order smaller quantities (2-4 week supply) more frequently; (4) Test concentration weekly; (5) Ventilate the storage area to prevent chlorine gas accumulation.",
     difficulty: "medium",
   },
@@ -6455,12 +6455,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Pump Cavitation",
     question: "A centrifugal pump handling primary effluent makes a rattling or crackling noise and shows reduced flow and head. What is the diagnosis and corrective action?",
     options: [
-      "The noise indicates bearing failure; replace bearings",
       "The symptoms indicate cavitation: vapor bubbles forming in the low-pressure zone of the impeller and collapsing violently; causes include insufficient NPSH (net positive suction head), high suction lift, or high liquid temperature; corrective actions include: lower the pump, increase suction pipe diameter, reduce suction losses, or reduce pump speed",
+      "The noise indicates bearing failure; replace bearings",
       "The noise indicates impeller clogging; clean the impeller",
       "The noise indicates the pump is running backwards; check motor rotation"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Cavitation diagnosis and correction: (1) Symptoms: rattling/crackling noise (like gravel in the pump), reduced flow and head, vibration, and over time, pitting damage to the impeller and casing; (2) Cause: when the local pressure at the impeller inlet falls below the vapor pressure of the liquid, vapor bubbles form; when these bubbles move to higher-pressure zones, they collapse violently, causing noise and erosion; (3) Root cause -- insufficient NPSH: NPSH_available < NPSH_required; (4) Corrective actions: (a) Lower the pump (reduce suction lift); (b) Increase suction pipe diameter (reduce velocity and friction losses); (c) Remove obstructions in suction line; (d) Reduce pump speed (reduces NPSH_required); (e) Cool the liquid (reduces vapor pressure); (f) Install a larger impeller with lower NPSH_required; (5) Prevention: design suction piping to minimize losses; maintain adequate liquid level in the suction well.",
     difficulty: "hard",
   },
@@ -6471,11 +6471,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant superintendent is reviewing the maintenance records for the past year. The records show that 40% of work orders are reactive (breakdown) maintenance and 60% are preventive maintenance. What does this ratio indicate, and what is the industry benchmark?",
     options: [
       "40% reactive maintenance is excellent; the plant is well-maintained",
-      "40% reactive maintenance is high; the industry benchmark for a well-maintained plant is < 20% reactive maintenance; investigate the most frequently failing equipment and strengthen the PM program for those assets",
       "The ratio is irrelevant; only total maintenance cost matters",
+      "40% reactive maintenance is high; the industry benchmark for a well-maintained plant is < 20% reactive maintenance; investigate the most frequently failing equipment and strengthen the PM program for those assets",
       "60% preventive maintenance is too high; reduce PM to save costs"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Maintenance ratio benchmarks: (1) World-class maintenance: < 10% reactive, > 90% planned (PM + predictive); (2) Good maintenance: 10-20% reactive, 80-90% planned; (3) Average maintenance: 20-30% reactive; (4) Poor maintenance: > 30% reactive (reactive-dominant). At 40% reactive, this plant is in the poor maintenance category. Implications: (1) Higher costs: reactive maintenance typically costs 3-5x more than planned maintenance; (2) Reduced reliability: frequent breakdowns indicate underlying asset health issues; (3) Safety risk: unexpected failures can create safety hazards. Corrective actions: (1) Analyze the 40% reactive work orders -- identify the top 5 most frequently failing equipment; (2) Strengthen PM procedures for those assets; (3) Consider predictive maintenance (vibration analysis, thermography, oil analysis) for critical rotating equipment; (4) Review spare parts inventory for frequently failing components.",
     difficulty: "medium",
   },
@@ -6487,11 +6487,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's energy audit shows that aeration accounts for 65% of total plant energy consumption (850,000 kWh/year). The plant has fine bubble diffusers with an SOTE of 25% and blowers operating at constant speed. What energy reduction strategies are available?",
     options: [
       "Energy reduction is not possible without reducing treatment quality",
-      "Strategies include: install variable frequency drives (VFDs) on blowers for DO-based control (20-30% energy savings), optimize DO setpoints (reduce from 3.0 to 2.0 mg/L), implement off-peak aeration scheduling, clean diffusers to restore SOTE, and consider upgrading to higher-efficiency blowers (turbo blowers)",
       "Replace fine bubble diffusers with coarse bubble diffusers to reduce maintenance",
+      "Strategies include: install variable frequency drives (VFDs) on blowers for DO-based control (20-30% energy savings), optimize DO setpoints (reduce from 3.0 to 2.0 mg/L), implement off-peak aeration scheduling, clean diffusers to restore SOTE, and consider upgrading to higher-efficiency blowers (turbo blowers)",
       "Increase MLSS to reduce aeration requirements"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "To identify energy reduction strategies for the aeration system, evaluate options for improving efficiency and reducing energy demand.\n\nStep 1 — Understand the problem:\nThe plant's aeration accounts for 65% of 850,000 kWh/year, indicating a significant opportunity for energy savings. Current fine bubble diffusers have a SOTE of 25%, and blowers operate at constant speed.\n\nStep 2 — Evaluate proposed strategies:\nInstall Variable Frequency Drives (VFDs) on blowers for DO-based control: This allows blowers to adjust speed based on oxygen demand, saving 20-30% of aeration energy. This is a highly effective strategy.\nOptimize DO setpoints: Reducing the DO setpoint from 3.0 to 2.0 mg/L (while maintaining nitrification) decreases the oxygen transfer driving force requirements, leading to energy savings.\nImplement off-peak aeration scheduling: Shifting energy-intensive operations to off-peak hours can reduce electricity costs due to lower rates.\nClean diffusers: Fouled diffusers increase pressure drop and reduce the Standard Oxygen Transfer Efficiency (SOTE). Cleaning restores efficiency and reduces energy consumption.\nUpgrade to higher-efficiency blowers (turbo blowers): Turbo blowers are typically 15-20% more efficient than conventional centrifugal blowers, offering significant long-term savings.\n\nStep 3 — Reject incorrect options:\nOption A (Energy reduction is not possible without reducing treatment quality) is incorrect because multiple strategies can reduce energy without compromising treatment.\nOption C (Replace fine bubble diffusers with coarse bubble diffusers) is incorrect; fine bubble diffusers are generally more efficient than coarse bubble diffusers in terms of oxygen transfer, so replacing them would likely increase energy consumption.\nOption D (Increase MLSS to reduce aeration requirements) is incorrect; while increasing MLSS can improve settling, it typically increases oxygen demand, not reduces it.\n\nThe correct answer is B. Strategies include: install variable frequency drives (VFDs) on blowers for DO-based control (20-30% energy savings), optimize DO setpoints (reduce from 3.0 to 2.0 mg/L), implement off-peak aeration scheduling, clean diffusers to restore SOTE, and consider upgrading to higher-efficiency blowers (turbo blowers).",
     difficulty: "hard",
     steps: [ { l: "Problem Identification", c: "Aeration is the largest energy consumer (65% of 850,000 kWh/year). The goal is to identify the most impactful energy reduction strategy." }, { l: "Strategy 1: VFDs on Blowers", c: "VFDs allow DO-based control, reducing blower speed during low-demand periods. This is highly effective for aeration, offering typical savings of 20-30% of aeration energy with a 2-4 year payback." }, { l: "Strategy 2: DO Setpoint Optimization", c: "Reducing the DO setpoint (e.g., from 3.0 to 2.0 mg/L) reduces the oxygen transfer driving force, potentially saving energy. However, this must be balanced with process performance." }, { l: "Strategy 3: Diffuser Cleaning/Replacement", c: "Fouled diffusers reduce SOTE (Standard Oxygen Transfer Efficiency), increasing energy consumption. Cleaning or replacing them can restore efficiency." }, { l: "Strategy 4: Blower Efficiency Improvement", c: "Replacing old, inefficient blowers with newer, more efficient models can significantly reduce energy consumption." }, { l: "Conclusion", c: "Implementing VFDs on blowers with DO-based control is generally the most impactful and common strategy for significant aeration energy reduction due to their ability to match oxygen supply to demand." } ],
@@ -6506,11 +6506,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant operates an MBR system. The MLSS is 10,000 mg/L and the membrane flux is 15 LMH (litres per square metre per hour). The TMP has been stable at 20 kPa for 3 months but suddenly increases to 45 kPa over 2 days. What is the most likely cause?",
     options: [
       "The sudden TMP increase indicates normal membrane aging; no action needed",
-      "A sudden TMP increase over 2 days indicates acute membrane fouling, likely caused by a change in sludge characteristics (increased EPS production from a toxic shock, nutrient deficiency, or industrial discharge); investigate recent changes in influent quality and sludge characteristics",
       "The TMP increase indicates the membranes need replacement; replace all membranes",
+      "A sudden TMP increase over 2 days indicates acute membrane fouling, likely caused by a change in sludge characteristics (increased EPS production from a toxic shock, nutrient deficiency, or industrial discharge); investigate recent changes in influent quality and sludge characteristics",
       "The TMP increase is caused by high MLSS; reduce MLSS to 5,000 mg/L"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Analyze the sudden TMP increase to identify the most likely cause of acute membrane fouling, considering various contributing factors and diagnostic steps.\n\nStep 1 — Evaluate the nature of the TMP increase:\nA sudden increase from 20 kPa to 45 kPa over 2 days is rapid, indicating acute fouling rather than gradual membrane aging.\n\nStep 2 — Identify potential causes of acute fouling:\nAcute fouling is often caused by changes in sludge characteristics, such as increased Extracellular Polymeric Substances (EPS) production due to toxic shock (industrial discharge), nutrient deficiency (N or P limitation), or temperature changes. Other causes include colloidal fouling (increased colloidal material from industrial discharge or process upset) or scaling (sudden increase in calcium or magnesium).\n\nStep 3 — Consider diagnostic actions:\nReview influent quality data for the past 2-3 days, check MLSS, SVI, and SOUR for changes in sludge characteristics, and perform membrane cleaning (maintenance clean with hypochlorite) to assess reversibility. If TMP recovers, fouling was reversible; if not, chemical cleaning (CIP) is needed.\n\nStep 4 — Evaluate preventive measures:\nMaintain a stable Sludge Retention Time (SRT), ensure adequate nutrient supply, and monitor industrial discharges to prevent future acute fouling.\n\nThe correct answer is B. A sudden TMP increase over 2 days indicates acute membrane fouling, likely caused by a change in sludge characteristics (increased EPS production from a toxic shock, nutrient deficiency, or industrial discharge); investigate recent changes in influent quality and sludge characteristics.",
     difficulty: "hard",
   },
@@ -6521,11 +6521,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant operates a sequencing batch reactor (SBR). The operator observes poor decanting quality -- the decanted effluent is turbid with TSS = 45 mg/L. The SBR cycle is: Fill (1h), React (3h), Settle (1.5h), Decant (0.5h), Idle (0.5h). What adjustments can improve decant quality?",
     options: [
       "Increase the decant rate to remove more water per cycle",
-      "Extend the settle phase (increase from 1.5h to 2.5h), reduce the decant rate, and investigate sludge settleability (SVI); if SVI > 150 mL/g, address the root cause of poor settling",
       "Reduce the MLSS concentration to improve settling",
+      "Extend the settle phase (increase from 1.5h to 2.5h), reduce the decant rate, and investigate sludge settleability (SVI); if SVI > 150 mL/g, address the root cause of poor settling",
       "Add polymer directly to the SBR during the settle phase"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "SBR decant quality improvement: (1) Extend settle time: increasing settle phase from 1.5h to 2.5h allows more complete sludge settling before decanting; (2) Reduce decant rate: slower decanting reduces turbulence and sludge resuspension near the decanter; (3) Investigate sludge settleability: measure SVI -- if > 150 mL/g, address root cause (filamentous bulking, low F:M, nutrient deficiency); (4) Check decanter position: the decanter should be positioned to avoid the sludge blanket; verify the decanter float or level sensor is functioning correctly; (5) Reduce cycle frequency: fewer cycles per day allows more settle time per cycle; (6) Adjust MLSS: if MLSS is too high (> 4,000 mg/L), the sludge blanket may be too close to the decanter; increase wasting. SBR advantages: flexible cycle times allow process optimization without major capital investment.",
     difficulty: "medium",
   },
@@ -6535,12 +6535,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Moving Bed Biofilm Reactor",
     question: "A Class 4 plant uses a Moving Bed Biofilm Reactor (MBBR) for nitrification polishing. The effluent NH3-N has been rising from 0.5 mg/L to 3.2 mg/L over 4 weeks. The carrier fill fraction is 50% and the DO is 4.0 mg/L. What are the likely causes?",
     options: [
-      "The DO is too high; reduce aeration",
       "Likely causes: biofilm loss from carriers (excessive shear, toxic shock, or carrier fouling), increased nitrogen loading, or temperature decrease inhibiting nitrifiers; investigate recent changes in influent TKN, temperature, and toxic inputs",
+      "The DO is too high; reduce aeration",
       "The carrier fill fraction is too high; reduce to 30%",
       "MBBR systems cannot achieve NH3-N < 1 mg/L; the target is unrealistic",
     ],
-    correct: 1,
+    correct: 0,
     explanation: "MBBR nitrification decline causes: (1) Biofilm loss: excessive aeration shear can strip biofilm from carriers; check aeration intensity; (2) Toxic shock: industrial discharge containing heavy metals, biocides, or chlorinated compounds can kill nitrifiers; review industrial discharge monitoring; (3) Temperature decrease: nitrification rate halves for every 10 C drop below 20 C; check temperature trends; (4) Increased TKN loading: higher influent nitrogen requires more biofilm surface area; check influent TKN; (5) pH: nitrification is inhibited below pH 6.5; check pH in the MBBR; (6) Carrier fouling: inorganic deposits on carriers reduce biofilm attachment surface; inspect carriers. MBBR advantages over activated sludge: no sludge recycle required, compact footprint, flexible capacity. Target NH3-N < 1 mg/L is achievable with proper design and operation.",
     difficulty: "hard",
   },
@@ -6551,11 +6551,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant operates an IFAS system for nitrification. The MLSS is 2,500 mg/L and the carrier fill fraction is 35%. The system is not meeting the effluent NH3-N limit of 1.0 mg/L. What process adjustments should be investigated?",
     options: [
       "Increase MLSS to 5,000 mg/L to improve nitrification",
-      "Investigate: SRT (must be > minimum nitrification SRT at the operating temperature), DO in the IFAS zone (must be > 3.0 mg/L for biofilm nitrification), carrier fill fraction (35% is within design range), and influent TKN loading; also check for toxic inhibition",
+      "Reduce the HRT to increase the organic loading and stimulate nitrifier growth",
       "Remove the carriers and operate as conventional activated sludge",
-      "Reduce the HRT to increase the organic loading and stimulate nitrifier growth"
+      "Investigate: SRT (must be > minimum nitrification SRT at the operating temperature), DO in the IFAS zone (must be > 3.0 mg/L for biofilm nitrification), carrier fill fraction (35% is within design range), and influent TKN loading; also check for toxic inhibition"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "IFAS nitrification troubleshooting: (1) SRT: the suspended growth component must maintain a sufficient SRT for nitrification (> 8-10 days at 15 C); at MLSS 2,500 mg/L, check the WAS rate; (2) DO: biofilm nitrification requires DO > 3.0 mg/L in the bulk liquid; increase aeration if DO < 3.0 mg/L; (3) Carrier fill fraction: 35% is within normal range (25-50%); check for carrier loss through screens; (4) TKN loading: if influent TKN has increased, the system may be undersized; (5) Temperature: nitrification rate decreases significantly below 15 C; (6) Toxic inhibition: check for industrial discharges. IFAS advantage: the biofilm provides a refuge for slow-growing nitrifiers even at low SRT, allowing higher organic loading than conventional activated sludge.",
     difficulty: "hard",
   },
@@ -6581,11 +6581,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant experiences struvite (MgNH4PO4) scaling in its centrate return lines and centrifuge. What conditions promote struvite formation and how can it be controlled?",
     options: [
       "Struvite forms only in aerobic conditions; add oxygen to prevent it",
-      "Struvite forms when Mg2+, NH4+, and PO43- concentrations exceed the solubility product (Ksp); high pH (> 7.5), high temperature, and CO2 stripping promote formation; control by: pH adjustment (lower to 6.5-7.0), magnesium removal, or controlled struvite precipitation in a dedicated reactor for beneficial use",
+      "Struvite only forms in anaerobic digesters; centrate lines are not affected",
       "Struvite is caused by iron deficiency; add ferric chloride to prevent it",
-      "Struvite only forms in anaerobic digesters; centrate lines are not affected"
+      "Struvite forms when Mg2+, NH4+, and PO43- concentrations exceed the solubility product (Ksp); high pH (> 7.5), high temperature, and CO2 stripping promote formation; control by: pH adjustment (lower to 6.5-7.0), magnesium removal, or controlled struvite precipitation in a dedicated reactor for beneficial use"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Struvite (MgNH4PO4.6H2O) formation conditions: (1) Supersaturation: when [Mg2+][NH4+][PO43-] > Ksp = 2.5 x 10-13; (2) High pH: above pH 7.5, PO43- concentration increases (phosphate speciation shifts); CO2 stripping in turbulent flow raises pH; (3) Temperature: higher temperature promotes crystal growth; (4) Turbulence: promotes CO2 stripping and crystal nucleation. Control strategies: (1) pH reduction: maintain pH 6.5-7.0 in centrate lines using CO2 or acid injection; (2) Magnesium removal: add phosphate to precipitate Mg before centrate return; (3) Controlled struvite precipitation: recover struvite as a slow-release fertilizer in a dedicated reactor (e.g., Pearl reactor) -- converts a problem into a revenue stream; (4) Anti-scalant chemicals: phosphonate-based chemicals inhibit crystal growth; (5) Mechanical removal: high-pressure water jetting of affected pipes. Struvite is a significant operational problem at plants with EBPR and anaerobic digestion.",
     difficulty: "hard",
   },
@@ -6596,11 +6596,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's EBPR system achieves effluent TP of 0.8 mg/L in summer but 2.5 mg/L in winter. The effluent limit is 1.0 mg/L TP year-round. What are the causes of seasonal EBPR performance variation and how can winter performance be improved?",
     options: [
       "Seasonal variation in EBPR is normal; no action needed",
-      "Winter EBPR decline causes: lower temperature reduces PAO activity, higher influent flow dilutes VFA concentration, and longer SRT at lower temperatures can cause PAO washout; improvements: add supplemental carbon (acetate or fermented primary sludge) to increase VFA supply, add chemical phosphorus removal as backup (ferric chloride), and optimize SRT for winter conditions",
       "Winter EBPR decline is caused by too much aeration; reduce DO in winter",
+      "Winter EBPR decline causes: lower temperature reduces PAO activity, higher influent flow dilutes VFA concentration, and longer SRT at lower temperatures can cause PAO washout; improvements: add supplemental carbon (acetate or fermented primary sludge) to increase VFA supply, add chemical phosphorus removal as backup (ferric chloride), and optimize SRT for winter conditions",
       "Winter EBPR decline is caused by high MLSS; reduce MLSS in winter"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Seasonal EBPR performance variation: (1) Temperature effect: PAO activity decreases at lower temperatures; the phosphorus release and uptake rates are reduced; (2) VFA supply: winter often brings higher flows (snowmelt, rain) that dilute VFA concentration in the influent; lower temperature also reduces fermentation rates in the collection system; (3) SRT: at lower temperatures, a longer SRT is needed for PAO enrichment, but longer SRT can also enrich competing organisms (GAOs); (4) Competing organisms: GAOs (glycogen accumulating organisms) compete with PAOs for VFAs without performing phosphorus removal; GAOs are less temperature-sensitive than PAOs. Winter improvement strategies: (1) Supplemental carbon: add acetate or fermented primary sludge to the anaerobic zone to increase VFA supply; (2) Chemical backup: add ferric chloride or alum for chemical phosphorus removal when EBPR is insufficient; (3) SRT optimization: adjust WAS rate for winter conditions; (4) Reduce RAS rate: minimize nitrate carry-over to the anaerobic zone.",
     difficulty: "hard",
   },
@@ -6611,11 +6611,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's nitrification suddenly fails -- effluent NH3-N rises from 0.5 mg/L to 18 mg/L over 24 hours. The MLSS is stable, DO is 3.0 mg/L, and temperature is 18 C. What is the most likely cause and response?",
     options: [
       "Sudden nitrification failure is caused by low DO; increase aeration",
-      "Sudden nitrification failure over 24 hours with stable MLSS and adequate DO strongly suggests a toxic inhibitor in the influent; immediately collect influent samples for toxicity testing, notify the MECP, investigate industrial discharges, and consider bypassing the toxic load if possible",
       "Sudden nitrification failure is caused by low MLSS; increase MLSS",
+      "Sudden nitrification failure over 24 hours with stable MLSS and adequate DO strongly suggests a toxic inhibitor in the influent; immediately collect influent samples for toxicity testing, notify the MECP, investigate industrial discharges, and consider bypassing the toxic load if possible",
       "Sudden nitrification failure is normal seasonal variation; no action needed"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Sudden nitrification failure with stable MLSS and adequate DO: (1) Toxic inhibition is the most likely cause -- nitrifiers (Nitrosomonas and Nitrobacter) are extremely sensitive to many compounds: heavy metals (Cu, Zn, Ni, Cr, Cd), chlorinated solvents, thiourea, allylthiourea, cyanide, high ammonia (> 150 mg/L free ammonia), high nitrous acid, and many industrial chemicals; (2) Response: (a) Collect influent grab samples every 2 hours; (b) Perform toxicity testing (Microtox or nitrification inhibition test); (c) Notify MECP immediately; (d) Investigate industrial discharges -- review industrial monitoring reports, conduct field inspections; (e) If toxic load can be identified, consider bypassing or holding the influent; (3) Recovery: once the toxic input stops, nitrification typically recovers within 5-14 days as the nitrifier population recovers. Document all actions for regulatory reporting.",
     difficulty: "hard",
   },
@@ -6626,11 +6626,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's A2O process is achieving nitrification (effluent NO3-N = 18 mg/L) but poor denitrification (effluent TN = 22 mg/L, limit = 10 mg/L TN). The internal recycle ratio is 2Q. What adjustments can improve denitrification?",
     options: [
       "Denitrification cannot be improved without adding a new anoxic zone",
-      "Increase the internal recycle ratio to 4-5Q to deliver more nitrate to the anoxic zone; add supplemental carbon (methanol or acetate) if the C:N ratio is insufficient; optimize anoxic zone DO (must be < 0.2 mg/L); check for short-circuiting in the anoxic zone",
+      "Add more aeration to the anoxic zone to improve denitrification",
       "Reduce the SRT to decrease nitrate production",
-      "Add more aeration to the anoxic zone to improve denitrification"
+      "Increase the internal recycle ratio to 4-5Q to deliver more nitrate to the anoxic zone; add supplemental carbon (methanol or acetate) if the C:N ratio is insufficient; optimize anoxic zone DO (must be < 0.2 mg/L); check for short-circuiting in the anoxic zone"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "A2O denitrification improvement: (1) Increase internal recycle (IR) ratio: increasing from 2Q to 4-5Q delivers more nitrate to the anoxic zone for denitrification; theoretical maximum TN removal with IR = 4Q: TN removal = (1 - 1/(1+IR)) = 1 - 1/5 = 80%; (2) Carbon supply: denitrification requires a carbon source (electron donor); if C:N ratio < 4:1 (BOD:TN), add supplemental carbon (methanol, acetate, or glycerol); (3) Anoxic zone DO: DO > 0.2 mg/L inhibits denitrification; check for oxygen carry-over from the aerobic zone; (4) Anoxic zone HRT: minimum 1-2 hours for effective denitrification; (5) Short-circuiting: check anoxic zone mixing to ensure complete utilization of the zone volume. At IR = 4Q with adequate carbon, effluent TN of 8-10 mg/L is achievable.",
     difficulty: "hard",
   },
@@ -6641,11 +6641,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant uses cloth disk filtration for tertiary TSS removal. The target is effluent TSS < 5 mg/L. The filter is achieving 8 mg/L TSS. What operational adjustments can improve performance?",
     options: [
       "Cloth disk filtration cannot achieve TSS < 5 mg/L; replace with sand filtration",
-      "Adjustments: reduce filtration rate (flux), increase backwash frequency, check cloth condition for tears or blinding, add coagulant upstream if colloidal solids are present, and verify secondary clarifier performance (high secondary effluent TSS limits filter performance)",
       "Increase the filtration rate to improve TSS removal",
+      "Adjustments: reduce filtration rate (flux), increase backwash frequency, check cloth condition for tears or blinding, add coagulant upstream if colloidal solids are present, and verify secondary clarifier performance (high secondary effluent TSS limits filter performance)",
       "Add chlorine upstream of the filter to kill biological solids"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Cloth disk filter optimization for TSS < 5 mg/L: (1) Reduce filtration flux: lower flow per unit area reduces solids breakthrough; typical design flux 5-10 m/h; (2) Backwash frequency: increase backwash frequency to prevent cloth blinding and maintain clean cloth surface; (3) Cloth inspection: inspect cloth panels for tears, holes, or blinding (irreversible fouling); replace damaged panels; (4) Upstream coagulation: if effluent contains colloidal solids (< 1 micron), add coagulant (alum or ferric) upstream to agglomerate colloids; (5) Secondary clarifier performance: cloth filters cannot compensate for poor secondary clarifier performance; if secondary effluent TSS > 20 mg/L, address the secondary process first; (6) Cloth type: ensure the correct cloth pore size (10-20 micron) is installed for the target TSS. Cloth disk filters can achieve TSS < 5 mg/L with proper operation.",
     difficulty: "medium",
   },
@@ -6686,11 +6686,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant experiences filamentous bulking -- the SVI rises from 120 to 380 mL/g over 3 weeks. The dominant filament is identified as Microthrix parvicella. What are the specific causes and control strategies for Microthrix?",
     options: [
       "All filamentous bulking is treated the same way; add chlorine to the RAS",
-      "Microthrix parvicella thrives in: low F:M ratio (< 0.05 kg BOD/kg MLSS/day), low DO (< 1.5 mg/L), low temperature (< 15 C), and high lipid/grease content in the influent; control strategies: increase F:M ratio (increase WAS), improve DO control, add selector zone, and reduce grease in the influent",
+      "Microthrix is controlled by adding phosphoric acid to the aeration basin",
       "Microthrix is caused by high DO; reduce aeration",
-      "Microthrix is controlled by adding phosphoric acid to the aeration basin"
+      "Microthrix parvicella thrives in: low F:M ratio (< 0.05 kg BOD/kg MLSS/day), low DO (< 1.5 mg/L), low temperature (< 15 C), and high lipid/grease content in the influent; control strategies: increase F:M ratio (increase WAS), improve DO control, add selector zone, and reduce grease in the influent"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Microthrix parvicella is a slow-growing filamentous organism that specializes in consuming long-chain fatty acids (LCFAs) and lipids. Conditions that favor Microthrix: (1) Low F:M ratio: < 0.05 kg BOD/kg MLSS/day (extended aeration conditions); (2) Low DO: < 1.5 mg/L; (3) Low temperature: < 15 C (Microthrix is more competitive than floc-formers at low temperatures); (4) High lipid content: food processing, dairy, or restaurant wastewater. Control strategies: (1) Increase F:M ratio: increase WAS rate to reduce SRT; target F:M > 0.08 kg BOD/kg MLSS/day; (2) DO control: maintain DO > 2.0 mg/L; (3) Selector: add an aerobic or anoxic selector zone to give floc-formers a competitive advantage; (4) Grease control: improve grease trap maintenance for food service contributors; (5) Chlorination of RAS: short-term control (5-10 mg/L Cl2 in RAS) to reduce filament density; (6) Hydrogen peroxide: alternative to chlorine for filament control.",
     difficulty: "hard",
   },
@@ -6701,11 +6701,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's aeration basin has persistent brown, stable foam covering 30% of the surface. Microscopic examination shows Nocardia-type actinomycetes. What are the causes and control strategies?",
     options: [
       "Brown foam is caused by high BOD loading; reduce influent BOD",
-      "Nocardia-type actinomycetes cause stable brown foam by producing hydrophobic cell surfaces that trap air bubbles; causes include long SRT (> 15 days), high lipid content, and low F:M ratio; control: reduce SRT by increasing WAS, spray water to break up foam, and consider chlorination of the foam",
       "Brown foam is caused by surfactants in the influent; add antifoam agent",
+      "Nocardia-type actinomycetes cause stable brown foam by producing hydrophobic cell surfaces that trap air bubbles; causes include long SRT (> 15 days), high lipid content, and low F:M ratio; control: reduce SRT by increasing WAS, spray water to break up foam, and consider chlorination of the foam",
       "Brown foam is normal in activated sludge; no action needed"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Nocardia-type actinomycetes (including Gordonia, Skermania) cause stable brown/chocolate-colored foam: (1) Mechanism: hydrophobic cell surfaces trap air bubbles, creating stable foam; the organisms concentrate in the foam layer; (2) Conditions favoring Nocardia: long SRT (> 15 days), low F:M ratio, high lipid/oil content in influent, warm temperatures (> 20 C); (3) Control strategies: (a) Reduce SRT: increase WAS rate to reduce SRT to 8-12 days; Nocardia is a slow-growing organism that is washed out at shorter SRT; (b) Water spray: break up foam with water sprays to prevent it from accumulating and overflowing; (c) Foam wasting: waste the foam directly from the aeration basin surface; (d) Chlorination: spray dilute hypochlorite (50-100 mg/L) on the foam to kill Nocardia; (e) Grease control: reduce lipid loading from food service contributors; (f) Avoid recycling foam: do not return foam from the clarifier back to the aeration basin.",
     difficulty: "hard",
   },
@@ -6716,11 +6716,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is evaluating UV/H2O2 advanced oxidation for removing trace organic contaminants (micropollutants). What are the key design and operational parameters?",
     options: [
       "UV/H2O2 is the same as UV disinfection; no additional parameters are needed",
-      "Key parameters: UV dose (> 500 mJ/cm2 for micropollutant removal vs 40 mJ/cm2 for disinfection), H2O2 dose (5-20 mg/L), UV transmittance of the effluent (must be > 70% for effective treatment), and H2O2 quenching (residual H2O2 must be removed before discharge or biological treatment)",
       "UV/H2O2 only works for disinfection; it cannot remove micropollutants",
+      "Key parameters: UV dose (> 500 mJ/cm2 for micropollutant removal vs 40 mJ/cm2 for disinfection), H2O2 dose (5-20 mg/L), UV transmittance of the effluent (must be > 70% for effective treatment), and H2O2 quenching (residual H2O2 must be removed before discharge or biological treatment)",
       "Only H2O2 is needed; UV light is not required for micropollutant removal"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "UV/H2O2 advanced oxidation process (AOP) for micropollutant removal: (1) Mechanism: UV light (254 nm) photolyzes H2O2 to generate hydroxyl radicals (OH*) -- the most powerful oxidant used in water treatment; OH* reacts non-selectively with organic micropollutants; (2) UV dose: 500-1,000 mJ/cm2 for micropollutant removal (vs 40 mJ/cm2 for disinfection); higher dose requires more UV lamps or longer exposure time; (3) H2O2 dose: 5-20 mg/L; excess H2O2 scavenges OH* radicals, reducing efficiency; (4) UV transmittance (UVT): must be > 70% for effective treatment; natural organic matter (NOM) and turbidity absorb UV and reduce efficiency; pre-treatment (filtration, coagulation) improves UVT; (5) H2O2 quenching: residual H2O2 is toxic to aquatic organisms; remove by UV photolysis (additional UV exposure), sodium bisulfite addition, or biological treatment; (6) Applications: pharmaceutical removal, endocrine disruptors, 1,4-dioxane, NDMA.",
     difficulty: "hard",
   },
@@ -6731,11 +6731,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is evaluating SHARON-ANAMMOX for treating high-strength centrate (NH3-N = 800 mg/L, TP = 120 mg/L) from dewatering. What is the principle of this process and its advantages?",
     options: [
       "SHARON-ANAMMOX is a physical-chemical process that precipitates ammonia as struvite",
-      "SHARON partially nitrifies NH4+ to NO2- (not NO3-) at high temperature and short SRT; ANAMMOX bacteria then oxidize NH4+ using NO2- as the electron acceptor, converting both to N2 gas without external carbon; advantages: 60% less oxygen, no external carbon needed, 90% less sludge than conventional nitrification-denitrification",
       "SHARON-ANAMMOX is a conventional nitrification-denitrification process optimized for high-strength wastewater",
+      "SHARON partially nitrifies NH4+ to NO2- (not NO3-) at high temperature and short SRT; ANAMMOX bacteria then oxidize NH4+ using NO2- as the electron acceptor, converting both to N2 gas without external carbon; advantages: 60% less oxygen, no external carbon needed, 90% less sludge than conventional nitrification-denitrification",
       "SHARON-ANAMMOX requires methanol addition for denitrification"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "SHARON (Single reactor High Activity Ammonia Removal Over Nitrite) + ANAMMOX (ANaerobic AMMonium OXidation): (1) SHARON: operates at 30-35 C with short SRT (1-2 days) to selectively enrich Nitrosomonas (ammonia oxidizers) while washing out Nitrobacter (nitrite oxidizers); converts ~50% of NH4+ to NO2- (partial nitrification); (2) ANAMMOX: anaerobic bacteria (Candidatus Brocadia) oxidize NH4+ using NO2- as electron acceptor: NH4+ + NO2- -> N2 + 2H2O; requires NO2-:NH4+ ratio of 1:1; (3) Advantages vs conventional N removal: 60% less oxygen (no full nitrification to NO3-); no external carbon needed (ANAMMOX is autotrophic); 90% less sludge; 80-90% TN removal; (4) Disadvantages: ANAMMOX bacteria grow very slowly (doubling time 11 days); sensitive to temperature (optimal 30-37 C), DO (must be < 0.5 mg/L), and toxic compounds; (5) Applications: centrate, reject water, industrial high-strength wastewater.",
     difficulty: "hard",
   },
@@ -6746,12 +6746,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biogas Upgrading",
     question: "A Class 4 plant is evaluating upgrading its biogas (65% CH4, 35% CO2, 200 ppm H2S) to biomethane (> 97% CH4) for injection into the natural gas grid. What are the key treatment steps required?",
     options: [
-      "Biogas can be injected into the natural gas grid without treatment",
       "Required treatment steps: (1) H2S removal (to < 4 ppm for grid injection) using iron sponge, biological desulfurization, or activated carbon; (2) CO2 removal (to < 3%) using pressure swing adsorption (PSA), membrane separation, or water scrubbing; (3) Moisture removal (dew point < -8 C); (4) Compression to grid pressure (typically 200-700 kPa)",
+      "Biogas can be injected into the natural gas grid without treatment",
       "Only H2S removal is required; CO2 does not need to be removed",
       "Biogas upgrading is not technically feasible for municipal wastewater plants"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "To upgrade biogas to biomethane for natural gas grid injection, several key treatment steps are required to meet strict purity and pressure specifications.\n\nStep 1 — H2S Removal: Hydrogen sulfide (H2S) is corrosive and toxic, requiring removal to typically less than 4 ppm for grid injection. Methods include iron sponge, biological desulfurization, or activated carbon.\n\nStep 2 — CO2 Removal: Carbon dioxide (CO2) must be reduced from 35% to less than 3% to achieve biomethane with over 97% methane (CH4). Common methods are pressure swing adsorption (PSA), membrane separation, or water scrubbing.\n\nStep 3 — Moisture Removal: Moisture must be removed to achieve a dew point typically below -8°C to prevent condensation and corrosion within the natural gas grid.\n\nStep 4 — Compression: The upgraded biomethane needs to be compressed to match the natural gas grid pressure, which is typically between 200-700 kPa.\n\nStep 5 — Odorization: For safety, a natural gas odorant (e.g., mercaptan) is added to the biomethane, as methane is odorless.\n\nThe correct answer is B. Required treatment steps: (1) H2S removal (to < 4 ppm for grid injection) using iron sponge, biological desulfurization, or activated carbon; (2) CO2 removal (to < 3%) using pressure swing adsorption (PSA), membrane separation, or water scrubbing; (3) Moisture removal (dew point < -8 C); (4) Compression to grid pressure (typically 200-700 kPa)",
     difficulty: "hard",
   },
@@ -6761,12 +6761,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Nutrient Recovery",
     question: "A Class 4 plant is implementing a struvite recovery system (Pearl reactor) to convert centrate phosphorus into a marketable slow-release fertilizer. The centrate has NH3-N = 750 mg/L and TP = 110 mg/L. What is the expected struvite production rate if the plant processes 500 m3/day of centrate at 85% P recovery?",
     options: [
-      "Struvite production = 46.8 kg/day",
       "Struvite production = 234 kg/day",
+      "Struvite production = 46.8 kg/day",
       "Struvite production = 93.5 kg/day",
       "Struvite production = 18.7 kg/day"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "P recovered = 110 mg/L x 500 m3/day x 1,000 L/m3 / 1,000,000 x 0.85 = 46.75 kg P/day. Struvite molecular weight = MgNH4PO4.6H2O = 24.3 + 14 + 1 + 31 + 64 + 6(18) = 245.4 g/mol. Phosphorus molecular weight = 31 g/mol. Struvite:P mass ratio = 245.4/31 = 7.92. Struvite production = 46.75 kg P/day x 7.92 = 370 kg struvite/day. Wait -- recalculating: P = 110 mg/L x 500,000 L/day / 1,000,000 = 55 kg P/day x 0.85 = 46.75 kg P/day. Struvite = 46.75 x 7.92 = 370 kg/day. Closest answer is 46.8 kg/day which represents only the P mass recovered. The question asks for struvite production -- 370 kg/day. However, the answer 46.8 matches the P recovered, suggesting the question intends P mass. Struvite market value: approximately $500-800/tonne, generating $185-296/day revenue.",
     difficulty: "hard",
   },
@@ -6777,11 +6777,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant must meet an effluent limit of BOD5 < 5 mg/L and TSS < 5 mg/L for discharge to a sensitive receiving water. The secondary effluent is BOD5 = 12 mg/L and TSS = 15 mg/L. What tertiary treatment train is most appropriate?",
     options: [
       "Secondary treatment alone is sufficient; the limits are not achievable",
-      "A tertiary treatment train of: coagulation/flocculation + filtration (sand or cloth) + UV disinfection can achieve BOD5 < 5 mg/L and TSS < 5 mg/L; coagulation removes colloidal BOD and TSS; filtration polishes to < 5 mg/L; UV ensures disinfection without chemical residuals",
+      "Reverse osmosis is the only technology that can achieve these limits",
       "Only chlorination is needed to reduce BOD and TSS",
-      "Reverse osmosis is the only technology that can achieve these limits"
+      "A tertiary treatment train of: coagulation/flocculation + filtration (sand or cloth) + UV disinfection can achieve BOD5 < 5 mg/L and TSS < 5 mg/L; coagulation removes colloidal BOD and TSS; filtration polishes to < 5 mg/L; UV ensures disinfection without chemical residuals"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Tertiary treatment train for BOD5 < 5 mg/L and TSS < 5 mg/L: (1) Coagulation/flocculation: add alum or ferric chloride to agglomerate colloidal BOD and TSS; jar test to optimize dose; (2) Filtration: sand filtration (dual media: anthracite + sand) or cloth disk filtration removes floc and residual suspended solids to < 5 mg/L TSS; (3) UV disinfection: achieves regulatory disinfection requirements without chemical residuals; (4) Performance: coagulation + filtration typically achieves TSS < 3 mg/L and BOD5 < 5 mg/L from secondary effluent of 15 mg/L TSS; (5) Alternative: membrane filtration (MF or UF) can achieve TSS < 1 mg/L without coagulation but at higher capital and operating cost. The coagulation + filtration + UV train is the most cost-effective for these limits. Reverse osmosis is not needed unless dissolved solids removal is also required.",
     difficulty: "medium",
   },
@@ -6791,12 +6791,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Process Control Strategy",
     question: "A Class 4 plant superintendent is developing a process control strategy for a new BNR facility. What are the key online measurements needed for effective BNR process control?",
     options: [
-      "Only flow measurement is needed; all other parameters can be measured by grab sampling",
       "Key online measurements for BNR control: influent flow and NH3-N (for load-based control), DO in each aeration zone (for aeration control), NO3-N or ORP in the anoxic zone (for denitrification control), effluent NH3-N and NO3-N (for compliance monitoring), and MLSS (for SRT control)",
+      "Only flow measurement is needed; all other parameters can be measured by grab sampling",
       "Only DO measurement is needed for BNR control",
       "Online measurements are not reliable; use only grab samples for process control"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Online measurements for BNR process control: (1) Influent flow: required for all mass balance calculations and load-based control; (2) Influent NH3-N: enables proactive aeration control based on nitrogen loading (ammonia-based aeration control, ABAC); (3) DO in each aeration zone: primary control variable for aeration; target 1.5-2.5 mg/L in aerobic zones, < 0.2 mg/L in anoxic zones; (4) NO3-N or ORP in anoxic zone: monitors denitrification progress; ORP < -50 mV indicates good denitrification; (5) Effluent NH3-N: real-time compliance monitoring; triggers alarm if limit is approached; (6) Effluent NO3-N: monitors total nitrogen removal; (7) MLSS: used for SRT calculation and WAS control; (8) Effluent TP: monitors phosphorus removal; triggers chemical addition if needed. Advanced control: use ammonia-based aeration control (ABAC) and nitrate-based aeration control (NBAC) to optimize aeration and internal recycle simultaneously.",
     difficulty: "hard",
   },
@@ -6822,12 +6822,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Influent Characterization",
     question: "A Class 4 plant receives a new industrial discharge from a food processing facility. The industrial effluent has BOD5 = 8,000 mg/L, TKN = 250 mg/L, and TP = 80 mg/L at a flow of 500 m3/day. The municipal flow is 20,000 m3/day with BOD5 = 250 mg/L, TKN = 40 mg/L, TP = 8 mg/L. What is the combined influent BOD5 concentration and what process impacts should be anticipated?",
     options: [
-      "Combined BOD5 = 4,125 mg/L; the plant cannot treat this waste",
       "Combined BOD5 = 447 mg/L; anticipate increased oxygen demand, higher sludge production, potential nutrient imbalance, and need to review ECA capacity limits",
+      "Combined BOD5 = 4,125 mg/L; the plant cannot treat this waste",
       "Combined BOD5 = 250 mg/L; the industrial discharge has no impact",
       "Combined BOD5 = 8,250 mg/L; the plant must refuse the industrial discharge"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Combined influent BOD5: Total BOD = (250 mg/L x 20,000 m3/day) + (8,000 mg/L x 500 m3/day) = 5,000,000 + 4,000,000 = 9,000,000 g/day = 9,000 kg/day. Total flow = 20,500 m3/day. Combined BOD5 = 9,000,000 g / 20,500,000 L = 439 mg/L (approximately 447 mg/L with rounding). Process impacts: (1) Increased oxygen demand: BOD load increases 80%; aeration capacity may be insufficient; (2) Higher sludge production: more organic loading = more biomass; digester and dewatering capacity may be exceeded; (3) Nutrient ratio: industrial BOD:N:P = 8,000:250:80 = 100:3.1:1; municipal is 100:16:3.2; combined ratio may be nitrogen-limited for biological treatment; (4) ECA capacity: the plant's ECA specifies maximum influent loading; exceeding it requires an ECA amendment; (5) Industrial pretreatment: the industrial discharge should be covered by a Municipal Industrial Strategy for Abatement (MISA) permit.",
     difficulty: "hard",
   },
@@ -6837,12 +6837,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Odour Source Control",
     question: "A Class 4 plant receives complaints about odour from the headworks building. The H2S concentration in the building is 15 ppm. What are the sources, health implications, and control measures?",
     options: [
-      "15 ppm H2S is below the IDLH of 50 ppm; no action needed",
       "H2S at 15 ppm exceeds the Ontario OEL-STEL of 5 ppm (15-minute STEL); sources include septic influent, force mains, and grit/screenings; control measures: ventilation (6-12 air changes/hour), chemical dosing in the collection system (iron salts, nitrate, or oxygen), covered headworks with negative pressure, and PPE for workers",
+      "15 ppm H2S is below the IDLH of 50 ppm; no action needed",
       "H2S at 15 ppm is only a nuisance; standard ventilation is sufficient",
       "H2S odour can only be controlled by replacing the collection system"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "H2S in headworks building -- health and control: (1) Health implications: Ontario OEL-C (ceiling) = 10 ppm; OEL-STEL (15-min) = 5 ppm; at 15 ppm, the STEL is exceeded; H2S causes: eye/respiratory irritation at 5-50 ppm; olfactory fatigue (cannot smell it) at > 100 ppm; IDLH = 50 ppm; immediately dangerous to life at > 100 ppm; (2) Sources: septic influent from long force mains (sulfate reduction by SRB); grit and screenings accumulation; (3) Control measures: (a) Collection system: iron salt dosing (FeCl3 or FeSO4) to precipitate sulfide; nitrate injection to inhibit SRB; oxygen injection; (b) Headworks: cover all open channels; maintain negative pressure (ventilate to odour control system); (c) Odour control: biofilter or chemical scrubber on headworks ventilation air; (d) PPE: H2S monitor required for all workers entering the headworks; SCBA available; (e) Monitoring: continuous H2S monitoring with alarms.",
     difficulty: "hard",
   },
@@ -6852,12 +6852,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Wet Weather Management",
     question: "A Class 4 plant experiences combined sewer overflow (CSO) events during heavy rain. The plant's ECA includes a CSO control plan. What are the key elements of a CSO control plan under Ontario's regulatory framework?",
     options: [
-      "CSO control plans are not required in Ontario; CSOs are permitted without restriction",
       "Key elements of a CSO control plan: CSO characterization (frequency, volume, water quality), best management practices (maximize use of collection system storage, maximize flow to the WWTP), real-time control, long-term CSO control program (sewer separation, storage, treatment), public notification, and annual reporting to MECP",
+      "CSO control plans are not required in Ontario; CSOs are permitted without restriction",
       "CSO control only requires adding chlorine to the overflow",
       "CSO control plans only apply to plants with > 100 ML/day capacity"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Ontario CSO control plan requirements (MECP Procedure F-5-5 and ECA conditions): (1) CSO characterization: inventory of all CSO outfalls; monitoring of CSO frequency, duration, volume, and water quality; (2) Best management practices (BMPs): maximize use of existing collection system storage; maximize flow to the WWTP during wet weather; minimize dry weather overflows; (3) Real-time control: use SCADA to optimize system-wide storage and flow routing; (4) Long-term control program: capital works to reduce CSO frequency and volume (sewer separation, storage tanks, tunnel storage, satellite treatment); (5) Public notification: post CSO events on the municipality's website within 24 hours; notify beach/recreational water users; (6) Annual reporting: submit CSO monitoring data and program progress to MECP; (7) Environmental impact assessment: assess impacts on receiving water quality and aquatic habitat. Ontario's long-term goal is to eliminate CSOs or reduce them to < 4 events/year.",
     difficulty: "hard",
   },
@@ -6868,11 +6868,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is considering bioaugmentation -- adding specialized bacterial cultures to the aeration basin to improve nitrification after a toxic shock event. What are the realistic expectations and limitations of bioaugmentation?",
     options: [
       "Bioaugmentation is highly effective and will restore nitrification within 24 hours",
-      "Bioaugmentation can provide a seed of specialized organisms but has limited effectiveness in activated sludge systems because: the added organisms must compete with the existing biomass, the conditions that caused the original failure (toxicity, low SRT) must be corrected first, and the indigenous population typically recovers naturally within 5-14 days",
       "Bioaugmentation is prohibited in Ontario; it is considered genetic modification",
+      "Bioaugmentation can provide a seed of specialized organisms but has limited effectiveness in activated sludge systems because: the added organisms must compete with the existing biomass, the conditions that caused the original failure (toxicity, low SRT) must be corrected first, and the indigenous population typically recovers naturally within 5-14 days",
       "Bioaugmentation always works; it is the standard response to nitrification failure"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Bioaugmentation realistic assessment: (1) Mechanism: adding concentrated cultures of nitrifying bacteria (Nitrosomonas, Nitrobacter) to seed the system after a toxic shock or washout event; (2) Limitations: (a) Competition: added organisms must compete with the existing biomass for space and substrate; in a large activated sludge system, the added volume is diluted rapidly; (b) Root cause: if the toxic input is still present, added organisms will also be inhibited; (c) Natural recovery: the indigenous nitrifier population typically recovers within 5-14 days after the toxic input is removed, as nitrifiers grow from surviving cells; (d) Cost: bioaugmentation products are expensive ($500-2,000/application); (3) When it may help: after a severe washout event (SRT < minimum nitrification SRT) where the nitrifier population has been depleted; bioaugmentation can shorten recovery time by 2-5 days; (4) Best practice: correct the root cause first, then consider bioaugmentation as a supplement to natural recovery.",
     difficulty: "medium",
   },
@@ -6883,11 +6883,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant must maintain an Emergency Response Plan (ERP) under Ontario's Safe Drinking Water Act and Environmental Protection Act. What are the minimum elements required in an ERP for a wastewater treatment plant?",
     options: [
       "An ERP only needs to include contact phone numbers",
-      "Minimum ERP elements: hazard identification and risk assessment, emergency notification procedures (internal and regulatory), response procedures for each identified hazard, roles and responsibilities, resource requirements (equipment, personnel, contractors), training and exercise program, and annual review and update",
+      "An ERP only needs to be developed once; no updates are required",
       "ERPs are only required for drinking water plants; wastewater plants are exempt",
-      "An ERP only needs to be developed once; no updates are required"
+      "Minimum ERP elements: hazard identification and risk assessment, emergency notification procedures (internal and regulatory), response procedures for each identified hazard, roles and responsibilities, resource requirements (equipment, personnel, contractors), training and exercise program, and annual review and update"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Ontario wastewater ERP requirements (O. Reg. 129/04 and MECP guidance): (1) Hazard identification: list all potential emergencies (power failure, equipment failure, chemical spill, flooding, toxic influent, pandemic); (2) Risk assessment: probability and consequence of each hazard; (3) Notification procedures: who to call and when -- internal (plant staff, management), regulatory (MECP Spills Action Centre 1-800-268-6060, local health unit, municipality), and public (if required); (4) Response procedures: step-by-step actions for each emergency scenario; (5) Roles and responsibilities: incident commander, operations, communications, safety officer; (6) Resources: emergency equipment inventory, contractor contacts, mutual aid agreements with neighboring utilities; (7) Training: annual tabletop exercises and field exercises; (8) Review: annual review and update; update after any emergency event; (9) Distribution: all staff must have access to the current ERP.",
     difficulty: "medium",
   },
@@ -6912,12 +6912,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Asset Management",
     question: "A Class 4 plant superintendent is developing an asset management plan (AMP) for the plant's infrastructure. What is the key information needed for an effective AMP?",
     options: [
-      "An AMP only needs a list of equipment; no other information is required",
       "An effective AMP requires: asset inventory (all assets with age, condition, replacement value), condition assessment (current condition rating), remaining useful life estimates, risk assessment (consequence of failure x probability of failure), capital replacement plan (prioritized by risk and remaining life), and funding strategy (reserve fund, grants, rate increases)",
+      "An AMP only needs a list of equipment; no other information is required",
       "AMPs are only required for water distribution systems; wastewater plants are exempt",
       "An AMP only needs to cover assets > $1 million in value"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Asset Management Plan (AMP) key elements (Ontario's Asset Management Planning for Municipal Infrastructure, O. Reg. 588/17): (1) Asset inventory: complete list of all assets (civil, mechanical, electrical, instrumentation) with: asset ID, description, installation date, original cost, replacement cost; (2) Condition assessment: current condition rating (1-5 scale); inspection records; (3) Remaining useful life (RUL): estimated years until replacement needed; (4) Risk assessment: criticality x condition = risk score; prioritize high-risk assets for replacement; (5) Capital plan: 10-year capital replacement plan with estimated costs; (6) Funding strategy: reserve fund contributions, debentures, grants (OCIF, CWWF), rate increases; (7) Levels of service: define what level of service the assets must deliver; (8) Continuous improvement: update AMP annually as assets age and conditions change. Ontario municipalities must have AMPs under O. Reg. 588/17.",
     difficulty: "medium",
   },
@@ -6943,11 +6943,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant superintendent is preparing the annual operating budget. The plant's total operating cost last year was $2.8 million for treating 8.5 million m3 of wastewater. What is the unit cost per m3, and what are the major cost categories in a typical WWTP operating budget?",
     options: [
       "Unit cost = $0.33/m3; the only cost category is labour",
-      "Unit cost = $0.33/m3; major cost categories: labour (35-45%), energy (20-30%), chemicals (10-15%), biosolids management (10-15%), maintenance (10-15%), and administration/overhead (5-10%)",
       "Unit cost = $3.30/m3; the plant is too expensive to operate",
+      "Unit cost = $0.33/m3; major cost categories: labour (35-45%), energy (20-30%), chemicals (10-15%), biosolids management (10-15%), maintenance (10-15%), and administration/overhead (5-10%)",
       "Unit cost = $0.033/m3; the plant is very efficient"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Unit cost = $2,800,000 / 8,500,000 m3 = $0.329/m3 (approximately $0.33/m3). Typical WWTP operating cost breakdown: (1) Labour: 35-45% -- operators, maintenance staff, lab technicians, administrative staff; (2) Energy: 20-30% -- electricity for aeration, pumping, lighting; natural gas for heating; (3) Chemicals: 10-15% -- coagulants, disinfectants, polymers, pH adjustment; (4) Biosolids management: 10-15% -- dewatering, hauling, land application, or disposal; (5) Maintenance: 10-15% -- parts, contractor services, equipment repairs; (6) Administration/overhead: 5-10% -- insurance, permits, laboratory, monitoring, reporting. Benchmarking: $0.33/m3 is within the typical range for a Class 4 plant ($0.20-0.60/m3 depending on treatment level and plant size). Larger plants benefit from economies of scale.",
     difficulty: "medium",
   },
@@ -6958,11 +6958,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant superintendent is hiring a contractor to perform confined space entry for digester cleaning. What are the superintendent's legal obligations under the Ontario Occupational Health and Safety Act?",
     options: [
       "The contractor is solely responsible for safety; the superintendent has no obligations",
-      "The superintendent (as constructor/employer) must: ensure the contractor has a written confined space program, verify the contractor's competency, provide site-specific hazard information, coordinate with the contractor to prevent conflicts, and ensure the contractor complies with O. Reg. 632/05 (Confined Spaces)",
+      "The superintendent only needs to provide a key to the digester; all other safety responsibilities belong to the contractor",
       "Only the contractor's supervisor needs to be informed of hazards; the superintendent does not need to be involved",
-      "The superintendent only needs to provide a key to the digester; all other safety responsibilities belong to the contractor"
+      "The superintendent (as constructor/employer) must: ensure the contractor has a written confined space program, verify the contractor's competency, provide site-specific hazard information, coordinate with the contractor to prevent conflicts, and ensure the contractor complies with O. Reg. 632/05 (Confined Spaces)"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Superintendent's obligations for contractor confined space work (Ontario OHSA and O. Reg. 632/05): (1) Constructor responsibilities: if the municipality is the constructor (owner directing the work), it must ensure all contractors comply with the OHSA; (2) Hazard information: provide the contractor with all known hazards (H2S, CH4, CO2, oxygen deficiency, engulfment); (3) Contractor qualification: verify the contractor has: a written confined space program, trained and competent workers, appropriate equipment (atmospheric monitors, SCBA, rescue equipment); (4) Coordination: when multiple employers are on site, the constructor must coordinate safety activities to prevent conflicts; (5) Site-specific procedures: provide the contractor with the plant's confined space entry permit procedures; (6) Supervision: the superintendent must ensure the contractor is following safe work procedures; (7) Emergency response: ensure the plant's emergency response capabilities are available to support the contractor. Failure to meet these obligations can result in charges under the OHSA.",
     difficulty: "hard",
   },
@@ -6973,11 +6973,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant superintendent wants to implement a key performance indicator (KPI) dashboard. What are the most important KPIs for a Class 4 wastewater treatment plant?",
     options: [
       "Only effluent quality KPIs are needed; operational KPIs are not important",
-      "Important KPIs include: effluent compliance rate (% of samples meeting ECA limits), energy intensity (kWh/m3 treated), biosolids production (dry tonnes/ML treated), chemical costs ($/m3), equipment availability (%), safety incidents (TRIR), maintenance ratio (% reactive vs preventive), and biogas production (m3/tonne VS destroyed)",
+      "KPI dashboards are only needed for plants > 50 ML/day",
       "Only financial KPIs are needed; technical performance is secondary",
-      "KPI dashboards are only needed for plants > 50 ML/day"
+      "Important KPIs include: effluent compliance rate (% of samples meeting ECA limits), energy intensity (kWh/m3 treated), biosolids production (dry tonnes/ML treated), chemical costs ($/m3), equipment availability (%), safety incidents (TRIR), maintenance ratio (% reactive vs preventive), and biogas production (m3/tonne VS destroyed)"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Class 4 WWTP key performance indicators: (1) Regulatory compliance: effluent compliance rate (% samples meeting ECA limits for BOD, TSS, TP, TN, NH3, fecal coliform); (2) Energy: energy intensity (kWh/m3 or kWh/kg BOD removed); energy cost ($/m3); renewable energy percentage (% from biogas); (3) Biosolids: biosolids production (dry tonnes/ML); VS destruction (%); biosolids disposal cost ($/dry tonne); (4) Chemicals: chemical cost ($/m3); polymer dose (g/kg DS); coagulant dose (mg/L); (5) Operations: SRT (days); MLSS (mg/L); DO compliance (%); (6) Maintenance: equipment availability (%); PM compliance rate (%); maintenance cost ($/m3); (7) Safety: total recordable incident rate (TRIR); lost time injury frequency (LTIF); (8) Financial: unit operating cost ($/m3); capital spending vs budget. KPIs should be tracked monthly and compared to benchmarks and historical trends.",
     difficulty: "medium",
   },
@@ -7003,11 +7003,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant uses chlorine gas for disinfection. A chlorine gas leak is detected in the chlorination building. What is the emergency response procedure?",
     options: [
       "Enter the building and close the chlorine cylinder valve to stop the leak",
-      "Activate the emergency response plan: evacuate the area immediately, call 911, notify the MECP Spills Action Centre, establish a perimeter (minimum 300 m for a large leak), do not enter without SCBA and full chemical protective equipment, and contact the chlorine supplier's emergency response team",
+      "Use a water hose to neutralize the chlorine gas",
       "Open all windows and doors to ventilate the chlorine gas",
-      "Use a water hose to neutralize the chlorine gas"
+      "Activate the emergency response plan: evacuate the area immediately, call 911, notify the MECP Spills Action Centre, establish a perimeter (minimum 300 m for a large leak), do not enter without SCBA and full chemical protective equipment, and contact the chlorine supplier's emergency response team"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Chlorine gas emergency response (CHLOREP emergency response plan and Ontario OHSA): (1) Immediate evacuation: chlorine gas is immediately dangerous to life and health (IDLH = 10 ppm); evacuate all personnel from the building and downwind area; (2) Activate ERP: notify plant management, call 911 (fire department has chlorine response capability), notify MECP Spills Action Centre (1-800-268-6060); (3) Perimeter: establish an exclusion zone (minimum 100-300 m depending on leak size and wind direction); (4) Do NOT enter: without SCBA (self-contained breathing apparatus) and appropriate chemical protective clothing (Level A or B); (5) Chlorine supplier: contact the chlorine supplier's emergency response team (CHLOREP); they can provide technical assistance; (6) Neutralization: chlorine gas can be neutralized with caustic soda (NaOH) spray -- only by trained responders in full PPE; (7) Water: do NOT use water on a chlorine gas leak -- chlorine reacts with water to form hydrochloric acid, which can cause additional damage.",
     difficulty: "hard",
   },
@@ -7018,11 +7018,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 wastewater treatment plant must be under the direct supervision of a certified operator. Under Ontario Regulation 129/04, what are the minimum certification requirements for the operator in charge (OIC) of a Class 4 wastewater treatment plant?",
     options: [
       "Any certified operator can supervise a Class 4 plant",
-      "The OIC of a Class 4 wastewater treatment plant must hold a Class 4 Wastewater Treatment certificate; a Class 3 certificate holder may act as OIC only in specific circumstances defined by the regulation",
       "The OIC only needs a Class 2 certificate if they have 10 years of experience",
+      "The OIC of a Class 4 wastewater treatment plant must hold a Class 4 Wastewater Treatment certificate; a Class 3 certificate holder may act as OIC only in specific circumstances defined by the regulation",
       "No certification is required for the OIC if the plant has an automated control system"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Ontario Regulation 129/04 -- OIC certification requirements: (1) Class 4 WWTP: the OIC must hold a Class 4 Wastewater Treatment certificate; (2) Exceptions: a Class 3 certificate holder may act as OIC for up to 6 months if: the Class 4 OIC is temporarily absent (vacation, illness), and the Class 3 operator is working toward their Class 4 certificate; (3) OIC responsibilities: the OIC is responsible for: ensuring the plant is operated in compliance with the ECA; ensuring all operators are appropriately certified; maintaining the operator log; reporting ECA exceedances; (4) Staffing: the plant must have sufficient certified operators to ensure continuous coverage; (5) Operator log: the OIC must maintain a daily log of plant operations, including all process measurements, equipment status, and any abnormal events; (6) Penalties: operating a plant without a qualified OIC is an offence under the Ontario Water Resources Act.",
     difficulty: "medium",
   },
@@ -7032,12 +7032,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Public Communication",
     question: "A Class 4 plant superintendent receives a call from a local journalist asking about a recent effluent exceedance that was reported to the MECP. How should the superintendent handle this inquiry?",
     options: [
-      "Refuse to comment and refer all questions to a lawyer",
       "Respond professionally and transparently: confirm the exceedance occurred, explain what happened, describe the corrective actions taken, and emphasize the plant's commitment to environmental compliance; coordinate with the municipal communications department before speaking to media",
+      "Refuse to comment and refer all questions to a lawyer",
       "Deny that any exceedance occurred",
       "Provide all internal plant records to the journalist immediately"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Media relations for WWTP exceedances: (1) Coordinate with communications: before speaking to media, notify the municipal communications department or public affairs officer; they may handle media inquiries or provide guidance; (2) Be transparent: denying or minimizing an exceedance that is already in the public record (MECP reports are public) damages credibility; (3) Key messages: (a) Confirm the exceedance and when it occurred; (b) Explain the probable cause in plain language; (c) Describe corrective actions taken and their effectiveness; (d) Emphasize the plant's commitment to environmental compliance and public health; (e) Provide context (e.g., this was an isolated event, the plant has an excellent compliance record); (4) Avoid: speculation about causes before investigation is complete; technical jargon that confuses the public; (5) Follow-up: offer to provide updates as more information becomes available. Proactive, transparent communication builds public trust and reduces negative media coverage.",
     difficulty: "medium",
   },
@@ -7063,11 +7063,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant superintendent is planning for the retirement of two Class 4 certified operators in the next 2 years. What succession planning strategies should be implemented?",
     options: [
       "Hire replacement operators from outside after the retirements occur",
-      "Proactive succession planning: identify high-potential Class 3 operators for advancement; develop individual development plans (IDPs) with targeted training and experience; support Class 4 exam preparation; implement knowledge transfer (mentoring, documentation of institutional knowledge); and plan for a 6-12 month overlap period before retirements",
+      "Outsource plant operations to a private contractor when the operators retire",
       "Succession planning is not needed; operators are interchangeable",
-      "Outsource plant operations to a private contractor when the operators retire"
+      "Proactive succession planning: identify high-potential Class 3 operators for advancement; develop individual development plans (IDPs) with targeted training and experience; support Class 4 exam preparation; implement knowledge transfer (mentoring, documentation of institutional knowledge); and plan for a 6-12 month overlap period before retirements"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Succession planning for Class 4 operators: (1) Identify candidates: review current Class 3 operators for potential advancement; consider experience, aptitude, and career goals; (2) Individual Development Plans (IDPs): create written development plans for each candidate including: targeted training (advanced process control, laboratory, management); exposure to all plant systems; study plan for Class 4 exam; (3) Knowledge transfer: document institutional knowledge (undocumented procedures, equipment quirks, historical process data); implement mentoring pairs (retiring operator + successor); (4) Exam support: provide study materials, exam preparation courses, and paid study time; Class 4 exam has a 40-50% pass rate -- support is essential; (5) Overlap period: plan for 6-12 months of overlap between the retiring operator and the successor to allow knowledge transfer; (6) Regulatory compliance: ensure the plant always has a qualified Class 4 OIC; if succession fails, the municipality may need to hire a contract operator.",
     difficulty: "medium",
   },
@@ -7078,11 +7078,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is implementing an ISO 14001 Environmental Management System (EMS). What are the key elements of ISO 14001 and how does it benefit a wastewater treatment plant?",
     options: [
       "ISO 14001 is only for manufacturing companies; it does not apply to WWTPs",
-      "ISO 14001 key elements: environmental policy, aspects and impacts identification, legal and other requirements, objectives and targets, operational controls, emergency preparedness, monitoring and measurement, internal audit, and management review; benefits include: systematic compliance management, reduced environmental incidents, improved stakeholder confidence, and continuous improvement culture",
+      "ISO 14001 certification replaces the need for an ECA",
       "ISO 14001 only requires an environmental policy statement; no other elements are needed",
-      "ISO 14001 certification replaces the need for an ECA"
+      "ISO 14001 key elements: environmental policy, aspects and impacts identification, legal and other requirements, objectives and targets, operational controls, emergency preparedness, monitoring and measurement, internal audit, and management review; benefits include: systematic compliance management, reduced environmental incidents, improved stakeholder confidence, and continuous improvement culture"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "ISO 14001:2015 Environmental Management System for WWTPs: (1) Environmental policy: top management commitment to environmental compliance and continual improvement; (2) Context and stakeholder needs: identify internal and external issues affecting environmental performance; (3) Aspects and impacts: identify all activities that can impact the environment (energy use, chemical use, biosolids management, emissions, noise, odour); (4) Legal requirements: maintain a register of all applicable regulations (Ontario Water Resources Act, EPA, Nutrient Management Act); (5) Objectives and targets: set measurable environmental improvement goals (reduce energy by 10%, reduce chemical use by 5%); (6) Operational controls: documented procedures for all significant environmental aspects; (7) Emergency preparedness: plans for spills, equipment failures, and other emergencies; (8) Monitoring: track environmental performance against objectives; (9) Internal audit: annual internal audit of EMS effectiveness; (10) Management review: annual review by senior management. Benefits: demonstrates due diligence, reduces regulatory risk, improves operational discipline.",
     difficulty: "medium",
   },
@@ -7093,11 +7093,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant superintendent is developing a compliance management strategy to ensure consistent ECA compliance. What are the key elements of an effective compliance management strategy?",
     options: [
       "Compliance management only requires testing effluent samples",
-      "Effective compliance management includes: a compliance calendar (all monitoring and reporting deadlines), real-time process monitoring with alarms, a corrective action tracking system, regular internal compliance audits, staff training on ECA requirements, proactive communication with the MECP, and a continuous improvement program to address root causes of exceedances",
+      "Compliance management is the responsibility of the MECP; the plant only needs to submit samples",
       "Compliance management only requires hiring a consultant to review results annually",
-      "Compliance management is the responsibility of the MECP; the plant only needs to submit samples"
+      "Effective compliance management includes: a compliance calendar (all monitoring and reporting deadlines), real-time process monitoring with alarms, a corrective action tracking system, regular internal compliance audits, staff training on ECA requirements, proactive communication with the MECP, and a continuous improvement program to address root causes of exceedances"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Effective compliance management strategy elements: (1) Compliance calendar: document all ECA monitoring requirements (parameters, frequency, methods, reporting deadlines); use a CMMS or calendar system to track upcoming requirements; (2) Real-time monitoring: online analyzers for key parameters (DO, NH3, NO3, TP) with alarms when approaching limits; (3) Corrective action tracking: system to document, assign, and track corrective actions for all exceedances and near-misses; (4) Internal audits: quarterly internal compliance audits comparing actual performance to ECA requirements; identify gaps before they become exceedances; (5) Staff training: ensure all operators understand the ECA requirements and their role in compliance; (6) Proactive MECP communication: build a positive relationship with the local MECP district office; notify them proactively of potential issues before they become exceedances; (7) Root cause analysis: for every exceedance, conduct a root cause analysis and implement permanent corrective actions; (8) Continuous improvement: use compliance data to identify systemic issues and drive process improvements.",
     difficulty: "hard",
   },
@@ -7108,11 +7108,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant wants to produce Class A biosolids (pathogen-free) for unrestricted land application. What treatment processes can achieve Class A pathogen reduction under Ontario Regulation 267/03?",
     options: [
       "Conventional anaerobic digestion alone produces Class A biosolids",
-      "Class A pathogen reduction requires: thermophilic anaerobic digestion (55 C for minimum 20 days), composting (55 C for 15 days in windrow or 3 days in aerated static pile), pasteurization (70 C for 30 minutes), or advanced alkaline stabilization (pH > 12 for 72 hours); these achieve fecal coliform < 1,000 MPN/g TS and Salmonella < 3 MPN/4g TS",
       "Any digestion process produces Class A biosolids",
+      "Class A pathogen reduction requires: thermophilic anaerobic digestion (55 C for minimum 20 days), composting (55 C for 15 days in windrow or 3 days in aerated static pile), pasteurization (70 C for 30 minutes), or advanced alkaline stabilization (pH > 12 for 72 hours); these achieve fecal coliform < 1,000 MPN/g TS and Salmonella < 3 MPN/4g TS",
       "Class A biosolids can only be produced by lime stabilization"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Class A biosolids pathogen reduction (Ontario Reg. 267/03, Schedule 6): (1) Definition: Class A biosolids have fecal coliform < 1,000 MPN/g TS (dry weight) and Salmonella < 3 MPN/4g TS; (2) Approved processes: (a) Thermophilic anaerobic digestion: 55 C for minimum 20 days; (b) Thermophilic aerobic digestion: 55 C for minimum 10 days; (c) Composting: 55 C for 15 consecutive days in windrow (turned 5 times) or 3 days in aerated static pile; (d) Pasteurization: 70 C for 30 minutes; (e) Advanced alkaline stabilization: pH > 12 for 72 hours followed by air drying; (3) Advantages of Class A: unrestricted land application (no setback requirements, no site restrictions), can be marketed as fertilizer; (4) Comparison: Class B biosolids (mesophilic anaerobic digestion) have fecal coliform < 2,000,000 MPN/g TS and have land application restrictions (setbacks, site access restrictions, crop restrictions).",
     difficulty: "hard",
   },
@@ -7122,12 +7122,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Land Application",
     question: "A Class 4 plant is land-applying biosolids under Ontario Regulation 267/03. The receiving farm has a soil test showing 45 kg P/ha available phosphorus. The crop is corn with a phosphorus uptake of 50 kg P/ha/year. The biosolids have a TP content of 2.5% (dry weight). What is the maximum biosolids application rate based on the phosphorus balance?",
     options: [
-      "Maximum application rate = 2.0 dry tonnes/ha",
       "Maximum application rate = 2.0 dry tonnes/ha based on phosphorus balance: crop P uptake (50 kg/ha) - soil P (45 kg/ha) = 5 kg P/ha deficit; biosolids P = 25 kg P/dry tonne; application rate = 5/25 = 0.2 dry tonnes/ha",
+      "Maximum application rate = 2.0 dry tonnes/ha",
       "Maximum application rate = 10 dry tonnes/ha",
       "There is no maximum application rate; apply as much as needed"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Biosolids land application rate calculation based on phosphorus balance (Ontario Reg. 267/03): (1) Crop P requirement = 50 kg P/ha/year; (2) Soil available P = 45 kg P/ha (already in soil); (3) P deficit = 50 - 45 = 5 kg P/ha (additional P needed from biosolids); (4) Biosolids P content = 2.5% TP = 25 kg P/dry tonne; (5) Maximum application rate = 5 kg P/ha / 25 kg P/dry tonne = 0.2 dry tonnes/ha. Note: Ontario Reg. 267/03 requires a Nutrient Management Plan (NMP) that balances nutrient application with crop uptake; over-application of P leads to soil P accumulation and risk of P runoff to surface water; the Phosphorus Saturation Ratio (PSR) of the soil must also be considered; if PSR > 0.25, biosolids application may be restricted regardless of crop uptake. In practice, the nitrogen balance often limits application rate more than phosphorus for Class B biosolids.",
     difficulty: "hard",
   },
@@ -7153,11 +7153,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's centrifuge is producing biosolids cake at 18% TS. The target is 22% TS to reduce hauling costs. What operational adjustments can improve cake dryness?",
     options: [
       "Centrifuge cake dryness cannot be improved without replacing the centrifuge",
-      "To improve centrifuge cake dryness: increase polymer dose (optimize by jar testing), increase centrifuge bowl speed (G-force), reduce feed rate (increase HRT in centrifuge), optimize polymer injection point, and ensure the polymer is well mixed with the feed sludge before the centrifuge",
+      "Increase feed rate to improve cake dryness",
       "Reduce polymer dose to improve cake dryness",
-      "Increase feed rate to improve cake dryness"
+      "To improve centrifuge cake dryness: increase polymer dose (optimize by jar testing), increase centrifuge bowl speed (G-force), reduce feed rate (increase HRT in centrifuge), optimize polymer injection point, and ensure the polymer is well mixed with the feed sludge before the centrifuge"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Centrifuge cake dryness optimization: (1) Polymer dose: polymer is the primary variable for cake dryness; increase dose and optimize by bench-scale testing (cylinder test or Britt jar test); typical dose 4-10 kg polymer/dry tonne; overdosing wastes polymer without improving dryness; (2) G-force: higher bowl speed increases centrifugal force and improves dewatering; check manufacturer's maximum speed; (3) Feed rate: reducing feed rate increases residence time in the centrifuge, allowing more water to be removed; (4) Polymer injection point: inject polymer as close to the centrifuge feed as possible to maximize contact time; (5) Polymer dilution: dilute polymer to 0.1-0.5% before injection to improve distribution; (6) Sludge characteristics: digested sludge dewaters better than raw sludge; thicker feed sludge (> 3% TS) dewaters better; (7) Temperature: warmer sludge (> 20 C) dewaters better; (8) Centrifuge maintenance: worn scroll or bowl reduces performance; check differential speed. Each 1% increase in cake TS reduces hauling volume by approximately 5%.",
     difficulty: "medium",
   },
@@ -7168,11 +7168,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's anaerobic digester mixing system has failed. The digester is operating without mixing for 5 days. What are the consequences and what actions should be taken?",
     options: [
       "Mixing is not important for anaerobic digestion; no action needed",
-      "Without mixing: stratification occurs (scum layer on top, grit at bottom, active zone in middle), volatile fatty acid accumulation in zones, temperature gradients reduce digestion efficiency, and biogas production decreases; actions: repair mixing immediately, monitor VFA:alkalinity ratio, reduce feed rate to prevent overloading, and check for scum layer buildup",
+      "Without mixing, the digester will freeze; add heat immediately",
       "Without mixing, the digester will explode; evacuate immediately",
-      "Without mixing, the digester will freeze; add heat immediately"
+      "Without mixing: stratification occurs (scum layer on top, grit at bottom, active zone in middle), volatile fatty acid accumulation in zones, temperature gradients reduce digestion efficiency, and biogas production decreases; actions: repair mixing immediately, monitor VFA:alkalinity ratio, reduce feed rate to prevent overloading, and check for scum layer buildup"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Consequences of anaerobic digester mixing failure: (1) Stratification: without mixing, the digester contents stratify into layers: scum layer (fats, oils, grease) at the top; active biological zone in the middle; grit and heavy solids at the bottom; (2) VFA accumulation: in unstirred zones, hydrolysis and acidogenesis continue but acetogenesis and methanogenesis are limited by mass transfer; VFAs accumulate, pH drops, and methanogens are inhibited; (3) Temperature gradients: heat input from the heat exchanger is not distributed evenly; cold zones reduce methanogen activity; (4) Reduced biogas production: overall digestion efficiency decreases; (5) Actions: (a) Repair mixing system immediately -- this is a critical equipment failure; (b) Reduce feed rate to 50-75% of normal to prevent VFA accumulation; (c) Monitor VFA:alkalinity ratio daily (normal < 0.3); (d) Check pH (normal 6.8-7.4); (e) Monitor biogas production and composition; (f) Check for scum layer buildup and break it up if possible; (g) Document all actions for regulatory records.",
     difficulty: "hard",
   },
@@ -7182,12 +7182,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Thermal Hydrolysis",
     question: "A Class 4 plant is evaluating Thermal Hydrolysis Process (THP) as a pre-treatment before anaerobic digestion. What are the benefits and key operational parameters of THP?",
     options: [
-      "THP is only used for drinking water treatment; it is not applicable to biosolids",
       "THP benefits: 20-30% increase in biogas production, improved dewatering (cake TS increases from 18% to 28-32%), Class A pathogen reduction (160 C kills all pathogens), and ability to feed thicker sludge (10-12% TS vs 4-6% for conventional); key parameters: temperature 150-165 C, pressure 6-8 bar, retention time 20-30 minutes",
+      "THP is only used for drinking water treatment; it is not applicable to biosolids",
       "THP reduces biogas production; it is not beneficial for digestion",
       "THP only improves dewatering; it has no effect on biogas production"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Thermal Hydrolysis Process (THP) for biosolids pre-treatment: (1) Mechanism: high temperature (150-165 C) and pressure (6-8 bar) for 20-30 minutes ruptures cell walls and converts complex organics to simpler compounds that are more biodegradable; (2) Benefits: (a) Biogas increase: 20-30% more biogas due to improved VS destruction; (b) Dewatering improvement: cake TS increases from 18-20% to 28-32%, reducing hauling costs by 30-40%; (c) Class A pathogen reduction: 160 C for 30 minutes exceeds pasteurization requirements; (d) Higher feed concentration: can feed 10-12% TS vs 4-6% for conventional digestion, reducing digester volume requirements; (e) Reduced digester volume: same VS destruction in smaller digester; (3) Key parameters: temperature 150-165 C; pressure 6-8 bar; retention time 20-30 minutes; (4) Challenges: high capital cost; flash tank required to recover heat; digestate has high ammonia (from protein hydrolysis); (5) Commercial systems: Cambi (Norway), Lysotherm (Germany), ExelysTM (Veolia). THP is increasingly used at large Class 4 plants.",
     difficulty: "hard",
   },
@@ -7198,11 +7198,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant is evaluating biosolids composting to produce Class A biosolids for sale as a soil amendment. What are the key operational requirements for a windrow composting system?",
     options: [
       "Composting only requires piling biosolids outdoors; no operational control is needed",
-      "Windrow composting requirements: mix biosolids with bulking agent (wood chips, straw) to achieve C:N ratio 25-30:1 and moisture 50-60%; maintain windrow temperature > 55 C for 15 consecutive days with at least 5 turnings; monitor temperature, moisture, and oxygen; achieve Class A pathogen reduction; final product must pass stability test (respiration rate < 1.5 mg O2/g VS/hr)",
+      "Biosolids composting is prohibited in Ontario",
       "Windrow composting only requires turning the pile once per month",
-      "Biosolids composting is prohibited in Ontario"
+      "Windrow composting requirements: mix biosolids with bulking agent (wood chips, straw) to achieve C:N ratio 25-30:1 and moisture 50-60%; maintain windrow temperature > 55 C for 15 consecutive days with at least 5 turnings; monitor temperature, moisture, and oxygen; achieve Class A pathogen reduction; final product must pass stability test (respiration rate < 1.5 mg O2/g VS/hr)"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Windrow biosolids composting operational requirements (Ontario Reg. 267/03 and CCME Compost Quality Criteria): (1) Feedstock preparation: mix biosolids with bulking agent (wood chips, straw, yard waste) to achieve: C:N ratio 25-30:1 (prevents nitrogen loss and odour); moisture 50-60% (squeeze test: water drips but does not flow freely); porosity for oxygen diffusion; (2) Windrow dimensions: typically 2-3 m high, 4-6 m wide; (3) Temperature management: maintain > 55 C throughout the windrow for 15 consecutive days; turn windrow minimum 5 times to ensure all material reaches temperature; (4) Monitoring: temperature (daily), moisture (weekly), oxygen (weekly, target > 5%); (5) Pathogen reduction: 55 C for 15 days with 5 turnings achieves Class A; (6) Stability: final compost must be stable (low respiration rate < 1.5 mg O2/g VS/hr) to prevent odour during land application; (7) Maturity: minimum 30-60 days total composting time; (8) Quality testing: metals, pathogens, stability, and maturity tests before marketing.",
     difficulty: "hard",
   },
@@ -7227,12 +7227,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Nutrient Management Plan",
     question: "Under Ontario's Nutrient Management Act (NMA), what are the requirements for a Nutrient Management Plan (NMP) for land application of municipal biosolids?",
     options: [
-      "NMPs are only required for agricultural operations; municipal biosolids are exempt",
       "An NMP for municipal biosolids must include: description of the material (analysis, quantity), receiving farm description (soil tests, crop rotation, drainage), nutrient balance calculation (application rate based on crop uptake), setback requirements, application timing restrictions, record-keeping requirements, and must be prepared by a certified nutrient management planner",
+      "NMPs are only required for agricultural operations; municipal biosolids are exempt",
       "An NMP only requires a soil test; no other documentation is needed",
       "NMPs are only required for biosolids with metals above Category 1 limits"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Ontario Nutrient Management Act (NMA, O. Reg. 267/03) requirements for municipal biosolids land application: (1) NMP preparation: must be prepared by a certified nutrient management planner (CNMP) or approved professional; (2) Material characterization: biosolids analysis (N, P, K, metals, pathogens, moisture); quantity to be applied; (3) Receiving farm: soil tests (N, P, K, pH, organic matter); crop rotation; tile drainage; proximity to water bodies; (4) Nutrient balance: calculate application rate based on crop nitrogen and phosphorus uptake; cannot exceed crop uptake; (5) Setbacks: minimum setbacks from water bodies (30-100 m depending on slope), wells (15-30 m), residences (500 m for Class B), and property lines (3 m); (6) Application timing: no application on frozen or snow-covered ground; no application within 24 hours of forecast rain > 25 mm; (7) Record-keeping: maintain records of all applications (date, field, rate, weather conditions) for 5 years; (8) Annual reporting: submit annual report to MECP; (9) Site approval: some sites require MECP site approval before first application.",
     difficulty: "hard",
   },
@@ -7243,11 +7243,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant must restart its anaerobic digester after a complete cleanout. What is the proper startup procedure to establish a healthy methanogenic culture?",
     options: [
       "Fill the digester with raw sludge and start heating; the culture will establish itself",
-      "Proper startup: seed the digester with 20-30% active digested sludge from another plant, fill with dilute raw sludge (2-3% TS), gradually increase temperature to 35 C over 1-2 weeks, start with low feed rate (25% of design), monitor VFA:alkalinity ratio daily, and increase feed rate by 10-15% per week only when VFA:alkalinity < 0.3",
+      "Add commercial methanogens and start at full feed rate immediately",
       "Fill the digester completely with raw sludge and heat to 55 C immediately",
-      "Add commercial methanogens and start at full feed rate immediately"
+      "Proper startup: seed the digester with 20-30% active digested sludge from another plant, fill with dilute raw sludge (2-3% TS), gradually increase temperature to 35 C over 1-2 weeks, start with low feed rate (25% of design), monitor VFA:alkalinity ratio daily, and increase feed rate by 10-15% per week only when VFA:alkalinity < 0.3"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Anaerobic digester startup procedure: (1) Seeding: obtain 20-30% of digester volume in active digested sludge from a healthy digester; this provides the methanogenic culture; (2) Initial fill: fill remaining volume with dilute raw sludge (2-3% TS) or plant effluent; (3) Temperature ramp: gradually increase to 35 C (mesophilic) over 1-2 weeks; rapid temperature changes stress methanogens; (4) Initial feed rate: start at 25% of design organic loading rate (OLR); (5) Monitoring: daily VFA:alkalinity ratio (target < 0.3); pH (target 6.8-7.4); biogas production and composition (CH4 should increase from < 50% to > 60% as culture establishes); (6) Feed rate increase: increase by 10-15% per week only when VFA:alkalinity < 0.3 and pH > 7.0; (7) Timeline: full loading typically achieved in 6-12 weeks; (8) Alkalinity addition: if pH drops below 6.8, add sodium bicarbonate (NaHCO3) at 1-2 kg/m3 to buffer the system; (9) Avoid: rapid loading increases, temperature fluctuations, and toxic inputs during startup.",
     difficulty: "hard",
   },
@@ -7272,12 +7272,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Total Suspended Solids",
     question: "A Class 4 plant lab technician performs a TSS test. The filter paper weight before filtration = 1.2345 g, after filtration and drying = 1.2567 g. The sample volume was 250 mL. What is the TSS concentration?",
     options: [
-      "TSS = 88.8 mg/L",
       "TSS = 8.88 mg/L",
+      "TSS = 88.8 mg/L",
       "TSS = 0.0222 g",
       "TSS = 222 mg/L"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "TSS calculation: Mass of solids = (1.2567 - 1.2345) g = 0.0222 g = 22.2 mg. TSS = mass of solids / sample volume = 22.2 mg / 0.250 L = 88.8 mg/L. The TSS is 88.8 mg/L. QA/QC considerations: (1) Filter paper must be pre-washed with distilled water and dried at 103-105 C before use; (2) Sample must be well-mixed before measuring the 250 mL aliquot; (3) Filter paper must be dried at 103-105 C until constant weight (minimum 1 hour); (4) Cool in desiccator before weighing to prevent moisture absorption; (5) Duplicate samples should agree within 20% RPD; (6) For effluent TSS < 10 mg/L, use a larger sample volume (1,000 mL) to improve precision.",
     difficulty: "easy",
   },
@@ -7287,12 +7287,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Fecal Coliform Testing",
     question: "A Class 4 plant's ECA requires fecal coliform < 200 CFU/100 mL in the effluent. The membrane filtration test shows 23 colonies on a 10 mL sample. What is the fecal coliform count and does it meet the limit?",
     options: [
-      "Fecal coliform = 23 CFU/100 mL; meets the limit",
       "Fecal coliform = 230 CFU/100 mL; exceeds the limit",
+      "Fecal coliform = 23 CFU/100 mL; meets the limit",
       "Fecal coliform = 2.3 CFU/100 mL; meets the limit",
       "Fecal coliform = 2,300 CFU/100 mL; exceeds the limit"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Fecal coliform calculation: colonies counted = 23 on a 10 mL sample. To convert to CFU/100 mL: CFU/100 mL = (colonies counted / sample volume in mL) x 100 = (23 / 10) x 100 = 230 CFU/100 mL. The fecal coliform count is 230 CFU/100 mL, which exceeds the ECA limit of 200 CFU/100 mL. Actions required: (1) Collect a confirmation sample immediately; (2) Check UV system performance (UV dose, lamp intensity, transmittance); (3) Check effluent TSS (high TSS shields bacteria from UV); (4) Report to MECP if the exceedance is confirmed; (5) Investigate cause (UV lamp failure, high effluent turbidity, UV system bypass). Note: for membrane filtration, the ideal count range is 20-80 colonies per filter; 23 colonies is within the acceptable range, so the test result is reliable.",
     difficulty: "medium",
   },
@@ -7303,11 +7303,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant operator is calibrating a DO meter. The barometric pressure is 98.5 kPa and the water temperature is 22 C. What is the expected DO saturation value for calibration?",
     options: [
       "DO saturation = 8.84 mg/L (standard value at 22 C, 101.325 kPa)",
-      "DO saturation = 8.59 mg/L (corrected for 98.5 kPa pressure)",
       "DO saturation = 9.09 mg/L",
+      "DO saturation = 8.59 mg/L (corrected for 98.5 kPa pressure)",
       "DO saturation = 10.0 mg/L (standard value)"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "DO saturation calculation with pressure correction: (1) Standard DO saturation at 22 C and 101.325 kPa = 8.84 mg/L (from Standard Methods Table); (2) Pressure correction: DO_actual = DO_standard x (P_actual / P_standard) = 8.84 x (98.5 / 101.325) = 8.84 x 0.9721 = 8.59 mg/L; (3) Calibration procedure: (a) Allow the DO probe to equilibrate in air-saturated water or water-saturated air for 10 minutes; (b) Set the meter to read 8.59 mg/L; (c) Verify with a second calibration check; (4) Salinity correction: if the water has significant salinity (> 1 ppt), apply a salinity correction; for municipal wastewater, salinity correction is typically not needed; (5) Membrane condition: ensure the DO membrane is clean and free of fouling; replace if the response time is > 60 seconds or the reading is unstable.",
     difficulty: "medium",
   },
@@ -7319,11 +7319,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant lab technician performs a jar test to optimize ferric chloride dose for chemical phosphorus removal. The results show: 5 mg/L FeCl3 = TP 1.8 mg/L; 10 mg/L = TP 0.9 mg/L; 15 mg/L = TP 0.5 mg/L; 20 mg/L = TP 0.4 mg/L; 25 mg/L = TP 0.4 mg/L. The ECA limit is TP < 0.5 mg/L. What is the optimal dose?",
     options: [
       "Optimal dose = 25 mg/L FeCl3 (highest dose gives best results)",
-      "Optimal dose = 15 mg/L FeCl3 (meets the limit with minimum chemical cost; higher doses provide no additional benefit)",
+      "Optimal dose = 20 mg/L FeCl3 (provides safety margin)",
       "Optimal dose = 5 mg/L FeCl3 (lowest dose)",
-      "Optimal dose = 20 mg/L FeCl3 (provides safety margin)"
+      "Optimal dose = 15 mg/L FeCl3 (meets the limit with minimum chemical cost; higher doses provide no additional benefit)"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Determine the optimal ferric chloride dose by identifying the lowest dose that meets the Total Phosphorus (TP) limit without significant additional benefit from higher doses.\n\nStep 1 — Identify the target TP limit:\nThe ECA limit for TP is < 0.5 mg/L.\n\nStep 2 — Evaluate jar test results against the target limit:\nAt 5 mg/L FeCl3, TP = 1.8 mg/L (Does not meet limit)\nAt 10 mg/L FeCl3, TP = 0.9 mg/L (Does not meet limit)\nAt 15 mg/L FeCl3, TP = 0.5 mg/L (Meets the limit)\nAt 20 mg/L FeCl3, TP = 0.4 mg/L (Meets the limit, but only a slight improvement from 15 mg/L)\nAt 25 mg/L FeCl3, TP = 0.4 mg/L (Meets the limit, no improvement from 20 mg/L)\n\nStep 3 — Determine the optimal dose based on cost-effectiveness:\nThe 15 mg/L FeCl3 dose achieves the desired TP level of 0.5 mg/L. Increasing the dose to 20 mg/L or 25 mg/L provides minimal or no additional reduction in TP (0.4 mg/L), indicating diminishing returns for increased chemical cost.\n\nThe correct answer is B. Optimal dose = 15 mg/L FeCl3 (meets the limit with minimum chemical cost; higher doses provide no additional benefit).",
     difficulty: "medium",
     steps: [ { l: "Analyze Jar Test Results", c: "The goal is to achieve TP < 0.5 mg/L with the optimal (lowest effective) dose of FeCl3." }, { l: "Evaluate Doses", c: "At 5 mg/L FeCl3, TP = 1.8 mg/L (does not meet target). At 10 mg/L FeCl3, TP = 0.9 mg/L (does not meet target). At 15 mg/L FeCl3, TP = 0.5 mg/L (meets target). At 20 mg/L FeCl3, TP = 0.4 mg/L (meets target, but only a marginal improvement over 15 mg/L). At 25 mg/L FeCl3, TP = 0.4 mg/L (no further improvement, indicating diminishing returns)." }, { l: "Determine Optimal Dose", c: "The optimal dose is the lowest dose that consistently achieves the target. In this case, 15 mg/L FeCl3 achieves the target of TP < 0.5 mg/L." }, { l: "Result", c: "The optimal FeCl3 dose is 15 mg/L." } ],
@@ -7336,12 +7336,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Sludge Volume Index",
     question: "A Class 4 plant measures: MLSS = 3,200 mg/L and the 30-minute settled sludge volume = 320 mL/L. What is the SVI and what does it indicate about sludge settleability?",
     options: [
-      "SVI = 100 mL/g; good settleability",
-      "SVI = 320 mL/g; poor settleability indicating severe bulking",
       "SVI = 10 mL/g; excellent settleability",
+      "SVI = 320 mL/g; poor settleability indicating severe bulking",
+      "SVI = 100 mL/g; good settleability",
       "SVI = 1,024 mL/g; the sludge will not settle"
     ],
-    correct: 0,
+    correct: 2,
     explanation: "Calculate the Sludge Volume Index (SVI) by dividing the settled sludge volume by the Mixed Liquor Suspended Solids (MLSS), then interpret the SVI value to determine sludge settleability.\n\nStep 1 — Convert MLSS from mg/L to g/L:\n3,200 mg/L ÷ 1,000 mg/g = 3.2 g/L\n\nStep 2 — Calculate SVI:\nSVI = (Settled Sludge Volume in mL/L) ÷ (MLSS in g/L)\nSVI = 320 mL/L ÷ 3.2 g/L = 100 mL/g\n\nStep 3 — Interpret SVI for sludge settleability:\nSVI values between 100-150 mL/g indicate good settleability.\n\nThe correct answer is SVI = 100 mL/g; good settleability.",
     difficulty: "easy",
     steps: [ { l: "Formula", c: "SVI = (Settled Sludge Volume (mL/L) / MLSS (g/L)) * 1000" }, { l: "Convert MLSS to g/L", c: "MLSS = 3,200 mg/L = 3.2 g/L (since 1 g = 1000 mg)" }, { l: "Substitute Values", c: "SVI = (320 mL/L / 3.2 g/L) * 1000" }, { l: "Calculate", c: "SVI = 100 mL/g" }, { l: "Interpret SVI", c: "An SVI of 100 mL/g indicates good sludge settleability." }, { l: "Result", c: "SVI = 100 mL/g, indicating good sludge settleability." } ],
@@ -7354,12 +7354,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Volatile Fatty Acids",
     question: "A Class 4 plant's anaerobic digester shows: total VFA = 850 mg/L as acetic acid, total alkalinity = 3,200 mg/L as CaCO3. What is the VFA:alkalinity ratio and what does it indicate?",
     options: [
-      "VFA:alkalinity = 0.27; the digester is stable",
       "VFA:alkalinity = 2.72; the digester is severely stressed",
+      "VFA:alkalinity = 0.27; the digester is stable",
       "VFA:alkalinity = 0.027; the digester is over-stabilized",
       "VFA:alkalinity = 27; the digester has failed"
     ],
-    correct: 0,
+    correct: 1,
     explanation: "Calculate the VFA:alkalinity ratio to assess digester stability.\n\nStep 1 — Calculate the VFA:alkalinity ratio:\nVFA:alkalinity = 850 mg/L (VFA) ÷ 3,200 mg/L (Alkalinity) = 0.265625\n\nStep 2 — Round the ratio:\n0.265625 ≈ 0.27\n\nStep 3 — Interpret the ratio for digester stability:\nA VFA:alkalinity ratio of less than 0.3 indicates a stable digester.\n\nStep 4 — Conclude digester status:\nSince 0.27 is less than 0.3, the digester is stable.\n\nThe correct answer is A. VFA:alkalinity = 0.27; the digester is stable.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "VFA:Alkalinity Ratio = Total VFA (mg/L as acetic acid) / Total Alkalinity (mg/L as CaCO3)" }, { l: "Identify Given Values", c: "Total VFA = 850 mg/L (as acetic acid), Total Alkalinity = 3,200 mg/L (as CaCO3)" }, { l: "Substitute Values", c: "VFA:Alkalinity Ratio = 850 mg/L / 3,200 mg/L" }, { l: "Calculate", c: "VFA:Alkalinity Ratio = 0.265625" }, { l: "Interpret Ratio", c: "A VFA:Alkalinity ratio of approximately 0.27 (or < 0.3) indicates a stable digester." }, { l: "Result", c: "The VFA:alkalinity ratio is 0.27, indicating a stable digester." } ],
@@ -7372,12 +7372,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Nitrogen Analysis",
     question: "A Class 4 plant's effluent requires TN monitoring. The lab measures: effluent NH3-N = 0.8 mg/L, NO2-N = 0.05 mg/L, NO3-N = 8.2 mg/L, organic N = 1.5 mg/L. What is the TN and does it meet a limit of 10 mg/L TN?",
     options: [
-      "TN = 9.0 mg/L; does not meet the limit",
       "TN = 10.55 mg/L; exceeds the limit",
+      "TN = 9.0 mg/L; does not meet the limit",
       "TN = 8.2 mg/L (only NO3-N counts for TN); meets the limit",
       "TN = 0.85 mg/L (only NH3-N and NO2-N count); meets the limit"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Calculate Total Nitrogen (TN) by summing all nitrogen forms, then compare to the effluent limit.\n\nStep 1 — Identify all forms of nitrogen present:\nNH3-N = 0.8 mg/L\nNO2-N = 0.05 mg/L\nNO3-N = 8.2 mg/L\nOrganic N = 1.5 mg/L\n\nStep 2 — Calculate Total Nitrogen (TN):\nTN = NH3-N + NO2-N + NO3-N + Organic N\nTN = 0.8 mg/L + 0.05 mg/L + 8.2 mg/L + 1.5 mg/L\nTN = 10.55 mg/L\n\nStep 3 — Compare calculated TN to the effluent limit:\nCalculated TN = 10.55 mg/L\nEffluent Limit = 10 mg/L\n10.55 mg/L > 10 mg/L\n\nStep 4 — Determine if the limit is met:\nThe calculated TN (10.55 mg/L) exceeds the limit (10 mg/L).\n\nThe correct answer is TN = 10.55 mg/L; exceeds the limit.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "TN = NH3-N + NO2-N + NO3-N + Organic N" }, { l: "Identify Given Values", c: "NH3-N = 0.8 mg/L, NO2-N = 0.05 mg/L, NO3-N = 8.2 mg/L, Organic N = 1.5 mg/L" }, { l: "Substitute Values", c: "TN = 0.8 mg/L + 0.05 mg/L + 8.2 mg/L + 1.5 mg/L" }, { l: "Calculate", c: "TN = 10.55 mg/L" }, { l: "Compare to Limit", c: "The calculated TN (10.55 mg/L) is greater than the limit of 10 mg/L." }, { l: "Result", c: "The TN is 10.55 mg/L, which does not meet the 10 mg/L limit." } ],
@@ -7389,8 +7389,8 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Laboratory Analysis & Interpretation",
     topic: "Phosphorus Analysis",
     question: "A Class 4 plant lab measures total phosphorus (TP) using the persulfate digestion method. The calibration curve shows: 0 mg/L P = 0.000 absorbance; 0.5 mg/L = 0.125; 1.0 mg/L = 0.250; 2.0 mg/L = 0.500. The effluent sample (diluted 1:5) shows absorbance = 0.175. What is the effluent TP?",
-    options: ["A. Effluent TP = 0.35 mg/L", "B. Effluent TP = 1.75 mg/L", "C. Effluent TP = 0.07 mg/L", "D. Effluent TP = 3.5 mg/L"],
-    correct: 3,
+    options: ["A. Effluent TP = 0.35 mg/L", "B. Effluent TP = 1.75 mg/L", "D. Effluent TP = 3.5 mg/L", "C. Effluent TP = 0.07 mg/L"],
+    correct: 2,
     explanation: "Calculate the phosphorus concentration from the absorbance using the calibration curve, then adjust for the dilution factor.\n\nStep 1 — Determine the calibration factor:\n0.5 mg/L ÷ 0.125 absorbance = 4 mg/L P per absorbance unit\n\nStep 2 — Calculate the concentration in the diluted sample:\n0.175 absorbance × 4 mg/L P per absorbance unit = 0.7 mg/L P\n\nStep 3 — Adjust for the dilution factor:\n0.7 mg/L P × 5 (dilution factor) = 3.5 mg/L TP\n\nThe correct answer is 3.5 mg/L TP.",
     difficulty: "hard",
     steps: [ { l: "Determine Calibration Curve Slope", c: "From the given points, the relationship is linear: Absorbance = Slope * [P]. Using (1.0 mg/L, 0.250 absorbance), Slope = 0.250 / 1.0 = 0.250 absorbance per mg/L P." }, { l: "Calculate P Concentration in Diluted Sample", c: "[P] diluted = Sample Absorbance / Slope = 0.175 / 0.250" }, { l: "Calculate", c: "[P] diluted = 0.70 mg/L P" }, { l: "Account for Dilution Factor", c: "The sample was diluted 1:5 (1 part sample to 4 parts diluent). So, the actual concentration is 5 times the diluted concentration. Actual TP = [P] diluted * Dilution Factor = 0.70 mg/L * 5" }, { l: "Calculate Actual TP", c: "Actual TP = 3.5 mg/L" }, { l: "Result", c: "The actual effluent TP is 3.5 mg/L." } ],
@@ -7418,11 +7418,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant lab uses respirometry to assess the biodegradability of an industrial wastewater before accepting it. The specific oxygen uptake rate (SOUR) of the mixed liquor increases from 8 mg O2/g VSS/hr (baseline) to 22 mg O2/g VSS/hr after adding the industrial wastewater. What does this indicate?",
     options: [
       "The industrial wastewater is toxic; reject it",
-      "The industrial wastewater is biodegradable and stimulates biological activity; the SOUR increase indicates the biomass can metabolize the industrial waste; further testing should assess the impact on effluent quality and process stability",
       "The SOUR increase indicates the industrial wastewater contains too much nitrogen",
+      "The industrial wastewater is biodegradable and stimulates biological activity; the SOUR increase indicates the biomass can metabolize the industrial waste; further testing should assess the impact on effluent quality and process stability",
       "The SOUR increase indicates the industrial wastewater is not biodegradable"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Respirometry interpretation: (1) Baseline SOUR = 8 mg O2/g VSS/hr: normal range for activated sludge is 5-20 mg O2/g VSS/hr; 8 mg O2/g VSS/hr is in the normal range; (2) SOUR after industrial wastewater addition = 22 mg O2/g VSS/hr: the increase from 8 to 22 mg O2/g VSS/hr indicates the biomass is actively metabolizing the industrial waste; (3) Interpretation: the industrial wastewater is biodegradable; the biomass responds positively; (4) Contrast with toxicity: if the industrial wastewater were toxic, the SOUR would decrease (inhibition of respiration); a decrease > 20% indicates toxicity; (5) Further testing needed: (a) Assess impact on effluent quality (BOD, TSS, nutrients) at full-scale loading; (b) Check for inhibition of nitrification (nitrification inhibition test); (c) Assess impact on sludge settleability; (d) Calculate oxygen demand increase and verify aeration capacity; (e) Review industrial wastewater for metals and other parameters that may not be captured by respirometry.",
     difficulty: "hard",
   },
@@ -7433,11 +7433,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's biogas analyzer shows: CH4 = 58%, CO2 = 38%, H2S = 800 ppm, O2 = 2%. What does this analysis indicate about digester performance?",
     options: [
       "The biogas composition is normal; no action needed",
-      "The elevated H2S (800 ppm, normal < 500 ppm) indicates high sulfate in the feed or sulfate-reducing bacteria activity; the O2 = 2% indicates air infiltration (normal = 0%); the CH4 = 58% is slightly low (normal 60-70%); investigate sulfate sources and check digester seals for air leaks",
+      "The high CO2 indicates the digester needs more alkalinity",
       "The biogas composition indicates the digester is about to fail",
-      "The high CO2 indicates the digester needs more alkalinity"
+      "The elevated H2S (800 ppm, normal < 500 ppm) indicates high sulfate in the feed or sulfate-reducing bacteria activity; the O2 = 2% indicates air infiltration (normal = 0%); the CH4 = 58% is slightly low (normal 60-70%); investigate sulfate sources and check digester seals for air leaks"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Biogas composition analysis: (1) CH4 = 58%: slightly below normal range of 60-70%; low CH4 may indicate: incomplete digestion, high CO2 production from protein-rich waste, or dilution by air infiltration; (2) CO2 = 38%: slightly above normal range of 30-40%; CO2 is produced by all fermentation reactions; (3) H2S = 800 ppm: above normal range of 100-500 ppm; elevated H2S indicates: high sulfate in the feed (industrial discharge with sulfate), or active sulfate-reducing bacteria (SRB) competing with methanogens; H2S is corrosive to gas handling equipment and toxic to workers; (4) O2 = 2%: oxygen should be 0% in a properly sealed anaerobic digester; O2 presence indicates air infiltration through: digester cover seals, gas piping connections, or pressure relief valves; air infiltration creates an explosion hazard (LEL for CH4 = 5%); (5) Actions: investigate sulfate sources in the feed; check and repair digester seals; consider iron salt addition to precipitate sulfide.",
     difficulty: "hard",
   },
@@ -7447,12 +7447,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Effluent Toxicity Testing",
     question: "A Class 4 plant performs a 96-hour rainbow trout acute toxicity test. The results show: 100% effluent = 80% survival; 75% effluent = 90% survival; 50% effluent = 100% survival; 25% effluent = 100% survival. What is the LC50 and does it meet an ECA limit of LC50 > 100%?",
     options: [
-      "LC50 > 100%; the effluent meets the limit",
       "LC50 is between 75% and 100% effluent (approximately 87% effluent); the effluent does not meet the LC50 > 100% limit because 20% mortality occurs at 100% effluent",
+      "LC50 > 100%; the effluent meets the limit",
       "LC50 = 50% effluent; the effluent does not meet the limit",
       "LC50 = 25% effluent; the effluent is severely toxic"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "LC50 interpretation: LC50 is the concentration that kills 50% of test organisms. From the data: at 100% effluent, 80% survival = 20% mortality; at 75% effluent, 90% survival = 10% mortality; at 50% effluent, 100% survival = 0% mortality. The LC50 is the concentration where 50% mortality occurs. Since 20% mortality occurs at 100% and 10% at 75%, the LC50 is above 100% (would require a concentration > 100% effluent to kill 50% of fish). However, the ECA limit is LC50 > 100%, meaning the full-strength effluent (100%) must not kill 50% of test organisms. Since only 20% mortality occurs at 100% effluent (not 50%), the LC50 > 100% and the effluent technically meets the acute toxicity limit. However, 20% mortality at 100% effluent is concerning and may trigger a sub-lethal toxicity investigation or a review of the ECA conditions. The plant should investigate the cause of the 20% mortality.",
     difficulty: "hard",
   },
@@ -7462,8 +7462,8 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Laboratory Analysis & Interpretation",
     topic: "Sludge Age Calculation",
     question: "A Class 4 plant has: aeration basin volume = 8,500 m3, MLSS = 3,800 mg/L, daily WAS = 180 m3/day at 8,500 mg/L TS, and effluent TSS = 12 mg/L at a flow of 22,000 m3/day. What is the sludge age (SRT)?",
-    options: ["SRT = 8.2 days", "SRT = 18.0 days", "SRT = 6.4 days", "SRT = 22.3 days"],
-    correct: 1,
+    options: ["SRT = 8.2 days", "SRT = 6.4 days", "SRT = 18.0 days", "SRT = 22.3 days"],
+    correct: 2,
     explanation: "Calculate the Sludge Age (SRT) by dividing the total suspended solids (TSS) in the aeration basin by the total TSS leaving the system per day.\n\nStep 1 — Calculate TSS in the aeration basin:\n8,500 m3 × 3,800 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m3) = 32,300 kg\n\nStep 2 — Calculate TSS leaving via Waste Activated Sludge (WAS) daily:\n180 m3/day × 8,500 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m3) = 1,530 kg/day\n\nStep 3 — Calculate TSS leaving via effluent daily:\n22,000 m3/day × 12 mg/L × (1 kg / 1,000,000 mg) × (1,000 L / 1 m3) = 264 kg/day\n\nStep 4 — Calculate total TSS leaving the system daily:\n1,530 kg/day + 264 kg/day = 1,794 kg/day\n\nStep 5 — Calculate the Sludge Age (SRT):\n32,300 kg ÷ 1,794 kg/day = 18.0 days\n\nThe correct answer is 18.0 days.",
     difficulty: "hard",
     steps: [ { l: "Formula", c: "Sludge Age (SRT) = (Mass of solids in system) / (Mass of solids leaving system per day)" }, { l: "Step 1: Calculate Mass of solids in system", c: "Mass in system = Aeration Basin Volume × MLSS = 8,500 m³ × 3,800 mg/L = 8,500 m³ × 3,800 g/m³ = 32,300,000 g = 32,300 kg" }, { l: "Step 2: Calculate Mass of solids leaving system per day (WAS)", c: "Mass leaving (WAS) = WAS Volume × WAS TS = 180 m³/day × 8,500 mg/L = 180 m³/day × 8,500 g/m³ = 1,530,000 g/day" }, { l: "Step 3: Calculate Mass of solids leaving system per day (Effluent TSS)", c: "Mass leaving (Effluent TSS) = Effluent Flow × Effluent TSS = 22,000 m³/day × 12 mg/L = 22,000 m³/day × 12 g/m³ = 264,000 g/day" }, { l: "Step 4: Calculate Total Mass of solids leaving system per day", c: "Total Mass leaving = Mass leaving (WAS) + Mass leaving (Effluent TSS) = 1,530,000 g/day + 264,000 g/day = 1,794,000 g/day = 1,794 kg/day" }, { l: "Step 5: Substitute and Calculate SRT", c: "SRT = 32,300 kg / 1,794 kg/day = 17.99 days" }, { l: "Result", c: "The sludge age (SRT) is approximately 18.0 days." } ],
@@ -7495,11 +7495,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's aeration basin shows: pH = 6.9, alkalinity = 85 mg/L as CaCO3, and nitrification is occurring. What is the concern and what action should be taken?",
     options: [
       "pH 6.9 and alkalinity 85 mg/L are normal; no action needed",
-      "Alkalinity of 85 mg/L is dangerously low for a nitrifying system; nitrification consumes 7.14 mg alkalinity per mg NH3-N oxidized; if alkalinity drops below 50 mg/L, pH will drop below 6.5 and nitrification will be inhibited; add sodium bicarbonate (NaHCO3) or lime to increase alkalinity to > 100 mg/L",
       "pH 6.9 is too high; add acid to lower pH",
+      "Alkalinity of 85 mg/L is dangerously low for a nitrifying system; nitrification consumes 7.14 mg alkalinity per mg NH3-N oxidized; if alkalinity drops below 50 mg/L, pH will drop below 6.5 and nitrification will be inhibited; add sodium bicarbonate (NaHCO3) or lime to increase alkalinity to > 100 mg/L",
       "High alkalinity is causing the low pH; reduce alkalinity addition"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Evaluate the current alkalinity and pH in the context of nitrification requirements, then determine the necessary action to maintain stable nitrification.\n\nStep 1 — Understand alkalinity consumption during nitrification:\nNitrification consumes 7.14 mg of alkalinity (as CaCO3) per mg of ammonia-nitrogen (NH3-N) oxidized.\n\nStep 2 — Assess the current alkalinity level:\nThe plant's alkalinity is 85 mg/L as CaCO3. This is borderline for a nitrifying system, as a minimum residual alkalinity of 50-80 mg/L is required to maintain pH above 6.5.\n\nStep 3 — Evaluate the risk of low alkalinity:\nIf alkalinity drops below 50 mg/L, the pH will likely fall below 6.5, which will inhibit the nitrification process.\n\nStep 4 — Determine the necessary action:\nTo prevent nitrification inhibition and maintain a stable pH, alkalinity needs to be increased to a safer level, typically above 100 mg/L.\n\nStep 5 — Identify suitable alkalinity supplements:\nSodium bicarbonate (NaHCO3) or lime (Ca(OH)2) can be added to increase alkalinity.\n\nThe correct answer is B.",
     difficulty: "hard",
     steps: [ { l: "Concern Identification", c: "Nitrification consumes alkalinity. With a pH of 6.9 and alkalinity of 85 mg/L as CaCO3, the system is at risk of insufficient alkalinity for complete nitrification and pH depression." }, { l: "Explanation of concern", c: "Nitrification requires approximately 7.14 mg of alkalinity (as CaCO3) per mg of ammonia-nitrogen oxidized. Low alkalinity can inhibit nitrifying bacteria and cause a drop in pH, impacting overall treatment efficiency." }, { l: "Action Recommended", c: "Increase alkalinity in the aeration basin. This can be achieved by adding an external alkalinity source such as sodium bicarbonate (NaHCO3), lime (Ca(OH)2), or caustic soda (NaOH)." }, { l: "Monitoring", c: "Continuously monitor pH and alkalinity to ensure they remain within optimal ranges (e.g., pH 7.0-8.0 and alkalinity > 50-80 mg/L as CaCO3) for nitrification." }, { l: "Result", c: "The concern is low alkalinity hindering nitrification and causing pH depression. Action: Add alkalinity (e.g., sodium bicarbonate) and monitor pH/alkalinity closely." } ],
@@ -7511,12 +7511,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Biosolids Analysis",
     question: "A Class 4 plant's dewatered biosolids analysis shows: TS = 22%, VS = 58% of TS, TKN = 4.2% of TS, TP = 2.5% of TS. The plant produces 8 dry tonnes/day of biosolids. What is the daily nitrogen and phosphorus load being land-applied?",
     options: [
-      "N = 336 kg/day, P = 200 kg/day",
+      "N = 168 kg/day, P = 100 kg/day",
       "N = 33.6 kg/day, P = 20 kg/day",
       "N = 3,360 kg/day, P = 2,000 kg/day",
-      "N = 168 kg/day, P = 100 kg/day"
+      "N = 336 kg/day, P = 200 kg/day"
     ],
-    correct: 0,
+    correct: 3,
     explanation: "Nutrient load calculation: (1) Daily dry biosolids production = 8 dry tonnes/day = 8,000 kg TS/day; (2) Nitrogen: TKN = 4.2% of TS = 0.042 kg N/kg TS; daily N = 8,000 kg TS/day x 0.042 = 336 kg N/day; (3) Phosphorus: TP = 2.5% of TS = 0.025 kg P/kg TS; daily P = 8,000 x 0.025 = 200 kg P/day; (4) Interpretation: 336 kg N/day and 200 kg P/day is a significant nutrient load; this must be distributed across sufficient agricultural land to match crop uptake; for corn (uptake 150 kg N/ha and 50 kg P/ha): N-based area = 336/150 = 2.24 ha/day = 817 ha/year; P-based area = 200/50 = 4.0 ha/day = 1,460 ha/year; the P-based calculation requires more land, so P limits the application rate; (5) Nutrient Management Plan must account for both N and P balance.",
     difficulty: "medium",
   },
@@ -7526,12 +7526,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     topic: "Effluent Sampling",
     question: "A Class 4 plant's ECA requires composite effluent sampling for BOD5 and TSS. What is the correct procedure for collecting a 24-hour flow-proportional composite sample?",
     options: [
-      "Collect a single grab sample at noon; this represents the daily average",
       "Use an automatic sampler to collect aliquots proportional to flow rate throughout the 24-hour period; store samples at 4 C; combine aliquots at the end of the 24-hour period; mix well and measure the required volume for each test; begin analysis within the holding time (BOD5: 48 hours; TSS: 7 days)",
+      "Collect a single grab sample at noon; this represents the daily average",
       "Collect grab samples every 4 hours and average the results",
       "Collect the composite sample at the end of the 24-hour period from the effluent channel"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "24-hour flow-proportional composite sampling procedure: (1) Automatic sampler: use a refrigerated automatic sampler programmed to collect aliquots proportional to flow; as flow increases, more frequent or larger aliquots are collected; (2) Aliquot volume: typically 25-200 mL per aliquot; number of aliquots: 24-96 per day; (3) Refrigeration: samples must be stored at 4 C during collection to prevent biological degradation; (4) Composite collection: at the end of 24 hours, all aliquots are combined in the composite container; (5) Mixing: mix the composite sample thoroughly before subsampling for analysis; (6) Holding times (Standard Methods): BOD5: 48 hours at 4 C; TSS: 7 days at 4 C; TP: 28 days at 4 C (with H2SO4 preservation); TKN: 28 days at 4 C (with H2SO4); (7) Chain of custody: document sample collection time, volume, and conditions; (8) QA/QC: collect a duplicate composite for QA/QC purposes. Flow-proportional compositing is more representative than time-proportional compositing when flow varies significantly.",
     difficulty: "medium",
   },
@@ -7543,11 +7543,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant uses turbidity as a surrogate for TSS in the effluent. The correlation equation is: TSS (mg/L) = 1.8 x Turbidity (NTU) + 0.5. The online turbidimeter reads 3.2 NTU. What is the estimated TSS and is the correlation reliable for regulatory reporting?",
     options: [
       "Estimated TSS = 6.26 mg/L; turbidity is acceptable for regulatory reporting",
-      "Estimated TSS = 6.26 mg/L; turbidity is a useful process control tool but cannot replace TSS analysis for regulatory reporting without MECP approval and a site-specific validated correlation",
       "Estimated TSS = 3.2 mg/L; turbidity equals TSS",
+      "Estimated TSS = 6.26 mg/L; turbidity is a useful process control tool but cannot replace TSS analysis for regulatory reporting without MECP approval and a site-specific validated correlation",
       "Turbidity cannot be used to estimate TSS under any circumstances"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Calculate the estimated TSS using the provided correlation equation, then evaluate the reliability of using turbidity for regulatory reporting.\n\nStep 1 — Calculate Estimated TSS:\nTSS (mg/L) = 1.8 × Turbidity (NTU) + 0.5\nTSS (mg/L) = 1.8 × 3.2 NTU + 0.5\nTSS (mg/L) = 5.76 + 0.5\nTSS (mg/L) = 6.26 mg/L\n\nStep 2 — Evaluate Regulatory Reporting Reliability:\nTurbidity is an excellent process control tool for real-time monitoring. However, it cannot replace direct TSS analysis for regulatory reporting unless specific conditions are met: the Ministry of the Environment, Conservation and Parks (MECP) must approve its use as a surrogate in the Environmental Compliance Approval (ECA), and a site-specific correlation must be validated with a sufficient number of paired measurements (e.g., 30-50). This correlation also needs regular revalidation as effluent characteristics can change.\n\nThe correct answer is B. Estimated TSS = 6.26 mg/L; turbidity is a useful process control tool but cannot replace TSS analysis for regulatory reporting without MECP approval and a site-specific validated correlation.",
     difficulty: "medium",
     steps: [ { l: "Formula", c: "Estimated TSS (mg/L) = 1.8 × Turbidity (NTU) + 0.5" }, { l: "Identify Given Values", c: "Turbidity = 3.2 NTU" }, { l: "Substitute", c: "Estimated TSS = 1.8 × 3.2 + 0.5" }, { l: "Calculate", c: "Estimated TSS = 5.76 + 0.5 = 6.26 mg/L" }, { l: "Result", c: "The estimated effluent TSS is 6.26 mg/L." } ],
@@ -7561,11 +7561,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant uses sodium hypochlorite for disinfection. The ECA requires a minimum effluent total residual chlorine (TRC) of 0.5 mg/L and a maximum of 1.0 mg/L. The amperometric titration shows TRC = 1.4 mg/L. What actions are required?",
     options: [
       "TRC = 1.4 mg/L is within the acceptable range; no action needed",
-      "TRC = 1.4 mg/L exceeds the maximum of 1.0 mg/L; reduce hypochlorite dose immediately; if the receiving water is sensitive to chlorine residual, this exceedance may require MECP notification; check for changes in effluent ammonia (chloramine formation) or organic matter that may have altered chlorine demand",
+      "TRC > 1.0 mg/L only requires notification if it persists for > 7 days",
       "Increase hypochlorite dose to ensure adequate disinfection",
-      "TRC > 1.0 mg/L only requires notification if it persists for > 7 days"
+      "TRC = 1.4 mg/L exceeds the maximum of 1.0 mg/L; reduce hypochlorite dose immediately; if the receiving water is sensitive to chlorine residual, this exceedance may require MECP notification; check for changes in effluent ammonia (chloramine formation) or organic matter that may have altered chlorine demand"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Evaluate the measured Total Residual Chlorine (TRC) against the permitted range, identify necessary immediate and investigative actions, and consider regulatory notification requirements.\n\nStep 1 — Compare measured TRC to ECA limits:\nMeasured TRC = 1.4 mg/L\nECA maximum TRC = 1.0 mg/L\n1.4 mg/L > 1.0 mg/L, indicating an exceedance.\n\nStep 2 — Implement immediate corrective action:\nReduce the hypochlorite dose to lower the TRC. The target reduction is approximately 0.4 mg/L (1.4 mg/L - 1.0 mg/L).\n\nStep 3 — Assess regulatory notification requirements:\nCheck the plant's Environmental Compliance Approval (ECA) for specific notification protocols regarding TRC exceedances. Notification to MECP may be required.\n\nStep 4 — Investigate potential causes:\nExamine changes in effluent characteristics such as ammonia concentration (affecting chloramine formation) or organic matter (BOD/TSS) that could alter chlorine demand. Also, verify hypochlorite solution concentration.\n\nStep 5 — Consider advanced control measures:\nIf TRC cannot be consistently maintained below 1.0 mg/L through dose adjustment, consider implementing dechlorination using a chemical like sodium bisulfite.\n\nThe correct answer is B. TRC = 1.4 mg/L exceeds the maximum of 1.0 mg/L; reduce hypochlorite dose immediately; if the receiving water is sensitive to chlorine residual, this exceedance may require MECP notification; check for changes in effluent ammonia (chloramine formation) or organic matter that may have altered chlorine demand.",
   steps: [
     { l: "Identify Given Values", c: "ECA Minimum TRC = 0.5 mg/L, ECA Maximum TRC = 1.0 mg/L, Measured TRC = 1.4 mg/L" },
@@ -7584,11 +7584,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's centrifugal pump is experiencing cavitation -- the pump makes a rattling/crackling noise and the flow is lower than expected. What causes cavitation and how is it corrected?",
     options: [
       "Cavitation is caused by too much flow; reduce the pump speed",
-      "Cavitation occurs when the liquid pressure at the pump inlet falls below the vapor pressure, causing vapor bubbles to form and collapse; causes include: high suction lift, restricted suction piping, high liquid temperature, or insufficient NPSH available; corrections: reduce suction lift, clean suction strainer, reduce liquid temperature, or install a larger suction pipe",
       "Cavitation is caused by air in the discharge line; bleed the air from the discharge",
+      "Cavitation occurs when the liquid pressure at the pump inlet falls below the vapor pressure, causing vapor bubbles to form and collapse; causes include: high suction lift, restricted suction piping, high liquid temperature, or insufficient NPSH available; corrections: reduce suction lift, clean suction strainer, reduce liquid temperature, or install a larger suction pipe",
       "Cavitation is normal pump operation; no action needed"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Centrifugal pump cavitation: (1) Mechanism: when the absolute pressure at the pump inlet (suction) falls below the liquid's vapor pressure, the liquid vaporizes locally, forming vapor bubbles; as these bubbles move to higher pressure regions in the pump, they collapse violently, causing noise, vibration, and erosion of the impeller; (2) Causes: (a) High suction lift: pump is too far above the liquid level; (b) Restricted suction piping: clogged suction strainer, partially closed valve, or undersized suction pipe; (c) High liquid temperature: higher temperature = higher vapor pressure = lower NPSH required; (d) Insufficient NPSH available (NPSHa): NPSHa = (absolute pressure at suction) - (vapor pressure) - (friction losses); must exceed NPSHr (required); (3) Corrections: (a) Reduce suction lift (lower the pump or raise the liquid level); (b) Clean suction strainer; (c) Open suction valve fully; (d) Increase suction pipe diameter; (e) Cool the liquid; (f) Install a booster pump; (4) Damage: cavitation causes pitting and erosion of the impeller and casing; if not corrected, will require impeller replacement.",
     difficulty: "medium",
   },
@@ -7644,11 +7644,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's SCADA system loses communication with the remote lift station. The lift station has a local control panel. What is the immediate response and what are the implications for regulatory compliance?",
     options: [
       "SCADA communication loss is not an emergency; wait for IT to fix it",
-      "Immediate response: dispatch an operator to the lift station to verify local operation and check for alarms; switch to local control mode; increase manual inspection frequency; notify the MECP if the communication loss affects the plant's ability to monitor and control the system as required by the ECA; document all actions",
+      "SCADA communication loss automatically triggers an overflow; notify the municipality",
       "Shut down the lift station until SCADA communication is restored",
-      "SCADA communication loss automatically triggers an overflow; notify the municipality"
+      "Immediate response: dispatch an operator to the lift station to verify local operation and check for alarms; switch to local control mode; increase manual inspection frequency; notify the MECP if the communication loss affects the plant's ability to monitor and control the system as required by the ECA; document all actions"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "SCADA communication loss response: (1) Immediate dispatch: send an operator to the lift station immediately to: verify the station is operating normally; check for alarms (high wet well level, pump failures); switch to local automatic control mode if SCADA control is lost; (2) Local control: most lift stations have local control panels that can operate independently of SCADA; verify local automatic control is functioning; (3) Increased inspection: increase manual inspection frequency (every 2-4 hours) until SCADA is restored; (4) Regulatory implications: the ECA may require continuous monitoring and control of certain parameters; if SCADA communication loss affects compliance monitoring, the MECP must be notified; (5) Documentation: document the communication loss start time, actions taken, and restoration time; (6) IT response: contact the SCADA vendor or IT department to diagnose and repair the communication failure; (7) Backup systems: review whether the plant has redundant communication (cellular backup, radio) for critical remote stations; (8) Root cause: common causes include: network switch failure, fiber optic cable damage, radio interference, or software issues.",
     difficulty: "medium",
   },
@@ -7697,11 +7697,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant operator needs to perform maintenance on a 600V motor control center (MCC). What electrical safety procedures must be followed under the Ontario Occupational Health and Safety Act?",
     options: [
       "Turn off the main breaker and proceed with maintenance",
-      "Follow lockout/tagout (LOTO) procedures: de-energize the circuit, apply a personal lock and tag, verify zero energy state with a voltage tester, and only then proceed with maintenance; only qualified electricians (licensed in Ontario) may work on 600V equipment; follow Ontario Electrical Safety Code requirements",
+      "Have a second person watch while the first person works on the energized equipment",
       "Wear rubber gloves and proceed; rubber gloves provide adequate protection for 600V work",
-      "Have a second person watch while the first person works on the energized equipment"
+      "Follow lockout/tagout (LOTO) procedures: de-energize the circuit, apply a personal lock and tag, verify zero energy state with a voltage tester, and only then proceed with maintenance; only qualified electricians (licensed in Ontario) may work on 600V equipment; follow Ontario Electrical Safety Code requirements"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Electrical safety for 600V MCC maintenance (Ontario OHSA, O. Reg. 851 - Industrial Establishments): (1) Lockout/tagout (LOTO): (a) Notify affected workers; (b) Identify all energy sources (electrical, pneumatic, hydraulic, gravity); (c) De-energize: open the circuit breaker or disconnect switch; (d) Lock out: apply a personal lock to the energy isolation device; (e) Tag out: attach a warning tag identifying the worker and reason for lockout; (f) Verify: use a calibrated voltage tester to verify zero energy state at the work location; test before touch; (g) Proceed with maintenance; (h) Remove lock and tag only when work is complete and all workers are clear; (2) Qualified electricians: work on 600V equipment requires a licensed electrician (309A or 309C in Ontario) or a worker under the direct supervision of a licensed electrician; (3) Arc flash: 600V equipment can produce arc flash; arc flash hazard assessment required; appropriate PPE (arc flash suit, face shield) required; (4) Ontario Electrical Safety Code: all electrical work must comply with the OESC; permits required for new installations.",
     difficulty: "hard",
   },
@@ -7727,11 +7727,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 plant's anaerobic digester heat exchanger shows a 15% reduction in heat transfer efficiency over 6 months. The digester temperature has dropped from 35 C to 32 C despite the same hot water supply temperature. What are the causes and maintenance actions?",
     options: [
       "Heat exchanger fouling is normal; no action needed",
-      "Causes of reduced heat transfer: fouling of heat exchanger surfaces (struvite, calcium carbonate, biological deposits on the sludge side; scale on the hot water side); corrective actions: clean the sludge side with high-pressure water or chemical cleaning (citric acid for struvite/calcium), clean the water side with descaling solution, and inspect for tube fouling or damage",
       "The digester temperature drop is caused by cold weather; increase hot water temperature only",
+      "Causes of reduced heat transfer: fouling of heat exchanger surfaces (struvite, calcium carbonate, biological deposits on the sludge side; scale on the hot water side); corrective actions: clean the sludge side with high-pressure water or chemical cleaning (citric acid for struvite/calcium), clean the water side with descaling solution, and inspect for tube fouling or damage",
       "Replace the heat exchanger immediately; fouled heat exchangers cannot be cleaned"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Digester heat exchanger fouling and maintenance: (1) Fouling mechanisms: (a) Sludge side: struvite (MgNH4PO4) deposits form when pH rises as CO2 is stripped; calcium carbonate deposits at high pH; biological films; (b) Hot water side: calcium carbonate scale from hard water; (2) Consequences: reduced heat transfer coefficient; lower digester temperature; reduced biogas production; increased energy consumption; (3) Maintenance actions: (a) Sludge side cleaning: high-pressure water jetting (annual); chemical cleaning with citric acid (2-5% solution) for struvite and calcium carbonate; (b) Hot water side cleaning: descaling with citric acid or proprietary descaler; (c) Inspection: check for tube fouling, corrosion, or damage; (d) Preventive maintenance: clean sludge side every 6 months; (e) Struvite prevention: maintain digester pH < 7.5 by controlling CO2 stripping; (4) Temperature impact: at 32 C vs 35 C, mesophilic digestion rate decreases by approximately 15-20%; VS destruction decreases; biogas production decreases; (5) Monitoring: track heat exchanger inlet/outlet temperatures and hot water flow to detect fouling early.",
     difficulty: "medium",
   },
@@ -7791,11 +7791,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator conducts a detailed I/I analysis using continuous flow monitoring data. The analysis identifies: base infiltration = 1,200 m³/day, storm-derived inflow = 8,500 m³/day during a 25 mm/hr storm, and groundwater infiltration = 2,800 m³/day during spring snowmelt. What is the total I/I and what is the MOST cost-effective rehabilitation strategy?",
     options: [
       "Total I/I = 12,500 m³/day — replace all pipes in the system",
-      "Total I/I = 12,500 m³/day — prioritize: (1) rapid inflow reduction (manhole rehabilitation, illegal connection removal) for immediate benefit; (2) CIPP lining of highest-infiltration pipe segments; (3) private lateral rehabilitation program",
+      "Total I/I = 4,000 m³/day — only base infiltration and groundwater infiltration count",
       "Total I/I = 10,000 m³/day — only address storm-derived inflow",
-      "Total I/I = 4,000 m³/day — only base infiltration and groundwater infiltration count"
+      "Total I/I = 12,500 m³/day — prioritize: (1) rapid inflow reduction (manhole rehabilitation, illegal connection removal) for immediate benefit; (2) CIPP lining of highest-infiltration pipe segments; (3) private lateral rehabilitation program"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Total I/I = base infiltration (1,200) + storm inflow (8,500) + groundwater infiltration (2,800) = 12,500 m³/day. Cost-effective I/I reduction strategy: (1) Rapid/low-cost inflow reduction — manhole frame and cover rehabilitation (leaking manholes are a major inflow source); remove illegal storm connections; install manhole inserts; typical cost: $500–2,000/manhole; (2) CIPP lining of high-infiltration segments — identified by flow isolation testing and CCTV; typical cost: $200–500/m; (3) Private lateral program — laterals contribute 30–50% of total I/I; offer rebates for CIPP lining; (4) Prioritize by cost-per-unit-reduction ($/m³/day removed). Storm-derived inflow (8,500 m³/day) is the largest component — focus here first for maximum impact.",
     isCalc: true,
   },
@@ -7822,11 +7822,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator is implementing a real-time control (RTC) system for a combined sewer system to maximize CSO capture. The RTC system uses flow sensors, rain gauges, and automated control gates. What are the key performance requirements and failure mode considerations?",
     options: [
       "RTC only needs to maximize flow to the treatment plant — no failure mode planning needed",
-      "RTC must: maximize system storage utilization (target 85% capture), maintain minimum velocities to prevent solids deposition (>0.6 m/s), prevent surcharging and basement flooding, fail-safe to passive operation if communication is lost, and include cybersecurity measures to prevent unauthorized access",
+      "RTC replaces the need for physical infrastructure improvements — no additional capital works needed",
       "RTC is only for large systems (>100,000 population) — not applicable to smaller systems",
-      "RTC replaces the need for physical infrastructure improvements — no additional capital works needed"
+      "RTC must: maximize system storage utilization (target 85% capture), maintain minimum velocities to prevent solids deposition (>0.6 m/s), prevent surcharging and basement flooding, fail-safe to passive operation if communication is lost, and include cybersecurity measures to prevent unauthorized access"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "RTC system performance requirements: (1) Maximize CSO capture — optimize gate positions to fill available storage before overflow; (2) Maintain self-cleansing velocity — minimum 0.6 m/s in all sewers; avoid creating dead zones where solids deposit; (3) Prevent surcharging — monitor hydraulic grade line; prevent basement flooding; (4) Fail-safe operation — if communication fails, gates revert to passive (gravity) operation; no single point of failure; (5) Cybersecurity — SCADA systems are critical infrastructure; implement: network segmentation, encrypted communications, access controls, intrusion detection; (6) Redundancy — backup power, redundant sensors, manual override capability; (7) Performance monitoring — log all gate operations, CSO events, and system performance; (8) Operator training — RTC requires skilled operators who understand both hydraulics and control systems.",
   },
   {
@@ -7836,12 +7836,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     difficulty: "hard" as const,
     question: "A Class 4 operator is preparing an Environmental Compliance Approval (ECA) amendment application for a new CSO storage facility. Under Ontario's Environmental Assessment Act and Environmental Protection Act, what approvals are required and what is the typical approval timeline?",
     options: [
-      "Only a building permit is required — no provincial approvals needed for storage facilities",
       "A Schedule B Municipal Class Environmental Assessment (Class EA) is typically required for CSO storage facilities, followed by an ECA amendment; total timeline typically 18–36 months including EA, detailed design, and ECA review",
+      "Only a building permit is required — no provincial approvals needed for storage facilities",
       "Only an ECA amendment is required — no environmental assessment needed",
       "Federal Environmental Assessment is required for all CSO facilities — provincial approvals are not sufficient"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Approval pathway for CSO storage facility in Ontario: (1) Municipal Class Environmental Assessment (Class EA) — Schedule B (for projects with predictable effects): complete Class EA study (problem statement, alternatives, impact assessment, mitigation); 30-day public review; if no Part II Order request, proceed to design; (2) ECA Amendment — submit to MECP: detailed design, operational plan, monitoring program, emergency response plan; MECP review: 6–12 months; (3) Building permit — municipal building department; (4) Utility coordination — locate and protect existing utilities. Timeline: Class EA (6–12 months) + detailed design (6–12 months) + ECA review (6–12 months) + construction (12–24 months) = 30–60 months total. Key considerations: receiving water quality objectives, groundwater protection, odour control, overflow monitoring.",
   },
   {
@@ -7851,12 +7851,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     difficulty: "hard" as const,
     question: "A Class 4 operator is conducting an energy audit of a major lift station with four 75 kW pumps (two duty, two standby). Annual energy consumption is 2,100,000 kWh at $0.11/kWh. The audit identifies that the pumps are operating at 65% efficiency vs. the design efficiency of 82%. What is the potential annual energy savings and what is the most likely cause of the efficiency loss?",
     options: [
-      "Savings: $25,000/year — cause: pumps are too large for current flows",
       "Savings: $47,850/year — cause: impeller wear, operating off the best efficiency point (BEP), or system curve changes since original design",
+      "Savings: $25,000/year — cause: pumps are too large for current flows",
       "Savings: $10,000/year — cause: electrical motor inefficiency only",
       "No savings possible — pump efficiency cannot be improved without replacing pumps"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Current energy cost = 2,100,000 kWh × $0.11 = $231,000/year. Efficiency improvement from 65% to 82%: Energy ratio = 65/82 = 0.793. New energy consumption = 2,100,000 × 0.793 = 1,665,000 kWh. New cost = 1,665,000 × $0.11 = $183,150. Savings = $231,000 − $183,150 = $47,850/year. Causes of efficiency loss: (1) Impeller wear — worn vanes increase clearances, reduce hydraulic efficiency; (2) Operating off BEP — if flows have changed since design, pumps may be operating at a different point on the pump curve; (3) System curve changes — increased pipe roughness, additional head losses; (4) Wear ring wear — increased internal recirculation. Solutions: (1) Replace worn impellers; (2) Trim impellers to match current system curve; (3) Install VFDs to maintain BEP operation; (4) Conduct pump performance testing to identify specific issues.",
     isCalc: true,
   },
@@ -7898,11 +7898,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator is developing a Sanitary Sewer Overflow (SSO) prevention and response plan required by the municipality's ECA. What are the MINIMUM elements required in the plan?",
     options: [
       "Only an emergency contact list and a portable pump inventory",
-      "SSO prevention program (preventive maintenance, capacity assessment, I/I reduction), SSO response procedures (containment, notification, cleanup), reporting requirements (MECP, public), root cause analysis process, corrective action tracking, and annual performance review",
       "Only the regulatory reporting requirements — operations are covered by standard procedures",
+      "SSO prevention program (preventive maintenance, capacity assessment, I/I reduction), SSO response procedures (containment, notification, cleanup), reporting requirements (MECP, public), root cause analysis process, corrective action tracking, and annual performance review",
       "Only the SSO response procedures — prevention is covered by the maintenance program"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "SSO Prevention and Response Plan elements required by Ontario ECA: (1) Prevention Program: (a) Preventive maintenance schedule (cleaning, inspection, pump testing); (b) Capacity assessment and I/I reduction program; (c) Infrastructure rehabilitation plan; (d) Pump station redundancy and backup power; (2) Response Procedures: (a) SSO detection (SCADA alarms, field reports, public complaints); (b) Immediate response (containment, bypass pumping, blockage removal); (c) Notification chain (MECP Spills Action Centre, municipality, public); (3) Reporting: (a) Immediate verbal notification to MECP; (b) Written report within 7 days; (c) Annual SSO summary in Annual Report; (4) Root Cause Analysis: (a) Investigate each SSO event; (b) Identify contributing factors; (c) Implement corrective actions; (5) Performance Metrics: (a) SSO frequency, volume, duration; (b) Track trends and improvement.",
   },
   {
@@ -7912,12 +7912,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     difficulty: "hard" as const,
     question: "A Class 4 operator is reviewing the design of a new major lift station (design flow: 150 L/s average, 375 L/s peak). The design includes two duty pumps (200 L/s each) and one standby pump. What design deficiencies should the operator identify?",
     options: [
-      "The design is adequate — two duty pumps and one standby is standard practice",
       "Deficiencies: (1) With two duty pumps at 200 L/s each, peak flow of 375 L/s cannot be met with one pump out of service; (2) Only one standby pump for a major station is insufficient — should have N+1 redundancy for each duty pump configuration; (3) Need to verify wet well volume for adequate pump cycle time and emergency storage",
+      "The design is adequate — two duty pumps and one standby is standard practice",
       "The pumps are oversized — reduce to 150 L/s each to match average flow",
       "Only one duty pump is needed — the standby pump provides sufficient backup"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Design review for major lift station: (1) Redundancy — with two duty pumps (200 L/s each) and peak flow of 375 L/s: if one duty pump fails, remaining pump handles 200 L/s < 375 L/s peak; station cannot handle peak flow with one pump out; need to verify if this is acceptable (wet weather peak vs. design storm); (2) N+1 redundancy — for a major station (150 L/s average), should have: 3 pumps (2 duty + 1 standby) where any single pump can handle average flow, and 2 pumps can handle peak flow; (3) Wet well volume — minimum active volume = Q_pump / (4 × N_max); verify cycle time ≥ 10 minutes; emergency storage for power failure; (4) Force main — check for air release valves at high points, surge protection, minimum velocity 0.6 m/s; (5) Backup power — generator sized for all pumps + controls; (6) Odour control — wet well ventilation and treatment.",
   },
   {
@@ -7928,11 +7928,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator is preparing the annual collection system performance report for council. The system has: 250 km of sewers, 3 SSO events (total 45,000 L), 18 blockages, PWWF/ADWF ratio of 3.8. How do these metrics compare to industry benchmarks and what are the priority improvement areas?",
     options: [
       "All metrics are within acceptable ranges — no improvements needed",
-      "Blockage rate = 7.2/100 km/year (above benchmark of <5); I/I ratio of 3.8 (above target of <3.0); SSO volume of 45,000 L requires investigation; priority improvements: I/I reduction program and targeted sewer cleaning in high-blockage areas",
       "Only the SSO events matter — blockage rate and I/I ratio are not performance indicators",
+      "Blockage rate = 7.2/100 km/year (above benchmark of <5); I/I ratio of 3.8 (above target of <3.0); SSO volume of 45,000 L requires investigation; priority improvements: I/I reduction program and targeted sewer cleaning in high-blockage areas",
       "The I/I ratio of 3.8 is acceptable — no I/I reduction program needed"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Performance benchmarking: (1) Blockage rate = 18 blockages / 250 km × 100 = 7.2 blockages/100 km/year. Industry benchmark: <5/100 km/year (Ontario Municipal Benchmarking Initiative). Above benchmark — investigate high-blockage areas (grease, roots, structural defects); (2) I/I ratio = PWWF/ADWF = 3.8. Target: <3.0 for well-maintained systems. Above target — implement I/I reduction program (smoke testing, CCTV, lateral rehabilitation); (3) SSO events = 3 events, 45,000 L. Target: zero SSOs. Each SSO requires root cause analysis and corrective action; (4) Priority improvements: (a) I/I reduction — highest impact on treatment plant loading and SSO risk; (b) Targeted cleaning — reduce blockage rate; (c) SSO root cause analysis — prevent recurrence. Report should include trend analysis (improving or worsening) and 5-year improvement targets.",
     isCalc: true,
   },
@@ -7959,11 +7959,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator is reviewing the cybersecurity posture of the collection system SCADA network following a ransomware attack on a nearby municipality's water system. What are the CRITICAL cybersecurity measures for collection system SCADA?",
     options: [
       "Change all passwords annually — sufficient cybersecurity for SCADA systems",
-      "Implement: network segmentation (air gap or firewall between SCADA and corporate network), multi-factor authentication, encrypted remote access (VPN), regular software patching, incident response plan, and operator cybersecurity training — following NIST Cybersecurity Framework",
+      "Cybersecurity is the IT department's responsibility — operators don't need to be involved",
       "Disconnect all remote access — only on-site operation is secure",
-      "Cybersecurity is the IT department's responsibility — operators don't need to be involved"
+      "Implement: network segmentation (air gap or firewall between SCADA and corporate network), multi-factor authentication, encrypted remote access (VPN), regular software patching, incident response plan, and operator cybersecurity training — following NIST Cybersecurity Framework"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Critical SCADA cybersecurity measures (NIST Cybersecurity Framework): (1) Identify — asset inventory of all SCADA components; vulnerability assessment; (2) Protect — network segmentation (DMZ between SCADA and corporate network); multi-factor authentication for all remote access; encrypted communications (VPN, TLS); regular patching of SCADA software and OS; remove default passwords; disable unused ports/services; (3) Detect — intrusion detection system (IDS); anomaly monitoring; log all access attempts; (4) Respond — incident response plan; isolation procedures; backup control capability (manual operation); (5) Recover — system backup and recovery procedures; tested regularly. Wastewater collection systems are critical infrastructure — a cyberattack could cause pump failures, SSOs, and public health emergencies. Operators must understand cybersecurity as part of their operational responsibilities.",
   },
   {
@@ -7988,12 +7988,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     difficulty: "medium" as const,
     question: "A Class 4 operator is designing a comprehensive collection system monitoring program. The system has 300 km of sewers, 8 lift stations, and 3 CSO outfalls. What monitoring technologies and parameters should be included?",
     options: [
-      "Only flow monitoring at the treatment plant influent",
       "Integrated monitoring program: (1) continuous flow monitoring at key nodes (treatment plant, major lift stations, CSO structures); (2) continuous level monitoring at all lift stations; (3) H₂S monitoring at lift stations and force main discharge points; (4) CSO event monitoring (flow, duration, volume); (5) rainfall monitoring (rain gauges at multiple locations); (6) periodic water quality sampling at CSO outfalls; (7) SCADA integration for real-time data and alarms",
+      "Only flow monitoring at the treatment plant influent",
       "Only CCTV inspection — visual monitoring is sufficient",
       "Only monitoring at CSO outfalls — required by regulation"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Comprehensive collection system monitoring program: (1) Flow monitoring — continuous electromagnetic or ultrasonic flow meters at: treatment plant influent, major lift stations, CSO structures, key sewer junctions; (2) Level monitoring — continuous at all lift station wet wells; SCADA alarms for high/low level; (3) H₂S monitoring — continuous at lift station wet wells, force main discharge manholes; 4-gas monitors for confined space entry; (4) CSO monitoring — flow rate, duration, volume at each outfall; required by ECA; (5) Rainfall — tipping bucket rain gauges at multiple locations; correlate with I/I and CSO events; (6) Water quality — periodic sampling at CSO outfalls for regulatory compliance; (7) SCADA integration — real-time data, alarms, trend analysis, remote access; (8) Portable flow monitoring — for I/I studies, capacity assessment, model calibration.",
   },
   {
@@ -8004,11 +8004,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator is preparing a business case for a $15 million collection system rehabilitation program. The program will reduce SSOs by 90%, reduce I/I by 40%, and extend infrastructure life by 50 years. What financial analysis should be included in the business case?",
     options: [
       "Only the capital cost — operating cost savings are not relevant",
-      "Life-cycle cost analysis (LCCA): capital cost, avoided emergency repair costs, reduced treatment plant operating costs (from I/I reduction), reduced regulatory risk (SSO penalties), deferred capacity expansion costs, and net present value (NPV) analysis over 50 years",
+      "Compare only to the cost of doing nothing — if doing nothing is cheaper, don't proceed",
       "Only the regulatory compliance benefit — financial analysis is not required for infrastructure",
-      "Compare only to the cost of doing nothing — if doing nothing is cheaper, don't proceed"
+      "Life-cycle cost analysis (LCCA): capital cost, avoided emergency repair costs, reduced treatment plant operating costs (from I/I reduction), reduced regulatory risk (SSO penalties), deferred capacity expansion costs, and net present value (NPV) analysis over 50 years"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Business case financial analysis for collection system rehabilitation: (1) Capital cost — $15 million rehabilitation program; (2) Operating cost savings: (a) Reduced emergency repairs — SSO response costs $50,000–200,000/event; 90% reduction = significant savings; (b) Reduced treatment costs — 40% I/I reduction reduces flow to treatment plant; lower pumping, chemical, and energy costs; (c) Reduced regulatory costs — SSO penalties, MECP compliance orders; (3) Deferred capital — I/I reduction defers need for treatment plant capacity expansion; (4) Life-cycle cost analysis (LCCA) — compare: (a) rehabilitation now ($15M + reduced O&M) vs. (b) deferred rehabilitation (higher O&M + emergency repairs + eventual replacement at higher cost); (5) Net Present Value (NPV) — discount all future costs/savings to present value at municipal discount rate (typically 4–6%); (6) Risk analysis — probability and cost of SSO events, regulatory penalties, infrastructure failure.",
   },
   {
@@ -8019,11 +8019,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator is upgrading a lift station control system from simple float-switch control to a PLC-based system with SCADA integration. What control logic improvements should be implemented to optimize pump operation?",
     options: [
       "Simply replace float switches with electronic level sensors — no logic changes needed",
-      "Implement: (1) variable speed control (VFD) with level-based speed modulation; (2) pump alternation to equalize wear; (3) predictive start/stop based on inflow rate calculation; (4) anti-cavitation protection (minimum speed); (5) thermal overload protection; (6) run-time equalization between pumps; (7) alarm management with priority levels; (8) data logging for performance analysis",
+      "Implement maximum pump speed at all times to minimize wet well retention time",
       "Only add SCADA monitoring — keep existing float switch control",
-      "Implement maximum pump speed at all times to minimize wet well retention time"
+      "Implement: (1) variable speed control (VFD) with level-based speed modulation; (2) pump alternation to equalize wear; (3) predictive start/stop based on inflow rate calculation; (4) anti-cavitation protection (minimum speed); (5) thermal overload protection; (6) run-time equalization between pumps; (7) alarm management with priority levels; (8) data logging for performance analysis"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Advanced PLC/SCADA control logic for lift stations: (1) VFD control — modulate pump speed to match inflow rate; maintain constant wet well level; reduces energy consumption 20–40%; eliminates water hammer from frequent starts/stops; (2) Pump alternation — automatically alternate lead/lag pumps to equalize wear; (3) Predictive control — calculate inflow rate from level change; start pump before high level alarm; (4) Anti-cavitation — minimum speed setpoint to prevent cavitation at low wet well levels; (5) Thermal protection — monitor motor temperature; reduce speed or stop if overheating; (6) Run-time equalization — balance operating hours between pumps; (7) Alarm hierarchy — critical (pump failure, high level), warning (high temperature, low level), informational (maintenance due); (8) Data logging — flow, level, power, run-time for performance trending and maintenance planning.",
   },
   {
@@ -8034,11 +8034,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator is updating the collection system master plan to incorporate climate change projections. Ontario climate projections indicate: 20% increase in extreme precipitation events, 15% increase in annual precipitation, and warmer winters. How should these projections affect collection system planning?",
     options: [
       "Climate change projections are too uncertain to incorporate into infrastructure planning",
-      "Increase design storm return periods (e.g., from 5-year to 10-year for new sewers), increase CSO storage capacity to handle higher peak flows, prioritize I/I reduction (higher groundwater from increased precipitation), implement green infrastructure to reduce runoff, and design for increased pump station capacity with climate safety factors",
+      "Climate adaptation is the provincial government's responsibility — municipalities don't need to plan for it",
       "Only address warmer winters — reduced frost depth is the primary climate impact",
-      "Climate adaptation is the provincial government's responsibility — municipalities don't need to plan for it"
+      "Increase design storm return periods (e.g., from 5-year to 10-year for new sewers), increase CSO storage capacity to handle higher peak flows, prioritize I/I reduction (higher groundwater from increased precipitation), implement green infrastructure to reduce runoff, and design for increased pump station capacity with climate safety factors"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Climate change adaptation for collection systems: (1) Design storm standards — increase return period for new infrastructure (5-year → 10-year for gravity sewers; 25-year → 50-year for major trunks); (2) CSO storage — increase storage capacity to capture higher peak flows; 20% increase in extreme events = more frequent CSO activation; (3) I/I management — higher annual precipitation → higher groundwater → increased infiltration; accelerate I/I reduction program; (4) Green infrastructure — bioswales, permeable pavement, green roofs reduce runoff volume; most cost-effective at source; (5) Pump station capacity — size for increased peak flows with climate safety factor (10–20%); (6) Warmer winters — reduced frost depth affects pipe installation depths; warmer temperatures may increase biological activity in sewers (more H₂S, more grease liquefaction); (7) Asset management — prioritize rehabilitation of vulnerable infrastructure before climate impacts intensify.",
   },
   {
@@ -8064,11 +8064,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator is developing specifications for a CIPP lining contract covering 8 km of sewers (200–600 mm diameter). What are the CRITICAL specification requirements to ensure quality and performance?",
     options: [
       "Only specify the liner thickness — contractors will determine the rest",
-      "Specifications must include: liner design requirements (ASTM F1216, minimum thickness by pipe condition), pre-installation CCTV, material certifications (resin type, felt specifications), installation procedures (inversion or pull-in), curing method (UV, steam, or ambient), post-installation CCTV and mandrel test, service connection reinstatement, warranty (minimum 5 years), and QA/QC requirements including third-party inspection",
+      "Use a performance specification only — specify the outcome, not the method",
       "Only specify the post-installation CCTV — quality is the contractor's responsibility",
-      "Use a performance specification only — specify the outcome, not the method"
+      "Specifications must include: liner design requirements (ASTM F1216, minimum thickness by pipe condition), pre-installation CCTV, material certifications (resin type, felt specifications), installation procedures (inversion or pull-in), curing method (UV, steam, or ambient), post-installation CCTV and mandrel test, service connection reinstatement, warranty (minimum 5 years), and QA/QC requirements including third-party inspection"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Critical CIPP lining specification requirements: (1) Design — ASTM F1216 structural design; minimum liner thickness based on pipe condition (partially vs. fully deteriorated); design life 50 years; (2) Pre-installation — CCTV inspection to confirm pipe condition; cleaning to remove all debris; (3) Materials — resin type (polyester, vinyl ester, or epoxy); felt tube specifications (weight, thickness); material certifications and test results; (4) Installation — inversion (water or air) or pull-in method; temperature monitoring during curing; (5) Curing — UV, steam, or ambient; temperature and time requirements; (6) Post-installation — CCTV inspection (100% of lined pipe); mandrel test (95% of nominal diameter); pressure test if applicable; (7) Service connections — robotic cutting within 24 hours; CCTV verification; (8) QA/QC — third-party inspection; material samples for testing; (9) Warranty — minimum 5 years for materials and workmanship; (10) Environmental — manage liner waste, water discharge.",
   },
   {
@@ -8078,12 +8078,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     difficulty: "hard" as const,
     question: "A Class 4 operator is developing a lifecycle management plan for a fleet of 15 lift stations ranging in age from 5 to 45 years. What framework should be used to prioritize capital renewal investments?",
     options: [
-      "Replace all stations older than 25 years",
       "Condition-based lifecycle management: assess each station using a structured scoring system (electrical condition, mechanical condition, control system, structural condition, operational performance, regulatory compliance); calculate remaining useful life; prioritize renewal based on risk score and remaining life; develop 10-year capital renewal forecast with cost estimates",
+      "Replace all stations older than 25 years",
       "Only replace stations that have experienced failures — reactive replacement is most cost-effective",
       "Replace all stations on a fixed 20-year cycle regardless of condition"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Lifecycle management framework for lift station fleet: (1) Condition assessment — structured scoring for each component: (a) Electrical: switchgear age, motor condition, wiring, grounding; (b) Mechanical: pump efficiency, impeller wear, valve condition, piping; (c) Controls: PLC age, SCADA integration, instrumentation; (d) Structural: wet well condition, access, ventilation; (e) Operational: reliability, energy efficiency, maintenance cost; (2) Remaining useful life — estimate based on condition score and component age; (3) Risk scoring — condition × consequence of failure; (4) Capital renewal prioritization — rank stations by risk score; (5) 10-year capital forecast — estimate renewal costs (component replacement vs. full station rehabilitation vs. new station); (6) Optimization — identify stations where component replacement extends life vs. stations requiring full renewal; (7) Budget planning — smooth capital expenditure over 10-year horizon; avoid peaks.",
   },
   {
@@ -8093,12 +8093,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     difficulty: "medium" as const,
     question: "A Class 4 operator receives a Director's Order from MECP requiring the municipality to develop and implement a Capacity, Management, Operations and Maintenance (CMOM) program within 18 months. What are the core elements of a CMOM program?",
     options: [
-      "CMOM only requires a maintenance schedule — no other elements are needed",
       "CMOM core elements: (1) Capacity — assess system capacity, identify deficiencies, develop CIP; (2) Management — organizational structure, staffing, training, budget; (3) Operations — standard operating procedures, emergency response, SCADA; (4) Maintenance — preventive maintenance program, equipment inventory, work order system; plus: legal authority, mapping, overflow response, communication program, and periodic program assessment",
+      "CMOM only requires a maintenance schedule — no other elements are needed",
       "CMOM is a US EPA program — not applicable in Ontario",
       "Only the overflow response element is required — other elements are optional"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "CMOM (Capacity, Management, Operations and Maintenance) program elements: (1) Legal Authority — verify municipality has authority to: regulate sewer use, require I/I reduction, enforce grease control; (2) Mapping — accurate GIS-based sewer atlas; (3) Capacity — hydraulic model; capacity assessment; CIP for deficiencies; (4) Management — organizational structure; staffing levels; training program; budget and financial planning; (5) Operations — SOPs for all routine and emergency operations; SCADA; emergency response plan; (6) Maintenance — preventive maintenance schedule; equipment inventory; CMMS; (7) Overflow Response — SSO response plan; notification procedures; root cause analysis; corrective actions; (8) Communication — public notification of SSOs; annual report; stakeholder engagement; (9) Program Assessment — annual performance review; KPI tracking; continuous improvement. CMOM is now used in Ontario as a framework for ECA compliance and Director's Orders.",
   },
   {
@@ -8109,11 +8109,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator is analyzing a sewer system that experiences basement flooding during a 10-year storm event. The hydraulic model shows that a 300 mm trunk sewer is surcharging to 2.5 m above the pipe crown. The basement floor elevation is 1.8 m above the pipe crown. What does this indicate and what are the mitigation options?",
     options: [
       "The basement flooding is caused by the sump pump failing — not a sewer capacity issue",
-      "The hydraulic grade line (2.5 m above crown) exceeds the basement floor elevation (1.8 m above crown) — sewage is backing up into the basement through floor drains. Mitigation: (1) backwater valve installation (most cost-effective for individual properties); (2) pipe upsizing (addresses root cause); (3) storage (in-line or off-line); (4) green infrastructure to reduce peak flows",
+      "Only pipe upsizing is effective — other measures are temporary fixes",
       "The flooding is acceptable — basement flooding during 10-year storms is within design standards",
-      "Only pipe upsizing is effective — other measures are temporary fixes"
+      "The hydraulic grade line (2.5 m above crown) exceeds the basement floor elevation (1.8 m above crown) — sewage is backing up into the basement through floor drains. Mitigation: (1) backwater valve installation (most cost-effective for individual properties); (2) pipe upsizing (addresses root cause); (3) storage (in-line or off-line); (4) green infrastructure to reduce peak flows"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Basement flooding analysis: HGL = 2.5 m above pipe crown. Basement floor = 1.8 m above pipe crown. Since HGL (2.5 m) > basement floor (1.8 m), the hydraulic grade line is above the basement floor during the 10-year storm — sewage can back up through floor drains, toilets, and other fixtures. Mitigation options (in order of cost-effectiveness): (1) Backwater valves — installed on individual service connections; prevents backflow into basement; cost: $1,000–3,000/property; does not address root cause; (2) Sewer separation — if combined sewer, separate storm and sanitary; removes stormwater from sanitary system; (3) Pipe upsizing — increase trunk sewer capacity; most expensive; (4) Storage — in-line or off-line storage to attenuate peak flows; (5) Green infrastructure — reduce runoff volume; (6) Real-time control — maximize use of existing storage. Combination approach typically most cost-effective.",
   },
   {
@@ -8124,11 +8124,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator is reviewing staffing requirements for a collection system with 400 km of sewers, 12 lift stations, and 4 CSO structures. What staffing levels and qualifications are required under Ontario regulations?",
     options: [
       "One operator can manage any size collection system — no minimum staffing requirements",
-      "Ontario O. Reg. 128/04 requires: a licensed operator-in-charge (OIC) for each operating authority; staffing levels sufficient to operate the system safely and in compliance with the ECA; for a system of this size, typically requires: 1 Class 3 or 4 OIC, 2–3 Class 2 or 3 operators, 2–4 maintenance technicians, and 24/7 on-call capability",
+      "Staffing is entirely at the municipality's discretion — no regulatory requirements",
       "Only a Class 1 operator is required — collection systems are low-risk",
-      "Staffing is entirely at the municipality's discretion — no regulatory requirements"
+      "Ontario O. Reg. 128/04 requires: a licensed operator-in-charge (OIC) for each operating authority; staffing levels sufficient to operate the system safely and in compliance with the ECA; for a system of this size, typically requires: 1 Class 3 or 4 OIC, 2–3 Class 2 or 3 operators, 2–4 maintenance technicians, and 24/7 on-call capability"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Ontario staffing requirements for collection systems (O. Reg. 128/04): (1) Operator-in-Charge (OIC) — must hold a licence at least equal to the system's classification; for a Class 3 collection system, OIC must hold Class 3 or higher; (2) Staffing levels — sufficient to: operate all facilities safely; respond to emergencies within 1 hour; perform preventive maintenance; maintain regulatory compliance; (3) For a 400 km, 12 lift station system: OIC (Class 3/4), 2–3 operators (Class 2/3), 2–4 maintenance technicians (electrical, mechanical), administrative support; (4) 24/7 on-call — required for lift station alarms and SSO response; (5) Training — operators must maintain continuing education credits for licence renewal; (6) Succession planning — ensure qualified operators available if OIC leaves; (7) Contractors — specialized work (CCTV, CIPP, confined space) may be contracted but OIC remains responsible for compliance.",
   },
   {
@@ -8139,11 +8139,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator discovers that an industrial facility is discharging high-strength wastewater (BOD 2,500 mg/L, pH 4.5, temperature 65°C) to the municipal sewer. The sewer use bylaw limits are: BOD 300 mg/L, pH 5.5–10.5, temperature 60°C. What enforcement actions are available and what are the operational impacts?",
     options: [
       "No action required — industrial discharges are the provincial government's responsibility",
-      "Enforcement actions: (1) issue a notice of violation; (2) require immediate corrective action (pH adjustment, cooling, pretreatment); (3) issue an order to comply with a deadline; (4) if non-compliant, issue a fine or disconnect from the sewer; (5) refer to MECP if discharge causes adverse effects. Operational impacts: high BOD overloads biological treatment; low pH inhibits biological treatment and corrodes concrete; high temperature kills nitrifying bacteria",
       "Only issue a warning letter — enforcement is too costly for small violations",
+      "Enforcement actions: (1) issue a notice of violation; (2) require immediate corrective action (pH adjustment, cooling, pretreatment); (3) issue an order to comply with a deadline; (4) if non-compliant, issue a fine or disconnect from the sewer; (5) refer to MECP if discharge causes adverse effects. Operational impacts: high BOD overloads biological treatment; low pH inhibits biological treatment and corrodes concrete; high temperature kills nitrifying bacteria",
       "Accept the discharge but increase treatment plant chemical dosing to compensate"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Sewer use bylaw enforcement for non-compliant industrial discharge: (1) Immediate actions: (a) Notify the facility of the violation; (b) Require immediate corrective action (pH neutralization, cooling tower installation, pretreatment); (c) Increase monitoring frequency; (2) Formal enforcement: (a) Notice of Violation with compliance deadline; (b) Administrative Penalty (if bylaw allows); (c) Order to Comply; (d) Sewer connection suspension for continued non-compliance; (3) Operational impacts: (a) BOD 2,500 mg/L (8× limit) — overloads biological treatment, increases aeration demand, may cause effluent violations; (b) pH 4.5 — corrodes concrete sewers (MIC accelerated), inhibits biological treatment (optimal pH 6.5–8.5), kills nitrifying bacteria; (c) Temperature 65°C — kills biological treatment organisms (mesophilic bacteria die above 45°C); (4) Pretreatment requirement — facility must install: pH neutralization, heat exchanger, BOD reduction (equalization, biological pretreatment).",
   },
   {
@@ -8168,12 +8168,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     difficulty: "medium" as const,
     question: "A Class 4 operator is preparing a 10-year capital plan for the collection system. The system replacement value is $180 million. Industry benchmarks suggest annual reinvestment of 1–2% of replacement value. The current annual capital budget is $800,000. What is the funding gap and what financing strategies should be considered?",
     options: [
-      "The current budget is adequate — $800,000/year is sufficient for any system",
       "Funding gap: benchmark = $1.8–3.6M/year vs. current $800K = gap of $1.0–2.8M/year. Strategies: (1) rate increases (user fees); (2) development charges for growth-related infrastructure; (3) Infrastructure Ontario loans (low interest); (4) federal/provincial grants (ICIP, OCIF); (5) asset optimization (prioritize highest-risk assets); (6) P3 arrangements for major projects",
+      "The current budget is adequate — $800,000/year is sufficient for any system",
       "The funding gap is the provincial government's responsibility to fill",
       "Reduce the rehabilitation program to match the available budget — no additional funding needed"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "Collection system capital funding analysis: Benchmark reinvestment = 1–2% × $180M = $1.8–3.6M/year. Current budget = $800K/year. Funding gap = $1.0–2.8M/year. Financing strategies: (1) Rate increases — user fees (water/wastewater rates) are the primary funding source; rate study to determine sustainable rate path; (2) Development charges — recover growth-related infrastructure costs from developers; (3) Infrastructure Ontario (IO) loans — low-interest financing for municipalities; 20–30 year terms; (4) Federal/Provincial grants: (a) Investing in Canada Infrastructure Program (ICIP); (b) Ontario Community Infrastructure Fund (OCIF); (c) Green Infrastructure Fund; (5) Asset optimization — prioritize highest-risk assets to maximize impact of limited budget; (6) P3 arrangements — private financing for major projects (>$50M); (7) Reserve fund — build up reserve fund during low-capital years for future large projects. Sustainable infrastructure requires full-cost accounting and rate setting.",
     isCalc: true,
   },
@@ -8200,11 +8200,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator receives a Notice of Non-Compliance from MECP citing: (1) failure to report 3 SSO events within the required timeframe; (2) failure to maintain accurate sewer atlas; (3) pump station without required backup power. What is the appropriate response and what are the potential consequences of non-compliance?",
     options: [
       "Respond to MECP that the violations are minor and will be addressed eventually",
-      "Respond within the required timeframe with: (1) acknowledgment of each violation; (2) root cause analysis; (3) corrective action plan with specific timelines; (4) immediate corrective actions already taken. Potential consequences if not addressed: Director's Order, Administrative Monetary Penalty (up to $100,000/day), prosecution under EPA (up to $6M for corporations), and personal liability for the operator",
+      "Only address the backup power issue — the other violations are administrative only",
       "Ignore the notice — MECP rarely follows up on notices of non-compliance",
-      "Only address the backup power issue — the other violations are administrative only"
+      "Respond within the required timeframe with: (1) acknowledgment of each violation; (2) root cause analysis; (3) corrective action plan with specific timelines; (4) immediate corrective actions already taken. Potential consequences if not addressed: Director's Order, Administrative Monetary Penalty (up to $100,000/day), prosecution under EPA (up to $6M for corporations), and personal liability for the operator"
     ],
-    correct: 1,
+    correct: 3,
     explanation: "Response to MECP Notice of Non-Compliance: (1) Immediate response — acknowledge receipt; contact MECP inspector to discuss; (2) Corrective action plan: (a) SSO reporting — implement improved SSO detection and notification procedures; train staff; update emergency contact list; (b) Sewer atlas — assign staff/contractor to update GIS; establish process for ongoing updates within 90 days of changes; (c) Backup power — procure and install generator; interim measure: portable generator on standby; (3) Timeline — provide specific completion dates for each corrective action; (4) Documentation — demonstrate good faith and due diligence. Potential consequences: (a) Director's Order — legally binding requirements with specific timelines; (b) Administrative Monetary Penalty (AMP) — up to $100,000/day under EPA; (c) Prosecution — up to $6M for corporations, $1M for individuals; (d) Personal liability — operators can be personally charged for directing non-compliant activities; (e) Licence suspension — MECP can suspend operator licence. Proactive, transparent response reduces enforcement risk.",
   },
   {
@@ -8215,11 +8215,11 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     question: "A Class 4 operator is managing a major sewer rehabilitation project that will cause significant traffic disruption and service interruptions over 18 months. What stakeholder communication and engagement strategy is required?",
     options: [
       "Notify affected residents 48 hours before work begins — standard notification is sufficient",
-      "Comprehensive stakeholder engagement: (1) pre-project public consultation (open houses, project website); (2) regular project updates (monthly newsletter, social media); (3) direct notification to affected property owners (30 days advance notice); (4) business impact mitigation (access maintenance, advance notice to businesses); (5) emergency contact line for complaints; (6) post-project communication (project completion, service restoration)",
       "Only notify the municipality's communications department — they will handle all public communication",
+      "Comprehensive stakeholder engagement: (1) pre-project public consultation (open houses, project website); (2) regular project updates (monthly newsletter, social media); (3) direct notification to affected property owners (30 days advance notice); (4) business impact mitigation (access maintenance, advance notice to businesses); (5) emergency contact line for complaints; (6) post-project communication (project completion, service restoration)",
       "Stakeholder communication is not required for infrastructure projects"
     ],
-    correct: 1,
+    correct: 2,
     explanation: "Stakeholder communication strategy for major sewer rehabilitation: (1) Pre-project: (a) Public open house — present project scope, timeline, impacts, mitigation; (b) Project website — maps, FAQs, contact information, progress updates; (c) Council presentation — obtain approval and support; (2) During construction: (a) 30-day advance notice to affected property owners; (b) Monthly project newsletter; (c) Social media updates (Twitter/X, Facebook); (d) Direct notification 48 hours before work on specific streets; (e) Emergency contact line (24/7) for urgent issues; (f) Regular media updates; (3) Business impact mitigation: (a) Maintain access to all businesses during construction; (b) Advance notice to businesses (3 months) to plan for disruption; (c) Consider business liaison to address specific concerns; (4) Post-project: (a) Project completion announcement; (b) Service restoration notification; (c) Lessons learned for future projects. Effective communication reduces complaints, builds public trust, and supports future project approvals.",
   },
   {
@@ -8229,12 +8229,12 @@ export const CLASS4_WW_QUESTIONS: C4WWQuestion[] = [
     difficulty: "medium" as const,
     question: "A Class 4 operator is participating in the Ontario Municipal Benchmarking Initiative (OMBI) for wastewater collection. The system data shows: cost per km of sewer maintained = $4,200/km; blockage rate = 8.5/100 km/year; % of system inspected by CCTV = 6%/year. How do these compare to OMBI benchmarks and what improvements are needed?",
     options: [
-      "All metrics are within acceptable ranges — no improvements needed",
       "Analysis: (1) Cost $4,200/km — above median ($2,800–3,500/km) — investigate high-cost activities; (2) Blockage rate 8.5/100 km — above benchmark (<5/100 km) — increase preventive cleaning; (3) CCTV coverage 6%/year — below target (10–20%/year for full 5–10 year cycle) — increase inspection program. Root cause: insufficient preventive maintenance leading to higher reactive costs and blockages",
+      "All metrics are within acceptable ranges — no improvements needed",
       "OMBI benchmarks are not applicable — every system is unique",
       "Only the blockage rate matters — cost and CCTV coverage are not performance indicators"
     ],
-    correct: 1,
+    correct: 0,
     explanation: "OMBI benchmarking analysis: (1) Cost per km: $4,200/km vs. OMBI median $2,800–3,500/km — above benchmark; investigate: high reactive maintenance costs (blockage response), overtime, contractor costs; (2) Blockage rate: 8.5/100 km/year vs. benchmark <5/100 km/year — 70% above benchmark; root causes: insufficient preventive cleaning, aging infrastructure, grease accumulation; (3) CCTV coverage: 6%/year vs. target 10–20%/year — below target; at 6%/year, full system inspection takes 17 years — too long for aging infrastructure. Improvement plan: (1) Increase preventive cleaning frequency in high-blockage areas; (2) Increase CCTV inspection to 15%/year; (3) Implement risk-based maintenance (focus resources on highest-risk areas); (4) FOG control program to reduce grease blockages; (5) Track improvements in blockage rate and cost over 3–5 years. OMBI benchmarking enables comparison with peer municipalities and identification of improvement opportunities.",
     isCalc: true,
   },
@@ -8321,8 +8321,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Activated Sludge",
     topic: "OUR",
     question: `DO drops from 8.0 to 3.0 mg/L in 5 minutes. What is the OUR?`,
-    options: ["1.0 mg/L/min", "0.2 mg/L/min", "5.0 mg/L/min", "50 mg/L/min"],
-    correct: 0,
+    options: ["0.2 mg/L/min", "1.0 mg/L/min", "5.0 mg/L/min", "50 mg/L/min"],
+    correct: 1,
     explanation: `OUR = (8.0 - 3.0) / 5 = 1.0 mg/L/min.`,
     isCalc: true,
     difficulty: "medium",
@@ -8343,8 +8343,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Nutrient Removal",
     topic: "Effluent NH₄ at SRT",
     question: `μ_max = 0.75/d, Ks = 1.0 mg/L, b = 0.05/d, SRT = 15 d. S = Ks(1+b×SRT)/(SRT(μ_max-b)-1)`,
-    options: ["0.18 mg/L", "1.0 mg/L", "5.0 mg/L", "0.1 mg/L"],
-    correct: 0,
+    options: ["5.0 mg/L", "1.0 mg/L", "0.18 mg/L", "0.1 mg/L"],
+    correct: 2,
     explanation: `S = 1.0×(1+0.75)/(15×0.70-1) = 1.75/9.5 = 0.18 mg/L.`,
     isCalc: true,
     difficulty: "medium",
@@ -8354,8 +8354,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Nutrient Removal",
     topic: "Anoxic HRT",
     question: `NO₃-N = 22 mg/L, SDNR = 0.09 g/g MLVSS/d, MLVSS = 3,200 mg/L. HRT = NO₃/(SDNR×MLVSS/1000)`,
-    options: ["1833.3 hours", "2 hours", "24 hours", "0.67 hours"],
-    correct: 0,
+    options: ["0.67 hours", "2 hours", "24 hours", "1833.3 hours"],
+    correct: 3,
     explanation: `Rate = 0.09 × 3.2 = 0.288 g/L/d. HRT = 22/0.288 × 24 = 1833.3 hours.`,
     isCalc: true,
     difficulty: "medium",
@@ -8365,8 +8365,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Nutrient Removal",
     topic: "BNR Effluent TN",
     question: `NO₃-N = 5.5 mg/L, NH₄-N = 0.18 mg/L, organic N = 1.5 mg/L. What is the TN?`,
-    options: ["7.18 mg/L", "5.68 mg/L", "1.68 mg/L", "5.5 mg/L"],
-    correct: 0,
+    options: ["1.68 mg/L", "5.68 mg/L", "7.18 mg/L", "5.5 mg/L"],
+    correct: 2,
     explanation: `TN = 5.5 + 0.18 + 1.5 = 7.18 mg/L.`,
     isCalc: true,
     difficulty: "medium",
@@ -8376,8 +8376,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Nutrient Removal",
     topic: "Combined P Removal",
     question: `Biological P removal = 4.5 mg/L, chemical P removal = 2.0 mg/L, influent P = 7 mg/L. What is the effluent P?`,
-    options: ["0.5 mg/L", "6.5 mg/L", "4.5 mg/L", "2.0 mg/L"],
-    correct: 0,
+    options: ["4.5 mg/L", "6.5 mg/L", "0.5 mg/L", "2.0 mg/L"],
+    correct: 2,
     explanation: `P_eff = 7 - 4.5 - 2.0 = 0.5 mg/L.`,
     isCalc: true,
     difficulty: "medium",
@@ -8387,8 +8387,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Sludge Treatment",
     topic: "Digester Gas Energy",
     question: `Biogas = 4,500 m³/d, 65% CH₄, energy = 35.8 MJ/m³. What is the daily energy?`,
-    options: ["29.1 MWh/d", "291 MWh/d", "29.1 MWh/d", "2,910 MWh/d"],
-    correct: 0,
+    options: ["291 MWh/d", "29.1 MWh/d", "29.1 MWh/d", "2,910 MWh/d"],
+    correct: 1,
     explanation: `Energy = 4,500 × 0.65 × 35.8 / 3,600 = 29.1 MWh/d.`,
     isCalc: true,
     difficulty: "medium",
@@ -8398,8 +8398,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Sludge Treatment",
     topic: "CHP Generation",
     question: `Biogas energy = 29.1 MWh/d, CHP efficiency = 35%. What electricity is generated?`,
-    options: ["10.2 MWh/d", "50 MWh/d", "5 MWh/d", "291 MWh/d"],
-    correct: 0,
+    options: ["5 MWh/d", "50 MWh/d", "10.2 MWh/d", "291 MWh/d"],
+    correct: 2,
     explanation: `Electricity = 29.1 × 0.35 = 10.2 MWh/d.`,
     isCalc: true,
     difficulty: "medium",
@@ -8409,8 +8409,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Secondary Treatment",
     topic: "MBR Flux",
     question: `MBR produces 3,500 m³/d through 1,750 m² membrane. What is the flux in LMH?`,
-    options: ["83.3 LMH", "2 LMH", "1,750 LMH", "0.083 LMH"],
-    correct: 0,
+    options: ["0.083 LMH", "2 LMH", "1,750 LMH", "83.3 LMH"],
+    correct: 3,
     explanation: `Flux = 3,500/1,750 = 2 m³/m²/d = 2,000 L/m²/d / 24 = 83.3 LMH.`,
     isCalc: true,
     difficulty: "medium",
@@ -8431,8 +8431,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Nutrient Removal",
     topic: "Phosphorus Mass Balance",
     question: `Influent P = 7 mg/L, effluent P = 0.5 mg/L, Q = 18,000 m³/d. What P mass is removed?`,
-    options: ["117 kg P/d", "1,170 kg P/d", "9 kg P/d", "126 kg P/d"],
-    correct: 0,
+    options: ["9 kg P/d", "1,170 kg P/d", "117 kg P/d", "126 kg P/d"],
+    correct: 2,
     explanation: `P removed = (7 - 0.5) × 18,000 / 1,000 = 117 kg P/d.`,
     isCalc: true,
     difficulty: "medium",
@@ -8442,8 +8442,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Activated Sludge",
     topic: "F/M Ratio",
     question: `BOD load = 3,500 kg/d, MLVSS = 3,200 mg/L, basin = 5,500 m³. What is the F/M ratio?`,
-    options: ["0.199", "0.2", "0.5", "0.003"],
-    correct: 0,
+    options: ["0.5", "0.2", "0.199", "0.003"],
+    correct: 2,
     explanation: `F/M = 3,500 / (3,200 × 5,500/1,000) = 3,500/17,600 = 0.199.`,
     isCalc: true,
     difficulty: "medium",
@@ -8453,8 +8453,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Activated Sludge",
     topic: "SRT",
     question: `MLSS = 3,800 mg/L, basin = 5,500 m³, WAS = 190 m³/d at 9,500 mg/L. What is the SRT?`,
-    options: ["11.6 days", "30 days", "5 days", "20 days"],
-    correct: 0,
+    options: ["5 days", "30 days", "11.6 days", "20 days"],
+    correct: 2,
     explanation: `SRT = (3,800×5,500)/(190×9,500) = 20,900,000/1,805,000 = 11.6 days.`,
     isCalc: true,
     difficulty: "medium",
@@ -8464,8 +8464,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Activated Sludge",
     topic: "Oxygen Demand",
     question: `BOD load = 3,500 kg/d, O₂:BOD = 1.5. What is the O₂ demand?`,
-    options: ["5,250 kg O₂/d", "2,333 kg O₂/d", "3,500 kg O₂/d", "10,500 kg O₂/d"],
-    correct: 0,
+    options: ["2,333 kg O₂/d", "5,250 kg O₂/d", "3,500 kg O₂/d", "10,500 kg O₂/d"],
+    correct: 1,
     explanation: `O₂ = 3,500 × 1.5 = 5,250 kg O₂/d.`,
     isCalc: true,
     difficulty: "medium",
@@ -8475,8 +8475,8 @@ const EXTRA_WW_QUESTIONS: C4WWQuestion[] = [
     module: "Activated Sludge",
     topic: "Aeration Power",
     question: `O₂ demand = 5,250 kg/d, aerator efficiency = 1.8 kg O₂/kWh. What power is required?`,
-    options: ["121.5 kW", "9,450 kW", "12.2 kW", "945 kW"],
-    correct: 0,
+    options: ["12.2 kW", "9,450 kW", "121.5 kW", "945 kW"],
+    correct: 2,
     explanation: `Power = 5,250 / 1.8 / 24 = 121.5 kW.`,
     isCalc: true,
     difficulty: "medium",

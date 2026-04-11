@@ -46,8 +46,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Math",
     difficulty: "medium",
     question: "Convert 2.5 mg/L to µg/L.",
-    options: ["0.0025 µg/L", "25 µg/L", "250 µg/L", "2500 µg/L"],
-    correctIndex: 3,
+    options: ["0.0025 µg/L", "2500 µg/L", "250 µg/L", "25 µg/L"],
+    correctIndex: 1,
     explanation: "1 mg/L = 1000 µg/L. Therefore 2.5 mg/L × 1000 = 2500 µg/L.",
     steps: [
       { l: "Identify Units", c: "The given unit is milligrams per liter (mg/L) and the target unit is micrograms per liter (µg/L)." },
@@ -64,8 +64,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Math",
     difficulty: "medium",
     question: "What is the volume of a cylinder with a diameter of 2 m and a height of 3 m? (Use π = 3.14)",
-    options: ["9.42 m³", "12.56 m³", "18.84 m³", "37.68 m³"],
-    correctIndex: 0,
+    options: ["12.56 m³", "9.42 m³", "18.84 m³", "37.68 m³"],
+    correctIndex: 1,
     explanation: "V = π × r² × h = 3.14 × (1)² × 3 = 9.42 m³. The radius is half the diameter: 2/2 = 1 m.",
     steps: [
       { l: "Identify Formula", c: "The formula for the volume of a cylinder is V = π × r² × h." },
@@ -81,8 +81,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Math",
     difficulty: "medium",
     question: "A water sample has an alkalinity of 120 mg/L as CaCO₃. What is the alkalinity expressed in meq/L? (Equivalent weight of CaCO₃ = 50 g/eq)",
-    options: ["1.2 meq/L", "2.4 meq/L", "6.0 meq/L", "60 meq/L"],
-    correctIndex: 1,
+    options: ["1.2 meq/L", "6.0 meq/L", "2.4 meq/L", "60 meq/L"],
+    correctIndex: 2,
     explanation: "meq/L = (mg/L as CaCO₃) / (equivalent weight) = 120 / 50 = 2.4 meq/L.",
     steps: [
       { l: "Identify Given Values", c: "Given alkalinity = 120 mg/L as CaCO₃. Given equivalent weight of CaCO₃ = 50 g/eq." },
@@ -133,8 +133,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Math",
     difficulty: "medium",
     question: "What is the normality of a 98% (w/w) H₂SO₄ solution with a density of 1.84 g/mL? (MW of H₂SO₄ = 98 g/mol, n-factor = 2)",
-    options: ["9.2 N", "18.4 N", "36.8 N", "92 N"],
-    correctIndex: 2,
+    options: ["9.2 N", "36.8 N", "18.4 N", "92 N"],
+    correctIndex: 1,
     explanation: "Molarity = (% × density × 1000) / MW = (0.98 × 1.84 × 1000) / 98 = 18.4 mol/L. Normality = 18.4 × 2 = 36.8 N.",
     steps: [
       { l: "Calculate Molarity", c: "Molarity = (% (w/w) × density × 1000) / MW Molarity = (0.98 × 1.84 g/mL × 1000 mL/L) / 98 g/mol Molarity = 1803.2 / 98 mol/L = 18.4 mol/L" },
@@ -149,8 +149,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Math",
     difficulty: "medium",
     question: "A water sample is collected in a 250 mL bottle. The lab requires the sample to be diluted 1:10 before analysis. What volume of sample (in mL) and what volume of diluent (in mL) are needed to make a 100 mL diluted sample?",
-    options: ["10 mL sample + 90 mL diluent", "25 mL sample + 75 mL diluent", "50 mL sample + 50 mL diluent", "1 mL sample + 99 mL diluent"],
-    correctIndex: 0,
+    options: ["50 mL sample + 50 mL diluent", "25 mL sample + 75 mL diluent", "10 mL sample + 90 mL diluent", "1 mL sample + 99 mL diluent"],
+    correctIndex: 2,
     explanation: "A 1:10 dilution means 1 part sample in 10 parts total volume. For 100 mL total: sample = 100/10 = 10 mL; diluent = 100 - 10 = 90 mL. Always verify: 10/100 = 0.1 = 1:10 dilution.",
     steps: [
       { l: "Understand Dilution Ratio", c: "A 1:10 dilution means that for every 10 parts of total solution, 1 part is the original sample and 9 parts are the diluent. This can also be expressed as 1 part sample to 9 parts diluent to make 10 parts total." },
@@ -166,8 +166,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Math",
     difficulty: "medium",
     question: "A rectangular settling tank is 10 m long, 4 m wide, and 2 m deep. What is its volume in litres?",
-    options: ["8,000 L", "80,000 L", "800,000 L", "8,000,000 L"],
-    correctIndex: 1,
+    options: ["80,000 L", "8,000 L", "800,000 L", "8,000,000 L"],
+    correctIndex: 0,
     explanation: "Volume = 10 × 4 × 2 = 80 m³. 1 m³ = 1000 L. Therefore 80 × 1000 = 80,000 L.",
     steps: [
       { l: "Identify Given Dimensions", c: "Length (L) = 10 m, Width (W) = 4 m, Depth (D) = 2 m" },
@@ -183,8 +183,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Math",
     difficulty: "hard",
     question: "A sample contains 0.045 mg of fluoride in 50 mL. What is the fluoride concentration in mg/L?",
-    options: ["0.045 mg/L", "0.09 mg/L", "0.45 mg/L", "0.9 mg/L"],
-    correctIndex: 3,
+    options: ["0.045 mg/L", "0.09 mg/L", "0.9 mg/L", "0.45 mg/L"],
+    correctIndex: 2,
     explanation: "Concentration = mass / volume = 0.045 mg / 0.05 L = 0.9 mg/L.",
     steps: [
       { l: "Identify Given Values", c: "Mass of fluoride (m) = 0.045 mg Volume of sample (V) = 50 mL" },
@@ -200,8 +200,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Math",
     difficulty: "medium",
     question: "What is the area of a circular clarifier with a diameter of 10 m? (Use π = 3.14)",
-    options: ["31.4 m²", "78.5 m²", "314 m²", "785 m²"],
-    correctIndex: 1,
+    options: ["31.4 m²", "314 m²", "78.5 m²", "785 m²"],
+    correctIndex: 2,
     explanation: "Area = π × r² = 3.14 × (5)² = 3.14 × 25 = 78.5 m².",
     steps: [
       { l: "Identify Given Values", c: "Diameter (D) = 10 m. We need to find the radius (r) because the area formula uses radius. Radius (r) = D / 2 = 10 m / 2 = 5 m. Pi (π) = 3.14." },
@@ -236,8 +236,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Math",
     difficulty: "medium",
     question: "Express 0.005 g/L in mg/L.",
-    options: ["0.005 mg/L", "0.05 mg/L", "0.5 mg/L", "5 mg/L"],
-    correctIndex: 3,
+    options: ["0.005 mg/L", "0.05 mg/L", "5 mg/L", "0.5 mg/L"],
+    correctIndex: 2,
     explanation: "1 g = 1000 mg. Therefore 0.005 g/L × 1000 = 5 mg/L.",
     steps: [
       { l: "Identify Given Value", c: "The given concentration is 0.005 g/L." },
@@ -256,12 +256,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Water has a high specific heat capacity (4,186 J/kg·°C). Which of the following best explains why this property is important for water treatment operations?",
     options: [
-      "It means water requires a large amount of energy to change temperature, which stabilizes treatment processes and reduces the impact of temperature fluctuations on chemical reactions",
-      "It means water freezes at 0°C, which is important for winter operations",
       "It means water conducts electricity, which is important for electrochemical treatment",
+      "It means water freezes at 0°C, which is important for winter operations",
+      "It means water requires a large amount of energy to change temperature, which stabilizes treatment processes and reduces the impact of temperature fluctuations on chemical reactions",
       "It means water has a high boiling point, which prevents evaporation in open reservoirs"
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: "Water's high specific heat capacity means it resists temperature changes, which stabilizes biological treatment processes (bacteria are sensitive to temperature), chemical reaction rates (coagulation, disinfection), and seasonal temperature variations in source water. This property is why large water bodies act as thermal buffers.",
   },
   {
@@ -269,8 +269,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Science",
     difficulty: "medium",
     question: "Which of the following is an example of an inorganic compound?",
-    options: ["Glucose (C₆H₁₂O₆)", "Sodium chloride (NaCl)", "Acetic acid (CH₃COOH)", "Methane (CH₄)"],
-    correctIndex: 1,
+    options: ["Glucose (C₆H₁₂O₆)", "Methane (CH₄)", "Acetic acid (CH₃COOH)", "Sodium chloride (NaCl)"],
+    correctIndex: 3,
     explanation: "Sodium chloride (NaCl) is an inorganic compound. Organic compounds are generally carbon-based (glucose, acetic acid, methane).",
   },
   {
@@ -280,12 +280,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A water sample has a pH of 8.4. What is the hydroxide ion concentration [OH⁻] in mol/L? (Kw = 1.0 × 10⁻¹⁴ at 25°C)",
     options: [
-      "2.5 × 10⁻⁶ mol/L",
       "4.0 × 10⁻⁷ mol/L",
+      "2.5 × 10⁻⁶ mol/L",
       "6.3 × 10⁻⁶ mol/L",
       "1.0 × 10⁻⁸ mol/L"
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "At pH 8.4: [H⁺] = 10⁻⁸·⁴ = 3.98 × 10⁻⁹ mol/L. [OH⁻] = Kw / [H⁺] = 1.0 × 10⁻¹⁴ / 3.98 × 10⁻⁹ = 2.51 × 10⁻⁶ mol/L ≈ 2.5 × 10⁻⁶ mol/L. Alternatively: pOH = 14 - pH = 14 - 8.4 = 5.6; [OH⁻] = 10⁻⁵·⁶ = 2.5 × 10⁻⁶ mol/L.",
     steps: [
       { l: "Calculate pOH", c: "The relationship between pH and pOH is pH + pOH = 14. Given pH = 8.4, we can calculate pOH: pOH = 14 - pH = 14 - 8.4 = 5.6." },
@@ -300,12 +300,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Which of the following describes a buffer solution?",
     options: [
-      "A solution that resists changes in pH when small amounts of acid or base are added",
+      "A solution used to calibrate pH meters",
       "A solution with a pH of exactly 7",
       "A solution that changes colour at a specific pH",
-      "A solution used to calibrate pH meters",
+      "A solution that resists changes in pH when small amounts of acid or base are added",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: "A buffer solution resists changes in pH when small amounts of acid or base are added. It typically contains a weak acid and its conjugate base.",
   },
   {
@@ -313,8 +313,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Science",
     difficulty: "medium",
     question: "What is the atomic weight of chlorine (Cl)?",
-    options: ["12", "16", "35.5", "40"],
-    correctIndex: 2,
+    options: ["12", "16", "40", "35.5"],
+    correctIndex: 3,
     explanation: "The atomic weight of chlorine is approximately 35.5 g/mol. (Carbon = 12, Oxygen = 16, Calcium = 40).",
   },
   {
@@ -324,11 +324,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "In a chemical reaction, what does the term 'stoichiometry' refer to?",
     options: [
       "The rate at which a reaction proceeds",
-      "The quantitative relationship between reactants and products",
       "The energy released during a reaction",
+      "The quantitative relationship between reactants and products",
       "The temperature at which a reaction occurs",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Stoichiometry refers to the quantitative relationship between the amounts of reactants consumed and products formed in a chemical reaction.",
   },
   {
@@ -336,8 +336,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Science",
     difficulty: "medium",
     question: "Which ion is primarily responsible for water hardness?",
-    options: ["Na⁺ and K⁺", "Ca²⁺ and Mg²⁺", "Cl⁻ and SO₄²⁻", "HCO₃⁻ and CO₃²⁻"],
-    correctIndex: 1,
+    options: ["Na⁺ and K⁺", "HCO₃⁻ and CO₃²⁻", "Cl⁻ and SO₄²⁻", "Ca²⁺ and Mg²⁺"],
+    correctIndex: 3,
     explanation: "Water hardness is primarily caused by dissolved calcium (Ca²⁺) and magnesium (Mg²⁺) ions.",
   },
   {
@@ -345,8 +345,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Science",
     difficulty: "medium",
     question: "What type of chemical bond holds water molecules together through intermolecular attraction?",
-    options: ["Covalent bonds", "Ionic bonds", "Hydrogen bonds", "Metallic bonds"],
-    correctIndex: 2,
+    options: ["Covalent bonds", "Ionic bonds", "Metallic bonds", "Hydrogen bonds"],
+    correctIndex: 3,
     explanation: "Water molecules are held together by hydrogen bonds — intermolecular attractions between the partially positive hydrogen of one molecule and the partially negative oxygen of another.",
   },
   {
@@ -355,12 +355,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "The reaction of chlorine gas with water produces which two acids?",
     options: [
-      "Hydrochloric acid and sulfuric acid",
       "Hypochlorous acid and hydrochloric acid",
+      "Hydrochloric acid and sulfuric acid",
       "Hypochlorous acid and perchloric acid",
       "Chloric acid and hydrochloric acid",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Cl₂ + H₂O → HOCl + HCl. Chlorine gas reacts with water to form hypochlorous acid (HOCl) and hydrochloric acid (HCl). HOCl is the active disinfectant.",
   },
   {
@@ -370,11 +370,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What does 'conductivity' measure in a water sample?",
     options: [
       "The ability of water to transmit light",
-      "The ability of water to conduct electrical current",
-      "The dissolved oxygen content of water",
       "The turbidity of the water sample",
+      "The dissolved oxygen content of water",
+      "The ability of water to conduct electrical current",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Conductivity measures the ability of water to conduct an electrical current, which is related to the concentration of dissolved ions (total dissolved solids).",
   },
   {
@@ -384,12 +384,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A water sample has a total hardness of 280 mg/L as CaCO₃. The calcium hardness is 180 mg/L as CaCO₃. What is the magnesium hardness in mg/L as Mg²⁺? (Atomic mass: Mg = 24.3, Ca = 40.1, C = 12, O = 16)",
     options: [
-      "100 mg/L as Mg²⁺",
-      "24.3 mg/L as Mg²⁺",
       "48.6 mg/L as Mg²⁺",
+      "24.3 mg/L as Mg²⁺",
+      "100 mg/L as Mg²⁺",
       "100 mg/L as CaCO₃"
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "Magnesium hardness as CaCO₃ = total hardness - calcium hardness = 280 - 180 = 100 mg/L as CaCO₃. To convert to mg/L as Mg²⁺: multiply by (Mg MW / CaCO₃ MW) × 2 = (24.3 / 100) × 2 = 0.486. Wait — conversion factor: mg/L as CaCO₃ × (Mg MW / (CaCO₃ MW / 2)) = 100 × (24.3 / 50) = 100 × 0.486 = 48.6 mg/L as Mg²⁺.",
     steps: [
       { l: "Calculate Magnesium Hardness as CaCO₃", c: "Magnesium Hardness (as CaCO₃) = Total Hardness (as CaCO₃) - Calcium Hardness (as CaCO₃) Magnesium Hardness (as CaCO₃) = 280 mg/L - 180 mg/L = 100 mg/L as CaCO₃" },
@@ -405,8 +405,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Science",
     difficulty: "medium",
     question: "Which of the following is a strong acid?",
-    options: ["Acetic acid (CH₃COOH)", "Carbonic acid (H₂CO₃)", "Hydrochloric acid (HCl)", "Hypochlorous acid (HOCl)"],
-    correctIndex: 2,
+    options: ["Hydrochloric acid (HCl)", "Carbonic acid (H₂CO₃)", "Acetic acid (CH₃COOH)", "Hypochlorous acid (HOCl)"],
+    correctIndex: 0,
     explanation: "Hydrochloric acid (HCl) is a strong acid that fully dissociates in water. Acetic acid, carbonic acid, and hypochlorous acid are weak acids.",
   },
   {
@@ -415,12 +415,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "In water chemistry, what is the 'carbonate system'?",
     options: [
-      "The system of carbon dioxide, carbonic acid, bicarbonate, and carbonate ions in equilibrium",
       "The process of removing carbon dioxide from water by aeration",
+      "The system of carbon dioxide, carbonic acid, bicarbonate, and carbonate ions in equilibrium",
       "The measurement of total organic carbon in a water sample",
       "The reaction between calcium and carbonate to form scale",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "The carbonate system in water involves CO₂(aq), H₂CO₃, HCO₃⁻, and CO₃²⁻ in equilibrium. This system controls the pH and alkalinity of natural waters.",
   },
   {
@@ -428,8 +428,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Science",
     difficulty: "medium",
     question: "What is the molecular weight of sodium hypochlorite (NaOCl)?",
-    options: ["58.5 g/mol", "74.5 g/mol", "74.4 g/mol", "90.5 g/mol"],
-    correctIndex: 1,
+    options: ["58.5 g/mol", "90.5 g/mol", "74.4 g/mol", "74.5 g/mol"],
+    correctIndex: 3,
     explanation: "NaOCl: Na (23) + O (16) + Cl (35.5) = 74.5 g/mol.",
   },
   {
@@ -439,11 +439,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Which of the following describes an oxidation reaction?",
     options: [
       "Gain of electrons",
-      "Loss of electrons",
-      "Gain of hydrogen atoms",
       "Loss of oxygen atoms",
+      "Gain of hydrogen atoms",
+      "Loss of electrons",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Oxidation is the loss of electrons. The mnemonic OIL RIG: Oxidation Is Loss, Reduction Is Gain (of electrons).",
   },
   {
@@ -453,11 +453,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the difference between a molecule and an ion?",
     options: [
       "A molecule has a charge; an ion does not",
-      "A molecule is electrically neutral; an ion carries a positive or negative charge",
-      "A molecule contains only one element; an ion contains multiple elements",
       "There is no difference — the terms are interchangeable",
+      "A molecule contains only one element; an ion contains multiple elements",
+      "A molecule is electrically neutral; an ion carries a positive or negative charge",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "A molecule is an electrically neutral group of atoms bonded together. An ion is an atom or molecule that has gained or lost electrons and carries a net electrical charge.",
   },
   {
@@ -466,12 +466,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "The Langelier Saturation Index (LSI) is used to predict:",
     options: [
-      "Whether water will cause corrosion or scale formation in pipes",
       "The total dissolved solids content of water",
+      "Whether water will cause corrosion or scale formation in pipes",
       "The chlorine demand of a water sample",
       "The biological oxygen demand of wastewater",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "The Langelier Saturation Index (LSI) predicts whether water is corrosive (LSI < 0), in equilibrium (LSI = 0), or scale-forming (LSI > 0) with respect to calcium carbonate.",
   },
   {
@@ -493,8 +493,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Science",
     difficulty: "medium",
     question: "What is the chemical formula for calcium carbonate?",
-    options: ["CaCl₂", "CaCO₃", "Ca(OH)₂", "CaSO₄"],
-    correctIndex: 1,
+    options: ["CaCl₂", "Ca(OH)₂", "CaCO₃", "CaSO₄"],
+    correctIndex: 2,
     explanation: "Calcium carbonate is CaCO₃. It is the primary component of limestone and is used as a reference in alkalinity and hardness measurements.",
   },
   {
@@ -503,12 +503,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "Which of the following best describes 'total dissolved solids' (TDS)?",
     options: [
-      "The total weight of suspended particles in water",
       "The total concentration of dissolved inorganic and organic substances in water",
+      "The total weight of suspended particles in water",
       "The concentration of chloride ions in water",
       "The turbidity of water measured in NTU",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "TDS is the total concentration of all dissolved substances in water, including minerals, salts, metals, and organic matter. It is measured by evaporating a filtered sample and weighing the residue.",
   },
 
@@ -518,8 +518,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Laboratory & Sampling",
     difficulty: "easy",
     question: "What type of sample is collected at a single point in time and represents conditions at that moment?",
-    options: ["Composite sample", "Grab sample", "Integrated sample", "Continuous sample"],
-    correctIndex: 1,
+    options: ["Composite sample", "Continuous sample", "Integrated sample", "Grab sample"],
+    correctIndex: 3,
     explanation: "A grab sample is collected at a single point in time and represents the water quality at that specific moment and location.",
   },
   {
@@ -527,8 +527,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Laboratory & Sampling",
     difficulty: "easy",
     question: "What is the maximum holding time for a microbiological drinking water sample before analysis?",
-    options: ["1 hour", "6 hours", "24 hours", "48 hours"],
-    correctIndex: 1,
+    options: ["6 hours", "1 hour", "24 hours", "48 hours"],
+    correctIndex: 0,
     explanation: "Microbiological samples must be analyzed within 6 hours of collection to ensure accurate results. Bacterial populations can change significantly after this time.",
   },
   {
@@ -538,11 +538,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Why is sodium thiosulphate added to sample containers used for microbiological testing of chlorinated water?",
     options: [
       "To lower the pH and preserve the sample",
-      "To neutralize residual chlorine and prevent continued disinfection of bacteria",
-      "To increase the volume of the sample",
       "To prevent freezing during transport",
+      "To increase the volume of the sample",
+      "To neutralize residual chlorine and prevent continued disinfection of bacteria",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Sodium thiosulphate (Na₂S₂O₃) is a dechlorinating agent that neutralizes residual chlorine in the sample, preventing it from killing bacteria after collection and giving a falsely low count.",
   },
   {
@@ -550,8 +550,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Laboratory & Sampling",
     difficulty: "medium",
     question: "At what temperature should drinking water samples be stored during transport to the laboratory?",
-    options: ["0°C (frozen)", "4°C (refrigerated)", "10°C (cool)", "25°C (room temperature)"],
-    correctIndex: 1,
+    options: ["0°C (frozen)", "25°C (room temperature)", "10°C (cool)", "4°C (refrigerated)"],
+    correctIndex: 3,
     explanation: "Drinking water samples should be stored at 4°C (refrigerated, not frozen) during transport to slow biological and chemical changes without freezing the sample.",
   },
   {
@@ -560,12 +560,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "easy",
     question: "What is a 'chain of custody' in sample collection?",
     options: [
-      "The physical chain used to secure sample containers",
       "A documented record tracking sample possession from collection to analysis",
+      "The physical chain used to secure sample containers",
       "The order in which samples are analyzed in the laboratory",
       "The sequence of chemical reactions in a test procedure",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Chain of custody (COC) is a documented record that tracks the possession, handling, and transfer of a sample from collection through analysis. It ensures sample integrity and legal defensibility.",
   },
   {
@@ -575,11 +575,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "When collecting a sample for volatile organic compound (VOC) analysis, the sample bottle should be:",
     options: [
       "Filled halfway to allow for expansion",
-      "Filled completely with no headspace",
-      "Filtered before filling",
       "Acidified before filling",
+      "Filtered before filling",
+      "Filled completely with no headspace",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "VOC samples must be filled completely with no headspace (air space) to prevent volatilization of the compounds into the air space, which would result in underestimation of VOC concentrations.",
   },
   {
@@ -599,10 +599,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: [
       "Sample location only",
       "Date and time of collection only",
-      "Sample location, date, time, collector name, and parameter(s) to be tested",
       "Laboratory accreditation number only",
+      "Sample location, date, time, collector name, and parameter(s) to be tested",
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: "A sample label must include at minimum: sample location/ID, date and time of collection, collector's name, and the parameter(s) to be tested. This ensures traceability and proper analysis.",
   },
   {
@@ -625,12 +625,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is a 'composite sample'?",
     options: [
-      "A sample collected at a single point in time",
       "A mixture of several grab samples collected at different times or locations",
+      "A sample collected at a single point in time",
       "A sample that has been filtered before analysis",
       "A sample collected from multiple wells simultaneously",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "A composite sample is a mixture of several grab samples collected at different times (time-composite) or locations (spatial composite). It represents average conditions over a period or area.",
   },
   {
@@ -640,11 +640,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is a 'reagent blank' used for in laboratory analysis?",
     options: [
       "To calibrate the instrument",
-      "To check for contamination in the reagents used in the test",
-      "To determine the detection limit of the method",
       "To verify the accuracy of the standard curve",
+      "To determine the detection limit of the method",
+      "To check for contamination in the reagents used in the test",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "A reagent blank (method blank) contains all reagents used in the analysis but no sample. It detects contamination in the reagents or glassware that could affect results.",
   },
   {
@@ -655,11 +655,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "When collecting a raw water sample from a groundwater well, what should be done before collecting the sample?",
     options: [
       "Add preservative to the container first, then collect the sample",
-      "Purge the well until pH and turbidity measurements stabilize",
       "Filter the sample through a 0.45 µm membrane filter",
+      "Purge the well until pH and turbidity measurements stabilize",
       "Collect the sample immediately without any preparation",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Before collecting a groundwater sample, the well must be purged until field parameters (pH, turbidity, conductivity) stabilize. This ensures the sample represents the aquifer, not stagnant water in the casing. Turbidity should be < 10 NTU.",
     steps: [
       { l: "Understand the Goal", c: "The objective is to collect a raw water sample that accurately represents the groundwater in the aquifer, not stagnant water that has been sitting in the well casing." },
@@ -684,8 +684,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Laboratory & Sampling",
     difficulty: "medium",
     question: "What does 'NTU' stand for in water quality measurement?",
-    options: ["Normal Turbidity Units", "Nephelometric Turbidity Units", "Natural Turbidity Units", "Normalized Turbidity Units"],
-    correctIndex: 1,
+    options: ["Normal Turbidity Units", "Normalized Turbidity Units", "Natural Turbidity Units", "Nephelometric Turbidity Units"],
+    correctIndex: 3,
     explanation: "NTU stands for Nephelometric Turbidity Units. Turbidity is measured nephelometrically by measuring the light scattered at 90° to the incident beam.",
   },
   {
@@ -695,11 +695,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A sample container that has been pre-charged with preservative should:",
     options: [
       "Be rinsed with sample water before filling",
-      "NOT be rinsed — fill directly with the sample",
-      "Be rinsed with distilled water before filling",
       "Be rinsed with the preservative solution before filling",
+      "Be rinsed with distilled water before filling",
+      "NOT be rinsed — fill directly with the sample",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Pre-charged containers must NOT be rinsed. Rinsing would dilute or remove the preservative, compromising sample integrity. Fill directly with the sample.",
   },
   {
@@ -708,12 +708,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the purpose of a 'field duplicate' sample?",
     options: [
-      "To check the accuracy of laboratory instruments",
       "To assess the precision/reproducibility of the sampling process",
+      "To check the accuracy of laboratory instruments",
       "To verify the chain of custody documentation",
       "To calibrate the field pH meter",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "A field duplicate is a second sample collected at the same time and location as the primary sample. It assesses the precision (reproducibility) of the entire sampling process, including collection and analysis.",
   },
   {
@@ -721,8 +721,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Laboratory & Sampling",
     difficulty: "medium",
     question: "Which piece of laboratory equipment is used to measure small volumes of liquid accurately?",
-    options: ["Beaker", "Erlenmeyer flask", "Volumetric pipette", "Graduated cylinder"],
-    correctIndex: 2,
+    options: ["Volumetric pipette", "Erlenmeyer flask", "Beaker", "Graduated cylinder"],
+    correctIndex: 0,
     explanation: "A volumetric pipette is designed to deliver a precise, fixed volume of liquid. It is more accurate than a graduated cylinder or beaker for measuring small volumes.",
   },
   {
@@ -760,11 +760,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is a 'standard solution' in laboratory analysis?",
     options: [
       "A solution of unknown concentration used for testing",
-      "A solution of known concentration used for calibration or comparison",
-      "A solution that has been filtered and sterilized",
       "A solution used to clean laboratory glassware",
+      "A solution that has been filtered and sterilized",
+      "A solution of known concentration used for calibration or comparison",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "A standard solution has a precisely known concentration of the analyte. It is used to calibrate instruments, construct calibration curves, and verify method accuracy.",
   },
   {
@@ -774,11 +774,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Why must microbiological samples be collected in sterile containers?",
     options: [
       "To prevent chemical reactions with the container material",
-      "To prevent contamination with bacteria from the container that would give falsely high counts",
-      "To maintain the correct pH of the sample",
       "To prevent evaporation of the sample",
+      "To maintain the correct pH of the sample",
+      "To prevent contamination with bacteria from the container that would give falsely high counts",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Sterile containers prevent contamination of the sample with bacteria from the container itself, which would give falsely elevated bacterial counts and lead to incorrect conclusions about water safety.",
   },
   {
@@ -787,12 +787,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "What is the correct procedure when collecting a sample for total coliform analysis from a distribution system tap?",
     options: [
-      "Flush the tap for 5 minutes, then collect 1 L in any clean container",
       "Disinfect the tap, let it cool, run water briefly, then collect 100 mL in a sterile bottle with sodium thiosulphate",
+      "Flush the tap for 5 minutes, then collect 1 L in any clean container",
       "Collect the sample immediately without any preparation",
       "Filter the sample through a 0.45 µm filter before placing in the sterile bottle",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "For distribution system coliform sampling: (1) disinfect the tap (flame or chlorine wipe), (2) allow to cool, (3) run water briefly to clear the tap, (4) collect sample in a sterile bottle pre-charged with sodium thiosulphate to neutralize residual chlorine.",
   },
   {
@@ -800,8 +800,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Laboratory & Sampling",
     difficulty: "medium",
     question: "What is the holding time for a water sample collected for chlorine residual analysis?",
-    options: ["Analyze immediately (< 15 minutes)", "Within 6 hours", "Within 24 hours", "Within 48 hours"],
-    correctIndex: 0,
+    options: ["Within 48 hours", "Within 6 hours", "Within 24 hours", "Analyze immediately (< 15 minutes)"],
+    correctIndex: 3,
     explanation: "Chlorine residual is highly unstable and must be analyzed immediately in the field (within 15 minutes) or at the point of collection. It cannot be preserved for later analysis.",
   },
   {
@@ -809,8 +809,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Laboratory & Sampling",
     difficulty: "medium",
     question: "What does 'LOD' stand for in analytical chemistry?",
-    options: ["Level of Detection", "Limit of Detection", "Laboratory Operating Directive", "Limit of Dilution"],
-    correctIndex: 1,
+    options: ["Level of Detection", "Laboratory Operating Directive", "Limit of Detection", "Limit of Dilution"],
+    correctIndex: 2,
     explanation: "LOD stands for Limit of Detection — the lowest concentration of an analyte that can be reliably detected (but not necessarily quantified) by a given analytical method.",
   },
   {
@@ -834,11 +834,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Under O. Reg. 170/03, who is responsible for ensuring that drinking water samples are collected and submitted to an accredited laboratory?",
     options: [
       "The Ministry of the Environment",
-      "The owner of the drinking water system",
       "The laboratory performing the analysis",
+      "The owner of the drinking water system",
       "The local public health unit",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Under O. Reg. 170/03, the owner of the drinking water system is responsible for ensuring that required samples are collected and submitted to an accredited laboratory for analysis.",
   },
   {
@@ -848,11 +848,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Which of the following is NOT a valid reason to reject a sample in the laboratory?",
     options: [
       "The sample arrived warm (above 4°C)",
-      "The holding time was exceeded",
-      "The sample container was cracked or leaking",
       "The sample was collected by a new operator",
+      "The sample container was cracked or leaking",
+      "The holding time was exceeded",
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation: "Samples are rejected for technical reasons: exceeded holding time, improper temperature, damaged containers, missing documentation, or incorrect preservative. The experience level of the collector is not a valid rejection criterion.",
   },
   {
@@ -862,11 +862,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is a 'reagent' in laboratory analysis?",
     options: [
       "The sample being tested",
-      "A substance used in a chemical reaction to detect, measure, or produce another substance",
       "The instrument used to measure the sample",
+      "A substance used in a chemical reaction to detect, measure, or produce another substance",
       "The standard solution used for calibration",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "A reagent is a substance or compound used in a chemical reaction to detect, measure, examine, or produce other substances. Examples include DPD reagent for chlorine testing.",
   },
   {
@@ -876,11 +876,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "When collecting samples for lead analysis from a building's plumbing under O. Reg. 243/07 (Schools), what is the required sampling procedure?",
     options: [
       "Flush the tap for 30 seconds, then collect the sample",
-      "Collect a 'first draw' sample after the water has been standing in the pipes for at least 6 hours",
-      "Collect the sample from the main supply line, not from individual taps",
       "Flush the tap for 5 minutes, then collect the sample",
+      "Collect the sample from the main supply line, not from individual taps",
+      "Collect a 'first draw' sample after the water has been standing in the pipes for at least 6 hours",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "For lead testing in building plumbing (O. Reg. 243/07), a 'first draw' sample is collected after water has been standing in the pipes for at least 6 hours (overnight). This maximizes lead contact time and represents worst-case exposure.",
   },
   {
@@ -889,12 +889,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the primary purpose of sample preservation?",
     options: [
-      "To increase the concentration of the analyte",
       "To maintain the sample in its original condition and prevent changes before analysis",
+      "To increase the concentration of the analyte",
       "To sterilize the sample before analysis",
       "To reduce the volume of the sample for easier transport",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Sample preservation maintains the sample in its original condition by slowing biological activity, chemical reactions, and physical changes (volatilization, adsorption) that could alter analyte concentrations before analysis.",
   },
 
@@ -906,12 +906,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A laboratory receives a new chemical with a WHMIS 2015 label showing an exclamation mark (!) pictogram. The SDS lists an LC50 of 2,500 mg/kg (rat, oral). What hazard category does this indicate and what precautions are required?",
     options: [
-      "Acute toxicity Category 4 (harmful if swallowed) — wear gloves and avoid ingestion; no special ventilation required",
       "Acute toxicity Category 1 (fatal if swallowed) — requires full PPE, SCBA, and emergency response plan",
+      "Acute toxicity Category 4 (harmful if swallowed) — wear gloves and avoid ingestion; no special ventilation required",
       "Flammable liquid — store away from ignition sources",
       "Oxidizer — store away from flammable materials"
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "The exclamation mark (!) pictogram indicates Category 4 acute toxicity (harmful, not fatal). LC50 of 2,500 mg/kg falls in Category 4 (300–2,000 mg/kg for oral toxicity — actually 2,500 is Category 5 or unclassified). Category 4 requires standard PPE (gloves, safety glasses), good ventilation, and avoiding ingestion/skin contact. Fatal toxicity (Category 1-3) would require the skull and crossbones pictogram.",
     steps: [
       { l: "Analyze Pictogram", c: "The exclamation mark (!) pictogram on a WHMIS 2015 label signifies a less severe hazard compared to the skull and crossbones. For acute toxicity, it typically indicates Category 4 (Harmful)." },
@@ -927,12 +927,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A laboratory technician is preparing a 1:100 dilution of concentrated sulfuric acid (H₂SO₄). What is the correct procedure and why?",
     options: [
-      "Add water to the acid slowly while stirring — water into acid is safer",
       "Add acid to water slowly while stirring — the heat of dilution is dissipated by the large volume of water, preventing spattering",
+      "Add water to the acid slowly while stirring — water into acid is safer",
       "Mix equal volumes simultaneously in a beaker",
       "Add the acid to water rapidly to minimize exposure time"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Always add acid to water (never water to acid). When concentrated sulfuric acid contacts water, it releases a large amount of heat. Adding acid to a large volume of water dissipates this heat safely. Adding water to concentrated acid can cause violent boiling and spattering of hot acid. The mnemonic is 'AAA' — Always Add Acid (to water).",
   },
   {
@@ -950,12 +950,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What personal protective equipment (PPE) should always be worn when handling concentrated acids in the laboratory?",
     options: [
-      "Safety glasses only",
-      "Lab coat only",
       "Safety glasses, acid-resistant gloves, and lab coat",
+      "Lab coat only",
+      "Safety glasses only",
       "No PPE required for dilute acids",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "When handling concentrated acids, minimum PPE includes: safety glasses (or face shield), acid-resistant gloves (e.g., nitrile or neoprene), and a lab coat. A face shield is preferred over safety glasses for splash hazards.",
   },
   {
@@ -964,12 +964,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "When diluting concentrated sulfuric acid with water, the correct procedure is to:",
     options: [
-      "Add water to the acid slowly while stirring",
       "Add acid to the water slowly while stirring",
+      "Add water to the acid slowly while stirring",
       "Mix equal volumes simultaneously",
       "Heat the water first, then add the acid",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Always add ACID to WATER (never water to acid). The mnemonic is 'AAA' — Always Add Acid. Adding water to concentrated acid generates intense heat and can cause spattering or boiling.",
   },
   {
@@ -978,12 +978,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the first action to take if a chemical splashes in your eyes?",
     options: [
-      "Apply a neutralizing solution",
       "Immediately flush with large amounts of water for at least 15 minutes",
+      "Apply a neutralizing solution",
       "Cover the eye and seek medical attention",
       "Apply eye drops from the first aid kit",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "If a chemical splashes in the eyes, immediately flush with large amounts of water for at least 15 minutes at an eyewash station. Do not apply neutralizing agents. Seek medical attention after flushing.",
   },
   {
@@ -993,11 +993,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What does a Safety Data Sheet (SDS) Section 8 contain?",
     options: [
       "Physical and chemical properties",
-      "Exposure controls and personal protective equipment",
       "First aid measures",
+      "Exposure controls and personal protective equipment",
       "Accidental release measures",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "SDS Section 8 covers Exposure Controls/Personal Protection, including occupational exposure limits (OELs/TLVs), engineering controls, and required PPE.",
   },
   {
@@ -1007,11 +1007,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of a fume hood in a laboratory?",
     options: [
       "To store hazardous chemicals",
-      "To protect the analyst from inhaling toxic vapours and fumes",
-      "To maintain a sterile environment for microbiological work",
       "To cool samples before analysis",
+      "To maintain a sterile environment for microbiological work",
+      "To protect the analyst from inhaling toxic vapours and fumes",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "A fume hood protects the analyst from inhaling toxic, corrosive, or flammable vapours and fumes generated during chemical procedures. It draws air away from the analyst.",
   },
   {
@@ -1036,11 +1036,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Chlorine gas is detected in the laboratory. What is the correct response?",
     options: [
       "Open windows to ventilate and continue working",
-      "Evacuate the area immediately, alert others, and call emergency services",
       "Use a wet cloth over the face and continue working",
+      "Evacuate the area immediately, alert others, and call emergency services",
       "Neutralize with ammonia solution",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Chlorine gas is toxic and immediately dangerous to life and health (IDLH = 10 ppm). The correct response is to evacuate immediately, alert others, and call emergency services. Never attempt to neutralize chlorine gas with ammonia — this creates chloramine gas.",
     steps: [
       { l: "Assess Hazard", c: "Chlorine gas is highly toxic and immediately dangerous to life and health (IDLH = 10 ppm). Even low concentrations can cause severe respiratory damage or death." },
@@ -1058,11 +1058,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What does the 'TLV-TWA' abbreviation mean in occupational health?",
     options: [
       "Total Liquid Volume — Time Weighted Average",
-      "Threshold Limit Value — Time Weighted Average",
-      "Toxic Level Value — Total Work Area",
       "Threshold Limit Value — Total Work Assessment",
+      "Toxic Level Value — Total Work Area",
+      "Threshold Limit Value — Time Weighted Average",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "TLV-TWA stands for Threshold Limit Value — Time Weighted Average. It is the average airborne concentration of a substance for an 8-hour workday, 40-hour workweek, to which nearly all workers may be repeatedly exposed without adverse effects.",
   },
   {
@@ -1071,12 +1071,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "How should broken glass be disposed of in a laboratory?",
     options: [
-      "In the regular waste bin",
       "In a designated sharps/broken glass container",
+      "In the regular waste bin",
       "In the chemical waste container",
       "Down the drain",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Broken glass must be disposed of in a designated puncture-resistant sharps or broken glass container to prevent injury to waste handlers. Never place broken glass in regular waste bins.",
   },
   {
@@ -1086,12 +1086,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "An operator notices that a chemical storage area has a strong, sweet odour. The SDS for the chemical stored there lists an IDLH of 500 ppm and a TLV-TWA of 50 ppm. What should the operator do?",
     options: [
-      "Proceed — the sweet odour indicates the chemical is not hazardous",
       "Leave the area immediately, ventilate, and test the air concentration before re-entering — odour detection does not reliably indicate safe concentrations",
+      "Proceed — the sweet odour indicates the chemical is not hazardous",
       "Take a deep breath to better identify the chemical, then decide on next steps",
       "Open all windows and continue working — the TLV-TWA of 50 ppm provides adequate protection"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Odour detection is not a reliable indicator of safe concentrations. Many chemicals can be detected by smell at concentrations both above and below their TLV-TWA. The correct response to any unexpected chemical odour is to leave the area, ventilate, and use air monitoring equipment to verify concentrations are below the TLV-TWA before re-entry. Never use your nose as a safety instrument.",
     steps: [
       { l: "Assess the Situation", c: "The operator detects a strong, sweet odour, indicating a potential chemical leak or spill. The SDS provides IDLH (Immediately Dangerous to Life or Health) and TLV-TWA (Threshold Limit Value - Time-Weighted Average) values, which are critical safety benchmarks." },
@@ -1121,12 +1121,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A worker is exposed to a chemical and loses consciousness. After calling 911, what should be done next?",
     options: [
-      "Administer the antidote listed on the SDS",
       "Move the worker to fresh air, check for breathing, and begin CPR if necessary",
+      "Administer the antidote listed on the SDS",
       "Leave the worker in place and wait for emergency services",
       "Give the worker water to drink",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "After calling 911, move the victim to fresh air (if safe to do so), check for breathing and pulse, and begin CPR if necessary. Consult the SDS for specific first aid. Do not administer antidotes unless directed by medical personnel.",
   },
 
@@ -1198,11 +1198,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water treatment plant's filtered water turbidity is 0.18 NTU. The Ontario drinking water standard requires turbidity to be ≤1 NTU at the point of entry and ≤0.3 NTU after filtration (95th percentile). Is this result compliant, and what does turbidity indicate about treatment performance?",
     options: [
       "Non-compliant — turbidity must be 0.0 NTU after filtration",
-      "Compliant — 0.18 NTU is below the 0.3 NTU post-filtration standard; low turbidity indicates effective removal of particles, pathogens, and disinfection byproduct precursors",
+      "Non-compliant — the standard is 0.1 NTU after filtration",
       "Compliant — but turbidity has no relationship to pathogen removal",
-      "Non-compliant — the standard is 0.1 NTU after filtration"
+      "Compliant — 0.18 NTU is below the 0.3 NTU post-filtration standard; low turbidity indicates effective removal of particles, pathogens, and disinfection byproduct precursors"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "0.18 NTU is below the Ontario post-filtration standard of ≤0.3 NTU (95th percentile), so this result is compliant. Turbidity is a key treatment performance indicator because particles (including Cryptosporidium and Giardia cysts) scatter light. Low turbidity after filtration indicates effective particle removal, which also reduces the UV absorbance and chlorine demand of the water.",
     steps: [
       { l: "Identify Measured Value", c: "The filtered water turbidity measured is 0.18 NTU." },
@@ -1218,8 +1218,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Water Characteristics",
     difficulty: "medium",
     question: "What is the Ontario aesthetic objective for colour in drinking water?",
-    options: ["< 5 TCU", "< 15 TCU", "< 25 TCU", "< 50 TCU"],
-    correctIndex: 1,
+    options: ["< 5 TCU", "< 50 TCU", "< 25 TCU", "< 15 TCU"],
+    correctIndex: 3,
     explanation: "The Ontario aesthetic objective for colour is < 15 True Colour Units (TCU). Colour above this level is noticeable and aesthetically unacceptable, though not necessarily a health risk.",
   },
   {
@@ -1229,11 +1229,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the primary cause of 'taste and odour' problems in drinking water?",
     options: [
       "High chlorine residual only",
-      "Algae, organic compounds, hydrogen sulfide, or disinfection by-products",
-      "High hardness",
       "High pH",
+      "High hardness",
+      "Algae, organic compounds, hydrogen sulfide, or disinfection by-products",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Taste and odour problems in drinking water are commonly caused by: algae and their metabolites (geosmin, MIB), hydrogen sulfide, organic compounds, disinfection by-products (THMs, chlorophenols), and high chlorine residual.",
   },
   {
@@ -1241,8 +1241,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Water Characteristics",
     difficulty: "medium",
     question: "At what temperature is water at its maximum density?",
-    options: ["0°C", "4°C", "10°C", "25°C"],
-    correctIndex: 1,
+    options: ["4°C", "0°C", "10°C", "25°C"],
+    correctIndex: 0,
     explanation: "Water reaches its maximum density at 4°C. This unusual property causes lakes to stratify thermally and is critical for aquatic ecosystems.",
   },
   {
@@ -1280,11 +1280,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is 'temporary hardness' in water?",
     options: [
       "Hardness caused by calcium and magnesium sulfates and chlorides",
-      "Hardness caused by calcium and magnesium bicarbonates that can be removed by boiling",
       "Hardness that changes with temperature",
+      "Hardness caused by calcium and magnesium bicarbonates that can be removed by boiling",
       "Hardness that is present only in groundwater",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Temporary hardness (carbonate hardness) is caused by calcium and magnesium bicarbonates. It can be removed by boiling, which converts bicarbonates to insoluble carbonates that precipitate. Permanent hardness (non-carbonate) cannot be removed by boiling.",
   },
   {
@@ -1292,8 +1292,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Water Characteristics",
     difficulty: "medium",
     question: "What instrument is used to measure turbidity?",
-    options: ["Spectrophotometer", "Nephelometer (turbidimeter)", "pH meter", "Conductivity meter"],
-    correctIndex: 1,
+    options: ["Spectrophotometer", "pH meter", "Nephelometer (turbidimeter)", "Conductivity meter"],
+    correctIndex: 2,
     explanation: "A nephelometer (turbidimeter) measures turbidity by detecting light scattered at 90° to the incident beam. Results are expressed in NTU (Nephelometric Turbidity Units).",
   },
   {
@@ -1303,11 +1303,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the relationship between pH and the effectiveness of chlorine disinfection?",
     options: [
       "Chlorine is more effective at higher pH (above 8)",
-      "Chlorine is more effective at lower pH (below 7) because more HOCl is present",
-      "pH has no effect on chlorine effectiveness",
       "Chlorine is most effective at neutral pH (7)",
+      "pH has no effect on chlorine effectiveness",
+      "Chlorine is more effective at lower pH (below 7) because more HOCl is present",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "At lower pH, more chlorine exists as hypochlorous acid (HOCl), which is approximately 80× more effective as a disinfectant than the hypochlorite ion (OCl⁻) that predominates at higher pH. Disinfection is therefore more effective at lower pH.",
   },
   {
@@ -1347,8 +1347,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Water Characteristics",
     difficulty: "medium",
     question: "What is the Ontario Maximum Allowable Concentration (MAC) for fluoride in drinking water?",
-    options: ["0.5 mg/L", "1.5 mg/L", "4.0 mg/L", "10 mg/L"],
-    correctIndex: 1,
+    options: ["1.5 mg/L", "0.5 mg/L", "4.0 mg/L", "10 mg/L"],
+    correctIndex: 0,
     explanation: "The Ontario MAC for fluoride is 1.5 mg/L. The optimal fluoride level for dental health is 0.7 mg/L (Health Canada recommendation). Excess fluoride causes dental and skeletal fluorosis.",
     steps: [
       { l: "Understand the Question", c: "The question asks for the Ontario Maximum Allowable Concentration (MAC) for fluoride in drinking water. This is a direct recall question regarding a specific regulatory limit." },
@@ -1387,12 +1387,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is 'total dissolved solids' (TDS) and how is it measured?",
     options: [
-      "The weight of suspended particles; measured by filtration",
       "The total concentration of dissolved substances; measured by evaporating a filtered sample and weighing the residue",
+      "The weight of suspended particles; measured by filtration",
       "The concentration of dissolved oxygen; measured with a DO probe",
       "The total hardness; measured by EDTA titration",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "TDS is the total concentration of dissolved inorganic and organic substances. It is measured gravimetrically: filter the sample through a 0.45 µm filter, evaporate at 180°C, and weigh the residue. Results in mg/L.",
     steps: [
       { l: "Define TDS", c: "Total Dissolved Solids (TDS) refers to the total concentration of all inorganic and organic substances that are dissolved in a liquid, typically water. These substances can include minerals, salts, metals, cations, and anions." },
@@ -1409,12 +1409,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "What is the significance of the 'Threshold Odour Number' (TON)?",
     options: [
-      "The concentration of odour-causing compounds in mg/L",
       "The greatest dilution of sample with odour-free water at which an odour is just detectable",
+      "The concentration of odour-causing compounds in mg/L",
       "The pH at which an odour compound becomes detectable",
       "The number of odour-causing compounds identified in a sample",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "The Threshold Odour Number (TON) is the greatest dilution of a sample with odour-free water at which the odour is just barely detectable. A TON of 1 means no dilution is needed; a TON of 10 means a 1:10 dilution is needed before the odour disappears.",
   },
   {
@@ -1423,8 +1423,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Water Characteristics",
     difficulty: "medium",
     question: "What is the Ontario aesthetic objective for total dissolved solids (TDS) in drinking water?",
-    options: ["< 100 mg/L", "< 500 mg/L", "< 1000 mg/L", "< 2000 mg/L"],
-    correctIndex: 1,
+    options: ["< 100 mg/L", "< 2000 mg/L", "< 1000 mg/L", "< 500 mg/L"],
+    correctIndex: 3,
     explanation: "The Ontario aesthetic objective for TDS is < 500 mg/L. Above this level, water may have a noticeable taste. The WHO guideline is also 500 mg/L.",
     steps: [
       { l: "Understand the Question", c: "The question asks for the Ontario aesthetic objective for Total Dissolved Solids (TDS) in drinking water." },
@@ -1440,12 +1440,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A water sample has a colour of 25 TCU (True Colour Units). The Ontario aesthetic objective for colour is 15 TCU. What is the most likely source of this colour and what treatment is recommended?",
     options: [
-      "The colour is from iron and manganese — use oxidation and filtration",
       "The colour is likely from natural organic matter (NOM/humic substances) — coagulation/flocculation/sedimentation and filtration are the primary treatment methods",
+      "The colour is from iron and manganese — use oxidation and filtration",
       "The colour is from turbidity — improve filtration",
       "The colour is from chlorine — reduce chlorine dose"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Colour in surface water above 15 TCU is most commonly caused by natural organic matter (NOM) — humic and fulvic acids from decomposing vegetation. These compounds also react with chlorine to form trihalomethanes (THMs) and haloacetic acids (HAAs). Treatment: enhanced coagulation (lower pH, higher coagulant dose) removes NOM effectively. Iron/manganese cause a different colour (yellow-brown) and are removed by oxidation + filtration.",
   },
   {
@@ -1453,8 +1453,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Water Characteristics",
     difficulty: "medium",
     question: "Which of the following water quality parameters is used as an indicator of organic matter content?",
-    options: ["Turbidity", "Total Organic Carbon (TOC)", "Hardness", "Alkalinity"],
-    correctIndex: 1,
+    options: ["Turbidity", "Hardness", "Total Organic Carbon (TOC)", "Alkalinity"],
+    correctIndex: 2,
     explanation: "Total Organic Carbon (TOC) is used as a measure of organic matter content in water. High TOC can indicate contamination and is a precursor to disinfection by-products (THMs, HAAs) when chlorinated.",
   },
 
@@ -1497,11 +1497,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the difference between 'total coliform' and 'fecal coliform'?",
     options: [
       "Total coliform includes all bacteria; fecal coliform includes only E. coli",
-      "Total coliform is a broader group found in soil, vegetation, and feces; fecal coliform specifically indicates fecal contamination",
-      "There is no difference — the terms are interchangeable",
       "Fecal coliform is more dangerous than total coliform",
+      "There is no difference — the terms are interchangeable",
+      "Total coliform is a broader group found in soil, vegetation, and feces; fecal coliform specifically indicates fecal contamination",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Total coliform is a broad group of bacteria found in soil, vegetation, and feces. Fecal coliform (thermotolerant coliform, including E. coli) grows at 44.5°C and specifically indicates fecal contamination. E. coli is the most specific indicator of fecal contamination.",
   },
   {
@@ -1512,11 +1512,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the 'membrane filtration' method used for in bacteriological testing?",
     options: [
       "Removing bacteria from drinking water",
-      "Concentrating bacteria from a water sample onto a filter for counting",
-      "Sterilizing water samples before analysis",
       "Measuring the turbidity of water samples",
+      "Sterilizing water samples before analysis",
+      "Concentrating bacteria from a water sample onto a filter for counting",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The membrane filtration (MF) method passes a known volume of water through a 0.45 µm filter that retains bacteria. The filter is placed on selective growth media and incubated. Colonies are counted to determine bacteria per 100 mL.",
     steps: [
       { l: "Understand the Goal", c: "The question asks for the purpose of the membrane filtration method in bacteriological testing. This method aims to quantify bacteria in a water sample." },
@@ -1535,11 +1535,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A bacteriological analysis reports 2 CFU/100 mL of total coliforms in a treated drinking water sample. Under Ontario's O. Reg. 170/03, is this result compliant and what action is required?",
     options: [
       "Compliant — the Ontario MAC for total coliforms is 10 CFU/100 mL",
-      "Non-compliant — any detection of total coliforms in treated drinking water requires immediate investigation, resampling, and notification of the local Medical Officer of Health",
       "Compliant — 2 CFU/100 mL is within the acceptable range for distribution system samples",
+      "Non-compliant — any detection of total coliforms in treated drinking water requires immediate investigation, resampling, and notification of the local Medical Officer of Health",
       "Non-compliant — the sample must be re-run using a different method"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Under O. Reg. 170/03, the Ontario MAC for total coliforms in treated drinking water is zero (0 CFU/100 mL). Any detection of total coliforms is an adverse result that requires immediate corrective action: resample, investigate the source, notify the local Medical Officer of Health and the Ministry of Environment, and take corrective action. There is no acceptable level of total coliforms in treated drinking water.",
     steps: [
       { l: "Identify Regulation", c: "The question refers to Ontario's O. Reg. 170/03 for treated drinking water." },
@@ -1556,11 +1556,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the 'presence-absence (P-A) test' for coliforms?",
     options: [
       "A quantitative test that counts the exact number of coliforms",
-      "A qualitative test that indicates only whether coliforms are present or absent",
       "A test that measures the size of coliform bacteria",
+      "A qualitative test that indicates only whether coliforms are present or absent",
       "A test that identifies the species of coliform bacteria",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The Presence-Absence (P-A) test is a qualitative test that indicates only whether coliforms are present or absent in a 100 mL sample. It does not provide a count. It is simpler and faster than quantitative methods.",
   },
   {
@@ -1570,12 +1570,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "What is the 'Most Probable Number' (MPN) method in bacteriological testing?",
     options: [
-      "A method that counts colonies on a membrane filter",
       "A statistical method that estimates bacterial density based on the pattern of positive/negative results in multiple dilution tubes",
+      "A method that counts colonies on a membrane filter",
       "A method that measures the turbidity of bacterial cultures",
       "A method that identifies bacteria using DNA analysis",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "The MPN method uses multiple tubes of growth medium inoculated with different volumes of sample. The pattern of positive (turbid/gas) and negative results is compared to statistical tables to estimate the most probable number of bacteria per 100 mL.",
     steps: [
       { l: "Understand Purpose", c: "The MPN method estimates the concentration of viable microorganisms (e.g., coliforms) in a sample, particularly when the concentration is low or the sample contains particulate matter that interferes with plate counts." },
@@ -1591,12 +1591,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Under O. Reg. 170/03, what must happen if E. coli is detected in a treated water sample?",
     options: [
-      "Collect a repeat sample within 24 hours",
       "Immediately notify the Medical Officer of Health and the Ministry of the Environment",
+      "Collect a repeat sample within 24 hours",
       "Increase chlorine dosage and continue normal operations",
       "Shut down the water system immediately without notifying anyone",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Under O. Reg. 170/03, detection of E. coli in treated water is an Adverse Water Quality Incident (AWQI). The owner must immediately notify the Medical Officer of Health (MOH) and the Ministry of the Environment (MECP), issue a Boil Water Advisory if directed, and investigate the cause.",
   },
   {
@@ -1605,8 +1605,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Bacteriological Testing",
     difficulty: "medium",
     question: "What is the incubation temperature for total coliform analysis using the membrane filtration method?",
-    options: ["25°C", "35°C", "44.5°C", "55°C"],
-    correctIndex: 1,
+    options: ["25°C", "44.5°C", "35°C", "55°C"],
+    correctIndex: 2,
     explanation: "Total coliform analysis using membrane filtration is incubated at 35°C ± 0.5°C for 24 hours. Fecal coliform (thermotolerant coliform) is incubated at 44.5°C.",
     steps: [
       { l: "Recall Method", c: "The question specifies total coliform analysis using the membrane filtration method." },
@@ -1622,12 +1622,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the purpose of 'heterotrophic plate count' (HPC) testing?",
     options: [
-      "To detect specific pathogens in drinking water",
       "To measure the general microbial population and assess treatment effectiveness and distribution system integrity",
+      "To detect specific pathogens in drinking water",
       "To measure the concentration of E. coli specifically",
       "To detect viruses in water",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "HPC (also called Standard Plate Count) measures the total number of heterotrophic bacteria in water. While not a direct health indicator, it is used to assess treatment effectiveness, distribution system integrity, and overall microbiological water quality.",
   },
   {
@@ -1635,8 +1635,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Bacteriological Testing",
     difficulty: "hard",
     question: "Cryptosporidium and Giardia are classified as:",
-    options: ["Bacteria", "Viruses", "Protozoan parasites", "Fungi"],
-    correctIndex: 2,
+    options: ["Bacteria", "Protozoan parasites", "Viruses", "Fungi"],
+    correctIndex: 1,
     explanation: "Cryptosporidium and Giardia are protozoan parasites that form resistant oocysts/cysts. They are resistant to chlorine disinfection at normal doses and require filtration or UV treatment for removal/inactivation.",
   },
   {
@@ -1644,8 +1644,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Bacteriological Testing",
     difficulty: "medium",
     question: "What colour do coliform colonies typically appear on m-Endo agar (membrane filtration medium)?",
-    options: ["White", "Blue", "Green with metallic sheen", "Red"],
-    correctIndex: 2,
+    options: ["Green with metallic sheen", "Blue", "White", "Red"],
+    correctIndex: 0,
     explanation: "On m-Endo agar, coliform colonies appear pink to dark red with a metallic (golden) sheen. This metallic sheen is characteristic of coliform bacteria fermenting lactose.",
   },
   {
@@ -1654,12 +1654,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Why are coliforms used as indicator organisms for drinking water safety?",
     options: [
-      "Because they are the most dangerous pathogens in water",
       "Because they are easy to detect and their presence indicates potential fecal contamination and associated pathogens",
+      "Because they are the most dangerous pathogens in water",
       "Because they are the only bacteria found in water",
       "Because they are resistant to chlorine disinfection",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Coliforms are used as indicators because: (1) they are easy and inexpensive to detect; (2) they are present in large numbers in feces; (3) their presence indicates potential fecal contamination and associated pathogens (Salmonella, Cryptosporidium, etc.); (4) they generally survive longer than pathogens.",
   },
   {
@@ -1682,8 +1682,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Bacteriological Testing",
     difficulty: "medium",
     question: "What is the minimum volume of water required for a microbiological sample for total coliform analysis?",
-    options: ["10 mL", "50 mL", "100 mL", "500 mL"],
-    correctIndex: 2,
+    options: ["100 mL", "50 mL", "10 mL", "500 mL"],
+    correctIndex: 0,
     explanation: "The standard sample volume for total coliform analysis is 100 mL. Results are reported as CFU/100 mL or presence/absence per 100 mL.",
     steps: [
       { l: "Understand the Question", c: "The question asks for the 'minimum volume of water required for a microbiological sample for total coliform analysis'." },
@@ -1712,11 +1712,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is 'dissolved oxygen' (DO) and why is it important in water quality?",
     options: [
       "Oxygen bound to iron; important for corrosion",
-      "Oxygen dissolved in water; essential for aquatic life and indicates organic pollution levels",
       "Oxygen in the form of ozone; used for disinfection",
+      "Oxygen dissolved in water; essential for aquatic life and indicates organic pollution levels",
       "Oxygen in the form of hydrogen peroxide; indicates contamination",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Dissolved oxygen (DO) is the amount of oxygen dissolved in water. It is essential for aquatic life (fish, invertebrates). Low DO indicates organic pollution and decomposition. DO is measured with a DO probe or Winkler titration.",
   },
   {
@@ -1726,12 +1726,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is 'total suspended solids' (TSS)?",
     options: [
-      "The total weight of dissolved minerals in water",
       "The weight of particles retained on a 1.5 µm glass fibre filter after drying at 103–105°C",
+      "The total weight of dissolved minerals in water",
       "The turbidity of water measured in NTU",
       "The total organic carbon content of water",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "TSS is measured by filtering a known volume of water through a pre-weighed 1.5 µm (or 0.45 µm) glass fibre filter, drying at 103–105°C, and weighing the residue. Results are in mg/L.",
     steps: [
       { l: "Define TSS", c: "Total Suspended Solids (TSS) refers to the concentration of particulate matter that is retained by a filter when a water sample is passed through it. These solids are typically larger than colloidal particles and are suspended in the water column." },
@@ -1749,12 +1749,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A water analyst is measuring fluoride using the SPADNS colorimetric method. The calibration curve shows an R² of 0.994. A sample gives an absorbance of 0.342. The calibration equation is: Concentration (mg/L) = (Absorbance - 0.015) / 0.185. What is the fluoride concentration?",
     options: [
-      "1.77 mg/L",
-      "1.85 mg/L",
       "0.34 mg/L",
+      "1.85 mg/L",
+      "1.77 mg/L",
       "2.09 mg/L"
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: "Using the calibration equation: Concentration = (0.342 - 0.015) / 0.185 = 0.327 / 0.185 = 1.768 ≈ 1.77 mg/L. The R² of 0.994 indicates a good linear calibration (R² > 0.995 is ideal but 0.994 is acceptable for most methods). The Ontario MAC for fluoride is 1.5 mg/L, so this result would exceed the standard and require investigation.",
     steps: [
       { l: "Identify Given Information", c: "Absorbance (A) = 0.342; Calibration Equation: Concentration (mg/L) = (Absorbance - 0.015) / 0.185" },
@@ -1770,8 +1770,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Chemical Testing",
     difficulty: "hard",
     question: "What is the Winkler (iodometric) method used to measure?",
-    options: ["Chlorine residual", "Dissolved oxygen", "Fluoride", "Total hardness"],
-    correctIndex: 1,
+    options: ["Dissolved oxygen", "Chlorine residual", "Fluoride", "Total hardness"],
+    correctIndex: 0,
     explanation: "The Winkler (iodometric) method is a titrimetric method for measuring dissolved oxygen (DO). Manganese sulfate and alkali-iodide-azide are added to fix the oxygen, then iodine is liberated and titrated with sodium thiosulphate.",
   },
   {
@@ -1782,11 +1782,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is 'biochemical oxygen demand' (BOD)?",
     options: [
       "The amount of oxygen needed to chemically oxidize all organic matter in water",
-      "The amount of oxygen consumed by microorganisms to biologically decompose organic matter in water",
       "The dissolved oxygen content of water",
+      "The amount of oxygen consumed by microorganisms to biologically decompose organic matter in water",
       "The oxygen demand of industrial chemicals in wastewater",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "BOD is the amount of dissolved oxygen consumed by microorganisms when decomposing organic matter in water at 20°C over 5 days (BOD₅). It is an indicator of organic pollution in wastewater and receiving waters.",
     steps: [
       { l: "Define BOD", c: "Biochemical Oxygen Demand (BOD) is a measure of the amount of dissolved oxygen consumed by aerobic microorganisms to decompose organic matter present in a water sample." },
@@ -1810,8 +1810,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Chemical Testing",
     difficulty: "medium",
     question: "What is the Ontario MAC for nitrate in drinking water?",
-    options: ["5 mg/L as NO₃⁻", "10 mg/L as N", "45 mg/L as NO₃⁻", "100 mg/L as NO₃⁻"],
-    correctIndex: 1,
+    options: ["10 mg/L as N", "5 mg/L as NO₃⁻", "45 mg/L as NO₃⁻", "100 mg/L as NO₃⁻"],
+    correctIndex: 0,
     explanation: "The Ontario MAC for nitrate is 10 mg/L as nitrogen (N), equivalent to 44.3 mg/L as NO₃⁻. High nitrate causes methemoglobinemia (blue baby syndrome) in infants under 6 months.",
   },
   {
@@ -1821,11 +1821,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is 'chemical oxygen demand' (COD) and how does it differ from BOD?",
     options: [
       "COD measures biological oxygen demand; BOD measures chemical oxygen demand",
-      "COD measures the oxygen needed to chemically oxidize ALL organic matter (including non-biodegradable); BOD measures only biodegradable organic matter",
-      "COD and BOD measure the same thing using different methods",
       "COD is used for drinking water; BOD is used for wastewater",
+      "COD and BOD measure the same thing using different methods",
+      "COD measures the oxygen needed to chemically oxidize ALL organic matter (including non-biodegradable); BOD measures only biodegradable organic matter",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "COD uses a strong chemical oxidant (dichromate) to oxidize ALL organic matter, including non-biodegradable compounds. BOD measures only the oxygen consumed by biological decomposition of biodegradable organic matter. COD ≥ BOD always. COD results are available in hours; BOD takes 5 days.",
   },
   {
@@ -1850,8 +1850,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Chemical Testing",
     difficulty: "medium",
     question: "What is the unit of measurement for conductivity in water?",
-    options: ["mg/L", "NTU", "µS/cm (microsiemens per centimetre)", "pH units"],
-    correctIndex: 2,
+    options: ["mg/L", "NTU", "pH units", "µS/cm (microsiemens per centimetre)"],
+    correctIndex: 3,
     explanation: "Conductivity is measured in µS/cm (microsiemens per centimetre) or mS/cm (millisiemens per centimetre). It measures the ability of water to conduct electrical current, which is related to dissolved ion concentration.",
   },
   {
@@ -1859,8 +1859,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Chemical Testing",
     difficulty: "hard",
     question: "What is the SPADNS method used to measure in water quality analysis?",
-    options: ["Chlorine residual", "Fluoride", "Dissolved oxygen", "Nitrate"],
-    correctIndex: 1,
+    options: ["Fluoride", "Chlorine residual", "Dissolved oxygen", "Nitrate"],
+    correctIndex: 0,
     explanation: "The SPADNS (sodium 2-(parasulfophenylazo)-1,8-dihydroxy-3,6-naphthalenedisulfonate) colorimetric method is used to measure fluoride. Fluoride reacts with a zirconium-SPADNS complex to form a colourless complex, and the decrease in colour is proportional to fluoride concentration.",
   },
 
@@ -1888,12 +1888,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is 'breakpoint chlorination'?",
     options: [
-      "The point at which chlorine begins to form trihalomethanes",
       "The point at which enough chlorine has been added to oxidize all ammonia and organic matter, after which free chlorine residual begins to increase",
+      "The point at which chlorine begins to form trihalomethanes",
       "The maximum safe chlorine dose for drinking water",
       "The point at which chlorine becomes ineffective as a disinfectant",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Breakpoint chlorination is the point at which sufficient chlorine has been added to oxidize all ammonia (forming chloramines, then breaking them down) and organic matter. Beyond the breakpoint, any additional chlorine remains as free chlorine residual.",
   },
   {
@@ -1901,8 +1901,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Disinfection",
     difficulty: "medium",
     question: "What is the DPD method used to measure?",
-    options: ["Dissolved oxygen", "Chlorine residual (free and total)", "Fluoride", "pH"],
-    correctIndex: 1,
+    options: ["Dissolved oxygen", "Fluoride", "Chlorine residual (free and total)", "pH"],
+    correctIndex: 2,
     explanation: "The DPD (N,N-diethyl-p-phenylenediamine) colorimetric method is used to measure free and total chlorine residual. Free chlorine reacts with DPD to produce a pink colour; the intensity is proportional to chlorine concentration.",
   },
   {
@@ -1912,11 +1912,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the difference between 'free chlorine' and 'combined chlorine'?",
     options: [
       "Free chlorine is in liquid form; combined chlorine is in gas form",
-      "Free chlorine is HOCl and OCl⁻; combined chlorine is chloramines (formed when chlorine reacts with ammonia)",
       "Free chlorine is more dangerous than combined chlorine",
+      "Free chlorine is HOCl and OCl⁻; combined chlorine is chloramines (formed when chlorine reacts with ammonia)",
       "There is no practical difference between free and combined chlorine",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Free chlorine = HOCl (hypochlorous acid) + OCl⁻ (hypochlorite ion). Combined chlorine = chloramines (monochloramine NH₂Cl, dichloramine NHCl₂, trichloramine NCl₃) formed when chlorine reacts with ammonia. Total chlorine = free + combined. Free chlorine is a stronger disinfectant.",
   },
   {
@@ -1957,12 +1957,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A water treatment plant uses chlorination and has a source water with high natural organic matter (NOM). The treated water's THM concentration is 95 µg/L. The Ontario MAC for total THMs is 100 µg/L. What strategies can reduce THM formation while maintaining adequate disinfection?",
     options: [
-      "Increase the chlorine dose — more chlorine will oxidize the THM precursors",
-      "Reduce chlorine contact time — shorter contact time means fewer THMs",
       "Enhanced coagulation to remove NOM before chlorination, move the chlorination point later in the treatment train, or switch to chloramines for secondary disinfection",
+      "Reduce chlorine contact time — shorter contact time means fewer THMs",
+      "Increase the chlorine dose — more chlorine will oxidize the THM precursors",
       "Add activated carbon after chlorination — carbon will remove THMs from the finished water"
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "THMs form when chlorine reacts with NOM (humic/fulvic acids). Strategies to reduce THM formation: (1) Remove NOM before chlorination using enhanced coagulation — less precursor = fewer THMs. (2) Move the primary chlorination point to after filtration (reduce contact time with NOM). (3) Use chloramines for distribution system residual — chloramines form fewer THMs than free chlorine. Activated carbon can remove some THMs but is not the primary control strategy.",
     steps: [
       { l: "Analyze the Problem", c: "The problem states that the treated water's THM concentration is 95 µg/L, which is close to the Ontario MAC of 100 µg/L. The source water has high NOM, and chlorination is used. The goal is to reduce THM formation while maintaining adequate disinfection." },
@@ -1978,8 +1978,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Disinfection",
     difficulty: "medium",
     question: "What is the Ontario MAC for total trihalomethanes (THMs) in drinking water?",
-    options: ["10 µg/L", "50 µg/L", "100 µg/L", "250 µg/L"],
-    correctIndex: 2,
+    options: ["10 µg/L", "50 µg/L", "250 µg/L", "100 µg/L"],
+    correctIndex: 3,
     explanation: "The Ontario MAC for total trihalomethanes (THMs) is 100 µg/L. THMs are potential carcinogens formed as disinfection by-products when chlorine reacts with natural organic matter.",
   },
   {
@@ -1989,12 +1989,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "What is the 'CT value' in disinfection?",
     options: [
-      "The contact time required for complete disinfection",
       "The product of disinfectant concentration (C) and contact time (T) required to achieve a specified log inactivation of a pathogen",
+      "The contact time required for complete disinfection",
       "The chlorine-to-turbidity ratio",
       "The temperature at which chlorine becomes ineffective",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "CT value = Concentration (mg/L) × Time (minutes). It represents the disinfectant dose required to achieve a specified log inactivation (e.g., 3-log = 99.9%) of a target pathogen. Different pathogens require different CT values (Giardia requires much higher CT than bacteria).",
     steps: [
       { l: "Define CT Value", c: "The CT value is a critical parameter in water disinfection, representing the product of disinfectant concentration (C) and contact time (T). It quantifies the effectiveness of a disinfection process." },
@@ -2011,8 +2011,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Disinfection",
     difficulty: "medium",
     question: "Which disinfectant is most effective against Cryptosporidium oocysts?",
-    options: ["Free chlorine", "Chloramines", "UV radiation", "Ozone"],
-    correctIndex: 2,
+    options: ["Free chlorine", "UV radiation", "Chloramines", "Ozone"],
+    correctIndex: 1,
     explanation: "Cryptosporidium oocysts are highly resistant to chlorine and chloramines at normal doses. UV radiation and ozone are the most effective disinfectants against Cryptosporidium. UV at doses of 10 mJ/cm² achieves 3-log inactivation.",
     steps: [
       { l: "Analyze the Question", c: "The question asks for the most effective disinfectant against Cryptosporidium oocysts. This requires knowledge of disinfectant efficacy against specific pathogens." },
@@ -2027,8 +2027,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Disinfection",
     difficulty: "medium",
     question: "What is the maximum chlorine residual (aesthetic objective) in Ontario drinking water?",
-    options: ["0.5 mg/L", "1.0 mg/L", "2.0 mg/L", "4.0 mg/L"],
-    correctIndex: 3,
+    options: ["0.5 mg/L", "1.0 mg/L", "4.0 mg/L", "2.0 mg/L"],
+    correctIndex: 2,
     explanation: "The Ontario aesthetic objective for chlorine residual is ≤ 4.0 mg/L (as free chlorine). Above this level, the taste and odour of chlorine become objectionable to most people.",
   },
   {
@@ -2038,11 +2038,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of maintaining a chlorine residual throughout the distribution system?",
     options: [
       "To improve the taste of drinking water",
-      "To prevent microbial regrowth and provide a barrier against contamination in the distribution system",
-      "To prevent scale formation in pipes",
       "To comply with aesthetic objectives only",
+      "To prevent scale formation in pipes",
+      "To prevent microbial regrowth and provide a barrier against contamination in the distribution system",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Maintaining a chlorine residual in the distribution system prevents microbial regrowth in biofilms, provides a secondary barrier against contamination from cross-connections or main breaks, and serves as an indicator of distribution system integrity.",
   },
   {
@@ -2050,8 +2050,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Disinfection",
     difficulty: "medium",
     question: "What chemical is used as a dechlorinating agent to neutralize chlorine in water samples?",
-    options: ["Sodium hydroxide (NaOH)", "Sodium thiosulphate (Na₂S₂O₃)", "Hydrochloric acid (HCl)", "Sodium bicarbonate (NaHCO₃)"],
-    correctIndex: 1,
+    options: ["Sodium thiosulphate (Na₂S₂O₃)", "Sodium hydroxide (NaOH)", "Hydrochloric acid (HCl)", "Sodium bicarbonate (NaHCO₃)"],
+    correctIndex: 0,
     explanation: "Sodium thiosulphate (Na₂S₂O₃) is used to neutralize (dechlorinate) residual chlorine in water samples, particularly for microbiological samples. It prevents continued disinfection of bacteria after collection.",
   },
   {
@@ -2077,11 +2077,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the difference between 'accuracy' and 'precision' in laboratory measurements?",
     options: [
       "Accuracy is how close results are to each other; precision is how close to the true value",
-      "Accuracy is how close to the true value; precision is how close repeated measurements are to each other",
-      "Accuracy and precision mean the same thing",
       "Accuracy applies to instruments; precision applies to methods",
+      "Accuracy and precision mean the same thing",
+      "Accuracy is how close to the true value; precision is how close repeated measurements are to each other",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Accuracy = how close a measurement is to the true (accepted) value. Precision = how close repeated measurements are to each other (reproducibility). A method can be precise but inaccurate (systematic error), or accurate but imprecise (random error).",
   },
   {
@@ -2090,12 +2090,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is a 'calibration curve' in analytical chemistry?",
     options: [
-      "A graph showing the relationship between instrument response and known concentrations of a standard",
       "A curve showing the pH change during a titration",
+      "A graph showing the relationship between instrument response and known concentrations of a standard",
       "A graph of temperature versus reaction rate",
       "A curve showing the decay of a radioactive isotope",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "A calibration curve is a graph plotting instrument response (absorbance, signal) on the y-axis against known concentrations of a standard on the x-axis. Unknown sample concentrations are determined by comparing their instrument response to the curve.",
   },
   {
@@ -2106,10 +2106,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: [
       "Report as 0.08 mg/L — the result is above the LOD",
       "Report as <0.05 mg/L — the result is below the LOQ so it cannot be quantified",
-      "Report as detected but not quantifiable (between LOD and LOQ) — the result is above the LOD but below the LOQ",
-      "Report as 0.15 mg/L — round up to the LOQ"
+      "Report as 0.15 mg/L — round up to the LOQ",
+      "Report as detected but not quantifiable (between LOD and LOQ) — the result is above the LOD but below the LOQ"
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: "A result between the LOD (0.05 mg/L) and LOQ (0.15 mg/L) indicates the analyte is detected but cannot be reliably quantified. It should be reported as 'detected but not quantifiable' or 'estimated value' with the actual reading noted. Results below the LOD are reported as <LOD (not detected). Results above the LOQ are reported as measured values.",
   },
   {
@@ -2202,11 +2202,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of instrument calibration?",
     options: [
       "To clean the instrument before use",
-      "To establish the relationship between instrument response and known concentrations, ensuring accurate measurements",
       "To determine the detection limit of the instrument",
+      "To establish the relationship between instrument response and known concentrations, ensuring accurate measurements",
       "To verify that the instrument is within its warranty period",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Instrument calibration establishes the relationship between the instrument's response (signal) and known concentrations of a standard. This ensures that measurements of unknown samples are accurate and traceable to known values.",
   },
   {
@@ -2216,11 +2216,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is 'traceability' in laboratory measurements?",
     options: [
       "The ability to track samples through the chain of custody",
-      "The property of a measurement result that can be related to a reference standard through an unbroken chain of calibrations",
-      "The documentation of all laboratory procedures",
       "The ability to repeat a measurement and get the same result",
+      "The documentation of all laboratory procedures",
+      "The property of a measurement result that can be related to a reference standard through an unbroken chain of calibrations",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Traceability means that a measurement result can be related to a national or international reference standard through an unbroken chain of calibrations, each with stated uncertainties. It ensures that measurements are comparable worldwide.",
   },
   {
@@ -2229,12 +2229,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is a 'control chart' used for in laboratory QC?",
     options: [
-      "To track the number of samples analyzed per day",
       "To monitor the performance of an analytical method over time and detect trends or shifts",
+      "To track the number of samples analyzed per day",
       "To record the calibration schedule for instruments",
       "To document chain of custody for samples",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "A control chart plots QC results (e.g., control standard concentrations) over time. It helps detect trends, shifts, or out-of-control conditions in method performance. Warning limits (±2σ) and control limits (±3σ) are used to identify problems.",
   },
   {
@@ -2243,12 +2243,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What does 'reproducibility' mean in laboratory analysis?",
     options: [
-      "The ability to get the same result when the same sample is analyzed multiple times under the same conditions",
+      "The ability to analyze many samples quickly",
       "The ability to get the same result in different laboratories",
       "The ability to detect very low concentrations",
-      "The ability to analyze many samples quickly",
+      "The ability to get the same result when the same sample is analyzed multiple times under the same conditions",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: "Reproducibility (within-laboratory precision) is the ability to obtain the same result when the same sample is analyzed multiple times under the same conditions (same analyst, instrument, day). Between-laboratory precision is called 'reproducibility' in ISO terminology.",
   },
   {
@@ -2273,11 +2273,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of a 'continuing calibration verification' (CCV) standard?",
     options: [
       "To establish the initial calibration curve",
-      "To verify that the calibration remains valid throughout the analytical run",
       "To determine the detection limit of the method",
+      "To verify that the calibration remains valid throughout the analytical run",
       "To check for contamination in the reagents",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "A CCV (or continuing calibration check standard) is analyzed periodically during an analytical run to verify that the initial calibration remains valid. If the CCV result deviates by more than the acceptance criterion (typically ±10%), recalibration is required.",
     steps: [
       { l: "Define CCV", c: "A Continuing Calibration Verification (CCV) standard is a known concentration of analyte(s) that is analyzed at regular intervals during an analytical run after the initial calibration has been established." },
@@ -2294,12 +2294,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A laboratory analyst runs a calibration standard at 1.00 mg/L and gets readings of 0.97, 0.98, 0.97, and 0.98 mg/L over four consecutive days. What do these results indicate about the method?",
     options: [
-      "High accuracy and high precision — the results are close to the true value and consistent",
       "Low accuracy and high precision — the results are consistent but systematically biased low",
+      "High accuracy and high precision — the results are close to the true value and consistent",
       "High accuracy and low precision — the results average to the true value but are inconsistent",
       "Low accuracy and low precision — the results are neither close to the true value nor consistent"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "The results are highly precise (very consistent: 0.97-0.98 mg/L, low variability) but show low accuracy (systematically 2-3% below the true value of 1.00 mg/L). This pattern indicates a systematic error (bias) — possibly a calibration offset, contaminated standard, or matrix effect. High precision with low accuracy suggests a systematic, correctable error rather than random error.",
     steps: [
       { l: "Analyze Precision", c: "Examine the spread of the daily readings: 0.97, 0.98, 0.97, 0.98 mg/L. The values are very close to each other, indicating high consistency or precision. The range is only 0.01 mg/L." },
@@ -2315,12 +2315,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the 'linear range' of an analytical method?",
     options: [
-      "The range of concentrations over which the instrument response is proportional to concentration",
       "The range of temperatures over which the method is valid",
+      "The range of concentrations over which the instrument response is proportional to concentration",
       "The range of pH values over which the method works",
       "The range of sample volumes that can be analyzed",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "The linear range is the range of analyte concentrations over which the instrument response is directly proportional to concentration (follows Beer's Law for spectrophotometric methods). Samples above the linear range must be diluted.",
   },
   {
@@ -2330,11 +2330,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of a 'laboratory information management system' (LIMS)?",
     options: [
       "To manage the physical storage of samples in the laboratory",
-      "To track samples, manage data, generate reports, and maintain QC records electronically",
       "To control the temperature of laboratory refrigerators",
+      "To track samples, manage data, generate reports, and maintain QC records electronically",
       "To manage the purchase of laboratory supplies",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "A LIMS (Laboratory Information Management System) is software that manages sample tracking, analytical data, QC records, instrument calibration, chain of custody, and report generation. It improves data integrity, traceability, and efficiency.",
   },
   {
@@ -2343,12 +2343,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is 'selectivity' (specificity) of an analytical method?",
     options: [
-      "The ability of a method to measure only the target analyte without interference from other substances",
+      "The ability of a method to work with any type of sample",
       "The ability of a method to detect very low concentrations",
       "The speed at which a method produces results",
-      "The ability of a method to work with any type of sample",
+      "The ability of a method to measure only the target analyte without interference from other substances",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: "Selectivity (specificity) is the ability of an analytical method to measure only the target analyte in the presence of other substances (matrix components, interferences). A highly selective method is not affected by other compounds in the sample.",
   },
   {
@@ -2373,12 +2373,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Under O. Reg. 170/03, a municipal drinking water system operator detects E. coli in a distribution system sample. Within what timeframe must the operator notify the local Medical Officer of Health and the Ministry of Environment?",
     options: [
-      "Within 24 hours of receiving the laboratory result",
       "Immediately (as soon as practicable) upon receiving the adverse result — this is a Schedule 1 adverse result requiring immediate notification",
+      "Within 24 hours of receiving the laboratory result",
       "Within 72 hours — the standard reporting window for adverse results",
       "By the end of the next business day"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Under O. Reg. 170/03, E. coli detection is a Schedule 1 adverse result (the most serious category). The operator must notify the local Medical Officer of Health and the MECP immediately (as soon as practicable) upon receiving the result — not within 24 or 72 hours. The system owner must also be notified. Immediate notification allows public health authorities to take protective action.",
   },
   {
@@ -2387,12 +2387,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Under O. Reg. 248/03, what does a Water Quality Analyst certificate allow the holder to do?",
     options: [
-      "Operate a water treatment plant",
       "Conduct testing for the 24 operational parameters listed in the regulation",
+      "Operate a water treatment plant",
       "Design water distribution systems",
       "Issue Boil Water Advisories",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "O. Reg. 248/03 (Drinking Water Testing Services) requires that testing for the 24 operational parameters (e.g., chlorine residual, turbidity, pH, alkalinity) be performed by a certified Water Quality Analyst. The WQA certificate authorizes this testing.",
   },
   {
@@ -2423,12 +2423,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A water quality analyst working at a municipal drinking water system discovers that a test result was incorrectly recorded in the operating log. Under O. Reg. 170/03, what is the correct procedure?",
     options: [
-      "Delete the incorrect entry and replace it with the correct value",
-      "Use correction fluid (white-out) to cover the error and write the correct value",
       "Draw a single line through the incorrect entry, write the correct value beside it, and initial and date the correction — never obliterate original entries",
+      "Use correction fluid (white-out) to cover the error and write the correct value",
+      "Delete the incorrect entry and replace it with the correct value",
       "Create a new log entry on a separate page and reference it from the original"
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "Under O. Reg. 170/03, operating records must be accurate and tamper-evident. The correct procedure for correcting an error is to draw a single line through the incorrect entry (so it remains legible), write the correct value beside or above it, and initial and date the correction. Deleting, using white-out, or obliterating original entries is not permitted as it destroys the audit trail.",
   },
   {
@@ -2446,12 +2446,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the purpose of O. Reg. 128/04 (Licensing of Municipal Drinking Water Systems)?",
     options: [
-      "To set maximum contaminant levels for drinking water",
-      "To require drinking water testing laboratories to be accredited",
       "To license and regulate the operation of municipal drinking water systems",
+      "To require drinking water testing laboratories to be accredited",
+      "To set maximum contaminant levels for drinking water",
       "To regulate the certification of water quality analysts",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "O. Reg. 128/04 requires municipal drinking water systems to obtain an operating licence and comply with licence conditions, including having a Drinking Water Quality Management Standard (DWQMS) quality management system.",
   },
   {
@@ -2474,12 +2474,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What must a drinking water system owner do within 24 hours of receiving a laboratory result showing E. coli in treated water?",
     options: [
-      "Collect a repeat sample and wait for results before taking action",
       "Notify the Medical Officer of Health and the Director of the Ministry of the Environment",
+      "Collect a repeat sample and wait for results before taking action",
       "Increase chlorine dosage and continue normal operations",
       "Issue a Boil Water Advisory without notifying any authorities",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Under O. Reg. 170/03, upon receiving an adverse result (E. coli in treated water), the owner must immediately (within 24 hours) notify the Medical Officer of Health and the Director of the MECP. The MOH will determine whether a Boil Water Advisory is required.",
   },
   // ─── ADDITIONAL HARD QUESTIONS ──────────────────────────────────────────────
@@ -2514,10 +2514,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: [
       "0.361 g",
       "0.500 g",
-      "3.61 g",
       "5.00 g",
+      "3.61 g",
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: "Nitrate-N concentration = 1000 mg/L. Mass of N needed = 1000 mg/L × 0.5 L = 500 mg = 0.500 g N. KNO3 contains one N atom per molecule: mass fraction of N = 14.01/101.1 = 0.1386. Mass of KNO3 = 0.500 g / 0.1386 = 3.61 g.",
     steps: [
       { l: "Calculate total mass of N needed", c: "The stock solution is 1000 mg/L nitrate-N and the volume is 500 mL (0.5 L). Mass of N needed = Concentration (mg/L) × Volume (L) = 1000 mg/L × 0.5 L = 500 mg N = 0.500 g N." },
@@ -2534,12 +2534,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A method detection limit (MDL) study for lead in drinking water yields the following 7 replicate spike results (µg/L): 0.42, 0.38, 0.51, 0.45, 0.39, 0.47, 0.44. What is the calculated MDL (use t-value of 3.143 for 6 degrees of freedom at 99% confidence)?",
     options: [
-      "0.04 µg/L",
       "0.13 µg/L",
+      "0.04 µg/L",
       "0.15 µg/L",
       "0.44 µg/L",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Mean = (0.42+0.38+0.51+0.45+0.39+0.47+0.44)/7 = 0.437. Deviations²: 0.000289, 0.003249, 0.005329, 0.000169, 0.002209, 0.001089, 0.000009. Sum = 0.012343. s = √(0.012343/6) = √0.002057 = 0.04535. MDL = t × s = 3.143 × 0.04535 = 0.1425 ≈ 0.13 µg/L (rounded to 2 sig figs).",
     steps: [
       { l: "Step 1", c: "Calculate the mean (average) of the 7 replicate spike results. Sum the values and divide by the number of replicates (7)." },
@@ -2556,12 +2556,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory runs a continuing calibration verification (CCV) standard at 50 µg/L for total trihalomethanes (TTHMs). The measured result is 53.8 µg/L. The laboratory's acceptance criterion is ±10% of the true value. What is the percent recovery, and does it pass?",
     options: [
-      "107.6% — passes (within ±10%)",
       "107.6% — fails (exceeds +10% limit)",
+      "107.6% — passes (within ±10%)",
       "93.1% — passes (within ±10%)",
       "6.2% — passes (within ±10%)",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "% Recovery = (measured / true) × 100 = (53.8 / 50) × 100 = 107.6%. The acceptance criterion is 90–110% (±10%). Since 107.6% falls within this range, the CCV passes. If the result were outside 90–110%, the analyst would need to recalibrate and re-analyze the affected samples.",
     steps: [
       { l: "Identify Given Values", c: "True value (CCV standard) = 50 µg/L; Measured value = 53.8 µg/L; Acceptance criterion = ±10%." },
@@ -2580,10 +2580,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: [
       "18.7 mg/L",
       "93.5 mg/L",
-      "187 mg/L",
       "935 mg/L",
+      "187 mg/L",
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: "Hardness (mg/L as CaCO3) = (mL EDTA × M EDTA × MW CaCO3 × 1000) / mL sample = (18.7 × 0.01 × 100.09 × 1000) / 100 = 18717 / 100 = 187.2 ≈ 187 mg/L CaCO3. This is considered 'hard' water (> 120 mg/L).",
     steps: [
       { l: "Identify Formula", c: "The formula for calculating total hardness as mg/L CaCO3 from an EDTA titration is: Hardness (mg/L as CaCO3) = (mL EDTA × M EDTA × MW CaCO3 × 1000) / mL sample" },
@@ -2602,11 +2602,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A membrane filtration result shows 42 blue colonies on a 100 mL sample filtered through a 0.45 µm membrane and incubated on m-Endo medium. However, the analyst notices 8 of the colonies are metallic green with a golden sheen. How should this result be reported?",
     options: [
       "42 total coliforms/100 mL — all blue colonies are confirmed coliforms",
-      "8 total coliforms/100 mL — only metallic green colonies are confirmed coliforms",
       "34 total coliforms/100 mL — blue colonies without metallic sheen are non-coliform",
+      "8 total coliforms/100 mL — only metallic green colonies are confirmed coliforms",
       "50 total coliforms/100 mL — both blue and green colonies are counted",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "On m-Endo medium, confirmed total coliforms produce a distinctive metallic green sheen (gold-green iridescence). Blue colonies without the metallic sheen are non-coliform background organisms. Only the 8 metallic green colonies should be counted as total coliforms. This is a critical quality control distinction in membrane filtration.",
     steps: [
       { l: "Understand Colony Morphology", c: "On m-Endo medium, total coliforms are specifically identified by their metallic green sheen (gold-green iridescence). Other colony colors or appearances (e.g., blue without sheen) are not considered total coliforms." },
@@ -2624,12 +2624,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A chloramination system uses a 3:1 Cl2:NH3-N mass ratio. If the target combined chlorine residual is 2.4 mg/L as Cl2, what is the required ammonia-nitrogen dose in mg/L?",
     options: [
-      "0.8 mg/L NH3-N",
-      "1.2 mg/L NH3-N",
       "3.2 mg/L NH3-N",
+      "1.2 mg/L NH3-N",
+      "0.8 mg/L NH3-N",
       "7.2 mg/L NH3-N",
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: "At a 3:1 Cl2:NH3-N mass ratio, for 2.4 mg/L Cl2, the required NH3-N = 2.4 / 3 = 0.8 mg/L. Maintaining the correct ratio is critical: too little ammonia leads to free chlorine breakthrough; too much causes excess ammonia and nitrification risk in the distribution system.",
     steps: [
       { l: "Understand the Ratio", c: "The question states a Cl2:NH3-N mass ratio of 3:1. This means for every 3 parts of chlorine (as Cl2), 1 part of ammonia-nitrogen (as NH3-N) is used." },
@@ -2647,11 +2647,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water sample has a pH of 8.2, a total alkalinity of 180 mg/L as CaCO3, and a calcium hardness of 240 mg/L as CaCO3. Using the Langelier Saturation Index (LSI) with pHs = 9.3 + A + B − C − D (where A = 0.10, B = 2.71, C = 2.38, D = 2.26 for these conditions), what is the LSI and what does it indicate?",
     options: [
       "LSI = −0.73; water is corrosive and will dissolve CaCO3",
-      "LSI = +0.73; water is scale-forming and will deposit CaCO3",
       "LSI = +0.45; water is slightly scale-forming",
+      "LSI = +0.73; water is scale-forming and will deposit CaCO3",
       "LSI = −0.45; water is slightly corrosive",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "pHs = 9.3 + A + B − C − D = 9.3 + 0.10 + 2.71 − 2.38 − 2.26 = 7.47. LSI = pH − pHs = 8.2 − 7.47 = +0.73. A positive LSI means the water is supersaturated with CaCO3 and tends to deposit scale, which is protective for pipes but can reduce flow capacity over time.",
     steps: [
       { l: "Identify Given Values", c: "Given: pH = 8.2, Total Alkalinity = 180 mg/L as CaCO3, Calcium Hardness = 240 mg/L as CaCO3. Constants for pHs calculation: A = 0.10 (TDS factor), B = 2.71 (temperature factor), C = 2.38 (pCa = log 240), D = 2.26 (pAlk = log 180)." },
@@ -2690,12 +2690,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A drinking water sample tests positive for geosmin at 12 ng/L. The human odour threshold for geosmin is approximately 5–10 ng/L. The water also has a TOC of 8.2 mg/L and a UV254 absorbance of 0.18 cm⁻¹. What is the specific UV absorbance (SUVA) and what does it indicate about treatment?",
     options: [
-      "SUVA = 2.20 L/mg·m; mostly hydrophilic NOM — coagulation will be less effective",
       "SUVA = 2.20 L/mg·m; mostly hydrophobic NOM — coagulation will be highly effective",
+      "SUVA = 2.20 L/mg·m; mostly hydrophilic NOM — coagulation will be less effective",
       "SUVA = 0.022 L/mg·m; mostly hydrophilic NOM — activated carbon is preferred",
       "SUVA = 14.8 L/mg·m; high aromatic content — ozonation is contraindicated",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "SUVA = (UV254 × 100) / TOC = (0.18 × 100) / 8.2 = 2.20 L/mg·m. SUVA < 2 indicates mostly hydrophilic, non-humic NOM that responds poorly to coagulation. SUVA 2–4 is a mixed composition. SUVA > 4 indicates mostly hydrophobic, humic NOM that coagulates well. At 2.20, this water has mixed NOM character; the geosmin (a taste-and-odour compound from cyanobacteria/actinomycetes) would be best treated with powdered activated carbon (PAC) or ozone rather than coagulation alone.",
     steps: [
       { l: "Identify SUVA Formula", c: "The Specific UV Absorbance (SUVA) is calculated using the formula: SUVA = (UV254 * 100) / TOC. UV254 is in cm⁻¹ and TOC is in mg/L. The factor of 100 converts cm⁻¹ to m⁻¹ for the final unit of L/mg·m." },
@@ -2714,11 +2714,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A laboratory's control chart for a 1.0 mg/L fluoride standard shows the following 20 consecutive daily QC results (mg/L): 0.97, 1.02, 0.99, 1.03, 0.98, 1.01, 0.96, 1.04, 0.97, 1.02, 0.95, 1.03, 0.94, 1.05, 0.93, 1.06, 0.92, 1.07, 0.91, 1.08. The warning limits are ±2s and control limits are ±3s (s = 0.05). Which control chart rule is triggered first?",
     options: [
       "One point beyond 3s control limits (Western Electric Rule 1)",
-      "Two of three consecutive points beyond 2s warning limits (Western Electric Rule 2)",
       "Six consecutive points trending in one direction (Nelson Rule 3)",
+      "Two of three consecutive points beyond 2s warning limits (Western Electric Rule 2)",
       "Eight consecutive points on one side of the mean (Nelson Rule 4)",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: "Examining the data: the results show a clear alternating pattern with increasing amplitude — values are trending away from the mean in both directions. More critically, looking at the last 8 values (0.95 through 1.08), they show a systematic trend of increasing deviation. The six-consecutive-points-trending rule (Nelson Rule 3) is triggered by the last 6 results (0.93, 1.06, 0.92, 1.07, 0.91, 1.08) showing increasing magnitude, indicating the measurement system is drifting — likely a calibration standard degradation issue requiring immediate investigation.",
     steps: [
       { l: "Understand Control Chart Rules", c: "The question implies using Westgard or Nelson rules. We need to look for patterns in the data relative to the mean (1.0 mg/L) and standard deviation (s = 0.05). Key rules to consider are: points outside control limits, points outside warning limits, consecutive points on one side of the mean, and trending/alternating patterns." },
@@ -2735,11 +2735,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Under O. Reg. 170/03, what is the maximum allowable turbidity for treated water leaving a conventional filtration system before an adverse condition must be reported?",
     options: [
       "0.1 NTU",
-      "0.3 NTU",
       "1.0 NTU",
+      "0.3 NTU",
       "4.0 NTU",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "O. Reg. 170/03 Schedule 2 sets 0.3 NTU as the operational trigger for conventional filtration. Exceeding this requires immediate corrective action and reporting to the Director.",
     steps: [
       { l: "Understand the Question", c: "The question asks for the maximum allowable turbidity for treated water leaving a conventional filtration system before an adverse condition *must be reported* under O. Reg. 170/03." },
@@ -2756,11 +2756,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A small groundwater system serves 200 people and uses chlorination only. Under O. Reg. 170/03, what is the minimum CT value (mg·min/L) required to achieve 99.99% (4-log) inactivation of Giardia at 10°C?",
     options: [
       "36 mg·min/L",
-      "72 mg·min/L",
-      "128 mg·min/L",
       "165 mg·min/L",
+      "128 mg·min/L",
+      "72 mg·min/L",
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation: "The Ontario Drinking Water Standards require a CT of 165 mg·min/L for 4-log Giardia inactivation using free chlorine at 10°C, as specified in the Procedure for Disinfection of Drinking Water in Ontario.",
     steps: [
       { l: "Understand the Requirement", c: "The question asks for the minimum CT value for 4-log Giardia inactivation using chlorination only at 10°C, as per O. Reg. 170/03 and the Procedure for Disinfection of Drinking Water in Ontario." },
@@ -2776,12 +2776,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Which schedule of O. Reg. 170/03 specifies the sampling frequencies for microbiological testing of large municipal residential systems?",
     options: [
-      "Schedule 1",
       "Schedule 6",
+      "Schedule 1",
       "Schedule 10",
       "Schedule 13",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Schedule 1 of O. Reg. 170/03 specifies the minimum sampling frequencies for microbiological parameters based on system type and population served.",
   },
   {
@@ -2805,11 +2805,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water system detects E. coli in a distribution system sample. Under O. Reg. 170/03, within what timeframe must the owner notify the local Medical Officer of Health?",
     options: [
       "Within 24 hours",
-      "Within 1 hour",
-      "As soon as reasonably possible and no later than 24 hours",
       "Immediately (within 30 minutes)",
+      "As soon as reasonably possible and no later than 24 hours",
+      "Within 1 hour",
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation: "O. Reg. 170/03 Section 18 requires notification of the Medical Officer of Health immediately and no later than 24 hours after the owner becomes aware of an adverse test result for E. coli.",
   },
   {
@@ -2819,11 +2819,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Under O. Reg. 248/03 (Certification of Drinking Water System Operators), what is the minimum operator licence class required to operate a Class 3 water treatment facility?",
     options: [
       "Class 1",
-      "Class 2",
       "Class 3",
+      "Class 2",
       "Class 4",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: "O. Reg. 248/03 requires that the Overall Responsible Operator (ORO) hold a licence at least equal to the facility class. A Class 3 facility requires a minimum Class 3 licence for the ORO.",
   },
   {
@@ -2833,11 +2833,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Which Ontario regulation governs the accreditation of drinking water testing laboratories?",
     options: [
       "O. Reg. 170/03",
-      "O. Reg. 248/03",
       "O. Reg. 252/05",
+      "O. Reg. 248/03",
       "O. Reg. 128/04",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: "O. Reg. 252/05 (Drinking Water Testing Services) governs the accreditation of laboratories that perform testing for drinking water systems in Ontario.",
   },
   {
@@ -2846,12 +2846,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water system's annual inspection report identifies a significant deficiency. Under the Safe Drinking Water Act, 2002, what is the owner's obligation?",
     options: [
-      "Correct the deficiency within 90 days",
       "Prepare and submit a corrective action plan to the Director",
+      "Correct the deficiency within 90 days",
       "Notify the local municipality within 30 days",
       "Hire a licensed engineer to assess the deficiency",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Under the SDWA 2002, a significant deficiency identified in an inspection report requires the owner to prepare a corrective action plan and submit it to the Director of the Ministry within the prescribed timeframe.",
   },
   {
@@ -2881,12 +2881,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Under O. Reg. 170/03, a water system must maintain a minimum free chlorine residual of _____ throughout the distribution system.",
     options: [
-      "0.05 mg/L",
-      "0.1 mg/L",
       "0.2 mg/L",
+      "0.1 mg/L",
+      "0.05 mg/L",
       "0.5 mg/L",
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: "O. Reg. 170/03 requires a minimum free chlorine residual of 0.05 mg/L at all points in the distribution system. This is the regulatory floor; many systems target 0.2 mg/L for a safety margin.",
     steps: [
       { l: "Understand the Question", c: "The question asks for the minimum free chlorine residual required by O. Reg. 170/03 throughout the distribution system." },
@@ -2903,11 +2903,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water system operator discovers that the chlorine residual at a dead-end in the distribution system has dropped to 0.02 mg/L. Under O. Reg. 170/03, this is:",
     options: [
       "Acceptable if the turbidity is below 1 NTU",
-      "An adverse condition requiring immediate corrective action",
       "A minor deviation requiring notation in the log",
+      "An adverse condition requiring immediate corrective action",
       "Acceptable if no E. coli has been detected in the past 30 days",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "A chlorine residual below 0.05 mg/L anywhere in the distribution system is an adverse condition under O. Reg. 170/03, requiring immediate corrective action (flushing, boosting) and documentation.",
     steps: [
       { l: "Understand the Question", c: "The question asks to classify a chlorine residual of 0.02 mg/L at a dead-end in the distribution system according to O. Reg. 170/03." },
@@ -2923,12 +2923,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Which document must a drinking water system owner prepare annually and make available to the public under the Safe Drinking Water Act, 2002?",
     options: [
-      "Environmental Compliance Approval",
       "Annual Report and Summary Report",
+      "Environmental Compliance Approval",
       "Drinking Water Works Permit",
       "Operational Plan",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "The SDWA 2002 requires owners to prepare an Annual Report summarizing system performance and a Summary Report to be made available to the public and submitted to the municipality.",
   },
   {
@@ -2937,12 +2937,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "Under O. Reg. 170/03, what is the required sampling frequency for THMs (trihalomethanes) in a large municipal residential system serving over 100,000 people?",
     options: [
-      "Quarterly",
-      "Monthly",
       "Semi-annually",
+      "Monthly",
+      "Quarterly",
       "Annually",
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: "Large municipal residential systems serving over 100,000 people must sample for THMs quarterly under O. Reg. 170/03 Schedule 13, given the higher potential for DBP formation in large distribution systems.",
   },
   {
@@ -2952,11 +2952,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water system operator is required to keep records of all operational data. Under O. Reg. 170/03, how long must these records be retained?",
     options: [
       "2 years",
-      "5 years",
       "10 years",
+      "5 years",
       "Indefinitely",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: "O. Reg. 170/03 requires that operational records, including test results and maintenance logs, be retained for a minimum of 10 years.",
   },
   {
@@ -3002,10 +3002,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: [
       "O. Reg. 170/03",
       "O. Reg. 169/03",
-      "O. Reg. 248/03",
       "Safe Drinking Water Act, 2002 — Section 30",
+      "O. Reg. 248/03",
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation: "Section 30 of the Safe Drinking Water Act, 2002 requires owners of municipal drinking water systems to prepare and maintain an Emergency Response Plan that addresses potential threats to the system.",
   },
   {
@@ -3015,11 +3015,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the principle behind the EDTA titration method for hardness determination?",
     options: [
       "EDTA precipitates calcium and magnesium as insoluble salts",
-      "EDTA forms stable complexes with Ca²⁺ and Mg²⁺, displacing the indicator at the endpoint",
       "EDTA oxidizes hardness ions, causing a colour change",
+      "EDTA forms stable complexes with Ca²⁺ and Mg²⁺, displacing the indicator at the endpoint",
       "EDTA reduces the pH, releasing hardness ions for measurement",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "EDTA (ethylenediaminetetraacetic acid) forms stable 1:1 chelate complexes with divalent metal ions (Ca²⁺, Mg²⁺). The indicator (Eriochrome Black T) also complexes with these ions but less strongly. At the endpoint, EDTA displaces the indicator from the metal ions, causing the colour change from red to blue.",
   },
   {
@@ -3028,12 +3028,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water sample has a total hardness of 250 mg/L as CaCO₃ and a calcium hardness of 160 mg/L as CaCO₃. What is the magnesium concentration in mg/L as Mg²⁺?",
     options: [
-      "90 mg/L",
       "11.0 mg/L",
+      "90 mg/L",
       "22.0 mg/L",
       "7.4 mg/L",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Magnesium hardness = 250 - 160 = 90 mg/L as CaCO₃. Convert to mg/L as Mg²⁺: 90 × (24.3/50.04) = 90 × 0.4856 = 43.7 mg/L. Wait — the correct conversion is: Mg²⁺ = (Mg hardness as CaCO₃) × (Mg MW / CaCO₃ equivalent) = 90 × (24.305/50.045) = 43.7 mg/L. The closest answer is 11.0 mg/L if the question uses the equivalent weight approach: 90 mg/L as CaCO₃ ÷ (50.045/12.15) = 90/4.12 = 21.8 ≈ 22 mg/L. Using EW of Mg = 12.15: 90 × 12.15/50.04 = 21.9 mg/L ≈ 22 mg/L.",
     steps: [
       { l: "Calculate Magnesium Hardness", c: "Total Hardness = Calcium Hardness + Magnesium Hardness. Therefore, Magnesium Hardness = Total Hardness - Calcium Hardness = 250 mg/L as CaCO₃ - 160 mg/L as CaCO₃ = 90 mg/L as CaCO₃." },
@@ -3050,11 +3050,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "The Langelier Saturation Index (LSI) is used to assess:",
     options: [
       "The potential for biological growth in distribution systems",
-      "The corrosivity or scale-forming tendency of water",
-      "The disinfection efficiency of chlorination",
       "The concentration of total dissolved solids",
+      "The disinfection efficiency of chlorination",
+      "The corrosivity or scale-forming tendency of water",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The LSI = pH - pHs, where pHs is the pH at which water is saturated with CaCO₃. A positive LSI indicates scale-forming tendency; a negative LSI indicates corrosive (CaCO₃-dissolving) tendency. It is used to optimize corrosion control treatment.",
   },
   {
@@ -3085,12 +3085,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Which method is used to determine fluoride concentration in drinking water using a colour-forming reagent?",
     options: [
-      "SPADNS method",
       "DPD method",
+      "SPADNS method",
       "Winkler method",
       "Argentometric method",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "The SPADNS (sodium 2-(parasulfophenylazo)-1,8-dihydroxy-3,6-naphthalene disulfonate) method is used for fluoride determination. Fluoride bleaches the red SPADNS-zirconium lake complex, and the decrease in absorbance is proportional to fluoride concentration.",
   },
   {
@@ -3100,11 +3100,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A sample is analyzed for chlorine residual using the DPD colorimetric method. The free chlorine reading is 1.2 mg/L and the total chlorine reading is 2.8 mg/L. What is the combined chlorine concentration?",
     options: [
       "4.0 mg/L",
-      "1.6 mg/L",
       "2.8 mg/L",
+      "1.6 mg/L",
       "1.2 mg/L",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Combined chlorine = Total chlorine - Free chlorine = 2.8 - 1.2 = 1.6 mg/L. Combined chlorine includes monochloramine, dichloramine, and nitrogen trichloride. In a chloraminated system, this represents the chloramine residual.",
     steps: [
       { l: "Understand Chlorine Forms", c: "Chlorine residual in water can exist in different forms: Free Chlorine (HOCl, OCl-), Combined Chlorine (chloramines), and Total Chlorine (sum of free and combined chlorine)." },
@@ -3122,11 +3122,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of adding sodium thiosulfate to a sample collected for chlorine residual analysis?",
     options: [
       "To preserve the sample for later analysis",
-      "To dechlorinate the sample and stop further reaction",
       "To stabilize the pH of the sample",
+      "To dechlorinate the sample and stop further reaction",
       "To prevent biological growth during transport",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Sodium thiosulfate is a reducing agent that neutralizes chlorine residual, stopping further oxidation reactions. It is added to samples collected for microbiological analysis to prevent chlorine from killing bacteria during transport to the laboratory.",
   },
   {
@@ -3135,12 +3135,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water sample is analyzed for total organic carbon (TOC). The result is 4.2 mg/L. The dissolved organic carbon (DOC) result is 3.8 mg/L. What is the particulate organic carbon (POC) concentration?",
     options: [
-      "8.0 mg/L",
       "0.4 mg/L",
+      "8.0 mg/L",
       "4.2 mg/L",
       "0.44 mg/L",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "POC = TOC - DOC = 4.2 - 3.8 = 0.4 mg/L. POC represents organic carbon associated with particles (>0.45 μm filter), while DOC is the fraction that passes through a 0.45 μm filter. High POC can indicate turbidity events or algal blooms.",
     steps: [
       { l: "Understand Definitions", c: "Total Organic Carbon (TOC) is the sum of Dissolved Organic Carbon (DOC) and Particulate Organic Carbon (POC)." },
@@ -3171,12 +3171,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Which parameter is used to estimate the amount of organic matter in water that can be oxidized by a strong chemical oxidant?",
     options: [
-      "BOD (Biochemical Oxygen Demand)",
       "COD (Chemical Oxygen Demand)",
+      "BOD (Biochemical Oxygen Demand)",
       "TOC (Total Organic Carbon)",
       "DOC (Dissolved Organic Carbon)",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "COD measures the oxygen equivalent of organic matter that can be oxidized by a strong chemical oxidant (potassium dichromate). It is a faster alternative to BOD and measures a broader range of organic compounds, including those not biodegradable.",
   },
   {
@@ -3256,12 +3256,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water sample is analyzed for iron using the phenanthroline method. The sample must first be treated with hydroxylamine hydrochloride. What is the purpose of this reagent?",
     options: [
-      "To complex Fe³⁺ for colorimetric measurement",
       "To reduce Fe³⁺ to Fe²⁺ so it can react with 1,10-phenanthroline",
+      "To complex Fe³⁺ for colorimetric measurement",
       "To precipitate interfering metals",
       "To adjust pH for optimal colour development",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "The phenanthroline method is specific for Fe²⁺ (ferrous iron). Hydroxylamine hydrochloride is a reducing agent that converts Fe³⁺ (ferric iron) to Fe²⁺, ensuring all iron is in the measurable form. Without this step, ferric iron would not react with phenanthroline and would be underreported.",
   },
   {
@@ -3271,11 +3271,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "The detection limit of a method is defined as:",
     options: [
       "The lowest concentration that can be measured with 99% confidence",
-      "The concentration at which the signal-to-noise ratio equals 3",
-      "The lowest concentration on the calibration curve",
       "The concentration below which the method cannot distinguish from zero",
+      "The lowest concentration on the calibration curve",
+      "The concentration at which the signal-to-noise ratio equals 3",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The Method Detection Limit (MDL) is statistically defined as the minimum concentration that can be measured with 99% confidence that it is greater than zero. It is calculated as 3.14 times the standard deviation of replicate measurements of a low-level standard.",
     steps: [
       { l: "Understand the Concept", c: "The question asks for the definition of a detection limit, specifically the Method Detection Limit (MDL)." },
@@ -3293,11 +3293,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water sample has a pH of 6.5 and a free chlorine residual of 1.5 mg/L. What is the predominant chlorine species present?",
     options: [
       "Hypochlorite ion (OCl⁻)",
-      "Hypochlorous acid (HOCl)",
       "Chlorine gas (Cl₂)",
+      "Hypochlorous acid (HOCl)",
       "Monochloramine (NH₂Cl)",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The pKa for HOCl/OCl⁻ equilibrium is 7.5. At pH 6.5, which is 1 unit below the pKa, HOCl predominates. Using the Henderson-Hasselbalch equation: at pH 6.5, approximately 91% of free chlorine is HOCl and 9% is OCl⁻. HOCl is ~80× more effective as a disinfectant than OCl⁻.",
     steps: [
       { l: "Understand the Equilibrium", c: "The question states the pKa for the HOCl/OCl⁻ equilibrium is 7.5. This pKa value represents the pH at which HOCl and OCl⁻ concentrations are equal." },
@@ -3349,12 +3349,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the maximum holding time for a water sample collected for nitrate analysis when preserved with H₂SO₄ to pH < 2 at 4°C?",
     options: [
-      "24 hours",
+      "28 days",
       "48 hours",
       "7 days",
-      "28 days",
+      "24 hours",
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation: "Nitrate samples preserved with H₂SO₄ to pH < 2 and cooled to 4°C have a maximum holding time of 28 days. Without preservation, the holding time is only 48 hours due to biological conversion of nitrate to nitrite by denitrifying bacteria.",
   },
   {
@@ -3363,12 +3363,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory is validating a new method for lead analysis. The method spike recovery for a 10 μg/L spike is 87%. Is this acceptable?",
     options: [
-      "Yes — recoveries between 80-120% are generally acceptable",
-      "No — recoveries must be 95-105% for trace metal analysis",
       "Yes — any recovery above 75% is acceptable",
+      "No — recoveries must be 95-105% for trace metal analysis",
+      "Yes — recoveries between 80-120% are generally acceptable",
       "No — the spike must be recovered at exactly 100%",
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: "For most environmental analytical methods, spike recoveries between 80-120% are considered acceptable. The 87% recovery is within this range, indicating the method is performing adequately. Some methods specify tighter control limits (85-115%), but 80-120% is the general standard for drinking water analysis.",
     steps: [
       { l: "Identify Recovery", c: "The method spike recovery is given as 87%." },
@@ -3420,12 +3420,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A rapid sand filter has an area of 50 m² and a flow rate of 600 m³/hour. What is the filtration rate in m/hour (m³/m²/h)?",
     options: [
-      "6 m/h",
       "12 m/h",
+      "6 m/h",
       "30 m/h",
       "300 m/h",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Filtration rate = Flow / Area = 600 m³/h ÷ 50 m² = 12 m/h (or 12 m³/m²/h). Typical rapid sand filter rates are 5-15 m/h. A rate of 12 m/h is within the normal operating range.",
     steps: [
       { l: "Identify Given Values", c: "Given: Filter Area (A) = 50 m², Flow Rate (Q) = 600 m³/hour." },
@@ -3463,12 +3463,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water plant treats 8 ML/day. The raw water turbidity is 45 NTU and the treated water turbidity is 0.08 NTU. The sludge produced has a solids content of 2% (by weight) and a density of 1,010 kg/m³. Assuming all turbidity removal results in sludge, and 1 NTU ≈ 1.5 mg/L TSS, how many m³ of sludge are produced per day?",
     options: [
-      "2.67 m³",
       "26.7 m³",
+      "2.67 m³",
       "267 m³",
       "0.267 m³",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "TSS removed = (45 - 0.08) NTU × 1.5 mg/L per NTU ≈ 67.4 mg/L. Mass of solids = 8,000,000 L/day × 67.4 mg/L × (1 g/1,000 mg) × (1 kg/1,000 g) = 539 kg/day. Volume of sludge = 539 kg / (0.02 × 1,010 kg/m³) = 539 / 20.2 = 26.7 m³/day. Wait, recalculating: 539/(0.02×1010) = 539/20.2 = 26.7 m³. But the question asks for m³ and the answer 2.67 m³ would be if sludge density were 10,100 kg/m³. The correct answer is 26.7 m³.",
     steps: [
       { l: "Calculate Turbidity Removed", c: "Turbidity removed = Raw water turbidity - Treated water turbidity = 45 NTU - 0.08 NTU = 44.92 NTU" },
@@ -3528,12 +3528,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A water main has a diameter of 300 mm and carries water at a velocity of 1.2 m/s. What is the flow rate in L/s?",
     options: [
-      "84.8 L/s",
-      "8.48 L/s",
       "339 L/s",
+      "8.48 L/s",
+      "84.8 L/s",
       "33.9 L/s",
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: "Area = π × r² = π × (0.15 m)² = 0.0707 m². Flow = Area × Velocity = 0.0707 × 1.2 = 0.0848 m³/s = 84.8 L/s.",
     steps: [
       { l: "Convert Diameter to Radius", c: "The diameter is 300 mm. First, convert mm to meters: 300 mm * (1 m / 1000 mm) = 0.3 m. The radius (r) is half the diameter: r = 0.3 m / 2 = 0.15 m." },
@@ -3571,11 +3571,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A sample of water has a chlorine demand of 1.2 mg/L. If the desired chlorine residual is 0.5 mg/L, what is the required chlorine dose?",
     options: [
       "0.7 mg/L",
-      "1.7 mg/L",
       "0.6 mg/L",
+      "1.7 mg/L",
       "1.2 mg/L",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Chlorine dose = Chlorine demand + Desired residual = 1.2 + 0.5 = 1.7 mg/L. The chlorine demand represents the amount consumed by reactions with organic matter, ammonia, iron, manganese, and other reducing agents before a residual is established.",
     steps: [
       { l: "Understand the Goal", c: "The goal is to determine the total chlorine dose required to satisfy the chlorine demand and achieve a desired residual." },
@@ -3592,12 +3592,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory receives a sample with a reported volume of 1,000 mL. The analyst performs a 1:10 dilution before analysis. The instrument reads 2.3 mg/L. What is the concentration in the original sample?",
     options: [
-      "0.23 mg/L",
       "23 mg/L",
+      "0.23 mg/L",
       "2.3 mg/L",
       "230 mg/L",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Original concentration = Measured concentration × Dilution factor = 2.3 mg/L × 10 = 23 mg/L. Always multiply by the dilution factor (not divide) to get back to the original concentration. A 1:10 dilution means 1 part sample + 9 parts diluent = 10× dilution.",
     steps: [
       { l: "Identify Given Values", c: "Measured Concentration = 2.3 mg/L Dilution = 1:10" },
@@ -3614,11 +3614,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Convert 250 mg/L of hardness as CaCO₃ to grains per US gallon (gpg). (1 gpg = 17.1 mg/L as CaCO₃)",
     options: [
       "4,275 gpg",
-      "14.6 gpg",
       "250 gpg",
+      "14.6 gpg",
       "17.1 gpg",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "250 mg/L ÷ 17.1 mg/L per gpg = 14.6 gpg. The conversion factor 17.1 mg/L per gpg is commonly used in water softening calculations. Water with 14.6 gpg hardness would be classified as very hard (>10.5 gpg).",
     steps: [
       { l: "Identify Given Values", c: "Given: Hardness = 250 mg/L as CaCO₃. Conversion factor = 1 gpg = 17.1 mg/L as CaCO₃." },
@@ -3635,12 +3635,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A rapid gravity filter has a surface area of 80 m² and a media depth of 0.75 m. The filter is backwashed at a rate of 40 m/h for 15 minutes. How many litres of backwash water are used per backwash cycle?",
     options: [
-      "800,000 L",
+      "80,000 L",
       "800 L",
       "8,000 L",
-      "80,000 L",
+      "800,000 L",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: "Backwash volume = Area × Rate × Time = 80 m² × 40 m/h × (15/60 h) = 80 × 40 × 0.25 = 800 m³ = 800,000 L. Backwash water volume is typically 2-5% of filtered water production, which is an important consideration for water recovery efficiency.",
     steps: [
       { l: "Identify Given Values", c: "Surface Area (A) = 80 m² Backwash Rate (R) = 40 m/h Backwash Time (T) = 15 minutes" },
@@ -3657,12 +3657,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A water system adds lime (Ca(OH)₂, MW = 74) to raise the pH. If the dose is 50 mg/L as CaCO₃ (MW = 100), what is the equivalent lime dose in mg/L as Ca(OH)₂?",
     options: [
-      "37 mg/L",
+      "50 mg/L",
       "67.6 mg/L",
       "74 mg/L",
-      "50 mg/L",
+      "37 mg/L",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: "Equivalent weight of Ca(OH)₂ = 74/2 = 37 g/eq. Equivalent weight of CaCO₃ = 100/2 = 50 g/eq. Lime dose = 50 mg/L as CaCO₃ × (37/50) = 37 mg/L as Ca(OH)₂.",
     steps: [
       { l: "Understand the Goal", c: "The question asks to convert a dose expressed 'as CaCO₃' to an equivalent dose 'as Ca(OH)₂'. This requires using equivalent weights to relate the two compounds." },
@@ -3679,12 +3679,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water plant's flow meter reads 2,850 m³/hour. The plant operates 22 hours per day (2 hours for maintenance). The annual water production in megalitres (ML) is:",
     options: [
-      "22,899 ML",
       "22.9 ML",
+      "22,899 ML",
       "2,290 ML",
       "229 ML",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "Daily production = 2,850 m³/h × 22 h/day = 62,700 m³/day = 62.7 ML/day. Annual production = 62.7 ML/day × 365 days = 22,885.5 ML ≈ 22,899 ML (rounding differences may apply). This is the annual volume the plant must account for in its annual report.",
     steps: [
       { l: "Calculate Daily Production", c: "First, determine the total volume of water produced per day. Daily production = Flow rate × Operating hours/day = 2,850 m³/hour × 22 hours/day = 62,700 m³/day." },
@@ -3714,12 +3714,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A coagulation jar test uses 6 jars with alum doses of 5, 10, 15, 20, 25, and 30 mg/L. The optimal dose produces a settled turbidity of 0.4 NTU at 20 mg/L. If the plant flow is 12,000 m³/day and alum is supplied as a 48% solution (density 1.32 kg/L), how many litres of alum solution are required per day?",
     options: [
-      "3.79 L",
-      "37.9 L",
       "379 L",
+      "37.9 L",
+      "3.79 L",
       "3,790 L",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "Alum required = 12,000 m³/day × 20 mg/L × 1,000 L/m³ / 1,000,000 mg/kg = 240 kg/day. Volume of solution = 240 kg / (0.48 × 1.32 kg/L) = 240 / 0.6336 = 378.8 ≈ 379 L/day.",
     steps: [
       { l: "Identify Optimal Alum Dose", c: "From the jar test results, the optimal alum dose is given as 20 mg/L." },
@@ -3736,12 +3736,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A water main breaks and releases 500,000 L of water. The water table is 3 m below ground surface. If the soil has a porosity of 35%, what volume of soil (m³) would be saturated by this water?",
     options: [
-      "1,429 m³",
+      "5,000 m³",
       "500 m³",
       "175 m³",
-      "5,000 m³",
+      "1,429 m³",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: "Volume of soil saturated = Volume of water / Porosity = 500,000 L / (1,000 L/m³) / 0.35 = 500 m³ / 0.35 = 1,429 m³. Porosity represents the fraction of soil volume that is void space; dividing the water volume by porosity gives the total soil volume that can be saturated.",
     steps: [
       { l: "Convert Water Volume to m³", c: "The given water volume is 500,000 L. To use it with porosity, convert liters to cubic meters: 500,000 L * (1 m³ / 1,000 L) = 500 m³." },
@@ -3758,11 +3758,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A UV disinfection system delivers a UV dose of 40 mJ/cm² at a flow of 500 m³/hour. If the flow increases to 650 m³/hour with the same lamp power, what is the new UV dose?",
     options: [
       "52 mJ/cm²",
-      "30.8 mJ/cm²",
       "40 mJ/cm²",
+      "30.8 mJ/cm²",
       "26 mJ/cm²",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "UV dose is inversely proportional to flow rate (at constant lamp power): New dose = Old dose × (Old flow / New flow) = 40 × (500/650) = 40 × 0.769 = 30.8 mJ/cm². This is why UV systems must be validated at maximum design flow — increasing flow reduces the UV dose and may compromise disinfection.",
     steps: [
       { l: "Identify Relationship", c: "UV dose is inversely proportional to flow rate when lamp power is constant. This means if flow increases, UV dose decreases proportionally. The formula is: New Dose = Old Dose × (Old Flow / New Flow)." },
@@ -3780,11 +3780,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water reservoir is 50 m long, 30 m wide, and 4 m deep. It is filled to 80% capacity. What is the volume of water in the reservoir in m³?",
     options: [
       "6,000 m³",
-      "4,800 m³",
-      "480 m³",
       "60,000 m³",
+      "480 m³",
+      "4,800 m³",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Total volume = 50 × 30 × 4 = 6,000 m³. Volume at 80% = 6,000 × 0.80 = 4,800 m³.",
     steps: [
       { l: "Identify Dimensions", c: "Length (L) = 50 m, Width (W) = 30 m, Depth (D) = 4 m." },
@@ -3800,12 +3800,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water plant adds 15 mg/L of alum (Al₂(SO₄)₃·18H₂O, MW = 666) to 10,000 m³/day. Alum reacts with natural alkalinity: Al₂(SO₄)₃ + 6HCO₃⁻ → 2Al(OH)₃ + 3SO₄²⁻ + 6CO₂. How much alkalinity (as CaCO₃) is consumed per day?",
     options: [
-      "225 kg",
       "22.5 kg",
+      "225 kg",
       "2,250 kg",
       "450 kg",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "Alum added = 10,000 m³/day × 15 mg/L × 1,000 L/m³ / 1,000,000 = 150 kg/day. Moles of alum = 150,000 g / 666 g/mol = 225.2 mol/day. Alkalinity consumed = 225.2 mol × 6 mol HCO₃⁻/mol alum × 50 g CaCO₃/eq × (1 eq/mol HCO₃⁻) = 225.2 × 6 × 50 = 67,568 g = 67.6 kg/day as CaCO₃. Hmm, let me recalculate: 225.2 mol alum × 6 mol HCO₃⁻ = 1,351 mol HCO₃⁻. As CaCO₃: 1,351 mol × 50 g/mol = 67,568 g = 67.6 kg/day. The answer 225 kg doesn't match. Correcting: the answer is approximately 67.6 kg, closest to 22.5 kg if using different stoichiometry. Using the rule of thumb: 1 mg/L alum consumes 0.5 mg/L alkalinity as CaCO₃: 15 × 0.5 = 7.5 mg/L × 10,000 m³/day × 1,000 L/m³ / 1,000,000 = 75 kg/day.",
     steps: [
       { l: "Calculate Alum Mass", c: "Alum added per day = 10,000 m³/day * 15 mg/L * (1000 L / 1 m³) * (1 kg / 1,000,000 mg) = 150 kg/day" },
@@ -3823,11 +3823,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A sample of water is analyzed and found to contain 2.5 mg/L of ammonia-nitrogen (NH₃-N). What is the equivalent concentration as ammonia (NH₃)?",
     options: [
       "2.5 mg/L",
-      "2.06 mg/L",
       "3.04 mg/L",
+      "2.06 mg/L",
       "1.47 mg/L",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: "To convert NH₃-N to NH₃: multiply by (MW of NH₃ / MW of N) = 17/14 = 1.214. NH₃ = 2.5 × 1.214 = 3.04 mg/L. Conversely, to convert NH₃ to NH₃-N, multiply by 14/17 = 0.824.",
     steps: [
       { l: "Understand the Goal", c: "The question asks to convert ammonia-nitrogen (NH₃-N) concentration to ammonia (NH₃) concentration. This involves using the ratio of their molecular weights." },
@@ -3845,11 +3845,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the primary advantage of using chloramines (combined chlorine) over free chlorine for distribution system disinfection?",
     options: [
       "Chloramines are more effective against Cryptosporidium",
-      "Chloramines produce fewer trihalomethanes (THMs) and haloacetic acids (HAAs)",
-      "Chloramines maintain a higher residual at lower doses",
       "Chloramines are more effective at low pH",
+      "Chloramines maintain a higher residual at lower doses",
+      "Chloramines produce fewer trihalomethanes (THMs) and haloacetic acids (HAAs)",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Chloramines are weaker disinfectants than free chlorine but produce significantly fewer DBPs (THMs, HAAs) because they are less reactive with natural organic matter. They also maintain a more stable residual in distribution systems due to slower decay rates.",
   },
   {
@@ -3900,12 +3900,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water plant achieves a CT of 120 mg·min/L with free chlorine at pH 7.5 and 10°C. Using the CT tables, this achieves approximately what log inactivation of Giardia?",
     options: [
-      "0.5-log",
-      "1.0-log",
       "1.5-log",
+      "1.0-log",
+      "0.5-log",
       "2.0-log",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "At pH 7.5 and 10°C, the CT required for 1-log Giardia inactivation with free chlorine is approximately 65 mg·min/L. For 1.5-log, CT ≈ 97 mg·min/L. For 2.0-log, CT ≈ 130 mg·min/L. A CT of 120 mg·min/L falls between 1.5 and 2.0 log, closest to 1.5-log inactivation.",
   },
   {
@@ -3915,11 +3915,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the breakpoint chlorination phenomenon?",
     options: [
       "The point at which chlorine demand is satisfied and a free residual begins to form",
-      "The point at which combined chlorine is completely destroyed and free chlorine begins to form",
       "The point at which chlorine becomes toxic to humans",
+      "The point at which combined chlorine is completely destroyed and free chlorine begins to form",
       "The maximum chlorine dose that can be applied without forming THMs",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Breakpoint chlorination occurs when sufficient chlorine is added to oxidize all ammonia and organic nitrogen compounds. As chlorine is added, combined chlorine (chloramines) forms initially, then decreases as chloramines are oxidized to nitrogen gas. Beyond the breakpoint, additional chlorine appears as free chlorine residual.",
   },
   {
@@ -3928,12 +3928,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water system uses ozone for primary disinfection. The ozone CT required for 3-log Giardia inactivation at 10°C is 0.48 mg·min/L. If the ozone residual at the outlet of the contact chamber is 0.2 mg/L and the detention time is 4 minutes, what is the CT achieved?",
     options: [
-      "0.8 mg·min/L",
       "0.48 mg·min/L",
+      "0.8 mg·min/L",
       "0.2 mg·min/L",
       "4.0 mg·min/L",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "CT = C × T = 0.2 mg/L × 4 min = 0.8 mg·min/L. The achieved CT of 0.8 mg·min/L exceeds the required 0.48 mg·min/L for 3-log Giardia inactivation, so the system is meeting its disinfection target. Note that ozone is a much more powerful disinfectant than chlorine — the required CT values are orders of magnitude lower.",
     steps: [
       { l: "Understand CT Concept", c: "CT (Concentration × Time) is a measure of disinfection effectiveness. It is calculated by multiplying the disinfectant residual concentration (C) by the contact time (T)." },
@@ -3951,11 +3951,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Which disinfection by-product is formed when chlorine reacts with bromide-containing water?",
     options: [
       "Chloroform (CHCl₃)",
-      "Bromoform (CHBr₃)",
-      "Dichloroacetic acid",
       "Trichloroamine",
+      "Dichloroacetic acid",
+      "Bromoform (CHBr₃)",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "When chlorine is applied to water containing bromide (Br⁻), it oxidizes bromide to hypobromous acid (HOBr), which then reacts with natural organic matter to form brominated DBPs including bromoform (CHBr₃), dibromochloromethane, and bromoacetic acids. Coastal groundwaters and some surface waters have elevated bromide from seawater intrusion.",
   },
   {
@@ -3979,11 +3979,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the primary purpose of maintaining a chlorine residual in the distribution system?",
     options: [
       "To prevent corrosion of distribution pipes",
-      "To provide a barrier against microbial regrowth and recontamination",
-      "To maintain acceptable taste and odour",
       "To comply with aesthetic objectives",
+      "To maintain acceptable taste and odour",
+      "To provide a barrier against microbial regrowth and recontamination",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The primary purpose of maintaining a chlorine residual is to provide ongoing protection against microbial contamination and regrowth in the distribution system. It serves as an indicator of system integrity — a sudden loss of residual can signal a contamination event or system breach.",
   },
   {
@@ -4007,11 +4007,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the significance of detecting Escherichia coli (E. coli) in a drinking water sample?",
     options: [
       "It indicates the presence of total coliforms",
-      "It is definitive evidence of recent fecal contamination",
-      "It indicates the water has exceeded its aesthetic objectives",
       "It suggests the sample was improperly collected",
+      "It indicates the water has exceeded its aesthetic objectives",
+      "It is definitive evidence of recent fecal contamination",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "E. coli is a specific indicator of fecal contamination because it is found exclusively in the intestines of warm-blooded animals. Its presence in drinking water indicates recent fecal contamination and the potential presence of enteric pathogens. Unlike total coliforms, E. coli is not found in soil or vegetation.",
   },
   {
@@ -4035,11 +4035,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of using m-Endo agar in the membrane filtration method for total coliform analysis?",
     options: [
       "To selectively grow E. coli only",
-      "To grow all bacteria present in the sample",
       "To selectively grow total coliforms, which produce metallic sheen colonies",
+      "To grow all bacteria present in the sample",
       "To inhibit coliform growth and detect non-coliform bacteria",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: "m-Endo agar contains lactose and a basic fuchsin dye. Total coliforms ferment lactose, producing acetaldehyde, which reacts with sodium sulfite and basic fuchsin to form a metallic green sheen on the colonies. This selective medium allows coliforms to be distinguished from non-coliform bacteria.",
   },
   {
@@ -4063,11 +4063,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the maximum holding time for a water sample collected for microbiological analysis?",
     options: [
       "6 hours",
-      "24 hours",
       "48 hours",
+      "24 hours",
       "72 hours",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Microbiological samples must be analyzed within 24 hours of collection (6 hours is preferred). Samples must be kept at 4°C during transport. Longer holding times allow bacterial populations to change — coliforms may die off or non-target bacteria may multiply, leading to false results.",
   },
   {
@@ -4076,12 +4076,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory analyzes a 100 mL water sample by membrane filtration and counts 23 coliform colonies on m-Endo agar. What is the total coliform count per 100 mL?",
     options: [
-      "23 CFU/100 mL",
-      "2.3 CFU/100 mL",
       "230 CFU/100 mL",
+      "2.3 CFU/100 mL",
+      "23 CFU/100 mL",
       "0.23 CFU/100 mL",
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: "When the full 100 mL sample volume is filtered, the count is reported directly as CFU/100 mL. If a dilution had been used, the count would be multiplied by the dilution factor. The result of 23 CFU/100 mL indicates a positive adverse result — any detectable coliforms in a treated water sample is an adverse result under Ontario regulations.",
     steps: [
       { l: "Understand the Sample", c: "The question states a 100 mL water sample was analyzed, and 23 coliform colonies were counted." },
@@ -4111,12 +4111,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water system collects a raw water sample that contains 1,200 CFU/100 mL total coliforms. After treatment, the finished water sample contains 0 CFU/100 mL. What is the log removal achieved?",
     options: [
-      "1.2-log",
       "3.08-log",
+      "1.2-log",
       "Infinite — cannot calculate log removal when final count is zero",
       "2.0-log",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Log removal = log₁₀(influent count / effluent count). When the effluent count is 0, a practical approach is to use 1 CFU/100 mL as the detection limit: log₁₀(1,200/1) = log₁₀(1,200) = 3.08-log. This represents the minimum log removal achieved — the actual removal could be higher.",
     steps: [
       { l: "Identify Formula", c: "The formula for log removal is: Log Removal = log₁₀(Influent Count / Effluent Count)." },
@@ -4133,11 +4133,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What type of sample container must be used for microbiological water samples, and why?",
     options: [
       "Any clean glass or plastic container",
-      "Sterile container with sodium thiosulfate for dechlorination",
       "Amber glass bottle with HCl preservation",
+      "Sterile container with sodium thiosulfate for dechlorination",
       "Plastic container with EDTA to chelate interfering metals",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Microbiological samples must be collected in sterile containers pre-dosed with sodium thiosulfate (typically 100 mg/L). Sterility prevents contamination from the container, and sodium thiosulfate neutralizes any chlorine residual that would kill bacteria during transport, preventing false-negative results.",
     steps: [
       { l: "Identify Container Type", c: "Microbiological water samples require sterile containers." },
@@ -4155,10 +4155,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: [
       "1 ppm",
       "3 ppm",
-      "10 ppm",
       "25 ppm",
+      "10 ppm",
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: "The IDLH for chlorine gas is 10 ppm. At this concentration, exposure for 30 minutes would be life-threatening. The TLV-TWA (8-hour time-weighted average) is 0.5 ppm, and the TLV-C (ceiling) is 1 ppm. Chlorine gas is detectable by odour at 0.5-1 ppm, providing some warning before reaching dangerous levels.",
     steps: [
       { l: "Understand the Question", c: "The question asks for the IDLH (Immediately Dangerous to Life or Health) concentration specifically for chlorine gas." },
@@ -4175,11 +4175,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A laboratory technician is working with concentrated sulfuric acid (H₂SO₄) for sample preservation. The acid splashes on their skin. What is the correct first aid procedure?",
     options: [
       "Apply baking soda (NaHCO₃) paste to neutralize the acid",
-      "Flush immediately with large amounts of water for at least 20 minutes",
       "Apply ice to reduce the burning sensation",
+      "Flush immediately with large amounts of water for at least 20 minutes",
       "Blot dry with paper towels and apply burn cream",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The correct first aid for acid skin contact is immediate flushing with large amounts of water for at least 20 minutes. Neutralizing agents (baking soda) should NOT be applied — the neutralization reaction generates heat, which can worsen the burn. Remove contaminated clothing while flushing. Seek medical attention after flushing.",
   },
   {
@@ -4188,12 +4188,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Under WHMIS 2015, what information must be included on a workplace label for a hazardous product?",
     options: [
-      "Product name, hazard pictograms, signal word, hazard statements, precautionary statements, and supplier information",
+      "Product name and first aid measures only",
       "Product name and MSDS number only",
       "Product name, CAS number, and LD50 value",
-      "Product name and first aid measures only",
+      "Product name, hazard pictograms, signal word, hazard statements, precautionary statements, and supplier information",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: "WHMIS 2015 (aligned with GHS) requires workplace labels to include: product identifier (name), hazard pictograms, signal word (Danger or Warning), hazard statements, precautionary statements, and supplier contact information. Safety Data Sheets (SDSs) provide detailed information in 16 standardized sections.",
   },
   {
@@ -4203,11 +4203,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water treatment plant stores chlorine gas cylinders. During a chlorine leak, the emergency response team uses SCBA (Self-Contained Breathing Apparatus). What is the minimum air supply time required for SCBA used in IDLH atmospheres under Canadian regulations?",
     options: [
       "15 minutes",
-      "30 minutes",
-      "45 minutes",
       "60 minutes",
+      "45 minutes",
+      "30 minutes",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "SCBA used in IDLH atmospheres must provide a minimum of 30 minutes of air supply under Canadian occupational health and safety regulations (aligned with NIOSH requirements). This provides sufficient time for rescue operations or evacuation. Positive-pressure SCBA is required in IDLH atmospheres to prevent inward leakage.",
   },
   {
@@ -4230,12 +4230,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory worker is exposed to sodium hypochlorite solution (12.5% available chlorine) that splashes into their eyes. What is the maximum time before permanent eye damage may occur if the eyes are not flushed?",
     options: [
-      "5 minutes",
+      "1 hour",
       "10 minutes",
       "30 minutes",
-      "1 hour",
+      "5 minutes",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: "Alkaline chemicals like sodium hypochlorite can cause severe eye damage within minutes. Eye flushing must begin immediately (within seconds) and continue for at least 20 minutes. Permanent damage can occur within 5 minutes of exposure to concentrated alkaline solutions. Emergency eyewash stations must be accessible within 10 seconds of the hazard.",
   },
   {
@@ -4245,11 +4245,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What type of fire extinguisher should be used for a fire involving electrical equipment in a water treatment laboratory?",
     options: [
       "Class A (water)",
-      "Class B (CO₂ or dry chemical)",
       "Class C (CO₂ or dry chemical)",
+      "Class B (CO₂ or dry chemical)",
       "Class D (dry powder)",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: "Class C fires involve energized electrical equipment. CO₂ or dry chemical extinguishers are appropriate because they are non-conductive. Water (Class A) must never be used on electrical fires due to electrocution risk. Class B is for flammable liquids. Class D is for combustible metals (magnesium, titanium).",
   },
   {
@@ -4272,12 +4272,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the purpose of a fume hood in a water quality laboratory?",
     options: [
-      "To provide a clean work area for sterile sample preparation",
       "To contain and exhaust hazardous vapours, protecting the analyst",
+      "To provide a clean work area for sterile sample preparation",
       "To maintain a constant temperature for chemical reactions",
       "To prevent contamination of samples from the laboratory environment",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "A fume hood protects laboratory workers from exposure to hazardous vapours, gases, and aerosols generated during chemical analysis. The hood draws air inward and exhausts it through a filtered or direct exhaust system. It must maintain a face velocity of 0.4-0.5 m/s to effectively contain hazardous materials.",
     steps: [
       { l: "Identify Core Function", c: "The primary purpose of a fume hood is to protect laboratory personnel from harmful airborne substances. This is explicitly stated as 'protects laboratory workers from exposure to hazardous vapours, gases, and aerosols'." },
@@ -4293,12 +4293,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory runs a matrix spike and matrix spike duplicate (MS/MSD) for a chloride analysis. The MS recovery is 95% and the MSD recovery is 108%. The relative percent difference (RPD) is:",
     options: [
-      "13%",
+      "26%",
       "6.5%",
       "3.5%",
-      "26%",
+      "13%",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: "RPD = |MS - MSD| / ((MS + MSD) / 2) × 100 = |95 - 108| / ((95 + 108) / 2) × 100 = 13 / 101.5 × 100 = 12.8% ≈ 13%. An RPD < 20% is generally acceptable for most methods. The RPD measures precision (reproducibility) between duplicate measurements.",
     steps: [
       { l: "Identify Formula", c: "The formula for Relative Percent Difference (RPD) is: RPD = |MS - MSD| / ((MS + MSD) / 2) × 100" },
@@ -4315,12 +4315,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the purpose of running a method blank in analytical chemistry?",
     options: [
-      "To calibrate the instrument to zero",
       "To detect contamination introduced by the analytical process, reagents, or glassware",
+      "To calibrate the instrument to zero",
       "To verify that the sample matrix does not interfere with the analysis",
       "To establish the detection limit of the method",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "A method blank contains all reagents and goes through the complete analytical procedure without any sample. Any signal in the method blank indicates contamination from the reagents, glassware, or analytical process itself. Method blank results must be subtracted from sample results or investigated if above the detection limit.",
   },
   {
@@ -4329,12 +4329,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory's control chart for pH measurement shows the following pattern over 20 days: the last 8 consecutive measurements are all above the mean. Which control chart rule is violated?",
     options: [
-      "Western Electric Rule 1 (one point beyond 3σ)",
       "Nelson Rule 2 (nine consecutive points on one side of mean)",
+      "Western Electric Rule 1 (one point beyond 3σ)",
       "Nelson Rule 3 (six consecutive points trending)",
       "Western Electric Rule 4 (fourteen alternating points)",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Nelson Rule 2 states that nine or more consecutive points on one side of the mean indicate a systematic bias (shift in the process mean). Eight consecutive points is close but technically doesn't trigger this rule — nine is the threshold. However, this pattern is still a warning sign of a systematic issue such as a drifting reference standard or electrode.",
   },
   {
@@ -4357,12 +4357,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory receives a certified reference material (CRM) for nitrate with a certified value of 5.00 ± 0.10 mg/L. The laboratory analyzes it in triplicate and gets: 4.82, 4.89, 4.91 mg/L. What is the percent bias?",
     options: [
-      "-2.5%",
-      "+2.5%",
       "-0.5%",
+      "+2.5%",
+      "-2.5%",
       "+0.5%",
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: "Mean result = (4.82 + 4.89 + 4.91) / 3 = 14.62 / 3 = 4.873 mg/L. Percent bias = (Mean - True) / True × 100 = (4.873 - 5.00) / 5.00 × 100 = -0.127 / 5.00 × 100 = -2.54% ≈ -2.5%. A negative bias indicates the method is underreporting. The results are outside the CRM uncertainty range (4.90-5.10), indicating a systematic low bias.",
     steps: [
       { l: "Calculate Mean Result", c: "Mean result = (4.82 + 4.89 + 4.91) / 3 = 14.62 / 3 = 4.873 mg/L" },
@@ -4393,12 +4393,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the van't Hoff factor and how does it affect osmotic pressure calculations for ionic solutes?",
     options: [
-      "It accounts for the number of ions produced when a solute dissociates, increasing the effective particle concentration",
-      "It corrects for non-ideal behaviour of gases at high pressure",
       "It measures the temperature dependence of reaction rates",
+      "It corrects for non-ideal behaviour of gases at high pressure",
+      "It accounts for the number of ions produced when a solute dissociates, increasing the effective particle concentration",
       "It describes the relationship between pH and ion activity",
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: "The van't Hoff factor (i) represents the number of particles produced when a solute dissolves. For NaCl, i = 2 (Na⁺ + Cl⁻). For CaCl₂, i = 3 (Ca²⁺ + 2Cl⁻). Osmotic pressure = iMRT, where M is molarity, R is the gas constant, and T is temperature. Higher i means higher osmotic pressure, which is important in reverse osmosis membrane design.",
   },
   {
@@ -4407,12 +4407,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water sample has a dissolved oxygen (DO) concentration of 6.2 mg/L at 20°C. The saturation DO at 20°C is 9.1 mg/L. What is the percent saturation?",
     options: [
-      "68%",
+      "91%",
       "147%",
       "6.2%",
-      "91%",
+      "68%",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: "Percent saturation = (Actual DO / Saturation DO) × 100 = (6.2 / 9.1) × 100 = 68.1% ≈ 68%. A value below 100% indicates the water is undersaturated with oxygen. Values below 80% may indicate organic pollution or stratification. Values above 100% (supersaturation) can occur in algae-rich waters during photosynthesis.",
     steps: [
       { l: "Identify Formula", c: "The formula for percent saturation of dissolved oxygen is: Percent Saturation = (Actual DO / Saturation DO) × 100" },
@@ -4428,12 +4428,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "Which process is responsible for the removal of taste and odour compounds (such as geosmin and MIB) in a water treatment plant?",
     options: [
-      "Coagulation and sedimentation",
       "Activated carbon adsorption (PAC or GAC)",
+      "Coagulation and sedimentation",
       "Chlorination",
       "Membrane filtration",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Geosmin (trans-1,10-dimethyl-trans-9-decalol) and 2-methylisoborneol (MIB) are taste and odour compounds produced by cyanobacteria and actinomycetes. They are detectable at extremely low concentrations (5-10 ng/L) and are poorly removed by conventional treatment. Activated carbon (PAC or GAC) is the most effective treatment for these compounds.",
   },
   {
@@ -4443,11 +4443,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A lake experiences thermal stratification in summer. The thermocline separates the epilimnion (warm, oxygenated surface layer) from the hypolimnion (cold, oxygen-depleted bottom layer). During fall turnover, what water quality changes should a water treatment plant operator anticipate?",
     options: [
       "Improved water quality as oxygen is mixed throughout the lake",
-      "Deterioration in water quality — increased turbidity, colour, taste/odour, and potential for iron/manganese release",
       "Decreased turbidity as particles settle during mixing",
+      "Deterioration in water quality — increased turbidity, colour, taste/odour, and potential for iron/manganese release",
       "No significant change in water quality",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "During fall turnover, the thermocline breaks down and the anoxic hypolimnion mixes with the surface water. This brings reduced iron (Fe²⁺), manganese (Mn²⁺), hydrogen sulfide (H₂S), ammonia, and taste/odour compounds to the surface intake. Treatment plants must be prepared to adjust coagulant doses, increase oxidation, and potentially use alternative intakes.",
   },
   {
@@ -4457,11 +4457,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the difference between colour and turbidity in water quality assessment?",
     options: [
       "Colour and turbidity are the same measurement",
-      "Colour is caused by dissolved substances; turbidity is caused by suspended particles",
-      "Turbidity is caused by dissolved substances; colour is caused by suspended particles",
       "Both are caused by suspended particles but measured at different wavelengths",
+      "Turbidity is caused by dissolved substances; colour is caused by suspended particles",
+      "Colour is caused by dissolved substances; turbidity is caused by suspended particles",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "True colour is caused by dissolved substances (humic acids, tannins, iron, manganese) that absorb light. Turbidity is caused by suspended particles (clay, silt, algae, bacteria) that scatter light. Colour is measured after filtering the sample (0.45 μm); apparent colour is measured on the unfiltered sample. Both affect aesthetic quality and disinfection efficiency.",
   },
   {
@@ -4512,12 +4512,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the purpose of using a certified reference material (CRM) in laboratory analysis?",
     options: [
-      "To calibrate the analytical instrument",
       "To verify the accuracy of the analytical method and laboratory performance",
+      "To calibrate the analytical instrument",
       "To prepare calibration standards",
       "To check the precision of replicate measurements",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "A CRM has a certified concentration value with known uncertainty, traceable to national or international standards. Analyzing a CRM verifies that the laboratory's method and analyst are producing accurate results. CRM results outside the certified range indicate a systematic error requiring investigation.",
   },
   {
@@ -4541,11 +4541,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the holding time for a water sample collected for total coliform analysis when preserved at 4°C?",
     options: [
       "6 hours",
-      "24 hours",
-      "48 hours",
       "7 days",
+      "48 hours",
+      "24 hours",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Microbiological samples must be analyzed within 24 hours of collection (6 hours is preferred for best results). The 24-hour maximum holding time applies to samples preserved at 4°C. Beyond this time, microbial populations change and results become unreliable.",
   },
   {
@@ -4555,11 +4555,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A laboratory is performing a method detection limit (MDL) study for nitrate. Seven replicate measurements of a low-level standard (0.5 mg/L) give the following results: 0.48, 0.51, 0.47, 0.52, 0.49, 0.50, 0.53 mg/L. What is the MDL?",
     options: [
       "0.02 mg/L",
-      "0.06 mg/L",
       "0.03 mg/L",
+      "0.06 mg/L",
       "0.10 mg/L",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Standard deviation (s) of the 7 replicates: mean = 0.5, deviations = -0.02, 0.01, -0.03, 0.02, -0.01, 0, 0.03. s = √(Σd²/n-1) = √(0.0004+0.0001+0.0009+0.0004+0.0001+0+0.0009)/6 = √(0.0028/6) = √0.000467 = 0.0216. MDL = t(n-1, 99%) × s = 3.143 × 0.0216 = 0.068 ≈ 0.06 mg/L. (t-value for 6 df at 99% one-tailed = 3.143)",
     steps: [
       { l: "Step 1", c: "Calculate the standard deviation (s) of the replicate measurements. The provided explanation already calculates this as 0.0216 mg/L." },
@@ -4577,11 +4577,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Which preservation method is required for a water sample collected for total phosphorus analysis?",
     options: [
       "Cool to 4°C only",
-      "Add H₂SO₄ to pH < 2, cool to 4°C",
-      "Add NaOH to pH > 12",
       "No preservation required — analyze immediately",
+      "Add NaOH to pH > 12",
+      "Add H₂SO₄ to pH < 2, cool to 4°C",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Total phosphorus samples must be preserved with H₂SO₄ to pH < 2 and cooled to 4°C. Acidification prevents biological conversion of organic phosphorus and precipitation of inorganic phosphorus. Maximum holding time is 28 days. Without preservation, biological activity can significantly alter phosphorus speciation within hours.",
   },
   {
@@ -4591,11 +4591,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A laboratory analyst is preparing a 1,000 mg/L stock standard for chloride from NaCl (MW = 58.44). How many grams of NaCl are needed to prepare 500 mL of this standard?",
     options: [
       "0.500 g",
-      "0.965 g",
-      "1.000 g",
       "1.930 g",
+      "1.000 g",
+      "0.965 g",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Chloride concentration in NaCl = MW of Cl / MW of NaCl = 35.45 / 58.44 = 0.6065. To get 1,000 mg/L Cl in 500 mL: mass of Cl needed = 1,000 mg/L × 0.5 L = 500 mg. Mass of NaCl = 500 mg / 0.6065 = 824.4 mg = 0.824 g. Wait, recalculating: 500 mg Cl × (58.44/35.45) = 500 × 1.649 = 824.5 mg = 0.8245 g. Closest answer is 0.965 g which would give: 0.965 × 0.6065 × 1000/0.5 = 1,170 mg/L. Let me recalculate for 0.965 g: 965 mg × (35.45/58.44) / 0.5 L = 965 × 0.6065 / 0.5 = 1,171 mg/L. The correct answer for 1,000 mg/L Cl in 500 mL is 0.824 g NaCl. The closest option is 0.965 g which is incorrect. Using 1.000 g: 1000 × 0.6065 / 0.5 = 1,213 mg/L. The question has an error — the correct answer should be ~0.824 g. Selecting 0.965 g as the closest available answer.",
     steps: [
       { l: "Determine target mass of Chloride", c: "The desired concentration is 1,000 mg/L in a 500 mL volume. First, calculate the total mass of chloride (Cl) needed: Mass of Cl = Concentration × Volume Mass of Cl = 1,000 mg/L × (500 mL / 1000 mL/L) Mass of Cl = 1,000 mg/L × 0.5 L = 500 mg Cl" },
@@ -4612,11 +4612,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of the QC check standard (also called a continuing calibration verification or CCV) in analytical chemistry?",
     options: [
       "To establish the initial calibration curve",
-      "To verify that the calibration remains valid throughout the analytical run",
       "To detect matrix interferences in the sample",
+      "To verify that the calibration remains valid throughout the analytical run",
       "To measure the method detection limit",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "A CCV (or QC check standard) is analyzed at regular intervals during an analytical run (typically every 10 samples) to verify that the initial calibration remains accurate. It is prepared from a different source than the calibration standards. If the CCV result falls outside the acceptance criteria (typically ±10%), the run must be stopped and the instrument recalibrated.",
     steps: [
       { l: "Define CCV Purpose", c: "The primary purpose of a QC check standard (CCV) is to monitor the ongoing accuracy and stability of an analytical instrument's calibration throughout a sample run. It ensures that the instrument's response to a known concentration has not drifted since the initial calibration." },
@@ -4633,11 +4633,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water sample is analyzed for dissolved metals. The sample must be filtered through a 0.45 μm membrane filter before analysis. What is the purpose of this filtration?",
     options: [
       "To remove bacteria that might interfere with the analysis",
-      "To separate dissolved metals from particulate metals for speciation",
       "To remove organic matter that might cause matrix interferences",
+      "To separate dissolved metals from particulate metals for speciation",
       "To concentrate the metals for better detection",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Filtration through 0.45 μm separates dissolved metals (operationally defined as passing through the filter) from particulate metals (retained on the filter). This is important for regulatory compliance (most drinking water MACs apply to dissolved metals), source water characterization, and understanding metal speciation and bioavailability.",
   },
   {
@@ -4647,11 +4647,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the correct procedure for cleaning glassware used for trace metal analysis?",
     options: [
       "Wash with soap and water, rinse with tap water, dry in oven",
-      "Wash with soap and water, rinse with distilled water, soak in 10% HNO₃ for 24 hours, rinse with ultrapure water",
       "Wash with soap and water, autoclave at 121°C for 15 minutes",
+      "Wash with soap and water, rinse with distilled water, soak in 10% HNO₃ for 24 hours, rinse with ultrapure water",
       "Rinse with acetone and allow to air dry",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Trace metal analysis requires extremely clean glassware to avoid contamination. The procedure involves: wash with detergent, rinse with tap water, rinse with distilled water, soak in 10% HNO₃ (nitric acid) for at least 24 hours to dissolve any residual metals, then rinse thoroughly with ultrapure (Type I) water. Acid washing removes metal contaminants that would cause false high results.",
   },
   {
@@ -4660,12 +4660,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory is validating a new method for E. coli analysis. The analyst inoculates a known concentration of 100 CFU/100 mL E. coli into sterile water and analyzes 10 replicates. The results range from 85 to 118 CFU/100 mL with a mean of 98 CFU/100 mL. What is the percent recovery?",
     options: [
-      "85%",
       "98%",
+      "85%",
       "118%",
       "13%",
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Percent recovery = (Mean measured / True value) × 100 = (98 / 100) × 100 = 98%. A recovery of 98% is excellent — it indicates the method is accurately quantifying E. coli. Acceptable recovery for microbiological methods is typically 70-130%, though tighter criteria (80-120%) may be specified in some protocols.",
     steps: [
       { l: "Identify Goal", c: "The question asks for the percent recovery of the E. coli analysis method." },
@@ -4711,11 +4711,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the significance of the 'method of standard additions' in analytical chemistry?",
     options: [
       "It is used to prepare calibration standards from certified reference materials",
-      "It corrects for matrix effects by adding known amounts of analyte to the sample itself",
       "It is used to determine the method detection limit",
+      "It corrects for matrix effects by adding known amounts of analyte to the sample itself",
       "It corrects for instrument drift during long analytical runs",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The method of standard additions is used when the sample matrix causes interferences that affect the analytical signal (matrix effects). Known amounts of analyte are added to aliquots of the sample, and the response is measured. By extrapolating the calibration line to zero response, the original analyte concentration is determined. This approach accounts for matrix-specific enhancement or suppression effects.",
   },
   {
@@ -4724,12 +4724,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory receives 50 samples for total coliform analysis. The quality control protocol requires a method blank for every 20 samples. How many method blanks are required for this batch?",
     options: [
-      "1",
-      "2",
       "3",
+      "2",
+      "1",
       "5",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "For 50 samples with a method blank every 20 samples: 50 ÷ 20 = 2.5, rounded up to 3 method blanks. QC protocols typically require rounding up to ensure adequate coverage. Some protocols also require a method blank at the beginning and end of the run, which would also give 3 blanks for this batch size.",
   },
   {
@@ -4790,11 +4790,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water sample is analyzed for lead using ICP-MS. The instrument detection limit is 0.1 μg/L, but the method detection limit is 0.5 μg/L. What accounts for the difference?",
     options: [
       "The ICP-MS instrument is not properly calibrated",
-      "The method detection limit includes additional uncertainty from sample preparation steps (digestion, dilution, matrix effects)",
       "The method detection limit is always 5× the instrument detection limit",
+      "The method detection limit includes additional uncertainty from sample preparation steps (digestion, dilution, matrix effects)",
       "The difference is due to the analyst's skill level",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The instrument detection limit (IDL) is based on the instrument's signal-to-noise ratio alone. The method detection limit (MDL) includes all sources of variability in the complete analytical procedure: sample preparation, digestion, dilution, matrix effects, and analyst variability. The MDL is always higher than the IDL because it accounts for real-world analytical challenges beyond the instrument's theoretical capability.",
     steps: [
       { l: "Define IDL", c: "The Instrument Detection Limit (IDL) represents the lowest concentration of an analyte that an instrument can reliably detect, based purely on the instrument's inherent noise and signal response. It's a theoretical limit under ideal conditions." },
@@ -4812,11 +4812,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the correct way to express a result that is below the method detection limit (MDL)?",
     options: [
       "Report as 0",
-      "Report as 'not detected' or '<MDL'",
       "Report the actual instrument reading",
+      "Report as 'not detected' or '<MDL'",
       "Report as the MDL value",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Results below the MDL should be reported as 'not detected (ND)' or '<MDL' (e.g., <0.5 μg/L), not as zero. Reporting as zero implies the analyte is absent, which cannot be confirmed. Reporting the actual instrument reading below the MDL implies a level of precision that the method cannot support. The MDL value and 'not detected' notation communicate the analytical limitation clearly.",
     steps: [
       { l: "Understand the MDL", c: "The Method Detection Limit (MDL) is the minimum concentration of a substance that can be measured and reported with a stated confidence that the analyte concentration is greater than zero. Any result below this limit is not reliably quantifiable." },
@@ -4833,12 +4833,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory performs duplicate analyses of a water sample for fluoride. The results are 0.82 mg/L and 0.79 mg/L. What is the relative percent difference (RPD)?",
     options: [
-      "3.7%",
       "0.03%",
+      "3.7%",
       "1.5%",
       "7.4%",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: "RPD = |R1 - R2| / ((R1 + R2) / 2) × 100 = |0.82 - 0.79| / ((0.82 + 0.79) / 2) × 100 = 0.03 / 0.805 × 100 = 3.73% ≈ 3.7%. An RPD of 3.7% indicates good precision between duplicates. Most methods require RPD < 20% for acceptance, though some specify tighter limits (< 10%) for routine drinking water analysis.",
     steps: [
       { l: "Identify Formula", c: "The formula for Relative Percent Difference (RPD) is: RPD = |R1 - R2| / ((R1 + R2) / 2) × 100, where R1 and R2 are the two duplicate results." },
@@ -4886,11 +4886,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of a matrix spike in analytical chemistry?",
     options: [
       "To detect contamination in laboratory reagents",
-      "To measure the accuracy of the method in the specific sample matrix",
+      "To measure the precision of duplicate analyses",
       "To verify that the calibration curve is linear",
-      "To measure the precision of duplicate analyses"
+      "To measure the accuracy of the method in the specific sample matrix"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "A matrix spike is prepared by adding a known amount of the target analyte to a portion of the actual sample. The percent recovery is calculated as: (Spiked result - Unspiked result) / Spike added × 100%. Matrix spikes measure whether the sample matrix (pH, turbidity, dissolved solids, competing compounds) interferes with the analytical method. Acceptable recovery is typically 80-120%.",
     tip: "Matrix spike = measures accuracy in the sample matrix. Recovery 80-120% is acceptable for most methods.",
   },
@@ -4899,8 +4899,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Quality Assurance & Quality Control",
     difficulty: "hard",
     question: "A laboratory analyzes duplicate samples of a water sample for nitrate. The results are 4.2 mg/L and 3.8 mg/L. What is the relative percent difference (RPD)?",
-    options: ["0.4%", "4.0%", "9.8%", "10.5%"],
-    correctIndex: 2,
+    options: ["9.8%", "4.0%", "0.4%", "10.5%"],
+    correctIndex: 0,
     explanation: "RPD = |C1 - C2| / [(C1 + C2)/2] × 100% = |4.2 - 3.8| / [(4.2 + 3.8)/2] × 100% = 0.4 / 4.0 × 100% = 10%. Wait — let me recalculate: |4.2 - 3.8| = 0.4; average = (4.2 + 3.8)/2 = 4.0; RPD = 0.4/4.0 × 100% = 10%. Hmm, that's 10%, not 9.8%. Actually: average = 4.0, RPD = 0.4/4.0 × 100 = 10%. The closest answer is 9.8% — let me verify: RPD = 0.4/4.0 × 100 = 10.0%. The answer is 10.0%, closest to 9.8% in the options. For most methods, RPD < 20% is acceptable.",
     isCalc: true,
     tip: "RPD = |C1 - C2| / average × 100%. Target < 20% for most methods.",
@@ -4912,11 +4912,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the difference between accuracy and precision in analytical measurements?",
     options: [
       "Accuracy measures how close results are to each other; precision measures how close results are to the true value",
-      "Accuracy measures how close a result is to the true value; precision measures how reproducible results are",
+      "Accuracy applies only to calibration standards; precision applies only to field samples",
       "Accuracy and precision are the same concept measured by different QC samples",
-      "Accuracy applies only to calibration standards; precision applies only to field samples"
+      "Accuracy measures how close a result is to the true value; precision measures how reproducible results are"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Accuracy is how close a measured result is to the true or accepted value — measured by spike recovery (target 80-120%). Precision is how reproducible or consistent repeated measurements are — measured by duplicate RPD (target < 20%). A method can be precise but inaccurate (consistently wrong), accurate but imprecise (correct on average but variable), or both accurate and precise (ideal).",
     tip: "Accuracy = closeness to true value (spikes); Precision = reproducibility (duplicates/RPD).",
   },
@@ -4926,12 +4926,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory's control chart for a check standard shows the following pattern: 8 consecutive results all above the mean but within the warning limits. What action should be taken?",
     options: [
-      "No action — all results are within warning limits so the process is in control",
       "Investigate the cause — 8 consecutive points on one side of the mean is an out-of-control signal (Nelson Rule 2)",
+      "No action — all results are within warning limits so the process is in control",
       "Recalibrate the instrument — the calibration curve has shifted",
       "Increase the frequency of check standard analysis to every 5 samples"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Eight consecutive results on one side of the mean is an out-of-control signal (Nelson Rule 2 / Western Electric Rule). Even though all results are within warning limits, this pattern indicates a systematic bias or trend — not random variation. The cause must be investigated (e.g., reagent degradation, instrument drift, calibration standard error) before reporting results. This rule detects gradual shifts that would not be caught by the ±3SD rule alone.",
     tip: "8 consecutive points on one side of mean = out-of-control (Nelson Rule 2). Investigate even if within limits.",
   },
@@ -4942,11 +4942,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of a calibration verification check (CCV) in analytical chemistry?",
     options: [
       "To establish the initial calibration curve at the start of analysis",
-      "To verify that the calibration remains valid throughout the analytical run",
+      "To measure the method detection limit (MDL)",
       "To detect contamination in the sample preparation area",
-      "To measure the method detection limit (MDL)"
+      "To verify that the calibration remains valid throughout the analytical run"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "A calibration verification check (CCV) is a mid-range standard analyzed periodically during the analytical run (typically every 10-20 samples) to verify that the calibration curve remains valid and the instrument response has not drifted. The CCV result must be within 10% of the true value. If the CCV fails, analysis must stop, the cause investigated, and affected samples re-analyzed.",
     tip: "CCV verifies calibration stability during the run. Must be within 10% of true value.",
   },
@@ -4957,11 +4957,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is a surrogate spike and when is it used?",
     options: [
       "A surrogate spike is a known amount of the target analyte added to a sample to measure matrix effects",
-      "A surrogate spike is a non-native compound added to organic samples before extraction to monitor extraction efficiency",
       "A surrogate spike is a blank sample used to detect contamination in the extraction process",
+      "A surrogate spike is a non-native compound added to organic samples before extraction to monitor extraction efficiency",
       "A surrogate spike is a certified reference material used to verify instrument calibration"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "A surrogate spike is a compound that is chemically similar to the target analytes but is not expected to be present in environmental samples (e.g., a deuterated or fluorinated analogue). It is added to each sample before extraction to monitor the efficiency of the entire analytical process (extraction, cleanup, and analysis). Surrogate recovery outside the acceptance criteria (typically 70-130%) indicates a problem with the extraction or analysis of that sample.",
     tip: "Surrogate spike = monitors extraction efficiency in organic analysis. Added before extraction.",
   },
@@ -4987,11 +4987,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is ISO/IEC 17025 and why is it important for water quality laboratories?",
     options: [
       "ISO/IEC 17025 is a standard for drinking water quality — it sets the MACs for regulated parameters",
-      "ISO/IEC 17025 is the international standard for laboratory competence — accreditation demonstrates that a laboratory produces reliable, technically valid results",
+      "ISO/IEC 17025 is a standard for sampling procedures — it specifies how water samples must be collected",
       "ISO/IEC 17025 is a standard for laboratory safety — it sets requirements for chemical handling and PPE",
-      "ISO/IEC 17025 is a standard for sampling procedures — it specifies how water samples must be collected"
+      "ISO/IEC 17025 is the international standard for laboratory competence — accreditation demonstrates that a laboratory produces reliable, technically valid results"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "ISO/IEC 17025 is the international standard for the competence of testing and calibration laboratories. Accreditation to ISO/IEC 17025 by a recognized accreditation body (e.g., CALA in Canada) demonstrates that a laboratory has the technical competence and management systems to produce accurate, reliable, and technically valid results. In Ontario, laboratories analyzing drinking water samples for regulatory compliance must be accredited.",
     tip: "ISO/IEC 17025 = laboratory competence standard. CALA accredits Ontario drinking water labs.",
   },
@@ -5002,11 +5002,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A laboratory participates in a proficiency testing (PT) program. The assigned value for nitrate is 5.0 mg/L, the standard deviation for proficiency (σp) is 0.5 mg/L, and the laboratory's result is 6.2 mg/L. What is the z-score and what does it indicate?",
     options: [
       "z = 0.24; satisfactory performance",
-      "z = 2.4; questionable performance — investigate",
+      "z = 1.2; satisfactory performance",
       "z = 12; unsatisfactory performance — immediate corrective action required",
-      "z = 1.2; satisfactory performance"
+      "z = 2.4; questionable performance — investigate"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "z-score = (Lab result - Assigned value) / σp = (6.2 - 5.0) / 0.5 = 1.2 / 0.5 = 2.4. A z-score of 2.4 is in the 'questionable' range (|z| between 2 and 3). The laboratory should investigate the cause of the bias (calibration, reagents, method error) but does not need to take immediate corrective action. If |z| > 3, the result is unsatisfactory and immediate corrective action is required.",
     isCalc: true,
     tip: "z-score = (result - assigned) / σp. |z| < 2 = satisfactory; 2-3 = questionable; >3 = unsatisfactory.",
@@ -5017,12 +5017,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the difference between a 'warning limit' and an 'action limit' on a control chart?",
     options: [
-      "Warning limits are set at ±1SD; action limits are set at ±2SD",
       "Warning limits are set at ±2SD; action limits are set at ±3SD — exceeding action limits requires stopping analysis",
+      "Warning limits are set at ±1SD; action limits are set at ±2SD",
       "Warning limits apply to blanks; action limits apply to check standards",
       "Warning limits are set by the laboratory; action limits are set by the regulator"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "On a control chart, warning limits are set at mean ± 2SD and action limits are set at mean ± 3SD. A result outside the warning limits (but inside action limits) is a warning signal — investigate but analysis may continue. A result outside the action limits is an out-of-control signal — analysis must stop, the cause investigated, and affected samples re-analyzed before reporting. Two consecutive results outside warning limits also trigger investigation.",
     tip: "Warning limits = ±2SD (investigate); action limits = ±3SD (stop analysis, investigate, re-analyze).",
   },
@@ -5033,11 +5033,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the method detection limit (MDL) and how is it determined?",
     options: [
       "The MDL is the lowest concentration on the calibration curve",
-      "The MDL is the minimum concentration detectable with 99% confidence, determined by analyzing 7 replicates of a low-concentration standard",
       "The MDL is the concentration at which the signal-to-noise ratio equals 3",
+      "The MDL is the minimum concentration detectable with 99% confidence, determined by analyzing 7 replicates of a low-concentration standard",
       "The MDL is set by the regulatory agency for each parameter"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The method detection limit (MDL) is the minimum concentration of an analyte that can be detected with 99% confidence that the result is above zero. It is determined by analyzing 7 replicates of a standard at a concentration estimated to be 1-5× the MDL, calculating the standard deviation, and multiplying by the t-value for 6 degrees of freedom at 99% confidence (t = 3.143): MDL = 3.143 × SD.",
     tip: "MDL = 3.143 × SD of 7 replicates of low-concentration standard.",
   },
@@ -5048,11 +5048,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A laboratory's calibration curve for nitrate has an R² value of 0.988. What is the appropriate action?",
     options: [
       "Accept the calibration — R² > 0.95 is acceptable for environmental analysis",
-      "Reject the calibration — R² must be ≥ 0.995 for most analytical methods; investigate and recalibrate",
+      "Increase the number of calibration standards to improve R²",
       "Accept the calibration with a note in the data package",
-      "Increase the number of calibration standards to improve R²"
+      "Reject the calibration — R² must be ≥ 0.995 for most analytical methods; investigate and recalibrate"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "For most analytical methods used in water quality analysis, the calibration curve must have an R² ≥ 0.995 to demonstrate adequate linearity. An R² of 0.988, while close, does not meet this criterion. The calibration must be rejected, the cause investigated (e.g., degraded standards, instrument problem, incorrect concentrations), and a new calibration prepared before analysis can proceed.",
     tip: "Calibration R² must be ≥ 0.995 for most methods. R² = 0.988 is not acceptable.",
   },
@@ -5078,11 +5078,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of an internal standard in analytical chemistry (e.g., ICP-MS analysis)?",
     options: [
       "To calibrate the instrument at the beginning of each analytical run",
-      "To correct for instrument drift, matrix effects, and signal suppression by monitoring a known compound added to all samples and standards",
+      "To measure the concentration of the target analyte directly",
       "To detect contamination in the sample preparation area",
-      "To measure the concentration of the target analyte directly"
+      "To correct for instrument drift, matrix effects, and signal suppression by monitoring a known compound added to all samples and standards"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "An internal standard is a known compound (typically an isotope or element not present in the sample) added at a constant concentration to all samples, standards, and blanks. By monitoring the internal standard response throughout the run, the analyst can correct for instrument drift, signal suppression or enhancement due to matrix effects, and variations in injection volume. The ratio of analyte signal to internal standard signal is used for quantification.",
     tip: "Internal standard corrects for instrument drift and matrix effects in ICP-MS and other techniques.",
   },
@@ -5093,11 +5093,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water quality analyst receives a sample for THM analysis. The chain of custody form shows the sample was collected 16 days ago and stored at 4°C with ascorbic acid. What is the correct action?",
     options: [
       "Analyze the sample — 4°C storage with ascorbic acid extends the holding time to 30 days",
-      "Reject the sample — the 14-day holding time for THMs has been exceeded",
+      "Dilute the sample to reduce any degradation effects before analysis",
       "Analyze the sample but report the result with a holding time exceedance qualifier",
-      "Dilute the sample to reduce any degradation effects before analysis"
+      "Reject the sample — the 14-day holding time for THMs has been exceeded"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The holding time for THM analysis is 14 days when samples are preserved with ascorbic acid (to quench chlorine) and stored at 4°C in glass vials with no headspace. A sample collected 16 days ago has exceeded the 14-day holding time. The sample must be rejected and a new sample collected. Results from samples outside holding time cannot be used for regulatory compliance.",
     tip: "THM holding time = 14 days (glass, ascorbic acid, 4°C, no headspace). 16 days = exceeded = reject.",
   },
@@ -5122,12 +5122,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the practical quantitation limit (PQL) and how does it relate to the MDL?",
     options: [
-      "The PQL is the same as the MDL — both represent the lowest detectable concentration",
       "The PQL is typically 5-10× the MDL and represents the concentration above which results can be reported with confidence",
+      "The PQL is the same as the MDL — both represent the lowest detectable concentration",
       "The PQL is set by the regulatory agency and is always lower than the MDL",
       "The PQL applies only to organic compounds; the MDL applies to inorganic compounds"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "The practical quantitation limit (PQL) is typically 5-10× the MDL and represents the lowest concentration at which a result can be quantitatively reported with acceptable accuracy and precision. Results between the MDL and PQL can be detected but may not be reliably quantified. Results below the MDL are reported as non-detect (< MDL). The PQL is the working lower limit for routine reporting.",
     tip: "PQL = 5-10× MDL. Results below MDL = non-detect; between MDL and PQL = detected but qualified.",
   },
@@ -5138,11 +5138,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A laboratory's quality manual requires that all out-of-control events be documented in a corrective action log. What information must be recorded in a corrective action log entry?",
     options: [
       "Only the date and the analyst's name",
-      "The out-of-control event, root cause analysis, corrective action taken, verification that the action was effective, and affected samples",
       "The instrument serial number and calibration date only",
+      "The out-of-control event, root cause analysis, corrective action taken, verification that the action was effective, and affected samples",
       "The client name and sample IDs only"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "A corrective action log entry for an out-of-control event must include: description of the out-of-control event, root cause analysis (what caused the problem), corrective action taken (what was done to fix it), verification that the corrective action was effective (e.g., re-analysis of QC samples), and identification of affected samples (which samples may need to be re-analyzed or qualified). This documentation is required for ISO/IEC 17025 compliance.",
     tip: "Corrective action log: event description, root cause, action taken, verification, and affected samples.",
   },
@@ -5154,10 +5154,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: [
       "2 standards (a blank and one concentration)",
       "3 standards",
-      "5 standards spanning the expected sample range, including a blank",
-      "10 standards at equal concentration intervals"
+      "10 standards at equal concentration intervals",
+      "5 standards spanning the expected sample range, including a blank"
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: "Most analytical methods require a minimum of 5 calibration standards (including a blank) spanning the expected sample concentration range to establish a valid calibration curve. This minimum is required to demonstrate linearity and to calculate a meaningful R² value. Standards should be distributed across the range, not clustered at one end. If samples fall outside the calibration range, they must be diluted or the calibration range extended.",
     tip: "Minimum 5 calibration standards (including blank) spanning the expected sample range.",
   },
@@ -5167,12 +5167,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory analyst discovers that a batch of samples was analyzed using a calibration curve that had an R² of 0.991. The results have already been reported to the client. What is the correct action?",
     options: [
-      "No action — the results are already reported and cannot be changed",
       "Notify the client, qualify or void the affected results, re-analyze if samples are still within holding time, and document the event in the corrective action log",
+      "No action — the results are already reported and cannot be changed",
       "Add a note to the next report that the calibration was slightly out of specification",
       "Recalibrate the instrument and re-report the same results with the new calibration"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "When out-of-specification QC results are discovered after reporting, the laboratory must: notify the client of the issue, qualify or void the affected results in the report, re-analyze the samples if they are still within holding time using a valid calibration, and document the event in the corrective action log. This is required under ISO/IEC 17025 for handling non-conforming work. Ignoring the issue or simply adding a note is not acceptable.",
     tip: "Discovered post-reporting QC failure: notify client, qualify/void results, re-analyze if possible, document.",
   },
@@ -5183,11 +5183,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of an equipment blank in field sampling?",
     options: [
       "To detect contamination in the laboratory reagents",
-      "To detect cross-contamination between samples from reusable sampling equipment",
       "To verify that the sample containers are sterile",
+      "To detect cross-contamination between samples from reusable sampling equipment",
       "To measure the background level of analytes in the source water"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "An equipment blank (also called a rinsate blank) is prepared by passing reagent water through cleaned sampling equipment (e.g., a bailer, pump, or sampling tubing) and collecting the rinse water as a sample. It detects cross-contamination between samples from inadequately cleaned reusable equipment. If the equipment blank shows elevated analyte concentrations, the equipment cleaning procedure must be improved.",
     tip: "Equipment blank = rinse water from cleaned sampling equipment. Detects cross-contamination.",
   },
@@ -5213,11 +5213,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the difference between 'uncertainty of measurement' and 'error' in analytical chemistry?",
     options: [
       "Uncertainty and error are the same concept — both describe inaccuracy in a measurement",
-      "Error is the difference between a measured value and the true value; uncertainty is a quantified range within which the true value is expected to lie",
       "Error applies to systematic bias; uncertainty applies only to random variation",
+      "Error is the difference between a measured value and the true value; uncertainty is a quantified range within which the true value is expected to lie",
       "Uncertainty is always larger than error"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Error is the difference between a measured value and the true value — it can be systematic (bias) or random. Measurement uncertainty is a quantified range (expressed as ±U at a specified confidence level) within which the true value is expected to lie, based on all sources of variability in the measurement process. ISO/IEC 17025 requires laboratories to estimate and report measurement uncertainty for all results. Uncertainty is not the same as error — it is a statement about the reliability of the result.",
     tip: "Error = measured - true value. Uncertainty = ±range within which true value is expected (ISO 17025 requirement).",
   },
@@ -5226,8 +5226,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Quality Assurance & Quality Control",
     difficulty: "medium",
     question: "A laboratory analyst prepares a 10 mg/L nitrate standard by diluting a 1000 mg/L certified reference standard. Using C1V1 = C2V2, how many mL of the 1000 mg/L stock are needed to prepare 100 mL of the 10 mg/L standard?",
-    options: ["0.1 mL", "1.0 mL", "10 mL", "100 mL"],
-    correctIndex: 1,
+    options: ["0.1 mL", "10 mL", "1.0 mL", "100 mL"],
+    correctIndex: 2,
     explanation: "Using C1V1 = C2V2: (1000 mg/L)(V1) = (10 mg/L)(100 mL). V1 = (10 × 100) / 1000 = 1000 / 1000 = 1.0 mL. Transfer 1.0 mL of the 1000 mg/L stock to a 100 mL volumetric flask and dilute to the mark with reagent water to prepare a 10 mg/L standard.",
     isCalc: true,
     tip: "C1V1 = C2V2. V1 = (C2 × V2) / C1 = (10 × 100) / 1000 = 1.0 mL.",
@@ -5238,12 +5238,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "Under ISO/IEC 17025, what is required when a laboratory identifies a non-conforming result after it has been reported to a client?",
     options: [
-      "The laboratory must notify the client, withdraw the result if necessary, and document the non-conformance and corrective action",
+      "The laboratory must suspend all operations until the non-conformance is resolved",
       "The laboratory only needs to document the non-conformance internally — clients do not need to be notified",
       "The laboratory must immediately re-analyze all samples from the past 6 months",
-      "The laboratory must suspend all operations until the non-conformance is resolved"
+      "The laboratory must notify the client, withdraw the result if necessary, and document the non-conformance and corrective action"
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: "Under ISO/IEC 17025 Clause 7.10 (Nonconforming work), when a laboratory identifies that its work does not conform to its own procedures or client requirements after results have been reported, it must: notify the client, withdraw the result if necessary, issue a corrected report, and document the non-conformance and corrective action taken. Transparency with clients is a core requirement of the standard.",
     tip: "ISO 17025 non-conforming work: notify client, withdraw/correct result, document. Transparency is required.",
   },
@@ -5256,11 +5256,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Under Ontario's Safe Drinking Water Act (SDWA), who is the 'owner' of a drinking water system and what are their primary responsibilities?",
     options: [
       "The owner is the municipality that built the infrastructure; they are responsible for capital repairs only",
-      "The owner is the person or organization that holds the Drinking Water Works Permit; they are responsible for ensuring the system is operated in compliance with all applicable regulations",
+      "The owner is the provincial government; they are responsible for setting water quality standards",
       "The owner is the licensed operator; they are responsible for day-to-day operations",
-      "The owner is the provincial government; they are responsible for setting water quality standards"
+      "The owner is the person or organization that holds the Drinking Water Works Permit; they are responsible for ensuring the system is operated in compliance with all applicable regulations"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Under Ontario's SDWA, the 'owner' is the person or organization that holds the Drinking Water Works Permit (DWWP). The owner is ultimately responsible for ensuring the drinking water system is designed, constructed, and operated in compliance with all applicable regulations, including O. Reg. 170/03. The owner may hire a licensed operating authority to operate the system, but the owner retains ultimate legal responsibility.",
     tip: "Owner = DWWP holder = ultimate legal responsibility. Operating authority = day-to-day operations.",
   },
@@ -5270,12 +5270,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "What is the purpose of Ontario Regulation 248/03 (Certification of Drinking Water System Operators)?",
     options: [
-      "To set the maximum acceptable concentrations (MACs) for contaminants in drinking water",
       "To establish the certification requirements, classes of certificates, and continuing education requirements for drinking water system operators",
+      "To set the maximum acceptable concentrations (MACs) for contaminants in drinking water",
       "To specify the sampling frequency and testing requirements for drinking water systems",
       "To regulate the design and construction of new drinking water infrastructure"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "O. Reg. 248/03 establishes the framework for the certification of drinking water system operators in Ontario. It defines the classes of operator certificates (Class 1-4 for water and wastewater, WQA), the examination and experience requirements for each class, continuing education requirements (40 hours per 5-year cycle), and the process for certificate renewal and suspension. It is administered by the Ontario Water Wastewater Certification Office (OWWCO).",
     tip: "O. Reg. 248/03 = operator certification regulation. Sets classes, exam requirements, and continuing education.",
   },
@@ -5286,11 +5286,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the Ontario Drinking Water Quality Standards (O. Reg. 169/03) and what does it establish?",
     options: [
       "O. Reg. 169/03 establishes the operational requirements for drinking water treatment plants",
-      "O. Reg. 169/03 establishes the maximum acceptable concentrations (MACs), aesthetic objectives (AOs), and operational technology objectives (OTOs) for drinking water quality parameters",
+      "O. Reg. 169/03 establishes the certification requirements for drinking water laboratories",
       "O. Reg. 169/03 establishes the sampling frequency requirements for municipal drinking water systems",
-      "O. Reg. 169/03 establishes the certification requirements for drinking water laboratories"
+      "O. Reg. 169/03 establishes the maximum acceptable concentrations (MACs), aesthetic objectives (AOs), and operational technology objectives (OTOs) for drinking water quality parameters"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Ontario Regulation 169/03 (Ontario Drinking Water Quality Standards) establishes the numerical standards for drinking water quality in Ontario. It sets: Maximum Acceptable Concentrations (MACs) — health-based limits that must not be exceeded; Aesthetic Objectives (AOs) — non-health-based limits for taste, odour, and appearance; and Operational Technology Objectives (OTOs) — targets for treatment process parameters. These standards are based on Health Canada's Guidelines for Canadian Drinking Water Quality.",
     tip: "O. Reg. 169/03 = water quality standards (MACs, AOs, OTOs). O. Reg. 170/03 = operational requirements.",
   },
@@ -5302,10 +5302,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: [
       "Once per month",
       "Once per week",
-      "Daily",
-      "Based on a site-specific sampling plan approved by the Director"
+      "Based on a site-specific sampling plan approved by the Director",
+      "Daily"
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation: "For large municipal residential systems (serving >10,000 people), O. Reg. 170/03 requires bacteriological sampling based on a site-specific sampling plan approved by the Director (MECP). The minimum frequency is typically daily for very large systems, but the exact frequency and sampling locations are specified in the approved sampling plan. Smaller systems have fixed minimum frequencies specified in Schedule 10 of O. Reg. 170/03.",
     tip: "Large systems (>10,000) = Director-approved sampling plan. Smaller systems = Schedule 10 fixed frequencies.",
   },
@@ -5315,12 +5315,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is a 'Drinking Water Works Permit' (DWWP) and when is it required?",
     options: [
-      "A DWWP is required for all operators working on a drinking water system",
       "A DWWP is required before constructing, altering, or extending a drinking water system in Ontario",
+      "A DWWP is required for all operators working on a drinking water system",
       "A DWWP is required for all laboratories analyzing drinking water samples",
       "A DWWP is required annually to renew the operating licence for a drinking water system"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "A Drinking Water Works Permit (DWWP) is required under the SDWA before constructing, altering, or extending a drinking water system in Ontario. It is issued by the Director (MECP) and specifies the design, construction, and operational requirements for the system. The DWWP is a one-time permit for the works, while the Municipal Drinking Water Licence (MDWL) is the ongoing operating licence.",
     tip: "DWWP = construction/alteration permit (one-time). MDWL = ongoing operating licence (renewed).",
   },
@@ -5331,11 +5331,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the 'Procedure for Disinfection of Drinking Water in Ontario' and what are its key requirements?",
     options: [
       "It is a guideline that recommends chlorine as the preferred disinfectant for all Ontario water systems",
-      "It is a mandatory procedure that requires all Ontario water systems to achieve specific log inactivation credits for Giardia, viruses, and Cryptosporidium",
+      "It is a procedure that specifies the minimum chlorine residual at the point of entry to the distribution system",
       "It is an optional procedure that water systems may follow to reduce DBP formation",
-      "It is a procedure that specifies the minimum chlorine residual at the point of entry to the distribution system"
+      "It is a mandatory procedure that requires all Ontario water systems to achieve specific log inactivation credits for Giardia, viruses, and Cryptosporidium"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The Procedure for Disinfection of Drinking Water in Ontario (issued under the SDWA) is a mandatory procedure that requires all Ontario drinking water systems to achieve specific log inactivation credits for key pathogens: 3-log inactivation of Giardia, 4-log inactivation of viruses, and 2-log inactivation of Cryptosporidium. These credits can be achieved through a combination of filtration and disinfection (CT). Systems must demonstrate compliance with CT requirements.",
     tip: "Disinfection Procedure: 3-log Giardia, 4-log virus, 2-log Cryptosporidium — mandatory, not optional.",
   },
@@ -5346,11 +5346,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the maximum acceptable concentration (MAC) for nitrate in Ontario drinking water and what health concern does it address?",
     options: [
       "MAC = 1.0 mg/L; addresses risk of kidney damage in adults",
-      "MAC = 10 mg/L (as N); addresses risk of methemoglobinemia (blue baby syndrome) in infants",
       "MAC = 45 mg/L (as NO3); addresses risk of thyroid disruption in adults",
+      "MAC = 10 mg/L (as N); addresses risk of methemoglobinemia (blue baby syndrome) in infants",
       "MAC = 50 mg/L (as N); addresses risk of colorectal cancer"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The Ontario MAC for nitrate is 10 mg/L (as nitrogen, N). The primary health concern is methemoglobinemia (blue baby syndrome) in infants under 6 months. Nitrate is reduced to nitrite in the infant's digestive system, and nitrite oxidizes hemoglobin to methemoglobin, which cannot carry oxygen. Adults and older children are not at significant risk because their digestive systems do not reduce nitrate to nitrite as readily.",
     tip: "Nitrate MAC = 10 mg/L as N. Health concern = methemoglobinemia in infants < 6 months.",
   },
@@ -5390,12 +5390,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "What is the role of the Medical Officer of Health (MOH) in Ontario's drinking water regulatory framework?",
     options: [
-      "The MOH sets the MACs for drinking water contaminants",
       "The MOH issues Boil Water Advisories and Drinking Water Advisories, and is responsible for protecting public health in relation to drinking water",
+      "The MOH sets the MACs for drinking water contaminants",
       "The MOH licenses drinking water system operators",
       "The MOH approves the design of new drinking water treatment plants"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "The Medical Officer of Health (MOH) is a public health physician appointed under the Health Protection and Promotion Act. In Ontario's drinking water framework, the MOH is responsible for: issuing Boil Water Advisories (BWAs) and Drinking Water Advisories (DWAs) when there is a risk to public health, receiving adverse result notifications from water systems, investigating potential health impacts of water quality issues, and advising the public on drinking water safety. The MOH has authority to issue advisories independent of the MECP.",
     tip: "MOH = public health authority. Issues BWAs and DWAs. Receives adverse result notifications.",
   },
@@ -5406,11 +5406,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the Ontario MAC for total trihalomethanes (THMs) and how is compliance assessed?",
     options: [
       "MAC = 50 µg/L; assessed as a single maximum measurement",
-      "MAC = 100 µg/L; assessed as a running annual average of quarterly samples",
+      "MAC = 80 µg/L; assessed as a running annual average of quarterly samples",
       "MAC = 200 µg/L; assessed as a single maximum measurement",
-      "MAC = 80 µg/L; assessed as a running annual average of quarterly samples"
+      "MAC = 100 µg/L; assessed as a running annual average of quarterly samples"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The Ontario MAC for total trihalomethanes (THMs) is 100 µg/L, assessed as a running annual average of quarterly samples. The running annual average accounts for seasonal variation in THM formation (higher in summer due to higher NOM and temperature). A single high result does not automatically constitute a violation — the running annual average must exceed 100 µg/L. HAAs have a separate MAC of 80 µg/L, also assessed as a running annual average.",
     tip: "Total THM MAC = 100 µg/L (running annual average of quarterly samples). HAA MAC = 80 µg/L.",
   },
@@ -5421,11 +5421,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Under the Ontario SDWA, what is a 'Municipal Drinking Water Licence' (MDWL) and what does it authorize?",
     options: [
       "An MDWL is a licence for individual operators to work at a municipal water system",
-      "An MDWL is an ongoing operating licence that authorizes the owner to operate a municipal drinking water system and specifies the conditions under which it must be operated",
       "An MDWL is a construction permit for new water treatment infrastructure",
+      "An MDWL is an ongoing operating licence that authorizes the owner to operate a municipal drinking water system and specifies the conditions under which it must be operated",
       "An MDWL is a licence for accredited laboratories to analyze drinking water samples"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "A Municipal Drinking Water Licence (MDWL) is an ongoing operating licence issued under the SDWA that authorizes the owner to operate a municipal drinking water system. It specifies the conditions of operation, including the approved treatment processes, monitoring requirements, and reporting obligations. The MDWL is renewed periodically and must be complied with at all times. It is distinct from the Drinking Water Works Permit (DWWP), which is a one-time construction permit.",
     tip: "MDWL = ongoing operating licence (conditions of operation). DWWP = construction permit (one-time).",
   },
@@ -5435,12 +5435,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the Ontario MAC for arsenic in drinking water and what is the primary health concern?",
     options: [
-      "MAC = 0.010 mg/L; primary concern is kidney damage",
-      "MAC = 0.025 mg/L; primary concern is skin cancer",
       "MAC = 0.010 mg/L; primary concern is increased risk of skin, bladder, and lung cancer",
+      "MAC = 0.025 mg/L; primary concern is skin cancer",
+      "MAC = 0.010 mg/L; primary concern is kidney damage",
       "MAC = 0.050 mg/L; primary concern is neurological effects"
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "The Ontario MAC for arsenic is 0.010 mg/L (10 µg/L). The primary health concern is increased risk of cancer, particularly skin, bladder, and lung cancer, from long-term exposure to inorganic arsenic. Arsenic can occur naturally in groundwater from geological sources or from industrial contamination. Treatment options include coagulation/filtration, adsorption (activated alumina, iron-based media), and reverse osmosis.",
     tip: "Arsenic MAC = 0.010 mg/L. Health concern = cancer (skin, bladder, lung) from long-term exposure.",
   },
@@ -5480,12 +5480,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "Under O. Reg. 170/03, what is the required response when a water system receives a 'Significant Adverse Result' (SAR) for a chemical parameter?",
     options: [
-      "Issue a Boil Water Advisory immediately and notify the public",
       "Notify the MECP and MOH within 24 hours, investigate the cause, and take corrective action",
+      "Issue a Boil Water Advisory immediately and notify the public",
       "Increase the treatment dose and resample within 48 hours",
       "Report the result in the Annual Report and investigate at the next scheduled inspection"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "A Significant Adverse Result (SAR) for a chemical parameter requires: notification of the MECP and MOH within 24 hours of receiving the result, investigation of the cause, and corrective action. The MOH determines whether a Drinking Water Advisory (DWA) is required based on the nature of the exceedance and the health risk. A Boil Water Advisory is typically issued for microbiological concerns, not chemical exceedances.",
     tip: "Chemical SAR: notify MECP and MOH within 24 hours. MOH determines if DWA is needed.",
   },
@@ -5496,11 +5496,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the Ontario MAC for uranium in drinking water and why is it regulated?",
     options: [
       "MAC = 0.02 mg/L; regulated because of its radioactivity",
-      "MAC = 0.02 mg/L; regulated primarily because of its chemical toxicity to the kidneys",
       "MAC = 0.1 mg/L; regulated because of its radioactivity",
+      "MAC = 0.02 mg/L; regulated primarily because of its chemical toxicity to the kidneys",
       "MAC = 0.001 mg/L; regulated because it is a known carcinogen"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The Ontario MAC for uranium is 0.02 mg/L (20 µg/L). Uranium is regulated primarily because of its chemical toxicity to the kidneys (nephrotoxicity) rather than its radioactivity. The chemical toxicity of uranium at concentrations found in drinking water is a greater health concern than its radioactivity. Uranium occurs naturally in groundwater in areas with uranium-bearing geological formations, particularly in the Canadian Shield.",
     tip: "Uranium MAC = 0.02 mg/L. Regulated for kidney toxicity (chemical), not primarily radioactivity.",
   },
@@ -5510,12 +5510,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "What is the 'Source Protection Plan' under Ontario's Clean Water Act and how does it relate to drinking water quality?",
     options: [
-      "A Source Protection Plan sets the MACs for contaminants in source water",
       "A Source Protection Plan identifies threats to drinking water sources and establishes policies to manage or eliminate those threats within a source protection area",
+      "A Source Protection Plan sets the MACs for contaminants in source water",
       "A Source Protection Plan specifies the treatment processes required for each drinking water system",
       "A Source Protection Plan is a contingency plan for responding to source water contamination events"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Under Ontario's Clean Water Act, Source Protection Plans are developed by local Source Protection Committees for each source protection area. They identify significant threats to municipal drinking water sources (e.g., agricultural activities, fuel storage, septic systems) within the intake protection zones and wellhead protection areas, and establish policies (land use restrictions, best management practices) to manage or eliminate those threats. Source protection is the first barrier in Ontario's multi-barrier approach.",
     tip: "Source Protection Plan = identifies threats to source water + policies to manage them. First barrier in multi-barrier approach.",
   },
@@ -5525,12 +5525,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the Ontario MAC for total dissolved solids (TDS) in drinking water?",
     options: [
-      "MAC = 500 mg/L",
-      "MAC = 1000 mg/L",
       "There is no MAC for TDS — it has only an aesthetic objective (AO) of 500 mg/L",
+      "MAC = 1000 mg/L",
+      "MAC = 500 mg/L",
       "MAC = 250 mg/L"
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "Total dissolved solids (TDS) does not have a Maximum Acceptable Concentration (MAC) in Ontario because it is not directly associated with a specific health risk at typical drinking water concentrations. Instead, TDS has an Aesthetic Objective (AO) of 500 mg/L, based on taste and the potential for scale formation and corrosion in plumbing. Water with TDS > 500 mg/L may have an unpleasant taste but is not necessarily a health risk.",
     tip: "TDS has no MAC — only an AO of 500 mg/L (taste and aesthetic concern, not health-based).",
   },
@@ -5541,11 +5541,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Under Ontario's SDWA, what is the 'Drinking Water Quality Management Standard' (DWQMS) and who must implement it?",
     options: [
       "The DWQMS is a set of water quality standards equivalent to O. Reg. 169/03",
-      "The DWQMS is a quality management system standard that municipal drinking water systems must implement and be accredited to",
       "The DWQMS is a training standard for drinking water operators",
+      "The DWQMS is a quality management system standard that municipal drinking water systems must implement and be accredited to",
       "The DWQMS is a standard for the design of new drinking water treatment plants"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The Drinking Water Quality Management Standard (DWQMS) is a quality management system (QMS) standard developed by the Ontario government. Municipal drinking water systems must implement a QMS that meets the DWQMS and obtain third-party accreditation. The DWQMS requires systems to: establish an operational plan, conduct risk assessments, implement management review, and continuously improve their processes. It is based on ISO 9001 principles adapted for drinking water.",
     tip: "DWQMS = QMS standard for municipal drinking water systems. Accreditation required. Based on ISO 9001.",
   },
@@ -5557,10 +5557,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: [
       "0.001 mg/L",
       "0.1 mg/L",
-      "1.0 mg/L",
-      "10 mg/L"
+      "10 mg/L",
+      "1.0 mg/L"
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: "The Ontario MAC for barium is 1.0 mg/L. Barium can occur naturally in groundwater from dissolution of barium-containing minerals. At elevated concentrations, barium can cause cardiovascular effects (increased blood pressure). The MAC of 1.0 mg/L is based on health risk assessment and provides a safety margin for long-term exposure.",
     tip: "Barium MAC = 1.0 mg/L. Cardiovascular effects at elevated concentrations.",
   },
@@ -5571,11 +5571,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Under O. Reg. 170/03, what is the required annual reporting obligation for owners of municipal residential systems?",
     options: [
       "Owners must submit a monthly report to the MECP summarizing all sampling results",
-      "Owners must prepare an Annual Report summarizing water quality results, system performance, and any adverse events, and make it available to the public",
+      "Owners must post all sampling results on the MECP website within 24 hours of receiving them",
       "Owners must submit a quarterly report to the MOH with all bacteriological results",
-      "Owners must post all sampling results on the MECP website within 24 hours of receiving them"
+      "Owners must prepare an Annual Report summarizing water quality results, system performance, and any adverse events, and make it available to the public"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Under O. Reg. 170/03, owners of municipal residential drinking water systems must prepare an Annual Report that summarizes: all water quality test results for the year, system performance (treatment processes, operational data), any adverse events and corrective actions taken, and other required information. The Annual Report must be made available to the public (typically posted on the municipality's website) and a summary must be distributed to all users of the system.",
     tip: "Annual Report required: water quality results, system performance, adverse events. Must be public.",
   },
@@ -5616,11 +5616,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the Ontario aesthetic objective (AO) for pH in drinking water?",
     options: [
       "pH 6.0 to 7.0",
-      "pH 6.5 to 8.5",
+      "pH 5.0 to 9.0",
       "pH 7.0 to 8.0",
-      "pH 5.0 to 9.0"
+      "pH 6.5 to 8.5"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The Ontario aesthetic objective for pH in drinking water is 6.5 to 8.5. This range is based on aesthetic considerations (taste and corrosivity) rather than direct health effects. Water with pH below 6.5 may be corrosive to plumbing and have a sour taste. Water with pH above 8.5 may have a bitter taste and reduce the effectiveness of chlorine disinfection (less HOCl). Most treatment plants target pH 7.0-7.5 for optimal disinfection and corrosion control.",
     tip: "pH AO = 6.5 to 8.5 (aesthetic, not health-based). Target 7.0-7.5 for disinfection and corrosion control.",
   },
@@ -5647,12 +5647,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory analyst is preparing a 10% hydrochloric acid (HCl) solution from concentrated HCl (37%). What is the correct procedure?",
     options: [
-      "Add the concentrated HCl to water slowly while stirring",
+      "Heat the water before adding the concentrated HCl to improve mixing",
       "Add water to the concentrated HCl slowly while stirring",
       "Mix equal volumes of concentrated HCl and water simultaneously",
-      "Heat the water before adding the concentrated HCl to improve mixing"
+      "Add the concentrated HCl to water slowly while stirring"
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: "The correct procedure is to always add acid to water (never water to acid). When diluting concentrated acids, always add the acid slowly to the water while stirring. Adding water to concentrated acid can cause violent exothermic reactions, spattering, and serious burns. The mnemonic 'AAA' (Always Add Acid to water) or 'Do as you oughta, add acid to water' helps remember this rule.",
     tip: "ALWAYS add acid to water — never water to acid. 'Do as you oughta, add acid to water.'",
   },
@@ -5694,10 +5694,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: [
       "0.5 ppm",
       "1 ppm",
-      "10 ppm",
-      "25 ppm"
+      "25 ppm",
+      "10 ppm"
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: "The IDLH (Immediately Dangerous to Life or Health) concentration for chlorine gas is 10 ppm. The OSHA PEL (Permissible Exposure Limit) for chlorine is 1 ppm as a ceiling value. The NIOSH REL is 0.5 ppm as a 15-minute STEL. Chlorine gas is a severe respiratory irritant and can cause pulmonary edema at high concentrations. Workers in areas where chlorine gas may be present must have access to appropriate respiratory protection and emergency response equipment.",
     tip: "Chlorine IDLH = 10 ppm. OSHA PEL = 1 ppm ceiling. Severe respiratory hazard.",
   },
@@ -5708,11 +5708,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of a fume hood in a water quality laboratory?",
     options: [
       "To maintain a sterile environment for bacteriological analysis",
-      "To contain and exhaust hazardous chemical vapours, protecting the analyst from inhalation exposure",
       "To provide a controlled temperature environment for sample incubation",
+      "To contain and exhaust hazardous chemical vapours, protecting the analyst from inhalation exposure",
       "To prevent contamination of samples from airborne particles"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "A fume hood is a ventilated enclosure that protects laboratory analysts from inhalation exposure to hazardous chemical vapours, gases, and aerosols. The fume hood draws air inward and exhausts it to the outside, preventing hazardous substances from reaching the analyst's breathing zone. Fume hoods must be used when working with volatile chemicals, concentrated acids, organic solvents, and other hazardous substances. The face velocity must be maintained at 0.4-0.5 m/s.",
     tip: "Fume hood: protects from inhalation of vapours. Face velocity = 0.4-0.5 m/s. Use for all volatile chemicals.",
   },
@@ -5723,11 +5723,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the hierarchy of controls for managing chemical hazards in a laboratory, from most to least preferred?",
     options: [
       "PPE → Administrative controls → Engineering controls → Substitution → Elimination",
-      "Elimination → Substitution → Engineering controls → Administrative controls → PPE",
       "Administrative controls → Engineering controls → Substitution → PPE → Elimination",
+      "Elimination → Substitution → Engineering controls → Administrative controls → PPE",
       "Engineering controls → PPE → Administrative controls → Substitution → Elimination"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The hierarchy of controls (from most to least preferred) is: 1) Elimination (remove the hazard entirely), 2) Substitution (replace with a less hazardous substance), 3) Engineering controls (fume hoods, ventilation, enclosures), 4) Administrative controls (procedures, training, work rotation), 5) PPE (gloves, goggles, lab coat). PPE is the last resort because it does not eliminate the hazard — it only protects the worker if properly used.",
     tip: "Hierarchy: Elimination > Substitution > Engineering > Administrative > PPE. PPE is last resort.",
   },
@@ -5738,11 +5738,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What class of fire extinguisher is appropriate for a flammable solvent fire in a laboratory?",
     options: [
       "Class A (water-based)",
-      "Class B (CO2 or dry chemical)",
       "Class C (for electrical fires)",
+      "Class B (CO2 or dry chemical)",
       "Class D (for metal fires)"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Class B fire extinguishers are used for flammable liquid fires (solvents, oils, grease). CO2 (carbon dioxide) extinguishers are preferred in laboratories because they do not leave a residue that could contaminate samples or damage instruments. Dry chemical extinguishers are also Class B but leave a powder residue. Water-based (Class A) extinguishers must never be used on flammable liquid fires as they can spread the burning liquid.",
     tip: "Flammable solvent fire = Class B. CO2 preferred in labs (no residue). Never use water on solvent fires.",
   },
@@ -5783,11 +5783,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water quality analyst is required to work with concentrated nitric acid (HNO3) for metal digestion. What PPE is required as a minimum?",
     options: [
       "Safety glasses and nitrile gloves",
-      "Chemical splash goggles, acid-resistant gloves (butyl rubber or neoprene), lab coat, and face shield",
+      "Chemical splash goggles and nitrile gloves only",
       "Safety glasses, latex gloves, and a dust mask",
-      "Chemical splash goggles and nitrile gloves only"
+      "Chemical splash goggles, acid-resistant gloves (butyl rubber or neoprene), lab coat, and face shield"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Concentrated nitric acid is highly corrosive, oxidizing, and can cause severe burns. Minimum PPE for handling concentrated HNO3 includes: chemical splash goggles (not just safety glasses — goggles provide a seal around the eyes), acid-resistant gloves (butyl rubber or neoprene — nitrile is not adequate for concentrated acids), a lab coat (preferably acid-resistant), and a face shield for splash protection. Work must be performed in a fume hood.",
     tip: "Concentrated HNO3: splash goggles + butyl/neoprene gloves + lab coat + face shield + fume hood.",
   },
@@ -5798,11 +5798,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of a lockout/tagout (LOTO) procedure in a water treatment or laboratory setting?",
     options: [
       "To prevent unauthorized access to the laboratory after hours",
-      "To ensure that equipment is properly de-energized and cannot be accidentally started during maintenance or repair",
       "To document the chain of custody for hazardous waste disposal",
+      "To ensure that equipment is properly de-energized and cannot be accidentally started during maintenance or repair",
       "To restrict access to chemical storage areas"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Lockout/tagout (LOTO) is a safety procedure used to ensure that equipment is properly de-energized (electrical, hydraulic, pneumatic, chemical) and cannot be accidentally started or energized while maintenance, servicing, or repair work is being performed. The worker places a lock on the energy isolation device and keeps the key, ensuring that only they can re-energize the equipment. LOTO prevents serious injuries and fatalities from unexpected equipment startup.",
     tip: "LOTO = de-energize equipment before maintenance. Worker keeps the key — prevents accidental startup.",
   },
@@ -5843,11 +5843,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the correct response when a laboratory analyst experiences eye contact with a corrosive chemical?",
     options: [
       "Apply eye drops and wait 5 minutes to see if symptoms resolve",
-      "Immediately flush the eye with large amounts of water at the eyewash station for at least 15 minutes, then seek medical attention",
       "Rub the eye to remove the chemical, then flush with water",
+      "Immediately flush the eye with large amounts of water at the eyewash station for at least 15 minutes, then seek medical attention",
       "Apply a neutralizing solution to the eye before flushing with water"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "For chemical eye contact, immediately flush the eye at the nearest eyewash station with large amounts of water for at least 15 minutes. Hold the eyelids open and roll the eye to ensure complete flushing. Do not rub the eye (spreads the chemical), do not apply neutralizing agents (can cause additional injury), and do not delay flushing. After flushing, seek immediate medical attention. Eyewash stations must be within 10 seconds of the work area.",
     tip: "Chemical eye contact: flush at eyewash station for 15 minutes minimum. Do not rub or neutralize.",
   },
@@ -5858,11 +5858,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the TLV-TWA (Threshold Limit Value — Time Weighted Average) and how is it used in laboratory safety?",
     options: [
       "The TLV-TWA is the maximum concentration that can be tolerated for a single 15-minute exposure",
-      "The TLV-TWA is the airborne concentration of a substance to which nearly all workers may be repeatedly exposed 8 hours per day, 5 days per week without adverse health effects",
+      "The TLV-TWA is the maximum concentration allowed in a laboratory at any time",
       "The TLV-TWA is the concentration at which a substance becomes immediately dangerous to life or health",
-      "The TLV-TWA is the maximum concentration allowed in a laboratory at any time"
+      "The TLV-TWA is the airborne concentration of a substance to which nearly all workers may be repeatedly exposed 8 hours per day, 5 days per week without adverse health effects"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The TLV-TWA (Threshold Limit Value — Time Weighted Average) is published by the American Conference of Governmental Industrial Hygienists (ACGIH) and represents the airborne concentration of a substance to which nearly all workers may be repeatedly exposed 8 hours per day, 5 days per week without adverse health effects. It is used to assess workplace air quality and determine if ventilation controls are adequate. The TLV-STEL (Short-Term Exposure Limit) applies to 15-minute exposures.",
     tip: "TLV-TWA = 8-hour average exposure limit. TLV-STEL = 15-minute short-term limit. Published by ACGIH.",
   },
@@ -5873,11 +5873,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the correct procedure for storing incompatible chemicals in a laboratory?",
     options: [
       "Store all chemicals alphabetically to make them easy to find",
-      "Segregate incompatible chemicals (e.g., acids from bases, oxidizers from flammables) in separate storage areas or cabinets",
+      "Store chemicals in order of hazard class, with the most hazardous at the back",
       "Store all chemicals in a single locked cabinet to prevent unauthorized access",
-      "Store chemicals in order of hazard class, with the most hazardous at the back"
+      "Segregate incompatible chemicals (e.g., acids from bases, oxidizers from flammables) in separate storage areas or cabinets"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Incompatible chemicals must be stored separately to prevent dangerous reactions in case of accidental mixing (e.g., from spills or container failures). Key segregations: acids from bases (exothermic reaction), oxidizers from flammables (fire/explosion risk), cyanides from acids (toxic HCN gas), and bleach from ammonia (toxic chloramine gas). Alphabetical storage is dangerous because it places incompatible chemicals adjacent to each other.",
     tip: "Segregate incompatibles: acids from bases, oxidizers from flammables, cyanides from acids. Never alphabetical.",
   },
@@ -5902,12 +5902,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the purpose of a biological safety cabinet (BSC) in a water quality laboratory?",
     options: [
-      "To store biological samples at controlled temperatures",
       "To protect the analyst from biological hazards and prevent contamination of samples during bacteriological analysis",
+      "To store biological samples at controlled temperatures",
       "To sterilize bacteriological media and glassware",
       "To incubate bacteriological samples at the correct temperature"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "A biological safety cabinet (BSC) provides a sterile work environment for handling biological samples and protects the analyst from exposure to biological hazards (pathogens, aerosols). Class II BSCs use HEPA-filtered air to protect both the analyst and the sample. They are used in water quality laboratories for processing samples that may contain pathogens (e.g., during outbreak investigations). Standard bacteriological analysis (total coliform, E. coli) does not typically require a BSC.",
     tip: "BSC = protects analyst from biological hazards + protects sample from contamination. HEPA-filtered.",
   },
@@ -5918,11 +5918,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the correct procedure for handling a compressed gas cylinder in a laboratory?",
     options: [
       "Cylinders can be stored horizontally to save space",
-      "Cylinders must be secured upright with a chain or strap, stored away from heat sources, and transported using a cylinder cart",
+      "The valve cap can be removed when the cylinder is not in use to check the gas level",
       "Cylinders should be stored near exits for easy access during emergencies",
-      "The valve cap can be removed when the cylinder is not in use to check the gas level"
+      "Cylinders must be secured upright with a chain or strap, stored away from heat sources, and transported using a cylinder cart"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Compressed gas cylinders must be: secured upright with a chain or strap to prevent falling (a falling cylinder can shear the valve, creating a dangerous projectile), stored away from heat sources and direct sunlight, transported using a cylinder cart (never rolled or dragged), and stored with the valve cap on when not in use. Cylinders must be stored in well-ventilated areas, away from ignition sources (for flammable gases) and incompatible materials.",
     tip: "Cylinders: secure upright with chain, store away from heat, transport with cart, keep valve cap on.",
   },
@@ -5932,12 +5932,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the correct personal protective equipment (PPE) for routine water sample collection in the field?",
     options: [
-      "No PPE required — water samples are not hazardous",
       "Nitrile gloves and safety glasses as a minimum; additional PPE (face shield, chemical-resistant gloves) for samples suspected to contain hazardous chemicals",
+      "No PPE required — water samples are not hazardous",
       "Full chemical protective suit and SCBA for all field sampling",
       "Only a lab coat and safety glasses"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "For routine water sample collection, minimum PPE includes nitrile gloves (to prevent skin contact with potentially contaminated water) and safety glasses (to protect from splashes). Additional PPE may be required based on risk assessment: face shield and chemical-resistant gloves for samples suspected to contain hazardous chemicals, respiratory protection for confined space sampling, and high-visibility vest for sampling near traffic. PPE selection should be based on a site-specific risk assessment.",
     tip: "Routine field sampling: nitrile gloves + safety glasses minimum. Additional PPE based on site risk assessment.",
   },
@@ -5947,12 +5947,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "What is the primary hazard associated with working in a confined space at a water treatment facility (e.g., a clearwell or wet well)?",
     options: [
-      "Slippery surfaces from water and algae",
       "Oxygen-deficient atmosphere, toxic gases (H2S, CO2, CH4), and engulfment hazards",
+      "Slippery surfaces from water and algae",
       "Electrical hazards from submerged pumps",
       "Noise from pumping equipment"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Confined spaces at water treatment facilities (clearwells, wet wells, chemical storage rooms, valve vaults) present multiple life-threatening hazards: oxygen-deficient atmospheres (O2 < 19.5%), toxic gases (H2S from wastewater decomposition, CO2 from biological activity, CH4 from organic decomposition), and engulfment hazards (flooding). Atmospheric testing before entry and continuous monitoring during entry are mandatory. Confined space entry requires a permit, trained attendant, and rescue equipment.",
     tip: "Confined space hazards: O2 deficiency, H2S, CO2, CH4. Test atmosphere before entry. Permit required.",
   },
@@ -5977,12 +5977,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water quality analyst is asked to analyze samples for volatile organic compounds (VOCs) using gas chromatography. What are the primary safety considerations?",
     options: [
-      "VOC analysis is safe because the compounds are dilute in water samples",
       "VOC standards and samples may contain concentrated organic solvents; work in a fume hood, avoid ignition sources, and ensure adequate ventilation",
+      "VOC analysis is safe because the compounds are dilute in water samples",
       "The primary concern is contamination of samples, not analyst safety",
       "VOC analysis only requires standard lab coat and safety glasses"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "VOC analysis involves working with concentrated organic solvent standards (methanol, acetone, dichloromethane) that are flammable, volatile, and potentially toxic. Key safety considerations: work in a fume hood to prevent inhalation of vapours, eliminate ignition sources (no open flames, use explosion-proof equipment for flammable solvents), store solvents in flammable storage cabinets, use appropriate PPE (chemical-resistant gloves, splash goggles), and dispose of waste solvents as hazardous waste.",
     tip: "VOC analysis: fume hood required, eliminate ignition sources, flammable storage, chemical-resistant gloves.",
   },
@@ -5993,11 +5993,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the correct procedure for disposing of sharps (e.g., broken glass, needles) in a water quality laboratory?",
     options: [
       "Wrap in paper towels and dispose in regular waste",
-      "Place in a puncture-resistant sharps container labelled 'Sharps Waste' and dispose according to facility procedures",
+      "Rinse and recycle broken glass with regular glass recycling",
       "Crush the glass to reduce volume before disposal in regular waste",
-      "Rinse and recycle broken glass with regular glass recycling"
+      "Place in a puncture-resistant sharps container labelled 'Sharps Waste' and dispose according to facility procedures"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Sharps (broken glass, needles, lancets, scalpels) must be placed in a puncture-resistant sharps container labelled 'Sharps Waste.' This prevents puncture injuries to waste handlers. Broken glass should never be placed in regular waste bags where it could cut through the bag and injure someone. When the sharps container is 3/4 full, it must be sealed and disposed of according to the facility's hazardous waste procedures. Biological sharps (from bacteriological work) require additional biohazard labelling.",
     tip: "Sharps: puncture-resistant container, labelled 'Sharps Waste.' Never in regular waste. Seal when 3/4 full.",
   },
@@ -6025,11 +6025,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the Langelier Saturation Index (LSI) and what does a negative LSI value indicate?",
     options: [
       "LSI measures the concentration of dissolved oxygen; negative LSI indicates anoxic conditions",
-      "LSI measures the tendency of water to deposit or dissolve calcium carbonate; negative LSI indicates corrosive water that will dissolve CaCO3 scale",
       "LSI measures the chlorine demand of water; negative LSI indicates excess chlorine residual",
+      "LSI measures the tendency of water to deposit or dissolve calcium carbonate; negative LSI indicates corrosive water that will dissolve CaCO3 scale",
       "LSI measures the biological stability of water; negative LSI indicates high microbial activity"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The Langelier Saturation Index (LSI) = pH(actual) - pH(saturation). It measures whether water is in equilibrium with calcium carbonate (CaCO3). LSI < 0: water is undersaturated with CaCO3 — corrosive, will dissolve scale and attack pipe materials. LSI = 0: water is in equilibrium — neither scaling nor corrosive. LSI > 0: water is supersaturated — scale-forming, will deposit CaCO3. Target LSI is typically 0 to +0.5 for corrosion control.",
     tip: "LSI < 0 = corrosive; LSI = 0 = balanced; LSI > 0 = scale-forming. Target 0 to +0.5.",
   },
@@ -6040,11 +6040,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the difference between hardness and alkalinity in water chemistry?",
     options: [
       "Hardness and alkalinity are the same — both measure the buffering capacity of water",
-      "Hardness measures calcium and magnesium ions (causes scale); alkalinity measures carbonate, bicarbonate, and hydroxide ions (buffering capacity)",
       "Hardness measures total dissolved solids; alkalinity measures pH",
+      "Hardness measures calcium and magnesium ions (causes scale); alkalinity measures carbonate, bicarbonate, and hydroxide ions (buffering capacity)",
       "Hardness is measured in NTU; alkalinity is measured in mg/L as CaCO3"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Hardness measures the concentration of divalent cations, primarily calcium (Ca²⁺) and magnesium (Mg²⁺), expressed as mg/L CaCO3. Hard water causes scale formation in pipes and water heaters. Alkalinity measures the capacity of water to neutralize acids, primarily from carbonate (CO3²⁻), bicarbonate (HCO3⁻), and hydroxide (OH⁻) ions, also expressed as mg/L CaCO3. Alkalinity provides buffering capacity and helps stabilize pH. Both are expressed in the same units but measure different properties.",
     tip: "Hardness = Ca²⁺ + Mg²⁺ (scale-forming). Alkalinity = CO3²⁻ + HCO3⁻ + OH⁻ (buffering). Both in mg/L CaCO3.",
   },
@@ -6055,11 +6055,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the carbonate equilibrium system in water and why is it important for water quality?",
     options: [
       "The carbonate system describes the equilibrium between CO2 gas and dissolved oxygen in water",
-      "The carbonate system describes the equilibrium between CO2(aq), H2CO3, HCO3⁻, and CO3²⁻, which controls pH and alkalinity in natural waters",
       "The carbonate system describes the formation of calcium carbonate scale in distribution pipes",
+      "The carbonate system describes the equilibrium between CO2(aq), H2CO3, HCO3⁻, and CO3²⁻, which controls pH and alkalinity in natural waters",
       "The carbonate system describes the relationship between hardness and pH in water treatment"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The carbonate equilibrium system involves the species: CO2(aq) ⇌ H2CO3 ⇌ HCO3⁻ ⇌ CO3²⁻. The distribution of these species is pH-dependent: at pH < 6.3, CO2/H2CO3 dominates; at pH 6.3-10.3, HCO3⁻ dominates; at pH > 10.3, CO3²⁻ dominates. This system controls the natural buffering capacity (alkalinity) of water, influences corrosivity, and affects disinfection efficiency (pH affects HOCl/OCl⁻ equilibrium). Understanding the carbonate system is fundamental to water chemistry.",
     tip: "pH < 6.3: CO2 dominates; 6.3-10.3: HCO3⁻ dominates; >10.3: CO3²⁻ dominates.",
   },
@@ -6070,11 +6070,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the difference between turbidity and true colour in water quality assessment?",
     options: [
       "Turbidity and true colour are the same measurement — both measure the optical clarity of water",
-      "Turbidity measures light scattering by suspended particles; true colour measures dissolved colour-causing substances after removing turbidity",
       "Turbidity is measured in mg/L; true colour is measured in NTU",
+      "Turbidity measures light scattering by suspended particles; true colour measures dissolved colour-causing substances after removing turbidity",
       "Turbidity is a health parameter; true colour is only an aesthetic parameter"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Turbidity measures the scattering of light by suspended particles (clay, silt, algae, microorganisms) and is measured in NTU (Nephelometric Turbidity Units). True colour measures the colour caused by dissolved substances (humic acids, tannins, iron) after turbidity has been removed by filtration or centrifugation. Apparent colour includes both dissolved and suspended colour. True colour is measured in TCU (True Colour Units) using a platinum-cobalt standard.",
     tip: "Turbidity = suspended particles (NTU). True colour = dissolved colour after removing turbidity (TCU).",
   },
@@ -6100,11 +6100,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the principle behind ion chromatography (IC) and what water quality parameters is it used to measure?",
     options: [
       "IC uses UV absorption to measure organic compounds; used for THMs and pesticides",
-      "IC separates ions based on their affinity for an ion exchange column; used for anions (fluoride, chloride, nitrate, sulfate, phosphate) and cations (sodium, potassium, calcium, magnesium)",
       "IC measures the electrical conductivity of ions; used for total dissolved solids",
+      "IC separates ions based on their affinity for an ion exchange column; used for anions (fluoride, chloride, nitrate, sulfate, phosphate) and cations (sodium, potassium, calcium, magnesium)",
       "IC uses flame ionization to detect ions; used for metals analysis"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Ion chromatography (IC) separates ions based on their differential affinity for an ion exchange resin in the column. Anions (F⁻, Cl⁻, NO3⁻, SO4²⁻, PO4³⁻) are separated on an anion exchange column; cations (Na⁺, K⁺, Ca²⁺, Mg²⁺) on a cation exchange column. Detection is typically by conductivity after suppression. IC is a rapid, accurate method for simultaneously measuring multiple ions in a single injection, widely used in water quality analysis.",
     tip: "IC = ion separation by exchange resin. Measures anions (F, Cl, NO3, SO4) and cations (Na, K, Ca, Mg).",
   },
@@ -6115,11 +6115,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the principle of inductively coupled plasma mass spectrometry (ICP-MS) and why is it preferred for trace metal analysis in drinking water?",
     options: [
       "ICP-MS uses UV light to excite metal atoms; preferred because it is cheaper than atomic absorption",
-      "ICP-MS uses a high-temperature plasma to ionize metals, then separates ions by mass-to-charge ratio; preferred for simultaneous multi-element analysis at very low detection limits (sub-µg/L)",
+      "ICP-MS uses X-ray fluorescence; preferred because it can analyze solid samples directly",
       "ICP-MS uses electrochemical detection; preferred because it does not require sample preparation",
-      "ICP-MS uses X-ray fluorescence; preferred because it can analyze solid samples directly"
+      "ICP-MS uses a high-temperature plasma to ionize metals, then separates ions by mass-to-charge ratio; preferred for simultaneous multi-element analysis at very low detection limits (sub-µg/L)"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "ICP-MS (Inductively Coupled Plasma Mass Spectrometry) uses a high-temperature argon plasma (~8000-10000 K) to atomize and ionize metals in the sample. The ions are then separated by their mass-to-charge ratio (m/z) in a mass spectrometer and detected. ICP-MS can simultaneously measure 60+ elements at detection limits of 0.001-0.1 µg/L (sub-µg/L), making it ideal for trace metal analysis in drinking water where MACs are often at the µg/L level.",
     tip: "ICP-MS: plasma ionization + mass separation. 60+ elements simultaneously, sub-µg/L detection limits.",
   },
@@ -6130,11 +6130,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the significance of the 'thermocline' in a stratified lake and how does it affect source water quality?",
     options: [
       "The thermocline is a layer of maximum oxygen concentration that supports fish populations",
-      "The thermocline is a layer of rapid temperature change that separates warm surface water (epilimnion) from cold deep water (hypolimnion), affecting oxygen distribution and nutrient cycling",
+      "The thermocline is a layer of sediment that accumulates at the lake bottom",
       "The thermocline is a layer of maximum algal growth that causes taste and odour problems",
-      "The thermocline is a layer of sediment that accumulates at the lake bottom"
+      "The thermocline is a layer of rapid temperature change that separates warm surface water (epilimnion) from cold deep water (hypolimnion), affecting oxygen distribution and nutrient cycling"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The thermocline is a zone of rapid temperature decrease with depth that separates the warm, well-oxygenated surface layer (epilimnion) from the cold, potentially anoxic deep layer (hypolimnion). During summer stratification, the hypolimnion becomes depleted of oxygen, leading to anaerobic conditions that release iron, manganese, and hydrogen sulfide from sediments. This affects source water quality for treatment plants with deep intakes. Fall and spring turnover mixes the layers, potentially causing taste and odour events.",
     tip: "Thermocline separates epilimnion (warm, oxygenated) from hypolimnion (cold, anoxic). Anoxic hypolimnion releases Fe, Mn, H2S.",
   },
@@ -6144,12 +6144,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "What is the difference between adsorption and absorption in water treatment chemistry?",
     options: [
-      "Adsorption and absorption are the same process — both involve a substance being taken up by another",
       "Adsorption is the accumulation of a substance on a surface; absorption is the incorporation of a substance into the bulk of another material",
+      "Adsorption and absorption are the same process — both involve a substance being taken up by another",
       "Adsorption is used for gas treatment; absorption is used for liquid treatment",
       "Adsorption requires heat; absorption occurs at room temperature"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Adsorption is a surface phenomenon — molecules accumulate on the surface of a solid adsorbent (e.g., activated carbon adsorbs organic compounds, taste/odour compounds, and some metals onto its surface). Absorption is a bulk phenomenon — a substance is incorporated into the bulk of another material (e.g., a gas being dissolved into a liquid). In water treatment, activated carbon (GAC and PAC) uses adsorption to remove contaminants. The distinction is important for understanding treatment mechanisms.",
     tip: "Adsorption = surface accumulation (activated carbon). Absorption = bulk incorporation (gas into liquid).",
   },
@@ -6159,12 +6159,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the principle of the Winkler titration method for dissolved oxygen (DO) measurement?",
     options: [
-      "The Winkler method measures DO by comparing the colour of the sample to a colour chart",
       "The Winkler method fixes DO by reacting it with manganese and iodide, then titrates the released iodine with sodium thiosulfate",
+      "The Winkler method measures DO by comparing the colour of the sample to a colour chart",
       "The Winkler method measures DO using a polarographic electrode",
       "The Winkler method measures DO by measuring the oxygen consumption of bacteria"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "The Winkler (iodometric) titration method for dissolved oxygen works in steps: 1) Manganese sulfate is added to fix the DO by forming Mn(OH)2, which is oxidized to MnO(OH)2 by the dissolved oxygen; 2) Sulfuric acid and potassium iodide are added — the MnO(OH)2 oxidizes I⁻ to I2; 3) The released iodine is titrated with sodium thiosulfate (Na2S2O3) to a starch endpoint. The volume of thiosulfate used is proportional to the original DO concentration.",
     tip: "Winkler method: Mn fixes O2 → I2 released → titrate with Na2S2O3. Classic chemical DO method.",
   },
@@ -6175,11 +6175,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the concept of 'specific conductance' (or electrical conductivity) in water quality and what does it measure?",
     options: [
       "Specific conductance measures the ability of water to transmit light; higher conductance means clearer water",
-      "Specific conductance measures the ability of water to conduct electricity, which is proportional to the total concentration of dissolved ions",
+      "Specific conductance measures the corrosivity of water to metal pipes",
       "Specific conductance measures the concentration of chloride ions specifically",
-      "Specific conductance measures the corrosivity of water to metal pipes"
+      "Specific conductance measures the ability of water to conduct electricity, which is proportional to the total concentration of dissolved ions"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Specific conductance (electrical conductivity) measures the ability of water to conduct an electrical current, which is directly related to the concentration of dissolved ions (electrolytes). It is expressed in µS/cm (microsiemens per centimeter) and is temperature-corrected to 25°C. Higher conductance indicates more dissolved ions (higher TDS). Conductance is a rapid, non-specific measure of total dissolved solids and is used to monitor changes in water quality and to estimate TDS (TDS ≈ conductance × 0.55-0.75).",
     tip: "Conductance (µS/cm) ∝ dissolved ions. TDS ≈ conductance × 0.55-0.75. Temperature-corrected to 25°C.",
   },
@@ -6189,12 +6189,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the difference between a 'grab sample' and a 'composite sample' in water quality monitoring?",
     options: [
-      "A grab sample is collected automatically; a composite sample is collected manually",
       "A grab sample is a single sample collected at one point in time; a composite sample is a mixture of multiple samples collected over time or at multiple locations",
+      "A grab sample is collected automatically; a composite sample is collected manually",
       "A grab sample is used for chemical analysis; a composite sample is used for bacteriological analysis",
       "A grab sample represents average conditions; a composite sample represents instantaneous conditions"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "A grab sample is a single sample collected at a specific point in time and location. It represents instantaneous conditions and is required for parameters that change rapidly (pH, DO, temperature, residual chlorine, bacteriological samples). A composite sample is a mixture of multiple grab samples collected over time (time-composite) or at multiple locations (spatial composite). Composites represent average conditions over the sampling period and are used for parameters that vary over time (BOD, nutrients, metals in effluent monitoring).",
     tip: "Grab = instantaneous (use for pH, DO, Cl2, bacteria). Composite = time-averaged (use for BOD, nutrients).",
   },
@@ -6205,11 +6205,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the principle of gas chromatography (GC) and what water quality parameters is it used to measure?",
     options: [
       "GC separates compounds based on their molecular weight; used for metals analysis",
-      "GC separates volatile compounds based on their boiling point and affinity for a stationary phase; used for VOCs, THMs, pesticides, and other organic compounds",
+      "GC separates compounds based on their UV absorption; used for aromatic compounds",
       "GC separates ions based on their charge; used for anions and cations",
-      "GC separates compounds based on their UV absorption; used for aromatic compounds"
+      "GC separates volatile compounds based on their boiling point and affinity for a stationary phase; used for VOCs, THMs, pesticides, and other organic compounds"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Gas chromatography (GC) separates volatile and semi-volatile organic compounds based on their differential partitioning between a mobile gas phase (carrier gas) and a stationary phase (column coating). Compounds with lower boiling points and less affinity for the stationary phase elute first. GC is used for: VOCs (BTEX, chlorinated solvents), THMs and HAAs, pesticides and herbicides, and other organic contaminants. Detection is typically by FID (flame ionization) or ECD (electron capture) or MS (mass spectrometry).",
     tip: "GC = separates volatile organics by boiling point/affinity. Used for VOCs, THMs, pesticides.",
   },
@@ -6220,11 +6220,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the significance of the 'pKa' of an acid in water chemistry?",
     options: [
       "pKa is the pH at which an acid is most toxic",
-      "pKa is the pH at which an acid is 50% dissociated — equal concentrations of the acid and its conjugate base",
       "pKa is the maximum pH at which an acid can exist in solution",
+      "pKa is the pH at which an acid is 50% dissociated — equal concentrations of the acid and its conjugate base",
       "pKa is the concentration of acid required to lower pH by one unit"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "pKa is the negative logarithm of the acid dissociation constant (Ka). At pH = pKa, the acid is 50% dissociated — equal concentrations of the acid (HA) and its conjugate base (A⁻). Below the pKa, the acid form predominates; above the pKa, the conjugate base predominates. For example, HOCl has a pKa of 7.5 — at pH 7.5, chlorine is 50% HOCl and 50% OCl⁻. This is critical for understanding disinfection efficiency.",
     tip: "At pH = pKa: 50% acid, 50% conjugate base. HOCl pKa = 7.5 → at pH 7.5, 50% HOCl/50% OCl⁻.",
   },
@@ -6235,11 +6235,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the concept of 'redox potential' (Eh) in water chemistry and how does it relate to iron and manganese chemistry in source water?",
     options: [
       "Redox potential measures the pH of water; high Eh indicates acidic conditions",
-      "Redox potential measures the tendency of a solution to accept or donate electrons; high Eh (oxidizing) keeps Fe and Mn in insoluble oxidized forms; low Eh (reducing) converts them to soluble reduced forms",
+      "Redox potential measures the corrosivity of water to metal pipes",
       "Redox potential measures the concentration of dissolved oxygen; Eh and DO are directly proportional",
-      "Redox potential measures the corrosivity of water to metal pipes"
+      "Redox potential measures the tendency of a solution to accept or donate electrons; high Eh (oxidizing) keeps Fe and Mn in insoluble oxidized forms; low Eh (reducing) converts them to soluble reduced forms"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Redox potential (Eh, measured in mV) measures the tendency of a solution to accept or donate electrons. High Eh (oxidizing conditions, positive mV): Fe exists as insoluble Fe³⁺ (ferric iron) and Mn as insoluble Mn⁴⁺. Low Eh (reducing conditions, negative mV): Fe is reduced to soluble Fe²⁺ (ferrous iron) and Mn to soluble Mn²⁺. In anoxic hypolimnia or groundwater, low Eh causes Fe and Mn to dissolve, creating treatment challenges. Oxidation (aeration, chlorination, permanganate) converts them back to insoluble forms for removal.",
     tip: "High Eh (oxidizing) = Fe³⁺, Mn⁴⁺ (insoluble). Low Eh (reducing) = Fe²⁺, Mn²⁺ (soluble). Anoxic conditions = low Eh.",
   },
@@ -6249,12 +6249,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the difference between 'hardness' and 'softness' in water, and what is the classification for water with a hardness of 180 mg/L as CaCO3?",
     options: [
-      "180 mg/L CaCO3 = soft water (< 60 mg/L = soft, 60-120 = moderately hard, 120-180 = hard, >180 = very hard)",
       "180 mg/L CaCO3 = hard water (< 60 mg/L = soft, 60-120 = moderately hard, 120-180 = hard, >180 = very hard)",
+      "180 mg/L CaCO3 = soft water (< 60 mg/L = soft, 60-120 = moderately hard, 120-180 = hard, >180 = very hard)",
       "180 mg/L CaCO3 = moderately hard water",
       "180 mg/L CaCO3 = very hard water"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Water hardness classifications (mg/L as CaCO3): < 60 = soft; 60-120 = moderately hard; 120-180 = hard; > 180 = very hard. Therefore, 180 mg/L CaCO3 falls at the upper boundary of the 'hard' category. Hard water causes scale formation in pipes, water heaters, and appliances, and reduces the effectiveness of soap. Soft water (< 60 mg/L) is more corrosive and may leach metals from plumbing.",
     tip: "Hardness: <60 = soft; 60-120 = mod. hard; 120-180 = hard; >180 = very hard. All in mg/L CaCO3.",
   },
@@ -6265,11 +6265,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the principle of atomic absorption spectroscopy (AAS) and how does it differ from ICP-OES for metals analysis?",
     options: [
       "AAS and ICP-OES use the same principle — both measure light emission from excited atoms",
-      "AAS measures light absorption by ground-state atoms at element-specific wavelengths (one element per analysis); ICP-OES measures light emission from plasma-excited atoms (multi-element simultaneous analysis)",
       "AAS is used for anion analysis; ICP-OES is used for cation analysis",
+      "AAS measures light absorption by ground-state atoms at element-specific wavelengths (one element per analysis); ICP-OES measures light emission from plasma-excited atoms (multi-element simultaneous analysis)",
       "AAS uses a liquid sample; ICP-OES requires solid samples"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Atomic absorption spectroscopy (AAS) measures the absorption of light by ground-state atoms at element-specific wavelengths. Each element requires a separate hollow cathode lamp and analysis — it is a single-element technique. ICP-OES (Inductively Coupled Plasma Optical Emission Spectrometry) uses a high-temperature plasma to excite atoms, which then emit light at characteristic wavelengths. ICP-OES can simultaneously measure 30+ elements in a single analysis. ICP-OES/MS has largely replaced AAS in modern laboratories due to higher throughput and lower detection limits.",
     tip: "AAS = single element, light absorption. ICP-OES = multi-element simultaneous, light emission from plasma.",
   },
@@ -6280,11 +6280,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the 'nephelometric' method for turbidity measurement and what is the unit of measurement?",
     options: [
       "The nephelometric method measures turbidity by passing light through the sample and measuring transmitted light; unit = FTU",
-      "The nephelometric method measures turbidity by measuring light scattered at 90° to the incident beam; unit = NTU (Nephelometric Turbidity Unit)",
+      "The nephelometric method measures turbidity by measuring the depth at which a Secchi disk disappears; unit = metres",
       "The nephelometric method measures turbidity by comparing sample colour to a colour chart; unit = TCU",
-      "The nephelometric method measures turbidity by measuring the depth at which a Secchi disk disappears; unit = metres"
+      "The nephelometric method measures turbidity by measuring light scattered at 90° to the incident beam; unit = NTU (Nephelometric Turbidity Unit)"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The nephelometric method measures turbidity by detecting light scattered at 90° to the incident beam (forward scatter detection). The instrument is called a nephelometer or turbidimeter. The unit is NTU (Nephelometric Turbidity Unit). This method is more sensitive than the older Jackson Candle turbidimeter (JTU) method and is the standard method for drinking water turbidity measurement under Standard Methods and Ontario regulations. The Ontario MAC for treated water turbidity is 1 NTU.",
     tip: "Nephelometric method = 90° light scatter = NTU. Standard method for drinking water turbidity.",
   },
@@ -6294,12 +6294,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "What is the principle of reverse osmosis (RO) and what contaminants does it effectively remove from water?",
     options: [
-      "RO uses activated carbon to adsorb contaminants; effective for taste and odour removal",
       "RO applies pressure to force water through a semi-permeable membrane against the osmotic gradient; effective for removing dissolved salts, metals, nitrate, fluoride, and most organic compounds",
+      "RO uses activated carbon to adsorb contaminants; effective for taste and odour removal",
       "RO uses ion exchange to remove hardness ions; effective for softening water",
       "RO uses UV light to destroy contaminants; effective for disinfection"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Reverse osmosis (RO) applies hydraulic pressure greater than the osmotic pressure to force water through a semi-permeable membrane (typically polyamide thin-film composite). The membrane rejects dissolved salts, metals, nitrate, fluoride, arsenic, radionuclides, and most organic compounds (>95-99% rejection for most contaminants). Permeate (treated water) passes through; concentrate (reject) is discharged. RO is used for desalination, nitrate removal, and treatment of contaminated groundwater.",
     tip: "RO = pressure-driven membrane process. Rejects dissolved salts, metals, nitrate, fluoride, organics (>95%).",
   },
@@ -6309,12 +6309,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the difference between 'total dissolved solids' (TDS) and 'total suspended solids' (TSS) in water quality analysis?",
     options: [
-      "TDS and TSS are the same measurement — both measure the total solids in water",
       "TDS measures dissolved material that passes through a 0.45 µm filter; TSS measures material retained on the filter",
+      "TDS and TSS are the same measurement — both measure the total solids in water",
       "TDS is measured by evaporation; TSS is measured by turbidity",
       "TDS measures organic solids; TSS measures inorganic solids"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "TDS (Total Dissolved Solids) measures the mass of material that passes through a 0.45 µm filter and remains after evaporation at 180°C. It includes dissolved salts, minerals, and organic compounds. TSS (Total Suspended Solids) measures the mass of material retained on a 0.45 µm glass fiber filter after drying at 103-105°C. It includes suspended particles, silt, clay, algae, and organic matter. Total solids = TDS + TSS.",
     tip: "TDS = passes through 0.45 µm filter (dissolved). TSS = retained on filter (suspended). TS = TDS + TSS.",
   },
@@ -6325,11 +6325,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the concept of 'chemical equilibrium' and how does Le Chatelier's Principle apply to water treatment chemistry?",
     options: [
       "Chemical equilibrium means all reactions have stopped; Le Chatelier's Principle states that adding more reactant will always increase the product",
-      "Chemical equilibrium is when forward and reverse reaction rates are equal; Le Chatelier's Principle states that a system at equilibrium will shift to counteract a stress (concentration, temperature, pressure change)",
       "Chemical equilibrium applies only to acid-base reactions; Le Chatelier's Principle applies only to redox reactions",
+      "Chemical equilibrium is when forward and reverse reaction rates are equal; Le Chatelier's Principle states that a system at equilibrium will shift to counteract a stress (concentration, temperature, pressure change)",
       "Chemical equilibrium means the reaction is complete; Le Chatelier's Principle explains why reactions slow down over time"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Chemical equilibrium is the state where the rates of the forward and reverse reactions are equal, and the concentrations of reactants and products remain constant. Le Chatelier's Principle states that when a stress is applied to a system at equilibrium (changing concentration, temperature, or pressure), the system will shift in the direction that partially counteracts the stress. In water treatment: adding CO2 lowers pH (shifts carbonate equilibrium toward H2CO3); raising pH shifts chlorine equilibrium toward OCl⁻ (less effective disinfectant).",
     tip: "Le Chatelier: system shifts to counteract stress. Adding CO2 → lower pH; raising pH → more OCl⁻ (less HOCl).",
   },
@@ -6339,12 +6339,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the significance of the 'detection limit' versus the 'reporting limit' in water quality analysis?",
     options: [
-      "Detection limit and reporting limit are the same — both represent the lowest concentration that can be measured",
       "The detection limit (MDL) is the lowest concentration detectable with statistical confidence; the reporting limit (PQL) is higher and represents the concentration above which results can be reported with acceptable accuracy",
+      "Detection limit and reporting limit are the same — both represent the lowest concentration that can be measured",
       "The detection limit applies to inorganic parameters; the reporting limit applies to organic parameters",
       "The detection limit is set by the laboratory; the reporting limit is set by the regulator"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "The Method Detection Limit (MDL) is the lowest concentration detectable with 99% confidence that the result is above zero. The Practical Quantitation Limit (PQL, also called reporting limit) is typically 5-10× the MDL and represents the concentration above which results can be reported with acceptable accuracy and precision (typically ±20%). Results between MDL and PQL are reported as 'detected but not quantified' or with a qualifier. Results below MDL are reported as non-detect (< MDL).",
     tip: "MDL = lowest detectable; PQL = lowest quantifiable (5-10× MDL). Below MDL = non-detect.",
   },
@@ -6355,11 +6355,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the principle of UV-Vis spectrophotometry and how is it used in water quality analysis?",
     options: [
       "UV-Vis spectrophotometry measures the electrical conductivity of solutions; used for TDS analysis",
-      "UV-Vis spectrophotometry measures the absorption of UV or visible light by a solution at specific wavelengths; used for colorimetric analysis of nitrate, phosphate, ammonia, chlorine, and other parameters",
       "UV-Vis spectrophotometry measures the scattering of light by particles; used for turbidity analysis",
+      "UV-Vis spectrophotometry measures the absorption of UV or visible light by a solution at specific wavelengths; used for colorimetric analysis of nitrate, phosphate, ammonia, chlorine, and other parameters",
       "UV-Vis spectrophotometry measures the emission of light by fluorescent compounds; used for organic carbon analysis"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "UV-Vis spectrophotometry measures the absorption of ultraviolet (200-400 nm) or visible (400-700 nm) light by a solution. Beer-Lambert Law: A = εlc, where A = absorbance, ε = molar absorptivity, l = path length, c = concentration. In water quality analysis, it is used for colorimetric methods: nitrate (220 nm), nitrite (543 nm with reagent), phosphate (880 nm with molybdate), ammonia (640 nm with Nessler or indophenol), and chlorine (515 nm with DPD). The colour intensity is proportional to the analyte concentration.",
     tip: "UV-Vis: measures light absorption (Beer-Lambert Law). Used for colorimetric analysis of nutrients, chlorine, etc.",
   },
@@ -6386,12 +6386,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the difference between 'free chlorine residual' and 'combined chlorine residual' in a treated water distribution system?",
     options: [
-      "Free chlorine is chlorine added at the treatment plant; combined chlorine is chlorine added at booster stations",
       "Free chlorine (HOCl and OCl⁻) is unreacted chlorine; combined chlorine (chloramines) is chlorine that has reacted with ammonia or organic nitrogen compounds",
+      "Free chlorine is chlorine added at the treatment plant; combined chlorine is chlorine added at booster stations",
       "Free chlorine is measured by DPD; combined chlorine is measured by amperometric titration",
       "Free chlorine is more stable than combined chlorine in the distribution system"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Free chlorine residual consists of hypochlorous acid (HOCl) and hypochlorite ion (OCl⁻) — the active, unreacted forms of chlorine. Combined chlorine residual consists of chloramines (monochloramine NH2Cl, dichloramine NHCl2, trichloramine NCl3) formed when chlorine reacts with ammonia or organic nitrogen. Free chlorine is a stronger disinfectant but dissipates faster. Combined chlorine (chloramines) is a weaker disinfectant but more stable, providing longer residuals in large distribution systems.",
     tip: "Free Cl2 = HOCl + OCl⁻ (stronger, less stable). Combined Cl2 = chloramines (weaker, more stable).",
   },
@@ -6402,11 +6402,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the 'chlorine demand' of a water sample and how is it calculated?",
     options: [
       "Chlorine demand is the amount of chlorine needed to reach a specific pH",
-      "Chlorine demand = chlorine applied - chlorine residual. It represents the amount of chlorine consumed by reactions with organic matter, ammonia, iron, manganese, and other reducing substances",
       "Chlorine demand is the maximum chlorine concentration that can be added without forming THMs",
+      "Chlorine demand = chlorine applied - chlorine residual. It represents the amount of chlorine consumed by reactions with organic matter, ammonia, iron, manganese, and other reducing substances",
       "Chlorine demand is the concentration of chlorine needed to achieve 4-log virus inactivation"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Chlorine demand = Chlorine applied - Chlorine residual. It represents the amount of chlorine consumed by reactions with: organic matter (NOM, forming DBPs), ammonia (forming chloramines), iron and manganese (oxidizing them to insoluble forms), hydrogen sulfide, and other reducing substances. A high chlorine demand indicates high levels of these substances in the water. Chlorine demand must be met before a residual can be established in the distribution system.",
     tip: "Cl2 demand = Cl2 applied - Cl2 residual. Must overcome demand before residual is established.",
   },
@@ -6417,11 +6417,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the 'breakpoint chlorination' phenomenon and why is it important in water treatment?",
     options: [
       "Breakpoint chlorination is the point at which chlorine begins to form THMs",
-      "Breakpoint chlorination is the point at which all chloramines are destroyed and free chlorine residual begins to increase; beyond the breakpoint, added chlorine remains as free residual",
       "Breakpoint chlorination is the maximum chlorine dose that can be applied without causing taste and odour problems",
+      "Breakpoint chlorination is the point at which all chloramines are destroyed and free chlorine residual begins to increase; beyond the breakpoint, added chlorine remains as free residual",
       "Breakpoint chlorination is the point at which chlorine begins to react with iron and manganese"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "When chlorine is added to water containing ammonia, it first forms chloramines (combined chlorine). As more chlorine is added, the chloramines are oxidized and destroyed. The breakpoint is the minimum chlorine dose at which all chloramines are destroyed and free chlorine residual begins to increase. Beyond the breakpoint, each additional unit of chlorine added results in an equal increase in free residual. Breakpoint chlorination is used to eliminate combined chlorine and establish a free chlorine residual.",
     tip: "Breakpoint = all chloramines destroyed → free Cl2 residual begins. Beyond breakpoint: Cl2 added = Cl2 residual.",
   },
@@ -6446,12 +6446,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What are 'taste and odour' (T&O) compounds in drinking water, and what are the most common sources?",
     options: [
-      "T&O compounds are disinfection byproducts formed during chlorination",
       "T&O compounds include geosmin and 2-methylisoborneol (MIB) from algae and actinomycetes, hydrogen sulfide from anaerobic conditions, and chlorophenols from chlorination of phenolic compounds",
+      "T&O compounds are disinfection byproducts formed during chlorination",
       "T&O compounds are only caused by chlorine and chloramines",
       "T&O compounds are regulated by a MAC in Ontario drinking water standards"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Common taste and odour compounds in drinking water include: geosmin (earthy/musty, from cyanobacteria and actinomycetes), 2-methylisoborneol/MIB (musty, from cyanobacteria), hydrogen sulfide (rotten egg, from anaerobic groundwater or hypolimnion), chlorophenols (medicinal, from chlorination of phenolic compounds), and algal metabolites. T&O compounds are not regulated by a MAC but by an aesthetic objective (AO). Treatment options include activated carbon (PAC or GAC), ozonation, and advanced oxidation.",
     tip: "Geosmin and MIB = earthy/musty from algae. H2S = rotten egg from anoxic conditions. Treat with activated carbon or ozone.",
   },
@@ -6462,11 +6462,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is 'natural organic matter' (NOM) in source water and why is it a concern for drinking water treatment?",
     options: [
       "NOM is organic matter from industrial discharges; it is a concern because it is toxic",
-      "NOM is dissolved and particulate organic carbon from decomposing plant and animal matter; it is a concern because it reacts with chlorine to form disinfection byproducts (DBPs) and increases chlorine demand",
       "NOM is only a concern in surface water, not groundwater",
+      "NOM is dissolved and particulate organic carbon from decomposing plant and animal matter; it is a concern because it reacts with chlorine to form disinfection byproducts (DBPs) and increases chlorine demand",
       "NOM is primarily composed of synthetic organic compounds from agricultural runoff"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Natural organic matter (NOM) consists of humic substances (humic and fulvic acids), proteins, carbohydrates, and other organic compounds derived from decomposing plant and animal matter. NOM is a concern because: it reacts with chlorine to form disinfection byproducts (THMs, HAAs), it increases chlorine demand, it provides nutrients for bacterial regrowth in the distribution system, it causes colour and taste/odour problems, and it can foul membranes. NOM is measured as dissolved organic carbon (DOC) or total organic carbon (TOC).",
     tip: "NOM = humic substances from decomposing matter. Concern: DBP formation, Cl2 demand, colour, bacterial regrowth.",
   },
@@ -6491,12 +6491,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "What is 'assimilable organic carbon' (AOC) and why is it important for distribution system water quality?",
     options: [
-      "AOC is the total organic carbon in treated water; lower AOC means better treatment",
       "AOC is the fraction of DOC that can be readily metabolized by bacteria; high AOC supports bacterial regrowth in the distribution system",
+      "AOC is the total organic carbon in treated water; lower AOC means better treatment",
       "AOC is the organic carbon that forms THMs during chlorination",
       "AOC is measured by the SUVA method"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Assimilable Organic Carbon (AOC) is the fraction of dissolved organic carbon (DOC) that can be readily metabolized by bacteria. High AOC in treated water supports bacterial regrowth in the distribution system, even in the presence of a chlorine residual. AOC is measured using a bioassay (Pseudomonas fluorescens P-17 and Spirillum NOX). Biologically stable water has AOC < 10 µg acetate-C equivalent/L. Ozonation can increase AOC by breaking down larger organic molecules into smaller, more biodegradable fragments.",
     tip: "AOC = biodegradable organic carbon. High AOC → bacterial regrowth in distribution. Target < 10 µg/L.",
   },
@@ -6507,11 +6507,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the difference between 'apparent colour' and 'true colour' in water quality, and how is true colour measured?",
     options: [
       "Apparent colour and true colour are the same — both are measured in NTU",
-      "Apparent colour includes colour from both dissolved substances and suspended particles; true colour is measured after filtering or centrifuging the sample to remove turbidity, expressed in TCU (True Colour Units)",
+      "Apparent colour is caused by iron; true colour is caused by humic substances",
       "Apparent colour is measured in the field; true colour is measured in the laboratory",
-      "Apparent colour is caused by iron; true colour is caused by humic substances"
+      "Apparent colour includes colour from both dissolved substances and suspended particles; true colour is measured after filtering or centrifuging the sample to remove turbidity, expressed in TCU (True Colour Units)"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Apparent colour includes colour from both dissolved substances (humic acids, iron, tannins) and suspended particles (clay, algae). True colour is the colour remaining after removing turbidity by filtration through a 0.45 µm membrane or centrifugation. True colour is measured by comparing the sample to platinum-cobalt colour standards and expressed in TCU (True Colour Units) or Hazen units. The Ontario AO for colour is 15 TCU. True colour is primarily caused by dissolved humic and fulvic acids.",
     tip: "Apparent colour = dissolved + suspended. True colour = dissolved only (after filtering). AO = 15 TCU.",
   },
@@ -6537,11 +6537,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the significance of the 'chloride to sulfate mass ratio' (CSMR) in drinking water distribution systems?",
     options: [
       "CSMR measures the corrosivity of water to concrete pipes",
-      "A high CSMR (>0.5) indicates elevated chloride relative to sulfate, which can accelerate pitting corrosion of lead and copper service lines, increasing metal leaching",
       "CSMR is used to assess the biological stability of treated water",
+      "A high CSMR (>0.5) indicates elevated chloride relative to sulfate, which can accelerate pitting corrosion of lead and copper service lines, increasing metal leaching",
       "CSMR measures the effectiveness of softening treatment"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The Chloride to Sulfate Mass Ratio (CSMR) = [Cl⁻] / [SO4²⁻] (both in mg/L). Research has shown that a high CSMR (>0.5) can accelerate galvanic corrosion of lead service lines and lead solder, increasing lead leaching into drinking water. Chloride promotes pitting corrosion while sulfate forms a protective scale. Water softening (ion exchange) and desalination can increase CSMR by removing sulfate while leaving chloride. CSMR is an important consideration for corrosion control in systems with lead service lines.",
     tip: "CSMR = Cl⁻/SO4²⁻. >0.5 = accelerated lead corrosion. Softening can increase CSMR.",
   },
@@ -6567,11 +6567,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the difference between 'primary' and 'secondary' drinking water standards in the context of water quality regulation?",
     options: [
       "Primary standards are set by the federal government; secondary standards are set by provinces",
-      "Primary standards are health-based (MACs) that must not be exceeded; secondary standards are non-health-based (aesthetic objectives) that are recommended but not mandatory",
+      "Primary standards are for chemical parameters; secondary standards are for microbiological parameters",
       "Primary standards apply to surface water; secondary standards apply to groundwater",
-      "Primary standards are for chemical parameters; secondary standards are for microbiological parameters"
+      "Primary standards are health-based (MACs) that must not be exceeded; secondary standards are non-health-based (aesthetic objectives) that are recommended but not mandatory"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "In Ontario's regulatory framework: Maximum Acceptable Concentrations (MACs) are health-based standards — they must not be exceeded because exceeding them poses a risk to human health. Aesthetic Objectives (AOs) are non-health-based guidelines for parameters that affect taste, odour, colour, or appearance (e.g., pH, colour, turbidity, iron, manganese, TDS) — they are not legally enforceable limits but are targets for good practice. Operational Technology Objectives (OTOs) are targets for treatment process parameters.",
     tip: "MAC = health-based (must not exceed). AO = aesthetic (recommended, not mandatory). OTO = process targets.",
   },
@@ -6582,11 +6582,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is 'disinfection byproduct' (DBP) formation and what are the main precursors?",
     options: [
       "DBPs form when chlorine reacts with inorganic minerals in water; main precursors are calcium and magnesium",
-      "DBPs form when disinfectants (chlorine, ozone, chloramines) react with natural organic matter (NOM) and bromide; main precursors are humic/fulvic acids and bromide",
       "DBPs only form when chlorine is added in excess of the breakpoint",
+      "DBPs form when disinfectants (chlorine, ozone, chloramines) react with natural organic matter (NOM) and bromide; main precursors are humic/fulvic acids and bromide",
       "DBPs are formed only during UV disinfection"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Disinfection byproducts (DBPs) form when disinfectants react with organic and inorganic precursors in water. For chlorination: THMs (trihalomethanes) and HAAs (haloacetic acids) form when chlorine reacts with humic/fulvic acids (NOM). Bromide in source water leads to brominated DBPs (bromoform, bromodichloromethane). For ozonation: aldehydes, ketones, and carboxylic acids form. For chloramination: N-nitrosodimethylamine (NDMA) is a concern. DBP formation is influenced by: NOM concentration, bromide, pH, temperature, chlorine dose, and contact time.",
     tip: "DBP precursors: NOM (humic/fulvic acids) + bromide. THMs and HAAs from chlorination. NDMA from chloramination.",
   },
@@ -6597,11 +6597,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the significance of 'total organic carbon' (TOC) measurement in drinking water treatment?",
     options: [
       "TOC measures the concentration of synthetic organic compounds (pesticides, pharmaceuticals) in water",
-      "TOC measures the total concentration of organic carbon in water; it is an indicator of NOM content, DBP formation potential, and treatment effectiveness",
       "TOC measures only the dissolved organic carbon; particulate organic carbon is measured separately",
+      "TOC measures the total concentration of organic carbon in water; it is an indicator of NOM content, DBP formation potential, and treatment effectiveness",
       "TOC is only measured in wastewater, not drinking water"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Total Organic Carbon (TOC) measures the total concentration of organic carbon in water, including both dissolved (DOC) and particulate (POC) fractions. In drinking water treatment, TOC is important because: it indicates NOM content and DBP formation potential, it is used to assess treatment effectiveness (TOC removal), it is a surrogate for chlorine demand, and it is regulated as a treatment technique requirement in some jurisdictions (e.g., US EPA requires enhanced coagulation to achieve specific TOC removal percentages). TOC is measured by combustion or UV/persulfate oxidation.",
     tip: "TOC = DOC + POC. Indicates NOM content, DBP potential, and treatment effectiveness.",
   },
@@ -6612,11 +6612,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the 'Aggressive Index' (AI) and when is it used for corrosion assessment?",
     options: [
       "AI is used for assessing corrosion of steel pipes; AI = pH + log(alkalinity × hardness)",
-      "AI is used for assessing the corrosivity of water to asbestos-cement (AC) pipes; AI < 10 indicates aggressive water that can dissolve the cement matrix",
       "AI is the same as the Langelier Saturation Index",
+      "AI is used for assessing the corrosivity of water to asbestos-cement (AC) pipes; AI < 10 indicates aggressive water that can dissolve the cement matrix",
       "AI measures the biological corrosion potential of water"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The Aggressive Index (AI) = pH + log(alkalinity × hardness), where alkalinity and hardness are in mg/L as CaCO3. AI is specifically used to assess the corrosivity of water to asbestos-cement (AC) pipes and concrete structures. AI interpretation: < 10 = highly aggressive (will dissolve cement); 10-12 = moderately aggressive; > 12 = non-aggressive. Aggressive water can dissolve the calcium silicate matrix of AC pipes, releasing asbestos fibers and increasing the risk of pipe failure. AC pipes are common in older distribution systems.",
     tip: "AI = pH + log(alk × hard). <10 = aggressive to AC pipes. Used specifically for asbestos-cement pipe assessment.",
   },
@@ -6642,11 +6642,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is 'cyanotoxin' contamination in source water and what are the treatment implications?",
     options: [
       "Cyanotoxins are toxins from industrial cyanide discharge; they are removed by activated carbon",
-      "Cyanotoxins are toxins produced by cyanobacteria (blue-green algae) during blooms; they include microcystins, cylindrospermopsin, and anatoxins, and require specialized treatment including activated carbon and oxidation",
+      "Cyanotoxins are regulated by a MAC of 1.5 µg/L for all cyanotoxin types",
       "Cyanotoxins are only a concern in tropical climates, not in Ontario",
-      "Cyanotoxins are regulated by a MAC of 1.5 µg/L for all cyanotoxin types"
+      "Cyanotoxins are toxins produced by cyanobacteria (blue-green algae) during blooms; they include microcystins, cylindrospermopsin, and anatoxins, and require specialized treatment including activated carbon and oxidation"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Cyanotoxins are toxic compounds produced by cyanobacteria (blue-green algae) during harmful algal blooms (HABs). Types include: microcystins (liver toxins, most common), cylindrospermopsin (liver and kidney toxin), anatoxins (neurotoxins), and saxitoxins (paralytic shellfish toxins). Ontario has a MAC of 1.5 µg/L for microcystin-LR. Treatment challenges: cell lysis during treatment can release intracellular toxins; conventional treatment removes cells but not dissolved toxins; activated carbon (PAC/GAC) and ozonation are effective for dissolved cyanotoxins.",
     tip: "Cyanotoxins from algal blooms. Microcystin MAC = 1.5 µg/L. Activated carbon + ozone for dissolved toxins.",
   },
@@ -6657,11 +6657,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the significance of 'bromide' in source water for drinking water treatment?",
     options: [
       "Bromide is a health concern at concentrations above 1 mg/L",
-      "Bromide reacts with chlorine and ozone to form brominated disinfection byproducts (bromoform, bromodichloromethane, bromate) that are more toxic than their chlorinated counterparts",
       "Bromide is only a concern in coastal areas with seawater intrusion",
+      "Bromide reacts with chlorine and ozone to form brominated disinfection byproducts (bromoform, bromodichloromethane, bromate) that are more toxic than their chlorinated counterparts",
       "Bromide is removed by conventional coagulation and filtration"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Bromide (Br⁻) in source water is a significant concern because it reacts with disinfectants to form brominated DBPs: with chlorine, it forms bromoform (CHBr3) and bromodichloromethane (CHBrCl2), which are more toxic than their chlorinated counterparts; with ozone, it forms bromate (BrO3⁻), a probable human carcinogen with an Ontario MAC of 0.010 mg/L. Bromide in Ontario source water comes from road salt (CaBr2 impurity), oil and gas brines, and natural geological sources. Conventional treatment does not remove bromide.",
     tip: "Bromide + Cl2 = bromoform, bromodichloromethane. Bromide + O3 = bromate (MAC = 0.010 mg/L).",
   },
@@ -6687,11 +6687,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the difference between 'oxidation-reduction potential' (ORP) and 'dissolved oxygen' (DO) as measures of water quality?",
     options: [
       "ORP and DO are the same measurement — both measure the oxygen content of water",
-      "ORP measures the tendency of water to accept or donate electrons (overall redox state); DO measures the actual concentration of dissolved molecular oxygen. ORP can indicate anoxic conditions even when DO reads zero",
       "ORP is measured in mg/L; DO is measured in mV",
+      "ORP measures the tendency of water to accept or donate electrons (overall redox state); DO measures the actual concentration of dissolved molecular oxygen. ORP can indicate anoxic conditions even when DO reads zero",
       "ORP is used for wastewater; DO is used for drinking water"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Dissolved Oxygen (DO) measures the actual concentration of dissolved molecular oxygen (O2) in mg/L. ORP (Oxidation-Reduction Potential) measures the overall tendency of the water to accept or donate electrons, expressed in millivolts (mV). Positive ORP indicates oxidizing conditions; negative ORP indicates reducing conditions. ORP provides information about the overall redox state of the water, including the presence of other oxidants/reductants beyond O2. ORP is particularly useful for monitoring anoxic conditions in wastewater treatment and for assessing disinfection effectiveness.",
     tip: "DO = actual O2 concentration (mg/L). ORP = overall redox state (mV). ORP more comprehensive than DO.",
   },
@@ -6717,11 +6717,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the significance of 'total phosphorus' (TP) in source water quality monitoring?",
     options: [
       "Total phosphorus is a health concern at concentrations above 0.1 mg/L",
-      "Total phosphorus is a key nutrient that drives algal growth and eutrophication; elevated TP in source water indicates increased risk of algal blooms and associated water quality problems",
       "Total phosphorus is only measured in wastewater effluent, not source water",
+      "Total phosphorus is a key nutrient that drives algal growth and eutrophication; elevated TP in source water indicates increased risk of algal blooms and associated water quality problems",
       "Total phosphorus is regulated by a MAC of 0.01 mg/L in Ontario drinking water standards"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Total phosphorus (TP) is the key limiting nutrient for algal growth in most Ontario lakes and rivers. Elevated TP concentrations (>0.02 mg/L in lakes, >0.03 mg/L in rivers) indicate eutrophication risk and increased potential for algal and cyanobacterial blooms. Sources of TP include agricultural runoff, urban stormwater, septic systems, and wastewater effluent. Phosphorus is not regulated by a MAC in Ontario drinking water standards (it is not a direct health concern at typical concentrations) but is monitored as an indicator of source water quality.",
     tip: "TP drives algal growth and eutrophication. >0.02 mg/L in lakes = eutrophication risk. Not regulated by MAC.",
   },
@@ -6731,12 +6731,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "What is the 'Piper diagram' and how is it used in hydrogeochemistry?",
     options: [
-      "A Piper diagram measures the flow velocity in a water distribution pipe",
       "A Piper diagram is a trilinear diagram that plots the major cation and anion compositions of multiple water samples on two triangles and a central diamond, allowing comparison of water types and mixing",
+      "A Piper diagram measures the flow velocity in a water distribution pipe",
       "A Piper diagram shows the seasonal variation in source water quality",
       "A Piper diagram is used to calculate the Langelier Saturation Index for multiple samples"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "A Piper diagram (trilinear diagram) consists of two triangular plots (one for cations: Ca, Mg, Na+K; one for anions: HCO3+CO3, SO4, Cl) and a central diamond that combines both. Each water sample plots as a point, and the position indicates the dominant water type (e.g., Ca-HCO3 type, Na-Cl type). Piper diagrams are used to: identify water types, compare multiple water sources, identify mixing of different water masses, and track changes in water chemistry. They are widely used in groundwater hydrogeochemistry.",
     tip: "Piper diagram: two triangles (cations, anions) + central diamond. Identifies water types and mixing.",
   },
@@ -6746,12 +6746,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the significance of 'specific conductance' changes in a distribution system for detecting water quality problems?",
     options: [
-      "Specific conductance is only useful for measuring TDS in source water",
       "Sudden changes in specific conductance in the distribution system can indicate intrusion of contaminated water, cross-connections, or changes in source water blending ratios",
+      "Specific conductance is only useful for measuring TDS in source water",
       "Specific conductance is not useful for distribution system monitoring because it varies with temperature",
       "Specific conductance only changes when the pH changes significantly"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Specific conductance (electrical conductivity) is a rapid, inexpensive, and continuous measurement that reflects the total dissolved ion concentration. In distribution system monitoring, sudden changes in conductance can indicate: intrusion of contaminated water (higher conductance from pollutants), cross-connections with non-potable water sources, changes in source water blending ratios, or treatment process upsets. Online conductance monitoring at key points in the distribution system provides early warning of water quality changes. Temperature correction to 25°C is required for valid comparisons.",
     tip: "Conductance changes in distribution = potential contamination intrusion, cross-connections, or blending changes.",
   },
@@ -6764,11 +6764,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of sodium thiosulfate (Na2S2O3) in bacteriological sample bottles?",
     options: [
       "To preserve the sample at low pH",
-      "To neutralize residual chlorine and prevent continued disinfection",
       "To inhibit the growth of non-coliform bacteria",
+      "To neutralize residual chlorine and prevent continued disinfection",
       "To maintain sample temperature during transport"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Sodium thiosulfate is added to bacteriological sample bottles to neutralize residual chlorine. Without dechlorination, chlorine in the sample would continue to kill bacteria between collection and analysis, leading to falsely low counts or false negatives.",
     tip: "Na2S2O3 is standard in all sterile bacteriological bottles for chlorinated water samples.",
   },
@@ -6777,8 +6777,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Bacteriological Testing",
     difficulty: "hard",
     question: "A water sample analyzed by the membrane filtration method yields 8 metallic sheen colonies on m-Endo agar after 24 hours at 35°C. The sample volume filtered was 100 mL. What is the total coliform count?",
-    options: ["0.08 CFU/mL", "0.8 CFU/100 mL", "8 CFU/100 mL", "80 CFU/100 mL"],
-    correctIndex: 2,
+    options: ["0.08 CFU/mL", "0.8 CFU/100 mL", "80 CFU/100 mL", "8 CFU/100 mL"],
+    correctIndex: 3,
     explanation: "In the membrane filtration method, colonies are counted per 100 mL of sample filtered. If 8 metallic sheen colonies grew from a 100 mL sample, the result is 8 CFU/100 mL. This exceeds the Ontario MAC of 0 CFU/100 mL for total coliform in drinking water.",
     isCalc: true,
     tip: "MF results are always reported per 100 mL for drinking water samples.",
@@ -6790,11 +6790,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Which of the following best describes the difference between total coliform and E. coli as indicators in drinking water?",
     options: [
       "Total coliform is more specific to fecal contamination than E. coli",
-      "E. coli is a subset of total coliform and is specific to fecal contamination",
+      "E. coli is less sensitive than total coliform as an indicator of treatment failure",
       "Total coliform and E. coli are the same organism measured by different methods",
-      "E. coli is less sensitive than total coliform as an indicator of treatment failure"
+      "E. coli is a subset of total coliform and is specific to fecal contamination"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "E. coli is a subset of the total coliform group. While total coliform includes many environmental bacteria and indicates treatment effectiveness or distribution system integrity, E. coli is specific to fecal contamination and its presence in drinking water indicates a direct health risk.",
     tip: "E. coli = fecal indicator; total coliform = treatment/distribution integrity indicator.",
   },
@@ -6805,11 +6805,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "In the Colilert method, a sample well turns yellow but does not fluoresce under UV light at 365 nm. What does this result indicate?",
     options: [
       "E. coli is present",
-      "Total coliform is present but E. coli is absent",
+      "The result is invalid and must be repeated",
       "The sample is negative for both total coliform and E. coli",
-      "The result is invalid and must be repeated"
+      "Total coliform is present but E. coli is absent"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "In the Colilert system, yellow colour indicates total coliform (beta-galactosidase activity via ONPG substrate). Fluorescence under UV at 365 nm indicates E. coli (beta-glucuronidase activity via MUG substrate). Yellow without fluorescence = total coliform positive, E. coli negative.",
     tip: "Colilert: yellow = total coliform; yellow + UV fluorescence = E. coli.",
   },
@@ -6820,11 +6820,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A laboratory receives a bacteriological sample that was collected 7.5 hours ago and has been refrigerated. What is the appropriate action?",
     options: [
       "Analyze the sample immediately — the 24-hour holding time has not been exceeded",
-      "Reject the sample — the 6-hour holding time has been exceeded",
       "Analyze the sample but document the holding time exceedance in the report",
+      "Reject the sample — the 6-hour holding time has been exceeded",
       "Add more sodium thiosulfate to extend the holding time"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The preferred holding time for bacteriological samples (total coliform, E. coli) is 6 hours from collection to analysis. A sample collected 7.5 hours ago has exceeded this holding time. The sample should be rejected and recollected. Results from samples outside holding time cannot be used for regulatory compliance under O. Reg. 170/03.",
     tip: "6-hour holding time for bacteriological samples is a hard limit for regulatory compliance.",
   },
@@ -6834,12 +6834,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the purpose of a positive control in bacteriological testing?",
     options: [
-      "To detect contamination in reagents and equipment",
       "To verify that the media and method can support growth of the target organism",
+      "To detect contamination in reagents and equipment",
       "To confirm that the sample was collected correctly",
       "To measure the background level of bacteria in the laboratory"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "A positive control (e.g., E. coli ATCC 25922) is processed alongside samples to verify that the media, incubation conditions, and method are capable of supporting growth of the target organism. If the positive control fails to grow, the batch results are invalid regardless of sample results.",
     tip: "Positive control = verifies method performance; negative control = detects contamination.",
   },
@@ -6848,8 +6848,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Bacteriological Testing",
     difficulty: "medium",
     question: "Which incubation temperature is used for the membrane filtration method to detect fecal coliform?",
-    options: ["35°C", "37°C", "44.5°C", "41°C"],
-    correctIndex: 2,
+    options: ["35°C", "44.5°C", "37°C", "41°C"],
+    correctIndex: 1,
     explanation: "Fecal coliform (including E. coli) are thermotolerant coliforms that grow at elevated temperatures. The membrane filtration method for fecal coliform uses m-FC agar incubated at 44.5°C for 24 hours. Blue colonies indicate fecal coliform. Total coliform is incubated at 35°C on m-Endo agar.",
     tip: "Total coliform = 35°C; fecal coliform = 44.5°C — the elevated temperature selects for thermotolerant organisms.",
   },
@@ -6860,11 +6860,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A drinking water sample is analyzed by the Colilert Quanti-Tray/2000 method. The result shows 12 large wells positive and 5 small wells positive out of 97 large and 48 small wells. What does this result represent?",
     options: [
       "A qualitative presence/absence result only",
-      "A quantitative MPN (most probable number) result for total coliform",
+      "A measure of heterotrophic plate count (HPC)",
       "A direct colony count of total coliform",
-      "A measure of heterotrophic plate count (HPC)"
+      "A quantitative MPN (most probable number) result for total coliform"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The Colilert Quanti-Tray/2000 method provides a quantitative MPN (most probable number) result. The number of positive large and small wells is used with the IDEXX MPN table to calculate the concentration of total coliform (and E. coli) in the sample. This is a statistical estimate, not a direct colony count.",
     tip: "Quanti-Tray/2000: 97 large + 48 small wells; MPN calculated from IDEXX table based on positive well counts.",
   },
@@ -6873,8 +6873,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Bacteriological Testing",
     difficulty: "medium",
     question: "What is the minimum sample volume required for the membrane filtration method for total coliform in drinking water?",
-    options: ["10 mL", "50 mL", "100 mL", "500 mL"],
-    correctIndex: 2,
+    options: ["100 mL", "50 mL", "10 mL", "500 mL"],
+    correctIndex: 0,
     explanation: "The standard sample volume for membrane filtration of drinking water for total coliform is 100 mL. This volume is specified in Standard Methods 9222 and is required for regulatory compliance under Ontario's drinking water regulations. Smaller volumes may be used if the sample is turbid, but 100 mL is the standard for treated drinking water.",
     tip: "100 mL is the standard MF volume for drinking water — memorize this.",
   },
@@ -6884,12 +6884,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "Which enzyme activity is detected by the MUG substrate in the Colilert method?",
     options: [
-      "Beta-galactosidase (β-gal) — indicates total coliform",
       "Beta-glucuronidase (β-GUR) — indicates E. coli",
+      "Beta-galactosidase (β-gal) — indicates total coliform",
       "Oxidase — indicates Pseudomonas",
       "Urease — indicates Helicobacter"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "The MUG (4-methylumbelliferyl-β-D-glucuronide) substrate detects beta-glucuronidase (β-GUR) activity, which is specific to E. coli. When E. coli cleaves MUG, it produces a fluorescent product visible under UV light at 365 nm. The ONPG substrate detects beta-galactosidase for total coliform (yellow colour).",
     tip: "ONPG → yellow = total coliform; MUG → UV fluorescence = E. coli.",
   },
@@ -6899,12 +6899,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "A water system detects total coliform in a routine distribution sample. Under O. Reg. 170/03, what is the FIRST required action?",
     options: [
-      "Issue a Boil Water Advisory immediately",
       "Resample the location and notify the MECP and MOH",
+      "Issue a Boil Water Advisory immediately",
       "Increase chlorine residual and wait for the next scheduled sample",
       "Shut down the distribution system"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Under O. Reg. 170/03, a total coliform detection in the distribution system requires immediate resampling of the location (and adjacent points) and notification of the MECP and MOH. A Boil Water Advisory is issued by the MOH if E. coli is detected or if the investigation reveals a health risk. Total coliform alone does not automatically trigger a BWA.",
     tip: "Total coliform = resample + notify; E. coli = notify MOH immediately + consider BWA.",
   },
@@ -6914,12 +6914,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is heterotrophic plate count (HPC) and what does an elevated HPC in a distribution system indicate?",
     options: [
-      "HPC measures pathogenic bacteria; elevated HPC indicates a health emergency",
       "HPC measures all culturable bacteria; elevated HPC (>500 CFU/mL) may indicate biofilm growth or inadequate disinfection",
+      "HPC measures pathogenic bacteria; elevated HPC indicates a health emergency",
       "HPC measures only coliform bacteria; elevated HPC indicates fecal contamination",
       "HPC measures viral load; elevated HPC indicates a viral outbreak risk"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Heterotrophic plate count (HPC) measures the total number of culturable bacteria in a water sample, regardless of type. An elevated HPC (>500 CFU/mL) in the distribution system may indicate biofilm growth on pipe surfaces, stagnation, inadequate chlorine residual, or loss of disinfection effectiveness. HPC is not a direct indicator of pathogens or fecal contamination.",
     tip: "HPC >500 CFU/mL = investigate chlorine residual, stagnation, and biofilm.",
   },
@@ -6929,12 +6929,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A laboratory analyst filters a 100 mL drinking water sample through a 0.45 µm membrane and places it on m-Endo agar. After 24 hours at 35°C, the membrane shows 2 metallic sheen colonies and 15 non-metallic colonies. What is the total coliform result?",
     options: [
-      "17 CFU/100 mL",
-      "15 CFU/100 mL",
       "2 CFU/100 mL",
+      "15 CFU/100 mL",
+      "17 CFU/100 mL",
       "0 CFU/100 mL — the result is negative because the count is low"
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "On m-Endo agar, only colonies with a metallic golden-green sheen are counted as total coliform. Non-metallic colonies (pink, red, or colourless) are not total coliform and are not counted. Therefore, the total coliform result is 2 CFU/100 mL, which exceeds the MAC of 0 CFU/100 mL and is an adverse result.",
     tip: "m-Endo agar: ONLY metallic sheen colonies = total coliform. Non-metallic colonies are not counted.",
   },
@@ -6945,11 +6945,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Which of the following is a key advantage of the Colilert method over the membrane filtration method for drinking water analysis?",
     options: [
       "Colilert provides a direct colony count rather than an MPN estimate",
-      "Colilert simultaneously detects both total coliform and E. coli in a single test",
       "Colilert has a shorter holding time requirement than membrane filtration",
+      "Colilert simultaneously detects both total coliform and E. coli in a single test",
       "Colilert does not require incubation and provides results in under 1 hour"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "A key advantage of the Colilert method is that it simultaneously detects both total coliform (yellow colour via ONPG) and E. coli (fluorescence via MUG) in a single 18-hour incubation. The membrane filtration method requires separate media and incubation conditions for each organism. Colilert is approved under O. Reg. 170/03.",
     tip: "Colilert: one test, one incubation, two results (total coliform + E. coli).",
   },
@@ -6969,12 +6969,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water quality analyst is setting up a batch of bacteriological samples. The method blank (reagent water processed through the entire MF procedure) shows 3 total coliform colonies. What is the correct action?",
     options: [
-      "Report the sample results with a note that the blank had 3 colonies",
-      "Subtract 3 colonies from all sample results in the batch",
       "Invalidate the entire batch — the method blank indicates contamination",
+      "Subtract 3 colonies from all sample results in the batch",
+      "Report the sample results with a note that the blank had 3 colonies",
       "Accept the results if all samples show >10 colonies"
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "A method blank should show 0 colonies (< MDL). If the method blank shows any total coliform colonies, it indicates contamination in the reagents, glassware, filtration apparatus, or media. The entire batch must be invalidated, the source of contamination identified and corrected, and all samples in the batch re-analyzed. You cannot subtract blank results from sample results in bacteriological testing.",
     tip: "Method blank with any colonies = invalidate the batch. No subtraction allowed in bacteriological testing.",
   },
@@ -6985,11 +6985,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Which of the following organisms is used as a positive control for the membrane filtration method for total coliform?",
     options: [
       "Bacillus subtilis ATCC 6633",
-      "Escherichia coli ATCC 25922",
       "Pseudomonas aeruginosa ATCC 27853",
+      "Escherichia coli ATCC 25922",
       "Staphylococcus aureus ATCC 25923"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Escherichia coli ATCC 25922 is the standard positive control organism for total coliform and E. coli testing by membrane filtration and Colilert methods. It is a well-characterized strain that reliably produces metallic sheen colonies on m-Endo agar and positive results in Colilert. ATCC strains are used because their characteristics are well-defined and stable.",
     tip: "E. coli ATCC 25922 = standard positive control for total coliform/E. coli methods.",
   },
@@ -7000,11 +7000,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What does a 'false negative' result mean in bacteriological testing, and what can cause it?",
     options: [
       "A result that incorrectly detects bacteria that are not present — caused by contaminated reagents",
-      "A result that fails to detect bacteria that are present — caused by exceeding holding time, insufficient dechlorination, or inhibitory substances",
+      "A result that shows too many colonies to count — caused by filtering too large a sample volume",
       "A result that is below the detection limit — caused by diluting the sample too much",
-      "A result that shows too many colonies to count — caused by filtering too large a sample volume"
+      "A result that fails to detect bacteria that are present — caused by exceeding holding time, insufficient dechlorination, or inhibitory substances"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "A false negative occurs when bacteria are present in the sample but are not detected. Common causes include: exceeding the 6-hour holding time (bacteria die), insufficient dechlorination (residual chlorine continues to kill bacteria), inhibitory substances in the sample (heavy metals, antibiotics), and improper sample handling or storage. False negatives are particularly dangerous in drinking water monitoring.",
     tip: "False negative = bacteria present but not detected. Holding time and dechlorination are the most common causes.",
   },
@@ -7016,10 +7016,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: [
       "Within 24 hours of receiving the result",
       "Within 4 hours of receiving the result",
-      "Immediately upon receiving the result",
-      "Within 48 hours of receiving the result"
+      "Within 48 hours of receiving the result",
+      "Immediately upon receiving the result"
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: "Under O. Reg. 170/03, the detection of E. coli in a drinking water sample is an adverse result that requires immediate notification of both the Medical Officer of Health (MOH) and the MECP. 'Immediately' means as soon as the result is known — there is no grace period. The MOH then determines whether a Boil Water Advisory is required.",
     tip: "E. coli detection = notify MOH and MECP IMMEDIATELY — no delay permitted.",
   },
@@ -7030,11 +7030,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the significance of the geometric mean in bacteriological water quality assessment?",
     options: [
       "It is used to calculate the average chlorine residual in the distribution system",
-      "It is used to assess compliance with E. coli limits in recreational water and source water monitoring",
+      "It is the standard average used for all drinking water compliance calculations",
       "It is used to calculate the MPN from multiple tube fermentation results",
-      "It is the standard average used for all drinking water compliance calculations"
+      "It is used to assess compliance with E. coli limits in recreational water and source water monitoring"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The geometric mean is used in recreational water and source water quality assessment to evaluate E. coli and fecal coliform data over time. It is less influenced by extreme high values than the arithmetic mean, making it more appropriate for log-normally distributed bacteriological data. For example, Ontario's recreational water guideline uses a geometric mean of E. coli < 200 CFU/100 mL.",
     tip: "Geometric mean for E. coli compliance in recreational/source water — not arithmetic mean.",
   },
@@ -7045,11 +7045,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A bacteriological sample is collected from a chlorinated distribution system without sodium thiosulfate in the sample bottle. What is the likely effect on the result?",
     options: [
       "The result will be falsely elevated due to continued bacterial growth",
-      "The result will be falsely low or a false negative due to continued chlorine disinfection",
+      "The result will be invalid only if the chlorine residual exceeds 4.0 mg/L",
       "The result will be unaffected because chlorine dissipates quickly",
-      "The result will be invalid only if the chlorine residual exceeds 4.0 mg/L"
+      "The result will be falsely low or a false negative due to continued chlorine disinfection"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "If sodium thiosulfate is not present in the sample bottle, residual chlorine in the sample will continue to kill bacteria during transport and storage. This will result in falsely low counts or false negatives — the sample will appear cleaner than it actually is. This is why all bacteriological sample bottles for chlorinated water must contain sodium thiosulfate.",
     tip: "No Na2S2O3 = chlorine keeps killing bacteria = false negative risk.",
   },
@@ -7075,11 +7075,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Which of the following sample types is used to detect contamination introduced during the sampling process itself?",
     options: [
       "Method blank",
-      "Field blank",
+      "Equipment blank",
       "Trip blank",
-      "Equipment blank"
+      "Field blank"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "A field blank is sterile reagent water that is taken to the sampling site, opened, and processed exactly like a sample (including being poured into a sample bottle). It detects contamination introduced during the sampling process — from the environment, the sampler's hands, or the sampling equipment. A method blank stays in the laboratory and detects laboratory contamination only.",
     tip: "Field blank = detects sampling contamination; method blank = detects laboratory contamination.",
   },
@@ -7089,12 +7089,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the recommended minimum free chlorine residual in a drinking water distribution system to prevent bacteriological regrowth?",
     options: [
-      "0.01 mg/L",
       "0.05 mg/L",
+      "0.01 mg/L",
       "0.2 mg/L",
       "0.5 mg/L"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Ontario's drinking water regulations require a minimum free chlorine residual of 0.05 mg/L at all points in the distribution system. Below this level, bacteriological regrowth (including biofilm formation and coliform regrowth) may occur. Many utilities target a higher residual (0.2–0.5 mg/L) to provide a safety margin, but 0.05 mg/L is the regulatory minimum.",
     tip: "Minimum distribution residual = 0.05 mg/L free chlorine — this is the regulatory floor.",
   },
@@ -7105,11 +7105,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water quality analyst is performing the membrane filtration method and notices that the membrane has torn during filtration. What is the correct action?",
     options: [
       "Place the torn membrane on agar and report the result with a note about the tear",
-      "Discard the membrane and filter, and re-filter a new 100 mL sample with a new membrane",
+      "Reduce the sample volume to 50 mL and filter again through the same membrane",
       "Patch the membrane with tape and proceed with incubation",
-      "Reduce the sample volume to 50 mL and filter again through the same membrane"
+      "Discard the membrane and filter, and re-filter a new 100 mL sample with a new membrane"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "A torn membrane is invalid because it will not retain all bacteria from the sample — some bacteria will pass through the tear and not be counted, leading to a false negative. The torn membrane must be discarded, and a new 100 mL sample must be filtered through a new, intact membrane. If insufficient sample volume remains, a new sample must be collected.",
     tip: "Torn membrane = invalid result. Discard and re-filter with a new membrane and new sample.",
   },
@@ -7120,8 +7120,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Disinfection",
     difficulty: "medium",
     question: "At pH 7.5, approximately what percentage of free chlorine exists as hypochlorous acid (HOCl)?",
-    options: ["10%", "50%", "90%", "99%"],
-    correctIndex: 1,
+    options: ["50%", "10%", "90%", "99%"],
+    correctIndex: 0,
     explanation: "At pH 7.5, free chlorine is approximately 50% HOCl and 50% OCl- (hypochlorite ion). HOCl is 80-90 times more effective as a disinfectant than OCl-. This is why pH control is critical for disinfection efficiency — lower pH increases the HOCl fraction and improves disinfection.",
     tip: "pH 7.5 = 50/50 HOCl/OCl-; pH 6 ≈ 95% HOCl; pH 8.5 ≈ 10% HOCl.",
   },
@@ -7130,8 +7130,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Disinfection",
     difficulty: "hard",
     question: "A treatment plant achieves a chlorine residual of 0.8 mg/L at the clearwell outlet. The T10 contact time is 45 minutes. What is the CT value achieved?",
-    options: ["0.018 mg·min/L", "1.78 mg·min/L", "36 mg·min/L", "56.25 mg·min/L"],
-    correctIndex: 2,
+    options: ["0.018 mg·min/L", "1.78 mg·min/L", "56.25 mg·min/L", "36 mg·min/L"],
+    correctIndex: 3,
     explanation: "CT = Residual × T10 = 0.8 mg/L × 45 min = 36 mg·min/L. This CT value is then compared to the CT required from CT tables (Health Canada or USEPA) for the target log inactivation at the given temperature and pH to determine if the disinfection requirement is met.",
     isCalc: true,
     tip: "CT = Residual (mg/L) × T10 (min). Always use T10, not theoretical HRT.",
@@ -7166,8 +7166,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Disinfection",
     difficulty: "hard",
     question: "Which disinfection by-product is formed when ozone reacts with bromide in source water?",
-    options: ["Chloroform", "Bromate", "Chlorite", "Trichloroacetic acid"],
-    correctIndex: 1,
+    options: ["Chloroform", "Chlorite", "Bromate", "Trichloroacetic acid"],
+    correctIndex: 2,
     explanation: "When ozone reacts with bromide (Br-) present in source water, it forms bromate (BrO3-). Bromate is a potential carcinogen with an Ontario MAC of 0.010 mg/L. Bromate formation is a key concern for water systems using ozone treatment, particularly those with elevated bromide in the source water. Control strategies include lowering pH before ozonation and using ammonia to suppress bromate formation.",
     tip: "Ozone + bromide → bromate (BrO3-). MAC = 0.010 mg/L.",
   },
@@ -7178,11 +7178,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the DPD method used for in drinking water analysis?",
     options: [
       "Measuring turbidity in treated water",
-      "Measuring free and total chlorine residual using a colorimetric reaction",
+      "Measuring dissolved oxygen in source water",
       "Detecting the presence of E. coli in distribution samples",
-      "Measuring dissolved oxygen in source water"
+      "Measuring free and total chlorine residual using a colorimetric reaction"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The DPD (N,N-diethyl-p-phenylenediamine) method is a colorimetric method for measuring chlorine residual. DPD No. 1 reacts with free chlorine to produce a pink/red colour proportional to the free chlorine concentration. DPD No. 3 (or DPD No. 1 + potassium iodide) measures total chlorine. The intensity of the colour is measured spectrophotometrically or compared to a colour wheel.",
     tip: "DPD No. 1 = free chlorine; DPD No. 3 = total chlorine.",
   },
@@ -7193,11 +7193,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water treatment plant uses chloramination in the distribution system. What is the primary concern associated with chloramine residuals in a distribution system?",
     options: [
       "Chloramines form more THMs than free chlorine",
-      "Chloramines can cause nitrification in the distribution system",
+      "Chloramines react with iron pipes to form corrosive compounds",
       "Chloramines are ineffective against all bacteria",
-      "Chloramines react with iron pipes to form corrosive compounds"
+      "Chloramines can cause nitrification in the distribution system"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Nitrification is the primary operational concern with chloramination. Chloramines release ammonia as they decay, and ammonia-oxidizing bacteria (Nitrosomonas) can oxidize this ammonia to nitrite and then nitrate. Nitrification depletes chloramine residual, increases nitrite levels (which can be a health concern), and promotes bacterial regrowth. Nitrification is controlled by maintaining adequate chloramine residual and minimizing water age.",
     tip: "Chloramines → nitrification risk in distribution system. Nitrification depletes residual and produces nitrite.",
   },
@@ -7206,8 +7206,8 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     module: "Disinfection",
     difficulty: "medium",
     question: "What is the maximum acceptable concentration (MAC) for total trihalomethanes (THMs) in Ontario drinking water?",
-    options: ["10 µg/L", "50 µg/L", "100 µg/L", "200 µg/L"],
-    correctIndex: 2,
+    options: ["100 µg/L", "50 µg/L", "10 µg/L", "200 µg/L"],
+    correctIndex: 0,
     explanation: "The Ontario MAC for total trihalomethanes (THMs) is 100 µg/L, measured as a running annual average. THMs include chloroform, bromodichloromethane, dibromochloromethane, and bromoform. They are formed when chlorine reacts with natural organic matter (NOM) in water. The running annual average is used to account for seasonal variation in THM formation.",
     tip: "Total THM MAC = 100 µg/L (running annual average). HAA MAC = 80 µg/L.",
   },
@@ -7218,11 +7218,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Enhanced coagulation is used as a strategy to control disinfection by-product (DBP) formation. What is the primary mechanism by which enhanced coagulation reduces DBP formation?",
     options: [
       "Enhanced coagulation increases the chlorine dose, which reduces reaction time with NOM",
-      "Enhanced coagulation removes natural organic matter (NOM) before chlorination, reducing DBP precursors",
       "Enhanced coagulation raises the pH, which shifts the chlorine equilibrium toward HOCl",
+      "Enhanced coagulation removes natural organic matter (NOM) before chlorination, reducing DBP precursors",
       "Enhanced coagulation removes bromide from the water, preventing bromate formation"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "Enhanced coagulation reduces DBP formation by removing natural organic matter (NOM) — the precursor material that reacts with chlorine to form THMs and HAAs — before the water is chlorinated. By lowering the TOC/DOC in the water before disinfection, there is less NOM available to react with chlorine, resulting in lower DBP formation. Enhanced coagulation typically involves lower coagulation pH and higher coagulant doses.",
     tip: "Enhanced coagulation removes NOM before chlorination → less DBP precursor → less THMs/HAAs.",
   },
@@ -7232,12 +7232,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "medium",
     question: "What is the chlorine demand of a water sample?",
     options: [
-      "The total amount of chlorine added to the water",
       "The difference between the chlorine dose applied and the chlorine residual measured after contact",
+      "The total amount of chlorine added to the water",
       "The minimum chlorine residual required in the distribution system",
       "The amount of chlorine consumed by disinfection of pathogens only"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Chlorine demand is the difference between the chlorine dose applied to the water and the chlorine residual remaining after a specified contact time. Chlorine demand = Applied dose - Residual. Chlorine is consumed by reactions with NOM, reduced inorganic compounds (Fe2+, Mn2+, H2S, NH3), and pathogens. High chlorine demand indicates high organic or inorganic load in the water.",
     tip: "Chlorine demand = Applied dose - Residual. High demand = high NOM or inorganic load.",
   },
@@ -7263,11 +7263,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the purpose of the breakpoint chlorination concept?",
     options: [
       "To determine the minimum chlorine dose needed to maintain a distribution residual",
-      "To identify the chlorine dose at which all combined chlorine (chloramines) is destroyed and free chlorine residual begins to form",
+      "To measure the maximum chlorine dose that can be applied without exceeding the aesthetic objective",
       "To calculate the CT required for Giardia inactivation",
-      "To measure the maximum chlorine dose that can be applied without exceeding the aesthetic objective"
+      "To identify the chlorine dose at which all combined chlorine (chloramines) is destroyed and free chlorine residual begins to form"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Breakpoint chlorination refers to the point on the chlorine dose-residual curve where all combined chlorine (chloramines and chloro-organic compounds) has been oxidized and destroyed, and free chlorine residual begins to increase with additional chlorine dose. At the breakpoint, the residual reaches a minimum before rising again as free chlorine. Operators use this concept to ensure free chlorine residual is achieved when switching from combined to free chlorine.",
     tip: "Breakpoint = all combined chlorine destroyed; free chlorine residual begins to form beyond this point.",
   },
@@ -7278,11 +7278,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A water system uses UV disinfection as the primary treatment for Cryptosporidium. What factor most significantly reduces UV disinfection effectiveness?",
     options: [
       "High pH (>8.0) in the treated water",
-      "High turbidity or UV-absorbing substances in the water",
       "Low water temperature (<10°C)",
+      "High turbidity or UV-absorbing substances in the water",
       "High chlorine residual in the water entering the UV system"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "UV disinfection effectiveness is most significantly reduced by turbidity and UV-absorbing substances (such as humic acids, iron, and other UV-absorbing compounds). These substances absorb or scatter UV light before it can reach and inactivate pathogens. UV transmittance (UVT) is measured to assess how much UV light passes through the water — low UVT means less UV energy reaches the pathogens. UV systems must be designed and validated for the expected UVT range.",
     tip: "High turbidity or UV-absorbing NOM = reduced UV effectiveness. UVT must be monitored.",
   },
@@ -7303,11 +7303,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Chlorine dioxide (ClO2) is used as an alternative disinfectant in some water systems. What is the primary regulatory concern with chlorine dioxide use?",
     options: [
       "Chlorine dioxide forms more THMs than free chlorine",
-      "Chlorine dioxide produces chlorite and chlorate as by-products, both with MACs of 1.0 mg/L",
+      "Chlorine dioxide cannot be generated on-site and must be transported as a compressed gas",
       "Chlorine dioxide is ineffective against Giardia and Cryptosporidium",
-      "Chlorine dioxide cannot be generated on-site and must be transported as a compressed gas"
+      "Chlorine dioxide produces chlorite and chlorate as by-products, both with MACs of 1.0 mg/L"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "The primary regulatory concern with chlorine dioxide is the formation of chlorite (ClO2-) and chlorate (ClO3-) as by-products. Both chlorite and chlorate have Ontario MACs of 1.0 mg/L. Chlorite is formed when ClO2 reacts with organic matter or is reduced by the disinfection process. Chlorate can form from chlorite oxidation or from the ClO2 generation process. These by-products limit the maximum ClO2 dose that can be applied.",
     tip: "ClO2 by-products: chlorite and chlorate — both MAC = 1.0 mg/L.",
   },
@@ -7364,11 +7364,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "Which of the following factors INCREASES trihalomethane (THM) formation in chlorinated water?",
     options: [
       "Lower water temperature",
-      "Lower pH",
       "Higher bromide concentration in the source water",
+      "Lower pH",
       "Lower natural organic matter (NOM) concentration"
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: "Higher bromide concentration in the source water increases THM formation and shifts the THM speciation toward brominated THMs (bromodichloromethane, dibromochloromethane, bromoform). Bromide reacts with HOCl to form HOBr, which is more reactive with NOM than HOCl. Factors that increase THM formation: higher NOM, higher chlorine dose, longer contact time, higher temperature, higher pH, and higher bromide.",
     tip: "THM formation increases with: higher NOM, Cl2 dose, temperature, pH, and bromide.",
   },
@@ -7394,11 +7394,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "What is the chlorine residual requirement at the point of entry to the distribution system under Ontario regulations?",
     options: [
       "No specific requirement — only distribution system residuals are regulated",
-      "Minimum 0.05 mg/L free chlorine",
+      "Minimum 1.0 mg/L free chlorine",
       "Minimum 0.2 mg/L free chlorine",
-      "Minimum 1.0 mg/L free chlorine"
+      "Minimum 0.05 mg/L free chlorine"
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: "Ontario regulations require a minimum free chlorine residual of 0.05 mg/L at all points in the distribution system, including the point of entry. This minimum residual ensures that the water entering the distribution system has adequate disinfectant protection against bacteriological regrowth and contamination during distribution. Many utilities target higher residuals (0.2–0.5 mg/L) at the point of entry to maintain adequate residual throughout the system.",
     tip: "Minimum distribution residual = 0.05 mg/L free chlorine at all points.",
   },
@@ -7408,12 +7408,12 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     difficulty: "hard",
     question: "A water treatment plant switches from free chlorination to chloramination in the distribution system. What is the expected effect on THM and HAA levels in the distribution system?",
     options: [
-      "Both THM and HAA levels will increase significantly",
       "Both THM and HAA levels will decrease because chloramines are less reactive with NOM than free chlorine",
+      "Both THM and HAA levels will increase significantly",
       "THM levels will increase but HAA levels will decrease",
       "There will be no change in THM or HAA levels"
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "Chloramines are significantly less reactive with natural organic matter (NOM) than free chlorine, and therefore form much lower concentrations of THMs and HAAs. Switching from free chlorination to chloramination in the distribution system is a common strategy to reduce DBP formation and comply with THM and HAA MACs. However, chloramines provide weaker disinfection and may increase nitrification risk.",
     tip: "Chloramination reduces THMs and HAAs in distribution system but increases nitrification risk.",
   },
@@ -7440,10 +7440,10 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     options: [
       "Chloroform (CHCl3)",
       "Bromodichloromethane (CHBrCl2)",
-      "Dichloroacetic acid (CHCl2COOH)",
-      "Bromoform (CHBr3)"
+      "Bromoform (CHBr3)",
+      "Dichloroacetic acid (CHCl2COOH)"
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: "Dichloroacetic acid (DCAA) is a haloacetic acid (HAA), not a trihalomethane. The four regulated THMs in Ontario are: chloroform (CHCl3), bromodichloromethane (CHBrCl2), dibromochloromethane (CHBr2Cl), and bromoform (CHBr3). HAAs are a separate class of DBPs with their own MAC of 80 µg/L.",
     tip: "THMs: chloroform, bromodichloromethane, dibromochloromethane, bromoform. HAAs are a separate DBP class.",
   },
@@ -7454,11 +7454,11 @@ export const WQA_QUESTIONS: WQAQuestion[] = [
     question: "A continuous chlorine residual analyzer at a treatment plant reads 0.3 mg/L. A grab sample analyzed by DPD method reads 0.8 mg/L. What is the most likely cause of this discrepancy?",
     options: [
       "The DPD method is more accurate and the online analyzer is reading low",
-      "The online analyzer may be reading correctly and the DPD result may be falsely elevated due to interference from turbidity, colour, or oxidizing agents",
       "The grab sample was taken from a different location than the online analyzer",
+      "The online analyzer may be reading correctly and the DPD result may be falsely elevated due to interference from turbidity, colour, or oxidizing agents",
       "The online analyzer requires recalibration because it always reads low"
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: "The DPD colorimetric method is subject to positive interference from turbidity, colour, manganese, iron, and other oxidizing agents that can react with DPD and produce a pink colour even without chlorine present. This can cause falsely elevated DPD readings. Amperometric titration is the reference method for resolving such discrepancies. The online analyzer should be calibrated against amperometric titration, not DPD.",
     tip: "DPD can give falsely high readings due to turbidity, colour, Mn, and Fe interference. Amperometric titration is the reference method.",
   },
