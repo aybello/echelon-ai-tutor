@@ -203,6 +203,15 @@ function Router() {
       <Route path={"/wpi-class4-wastewater-mock"} component={WpiClass4WastewaterMockExam} />
       <Route path={"/formulas-wpi-class4-ww"} component={FormulasWpiClass4Ww} />
       <Route path={"/formulas-wqa"} component={FormulasWQA} />
+      {/* WPI dist/coll formula redirects — redirect to parent WPI treatment formula pages until dedicated pages exist */}
+      <Route path={"/formulas-wpi-class1-dist"}>{() => <Redirect to="/formulas-wpi-class1" />}</Route>
+      <Route path={"/formulas-wpi-class2-dist"}>{() => <Redirect to="/formulas-wpi-class2" />}</Route>
+      <Route path={"/formulas-wpi-class3-dist"}>{() => <Redirect to="/formulas-wpi-class3" />}</Route>
+      <Route path={"/formulas-wpi-class4-dist"}>{() => <Redirect to="/formulas-wpi-class4" />}</Route>
+      <Route path={"/formulas-wpi-class1-coll"}>{() => <Redirect to="/formulas-wpi-class1-ww" />}</Route>
+      <Route path={"/formulas-wpi-class2-coll"}>{() => <Redirect to="/formulas-wpi-class2-ww" />}</Route>
+      <Route path={"/formulas-wpi-class3-coll"}>{() => <Redirect to="/formulas-wpi-class3-ww" />}</Route>
+      <Route path={"/formulas-wpi-class4-coll"}>{() => <Redirect to="/formulas-wpi-class4-ww" />}</Route>
       {/* Flashcard routes */}
       <Route path={"/oit-water-flashcards"} component={OITWaterFlashcards} />
       <Route path={"/oit-ww-flashcards"} component={OITWastewaterFlashcards} />

@@ -418,3 +418,9 @@
 ## Bug Reports (Apr 11 2026)
 - [ ] QOTD (Question of the Day) shows in preview but not on the deployed website
 - [x] Remove Question of the Day feature entirely (component, Landing page, backend procedures)
+
+## Audit Pass 3 Bug Fixes (Apr 11 2026)
+- [x] Bug 10: FlashcardShell handleShuffle/handleReviewUnknown used raw `questions` instead of `conceptualQuestions` — calculation questions leaked back into deck after shuffle
+- [x] Bug 11: FlashcardShell session-complete screen unknownCount used global `knownCount` instead of deck-scoped count — could go negative when switching modules
+- [x] Bug 12: FlashcardShell used only localStorage email for progress persistence — logged-in users' progress wasn't saved; now uses useAuth() email first, falls back to localStorage
+- [x] Bug 13: 8 WPI dist/coll formula links in SiteNav were 404 — added redirect routes to parent WPI treatment formula pages

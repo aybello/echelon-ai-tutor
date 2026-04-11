@@ -6,6 +6,7 @@
 import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 const FREE_FLIP_LIMIT = 10; // cards that can be flipped before paywall
 
@@ -88,9 +89,9 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const [sessionComplete, setSessionComplete] = useState(false);
   const [progressLoaded, setProgressLoaded] = useState(false);
 
-  // Stable email for persistence — read once on mount
-  const emailRef = useRef(getStoredEmail());
-  const email = emailRef.current;
+  // Use auth user email first, fall back to localStorage
+  const { user } = useAuth();
+  const email = user?.email || getStoredEmail();
 
   // ── Load saved progress on mount ──────────────────────────────────────────
   const { data: savedProgress } = trpc.flashcard.getProgress.useQuery(
@@ -127,7 +128,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         totalCards: conceptualQuestions.length,
       });
     }, 800);
-  }, [email, examType, questions.length, saveProgress]);
+  }, [email, examType, conceptualQuestions.length, saveProgress]);
 
   // Memoized filtered list (used for module switching)
   const _filtered = useMemo(() => {
@@ -203,7 +204,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   };
 
   const handleShuffle = () => {
-    const base = selectedModule ? questions.filter(q => q.module === selectedModule) : questions;
+    const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
     const next = reviewing ? base.filter(q => !known.has(q.id)) : base;
     reshuffleDeck(next);
     const empty = new Set<number | string>();
@@ -212,7 +213,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   };
 
   const handleReviewUnknown = () => {
-    const base = selectedModule ? questions.filter(q => q.module === selectedModule) : questions;
+    const base = selectedModule ? conceptualQuestions.filter(q => q.module === selectedModule) : conceptualQuestions;
     const missed = base.filter(q => !known.has(q.id));
     if (missed.length === 0) return;
     setReviewing(true);
@@ -220,7 +221,9 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   };
 
   if (sessionComplete) {
-    const unknownCount = deck.length - knownCount;
+    // Count cards in the current deck that are NOT in the known set (not global knownCount)
+    const deckKnownCount = deck.filter(c => known.has(c.id)).length;
+    const unknownCount = deck.length - deckKnownCount;
     return (
       <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)", display: "flex", alignItems: "center", justifyContent: "center", padding: "24px" }}>
         <div style={{ background: "#fff", borderRadius: "20px", padding: "48px 40px", maxWidth: "480px", width: "100%", textAlign: "center", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
@@ -229,7 +232,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           <p style={{ color: "#64748b", fontSize: "16px", marginBottom: "32px" }}>You reviewed all {deck.length} cards</p>
           <div style={{ display: "flex", gap: "16px", justifyContent: "center", marginBottom: "32px" }}>
             <div style={{ background: "#DCFCE7", borderRadius: "12px", padding: "16px 24px" }}>
-              <div style={{ fontSize: "32px", fontWeight: 800, color: "#15803D" }}>{knownCount}</div>
+              <div style={{ fontSize: "32px", fontWeight: 800, color: "#15803D" }}>{deckKnownCount}</div>
               <div style={{ fontSize: "13px", color: "#15803D", fontWeight: 600 }}>Known</div>
             </div>
             <div style={{ background: "#FEE2E2", borderRadius: "12px", padding: "16px 24px" }}>
