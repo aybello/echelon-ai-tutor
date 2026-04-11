@@ -402,7 +402,7 @@
 - [x] Study Guides & Tools drawer section updated with Distribution and Collection guide links
 - [x] Unified process flow diagram view — added 🗺️ Process Map tab to all 4 process guides showing all steps connected in one animated SVG diagram
 - [ ] Fix daily audit checklist — stop it from rebuilding the project on each run
-- [ ] Full mobile responsiveness audit and fixes across all pages
+- [x] Full mobile responsiveness audit and fixes across all pages
 
 ## Audit Pass 2 Bug Fixes (Apr 11 2026)
 - [x] Bug 6: handleTimeUp on all 25 non-Home quiz pages bypassed handleConfirm — timed-out questions never logged to backend, never pushed to history. Fixed all 25 pages to compute isCorrect, push history, and call logAttemptFn inline.
@@ -424,3 +424,13 @@
 - [x] Bug 11: FlashcardShell session-complete screen unknownCount used global `knownCount` instead of deck-scoped count — could go negative when switching modules
 - [x] Bug 12: FlashcardShell used only localStorage email for progress persistence — logged-in users' progress wasn't saved; now uses useAuth() email first, falls back to localStorage
 - [x] Bug 13: 8 WPI dist/coll formula links in SiteNav were 404 — added redirect routes to parent WPI treatment formula pages
+
+## Mobile Responsiveness Audit (Apr 11 2026)
+- [x] Fix QuizShell mobile layout — already had comprehensive 640px styles (scrollable pills, compact mode cards, full-width buttons, segmented stats)
+- [x] Fix MockExamShell mobile layout — already had comprehensive 768px/640px/480px styles (2-col stats, full-width buttons, hidden sidebar)
+- [x] Fix Admin panel mobile layout — added scrollable tab bar, 2-col stats grid, hide signed-in text on mobile
+- [x] Fix Landing page mobile layout — course cards 1-col, tools grid 1-col, track toggle compact, hero buttons stacked
+- [x] Fix Pricing page mobile layout — already had comprehensive 900px/600px styles (1-col grids, compact pills, stacked FAQ)
+- [x] Fix Account page mobile layout — already had 600px styles (stacked form, full-width buttons, 1-col purchase history)
+- [x] Fix FlashcardShell mobile layout — already had 640px styles (responsive card, full-width buttons)
+- [x] Fix SiteNav mobile drawer — already has hamburger drawer with proper touch targets and scrollable sections

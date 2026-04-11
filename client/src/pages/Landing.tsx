@@ -1132,7 +1132,10 @@ export default function Landing() {
           .landing-wpi-secondary-btns { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; width: 100% !important; }
           .landing-wpi-secondary-btns a { width: 100% !important; }
           .landing-wpi-secondary-btns button { width: 100% !important; font-size: 12px !important; padding: 10px 8px !important; }
-          .landing-tools-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+          .landing-tools-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .landing-course-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          .landing-track-toggle { gap: 4px !important; }
+          .landing-track-toggle button { font-size: 11px !important; padding: 8px 10px !important; }
           .landing-session-complete-pad { padding: 32px 20px !important; }
           .contact-grid { grid-template-columns: 1fr !important; }
           .contact-info-row { flex-direction: row !important; flex-wrap: wrap !important; gap: 12px !important; }
@@ -1781,7 +1784,7 @@ export default function Landing() {
         </div>
         </FadeUp>
 
-        <div style={{
+        <div className="landing-course-grid" style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
           gap: 24,

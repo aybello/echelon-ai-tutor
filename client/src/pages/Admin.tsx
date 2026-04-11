@@ -167,13 +167,18 @@ export default function Admin() {
         .admin-row:hover { background: rgba(255,255,255,0.04) !important; }
         .admin-btn:hover { opacity: 0.8; }
         @media (max-width: 640px) {
-          .admin-stats { grid-template-columns: 1fr !important; }
+          .admin-stats { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
           .admin-header { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+          .admin-tab-bar { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; scrollbar-width: none !important; }
+          .admin-tab-bar::-webkit-scrollbar { display: none !important; }
+          .admin-tab-bar button { white-space: nowrap !important; flex-shrink: 0 !important; flex: 0 0 auto !important; font-size: 11px !important; padding: 8px 10px !important; }
+          .admin-top-bar { padding: 10px 14px !important; }
+          .admin-signed-in { display: none !important; }
         }
       `}</style>
 
       {/* Top bar */}
-      <div style={{ background: "#1E293B", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div className="admin-top-bar" style={{ background: "#1E293B", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <div style={{ width: 32, height: 32, borderRadius: 8, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800 }}>E</div>
           <div>
@@ -182,7 +187,7 @@ export default function Admin() {
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <span style={{ fontSize: 12, color: "#64748B" }}>Signed in as <strong style={{ color: "#94A3B8" }}>{user.name ?? user.email}</strong></span>
+          <span className="admin-signed-in" style={{ fontSize: 12, color: "#64748B" }}>Signed in as <strong style={{ color: "#94A3B8" }}>{user.name ?? user.email}</strong></span>
           <Link href="/"><button className="admin-btn" style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(255,255,255,0.1)", background: "transparent", color: "#94A3B8", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>← Site</button></Link>
         </div>
       </div>
@@ -226,7 +231,7 @@ export default function Admin() {
         </div>
 
         {/* Tab bar */}
-        <div style={{ display: "flex", gap: 4, marginBottom: 16, background: "#1E293B", borderRadius: 12, padding: 4 }}>
+        <div className="admin-tab-bar" style={{ display: "flex", gap: 4, marginBottom: 16, background: "#1E293B", borderRadius: 12, padding: 4 }}>
           {TABS.map(tab => (
             <button
               key={tab.id}
