@@ -319,25 +319,37 @@ export default function QuizShell({
         }
         @media (max-width: 480px) {
           .qs-header-title-row { flex-direction: column !important; align-items: flex-start !important; }
-          .qs-header-actions { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; gap: 6px !important; padding-bottom: 2px !important; margin-top: 10px !important; width: 100% !important; }
-          .qs-header-actions::-webkit-scrollbar { display: none; }
-          .qs-header-actions button { white-space: nowrap !important; flex-shrink: 0 !important; font-size: 11px !important; padding: 6px 10px !important; }
-          .qs-module-pills { gap: 4px !important; overflow-x: auto !important; flex-wrap: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 2px !important; }
-          .qs-module-pills::-webkit-scrollbar { display: none; }
-          .qs-module-pills button { font-size: 10px !important; padding: 4px 8px !important; flex-shrink: 0 !important; white-space: nowrap !important; }
+          /* Scrollable action buttons strip */
+          .qs-header-actions { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; gap: 6px !important; padding-bottom: 4px !important; margin-top: 8px !important; width: 100% !important; scrollbar-width: none !important; }
+          .qs-header-actions::-webkit-scrollbar { display: none !important; }
+          .qs-header-actions a, .qs-header-actions button { white-space: nowrap !important; flex-shrink: 0 !important; font-size: 11px !important; padding: 5px 10px !important; }
+          /* Inline stats strip */
+          .qs-stats-row { flex-wrap: nowrap !important; gap: 0 !important; background: rgba(0,0,0,0.18) !important; border-radius: 10px !important; padding: 0 !important; overflow: hidden !important; margin-top: 10px !important; }
+          .qs-stats-row > div { flex: 1 !important; min-width: 0 !important; padding: 6px 4px !important; border-right: 1px solid rgba(255,255,255,0.12) !important; text-align: center !important; }
+          .qs-stats-row > div:last-child { border-right: none !important; }
+          /* Scrollable module pills */
+          .qs-module-pills { gap: 5px !important; overflow-x: auto !important; flex-wrap: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 4px !important; scrollbar-width: none !important; margin-top: 8px !important; }
+          .qs-module-pills::-webkit-scrollbar { display: none !important; }
+          .qs-module-pills button { font-size: 10px !important; padding: 4px 9px !important; flex-shrink: 0 !important; white-space: nowrap !important; }
+          /* Compact mode cards on mobile */
+          .qs-mode-bar-wrap { gap: 6px !important; }
+          .qs-mode-card { min-width: 0 !important; padding: 8px 10px !important; flex: 1 1 0 !important; }
+          .qs-mode-card-icon { width: 28px !important; height: 28px !important; font-size: 14px !important; border-radius: 8px !important; }
+          .qs-mode-card-label { font-size: 11px !important; }
+          .qs-mode-card-desc { display: none !important; }
+          .qs-mode-settings-btn { padding: 8px 10px !important; font-size: 11px !important; }
+          /* Question card */
           .qs-question-card { padding: 16px 14px 14px !important; }
           .qs-session-card { padding: 28px 18px !important; }
           .qs-badges-row { flex-wrap: wrap !important; }
           .qs-q-counter { margin-left: 0 !important; margin-top: 4px !important; }
-          .qs-stats-row { gap: 6px !important; }
-          .qs-stats-row > div { min-width: 48px !important; padding: 4px 8px !important; }
         }
       `}</style>
 
       <SiteNav currentPath={currentPath} />
 
       {/* ── Header ── */}
-      <div style={{ background: headerGradient, color: "#fff", padding: "20px 16px 16px" }}>
+      <div style={{ background: headerGradient, color: "#fff", padding: "14px 16px 12px" }}>
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
 
           {/* Top row: title + action buttons */}
@@ -420,7 +432,7 @@ export default function QuizShell({
           </div>
 
           {/* Stats row */}
-          <div className="qs-stats-row" style={{ display: "flex", gap: 10, marginTop: 14, flexWrap: "wrap", alignItems: "center" }}>
+          <div className="qs-stats-row" style={{ display: "flex", gap: 10, marginTop: 10, flexWrap: "wrap", alignItems: "center" }}>
             {[
               { label: "Answered", value: history.length },
               { label: "Correct", value: correctCount },
@@ -440,7 +452,7 @@ export default function QuizShell({
 
             {/* Module filter toggle */}
             {modules.length > 0 && (
-              <div className="qs-module-pills" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginLeft: 4 }}>
+              <div className="qs-module-pills" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginLeft: 0, marginTop: 8, width: "100%" }}>
                 <button
                   onClick={() => onModuleChange(null)}
                   style={{
@@ -506,7 +518,7 @@ export default function QuizShell({
 
           {/* Optional extra header content (e.g. quiz mode selector) */}
           {headerExtra && (
-            <div style={{ marginTop: 16 }}>
+            <div style={{ marginTop: 12 }}>
               {headerExtra}
             </div>
           )}

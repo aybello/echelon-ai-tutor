@@ -66,7 +66,7 @@ export default function QuizModeBar({
   ];
 
   return (
-    <div style={{
+    <div className="qs-mode-bar-wrap" style={{
       display: "flex",
       alignItems: "flex-start",
       gap: 10,
@@ -81,6 +81,7 @@ export default function QuizModeBar({
             onClick={() => !card.disabled && onModeChange(card.id)}
             disabled={card.disabled}
             title={card.description}
+            className="qs-mode-card"
             style={{
               display: "flex",
               alignItems: "center",
@@ -104,7 +105,7 @@ export default function QuizModeBar({
             }}
           >
             {/* Icon circle */}
-            <div style={{
+            <div className="qs-mode-card-icon" style={{
               width: 36,
               height: 36,
               borderRadius: 10,
@@ -125,7 +126,7 @@ export default function QuizModeBar({
                 alignItems: "center",
                 gap: 6,
               }}>
-                <span style={{ fontSize: 13, fontWeight: active ? 800 : 600, lineHeight: 1.2 }}>
+                <span className="qs-mode-card-label" style={{ fontSize: 13, fontWeight: active ? 800 : 600, lineHeight: 1.2 }}>
                   {card.label}
                 </span>
                 {card.badge && (
@@ -141,7 +142,7 @@ export default function QuizModeBar({
                   </span>
                 )}
               </div>
-              <div style={{ fontSize: 11, opacity: 0.75, marginTop: 1, lineHeight: 1.3 }}>
+              <div className="qs-mode-card-desc" style={{ fontSize: 11, opacity: 0.75, marginTop: 1, lineHeight: 1.3 }}>
                 {card.description}
               </div>
             </div>
@@ -154,6 +155,7 @@ export default function QuizModeBar({
         <button
           onClick={onSettingsOpen}
           title="Quiz Settings"
+          className="qs-mode-settings-btn"
           style={{
             display: "flex",
             alignItems: "center",
