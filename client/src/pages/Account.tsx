@@ -26,11 +26,11 @@ const EXAM_META: Record<
   "class2-ww": { label: "Class 2 Wastewater Treatment Pass", quizPath: "/class2-ww", mockPath: "/class2-ww-mock", formulaPath: "/formulas-ww2", flashcardPath: "/class2-ww-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
   "class3-ww": { label: "Class 3 Wastewater Treatment Pass", quizPath: "/class3-ww", mockPath: "/class3-ww-mock", formulaPath: "/formulas-ww3", flashcardPath: "/class3-ww-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
   "class4-ww": { label: "Class 4 Wastewater Treatment Pass", quizPath: "/class4-ww", flashcardPath: "/class4-ww-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
-  "wpi-class1-water": { label: "WPI Class I Water Treatment Pass", quizPath: "/wpi-class1-water", mockPath: "/wpi-class1-water-mock", formulaPath: "/formulas-wpi-water1", flashcardPath: "/wpi-class1-water-flashcards", color: "#0369A1", bg: "#F0F9FF", icon: "🏔️", track: "WPI" },
-  "wpi-class2-water": { label: "WPI Class II Water Treatment Pass", quizPath: "/wpi-class2-water", mockPath: "/wpi-class2-water-mock", formulaPath: "/formulas-wpi-water2", flashcardPath: "/wpi-class2-water-flashcards", color: "#0E7490", bg: "#ECFEFF", icon: "🏔️", track: "WPI" },
-  "wpi-class3-water": { label: "WPI Class III Water Treatment Pass", quizPath: "/wpi-class3-water", mockPath: "/wpi-class3-water-mock", formulaPath: "/formulas-wpi-water3", flashcardPath: "/wpi-class3-water-flashcards", color: "#1E40AF", bg: "#EFF6FF", icon: "🏔️", track: "WPI" },
-  "wpi-class4-water": { label: "WPI Class IV Water Treatment Pass", quizPath: "/wpi-class4-water", mockPath: "/wpi-class4-water-mock", formulaPath: "/formulas-wpi-water4", flashcardPath: "/wpi-class4-water-flashcards", color: "#4C1D95", bg: "#F5F3FF", icon: "🏔️", track: "WPI" },
-  "wpi-class1-wastewater": { label: "WPI Class I Wastewater Treatment Pass", quizPath: "/wpi-class1-wastewater", mockPath: "/wpi-class1-wastewater-mock", formulaPath: "/formulas-wpi-ww1", flashcardPath: "/wpi-class1-wastewater-flashcards", color: "#B45309", bg: "#FFFBEB", icon: "🌿", track: "WPI" },
+  "wpi-class1-water": { label: "WPI Class I Water Treatment Pass", quizPath: "/wpi-class1-water", mockPath: "/wpi-class1-water-mock", formulaPath: "/formulas-wpi-class1", flashcardPath: "/wpi-class1-water-flashcards", color: "#0369A1", bg: "#F0F9FF", icon: "🏔️", track: "WPI" },
+  "wpi-class2-water": { label: "WPI Class II Water Treatment Pass", quizPath: "/wpi-class2-water", mockPath: "/wpi-class2-water-mock", formulaPath: "/formulas-wpi-class2", flashcardPath: "/wpi-class2-water-flashcards", color: "#0E7490", bg: "#ECFEFF", icon: "🏔️", track: "WPI" },
+  "wpi-class3-water": { label: "WPI Class III Water Treatment Pass", quizPath: "/wpi-class3-water", mockPath: "/wpi-class3-water-mock", formulaPath: "/formulas-wpi-class3", flashcardPath: "/wpi-class3-water-flashcards", color: "#1E40AF", bg: "#EFF6FF", icon: "🏔️", track: "WPI" },
+  "wpi-class4-water": { label: "WPI Class IV Water Treatment Pass", quizPath: "/wpi-class4-water", mockPath: "/wpi-class4-water-mock", formulaPath: "/formulas-wpi-class4", flashcardPath: "/wpi-class4-water-flashcards", color: "#4C1D95", bg: "#F5F3FF", icon: "🏔️", track: "WPI" },
+  "wpi-class1-wastewater": { label: "WPI Class I Wastewater Treatment Pass", quizPath: "/wpi-class1-wastewater", mockPath: "/wpi-class1-wastewater-mock", formulaPath: "/formulas-wpi-class1-ww", flashcardPath: "/wpi-class1-wastewater-flashcards", color: "#B45309", bg: "#FFFBEB", icon: "🌿", track: "WPI" },
   "wpi-class2-wastewater": { label: "WPI Class II Wastewater Treatment Pass", quizPath: "/wpi-class2-wastewater", mockPath: "/wpi-class2-wastewater-mock", formulaPath: "/formulas-wpi-class2-ww", flashcardPath: "/wpi-class2-wastewater-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌿", track: "WPI" },
   "wpi-class3-wastewater": { label: "WPI Class III Wastewater Treatment Pass", quizPath: "/wpi-class3-wastewater", mockPath: "/wpi-class3-wastewater-mock", formulaPath: "/formulas-wpi-class3-ww", flashcardPath: "/wpi-class3-wastewater-flashcards", color: "#1D4ED8", bg: "#EFF6FF", icon: "🌿", track: "WPI" },
   "wpi-class4-wastewater": { label: "WPI Class IV Wastewater Treatment Pass", quizPath: "/wpi-class4-wastewater", mockPath: "/wpi-class4-wastewater-mock", formulaPath: "/formulas-wpi-class4-ww", flashcardPath: "/wpi-class4-wastewater-flashcards", color: "#6D28D9", bg: "#F5F3FF", icon: "🌿", track: "WPI" },
@@ -54,8 +54,11 @@ function MasteryBadge({ knownCount, totalCards }: { knownCount: number; totalCar
 /** Write product keys + email to localStorage so PurchaseGate can verify access */
 function restoreLocalStorage(email: string, productKeys: string[]) {
   try {
-    localStorage.setItem("echelon_purchase_email", email);
+    // Use the same key as PurchaseGate / PurchaseSuccess so access is restored correctly
+    localStorage.setItem("echelon_trial_email", email);
     localStorage.setItem("echelon_purchased_products", JSON.stringify(productKeys));
+    // Also set the trial-unlocked flag so the quiz gate doesn't block them
+    localStorage.setItem("echelon_trial_unlocked", "true");
   } catch { /* ignore */ }
 }
 

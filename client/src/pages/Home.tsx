@@ -211,10 +211,13 @@ export default function Home() {
       const wrongOption = (current as any).correct === 0 ? 1 : 0;
       setSelected(wrongOption);
     }
+    // Ensure confidence is set so handleConfirm's guard (confidence === null) doesn't bail
+    // Use 50 (neutral) as the auto-confidence for timed-out questions
+    if (confidence === null) setConfidence(50);
     setConfirmed(true);
     setTimeout(() => handleNext(), 800);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [confirmed, handleNext, selected, current]);
+  }, [confirmed, handleNext, selected, current, confidence]);
 
   // ── Calc Only toggle ───────────────────────────────────────────────────────
   const handleCalcOnlyToggle = useCallback(() => {

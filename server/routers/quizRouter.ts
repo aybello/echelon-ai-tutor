@@ -78,29 +78,33 @@ export const quizRouter = router({
           return { questionIds: [], total: 0 };
         }
 
-        // Get questions answered incorrectly (most recent wrong answer per questionId)
-        const condition = userId
-          ? and(eq(questionAttempts.userId, userId), eq(questionAttempts.examType, input.examType), eq(questionAttempts.correct, "no"))
-          : and(eq(questionAttempts.guestToken, input.guestToken!), eq(questionAttempts.examType, input.examType), eq(questionAttempts.correct, "no"));
-
-        const rows = await db
-          .select({ questionId: questionAttempts.questionId })
+         // Fetch all attempts for this user/exam, ordered newest first
+        // We need to check the MOST RECENT attempt per question:
+        // only include a question if the most recent attempt was wrong.
+        const allCondition = userId
+          ? and(eq(questionAttempts.userId, userId), eq(questionAttempts.examType, input.examType))
+          : and(eq(questionAttempts.guestToken, input.guestToken!), eq(questionAttempts.examType, input.examType));
+        const allRows = await db
+          .select({ questionId: questionAttempts.questionId, correct: questionAttempts.correct })
           .from(questionAttempts)
-          .where(condition)
+          .where(allCondition)
           .orderBy(desc(questionAttempts.createdAt))
-          .limit(input.limit * 3); // fetch more to deduplicate
-
-        // Deduplicate by questionId, keep most recent
-        const seen = new Set<number>();
+          .limit(input.limit * 10); // fetch enough to cover all questions
+        // For each questionId, keep only the most recent attempt result
+        const latestByQuestion = new Map<number, string>(); // questionId → "yes"|"no"
+        for (const row of allRows) {
+          if (!latestByQuestion.has(row.questionId)) {
+            latestByQuestion.set(row.questionId, row.correct);
+          }
+        }
+        // Only include questions where the most recent attempt was wrong
         const uniqueIds: number[] = [];
-        for (const row of rows) {
-          if (!seen.has(row.questionId)) {
-            seen.add(row.questionId);
-            uniqueIds.push(row.questionId);
+        for (const [questionId, correct] of Array.from(latestByQuestion.entries())) {
+          if (correct === "no") {
+            uniqueIds.push(questionId);
             if (uniqueIds.length >= input.limit) break;
           }
         }
-
         return { questionIds: uniqueIds, total: uniqueIds.length };
       } catch (err) {
         console.error("[quizRouter.getMissedQuestions] Error:", err);
