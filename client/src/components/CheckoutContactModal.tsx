@@ -3,6 +3,7 @@
 // All three fields are required; the form validates before calling the Stripe mutation.
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 
 interface CheckoutContactModalProps {
   /** Product display name shown in the heading */
@@ -101,7 +102,7 @@ export default function CheckoutContactModal({
     letterSpacing: "0.03em",
   };
 
-  return (
+  const modal = (
     <div
       style={{
         position: "fixed",
@@ -280,4 +281,6 @@ export default function CheckoutContactModal({
       </div>
     </div>
   );
+
+  return createPortal(modal, document.body);
 }
