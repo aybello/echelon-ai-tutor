@@ -11,7 +11,7 @@
  *  - AI Tutor drawer + Report Error modal
  */
 
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import SiteNav from "@/components/SiteNav";
 import ModuleOverviewPanel from "@/components/ModuleOverview";
 import type { ModuleOverview } from "@/lib/moduleOverviews";
@@ -113,6 +113,10 @@ export interface QuizShellProps {
 
   // Optional: extra content rendered inside the header (below stats/pills row)
   headerExtra?: ReactNode;
+  // Optional: timed mode — seconds per question (0 = disabled)
+  timedSeconds?: number;
+  // Optional: callback when timer expires (caller should auto-confirm/advance)
+  onTimeUp?: () => void;
 }
 
 // ─── Constants ───────────────────────────────────────────────────────────────
@@ -171,10 +175,40 @@ export default function QuizShell({
   renderAITutor,
   moduleOverviews,
   headerExtra,
+  timedSeconds = 0,
+  onTimeUp,
 }: QuizShellProps) {
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
+
+  // ── Timed mode countdown ───────────────────────────────────────────────────
+  const [timeLeft, setTimeLeft] = useState(timedSeconds > 0 ? timedSeconds : 0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // Reset timer whenever the question changes or timed mode changes
+  useEffect(() => {
+    if (timedSeconds <= 0 || confirmed) {
+      if (timerRef.current) clearInterval(timerRef.current);
+      return;
+    }
+    setTimeLeft(timedSeconds);
+    timerRef.current = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(timerRef.current!);
+          onTimeUp?.();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [current?.id, timedSeconds, confirmed]);
+
+  const timerPct = timedSeconds > 0 ? (timeLeft / timedSeconds) * 100 : 100;
+  const timerColor = timerPct > 50 ? "#059669" : timerPct > 25 ? "#D97706" : "#DC2626";
 
   const progress = sessionSize ? (history.length / sessionSize) * 100 : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
@@ -479,7 +513,7 @@ export default function QuizShell({
         </div>
       </div>
 
-      {/* ── Progress bar ── */}
+       {/* ── Progress bar ── */}
       {sessionSize && (
         <div style={{ height: 3, background: "rgba(0,0,0,0.08)" }}>
           <div style={{
@@ -490,7 +524,36 @@ export default function QuizShell({
           }} />
         </div>
       )}
-
+      {/* ── Timed mode bar ── */}
+      {timedSeconds > 0 && !confirmed && (
+        <div style={{ position: "relative", height: 4, background: "rgba(0,0,0,0.08)" }}>
+          <div style={{
+            height: "100%",
+            width: `${timerPct}%`,
+            background: timerColor,
+            transition: "width 1s linear, background 0.3s",
+          }} />
+          {/* Floating countdown badge */}
+          <div style={{
+            position: "absolute",
+            right: 12,
+            top: 6,
+            background: timerColor,
+            color: "#fff",
+            fontSize: 11,
+            fontWeight: 800,
+            padding: "2px 8px",
+            borderRadius: 100,
+            fontFamily: "'Sora', sans-serif",
+            letterSpacing: "0.04em",
+            minWidth: 36,
+            textAlign: "center",
+            boxShadow: "0 1px 4px rgba(0,0,0,0.15)",
+          }}>
+            {timeLeft}s
+          </div>
+        </div>
+      )}
       {/* ── Body ── */}
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "20px 16px 80px" }}>
 

@@ -13,6 +13,7 @@ import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGa
 import QuizShell from "@/components/QuizShell";
 import { OIT_WATER_OVERVIEWS } from "@/lib/moduleOverviews";
 import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
+import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 import { trpc } from "@/lib/trpc";
 
 const SESSION_SIZE = 15;
@@ -53,6 +54,8 @@ export default function Home() {
   const [showGate, setShowGate]       = useState(false);
   const [quizMode, setQuizMode]       = useState<QuizMode>("standard");
   const [missedIds, setMissedIds]     = useState<number[]>([]);
+  const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   // Attempt logger — fires silently on every confirmed answer
   const logAttempt = useAttemptLogger("oit", quizMode);
@@ -190,6 +193,27 @@ export default function Home() {
     }
   }, [missedData]);
 
+  // ── Settings apply ──────────────────────────────────────────────────────────
+  const handleSettingsApply = (settings: QuizSettings) => {
+    setQuizSettings(settings);
+    setSettingsOpen(false);
+    setHistory([]);
+    setUsedIds(new Set());
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    const q = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)];
+    setCurrent(q ?? null);
+  };
+  // Auto-confirm + advance when timed mode expires
+  const handleTimeUp = useCallback(() => {
+    if (confirmed) return;
+    setConfirmed(true);
+    setTimeout(() => {
+      setConfirmed(false);
+      handleNext();
+    }, 1200);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [confirmed, handleNext]);
+
   // ── Calc Only toggle ───────────────────────────────────────────────────────
   const handleCalcOnlyToggle = useCallback(() => {
     const next = !calcOnly;
@@ -265,15 +289,28 @@ export default function Home() {
         onTutorOpen={() => setTutorOpen(true)}
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={resetSession}
+        timedSeconds={quizSettings.timedMode ? quizSettings.timedSeconds : 0}
+        onTimeUp={handleTimeUp}
         mockExamHref="/mock-exam"
         moduleOverviews={OIT_WATER_OVERVIEWS}
         headerExtra={
-          <QuizModeBar
-            examType="oit"
-            currentMode={quizMode}
-            onModeChange={handleModeChange}
-            missedCount={missedCount}
-          />
+          <>
+            <QuizModeBar
+              examType="oit"
+              currentMode={quizMode}
+              onModeChange={handleModeChange}
+              missedCount={missedCount}
+              onSettingsOpen={() => setSettingsOpen(true)}
+            />
+            {settingsOpen && (
+              <QuizSettingsDrawer
+                settings={quizSettings}
+                onApply={handleSettingsApply}
+                onClose={() => setSettingsOpen(false)}
+                totalQuestions={QUESTIONS.length}
+              />
+            )}
+          </>
         }
         renderAITutor={() => (
           <AITutor

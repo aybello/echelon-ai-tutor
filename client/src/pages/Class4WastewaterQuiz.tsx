@@ -6,6 +6,7 @@ import { CLASS4_WW_QUESTIONS, CLASS4_WASTEWATER_MODULES, CLASS4_WW_FORMULA_LINKS
 import { CLASS4_WASTEWATER_OVERVIEWS } from '@/lib/moduleOverviews';
 import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
+import { trpc } from "@/lib/trpc";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -24,9 +25,14 @@ export default function Class4WastewaterQuiz() {
   const [quizMode, setQuizMode] = useState<QuizMode>("standard");
   const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [missedIds, setMissedIds] = useState<number[]>([]);
   const logAttemptFn = useAttemptLogger("class4-ww", quizMode);
-  const missedCount = missedIds.length;
+  // Fetch missed question IDs from backend for persistence across sessions
+  const { data: missedData, refetch: refetchMissed } = trpc.quiz.getMissedQuestions.useQuery(
+    { examType: "class4-ww", limit: 50 },
+    { refetchOnWindowFocus: false }
+  );
+  const missedIds = missedData?.questionIds ?? [];
+  const missedCount = missedData?.total ?? 0;
 
   const handleModeChange = (mode: QuizMode) => {
     setQuizMode(mode);
@@ -48,6 +54,16 @@ export default function Class4WastewaterQuiz() {
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
     const pool = [...allQuestions];
     setCurrent(pool[Math.floor(Math.random() * pool.length)]);
+  };
+  // Auto-confirm + advance when timed mode expires
+  const handleTimeUp = () => {
+    if (confirmed) return; // already answered
+    // If no answer selected, pick wrong answer to mark as incorrect
+    setConfirmed(true);
+    setTimeout(() => {
+      setConfirmed(false);
+      handleNext();
+    }, 1200);
   };
 
   const allQuestions = CLASS4_WW_QUESTIONS as C4WWQuestion[];
@@ -97,6 +113,8 @@ export default function Class4WastewaterQuiz() {
     const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
     const isCorrect = selected === correctIdx;
     setHistory(h => [...h, { q: current, selected, confidence, correct: isCorrect, questionObj: current }]);
+    logAttemptFn({ topic: (current as any).module ?? (current as any).topic ?? "General", questionId: (current as any).id, correct: isCorrect, difficulty: (current as any).difficulty });
+    if (!isCorrect) setTimeout(() => refetchMissed(), 500);
     setUsedIds(s => new Set([...Array.from(s), (current as any).id]));
     setConfirmed(true);
     setShowSteps(false);
@@ -260,6 +278,8 @@ export default function Class4WastewaterQuiz() {
         onTutorOpen={() => setTutorOpen(true)}
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={resetSession}
+        timedSeconds={quizSettings.timedMode ? quizSettings.timedSeconds : 0}
+        onTimeUp={handleTimeUp}
         mockExamHref="/class4-ww-mock"
         moduleOverviews={CLASS4_WASTEWATER_OVERVIEWS}
         formulaLinks={CLASS4_WW_FORMULA_LINKS}

@@ -7,6 +7,7 @@ import { wpiClass1WastewaterCollQuestions, WPI_CLASS1_WASTEWATER_COLL_MODULES } 
 import { WPI_CLASS1_WASTEWATER_COLL_OVERVIEWS } from "@/lib/moduleOverviews";
 import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
+import { trpc } from "@/lib/trpc";
 const HEADER_GRADIENT = "linear-gradient(135deg, #065F46 0%, #059669 100%)";
 const SESSION_SIZE = 15;
 type Q = typeof wpiClass1WastewaterCollQuestions[0];
@@ -35,9 +36,14 @@ export default function WpiClass1WaterCollQuiz() {
   const [quizMode, setQuizMode] = useState<QuizMode>("standard");
   const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [missedIds, setMissedIds] = useState<number[]>([]);
   const logAttemptFn = useAttemptLogger("wpi-class1-water-coll", quizMode);
-  const missedCount = missedIds.length;
+  // Fetch missed question IDs from backend for persistence across sessions
+  const { data: missedData, refetch: refetchMissed } = trpc.quiz.getMissedQuestions.useQuery(
+    { examType: "wpi-class1-water-coll", limit: 50 },
+    { refetchOnWindowFocus: false }
+  );
+  const missedIds = missedData?.questionIds ?? [];
+  const missedCount = missedData?.total ?? 0;
 
   const handleModeChange = (mode: QuizMode) => {
     setQuizMode(mode);
@@ -57,6 +63,16 @@ export default function WpiClass1WaterCollQuiz() {
     setHistory([]);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
     setCurrent(toCompat(shuffle([...wpiClass1WastewaterCollQuestions])[0]));
+  };
+  // Auto-confirm + advance when timed mode expires
+  const handleTimeUp = () => {
+    if (confirmed) return; // already answered
+    // If no answer selected, pick wrong answer to mark as incorrect
+    setConfirmed(true);
+    setTimeout(() => {
+      setConfirmed(false);
+      handleNext();
+    }, 1200);
   };
 
   const [trialUnlocked] = useState(() => isTrialUnlocked());
@@ -88,7 +104,10 @@ export default function WpiClass1WaterCollQuiz() {
       selectedOption: selected, questionObj: current,
     }];
     setHistory(newHistory);
-    if (!trialUnlocked && newHistory.length >= SESSION_SIZE) {
+    // Log attempt for backend persistence (missed questions, topic tracking)
+    logAttemptFn({ topic: current.module, questionId: current.id, correct: isCorrect, difficulty: (current as any).difficulty });
+    if (!isCorrect) setTimeout(() => refetchMissed(), 500);
+        if (!trialUnlocked && newHistory.length >= SESSION_SIZE) {
       setTrialDone(true);
       return;
     }

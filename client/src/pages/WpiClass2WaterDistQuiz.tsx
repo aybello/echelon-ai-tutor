@@ -7,6 +7,7 @@ import { wpiClass2WaterDistQuestions } from "@/lib/wpiClass2WaterDistQuestions";
 import { WPI_CLASS2_WATER_DIST_OVERVIEWS } from "@/lib/moduleOverviews";
 import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
+import { trpc } from "@/lib/trpc";
 
 const HEADER_GRADIENT = "linear-gradient(135deg, #0369A1 0%, #0EA5E9 100%)";
 const SESSION_SIZE = 15;
@@ -40,9 +41,14 @@ export default function WpiClass2WaterDistQuiz() {
   const [quizMode, setQuizMode] = useState<QuizMode>("standard");
   const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [missedIds, setMissedIds] = useState<number[]>([]);
   const logAttemptFn = useAttemptLogger("wpi-class2-water-dist", quizMode);
-  const missedCount = missedIds.length;
+  // Fetch missed question IDs from backend for persistence across sessions
+  const { data: missedData, refetch: refetchMissed } = trpc.quiz.getMissedQuestions.useQuery(
+    { examType: "wpi-class2-water-dist", limit: 50 },
+    { refetchOnWindowFocus: false }
+  );
+  const missedIds = missedData?.questionIds ?? [];
+  const missedCount = missedData?.total ?? 0;
 
   const handleModeChange = (mode: QuizMode) => {
     setQuizMode(mode);
@@ -62,6 +68,16 @@ export default function WpiClass2WaterDistQuiz() {
     setHistory([]);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
     setCurrent(toCompat(shuffle([...wpiClass2WaterDistQuestions])[0]));
+  };
+  // Auto-confirm + advance when timed mode expires
+  const handleTimeUp = () => {
+    if (confirmed) return; // already answered
+    // If no answer selected, pick wrong answer to mark as incorrect
+    setConfirmed(true);
+    setTimeout(() => {
+      setConfirmed(false);
+      handleNext();
+    }, 1200);
   };
 
   const [trialUnlocked] = useState(() => isTrialUnlocked());
@@ -96,7 +112,10 @@ export default function WpiClass2WaterDistQuiz() {
       selectedOption: selected, questionObj: current,
     }];
     setHistory(newHistory);
-    if (!trialUnlocked && newHistory.length >= SESSION_SIZE) {
+    // Log attempt for backend persistence (missed questions, topic tracking)
+    logAttemptFn({ topic: current.module, questionId: current.id, correct: isCorrect, difficulty: (current as any).difficulty });
+    if (!isCorrect) setTimeout(() => refetchMissed(), 500);
+        if (!trialUnlocked && newHistory.length >= SESSION_SIZE) {
       setTrialDone(true);
       return;
     }
@@ -197,6 +216,8 @@ export default function WpiClass2WaterDistQuiz() {
           setHistory([]); setCurrent(toCompat(shuffle([...wpiClass2WaterDistQuestions])[0]));
           setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
         }}
+        timedSeconds={quizSettings.timedMode ? quizSettings.timedSeconds : 0}
+        onTimeUp={handleTimeUp}
         mockExamHref="/wpi-class2-water-dist-mock"
         moduleOverviews={WPI_CLASS2_WATER_DIST_OVERVIEWS}
         headerExtra={
