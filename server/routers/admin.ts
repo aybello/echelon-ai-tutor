@@ -200,7 +200,8 @@ export const adminRouter = router({
           const userId = session.metadata?.user_id
             ? parseInt(session.metadata.user_id)
             : null;
-          const phone = (session as any).customer_details?.phone ?? null;
+          const phone = (session as any).customer_details?.phone ?? (session.metadata?.customer_phone || null);
+          const customerName = (session as any).customer_details?.name ?? (session.metadata?.customer_name || null);
 
           await db.insert(purchases).values({
             userId: userId ?? undefined,
@@ -211,6 +212,7 @@ export const adminRouter = router({
             stripeSessionId: session.id,
             stripePaymentIntentId,
             phone,
+            customerName,
           });
 
           // Save phone to users table if available

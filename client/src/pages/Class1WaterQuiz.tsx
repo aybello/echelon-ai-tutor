@@ -79,10 +79,7 @@ export default function Class1WaterQuiz() {
       setSelected(wrongOption);
     }
     setConfirmed(true);
-    setTimeout(() => {
-      setConfirmed(false);
-      handleNext();
-    }, 1200);
+    setTimeout(() => handleNext(), 800);
   };
 
   const allQuestions = CLASS1_WATER_QUESTIONS as Class1WaterQuestion[];

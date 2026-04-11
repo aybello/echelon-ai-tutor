@@ -212,10 +212,7 @@ export default function Home() {
       setSelected(wrongOption);
     }
     setConfirmed(true);
-    setTimeout(() => {
-      setConfirmed(false);
-      handleNext();
-    }, 1200);
+    setTimeout(() => handleNext(), 800);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [confirmed, handleNext, selected, current]);
 

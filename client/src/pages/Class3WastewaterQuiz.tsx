@@ -66,10 +66,7 @@ export default function Class3WastewaterQuiz() {
       setSelected(wrongOption);
     }
     setConfirmed(true);
-    setTimeout(() => {
-      setConfirmed(false);
-      handleNext();
-    }, 1200);
+    setTimeout(() => handleNext(), 800);
   };
 
   const allQuestions = CLASS3_WW_QUESTIONS as C3WWQuestion[];

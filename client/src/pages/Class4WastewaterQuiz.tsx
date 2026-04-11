@@ -66,10 +66,7 @@ export default function Class4WastewaterQuiz() {
       setSelected(wrongOption);
     }
     setConfirmed(true);
-    setTimeout(() => {
-      setConfirmed(false);
-      handleNext();
-    }, 1200);
+    setTimeout(() => handleNext(), 800);
   };
 
   const allQuestions = CLASS4_WW_QUESTIONS as C4WWQuestion[];

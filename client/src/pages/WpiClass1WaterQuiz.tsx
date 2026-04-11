@@ -94,10 +94,7 @@ export default function WpiClass1WaterQuiz() {
       setSelected(wrongOption);
     }
     setConfirmed(true);
-    setTimeout(() => {
-      setConfirmed(false);
-      handleNext();
-    }, 1200);
+    setTimeout(() => handleNext(), 800);
   };
 
   usePageMeta({

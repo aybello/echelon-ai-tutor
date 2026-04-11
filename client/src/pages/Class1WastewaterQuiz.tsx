@@ -66,10 +66,7 @@ export default function Class1WastewaterQuiz() {
       setSelected(wrongOption);
     }
     setConfirmed(true);
-    setTimeout(() => {
-      setConfirmed(false);
-      handleNext();
-    }, 1200);
+    setTimeout(() => handleNext(), 800);
   };
 
   const allQuestions = CLASS1_WASTEWATER_QUESTIONS as Class1WastewaterQuestion[];

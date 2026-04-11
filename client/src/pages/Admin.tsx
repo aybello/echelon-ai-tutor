@@ -505,7 +505,7 @@ export default function Admin() {
                 <table style={{ width: "100%", borderCollapse: "collapse" }}>
                   <thead>
                     <tr style={{ background: "rgba(255,255,255,0.03)" }}>
-                      {["#", "Product", "Email", "Phone", "Amount", "Date"].map(h => (
+                      {["#", "Product", "Name", "Email", "Phone", "Amount", "Date"].map(h => (
                         <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
                       ))}
                     </tr>
@@ -518,6 +518,7 @@ export default function Admin() {
                           <div style={{ fontSize: 12, fontWeight: 700, color: "#F1F5F9" }}>{row.productName}</div>
                           <div style={{ fontSize: 10, color: "#64748B", marginTop: 2 }}>{row.productKey}</div>
                         </td>
+                        <td style={{ padding: "12px 16px", fontSize: 12, color: "#F1F5F9", fontWeight: 600 }}>{(row as any).customerName ?? <span style={{ color: "#334155", fontWeight: 400 }}>—</span>}</td>
                         <td style={{ padding: "12px 16px", fontSize: 12, color: "#94A3B8" }}>{row.email}</td>
                         <td style={{ padding: "12px 16px", fontSize: 12, color: "#94A3B8" }}>{(row as any).phone ?? <span style={{ color: "#334155" }}>—</span>}</td>
                         <td style={{ padding: "12px 16px" }}>

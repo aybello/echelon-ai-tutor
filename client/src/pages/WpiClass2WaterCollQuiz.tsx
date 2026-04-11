@@ -75,10 +75,7 @@ export default function WpiClass2WaterCollQuiz() {
       setSelected(wrongOption);
     }
     setConfirmed(true);
-    setTimeout(() => {
-      setConfirmed(false);
-      handleNext();
-    }, 1200);
+    setTimeout(() => handleNext(), 800);
   };
 
   const [trialUnlocked] = useState(() => isTrialUnlocked());

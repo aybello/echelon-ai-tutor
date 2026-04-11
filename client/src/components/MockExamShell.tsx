@@ -12,6 +12,134 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 
+// ─── Inline AI Tutor for review mode ─────────────────────────────────────────
+
+function ReviewAITutor({ q, userAnswerIdx }: { q: ExamQuestion; userAnswerIdx: number | null }) {
+  const [open, setOpen] = useState(false);
+  const [messages, setMessages] = useState<{ role: "user" | "assistant"; content: string }[]>([]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const chatMutation = trpc.tutor.chat.useMutation();
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const systemPrompt = `You are an expert water/wastewater treatment exam tutor. A student just reviewed this question and got it wrong. Explain clearly and concisely.
+
+Question: ${q.question}
+Options: ${q.options.map((o, i) => `${String.fromCharCode(65 + i)}. ${o}`).join("; ")}
+Correct Answer: ${String.fromCharCode(65 + q.correct)}. ${q.options[q.correct]}
+${userAnswerIdx !== null ? `Student's Answer: ${String.fromCharCode(65 + userAnswerIdx)}. ${q.options[userAnswerIdx]}` : "Student skipped this question."}
+${q.explanation ? `Hint: ${q.explanation}` : ""}
+Module: ${q.module}
+
+Provide a clear, educational explanation of why the correct answer is right and why the student's answer was wrong. Be concise (3-5 sentences). Use plain language suitable for a water treatment operator exam.`;
+
+  const sendMessage = async (text: string) => {
+    if (!text.trim() || loading) return;
+    const userMsg = { role: "user" as const, content: text };
+    const newMessages = [...messages, userMsg];
+    setMessages(newMessages);
+    setInput("");
+    setLoading(true);
+    try {
+      const result = await chatMutation.mutateAsync({
+        messages: [
+          { role: "system", content: systemPrompt },
+          ...newMessages,
+        ],
+      });
+      setMessages(prev => [...prev, { role: "assistant" as const, content: String(result.reply) }]);
+    } catch {
+      setMessages(prev => [...prev, { role: "assistant" as const, content: "Connection issue — please try again." }]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+    if (messages.length === 0) {
+      // Auto-ask for explanation on first open
+      sendMessage("Explain why the correct answer is right and what I got wrong.");
+    }
+  };
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  return (
+    <div style={{ marginTop: 8 }}>
+      {!open ? (
+        <button
+          onClick={handleOpen}
+          style={{
+            padding: "6px 14px", borderRadius: 8, border: "1.5px solid #6366F1",
+            background: "#EEF2FF", color: "#4338CA", fontSize: 12, fontWeight: 700,
+            cursor: "pointer", fontFamily: "inherit", display: "flex", alignItems: "center", gap: 6,
+          }}
+        >
+          🤖 Ask AI Tutor
+        </button>
+      ) : (
+        <div style={{ background: "#F8FAFC", borderRadius: 10, border: "1.5px solid #E0E7FF", padding: "12px 14px", marginTop: 4 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+            <span style={{ fontSize: 11, fontWeight: 700, color: "#4338CA", letterSpacing: "0.06em" }}>🤖 AI TUTOR</span>
+            <button
+              onClick={() => setOpen(false)}
+              style={{ background: "none", border: "none", cursor: "pointer", color: "#94A3B8", fontSize: 14, padding: 0 }}
+            >✕</button>
+          </div>
+          <div style={{ maxHeight: 200, overflowY: "auto", marginBottom: 8 }}>
+            {messages.map((m, i) => (
+              <div key={i} style={{
+                marginBottom: 8,
+                padding: "8px 10px", borderRadius: 8,
+                background: m.role === "user" ? "#EEF2FF" : "#fff",
+                border: m.role === "assistant" ? "1px solid #E0E7FF" : "none",
+                fontSize: 12, color: "#0F172A", lineHeight: 1.6,
+              }}>
+                {m.role === "user" && <span style={{ fontWeight: 700, color: "#4338CA", marginRight: 4 }}>You:</span>}
+                {m.content}
+              </div>
+            ))}
+            {loading && (
+              <div style={{ padding: "8px 10px", borderRadius: 8, background: "#fff", border: "1px solid #E0E7FF", fontSize: 12, color: "#94A3B8" }}>
+                Thinking…
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+          <div style={{ display: "flex", gap: 6 }}>
+            <input
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(input); } }}
+              placeholder="Ask a follow-up question…"
+              style={{
+                flex: 1, padding: "7px 10px", borderRadius: 8, border: "1.5px solid #E0E7FF",
+                fontSize: 12, fontFamily: "inherit", outline: "none", background: "#fff",
+              }}
+            />
+            <button
+              onClick={() => sendMessage(input)}
+              disabled={loading || !input.trim()}
+              style={{
+                padding: "7px 12px", borderRadius: 8, border: "none",
+                background: loading || !input.trim() ? "#E0E7FF" : "#4338CA",
+                color: loading || !input.trim() ? "#94A3B8" : "#fff",
+                fontWeight: 700, fontSize: 12, cursor: loading || !input.trim() ? "not-allowed" : "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 /** Normalised question shape used internally by the shell */
@@ -534,7 +662,10 @@ export default function MockExamShell({
                     )}
                     <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: q.explanation ? 4 : 0 }}>✓ {q.options[q.correct]}</div>
                     {q.explanation && (
-                      <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line" }}>{q.explanation}</div>
+                      <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line", marginBottom: 4 }}>{q.explanation}</div>
+                    )}
+                    {(!isCorrect || wasSkipped) && (
+                      <ReviewAITutor q={q} userAnswerIdx={wasSkipped ? null : (a.selected ?? null)} />
                     )}
                   </div>
                 );
