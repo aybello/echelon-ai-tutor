@@ -206,13 +206,18 @@ export default function Home() {
   // Auto-confirm + advance when timed mode expires
   const handleTimeUp = useCallback(() => {
     if (confirmed) return;
+    // Auto-select a wrong answer if nothing selected, so handleConfirm/handleNext doesn't bail
+    if (selected === null && current) {
+      const wrongOption = (current as any).correct === 0 ? 1 : 0;
+      setSelected(wrongOption);
+    }
     setConfirmed(true);
     setTimeout(() => {
       setConfirmed(false);
       handleNext();
     }, 1200);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [confirmed, handleNext]);
+  }, [confirmed, handleNext, selected, current]);
 
   // ── Calc Only toggle ───────────────────────────────────────────────────────
   const handleCalcOnlyToggle = useCallback(() => {

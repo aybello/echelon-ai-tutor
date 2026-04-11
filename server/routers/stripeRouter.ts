@@ -206,12 +206,8 @@ export const stripeRouter = router({
       email: z.string().email().optional(),
     }))
     .query(async ({ input, ctx }) => {
-      // Debug logging
-      console.log('[checkAccess] ctx.user:', JSON.stringify({ openId: ctx.user?.openId, email: ctx.user?.email, id: ctx.user?.id }));
-      console.log('[checkAccess] ENV.ownerOpenId:', ENV.ownerOpenId ? `"${ENV.ownerOpenId.slice(0, 8)}..."` : 'NOT SET / EMPTY');
       // Owner bypass — grants full access to all courses for testing
       if (ctx.user?.openId && ctx.user.openId === ENV.ownerOpenId) {
-        console.log('[checkAccess] OWNER BYPASS GRANTED');
         return { hasAccess: true, isOwner: true };
       }
 

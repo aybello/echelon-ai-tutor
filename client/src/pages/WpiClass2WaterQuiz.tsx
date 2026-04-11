@@ -82,7 +82,13 @@ export default function WpiClass2WaterQuiz() {
   // Auto-confirm + advance when timed mode expires
   const handleTimeUp = () => {
     if (confirmed) return; // already answered
-    // If no answer selected, pick wrong answer to mark as incorrect
+    // Auto-select a wrong answer if nothing selected, so handleNext doesn't bail
+    if (selected === null) {
+      // Pick the first option that isn't the correct answer
+      const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? 0;
+      const wrongOption = correctIdx === 0 ? 1 : 0;
+      setSelected(wrongOption);
+    }
     setConfirmed(true);
     setTimeout(() => {
       setConfirmed(false);
