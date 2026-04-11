@@ -1,7 +1,7 @@
 /**
- * QuizModeBar — Quick 10 and Missed Quiz mode selector
- * Sits above the QuizShell header actions on all quiz pages.
- * Handles attempt logging silently in the background.
+ * QuizModeBar — Quiz mode selector rendered inside the QuizShell header.
+ * Inspired by PocketPrep: icon cards in a horizontal row, not a floating pill bar.
+ * Pass the return value of <QuizModeBar ... /> into QuizShell's `headerExtra` prop.
  */
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -9,95 +9,140 @@ import { useAuth } from "@/_core/hooks/useAuth";
 export type QuizMode = "standard" | "quick10" | "missed";
 
 interface QuizModeBarProps {
-  examType: string;          // e.g. "oit" | "wpi-class1-water" | "wpi-class1-dist"
+  examType: string;          // e.g. "oit" | "wpi-class1-water"
   currentMode: QuizMode;
   onModeChange: (mode: QuizMode) => void;
-  missedCount?: number;      // how many missed questions are available
+  missedCount?: number;
 }
 
-export default function QuizModeBar({ examType, currentMode, onModeChange, missedCount }: QuizModeBarProps) {
+interface ModeCard {
+  id: QuizMode;
+  icon: string;
+  label: string;
+  description: string;
+  badge?: string;
+  color: string;
+  disabled?: boolean;
+}
+
+export default function QuizModeBar({ examType: _examType, currentMode, onModeChange, missedCount }: QuizModeBarProps) {
   const { isAuthenticated } = useAuth();
 
-  const styles = {
-    bar: {
-      display: "flex",
-      gap: 8,
-      padding: "10px 16px 0",
-      flexWrap: "wrap" as const,
+  const cards: ModeCard[] = [
+    {
+      id: "standard",
+      icon: "📚",
+      label: "Standard",
+      description: "Full question bank, randomised",
+      color: "#1D4ED8",
     },
-    btn: (active: boolean, color: string): React.CSSProperties => ({
-      display: "flex",
-      alignItems: "center",
-      gap: 6,
-      padding: "7px 14px",
-      borderRadius: 20,
-      border: active ? `2px solid ${color}` : "1.5px solid #E2E8F0",
-      background: active ? color : "#fff",
-      color: active ? "#fff" : "#475569",
-      fontWeight: active ? 700 : 500,
-      fontSize: 13,
-      cursor: "pointer",
-      fontFamily: "'Sora', sans-serif",
-      transition: "all 0.15s ease",
-      whiteSpace: "nowrap" as const,
-    }),
-    badge: (active: boolean): React.CSSProperties => ({
-      background: active ? "rgba(255,255,255,0.3)" : "#E2E8F0",
-      color: active ? "#fff" : "#64748B",
-      borderRadius: 10,
-      padding: "1px 7px",
-      fontSize: 11,
-      fontWeight: 700,
-    }),
-  };
+    {
+      id: "quick10",
+      icon: "⚡",
+      label: "Quick 10",
+      description: "10 questions, fast session",
+      badge: "10 Qs",
+      color: "#0F766E",
+    },
+    ...(isAuthenticated
+      ? [{
+          id: "missed" as QuizMode,
+          icon: "🔁",
+          label: "Retry Mistakes",
+          description: missedCount ? `${missedCount} question${missedCount !== 1 ? "s" : ""} to retry` : "No mistakes yet",
+          badge: missedCount ? `${missedCount}` : undefined,
+          color: "#DC2626",
+          disabled: !missedCount,
+        }]
+      : []),
+  ];
 
   return (
-    <div style={styles.bar}>
-      {/* Standard mode */}
-      <button
-        style={styles.btn(currentMode === "standard", "#1D4ED8")}
-        onClick={() => onModeChange("standard")}
-        title="Full question bank — random questions from all modules"
-      >
-        📚 Standard
-      </button>
+    <div style={{
+      display: "flex",
+      gap: 10,
+      flexWrap: "wrap" as const,
+    }}>
+      {cards.map(card => {
+        const active = currentMode === card.id;
+        return (
+          <button
+            key={card.id}
+            onClick={() => !card.disabled && onModeChange(card.id)}
+            disabled={card.disabled}
+            title={card.description}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              padding: "10px 16px",
+              borderRadius: 12,
+              border: active
+                ? `2px solid rgba(255,255,255,0.9)`
+                : "1.5px solid rgba(255,255,255,0.25)",
+              background: active
+                ? "rgba(255,255,255,0.22)"
+                : "rgba(255,255,255,0.08)",
+              color: "#fff",
+              cursor: card.disabled ? "not-allowed" : "pointer",
+              opacity: card.disabled ? 0.45 : 1,
+              fontFamily: "'Sora', sans-serif",
+              transition: "all 0.15s ease",
+              textAlign: "left" as const,
+              minWidth: 130,
+              flex: "0 0 auto",
+            }}
+          >
+            {/* Icon circle */}
+            <div style={{
+              width: 36,
+              height: 36,
+              borderRadius: 10,
+              background: active ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.12)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 18,
+              flexShrink: 0,
+            }}>
+              {card.icon}
+            </div>
 
-      {/* Quick 10 */}
-      <button
-        style={styles.btn(currentMode === "quick10", "#0F766E")}
-        onClick={() => onModeChange("quick10")}
-        title="10 questions — perfect for a quick study session on your lunch break"
-      >
-        ⚡ Quick 10
-        <span style={styles.badge(currentMode === "quick10")}>10 Qs</span>
-      </button>
-
-      {/* Missed Quiz — only shown to authenticated users */}
-      {isAuthenticated && (
-        <button
-          style={styles.btn(currentMode === "missed", "#DC2626")}
-          onClick={() => onModeChange("missed")}
-          title="Retry every question you've gotten wrong — the fastest way to improve"
-          disabled={missedCount === 0}
-        >
-          🔁 Retry Mistakes
-          {missedCount !== undefined && (
-            <span style={styles.badge(currentMode === "missed")}>
-              {missedCount > 0 ? `${missedCount}` : "0"}
-            </span>
-          )}
-        </button>
-      )}
+            {/* Text */}
+            <div>
+              <div style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+              }}>
+                <span style={{ fontSize: 13, fontWeight: active ? 800 : 600, lineHeight: 1.2 }}>
+                  {card.label}
+                </span>
+                {card.badge && (
+                  <span style={{
+                    background: active ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.15)",
+                    borderRadius: 8,
+                    padding: "1px 6px",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    lineHeight: 1.6,
+                  }}>
+                    {card.badge}
+                  </span>
+                )}
+              </div>
+              <div style={{ fontSize: 11, opacity: 0.75, marginTop: 1, lineHeight: 1.3 }}>
+                {card.description}
+              </div>
+            </div>
+          </button>
+        );
+      })}
     </div>
   );
 }
 
 // ─── Attempt Logger ───────────────────────────────────────────────────────────
-/**
- * useAttemptLogger — returns a fire-and-forget logAttempt function.
- * Call it inside handleConfirm / handleNext on every answered question.
- * Silent failure — never blocks the quiz experience.
- */
 export function useAttemptLogger(examType: string, quizMode: QuizMode = "standard") {
   const logAttempt = trpc.quiz.logAttempt.useMutation();
 
@@ -107,7 +152,6 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
     correct: boolean;
     difficulty?: string;
   }) {
-    // Fire and forget — don't await, don't show errors to user
     logAttempt.mutate({
       examType,
       topic: params.topic,

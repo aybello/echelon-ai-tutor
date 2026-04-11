@@ -226,12 +226,6 @@ export default function Home() {
 
   return (
     <>
-      <QuizModeBar
-        examType="oit"
-        currentMode={quizMode}
-        onModeChange={handleModeChange}
-        missedCount={missedCount}
-      />
       <QuizShell
         currentPath="/quiz"
         courseLabel="Ontario OIT · Water Treatment"
@@ -273,6 +267,14 @@ export default function Home() {
         onResetSession={resetSession}
         mockExamHref="/mock-exam"
         moduleOverviews={OIT_WATER_OVERVIEWS}
+        headerExtra={
+          <QuizModeBar
+            examType="oit"
+            currentMode={quizMode}
+            onModeChange={handleModeChange}
+            missedCount={missedCount}
+          />
+        }
         renderAITutor={() => (
           <AITutor
             question={current as any}

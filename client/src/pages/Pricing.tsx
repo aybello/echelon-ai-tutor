@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import CheckoutContactModal from "@/components/CheckoutContactModal";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png";
 
@@ -472,15 +473,17 @@ function CheckoutButton({
   label,
   disabled,
   style,
+  productName,
+  priceLabel,
 }: {
   productKey: string;
   label: string;
   disabled?: boolean;
   style?: React.CSSProperties;
+  productName?: string;
+  priceLabel?: string;
 }) {
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState("");
-  const [showEmailInput, setShowEmailInput] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
     onSuccess: (data) => {
       if (data.url) {
@@ -489,104 +492,66 @@ function CheckoutButton({
     },
     onError: (err) => {
       console.error("[Checkout] Error:", err);
-      setLoading(false);
       alert("Something went wrong. Please try again.");
     },
   });
 
   function handleClick() {
     if (disabled) return;
-    const storedEmail = localStorage.getItem("echelon_trial_email") || "";
-    if (storedEmail) {
-      setLoading(true);
-      createSession.mutate({
-        productKey,
-        email: storedEmail,
-        origin: window.location.origin,
-      });
-    } else {
-      setShowEmailInput(true);
-    }
+    setShowModal(true);
   }
 
-  function handleEmailSubmit() {
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
-    setLoading(true);
-    setShowEmailInput(false);
+  function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
+    // Save email to localStorage for access restoration
+    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
     createSession.mutate({
       productKey,
-      email,
+      email: contact.email,
+      name: contact.name,
+      phone: contact.phone,
       origin: window.location.origin,
     });
   }
 
-  if (showEmailInput) {
-    return (
-      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        <input
-          type="email"
-          placeholder="your@email.com"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          onKeyDown={e => e.key === "Enter" && handleEmailSubmit()}
-          style={{
-            padding: "8px 12px",
-            borderRadius: 8,
-            border: "1.5px solid #CBD5E1",
-            fontSize: 13,
-            fontFamily: "inherit",
-            outline: "none",
-          }}
-          autoFocus
-        />
-        <button
-          onClick={handleEmailSubmit}
-          style={{
-            padding: "10px 0",
-            borderRadius: 10,
-            background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
-            color: "#fff",
-            border: "none",
-            fontSize: 13,
-            fontWeight: 700,
-            cursor: "pointer",
-            fontFamily: "inherit",
-            ...style,
-          }}
-        >
-          Continue to Checkout →
-        </button>
-      </div>
-    );
-  }
-
   return (
-    <button
-      onClick={handleClick}
-      disabled={disabled || loading}
-      style={{
-        padding: "11px 0",
-        borderRadius: 10,
-        background: disabled
-          ? "#E2E8F0"
-          : "linear-gradient(135deg, #1D4ED8, #0E7490)",
-        color: disabled ? "#94A3B8" : "#fff",
-        border: "none",
-        fontSize: 13,
-        fontWeight: 700,
-        cursor: disabled ? "not-allowed" : "pointer",
-        fontFamily: "inherit",
-        width: "100%",
-        transition: "opacity 0.15s",
-        opacity: loading ? 0.7 : 1,
-        whiteSpace: "nowrap",
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        ...style,
-      }}
-    >
-      {loading ? "Redirecting…" : disabled ? "Coming Soon" : label}
-    </button>
+    <>
+      {showModal && (
+        <CheckoutContactModal
+          productName={productName ?? label}
+          priceLabel={priceLabel}
+          prefillEmail={(() => { try { return localStorage.getItem("echelon_trial_email") ?? ""; } catch { return ""; } })()}
+          onSubmit={handleContactSubmit}
+          onClose={() => setShowModal(false)}
+          isLoading={createSession.isPending}
+        />
+      )}
+      <button
+        onClick={handleClick}
+        disabled={disabled || createSession.isPending}
+        style={{
+          padding: "11px 0",
+          borderRadius: 10,
+          background: disabled
+            ? "#E2E8F0"
+            : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+          color: disabled ? "#94A3B8" : "#fff",
+          border: "none",
+          fontSize: 13,
+          fontWeight: 700,
+          cursor: disabled ? "not-allowed" : "pointer",
+          fontFamily: "inherit",
+          width: "100%",
+          transition: "opacity 0.15s",
+          opacity: createSession.isPending ? 0.7 : 1,
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          ...style,
+        }}
+      >
+        {createSession.isPending ? "Redirecting…" : disabled ? "Coming Soon" : label}
+      </button>
+    </>
   );
 }
 
@@ -1223,6 +1188,8 @@ function ProductCard({
         productKey={product.key}
         label={`Get ${product.shortName} Pass →`}
         disabled={!product.available}
+        productName={product.name}
+        priceLabel={`CA$${(product.priceCAD / 100).toFixed(0)}`}
       />
       {FLASHCARD_ROUTES[product.key] && (
         <Link href={FLASHCARD_ROUTES[product.key]}>

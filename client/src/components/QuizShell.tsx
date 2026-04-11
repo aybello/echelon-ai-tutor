@@ -110,6 +110,9 @@ export interface QuizShellProps {
 
   // Optional: module overview study notes (keyed by module name)
   moduleOverviews?: Record<string, ModuleOverview>;
+
+  // Optional: extra content rendered inside the header (below stats/pills row)
+  headerExtra?: ReactNode;
 }
 
 // ─── Constants ───────────────────────────────────────────────────────────────
@@ -167,6 +170,7 @@ export default function QuizShell({
   extraContent,
   renderAITutor,
   moduleOverviews,
+  headerExtra,
 }: QuizShellProps) {
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
@@ -465,6 +469,13 @@ export default function QuizShell({
               </button>
             )}
           </div>
+
+          {/* Optional extra header content (e.g. quiz mode selector) */}
+          {headerExtra && (
+            <div style={{ marginTop: 16 }}>
+              {headerExtra}
+            </div>
+          )}
         </div>
       </div>
 
