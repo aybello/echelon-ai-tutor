@@ -317,22 +317,22 @@ export default function QuizShell({
           .qs-session-btns { flex-direction: column !important; }
           .qs-session-btns a, .qs-session-btns button { width: 100% !important; min-height: 48px !important; }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 640px) {
           .qs-header-title-row { flex-direction: column !important; align-items: flex-start !important; }
           /* Scrollable action buttons strip */
           .qs-header-actions { display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; gap: 6px !important; padding-bottom: 4px !important; margin-top: 8px !important; width: 100% !important; scrollbar-width: none !important; }
           .qs-header-actions::-webkit-scrollbar { display: none !important; }
           .qs-header-actions a, .qs-header-actions button { white-space: nowrap !important; flex-shrink: 0 !important; font-size: 11px !important; padding: 5px 10px !important; }
-          /* Inline stats strip */
-          .qs-stats-row { flex-wrap: nowrap !important; gap: 0 !important; background: rgba(0,0,0,0.18) !important; border-radius: 10px !important; padding: 0 !important; overflow: hidden !important; margin-top: 10px !important; }
-          .qs-stats-row > div { flex: 1 !important; min-width: 0 !important; padding: 6px 4px !important; border-right: 1px solid rgba(255,255,255,0.12) !important; text-align: center !important; }
-          .qs-stats-row > div:last-child { border-right: none !important; }
-          /* Scrollable module pills */
-          .qs-module-pills { gap: 5px !important; overflow-x: auto !important; flex-wrap: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 4px !important; scrollbar-width: none !important; margin-top: 8px !important; }
-          .qs-module-pills::-webkit-scrollbar { display: none !important; }
-          .qs-module-pills button { font-size: 10px !important; padding: 4px 9px !important; flex-shrink: 0 !important; white-space: nowrap !important; }
+          /* Inline segmented stats bar */
+          .qs-stats-only { display: flex !important; flex-wrap: nowrap !important; gap: 0 !important; background: rgba(0,0,0,0.20) !important; border-radius: 10px !important; overflow: hidden !important; margin-top: 10px !important; width: 100% !important; }
+          .qs-stats-only > div { flex: 1 !important; min-width: 0 !important; padding: 6px 4px !important; border-right: 1px solid rgba(255,255,255,0.12) !important; text-align: center !important; background: transparent !important; border-radius: 0 !important; }
+          .qs-stats-only > div:last-child { border-right: none !important; }
+          /* Scrollable module pills row */
+          .qs-module-pills-row { display: flex !important; gap: 5px !important; overflow-x: auto !important; flex-wrap: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 4px !important; scrollbar-width: none !important; margin-top: 8px !important; width: 100% !important; }
+          .qs-module-pills-row::-webkit-scrollbar { display: none !important; }
+          .qs-module-pills-row button { font-size: 10px !important; padding: 4px 9px !important; flex-shrink: 0 !important; white-space: nowrap !important; }
           /* Compact mode cards on mobile */
-          .qs-mode-bar-wrap { gap: 6px !important; }
+          .qs-mode-bar-wrap { gap: 6px !important; width: 100% !important; }
           .qs-mode-card { min-width: 0 !important; padding: 8px 10px !important; flex: 1 1 0 !important; }
           .qs-mode-card-icon { width: 28px !important; height: 28px !important; font-size: 14px !important; border-radius: 8px !important; }
           .qs-mode-card-label { font-size: 11px !important; }
@@ -431,8 +431,8 @@ export default function QuizShell({
             </div>
           </div>
 
-          {/* Stats row */}
-          <div className="qs-stats-row" style={{ display: "flex", gap: 10, marginTop: 10, flexWrap: "wrap", alignItems: "center" }}>
+          {/* Stats row — segmented bar on mobile via .qs-stats-only CSS */}
+          <div className="qs-stats-only" style={{ display: "flex", gap: 10, marginTop: 10, flexWrap: "wrap", alignItems: "center" }}>
             {[
               { label: "Answered", value: history.length },
               { label: "Correct", value: correctCount },
@@ -449,10 +449,12 @@ export default function QuizShell({
                 <div style={{ fontSize: 9, opacity: 0.8, textTransform: "uppercase", letterSpacing: "0.08em" }}>{s.label}</div>
               </div>
             ))}
+          </div>
 
-            {/* Module filter toggle */}
-            {modules.length > 0 && (
-              <div className="qs-module-pills" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginLeft: 0, marginTop: 8, width: "100%" }}>
+          {/* Module pills + Calc Only — scrollable row on mobile via .qs-module-pills-row CSS */}
+          {(modules.length > 0 || hasCalcOnly) && (
+            <div className="qs-module-pills-row" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 8 }}>
+              {modules.length > 0 && (
                 <button
                   onClick={() => onModuleChange(null)}
                   style={{
@@ -466,55 +468,56 @@ export default function QuizShell({
                     fontWeight: 700,
                     cursor: "pointer",
                     fontFamily: "inherit",
+                    flexShrink: 0,
                   }}
                 >
                   All Modules
                 </button>
-                {modules.map(m => (
-                  <button
-                    key={m.name}
-                    onClick={() => onModuleChange(selectedModule === m.name ? null : m.name)}
-                    style={{
-                      padding: "5px 12px",
-                      borderRadius: 20,
-                      border: "1.5px solid",
-                      borderColor: selectedModule === m.name ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.3)",
-                      background: selectedModule === m.name ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.1)",
-                      color: "#fff",
-                      fontSize: 11,
-                      fontWeight: 600,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                    }}
-                  >
-                    {m.icon && <span style={{ marginRight: 4 }}>{m.icon}</span>}
-                    {m.name}
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {/* Calc Only toggle */}
-            {hasCalcOnly && (
-              <button
-                onClick={onCalcOnlyToggle}
-                style={{
-                  padding: "5px 12px",
-                  borderRadius: 20,
-                  border: "1.5px solid",
-                  borderColor: calcOnly ? "rgba(167,139,250,0.9)" : "rgba(255,255,255,0.3)",
-                  background: calcOnly ? "rgba(167,139,250,0.35)" : "rgba(255,255,255,0.1)",
-                  color: "#fff",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  cursor: "pointer",
-                  fontFamily: "inherit",
-                }}
-              >
-                🧮 Calc Only
-              </button>
-            )}
-          </div>
+              )}
+              {modules.map(m => (
+                <button
+                  key={m.name}
+                  onClick={() => onModuleChange(selectedModule === m.name ? null : m.name)}
+                  style={{
+                    padding: "5px 12px",
+                    borderRadius: 20,
+                    border: "1.5px solid",
+                    borderColor: selectedModule === m.name ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.3)",
+                    background: selectedModule === m.name ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.1)",
+                    color: "#fff",
+                    fontSize: 11,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    flexShrink: 0,
+                  }}
+                >
+                  {m.icon && <span style={{ marginRight: 4 }}>{m.icon}</span>}
+                  {m.name}
+                </button>
+              ))}
+              {hasCalcOnly && (
+                <button
+                  onClick={onCalcOnlyToggle}
+                  style={{
+                    padding: "5px 12px",
+                    borderRadius: 20,
+                    border: "1.5px solid",
+                    borderColor: calcOnly ? "rgba(167,139,250,0.9)" : "rgba(255,255,255,0.3)",
+                    background: calcOnly ? "rgba(167,139,250,0.35)" : "rgba(255,255,255,0.1)",
+                    color: "#fff",
+                    fontSize: 11,
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    flexShrink: 0,
+                  }}
+                >
+                  🧮 Calc Only
+                </button>
+              )}
+            </div>
+          )}
 
           {/* Optional extra header content (e.g. quiz mode selector) */}
           {headerExtra && (
