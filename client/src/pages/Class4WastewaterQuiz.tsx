@@ -4,6 +4,8 @@ import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import { CLASS4_WW_QUESTIONS, CLASS4_WASTEWATER_MODULES, CLASS4_WW_FORMULA_LINKS, type C4WWQuestion } from '@/lib/class4WastewaterQuestions';
 import { CLASS4_WASTEWATER_OVERVIEWS } from '@/lib/moduleOverviews';
+import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
+import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -18,6 +20,36 @@ type HistoryEntry = {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function Class4WastewaterQuiz() {
+  // ── Quiz Mode & Settings ───────────────────────────────────────────────────
+  const [quizMode, setQuizMode] = useState<QuizMode>("standard");
+  const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [missedIds, setMissedIds] = useState<number[]>([]);
+  const logAttemptFn = useAttemptLogger("class4-ww", quizMode);
+  const missedCount = missedIds.length;
+
+  const handleModeChange = (mode: QuizMode) => {
+    setQuizMode(mode);
+    setHistory([]);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    if (mode === "missed" && missedIds.length > 0) {
+      const missedSet = new Set(missedIds);
+      const mPool = allQuestions.filter((q: any) => missedSet.has(q.id));
+      setCurrent(mPool.length > 0 ? mPool[Math.floor(Math.random() * mPool.length)] : null);
+    } else {
+      const pool = [...allQuestions];
+      setCurrent(pool[Math.floor(Math.random() * pool.length)]);
+    }
+  };
+
+  const handleSettingsApply = (settings: QuizSettings) => {
+    setQuizSettings(settings);
+    setHistory([]);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    const pool = [...allQuestions];
+    setCurrent(pool[Math.floor(Math.random() * pool.length)]);
+  };
+
   const allQuestions = CLASS4_WW_QUESTIONS as C4WWQuestion[];
   const modules = CLASS4_WASTEWATER_MODULES;
 
@@ -231,6 +263,25 @@ export default function Class4WastewaterQuiz() {
         mockExamHref="/class4-ww-mock"
         moduleOverviews={CLASS4_WASTEWATER_OVERVIEWS}
         formulaLinks={CLASS4_WW_FORMULA_LINKS}
+        headerExtra={
+          <>
+            <QuizModeBar
+              examType="class4-ww"
+              currentMode={quizMode}
+              onModeChange={handleModeChange}
+              missedCount={missedCount}
+              onSettingsOpen={() => setSettingsOpen(true)}
+            />
+            {settingsOpen && (
+              <QuizSettingsDrawer
+                settings={quizSettings}
+                onApply={handleSettingsApply}
+                onClose={() => setSettingsOpen(false)}
+                totalQuestions={allQuestions.length}
+              />
+            )}
+          </>
+        }
         renderAITutor={() => (
           <AITutor
             question={current as any}
