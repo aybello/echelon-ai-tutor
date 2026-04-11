@@ -14,6 +14,8 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import PurchaseGate from "@/components/PurchaseGate";
 import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
+import ReviewAITutor from "@/components/ReviewAITutor";
+import { toast } from "sonner";
 import ReportErrorModal from "@/components/ReportErrorModal";
 
 const EXAM_DURATION  = 2 * 60 * 60; // 2 hours
@@ -142,6 +144,7 @@ export default function Class1WaterMockExam() {
         if (t <= 1) {
           clearInterval(timerRef.current!);
           setExamState("results");
+          toast("⏱️ Time's up!", { description: "Your exam has been auto-submitted." });
           return 0;
         }
         return t - 1;
@@ -372,6 +375,16 @@ export default function Class1WaterMockExam() {
                       )}
                       <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: 4 }}>✓ {q.options[q.correct]}</div>
                       <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line" }}>{q.explanation}</div>
+                      {(!isCorrect || wasSkipped) && (
+                        <ReviewAITutor
+                          questionText={q.question}
+                          options={q.options}
+                          correctIndex={q.correct}
+                          userAnswerIndex={wasSkipped ? null : (a.selected ?? null)}
+                          explanation={q.explanation}
+                          module={q.module}
+                        />
+                      )}
                     </div>
                   );
                 })}

@@ -140,7 +140,7 @@ function Router() {
       <Route path={"/career"} component={CareerMap} />
       <Route path={"/pumping"} component={PumpingSystems} />
       <Route path={"/instrumentation"} component={ProcessControl} />
-      <Route path={"/mock-exam"} component={MockExam} />
+      <Route path={"/mock-exam"}>{() => { window.location.replace("/oit-mock"); return null; }}</Route>
       <Route path={"/chem-calc"} component={ChemCalc} />
       <Route path={"/math-practice"} component={MathPractice} />
       <Route path={"/lab"} component={Lab} />

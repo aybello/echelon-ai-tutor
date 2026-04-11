@@ -12,6 +12,8 @@ import { isTrialUnlocked } from "@/components/QuizGate";
 import PurchaseGate from "@/components/PurchaseGate";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import ReportErrorModal from "@/components/ReportErrorModal";
+import ReviewAITutor from "@/components/ReviewAITutor";
+import { toast } from "sonner";
 
 const EXAM_DURATION  = 2 * 60 * 60; // 2 hours in seconds
 const EXAM_QUESTIONS = 100;
@@ -148,6 +150,7 @@ export default function WQAMockExam() {
         if (t <= 1) {
           clearInterval(timerRef.current!);
           setExamState("results");
+          toast("⏱️ Time's up!", { description: "Your exam has been auto-submitted." });
           return 0;
         }
         return t - 1;
@@ -381,6 +384,16 @@ export default function WQAMockExam() {
                           </a>
                         );
                       })()}
+                      {(!isCorrect || isSkipped) && (
+                        <ReviewAITutor
+                          questionText={q.q}
+                          options={q.options}
+                          correctIndex={q.correct}
+                          userAnswerIndex={isSkipped ? null : (userAns ?? null)}
+                          explanation={q.explanation}
+                          module={q.module}
+                        />
+                      )}
                     </div>
                   );
                 })}

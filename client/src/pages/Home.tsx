@@ -206,18 +206,35 @@ export default function Home() {
   // Auto-confirm + advance when timed mode expires
   const handleTimeUp = useCallback(() => {
     if (confirmed) return;
-    // Auto-select a wrong answer if nothing selected, so handleConfirm/handleNext doesn't bail
-    if (selected === null && current) {
-      const wrongOption = (current as any).correct === 0 ? 1 : 0;
-      setSelected(wrongOption);
-    }
-    // Ensure confidence is set so handleConfirm's guard (confidence === null) doesn't bail
-    // Use 50 (neutral) as the auto-confidence for timed-out questions
-    if (confidence === null) setConfidence(50);
+    if (!current) return;
+    // Determine the correct answer index
+    const correctIdx = (current as any).correct ?? 0;
+    // Use the user's selection if they picked one, otherwise force a wrong answer
+    const effectiveSelected = selected ?? (correctIdx === 0 ? 1 : 0);
+    const isCorrect = effectiveSelected === correctIdx;
+    // Set confidence to neutral (50) for timed-out questions
+    const effectiveConfidence = confidence ?? 50;
+    // Push history entry so the question isn't lost
+    const entry: HistoryEntry = {
+      questionId: current.id,
+      module: current.module,
+      difficulty: current.difficulty,
+      correct: isCorrect,
+      confidence: effectiveConfidence,
+      selectedOption: effectiveSelected,
+      wrongExplanation: !isCorrect ? (current.wrongExp?.[effectiveSelected] ?? null) : null,
+      questionObj: current,
+    };
+    setHistory(h => [...h, entry]);
+    setUsedIds(s => new Set([...Array.from(s), current.id]));
+    // Log the attempt to the backend for missed-questions tracking
+    logAttempt({ topic: current.module, questionId: current.id, correct: isCorrect, difficulty: current.difficulty });
+    setSelected(effectiveSelected);
+    setConfidence(effectiveConfidence);
     setConfirmed(true);
     setTimeout(() => handleNext(), 800);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [confirmed, handleNext, selected, current, confidence]);
+  }, [confirmed, handleNext, selected, current, confidence, logAttempt]);
 
   // ── Calc Only toggle ───────────────────────────────────────────────────────
   const handleCalcOnlyToggle = useCallback(() => {
@@ -263,7 +280,7 @@ export default function Home() {
         headerGradient="linear-gradient(135deg, #1D4ED8 0%, #0F766E 100%)"
         headerIcon="💧"
         headerActions={[
-          { label: "📝 Mock Exam", href: "/mock-exam" },
+          { label: "📝 Mock Exam", href: "/oit-mock" },
           { label: "🃏 Flashcards", href: "/oit-water-flashcards" },
           { label: "🔬 Processes", href: "/process" },
           { label: "📐 Formulas", href: "/formulas" },
@@ -296,7 +313,7 @@ export default function Home() {
         onResetSession={resetSession}
         timedSeconds={quizSettings.timedMode ? quizSettings.timedSeconds : 0}
         onTimeUp={handleTimeUp}
-        mockExamHref="/mock-exam"
+        mockExamHref="/oit-mock"
         moduleOverviews={OIT_WATER_OVERVIEWS}
         headerExtra={
           <>

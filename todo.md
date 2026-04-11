@@ -434,3 +434,15 @@
 - [x] Fix Account page mobile layout — already had 600px styles (stacked form, full-width buttons, 1-col purchase history)
 - [x] Fix FlashcardShell mobile layout — already had 640px styles (responsive card, full-width buttons)
 - [x] Fix SiteNav mobile drawer — already has hamburger drawer with proper touch targets and scrollable sections
+
+## Audit Pass 4 Bug Fixes (Apr 11 2026)
+- [x] Bug 14: Home.tsx handleTimeUp — already fixed in earlier pass (properly logs attempts, pushes history, calls logAttempt)
+- [x] Bug 15: Home.tsx mock exam link — already points to /oit-mock (fixed in earlier pass)
+- [x] Bug 16a: WQAMockExam — added ReviewAITutor to review section for incorrect/skipped questions
+- [x] Bug 16b: OITWastewaterMockExam — added full review section (was missing entirely) with ReviewAITutor for incorrect/skipped questions
+- [x] Bug 16c: OITMockExam — ReviewAITutor already present, added Time's up toast to timer expiry
+- [x] Bug 16d: Class1MockExam — ReviewAITutor already present, added Time's up toast to timer expiry
+- [x] Bug 16e: Class1WaterMockExam — ReviewAITutor already present, added Time's up toast to timer expiry
+- [x] Bug 16f: WQAMockExam — added Time's up toast to timer expiry
+- [x] Bug 16g: OITWastewaterMockExam — added Time's up toast to timer expiry
+- [x] Bug 17: /mock-exam route already redirects to /oit-mock (fixed in earlier pass)

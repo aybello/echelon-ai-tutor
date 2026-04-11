@@ -132,7 +132,7 @@ export default function PumpingSystems() {
             <span className="px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-semibold">
               Pumping
             </span>
-            <Link href="/mock-exam">
+            <Link href="/oit-mock">
               <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
                 📝 Mock Exam
               </span>

@@ -103,7 +103,7 @@ export const NAV_LINKS = [
   { label: "🧪 Chem Calc",     href: "/chem-calc" },
   { label: "🔬 Lab",           href: "/lab" },
   { label: "🗺️ Career Map",    href: "/career" },
-  { label: "📋 Mock Exam",     href: "/mock-exam" },
+  { label: "📋 Mock Exam",     href: "/oit-mock" },
   { label: "ℹ️ About",         href: "/about" },
   { label: "🎫 My Passes",      href: "/account" },
 ];

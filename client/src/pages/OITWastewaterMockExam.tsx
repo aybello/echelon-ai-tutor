@@ -13,6 +13,8 @@ import PurchaseGate from "@/components/PurchaseGate";
 import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
 import ReportErrorModal from "@/components/ReportErrorModal";
+import ReviewAITutor from "@/components/ReviewAITutor";
+import { toast } from "sonner";
 
 const EXAM_DURATION  = 1 * 60 * 60; // 1 hour in seconds
 const EXAM_QUESTIONS = 50;
@@ -105,6 +107,7 @@ export default function OITWastewaterMockExam() {
   const [timeLeft, setTimeLeft]     = useState(EXAM_DURATION);
   const [flagged, setFlagged]       = useState<number[]>([]);
   const [province, setProvince]     = useState("");
+  const [showReview, setShowReview] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const saveResult = trpc.exam.saveResult.useMutation();
@@ -163,7 +166,7 @@ export default function OITWastewaterMockExam() {
     if (examState !== "active") return;
     timerRef.current = setInterval(() => {
       setTimeLeft(t => {
-        if (t <= 1) { handleSubmit(); return 0; }
+        if (t <= 1) { handleSubmit(); toast("⏱️ Time's up!", { description: "Your exam has been auto-submitted." }); return 0; }
         return t - 1;
       });
     }, 1000);
@@ -334,6 +337,59 @@ export default function OITWastewaterMockExam() {
 
           {/* Score history */}
           <ScoreHistory sessionId={SESSION_ID} examType="oit-ww" />
+
+          {/* Review all questions */}
+          <div style={{ background: "#fff", borderRadius: 16, padding: "24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", marginBottom: 24, marginTop: 24, border: "1px solid #E2E8F0" }}>
+            <button
+              onClick={() => setShowReview(!showReview)}
+              style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", padding: 0 }}
+            >
+              <span style={{ fontSize: 14, fontWeight: 700, color: "#0F172A" }}>Review All Questions ({questions.length})</span>
+              <span style={{ fontSize: 12, color: "#64748B" }}>{showReview ? "▲ Hide" : "▼ Show"}</span>
+            </button>
+            {showReview && (
+              <div style={{ marginTop: 16 }}>
+                {questions.map((q, i) => {
+                  const userAns = answers[i]?.selected;
+                  const isCorrect = userAns === q.correct;
+                  const isSkipped = userAns === null;
+                  const isFlaggedQ = flagged.includes(i);
+                  return (
+                    <div key={i} style={{ marginBottom: 16, padding: "14px 16px", borderRadius: 12, background: isSkipped ? "#F8FAFC" : isCorrect ? "#F0FDF4" : "#FFF7ED", border: `1px solid ${isSkipped ? "#E2E8F0" : isCorrect ? "#BBF7D0" : "#FED7AA"}` }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8" }}>Q{i + 1} · {q.module} {isFlaggedQ ? "🚩" : ""}</span>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: isSkipped ? "#94A3B8" : isCorrect ? "#15803D" : "#C2410C" }}>
+                          {isSkipped ? "Skipped" : isCorrect ? "✅ Correct" : "❌ Incorrect"}
+                        </span>
+                      </div>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", marginBottom: 8, lineHeight: 1.5 }}>{q.question}</div>
+                      {!isSkipped && !isCorrect && (
+                        <div style={{ fontSize: 12, color: "#92400E", marginBottom: 4 }}>
+                          Your answer: <strong>{q.options[userAns!]}</strong>
+                        </div>
+                      )}
+                      <div style={{ fontSize: 12, color: "#15803D", marginBottom: 6 }}>
+                        Correct: <strong>{q.options[q.correct]}</strong>
+                      </div>
+                      {q.explanation && (
+                        <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.5, whiteSpace: "pre-line", marginBottom: 4 }}>{q.explanation}</div>
+                      )}
+                      {(!isCorrect || isSkipped) && (
+                        <ReviewAITutor
+                          questionText={q.question}
+                          options={q.options}
+                          correctIndex={q.correct}
+                          userAnswerIndex={isSkipped ? null : (userAns ?? null)}
+                          explanation={q.explanation}
+                          module={q.module}
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
 
           {/* Actions */}
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 8 }}>

@@ -11,6 +11,8 @@ import PurchaseGate from "@/components/PurchaseGate";
 import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
 import ReportErrorModal from "@/components/ReportErrorModal";
+import ReviewAITutor from "@/components/ReviewAITutor";
+import { toast } from "sonner";
 
 const EXAM_DURATION = 2 * 60 * 60; // 2 hours in seconds
 const EXAM_QUESTIONS = 100;
@@ -145,6 +147,7 @@ export default function OITMockExam() {
         if (t <= 1) {
           clearInterval(timerRef.current!);
           setExamState("results");
+          toast("⏱️ Time's up!", { description: "Your exam has been auto-submitted." });
           return 0;
         }
         return t - 1;
@@ -371,6 +374,16 @@ export default function OITMockExam() {
                       )}
                       <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: 4 }}>(done) {q.options[q.correct]}</div>
                       <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line" }}>{q.explanation}</div>
+                      {(!isCorrect || wasSkipped) && (
+                        <ReviewAITutor
+                          questionText={q.q}
+                          options={q.options}
+                          correctIndex={q.correct}
+                          userAnswerIndex={wasSkipped ? null : (a.selected ?? null)}
+                          explanation={q.explanation}
+                          module={q.module}
+                        />
+                      )}
                     </div>
                   );
                 })}

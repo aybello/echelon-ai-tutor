@@ -13,6 +13,8 @@ import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
 import PurchaseGate from "@/components/PurchaseGate";
 import ReportErrorModal from "@/components/ReportErrorModal";
+import ReviewAITutor from "@/components/ReviewAITutor";
+import { toast } from "sonner";
 
 const EXAM_DURATION = 2 * 60 * 60; // 2 hours in seconds
 const EXAM_QUESTIONS = 100;
@@ -140,6 +142,7 @@ export default function Class1MockExam() {
         if (prev <= 1) {
           clearInterval(timerRef.current!);
           setExamState("results");
+          toast("⏱️ Time's up!", { description: "Your exam has been auto-submitted." });
           return 0;
         }
         return prev - 1;
@@ -459,6 +462,16 @@ export default function Class1MockExam() {
                       <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.6, background: "rgba(255,255,255,0.6)", borderRadius: 8, padding: "8px 10px" }}>
                         <span style={{ whiteSpace: "pre-line" }}>{q.explanation}</span>
                       </div>
+                      {(!isCorrect || userAns === null) && (
+                        <ReviewAITutor
+                          questionText={q.q}
+                          options={q.options}
+                          correctIndex={q.correct}
+                          userAnswerIndex={userAns}
+                          explanation={q.explanation}
+                          module={q.module}
+                        />
+                      )}
                     </div>
                   );
                 })}
