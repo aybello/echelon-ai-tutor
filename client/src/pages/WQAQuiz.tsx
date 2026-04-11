@@ -4,6 +4,9 @@ import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import { WQA_QUESTIONS, WQA_MODULES, WQA_FORMULA_LINKS, type WQAQuestion } from '@/lib/wqaQuestions';
 import { WQA_OVERVIEWS } from '@/lib/moduleOverviews';
+import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
+import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
+import { trpc } from "@/lib/trpc";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -18,6 +21,63 @@ type HistoryEntry = {
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function WQAQuiz() {
+  // ── Quiz Mode & Settings ───────────────────────────────────────────────────
+  const [quizMode, setQuizMode] = useState<QuizMode>("standard");
+  const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const logAttemptFn = useAttemptLogger("wqa", quizMode);
+  // Fetch missed question IDs from backend for persistence across sessions
+  const { data: missedData, refetch: refetchMissed } = trpc.quiz.getMissedQuestions.useQuery(
+    { examType: "wqa", limit: 50 },
+    { refetchOnWindowFocus: false }
+  );
+  const missedIds = missedData?.questionIds ?? [];
+  const missedCount = missedData?.total ?? 0;
+  const handleModeChange = (mode: QuizMode) => {
+    setQuizMode(mode);
+    setHistory([]);
+    setUsedIds(new Set());
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    if (mode === "missed" && missedIds.length > 0) {
+      const missedSet = new Set(missedIds);
+      const mPool = allQuestions.filter((q: any) => missedSet.has(q.id));
+      setCurrent(mPool.length > 0 ? mPool[Math.floor(Math.random() * mPool.length)] : null);
+    } else {
+      const pool = [...allQuestions];
+      setCurrent(pool[Math.floor(Math.random() * pool.length)]);
+    }
+  };
+  const handleSettingsApply = (settings: QuizSettings) => {
+    setQuizSettings(settings);
+    setSettingsOpen(false);
+    setHistory([]);
+    setUsedIds(new Set());
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    const pool = [...allQuestions];
+    setCurrent(pool[Math.floor(Math.random() * pool.length)]);
+  };
+  // Auto-confirm + advance when timed mode expires
+  const handleTimeUp = () => {
+    if (confirmed) return; // already answered
+    if (!current) return;
+    // Determine the correct answer index
+    const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
+    // Use the user's selection if they picked one, otherwise force a wrong answer
+    const effectiveSelected = selected ?? (correctIdx === 0 ? 1 : 0);
+    const isCorrect = effectiveSelected === correctIdx;
+    // Set confidence to neutral (50) for timed-out questions
+    const effectiveConfidence = confidence ?? 50;
+    // Push history entry so the question isn't lost
+    setHistory(h => [...h, { q: current, selected: effectiveSelected, confidence: effectiveConfidence, correct: isCorrect, questionObj: current }]);
+    // Log the attempt to the backend for missed-questions tracking
+    logAttemptFn({ topic: (current as any).module ?? (current as any).topic ?? "General", questionId: (current as any).id, correct: isCorrect, difficulty: (current as any).difficulty });
+    setSelected(effectiveSelected);
+    setConfidence(effectiveConfidence);
+    setUsedIds(s => new Set([...Array.from(s), (current as any).id]));
+    setConfirmed(true);
+    setTimeout(() => handleNext(), 800);
+  };
+
   const allQuestions = WQA_QUESTIONS as WQAQuestion[];
   const modules = WQA_MODULES;
 
@@ -65,6 +125,8 @@ export default function WQAQuiz() {
     const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
     const isCorrect = selected === correctIdx;
     setHistory(h => [...h, { q: current, selected, confidence, correct: isCorrect, questionObj: current }]);
+    logAttemptFn({ topic: (current as any).module ?? (current as any).topic ?? "General", questionId: (current as any).id, correct: isCorrect, difficulty: (current as any).difficulty });
+    if (!isCorrect) setTimeout(() => refetchMissed(), 500);
     setUsedIds(s => new Set([...Array.from(s), (current as any).id]));
     setConfirmed(true);
     setShowSteps(false);
@@ -225,9 +287,30 @@ export default function WQAQuiz() {
         onTutorOpen={() => setTutorOpen(true)}
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={resetSession}
+        timedSeconds={quizSettings.timedMode ? quizSettings.timedSeconds : 0}
+        onTimeUp={handleTimeUp}
         mockExamHref="/wqa-mock"
         moduleOverviews={WQA_OVERVIEWS}
         formulaLinks={WQA_FORMULA_LINKS}
+        headerExtra={
+          <>
+            <QuizModeBar
+              examType="wqa"
+              currentMode={quizMode}
+              onModeChange={handleModeChange}
+              missedCount={missedCount}
+              onSettingsOpen={() => setSettingsOpen(true)}
+            />
+            {settingsOpen && (
+              <QuizSettingsDrawer
+                settings={quizSettings}
+                onApply={handleSettingsApply}
+                onClose={() => setSettingsOpen(false)}
+                totalQuestions={allQuestions.length}
+              />
+            )}
+          </>
+        }
         renderAITutor={() => (
           <AITutor
             question={current as any}

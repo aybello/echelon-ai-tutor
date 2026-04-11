@@ -244,7 +244,7 @@
 - [ ] Populate WPI Class III Wastewater (~501 questions, field exists but empty)
 - [ ] Populate WPI Class IV Wastewater (~501 questions, field exists but empty)
 - [ ] Wire up step-by-step UI in WpiClass1WaterQuiz, WpiClass2WaterQuiz, WpiClass3WaterQuiz, WpiClass4WaterQuiz, WpiClass1WastewaterQuiz, WpiClass2WastewaterQuiz
-- [ ] Fix WPI quizzes to start at a random question instead of always question 1
+- [x] Fix WPI quizzes to start at a random question instead of always question 1 (already fixed — all 16 WPI pages use shuffle())
 - [ ] Add post-checkout success redirect to purchased course quiz (update PurchaseSuccess.tsx)
 - [ ] Archive bundle products in Stripe via API
 - [x] QA: Full end-to-end quality check — homepage, landing, nav links
@@ -408,4 +408,9 @@
 - [x] Bug 6: handleTimeUp on all 25 non-Home quiz pages bypassed handleConfirm — timed-out questions never logged to backend, never pushed to history. Fixed all 25 pages to compute isCorrect, push history, and call logAttemptFn inline.
 - [x] Bug 7: OITWastewaterQuiz handleConfirm had confidence === null guard — timed mode auto-confirm bailed silently. Removed guard (confidence is optional).
 - [x] Bug 8: Stripe webhook used require("drizzle-orm").eq() instead of already-imported eq — replaced with direct eq import, removed @ts-ignore.
-- [ ] Bug 9 (deferred): WQA quiz page missing QuizModeBar, QuizSettings, timed mode, and logAttempt — only quiz page without these features.
+- [x] Bug 9 (fixed): WQA quiz page missing QuizModeBar, QuizSettings, timed mode, and logAttempt — added all features to match other quiz pages.
+
+## Suggested Improvements (Apr 11 2026)
+- [x] Add QuizModeBar, QuizSettings, timed mode, and logAttempt to WQA quiz page (only quiz page missing these)
+- [x] Add "Time's up!" toast notification when quiz/mock exam timer expires
+- [x] Fix WPI quizzes to start at a random question instead of always question 1 (already fixed — all 16 WPI pages use shuffle())

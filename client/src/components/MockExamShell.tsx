@@ -4,6 +4,7 @@
 
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Link } from "wouter";
+import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
 import PurchaseGate from "@/components/PurchaseGate";
 import ReportErrorModal from "@/components/ReportErrorModal";
@@ -370,6 +371,7 @@ export default function MockExamShell({
       setTimeLeft(t => {
         if (t <= 1) {
           clearInterval(timerRef.current!);
+          toast.warning("\u23f1\ufe0f Time's up!", { description: "Your exam has been auto-submitted.", duration: 5000 });
           setExamState("results");
           return 0;
         }

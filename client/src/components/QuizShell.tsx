@@ -12,6 +12,7 @@
  */
 
 import { useState, useEffect, useRef, type ReactNode } from "react";
+import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
 import ModuleOverviewPanel from "@/components/ModuleOverview";
 import type { ModuleOverview } from "@/lib/moduleOverviews";
@@ -198,6 +199,7 @@ export default function QuizShell({
         if (prev <= 1) {
           clearInterval(timerRef.current!);
           onTimeUp?.();
+          toast.warning("\u23f1\ufe0f Time's up!", { description: "The question was auto-submitted.", duration: 3000 });
           return 0;
         }
         return prev - 1;
