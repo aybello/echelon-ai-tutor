@@ -106,45 +106,44 @@ export function registerStripeWebhook(app: Express) {
               console.error("[Stripe Webhook] Failed to send confirmation email:", err.message);
             });
 
-            // Capture phone number from Stripe checkout if provided
-            const phone = session.customer_details?.phone ?? null;
-            if (phone) {
-              try {
-                // 1. Save phone to the purchases row (always works, no userId needed)
-                await db
-                  .update(purchases)
-                  .set({ phone })
-                  .where(eq(purchases.stripeSessionId, stripeSessionId));
-                console.log(`[Stripe Webhook] Phone saved to purchases for session ${stripeSessionId}: ${phone}`);
-
-                // 2. Also update the users table — try by userId first, fall back to email lookup
-                const targetUserId = userId ?? (await db
-                  .select({ id: users.id })
-                  .from(users)
-                  .where(eq(users.email, email))
-                  .limit(1)
-                  .then(rows => rows[0]?.id ?? null));
-
-                if (targetUserId) {
-                  await db
-                    .update(users)
-                    .set({ phone })
-                    .where(eq(users.id, targetUserId));
-                  console.log(`[Stripe Webhook] Phone saved to users table for user ${targetUserId}: ${phone}`);
-                }
-              } catch (phoneErr) {
-                // Non-critical — log but don't fail the webhook
-                console.error("[Stripe Webhook] Failed to save phone:", phoneErr);
-              }
-            }
-
             // Notify owner
+            const purchasePhone = session.customer_details?.phone ?? null;
             await notifyOwner({
               title: `New Purchase: ${productName ?? productKey}`,
-              content: `${email} purchased ${productName ?? productKey} for CA$${(amountCAD / 100).toFixed(2)}${phone ? ` | Phone: ${phone}` : ""}`,
+              content: `${email} purchased ${productName ?? productKey} for CA$${(amountCAD / 100).toFixed(2)}${purchasePhone ? ` | Phone: ${purchasePhone}` : ""}`,
             });
           } else {
-            console.log(`[Stripe Webhook] Duplicate session ${stripeSessionId} — skipping`);
+            console.log(`[Stripe Webhook] Duplicate session ${stripeSessionId} — skipping insert`);
+          }
+
+          // Always attempt to save phone — runs for both new and duplicate sessions
+          // This handles the case where verifySession inserted the row before the webhook fired
+          const phone = session.customer_details?.phone ?? null;
+          if (phone) {
+            try {
+              await db
+                .update(purchases)
+                .set({ phone })
+                .where(eq(purchases.stripeSessionId, stripeSessionId));
+              console.log(`[Stripe Webhook] Phone saved/updated for session ${stripeSessionId}: ${phone}`);
+
+              const targetUserId = userId ?? (await db
+                .select({ id: users.id })
+                .from(users)
+                .where(eq(users.email, email ?? ""))
+                .limit(1)
+                .then(rows => rows[0]?.id ?? null));
+
+              if (targetUserId) {
+                await db
+                  .update(users)
+                  .set({ phone })
+                  .where(eq(users.id, targetUserId));
+                console.log(`[Stripe Webhook] Phone saved to users table for user ${targetUserId}: ${phone}`);
+              }
+            } catch (phoneErr) {
+              console.error("[Stripe Webhook] Failed to save phone (dedup path):", phoneErr);
+            }
           }
         } catch (err: any) {
           console.error("[Stripe Webhook] Error processing checkout.session.completed:", err);

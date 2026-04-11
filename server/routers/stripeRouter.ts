@@ -91,6 +91,8 @@ export const stripeRouter = router({
           session.customer_email ??
           session.metadata?.customer_email ??
           "";
+        const phone: string | null =
+          (session as any).customer_details?.phone ?? null;
         const productKey = session.metadata?.product_key ?? input.productKey;
         const productName = session.metadata?.product_name ?? productKey;
         const amountCAD = session.amount_total ?? 0;
@@ -109,6 +111,7 @@ export const stripeRouter = router({
             if (existing.length === 0) {
               await db.insert(purchases).values({
                 email,
+                phone,
                 productKey,
                 productName,
                 amountCAD,
