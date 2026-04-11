@@ -353,27 +353,21 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
   const [open, setOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
-  // Lock body scroll when drawer is open so the page behind doesn't scroll
+  // Lock body scroll when drawer is open so the page behind doesn't scroll.
+  // IMPORTANT: Only use overflow:hidden — never set position:fixed on body.
+  // Setting position:fixed on body breaks child position:fixed elements (like modals)
+  // on mobile Chrome because it creates a new containing block for fixed children.
   useEffect(() => {
     if (open) {
-      const scrollY = window.scrollY;
       document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = "100%";
+      document.body.style.touchAction = "none";
     } else {
-      const scrollY = document.body.style.top;
       document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-      if (scrollY) window.scrollTo(0, -parseInt(scrollY || "0", 10));
+      document.body.style.touchAction = "";
     }
     return () => {
       document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
+      document.body.style.touchAction = "";
     };
   }, [open]);
 

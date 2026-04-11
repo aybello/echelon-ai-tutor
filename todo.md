@@ -452,3 +452,14 @@
 - [x] Fix answer distribution in non-WPI banks (class1, class1Water, class2WW, OIT questions)
 - [x] Verify all banks have ~25% per option (A/B/C/D) after fix
 - [x] Ensure explanations and correct index stay in sync after shuffling
+
+## Mobile Blank Page Bug (Apr 11, 2026)
+- [ ] Fix blank white page on iOS Safari after 15 questions in Class 4 Water quiz (paywall gate crash)
+- [ ] Audit all other quiz pages for same mobile crash pattern
+- [ ] Test QuizGate component on mobile viewport
+
+## Mobile Blank Page Bug (Apr 11, 2026)
+- [x] Fix blank white page on mobile Chrome after 15 questions (QuizGate crash)
+- [x] Root cause: SiteNav set position:fixed on body which broke child fixed elements
+- [x] Fix 1: QuizGate now uses createPortal to render into document.body directly
+- [x] Fix 2: SiteNav scroll lock now uses overflow:hidden only (not position:fixed)
