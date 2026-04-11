@@ -12,6 +12,8 @@ import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGa
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import { shuffle } from "@/lib/utils";
 import { WPI_CLASS4_WASTEWATER_OVERVIEWS } from "@/lib/moduleOverviews";
+import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
+import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 
 type QCompat = WpiClass4WastewaterQuestion & { q: string };
 function toCompat(q: WpiClass4WastewaterQuestion): QCompat {
@@ -44,6 +46,34 @@ const SESSION_SIZE = 15;
 const HEADER_GRADIENT = "linear-gradient(135deg, #1E1B4B 0%, #065F46 100%)";
 
 export default function WpiClass4WastewaterQuiz() {
+  // ── Quiz Mode & Settings ───────────────────────────────────────────────────
+  const [quizMode, setQuizMode] = useState<QuizMode>("standard");
+  const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [missedIds, setMissedIds] = useState<number[]>([]);
+  const logAttemptFn = useAttemptLogger("wpi-class4-wastewater", quizMode);
+  const missedCount = missedIds.length;
+
+  const handleModeChange = (mode: QuizMode) => {
+    setQuizMode(mode);
+    setHistory([]);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    if (mode === "missed" && missedIds.length > 0) {
+      const missedSet = new Set(missedIds);
+      const mPool = wpiClass4WastewaterQuestions.filter((q: any) => missedSet.has(q.id));
+      setCurrent(mPool.length > 0 ? toCompat(shuffle([...mPool])[0]) : null);
+    } else {
+      setCurrent(toCompat(shuffle([...wpiClass4WastewaterQuestions])[0]));
+    }
+  };
+
+  const handleSettingsApply = (settings: QuizSettings) => {
+    setQuizSettings(settings);
+    setHistory([]);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    setCurrent(toCompat(shuffle([...wpiClass4WastewaterQuestions])[0]));
+  };
+
   usePageMeta({
     title: "WPI Class IV Wastewater Treatment Practice Quiz — 502 Questions",
     description: "Practice for the WPI Class IV Wastewater Treatment chief operator exam with 502 questions.",
@@ -194,6 +224,25 @@ export default function WpiClass4WastewaterQuiz() {
         }}
         moduleOverviews={WPI_CLASS4_WASTEWATER_OVERVIEWS}
         mockExamHref="/wpi-class4-wastewater-mock"
+        headerExtra={
+          <>
+            <QuizModeBar
+              examType="wpi-class4-wastewater"
+              currentMode={quizMode}
+              onModeChange={handleModeChange}
+              missedCount={missedCount}
+              onSettingsOpen={() => setSettingsOpen(true)}
+            />
+            {settingsOpen && (
+              <QuizSettingsDrawer
+                settings={quizSettings}
+                onApply={handleSettingsApply}
+                onClose={() => setSettingsOpen(false)}
+                totalQuestions={wpiClass4WastewaterQuestions.length}
+              />
+            )}
+          </>
+        }
         renderAITutor={() => (
           <AITutor
             question={current as any}

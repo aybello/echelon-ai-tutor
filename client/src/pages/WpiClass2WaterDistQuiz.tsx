@@ -5,6 +5,8 @@ import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import { wpiClass2WaterDistQuestions } from "@/lib/wpiClass2WaterDistQuestions";
 import { WPI_CLASS2_WATER_DIST_OVERVIEWS } from "@/lib/moduleOverviews";
+import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
+import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 
 const HEADER_GRADIENT = "linear-gradient(135deg, #0369A1 0%, #0EA5E9 100%)";
 const SESSION_SIZE = 15;
@@ -34,6 +36,34 @@ const MODULE_CONFIG: { name: string; icon: string }[] = [
 const MODULES = MODULE_CONFIG.map(m => ({ name: m.name, icon: m.icon }));
 
 export default function WpiClass2WaterDistQuiz() {
+  // ── Quiz Mode & Settings ───────────────────────────────────────────────────
+  const [quizMode, setQuizMode] = useState<QuizMode>("standard");
+  const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [missedIds, setMissedIds] = useState<number[]>([]);
+  const logAttemptFn = useAttemptLogger("wpi-class2-water-dist", quizMode);
+  const missedCount = missedIds.length;
+
+  const handleModeChange = (mode: QuizMode) => {
+    setQuizMode(mode);
+    setHistory([]);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    if (mode === "missed" && missedIds.length > 0) {
+      const missedSet = new Set(missedIds);
+      const mPool = wpiClass2WaterDistQuestions.filter((q: any) => missedSet.has(q.id));
+      setCurrent(mPool.length > 0 ? toCompat(shuffle([...mPool])[0]) : null);
+    } else {
+      setCurrent(toCompat(shuffle([...wpiClass2WaterDistQuestions])[0]));
+    }
+  };
+
+  const handleSettingsApply = (settings: QuizSettings) => {
+    setQuizSettings(settings);
+    setHistory([]);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    setCurrent(toCompat(shuffle([...wpiClass2WaterDistQuestions])[0]));
+  };
+
   const [trialUnlocked] = useState(() => isTrialUnlocked());
   const [history, setHistory] = useState<any[]>([]);
   const [current, setCurrent] = useState<CompatQ | null>(toCompat(shuffle([...wpiClass2WaterDistQuestions])[0]));
@@ -169,6 +199,25 @@ export default function WpiClass2WaterDistQuiz() {
         }}
         mockExamHref="/wpi-class2-water-dist-mock"
         moduleOverviews={WPI_CLASS2_WATER_DIST_OVERVIEWS}
+        headerExtra={
+          <>
+            <QuizModeBar
+              examType="wpi-class2-water-dist"
+              currentMode={quizMode}
+              onModeChange={handleModeChange}
+              missedCount={missedCount}
+              onSettingsOpen={() => setSettingsOpen(true)}
+            />
+            {settingsOpen && (
+              <QuizSettingsDrawer
+                settings={quizSettings}
+                onApply={handleSettingsApply}
+                onClose={() => setSettingsOpen(false)}
+                totalQuestions={wpiClass2WaterDistQuestions.length}
+              />
+            )}
+          </>
+        }
         renderAITutor={() => (
           <AITutor
             question={current as any}

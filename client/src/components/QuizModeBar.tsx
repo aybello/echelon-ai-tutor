@@ -13,6 +13,8 @@ interface QuizModeBarProps {
   currentMode: QuizMode;
   onModeChange: (mode: QuizMode) => void;
   missedCount?: number;
+  /** If provided, a "Quiz Settings ⚙️" button is shown to the right of the mode cards */
+  onSettingsOpen?: () => void;
 }
 
 interface ModeCard {
@@ -25,7 +27,13 @@ interface ModeCard {
   disabled?: boolean;
 }
 
-export default function QuizModeBar({ examType: _examType, currentMode, onModeChange, missedCount }: QuizModeBarProps) {
+export default function QuizModeBar({
+  examType: _examType,
+  currentMode,
+  onModeChange,
+  missedCount,
+  onSettingsOpen,
+}: QuizModeBarProps) {
   const { isAuthenticated } = useAuth();
 
   const cards: ModeCard[] = [
@@ -60,9 +68,11 @@ export default function QuizModeBar({ examType: _examType, currentMode, onModeCh
   return (
     <div style={{
       display: "flex",
+      alignItems: "flex-start",
       gap: 10,
       flexWrap: "wrap" as const,
     }}>
+      {/* Mode cards */}
       {cards.map(card => {
         const active = currentMode === card.id;
         return (
@@ -138,6 +148,34 @@ export default function QuizModeBar({ examType: _examType, currentMode, onModeCh
           </button>
         );
       })}
+
+      {/* Quiz Settings button */}
+      {onSettingsOpen && (
+        <button
+          onClick={onSettingsOpen}
+          title="Quiz Settings"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 7,
+            padding: "10px 14px",
+            borderRadius: 12,
+            border: "1.5px solid rgba(255,255,255,0.30)",
+            background: "rgba(255,255,255,0.10)",
+            color: "rgba(255,255,255,0.85)",
+            cursor: "pointer",
+            fontFamily: "'Sora', sans-serif",
+            fontSize: 12,
+            fontWeight: 700,
+            transition: "all 0.15s ease",
+            flex: "0 0 auto",
+            letterSpacing: "0.02em",
+          }}
+        >
+          <span style={{ fontSize: 15 }}>⚙️</span>
+          <span>Quiz Settings</span>
+        </button>
+      )}
     </div>
   );
 }

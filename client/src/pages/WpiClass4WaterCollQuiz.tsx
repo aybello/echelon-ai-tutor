@@ -5,6 +5,8 @@ import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import { wpiClass4WastewaterCollQuestions, WPI_CLASS4_WASTEWATER_COLL_MODULES } from "@/lib/wpiClass4WastewaterCollQuestions";
 import { WPI_CLASS4_WASTEWATER_COLL_OVERVIEWS } from "@/lib/moduleOverviews";
+import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
+import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 const HEADER_GRADIENT = "linear-gradient(135deg, #7F1D1D 0%, #DC2626 100%)";
 const SESSION_SIZE = 15;
 type Q = typeof wpiClass4WastewaterCollQuestions[0];
@@ -29,6 +31,34 @@ const MODULE_CONFIG: { name: string; icon: string }[] = [
 ];
 const MODULES = MODULE_CONFIG.map(m => ({ name: m.name, icon: m.icon }));
 export default function WpiClass4WaterCollQuiz() {
+  // ── Quiz Mode & Settings ───────────────────────────────────────────────────
+  const [quizMode, setQuizMode] = useState<QuizMode>("standard");
+  const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [missedIds, setMissedIds] = useState<number[]>([]);
+  const logAttemptFn = useAttemptLogger("wpi-class4-water-coll", quizMode);
+  const missedCount = missedIds.length;
+
+  const handleModeChange = (mode: QuizMode) => {
+    setQuizMode(mode);
+    setHistory([]);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    if (mode === "missed" && missedIds.length > 0) {
+      const missedSet = new Set(missedIds);
+      const mPool = wpiClass4WastewaterCollQuestions.filter((q: any) => missedSet.has(q.id));
+      setCurrent(mPool.length > 0 ? toCompat(shuffle([...mPool])[0]) : null);
+    } else {
+      setCurrent(toCompat(shuffle([...wpiClass4WastewaterCollQuestions])[0]));
+    }
+  };
+
+  const handleSettingsApply = (settings: QuizSettings) => {
+    setQuizSettings(settings);
+    setHistory([]);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    setCurrent(toCompat(shuffle([...wpiClass4WastewaterCollQuestions])[0]));
+  };
+
   const [trialUnlocked] = useState(() => isTrialUnlocked());
   const [history, setHistory] = useState<any[]>([]);
   const [current, setCurrent] = useState<CompatQ | null>(toCompat(shuffle([...wpiClass4WastewaterCollQuestions])[0]));
@@ -155,6 +185,25 @@ export default function WpiClass4WaterCollQuiz() {
         }}
         mockExamHref="/wpi-class4-water-coll-mock"
         moduleOverviews={WPI_CLASS4_WASTEWATER_COLL_OVERVIEWS}
+        headerExtra={
+          <>
+            <QuizModeBar
+              examType="wpi-class4-water-coll"
+              currentMode={quizMode}
+              onModeChange={handleModeChange}
+              missedCount={missedCount}
+              onSettingsOpen={() => setSettingsOpen(true)}
+            />
+            {settingsOpen && (
+              <QuizSettingsDrawer
+                settings={quizSettings}
+                onApply={handleSettingsApply}
+                onClose={() => setSettingsOpen(false)}
+                totalQuestions={wpiClass4WastewaterCollQuestions.length}
+              />
+            )}
+          </>
+        }
         renderAITutor={() => (
           <AITutor
             question={current as any}

@@ -5,6 +5,8 @@ import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import { wpiClass1WastewaterCollQuestions, WPI_CLASS1_WASTEWATER_COLL_MODULES } from "@/lib/wpiClass1WastewaterCollQuestions";
 import { WPI_CLASS1_WASTEWATER_COLL_OVERVIEWS } from "@/lib/moduleOverviews";
+import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
+import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 const HEADER_GRADIENT = "linear-gradient(135deg, #065F46 0%, #059669 100%)";
 const SESSION_SIZE = 15;
 type Q = typeof wpiClass1WastewaterCollQuestions[0];
@@ -29,6 +31,34 @@ const MODULE_CONFIG: { name: string; icon: string }[] = [
 ];
 const MODULES = MODULE_CONFIG.map(m => ({ name: m.name, icon: m.icon }));
 export default function WpiClass1WaterCollQuiz() {
+  // ── Quiz Mode & Settings ───────────────────────────────────────────────────
+  const [quizMode, setQuizMode] = useState<QuizMode>("standard");
+  const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [missedIds, setMissedIds] = useState<number[]>([]);
+  const logAttemptFn = useAttemptLogger("wpi-class1-water-coll", quizMode);
+  const missedCount = missedIds.length;
+
+  const handleModeChange = (mode: QuizMode) => {
+    setQuizMode(mode);
+    setHistory([]);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    if (mode === "missed" && missedIds.length > 0) {
+      const missedSet = new Set(missedIds);
+      const mPool = wpiClass1WastewaterCollQuestions.filter((q: any) => missedSet.has(q.id));
+      setCurrent(mPool.length > 0 ? toCompat(shuffle([...mPool])[0]) : null);
+    } else {
+      setCurrent(toCompat(shuffle([...wpiClass1WastewaterCollQuestions])[0]));
+    }
+  };
+
+  const handleSettingsApply = (settings: QuizSettings) => {
+    setQuizSettings(settings);
+    setHistory([]);
+    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
+    setCurrent(toCompat(shuffle([...wpiClass1WastewaterCollQuestions])[0]));
+  };
+
   const [trialUnlocked] = useState(() => isTrialUnlocked());
   const [history, setHistory] = useState<any[]>([]);
   const [current, setCurrent] = useState<CompatQ | null>(toCompat(shuffle([...wpiClass1WastewaterCollQuestions])[0]));
