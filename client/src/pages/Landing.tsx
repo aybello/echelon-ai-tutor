@@ -15,7 +15,6 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { FadeUp, FadeIn, SlideLeft, StaggerContainer, StaggerItem } from "@/components/animations";
 import { useCountUp } from "@/hooks/useCountUp";
 import React from "react";
-import QuestionOfTheDay from "@/components/QuestionOfTheDay";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
 
 // Animated stat component using count-up hook
@@ -1675,14 +1674,6 @@ export default function Landing() {
       </div>
       </SlideLeft>
 
-      {/* ── Question of the Day (logged-in users) ── */}
-      {isAuthenticated && (
-        <section style={{ background: "#0F172A", padding: "48px 24px 0" }}>
-          <div style={{ maxWidth: 600, margin: "0 auto" }}>
-            <QuestionOfTheDay />
-          </div>
-        </section>
-      )}
 
       {/* ── Course Catalogue ── */}
       <section id="courses" className="landing-course-section" style={{ padding: "72px 24px", maxWidth: 1200, margin: "0 auto" }}>

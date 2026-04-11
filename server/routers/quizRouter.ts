@@ -1,10 +1,10 @@
 /**
- * Quiz Router — Handles question attempt logging, missed questions, and QOTD
- * Powers: Missed Question Quiz, Quick 10 mode, Question of the Day, and the Agentic Learning Engine
+ * Quiz Router — Handles question attempt logging and missed questions
+ * Powers: Missed Question Quiz, Quick 10 mode, and the Agentic Learning Engine
  */
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { questionAttempts, qotdCompletions, studentProfiles } from "../../drizzle/schema";
+import { questionAttempts, studentProfiles } from "../../drizzle/schema";
 import { and, eq, desc, sql } from "drizzle-orm";
 import { z } from "zod";
 
@@ -144,95 +144,6 @@ export const quizRouter = router({
       } catch (err) {
         console.error("[quizRouter.getWrongCountForQuestion] Error:", err);
         return { count: 0 };
-      }
-    }),
-
-  /**
-   * getQotd — returns today's Question of the Day for a given exam type.
-   * Uses a deterministic date-based seed so all users see the same question each day.
-   * Also returns whether the current user has already completed today's QOTD.
-   */
-  getQotd: publicProcedure
-    .input(
-      z.object({
-        examType: z.string().min(1).max(64),
-        totalQuestions: z.number().int().positive(),
-        guestToken: z.string().max(64).optional(),
-      })
-    )
-    .query(async ({ input, ctx }) => {
-      try {
-        const db = await getDb();
-        if (!db) throw new Error('DB unavailable');
-        const userId = ctx.user?.id ?? null;
-        const today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-
-        // Deterministic index: hash of (examType + date) mod totalQuestions
-        const hashStr = `${input.examType}-${today}`;
-        let hash = 0;
-        for (let i = 0; i < hashStr.length; i++) {
-          hash = ((hash << 5) - hash + hashStr.charCodeAt(i)) | 0;
-        }
-        const questionIndex = Math.abs(hash) % input.totalQuestions;
-
-        // Check if user already completed today's QOTD
-        let completed = false;
-        if (userId || input.guestToken) {
-          const condition = userId
-            ? and(eq(qotdCompletions.userId, userId), eq(qotdCompletions.examType, input.examType), eq(qotdCompletions.dateKey, today))
-            : and(eq(qotdCompletions.guestToken, input.guestToken!), eq(qotdCompletions.examType, input.examType), eq(qotdCompletions.dateKey, today));
-
-          const rows = await db.select({ id: qotdCompletions.id }).from(qotdCompletions).where(condition).limit(1);
-          completed = rows.length > 0;
-        }
-
-        return { questionIndex, dateKey: today, completed };
-      } catch (err) {
-        console.error("[quizRouter.getQotd] Error:", err);
-        // Fallback: use date-based index without DB check
-        const today = new Date().toISOString().slice(0, 10);
-        const hashStr = `${input.examType}-${today}`;
-        let hash = 0;
-        for (let i = 0; i < hashStr.length; i++) {
-          hash = ((hash << 5) - hash + hashStr.charCodeAt(i)) | 0;
-        }
-        return { questionIndex: Math.abs(hash) % input.totalQuestions, dateKey: today, completed: false };
-      }
-    }),
-
-  /**
-   * completeQotd — marks today's QOTD as completed for the user.
-   */
-  completeQotd: publicProcedure
-    .input(
-      z.object({
-        examType: z.string().min(1).max(64),
-        questionId: z.number().int().positive(),
-        dateKey: z.string().length(10),
-        correct: z.boolean(),
-        guestToken: z.string().max(64).optional(),
-      })
-    )
-    .mutation(async ({ input, ctx }) => {
-      try {
-        const db = await getDb();
-        if (!db) return { success: false };
-        const userId = ctx.user?.id ?? null;
-        if (!userId && !input.guestToken) return { success: false };
-
-        await db.insert(qotdCompletions).values({
-          userId,
-          guestToken: input.guestToken ?? null,
-          examType: input.examType,
-          questionId: input.questionId,
-          dateKey: input.dateKey,
-          correct: input.correct ? "yes" : "no",
-        });
-
-        return { success: true };
-      } catch (err) {
-        // Ignore duplicate completions (user refreshed page)
-        return { success: false };
       }
     }),
 

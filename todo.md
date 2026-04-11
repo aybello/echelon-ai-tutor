@@ -414,3 +414,7 @@
 - [x] Add QuizModeBar, QuizSettings, timed mode, and logAttempt to WQA quiz page (only quiz page missing these)
 - [x] Add "Time's up!" toast notification when quiz/mock exam timer expires
 - [x] Fix WPI quizzes to start at a random question instead of always question 1 (already fixed — all 16 WPI pages use shuffle())
+
+## Bug Reports (Apr 11 2026)
+- [ ] QOTD (Question of the Day) shows in preview but not on the deployed website
+- [x] Remove Question of the Day feature entirely (component, Landing page, backend procedures)
