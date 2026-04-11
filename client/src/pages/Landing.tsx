@@ -16,6 +16,7 @@ import { FadeUp, FadeIn, SlideLeft, StaggerContainer, StaggerItem } from "@/comp
 import { useCountUp } from "@/hooks/useCountUp";
 import React from "react";
 import QuestionOfTheDay from "@/components/QuestionOfTheDay";
+import CheckoutContactModal from "@/components/CheckoutContactModal";
 
 // Animated stat component using count-up hook
 function AnimatedStat({ value, suffix = "", label }: { value: number; suffix?: string; label: string }) {
@@ -849,6 +850,7 @@ type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[n
 function CourseCard({ course }: { course: CourseType }) {
   const [expanded, setExpanded] = useState(false);
   const [notifyOpen, setNotifyOpen] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
     onSuccess: (data) => { if (data.url) window.location.href = data.url; },
     onError: () => alert("Something went wrong. Please try again."),
@@ -856,10 +858,26 @@ function CourseCard({ course }: { course: CourseType }) {
   function handleGetPass() {
     const pk = (course as any).productKey;
     if (!pk) return;
-    createSession.mutate({ productKey: pk, origin: window.location.origin });
+    setShowContactModal(true);
+  }
+  function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
+    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
+    const pk = (course as any).productKey;
+    createSession.mutate({ productKey: pk, email: contact.email, name: contact.name, phone: contact.phone, origin: window.location.origin });
   }
   return (
-    <div
+    <>
+      {showContactModal && (
+        <CheckoutContactModal
+          productName={(course as any).title ?? course.code}
+          priceLabel={`CA$${(course as any).price}`}
+          prefillEmail={(() => { try { return localStorage.getItem("echelon_trial_email") ?? ""; } catch { return ""; } })()}
+          onSubmit={handleContactSubmit}
+          onClose={() => setShowContactModal(false)}
+          isLoading={createSession.isPending}
+        />
+      )}
+      <div
       className="course-card"
       style={{
         background: "#FFFFFF",
@@ -1037,6 +1055,7 @@ function CourseCard({ course }: { course: CourseType }) {
         />
       )}
     </div>
+    </>
   );
 }
 
