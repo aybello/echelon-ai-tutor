@@ -8,6 +8,7 @@ import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { loginWithReturnPath } from "@/const";
 import { isPreviewModeActive } from "@/lib/previewMode";
+import CheckoutContactModal from "@/components/CheckoutContactModal";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png";
 
@@ -118,6 +119,7 @@ export default function PurchaseGate({
   // All hooks must be declared before any early returns
   const [email] = useState(getStoredEmail);
   const [localAccess] = useState(() => isLocallyPurchased(examType));
+  const [showContactModal, setShowContactModal] = useState(false);
   const [, navigate] = useLocation();
   const { isAuthenticated } = useAuth();
 
@@ -172,12 +174,35 @@ export default function PurchaseGate({
   const featureList = features ?? DEFAULT_FEATURES[productKey] ?? FALLBACK_FEATURES;
 
   function handleBuyNow() {
-    createSession.mutate({ productKey, email: email || undefined, origin: window.location.origin });
+    // Show pre-checkout contact modal to collect name, email, phone
+    setShowContactModal(true);
+  }
+
+  function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
+    // Save email to localStorage for access restoration
+    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
+    createSession.mutate({
+      productKey,
+      email: contact.email,
+      name: contact.name,
+      phone: contact.phone,
+      origin: window.location.origin,
+    });
   }
 
   // No access — show paywall
   return (
     <>
+    {showContactModal && (
+      <CheckoutContactModal
+        productName={productName}
+        priceLabel={`CA$${price}`}
+        prefillEmail={email}
+        onSubmit={handleContactSubmit}
+        onClose={() => setShowContactModal(false)}
+        isLoading={createSession.isPending}
+      />
+    )}
     <style>{`
       @media (max-width: 480px) {
         .pg-outer { padding: 16px 12px !important; justify-content: flex-start !important; padding-top: 40px !important; }

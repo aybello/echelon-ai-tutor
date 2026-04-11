@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
+import CheckoutContactModal from "@/components/CheckoutContactModal";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png";
 
@@ -49,6 +50,7 @@ export default function QuizGate({
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [showContactModal, setShowContactModal] = useState(false);
 
   // Checkout session mutation (used when productKey is provided)
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
@@ -78,8 +80,21 @@ export default function QuizGate({
 
   function handleStripeClick() {
     if (!productKey) return;
-    const storedEmail = localStorage.getItem("echelon_trial_email") || "";
-    createSession.mutate({ productKey, email: storedEmail, origin: window.location.origin });
+    // Show pre-checkout contact modal to collect name, email, phone
+    setShowContactModal(true);
+  }
+
+  function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
+    if (!productKey) return;
+    // Save email to localStorage for access restoration
+    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
+    createSession.mutate({
+      productKey,
+      email: contact.email,
+      name: contact.name,
+      phone: contact.phone,
+      origin: window.location.origin,
+    });
   }
 
   function validateEmail(val: string): boolean {
@@ -116,6 +131,17 @@ export default function QuizGate({
 
   // ── Main gate modal ────────────────────────────────────────────────────────
   return (
+    <>
+    {showContactModal && productKey && (
+      <CheckoutContactModal
+        productName={productName ?? productKey}
+        priceLabel={priceLabel}
+        prefillEmail={localStorage.getItem("echelon_trial_email") ?? ""}
+        onSubmit={handleContactSubmit}
+        onClose={() => setShowContactModal(false)}
+        isLoading={createSession.isPending}
+      />
+    )}
     <div style={{ position: "fixed", inset: 0, background: "rgba(15,23,42,0.88)", backdropFilter: "blur(6px)", zIndex: 9999, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
       <div style={{ background: "#fff", borderRadius: 20, padding: "32px 32px 28px", maxWidth: 520, width: "100%", boxShadow: "0 32px 80px rgba(0,0,0,0.35)", textAlign: "center", position: "relative" }}>
         {/* X button — top-right corner of the card */}
@@ -317,5 +343,6 @@ export default function QuizGate({
         )}
       </div>
     </div>
+    </>
   );
 }

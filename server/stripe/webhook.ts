@@ -61,6 +61,14 @@ export function registerStripeWebhook(app: Express) {
           const userId = session.metadata?.user_id
             ? parseInt(session.metadata.user_id)
             : null;
+          // Name: prefer Stripe's customer_details, fall back to pre-checkout modal metadata
+          const webhookCustomerName: string | null =
+            session.customer_details?.name ??
+            (session.metadata?.customer_name || null);
+          // Phone: prefer Stripe's customer_details, fall back to pre-checkout modal metadata
+          const webhookPrePhone: string | null =
+            session.customer_details?.phone ??
+            (session.metadata?.customer_phone || null);
           const amountCAD = session.amount_total ?? 0;
           const stripeSessionId = session.id;
           const stripePaymentIntentId = session.payment_intent ?? null;
@@ -84,6 +92,8 @@ export function registerStripeWebhook(app: Express) {
             await db.insert(purchases).values({
               userId: userId ?? undefined,
               email,
+              phone: webhookPrePhone,
+              customerName: webhookCustomerName,
               productKey,
               productName: productName ?? productKey,
               amountCAD,
@@ -116,14 +126,15 @@ export function registerStripeWebhook(app: Express) {
             console.log(`[Stripe Webhook] Duplicate session ${stripeSessionId} — skipping insert`);
           }
 
-          // Always attempt to save phone — runs for both new and duplicate sessions
+          // Always attempt to save phone and name — runs for both new and duplicate sessions
           // This handles the case where verifySession inserted the row before the webhook fired
-          const phone = session.customer_details?.phone ?? null;
-          if (phone) {
+          const phone = session.customer_details?.phone ?? (session.metadata?.customer_phone || null);
+          const customerName = session.customer_details?.name ?? (session.metadata?.customer_name || null);
+          if (phone || customerName) {
             try {
               await db
                 .update(purchases)
-                .set({ phone })
+                .set({ ...(phone ? { phone } : {}), ...(customerName ? { customerName } : {}) })
                 .where(eq(purchases.stripeSessionId, stripeSessionId));
               console.log(`[Stripe Webhook] Phone saved/updated for session ${stripeSessionId}: ${phone}`);
 

@@ -26,6 +26,8 @@ export const stripeRouter = router({
     .input(z.object({
       productKey: z.string(),
       email: z.string().email().optional(),
+      name: z.string().max(128).optional(),
+      phone: z.string().max(32).optional(),
       origin: z.string().url(),
       utmSource: z.string().max(128).optional(),
       utmMedium: z.string().max(128).optional(),
@@ -36,6 +38,10 @@ export const stripeRouter = router({
       if (!product) throw new Error("Product not found");
 
       const userEmail = ctx.user?.email ?? input.email;
+      // Phone and name collected via pre-checkout modal; stored in metadata
+      // so verifySession and webhook can save them to the purchases table
+      const preCheckoutPhone = input.phone ?? "";
+      const preCheckoutName = input.name ?? "";
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
@@ -60,6 +66,8 @@ export const stripeRouter = router({
           product_name: product.name,
           user_id: ctx.user?.id?.toString() ?? "",
           customer_email: userEmail ?? "",
+          customer_name: preCheckoutName,
+          customer_phone: preCheckoutPhone,
           utm_source: input.utmSource ?? "",
           utm_medium: input.utmMedium ?? "",
           utm_campaign: input.utmCampaign ?? "",
@@ -91,8 +99,14 @@ export const stripeRouter = router({
           session.customer_email ??
           session.metadata?.customer_email ??
           "";
+        // Phone: prefer Stripe's customer_details (filled by Stripe Checkout phone field),
+        // fall back to the pre-checkout modal value stored in metadata
         const phone: string | null =
-          (session as any).customer_details?.phone ?? null;
+          (session as any).customer_details?.phone ??
+          (session.metadata?.customer_phone || null);
+        const customerName: string | null =
+          (session as any).customer_details?.name ??
+          (session.metadata?.customer_name || null);
         const productKey = session.metadata?.product_key ?? input.productKey;
         const productName = session.metadata?.product_name ?? productKey;
         const amountCAD = session.amount_total ?? 0;
@@ -112,6 +126,7 @@ export const stripeRouter = router({
               await db.insert(purchases).values({
                 email,
                 phone,
+                customerName,
                 productKey,
                 productName,
                 amountCAD,

@@ -101,6 +101,7 @@ export const purchases = mysqlTable("purchases", {
   utmCampaign: varchar("utmCampaign", { length: 128 }),
   referralSource: varchar("referralSource", { length: 128 }),
   phone: varchar("phone", { length: 32 }), // captured from Stripe checkout
+  customerName: varchar("customerName", { length: 128 }), // captured from pre-checkout modal
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type Purchase = typeof purchases.$inferSelect;
