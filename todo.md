@@ -403,3 +403,9 @@
 - [x] Unified process flow diagram view — added 🗺️ Process Map tab to all 4 process guides showing all steps connected in one animated SVG diagram
 - [ ] Fix daily audit checklist — stop it from rebuilding the project on each run
 - [ ] Full mobile responsiveness audit and fixes across all pages
+
+## Audit Pass 2 Bug Fixes (Apr 11 2026)
+- [x] Bug 6: handleTimeUp on all 25 non-Home quiz pages bypassed handleConfirm — timed-out questions never logged to backend, never pushed to history. Fixed all 25 pages to compute isCorrect, push history, and call logAttemptFn inline.
+- [x] Bug 7: OITWastewaterQuiz handleConfirm had confidence === null guard — timed mode auto-confirm bailed silently. Removed guard (confidence is optional).
+- [x] Bug 8: Stripe webhook used require("drizzle-orm").eq() instead of already-imported eq — replaced with direct eq import, removed @ts-ignore.
+- [ ] Bug 9 (deferred): WQA quiz page missing QuizModeBar, QuizSettings, timed mode, and logAttempt — only quiz page without these features.

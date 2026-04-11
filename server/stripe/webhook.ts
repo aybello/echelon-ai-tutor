@@ -83,8 +83,7 @@ export function registerStripeWebhook(app: Express) {
             .select({ id: purchases.id })
             .from(purchases)
             .where(
-              // @ts-ignore
-              require("drizzle-orm").eq(purchases.stripeSessionId, stripeSessionId)
+              eq(purchases.stripeSessionId, stripeSessionId)
             )
             .limit(1);
 
