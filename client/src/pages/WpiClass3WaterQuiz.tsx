@@ -2,24 +2,16 @@
 import { useState, useCallback, useMemo } from "react";
 import { useSearch } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import {
-  wpiClass3WaterQuestions,
-  WPI_CLASS3_WATER_MODULES,
-  type WpiClass3WaterQuestion,
-} from "@/lib/wpiClass3WaterQuestions";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import { shuffle } from "@/lib/utils";
-import { WPI_CLASS3_WATER_OVERVIEWS } from "@/lib/moduleOverviews";
 import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 import { trpc } from "@/lib/trpc";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
-type QCompat = WpiClass3WaterQuestion & { q: string };
-function toCompat(q: WpiClass3WaterQuestion): QCompat {
-  return { ...q, q: (q as any).question ?? (q as any).text ?? (q as any).q ?? "" };
-}
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Advanced Treatment & Disinfection": { "bg": "#EDE9FE", "color": "#7C3AED" },
@@ -36,17 +28,21 @@ const MODULE_ICONS: Record<string, string> = {
   "Regulatory Compliance & QMS": "📋",
 };
 
-const MODULES: ModuleConfig[] = WPI_CLASS3_WATER_MODULES.map(m => ({
-  name: m,
-  icon: MODULE_ICONS[m] ?? "📚",
-  bg: MODULE_COLORS[m]?.bg ?? "#F1F5F9",
-  color: MODULE_COLORS[m]?.color ?? "#475569",
-}));
 
 const SESSION_SIZE = 15;
 const HEADER_GRADIENT = "linear-gradient(135deg, #7C3AED 0%, #1D4ED8 100%)";
 
 export default function WpiClass3WaterQuiz() {
+  // ── Load questions from database ──────────────────────────────────────────
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class3-water");
+  const allQuestions = dbQuestions as any[];
+  const MODULES: ModuleConfig[] = dbModules.map((m: any) => ({
+  name: m,
+  icon: MODULE_ICONS[m] ?? "📚",
+  bg: MODULE_COLORS[m]?.bg ?? "#F1F5F9",
+  color: MODULE_COLORS[m]?.color ?? "#475569",
+  }));
+
   // ── Quiz Mode & Settings ───────────────────────────────────────────────────
   const [quizMode, setQuizMode] = useState<QuizMode>("standard");
   const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
@@ -66,10 +62,10 @@ export default function WpiClass3WaterQuiz() {
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
     if (mode === "missed" && missedIds.length > 0) {
       const missedSet = new Set(missedIds);
-      const mPool = wpiClass3WaterQuestions.filter((q: any) => missedSet.has(q.id));
-      setCurrent(mPool.length > 0 ? toCompat(shuffle([...mPool])[0]) : null);
+      const mPool = allQuestions.filter((q: any) => missedSet.has(q.id));
+      setCurrent(mPool.length > 0 ? (shuffle([...mPool])[0]) : null);
     } else {
-      setCurrent(toCompat(shuffle([...wpiClass3WaterQuestions])[0]));
+      setCurrent((shuffle([...allQuestions])[0]));
     }
   };
 
@@ -77,14 +73,14 @@ export default function WpiClass3WaterQuiz() {
     setQuizSettings(settings);
     setHistory([]);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-    setCurrent(toCompat(shuffle([...wpiClass3WaterQuestions])[0]));
+    setCurrent((shuffle([...allQuestions])[0]));
   };
   // Auto-confirm + advance when timed mode expires
   const handleTimeUp = () => {
     if (confirmed) return; // already answered
     if (!current) return;
     // Determine the correct answer index
-    const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
+    const correctIdx = (current as any).correctIndex ?? 0;
     // Use the user's selection if they picked one, otherwise force a wrong answer
     const effectiveSelected = selected ?? (correctIdx === 0 ? 1 : 0);
     const isCorrect = effectiveSelected === correctIdx;
@@ -112,11 +108,9 @@ export default function WpiClass3WaterQuiz() {
 
   const [history, setHistory] = useState<Array<{
     questionId: number; module: string; correct: boolean;
-    confidence: number; selectedOption: number; questionObj: QCompat;
+    confidence: number; selectedOption: number; questionObj: DBQuestion;
   }>>([]);
-  const [current, setCurrent] = useState<QCompat | null>(
-    () => toCompat(shuffle([...wpiClass3WaterQuestions])[0])
-  );
+  const [current, setCurrent] = useState<DBQuestion | null>(null);
   const [selected, setSelected]     = useState<number | null>(null);
   const [confidence, setConfidence] = useState<number | null>(null);
   const [confirmed, setConfirmed]   = useState(false);
@@ -131,19 +125,19 @@ export default function WpiClass3WaterQuiz() {
 
   const pool = useMemo(() => {
     const base = selectedModule
-      ? wpiClass3WaterQuestions.filter(q => q.module === selectedModule)
-      : wpiClass3WaterQuestions;
-    return base.filter(q => !usedIds.has(q.id) && (!calcOnly || q.isCalc));
+      ? allQuestions.filter((q: any) => q.module === selectedModule)
+      : allQuestions;
+    return base.filter((q: any) => !usedIds.has(q.id) && (!calcOnly || q.isCalc));
   }, [selectedModule, usedIds, calcOnly]);
 
   const getNext = useCallback(() => {
     if (pool.length === 0) return null;
-    return toCompat(shuffle([...pool])[0]);
+    return (shuffle([...pool])[0]);
   }, [pool]);
 
   function handleNext() {
     if (!current || selected === null) return;
-    const isCorrect = selected === (current.correctAnswer ?? (current as any).correct);
+    const isCorrect = selected === ((current as any).correctIndex ?? (current as any).correct);
     const newHistory = [...history, {
       questionId: current.id, module: current.module,
       correct: isCorrect, confidence: confidence ?? 3,
@@ -177,16 +171,16 @@ export default function WpiClass3WaterQuiz() {
   function handleCalcOnlyToggle() {
     const next = !calcOnly;
     setCalcOnly(next);
-    const newPool = wpiClass3WaterQuestions.filter(q => !next || q.isCalc);
-    setCurrent(newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null);
+    const newPool = allQuestions.filter((q: any) => !next || q.isCalc);
+    setCurrent(newPool.length > 0 ? (shuffle([...newPool])[0]) : null);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false); setHistory([]);
   }
 
   function handleModuleChange(mod: string | null) {
     setSelectedModule(mod);
-    const newPool = (mod ? wpiClass3WaterQuestions.filter(q => q.module === mod) : wpiClass3WaterQuestions)
-      .filter(q => !calcOnly || q.isCalc);
-    setCurrent(newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null);
+    const newPool = (mod ? allQuestions.filter((q: any) => q.module === mod) : allQuestions)
+      .filter((q: any) => !calcOnly || q.isCalc);
+    setCurrent(newPool.length > 0 ? (shuffle([...newPool])[0]) : null);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
   }
 
@@ -228,10 +222,10 @@ export default function WpiClass3WaterQuiz() {
         onTutorOpen={() => setTutorOpen(true)}
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={() => {
-          setHistory([]); setCurrent(toCompat(shuffle([...wpiClass3WaterQuestions])[0]));
+          setHistory([]); setCurrent((shuffle([...allQuestions])[0]));
           setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
         }}
-        moduleOverviews={WPI_CLASS3_WATER_OVERVIEWS}
+        moduleOverviews={dbOverviews ?? undefined}
         timedSeconds={quizSettings.timedMode ? quizSettings.timedSeconds : 0}
         onTimeUp={handleTimeUp}
         mockExamHref="/wpi-class3-water-mock"
@@ -249,7 +243,7 @@ export default function WpiClass3WaterQuiz() {
                 settings={quizSettings}
                 onApply={handleSettingsApply}
                 onClose={() => setSettingsOpen(false)}
-                totalQuestions={wpiClass3WaterQuestions.length}
+                totalQuestions={allQuestions.length}
               />
             )}
           </>

@@ -3,27 +3,23 @@
 // Uses QuizShell for unified UI
 import { useState, useCallback, useMemo } from "react";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import {
-  CLASS1_WASTEWATER_QUESTIONS,
-  CLASS1_WASTEWATER_MODULES,
-  type Class1WastewaterQuestion,
-} from "@/lib/class1WastewaterQuestions";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import QuizShell from "@/components/QuizShell";
-import { CLASS1_WASTEWATER_OVERVIEWS } from "@/lib/moduleOverviews";
 import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 import { trpc } from "@/lib/trpc";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
 const SESSION_SIZE = 15;
 
 type HistoryEntry = {
-  q: Class1WastewaterQuestion;
+  q: DBQuestion;
   selected: number;
   confidence: number | null;
   correct: boolean;
-  questionObj?: Class1WastewaterQuestion;
+  questionObj?: DBQuestion;
 };
 
 // Module config with colors/icons for QuizShell
@@ -51,6 +47,10 @@ function setOitWwTrialUnlocked(): void {
 }
 
 export default function OITWastewaterQuiz() {
+  // ── Load questions from database ──────────────────────────────────────────
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("class1-wastewater");
+  const allQuestions = dbQuestions as any[];
+
   // ── Quiz Mode & Settings ───────────────────────────────────────────────────
   const [quizMode, setQuizMode] = useState<QuizMode>("standard");
   const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
@@ -90,7 +90,7 @@ export default function OITWastewaterQuiz() {
     if (confirmed) return; // already answered
     if (!current) return;
     // Determine the correct answer index
-    const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
+    const correctIdx = (current as any).correctIndex ?? 0;
     // Use the user's selection if they picked one, otherwise force a wrong answer
     const effectiveSelected = selected ?? (correctIdx === 0 ? 1 : 0);
     const isCorrect = effectiveSelected === correctIdx;
@@ -113,13 +113,13 @@ export default function OITWastewaterQuiz() {
     keywords: "OIT wastewater exam prep, Ontario wastewater operator, wastewater certification practice",
   });
 
-  const allQuestions = CLASS1_WASTEWATER_QUESTIONS as Class1WastewaterQuestion[];
+  // allQuestions provided by useQuestionBank hook
 
   const [history, setHistory]         = useState<HistoryEntry[]>([]);
   const [usedIds, setUsedIds]         = useState<Set<number | string>>(new Set());
-  const [current, setCurrent]         = useState<Class1WastewaterQuestion | null>(() => {
+  const [current, setCurrent]         = useState<DBQuestion | null>(() => {
     // Trial phase: start with medium/hard questions
-    const trialPool = allQuestions.filter(q => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
+    const trialPool = allQuestions.filter((q: any) => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
     const startPool = trialPool.length >= 15 ? trialPool : allQuestions;
     const q = startPool[Math.floor(Math.random() * startPool.length)];
     return q ?? null;
@@ -139,9 +139,9 @@ export default function OITWastewaterQuiz() {
 
   // ── Filtered pool ──────────────────────────────────────────────────────────
   const pool = useMemo(() => {
-    let qs = allQuestions.filter(q => !usedIds.has((q as any).id));
-    if (selectedModule) qs = qs.filter(q => (q as any).module === selectedModule);
-    if (calcOnly) qs = qs.filter(q => (q as any).isCalc === true);
+    let qs = allQuestions.filter((q: any) => !usedIds.has((q as any).id));
+    if (selectedModule) qs = qs.filter((q: any) => (q as any).module === selectedModule);
+    if (calcOnly) qs = qs.filter((q: any) => (q as any).isCalc === true);
     return qs;
   }, [usedIds, selectedModule, calcOnly, allQuestions]);
 
@@ -170,7 +170,7 @@ export default function OITWastewaterQuiz() {
     // For trial phase, prefer medium/hard questions
     let trialPool = pool;
     if (!trialUnlocked && history.length < SESSION_SIZE) {
-      const hardPool = pool.filter(q => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
+      const hardPool = pool.filter((q: any) => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
       if (hardPool.length > 0) trialPool = hardPool;
     }
     const next = trialPool.length > 0
@@ -222,8 +222,8 @@ export default function OITWastewaterQuiz() {
     const next = !calcOnly;
     setCalcOnly(next);
     if (next) {
-      let calcPool = allQuestions.filter(q => (q as any).isCalc === true && !usedIds.has((q as any).id));
-      if (selectedModule) calcPool = calcPool.filter(q => (q as any).module === selectedModule);
+      let calcPool = allQuestions.filter((q: any) => (q as any).isCalc === true && !usedIds.has((q as any).id));
+      if (selectedModule) calcPool = calcPool.filter((q: any) => (q as any).module === selectedModule);
       if (calcPool.length > 0) {
         const q = calcPool[Math.floor(Math.random() * calcPool.length)];
         setCurrent(q);
@@ -238,9 +238,9 @@ export default function OITWastewaterQuiz() {
   // ── Module change ──────────────────────────────────────────────────────────
   const handleModuleChange = useCallback((mod: string | null) => {
     setSelectedModule(mod);
-    let newPool = allQuestions.filter(q => !usedIds.has((q as any).id));
-    if (mod) newPool = newPool.filter(q => (q as any).module === mod);
-    if (calcOnly) newPool = newPool.filter(q => (q as any).isCalc === true);
+    let newPool = allQuestions.filter((q: any) => !usedIds.has((q as any).id));
+    if (mod) newPool = newPool.filter((q: any) => (q as any).module === mod);
+    if (calcOnly) newPool = newPool.filter((q: any) => (q as any).isCalc === true);
     if (newPool.length > 0) {
       const q = newPool[Math.floor(Math.random() * newPool.length)];
       setCurrent(q);
@@ -274,7 +274,7 @@ export default function OITWastewaterQuiz() {
         modules={MODULE_CONFIG}
         selectedModule={selectedModule}
         onModuleChange={handleModuleChange}
-        moduleOverviews={CLASS1_WASTEWATER_OVERVIEWS}
+        moduleOverviews={dbOverviews ?? undefined}
         hasCalcOnly={true}
         calcOnly={calcOnly}
         onCalcOnlyToggle={handleCalcOnlyToggle}

@@ -2,21 +2,28 @@
 // Unified UI via QuizShell component
 import { useState, useCallback, useMemo } from "react";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import {
-  QUESTIONS,
-  getNextQuestion,
-  type Question,
-  type HistoryEntry,
-} from "@/lib/questions";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import QuizShell from "@/components/QuizShell";
-import { OIT_WATER_OVERVIEWS } from "@/lib/moduleOverviews";
 import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 import { trpc } from "@/lib/trpc";
 
 const SESSION_SIZE = 15;
+
+// ── HistoryEntry for OIT quiz (uses questionId, not q) ──────────────────────
+interface HistoryEntry {
+  questionId: number;
+  module: string;
+  difficulty: string;
+  correct: boolean;
+  confidence: number;
+  selectedOption: number;
+  wrongExplanation?: string | null;
+  questionObj?: DBQuestion;
+}
 
 // Module config with colors/icons for QuizShell
 const MODULE_CONFIG = [
@@ -30,8 +37,33 @@ const MODULE_CONFIG = [
   { name: "Wastewater Treatment",     icon: "♻️", bg: "#ECFDF5", color: "#065F46" },
   { name: "Water Quality & Sampling", icon: "🔬", bg: "#FEF9C3", color: "#A16207" },
   { name: "Health & Safety",          icon: "🦺", bg: "#FEE2E2", color: "#B91C1C" },
-  { name: "Water Distribution",         icon: "🚰", bg: "#E0F2FE", color: "#0369A1" },
+  { name: "Water Distribution",       icon: "🚰", bg: "#E0F2FE", color: "#0369A1" },
 ];
+
+// ── Adaptive next-question selection (replaces getNextQuestion from questions.ts) ──
+function getNextQuestion(history: HistoryEntry[], allQuestions: DBQuestion[]): DBQuestion | null {
+  if (history.length === 0) return allQuestions[0] ?? null;
+  const recentHistory = history.slice(-6);
+  const moduleCounts: Record<string, { wrong: number; total: number }> = {};
+  recentHistory.forEach((h) => {
+    if (!moduleCounts[h.module]) moduleCounts[h.module] = { wrong: 0, total: 0 };
+    moduleCounts[h.module].total++;
+    if (!h.correct) moduleCounts[h.module].wrong++;
+  });
+  const weakModules = Object.entries(moduleCounts)
+    .filter(([, v]) => v.wrong / v.total >= 0.5)
+    .map(([k]) => k);
+  const answered = new Set(history.map((h) => h.questionId));
+  const unanswered = allQuestions.filter((q: any) => !answered.has(q.id));
+  if (unanswered.length === 0) return null;
+  if (weakModules.length > 0) {
+    const weakQ = unanswered.filter((q: any) => weakModules.includes(q.module));
+    if (weakQ.length > 0) {
+      return weakQ[Math.floor(Math.random() * weakQ.length)];
+    }
+  }
+  return unanswered[Math.floor(Math.random() * unanswered.length)];
+}
 
 export default function Home() {
   usePageMeta({
@@ -40,9 +72,13 @@ export default function Home() {
     keywords: "water operator exam, OIT exam prep, wastewater certification, operator practice questions",
   });
 
+  // ── Load questions from database ──────────────────────────────────────────
+  const { questions: dbQuestions, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("oit");
+  const allQuestions = dbQuestions as DBQuestion[];
+
   const [history, setHistory]         = useState<HistoryEntry[]>([]);
   const [usedIds, setUsedIds]         = useState<Set<number>>(new Set());
-  const [current, setCurrent]         = useState<Question | null>(() => QUESTIONS[0] ?? null);
+  const [current, setCurrent]         = useState<DBQuestion | null>(null);
   const [selected, setSelected]       = useState<number | null>(null);
   const [confidence, setConfidence]   = useState<number | null>(null);
   const [confirmed, setConfirmed]     = useState(false);
@@ -56,6 +92,13 @@ export default function Home() {
   const [missedIds, setMissedIds]     = useState<number[]>([]);
   const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [initialized, setInitialized] = useState(false);
+
+  // Set the first question once data loads
+  if (!bankLoading && allQuestions.length > 0 && !initialized) {
+    setCurrent(allQuestions[0]);
+    setInitialized(true);
+  }
 
   // Attempt logger — fires silently on every confirmed answer
   const logAttempt = useAttemptLogger("oit", quizMode);
@@ -72,38 +115,37 @@ export default function Home() {
 
   // ── Filtered pool ──────────────────────────────────────────────────────────
   const pool = useMemo(() => {
-    let qs = QUESTIONS.filter(q => !usedIds.has(q.id));
+    let qs = allQuestions.filter((q: any) => !usedIds.has(q.id));
     if (quizMode === "missed" && missedIds.length > 0) {
       const missedSet = new Set(missedIds);
-      qs = QUESTIONS.filter(q => missedSet.has(q.id) && !usedIds.has(q.id));
+      qs = allQuestions.filter((q: any) => missedSet.has(q.id) && !usedIds.has(q.id));
     } else {
-      if (selectedModule) qs = qs.filter(q => q.module === selectedModule);
-      if (calcOnly) qs = qs.filter(q => q.isCalc === true);
+      if (selectedModule) qs = qs.filter((q: any) => q.module === selectedModule);
+      if (calcOnly) qs = qs.filter((q: any) => q.isCalc === true);
     }
     return qs;
-  }, [usedIds, selectedModule, calcOnly, quizMode, missedIds]);
+  }, [allQuestions, usedIds, selectedModule, calcOnly, quizMode, missedIds]);
 
   // ── Confirm answer ─────────────────────────────────────────────────────────
   const handleConfirm = useCallback(() => {
     if (selected === null || confidence === null || !current) return;
-    const isCorrect = selected === current.correct;
+    const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
+    const isCorrect = selected === correctIdx;
     const entry: HistoryEntry = {
       questionId: current.id,
       module: current.module,
-      difficulty: current.difficulty,
+      difficulty: current.difficulty ?? "medium",
       correct: isCorrect,
       confidence,
       selectedOption: selected,
-      wrongExplanation: !isCorrect ? (current.wrongExp?.[selected] ?? null) : null,
+      wrongExplanation: null,
       questionObj: current,
     };
     const updatedHistory = [...history, entry];
     setHistory(updatedHistory);
     setUsedIds(s => new Set([...Array.from(s), current.id]));
     setConfirmed(true);
-    // Log attempt silently for topic tracking and missed questions
-    logAttempt({ topic: current.module, questionId: current.id, correct: isCorrect, difficulty: current.difficulty });
-    // Fire gate after SESSION_SIZE answers for non-unlocked users
+    logAttempt({ topic: current.module, questionId: current.id, correct: isCorrect, difficulty: current.difficulty ?? "medium" });
     const effectiveSize = quizMode === "quick10" ? 10 : SESSION_SIZE;
     if (updatedHistory.length >= effectiveSize && !trialUnlocked) {
       setShowGate(true);
@@ -117,7 +159,7 @@ export default function Home() {
       setShowGate(true);
       return;
     }
-    const nextQ = getNextQuestion(history, pool.length > 0 ? pool : QUESTIONS);
+    const nextQ = getNextQuestion(history, pool.length > 0 ? pool : allQuestions);
     if (!nextQ) {
       setCurrent(null);
       return;
@@ -128,7 +170,7 @@ export default function Home() {
     setConfirmed(false);
     setShowSteps(false);
     setTutorOpen(false);
-  }, [history, pool, trialUnlocked, quizMode]);
+  }, [history, pool, allQuestions, trialUnlocked, quizMode]);
 
   // ── Go back ────────────────────────────────────────────────────────────────
   const goBack = useCallback(() => {
@@ -141,7 +183,7 @@ export default function Home() {
       next.delete(prev.questionId);
       return next;
     });
-    setCurrent((prev.questionObj as Question) ?? null);
+    setCurrent((prev.questionObj as DBQuestion) ?? null);
     setSelected(prev.selectedOption);
     setConfidence(prev.confidence);
     setConfirmed(true);
@@ -159,9 +201,9 @@ export default function Home() {
     setShowSteps(false);
     setTutorOpen(false);
     setShowGate(false);
-    const q = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)];
+    const q = allQuestions[Math.floor(Math.random() * allQuestions.length)];
     setCurrent(q ?? null);
-  }, []);
+  }, [allQuestions]);
 
   // ── Mode change ────────────────────────────────────────────────────────────
   const handleModeChange = useCallback((mode: QuizMode) => {
@@ -178,20 +220,20 @@ export default function Home() {
       setMissedIds(ids);
       if (ids.length > 0) {
         const missedSet = new Set(ids);
-        const pool = QUESTIONS.filter(q => missedSet.has(q.id));
-        const q = pool[Math.floor(Math.random() * pool.length)];
+        const mPool = allQuestions.filter((q: any) => missedSet.has(q.id));
+        const q = mPool[Math.floor(Math.random() * mPool.length)];
         setCurrent(q ?? null);
       } else {
         setCurrent(null);
       }
     } else if (mode === "quick10") {
-      const q = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)];
+      const q = allQuestions[Math.floor(Math.random() * allQuestions.length)];
       setCurrent(q ?? null);
     } else {
-      const q = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)];
+      const q = allQuestions[Math.floor(Math.random() * allQuestions.length)];
       setCurrent(q ?? null);
     }
-  }, [missedData]);
+  }, [missedData, allQuestions]);
 
   // ── Settings apply ──────────────────────────────────────────────────────────
   const handleSettingsApply = (settings: QuizSettings) => {
@@ -200,35 +242,31 @@ export default function Home() {
     setHistory([]);
     setUsedIds(new Set());
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-    const q = QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)];
+    const q = allQuestions[Math.floor(Math.random() * allQuestions.length)];
     setCurrent(q ?? null);
   };
+
   // Auto-confirm + advance when timed mode expires
   const handleTimeUp = useCallback(() => {
     if (confirmed) return;
     if (!current) return;
-    // Determine the correct answer index
-    const correctIdx = (current as any).correct ?? 0;
-    // Use the user's selection if they picked one, otherwise force a wrong answer
+    const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
     const effectiveSelected = selected ?? (correctIdx === 0 ? 1 : 0);
     const isCorrect = effectiveSelected === correctIdx;
-    // Set confidence to neutral (50) for timed-out questions
     const effectiveConfidence = confidence ?? 50;
-    // Push history entry so the question isn't lost
     const entry: HistoryEntry = {
       questionId: current.id,
       module: current.module,
-      difficulty: current.difficulty,
+      difficulty: current.difficulty ?? "medium",
       correct: isCorrect,
       confidence: effectiveConfidence,
       selectedOption: effectiveSelected,
-      wrongExplanation: !isCorrect ? (current.wrongExp?.[effectiveSelected] ?? null) : null,
+      wrongExplanation: null,
       questionObj: current,
     };
     setHistory(h => [...h, entry]);
     setUsedIds(s => new Set([...Array.from(s), current.id]));
-    // Log the attempt to the backend for missed-questions tracking
-    logAttempt({ topic: current.module, questionId: current.id, correct: isCorrect, difficulty: current.difficulty });
+    logAttempt({ topic: current.module, questionId: current.id, correct: isCorrect, difficulty: current.difficulty ?? "medium" });
     setSelected(effectiveSelected);
     setConfidence(effectiveConfidence);
     setConfirmed(true);
@@ -241,8 +279,8 @@ export default function Home() {
     const next = !calcOnly;
     setCalcOnly(next);
     if (next) {
-      let calcPool = QUESTIONS.filter(q => q.isCalc === true && !usedIds.has(q.id));
-      if (selectedModule) calcPool = calcPool.filter(q => q.module === selectedModule);
+      let calcPool = allQuestions.filter((q: any) => q.isCalc === true && !usedIds.has(q.id));
+      if (selectedModule) calcPool = calcPool.filter((q: any) => q.module === selectedModule);
       if (calcPool.length > 0) {
         const q = calcPool[Math.floor(Math.random() * calcPool.length)];
         setCurrent(q);
@@ -252,14 +290,14 @@ export default function Home() {
         setShowSteps(false);
       }
     }
-  }, [calcOnly, usedIds, selectedModule]);
+  }, [calcOnly, allQuestions, usedIds, selectedModule]);
 
   // ── Module change ──────────────────────────────────────────────────────────
   const handleModuleChange = useCallback((mod: string | null) => {
     setSelectedModule(mod);
-    let newPool = QUESTIONS.filter(q => !usedIds.has(q.id));
-    if (mod) newPool = newPool.filter(q => q.module === mod);
-    if (calcOnly) newPool = newPool.filter(q => q.isCalc === true);
+    let newPool = allQuestions.filter((q: any) => !usedIds.has(q.id));
+    if (mod) newPool = newPool.filter((q: any) => q.module === mod);
+    if (calcOnly) newPool = newPool.filter((q: any) => q.isCalc === true);
     if (newPool.length > 0) {
       const q = newPool[Math.floor(Math.random() * newPool.length)];
       setCurrent(q);
@@ -268,7 +306,9 @@ export default function Home() {
       setConfirmed(false);
       setShowSteps(false);
     }
-  }, [usedIds, calcOnly]);
+  }, [allQuestions, usedIds, calcOnly]);
+
+  if (bankLoading || allQuestions.length === 0) return <QuizSkeleton />;
 
   return (
     <>
@@ -314,7 +354,7 @@ export default function Home() {
         timedSeconds={quizSettings.timedMode ? quizSettings.timedSeconds : 0}
         onTimeUp={handleTimeUp}
         mockExamHref="/oit-mock"
-        moduleOverviews={OIT_WATER_OVERVIEWS}
+        moduleOverviews={dbOverviews ?? undefined}
         headerExtra={
           <>
             <QuizModeBar
@@ -329,7 +369,7 @@ export default function Home() {
                 settings={quizSettings}
                 onApply={handleSettingsApply}
                 onClose={() => setSettingsOpen(false)}
-                totalQuestions={QUESTIONS.length}
+                totalQuestions={allQuestions.length}
               />
             )}
           </>

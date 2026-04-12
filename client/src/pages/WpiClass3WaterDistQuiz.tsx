@@ -3,16 +3,14 @@ import { useState, useCallback } from "react";
 import QuizShell from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import { wpiClass3WaterDistQuestions, WPI_CLASS3_WATER_DIST_MODULES } from "@/lib/wpiClass3WaterDistQuestions";
-import { WPI_CLASS3_WATER_DIST_OVERVIEWS } from "@/lib/moduleOverviews";
 import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 import { trpc } from "@/lib/trpc";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
 const HEADER_GRADIENT = "linear-gradient(135deg, #0369A1 0%, #0EA5E9 100%)";
 const SESSION_SIZE = 15;
-type Q = typeof wpiClass3WaterDistQuestions[0];
-type CompatQ = Q & { text: string; correct: number };
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -22,9 +20,6 @@ function shuffle<T>(arr: T[]): T[] {
   }
   return a;
 }
-function toCompat(q: Q): CompatQ {
-  return { ...q, text: q.question, correct: q.correctAnswer };
-}
 
 const MODULE_CONFIG: { name: string; icon: string }[] = [
   { name: "Distribution System Components", icon: "🔧" },
@@ -32,9 +27,13 @@ const MODULE_CONFIG: { name: string; icon: string }[] = [
   { name: "Water Quality Monitoring & Lab", icon: "🧪" },
   { name: "Security, Safety, Admin & Public Interactions", icon: "🛡️" },
 ];
-const MODULES = MODULE_CONFIG.map(m => ({ name: m.name, icon: m.icon }));
+const MODULES = MODULE_CONFIG.map((m: any) => ({ name: m.name, icon: m.icon }));
 
 export default function WpiClass3WaterDistQuiz() {
+  // ── Load questions from database ──────────────────────────────────────────
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class3-water-dist");
+  const allQuestions = dbQuestions as any[];
+
   // ── Quiz Mode & Settings ───────────────────────────────────────────────────
   const [quizMode, setQuizMode] = useState<QuizMode>("standard");
   const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
@@ -54,10 +53,10 @@ export default function WpiClass3WaterDistQuiz() {
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
     if (mode === "missed" && missedIds.length > 0) {
       const missedSet = new Set(missedIds);
-      const mPool = wpiClass3WaterDistQuestions.filter((q: any) => missedSet.has(q.id));
-      setCurrent(mPool.length > 0 ? toCompat(shuffle([...mPool])[0]) : null);
+      const mPool = allQuestions.filter((q: any) => missedSet.has(q.id));
+      setCurrent(mPool.length > 0 ? (shuffle([...mPool])[0]) : null);
     } else {
-      setCurrent(toCompat(shuffle([...wpiClass3WaterDistQuestions])[0]));
+      setCurrent((shuffle([...allQuestions])[0]));
     }
   };
 
@@ -65,14 +64,14 @@ export default function WpiClass3WaterDistQuiz() {
     setQuizSettings(settings);
     setHistory([]);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-    setCurrent(toCompat(shuffle([...wpiClass3WaterDistQuestions])[0]));
+    setCurrent((shuffle([...allQuestions])[0]));
   };
   // Auto-confirm + advance when timed mode expires
   const handleTimeUp = () => {
     if (confirmed) return; // already answered
     if (!current) return;
     // Determine the correct answer index
-    const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
+    const correctIdx = (current as any).correctIndex ?? 0;
     // Use the user's selection if they picked one, otherwise force a wrong answer
     const effectiveSelected = selected ?? (correctIdx === 0 ? 1 : 0);
     const isCorrect = effectiveSelected === correctIdx;
@@ -90,7 +89,7 @@ export default function WpiClass3WaterDistQuiz() {
 
   const [trialUnlocked] = useState(() => isTrialUnlocked());
   const [history, setHistory] = useState<any[]>([]);
-  const [current, setCurrent] = useState<CompatQ | null>(toCompat(shuffle([...wpiClass3WaterDistQuestions])[0]));
+  const [current, setCurrent] = useState<DBQuestion | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
   const [confidence, setConfidence] = useState<number | null>(null);
   const [confirmed, setConfirmed] = useState(false);
@@ -101,17 +100,17 @@ export default function WpiClass3WaterDistQuiz() {
   const [trialDone, setTrialDone] = useState(false);
 
   function getPool() {
-    return wpiClass3WaterDistQuestions
-      .filter(q => !selectedModule || q.module === selectedModule)
-      .filter(q => !calcOnly || q.isCalc);
+    return allQuestions
+      .filter((q: any) => !selectedModule || q.module === selectedModule)
+      .filter((q: any) => !calcOnly || q.isCalc);
   }
   function getNext() {
-    const pool = getPool().filter(q => q.id !== current?.id);
-    return pool.length > 0 ? toCompat(shuffle(pool)[0]) : toCompat(shuffle(getPool())[0]);
+    const pool = getPool().filter((q: any) => q.id !== current?.id);
+    return pool.length > 0 ? (shuffle(pool)[0]) : (shuffle(getPool())[0]);
   }
   function handleNext() {
     if (!current || selected === null) return;
-    const isCorrect = selected === current.correctAnswer;
+    const isCorrect = selected === (current as any).correctIndex;
     const newHistory = [...history, {
       questionId: current.id, module: current.module,
       correct: isCorrect, confidence: confidence ?? 3,
@@ -144,15 +143,15 @@ export default function WpiClass3WaterDistQuiz() {
   function handleCalcOnlyToggle() {
     const next = !calcOnly;
     setCalcOnly(next);
-    const newPool = wpiClass3WaterDistQuestions.filter(q => !next || q.isCalc);
-    setCurrent(newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null);
+    const newPool = allQuestions.filter((q: any) => !next || q.isCalc);
+    setCurrent(newPool.length > 0 ? (shuffle([...newPool])[0]) : null);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false); setHistory([]);
   }
   function handleModuleChange(mod: string | null) {
     setSelectedModule(mod);
-    const newPool = (mod ? wpiClass3WaterDistQuestions.filter(q => q.module === mod) : wpiClass3WaterDistQuestions)
-      .filter(q => !calcOnly || q.isCalc);
-    setCurrent(newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null);
+    const newPool = (mod ? allQuestions.filter((q: any) => q.module === mod) : allQuestions)
+      .filter((q: any) => !calcOnly || q.isCalc);
+    setCurrent(newPool.length > 0 ? (shuffle([...newPool])[0]) : null);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
   }
 
@@ -197,13 +196,13 @@ export default function WpiClass3WaterDistQuiz() {
         onTutorOpen={() => setTutorOpen(true)}
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={() => {
-          setHistory([]); setCurrent(toCompat(shuffle([...wpiClass3WaterDistQuestions])[0]));
+          setHistory([]); setCurrent((shuffle([...allQuestions])[0]));
           setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
         }}
         timedSeconds={quizSettings.timedMode ? quizSettings.timedSeconds : 0}
         onTimeUp={handleTimeUp}
         mockExamHref="/wpi-class3-water-dist-mock"
-        moduleOverviews={WPI_CLASS3_WATER_DIST_OVERVIEWS}
+        moduleOverviews={dbOverviews ?? undefined}
         headerExtra={
           <>
             <QuizModeBar
@@ -218,7 +217,7 @@ export default function WpiClass3WaterDistQuiz() {
                 settings={quizSettings}
                 onApply={handleSettingsApply}
                 onClose={() => setSettingsOpen(false)}
-                totalQuestions={wpiClass3WaterDistQuestions.length}
+                totalQuestions={allQuestions.length}
               />
             )}
           </>

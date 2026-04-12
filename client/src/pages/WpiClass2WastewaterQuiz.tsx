@@ -2,24 +2,16 @@
 import { useState, useCallback, useMemo } from "react";
 import { useSearch } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import {
-  wpiClass2WastewaterQuestions,
-  WPI_CLASS2_WASTEWATER_MODULES,
-  type WpiClass2WastewaterQuestion,
-} from "@/lib/wpiClass2WastewaterQuestions";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import { shuffle } from "@/lib/utils";
-import { WPI_CLASS2_WASTEWATER_OVERVIEWS } from "@/lib/moduleOverviews";
 import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 import { trpc } from "@/lib/trpc";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
-type QCompat = WpiClass2WastewaterQuestion & { q: string };
-function toCompat(q: WpiClass2WastewaterQuestion): QCompat {
-  return { ...q, q: (q as any).question ?? (q as any).text ?? (q as any).q ?? "" };
-}
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Secondary Treatment Processes": { bg: "#CCFBF1", color: "#0F766E" },
@@ -36,17 +28,21 @@ const MODULE_ICONS: Record<string, string> = {
   "Safety, Regulations & Administration": "🦺",
 };
 
-const MODULES: ModuleConfig[] = WPI_CLASS2_WASTEWATER_MODULES.map(m => ({
-  name: m,
-  icon: MODULE_ICONS[m] ?? "📚",
-  bg: MODULE_COLORS[m]?.bg ?? "#F1F5F9",
-  color: MODULE_COLORS[m]?.color ?? "#475569",
-}));
 
 const SESSION_SIZE = 15;
 const HEADER_GRADIENT = "linear-gradient(135deg, #0F766E 0%, #065F46 100%)";
 
 export default function WpiClass2WastewaterQuiz() {
+  // ── Load questions from database ──────────────────────────────────────────
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class2-wastewater");
+  const allQuestions = dbQuestions as any[];
+  const MODULES: ModuleConfig[] = dbModules.map((m: any) => ({
+  name: m,
+  icon: MODULE_ICONS[m] ?? "📚",
+  bg: MODULE_COLORS[m]?.bg ?? "#F1F5F9",
+  color: MODULE_COLORS[m]?.color ?? "#475569",
+  }));
+
   // ── Quiz Mode & Settings ───────────────────────────────────────────────────
   const [quizMode, setQuizMode] = useState<QuizMode>("standard");
   const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
@@ -66,10 +62,10 @@ export default function WpiClass2WastewaterQuiz() {
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
     if (mode === "missed" && missedIds.length > 0) {
       const missedSet = new Set(missedIds);
-      const mPool = wpiClass2WastewaterQuestions.filter((q: any) => missedSet.has(q.id));
-      setCurrent(mPool.length > 0 ? toCompat(shuffle([...mPool])[0]) : null);
+      const mPool = allQuestions.filter((q: any) => missedSet.has(q.id));
+      setCurrent(mPool.length > 0 ? (shuffle([...mPool])[0]) : null);
     } else {
-      setCurrent(toCompat(shuffle([...wpiClass2WastewaterQuestions])[0]));
+      setCurrent((shuffle([...allQuestions])[0]));
     }
   };
 
@@ -77,14 +73,14 @@ export default function WpiClass2WastewaterQuiz() {
     setQuizSettings(settings);
     setHistory([]);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-    setCurrent(toCompat(shuffle([...wpiClass2WastewaterQuestions])[0]));
+    setCurrent((shuffle([...allQuestions])[0]));
   };
   // Auto-confirm + advance when timed mode expires
   const handleTimeUp = () => {
     if (confirmed) return; // already answered
     if (!current) return;
     // Determine the correct answer index
-    const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
+    const correctIdx = (current as any).correctIndex ?? 0;
     // Use the user's selection if they picked one, otherwise force a wrong answer
     const effectiveSelected = selected ?? (correctIdx === 0 ? 1 : 0);
     const isCorrect = effectiveSelected === correctIdx;
@@ -112,10 +108,10 @@ export default function WpiClass2WastewaterQuiz() {
 
   const [history, setHistory] = useState<Array<{
     questionId: number; module: string; correct: boolean;
-    confidence: number; selectedOption: number; questionObj: QCompat;
+    confidence: number; selectedOption: number; questionObj: DBQuestion;
   }>>([]);
-  const [current, setCurrent] = useState<QCompat | null>(
-    () => toCompat(shuffle([...wpiClass2WastewaterQuestions])[0])
+  const [current, setCurrent] = useState<DBQuestion | null>(
+    () => (shuffle([...allQuestions])[0])
   );
   const [selected, setSelected]     = useState<number | null>(null);
   const [confidence, setConfidence] = useState<number | null>(null);
@@ -131,19 +127,19 @@ export default function WpiClass2WastewaterQuiz() {
 
   const pool = useMemo(() => {
     const base = selectedModule
-      ? wpiClass2WastewaterQuestions.filter(q => q.module === selectedModule)
-      : wpiClass2WastewaterQuestions;
-    return base.filter(q => !usedIds.has(q.id) && (!calcOnly || q.isCalc));
+      ? allQuestions.filter((q: any) => q.module === selectedModule)
+      : allQuestions;
+    return base.filter((q: any) => !usedIds.has(q.id) && (!calcOnly || q.isCalc));
   }, [selectedModule, usedIds, calcOnly]);
 
   const getNext = useCallback(() => {
     if (pool.length === 0) return null;
-    return toCompat(shuffle([...pool])[0]);
+    return (shuffle([...pool])[0]);
   }, [pool]);
 
   function handleNext() {
     if (!current || selected === null) return;
-    const isCorrect = selected === (current.correctAnswer ?? (current as any).correct);
+    const isCorrect = selected === ((current as any).correctIndex ?? (current as any).correct);
     const newHistory = [...history, {
       questionId: current.id, module: current.module,
       correct: isCorrect, confidence: confidence ?? 3,
@@ -177,16 +173,16 @@ export default function WpiClass2WastewaterQuiz() {
   function handleCalcOnlyToggle() {
     const next = !calcOnly;
     setCalcOnly(next);
-    const newPool = wpiClass2WastewaterQuestions.filter(q => !next || q.isCalc);
-    setCurrent(newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null);
+    const newPool = allQuestions.filter((q: any) => !next || q.isCalc);
+    setCurrent(newPool.length > 0 ? (shuffle([...newPool])[0]) : null);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false); setHistory([]);
   }
 
   function handleModuleChange(mod: string | null) {
     setSelectedModule(mod);
-    const newPool = (mod ? wpiClass2WastewaterQuestions.filter(q => q.module === mod) : wpiClass2WastewaterQuestions)
-      .filter(q => !calcOnly || q.isCalc);
-    setCurrent(newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null);
+    const newPool = (mod ? allQuestions.filter((q: any) => q.module === mod) : allQuestions)
+      .filter((q: any) => !calcOnly || q.isCalc);
+    setCurrent(newPool.length > 0 ? (shuffle([...newPool])[0]) : null);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
   }
 
@@ -228,13 +224,13 @@ export default function WpiClass2WastewaterQuiz() {
         onTutorOpen={() => setTutorOpen(true)}
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={() => {
-          setHistory([]); setCurrent(toCompat(shuffle([...wpiClass2WastewaterQuestions])[0]));
+          setHistory([]); setCurrent((shuffle([...allQuestions])[0]));
           setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
         }}
         timedSeconds={quizSettings.timedMode ? quizSettings.timedSeconds : 0}
         onTimeUp={handleTimeUp}
         mockExamHref="/wpi-class2-wastewater-mock"
-        moduleOverviews={WPI_CLASS2_WASTEWATER_OVERVIEWS}
+        moduleOverviews={dbOverviews ?? undefined}
         headerExtra={
           <>
             <QuizModeBar
@@ -249,7 +245,7 @@ export default function WpiClass2WastewaterQuiz() {
                 settings={quizSettings}
                 onApply={handleSettingsApply}
                 onClose={() => setSettingsOpen(false)}
-                totalQuestions={wpiClass2WastewaterQuestions.length}
+                totalQuestions={allQuestions.length}
               />
             )}
           </>

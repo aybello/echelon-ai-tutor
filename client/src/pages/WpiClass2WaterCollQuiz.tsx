@@ -3,15 +3,13 @@ import { useState, useCallback } from "react";
 import QuizShell from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import { wpiClass2WastewaterCollQuestions, WPI_CLASS2_WASTEWATER_COLL_MODULES } from "@/lib/wpiClass2WastewaterCollQuestions";
-import { WPI_CLASS2_WASTEWATER_COLL_OVERVIEWS } from "@/lib/moduleOverviews";
 import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 import { trpc } from "@/lib/trpc";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 const HEADER_GRADIENT = "linear-gradient(135deg, #1E3A5F 0%, #2563EB 100%)";
 const SESSION_SIZE = 15;
-type Q = typeof wpiClass2WastewaterCollQuestions[0];
-type CompatQ = Q & { text: string; correct: number };
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -20,9 +18,6 @@ function shuffle<T>(arr: T[]): T[] {
   }
   return a;
 }
-function toCompat(q: Q): CompatQ {
-  return { ...q, text: q.question, correct: q.correctAnswer };
-}
 const MODULE_CONFIG: { name: string; icon: string }[] = [
   { name: "Advanced Collection System Design", icon: "📐" },
   { name: "Intermediate Lift Station Operations", icon: "⚙️" },
@@ -30,8 +25,12 @@ const MODULE_CONFIG: { name: string; icon: string }[] = [
   { name: "Hydraulics & Flow Analysis", icon: "💧" },
   { name: "Regulatory Compliance & Reporting", icon: "📋" },
 ];
-const MODULES = MODULE_CONFIG.map(m => ({ name: m.name, icon: m.icon }));
+const MODULES = MODULE_CONFIG.map((m: any) => ({ name: m.name, icon: m.icon }));
 export default function WpiClass2WaterCollQuiz() {
+  // ── Load questions from database ──────────────────────────────────────────
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class2-wastewater-coll");
+  const allQuestions = dbQuestions as any[];
+
   // ── Quiz Mode & Settings ───────────────────────────────────────────────────
   const [quizMode, setQuizMode] = useState<QuizMode>("standard");
   const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
@@ -51,10 +50,10 @@ export default function WpiClass2WaterCollQuiz() {
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
     if (mode === "missed" && missedIds.length > 0) {
       const missedSet = new Set(missedIds);
-      const mPool = wpiClass2WastewaterCollQuestions.filter((q: any) => missedSet.has(q.id));
-      setCurrent(mPool.length > 0 ? toCompat(shuffle([...mPool])[0]) : null);
+      const mPool = allQuestions.filter((q: any) => missedSet.has(q.id));
+      setCurrent(mPool.length > 0 ? (shuffle([...mPool])[0]) : null);
     } else {
-      setCurrent(toCompat(shuffle([...wpiClass2WastewaterCollQuestions])[0]));
+      setCurrent((shuffle([...allQuestions])[0]));
     }
   };
 
@@ -62,14 +61,14 @@ export default function WpiClass2WaterCollQuiz() {
     setQuizSettings(settings);
     setHistory([]);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-    setCurrent(toCompat(shuffle([...wpiClass2WastewaterCollQuestions])[0]));
+    setCurrent((shuffle([...allQuestions])[0]));
   };
   // Auto-confirm + advance when timed mode expires
   const handleTimeUp = () => {
     if (confirmed) return; // already answered
     if (!current) return;
     // Determine the correct answer index
-    const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
+    const correctIdx = (current as any).correctIndex ?? 0;
     // Use the user's selection if they picked one, otherwise force a wrong answer
     const effectiveSelected = selected ?? (correctIdx === 0 ? 1 : 0);
     const isCorrect = effectiveSelected === correctIdx;
@@ -87,7 +86,7 @@ export default function WpiClass2WaterCollQuiz() {
 
   const [trialUnlocked] = useState(() => isTrialUnlocked());
   const [history, setHistory] = useState<any[]>([]);
-  const [current, setCurrent] = useState<CompatQ | null>(toCompat(shuffle([...wpiClass2WastewaterCollQuestions])[0]));
+  const [current, setCurrent] = useState<DBQuestion | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
   const [confidence, setConfidence] = useState<number | null>(null);
   const [confirmed, setConfirmed] = useState(false);
@@ -97,17 +96,17 @@ export default function WpiClass2WaterCollQuiz() {
   const [calcOnly, setCalcOnly] = useState(false);
   const [trialDone, setTrialDone] = useState(false);
   function getPool() {
-    return wpiClass2WastewaterCollQuestions
-      .filter(q => !selectedModule || q.module === selectedModule)
-      .filter(q => !calcOnly || q.isCalc);
+    return allQuestions
+      .filter((q: any) => !selectedModule || q.module === selectedModule)
+      .filter((q: any) => !calcOnly || q.isCalc);
   }
   function getNext() {
-    const pool = getPool().filter(q => q.id !== current?.id);
-    return pool.length > 0 ? toCompat(shuffle(pool)[0]) : toCompat(shuffle(getPool())[0]);
+    const pool = getPool().filter((q: any) => q.id !== current?.id);
+    return pool.length > 0 ? (shuffle(pool)[0]) : (shuffle(getPool())[0]);
   }
   function handleNext() {
     if (!current || selected === null) return;
-    const isCorrect = selected === current.correctAnswer;
+    const isCorrect = selected === (current as any).correctIndex;
     const newHistory = [...history, {
       questionId: current.id, module: current.module,
       correct: isCorrect, confidence: confidence ?? 3,
@@ -139,15 +138,15 @@ export default function WpiClass2WaterCollQuiz() {
   function handleCalcOnlyToggle() {
     const next = !calcOnly;
     setCalcOnly(next);
-    const newPool = wpiClass2WastewaterCollQuestions.filter(q => !next || q.isCalc);
-    setCurrent(newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null);
+    const newPool = allQuestions.filter((q: any) => !next || q.isCalc);
+    setCurrent(newPool.length > 0 ? (shuffle([...newPool])[0]) : null);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false); setHistory([]);
   }
   function handleModuleChange(mod: string | null) {
     setSelectedModule(mod);
-    const newPool = (mod ? wpiClass2WastewaterCollQuestions.filter(q => q.module === mod) : wpiClass2WastewaterCollQuestions)
-      .filter(q => !calcOnly || q.isCalc);
-    setCurrent(newPool.length > 0 ? toCompat(shuffle([...newPool])[0]) : null);
+    const newPool = (mod ? allQuestions.filter((q: any) => q.module === mod) : allQuestions)
+      .filter((q: any) => !calcOnly || q.isCalc);
+    setCurrent(newPool.length > 0 ? (shuffle([...newPool])[0]) : null);
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
   }
   const correctCount = history.filter(h => h.correct).length;
@@ -189,13 +188,13 @@ export default function WpiClass2WaterCollQuiz() {
         onTutorOpen={() => setTutorOpen(true)}
         onTutorClose={() => setTutorOpen(false)}
         onResetSession={() => {
-          setHistory([]); setCurrent(toCompat(shuffle([...wpiClass2WastewaterCollQuestions])[0]));
+          setHistory([]); setCurrent((shuffle([...allQuestions])[0]));
           setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
         }}
         timedSeconds={quizSettings.timedMode ? quizSettings.timedSeconds : 0}
         onTimeUp={handleTimeUp}
         mockExamHref="/wpi-class2-water-coll-mock"
-        moduleOverviews={WPI_CLASS2_WASTEWATER_COLL_OVERVIEWS}
+        moduleOverviews={dbOverviews ?? undefined}
         headerExtra={
           <>
             <QuizModeBar
@@ -210,7 +209,7 @@ export default function WpiClass2WaterCollQuiz() {
                 settings={quizSettings}
                 onApply={handleSettingsApply}
                 onClose={() => setSettingsOpen(false)}
-                totalQuestions={wpiClass2WastewaterCollQuestions.length}
+                totalQuestions={allQuestions.length}
               />
             )}
           </>

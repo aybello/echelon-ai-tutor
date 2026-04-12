@@ -2,20 +2,20 @@ import { useState, useMemo, useCallback } from "react";
 import QuizShell from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
 import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
-import { CLASS1_WATER_QUESTIONS, CLASS1_WATER_MODULES, type Class1WaterQuestion } from '@/lib/class1WaterQuestions';
-import { CLASS1_WATER_OVERVIEWS } from '@/lib/moduleOverviews';
 import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 import { trpc } from "@/lib/trpc";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 type HistoryEntry = {
-  q: Class1WaterQuestion;
+  q: DBQuestion;
   selected: number;
   confidence: number | null;
   correct: boolean;
-  questionObj?: Class1WaterQuestion;
+  questionObj?: DBQuestion;
 };
 
 // ─── Module Config (icons + colours) ────────────────────────────────────────
@@ -34,6 +34,10 @@ const MODULE_CONFIG = [
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function Class1WaterQuiz() {
+  // ── Load questions from database ──────────────────────────────────────────
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("class1-water");
+  const allQuestions = dbQuestions as any[];
+
   // ── Quiz Mode & Settings ───────────────────────────────────────────────────
   const [quizMode, setQuizMode] = useState<QuizMode>("standard");
   const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
@@ -73,7 +77,7 @@ export default function Class1WaterQuiz() {
     if (confirmed) return; // already answered
     if (!current) return;
     // Determine the correct answer index
-    const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
+    const correctIdx = (current as any).correctIndex ?? 0;
     // Use the user's selection if they picked one, otherwise force a wrong answer
     const effectiveSelected = selected ?? (correctIdx === 0 ? 1 : 0);
     const isCorrect = effectiveSelected === correctIdx;
@@ -90,7 +94,7 @@ export default function Class1WaterQuiz() {
     setTimeout(() => handleNext(), 800);
   };
 
-  const allQuestions = CLASS1_WATER_QUESTIONS as Class1WaterQuestion[];
+  // allQuestions provided by useQuestionBank hook
   const modules = MODULE_CONFIG;
 
   const SESSION_SIZE = 15;
@@ -99,9 +103,9 @@ export default function Class1WaterQuiz() {
 
   const [history, setHistory]       = useState<HistoryEntry[]>([]);
   const [usedIds, setUsedIds]       = useState<Set<number | string>>(new Set());
-  const [current, setCurrent]       = useState<Class1WaterQuestion | null>(() => {
+  const [current, setCurrent]       = useState<DBQuestion | null>(() => {
     // Trial phase: start with medium/hard questions
-    const trialPool = allQuestions.filter(q => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
+    const trialPool = allQuestions.filter((q: any) => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
     const startPool = trialPool.length >= 15 ? trialPool : allQuestions;
     const q = startPool[Math.floor(Math.random() * startPool.length)];
     return q ?? null;
@@ -119,14 +123,14 @@ export default function Class1WaterQuiz() {
 
   // ── Filtered pool ─────────────────────────────────────────────────────────
   const pool = useMemo(() => {
-    let qs = allQuestions.filter(q => !usedIds.has((q as any).id));
-    if (selectedModule) qs = qs.filter(q => (q as any).module === selectedModule);
-    if (calcOnly) qs = qs.filter(q => (q as any).isCalc === true);
+    let qs = allQuestions.filter((q: any) => !usedIds.has((q as any).id));
+    if (selectedModule) qs = qs.filter((q: any) => (q as any).module === selectedModule);
+    if (calcOnly) qs = qs.filter((q: any) => (q as any).isCalc === true);
     return qs;
   }, [usedIds, selectedModule, calcOnly]);
 
   // ── Get next question ─────────────────────────────────────────────────────
-  const getNext = useCallback((currentPool: Class1WaterQuestion[]): Class1WaterQuestion | null => {
+  const getNext = useCallback((currentPool: DBQuestion[]): DBQuestion | null => {
     if (currentPool.length === 0) return null;
     return currentPool[Math.floor(Math.random() * currentPool.length)];
   }, []);
@@ -134,7 +138,7 @@ export default function Class1WaterQuiz() {
   // ── Confirm answer ────────────────────────────────────────────────────────
   const handleConfirm = useCallback(() => {
     if (selected === null || !current) return;
-    const correctIdx = (current as any).correctAnswer ?? (current as any).correct ?? (current as any).correctIndex ?? 0;
+    const correctIdx = (current as any).correctIndex ?? 0;
     const isCorrect = selected === correctIdx;
     setHistory(h => [...h, { q: current, selected, confidence, correct: isCorrect, questionObj: current }]);
     logAttemptFn({ topic: (current as any).module ?? (current as any).topic ?? "General", questionId: (current as any).id, correct: isCorrect, difficulty: (current as any).difficulty });
@@ -153,7 +157,7 @@ export default function Class1WaterQuiz() {
     // For trial phase, prefer medium/hard questions
     let nextPool = pool;
     if (!trialUnlocked && history.length < SESSION_SIZE) {
-      const hardPool = pool.filter(q => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
+      const hardPool = pool.filter((q: any) => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
       if (hardPool.length > 0) nextPool = hardPool;
     }
     const next = getNext(nextPool);
@@ -203,8 +207,8 @@ export default function Class1WaterQuiz() {
     setCalcOnly(next);
     // Immediately load a calc question when toggling on
     if (next) {
-      let calcPool = allQuestions.filter(q => (q as any).isCalc === true && !usedIds.has((q as any).id));
-      if (selectedModule) calcPool = calcPool.filter(q => (q as any).module === selectedModule);
+      let calcPool = allQuestions.filter((q: any) => (q as any).isCalc === true && !usedIds.has((q as any).id));
+      if (selectedModule) calcPool = calcPool.filter((q: any) => (q as any).module === selectedModule);
       if (calcPool.length > 0) {
         const q = calcPool[Math.floor(Math.random() * calcPool.length)];
         setCurrent(q);
@@ -221,9 +225,9 @@ export default function Class1WaterQuiz() {
   const handleModuleChange = useCallback((mod: string | null) => {
     setSelectedModule(mod);
     // Immediately load a question from the new module
-    let newPool = allQuestions.filter(q => !usedIds.has((q as any).id));
-    if (mod) newPool = newPool.filter(q => (q as any).module === mod);
-    if (calcOnly) newPool = newPool.filter(q => (q as any).isCalc === true);
+    let newPool = allQuestions.filter((q: any) => !usedIds.has((q as any).id));
+    if (mod) newPool = newPool.filter((q: any) => (q as any).module === mod);
+    if (calcOnly) newPool = newPool.filter((q: any) => (q as any).isCalc === true);
     if (newPool.length > 0) {
       const q = newPool[Math.floor(Math.random() * newPool.length)];
       setCurrent(q);
@@ -281,7 +285,7 @@ export default function Class1WaterQuiz() {
         timedSeconds={quizSettings.timedMode ? quizSettings.timedSeconds : 0}
         onTimeUp={handleTimeUp}
         mockExamHref="/class1-water-mock"
-        moduleOverviews={CLASS1_WATER_OVERVIEWS}
+        moduleOverviews={dbOverviews ?? undefined}
         headerExtra={
           <>
             <QuizModeBar
