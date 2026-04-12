@@ -239,10 +239,11 @@ export default function OITWastewaterMockExam() {
 
               {/* Province selector */}
               <div style={{ marginBottom: 24 }}>
-                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 8 }}>
+                <label htmlFor="oit-ww-province-select" style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 8 }}>
                   Your Province / Territory <span style={{ fontWeight: 400, color: "#9CA3AF" }}>(optional — for tailored tips)</span>
                 </label>
                 <select
+                  id="oit-ww-province-select"
                   value={province}
                   onChange={e => setProvince(e.target.value)}
                   style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "1.5px solid #E2E8F0", fontSize: 14, color: "#0F172A", background: "#F8FAFC", fontFamily: "inherit" }}

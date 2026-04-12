@@ -97,13 +97,13 @@ function ContactSection() {
               <div style={{ fontSize: 28, marginBottom: 12 }}>📞</div>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", letterSpacing: "0.06em", marginBottom: 6 }}>PHONE</div>
               <a href="tel:+12897881885" style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", textDecoration: "none" }}>289-788-1885</a>
-              <p style={{ fontSize: 13, color: "#94A3B8", margin: "6px 0 0" }}>Mon–Fri, 9am–5pm ET</p>
+              <p style={{ fontSize: 13, color: "#64748B", margin: "6px 0 0" }}>Mon–Fri, 9am–5pm ET</p>
             </div>
             <div style={{ background: "#FFFFFF", borderRadius: 16, padding: "24px", border: "1px solid #E2E8F0" }}>
               <div style={{ fontSize: 28, marginBottom: 12 }}>✉️</div>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", letterSpacing: "0.06em", marginBottom: 6 }}>EMAIL</div>
               <a href="mailto:abello@echeloninstitute.ca" style={{ fontSize: 15, fontWeight: 700, color: "#1D4ED8", textDecoration: "none", wordBreak: "break-all" }}>abello@echeloninstitute.ca</a>
-              <p style={{ fontSize: 13, color: "#94A3B8", margin: "6px 0 0" }}>We reply within 1 business day</p>
+              <p style={{ fontSize: 13, color: "#64748B", margin: "6px 0 0" }}>We reply within 1 business day</p>
             </div>
             <div style={{ background: "linear-gradient(135deg, #1D4ED8, #0E7490)", borderRadius: 16, padding: "24px", color: "#fff" }}>
               <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.06em", marginBottom: 8, opacity: 0.8 }}>QUICK LINKS</div>
@@ -161,8 +161,9 @@ function ContactSection() {
                   </div>
                 </div>
                 <div>
-                  <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 6, letterSpacing: "0.05em" }}>SUBJECT</label>
+                  <label htmlFor="contact-subject-select" style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 6, letterSpacing: "0.05em" }}>SUBJECT</label>
                   <select
+                    id="contact-subject-select"
                     value={form.subject}
                     onChange={e => handleChange("subject", e.target.value)}
                     onBlur={() => handleBlur("subject")}
@@ -914,7 +915,7 @@ function CourseCard({ course }: { course: CourseType }) {
         }}>
           {course.code}
         </span>
-        <span style={{ color: "#94A3B8", fontSize: 11 }}>{course.duration}</span>
+        <span style={{ color: "#64748B", fontSize: 11 }}>{course.duration}</span>
       </div>
       <h3 style={{ fontSize: 18, fontWeight: 700, color: "#0F172A", margin: "0 0 2px 0", fontFamily: "Sora, sans-serif" }}>
         {course.title}
@@ -925,7 +926,7 @@ function CourseCard({ course }: { course: CourseType }) {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
         <div>
           <span style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>CA${(course as any).price}</span>
-          <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 4 }}>CAD</span>
+          <span style={{ fontSize: 12, color: "#64748B", marginLeft: 4 }}>CAD</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#F8FAFC", borderRadius: 8, padding: "6px 12px" }}>
           <span style={{ fontSize: 11, color: "#64748B" }}>📝 {course.questions} questions</span>
@@ -1374,7 +1375,7 @@ export default function Landing() {
 
         {/* Study tools 2-col grid */}
         <div style={{ padding: "8px 12px" }}>
-          <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", textTransform: "uppercase", padding: "4px 4px 6px" }}>Study Tools</div>
+          <div style={{ fontSize: 10, fontWeight: 700, color: "#64748B", letterSpacing: "0.1em", textTransform: "uppercase", padding: "4px 4px 6px" }}>Study Tools</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
             {[
               { label: "📝 OIT Practice Quiz", href: "/quiz" },
@@ -1426,7 +1427,7 @@ export default function Landing() {
               onClick={() => setMobileNavOpen(false)}
               style={{
                 fontSize: 12,
-                color: "#94A3B8",
+                color: "#64748B",
                 fontWeight: 500,
                 textDecoration: "none",
                 cursor: "pointer",
@@ -1903,7 +1904,7 @@ export default function Landing() {
               <p style={{ fontSize: 14, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, margin: 0 }}>
                 The AI Tutor is trained on Canadian regulatory content and can explain why a CT value matters, how to calculate a chlorine dose for a specific flow rate, or what provincial regulations require for turbidity monitoring.
               </p>
-              <div style={{ marginTop: 20, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.08)", fontSize: 12, color: "rgba(255,255,255,0.4)" }}>
+              <div style={{ marginTop: 20, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.08)", fontSize: 12, color: "rgba(255,255,255,0.65)" }}>
                 Curriculum based on O. Reg. 170/03 · 128/04 · 129/04 · OWWCO · EOCP
               </div>
             </div>
@@ -2023,7 +2024,7 @@ export default function Landing() {
                 <div style={{ fontSize: 28, marginBottom: 10 }}>{p.flag}</div>
                 <h3 style={{ fontSize: 16, fontWeight: 800, color: "#FFFFFF", margin: "0 0 4px 0" }}>{p.province}</h3>
                 <div style={{ fontSize: 12, fontWeight: 600, color: p.color, marginBottom: 12 }}>{p.certBody} — WPI Exams</div>
-                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", marginBottom: 16 }}>{p.operators}</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.65)", marginBottom: 16 }}>{p.operators}</div>
                 <a href="/wpi-class1-water" style={{ textDecoration: "none" }}>
                   <button
                     style={{
@@ -2211,7 +2212,7 @@ export default function Landing() {
           />
           <span style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF" }}>Echelon Institute</span>
         </div>
-        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.4)", margin: "0 0 16px 0" }}>
+        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.65)", margin: "0 0 16px 0" }}>
           Canada's AI-powered exam prep platform for water and wastewater operators.
         </p>
         <div className="landing-footer-links" style={{ display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>

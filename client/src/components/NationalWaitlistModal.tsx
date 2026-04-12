@@ -147,10 +147,11 @@ export default function NationalWaitlistModal({ onClose, defaultProvince }: Nati
             <form onSubmit={handleSubmit} noValidate>
               {/* Province selector */}
               <div style={{ marginBottom: 12, textAlign: "left" }}>
-                <label style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)", display: "block", marginBottom: 6 }}>
+                <label htmlFor="waitlist-province-select" style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)", display: "block", marginBottom: 6 }}>
                   Province / Territory
                 </label>
                 <select
+                  id="waitlist-province-select"
                   value={province}
                   onChange={e => { setProvince(e.target.value); if (provinceError) setProvinceError(""); }}
                   style={{
@@ -179,10 +180,11 @@ export default function NationalWaitlistModal({ onClose, defaultProvince }: Nati
 
               {/* Email input */}
               <div style={{ marginBottom: 16, textAlign: "left" }}>
-                <label style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)", display: "block", marginBottom: 6 }}>
+                <label htmlFor="waitlist-email-input" style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)", display: "block", marginBottom: 6 }}>
                   Email Address
                 </label>
                 <input
+                  id="waitlist-email-input"
                   type="email"
                   placeholder="your@email.com"
                   value={email}

@@ -62,8 +62,8 @@ function ChlorineCalc() {
             style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
         </div>
         <div>
-          <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Chemical Form</label>
-          <select value={form} onChange={e => setForm(e.target.value as typeof form)}
+          <label htmlFor="chem-form-select" style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Chemical Form</label>
+          <select id="chem-form-select" value={form} onChange={e => setForm(e.target.value as typeof form)}
             style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 13, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", background: "#fff", boxSizing: "border-box" }}>
             <option value="gas">Chlorine Gas (99.5% Cl₂)</option>
             <option value="liquid">Sodium Hypochlorite (12.5%)</option>
@@ -298,8 +298,8 @@ function FluorideCalc() {
             style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
         </div>
         <div>
-          <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Fluoride Chemical</label>
-          <select value={chemical} onChange={e => setChemical(e.target.value as typeof chemical)}
+          <label htmlFor="fluoride-chem-select" style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Fluoride Chemical</label>
+          <select id="fluoride-chem-select" value={chemical} onChange={e => setChemical(e.target.value as typeof chemical)}
             style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 12, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", background: "#fff", boxSizing: "border-box" }}>
             <option value="hfs">Hydrofluosilicic Acid (23% F)</option>
             <option value="naf">Sodium Fluoride (45% F)</option>

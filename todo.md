@@ -472,3 +472,22 @@
 - [x] Bug 1: Add scroll-to-top on Next Question in QuizShell (mobile UX)
 - [x] Bug 2: Add all 27 exam type labels to Admin page with color coding
 - [x] Bug 3: Investigated — false alarm, logic is correct (state is in memory, not re-read from localStorage mid-session)
+
+## Audit Bug Fix — Preview Page (Apr 11, 2026)
+- [ ] Fix /preview page — add branded Echelon styling instead of raw text status
+
+## Lighthouse Audit Fixes (Apr 12, 2026)
+- [ ] Add rel=canonical tag to index.html
+- [ ] Add JSON-LD structured data (Organization + Course schema)
+- [ ] Add <main> landmark element to App.tsx layout
+- [ ] Fix low-contrast text (accessibility)
+- [ ] Add <label> elements to all <select> inputs
+- [ ] Implement React.lazy code splitting for all quiz/mock/flashcard pages
+
+## Lighthouse Audit Fixes (Apr 11, 2026)
+- [x] Canonical tag — already present in index.html
+- [x] Code splitting — React.lazy for all 130+ pages in App.tsx
+- [x] Add <main> landmark to App.tsx
+- [x] Fix low-contrast text: #94A3B8 → #64748B on white, rgba(0.4) → rgba(0.65) on dark
+- [x] Add htmlFor/id to all select elements (Landing, OITWastewaterMockExam, ChemCalc, NationalWaitlistModal)
+- [x] JSON-LD structured data — already present in index.html
