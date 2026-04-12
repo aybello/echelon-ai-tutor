@@ -467,3 +467,8 @@
 ## Mobile Scroll Bounce Bug (Apr 11, 2026)
 - [x] Fix scroll bounce on mobile — increased bottom padding to 120px + overscrollBehavior:none on quiz container
 - [x] Fix blank white page on mobile Chrome after question 15 — all 25 quiz pages now pass gate as prop to QuizShell instead of early return, keeping page mounted
+
+## Audit Bug Fixes Batch 5 (Apr 11, 2026)
+- [x] Bug 1: Add scroll-to-top on Next Question in QuizShell (mobile UX)
+- [x] Bug 2: Add all 27 exam type labels to Admin page with color coding
+- [x] Bug 3: Investigated — false alarm, logic is correct (state is in memory, not re-read from localStorage mid-session)

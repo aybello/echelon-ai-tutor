@@ -10,15 +10,74 @@ import { Link } from "wouter";
 type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue" | "health";
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
-  oit: "OIT",
-  class1: "Class 1",
+  // OIT
+  oit: "OIT Water",
+  "oit-ww": "OIT Wastewater",
+  // Ontario Class 1–4 Water
+  "class1-water": "Class 1 Water",
+  "class2-water": "Class 2 Water",
+  "class3-water": "Class 3 Water",
+  "class4-water": "Class 4 Water",
+  // Ontario Class 1–4 Wastewater
+  "class1-ww": "Class 1 Wastewater",
+  "class2-ww": "Class 2 Wastewater",
+  "class3-ww": "Class 3 Wastewater",
+  "class4-ww": "Class 4 Wastewater",
+  // Legacy
+  class1: "Class 1 (Legacy)",
+  // WQA
   wqa: "WQA",
+  // WPI Water Treatment
+  "wpi-class1-water": "WPI Class I Water",
+  "wpi-class2-water": "WPI Class II Water",
+  "wpi-class3-water": "WPI Class III Water",
+  "wpi-class4-water": "WPI Class IV Water",
+  // WPI Wastewater
+  "wpi-class1-wastewater": "WPI Class I Wastewater",
+  "wpi-class2-wastewater": "WPI Class II Wastewater",
+  "wpi-class3-wastewater": "WPI Class III Wastewater",
+  "wpi-class4-wastewater": "WPI Class IV Wastewater",
+  // WPI Distribution
+  "wpi-class1-water-dist": "WPI Class I Distribution",
+  "wpi-class2-water-dist": "WPI Class II Distribution",
+  "wpi-class3-water-dist": "WPI Class III Distribution",
+  "wpi-class4-water-dist": "WPI Class IV Distribution",
+  // WPI Collection
+  "wpi-class1-water-coll": "WPI Class I Collection",
+  "wpi-class2-water-coll": "WPI Class II Collection",
+  "wpi-class3-water-coll": "WPI Class III Collection",
+  "wpi-class4-water-coll": "WPI Class IV Collection",
 };
 
 const EXAM_TYPE_COLORS: Record<string, { bg: string; color: string }> = {
   oit: { bg: "#DBEAFE", color: "#1D4ED8" },
-  class1: { bg: "#DCFCE7", color: "#15803D" },
+  "oit-ww": { bg: "#CCFBF1", color: "#0F766E" },
+  "class1-water": { bg: "#DCFCE7", color: "#15803D" },
+  "class2-water": { bg: "#DCFCE7", color: "#15803D" },
+  "class3-water": { bg: "#DCFCE7", color: "#15803D" },
+  "class4-water": { bg: "#DCFCE7", color: "#15803D" },
+  "class1-ww": { bg: "#CCFBF1", color: "#0F766E" },
+  "class2-ww": { bg: "#CCFBF1", color: "#0F766E" },
+  "class3-ww": { bg: "#CCFBF1", color: "#0F766E" },
+  "class4-ww": { bg: "#CCFBF1", color: "#0F766E" },
+  class1: { bg: "#F1F5F9", color: "#475569" },
   wqa: { bg: "#EDE9FE", color: "#6D28D9" },
+  "wpi-class1-water": { bg: "#FEF9C3", color: "#A16207" },
+  "wpi-class2-water": { bg: "#FEF9C3", color: "#A16207" },
+  "wpi-class3-water": { bg: "#FEF9C3", color: "#A16207" },
+  "wpi-class4-water": { bg: "#FEF9C3", color: "#A16207" },
+  "wpi-class1-wastewater": { bg: "#FFEDD5", color: "#C2410C" },
+  "wpi-class2-wastewater": { bg: "#FFEDD5", color: "#C2410C" },
+  "wpi-class3-wastewater": { bg: "#FFEDD5", color: "#C2410C" },
+  "wpi-class4-wastewater": { bg: "#FFEDD5", color: "#C2410C" },
+  "wpi-class1-water-dist": { bg: "#E0F2FE", color: "#0369A1" },
+  "wpi-class2-water-dist": { bg: "#E0F2FE", color: "#0369A1" },
+  "wpi-class3-water-dist": { bg: "#E0F2FE", color: "#0369A1" },
+  "wpi-class4-water-dist": { bg: "#E0F2FE", color: "#0369A1" },
+  "wpi-class1-water-coll": { bg: "#FEE2E2", color: "#B91C1C" },
+  "wpi-class2-water-coll": { bg: "#FEE2E2", color: "#B91C1C" },
+  "wpi-class3-water-coll": { bg: "#FEE2E2", color: "#B91C1C" },
+  "wpi-class4-water-coll": { bg: "#FEE2E2", color: "#B91C1C" },
 };
 
 const REPORT_TYPE_LABELS: Record<string, string> = {

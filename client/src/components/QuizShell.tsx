@@ -743,7 +743,7 @@ export default function QuizShell({
             ) : (
               <>
                 <button
-                  onClick={onNext}
+                  onClick={() => { window.scrollTo({ top: 0, behavior: 'instant' }); onNext(); }}
                   style={{
                     flex: 1,
                     padding: "11px 20px",
