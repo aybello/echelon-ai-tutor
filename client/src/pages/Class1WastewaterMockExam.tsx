@@ -1,24 +1,8 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { CLASS1_WASTEWATER_QUESTIONS as RAW } from "@/lib/class1WastewaterQuestions";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
-const POOL: ExamQuestion[] = (RAW as any[]).map(q => ({
-  id: q.id, module: q.module,
-  question: q.question ?? q.text ?? "",
-  options: q.options,
-  correct: q.correct ?? q.correctAnswer ?? 0,
-  explanation: q.explanation,
-}));
 
-const MODULE_TARGETS: Record<string, number> = {
-  "Wastewater Characteristics & Preliminary Treatment": 14,
-  "Primary Treatment":      12,
-  "Secondary Treatment":    15,
-  "Biological Nutrient Removal": 12,
-  "Tertiary Treatment & Filtration": 10,
-  "Disinfection":           10,
-  "Solids Handling & Biosolids": 13,
-  "Regulations, Safety & Operations": 14,
-};
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Wastewater Characteristics & Preliminary Treatment": { bg: "#DBEAFE", color: "#1D4ED8" },
@@ -32,6 +16,18 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function Class1WastewaterMockExam() {
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class1-wastewater");
+  
+  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
+    id: q.id, module: q.module,
+    question: q.question ?? q.text ?? "",
+    options: q.options,
+    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
+    explanation: q.explanation,
+  }));
+
+  if (bankLoading) return <QuizSkeleton />;
+
   return (
     <MockExamShell
       title="Class 1 Wastewater Treatment Mock Exam"
@@ -41,7 +37,7 @@ export default function Class1WastewaterMockExam() {
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
-      moduleTargets={MODULE_TARGETS}
+      moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
       questionPool={POOL}
       productKey="class1-ww"

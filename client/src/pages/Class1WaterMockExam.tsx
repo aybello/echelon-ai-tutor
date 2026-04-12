@@ -2,13 +2,10 @@
 // 100 questions · 2-hour timer · 70% pass threshold · 8-module breakdown
 // Mirrors OITMockExam.tsx structure
 
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Link } from "wouter";
-import {
-  CLASS1_WATER_QUESTIONS,
-  CLASS1_WATER_MODULE_TARGETS,
-  type Class1WaterQuestion,
-} from "@/lib/class1WaterQuestions";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import PurchaseGate from "@/components/PurchaseGate";
@@ -54,15 +51,15 @@ const EXAM_MODULE_TARGETS: Record<string, number> = {
   "Water Distribution":          8,
 };
 
-function selectExamQuestions(): Class1WaterQuestion[] {
-  const pool = [...CLASS1_WATER_QUESTIONS].sort(() => Math.random() - 0.5);
-  const selected: Class1WaterQuestion[] = [];
+function selectExamQuestions(questionPool: DBQuestion[]): DBQuestion[] {
+  const pool = [...questionPool].sort(() => Math.random() - 0.5);
+  const selected: DBQuestion[] = [];
   for (const [mod, target] of Object.entries(EXAM_MODULE_TARGETS)) {
-    const modQs = pool.filter(q => q.module === mod).slice(0, target);
+    const modQs = pool.filter((q: any) => q.module === mod).slice(0, target);
     selected.push(...modQs);
   }
   // Top up to 100 if any module was short
-  const remaining = pool.filter(q => !selected.includes(q));
+  const remaining = pool.filter((q: any) => !selected.includes(q));
   while (selected.length < EXAM_QUESTIONS && remaining.length > 0) {
     selected.push(remaining.shift()!);
   }
@@ -100,6 +97,11 @@ const PROVINCE_OPTIONS = [
 ];
 
 export default function Class1WaterMockExam() {
+
+  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class1-water");
+  
+  if (bankLoading) return <QuizSkeleton />;
+
   usePageMeta({
     title: "Class 1 Water Treatment Timed Mock Exam",
     description: "100-question timed mock exam for the Ontario Class 1 Water Treatment operator certification. 2-hour timer, 70% pass threshold, and full module breakdown on results.",
@@ -108,7 +110,7 @@ export default function Class1WaterMockExam() {
   });
 
   const [examState, setExamState]   = useState<ExamState>("intro");
-  const [questions, setQuestions]   = useState<Class1WaterQuestion[]>([]);
+  const [questions, setQuestions]   = useState<DBQuestion[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers]       = useState<ExamAnswer[]>([]);
   const [timeLeft, setTimeLeft]     = useState(EXAM_DURATION);
@@ -125,7 +127,7 @@ export default function Class1WaterMockExam() {
 
   const startExam = useCallback(() => {
     localStorage.setItem("echelon_province", selectedProvince);
-    const qs = selectExamQuestions();
+    const qs = selectExamQuestions(allQuestions);
     setQuestions(qs);
     setAnswers(qs.map((_, i) => ({ questionIndex: i, selected: null })));
     setCurrentIdx(0);
@@ -171,12 +173,12 @@ export default function Class1WaterMockExam() {
 
   const results = useMemo(() => {
     if (examState !== "results" || questions.length === 0) return null;
-    const correct = answers.filter((a, i) => a.selected === questions[i]?.correct).length;
+    const correct = answers.filter((a, i) => a.selected === (questions[i] as any)?.correctIndex).length;
     const score   = correct / EXAM_QUESTIONS;
     const passed  = score >= PASS_THRESHOLD;
     const moduleBreakdown = Object.keys(EXAM_MODULE_TARGETS).map(mod => {
       const modQs     = questions.map((q, i) => ({ q, i })).filter(({ q }) => q.module === mod);
-      const modCorrect = modQs.filter(({ i }) => answers[i]?.selected === questions[i]?.correct).length;
+      const modCorrect = modQs.filter(({ i }) => answers[i]?.selected === (questions[i] as any)?.correctIndex).length;
       return { module: mod, correct: modCorrect, total: modQs.length, pct: modQs.length > 0 ? modCorrect / modQs.length : 0 };
     }).filter(m => m.total > 0).sort((a, b) => a.pct - b.pct);
     return { correct, score, passed, moduleBreakdown };
@@ -350,19 +352,19 @@ export default function Class1WaterMockExam() {
             })}
           </div>
 
-          {/* Question review */}
+          {/* DBQuestion review */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "20px 24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
             <button
               onClick={() => setShowReview(v => !v)}
               style={{ width: "100%", padding: "12px", borderRadius: 10, border: "1.5px solid #E2E8F0", background: "transparent", color: "#0F172A", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
             >
-              {showReview ? "▲ Hide Question Review" : "▼ Review All Questions"}
+              {showReview ? "▲ Hide DBQuestion Review" : "▼ Review All Questions"}
             </button>
             {showReview && (
               <div style={{ marginTop: 16 }}>
                 {questions.map((q, i) => {
                   const a         = answers[i];
-                  const isCorrect = a?.selected === q.correct;
+                  const isCorrect = a?.selected === (q as any).correctIndex;
                   const wasSkipped = a?.selected === null;
                   return (
                     <div key={q.id} style={{ marginBottom: 16, padding: "14px 16px", borderRadius: 12, background: wasSkipped ? "#FFF7ED" : isCorrect ? "#F0FDF4" : "#FFF1F2", border: `1px solid ${wasSkipped ? "#FED7AA" : isCorrect ? "#BBF7D0" : "#FECDD3"}` }}>
@@ -373,13 +375,13 @@ export default function Class1WaterMockExam() {
                       {!wasSkipped && !isCorrect && (
                         <div style={{ fontSize: 12, color: "#DC2626", marginBottom: 4 }}>Your answer: {q.options[a.selected!]}</div>
                       )}
-                      <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: 4 }}>✓ {q.options[q.correct]}</div>
+                      <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: 4 }}>✓ {q.options[(q as any).correctIndex]}</div>
                       <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line" }}>{q.explanation}</div>
                       {(!isCorrect || wasSkipped) && (
                         <ReviewAITutor
                           questionText={q.question}
                           options={q.options}
-                          correctIndex={q.correct}
+                          correctIndex={(q as any).correctIndex}
                           userAnswerIndex={wasSkipped ? null : (a.selected ?? null)}
                           explanation={q.explanation}
                           module={q.module}
@@ -448,15 +450,15 @@ export default function Class1WaterMockExam() {
       </div>
 
       <div style={{ maxWidth: 800, margin: "0 auto", padding: "24px 20px 80px", display: "grid", gridTemplateColumns: "1fr 240px", gap: 20, alignItems: "start" }}>
-        {/* Question card */}
+        {/* DBQuestion card */}
         <div>
           <div style={{ background: "#fff", borderRadius: 16, padding: "28px 28px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", marginBottom: 16 }}>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
               <span style={{ padding: "3px 10px", borderRadius: 100, background: MODULE_COLORS[currentQ.module]?.bg ?? "#E0F2FE", color: MODULE_COLORS[currentQ.module]?.color ?? "#0369A1", fontSize: 10, fontWeight: 700 }}>
                 {currentQ.module}
               </span>
-              <span style={{ padding: "3px 10px", borderRadius: 100, background: currentQ.difficulty === "hard" ? "#FEE2E2" : currentQ.difficulty === "medium" ? "#FEF9C3" : "#DCFCE7", color: currentQ.difficulty === "hard" ? "#B91C1C" : currentQ.difficulty === "medium" ? "#A16207" : "#15803D", fontSize: 10, fontWeight: 700 }}>
-                {currentQ.difficulty}
+              <span style={{ padding: "3px 10px", borderRadius: 100, background: (currentQ.difficulty ?? 'medium') === "hard" ? "#FEE2E2" : (currentQ.difficulty ?? 'medium') === "medium" ? "#FEF9C3" : "#DCFCE7", color: (currentQ.difficulty ?? 'medium') === "hard" ? "#B91C1C" : (currentQ.difficulty ?? 'medium') === "medium" ? "#A16207" : "#15803D", fontSize: 10, fontWeight: 700 }}>
+                {(currentQ.difficulty ?? 'medium')}
               </span>
               {isFlagged && <span style={{ padding: "3px 10px", borderRadius: 100, background: "#FEF9C3", color: "#A16207", fontSize: 10, fontWeight: 700 }}>🚩 Flagged</span>}
             </div>
@@ -524,7 +526,7 @@ export default function Class1WaterMockExam() {
           </div>
         </div>
 
-        {/* Question navigator */}
+        {/* DBQuestion navigator */}
         <div style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 4 }}>

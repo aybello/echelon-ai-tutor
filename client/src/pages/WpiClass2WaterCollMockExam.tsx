@@ -1,20 +1,7 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { wpiClass2WastewaterCollQuestions as RAW } from "@/lib/wpiClass2WastewaterCollQuestions";
-const POOL: ExamQuestion[] = (RAW as any[]).map(q => ({
-  id: q.id, module: q.module,
-  question: q.question ?? q.text ?? "",
-  options: q.options,
-  correct: q.correctAnswer ?? q.correct ?? 0,
-  explanation: q.explanation,
-}));
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 // WPI Class II Wastewater Collection exam blueprint: 100 questions
-const MODULE_TARGETS: Record<string, number> = {
-  "Advanced Collection System Design":   25,
-  "Intermediate Lift Station Operations": 25,
-  "System Maintenance & Rehabilitation": 20,
-  "Hydraulics & Flow Analysis":          20,
-  "Regulatory Compliance & Reporting":   10,
-};
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Advanced Collection System Design":   { bg: "#DBEAFE", color: "#1D4ED8" },
   "Intermediate Lift Station Operations": { bg: "#EDE9FE", color: "#6D28D9" },
@@ -23,6 +10,18 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Regulatory Compliance & Reporting":   { bg: "#FFEDD5", color: "#C2410C" },
 };
 export default function WpiClass2WaterCollMockExam() {
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("wpi-class2-wastewater-coll");
+  
+  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
+    id: q.id, module: q.module,
+    question: q.question ?? q.text ?? "",
+    options: q.options,
+    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
+    explanation: q.explanation,
+  }));
+
+  if (bankLoading) return <QuizSkeleton />;
+
   return (
     <MockExamShell
       title="WPI Class II Wastewater Collection Mock Exam"
@@ -32,7 +31,7 @@ export default function WpiClass2WaterCollMockExam() {
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
-      moduleTargets={MODULE_TARGETS}
+      moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
       questionPool={POOL}
       productKey="wpi-class2-water-coll"

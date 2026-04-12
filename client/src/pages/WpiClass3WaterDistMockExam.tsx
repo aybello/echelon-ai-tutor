@@ -1,21 +1,9 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { wpiClass3WaterDistQuestions as RAW } from "@/lib/wpiClass3WaterDistQuestions";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
-const POOL: ExamQuestion[] = (RAW as any[]).map(q => ({
-  id: q.id, module: q.module,
-  question: q.question ?? q.text ?? "",
-  options: q.options,
-  correct: q.correctAnswer ?? q.correct ?? 0,
-  explanation: q.explanation,
-}));
 
 // WPI Class III Water Distribution exam blueprint: 100 questions
-const MODULE_TARGETS: Record<string, number> = {
-  "Distribution System Components":                23,
-  "Equipment Installation, O&M & Repair":          25,
-  "Water Quality Monitoring & Lab":                25,
-  "Security, Safety, Admin & Public Interactions": 27,
-};
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Distribution System Components":                { bg: "#DBEAFE", color: "#1D4ED8" },
   "Equipment Installation, O&M & Repair":          { bg: "#DCFCE7", color: "#15803D" },
@@ -24,6 +12,18 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function WpiClass3WaterDistMockExam() {
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("wpi-class3-water-dist");
+  
+  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
+    id: q.id, module: q.module,
+    question: q.question ?? q.text ?? "",
+    options: q.options,
+    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
+    explanation: q.explanation,
+  }));
+
+  if (bankLoading) return <QuizSkeleton />;
+
   return (
     <MockExamShell
       title="WPI Class III Water Distribution Mock Exam"
@@ -33,7 +33,7 @@ export default function WpiClass3WaterDistMockExam() {
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
-      moduleTargets={MODULE_TARGETS}
+      moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
       questionPool={POOL}
       productKey="wpi-class3-water-dist"

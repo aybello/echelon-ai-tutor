@@ -1,21 +1,8 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { wpiClass1WaterQuestions as RAW } from "@/lib/wpiClass1WaterQuestions";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
-const POOL: ExamQuestion[] = (RAW as any[]).map(q => ({
-  id: q.id, module: q.module,
-  question: q.question ?? q.text ?? "",
-  options: q.options,
-  correct: q.correctAnswer ?? q.correct ?? 0,
-  explanation: q.explanation,
-}));
 
-const MODULE_TARGETS: Record<string, number> = {
-  "Treatment Process":   31,
-  "Equipment O&M":       26,
-  "Laboratory Analysis": 16,
-  "Source Water":        15,
-  "Safety & Admin":      12,
-};
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Treatment Process":   { bg: "#DBEAFE", color: "#1D4ED8" },
@@ -26,6 +13,18 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function WpiClass1WaterMockExam() {
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("wpi-class1-water");
+  
+  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
+    id: q.id, module: q.module,
+    question: q.question ?? q.text ?? "",
+    options: q.options,
+    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
+    explanation: q.explanation,
+  }));
+
+  if (bankLoading) return <QuizSkeleton />;
+
   return (
     <MockExamShell
       title="WPI Class I Water Treatment Mock Exam"
@@ -35,7 +34,7 @@ export default function WpiClass1WaterMockExam() {
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
-      moduleTargets={MODULE_TARGETS}
+      moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
       questionPool={POOL}
       productKey="wpi-class1-water"

@@ -1,23 +1,8 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { QUESTIONS as POOL_RAW } from "@/lib/class2WaterQuestions";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
-const POOL: ExamQuestion[] = (POOL_RAW as any[]).map(q => ({
-  id: q.id,
-  module: q.module,
-  question: q.question ?? q.text ?? "",
-  options: q.options,
-  correct: q.correct ?? q.correctAnswer ?? 0,
-  explanation: q.explanation,
-}));
 
-const MODULE_TARGETS: Record<string, number> = {
-  'Treatment Process': 29,
-  'Laboratory Analysis': 22,
-  'Equipment Operation & Maintenance': 14,
-  'Security, Safety & Administrative': 14,
-  'Source Water Characteristics': 12,
-  'Water Distribution': 9,
-};
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   'Treatment Process': { bg: '#DBEAFE', color: '#1D4ED8' },
@@ -29,6 +14,18 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function Class2WaterMockExam() {
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class2-water");
+  
+  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
+    id: q.id, module: q.module,
+    question: q.question ?? q.text ?? "",
+    options: q.options,
+    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
+    explanation: q.explanation,
+  }));
+
+  if (bankLoading) return <QuizSkeleton />;
+
   return (
     <MockExamShell
       title="Class 2 Water Treatment Mock Exam"
@@ -38,7 +35,7 @@ export default function Class2WaterMockExam() {
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
-      moduleTargets={MODULE_TARGETS}
+      moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
       questionPool={POOL}
       productKey="class2-water"

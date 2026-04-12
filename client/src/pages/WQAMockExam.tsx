@@ -1,10 +1,10 @@
 // WQA MOCK EXAM
 // 100 questions · 2-hour timer · 70% pass threshold · module breakdown
 // Based on Ontario Water Quality Analyst (WQA) exam format (O. Reg. 248/03)
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Link } from "wouter";
-import { WQA_QUESTIONS, WQA_MODULES, WQA_FORMULA_LINKS, type WQAQuestion } from "@/lib/wqaQuestions";
-import { type Question } from "@/lib/questions";
 import SiteNav from "@/components/SiteNav";
 import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
@@ -39,23 +39,23 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Regulation":                         { bg: "#F5F3FF", color: "#5B21B6" },
 };
 
-// Convert WQAQuestion → Question (for display compatibility)
+// Convert DBQuestion → DBQuestion (for display compatibility)
 let _idCounter = 91000;
 const idMap = new Map<string, number>();
-// Reverse map: numeric Question.id → original WQA string ID (for formula deep-links)
+// Reverse map: numeric DBQuestion.id → original WQA string ID (for formula deep-links)
 const reverseIdMap = new Map<number, string>();
-function toQ(q: WQAQuestion): Question {
-  if (!idMap.has(q.id)) {
-    idMap.set(q.id, _idCounter);
-    reverseIdMap.set(_idCounter, q.id);
+function toQ(q: any): any {
+  if (!idMap.has(String(q.id))) {
+    idMap.set(String(q.id), _idCounter);
+    reverseIdMap.set(_idCounter, String(q.id));
     _idCounter++;
   }
   return {
-    id: idMap.get(q.id)!,
+    id: idMap.get(String(q.id))!,
     module: q.module,
     type: "conceptual",
     difficulty: q.difficulty,
-    q: q.question,
+    question: q.question,
     options: q.options,
     correct: q.correctIndex,
     explanation: q.explanation,
@@ -63,7 +63,7 @@ function toQ(q: WQAQuestion): Question {
   };
 }
 
-function selectExamQuestions(): Question[] {
+function selectExamQuestions(allQuestions: any[], dbMods: string[]): any[] {
   // Proportional allocation matching the real WQA exam distribution
   const targetPerModule: Record<string, number> = {
     "Math":                               6,
@@ -77,15 +77,15 @@ function selectExamQuestions(): Question[] {
     "Quality Assurance & Quality Control":11,
     "Regulation":                         3,
   };
-  const selected: Question[] = [];
-  for (const mod of WQA_MODULES) {
-    const pool = WQA_QUESTIONS.filter(q => q.module === mod).sort(() => Math.random() - 0.5);
+  const selected: DBQuestion[] = [];
+  for (const mod of dbMods) {
+    const pool = allQuestions.filter((q: any) => q.module === mod).sort(() => Math.random() - 0.5);
     const n = targetPerModule[mod] ?? 5;
     selected.push(...pool.slice(0, n).map(toQ));
   }
   // Fill remaining to reach 100 if any module was short
-  const usedIds = new Set(selected.map(q => q.id));
-  const remaining = WQA_QUESTIONS.map(toQ).filter(q => !usedIds.has(q.id)).sort(() => Math.random() - 0.5);
+  const usedIds = new Set(selected.map((q: any) => q.id));
+  const remaining = allQuestions.map(toQ).filter((q: any) => !usedIds.has(q.id)).sort(() => Math.random() - 0.5);
   while (selected.length < EXAM_QUESTIONS && remaining.length > 0) {
     selected.push(remaining.shift()!);
   }
@@ -101,6 +101,11 @@ function formatTime(seconds: number): string {
 }
 
 export default function WQAMockExam() {
+
+  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, formulaLinks, isLoading: bankLoading } = useQuestionBank("wqa");
+  
+  if (bankLoading) return <QuizSkeleton />;
+
   usePageMeta({
     title: "WQA Timed Mock Exam — Water Quality Analyst",
     description: "100-question timed mock exam for the Ontario Water Quality Analyst (WQA) certification. 2-hour timer, 70% pass threshold, module breakdown on results.",
@@ -121,7 +126,7 @@ export default function WQAMockExam() {
   const saveResult = trpc.exam.saveResult.useMutation();
   const resultSavedRef = useRef(false);
   const [examState, setExamState] = useState<ExamState>("intro");
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<DBQuestion[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<ExamAnswer[]>([]);
   const [timeLeft, setTimeLeft] = useState(EXAM_DURATION);
@@ -132,7 +137,7 @@ export default function WQAMockExam() {
   const unlocked = isTrialUnlocked();
 
   const startExam = useCallback(() => {
-    const qs = selectExamQuestions();
+    const qs = selectExamQuestions(allQuestions, dbModules);
     setQuestions(qs);
     setAnswers(qs.map((_, i) => ({ questionIndex: i, selected: null })));
     setCurrentIdx(0);
@@ -178,12 +183,12 @@ export default function WQAMockExam() {
   // Results calculations
   const results = useMemo(() => {
     if (examState !== "results" || questions.length === 0) return null;
-    const correct = answers.filter((a, i) => a.selected === questions[i]?.correct).length;
+    const correct = answers.filter((a, i) => a.selected === (questions[i] as any)?.correctIndex).length;
     const score = correct / EXAM_QUESTIONS;
     const passed = score >= PASS_THRESHOLD;
-    const moduleBreakdown = WQA_MODULES.map(mod => {
+    const moduleBreakdown = dbModules.map(mod => {
       const modQs = questions.map((q, i) => ({ q, i })).filter(({ q }) => q.module === mod);
-      const modCorrect = modQs.filter(({ i }) => answers[i]?.selected === questions[i]?.correct).length;
+      const modCorrect = modQs.filter(({ i }) => answers[i]?.selected === (questions[i] as any)?.correctIndex).length;
       return { module: mod, correct: modCorrect, total: modQs.length, pct: modQs.length > 0 ? modCorrect / modQs.length : 0 };
     }).filter(m => m.total > 0).sort((a, b) => a.pct - b.pct);
     return { correct, score, passed, moduleBreakdown };
@@ -334,20 +339,20 @@ export default function WQAMockExam() {
           {/* Score history */}
           <ScoreHistory sessionId={sessionId} examType="wqa" />
 
-          {/* Question review */}
+          {/* DBQuestion review */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "20px 24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
             <button
               onClick={() => setShowReview(!showReview)}
               style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", padding: 0 }}
             >
-              <span style={{ fontSize: 13, fontWeight: 800, color: "#0F172A" }}>📋 Full Question Review</span>
+              <span style={{ fontSize: 13, fontWeight: 800, color: "#0F172A" }}>📋 Full DBQuestion Review</span>
               <span style={{ fontSize: 12, color: "#64748B" }}>{showReview ? "▲ Hide" : "▼ Show"}</span>
             </button>
             {showReview && (
               <div style={{ marginTop: 16 }}>
                 {questions.map((q, i) => {
                   const userAns = answers[i]?.selected;
-                  const isCorrect = userAns === q.correct;
+                  const isCorrect = userAns === ((q as any).correctIndex ?? (q as any).correct);
                   const isSkipped = userAns === null;
                   const isFlagged = flagged.includes(i);
                   return (
@@ -358,20 +363,20 @@ export default function WQAMockExam() {
                           {isSkipped ? "Skipped" : isCorrect ? "✅ Correct" : "❌ Incorrect"}
                         </span>
                       </div>
-                      <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", marginBottom: 8, lineHeight: 1.5 }}>{q.q}</div>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", marginBottom: 8, lineHeight: 1.5 }}>{(q as any).question}</div>
                       {!isSkipped && !isCorrect && (
                         <div style={{ fontSize: 12, color: "#92400E", marginBottom: 4 }}>
                           Your answer: <strong>{q.options[userAns!]}</strong>
                         </div>
                       )}
                       <div style={{ fontSize: 12, color: "#15803D", marginBottom: 6 }}>
-                        Correct: <strong>{q.options[q.correct]}</strong>
+                        Correct: <strong>{q.options[(q as any).correctIndex]}</strong>
                       </div>
                       <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.5, whiteSpace: "pre-line" }}>{q.explanation}</div>
                       {/* Formula deep-link */}
                       {(() => {
                         const wqaId = reverseIdMap.get(q.id);
-                        const formulaHref = wqaId ? WQA_FORMULA_LINKS[wqaId] : undefined;
+                        const formulaHref = wqaId ? (formulaLinks ?? {})[wqaId] : undefined;
                         if (!formulaHref) return null;
                         return (
                           <a
@@ -386,9 +391,9 @@ export default function WQAMockExam() {
                       })()}
                       {(!isCorrect || isSkipped) && (
                         <ReviewAITutor
-                          questionText={q.q}
+                          questionText={(q as any).question}
                           options={q.options}
-                          correctIndex={q.correct}
+                          correctIndex={(q as any).correctIndex}
                           userAnswerIndex={isSkipped ? null : (userAns ?? null)}
                           explanation={q.explanation}
                           module={q.module}
@@ -482,20 +487,20 @@ export default function WQAMockExam() {
 
       <div className="wqa-exam-main" style={{ maxWidth: 900, margin: "0 auto", padding: "24px 20px 80px", display: "grid", gridTemplateColumns: "1fr 220px", gap: 20, alignItems: "start" }}>
 
-        {/* Question panel */}
+        {/* DBQuestion panel */}
         <div>
           <div style={{ background: "#fff", borderRadius: 16, padding: "24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", marginBottom: 12 }}>
             {/* Meta */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
               <div style={{ display: "flex", gap: 6 }}>
                 <span style={{ padding: "3px 10px", borderRadius: 20, background: modStyle.bg, color: modStyle.color, fontSize: 10, fontWeight: 700 }}>{currentQ.module}</span>
-                <span style={{ padding: "3px 10px", borderRadius: 20, background: currentQ.difficulty === "easy" ? "#DCFCE7" : currentQ.difficulty === "medium" ? "#FEF9C3" : "#FEE2E2", color: currentQ.difficulty === "easy" ? "#15803D" : currentQ.difficulty === "medium" ? "#A16207" : "#B91C1C", fontSize: 10, fontWeight: 700 }}>{currentQ.difficulty.toUpperCase()}</span>
+                <span style={{ padding: "3px 10px", borderRadius: 20, background: (currentQ.difficulty ?? 'medium') === "easy" ? "#DCFCE7" : (currentQ.difficulty ?? 'medium') === "medium" ? "#FEF9C3" : "#FEE2E2", color: (currentQ.difficulty ?? 'medium') === "easy" ? "#15803D" : (currentQ.difficulty ?? 'medium') === "medium" ? "#A16207" : "#B91C1C", fontSize: 10, fontWeight: 700 }}>{(currentQ.difficulty ?? 'medium').toUpperCase()}</span>
               </div>
               <button onClick={toggleFlag} style={{ padding: "4px 10px", borderRadius: 20, border: `1px solid ${isFlagged ? "#7C3AED" : "#E2E8F0"}`, background: isFlagged ? "#EDE9FE" : "#F8FAFC", color: isFlagged ? "#7C3AED" : "#94A3B8", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
                 {isFlagged ? "🚩 Flagged" : "⚑ Flag"}
               </button>
             </div>
-            <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.6, marginBottom: 20 }}>{currentQ.q}</div>
+            <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.6, marginBottom: 20 }}>{currentQ.question}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {currentQ.options.map((opt, idx) => {
                 const isSelected = currentAnswer === idx;
@@ -525,7 +530,7 @@ export default function WQAMockExam() {
           </div>
         </div>
 
-        {/* Question navigator */}
+        {/* DBQuestion navigator */}
         <div style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 80 }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>NAVIGATOR</div>
           <div className="wqa-exam-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 4, marginBottom: 14 }}>

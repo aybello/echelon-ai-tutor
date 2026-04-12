@@ -1,24 +1,8 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { wpiClass3WastewaterQuestions as RAW } from "@/lib/wpiClass3WastewaterQuestions";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
-const POOL: ExamQuestion[] = (RAW as any[]).map(q => ({
-  id: q.id, module: q.module,
-  question: q.question ?? q.text ?? "",
-  options: q.options,
-  correct: q.correctAnswer ?? q.correct ?? 0,
-  explanation: q.explanation,
-}));
 
-const MODULE_TARGETS: Record<string, number> = {
-  "Advanced Biological Treatment":         17,
-  "Biological Nutrient Removal":           17,
-  "Membrane Bioreactors & Advanced Processes": 6,
-  "Industrial Pretreatment & Toxicity":    11,
-  "Advanced Biosolids Management":         17,
-  "Regulatory Compliance & Reporting":     10,
-  "Advanced Process Control & Troubleshooting": 6,
-  "Health, Safety & Environmental Management": 16,
-};
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Advanced Biological Treatment":         { bg: "#DBEAFE", color: "#1D4ED8" },
@@ -32,6 +16,18 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function WpiClass3WastewaterMockExam() {
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("wpi-class3-wastewater");
+  
+  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
+    id: q.id, module: q.module,
+    question: q.question ?? q.text ?? "",
+    options: q.options,
+    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
+    explanation: q.explanation,
+  }));
+
+  if (bankLoading) return <QuizSkeleton />;
+
   return (
     <MockExamShell
       title="WPI Class III Wastewater Treatment Mock Exam"
@@ -41,7 +37,7 @@ export default function WpiClass3WastewaterMockExam() {
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
-      moduleTargets={MODULE_TARGETS}
+      moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
       questionPool={POOL}
       productKey="wpi-class3-wastewater"

@@ -1,20 +1,7 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { wpiClass4WastewaterCollQuestions as RAW } from "@/lib/wpiClass4WastewaterCollQuestions";
-const POOL: ExamQuestion[] = (RAW as any[]).map(q => ({
-  id: q.id, module: q.module,
-  question: q.question ?? q.text ?? "",
-  options: q.options,
-  correct: q.correctAnswer ?? q.correct ?? 0,
-  explanation: q.explanation,
-}));
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 // WPI Class IV Wastewater Collection exam blueprint: 100 questions
-const MODULE_TARGETS: Record<string, number> = {
-  "System Planning & Capital Improvement":          25,
-  "Advanced Engineering & Design":                  20,
-  "Utility Management & Leadership":                20,
-  "Advanced Regulatory & Environmental Management": 20,
-  "Emerging Technologies & Innovation":             15,
-};
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "System Planning & Capital Improvement":          { bg: "#FEE2E2", color: "#B91C1C" },
   "Advanced Engineering & Design":                  { bg: "#DBEAFE", color: "#1D4ED8" },
@@ -23,6 +10,18 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Emerging Technologies & Innovation":             { bg: "#EDE9FE", color: "#6D28D9" },
 };
 export default function WpiClass4WaterCollMockExam() {
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("wpi-class4-wastewater-coll");
+  
+  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
+    id: q.id, module: q.module,
+    question: q.question ?? q.text ?? "",
+    options: q.options,
+    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
+    explanation: q.explanation,
+  }));
+
+  if (bankLoading) return <QuizSkeleton />;
+
   return (
     <MockExamShell
       title="WPI Class IV Wastewater Collection Mock Exam"
@@ -32,7 +31,7 @@ export default function WpiClass4WaterCollMockExam() {
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
-      moduleTargets={MODULE_TARGETS}
+      moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
       questionPool={POOL}
       productKey="wpi-class4-water-coll"

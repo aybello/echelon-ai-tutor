@@ -1,14 +1,15 @@
 // ECHELON — Timed Mock Exam Page
 // 25-question OIT-style timed exam with pass/fail threshold and module breakdown
 
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "wouter";
-import { QUESTIONS, type Question } from "@/lib/questions";
 import SiteNav from "@/components/SiteNav";
 import ReportErrorModal from "@/components/ReportErrorModal";
 
 // ── Extended question bank (25 questions: 15 original + 10 new) ──
-const EXTRA_QUESTIONS: Question[] = [
+const EXTRA_QUESTIONS: any[] = [
   {
     id: 101,
     module: "Disinfection",
@@ -124,22 +125,21 @@ const EXTRA_QUESTIONS: Question[] = [
   },
 ];
 
-const ALL_EXAM_QUESTIONS = [...QUESTIONS, ...EXTRA_QUESTIONS];
 
 // Select 25 questions: balanced across modules
-function selectExamQuestions(): Question[] {
-  const modules = Array.from(new Set(ALL_EXAM_QUESTIONS.map((q) => q.module)));
-  const selected: Question[] = [];
-  const shuffled = [...ALL_EXAM_QUESTIONS].sort(() => Math.random() - 0.5);
+function selectExamQuestions(questionPool: any[]): DBQuestion[] {
+  const modules = Array.from(new Set(questionPool.map((q: any) => q.module)));
+  const selected: DBQuestion[] = [];
+  const shuffled = [...questionPool].sort(() => Math.random() - 0.5);
 
   // Try to get ~3-4 per module
   for (const mod of modules) {
-    const modQs = shuffled.filter((q) => q.module === mod).slice(0, 4);
+    const modQs = shuffled.filter((q: any) => q.module === mod).slice(0, 4);
     selected.push(...modQs);
   }
 
   // Fill to 25 if needed
-  const remaining = shuffled.filter((q) => !selected.includes(q));
+  const remaining = shuffled.filter((q: any) => !selected.includes(q));
   while (selected.length < 25 && remaining.length > 0) {
     selected.push(remaining.shift()!);
   }
@@ -171,8 +171,15 @@ const NAV_LINKS = [
 ];
 
 export default function MockExam() {
+
+  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("oit");
+  
+  if (bankLoading) return <QuizSkeleton />;
+
+  const ALL_EXAM_QUESTIONS = [...allQuestions, ...EXTRA_QUESTIONS];
+
   const [examState, setExamState] = useState<ExamState>("intro");
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<DBQuestion[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<ExamAnswer[]>([]);
   const [timeLeft, setTimeLeft] = useState(EXAM_DURATION);
@@ -182,7 +189,7 @@ export default function MockExam() {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const startExam = useCallback(() => {
-    const qs = selectExamQuestions();
+    const qs = selectExamQuestions(ALL_EXAM_QUESTIONS);
     setQuestions(qs);
     setAnswers(qs.map((_, i) => ({ questionIndex: i, selected: null })));
     setCurrentIdx(0);
@@ -237,7 +244,7 @@ export default function MockExam() {
 
   // ── RESULTS ──
   const correctCount = questions.reduce((acc, q, i) => {
-    return answers[i]?.selected === q.correct ? acc + 1 : acc;
+    return answers[i]?.selected === (q as any).correctIndex ? acc + 1 : acc;
   }, 0);
   const score = correctCount / 25;
   const passed = score >= PASS_THRESHOLD;
@@ -246,7 +253,7 @@ export default function MockExam() {
     (acc, q, i) => {
       if (!acc[q.module]) acc[q.module] = { correct: 0, total: 0 };
       acc[q.module].total++;
-      if (answers[i]?.selected === q.correct) acc[q.module].correct++;
+      if (answers[i]?.selected === (q as any).correctIndex) acc[q.module].correct++;
       return acc;
     },
     {}
@@ -407,14 +414,14 @@ export default function MockExam() {
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {questions.map((q, i) => {
                   const userAns = answers[i]?.selected;
-                  const isCorrect = userAns === q.correct;
+                  const isCorrect = userAns === ((q as any).correctIndex ?? (q as any).correct);
                   return (
                     <div key={q.id} style={{ borderRadius: 12, border: `2px solid ${isCorrect ? "#22C55E" : "#EF4444"}`, padding: "16px", background: isCorrect ? "#F0FDF4" : "#FEF2F2" }}>
                       <div style={{ display: "flex", gap: 8, marginBottom: 8, alignItems: "flex-start" }}>
                         <span style={{ fontSize: 16 }}>{isCorrect ? "✓" : "✗"}</span>
                         <div>
                           <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 4 }}>Q{i + 1} · {q.module} · {q.difficulty}</div>
-                          <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>{q.q}</div>
+                          <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>{(q as any).question}</div>
                         </div>
                       </div>
                       {!isCorrect && userAns !== null && (
@@ -426,7 +433,7 @@ export default function MockExam() {
                         <div style={{ fontSize: 11, color: "#DC2626", marginBottom: 4 }}>Not answered</div>
                       )}
                       <div style={{ fontSize: 11, color: "#15803D", fontWeight: 600, marginBottom: 6 }}>
-                        Correct: {q.options[q.correct]}
+                        Correct: {q.options[(q as any).correctIndex]}
                       </div>
                       <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.6, background: "rgba(255,255,255,0.6)", borderRadius: 8, padding: "8px 10px" }}>
                         <span style={{ whiteSpace: "pre-line" }}>{q.explanation}</span>
@@ -457,7 +464,7 @@ export default function MockExam() {
           <div style={{ width: 32, height: 32, borderRadius: 8, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800, color: "#fff" }}>E</div>
           <div>
             <div style={{ fontSize: 12, fontWeight: 800, color: "#0F172A" }}>OIT MOCK EXAM</div>
-            <div style={{ fontSize: 10, color: "#94A3B8" }}>Question {currentIdx + 1} of 25</div>
+            <div style={{ fontSize: 10, color: "#94A3B8" }}>DBQuestion {currentIdx + 1} of 25</div>
           </div>
         </div>
 
@@ -493,7 +500,7 @@ export default function MockExam() {
 
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
 
-        {/* Question navigator */}
+        {/* DBQuestion navigator */}
         <div style={{ background: "#fff", borderRadius: 16, padding: "16px 20px", marginBottom: 16, boxShadow: "0 2px 12px rgba(0,0,0,0.05)", display: "flex", gap: 6, flexWrap: "wrap" }}>
           {questions.map((_, i) => {
             const ans = answers[i]?.selected;
@@ -520,12 +527,12 @@ export default function MockExam() {
           })}
         </div>
 
-        {/* Question card */}
+        {/* DBQuestion card */}
         <div key={currentIdx} style={{ background: "#fff", borderRadius: 20, padding: "32px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", marginBottom: 14, animation: "fadeUp 0.25s ease both" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
             <div style={{ display: "flex", gap: 8 }}>
               <span style={{ fontSize: 10, fontWeight: 700, background: "#DBEAFE", color: "#1D4ED8", padding: "4px 10px", borderRadius: 20 }}>{currentQ.module.toUpperCase()}</span>
-              <span style={{ fontSize: 10, fontWeight: 700, background: currentQ.difficulty === "easy" ? "#DCFCE7" : currentQ.difficulty === "medium" ? "#FEF9C3" : "#FEE2E2", color: currentQ.difficulty === "easy" ? "#059669" : currentQ.difficulty === "medium" ? "#D97706" : "#DC2626", padding: "4px 10px", borderRadius: 20 }}>{currentQ.difficulty.toUpperCase()}</span>
+              <span style={{ fontSize: 10, fontWeight: 700, background: (currentQ.difficulty ?? 'medium') === "easy" ? "#DCFCE7" : (currentQ.difficulty ?? 'medium') === "medium" ? "#FEF9C3" : "#FEE2E2", color: (currentQ.difficulty ?? 'medium') === "easy" ? "#059669" : (currentQ.difficulty ?? 'medium') === "medium" ? "#D97706" : "#DC2626", padding: "4px 10px", borderRadius: 20 }}>{(currentQ.difficulty ?? 'medium').toUpperCase()}</span>
             </div>
             <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
               <button
@@ -538,17 +545,17 @@ export default function MockExam() {
             </div>
           </div>
 
-          {currentQ.formula && (
+          {currentQ.tip && (
             <div style={{ background: "#F8FAFC", borderRadius: 10, padding: "10px 14px", marginBottom: 20, border: "1px solid #E2E8F0", display: "flex", gap: 10, alignItems: "center" }}>
               <span style={{ fontSize: 16 }}>📐</span>
               <div>
                 <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.12em", marginBottom: 2 }}>FORMULA HINT</div>
-                <div style={{ fontFamily: "monospace", fontSize: 12, color: "#1D4ED8", fontWeight: 700 }}>{currentQ.formula}</div>
+                <div style={{ fontFamily: "monospace", fontSize: 12, color: "#1D4ED8", fontWeight: 700 }}>{currentQ.tip}</div>
               </div>
             </div>
           )}
 
-          <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.65, marginBottom: 24 }}>{currentQ.q}</div>
+          <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.65, marginBottom: 24 }}>{currentQ.question}</div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {currentQ.options.map((opt, i) => {

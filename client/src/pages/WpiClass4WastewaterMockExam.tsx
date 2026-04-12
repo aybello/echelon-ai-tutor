@@ -1,23 +1,8 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { wpiClass4WastewaterQuestions as RAW } from "@/lib/wpiClass4WastewaterQuestions";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
-const POOL: ExamQuestion[] = (RAW as any[]).map(q => ({
-  id: q.id, module: q.module,
-  question: q.question ?? q.text ?? "",
-  options: q.options,
-  correct: q.correctAnswer ?? q.correct ?? 0,
-  explanation: q.explanation,
-}));
 
-const MODULE_TARGETS: Record<string, number> = {
-  "Advanced Process Control & Optimization":           20,
-  "Advanced Nutrient Removal & Resource Recovery":     18,
-  "Emerging Technologies & Innovation":                12,
-  "Plant Management, Asset Management & Leadership":   15,
-  "Regulatory Compliance, Reporting & Environmental Management": 15,
-  "Emergency Response & Resilience Planning":          12,
-  "Health, Safety & Environmental Stewardship":         8,
-};
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Advanced Process Control & Optimization":           { bg: "#DBEAFE", color: "#1D4ED8" },
@@ -30,6 +15,18 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function WpiClass4WastewaterMockExam() {
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("wpi-class4-wastewater");
+  
+  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
+    id: q.id, module: q.module,
+    question: q.question ?? q.text ?? "",
+    options: q.options,
+    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
+    explanation: q.explanation,
+  }));
+
+  if (bankLoading) return <QuizSkeleton />;
+
   return (
     <MockExamShell
       title="WPI Class IV Wastewater Treatment Mock Exam"
@@ -39,7 +36,7 @@ export default function WpiClass4WastewaterMockExam() {
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
-      moduleTargets={MODULE_TARGETS}
+      moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
       questionPool={POOL}
       productKey="wpi-class4-wastewater"

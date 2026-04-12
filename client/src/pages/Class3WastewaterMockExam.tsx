@@ -1,22 +1,8 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { CLASS3_WW_QUESTIONS as RAW } from "@/lib/class3WastewaterQuestions";
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 
-const POOL: ExamQuestion[] = (RAW as any[]).map(q => ({
-  id: q.id, module: q.module,
-  question: q.question ?? q.text ?? "",
-  options: q.options,
-  correct: q.correct ?? q.correctAnswer ?? 0,
-  explanation: q.explanation,
-}));
 
-const MODULE_TARGETS: Record<string, number> = {
-  "Treatment Process Monitoring":        28,
-  "Equipment Operation":                 20,
-  "Equipment Evaluation & Maintenance":  14,
-  "Laboratory Analysis":                 18,
-  "Security, Safety & Admin":            10,
-  "Wastewater Collection":               10,
-};
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Treatment Process Monitoring":        { bg: "#DBEAFE", color: "#1D4ED8" },
@@ -28,6 +14,18 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function Class3WastewaterMockExam() {
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class3-wastewater");
+  
+  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
+    id: q.id, module: q.module,
+    question: q.question ?? q.text ?? "",
+    options: q.options,
+    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
+    explanation: q.explanation,
+  }));
+
+  if (bankLoading) return <QuizSkeleton />;
+
   return (
     <MockExamShell
       title="Class 3 Wastewater Treatment Mock Exam"
@@ -37,7 +35,7 @@ export default function Class3WastewaterMockExam() {
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
-      moduleTargets={MODULE_TARGETS}
+      moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
       questionPool={POOL}
       productKey="class3-ww"

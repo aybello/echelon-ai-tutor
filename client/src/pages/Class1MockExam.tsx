@@ -2,10 +2,10 @@
 // 100 questions · 2-hour timer · 70% pass threshold · module breakdown
 // Streams: Water (Treatment + Distribution) | Wastewater (Treatment + Collection)
 
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Link, useLocation } from "wouter";
-import { CLASS1_QUESTIONS, getClass1Questions } from "@/lib/class1Questions";
-import type { Question } from "@/lib/questions";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { isTrialUnlocked } from "@/components/QuizGate";
@@ -45,23 +45,23 @@ const STREAM_CONFIG: Record<Stream, { label: string; icon: string; color: string
   },
 };
 
-function selectExamQuestions(stream: Stream): Question[] {
-  const pool = getClass1Questions(stream);
+function selectExamQuestions(allQs: DBQuestion[], stream: Stream): DBQuestion[] {
   const modules = STREAM_CONFIG[stream].modules;
+  const pool = allQs.filter((q: any) => modules.includes(q.module));
   const shuffled = [...pool].sort(() => Math.random() - 0.5);
-  const selected: Question[] = [];
+  const selected: DBQuestion[] = [];
 
   // Proportional allocation: Water = 60 Treatment + 40 Distribution (from 100/60 pool)
   // Wastewater = 60 Treatment + 40 Collection (from 50/40 pool — use all available)
   const perModule = Math.floor(EXAM_QUESTIONS / modules.length);
 
   for (const mod of modules) {
-    const modQs = shuffled.filter(q => q.module === mod).slice(0, perModule);
+    const modQs = shuffled.filter((q: any) => q.module === mod).slice(0, perModule);
     selected.push(...modQs);
   }
 
   // Fill remaining slots if any module was short
-  const remaining = shuffled.filter(q => !selected.includes(q));
+  const remaining = shuffled.filter((q: any) => !selected.includes(q));
   while (selected.length < EXAM_QUESTIONS && remaining.length > 0) {
     selected.push(remaining.shift()!);
   }
@@ -78,6 +78,11 @@ function formatTime(seconds: number): string {
 }
 
 export default function Class1MockExam() {
+
+  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class1");
+  
+  if (bankLoading) return <QuizSkeleton />;
+
   usePageMeta({
     title: "Class 1 Timed Mock Exam — Water & Wastewater",
     description: "100-question timed mock exam for Ontario Class 1 Water and Wastewater operator certification. 2-hour timer, 70% pass threshold, and full module breakdown on results.",
@@ -109,7 +114,7 @@ export default function Class1MockExam() {
     initialStream ? "intro" : "stream-select"
   );
   const [stream, setStream] = useState<Stream>(initialStream ?? "water");
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<DBQuestion[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<ExamAnswer[]>([]);
   const [timeLeft, setTimeLeft] = useState(EXAM_DURATION);
@@ -122,7 +127,7 @@ export default function Class1MockExam() {
 
   const startExam = useCallback((examStream?: Stream) => {
     const activeStream = examStream ?? stream;
-    const qs = selectExamQuestions(activeStream);
+    const qs = selectExamQuestions(allQuestions, activeStream);
     setStream(activeStream);
     setQuestions(qs);
     setCurrentIdx(0);
@@ -231,8 +236,8 @@ export default function Class1MockExam() {
 
   // -- INTRO --
   if (examState === "intro") {
-    const waterCount = getClass1Questions("water").length;
-    const wwCount = getClass1Questions("wastewater").length;
+    const waterCount = selectExamQuestions(allQuestions, "water").length;
+    const wwCount = selectExamQuestions(allQuestions, "wastewater").length;
     const poolCount = stream === "water" ? waterCount : wwCount;
 
     return (
@@ -335,7 +340,7 @@ export default function Class1MockExam() {
 
   // -- RESULTS --
   if (examState === "results") {
-    const correctCount = answers.filter((a, i) => a.selected === questions[i]?.correct).length;
+    const correctCount = answers.filter((a, i) => a.selected === (questions[i] as any)?.correctIndex).length;
     const score = correctCount / EXAM_QUESTIONS;
     const passed = score >= PASS_THRESHOLD;
     const timeUsed = EXAM_DURATION - timeLeft;
@@ -345,7 +350,7 @@ export default function Class1MockExam() {
         const mod = q.module;
         if (!acc[mod]) acc[mod] = { correct: 0, total: 0 };
         acc[mod].total++;
-        if (answers[i]?.selected === q.correct) acc[mod].correct++;
+        if (answers[i]?.selected === (q as any).correctIndex) acc[mod].correct++;
         return acc;
       },
       {}
@@ -428,26 +433,26 @@ export default function Class1MockExam() {
           {/* Score history */}
           <ScoreHistory sessionId={sessionId} examType="class1" stream={stream} />
 
-          {/* Question review toggle */}
+          {/* DBQuestion review toggle */}
           <div style={{ background: "#fff", borderRadius: 20, padding: "20px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
             <button
               onClick={() => setShowReview(!showReview)}
               style={{ width: "100%", padding: "12px", borderRadius: 12, border: "none", background: "#F8FAFC", color: "#374151", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
             >
-              {showReview ? "▲ Hide Question Review" : "▼ Show All Questions & Explanations"}
+              {showReview ? "▲ Hide DBQuestion Review" : "▼ Show All Questions & Explanations"}
             </button>
             {showReview && (
               <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 12 }}>
                 {questions.map((q, i) => {
                   const userAns = answers[i]?.selected ?? null;
-                  const isCorrect = userAns === q.correct;
+                  const isCorrect = userAns === ((q as any).correctIndex ?? (q as any).correct);
                   return (
                     <div key={q.id} style={{ borderRadius: 12, border: `1.5px solid ${isCorrect ? "#22C55E" : "#EF4444"}`, padding: "16px", background: isCorrect ? "#F0FDF4" : "#FEF2F2" }}>
                       <div style={{ display: "flex", gap: 8, marginBottom: 8, alignItems: "flex-start" }}>
                         <span style={{ fontSize: 16 }}>{isCorrect ? "✓" : "✗"}</span>
                         <div>
                           <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 4 }}>Q{i + 1} · {q.module} · {q.difficulty}</div>
-                          <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>{q.q}</div>
+                          <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>{(q as any).question}</div>
                         </div>
                       </div>
                       {!isCorrect && userAns !== null && (
@@ -457,16 +462,16 @@ export default function Class1MockExam() {
                         <div style={{ fontSize: 11, color: "#DC2626", marginBottom: 4 }}>Not answered</div>
                       )}
                       <div style={{ fontSize: 11, color: "#15803D", fontWeight: 600, marginBottom: 6 }}>
-                        Correct: {q.options[q.correct]}
+                        Correct: {q.options[(q as any).correctIndex]}
                       </div>
                       <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.6, background: "rgba(255,255,255,0.6)", borderRadius: 8, padding: "8px 10px" }}>
                         <span style={{ whiteSpace: "pre-line" }}>{q.explanation}</span>
                       </div>
                       {(!isCorrect || userAns === null) && (
                         <ReviewAITutor
-                          questionText={q.q}
+                          questionText={(q as any).question}
                           options={q.options}
-                          correctIndex={q.correct}
+                          correctIndex={(q as any).correctIndex}
                           userAnswerIndex={userAns}
                           explanation={q.explanation}
                           module={q.module}
@@ -512,7 +517,7 @@ export default function Class1MockExam() {
           <div style={{ width: 32, height: 32, borderRadius: 8, background: `linear-gradient(135deg, ${cfg.color}, #0F766E)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800, color: "#fff" }}>E</div>
           <div>
             <div style={{ fontSize: 11, fontWeight: 800, color: "#0F172A" }}>{cfg.label.toUpperCase()} MOCK EXAM</div>
-            <div style={{ fontSize: 10, color: "#94A3B8" }}>Question {currentIdx + 1} of {EXAM_QUESTIONS}</div>
+            <div style={{ fontSize: 10, color: "#94A3B8" }}>DBQuestion {currentIdx + 1} of {EXAM_QUESTIONS}</div>
           </div>
         </div>
         <div className="c1mock-header-right" style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -547,7 +552,7 @@ export default function Class1MockExam() {
       </div>
 
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
-        {/* Question navigator */}
+        {/* DBQuestion navigator */}
         <div style={{ background: "#fff", borderRadius: 16, padding: "16px 20px", marginBottom: 16, boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
           <div className="c1mock-nav-grid" style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
@@ -589,16 +594,16 @@ export default function Class1MockExam() {
           </div>
         </div>
 
-        {/* Question card */}
+        {/* DBQuestion card */}
         <div style={{ background: "#fff", borderRadius: 20, padding: "28px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", animation: "fadeUp 0.2s ease" }}>
           {/* Meta row */}
           <div style={{ display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap", alignItems: "center" }}>
             <span style={{ padding: "4px 10px", borderRadius: 100, background: cfg.bg, color: cfg.color, fontSize: 11, fontWeight: 700 }}>{currentQ.module}</span>
             <span style={{
               padding: "4px 10px", borderRadius: 100, fontSize: 11, fontWeight: 700,
-              background: currentQ.difficulty === "easy" ? "#DCFCE7" : currentQ.difficulty === "medium" ? "#FEF9C3" : "#FEE2E2",
-              color: currentQ.difficulty === "easy" ? "#15803D" : currentQ.difficulty === "medium" ? "#A16207" : "#B91C1C",
-            }}>{currentQ.difficulty}</span>
+              background: (currentQ.difficulty ?? 'medium') === "easy" ? "#DCFCE7" : (currentQ.difficulty ?? 'medium') === "medium" ? "#FEF9C3" : "#FEE2E2",
+              color: (currentQ.difficulty ?? 'medium') === "easy" ? "#15803D" : (currentQ.difficulty ?? 'medium') === "medium" ? "#A16207" : "#B91C1C",
+            }}>{(currentQ.difficulty ?? 'medium')}</span>
             <span style={{ padding: "4px 10px", borderRadius: 100, background: "#F1F5F9", color: "#64748B", fontSize: 11, fontWeight: 600 }}>Q{currentIdx + 1}/{EXAM_QUESTIONS}</span>
             <button
               onClick={toggleFlag}
@@ -608,9 +613,9 @@ export default function Class1MockExam() {
             </button>
           </div>
 
-          {/* Question text */}
+          {/* DBQuestion text */}
           <div style={{ fontSize: 17, fontWeight: 600, color: "#0F172A", lineHeight: 1.65, marginBottom: 24 }}>
-            {currentQ.q}
+            {currentQ.question}
           </div>
 
           {/* Options */}

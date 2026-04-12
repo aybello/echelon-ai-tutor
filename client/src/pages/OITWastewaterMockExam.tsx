@@ -1,12 +1,10 @@
 // OIT WASTEWATER TREATMENT TIMED MOCK EXAM
 // 50 questions · 1-hour timer · 70% pass threshold · 8-module breakdown
 // Gate: requires oit-ww purchase pass
+import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Link } from "wouter";
-import {
-  CLASS1_WASTEWATER_QUESTIONS,
-  type Class1WastewaterQuestion,
-} from "@/lib/class1WastewaterQuestions";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import PurchaseGate from "@/components/PurchaseGate";
@@ -46,15 +44,15 @@ const EXAM_MODULE_TARGETS: Record<string, number> = {
   "Regulations, Safety & Operations": 6,
 };
 
-function selectExamQuestions(): Class1WastewaterQuestion[] {
-  const pool = [...CLASS1_WASTEWATER_QUESTIONS].sort(() => Math.random() - 0.5);
-  const selected: Class1WastewaterQuestion[] = [];
+function selectExamQuestions(questionPool: DBQuestion[]): DBQuestion[] {
+  const pool = [...questionPool].sort(() => Math.random() - 0.5);
+  const selected: DBQuestion[] = [];
   for (const [mod, target] of Object.entries(EXAM_MODULE_TARGETS)) {
-    const modQs = pool.filter(q => q.module === mod).slice(0, target);
+    const modQs = pool.filter((q: any) => q.module === mod).slice(0, target);
     selected.push(...modQs);
   }
-  const selectedIds = new Set(selected.map(q => q.id));
-  const remaining = pool.filter(q => !selectedIds.has(q.id));
+  const selectedIds = new Set(selected.map((q: any) => q.id));
+  const remaining = pool.filter((q: any) => !selectedIds.has(q.id));
   while (selected.length < EXAM_QUESTIONS && remaining.length > 0) {
     selected.push(remaining.shift()!);
   }
@@ -92,6 +90,11 @@ const PROVINCE_OPTIONS = [
 ];
 
 export default function OITWastewaterMockExam() {
+
+  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class1-wastewater");
+  
+  if (bankLoading) return <QuizSkeleton />;
+
   usePageMeta({
     title: "OIT Wastewater Treatment Timed Mock Exam",
     description: "50-question timed mock exam for the Ontario OIT Wastewater Treatment operator certification. 1-hour timer, 70% pass threshold, and full module breakdown on results.",
@@ -101,7 +104,7 @@ export default function OITWastewaterMockExam() {
 
   const [examState, setExamState] = useState<ExamState>("intro");
   const [reportModal, setReportModal] = useState<{ id: number; text: string; module: string } | null>(null);
-  const [questions, setQuestions]   = useState<Class1WastewaterQuestion[]>([]);
+  const [questions, setQuestions]   = useState<DBQuestion[]>([]);
   const [answers, setAnswers]       = useState<ExamAnswer[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [timeLeft, setTimeLeft]     = useState(EXAM_DURATION);
@@ -122,7 +125,7 @@ export default function OITWastewaterMockExam() {
   const [results, setResults] = useState<ResultsState | null>(null);
 
   const startExam = useCallback(() => {
-    const qs = selectExamQuestions();
+    const qs = selectExamQuestions(allQuestions);
     setQuestions(qs);
     setAnswers(qs.map((_, i) => ({ questionIndex: i, selected: null })));
     setCurrentIdx(0);
@@ -133,7 +136,7 @@ export default function OITWastewaterMockExam() {
 
   const handleSubmit = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
-    const correct = answers.filter((a, i) => a.selected === questions[i]?.correct).length;
+    const correct = answers.filter((a, i) => a.selected === (questions[i] as any)?.correctIndex).length;
     const passed  = correct / EXAM_QUESTIONS >= PASS_THRESHOLD;
     const timeTaken = EXAM_DURATION - timeLeft;
 
@@ -141,7 +144,7 @@ export default function OITWastewaterMockExam() {
     Object.keys(EXAM_MODULE_TARGETS).forEach(mod => {
       const modQs = questions.map((q, i) => ({ q, i })).filter(({ q }) => q.module === mod);
       moduleBreakdown[mod] = {
-        correct: modQs.filter(({ i }) => answers[i]?.selected === questions[i]?.correct).length,
+        correct: modQs.filter(({ i }) => answers[i]?.selected === (questions[i] as any)?.correctIndex).length,
         total: modQs.length,
       };
     });
@@ -352,7 +355,7 @@ export default function OITWastewaterMockExam() {
               <div style={{ marginTop: 16 }}>
                 {questions.map((q, i) => {
                   const userAns = answers[i]?.selected;
-                  const isCorrect = userAns === q.correct;
+                  const isCorrect = userAns === ((q as any).correctIndex ?? (q as any).correct);
                   const isSkipped = userAns === null;
                   const isFlaggedQ = flagged.includes(i);
                   return (
@@ -370,7 +373,7 @@ export default function OITWastewaterMockExam() {
                         </div>
                       )}
                       <div style={{ fontSize: 12, color: "#15803D", marginBottom: 6 }}>
-                        Correct: <strong>{q.options[q.correct]}</strong>
+                        Correct: <strong>{q.options[(q as any).correctIndex]}</strong>
                       </div>
                       {q.explanation && (
                         <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.5, whiteSpace: "pre-line", marginBottom: 4 }}>{q.explanation}</div>
@@ -379,7 +382,7 @@ export default function OITWastewaterMockExam() {
                         <ReviewAITutor
                           questionText={q.question}
                           options={q.options}
-                          correctIndex={q.correct}
+                          correctIndex={(q as any).correctIndex}
                           userAnswerIndex={isSkipped ? null : (userAns ?? null)}
                           explanation={q.explanation}
                           module={q.module}
@@ -451,7 +454,7 @@ export default function OITWastewaterMockExam() {
 
       {/* Main content */}
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px 16px", display: "grid", gridTemplateColumns: "1fr 200px", gap: 20, alignItems: "start" }}>
-        {/* Question card */}
+        {/* DBQuestion card */}
         <div style={{ background: "#fff", borderRadius: 16, padding: "28px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", border: "1px solid #E2E8F0" }}>
           {currentQ && (
             <>
@@ -467,7 +470,7 @@ export default function OITWastewaterMockExam() {
                 <span style={{ fontSize: 12, color: "#94A3B8" }}>Q{currentIdx + 1} of {EXAM_QUESTIONS}</span>
               </div>
 
-              {/* Question text */}
+              {/* DBQuestion text */}
               <p style={{ fontSize: 16, fontWeight: 600, color: "#0F172A", lineHeight: 1.6, marginBottom: 20 }}>
                 {currentQ.question}
               </p>
@@ -533,7 +536,7 @@ export default function OITWastewaterMockExam() {
           )}
         </div>
 
-        {/* Question navigator */}
+        {/* DBQuestion navigator */}
         <div style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 4 }}>
