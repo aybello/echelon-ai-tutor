@@ -1,7 +1,7 @@
 // ECHELON AI TUTOR — ReadinessScore Component
 // Design: Circular score ring with label and dot history strip
 
-import { HistoryEntry } from "@/lib/questions";
+import { HistoryEntry } from "@/lib/questionTypes";
 
 interface Props {
   history: HistoryEntry[];

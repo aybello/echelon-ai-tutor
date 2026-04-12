@@ -7,7 +7,7 @@
  */
 
 import { useState } from "react";
-import type { ModuleOverview } from "@/lib/moduleOverviews";
+import type { ModuleOverview } from "@/lib/questionTypes";
 
 interface ModuleOverviewProps {
   overview: ModuleOverview;

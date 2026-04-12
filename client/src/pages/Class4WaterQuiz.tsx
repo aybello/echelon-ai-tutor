@@ -42,6 +42,7 @@ export default function Class4WaterQuiz() {
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("class4-water");
   const allQuestions = dbQuestions as any[];
 
+
   // ── Quiz Mode & Settings ───────────────────────────────────────────────────
   const [quizMode, setQuizMode] = useState<QuizMode>("standard");
   const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
@@ -107,13 +108,8 @@ export default function Class4WaterQuiz() {
 
   const [history, setHistory]       = useState<HistoryEntry[]>([]);
   const [usedIds, setUsedIds]       = useState<Set<number | string>>(new Set());
-  const [current, setCurrent]       = useState<any | null>(() => {
-    // Trial phase: start with medium/hard questions
-    const trialPool = allQuestions.filter((q: any) => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
-    const startPool = trialPool.length >= 15 ? trialPool : allQuestions;
-    const q = startPool[Math.floor(Math.random() * startPool.length)];
-    return q ?? null;
-  });
+  const [current, setCurrent]       = useState<DBQuestion | null>(null);
+  const [initialized, setInitialized] = useState(false);
   const [selected, setSelected]     = useState<number | null>(null);
   const [confidence, setConfidence] = useState<number | null>(null);
   const [confirmed, setConfirmed]   = useState(false);
@@ -244,6 +240,16 @@ export default function Class4WaterQuiz() {
   }, [allQuestions, usedIds, calcOnly]);
 
 
+
+  // Set the first question once data loads
+  if (!bankLoading && allQuestions.length > 0 && !initialized) {
+    const trialPool = allQuestions.filter((q: any) => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
+    const startPool = trialPool.length >= 15 ? trialPool : allQuestions;
+    setCurrent(startPool[Math.floor(Math.random() * startPool.length)] ?? null);
+    setInitialized(true);
+  }
+
+  if (bankLoading) return <QuizSkeleton />;
 
   return (
       <QuizShell

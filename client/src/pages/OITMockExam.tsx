@@ -94,8 +94,6 @@ export default function OITMockExam() {
 
   const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("oit");
   
-  if (bankLoading) return <QuizSkeleton />;
-
   usePageMeta({
     title: "OIT Timed Mock Exam — Canadian Water & Wastewater",
     description: "100-question timed mock exam for the Operator-in-Training (OIT) certification. 2-hour timer, 70% pass threshold, and full module breakdown on results. For Ontario, BC, Alberta, and all Canadian provinces.",
@@ -430,6 +428,8 @@ export default function OITMockExam() {
 
   const isFlagged = flagged.includes(currentIdx);
   const isLastQ = currentIdx === questions.length - 1;
+
+  if (bankLoading) return <QuizSkeleton />;
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>

@@ -3,7 +3,7 @@
 // Philosophy: Professional SaaS — Clean Dark-Accent
 
 import { useState, useRef, useEffect } from "react";
-import { Question, HistoryEntry } from "@/lib/questions";
+import { Question, HistoryEntry } from "@/lib/questionTypes";
 import { trpc } from "@/lib/trpc";
 
 interface Props {

@@ -93,8 +93,6 @@ export default function OITWastewaterMockExam() {
 
   const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class1-wastewater");
   
-  if (bankLoading) return <QuizSkeleton />;
-
   usePageMeta({
     title: "OIT Wastewater Treatment Timed Mock Exam",
     description: "50-question timed mock exam for the Ontario OIT Wastewater Treatment operator certification. 1-hour timer, 70% pass threshold, and full module breakdown on results.",
@@ -429,6 +427,8 @@ export default function OITWastewaterMockExam() {
   }
 
   // ─── ACTIVE EXAM ─────────────────────────────────────────────────────────────
+  if (bankLoading) return <QuizSkeleton />;
+
   return (
     <div style={{ minHeight: "100vh", background: "#F8FAFC" }}>
       {/* Sticky timer bar */}

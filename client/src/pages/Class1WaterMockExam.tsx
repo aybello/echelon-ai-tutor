@@ -100,8 +100,6 @@ export default function Class1WaterMockExam() {
 
   const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class1-water");
   
-  if (bankLoading) return <QuizSkeleton />;
-
   usePageMeta({
     title: "Class 1 Water Treatment Timed Mock Exam",
     description: "100-question timed mock exam for the Ontario Class 1 Water Treatment operator certification. 2-hour timer, 70% pass threshold, and full module breakdown on results.",
@@ -431,6 +429,8 @@ export default function Class1WaterMockExam() {
   if (!currentQ) return null;
   const isFlagged = flagged.includes(currentIdx);
   const isLastQ   = currentIdx === questions.length - 1;
+
+  if (bankLoading) return <QuizSkeleton />;
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>

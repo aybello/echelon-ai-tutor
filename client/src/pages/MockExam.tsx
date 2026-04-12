@@ -174,8 +174,6 @@ export default function MockExam() {
 
   const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("oit");
   
-  if (bankLoading) return <QuizSkeleton />;
-
   const ALL_EXAM_QUESTIONS = [...allQuestions, ...EXTRA_QUESTIONS];
 
   const [examState, setExamState] = useState<ExamState>("intro");
@@ -453,6 +451,8 @@ export default function MockExam() {
   const currentQ = questions[currentIdx];
   const currentAnswer = answers[currentIdx]?.selected ?? null;
   const isFlagged = flagged.includes(currentIdx);
+
+  if (bankLoading) return <QuizSkeleton />;
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>

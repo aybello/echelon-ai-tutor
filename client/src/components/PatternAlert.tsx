@@ -1,7 +1,7 @@
 // ECHELON AI TUTOR — PatternAlert Component
 // Design: Amber warning card with "Ask Tutor" CTA
 
-import { PatternInsight } from "@/lib/questions";
+import { PatternInsight } from "@/lib/questionTypes";
 
 interface Props {
   patterns: PatternInsight[];

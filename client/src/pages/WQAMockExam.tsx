@@ -104,8 +104,6 @@ export default function WQAMockExam() {
 
   const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, formulaLinks, isLoading: bankLoading } = useQuestionBank("wqa");
   
-  if (bankLoading) return <QuizSkeleton />;
-
   usePageMeta({
     title: "WQA Timed Mock Exam — Water Quality Analyst",
     description: "100-question timed mock exam for the Ontario Water Quality Analyst (WQA) certification. 2-hour timer, 70% pass threshold, module breakdown on results.",
@@ -441,6 +439,8 @@ export default function WQAMockExam() {
 
   const modStyle = MODULE_COLORS[currentQ.module] ?? { bg: "#E0F2FE", color: "#0369A1" };
   const isFlagged = flagged.includes(currentIdx);
+
+  if (bankLoading) return <QuizSkeleton />;
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>

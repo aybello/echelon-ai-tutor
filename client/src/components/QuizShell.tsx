@@ -15,7 +15,7 @@ import { useState, useEffect, useRef, type ReactNode } from "react";
 import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
 import ModuleOverviewPanel from "@/components/ModuleOverview";
-import type { ModuleOverview } from "@/lib/moduleOverviews";
+import type { ModuleOverview } from "@/lib/questionTypes";
 import ConfidenceMeter from "@/components/ConfidenceMeter";
 import StepSolution from "@/components/StepSolution";
 import ReportErrorModal from "@/components/ReportErrorModal";

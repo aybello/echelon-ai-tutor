@@ -81,8 +81,6 @@ export default function Class1MockExam() {
 
   const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class1");
   
-  if (bankLoading) return <QuizSkeleton />;
-
   usePageMeta({
     title: "Class 1 Timed Mock Exam — Water & Wastewater",
     description: "100-question timed mock exam for Ontario Class 1 Water and Wastewater operator certification. 2-hour timer, 70% pass threshold, and full module breakdown on results.",
@@ -495,6 +493,8 @@ export default function Class1MockExam() {
   const answeredCount = answers.filter(a => a.selected !== null).length;
   const unansweredCount = EXAM_QUESTIONS - answeredCount;
   const timerWarning = timeLeft < 600; // last 10 minutes
+
+  if (bankLoading) return <QuizSkeleton />;
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>

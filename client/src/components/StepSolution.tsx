@@ -1,7 +1,7 @@
 // ECHELON AI TUTOR — StepSolution Component
 // Design: Numbered steps with monospace code blocks + tip callout
 
-import { Step } from "@/lib/questions";
+import { Step } from "@/lib/questionTypes";
 
 interface Props {
   steps: Step[];

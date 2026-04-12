@@ -31,6 +31,7 @@ export default function WpiClass2WaterCollQuiz() {
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class2-wastewater-coll");
   const allQuestions = dbQuestions as any[];
 
+
   // ── Quiz Mode & Settings ───────────────────────────────────────────────────
   const [quizMode, setQuizMode] = useState<QuizMode>("standard");
   const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
@@ -95,6 +96,7 @@ export default function WpiClass2WaterCollQuiz() {
   const [selectedModule, setSelectedModule] = useState<string | null>(null);
   const [calcOnly, setCalcOnly] = useState(false);
   const [trialDone, setTrialDone] = useState(false);
+  const [initialized, setInitialized] = useState(false);
   function getPool() {
     return allQuestions
       .filter((q: any) => !selectedModule || q.module === selectedModule)
@@ -150,6 +152,17 @@ export default function WpiClass2WaterCollQuiz() {
     setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
   }
   const correctCount = history.filter(h => h.correct).length;
+
+
+  // Set the first question once data loads
+  if (!bankLoading && allQuestions.length > 0 && !initialized) {
+    const trialPool = allQuestions.filter((q: any) => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
+    const startPool = trialPool.length >= 15 ? trialPool : allQuestions;
+    setCurrent(startPool[Math.floor(Math.random() * startPool.length)] ?? null);
+    setInitialized(true);
+  }
+
+  if (bankLoading) return <QuizSkeleton />;
 
   return (
       <QuizShell
