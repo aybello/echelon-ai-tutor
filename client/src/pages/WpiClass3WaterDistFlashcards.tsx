@@ -1,9 +1,14 @@
+import { useQuestionBank } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 import PurchaseGate from "@/components/PurchaseGate";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
-import { wpiClass3WaterDistQuestions, WPI_CLASS3_WATER_DIST_MODULES } from "@/lib/wpiClass3WaterDistQuestions";
 import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
 
 export default function WpiClass3WaterDistFlashcards() {
+
+  const { questions, modules, isLoading } = useQuestionBank("wpi-class3-water-dist");
+  if (isLoading) return <QuizSkeleton />;
+
   return (
     <FlashcardErrorBoundary examName="WPI Class III Water Distribution" backPath="/wpi-class3-water-dist">
       <PurchaseGate
@@ -13,11 +18,11 @@ export default function WpiClass3WaterDistFlashcards() {
         price={99}
       >
         <FlashcardShell
-          questions={wpiClass3WaterDistQuestions as unknown as FlashcardQuestion[]}
+          questions={questions as unknown as FlashcardQuestion[]}
           examName="WPI Class III Water Distribution"
           examType="wpi-class3-water-dist"
           backPath="/wpi-class3-water-dist"
-          modules={WPI_CLASS3_WATER_DIST_MODULES as unknown as string[]}
+          modules={modules as unknown as string[]}
         />
       </PurchaseGate>
     </FlashcardErrorBoundary>

@@ -1,10 +1,15 @@
+import { useQuestionBank } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 import PurchaseGate from "@/components/PurchaseGate";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
-import { QUESTIONS as CLASS4_WATER_QUESTIONS, CLASS4_WATER_MODULES } from "@/lib/class4WaterQuestions";
 import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
 
 
 export default function Class4WaterFlashcards() {
+
+  const { questions, modules, isLoading } = useQuestionBank("class4-water");
+  if (isLoading) return <QuizSkeleton />;
+
   return (
     <FlashcardErrorBoundary examName="Ontario Class 4 Water" backPath="/class4-water">
       <PurchaseGate
@@ -14,11 +19,11 @@ export default function Class4WaterFlashcards() {
         price={299}
       >
         <FlashcardShell
-          questions={CLASS4_WATER_QUESTIONS as unknown as FlashcardQuestion[]}
+          questions={questions as unknown as FlashcardQuestion[]}
           examName="Ontario Class 4 Water"
           examType="class4-water"
           backPath="/class4-water"
-          modules={CLASS4_WATER_MODULES as unknown as string[]}
+          modules={modules as unknown as string[]}
         />
       </PurchaseGate>
     </FlashcardErrorBoundary>

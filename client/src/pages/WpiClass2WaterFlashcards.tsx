@@ -1,10 +1,15 @@
+import { useQuestionBank } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 import PurchaseGate from "@/components/PurchaseGate";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
-import { wpiClass2WaterQuestions, WPI_CLASS2_WATER_MODULES } from "@/lib/wpiClass2WaterQuestions";
 import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
 
 
 export default function WpiClass2WaterFlashcards() {
+
+  const { questions, modules, isLoading } = useQuestionBank("wpi-class2-water");
+  if (isLoading) return <QuizSkeleton />;
+
   return (
     <FlashcardErrorBoundary examName="WPI Class II Water" backPath="/wpi-class2-water">
       <PurchaseGate
@@ -14,11 +19,11 @@ export default function WpiClass2WaterFlashcards() {
         price={149}
       >
         <FlashcardShell
-          questions={wpiClass2WaterQuestions as unknown as FlashcardQuestion[]}
+          questions={questions as unknown as FlashcardQuestion[]}
           examName="WPI Class II Water"
           examType="wpi-class2-water"
           backPath="/wpi-class2-water"
-          modules={WPI_CLASS2_WATER_MODULES as unknown as string[]}
+          modules={modules as unknown as string[]}
         />
       </PurchaseGate>
     </FlashcardErrorBoundary>

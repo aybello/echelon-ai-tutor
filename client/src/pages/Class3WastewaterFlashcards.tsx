@@ -1,10 +1,15 @@
+import { useQuestionBank } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 import PurchaseGate from "@/components/PurchaseGate";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
-import { CLASS3_WW_QUESTIONS, CLASS3_WW_MODULES } from "@/lib/class3WastewaterQuestions";
 import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
 
 
 export default function Class3WastewaterFlashcards() {
+
+  const { questions, modules, isLoading } = useQuestionBank("class3-wastewater");
+  if (isLoading) return <QuizSkeleton />;
+
   return (
     <FlashcardErrorBoundary examName="Ontario Class 3 Wastewater" backPath="/class3-ww">
       <PurchaseGate
@@ -14,11 +19,11 @@ export default function Class3WastewaterFlashcards() {
         price={249}
       >
         <FlashcardShell
-          questions={CLASS3_WW_QUESTIONS as unknown as FlashcardQuestion[]}
+          questions={questions as unknown as FlashcardQuestion[]}
           examName="Ontario Class 3 Wastewater"
           examType="class3-ww"
           backPath="/class3-ww"
-          modules={CLASS3_WW_MODULES as unknown as string[]}
+          modules={modules as unknown as string[]}
         />
       </PurchaseGate>
     </FlashcardErrorBoundary>

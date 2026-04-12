@@ -1,10 +1,15 @@
+import { useQuestionBank } from "@/hooks/useQuestionBank";
+import QuizSkeleton from "@/components/QuizSkeleton";
 import PurchaseGate from "@/components/PurchaseGate";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
-import { wpiClass3WastewaterQuestions, WPI_CLASS3_WASTEWATER_MODULES } from "@/lib/wpiClass3WastewaterQuestions";
 import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
 
 
 export default function WpiClass3WastewaterFlashcards() {
+
+  const { questions, modules, isLoading } = useQuestionBank("wpi-class3-wastewater");
+  if (isLoading) return <QuizSkeleton />;
+
   return (
     <FlashcardErrorBoundary examName="WPI Class III Wastewater" backPath="/wpi-class3-wastewater">
       <PurchaseGate
@@ -14,11 +19,11 @@ export default function WpiClass3WastewaterFlashcards() {
         price={249}
       >
         <FlashcardShell
-          questions={wpiClass3WastewaterQuestions as unknown as FlashcardQuestion[]}
+          questions={questions as unknown as FlashcardQuestion[]}
           examName="WPI Class III Wastewater"
           examType="wpi-class3-wastewater"
           backPath="/wpi-class3-wastewater"
-          modules={WPI_CLASS3_WASTEWATER_MODULES as unknown as string[]}
+          modules={modules as unknown as string[]}
         />
       </PurchaseGate>
     </FlashcardErrorBoundary>
