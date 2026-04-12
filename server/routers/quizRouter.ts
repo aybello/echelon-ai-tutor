@@ -4,11 +4,99 @@
  */
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { questionAttempts, studentProfiles } from "../../drizzle/schema";
+import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews } from "../../drizzle/schema";
 import { and, eq, desc, sql } from "drizzle-orm";
 import { z } from "zod";
 
 export const quizRouter = router({
+  /**
+   * getQuestions — fetch all questions for a given bank key.
+   * Returns the full question array needed by quiz/mock/flashcard pages.
+   */
+  getQuestions: publicProcedure
+    .input(z.object({ bankKey: z.string().min(1).max(64) }))
+    .query(async ({ input }) => {
+      try {
+        const db = await getDb();
+        if (!db) return { questions: [] };
+        const rows = await db
+          .select()
+          .from(questions)
+          .where(eq(questions.bankKey, input.bankKey))
+          .orderBy(questions.questionNum);
+        // Parse JSON fields back into objects
+        return {
+          questions: rows.map(r => ({
+            id: r.questionNum,
+            module: r.module,
+            difficulty: r.difficulty,
+            question: r.question,
+            options: JSON.parse(r.options) as string[],
+            correctIndex: r.correctIndex,
+            explanation: r.explanation,
+            steps: r.steps ? JSON.parse(r.steps) as { l: string; c: string }[] : undefined,
+            tip: r.tip ?? undefined,
+            isCalc: r.isCalc === 'yes',
+            topic: r.topic ?? undefined,
+          })),
+        };
+      } catch (err) {
+        console.error("[quizRouter.getQuestions] Error:", err);
+        return { questions: [] };
+      }
+    }),
+
+  /**
+   * getBankMeta — fetch metadata (modules, moduleTargets, formulaLinks) for a bank.
+   */
+  getBankMeta: publicProcedure
+    .input(z.object({ bankKey: z.string().min(1).max(64) }))
+    .query(async ({ input }) => {
+      try {
+        const db = await getDb();
+        if (!db) return null;
+        const rows = await db
+          .select()
+          .from(questionBankMeta)
+          .where(eq(questionBankMeta.bankKey, input.bankKey))
+          .limit(1);
+        if (rows.length === 0) return null;
+        const row = rows[0];
+        return {
+          bankKey: row.bankKey,
+          modules: JSON.parse(row.modules) as string[],
+          moduleTargets: row.moduleTargets ? JSON.parse(row.moduleTargets) as Record<string, number> : null,
+          formulaLinks: row.formulaLinks ? JSON.parse(row.formulaLinks) as Record<string, string> : null,
+          totalQuestions: row.totalQuestions,
+        };
+      } catch (err) {
+        console.error("[quizRouter.getBankMeta] Error:", err);
+        return null;
+      }
+    }),
+
+  /**
+   * getModuleOverviews — fetch module overview study content for a bank.
+   */
+  getModuleOverviews: publicProcedure
+    .input(z.object({ bankKey: z.string().min(1).max(64) }))
+    .query(async ({ input }) => {
+      try {
+        const db = await getDb();
+        if (!db) return null;
+        const rows = await db
+          .select()
+          .from(moduleOverviews)
+          .where(eq(moduleOverviews.bankKey, input.bankKey))
+          .limit(1);
+        if (rows.length === 0) return null;
+        return JSON.parse(rows[0].overviewsJson);
+      } catch (err) {
+        console.error("[quizRouter.getModuleOverviews] Error:", err);
+        return null;
+      }
+    }),
+
   /**
    * logAttempt — silently logs every quiz answer for topic tracking and missed questions.
    * Called on every confirm() in QuizShell. Fails silently if unauthenticated (guest users).

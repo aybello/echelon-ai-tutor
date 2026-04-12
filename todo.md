@@ -491,3 +491,37 @@
 - [x] Fix low-contrast text: #94A3B8 → #64748B on white, rgba(0.4) → rgba(0.65) on dark
 - [x] Add htmlFor/id to all select elements (Landing, OITWastewaterMockExam, ChemCalc, NationalWaitlistModal)
 - [x] JSON-LD structured data — already present in index.html
+
+## Database Migration: Questions + Overviews (Apr 12, 2026)
+- [ ] Phase 1: Add questions, questionBankMeta, moduleOverviews tables to schema
+- [ ] Phase 1: Run pnpm db:push to create tables
+- [ ] Phase 1: Write and run seed script for all 14,000+ questions
+- [ ] Phase 1: Seed module overviews into database
+- [ ] Phase 1: Verify row counts match source files
+- [ ] Phase 2: Add getQuestions tRPC procedure
+- [ ] Phase 2: Add getBankMeta tRPC procedure
+- [ ] Phase 2: Add getModuleOverviews tRPC procedure
+- [ ] Phase 2: Create useQuestionBank hook
+- [ ] Phase 2: Create QuizSkeleton loading component
+- [ ] Phase 2: Write Vitest tests for new procedures
+- [ ] Phase 3: Migrate all 26 quiz pages to useQuestionBank hook
+- [ ] Phase 4: Migrate all 29 mock exam pages
+- [ ] Phase 5: Migrate all 27 flashcard pages
+- [ ] Phase 6: Delete 26 question TypeScript files + moduleOverviews.ts
+- [ ] Phase 6: Verify bundle size < 120KB gzipped
+- [ ] Phase 6: Run Lighthouse and confirm performance improvement
+- [ ] Phase 6: End-to-end testing of all quiz modes
+- [ ] Phase 6: Deploy
+
+## Database Migration: Questions + Overviews (Apr 12, 2026)
+- [ ] Phase 1: Add questions, questionBankMeta, moduleOverviews tables to schema
+- [ ] Phase 1: Run pnpm db:push to create tables
+- [ ] Phase 1: Write and run seed script
+- [ ] Phase 1: Seed module overviews
+- [ ] Phase 1: Verify row counts
+- [ ] Phase 2: Add tRPC procedures
+- [ ] Phase 2: Create useQuestionBank hook + QuizSkeleton
+- [ ] Phase 3: Migrate 26 quiz pages
+- [ ] Phase 4: Migrate 29 mock exam pages
+- [ ] Phase 5: Migrate 27 flashcard pages
+- [ ] Phase 6: Delete old files, verify bundle, Lighthouse, deploy

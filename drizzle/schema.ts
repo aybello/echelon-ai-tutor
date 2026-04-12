@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -192,3 +192,57 @@ export const qotdCompletions = mysqlTable("qotd_completions", {
 });
 export type QotdCompletion = typeof qotdCompletions.$inferSelect;
 export type InsertQotdCompletion = typeof qotdCompletions.$inferInsert;
+
+/** Questions — all 14,000+ exam questions stored in the database instead of JS bundles */
+export const questions = mysqlTable("questions", {
+  id: int("id").autoincrement().primaryKey(),
+  bankKey: varchar("bankKey", { length: 64 }).notNull(),
+    // e.g. "class1-water", "wpi-class2-wastewater-coll", "wqa"
+  questionNum: int("questionNum").notNull(),
+    // original per-bank sequential ID (1, 2, 3...) — matches questionAttempts.questionId
+  module: varchar("module", { length: 128 }).notNull(),
+  difficulty: varchar("difficulty", { length: 16 }),
+    // null for WPI banks that don't have difficulty
+  question: text("question").notNull(),
+  options: text("options").notNull(),
+    // JSON array of option strings: ["option1", "option2", "option3", "option4"]
+  correctIndex: int("correctIndex").notNull(),
+    // 0=A, 1=B, 2=C, 3=D
+  explanation: text("explanation").notNull(),
+  steps: text("steps"),
+    // JSON: [{ "l": "label", "c": "content" }] or null
+  tip: text("tip"),
+  isCalc: mysqlEnum("isCalc", ["yes", "no"]).default("no").notNull(),
+  topic: varchar("topic", { length: 128 }),
+}, (table) => [uniqueIndex("bank_question_idx").on(table.bankKey, table.questionNum)]);
+
+export type QuestionRow = typeof questions.$inferSelect;
+export type InsertQuestion = typeof questions.$inferInsert;
+
+/** Question bank metadata — module lists, module targets, formula links per bank */
+export const questionBankMeta = mysqlTable("question_bank_meta", {
+  id: int("id").autoincrement().primaryKey(),
+  bankKey: varchar("bankKey", { length: 64 }).notNull().unique(),
+  modules: text("modules").notNull(),
+    // JSON array of module names or objects
+  moduleTargets: text("moduleTargets"),
+    // JSON: { "Treatment Process": 32, ... } or null
+  formulaLinks: text("formulaLinks"),
+    // JSON: { "WQA-M001": "/formulas-wqa#..." } or null
+  totalQuestions: int("totalQuestions").notNull(),
+});
+
+export type QuestionBankMetaRow = typeof questionBankMeta.$inferSelect;
+export type InsertQuestionBankMeta = typeof questionBankMeta.$inferInsert;
+
+/** Module overviews — study guide text per bank+module, previously in moduleOverviews.ts */
+export const moduleOverviews = mysqlTable("module_overviews", {
+  id: int("id").autoincrement().primaryKey(),
+  bankKey: varchar("bankKey", { length: 64 }).notNull(),
+  overviewsJson: text("overviewsJson").notNull(),
+    // JSON: the full overviews object for this bank
+    // e.g. { "Water Sources & Quality": { title, content, keyPoints, formulas } }
+}, (table) => [uniqueIndex("bank_overview_idx").on(table.bankKey)]);
+
+export type ModuleOverviewRow = typeof moduleOverviews.$inferSelect;
+export type InsertModuleOverview = typeof moduleOverviews.$inferInsert;

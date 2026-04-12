@@ -127,6 +127,20 @@
       "when": 1775866928846,
       "tag": "0017_tiresome_lorna_dane",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "5",
+      "when": 1775970072215,
+      "tag": "0018_famous_jackal",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "5",
+      "when": 1775970429022,
+      "tag": "0019_burly_outlaw_kid",
+      "breakpoints": true
     }
   ]
 }
