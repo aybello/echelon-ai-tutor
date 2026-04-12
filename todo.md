@@ -519,3 +519,6 @@
 - [x] Phase 4: 29 mock exam pages migrated
 - [x] Phase 5: 27 flashcard pages migrated
 - [x] Phase 6: Old files deleted, bundle 593KB→287KB gzip, all modes tested
+
+## Bug Fixes
+- [x] Homepage tab navigation: clicking back from a quiz/exam should return to the same course tab (e.g., Wastewater Collection, Water Distribution) the user was on, not reset to default Water Treatment tab

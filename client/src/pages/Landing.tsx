@@ -1071,7 +1071,20 @@ export default function Landing() {
   const updateProvinceMutation = trpc.auth.updateProvince.useMutation();
   // Default active track based on province: WPI for western provinces, ontario water for ON
   const defaultTrack = (province === "bc" || province === "ab" || province === "sk" || province === "mb") ? "wpi-water" : "water";
-  const [activeTrack, setActiveTrack] = useState<"water" | "wastewater" | "wqa" | "wpi-water" | "wpi-wastewater" | "wpi-dist" | "wpi-coll">(defaultTrack as any);
+  // Restore tab from URL hash so browser back-button returns to the correct tab
+  const validTracks = ["water", "wastewater", "wqa", "wpi-water", "wpi-wastewater", "wpi-dist", "wpi-coll"] as const;
+  type Track = typeof validTracks[number];
+  const getInitialTrack = (): Track => {
+    const hash = window.location.hash.replace("#", "");
+    if (validTracks.includes(hash as Track)) return hash as Track;
+    return defaultTrack as Track;
+  };
+  const [activeTrack, setActiveTrackRaw] = useState<Track>(getInitialTrack);
+  const setActiveTrack = (track: Track) => {
+    setActiveTrackRaw(track);
+    // Update URL hash without triggering a scroll or navigation
+    window.history.replaceState(null, "", `/#${track}`);
+  };
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [nationalWaitlistOpen, setNationalWaitlistOpen] = useState(false);
   const [nationalWaitlistProvince, setNationalWaitlistProvince] = useState("");
