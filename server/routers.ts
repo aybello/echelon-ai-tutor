@@ -12,6 +12,7 @@ import { adminRouter } from "./routers/admin";
 import { stripeRouter } from "./routers/stripeRouter";
 import { flashcardRouter } from "./routers/flashcardRouter";
 import { quizRouter } from "./routers/quizRouter";
+import { dashboardRouter } from "./routers/dashboardRouter";
 import { sendContactEmail } from "./email";
 
 export const appRouter = router({
@@ -21,6 +22,7 @@ export const appRouter = router({
   stripe: stripeRouter,
   flashcard: flashcardRouter,
   quiz: quizRouter,
+  dashboard: dashboardRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

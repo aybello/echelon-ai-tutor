@@ -105,6 +105,7 @@ export const NAV_LINKS = [
   { label: "🗺️ Career Map",    href: "/career" },
   { label: "📋 Mock Exam",     href: "/oit-mock" },
   { label: "ℹ️ About",         href: "/about" },
+  { label: "📊 Dashboard",      href: "/dashboard" },
   { label: "🎫 My Passes",      href: "/account" },
 ];
 
@@ -196,6 +197,7 @@ const DRAWER_SECTIONS = [
       { label: "🔩 Collection Guide", href: "/collection-guide" },
       { label: "📐 Formulas", href: "/formulas" },
       { label: "🗺️ Career Map", href: "/career" },
+      { label: "📊 Dashboard", href: "/dashboard" },
       { label: "🎫 My Passes", href: "/account" },
     ],
   },

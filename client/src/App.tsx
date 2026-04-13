@@ -36,6 +36,7 @@ const WastewaterCollectionGuide = lazy(() => import("./pages/WastewaterCollectio
 // Admin / account
 const Admin = lazy(() => import("./pages/Admin"));
 const Account = lazy(() => import("./pages/Account"));
+const StudentDashboard = lazy(() => import("./pages/StudentDashboard"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const PurchaseSuccess = lazy(() => import("./pages/PurchaseSuccess"));
 const WpiLanding = lazy(() => import("./pages/WpiLanding"));
@@ -310,6 +311,7 @@ function Router() {
         <Route path={"/pricing"} component={Pricing} />
         <Route path={"/purchase-success"} component={PurchaseSuccess} />
         <Route path={"/account"} component={Account} />
+        <Route path={"/dashboard"} component={StudentDashboard} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>

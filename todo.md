@@ -547,3 +547,9 @@
 
 ## Difficulty Backfill
 - [x] Backfill difficulty values for all 14 WPI banks (~6,500 questions) using LLM classification
+
+## Student Performance Dashboard
+- [ ] Build backend tRPC procedures for dashboard stats (accuracy by topic, daily activity, streak, exam readiness)
+- [ ] Build frontend dashboard page with charts and performance metrics
+- [ ] Wire route and navigation link to dashboard
+- [ ] Test dashboard with real data
