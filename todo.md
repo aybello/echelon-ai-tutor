@@ -556,3 +556,5 @@
 - [x] Add dashboard link to top nav bar for logged-in users
 - [x] Add dashboard CTA on landing page for signed-in users
 - [x] Fix SQL error in dashboard dailyActivity query (SUM correct = yes fails in MySQL)
+- [ ] Fix About link in landing page nav to scroll to About section instead of navigating to quiz About page
+- [x] Add Student Performance Dashboard to platform changelog on /about page

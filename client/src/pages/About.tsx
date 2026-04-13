@@ -255,6 +255,13 @@ export default function About() {
             {
               date: "April 2026",
               badge: "New",
+              badgeColor: "#0F766E",
+              title: "Student Performance Dashboard",
+              body: "Track your study progress in one place. The new dashboard shows total questions answered, overall accuracy, current and longest streaks, a 30-day activity chart, topic-by-topic accuracy breakdown, difficulty distribution, per-course progress, and recent session history. Access it from the top nav after logging in.",
+            },
+            {
+              date: "April 2026",
+              badge: "New",
               badgeColor: "#6D28D9",
               title: "WPI Class III & IV Wastewater Treatment",
               body: "1,000+ new questions across 15 modules for senior and chief operator-level WPI Wastewater certification. Class III covers advanced BNR, membrane bioreactors, industrial pretreatment, advanced biosolids, and regulatory compliance (~500 questions). Class IV covers advanced process control, BNR & resource recovery, plant management, and strategic regulatory compliance (~500 questions). Both include timed mock exam, formula sheet, and AI Tutor.",
