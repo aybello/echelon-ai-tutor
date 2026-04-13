@@ -22,26 +22,32 @@ type ExamState = "intro" | "active" | "results";
 interface ExamAnswer { questionIndex: number; selected: number | null; }
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Wastewater Characteristics & Preliminary Treatment": { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Primary Treatment":      { bg: "#DCFCE7", color: "#15803D" },
-  "Secondary Treatment":    { bg: "#EDE9FE", color: "#6D28D9" },
-  "Biological Nutrient Removal": { bg: "#CCFBF1", color: "#0F766E" },
-  "Tertiary Treatment & Filtration": { bg: "#FEF9C3", color: "#A16207" },
-  "Disinfection":           { bg: "#FFEDD5", color: "#C2410C" },
-  "Solids Handling & Biosolids": { bg: "#FEE2E2", color: "#B91C1C" },
-  "Regulations, Safety & Operations": { bg: "#F0FDF4", color: "#166534" },
+  "Wastewater Characteristics & Sources": { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Preliminary & Primary Treatment":      { bg: "#DCFCE7", color: "#15803D" },
+  "Secondary & Biological Treatment":     { bg: "#EDE9FE", color: "#6D28D9" },
+  "Disinfection & Effluent Quality":       { bg: "#FFEDD5", color: "#C2410C" },
+  "Solids Handling & Biosolids":           { bg: "#FEE2E2", color: "#B91C1C" },
+  "Wastewater Collection Systems":         { bg: "#CCFBF1", color: "#0F766E" },
+  "Math & Calculations":                   { bg: "#FEF9C3", color: "#A16207" },
+  "Pumping & Hydraulics":                  { bg: "#E0E7FF", color: "#4338CA" },
+  "Ontario Regulations & Safety":          { bg: "#F0FDF4", color: "#166534" },
+  "Lab & Monitoring":                      { bg: "#FDF2F8", color: "#9D174D" },
+  "Nutrient Removal & Advanced Treatment": { bg: "#ECFDF5", color: "#047857" },
 };
 
-// Proportional module targets for 50 questions from 600-question bank
+// Proportional module targets for 50 questions from 550-question bank
 const EXAM_MODULE_TARGETS: Record<string, number> = {
-  "Wastewater Characteristics & Preliminary Treatment": 7,
-  "Primary Treatment":      6,
-  "Secondary Treatment":    8,
-  "Biological Nutrient Removal": 6,
-  "Tertiary Treatment & Filtration": 5,
-  "Disinfection":           5,
-  "Solids Handling & Biosolids": 7,
-  "Regulations, Safety & Operations": 6,
+  "Wastewater Characteristics & Sources": 5,
+  "Preliminary & Primary Treatment":      5,
+  "Secondary & Biological Treatment":     5,
+  "Disinfection & Effluent Quality":       5,
+  "Solids Handling & Biosolids":           5,
+  "Wastewater Collection Systems":         5,
+  "Math & Calculations":                   5,
+  "Pumping & Hydraulics":                  4,
+  "Ontario Regulations & Safety":          4,
+  "Lab & Monitoring":                      4,
+  "Nutrient Removal & Advanced Treatment": 3,
 };
 
 function selectExamQuestions(questionPool: DBQuestion[]): DBQuestion[] {
@@ -91,7 +97,7 @@ const PROVINCE_OPTIONS = [
 
 export default function OITWastewaterMockExam() {
 
-  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class1-wastewater");
+  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("oit-ww");
   
   usePageMeta({
     title: "OIT Wastewater Treatment Timed Mock Exam",

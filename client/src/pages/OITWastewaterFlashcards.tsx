@@ -7,13 +7,13 @@ import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
 
 export default function OITWastewaterFlashcards() {
 
-  const { questions, modules, isLoading } = useQuestionBank("class1-wastewater");
+  const { questions, modules, isLoading } = useQuestionBank("oit-ww");
   if (isLoading) return <QuizSkeleton />;
 
   return (
     <FlashcardErrorBoundary examName="OIT Wastewater" backPath="/oit-ww">
       <PurchaseGate
-        examType="class1-ww"
+        examType="oit-ww"
         productKey="oit-ww"
         productName="OIT Wastewater Practice Pass"
         price={49}
