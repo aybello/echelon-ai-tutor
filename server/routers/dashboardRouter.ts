@@ -57,21 +57,16 @@ export const dashboardRouter = router({
     const thirtyDaysAgo = new Date();
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-    const rows = await db
-      .select({
-        day: sql<string>`DATE(${questionAttempts.createdAt})`,
-        total: sql<number>`COUNT(*)`,
-        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
-      })
-      .from(questionAttempts)
-      .where(
-        and(
-          eq(questionAttempts.userId, ctx.user.id),
-          gte(questionAttempts.createdAt, thirtyDaysAgo)
-        )
-      )
-      .groupBy(sql`DATE(${questionAttempts.createdAt})`)
-      .orderBy(sql`DATE(${questionAttempts.createdAt})`);
+    const result = await db.execute(sql`
+      SELECT DATE(createdAt) AS day, COUNT(*) AS total,
+             SUM(CASE WHEN correct = 'yes' THEN 1 ELSE 0 END) AS correct
+      FROM question_attempts
+      WHERE userId = ${ctx.user.id}
+        AND createdAt >= ${thirtyDaysAgo}
+      GROUP BY DATE(createdAt)
+      ORDER BY DATE(createdAt)
+    `);
+    const rows = (result as any)[0] as Array<{ day: string; total: number; correct: number }>;
 
     return rows.map((r) => ({
       day: String(r.day),
