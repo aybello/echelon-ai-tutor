@@ -525,3 +525,6 @@
 
 ## Social / SEO
 - [x] Generate and deploy a proper 1200x630px Open Graph image for social share previews (iMessage, Twitter, LinkedIn, WhatsApp)
+
+## Tab Bar Redesign
+- [x] Collapse 7-tab course bar into 4 top-level tabs (Water Treatment, Wastewater, WQA, WPI) with a secondary WPI sub-filter row (Water / Wastewater / Distribution / Collection)

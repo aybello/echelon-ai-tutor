@@ -1073,6 +1073,9 @@ export default function Landing() {
   const defaultTrack = (province === "bc" || province === "ab" || province === "sk" || province === "mb") ? "wpi-water" : "water";
   // Restore tab from URL hash so browser back-button returns to the correct tab
   const validTracks = ["water", "wastewater", "wqa", "wpi-water", "wpi-wastewater", "wpi-dist", "wpi-coll"] as const;
+  // Top-level tab: 'wpi' is the parent for all 4 WPI sub-tracks
+  type TopTab = "water" | "wastewater" | "wqa" | "wpi";
+  type WpiSubTab = "wpi-water" | "wpi-wastewater" | "wpi-dist" | "wpi-coll";
   type Track = typeof validTracks[number];
   const getInitialTrack = (): Track => {
     const hash = window.location.hash.replace("#", "");
@@ -1084,6 +1087,18 @@ export default function Landing() {
     setActiveTrackRaw(track);
     // Update URL hash without triggering a scroll or navigation
     window.history.replaceState(null, "", `/#${track}`);
+  };
+  // Derive top-level tab from active track
+  const isWpiTrack = (t: Track): t is WpiSubTab => t.startsWith("wpi-");
+  const activeTopTab: TopTab = isWpiTrack(activeTrack) ? "wpi" : (activeTrack as TopTab);
+  // WPI sub-tab: default to wpi-water when entering WPI parent tab
+  const activeWpiSub: WpiSubTab = isWpiTrack(activeTrack) ? activeTrack : "wpi-water";
+  const handleTopTab = (tab: TopTab) => {
+    if (tab === "wpi") {
+      setActiveTrack(activeWpiSub);
+    } else {
+      setActiveTrack(tab as Track);
+    }
   };
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [nationalWaitlistOpen, setNationalWaitlistOpen] = useState(false);
@@ -1700,10 +1715,10 @@ export default function Landing() {
             Choose Your Certification Track
           </h2>
           <p style={{ fontSize: 16, color: "#64748B", maxWidth: 560, margin: "0 auto 32px" }}>
-            Six certification tracks — Ontario Water (5 levels), Ontario Wastewater (5 levels), WQA, plus WPI Water (Class I–IV), WPI Wastewater (Class I–IV), WPI Distribution (Class I–IV), and WPI Collection (Class I–IV) for BC, AB, SK, and MB operators. Every course includes 500+ practice questions and full AI Tutor access.
+            Four certification tracks — Ontario Water, Ontario Wastewater, WQA, and WPI (BC, AB, SK, MB). The WPI track covers Water, Wastewater, Distribution, and Collection at Class I–IV. Every course includes 500+ practice questions and full AI Tutor access.
           </p>
 
-          {/* Track Toggle */}
+          {/* Track Toggle — 4 top-level tabs */}
           <div
             className="landing-track-toggle"
             style={{
@@ -1711,11 +1726,11 @@ export default function Landing() {
             }}
           >
             <button
-              onClick={() => setActiveTrack("water")}
+              onClick={() => handleTopTab("water")}
               style={{
                 padding: "10px 20px", borderRadius: 10, border: "none",
-                background: activeTrack === "water" ? "#1D4ED8" : "transparent",
-                color: activeTrack === "water" ? "#fff" : "#64748B",
+                background: activeTopTab === "water" ? "#1D4ED8" : "transparent",
+                color: activeTopTab === "water" ? "#fff" : "#64748B",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                 transition: "all 0.2s", whiteSpace: "nowrap",
               }}
@@ -1723,11 +1738,11 @@ export default function Landing() {
               💧 Water Treatment
             </button>
             <button
-              onClick={() => setActiveTrack("wastewater")}
+              onClick={() => handleTopTab("wastewater")}
               style={{
                 padding: "10px 20px", borderRadius: 10, border: "none",
-                background: activeTrack === "wastewater" ? "#059669" : "transparent",
-                color: activeTrack === "wastewater" ? "#fff" : "#64748B",
+                background: activeTopTab === "wastewater" ? "#059669" : "transparent",
+                color: activeTopTab === "wastewater" ? "#fff" : "#64748B",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                 transition: "all 0.2s", whiteSpace: "nowrap",
               }}
@@ -1735,11 +1750,11 @@ export default function Landing() {
               ♻️ Wastewater
             </button>
             <button
-              onClick={() => setActiveTrack("wqa")}
+              onClick={() => handleTopTab("wqa")}
               style={{
                 padding: "10px 20px", borderRadius: 10, border: "none",
-                background: activeTrack === "wqa" ? "#7C3AED" : "transparent",
-                color: activeTrack === "wqa" ? "#fff" : "#64748B",
+                background: activeTopTab === "wqa" ? "#7C3AED" : "transparent",
+                color: activeTopTab === "wqa" ? "#fff" : "#64748B",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                 transition: "all 0.2s", whiteSpace: "nowrap",
               }}
@@ -1747,54 +1762,49 @@ export default function Landing() {
               🔬 WQA
             </button>
             <button
-              onClick={() => setActiveTrack("wpi-water")}
+              onClick={() => handleTopTab("wpi")}
               style={{
                 padding: "10px 20px", borderRadius: 10, border: "none",
-                background: activeTrack === "wpi-water" ? "#0369A1" : "transparent",
-                color: activeTrack === "wpi-water" ? "#fff" : "#64748B",
+                background: activeTopTab === "wpi" ? "#0369A1" : "transparent",
+                color: activeTopTab === "wpi" ? "#fff" : "#64748B",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                 transition: "all 0.2s", whiteSpace: "nowrap",
               }}
             >
-              🏔️ WPI Water
-            </button>
-            <button
-              onClick={() => setActiveTrack("wpi-wastewater")}
-              style={{
-                padding: "10px 20px", borderRadius: 10, border: "none",
-                background: activeTrack === "wpi-wastewater" ? "#B45309" : "transparent",
-                color: activeTrack === "wpi-wastewater" ? "#fff" : "#64748B",
-                fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.2s", whiteSpace: "nowrap",
-              }}
-            >
-              🌿 WPI Wastewater
-            </button>
-            <button
-              onClick={() => setActiveTrack("wpi-dist")}
-              style={{
-                padding: "10px 20px", borderRadius: 10, border: "none",
-                background: activeTrack === "wpi-dist" ? "#0369A1" : "transparent",
-                color: activeTrack === "wpi-dist" ? "#fff" : "#64748B",
-                fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.2s", whiteSpace: "nowrap",
-              }}
-            >
-              🚰 WPI Distribution
-            </button>
-            <button
-              onClick={() => setActiveTrack("wpi-coll")}
-              style={{
-                padding: "10px 20px", borderRadius: 10, border: "none",
-                background: activeTrack === "wpi-coll" ? "#065F46" : "transparent",
-                color: activeTrack === "wpi-coll" ? "#fff" : "#64748B",
-                fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.2s", whiteSpace: "nowrap",
-              }}
-            >
-              🔩 WPI Collection
+              🌐 WPI
             </button>
           </div>
+
+          {/* WPI sub-filter row — only visible when WPI parent tab is active */}
+          {activeTopTab === "wpi" && (
+            <div
+              style={{
+                display: "inline-flex", background: "#E0F2FE", borderRadius: 10, padding: 3, gap: 3,
+                marginTop: 10,
+              }}
+            >
+              {([
+                { id: "wpi-water" as WpiSubTab, label: "🏔️ Water", activeColor: "#0369A1" },
+                { id: "wpi-wastewater" as WpiSubTab, label: "🌿 Wastewater", activeColor: "#B45309" },
+                { id: "wpi-dist" as WpiSubTab, label: "🚰 Distribution", activeColor: "#0369A1" },
+                { id: "wpi-coll" as WpiSubTab, label: "🔩 Collection", activeColor: "#065F46" },
+              ] as const).map(sub => (
+                <button
+                  key={sub.id}
+                  onClick={() => setActiveTrack(sub.id)}
+                  style={{
+                    padding: "8px 16px", borderRadius: 8, border: "none",
+                    background: activeWpiSub === sub.id ? sub.activeColor : "transparent",
+                    color: activeWpiSub === sub.id ? "#fff" : "#0369A1",
+                    fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                    transition: "all 0.2s", whiteSpace: "nowrap",
+                  }}
+                >
+                  {sub.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
         </FadeUp>
 
