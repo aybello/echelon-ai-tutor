@@ -152,6 +152,7 @@ export default function OITWastewaterQuiz() {
     setUsedIds(s => new Set([...Array.from(s), (current as any).id]));
     setConfirmed(true);
     const newLen = history.length + 1;
+    if (quizMode === "quick10" && newLen >= 10) { setCurrent(null); return; }
     if (newLen >= SESSION_SIZE && !trialUnlocked) {
       setShowGate(true);
     }
@@ -159,6 +160,7 @@ export default function OITWastewaterQuiz() {
 
   // ── Next question ──────────────────────────────────────────────────────────
   const handleNext = useCallback(() => {
+    if (quizMode === "quick10" && history.length >= 10) { setCurrent(null); return; }
     if (history.length >= SESSION_SIZE && !trialUnlocked) {
       setShowGate(true);
       return;
@@ -276,7 +278,7 @@ export default function OITWastewaterQuiz() {
         history={history}
         correctCount={correctCount}
         wrongCount={wrongCount}
-        sessionSize={SESSION_SIZE}
+        sessionSize={quizMode === "quick10" ? 10 : SESSION_SIZE}
         modules={MODULE_CONFIG}
         selectedModule={selectedModule}
         onModuleChange={handleModuleChange}

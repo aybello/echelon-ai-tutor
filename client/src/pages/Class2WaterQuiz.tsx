@@ -143,6 +143,7 @@ export default function Class2WaterQuiz() {
 
   // ── Next question ─────────────────────────────────────────────────────────
   const handleNext = useCallback(() => {
+    if (quizMode === "quick10" && history.length >= 10) { setCurrent(null); return; }
     if (!trialUnlocked && history.length >= SESSION_SIZE) {
       setTrialDone(true);
       return;

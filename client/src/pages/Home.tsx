@@ -329,7 +329,7 @@ export default function Home() {
         history={history}
         correctCount={correctCount}
         wrongCount={wrongCount}
-        sessionSize={SESSION_SIZE}
+        sessionSize={quizMode === "quick10" ? 10 : SESSION_SIZE}
         modules={MODULE_CONFIG}
         selectedModule={selectedModule}
         onModuleChange={handleModuleChange}

@@ -153,7 +153,8 @@ export default function WpiClass1WaterQuiz() {
     // Log attempt for backend persistence (missed questions, topic tracking)
     logAttemptFn({ topic: current.module, questionId: current.id, correct: isCorrect, difficulty: (current as any).difficulty });
     if (!isCorrect) setTimeout(() => refetchMissed(), 500);
-        if (!trialUnlocked && newHistory.length >= SESSION_SIZE) {
+        if (quizMode === "quick10" && newHistory.length >= 10) { setCurrent(null); return; }
+    if (!trialUnlocked && newHistory.length >= SESSION_SIZE) {
       setTrialDone(true);
       return;
     }
@@ -215,7 +216,7 @@ export default function WpiClass1WaterQuiz() {
         history={history}
         correctCount={correctCount}
         wrongCount={history.length - correctCount}
-        sessionSize={SESSION_SIZE}
+        sessionSize={quizMode === "quick10" ? 10 : SESSION_SIZE}
         modules={MODULES}
         selectedModule={selectedModule}
         onModuleChange={handleModuleChange}
