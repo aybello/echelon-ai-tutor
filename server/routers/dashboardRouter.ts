@@ -29,7 +29,7 @@ export const dashboardRouter = router({
     const [accuracyRow] = await db
       .select({
         total: sql<number>`COUNT(*)`,
-        correct: sql<number>`SUM(${questionAttempts.correct} = 'yes')`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       })
       .from(questionAttempts)
       .where(eq(questionAttempts.userId, ctx.user.id));
@@ -61,7 +61,7 @@ export const dashboardRouter = router({
       .select({
         day: sql<string>`DATE(${questionAttempts.createdAt})`,
         total: sql<number>`COUNT(*)`,
-        correct: sql<number>`SUM(${questionAttempts.correct} = 'yes')`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       })
       .from(questionAttempts)
       .where(
@@ -139,7 +139,7 @@ export const dashboardRouter = router({
       .select({
         examType: questionAttempts.examType,
         total: sql<number>`COUNT(*)`,
-        correct: sql<number>`SUM(${questionAttempts.correct} = 'yes')`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       })
       .from(questionAttempts)
       .where(eq(questionAttempts.userId, ctx.user.id))
@@ -165,7 +165,7 @@ export const dashboardRouter = router({
       .select({
         difficulty: questionAttempts.difficulty,
         total: sql<number>`COUNT(*)`,
-        correct: sql<number>`SUM(${questionAttempts.correct} = 'yes')`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       })
       .from(questionAttempts)
       .where(eq(questionAttempts.userId, ctx.user.id))

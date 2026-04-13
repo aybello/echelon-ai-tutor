@@ -555,3 +555,4 @@
 - [ ] Test dashboard with real data
 - [x] Add dashboard link to top nav bar for logged-in users
 - [x] Add dashboard CTA on landing page for signed-in users
+- [x] Fix SQL error in dashboard dailyActivity query (SUM correct = yes fails in MySQL)
