@@ -108,7 +108,7 @@ export const quizRouter = router({
         topic: z.string().min(1).max(128),
         questionId: z.number().int().positive(),
         correct: z.boolean(),
-        difficulty: z.string().max(16).optional(),
+        difficulty: z.string().max(16).optional().nullable(),
         quizMode: z.enum(["standard", "quick10", "missed", "qotd"]).default("standard"),
         guestToken: z.string().max(64).optional(),
       })

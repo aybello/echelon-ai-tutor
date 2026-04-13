@@ -197,7 +197,7 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
       topic: params.topic,
       questionId: params.questionId,
       correct: params.correct,
-      difficulty: params.difficulty,
+      difficulty: params.difficulty ?? undefined,
       quizMode,
     });
   };

@@ -541,3 +541,6 @@
 
 ## Blurred Quiz Preview Behind Paywall
 - [x] Add blurred/faded quiz question preview behind QuizGate and PurchaseGate overlays
+
+## Bug Fix
+- [x] Fix TRPCClientError: difficulty is null instead of string on /wpi-class2-water mutations
