@@ -559,3 +559,5 @@
 - [ ] Fix About link in landing page nav to scroll to About section instead of navigating to quiz About page
 - [x] Add Student Performance Dashboard to platform changelog on /about page
 - [x] Fix Quick 10 mode — does not stop at 10 questions
+- [x] Fix Quick 10 off-by-one (stops at 11 instead of 10)
+- [x] Fix Quick 10 triggering paywall gate instead of session-complete screen

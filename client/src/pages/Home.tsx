@@ -146,16 +146,18 @@ export default function Home() {
     setUsedIds(s => new Set([...Array.from(s), current.id]));
     setConfirmed(true);
     logAttempt({ topic: current.module, questionId: current.id, correct: isCorrect, difficulty: current.difficulty ?? "medium" });
-    const effectiveSize = quizMode === "quick10" ? 10 : SESSION_SIZE;
-    if (updatedHistory.length >= effectiveSize && !trialUnlocked) {
+    if (quizMode !== "quick10" && updatedHistory.length >= SESSION_SIZE && !trialUnlocked) {
       setShowGate(true);
     }
   }, [selected, confidence, current, history, trialUnlocked, logAttempt, quizMode]);
 
   // ── Next question ──────────────────────────────────────────────────────────
   const handleNext = useCallback(() => {
-    const effectiveSize = quizMode === "quick10" ? 10 : SESSION_SIZE;
-    if (history.length >= effectiveSize && !trialUnlocked) {
+    if (quizMode === "quick10" && history.length >= 10) {
+      setCurrent(null);
+      return;
+    }
+    if (history.length >= SESSION_SIZE && !trialUnlocked) {
       setShowGate(true);
       return;
     }
