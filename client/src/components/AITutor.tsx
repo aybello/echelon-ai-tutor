@@ -354,10 +354,11 @@ Your approach:
           padding: "16px",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "flex-end",
           gap: 12,
         }}
       >
+        {/* Spacer pushes messages to bottom when few, collapses when many */}
+        <div style={{ marginTop: "auto" }} />
         {messages.map((m, i) => (
           <div
             key={i}

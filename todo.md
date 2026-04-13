@@ -573,3 +573,4 @@
 - [x] Fill WPI Class 3 Water Distribution bank to 590 questions (was 117, added 473)
 - [x] Fill WPI Class 4 Water Distribution bank to 610 questions (was 76, added 534)
 - [x] Reduce excessive whitespace in AI Tutor between prompt bar and answer area
+- [x] Fix AI Tutor content cut off at the very top on mobile (justifyContent: flex-end pushing content above viewport)
