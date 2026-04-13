@@ -569,3 +569,6 @@
 - [x] Verify all quiz pages use identical behavior across the board (172 tests passing, 0 TS errors)
 - [x] Fix OIT Wastewater quiz bank key — generated 550 dedicated oit-ww questions (11 modules) and updated all 3 pages
 - [x] Fix answer label doubling — strip baked-in letter prefixes (A./B./C./D.) from 4,371 questions in QuizShell, MockExamShell, FlashcardShell, AITutor
+- [x] Fill WPI Class 2 Water Distribution bank to 595 questions (was 136, added 459)
+- [x] Fill WPI Class 3 Water Distribution bank to 590 questions (was 117, added 473)
+- [x] Fill WPI Class 4 Water Distribution bank to 610 questions (was 76, added 534)
