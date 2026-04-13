@@ -522,3 +522,6 @@
 
 ## Bug Fixes
 - [x] Homepage tab navigation: clicking back from a quiz/exam should return to the same course tab (e.g., Wastewater Collection, Water Distribution) the user was on, not reset to default Water Treatment tab
+
+## Social / SEO
+- [x] Generate and deploy a proper 1200x630px Open Graph image for social share previews (iMessage, Twitter, LinkedIn, WhatsApp)
