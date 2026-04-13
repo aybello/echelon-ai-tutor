@@ -1,131 +1,111 @@
 /**
- * Quiz Page Smoke Tests
+ * Quiz Page Smoke Tests — Database Edition
  *
- * These tests guard against the "blank quiz / immediate paywall" bug that was
- * found on Class1Quiz, WQAQuiz, and Class3WaterQuiz.
+ * Verifies every question bank in the database has:
+ *   1. At least minCount rows (quiz would show paywall if 0)
+ *   2. A valid first question (question text, 4 options, correctIndex 0-3, explanation)
+ *   3. No out-of-range correctIndex values across all rows
+ *   4. All rows have exactly 4 options
  *
- * Root cause: if a question bank exports an empty array (or the wrong export
- * name), the quiz component initialises `current` to `null` and immediately
- * shows the paywall instead of a question card.
- *
- * Each test verifies that the question bank:
- *   1. Exports a non-empty array (questions exist)
- *   2. Every question has the four required fields: question text, 4 options,
- *      a correct index in range, and an explanation
- *   3. The correct index is within bounds (0–3) — an out-of-range value would
- *      silently mark every answer wrong and confuse users
+ * Queries the `questions` table directly via Drizzle — no static TS imports.
  */
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeAll } from "vitest";
+import { drizzle } from "drizzle-orm/mysql2";
+import { eq, sql } from "drizzle-orm";
+import { questions } from "../drizzle/schema";
 
-// ── OIT (original question bank) ──────────────────────────────────────────────
-import { QUESTIONS as OIT_QUESTIONS } from "../client/src/lib/questions";
+let db: ReturnType<typeof drizzle> | null = null;
 
-// ── Class 1 combined ──────────────────────────────────────────────────────────
-import { CLASS1_QUESTIONS } from "../client/src/lib/class1Questions";
+beforeAll(() => {
+  if (process.env.DATABASE_URL) {
+    db = drizzle(process.env.DATABASE_URL);
+  }
+});
 
-// ── Class 1 Water ─────────────────────────────────────────────────────────────
-import { CLASS1_WATER_QUESTIONS } from "../client/src/lib/class1WaterQuestions";
-
-// ── Class 1 Wastewater ────────────────────────────────────────────────────────
-import { CLASS1_WASTEWATER_QUESTIONS } from "../client/src/lib/class1WastewaterQuestions";
-
-// ── Class 2 Water ─────────────────────────────────────────────────────────────
-import { QUESTIONS as CLASS2_WATER_QUESTIONS } from "../client/src/lib/class2WaterQuestions";
-
-// ── Class 2 Wastewater ────────────────────────────────────────────────────────
-import { CLASS2_WW_QUESTIONS } from "../client/src/lib/class2WastewaterQuestions";
-
-// ── Class 3 Water ─────────────────────────────────────────────────────────────
-import { QUESTIONS as CLASS3_WATER_QUESTIONS } from "../client/src/lib/class3WaterQuestions";
-
-// ── Class 3 Wastewater ───────────────────────────────────────────────────────
-import { CLASS3_WW_QUESTIONS } from "../client/src/lib/class3WastewaterQuestions";
-
-// ── WQA ───────────────────────────────────────────────────────────────────────
-import { WQA_QUESTIONS } from "../client/src/lib/wqaQuestions";
-
-// ── Helper ────────────────────────────────────────────────────────────────────
-function smokeCheck(
-  label: string,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  questions: any[],
-  minCount: number,
-  opts: {
-    questionField?: string; // field name for question text
-    optionsField?: string;  // field name for options array
-    correctField?: string;  // field name for correct index
-  } = {}
-) {
-  const {
-    questionField = "question",
-    optionsField  = "options",
-    correctField  = "correct",
-  } = opts;
-
-  describe(`${label} — smoke test`, () => {
-    it(`exports at least ${minCount} questions (quiz would show paywall if 0)`, () => {
-      expect(Array.isArray(questions)).toBe(true);
-      expect(questions.length).toBeGreaterThanOrEqual(minCount);
+function smokeCheck(bankKey: string, minCount: number) {
+  describe(`${bankKey} — smoke test`, () => {
+    it(`has at least ${minCount} questions in the database`, async () => {
+      if (!db) { console.warn(`[smoke] Skipping ${bankKey}: DATABASE_URL not set`); return; }
+      const [row] = await db
+        .select({ cnt: sql<number>`COUNT(*)` })
+        .from(questions)
+        .where(eq(questions.bankKey, bankKey));
+      expect(Number(row.cnt)).toBeGreaterThanOrEqual(minCount);
     });
 
-    it("first question has required fields (question text, options, correct, explanation)", () => {
-      const q = questions[0];
-      expect(q, "first question is undefined — bank may be empty").toBeDefined();
-      expect(q[questionField], `missing "${questionField}" field`).toBeTruthy();
-      expect(Array.isArray(q[optionsField]), `missing "${optionsField}" array`).toBe(true);
-      expect(q[optionsField].length, "must have exactly 4 options").toBe(4);
-      expect(q[correctField], `missing "${correctField}" field`).toBeGreaterThanOrEqual(0);
-      expect(q[correctField], `"${correctField}" out of range`).toBeLessThanOrEqual(3);
-      expect(q.explanation, 'missing "explanation" field').toBeTruthy();
+    it("first question has required fields (question, options, correctIndex, explanation)", async () => {
+      if (!db) return;
+      const rows = await db.select().from(questions).where(eq(questions.bankKey, bankKey)).limit(1);
+      expect(rows.length, `No questions found for bank "${bankKey}"`).toBeGreaterThan(0);
+      const q = rows[0];
+      expect(
+        q.question,
+        `DATA BUG: bank "${bankKey}" has empty question text — re-seed this bank`
+      ).toBeTruthy();
+      const opts = JSON.parse(q.options) as string[];
+      expect(Array.isArray(opts), "options must be a JSON array").toBe(true);
+      expect(opts.length, "must have exactly 4 options").toBe(4);
+      expect(q.correctIndex, "correctIndex must be >= 0").toBeGreaterThanOrEqual(0);
+      expect(q.correctIndex, "correctIndex must be <= 3").toBeLessThanOrEqual(3);
+      expect(q.explanation, "missing explanation").toBeTruthy();
     });
 
-    it("all questions have correct index in range 0–3", () => {
-      for (const q of questions) {
-        expect(
-          q[correctField],
-          `Q id=${q.id ?? "?"} has out-of-range correct index: ${q[correctField]}`
-        ).toBeGreaterThanOrEqual(0);
-        expect(
-          q[correctField],
-          `Q id=${q.id ?? "?"} has out-of-range correct index: ${q[correctField]}`
-        ).toBeLessThanOrEqual(3);
-      }
+    it("all questions have correctIndex in range 0-3", async () => {
+      if (!db) return;
+      const [row] = await db
+        .select({ cnt: sql<number>`COUNT(*)` })
+        .from(questions)
+        .where(sql`${questions.bankKey} = ${bankKey} AND (${questions.correctIndex} < 0 OR ${questions.correctIndex} > 3)`);
+      expect(Number(row.cnt), "found questions with out-of-range correctIndex").toBe(0);
     });
 
-    it("all questions have 4 options", () => {
-      for (const q of questions) {
-        expect(
-          q[optionsField]?.length,
-          `Q id=${q.id ?? "?"} does not have 4 options`
-        ).toBe(4);
+    it("all questions have exactly 4 options", async () => {
+      if (!db) return;
+      const rows = await db
+        .select({ id: questions.id, options: questions.options, questionNum: questions.questionNum })
+        .from(questions)
+        .where(eq(questions.bankKey, bankKey));
+      for (const row of rows) {
+        const opts = JSON.parse(row.options) as unknown[];
+        expect(opts.length, `Q questionNum=${row.questionNum} in "${bankKey}" does not have 4 options`).toBe(4);
       }
     });
   });
 }
 
-// ── OIT uses "q" instead of "question" ───────────────────────────────────────
-smokeCheck("OIT Practice Quiz",        OIT_QUESTIONS,              400, { questionField: "q" });
+// Ontario tracks
+smokeCheck("oit",                400);
+smokeCheck("class1",             200);
+smokeCheck("class1-water",       200);
+smokeCheck("class1-wastewater",  200);
+smokeCheck("class2-water",       400);
+smokeCheck("class2-wastewater",  400);
+smokeCheck("class3-water",       400);
+smokeCheck("class3-wastewater",  480);
+smokeCheck("class4-water",       400);
+smokeCheck("class4-wastewater",  400);
+smokeCheck("wqa",                280);
 
-// ── Class 1 combined ──────────────────────────────────────────────────────────
-smokeCheck("Class 1 Combined Quiz",    CLASS1_QUESTIONS,           200, { questionField: "q" });
+// WPI Water tracks
+smokeCheck("wpi-class1-water",   400);
+smokeCheck("wpi-class2-water",   400);
+smokeCheck("wpi-class3-water",   400);
+smokeCheck("wpi-class4-water",   400);
 
-// ── Class 1 Water ─────────────────────────────────────────────────────────────
-smokeCheck("Class 1 Water Quiz",       CLASS1_WATER_QUESTIONS,     200);
+// WPI Wastewater tracks
+smokeCheck("wpi-class1-wastewater",  400);
+smokeCheck("wpi-class2-wastewater",  400);
+smokeCheck("wpi-class3-wastewater",  400);
+smokeCheck("wpi-class4-wastewater",  400);
 
-// ── Class 1 Wastewater ────────────────────────────────────────────────────────
-smokeCheck("Class 1 Wastewater Quiz",  CLASS1_WASTEWATER_QUESTIONS, 200);
+// WPI Distribution tracks
+smokeCheck("wpi-class1-water-dist",  60);
+smokeCheck("wpi-class2-water-dist",  60);
+smokeCheck("wpi-class3-water-dist",  60);
+smokeCheck("wpi-class4-water-dist",  60);
 
-// ── Class 2 Water ─────────────────────────────────────────────────────────────
-smokeCheck("Class 2 Water Quiz",       CLASS2_WATER_QUESTIONS,     200);
-
-// ── Class 2 Wastewater ────────────────────────────────────────────────────────
-smokeCheck("Class 2 WW Quiz",          CLASS2_WW_QUESTIONS,        400);
-
-// ── Class 3 Water ─────────────────────────────────────────────────────────────
-smokeCheck("Class 3 Water Quiz",       CLASS3_WATER_QUESTIONS,     400);
-
-// ── Class 3 Wastewater ───────────────────────────────────────────────────────
-smokeCheck("Class 3 WW Quiz",          CLASS3_WW_QUESTIONS,        480);
-
-// ── WQA ───────────────────────────────────────────────────────────────────────
-smokeCheck("WQA Quiz",                 WQA_QUESTIONS,              280, { correctField: "correctIndex" });
+// WPI Collection tracks
+smokeCheck("wpi-class1-wastewater-coll",  400);
+smokeCheck("wpi-class2-wastewater-coll",  400);
+smokeCheck("wpi-class3-wastewater-coll",  400);
+smokeCheck("wpi-class4-wastewater-coll",  400);

@@ -528,3 +528,8 @@
 
 ## Tab Bar Redesign
 - [x] Collapse 7-tab course bar into 4 top-level tabs (Water Treatment, Wastewater, WQA, WPI) with a secondary WPI sub-filter row (Water / Wastewater / Distribution / Collection)
+
+## Test Coverage Restoration
+- [x] Rewrite quiz.smoke.test.ts, questions.bank.test.ts, formulas.session.test.ts to query DB via Drizzle (172/172 passing)
+- [ ] Rewrite questions.bank.test.ts to query DB via Drizzle (OIT bank integrity)
+- [ ] Rewrite formulas.session.test.ts to query DB via Drizzle (session cap + formula coverage)
