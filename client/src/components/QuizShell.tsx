@@ -645,7 +645,9 @@ export default function QuizShell({
 
           {/* Answer options */}
           <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 16 }}>
-            {(current.options as string[]).map((opt: string, idx: number) => {
+            {(current.options as string[]).map((rawOpt: string, idx: number) => {
+              // Strip any baked-in letter prefix (e.g. "A. ", "B. ") to avoid doubling
+              const opt = rawOpt.replace(/^[A-Da-d][.):]\s*/, "");
               const isSelected = selected === idx;
               const isCorrect  = confirmed && idx === correctIdx;
               const isWrong    = confirmed && isSelected && idx !== correctIdx;

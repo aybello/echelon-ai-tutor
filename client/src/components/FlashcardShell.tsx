@@ -140,7 +140,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const card = deck[index] ?? null;
   const questionText = card ? getQText(card) : "";
   const correctIdx = card ? getCorrectIdx(card) : 0;
-  const answerText = card ? (card.options[correctIdx] ?? "") : "";
+  const answerText = card ? (card.options[correctIdx] ?? "").replace(/^[A-Da-d][.):]\s*/, "") : "";
   const explanation = card?.explanation ?? "";
   const difficulty = card?.difficulty ?? "medium";
   const diffStyle = DIFF_COLOR[difficulty] ?? DIFF_COLOR.medium;

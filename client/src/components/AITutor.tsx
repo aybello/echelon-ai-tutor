@@ -131,11 +131,11 @@ ${
 Current question: ${questionText}
 Module: ${question?.module}
 Type: ${(question as any)?.type ?? "conceptual"}
-Correct answer: ${correctIdx !== undefined ? question?.options[correctIdx] : "(not yet confirmed)"}
+Correct answer: ${correctIdx !== undefined ? question?.options[correctIdx]?.replace(/^[A-Da-d][.):]\s*/, "") : "(not yet confirmed)"}
 Explanation: ${question?.explanation}
 ${(question as any)?.formula ? `Formula: ${(question as any).formula}` : ""}
 ${question?.steps ? `Steps: ${question.steps.map((s, i) => `${i + 1}. ${s.l}: ${s.c}`).join(" | ")}` : ""}
-${userAnswer !== null ? `Student selected: ${question?.options[userAnswer ?? 0]} (${userAnswer === correctIdx ? "CORRECT" : "INCORRECT"})` : "Student hasn't answered yet."}
+${userAnswer !== null ? `Student selected: ${question?.options[userAnswer ?? 0]?.replace(/^[A-Da-d][.):]\s*/, "")} (${userAnswer === correctIdx ? "CORRECT" : "INCORRECT"})` : "Student hasn't answered yet."}
 ${userAnswer !== null && userAnswer !== correctIdx ? `Why student was wrong: ${(question as any)?.wrongExp?.[userAnswer ?? 0] ?? ""}` : ""}
 ${(question as any)?.tip ? `Operator tip: ${(question as any).tip}` : ""}`
 }

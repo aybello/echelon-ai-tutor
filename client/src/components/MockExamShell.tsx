@@ -26,9 +26,9 @@ function ReviewAITutor({ q, userAnswerIdx }: { q: ExamQuestion; userAnswerIdx: n
   const systemPrompt = `You are an expert water/wastewater treatment exam tutor. A student just reviewed this question and got it wrong. Explain clearly and concisely.
 
 Question: ${q.question}
-Options: ${q.options.map((o, i) => `${String.fromCharCode(65 + i)}. ${o}`).join("; ")}
-Correct Answer: ${String.fromCharCode(65 + q.correct)}. ${q.options[q.correct]}
-${userAnswerIdx !== null ? `Student's Answer: ${String.fromCharCode(65 + userAnswerIdx)}. ${q.options[userAnswerIdx]}` : "Student skipped this question."}
+Options: ${q.options.map((o, i) => `${String.fromCharCode(65 + i)}. ${o.replace(/^[A-Da-d][.):]\s*/, "")}`).join("; ")}
+Correct Answer: ${String.fromCharCode(65 + q.correct)}. ${q.options[q.correct].replace(/^[A-Da-d][.):]\s*/, "")}
+${userAnswerIdx !== null ? `Student's Answer: ${String.fromCharCode(65 + userAnswerIdx)}. ${q.options[userAnswerIdx].replace(/^[A-Da-d][.):]\s*/, "")}` : "Student skipped this question."}
 ${q.explanation ? `Hint: ${q.explanation}` : ""}
 Module: ${q.module}
 
@@ -660,9 +660,9 @@ export default function MockExamShell({
                       <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>Q{i + 1}. {q.question}</div>
                     </div>
                     {!wasSkipped && !isCorrect && (
-                      <div style={{ fontSize: 12, color: "#DC2626", marginBottom: 4 }}>Your answer: {q.options[a.selected!]}</div>
+                      <div style={{ fontSize: 12, color: "#DC2626", marginBottom: 4 }}>Your answer: {q.options[a.selected!].replace(/^[A-Da-d][.):]\s*/, "")}</div>
                     )}
-                    <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: q.explanation ? 4 : 0 }}>✓ {q.options[q.correct]}</div>
+                    <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: q.explanation ? 4 : 0 }}>✓ {q.options[q.correct].replace(/^[A-Da-d][.):]\s*/, "")}</div>
                     {q.explanation && (
                       <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line", marginBottom: 4 }}>{q.explanation}</div>
                     )}
@@ -762,7 +762,9 @@ export default function MockExamShell({
           </div>
           {/* Options */}
           <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
-            {currentQ.options.map((opt, i) => {
+            {currentQ.options.map((rawOpt, i) => {
+              // Strip any baked-in letter prefix (e.g. "A. ", "B. ") to avoid doubling
+              const opt = rawOpt.replace(/^[A-Da-d][.):]\s*/, "");
               const isSelected = answers[currentIdx]?.selected === i;
               return (
                 <button

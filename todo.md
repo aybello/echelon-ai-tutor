@@ -568,3 +568,4 @@
 - [x] Migrate WPI quiz pages (16 banks) to useQuizSession
 - [x] Verify all quiz pages use identical behavior across the board (172 tests passing, 0 TS errors)
 - [x] Fix OIT Wastewater quiz bank key — generated 550 dedicated oit-ww questions (11 modules) and updated all 3 pages
+- [x] Fix answer label doubling — strip baked-in letter prefixes (A./B./C./D.) from 4,371 questions in QuizShell, MockExamShell, FlashcardShell, AITutor
