@@ -1,205 +1,52 @@
-// WPI CLASS I WATER TREATMENT PRACTICE QUIZ
-// 502-question bank aligned with WPI Need-to-Know Criteria
-// Used for: BC (EOCP Level I), Alberta (AWWOA Class I), Saskatchewan, Manitoba
-// 15-question free trial · paid full access via PurchaseGate
-
-import { useState, useCallback, useMemo } from "react";
-import { useSearch } from "wouter";
+// WPI Class 1 Water Practice Quiz — Unified via useQuizSession hook
 import { usePageMeta } from "@/hooks/usePageMeta";
-import AITutor from "@/components/AITutor";
-import QuizGate, { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
-import { shuffle } from "@/lib/utils";
-import QuizModeBar, { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
-import QuizSettingsDrawer, { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
-import { trpc } from "@/lib/trpc";
-import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import AITutor from "@/components/AITutor";
+import QuizGate from "@/components/QuizGate";
+import QuizModeBar from "@/components/QuizModeBar";
+import QuizSettingsDrawer from "@/components/QuizSettingsDrawer";
+import { useQuestionBank } from "@/hooks/useQuestionBank";
+import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
 
-
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Treatment Process":   { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Equipment O&M":       { bg: "#DCFCE7", color: "#15803D" },
+  "Treatment Process": { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Equipment O&M": { bg: "#DCFCE7", color: "#15803D" },
   "Laboratory Analysis": { bg: "#EDE9FE", color: "#6D28D9" },
-  "Source Water":        { bg: "#CCFBF1", color: "#0F766E" },
-  "Safety & Admin":      { bg: "#FFEDD5", color: "#C2410C" },
+  "Source Water": { bg: "#CCFBF1", color: "#0F766E" },
+  "Safety & Admin": { bg: "#FFEDD5", color: "#C2410C" },
 };
 const MODULE_ICONS: Record<string, string> = {
-  "Treatment Process":   "⚗️",
-  "Equipment O&M":       "🔧",
+  "Treatment Process": "⚗️",
+  "Equipment O&M": "🔧",
   "Laboratory Analysis": "🔬",
-  "Source Water":        "🌊",
-  "Safety & Admin":      "🦺",
+  "Source Water": "🌊",
+  "Safety & Admin": "🦺",
 };
 
-
-const SESSION_SIZE = 15;
-const HEADER_GRADIENT = "linear-gradient(135deg, #1D4ED8 0%, #0E7490 100%)";
-
 export default function WpiClass1WaterQuiz() {
-  // ── Load questions from database ──────────────────────────────────────────
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class1-water");
-  const allQuestions = dbQuestions as any[];
-  const MODULES: ModuleConfig[] = dbModules.map((m: any) => ({
-  name: m,
-  icon: MODULE_ICONS[m] ?? "📚",
-  bg: MODULE_COLORS[m]?.bg ?? "#F1F5F9",
-  color: MODULE_COLORS[m]?.color ?? "#475569",
-  }));
-
-  // ── Quiz Mode & Settings ───────────────────────────────────────────────────
-  const [quizMode, setQuizMode] = useState<QuizMode>("standard");
-  const [quizSettings, setQuizSettings] = useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const logAttemptFn = useAttemptLogger("wpi-class1-water", quizMode);
-  // Fetch missed question IDs from backend for persistence across sessions
-  const { data: missedData, refetch: refetchMissed } = trpc.quiz.getMissedQuestions.useQuery(
-    { examType: "wpi-class1-water", limit: 50 },
-    { refetchOnWindowFocus: false }
-  );
-  const missedIds = missedData?.questionIds ?? [];
-  const missedCount = missedData?.total ?? 0;
-
-  const handleModeChange = (mode: QuizMode) => {
-    setQuizMode(mode);
-    setHistory([]);
-    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-    if (mode === "missed" && missedIds.length > 0) {
-      const missedSet = new Set(missedIds);
-      const mPool = allQuestions.filter((q: any) => missedSet.has(q.id));
-      setCurrent(mPool.length > 0 ? (shuffle([...mPool])[0]) : null);
-    } else {
-      setCurrent((shuffle([...allQuestions])[0]));
-    }
-  };
-
-  const handleSettingsApply = (settings: QuizSettings) => {
-    setQuizSettings(settings);
-    setHistory([]);
-    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-    setCurrent((shuffle([...allQuestions])[0]));
-  };
-  // Auto-confirm + advance when timed mode expires
-  const handleTimeUp = () => {
-    if (confirmed) return; // already answered
-    if (!current) return;
-    // Determine the correct answer index
-    const correctIdx = (current as any).correctIndex ?? 0;
-    // Use the user's selection if they picked one, otherwise force a wrong answer
-    const effectiveSelected = selected ?? (correctIdx === 0 ? 1 : 0);
-    const isCorrect = effectiveSelected === correctIdx;
-    // Set confidence to neutral (50) for timed-out questions
-    const effectiveConfidence = confidence ?? 50;
-    // Push history entry so the question isn't lost
-    setHistory(h => [...h, { q: current, selected: effectiveSelected, confidence: effectiveConfidence, correct: isCorrect, questionObj: current } as any]);
-    // Log the attempt to the backend for missed-questions tracking
-    logAttemptFn({ topic: (current as any).module ?? (current as any).topic ?? "General", questionId: (current as any).id, correct: isCorrect, difficulty: (current as any).difficulty });
-    setSelected(effectiveSelected);
-    setConfidence(effectiveConfidence);
-    setConfirmed(true);
-    setTimeout(() => handleNext(), 800);
-  };
-
   usePageMeta({
-    title: "WPI Class I Water Treatment Practice Quiz — 502 Questions",
-    description:
-      "Practice for the WPI Class I Water Treatment operator exam (BC EOCP Level I, Alberta AWWOA Class I, Saskatchewan, Manitoba) with 502 questions across 5 modules.",
+    title: "WPI Class 1 Water Treatment Practice Quiz",
+    description: "Practice for the WPI Class 1 Water Treatment operator exam with 500 questions.",
     path: "/wpi-class1-water",
-    keywords: "WPI Class I water treatment, BC EOCP Level I, Alberta AWWOA Class I, operator exam prep",
+    keywords: "WPI Class 1 water treatment, operator exam prep",
   });
 
-  const searchString = useSearch();
-  const initialCalcOnly = new URLSearchParams(searchString).get("calcOnly") === "true";
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class1-water");
+  const allQuestions = dbQuestions;
 
-  const [history, setHistory] = useState<Array<{
-    questionId: number; module: string; correct: boolean;
-    confidence: number; selectedOption: number; questionObj: DBQuestion;
-  }>>([]);
-  const [current, setCurrent] = useState<DBQuestion | null>(null);
-  const [selected, setSelected]     = useState<number | null>(null);
-  const [confidence, setConfidence] = useState<number | null>(null);
-  const [confirmed, setConfirmed]   = useState(false);
-  const [showSteps, setShowSteps]   = useState(false);
-  const [tutorOpen, setTutorOpen]   = useState(false);
-  const [selectedModule, setSelectedModule] = useState<string | null>(null);
-  const [calcOnly, setCalcOnly]     = useState(initialCalcOnly);
-  const [trialDone, setTrialDone]   = useState(false);
-  const [initialized, setInitialized] = useState(false);
-  const [trialUnlocked]             = useState(() => isTrialUnlocked());
+  const MODULES: ModuleConfig[] = dbModules.map((m) => ({
+    name: m,
+    icon: MODULE_ICONS[m] ?? "📚",
+    bg: MODULE_COLORS[m]?.bg ?? "#F1F5F9",
+    color: MODULE_COLORS[m]?.color ?? "#475569",
+  }));
 
-  const usedIds = useMemo(() => new Set(history.map(h => h.questionId)), [history]);
+  const session = useQuizSession({ examType: "wpi-class1-water", allQuestions });
 
-  const pool = useMemo(() => {
-    const base = selectedModule
-      ? allQuestions.filter((q: any) => q.module === selectedModule)
-      : allQuestions;
-    return base.filter((q: any) => !usedIds.has(q.id) && (!calcOnly || q.isCalc));
-  }, [selectedModule, usedIds, calcOnly]);
-
-  const getNext = useCallback(() => {
-    if (pool.length === 0) return null;
-    return (shuffle([...pool])[0]);
-  }, [pool]);
-
-  function handleNext() {
-    if (!current || selected === null) return;
-    const isCorrect = selected === (current as any).correctIndex;
-    const newHistory = [...history, {
-      questionId: current.id, module: current.module,
-      correct: isCorrect, confidence: confidence ?? 3,
-      selectedOption: selected, questionObj: current,
-    }];
-    setHistory(newHistory);
-    // Log attempt for backend persistence (missed questions, topic tracking)
-    logAttemptFn({ topic: current.module, questionId: current.id, correct: isCorrect, difficulty: (current as any).difficulty });
-    if (!isCorrect) setTimeout(() => refetchMissed(), 500);
-        if (quizMode === "quick10" && newHistory.length >= 10) { setCurrent(null); return; }
-    if (!trialUnlocked && newHistory.length >= SESSION_SIZE) {
-      setTrialDone(true);
-      return;
-    }
-    const next = getNext();
-    setCurrent(next);
-    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-  }
-
-  const goBack = useCallback(() => {
-    if (history.length === 0) return;
-    const prev = history[history.length - 1];
-    setHistory(history.slice(0, -1));
-    setCurrent(prev.questionObj);
-    setSelected(prev.selectedOption);
-    setConfidence(prev.confidence);
-    setConfirmed(true);
-    setShowSteps(false);
-    setTutorOpen(false);
-  }, [history]);
-
-  function handleCalcOnlyToggle() {
-    const next = !calcOnly;
-    setCalcOnly(next);
-    const newPool = allQuestions.filter((q: any) => !next || q.isCalc);
-    setCurrent(newPool.length > 0 ? (shuffle([...newPool])[0]) : null);
-    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false); setHistory([]);
-  }
-
-  function handleModuleChange(mod: string | null) {
-    setSelectedModule(mod);
-    const newPool = (mod ? allQuestions.filter((q: any) => q.module === mod) : allQuestions)
-      .filter((q: any) => !calcOnly || q.isCalc);
-    setCurrent(newPool.length > 0 ? (shuffle([...newPool])[0]) : null);
-    setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-  }
-
-  const correctCount = history.filter(h => h.correct).length;
-
-
-  // Set the first question once data loads
-  if (!bankLoading && allQuestions.length > 0 && !initialized) {
-    const trialPool = allQuestions.filter((q: any) => (q as any).difficulty === "medium" || (q as any).difficulty === "hard");
-    const startPool = trialPool.length >= 15 ? trialPool : allQuestions;
-    setCurrent(startPool[Math.floor(Math.random() * startPool.length)] ?? null);
-    setInitialized(true);
+  // Initialize first question once data loads
+  if (!bankLoading && allQuestions.length > 0 && !session.initialized) {
+    session.initialize();
   }
 
   if (bankLoading) return <QuizSkeleton />;
@@ -207,91 +54,87 @@ export default function WpiClass1WaterQuiz() {
   return (
     <QuizShell
       currentPath="/wpi-class1-water"
-        courseLabel="WPI Class I · Water Treatment"
-        courseTitle="WPI Class I Water Practice Quiz"
-        courseSubtitle="500 questions · BC (EOCP Level I) · Alberta (AWWOA Class I) · SK · MB"
-        headerGradient={HEADER_GRADIENT}
-        headerIcon="⚗️"
-        headerActions={[{ label: "📝 Mock Exam →", href: "/wpi-class1-water-mock" }, { label: "🃏 Flashcards", href: "/wpi-class1-water-flashcards" }]}
-        history={history}
-        correctCount={correctCount}
-        wrongCount={history.length - correctCount}
-        sessionSize={quizMode === "quick10" ? 10 : SESSION_SIZE}
-        modules={MODULES}
-        selectedModule={selectedModule}
-        onModuleChange={handleModuleChange}
-        hasCalcOnly
-        calcOnly={calcOnly}
-        onCalcOnlyToggle={handleCalcOnlyToggle}
-        current={current}
-        selected={selected}
-        confidence={confidence}
-        confirmed={confirmed}
-        showSteps={showSteps}
-        tutorOpen={tutorOpen}
-        onSelect={idx => { if (!confirmed) { setSelected(idx); setConfidence(null); } }}
-        onConfirm={() => { if (selected !== null && confidence !== null) setConfirmed(true); }}
-        onNext={handleNext}
-        onGoBack={goBack}
-        onConfidenceChange={setConfidence}
-        onToggleSteps={() => setShowSteps(s => !s)}
-        onTutorOpen={() => setTutorOpen(true)}
-        onTutorClose={() => setTutorOpen(false)}
-        onResetSession={() => {
-          setHistory([]); setCurrent((shuffle([...allQuestions])[0]));
-          setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-        }}
-        timedSeconds={quizSettings.timedMode ? quizSettings.timedSeconds : 0}
-        onTimeUp={handleTimeUp}
-        mockExamHref="/wpi-class1-water-mock"
-        moduleOverviews={dbOverviews ?? undefined}
-        headerExtra={
-          <>
-            <QuizModeBar
-              examType="wpi-class1-water"
-              currentMode={quizMode}
-              onModeChange={handleModeChange}
-              missedCount={missedCount}
-              onSettingsOpen={() => setSettingsOpen(true)}
+      courseLabel="WPI Class 1 · Water Treatment"
+      courseTitle="WPI Class 1 Water Practice Quiz"
+      courseSubtitle="500 questions · BC (EOCP Level I) · Alberta (AWWOA Class 1) · SK · MB"
+      headerGradient="linear-gradient(135deg, #1D4ED8 0%, #0E7490 100%)"
+      headerIcon="⚗️"
+      headerActions={[
+        { label: "📝 Mock Exam →", href: "/wpi-class1-water-mock" },
+        { label: "🃏 Flashcards", href: "/wpi-class1-water-flashcards" },
+      ]}
+      history={session.history}
+      correctCount={session.correctCount}
+      wrongCount={session.wrongCount}
+      sessionSize={session.sessionSize}
+      modules={MODULES}
+      selectedModule={session.selectedModule}
+      onModuleChange={session.handleModuleChange}
+      hasCalcOnly
+      calcOnly={session.calcOnly}
+      onCalcOnlyToggle={session.handleCalcOnlyToggle}
+      current={session.current}
+      selected={session.selected}
+      confidence={session.confidence}
+      confirmed={session.confirmed}
+      showSteps={session.showSteps}
+      tutorOpen={session.tutorOpen}
+      onSelect={session.setSelected}
+      onConfirm={session.handleConfirm}
+      onNext={session.handleNext}
+      onGoBack={session.goBack}
+      onConfidenceChange={session.setConfidence}
+      onToggleSteps={() => session.setShowSteps(s => !s)}
+      onTutorOpen={() => session.setTutorOpen(true)}
+      onTutorClose={() => session.setTutorOpen(false)}
+      onResetSession={session.resetSession}
+      timedSeconds={session.quizSettings.timedMode ? session.quizSettings.timedSeconds : 0}
+      onTimeUp={session.handleTimeUp}
+      mockExamHref="/wpi-class1-water-mock"
+      moduleOverviews={dbOverviews ?? undefined}
+      headerExtra={
+        <>
+          <QuizModeBar
+            examType="wpi-class1-water"
+            currentMode={session.quizMode}
+            onModeChange={session.handleModeChange}
+            missedCount={session.missedCount}
+            onSettingsOpen={() => session.setSettingsOpen(true)}
+          />
+          {session.settingsOpen && (
+            <QuizSettingsDrawer
+              settings={session.quizSettings}
+              onApply={session.handleSettingsApply}
+              onClose={() => session.setSettingsOpen(false)}
+              totalQuestions={allQuestions.length}
             />
-            {settingsOpen && (
-              <QuizSettingsDrawer
-                settings={quizSettings}
-                onApply={handleSettingsApply}
-                onClose={() => setSettingsOpen(false)}
-                totalQuestions={allQuestions.length}
-              />
-            )}
-          </>
-        }
-        renderAITutor={() => (
-          <AITutor
-            question={current as any}
-            userAnswer={selected}
-            history={history as any}
-            patternMode={false}
-            onClose={() => setTutorOpen(false)}
-          />
-        )}
-        gate={trialDone && !trialUnlocked ? (
-          <QuizGate
-            questionsAnswered={history.length}
-            productKey="wpi-class1-water"
-            productName="WPI Class I Water Treatment Practice Pass"
-            priceLabel="CA$99"
-            paidFeatures={[
-              "502 WPI Class I questions — unlimited attempts",
-              "Timed mock exam (100 questions, 2 hrs)",
-              "AI Tutor explanations on every question",
-              "Module-by-module performance tracking",
-            ]}
-            onUnlocked={() => {
-              setTrialUnlocked(); setTrialDone(false);
-              setCurrent(getNext());
-              setSelected(null); setConfidence(null); setConfirmed(false); setShowSteps(false); setTutorOpen(false);
-            }}
-          />
-        ) : undefined}
-      />
+          )}
+        </>
+      }
+      renderAITutor={() => (
+        <AITutor
+          question={session.current as any}
+          userAnswer={session.selected}
+          history={session.history as any}
+          patternMode={false}
+          onClose={() => session.setTutorOpen(false)}
+        />
+      )}
+      gate={session.trialDone && !session.trialUnlocked ? (
+        <QuizGate
+          questionsAnswered={session.history.length}
+          productKey="wpi-class1-water"
+          productName="WPI Class 1 Water Treatment Practice Pass"
+          priceLabel="CA$99"
+          paidFeatures={[
+            "502 WPI Class 1 questions — unlimited attempts",
+            "Timed mock exam (100 questions, 2 hrs)",
+            "AI Tutor explanations on every question",
+            "Module-by-module performance tracking",
+          ]}
+          onUnlocked={session.handleGateUnlocked}
+        />
+      ) : undefined}
+    />
   );
 }

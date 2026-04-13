@@ -561,3 +561,9 @@
 - [x] Fix Quick 10 mode — does not stop at 10 questions
 - [x] Fix Quick 10 off-by-one (stops at 11 instead of 10)
 - [x] Fix Quick 10 triggering paywall gate instead of session-complete screen
+
+## Quiz Page Unification
+- [x] Build shared useQuizSession hook with unified confirm/next/history/quick10/paywall logic
+- [x] Migrate Ontario quiz pages (OIT, Class1-4, WQA, OIT-WW) to useQuizSession
+- [x] Migrate WPI quiz pages (16 banks) to useQuizSession
+- [x] Verify all quiz pages use identical behavior across the board (172 tests passing, 0 TS errors)
