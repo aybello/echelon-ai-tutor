@@ -572,3 +572,4 @@
 - [x] Fill WPI Class 2 Water Distribution bank to 595 questions (was 136, added 459)
 - [x] Fill WPI Class 3 Water Distribution bank to 590 questions (was 117, added 473)
 - [x] Fill WPI Class 4 Water Distribution bank to 610 questions (was 76, added 534)
+- [x] Reduce excessive whitespace in AI Tutor between prompt bar and answer area
