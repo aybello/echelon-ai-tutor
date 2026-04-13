@@ -130,7 +130,9 @@ export default function QuizGate({
   const successContent = (
     <div style={{
       position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
-      background: "rgba(15,23,42,0.92)",
+      background: "rgba(15,23,42,0.55)",
+      backdropFilter: "blur(8px)",
+      WebkitBackdropFilter: "blur(8px)",
       zIndex: 99999,
       display: "flex", alignItems: "center", justifyContent: "center",
       padding: 20,
@@ -161,7 +163,9 @@ export default function QuizGate({
       )}
       <div style={{
         position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
-        background: "rgba(15,23,42,0.92)",
+        background: "rgba(15,23,42,0.55)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
         zIndex: 99999,
         display: "flex", alignItems: "center", justifyContent: "center",
         padding: "20px 16px",

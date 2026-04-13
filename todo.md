@@ -533,3 +533,11 @@
 - [x] Rewrite quiz.smoke.test.ts, questions.bank.test.ts, formulas.session.test.ts to query DB via Drizzle (172/172 passing)
 - [ ] Rewrite questions.bank.test.ts to query DB via Drizzle (OIT bank integrity)
 - [ ] Rewrite formulas.session.test.ts to query DB via Drizzle (session cap + formula coverage)
+
+## WPI Class 4 Frontend Connection
+- [x] Connect wpi-class4-water quiz/flashcard/mock-exam pages to frontend
+- [x] Connect wpi-class4-wastewater quiz/flashcard/mock-exam pages to frontend
+- [x] Verify routes and landing page links work end-to-end
+
+## Blurred Quiz Preview Behind Paywall
+- [x] Add blurred/faded quiz question preview behind QuizGate and PurchaseGate overlays

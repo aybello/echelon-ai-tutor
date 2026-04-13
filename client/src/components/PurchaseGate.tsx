@@ -190,7 +190,7 @@ export default function PurchaseGate({
     });
   }
 
-  // No access — show paywall
+  // No access — show paywall with blurred preview of actual content behind it
   return (
     <>
     {showContactModal && (
@@ -209,18 +209,36 @@ export default function PurchaseGate({
         .pg-card { padding: 28px 18px 24px !important; border-radius: 16px !important; }
       }
     `}</style>
+    {/* Blurred preview of the actual quiz content behind the paywall */}
+    <div
+      aria-hidden="true"
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 0,
+        overflow: "hidden",
+        pointerEvents: "none",
+        filter: "blur(6px)",
+        opacity: 0.45,
+      }}
+    >
+      {children}
+    </div>
     <div
       className="pg-outer"
       style={{
         fontFamily: "Sora, Nunito, sans-serif",
         minHeight: "100vh",
-        background: "#F8FAFC",
+        background: "rgba(248,250,252,0.85)",
+        backdropFilter: "blur(2px)",
+        WebkitBackdropFilter: "blur(2px)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         padding: "40px 24px",
         position: "relative",
+        zIndex: 1,
       }}
     >
       <div
