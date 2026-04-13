@@ -544,3 +544,6 @@
 
 ## Bug Fix
 - [x] Fix TRPCClientError: difficulty is null instead of string on /wpi-class2-water mutations
+
+## Difficulty Backfill
+- [x] Backfill difficulty values for all 14 WPI banks (~6,500 questions) using LLM classification
