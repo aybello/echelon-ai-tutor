@@ -1270,16 +1270,29 @@ export default function Landing() {
               </div>
             )}
           </div>
-          <Link href="/quiz">
-            <button style={{
-              padding: "8px 20px", borderRadius: 10,
-              background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
-              color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
-              cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
-            }}>
-              Try Free →
-            </button>
-          </Link>
+          {isAuthenticated ? (
+            <Link href="/dashboard">
+              <button style={{
+                padding: "8px 20px", borderRadius: 10,
+                background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+              }}>
+                📊 Dashboard
+              </button>
+            </Link>
+          ) : (
+            <Link href="/quiz">
+              <button style={{
+                padding: "8px 20px", borderRadius: 10,
+                background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+              }}>
+                Try Free →
+              </button>
+            </Link>
+          )}
         </div>
 
         {/* Hamburger button — mobile only */}
@@ -1345,7 +1358,9 @@ export default function Landing() {
           borderBottom: "1px solid #F1F5F9",
         }}>
           {[
-            { label: "📝 Try Free", href: "/quiz", accent: true },
+            isAuthenticated
+              ? { label: "📊 Dashboard", href: "/dashboard", accent: true }
+              : { label: "📝 Try Free", href: "/quiz", accent: true },
             { label: "🌊 WPI", href: "/wpi", accent: false },
             { label: "💰 Pricing", href: "/pricing", accent: false },
             { label: "🎫 My Passes", href: "/account", accent: "purple" },

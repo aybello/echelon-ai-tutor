@@ -553,3 +553,5 @@
 - [ ] Build frontend dashboard page with charts and performance metrics
 - [ ] Wire route and navigation link to dashboard
 - [ ] Test dashboard with real data
+- [x] Add dashboard link to top nav bar for logged-in users
+- [x] Add dashboard CTA on landing page for signed-in users
