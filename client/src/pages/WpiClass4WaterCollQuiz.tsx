@@ -24,7 +24,7 @@ const MODULE_ICONS: Record<string, string> = {
 };
 
 export default function WpiClass4WaterCollQuiz() {
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class4-wastewater-coll");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class4-wastewater-coll", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({

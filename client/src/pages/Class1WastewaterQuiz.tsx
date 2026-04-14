@@ -9,7 +9,7 @@ import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
 
 export default function Class1WastewaterQuiz() {
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("class1-wastewater");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("class1-wastewater", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({

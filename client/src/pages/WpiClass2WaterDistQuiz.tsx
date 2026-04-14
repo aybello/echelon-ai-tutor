@@ -24,7 +24,7 @@ const MODULE_ICONS: Record<string, string> = {
 };
 
 export default function WpiClass2WaterDistQuiz() {
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class2-water-dist");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class2-water-dist", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({

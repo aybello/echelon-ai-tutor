@@ -32,7 +32,7 @@ export default function WpiClass4WaterQuiz() {
     keywords: "WPI Class 4 water treatment, operator exam prep",
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class4-water");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class4-water", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({

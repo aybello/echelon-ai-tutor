@@ -47,6 +47,49 @@ export const quizRouter = router({
     }),
 
   /**
+   * getRandomQuestions — fetch a small random batch of questions for instant quiz start.
+   * Returns N random questions (default 20) so the first question appears immediately
+   * while the full bank loads in the background.
+   */
+  getRandomQuestions: publicProcedure
+    .input(z.object({
+      bankKey: z.string().min(1).max(64),
+      limit: z.number().int().min(1).max(50).default(20),
+      excludeIds: z.array(z.number().int()).max(200).default([]),
+    }))
+    .query(async ({ input }) => {
+      try {
+        const db = await getDb();
+        if (!db) return { questions: [] };
+        // Use ORDER BY RAND() with LIMIT for a small random sample
+        const excludeClause = input.excludeIds.length > 0
+          ? sql` AND ${questions.questionNum} NOT IN (${sql.join(input.excludeIds.map(id => sql`${id}`), sql`, `)})`
+          : sql``;
+        const rows = await db.execute(
+          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey}${excludeClause} ORDER BY RAND() LIMIT ${input.limit}`
+        );
+        return {
+          questions: (rows[0] as unknown as any[]).map((r: any) => ({
+            id: r.questionNum,
+            module: r.module,
+            difficulty: r.difficulty,
+            question: r.question,
+            options: JSON.parse(r.options) as string[],
+            correctIndex: r.correctIndex,
+            explanation: r.explanation,
+            steps: r.steps ? JSON.parse(r.steps) as { l: string; c: string }[] : undefined,
+            tip: r.tip ?? undefined,
+            isCalc: r.isCalc === 'yes',
+            topic: r.topic ?? undefined,
+          })),
+        };
+      } catch (err) {
+        console.error("[quizRouter.getRandomQuestions] Error:", err);
+        return { questions: [] };
+      }
+    }),
+
+  /**
    * getBankMeta — fetch metadata (modules, moduleTargets, formulaLinks) for a bank.
    */
   getBankMeta: publicProcedure

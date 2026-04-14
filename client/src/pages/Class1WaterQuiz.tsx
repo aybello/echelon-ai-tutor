@@ -21,7 +21,7 @@ const MODULE_CONFIG: ModuleConfig[] = [
 ];
 
 export default function Class1WaterQuiz() {
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("class1-water");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("class1-water", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES = MODULE_CONFIG;

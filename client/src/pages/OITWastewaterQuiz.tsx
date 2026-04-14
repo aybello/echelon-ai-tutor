@@ -16,7 +16,7 @@ export default function OITWastewaterQuiz() {
     keywords: "OIT wastewater exam, Ontario wastewater certification, operator practice questions",
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("oit-ww");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("oit-ww", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({
