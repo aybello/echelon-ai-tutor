@@ -30,6 +30,7 @@ export default function Class1WastewaterQuiz() {
 
   return (
     <QuizShell
+      examType="class1-ww"
       currentPath="/class1-ww"
       courseLabel="Ontario Class 1 · Wastewater Treatment"
       courseTitle="Class 1 Wastewater Practice Quiz"

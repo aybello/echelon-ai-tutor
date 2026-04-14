@@ -45,6 +45,7 @@ export default function WpiClass3WaterCollQuiz() {
 
   return (
     <QuizShell
+      examType="wpi-class3-water-coll"
       currentPath="/wpi-class3-water-coll"
       courseLabel="WPI Class 3 · Wastewater Collection"
       courseTitle="WPI Class 3 Wastewater Collection Quiz"

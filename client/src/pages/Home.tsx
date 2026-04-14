@@ -46,6 +46,7 @@ export default function Home() {
 
   return (
     <QuizShell
+      examType="oit"
       currentPath="/quiz"
       courseLabel="Ontario OIT · Water Treatment"
       courseTitle="OIT Practice Quiz — 551+ Questions"

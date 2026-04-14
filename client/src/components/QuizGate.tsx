@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
+import FeedbackModal from "@/components/FeedbackModal";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png";
 
@@ -18,6 +19,8 @@ interface QuizGateProps {
   priceLabel?: string;
   /** What the paid pass unlocks — shown as bullet points */
   paidFeatures?: string[];
+  /** The exam type / bank key for feedback tracking, e.g. "class1-water" */
+  examType?: string;
 }
 
 const TRIAL_UNLOCKED_KEY = "echelon_trial_unlocked";
@@ -46,6 +49,7 @@ export default function QuizGate({
   productName,
   priceLabel,
   paidFeatures,
+  examType,
 }: QuizGateProps) {
   const [, navigate] = useLocation();
   const [email, setEmail] = useState("");
@@ -53,6 +57,10 @@ export default function QuizGate({
   const [submitted, setSubmitted] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
   const [mounted, setMounted] = useState(false);
+
+  // ── Feedback modal state ────────────────────────────────────────────────
+  const [showFeedback, setShowFeedback] = useState(true);
+  const [feedbackDone, setFeedbackDone] = useState(false);
 
   // Ensure portal target is available (SSR-safe)
   useEffect(() => {
@@ -387,5 +395,19 @@ export default function QuizGate({
   // CSS transforms, overflow:hidden, or position:fixed on body that would
   // trap fixed positioning on mobile Chrome/Safari.
   if (!mounted) return null;
+
+  // Show feedback modal first (before the gate), then transition to the gate
+  if (showFeedback && !feedbackDone && !submitted) {
+    return createPortal(
+      <FeedbackModal
+        examType={examType ?? productKey ?? "unknown"}
+        feedbackType="quiz_gate"
+        onClose={() => { setShowFeedback(false); setFeedbackDone(true); }}
+        onSubmitted={() => { setShowFeedback(false); setFeedbackDone(true); }}
+      />,
+      document.body,
+    );
+  }
+
   return createPortal(submitted ? successContent : gateContent, document.body);
 }

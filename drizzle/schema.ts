@@ -246,3 +246,19 @@ export const moduleOverviews = mysqlTable("module_overviews", {
 
 export type ModuleOverviewRow = typeof moduleOverviews.$inferSelect;
 export type InsertModuleOverview = typeof moduleOverviews.$inferInsert;
+
+/** User feedback — collected after 15-question gate and session completion */
+export const userFeedback = mysqlTable("user_feedback", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"), // null for guest users
+  email: varchar("email", { length: 320 }), // captured for guest users
+  examType: varchar("examType", { length: 64 }).notNull(), // e.g. 'oit', 'class1-water'
+  rating: int("rating").notNull(), // 1-5 star rating
+  comment: text("comment"), // optional free-text feedback
+  feedbackType: varchar("feedbackType", { length: 32 }).notNull(), // 'quiz_gate' | 'session_complete'
+  province: varchar("province", { length: 32 }), // province context
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type UserFeedbackRow = typeof userFeedback.$inferSelect;
+export type InsertUserFeedback = typeof userFeedback.$inferInsert;

@@ -37,6 +37,7 @@ export default function OITWastewaterQuiz() {
 
   return (
     <QuizShell
+      examType="oit-ww"
       currentPath="/oit-ww"
       courseLabel="Ontario OIT · Wastewater Treatment"
       courseTitle="OIT Wastewater Practice Quiz"

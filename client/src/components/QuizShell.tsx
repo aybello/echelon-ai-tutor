@@ -19,6 +19,7 @@ import type { ModuleOverview } from "@/lib/questionTypes";
 import ConfidenceMeter from "@/components/ConfidenceMeter";
 import StepSolution from "@/components/StepSolution";
 import ReportErrorModal from "@/components/ReportErrorModal";
+import FeedbackModal from "@/components/FeedbackModal";
 import { Link } from "wouter";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
@@ -121,6 +122,8 @@ export interface QuizShellProps {
   // Optional: paywall/gate overlay — rendered on top of the quiz when provided.
   // Use this instead of an early return so the page stays mounted on mobile.
   gate?: ReactNode;
+  // Optional: exam type / bank key for feedback tracking (e.g. "class1-water")
+  examType?: string;
 }
 
 // ─── Constants ───────────────────────────────────────────────────────────────
@@ -182,10 +185,23 @@ export default function QuizShell({
   timedSeconds = 0,
   onTimeUp,
   gate,
+  examType,
 }: QuizShellProps) {
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
+
+  // ── Session-complete feedback modal ──────────────────────────────────────────
+  const [showSessionFeedback, setShowSessionFeedback] = useState(false);
+  const prevHistoryLen = useRef(0);
+
+  // Trigger feedback modal when session completes (current becomes null after answering questions)
+  useEffect(() => {
+    if (!current && history.length > 0 && prevHistoryLen.current > 0) {
+      setShowSessionFeedback(true);
+    }
+    prevHistoryLen.current = history.length;
+  }, [current, history.length]);
 
   // ── Timed mode countdown ───────────────────────────────────────────────────
   const [timeLeft, setTimeLeft] = useState(timedSeconds > 0 ? timedSeconds : 0);
@@ -219,12 +235,20 @@ export default function QuizShell({
   const progress = sessionSize ? (history.length / sessionSize) * 100 : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
 
-  // ── Session complete screen ────────────────────────────────────────────────
+  //  // ── Session complete screen ──────────────────────────────────────────
   if (!current && history.length > 0) {
     const pct = Math.round((correctCount / history.length) * 100);
     return (
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath={currentPath} />
+        {showSessionFeedback && examType && (
+          <FeedbackModal
+            examType={examType}
+            feedbackType="session_complete"
+            onClose={() => setShowSessionFeedback(false)}
+            onSubmitted={() => setShowSessionFeedback(false)}
+          />
+        )}
         <div style={{ maxWidth: 560, margin: "0 auto", padding: "48px 20px" }}>
           <div style={{
             background: "#fff",

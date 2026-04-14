@@ -45,6 +45,7 @@ export default function WpiClass1WaterDistQuiz() {
 
   return (
     <QuizShell
+      examType="wpi-class1-water-dist"
       currentPath="/wpi-class1-water-dist"
       courseLabel="WPI Class 1 · Water Distribution"
       courseTitle="WPI Class 1 Water Distribution Quiz"

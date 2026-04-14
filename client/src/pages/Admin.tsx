@@ -7,7 +7,7 @@ import { trpc } from "@/lib/trpc";
 import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 
-type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue" | "health";
+type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue" | "health" | "feedback";
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
   // OIT
@@ -113,6 +113,7 @@ export default function Admin() {
   const scoresQ = trpc.admin.getScoreHistory.useQuery({ limit: 500, examType: "all" }, { enabled: user?.role === "admin" && activeTab === "scores" });
   const purchasesQ = trpc.admin.getPurchases.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "revenue" });
   const healthQ = trpc.admin.getSystemHealth.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "health", refetchInterval: 60_000 });
+  const feedbackQ = trpc.admin.getFeedback.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "feedback" });
   const reconcile = trpc.admin.reconcilePurchases.useMutation({
     onSuccess: (data) => {
       purchasesQ.refetch();
@@ -132,6 +133,9 @@ export default function Admin() {
   });
   const removeWaitlist = trpc.admin.removeWaitlistEntry.useMutation({
     onSuccess: () => { utils.admin.getWaitlist.invalidate(); utils.admin.stats.invalidate(); },
+  });
+  const dismissFeedback = trpc.admin.dismissFeedback.useMutation({
+    onSuccess: () => { utils.admin.getFeedback.invalidate(); utils.admin.stats.invalidate(); },
   });
 
   const copyEmail = (email: string) => {
@@ -209,6 +213,7 @@ export default function Admin() {
     { label: "Purchases", value: stats.data?.purchaseCount ?? "—", icon: "🛒", color: "#38BDF8", tab: "revenue" as Tab },
     { label: "Trial Signups", value: stats.data?.trialCount ?? "—", icon: "📧", color: "#A78BFA", tab: "trials" as Tab },
     { label: "Error Reports", value: stats.data?.errorCount ?? "—", icon: "🐛", color: "#F87171", tab: "errors" as Tab },
+    { label: "Feedback", value: stats.data ? `${stats.data.feedbackCount} (★${stats.data.avgRating})` : "—", icon: "💬", color: "#FBBF24", tab: "feedback" as Tab },
   ];
 
   const TABS: { id: Tab; label: string; icon: string }[] = [
@@ -217,6 +222,7 @@ export default function Admin() {
     { id: "waitlist", label: "Waitlist", icon: "📋" },
     { id: "errors", label: "Error Reports", icon: "🐛" },
     { id: "scores", label: "Score History", icon: "📊" },
+    { id: "feedback", label: "Feedback", icon: "💬" },
     { id: "health", label: "System Health", icon: "🩺" },
   ];
 
@@ -716,6 +722,82 @@ export default function Admin() {
                           style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(52,211,153,0.3)", background: "transparent", color: "#34D399", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", flexShrink: 0 }}
                         >
                           ✓ Dismiss
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* -- FEEDBACK TAB -- */}
+        {activeTab === "feedback" && (
+          <div style={{ background: "#1E293B", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,0.06)" }}>
+            <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div style={{ fontSize: 13, fontWeight: 700 }}>
+                💬 User Feedback
+                {feedbackQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{feedbackQ.data.length} entries</span>}
+              </div>
+              {feedbackQ.data && feedbackQ.data.length > 0 && (
+                <button
+                  className="admin-btn"
+                  onClick={() => downloadCSV(feedbackQ.data!.map(r => ({
+                    id: r.id,
+                    rating: r.rating,
+                    comment: r.comment ?? "",
+                    examType: r.examType,
+                    feedbackType: r.feedbackType,
+                    email: r.email ?? "",
+                    userId: r.userId ?? "",
+                    createdAt: formatDate(r.createdAt),
+                  })), "echelon-feedback.csv")}
+                  style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(56,189,248,0.3)", background: "transparent", color: "#38BDF8", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                >
+                  ⬇ Export CSV
+                </button>
+              )}
+            </div>
+            {feedbackQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
+            {feedbackQ.data && feedbackQ.data.length === 0 && (
+              <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No feedback yet.</div>
+            )}
+            {feedbackQ.data && feedbackQ.data.length > 0 && (
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {feedbackQ.data.map((row) => {
+                  const examStyle = EXAM_TYPE_COLORS[row.examType] ?? { bg: "#F1F5F9", color: "#475569" };
+                  const stars = "★".repeat(row.rating) + "☆".repeat(5 - row.rating);
+                  return (
+                    <div key={row.id} className="admin-row" style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, flexWrap: "wrap" }}>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ display: "flex", gap: 8, marginBottom: 8, flexWrap: "wrap", alignItems: "center" }}>
+                            <span style={{ fontSize: 16, color: "#FBBF24", letterSpacing: 2 }}>{stars}</span>
+                            <span style={{ padding: "3px 10px", borderRadius: 100, background: examStyle.bg, color: examStyle.color, fontSize: 10, fontWeight: 700 }}>
+                              {EXAM_TYPE_LABELS[row.examType] ?? row.examType}
+                            </span>
+                            <span style={{ padding: "3px 10px", borderRadius: 100, background: row.feedbackType === "quiz_gate" ? "#FEF9C3" : "#DBEAFE", color: row.feedbackType === "quiz_gate" ? "#A16207" : "#1D4ED8", fontSize: 10, fontWeight: 700 }}>
+                              {row.feedbackType === "quiz_gate" ? "Trial Gate" : "Session End"}
+                            </span>
+                            <span style={{ fontSize: 10, color: "#475569" }}>{formatDate(row.createdAt)}</span>
+                          </div>
+                          {row.comment && (
+                            <div style={{ fontSize: 13, color: "#CBD5E1", lineHeight: 1.5, marginBottom: 4 }}>
+                              "{row.comment}"
+                            </div>
+                          )}
+                          <div style={{ fontSize: 11, color: "#64748B", marginTop: 4 }}>
+                            {row.email ? row.email : row.userId ? `User #${row.userId}` : "Anonymous"}
+                          </div>
+                        </div>
+                        <button
+                          className="admin-btn"
+                          onClick={() => { if (confirm("Delete this feedback entry?")) dismissFeedback.mutate({ id: row.id }); }}
+                          disabled={dismissFeedback.isPending}
+                          style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(239,68,68,0.3)", background: "transparent", color: "#F87171", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", flexShrink: 0 }}
+                        >
+                          ✕ Delete
                         </button>
                       </div>
                     </div>

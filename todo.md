@@ -575,3 +575,10 @@
 - [x] Reduce excessive whitespace in AI Tutor between prompt bar and answer area
 - [x] Fix AI Tutor content cut off at the very top on mobile (justifyContent: flex-end pushing content above viewport)
 - [x] Investigate and fix slow question loading time on quiz pages (lazy batch loading — 20 random questions first, full bank in background)
+- [x] Add feedback DB table (user_feedback: id, userId, email, examType, rating, comment, feedbackType, createdAt)
+- [x] Add tRPC feedback.submit procedure (public — works for both logged-in and guest users)
+- [x] Build FeedbackModal component (star rating + optional comment + optional email for guests)
+- [x] Integrate FeedbackModal into QuizGate (shown after 15 free questions, before email gate)
+- [x] Integrate FeedbackModal into quiz session end screen for paying/logged-in users
+- [x] Add feedback panel to /admin dashboard (view ratings, comments, filter by exam type)
+- [x] Write vitest for feedback procedures (172 tests passing)

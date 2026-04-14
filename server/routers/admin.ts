@@ -5,7 +5,7 @@
 import { desc, eq } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback } from "../../drizzle/schema";
 import { getDb } from "../db";
 import { adminProcedure, router } from "../_core/trpc";
 import { sendPurchaseConfirmationEmail } from "../email";
@@ -22,14 +22,18 @@ export const adminRouter = router({
   stats: adminProcedure.query(async () => {
     const db = await getDb();
     if (!db) throw new Error("Database unavailable");
-    const [trials, waitlistRows, errors, scores, purchaseRows] = await Promise.all([
+    const [trials, waitlistRows, errors, scores, purchaseRows, feedbackRows] = await Promise.all([
       db.select().from(trialEmails),
       db.select().from(waitlist),
       db.select().from(questionErrorReports),
       db.select().from(examResults),
       db.select().from(purchases),
+      db.select().from(userFeedback),
     ]);
     const totalRevenueCents = purchaseRows.reduce((acc, p) => acc + p.amountCAD, 0);
+    const avgRating = feedbackRows.length > 0
+      ? feedbackRows.reduce((acc, f) => acc + f.rating, 0) / feedbackRows.length
+      : 0;
     return {
       trialCount: trials.length,
       waitlistCount: waitlistRows.length,
@@ -37,6 +41,8 @@ export const adminRouter = router({
       scoreCount: scores.length,
       purchaseCount: purchaseRows.length,
       totalRevenueCAD: totalRevenueCents / 100,
+      feedbackCount: feedbackRows.length,
+      avgRating: Math.round(avgRating * 10) / 10,
     };
   }),
 
@@ -252,6 +258,29 @@ export const adminRouter = router({
         skipped: skipped.length,
         details: recovered,
       };
+    }),
+
+  /** Paginated list of user feedback, newest first */
+  getFeedback: adminProcedure
+    .input(z.object({ limit: z.number().int().min(1).max(500).default(200) }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+      return db
+        .select()
+        .from(userFeedback)
+        .orderBy(desc(userFeedback.createdAt))
+        .limit(input.limit);
+    }),
+
+  /** Delete a feedback entry */
+  dismissFeedback: adminProcedure
+    .input(z.object({ id: z.number().int().positive() }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+      await db.delete(userFeedback).where(eq(userFeedback.id, input.id));
+      return { success: true };
     }),
 
   /** System health check — DB, Stripe, SMTP, recent purchases */

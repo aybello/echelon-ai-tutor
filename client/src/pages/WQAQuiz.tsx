@@ -30,6 +30,7 @@ export default function WQAQuiz() {
 
   return (
     <QuizShell
+      examType="wqa"
       currentPath="/wqa"
       courseLabel="Water Quality Analyst"
       courseTitle="WQA Practice Quiz"

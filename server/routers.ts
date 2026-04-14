@@ -5,7 +5,7 @@ import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
-import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmissions, users, examDates } from "../drizzle/schema";
+import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmissions, users, examDates, userFeedback } from "../drizzle/schema";
 import { and, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 import { adminRouter } from "./routers/admin";
@@ -328,6 +328,43 @@ export const appRouter = router({
         await db
           .delete(examDates)
           .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)));
+        return { success: true };
+      }),
+  }),
+
+  // User feedback — collected after 15-question gate and session completion
+  feedback: router({
+    submit: publicProcedure
+      .input(
+        z.object({
+          examType: z.string().min(1).max(64),
+          rating: z.number().int().min(1).max(5),
+          comment: z.string().max(1000).optional(),
+          email: z.string().email().optional(), // for guest users
+          feedbackType: z.enum(["quiz_gate", "session_complete"]),
+          province: z.string().max(32).optional(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable");
+        const userId = ctx.user?.id ?? null;
+        await db.insert(userFeedback).values({
+          userId,
+          email: input.email ?? ctx.user?.email ?? null,
+          examType: input.examType,
+          rating: input.rating,
+          comment: input.comment ?? null,
+          feedbackType: input.feedbackType,
+          province: input.province ?? null,
+        });
+        // Notify owner for low ratings (1-2 stars) so issues are flagged quickly
+        if (input.rating <= 2) {
+          notifyOwner({
+            title: `Low feedback rating: ${input.rating}/5 on ${input.examType}`,
+            content: `Type: ${input.feedbackType}\nExam: ${input.examType}\nRating: ${input.rating}/5${input.comment ? `\nComment: ${input.comment}` : ""}${input.email ? `\nEmail: ${input.email}` : ""}`,
+          }).catch(() => {});
+        }
         return { success: true };
       }),
   }),

@@ -37,6 +37,7 @@ export default function Class1WaterQuiz() {
 
   return (
     <QuizShell
+      examType="class1-water"
       currentPath="/class1-water"
       courseLabel="Ontario Class 1 · Water Treatment"
       courseTitle="Class 1 Water Practice Quiz"

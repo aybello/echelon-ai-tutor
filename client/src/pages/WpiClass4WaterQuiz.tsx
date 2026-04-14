@@ -53,6 +53,7 @@ export default function WpiClass4WaterQuiz() {
 
   return (
     <QuizShell
+      examType="wpi-class4-water"
       currentPath="/wpi-class4-water"
       courseLabel="WPI Class 4 · Water Treatment"
       courseTitle="WPI Class 4 Water Practice Quiz"

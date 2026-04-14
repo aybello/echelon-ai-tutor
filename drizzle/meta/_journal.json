@@ -141,6 +141,13 @@
       "when": 1775970429022,
       "tag": "0019_burly_outlaw_kid",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "5",
+      "when": 1776133430474,
+      "tag": "0020_long_captain_america",
+      "breakpoints": true
     }
   ]
 }
