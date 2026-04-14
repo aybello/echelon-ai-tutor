@@ -69,7 +69,7 @@ export default function QuizModeBar({
     <div className="qs-mode-bar-wrap" style={{
       display: "flex",
       alignItems: "flex-start",
-      gap: 10,
+      gap: 8,
       flexWrap: "wrap" as const,
     }}>
       {/* Mode cards */}
@@ -85,9 +85,9 @@ export default function QuizModeBar({
             style={{
               display: "flex",
               alignItems: "center",
-              gap: 10,
-              padding: "10px 16px",
-              borderRadius: 12,
+              gap: 8,
+              padding: "7px 12px",
+              borderRadius: 10,
               border: active
                 ? `2px solid rgba(255,255,255,0.9)`
                 : "1.5px solid rgba(255,255,255,0.25)",
@@ -100,20 +100,20 @@ export default function QuizModeBar({
               fontFamily: "'Sora', sans-serif",
               transition: "all 0.15s ease",
               textAlign: "left" as const,
-              minWidth: 130,
+              minWidth: 110,
               flex: "0 0 auto",
             }}
           >
             {/* Icon circle */}
             <div className="qs-mode-card-icon" style={{
-              width: 36,
-              height: 36,
-              borderRadius: 10,
+              width: 28,
+              height: 28,
+              borderRadius: 8,
               background: active ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.12)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: 18,
+              fontSize: 15,
               flexShrink: 0,
             }}>
               {card.icon}
@@ -126,7 +126,7 @@ export default function QuizModeBar({
                 alignItems: "center",
                 gap: 6,
               }}>
-                <span className="qs-mode-card-label" style={{ fontSize: 13, fontWeight: active ? 800 : 600, lineHeight: 1.2 }}>
+                <span className="qs-mode-card-label" style={{ fontSize: 12, fontWeight: active ? 800 : 600, lineHeight: 1.2 }}>
                   {card.label}
                 </span>
                 {card.badge && (
@@ -159,9 +159,9 @@ export default function QuizModeBar({
           style={{
             display: "flex",
             alignItems: "center",
-            gap: 7,
-            padding: "10px 14px",
-            borderRadius: 12,
+            gap: 6,
+            padding: "7px 12px",
+            borderRadius: 10,
             border: "1.5px solid rgba(255,255,255,0.30)",
             background: "rgba(255,255,255,0.10)",
             color: "rgba(255,255,255,0.85)",

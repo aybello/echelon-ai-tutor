@@ -379,7 +379,7 @@ export default function QuizShell({
       <SiteNav currentPath={currentPath} />
 
       {/* ── Header ── */}
-      <div style={{ background: headerGradient, color: "#fff", padding: "14px 16px 12px" }}>
+      <div style={{ background: headerGradient, color: "#fff", padding: "10px 16px 8px" }}>
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
 
           {/* Top row: title + action buttons */}
@@ -388,9 +388,9 @@ export default function QuizShell({
               {headerIcon && (
                 <div style={{
                   background: "rgba(255,255,255,0.2)",
-                  borderRadius: 10,
-                  padding: "8px 10px",
-                  fontSize: 18,
+                  borderRadius: 8,
+                  padding: "6px 8px",
+                  fontSize: 16,
                   lineHeight: 1,
                 }}>
                   {headerIcon}
@@ -400,7 +400,7 @@ export default function QuizShell({
                 <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", opacity: 0.75, textTransform: "uppercase", marginBottom: 2 }}>
                   {courseLabel}
                 </div>
-                <h1 style={{ margin: 0, fontSize: "clamp(16px, 3vw, 20px)", fontWeight: 900, letterSpacing: "-0.3px" }}>
+                <h1 style={{ margin: 0, fontSize: "clamp(15px, 2.5vw, 18px)", fontWeight: 900, letterSpacing: "-0.3px" }}>
                   {courseTitle}
                 </h1>
                 {courseSubtitle && (
@@ -424,12 +424,12 @@ export default function QuizShell({
                     setStudyNotesOpen(true);
                   }}
                   style={{
-                    padding: "7px 12px",
+                    padding: "5px 10px",
                     background: "rgba(255,255,255,0.22)",
                     color: "#fff",
                     border: "1.5px solid rgba(255,255,255,0.6)",
                     borderRadius: 8,
-                    fontSize: 12,
+                    fontSize: 11,
                     fontWeight: 700,
                     cursor: "pointer",
                     fontFamily: "inherit",
@@ -444,12 +444,12 @@ export default function QuizShell({
               {headerActions.map(a => (
                 <Link key={a.href} href={a.href}>
                   <button style={{
-                    padding: "7px 12px",
+                    padding: "5px 10px",
                     background: "rgba(255,255,255,0.15)",
                     color: "#fff",
                     border: "1px solid rgba(255,255,255,0.3)",
                     borderRadius: 8,
-                    fontSize: 12,
+                    fontSize: 11,
                     fontWeight: 600,
                     cursor: "pointer",
                     fontFamily: "inherit",
@@ -461,8 +461,8 @@ export default function QuizShell({
             </div>
           </div>
 
-          {/* Stats row — segmented bar on mobile via .qs-stats-only CSS */}
-          <div className="qs-stats-only" style={{ display: "flex", gap: 10, marginTop: 10, flexWrap: "wrap", alignItems: "center" }}>
+          {/* Stats row — compact inline bar */}
+          <div className="qs-stats-only" style={{ display: "flex", gap: 8, marginTop: 8, flexWrap: "wrap", alignItems: "center" }}>
             {[
               { label: "Answered", value: history.length },
               { label: "Correct", value: correctCount },
@@ -471,24 +471,24 @@ export default function QuizShell({
               <div key={s.label} style={{
                 background: "rgba(255,255,255,0.15)",
                 borderRadius: 8,
-                padding: "5px 12px",
+                padding: "3px 10px",
                 textAlign: "center",
-                minWidth: 56,
+                minWidth: 48,
               }}>
-                <div style={{ fontSize: 16, fontWeight: 800 }}>{s.value}</div>
-                <div style={{ fontSize: 9, opacity: 0.8, textTransform: "uppercase", letterSpacing: "0.08em" }}>{s.label}</div>
+                <div style={{ fontSize: 14, fontWeight: 800 }}>{s.value}</div>
+                <div style={{ fontSize: 8, opacity: 0.8, textTransform: "uppercase", letterSpacing: "0.08em" }}>{s.label}</div>
               </div>
             ))}
           </div>
 
           {/* Module pills + Calc Only — scrollable row on mobile via .qs-module-pills-row CSS */}
           {(modules.length > 0 || hasCalcOnly) && (
-            <div className="qs-module-pills-row" style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 8 }}>
+            <div className="qs-module-pills-row" style={{ display: "flex", gap: 5, flexWrap: "wrap", marginTop: 6 }}>
               {modules.length > 0 && (
                 <button
                   onClick={() => onModuleChange(null)}
                   style={{
-                    padding: "5px 12px",
+                    padding: "4px 10px",
                     borderRadius: 20,
                     border: "1.5px solid",
                     borderColor: selectedModule === null ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.3)",
@@ -509,7 +509,7 @@ export default function QuizShell({
                   key={m.name}
                   onClick={() => onModuleChange(selectedModule === m.name ? null : m.name)}
                   style={{
-                    padding: "5px 12px",
+                    padding: "4px 10px",
                     borderRadius: 20,
                     border: "1.5px solid",
                     borderColor: selectedModule === m.name ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.3)",
@@ -530,7 +530,7 @@ export default function QuizShell({
                 <button
                   onClick={onCalcOnlyToggle}
                   style={{
-                    padding: "5px 12px",
+                    padding: "4px 10px",
                     borderRadius: 20,
                     border: "1.5px solid",
                     borderColor: calcOnly ? "rgba(167,139,250,0.9)" : "rgba(255,255,255,0.3)",
@@ -551,7 +551,7 @@ export default function QuizShell({
 
           {/* Optional extra header content (e.g. quiz mode selector) */}
           {headerExtra && (
-            <div style={{ marginTop: 12 }}>
+            <div style={{ marginTop: 8 }}>
               {headerExtra}
             </div>
           )}
@@ -600,7 +600,7 @@ export default function QuizShell({
         </div>
       )}
       {/* ── Body ── */}
-      <div style={{ maxWidth: 760, margin: "0 auto", padding: "20px 16px 120px" }}>
+      <div style={{ maxWidth: 760, margin: "0 auto", padding: "12px 16px 24px" }}>
 
         {/* Module Overview panel — shown when a specific module is selected */}
         {moduleOverviews && selectedModule && moduleOverviews[selectedModule] && (
@@ -618,14 +618,14 @@ export default function QuizShell({
         {/* Question card */}
         <div className="qs-question-card" style={{
           background: "#fff",
-          borderRadius: 16,
-          padding: "24px 24px 20px",
-          boxShadow: "0 2px 16px rgba(0,0,0,0.06)",
-          marginBottom: 12,
+          borderRadius: 14,
+          padding: "16px 18px 14px",
+          boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+          marginBottom: 10,
           animation: "fadeUp 0.2s ease",
         }}>
           {/* Badges row */}
-          <div className="qs-badges-row" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14, alignItems: "center" }}>
+          <div className="qs-badges-row" style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 8, alignItems: "center" }}>
             {current.module && (
               <span style={{
                 padding: "3px 10px",
@@ -658,17 +658,17 @@ export default function QuizShell({
 
           {/* Question text */}
           <p style={{
-            fontSize: "clamp(14px, 2.5vw, 16px)",
+            fontSize: "clamp(13px, 2.2vw, 15px)",
             fontWeight: 700,
             color: "#0F172A",
-            lineHeight: 1.6,
-            margin: "0 0 18px",
+            lineHeight: 1.5,
+            margin: "0 0 12px",
           }}>
             {current.question ?? (current as any).q}
           </p>
 
           {/* Answer options */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 16 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 10 }}>
             {(current.options as string[]).map((rawOpt: string, idx: number) => {
               // Strip any baked-in letter prefix (e.g. "A. ", "B. ") to avoid doubling
               const opt = rawOpt.replace(/^[A-Da-d][.):]\s*/, "");
@@ -690,12 +690,12 @@ export default function QuizShell({
                   onClick={() => !confirmed && onSelect(idx)}
                   disabled={confirmed}
                   style={{
-                    padding: "12px 16px",
+                    padding: "10px 14px",
                     borderRadius: 10,
                     border: `1.5px solid ${border}`,
                     background: bg,
                     color,
-                    fontSize: 14,
+                    fontSize: 13,
                     fontWeight: isSelected || isCorrect ? 700 : 500,
                     cursor: confirmed ? "default" : "pointer",
                     textAlign: "left",
@@ -724,13 +724,13 @@ export default function QuizShell({
           )}
 
           {/* Action buttons */}
-          <div className="qs-action-row" style={{ marginTop: 14, display: "flex", gap: 8, flexWrap: "wrap" }}>
+          <div className="qs-action-row" style={{ marginTop: 10, display: "flex", gap: 8, flexWrap: "wrap" }}>
             {/* ← Prev (always show if history exists) */}
             {history.length > 0 && (
               <button
                 onClick={onGoBack}
                 style={{
-                  padding: "11px 16px",
+                  padding: "9px 14px",
                   borderRadius: 10,
                   border: "1.5px solid #E2E8F0",
                   background: "#fff",
@@ -751,7 +751,7 @@ export default function QuizShell({
                 disabled={selected === null || confidence === null}
                 style={{
                   flex: 1,
-                  padding: "11px 20px",
+                  padding: "9px 18px",
                   borderRadius: 10,
                   background: selected !== null && confidence !== null
                     ? headerGradient
@@ -772,7 +772,7 @@ export default function QuizShell({
                   onClick={() => { window.scrollTo({ top: 0, behavior: 'instant' }); onNext(); }}
                   style={{
                     flex: 1,
-                    padding: "11px 20px",
+                    padding: "9px 18px",
                     borderRadius: 10,
                     background: headerGradient,
                     color: "#fff",
@@ -790,7 +790,7 @@ export default function QuizShell({
                   <button
                     onClick={onToggleSteps}
                     style={{
-                      padding: "11px 14px",
+                      padding: "9px 12px",
                       borderRadius: 10,
                       border: "1.5px solid #E2E8F0",
                       background: showSteps ? "#EFF6FF" : "#fff",
@@ -807,7 +807,7 @@ export default function QuizShell({
                 <button
                   onClick={onTutorOpen}
                   style={{
-                    padding: "11px 14px",
+                    padding: "9px 12px",
                     borderRadius: 10,
                     border: "1.5px solid #E2E8F0",
                     background: "#fff",
@@ -831,8 +831,8 @@ export default function QuizShell({
             background: selected === correctIdx ? "#F0FDF4" : "#FFF7ED",
             border: `1px solid ${selected === correctIdx ? "#BBF7D0" : "#FED7AA"}`,
             borderRadius: 12,
-            padding: "16px 18px",
-            marginBottom: 12,
+            padding: "12px 16px",
+            marginBottom: 10,
             animation: "fadeUp 0.2s ease",
           }}>
             <div style={{

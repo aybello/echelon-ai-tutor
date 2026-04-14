@@ -14,7 +14,7 @@ export default function ConfidenceMeter({ value, onChange, disabled }: Props) {
   const notSure = value !== null && value < 3;
 
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
       <span style={{
         fontSize: 10,
         fontWeight: 700,
@@ -32,7 +32,7 @@ export default function ConfidenceMeter({ value, onChange, disabled }: Props) {
           onClick={() => !disabled && onChange(1)}
           disabled={disabled}
           style={{
-            padding: "5px 14px",
+            padding: "4px 12px",
             borderRadius: 20,
             border: `1.5px solid ${notSure ? "#D97706" : "#E5E7EB"}`,
             background: notSure ? "#FFFBEB" : "transparent",
@@ -53,7 +53,7 @@ export default function ConfidenceMeter({ value, onChange, disabled }: Props) {
           onClick={() => !disabled && onChange(4)}
           disabled={disabled}
           style={{
-            padding: "5px 14px",
+            padding: "4px 12px",
             borderRadius: 20,
             border: `1.5px solid ${sure ? "#059669" : "#E5E7EB"}`,
             background: sure ? "#F0FDF4" : "transparent",

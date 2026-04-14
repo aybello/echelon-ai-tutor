@@ -582,3 +582,4 @@
 - [x] Integrate FeedbackModal into quiz session end screen for paying/logged-in users
 - [x] Add feedback panel to /admin dashboard (view ratings, comments, filter by exam type)
 - [x] Write vitest for feedback procedures (172 tests passing)
+- [x] Make quiz page fit entirely on one screen without scrolling — compact header, pills, mode bar, question card, action buttons
