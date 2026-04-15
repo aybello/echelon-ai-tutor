@@ -4,8 +4,9 @@
  */
 import { protectedProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { questionAttempts, studentProfiles } from "../../drizzle/schema";
+import { questionAttempts, studentProfiles, aiChatSessions, examDates } from "../../drizzle/schema";
 import { and, eq, sql, desc, gte } from "drizzle-orm";
+import { getResourcesForProfile } from "../resourceIndex";
 
 export const dashboardRouter = router({
   /**
@@ -262,5 +263,148 @@ export const dashboardRouter = router({
 
     // Return most recent 10 sessions
     return sessions.reverse().slice(0, 10);
+  }),
+
+  /**
+   * AI Tutor Session History — recent AI conversations with summaries
+   */
+  aiSessionHistory: protectedProcedure.query(async ({ ctx }) => {
+    const db = await getDb();
+    if (!db) return [];
+
+    const rows = await db
+      .select({
+        id: aiChatSessions.id,
+        examType: aiChatSessions.examType,
+        sessionStart: aiChatSessions.sessionStart,
+        messageCount: aiChatSessions.messageCount,
+        topicsCovered: aiChatSessions.topicsCovered,
+        summary: aiChatSessions.summary,
+      })
+      .from(aiChatSessions)
+      .where(eq(aiChatSessions.userId, ctx.user.id))
+      .orderBy(desc(aiChatSessions.sessionStart))
+      .limit(10);
+
+    return rows.map((r) => ({
+      id: r.id,
+      examType: r.examType ?? "general",
+      sessionStart: r.sessionStart ? new Date(r.sessionStart).toISOString() : new Date().toISOString(),
+      messageCount: r.messageCount ?? 0,
+      topicsCovered: r.topicsCovered ?? "",
+      summary: r.summary ?? "No summary available",
+    }));
+  }),
+
+  /**
+   * Recommended Resources — personalized study materials from the resource index
+   * Based on student profile weak topics and exam type
+   */
+  recommendedResources: protectedProcedure.query(async ({ ctx }) => {
+    const db = await getDb();
+    if (!db) return [];
+
+    const profiles = await db
+      .select()
+      .from(studentProfiles)
+      .where(eq(studentProfiles.userId, ctx.user.id))
+      .limit(1);
+
+    if (!profiles.length) return [];
+
+    const profile = profiles[0];
+    let weakTopics: string[] = [];
+    let topicAccuracy: Record<string, { correct: number; total: number }> = {};
+
+    try { weakTopics = JSON.parse(profile.weakTopics || "[]"); } catch { /* empty */ }
+    try { topicAccuracy = JSON.parse(profile.topicAccuracy || "{}"); } catch { /* empty */ }
+
+    // Get the most practiced exam type
+    const [examRow] = await db
+      .select({ examType: questionAttempts.examType, cnt: sql<number>`COUNT(*)` })
+      .from(questionAttempts)
+      .where(eq(questionAttempts.userId, ctx.user.id))
+      .groupBy(questionAttempts.examType)
+      .orderBy(desc(sql`COUNT(*)`));
+
+    const examType = examRow?.examType ?? "oit";
+
+    const resources = getResourcesForProfile(
+      { examType, weakTopics, strongTopics: [] },
+      6
+    );
+
+    return resources.slice(0, 6).map((r) => ({
+      title: r.title,
+      url: r.url,
+      type: r.type,
+      topics: r.topics,
+      description: r.description,
+      reason: r.reason,
+    }));
+  }),
+
+  /**
+   * Exam Countdown — days until the next exam with study pace info
+   */
+  examCountdown: protectedProcedure.query(async ({ ctx }) => {
+    const db = await getDb();
+    if (!db) return null;
+
+    // Get the user's next upcoming exam date
+    const now = new Date();
+    // examDates uses email, not userId — look up user email first
+    const userEmail = ctx.user.email;
+    if (!userEmail) return null;
+
+    const exams = await db
+      .select()
+      .from(examDates)
+      .where(
+        and(
+          eq(examDates.email, userEmail),
+          gte(examDates.examDate, now)
+        )
+      )
+      .orderBy(examDates.examDate)
+      .limit(1);
+
+    if (!exams.length) return null;
+
+    const exam = exams[0];
+    const examDate = new Date(exam.examDate);
+    const daysUntil = Math.ceil((examDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+
+    // Get study pace: questions per day in the last 7 days
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+    const [paceRow] = await db
+      .select({ total: sql<number>`COUNT(*)` })
+      .from(questionAttempts)
+      .where(
+        and(
+          eq(questionAttempts.userId, ctx.user.id),
+          gte(questionAttempts.createdAt, sevenDaysAgo)
+        )
+      );
+
+    const questionsLast7Days = Number(paceRow?.total ?? 0);
+    const avgPerDay = Math.round(questionsLast7Days / 7);
+
+    // Determine pace status
+    let paceStatus: "on_track" | "needs_more" | "falling_behind" = "on_track";
+    if (daysUntil <= 7 && avgPerDay < 10) paceStatus = "falling_behind";
+    else if (daysUntil <= 14 && avgPerDay < 5) paceStatus = "needs_more";
+    else if (avgPerDay < 3) paceStatus = "needs_more";
+
+    return {
+      examName: exam.productKey ?? "Upcoming Exam",
+      examDate: examDate.toISOString(),
+      daysUntil,
+      avgQuestionsPerDay: avgPerDay,
+      questionsLast7Days,
+      paceStatus,
+    };
   }),
 });

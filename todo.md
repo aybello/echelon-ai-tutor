@@ -598,3 +598,9 @@
 - [x] Phase 4 Agentic Tutor: Build nightly trigger runner with LLM-generated personalized emails
 - [x] Phase 4 Agentic Tutor: Register cron job and integrate with existing SMTP system
 - [x] Phase 4 Agentic Tutor: Write vitest for trigger logic (211 tests passing)
+- [x] Phase 5 Dashboard: Build weak topics panel (topics below 60% accuracy with question counts and trend)
+- [x] Phase 5 Dashboard: Build AI session history panel (recent tutor conversations with summaries)
+- [x] Phase 5 Dashboard: Build recommended resources panel (personalized study materials from resourceIndex)
+- [x] Phase 5 Dashboard: Build exam countdown widget (days until exam with study pace indicator)
+- [x] Phase 5 Dashboard: Integrate all new panels into /dashboard page
+- [x] Phase 5 Dashboard: Write vitest for new dashboard procedures (211 tests passing)
