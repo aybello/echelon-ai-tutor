@@ -584,3 +584,8 @@
 - [x] Write vitest for feedback procedures (172 tests passing)
 - [x] Make quiz page fit entirely on one screen without scrolling — compact header, pills, mode bar, question card, action buttons
 - [x] Fix dashboard.dailyActivity 500 error — DATE() incompatible with TiDB, replaced with DATE_FORMAT()
+- [x] Phase 2 Agentic Tutor: Add ai_chat_sessions DB table (userId, examType, sessionStart, messageCount, topicsCovered, summary, resourcesSurfaced)
+- [x] Phase 2 Agentic Tutor: Add tRPC procedures — tutor.saveSession, tutor.getRecentSessions, tutor.getStudentContext
+- [x] Phase 2 Agentic Tutor: Rewrite tutor.chat to inject student profile + last 3 session summaries into system prompt
+- [x] Phase 2 Agentic Tutor: Update AITutor frontend — fetch profile on open, track session, generate summary on close
+- [x] Phase 2 Agentic Tutor: Write vitest for new procedures (182 tests passing)

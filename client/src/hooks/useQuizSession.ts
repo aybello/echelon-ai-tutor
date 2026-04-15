@@ -88,6 +88,9 @@ export interface UseQuizSessionReturn {
   // ── Initialization ─────────────────────────────────────────────────────────
   initialized: boolean;
   initialize: () => void;
+
+  // ── Exam context (for AI tutor memory) ─────────────────────────────────────
+  examType: string;
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -510,5 +513,8 @@ export function useQuizSession({
     // Initialization
     initialized,
     initialize,
+
+    // Exam context (for AI tutor memory)
+    examType,
   };
 }

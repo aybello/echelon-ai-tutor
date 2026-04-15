@@ -5,8 +5,8 @@ import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
-import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmissions, users, examDates, userFeedback } from "../drizzle/schema";
-import { and, desc, eq } from "drizzle-orm";
+import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmissions, users, examDates, userFeedback, aiChatSessions, studentProfiles } from "../drizzle/schema";
+import { and, desc, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { adminRouter } from "./routers/admin";
 import { stripeRouter } from "./routers/stripeRouter";
@@ -369,8 +369,13 @@ export const appRouter = router({
       }),
   }),
 
-  // AI Tutor chat endpoint — proxies LLM calls server-side to keep API keys secure
+  // AI Tutor — context-aware chat with student memory
   tutor: router({
+    /**
+     * chat — main LLM endpoint. If the user is authenticated, fetches their
+     * student profile + last 3 session summaries and injects them into the
+     * system prompt so the AI "knows" the student.
+     */
     chat: publicProcedure
       .input(
         z.object({
@@ -380,11 +385,120 @@ export const appRouter = router({
               content: z.string(),
             })
           ),
+          examType: z.string().optional(), // current exam context
         })
       )
-      .mutation(async ({ input }) => {
+      .mutation(async ({ input, ctx }) => {
         try {
-          const response = await invokeLLM({ messages: input.messages });
+          let enrichedMessages = [...input.messages];
+
+          // If user is authenticated, inject student context into the system prompt
+          if (ctx.user?.id && input.examType) {
+            try {
+              const db = await getDb();
+              if (db) {
+                // Fetch student profile
+                const profiles = await db
+                  .select()
+                  .from(studentProfiles)
+                  .where(eq(studentProfiles.userId, ctx.user.id))
+                  .limit(1);
+                const profile = profiles[0] ?? null;
+
+                // Fetch last 3 AI chat session summaries
+                const recentSessions = await db
+                  .select({
+                    summary: aiChatSessions.summary,
+                    topicsCovered: aiChatSessions.topicsCovered,
+                    sessionEnd: aiChatSessions.sessionEnd,
+                  })
+                  .from(aiChatSessions)
+                  .where(eq(aiChatSessions.userId, ctx.user.id))
+                  .orderBy(desc(aiChatSessions.sessionEnd))
+                  .limit(3);
+
+                // Fetch exam date if set
+                const examDateRows = ctx.user.email
+                  ? await db
+                      .select()
+                      .from(examDates)
+                      .where(
+                        and(
+                          eq(examDates.email, ctx.user.email),
+                          eq(examDates.productKey, input.examType)
+                        )
+                      )
+                      .limit(1)
+                  : [];
+                const examDate = examDateRows[0] ?? null;
+
+                // Build the memory block
+                if (profile && profile.totalAttempts >= 15) {
+                  let topicAccuracy: Record<string, { correct: number; total: number }> = {};
+                  let weakTopics: string[] = [];
+                  let strongTopics: string[] = [];
+                  try { topicAccuracy = JSON.parse(profile.topicAccuracy || "{}"); } catch {}
+                  try { weakTopics = JSON.parse(profile.weakTopics || "[]"); } catch {}
+                  try { strongTopics = JSON.parse(profile.strongTopics || "[]"); } catch {}
+
+                  const topicSummary = Object.entries(topicAccuracy)
+                    .map(([topic, data]) => {
+                      const pct = data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0;
+                      return `  - ${topic}: ${pct}% (${data.correct}/${data.total})`;
+                    })
+                    .join("\n");
+
+                  let examCountdown = "";
+                  if (examDate) {
+                    const daysUntil = Math.ceil(
+                      (new Date(examDate.examDate).getTime() - Date.now()) / (1000 * 60 * 60 * 24)
+                    );
+                    if (daysUntil > 0) {
+                      examCountdown = `\n- Exam date: ${new Date(examDate.examDate).toLocaleDateString("en-CA")} (${daysUntil} days away)`;
+                    }
+                  }
+
+                  let sessionNotes = "";
+                  if (recentSessions.length > 0) {
+                    sessionNotes =
+                      "\n\nRECENT SESSION NOTES:\n" +
+                      recentSessions
+                        .map((s, i) => {
+                          const label = i === 0 ? "Last session" : `${i + 1} sessions ago`;
+                          return `- ${label}: ${s.summary}`;
+                        })
+                        .join("\n");
+                  }
+
+                  const memoryBlock = `\n\nSTUDENT PROFILE (${ctx.user.name || "Student"}):
+- Questions attempted: ${profile.totalAttempts} | Sessions: ${profile.totalSessions} | Streak: ${profile.currentStreak} days${examCountdown}
+- Strong topics: ${strongTopics.length > 0 ? strongTopics.join(", ") : "Still building data"}
+- Weak topics: ${weakTopics.length > 0 ? weakTopics.join(", ") : "Still building data"}
+- Topic breakdown:\n${topicSummary}${sessionNotes}
+
+BEHAVIOUR RULES:
+- Proactively guide toward weak topics without being obvious about it
+- If the student has not set an exam date, ask once per session
+- Reference their past session context when relevant
+- Keep responses concise — many students are on mobile`;
+
+                  // Inject memory into the first system message
+                  const sysIdx = enrichedMessages.findIndex((m) => m.role === "system");
+                  if (sysIdx !== -1) {
+                    enrichedMessages[sysIdx] = {
+                      ...enrichedMessages[sysIdx],
+                      content: enrichedMessages[sysIdx].content + memoryBlock,
+                    };
+                  }
+                }
+              }
+            } catch (profileErr) {
+              // Non-fatal — fall back to standard prompt without memory
+              console.error("[AI Tutor] Profile fetch error (non-fatal):", profileErr);
+            }
+          }
+
+          const response = await invokeLLM({ messages: enrichedMessages });
           const reply =
             response?.choices?.[0]?.message?.content ??
             "I'm having trouble connecting right now — please try again.";
@@ -393,6 +507,178 @@ export const appRouter = router({
           console.error("[AI Tutor] LLM error:", err);
           return { reply: "Connection issue — please try again in a moment." };
         }
+      }),
+
+    /**
+     * saveSession — called when the student closes the AI tutor panel.
+     * Generates a summary via LLM and saves the session to ai_chat_sessions.
+     */
+    saveSession: protectedProcedure
+      .input(
+        z.object({
+          examType: z.string(),
+          messages: z.array(
+            z.object({
+              role: z.enum(["user", "assistant"]),
+              content: z.string(),
+            })
+          ),
+          sessionStartMs: z.number(), // unix ms when panel was opened
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        // Only save if there were actual user messages (not just the initial greeting)
+        const userMessages = input.messages.filter((m) => m.role === "user");
+        if (userMessages.length === 0) return { saved: false };
+
+        try {
+          // Generate a 2-3 sentence summary via LLM
+          const conversationText = input.messages
+            .map((m) => `${m.role === "user" ? "Student" : "Tutor"}: ${m.content}`)
+            .join("\n");
+
+          const summaryResponse = await invokeLLM({
+            messages: [
+              {
+                role: "system",
+                content:
+                  "Summarise this tutoring session in 2-3 sentences. Note the topics covered, any concepts the student struggled with, and any key insights. Be specific and factual — this summary will be injected into future sessions so the AI remembers this student.",
+              },
+              {
+                role: "user",
+                content: conversationText,
+              },
+            ],
+          });
+
+          const summary = String(
+            summaryResponse?.choices?.[0]?.message?.content ??
+            "Session summary unavailable."
+          );
+
+          // Extract topics from the conversation (simple keyword extraction)
+          const topicsResponse = await invokeLLM({
+            messages: [
+              {
+                role: "system",
+                content:
+                  'Extract the water/wastewater operator exam topics discussed in this tutoring session. Return ONLY a JSON array of topic strings, e.g. ["Disinfection", "Hydraulics"]. If no specific topics, return ["General"].',
+              },
+              {
+                role: "user",
+                content: conversationText,
+              },
+            ],
+          });
+
+          let topicsCovered = "[\"General\"]";
+          try {
+            const raw = String(topicsResponse?.choices?.[0]?.message?.content ?? "");
+            // Extract JSON array from the response (may have markdown fences)
+            const match = raw.match(/\[[\s\S]*\]/);
+            if (match) {
+              JSON.parse(match[0]); // validate it parses
+              topicsCovered = match[0];
+            }
+          } catch {}
+
+          const db = await getDb();
+          if (!db) return { saved: false };
+
+          await db.insert(aiChatSessions).values({
+            userId: ctx.user.id,
+            examType: input.examType,
+            messageCount: input.messages.length,
+            topicsCovered,
+            summary,
+            sessionStart: new Date(input.sessionStartMs),
+            sessionEnd: new Date(),
+          });
+
+          // Increment totalSessions on the student profile
+          await db
+            .update(studentProfiles)
+            .set({ totalSessions: sql`${studentProfiles.totalSessions} + 1` })
+            .where(eq(studentProfiles.userId, ctx.user.id))
+            .catch(() => {}); // non-fatal
+
+          return { saved: true, summary };
+        } catch (err) {
+          console.error("[AI Tutor] saveSession error:", err);
+          return { saved: false };
+        }
+      }),
+
+    /**
+     * getRecentSessions — returns last N AI chat session summaries for the student
+     */
+    getRecentSessions: protectedProcedure
+      .input(z.object({ limit: z.number().int().min(1).max(10).default(3) }).optional())
+      .query(async ({ ctx, input }) => {
+        const db = await getDb();
+        if (!db) return [];
+
+        const sessions = await db
+          .select({
+            id: aiChatSessions.id,
+            examType: aiChatSessions.examType,
+            messageCount: aiChatSessions.messageCount,
+            topicsCovered: aiChatSessions.topicsCovered,
+            summary: aiChatSessions.summary,
+            sessionStart: aiChatSessions.sessionStart,
+            sessionEnd: aiChatSessions.sessionEnd,
+          })
+          .from(aiChatSessions)
+          .where(eq(aiChatSessions.userId, ctx.user.id))
+          .orderBy(desc(aiChatSessions.sessionEnd))
+          .limit(input?.limit ?? 3);
+
+        return sessions.map((s) => ({
+          ...s,
+          topicsCovered: (() => {
+            try { return JSON.parse(s.topicsCovered); } catch { return []; }
+          })(),
+        }));
+      }),
+
+    /**
+     * getStudentContext — returns the full student profile for frontend display
+     * (e.g., showing "AI knows you" indicator, weak topics, etc.)
+     */
+    getStudentContext: protectedProcedure
+      .input(z.object({ examType: z.string() }).optional())
+      .query(async ({ ctx }) => {
+        const db = await getDb();
+        if (!db) return null;
+
+        const profiles = await db
+          .select()
+          .from(studentProfiles)
+          .where(eq(studentProfiles.userId, ctx.user.id))
+          .limit(1);
+
+        const profile = profiles[0];
+        if (!profile || profile.totalAttempts < 15) return null;
+
+        let weakTopics: string[] = [];
+        let strongTopics: string[] = [];
+        try { weakTopics = JSON.parse(profile.weakTopics || "[]"); } catch {}
+        try { strongTopics = JSON.parse(profile.strongTopics || "[]"); } catch {}
+
+        const sessionCount = await db
+          .select({ cnt: sql<number>`COUNT(*)` })
+          .from(aiChatSessions)
+          .where(eq(aiChatSessions.userId, ctx.user.id));
+
+        return {
+          totalAttempts: profile.totalAttempts,
+          totalSessions: profile.totalSessions,
+          currentStreak: profile.currentStreak,
+          weakTopics,
+          strongTopics,
+          aiSessionCount: Number(sessionCount[0]?.cnt ?? 0),
+          hasMemory: true,
+        };
       }),
   }),
 });

@@ -96,6 +96,7 @@ export default function Class3WastewaterQuiz() {
           history={session.history as any}
           patternMode={false}
           onClose={() => session.setTutorOpen(false)}
+          examType={session.examType}
         />
       )}
       gate={session.trialDone && !session.trialUnlocked ? (

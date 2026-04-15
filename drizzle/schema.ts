@@ -262,3 +262,19 @@ export const userFeedback = mysqlTable("user_feedback", {
 
 export type UserFeedbackRow = typeof userFeedback.$inferSelect;
 export type InsertUserFeedback = typeof userFeedback.$inferInsert;
+
+/** AI chat sessions — logs every AI tutor conversation for memory injection */
+export const aiChatSessions = mysqlTable("ai_chat_sessions", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(), // only logged-in users get memory
+  examType: varchar("examType", { length: 64 }).notNull(), // which exam context this session was in
+  messageCount: int("messageCount").notNull().default(0),
+  topicsCovered: text("topicsCovered").notNull(), // JSON array of topic strings discussed
+  summary: text("summary").notNull(), // 2-3 sentence LLM-generated summary
+  resourcesSurfaced: text("resourcesSurfaced"), // JSON array of resource IDs surfaced (nullable)
+  sessionStart: timestamp("sessionStart").defaultNow().notNull(),
+  sessionEnd: timestamp("sessionEnd").defaultNow().notNull(),
+});
+
+export type AiChatSession = typeof aiChatSessions.$inferSelect;
+export type InsertAiChatSession = typeof aiChatSessions.$inferInsert;

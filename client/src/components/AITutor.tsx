@@ -2,9 +2,10 @@
 // Design: Slide-in right panel with gradient header, chat bubbles, quick prompts
 // Philosophy: Professional SaaS — Clean Dark-Accent
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Question, HistoryEntry } from "@/lib/questionTypes";
 import { trpc } from "@/lib/trpc";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 interface Props {
   question: Question | null;
@@ -12,6 +13,7 @@ interface Props {
   history: HistoryEntry[];
   patternMode: boolean;
   onClose: () => void;
+  examType?: string; // for AI memory context
 }
 
 function renderMsg(text: string) {
@@ -35,7 +37,11 @@ export default function AITutor({
   history,
   patternMode,
   onClose,
+  examType,
 }: Props) {
+  const { isAuthenticated } = useAuth();
+  const [sessionStartMs] = useState(() => Date.now());
+  const saveSessionMutation = trpc.tutor.saveSession.useMutation();
   // Normalise field names — Ontario uses `correct`, WPI uses `correctAnswer`
   const correctIdx: number | undefined =
     (question as any)?.correctAnswer ?? (question as any)?.correct ?? undefined;
@@ -157,6 +163,7 @@ Your approach:
           { role: "system", content: systemPrompt },
           ...newMessages.map((m) => ({ role: m.role as "user" | "assistant", content: typeof m.content === "string" ? m.content : String(m.content) })),
         ],
+        examType: examType || undefined,
       });
       const replyText = typeof result.reply === "string" ? result.reply : String(result.reply);
       setMessages((prev) => [...prev, { role: "assistant" as const, content: replyText }]);
@@ -265,7 +272,17 @@ Your approach:
             </div>
           </div>
           <button
-            onClick={onClose}
+            onClick={() => {
+              // Save session on close if authenticated and there were user messages
+              if (isAuthenticated && examType && messages.filter(m => m.role === "user").length > 0) {
+                saveSessionMutation.mutate({
+                  examType,
+                  messages: messages.filter(m => m.role === "user" || m.role === "assistant"),
+                  sessionStartMs,
+                });
+              }
+              onClose();
+            }}
             style={{
               background: "rgba(255,255,255,0.15)",
               border: "none",

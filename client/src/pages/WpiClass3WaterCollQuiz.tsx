@@ -111,6 +111,7 @@ export default function WpiClass3WaterCollQuiz() {
           history={session.history as any}
           patternMode={false}
           onClose={() => session.setTutorOpen(false)}
+          examType={session.examType}
         />
       )}
       gate={session.trialDone && !session.trialUnlocked ? (
