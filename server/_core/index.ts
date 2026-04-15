@@ -10,6 +10,7 @@ import { serveStatic, setupVite } from "./vite";
 import { registerStripeWebhook } from "../stripe/webhook";
 import { startReconciliationJob } from "../jobs/reconcile";
 import { startExamReminderJob } from "../jobs/examReminders";
+import { startTriggerEngineJob } from "../jobs/triggerEngine";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -72,6 +73,7 @@ async function startServer() {
     // Start background jobs after server is listening
     startReconciliationJob();
     startExamReminderJob();
+    startTriggerEngineJob();
   });
 }
 

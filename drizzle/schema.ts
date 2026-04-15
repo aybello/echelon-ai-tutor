@@ -278,3 +278,17 @@ export const aiChatSessions = mysqlTable("ai_chat_sessions", {
 
 export type AiChatSession = typeof aiChatSessions.$inferSelect;
 export type InsertAiChatSession = typeof aiChatSessions.$inferInsert;
+
+/** Trigger logs — tracks proactive email nudges sent by the agentic trigger engine */
+export const triggerLogs = mysqlTable("trigger_logs", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  triggerType: varchar("triggerType", { length: 32 }).notNull(), // 'struggling' | 'plateau' | 'inactive' | 'exam_approaching' | 'milestone'
+  emailSubject: varchar("emailSubject", { length: 256 }).notNull(),
+  emailBodyPreview: text("emailBodyPreview"), // first 200 chars of the email body for admin review
+  sentAt: timestamp("sentAt").defaultNow().notNull(),
+  cooldownUntil: timestamp("cooldownUntil").notNull(), // don't send same trigger type again until this date
+});
+
+export type TriggerLog = typeof triggerLogs.$inferSelect;
+export type InsertTriggerLog = typeof triggerLogs.$inferInsert;

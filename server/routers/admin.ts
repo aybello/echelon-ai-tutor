@@ -5,11 +5,12 @@
 import { desc, eq } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs } from "../../drizzle/schema";
 import { getDb } from "../db";
 import { adminProcedure, router } from "../_core/trpc";
 import { sendPurchaseConfirmationEmail } from "../email";
 import { PRODUCT_STUDY_PATHS } from "../stripe/products";
+import { runTriggerEngine } from "../jobs/triggerEngine";
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -43,6 +44,7 @@ export const adminRouter = router({
       totalRevenueCAD: totalRevenueCents / 100,
       feedbackCount: feedbackRows.length,
       avgRating: Math.round(avgRating * 10) / 10,
+      triggerCount: (await db.select().from(triggerLogs)).length,
     };
   }),
 
@@ -282,6 +284,24 @@ export const adminRouter = router({
       await db.delete(userFeedback).where(eq(userFeedback.id, input.id));
       return { success: true };
     }),
+
+  /** Paginated list of trigger logs, newest first */
+  getTriggerLogs: adminProcedure
+    .input(z.object({ limit: z.number().int().min(1).max(500).default(200) }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+      return db
+        .select()
+        .from(triggerLogs)
+        .orderBy(desc(triggerLogs.sentAt))
+        .limit(input.limit);
+    }),
+
+  /** Manually run the trigger engine (for testing) */
+  runTriggerEngine: adminProcedure.mutation(async () => {
+    return await runTriggerEngine();
+  }),
 
   /** System health check — DB, Stripe, SMTP, recent purchases */
   getSystemHealth: adminProcedure.query(async () => {

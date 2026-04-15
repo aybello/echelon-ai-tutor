@@ -593,3 +593,8 @@
 - [x] Phase 3 Agentic Tutor: Build resourceIndex.ts with topic-mapped resources and getResourcesForProfile() selection logic
 - [x] Phase 3 Agentic Tutor: Integrate resource recommendations into AI tutor system prompt
 - [x] Phase 3 Agentic Tutor: Write vitest for resource selection logic (196 tests passing)
+- [x] Phase 4 Agentic Tutor: Add trigger_logs DB table (userId, triggerType, emailSubject, emailBody, sentAt, cooldownUntil)
+- [x] Phase 4 Agentic Tutor: Define 5 trigger types (struggling, plateau, inactive, exam_approaching, milestone)
+- [x] Phase 4 Agentic Tutor: Build nightly trigger runner with LLM-generated personalized emails
+- [x] Phase 4 Agentic Tutor: Register cron job and integrate with existing SMTP system
+- [x] Phase 4 Agentic Tutor: Write vitest for trigger logic (211 tests passing)
