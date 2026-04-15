@@ -589,3 +589,7 @@
 - [x] Phase 2 Agentic Tutor: Rewrite tutor.chat to inject student profile + last 3 session summaries into system prompt
 - [x] Phase 2 Agentic Tutor: Update AITutor frontend — fetch profile on open, track session, generate summary on close
 - [x] Phase 2 Agentic Tutor: Write vitest for new procedures (182 tests passing)
+- [x] Phase 3 Agentic Tutor: Research and curate real study resources for each exam module (YouTube, official docs, training materials)
+- [x] Phase 3 Agentic Tutor: Build resourceIndex.ts with topic-mapped resources and getResourcesForProfile() selection logic
+- [x] Phase 3 Agentic Tutor: Integrate resource recommendations into AI tutor system prompt
+- [x] Phase 3 Agentic Tutor: Write vitest for resource selection logic (196 tests passing)

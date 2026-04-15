@@ -1,6 +1,7 @@
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { invokeLLM } from "./_core/llm";
+import { getResourcesForProfile, formatResourcesForPrompt } from "./resourceIndex";
 import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
@@ -470,7 +471,7 @@ export const appRouter = router({
                         .join("\n");
                   }
 
-                  const memoryBlock = `\n\nSTUDENT PROFILE (${ctx.user.name || "Student"}):
+                  let memoryBlock = `\n\nSTUDENT PROFILE (${ctx.user.name || "Student"}):
 - Questions attempted: ${profile.totalAttempts} | Sessions: ${profile.totalSessions} | Streak: ${profile.currentStreak} days${examCountdown}
 - Strong topics: ${strongTopics.length > 0 ? strongTopics.join(", ") : "Still building data"}
 - Weak topics: ${weakTopics.length > 0 ? weakTopics.join(", ") : "Still building data"}
@@ -480,7 +481,19 @@ BEHAVIOUR RULES:
 - Proactively guide toward weak topics without being obvious about it
 - If the student has not set an exam date, ask once per session
 - Reference their past session context when relevant
-- Keep responses concise — many students are on mobile`;
+- Keep responses concise — many students are on mobile
+- When recommending external resources, use the RECOMMENDED RESOURCES section below`;
+
+                  // Inject recommended resources based on weak topics
+                  const resources = getResourcesForProfile({
+                    examType: input.examType ?? "",
+                    weakTopics,
+                    strongTopics,
+                  });
+                  const resourceBlock = formatResourcesForPrompt(resources);
+                  if (resourceBlock) {
+                    memoryBlock += resourceBlock;
+                  }
 
                   // Inject memory into the first system message
                   const sysIdx = enrichedMessages.findIndex((m) => m.role === "system");
