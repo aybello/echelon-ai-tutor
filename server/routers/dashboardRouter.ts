@@ -58,13 +58,13 @@ export const dashboardRouter = router({
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
     const result = await db.execute(sql`
-      SELECT DATE(createdAt) AS day, COUNT(*) AS total,
+      SELECT DATE_FORMAT(createdAt, '%Y-%m-%d') AS day, COUNT(*) AS total,
              SUM(CASE WHEN correct = 'yes' THEN 1 ELSE 0 END) AS correct
       FROM question_attempts
       WHERE userId = ${ctx.user.id}
         AND createdAt >= ${thirtyDaysAgo}
-      GROUP BY DATE(createdAt)
-      ORDER BY DATE(createdAt)
+      GROUP BY DATE_FORMAT(createdAt, '%Y-%m-%d')
+      ORDER BY day
     `);
     const rows = (result as any)[0] as Array<{ day: string; total: number; correct: number }>;
 
