@@ -442,9 +442,11 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
             flexShrink: 0,
           }}>
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp"
               alt="Echelon Institute logo"
-              style={{ height: 40, width: "auto", filter: "brightness(0) invert(1)" }}
+              width={42}
+              height={40}
+              style={{ height: 40, width: 42, filter: "brightness(0) invert(1)" }}
             />
             <span style={{
               fontFamily: "'Sora', sans-serif",

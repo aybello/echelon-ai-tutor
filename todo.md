@@ -604,3 +604,11 @@
 - [x] Phase 5 Dashboard: Build exam countdown widget (days until exam with study pace indicator)
 - [x] Phase 5 Dashboard: Integrate all new panels into /dashboard page
 - [x] Phase 5 Dashboard: Write vitest for new dashboard procedures (211 tests passing)
+
+## Site Audit Fixes (April 17, 2026)
+- [x] Fix page title tag: change "Echelon AI Tutor" to "Water & Wastewater Operator Exam Prep | Echelon Institute"
+- [x] Add explicit width/height to all logo img tags to prevent layout shift
+- [x] Add preconnect hint for manus-analytics.com
+- [x] Defer Google Fonts loading to prevent render blocking
+- [x] Convert logo to WebP format for smaller file size (19KB → 4KB, 77% savings)
+- [ ] Set cache-control headers on CloudFront logo asset

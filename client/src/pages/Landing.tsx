@@ -1195,9 +1195,11 @@ export default function Landing() {
         {/* Brand */}
         <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png"
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp"
             alt="Echelon Institute"
-            style={{ height: 44, width: "auto" }}
+            width={46}
+            height={44}
+            style={{ height: 44, width: 46 }}
           />
           <div>
             <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em" }}>Echelon Institute</div>
@@ -1507,9 +1509,11 @@ export default function Landing() {
             style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}
           >
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp"
               alt="Echelon Institute"
-              style={{ height: 120, width: "auto", filter: "brightness(0) invert(1)" }}
+              width={126}
+              height={120}
+              style={{ height: 120, width: 126, filter: "brightness(0) invert(1)" }}
             />
           </motion.div>
           <motion.div
@@ -2244,9 +2248,11 @@ export default function Landing() {
       }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 12 }}>
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_37a8727b.png"
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp"
             alt="Echelon Institute"
-            style={{ height: 36, width: "auto", filter: "brightness(0) invert(1)" }}
+            width={38}
+            height={36}
+            style={{ height: 36, width: 38, filter: "brightness(0) invert(1)" }}
           />
           <span style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF" }}>Echelon Institute</span>
         </div>
