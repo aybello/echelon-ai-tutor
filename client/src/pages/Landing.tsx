@@ -8,6 +8,8 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 import NotifyModal from "@/components/NotifyModal";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useStructuredData } from "@/hooks/useStructuredData";
+import { landingPageSchemas } from "@/lib/structuredData";
 import { trpc } from "@/lib/trpc";
 import ProvinceBanner from "@/components/ProvinceBanner";
 import { useProvince, type ProvinceId } from "@/hooks/useProvince";
@@ -1062,10 +1064,11 @@ function CourseCard({ course }: { course: CourseType }) {
 export default function Landing() {
   usePageMeta({
     title: "Water & Wastewater Operator Exam Prep",
-    description: "Canada's exam prep platform for water and wastewater operators. 23 certification courses, 8,500+ practice questions, interactive process guides, and an AI tutor.",
-    keywords: "water operator exam prep, OIT exam, wastewater certification Canada, operator practice questions, EOCP exam",
+    description: "Canada's exam prep platform for water and wastewater operators. 23 certification courses, 11,000+ practice questions, interactive process guides, and an AI tutor.",
+    keywords: "water operator exam prep, OIT exam, wastewater certification Canada, operator practice questions, EOCP exam, WPI exam prep, water quality analyst",
     path: "/",
   });
+  useStructuredData(landingPageSchemas);
   const { province, provinceInfo, showPrompt, setProvince, dismiss } = useProvince();
   const { isAuthenticated } = useAuth();
   const updateProvinceMutation = trpc.auth.updateProvince.useMutation();

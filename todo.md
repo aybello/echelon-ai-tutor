@@ -478,7 +478,7 @@
 
 ## Lighthouse Audit Fixes (Apr 12, 2026)
 - [ ] Add rel=canonical tag to index.html
-- [ ] Add JSON-LD structured data (Organization + Course schema)
+- [x] Add JSON-LD structured data (Organization + Course schema)
 - [ ] Add <main> landmark element to App.tsx layout
 - [ ] Fix low-contrast text (accessibility)
 - [ ] Add <label> elements to all <select> inputs
@@ -630,3 +630,6 @@
 - [x] Fix 10 empty catch blocks — add console.error logging for silent failures
 - [x] Add aria-labels to icon-only buttons (AIChatBox send, DashboardLayout user menu, AITutor close)
 - [x] Add database connection retry logic (withRetry utility) for all 3 cron jobs
+
+## SEO Structured Data (April 19, 2026)
+- [x] Add JSON-LD structured data to landing page (Organization, Course, FAQPage, WebSite schemas)
