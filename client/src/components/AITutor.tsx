@@ -272,6 +272,7 @@ Your approach:
             </div>
           </div>
           <button
+            aria-label="Close AI Tutor"
             onClick={() => {
               // Save session on close if authenticated and there were user messages
               if (isAuthenticated && examType && messages.filter(m => m.role === "user").length > 0) {

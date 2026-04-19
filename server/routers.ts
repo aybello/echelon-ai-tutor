@@ -274,7 +274,7 @@ export const appRouter = router({
         notifyOwner({
           title: `Contact form: ${input.subject}`,
           content: `From: ${input.name} <${input.email}>\n\n${input.message}`,
-        }).catch(() => {}); // non-blocking
+        }).catch((err) => { console.error("[contact] notifyOwner failed:", err); }); // non-blocking
         return { success: true };
       }),
   }),
@@ -364,7 +364,7 @@ export const appRouter = router({
           notifyOwner({
             title: `Low feedback rating: ${input.rating}/5 on ${input.examType}`,
             content: `Type: ${input.feedbackType}\nExam: ${input.examType}\nRating: ${input.rating}/5${input.comment ? `\nComment: ${input.comment}` : ""}${input.email ? `\nEmail: ${input.email}` : ""}`,
-          }).catch(() => {});
+          }).catch((err) => { console.error("[feedback] notifyOwner failed:", err); });
         }
         return { success: true };
       }),
@@ -613,7 +613,7 @@ BEHAVIOUR RULES:
             .update(studentProfiles)
             .set({ totalSessions: sql`${studentProfiles.totalSessions} + 1` })
             .where(eq(studentProfiles.userId, ctx.user.id))
-            .catch(() => {}); // non-fatal
+            .catch((err) => { console.error("[session] profile update failed:", err); }); // non-fatal
 
           return { saved: true, summary };
         } catch (err) {

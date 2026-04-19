@@ -3,6 +3,7 @@
  * Can be called from the admin tRPC procedure OR the scheduled cron job.
  */
 import Stripe from "stripe";
+import { withRetry } from "./retry";
 import { eq } from "drizzle-orm";
 import { getDb } from "../db";
 import { purchases, users } from "../../drizzle/schema";
@@ -143,7 +144,7 @@ export function startReconciliationJob(): void {
     cron.schedule("0 3 * * *", async () => {
       console.log("[cron] Starting daily Stripe reconciliation...");
       try {
-        const result = await runReconciliation(26); // 26h window to overlap with previous run
+        const result = await withRetry(() => runReconciliation(26), "reconcile"); // 26h window to overlap with previous run
         const msg = `Daily reconciliation complete: ${result.recovered} recovered, ${result.skipped} already present, ${result.errors.length} errors.`;
         console.log(`[cron] ${msg}`);
 
@@ -157,14 +158,14 @@ export function startReconciliationJob(): void {
           await notifyOwner({
             title: `🔄 Daily Stripe Sync: ${result.recovered} recovered`,
             content: `${msg}\n\n${details}${errorDetails}`,
-          }).catch(() => {});
+          }).catch((err) => { console.error("[reconcile] notifyOwner failed:", err); });
         }
       } catch (err: any) {
         console.error("[cron] Reconciliation failed:", err.message);
         await notifyOwner({
           title: "❌ Daily Stripe Sync Failed",
           content: `The nightly reconciliation job threw an error: ${err.message}`,
-        }).catch(() => {});
+        }).catch((err) => { console.error("[reconcile] notifyOwner failed:", err); });
       }
     });
     console.log("[cron] Daily Stripe reconciliation scheduled at 3:00 AM");

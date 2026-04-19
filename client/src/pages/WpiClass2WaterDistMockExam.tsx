@@ -1,6 +1,7 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
 import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 // WPI Class II Water Distribution exam blueprint: 100 questions
@@ -13,6 +14,11 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function WpiClass2WaterDistMockExam() {
+  usePageMeta({
+    title: "WPI Class 2 Water Distribution Mock Exam",
+    description: "Mock Exam for WPI Class 2 Water Distribution operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+  });
+
   const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("wpi-class2-water-dist");
   
   const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({

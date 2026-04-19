@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 type Tab = "sampling" | "coc" | "qaqc" | "parameters" | "calc";
 
@@ -380,6 +381,11 @@ function LabCalculators() {
 }
 
 export default function Lab() {
+  usePageMeta({
+    title: "Virtual Lab",
+    description: "Interactive virtual laboratory for water and wastewater operator training.",
+  });
+
   const [activeTab, setActiveTab] = useState<Tab>("sampling");
 
   return (

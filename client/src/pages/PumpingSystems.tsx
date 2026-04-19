@@ -13,6 +13,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import PumpCutaway from "@/components/PumpCutaway";
 import PumpCurveChart, { PumpMode } from "@/components/PumpCurveChart";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const TABS = [
   { id: "cutaway", label: "Pump Anatomy", icon: "🔩" },
@@ -78,6 +79,11 @@ const colorMap: Record<string, { bg: string; border: string; text: string; badge
 };
 
 export default function PumpingSystems() {
+  usePageMeta({
+    title: "Pumping Systems",
+    description: "Pumping systems training for water and wastewater operators. Learn pump curves, head loss, and system design.",
+  });
+
   const [activeTab, setActiveTab] = useState("cutaway");
   const [isRunning, setIsRunning] = useState(false);
   const [cavitationMode, setCavitationMode] = useState(false);

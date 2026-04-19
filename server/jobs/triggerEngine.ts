@@ -13,6 +13,7 @@ import {
   examDates,
   triggerLogs,
 } from "../../drizzle/schema";
+import { withRetry } from "./retry";
 import { eq, and, desc, gte, sql } from "drizzle-orm";
 import { invokeLLM } from "../_core/llm";
 import { notifyOwner } from "../_core/notification";
@@ -511,7 +512,7 @@ export function startTriggerEngineJob(): void {
       cron.schedule("0 21 * * *", async () => {
         console.log("[TriggerEngine] Running nightly trigger evaluation...");
         try {
-          const result = await runTriggerEngine();
+          const result = await withRetry(() => runTriggerEngine(), "triggerEngine");
           console.log(
             `[TriggerEngine] Done — evaluated: ${result.evaluated}, triggered: ${result.triggered}, sent: ${result.sent}, skipped (cooldown): ${result.skippedCooldown}, errors: ${result.errors.length}`
           );
@@ -527,7 +528,7 @@ export function startTriggerEngineJob(): void {
                   ? `Errors:\n${result.errors.slice(0, 5).join("\n")}`
                   : "No errors",
               ].join("\n"),
-            }).catch(() => {});
+            }).catch((err) => { console.error("[triggerEngine] notifyOwner failed:", err); });
           }
         } catch (err) {
           console.error("[TriggerEngine] Job error:", err);

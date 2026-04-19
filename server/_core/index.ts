@@ -8,6 +8,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { registerStripeWebhook } from "../stripe/webhook";
+import { generalLimiter, aiTutorLimiter, contactLimiter, authLimiter } from "../rateLimit";
 import { startReconciliationJob } from "../jobs/reconcile";
 import { startExamReminderJob } from "../jobs/examReminders";
 import { startTriggerEngineJob } from "../jobs/triggerEngine";
@@ -35,6 +36,9 @@ async function startServer() {
   const app = express();
   const server = createServer(app);
 
+  // Trust the first proxy (Cloudflare / load balancer) so req.ip reflects the real client IP
+  app.set("trust proxy", 1);
+
   // Register Stripe webhook BEFORE express.json() so raw body is preserved for signature verification
   registerStripeWebhook(app);
 
@@ -44,6 +48,12 @@ async function startServer() {
 
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
+
+  // Rate limiting
+  app.use("/api/trpc/ai", aiTutorLimiter);       // AI Tutor — 15 req/min (LLM cost protection)
+  app.use("/api/trpc/contact", contactLimiter);   // Contact form — 5 req/15min (spam protection)
+  app.use("/api/trpc/auth", authLimiter);          // Auth — 10 req/min (brute force protection)
+  app.use("/api/trpc", generalLimiter);            // All API — 100 req/min (general protection)
 
   // tRPC API
   app.use(

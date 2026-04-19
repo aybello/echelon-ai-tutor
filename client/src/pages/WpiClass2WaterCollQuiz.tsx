@@ -7,6 +7,7 @@ import QuizSettingsDrawer from "@/components/QuizSettingsDrawer";
 import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Advanced Collection Systems": { bg: "#DBEAFE", color: "#1D4ED8" },
@@ -24,6 +25,11 @@ const MODULE_ICONS: Record<string, string> = {
 };
 
 export default function WpiClass2WaterCollQuiz() {
+  usePageMeta({
+    title: "WPI Class 2 Water Collection Practice Questions",
+    description: "Practice Questions for WPI Class 2 Water Collection operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+  });
+
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class2-wastewater-coll", "lazy");
   const allQuestions = dbQuestions;
 

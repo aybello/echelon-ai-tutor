@@ -8,6 +8,7 @@ import { DIST_STEPS, DIST_LABEL_INFO, type DistributionStep } from "@/lib/distri
 import { DistDiagramFor } from "@/components/DistributionDiagrams";
 import DistributionMap from "@/components/DistributionMap";
 import SiteNav from "@/components/SiteNav";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 function WQCard({ quality, color }: { quality: Record<string, string>; color: string }) {
   return (
@@ -76,6 +77,11 @@ function FlowMap({ active, onSelect }: { active: DistributionStep; onSelect: (s:
 }
 
 export default function WaterDistributionGuide() {
+  usePageMeta({
+    title: "Water Distribution",
+    description: "Water distribution system operator exam prep. Practice questions and study materials.",
+  });
+
   const [activeStep, setActiveStep] = useState<DistributionStep>(DIST_STEPS[0]);
   const [activeLabel, setActiveLabel] = useState<string | null>(null);
   const [view, setView] = useState<"learn" | "overview" | "map">("map");

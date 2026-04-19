@@ -8,6 +8,7 @@ import { WW_STEPS, WW_LABEL_INFO, type WastewaterStep } from "@/lib/wastewaterDa
 import { WWDiagramFor } from "@/components/WastewaterDiagrams";
 import WastewaterMap from "@/components/WastewaterMap";
 import SiteNav from "@/components/SiteNav";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 function WQCard({ quality, color }: { quality: Record<string, string>; color: string }) {
   return (
@@ -76,6 +77,11 @@ function FlowMap({ active, onSelect }: { active: WastewaterStep; onSelect: (s: W
 }
 
 export default function Wastewater() {
+  usePageMeta({
+    title: "Wastewater Treatment",
+    description: "Wastewater treatment operator exam prep. Practice questions, mock exams, and flashcards for all certification levels.",
+  });
+
   const [activeStep, setActiveStep] = useState<WastewaterStep>(WW_STEPS[0]);
   const [activeLabel, setActiveLabel] = useState<string | null>(null);
   const [view, setView] = useState<"learn" | "overview" | "map">("map");

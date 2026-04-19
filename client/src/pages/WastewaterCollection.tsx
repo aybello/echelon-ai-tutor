@@ -8,6 +8,7 @@ import { COLL_STEPS, COLL_LABEL_INFO, type CollectionStep } from "@/lib/collecti
 import { CollDiagramFor } from "@/components/CollectionDiagrams";
 import CollectionMap from "@/components/CollectionMap";
 import SiteNav from "@/components/SiteNav";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 function WQCard({ quality, color }: { quality: Record<string, string>; color: string }) {
   return (
@@ -76,6 +77,11 @@ function FlowMap({ active, onSelect }: { active: CollectionStep; onSelect: (s: C
 }
 
 export default function WastewaterCollectionGuide() {
+  usePageMeta({
+    title: "Wastewater Collection",
+    description: "Wastewater collection system operator exam prep. Practice questions and study materials.",
+  });
+
   const [activeStep, setActiveStep] = useState<CollectionStep>(COLL_STEPS[0]);
   const [activeLabel, setActiveLabel] = useState<string | null>(null);
   const [view, setView] = useState<"learn" | "overview" | "map">("map");

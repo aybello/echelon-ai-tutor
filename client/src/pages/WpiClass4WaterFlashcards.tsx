@@ -3,9 +3,15 @@ import QuizSkeleton from "@/components/QuizSkeleton";
 import PurchaseGate from "@/components/PurchaseGate";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
 import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 export default function WpiClass4WaterFlashcards() {
+  usePageMeta({
+    title: "WPI Class 4 Water Treatment Flashcards",
+    description: "Flashcards for WPI Class 4 Water Treatment operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+  });
+
 
   const { questions, modules, isLoading } = useQuestionBank("wpi-class4-water");
   if (isLoading) return <QuizSkeleton />;

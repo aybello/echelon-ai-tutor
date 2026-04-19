@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 type Tab = "chlorine" | "alum" | "lime" | "fluoride" | "polymer";
 
@@ -417,6 +418,11 @@ function PolymerCalc() {
 }
 
 export default function ChemCalc() {
+  usePageMeta({
+    title: "Chemical Calculator",
+    description: "Water and wastewater chemical dosage calculator. Calculate chlorine dosing, chemical feed rates, and more.",
+  });
+
   const [activeTab, setActiveTab] = useState<Tab>("chlorine");
 
   return (

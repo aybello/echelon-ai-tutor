@@ -7,6 +7,7 @@ import QuizSettingsDrawer from "@/components/QuizSettingsDrawer";
 import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Expert Treatment Operations": { bg: "#DBEAFE", color: "#1D4ED8" },
@@ -24,6 +25,11 @@ const MODULE_ICONS: Record<string, string> = {
 };
 
 export default function WpiClass4WastewaterQuiz() {
+  usePageMeta({
+    title: "WPI Class 4 Wastewater Treatment Practice Questions",
+    description: "Practice Questions for WPI Class 4 Wastewater Treatment operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+  });
+
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class4-wastewater", "lazy");
   const allQuestions = dbQuestions;
 

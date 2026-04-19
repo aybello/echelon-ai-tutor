@@ -3,9 +3,15 @@ import QuizSkeleton from "@/components/QuizSkeleton";
 import PurchaseGate from "@/components/PurchaseGate";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
 import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 export default function Class1WaterFlashcards() {
+  usePageMeta({
+    title: "Class 1 Water Treatment Flashcards",
+    description: "Flashcards for Ontario OWWCO Class 1 Water Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
+  });
+
 
   const { questions, modules, isLoading } = useQuestionBank("class1-water");
   if (isLoading) return <QuizSkeleton />;

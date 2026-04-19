@@ -3,8 +3,14 @@ import QuizSkeleton from "@/components/QuizSkeleton";
 import PurchaseGate from "@/components/PurchaseGate";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
 import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 export default function WpiClass3WaterDistFlashcards() {
+  usePageMeta({
+    title: "WPI Class 3 Water Distribution Flashcards",
+    description: "Flashcards for WPI Class 3 Water Distribution operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+  });
+
 
   const { questions, modules, isLoading } = useQuestionBank("wpi-class3-water-dist");
   if (isLoading) return <QuizSkeleton />;

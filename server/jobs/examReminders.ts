@@ -8,6 +8,7 @@ import { getDb } from "../db";
 import { examDates } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
 import { ENV } from "../_core/env";
+import { withRetry } from "./retry";
 import nodemailer from "nodemailer";
 
 const REMINDER_INTERVALS = [30, 14, 7, 1]; // days before exam
@@ -223,7 +224,7 @@ export function startExamReminderJob(): void {
       cron.schedule("0 8 * * *", async () => {
         console.log("[ExamReminder] Running daily exam reminder check...");
         try {
-          const result = await runExamReminders();
+          const result = await withRetry(() => runExamReminders(), "examReminders");
           console.log(`[ExamReminder] Done — sent: ${result.sent}, errors: ${result.errors.length}`);
           if (result.sent > 0 || result.errors.length > 0) {
             await notifyOwner({
@@ -231,7 +232,7 @@ export function startExamReminderJob(): void {
               content: result.errors.length
                 ? `Sent: ${result.sent}\nErrors:\n${result.errors.join("\n")}`
                 : `Sent ${result.sent} exam reminder email(s) today.`,
-            }).catch(() => {});
+            }).catch((err) => { console.error("[examReminders] notifyOwner failed:", err); });
           }
         } catch (err) {
           console.error("[ExamReminder] Job error:", err);

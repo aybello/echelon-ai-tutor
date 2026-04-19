@@ -1,6 +1,7 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
 import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 
@@ -13,6 +14,11 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function Class2WastewaterMockExam() {
+  usePageMeta({
+    title: "Class 2 Wastewater Treatment Mock Exam",
+    description: "Mock Exam for Ontario OWWCO Class 2 Wastewater Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
+  });
+
   const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class2-wastewater");
   
   const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({

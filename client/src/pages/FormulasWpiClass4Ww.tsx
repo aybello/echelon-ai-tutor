@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 interface FormulaCard {
   title: string;
@@ -304,6 +305,11 @@ const SECTIONS: FormulaSection[] = [
 ];
 
 export default function FormulasWpiClass4Ww() {
+  usePageMeta({
+    title: "WPI Class 4 Wastewater Formulas",
+    description: "Essential formulas and calculations for WPI Class 4 Wastewater operator certification exam. Quick reference formula sheet.",
+  });
+
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [search, setSearch] = useState("");
 

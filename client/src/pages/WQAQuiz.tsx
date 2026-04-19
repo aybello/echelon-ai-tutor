@@ -7,8 +7,14 @@ import QuizSettingsDrawer from "@/components/QuizSettingsDrawer";
 import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 export default function WQAQuiz() {
+  usePageMeta({
+    title: "WQA Practice Questions",
+    description: "Practice Questions for Water Quality Analyst (WQA) certification exam. Comprehensive practice with AI-powered explanations.",
+  });
+
   const { questions: dbQuestions, modules: dbModules, formulaLinks, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wqa", "lazy");
   const allQuestions = dbQuestions;
 

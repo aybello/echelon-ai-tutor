@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 interface FormulaEntry {
   name: string;
@@ -353,6 +354,11 @@ const CATEGORIES: FormulaCategory[] = [
 ];
 
 export default function FormulasWpiClass4() {
+  usePageMeta({
+    title: "WPI Class 4 Water Formulas",
+    description: "Essential formulas and calculations for WPI Class 4 Water operator certification exam. Quick reference formula sheet.",
+  });
+
   const [activeCategory, setActiveCategory] = useState<number>(0);
   const [searchTerm, setSearchTerm] = useState("");
 

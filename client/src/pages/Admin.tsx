@@ -6,6 +6,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue" | "health" | "feedback";
 
@@ -102,6 +103,11 @@ function formatDate(d: Date | string) {
 }
 
 export default function Admin() {
+  usePageMeta({
+    title: "Admin Dashboard",
+    description: "Echelon Institute administration panel.",
+  });
+
   const { user, loading } = useAuth();
   const [activeTab, setActiveTab] = useState<Tab>("revenue");
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);

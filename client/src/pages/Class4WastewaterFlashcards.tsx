@@ -3,8 +3,14 @@ import QuizSkeleton from "@/components/QuizSkeleton";
 import PurchaseGate from "@/components/PurchaseGate";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
 import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 export default function Class4WastewaterFlashcards() {
+  usePageMeta({
+    title: "Class 4 Wastewater Treatment Flashcards",
+    description: "Flashcards for Ontario OWWCO Class 4 Wastewater Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
+  });
+
   const { questions, modules, isLoading } = useQuestionBank("class4-wastewater");
   if (isLoading) return <QuizSkeleton />;
 

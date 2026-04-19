@@ -1,6 +1,7 @@
 import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
 import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import { usePageMeta } from "@/hooks/usePageMeta";
 // WPI Class IV Wastewater Collection exam blueprint: 100 questions
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "System Planning & Capital Improvement":          { bg: "#FEE2E2", color: "#B91C1C" },
@@ -10,6 +11,11 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Emerging Technologies & Innovation":             { bg: "#EDE9FE", color: "#6D28D9" },
 };
 export default function WpiClass4WaterCollMockExam() {
+  usePageMeta({
+    title: "WPI Class 4 Water Collection Mock Exam",
+    description: "Mock Exam for WPI Class 4 Water Collection operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+  });
+
   const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("wpi-class4-wastewater-coll");
   
   const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({

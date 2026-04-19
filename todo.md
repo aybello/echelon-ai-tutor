@@ -612,3 +612,21 @@
 - [x] Defer Google Fonts loading to prevent render blocking
 - [x] Convert logo to WebP format for smaller file size (19KB → 4KB, 77% savings)
 - [ ] Set cache-control headers on CloudFront logo asset
+
+## Question Quality Audit (April 19, 2026)
+- [x] Run deep verification on all 15,712 questions using LLM
+- [x] Fix 1,060 flagged questions (wrong answers, calc errors, incomplete explanations)
+- [x] Retry and fix 23 questions that failed on first pass
+- [x] Fix 16 broken explanations in class2-water
+- [x] Total questions repaired: 1,159 across both audit passes
+
+## Performance & Security Fixes (April 19, 2026)
+- [x] Add rate limiting middleware (express-rate-limit) to all API endpoints
+- [x] Fix rate limiter IPv6 keyGenerator warning — use ipKeyGenerator helper
+- [x] Fix Express trust proxy setting for accurate client IP behind Cloudflare
+- [x] Add SEO page titles (usePageMeta hook) to 89 pages (quiz, flashcard, mock exam, formula)
+- [x] Bundle splitting via Vite manualChunks — index 1,108KB → 749KB (32% reduction)
+- [x] Extract vendor-recharts (430KB), vendor-chartjs (180KB), vendor-motion (115KB), vendor-radix (44KB)
+- [x] Fix 10 empty catch blocks — add console.error logging for silent failures
+- [x] Add aria-labels to icon-only buttons (AIChatBox send, DashboardLayout user menu, AITutor close)
+- [x] Add database connection retry logic (withRetry utility) for all 3 cron jobs

@@ -163,7 +163,7 @@ export function registerStripeWebhook(app: Express) {
           notifyOwner({
             title: "\u26a0\ufe0f Webhook Processing Error",
             content: `Failed to record purchase for ${sessionEmail} (${sessionProduct}).\n\nError: ${err.message}\n\nAction required: manually insert purchase or run Sync Stripe in Admin.`,
-          }).catch(() => {});
+          }).catch((err) => { console.error("[webhook] notifyOwner failed:", err); });
           return res.status(500).json({ error: "Internal error" });
         }
       }

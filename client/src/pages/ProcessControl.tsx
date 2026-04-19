@@ -12,6 +12,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
 import { useLocation } from "wouter";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const TABS = [
   { id: "instruments", label: "Instruments", icon: "🔬" },
@@ -332,6 +333,11 @@ const colorMap: Record<string, { bg: string; border: string; text: string; badge
 
 // ── Component ────────────────────────────────────────────────────────────────
 export default function ProcessControl() {
+  usePageMeta({
+    title: "Process Control",
+    description: "Process control concepts for water and wastewater treatment operators.",
+  });
+
   const [location] = useLocation();
   const [activeTab, setActiveTab]           = useState("instruments");
   const [activeCat, setActiveCat]           = useState("flow");

@@ -6,6 +6,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -125,6 +126,11 @@ const PRODUCT_PATHS: Record<string, { label: string; path: string }[]> = {
 const REDIRECT_DELAY = 5; // seconds
 
 export default function PurchaseSuccess() {
+  usePageMeta({
+    title: "Purchase Successful",
+    description: "Your purchase was successful. Thank you for choosing Echelon Institute.",
+  });
+
   const [, navigate] = useLocation();
   const params = new URLSearchParams(window.location.search);
   const sessionId = params.get("session_id") ?? "";

@@ -8,6 +8,7 @@ import { STEPS, LABEL_INFO, type ProcessStep } from "@/lib/processData";
 import { DiagramFor } from "@/components/ProcessDiagrams";
 import ProcessMap from "@/components/ProcessMap";
 import SiteNav from "@/components/SiteNav";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 function WQCard({ quality, color }: { quality: Record<string, string>; color: string }) {
   return (
@@ -76,6 +77,11 @@ function FlowMap({ active, onSelect }: { active: ProcessStep; onSelect: (s: Proc
 }
 
 export default function Process() {
+  usePageMeta({
+    title: "Process Diagrams",
+    description: "Interactive water and wastewater treatment process diagrams and flow charts.",
+  });
+
   const [activeStep, setActiveStep] = useState<ProcessStep>(STEPS[0]);
   const [activeLabel, setActiveLabel] = useState<string | null>(null);
   const [view, setView] = useState<"learn" | "overview" | "map">("map");

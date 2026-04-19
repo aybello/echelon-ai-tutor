@@ -2,7 +2,13 @@ import { useQuestionBank } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
 import FlashcardErrorBoundary from "@/components/FlashcardErrorBoundary";
+import { usePageMeta } from "@/hooks/usePageMeta";
 export default function OITWaterFlashcards() {
+  usePageMeta({
+    title: "OIT Water Flashcards",
+    description: "Flashcards for Ontario OIT (Operator-in-Training) Water certification exam. Free access, no account required.",
+  });
+
 
   const { questions, modules, isLoading } = useQuestionBank("oit");
   if (isLoading) return <QuizSkeleton />;

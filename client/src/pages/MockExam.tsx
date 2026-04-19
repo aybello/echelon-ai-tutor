@@ -7,6 +7,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
 import ReportErrorModal from "@/components/ReportErrorModal";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 // ── Extended question bank (25 questions: 15 original + 10 new) ──
 const EXTRA_QUESTIONS: any[] = [
@@ -171,6 +172,11 @@ const NAV_LINKS = [
 ];
 
 export default function MockExam() {
+  usePageMeta({
+    title: "Mock Exams",
+    description: "Timed mock exams for Canadian water and wastewater operator certification. Simulate the real exam experience.",
+  });
+
 
   const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("oit");
   

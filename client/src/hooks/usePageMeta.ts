@@ -14,7 +14,7 @@ interface PageMetaOptions {
 }
 
 const BASE_TITLE = "Echelon Institute";
-const BASE_URL = "https://echelonai-9kar7mkg.manus.space";
+const BASE_URL = "https://echeloninstitute.ca";
 const OG_IMAGE = `${BASE_URL}/og-image.png`;
 
 function setMeta(name: string, content: string, property = false) {

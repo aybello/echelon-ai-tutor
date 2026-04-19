@@ -7,8 +7,14 @@ import QuizSettingsDrawer from "@/components/QuizSettingsDrawer";
 import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 export default function Class4WastewaterQuiz() {
+  usePageMeta({
+    title: "Class 4 Wastewater Treatment Practice Questions",
+    description: "Practice Questions for Ontario OWWCO Class 4 Wastewater Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
+  });
+
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("class4-wastewater", "lazy");
   const allQuestions = dbQuestions;
 

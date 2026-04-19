@@ -158,7 +158,7 @@ export const stripeRouter = router({
         notifyOwner({
           title: "\u26a0\ufe0f verifySession Error",
           content: `verifySession failed for session ${input.sessionId} (product: ${input.productKey}).\n\nError: ${err.message}\n\nAction required: manually insert purchase or run Sync Stripe in Admin.`,
-        }).catch(() => {});
+        }).catch((err) => { console.error("[stripe] notifyOwner failed:", err); });
         return { email: "", productKey: input.productKey, paid: false };
       }
     }),

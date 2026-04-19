@@ -7,6 +7,7 @@ import QuizSettingsDrawer from "@/components/QuizSettingsDrawer";
 import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 const MODULE_CONFIG: ModuleConfig[] = [
   { name: "Water Sources & Quality", icon: "💧", bg: "#DBEAFE", color: "#1D4ED8" },
@@ -21,6 +22,11 @@ const MODULE_CONFIG: ModuleConfig[] = [
 ];
 
 export default function Class1WaterQuiz() {
+  usePageMeta({
+    title: "Class 1 Water Treatment Practice Questions",
+    description: "Practice Questions for Ontario OWWCO Class 1 Water Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
+  });
+
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("class1-water", "lazy");
   const allQuestions = dbQuestions;
 

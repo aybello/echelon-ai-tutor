@@ -7,8 +7,14 @@ import QuizSettingsDrawer from "@/components/QuizSettingsDrawer";
 import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 export default function Class3WastewaterQuiz() {
+  usePageMeta({
+    title: "Class 3 Wastewater Treatment Practice Questions",
+    description: "Practice Questions for Ontario OWWCO Class 3 Wastewater Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
+  });
+
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("class3-wastewater", "lazy");
   const allQuestions = dbQuestions;
 
