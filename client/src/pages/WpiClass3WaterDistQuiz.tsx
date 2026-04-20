@@ -30,7 +30,7 @@ export default function WpiClass3WaterDistQuiz() {
     description: "Practice Questions for WPI Class 3 Water Distribution operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wpi-class3-water-dist", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class3-water-dist", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({
@@ -48,6 +48,7 @@ export default function WpiClass3WaterDistQuiz() {
   }
 
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <QuizShell

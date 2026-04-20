@@ -9,6 +9,7 @@ import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
 
+
 const MODULE_CONFIG: ModuleConfig[] = [
   { name: "Disinfection", icon: "🧪", bg: "#DBEAFE", color: "#1D4ED8" },
   { name: "Chemical Feed & Storage", icon: "⚗️", bg: "#FEF9C3", color: "#A16207" },
@@ -30,7 +31,7 @@ export default function Home() {
     keywords: "water operator exam, OIT exam prep, wastewater certification, operator practice questions",
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("oit");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit");
   const allQuestions = dbQuestions;
 
   const MODULES = MODULE_CONFIG;
@@ -43,6 +44,7 @@ export default function Home() {
   }
 
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <QuizShell

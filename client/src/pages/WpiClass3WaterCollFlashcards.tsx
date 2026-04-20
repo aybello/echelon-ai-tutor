@@ -11,8 +11,9 @@ export default function WpiClass3WaterCollFlashcards() {
   });
 
 
-  const { questions, modules, isLoading } = useQuestionBank("wpi-class3-wastewater-coll");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("wpi-class3-wastewater-coll");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="WPI Class III Wastewater Collection" backPath="/wpi-class3-water-coll">

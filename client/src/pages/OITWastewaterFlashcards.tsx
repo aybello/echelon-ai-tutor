@@ -13,8 +13,9 @@ export default function OITWastewaterFlashcards() {
   });
 
 
-  const { questions, modules, isLoading } = useQuestionBank("oit-ww");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("oit-ww");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="OIT Wastewater" backPath="/oit-ww">

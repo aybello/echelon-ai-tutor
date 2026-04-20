@@ -13,8 +13,9 @@ export default function WpiClass2WastewaterFlashcards() {
   });
 
 
-  const { questions, modules, isLoading } = useQuestionBank("wpi-class2-wastewater");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("wpi-class2-wastewater");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="WPI Class II Wastewater" backPath="/wpi-class2-wastewater">

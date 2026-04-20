@@ -21,7 +21,7 @@ export default function WpiClass4WastewaterMockExam() {
     description: "Mock Exam for WPI Class 4 Wastewater Treatment operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
   });
 
-  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("wpi-class4-wastewater");
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class4-wastewater");
   
   const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
     id: q.id, module: q.module,
@@ -32,6 +32,7 @@ export default function WpiClass4WastewaterMockExam() {
   }));
 
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <MockExamShell

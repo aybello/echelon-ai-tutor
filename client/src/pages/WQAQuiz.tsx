@@ -15,7 +15,7 @@ export default function WQAQuiz() {
     description: "Practice Questions for Water Quality Analyst (WQA) certification exam. Comprehensive practice with AI-powered explanations.",
   });
 
-  const { questions: dbQuestions, modules: dbModules, formulaLinks, overviews: dbOverviews, isLoading: bankLoading } = useQuestionBank("wqa", "lazy");
+  const { questions: dbQuestions, modules: dbModules, formulaLinks, overviews: dbOverviews, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wqa", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({
@@ -33,6 +33,7 @@ export default function WQAQuiz() {
   }
 
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <QuizShell

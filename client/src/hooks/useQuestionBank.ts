@@ -7,14 +7,13 @@
  *   - "lazy": fetches a small random batch (20 questions) instantly for fast first-question,
  *     then loads the full bank in the background. Use for quiz pages.
  *
- * Usage:
- *   // Quiz page — instant start, lazy background load
- *   const { questions, modules, isLoading } = useQuestionBank("class1-water", "lazy");
+ * When the database is temporarily unavailable (TiDB hibernation), the API
+ * returns empty arrays instead of hanging. This hook detects that case and
+ * exposes `dbUnavailable` so the UI can show a retry message.
  *
- *   // Mock exam / flashcards — full bank needed upfront
- *   const { questions, modules, isLoading } = useQuestionBank("class1-water");
+ * Usage:
+ *   const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("class1-water", "lazy");
  */
-import { useState, useEffect, useRef } from "react";
 import { trpc } from "@/lib/trpc";
 
 export interface DBQuestion {
@@ -47,7 +46,9 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     { bankKey, limit: 20 },
     {
       enabled: mode === "lazy",
-      staleTime: 1000 * 60 * 5, // 5 min — short since it's random
+      staleTime: 1000 * 60 * 5,
+      retry: 2,
+      retryDelay: 3000,
     }
   );
 
@@ -55,20 +56,29 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   const fullQuery = trpc.quiz.getQuestions.useQuery(
     { bankKey },
     {
-      staleTime: 1000 * 60 * 30, // cache for 30 minutes
-      // In lazy mode, only start fetching the full bank once the batch is ready
+      staleTime: 1000 * 60 * 30,
       enabled: mode === "full" || (mode === "lazy" && batchQuery.isSuccess),
+      retry: 2,
+      retryDelay: 3000,
     }
   );
 
   const metaQuery = trpc.quiz.getBankMeta.useQuery(
     { bankKey },
-    { staleTime: 1000 * 60 * 30 }
+    {
+      staleTime: 1000 * 60 * 30,
+      retry: 2,
+      retryDelay: 3000,
+    }
   );
 
   const overviewsQuery = trpc.quiz.getModuleOverviews.useQuery(
     { bankKey },
-    { staleTime: 1000 * 60 * 30 }
+    {
+      staleTime: 1000 * 60 * 30,
+      retry: 2,
+      retryDelay: 3000,
+    }
   );
 
   // ── Merge questions: use batch first, swap to full when ready ────────────
@@ -76,16 +86,13 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   let isLoading: boolean;
 
   if (mode === "lazy") {
-    // In lazy mode: show batch questions immediately, upgrade to full when available
     if (fullQuery.data) {
       questions = fullQuery.data.questions ?? [];
     } else {
       questions = batchQuery.data?.questions ?? [];
     }
-    // Only block on the initial batch — don't wait for the full bank
     isLoading = batchQuery.isLoading || metaQuery.isLoading || overviewsQuery.isLoading;
   } else {
-    // Full mode: wait for everything
     questions = fullQuery.data?.questions ?? [];
     isLoading = fullQuery.isLoading || metaQuery.isLoading || overviewsQuery.isLoading;
   }
@@ -99,6 +106,14 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   const overviews: Record<string, ModuleOverview> | null =
     (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null;
 
+  // ── Detect DB unavailable state ──────────────────────────────────────────
+  // The API returns { questions: [] } and null meta when the DB is down.
+  // Detect this: queries succeeded (not loading, no error) but returned empty.
+  const queriesSettled = !isLoading;
+  const noError = !fullQuery.error && !batchQuery.error && !metaQuery.error;
+  const emptyResult = questions.length === 0 && modules.length === 0;
+  const dbUnavailable = queriesSettled && noError && emptyResult;
+
   return {
     questions,
     modules,
@@ -107,8 +122,9 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     totalQuestions,
     overviews,
     isLoading,
-    /** True when the full bank has loaded (useful for features that need all questions) */
     isFullyLoaded: fullQuery.isSuccess,
+    /** True when the DB appears down — queries returned but with no data */
+    dbUnavailable,
     error:
       fullQuery.error || batchQuery.error || metaQuery.error || overviewsQuery.error || null,
   };

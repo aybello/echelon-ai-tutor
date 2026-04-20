@@ -22,7 +22,7 @@ export default function Class1WastewaterMockExam() {
     description: "Mock Exam for Ontario OWWCO Class 1 Wastewater Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
   });
 
-  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class1-wastewater");
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-wastewater");
   
   const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
     id: q.id, module: q.module,
@@ -33,6 +33,7 @@ export default function Class1WastewaterMockExam() {
   }));
 
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <MockExamShell

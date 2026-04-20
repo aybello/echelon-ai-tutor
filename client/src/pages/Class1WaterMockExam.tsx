@@ -98,7 +98,7 @@ const PROVINCE_OPTIONS = [
 
 export default function Class1WaterMockExam() {
 
-  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class1-water");
+  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-water");
   
   usePageMeta({
     title: "Class 1 Water Treatment Timed Mock Exam",
@@ -431,6 +431,7 @@ export default function Class1WaterMockExam() {
   const isLastQ   = currentIdx === questions.length - 1;
 
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>

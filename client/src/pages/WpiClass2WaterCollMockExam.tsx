@@ -16,7 +16,7 @@ export default function WpiClass2WaterCollMockExam() {
     description: "Mock Exam for WPI Class 2 Water Collection operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
   });
 
-  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("wpi-class2-wastewater-coll");
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class2-wastewater-coll");
   
   const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
     id: q.id, module: q.module,
@@ -27,6 +27,7 @@ export default function WpiClass2WaterCollMockExam() {
   }));
 
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <MockExamShell

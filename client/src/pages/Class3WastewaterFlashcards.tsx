@@ -13,8 +13,9 @@ export default function Class3WastewaterFlashcards() {
   });
 
 
-  const { questions, modules, isLoading } = useQuestionBank("class3-wastewater");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("class3-wastewater");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="Ontario Class 3 Wastewater" backPath="/class3-ww">

@@ -20,7 +20,7 @@ export default function Class2WaterMockExam() {
     description: "Mock Exam for Ontario OWWCO Class 2 Water Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
   });
 
-  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class2-water");
+  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class2-water");
   
   const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
     id: q.id, module: q.module,
@@ -31,6 +31,7 @@ export default function Class2WaterMockExam() {
   }));
 
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <MockExamShell

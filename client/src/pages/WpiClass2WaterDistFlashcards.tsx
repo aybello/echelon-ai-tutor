@@ -12,8 +12,9 @@ export default function WpiClass2WaterDistFlashcards() {
   });
 
 
-  const { questions, modules, isLoading } = useQuestionBank("wpi-class2-water-dist");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("wpi-class2-water-dist");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="WPI Class II Water Distribution" backPath="/wpi-class2-water-dist">

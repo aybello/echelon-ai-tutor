@@ -633,3 +633,10 @@
 
 ## SEO Structured Data (April 19, 2026)
 - [x] Add JSON-LD structured data to landing page (Organization, Course, FAQPage, WebSite schemas)
+
+## CRITICAL: DB Unavailable Resilience (April 20, 2026)
+- [x] Server: getDb() returns null instantly when DB is down (cooldown-based, no blocking retries)
+- [x] Server: Background keep-alive ping reconnects automatically every 2 min
+- [x] Client: All 83 quiz pages show "Temporarily Unavailable" retry screen instead of infinite spinner
+- [x] Client: Auto-retry in background so users don't need to manually refresh
+- [ ] Deploy fix immediately (checkpoint saved, ready to publish)

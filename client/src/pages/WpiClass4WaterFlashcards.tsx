@@ -13,8 +13,9 @@ export default function WpiClass4WaterFlashcards() {
   });
 
 
-  const { questions, modules, isLoading } = useQuestionBank("wpi-class4-water");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("wpi-class4-water");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="WPI Class IV Water" backPath="/wpi-class4-water">

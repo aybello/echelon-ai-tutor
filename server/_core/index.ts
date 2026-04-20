@@ -12,6 +12,7 @@ import { generalLimiter, aiTutorLimiter, contactLimiter, authLimiter } from "../
 import { startReconciliationJob } from "../jobs/reconcile";
 import { startExamReminderJob } from "../jobs/examReminders";
 import { startTriggerEngineJob } from "../jobs/triggerEngine";
+import { connectWithRetry, startDbKeepAlive } from "../db";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -78,8 +79,12 @@ async function startServer() {
     console.log(`Port ${preferredPort} is busy, using port ${port} instead`);
   }
 
-  server.listen(port, () => {
+  server.listen(port, async () => {
     console.log(`Server running on http://localhost:${port}/`);
+    // Warm up the DB connection on startup so the first user request doesn't
+    // hit a cold TiDB Serverless cluster (which can take 5-10s to wake).
+    await connectWithRetry();
+    startDbKeepAlive();
     // Start background jobs after server is listening
     startReconciliationJob();
     startExamReminderJob();

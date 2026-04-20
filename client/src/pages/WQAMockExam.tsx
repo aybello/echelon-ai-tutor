@@ -102,7 +102,7 @@ function formatTime(seconds: number): string {
 
 export default function WQAMockExam() {
 
-  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, formulaLinks, isLoading: bankLoading } = useQuestionBank("wqa");
+  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wqa");
   
   usePageMeta({
     title: "WQA Timed Mock Exam — Water Quality Analyst",
@@ -441,6 +441,7 @@ export default function WQAMockExam() {
   const isFlagged = flagged.includes(currentIdx);
 
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>

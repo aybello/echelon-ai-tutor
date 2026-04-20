@@ -92,7 +92,7 @@ const SESSION_ID = (() => {
 
 export default function OITMockExam() {
 
-  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("oit");
+  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit");
   
   usePageMeta({
     title: "OIT Timed Mock Exam — Canadian Water & Wastewater",
@@ -430,6 +430,7 @@ export default function OITMockExam() {
   const isLastQ = currentIdx === questions.length - 1;
 
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>

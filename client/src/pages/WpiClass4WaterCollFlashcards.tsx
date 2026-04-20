@@ -11,8 +11,9 @@ export default function WpiClass4WaterCollFlashcards() {
   });
 
 
-  const { questions, modules, isLoading } = useQuestionBank("wpi-class4-wastewater-coll");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("wpi-class4-wastewater-coll");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="WPI Class IV Wastewater Collection" backPath="/wpi-class4-water-coll">

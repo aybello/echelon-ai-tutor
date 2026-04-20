@@ -178,7 +178,7 @@ export default function MockExam() {
   });
 
 
-  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("oit");
+  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit");
   
   const ALL_EXAM_QUESTIONS = [...allQuestions, ...EXTRA_QUESTIONS];
 
@@ -459,6 +459,7 @@ export default function MockExam() {
   const isFlagged = flagged.includes(currentIdx);
 
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>

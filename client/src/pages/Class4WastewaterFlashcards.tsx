@@ -11,8 +11,9 @@ export default function Class4WastewaterFlashcards() {
     description: "Flashcards for Ontario OWWCO Class 4 Wastewater Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
   });
 
-  const { questions, modules, isLoading } = useQuestionBank("class4-wastewater");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("class4-wastewater");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="Ontario Class 4 Wastewater" backPath="/class4-ww">

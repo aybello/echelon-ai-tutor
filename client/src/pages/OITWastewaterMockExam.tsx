@@ -97,7 +97,7 @@ const PROVINCE_OPTIONS = [
 
 export default function OITWastewaterMockExam() {
 
-  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("oit-ww");
+  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit-ww");
   
   usePageMeta({
     title: "OIT Wastewater Treatment Timed Mock Exam",
@@ -434,6 +434,7 @@ export default function OITWastewaterMockExam() {
 
   // ─── ACTIVE EXAM ─────────────────────────────────────────────────────────────
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <div style={{ minHeight: "100vh", background: "#F8FAFC" }}>

@@ -13,8 +13,9 @@ export default function WQAFlashcards() {
   });
 
 
-  const { questions, modules, isLoading } = useQuestionBank("wqa");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("wqa");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="WQA Water Quality Analyst" backPath="/wqa">

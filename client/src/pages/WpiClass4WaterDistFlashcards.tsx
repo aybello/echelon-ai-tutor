@@ -11,8 +11,9 @@ export default function WpiClass4WaterDistFlashcards() {
   });
 
 
-  const { questions, modules, isLoading } = useQuestionBank("wpi-class4-water-dist");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("wpi-class4-water-dist");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="WPI Class IV Water Distribution" backPath="/wpi-class4-water-dist">

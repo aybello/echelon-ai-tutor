@@ -10,8 +10,9 @@ export default function OITWaterFlashcards() {
   });
 
 
-  const { questions, modules, isLoading } = useQuestionBank("oit");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("oit");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="Ontario OIT Water" backPath="/quiz">

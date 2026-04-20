@@ -12,8 +12,9 @@ export default function WpiClass3WaterDistFlashcards() {
   });
 
 
-  const { questions, modules, isLoading } = useQuestionBank("wpi-class3-water-dist");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("wpi-class3-water-dist");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="WPI Class III Water Distribution" backPath="/wpi-class3-water-dist">

@@ -79,7 +79,7 @@ function formatTime(seconds: number): string {
 
 export default function Class1MockExam() {
 
-  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading } = useQuestionBank("class1");
+  const { questions: allQuestions, modules: dbModules, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1");
   
   usePageMeta({
     title: "Class 1 Timed Mock Exam — Water & Wastewater",
@@ -495,6 +495,7 @@ export default function Class1MockExam() {
   const timerWarning = timeLeft < 600; // last 10 minutes
 
   if (bankLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>

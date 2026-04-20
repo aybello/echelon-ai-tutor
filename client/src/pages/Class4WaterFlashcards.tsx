@@ -13,8 +13,9 @@ export default function Class4WaterFlashcards() {
   });
 
 
-  const { questions, modules, isLoading } = useQuestionBank("class4-water");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("class4-water");
   if (isLoading) return <QuizSkeleton />;
+  if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
     <FlashcardErrorBoundary examName="Ontario Class 4 Water" backPath="/class4-water">
