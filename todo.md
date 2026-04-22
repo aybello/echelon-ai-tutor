@@ -661,3 +661,10 @@
 - [x] Add Google review CTA to landing page footer
 - [x] Add Google review CTA to quiz session-complete screen
 - [x] Add Google review CTA to About page
+
+## Google Search Console & Sitemap (April 22, 2026)
+- [x] Audit all routes in App.tsx for sitemap
+- [x] Generate sitemap.xml with all public routes and add to client/public/ (130+ URLs across 27 courses)
+- [x] Update robots.txt to reference sitemap URL (already configured)
+- [x] Static sitemap served via client/public/ — no server endpoint needed
+- [ ] Guide user through GSC domain verification and sitemap submission
