@@ -398,6 +398,31 @@ export default function About() {
           <p style={{ fontSize: 15, color: "#64748B", marginBottom: 32, lineHeight: 1.7 }}>
             500+ OIT practice questions, an AI Tutor that knows Canadian provincial regulations, and a formula sheet — all free.
           </p>
+          {/* Google Review CTA */}
+          <a
+            href="https://g.page/r/CWsjBbkUlS8rEBM/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "10px 20px",
+              borderRadius: 10,
+              background: "#FEF9C3",
+              border: "1.5px solid #FDE047",
+              color: "#713F12",
+              fontSize: 14,
+              fontWeight: 700,
+              textDecoration: "none",
+              marginBottom: 20,
+              cursor: "pointer",
+              fontFamily: "inherit",
+            }}
+          >
+            <span style={{ fontSize: 16 }}>⭐</span>
+            Enjoying Echelon? Leave us a Google Review
+          </a>
           <div className="about-cta-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/quiz">
               <button style={{

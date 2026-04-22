@@ -656,3 +656,8 @@
 - [x] Add "First 15 questions free" badge/messaging to all course cards
 - [x] Add "First 15 questions free on every course" to landing page hero/features section
 - [x] Update pricing page to prominently show free trial offer
+
+## Google Review Integration (April 22, 2026)
+- [x] Add Google review CTA to landing page footer
+- [x] Add Google review CTA to quiz session-complete screen
+- [x] Add Google review CTA to About page

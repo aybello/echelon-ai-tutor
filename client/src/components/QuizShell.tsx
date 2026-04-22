@@ -273,6 +273,35 @@ export default function QuizShell({
               {correctCount} correct · {wrongCount} incorrect
               {sessionSize ? ` · ${sessionSize} questions` : ""}
             </p>
+            {/* Google Review prompt — shown when user scores 70%+ */}
+            {pct >= 70 && (
+              <a
+                href="https://g.page/r/CWsjBbkUlS8rEBM/review"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 8,
+                  padding: "12px 20px",
+                  borderRadius: 12,
+                  background: "#FEF9C3",
+                  border: "1.5px solid #FDE047",
+                  color: "#713F12",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  marginBottom: 12,
+                  fontFamily: "inherit",
+                  width: "100%",
+                  boxSizing: "border-box",
+                }}
+              >
+                <span style={{ fontSize: 18 }}>⭐</span>
+                Enjoying Echelon? Leave us a Google Review
+              </a>
+            )}
             <div className="qs-session-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <button
                 onClick={onResetSession}

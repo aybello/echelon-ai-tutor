@@ -2280,6 +2280,30 @@ export default function Landing() {
         <p style={{ fontSize: 12, color: "rgba(255,255,255,0.65)", margin: "0 0 16px 0" }}>
           Canada's AI-powered exam prep platform for water and wastewater operators.
         </p>
+        {/* Google Review CTA */}
+        <a
+          href="https://g.page/r/CWsjBbkUlS8rEBM/review"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "9px 18px",
+            borderRadius: 8,
+            background: "rgba(255,255,255,0.08)",
+            border: "1px solid rgba(255,255,255,0.18)",
+            color: "#FFF",
+            fontSize: 13,
+            fontWeight: 600,
+            textDecoration: "none",
+            marginBottom: 20,
+            cursor: "pointer",
+          }}
+        >
+          <span style={{ fontSize: 15 }}>⭐</span>
+          Leave us a Google Review
+        </a>
         <div className="landing-footer-links" style={{ display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
           {[
             { label: "AI Tutor Quiz", href: "/quiz" },
