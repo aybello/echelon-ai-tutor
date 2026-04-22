@@ -640,3 +640,8 @@
 - [x] Client: All 83 quiz pages show "Temporarily Unavailable" retry screen instead of infinite spinner
 - [x] Client: Auto-retry in background so users don't need to manually refresh
 - [ ] Deploy fix immediately (checkpoint saved, ready to publish)
+
+## Calculation Question Audit (April 21, 2026)
+- [x] Fix OIT Q86 (Darcy-Weisbach — pipe length 10m → 100m so answer = 1.0m)
+- [x] Export all isCalc='yes' questions and audit for math errors (2052 questions, 30 confirmed fixes applied)
+- [x] Apply confirmed fixes to database (30 questions fixed across 12 banks)
