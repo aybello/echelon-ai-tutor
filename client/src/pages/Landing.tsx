@@ -935,6 +935,16 @@ function CourseCard({ course }: { course: CourseType }) {
         </div>
       </div>
 
+      {!course.comingSoon && (
+        <div style={{
+          display: "flex", alignItems: "center", gap: 6,
+          background: "#F0FDF4", border: "1.5px solid #86EFAC",
+          borderRadius: 8, padding: "7px 12px", marginBottom: 10,
+        }}>
+          <span style={{ fontSize: 13 }}>🎁</span>
+          <span style={{ fontSize: 12, fontWeight: 700, color: "#15803D" }}>First 15 questions free — no account needed</span>
+        </div>
+      )}
       <button
         onClick={() => setExpanded(!expanded)}
         style={{
@@ -1645,6 +1655,14 @@ export default function Landing() {
           </motion.div>
             );
           })()}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.9 }}
+            style={{ textAlign: "center", fontSize: 13, color: "rgba(255,255,255,0.7)", margin: "8px 0 0", fontWeight: 500 }}
+          >
+            🎁 First 15 questions free on every course — no account or credit card needed
+          </motion.p>
         </div>
       </section>
 

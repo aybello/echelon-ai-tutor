@@ -28,6 +28,36 @@ interface Product {
 }
 
 /** Maps product key → flashcard page path */
+const QUIZ_ROUTES: Record<string, string> = {
+  "oit": "/quiz",
+  "oit-ww": "/oit-ww-quiz",
+  "class1-water": "/class1-water-quiz",
+  "class1-ww": "/class1-ww-quiz",
+  "class2-water": "/class2-water-quiz",
+  "class2-ww": "/class2-ww-quiz",
+  "class3-water": "/class3-water-quiz",
+  "class3-ww": "/class3-ww-quiz",
+  "class4-water": "/class4-water-quiz",
+  "class4-ww": "/class4-ww-quiz",
+  "wqa": "/wqa-quiz",
+  "wpi-class1-water": "/wpi-class1-water",
+  "wpi-class2-water": "/wpi-class2-water",
+  "wpi-class3-water": "/wpi-class3-water",
+  "wpi-class4-water": "/wpi-class4-water",
+  "wpi-class1-wastewater": "/wpi-class1-wastewater",
+  "wpi-class2-wastewater": "/wpi-class2-wastewater",
+  "wpi-class3-wastewater": "/wpi-class3-wastewater",
+  "wpi-class4-wastewater": "/wpi-class4-wastewater",
+  "wpi-class1-water-dist": "/wpi-class1-water-dist",
+  "wpi-class2-water-dist": "/wpi-class2-water-dist",
+  "wpi-class3-water-dist": "/wpi-class3-water-dist",
+  "wpi-class4-water-dist": "/wpi-class4-water-dist",
+  "wpi-class1-water-coll": "/wpi-class1-water-coll",
+  "wpi-class2-water-coll": "/wpi-class2-water-coll",
+  "wpi-class3-water-coll": "/wpi-class3-water-coll",
+  "wpi-class4-water-coll": "/wpi-class4-water-coll",
+};
+
 const FLASHCARD_ROUTES: Record<string, string> = {
   "oit": "/oit-water-flashcards",
   "oit-ww": "/oit-ww-flashcards",
@@ -798,6 +828,14 @@ export default function Pricing() {
         <div className="pricing-hero-badge">Canadian Water &amp; Wastewater Operator Certification</div>
         <h1>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</h1>
         <p>One-time payment. Unlimited practice. AI Tutor &amp; step-by-step solutions included.<br />Operators who pass Class 3–4 earn <strong>$85K–$130K+</strong>. Your pass costs less than one day's pay.</p>
+        <div style={{
+          display: "inline-flex", alignItems: "center", gap: 8,
+          background: "rgba(240,253,244,0.15)", border: "1.5px solid rgba(134,239,172,0.5)",
+          borderRadius: 10, padding: "10px 18px", marginTop: 12, marginBottom: 4,
+        }}>
+          <span style={{ fontSize: 16 }}>🎁</span>
+          <span style={{ fontSize: 14, fontWeight: 700, color: "#86EFAC" }}>Every course includes 15 free questions — no account or credit card needed</span>
+        </div>
 
         {/* Province selector */}
         <div className="province-selector">
@@ -1191,6 +1229,17 @@ function ProductCard({
         productName={product.name}
         priceLabel={`CA$${(product.priceCAD / 100).toFixed(0)}`}
       />
+      {product.available && QUIZ_ROUTES[product.key] && (
+        <Link href={QUIZ_ROUTES[product.key]}>
+          <span style={{
+            display: "block", textAlign: "center", fontSize: 12, fontWeight: 700,
+            color: "#15803D", textDecoration: "none", padding: "4px 0",
+            cursor: "pointer",
+          }}>
+            🎁 Try 15 questions free — no account needed
+          </span>
+        </Link>
+      )}
       {FLASHCARD_ROUTES[product.key] && (
         <Link href={FLASHCARD_ROUTES[product.key]}>
           <span style={{

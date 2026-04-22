@@ -1,6 +1,11 @@
 /**
- * useQuestionBank — fetches questions, bank metadata, and module overviews
- * from the database via tRPC.
+ * useQuestionBank — fetches questions, bank metadata, and module overviews.
+ *
+ * Caching strategy:
+ *   1. On mount, check localStorage for a valid cached bank (24hr TTL).
+ *      If found, return instantly — zero network request.
+ *   2. If no cache, fetch from DB via tRPC (lazy mode: batch first, then full).
+ *   3. Once the full bank is loaded, write it to localStorage for next visit.
  *
  * Supports two modes:
  *   - "full" (default): fetches ALL questions upfront. Use for mock exams and flashcards.
@@ -14,7 +19,9 @@
  * Usage:
  *   const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("class1-water", "lazy");
  */
+import { useEffect, useRef, useState } from "react";
 import { trpc } from "@/lib/trpc";
+import { getCached, setCached, type CachedBank } from "@/lib/questionCache";
 
 export interface DBQuestion {
   id: number;
@@ -41,23 +48,27 @@ export interface ModuleOverview {
 }
 
 export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full") {
-  // ── Fast batch (lazy mode only) ──────────────────────────────────────────
+  // ── Check localStorage cache first ───────────────────────────────────────
+  const [cached] = useState<CachedBank | null>(() => getCached(bankKey));
+  const wroteCache = useRef(false);
+
+  // ── Fast batch (lazy mode only, skip if cache hit) ───────────────────────
   const batchQuery = trpc.quiz.getRandomQuestions.useQuery(
     { bankKey, limit: 20 },
     {
-      enabled: mode === "lazy",
+      enabled: mode === "lazy" && !cached,
       staleTime: 1000 * 60 * 5,
       retry: 2,
       retryDelay: 3000,
     }
   );
 
-  // ── Full bank (always fetched, but in lazy mode it's deferred) ───────────
+  // ── Full bank (skip if cache hit) ────────────────────────────────────────
   const fullQuery = trpc.quiz.getQuestions.useQuery(
     { bankKey },
     {
       staleTime: 1000 * 60 * 30,
-      enabled: mode === "full" || (mode === "lazy" && batchQuery.isSuccess),
+      enabled: !cached && (mode === "full" || (mode === "lazy" && batchQuery.isSuccess)),
       retry: 2,
       retryDelay: 3000,
     }
@@ -67,6 +78,7 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     { bankKey },
     {
       staleTime: 1000 * 60 * 30,
+      enabled: !cached,
       retry: 2,
       retryDelay: 3000,
     }
@@ -76,43 +88,75 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     { bankKey },
     {
       staleTime: 1000 * 60 * 30,
+      enabled: !cached,
       retry: 2,
       retryDelay: 3000,
     }
   );
 
-  // ── Merge questions: use batch first, swap to full when ready ────────────
+  // ── Write to cache once full bank is loaded ───────────────────────────────
+  useEffect(() => {
+    if (wroteCache.current) return;
+    if (!fullQuery.data || !metaQuery.data) return;
+    const questions = fullQuery.data.questions ?? [];
+    const modules = metaQuery.data.modules ?? [];
+    if (questions.length === 0) return; // don't cache empty (DB down)
+    wroteCache.current = true;
+    setCached(bankKey, {
+      questions,
+      modules,
+      moduleTargets: metaQuery.data.moduleTargets ?? null,
+      formulaLinks: metaQuery.data.formulaLinks ?? null,
+      totalQuestions: metaQuery.data.totalQuestions ?? questions.length,
+      overviews: (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null,
+    });
+  }, [bankKey, fullQuery.data, metaQuery.data, overviewsQuery.data]);
+
+  // ── Resolve data: cache → full → batch ───────────────────────────────────
   let questions: DBQuestion[];
+  let modules: string[];
+  let moduleTargets: Record<string, number> | null;
+  let formulaLinks: Record<string, string> | null;
+  let totalQuestions: number;
+  let overviews: Record<string, ModuleOverview> | null;
   let isLoading: boolean;
 
-  if (mode === "lazy") {
+  if (cached) {
+    // Instant — served from localStorage
+    questions = cached.questions;
+    modules = cached.modules;
+    moduleTargets = cached.moduleTargets;
+    formulaLinks = cached.formulaLinks;
+    totalQuestions = cached.totalQuestions;
+    overviews = cached.overviews;
+    isLoading = false;
+  } else if (mode === "lazy") {
     if (fullQuery.data) {
       questions = fullQuery.data.questions ?? [];
     } else {
       questions = batchQuery.data?.questions ?? [];
     }
     isLoading = batchQuery.isLoading || metaQuery.isLoading || overviewsQuery.isLoading;
+    modules = metaQuery.data?.modules ?? [];
+    moduleTargets = metaQuery.data?.moduleTargets ?? null;
+    formulaLinks = metaQuery.data?.formulaLinks ?? null;
+    totalQuestions = metaQuery.data?.totalQuestions ?? 0;
+    overviews = (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null;
   } else {
     questions = fullQuery.data?.questions ?? [];
     isLoading = fullQuery.isLoading || metaQuery.isLoading || overviewsQuery.isLoading;
+    modules = metaQuery.data?.modules ?? [];
+    moduleTargets = metaQuery.data?.moduleTargets ?? null;
+    formulaLinks = metaQuery.data?.formulaLinks ?? null;
+    totalQuestions = metaQuery.data?.totalQuestions ?? 0;
+    overviews = (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null;
   }
 
-  const modules: string[] = metaQuery.data?.modules ?? [];
-  const moduleTargets: Record<string, number> | null =
-    metaQuery.data?.moduleTargets ?? null;
-  const formulaLinks: Record<string, string> | null =
-    metaQuery.data?.formulaLinks ?? null;
-  const totalQuestions: number = metaQuery.data?.totalQuestions ?? 0;
-  const overviews: Record<string, ModuleOverview> | null =
-    (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null;
-
   // ── Detect DB unavailable state ──────────────────────────────────────────
-  // The API returns { questions: [] } and null meta when the DB is down.
-  // Detect this: queries succeeded (not loading, no error) but returned empty.
   const queriesSettled = !isLoading;
   const noError = !fullQuery.error && !batchQuery.error && !metaQuery.error;
   const emptyResult = questions.length === 0 && modules.length === 0;
-  const dbUnavailable = queriesSettled && noError && emptyResult;
+  const dbUnavailable = !cached && queriesSettled && noError && emptyResult;
 
   return {
     questions,
@@ -122,7 +166,7 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     totalQuestions,
     overviews,
     isLoading,
-    isFullyLoaded: fullQuery.isSuccess,
+    isFullyLoaded: cached != null || fullQuery.isSuccess,
     /** True when the DB appears down — queries returned but with no data */
     dbUnavailable,
     error:

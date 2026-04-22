@@ -5,6 +5,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { trpc } from "@/lib/trpc";
 import PhoneCollectionModal from "./components/PhoneCollectionModal";
+import { QuestionBankPrefetcher } from "./components/QuestionBankPrefetcher";
 import { useAuth } from "./_core/hooks/useAuth";
 import { lazy, Suspense } from "react";
 
@@ -351,6 +352,7 @@ function App() {
             </main>
           </div>
           <PhoneGate />
+          <QuestionBankPrefetcher />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

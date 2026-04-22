@@ -648,3 +648,11 @@
 
 ## Mobile Layout Fix (April 21, 2026)
 - [x] Fix quiz card counter/flag row overflow on small screens
+
+## Question Pre-fetching & Free Trial Visibility (April 22, 2026)
+- [x] Implement smart question pre-fetching with localStorage cache (24hr TTL)
+- [x] Pre-fetch top 4 banks (OIT, WPI Class 1, WPI Class 2, WPI Class 3) on app startup
+- [x] Cache all other banks after first visit
+- [x] Add "First 15 questions free" badge/messaging to all course cards
+- [x] Add "First 15 questions free on every course" to landing page hero/features section
+- [x] Update pricing page to prominently show free trial offer
