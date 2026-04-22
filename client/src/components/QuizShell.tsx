@@ -341,8 +341,8 @@ export default function QuizShell({
             touch-action: manipulation;
           }
           /* Confirm/Next buttons full width on mobile */
-          .qs-action-row { flex-direction: column !important; gap: 10px !important; }
-          .qs-action-row button { width: 100% !important; flex: none !important; min-height: 48px !important; }
+          .qs-action-row { flex-direction: column !important; gap: 8px !important; }
+          .qs-action-row > button { width: 100% !important; flex: none !important; min-height: 48px !important; min-width: 0 !important; box-sizing: border-box !important; }
           /* Session end buttons */
           .qs-session-btns { flex-direction: column !important; }
           .qs-session-btns a, .qs-session-btns button { width: 100% !important; min-height: 48px !important; }
@@ -371,8 +371,13 @@ export default function QuizShell({
           /* Question card */
           .qs-question-card { padding: 16px 14px 14px !important; }
           .qs-session-card { padding: 28px 18px !important; }
-          .qs-badges-row { flex-wrap: wrap !important; }
-          .qs-q-counter { margin-left: 0 !important; margin-top: 4px !important; }
+          /* Badges row: keep all items on one line, truncate long module names */
+          .qs-badges-row { flex-wrap: nowrap !important; overflow: hidden !important; }
+          .qs-badges-row > span:first-child { min-width: 0 !important; overflow: hidden !important; text-overflow: ellipsis !important; white-space: nowrap !important; max-width: 55% !important; }
+          .qs-q-counter { margin-left: auto !important; flex-shrink: 0 !important; white-space: nowrap !important; }
+          /* Post-confirm secondary buttons: wrap into 2-column grid on mobile */
+          .qs-action-row-secondary { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; width: 100% !important; }
+          .qs-action-row-secondary button { width: 100% !important; min-width: 0 !important; flex: none !important; }
         }
       `}</style>
 
@@ -724,50 +729,52 @@ export default function QuizShell({
           )}
 
           {/* Action buttons */}
-          <div className="qs-action-row" style={{ marginTop: 10, display: "flex", gap: 8, flexWrap: "wrap" }}>
-            {/* ← Prev (always show if history exists) */}
-            {history.length > 0 && (
-              <button
-                onClick={onGoBack}
-                style={{
-                  padding: "9px 14px",
-                  borderRadius: 10,
-                  border: "1.5px solid #E2E8F0",
-                  background: "#fff",
-                  color: "#64748B",
-                  fontWeight: 700,
-                  fontSize: 13,
-                  cursor: "pointer",
-                  fontFamily: "inherit",
-                }}
-              >
-                ← Prev
-              </button>
-            )}
-
-            {!confirmed ? (
-              <button
-                onClick={onConfirm}
-                disabled={selected === null || confidence === null}
-                style={{
-                  flex: 1,
-                  padding: "9px 18px",
-                  borderRadius: 10,
-                  background: selected !== null && confidence !== null
-                    ? headerGradient
-                    : "#E2E8F0",
-                  color: selected !== null && confidence !== null ? "#fff" : "#94A3B8",
-                  fontWeight: 800,
-                  fontSize: 14,
-                  border: "none",
-                  cursor: selected !== null && confidence !== null ? "pointer" : "not-allowed",
-                  fontFamily: "inherit",
-                }}
-              >
-                Confirm Answer
-              </button>
-            ) : (
-              <>
+          <div className="qs-action-row" style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 8 }}>
+            {/* Primary row: Prev + Confirm/Next */}
+            <div style={{ display: "flex", gap: 8, flexWrap: "nowrap" }}>
+              {history.length > 0 && (
+                <button
+                  onClick={onGoBack}
+                  style={{
+                    padding: "9px 14px",
+                    borderRadius: 10,
+                    border: "1.5px solid #E2E8F0",
+                    background: "#fff",
+                    color: "#64748B",
+                    fontWeight: 700,
+                    fontSize: 13,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    flexShrink: 0,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  ← Prev
+                </button>
+              )}
+              {!confirmed ? (
+                <button
+                  onClick={onConfirm}
+                  disabled={selected === null || confidence === null}
+                  style={{
+                    flex: 1,
+                    padding: "9px 18px",
+                    borderRadius: 10,
+                    background: selected !== null && confidence !== null
+                      ? headerGradient
+                      : "#E2E8F0",
+                    color: selected !== null && confidence !== null ? "#fff" : "#94A3B8",
+                    fontWeight: 800,
+                    fontSize: 14,
+                    border: "none",
+                    cursor: selected !== null && confidence !== null ? "pointer" : "not-allowed",
+                    fontFamily: "inherit",
+                    minWidth: 0,
+                  }}
+                >
+                  Confirm Answer
+                </button>
+              ) : (
                 <button
                   onClick={() => { window.scrollTo({ top: 0, behavior: 'instant' }); onNext(); }}
                   style={{
@@ -781,15 +788,24 @@ export default function QuizShell({
                     border: "none",
                     cursor: "pointer",
                     fontFamily: "inherit",
-                    minWidth: 130,
+                    minWidth: 0,
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                   }}
                 >
                   Next Question →
                 </button>
+              )}
+            </div>
+            {/* Secondary row: Show Steps + AI Tutor (only after confirming) */}
+            {confirmed && (
+              <div className="qs-action-row-secondary" style={{ display: "flex", gap: 8 }}>
                 {current.steps && current.steps.length > 0 && (
                   <button
                     onClick={onToggleSteps}
                     style={{
+                      flex: 1,
                       padding: "9px 12px",
                       borderRadius: 10,
                       border: "1.5px solid #E2E8F0",
@@ -799,6 +815,10 @@ export default function QuizShell({
                       fontSize: 13,
                       cursor: "pointer",
                       fontFamily: "inherit",
+                      minWidth: 0,
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
                     }}
                   >
                     {showSteps ? "Hide Steps" : "Show Steps"}
@@ -807,6 +827,7 @@ export default function QuizShell({
                 <button
                   onClick={onTutorOpen}
                   style={{
+                    flex: 1,
                     padding: "9px 12px",
                     borderRadius: 10,
                     border: "1.5px solid #E2E8F0",
@@ -816,11 +837,15 @@ export default function QuizShell({
                     fontSize: 13,
                     cursor: "pointer",
                     fontFamily: "inherit",
+                    minWidth: 0,
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
                   }}
                 >
                   🤖 AI Tutor
                 </button>
-              </>
+              </div>
             )}
           </div>
         </div>

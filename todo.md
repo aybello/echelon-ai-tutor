@@ -645,3 +645,6 @@
 - [x] Fix OIT Q86 (Darcy-Weisbach — pipe length 10m → 100m so answer = 1.0m)
 - [x] Export all isCalc='yes' questions and audit for math errors (2052 questions, 30 confirmed fixes applied)
 - [x] Apply confirmed fixes to database (30 questions fixed across 12 banks)
+
+## Mobile Layout Fix (April 21, 2026)
+- [x] Fix quiz card counter/flag row overflow on small screens
