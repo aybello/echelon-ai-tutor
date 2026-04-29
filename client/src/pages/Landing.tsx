@@ -2304,6 +2304,10 @@ export default function Landing() {
           <span style={{ fontSize: 15 }}>⭐</span>
           Leave us a Google Review
         </a>
+        {/* HQ Address — required for Google Business Profile */}
+        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", margin: "0 0 16px 0", lineHeight: 1.6 }}>
+          📍 1291 Gordon St, Guelph, ON N1L 0M5 &nbsp;|&nbsp; 📞 (289) 788-1885
+        </p>
         <div className="landing-footer-links" style={{ display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
           {[
             { label: "AI Tutor Quiz", href: "/quiz" },
