@@ -51,7 +51,7 @@ export const organizationSchema = {
   url: BASE_URL,
   logo: LOGO_URL,
   description:
-    "Canada's AI-powered exam prep platform for water and wastewater operators. OIT, Class 1–4, WQA, and WPI certification preparation with 11,000+ practice questions across 23 courses.",
+    "Canada's AI-powered exam prep platform for water and wastewater operators. OIT, Class 1–4, WQA, and WPI certification preparation with 15,000+ practice questions across 27 courses.",
   foundingDate: "2025",
   founder: {
     "@type": "Person",
@@ -141,7 +141,7 @@ export const courseCatalogSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "Echelon Institute Certification Courses",
-  description: "23 exam prep courses for Canadian water and wastewater operator certifications — Ontario (OWWCO) and Western Provinces (WPI).",
+  description: "27 exam prep courses for Canadian water and wastewater operator certifications — Ontario (OWWCO) and Western Provinces (WPI).",
   numberOfItems: ontarioCourses.length + wpiCourses.length,
   itemListElement: [...ontarioCourses, ...wpiCourses].map((c, i) => ({
     "@type": "ListItem",
@@ -186,7 +186,7 @@ const faqs = [
   {
     question: "Which certification levels are available right now?",
     answer:
-      "All 23 courses are live. Ontario (11 courses): OIT Water (CA$49), OIT Wastewater (CA$49), Class 1–4 Water Treatment (CA$99–$299), Class 1–4 Wastewater Treatment (CA$99–$299), and WQA (CA$149). WPI — BC, AB, SK, MB (16 courses): Class I–IV Water Treatment, Class I–IV Wastewater Treatment, Class I–IV Water Distribution, and Class I–IV Wastewater Collection — all at CA$99–$299. Every course includes 500+ practice questions, a timed mock exam, AI Tutor, formula sheet, and score history.",
+      "All 27 courses are live. Ontario (11 courses): OIT Water (CA$49), OIT Wastewater (CA$49), Class 1–4 Water Treatment (CA$99–$299), Class 1–4 Wastewater Treatment (CA$99–$299), and WQA (CA$149). WPI — BC, AB, SK, MB (16 courses): Class I–IV Water Treatment, Class I–IV Wastewater Treatment, Class I–IV Water Distribution, and Class I–IV Wastewater Collection — all at CA$99–$299. Every course includes 500+ practice questions, a timed mock exam, AI Tutor, formula sheet, and score history.",
   },
   {
     question: "Is the OIT course really free?",
@@ -201,7 +201,7 @@ const faqs = [
   {
     question: "How many practice questions are available?",
     answer:
-      "Over 11,000 practice questions across 23 courses. Each course contains 150–600 questions covering every module in the exam blueprint. All questions include detailed explanations, and calculation questions include step-by-step solutions.",
+      "Over 15,000 practice questions across 27 courses. Each course contains 150–650 questions covering every module in the exam blueprint. All questions include detailed explanations, and calculation questions include step-by-step solutions.",
   },
 ];
 

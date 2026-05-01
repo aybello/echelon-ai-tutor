@@ -841,8 +841,8 @@ const FEATURES = [
 ];
 
 const STATS = [
-  { value: "11,000+", label: "Practice Questions" },
-  { value: "23", label: "Certification Courses" },
+  { value: "15,000+", label: "Practice Questions" },
+  { value: "27", label: "Certification Courses" },
   { value: "6", label: "Specialization Tracks" },
   { value: "Free", label: "OIT Access" },
 ];
@@ -1074,7 +1074,7 @@ function CourseCard({ course }: { course: CourseType }) {
 export default function Landing() {
   usePageMeta({
     title: "Water & Wastewater Operator Exam Prep",
-    description: "Canada's exam prep platform for water and wastewater operators. 23 certification courses, 11,000+ practice questions, interactive process guides, and an AI tutor.",
+    description: "Canada's exam prep platform for water and wastewater operators. 27 certification courses, 15,000+ practice questions, interactive process guides, and an AI tutor.",
     keywords: "water operator exam prep, OIT exam, wastewater certification Canada, operator practice questions, EOCP exam, WPI exam prep, water quality analyst",
     path: "/",
   });
@@ -1683,10 +1683,10 @@ export default function Landing() {
         >
           <StaggerContainer style={{ display: "contents" } as React.CSSProperties}>
           <StaggerItem>
-            <AnimatedStat value={11000} suffix="+" label="Practice Questions" />
+            <AnimatedStat value={15000} suffix="+" label="Practice Questions" />
           </StaggerItem>
           <StaggerItem>
-            <AnimatedStat value={23} label="Certification Courses" />
+            <AnimatedStat value={27} label="Certification Courses" />
           </StaggerItem>
           <StaggerItem>
             <AnimatedStat value={6} label="Specialization Tracks" />

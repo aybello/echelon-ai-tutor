@@ -1033,11 +1033,11 @@ export default function Pricing() {
             One-time payment — access never expires. No subscription, no hidden fees.
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
-            8,500+ questions across Water Treatment, Wastewater, WQA, and WPI tracks. Canada-specific. AI-explained.
+            15,000+ questions across Water Treatment, Wastewater, WQA, and WPI tracks. Canada-specific. AI-explained.
           </p>
           <div className="trust-grid">
             {[
-              { icon: "📚", label: "8,500+ Questions" },
+              { icon: "📚", label: "15,000+ Questions" },
               { icon: "🤖", label: "AI Tutor Chat" },
               { icon: "📝", label: "Timed Mock Exam" },
               { icon: "🃏", label: "400+ Flashcards" },
@@ -1098,7 +1098,7 @@ export default function Pricing() {
               },
               {
                 q: "Which certification levels are available right now?",
-                a: "All 23 courses are live. Ontario (11 courses): OIT Water (CA$49), OIT Wastewater (CA$49), Class 1–4 Water Treatment (CA$99–$299), Class 1–4 Wastewater Treatment (CA$99–$299), and WQA (CA$149). WPI — BC, AB, SK, MB (16 courses): Class I–IV Water Treatment, Class I–IV Wastewater Treatment, Class I–IV Water Distribution, and Class I–IV Wastewater Collection — all at CA$99–$299. Every course includes 500+ practice questions, a timed mock exam, AI Tutor, formula sheet, and score history.",
+                a: "All 27 courses are live. Ontario (11 courses): OIT Water (CA$49), OIT Wastewater (CA$49), Class 1–4 Water Treatment (CA$99–$299), Class 1–4 Wastewater Treatment (CA$99–$299), and WQA (CA$149). WPI — BC, AB, SK, MB (16 courses): Class I–IV Water Treatment, Class I–IV Wastewater Treatment, Class I–IV Water Distribution, and Class I–IV Wastewater Collection — all at CA$99–$299. Every course includes 500+ practice questions, a timed mock exam, AI Tutor, formula sheet, and score history.",
               },
             ].map(faq => (
               <div key={faq.q} className="faq-item">
