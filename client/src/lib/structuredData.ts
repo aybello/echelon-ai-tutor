@@ -218,11 +218,19 @@ export const faqSchema = {
   })),
 };
 
-// ── All schemas for the landing page ────────────────────────────────────────
+// ── All schemas for the landing page (single @graph block) ─────────────────
+// Using a single JSON-LD @graph block is Google's recommended best practice.
+// It eliminates the "Duplicate field" error that occurs when multiple separate
+// script tags each declare the same @type (e.g. FAQPage appearing twice).
 
 export const landingPageSchemas = [
-  organizationSchema,
-  websiteSchema,
-  courseCatalogSchema,
-  faqSchema,
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      organizationSchema,
+      websiteSchema,
+      courseCatalogSchema,
+      faqSchema,
+    ].map(({ "@context": _ctx, ...rest }) => rest),
+  } as Record<string, unknown>,
 ];
