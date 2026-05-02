@@ -984,12 +984,12 @@ function CourseCard({ course }: { course: CourseType }) {
           {/* Get Pass — direct Stripe checkout */}
           {/* Start Studying — primary CTA */}
           <Link href={(course as any).quizHref ?? (course.code === "OIT-WW" ? "/oit-ww" : course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "CL3-WW" ? "/class3-ww" : course.code === "CL4-W" ? "/class4-water" : course.code === "CL4-WW" ? "/class4-ww" : course.code === "WQA" ? "/wqa" : "/quiz")}>
-            <button style={{
+            <button className="btn-pulse" style={{
               width: "100%", padding: "12px",
               background: `linear-gradient(135deg, ${course.color}, ${course.color}cc)`,
               color: "#fff", border: "none", borderRadius: 10,
               fontSize: 13, fontWeight: 700, cursor: "pointer",
-              fontFamily: "inherit", marginBottom: 8, transition: "opacity 0.15s",
+              fontFamily: "inherit", marginBottom: 8,
             }}>
               Start Studying →
             </button>

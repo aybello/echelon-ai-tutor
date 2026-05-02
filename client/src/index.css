@@ -264,6 +264,26 @@ img {
   100% { background-position: -200% 0; }
 }
 
+/* Pulsing CTA button animation */
+@keyframes pulse-cta {
+  0%   { box-shadow: 0 0 0 0 rgba(29, 78, 216, 0.55); transform: scale(1); }
+  50%  { box-shadow: 0 0 0 10px rgba(29, 78, 216, 0); transform: scale(1.02); }
+  100% { box-shadow: 0 0 0 0 rgba(29, 78, 216, 0); transform: scale(1); }
+}
+.btn-pulse {
+  animation: pulse-cta 2s ease-in-out infinite;
+}
+.btn-pulse:hover {
+  animation: none;
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(29, 78, 216, 0.45);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-pulse {
+    animation: none;
+  }
+}
+
 /* Dashboard responsive layout */
 .dashboard-two-col {
   grid-template-columns: 1fr 300px;
