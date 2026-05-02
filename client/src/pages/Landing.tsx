@@ -982,34 +982,36 @@ function CourseCard({ course }: { course: CourseType }) {
       ) : (
         <>
           {/* Get Pass — direct Stripe checkout */}
+          {/* Start Studying — primary CTA */}
+          <Link href={(course as any).quizHref ?? (course.code === "OIT-WW" ? "/oit-ww" : course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "CL3-WW" ? "/class3-ww" : course.code === "CL4-W" ? "/class4-water" : course.code === "CL4-WW" ? "/class4-ww" : course.code === "WQA" ? "/wqa" : "/quiz")}>
+            <button style={{
+              width: "100%", padding: "12px",
+              background: `linear-gradient(135deg, ${course.color}, ${course.color}cc)`,
+              color: "#fff", border: "none", borderRadius: 10,
+              fontSize: 13, fontWeight: 700, cursor: "pointer",
+              fontFamily: "inherit", marginBottom: 8, transition: "opacity 0.15s",
+            }}>
+              Start Studying →
+            </button>
+          </Link>
+          {/* Get Pass — secondary CTA */}
           {(course as any).productKey && (
             <button
               onClick={handleGetPass}
               disabled={createSession.isPending}
               style={{
-                width: "100%", padding: "12px",
-                background: createSession.isPending ? "#93C5FD" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
-                color: "#fff", border: "none", borderRadius: 10,
-                fontSize: 13, fontWeight: 700,
+                width: "100%", padding: "10px",
+                background: "transparent",
+                color: "#1D4ED8", border: "1.5px solid #1D4ED8",
+                borderRadius: 10, fontSize: 12, fontWeight: 700,
                 cursor: createSession.isPending ? "not-allowed" : "pointer",
-                fontFamily: "inherit", marginBottom: 8,
+                fontFamily: "inherit", opacity: createSession.isPending ? 0.6 : 1,
+                transition: "opacity 0.15s",
               }}
             >
               {createSession.isPending ? "Redirecting…" : `Get Pass — CA$${(course as any).price} →`}
             </button>
           )}
-          <Link href={(course as any).quizHref ?? (course.code === "OIT-WW" ? "/oit-ww" : course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "CL3-WW" ? "/class3-ww" : course.code === "CL4-W" ? "/class4-water" : course.code === "CL4-WW" ? "/class4-ww" : course.code === "WQA" ? "/wqa" : "/quiz")}>
-            <button style={{
-              width: "100%", padding: "10px",
-              background: "transparent",
-              color: course.color, border: `1.5px solid ${course.color}`,
-              borderRadius: 10,
-              fontSize: 12, fontWeight: 700, cursor: "pointer",
-              fontFamily: "inherit", transition: "opacity 0.15s",
-            }}>
-              Start Studying →
-            </button>
-          </Link>
 
 
         </>
