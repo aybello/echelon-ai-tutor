@@ -1010,51 +1010,7 @@ function CourseCard({ course }: { course: CourseType }) {
               Start Studying →
             </button>
           </Link>
-          {(course.code === "OIT-W" || course.code === "OIT-WW") && (
-            <Link href={course.code === "OIT-WW" ? "/oit-ww-mock" : "/oit-mock"}>
-              <button style={{
-                width: "100%", padding: "10px",
-                background: "transparent",
-                color: course.color, border: `1.5px solid ${course.color}`,
-                borderRadius: 10, fontSize: 12, fontWeight: 700,
-                cursor: "pointer", fontFamily: "inherit",
-                marginTop: 8, transition: "all 0.15s",
-              }}>
-                📋 Timed Mock Exam
-              </button>
-            </Link>
-          )}
 
-          {(course.code === "CL1-W" || course.code === "CL1-WW" || course.code === "CL2-WW" || course.code === "CL2-W" || course.code === "CL3-W" || course.code === "CL3-WW" || course.code === "CL4-W" || course.code === "CL4-WW" || course.code === "WQA" || (course as any).mockHref) && (
-            <Link href={(course as any).mockHref ?? (course.code === "WQA" ? "/wqa-mock" : course.code === "CL1-WW" ? "/class1-ww-mock" : course.code === "CL2-WW" ? "/class2-ww-mock" : course.code === "CL2-W" ? "/class2-water-mock" : course.code === "CL3-W" ? "/class3-water-mock" : course.code === "CL3-WW" ? "/class3-ww-mock" : course.code === "CL4-W" ? "/class4-water-mock" : course.code === "CL4-WW" ? "/class4-ww-mock" : "/class1-water-mock")}>
-              <button style={{
-                width: "100%", padding: "10px",
-                background: "transparent",
-                color: course.color, border: `1.5px solid ${course.color}`,
-                borderRadius: 10, fontSize: 12, fontWeight: 700,
-                cursor: "pointer", fontFamily: "inherit",
-                marginTop: 8, transition: "all 0.15s",
-              }}>
-                📋 Timed Mock Exam
-              </button>
-            </Link>
-          )}
-
-          {/* Flashcard button — shown for courses with a flashcard page */}
-          {(course as any).flashcardHref && (
-            <Link href={(course as any).flashcardHref}>
-              <button style={{
-                width: "100%", padding: "10px",
-                background: "transparent",
-                color: "#0F766E", border: "1.5px solid #0F766E",
-                borderRadius: 10, fontSize: 12, fontWeight: 700,
-                cursor: "pointer", fontFamily: "inherit",
-                marginTop: 8, transition: "all 0.15s",
-              }}>
-                🃏 Flashcards
-              </button>
-            </Link>
-          )}
 
         </>
       )}
