@@ -1551,7 +1551,7 @@ export default function Landing() {
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.7 }}
             className="landing-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href={ctaHref} style={{ width: "100%" }}>
-              <button style={{
+              <button className="btn-pulse" style={{
                 padding: "14px 32px", borderRadius: 12,
                 background: "linear-gradient(135deg, #2563EB, #0E7490)",
                 color: "#fff", border: "none", fontSize: 15, fontWeight: 700,
@@ -2099,7 +2099,7 @@ export default function Landing() {
           Try 500+ OIT practice questions across 10 modules with full AI Tutor access. No account required.
         </p>
         <Link href="/quiz">
-          <button style={{
+          <button className="btn-pulse" style={{
             padding: "16px 40px", borderRadius: 12,
             background: "#FFFFFF", color: "#1D4ED8",
             border: "none", fontSize: 16, fontWeight: 800,
