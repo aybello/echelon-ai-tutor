@@ -103,10 +103,9 @@ export const LABEL_INFO: Record<string, string> = {
   basin3:     "Stage 3: Very gentle mixing (G ≈ 10/s). Large, dense floc forms. Too much energy here would shear the floc apart and undo the process.",
   // Clarifier / Sedimentation
   inlet2:     "Water enters the basin gently through a baffle or inlet pipe. Even distribution prevents disturbing settled sludge at the bottom.",
-  flocblanket: "A suspended layer of previously settled floc. Incoming water must pass through it, trapping fine particles — acts as a natural deep-bed filter.",
+  flocblanket:"A suspended layer of previously settled floc. Incoming water must pass through it, trapping fine particles — acts as a natural deep-bed filter.",
   scraper:    "Rotating or travelling mechanical arm that continuously scrapes settled solids along the basin floor toward the sludge hopper. Speed: very slow (1–3 RPM).",
   hopper:     "Heavy sludge collects here. Periodic withdrawal removes concentrated sludge for further treatment or disposal. Sludge concentration: 0.5–2% solids.",
-  sludge:     "Heavy sludge collects here. Periodic withdrawal removes concentrated sludge for further treatment or disposal. Sludge concentration: 0.5–2% solids.",
   weir:       "Clarified water overflows this weir — water quality at this point determines filtration efficiency. Target: <5 NTU, ideally <2 NTU.",
   launder:    "Trough collecting clarified overflow water and directing it to the filters. Weir loading rate (m³/hr per m of weir length) affects effluent quality.",
   // Filter

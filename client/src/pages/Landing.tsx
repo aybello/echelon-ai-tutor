@@ -757,11 +757,24 @@ const FEATURES = [
   {
     icon: "🏭",
     title: "Interactive Process Guides",
-    description: "Click through animated diagrams for water treatment, distribution, and wastewater collection. See how every component works — not just read about it.",
+    description: "Click through animated treatment plant diagrams. See how every component works — not just read about it.",
     color: "#059669",
     href: "/process",
   },
-
+  {
+    icon: "🚰",
+    title: "Water Distribution Guide",
+    description: "Explore the full distribution system — high-lift pumping, transmission mains, pressure zones, storage reservoirs, and service connections — with animated diagrams and exam points.",
+    color: "#0369A1",
+    href: "/distribution-guide",
+  },
+  {
+    icon: "🔩",
+    title: "Wastewater Collection Guide",
+    description: "Walk through the collection system from manholes to lift stations, force mains, and CSO management. Covers gravity flow, H₂S hazards, and O. Reg. 170/03 requirements.",
+    color: "#065F46",
+    href: "/collection-guide",
+  },
   {
     icon: "⚙️",
     title: "Pumping Systems Module",
