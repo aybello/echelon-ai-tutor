@@ -10,10 +10,10 @@
  */
 
 import { useState } from "react";
-import { Link } from "wouter";
 import PumpCutaway from "@/components/PumpCutaway";
 import PumpCurveChart, { PumpMode } from "@/components/PumpCurveChart";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import SiteNav from "@/components/SiteNav";
 
 const TABS = [
   { id: "cutaway", label: "Pump Anatomy", icon: "🔩" },
@@ -103,59 +103,7 @@ export default function PumpingSystems() {
   return (
     <div className="min-h-screen text-slate-900" style={{ background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       {/* ── Header ── */}
-      <header style={{ background: "#fff", borderBottom: "1px solid #E5E7EB" }} className="sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4 flex-wrap">
-          <div className="flex items-center gap-3">
-            <Link href="/">
-              <span className="text-blue-400 font-black text-xl tracking-tight cursor-pointer hover:text-blue-300 transition-colors">
-                ECHELON
-              </span>
-            </Link>
-            <span className="text-slate-400 text-lg">/</span>
-            <span className="text-slate-700 font-semibold text-sm">Pumping Systems</span>
-          </div>
-          <nav className="flex items-center gap-1 flex-wrap">
-            <Link href="/">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                AI Tutor
-              </span>
-            </Link>
-            <Link href="/process">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                Drinking Water
-              </span>
-            </Link>
-            <Link href="/wastewater">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                Wastewater
-              </span>
-            </Link>
-            <Link href="/career">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                Career Map
-              </span>
-            </Link>
-            <span className="px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-semibold">
-              Pumping
-            </span>
-            <Link href="/oit-mock">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                📝 Mock Exam
-              </span>
-            </Link>
-            <Link href="/chem-calc">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                🧪 Chem Calc
-              </span>
-            </Link>
-            <Link href="/lab">
-              <span className="px-3 py-1.5 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 text-xs font-medium transition-colors cursor-pointer">
-                🔬 Lab
-              </span>
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <SiteNav currentPath="/pumping" />
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         {/* ── Hero ── */}
