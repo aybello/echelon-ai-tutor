@@ -1032,7 +1032,7 @@ function CourseCard({ course }: { course: CourseType }) {
 export default function Landing() {
   usePageMeta({
     title: "Water & Wastewater Operator Exam Prep",
-    description: "Canada's exam prep platform for water and wastewater operators. 27 certification courses, 15,000+ practice questions, interactive process guides, and an AI tutor.",
+    description: "Canada's exam prep for water & wastewater operators. 15,000+ practice questions, AI tutor, mock exams, and process guides. Free OIT access.",
     keywords: "water operator exam prep, OIT exam, wastewater certification Canada, operator practice questions, EOCP exam, WPI exam prep, water quality analyst",
     path: "/",
   });
