@@ -72,6 +72,13 @@ export function QuestionBankPrefetcher() {
 
   useEffect(() => {
     if (ran.current) return;
+
+    // Do NOT prefetch on the public landing page — the DB should only wake up
+    // when a user navigates to a quiz or feature page. This prevents visitors
+    // from triggering the DB wake-up screen just by loading the homepage.
+    const isLandingPage = window.location.pathname === "/";
+    if (isLandingPage) return;
+
     ran.current = true;
 
     (async () => {

@@ -1038,7 +1038,11 @@ export default function Landing() {
   });
   useStructuredData(landingPageSchemas);
   const { province, provinceInfo, showPrompt, setProvince, dismiss } = useProvince();
-  const { isAuthenticated } = useAuth();
+  // lazy: true means auth.me is NOT fired on mount — the landing page loads
+  // immediately from static content. If the user already visited a quiz page
+  // (which does fire auth.me), the cached result is used and isAuthenticated
+  // will correctly show "Dashboard" instead of "Try Free".
+  const { isAuthenticated } = useAuth({ lazy: true });
   const updateProvinceMutation = trpc.auth.updateProvince.useMutation();
   // Default active track based on province: WPI for western provinces, ontario water for ON
   const defaultTrack = (province === "bc" || province === "ab" || province === "sk" || province === "mb") ? "wpi-water" : "water";

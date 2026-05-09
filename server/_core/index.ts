@@ -65,6 +65,29 @@ async function startServer() {
     })
   );
 
+  // ── Platform-managed DB keep-alive endpoint ────────────────────────────────
+  // This endpoint is called every 5 minutes by a Manus Heartbeat cron (set up
+  // via manus-heartbeat CLI). It fires a SELECT 1 to keep TiDB Serverless from
+  // hibernating. Unlike the in-process setInterval keep-alive, this survives
+  // server restarts because the cron is managed by the platform, not the process.
+  app.post("/api/scheduled/db-keepalive", async (req, res) => {
+    try {
+      const { getDb } = await import("../db");
+      const db = await getDb();
+      if (!db) {
+        // DB is down — try to wake it
+        const { connectWithRetry } = await import("../db");
+        const ok = await connectWithRetry();
+        return res.json({ ok, action: "reconnect", ts: new Date().toISOString() });
+      }
+      await db.execute("SELECT 1");
+      return res.json({ ok: true, action: "ping", ts: new Date().toISOString() });
+    } catch (err) {
+      console.error("[keepalive] ping failed:", err);
+      return res.status(500).json({ error: String(err), ts: new Date().toISOString() });
+    }
+  });
+
   // development mode uses Vite, production mode uses static files
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
