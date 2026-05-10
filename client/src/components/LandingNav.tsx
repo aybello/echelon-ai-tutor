@@ -13,7 +13,7 @@ const NAV_LINKS = [
   { label: "Courses", href: "/#courses" },
   { label: "WPI 🌊", href: "/wpi" },
   { label: "Pricing", href: "/pricing" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
   { label: "FAQ", href: "/#faq" },
 ];
 
@@ -337,7 +337,7 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
           {[
             { label: "🎫 My Passes", href: "/account" },
             { label: "💰 Pricing", href: "/pricing" },
-            { label: "ℹ️ About", href: "/#about" },
+            { label: "ℹ️ About", href: "/about" },
             { label: "❓ FAQ", href: "/#faq" },
           ].map(l => (
             <a
