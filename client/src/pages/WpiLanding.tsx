@@ -4,7 +4,8 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import SiteNav from "@/components/SiteNav";
+import LandingNav from "@/components/LandingNav";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 const PROVINCES = [
   {
@@ -222,6 +223,7 @@ const COLL_CLASSES = [
 
 
 export default function WpiLanding() {
+  const { isAuthenticated } = useAuth({ lazy: true });
   usePageMeta({
     title: "WPI Water Treatment Exam Prep — BC EOCP, Alberta AWWOA, SK, MB | Echelon Institute",
     description:
@@ -253,7 +255,7 @@ export default function WpiLanding() {
         @media (max-width: 380px) {
         }
       `}</style>
-      <SiteNav currentPath="/wpi" />
+      <LandingNav isAuthenticated={isAuthenticated} currentPath="/wpi" />
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section style={{

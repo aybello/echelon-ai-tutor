@@ -1934,9 +1934,9 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ── About Section ── */}
-      <section id="about" style={{ background: "#0F172A", padding: "72px 24px" }}>
-        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+      {/* ── About Section (full — Why Echelon Exists, Timeline, Values, Changelog) ── */}
+      <section id="about" style={{ background: "#0F172A", padding: "72px 24px", scrollMarginTop: 80 }}>
+        <div style={{ maxWidth: 860, margin: "0 auto" }}>
 
           {/* Header */}
           <FadeUp>
@@ -1957,63 +1957,139 @@ export default function Landing() {
             <h2 style={{ fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, color: "#FFFFFF", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
               Built by an Engineer<br />Who Knows What's Missing
             </h2>
-            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", maxWidth: 620, margin: "0 auto", lineHeight: 1.75 }}>
-              Canada's water and wastewater sector is one of the most regulated and technically demanding in the country.
-              The only study resources available were dense government manuals, expensive in-person courses built on decade-old slides,
-              and American exam apps that referenced the wrong regulations entirely. Echelon was built to fix that.
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", maxWidth: 620, margin: "0 auto", lineHeight: 1.75 }}>
+              Canada's water sector deserved better study tools. We built them.
             </p>
           </div>
           </FadeUp>
 
-          {/* Two-column: story + timeline */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, marginBottom: 48 }}>
-
-            {/* Story card */}
-            <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: "28px 24px" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#60A5FA", letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: 14 }}>The Curriculum</div>
-              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, margin: "0 0 16px" }}>
-                Every question is mapped to each province's regulatory framework. Every visual module lets you see and interact with real treatment processes — not just read about them.
+          {/* Why Echelon Exists */}
+          <div style={{ display: "flex", flexDirection: "column" as const, gap: 16, marginBottom: 48 }}>
+            {[
+              "Canada's water and wastewater sector is one of the most regulated and technically demanding in the country. Operators must pass provincial exams to earn each certification level — from the Operator-in-Training (OIT) through Class 4. These exams cover province-specific regulations, process chemistry, hydraulics, and complex dosing calculations. Ontario uses OWWCO and MECP-administered exams; BC uses EOCP; Alberta uses the provincial EPA framework.",
+              "Yet the only study resources available were a dense government study manual, expensive in-person courses built on decade-old PowerPoint slides, and American exam prep apps that referenced the wrong regulations entirely. There was nothing interactive. Nothing visual. Nothing that actually showed operators how a clarifier works before asking them to answer questions about it.",
+              "Echelon Institute was built to fix that. Every question is mapped to each province's regulatory framework. Every visual module lets you see and interact with real treatment processes — not just read about them. The AI Tutor is trained on Canadian regulatory content and can explain why a CT value matters, how to calculate a chlorine dose for a specific flow rate, or what provincial regulations require for turbidity monitoring.",
+            ].map((para, i) => (
+              <p key={i} style={{
+                fontSize: 14,
+                color: "rgba(255,255,255,0.7)",
+                lineHeight: 1.8,
+                margin: 0,
+                padding: "18px 22px",
+                background: "rgba(255,255,255,0.04)",
+                borderRadius: 14,
+                border: "1px solid rgba(255,255,255,0.08)",
+              }}>
+                {para}
               </p>
-              <p style={{ fontSize: 14, color: "rgba(255,255,255,0.7)", lineHeight: 1.8, margin: 0 }}>
-                The AI Tutor is trained on Canadian regulatory content and can explain why a CT value matters, how to calculate a chlorine dose for a specific flow rate, or what provincial regulations require for turbidity monitoring.
-              </p>
-              <div style={{ marginTop: 20, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.08)", fontSize: 12, color: "rgba(255,255,255,0.65)" }}>
-                Curriculum based on O. Reg. 170/03 · 128/04 · 129/04 · OWWCO · EOCP
-              </div>
-            </div>
-
-            {/* Timeline */}
-            <div style={{ display: "flex", flexDirection: "column" as const, gap: 16 }}>
-              {[
-                { year: "2025", title: "The Gap Identified", body: "Ay Bello, an Environmental Engineer (EIT) and Master's student in Digital Transformation at the University of Ottawa, identified a clear gap — operators were studying for technically demanding exams with resources that hadn't evolved in decades." },
-                { year: "Early 2026", title: "Built from Scratch", body: "Interactive SVG process diagrams, an adaptive practice engine, an AI tutor with confidence scoring and pattern detection, and a career path map based on real 2025 OCWA data." },
-                { year: "2026", title: "Platform Launched", body: "500+ OIT practice questions, 10 study modules, process diagrams for drinking water and wastewater, pumping systems, lab and sampling, and a formula reference — launching in Ontario with BC and Alberta coming next." },
-              ].map((item, i) => (
-                <div key={i} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: "18px 20px", display: "flex", gap: 16, alignItems: "flex-start" }}>
-                  <div style={{ flexShrink: 0, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", borderRadius: 8, padding: "4px 10px", fontSize: 10, fontWeight: 800, color: "#fff", whiteSpace: "nowrap" as const }}>{item.year}</div>
-                  <div>
-                    <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 4 }}>{item.title}</div>
-                    <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, margin: 0 }}>{item.body}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
 
-          {/* Values row */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16 }}>
+          {/* Timeline */}
+          <h3 style={{ fontSize: 20, fontWeight: 800, color: "#fff", margin: "0 0 28px", letterSpacing: "-0.01em" }}>How We Got Here</h3>
+          <div style={{ position: "relative", paddingLeft: 32, marginBottom: 48 }}>
+            <div style={{
+              position: "absolute", left: 11, top: 8, bottom: 8,
+              width: 2,
+              background: "linear-gradient(180deg, #1D4ED8, #0F766E)",
+              borderRadius: 2,
+            }} />
             {[
-              { icon: "🍁", title: "Canada-First", body: "Every question, regulation, and process description is specific to each province's framework. No American content repurposed for Canadian exams." },
-              { icon: "🧠", title: "Understand, Don't Memorize", body: "The AI Tutor explains the why behind every answer — CT values, dosing calculations, turbidity monitoring requirements." },
-              { icon: "📈", title: "Career-Long Learning", body: "From OIT through Class 4. Content that grows with your career and supports every certification level." },
-            ].map(v => (
-              <div key={v.title} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: "22px 20px" }}>
-                <div style={{ fontSize: 28, marginBottom: 10 }}>{v.icon}</div>
-                <div style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{v.title}</div>
-                <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, margin: 0 }}>{v.body}</p>
+              { year: "2025", title: "The Gap Identified", body: "Ay Bello, an Environmental Engineer (EIT) and Master's student in Digital Transformation at the University of Ottawa, identified a clear gap in Canada's water sector — operators were studying for some of the most technically demanding exams in the trades with resources that hadn't evolved in decades." },
+              { year: "Early 2026", title: "Built from Scratch", body: "Using AI-assisted development, Echelon Institute was designed and built from the ground up — interactive SVG process diagrams, an adaptive practice engine, an AI tutor with confidence scoring and pattern detection, and a full career path and salary map based on real 2025 OCWA data." },
+              { year: "2026", title: "Platform Launched", body: "Echelon Institute launched publicly with 500+ OIT practice questions, 10 study modules, interactive process diagrams for both drinking water and wastewater treatment, a pumping systems module, a lab and sampling module, and a formula reference — launching in Ontario with BC and Alberta coming next." },
+            ].map((item, i, arr) => (
+              <div key={i} style={{ position: "relative", marginBottom: i < arr.length - 1 ? 28 : 0 }}>
+                <div style={{
+                  position: "absolute", left: -32, top: 6,
+                  width: 22, height: 22, borderRadius: "50%",
+                  background: "linear-gradient(135deg, #1D4ED8, #0F766E)",
+                  border: "3px solid #0F172A",
+                  boxShadow: "0 0 0 2px #1D4ED8",
+                }} />
+                <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: 14, padding: "18px 22px", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: "#60A5FA", letterSpacing: "0.08em", textTransform: "uppercase" as const, marginBottom: 6 }}>{item.year}</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 6 }}>{item.title}</div>
+                  <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.75, margin: 0 }}>{item.body}</p>
+                </div>
               </div>
             ))}
           </div>
+
+          {/* Values */}
+          <h3 style={{ fontSize: 20, fontWeight: 800, color: "#fff", margin: "0 0 12px", letterSpacing: "-0.01em" }}>What We Stand For</h3>
+          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", margin: "0 0 28px", lineHeight: 1.7 }}>
+            The curriculum was developed by an environmental engineer with deep knowledge of Canadian provincial regulatory frameworks — including Ontario (O. Reg. 170/03, 128/04, 129/04, OWWCO/MECP), BC (EOCP), and Alberta (EPA). Content reflects what actually appears on provincial exams and what matters in real plant operations.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16, marginBottom: 56 }}>
+            {[
+              { icon: "🍁", title: "Canada-First", body: "Every question, regulation reference, and process description is specific to each province's framework. No American content repurposed for Canadian exams." },
+              { icon: "🧠", title: "Understand, Don't Memorize", body: "The AI Tutor doesn't just tell you the answer — it explains why a CT value matters, how to calculate a chlorine dose, and what O. Reg. 170/03 requires for turbidity monitoring." },
+              { icon: "📈", title: "Career-Long Learning", body: "Certification is not a destination — it's a career ladder. Echelon supports operators from their first OIT exam through Class 4, with content that grows with your career." },
+            ].map(v => (
+              <div key={v.title} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: "24px 20px" }}>
+                <div style={{ fontSize: 30, marginBottom: 12 }}>{v.icon}</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{v.title}</div>
+                <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.75, margin: 0 }}>{v.body}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Platform Changelog */}
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+            <h3 style={{ fontSize: 20, fontWeight: 800, color: "#fff", margin: 0, letterSpacing: "-0.01em" }}>Platform Changelog</h3>
+            <span style={{
+              background: "linear-gradient(135deg, #0F766E, #0E7490)",
+              color: "#fff", fontSize: 11, fontWeight: 800,
+              padding: "3px 10px", borderRadius: 20,
+              letterSpacing: "0.06em", textTransform: "uppercase" as const,
+            }}>11 Courses Live</span>
+          </div>
+          <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", margin: "0 0 28px", lineHeight: 1.7 }}>
+            A running record of every course and feature added to the platform.
+          </p>
+          <div style={{ display: "flex", flexDirection: "column" as const, gap: 10 }}>
+            {[
+              { date: "April 2026", badge: "New", badgeColor: "#0F766E", title: "Student Performance Dashboard", body: "Track your study progress in one place. The new dashboard shows total questions answered, overall accuracy, current and longest streaks, a 30-day activity chart, topic-by-topic accuracy breakdown, difficulty distribution, per-course progress, and recent session history." },
+              { date: "April 2026", badge: "New", badgeColor: "#6D28D9", title: "WPI Class III & IV Wastewater Treatment", body: "1,000+ new questions across 15 modules for senior and chief operator-level WPI Wastewater certification. Class III covers advanced BNR, membrane bioreactors, industrial pretreatment, advanced biosolids, and regulatory compliance. Class IV covers advanced process control, BNR & resource recovery, plant management, and strategic regulatory compliance." },
+              { date: "April 2026", badge: "New", badgeColor: "#0369A1", title: "WPI Water & WPI Wastewater Full Ladder Bundles", body: "WPI Class I–IV Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection are all now live. 8,000+ questions total across all four tracks, aligned with WPI Need-to-Know Criteria, recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB)." },
+              { date: "April 2026", badge: "", badgeColor: "#7C3AED", title: "OIT Wastewater Treatment — Standalone Free Course", body: "OIT Wastewater is now available as its own dedicated free course. Covers primary and secondary treatment, biological processes, activated sludge, disinfection, biosolids basics, and regulatory fundamentals. Includes 500+ practice questions, adaptive quiz engine, AI Tutor, confidence scoring, process diagrams, and formula sheet." },
+              { date: "April 2026", badge: "", badgeColor: "#0F766E", title: "Class 4 Wastewater Treatment", body: "500 questions across 5 modules: Advanced Treatment, Equipment O&M, Lab Analysis, Biosolids Management, and Plant Management. Includes timed mock exam, formula sheet, and AI Tutor." },
+              { date: "March 2026", badge: "New", badgeColor: "#1D4ED8", title: "Class 4 Water Treatment", body: "500 questions covering full system management, regulatory leadership, advanced treatment, and strategic operations. Includes timed mock exam, formula sheet with 37 formulas, and AI Tutor." },
+              { date: "March 2026", badge: "", badgeColor: "#0F766E", title: "Class 3 Wastewater Treatment", body: "Advanced biological treatment, BNR, biosolids management, and process optimization. 500 questions, mock exam, formula sheet." },
+              { date: "February 2026", badge: "", badgeColor: "#1D4ED8", title: "Class 3 Water Treatment", body: "LSI, CT values, membranes, lime softening, SCADA, source water, and advanced process control. 500 questions, mock exam, formula sheet." },
+              { date: "February 2026", badge: "", badgeColor: "#0F766E", title: "Class 2 Wastewater Treatment", body: "Activated sludge, nutrient removal, advanced secondary treatment, and process control. 500 questions, mock exam, formula sheet." },
+              { date: "January 2026", badge: "", badgeColor: "#1D4ED8", title: "Class 2 Water Treatment", body: "Advanced treatment processes, SCADA, corrosion control, membrane filtration, and process troubleshooting. 500 questions, mock exam, formula sheet." },
+              { date: "January 2026", badge: "", badgeColor: "#0F766E", title: "Class 1 Wastewater Treatment", body: "Foundational wastewater treatment, biological processes, primary and secondary treatment, and basic operations. 500 questions, mock exam, formula sheet." },
+              { date: "January 2026", badge: "", badgeColor: "#1D4ED8", title: "Class 1 Water Treatment", body: "Core water treatment processes, coagulation, filtration, disinfection, and basic regulations. 500 questions, mock exam, formula sheet." },
+              { date: "Late 2025", badge: "", badgeColor: "#64748B", title: "OIT Water & OIT Wastewater — Free Practice", body: "Platform launched with free OIT practice for both streams. Includes adaptive quiz engine, AI Tutor, confidence scoring, pattern detection, interactive process diagrams, and formula sheets." },
+            ].map((item, i) => (
+              <div key={i} style={{
+                display: "flex",
+                gap: 14,
+                padding: "16px 20px",
+                background: "rgba(255,255,255,0.04)",
+                borderRadius: 12,
+                border: "1px solid rgba(255,255,255,0.08)",
+                alignItems: "flex-start",
+              }}>
+                <div style={{ flexShrink: 0, paddingTop: 6 }}>
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", background: item.badgeColor }} />
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" as const, marginBottom: 4 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.4)", textTransform: "uppercase" as const, letterSpacing: "0.07em" }}>{item.date}</span>
+                    {item.badge && (
+                      <span style={{ background: item.badgeColor, color: "#fff", fontSize: 10, fontWeight: 800, padding: "2px 8px", borderRadius: 20, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>{item.badge}</span>
+                    )}
+                  </div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 4 }}>{item.title}</div>
+                  <p style={{ fontSize: 12, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, margin: 0 }}>{item.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
