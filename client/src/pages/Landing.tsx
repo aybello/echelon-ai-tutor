@@ -1487,6 +1487,7 @@ export default function Landing() {
             { label: "🎫 My Passes", href: "/account" },
             { label: "💰 Pricing", href: "/pricing" },
             { label: "ℹ️ About", href: "#about" },
+            { label: "❓ FAQ", href: "/#faq" },
           ].map(l => (
             <a
               key={l.href}
@@ -2268,7 +2269,7 @@ export default function Landing() {
 
       {/* ── FAQ Section ── */}
       <FadeUp>
-      <section id="faq" style={{ background: "#F8FAFC", padding: "80px 24px", borderTop: "1px solid #E2E8F0" }}>
+      <section id="faq" style={{ background: "#F8FAFC", padding: "80px 24px", borderTop: "1px solid #E2E8F0", scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div style={{ display: "inline-block", background: "#EFF6FF", color: "#1D4ED8", borderRadius: 20, padding: "4px 14px", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 12 }}>FAQ</div>
@@ -2381,6 +2382,7 @@ export default function Landing() {
             { label: "Instrumentation", href: "/instrumentation" },
             { label: "Lab & Sampling", href: "/lab" },
             { label: "Flashcards", href: "/oit-water-flashcards" },
+            { label: "FAQ", href: "/#faq" },
             { label: "Contact", href: "/#contact" },
           ].map(link => (
             <Link key={link.label} href={link.href}>
