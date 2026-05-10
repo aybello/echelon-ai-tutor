@@ -32,6 +32,52 @@ function AnimatedStat({ value, suffix = "", label }: { value: number; suffix?: s
   );
 }
 
+function FaqItem({ q, a, isLast }: { q: string; a: string; isLast?: boolean }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      style={{
+        borderTop: "1px solid #E2E8F0",
+        borderBottom: isLast ? "1px solid #E2E8F0" : "none",
+      }}
+    >
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "20px 0",
+          background: "transparent",
+          border: "none",
+          cursor: "pointer",
+          textAlign: "left",
+          fontFamily: "inherit",
+          gap: 16,
+        }}
+      >
+        <span style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", lineHeight: 1.4 }}>{q}</span>
+        <span style={{
+          fontSize: 20,
+          color: "#1D4ED8",
+          fontWeight: 400,
+          flexShrink: 0,
+          transform: open ? "rotate(45deg)" : "rotate(0deg)",
+          transition: "transform 0.2s ease",
+          display: "inline-block",
+          lineHeight: 1,
+        }}>+</span>
+      </button>
+      {open && (
+        <div style={{ paddingBottom: 20, fontSize: 14, color: "#475569", lineHeight: 1.7 }}>
+          {a}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
@@ -2218,6 +2264,57 @@ export default function Landing() {
         @media (max-width: 900px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr) !important; } }
         @media (max-width: 600px) { .testimonials-grid { grid-template-columns: 1fr !important; } }
       `}</style>
+
+      {/* ── FAQ Section ── */}
+      <FadeUp>
+      <section style={{ background: "#F8FAFC", padding: "80px 24px", borderTop: "1px solid #E2E8F0" }}>
+        <div style={{ maxWidth: 780, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ display: "inline-block", background: "#EFF6FF", color: "#1D4ED8", borderRadius: 20, padding: "4px 14px", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 12 }}>FAQ</div>
+            <h2 style={{ fontSize: 32, fontWeight: 900, color: "#0F172A", margin: "0 0 12px", letterSpacing: "-0.02em" }}>Frequently Asked Questions</h2>
+            <p style={{ fontSize: 16, color: "#64748B", maxWidth: 520, margin: "0 auto" }}>Everything you need to know before you start studying.</p>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+            {[
+              {
+                q: "Is there a time limit on my access?",
+                a: "No. Your access never expires. Pay once and practice as many times as you need — whether that takes two weeks or two years. There are no subscriptions, no renewals, and no expiry dates.",
+              },
+              {
+                q: "Do the practice questions match the real exam?",
+                a: "Yes. All questions are written by certified water and wastewater operators and aligned with OWWCO, EOCP, and provincial exam syllabi. Every calculation question includes a full step-by-step AI-explained solution.",
+              },
+              {
+                q: "Which provinces are supported?",
+                a: "Echelon covers all major Canadian provinces: Ontario (MOECP framework — OIT through Class 4, water and wastewater), British Columbia (EOCP / WPI), Alberta (AWWOA / WPI), Saskatchewan (SPEA / WPI), and Manitoba (WPCAM / WPI). Quebec support is in development.",
+              },
+              {
+                q: "What is included with each course?",
+                a: "Every course includes 500+ practice questions, a timed mock exam that simulates the real test, an AI Tutor that explains every answer in plain language, a formula sheet, 400+ flashcards, and a score history so you can track your progress over time.",
+              },
+              {
+                q: "How is Echelon different from free study materials?",
+                a: "Free materials give you content. Echelon gives you adaptive practice, instant AI explanations for every wrong answer, timed mock exams that simulate the real thing, and a score history that shows exactly where to focus. The difference is passing vs. re-booking.",
+              },
+              {
+                q: "Can I try it before I buy?",
+                a: "Yes. The OIT Water course is available to try for free — no account required. You get access to the full question bank and AI Tutor so you can see exactly what you are getting before you purchase any paid course.",
+              },
+              {
+                q: "What payment methods do you accept?",
+                a: "All major credit and debit cards (Visa, Mastercard, Amex) via Stripe's secure checkout. Your payment information is never stored on our servers.",
+              },
+              {
+                q: "Can I get a refund?",
+                a: "We offer a 7-day money-back guarantee if you are not satisfied. Email support@echeloninstitute.ca and we will make it right.",
+              },
+            ].map((faq, i, arr) => (
+              <FaqItem key={faq.q} q={faq.q} a={faq.a} isLast={i === arr.length - 1} />
+            ))}
+          </div>
+        </div>
+      </section>
+      </FadeUp>
 
       {/* ── Contact Section ── */}
       <ContactSection />
