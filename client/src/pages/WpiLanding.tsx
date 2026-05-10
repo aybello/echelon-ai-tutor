@@ -220,44 +220,6 @@ const COLL_CLASSES = [
   { level: "CLASS IV", questions: "504", price: "CA$299", priceNum: 29900, color: "#7F1D1D", bg: "#FEF2F2", border: "#FECACA", quizHref: "/wpi-class4-water-coll", badge: "👑 Chief Operator" },
 ];
 
-const FAQS = [
-  {
-    q: "What is the WPI exam format?",
-    a: "The WPI (Water/Wastewater Practitioner Institute) exam is a multiple-choice exam used across BC, Alberta, Saskatchewan, and Manitoba. Class I exams typically have 100 questions with a 70% pass mark. The exam covers treatment processes, equipment operation, laboratory analysis, source water protection, and safety.",
-  },
-  {
-    q: "How is the WPI exam different from OWWCO (Ontario)?",
-    a: "Both use the same WPI question bank developed by the Western Canada Operator Certification Committee. The key difference is the certification body: BC uses EOCP, Alberta uses AWWOA, Saskatchewan uses SAHO, and Manitoba uses MWWA. Ontario uses OWWCO. The exam content and format are standardized across WPI provinces.",
-  },
-  {
-    q: "How many questions are on the WPI Class I Water Treatment exam?",
-    a: "The WPI Class I Water Treatment exam has 100 questions. Our practice bank has 500 questions aligned with the WPI Class I Need-to-Know Criteria, giving you comprehensive coverage of all exam topics.",
-  },
-  {
-    q: "What score do I need to pass the WPI exam?",
-    a: "The passing score for WPI exams is 70% (70 out of 100 questions). Our mock exams simulate the real exam format with 100 questions and a 2-hour time limit, and show you clearly whether you passed or failed the 70% threshold.",
-  },
-  {
-    q: "Does Echelon cover the full WPI Water Treatment ladder (Class I–IV)?",
-    a: "Yes. We have dedicated practice banks for all four WPI Water Treatment class levels: Class I (500 questions), Class II (500 questions), Class III (500 questions), and Class IV (500 questions). Each bank is aligned with the respective WPI Need-to-Know Criteria and includes timed mock exams, AI Tutor, formula sheet, and score history.",
-  },
-  {
-    q: "Is WPI Wastewater Treatment prep available?",
-    a: "Yes — all four WPI Wastewater Treatment classes are live. Class I (500 questions) covers Primary & Secondary Treatment, Solids Handling, Lab & Monitoring, and Safety. Classes II–IV cover progressively advanced topics including BNR, MBR, resource recovery, and plant management. Each class is available individually — no bundles required.",
-  },
-  {
-    q: "Is WPI Water Distribution prep available?",
-    a: "Yes — all four WPI Water Distribution classes are live. Class I (500 questions) covers distribution system basics, pipe materials, pressure & flow, chlorine residual, and valve & hydrant operation. Classes II–IV cover hydraulic analysis, pressure zone design, advanced modelling, SCADA, and large-scale system management. Each class is available individually at CA$99–$299.",
-  },
-  {
-    q: "Is WPI Wastewater Collection prep available?",
-    a: "Yes — all four WPI Wastewater Collection classes are live. Class I (500 questions) covers gravity sewer basics, pipe materials, lift station fundamentals, H₂S safety, and regulations. Classes II–IV cover advanced collection system design, CSO/SSO control, trenchless rehabilitation, SCADA, and large-scale collection system management. Each class is available individually at CA$99–$299.",
-  },
-  {
-    q: "How many WPI courses does Echelon offer in total?",
-    a: "Echelon offers 16 WPI courses across four tracks: Class I–IV Water Treatment (4 courses), Class I–IV Wastewater Treatment (4 courses), Class I–IV Water Distribution (4 courses), and Class I–IV Wastewater Collection (4 courses). All 16 are live and available individually. Every course includes 500 practice questions, a timed mock exam, AI Tutor, formula sheet, and score history.",
-  },
-];
 
 export default function WpiLanding() {
   usePageMeta({
@@ -270,7 +232,6 @@ export default function WpiLanding() {
   });
 
   const [activeProvince, setActiveProvince] = useState("BC");
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [openCurriculum, setOpenCurriculum] = useState<string | null>(null);
 
   const province = PROVINCES.find(p => p.code === activeProvince) ?? PROVINCES[0];
@@ -906,53 +867,6 @@ export default function WpiLanding() {
           <p style={{ textAlign: "center" as const, fontSize: 12, color: "#94A3B8", marginTop: 14 }}>
             Passing score and format may vary — always verify with your provincial certification body before registering.
           </p>
-        </div>
-      </section>
-
-      {/* ── FAQ ───────────────────────────────────────────────────────────── */}
-      <section style={{ padding: "56px 20px", background: "#FFFFFF", borderTop: "1px solid #E2E8F0" }}>
-        <div style={{ maxWidth: 720, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 32 }}>
-            Frequently Asked Questions
-          </h2>
-          <div style={{ display: "flex", flexDirection: "column" as const, gap: 10 }}>
-            {FAQS.map((faq, i) => (
-              <div
-                key={i}
-                style={{
-                  background: "#F8FAFC",
-                  border: "1px solid #E2E8F0",
-                  borderRadius: 12,
-                  overflow: "hidden",
-                }}
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  style={{
-                    width: "100%",
-                    background: "transparent",
-                    border: "none",
-                    padding: "16px 20px",
-                    textAlign: "left",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: 12,
-                    fontFamily: "inherit",
-                  }}
-                >
-                  <span style={{ fontSize: 14, fontWeight: 600, color: "#0F172A" }}>{faq.q}</span>
-                  <span style={{ color: "#0E7490", fontSize: 18, flexShrink: 0 }}>{openFaq === i ? "−" : "+"}</span>
-                </button>
-                {openFaq === i && (
-                  <div style={{ padding: "0 20px 16px", fontSize: 14, color: "#475569", lineHeight: 1.7 }}>
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
