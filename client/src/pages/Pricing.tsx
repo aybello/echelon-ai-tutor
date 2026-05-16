@@ -1388,116 +1388,144 @@ function ProductCard({
   const displayName = isWpi && wpiLabel ? wpiLabel.shortName : product.shortName;
   const displayDesc = isWpi && wpiLabel ? wpiLabel.description : product.description;
   const displayBadge = isWpi && wpiLabel?.badge ? wpiLabel.badge : product.badge;
+  const displayBadgeColor = isWpi && wpiLabel?.badge ? "#0E7490" : (product.badgeColor ?? "#1D4ED8");
+
+  // Extract question count from first feature bullet (e.g. "500 practice questions" → "500 Q")
+  const qMatch = product.features?.[0]?.match(/(\d[\d,]+)/);
+  const questionCount = qMatch ? qMatch[1] : null;
+
   return (
     <div
       style={{
         background: "#fff",
-        borderRadius: 14,
+        borderRadius: 16,
         border: `1.5px solid ${product.border}`,
-        padding: "20px 16px",
+        overflow: "hidden",
         display: "flex",
         flexDirection: "column",
-        gap: 12,
-        position: "relative",
+        transition: "box-shadow 0.2s, transform 0.2s",
         boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
       }}
+      onMouseEnter={e => {
+        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.10)";
+        (e.currentTarget as HTMLDivElement).style.transform = "translateY(-3px)";
+      }}
+      onMouseLeave={e => {
+        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 1px 4px rgba(0,0,0,0.06)";
+        (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
+      }}
     >
-      {displayBadge && (
-        <div
-          style={{
-            position: "absolute",
-            top: -10,
-            right: 14,
-            background: isWpi && wpiLabel?.badge ? "#0E7490" : (product.badgeColor ?? "#1D4ED8"),
-            color: "#fff",
-            fontSize: 10,
-            fontWeight: 700,
-            padding: "3px 10px",
-            borderRadius: 20,
-            letterSpacing: "0.04em",
-            textTransform: "uppercase",
-          }}
-        >
-          {displayBadge}
-        </div>
-      )}
+      {/* Coloured top accent bar */}
+      <div style={{ height: 4, background: product.color, flexShrink: 0 }} />
 
-      <div>
-        <div
-          style={{
-            fontSize: 11,
-            fontWeight: 700,
-            color: product.color,
-            textTransform: "uppercase",
-            letterSpacing: "0.06em",
-            marginBottom: 4,
-          }}
-        >
-          Practice Pass
+      {/* Card body */}
+      <div style={{ padding: "20px 20px 0", flex: 1, display: "flex", flexDirection: "column" }}>
+
+        {/* Header row: label tag + question count + badge */}
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+          <span style={{
+            background: product.bg, color: product.color,
+            fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 6,
+            letterSpacing: "0.06em", textTransform: "uppercase", flexShrink: 0,
+          }}>
+            Practice Pass
+          </span>
+          <span style={{ flex: 1 }} />
+          {questionCount && (
+            <span style={{
+              fontSize: 11, fontWeight: 600, color: product.color,
+              background: product.bg, borderRadius: 6, padding: "2px 8px", flexShrink: 0,
+            }}>
+              {questionCount} Q
+            </span>
+          )}
+          {displayBadge && (
+            <span style={{
+              background: displayBadgeColor, color: "#fff",
+              fontSize: 9, fontWeight: 700, padding: "3px 8px", borderRadius: 20,
+              letterSpacing: "0.05em", textTransform: "uppercase", flexShrink: 0,
+            }}>
+              {displayBadge}
+            </span>
+          )}
         </div>
-        <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", lineHeight: 1.2 }}>
+
+        {/* Title + description */}
+        <h3 style={{ fontSize: 17, fontWeight: 800, color: "#0F172A", margin: "0 0 8px", fontFamily: "Sora, sans-serif", lineHeight: 1.3 }}>
           {displayName}
+        </h3>
+        <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.6, margin: "0 0 14px" }}>
+          {displayDesc}
+        </p>
+
+        {/* Feature pills */}
+        {product.features && product.features.length > 0 && (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 16 }}>
+            {product.features.map(f => (
+              <span key={f} style={{
+                fontSize: 11, color: product.color, background: product.bg,
+                borderRadius: 20, padding: "3px 9px", fontWeight: 500,
+              }}>{f}</span>
+            ))}
+          </div>
+        )}
+
+        {/* Spacer pushes price + CTA to bottom */}
+        <div style={{ flex: 1 }} />
+
+        {/* Price row */}
+        <div style={{
+          display: "flex", alignItems: "baseline", gap: 8,
+          borderTop: "1px solid #F1F5F9", paddingTop: 12, marginBottom: 12,
+        }}>
+          <span style={{ fontSize: 26, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
+            CA${(product.priceCAD / 100).toFixed(0)}
+          </span>
+          <span style={{ fontSize: 11, color: "#94A3B8" }}>one-time · no subscription</span>
+          {product.available && (
+            <span style={{
+              marginLeft: "auto", fontSize: 11, fontWeight: 600, color: "#15803D",
+              background: "#F0FDF4", border: "1px solid #86EFAC",
+              borderRadius: 6, padding: "3px 8px",
+            }}>15 free ✓</span>
+          )}
         </div>
       </div>
 
-      <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, margin: 0 }}>
-        {displayDesc}
-      </p>
-
-      {product.features ? (
-        <div style={{ flexGrow: 1, display: "flex", flexDirection: "column", gap: 5 }}>
-          {product.features.map(f => (
-            <div key={f} style={{ display: "flex", alignItems: "center", gap: 7 }}>
-              <span style={{
-                width: 16, height: 16, borderRadius: "50%",
-                background: product.bg, border: `1.5px solid ${product.color}44`,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                flexShrink: 0, fontSize: 9, color: product.color, fontWeight: 900,
-              }}>✓</span>
-              <span style={{ fontSize: 12, color: "#374151", lineHeight: 1.4 }}>{f}</span>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div style={{ flexGrow: 1 }} />
-      )}
-
-      <div>
-        <div style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
-          CA${(product.priceCAD / 100).toFixed(0)}
-        </div>
-        <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 2 }}>one-time · no subscription</div>
+      {/* CTA footer */}
+      <div style={{ padding: "0 20px 20px", display: "flex", flexDirection: "column", gap: 8 }}>
+        <CheckoutButton
+          productKey={product.key}
+          label={`Get ${product.shortName} Pass →`}
+          disabled={!product.available}
+          productName={product.name}
+          priceLabel={`CA$${(product.priceCAD / 100).toFixed(0)}`}
+        />
+        {product.available && QUIZ_ROUTES[product.key] && (
+          <Link href={QUIZ_ROUTES[product.key]}>
+            <button style={{
+              width: "100%", padding: "9px",
+              background: "transparent",
+              color: "#64748B", border: "1px solid #E2E8F0",
+              borderRadius: 10, fontSize: 12, fontWeight: 600,
+              cursor: "pointer", fontFamily: "inherit",
+            }}>
+              Try Free →
+            </button>
+          </Link>
+        )}
+        {FLASHCARD_ROUTES[product.key] && (
+          <Link href={FLASHCARD_ROUTES[product.key]}>
+            <span style={{
+              display: "block", textAlign: "center", fontSize: 12, fontWeight: 600,
+              color: product.color, textDecoration: "none", padding: "2px 0",
+              opacity: 0.75, cursor: "pointer",
+            }}>
+              🃏 Preview Flashcards
+            </span>
+          </Link>
+        )}
       </div>
-
-      <CheckoutButton
-        productKey={product.key}
-        label={`Get ${product.shortName} Pass →`}
-        disabled={!product.available}
-        productName={product.name}
-        priceLabel={`CA$${(product.priceCAD / 100).toFixed(0)}`}
-      />
-      {product.available && QUIZ_ROUTES[product.key] && (
-        <Link href={QUIZ_ROUTES[product.key]}>
-          <span style={{
-            display: "block", textAlign: "center", fontSize: 12, fontWeight: 700,
-            color: "#15803D", textDecoration: "none", padding: "4px 0",
-            cursor: "pointer",
-          }}>
-            🎁 Try 15 questions free — no account needed
-          </span>
-        </Link>
-      )}
-      {FLASHCARD_ROUTES[product.key] && (
-        <Link href={FLASHCARD_ROUTES[product.key]}>
-          <span style={{
-            display: "block", textAlign: "center", fontSize: 12, fontWeight: 600,
-            color: product.color, textDecoration: "none", padding: "4px 0",
-            opacity: 0.75, cursor: "pointer",
-          }}>
-            🃏 Preview Flashcards
-          </span>
-        </Link>
-      )}
     </div>
   );
 }

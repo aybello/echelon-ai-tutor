@@ -689,3 +689,4 @@
 - [x] Send subscription confirmation email on customer.subscription.created in webhook.ts
 - [x] Send renewal confirmation email on invoice.payment_succeeded in webhook.ts
 - [x] Add subscription section to Account.tsx (tier, province, renewal date, manage/cancel link)
+- [x] Apply CourseCard redesign to Pricing page individual course cards
