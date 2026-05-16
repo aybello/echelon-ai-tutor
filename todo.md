@@ -668,3 +668,17 @@
 - [x] Update robots.txt to reference sitemap URL (already configured)
 - [x] Static sitemap served via client/public/ — no server endpoint needed
 - [ ] Guide user through GSC domain verification and sitemap submission
+
+## Subscription Model Implementation
+- [x] Add subscriptions table to drizzle/schema.ts
+- [x] Push subscriptions table migration to database
+- [x] Create server/stripe/subscriptionProducts.ts with province-scoped exam type mappings
+- [x] Add createSubscriptionCheckout procedure to stripeRouter.ts
+- [x] Add getMySubscriptions procedure to stripeRouter.ts
+- [x] Update checkAccess to check both purchases and subscriptions tables
+- [x] Add subscription lifecycle webhook handlers (created, updated, deleted, invoice events)
+- [x] Add SubscriptionCheckoutButton component to Pricing.tsx
+- [x] Add subscription tiers section to Pricing page (above individual courses)
+- [x] Create SubscriptionSuccess.tsx page
+- [x] Wire /subscription-success route in App.tsx
+- [x] Write 10 vitest tests for subscription flow (checkAccess, province scoping, getMySubscriptions)

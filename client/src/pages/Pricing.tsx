@@ -8,6 +8,26 @@ import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
 
+type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access";
+type SubscriptionProvince = "ontario" | "western";
+
+const SUB_TIERS: Array<{
+  tier: SubscriptionTier;
+  label: string;
+  price: string;
+  priceNum: number;
+  tagline: string;
+  features: string[];
+  badge?: string;
+  highlight?: boolean;
+}> = [
+  { tier: "class1", label: "Class 1", price: "$99", priceNum: 9900, tagline: "OIT + Class 1 Water & Wastewater", features: ["OIT Water & Wastewater", "Class 1 Water Treatment", "Class 1 Wastewater Treatment", "AI Tutor & Flashcards", "Mock Exams & Score History"] },
+  { tier: "class2", label: "Class 2", price: "$149", priceNum: 14900, tagline: "Class 2 Water & Wastewater", features: ["Class 2 Water Treatment", "Class 2 Wastewater Treatment", "AI Tutor & Flashcards", "Mock Exams & Score History"] },
+  { tier: "class3", label: "Class 3", price: "$199", priceNum: 19900, tagline: "Class 3 Water & Wastewater", features: ["Class 3 Water Treatment", "Class 3 Wastewater Treatment", "AI Tutor & Flashcards", "Mock Exams & Score History"] },
+  { tier: "class4", label: "Class 4", price: "$249", priceNum: 24900, tagline: "Class 4 Water & Wastewater", features: ["Class 4 Water Treatment", "Class 4 Wastewater Treatment", "WQA (Ontario only)", "AI Tutor & Flashcards", "Mock Exams & Score History"] },
+  { tier: "all-access", label: "All-Access", price: "$349", priceNum: 34900, tagline: "Every exam type for your province", features: ["All classes (1 through 4)", "Water + Wastewater + WQA", "WPI: Water, WW, Distribution & Collection", "AI Tutor & Flashcards", "Unlimited attempts"], badge: "Best Value", highlight: true },
+];
+
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
 // ─── Product definitions (mirrors server/stripe/products.ts) ─────────────────
@@ -585,6 +605,80 @@ function CheckoutButton({
   );
 }
 
+// ─── Subscription Checkout Button ──────────────────────────────────────────
+function SubscriptionCheckoutButton({
+  tier,
+  province,
+  label,
+}: {
+  tier: SubscriptionTier;
+  province: SubscriptionProvince;
+  label: string;
+}) {
+  const [showModal, setShowModal] = useState(false);
+  const createSubscription = trpc.stripe.createSubscriptionCheckout.useMutation({
+    onSuccess: (data) => {
+      if (data.url) {
+        window.open(data.url, "_blank");
+      }
+    },
+    onError: (err) => {
+      console.error("[Subscription Checkout] Error:", err);
+      alert("Something went wrong. Please try again.");
+    },
+  });
+
+  function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
+    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
+    createSubscription.mutate({
+      tier,
+      province,
+      email: contact.email,
+      name: contact.name,
+      phone: contact.phone,
+      origin: window.location.origin,
+    });
+  }
+
+  const tierLabel = SUB_TIERS.find(t => t.tier === tier);
+  const priceLabel = tierLabel ? `${tierLabel.price}/yr` : "";
+
+  return (
+    <>
+      {showModal && (
+        <CheckoutContactModal
+          productName={label}
+          priceLabel={priceLabel}
+          prefillEmail={(() => { try { return localStorage.getItem("echelon_trial_email") ?? ""; } catch { return ""; } })()}
+          onSubmit={handleContactSubmit}
+          onClose={() => setShowModal(false)}
+          isLoading={createSubscription.isPending}
+        />
+      )}
+      <button
+        onClick={() => setShowModal(true)}
+        disabled={createSubscription.isPending}
+        style={{
+          padding: "11px 0",
+          borderRadius: 10,
+          background: "linear-gradient(135deg, #7C3AED, #4F46E5)",
+          color: "#fff",
+          border: "none",
+          fontSize: 13,
+          fontWeight: 700,
+          cursor: createSubscription.isPending ? "wait" : "pointer",
+          fontFamily: "inherit",
+          width: "100%",
+          opacity: createSubscription.isPending ? 0.7 : 1,
+          marginTop: "auto",
+        }}
+      >
+        {createSubscription.isPending ? "Redirecting…" : label}
+      </button>
+    </>
+  );
+}
+
 // ─── Province config for the selector ───────────────────────────────────────
 const PROVINCES = [
   { code: "ON", name: "Ontario", flag: "🍁", certBody: "MOECP / OWWCO", framework: "ontario" },
@@ -790,6 +884,7 @@ export default function Pricing() {
   const [selectedProvince, setSelectedProvince] = useState<ProvinceCode>("ON");
   const isWpi = selectedProvince !== "ON";
   const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
+  const [subProvince, setSubProvince] = useState<SubscriptionProvince>("ontario");
 
   return (
     <div className="pricing-page">
@@ -869,6 +964,101 @@ export default function Pricing() {
 
       {/* ── Content ── */}
       <div className="pricing-content">
+
+        {/* ── Annual Subscription Section ── */}
+        <div style={{ marginBottom: 56 }}>
+          <div className="section-header">
+            <div className="section-bar" style={{ background: "linear-gradient(180deg, #7C3AED, #4F46E5)" }} />
+            <h2>Annual All-Access Subscriptions</h2>
+            <span className="section-badge" style={{ background: "#F5F3FF", color: "#7C3AED", borderColor: "#C4B5FD" }}>New</span>
+          </div>
+          <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
+            Subscribe annually and unlock every exam type for your class level. Province-scoped: Ontario subscribers get EOCP tracks; Western Canada subscribers get WPI tracks.
+          </p>
+
+          {/* Province toggle for subscriptions */}
+          <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
+            <button
+              onClick={() => setSubProvince("ontario")}
+              style={{
+                padding: "7px 18px", borderRadius: 20, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                background: subProvince === "ontario" ? "#EDE9FE" : "#F1F5F9",
+                color: subProvince === "ontario" ? "#7C3AED" : "#64748B",
+                border: subProvince === "ontario" ? "1.5px solid #C4B5FD" : "1.5px solid #E2E8F0",
+              }}
+            >
+              🍁 Ontario (EOCP)
+            </button>
+            <button
+              onClick={() => setSubProvince("western")}
+              style={{
+                padding: "7px 18px", borderRadius: 20, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                background: subProvince === "western" ? "#ECFEFF" : "#F1F5F9",
+                color: subProvince === "western" ? "#0E7490" : "#64748B",
+                border: subProvince === "western" ? "1.5px solid #A5F3FC" : "1.5px solid #E2E8F0",
+              }}
+            >
+              🏔️ Western Canada (WPI — BC, AB, SK, MB)
+            </button>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: 16 }}>
+            {SUB_TIERS.map(tier => (
+              <div
+                key={tier.tier}
+                style={{
+                  background: tier.highlight ? "linear-gradient(135deg, #F5F3FF, #EDE9FE)" : "#fff",
+                  border: tier.highlight ? "2px solid #A78BFA" : "1.5px solid #E2E8F0",
+                  borderRadius: 14,
+                  padding: "20px 18px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 12,
+                  position: "relative",
+                }}
+              >
+                {tier.badge && (
+                  <div style={{
+                    position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)",
+                    background: "#7C3AED", color: "#fff", fontSize: 10, fontWeight: 800,
+                    padding: "3px 12px", borderRadius: 20, letterSpacing: "0.05em", whiteSpace: "nowrap",
+                  }}>
+                    {tier.badge}
+                  </div>
+                )}
+                <div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>
+                    {tier.label} All-Access
+                  </div>
+                  <div style={{ fontSize: 26, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
+                    {tier.price}
+                    <span style={{ fontSize: 13, fontWeight: 500, color: "#64748B" }}>/yr</span>
+                  </div>
+                  <div style={{ fontSize: 12, color: "#64748B", marginTop: 4 }}>{tier.tagline}</div>
+                </div>
+                <ul style={{ margin: 0, padding: "0 0 0 14px", fontSize: 12, color: "#475569", lineHeight: 1.7 }}>
+                  {tier.features.map(f => <li key={f}>{f}</li>)}
+                </ul>
+                <SubscriptionCheckoutButton
+                  tier={tier.tier}
+                  province={subProvince}
+                  label={`Subscribe — ${tier.price}/yr`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Individual Practice Passes heading ── */}
+        <div style={{ marginBottom: 24 }}>
+          <div className="section-header">
+            <div className="section-bar" style={{ background: "linear-gradient(180deg, #0F172A, #334155)" }} />
+            <h2>Individual Practice Passes</h2>
+          </div>
+          <p style={{ fontSize: 13, color: "#64748B", margin: 0, lineHeight: 1.5 }}>
+            Prefer to buy just one course? One-time payment, access never expires.
+          </p>
+        </div>
 
         {/* Ontario header */}
         {!isWpi && (

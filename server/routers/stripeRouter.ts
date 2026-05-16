@@ -2,9 +2,17 @@ import { z } from "zod";
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { stripe } from "../stripe/stripe";
 import { ALL_PRODUCTS, getAllUnlockedExamTypes, PRODUCT_STUDY_PATHS } from "../stripe/products";
+import {
+  SUBSCRIPTION_PRODUCTS,
+  getAllSubscriptionExamTypes,
+  TIER_LABELS,
+  PROVINCE_LABELS,
+  type SubscriptionTier,
+  type SubscriptionProvince,
+} from "../stripe/subscriptionProducts";
 import { getDb } from "../db";
-import { purchases } from "../../drizzle/schema";
-import { eq } from "drizzle-orm";
+import { purchases, subscriptions } from "../../drizzle/schema";
+import { eq, and, gt } from "drizzle-orm";
 import { ENV } from "../_core/env";
 import { sendPurchaseConfirmationEmail } from "../email";
 import { notifyOwner } from "../_core/notification";
@@ -199,6 +207,87 @@ export const stripeRouter = router({
       return { success: true };
     }),
 
+  /** Create a Stripe Checkout session for an annual subscription */
+  createSubscriptionCheckout: publicProcedure
+    .input(z.object({
+      tier: z.enum(["class1", "class2", "class3", "class4", "all-access"]),
+      province: z.enum(["ontario", "western"]),
+      email: z.string().email().optional(),
+      name: z.string().max(128).optional(),
+      phone: z.string().max(30).optional(),
+      origin: z.string().url(),
+    }))
+    .mutation(async ({ input, ctx }) => {
+      const product = SUBSCRIPTION_PRODUCTS.find(p => p.tier === input.tier);
+      if (!product) throw new Error("Subscription tier not found");
+
+      const userEmail = ctx.user?.email ?? input.email;
+      const tierLabel = TIER_LABELS[input.tier as SubscriptionTier];
+      const provinceLabel = PROVINCE_LABELS[input.province as SubscriptionProvince];
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        mode: "subscription",
+        line_items: [
+          {
+            price_data: {
+              currency: "cad",
+              unit_amount: product.priceCAD,
+              recurring: { interval: "year" },
+              product_data: {
+                name: `${tierLabel} -- ${provinceLabel}`,
+                description: product.description,
+              },
+            },
+            quantity: 1,
+          },
+        ],
+        customer_email: userEmail,
+        client_reference_id: ctx.user?.id?.toString() ?? undefined,
+        metadata: {
+          subscription_tier: input.tier,
+          subscription_province: input.province,
+          user_id: ctx.user?.id?.toString() ?? "",
+          customer_email: userEmail ?? "",
+          customer_name: input.name ?? "",
+        },
+        allow_promotion_codes: true,
+        success_url: `${input.origin}/subscription-success?session_id={CHECKOUT_SESSION_ID}&tier=${input.tier}&province=${input.province}`,
+        cancel_url: `${input.origin}/pricing`,
+      });
+
+      return { url: session.url };
+    }),
+
+  /** Get all active subscriptions for the current user (by email) */
+  getMySubscriptions: publicProcedure
+    .input(z.object({ email: z.string().email().optional() }))
+    .query(async ({ input, ctx }) => {
+      const email = ctx.user?.email ?? input.email;
+      if (!email) return { subscriptions: [], unlockedExamTypes: [] };
+
+      const db = await getDb();
+      if (!db) return { subscriptions: [], unlockedExamTypes: [] };
+
+      const now = new Date();
+      const rows = await db
+        .select()
+        .from(subscriptions)
+        .where(
+          and(
+            eq(subscriptions.email, email),
+            eq(subscriptions.status, "active"),
+            gt(subscriptions.currentPeriodEnd, now),
+          )
+        );
+
+      const unlockedExamTypes = getAllSubscriptionExamTypes(
+        rows.map(r => ({ tier: r.tier as SubscriptionTier, province: r.province as SubscriptionProvince }))
+      );
+
+      return { subscriptions: rows, unlockedExamTypes };
+    }),
+
   /** Check if a specific exam type is unlocked for an email */
   checkAccess: publicProcedure
     .input(z.object({
@@ -206,7 +295,7 @@ export const stripeRouter = router({
       email: z.string().email().optional(),
     }))
     .query(async ({ input, ctx }) => {
-      // Owner bypass — grants full access to all courses for testing
+      // Owner bypass -- grants full access to all courses for testing
       if (ctx.user?.openId && ctx.user.openId === ENV.ownerOpenId) {
         return { hasAccess: true, isOwner: true };
       }
@@ -217,15 +306,35 @@ export const stripeRouter = router({
       const db = await getDb();
       if (!db) return { hasAccess: false };
 
-      const rows = await db
+      // 1. Check one-time purchases
+      const purchaseRows = await db
         .select({ productKey: purchases.productKey })
         .from(purchases)
         .where(eq(purchases.email, email));
 
-      const productKeys = rows.map(r => r.productKey);
-      const unlockedExamTypes = getAllUnlockedExamTypes(productKeys);
-      const hasAccess = unlockedExamTypes.includes(input.examType);
+      const productKeys = purchaseRows.map(r => r.productKey);
+      const purchaseUnlocked = getAllUnlockedExamTypes(productKeys);
+      if (purchaseUnlocked.includes(input.examType)) {
+        return { hasAccess: true };
+      }
 
-      return { hasAccess };
+      // 2. Check active subscriptions
+      const now = new Date();
+      const subRows = await db
+        .select({ tier: subscriptions.tier, province: subscriptions.province })
+        .from(subscriptions)
+        .where(
+          and(
+            eq(subscriptions.email, email),
+            eq(subscriptions.status, "active"),
+            gt(subscriptions.currentPeriodEnd, now),
+          )
+        );
+
+      const subscriptionUnlocked = getAllSubscriptionExamTypes(
+        subRows.map(r => ({ tier: r.tier as SubscriptionTier, province: r.province as SubscriptionProvince }))
+      );
+
+      return { hasAccess: subscriptionUnlocked.includes(input.examType) };
     }),
 });

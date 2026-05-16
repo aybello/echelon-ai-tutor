@@ -162,6 +162,13 @@
       "when": 1776239009860,
       "tag": "0022_fancy_khan",
       "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "5",
+      "when": 1778901573175,
+      "tag": "0023_chilly_kat_farrell",
+      "breakpoints": true
     }
   ]
 }

@@ -107,6 +107,23 @@ export const purchases = mysqlTable("purchases", {
 export type Purchase = typeof purchases.$inferSelect;
 export type InsertPurchase = typeof purchases.$inferInsert;
 
+/** Subscriptions — tracks active Stripe recurring subscriptions */
+export const subscriptions = mysqlTable("subscriptions", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"), // null for guest subscriptions (email-only)
+  email: varchar("email", { length: 320 }).notNull(),
+  tier: varchar("tier", { length: 32 }).notNull(), // 'class1' | 'class2' | 'class3' | 'class4' | 'all-access'
+  province: varchar("province", { length: 32 }).notNull(), // 'ontario' | 'western'
+  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 128 }).unique(),
+  stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
+  status: varchar("status", { length: 32 }).notNull().default("active"), // 'active' | 'cancelled' | 'expired' | 'past_due'
+  currentPeriodStart: timestamp("currentPeriodStart"),
+  currentPeriodEnd: timestamp("currentPeriodEnd").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+export type Subscription = typeof subscriptions.$inferSelect;
+export type InsertSubscription = typeof subscriptions.$inferInsert;
+
 /** Contact form submissions — logged for searchable record of all inquiries */
 export const contactSubmissions = mysqlTable("contact_submissions", {
   id: int("id").autoincrement().primaryKey(),

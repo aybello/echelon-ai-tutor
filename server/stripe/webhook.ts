@@ -2,11 +2,12 @@ import type { Express, Request, Response } from "express";
 import express from "express";
 import { stripe } from "./stripe";
 import { getDb } from "../db";
-import { purchases, users } from "../../drizzle/schema";
+import { purchases, subscriptions, users } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
 import { sendPurchaseConfirmationEmail } from "../email";
 import { PRODUCT_STUDY_PATHS } from "./products";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
+import type { SubscriptionTier, SubscriptionProvince } from "./subscriptionProducts";
 
 export function registerStripeWebhook(app: Express) {
   // MUST use raw body parser for Stripe signature verification
@@ -165,6 +166,130 @@ export function registerStripeWebhook(app: Express) {
             content: `Failed to record purchase for ${sessionEmail} (${sessionProduct}).\n\nError: ${err.message}\n\nAction required: manually insert purchase or run Sync Stripe in Admin.`,
           }).catch((err) => { console.error("[webhook] notifyOwner failed:", err); });
           return res.status(500).json({ error: "Internal error" });
+        }
+      }
+
+      // ── Subscription lifecycle events ──────────────────────────────────────
+
+      if (event.type === "customer.subscription.created" || event.type === "customer.subscription.updated") {
+        const sub = event.data.object as any;
+        try {
+          const db = await getDb();
+          if (!db) throw new Error("Database unavailable");
+
+          const tier = sub.metadata?.subscription_tier as SubscriptionTier | undefined;
+          const province = sub.metadata?.subscription_province as SubscriptionProvince | undefined;
+          const stripeSubscriptionId = sub.id;
+          const stripeCustomerId = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
+          const status = sub.status === "active" ? "active" : sub.status === "past_due" ? "past_due" : "cancelled";
+          const currentPeriodStart = sub.current_period_start ? new Date(sub.current_period_start * 1000) : null;
+          const currentPeriodEnd = sub.current_period_end ? new Date(sub.current_period_end * 1000) : null;
+
+          if (!tier || !province || !currentPeriodEnd) {
+            // Try to get metadata from the checkout session via customer
+            console.warn(`[Stripe Webhook] Subscription ${stripeSubscriptionId} missing tier/province metadata`);
+            return res.json({ received: true });
+          }
+
+          // Resolve email from customer
+          let email: string | null = null;
+          if (stripeCustomerId) {
+            try {
+              const customer = await stripe.customers.retrieve(stripeCustomerId) as any;
+              email = customer.email ?? null;
+            } catch (e) { /* ignore */ }
+          }
+          if (!email) {
+            console.warn(`[Stripe Webhook] Could not resolve email for subscription ${stripeSubscriptionId}`);
+            return res.json({ received: true });
+          }
+
+          // Upsert subscription row
+          const existing = await db
+            .select({ id: subscriptions.id })
+            .from(subscriptions)
+            .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId))
+            .limit(1);
+
+          if (existing.length === 0) {
+            await db.insert(subscriptions).values({
+              email,
+              tier,
+              province,
+              stripeSubscriptionId,
+              stripeCustomerId,
+              status,
+              currentPeriodStart,
+              currentPeriodEnd,
+            });
+            console.log(`[Stripe Webhook] Subscription created: ${email} -> ${tier} (${province}) expires ${currentPeriodEnd.toISOString()}`);
+            await notifyOwner({
+              title: `New Subscription: ${tier} (${province})`,
+              content: `${email} subscribed to ${tier} for ${province}. Expires: ${currentPeriodEnd.toISOString()}`,
+            });
+          } else {
+            await db
+              .update(subscriptions)
+              .set({ status, currentPeriodStart, currentPeriodEnd })
+              .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId));
+            console.log(`[Stripe Webhook] Subscription updated: ${stripeSubscriptionId} status=${status}`);
+          }
+        } catch (err: any) {
+          console.error("[Stripe Webhook] Error processing subscription event:", err.message);
+        }
+      }
+
+      if (event.type === "customer.subscription.deleted") {
+        const sub = event.data.object as any;
+        try {
+          const db = await getDb();
+          if (!db) throw new Error("Database unavailable");
+          await db
+            .update(subscriptions)
+            .set({ status: "cancelled" })
+            .where(eq(subscriptions.stripeSubscriptionId, sub.id));
+          console.log(`[Stripe Webhook] Subscription cancelled: ${sub.id}`);
+        } catch (err: any) {
+          console.error("[Stripe Webhook] Error processing subscription.deleted:", err.message);
+        }
+      }
+
+      if (event.type === "invoice.payment_succeeded") {
+        const invoice = event.data.object as any;
+        const stripeSubscriptionId = invoice.subscription;
+        if (stripeSubscriptionId) {
+          try {
+            const db = await getDb();
+            if (!db) throw new Error("Database unavailable");
+            // Fetch the latest subscription period from Stripe to update our record
+            const stripeSub = await stripe.subscriptions.retrieve(stripeSubscriptionId) as any;
+            const currentPeriodEnd = new Date(stripeSub.current_period_end * 1000);
+            await db
+              .update(subscriptions)
+              .set({ status: "active", currentPeriodEnd })
+              .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId));
+            console.log(`[Stripe Webhook] Subscription renewed: ${stripeSubscriptionId} new end=${currentPeriodEnd.toISOString()}`);
+          } catch (err: any) {
+            console.error("[Stripe Webhook] Error processing invoice.payment_succeeded:", err.message);
+          }
+        }
+      }
+
+      if (event.type === "invoice.payment_failed") {
+        const invoice = event.data.object as any;
+        const stripeSubscriptionId = invoice.subscription;
+        if (stripeSubscriptionId) {
+          try {
+            const db = await getDb();
+            if (!db) throw new Error("Database unavailable");
+            await db
+              .update(subscriptions)
+              .set({ status: "past_due" })
+              .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId));
+            console.log(`[Stripe Webhook] Subscription payment failed: ${stripeSubscriptionId}`);
+          } catch (err: any) {
+            console.error("[Stripe Webhook] Error processing invoice.payment_failed:", err.message);
+          }
         }
       }
 

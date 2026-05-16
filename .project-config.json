@@ -1,0 +1,48 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [
+    "db",
+    "server",
+    "user"
+  ],
+  "dev_command": "pnpm run dev",
+  "env_vars": {
+    "DATABASE_URL": "mysql://rctM7roTvbHGWtX.e99e8338e3e9:agQg0buSGtSk57E1uD52@gateway04.us-east-1.prod.aws.tidbcloud.com:4000/9KAR7mkGo7x7xavTEeEpiA?ssl={\"rejectUnauthorized\":true}"
+  },
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663446228701/9KAR7mkGo7x7xavTEeEpiA",
+    "access_key_id": "ASIAZV3A2ECZIC45U2ED",
+    "secret_access_key": "FWgULDJ84jwl00fjfb1KlLCi3r+VL833GznUAHq8",
+    "session_token": "IQoJb3JpZ2luX2VjELz//////////wEaCXVzLWVhc3QtMSJHMEUCIQDWUelJRQnAR+HozMtytI5bOr2eZQay7OaHoiecZzipnQIgfR7wT/14F68/fXvXeV1L7XCkSKhX5F1/dU1/feztOvAq/wMIhP//////////ARAEGgw2NjUzODYwOTg4NjYiDDPLr+OdHWXsA62gQSrTA4laHHfcVkwt0ioxDCIYMbaFKZP6H44Brjcabj2gUCMTB3v7bv0NQ84WK3YzNvLTuU+NEYRIxONe0F/eHrRbrsDEU4mkZdF8swOcz226OWnn38O1aUU5UFKrAx1DZxcYLgWdEzS22HlhsGadLBfVQUXxWFlTn2Ym8gRx6mlKQ5kQVhw64AalmDf8/P5kdLq6JKLBhoLJHj7OJDgsY/ujKUFw268HMRC4d/x64iC02GmwPVWE5KyIJg7dpMHNv3NHOME0ySZCjA3EqTudH2SvqVDftgwRz2eRYgfpcs+nOhlU4ZAz9bSgEEPW2eaKG7xlrxyGZRkYbc64wegLjfbuq7Ej3Gxj4zue3G87CPiwzatYhDdkEWd0sIQ+DLCk/1Qi6eIwHD15ev1hxIc25o7Fova7s2ZUMOFbPPycRDmv6djGDhtKHjAx4OnVC45TLWmE6KGMiCawhIPuPTsB2FOeZtriAQ7deTQPTO2UU8LLR0ItM25DA/4A3mK3bW4sh7g1Z0Q482nWiDaQdMdZterE6EnGUTrtzR5zFgic/s1X/ajKbQPQsoqYFgiy533Fwdf1t0ExT1PZGIR7hdaRwp38nGfG7Q7bTuMo3U1t3aU9vIW7L5KmMILEn9AGOp0BFmibDWYrzs/x7G8JiuCxl5N0sp88aULJQgJMY7T6QG+lgC+EtGbkx7pFNOU13V1DM88klSRN6f0KbTJb2r+ZoQIxbuZABkyV/mSj86ZdRBbV7UYi0uS1OkL2OH5mEq7HZRe6shooqmEslsNFTTlxsgEp031sVKez5WQCTAKq5WQpWrQmr8++ufibDyZ3LQZPfOeiMeA1ppi/zvOs4Q==",
+    "expiration": "2026-05-16T15:18:26.000Z"
+  },
+  "name": "echelon-ai-tutor",
+  "path": "/home/ubuntu/echelon-ai-tutor",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "bXxCQmd5Xbcjm86tpRWiPU",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "AHD7G4ZoZwPbfsjeiZMM9f",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Ay Bello",
+    "OWNER_OPEN_ID": "eBhSPSzSUAgHVCwFtATZGf",
+    "SMTP_HOST": "smtp.gmail.com",
+    "SMTP_PASS": "oqxlpokfrodxklpi",
+    "SMTP_PORT": "587",
+    "SMTP_USER": "abello@echeloninstitute.ca",
+    "STRIPE_SECRET_KEY": "sk_test_51THaJhAYxuT2tLWEbpLWwZAfckPE79bz96J4JOi4UTPrzbZrMOBnVJbrVqzTA1gOklLOdOscG9n4pX5DaxZ1MxZq00y1XtpIXE",
+    "STRIPE_WEBHOOK_SECRET": "whsec_Tzbr87uq5Jq0x3oO1gNsMdVTX1WAMHSL",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "e7de0f97-42ce-4cbe-ad31-8220cb107593",
+    "VITE_APP_ID": "9KAR7mkGo7x7xavTEeEpiA",
+    "VITE_APP_LOGO": "https://files.manuscdn.com/user_upload_by_module/web_dev_logo/310519663446228701/lhlNawgxBJzBHvAn.png",
+    "VITE_APP_TITLE": "Echelon AI Tutor",
+    "VITE_FRONTEND_FORGE_API_KEY": "KgdcjR4jaxPSkscb9E8WDQ",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im",
+    "VITE_STRIPE_PUBLISHABLE_KEY": "pk_test_51THaJhAYxuT2tLWEuoHqdD7N1MVp2ubLVhEbfFqXCewRagf4YScdiFBcvTrgl4kf35xma4xJQm1wUhRJHNCt08eX00HG7s9jlT"
+  },
+  "template_id": "web-db-user",
+  "test_command": "pnpm test"
+}
