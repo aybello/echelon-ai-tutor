@@ -885,6 +885,7 @@ export default function Pricing() {
   const isWpi = selectedProvince !== "ON";
   const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
   const [subProvince, setSubProvince] = useState<SubscriptionProvince>("ontario");
+  const [showIndividual, setShowIndividual] = useState(false);
 
   return (
     <div className="pricing-page">
@@ -1049,16 +1050,26 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* ── Individual Practice Passes heading ── */}
-        <div style={{ marginBottom: 24 }}>
-          <div className="section-header">
-            <div className="section-bar" style={{ background: "linear-gradient(180deg, #0F172A, #334155)" }} />
-            <h2>Individual Practice Passes</h2>
-          </div>
-          <p style={{ fontSize: 13, color: "#64748B", margin: 0, lineHeight: 1.5 }}>
-            Prefer to buy just one course? One-time payment, access never expires.
-          </p>
-        </div>
+        {/* ── Individual Practice Passes — collapsible ── */}
+        <div style={{ marginTop: 48, marginBottom: 24 }}>
+          <button
+            onClick={() => setShowIndividual(v => !v)}
+            style={{
+              display: "flex", alignItems: "center", gap: 10, background: "none",
+              border: "1.5px solid #E2E8F0", borderRadius: 10, padding: "12px 20px",
+              cursor: "pointer", fontFamily: "inherit", width: "100%", textAlign: "left",
+            }}
+          >
+            <span style={{ fontSize: 14, fontWeight: 700, color: "#334155", flex: 1 }}>
+              Prefer to buy just one course? View individual practice passes
+            </span>
+            <span style={{ fontSize: 18, color: "#64748B", transform: showIndividual ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+          </button>
+          {showIndividual && (
+            <div style={{ marginTop: 8, padding: "4px 0" }}>
+              <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 24px", lineHeight: 1.5 }}>
+                One-time payment — access never expires. No recurring charges.
+              </p>
 
         {/* Ontario header */}
         {!isWpi && (
@@ -1199,6 +1210,10 @@ export default function Pricing() {
           </div>
         )}
 
+            </div>
+          )}
+        </div>
+
         {/* Trust section */}
         <div
           style={{
@@ -1211,10 +1226,10 @@ export default function Pricing() {
           }}
         >
           <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
-            Everything you need to pass — included in every Practice Pass
+            Everything you need to pass — included in every subscription
           </h3>
           <p style={{ color: "#64748B", fontSize: 14, margin: "0 0 8px" }}>
-            One-time payment — access never expires. No subscription, no hidden fees.
+            Annual subscription — cancel anytime. Everything unlocked for your province.
           </p>
           <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
             15,000+ questions across Water Treatment, Wastewater, WQA, and WPI tracks. Canada-specific. AI-explained.
