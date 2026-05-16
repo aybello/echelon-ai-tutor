@@ -947,8 +947,8 @@ function CourseCard({ course }: { course: CourseType }) {
 
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
         <div>
-          <span style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>CA${(course as any).price}</span>
-          <span style={{ fontSize: 12, color: "#64748B", marginLeft: 4 }}>CAD</span>
+          <span style={{ fontSize: 14, fontWeight: 700, color: "#1D4ED8", fontFamily: "Sora, sans-serif" }}>Included in subscription</span>
+          <span style={{ fontSize: 11, color: "#64748B", display: "block", marginTop: 2 }}>from CA$99/yr · View Plans →</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#F8FAFC", borderRadius: 8, padding: "6px 12px" }}>
           <span style={{ fontSize: 11, color: "#64748B" }}>📝 {course.questions} questions</span>
