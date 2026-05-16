@@ -690,3 +690,4 @@
 - [x] Send renewal confirmation email on invoice.payment_succeeded in webhook.ts
 - [x] Add subscription section to Account.tsx (tier, province, renewal date, manage/cancel link)
 - [x] Apply CourseCard redesign to Pricing page individual course cards
+- [x] Add 25 WQA questions to bring bank from 475 to 500

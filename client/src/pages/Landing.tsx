@@ -437,7 +437,7 @@ const WQA_COURSES = [
     title: "Water Quality Analyst",
     subtitle: "Ontario WQA Certification Prep",
     duration: "6–8 weeks",
-    questions: 475,
+    questions: 500,
     description: "Complete preparation for the Ontario Water Quality Analyst certification under O. Reg. 128/04. Covers sampling protocols, analytical methods, QA/QC programs, chain of custody, and regulatory reporting for accredited drinking water labs. 500 questions across 10 modules.",
     topics: ["Sampling Techniques & Chain of Custody", "Analytical Methods & Lab Equipment", "QA/QC Programs & Method Validation", "O. Reg. 128/04 Requirements", "Regulatory Reporting & Documentation"],
     badge: "Single Certification",
