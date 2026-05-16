@@ -9,6 +9,7 @@ import { execSync } from "child_process";
 import { readFileSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
+import mysql from "mysql2/promise";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PROJECT_ROOT = resolve(__dirname, "..");
@@ -19,6 +20,19 @@ let overallPass = true;
 function run(label, fn) {
   try {
     const result = fn();
+    results.push({ label, status: "✅ PASS", detail: result || "" });
+    console.log(`✅ ${label}`);
+  } catch (err) {
+    overallPass = false;
+    const detail = err.message?.slice(0, 300) || String(err).slice(0, 300);
+    results.push({ label, status: "❌ FAIL", detail });
+    console.error(`❌ ${label}: ${detail}`);
+  }
+}
+
+async function runAsync(label, fn) {
+  try {
+    const result = await fn();
     results.push({ label, status: "✅ PASS", detail: result || "" });
     console.log(`✅ ${label}`);
   } catch (err) {
@@ -43,78 +57,101 @@ run("TypeScript (tsc --noEmit)", () => {
   return "No type errors";
 });
 
-// ── 3. Duplicate Question IDs ─────────────────────────────────────────────────
-run("Duplicate Question IDs", () => {
-  const oitPath = resolve(PROJECT_ROOT, "client/src/lib/questions.ts");
-  const cl1Path = resolve(PROJECT_ROOT, "client/src/lib/class1Questions.ts");
+// ── 3. Duplicate Question IDs (database) ─────────────────────────────────────
+await runAsync("Duplicate Question IDs", async () => {
+  const dbUrl = process.env.DATABASE_URL;
+  if (!dbUrl) throw new Error("DATABASE_URL not set — cannot query questions table");
 
-  const oitContent = readFileSync(oitPath, "utf8");
-  const cl1Content = readFileSync(cl1Path, "utf8");
-
-  const oitIds = [...oitContent.matchAll(/^\s+id:\s+(\d+),/gm)].map(m => parseInt(m[1]));
-  const cl1Ids = [...cl1Content.matchAll(/^\s+id:\s+(\d+),/gm)].map(m => parseInt(m[1]));
-
-  const allIds = [...oitIds, ...cl1Ids];
-  const seen = new Set();
-  const dupes = [];
-  for (const id of allIds) {
-    if (seen.has(id)) dupes.push(id);
-    seen.add(id);
+  const conn = await mysql.createConnection(dbUrl);
+  try {
+    // Find any (bankKey, questionNum) pairs that appear more than once
+    const [rows] = await conn.execute(
+      `SELECT bankKey, questionNum, COUNT(*) AS cnt
+       FROM questions
+       GROUP BY bankKey, questionNum
+       HAVING cnt > 1
+       LIMIT 20`
+    );
+    if (rows.length > 0) {
+      const detail = rows.map(r => `${r.bankKey}#${r.questionNum} (×${r.cnt})`).join(", ");
+      throw new Error(`Duplicate (bankKey, questionNum) pairs: ${detail}`);
+    }
+    const [[{ total }]] = await conn.execute("SELECT COUNT(*) AS total FROM questions");
+    const [[{ banks }]] = await conn.execute("SELECT COUNT(DISTINCT bankKey) AS banks FROM questions");
+    return `${total} questions across ${banks} banks — no duplicates`;
+  } finally {
+    await conn.end();
   }
-
-  if (dupes.length > 0) throw new Error(`Duplicate IDs found: ${dupes.join(", ")}`);
-  return `${allIds.length} unique IDs across OIT (${oitIds.length}) + Class 1 (${cl1Ids.length})`;
 });
 
-// ── 4. Math Question Audit ────────────────────────────────────────────────────
-run("Math Question Audit (correct index vs explanation)", () => {
-  const oitPath = resolve(PROJECT_ROOT, "client/src/lib/questions.ts");
-  const cl1Path = resolve(PROJECT_ROOT, "client/src/lib/class1Questions.ts");
+// ── 4. Math Question Audit (database) ────────────────────────────────────────
+await runAsync("Math Question Audit (correct index vs explanation)", async () => {
+  const dbUrl = process.env.DATABASE_URL;
+  if (!dbUrl) throw new Error("DATABASE_URL not set — cannot query questions table");
 
-  const issues = [];
+  const conn = await mysql.createConnection(dbUrl);
+  try {
+    const issues = [];
 
-  for (const [filePath, label] of [[oitPath, "OIT"], [cl1Path, "Class1"]]) {
-    const content = readFileSync(filePath, "utf8");
-
-    // Find calculation questions where explanation mentions a number that should match correct option
-    // Heuristic: check for "≈ X" or "= X" near the end of explanation and see if correct option contains X
-    const blocks = content.split(/(?=\{\s*\n\s*id:)/);
-
-    for (const block of blocks) {
-      const idMatch = block.match(/id:\s*(\d+)/);
-      if (!idMatch) continue;
-      const id = idMatch[1];
-
-      // Only check calculation questions
-      if (!block.includes('type: "calculation"')) continue;
-
-      const correctMatch = block.match(/correct:\s*(\d+)/);
-      const optionsMatch = block.match(/options:\s*\[([\s\S]*?)\]/);
-      const explanationMatch = block.match(/explanation:\s*"([^"]*)"/);
-
-      if (!correctMatch || !optionsMatch || !explanationMatch) continue;
-
-      const correctIdx = parseInt(correctMatch[1]);
-      const optionsStr = optionsMatch[1];
-      const explanation = explanationMatch[1];
-
-      // Parse options
-      const optionValues = [...optionsStr.matchAll(/"([^"]*)"/g)].map(m => m[1]);
-
-      if (correctIdx >= optionValues.length) {
-        issues.push(`${label} Q${id}: correct index ${correctIdx} out of range (${optionValues.length} options)`);
-        continue;
-      }
-
-      // Check for "Wait" or "let me recalculate" in explanation — sign of internal inconsistency
-      if (/wait|let me recalculate|re-check/i.test(explanation)) {
-        issues.push(`${label} Q${id}: explanation contains self-correction language — may have wrong answer`);
-      }
+    // 4a. correctIndex out of range (must be 0-3 for 4-option questions)
+    const [outOfRange] = await conn.execute(
+      `SELECT bankKey, questionNum, correctIndex
+       FROM questions
+       WHERE correctIndex < 0 OR correctIndex > 3
+       LIMIT 20`
+    );
+    for (const r of outOfRange) {
+      issues.push(`${r.bankKey}#${r.questionNum}: correctIndex ${r.correctIndex} out of range`);
     }
-  }
 
-  if (issues.length > 0) throw new Error(issues.join("\n"));
-  return "No self-correction language or out-of-range indices found";
+    // 4b. Calculation questions whose explanation contains self-correction language
+    // Use word-boundary patterns: 'Wait:' / 'Wait —' / 'Wait,' catch AI self-corrections;
+    // avoid false positives from normal prose like 'waiting for...'
+    const [calcRows] = await conn.execute(
+      `SELECT bankKey, questionNum, explanation
+       FROM questions
+       WHERE isCalc = 'yes'
+         AND (
+           explanation LIKE '%Wait:%'
+           OR explanation LIKE '%Wait —%'
+           OR explanation LIKE '%Wait,%'
+           OR explanation LIKE '%let me recalculate%'
+           OR explanation LIKE '%re-check%'
+         )
+       LIMIT 20`
+    );
+    for (const r of calcRows) {
+      issues.push(`${r.bankKey}#${r.questionNum}: explanation contains self-correction language`);
+    }
+
+    // 4c. Questions with empty explanation
+    const [[{ emptyExp }]] = await conn.execute(
+      `SELECT COUNT(*) AS emptyExp FROM questions WHERE explanation IS NULL OR explanation = ''`
+    );
+    if (emptyExp > 0) issues.push(`${emptyExp} questions have empty explanation`);
+
+    // 4d. Questions where options JSON does not parse to exactly 4 items
+    const [allCalc] = await conn.execute(
+      `SELECT bankKey, questionNum, options FROM questions WHERE isCalc = 'yes' LIMIT 5000`
+    );
+    let badOptions = 0;
+    for (const r of allCalc) {
+      try {
+        const opts = JSON.parse(r.options);
+        if (!Array.isArray(opts) || opts.length !== 4) badOptions++;
+      } catch { badOptions++; }
+    }
+    if (badOptions > 0) issues.push(`${badOptions} calc questions have malformed options JSON`);
+
+    if (issues.length > 0) throw new Error(issues.join("\n"));
+
+    const [[{ calcTotal }]] = await conn.execute(
+      `SELECT COUNT(*) AS calcTotal FROM questions WHERE isCalc = 'yes'`
+    );
+    return `${calcTotal} calc questions audited — no out-of-range indices or self-correction language`;
+  } finally {
+    await conn.end();
+  }
 });
 
 // ─// ── 5. Route Coverage ─────────────────────────────────────────────
