@@ -2,7 +2,8 @@
 // Shows all individual Practice Passes
 // Stripe Checkout integration via tRPC
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useProvince } from "@/hooks/useProvince";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -881,10 +882,45 @@ export default function Pricing() {
       "Affordable Practice Passes for every Canadian water and wastewater operator certification level. OIT, Class 1–4 Water, Class 1–4 Wastewater, and WQA.",
   });
 
-  const [selectedProvince, setSelectedProvince] = useState<ProvinceCode>("ON");
+  // Sync with the global province selector (useProvince hook)
+  const { province: globalProvince } = useProvince();
+
+  // Derive initial province from global hook; fall back to "ON" if not set
+  const globalProvinceCode: ProvinceCode =
+    globalProvince === "bc" ? "BC"
+    : globalProvince === "ab" ? "AB"
+    : globalProvince === "sk" ? "SK"
+    : globalProvince === "mb" ? "MB"
+    : "ON";
+
+  const [selectedProvince, setSelectedProvince] = useState<ProvinceCode>(globalProvinceCode);
   const isWpi = selectedProvince !== "ON";
   const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
-  const [subProvince, setSubProvince] = useState<SubscriptionProvince>("ontario");
+
+  // Derive subProvince from selectedProvince (Ontario → "ontario", WPI → "western")
+  // Allow manual override via setSubProvince
+  const derivedSubProvince: SubscriptionProvince = selectedProvince === "ON" ? "ontario" : "western";
+  const [subProvinceOverride, setSubProvinceOverride] = useState<SubscriptionProvince | null>(null);
+  const subProvince: SubscriptionProvince = subProvinceOverride ?? derivedSubProvince;
+
+  // When the user picks a province in the top selector, clear any manual override
+  const handleProvinceSelect = (code: ProvinceCode) => {
+    setSelectedProvince(code);
+    setSubProvinceOverride(null); // let it re-derive from the new province
+  };
+
+  // When the user manually clicks the subscription toggle, record the override
+  const handleSubProvinceSelect = (p: SubscriptionProvince) => {
+    setSubProvinceOverride(p);
+  };
+
+  // Sync if global province changes after mount (e.g. user picks province on homepage then navigates here)
+  useEffect(() => {
+    setSelectedProvince(globalProvinceCode);
+    setSubProvinceOverride(null);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [globalProvince]);
+
   const [showIndividual, setShowIndividual] = useState(false);
 
   return (
@@ -934,7 +970,7 @@ export default function Pricing() {
             {PROVINCES.map(p => (
               <button
                 key={p.code}
-                onClick={() => setSelectedProvince(p.code)}
+                onClick={() => handleProvinceSelect(p.code)}
                 className="province-pill"
                 style={{
                   border: selectedProvince === p.code
@@ -980,7 +1016,7 @@ export default function Pricing() {
           {/* Province toggle for subscriptions */}
           <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
             <button
-              onClick={() => setSubProvince("ontario")}
+              onClick={() => handleSubProvinceSelect("ontario")}
               style={{
                 padding: "7px 18px", borderRadius: 20, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                 background: subProvince === "ontario" ? "#EDE9FE" : "#F1F5F9",
@@ -991,7 +1027,7 @@ export default function Pricing() {
               🍁 Ontario (EOCP)
             </button>
             <button
-              onClick={() => setSubProvince("western")}
+              onClick={() => handleSubProvinceSelect("western")}
               style={{
                 padding: "7px 18px", borderRadius: 20, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                 background: subProvince === "western" ? "#ECFEFF" : "#F1F5F9",
