@@ -12,7 +12,7 @@ import CheckoutContactModal from "@/components/CheckoutContactModal";
 type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access";
 type SubscriptionProvince = "ontario" | "western";
 
-const SUB_TIERS: Array<{
+interface SubTier {
   tier: SubscriptionTier;
   label: string;
   price: string;
@@ -21,12 +21,22 @@ const SUB_TIERS: Array<{
   features: string[];
   badge?: string;
   highlight?: boolean;
-}> = [
-  { tier: "class1", label: "Class 1", price: "$99", priceNum: 9900, tagline: "OIT + Class 1 Water & Wastewater", features: ["OIT Water & Wastewater", "Class 1 Water Treatment", "Class 1 Wastewater Treatment", "AI Tutor & Flashcards", "Mock Exams & Score History"] },
-  { tier: "class2", label: "Class 2", price: "$149", priceNum: 14900, tagline: "Class 2 Water & Wastewater", features: ["Class 2 Water Treatment", "Class 2 Wastewater Treatment", "AI Tutor & Flashcards", "Mock Exams & Score History"] },
-  { tier: "class3", label: "Class 3", price: "$199", priceNum: 19900, tagline: "Class 3 Water & Wastewater", features: ["Class 3 Water Treatment", "Class 3 Wastewater Treatment", "AI Tutor & Flashcards", "Mock Exams & Score History"] },
-  { tier: "class4", label: "Class 4", price: "$249", priceNum: 24900, tagline: "Class 4 Water & Wastewater", features: ["Class 4 Water Treatment", "Class 4 Wastewater Treatment", "WQA (Ontario only)", "AI Tutor & Flashcards", "Mock Exams & Score History"] },
-  { tier: "all-access", label: "All-Access", price: "$349", priceNum: 34900, tagline: "Every exam type for your province", features: ["All classes (1 through 4)", "Water + Wastewater + WQA", "WPI: Water, WW, Distribution & Collection", "AI Tutor & Flashcards", "Unlimited attempts"], badge: "Best Value", highlight: true },
+}
+
+const SUB_TIERS_ONTARIO: SubTier[] = [
+  { tier: "class1",     label: "Class 1",    price: "$99",  priceNum: 9900,  tagline: "OIT + Class 1 Water & Wastewater",  features: ["OIT Water & Wastewater", "Class 1 Water Treatment", "Class 1 Wastewater Treatment", "AI Tutor & Flashcards", "Mock Exams & Score History"] },
+  { tier: "class2",     label: "Class 2",    price: "$149", priceNum: 14900, tagline: "Class 2 Water & Wastewater",         features: ["Class 2 Water Treatment", "Class 2 Wastewater Treatment", "AI Tutor & Flashcards", "Mock Exams & Score History"] },
+  { tier: "class3",     label: "Class 3",    price: "$199", priceNum: 19900, tagline: "Class 3 Water & Wastewater",         features: ["Class 3 Water Treatment", "Class 3 Wastewater Treatment", "AI Tutor & Flashcards", "Mock Exams & Score History"] },
+  { tier: "class4",     label: "Class 4",    price: "$249", priceNum: 24900, tagline: "Class 4 Water & Wastewater + WQA",   features: ["Class 4 Water Treatment", "Class 4 Wastewater Treatment", "WQA Exam Prep", "AI Tutor & Flashcards", "Mock Exams & Score History"] },
+  { tier: "all-access", label: "All-Access", price: "$349", priceNum: 34900, tagline: "Every Ontario exam type — all classes", features: ["All classes (1 through 4)", "Water Treatment + Wastewater Treatment", "WQA Exam Prep", "AI Tutor & Flashcards", "Unlimited attempts"], badge: "Best Value", highlight: true },
+];
+
+const SUB_TIERS_WPI: SubTier[] = [
+  { tier: "class1",     label: "Class I",    price: "$149", priceNum: 14900, tagline: "Class I — all 4 WPI tracks",          features: ["Class I Water Treatment", "Class I Wastewater Treatment", "Class I Water Distribution", "Class I Wastewater Collection", "AI Tutor & Flashcards"] },
+  { tier: "class2",     label: "Class II",   price: "$199", priceNum: 19900, tagline: "Class II — all 4 WPI tracks",         features: ["Class II Water Treatment", "Class II Wastewater Treatment", "Class II Water Distribution", "Class II Wastewater Collection", "AI Tutor & Flashcards"] },
+  { tier: "class3",     label: "Class III",  price: "$249", priceNum: 24900, tagline: "Class III — all 4 WPI tracks",        features: ["Class III Water Treatment", "Class III Wastewater Treatment", "Class III Water Distribution", "Class III Wastewater Collection", "AI Tutor & Flashcards"] },
+  { tier: "class4",     label: "Class IV",   price: "$299", priceNum: 29900, tagline: "Class IV — all 4 WPI tracks",         features: ["Class IV Water Treatment", "Class IV Wastewater Treatment", "Class IV Water Distribution", "Class IV Wastewater Collection", "AI Tutor & Flashcards"] },
+  { tier: "all-access", label: "All-Access", price: "$449", priceNum: 44900, tagline: "Every WPI exam type — all classes",   features: ["All classes (I through IV)", "Water Treatment + Wastewater Treatment", "Water Distribution + Wastewater Collection", "AI Tutor & Flashcards", "Unlimited attempts"], badge: "Best Value", highlight: true },
 ];
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -611,10 +621,12 @@ function SubscriptionCheckoutButton({
   tier,
   province,
   label,
+  priceLabel,
 }: {
   tier: SubscriptionTier;
   province: SubscriptionProvince;
   label: string;
+  priceLabel: string;
 }) {
   const [showModal, setShowModal] = useState(false);
   const createSubscription = trpc.stripe.createSubscriptionCheckout.useMutation({
@@ -641,8 +653,7 @@ function SubscriptionCheckoutButton({
     });
   }
 
-  const tierLabel = SUB_TIERS.find(t => t.tier === tier);
-  const priceLabel = tierLabel ? `${tierLabel.price}/yr` : "";
+  // priceLabel is passed in from the parent (province-aware)
 
   return (
     <>
@@ -1039,51 +1050,57 @@ export default function Pricing() {
             </button>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: 16 }}>
-            {SUB_TIERS.map(tier => (
-              <div
-                key={tier.tier}
-                style={{
-                  background: tier.highlight ? "linear-gradient(135deg, #F5F3FF, #EDE9FE)" : "#fff",
-                  border: tier.highlight ? "2px solid #A78BFA" : "1.5px solid #E2E8F0",
-                  borderRadius: 14,
-                  padding: "20px 18px",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 12,
-                  position: "relative",
-                }}
-              >
-                {tier.badge && (
-                  <div style={{
-                    position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)",
-                    background: "#7C3AED", color: "#fff", fontSize: 10, fontWeight: 800,
-                    padding: "3px 12px", borderRadius: 20, letterSpacing: "0.05em", whiteSpace: "nowrap",
-                  }}>
-                    {tier.badge}
+          {(() => {
+            const activeTiers = subProvince === "western" ? SUB_TIERS_WPI : SUB_TIERS_ONTARIO;
+            return (
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: 16 }}>
+                {activeTiers.map(tier => (
+                  <div
+                    key={tier.tier}
+                    style={{
+                      background: tier.highlight ? "linear-gradient(135deg, #F5F3FF, #EDE9FE)" : "#fff",
+                      border: tier.highlight ? "2px solid #A78BFA" : "1.5px solid #E2E8F0",
+                      borderRadius: 14,
+                      padding: "20px 18px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 12,
+                      position: "relative",
+                    }}
+                  >
+                    {tier.badge && (
+                      <div style={{
+                        position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)",
+                        background: "#7C3AED", color: "#fff", fontSize: 10, fontWeight: 800,
+                        padding: "3px 12px", borderRadius: 20, letterSpacing: "0.05em", whiteSpace: "nowrap",
+                      }}>
+                        {tier.badge}
+                      </div>
+                    )}
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>
+                        {tier.label} All-Access
+                      </div>
+                      <div style={{ fontSize: 26, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
+                        {tier.price}
+                        <span style={{ fontSize: 13, fontWeight: 500, color: "#64748B" }}>/yr</span>
+                      </div>
+                      <div style={{ fontSize: 12, color: "#64748B", marginTop: 4 }}>{tier.tagline}</div>
+                    </div>
+                    <ul style={{ margin: 0, padding: "0 0 0 14px", fontSize: 12, color: "#475569", lineHeight: 1.7 }}>
+                      {tier.features.map(f => <li key={f}>{f}</li>)}
+                    </ul>
+                    <SubscriptionCheckoutButton
+                      tier={tier.tier}
+                      province={subProvince}
+                      label={`Subscribe — ${tier.price}/yr`}
+                      priceLabel={`${tier.price}/yr`}
+                    />
                   </div>
-                )}
-                <div>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>
-                    {tier.label} All-Access
-                  </div>
-                  <div style={{ fontSize: 26, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
-                    {tier.price}
-                    <span style={{ fontSize: 13, fontWeight: 500, color: "#64748B" }}>/yr</span>
-                  </div>
-                  <div style={{ fontSize: 12, color: "#64748B", marginTop: 4 }}>{tier.tagline}</div>
-                </div>
-                <ul style={{ margin: 0, padding: "0 0 0 14px", fontSize: 12, color: "#475569", lineHeight: 1.7 }}>
-                  {tier.features.map(f => <li key={f}>{f}</li>)}
-                </ul>
-                <SubscriptionCheckoutButton
-                  tier={tier.tier}
-                  province={subProvince}
-                  label={`Subscribe — ${tier.price}/yr`}
-                />
+                ))}
               </div>
-            ))}
-          </div>
+            );
+          })()}
         </div>
 
         {/* ── Individual Practice Passes — collapsible ── */}
