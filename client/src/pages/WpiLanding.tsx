@@ -631,100 +631,136 @@ export default function WpiLanding() {
             <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
               💧 Water Treatment
             </div>
-            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
               {WATER_CLASSES.map(cls => (
                 <div key={cls.level} className="wpi-pricing-card" style={{
-                  background: cls.bg,
-                  border: `2px solid ${cls.border}`,
-                  borderRadius: 18,
-                  padding: "22px 18px",
-                  width: 210,
-                  textAlign: "left",
+                  background: "#FFFFFF",
+                  border: "1px solid #E2E8F0",
+                  borderRadius: 16,
+                  width: 220,
                   flexShrink: 0,
+                  display: "flex",
+                  flexDirection: "column" as const,
+                  overflow: "hidden",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+                  transition: "box-shadow 0.2s",
                 }}>
-                  {(cls as any).badge && (
-                    <div style={{ display: "inline-block", background: cls.color, color: "#FFFFFF", fontSize: 10, fontWeight: 700, borderRadius: 6, padding: "2px 8px", marginBottom: 8 }}>{(cls as any).badge}</div>
-                  )}
-                  <div style={{ fontSize: 10, fontWeight: 700, color: cls.color, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>WPI {cls.level}</div>
-                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>{cls.price}</div>
-                  <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>Unlimited · {cls.questions} questions</div>
-                  <ul style={{ listStyle: "none", padding: 0, margin: "0 0 14px", display: "flex", flexDirection: "column" as const, gap: 5 }}>
-                    {["Practice questions", "Timed mock exam", "Flashcards", "Study notes", "Formula sheet", "AI Tutor", "Score history"].map(f => (
-                      <li key={f} style={{ fontSize: 12, color: "#0F172A", display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ color: cls.color, fontWeight: 700, fontSize: 11 }}>✓</span> {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href="/pricing">
-                    <button style={{
-                      width: "100%",
-                      background: cls.color,
-                      color: "#FFFFFF",
-                      border: "none",
-                      borderRadius: 8,
-                      padding: "10px",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                    }}>
-                      Get {cls.level} Pass →
-                    </button>
-                  </Link>
+                  {/* Accent bar */}
+                  <div style={{ height: 4, background: cls.color, flexShrink: 0 }} />
+                  <div style={{ padding: "16px 16px 0" }}>
+                    {/* Header row: code + question count */}
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: cls.color, background: cls.color + "18", padding: "3px 8px", borderRadius: 5, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>WPI {cls.level}</span>
+                        {(cls as any).badge && (
+                          <span style={{ fontSize: 9, fontWeight: 700, background: cls.color, color: "#fff", padding: "2px 6px", borderRadius: 4 }}>{(cls as any).badge}</span>
+                        )}
+                      </div>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: cls.color, background: cls.color + "12", padding: "3px 8px", borderRadius: 20, whiteSpace: "nowrap" as const }}>📝 {cls.questions} Q</span>
+                    </div>
+                    {/* Price */}
+                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#0F172A", lineHeight: 1, marginBottom: 2 }}>{cls.price}</div>
+                    <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>One-time · unlimited access</div>
+                    {/* Feature pills */}
+                    <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 5, marginBottom: 14 }}>
+                      {["Practice questions", "Mock exam", "Flashcards", "Study notes", "Formula sheet", "AI Tutor"].map(f => (
+                        <span key={f} style={{ fontSize: 11, color: "#475569", background: "#F1F5F9", padding: "3px 8px", borderRadius: 20, fontWeight: 500 }}>{f}</span>
+                      ))}
+                    </div>
+                    {/* Free trial badge */}
+                    <div style={{ fontSize: 11, color: "#16A34A", fontWeight: 600, marginBottom: 14 }}>✓ 15 questions free — no account needed</div>
+                  </div>
+                  {/* CTA area pinned to bottom */}
+                  <div style={{ marginTop: "auto", padding: "0 16px 16px" }}>
+                    <Link href={cls.quizHref}>
+                      <button style={{
+                        width: "100%",
+                        background: cls.color,
+                        color: "#FFFFFF",
+                        border: "none",
+                        borderRadius: 8,
+                        padding: "11px",
+                        fontSize: 13,
+                        fontWeight: 700,
+                        cursor: "pointer",
+                        fontFamily: "inherit",
+                        marginBottom: 8,
+                      }}>
+                        Start Studying →
+                      </button>
+                    </Link>
+                    <Link href="/pricing">
+                      <div style={{ textAlign: "center" as const, fontSize: 12, color: "#64748B", fontWeight: 600, cursor: "pointer" }}>View Plans →</div>
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Wastewater Treatment */}
-          <div>
+          <div style={{ marginTop: 40 }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
               ♻️ Wastewater Treatment
             </div>
-            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 14, flexWrap: "wrap" as const, justifyContent: "center" }}>
+            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 16, flexWrap: "wrap" as const, justifyContent: "center" }}>
               {WW_CLASSES.map(ww => (
                 <div key={ww.level} className="wpi-pricing-card" style={{
-                  background: ww.bg,
-                  border: `2px solid ${ww.border}`,
-                  borderRadius: 18,
-                  padding: "22px 18px",
-                  width: 210,
-                  textAlign: "left" as const,
+                  background: "#FFFFFF",
+                  border: "1px solid #E2E8F0",
+                  borderRadius: 16,
+                  width: 220,
                   flexShrink: 0,
+                  display: "flex",
+                  flexDirection: "column" as const,
+                  overflow: "hidden",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
                 }}>
-                  {(ww as any).badge && (
-                    <div style={{ display: "inline-block", background: ww.color, color: "#FFFFFF", fontSize: 10, fontWeight: 700, borderRadius: 6, padding: "2px 8px", marginBottom: 8 }}>{(ww as any).badge}</div>
-                  )}
-                  <div style={{ fontSize: 10, fontWeight: 700, color: ww.color, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>WPI {ww.level} WW</div>
-                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>{ww.price}</div>
-                  <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>Unlimited · {ww.questions} questions</div>
-                  <ul style={{ listStyle: "none", padding: 0, margin: "0 0 14px", display: "flex", flexDirection: "column" as const, gap: 5 }}>
-                    {["Practice questions", "Timed mock exam", "Flashcards", "Study notes", "Formula sheet", "AI Tutor", "Score history"].map(f => (
-                      <li key={f} style={{ fontSize: 12, color: "#0F172A", display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ color: ww.color, fontWeight: 700, fontSize: 11 }}>✓</span> {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href="/pricing">
-                    <button style={{
-                      width: "100%",
-                      background: ww.color,
-                      color: "#FFFFFF",
-                      border: "none",
-                      borderRadius: 8,
-                      padding: "10px",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                    }}>
-                      Get {ww.level} WW Pass →
-                    </button>
-                  </Link>
+                  <div style={{ height: 4, background: ww.color, flexShrink: 0 }} />
+                  <div style={{ padding: "16px 16px 0" }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: ww.color, background: ww.color + "18", padding: "3px 8px", borderRadius: 5, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>WPI {ww.level} WW</span>
+                        {(ww as any).badge && (
+                          <span style={{ fontSize: 9, fontWeight: 700, background: ww.color, color: "#fff", padding: "2px 6px", borderRadius: 4 }}>{(ww as any).badge}</span>
+                        )}
+                      </div>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: ww.color, background: ww.color + "12", padding: "3px 8px", borderRadius: 20, whiteSpace: "nowrap" as const }}>📝 {ww.questions} Q</span>
+                    </div>
+                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#0F172A", lineHeight: 1, marginBottom: 2 }}>{ww.price}</div>
+                    <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>One-time · unlimited access</div>
+                    <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 5, marginBottom: 14 }}>
+                      {["Practice questions", "Mock exam", "Flashcards", "Study notes", "Formula sheet", "AI Tutor"].map(f => (
+                        <span key={f} style={{ fontSize: 11, color: "#475569", background: "#F1F5F9", padding: "3px 8px", borderRadius: 20, fontWeight: 500 }}>{f}</span>
+                      ))}
+                    </div>
+                    <div style={{ fontSize: 11, color: "#16A34A", fontWeight: 600, marginBottom: 14 }}>✓ 15 questions free — no account needed</div>
+                  </div>
+                  <div style={{ marginTop: "auto", padding: "0 16px 16px" }}>
+                    <Link href={ww.quizHref}>
+                      <button style={{
+                        width: "100%",
+                        background: ww.color,
+                        color: "#FFFFFF",
+                        border: "none",
+                        borderRadius: 8,
+                        padding: "11px",
+                        fontSize: 13,
+                        fontWeight: 700,
+                        cursor: "pointer",
+                        fontFamily: "inherit",
+                        marginBottom: 8,
+                      }}>
+                        Start Studying →
+                      </button>
+                    </Link>
+                    <Link href="/pricing">
+                      <div style={{ textAlign: "center" as const, fontSize: 12, color: "#64748B", fontWeight: 600, cursor: "pointer" }}>View Plans →</div>
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
-
           </div>
 
           {/* Water Distribution */}
@@ -732,95 +768,125 @@ export default function WpiLanding() {
             <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
               🚰 Water Distribution
             </div>
-            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 14, flexWrap: "wrap" as const, justifyContent: "center" }}>
+            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 16, flexWrap: "wrap" as const, justifyContent: "center" }}>
               {DIST_CLASSES.map(cls => (
                 <div key={cls.level} className="wpi-pricing-card" style={{
-                  background: cls.bg,
-                  border: `2px solid ${cls.border}`,
-                  borderRadius: 18,
-                  padding: "22px 18px",
-                  width: 210,
-                  textAlign: "left" as const,
+                  background: "#FFFFFF",
+                  border: "1px solid #E2E8F0",
+                  borderRadius: 16,
+                  width: 220,
                   flexShrink: 0,
+                  display: "flex",
+                  flexDirection: "column" as const,
+                  overflow: "hidden",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
                 }}>
-                  {(cls as any).badge && (
-                    <div style={{ display: "inline-block", background: cls.color, color: "#FFFFFF", fontSize: 10, fontWeight: 700, borderRadius: 6, padding: "2px 8px", marginBottom: 8 }}>{(cls as any).badge}</div>
-                  )}
-                  <div style={{ fontSize: 10, fontWeight: 700, color: cls.color, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>WPI {cls.level} DIST</div>
-                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>{cls.price}</div>
-                  <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>Unlimited · {cls.questions} questions</div>
-                  <ul style={{ listStyle: "none", padding: 0, margin: "0 0 14px", display: "flex", flexDirection: "column" as const, gap: 5 }}>
-                    {["Practice questions", "Timed mock exam", "Flashcards", "Study notes", "AI Tutor", "Score history"].map(f => (
-                      <li key={f} style={{ fontSize: 12, color: "#0F172A", display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ color: cls.color, fontWeight: 700, fontSize: 11 }}>✓</span> {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href="/pricing">
-                    <button style={{
-                      width: "100%",
-                      background: cls.color,
-                      color: "#FFFFFF",
-                      border: "none",
-                      borderRadius: 8,
-                      padding: "10px",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                    }}>
-                      Get {cls.level} Dist Pass →
-                    </button>
-                  </Link>
+                  <div style={{ height: 4, background: cls.color, flexShrink: 0 }} />
+                  <div style={{ padding: "16px 16px 0" }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: cls.color, background: cls.color + "18", padding: "3px 8px", borderRadius: 5, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>WPI {cls.level} DIST</span>
+                        {(cls as any).badge && (
+                          <span style={{ fontSize: 9, fontWeight: 700, background: cls.color, color: "#fff", padding: "2px 6px", borderRadius: 4 }}>{(cls as any).badge}</span>
+                        )}
+                      </div>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: cls.color, background: cls.color + "12", padding: "3px 8px", borderRadius: 20, whiteSpace: "nowrap" as const }}>📝 {cls.questions} Q</span>
+                    </div>
+                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#0F172A", lineHeight: 1, marginBottom: 2 }}>{cls.price}</div>
+                    <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>One-time · unlimited access</div>
+                    <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 5, marginBottom: 14 }}>
+                      {["Practice questions", "Mock exam", "Flashcards", "Study notes", "AI Tutor"].map(f => (
+                        <span key={f} style={{ fontSize: 11, color: "#475569", background: "#F1F5F9", padding: "3px 8px", borderRadius: 20, fontWeight: 500 }}>{f}</span>
+                      ))}
+                    </div>
+                    <div style={{ fontSize: 11, color: "#16A34A", fontWeight: 600, marginBottom: 14 }}>✓ 15 questions free — no account needed</div>
+                  </div>
+                  <div style={{ marginTop: "auto", padding: "0 16px 16px" }}>
+                    <Link href={cls.quizHref}>
+                      <button style={{
+                        width: "100%",
+                        background: cls.color,
+                        color: "#FFFFFF",
+                        border: "none",
+                        borderRadius: 8,
+                        padding: "11px",
+                        fontSize: 13,
+                        fontWeight: 700,
+                        cursor: "pointer",
+                        fontFamily: "inherit",
+                        marginBottom: 8,
+                      }}>
+                        Start Studying →
+                      </button>
+                    </Link>
+                    <Link href="/pricing">
+                      <div style={{ textAlign: "center" as const, fontSize: 12, color: "#64748B", fontWeight: 600, cursor: "pointer" }}>View Plans →</div>
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
-           </div>
+          </div>
           {/* Wastewater Collection */}
           <div style={{ marginTop: 40 }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
               🚧 Wastewater Collection
             </div>
-            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 14, flexWrap: "wrap" as const, justifyContent: "center" }}>
+            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 16, flexWrap: "wrap" as const, justifyContent: "center" }}>
               {COLL_CLASSES.map(cls => (
                 <div key={cls.level} className="wpi-pricing-card" style={{
-                  background: cls.bg,
-                  border: `2px solid ${cls.border}`,
-                  borderRadius: 18,
-                  padding: "22px 18px",
-                  width: 210,
-                  textAlign: "left" as const,
+                  background: "#FFFFFF",
+                  border: "1px solid #E2E8F0",
+                  borderRadius: 16,
+                  width: 220,
                   flexShrink: 0,
+                  display: "flex",
+                  flexDirection: "column" as const,
+                  overflow: "hidden",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
                 }}>
-                  {(cls as any).badge && (
-                    <div style={{ display: "inline-block", background: cls.color, color: "#FFFFFF", fontSize: 10, fontWeight: 700, borderRadius: 6, padding: "2px 8px", marginBottom: 8 }}>{(cls as any).badge}</div>
-                  )}
-                  <div style={{ fontSize: 10, fontWeight: 700, color: cls.color, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>WPI {cls.level} COLL</div>
-                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>{cls.price}</div>
-                  <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>Unlimited · {cls.questions} questions</div>
-                  <ul style={{ listStyle: "none", padding: 0, margin: "0 0 14px", display: "flex", flexDirection: "column" as const, gap: 5 }}>
-                    {["Practice questions", "Timed mock exam", "Flashcards", "Study notes", "AI Tutor", "Score history"].map(f => (
-                      <li key={f} style={{ fontSize: 12, color: "#0F172A", display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ color: cls.color, fontWeight: 700, fontSize: 11 }}>✓</span> {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href="/pricing">
-                    <button style={{
-                      width: "100%",
-                      background: cls.color,
-                      color: "#FFFFFF",
-                      border: "none",
-                      borderRadius: 8,
-                      padding: "10px",
-                      fontSize: 13,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      fontFamily: "inherit",
-                    }}>
-                      Get {cls.level} Coll Pass →
-                    </button>
-                  </Link>
+                  <div style={{ height: 4, background: cls.color, flexShrink: 0 }} />
+                  <div style={{ padding: "16px 16px 0" }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: cls.color, background: cls.color + "18", padding: "3px 8px", borderRadius: 5, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>WPI {cls.level} COLL</span>
+                        {(cls as any).badge && (
+                          <span style={{ fontSize: 9, fontWeight: 700, background: cls.color, color: "#fff", padding: "2px 6px", borderRadius: 4 }}>{(cls as any).badge}</span>
+                        )}
+                      </div>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: cls.color, background: cls.color + "12", padding: "3px 8px", borderRadius: 20, whiteSpace: "nowrap" as const }}>📝 {cls.questions} Q</span>
+                    </div>
+                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#0F172A", lineHeight: 1, marginBottom: 2 }}>{cls.price}</div>
+                    <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>One-time · unlimited access</div>
+                    <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 5, marginBottom: 14 }}>
+                      {["Practice questions", "Mock exam", "Flashcards", "Study notes", "AI Tutor"].map(f => (
+                        <span key={f} style={{ fontSize: 11, color: "#475569", background: "#F1F5F9", padding: "3px 8px", borderRadius: 20, fontWeight: 500 }}>{f}</span>
+                      ))}
+                    </div>
+                    <div style={{ fontSize: 11, color: "#16A34A", fontWeight: 600, marginBottom: 14 }}>✓ 15 questions free — no account needed</div>
+                  </div>
+                  <div style={{ marginTop: "auto", padding: "0 16px 16px" }}>
+                    <Link href={cls.quizHref}>
+                      <button style={{
+                        width: "100%",
+                        background: cls.color,
+                        color: "#FFFFFF",
+                        border: "none",
+                        borderRadius: 8,
+                        padding: "11px",
+                        fontSize: 13,
+                        fontWeight: 700,
+                        cursor: "pointer",
+                        fontFamily: "inherit",
+                        marginBottom: 8,
+                      }}>
+                        Start Studying →
+                      </button>
+                    </Link>
+                    <Link href="/pricing">
+                      <div style={{ textAlign: "center" as const, fontSize: 12, color: "#64748B", fontWeight: 600, cursor: "pointer" }}>View Plans →</div>
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>

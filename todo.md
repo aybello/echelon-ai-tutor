@@ -691,3 +691,4 @@
 - [x] Add subscription section to Account.tsx (tier, province, renewal date, manage/cancel link)
 - [x] Apply CourseCard redesign to Pricing page individual course cards
 - [x] Add 25 WQA questions to bring bank from 475 to 500
+- [x] Apply CourseCard redesign to WpiLanding.tsx individual pass cards
