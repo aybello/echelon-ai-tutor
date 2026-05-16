@@ -17,7 +17,6 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { FadeUp, FadeIn, SlideLeft, StaggerContainer, StaggerItem } from "@/components/animations";
 import { useCountUp } from "@/hooks/useCountUp";
 import React from "react";
-import CheckoutContactModal from "@/components/CheckoutContactModal";
 
 // Animated stat component using count-up hook
 function AnimatedStat({ value, suffix = "", label }: { value: number; suffix?: string; label: string }) {
@@ -898,33 +897,8 @@ type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[n
 function CourseCard({ course }: { course: CourseType }) {
   const [expanded, setExpanded] = useState(false);
   const [notifyOpen, setNotifyOpen] = useState(false);
-  const [showContactModal, setShowContactModal] = useState(false);
-  const createSession = trpc.stripe.createCheckoutSession.useMutation({
-    onSuccess: (data) => { if (data.url) window.location.href = data.url; },
-    onError: () => alert("Something went wrong. Please try again."),
-  });
-  function handleGetPass() {
-    const pk = (course as any).productKey;
-    if (!pk) return;
-    setShowContactModal(true);
-  }
-  function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
-    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
-    const pk = (course as any).productKey;
-    createSession.mutate({ productKey: pk, email: contact.email, name: contact.name, phone: contact.phone, origin: window.location.origin });
-  }
   return (
     <>
-      {showContactModal && (
-        <CheckoutContactModal
-          productName={(course as any).title ?? course.code}
-          priceLabel={`CA$${(course as any).price}`}
-          prefillEmail={(() => { try { return localStorage.getItem("echelon_trial_email") ?? ""; } catch { return ""; } })()}
-          onSubmit={handleContactSubmit}
-          onClose={() => setShowContactModal(false)}
-          isLoading={createSession.isPending}
-        />
-      )}
       <div
       className="course-card"
       style={{
@@ -1040,23 +1014,23 @@ function CourseCard({ course }: { course: CourseType }) {
               Start Studying →
             </button>
           </Link>
-          {/* Get Pass — secondary CTA */}
+          {/* View Plans — links to /pricing subscription section */}
           {(course as any).productKey && (
-            <button
-              onClick={handleGetPass}
-              disabled={createSession.isPending}
-              style={{
-                width: "100%", padding: "10px",
-                background: "transparent",
-                color: "#1D4ED8", border: "1.5px solid #1D4ED8",
-                borderRadius: 10, fontSize: 12, fontWeight: 700,
-                cursor: createSession.isPending ? "not-allowed" : "pointer",
-                fontFamily: "inherit", opacity: createSession.isPending ? 0.6 : 1,
-                transition: "opacity 0.15s",
-              }}
-            >
-              {createSession.isPending ? "Redirecting…" : `Get Pass — CA$${(course as any).price} →`}
-            </button>
+            <Link href="/pricing">
+              <button
+                style={{
+                  width: "100%", padding: "10px",
+                  background: "transparent",
+                  color: "#1D4ED8", border: "1.5px solid #1D4ED8",
+                  borderRadius: 10, fontSize: 12, fontWeight: 700,
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                  transition: "opacity 0.15s",
+                }}
+              >
+                View Plans →
+              </button>
+            </Link>
           )}
 
 
@@ -2245,8 +2219,8 @@ export default function Landing() {
           <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
             {[
               {
-                q: "Is there a time limit on my access?",
-                a: "No. Your access never expires. Pay once and practice as many times as you need — whether that takes two weeks or two years. There are no subscriptions, no renewals, and no expiry dates.",
+                q: "How does the subscription work?",
+                a: "Echelon uses an annual subscription model. You subscribe to a class tier (Class 1 through Class 4, or All-Access) for your province, and you get full access to all courses in that tier for 12 months. Your subscription renews automatically each year — you can cancel anytime before the renewal date. Prefer to buy just one course? Individual practice passes are also available on the pricing page.",
               },
               {
                 q: "Do the practice questions match the real exam?",
