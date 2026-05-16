@@ -4,10 +4,10 @@
  *
  * Pricing strategy: career-accelerator positioning
  *   OIT / OIT-WW:       $59
- *   Class 1 / WPI I:    $149
- *   Class 2 / WPI II:   $199
- *   Class 3 / WPI III:  $349
- *   Class 4 / WPI IV:   $499
+   * Class 1 / WPI I:    $149
+   *   Class 2 / WPI II:   $199
+   *   Class 3 / WPI III:  $249
+   *   Class 4 / WPI IV:   $299
  *   WQA:                $179
  */
 
@@ -102,14 +102,14 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     key: "wpi-class1-water",
     name: "WPI Class I Water Treatment Practice Pass",
     description: "WPI Class I Water Treatment — 502 questions across 5 modules: Treatment Process, Equipment O&M, Lab Analysis, Source Water, and Safety & Admin. Aligned with WPI Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 9900,
+    priceCAD: 14900,
     examTypes: ["wpi-class1-water"],
   },
   {
     key: "wpi-class2-water",
     name: "WPI Class II Water Treatment Practice Pass",
     description: "WPI Class II Water Treatment — 501 questions across 5 advanced modules: Advanced Treatment Processes, System Design & Engineering, Advanced Laboratory & Monitoring, Source Water & Environmental, and Management, Regulations & Safety. Aligned with WPI Class II Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 14900,
+    priceCAD: 19900,
     examTypes: ["wpi-class2-water"],
   },
   {
@@ -130,14 +130,14 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     key: "wpi-class1-wastewater",
     name: "WPI Class I Wastewater Treatment Practice Pass",
     description: "WPI Class I Wastewater Treatment — 500 questions across 5 modules: Wastewater Collection Systems, Primary & Secondary Treatment, Solids Handling & Biosolids, Laboratory & Monitoring, Safety & Regulations. Aligned with WPI Class I Wastewater Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 9900,
+    priceCAD: 14900,
     examTypes: ["wpi-class1-wastewater"],
   },
   {
     key: "wpi-class2-wastewater",
     name: "WPI Class II Wastewater Treatment Practice Pass",
     description: "WPI Class II Wastewater Treatment — 501 questions across 5 advanced modules: Secondary Treatment, Nutrient Removal, Biosolids Management, Advanced Treatment, and Process Control & Safety. Aligned with WPI Class II Wastewater Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 14900,
+    priceCAD: 19900,
     examTypes: ["wpi-class2-wastewater"],
   },
   {
@@ -159,14 +159,14 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     key: "wpi-class1-water-coll",
     name: "WPI Class I Wastewater Collection Practice Pass",
     description: "WPI Class I Wastewater Collection — 150 questions covering collection system components, lift station operation & maintenance, confined space safety, basic hydraulics & calculations, and environmental & public health. Aligned with WPI Class I Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 9900,
+    priceCAD: 14900,
     examTypes: ["wpi-class1-water-coll"],
   },
   {
     key: "wpi-class2-water-coll",
     name: "WPI Class II Wastewater Collection Practice Pass",
     description: "WPI Class II Wastewater Collection — 150 questions covering advanced collection system design, intermediate lift station operations, system maintenance & rehabilitation, hydraulics & flow analysis, and regulatory compliance & reporting. Aligned with WPI Class II Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 14900,
+    priceCAD: 19900,
     examTypes: ["wpi-class2-water-coll"],
   },
   {
@@ -188,14 +188,14 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     key: "wpi-class1-water-dist",
     name: "WPI Class I Water Distribution Practice Pass",
     description: "WPI Class I Water Distribution — 150 questions covering distribution system basics, pipe materials, pressure & flow fundamentals, chlorine residual maintenance, valve & hydrant operation, and regulations & safety. Aligned with WPI Class I Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 9900,
+    priceCAD: 14900,
     examTypes: ["wpi-class1-water-dist"],
   },
   {
     key: "wpi-class2-water-dist",
     name: "WPI Class II Water Distribution Practice Pass",
     description: "WPI Class II Water Distribution — 136 questions covering hydraulic analysis & pressure zone design, water quality management in distribution, cross-connection control & backflow prevention, system maintenance & rehabilitation, and regulatory compliance. Aligned with WPI Class II Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
-    priceCAD: 14900,
+    priceCAD: 19900,
     examTypes: ["wpi-class2-water-dist"],
   },
   {

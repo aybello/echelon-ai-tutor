@@ -692,3 +692,5 @@
 - [x] Apply CourseCard redesign to Pricing page individual course cards
 - [x] Add 25 WQA questions to bring bank from 475 to 500
 - [x] Apply CourseCard redesign to WpiLanding.tsx individual pass cards
+- [x] Fix WpiLanding.tsx crash (module load failure after card redesign edit)
+- [x] Update WPI individual pass prices to new pricing (CA$149/199/249/299) across WpiLanding.tsx, Pricing.tsx, products.ts
