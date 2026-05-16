@@ -8,7 +8,6 @@ import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { loginWithReturnPath } from "@/const";
 import { isPreviewModeActive } from "@/lib/previewMode";
-import CheckoutContactModal from "@/components/CheckoutContactModal";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -119,7 +118,6 @@ export default function PurchaseGate({
   // All hooks must be declared before any early returns
   const [email] = useState(getStoredEmail);
   const [localAccess] = useState(() => isLocallyPurchased(examType));
-  const [showContactModal, setShowContactModal] = useState(false);
   const [, navigate] = useLocation();
   const { isAuthenticated } = useAuth();
 
@@ -138,16 +136,6 @@ export default function PurchaseGate({
   if (isPreviewModeActive()) {
     return <>{children}</>;
   }
-
-  // Stripe checkout session mutation
-  const createSession = trpc.stripe.createCheckoutSession.useMutation({
-    onSuccess: (data) => {
-      if (data.url) window.location.href = data.url;
-    },
-    onError: () => {
-      alert("Something went wrong starting checkout. Please try again.");
-    },
-  });
 
   // Server-side access check — runs when logged in (for owner bypass) or when email is stored
   const { data: accessData, isLoading } = trpc.stripe.checkAccess.useQuery(
@@ -173,36 +161,9 @@ export default function PurchaseGate({
 
   const featureList = features ?? DEFAULT_FEATURES[productKey] ?? FALLBACK_FEATURES;
 
-  function handleBuyNow() {
-    // Show pre-checkout contact modal to collect name, email, phone
-    setShowContactModal(true);
-  }
-
-  function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
-    // Save email to localStorage for access restoration
-    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
-    createSession.mutate({
-      productKey,
-      email: contact.email,
-      name: contact.name,
-      phone: contact.phone,
-      origin: window.location.origin,
-    });
-  }
-
   // No access — show paywall with blurred preview of actual content behind it
   return (
     <>
-    {showContactModal && (
-      <CheckoutContactModal
-        productName={productName}
-        priceLabel={`CA$${price}`}
-        prefillEmail={email}
-        onSubmit={handleContactSubmit}
-        onClose={() => setShowContactModal(false)}
-        isLoading={createSession.isPending}
-      />
-    )}
     <style>{`
       @media (max-width: 480px) {
         .pg-outer { padding: 16px 12px !important; justify-content: flex-start !important; padding-top: 40px !important; }
@@ -340,7 +301,7 @@ export default function PurchaseGate({
           Unlock {productName}
         </h2>
         <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
-          One-time payment · No subscription · Access never expires
+          Subscribe for full access — plans from CA$99/yr
         </p>
 
         {/* Feature bullets */}
@@ -364,69 +325,30 @@ export default function PurchaseGate({
           </ul>
         </div>
 
-        {/* Price */}
-        <div
-          style={{
-            fontSize: 36,
-            fontWeight: 900,
-            color: "#0F172A",
-            lineHeight: 1,
-            marginBottom: 4,
-          }}
-        >
-          CA${price}
-        </div>
-        <div style={{ fontSize: 12, color: "#94A3B8", marginBottom: 20 }}>
-          one-time · no subscription · instant access
-        </div>
-
         {/* CTAs */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <button
-            onClick={handleBuyNow}
-            disabled={createSession.isPending}
-            style={{
-              width: "100%",
-              padding: "13px 0",
-              borderRadius: 10,
-              background: createSession.isPending
-                ? "#93C5FD"
-                : "linear-gradient(135deg, #1D4ED8, #0E7490)",
-              color: "#fff",
-              border: "none",
-              fontSize: 15,
-              fontWeight: 800,
-              cursor: createSession.isPending ? "not-allowed" : "pointer",
-              fontFamily: "inherit",
-              letterSpacing: "0.01em",
-            }}
-          >
-            {createSession.isPending
-              ? "Redirecting to checkout…"
-              : `Get Full Access — CA$${price} →`}
-          </button>
-          <p style={{ fontSize: 11, color: "#64748B", margin: "0 0 4px", textAlign: "center" }}>
-            Secure checkout via Stripe
-          </p>
-
           <Link href="/pricing">
             <button
               style={{
                 width: "100%",
-                padding: "11px 0",
+                padding: "13px 0",
                 borderRadius: 10,
-                background: "#fff",
-                color: "#475569",
-                border: "1.5px solid #E2E8F0",
-                fontSize: 13,
-                fontWeight: 600,
+                background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                color: "#fff",
+                border: "none",
+                fontSize: 15,
+                fontWeight: 800,
                 cursor: "pointer",
                 fontFamily: "inherit",
+                letterSpacing: "0.01em",
               }}
             >
-              📋 View All Courses & Pricing
+              View Plans & Subscribe →
             </button>
           </Link>
+          <p style={{ fontSize: 11, color: "#64748B", margin: "0 0 4px", textAlign: "center" }}>
+            Annual subscription · Cancel anytime · Instant access
+          </p>
 
           <Link href="/quiz">
             <button

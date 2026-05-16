@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
-import CheckoutContactModal from "@/components/CheckoutContactModal";
 import FeedbackModal from "@/components/FeedbackModal";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -55,7 +54,6 @@ export default function QuizGate({
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [showContactModal, setShowContactModal] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   // ── Feedback modal state ────────────────────────────────────────────────
@@ -74,16 +72,6 @@ export default function QuizGate({
     };
   }, []);
 
-  // Checkout session mutation (used when productKey is provided)
-  const createSession = trpc.stripe.createCheckoutSession.useMutation({
-    onSuccess: (data) => {
-      if (data.url) window.location.href = data.url;
-    },
-    onError: () => {
-      alert("Something went wrong starting checkout. Please try again.");
-    },
-  });
-
   // Free email unlock mutation (only used when no productKey)
   const unlockMutation = trpc.trial.unlock.useMutation({
     onSuccess: () => {
@@ -99,23 +87,6 @@ export default function QuizGate({
       setTimeout(() => { onUnlocked(); }, 1400);
     },
   });
-
-  function handleStripeClick() {
-    if (!productKey) return;
-    setShowContactModal(true);
-  }
-
-  function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
-    if (!productKey) return;
-    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
-    createSession.mutate({
-      productKey,
-      email: contact.email,
-      name: contact.name,
-      phone: contact.phone,
-      origin: window.location.origin,
-    });
-  }
 
   function validateEmail(val: string): boolean {
     if (!val.trim()) { setEmailError("Please enter your email address."); return false; }
@@ -159,16 +130,6 @@ export default function QuizGate({
   // ── Main gate modal ────────────────────────────────────────────────────────
   const gateContent = (
     <>
-      {showContactModal && productKey && (
-        <CheckoutContactModal
-          productName={productName ?? productKey}
-          priceLabel={priceLabel}
-          prefillEmail={(() => { try { return localStorage.getItem("echelon_trial_email") ?? ""; } catch { return ""; } })()}
-          onSubmit={handleContactSubmit}
-          onClose={() => setShowContactModal(false)}
-          isLoading={createSession.isPending}
-        />
-      )}
       <div style={{
         position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
         background: "rgba(15,23,42,0.55)",
@@ -244,15 +205,9 @@ export default function QuizGate({
           {hasPaidOption ? (
             <>
               <div style={{ background: "linear-gradient(135deg, #EFF6FF 0%, #F0FDFA 100%)", border: "2px solid #BFDBFE", borderRadius: 16, padding: "18px 18px 16px", marginBottom: 14, textAlign: "left" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10 }}>
-                  <div>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: "#1D4ED8", letterSpacing: "0.08em", marginBottom: 4 }}>RECOMMENDED</div>
-                    <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>{productName}</div>
-                  </div>
-                  <div style={{ textAlign: "right", flexShrink: 0, marginLeft: 12 }}>
-                    <div style={{ fontSize: 20, fontWeight: 900, color: "#1D4ED8", fontFamily: "Sora, sans-serif" }}>{priceLabel}</div>
-                    <div style={{ fontSize: 10, color: "#64748B" }}>one-time</div>
-                  </div>
+                <div style={{ marginBottom: 10 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#1D4ED8", letterSpacing: "0.08em", marginBottom: 4 }}>UNLOCK FULL ACCESS</div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>{productName}</div>
                 </div>
                 <ul style={{ margin: "0 0 14px", padding: "0 0 0 0", listStyle: "none" }}>
                   {(paidFeatures ?? [
@@ -267,28 +222,28 @@ export default function QuizGate({
                     </li>
                   ))}
                 </ul>
-                <button
-                  onClick={handleStripeClick}
-                  disabled={createSession.isPending}
-                  style={{
-                    width: "100%",
-                    padding: "13px 20px",
-                    borderRadius: 12,
-                    border: "none",
-                    background: createSession.isPending ? "#93C5FD" : "linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%)",
-                    color: "#fff",
-                    fontSize: 15,
-                    fontWeight: 800,
-                    cursor: createSession.isPending ? "not-allowed" : "pointer",
-                    fontFamily: "Sora, sans-serif",
-                    letterSpacing: "0.01em",
-                    touchAction: "manipulation",
-                  }}
-                >
-                  {createSession.isPending ? "Redirecting to checkout…" : `Get Full Access — ${priceLabel} →`}
-                </button>
+                <Link href="/pricing">
+                  <button
+                    style={{
+                      width: "100%",
+                      padding: "13px 20px",
+                      borderRadius: 12,
+                      border: "none",
+                      background: "linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%)",
+                      color: "#fff",
+                      fontSize: 15,
+                      fontWeight: 800,
+                      cursor: "pointer",
+                      fontFamily: "Sora, sans-serif",
+                      letterSpacing: "0.01em",
+                      touchAction: "manipulation",
+                    }}
+                  >
+                    View Plans & Subscribe →
+                  </button>
+                </Link>
                 <p style={{ fontSize: 11, color: "#64748B", marginTop: 8, textAlign: "center" }}>
-                  Secure checkout via Stripe · One-time payment · Instant access
+                  Annual subscription · Cancel anytime · Instant access
                 </p>
               </div>
 

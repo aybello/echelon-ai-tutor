@@ -156,12 +156,12 @@ const faqs = [
   {
     question: "How is Echelon priced compared to other prep courses?",
     answer:
-      "Echelon starts at CA$49 for OIT and CA$99 for Class 1 — less than most textbooks. We keep prices accessible because we want every operator to be able to prepare properly, regardless of budget. Higher class levels (3 and 4) are priced at CA$249–$299 to reflect the larger question banks and more complex content.",
+      "Echelon offers annual subscriptions starting at CA$99/yr for Class 1 All-Access — less than most textbooks and far cheaper than in-person prep courses. Each tier unlocks all 4 tracks for that class level (water treatment, wastewater treatment, water distribution, and wastewater collection) for your province. The All-Access Pass at CA$349/yr unlocks every course on the platform.",
   },
   {
-    question: "Do the Practice Passes expire?",
+    question: "How does the subscription work?",
     answer:
-      "No. Your access never expires. Pay once, practice as many times as you need until you pass.",
+      "Subscriptions are annual and province-scoped. Ontario subscribers get EOCP tracks; Western Canada (BC, AB, SK, MB) subscribers get WPI tracks. Your access is active for 12 months from the date of purchase and renews automatically unless cancelled. You can cancel anytime from your account page.",
   },
   {
     question: "Are the questions based on real exam content?",
@@ -181,17 +181,17 @@ const faqs = [
   {
     question: "Can I get a refund?",
     answer:
-      "We offer a 7-day money-back guarantee if you're not satisfied. Given our low price points, we're confident you'll find the value — but if not, email support@echeloninstitute.ca and we'll make it right.",
+      "We offer a 7-day money-back guarantee if you're not satisfied. Email support@echeloninstitute.ca and we'll make it right.",
   },
   {
     question: "Which certification levels are available right now?",
     answer:
-      "All 27 courses are live. Ontario (11 courses): OIT Water (CA$49), OIT Wastewater (CA$49), Class 1–4 Water Treatment (CA$99–$299), Class 1–4 Wastewater Treatment (CA$99–$299), and WQA (CA$149). WPI — BC, AB, SK, MB (16 courses): Class I–IV Water Treatment, Class I–IV Wastewater Treatment, Class I–IV Water Distribution, and Class I–IV Wastewater Collection — all at CA$99–$299. Every course includes 500+ practice questions, a timed mock exam, AI Tutor, formula sheet, and score history.",
+      "All courses are live across 4 tracks: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Ontario (EOCP): OIT, Class 1–4 Water Treatment, Class 1–4 Wastewater Treatment, and WQA. WPI — BC, AB, SK, MB: Class I–IV Water Treatment, Class I–IV Wastewater Treatment, Class I–IV Water Distribution, and Class I–IV Wastewater Collection. Subscriptions start at CA$99/yr and unlock all tracks for your class level and province.",
   },
   {
-    question: "Is the OIT course really free?",
+    question: "Is there a free trial?",
     answer:
-      "Yes. The OIT Water Treatment course gives you full access to 500+ practice questions across 10 modules, the AI Tutor, flashcards, and a formula sheet — completely free, no account required. We believe every aspiring operator should be able to start their career without financial barriers.",
+      "Yes. Every course gives you 15 free practice questions with no account required. The OIT Water Treatment course also offers a free email-unlock to continue beyond 15 questions. This lets you experience the question quality and AI Tutor before subscribing.",
   },
   {
     question: "What provinces does Echelon cover?",
