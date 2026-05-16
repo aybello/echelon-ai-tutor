@@ -7,6 +7,7 @@ import { useProvince } from "@/hooks/useProvince";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { useAuth } from "@/_core/hooks/useAuth";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
 
 type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access";
@@ -934,6 +935,17 @@ export default function Pricing() {
 
   const [showIndividual, setShowIndividual] = useState(false);
 
+  // Active subscriptions — used to show "Your Current Plan" badge
+  const { user } = useAuth();
+  const { data: mySubsData } = trpc.stripe.getMySubscriptions.useQuery(
+    { email: user?.email ?? undefined },
+    { enabled: !!user?.email }
+  );
+  // Build a Set of "tier:province" keys for O(1) lookup
+  const activePlanKeys = new Set(
+    (mySubsData?.subscriptions ?? []).map(s => `${s.tier}:${s.province}`)
+  );
+
   return (
     <div className="pricing-page">
       <style>{PRICING_STYLES}</style>
@@ -1054,50 +1066,78 @@ export default function Pricing() {
             const activeTiers = subProvince === "western" ? SUB_TIERS_WPI : SUB_TIERS_ONTARIO;
             return (
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: 16 }}>
-                {activeTiers.map(tier => (
-                  <div
-                    key={tier.tier}
-                    style={{
-                      background: tier.highlight ? "linear-gradient(135deg, #F5F3FF, #EDE9FE)" : "#fff",
-                      border: tier.highlight ? "2px solid #A78BFA" : "1.5px solid #E2E8F0",
-                      borderRadius: 14,
-                      padding: "20px 18px",
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 12,
-                      position: "relative",
-                    }}
-                  >
-                    {tier.badge && (
-                      <div style={{
-                        position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)",
-                        background: "#7C3AED", color: "#fff", fontSize: 10, fontWeight: 800,
-                        padding: "3px 12px", borderRadius: 20, letterSpacing: "0.05em", whiteSpace: "nowrap",
-                      }}>
-                        {tier.badge}
+                {activeTiers.map(tier => {
+                  const isActivePlan = activePlanKeys.has(`${tier.tier}:${subProvince}`);
+                  return (
+                    <div
+                      key={tier.tier}
+                      style={{
+                        background: isActivePlan
+                          ? "linear-gradient(135deg, #F0FDF4, #DCFCE7)"
+                          : tier.highlight ? "linear-gradient(135deg, #F5F3FF, #EDE9FE)" : "#fff",
+                        border: isActivePlan
+                          ? "2px solid #86EFAC"
+                          : tier.highlight ? "2px solid #A78BFA" : "1.5px solid #E2E8F0",
+                        borderRadius: 14,
+                        padding: "20px 18px",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 12,
+                        position: "relative",
+                      }}
+                    >
+                      {isActivePlan ? (
+                        <div style={{
+                          position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)",
+                          background: "#16A34A", color: "#fff", fontSize: 10, fontWeight: 800,
+                          padding: "3px 12px", borderRadius: 20, letterSpacing: "0.05em", whiteSpace: "nowrap",
+                        }}>
+                          ✓ Your Current Plan
+                        </div>
+                      ) : tier.badge ? (
+                        <div style={{
+                          position: "absolute", top: -10, left: "50%", transform: "translateX(-50%)",
+                          background: "#7C3AED", color: "#fff", fontSize: 10, fontWeight: 800,
+                          padding: "3px 12px", borderRadius: 20, letterSpacing: "0.05em", whiteSpace: "nowrap",
+                        }}>
+                          {tier.badge}
+                        </div>
+                      ) : null}
+                      <div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: isActivePlan ? "#15803D" : "#7C3AED", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>
+                          {tier.label} All-Access
+                        </div>
+                        <div style={{ fontSize: 26, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
+                          {tier.price}
+                          <span style={{ fontSize: 13, fontWeight: 500, color: "#64748B" }}>/yr</span>
+                        </div>
+                        <div style={{ fontSize: 12, color: "#64748B", marginTop: 4 }}>{tier.tagline}</div>
                       </div>
-                    )}
-                    <div>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>
-                        {tier.label} All-Access
-                      </div>
-                      <div style={{ fontSize: 26, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
-                        {tier.price}
-                        <span style={{ fontSize: 13, fontWeight: 500, color: "#64748B" }}>/yr</span>
-                      </div>
-                      <div style={{ fontSize: 12, color: "#64748B", marginTop: 4 }}>{tier.tagline}</div>
+                      <ul style={{ margin: 0, padding: "0 0 0 14px", fontSize: 12, color: "#475569", lineHeight: 1.7 }}>
+                        {tier.features.map(f => <li key={f}>{f}</li>)}
+                      </ul>
+                      {isActivePlan ? (
+                        <Link href="/account">
+                          <button style={{
+                            padding: "11px 0", borderRadius: 10,
+                            background: "linear-gradient(135deg, #16A34A, #15803D)",
+                            color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
+                            cursor: "pointer", fontFamily: "inherit", width: "100%", marginTop: "auto",
+                          }}>
+                            Manage Subscription →
+                          </button>
+                        </Link>
+                      ) : (
+                        <SubscriptionCheckoutButton
+                          tier={tier.tier}
+                          province={subProvince}
+                          label={`Subscribe — ${tier.price}/yr`}
+                          priceLabel={`${tier.price}/yr`}
+                        />
+                      )}
                     </div>
-                    <ul style={{ margin: 0, padding: "0 0 0 14px", fontSize: 12, color: "#475569", lineHeight: 1.7 }}>
-                      {tier.features.map(f => <li key={f}>{f}</li>)}
-                    </ul>
-                    <SubscriptionCheckoutButton
-                      tier={tier.tier}
-                      province={subProvince}
-                      label={`Subscribe — ${tier.price}/yr`}
-                      priceLabel={`${tier.price}/yr`}
-                    />
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             );
           })()}

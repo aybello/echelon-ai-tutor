@@ -187,6 +187,228 @@ export async function sendPurchaseConfirmationEmail(
   }
 }
 
+export interface SubscriptionConfirmationPayload {
+  email: string;
+  tierLabel: string;   // e.g. "Class 2 All-Access"
+  provinceLabel: string; // e.g. "Ontario (EOCP)"
+  currentPeriodEnd: Date;
+  quizPath: string;    // first quiz to land on
+}
+
+/**
+ * Sends a subscription activation confirmation email to the subscriber.
+ * Called from the webhook on customer.subscription.created.
+ */
+export async function sendSubscriptionConfirmationEmail(
+  payload: SubscriptionConfirmationPayload
+): Promise<void> {
+  const { email, tierLabel, provinceLabel, currentPeriodEnd, quizPath } = payload;
+
+  let transporter: nodemailer.Transporter;
+  if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
+    transporter = createTransporter();
+  } else {
+    const testAccount = await nodemailer.createTestAccount();
+    transporter = nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false,
+      auth: { user: testAccount.user, pass: testAccount.pass },
+    });
+  }
+
+  const siteUrl = "https://echeloninstitute.ca";
+  const renewalDate = currentPeriodEnd.toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" });
+  const quizUrl = `${siteUrl}${quizPath}`;
+  const accountUrl = `${siteUrl}/account`;
+
+  const mail = {
+    from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
+    to: email,
+    subject: `Your ${tierLabel} subscription is active — Echelon Institute`,
+    text: [
+      `Your subscription is now active!`,
+      ``,
+      `Plan: ${tierLabel}`,
+      `Province: ${provinceLabel}`,
+      `Renews: ${renewalDate}`,
+      ``,
+      `Start studying: ${quizUrl}`,
+      `Manage your subscription: ${accountUrl}`,
+      ``,
+      `Questions? Reply to this email or contact abello@echeloninstitute.ca`,
+    ].join("\n"),
+    html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,Helvetica,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+        <tr>
+          <td style="background:linear-gradient(135deg,#7C3AED 0%,#4F46E5 100%);border-radius:12px 12px 0 0;padding:32px 32px 28px;text-align:center;">
+            <div style="font-size:40px;margin-bottom:12px;">🎓</div>
+            <h1 style="color:#ffffff;margin:0 0 8px;font-size:26px;font-weight:800;">Subscription Activated!</h1>
+            <p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">Your annual plan is now active and ready to use.</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#ffffff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;">
+            <div style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:10px;padding:18px 22px;margin-bottom:28px;">
+              <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#7C3AED;letter-spacing:0.06em;text-transform:uppercase;">Subscription Details</p>
+              <p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#0F172A;">${tierLabel}</p>
+              <p style="margin:0 0 4px;font-size:14px;color:#475569;">${provinceLabel}</p>
+              <p style="margin:0;font-size:13px;color:#64748B;">Renews automatically on ${renewalDate}</p>
+            </div>
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+              <tr>
+                <td style="padding-right:8px;width:50%;">
+                  <a href="${quizUrl}" style="display:block;background:linear-gradient(135deg,#7C3AED,#4F46E5);color:#ffffff;text-decoration:none;text-align:center;padding:14px 12px;border-radius:8px;font-size:14px;font-weight:700;">
+                    Start Studying Now
+                  </a>
+                </td>
+                <td style="padding-left:8px;width:50%;">
+                  <a href="${accountUrl}" style="display:block;background:#0F172A;color:#ffffff;text-decoration:none;text-align:center;padding:14px 12px;border-radius:8px;font-size:14px;font-weight:700;">
+                    Manage Subscription
+                  </a>
+                </td>
+              </tr>
+            </table>
+            <ul style="margin:0 0 28px;padding-left:20px;">
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Unlimited practice questions for all included exam types</li>
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">AI Tutor with step-by-step explanations</li>
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Timed mock exams and score history</li>
+              <li style="font-size:13px;color:#475569;line-height:1.5;">Flashcards and module study notes</li>
+            </ul>
+            <div style="border-top:1px solid #E2E8F0;padding-top:20px;text-align:center;">
+              <p style="margin:0 0 6px;font-size:13px;color:#64748B;">Questions? Reply to this email or reach us at</p>
+              <p style="margin:0;font-size:13px;"><a href="mailto:abello@echeloninstitute.ca" style="color:#7C3AED;text-decoration:none;">abello@echeloninstitute.ca</a></p>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
+    `,
+  };
+
+  const info = await transporter.sendMail(mail);
+  if (!ENV.smtpHost) {
+    console.log("[Subscription Email] Preview URL:", nodemailer.getTestMessageUrl(info));
+  } else {
+    console.log(`[Subscription Email] Activation sent to ${email}`);
+  }
+}
+
+/**
+ * Sends a renewal confirmation email when an annual subscription renews.
+ * Called from the webhook on invoice.payment_succeeded.
+ */
+export async function sendSubscriptionRenewalEmail(
+  payload: SubscriptionConfirmationPayload
+): Promise<void> {
+  const { email, tierLabel, provinceLabel, currentPeriodEnd, quizPath } = payload;
+
+  let transporter: nodemailer.Transporter;
+  if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
+    transporter = createTransporter();
+  } else {
+    const testAccount = await nodemailer.createTestAccount();
+    transporter = nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false,
+      auth: { user: testAccount.user, pass: testAccount.pass },
+    });
+  }
+
+  const siteUrl = "https://echeloninstitute.ca";
+  const renewalDate = currentPeriodEnd.toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" });
+  const quizUrl = `${siteUrl}${quizPath}`;
+  const accountUrl = `${siteUrl}/account`;
+
+  const mail = {
+    from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
+    to: email,
+    subject: `Your ${tierLabel} subscription has renewed — Echelon Institute`,
+    text: [
+      `Your subscription has been renewed for another year.`,
+      ``,
+      `Plan: ${tierLabel}`,
+      `Province: ${provinceLabel}`,
+      `Next renewal: ${renewalDate}`,
+      ``,
+      `Continue studying: ${quizUrl}`,
+      `Manage your subscription: ${accountUrl}`,
+      ``,
+      `To cancel before the next renewal, visit your account page.`,
+      `Questions? Reply to this email or contact abello@echeloninstitute.ca`,
+    ].join("\n"),
+    html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,Helvetica,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+        <tr>
+          <td style="background:linear-gradient(135deg,#0F172A 0%,#1E293B 100%);border-radius:12px 12px 0 0;padding:32px 32px 28px;text-align:center;">
+            <div style="font-size:40px;margin-bottom:12px;">🔄</div>
+            <h1 style="color:#ffffff;margin:0 0 8px;font-size:26px;font-weight:800;">Subscription Renewed</h1>
+            <p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">Another year of full access is now active.</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#ffffff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;">
+            <div style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:10px;padding:18px 22px;margin-bottom:28px;">
+              <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#15803D;letter-spacing:0.06em;text-transform:uppercase;">Renewal Confirmed</p>
+              <p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#0F172A;">${tierLabel}</p>
+              <p style="margin:0 0 4px;font-size:14px;color:#475569;">${provinceLabel}</p>
+              <p style="margin:0;font-size:13px;color:#64748B;">Next renewal: ${renewalDate}</p>
+            </div>
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+              <tr>
+                <td style="padding-right:8px;width:50%;">
+                  <a href="${quizUrl}" style="display:block;background:linear-gradient(135deg,#1D4ED8,#0E7490);color:#ffffff;text-decoration:none;text-align:center;padding:14px 12px;border-radius:8px;font-size:14px;font-weight:700;">
+                    Continue Studying
+                  </a>
+                </td>
+                <td style="padding-left:8px;width:50%;">
+                  <a href="${accountUrl}" style="display:block;background:#F1F5F9;color:#0F172A;text-decoration:none;text-align:center;padding:14px 12px;border-radius:8px;font-size:14px;font-weight:700;border:1px solid #E2E8F0;">
+                    Manage Subscription
+                  </a>
+                </td>
+              </tr>
+            </table>
+            <p style="margin:0 0 12px;font-size:13px;color:#64748B;line-height:1.6;">
+              To cancel before the next renewal date, visit your account page and click "Manage Subscription".
+            </p>
+            <div style="border-top:1px solid #E2E8F0;padding-top:20px;text-align:center;">
+              <p style="margin:0 0 6px;font-size:13px;color:#64748B;">Questions? Reply to this email or reach us at</p>
+              <p style="margin:0;font-size:13px;"><a href="mailto:abello@echeloninstitute.ca" style="color:#1D4ED8;text-decoration:none;">abello@echeloninstitute.ca</a></p>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
+    `,
+  };
+
+  const info = await transporter.sendMail(mail);
+  if (!ENV.smtpHost) {
+    console.log("[Subscription Email] Preview URL:", nodemailer.getTestMessageUrl(info));
+  } else {
+    console.log(`[Subscription Email] Renewal sent to ${email}`);
+  }
+}
+
 /**
  * Sends a contact form submission to the Echelon Institute inbox
  * AND sends an auto-reply confirmation to the submitter.

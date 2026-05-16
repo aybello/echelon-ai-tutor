@@ -6,6 +6,7 @@ import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import ExamDateTracker from "@/components/ExamDateTracker";
+import { toast } from "sonner";
 
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -84,11 +85,35 @@ export default function Account() {
   const [emailError, setEmailError] = useState("");
   const [restored, setRestored] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [portalLoading, setPortalLoading] = useState(false);
 
   const getPurchases = trpc.stripe.getMyPurchases.useQuery(
     { email: submittedEmail ?? "" },
     { enabled: !!submittedEmail, retry: false }
   );
+
+  const getSubscriptions = trpc.stripe.getMySubscriptions.useQuery(
+    { email: submittedEmail ?? "" },
+    { enabled: !!submittedEmail, retry: false }
+  );
+
+  const createBillingPortal = trpc.stripe.createBillingPortalSession.useMutation({
+    onSuccess: (data) => {
+      if (data?.url) window.open(data.url, "_blank");
+    },
+    onError: (err) => {
+      toast.error("Could not open billing portal", { description: err.message });
+    },
+  });
+
+  const handleManageSubscription = () => {
+    if (!submittedEmail) return;
+    setPortalLoading(true);
+    createBillingPortal.mutate(
+      { email: submittedEmail, origin: window.location.origin },
+      { onSettled: () => setPortalLoading(false) }
+    );
+  };
 
   // Flashcard mastery stats — load all progress for this email
   const getFlashcardProgress = trpc.flashcard.getAllProgress.useQuery(
@@ -295,6 +320,65 @@ export default function Account() {
                     {copiedEmail ? "Copied!" : "📋 Copy email"}
                   </button>
                 </div>
+
+                {/* ── Active Subscriptions ── */}
+                {(getSubscriptions.data?.subscriptions ?? []).length > 0 && (
+                  <div style={{ marginBottom: 24 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
+                      🔄 Active Annual Subscriptions
+                    </div>
+                    <div className="account-card" style={{ overflow: "hidden" }}>
+                      {(getSubscriptions.data?.subscriptions ?? []).map((sub) => {
+                        const renewalDate = new Date(sub.currentPeriodEnd).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" });
+                        const tierLabel = {
+                          "class1": "Class 1 All-Access",
+                          "class2": "Class 2 All-Access",
+                          "class3": "Class 3 All-Access",
+                          "class4": "Class 4 All-Access",
+                          "all-access": "All-Access Pass",
+                        }[sub.tier] ?? sub.tier;
+                        const provinceLabel = sub.province === "western" ? "Western Canada (WPI)" : "Ontario (EOCP)";
+                        const daysLeft = Math.max(0, Math.ceil((new Date(sub.currentPeriodEnd).getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
+                        return (
+                          <div key={sub.id} style={{ padding: "20px 24px", borderBottom: "1px solid #0F172A" }}>
+                            <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                                <div style={{ width: 46, height: 46, borderRadius: 12, background: "linear-gradient(135deg, #7C3AED, #4F46E5)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, flexShrink: 0 }}>🔑</div>
+                                <div>
+                                  <p style={{ color: "#F1F5F9", fontWeight: 800, fontSize: 14, margin: "0 0 3px" }}>{tierLabel}</p>
+                                  <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 4px" }}>{provinceLabel}</p>
+                                  <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+                                    <span style={{ fontSize: 11, color: "#22C55E", fontWeight: 700, background: "rgba(34,197,94,0.12)", border: "1px solid rgba(34,197,94,0.25)", borderRadius: 6, padding: "2px 8px" }}>Active</span>
+                                    <span style={{ fontSize: 11, color: "#94A3B8" }}>Renews {renewalDate}</span>
+                                    <span style={{ fontSize: 11, color: daysLeft < 30 ? "#F59E0B" : "#64748B" }}>{daysLeft} days remaining</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <button
+                                onClick={handleManageSubscription}
+                                disabled={portalLoading}
+                                style={{
+                                  padding: "9px 18px", borderRadius: 10, border: "1.5px solid #7C3AED",
+                                  background: portalLoading ? "#1E293B" : "rgba(124,58,237,0.12)",
+                                  color: portalLoading ? "#64748B" : "#A78BFA",
+                                  fontSize: 12, fontWeight: 700, cursor: portalLoading ? "not-allowed" : "pointer",
+                                  fontFamily: "inherit", whiteSpace: "nowrap", flexShrink: 0,
+                                }}
+                              >
+                                {portalLoading ? "Opening..." : "Manage Subscription →"}
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                      <div style={{ padding: "12px 24px", background: "rgba(124,58,237,0.06)", borderTop: "1px solid #1E293B" }}>
+                        <p style={{ fontSize: 11, color: "#64748B", margin: 0 }}>
+                          Your subscription unlocks all included exam types below. To cancel, update payment, or view invoices, click "Manage Subscription" above.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 {/* Ontario passes */}
                 {ontarioPasses.length > 0 && (

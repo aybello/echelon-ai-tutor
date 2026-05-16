@@ -682,3 +682,10 @@
 - [x] Create SubscriptionSuccess.tsx page
 - [x] Wire /subscription-success route in App.tsx
 - [x] Write 10 vitest tests for subscription flow (checkAccess, province scoping, getMySubscriptions)
+
+## Subscription UX Fixes (May 2026)
+- [x] Fix broken redirect routes in SubscriptionSuccess.tsx (class2/3/4 point to 404 paths)
+- [x] Add Stripe Billing Portal procedure (createBillingPortalSession) to stripeRouter.ts
+- [x] Send subscription confirmation email on customer.subscription.created in webhook.ts
+- [x] Send renewal confirmation email on invoice.payment_succeeded in webhook.ts
+- [x] Add subscription section to Account.tsx (tier, province, renewal date, manage/cancel link)

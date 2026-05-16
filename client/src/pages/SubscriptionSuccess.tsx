@@ -15,12 +15,20 @@ const TIER_LABELS: Record<string, string> = {
   "all-access": "All-Access Pass",
 };
 
-const TIER_QUIZ_PATHS: Record<string, string> = {
+const TIER_QUIZ_PATHS_ONTARIO: Record<string, string> = {
   "class1": "/quiz",
-  "class2": "/class2-water-quiz",
-  "class3": "/class3-water-quiz",
-  "class4": "/class4-water-quiz",
+  "class2": "/class2-water",
+  "class3": "/class3-water",
+  "class4": "/class4-water",
   "all-access": "/quiz",
+};
+
+const TIER_QUIZ_PATHS_WPI: Record<string, string> = {
+  "class1": "/wpi-class1-water",
+  "class2": "/wpi-class2-water",
+  "class3": "/wpi-class3-water",
+  "class4": "/wpi-class4-water",
+  "all-access": "/wpi-class1-water",
 };
 
 export default function SubscriptionSuccess() {
@@ -37,7 +45,9 @@ export default function SubscriptionSuccess() {
   const tier = params.get("tier") ?? "all-access";
   const province = params.get("province") ?? "ontario";
   const tierLabel = TIER_LABELS[tier] ?? "All-Access";
-  const quizPath = TIER_QUIZ_PATHS[tier] ?? "/quiz";
+  const quizPath = province === "western"
+    ? (TIER_QUIZ_PATHS_WPI[tier] ?? "/wpi-class1-water")
+    : (TIER_QUIZ_PATHS_ONTARIO[tier] ?? "/quiz");
   const provinceLabel = province === "ontario" ? "Ontario (EOCP)" : "Western Canada (WPI)";
 
   useEffect(() => {

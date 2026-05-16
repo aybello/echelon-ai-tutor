@@ -4,10 +4,11 @@ import { stripe } from "./stripe";
 import { getDb } from "../db";
 import { purchases, subscriptions, users } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
-import { sendPurchaseConfirmationEmail } from "../email";
+import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail } from "../email";
+import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI } from "./subscriptionProducts";
 import { PRODUCT_STUDY_PATHS } from "./products";
 import { eq, and } from "drizzle-orm";
-import type { SubscriptionTier, SubscriptionProvince } from "./subscriptionProducts";
+
 
 export function registerStripeWebhook(app: Express) {
   // MUST use raw body parser for Stripe signature verification
@@ -177,8 +178,8 @@ export function registerStripeWebhook(app: Express) {
           const db = await getDb();
           if (!db) throw new Error("Database unavailable");
 
-          const tier = sub.metadata?.subscription_tier as SubscriptionTier | undefined;
-          const province = sub.metadata?.subscription_province as SubscriptionProvince | undefined;
+          const tier = sub.metadata?.subscription_tier as ST | undefined;
+          const province = sub.metadata?.subscription_province as SP | undefined;
           const stripeSubscriptionId = sub.id;
           const stripeCustomerId = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
           const status = sub.status === "active" ? "active" : sub.status === "past_due" ? "past_due" : "cancelled";
@@ -227,6 +228,21 @@ export function registerStripeWebhook(app: Express) {
               title: `New Subscription: ${tier} (${province})`,
               content: `${email} subscribed to ${tier} for ${province}. Expires: ${currentPeriodEnd.toISOString()}`,
             });
+            // Send activation confirmation email (non-blocking)
+            const subTierLabel = TIER_LABELS[tier as ST] ?? tier;
+            const subProvinceLabel = PROVINCE_LABELS[province as SP] ?? province;
+            const subQuizPath = province === "western"
+              ? (TIER_QUIZ_PATHS_WPI[tier] ?? "/wpi-class1-water")
+              : (TIER_QUIZ_PATHS_ONTARIO[tier] ?? "/quiz");
+            sendSubscriptionConfirmationEmail({
+              email,
+              tierLabel: subTierLabel,
+              provinceLabel: subProvinceLabel,
+              currentPeriodEnd,
+              quizPath: subQuizPath,
+            }).catch(err => {
+              console.error("[Stripe Webhook] Failed to send subscription confirmation email:", err.message);
+            });
           } else {
             await db
               .update(subscriptions)
@@ -269,6 +285,33 @@ export function registerStripeWebhook(app: Express) {
               .set({ status: "active", currentPeriodEnd })
               .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId));
             console.log(`[Stripe Webhook] Subscription renewed: ${stripeSubscriptionId} new end=${currentPeriodEnd.toISOString()}`);
+            // Send renewal email (non-blocking)
+            try {
+              const subRow = await db
+                .select({ email: subscriptions.email, tier: subscriptions.tier, province: subscriptions.province })
+                .from(subscriptions)
+                .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId))
+                .limit(1);
+              if (subRow.length > 0) {
+                const { email: subEmail, tier: subTier, province: subProvince } = subRow[0];
+                const renewTierLabel = TIER_LABELS[subTier as ST] ?? subTier;
+                const renewProvinceLabel = PROVINCE_LABELS[subProvince as SP] ?? subProvince;
+                const renewQuizPath = subProvince === "western"
+                  ? (TIER_QUIZ_PATHS_WPI[subTier] ?? "/wpi-class1-water")
+                  : (TIER_QUIZ_PATHS_ONTARIO[subTier] ?? "/quiz");
+                sendSubscriptionRenewalEmail({
+                  email: subEmail,
+                  tierLabel: renewTierLabel,
+                  provinceLabel: renewProvinceLabel,
+                  currentPeriodEnd,
+                  quizPath: renewQuizPath,
+                }).catch(err => {
+                  console.error("[Stripe Webhook] Failed to send renewal email:", err.message);
+                });
+              }
+            } catch (renewEmailErr: any) {
+              console.error("[Stripe Webhook] Error fetching sub row for renewal email:", renewEmailErr.message);
+            }
           } catch (err: any) {
             console.error("[Stripe Webhook] Error processing invoice.payment_succeeded:", err.message);
           }

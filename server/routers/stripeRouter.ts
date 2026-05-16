@@ -3,7 +3,7 @@ import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { stripe } from "../stripe/stripe";
 import { ALL_PRODUCTS, getAllUnlockedExamTypes, PRODUCT_STUDY_PATHS } from "../stripe/products";
 import {
-  SUBSCRIPTION_PRODUCTS,
+  getSubscriptionProduct,
   getAllSubscriptionExamTypes,
   TIER_LABELS,
   PROVINCE_LABELS,
@@ -218,7 +218,7 @@ export const stripeRouter = router({
       origin: z.string().url(),
     }))
     .mutation(async ({ input, ctx }) => {
-      const product = SUBSCRIPTION_PRODUCTS.find(p => p.tier === input.tier);
+      const product = getSubscriptionProduct(input.tier as SubscriptionTier, input.province as SubscriptionProvince);
       if (!product) throw new Error("Subscription tier not found");
 
       const userEmail = ctx.user?.email ?? input.email;
@@ -286,6 +286,43 @@ export const stripeRouter = router({
       );
 
       return { subscriptions: rows, unlockedExamTypes };
+    }),
+
+  /**
+   * Create a Stripe Billing Portal session so subscribers can manage their
+   * subscription (cancel, update payment method, view invoices) without
+   * needing to contact support.
+   */
+  createBillingPortalSession: publicProcedure
+    .input(z.object({
+      email: z.string().email().optional(),
+      origin: z.string().url(),
+    }))
+    .mutation(async ({ input, ctx }) => {
+      const email = ctx.user?.email ?? input.email;
+      if (!email) throw new Error("Email required to access billing portal");
+
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+
+      // Find the Stripe customer ID from the most recent active subscription
+      const rows = await db
+        .select({ stripeCustomerId: subscriptions.stripeCustomerId })
+        .from(subscriptions)
+        .where(eq(subscriptions.email, email))
+        .limit(10);
+
+      const stripeCustomerId = rows.find(r => r.stripeCustomerId)?.stripeCustomerId;
+      if (!stripeCustomerId) {
+        throw new Error("No Stripe customer found for this email. Please contact support@echeloninstitute.ca");
+      }
+
+      const portalSession = await stripe.billingPortal.sessions.create({
+        customer: stripeCustomerId,
+        return_url: `${input.origin}/account`,
+      });
+
+      return { url: portalSession.url };
     }),
 
   /** Check if a specific exam type is unlocked for an email */
