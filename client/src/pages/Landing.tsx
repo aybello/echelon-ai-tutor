@@ -911,147 +911,165 @@ const STATS = [
 type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number] | (typeof WPI_WATER_COURSES)[number] | (typeof WPI_WASTEWATER_COURSES)[number] | (typeof WPI_WATER_DIST_COURSES)[number] | (typeof WPI_WATER_COLL_COURSES)[number];
 
 function CourseCard({ course }: { course: CourseType }) {
-  const [expanded, setExpanded] = useState(false);
   const [notifyOpen, setNotifyOpen] = useState(false);
+  const quizHref = (course as any).quizHref ?? (
+    course.code === "OIT-WW" ? "/oit-ww" :
+    course.code === "CL1-WW" ? "/class1-ww" :
+    course.code === "CL2-WW" ? "/class2-ww" :
+    course.code === "CL1-W" ? "/class1-water" :
+    course.code === "CL2-W" ? "/class2-water" :
+    course.code === "CL3-W" ? "/class3-water" :
+    course.code === "CL3-WW" ? "/class3-ww" :
+    course.code === "CL4-W" ? "/class4-water" :
+    course.code === "CL4-WW" ? "/class4-ww" :
+    course.code === "WQA" ? "/wqa" : "/quiz"
+  );
+  const subFromPrice = (course as any).province === "wpi" ? "CA$149/yr" : "CA$99/yr";
   return (
     <>
       <div
-      className="course-card"
-      style={{
-        background: "#FFFFFF",
-        border: `1.5px solid ${course.border}`,
-        borderRadius: 16,
-        padding: "24px",
-        position: "relative",
-        transition: "box-shadow 0.2s, transform 0.2s",
-        cursor: "pointer",
-      }}
-      onMouseEnter={e => {
-        (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.10)";
-        (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)";
-      }}
-      onMouseLeave={e => {
-        (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-        (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-      }}
-    >
-      {course.badge && (
-        <div style={{
-          position: "absolute", top: 16, right: 16,
-          background: course.badgeColor, color: "#fff",
-          fontSize: 10, fontWeight: 700, padding: "3px 10px", borderRadius: 20,
-          letterSpacing: "0.05em", textTransform: "uppercase",
-        }}>
-          {course.badge}
-        </div>
-      )}
-      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-        <span style={{
-          background: course.bg, color: course.color,
-          fontSize: 10, fontWeight: 700, padding: "3px 10px", borderRadius: 6,
-          letterSpacing: "0.05em", textTransform: "uppercase",
-        }}>
-          {course.code}
-        </span>
-        <span style={{ color: "#64748B", fontSize: 11 }}>{course.duration}</span>
-      </div>
-      <h3 style={{ fontSize: 18, fontWeight: 700, color: "#0F172A", margin: "0 0 2px 0", fontFamily: "Sora, sans-serif" }}>
-        {course.title}
-      </h3>
-      <p style={{ fontSize: 12, color: course.color, fontWeight: 600, margin: "0 0 10px 0" }}>{course.subtitle}</p>
-      <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.6, margin: "0 0 16px 0" }}>{course.description}</p>
-
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, flexWrap: "wrap", gap: 8 }}>
-        <div>
-          <span style={{ fontSize: 14, fontWeight: 700, color: "#1D4ED8", fontFamily: "Sora, sans-serif" }}>Included in subscription</span>
-          <span style={{ fontSize: 11, color: "#64748B", display: "block", marginTop: 2 }}>{(course as any).province === "wpi" ? "from CA$149/yr" : "from CA$99/yr"} · View Plans →</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#F8FAFC", borderRadius: 8, padding: "6px 12px" }}>
-          <span style={{ fontSize: 11, color: "#64748B" }}>📝 {course.questions} questions</span>
-        </div>
-      </div>
-
-      {!course.comingSoon && (
-        <div style={{
-          display: "flex", alignItems: "center", gap: 6,
-          background: "#F0FDF4", border: "1.5px solid #86EFAC",
-          borderRadius: 8, padding: "7px 12px", marginBottom: 10,
-        }}>
-          <span style={{ fontSize: 13 }}>🎁</span>
-          <span style={{ fontSize: 12, fontWeight: 700, color: "#15803D" }}>First 15 questions free — no account needed</span>
-        </div>
-      )}
-      <button
-        onClick={() => setExpanded(!expanded)}
+        className="course-card"
         style={{
-          width: "100%", padding: "8px", borderRadius: 8,
-          border: `1px solid ${course.border}`, background: "transparent",
-          color: course.color, fontSize: 12, fontWeight: 600,
-          cursor: "pointer", marginBottom: 12, fontFamily: "inherit",
-          transition: "background 0.15s",
+          background: "#FFFFFF",
+          border: `1.5px solid ${course.border}`,
+          borderRadius: 16,
+          overflow: "hidden",
+          position: "relative",
+          transition: "box-shadow 0.2s, transform 0.2s",
+          display: "flex",
+          flexDirection: "column",
+        }}
+        onMouseEnter={e => {
+          (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.10)";
+          (e.currentTarget as HTMLDivElement).style.transform = "translateY(-3px)";
+        }}
+        onMouseLeave={e => {
+          (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
+          (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
         }}
       >
-        {expanded ? "▲ Hide Topics" : "▼ View Topics"}
-      </button>
+        {/* Coloured top accent bar */}
+        <div style={{ height: 4, background: course.color, flexShrink: 0 }} />
 
-      {expanded && (
-        <ul style={{ margin: "0 0 16px 0", padding: "0 0 0 16px" }}>
-          {course.topics.map(t => (
-            <li key={t} style={{ fontSize: 12, color: "#475569", marginBottom: 4 }}>{t}</li>
-          ))}
-        </ul>
-      )}
+        {/* Card body */}
+        <div style={{ padding: "20px 20px 0", flex: 1, display: "flex", flexDirection: "column" }}>
 
-      {course.comingSoon ? (
-        <button
-          onClick={() => setNotifyOpen(true)}
-          style={{
-            width: "100%", padding: "12px",
-            background: "linear-gradient(135deg, #7C3AED, #6D28D9)",
-            color: "#fff", border: "none", borderRadius: 10,
-            fontSize: 13, fontWeight: 700, cursor: "pointer",
-            fontFamily: "inherit", transition: "opacity 0.15s",
-          }}
-        >
-          🔔 Notify Me When Available
-        </button>
-      ) : (
-        <>
-          {/* Get Pass — direct Stripe checkout */}
-          {/* Start Studying — primary CTA */}
-          <Link href={(course as any).quizHref ?? (course.code === "OIT-WW" ? "/oit-ww" : course.code === "CL1-WW" ? "/class1-ww" : course.code === "CL2-WW" ? "/class2-ww" : course.code === "CL1-W" ? "/class1-water" : course.code === "CL2-W" ? "/class2-water" : course.code === "CL3-W" ? "/class3-water" : course.code === "CL3-WW" ? "/class3-ww" : course.code === "CL4-W" ? "/class4-water" : course.code === "CL4-WW" ? "/class4-ww" : course.code === "WQA" ? "/wqa" : "/quiz")}>
-            <button className="btn-pulse" style={{
-              width: "100%", padding: "12px",
-              background: `linear-gradient(135deg, ${course.color}, ${course.color}cc)`,
-              color: "#fff", border: "none", borderRadius: 10,
-              fontSize: 13, fontWeight: 700, cursor: "pointer",
-              fontFamily: "inherit", marginBottom: 8,
+          {/* Header row: code tag + question count + badge */}
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+            <span style={{
+              background: course.bg, color: course.color,
+              fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 6,
+              letterSpacing: "0.06em", textTransform: "uppercase", flexShrink: 0,
             }}>
-              Start Studying →
-            </button>
-          </Link>
-          {/* View Plans — links to /pricing subscription section */}
+              {course.code}
+            </span>
+            <span style={{ fontSize: 11, color: "#94A3B8", flexShrink: 0 }}>{course.duration}</span>
+            <span style={{ flex: 1 }} />
+            <span style={{
+              fontSize: 11, fontWeight: 600, color: course.color,
+              background: course.bg, borderRadius: 6, padding: "2px 8px", flexShrink: 0,
+            }}>
+              {course.questions} Q
+            </span>
+            {course.badge && (
+              <span style={{
+                background: course.badgeColor, color: "#fff",
+                fontSize: 9, fontWeight: 700, padding: "3px 8px", borderRadius: 20,
+                letterSpacing: "0.05em", textTransform: "uppercase", flexShrink: 0,
+              }}>
+                {course.badge}
+              </span>
+            )}
+          </div>
+
+          {/* Title + subtitle */}
+          <h3 style={{ fontSize: 17, fontWeight: 800, color: "#0F172A", margin: "0 0 3px", fontFamily: "Sora, sans-serif", lineHeight: 1.3 }}>
+            {course.title}
+          </h3>
+          <p style={{ fontSize: 12, color: course.color, fontWeight: 600, margin: "0 0 10px" }}>{course.subtitle}</p>
+
+          {/* Description */}
+          <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.6, margin: "0 0 14px" }}>{course.description}</p>
+
+          {/* Topic pills */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 16 }}>
+            {course.topics.map(t => (
+              <span key={t} style={{
+                fontSize: 11, color: course.color, background: course.bg,
+                borderRadius: 20, padding: "3px 9px", fontWeight: 500,
+              }}>{t}</span>
+            ))}
+          </div>
+
+          {/* Spacer pushes CTA to bottom */}
+          <div style={{ flex: 1 }} />
+
+          {/* Subscription line */}
           {(course as any).productKey && (
-            <Link href="/pricing">
-              <button
-                style={{
-                  width: "100%", padding: "10px",
-                  background: "transparent",
-                  color: "#1D4ED8", border: "1.5px solid #1D4ED8",
-                  borderRadius: 10, fontSize: 12, fontWeight: 700,
-                  cursor: "pointer",
-                  fontFamily: "inherit",
-                  transition: "opacity 0.15s",
-                }}
-              >
-                View Plans →
-              </button>
-            </Link>
+            <div style={{
+              display: "flex", alignItems: "center", justifyContent: "space-between",
+              borderTop: "1px solid #F1F5F9", paddingTop: 12, marginBottom: 12,
+            }}>
+              <div>
+                <span style={{ fontSize: 12, fontWeight: 700, color: "#1D4ED8" }}>Included in subscription</span>
+                <span style={{ fontSize: 11, color: "#94A3B8", display: "block", marginTop: 1 }}>from {subFromPrice}</span>
+              </div>
+              {!course.comingSoon && (
+                <span style={{
+                  fontSize: 11, fontWeight: 600, color: "#15803D",
+                  background: "#F0FDF4", border: "1px solid #86EFAC",
+                  borderRadius: 6, padding: "3px 8px",
+                }}>15 free ✓</span>
+              )}
+            </div>
           )}
+        </div>
 
-
-        </>
-      )}
+        {/* CTA footer */}
+        <div style={{ padding: "0 20px 20px" }}>
+          {course.comingSoon ? (
+            <button
+              onClick={() => setNotifyOpen(true)}
+              style={{
+                width: "100%", padding: "12px",
+                background: "linear-gradient(135deg, #7C3AED, #6D28D9)",
+                color: "#fff", border: "none", borderRadius: 10,
+                fontSize: 13, fontWeight: 700, cursor: "pointer",
+                fontFamily: "inherit",
+              }}
+            >
+              🔔 Notify Me When Available
+            </button>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              <Link href={quizHref}>
+                <button className="btn-pulse" style={{
+                  width: "100%", padding: "12px",
+                  background: course.color,
+                  color: "#fff", border: "none", borderRadius: 10,
+                  fontSize: 13, fontWeight: 700, cursor: "pointer",
+                  fontFamily: "inherit",
+                }}>
+                  Start Studying →
+                </button>
+              </Link>
+              {(course as any).productKey && (
+                <Link href="/pricing">
+                  <button style={{
+                    width: "100%", padding: "9px",
+                    background: "transparent",
+                    color: "#64748B", border: "1px solid #E2E8F0",
+                    borderRadius: 10, fontSize: 12, fontWeight: 600,
+                    cursor: "pointer", fontFamily: "inherit",
+                  }}>
+                    View Plans →
+                  </button>
+                </Link>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
 
       {notifyOpen && (
         <NotifyModal
@@ -1060,7 +1078,6 @@ function CourseCard({ course }: { course: CourseType }) {
           onClose={() => setNotifyOpen(false)}
         />
       )}
-    </div>
     </>
   );
 }
