@@ -425,7 +425,7 @@ export default function WpiLanding() {
                         Start Studying →
                       </button>
                     </Link>
-                    <Link href="/pricing">
+                    <Link href="/pricing?tab=western">
                       <div style={{ textAlign: "center" as const, fontSize: 12, color: "#64748B", fontWeight: 600, cursor: "pointer" }}>View Plans →</div>
                     </Link>
                   </div>
@@ -531,7 +531,7 @@ export default function WpiLanding() {
                 Try Free Now →
               </button>
             </Link>
-            <Link href="/pricing">
+            <Link href="/pricing?tab=western">
               <button style={{
                 background: "rgba(255,255,255,0.1)", color: "#FFFFFF",
                 border: "1px solid rgba(255,255,255,0.25)", borderRadius: 10,
