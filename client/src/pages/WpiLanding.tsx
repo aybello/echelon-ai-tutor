@@ -1,5 +1,5 @@
 // WPI Landing Page — BC / AB / SK / MB water & wastewater operator exam prep
-// Redesigned for coherence: Hero → Province → Curriculum overview → Pricing → FAQ → Footer CTA
+// Rebuilt: Hero → Province table → Tabbed track selector → FAQ → Footer CTA
 
 import { useState } from "react";
 import { Link } from "wouter";
@@ -7,220 +7,168 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import LandingNav from "@/components/LandingNav";
 import { useAuth } from "@/_core/hooks/useAuth";
 
+// ── Data ──────────────────────────────────────────────────────────────────────
+
 const PROVINCES = [
-  {
-    code: "BC",
-    name: "British Columbia",
-    flag: "🏔️",
-    certBody: "EOCP",
-    certBodyFull: "Environmental Operators Certification Program",
-    examName: "EOCP Water Treatment, Wastewater & Distribution Level I–IV",
-    levels: ["Level I", "Level II", "Level III", "Level IV"],
-    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution", "🔩 Collection"],
-    color: "#0369A1",
-    bg: "#E0F2FE",
-  },
-  {
-    code: "AB",
-    name: "Alberta",
-    flag: "🛢️",
-    certBody: "AWWOA",
-    certBodyFull: "Alberta Water & Wastewater Operators Association",
-    examName: "AWWOA Water Treatment, Wastewater & Distribution Class I–IV",
-    levels: ["Class I", "Class II", "Class III", "Class IV"],
-    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution", "🔩 Collection"],
-    color: "#B45309",
-    bg: "#FEF3C7",
-  },
-  {
-    code: "SK",
-    name: "Saskatchewan",
-    flag: "🌾",
-    certBody: "SAHO",
-    certBodyFull: "Saskatchewan Association of Health Organizations",
-    examName: "SAHO Water Treatment, Wastewater & Distribution Class I–IV",
-    levels: ["Class I", "Class II", "Class III", "Class IV"],
-    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution", "🔩 Collection"],
-    color: "#15803D",
-    bg: "#DCFCE7",
-  },
-  {
-    code: "MB",
-    name: "Manitoba",
-    flag: "🦬",
-    certBody: "MWWA",
-    certBodyFull: "Manitoba Water & Wastewater Association",
-    examName: "MWWA Water Treatment, Wastewater & Distribution Class I–IV",
-    levels: ["Class I", "Class II", "Class III", "Class IV"],
-    tracks: ["💧 Water Treatment", "♻️ Wastewater", "🚰 Distribution", "🔩 Collection"],
-    color: "#7C3AED",
-    bg: "#EDE9FE",
-  },
+  { code: "BC", name: "British Columbia", body: "EOCP",  url: "https://www.eocp.ca" },
+  { code: "AB", name: "Alberta",          body: "AWWOA", url: "https://www.awwoa.ab.ca" },
+  { code: "SK", name: "Saskatchewan",     body: "SAHO",  url: "https://www.saho.org" },
+  { code: "MB", name: "Manitoba",         body: "MWWA",  url: "https://www.mwwa.net" },
 ];
 
-// Compact curriculum: each class has a short topic list (not exhaustive module cards)
-const CURRICULUM = [
+type ClassEntry = {
+  label: string;
+  code: string;
+  questions: number;
+  price: string;
+  color: string;
+  quizHref: string;
+  badge?: string;
+  topics: string[];
+};
+
+type Track = {
+  id: string;
+  label: string;
+  icon: string;
+  classes: ClassEntry[];
+};
+
+const TRACKS: Track[] = [
   {
-    track: "💧 Water Treatment",
+    id: "water",
+    label: "Water Treatment",
+    icon: "💧",
     classes: [
       {
-        label: "Class I",
-        questions: 502,
-        color: "#0E7490",
+        label: "Class I", code: "WPI-W1", questions: 502, price: "CA$149", color: "#0E7490",
         quizHref: "/wpi-class1-water",
-        topics: ["Treatment processes (coagulation, filtration, disinfection)", "Equipment O&M (pumps, valves, chemical feed)", "Lab analysis (turbidity, pH, chlorine residual)", "Source water & watershed protection", "Safety, WHMIS, record keeping"],
+        topics: ["Source water & intake", "Coagulation & flocculation", "Sedimentation & filtration", "Disinfection & CT values", "Basic regulations & safety"],
       },
       {
-        label: "Class II",
-        questions: 598,
-        color: "#0F766E",
+        label: "Class II", code: "WPI-W2", questions: 598, price: "CA$199", color: "#0F766E",
         quizHref: "/wpi-class2-water",
-        topics: ["Advanced treatment (ozone, UV, GAC, membranes)", "System design & hydraulics", "Advanced lab & SCADA monitoring", "Source water & environmental management", "Regulations, DWQMS, staff management"],
+        topics: ["Advanced treatment processes", "System design & hydraulics", "Lab monitoring & analysis", "Source water management", "Regulatory compliance"],
       },
       {
-        label: "Class III",
-        questions: 531,
-        color: "#1D4ED8",
+        label: "Class III", code: "WPI-W3", questions: 531, price: "CA$249", color: "#1D4ED8",
         quizHref: "/wpi-class3-water",
-        topics: ["Advanced process control & optimization", "Hydraulics, pump stations, distribution modelling", "Disinfection by-products & emerging contaminants", "Source protection plans & climate resilience", "DWQMS auditing & regulatory compliance"],
+        topics: ["LSI, CT values & membranes", "Lime softening & advanced processes", "SCADA & automation", "Water quality monitoring programs", "Senior operator responsibilities"],
       },
       {
-        label: "Class IV",
-        questions: 592,
-        color: "#7C3AED",
-        quizHref: "/wpi-class4-water",
-        topics: ["Full plant optimization & process modelling", "Advanced water quality & DBP management", "Emergency response & business continuity", "Asset management, capital planning, leadership", "DWQMS, regulatory reporting, enforcement"],
+        label: "Class IV", code: "WPI-W4", questions: 592, price: "CA$299", color: "#7C3AED",
+        quizHref: "/wpi-class4-water", badge: "👑 Chief Operator",
+        topics: ["Full system management", "Asset management & capital planning", "Advanced water quality & DWQMS", "Strategic regulatory compliance", "Emergency response & resilience"],
       },
     ],
   },
   {
-    track: "♻️ Wastewater Treatment",
+    id: "wastewater",
+    label: "Wastewater Treatment",
+    icon: "🌊",
     classes: [
       {
-        label: "Class I",
-        questions: 594,
-        color: "#B45309",
+        label: "Class I", code: "WPI-WW1", questions: 594, price: "CA$149", color: "#B45309",
         quizHref: "/wpi-class1-wastewater",
-        topics: ["Wastewater collection & lift stations", "Primary & secondary treatment (activated sludge, trickling filters)", "Solids handling, digestion & biosolids", "Lab & monitoring (BOD, TSS, DO)", "Safety, WHMIS, H₂S monitoring"],
+        topics: ["Collection systems & pipe materials", "Primary & secondary treatment", "Solids handling & biosolids", "Lab & monitoring", "Safety & regulations"],
       },
       {
-        label: "Class II",
-        questions: 599,
-        color: "#0F766E",
+        label: "Class II", code: "WPI-WW2", questions: 599, price: "CA$199", color: "#0F766E",
         quizHref: "/wpi-class2-wastewater",
-        topics: ["Advanced secondary treatment & nutrient removal", "Biological nitrogen & phosphorus removal", "Advanced biosolids management", "SCADA & process monitoring", "Regulatory compliance & effluent standards"],
+        topics: ["Secondary treatment processes", "Nutrient removal (N & P)", "Biosolids management", "Advanced treatment", "Process control & safety"],
       },
       {
-        label: "Class III",
-        questions: 607,
-        color: "#1D4ED8",
+        label: "Class III", code: "WPI-WW3", questions: 607, price: "CA$249", color: "#1D4ED8",
         quizHref: "/wpi-class3-wastewater",
-        topics: ["Biological nutrient removal (BNR)", "Membrane bioreactors (MBR)", "Industrial pretreatment programs", "Advanced biosolids & resource recovery", "Emergency response & plant management"],
+        topics: ["Advanced biological processes", "Tertiary treatment & reuse", "Sludge digestion & dewatering", "SCADA & instrumentation", "Regulatory reporting"],
       },
       {
-        label: "Class IV",
-        questions: 606,
-        color: "#6D28D9",
-        quizHref: "/wpi-class4-wastewater",
-        topics: ["Advanced process control & resource recovery", "Emerging technologies & innovation", "Plant management, leadership & budgeting", "Strategic emergency response planning", "Regulatory compliance & enforcement"],
+        label: "Class IV", code: "WPI-WW4", questions: 606, price: "CA$299", color: "#6D28D9",
+        quizHref: "/wpi-class4-wastewater", badge: "👑 Chief Operator",
+        topics: ["Utility management & leadership", "Advanced process engineering", "Environmental compliance", "Capital planning & asset management", "Emerging technologies"],
       },
     ],
   },
   {
-    track: "🚰 Water Distribution",
+    id: "distribution",
+    label: "Water Distribution",
+    icon: "🔧",
     classes: [
       {
-        label: "Class I",
-        questions: 501,
-        color: "#0369A1",
+        label: "Class I", code: "WPI-D1", questions: 501, price: "CA$149", color: "#0369A1",
         quizHref: "/wpi-class1-water-dist",
-        topics: ["Distribution system basics & pipe materials", "Pressure & flow fundamentals", "Chlorine residual maintenance", "Valve & hydrant operation", "Regulations & safety"],
+        topics: ["Distribution system basics", "Pipe materials & fittings", "Pressure & flow fundamentals", "Chlorine residual maintenance", "Valve & hydrant operation"],
       },
       {
-        label: "Class II",
-        questions: 500,
-        color: "#0F766E",
+        label: "Class II", code: "WPI-D2", questions: 500, price: "CA$199", color: "#0F766E",
         quizHref: "/wpi-class2-water-dist",
-        topics: ["Hydraulic analysis & pressure zone design", "Water quality management in distribution", "Cross-connection control & backflow prevention", "System maintenance & rehabilitation", "Regulatory compliance"],
+        topics: ["Hydraulic analysis", "Pressure zone design", "Water quality management", "Cross-connection control", "Regulatory compliance"],
       },
       {
-        label: "Class III",
-        questions: 500,
-        color: "#1D4ED8",
+        label: "Class III", code: "WPI-D3", questions: 500, price: "CA$249", color: "#1D4ED8",
         quizHref: "/wpi-class3-water-dist",
-        topics: ["Advanced hydraulic modelling", "Transmission main design & multi-zone systems", "SCADA & automation", "Water quality monitoring programs", "Senior operator responsibilities"],
+        topics: ["Advanced hydraulic modelling", "Transmission main design", "Multi-zone systems", "SCADA & automation", "Water quality monitoring programs"],
       },
       {
-        label: "Class IV",
-        questions: 500,
-        color: "#4C1D95",
-        quizHref: "/wpi-class4-water-dist",
+        label: "Class IV", code: "WPI-D4", questions: 500, price: "CA$299", color: "#4C1D95",
+        quizHref: "/wpi-class4-water-dist", badge: "👑 Chief Operator",
         topics: ["Large-scale system management", "Asset management & capital planning", "Advanced water quality & DWQMS", "Strategic regulatory compliance", "Emergency response & resilience"],
       },
     ],
   },
   {
-    track: "🚧 Wastewater Collection",
+    id: "collection",
+    label: "Wastewater Collection",
+    icon: "🚧",
     classes: [
       {
-        label: "Class I",
-        questions: 500,
-        color: "#065F46",
+        label: "Class I", code: "WPI-C1", questions: 500, price: "CA$149", color: "#065F46",
         quizHref: "/wpi-class1-water-coll",
-        topics: ["Collection system components & pipe materials", "Lift station operation & maintenance", "Confined space & safety regulations", "Basic hydraulics & flow calculations", "Environmental & public health"],
+        topics: ["Collection system components", "Lift station operation & maintenance", "Confined space & safety", "Basic hydraulics & flow calculations", "Environmental & public health"],
       },
       {
-        label: "Class II",
-        questions: 504,
-        color: "#1E3A5F",
+        label: "Class II", code: "WPI-C2", questions: 504, price: "CA$199", color: "#1E3A5F",
         quizHref: "/wpi-class2-water-coll",
         topics: ["Advanced collection system design", "Intermediate lift station operations", "System maintenance & rehabilitation", "Hydraulics & flow analysis", "Regulatory compliance & reporting"],
       },
       {
-        label: "Class III",
-        questions: 504,
-        color: "#7C3AED",
+        label: "Class III", code: "WPI-C3", questions: 504, price: "CA$249", color: "#7C3AED",
         quizHref: "/wpi-class3-water-coll",
         topics: ["Complex system operations & SCADA", "Advanced pump station engineering", "System hydraulic modelling", "Advanced maintenance management", "Leadership, safety & regulatory management"],
       },
       {
-        label: "Class IV",
-        questions: 504,
-        color: "#7F1D1D",
-        quizHref: "/wpi-class4-water-coll",
+        label: "Class IV", code: "WPI-C4", questions: 504, price: "CA$299", color: "#7F1D1D",
+        quizHref: "/wpi-class4-water-coll", badge: "👑 Chief Operator",
         topics: ["System planning & capital improvement", "Advanced engineering & design", "Utility management & leadership", "Advanced regulatory & environmental management", "Emerging technologies & innovation"],
       },
     ],
   },
 ];
-const WATER_CLASSES = [
-  { level: "CLASS I", questions: "502", price: "CA$149", priceNum: 14900, color: "#0E7490", bg: "#F0FDFF", border: "#A5F3FC", quizHref: "/wpi-class1-water" },
-  { level: "CLASS II", questions: "598", price: "CA$199", priceNum: 19900, color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-water" },
-  { level: "CLASS III", questions: "531", price: "CA$249", priceNum: 24900, color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-water" },
-  { level: "CLASS IV", questions: "592", price: "CA$299", priceNum: 29900, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", quizHref: "/wpi-class4-water", badge: "👑 Chief Operator" },
+
+const FAQS = [
+  {
+    q: "What is the WPI certification program?",
+    a: "The Water & Wastewater Professionals Institute (WPI) administers operator certification exams recognized across BC, AB, SK, and MB. Certification levels range from Class I (entry-level) to Class IV (chief operator).",
+  },
+  {
+    q: "How is WPI different from Ontario's OWWCO?",
+    a: "WPI exams are used in western Canadian provinces (BC, AB, SK, MB), while OWWCO administers Ontario's certification program. The exam content, class structure, and certifying bodies are different — Echelon has separate question banks for each.",
+  },
+  {
+    q: "Can I try before I buy?",
+    a: "Yes — the first 15 questions of every course are free with no account required. You'll see the full question format, difficulty, and explanation style before purchasing.",
+  },
+  {
+    q: "What's included in a practice pass?",
+    a: "Each pass includes 500+ adaptive practice questions, a timed mock exam, a formula sheet, AI Tutor access, 400+ flashcards, and module study notes. Access is one-time purchase with no expiry.",
+  },
+  {
+    q: "Do I need an account to start?",
+    a: "No account is needed for the first 15 free questions. To save your progress, access the mock exam, and unlock all questions, you'll need to create a free account and purchase a pass.",
+  },
 ];
 
-const WW_CLASSES = [
-  { level: "CLASS I", questions: "594", price: "CA$149", color: "#B45309", bg: "#FFFBEB", border: "#FDE68A", quizHref: "/wpi-class1-wastewater" },
-  { level: "CLASS II", questions: "599", price: "CA$199", color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-wastewater" },
-  { level: "CLASS III", questions: "607", price: "CA$249", color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-wastewater" },
-  { level: "CLASS IV", questions: "606", price: "CA$299", color: "#6D28D9", bg: "#F5F3FF", border: "#C4B5FD", quizHref: "/wpi-class4-wastewater", badge: "👑 Chief Operator" },
-];
-
-const DIST_CLASSES = [
-  { level: "CLASS I", questions: "501", price: "CA$149", priceNum: 14900, color: "#0369A1", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class1-water-dist" },
-  { level: "CLASS II", questions: "500", price: "CA$199", priceNum: 19900, color: "#0F766E", bg: "#F0FDFA", border: "#99F6E4", quizHref: "/wpi-class2-water-dist" },
-  { level: "CLASS III", questions: "500", price: "CA$249", priceNum: 24900, color: "#1D4ED8", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class3-water-dist" },
-  { level: "CLASS IV", questions: "500", price: "CA$299", priceNum: 29900, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", quizHref: "/wpi-class4-water-dist", badge: "👑 Chief Operator" },
-];
-
-const COLL_CLASSES = [
-  { level: "CLASS I", questions: "500", price: "CA$149", priceNum: 14900, color: "#065F46", bg: "#ECFDF5", border: "#A7F3D0", quizHref: "/wpi-class1-water-coll" },
-  { level: "CLASS II", questions: "504", price: "CA$199", priceNum: 19900, color: "#1E3A5F", bg: "#EFF6FF", border: "#BFDBFE", quizHref: "/wpi-class2-water-coll" },
-  { level: "CLASS III", questions: "504", price: "CA$249", priceNum: 24900, color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE", quizHref: "/wpi-class3-water-coll" },
-  { level: "CLASS IV", questions: "504", price: "CA$299", priceNum: 29900, color: "#7F1D1D", bg: "#FEF2F2", border: "#FECACA", quizHref: "/wpi-class4-water-coll", badge: "👑 Chief Operator" },
-];
-
+// ── Component ─────────────────────────────────────────────────────────────────
 
 export default function WpiLanding() {
   const { isAuthenticated } = useAuth({ lazy: true });
@@ -233,31 +181,33 @@ export default function WpiLanding() {
       "WPI exam prep, BC EOCP water treatment, Alberta AWWOA water operator, Saskatchewan SAHO water, Manitoba MWWA water, WPI Class I practice questions, WPI Class II practice questions, WPI Class III wastewater, WPI Class IV wastewater",
   });
 
-  const [activeProvince, setActiveProvince] = useState("BC");
-  const [openCurriculum, setOpenCurriculum] = useState<string | null>(null);
+  const [activeTrack, setActiveTrack] = useState<string>("water");
+  const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const province = PROVINCES.find(p => p.code === activeProvince) ?? PROVINCES[0];
+  const track = TRACKS.find(t => t.id === activeTrack)!;
 
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       <style>{`
-        @media (max-width: 640px) {
-          .wpi-province-card { flex-direction: column !important; }
-          .wpi-province-btns { min-width: 0 !important; width: 100% !important; }
-          .wpi-pricing-cards { gap: 10px !important; flex-direction: column !important; align-items: stretch !important; }
-          .wpi-pricing-card { width: 100% !important; min-width: 0 !important; padding: 16px 12px !important; }
-          .wpi-hero-section { padding: 48px 16px 36px !important; }
-          .wpi-province-tabs { flex-wrap: wrap !important; gap: 6px !important; }
-          .wpi-province-tab { flex: 1 1 auto !important; }
-          .wpi-features-grid { grid-template-columns: 1fr !important; }
-          .wpi-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700;800&display=swap');
+        .wpi-track-tab { transition: background 0.15s, color 0.15s, border-color 0.15s; }
+        .wpi-track-tab:hover { background: #EFF6FF !important; color: #1D4ED8 !important; }
+        .wpi-class-card { transition: box-shadow 0.15s, transform 0.15s; }
+        .wpi-class-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.10) !important; transform: translateY(-2px); }
+        @media (max-width: 768px) {
+          .wpi-cards-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
-        @media (max-width: 380px) {
+        @media (max-width: 480px) {
+          .wpi-cards-grid { grid-template-columns: 1fr !important; }
+          .wpi-track-tabs { flex-wrap: wrap !important; }
+          .wpi-province-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
+
       <LandingNav isAuthenticated={isAuthenticated} currentPath="/wpi" />
 
-      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section style={{
         background: "linear-gradient(135deg, #0C4A6E 0%, #0E7490 50%, #0F766E 100%)",
         padding: "72px 20px 56px",
@@ -265,556 +215,212 @@ export default function WpiLanding() {
       }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <div style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            background: "rgba(255,255,255,0.12)",
-            border: "1px solid rgba(255,255,255,0.2)",
-            borderRadius: 100,
-            padding: "6px 16px",
-            marginBottom: 24,
+            display: "inline-flex", alignItems: "center", gap: 8,
+            background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)",
+            borderRadius: 100, padding: "6px 16px", marginBottom: 24,
           }}>
             <span style={{ fontSize: 14, color: "rgba(255,255,255,0.9)", fontWeight: 600 }}>
               🌊 WPI Exam Prep — BC · AB · SK · MB
             </span>
           </div>
-
           <h1 style={{
             fontFamily: "'Sora', sans-serif",
-            fontSize: "clamp(28px, 5vw, 48px)",
-            fontWeight: 800,
-            color: "#FFFFFF",
-            lineHeight: 1.15,
-            marginBottom: 20,
-            letterSpacing: "-0.02em",
+            fontSize: "clamp(28px, 5vw, 46px)",
+            fontWeight: 800, color: "#FFFFFF", lineHeight: 1.15,
+            marginBottom: 20, letterSpacing: "-0.02em",
           }}>
             Pass Your WPI Water &amp; Wastewater Exam
           </h1>
-
           <p style={{
-            fontSize: "clamp(15px, 2vw, 18px)",
-            color: "rgba(255,255,255,0.8)",
-            lineHeight: 1.7,
-            marginBottom: 32,
-            maxWidth: 560,
-            margin: "0 auto 32px",
+            fontSize: "clamp(15px, 2vw, 17px)", color: "rgba(255,255,255,0.8)",
+            lineHeight: 1.7, marginBottom: 32, maxWidth: 560, margin: "0 auto 32px",
           }}>
-            4,000+ practice questions for WPI Class I–IV Water Treatment, Class I–IV Wastewater, and Class I–IV Water Distribution — aligned with the Need-to-Know Criteria used by <strong style={{ color: "#BAE6FD" }}>EOCP (BC)</strong>, <strong style={{ color: "#BAE6FD" }}>AWWOA (AB)</strong>, <strong style={{ color: "#BAE6FD" }}>SAHO (SK)</strong>, and <strong style={{ color: "#BAE6FD" }}>MWWA (MB)</strong>.
+            Canada's only AI-powered exam prep platform built for WPI-certified operators.
+            500+ adaptive questions per class, mock exams, flashcards, and an AI tutor — available 24/7.
           </p>
-
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/wpi-class1-water">
               <button style={{
-                background: "#FFFFFF",
-                color: "#0C4A6E",
-                border: "none",
-                borderRadius: 12,
-                padding: "14px 28px",
-                fontSize: 15,
-                fontWeight: 700,
-                cursor: "pointer",
-                fontFamily: "inherit",
+                background: "#0EA5E9", color: "#FFFFFF", border: "none",
+                borderRadius: 10, padding: "13px 28px", fontSize: 15, fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit",
               }}>
-                🌊 Try Class I Water Free →
+                Try Free — Class I Water →
               </button>
             </Link>
-            <Link href="/wpi-class1-wastewater">
+            <a href="#pricing">
               <button style={{
-                background: "rgba(255,255,255,0.12)",
-                color: "#FFFFFF",
-                border: "1px solid rgba(255,255,255,0.3)",
-                borderRadius: 12,
-                padding: "14px 28px",
-                fontSize: 15,
-                fontWeight: 700,
-                cursor: "pointer",
-                fontFamily: "inherit",
+                background: "rgba(255,255,255,0.12)", color: "#FFFFFF",
+                border: "1px solid rgba(255,255,255,0.25)", borderRadius: 10,
+                padding: "13px 28px", fontSize: 15, fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit",
               }}>
-                Try Class I Wastewater Free →
+                View All Passes
               </button>
-            </Link>
+            </a>
           </div>
-
-          {/* Stats */}
-          <div style={{ display: "flex", gap: 32, justifyContent: "center", marginTop: 48, flexWrap: "wrap" }}>
-            {[
-              { value: "4,600+", label: "Practice Questions" },
-              { value: "12", label: "Exam Levels" },
-              { value: "4", label: "WPI Provinces" },
-              { value: "70%", label: "Pass Mark" },
-            ].map(stat => (
-              <div key={stat.label} style={{ textAlign: "center" }}>
-                <div style={{ fontSize: 28, fontWeight: 800, color: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>{stat.value}</div>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", marginTop: 2, textTransform: "uppercase" as const, letterSpacing: "0.08em" }}>{stat.label}</div>
+          <div style={{ marginTop: 32, display: "flex", gap: 28, justifyContent: "center", flexWrap: "wrap" }}>
+            {[["8,000+", "Questions in bank"], ["4", "Certification tracks"], ["16", "Class levels covered"], ["15", "Free questions per course"]].map(([stat, label]) => (
+              <div key={label} style={{ textAlign: "center" }}>
+                <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#38BDF8" }}>{stat}</div>
+                <div style={{ fontSize: 12, color: "#94A3B8", fontWeight: 500 }}>{label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Province Selector ─────────────────────────────────────────────── */}
-      <section style={{ background: "#FFFFFF", padding: "48px 20px", borderBottom: "1px solid #E2E8F0" }}>
-        <div style={{ maxWidth: 860, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 8 }}>
-            Select Your Province
+      {/* ── Province Recognition ───────────────────────────────────────── */}
+      <section style={{ background: "#FFFFFF", padding: "40px 20px", borderBottom: "1px solid #E2E8F0" }}>
+        <div style={{ maxWidth: 680, margin: "0 auto" }}>
+          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 18, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 6 }}>
+            Recognized Across Western Canada
           </h2>
-          <p style={{ fontSize: 14, color: "#64748B", textAlign: "center", marginBottom: 28 }}>
-            WPI exams are administered by your provincial certification body
+          <p style={{ fontSize: 13, color: "#64748B", textAlign: "center", marginBottom: 20 }}>
+            WPI certifications are administered by provincial bodies in 4 provinces.
           </p>
-
-          {/* Province tabs */}
-          <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap", marginBottom: 28 }}>
+          <div className="wpi-province-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
             {PROVINCES.map(p => (
-              <button
-                key={p.code}
-                onClick={() => setActiveProvince(p.code)}
-                style={{
-                  background: activeProvince === p.code ? p.color : "#F1F5F9",
-                  color: activeProvince === p.code ? "#FFFFFF" : "#475569",
-                  border: "none",
-                  borderRadius: 10,
-                  padding: "10px 20px",
-                  fontSize: 14,
-                  fontWeight: 700,
-                  cursor: "pointer",
-                  fontFamily: "inherit",
-                  transition: "all 0.15s",
-                }}
-              >
-                {p.flag} {p.code} — {p.certBody}
-              </button>
+              <a key={p.code} href={p.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                <div style={{
+                  background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 12,
+                  padding: "16px 12px", textAlign: "center", cursor: "pointer",
+                  transition: "border-color 0.15s",
+                }}>
+                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>{p.code}</div>
+                  <div style={{ fontSize: 11, color: "#64748B", fontWeight: 500, marginBottom: 6 }}>{p.name}</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#0E7490", background: "#F0FDFF", padding: "3px 8px", borderRadius: 6, display: "inline-block" }}>{p.body}</div>
+                </div>
+              </a>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Province detail card */}
-          <div style={{
-            background: province.bg,
-            border: `2px solid ${province.color}22`,
-            borderRadius: 16,
-            padding: "24px 28px",
-            display: "flex",
-            gap: 28,
-            flexWrap: "wrap",
-            alignItems: "center",
-          }}>
-            <div style={{ flex: "1 1 260px" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: province.color, textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 6 }}>
-                {province.flag} {province.name}
-              </div>
-              <div style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 2, fontFamily: "'Sora', sans-serif" }}>
-                {province.certBody}
-              </div>
-              <div style={{ fontSize: 13, color: "#475569", marginBottom: 10 }}>{province.certBodyFull}</div>
-              <div style={{ fontSize: 12, color: "#64748B", marginBottom: 14 }}>
-                <strong>Exam:</strong> {province.examName}
-              </div>
-              <div style={{ marginBottom: 8 }}>
-                <div style={{ fontSize: 11, color: "#64748B", marginBottom: 6 }}>Certification Levels:</div>
-                <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
-                  {province.levels.map(level => (
-                    <span key={level} style={{
-                      background: province.color,
-                      borderRadius: 6,
-                      color: "#FFFFFF",
-                      fontSize: 11,
-                      fontWeight: 700,
-                      padding: "4px 10px",
-                    }}>
-                      {level}
-                    </span>
-                  ))}
-                </div>
-                <div style={{ fontSize: 11, color: "#64748B", marginBottom: 6 }}>Exam Tracks:</div>
-                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                  {province.tracks.map(track => (
-                    <span key={track} style={{
-                      background: "#F1F5F9",
-                      borderRadius: 6,
-                      color: "#475569",
-                      fontSize: 11,
-                      fontWeight: 600,
-                      padding: "4px 10px",
-                      border: "1px solid #E2E8F0",
-                    }}>
-                      {track}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+      {/* ── Tabbed Track Selector + Class Cards ───────────────────────── */}
+      <section id="pricing" style={{ background: "#F8FAFC", padding: "56px 20px" }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 8 }}>
+            Choose Your Certification Track
+          </h2>
+          <p style={{ fontSize: 14, color: "#64748B", textAlign: "center", marginBottom: 32 }}>
+            Select a track, then choose your class level. Click any card to see the topic breakdown.
+          </p>
 
-            <div className="wpi-province-btns" style={{ flex: "1 1 220px", display: "flex", flexDirection: "column" as const, gap: 10, minWidth: 0 }}>
-              <Link href="/wpi-class1-water">
-                <div style={{
-                  background: province.color,
-                  color: "#FFFFFF",
-                  borderRadius: 10,
-                  padding: "12px 20px",
-                  fontWeight: 700,
-                  fontSize: 14,
-                  cursor: "pointer",
-                  textAlign: "center" as const,
-                }}>
-                  Try Class I Water Free →
-                </div>
-              </Link>
-              <Link href="/wpi-class1-wastewater">
-                <div style={{
-                  background: "#FFFFFF",
-                  color: province.color,
-                  border: `2px solid ${province.color}`,
-                  borderRadius: 10,
-                  padding: "12px 20px",
-                  fontWeight: 700,
-                  fontSize: 14,
-                  cursor: "pointer",
-                  textAlign: "center" as const,
-                }}>
-                  Try Class I Wastewater Free →
-                </div>
-              </Link>
-              <Link href="/wpi-class1-water-dist">
-                <div style={{
-                  background: "rgba(3,105,161,0.08)",
-                  color: "#0369A1",
-                  border: "2px solid #BAE6FD",
-                  borderRadius: 10,
-                  padding: "12px 20px",
-                  fontWeight: 700,
-                  fontSize: 14,
-                  cursor: "pointer",
-                  textAlign: "center" as const,
-                }}>
-                  🚰 Try Class I Distribution Free →
-                </div>
-              </Link>
-              <Link href="/wpi-class1-water-coll">
-                <div style={{
-                  background: "rgba(6,95,70,0.08)",
-                  color: "#065F46",
-                  border: "2px solid #A7F3D0",
-                  borderRadius: 10,
-                  padding: "12px 20px",
-                  fontWeight: 700,
-                  fontSize: 14,
-                  cursor: "pointer",
-                  textAlign: "center" as const,
-                }}>
-                  🔩 Try Class I Collection Free →
-                </div>
-              </Link>
-              <Link href="/pricing">
-                <div style={{
-                  color: "#64748B",
-                  fontSize: 13,
-                  textAlign: "center" as const,
-                  cursor: "pointer",
-                  textDecoration: "underline",
-                  paddingTop: 2,
-                }}>
-                  View all courses & pricing →
-                </div>
-              </Link>
-            </div>
+          {/* Track tabs */}
+          <div className="wpi-track-tabs" style={{ display: "flex", gap: 8, justifyContent: "center", marginBottom: 32, flexWrap: "wrap" }}>
+            {TRACKS.map(t => {
+              const isActive = t.id === activeTrack;
+              return (
+                <button
+                  key={t.id}
+                  className="wpi-track-tab"
+                  onClick={() => { setActiveTrack(t.id); setExpandedCard(null); }}
+                  style={{
+                    background: isActive ? "#0F172A" : "#FFFFFF",
+                    color: isActive ? "#FFFFFF" : "#475569",
+                    border: `1px solid ${isActive ? "#0F172A" : "#E2E8F0"}`,
+                    borderRadius: 10, padding: "10px 20px", fontSize: 13, fontWeight: 700,
+                    cursor: "pointer", fontFamily: "inherit",
+                    display: "flex", alignItems: "center", gap: 6,
+                  }}
+                >
+                  <span>{t.icon}</span> {t.label}
+                </button>
+              );
+            })}
           </div>
-        </div>
-      </section>
 
-      {/* ── Curriculum Overview (compact accordion) ───────────────────────── */}
-      <section style={{ padding: "56px 20px", background: "#F8FAFC" }}>
-        <div style={{ maxWidth: 860, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 8 }}>
-            What's on the Exam
-          </h2>
-          <p style={{ fontSize: 14, color: "#64748B", textAlign: "center", marginBottom: 36 }}>
-            Each class level is aligned with the WPI Need-to-Know Criteria. Click any level to see the topic breakdown.
-          </p>
-
-          {CURRICULUM.map(track => (
-            <div key={track.track} style={{ marginBottom: 32 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.08em", marginBottom: 12 }}>
-                {track.track}
-              </div>
-              <div style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
-                {track.classes.map(cls => {
-                  const key = `${track.track}-${cls.label}`;
-                  const isOpen = openCurriculum === key;
-                  return (
-                    <div key={key} style={{
-                      background: "#FFFFFF",
-                      border: `1px solid ${isOpen ? cls.color + "44" : "#E2E8F0"}`,
-                      borderRadius: 12,
-                      overflow: "hidden",
-                    }}>
-                      <button
-                        onClick={() => setOpenCurriculum(isOpen ? null : key)}
-                        style={{
-                          width: "100%",
-                          background: "transparent",
-                          border: "none",
-                          padding: "16px 20px",
-                          textAlign: "left",
-                          cursor: "pointer",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                          gap: 12,
-                          fontFamily: "inherit",
-                        }}
-                      >
-                        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                          <span style={{
-                            background: cls.color,
-                            color: "#FFFFFF",
-                            fontSize: 11,
-                            fontWeight: 700,
-                            padding: "3px 10px",
-                            borderRadius: 6,
-                            whiteSpace: "nowrap" as const,
-                          }}>
-                            {cls.label}
-                          </span>
-                          <span style={{ fontSize: 14, fontWeight: 600, color: "#0F172A" }}>
-                            {cls.questions} practice questions
-                          </span>
-                        </div>
-                        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                          <Link href={cls.quizHref} onClick={(e: React.MouseEvent) => e.stopPropagation()}>
-                            <span style={{
-                              fontSize: 12,
-                              fontWeight: 700,
-                              color: cls.color,
-                              background: cls.color + "14",
-                              padding: "4px 10px",
-                              borderRadius: 6,
-                              whiteSpace: "nowrap" as const,
-                            }}>
-                              Try free →
-                            </span>
-                          </Link>
-                          <span style={{ color: "#94A3B8", fontSize: 16, flexShrink: 0 }}>{isOpen ? "−" : "+"}</span>
-                        </div>
-                      </button>
-                      {isOpen && (
-                        <div style={{ padding: "0 20px 16px 20px" }}>
-                          <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column" as const, gap: 6 }}>
-                            {cls.topics.map(topic => (
-                              <li key={topic} style={{ fontSize: 13, color: "#475569", display: "flex", alignItems: "flex-start", gap: 8 }}>
-                                <span style={{ color: cls.color, fontWeight: 700, marginTop: 1, flexShrink: 0 }}>·</span>
-                                {topic}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Pricing ───────────────────────────────────────────────────────── */}
-      <section id="pricing" style={{ background: "#FFFFFF", padding: "56px 20px", borderTop: "1px solid #E2E8F0" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 8 }}>
-            Unlock Full Access
-          </h2>
-          <p style={{ fontSize: 15, color: "#64748B", marginBottom: 40, lineHeight: 1.7, textAlign: "center" }}>
-            Start with 15 free questions per session — no account required. Upgrade to unlock all questions, timed mock exams, AI Tutor, and score history.
-          </p>
-
-          {/* Water Treatment */}
-          <div style={{ marginBottom: 40 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
-              💧 Water Treatment
-            </div>
-            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              {WATER_CLASSES.map(cls => (
-                <div key={cls.level} className="wpi-pricing-card" style={{
-                  background: "#FFFFFF",
-                  border: "1px solid #E2E8F0",
-                  borderRadius: 16,
-                  width: 220,
-                  flexShrink: 0,
-                  display: "flex",
-                  flexDirection: "column" as const,
-                  overflow: "hidden",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-                  transition: "box-shadow 0.2s",
-                }}>
+          {/* Class cards grid */}
+          <div className="wpi-cards-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 16 }}>
+            {track.classes.map(cls => {
+              const isExpanded = expandedCard === cls.code;
+              return (
+                <div
+                  key={cls.code}
+                  className="wpi-class-card"
+                  style={{
+                    background: "#FFFFFF",
+                    border: `1px solid ${isExpanded ? cls.color + "55" : "#E2E8F0"}`,
+                    borderRadius: 16, overflow: "hidden",
+                    display: "flex", flexDirection: "column",
+                    boxShadow: isExpanded ? `0 4px 16px ${cls.color}22` : "0 2px 8px rgba(0,0,0,0.06)",
+                  }}
+                >
                   {/* Accent bar */}
                   <div style={{ height: 4, background: cls.color, flexShrink: 0 }} />
-                  <div style={{ padding: "16px 16px 0" }}>
-                    {/* Header row: code + question count */}
+
+                  <div style={{ padding: "16px 16px 0", flex: 1 }}>
+                    {/* Header row */}
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ fontSize: 10, fontWeight: 700, color: cls.color, background: cls.color + "18", padding: "3px 8px", borderRadius: 5, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>WPI {cls.level}</span>
-                        {(cls as any).badge && (
-                          <span style={{ fontSize: 9, fontWeight: 700, background: cls.color, color: "#fff", padding: "2px 6px", borderRadius: 4 }}>{(cls as any).badge}</span>
-                        )}
-                      </div>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: cls.color, background: cls.color + "12", padding: "3px 8px", borderRadius: 20, whiteSpace: "nowrap" as const }}>📝 {cls.questions} Q</span>
+                      <span style={{
+                        fontSize: 10, fontWeight: 700, color: cls.color,
+                        background: cls.color + "18", padding: "3px 8px", borderRadius: 5,
+                        letterSpacing: "0.06em", textTransform: "uppercase" as const,
+                      }}>
+                        {cls.code}
+                      </span>
+                      <span style={{
+                        fontSize: 11, fontWeight: 700, color: cls.color,
+                        background: cls.color + "12", padding: "3px 8px", borderRadius: 20, whiteSpace: "nowrap" as const,
+                      }}>
+                        📝 {cls.questions} Q
+                      </span>
                     </div>
+
+                    {/* Class label + badge */}
+                    <div style={{ marginBottom: 4 }}>
+                      <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 16, fontWeight: 800, color: "#0F172A" }}>{cls.label}</div>
+                      {cls.badge && <div style={{ fontSize: 11, fontWeight: 700, color: cls.color, marginTop: 2 }}>{cls.badge}</div>}
+                    </div>
+
                     {/* Price */}
-                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#0F172A", lineHeight: 1, marginBottom: 2 }}>{cls.price}</div>
-                    <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>One-time · unlimited access</div>
-                    {/* Feature pills */}
-                    <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 5, marginBottom: 14 }}>
-                      {["Practice questions", "Mock exam", "Flashcards", "Study notes", "Formula sheet", "AI Tutor"].map(f => (
-                        <span key={f} style={{ fontSize: 11, color: "#475569", background: "#F1F5F9", padding: "3px 8px", borderRadius: 20, fontWeight: 500 }}>{f}</span>
-                      ))}
-                    </div>
-                    {/* Free trial badge */}
-                    <div style={{ fontSize: 11, color: "#16A34A", fontWeight: 600, marginBottom: 14 }}>✓ 15 questions free — no account needed</div>
-                  </div>
-                  {/* CTA area pinned to bottom */}
-                  <div style={{ marginTop: "auto", padding: "0 16px 16px" }}>
-                    <Link href={cls.quizHref}>
-                      <button style={{
-                        width: "100%",
-                        background: cls.color,
-                        color: "#FFFFFF",
-                        border: "none",
-                        borderRadius: 8,
-                        padding: "11px",
-                        fontSize: 13,
-                        fontWeight: 700,
-                        cursor: "pointer",
-                        fontFamily: "inherit",
-                        marginBottom: 8,
-                      }}>
-                        Start Studying →
-                      </button>
-                    </Link>
-                    <Link href="/pricing">
-                      <div style={{ textAlign: "center" as const, fontSize: 12, color: "#64748B", fontWeight: 600, cursor: "pointer" }}>View Plans →</div>
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#0F172A", lineHeight: 1, marginBottom: 2 }}>{cls.price}</div>
+                    <div style={{ fontSize: 11, color: "#64748B", marginBottom: 12 }}>One-time · unlimited access</div>
 
-          {/* Wastewater Treatment */}
-          <div style={{ marginTop: 40 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
-              ♻️ Wastewater Treatment
-            </div>
-            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 16, flexWrap: "wrap" as const, justifyContent: "center" }}>
-              {WW_CLASSES.map(ww => (
-                <div key={ww.level} className="wpi-pricing-card" style={{
-                  background: "#FFFFFF",
-                  border: "1px solid #E2E8F0",
-                  borderRadius: 16,
-                  width: 220,
-                  flexShrink: 0,
-                  display: "flex",
-                  flexDirection: "column" as const,
-                  overflow: "hidden",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-                }}>
-                  <div style={{ height: 4, background: ww.color, flexShrink: 0 }} />
-                  <div style={{ padding: "16px 16px 0" }}>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ fontSize: 10, fontWeight: 700, color: ww.color, background: ww.color + "18", padding: "3px 8px", borderRadius: 5, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>WPI {ww.level} WW</span>
-                        {(ww as any).badge && (
-                          <span style={{ fontSize: 9, fontWeight: 700, background: ww.color, color: "#fff", padding: "2px 6px", borderRadius: 4 }}>{(ww as any).badge}</span>
-                        )}
-                      </div>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: ww.color, background: ww.color + "12", padding: "3px 8px", borderRadius: 20, whiteSpace: "nowrap" as const }}>📝 {ww.questions} Q</span>
-                    </div>
-                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#0F172A", lineHeight: 1, marginBottom: 2 }}>{ww.price}</div>
-                    <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>One-time · unlimited access</div>
-                    <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 5, marginBottom: 14 }}>
-                      {["Practice questions", "Mock exam", "Flashcards", "Study notes", "Formula sheet", "AI Tutor"].map(f => (
-                        <span key={f} style={{ fontSize: 11, color: "#475569", background: "#F1F5F9", padding: "3px 8px", borderRadius: 20, fontWeight: 500 }}>{f}</span>
-                      ))}
-                    </div>
-                    <div style={{ fontSize: 11, color: "#16A34A", fontWeight: 600, marginBottom: 14 }}>✓ 15 questions free — no account needed</div>
-                  </div>
-                  <div style={{ marginTop: "auto", padding: "0 16px 16px" }}>
-                    <Link href={ww.quizHref}>
-                      <button style={{
-                        width: "100%",
-                        background: ww.color,
-                        color: "#FFFFFF",
-                        border: "none",
-                        borderRadius: 8,
-                        padding: "11px",
-                        fontSize: 13,
-                        fontWeight: 700,
-                        cursor: "pointer",
-                        fontFamily: "inherit",
-                        marginBottom: 8,
-                      }}>
-                        Start Studying →
-                      </button>
-                    </Link>
-                    <Link href="/pricing">
-                      <div style={{ textAlign: "center" as const, fontSize: 12, color: "#64748B", fontWeight: 600, cursor: "pointer" }}>View Plans →</div>
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+                    {/* Free trial */}
+                    <div style={{ fontSize: 11, color: "#16A34A", fontWeight: 600, marginBottom: 12 }}>✓ 15 questions free — no account needed</div>
 
-          {/* Water Distribution */}
-          <div style={{ marginTop: 40 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
-              🚰 Water Distribution
-            </div>
-            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 16, flexWrap: "wrap" as const, justifyContent: "center" }}>
-              {DIST_CLASSES.map(cls => (
-                <div key={cls.level} className="wpi-pricing-card" style={{
-                  background: "#FFFFFF",
-                  border: "1px solid #E2E8F0",
-                  borderRadius: 16,
-                  width: 220,
-                  flexShrink: 0,
-                  display: "flex",
-                  flexDirection: "column" as const,
-                  overflow: "hidden",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-                }}>
-                  <div style={{ height: 4, background: cls.color, flexShrink: 0 }} />
-                  <div style={{ padding: "16px 16px 0" }}>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ fontSize: 10, fontWeight: 700, color: cls.color, background: cls.color + "18", padding: "3px 8px", borderRadius: 5, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>WPI {cls.level} DIST</span>
-                        {(cls as any).badge && (
-                          <span style={{ fontSize: 9, fontWeight: 700, background: cls.color, color: "#fff", padding: "2px 6px", borderRadius: 4 }}>{(cls as any).badge}</span>
-                        )}
-                      </div>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: cls.color, background: cls.color + "12", padding: "3px 8px", borderRadius: 20, whiteSpace: "nowrap" as const }}>📝 {cls.questions} Q</span>
-                    </div>
-                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#0F172A", lineHeight: 1, marginBottom: 2 }}>{cls.price}</div>
-                    <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>One-time · unlimited access</div>
-                    <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 5, marginBottom: 14 }}>
-                      {["Practice questions", "Mock exam", "Flashcards", "Study notes", "AI Tutor"].map(f => (
-                        <span key={f} style={{ fontSize: 11, color: "#475569", background: "#F1F5F9", padding: "3px 8px", borderRadius: 20, fontWeight: 500 }}>{f}</span>
-                      ))}
-                    </div>
-                    <div style={{ fontSize: 11, color: "#16A34A", fontWeight: 600, marginBottom: 14 }}>✓ 15 questions free — no account needed</div>
+                    {/* Topics toggle */}
+                    <button
+                      onClick={() => setExpandedCard(isExpanded ? null : cls.code)}
+                      style={{
+                        width: "100%",
+                        background: isExpanded ? cls.color + "0E" : "#F8FAFC",
+                        border: `1px solid ${isExpanded ? cls.color + "33" : "#E2E8F0"}`,
+                        borderRadius: 8, padding: "8px 12px",
+                        fontSize: 12, fontWeight: 600,
+                        color: isExpanded ? cls.color : "#475569",
+                        cursor: "pointer", fontFamily: "inherit",
+                        textAlign: "left" as const,
+                        display: "flex", alignItems: "center", justifyContent: "space-between",
+                        marginBottom: isExpanded ? 10 : 14,
+                      }}
+                    >
+                      <span>📋 Topics covered</span>
+                      <span style={{ fontSize: 14 }}>{isExpanded ? "−" : "+"}</span>
+                    </button>
+
+                    {/* Expanded topics */}
+                    {isExpanded && (
+                      <ul style={{ margin: "0 0 14px", padding: 0, listStyle: "none", display: "flex", flexDirection: "column" as const, gap: 5 }}>
+                        {cls.topics.map(topic => (
+                          <li key={topic} style={{ fontSize: 12, color: "#475569", display: "flex", alignItems: "flex-start", gap: 6 }}>
+                            <span style={{ color: cls.color, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>·</span>
+                            {topic}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-                  <div style={{ marginTop: "auto", padding: "0 16px 16px" }}>
+
+                  {/* CTA pinned to bottom */}
+                  <div style={{ padding: "0 16px 16px", marginTop: "auto" }}>
                     <Link href={cls.quizHref}>
                       <button style={{
-                        width: "100%",
-                        background: cls.color,
-                        color: "#FFFFFF",
-                        border: "none",
-                        borderRadius: 8,
-                        padding: "11px",
-                        fontSize: 13,
-                        fontWeight: 700,
-                        cursor: "pointer",
-                        fontFamily: "inherit",
-                        marginBottom: 8,
+                        width: "100%", background: cls.color, color: "#FFFFFF",
+                        border: "none", borderRadius: 8, padding: "11px",
+                        fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", marginBottom: 8,
                       }}>
                         Start Studying →
                       </button>
@@ -824,162 +430,115 @@ export default function WpiLanding() {
                     </Link>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-          {/* Wastewater Collection */}
-          <div style={{ marginTop: 40 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>
-              🚧 Wastewater Collection
-            </div>
-            <div className="wpi-pricing-cards" style={{ display: "flex", gap: 16, flexWrap: "wrap" as const, justifyContent: "center" }}>
-              {COLL_CLASSES.map(cls => (
-                <div key={cls.level} className="wpi-pricing-card" style={{
-                  background: "#FFFFFF",
-                  border: "1px solid #E2E8F0",
-                  borderRadius: 16,
-                  width: 220,
-                  flexShrink: 0,
-                  display: "flex",
-                  flexDirection: "column" as const,
-                  overflow: "hidden",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-                }}>
-                  <div style={{ height: 4, background: cls.color, flexShrink: 0 }} />
-                  <div style={{ padding: "16px 16px 0" }}>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ fontSize: 10, fontWeight: 700, color: cls.color, background: cls.color + "18", padding: "3px 8px", borderRadius: 5, letterSpacing: "0.06em", textTransform: "uppercase" as const }}>WPI {cls.level} COLL</span>
-                        {(cls as any).badge && (
-                          <span style={{ fontSize: 9, fontWeight: 700, background: cls.color, color: "#fff", padding: "2px 6px", borderRadius: 4 }}>{(cls as any).badge}</span>
-                        )}
-                      </div>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: cls.color, background: cls.color + "12", padding: "3px 8px", borderRadius: 20, whiteSpace: "nowrap" as const }}>📝 {cls.questions} Q</span>
-                    </div>
-                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#0F172A", lineHeight: 1, marginBottom: 2 }}>{cls.price}</div>
-                    <div style={{ fontSize: 11, color: "#64748B", marginBottom: 14 }}>One-time · unlimited access</div>
-                    <div style={{ display: "flex", flexWrap: "wrap" as const, gap: 5, marginBottom: 14 }}>
-                      {["Practice questions", "Mock exam", "Flashcards", "Study notes", "AI Tutor"].map(f => (
-                        <span key={f} style={{ fontSize: 11, color: "#475569", background: "#F1F5F9", padding: "3px 8px", borderRadius: 20, fontWeight: 500 }}>{f}</span>
-                      ))}
-                    </div>
-                    <div style={{ fontSize: 11, color: "#16A34A", fontWeight: 600, marginBottom: 14 }}>✓ 15 questions free — no account needed</div>
-                  </div>
-                  <div style={{ marginTop: "auto", padding: "0 16px 16px" }}>
-                    <Link href={cls.quizHref}>
-                      <button style={{
-                        width: "100%",
-                        background: cls.color,
-                        color: "#FFFFFF",
-                        border: "none",
-                        borderRadius: 8,
-                        padding: "11px",
-                        fontSize: 13,
-                        fontWeight: 700,
-                        cursor: "pointer",
-                        fontFamily: "inherit",
-                        marginBottom: 8,
-                      }}>
-                        Start Studying →
-                      </button>
-                    </Link>
-                    <Link href="/pricing">
-                      <div style={{ textAlign: "center" as const, fontSize: 12, color: "#64748B", fontWeight: 600, cursor: "pointer" }}>View Plans →</div>
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
-      {/* ── WPI vs OWWCO Comparison Table ────────────────────────────── */}
-      <section style={{ background: "#F8FAFC", padding: "56px 20px", borderTop: "1px solid #E2E8F0" }}>
-        <div style={{ maxWidth: 860, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", textAlign: "center" as const, marginBottom: 8 }}>
+
+      {/* ── WPI vs OWWCO Comparison ───────────────────────────────────── */}
+      <section style={{ background: "#FFFFFF", padding: "56px 20px", borderTop: "1px solid #E2E8F0" }}>
+        <div style={{ maxWidth: 700, margin: "0 auto" }}>
+          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 8 }}>
             WPI vs. OWWCO — Which Exam Do You Need?
           </h2>
-          <p style={{ textAlign: "center" as const, fontSize: 14, color: "#64748B", marginBottom: 32, maxWidth: 560, margin: "0 auto 32px" }}>
-            Your province determines which certification body you register with. Both systems use standardized national question banks.
+          <p style={{ fontSize: 13, color: "#64748B", textAlign: "center", marginBottom: 28 }}>
+            Two separate certification systems serve different provinces. Make sure you're studying for the right one.
           </p>
-          <div style={{ overflowX: "auto" as const }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" as const, fontSize: 13 }}>
+          <div style={{ overflowX: "auto" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
               <thead>
-                <tr style={{ background: "#F1F5F9" }}>
-                  {["Province", "Cert Body", "Exam System", "Levels Available", "Passing Score"].map(h => (
-                    <th key={h} style={{ padding: "12px 14px", textAlign: "left" as const, fontWeight: 700, color: "#0F172A", borderBottom: "2px solid #E2E8F0", whiteSpace: "nowrap" as const }}>{h}</th>
-                  ))}
+                <tr style={{ background: "#F8FAFC" }}>
+                  <th style={{ padding: "10px 16px", textAlign: "left", fontWeight: 700, color: "#0F172A", borderBottom: "2px solid #E2E8F0" }}>Feature</th>
+                  <th style={{ padding: "10px 16px", textAlign: "center", fontWeight: 700, color: "#0E7490", borderBottom: "2px solid #E2E8F0" }}>WPI (Western)</th>
+                  <th style={{ padding: "10px 16px", textAlign: "center", fontWeight: 700, color: "#1D4ED8", borderBottom: "2px solid #E2E8F0" }}>OWWCO (Ontario)</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { province: "🇧🇨 BC", body: "EOCP", system: "WPI", levels: "Class I–IV Water & WW", pass: "70%", highlight: true },
-                  { province: "🇦🇧 AB", body: "AWWOA", system: "WPI", levels: "Class I–IV Water & WW", pass: "70%", highlight: true },
-                  { province: "🇸🇰 SK", body: "SAHO", system: "WPI", levels: "Class I–IV Water & WW", pass: "70%", highlight: true },
-                  { province: "🇲🇧 MB", body: "MWWA", system: "WPI", levels: "Class I–IV Water & WW", pass: "70%", highlight: true },
-                  { province: "🇨🇦 ON", body: "OWWCO", system: "OWWCO", levels: "OIT, Class 1–4 Water & WW, WQA", pass: "70%", highlight: false },
-                ].map((row, i) => (
-                  <tr key={i} style={{ background: row.highlight ? "#ECFEFF" : i % 2 === 0 ? "#FFFFFF" : "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
-                    <td style={{ padding: "12px 14px", fontWeight: 600, color: "#0F172A" }}>{row.province}</td>
-                    <td style={{ padding: "12px 14px", fontWeight: 600, color: "#0F172A" }}>{row.body}</td>
-                    <td style={{ padding: "12px 14px" }}>
-                      <span style={{ background: row.highlight ? "#CFFAFE" : "#DBEAFE", color: row.highlight ? "#0E7490" : "#1D4ED8", padding: "2px 8px", borderRadius: 6, fontSize: 11, fontWeight: 700 }}>{row.system}</span>
-                    </td>
-                    <td style={{ padding: "12px 14px", color: "#475569" }}>{row.levels}</td>
-                    <td style={{ padding: "12px 14px", fontWeight: 700, color: "#16A34A" }}>{row.pass}</td>
+                  ["Provinces",        "BC, AB, SK, MB",                              "Ontario only"],
+                  ["Certifying body",  "EOCP / AWWOA / SAHO / MWWA",                  "OWWCO"],
+                  ["Class levels",     "Class I – IV",                                "OIT, Class 1 – 4"],
+                  ["Tracks",           "Water, Wastewater, Distribution, Collection",  "Water & Wastewater"],
+                  ["Exam format",      "Multiple choice, written",                    "Multiple choice"],
+                  ["Echelon coverage", "✅ All 16 class levels",                       "✅ All 10 courses"],
+                ].map(([feature, wpi, owwco], i) => (
+                  <tr key={feature} style={{ background: i % 2 === 0 ? "#FFFFFF" : "#F8FAFC" }}>
+                    <td style={{ padding: "10px 16px", color: "#475569", fontWeight: 600, borderBottom: "1px solid #F1F5F9" }}>{feature}</td>
+                    <td style={{ padding: "10px 16px", color: "#0F172A", textAlign: "center" as const, borderBottom: "1px solid #F1F5F9" }}>{wpi}</td>
+                    <td style={{ padding: "10px 16px", color: "#0F172A", textAlign: "center" as const, borderBottom: "1px solid #F1F5F9" }}>{owwco}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p style={{ textAlign: "center" as const, fontSize: 12, color: "#94A3B8", marginTop: 14 }}>
-            Passing score and format may vary — always verify with your provincial certification body before registering.
-          </p>
         </div>
       </section>
 
-      {/* ── Footer CTA ────────────────────────────────────────────────────── */}
-      <section style={{
-        background: "linear-gradient(135deg, #0C4A6E, #0E7490)",
-        padding: "56px 20px",
-        textAlign: "center",
-      }}>
-        <div style={{ maxWidth: 560, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 800, color: "#FFFFFF", marginBottom: 12 }}>
-            Ready to Start Practising?
+      {/* ── FAQ ───────────────────────────────────────────────────────── */}
+      <section style={{ background: "#F8FAFC", padding: "56px 20px", borderTop: "1px solid #E2E8F0" }}>
+        <div style={{ maxWidth: 680, margin: "0 auto" }}>
+          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 32 }}>
+            Frequently Asked Questions
           </h2>
-          <p style={{ fontSize: 15, color: "rgba(255,255,255,0.75)", marginBottom: 28 }}>
-            15 free questions per session — no account required. Start now and see how you score.
+          <div style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
+            {FAQS.map((faq, i) => {
+              const isOpen = openFaq === i;
+              return (
+                <div key={i} style={{
+                  background: "#FFFFFF",
+                  border: `1px solid ${isOpen ? "#0E749044" : "#E2E8F0"}`,
+                  borderRadius: 12, overflow: "hidden",
+                }}>
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : i)}
+                    style={{
+                      width: "100%", background: "transparent", border: "none",
+                      padding: "16px 20px", textAlign: "left" as const, cursor: "pointer",
+                      display: "flex", alignItems: "center", justifyContent: "space-between",
+                      gap: 12, fontFamily: "inherit",
+                    }}
+                  >
+                    <span style={{ fontSize: 14, fontWeight: 600, color: "#0F172A" }}>{faq.q}</span>
+                    <span style={{ color: "#94A3B8", fontSize: 18, flexShrink: 0 }}>{isOpen ? "−" : "+"}</span>
+                  </button>
+                  {isOpen && (
+                    <div style={{ padding: "0 20px 16px", fontSize: 13, color: "#475569", lineHeight: 1.7 }}>{faq.a}</div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Footer CTA ────────────────────────────────────────────────── */}
+      <section style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)", padding: "56px 20px", textAlign: "center" }}>
+        <div style={{ maxWidth: 560, margin: "0 auto" }}>
+          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#FFFFFF", marginBottom: 12 }}>
+            Ready to start studying?
+          </h2>
+          <p style={{ fontSize: 14, color: "#94A3B8", marginBottom: 28, lineHeight: 1.7 }}>
+            First 15 questions are free on every course — no account or credit card needed.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/wpi-class1-water">
               <button style={{
-                background: "#FFFFFF",
-                color: "#0C4A6E",
-                border: "none",
-                borderRadius: 12,
-                padding: "14px 28px",
-                fontSize: 15,
-                fontWeight: 700,
-                cursor: "pointer",
-                fontFamily: "inherit",
+                background: "#0EA5E9", color: "#FFFFFF", border: "none",
+                borderRadius: 10, padding: "13px 28px", fontSize: 15, fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit",
               }}>
-                🌊 Start Class I Water →
+                Try Free Now →
               </button>
             </Link>
-            <Link href="/wpi-class1-wastewater">
+            <Link href="/pricing">
               <button style={{
-                background: "rgba(255,255,255,0.12)",
-                color: "#FFFFFF",
-                border: "1px solid rgba(255,255,255,0.3)",
-                borderRadius: 12,
-                padding: "14px 28px",
-                fontSize: 15,
-                fontWeight: 700,
-                cursor: "pointer",
-                fontFamily: "inherit",
+                background: "rgba(255,255,255,0.1)", color: "#FFFFFF",
+                border: "1px solid rgba(255,255,255,0.25)", borderRadius: 10,
+                padding: "13px 28px", fontSize: 15, fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit",
               }}>
-                Start Class I Wastewater →
+                View All Passes
               </button>
             </Link>
           </div>
