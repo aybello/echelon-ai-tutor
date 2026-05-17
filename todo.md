@@ -695,3 +695,4 @@
 - [x] Fix WpiLanding.tsx crash (module load failure after card redesign edit)
 - [x] Update WPI individual pass prices to new pricing (CA$149/199/249/299) across WpiLanding.tsx, Pricing.tsx, products.ts
 - [x] Rebuild WpiLanding.tsx — tabbed track selector, unified class cards, compact province table (991 → 549 lines)
+- [x] WPI pricing links on homepage should open Pricing page on Western Canada tab

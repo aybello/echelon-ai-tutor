@@ -924,7 +924,9 @@ function CourseCard({ course }: { course: CourseType }) {
     course.code === "CL4-WW" ? "/class4-ww" :
     course.code === "WQA" ? "/wqa" : "/quiz"
   );
-  const subFromPrice = (course as any).province === "wpi" ? "CA$149/yr" : "CA$99/yr";
+  const isWpiCourse = (course as any).province === "wpi";
+  const subFromPrice = isWpiCourse ? "CA$149/yr" : "CA$99/yr";
+  const pricingHref = isWpiCourse ? "/pricing?tab=western" : "/pricing";
   return (
     <>
       <div
@@ -1054,7 +1056,7 @@ function CourseCard({ course }: { course: CourseType }) {
                 </button>
               </Link>
               {(course as any).productKey && (
-                <Link href="/pricing">
+                <Link href={pricingHref}>
                   <button style={{
                     width: "100%", padding: "9px",
                     background: "transparent",

@@ -4,7 +4,7 @@
 
 import { useState, useEffect } from "react";
 import { useProvince } from "@/hooks/useProvince";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -909,11 +909,25 @@ export default function Pricing() {
   const isWpi = selectedProvince !== "ON";
   const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
 
+  // Read ?tab=western from URL to pre-select the Western Canada subscription tab
+  const searchString = useSearch();
+  const tabParam = new URLSearchParams(searchString).get("tab") as SubscriptionProvince | null;
+
   // Derive subProvince from selectedProvince (Ontario → "ontario", WPI → "western")
   // Allow manual override via setSubProvince
   const derivedSubProvince: SubscriptionProvince = selectedProvince === "ON" ? "ontario" : "western";
-  const [subProvinceOverride, setSubProvinceOverride] = useState<SubscriptionProvince | null>(null);
+  const [subProvinceOverride, setSubProvinceOverride] = useState<SubscriptionProvince | null>(
+    tabParam === "western" ? "western" : null
+  );
   const subProvince: SubscriptionProvince = subProvinceOverride ?? derivedSubProvince;
+
+  // If ?tab=western is in the URL and user's global province is ON, pre-select BC so individual cards show WPI
+  useEffect(() => {
+    if (tabParam === "western" && selectedProvince === "ON") {
+      setSelectedProvince("BC");
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // When the user picks a province in the top selector, clear any manual override
   const handleProvinceSelect = (code: ProvinceCode) => {
