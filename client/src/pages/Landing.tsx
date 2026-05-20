@@ -2311,73 +2311,104 @@ export default function Landing() {
       <footer style={{
         background: "#0F172A",
         borderTop: "1px solid rgba(255,255,255,0.08)",
-        padding: "32px 24px",
-        textAlign: "center",
+        padding: "48px 24px 32px",
       }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 12 }}>
-          <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp"
-            alt="Echelon Institute"
-            width={38}
-            height={36}
-            style={{ height: 36, width: 38, filter: "brightness(0) invert(1)" }}
-          />
-          <span style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF" }}>Echelon Institute</span>
-        </div>
-        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.65)", margin: "0 0 16px 0" }}>
-          Canada's AI-powered exam prep platform for water and wastewater operators.
-        </p>
-        {/* Google Review CTA */}
-        <a
-          href="https://g.page/r/CWsjBbkUlS8rEBM/review"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            padding: "9px 18px",
-            borderRadius: 8,
-            background: "rgba(255,255,255,0.08)",
-            border: "1px solid rgba(255,255,255,0.18)",
-            color: "#FFF",
-            fontSize: 13,
-            fontWeight: 600,
-            textDecoration: "none",
-            marginBottom: 20,
-            cursor: "pointer",
-          }}
-        >
-          <span style={{ fontSize: 15 }}>⭐</span>
-          Leave us a Google Review
-        </a>
-        {/* HQ Address — required for Google Business Profile */}
-        <p style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", margin: "0 0 16px 0", lineHeight: 1.6 }}>
-          📍 1291 Gordon St, Guelph, ON N1L 0M5 &nbsp;|&nbsp; 📞 (289) 788-1885
-        </p>
-        <div className="landing-footer-links" style={{ display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
-          {[
-            { label: "AI Tutor Quiz", href: "/quiz" },
-            { label: "Formula Sheet", href: "/formulas" },
-            { label: "Drinking Water", href: "/process" },
-            { label: "Wastewater", href: "/wastewater" },
-            { label: "Distribution Guide", href: "/distribution-guide" },
-            { label: "Collection Guide", href: "/collection-guide" },
-            { label: "Career Map", href: "/career" },
-            { label: "Pumping Systems", href: "/pumping" },
-            { label: "Instrumentation", href: "/instrumentation" },
-            { label: "Lab & Sampling", href: "/lab" },
-            { label: "Flashcards", href: "/oit-water-flashcards" },
-            { label: "About", href: "/about" },
-            { label: "FAQ", href: "/#faq" },
-            { label: "Contact", href: "/#contact" },
-          ].map(link => (
-            <Link key={link.label} href={link.href}>
-              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", cursor: "pointer", textDecoration: "none" }}>
-                {link.label}
-              </span>
-            </Link>
-          ))}
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+
+          {/* Top row: brand + review button */}
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", justifyContent: "space-between", gap: 24, marginBottom: 36 }}>
+            {/* Brand */}
+            <div style={{ maxWidth: 320 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp"
+                  alt="Echelon Institute"
+                  width={32}
+                  height={30}
+                  style={{ height: 30, width: 32, filter: "brightness(0) invert(1)" }}
+                />
+                <span style={{ fontSize: 15, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em" }}>Echelon Institute</span>
+              </div>
+              <p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", margin: 0, lineHeight: 1.6 }}>
+                Canada's AI-powered exam prep platform for water and wastewater operators.
+              </p>
+            </div>
+
+            {/* Google Review CTA */}
+            <a
+              href="https://g.page/r/CWsjBbkUlS8rEBM/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "10px 20px",
+                borderRadius: 8,
+                background: "rgba(255,255,255,0.07)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                color: "#FFF",
+                fontSize: 13,
+                fontWeight: 600,
+                textDecoration: "none",
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+                alignSelf: "flex-start",
+              }}
+            >
+              <span style={{ fontSize: 15 }}>⭐</span>
+              Leave us a Google Review
+            </a>
+          </div>
+
+          {/* Link columns */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "8px 16px", marginBottom: 32 }}>
+            {[
+              { label: "Courses", links: [
+                { label: "Drinking Water", href: "/process" },
+                { label: "Wastewater", href: "/wastewater" },
+                { label: "Distribution Guide", href: "/distribution-guide" },
+                { label: "Collection Guide", href: "/collection-guide" },
+                { label: "Pumping Systems", href: "/pumping" },
+                { label: "Instrumentation", href: "/instrumentation" },
+                { label: "Lab & Sampling", href: "/lab" },
+              ]},
+              { label: "Tools", links: [
+                { label: "AI Tutor Quiz", href: "/quiz" },
+                { label: "Formula Sheet", href: "/formulas" },
+                { label: "Flashcards", href: "/oit-water-flashcards" },
+                { label: "Career Map", href: "/career" },
+              ]},
+              { label: "Company", links: [
+                { label: "About", href: "/about" },
+                { label: "Pricing", href: "/pricing" },
+                { label: "FAQ", href: "/#faq" },
+                { label: "Contact", href: "/#contact" },
+              ]},
+            ].map(col => (
+              <div key={col.label}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>{col.label}</div>
+                {col.links.map(link => (
+                  <Link key={link.label} href={link.href}>
+                    <div style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", cursor: "pointer", marginBottom: 8, lineHeight: 1.4 }}>
+                      {link.label}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom bar */}
+          <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+            <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", margin: 0 }}>
+              © {new Date().getFullYear()} Echelon Institute. All rights reserved.
+            </p>
+            <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", margin: 0 }}>
+              📍 1291 Gordon St, Guelph, ON N1L 0M5 &nbsp;·&nbsp; 📞 (289) 788-1885
+            </p>
+          </div>
+
         </div>
       </footer>
     </div>
