@@ -1192,7 +1192,12 @@ export default function Landing() {
           .landing-wpi-secondary-btns { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; width: 100% !important; }
           .landing-wpi-secondary-btns a { width: 100% !important; }
           .landing-wpi-secondary-btns button { width: 100% !important; font-size: 12px !important; padding: 10px 8px !important; }
-          .landing-tools-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .landing-tools-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+          .landing-tools-grid .tool-card-desc { display: none !important; }
+          .landing-tools-grid .tool-card-inner { padding: 16px 14px !important; }
+          .landing-tools-grid .tool-card-icon { width: 36px !important; height: 36px !important; font-size: 18px !important; margin-bottom: 10px !important; border-radius: 8px !important; }
+          .landing-tools-grid h3 { font-size: 13px !important; margin-bottom: 4px !important; }
+          .landing-tools-grid .tool-card-cta { font-size: 10px !important; }
           .landing-course-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
           .landing-track-toggle { gap: 4px !important; }
           .landing-track-toggle button { font-size: 11px !important; padding: 8px 10px !important; }
@@ -1904,7 +1909,7 @@ export default function Landing() {
             {FEATURES.map(f => (
               <StaggerItem key={f.title}>
               <Link key={f.title} href={f.href}>
-                <div style={{
+                <div className="tool-card-inner" style={{
                   background: "rgba(255,255,255,0.05)",
                   border: "1px solid rgba(255,255,255,0.08)",
                   borderRadius: 16, padding: "28px 24px",
@@ -1923,7 +1928,7 @@ export default function Landing() {
                     (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
                   }}
                 >
-                  <div style={{
+                  <div className="tool-card-icon" style={{
                     width: 48, height: 48, borderRadius: 12,
                     background: `${f.color}22`,
                     display: "flex", alignItems: "center", justifyContent: "center",
@@ -1932,8 +1937,8 @@ export default function Landing() {
                     {f.icon}
                   </div>
                   <h3 style={{ fontSize: 16, fontWeight: 700, color: "#FFFFFF", margin: "0 0 8px 0" }}>{f.title}</h3>
-                  <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: "0 0 14px 0" }}>{f.description}</p>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: f.color }}>Open →</div>
+                  <p className="tool-card-desc" style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: "0 0 14px 0" }}>{f.description}</p>
+                  <div className="tool-card-cta" style={{ fontSize: 11, fontWeight: 700, color: f.color }}>Open →</div>
                 </div>
               </Link>
               </StaggerItem>

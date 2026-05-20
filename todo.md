@@ -697,3 +697,9 @@
 - [x] Rebuild WpiLanding.tsx — tabbed track selector, unified class cards, compact province table (991 → 549 lines)
 - [x] WPI pricing links on homepage should open Pricing page on Western Canada tab
 - [x] Update View Plans links on WpiLanding.tsx to /pricing?tab=western
+
+## Vision & Memory Management
+- [x] Create vision.md as persistent memory anchor for business vision, trade list, pricing, metrics, and session history
+- [ ] Confirm full list of 5 regulated trades in North American TAM (water/wastewater confirmed, Power Engineering confirmed, 3 others TBD)
+- [ ] Finalize one-sentence pitch for a16z application once trade list is confirmed
+- [ ] Complete a16z application using pitch deck content as source material
