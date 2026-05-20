@@ -282,14 +282,21 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         .fc-nav-btn:hover { background: rgba(255,255,255,0.2); }
         .fc-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         @media (max-width: 640px) {
-          .fc-face { padding: 24px 20px; min-height: 260px; }
+          .fc-face { padding: 24px 20px; min-height: 240px; }
           .fc-act-btn { padding: 12px 14px; font-size: 14px; }
           .fc-wrap { max-width: 100%; }
+          .fc-header { padding: 12px 16px !important; }
+          .fc-header-title { font-size: 14px !important; }
+          .fc-header-sub { font-size: 11px !important; }
+          .fc-module-row { padding: 8px 16px !important; }
+          .fc-progress-row { padding: 0 16px 6px !important; }
+          .fc-card-area { padding: 12px 16px 6px !important; }
+          .fc-actions-row { padding: 0 16px 16px !important; }
         }
       `}</style>
 
       {/* Header */}
-      <div style={{ background: "rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.1)", padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
+      <div className="fc-header" style={{ background: "rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.1)", padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <Link href={backPath}>
             <button style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", cursor: "pointer" }}>
@@ -297,8 +304,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             </button>
           </Link>
           <div>
-            <div style={{ color: "#fff", fontWeight: 700, fontSize: "16px" }}>Flashcards: {examName}</div>
-            <div style={{ color: "#94a3b8", fontSize: "12px" }}>{deck.length} cards{reviewing ? " (missed only)" : ""}</div>
+            <div className="fc-header-title" style={{ color: "#fff", fontWeight: 700, fontSize: "16px" }}>Flashcards: {examName}</div>
+            <div className="fc-header-sub" style={{ color: "#94a3b8", fontSize: "12px" }}>{deck.length} cards{reviewing ? " (missed only)" : ""}</div>
           </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -314,7 +321,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
 
       {/* Module Filter */}
       {modules.length > 1 && (
-        <div style={{ padding: "12px 24px", overflowX: "auto", display: "flex", gap: "8px", alignItems: "center" }}>
+        <div className="fc-module-row" style={{ padding: "12px 24px", overflowX: "auto", display: "flex", gap: "8px", alignItems: "center" }}>
           <span
             className={"fc-mod-tab" + (selectedModule === null ? " active" : "")}
             style={{ background: selectedModule === null ? "#1e40af" : "rgba(255,255,255,0.1)", color: "#fff" }}
@@ -336,7 +343,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
       )}
 
       {/* Progress bar */}
-      <div style={{ padding: "0 24px 8px" }}>
+      <div className="fc-progress-row" style={{ padding: "0 24px 8px" }}>
         <div style={{ background: "rgba(255,255,255,0.1)", borderRadius: "4px", height: "6px", overflow: "hidden" }}>
           <div style={{ background: "linear-gradient(90deg, #3b82f6, #06b6d4)", height: "100%", width: progress + "%", transition: "width 0.3s ease", borderRadius: "4px" }} />
         </div>
@@ -347,7 +354,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
       </div>
 
       {/* Card */}
-      <div style={{ padding: "16px 24px 8px" }}>
+      <div className="fc-card-area" style={{ padding: "16px 24px 8px" }}>
         {card ? (
           <div className="fc-wrap">
             {!flipped && (

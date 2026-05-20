@@ -1209,6 +1209,12 @@ export default function Landing() {
           .landing-whats-new { flex-direction: column !important; gap: 12px !important; }
           .landing-whats-new-btn { width: 100% !important; text-align: center !important; }
           .landing-course-section { padding: 48px 16px !important; }
+          .landing-nav-subtitle { display: none !important; }
+          .landing-hero-section { padding: 40px 16px 32px !important; }
+          .landing-hero-section h1 { font-size: clamp(24px, 7vw, 40px) !important; }
+          .landing-hero-section p { font-size: 14px !important; }
+          .landing-province-banner { padding: 10px 12px !important; }
+          .landing-province-banner button { font-size: 11px !important; padding: 5px 8px !important; }
         }
         @media (min-width: 641px) {
           .landing-hamburger { display: none !important; }
@@ -1239,7 +1245,7 @@ export default function Landing() {
           />
           <div>
             <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em" }}>Echelon Institute</div>
-            <div style={{ fontSize: 10, color: "#64748B", fontWeight: 500, marginTop: -2 }}>Canadian Water & Wastewater Operator Certification</div>
+            <div className="landing-nav-subtitle" style={{ fontSize: 10, color: "#64748B", fontWeight: 500, marginTop: -2 }}>Canadian Water & Wastewater Operator Certification</div>
           </div>
         </div>
 
@@ -1522,7 +1528,7 @@ export default function Landing() {
       </div>
 
       {/* ── Hero ── */}
-      <section style={{
+      <section className="landing-hero-section" style={{
         background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)",
         padding: "80px 24px 100px",
         textAlign: "center",

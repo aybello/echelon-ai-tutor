@@ -862,6 +862,11 @@ const PRICING_STYLES = `
     .product-grid-4 { grid-template-columns: repeat(2, 1fr); }
   }
 
+  /* ── Small mobile: force 1-col subscription grid ── */
+  @media (max-width: 480px) {
+    .pricing-sub-grid { grid-template-columns: 1fr !important; }
+  }
+
   /* ── Mobile: 1 column ── */
   @media (max-width: 600px) {
     .pricing-nav { padding: 0 16px; }
@@ -1079,7 +1084,7 @@ export default function Pricing() {
           {(() => {
             const activeTiers = subProvince === "western" ? SUB_TIERS_WPI : SUB_TIERS_ONTARIO;
             return (
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: 16 }}>
+              <div className="pricing-sub-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(190px, 1fr))", gap: 16 }}>
                 {activeTiers.map(tier => {
                   const isActivePlan = activePlanKeys.has(`${tier.tier}:${subProvince}`);
                   return (
