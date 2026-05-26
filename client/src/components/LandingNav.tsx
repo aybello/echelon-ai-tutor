@@ -110,6 +110,30 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
             );
           })}
 
+          {/* My Passes link */}
+          {(() => {
+            const isActive = activePath === "/account";
+            return (
+              <a href="/account"
+                style={{
+                  padding: "6px 14px",
+                  borderRadius: "8px 8px 0 0",
+                  color: isActive ? "#1D4ED8" : "#475569",
+                  fontSize: 13, fontWeight: isActive ? 700 : 600,
+                  textDecoration: "none",
+                  transition: "color 0.15s, background 0.15s",
+                  whiteSpace: "nowrap",
+                  borderBottom: isActive ? "2px solid #1D4ED8" : "2px solid transparent",
+                  background: isActive ? "rgba(29,78,216,0.05)" : "transparent",
+                }}
+                onMouseEnter={e => { if (!isActive) { e.currentTarget.style.color = "#1D4ED8"; e.currentTarget.style.background = "rgba(29,78,216,0.06)"; } }}
+                onMouseLeave={e => { if (!isActive) { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; } }}
+              >
+                🎫 My Passes
+              </a>
+            );
+          })()}
+
           {/* Resources dropdown */}
           <div style={{ position: "relative" }}>
             <button

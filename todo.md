@@ -720,3 +720,8 @@
 - [x] Wire shared/products.ts into Pricing.tsx — remove local price/name constants, import from shared
 - [x] Add active link highlighting to LandingNav (activePath prop, highlight current page)
 - [x] Build /account page with pass list, restore access, and subscription management section (already fully built)
+
+## Next Steps Round 2 (May 2026)
+- [x] Add "Already purchased? Restore access" link to PurchaseGate overlay (was already present)
+- [x] Add My Passes link to desktop LandingNav links row
+- [x] Add price-change audit vitest for shared/products.ts (server/products.audit.test.ts, 6 tests)
