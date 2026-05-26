@@ -54,7 +54,7 @@ export default function MathPractice() {
   });
 
   return (
-    <div style={{ fontFamily: "Sora, Nunito, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       <SiteNav currentPath="/math-practice" />
 
       {/* Hero */}

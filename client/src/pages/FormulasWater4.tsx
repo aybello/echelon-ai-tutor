@@ -639,7 +639,7 @@ export default function FormulasWater4() {
   })).filter(s => s.formulas.length > 0);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Inter', sans-serif" }}>      <style>{`
+    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }

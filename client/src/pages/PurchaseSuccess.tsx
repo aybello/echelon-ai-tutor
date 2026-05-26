@@ -7,6 +7,7 @@ import { useEffect, useState, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import LandingNav from "@/components/LandingNav";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -201,16 +202,16 @@ export default function PurchaseSuccess() {
   return (
     <div
       style={{
-        fontFamily: "Sora, Nunito, sans-serif",
+        fontFamily: "'Sora', sans-serif",
         background: "#F8FAFC",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
-        padding: "40px 24px",
       }}
     >
+      <LandingNav currentPath="/purchase-success" />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", width: "100%" }}>
       <div
         style={{
           background: "#fff",
@@ -432,6 +433,7 @@ export default function PurchaseSuccess() {
             </div>
           </>
         )}
+      </div>
       </div>
     </div>
   );

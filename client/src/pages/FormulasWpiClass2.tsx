@@ -516,7 +516,7 @@ export default function FormulasWpiClass2() {
   const cat = CATEGORIES.find(c => c.id === activeCategory) ?? CATEGORIES[0];
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>      <style>{`
+    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }

@@ -154,7 +154,7 @@ export default function Account() {
   const otherPasses = unlockedExamTypes.filter(t => !EXAM_META[t]);
 
   return (
-    <div style={{ fontFamily: "Sora, Nunito, sans-serif", background: "#0F172A", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Sora', sans-serif", background: "#0F172A", minHeight: "100vh" }}>
       <SiteNav currentPath="/account" />
 
       <style>{`

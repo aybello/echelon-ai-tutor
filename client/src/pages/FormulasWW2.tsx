@@ -953,7 +953,7 @@ export default function FormulasWW2() {
   const BRAND = "#0F766E";
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', 'Inter', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
         .cat-chip:hover { opacity: 0.85; transform: translateY(-1px); }

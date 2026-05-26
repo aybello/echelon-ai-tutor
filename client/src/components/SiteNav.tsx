@@ -103,7 +103,6 @@ export const NAV_LINKS = [
   { label: "🧪 Chem Calc",     href: "/chem-calc" },
   { label: "🔬 Lab",           href: "/lab" },
   { label: "🗺️ Career Map",    href: "/career" },
-  { label: "📋 Mock Exam",     href: "/oit-mock" },
   { label: "ℹ️ About",         href: "/about" },
   { label: "📊 Dashboard",      href: "/dashboard" },
   { label: "🎫 My Passes",      href: "/account" },
@@ -211,9 +210,13 @@ interface SiteNavProps {
   rightSlot?: ReactNode;
 }
 
-/** Returns true when the current path is a "marketing" page (not a deep quiz/exam page). */
+/**
+ * Returns true when the current path is a public-facing page (landing, about, pricing, WPI overview).
+ * These pages show a simplified desktop nav without contextual quiz/mock links.
+ * Study tool pages (/quiz, /oit-mock, etc.) are NOT marketing pages.
+ */
 function isMarketingPage(path: string): boolean {
-  return path === "/" || path === "/wpi" || path === "/pricing" || path === "/about" || path === "/career" || path === "/formulas" || path === "/process" || path === "/wastewater" || path === "/quiz" || path === "/oit-mock" || path === "/oit-ww" || path === "/oit-ww-mock";
+  return path === "/" || path === "/wpi" || path === "/pricing" || path === "/about" || path === "/career";
 }
 
 /** Returns the 5-6 most contextually relevant desktop nav links for the current path. */

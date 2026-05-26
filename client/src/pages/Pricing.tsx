@@ -9,6 +9,7 @@ import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useAuth } from "@/_core/hooks/useAuth";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
+import LandingNav from "@/components/LandingNav";
 
 type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access";
 type SubscriptionProvince = "ontario" | "western";
@@ -753,7 +754,7 @@ const WPI_WATER_LABELS: Record<string, { shortName: string; description: string;
 
 // ─── Responsive styles injected once ────────────────────────────────────────
 const PRICING_STYLES = `
-  .pricing-page { font-family: Sora, Nunito, sans-serif; background: #F8FAFC; min-height: 100vh; }
+  .pricing-page { font-family: 'Sora', sans-serif; background: #F8FAFC; min-height: 100vh; }
 
   /* Nav */
   .pricing-nav {
@@ -955,7 +956,7 @@ export default function Pricing() {
   const [showIndividual, setShowIndividual] = useState(false);
 
   // Active subscriptions — used to show "Your Current Plan" badge
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const { data: mySubsData } = trpc.stripe.getMySubscriptions.useQuery(
     { email: user?.email ?? undefined },
     { enabled: !!user?.email }
@@ -970,26 +971,7 @@ export default function Pricing() {
       <style>{PRICING_STYLES}</style>
 
       {/* ── Nav ── */}
-      <nav className="pricing-nav">
-        <Link href="/">
-          <div className="pricing-nav-logo">
-            <img
-              src={LOGO_URL}
-              alt="Echelon Institute"
-              style={{ height: 36, width: "auto", objectFit: "contain" }}
-            />
-            <span>Echelon Institute</span>
-          </div>
-        </Link>
-        <div className="pricing-nav-actions">
-          <Link href="/">
-            <span className="pricing-nav-back">← Back to Home</span>
-          </Link>
-          <Link href="/quiz">
-            <button className="pricing-nav-cta">Try Free →</button>
-          </Link>
-        </div>
-      </nav>
+      <LandingNav isAuthenticated={!!isAuthenticated} currentPath="/pricing" />
 
       {/* ── Hero ── */}
       <div className="pricing-hero">

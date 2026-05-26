@@ -266,7 +266,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)", fontFamily: "'Inter', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         .fc-wrap { perspective: 1200px; width: 100%; max-width: 680px; margin: 0 auto; }
         .fc-inner { position: relative; width: 100%; min-height: 320px; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }

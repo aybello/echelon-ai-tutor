@@ -40,7 +40,7 @@ class ErrorBoundary extends Component<Props, State> {
           style={{
             minHeight: "100vh",
             background: "#F1F5F9",
-            fontFamily: "'Sora', 'Inter', sans-serif",
+            fontFamily: "'Sora', sans-serif",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

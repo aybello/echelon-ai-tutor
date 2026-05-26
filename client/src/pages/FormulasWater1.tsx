@@ -602,7 +602,7 @@ export default function FormulasWater1() {
   const totalFormulas = CATEGORIES.reduce((sum, c) => sum + c.formulas.length, 0);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Inter', 'Sora', sans-serif" }}>      <style>{`
+    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }

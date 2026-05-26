@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import LandingNav from "@/components/LandingNav";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -70,11 +71,10 @@ export default function SubscriptionSuccess() {
       background: "linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #0F172A 100%)",
       display: "flex",
       flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      padding: "24px 16px",
-      fontFamily: "Sora, Nunito, sans-serif",
+      fontFamily: "'Sora', sans-serif",
     }}>
+      <LandingNav currentPath="/subscription-success" />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "24px 16px", width: "100%" }}>
       <div style={{
         background: "#fff",
         borderRadius: 20,
@@ -143,6 +143,7 @@ export default function SubscriptionSuccess() {
           support@echeloninstitute.ca
         </a>
       </p>
+      </div>
     </div>
   );
 }

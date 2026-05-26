@@ -257,7 +257,7 @@ export default function StudentDashboard() {
                     color: examCountdown.data.daysUntil <= 7 ? RED : examCountdown.data.daysUntil <= 14 ? AMBER : TEAL,
                     fontSize: 28,
                     fontWeight: 900,
-                    fontFamily: "Nunito, sans-serif",
+                    fontFamily: "'Sora', sans-serif",
                     lineHeight: 1,
                   }}
                 >
@@ -266,7 +266,7 @@ export default function StudentDashboard() {
                 <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 600 }}>days left</div>
               </div>
               <div style={{ textAlign: "center" }}>
-                <div style={{ color: "#F1F5F9", fontSize: 18, fontWeight: 800, fontFamily: "Nunito, sans-serif", lineHeight: 1 }}>
+                <div style={{ color: "#F1F5F9", fontSize: 18, fontWeight: 800, fontFamily: "'Sora', sans-serif", lineHeight: 1 }}>
                   {examCountdown.data.avgQuestionsPerDay}
                 </div>
                 <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 600 }}>Qs/day avg</div>
@@ -509,7 +509,7 @@ export default function StudentDashboard() {
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
                     <div>
-                      <div style={{ color: c.accuracy >= 70 ? GREEN : c.accuracy >= 50 ? AMBER : RED, fontSize: 22, fontWeight: 900, fontFamily: "Nunito, sans-serif" }}>
+                      <div style={{ color: c.accuracy >= 70 ? GREEN : c.accuracy >= 50 ? AMBER : RED, fontSize: 22, fontWeight: 900, fontFamily: "'Sora', sans-serif" }}>
                         {c.accuracy}%
                       </div>
                       <div style={{ color: "#64748B", fontSize: 11 }}>{c.correct}/{c.total} correct</div>
@@ -663,7 +663,7 @@ export default function StudentDashboard() {
                       <td style={{ padding: "10px 12px", color: "#94A3B8", textTransform: "capitalize" }}>
                         {s.quizMode ?? "standard"}
                       </td>
-                      <td style={{ padding: "10px 12px", color: "#F1F5F9", textAlign: "right", fontFamily: "Nunito, sans-serif", fontWeight: 700 }}>
+                      <td style={{ padding: "10px 12px", color: "#F1F5F9", textAlign: "right", fontFamily: "'Sora', sans-serif", fontWeight: 700 }}>
                         {s.correct}/{s.total}
                       </td>
                       <td style={{ padding: "10px 12px", textAlign: "right" }}>
@@ -706,7 +706,7 @@ function StatCard({ label, value, icon, color }: { label: string; value: string;
       }}
     >
       <div style={{ fontSize: 22, marginBottom: 6 }}>{icon}</div>
-      <div style={{ color, fontSize: 24, fontWeight: 900, fontFamily: "Nunito, sans-serif", lineHeight: 1.1 }}>{value}</div>
+      <div style={{ color, fontSize: 24, fontWeight: 900, fontFamily: "'Sora', sans-serif", lineHeight: 1.1 }}>{value}</div>
       <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 600, marginTop: 4 }}>{label}</div>
     </div>
   );

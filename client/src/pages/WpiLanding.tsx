@@ -188,7 +188,7 @@ export default function WpiLanding() {
   const track = TRACKS.find(t => t.id === activeTrack)!;
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700;800&display=swap');
         .wpi-track-tab { transition: background 0.15s, color 0.15s, border-color 0.15s; }

@@ -1171,7 +1171,7 @@ export default function Landing() {
   }, []);
 
   return (
-    <div style={{ fontFamily: "Sora, Nunito, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       {nationalWaitlistOpen && (
         <NationalWaitlistModal
           defaultProvince={nationalWaitlistProvince}

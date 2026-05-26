@@ -78,7 +78,7 @@ export default function QuizSettingsDrawer({
           boxShadow: "-8px 0 40px rgba(0,0,0,0.18)",
           display: "flex",
           flexDirection: "column",
-          fontFamily: "'Sora', Nunito, sans-serif",
+          fontFamily: "'Sora', sans-serif",
           overflowY: "auto",
         }}
       >

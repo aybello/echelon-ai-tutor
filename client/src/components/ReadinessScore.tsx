@@ -49,7 +49,7 @@ export default function ReadinessScore({ history }: Props) {
       >
         <span
           style={{
-            fontFamily: "'Nunito', sans-serif",
+            fontFamily: "'Sora', sans-serif",
             fontSize: 13,
             fontWeight: 800,
             color,

@@ -77,7 +77,7 @@ export default function CheckoutContactModal({
     borderRadius: 10,
     border: "1.5px solid #CBD5E1",
     fontSize: 14,
-    fontFamily: "Sora, Nunito, sans-serif",
+    fontFamily: "'Sora', sans-serif",
     color: "#0F172A",
     background: "#FAFBFC",
     outline: "none",
@@ -128,7 +128,7 @@ export default function CheckoutContactModal({
           width: "100%",
           boxShadow: "0 32px 80px rgba(0,0,0,0.30)",
           position: "relative",
-          fontFamily: "Sora, Nunito, sans-serif",
+          fontFamily: "'Sora', sans-serif",
         }}
       >
         {/* Close button */}

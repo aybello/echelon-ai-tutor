@@ -703,3 +703,15 @@
 - [ ] Confirm full list of 5 regulated trades in North American TAM (water/wastewater confirmed, Power Engineering confirmed, 3 others TBD)
 - [ ] Finalize one-sentence pitch for a16z application once trade list is confirmed
 - [ ] Complete a16z application using pitch deck content as source material
+
+## Incoherence Fixes (Audit May 2026)
+
+- [x] Fix font drift -- remove Inter/Nunito hardcodes in FlashcardShell, WpiLanding; unify to Sora
+- [x] Fix Pricing page nav -- replace bespoke one-off nav with LandingNav component
+- [x] Fix PurchaseSuccess -- add LandingNav header and escape route
+- [x] Fix SubscriptionSuccess -- add LandingNav header and escape route
+- [x] Fix Pricing SSOT -- create shared/products.ts module imported by both server and Pricing.tsx
+- [x] Remove dead code -- delete MobileBottomNav.tsx (never imported anywhere)
+- [x] Fix DashboardLayout placeholder menu items (Page 1 / Page 2)
+- [x] Fix SiteNav NAV_LINKS -- remove duplicate /oit-mock entry (appears twice)
+- [x] Fix isMarketingPage() -- rename or correct logic that mislabels /quiz and /oit-mock as marketing pages

@@ -188,7 +188,7 @@ export default function PurchaseGate({
     <div
       className="pg-outer"
       style={{
-        fontFamily: "Sora, Nunito, sans-serif",
+        fontFamily: "'Sora', sans-serif",
         minHeight: "100vh",
         background: "rgba(248,250,252,0.85)",
         backdropFilter: "blur(2px)",
