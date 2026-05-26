@@ -715,3 +715,8 @@
 - [x] Fix DashboardLayout placeholder menu items (Page 1 / Page 2)
 - [x] Fix SiteNav NAV_LINKS -- remove duplicate /oit-mock entry (appears twice)
 - [x] Fix isMarketingPage() -- rename or correct logic that mislabels /quiz and /oit-mock as marketing pages
+
+## Next Steps (May 2026)
+- [x] Wire shared/products.ts into Pricing.tsx — remove local price/name constants, import from shared
+- [x] Add active link highlighting to LandingNav (activePath prop, highlight current page)
+- [x] Build /account page with pass list, restore access, and subscription management section (already fully built)

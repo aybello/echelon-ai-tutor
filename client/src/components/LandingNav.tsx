@@ -85,7 +85,10 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
         {/* Desktop nav links */}
         <div className="lnav-links" style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "nowrap" }}>
           {NAV_LINKS.map(item => {
-            const isActive = activePath === "/wpi" && item.href === "/wpi";
+            // Match exact path or hash-anchor pages (treat /#courses as active on /)
+            const isActive = item.href === activePath ||
+              (item.href.startsWith("/#") && activePath === "/") ||
+              (item.href !== "/" && activePath.startsWith(item.href));
             return (
               <a key={item.label} href={item.href}
                 style={{
@@ -97,6 +100,7 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
                   transition: "color 0.15s, background 0.15s",
                   whiteSpace: "nowrap",
                   borderBottom: isActive ? "2px solid #1D4ED8" : "2px solid transparent",
+                  background: isActive ? "rgba(29,78,216,0.05)" : "transparent",
                 }}
                 onMouseEnter={e => { if (!isActive) { e.currentTarget.style.color = "#1D4ED8"; e.currentTarget.style.background = "rgba(29,78,216,0.06)"; } }}
                 onMouseLeave={e => { if (!isActive) { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; } }}
@@ -270,25 +274,30 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
           borderBottom: "1px solid #F1F5F9",
           scrollbarWidth: "none" as const,
         }}>
-          {NAV_LINKS.map(item => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={() => setMobileNavOpen(false)}
-              style={{
-                flexShrink: 0,
-                padding: "11px 14px",
-                color: "#475569",
-                fontSize: 12,
-                fontWeight: 600,
-                textDecoration: "none",
-                whiteSpace: "nowrap",
-                borderBottom: "2px solid transparent",
-              }}
-            >
-              {item.label}
-            </a>
-          ))}
+          {NAV_LINKS.map(item => {
+            const isMobileActive = item.href === activePath ||
+              (item.href.startsWith("/#") && activePath === "/") ||
+              (item.href !== "/" && activePath.startsWith(item.href));
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setMobileNavOpen(false)}
+                style={{
+                  flexShrink: 0,
+                  padding: "11px 14px",
+                  color: isMobileActive ? "#1D4ED8" : "#475569",
+                  fontSize: 12,
+                  fontWeight: isMobileActive ? 700 : 600,
+                  textDecoration: "none",
+                  whiteSpace: "nowrap",
+                  borderBottom: isMobileActive ? "2px solid #1D4ED8" : "2px solid transparent",
+                }}
+              >
+                {item.label}
+              </a>
+            );
+          })}
         </div>
 
         {/* Study tools 2-col grid */}
