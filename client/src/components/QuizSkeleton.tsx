@@ -3,7 +3,8 @@
  * is being fetched from the database.
  *
  * When `dbUnavailable` is true, shows a friendly "starting up" message
- * with a 5-second auto-retry countdown and a progress bar animation.
+ * with a smart retry countdown. The first retry waits 10s (TiDB cold-start
+ * typically takes 8–15s), subsequent retries wait 15s each.
  */
 import { useState, useEffect, useRef } from "react";
 
@@ -11,14 +12,22 @@ interface QuizSkeletonProps {
   dbUnavailable?: boolean;
 }
 
+// Retry delays in seconds: first retry at 10s, then 15s each subsequent
+const RETRY_DELAYS = [10, 15, 15, 15, 15];
+
 export default function QuizSkeleton({ dbUnavailable = false }: QuizSkeletonProps) {
+  const [retryCount, setRetryCount] = useState(0);
   const [retrying, setRetrying] = useState(false);
-  const [countdown, setCountdown] = useState(5);
+  const [countdown, setCountdown] = useState(RETRY_DELAYS[0]);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const totalDelay = RETRY_DELAYS[Math.min(retryCount, RETRY_DELAYS.length - 1)];
 
   // Auto-retry countdown when DB is waking up
   useEffect(() => {
     if (!dbUnavailable) return;
+
+    const delay = RETRY_DELAYS[Math.min(retryCount, RETRY_DELAYS.length - 1)];
+    setCountdown(delay);
 
     timerRef.current = setInterval(() => {
       setCountdown(prev => {
@@ -34,10 +43,10 @@ export default function QuizSkeleton({ dbUnavailable = false }: QuizSkeletonProp
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [dbUnavailable]);
+  }, [dbUnavailable, retryCount]);
 
   if (dbUnavailable) {
-    const progress = ((5 - countdown) / 5) * 100;
+    const progress = ((totalDelay - countdown) / totalDelay) * 100;
 
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
@@ -53,10 +62,11 @@ export default function QuizSkeleton({ dbUnavailable = false }: QuizSkeletonProp
           {/* Message */}
           <div>
             <h2 className="text-xl font-semibold text-slate-800 mb-2">
-              Starting Up…
+              Waking Up the Question Bank…
             </h2>
             <p className="text-slate-500 text-sm leading-relaxed">
-              The question database is spinning up. This takes just a few seconds on the first visit of the day.
+              You are the first visitor today — the database is starting up fresh.
+              This takes about 10–15 seconds and only happens once per day.
             </p>
           </div>
 
@@ -92,13 +102,13 @@ export default function QuizSkeleton({ dbUnavailable = false }: QuizSkeletonProp
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
-                Retry Now
+                Try Now
               </>
             )}
           </button>
 
           <p className="text-slate-400 text-xs">
-            If this keeps happening, please contact support.
+            Once loaded, questions are cached for 24 hours — you will never see this again today.
           </p>
         </div>
       </div>
