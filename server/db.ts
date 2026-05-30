@@ -15,7 +15,7 @@ let _pool: mysql.Pool | null = null;
  * The background keep-alive ping will attempt reconnection.
  */
 let _lastFailedAt = 0;
-const COOLDOWN_MS = 60_000; // Don't retry for 60s after a failure
+const COOLDOWN_MS = 15_000; // Don't retry for 15s after a failure (matches TiDB cold-start time)
 
 /**
  * Create a mysql2 connection pool with TiDB-friendly settings.
@@ -35,7 +35,7 @@ function createPool(): mysql.Pool {
 /**
  * Get the database instance. Returns null immediately if:
  * - No DATABASE_URL configured
- * - A connection attempt failed within the last 60 seconds
+ * - A connection attempt failed within the last 15 seconds
  *
  * On first call (or after cooldown), attempts a single connection.
  * The background keep-alive ping handles reconnection after failures.

@@ -58,8 +58,8 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     {
       enabled: mode === "lazy" && !cached,
       staleTime: 1000 * 60 * 5,
-      retry: 2,
-      retryDelay: 3000,
+      retry: 4,
+      retryDelay: 5000, // TiDB cold-start can take 10-15s; 4 retries × 5s = 20s window
     }
   );
 
@@ -69,8 +69,8 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     {
       staleTime: 1000 * 60 * 30,
       enabled: !cached && (mode === "full" || (mode === "lazy" && batchQuery.isSuccess)),
-      retry: 2,
-      retryDelay: 3000,
+      retry: 4,
+      retryDelay: 5000,
     }
   );
 
@@ -79,8 +79,8 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     {
       staleTime: 1000 * 60 * 30,
       enabled: !cached,
-      retry: 2,
-      retryDelay: 3000,
+      retry: 4,
+      retryDelay: 5000,
     }
   );
 
@@ -89,8 +89,8 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     {
       staleTime: 1000 * 60 * 30,
       enabled: !cached,
-      retry: 2,
-      retryDelay: 3000,
+      retry: 4,
+      retryDelay: 5000,
     }
   );
 

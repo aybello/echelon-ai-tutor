@@ -1170,6 +1170,20 @@ export default function Landing() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // ── Silent DB warm-up on landing page mount ───────────────────────────────
+  // New visitors have no localStorage cache. Fire a background prefetch to OIT
+  // (the most common entry point) so TiDB is warm before the user clicks
+  // "Try Free Practice". The result is discarded — this is purely a warm-up.
+  const utils = trpc.useUtils();
+  useEffect(() => {
+    // Only prefetch if there is no cached OIT bank already
+    const hasCache = !!localStorage.getItem("echelon_qbank_v2_oit");
+    if (hasCache) return;
+    // Fire and forget — ignore result
+    utils.quiz.getRandomQuestions.prefetch({ bankKey: "oit", limit: 5 }).catch(() => {});
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       {nationalWaitlistOpen && (
