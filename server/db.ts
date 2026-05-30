@@ -153,6 +153,50 @@ export function startDbKeepAlive() {
   console.log("[Database] Keep-alive started (every 2 min)");
 }
 
+/**
+ * Force a reconnection attempt, bypassing the cooldown.
+ * Used by the Heartbeat keepalive endpoint to ensure TiDB is always reachable.
+ * Unlike getDb(), this always tries to connect even if a recent failure occurred.
+ */
+export async function forceReconnect(): Promise<boolean> {
+  if (!process.env.DATABASE_URL) return false;
+
+  // If already connected, just ping to verify
+  if (_db && _pool) {
+    try {
+      await _pool.query("SELECT 1");
+      return true;
+    } catch (err) {
+      console.warn("[Database] forceReconnect ping failed, resetting:", (err as Error).message);
+      if (_pool) _pool.end().catch(() => {});
+      _db = null;
+      _pool = null;
+      _lastFailedAt = Date.now();
+    }
+  }
+
+  // Clear the cooldown so we can attempt reconnection immediately
+  _lastFailedAt = 0;
+
+  try {
+    _pool = createPool();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    _db = drizzle(_pool as any) as any;
+    await _pool.query("SELECT 1");
+    _lastFailedAt = 0;
+    console.log("[Database] forceReconnect: reconnected to TiDB");
+    return true;
+  } catch (error) {
+    const msg = (error as Error).message || String(error);
+    console.warn(`[Database] forceReconnect failed: ${msg}`);
+    if (_pool) _pool.end().catch(() => {});
+    _db = null;
+    _pool = null;
+    _lastFailedAt = Date.now();
+    return false;
+  }
+}
+
 export async function upsertUser(user: InsertUser): Promise<void> {
   if (!user.openId) {
     throw new Error("User openId is required for upsert");
