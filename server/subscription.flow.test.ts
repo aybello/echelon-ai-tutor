@@ -172,7 +172,7 @@ describe("Subscription checkAccess", () => {
     expect(result.hasAccess).toBe(false);
   });
 
-  it("returns hasAccess:false when email is not provided", async () => {
+  it("returns hasAccess:false for a guest (no login required)", async () => {
     const caller = appRouter.createCaller(makeCtx());
     const result = await caller.stripe.checkAccess({ examType: "class1-water" });
     expect(result.hasAccess).toBe(false);
@@ -211,10 +211,8 @@ describe("getMySubscriptions", () => {
     expect(result.unlockedExamTypes.length).toBeGreaterThan(0);
   });
 
-  it("returns empty arrays when no email is provided", async () => {
+  it("throws UNAUTHORIZED when user is not logged in", async () => {
     const caller = appRouter.createCaller(makeCtx());
-    const result = await caller.stripe.getMySubscriptions({});
-    expect(result.subscriptions).toHaveLength(0);
-    expect(result.unlockedExamTypes).toHaveLength(0);
+    await expect(caller.stripe.getMySubscriptions({})).rejects.toMatchObject({ code: "UNAUTHORIZED" });
   });
 });

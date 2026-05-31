@@ -102,6 +102,8 @@ export const purchases = mysqlTable("purchases", {
   referralSource: varchar("referralSource", { length: 128 }),
   phone: varchar("phone", { length: 32 }), // captured from Stripe checkout
   customerName: varchar("customerName", { length: 128 }), // captured from pre-checkout modal
+  status: varchar("status", { length: 32 }).notNull().default("active"), // 'active' | 'refunded' | 'disputed'
+  refundedAt: timestamp("refundedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type Purchase = typeof purchases.$inferSelect;

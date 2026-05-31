@@ -8,6 +8,7 @@ import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendS
 import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI } from "./subscriptionProducts";
 import { PRODUCT_STUDY_PATHS } from "./products";
 import { eq, and } from "drizzle-orm";
+import { normalizeEmail } from "../_core/access";
 
 
 export function registerStripeWebhook(app: Express) {
@@ -19,15 +20,18 @@ export function registerStripeWebhook(app: Express) {
       const sig = req.headers["stripe-signature"];
       const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
-      let event;
+      if (!webhookSecret) {
+        console.error("[Stripe Webhook] STRIPE_WEBHOOK_SECRET not configured -- rejecting.");
+        return res.status(500).send("Webhook not configured");
+      }
+      if (!sig) {
+        console.warn("[Stripe Webhook] Missing stripe-signature header -- rejecting.");
+        return res.status(400).send("Missing signature");
+      }
 
+      let event;
       try {
-        if (!webhookSecret || !sig) {
-          // No webhook secret configured — accept but log
-          event = JSON.parse(req.body.toString());
-        } else {
-          event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
-        }
+        event = stripe.webhooks.constructEvent(req.body, sig, webhookSecret);
       } catch (err: any) {
         console.error("[Stripe Webhook] Signature verification failed:", err.message);
         return res.status(400).send(`Webhook Error: ${err.message}`);
@@ -35,14 +39,8 @@ export function registerStripeWebhook(app: Express) {
 
       // Guard against malformed events
       if (!event || !event.id) {
-        console.warn("[Stripe Webhook] Received event with no id — ignoring");
+        console.warn("[Stripe Webhook] Received event with no id -- ignoring");
         return res.json({ received: true });
-      }
-
-      // Handle test events for webhook verification
-      if (event.id.startsWith("evt_test_")) {
-        console.log("[Stripe Webhook] Test event detected, returning verification response");
-        return res.json({ verified: true });
       }
 
       console.log(`[Stripe Webhook] Event: ${event.type} | ID: ${event.id}`);
@@ -56,10 +54,11 @@ export function registerStripeWebhook(app: Express) {
 
           const productKey = session.metadata?.product_key;
           const productName = session.metadata?.product_name;
-          const email =
+          const email = normalizeEmail(
             session.customer_details?.email ??
             session.customer_email ??
-            session.metadata?.customer_email;
+            session.metadata?.customer_email
+          );
           const userId = session.metadata?.user_id
             ? parseInt(session.metadata.user_id)
             : null;
@@ -76,6 +75,7 @@ export function registerStripeWebhook(app: Express) {
           const stripePaymentIntentId = session.payment_intent ?? null;
 
           if (!productKey || !email) {
+            // email is already normalized above
             console.error("[Stripe Webhook] Missing product_key or email in session metadata");
             return res.json({ received: true });
           }
@@ -142,7 +142,7 @@ export function registerStripeWebhook(app: Express) {
               const targetUserId = userId ?? (await db
                 .select({ id: users.id })
                 .from(users)
-                .where(eq(users.email, email ?? ""))
+                .where(eq(users.email, normalizeEmail(email)))
                 .limit(1)
                 .then(rows => rows[0]?.id ?? null));
 
@@ -192,12 +192,12 @@ export function registerStripeWebhook(app: Express) {
             return res.json({ received: true });
           }
 
-          // Resolve email from customer
+          // Resolve email from customer (normalized)
           let email: string | null = null;
           if (stripeCustomerId) {
             try {
               const customer = await stripe.customers.retrieve(stripeCustomerId) as any;
-              email = customer.email ?? null;
+              email = normalizeEmail(customer.email);
             } catch (e) { /* ignore */ }
           }
           if (!email) {
@@ -333,6 +333,36 @@ export function registerStripeWebhook(app: Express) {
           } catch (err: any) {
             console.error("[Stripe Webhook] Error processing invoice.payment_failed:", err.message);
           }
+        }
+      }
+
+      if (event.type === "charge.refunded") {
+        const charge = event.data.object as any;
+        const pi = typeof charge.payment_intent === "string" ? charge.payment_intent : charge.payment_intent?.id;
+        if (pi) {
+          try {
+            const db = await getDb();
+            if (db) {
+              await db.update(purchases)
+                .set({ status: "refunded", refundedAt: new Date() })
+                .where(eq(purchases.stripePaymentIntentId, pi));
+              await notifyOwner({ title: "Purchase refunded", content: `Refund for PI ${pi}. Access revoked.` });
+            }
+          } catch (err: any) { console.error("[Stripe Webhook] charge.refunded:", err.message); }
+        }
+      }
+
+      if (event.type === "charge.dispute.created") {
+        const dispute = event.data.object as any;
+        const pi = typeof dispute.payment_intent === "string" ? dispute.payment_intent : dispute.payment_intent?.id;
+        if (pi) {
+          try {
+            const db = await getDb();
+            if (db) {
+              await db.update(purchases).set({ status: "disputed" }).where(eq(purchases.stripePaymentIntentId, pi));
+              await notifyOwner({ title: "\u26a0\ufe0f Dispute opened", content: `Chargeback for PI ${pi}. Review in Stripe.` });
+            }
+          } catch (err: any) { console.error("[Stripe Webhook] dispute.created:", err.message); }
         }
       }
 

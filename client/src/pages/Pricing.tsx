@@ -966,8 +966,8 @@ export default function Pricing() {
   // Active subscriptions — used to show "Your Current Plan" badge
   const { user, isAuthenticated } = useAuth();
   const { data: mySubsData } = trpc.stripe.getMySubscriptions.useQuery(
-    { email: user?.email ?? undefined },
-    { enabled: !!user?.email }
+    undefined,
+    { enabled: !!isAuthenticated }
   );
   // Build a Set of "tier:province" keys for O(1) lookup
   const activePlanKeys = new Set(

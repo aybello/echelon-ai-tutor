@@ -137,11 +137,11 @@ export default function PurchaseGate({
     return <>{children}</>;
   }
 
-  // Server-side access check — runs when logged in (for owner bypass) or when email is stored
+  // Server-side access check — runs when logged in only (identity-based, no client email)
   const { data: accessData, isLoading } = trpc.stripe.checkAccess.useQuery(
-    { examType, email: email || undefined },
+    { examType },
     {
-      enabled: (!!email || isAuthenticated) && !localAccess,
+      enabled: !!isAuthenticated && !localAccess,
       staleTime: 5 * 60 * 1000,
       retry: false,
     }

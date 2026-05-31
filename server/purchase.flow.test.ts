@@ -232,26 +232,23 @@ describe("stripe.verifySession", () => {
 });
 
 describe("stripe.getMyPurchases", () => {
-  it("returns empty arrays when no email is provided and user is not logged in", async () => {
+  it("throws UNAUTHORIZED when user is not logged in", async () => {
     const caller = appRouter.createCaller(makeCtx());
-    const result = await caller.stripe.getMyPurchases({});
-
-    expect(result.purchases).toHaveLength(0);
-    expect(result.unlockedExamTypes).toHaveLength(0);
+    await expect(caller.stripe.getMyPurchases({})).rejects.toMatchObject({ code: "UNAUTHORIZED" });
   });
 });
 
 describe("stripe.checkAccess", () => {
-  it("returns hasAccess:false when no email is provided", async () => {
+  it("returns hasAccess:false for a guest (no login required)", async () => {
     const caller = appRouter.createCaller(makeCtx());
     const result = await caller.stripe.checkAccess({ examType: "oit" });
     expect(result.hasAccess).toBe(false);
   });
 
-  it("returns hasAccess:false when email is provided but no purchase exists", async () => {
+  it("returns hasAccess:false when user is logged in but has no purchase", async () => {
     // DB is empty (mockPurchases = [])
     const caller = appRouter.createCaller(makeCtx());
-    const result = await caller.stripe.checkAccess({ examType: "oit", email: "nobody@example.com" });
+    const result = await caller.stripe.checkAccess({ examType: "oit" });
     expect(result.hasAccess).toBe(false);
   });
 });

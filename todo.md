@@ -725,3 +725,16 @@
 - [x] Add "Already purchased? Restore access" link to PurchaseGate overlay (was already present)
 - [x] Add My Passes link to desktop LandingNav links row
 - [x] Add price-change audit vitest for shared/products.ts (server/products.audit.test.ts, 6 tests)
+
+## Code Hardening (Claude Review — May 2026)
+- [ ] §0.1 Add .project-config.json to .gitignore
+- [ ] §1.1 Fix Stripe webhook — enforce signature, remove evt_test_ backdoor
+- [ ] §1.2 Create server/_core/access.ts; gate getQuestions + getRandomQuestions server-side (FREE_TRIAL_LIMIT=15)
+- [ ] §1.3 Fix IDOR — checkAccess, getMyPurchases, getMySubscriptions, createBillingPortalSession identity-only
+- [ ] §2.1 Normalize emails on all writes; run backfill SQL on TiDB
+- [ ] §2.2 Add status/refundedAt to purchases schema; db:push; add refund + dispute webhook handlers
+- [ ] §2.3 Per-row JSON parsing + throw-on-error in getBankMeta and getModuleOverviews
+- [ ] §2.4 Make Ethereal email fallback dev-only in production
+- [ ] §3.1 Add helmet middleware; reduce body limit to 1MB
+- [ ] §3.2 Add /api/health endpoint
+- [ ] Update affected tests (quiz.smoke.test.ts, questions.bank.test.ts, purchase.flow.test.ts, subscription.flow.test.ts)

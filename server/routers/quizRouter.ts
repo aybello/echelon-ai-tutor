@@ -3,6 +3,8 @@
  * Powers: Missed Question Quiz, Quick 10 mode, and the Agentic Learning Engine
  */
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
+import { TRPCError } from "@trpc/server";
+import { resolveAccess, bankKeyToExamType, FREE_TRIAL_LIMIT } from "../_core/access";
 import { getDb } from "../db";
 import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews } from "../../drizzle/schema";
 import { and, eq, desc, sql } from "drizzle-orm";
@@ -15,18 +17,28 @@ export const quizRouter = router({
    */
   getQuestions: publicProcedure
     .input(z.object({ bankKey: z.string().min(1).max(64) }))
-    .query(async ({ input }) => {
-      try {
-        const db = await getDb();
-        if (!db) return { questions: [] };
-        const rows = await db
-          .select()
-          .from(questions)
-          .where(eq(questions.bankKey, input.bankKey))
-          .orderBy(questions.questionNum);
-        // Parse JSON fields back into objects
-        return {
-          questions: rows.map(r => ({
+    .query(async ({ input, ctx }) => {
+      const db = await getDb();
+      if (!db) {
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      }
+
+      const examType = bankKeyToExamType(input.bankKey);
+      const { hasAccess } = await resolveAccess(ctx.user, examType);
+
+      const rows = await db
+        .select()
+        .from(questions)
+        .where(eq(questions.bankKey, input.bankKey))
+        .orderBy(questions.questionNum);
+
+      const total = rows.length;
+      const visible = hasAccess ? rows : rows.slice(0, FREE_TRIAL_LIMIT);
+
+      // Per-row safe parse: one malformed row is skipped, not fatal to the bank.
+      const parsed = visible.flatMap((r) => {
+        try {
+          return [{
             id: r.questionNum,
             module: r.module,
             difficulty: r.difficulty,
@@ -34,16 +46,18 @@ export const quizRouter = router({
             options: JSON.parse(r.options) as string[],
             correctIndex: r.correctIndex,
             explanation: r.explanation,
-            steps: r.steps ? JSON.parse(r.steps) as { l: string; c: string }[] : undefined,
+            steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
             tip: r.tip ?? undefined,
-            isCalc: r.isCalc === 'yes',
+            isCalc: r.isCalc === "yes",
             topic: r.topic ?? undefined,
-          })),
-        };
-      } catch (err) {
-        console.error("[quizRouter.getQuestions] Error:", err);
-        return { questions: [] };
-      }
+          }];
+        } catch (err) {
+          console.error(`[getQuestions] malformed row ${r.bankKey}#${r.questionNum}:`, err);
+          return [];
+        }
+      });
+
+      return { questions: parsed, locked: !hasAccess, total, trialLimit: FREE_TRIAL_LIMIT };
     }),
 
   /**
@@ -57,36 +71,35 @@ export const quizRouter = router({
       limit: z.number().int().min(1).max(50).default(20),
       excludeIds: z.array(z.number().int()).max(200).default([]),
     }))
-    .query(async ({ input }) => {
-      try {
-        const db = await getDb();
-        if (!db) return { questions: [] };
-        // Use ORDER BY RAND() with LIMIT for a small random sample
-        const excludeClause = input.excludeIds.length > 0
-          ? sql` AND ${questions.questionNum} NOT IN (${sql.join(input.excludeIds.map(id => sql`${id}`), sql`, `)})`
-          : sql``;
-        const rows = await db.execute(
-          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey}${excludeClause} ORDER BY RAND() LIMIT ${input.limit}`
-        );
-        return {
-          questions: (rows[0] as unknown as any[]).map((r: any) => ({
-            id: r.questionNum,
-            module: r.module,
-            difficulty: r.difficulty,
-            question: r.question,
-            options: JSON.parse(r.options) as string[],
-            correctIndex: r.correctIndex,
-            explanation: r.explanation,
-            steps: r.steps ? JSON.parse(r.steps) as { l: string; c: string }[] : undefined,
-            tip: r.tip ?? undefined,
-            isCalc: r.isCalc === 'yes',
-            topic: r.topic ?? undefined,
-          })),
-        };
-      } catch (err) {
-        console.error("[quizRouter.getRandomQuestions] Error:", err);
-        return { questions: [] };
-      }
+    .query(async ({ input, ctx }) => {
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+
+      const examType = bankKeyToExamType(input.bankKey);
+      const { hasAccess } = await resolveAccess(ctx.user, examType);
+
+      const excludeClause = input.excludeIds.length > 0
+        ? sql` AND ${questions.questionNum} NOT IN (${sql.join(input.excludeIds.map((id) => sql`${id}`), sql`, `)})`
+        : sql``;
+      // Non-entitled users can only ever draw from the first FREE_TRIAL_LIMIT questions.
+      const trialClause = hasAccess
+        ? sql``
+        : sql` AND ${questions.questionNum} <= ${FREE_TRIAL_LIMIT}`;
+
+      const rows = await db.execute(
+        sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey}${excludeClause}${trialClause} ORDER BY RAND() LIMIT ${input.limit}`
+      );
+      const list = (rows[0] as unknown as any[]).flatMap((r: any) => {
+        try {
+          return [{
+            id: r.questionNum, module: r.module, difficulty: r.difficulty, question: r.question,
+            options: JSON.parse(r.options) as string[], correctIndex: r.correctIndex, explanation: r.explanation,
+            steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
+            tip: r.tip ?? undefined, isCalc: r.isCalc === "yes", topic: r.topic ?? undefined,
+          }];
+        } catch { return []; }
+      });
+      return { questions: list, locked: !hasAccess };
     }),
 
   /**
@@ -95,27 +108,35 @@ export const quizRouter = router({
   getBankMeta: publicProcedure
     .input(z.object({ bankKey: z.string().min(1).max(64) }))
     .query(async ({ input }) => {
-      try {
-        const db = await getDb();
-        if (!db) return null;
-        const rows = await db
-          .select()
-          .from(questionBankMeta)
-          .where(eq(questionBankMeta.bankKey, input.bankKey))
-          .limit(1);
-        if (rows.length === 0) return null;
-        const row = rows[0];
-        return {
-          bankKey: row.bankKey,
-          modules: JSON.parse(row.modules) as string[],
-          moduleTargets: row.moduleTargets ? JSON.parse(row.moduleTargets) as Record<string, number> : null,
-          formulaLinks: row.formulaLinks ? JSON.parse(row.formulaLinks) as Record<string, string> : null,
-          totalQuestions: row.totalQuestions,
-        };
-      } catch (err) {
-        console.error("[quizRouter.getBankMeta] Error:", err);
-        return null;
+      const db = await getDb();
+      if (!db) {
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       }
+      const rows = await db
+        .select()
+        .from(questionBankMeta)
+        .where(eq(questionBankMeta.bankKey, input.bankKey))
+        .limit(1);
+      if (rows.length === 0) return null;
+      const row = rows[0];
+      // Per-field safe parse: a malformed JSON field returns null rather than crashing the whole response.
+      let modules: string[] = [];
+      try { modules = JSON.parse(row.modules) as string[]; }
+      catch (err) { console.error(`[getBankMeta] malformed modules for ${row.bankKey}:`, err); }
+
+      let moduleTargets: Record<string, number> | null = null;
+      if (row.moduleTargets) {
+        try { moduleTargets = JSON.parse(row.moduleTargets) as Record<string, number>; }
+        catch (err) { console.error(`[getBankMeta] malformed moduleTargets for ${row.bankKey}:`, err); }
+      }
+
+      let formulaLinks: Record<string, string> | null = null;
+      if (row.formulaLinks) {
+        try { formulaLinks = JSON.parse(row.formulaLinks) as Record<string, string>; }
+        catch (err) { console.error(`[getBankMeta] malformed formulaLinks for ${row.bankKey}:`, err); }
+      }
+
+      return { bankKey: row.bankKey, modules, moduleTargets, formulaLinks, totalQuestions: row.totalQuestions };
     }),
 
   /**
@@ -124,19 +145,21 @@ export const quizRouter = router({
   getModuleOverviews: publicProcedure
     .input(z.object({ bankKey: z.string().min(1).max(64) }))
     .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) {
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      }
+      const rows = await db
+        .select()
+        .from(moduleOverviews)
+        .where(eq(moduleOverviews.bankKey, input.bankKey))
+        .limit(1);
+      if (rows.length === 0) return null;
       try {
-        const db = await getDb();
-        if (!db) return null;
-        const rows = await db
-          .select()
-          .from(moduleOverviews)
-          .where(eq(moduleOverviews.bankKey, input.bankKey))
-          .limit(1);
-        if (rows.length === 0) return null;
         return JSON.parse(rows[0].overviewsJson);
       } catch (err) {
-        console.error("[quizRouter.getModuleOverviews] Error:", err);
-        return null;
+        console.error(`[getModuleOverviews] malformed overviewsJson for ${input.bankKey}:`, err);
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Module overviews data is corrupted" });
       }
     }),
 

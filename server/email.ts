@@ -46,18 +46,17 @@ export async function sendPurchaseConfirmationEmail(
 
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
-  } else {
-    // Fallback: Ethereal test account (emails visible at ethereal.email)
+  } else if (!ENV.isProduction) {
     const testAccount = await nodemailer.createTestAccount();
     transporter = nodemailer.createTransport({
       host: "smtp.ethereal.email",
       port: 587,
       secure: false,
-      auth: {
-        user: testAccount.user,
-        pass: testAccount.pass,
-      },
+      auth: { user: testAccount.user, pass: testAccount.pass },
     });
+  } else {
+    console.error("[email] SMTP not configured in production — cannot send purchase confirmation.");
+    throw new Error("Email service not configured");
   }
 
   const siteUrl = "https://echeloninstitute.ca";
@@ -207,7 +206,7 @@ export async function sendSubscriptionConfirmationEmail(
   let transporter: nodemailer.Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
-  } else {
+  } else if (!ENV.isProduction) {
     const testAccount = await nodemailer.createTestAccount();
     transporter = nodemailer.createTransport({
       host: "smtp.ethereal.email",
@@ -215,6 +214,9 @@ export async function sendSubscriptionConfirmationEmail(
       secure: false,
       auth: { user: testAccount.user, pass: testAccount.pass },
     });
+  } else {
+    console.error("[email] SMTP not configured in production — cannot send subscription confirmation.");
+    throw new Error("Email service not configured");
   }
 
   const siteUrl = "https://echeloninstitute.ca";
@@ -315,7 +317,7 @@ export async function sendSubscriptionRenewalEmail(
   let transporter: nodemailer.Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
-  } else {
+  } else if (!ENV.isProduction) {
     const testAccount = await nodemailer.createTestAccount();
     transporter = nodemailer.createTransport({
       host: "smtp.ethereal.email",
@@ -323,6 +325,9 @@ export async function sendSubscriptionRenewalEmail(
       secure: false,
       auth: { user: testAccount.user, pass: testAccount.pass },
     });
+  } else {
+    console.error("[email] SMTP not configured in production — cannot send renewal email.");
+    throw new Error("Email service not configured");
   }
 
   const siteUrl = "https://echeloninstitute.ca";
@@ -420,18 +425,17 @@ export async function sendContactEmail(payload: ContactEmailPayload): Promise<vo
 
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
-  } else {
-    // Fallback: Ethereal test account (emails visible at ethereal.email)
+  } else if (!ENV.isProduction) {
     const testAccount = await nodemailer.createTestAccount();
     transporter = nodemailer.createTransport({
       host: "smtp.ethereal.email",
       port: 587,
       secure: false,
-      auth: {
-        user: testAccount.user,
-        pass: testAccount.pass,
-      },
+      auth: { user: testAccount.user, pass: testAccount.pass },
     });
+  } else {
+    console.error("[email] SMTP not configured in production — cannot send contact email.");
+    throw new Error("Email service not configured");
   }
 
   // ── 1. Notification email to Echelon inbox ──────────────────────────────

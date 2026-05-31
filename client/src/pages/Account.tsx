@@ -1,6 +1,7 @@
 // Account.tsx — Restore Access / My Passes
 // Design: Professional SaaS — Clean Dark-Accent, matches site palette
 import { useState, useEffect } from "react";
+import { useAuth } from "@/_core/hooks/useAuth";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
@@ -87,14 +88,16 @@ export default function Account() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [portalLoading, setPortalLoading] = useState(false);
 
+  const { isAuthenticated } = useAuth();
+
   const getPurchases = trpc.stripe.getMyPurchases.useQuery(
-    { email: submittedEmail ?? "" },
-    { enabled: !!submittedEmail, retry: false }
+    undefined,
+    { enabled: !!isAuthenticated, retry: false }
   );
 
   const getSubscriptions = trpc.stripe.getMySubscriptions.useQuery(
-    { email: submittedEmail ?? "" },
-    { enabled: !!submittedEmail, retry: false }
+    undefined,
+    { enabled: !!isAuthenticated, retry: false }
   );
 
   const createBillingPortal = trpc.stripe.createBillingPortalSession.useMutation({
@@ -107,10 +110,9 @@ export default function Account() {
   });
 
   const handleManageSubscription = () => {
-    if (!submittedEmail) return;
     setPortalLoading(true);
     createBillingPortal.mutate(
-      { email: submittedEmail, origin: window.location.origin },
+      { origin: window.location.origin },
       { onSettled: () => setPortalLoading(false) }
     );
   };

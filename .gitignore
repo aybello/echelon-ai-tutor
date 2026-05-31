@@ -111,3 +111,7 @@ temp/
 
 # Manus version file (auto-generated, not part of source)
 client/public/__manus__/version.json
+
+# Platform config containing secrets -- never commit
+.project-config.json
+**/.project-config.json

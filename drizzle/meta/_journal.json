@@ -169,6 +169,13 @@
       "when": 1778901573175,
       "tag": "0023_chilly_kat_farrell",
       "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "5",
+      "when": 1780200754543,
+      "tag": "0024_bent_menace",
+      "breakpoints": true
     }
   ]
 }

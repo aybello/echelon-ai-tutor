@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import helmet from "helmet";
 import { createServer } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
@@ -12,7 +13,7 @@ import { generalLimiter, aiTutorLimiter, contactLimiter, authLimiter } from "../
 import { startReconciliationJob } from "../jobs/reconcile";
 import { startExamReminderJob } from "../jobs/examReminders";
 import { startTriggerEngineJob } from "../jobs/triggerEngine";
-import { connectWithRetry, startDbKeepAlive } from "../db";
+import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -40,12 +41,16 @@ async function startServer() {
   // Trust the first proxy (Cloudflare / load balancer) so req.ip reflects the real client IP
   app.set("trust proxy", 1);
 
+  // Security headers — CSP off initially to avoid breaking Vite/inline scripts; tune later
+  app.use(helmet({ contentSecurityPolicy: false }));
+
   // Register Stripe webhook BEFORE express.json() so raw body is preserved for signature verification
   registerStripeWebhook(app);
 
-  // Configure body parser with larger size limit for file uploads
-  app.use(express.json({ limit: "50mb" }));
-  app.use(express.urlencoded({ limit: "50mb", extended: true }));
+  // Body parser — uploads go to S3 via presigned URLs, so 1 MB is sufficient here.
+  // Raise the limit on a specific route only if genuinely needed.
+  app.use(express.json({ limit: "1mb" }));
+  app.use(express.urlencoded({ limit: "1mb", extended: true }));
 
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
@@ -64,6 +69,17 @@ async function startServer() {
       createContext,
     })
   );
+
+  // ── Health endpoint ────────────────────────────────────────────────────────
+  app.get("/api/health", async (_req, res) => {
+    try {
+      const db = await getDb();
+      if (!db) return res.status(503).json({ status: "degraded", db: false, ts: new Date().toISOString() });
+      return res.json({ status: "ok", db: true, ts: new Date().toISOString() });
+    } catch {
+      return res.status(503).json({ status: "error", db: false, ts: new Date().toISOString() });
+    }
+  });
 
   // ── Platform-managed DB keep-alive endpoint ────────────────────────────────
   // This endpoint is called every 5 minutes by a Manus Heartbeat cron (set up

@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
+import { resolveAccess, normalizeEmail } from "../_core/access";
 import { stripe } from "../stripe/stripe";
 import { ALL_PRODUCTS, getAllUnlockedExamTypes, PRODUCT_STUDY_PATHS } from "../stripe/products";
 import {
@@ -102,11 +103,11 @@ export const stripeRouter = router({
         });
         // Stripe populates customer_details.email after checkout completes;
         // customer_email is only set when pre-filled before checkout.
-        const email =
+        const email = normalizeEmail(
           (session as any).customer_details?.email ??
           session.customer_email ??
-          session.metadata?.customer_email ??
-          "";
+          session.metadata?.customer_email
+        );
         // Phone: prefer Stripe's customer_details (filled by Stripe Checkout phone field),
         // fall back to the pre-checkout modal value stored in metadata
         const phone: string | null =
@@ -172,10 +173,9 @@ export const stripeRouter = router({
     }),
 
   /** Get all purchases for the current user (by email) */
-  getMyPurchases: publicProcedure
-    .input(z.object({ email: z.string().email().optional() }))
-    .query(async ({ input, ctx }) => {
-      const email = ctx.user?.email ?? input.email;
+  getMyPurchases: protectedProcedure
+    .query(async ({ ctx }) => {
+      const email = ctx.user.email;
       if (!email) return { purchases: [], unlockedExamTypes: [] };
 
       const db = await getDb();
@@ -260,10 +260,9 @@ export const stripeRouter = router({
     }),
 
   /** Get all active subscriptions for the current user (by email) */
-  getMySubscriptions: publicProcedure
-    .input(z.object({ email: z.string().email().optional() }))
-    .query(async ({ input, ctx }) => {
-      const email = ctx.user?.email ?? input.email;
+  getMySubscriptions: protectedProcedure
+    .query(async ({ ctx }) => {
+      const email = ctx.user.email;
       if (!email) return { subscriptions: [], unlockedExamTypes: [] };
 
       const db = await getDb();
@@ -293,13 +292,12 @@ export const stripeRouter = router({
    * subscription (cancel, update payment method, view invoices) without
    * needing to contact support.
    */
-  createBillingPortalSession: publicProcedure
+  createBillingPortalSession: protectedProcedure
     .input(z.object({
-      email: z.string().email().optional(),
       origin: z.string().url(),
     }))
     .mutation(async ({ input, ctx }) => {
-      const email = ctx.user?.email ?? input.email;
+      const email = ctx.user.email;
       if (!email) throw new Error("Email required to access billing portal");
 
       const db = await getDb();
@@ -325,53 +323,11 @@ export const stripeRouter = router({
       return { url: portalSession.url };
     }),
 
-  /** Check if a specific exam type is unlocked for an email */
+  /** Check if a specific exam type is unlocked for the current user (guests get hasAccess:false) */
   checkAccess: publicProcedure
-    .input(z.object({
-      examType: z.string(),
-      email: z.string().email().optional(),
-    }))
+    .input(z.object({ examType: z.string() }))
     .query(async ({ input, ctx }) => {
-      // Owner bypass -- grants full access to all courses for testing
-      if (ctx.user?.openId && ctx.user.openId === ENV.ownerOpenId) {
-        return { hasAccess: true, isOwner: true };
-      }
-
-      const email = ctx.user?.email ?? input.email;
-      if (!email) return { hasAccess: false };
-
-      const db = await getDb();
-      if (!db) return { hasAccess: false };
-
-      // 1. Check one-time purchases
-      const purchaseRows = await db
-        .select({ productKey: purchases.productKey })
-        .from(purchases)
-        .where(eq(purchases.email, email));
-
-      const productKeys = purchaseRows.map(r => r.productKey);
-      const purchaseUnlocked = getAllUnlockedExamTypes(productKeys);
-      if (purchaseUnlocked.includes(input.examType)) {
-        return { hasAccess: true };
-      }
-
-      // 2. Check active subscriptions
-      const now = new Date();
-      const subRows = await db
-        .select({ tier: subscriptions.tier, province: subscriptions.province })
-        .from(subscriptions)
-        .where(
-          and(
-            eq(subscriptions.email, email),
-            eq(subscriptions.status, "active"),
-            gt(subscriptions.currentPeriodEnd, now),
-          )
-        );
-
-      const subscriptionUnlocked = getAllSubscriptionExamTypes(
-        subRows.map(r => ({ tier: r.tier as SubscriptionTier, province: r.province as SubscriptionProvince }))
-      );
-
-      return { hasAccess: subscriptionUnlocked.includes(input.examType) };
+      const { hasAccess, isOwner } = await resolveAccess(ctx.user, input.examType);
+      return { hasAccess, isOwner };
     }),
 });
