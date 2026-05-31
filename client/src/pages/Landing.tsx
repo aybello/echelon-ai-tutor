@@ -2023,32 +2023,63 @@ export default function Landing() {
         borderTop: "1px solid rgba(255,255,255,0.06)",
         padding: "72px 24px",
       }}>
-        <div style={{ maxWidth: 960, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
+        <div style={{ maxWidth: 1060, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
+
+          {/* Left — heading + stats + CTA */}
+          <div>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(52,211,153,0.12)",
               border: "1px solid rgba(52,211,153,0.3)",
-              borderRadius: 20, padding: "5px 16px", marginBottom: 18,
+              borderRadius: 20, padding: "5px 16px", marginBottom: 20,
             }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: "#34D399", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>✓ Now Live Nationally</span>
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em", margin: "0 0 14px 0" }}>
-              WPI Exam Prep Now Available
+            <h2 style={{ fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em", margin: "0 0 16px 0", lineHeight: 1.2 }}>
+              WPI Exam Prep<br />Now Available
             </h2>
-            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.55)", maxWidth: 600, margin: "0 auto" }}>
-              BC, Alberta, Saskatchewan, and Manitoba operators can now practice with our WPI-aligned question banks.
-              Over 8,000 questions across 16 WPI courses — Class I–IV Water and Class I–IV Wastewater — all live now.
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, margin: "0 0 28px 0" }}>
+              Over 8,000 questions across 16 WPI courses — Class I–IV Water and Class I–IV Wastewater — aligned with the WPI Need-to-Know Criteria.
             </p>
+            <div style={{ display: "flex", gap: 28, marginBottom: 32 }}>
+              <div>
+                <div style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF" }}>8,000+</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>Practice questions</div>
+              </div>
+              <div style={{ width: 1, background: "rgba(255,255,255,0.1)" }} />
+              <div>
+                <div style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF" }}>16</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>WPI courses</div>
+              </div>
+              <div style={{ width: 1, background: "rgba(255,255,255,0.1)" }} />
+              <div>
+                <div style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF" }}>4</div>
+                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>Provinces covered</div>
+              </div>
+            </div>
+            <a href="/wpi" style={{ textDecoration: "none" }}>
+              <button
+                style={{
+                  padding: "12px 28px", borderRadius: 10,
+                  background: "linear-gradient(135deg, #0891B2, #7C3AED)",
+                  color: "#fff", border: "none", fontSize: 14, fontWeight: 700,
+                  cursor: "pointer", fontFamily: "inherit",
+                  boxShadow: "0 4px 20px rgba(8,145,178,0.3)",
+                }}
+              >
+                Explore WPI Courses →
+              </button>
+            </a>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16, marginBottom: 48 }}>
+          {/* Right — 2×2 province grid */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
             {[
               {
                 flag: "🏔️",
                 province: "British Columbia",
                 certBody: "EOCP",
-                operators: "~4,200 certified operators",
+                operators: "~4,200 operators",
                 color: "#0891B2",
                 colorBg: "rgba(8,145,178,0.1)",
                 colorBorder: "rgba(8,145,178,0.25)",
@@ -2057,7 +2088,7 @@ export default function Landing() {
                 flag: "🛢️",
                 province: "Alberta",
                 certBody: "AWWOA",
-                operators: "~2,071 certified operators",
+                operators: "~2,071 operators",
                 color: "#7C3AED",
                 colorBg: "rgba(124,58,237,0.1)",
                 colorBorder: "rgba(124,58,237,0.25)",
@@ -2066,7 +2097,7 @@ export default function Landing() {
                 flag: "🌾",
                 province: "Saskatchewan",
                 certBody: "SAHO",
-                operators: "~800 certified operators",
+                operators: "~800 operators",
                 color: "#D97706",
                 colorBg: "rgba(217,119,6,0.1)",
                 colorBorder: "rgba(217,119,6,0.25)",
@@ -2075,7 +2106,7 @@ export default function Landing() {
                 flag: "🦬",
                 province: "Manitoba",
                 certBody: "MWWA",
-                operators: "~600 certified operators",
+                operators: "~600 operators",
                 color: "#059669",
                 colorBg: "rgba(5,150,105,0.1)",
                 colorBorder: "rgba(5,150,105,0.25)",
@@ -2084,56 +2115,24 @@ export default function Landing() {
               <div key={p.province} style={{
                 background: p.colorBg,
                 border: `1px solid ${p.colorBorder}`,
-                borderRadius: 16, padding: "24px 20px",
+                borderRadius: 14, padding: "20px 18px",
                 position: "relative" as const,
               }}>
                 <div style={{
-                  position: "absolute" as const, top: 14, right: 14,
+                  position: "absolute" as const, top: 12, right: 12,
                   background: "rgba(52,211,153,0.15)",
-                  borderRadius: 8, padding: "3px 10px",
-                  fontSize: 10, fontWeight: 700, color: "#34D399",
+                  borderRadius: 6, padding: "2px 8px",
+                  fontSize: 9, fontWeight: 700, color: "#34D399",
                   letterSpacing: "0.06em", textTransform: "uppercase" as const,
                 }}>✓ Live</div>
-                <div style={{ fontSize: 28, marginBottom: 10 }}>{p.flag}</div>
-                <h3 style={{ fontSize: 16, fontWeight: 800, color: "#FFFFFF", margin: "0 0 4px 0" }}>{p.province}</h3>
-                <div style={{ fontSize: 12, fontWeight: 600, color: p.color, marginBottom: 12 }}>{p.certBody} — WPI Exams</div>
-                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.65)", marginBottom: 16 }}>{p.operators}</div>
-                <a href="/wpi-class1-water" style={{ textDecoration: "none" }}>
-                  <button
-                    style={{
-                      padding: "8px 16px", borderRadius: 8,
-                      background: p.colorBorder,
-                      border: `1px solid ${p.colorBorder}`,
-                      color: p.color, fontSize: 12, fontWeight: 700,
-                      cursor: "pointer", fontFamily: "inherit",
-                    }}
-                  >
-                    Start Class I Practice →
-                  </button>
-                </a>
+                <div style={{ fontSize: 24, marginBottom: 8 }}>{p.flag}</div>
+                <h3 style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF", margin: "0 0 3px 0" }}>{p.province}</h3>
+                <div style={{ fontSize: 11, fontWeight: 600, color: p.color, marginBottom: 8 }}>{p.certBody} — WPI Exams</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)" }}>{p.operators}</div>
               </div>
             ))}
           </div>
 
-          <div style={{ textAlign: "center" }}>
-            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.45)", marginBottom: 20 }}>
-              All WPI question banks are aligned with the WPI Need-to-Know Criteria.
-              Class I–IV Water and Class I–IV Wastewater — all 8 levels are now live.
-            </p>
-            <a href="/pricing" style={{ textDecoration: "none" }}>
-              <button
-                style={{
-                  padding: "12px 32px", borderRadius: 10,
-                  background: "linear-gradient(135deg, #0891B2, #7C3AED)",
-                  color: "#fff", border: "none", fontSize: 14, fontWeight: 700,
-                  cursor: "pointer", fontFamily: "inherit",
-                  boxShadow: "0 4px 20px rgba(8,145,178,0.3)",
-                }}
-              >
-                View WPI Pricing →
-              </button>
-            </a>
-          </div>
         </div>
       </section>
 
