@@ -1,11 +1,19 @@
 /**
  * useQuestionBank — fetches questions, bank metadata, and module overviews.
  *
- * Caching strategy:
- *   1. On mount, check localStorage for a valid cached bank (24hr TTL).
- *      If found, return instantly — zero network request.
- *   2. If no cache, fetch from DB via tRPC (lazy mode: batch first, then full).
- *   3. Once the full bank is loaded, write it to localStorage for next visit.
+ * Caching strategy (priority order):
+ *   1. Seed questions — 25 bundled questions per bank, answers stripped.
+ *      Shown INSTANTLY on first visit while the DB loads in the background.
+ *   2. localStorage cache — full bank cached after first successful DB load.
+ *      Served instantly on return visits (24hr TTL).
+ *   3. DB fetch — tRPC call to the server. Lazy mode fetches a batch first,
+ *      then the full bank. Full mode fetches everything upfront.
+ *
+ * Security:
+ *   - Seed questions and localStorage cache NEVER contain correctIndex.
+ *   - The server is the sole authority on correct answers and access control.
+ *   - correctIndex is only present in the in-memory DBQuestion objects
+ *     returned from the server during an active session.
  *
  * Supports two modes:
  *   - "full" (default): fetches ALL questions upfront. Use for mock exams and flashcards.
@@ -22,6 +30,7 @@
 import { useEffect, useRef, useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { getCached, setCached, type CachedBank } from "@/lib/questionCache";
+import seedQuestions, { type SeedQuestion } from "@/lib/seedQuestions";
 
 export interface DBQuestion {
   id: number;
@@ -47,7 +56,31 @@ export interface ModuleOverview {
   formulaHint?: string;
 }
 
+/**
+ * Convert a SeedQuestion (no correctIndex) to a DBQuestion shape.
+ * correctIndex is set to -1 as a sentinel — the quiz engine must
+ * validate answers server-side; it must NOT use correctIndex from
+ * seed questions to reveal correct answers client-side.
+ */
+function seedToDBQuestion(q: SeedQuestion): DBQuestion {
+  return {
+    id: q.questionNum,
+    module: q.module ?? "General",
+    difficulty: q.difficulty,
+    question: q.question,
+    options: q.options,
+    correctIndex: -1, // sentinel — server validates, client must not use this
+    explanation: q.explanation ?? "",
+    isCalc: q.isCalc === "yes",
+    topic: q.topic ?? undefined,
+  };
+}
+
 export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full") {
+  // ── Seed questions — instant fallback, no correctIndex ───────────────────
+  const seedForBank = seedQuestions[bankKey] ?? [];
+  const seedAsDBQuestions: DBQuestion[] = seedForBank.map(seedToDBQuestion);
+
   // ── Check localStorage cache first ───────────────────────────────────────
   const [cached] = useState<CachedBank | null>(() => getCached(bankKey));
   const wroteCache = useRef(false);
@@ -94,25 +127,32 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     }
   );
 
-  // ── Write to cache once full bank is loaded ───────────────────────────────
+  // ── Write to cache once full bank is loaded (strip correctIndex) ─────────
   useEffect(() => {
     if (wroteCache.current) return;
     if (!fullQuery.data || !metaQuery.data) return;
-    const questions = fullQuery.data.questions ?? [];
+    const rawQuestions = fullQuery.data.questions ?? [];
     const modules = metaQuery.data.modules ?? [];
-    if (questions.length === 0) return; // don't cache empty (DB down)
+    if (rawQuestions.length === 0) return; // don't cache empty (DB down)
     wroteCache.current = true;
+
+    // Strip correctIndex before writing to localStorage
+    const safeQuestions = rawQuestions.map((q) => {
+      const { correctIndex: _stripped, ...safe } = q as DBQuestion & { correctIndex: number };
+      return { ...safe, correctIndex: -1 } as DBQuestion;
+    });
+
     setCached(bankKey, {
-      questions,
+      questions: safeQuestions,
       modules,
       moduleTargets: metaQuery.data.moduleTargets ?? null,
       formulaLinks: metaQuery.data.formulaLinks ?? null,
-      totalQuestions: metaQuery.data.totalQuestions ?? questions.length,
+      totalQuestions: metaQuery.data.totalQuestions ?? rawQuestions.length,
       overviews: (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null,
     });
   }, [bankKey, fullQuery.data, metaQuery.data, overviewsQuery.data]);
 
-  // ── Resolve data: cache → full → batch ───────────────────────────────────
+  // ── Resolve data: cache → full → batch → seed ────────────────────────────
   let questions: DBQuestion[];
   let modules: string[];
   let moduleTargets: Record<string, number> | null;
@@ -122,7 +162,7 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   let isLoading: boolean;
 
   if (cached) {
-    // Instant — served from localStorage
+    // Instant — served from localStorage (correctIndex already stripped at write time)
     questions = cached.questions;
     modules = cached.modules;
     moduleTargets = cached.moduleTargets;
@@ -133,8 +173,11 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   } else if (mode === "lazy") {
     if (fullQuery.data) {
       questions = fullQuery.data.questions ?? [];
+    } else if (batchQuery.data?.questions?.length) {
+      questions = batchQuery.data.questions;
     } else {
-      questions = batchQuery.data?.questions ?? [];
+      // Seed fallback — shown instantly while DB loads
+      questions = seedAsDBQuestions;
     }
     isLoading = batchQuery.isLoading || metaQuery.isLoading || overviewsQuery.isLoading;
     modules = metaQuery.data?.modules ?? [];
@@ -143,7 +186,12 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     totalQuestions = metaQuery.data?.totalQuestions ?? 0;
     overviews = (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null;
   } else {
-    questions = fullQuery.data?.questions ?? [];
+    if (fullQuery.data?.questions?.length) {
+      questions = fullQuery.data.questions;
+    } else {
+      // Seed fallback for full mode too (mock exams, flashcards)
+      questions = seedAsDBQuestions;
+    }
     isLoading = fullQuery.isLoading || metaQuery.isLoading || overviewsQuery.isLoading;
     modules = metaQuery.data?.modules ?? [];
     moduleTargets = metaQuery.data?.moduleTargets ?? null;
@@ -153,10 +201,11 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   }
 
   // ── Detect DB unavailable state ──────────────────────────────────────────
+  // dbUnavailable is true only when queries settled with no data AND no seed
   const queriesSettled = !isLoading;
   const noError = !fullQuery.error && !batchQuery.error && !metaQuery.error;
   const emptyResult = questions.length === 0 && modules.length === 0;
-  const dbUnavailable = !cached && queriesSettled && noError && emptyResult;
+  const dbUnavailable = !cached && queriesSettled && noError && emptyResult && seedAsDBQuestions.length === 0;
 
   return {
     questions,
@@ -167,8 +216,10 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     overviews,
     isLoading,
     isFullyLoaded: cached != null || fullQuery.isSuccess,
-    /** True when the DB appears down — queries returned but with no data */
+    /** True when the DB appears down AND no seed questions available */
     dbUnavailable,
+    /** True when showing seed questions (DB not yet loaded) */
+    isShowingSeed: !cached && !fullQuery.isSuccess && !batchQuery.isSuccess && seedAsDBQuestions.length > 0,
     error:
       fullQuery.error || batchQuery.error || metaQuery.error || overviewsQuery.error || null,
   };
