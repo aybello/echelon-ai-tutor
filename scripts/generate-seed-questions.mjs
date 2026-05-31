@@ -28,33 +28,15 @@ if (!DATABASE_URL) {
 
 const QUESTIONS_PER_BANK = 25;
 
-// All known bank keys
-const BANK_KEYS = [
-  "oit",
-  "class1-water",
-  "class2-water",
-  "class3-water",
-  "class4-water",
-  "class1-wastewater",
-  "class2-wastewater",
-  "class3-wastewater",
-  "class4-wastewater",
-  "wpi-class1-water",
-  "wpi-class2-water",
-  "wpi-class3-water",
-  "wpi-class4-water",
-  "wpi-class1-water-dist",
-  "wpi-class2-water-dist",
-  "wpi-class3-water-dist",
-  "wpi-class4-water-dist",
-  "wpi-class1-wastewater",
-  "wpi-class2-wastewater",
-  "wpi-class3-wastewater",
-  "wpi-class4-wastewater",
-];
-
 async function main() {
   const pool = mysql.createPool({ uri: DATABASE_URL, connectionLimit: 3 });
+
+  // Dynamically discover all bank keys from the DB — never hardcode
+  const [bankRows] = await pool.query(
+    `SELECT DISTINCT bankKey FROM questions ORDER BY bankKey`
+  );
+  const BANK_KEYS = bankRows.map((r) => r.bankKey);
+  console.log(`Discovered ${BANK_KEYS.length} banks: ${BANK_KEYS.join(", ")}\n`);
 
   const seedData = {};
   let totalQuestions = 0;
