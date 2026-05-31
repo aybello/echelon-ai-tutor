@@ -14,68 +14,54 @@ export default function ProvinceBanner({ onSelect, onDismiss }: Props) {
     <div style={{
       background: "rgba(15,23,42,0.97)",
       borderBottom: "1px solid rgba(255,255,255,0.07)",
-      padding: "10px 20px",
-      display: "flex",
-      alignItems: "center",
-      gap: 12,
-      justifyContent: "center",
+      padding: "10px 16px",
     }}>
       <style>{`
         @keyframes slideDown {
           from { opacity: 0; transform: translateY(-8px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        .province-banner-wrap {
+        .province-banner-inner {
           animation: slideDown 0.3s ease both;
           display: flex;
           align-items: center;
-          gap: 12;
-          width: 100%;
+          gap: 10px;
           max-width: 860px;
-          justify-content: space-between;
+          margin: 0 auto;
         }
         .province-btn {
           transition: background 0.12s, border-color 0.12s, transform 0.12s;
-          position: relative;
+          flex: 1;
+          min-width: 0;
         }
         .province-btn:hover {
           background: rgba(255,255,255,0.14) !important;
           border-color: rgba(255,255,255,0.35) !important;
           transform: translateY(-1px);
         }
-        .province-btn .tooltip {
-          display: none;
-          position: absolute;
-          bottom: calc(100% + 6px);
-          left: 50%;
-          transform: translateX(-50%);
-          background: #1E293B;
-          color: #fff;
-          font-size: 11px;
-          font-weight: 600;
-          padding: 4px 10px;
-          border-radius: 6px;
-          white-space: nowrap;
-          pointer-events: none;
-          border: 1px solid rgba(255,255,255,0.1);
-          z-index: 10;
+        .province-name-full {
+          display: inline;
         }
-        .province-btn:hover .tooltip {
-          display: block;
+        @media (max-width: 520px) {
+          .province-name-full {
+            display: none;
+          }
+          .province-btn {
+            padding: 7px 10px !important;
+          }
         }
       `}</style>
 
-      <div className="province-banner-wrap">
+      <div className="province-banner-inner">
         {/* Label */}
-        <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
-          <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}>📍</span>
-          <span style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.7)", whiteSpace: "nowrap" }}>
-            Your province?
+        <div style={{ flexShrink: 0, whiteSpace: "nowrap" }}>
+          <span style={{ fontSize: 12, fontWeight: 600, color: "rgba(255,255,255,0.6)" }}>
+            📍 <span className="province-name-full">Your province?</span>
           </span>
         </div>
 
-        {/* Province buttons */}
-        <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+        {/* Province buttons — flex row, each takes equal space */}
+        <div style={{ display: "flex", gap: 6, flex: 1, alignItems: "center" }}>
           {PROVINCE_LIST.map(p => (
             <button
               key={p.id}
@@ -83,7 +69,7 @@ export default function ProvinceBanner({ onSelect, onDismiss }: Props) {
               onClick={() => onSelect(p.id)}
               title={p.name}
               style={{
-                padding: "5px 12px",
+                padding: "6px 10px",
                 borderRadius: 20,
                 border: "1px solid rgba(255,255,255,0.15)",
                 background: "rgba(255,255,255,0.07)",
@@ -94,14 +80,17 @@ export default function ProvinceBanner({ onSelect, onDismiss }: Props) {
                 fontFamily: "inherit",
                 display: "flex",
                 alignItems: "center",
+                justifyContent: "center",
                 gap: 5,
                 whiteSpace: "nowrap",
+                overflow: "hidden",
               }}
             >
-              <span style={{ fontSize: 14, lineHeight: 1 }}>{p.flag}</span>
-              <span>{p.abbr}</span>
-              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", fontWeight: 400 }}>{p.name}</span>
-              <div className="tooltip">{p.name}</div>
+              <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0 }}>{p.flag}</span>
+              <span style={{ flexShrink: 0 }}>{p.abbr}</span>
+              <span className="province-name-full" style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", fontWeight: 400 }}>
+                {p.name}
+              </span>
             </button>
           ))}
         </div>
