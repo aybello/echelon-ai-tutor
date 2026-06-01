@@ -2,10 +2,12 @@
 // Rebuilt: Hero → Province table → Tabbed track selector → FAQ → Footer CTA
 
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import LandingNav from "@/components/LandingNav";
+import ProvinceBanner from "@/components/ProvinceBanner";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
@@ -184,6 +186,17 @@ export default function WpiLanding() {
   const [activeTrack, setActiveTrack] = useState<string>("water");
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [, navigate] = useLocation();
+  const { showPrompt, setProvince, dismiss } = useProvince();
+
+  const handleProvinceSelect = (id: ProvinceId) => {
+    setProvince(id);
+    // Ontario users belong on the main homepage (OIT/OWWCO content)
+    if (id === "on") {
+      navigate("/");
+    }
+    // WPI provinces stay on this page
+  };
 
   const track = TRACKS.find(t => t.id === activeTrack)!;
 
@@ -208,6 +221,9 @@ export default function WpiLanding() {
       `}</style>
 
       <LandingNav isAuthenticated={isAuthenticated} currentPath="/wpi" />
+      {showPrompt && (
+        <ProvinceBanner onSelect={handleProvinceSelect} onDismiss={dismiss} />
+      )}
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section className="wpi-hero-section" style={{
