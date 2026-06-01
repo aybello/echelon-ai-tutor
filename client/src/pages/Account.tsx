@@ -95,6 +95,12 @@ export default function Account() {
     { enabled: !!isAuthenticated, retry: false }
   );
 
+  // Public lookup by email — used when the user is NOT logged in
+  const getPurchasesByEmail = trpc.stripe.getPurchasesByEmail.useQuery(
+    { email: submittedEmail ?? "" },
+    { enabled: !!submittedEmail && !isAuthenticated, retry: false, staleTime: 30_000 }
+  );
+
   const getSubscriptions = trpc.stripe.getMySubscriptions.useQuery(
     undefined,
     { enabled: !!isAuthenticated, retry: false }
@@ -124,7 +130,7 @@ export default function Account() {
   );
   const flashcardMastery = getFlashcardProgress.data?.progress ?? {};
 
-  // Restore localStorage when purchases are fetched
+  // Restore localStorage when purchases are fetched (authenticated path)
   useEffect(() => {
     const data = getPurchases.data;
     if (data && data.purchases.length > 0 && !restored && submittedEmail) {
@@ -133,6 +139,16 @@ export default function Account() {
       setRestored(true);
     }
   }, [getPurchases.data, submittedEmail, restored]);
+
+  // Restore localStorage when purchases are fetched (unauthenticated / email-lookup path)
+  useEffect(() => {
+    const data = getPurchasesByEmail.data;
+    if (data && data.purchases.length > 0 && !restored && submittedEmail) {
+      const keys = data.purchases.map((p) => p.productKey);
+      restoreLocalStorage(submittedEmail, keys);
+      setRestored(true);
+    }
+  }, [getPurchasesByEmail.data, submittedEmail, restored]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -146,7 +162,11 @@ export default function Account() {
     setSubmittedEmail(trimmed);
   };
 
-  const unlockedExamTypes = getPurchases.data?.unlockedExamTypes ?? [];
+  // Merge results from both paths: authenticated (getMyPurchases) + email lookup (getPurchasesByEmail)
+  const unlockedExamTypes = [
+    ...(getPurchases.data?.unlockedExamTypes ?? []),
+    ...(getPurchasesByEmail.data?.unlockedExamTypes ?? []),
+  ].filter((v, i, a) => a.indexOf(v) === i); // deduplicate
   const purchases = getPurchases.data?.purchases ?? [];
   const hasPurchases = unlockedExamTypes.length > 0;
 
@@ -237,15 +257,15 @@ export default function Account() {
               />
               <button
                 type="submit"
-                disabled={getPurchases.isFetching}
+                disabled={getPurchases.isFetching || getPurchasesByEmail.isFetching}
                 style={{
                   padding: "11px 22px", borderRadius: 10, border: "none",
-                  background: getPurchases.isFetching ? "#334155" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
-                  color: "#fff", fontSize: 13, fontWeight: 800, cursor: getPurchases.isFetching ? "not-allowed" : "pointer",
+                  background: (getPurchases.isFetching || getPurchasesByEmail.isFetching) ? "#334155" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                  color: "#fff", fontSize: 13, fontWeight: 800, cursor: (getPurchases.isFetching || getPurchasesByEmail.isFetching) ? "not-allowed" : "pointer",
                   fontFamily: "inherit", whiteSpace: "nowrap", flexShrink: 0,
                 }}
               >
-                {getPurchases.isFetching ? (
+                {(getPurchases.isFetching || getPurchasesByEmail.isFetching) ? (
                   <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
                     <span style={{ display: "inline-block", width: 12, height: 12, border: "2px solid #fff", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.7s linear infinite" }} />
                     Checking…
@@ -274,7 +294,7 @@ export default function Account() {
         </div>
 
         {/* ── Loading skeleton ── */}
-        {getPurchases.isFetching && (
+        {(getPurchases.isFetching || getPurchasesByEmail.isFetching) && (
           <div className="account-card" style={{ padding: 28 }}>
             {[1, 2, 3].map(i => (
               <div key={i} style={{ display: "flex", gap: 12, alignItems: "center", padding: "14px 0", borderBottom: i < 3 ? "1px solid #0F172A" : "none" }}>
@@ -290,7 +310,7 @@ export default function Account() {
         )}
 
         {/* ── Results ── */}
-        {submittedEmail && !getPurchases.isFetching && (
+        {submittedEmail && !getPurchases.isFetching && !getPurchasesByEmail.isFetching && (
           <>
             {hasPurchases ? (
               <>

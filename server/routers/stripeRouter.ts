@@ -323,6 +323,31 @@ export const stripeRouter = router({
       return { url: portalSession.url };
     }),
 
+  /**
+   * Look up purchases by email — used by the Restore Access page for unauthenticated users.
+   * Returns only product keys and unlocked exam types (no sensitive payment data).
+   * Returns empty array for unknown emails to avoid enumeration.
+   */
+  getPurchasesByEmail: publicProcedure
+    .input(z.object({ email: z.string().email() }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) return { purchases: [], unlockedExamTypes: [] };
+      const normalised = normalizeEmail(input.email);
+      const rows = await db
+        .select()
+        .from(purchases)
+        .where(eq(purchases.email, normalised));
+      const productKeys = rows.map(r => r.productKey);
+      const unlockedExamTypes = getAllUnlockedExamTypes(productKeys);
+      // Return minimal safe data — no Stripe IDs or personal info
+      const safePurchases = rows.map(r => ({
+        productKey: r.productKey,
+        createdAt: r.createdAt,
+      }));
+      return { purchases: safePurchases, unlockedExamTypes };
+    }),
+
   /** Check if a specific exam type is unlocked for the current user (guests get hasAccess:false) */
   checkAccess: publicProcedure
     .input(z.object({ examType: z.string() }))
