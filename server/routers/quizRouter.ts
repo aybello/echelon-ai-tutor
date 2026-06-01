@@ -33,7 +33,31 @@ export const quizRouter = router({
         .orderBy(questions.questionNum);
 
       const total = rows.length;
-      const visible = hasAccess ? rows : rows.slice(0, FREE_TRIAL_LIMIT);
+      // For trial users, sample questions across all modules for a representative experience
+      // instead of just taking the first N (which would all be from one module).
+      let visible;
+      if (hasAccess) {
+        visible = rows;
+      } else {
+        // Group by module, then round-robin pick from each module
+        const byModule = new Map<string, typeof rows>();
+        for (const r of rows) {
+          const arr = byModule.get(r.module) ?? [];
+          arr.push(r);
+          byModule.set(r.module, arr);
+        }
+        const moduleArrays = Array.from(byModule.values());
+        const sampled: typeof rows = [];
+        let idx = 0;
+        while (sampled.length < FREE_TRIAL_LIMIT && idx < rows.length) {
+          for (const arr of moduleArrays) {
+            if (sampled.length >= FREE_TRIAL_LIMIT) break;
+            if (idx < arr.length) sampled.push(arr[idx]);
+          }
+          idx++;
+        }
+        visible = sampled;
+      }
 
       // Per-row safe parse: one malformed row is skipped, not fatal to the bank.
       const parsed = visible.flatMap((r) => {
@@ -81,25 +105,70 @@ export const quizRouter = router({
       const excludeClause = input.excludeIds.length > 0
         ? sql` AND ${questions.questionNum} NOT IN (${sql.join(input.excludeIds.map((id) => sql`${id}`), sql`, `)})`
         : sql``;
-      // Non-entitled users can only ever draw from the first FREE_TRIAL_LIMIT questions.
-      const trialClause = hasAccess
-        ? sql``
-        : sql` AND ${questions.questionNum} <= ${FREE_TRIAL_LIMIT}`;
 
-      const rows = await db.execute(
-        sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey}${excludeClause}${trialClause} ORDER BY RAND() LIMIT ${input.limit}`
-      );
-      const list = (rows[0] as unknown as any[]).flatMap((r: any) => {
-        try {
-          return [{
-            id: r.questionNum, module: r.module, difficulty: r.difficulty, question: r.question,
-            options: JSON.parse(r.options) as string[], correctIndex: r.correctIndex, explanation: r.explanation,
-            steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
-            tip: r.tip ?? undefined, isCalc: r.isCalc === "yes", topic: r.topic ?? undefined,
-          }];
-        } catch { return []; }
-      });
-      return { questions: list, locked: !hasAccess };
+      if (hasAccess) {
+        // Full access: random from entire bank
+        const rows = await db.execute(
+          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey}${excludeClause} ORDER BY RAND() LIMIT ${input.limit}`
+        );
+        const list = (rows[0] as unknown as any[]).flatMap((r: any) => {
+          try {
+            return [{
+              id: r.questionNum, module: r.module, difficulty: r.difficulty, question: r.question,
+              options: JSON.parse(r.options) as string[], correctIndex: r.correctIndex, explanation: r.explanation,
+              steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
+              tip: r.tip ?? undefined, isCalc: r.isCalc === "yes", topic: r.topic ?? undefined,
+            }];
+          } catch { return []; }
+        });
+        return { questions: list, locked: false };
+      } else {
+        // Trial: sample across modules (round-robin first question from each module)
+        // to give a representative experience instead of all from one module.
+        const allRows = await db.execute(
+          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey}${excludeClause} ORDER BY module, questionNum`
+        );
+        const allList = allRows[0] as unknown as any[];
+        // Group by module
+        const byModule = new Map<string, any[]>();
+        for (const r of allList) {
+          const arr = byModule.get(r.module) ?? [];
+          arr.push(r);
+          byModule.set(r.module, arr);
+        }
+        const moduleArrays = Array.from(byModule.values());
+        const sampled: any[] = [];
+        let mIdx = 0;
+        // Round-robin pick from each module until we hit the limit
+        while (sampled.length < Math.min(FREE_TRIAL_LIMIT, input.limit)) {
+          let added = false;
+          for (const arr of moduleArrays) {
+            if (sampled.length >= Math.min(FREE_TRIAL_LIMIT, input.limit)) break;
+            if (mIdx < arr.length) {
+              sampled.push(arr[mIdx]);
+              added = true;
+            }
+          }
+          if (!added) break;
+          mIdx++;
+        }
+        // Shuffle the sampled array for randomness
+        for (let i = sampled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [sampled[i], sampled[j]] = [sampled[j], sampled[i]];
+        }
+        const list = sampled.flatMap((r: any) => {
+          try {
+            return [{
+              id: r.questionNum, module: r.module, difficulty: r.difficulty, question: r.question,
+              options: JSON.parse(r.options) as string[], correctIndex: r.correctIndex, explanation: r.explanation,
+              steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
+              tip: r.tip ?? undefined, isCalc: r.isCalc === "yes", topic: r.topic ?? undefined,
+            }];
+          } catch { return []; }
+        });
+        return { questions: list, locked: true };
+      }
     }),
 
   /**
