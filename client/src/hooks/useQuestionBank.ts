@@ -5,7 +5,9 @@
  *   1. Seed questions — 25 bundled questions per bank, answers stripped.
  *      Shown INSTANTLY on first visit while the DB loads in the background.
  *   2. localStorage cache — full bank cached after first successful DB load.
- *      Served instantly on return visits (24hr TTL).
+ *      Served instantly on return visits (24hr TTL) for fast display.
+ *      IMPORTANT: cache has correctIndex:-1 (stripped). The live DB fetch
+ *      always runs in the background to restore real correctIndex values.
  *   3. DB fetch — tRPC call to the server. Lazy mode fetches a batch first,
  *      then the full bank. Full mode fetches everything upfront.
  *
@@ -14,6 +16,8 @@
  *   - The server is the sole authority on correct answers and access control.
  *   - correctIndex is only present in the in-memory DBQuestion objects
  *     returned from the server during an active session.
+ *   - Even when cache is present, the full DB fetch runs in the background
+ *     so that correctIndex values are always live from the server.
  *
  * Supports two modes:
  *   - "full" (default): fetches ALL questions upfront. Use for mock exams and flashcards.
@@ -76,6 +80,29 @@ function seedToDBQuestion(q: SeedQuestion): DBQuestion {
   };
 }
 
+/**
+ * Merge live correctIndex values from the server into cached questions.
+ * Matches by question text (since IDs may differ between cache and live).
+ * Returns a new array with correctIndex restored for all matched questions.
+ */
+function mergeCorrectIndex(
+  cached: DBQuestion[],
+  live: DBQuestion[],
+): DBQuestion[] {
+  // Build a map from question text → correctIndex for fast lookup
+  const liveMap = new Map<string, number>();
+  for (const q of live) {
+    liveMap.set(q.question, q.correctIndex);
+  }
+  return cached.map((q) => {
+    const liveIdx = liveMap.get(q.question);
+    if (liveIdx !== undefined && liveIdx >= 0) {
+      return { ...q, correctIndex: liveIdx };
+    }
+    return q;
+  });
+}
+
 export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full") {
   // ── Seed questions — instant fallback, no correctIndex ───────────────────
   const seedForBank = seedQuestions[bankKey] ?? [];
@@ -96,12 +123,16 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     }
   );
 
-  // ── Full bank (skip if cache hit) ────────────────────────────────────────
+  // ── Full bank — ALWAYS enabled (even on cache hit) to restore correctIndex ──
+  // When cache is present: runs silently in background, result used to patch correctIndex.
+  // When no cache: runs normally to populate questions.
   const fullQuery = trpc.quiz.getQuestions.useQuery(
     { bankKey },
     {
       staleTime: 1000 * 60 * 30,
-      enabled: !cached && (mode === "full" || (mode === "lazy" && batchQuery.isSuccess)),
+      // Always fetch full bank — cache hit just means we show cached questions
+      // instantly, but we still need live correctIndex values from the server.
+      enabled: cached != null || mode === "full" || (mode === "lazy" && batchQuery.isSuccess),
       retry: 4,
       retryDelay: 5000,
     }
@@ -152,7 +183,7 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     });
   }, [bankKey, fullQuery.data, metaQuery.data, overviewsQuery.data]);
 
-  // ── Resolve data: cache → full → batch → seed ────────────────────────────
+  // ── Resolve data: cache (+ live correctIndex patch) → full → batch → seed ─
   let questions: DBQuestion[];
   let modules: string[];
   let moduleTargets: Record<string, number> | null;
@@ -162,13 +193,22 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   let isLoading: boolean;
 
   if (cached) {
-    // Instant — served from localStorage (correctIndex already stripped at write time)
-    questions = cached.questions;
+    // Start with cached questions for instant display
+    const liveQuestions = fullQuery.data?.questions;
+    if (liveQuestions && liveQuestions.length > 0) {
+      // Live data arrived — merge correctIndex values from server into cached questions
+      questions = mergeCorrectIndex(cached.questions, liveQuestions);
+    } else {
+      // Live data not yet arrived — serve cached questions (correctIndex:-1 sentinel)
+      // Users can see questions but answers won't highlight until live data loads.
+      questions = cached.questions;
+    }
     modules = cached.modules;
     moduleTargets = cached.moduleTargets;
     formulaLinks = cached.formulaLinks;
     totalQuestions = cached.totalQuestions;
     overviews = cached.overviews;
+    // isLoading: false so quiz renders immediately; fullQuery runs silently in bg
     isLoading = false;
   } else if (mode === "lazy") {
     if (fullQuery.data) {

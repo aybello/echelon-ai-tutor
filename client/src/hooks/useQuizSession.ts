@@ -16,7 +16,7 @@
  * directly into QuizShell props. No quiz logic should live in page files.
  */
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
@@ -174,6 +174,25 @@ export function useQuizSession({
     isTrialUnlocked(),
   );
   const [trialDone, setTrialDone] = useState(false);
+
+  // ── Server-side access check — lifts gate for paid users on any device ─────
+  // Runs silently in the background. If the server confirms hasAccess:true
+  // (e.g. user purchased on another device/browser), unlock the gate immediately.
+  const { data: accessData } = trpc.stripe.checkAccess.useQuery(
+    { examType },
+    {
+      staleTime: 5 * 60 * 1000,
+      retry: false,
+      refetchOnWindowFocus: false,
+    },
+  );
+  // Lift the gate when server confirms access (safe useEffect pattern)
+  useEffect(() => {
+    if (accessData?.hasAccess === true && !trialUnlocked) {
+      setTrialUnlockedState(true);
+      setTrialUnlocked(); // persist to localStorage for instant next visit
+    }
+  }, [accessData?.hasAccess, trialUnlocked]);
 
   // ── Quiz mode & settings ───────────────────────────────────────────────────
   const [quizMode, setQuizMode] = useState<QuizMode>("standard");
