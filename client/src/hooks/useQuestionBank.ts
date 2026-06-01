@@ -158,15 +158,16 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     }
   );
 
-  // ── Invalidate stale cache when live bank is significantly larger ───────────
-  // This handles the case where a user trialed first (15 questions cached) then purchased.
-  // We clear the stale cache so the next load starts fresh with the full bank.
+  // ── Invalidate stale cache when live data differs ─────────────────────────────
+  // Always invalidate when live data arrives — the cache may have stale questions
+  // (e.g. all from one module) even if the count is the same.
   useEffect(() => {
     if (!cached || !fullQuery.data) return;
-    const liveCount = fullQuery.data.questions?.length ?? 0;
-    if (liveCount > cached.questions.length * 1.5) {
-      invalidate(bankKey);
-    }
+    const liveQuestions = fullQuery.data.questions ?? [];
+    if (liveQuestions.length === 0) return;
+    // Always invalidate: live data is authoritative. The cache will be rewritten
+    // with the fresh data on the next cycle via the write-cache effect.
+    invalidate(bankKey);
   }, [bankKey, cached, fullQuery.data]);
 
   // ── Write to cache once full bank is loaded (strip correctIndex) ─────────
@@ -206,29 +207,22 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   if (cached) {
     // Start with cached questions for instant display
     const liveQuestions = fullQuery.data?.questions;
-    const liveIsLarger = liveQuestions && liveQuestions.length > cached.questions.length * 1.5;
     if (liveQuestions && liveQuestions.length > 0) {
-      if (liveIsLarger) {
-        // Live bank is significantly larger than cache (e.g. user purchased after a trial).
-        // The cache was written during a trial session (15 questions) and is now stale.
-        // Use the full live bank directly so all modules are available immediately.
-        questions = liveQuestions;
-      } else {
-        // Same size — merge correctIndex values from server into cached questions
-        questions = mergeCorrectIndex(cached.questions, liveQuestions);
-      }
+      // Live data arrived — ALWAYS use it (it has correct modules + correctIndex).
+      // The cache is only for instant display before the server responds.
+      questions = liveQuestions;
     } else {
       // Live data not yet arrived — serve cached questions (correctIndex:-1 sentinel)
       // Users can see questions but answers won't highlight until live data loads.
       questions = cached.questions;
     }
-    // Use live modules when the live bank replaced the stale cache
-    modules = liveIsLarger
-      ? (fullQuery.data as any)?.modules ?? cached.modules
+    // Use live modules when available, fall back to cached
+    modules = (liveQuestions && liveQuestions.length > 0)
+      ? Array.from(new Set(liveQuestions.map((q: any) => q.module)))
       : cached.modules;
     moduleTargets = cached.moduleTargets;
     formulaLinks = cached.formulaLinks;
-    totalQuestions = liveIsLarger ? liveQuestions!.length : cached.totalQuestions;
+    totalQuestions = (liveQuestions && liveQuestions.length > 0) ? liveQuestions.length : cached.totalQuestions;
     overviews = cached.overviews;
     // isLoading: false so quiz renders immediately; fullQuery runs silently in bg
     isLoading = false;

@@ -196,8 +196,10 @@ export default function QuizShell({
   const prevHistoryLen = useRef(0);
 
   // Trigger feedback modal when session completes (current becomes null after answering questions)
+  // Only show if at least 5 questions were answered (avoids premature trigger when pool is exhausted)
+  const FEEDBACK_MIN_QUESTIONS = 5;
   useEffect(() => {
-    if (!current && history.length > 0 && prevHistoryLen.current > 0) {
+    if (!current && history.length >= FEEDBACK_MIN_QUESTIONS && prevHistoryLen.current > 0) {
       setShowSessionFeedback(true);
     }
     prevHistoryLen.current = history.length;
