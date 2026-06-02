@@ -199,11 +199,11 @@ const INDIVIDUAL: Product[] = [
     examTypes: ["class4-water"],
     badge: "Available Now",
     badgeColor: "#16A34A",
-    color: "#7C3AED",
-    bg: "#F5F3FF",
-    border: "#DDD6FE",
+    color: "#1E3A8A",
+    bg: "#EFF6FF",
+    border: "#BFDBFE",
     available: true,
-    features: ["500 practice questions", "Timed mock exam", "Water4 formula sheet", "AI Tutor", "400+ flashcards"],
+    features: ["500 practice questions", "Timed mock exam", "Water4 formula sheet", "AI Tutor", "400+ flashcards", "Module study notes"],
   },
   {
     key: "oit-ww",
@@ -278,7 +278,7 @@ const INDIVIDUAL: Product[] = [
     bg: "#ECFDF5",
     border: "#6EE7B7",
     available: true,
-    features: ["500 practice questions", "Timed mock exam", "WW4 formula sheet", "AI Tutor", "400+ flashcards"],
+    features: ["500 practice questions", "Timed mock exam", "WW4 formula sheet", "AI Tutor", "400+ flashcards", "Module study notes"],
   },
   {
     key: "wqa",
@@ -1484,20 +1484,26 @@ function ProductCard({
 
         {/* Price row */}
         <div style={{
-          display: "flex", alignItems: "baseline", gap: 8,
           borderTop: "1px solid #F1F5F9", paddingTop: 12, marginBottom: 12,
         }}>
-          <span style={{ fontSize: 26, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
-            CA${(product.priceCAD / 100).toFixed(0)}
-          </span>
-          <span style={{ fontSize: 11, color: "#94A3B8" }}>one-time · no subscription</span>
-          {product.available && (
-            <span style={{
-              marginLeft: "auto", fontSize: 11, fontWeight: 600, color: "#15803D",
-              background: "#F0FDF4", border: "1px solid #86EFAC",
-              borderRadius: 6, padding: "3px 8px",
-            }}>15 free ✓</span>
-          )}
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+            <span style={{ fontSize: 28, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
+              CA${(product.priceCAD / 100).toFixed(0)}
+            </span>
+            {product.available && (
+              <span style={{
+                marginLeft: "auto", fontSize: 11, fontWeight: 600, color: "#15803D",
+                background: "#F0FDF4", border: "1px solid #86EFAC",
+                borderRadius: 6, padding: "3px 8px",
+              }}>15 free ✓</span>
+            )}
+          </div>
+          <span style={{
+            display: "inline-block",
+            fontSize: 11, color: "#64748B", fontWeight: 500,
+            background: "#F8FAFC", border: "1px solid #E2E8F0",
+            borderRadius: 20, padding: "2px 10px",
+          }}>One-time · no subscription</span>
         </div>
       </div>
 
