@@ -188,6 +188,27 @@ run("Route Coverage (all routes have components)", () => {
   return `${allImports.length} route components verified`;
 });
 
+// ── 6. User Journey Checks (Playwright, live site) ──────────────────────────
+await runAsync("User Journey Checks (live site)", async () => {
+  const output = execSync(
+    "python3 scripts/journey-checks.py",
+    { cwd: PROJECT_ROOT, timeout: 300_000, encoding: "utf8" }
+  );
+  const match = output.match(/Journey Checks: (\d+) passed, (\d+) failed/);
+  if (!match) throw new Error("Could not parse journey check output");
+  const passed = parseInt(match[1]);
+  const failed = parseInt(match[2]);
+  if (failed > 0) {
+    const failedLines = output
+      .split("\n")
+      .filter(l => l.includes("❌"))
+      .map(l => l.trim())
+      .join("; ");
+    throw new Error(`${failed} journey check(s) failed: ${failedLines}`);
+  }
+  return `${passed} user journeys passed`;
+});
+
 // ── Build Report ──────────────────────────────────────────────────────────────
 const passCount = results.filter(r => r.status.startsWith("✅")).length;
 const failCount = results.filter(r => r.status.startsWith("❌")).length;
