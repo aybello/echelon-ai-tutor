@@ -101,6 +101,12 @@ export default function Account() {
     { enabled: !!submittedEmail && !isAuthenticated, retry: false, staleTime: 30_000 }
   );
 
+  // Public subscription lookup by email — for Restore Access flow (unauthenticated)
+  const getSubscriptionsByEmail = trpc.stripe.getSubscriptionsByEmail.useQuery(
+    { email: submittedEmail ?? "" },
+    { enabled: !!submittedEmail && !isAuthenticated, retry: false, staleTime: 30_000 }
+  );
+
   const getSubscriptions = trpc.stripe.getMySubscriptions.useQuery(
     undefined,
     { enabled: !!isAuthenticated, retry: false }
@@ -150,6 +156,18 @@ export default function Account() {
     }
   }, [getPurchasesByEmail.data, submittedEmail, restored]);
 
+  // Restore localStorage for subscription customers (unauthenticated / email-lookup path)
+  useEffect(() => {
+    const data = getSubscriptionsByEmail.data;
+    if (data && data.unlockedExamTypes.length > 0 && submittedEmail) {
+      try {
+        localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(data.unlockedExamTypes));
+        localStorage.setItem("echelon_trial_unlocked", "true");
+        localStorage.setItem("echelon_trial_email", submittedEmail);
+      } catch { /* ignore */ }
+    }
+  }, [getSubscriptionsByEmail.data, submittedEmail]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = email.trim().toLowerCase();
@@ -162,10 +180,12 @@ export default function Account() {
     setSubmittedEmail(trimmed);
   };
 
-  // Merge results from both paths: authenticated (getMyPurchases) + email lookup (getPurchasesByEmail)
+  // Merge results from all paths: authenticated, email lookup (one-time), and subscription lookup
   const unlockedExamTypes = [
     ...(getPurchases.data?.unlockedExamTypes ?? []),
     ...(getPurchasesByEmail.data?.unlockedExamTypes ?? []),
+    ...(getSubscriptionsByEmail.data?.unlockedExamTypes ?? []),
+    ...(getSubscriptions.data?.unlockedExamTypes ?? []),
   ].filter((v, i, a) => a.indexOf(v) === i); // deduplicate
   const purchases = getPurchases.data?.purchases ?? [];
   const hasPurchases = unlockedExamTypes.length > 0;

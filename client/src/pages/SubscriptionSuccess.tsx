@@ -1,10 +1,30 @@
 // Echelon Institute — Subscription Success Page
-// Shown after a successful annual subscription checkout
-
+// Shown after a successful annual subscription checkout.
+// Calls verifySubscriptionSession to confirm payment server-side, then writes
+// subscription access to localStorage so the customer can study immediately
+// without needing to log in first.
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
+import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import LandingNav from "@/components/LandingNav";
+
+/** Write subscription access to localStorage so the quiz gate lifts immediately. */
+function writeSubscriptionAccess(email: string, tier: string, province: string, examTypes: string[]) {
+  try {
+    localStorage.setItem("echelon_subscription_email", email);
+    localStorage.setItem("echelon_subscription_tier", tier);
+    localStorage.setItem("echelon_subscription_province", province);
+    localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(examTypes));
+    // Also set the global trial-unlocked flag so the quiz gate lifts immediately
+    localStorage.setItem("echelon_trial_unlocked", "true");
+    if (email) {
+      localStorage.setItem("echelon_trial_email", email);
+    }
+  } catch {
+    // ignore — localStorage may be unavailable in some browsers
+  }
+}
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -41,8 +61,11 @@ export default function SubscriptionSuccess() {
   const [, setLocation] = useLocation();
   const [countdown, setCountdown] = useState(8);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [accessWritten, setAccessWritten] = useState(false);
 
+  // Read URL params — tier/province passed as convenience fallback
   const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get("session_id") ?? "";
   const tier = params.get("tier") ?? "all-access";
   const province = params.get("province") ?? "ontario";
   const tierLabel = TIER_LABELS[tier] ?? "All-Access";
@@ -51,7 +74,37 @@ export default function SubscriptionSuccess() {
     : (TIER_QUIZ_PATHS_ONTARIO[tier] ?? "/quiz");
   const provinceLabel = province === "ontario" ? "Ontario (EOCP)" : "Western Canada (WPI)";
 
+  // ── Verify session server-side and write localStorage access ──────────────
+  const verifyMutation = trpc.stripe.verifySubscriptionSession.useMutation({
+    onSuccess: (data) => {
+      if (data.paid && data.examTypes.length > 0) {
+        writeSubscriptionAccess(data.email, data.tier || tier, data.province || province, data.examTypes);
+      } else {
+        // Fallback: set trial-unlocked so they're not completely blocked
+        try { localStorage.setItem("echelon_trial_unlocked", "true"); } catch {}
+      }
+      setAccessWritten(true);
+    },
+    onError: () => {
+      // Best-effort fallback — server-side checkAccess will be authoritative once they log in
+      try { localStorage.setItem("echelon_trial_unlocked", "true"); } catch {}
+      setAccessWritten(true);
+    },
+  });
+
+  // Fire the verification once on mount
   useEffect(() => {
+    if (sessionId) {
+      verifyMutation.mutate({ sessionId });
+    } else {
+      setAccessWritten(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sessionId]);
+
+  // Start countdown once access is written
+  useEffect(() => {
+    if (!accessWritten) return;
     intervalRef.current = setInterval(() => {
       setCountdown(c => {
         if (c <= 1) {
@@ -63,7 +116,7 @@ export default function SubscriptionSuccess() {
       });
     }, 1000);
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, [quizPath, setLocation]);
+  }, [accessWritten, quizPath, setLocation]);
 
   return (
     <div style={{
@@ -114,27 +167,35 @@ export default function SubscriptionSuccess() {
           </ul>
         </div>
         <Link href={quizPath}>
-          <button style={{
-            width: "100%", padding: "14px 0", borderRadius: 12,
-            background: "linear-gradient(135deg, #7C3AED, #4F46E5)",
-            color: "#fff", border: "none", fontSize: 15, fontWeight: 800,
-            cursor: "pointer", fontFamily: "inherit", marginBottom: 12,
-          }}>
+          <button
+            onClick={() => { if (intervalRef.current) clearInterval(intervalRef.current); }}
+            style={{
+              width: "100%", padding: "14px 0", borderRadius: 12,
+              background: "linear-gradient(135deg, #7C3AED, #4F46E5)",
+              color: "#fff", border: "none", fontSize: 15, fontWeight: 800,
+              cursor: "pointer", fontFamily: "inherit", marginBottom: 12,
+            }}
+          >
             Start Studying Now →
           </button>
         </Link>
         <Link href="/account">
-          <button style={{
-            width: "100%", padding: "12px 0", borderRadius: 12,
-            background: "#F1F5F9", color: "#475569",
-            border: "1.5px solid #E2E8F0", fontSize: 14, fontWeight: 600,
-            cursor: "pointer", fontFamily: "inherit", marginBottom: 16,
-          }}>
+          <button
+            onClick={() => { if (intervalRef.current) clearInterval(intervalRef.current); }}
+            style={{
+              width: "100%", padding: "12px 0", borderRadius: 12,
+              background: "#F1F5F9", color: "#475569",
+              border: "1.5px solid #E2E8F0", fontSize: 14, fontWeight: 600,
+              cursor: "pointer", fontFamily: "inherit", marginBottom: 16,
+            }}
+          >
             View My Subscriptions
           </button>
         </Link>
         <p style={{ fontSize: 12, color: "#94A3B8", margin: 0 }}>
-          Redirecting to your study page in {countdown}s…
+          {accessWritten
+            ? `Redirecting to your study page in ${countdown}s…`
+            : "Activating your access…"}
         </p>
       </div>
       <p style={{ marginTop: 24, fontSize: 12, color: "rgba(255,255,255,0.4)", textAlign: "center" }}>

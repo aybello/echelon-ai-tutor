@@ -23,6 +23,7 @@ interface QuizGateProps {
 }
 
 const TRIAL_UNLOCKED_KEY = "echelon_trial_unlocked";
+const SUBSCRIPTION_EXAM_TYPES_KEY = "echelon_subscription_exam_types";
 
 export function isTrialUnlocked(): boolean {
   try {
@@ -37,6 +38,21 @@ export function setTrialUnlocked(): void {
     localStorage.setItem(TRIAL_UNLOCKED_KEY, "true");
   } catch {
     // ignore
+  }
+}
+
+/**
+ * Returns true if the user has a subscription in localStorage that covers
+ * the given examType. Written by SubscriptionSuccess.tsx after Stripe checkout.
+ */
+export function isSubscriptionUnlocked(examType: string): boolean {
+  try {
+    const raw = localStorage.getItem(SUBSCRIPTION_EXAM_TYPES_KEY);
+    if (!raw) return false;
+    const types: string[] = JSON.parse(raw);
+    return Array.isArray(types) && types.includes(examType);
+  } catch {
+    return false;
   }
 }
 

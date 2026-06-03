@@ -19,7 +19,7 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
-import { isTrialUnlocked, setTrialUnlocked } from "@/components/QuizGate";
+import { isTrialUnlocked, setTrialUnlocked, isSubscriptionUnlocked } from "@/components/QuizGate";
 import { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
 import { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSettingsDrawer";
 import type { DBQuestion } from "@/hooks/useQuestionBank";
@@ -171,7 +171,7 @@ export function useQuizSession({
 
   // ── Trial / gate state ─────────────────────────────────────────────────────
   const [trialUnlocked, setTrialUnlockedState] = useState<boolean>(() =>
-    isTrialUnlocked(),
+    isTrialUnlocked() || isSubscriptionUnlocked(examType),
   );
   const [trialDone, setTrialDone] = useState(false);
 

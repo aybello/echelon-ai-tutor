@@ -6,6 +6,7 @@ import { ALL_PRODUCTS, getAllUnlockedExamTypes, PRODUCT_STUDY_PATHS } from "../s
 import {
   getSubscriptionProduct,
   getAllSubscriptionExamTypes,
+  getSubscriptionExamTypes,
   TIER_LABELS,
   PROVINCE_LABELS,
   type SubscriptionTier,
@@ -365,5 +366,77 @@ export const stripeRouter = router({
     .query(async ({ input, ctx }) => {
       const { hasAccess, isOwner } = await resolveAccess(ctx.user, input.examType);
       return { hasAccess, isOwner };
+    }),
+
+  /**
+   * Verify a subscription checkout session and return tier/province/examTypes/email.
+   * Called by SubscriptionSuccess.tsx immediately after the Stripe redirect so the
+   * customer gets localStorage access without needing to log in.
+   * Public procedure — safe because we verify server-side via the Stripe session ID.
+   */
+  verifySubscriptionSession: publicProcedure
+    .input(z.object({ sessionId: z.string() }))
+    .mutation(async ({ input }) => {
+      try {
+        const session = await stripe.checkout.sessions.retrieve(input.sessionId, {
+          expand: ["customer_details"],
+        });
+        const email = normalizeEmail(
+          (session as any).customer_details?.email ??
+          session.customer_email ??
+          session.metadata?.customer_email
+        );
+        const tier = (session.metadata?.subscription_tier ?? "") as SubscriptionTier;
+        const province = (session.metadata?.subscription_province ?? "") as SubscriptionProvince;
+        // Subscription checkout sessions have status "complete" when paid
+        const paid = session.payment_status === "paid" || session.status === "complete";
+        if (!paid || !tier || !province) {
+          return { paid: false, email: "", tier: "", province: "", examTypes: [] as string[] };
+        }
+        const examTypes = getSubscriptionExamTypes(tier, province);
+        return { paid: true, email, tier, province, examTypes };
+      } catch (err: any) {
+        console.error("[verifySubscriptionSession] Error:", err.message);
+        return { paid: false, email: "", tier: "", province: "", examTypes: [] as string[] };
+      }
+    }),
+
+  /**
+   * Public lookup of active subscriptions by email — for Restore Access flow.
+   * Returns minimal safe data (no Stripe IDs). Used when user is not logged in.
+   */
+  getSubscriptionsByEmail: publicProcedure
+    .input(z.object({ email: z.string().email() }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) return { subscriptions: [], unlockedExamTypes: [] };
+      const normalised = normalizeEmail(input.email);
+      const now = new Date();
+      const rows = await db
+        .select({
+          tier: subscriptions.tier,
+          province: subscriptions.province,
+          status: subscriptions.status,
+          currentPeriodEnd: subscriptions.currentPeriodEnd,
+        })
+        .from(subscriptions)
+        .where(
+          and(
+            eq(subscriptions.email, normalised),
+            eq(subscriptions.status, "active"),
+            gt(subscriptions.currentPeriodEnd, now),
+          )
+        );
+      const unlockedExamTypes = getAllSubscriptionExamTypes(
+        rows.map(r => ({ tier: r.tier as SubscriptionTier, province: r.province as SubscriptionProvince }))
+      );
+      return {
+        subscriptions: rows.map(r => ({
+          tier: r.tier,
+          province: r.province,
+          currentPeriodEnd: r.currentPeriodEnd,
+        })),
+        unlockedExamTypes,
+      };
     }),
 });

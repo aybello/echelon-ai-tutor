@@ -738,3 +738,10 @@
 - [ ] §3.1 Add helmet middleware; reduce body limit to 1MB
 - [ ] §3.2 Add /api/health endpoint
 - [ ] Update affected tests (quiz.smoke.test.ts, questions.bank.test.ts, purchase.flow.test.ts, subscription.flow.test.ts)
+## Subscription Access Fix (June 2026)
+- [x] Add verifySubscriptionSession public procedure to stripeRouter.ts — verifies Stripe session, returns tier/province/examTypes/email
+- [x] Update SubscriptionSuccess.tsx — call verifySubscriptionSession, write subscription access to localStorage
+- [x] Update useQuizSession.ts — check localStorage subscription exam types to lift gate without login
+- [x] Add getSubscriptionsByEmail public procedure to stripeRouter.ts — for Restore Access flow
+- [x] Update Account.tsx restoreLocalStorage — also handle subscription exam types
+- [ ] Update docs/bug-log.md with BUG-006 subscription access
