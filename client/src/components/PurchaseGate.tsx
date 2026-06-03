@@ -42,6 +42,18 @@ function isLocallyPurchased(examType: string): boolean {
   }
 }
 
+/** Check if a subscription stored in localStorage covers this examType */
+function isSubscriptionCovered(examType: string): boolean {
+  try {
+    const raw = localStorage.getItem("echelon_subscription_exam_types");
+    if (!raw) return false;
+    const types: string[] = JSON.parse(raw);
+    return Array.isArray(types) && types.includes(examType);
+  } catch {
+    return false;
+  }
+}
+
 const DEFAULT_FEATURES: Record<string, string[]> = {
   "wqa": [
     "475-question WQA bank — unlimited attempts",
@@ -117,7 +129,7 @@ export default function PurchaseGate({
 }: PurchaseGateProps) {
   // All hooks must be declared before any early returns
   const [email] = useState(getStoredEmail);
-  const [localAccess] = useState(() => isLocallyPurchased(examType));
+  const [localAccess] = useState(() => isLocallyPurchased(examType) || isSubscriptionCovered(examType));
   const [, navigate] = useLocation();
   const { isAuthenticated } = useAuth();
 

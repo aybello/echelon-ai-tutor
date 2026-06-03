@@ -744,4 +744,4 @@
 - [x] Update useQuizSession.ts — check localStorage subscription exam types to lift gate without login
 - [x] Add getSubscriptionsByEmail public procedure to stripeRouter.ts — for Restore Access flow
 - [x] Update Account.tsx restoreLocalStorage — also handle subscription exam types
-- [ ] Update docs/bug-log.md with BUG-006 subscription access
+- [x] Update docs/bug-log.md with BUG-006 subscription access

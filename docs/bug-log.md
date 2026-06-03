@@ -121,3 +121,37 @@ Going forward, before any feature involving payments, access control, or localSt
 - [ ] For Stripe integrations: verify metadata is on the correct object (session vs subscription vs customer)
 - [ ] Run the full user journey checklist (now automated in `scripts/journey-checks.py`)
 - [ ] Test with real Stripe test-mode events (not just mocked webhook payloads)
+
+---
+
+## BUG-006 — Subscription Customers Not Getting Immediate Access After Checkout
+
+**Date:** June 2026
+**Severity:** Critical (revenue impact — paying customers blocked)
+**Status:** Fixed
+
+**Symptom:** Customers who subscribed (annual plan) were redirected to the success page but could not access any quiz content. The paywall gate appeared immediately.
+
+**Root Cause:** `SubscriptionSuccess.tsx` was reading `?tier=` and `?province=` from URL params and showing a success screen, but never writing anything to localStorage. The quiz gate (`useQuizSession.ts`) only checked `isTrialUnlocked()` (a single global flag) and did not check subscription-specific exam types. So subscription customers were blocked by the paywall even after paying.
+
+**Customer Impact:** Any customer who purchased an annual subscription could not access content immediately after checkout.
+
+**Fix Applied:**
+1. `server/routers/stripeRouter.ts` — Added `verifySubscriptionSession` public procedure: verifies Stripe session server-side, returns `{ paid, tier, province, examTypes, email }`.
+2. `server/routers/stripeRouter.ts` — Added `getSubscriptionsByEmail` public procedure: for Restore Access page when user is not logged in.
+3. `client/src/pages/SubscriptionSuccess.tsx` — Now calls `verifySubscriptionSession` on mount, writes `echelon_subscription_exam_types` + `echelon_trial_unlocked` to localStorage immediately after successful checkout. Countdown only starts after access is written.
+4. `client/src/components/QuizGate.tsx` — Added `isSubscriptionUnlocked(examType)` helper that reads `echelon_subscription_exam_types` from localStorage.
+5. `client/src/hooks/useQuizSession.ts` — `trialUnlocked` initialization now checks `isTrialUnlocked() || isSubscriptionUnlocked(examType)`.
+6. `client/src/pages/Account.tsx` — Restore Access page now also queries `getSubscriptionsByEmail` and writes subscription exam types to localStorage.
+
+**localStorage Keys Used:**
+- `echelon_subscription_exam_types` — JSON array of exam type strings (e.g. `["class1-water","class1-ww"]`)
+- `echelon_subscription_tier` — e.g. `"class1"`
+- `echelon_subscription_province` — e.g. `"ontario"`
+- `echelon_subscription_email` — customer email
+- `echelon_trial_unlocked` — `"true"` (global gate flag, also set for subscriptions)
+
+**What Should Have Caught It:**
+- Testing the "just paid, not logged in, fresh browser" path explicitly
+- Subscription checkout sessions use `status === "complete"` not `payment_status === "paid"` — this distinction should be tested
+- A user journey test covering the full subscription checkout flow end-to-end
