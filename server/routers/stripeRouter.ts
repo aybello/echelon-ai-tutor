@@ -251,6 +251,17 @@ export const stripeRouter = router({
           customer_email: userEmail ?? "",
           customer_name: input.name ?? "",
         },
+        // CRITICAL: subscription_data.metadata is what Stripe attaches to the
+        // subscription object itself. The webhook receives the subscription object
+        // (not the session), so tier/province MUST be here or the webhook silently drops it.
+        subscription_data: {
+          metadata: {
+            subscription_tier: input.tier,
+            subscription_province: input.province,
+            user_id: ctx.user?.id?.toString() ?? "",
+            customer_email: userEmail ?? "",
+          },
+        },
         allow_promotion_codes: true,
         success_url: `${input.origin}/subscription-success?session_id={CHECKOUT_SESSION_ID}&tier=${input.tier}&province=${input.province}`,
         cancel_url: `${input.origin}/pricing`,
