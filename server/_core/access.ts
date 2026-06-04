@@ -29,6 +29,10 @@ const BANKKEY_EXAMTYPE_OVERRIDES: Record<string, string> = {
   "class2-wastewater": "class2-ww",
   "class3-wastewater": "class3-ww",
   "class4-wastewater": "class4-ww",
+  "wpi-class1-wastewater-coll": "wpi-class1-water-coll",
+  "wpi-class2-wastewater-coll": "wpi-class2-water-coll",
+  "wpi-class3-wastewater-coll": "wpi-class3-water-coll",
+  "wpi-class4-wastewater-coll": "wpi-class4-water-coll",
 };
 
 export function bankKeyToExamType(bankKey: string): string {
