@@ -15,7 +15,7 @@ export default function Class1WastewaterQuiz() {
     description: "Practice Questions for Ontario OWWCO Class 1 Wastewater Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-wastewater", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-wastewater", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({
@@ -76,6 +76,7 @@ export default function Class1WastewaterQuiz() {
       timedSeconds={session.quizSettings.timedMode ? session.quizSettings.timedSeconds : 0}
       onTimeUp={session.handleTimeUp}
       mockExamHref="/class1-ww-mock"
+      formulaLinks={formulaLinks ?? undefined}
       moduleOverviews={dbOverviews ?? undefined}
       headerExtra={
         <>
@@ -106,6 +107,8 @@ export default function Class1WastewaterQuiz() {
           examType={session.examType}
         />
       )}
+      isFreePreview={!session.trialUnlocked}
+      freeLimit={session.sessionSize}
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}

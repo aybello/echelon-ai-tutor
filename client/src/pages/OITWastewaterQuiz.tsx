@@ -16,7 +16,7 @@ export default function OITWastewaterQuiz() {
     keywords: "OIT wastewater exam, Ontario wastewater certification, operator practice questions",
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit-ww", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit-ww", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({
@@ -77,6 +77,7 @@ export default function OITWastewaterQuiz() {
       timedSeconds={session.quizSettings.timedMode ? session.quizSettings.timedSeconds : 0}
       onTimeUp={session.handleTimeUp}
       mockExamHref="/oit-ww-mock"
+      formulaLinks={formulaLinks ?? undefined}
       moduleOverviews={dbOverviews ?? undefined}
       headerExtra={
         <>
@@ -107,6 +108,8 @@ export default function OITWastewaterQuiz() {
           examType={session.examType}
         />
       )}
+      isFreePreview={!session.trialUnlocked}
+      freeLimit={session.sessionSize}
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}

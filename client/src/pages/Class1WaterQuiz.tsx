@@ -27,7 +27,7 @@ export default function Class1WaterQuiz() {
     description: "Practice Questions for Ontario OWWCO Class 1 Water Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-water", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-water", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES = MODULE_CONFIG;
@@ -83,6 +83,7 @@ export default function Class1WaterQuiz() {
       timedSeconds={session.quizSettings.timedMode ? session.quizSettings.timedSeconds : 0}
       onTimeUp={session.handleTimeUp}
       mockExamHref="/class1-water-mock"
+      formulaLinks={formulaLinks ?? undefined}
       moduleOverviews={dbOverviews ?? undefined}
       headerExtra={
         <>
@@ -113,6 +114,8 @@ export default function Class1WaterQuiz() {
           examType={session.examType}
         />
       )}
+      isFreePreview={!session.trialUnlocked}
+      freeLimit={session.sessionSize}
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}

@@ -31,7 +31,7 @@ export default function Home() {
     keywords: "water operator exam, OIT exam prep, wastewater certification, operator practice questions",
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit");
   const allQuestions = dbQuestions;
 
   const MODULES = MODULE_CONFIG;
@@ -90,6 +90,7 @@ export default function Home() {
       timedSeconds={session.quizSettings.timedMode ? session.quizSettings.timedSeconds : 0}
       onTimeUp={session.handleTimeUp}
       mockExamHref="/oit-mock"
+      formulaLinks={formulaLinks ?? undefined}
       moduleOverviews={dbOverviews ?? undefined}
       headerExtra={
         <>
@@ -120,6 +121,8 @@ export default function Home() {
           examType={session.examType}
         />
       )}
+      isFreePreview={!session.trialUnlocked}
+      freeLimit={session.sessionSize}
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}

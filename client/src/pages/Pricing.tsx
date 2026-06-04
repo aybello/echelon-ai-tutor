@@ -11,6 +11,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
 import LandingNav from "@/components/LandingNav";
 import { ALL_PRODUCTS as SHARED_PRODUCTS } from "@shared/products";
+import { getSubscriptionExamTypes, EXAM_LABELS } from "@/lib/examMeta";
 
 /** Helper: get the canonical price from shared/products.ts by product key */
 function sharedPrice(key: string): number {
@@ -1123,7 +1124,10 @@ export default function Pricing() {
                         <div style={{ fontSize: 12, color: "#64748B", marginTop: 4 }}>{tier.tagline}</div>
                       </div>
                       <ul style={{ margin: 0, padding: "0 0 0 14px", fontSize: 12, color: "#475569", lineHeight: 1.7 }}>
-                        {tier.features.map(f => <li key={f}>{f}</li>)}
+                        {getSubscriptionExamTypes(tier.tier, subProvince).map(et => (
+                          <li key={et} style={{ color: "#334155" }}>{EXAM_LABELS[et] ?? et}</li>
+                        ))}
+                        <li style={{ marginTop: 4, color: "#7C3AED", fontWeight: 600 }}>+ AI Tutor, Flashcards & Mock Exams</li>
                       </ul>
                       {isActivePlan ? (
                         <Link href="/account">

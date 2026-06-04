@@ -311,3 +311,17 @@ export const triggerLogs = mysqlTable("trigger_logs", {
 
 export type TriggerLog = typeof triggerLogs.$inferSelect;
 export type InsertTriggerLog = typeof triggerLogs.$inferInsert;
+
+/** Magic links for passwordless email authentication */
+export const magicLinks = mysqlTable("magic_links", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  token: varchar("token", { length: 128 }).notNull().unique(),
+  examTypes: text("examTypes").notNull(), // JSON array of exam types the user has access to
+  expiresAt: timestamp("expiresAt").notNull(),
+  usedAt: timestamp("usedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type MagicLink = typeof magicLinks.$inferSelect;
+export type InsertMagicLink = typeof magicLinks.$inferInsert;

@@ -8,7 +8,7 @@ import { resolveAccess, resolveAccessByEmail, bankKeyToExamType, FREE_TRIAL_LIMI
 import { verifySubscriptionToken } from "../_core/subscriptionToken";
 import { getDb } from "../db";
 import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews } from "../../drizzle/schema";
-import { and, eq, desc, sql } from "drizzle-orm";
+import { and, eq, desc, sql, gte } from "drizzle-orm";
 import { z } from "zod";
 
 export const quizRouter = router({
@@ -443,8 +443,86 @@ export const quizRouter = router({
           strongTopics: [] as string[],
           totalAttempts: 0,
           totalSessions: 0,
-          currentStreak: 0,
+        currentStreak: 0,
+      };
+      }
+    }),
+
+  /**
+   * getAttemptStats — returns seen and missed question IDs for a given exam type.
+   * Used by useQuizSession to seed its usedIds and prioritise missed questions.
+   * Works for both authenticated users and guest token users.
+   */
+  getAttemptStats: publicProcedure
+    .input(
+      z.object({
+        examType: z.string().min(1).max(64),
+        guestToken: z.string().max(64).optional(),
+      })
+    )
+    .query(async ({ input, ctx }) => {
+      try {
+        const db = await getDb();
+        if (!db) return { seenIds: [] as number[], missedIds: [] as number[] };
+        const userId = ctx.user?.id ?? null;
+
+        if (!userId && !input.guestToken) {
+          return { seenIds: [] as number[], missedIds: [] as number[] };
+        }
+
+        // Fetch attempts from the last 30 days
+        const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+        const condition = userId
+          ? and(
+              eq(questionAttempts.userId, userId),
+              eq(questionAttempts.examType, input.examType),
+              gte(questionAttempts.createdAt, thirtyDaysAgo)
+            )
+          : and(
+              eq(questionAttempts.guestToken, input.guestToken!),
+              eq(questionAttempts.examType, input.examType),
+              gte(questionAttempts.createdAt, thirtyDaysAgo)
+            );
+
+        const rows = await db
+          .select({
+            questionId: questionAttempts.questionId,
+            correct: questionAttempts.correct,
+          })
+          .from(questionAttempts)
+          .where(condition)
+          .orderBy(desc(questionAttempts.createdAt))
+          .limit(2000);
+
+        // Build per-question stats: count correct attempts
+        const correctCountByQ = new Map<number, number>();
+        const seenSet = new Set<number>();
+        const missedSet = new Set<number>();
+
+        for (const row of rows) {
+          seenSet.add(row.questionId);
+          if (row.correct === "yes") {
+            correctCountByQ.set(row.questionId, (correctCountByQ.get(row.questionId) ?? 0) + 1);
+          } else {
+            missedSet.add(row.questionId);
+          }
+        }
+
+        // A question is "mastered" if answered correctly 2+ times in 30 days
+        // Remove mastered from missed set
+        for (const [qId, count] of Array.from(correctCountByQ.entries())) {
+          if (count >= 2) {
+            missedSet.delete(qId);
+          }
+        }
+
+        return {
+          seenIds: Array.from(seenSet),
+          missedIds: Array.from(missedSet),
         };
+      } catch (err) {
+        console.error("[quizRouter.getAttemptStats] Error:", err);
+        return { seenIds: [] as number[], missedIds: [] as number[] };
       }
     }),
 });

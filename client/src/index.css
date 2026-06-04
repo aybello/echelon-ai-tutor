@@ -293,3 +293,16 @@ img {
     grid-template-columns: 1fr;
   }
 }
+
+/* Mobile bottom nav — hidden on desktop, shown on mobile */
+.echelon-mobile-bottom-nav {
+  display: none !important;
+}
+@media (max-width: 640px) {
+  .echelon-mobile-bottom-nav {
+    display: flex !important;
+  }
+  body {
+    padding-bottom: 64px;
+  }
+}

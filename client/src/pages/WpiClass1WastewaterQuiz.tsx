@@ -30,7 +30,7 @@ export default function WpiClass1WastewaterQuiz() {
     description: "Practice Questions for WPI Class 1 Wastewater Treatment operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class1-wastewater", "lazy");
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class1-wastewater", "lazy");
   const allQuestions = dbQuestions;
 
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({
@@ -91,6 +91,7 @@ export default function WpiClass1WastewaterQuiz() {
       timedSeconds={session.quizSettings.timedMode ? session.quizSettings.timedSeconds : 0}
       onTimeUp={session.handleTimeUp}
       mockExamHref="/wpi-class1-wastewater-mock"
+      formulaLinks={formulaLinks ?? undefined}
       moduleOverviews={dbOverviews ?? undefined}
       headerExtra={
         <>
@@ -121,6 +122,8 @@ export default function WpiClass1WastewaterQuiz() {
           examType={session.examType}
         />
       )}
+      isFreePreview={!session.trialUnlocked}
+      freeLimit={session.sessionSize}
       gate={session.trialDone && !session.trialUnlocked ? (
         <QuizGate
           questionsAnswered={session.history.length}

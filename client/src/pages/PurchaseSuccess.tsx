@@ -3,8 +3,8 @@
 // Verifies the session, stores email in localStorage for access gating
 // Auto-redirects to the purchased course quiz after 4 seconds
 
-import { useEffect, useState, useRef } from "react";
-import { Link, useLocation } from "wouter";
+import { useEffect, useState } from "react";
+import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import LandingNav from "@/components/LandingNav";
@@ -124,7 +124,6 @@ const PRODUCT_PATHS: Record<string, { label: string; path: string }[]> = {
   ],
 };
 
-const REDIRECT_DELAY = 5; // seconds
 
 export default function PurchaseSuccess() {
   usePageMeta({
@@ -132,7 +131,6 @@ export default function PurchaseSuccess() {
     description: "Your purchase was successful. Thank you for choosing Echelon Institute.",
   });
 
-  const [, navigate] = useLocation();
   const params = new URLSearchParams(window.location.search);
   const sessionId = params.get("session_id") ?? "";
   const productKey = params.get("product") ?? "";
@@ -143,13 +141,10 @@ export default function PurchaseSuccess() {
   const [referralSource, setReferralSource] = useState("");
   const [referralSubmitted, setReferralSubmitted] = useState(false);
   const [stripeSessionId, setStripeSessionId] = useState("");
-  const [countdown, setCountdown] = useState(REDIRECT_DELAY);
-  const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [allUnlockedProducts, setAllUnlockedProducts] = useState<string[]>([]);
 
   const saveReferral = trpc.stripe.saveReferralSource.useMutation();
 
-  const links = PRODUCT_PATHS[productKey] ?? [{ label: "Start Practicing", path: "/quiz" }];
-  const primaryPath = links[0]?.path ?? "/quiz";
 
   // Verify the session with Stripe and record the purchase
   const verifySession = trpc.stripe.verifySession.useMutation({
@@ -164,6 +159,7 @@ export default function PurchaseSuccess() {
             existing.push(productKey);
             localStorage.setItem("echelon_purchased_products", JSON.stringify(existing));
           }
+          setAllUnlockedProducts(existing);
         } catch {
           // ignore
         }
@@ -171,17 +167,6 @@ export default function PurchaseSuccess() {
       setVerified(true);
       setVerifying(false);
       setStripeSessionId(sessionId);
-
-      // Start countdown for auto-redirect
-      let remaining = REDIRECT_DELAY;
-      countdownRef.current = setInterval(() => {
-        remaining -= 1;
-        setCountdown(remaining);
-        if (remaining <= 0) {
-          if (countdownRef.current) clearInterval(countdownRef.current);
-          navigate(primaryPath);
-        }
-      }, 1000);
     },
     onError: () => {
       setVerifying(false);
@@ -194,9 +179,6 @@ export default function PurchaseSuccess() {
     } else {
       setVerifying(false);
     }
-    return () => {
-      if (countdownRef.current) clearInterval(countdownRef.current);
-    };
   }, [sessionId]);
 
   return (
@@ -273,32 +255,15 @@ export default function PurchaseSuccess() {
               )}
             </p>
 
-            {/* Auto-redirect countdown */}
-            {verified && (
-              <p style={{ color: "#16A34A", fontSize: 13, fontWeight: 600, marginBottom: 20 }}>
-                Redirecting to your course in {countdown}s…{" "}
-                <button
-                  onClick={() => {
-                    if (countdownRef.current) clearInterval(countdownRef.current);
-                    navigate(primaryPath);
-                  }}
-                  style={{
-                    background: "none",
-                    border: "none",
-                    color: "#1D4ED8",
-                    fontSize: 13,
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    textDecoration: "underline",
-                    padding: 0,
-                    fontFamily: "inherit",
-                  }}
-                >
-                  Go now →
-                </button>
-              </p>
+            {/* Access email reminder */}
+            {email && (
+              <div style={{ background: "#FFF7ED", border: "1.5px solid #FED7AA", borderRadius: 10, padding: "12px 16px", marginBottom: 16, textAlign: "left" }}>
+                <p style={{ margin: 0, fontSize: 12, fontWeight: 700, color: "#C2410C" }}>Save this email - it's your access key</p>
+                <p style={{ margin: "4px 0 0", fontSize: 13, color: "#78350F" }}>Your access is tied to: <strong>{email}</strong></p>
+              </div>
             )}
 
+            {/* Your Courses - show all unlocked products */}
             <div
               style={{
                 background: "#F0FDF4",
@@ -310,34 +275,35 @@ export default function PurchaseSuccess() {
               }}
             >
               <div style={{ fontSize: 12, fontWeight: 700, color: "#16A34A", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-                Start Practicing Now
+                Your Courses
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {links.map(link => (
-                  <Link key={link.path} href={link.path}>
-                    <div
-                      onClick={() => {
-                        if (countdownRef.current) clearInterval(countdownRef.current);
-                      }}
-                      style={{
-                        padding: "10px 14px",
-                        background: "#fff",
-                        borderRadius: 8,
-                        border: "1px solid #BBF7D0",
-                        fontSize: 13,
-                        fontWeight: 600,
-                        color: "#0F172A",
-                        cursor: "pointer",
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                      }}
-                    >
-                      {link.label}
-                      <span style={{ color: "#16A34A" }}>→</span>
-                    </div>
-                  </Link>
-                ))}
+                {(allUnlockedProducts.length > 0 ? allUnlockedProducts : [productKey]).map(pk => {
+                  const courseLinks = PRODUCT_PATHS[pk] ?? [{ label: pk, path: "/quiz" }];
+                  return courseLinks.map(link => (
+                    <Link key={link.path} href={link.path}>
+                      <div
+                        style={{
+                          padding: "10px 14px",
+                          background: pk === productKey ? "#DCFCE7" : "#fff",
+                          borderRadius: 8,
+                          border: pk === productKey ? "1.5px solid #86EFAC" : "1px solid #BBF7D0",
+                          fontSize: 13,
+                          fontWeight: 600,
+                          color: "#0F172A",
+                          cursor: "pointer",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                        }}
+                      >
+                        {link.label}
+                        {pk === productKey && <span style={{ fontSize: 10, background: "#16A34A", color: "#fff", padding: "2px 6px", borderRadius: 4, fontWeight: 700 }}>NEW</span>}
+                        <span style={{ color: "#16A34A" }}>→</span>
+                      </div>
+                    </Link>
+                  ));
+                })}
               </div>
             </div>
 
@@ -396,7 +362,6 @@ export default function PurchaseSuccess() {
             <div style={{ marginTop: 24, display: "flex", gap: 12, justifyContent: "center" }}>
               <Link href="/">
                 <button
-                  onClick={() => { if (countdownRef.current) clearInterval(countdownRef.current); }}
                   style={{
                     padding: "9px 20px",
                     borderRadius: 8,
@@ -414,7 +379,6 @@ export default function PurchaseSuccess() {
               </Link>
               <Link href="/pricing">
                 <button
-                  onClick={() => { if (countdownRef.current) clearInterval(countdownRef.current); }}
                   style={{
                     padding: "9px 20px",
                     borderRadius: 8,

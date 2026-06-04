@@ -519,3 +519,101 @@ export async function sendContactEmail(payload: ContactEmailPayload): Promise<vo
     console.log("[Contact Email] Preview URL:", nodemailer.getTestMessageUrl(info));
   }
 }
+
+
+export interface MagicLinkEmailPayload {
+  email: string;
+  magicLinkUrl: string;
+  expiresInMinutes: number;
+}
+
+/**
+ * Sends a magic link email for passwordless authentication.
+ * The link contains a one-time token that grants access to the user's purchased courses.
+ */
+export async function sendMagicLinkEmail(
+  payload: MagicLinkEmailPayload
+): Promise<void> {
+  const { email, magicLinkUrl, expiresInMinutes } = payload;
+
+  let transporter: nodemailer.Transporter;
+  if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
+    transporter = createTransporter();
+  } else if (!ENV.isProduction) {
+    const testAccount = await nodemailer.createTestAccount();
+    transporter = nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false,
+      auth: { user: testAccount.user, pass: testAccount.pass },
+    });
+  } else {
+    console.error("[email] SMTP not configured in production.");
+    throw new Error("Email service not configured");
+  }
+
+  const mail = {
+    from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
+    to: email,
+    subject: `Your login link - Echelon Institute`,
+    text: [
+      `Hi there,`,
+      ``,
+      `Click the link below to access your Echelon Institute courses:`,
+      ``,
+      magicLinkUrl,
+      ``,
+      `This link expires in ${expiresInMinutes} minutes and can only be used once.`,
+      ``,
+      `If you didn't request this, you can safely ignore this email.`,
+      ``,
+      `- The Echelon Institute Team`,
+    ].join("\n"),
+    html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,Helvetica,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+        <tr>
+          <td style="background:linear-gradient(135deg,#1D4ED8 0%,#0E7490 100%);border-radius:12px 12px 0 0;padding:32px 32px 28px;text-align:center;">
+            <div style="font-size:40px;margin-bottom:12px;">🔐</div>
+            <h1 style="color:#ffffff;margin:0 0 8px;font-size:24px;font-weight:800;">Your Login Link</h1>
+            <p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">Click below to access your courses instantly.</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#ffffff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;text-align:center;">
+            <p style="margin:0 0 24px;font-size:15px;color:#475569;line-height:1.6;">
+              Click the button below to sign in and access all your purchased courses. No password needed.
+            </p>
+            <a href="${magicLinkUrl}" style="display:inline-block;background:linear-gradient(135deg,#1D4ED8,#0E7490);color:#ffffff;text-decoration:none;padding:16px 40px;border-radius:10px;font-size:16px;font-weight:700;">
+              Sign In to Echelon Institute
+            </a>
+            <p style="margin:24px 0 0;font-size:12px;color:#94A3B8;">
+              This link expires in ${expiresInMinutes} minutes and can only be used once.
+            </p>
+            <div style="border-top:1px solid #E2E8F0;margin-top:28px;padding-top:20px;">
+              <p style="margin:0;font-size:12px;color:#94A3B8;">
+                If you didn't request this link, you can safely ignore this email.
+              </p>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
+    `,
+  };
+
+  const info = await transporter.sendMail(mail);
+  if (!ENV.smtpHost) {
+    console.log("[Magic Link Email] Preview URL:", nodemailer.getTestMessageUrl(info));
+  } else {
+    console.log(`[Magic Link Email] Sent to ${email}`);
+  }
+}

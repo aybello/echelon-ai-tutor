@@ -14,6 +14,7 @@ import { stripeRouter } from "./routers/stripeRouter";
 import { flashcardRouter } from "./routers/flashcardRouter";
 import { quizRouter } from "./routers/quizRouter";
 import { dashboardRouter } from "./routers/dashboardRouter";
+import { magicLinkRouter } from "./routers/magicLinkRouter";
 import { sendContactEmail } from "./email";
 
 export const appRouter = router({
@@ -24,6 +25,7 @@ export const appRouter = router({
   flashcard: flashcardRouter,
   quiz: quizRouter,
   dashboard: dashboardRouter,
+  magicLink: magicLinkRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

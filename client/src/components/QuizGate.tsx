@@ -287,6 +287,12 @@ export default function QuizGate({
                     ← Back to Homepage
                   </button>
                 </Link>
+                <button
+                  onClick={() => navigate("/account")}
+                  style={{ width: "100%", padding: "8px 20px", borderRadius: 10, border: "none", background: "transparent", color: "#1D4ED8", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
+                >
+                  🎫 Already subscribed? Restore access →
+                </button>
               </div>
             </>
           ) : (
@@ -354,6 +360,12 @@ export default function QuizGate({
                     ← Back to Homepage
                   </button>
                 </Link>
+                <button
+                  onClick={() => navigate("/account")}
+                  style={{ width: "100%", padding: "8px 20px", borderRadius: 10, border: "none", background: "transparent", color: "#1D4ED8", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
+                >
+                  🎫 Already purchased? Restore access →
+                </button>
               </div>
             </>
           )}

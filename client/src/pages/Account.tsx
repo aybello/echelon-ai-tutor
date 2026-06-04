@@ -74,6 +74,73 @@ function formatDate(ts: Date | string | number) {
   return new Date(ts).toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" });
 }
 
+/** Magic Link section — allows users to email themselves a sign-in link for cross-device access */
+function MagicLinkSection({ email }: { email: string }) {
+  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const requestMagicLink = trpc.magicLink.requestMagicLink.useMutation({
+    onSuccess: () => {
+      setSent(true);
+      setSending(false);
+      toast.success("Sign-in link sent!", { description: `Check ${email} for a magic link.` });
+    },
+    onError: (err) => {
+      setSending(false);
+      toast.error("Failed to send link", { description: err.message });
+    },
+  });
+
+  const handleSend = () => {
+    setSending(true);
+    requestMagicLink.mutate({ email, origin: window.location.origin });
+  };
+
+  if (sent) {
+    return (
+      <div style={{
+        background: "rgba(29,78,216,0.08)", border: "1px solid rgba(59,130,246,0.3)",
+        borderRadius: 12, padding: "14px 20px", marginBottom: 24,
+        display: "flex", alignItems: "center", gap: 12,
+      }}>
+        <span style={{ fontSize: 20 }}>📧</span>
+        <div>
+          <p style={{ color: "#93C5FD", fontWeight: 700, fontSize: 13, margin: "0 0 2px" }}>Sign-in link sent!</p>
+          <p style={{ color: "#64748B", fontSize: 12, margin: 0 }}>Check <strong style={{ color: "#93C5FD" }}>{email}</strong> for a link that works on any device.</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{
+      background: "rgba(29,78,216,0.06)", border: "1px solid rgba(59,130,246,0.2)",
+      borderRadius: 12, padding: "14px 20px", marginBottom: 24,
+      display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap",
+    }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <span style={{ fontSize: 18 }}>🔗</span>
+        <div>
+          <p style={{ color: "#93C5FD", fontWeight: 700, fontSize: 12, margin: "0 0 2px" }}>Need access on another device?</p>
+          <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>We'll email you a one-click sign-in link.</p>
+        </div>
+      </div>
+      <button
+        onClick={handleSend}
+        disabled={sending}
+        style={{
+          padding: "8px 16px", borderRadius: 8, border: "none",
+          background: sending ? "#334155" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+          color: "#fff", fontSize: 12, fontWeight: 700, cursor: sending ? "not-allowed" : "pointer",
+          fontFamily: "inherit", whiteSpace: "nowrap",
+        }}
+      >
+        {sending ? "Sending…" : "Send Sign-In Link →"}
+      </button>
+    </div>
+  );
+}
+
 export default function Account() {
   usePageMeta({
     title: "My Passes — Echelon Institute",
@@ -371,6 +438,9 @@ export default function Account() {
                     {copiedEmail ? "Copied!" : "📋 Copy email"}
                   </button>
                 </div>
+
+                {/* Magic Link option */}
+                <MagicLinkSection email={submittedEmail ?? ""} />
 
                 {/* ── Active Subscriptions ── */}
                 {(getSubscriptions.data?.subscriptions ?? []).length > 0 && (

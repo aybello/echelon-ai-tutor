@@ -124,6 +124,9 @@ export interface QuizShellProps {
   gate?: ReactNode;
   // Optional: exam type / bank key for feedback tracking (e.g. "class1-water")
   examType?: string;
+  // Optional: show "Free preview: N of M" indicator for non-unlocked users
+  isFreePreview?: boolean;
+  freeLimit?: number;
 }
 
 // ─── Constants ───────────────────────────────────────────────────────────────
@@ -186,6 +189,8 @@ export default function QuizShell({
   onTimeUp,
   gate,
   examType,
+  isFreePreview = false,
+  freeLimit = 15,
 }: QuizShellProps) {
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
@@ -201,6 +206,11 @@ export default function QuizShell({
   useEffect(() => {
     if (!current && history.length >= FEEDBACK_MIN_QUESTIONS && prevHistoryLen.current > 0) {
       setShowSessionFeedback(true);
+      // Increment session counter for review prompt gating
+      try {
+        const n = (parseInt(localStorage.getItem("echelon_session_count") ?? "0", 10) || 0) + 1;
+        localStorage.setItem("echelon_session_count", String(n));
+      } catch { /* ignore */ }
     }
     prevHistoryLen.current = history.length;
   }, [current, history.length]);
@@ -275,8 +285,13 @@ export default function QuizShell({
               {correctCount} correct · {wrongCount} incorrect
               {sessionSize ? ` · ${sessionSize} questions` : ""}
             </p>
-            {/* Google Review prompt — shown when user scores 70%+ */}
-            {pct >= 70 && (
+            {/* Google Review prompt — shown when user scores 70%+ AND has completed 3+ sessions */}
+            {pct >= 70 && (() => {
+              try {
+                const count = parseInt(localStorage.getItem("echelon_session_count") ?? "0", 10) || 0;
+                return count >= 3;
+              } catch { return false; }
+            })() && (
               <a
                 href="https://g.page/r/CWsjBbkUlS8rEBM/review"
                 target="_blank"
@@ -516,6 +531,16 @@ export default function QuizShell({
               </div>
             ))}
           </div>
+
+          {/* Free preview indicator — shown when user has not unlocked */}
+          {isFreePreview && (
+            <div style={{ marginTop: 8, padding: "6px 12px", background: "rgba(255,255,255,0.12)", borderRadius: 8, fontSize: 11, fontWeight: 700, color: "#fff", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <span>Free preview · {Math.min(history.length, freeLimit)} of {freeLimit} questions</span>
+              <span style={{ opacity: 0.8 }}>
+                {Math.max(0, freeLimit - history.length)} left before unlock
+              </span>
+            </div>
+          )}
 
           {/* Module pills + Calc Only — scrollable row on mobile via .qs-module-pills-row CSS */}
           {(modules.length > 0 || hasCalcOnly) && (

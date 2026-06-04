@@ -176,6 +176,13 @@
       "when": 1780200754543,
       "tag": "0024_bent_menace",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "5",
+      "when": 1780537025864,
+      "tag": "0025_silent_stranger",
+      "breakpoints": true
     }
   ]
 }

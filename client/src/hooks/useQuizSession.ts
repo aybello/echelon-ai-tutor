@@ -18,6 +18,7 @@
 
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { useSearch } from "wouter";
+import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 import { isTrialUnlocked, setTrialUnlocked, isSubscriptionUnlocked } from "@/components/QuizGate";
 import { useAttemptLogger, type QuizMode } from "@/components/QuizModeBar";
@@ -221,6 +222,24 @@ export function useQuizSession({
     );
   const missedCount = missedData?.total ?? 0;
 
+  // ── Progress persistence: seed usedIds from previously-mastered questions ──
+  const { data: attemptStats } = trpc.quiz.getAttemptStats.useQuery(
+    { examType },
+    { refetchOnWindowFocus: false, staleTime: 5 * 60 * 1000 }
+  );
+  // On mount, pre-seed usedIds with mastered questions (answered correctly 2+ times in 30 days)
+  // This ensures returning users don't re-see questions they've already mastered
+  useEffect(() => {
+    if (attemptStats && attemptStats.seenIds.length > 0 && usedIds.size === 0 && history.length === 0) {
+      // Only seed mastered questions (seenIds minus missedIds)
+      const missedSet = new Set(attemptStats.missedIds);
+      const masteredIds = attemptStats.seenIds.filter(id => !missedSet.has(id));
+      if (masteredIds.length > 0) {
+        setUsedIds(new Set(masteredIds));
+      }
+    }
+  }, [attemptStats]);
+
   // ── Derived ────────────────────────────────────────────────────────────────
   const correctCount = history.filter((h) => h.correct).length;
   const wrongCount = history.length - correctCount;
@@ -314,6 +333,15 @@ export function useQuizSession({
 
     // Refetch missed questions if wrong
     if (!isCorrect) setTimeout(() => refetchMissed(), 500);
+
+    // Toast warning at 2 questions before paywall
+    if (
+      quizMode !== "quick10" &&
+      !trialUnlocked &&
+      updatedHistory.length === SESSION_SIZE - 2
+    ) {
+      toast("2 free questions left", { description: "Subscribe to keep going after this." });
+    }
 
     // Check if paywall should trigger (only in standard/missed mode, not quick10)
     if (

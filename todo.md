@@ -754,3 +754,30 @@
 - [x] Update Account.tsx — save echelon_access_token from getPurchasesByEmail.data.accessToken
 - [x] Add webhook monitoring/alerting — notifyOwner when subscription webhook drops due to missing metadata or unresolvable customer email
 - [x] Verify JWT is issued and stored correctly for one-time purchase customers (Journey 2 checklist PASSED)
+
+## Claude Master Spec Implementation (June 2026)
+
+### TIER 0 — Verify fixed bugs are live
+- [x] Verify BUG-001 (trial showed only Disinfection) is deployed (fixed in prior session)
+- [x] Verify BUG-002 (correct answers shown wrong) is deployed (fixed in prior session)
+- [x] Verify BUG-003 (restore returns "no purchases") is deployed (fixed in prior session)
+
+### TIER 1 — Customer-blocking fixes
+- [x] 1.5: Add restore link to QuizGate (free-trial gate has no restore path)
+- [x] 1.3: Free-preview progress indicator ("Free preview: N of 15" counter + toast at Q13)
+- [x] 1.4: Fire confirmation email from success page (already exists in verifySession)
+- [x] 1.2: Post-purchase "Your Courses" landing (show all unlocked courses on success screen)
+- [x] 1.1: Magic-link authentication (DB table, email sender, tRPC procedures, consume route, client UI)
+
+### TIER 2 — Premium product polish
+- [x] 2.7: Make subscription "what's included" explicit on pricing cards
+- [x] 2.1: Build mobile bottom nav
+- [x] 2.6: Move Google review prompt to 3rd+ session
+- [x] 2.2: Persist practice-quiz progress for email/subscription users
+- [x] 2.5: Surface formula sheets during calc questions
+
+### TIER 3 — Content gaps and cleanup
+- [x] 3.1: Audit WPI route completeness (verified: 65 routes for 49 pages)
+- [x] 3.3: Add OIT Wastewater to Pricing page (already exists)
+- [x] 3.4: Fix JSX error at WpiLanding.tsx line 585 (already fixed)
+- [x] 3.5: Build Class 2 Water formula sheet (already exists, 633 lines)

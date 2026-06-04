@@ -6,6 +6,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { trpc } from "@/lib/trpc";
 import PhoneCollectionModal from "./components/PhoneCollectionModal";
 import { QuestionBankPrefetcher } from "./components/QuestionBankPrefetcher";
+import MobileBottomNav from "./components/MobileBottomNav";
 import { useAuth } from "./_core/hooks/useAuth";
 import { lazy, Suspense } from "react";
 
@@ -42,6 +43,7 @@ const Pricing = lazy(() => import("./pages/Pricing"));
 const PurchaseSuccess = lazy(() => import("./pages/PurchaseSuccess"));
 const SubscriptionSuccess = lazy(() => import("./pages/SubscriptionSuccess"));
 const WpiLanding = lazy(() => import("./pages/WpiLanding"));
+const MagicLinkConsume = lazy(() => import("./pages/MagicLinkConsume"));
 
 // Ontario Class mock exams
 const Class1MockExam = lazy(() => import("./pages/Class1MockExam"));
@@ -314,6 +316,7 @@ function Router() {
         <Route path={"/purchase-success"} component={PurchaseSuccess} />
         <Route path={"/subscription-success"} component={SubscriptionSuccess} />
         <Route path={"/account"} component={Account} />
+        <Route path={"/auth/magic"} component={MagicLinkConsume} />
         <Route path={"/dashboard"} component={StudentDashboard} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
@@ -355,6 +358,7 @@ function App() {
           </div>
           <PhoneGate />
           <QuestionBankPrefetcher />
+          <MobileBottomNav />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
