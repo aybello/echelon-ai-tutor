@@ -144,11 +144,7 @@ export default function QuizSettingsDrawer({
                 );
               })}
             </div>
-            {totalQuestions && (
-              <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 6 }}>
-                {totalQuestions} questions available in this course
-              </div>
-            )}
+
           </section>
 
           {/* Difficulty Filter */}
