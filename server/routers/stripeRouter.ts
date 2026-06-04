@@ -18,6 +18,7 @@ import { eq, and, gt } from "drizzle-orm";
 import { ENV } from "../_core/env";
 import { sendPurchaseConfirmationEmail } from "../email";
 import { notifyOwner } from "../_core/notification";
+import { issueSubscriptionToken } from "../_core/subscriptionToken";
 
 export const stripeRouter = router({
   /** Return all products with prices for the Pricing page */
@@ -357,15 +358,28 @@ export const stripeRouter = router({
         productKey: r.productKey,
         createdAt: r.createdAt,
       }));
-      return { purchases: safePurchases, unlockedExamTypes };
+      // Issue a signed JWT so the client can pass it on question fetches
+      // instead of sending the raw email on every request
+      const accessToken = unlockedExamTypes.length > 0
+        ? await issueSubscriptionToken({ email: normalised, examTypes: unlockedExamTypes })
+        : null;
+      return { purchases: safePurchases, unlockedExamTypes, accessToken };
     }),
 
   /** Check if a specific exam type is unlocked for the current user (guests get hasAccess:false) */
   checkAccess: publicProcedure
-    .input(z.object({ examType: z.string(), email: z.string().email().optional() }))
+    .input(z.object({ examType: z.string(), email: z.string().email().optional(), accessToken: z.string().optional() }))
     .query(async ({ input, ctx }) => {
       let { hasAccess, isOwner } = await resolveAccess(ctx.user, input.examType);
-      // Fallback: check by email if user is not authenticated but provided email
+      // Fallback 1: verify signed access token (faster — no DB lookup)
+      if (!hasAccess && !ctx.user && input.accessToken) {
+        const { verifySubscriptionToken } = await import('../_core/subscriptionToken');
+        const tokenResult = await verifySubscriptionToken(input.accessToken);
+        if (tokenResult && tokenResult.examTypes.includes(input.examType)) {
+          hasAccess = true;
+        }
+      }
+      // Fallback 2: check by email if user is not authenticated but provided email
       if (!hasAccess && !ctx.user && input.email) {
         const emailResult = await resolveAccessByEmail(input.email, input.examType);
         hasAccess = emailResult.hasAccess;
@@ -399,7 +413,8 @@ export const stripeRouter = router({
           return { paid: false, email: "", tier: "", province: "", examTypes: [] as string[] };
         }
         const examTypes = getSubscriptionExamTypes(tier, province);
-        return { paid: true, email, tier, province, examTypes };
+        const accessToken = await issueSubscriptionToken({ email, examTypes });
+        return { paid: true, email, tier, province, examTypes, accessToken };
       } catch (err: any) {
         console.error("[verifySubscriptionSession] Error:", err.message);
         return { paid: false, email: "", tier: "", province: "", examTypes: [] as string[] };
@@ -435,6 +450,9 @@ export const stripeRouter = router({
       const unlockedExamTypes = getAllSubscriptionExamTypes(
         rows.map(r => ({ tier: r.tier as SubscriptionTier, province: r.province as SubscriptionProvince }))
       );
+      const accessToken = unlockedExamTypes.length > 0
+        ? await issueSubscriptionToken({ email: normalised, examTypes: unlockedExamTypes })
+        : null;
       return {
         subscriptions: rows.map(r => ({
           tier: r.tier,
@@ -442,6 +460,7 @@ export const stripeRouter = router({
           currentPeriodEnd: r.currentPeriodEnd,
         })),
         unlockedExamTypes,
+        accessToken,
       };
     }),
 });

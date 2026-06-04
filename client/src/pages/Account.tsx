@@ -153,6 +153,10 @@ export default function Account() {
       const keys = data.purchases.map((p) => p.productKey);
       restoreLocalStorage(submittedEmail, keys);
       setRestored(true);
+      // Store signed JWT access token so server can verify without a DB lookup on every question fetch
+      if (data.accessToken) {
+        try { localStorage.setItem("echelon_access_token", data.accessToken); } catch { /* ignore */ }
+      }
     }
   }, [getPurchasesByEmail.data, submittedEmail, restored]);
 
@@ -165,6 +169,10 @@ export default function Account() {
         localStorage.setItem("echelon_trial_unlocked", "true");
         localStorage.setItem("echelon_trial_email", submittedEmail);
         localStorage.setItem("echelon_subscription_email", submittedEmail);
+        // Store signed JWT access token so server can verify without a DB lookup on every question fetch
+        if (data.accessToken) {
+          localStorage.setItem("echelon_access_token", data.accessToken);
+        }
       } catch { /* ignore */ }
     }
   }, [getSubscriptionsByEmail.data, submittedEmail]);

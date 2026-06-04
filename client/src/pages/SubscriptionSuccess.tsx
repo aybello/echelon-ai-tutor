@@ -10,7 +10,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import LandingNav from "@/components/LandingNav";
 
 /** Write subscription access to localStorage so the quiz gate lifts immediately. */
-function writeSubscriptionAccess(email: string, tier: string, province: string, examTypes: string[]) {
+function writeSubscriptionAccess(email: string, tier: string, province: string, examTypes: string[], accessToken?: string | null) {
   try {
     localStorage.setItem("echelon_subscription_email", email);
     localStorage.setItem("echelon_subscription_tier", tier);
@@ -20,6 +20,10 @@ function writeSubscriptionAccess(email: string, tier: string, province: string, 
     localStorage.setItem("echelon_trial_unlocked", "true");
     if (email) {
       localStorage.setItem("echelon_trial_email", email);
+    }
+    // Store signed JWT access token so server can verify without a DB lookup on every question fetch
+    if (accessToken) {
+      localStorage.setItem("echelon_access_token", accessToken);
     }
   } catch {
     // ignore — localStorage may be unavailable in some browsers
@@ -78,7 +82,7 @@ export default function SubscriptionSuccess() {
   const verifyMutation = trpc.stripe.verifySubscriptionSession.useMutation({
     onSuccess: (data) => {
       if (data.paid && data.examTypes.length > 0) {
-        writeSubscriptionAccess(data.email, data.tier || tier, data.province || province, data.examTypes);
+        writeSubscriptionAccess(data.email, data.tier || tier, data.province || province, data.examTypes, data.accessToken);
       } else {
         // Fallback: set trial-unlocked so they're not completely blocked
         try { localStorage.setItem("echelon_trial_unlocked", "true"); } catch {}

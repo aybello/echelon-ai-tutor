@@ -187,8 +187,14 @@ export function registerStripeWebhook(app: Express) {
           const currentPeriodEnd = sub.current_period_end ? new Date(sub.current_period_end * 1000) : null;
 
           if (!tier || !province || !currentPeriodEnd) {
-            // Try to get metadata from the checkout session via customer
-            console.warn(`[Stripe Webhook] Subscription ${stripeSubscriptionId} missing tier/province metadata`);
+            // ALERTING: Notify owner immediately so they can manually patch the subscription
+            // This is the silent failure mode that caused Matt Cooper's access issue
+            const missingFields = [!tier && 'tier', !province && 'province', !currentPeriodEnd && 'currentPeriodEnd'].filter(Boolean).join(', ');
+            console.warn(`[Stripe Webhook] Subscription ${stripeSubscriptionId} missing required metadata: ${missingFields}`);
+            notifyOwner({
+              title: '\u26a0\ufe0f Subscription Webhook: Missing Metadata',
+              content: `Subscription ${stripeSubscriptionId} (customer: ${stripeCustomerId}) was received but could NOT be saved to the database because required metadata is missing: ${missingFields}.\n\nThis means the subscriber will NOT get access automatically.\n\nAction required:\n1. Look up the subscription in Stripe Dashboard\n2. Identify the customer email\n3. Run \'Sync Stripe\' in Admin or manually insert a row in the subscriptions table\n4. Confirm the customer has access`,
+            }).catch((notifyErr) => { console.error('[webhook] notifyOwner failed:', notifyErr); });
             return res.json({ received: true });
           }
 
@@ -202,6 +208,10 @@ export function registerStripeWebhook(app: Express) {
           }
           if (!email) {
             console.warn(`[Stripe Webhook] Could not resolve email for subscription ${stripeSubscriptionId}`);
+            notifyOwner({
+              title: '\u26a0\ufe0f Subscription Webhook: Could Not Resolve Email',
+              content: `Subscription ${stripeSubscriptionId} (customer: ${stripeCustomerId}) was received but the customer email could not be resolved from Stripe.\n\nThis means the subscriber will NOT get access automatically.\n\nAction required:\n1. Look up customer ${stripeCustomerId} in Stripe Dashboard\n2. Find their email address\n3. Run \'Sync Stripe\' in Admin or manually insert a row in the subscriptions table\n4. Confirm the customer has access`,
+            }).catch((notifyErr) => { console.error('[webhook] notifyOwner failed:', notifyErr); });
             return res.json({ received: true });
           }
 

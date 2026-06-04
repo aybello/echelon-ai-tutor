@@ -5,6 +5,7 @@
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { TRPCError } from "@trpc/server";
 import { resolveAccess, resolveAccessByEmail, bankKeyToExamType, FREE_TRIAL_LIMIT } from "../_core/access";
+import { verifySubscriptionToken } from "../_core/subscriptionToken";
 import { getDb } from "../db";
 import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews } from "../../drizzle/schema";
 import { and, eq, desc, sql } from "drizzle-orm";
@@ -16,7 +17,11 @@ export const quizRouter = router({
    * Returns the full question array needed by quiz/mock/flashcard pages.
    */
     getQuestions: publicProcedure
-    .input(z.object({ bankKey: z.string().min(1).max(64), email: z.string().email().optional() }))
+    .input(z.object({
+      bankKey: z.string().min(1).max(64),
+      email: z.string().email().optional(),
+      accessToken: z.string().optional(),
+    }))
     .query(async ({ input, ctx }) => {
       const db = await getDb();
       if (!db) {
@@ -24,7 +29,14 @@ export const quizRouter = router({
       }
       const examType = bankKeyToExamType(input.bankKey);
       let { hasAccess } = await resolveAccess(ctx.user, examType);
-      // Fallback: check by email if user is not authenticated but provided email
+      // Fallback 1: verify signed subscription access token (preferred — no DB lookup)
+      if (!hasAccess && !ctx.user && input.accessToken) {
+        const tokenPayload = await verifySubscriptionToken(input.accessToken);
+        if (tokenPayload && tokenPayload.examTypes.includes(examType)) {
+          hasAccess = true;
+        }
+      }
+      // Fallback 2: check by email if no token (legacy / Restore Access without token)
       if (!hasAccess && !ctx.user && input.email) {
         const emailResult = await resolveAccessByEmail(input.email, examType);
         hasAccess = emailResult.hasAccess;
@@ -99,13 +111,21 @@ export const quizRouter = router({
       limit: z.number().int().min(1).max(50).default(20),
       excludeIds: z.array(z.number().int()).max(200).default([]),
       email: z.string().email().optional(),
+      accessToken: z.string().optional(),
     }))
     .query(async ({ input, ctx }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       const examType = bankKeyToExamType(input.bankKey);
       let { hasAccess } = await resolveAccess(ctx.user, examType);
-      // Fallback: check by email if user is not authenticated but provided email
+      // Fallback 1: verify signed subscription access token (preferred — no DB lookup)
+      if (!hasAccess && !ctx.user && input.accessToken) {
+        const tokenPayload = await verifySubscriptionToken(input.accessToken);
+        if (tokenPayload && tokenPayload.examTypes.includes(examType)) {
+          hasAccess = true;
+        }
+      }
+      // Fallback 2: check by email if no token (legacy / Restore Access without token)
       if (!hasAccess && !ctx.user && input.email) {
         const emailResult = await resolveAccessByEmail(input.email, examType);
         hasAccess = emailResult.hasAccess;

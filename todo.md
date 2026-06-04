@@ -748,3 +748,9 @@
 - [x] Pass subscription email to server-side getQuestions/getRandomQuestions/checkAccess so subscription customers get full question bank without login
 - [x] Write echelon_subscription_email to localStorage in SubscriptionSuccess and Account restore flows
 - [x] Update PurchaseGate to pass email to server checkAccess for non-authenticated users
+
+## JWT Access Token Fix (June 2026)
+- [x] Add issueSubscriptionToken to getPurchasesByEmail procedure (one-time purchase customers now get a JWT, not just subscription customers)
+- [x] Update Account.tsx — save echelon_access_token from getPurchasesByEmail.data.accessToken
+- [x] Add webhook monitoring/alerting — notifyOwner when subscription webhook drops due to missing metadata or unresolvable customer email
+- [x] Verify JWT is issued and stored correctly for one-time purchase customers (Journey 2 checklist PASSED)
