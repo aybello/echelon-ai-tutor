@@ -24,7 +24,11 @@ export function normalizeEmail(email: string | null | undefined): string {
  * Add overrides here if a bankKey differs from its product examType.
  */
 const BANKKEY_EXAMTYPE_OVERRIDES: Record<string, string> = {
-  // "bank-key-that-differs": "product-exam-type",
+  "class1": "class1-water",
+  "class1-wastewater": "class1-ww",
+  "class2-wastewater": "class2-ww",
+  "class3-wastewater": "class3-ww",
+  "class4-wastewater": "class4-ww",
 };
 
 export function bankKeyToExamType(bankKey: string): string {
