@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
-import { resolveAccess, normalizeEmail } from "../_core/access";
+import { resolveAccess, resolveAccessByEmail, normalizeEmail } from "../_core/access";
 import { stripe } from "../stripe/stripe";
 import { ALL_PRODUCTS, getAllUnlockedExamTypes, PRODUCT_STUDY_PATHS } from "../stripe/products";
 import {
@@ -362,9 +362,14 @@ export const stripeRouter = router({
 
   /** Check if a specific exam type is unlocked for the current user (guests get hasAccess:false) */
   checkAccess: publicProcedure
-    .input(z.object({ examType: z.string() }))
+    .input(z.object({ examType: z.string(), email: z.string().email().optional() }))
     .query(async ({ input, ctx }) => {
-      const { hasAccess, isOwner } = await resolveAccess(ctx.user, input.examType);
+      let { hasAccess, isOwner } = await resolveAccess(ctx.user, input.examType);
+      // Fallback: check by email if user is not authenticated but provided email
+      if (!hasAccess && !ctx.user && input.email) {
+        const emailResult = await resolveAccessByEmail(input.email, input.examType);
+        hasAccess = emailResult.hasAccess;
+      }
       return { hasAccess, isOwner };
     }),
 

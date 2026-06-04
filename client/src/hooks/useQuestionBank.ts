@@ -108,13 +108,22 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   const seedForBank = seedQuestions[bankKey] ?? [];
   const seedAsDBQuestions: DBQuestion[] = seedForBank.map(seedToDBQuestion);
 
+  // ── Read subscription/purchase email from localStorage for server-side access check ──
+  const [storedEmail] = useState<string | undefined>(() => {
+    try {
+      return localStorage.getItem("echelon_subscription_email")
+        ?? localStorage.getItem("echelon_trial_email")
+        ?? undefined;
+    } catch { return undefined; }
+  });
+
   // ── Check localStorage cache first ───────────────────────────────────────
   const [cached] = useState<CachedBank | null>(() => getCached(bankKey));
   const wroteCache = useRef(false);
 
   // ── Fast batch (lazy mode only, skip if cache hit) ───────────────────────
   const batchQuery = trpc.quiz.getRandomQuestions.useQuery(
-    { bankKey, limit: 20 },
+    { bankKey, limit: 20, email: storedEmail },
     {
       enabled: mode === "lazy" && !cached,
       staleTime: 1000 * 60 * 5,
@@ -127,7 +136,7 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   // When cache is present: runs silently in background, result used to patch correctIndex.
   // When no cache: runs normally to populate questions.
   const fullQuery = trpc.quiz.getQuestions.useQuery(
-    { bankKey },
+    { bankKey, email: storedEmail },
     {
       staleTime: 1000 * 60 * 30,
       // Always fetch full bank — cache hit just means we show cached questions

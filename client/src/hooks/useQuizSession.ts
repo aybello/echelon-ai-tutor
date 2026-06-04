@@ -178,8 +178,16 @@ export function useQuizSession({
   // ── Server-side access check — lifts gate for paid users on any device ─────
   // Runs silently in the background. If the server confirms hasAccess:true
   // (e.g. user purchased on another device/browser), unlock the gate immediately.
+  // Read stored email for server-side access check (subscription/purchase customers without login)
+  const [storedEmailForAccess] = useState<string | undefined>(() => {
+    try {
+      return localStorage.getItem("echelon_subscription_email")
+        ?? localStorage.getItem("echelon_trial_email")
+        ?? undefined;
+    } catch { return undefined; }
+  });
   const { data: accessData } = trpc.stripe.checkAccess.useQuery(
-    { examType },
+    { examType, email: storedEmailForAccess },
     {
       staleTime: 5 * 60 * 1000,
       retry: false,

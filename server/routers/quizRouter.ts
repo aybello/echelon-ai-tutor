@@ -4,7 +4,7 @@
  */
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { TRPCError } from "@trpc/server";
-import { resolveAccess, bankKeyToExamType, FREE_TRIAL_LIMIT } from "../_core/access";
+import { resolveAccess, resolveAccessByEmail, bankKeyToExamType, FREE_TRIAL_LIMIT } from "../_core/access";
 import { getDb } from "../db";
 import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews } from "../../drizzle/schema";
 import { and, eq, desc, sql } from "drizzle-orm";
@@ -15,16 +15,20 @@ export const quizRouter = router({
    * getQuestions — fetch all questions for a given bank key.
    * Returns the full question array needed by quiz/mock/flashcard pages.
    */
-  getQuestions: publicProcedure
-    .input(z.object({ bankKey: z.string().min(1).max(64) }))
+    getQuestions: publicProcedure
+    .input(z.object({ bankKey: z.string().min(1).max(64), email: z.string().email().optional() }))
     .query(async ({ input, ctx }) => {
       const db = await getDb();
       if (!db) {
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       }
-
       const examType = bankKeyToExamType(input.bankKey);
-      const { hasAccess } = await resolveAccess(ctx.user, examType);
+      let { hasAccess } = await resolveAccess(ctx.user, examType);
+      // Fallback: check by email if user is not authenticated but provided email
+      if (!hasAccess && !ctx.user && input.email) {
+        const emailResult = await resolveAccessByEmail(input.email, examType);
+        hasAccess = emailResult.hasAccess;
+      }
 
       const rows = await db
         .select()
@@ -89,18 +93,23 @@ export const quizRouter = router({
    * Returns N random questions (default 20) so the first question appears immediately
    * while the full bank loads in the background.
    */
-  getRandomQuestions: publicProcedure
+    getRandomQuestions: publicProcedure
     .input(z.object({
       bankKey: z.string().min(1).max(64),
       limit: z.number().int().min(1).max(50).default(20),
       excludeIds: z.array(z.number().int()).max(200).default([]),
+      email: z.string().email().optional(),
     }))
     .query(async ({ input, ctx }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-
       const examType = bankKeyToExamType(input.bankKey);
-      const { hasAccess } = await resolveAccess(ctx.user, examType);
+      let { hasAccess } = await resolveAccess(ctx.user, examType);
+      // Fallback: check by email if user is not authenticated but provided email
+      if (!hasAccess && !ctx.user && input.email) {
+        const emailResult = await resolveAccessByEmail(input.email, examType);
+        hasAccess = emailResult.hasAccess;
+      }
 
       const excludeClause = input.excludeIds.length > 0
         ? sql` AND ${questions.questionNum} NOT IN (${sql.join(input.excludeIds.map((id) => sql`${id}`), sql`, `)})`

@@ -745,3 +745,6 @@
 - [x] Add getSubscriptionsByEmail public procedure to stripeRouter.ts — for Restore Access flow
 - [x] Update Account.tsx restoreLocalStorage — also handle subscription exam types
 - [x] Update docs/bug-log.md with BUG-006 subscription access
+- [x] Pass subscription email to server-side getQuestions/getRandomQuestions/checkAccess so subscription customers get full question bank without login
+- [x] Write echelon_subscription_email to localStorage in SubscriptionSuccess and Account restore flows
+- [x] Update PurchaseGate to pass email to server checkAccess for non-authenticated users

@@ -34,9 +34,52 @@ export function bankKeyToExamType(bankKey: string): string {
 export type AccessResult = { hasAccess: boolean; isOwner: boolean };
 
 /**
- * Entitlement decision keyed on the AUTHENTICATED user only.
- * Never trust a client-supplied email here.
+ * Lightweight email-only entitlement check for unauthenticated subscription customers.
+ * Checks both subscriptions AND one-time purchases by email.
  */
+export async function resolveAccessByEmail(
+  email: string | null | undefined,
+  examType: string,
+): Promise<{ hasAccess: boolean }> {
+  const normalised = normalizeEmail(email);
+  if (!normalised) return { hasAccess: false };
+  const db = await getDb();
+  if (!db) return { hasAccess: false };
+
+  // Check one-time purchases
+  const purchaseRows = await db
+    .select({ productKey: purchases.productKey, status: purchases.status })
+    .from(purchases)
+    .where(eq(purchases.email, normalised));
+  const activeKeys = purchaseRows
+    .filter((r) => !r.status || r.status === "active")
+    .map((r) => r.productKey);
+  if (getAllUnlockedExamTypes(activeKeys).includes(examType)) {
+    return { hasAccess: true };
+  }
+
+  // Check active subscriptions
+  const now = new Date();
+  const subRows = await db
+    .select({ tier: subscriptions.tier, province: subscriptions.province })
+    .from(subscriptions)
+    .where(
+      and(
+        eq(subscriptions.email, normalised),
+        eq(subscriptions.status, "active"),
+        gt(subscriptions.currentPeriodEnd, now),
+      ),
+    );
+  if (subRows.length === 0) return { hasAccess: false };
+  const unlocked = getAllSubscriptionExamTypes(
+    subRows.map((r) => ({
+      tier: r.tier as SubscriptionTier,
+      province: r.province as SubscriptionProvince,
+    })),
+  );
+  return { hasAccess: unlocked.includes(examType) };
+}
+
 export async function resolveAccess(
   user: User | null,
   examType: string,

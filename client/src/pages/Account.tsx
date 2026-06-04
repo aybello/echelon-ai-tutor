@@ -164,6 +164,7 @@ export default function Account() {
         localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(data.unlockedExamTypes));
         localStorage.setItem("echelon_trial_unlocked", "true");
         localStorage.setItem("echelon_trial_email", submittedEmail);
+        localStorage.setItem("echelon_subscription_email", submittedEmail);
       } catch { /* ignore */ }
     }
   }, [getSubscriptionsByEmail.data, submittedEmail]);
