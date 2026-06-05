@@ -986,7 +986,7 @@ export default function Pricing() {
       <div className="pricing-hero">
         <div className="pricing-hero-badge">Canadian Water &amp; Wastewater Operator Certification</div>
         <h1>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</h1>
-        <p>One-time payment. Unlimited practice. AI Tutor &amp; step-by-step solutions included.<br />Operators who pass Class 3–4 earn <strong>$85K–$130K+</strong>. Your pass costs less than one day's pay.</p>
+        <p>Annual subscription — cancel anytime. Unlimited practice. AI Tutor &amp; step-by-step solutions included.<br />Operators who pass Class 3–4 earn <strong>$85K–$130K+</strong>. Your pass costs less than one day's pay.</p>
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8,
           background: "rgba(240,253,244,0.15)", border: "1.5px solid rgba(134,239,172,0.5)",
@@ -1382,7 +1382,7 @@ export default function Pricing() {
           fontSize: 12,
         }}
       >
-        © 2025 Echelon Institute. All rights reserved. · Payments secured by Stripe.
+        © 2026 Echelon Institute. All rights reserved. · Payments secured by Stripe.
       </div>
     </div>
   );
