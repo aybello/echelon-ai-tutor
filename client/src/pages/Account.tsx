@@ -278,7 +278,8 @@ export default function Account() {
       <style>{`
         .account-page { max-width: 680px; margin: 0 auto; padding: 48px 24px 120px; }
         .account-card { background: #1E293B; border: 1px solid #334155; border-radius: 20px; }
-        .pass-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #1E293B; }
+        .pass-row { display: flex; flex-direction: column; gap: 10px; padding: 16px 20px; border-bottom: 1px solid #1E293B; }
+        .pass-row-main { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; }
         .pass-row:last-child { border-bottom: none; }
         .pass-actions { display: flex; gap: 8px; flex-shrink: 0; }
         .pass-btn { padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; font-family: inherit; text-decoration: none; display: inline-block; white-space: nowrap; }
@@ -513,51 +514,51 @@ export default function Account() {
                         if (!meta) return null;
                         return (
                           <div key={examType} className="pass-row">
-                            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                              <div style={{ width: 42, height: 42, borderRadius: 10, background: meta.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>
-                                {meta.icon}
+                            <div className="pass-row-main">
+                              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                                <div style={{ width: 42, height: 42, borderRadius: 10, background: meta.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>
+                                  {meta.icon}
+                                </div>
+                                <div>
+                                  <p style={{ color: "#F1F5F9", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
+                                  <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
+                                </div>
                               </div>
-                              <div>
-                                <p style={{ color: "#F1F5F9", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
-                                <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
+                              <div className="pass-actions">
+                                <Link href={meta.quizPath}>
+                                  <span className="pass-btn" style={{ background: meta.color, color: "#fff" }}>Practice →</span>
+                                </Link>
+                                {meta.mockPath && (
+                                  <Link href={meta.mockPath}>
+                                    <span className="pass-btn" style={{ background: "#1E293B", color: "#94A3B8", border: "1px solid #334155" }}>Mock Exam</span>
+                                  </Link>
+                                )}
+                                {meta.flashcardPath && (
+                                  <Link href={meta.flashcardPath}>
+                                    <span className="pass-btn" style={{ background: "#1E3A5F", color: "#93C5FD" }}>🃏 Flashcards</span>
+                                  </Link>
+                                )}
+                                {meta.formulaPath && (
+                                  <Link href={meta.formulaPath}>
+                                    <span className="pass-btn" style={{ background: "#064E3B", color: "#6EE7B7" }}>📐 Formulas</span>
+                                  </Link>
+                                )}
                               </div>
-                            </div>
-                            <div className="pass-actions">
-                              <Link href={meta.quizPath}>
-                                <span className="pass-btn" style={{ background: meta.color, color: "#fff" }}>Practice →</span>
-                              </Link>
-                              {meta.mockPath && (
-                                <Link href={meta.mockPath}>
-                                  <span className="pass-btn" style={{ background: "#1E293B", color: "#94A3B8", border: "1px solid #334155" }}>Mock Exam</span>
-                                </Link>
-                              )}
-                              {meta.flashcardPath && (
-                                <Link href={meta.flashcardPath}>
-                                  <span className="pass-btn" style={{ background: "#1E3A5F", color: "#93C5FD" }}>🃏 Flashcards</span>
-                                </Link>
-                              )}
-                              {meta.formulaPath && (
-                                <Link href={meta.formulaPath}>
-                                  <span className="pass-btn" style={{ background: "#064E3B", color: "#6EE7B7" }}>📐 Formulas</span>
-                                </Link>
-                              )}
                             </div>
                             {/* Mastery badge */}
                             {meta.flashcardPath && flashcardMastery[examType] && (
-                              <div style={{ paddingLeft: 54, marginTop: 4 }}>
+                              <div style={{ paddingLeft: 54 }}>
                                 <MasteryBadge knownCount={flashcardMastery[examType].knownCount} totalCards={flashcardMastery[examType].totalCards} />
                               </div>
                             )}
                             {/* Exam date tracker */}
                             {submittedEmail && (
-                              <div style={{ paddingLeft: 0, width: "100%" }}>
-                                <ExamDateTracker
-                                  email={submittedEmail}
-                                  productKey={examType}
-                                  productLabel={meta.label}
-                                  color={meta.color}
-                                />
-                              </div>
+                              <ExamDateTracker
+                                email={submittedEmail}
+                                productKey={examType}
+                                productLabel={meta.label}
+                                color={meta.color}
+                              />
                             )}
                           </div>
                         );
@@ -578,51 +579,51 @@ export default function Account() {
                         if (!meta) return null;
                         return (
                           <div key={examType} className="pass-row">
-                            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                              <div style={{ width: 42, height: 42, borderRadius: 10, background: meta.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>
-                                {meta.icon}
+                            <div className="pass-row-main">
+                              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                                <div style={{ width: 42, height: 42, borderRadius: 10, background: meta.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>
+                                  {meta.icon}
+                                </div>
+                                <div>
+                                  <p style={{ color: "#F1F5F9", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
+                                  <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
+                                </div>
                               </div>
-                              <div>
-                                <p style={{ color: "#F1F5F9", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
-                                <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
+                              <div className="pass-actions">
+                                <Link href={meta.quizPath}>
+                                  <span className="pass-btn" style={{ background: meta.color, color: "#fff" }}>Practice →</span>
+                                </Link>
+                                {meta.mockPath && (
+                                  <Link href={meta.mockPath}>
+                                    <span className="pass-btn" style={{ background: "#1E293B", color: "#94A3B8", border: "1px solid #334155" }}>Mock Exam</span>
+                                  </Link>
+                                )}
+                                {meta.flashcardPath && (
+                                  <Link href={meta.flashcardPath}>
+                                    <span className="pass-btn" style={{ background: "#1E3A5F", color: "#93C5FD" }}>🃏 Flashcards</span>
+                                  </Link>
+                                )}
+                                {meta.formulaPath && (
+                                  <Link href={meta.formulaPath}>
+                                    <span className="pass-btn" style={{ background: "#064E3B", color: "#6EE7B7" }}>📐 Formulas</span>
+                                  </Link>
+                                )}
                               </div>
-                            </div>
-                            <div className="pass-actions">
-                              <Link href={meta.quizPath}>
-                                <span className="pass-btn" style={{ background: meta.color, color: "#fff" }}>Practice →</span>
-                              </Link>
-                              {meta.mockPath && (
-                                <Link href={meta.mockPath}>
-                                  <span className="pass-btn" style={{ background: "#1E293B", color: "#94A3B8", border: "1px solid #334155" }}>Mock Exam</span>
-                                </Link>
-                              )}
-                              {meta.flashcardPath && (
-                                <Link href={meta.flashcardPath}>
-                                  <span className="pass-btn" style={{ background: "#1E3A5F", color: "#93C5FD" }}>🃏 Flashcards</span>
-                                </Link>
-                              )}
-                              {meta.formulaPath && (
-                                <Link href={meta.formulaPath}>
-                                  <span className="pass-btn" style={{ background: "#064E3B", color: "#6EE7B7" }}>📐 Formulas</span>
-                                </Link>
-                              )}
                             </div>
                             {/* Mastery badge */}
                             {meta.flashcardPath && flashcardMastery[examType] && (
-                              <div style={{ paddingLeft: 54, marginTop: 4 }}>
+                              <div style={{ paddingLeft: 54 }}>
                                 <MasteryBadge knownCount={flashcardMastery[examType].knownCount} totalCards={flashcardMastery[examType].totalCards} />
                               </div>
                             )}
                             {/* Exam date tracker */}
                             {submittedEmail && (
-                              <div style={{ paddingLeft: 0, width: "100%" }}>
-                                <ExamDateTracker
-                                  email={submittedEmail}
-                                  productKey={examType}
-                                  productLabel={meta.label}
-                                  color={meta.color}
-                                />
-                              </div>
+                              <ExamDateTracker
+                                email={submittedEmail}
+                                productKey={examType}
+                                productLabel={meta.label}
+                                color={meta.color}
+                              />
                             )}
                           </div>
                         );
