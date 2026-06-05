@@ -533,8 +533,19 @@ export default function QuizShell({
 
           {/* Stats row — compact inline bar */}
           <div className="qs-stats-only" style={{ display: "flex", gap: 8, marginTop: 8, flexWrap: "wrap", alignItems: "center" }}>
+            {/* Session progress tracker — Q{n}/{sessionSize} */}
+            <div style={{
+              background: "rgba(255,255,255,0.22)",
+              border: "1.5px solid rgba(255,255,255,0.5)",
+              borderRadius: 8,
+              padding: "3px 10px",
+              textAlign: "center",
+              minWidth: 56,
+            }}>
+              <div style={{ fontSize: 14, fontWeight: 800 }}>Q{history.length + 1}<span style={{ fontSize: 11, fontWeight: 600, opacity: 0.75 }}>/{sessionSize}</span></div>
+              <div style={{ fontSize: 8, opacity: 0.8, textTransform: "uppercase", letterSpacing: "0.08em" }}>Question</div>
+            </div>
             {[
-              { label: "Answered", value: history.length },
               { label: "Correct", value: correctCount },
               { label: "Accuracy", value: `${accuracy ?? 0}%` },
             ].map(s => (
