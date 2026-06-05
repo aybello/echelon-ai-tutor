@@ -275,6 +275,7 @@ export const quizRouter = router({
         difficulty: z.string().max(16).optional().nullable(),
         quizMode: z.enum(["standard", "quick10", "missed", "qotd"]).default("standard"),
         guestToken: z.string().max(64).optional(),
+        studentEmail: z.string().email().optional(), // purchase/trial email for non-OAuth users
       })
     )
     .mutation(async ({ input, ctx }) => {
@@ -282,11 +283,16 @@ export const quizRouter = router({
         const db = await getDb();
         if (!db) return { success: false };
         const userId = ctx.user?.id ?? null;
+        // Prefer OAuth user email, fall back to client-supplied studentEmail
+        const studentEmail = userId
+          ? (ctx.user?.email ?? null)
+          : (input.studentEmail?.trim().toLowerCase() ?? null);
 
         // Log the attempt
         await db.insert(questionAttempts).values({
           userId,
           guestToken: input.guestToken ?? null,
+          studentEmail,
           examType: input.examType,
           topic: input.topic,
           questionId: input.questionId,

@@ -192,6 +192,16 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
     correct: boolean;
     difficulty?: string;
   }) {
+    // Pass the student's purchase/trial email so attempts are linked to their account
+    // even when they haven't signed in with OAuth
+    let studentEmail: string | undefined;
+    try {
+      studentEmail =
+        localStorage.getItem("echelon_subscription_email") ??
+        localStorage.getItem("echelon_trial_email") ??
+        undefined;
+    } catch { /* ignore */ }
+
     logAttempt.mutate({
       examType,
       topic: params.topic,
@@ -199,6 +209,7 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
       correct: params.correct,
       difficulty: params.difficulty ?? undefined,
       quizMode,
+      studentEmail,
     });
   };
 }

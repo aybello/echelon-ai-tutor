@@ -183,6 +183,13 @@
       "when": 1780537025864,
       "tag": "0025_silent_stranger",
       "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "5",
+      "when": 1780685952699,
+      "tag": "0026_tearful_vapor",
+      "breakpoints": true
     }
   ]
 }

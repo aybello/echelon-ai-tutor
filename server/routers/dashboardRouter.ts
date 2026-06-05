@@ -1,39 +1,95 @@
 /**
  * Dashboard Router — Student performance analytics
- * Surfaces studentProfiles + questionAttempts data for the performance dashboard
+ * Supports two auth paths:
+ *   1. Manus OAuth (ctx.user.id) — existing flow for users with Manus accounts
+ *   2. Email OTP session (echelon_dashboard_session cookie) — for email-only students
+ *
+ * All procedures use resolveDashboardIdentity() to get the right WHERE clause.
  */
-import { protectedProcedure, router } from "../_core/trpc";
+import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
 import { questionAttempts, studentProfiles, aiChatSessions, examDates } from "../../drizzle/schema";
-import { and, eq, sql, desc, gte } from "drizzle-orm";
+import { and, eq, sql, desc, gte, or } from "drizzle-orm";
 import { getResourcesForProfile } from "../resourceIndex";
+import { jwtVerify } from "jose";
+import { ENV } from "../_core/env";
+import { TRPCError } from "@trpc/server";
+
+const JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret);
+const DASHBOARD_COOKIE = "echelon_dashboard_session";
+
+/**
+ * Resolves the dashboard identity from either:
+ *   - Manus OAuth session (ctx.user.id)
+ *   - Email OTP cookie (echelon_dashboard_session)
+ *
+ * Returns { userId, email } — at least one will be non-null.
+ * Throws UNAUTHORIZED if neither is present.
+ */
+async function resolveDashboardIdentity(ctx: { user: { id: number; email?: string | null } | null; req: any }) {
+  // 1. OAuth user
+  if (ctx.user) {
+    return { userId: ctx.user.id, email: ctx.user.email ?? null };
+  }
+
+  // 2. Email OTP session cookie
+  try {
+    const token = ctx.req?.cookies?.[DASHBOARD_COOKIE];
+    if (token) {
+      const { payload } = await jwtVerify(token, JWT_SECRET);
+      if (payload.type === "dashboard" && payload.email) {
+        return { userId: null, email: payload.email as string };
+      }
+    }
+  } catch { /* invalid/expired cookie */ }
+
+  throw new TRPCError({ code: "UNAUTHORIZED", message: "Please sign in to view your dashboard." });
+}
+
+/**
+ * Builds a Drizzle WHERE condition that matches attempts by userId OR studentEmail.
+ * This ensures data is found regardless of which auth path was used when logging.
+ */
+function attemptsWhere(userId: number | null, email: string | null) {
+  if (userId && email) {
+    return or(
+      eq(questionAttempts.userId, userId),
+      eq(questionAttempts.studentEmail, email),
+    );
+  }
+  if (userId) return eq(questionAttempts.userId, userId);
+  if (email) return eq(questionAttempts.studentEmail, email!);
+  throw new Error("No identity");
+}
 
 export const dashboardRouter = router({
   /**
    * Overview stats — hero numbers for the dashboard
-   * Returns: totalAttempts, overallAccuracy, currentStreak, longestStreak, totalSessions
    */
-  overview: protectedProcedure.query(async ({ ctx }) => {
+  overview: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return null;
 
-    // Get profile data (streak, totalAttempts)
-    const profiles = await db
-      .select()
-      .from(studentProfiles)
-      .where(eq(studentProfiles.userId, ctx.user.id))
-      .limit(1);
+    // Get profile data (streak, totalAttempts) — only available for OAuth users
+    let profile = null;
+    if (userId) {
+      const profiles = await db
+        .select()
+        .from(studentProfiles)
+        .where(eq(studentProfiles.userId, userId))
+        .limit(1);
+      profile = profiles[0] ?? null;
+    }
 
-    const profile = profiles[0] ?? null;
-
-    // Get overall accuracy from attempts
+    // Get overall accuracy from attempts (works for both paths)
     const [accuracyRow] = await db
       .select({
         total: sql<number>`COUNT(*)`,
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       })
       .from(questionAttempts)
-      .where(eq(questionAttempts.userId, ctx.user.id));
+      .where(attemptsWhere(userId, email));
 
     const total = Number(accuracyRow?.total ?? 0);
     const correct = Number(accuracyRow?.correct ?? 0);
@@ -49,20 +105,36 @@ export const dashboardRouter = router({
 
   /**
    * Daily activity — question count per day for the last 30 days
-   * Used for the activity heatmap / bar chart
    */
-  dailyActivity: protectedProcedure.query(async ({ ctx }) => {
+  dailyActivity: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return [];
 
     const thirtyDaysAgo = new Date();
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
+    // Build raw SQL WHERE clause based on identity
+    let whereClause: string;
+    let params: (number | string | Date)[];
+    if (userId && email) {
+      whereClause = "(userId = ? OR studentEmail = ?)";
+      params = [userId, email, thirtyDaysAgo];
+    } else if (userId) {
+      whereClause = "userId = ?";
+      params = [userId, thirtyDaysAgo];
+    } else {
+      whereClause = "studentEmail = ?";
+      params = [email!, thirtyDaysAgo];
+    }
+
     const result = await db.execute(sql`
       SELECT DATE_FORMAT(createdAt, '%Y-%m-%d') AS day, COUNT(*) AS total,
              SUM(CASE WHEN correct = 'yes' THEN 1 ELSE 0 END) AS correct
       FROM question_attempts
-      WHERE userId = ${ctx.user.id}
+      WHERE ${sql.raw(whereClause.replace("?", userId && email ? `${userId}` : userId ? `${userId}` : `'${email}'`)
+        .replace("?", email ? `'${email}'` : "")
+        .replace("?", ""))}
         AND createdAt >= ${thirtyDaysAgo}
       GROUP BY DATE_FORMAT(createdAt, '%Y-%m-%d')
       ORDER BY day
@@ -77,49 +149,76 @@ export const dashboardRouter = router({
   }),
 
   /**
-   * Topic accuracy breakdown — per-topic correct/total from the student profile
-   * Includes weak/strong classification
+   * Topic accuracy breakdown — per-topic correct/total
    */
-  topicAccuracy: protectedProcedure.query(async ({ ctx }) => {
+  topicAccuracy: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return { topics: [], weakTopics: [], strongTopics: [] };
 
-    const profiles = await db
-      .select()
-      .from(studentProfiles)
-      .where(eq(studentProfiles.userId, ctx.user.id))
-      .limit(1);
+    // For OAuth users, use the pre-computed profile
+    if (userId) {
+      const profiles = await db
+        .select()
+        .from(studentProfiles)
+        .where(eq(studentProfiles.userId, userId))
+        .limit(1);
 
-    if (!profiles.length) return { topics: [], weakTopics: [], strongTopics: [] };
+      if (!profiles.length) return { topics: [], weakTopics: [], strongTopics: [] };
 
-    const profile = profiles[0];
-    let topicAccuracy: Record<string, { correct: number; total: number }> = {};
-    let weakTopics: string[] = [];
-    let strongTopics: string[] = [];
+      const profile = profiles[0];
+      let topicAccuracy: Record<string, { correct: number; total: number }> = {};
+      let weakTopics: string[] = [];
+      let strongTopics: string[] = [];
 
-    try {
-      topicAccuracy = JSON.parse(profile.topicAccuracy || "{}");
-    } catch { /* empty */ }
-    try {
-      weakTopics = JSON.parse(profile.weakTopics || "[]");
-    } catch { /* empty */ }
-    try {
-      strongTopics = JSON.parse(profile.strongTopics || "[]");
-    } catch { /* empty */ }
+      try { topicAccuracy = JSON.parse(profile.topicAccuracy || "{}"); } catch { /* empty */ }
+      try { weakTopics = JSON.parse(profile.weakTopics || "[]"); } catch { /* empty */ }
+      try { strongTopics = JSON.parse(profile.strongTopics || "[]"); } catch { /* empty */ }
 
-    const topics = Object.entries(topicAccuracy)
-      .map(([name, data]) => ({
-        name,
-        correct: data.correct,
-        total: data.total,
-        accuracy: data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0,
-        status: weakTopics.includes(name)
-          ? ("weak" as const)
-          : strongTopics.includes(name)
-            ? ("strong" as const)
-            : ("neutral" as const),
-      }))
-      .sort((a, b) => b.total - a.total); // most practiced first
+      const topics = Object.entries(topicAccuracy)
+        .map(([name, data]) => ({
+          name,
+          correct: data.correct,
+          total: data.total,
+          accuracy: data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0,
+          status: weakTopics.includes(name)
+            ? ("weak" as const)
+            : strongTopics.includes(name)
+              ? ("strong" as const)
+              : ("neutral" as const),
+        }))
+        .sort((a, b) => b.total - a.total);
+
+      return { topics, weakTopics, strongTopics };
+    }
+
+    // For email-only users, compute from raw attempts
+    const rows = await db
+      .select({
+        topic: questionAttempts.topic,
+        total: sql<number>`COUNT(*)`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+      })
+      .from(questionAttempts)
+      .where(eq(questionAttempts.studentEmail, email!))
+      .groupBy(questionAttempts.topic)
+      .orderBy(desc(sql`COUNT(*)`));
+
+    const topics = rows.map((r) => {
+      const t = Number(r.total);
+      const c = Number(r.correct);
+      const acc = t > 0 ? Math.round((c / t) * 100) : 0;
+      return {
+        name: r.topic,
+        correct: c,
+        total: t,
+        accuracy: acc,
+        status: acc < 65 ? ("weak" as const) : acc >= 80 ? ("strong" as const) : ("neutral" as const),
+      };
+    });
+
+    const weakTopics = topics.filter((t) => t.status === "weak").map((t) => t.name);
+    const strongTopics = topics.filter((t) => t.status === "strong").map((t) => t.name);
 
     return { topics, weakTopics, strongTopics };
   }),
@@ -127,7 +226,8 @@ export const dashboardRouter = router({
   /**
    * Per-course breakdown — accuracy and count by examType
    */
-  courseBreakdown: protectedProcedure.query(async ({ ctx }) => {
+  courseBreakdown: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return [];
 
@@ -138,7 +238,7 @@ export const dashboardRouter = router({
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       })
       .from(questionAttempts)
-      .where(eq(questionAttempts.userId, ctx.user.id))
+      .where(attemptsWhere(userId, email))
       .groupBy(questionAttempts.examType)
       .orderBy(desc(sql`COUNT(*)`));
 
@@ -151,9 +251,10 @@ export const dashboardRouter = router({
   }),
 
   /**
-   * Difficulty breakdown — how many easy/medium/hard questions attempted + accuracy per difficulty
+   * Difficulty breakdown — easy/medium/hard accuracy
    */
-  difficultyBreakdown: protectedProcedure.query(async ({ ctx }) => {
+  difficultyBreakdown: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return [];
 
@@ -164,7 +265,7 @@ export const dashboardRouter = router({
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       })
       .from(questionAttempts)
-      .where(eq(questionAttempts.userId, ctx.user.id))
+      .where(attemptsWhere(userId, email))
       .groupBy(questionAttempts.difficulty);
 
     return rows.map((r) => ({
@@ -176,14 +277,13 @@ export const dashboardRouter = router({
   }),
 
   /**
-   * Recent sessions — last 10 quiz sessions with timestamp, exam type, and score
-   * Approximated by grouping attempts within 30-minute windows
+   * Recent sessions — last 10 quiz sessions
    */
-  recentSessions: protectedProcedure.query(async ({ ctx }) => {
+  recentSessions: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return [];
 
-    // Get last 100 attempts and group them into sessions client-side
     const rows = await db
       .select({
         examType: questionAttempts.examType,
@@ -192,11 +292,10 @@ export const dashboardRouter = router({
         quizMode: questionAttempts.quizMode,
       })
       .from(questionAttempts)
-      .where(eq(questionAttempts.userId, ctx.user.id))
+      .where(attemptsWhere(userId, email))
       .orderBy(desc(questionAttempts.createdAt))
       .limit(200);
 
-    // Group into sessions: consecutive attempts within 30 min of same examType
     const sessions: Array<{
       examType: string;
       quizMode: string | null;
@@ -215,7 +314,6 @@ export const dashboardRouter = router({
       correct: number;
     } | null = null;
 
-    // Reverse to process chronologically
     const sorted = [...rows].reverse();
     for (const row of sorted) {
       const ts = new Date(row.createdAt);
@@ -261,16 +359,16 @@ export const dashboardRouter = router({
       });
     }
 
-    // Return most recent 10 sessions
     return sessions.reverse().slice(0, 10);
   }),
 
   /**
-   * AI Tutor Session History — recent AI conversations with summaries
+   * AI Tutor Session History — only available for OAuth users
    */
-  aiSessionHistory: protectedProcedure.query(async ({ ctx }) => {
+  aiSessionHistory: publicProcedure.query(async ({ ctx }) => {
+    const { userId } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
-    if (!db) return [];
+    if (!db || !userId) return [];
 
     const rows = await db
       .select({
@@ -282,7 +380,7 @@ export const dashboardRouter = router({
         summary: aiChatSessions.summary,
       })
       .from(aiChatSessions)
-      .where(eq(aiChatSessions.userId, ctx.user.id))
+      .where(eq(aiChatSessions.userId, userId))
       .orderBy(desc(aiChatSessions.sessionStart))
       .limit(10);
 
@@ -297,37 +395,56 @@ export const dashboardRouter = router({
   }),
 
   /**
-   * Recommended Resources — personalized study materials from the resource index
-   * Based on student profile weak topics and exam type
+   * Recommended Resources — personalized study materials
    */
-  recommendedResources: protectedProcedure.query(async ({ ctx }) => {
+  recommendedResources: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return [];
 
-    const profiles = await db
-      .select()
-      .from(studentProfiles)
-      .where(eq(studentProfiles.userId, ctx.user.id))
-      .limit(1);
-
-    if (!profiles.length) return [];
-
-    const profile = profiles[0];
     let weakTopics: string[] = [];
-    let topicAccuracy: Record<string, { correct: number; total: number }> = {};
+    let examType = "oit";
 
-    try { weakTopics = JSON.parse(profile.weakTopics || "[]"); } catch { /* empty */ }
-    try { topicAccuracy = JSON.parse(profile.topicAccuracy || "{}"); } catch { /* empty */ }
+    if (userId) {
+      const profiles = await db
+        .select()
+        .from(studentProfiles)
+        .where(eq(studentProfiles.userId, userId))
+        .limit(1);
 
-    // Get the most practiced exam type
+      if (profiles.length) {
+        try { weakTopics = JSON.parse(profiles[0].weakTopics || "[]"); } catch { /* empty */ }
+      }
+    } else if (email) {
+      // Compute weak topics from raw attempts for email-only users
+      const rows = await db
+        .select({
+          topic: questionAttempts.topic,
+          total: sql<number>`COUNT(*)`,
+          correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+        })
+        .from(questionAttempts)
+        .where(eq(questionAttempts.studentEmail, email))
+        .groupBy(questionAttempts.topic);
+
+      weakTopics = rows
+        .filter((r) => {
+          const t = Number(r.total);
+          const c = Number(r.correct);
+          return t >= 5 && (c / t) < 0.65;
+        })
+        .map((r) => r.topic);
+    }
+
+    // Get most practiced exam type
     const [examRow] = await db
       .select({ examType: questionAttempts.examType, cnt: sql<number>`COUNT(*)` })
       .from(questionAttempts)
-      .where(eq(questionAttempts.userId, ctx.user.id))
+      .where(attemptsWhere(userId, email))
       .groupBy(questionAttempts.examType)
       .orderBy(desc(sql`COUNT(*)`));
 
-    const examType = examRow?.examType ?? "oit";
+    examType = examRow?.examType ?? "oit";
 
     const resources = getResourcesForProfile(
       { examType, weakTopics, strongTopics: [] },
@@ -345,24 +462,30 @@ export const dashboardRouter = router({
   }),
 
   /**
-   * Exam Countdown — days until the next exam with study pace info
+   * Exam Countdown — days until the next exam
    */
-  examCountdown: protectedProcedure.query(async ({ ctx }) => {
+  examCountdown: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return null;
 
-    // Get the user's next upcoming exam date
-    const now = new Date();
-    // examDates uses email, not userId — look up user email first
-    const userEmail = ctx.user.email;
-    if (!userEmail) return null;
+    // Resolve the email to look up exam dates
+    let lookupEmail = email;
+    if (!lookupEmail && userId) {
+      // For OAuth users, get email from user record
+      const { users } = await import("../../drizzle/schema");
+      const userRows = await db.select({ email: users.email }).from(users).where(eq(users.id, userId)).limit(1);
+      lookupEmail = userRows[0]?.email ?? null;
+    }
+    if (!lookupEmail) return null;
 
+    const now = new Date();
     const exams = await db
       .select()
       .from(examDates)
       .where(
         and(
-          eq(examDates.email, userEmail),
+          eq(examDates.email, lookupEmail),
           gte(examDates.examDate, now)
         )
       )
@@ -375,7 +498,6 @@ export const dashboardRouter = router({
     const examDate = new Date(exam.examDate);
     const daysUntil = Math.ceil((examDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 
-    // Get study pace: questions per day in the last 7 days
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
 
@@ -384,7 +506,7 @@ export const dashboardRouter = router({
       .from(questionAttempts)
       .where(
         and(
-          eq(questionAttempts.userId, ctx.user.id),
+          attemptsWhere(userId, email),
           gte(questionAttempts.createdAt, sevenDaysAgo)
         )
       );
@@ -392,7 +514,6 @@ export const dashboardRouter = router({
     const questionsLast7Days = Number(paceRow?.total ?? 0);
     const avgPerDay = Math.round(questionsLast7Days / 7);
 
-    // Determine pace status
     let paceStatus: "on_track" | "needs_more" | "falling_behind" = "on_track";
     if (daysUntil <= 7 && avgPerDay < 10) paceStatus = "falling_behind";
     else if (daysUntil <= 14 && avgPerDay < 5) paceStatus = "needs_more";

@@ -6,8 +6,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav from "@/components/SiteNav";
-import { getLoginUrl } from "@/const";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -70,15 +69,71 @@ export default function StudentDashboard() {
 
   const { user, loading: authLoading, isAuthenticated } = useAuth();
 
-  const overview = trpc.dashboard.overview.useQuery(undefined, { enabled: isAuthenticated });
-  const dailyActivity = trpc.dashboard.dailyActivity.useQuery(undefined, { enabled: isAuthenticated });
-  const topicAccuracy = trpc.dashboard.topicAccuracy.useQuery(undefined, { enabled: isAuthenticated });
-  const courseBreakdown = trpc.dashboard.courseBreakdown.useQuery(undefined, { enabled: isAuthenticated });
-  const difficultyBreakdown = trpc.dashboard.difficultyBreakdown.useQuery(undefined, { enabled: isAuthenticated });
-  const recentSessions = trpc.dashboard.recentSessions.useQuery(undefined, { enabled: isAuthenticated });
-  const examCountdown = trpc.dashboard.examCountdown.useQuery(undefined, { enabled: isAuthenticated });
-  const aiSessions = trpc.dashboard.aiSessionHistory.useQuery(undefined, { enabled: isAuthenticated });
-  const recommendedResources = trpc.dashboard.recommendedResources.useQuery(undefined, { enabled: isAuthenticated });
+  // Email OTP login state
+  const dashboardMe = trpc.dashboardAuth.me.useQuery();
+  const sendOtp = trpc.dashboardAuth.sendOtp.useMutation();
+  const verifyOtp = trpc.dashboardAuth.verifyOtp.useMutation();
+  const dashboardLogout = trpc.dashboardAuth.logout.useMutation();
+  const utils = trpc.useUtils();
+
+  const [otpEmail, setOtpEmail] = useState("");
+  const [otpCode, setOtpCode] = useState("");
+  const [otpStep, setOtpStep] = useState<"email" | "code">("email");
+  const [otpError, setOtpError] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
+
+  // Pre-fill email from localStorage if available
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("echelon_subscription_email") ?? localStorage.getItem("echelon_trial_email") ?? "";
+      if (stored) setOtpEmail(stored);
+    } catch { /* ignore */ }
+  }, []);
+
+  // Determine if the user is authenticated via either OAuth or email OTP
+  const emailSession = dashboardMe.data?.email ?? null;
+  const hasAccess = isAuthenticated || !!emailSession;
+  const displayName = user?.name?.split(" ")[0] ?? emailSession?.split("@")[0] ?? "Operator";
+
+  const handleSendOtp = async () => {
+    setOtpError("");
+    try {
+      await sendOtp.mutateAsync({ email: otpEmail.trim().toLowerCase() });
+      setOtpStep("code");
+      setOtpSent(true);
+    } catch (e: any) {
+      setOtpError(e.message ?? "Failed to send code. Please try again.");
+    }
+  };
+
+  const handleVerifyOtp = async () => {
+    setOtpError("");
+    try {
+      await verifyOtp.mutateAsync({ email: otpEmail.trim().toLowerCase(), code: otpCode.trim() });
+      await utils.dashboardAuth.me.invalidate();
+      await utils.dashboard.overview.invalidate();
+    } catch (e: any) {
+      setOtpError(e.message ?? "Invalid code. Please try again.");
+    }
+  };
+
+  const handleDashboardLogout = async () => {
+    await dashboardLogout.mutateAsync();
+    await utils.dashboardAuth.me.invalidate();
+    setOtpStep("email");
+    setOtpCode("");
+    setOtpSent(false);
+  };
+
+  const overview = trpc.dashboard.overview.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const dailyActivity = trpc.dashboard.dailyActivity.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const topicAccuracy = trpc.dashboard.topicAccuracy.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const courseBreakdown = trpc.dashboard.courseBreakdown.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const difficultyBreakdown = trpc.dashboard.difficultyBreakdown.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const recentSessions = trpc.dashboard.recentSessions.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const examCountdown = trpc.dashboard.examCountdown.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const aiSessions = trpc.dashboard.aiSessionHistory.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const recommendedResources = trpc.dashboard.recommendedResources.useQuery(undefined, { enabled: hasAccess, retry: false });
 
   /* ── Activity chart data (last 30 days) ── */
   const activityChartData = useMemo(() => {
@@ -161,8 +216,8 @@ export default function StudentDashboard() {
     };
   }, [difficultyBreakdown.data]);
 
-  /* ── Not authenticated ── */
-  if (authLoading) {
+  /* ── Loading state ── */
+  if (authLoading || dashboardMe.isLoading) {
     return (
       <div style={{ fontFamily: "Sora, sans-serif", background: SLATE_900, minHeight: "100vh" }}>
         <SiteNav currentPath="/dashboard" />
@@ -173,33 +228,91 @@ export default function StudentDashboard() {
     );
   }
 
-  if (!isAuthenticated) {
+  /* ── Email OTP login gate ── */
+  if (!hasAccess) {
     return (
       <div style={{ fontFamily: "Sora, sans-serif", background: SLATE_900, minHeight: "100vh" }}>
         <SiteNav currentPath="/dashboard" />
-        <div style={{ maxWidth: 500, margin: "0 auto", padding: "100px 24px", textAlign: "center" }}>
-          <div style={{ fontSize: 48, marginBottom: 16 }}>📊</div>
-          <h1 style={{ color: "#F1F5F9", fontSize: 26, fontWeight: 800, marginBottom: 12 }}>
-            Performance Dashboard
-          </h1>
-          <p style={{ color: "#94A3B8", fontSize: 15, lineHeight: 1.6, marginBottom: 28 }}>
-            Sign in to track your study progress, accuracy trends, and exam readiness across all your courses.
-          </p>
-          <a
-            href={getLoginUrl()}
-            style={{
-              display: "inline-block",
-              padding: "12px 32px",
-              background: `linear-gradient(135deg, ${BLUE}, ${TEAL})`,
-              color: "#fff",
-              borderRadius: 10,
-              fontWeight: 700,
-              fontSize: 15,
-              textDecoration: "none",
-            }}
-          >
-            Sign In to View Dashboard
-          </a>
+        <div style={{ maxWidth: 440, margin: "0 auto", padding: "80px 24px" }}>
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
+            <div style={{ fontSize: 48, marginBottom: 12 }}>📊</div>
+            <h1 style={{ color: "#F1F5F9", fontSize: 24, fontWeight: 800, margin: "0 0 8px" }}>My Dashboard</h1>
+            <p style={{ color: "#94A3B8", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
+              Enter the email you used to purchase your course access. We'll send you a one-time code.
+            </p>
+          </div>
+
+          <div style={{ background: SLATE_800, borderRadius: 14, padding: "28px 24px", border: "1px solid #1E293B" }}>
+            {otpStep === "email" ? (
+              <>
+                <label style={{ display: "block", color: "#94A3B8", fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Email Address</label>
+                <input
+                  type="email"
+                  value={otpEmail}
+                  onChange={(e) => setOtpEmail(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSendOtp()}
+                  placeholder="you@example.com"
+                  style={{
+                    width: "100%", padding: "11px 14px", borderRadius: 8, border: "1px solid #334155",
+                    background: SLATE_900, color: "#F1F5F9", fontSize: 15, boxSizing: "border-box", marginBottom: 16,
+                    outline: "none",
+                  }}
+                />
+                {otpError && <p style={{ color: RED, fontSize: 13, marginBottom: 12 }}>{otpError}</p>}
+                <button
+                  onClick={handleSendOtp}
+                  disabled={sendOtp.isPending || !otpEmail.trim()}
+                  style={{
+                    width: "100%", padding: "12px", borderRadius: 8, border: "none", cursor: "pointer",
+                    background: `linear-gradient(135deg, ${BLUE}, ${TEAL})`,
+                    color: "#fff", fontWeight: 700, fontSize: 15, opacity: sendOtp.isPending ? 0.7 : 1,
+                  }}
+                >
+                  {sendOtp.isPending ? "Sending..." : "Send Code"}
+                </button>
+              </>
+            ) : (
+              <>
+                <p style={{ color: "#94A3B8", fontSize: 13, marginBottom: 16 }}>
+                  A 6-digit code was sent to <strong style={{ color: "#F1F5F9" }}>{otpEmail}</strong>. Enter it below.
+                </p>
+                <label style={{ display: "block", color: "#94A3B8", fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Verification Code</label>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={6}
+                  value={otpCode}
+                  onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, ""))}
+                  onKeyDown={(e) => e.key === "Enter" && otpCode.length === 6 && handleVerifyOtp()}
+                  placeholder="000000"
+                  style={{
+                    width: "100%", padding: "11px 14px", borderRadius: 8, border: "1px solid #334155",
+                    background: SLATE_900, color: "#F1F5F9", fontSize: 24, letterSpacing: 8, textAlign: "center",
+                    boxSizing: "border-box", marginBottom: 16, outline: "none",
+                  }}
+                />
+                {otpError && <p style={{ color: RED, fontSize: 13, marginBottom: 12 }}>{otpError}</p>}
+                <button
+                  onClick={handleVerifyOtp}
+                  disabled={verifyOtp.isPending || otpCode.length !== 6}
+                  style={{
+                    width: "100%", padding: "12px", borderRadius: 8, border: "none", cursor: "pointer",
+                    background: `linear-gradient(135deg, ${BLUE}, ${TEAL})`,
+                    color: "#fff", fontWeight: 700, fontSize: 15, opacity: verifyOtp.isPending ? 0.7 : 1,
+                    marginBottom: 12,
+                  }}
+                >
+                  {verifyOtp.isPending ? "Verifying..." : "Access Dashboard"}
+                </button>
+                <button
+                  onClick={() => { setOtpStep("email"); setOtpCode(""); setOtpError(""); }}
+                  style={{ background: "none", border: "none", color: "#64748B", fontSize: 13, cursor: "pointer", width: "100%" }}
+                >
+                  Use a different email
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -214,13 +327,23 @@ export default function StudentDashboard() {
 
       <div style={{ maxWidth: 960, margin: "0 auto", padding: "32px 20px 120px" }}>
         {/* ── Header ── */}
-        <div style={{ marginBottom: 32 }}>
-          <h1 style={{ color: "#F1F5F9", fontSize: 28, fontWeight: 900, margin: 0, letterSpacing: "-0.02em" }}>
-            📊 My Dashboard
-          </h1>
-          <p style={{ color: "#94A3B8", fontSize: 14, marginTop: 6 }}>
-            Welcome back, {user?.name?.split(" ")[0] ?? "Operator"}. Here's your study progress.
-          </p>
+        <div style={{ marginBottom: 32, display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+          <div>
+            <h1 style={{ color: "#F1F5F9", fontSize: 28, fontWeight: 900, margin: 0, letterSpacing: "-0.02em" }}>
+              📊 My Dashboard
+            </h1>
+            <p style={{ color: "#94A3B8", fontSize: 14, marginTop: 6 }}>
+              Welcome back, {displayName}. Here's your study progress.
+            </p>
+          </div>
+          {emailSession && !isAuthenticated && (
+            <button
+              onClick={handleDashboardLogout}
+              style={{ background: "none", border: "1px solid #334155", borderRadius: 8, padding: "6px 14px", color: "#64748B", fontSize: 13, cursor: "pointer" }}
+            >
+              Sign out
+            </button>
+          )}
         </div>
 
         {/* ── Exam Countdown Banner ── */}

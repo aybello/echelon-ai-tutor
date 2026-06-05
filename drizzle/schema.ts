@@ -169,6 +169,7 @@ export const questionAttempts = mysqlTable("question_attempts", {
   id: int("id").autoincrement().primaryKey(),
   userId: int("userId"), // null for guest users
   guestToken: varchar("guestToken", { length: 64 }), // localStorage token for guest tracking
+  studentEmail: varchar("studentEmail", { length: 320 }), // purchase/trial email for non-OAuth users
   examType: varchar("examType", { length: 64 }).notNull(), // e.g. 'oit', 'class1-water', 'wpi-class2-wastewater'
   topic: varchar("topic", { length: 128 }).notNull(), // e.g. 'Disinfection', 'Hydraulics'
   questionId: int("questionId").notNull(),
@@ -184,6 +185,7 @@ export type InsertQuestionAttempt = typeof questionAttempts.$inferInsert;
 export const studentProfiles = mysqlTable("student_profiles", {
   id: int("id").autoincrement().primaryKey(),
   userId: int("userId").notNull().unique(),
+  studentEmail: varchar("studentEmail", { length: 320 }), // purchase/trial email for non-OAuth users
   examType: varchar("examType", { length: 64 }).notNull(), // primary exam type
   topicAccuracy: text("topicAccuracy").notNull(), // JSON: { "Disinfection": { correct: 18, total: 22 } } — default '{}' set in app code
   weakTopics: text("weakTopics").notNull(), // JSON array of topic names with <65% accuracy — default '[]' set in app code
@@ -325,3 +327,17 @@ export const magicLinks = mysqlTable("magic_links", {
 
 export type MagicLink = typeof magicLinks.$inferSelect;
 export type InsertMagicLink = typeof magicLinks.$inferInsert;
+
+/** Dashboard OTPs — 6-digit codes for email-based dashboard login (no Manus account required) */
+export const dashboardOtps = mysqlTable("dashboard_otps", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  codeHash: varchar("codeHash", { length: 128 }).notNull(), // SHA-256 of the 6-digit code
+  expiresAt: timestamp("expiresAt").notNull(), // 10 minutes from creation
+  usedAt: timestamp("usedAt"), // null until consumed
+  attempts: int("attempts").notNull().default(0), // brute-force protection: max 5 attempts
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type DashboardOtp = typeof dashboardOtps.$inferSelect;
+export type InsertDashboardOtp = typeof dashboardOtps.$inferInsert;
