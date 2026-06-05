@@ -707,11 +707,37 @@ export default function MockExamShell({
       {/* Sticky header */}
       <div style={{ position: "sticky", top: 0, zIndex: 100, background: "#fff", borderBottom: "1px solid #E2E8F0", padding: "10px 20px" }}>
         <div className="mes-active-header" style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-          <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A" }}>
-            Q{currentIdx + 1} / {questions.length}
-            <span style={{ marginLeft: 12, fontSize: 12, color: "#64748B", fontWeight: 500 }}>
-              {answered} answered · {flagged.length} flagged
-            </span>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            {/* Exit button — lets user abandon the exam and return to the practice page */}
+            <button
+              onClick={() => {
+                if (window.confirm("Exit exam? Your progress will be lost.")) {
+                  window.location.href = practicePath;
+                }
+              }}
+              style={{
+                padding: "6px 12px",
+                borderRadius: 8,
+                border: "1.5px solid #E2E8F0",
+                background: "#F8FAFC",
+                color: "#64748B",
+                fontWeight: 600,
+                fontSize: 12,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                display: "flex",
+                alignItems: "center",
+                gap: 5,
+              }}
+            >
+              ← Exit
+            </button>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A" }}>
+              Q{currentIdx + 1} / {questions.length}
+              <span style={{ marginLeft: 12, fontSize: 12, color: "#64748B", fontWeight: 500 }}>
+                {answered} answered · {flagged.length} flagged
+              </span>
+            </div>
           </div>
           <div className="mes-active-header-right" style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: timerColor, fontVariantNumeric: "tabular-nums" }}>
