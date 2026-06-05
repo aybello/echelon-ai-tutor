@@ -222,42 +222,42 @@ function isMarketingPage(path: string): boolean {
 /** Returns the 5-6 most contextually relevant desktop nav links for the current path. */
 function getContextualPrimary(currentPath: string): string[] {
   // WPI Collection pages (must come before generic wpi-class*-water rules)
-  if (currentPath.startsWith("/wpi-class1-water-coll")) return ["/wpi-class1-water-coll", "/wpi-class1-water-coll-mock", "/formulas-wpi-class1-coll", "/wpi", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class2-water-coll")) return ["/wpi-class2-water-coll", "/wpi-class2-water-coll-mock", "/formulas-wpi-class2-coll", "/wpi", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class3-water-coll")) return ["/wpi-class3-water-coll", "/wpi-class3-water-coll-mock", "/formulas-wpi-class3-coll", "/wpi", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class4-water-coll")) return ["/wpi-class4-water-coll", "/wpi-class4-water-coll-mock", "/formulas-wpi-class4-coll", "/wpi", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class1-water-coll")) return ["/wpi-class1-water-coll", "/wpi-class1-water-coll-mock", "/formulas-wpi-class1-coll", "/dashboard", "/account", "/wpi"];
+  if (currentPath.startsWith("/wpi-class2-water-coll")) return ["/wpi-class2-water-coll", "/wpi-class2-water-coll-mock", "/formulas-wpi-class2-coll", "/dashboard", "/account", "/wpi"];
+  if (currentPath.startsWith("/wpi-class3-water-coll")) return ["/wpi-class3-water-coll", "/wpi-class3-water-coll-mock", "/formulas-wpi-class3-coll", "/dashboard", "/account", "/wpi"];
+  if (currentPath.startsWith("/wpi-class4-water-coll")) return ["/wpi-class4-water-coll", "/wpi-class4-water-coll-mock", "/formulas-wpi-class4-coll", "/dashboard", "/account", "/wpi"];
   // WPI Distribution pages (must come before generic wpi-class*-water rules)
-  if (currentPath.startsWith("/wpi-class1-water-dist")) return ["/wpi-class1-water-dist", "/wpi-class1-water-dist-mock", "/formulas-wpi-class1-dist", "/wpi", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class2-water-dist")) return ["/wpi-class2-water-dist", "/wpi-class2-water-dist-mock", "/formulas-wpi-class2-dist", "/wpi", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class3-water-dist")) return ["/wpi-class3-water-dist", "/wpi-class3-water-dist-mock", "/formulas-wpi-class3-dist", "/wpi", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class4-water-dist")) return ["/wpi-class4-water-dist", "/wpi-class4-water-dist-mock", "/formulas-wpi-class4-dist", "/wpi", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class1-water-dist")) return ["/wpi-class1-water-dist", "/wpi-class1-water-dist-mock", "/formulas-wpi-class1-dist", "/dashboard", "/account", "/wpi"];
+  if (currentPath.startsWith("/wpi-class2-water-dist")) return ["/wpi-class2-water-dist", "/wpi-class2-water-dist-mock", "/formulas-wpi-class2-dist", "/dashboard", "/account", "/wpi"];
+  if (currentPath.startsWith("/wpi-class3-water-dist")) return ["/wpi-class3-water-dist", "/wpi-class3-water-dist-mock", "/formulas-wpi-class3-dist", "/dashboard", "/account", "/wpi"];
+  if (currentPath.startsWith("/wpi-class4-water-dist")) return ["/wpi-class4-water-dist", "/wpi-class4-water-dist-mock", "/formulas-wpi-class4-dist", "/dashboard", "/account", "/wpi"];
   // WPI Water pages
-  if (currentPath.startsWith("/wpi-class1-water")) return ["/wpi-class1-water", "/wpi-class1-water-mock", "/formulas-wpi-class1", "/wpi", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class2-water")) return ["/wpi-class2-water", "/wpi-class2-water-mock", "/formulas-wpi-class2", "/wpi", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class3-water")) return ["/wpi-class3-water", "/wpi-class3-water-mock", "/formulas-wpi-class3", "/wpi", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class4-water")) return ["/wpi-class4-water", "/wpi-class4-water-mock", "/formulas-wpi-class4", "/wpi", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class1-water")) return ["/wpi-class1-water", "/wpi-class1-water-mock", "/formulas-wpi-class1", "/dashboard", "/account", "/wpi"];
+  if (currentPath.startsWith("/wpi-class2-water")) return ["/wpi-class2-water", "/wpi-class2-water-mock", "/formulas-wpi-class2", "/dashboard", "/account", "/wpi"];
+  if (currentPath.startsWith("/wpi-class3-water")) return ["/wpi-class3-water", "/wpi-class3-water-mock", "/formulas-wpi-class3", "/dashboard", "/account", "/wpi"];
+  if (currentPath.startsWith("/wpi-class4-water")) return ["/wpi-class4-water", "/wpi-class4-water-mock", "/formulas-wpi-class4", "/dashboard", "/account", "/wpi"];
   // WPI Wastewater pages
-  if (currentPath.startsWith("/wpi-class1-wastewater")) return ["/wpi-class1-wastewater", "/wpi-class1-wastewater-mock", "/formulas-wpi-class1-ww", "/wpi", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class2-wastewater")) return ["/wpi-class2-wastewater", "/wpi-class2-wastewater-mock", "/formulas-wpi-class2-ww", "/wpi", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class3-wastewater")) return ["/wpi-class3-wastewater", "/wpi-class3-wastewater-mock", "/formulas-wpi-class3-ww", "/wpi", "/career", "/account"];
-  if (currentPath.startsWith("/wpi-class4-wastewater")) return ["/wpi-class4-wastewater", "/wpi-class4-wastewater-mock", "/formulas-wpi-class4-ww", "/wpi", "/career", "/account"];
+  if (currentPath.startsWith("/wpi-class1-wastewater")) return ["/wpi-class1-wastewater", "/wpi-class1-wastewater-mock", "/formulas-wpi-class1-ww", "/dashboard", "/account", "/wpi"];
+  if (currentPath.startsWith("/wpi-class2-wastewater")) return ["/wpi-class2-wastewater", "/wpi-class2-wastewater-mock", "/formulas-wpi-class2-ww", "/dashboard", "/account", "/wpi"];
+  if (currentPath.startsWith("/wpi-class3-wastewater")) return ["/wpi-class3-wastewater", "/wpi-class3-wastewater-mock", "/formulas-wpi-class3-ww", "/dashboard", "/account", "/wpi"];
+  if (currentPath.startsWith("/wpi-class4-wastewater")) return ["/wpi-class4-wastewater", "/wpi-class4-wastewater-mock", "/formulas-wpi-class4-ww", "/dashboard", "/account", "/wpi"];
   // WPI landing
-  if (currentPath === "/wpi") return ["/wpi-class1-water", "/wpi-class1-wastewater", "/wpi", "/career", "/pricing", "/account"];
+  if (currentPath === "/wpi") return ["/wpi-class1-water", "/wpi-class1-wastewater", "/wpi", "/dashboard", "/pricing", "/account"];
   // Ontario Water pages
-  if (currentPath.startsWith("/class1-water")) return ["/class1-water", "/class1-water-mock", "/formulas-water1", "/career", "/pricing", "/account"];
-  if (currentPath.startsWith("/class2-water")) return ["/class2-water", "/class2-water-mock", "/formulas-water2", "/career", "/pricing", "/account"];
-  if (currentPath.startsWith("/class3-water")) return ["/class3-water", "/class3-water-mock", "/formulas-water3", "/career", "/pricing", "/account"];
-  if (currentPath.startsWith("/class4-water")) return ["/class4-water", "/class4-water-mock", "/formulas-water4", "/career", "/pricing", "/account"];
+  if (currentPath.startsWith("/class1-water")) return ["/class1-water", "/class1-water-mock", "/formulas-water1", "/dashboard", "/pricing", "/account"];
+  if (currentPath.startsWith("/class2-water")) return ["/class2-water", "/class2-water-mock", "/formulas-water2", "/dashboard", "/pricing", "/account"];
+  if (currentPath.startsWith("/class3-water")) return ["/class3-water", "/class3-water-mock", "/formulas-water3", "/dashboard", "/pricing", "/account"];
+  if (currentPath.startsWith("/class4-water")) return ["/class4-water", "/class4-water-mock", "/formulas-water4", "/dashboard", "/pricing", "/account"];
   // Ontario Wastewater pages
-  if (currentPath.startsWith("/class1-ww")) return ["/class1-ww", "/class1-ww-mock", "/formulas-ww1", "/career", "/pricing", "/account"];
-  if (currentPath.startsWith("/class2-ww")) return ["/class2-ww", "/class2-ww-mock", "/formulas-ww2", "/career", "/pricing", "/account"];
-  if (currentPath.startsWith("/class3-ww")) return ["/class3-ww", "/class3-ww-mock", "/formulas-ww3", "/career", "/pricing", "/account"];
-  if (currentPath.startsWith("/class4-ww")) return ["/class4-ww", "/class4-ww-mock", "/formulas-ww4", "/career", "/pricing", "/account"];
+  if (currentPath.startsWith("/class1-ww")) return ["/class1-ww", "/class1-ww-mock", "/formulas-ww1", "/dashboard", "/pricing", "/account"];
+  if (currentPath.startsWith("/class2-ww")) return ["/class2-ww", "/class2-ww-mock", "/formulas-ww2", "/dashboard", "/pricing", "/account"];
+  if (currentPath.startsWith("/class3-ww")) return ["/class3-ww", "/class3-ww-mock", "/formulas-ww3", "/dashboard", "/pricing", "/account"];
+  if (currentPath.startsWith("/class4-ww")) return ["/class4-ww", "/class4-ww-mock", "/formulas-ww4", "/dashboard", "/pricing", "/account"];
   // OIT pages
-  if (currentPath === "/quiz" || currentPath === "/oit-mock") return ["/quiz", "/oit-mock", "/formulas", "/career", "/pricing", "/account"];
-  if (currentPath === "/oit-ww" || currentPath === "/oit-ww-mock") return ["/oit-ww", "/oit-ww-mock", "/formulas-ww1", "/career", "/pricing", "/account"];
+  if (currentPath === "/quiz" || currentPath === "/oit-mock") return ["/quiz", "/oit-mock", "/formulas", "/dashboard", "/pricing", "/account"];
+  if (currentPath === "/oit-ww" || currentPath === "/oit-ww-mock") return ["/oit-ww", "/oit-ww-mock", "/formulas-ww1", "/dashboard", "/pricing", "/account"];
   // WQA pages
-  if (currentPath.startsWith("/wqa")) return ["/wqa", "/wqa-mock", "/formulas-wqa", "/career", "/pricing", "/account"];
+  if (currentPath.startsWith("/wqa")) return ["/wqa", "/wqa-mock", "/formulas-wqa", "/dashboard", "/pricing", "/account"];
   // Formula / tool pages
   if (currentPath.startsWith("/formulas")) return ["/formulas", "/quiz", "/career", "/pricing", "/about", "/account"];
   if (currentPath === "/instrumentation") return ["/instrumentation", "/quiz", "/formulas", "/career", "/pricing", "/account"];

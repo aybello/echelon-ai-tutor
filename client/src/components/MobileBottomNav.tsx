@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 const ITEMS = [
   { label: "Home", href: "/", icon: "🏠" },
   { label: "Courses", href: "/pricing", icon: "📚" },
+  { label: "Dashboard", href: "/dashboard", icon: "📊" },
   { label: "Formulas", href: "/formulas", icon: "📐" },
   { label: "My Passes", href: "/account", icon: "🎫" },
 ];
@@ -10,10 +11,8 @@ const ITEMS = [
 export default function MobileBottomNav() {
   const [path] = useLocation();
 
-  // Hide on quiz/exam pages where the sticky action bar would conflict
-  const hideOnPaths = ["/quiz", "/mock", "/exam"];
-  const shouldHide = hideOnPaths.some(p => path.includes(p));
-  if (shouldHide) return null;
+  // Previously hidden on quiz/exam pages — now shown everywhere so Dashboard is always reachable.
+  // The bottom nav uses position:fixed so it floats above quiz content without conflicting.
 
   return (
     <nav
@@ -26,6 +25,7 @@ export default function MobileBottomNav() {
         background: "#0F172A",
         borderTop: "1px solid #1E293B",
         paddingBottom: "env(safe-area-inset-bottom)",
+        display: "flex",
       }}
       className="echelon-mobile-bottom-nav"
     >
