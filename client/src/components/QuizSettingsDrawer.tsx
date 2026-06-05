@@ -116,8 +116,15 @@ export default function QuizSettingsDrawer({
 
           {/* Session Size */}
           <section>
-            <div style={{ fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 10, letterSpacing: "0.04em", textTransform: "uppercase" }}>
-              Session Size
+            <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", marginBottom: 10 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#374151", letterSpacing: "0.04em", textTransform: "uppercase" }}>
+                Session Size
+              </div>
+              {totalQuestions != null && (
+                <div style={{ fontSize: 12, color: "#64748B", fontWeight: 600 }}>
+                  {Math.min(local.sessionSize, totalQuestions).toLocaleString()} of {totalQuestions.toLocaleString()} available
+                </div>
+              )}
             </div>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {SESSION_SIZE_OPTIONS.map(size => {

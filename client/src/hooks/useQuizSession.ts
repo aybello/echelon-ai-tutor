@@ -26,7 +26,8 @@ import { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSetti
 import type { DBQuestion } from "@/hooks/useQuestionBank";
 
 // ─── Constants ───────────────────────────────────────────────────────────────
-const SESSION_SIZE = 15;
+// Default/fallback session size; actual size comes from quizSettings.sessionSize
+const DEFAULT_SESSION_SIZE = 15;
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 export interface HistoryEntry {
@@ -118,7 +119,7 @@ function getAdaptiveNext(
   if (pool.length === 0) return null;
 
   // For trial phase, prefer medium/hard questions
-  if (!trialUnlocked && history.length < SESSION_SIZE) {
+  if (!trialUnlocked && history.length < DEFAULT_SESSION_SIZE) {
     const hardPool = pool.filter(
       (q) => q.difficulty === "medium" || q.difficulty === "hard",
     );
@@ -243,7 +244,8 @@ export function useQuizSession({
   // ── Derived ────────────────────────────────────────────────────────────────
   const correctCount = history.filter((h) => h.correct).length;
   const wrongCount = history.length - correctCount;
-  const sessionSize = quizMode === "quick10" ? 10 : SESSION_SIZE;
+  // sessionSize: quick10 is always 10; otherwise use the user-configured setting
+  const sessionSize = quizMode === "quick10" ? 10 : (quizSettings.sessionSize ?? DEFAULT_SESSION_SIZE);
 
   // ── Filtered pool ──────────────────────────────────────────────────────────
   const pool = useMemo(() => {
@@ -338,7 +340,7 @@ export function useQuizSession({
     if (
       quizMode !== "quick10" &&
       !trialUnlocked &&
-      updatedHistory.length === SESSION_SIZE - 2
+      updatedHistory.length === DEFAULT_SESSION_SIZE - 2
     ) {
       toast("2 free questions left", { description: "Subscribe to keep going after this." });
     }
@@ -347,7 +349,7 @@ export function useQuizSession({
     if (
       quizMode !== "quick10" &&
       !trialUnlocked &&
-      updatedHistory.length >= SESSION_SIZE
+      updatedHistory.length >= DEFAULT_SESSION_SIZE
     ) {
       setTrialDone(true);
     }
@@ -370,8 +372,8 @@ export function useQuizSession({
       return;
     }
 
-    // Paywall gate: block advancement if trial exhausted
-    if (!trialUnlocked && history.length >= SESSION_SIZE) {
+    // Paywall gate: block advancement if trial exhausted (always 15 for non-unlocked users)
+    if (!trialUnlocked && history.length >= DEFAULT_SESSION_SIZE) {
       setTrialDone(true);
       return;
     }
