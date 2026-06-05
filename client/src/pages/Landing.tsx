@@ -1340,16 +1340,28 @@ export default function Landing() {
               </button>
             </Link>
           ) : (
-            <Link href="/quiz">
-              <button style={{
-                padding: "8px 20px", borderRadius: 10,
-                background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
-                color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
-                cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
-              }}>
-                Try Free →
-              </button>
-            </Link>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <Link href="/account">
+                <button style={{
+                  padding: "8px 16px", borderRadius: 10,
+                  background: "transparent",
+                  color: "#1D4ED8", border: "1.5px solid #1D4ED8", fontSize: 13, fontWeight: 700,
+                  cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+                }}>
+                  Sign In
+                </button>
+              </Link>
+              <Link href="/quiz">
+                <button style={{
+                  padding: "8px 20px", borderRadius: 10,
+                  background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                  color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
+                  cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+                }}>
+                  Try Free →
+                </button>
+              </Link>
+            </div>
           )}
         </div>
 
@@ -1418,10 +1430,10 @@ export default function Landing() {
           {[
             isAuthenticated
               ? { label: "📊 Dashboard", href: "/dashboard", accent: true }
-              : { label: "📝 Try Free", href: "/quiz", accent: true },
-            { label: "🌊 WPI", href: "/wpi", accent: false },
+              : { label: "🔑 Sign In", href: "/account", accent: "purple" },
+            { label: "📝 Try Free", href: "/quiz", accent: isAuthenticated ? false : true },
             { label: "💰 Pricing", href: "/pricing", accent: false },
-            { label: "🎫 My Passes", href: "/account", accent: "purple" },
+            { label: "🌊 WPI", href: "/wpi", accent: false },
           ].map(tile => (
             <Link key={tile.href} href={tile.href}>
               <div
