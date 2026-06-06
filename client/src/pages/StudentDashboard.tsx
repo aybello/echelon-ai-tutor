@@ -241,8 +241,9 @@ export default function StudentDashboard() {
   }
 
   /* ── Email OTP login gate — redirect to /login ── */
-  if (!hasAccess) {
-    // Redirect to the dedicated login page instead of showing inline form
+  // Wait for both auth checks to finish before redirecting — prevents redirect loop
+  const authResolved = !authLoading && !dashboardMe.isLoading;
+  if (authResolved && !hasAccess) {
     window.location.replace("/login");
     return (
       <div style={{ fontFamily: "Sora, sans-serif", background: SLATE_900, minHeight: "100vh" }}>
