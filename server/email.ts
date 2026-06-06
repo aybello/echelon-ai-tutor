@@ -617,3 +617,232 @@ export async function sendMagicLinkEmail(
     console.log(`[Magic Link Email] Sent to ${email}`);
   }
 }
+
+// ─── Re-engagement email ────────────────────────────────────────────────────
+
+export interface ReEngagementEmailPayload {
+  email: string;
+  customerName?: string | null;
+  products: string; // e.g. "OIT Water, Class 1 Water"
+  loginUrl: string; // https://echeloninstitute.ca/login
+}
+
+/**
+ * One-time re-engagement email sent to existing purchasers who haven't logged in.
+ * Informs them the login system is fixed and gives them a direct link.
+ */
+export async function sendReEngagementEmail(payload: ReEngagementEmailPayload): Promise<void> {
+  const { email, customerName, products, loginUrl } = payload;
+  const firstName = customerName?.split(" ")[0] ?? "there";
+  const siteUrl = "https://echeloninstitute.ca";
+
+  const transporter = createTransporter();
+
+  const mail = {
+    from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
+    to: email,
+    subject: `Your Echelon Institute access is ready to use`,
+    text: [
+      `Hi ${firstName},`,
+      ``,
+      `We noticed you haven't had a chance to log in and use your ${products} yet.`,
+      ``,
+      `We recently fixed a login issue that was preventing some students from accessing their dashboard. Everything is working now.`,
+      ``,
+      `Log in here: ${loginUrl}`,
+      ``,
+      `Just enter the email address you used to purchase (${email}) and you'll get a 6-digit code to sign in instantly. No password needed.`,
+      ``,
+      `Once you're in, you'll find:`,
+      `  - Your full question bank (500+ questions per course)`,
+      `  - Timed mock exams`,
+      `  - AI Tutor for step-by-step explanations`,
+      `  - Your progress dashboard`,
+      ``,
+      `If you run into any issues, just reply to this email.`,
+      ``,
+      `Good luck on your exam!`,
+      `Ayoola`,
+      `Echelon Institute`,
+    ].join("\n"),
+    html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,Helvetica,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+        <tr>
+          <td style="background:linear-gradient(135deg,#1D4ED8 0%,#0E7490 100%);border-radius:12px 12px 0 0;padding:32px 32px 28px;text-align:center;">
+            <div style="font-size:36px;margin-bottom:12px;">👋</div>
+            <h1 style="color:#ffffff;margin:0 0 8px;font-size:24px;font-weight:800;line-height:1.2;">Your access is ready</h1>
+            <p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">We fixed a login issue. Here's how to get in.</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#ffffff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;">
+            <p style="margin:0 0 20px;font-size:16px;color:#0F172A;line-height:1.6;">Hi ${firstName},</p>
+            <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.6;">
+              We noticed you haven't had a chance to log in and use your <strong style="color:#0F172A;">${products}</strong> yet.
+            </p>
+            <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.6;">
+              We recently fixed a login issue that was preventing some students from accessing their dashboard. Everything is working now.
+            </p>
+
+            <div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:10px;padding:20px 24px;margin-bottom:28px;">
+              <p style="margin:0 0 6px;font-size:12px;font-weight:700;color:#1D4ED8;letter-spacing:0.06em;text-transform:uppercase;">How to sign in</p>
+              <p style="margin:0 0 12px;font-size:14px;color:#1E3A5F;line-height:1.6;">
+                Go to the login page and enter <strong>${email}</strong>. You'll receive a 6-digit code by email. Enter the code and you're in. No password needed.
+              </p>
+              <a href="${loginUrl}" style="display:inline-block;background:linear-gradient(135deg,#1D4ED8,#0E7490);color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:8px;font-size:15px;font-weight:700;">
+                Sign In to Echelon Institute
+              </a>
+            </div>
+
+            <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#0F172A;">Once you're in, you'll find:</p>
+            <ul style="margin:0 0 28px;padding-left:20px;">
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">500+ practice questions per course, unlimited attempts</li>
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Timed mock exams (100 questions, 2 hours)</li>
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">AI Tutor for step-by-step explanations on every question</li>
+              <li style="font-size:13px;color:#475569;margin-bottom:6px;line-height:1.5;">Progress dashboard showing your accuracy by module</li>
+              <li style="font-size:13px;color:#475569;line-height:1.5;">Interactive process guides, formula sheets, and flashcards</li>
+            </ul>
+
+            <div style="border-top:1px solid #E2E8F0;padding-top:20px;text-align:center;">
+              <p style="margin:0 0 6px;font-size:13px;color:#64748B;">Questions? Just reply to this email.</p>
+              <p style="margin:0 0 6px;font-size:13px;"><a href="mailto:abello@echeloninstitute.ca" style="color:#1D4ED8;text-decoration:none;">abello@echeloninstitute.ca</a></p>
+              <p style="margin:12px 0 0;font-size:12px;color:#94A3B8;">Echelon Institute · Canada's AI-powered exam prep for water &amp; wastewater operators</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
+    `,
+  };
+
+  const info = await transporter.sendMail(mail);
+  console.log(`[Re-engagement Email] Sent to ${email} — ${nodemailer.getTestMessageUrl(info) || "production"}`);
+}
+
+// ─── Welcome / onboarding email (Day 1 after purchase) ──────────────────────
+
+export interface WelcomeOnboardingEmailPayload {
+  email: string;
+  customerName?: string | null;
+  productName: string;
+  productKey: string;
+  quizPath: string;
+  mockPath: string;
+}
+
+/**
+ * Sent 1 day after purchase as a "getting started" guide.
+ * Walks the student through the 3 most important features.
+ */
+export async function sendWelcomeOnboardingEmail(payload: WelcomeOnboardingEmailPayload): Promise<void> {
+  const { email, customerName, productName, quizPath, mockPath } = payload;
+  const firstName = customerName?.split(" ")[0] ?? "there";
+  const siteUrl = "https://echeloninstitute.ca";
+  const quizUrl = `${siteUrl}${quizPath}`;
+  const mockUrl = `${siteUrl}${mockPath}`;
+  const loginUrl = `${siteUrl}/login`;
+  const dashboardUrl = `${siteUrl}/dashboard`;
+
+  const transporter = createTransporter();
+
+  const mail = {
+    from: `"Ayoola at Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
+    to: email,
+    subject: `3 things to do first with your ${productName}`,
+    text: [
+      `Hi ${firstName},`,
+      ``,
+      `You purchased your ${productName} yesterday. Here are the 3 most effective things to do first:`,
+      ``,
+      `1. Sign in and check your dashboard`,
+      `   ${loginUrl}`,
+      `   Enter your email (${email}) to get a sign-in code. Your dashboard tracks your accuracy by module so you know exactly where to focus.`,
+      ``,
+      `2. Do a 15-question practice session`,
+      `   ${quizUrl}`,
+      `   Don't try to study everything at once. Start with one module, answer 15 questions, and read every explanation — even the ones you got right.`,
+      ``,
+      `3. Take a baseline mock exam`,
+      `   ${mockUrl}`,
+      `   100 questions, 2 hours. Do it now before you've studied much. Your baseline score tells you which modules need the most work.`,
+      ``,
+      `That's it for now. Reply to this email if you have any questions.`,
+      ``,
+      `Ayoola`,
+      `Echelon Institute`,
+    ].join("\n"),
+    html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,Helvetica,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+        <tr>
+          <td style="background:linear-gradient(135deg,#1D4ED8 0%,#0E7490 100%);border-radius:12px 12px 0 0;padding:32px 32px 28px;text-align:center;">
+            <div style="font-size:36px;margin-bottom:12px;">🚀</div>
+            <h1 style="color:#ffffff;margin:0 0 8px;font-size:24px;font-weight:800;line-height:1.2;">3 things to do first</h1>
+            <p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">Get the most out of your ${productName}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#ffffff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;">
+            <p style="margin:0 0 24px;font-size:15px;color:#475569;line-height:1.6;">Hi ${firstName}, you purchased your ${productName} yesterday. Here are the 3 most effective things to do first:</p>
+
+            <!-- Step 1 -->
+            <div style="display:flex;margin-bottom:24px;">
+              <div style="flex-shrink:0;width:36px;height:36px;background:#EFF6FF;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:16px;font-size:16px;font-weight:800;color:#1D4ED8;text-align:center;line-height:36px;">1</div>
+              <div>
+                <p style="margin:0 0 6px;font-size:15px;font-weight:700;color:#0F172A;">Sign in and check your dashboard</p>
+                <p style="margin:0 0 10px;font-size:13px;color:#475569;line-height:1.6;">Enter your email (<strong>${email}</strong>) at the login page to get a sign-in code. Your dashboard tracks your accuracy by module so you know exactly where to focus.</p>
+                <a href="${loginUrl}" style="display:inline-block;background:#EFF6FF;border:1.5px solid #BFDBFE;color:#1D4ED8;text-decoration:none;padding:8px 16px;border-radius:7px;font-size:13px;font-weight:700;">Sign In</a>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div style="display:flex;margin-bottom:24px;">
+              <div style="flex-shrink:0;width:36px;height:36px;background:#F0FDF4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:16px;font-size:16px;font-weight:800;color:#15803D;text-align:center;line-height:36px;">2</div>
+              <div>
+                <p style="margin:0 0 6px;font-size:15px;font-weight:700;color:#0F172A;">Do a 15-question practice session</p>
+                <p style="margin:0 0 10px;font-size:13px;color:#475569;line-height:1.6;">Start with one module, answer 15 questions, and read every explanation even the ones you got right. That's how the adaptive engine learns your weak spots.</p>
+                <a href="${quizUrl}" style="display:inline-block;background:#F0FDF4;border:1.5px solid #BBF7D0;color:#15803D;text-decoration:none;padding:8px 16px;border-radius:7px;font-size:13px;font-weight:700;">Start Practice</a>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div style="display:flex;margin-bottom:28px;">
+              <div style="flex-shrink:0;width:36px;height:36px;background:#FFF7ED;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:16px;font-size:16px;font-weight:800;color:#C2410C;text-align:center;line-height:36px;">3</div>
+              <div>
+                <p style="margin:0 0 6px;font-size:15px;font-weight:700;color:#0F172A;">Take a baseline mock exam</p>
+                <p style="margin:0 0 10px;font-size:13px;color:#475569;line-height:1.6;">100 questions, 2 hours. Do it before you've studied much. Your baseline score shows exactly which modules need the most work before exam day.</p>
+                <a href="${mockUrl}" style="display:inline-block;background:#FFF7ED;border:1.5px solid #FED7AA;color:#C2410C;text-decoration:none;padding:8px 16px;border-radius:7px;font-size:13px;font-weight:700;">Take Mock Exam</a>
+              </div>
+            </div>
+
+            <div style="border-top:1px solid #E2E8F0;padding-top:20px;text-align:center;">
+              <p style="margin:0 0 6px;font-size:13px;color:#64748B;">Questions? Just reply to this email.</p>
+              <p style="margin:0;font-size:12px;color:#94A3B8;">Echelon Institute · Canada's AI-powered exam prep for water &amp; wastewater operators</p>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
+    `,
+  };
+
+  const info = await transporter.sendMail(mail);
+  console.log(`[Welcome Onboarding Email] Sent to ${email} — ${nodemailer.getTestMessageUrl(info) || "production"}`);
+}
