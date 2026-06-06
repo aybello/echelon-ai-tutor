@@ -823,20 +823,6 @@ const FEATURES = [
     href: "/process",
   },
   {
-    icon: "🚰",
-    title: "Water Distribution Guide",
-    description: "Explore the full distribution system — high-lift pumping, transmission mains, pressure zones, storage reservoirs, and service connections — with animated diagrams and exam points.",
-    color: "#0369A1",
-    href: "/distribution-guide",
-  },
-  {
-    icon: "🔩",
-    title: "Wastewater Collection Guide",
-    description: "Walk through the collection system from manholes to lift stations, force mains, and CSO management. Covers gravity flow, H₂S hazards, and O. Reg. 170/03 requirements.",
-    color: "#065F46",
-    href: "/collection-guide",
-  },
-  {
     icon: "⚙️",
     title: "Pumping Systems Module",
     description: "Live pump curves, cavitation toggle, series/parallel configurations. The most technical module on the exam, made visual.",
@@ -870,13 +856,6 @@ const FEATURES = [
     description: "33 Ontario operator exam formulas with worked examples and exam tips. CT values, SVI, pump power, and more.",
     color: "#0E7490",
     href: "/formulas",
-  },
-  {
-    icon: "🔬",
-    title: "WQA Formula Sheet",
-    description: "30+ formulas for the Ontario Water Quality Analyst exam — unit conversions, alkalinity, CT values, Langelier Index, QA/QC, and O. Reg. 169/03 limits.",
-    color: "#7C3AED",
-    href: "/formulas-wqa",
   },
   {
     icon: "🗺️",
