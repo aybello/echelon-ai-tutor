@@ -38,6 +38,7 @@ const WastewaterCollectionGuide = lazy(() => import("./pages/WastewaterCollectio
 // Admin / account
 const Admin = lazy(() => import("./pages/Admin"));
 const Account = lazy(() => import("./pages/Account"));
+const Login = lazy(() => import("./pages/Login"));
 const StudentDashboard = lazy(() => import("./pages/StudentDashboard"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const PurchaseSuccess = lazy(() => import("./pages/PurchaseSuccess"));
@@ -316,6 +317,7 @@ function Router() {
         <Route path={"/purchase-success"} component={PurchaseSuccess} />
         <Route path={"/subscription-success"} component={SubscriptionSuccess} />
         <Route path={"/account"} component={Account} />
+        <Route path={"/login"} component={Login} />
         <Route path={"/auth/magic"} component={MagicLinkConsume} />
         <Route path={"/dashboard"} component={StudentDashboard} />
         <Route path={"/404"} component={NotFound} />

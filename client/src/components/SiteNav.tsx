@@ -105,7 +105,7 @@ export const NAV_LINKS = [
   { label: "🗺️ Career Map",    href: "/career" },
   { label: "ℹ️ About",         href: "/about" },
   { label: "📊 Dashboard",      href: "/dashboard" },
-  { label: "🎫 My Passes",      href: "/account" },
+  { label: "🔑 Sign In",      href: "/login" },
 ];
 
 // Grouped sections for the mobile drawer
@@ -197,7 +197,7 @@ const DRAWER_SECTIONS = [
       { label: "📐 Formulas", href: "/formulas" },
       { label: "🗺️ Career Map", href: "/career" },
       { label: "📊 Dashboard", href: "/dashboard" },
-      { label: "🎫 My Passes", href: "/account" },
+      { label: "🔑 Sign In", href: "/login" },
     ],
   },
 ];
@@ -620,7 +620,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
             { label: "♻️ Wastewater", href: "/wastewater", accent: null },
             { label: "🚰 Distribution", href: "/distribution-guide", accent: null },
             { label: "🔩 Collection", href: "/collection-guide", accent: null },
-            { label: "🎫 My Passes", href: "/account", accent: "linear-gradient(135deg, #7C3AED, #1D4ED8)" },
+            { label: "🔑 Sign In", href: "/login", accent: "linear-gradient(135deg, #7C3AED, #1D4ED8)" },
           ].map(tile => (
             <Link key={tile.href} href={tile.href}>
               <div
@@ -717,7 +717,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
           flexWrap: "wrap",
         }}>
           {[
-            { label: "🎫 My Passes", href: "/account" },
+            { label: "🔑 Sign In", href: "/login" },
             { label: "💰 Pricing", href: "/pricing" },
             { label: "ℹ️ About", href: "/about" },
           ].map(l => (

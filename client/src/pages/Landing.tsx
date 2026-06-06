@@ -1341,7 +1341,7 @@ export default function Landing() {
             </Link>
           ) : (
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <Link href="/account">
+              <Link href="/login">
                 <button style={{
                   padding: "8px 16px", borderRadius: 10,
                   background: "transparent",
@@ -1430,7 +1430,7 @@ export default function Landing() {
           {[
             isAuthenticated
               ? { label: "📊 Dashboard", href: "/dashboard", accent: true }
-              : { label: "🔑 Sign In", href: "/account", accent: "purple" },
+              : { label: "🔑 Sign In", href: "/login", accent: "purple" },
             { label: "📝 Try Free", href: "/quiz", accent: isAuthenticated ? false : true },
             { label: "💰 Pricing", href: "/pricing", accent: false },
             { label: "🌊 WPI", href: "/wpi", accent: false },

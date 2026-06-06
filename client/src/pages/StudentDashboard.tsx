@@ -228,8 +228,10 @@ export default function StudentDashboard() {
     );
   }
 
-  /* ── Email OTP login gate ── */
+  /* ── Email OTP login gate — redirect to /login ── */
   if (!hasAccess) {
+    // Redirect to the dedicated login page instead of showing inline form
+    window.location.replace("/login");
     return (
       <div style={{ fontFamily: "Sora, sans-serif", background: SLATE_900, minHeight: "100vh" }}>
         <SiteNav currentPath="/dashboard" />
