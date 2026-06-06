@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import { createServer } from "http";
 import net from "net";
@@ -46,6 +47,9 @@ async function startServer() {
 
   // Register Stripe webhook BEFORE express.json() so raw body is preserved for signature verification
   registerStripeWebhook(app);
+
+  // Cookie parser — required for req.cookies to be populated (used by email OTP session)
+  app.use(cookieParser());
 
   // Body parser — uploads go to S3 via presigned URLs, so 1 MB is sufficient here.
   // Raise the limit on a specific route only if genuinely needed.
