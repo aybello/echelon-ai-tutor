@@ -260,8 +260,14 @@ export function useQuizSession({
         qs = qs.filter((q) => q.module === selectedModule);
       if (calcOnly) qs = qs.filter((q) => q.isCalc === true);
     }
+    // Apply difficulty filter from quiz settings (only when a specific difficulty is chosen)
+    if (quizSettings.difficulty && quizSettings.difficulty !== "all") {
+      const filtered = qs.filter((q) => q.difficulty === quizSettings.difficulty);
+      // Only apply the filter if there are enough questions — otherwise fall back to full pool
+      if (filtered.length > 0) qs = filtered;
+    }
     return qs;
-  }, [allQuestions, usedIds, selectedModule, calcOnly, quizMode, missedIds]);
+  }, [allQuestions, usedIds, selectedModule, calcOnly, quizMode, missedIds, quizSettings.difficulty]);
 
   // ── Clear UI state helper ──────────────────────────────────────────────────
   const clearUI = useCallback(() => {
