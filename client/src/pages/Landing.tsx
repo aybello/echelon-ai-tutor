@@ -823,32 +823,11 @@ const FEATURES = [
     href: "/process",
   },
   {
-    icon: "⚙️",
-    title: "Pumping Systems Module",
-    description: "Live pump curves, cavitation toggle, series/parallel configurations. The most technical module on the exam, made visual.",
-    color: "#D97706",
-    href: "/pumping",
-  },
-  {
-    icon: "📡",
-    title: "Process Control & Instrumentation",
-    description: "Interactive guide to flow meters, level sensors, turbidimeters, PID controllers, and SCADA systems. Covers Class 3–4 instrumentation topics no other prep platform touches.",
-    color: "#0891B2",
-    href: "/instrumentation",
-  },
-  {
-    icon: "🧮",
+    icon: "🧠",
     title: "Math Practice Hub",
     description: "800+ calculation questions across all 18 courses — filtered to math-only, with step-by-step solutions and exam tips. Master every formula before exam day.",
     color: "#7C3AED",
     href: "/math-practice",
-  },
-  {
-    icon: "🧪",
-    title: "Chemical Feed Calculator",
-    description: "Real-time dosing calculations for chlorine, alum, lime, and fluoride. Know the formula and the answer.",
-    color: "#DC2626",
-    href: "/chem-calc",
   },
   {
     icon: "📐",
