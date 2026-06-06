@@ -123,7 +123,7 @@ export default function MyCourses() {
       localStorage.removeItem("echelon_subscription_exam_types");
       localStorage.removeItem("echelon_purchased_products");
     } catch { /* ignore */ }
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   return (

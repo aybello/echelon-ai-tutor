@@ -134,7 +134,7 @@ export default function StudentDashboard() {
     setOtpCode("");
     setOtpSent(false);
     // Redirect to login page
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   const overview = trpc.dashboard.overview.useQuery(undefined, { enabled: hasAccess, retry: false });
