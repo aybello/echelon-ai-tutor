@@ -118,11 +118,23 @@ export default function StudentDashboard() {
   };
 
   const handleDashboardLogout = async () => {
+    // Clear the OTP session cookie
     await dashboardLogout.mutateAsync();
     await utils.dashboardAuth.me.invalidate();
+    // Clear all course access from localStorage so the session is fully ended
+    try {
+      localStorage.removeItem("echelon_trial_unlocked");
+      localStorage.removeItem("echelon_trial_email");
+      localStorage.removeItem("echelon_subscription_email");
+      localStorage.removeItem("echelon_access_token");
+      localStorage.removeItem("echelon_subscription_exam_types");
+      localStorage.removeItem("echelon_purchased_products");
+    } catch { /* ignore */ }
     setOtpStep("email");
     setOtpCode("");
     setOtpSent(false);
+    // Redirect to login page
+    window.location.href = "/login";
   };
 
   const overview = trpc.dashboard.overview.useQuery(undefined, { enabled: hasAccess, retry: false });
@@ -338,12 +350,13 @@ export default function StudentDashboard() {
               Welcome back, {displayName}. Here's your study progress.
             </p>
           </div>
-          {emailSession && !isAuthenticated && (
+          {hasAccess && (
             <button
               onClick={handleDashboardLogout}
-              style={{ background: "none", border: "1px solid #334155", borderRadius: 8, padding: "6px 14px", color: "#64748B", fontSize: 13, cursor: "pointer" }}
+              disabled={dashboardLogout.isPending}
+              style={{ background: "none", border: "1px solid #334155", borderRadius: 8, padding: "6px 14px", color: "#64748B", fontSize: 13, cursor: "pointer", display: "flex", alignItems: "center", gap: 6 }}
             >
-              Sign out
+              {dashboardLogout.isPending ? "Signing out..." : "🚪 Log Out"}
             </button>
           )}
         </div>

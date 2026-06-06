@@ -8,6 +8,8 @@
 import { useState, useEffect, useRef } from "react";
 import type { ReactNode } from "react";
 import { Link } from "wouter";
+import { trpc } from "@/lib/trpc";
+import { useAuth } from "@/_core/hooks/useAuth";
 
 export const NAV_LINKS = [
   { label: "🏠 Home",          href: "/" },
@@ -358,6 +360,27 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
   const [open, setOpen] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
+  // Auth state — check both OAuth and email-OTP session
+  const { isAuthenticated, logout: oauthLogout } = useAuth({ lazy: true });
+  const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
+  const dashboardLogout = trpc.dashboardAuth.logout.useMutation();
+  const utils = trpc.useUtils();
+  const isSignedIn = isAuthenticated || !!dashboardMe.data?.email;
+
+  const handleLogout = async () => {
+    if (dashboardMe.data?.email) {
+      await dashboardLogout.mutateAsync();
+      await utils.dashboardAuth.me.invalidate();
+    }
+    if (isAuthenticated) oauthLogout();
+    try {
+      ["echelon_trial_unlocked","echelon_trial_email","echelon_subscription_email",
+       "echelon_access_token","echelon_subscription_exam_types","echelon_purchased_products"]
+        .forEach(k => localStorage.removeItem(k));
+    } catch { /* ignore */ }
+    window.location.href = "/login";
+  };
+
   // Lock body scroll when drawer is open so the page behind doesn't scroll.
   // IMPORTANT: Only use overflow:hidden — never set position:fixed on body.
   // Setting position:fixed on body breaks child position:fixed elements (like modals)
@@ -620,7 +643,6 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
             { label: "♻️ Wastewater", href: "/wastewater", accent: null },
             { label: "🚰 Distribution", href: "/distribution-guide", accent: null },
             { label: "🔩 Collection", href: "/collection-guide", accent: null },
-            { label: "🔑 Sign In", href: "/login", accent: "linear-gradient(135deg, #7C3AED, #1D4ED8)" },
           ].map(tile => (
             <Link key={tile.href} href={tile.href}>
               <div
@@ -642,6 +664,46 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
               </div>
             </Link>
           ))}
+          {/* Auth tile — Sign In or Log Out depending on session state */}
+          {isSignedIn ? (
+            <div
+              onClick={() => { close(); handleLogout(); }}
+              style={{
+                padding: "10px 6px",
+                borderRadius: 10,
+                background: "rgba(220,38,38,0.15)",
+                border: "1px solid rgba(220,38,38,0.3)",
+                color: "#FCA5A5",
+                fontSize: 11,
+                fontWeight: 700,
+                textAlign: "center",
+                cursor: "pointer",
+                lineHeight: 1.3,
+              }}
+            >
+              🚪 Log Out
+            </div>
+          ) : (
+            <Link href="/login">
+              <div
+                onClick={close}
+                style={{
+                  padding: "10px 6px",
+                  borderRadius: 10,
+                  background: "linear-gradient(135deg, #7C3AED, #1D4ED8)",
+                  border: "none",
+                  color: "#fff",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  textAlign: "center",
+                  cursor: "pointer",
+                  lineHeight: 1.3,
+                }}
+              >
+                🔑 Sign In
+              </div>
+            </Link>
+          )}
         </div>
 
         {/* Section tabs row */}
@@ -715,9 +777,9 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
           padding: "10px 16px 14px",
           borderTop: "1px solid rgba(255,255,255,0.07)",
           flexWrap: "wrap",
+          alignItems: "center",
         }}>
           {[
-            { label: "🔑 Sign In", href: "/login" },
             { label: "💰 Pricing", href: "/pricing" },
             { label: "ℹ️ About", href: "/about" },
           ].map(l => (
@@ -735,6 +797,23 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
               </span>
             </Link>
           ))}
+          {isSignedIn ? (
+            <span
+              onClick={() => { close(); handleLogout(); }}
+              style={{ fontSize: 12, color: "#FCA5A5", fontWeight: 600, cursor: "pointer" }}
+            >
+              🚪 Log Out
+            </span>
+          ) : (
+            <Link href="/login">
+              <span
+                onClick={close}
+                style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", cursor: "pointer" }}
+              >
+                🔑 Sign In
+              </span>
+            </Link>
+          )}
         </div>
       </div>
     </>

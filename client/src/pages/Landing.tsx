@@ -1097,7 +1097,33 @@ export default function Landing() {
   // immediately from static content. If the user already visited a quiz page
   // (which does fire auth.me), the cached result is used and isAuthenticated
   // will correctly show "Dashboard" instead of "Try Free".
-  const { isAuthenticated } = useAuth({ lazy: true });
+  const { isAuthenticated, logout: oauthLogout } = useAuth({ lazy: true });
+  const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
+  const dashboardLogout = trpc.dashboardAuth.logout.useMutation();
+  const utils = trpc.useUtils();
+  // User is signed in if either OAuth or email OTP session is active
+  const isSignedIn = isAuthenticated || !!dashboardMe.data?.email;
+
+  const handleLogout = async () => {
+    if (dashboardMe.data?.email) {
+      await dashboardLogout.mutateAsync();
+      await utils.dashboardAuth.me.invalidate();
+    }
+    if (isAuthenticated) {
+      oauthLogout();
+    }
+    // Clear all course access from localStorage
+    try {
+      localStorage.removeItem("echelon_trial_unlocked");
+      localStorage.removeItem("echelon_trial_email");
+      localStorage.removeItem("echelon_subscription_email");
+      localStorage.removeItem("echelon_access_token");
+      localStorage.removeItem("echelon_subscription_exam_types");
+      localStorage.removeItem("echelon_purchased_products");
+    } catch { /* ignore */ }
+    window.location.href = "/login";
+  };
+
   const updateProvinceMutation = trpc.auth.updateProvince.useMutation();
   // Default active track based on province: WPI for western provinces, ontario water for ON
   const defaultTrack = (province === "bc" || province === "ab" || province === "sk" || province === "mb") ? "wpi-water" : "water";
@@ -1174,7 +1200,6 @@ export default function Landing() {
   // New visitors have no localStorage cache. Fire a background prefetch to OIT
   // (the most common entry point) so TiDB is warm before the user clicks
   // "Try Free Practice". The result is discarded — this is purely a warm-up.
-  const utils = trpc.useUtils();
   useEffect(() => {
     // Only prefetch if there is no cached OIT bank already
     const hasCache = !!localStorage.getItem("echelon_qbank_v2_oit");
@@ -1328,17 +1353,30 @@ export default function Landing() {
               </div>
             )}
           </div>
-          {isAuthenticated ? (
-            <Link href="/dashboard">
-              <button style={{
-                padding: "8px 20px", borderRadius: 10,
-                background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
-                color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
-                cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
-              }}>
-                📊 Dashboard
+          {isSignedIn ? (
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <Link href="/dashboard">
+                <button style={{
+                  padding: "8px 20px", borderRadius: 10,
+                  background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                  color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
+                  cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+                }}>
+                  📊 Dashboard
+                </button>
+              </Link>
+              <button
+                onClick={handleLogout}
+                style={{
+                  padding: "8px 16px", borderRadius: 10,
+                  background: "transparent",
+                  color: "#64748B", border: "1.5px solid #CBD5E1", fontSize: 13, fontWeight: 600,
+                  cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+                }}
+              >
+                Log Out
               </button>
-            </Link>
+            </div>
           ) : (
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
               <Link href="/login">
@@ -1427,23 +1465,42 @@ export default function Landing() {
           padding: "12px 16px 10px",
           borderBottom: "1px solid #F1F5F9",
         }}>
-          {[
-            isAuthenticated
-              ? { label: "📊 Dashboard", href: "/dashboard", accent: true }
-              : { label: "🔑 Sign In", href: "/login", accent: "purple" },
-            { label: "📝 Try Free", href: "/quiz", accent: isAuthenticated ? false : true },
-            { label: "💰 Pricing", href: "/pricing", accent: false },
-            { label: "🌊 WPI", href: "/wpi", accent: false },
-          ].map(tile => (
-            <Link key={tile.href} href={tile.href}>
+          {isSignedIn ? (
+            // Signed-in tiles: Dashboard, Try Free, Pricing, Log Out
+            <>
+              {[
+                { label: "📊 Dashboard", href: "/dashboard", accent: true },
+                { label: "📝 Try Free", href: "/quiz", accent: false },
+                { label: "💰 Pricing", href: "/pricing", accent: false },
+              ].map(tile => (
+                <Link key={tile.href} href={tile.href}>
+                  <div
+                    onClick={() => setMobileNavOpen(false)}
+                    style={{
+                      padding: "10px 6px",
+                      borderRadius: 10,
+                      background: tile.accent ? "linear-gradient(135deg, #1D4ED8, #0E7490)" : "#F8FAFC",
+                      border: tile.accent ? "none" : "1px solid #E2E8F0",
+                      color: tile.accent ? "#fff" : "#0F172A",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      textAlign: "center" as const,
+                      cursor: "pointer",
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {tile.label}
+                  </div>
+                </Link>
+              ))}
               <div
-                onClick={() => setMobileNavOpen(false)}
+                onClick={() => { setMobileNavOpen(false); handleLogout(); }}
                 style={{
                   padding: "10px 6px",
                   borderRadius: 10,
-                  background: tile.accent === true ? "linear-gradient(135deg, #1D4ED8, #0E7490)" : tile.accent === "purple" ? "linear-gradient(135deg, #7C3AED, #1D4ED8)" : "#F8FAFC",
-                  border: tile.accent ? "none" : "1px solid #E2E8F0",
-                  color: tile.accent ? "#fff" : "#0F172A",
+                  background: "#FEF2F2",
+                  border: "1px solid #FECACA",
+                  color: "#DC2626",
                   fontSize: 11,
                   fontWeight: 700,
                   textAlign: "center" as const,
@@ -1451,10 +1508,40 @@ export default function Landing() {
                   lineHeight: 1.3,
                 }}
               >
-                {tile.label}
+                🚪 Log Out
               </div>
-            </Link>
-          ))}
+            </>
+          ) : (
+            // Not signed in tiles: Sign In, Try Free, Pricing, WPI
+            <>
+              {[
+                { label: "🔑 Sign In", href: "/login", accent: "purple" },
+                { label: "📝 Try Free", href: "/quiz", accent: true },
+                { label: "💰 Pricing", href: "/pricing", accent: false },
+                { label: "🌊 WPI", href: "/wpi", accent: false },
+              ].map(tile => (
+                <Link key={tile.href} href={tile.href}>
+                  <div
+                    onClick={() => setMobileNavOpen(false)}
+                    style={{
+                      padding: "10px 6px",
+                      borderRadius: 10,
+                      background: tile.accent === true ? "linear-gradient(135deg, #1D4ED8, #0E7490)" : tile.accent === "purple" ? "linear-gradient(135deg, #7C3AED, #1D4ED8)" : "#F8FAFC",
+                      border: tile.accent ? "none" : "1px solid #E2E8F0",
+                      color: tile.accent ? "#fff" : "#0F172A",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      textAlign: "center" as const,
+                      cursor: "pointer",
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {tile.label}
+                  </div>
+                </Link>
+              ))}
+            </>
+          )}
         </div>
 
         {/* Nav link pills */}
