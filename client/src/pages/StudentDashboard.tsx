@@ -352,13 +352,22 @@ export default function StudentDashboard() {
             </p>
           </div>
           {hasAccess && (
-            <button
-              onClick={handleDashboardLogout}
-              disabled={dashboardLogout.isPending}
-              style={{ background: "none", border: "1px solid #334155", borderRadius: 8, padding: "6px 14px", color: "#64748B", fontSize: 13, cursor: "pointer", display: "flex", alignItems: "center", gap: 6 }}
-            >
-              {dashboardLogout.isPending ? "Signing out..." : "🚪 Log Out"}
-            </button>
+            <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
+              <a href="/my-courses" style={{
+                background: "none", border: "1px solid #334155", borderRadius: 8,
+                padding: "6px 14px", color: "#94A3B8", fontSize: 13, cursor: "pointer",
+                textDecoration: "none", display: "inline-block",
+              }}>
+                📚 My Courses
+              </a>
+              <button
+                onClick={handleDashboardLogout}
+                disabled={dashboardLogout.isPending}
+                style={{ background: "none", border: "1px solid #334155", borderRadius: 8, padding: "6px 14px", color: "#64748B", fontSize: 13, cursor: "pointer", display: "flex", alignItems: "center", gap: 6 }}
+              >
+                {dashboardLogout.isPending ? "Signing out..." : "🚪 Log Out"}
+              </button>
+            </div>
           )}
         </div>
 

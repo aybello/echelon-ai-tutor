@@ -51,7 +51,7 @@ export default function Login() {
           localStorage.setItem("echelon_purchased_products", JSON.stringify(data.purchasedProductKeys));
         }
       } catch { /* ignore storage errors */ }
-      navigate("/dashboard");
+      navigate("/my-courses");
     },
     onError: (err) => {
       setError(err.message || "Invalid or expired code. Please try again.");
