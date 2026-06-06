@@ -33,7 +33,24 @@ export default function Login() {
   });
 
   const verifyOtp = trpc.dashboardAuth.verifyOtp.useMutation({
-    onSuccess: () => {
+    onSuccess: (data) => {
+      // Store course access in localStorage so quizzes and exams unlock immediately
+      try {
+        const signedInEmail = data.email.trim().toLowerCase();
+        localStorage.setItem("echelon_trial_email", signedInEmail);
+        localStorage.setItem("echelon_subscription_email", signedInEmail);
+        localStorage.setItem("echelon_trial_unlocked", "true");
+
+        if (data.accessToken) {
+          localStorage.setItem("echelon_access_token", data.accessToken);
+        }
+        if (data.unlockedExamTypes && data.unlockedExamTypes.length > 0) {
+          localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(data.unlockedExamTypes));
+        }
+        if (data.purchasedProductKeys && data.purchasedProductKeys.length > 0) {
+          localStorage.setItem("echelon_purchased_products", JSON.stringify(data.purchasedProductKeys));
+        }
+      } catch { /* ignore storage errors */ }
       navigate("/dashboard");
     },
     onError: (err) => {

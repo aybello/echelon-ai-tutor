@@ -17,9 +17,12 @@ import { SignJWT, jwtVerify } from "jose";
 import nodemailer from "nodemailer";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { dashboardOtps } from "../../drizzle/schema";
-import { resolveAccessByEmail, normalizeEmail } from "../_core/access";
+import { dashboardOtps, purchases, subscriptions } from "../../drizzle/schema";
+import { normalizeEmail } from "../_core/access";
 import { ENV } from "../_core/env";
+import { issueSubscriptionToken } from "../_core/subscriptionToken";
+import { getAllUnlockedExamTypes } from "../stripe/products";
+import { getAllSubscriptionExamTypes, type SubscriptionTier, type SubscriptionProvince } from "../stripe/subscriptionProducts";
 
 const JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret);
 const COOKIE_NAME = "echelon_dashboard_session";
@@ -197,7 +200,35 @@ export const dashboardAuthRouter = router({
         path: "/",
       });
 
-      return { success: true, email };
+      // Look up all course access for this email and return it so the client
+      // can store it in localStorage — giving full course access on sign-in
+      const [purchaseRows, subRows] = await Promise.all([
+        db.select({ productKey: purchases.productKey })
+          .from(purchases)
+          .where(eq(purchases.email, email)),
+        db.select({ tier: subscriptions.tier, province: subscriptions.province })
+          .from(subscriptions)
+          .where(
+            and(
+              eq(subscriptions.email, email),
+              eq(subscriptions.status, "active"),
+              gt(subscriptions.currentPeriodEnd, now),
+            )
+          ),
+      ]);
+
+      const purchasedProductKeys = purchaseRows.map(r => r.productKey);
+      const purchaseExamTypes = getAllUnlockedExamTypes(purchasedProductKeys);
+      const subscriptionExamTypes = getAllSubscriptionExamTypes(
+        subRows.map(r => ({ tier: r.tier as SubscriptionTier, province: r.province as SubscriptionProvince }))
+      );
+      const allExamTypes = Array.from(new Set([...purchaseExamTypes, ...subscriptionExamTypes]));
+
+      const accessToken = allExamTypes.length > 0
+        ? await issueSubscriptionToken({ email, examTypes: allExamTypes })
+        : null;
+
+      return { success: true, email, accessToken, unlockedExamTypes: allExamTypes, purchasedProductKeys };
     }),
 
   /**
