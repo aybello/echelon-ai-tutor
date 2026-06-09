@@ -311,9 +311,11 @@ export const quizRouter = router({
           quizMode: input.quizMode,
         });
 
-        // Update student profile if authenticated
+        // Update student profile if authenticated (OAuth user) or email-verified (OTP session)
         if (userId) {
-          await upsertStudentProfile(db, userId, input.examType, input.topic, input.correct);
+          await upsertStudentProfile(db, userId, null, input.examType, input.topic, input.correct);
+        } else if (ctx.studentEmail) {
+          await upsertStudentProfile(db, null, ctx.studentEmail, input.examType, input.topic, input.correct);
         }
 
         return { success: true };
@@ -546,27 +548,33 @@ export const quizRouter = router({
 // ─── Helper: upsert student profile ─────────────────────────────────────────
 async function upsertStudentProfile(
   db: NonNullable<Awaited<ReturnType<typeof getDb>>>,
-  userId: number,
+  userId: number | null,
+  studentEmail: string | null,
   examType: string,
   topic: string,
   correct: boolean
 ) {
+  // Must have at least one identifier
+  if (!userId && !studentEmail) return;
   try {
     const rows = await db
       .select()
       .from(studentProfiles)
-      .where(eq(studentProfiles.userId, userId))
+      .where(
+        userId
+          ? eq(studentProfiles.userId, userId)
+          : eq(studentProfiles.studentEmail, studentEmail!)
+      )
       .limit(1);
-
     const today = new Date().toISOString().slice(0, 10);
-
     if (rows.length === 0) {
       // Create new profile
       const topicAccuracy = { [topic]: { correct: correct ? 1 : 0, total: 1 } };
       const weakTopics = correct ? [] : [topic];
       const strongTopics: string[] = [];
       await db.insert(studentProfiles).values({
-        userId,
+        userId: userId ?? null,
+        studentEmail: studentEmail ?? null,
         examType,
         topicAccuracy: JSON.stringify(topicAccuracy),
         weakTopics: JSON.stringify(weakTopics),
@@ -624,7 +632,11 @@ async function upsertStudentProfile(
           longestStreak,
           lastActiveDate: today,
         })
-        .where(eq(studentProfiles.userId, userId));
+        .where(
+          userId
+            ? eq(studentProfiles.userId, userId)
+            : eq(studentProfiles.studentEmail, studentEmail!)
+        );
     }
   } catch (err) {
     console.error("[upsertStudentProfile] Error:", err);

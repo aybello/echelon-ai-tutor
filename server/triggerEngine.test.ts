@@ -6,6 +6,7 @@ import type { StudentData } from "./jobs/triggerEngine";
 function makeStudent(overrides: Partial<StudentData> = {}): StudentData {
   return {
     userId: 1,
+    studentEmail: null,
     name: "Jane",
     email: "jane@example.com",
     profile: {

@@ -4,17 +4,24 @@
  * Evaluates every active student against 5 trigger conditions,
  * generates a personalized email via LLM, and sends it via SMTP.
  * Cooldown tracking prevents email fatigue.
+ *
+ * Supports two student types:
+ *   1. OAuth users — have a userId in the users table
+ *   2. Email-only customers — Stripe purchasers who never did Manus OAuth;
+ *      identified by email from purchases/subscriptions tables
  */
 import { getDb } from "../db";
 import {
   users,
+  purchases,
+  subscriptions,
   studentProfiles,
   questionAttempts,
   examDates,
   triggerLogs,
 } from "../../drizzle/schema";
 import { withRetry } from "./retry";
-import { eq, and, desc, gte, sql } from "drizzle-orm";
+import { eq, and, desc, gte, sql, or, isNull } from "drizzle-orm";
 import { invokeLLM } from "../_core/llm";
 import { notifyOwner } from "../_core/notification";
 import { ENV } from "../_core/env";
@@ -37,9 +44,10 @@ interface TriggerResult {
 }
 
 interface StudentData {
-  userId: number;
+  userId: number | null;
+  studentEmail: string | null; // set when userId is null
   name: string | null;
-  email: string | null;
+  email: string; // always set — the address we send to
   profile: {
     examType: string;
     weakTopics: string[];
@@ -162,7 +170,7 @@ function evaluateTriggers(student: StudentData): TriggerResult | null {
     if (daysUntilExam <= 3 && daysUntilExam >= 0 && daysSinceActive >= 2) {
       return {
         type: "exam_approaching",
-        subject: `⏰ ${daysUntilExam === 0 ? "Exam day" : daysUntilExam === 1 ? "1 day" : `${daysUntilExam} days`} until your ${examLabel} exam`,
+        subject: `${daysUntilExam === 0 ? "Exam day" : daysUntilExam === 1 ? "1 day" : `${daysUntilExam} days`} until your ${examLabel} exam`,
         context: `Student ${student.name || "there"} has their ${examLabel} exam in ${daysUntilExam} day(s) but hasn't studied in ${daysSinceActive} days. They have ${profile.totalAttempts} total attempts with ${Math.round((profile.strongTopics.length / Math.max(1, profile.strongTopics.length + profile.weakTopics.length)) * 100)}% of topics mastered. Urgently but kindly encourage a final review session. Suggest taking a mock exam and reviewing weak topics: ${profile.weakTopics.slice(0, 3).join(", ") || "general review"}.`,
         cooldownDays: 2,
       };
@@ -186,7 +194,7 @@ function evaluateTriggers(student: StudentData): TriggerResult | null {
         })();
         return {
           type: "milestone",
-          subject: `🎉 ${m} questions answered — you're crushing ${examLabel}!`,
+          subject: `${m} questions answered — you're crushing ${examLabel}!`,
           context: `Student ${student.name || "there"} just hit ${m} questions answered for ${examLabel}! Their overall accuracy is ${overallAccuracy}%. Strong topics: ${profile.strongTopics.slice(0, 3).join(", ") || "building"}. Current streak: ${profile.currentStreak} days. Celebrate their achievement enthusiastically. Encourage them to keep going and mention the next milestone.`,
           cooldownDays: 30,
         };
@@ -260,7 +268,7 @@ function wrapEmailHtml(body: string, subject: string): string {
             ${paragraphs}
             <div style="text-align:center;margin:24px 0 8px;">
               <a href="https://echeloninstitute.ca" style="display:inline-block;background:linear-gradient(135deg,#1D4ED8,#0E7490);color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:10px;font-size:15px;font-weight:700;">
-                📝 Continue Studying →
+                Continue Studying
               </a>
             </div>
           </td>
@@ -271,7 +279,7 @@ function wrapEmailHtml(body: string, subject: string): string {
               You're receiving this because you're studying on Echelon Institute.
             </p>
             <p style="margin:0;font-size:12px;color:#94A3B8;">
-              Echelon Institute · Canada's AI-powered exam prep for water &amp; wastewater operators
+              Echelon Institute &middot; Canada's AI-powered exam prep for water &amp; wastewater operators
             </p>
           </td>
         </tr>
@@ -294,6 +302,74 @@ function createTransporter(): nodemailer.Transporter {
     });
   }
   throw new Error("SMTP not configured");
+}
+
+// ── Build the combined student list ─────────────────────────────────────────
+
+/**
+ * Returns a deduplicated list of { userId, email, name } for every student
+ * who should be evaluated. Includes:
+ *   - OAuth users from the users table
+ *   - Email-only customers from purchases and subscriptions tables
+ *     (only those who do NOT have a matching userId in users, to avoid duplicates)
+ */
+async function buildStudentList(
+  db: NonNullable<Awaited<ReturnType<typeof getDb>>>
+): Promise<Array<{ userId: number | null; email: string; name: string | null }>> {
+  // 1. OAuth users
+  const oauthUsers = await db
+    .select({ id: users.id, name: users.name, email: users.email })
+    .from(users)
+    .where(sql`${users.email} IS NOT NULL AND ${users.email} != ''`);
+
+  const oauthEmails = new Set(oauthUsers.map((u) => u.email!.toLowerCase()));
+
+  const result: Array<{ userId: number | null; email: string; name: string | null }> = oauthUsers
+    .filter((u) => u.email)
+    .map((u) => ({ userId: u.id, email: u.email!, name: u.name }));
+
+  // 2. Email-only purchase customers (active purchases only)
+  const purchaseRows = await db
+    .select({ email: purchases.email, customerName: purchases.customerName })
+    .from(purchases)
+    .where(
+      and(
+        sql`${purchases.email} IS NOT NULL AND ${purchases.email} != ''`,
+        eq(purchases.status, "active"),
+        isNull(purchases.userId) // only truly email-only customers
+      )
+    );
+
+  const seenEmails = new Set<string>(oauthEmails);
+  for (const row of purchaseRows) {
+    const emailLower = row.email.toLowerCase();
+    if (!seenEmails.has(emailLower)) {
+      seenEmails.add(emailLower);
+      result.push({ userId: null, email: row.email, name: row.customerName ?? null });
+    }
+  }
+
+  // 3. Email-only subscription customers (active subscriptions only)
+  const subRows = await db
+    .select({ email: subscriptions.email })
+    .from(subscriptions)
+    .where(
+      and(
+        sql`${subscriptions.email} IS NOT NULL AND ${subscriptions.email} != ''`,
+        eq(subscriptions.status, "active"),
+        isNull(subscriptions.userId)
+      )
+    );
+
+  for (const row of subRows) {
+    const emailLower = row.email.toLowerCase();
+    if (!seenEmails.has(emailLower)) {
+      seenEmails.add(emailLower);
+      result.push({ userId: null, email: row.email, name: null });
+    }
+  }
+
+  return result;
 }
 
 // ── Main Runner ─────────────────────────────────────────────────────────────
@@ -319,11 +395,7 @@ export async function runTriggerEngine(): Promise<{
   const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
   const fourteenDaysAgo = new Date(now.getTime() - 14 * 24 * 60 * 60 * 1000);
 
-  // Fetch all users with email
-  const allUsers = await db
-    .select({ id: users.id, name: users.name, email: users.email })
-    .from(users)
-    .where(sql`${users.email} IS NOT NULL AND ${users.email} != ''`);
+  const allStudents = await buildStudentList(db);
 
   let evaluated = 0;
   let triggered = 0;
@@ -331,16 +403,22 @@ export async function runTriggerEngine(): Promise<{
   let skippedCooldown = 0;
   const errors: string[] = [];
 
-  for (const user of allUsers) {
-    if (!user.email) continue;
+  for (const student of allStudents) {
+    const { userId, email, name } = student;
+    const studentEmail = userId ? null : email.toLowerCase();
+
     evaluated++;
 
     try {
-      // Fetch student profile
+      // Fetch student profile — look up by userId for OAuth users, by email for email-only
       const [profileRow] = await db
         .select()
         .from(studentProfiles)
-        .where(eq(studentProfiles.userId, user.id))
+        .where(
+          userId
+            ? eq(studentProfiles.userId, userId)
+            : eq(studentProfiles.studentEmail, studentEmail!)
+        )
         .limit(1);
 
       if (!profileRow) continue; // No profile = never studied
@@ -359,15 +437,15 @@ export async function runTriggerEngine(): Promise<{
         catch { return [] as string[]; }
       })();
 
-      // Fetch recent attempts (last 7 days)
+      // Fetch recent attempts (last 7 days) — match by userId or studentEmail
       const recentRows = await db
-        .select({
-          correct: questionAttempts.correct,
-        })
+        .select({ correct: questionAttempts.correct })
         .from(questionAttempts)
         .where(
           and(
-            eq(questionAttempts.userId, user.id),
+            userId
+              ? eq(questionAttempts.userId, userId)
+              : eq(questionAttempts.studentEmail, studentEmail!),
             gte(questionAttempts.createdAt, sevenDaysAgo)
           )
         );
@@ -384,7 +462,9 @@ export async function runTriggerEngine(): Promise<{
         .from(questionAttempts)
         .where(
           and(
-            eq(questionAttempts.userId, user.id),
+            userId
+              ? eq(questionAttempts.userId, userId)
+              : eq(questionAttempts.studentEmail, studentEmail!),
             gte(questionAttempts.createdAt, fourteenDaysAgo),
             sql`${questionAttempts.createdAt} < ${sevenDaysAgo}`
           )
@@ -399,15 +479,16 @@ export async function runTriggerEngine(): Promise<{
       const [examDateRow] = await db
         .select()
         .from(examDates)
-        .where(eq(examDates.email, user.email))
+        .where(eq(examDates.email, email))
         .orderBy(desc(examDates.examDate))
         .limit(1);
 
       // Build student data
       const studentData: StudentData = {
-        userId: user.id,
-        name: user.name,
-        email: user.email,
+        userId: userId ?? null,
+        studentEmail,
+        name,
+        email,
         profile: {
           examType: profileRow.examType,
           weakTopics,
@@ -431,13 +512,15 @@ export async function runTriggerEngine(): Promise<{
       if (!trigger) continue;
       triggered++;
 
-      // Check cooldown
+      // Check per-type cooldown — match by userId or studentEmail
       const [lastTrigger] = await db
         .select()
         .from(triggerLogs)
         .where(
           and(
-            eq(triggerLogs.userId, user.id),
+            userId
+              ? eq(triggerLogs.userId, userId)
+              : eq(triggerLogs.studentEmail, studentEmail!),
             eq(triggerLogs.triggerType, trigger.type)
           )
         )
@@ -449,11 +532,15 @@ export async function runTriggerEngine(): Promise<{
         continue;
       }
 
-      // Also check global cooldown — max 1 email per user per 3 days (any trigger type)
+      // Global cooldown — max 1 email per student per 3 days (any trigger type)
       const [lastAnyTrigger] = await db
         .select()
         .from(triggerLogs)
-        .where(eq(triggerLogs.userId, user.id))
+        .where(
+          userId
+            ? eq(triggerLogs.userId, userId)
+            : eq(triggerLogs.studentEmail, studentEmail!)
+        )
         .orderBy(desc(triggerLogs.sentAt))
         .limit(1);
 
@@ -464,14 +551,14 @@ export async function runTriggerEngine(): Promise<{
       }
 
       // Generate personalized email via LLM
-      const firstName = (user.name ?? "").split(" ")[0] || "there";
+      const firstName = (name ?? "").split(" ")[0] || "there";
       const emailBody = await generateEmailBody(trigger, firstName);
       const emailHtml = wrapEmailHtml(emailBody, trigger.subject);
 
       // Send email
       await transporter.sendMail({
         from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
-        to: user.email,
+        to: email,
         subject: trigger.subject,
         text: emailBody,
         html: emailHtml,
@@ -482,7 +569,8 @@ export async function runTriggerEngine(): Promise<{
         now.getTime() + trigger.cooldownDays * 24 * 60 * 60 * 1000
       );
       await db.insert(triggerLogs).values({
-        userId: user.id,
+        userId: userId ?? null,
+        studentEmail: studentEmail ?? null,
         triggerType: trigger.type,
         emailSubject: trigger.subject,
         emailBodyPreview: emailBody.slice(0, 200),
@@ -491,10 +579,11 @@ export async function runTriggerEngine(): Promise<{
 
       sent++;
       console.log(
-        `[TriggerEngine] Sent "${trigger.type}" email to ${user.email} (cooldown until ${cooldownUntil.toISOString().split("T")[0]})`
+        `[TriggerEngine] Sent "${trigger.type}" email to ${email} (cooldown until ${cooldownUntil.toISOString().split("T")[0]})`
       );
     } catch (err) {
-      const msg = `User ${user.id}: ${(err as Error).message}`;
+      const identifier = userId ? `userId=${userId}` : `email=${email}`;
+      const msg = `${identifier}: ${(err as Error).message}`;
       errors.push(msg);
       console.error(`[TriggerEngine] Error for ${msg}`);
     }

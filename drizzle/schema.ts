@@ -184,7 +184,7 @@ export type InsertQuestionAttempt = typeof questionAttempts.$inferInsert;
 /** Student profiles — live topic accuracy snapshot, updated after each quiz session */
 export const studentProfiles = mysqlTable("student_profiles", {
   id: int("id").autoincrement().primaryKey(),
-  userId: int("userId").notNull().unique(),
+  userId: int("userId"), // nullable — email-only (Stripe) students have no userId
   studentEmail: varchar("studentEmail", { length: 320 }), // purchase/trial email for non-OAuth users
   examType: varchar("examType", { length: 64 }).notNull(), // primary exam type
   topicAccuracy: text("topicAccuracy").notNull(), // JSON: { "Disinfection": { correct: 18, total: 22 } } — default '{}' set in app code
@@ -196,7 +196,10 @@ export const studentProfiles = mysqlTable("student_profiles", {
   longestStreak: int("longestStreak").notNull().default(0),
   lastActiveDate: varchar("lastActiveDate", { length: 10 }), // YYYY-MM-DD for streak calculation
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
-});
+}, (table) => [
+  uniqueIndex("student_profiles_userId_idx").on(table.userId),
+  uniqueIndex("student_profiles_email_idx").on(table.studentEmail),
+]);
 export type StudentProfile = typeof studentProfiles.$inferSelect;
 export type InsertStudentProfile = typeof studentProfiles.$inferInsert;
 
@@ -303,7 +306,8 @@ export type InsertAiChatSession = typeof aiChatSessions.$inferInsert;
 /** Trigger logs — tracks proactive email nudges sent by the agentic trigger engine */
 export const triggerLogs = mysqlTable("trigger_logs", {
   id: int("id").autoincrement().primaryKey(),
-  userId: int("userId").notNull(),
+  userId: int("userId"), // nullable — email-only (Stripe) students have no userId
+  studentEmail: varchar("studentEmail", { length: 320 }), // set when userId is null
   triggerType: varchar("triggerType", { length: 32 }).notNull(), // 'struggling' | 'plateau' | 'inactive' | 'exam_approaching' | 'milestone'
   emailSubject: varchar("emailSubject", { length: 256 }).notNull(),
   emailBodyPreview: text("emailBodyPreview"), // first 200 chars of the email body for admin review
