@@ -55,16 +55,20 @@ def check_pricing(page, base):
     try:
         page.goto(f"{base}/pricing", timeout=TIMEOUT)
         page.wait_for_load_state("domcontentloaded", timeout=TIMEOUT)
-        # Wait for the pricing section to render — look for the one-time badge (our recent fix)
-        # Use get_by_text with exact=False to avoid regex issues with $ in prices
-        page.wait_for_selector("text=One-time", timeout=TIMEOUT)
+        # First verify subscriptions section loads
+        page.wait_for_selector("text=Annual All-Access", timeout=TIMEOUT)
+        # Click the toggle to expand individual practice passes (they are collapsed by default)
+        toggle = page.locator("text=View individual practice passes").first
+        if toggle.is_visible():
+            toggle.click()
+            page.wait_for_timeout(1500)  # wait for expand animation
+        # Now check for One-time badge
         count = page.get_by_text("One-time · no subscription", exact=True).count()
         if count == 0:
-            # Fallback: check partial match
             count = page.locator(":text('One-time')").count()
         if count == 0:
-            raise AssertionError("'One-time · no subscription' badge not found on any card")
-        # Also verify at least one price is shown using evaluate
+            raise AssertionError("'One-time · no subscription' badge not found after expanding individual passes")
+        # Also verify at least one price is shown
         price_text = page.evaluate("() => document.body.innerText")
         if "CA$" not in price_text and "49" not in price_text:
             raise AssertionError("No prices found on pricing page")
