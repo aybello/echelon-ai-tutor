@@ -148,8 +148,18 @@ export default function Account() {
     keywords: "restore access, my passes, Echelon Institute account",
   });
 
-  const [email, setEmail] = useState("");
-  const [submittedEmail, setSubmittedEmail] = useState<string | null>(null);
+  // Auto-populate from localStorage so OTP-logged-in users see their courses immediately
+  // without having to re-enter their email on the restore form.
+  const [email, setEmail] = useState(() => {
+    try {
+      return localStorage.getItem("echelon_subscription_email") ?? localStorage.getItem("echelon_trial_email") ?? "";
+    } catch { return ""; }
+  });
+  const [submittedEmail, setSubmittedEmail] = useState<string | null>(() => {
+    try {
+      return localStorage.getItem("echelon_subscription_email") ?? localStorage.getItem("echelon_trial_email") ?? null;
+    } catch { return null; }
+  });
   const [emailError, setEmailError] = useState("");
   const [restored, setRestored] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
