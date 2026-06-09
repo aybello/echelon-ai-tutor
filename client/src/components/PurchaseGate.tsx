@@ -149,20 +149,23 @@ export default function PurchaseGate({
     return <>{children}</>;
   }
 
-  // Server-side access check — runs for authenticated users OR users with stored email
+  // Server-side access check — ALWAYS runs when user has email or is authenticated.
+  // localAccess (localStorage) is only used to show content optimistically while the server responds.
   const { data: accessData, isLoading } = trpc.stripe.checkAccess.useQuery(
     { examType, email: email || undefined },
     {
-      enabled: (!!isAuthenticated || !!email) && !localAccess,
+      enabled: !!isAuthenticated || !!email,
       staleTime: 5 * 60 * 1000,
       retry: false,
     }
   );
 
-  const hasAccess = localAccess || accessData?.hasAccess === true;
+  // Access is granted ONLY if the server confirms it — localStorage cannot bypass this.
+  const hasAccess = accessData?.hasAccess === true;
 
-  // While checking, show the children (optimistic — avoids flash of paywall)
-  if (isLoading && (email || isAuthenticated)) {
+  // While the server check is in-flight, show children optimistically for users who
+  // appear to have access locally (avoids flash of paywall for legitimate users).
+  if (isLoading && (email || isAuthenticated) && localAccess) {
     return <>{children}</>;
   }
 

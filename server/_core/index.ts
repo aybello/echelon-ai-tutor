@@ -63,6 +63,7 @@ async function startServer() {
   app.use("/api/trpc/ai", aiTutorLimiter);       // AI Tutor — 15 req/min (LLM cost protection)
   app.use("/api/trpc/contact", contactLimiter);   // Contact form — 5 req/15min (spam protection)
   app.use("/api/trpc/auth", authLimiter);          // Auth — 10 req/min (brute force protection)
+  app.use("/api/trpc/dashboardAuth", authLimiter); // Dashboard OTP — 10 req/min (brute force protection)
   app.use("/api/trpc", generalLimiter);            // All API — 100 req/min (general protection)
 
   // tRPC API
