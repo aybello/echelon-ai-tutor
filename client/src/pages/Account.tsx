@@ -1,5 +1,5 @@
 // Account.tsx — Restore Access / My Passes
-// Design: Professional SaaS — Clean Dark-Accent, matches site palette
+// Design: Light theme — white cards, #F1F5F9 background, slate text (matches site)
 import { useState, useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Link } from "wouter";
@@ -42,10 +42,10 @@ const EXAM_META: Record<
 function MasteryBadge({ knownCount, totalCards }: { knownCount: number; totalCards: number }) {
   if (!totalCards) return null;
   const pct = Math.round((knownCount / totalCards) * 100);
-  const color = pct >= 80 ? "#22c55e" : pct >= 50 ? "#f59e0b" : "#94a3b8";
+  const color = pct >= 80 ? "#16a34a" : pct >= 50 ? "#d97706" : "#94a3b8";
   return (
     <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11, color, fontWeight: 700 }}>
-      <span style={{ display: "inline-block", width: 56, height: 4, borderRadius: 4, background: "#1E293B", overflow: "hidden" }}>
+      <span style={{ display: "inline-block", width: 56, height: 4, borderRadius: 4, background: "#E2E8F0", overflow: "hidden" }}>
         <span style={{ display: "block", width: pct + "%", height: "100%", background: color, borderRadius: 4, transition: "width 0.4s ease" }} />
       </span>
       {knownCount}/{totalCards} cards mastered ({pct}%)
@@ -56,10 +56,8 @@ function MasteryBadge({ knownCount, totalCards }: { knownCount: number; totalCar
 /** Write product keys + email to localStorage so PurchaseGate can verify access */
 function restoreLocalStorage(email: string, productKeys: string[]) {
   try {
-    // Use the same key as PurchaseGate / PurchaseSuccess so access is restored correctly
     localStorage.setItem("echelon_trial_email", email);
     localStorage.setItem("echelon_purchased_products", JSON.stringify(productKeys));
-    // Also set the trial-unlocked flag so the quiz gate doesn't block them
     localStorage.setItem("echelon_trial_unlocked", "true");
   } catch { /* ignore */ }
 }
@@ -74,7 +72,7 @@ function formatDate(ts: Date | string | number) {
   return new Date(ts).toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" });
 }
 
-/** Magic Link section — allows users to email themselves a sign-in link for cross-device access */
+/** Magic Link section */
 function MagicLinkSection({ email }: { email: string }) {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -99,14 +97,14 @@ function MagicLinkSection({ email }: { email: string }) {
   if (sent) {
     return (
       <div style={{
-        background: "rgba(29,78,216,0.08)", border: "1px solid rgba(59,130,246,0.3)",
+        background: "#EFF6FF", border: "1px solid #BFDBFE",
         borderRadius: 12, padding: "14px 20px", marginBottom: 24,
         display: "flex", alignItems: "center", gap: 12,
       }}>
         <span style={{ fontSize: 20 }}>📧</span>
         <div>
-          <p style={{ color: "#93C5FD", fontWeight: 700, fontSize: 13, margin: "0 0 2px" }}>Sign-in link sent!</p>
-          <p style={{ color: "#64748B", fontSize: 12, margin: 0 }}>Check <strong style={{ color: "#93C5FD" }}>{email}</strong> for a link that works on any device.</p>
+          <p style={{ color: "#1D4ED8", fontWeight: 700, fontSize: 13, margin: "0 0 2px" }}>Sign-in link sent!</p>
+          <p style={{ color: "#64748B", fontSize: 12, margin: 0 }}>Check <strong style={{ color: "#1D4ED8" }}>{email}</strong> for a link that works on any device.</p>
         </div>
       </div>
     );
@@ -114,14 +112,14 @@ function MagicLinkSection({ email }: { email: string }) {
 
   return (
     <div style={{
-      background: "rgba(29,78,216,0.06)", border: "1px solid rgba(59,130,246,0.2)",
+      background: "#F8FAFC", border: "1px solid #E2E8F0",
       borderRadius: 12, padding: "14px 20px", marginBottom: 24,
       display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap",
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <span style={{ fontSize: 18 }}>🔗</span>
         <div>
-          <p style={{ color: "#93C5FD", fontWeight: 700, fontSize: 12, margin: "0 0 2px" }}>Need access on another device?</p>
+          <p style={{ color: "#1E293B", fontWeight: 700, fontSize: 12, margin: "0 0 2px" }}>Need access on another device?</p>
           <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>We'll email you a one-click sign-in link.</p>
         </div>
       </div>
@@ -130,7 +128,7 @@ function MagicLinkSection({ email }: { email: string }) {
         disabled={sending}
         style={{
           padding: "8px 16px", borderRadius: 8, border: "none",
-          background: sending ? "#334155" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+          background: sending ? "#CBD5E1" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
           color: "#fff", fontSize: 12, fontWeight: 700, cursor: sending ? "not-allowed" : "pointer",
           fontFamily: "inherit", whiteSpace: "nowrap",
         }}
@@ -148,8 +146,6 @@ export default function Account() {
     keywords: "restore access, my passes, Echelon Institute account",
   });
 
-  // Auto-populate from localStorage so OTP-logged-in users see their courses immediately
-  // without having to re-enter their email on the restore form.
   const [email, setEmail] = useState(() => {
     try {
       return localStorage.getItem("echelon_subscription_email") ?? localStorage.getItem("echelon_trial_email") ?? "";
@@ -172,13 +168,11 @@ export default function Account() {
     { enabled: !!isAuthenticated, retry: false }
   );
 
-  // Public lookup by email — used when the user is NOT logged in
   const getPurchasesByEmail = trpc.stripe.getPurchasesByEmail.useQuery(
     { email: submittedEmail ?? "" },
     { enabled: !!submittedEmail && !isAuthenticated, retry: false, staleTime: 30_000 }
   );
 
-  // Public subscription lookup by email — for Restore Access flow (unauthenticated)
   const getSubscriptionsByEmail = trpc.stripe.getSubscriptionsByEmail.useQuery(
     { email: submittedEmail ?? "" },
     { enabled: !!submittedEmail && !isAuthenticated, retry: false, staleTime: 30_000 }
@@ -206,14 +200,12 @@ export default function Account() {
     );
   };
 
-  // Flashcard mastery stats — load all progress for this email
   const getFlashcardProgress = trpc.flashcard.getAllProgress.useQuery(
     { email: submittedEmail ?? "" },
     { enabled: !!submittedEmail, retry: false, staleTime: 30_000 }
   );
   const flashcardMastery = getFlashcardProgress.data?.progress ?? {};
 
-  // Restore localStorage when purchases are fetched (authenticated path)
   useEffect(() => {
     const data = getPurchases.data;
     if (data && data.purchases.length > 0 && !restored && submittedEmail) {
@@ -223,21 +215,18 @@ export default function Account() {
     }
   }, [getPurchases.data, submittedEmail, restored]);
 
-  // Restore localStorage when purchases are fetched (unauthenticated / email-lookup path)
   useEffect(() => {
     const data = getPurchasesByEmail.data;
     if (data && data.purchases.length > 0 && !restored && submittedEmail) {
       const keys = data.purchases.map((p) => p.productKey);
       restoreLocalStorage(submittedEmail, keys);
       setRestored(true);
-      // Store signed JWT access token so server can verify without a DB lookup on every question fetch
       if (data.accessToken) {
         try { localStorage.setItem("echelon_access_token", data.accessToken); } catch { /* ignore */ }
       }
     }
   }, [getPurchasesByEmail.data, submittedEmail, restored]);
 
-  // Restore localStorage for subscription customers (unauthenticated / email-lookup path)
   useEffect(() => {
     const data = getSubscriptionsByEmail.data;
     if (data && data.unlockedExamTypes.length > 0 && submittedEmail) {
@@ -246,7 +235,6 @@ export default function Account() {
         localStorage.setItem("echelon_trial_unlocked", "true");
         localStorage.setItem("echelon_trial_email", submittedEmail);
         localStorage.setItem("echelon_subscription_email", submittedEmail);
-        // Store signed JWT access token so server can verify without a DB lookup on every question fetch
         if (data.accessToken) {
           localStorage.setItem("echelon_access_token", data.accessToken);
         }
@@ -261,39 +249,36 @@ export default function Account() {
       setEmailError("Please enter a valid email address.");
       return;
     }
-    setEmailError("");
     setRestored(false);
     setSubmittedEmail(trimmed);
   };
 
-  // Merge results from all paths: authenticated, email lookup (one-time), and subscription lookup
   const unlockedExamTypes = [
     ...(getPurchases.data?.unlockedExamTypes ?? []),
     ...(getPurchasesByEmail.data?.unlockedExamTypes ?? []),
     ...(getSubscriptionsByEmail.data?.unlockedExamTypes ?? []),
     ...(getSubscriptions.data?.unlockedExamTypes ?? []),
-  ].filter((v, i, a) => a.indexOf(v) === i); // deduplicate
+  ].filter((v, i, a) => a.indexOf(v) === i);
   const purchases = getPurchases.data?.purchases ?? [];
   const hasPurchases = unlockedExamTypes.length > 0;
 
-  // Group passes by track for cleaner display
   const ontarioPasses = unlockedExamTypes.filter(t => EXAM_META[t]?.track === "Ontario");
   const wpiPasses = unlockedExamTypes.filter(t => EXAM_META[t]?.track === "WPI");
   const otherPasses = unlockedExamTypes.filter(t => !EXAM_META[t]);
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#0F172A", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
       <SiteNav currentPath="/account" />
 
       <style>{`
         .account-page { max-width: 680px; margin: 0 auto; padding: 48px 24px 120px; }
-        .account-card { background: #1E293B; border: 1px solid #334155; border-radius: 20px; }
-        .pass-row { display: flex; flex-direction: column; gap: 10px; padding: 16px 20px; border-bottom: 1px solid #1E293B; }
+        .account-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+        .pass-row { display: flex; flex-direction: column; gap: 10px; padding: 16px 20px; border-bottom: 1px solid #F1F5F9; }
         .pass-row-main { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; }
         .pass-row:last-child { border-bottom: none; }
         .pass-actions { display: flex; gap: 8px; flex-shrink: 0; }
         .pass-btn { padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 700; border: none; cursor: pointer; font-family: inherit; text-decoration: none; display: inline-block; white-space: nowrap; }
-        .purchase-history-row { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 12px 20px; border-bottom: 1px solid #0F172A; }
+        .purchase-history-row { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 12px 20px; border-bottom: 1px solid #F1F5F9; }
         .purchase-history-row:last-child { border-bottom: none; }
         .step-badge { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; }
         @media (max-width: 600px) {
@@ -309,18 +294,18 @@ export default function Account() {
 
       <div className="account-page">
 
-        {/* ── Header ── */}
+        {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 52, width: "auto", filter: "brightness(0) invert(1)", marginBottom: 20 }} />
-          <h1 style={{ fontSize: 30, fontWeight: 900, color: "#FFFFFF", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
+          <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 52, width: "auto", marginBottom: 20 }} />
+          <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Restore Access
           </h1>
-          <p style={{ fontSize: 15, color: "#94A3B8", maxWidth: 440, margin: "0 auto", lineHeight: 1.6 }}>
+          <p style={{ fontSize: 15, color: "#64748B", maxWidth: 440, margin: "0 auto", lineHeight: 1.6 }}>
             Enter the email you used at checkout to unlock your passes on this device. Works on any browser or phone.
           </p>
         </div>
 
-        {/* ── How it works ── */}
+        {/* How it works */}
         {!submittedEmail && (
           <div style={{ display: "flex", gap: 16, marginBottom: 32, justifyContent: "center", flexWrap: "wrap" }}>
             {[
@@ -328,21 +313,21 @@ export default function Account() {
               { step: "2", label: "We find your passes instantly", icon: "🔍" },
               { step: "3", label: "Access restored on this device", icon: "✅" },
             ].map(s => (
-              <div key={s.step} style={{ display: "flex", alignItems: "center", gap: 10, background: "#1E293B", border: "1px solid #334155", borderRadius: 12, padding: "10px 16px", flex: "1 1 160px", minWidth: 160 }}>
+              <div key={s.step} style={{ display: "flex", alignItems: "center", gap: 10, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 12, padding: "10px 16px", flex: "1 1 160px", minWidth: 160, boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}>
                 <div className="step-badge" style={{ background: "#1D4ED8", color: "#fff" }}>{s.step}</div>
                 <div>
-                  <div style={{ fontSize: 11, color: "#64748B", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.icon}</div>
-                  <div style={{ fontSize: 12, color: "#CBD5E1", fontWeight: 600, marginTop: 2 }}>{s.label}</div>
+                  <div style={{ fontSize: 11, color: "#94A3B8", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.icon}</div>
+                  <div style={{ fontSize: 12, color: "#334155", fontWeight: 600, marginTop: 2 }}>{s.label}</div>
                 </div>
               </div>
             ))}
           </div>
         )}
 
-        {/* ── Email form ── */}
+        {/* Email form */}
         <div className="account-card" style={{ padding: 28, marginBottom: 24 }}>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="restore-email" style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#CBD5E1", marginBottom: 8, letterSpacing: "0.02em" }}>
+            <label htmlFor="restore-email" style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 8, letterSpacing: "0.02em" }}>
               Purchase email address
             </label>
             <div className="restore-form-row" style={{ display: "flex", gap: 10 }}>
@@ -355,19 +340,19 @@ export default function Account() {
                 placeholder="jane@example.com"
                 autoComplete="email"
                 style={{
-                  flex: 1, background: "#0F172A", border: `1.5px solid ${emailError ? "#EF4444" : "#334155"}`,
-                  borderRadius: 10, padding: "11px 16px", fontSize: 14, color: "#F1F5F9",
+                  flex: 1, background: "#F8FAFC", border: `1.5px solid ${emailError ? "#EF4444" : "#CBD5E1"}`,
+                  borderRadius: 10, padding: "11px 16px", fontSize: 14, color: "#0F172A",
                   fontFamily: "inherit", outline: "none", transition: "border-color 0.15s",
                 }}
                 onFocus={e => (e.target.style.borderColor = "#3B82F6")}
-                onBlur={e => (e.target.style.borderColor = emailError ? "#EF4444" : "#334155")}
+                onBlur={e => (e.target.style.borderColor = emailError ? "#EF4444" : "#CBD5E1")}
               />
               <button
                 type="submit"
                 disabled={getPurchases.isFetching || getPurchasesByEmail.isFetching}
                 style={{
                   padding: "11px 22px", borderRadius: 10, border: "none",
-                  background: (getPurchases.isFetching || getPurchasesByEmail.isFetching) ? "#334155" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                  background: (getPurchases.isFetching || getPurchasesByEmail.isFetching) ? "#CBD5E1" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
                   color: "#fff", fontSize: 13, fontWeight: 800, cursor: (getPurchases.isFetching || getPurchasesByEmail.isFetching) ? "not-allowed" : "pointer",
                   fontFamily: "inherit", whiteSpace: "nowrap", flexShrink: 0,
                 }}
@@ -381,7 +366,7 @@ export default function Account() {
               </button>
             </div>
             {emailError && (
-              <p style={{ marginTop: 8, fontSize: 12, color: "#F87171", fontWeight: 600 }}>{emailError}</p>
+              <p style={{ marginTop: 8, fontSize: 12, color: "#EF4444", fontWeight: 600 }}>{emailError}</p>
             )}
           </form>
 
@@ -394,29 +379,29 @@ export default function Account() {
             ].map(t => (
               <div key={t.text} style={{ display: "flex", alignItems: "center", gap: 6 }}>
                 <span style={{ fontSize: 12 }}>{t.icon}</span>
-                <span style={{ fontSize: 11, color: "#64748B", fontWeight: 500 }}>{t.text}</span>
+                <span style={{ fontSize: 11, color: "#94A3B8", fontWeight: 500 }}>{t.text}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* ── Loading skeleton ── */}
+        {/* Loading skeleton */}
         {(getPurchases.isFetching || getPurchasesByEmail.isFetching) && (
           <div className="account-card" style={{ padding: 28 }}>
             {[1, 2, 3].map(i => (
-              <div key={i} style={{ display: "flex", gap: 12, alignItems: "center", padding: "14px 0", borderBottom: i < 3 ? "1px solid #0F172A" : "none" }}>
-                <div style={{ width: 40, height: 40, borderRadius: 10, background: "#334155", flexShrink: 0 }} />
+              <div key={i} style={{ display: "flex", gap: 12, alignItems: "center", padding: "14px 0", borderBottom: i < 3 ? "1px solid #F1F5F9" : "none" }}>
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: "#E2E8F0", flexShrink: 0 }} />
                 <div style={{ flex: 1 }}>
-                  <div style={{ height: 12, background: "#334155", borderRadius: 6, width: "60%", marginBottom: 8 }} />
-                  <div style={{ height: 10, background: "#1E293B", borderRadius: 6, width: "40%" }} />
+                  <div style={{ height: 12, background: "#E2E8F0", borderRadius: 6, width: "60%", marginBottom: 8 }} />
+                  <div style={{ height: 10, background: "#F1F5F9", borderRadius: 6, width: "40%" }} />
                 </div>
-                <div style={{ width: 80, height: 30, background: "#334155", borderRadius: 8 }} />
+                <div style={{ width: 80, height: 30, background: "#E2E8F0", borderRadius: 8 }} />
               </div>
             ))}
           </div>
         )}
 
-        {/* ── Results ── */}
+        {/* Results */}
         {submittedEmail && !getPurchases.isFetching && !getPurchasesByEmail.isFetching && (
           <>
             {hasPurchases ? (
@@ -424,16 +409,16 @@ export default function Account() {
                 {/* Success banner */}
                 <div style={{
                   display: "flex", alignItems: "flex-start", gap: 14,
-                  background: "linear-gradient(135deg, rgba(16,185,129,0.15), rgba(5,150,105,0.08))",
-                  border: "1px solid #065F46", borderRadius: 16, padding: "18px 22px", marginBottom: 24,
+                  background: "#F0FDF4", border: "1px solid #BBF7D0",
+                  borderRadius: 16, padding: "18px 22px", marginBottom: 24,
                 }}>
                   <span style={{ fontSize: 24, flexShrink: 0 }}>✅</span>
                   <div style={{ flex: 1 }}>
-                    <p style={{ color: "#34D399", fontWeight: 800, fontSize: 14, margin: "0 0 4px" }}>
+                    <p style={{ color: "#15803D", fontWeight: 800, fontSize: 14, margin: "0 0 4px" }}>
                       {unlockedExamTypes.length} pass{unlockedExamTypes.length !== 1 ? "es" : ""} restored for{" "}
-                      <span style={{ color: "#6EE7B7" }}>{submittedEmail}</span>
+                      <span style={{ color: "#166534" }}>{submittedEmail}</span>
                     </p>
-                    <p style={{ color: "#6EE7B7", fontSize: 12, margin: 0, opacity: 0.8 }}>
+                    <p style={{ color: "#4ADE80", fontSize: 12, margin: 0, opacity: 0.9 }}>
                       Your passes are now active on this device. Bookmark this page to restore access again anytime.
                     </p>
                   </div>
@@ -444,7 +429,7 @@ export default function Account() {
                       setTimeout(() => setCopiedEmail(false), 2000);
                     }}
                     title="Copy email"
-                    style={{ background: "rgba(52,211,153,0.15)", border: "1px solid #065F46", borderRadius: 8, padding: "4px 10px", fontSize: 11, color: "#34D399", fontWeight: 700, cursor: "pointer", fontFamily: "inherit", flexShrink: 0 }}
+                    style={{ background: "#DCFCE7", border: "1px solid #BBF7D0", borderRadius: 8, padding: "4px 10px", fontSize: 11, color: "#15803D", fontWeight: 700, cursor: "pointer", fontFamily: "inherit", flexShrink: 0 }}
                   >
                     {copiedEmail ? "Copied!" : "📋 Copy email"}
                   </button>
@@ -453,10 +438,10 @@ export default function Account() {
                 {/* Magic Link option */}
                 <MagicLinkSection email={submittedEmail ?? ""} />
 
-                {/* ── Active Subscriptions ── */}
+                {/* Active Subscriptions */}
                 {(getSubscriptions.data?.subscriptions ?? []).length > 0 && (
                   <div style={{ marginBottom: 24 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
                       🔄 Active Annual Subscriptions
                     </div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
@@ -472,17 +457,17 @@ export default function Account() {
                         const provinceLabel = sub.province === "western" ? "Western Canada (WPI)" : "Ontario (EOCP)";
                         const daysLeft = Math.max(0, Math.ceil((new Date(sub.currentPeriodEnd).getTime() - Date.now()) / (1000 * 60 * 60 * 24)));
                         return (
-                          <div key={sub.id} style={{ padding: "20px 24px", borderBottom: "1px solid #0F172A" }}>
+                          <div key={sub.id} style={{ padding: "20px 24px", borderBottom: "1px solid #F1F5F9" }}>
                             <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16, flexWrap: "wrap" }}>
                               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                                 <div style={{ width: 46, height: 46, borderRadius: 12, background: "linear-gradient(135deg, #7C3AED, #4F46E5)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, flexShrink: 0 }}>🔑</div>
                                 <div>
-                                  <p style={{ color: "#F1F5F9", fontWeight: 800, fontSize: 14, margin: "0 0 3px" }}>{tierLabel}</p>
-                                  <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 4px" }}>{provinceLabel}</p>
+                                  <p style={{ color: "#0F172A", fontWeight: 800, fontSize: 14, margin: "0 0 3px" }}>{tierLabel}</p>
+                                  <p style={{ color: "#64748B", fontSize: 12, margin: "0 0 4px" }}>{provinceLabel}</p>
                                   <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                                    <span style={{ fontSize: 11, color: "#22C55E", fontWeight: 700, background: "rgba(34,197,94,0.12)", border: "1px solid rgba(34,197,94,0.25)", borderRadius: 6, padding: "2px 8px" }}>Active</span>
+                                    <span style={{ fontSize: 11, color: "#15803D", fontWeight: 700, background: "#DCFCE7", border: "1px solid #BBF7D0", borderRadius: 6, padding: "2px 8px" }}>Active</span>
                                     <span style={{ fontSize: 11, color: "#94A3B8" }}>Renews {renewalDate}</span>
-                                    <span style={{ fontSize: 11, color: daysLeft < 30 ? "#F59E0B" : "#64748B" }}>{daysLeft} days remaining</span>
+                                    <span style={{ fontSize: 11, color: daysLeft < 30 ? "#D97706" : "#94A3B8" }}>{daysLeft} days remaining</span>
                                   </div>
                                 </div>
                               </div>
@@ -491,8 +476,8 @@ export default function Account() {
                                 disabled={portalLoading}
                                 style={{
                                   padding: "9px 18px", borderRadius: 10, border: "1.5px solid #7C3AED",
-                                  background: portalLoading ? "#1E293B" : "rgba(124,58,237,0.12)",
-                                  color: portalLoading ? "#64748B" : "#A78BFA",
+                                  background: portalLoading ? "#F1F5F9" : "#F5F3FF",
+                                  color: portalLoading ? "#94A3B8" : "#7C3AED",
                                   fontSize: 12, fontWeight: 700, cursor: portalLoading ? "not-allowed" : "pointer",
                                   fontFamily: "inherit", whiteSpace: "nowrap", flexShrink: 0,
                                 }}
@@ -503,8 +488,8 @@ export default function Account() {
                           </div>
                         );
                       })}
-                      <div style={{ padding: "12px 24px", background: "rgba(124,58,237,0.06)", borderTop: "1px solid #1E293B" }}>
-                        <p style={{ fontSize: 11, color: "#64748B", margin: 0 }}>
+                      <div style={{ padding: "12px 24px", background: "#FAFAFA", borderTop: "1px solid #F1F5F9" }}>
+                        <p style={{ fontSize: 11, color: "#94A3B8", margin: 0 }}>
                           Your subscription unlocks all included exam types below. To cancel, update payment, or view invoices, click "Manage Subscription" above.
                         </p>
                       </div>
@@ -515,7 +500,7 @@ export default function Account() {
                 {/* Ontario passes */}
                 {ontarioPasses.length > 0 && (
                   <div style={{ marginBottom: 20 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
                       🍁 Ontario Certification Passes
                     </div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
@@ -530,8 +515,8 @@ export default function Account() {
                                   {meta.icon}
                                 </div>
                                 <div>
-                                  <p style={{ color: "#F1F5F9", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
-                                  <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
+                                  <p style={{ color: "#0F172A", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
+                                  <p style={{ color: "#94A3B8", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
                                 </div>
                               </div>
                               <div className="pass-actions">
@@ -540,28 +525,26 @@ export default function Account() {
                                 </Link>
                                 {meta.mockPath && (
                                   <Link href={meta.mockPath}>
-                                    <span className="pass-btn" style={{ background: "#1E293B", color: "#94A3B8", border: "1px solid #334155" }}>Mock Exam</span>
+                                    <span className="pass-btn" style={{ background: "#F1F5F9", color: "#475569", border: "1px solid #E2E8F0" }}>Mock Exam</span>
                                   </Link>
                                 )}
                                 {meta.flashcardPath && (
                                   <Link href={meta.flashcardPath}>
-                                    <span className="pass-btn" style={{ background: "#1E3A5F", color: "#93C5FD" }}>🃏 Flashcards</span>
+                                    <span className="pass-btn" style={{ background: "#EFF6FF", color: "#1D4ED8" }}>🃏 Flashcards</span>
                                   </Link>
                                 )}
                                 {meta.formulaPath && (
                                   <Link href={meta.formulaPath}>
-                                    <span className="pass-btn" style={{ background: "#064E3B", color: "#6EE7B7" }}>📐 Formulas</span>
+                                    <span className="pass-btn" style={{ background: "#F0FDF4", color: "#15803D" }}>📐 Formulas</span>
                                   </Link>
                                 )}
                               </div>
                             </div>
-                            {/* Mastery badge */}
                             {meta.flashcardPath && flashcardMastery[examType] && (
                               <div style={{ paddingLeft: 54 }}>
                                 <MasteryBadge knownCount={flashcardMastery[examType].knownCount} totalCards={flashcardMastery[examType].totalCards} />
                               </div>
                             )}
-                            {/* Exam date tracker */}
                             {submittedEmail && (
                               <ExamDateTracker
                                 email={submittedEmail}
@@ -580,7 +563,7 @@ export default function Account() {
                 {/* WPI passes */}
                 {wpiPasses.length > 0 && (
                   <div style={{ marginBottom: 20 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
                       🌊 WPI Certification Passes
                     </div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
@@ -595,8 +578,8 @@ export default function Account() {
                                   {meta.icon}
                                 </div>
                                 <div>
-                                  <p style={{ color: "#F1F5F9", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
-                                  <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
+                                  <p style={{ color: "#0F172A", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
+                                  <p style={{ color: "#94A3B8", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
                                 </div>
                               </div>
                               <div className="pass-actions">
@@ -605,28 +588,26 @@ export default function Account() {
                                 </Link>
                                 {meta.mockPath && (
                                   <Link href={meta.mockPath}>
-                                    <span className="pass-btn" style={{ background: "#1E293B", color: "#94A3B8", border: "1px solid #334155" }}>Mock Exam</span>
+                                    <span className="pass-btn" style={{ background: "#F1F5F9", color: "#475569", border: "1px solid #E2E8F0" }}>Mock Exam</span>
                                   </Link>
                                 )}
                                 {meta.flashcardPath && (
                                   <Link href={meta.flashcardPath}>
-                                    <span className="pass-btn" style={{ background: "#1E3A5F", color: "#93C5FD" }}>🃏 Flashcards</span>
+                                    <span className="pass-btn" style={{ background: "#EFF6FF", color: "#1D4ED8" }}>🃏 Flashcards</span>
                                   </Link>
                                 )}
                                 {meta.formulaPath && (
                                   <Link href={meta.formulaPath}>
-                                    <span className="pass-btn" style={{ background: "#064E3B", color: "#6EE7B7" }}>📐 Formulas</span>
+                                    <span className="pass-btn" style={{ background: "#F0FDF4", color: "#15803D" }}>📐 Formulas</span>
                                   </Link>
                                 )}
                               </div>
                             </div>
-                            {/* Mastery badge */}
                             {meta.flashcardPath && flashcardMastery[examType] && (
                               <div style={{ paddingLeft: 54 }}>
                                 <MasteryBadge knownCount={flashcardMastery[examType].knownCount} totalCards={flashcardMastery[examType].totalCards} />
                               </div>
                             )}
-                            {/* Exam date tracker */}
                             {submittedEmail && (
                               <ExamDateTracker
                                 email={submittedEmail}
@@ -645,15 +626,15 @@ export default function Account() {
                 {/* Unknown passes */}
                 {otherPasses.length > 0 && (
                   <div style={{ marginBottom: 20 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>Other Passes</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>Other Passes</div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
                       {otherPasses.map(examType => (
                         <div key={examType} className="pass-row">
                           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                            <div style={{ width: 42, height: 42, borderRadius: 10, background: "#1E293B", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>📋</div>
+                            <div style={{ width: 42, height: 42, borderRadius: 10, background: "#F1F5F9", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>📋</div>
                             <div>
-                              <p style={{ color: "#F1F5F9", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{examType}</p>
-                              <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Active pass</p>
+                              <p style={{ color: "#0F172A", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{examType}</p>
+                              <p style={{ color: "#94A3B8", fontSize: 11, margin: 0 }}>Active pass</p>
                             </div>
                           </div>
                         </div>
@@ -665,14 +646,14 @@ export default function Account() {
                 {/* Purchase history */}
                 {purchases.length > 0 && (
                   <div style={{ marginBottom: 24 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
                       🧾 Purchase History
                     </div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
                       <div style={{ padding: "10px 20px 6px", display: "grid", gridTemplateColumns: "1fr auto auto", gap: 12 }}>
-                        <span style={{ fontSize: 11, color: "#475569", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Product</span>
-                        <span style={{ fontSize: 11, color: "#475569", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Date</span>
-                        <span style={{ fontSize: 11, color: "#475569", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Amount</span>
+                        <span style={{ fontSize: 11, color: "#94A3B8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Product</span>
+                        <span style={{ fontSize: 11, color: "#94A3B8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Date</span>
+                        <span style={{ fontSize: 11, color: "#94A3B8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Amount</span>
                       </div>
                       {purchases.map((p, i) => {
                         const meta = EXAM_META[p.productKey];
@@ -680,10 +661,10 @@ export default function Account() {
                           <div key={i} className="purchase-history-row">
                             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                               <span style={{ fontSize: 14 }}>{meta?.icon ?? "📋"}</span>
-                              <span style={{ fontSize: 12, color: "#CBD5E1", fontWeight: 600 }}>{meta?.label ?? p.productKey}</span>
+                              <span style={{ fontSize: 12, color: "#334155", fontWeight: 600 }}>{meta?.label ?? p.productKey}</span>
                             </div>
-                            <span style={{ fontSize: 11, color: "#64748B", whiteSpace: "nowrap" }}>{formatDate(p.createdAt)}</span>
-                            <span style={{ fontSize: 12, color: "#34D399", fontWeight: 700, whiteSpace: "nowrap" }}>{formatCAD(p.amountCAD)}</span>
+                            <span style={{ fontSize: 11, color: "#94A3B8", whiteSpace: "nowrap" }}>{formatDate(p.createdAt)}</span>
+                            <span style={{ fontSize: 12, color: "#15803D", fontWeight: 700, whiteSpace: "nowrap" }}>{formatCAD(p.amountCAD)}</span>
                           </div>
                         );
                       })}
@@ -692,8 +673,8 @@ export default function Account() {
                 )}
 
                 {/* Device note */}
-                <div style={{ textAlign: "center", padding: "16px 20px", background: "rgba(30,41,59,0.5)", borderRadius: 12, border: "1px solid #1E293B" }}>
-                  <p style={{ fontSize: 12, color: "#475569", margin: "0 0 6px" }}>
+                <div style={{ textAlign: "center", padding: "16px 20px", background: "#FFFFFF", borderRadius: 12, border: "1px solid #E2E8F0" }}>
+                  <p style={{ fontSize: 12, color: "#94A3B8", margin: "0 0 6px" }}>
                     💡 Access is saved to <strong style={{ color: "#64748B" }}>this browser only</strong>. Switching devices? Just re-enter your email here.
                   </p>
                   <button
@@ -705,21 +686,20 @@ export default function Account() {
                 </div>
               </>
             ) : (
-              /* ── No purchases found ── */
+              /* No purchases found */
               <div className="account-card" style={{ padding: 36, textAlign: "center" }}>
-                <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#1E293B", border: "2px solid #334155", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, margin: "0 auto 20px" }}>🔍</div>
-                <h2 style={{ color: "#F1F5F9", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>No purchases found</h2>
+                <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#F1F5F9", border: "2px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, margin: "0 auto 20px" }}>🔍</div>
+                <h2 style={{ color: "#0F172A", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>No purchases found</h2>
                 <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px", lineHeight: 1.6 }}>
                   We couldn't find any purchases for{" "}
-                  <span style={{ color: "#CBD5E1", fontWeight: 700 }}>{submittedEmail}</span>.
+                  <span style={{ color: "#334155", fontWeight: 700 }}>{submittedEmail}</span>.
                 </p>
-                <p style={{ color: "#475569", fontSize: 12, margin: "0 0 28px", lineHeight: 1.6 }}>
+                <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 28px", lineHeight: 1.6 }}>
                   Make sure you're using the exact email you entered at checkout. Check your inbox for a Stripe receipt to confirm the address.
                 </p>
 
-                {/* Common reasons */}
-                <div style={{ background: "#0F172A", borderRadius: 12, padding: "16px 20px", marginBottom: 24, textAlign: "left" }}>
-                  <p style={{ fontSize: 12, fontWeight: 700, color: "#94A3B8", margin: "0 0 10px" }}>Common reasons:</p>
+                <div style={{ background: "#F8FAFC", borderRadius: 12, padding: "16px 20px", marginBottom: 24, textAlign: "left", border: "1px solid #E2E8F0" }}>
+                  <p style={{ fontSize: 12, fontWeight: 700, color: "#64748B", margin: "0 0 10px" }}>Common reasons:</p>
                   {[
                     "You may have used a different email (e.g., work vs. personal)",
                     "The purchase was made under a different account",
@@ -742,7 +722,7 @@ export default function Account() {
                   <Link href="/pricing">
                     <span style={{ fontSize: 12, color: "#3B82F6", fontWeight: 600, cursor: "pointer" }}>Browse Practice Passes →</span>
                   </Link>
-                  <a href="mailto:support@echeloninstitute.ca?subject=Restore%20Access%20Help&body=Hi%2C%20I%20need%20help%20restoring%20access.%20My%20purchase%20email%20was%3A%20" style={{ fontSize: 12, color: "#475569", fontWeight: 500 }}>
+                  <a href="mailto:support@echeloninstitute.ca?subject=Restore%20Access%20Help&body=Hi%2C%20I%20need%20help%20restoring%20access.%20My%20purchase%20email%20was%3A%20" style={{ fontSize: 12, color: "#94A3B8", fontWeight: 500 }}>
                     Still stuck? Email support@echeloninstitute.ca
                   </a>
                 </div>
@@ -751,10 +731,10 @@ export default function Account() {
           </>
         )}
 
-        {/* ── First-time visitor prompt ── */}
+        {/* First-time visitor prompt */}
         {!submittedEmail && (
           <div style={{ textAlign: "center", marginTop: 8 }}>
-            <p style={{ color: "#475569", fontSize: 13 }}>
+            <p style={{ color: "#94A3B8", fontSize: 13 }}>
               Don't have a pass yet?{" "}
               <Link href="/pricing">
                 <span style={{ color: "#3B82F6", fontWeight: 700, cursor: "pointer" }}>Browse Practice Passes →</span>
