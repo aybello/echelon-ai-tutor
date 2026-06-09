@@ -52,8 +52,8 @@ export default function Login() {
         }
       } catch { /* ignore storage errors */ }
       // Use hard navigation so the browser commits the session cookie
-      // before MyCourses mounts and fires dashboardAuth.me
-      window.location.href = "/my-courses";
+      // before Account mounts and fires dashboardAuth.me
+      window.location.href = "/account";
     },
     onError: (err) => {
       setError(err.message || "Invalid or expired code. Please try again.");

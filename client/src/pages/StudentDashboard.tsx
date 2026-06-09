@@ -353,7 +353,7 @@ export default function StudentDashboard() {
           </div>
           {hasAccess && (
             <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-              <a href="/my-courses" style={{
+              <a href="/account" style={{
                 background: "none", border: "1px solid #334155", borderRadius: 8,
                 padding: "6px 14px", color: "#94A3B8", fontSize: 13, cursor: "pointer",
                 textDecoration: "none", display: "inline-block",

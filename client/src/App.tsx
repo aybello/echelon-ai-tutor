@@ -40,7 +40,6 @@ const Admin = lazy(() => import("./pages/Admin"));
 const Account = lazy(() => import("./pages/Account"));
 const Login = lazy(() => import("./pages/Login"));
 const StudentDashboard = lazy(() => import("./pages/StudentDashboard"));
-const MyCourses = lazy(() => import("./pages/MyCourses"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const PurchaseSuccess = lazy(() => import("./pages/PurchaseSuccess"));
 const SubscriptionSuccess = lazy(() => import("./pages/SubscriptionSuccess"));
@@ -320,7 +319,6 @@ function Router() {
         <Route path={"/account"} component={Account} />
         <Route path={"/login"} component={Login} />
         <Route path={"/auth/magic"} component={MagicLinkConsume} />
-        <Route path={"/my-courses"} component={MyCourses} />
         <Route path={"/dashboard"} component={StudentDashboard} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
