@@ -77,7 +77,13 @@ export default function MyCourses() {
   const utils = trpc.useUtils();
 
   const [courses, setCourses] = useState<CourseCard[]>([]);
-  const [email, setEmail] = useState<string | null>(null);
+  // Read localStorage synchronously so it's available on first render
+  // (before useEffect fires), preventing false auth redirects.
+  const [email, setEmail] = useState<string | null>(() => {
+    try {
+      return localStorage.getItem("echelon_subscription_email") ?? localStorage.getItem("echelon_trial_email") ?? null;
+    } catch { return null; }
+  });
 
   // Load courses from localStorage on mount
   useEffect(() => {
@@ -88,12 +94,18 @@ export default function MyCourses() {
     } catch { /* ignore */ }
   }, []);
 
-  // Auth gate — wait for both checks to resolve
+  // Auth gate logic:
+  // - While loading: show spinner (never redirect mid-load)
+  // - After both resolve: redirect only if no session AND no Manus auth
+  // - localStorage email is used to keep the page visible during load
+  //   and as a fallback if the cookie check fails transiently
   const authResolved = !authLoading && !dashboardMe.isLoading;
   const emailSession = dashboardMe.data?.email ?? null;
   const hasAccess = isAuthenticated || !!emailSession;
+  // Only show loading spinner if we have no local email hint (avoids flash for returning users)
+  const showLoading = (authLoading || dashboardMe.isLoading) && !email;
 
-  if (authLoading || dashboardMe.isLoading) {
+  if (showLoading) {
     return (
       <div style={{ fontFamily: "Sora, sans-serif", background: SLATE_900, minHeight: "100vh" }}>
         <SiteNav currentPath="/my-courses" />
@@ -105,6 +117,16 @@ export default function MyCourses() {
   }
 
   if (authResolved && !hasAccess) {
+    // If localStorage has an email but the server session is gone, clear stale data
+    // and redirect to login so they can re-authenticate
+    if (email) {
+      try {
+        localStorage.removeItem("echelon_subscription_email");
+        localStorage.removeItem("echelon_trial_email");
+        localStorage.removeItem("echelon_access_token");
+        localStorage.removeItem("echelon_trial_unlocked");
+      } catch { /* ignore */ }
+    }
     window.location.replace("/login");
     return null;
   }

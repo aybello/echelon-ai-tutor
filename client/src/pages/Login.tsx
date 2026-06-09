@@ -51,7 +51,9 @@ export default function Login() {
           localStorage.setItem("echelon_purchased_products", JSON.stringify(data.purchasedProductKeys));
         }
       } catch { /* ignore storage errors */ }
-      navigate("/my-courses");
+      // Use hard navigation so the browser commits the session cookie
+      // before MyCourses mounts and fires dashboardAuth.me
+      window.location.href = "/my-courses";
     },
     onError: (err) => {
       setError(err.message || "Invalid or expired code. Please try again.");
