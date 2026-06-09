@@ -29,15 +29,20 @@ export const quizRouter = router({
       }
       const examType = bankKeyToExamType(input.bankKey);
       let { hasAccess } = await resolveAccess(ctx.user, examType);
-      // Fallback 1: verify signed subscription access token (preferred — no DB lookup)
-      if (!hasAccess && !ctx.user && input.accessToken) {
+      // Fallback 1: student OTP session cookie (server-verified — no client input trusted)
+      if (!hasAccess && ctx.studentEmail) {
+        const sessionResult = await resolveAccessByEmail(ctx.studentEmail, examType);
+        hasAccess = sessionResult.hasAccess;
+      }
+      // Fallback 2: verify signed subscription access token (no DB lookup)
+      if (!hasAccess && input.accessToken) {
         const tokenPayload = await verifySubscriptionToken(input.accessToken);
         if (tokenPayload && tokenPayload.examTypes.includes(examType)) {
           hasAccess = true;
         }
       }
-      // Fallback 2: check by email if no token (legacy / Restore Access without token)
-      if (!hasAccess && !ctx.user && input.email) {
+      // Fallback 3: client-supplied email (legacy Restore Access — only when no session exists)
+      if (!hasAccess && !ctx.user && !ctx.studentEmail && input.email) {
         const emailResult = await resolveAccessByEmail(input.email, examType);
         hasAccess = emailResult.hasAccess;
       }
@@ -118,15 +123,20 @@ export const quizRouter = router({
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       const examType = bankKeyToExamType(input.bankKey);
       let { hasAccess } = await resolveAccess(ctx.user, examType);
-      // Fallback 1: verify signed subscription access token (preferred — no DB lookup)
-      if (!hasAccess && !ctx.user && input.accessToken) {
+      // Fallback 1: student OTP session cookie (server-verified — no client input trusted)
+      if (!hasAccess && ctx.studentEmail) {
+        const sessionResult = await resolveAccessByEmail(ctx.studentEmail, examType);
+        hasAccess = sessionResult.hasAccess;
+      }
+      // Fallback 2: verify signed subscription access token (no DB lookup)
+      if (!hasAccess && input.accessToken) {
         const tokenPayload = await verifySubscriptionToken(input.accessToken);
         if (tokenPayload && tokenPayload.examTypes.includes(examType)) {
           hasAccess = true;
         }
       }
-      // Fallback 2: check by email if no token (legacy / Restore Access without token)
-      if (!hasAccess && !ctx.user && input.email) {
+      // Fallback 3: client-supplied email (legacy Restore Access — only when no session exists)
+      if (!hasAccess && !ctx.user && !ctx.studentEmail && input.email) {
         const emailResult = await resolveAccessByEmail(input.email, examType);
         hasAccess = emailResult.hasAccess;
       }
@@ -283,10 +293,10 @@ export const quizRouter = router({
         const db = await getDb();
         if (!db) return { success: false };
         const userId = ctx.user?.id ?? null;
-        // Prefer OAuth user email, fall back to client-supplied studentEmail
+        // Prefer OAuth user email, then server-verified session email, then client-supplied (for guest tracking only)
         const studentEmail = userId
           ? (ctx.user?.email ?? null)
-          : (input.studentEmail?.trim().toLowerCase() ?? null);
+          : (ctx.studentEmail ?? input.studentEmail?.trim().toLowerCase() ?? null);
 
         // Log the attempt
         await db.insert(questionAttempts).values({

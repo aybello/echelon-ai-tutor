@@ -19,8 +19,8 @@ export const flashcardRouter = router({
       examType: z.string().min(1).max(64),
     }))
     .query(async ({ input, ctx }) => {
-      // Allow logged-in users to omit email — use their account email
-      const email = ctx.user?.email ?? input.email;
+      // Priority: OAuth email > server-verified OTP session email > client-supplied email
+      const email = ctx.user?.email ?? ctx.studentEmail ?? input.email;
       if (!email) return { knownIds: [] as (number | string)[], totalCards: 0 };
       const db = await getDb();
       if (!db) return { knownIds: [] as (number | string)[], totalCards: 0 };
@@ -52,7 +52,8 @@ export const flashcardRouter = router({
       totalCards: z.number().int().min(0),
     }))
     .mutation(async ({ input, ctx }) => {
-      const email = (ctx.user?.email ?? input.email).toLowerCase();
+      // Priority: OAuth email > server-verified OTP session email > client-supplied email
+      const email = (ctx.user?.email ?? ctx.studentEmail ?? input.email).toLowerCase();
       if (!email) return { success: false };
       const db = await getDb();
       if (!db) return { success: false };
@@ -99,7 +100,8 @@ export const flashcardRouter = router({
   getAllProgress: publicProcedure
     .input(z.object({ email: z.string().email() }))
     .query(async ({ input, ctx }) => {
-      const email = (ctx.user?.email ?? input.email).toLowerCase();
+      // Priority: OAuth email > server-verified OTP session email > client-supplied email
+      const email = (ctx.user?.email ?? ctx.studentEmail ?? input.email).toLowerCase();
       if (!email) return { progress: {} as Record<string, { knownCount: number; totalCards: number }> };
       const db = await getDb();
       if (!db) return { progress: {} as Record<string, { knownCount: number; totalCards: number }> };
