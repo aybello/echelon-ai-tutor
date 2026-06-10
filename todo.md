@@ -792,34 +792,34 @@
 
 ## Echelon for Teams (v1)
 
-- [ ] Schema: add `organizations` table to drizzle/schema.ts
-- [ ] Schema: add `organization_members` table to drizzle/schema.ts
-- [ ] Schema: add nullable `orgId int` column to `subscriptions` table
-- [ ] Run pnpm db:push to apply schema migration
-- [ ] stripeRouter: add `createTeamCheckout` procedure (mode subscription, per-seat volume pricing, org metadata)
-- [ ] stripeRouter: add `updateTeamSeats` procedure (update Stripe subscription quantity)
-- [ ] webhook.ts: extend `customer.subscription.created` to handle `metadata.type === "org"` (create org row, manager member row, grant manager seat)
-- [ ] webhook.ts: extend `customer.subscription.updated` to sync `seatsTotal` and bump `currentPeriodEnd` on all managed operator rows
-- [ ] webhook.ts: extend `customer.subscription.deleted` to cancel org and expire all managed operator rows
-- [ ] server/db.ts: add `assignSeat`, `revokeSeat`, `getOrgByManagerEmail`, `getOrgMembers` helpers
-- [ ] server/routers/orgRouter.ts: `requireOrgManager` middleware (resolves orgId from session email)
-- [ ] server/routers/orgRouter.ts: `getOrgOverview` procedure (4 metric cards)
-- [ ] server/routers/orgRouter.ts: `listMembers` procedure (roster with accuracy, last active, status)
-- [ ] server/routers/orgRouter.ts: `getAttention` procedure (at-risk before exam, stalled operators)
-- [ ] server/routers/orgRouter.ts: `assignSeat` and `assignSeats` procedures (with seat cap enforcement)
-- [ ] server/routers/orgRouter.ts: `revokeSeat` procedure
-- [ ] server/routers/orgRouter.ts: `createOrganizationManual` admin procedure (invoice path)
-- [ ] Register orgRouter in server/routers.ts
-- [ ] client/src/pages/Teams.tsx: public buy page with seat selector, live volume pricing, checkout CTA
-- [ ] client/src/pages/TeamDashboard.tsx: manager dashboard (header, 4 cards, attention panel, roster, assign modal)
-- [ ] Register /teams and /team routes in App.tsx + SiteNav
-- [ ] Tests: team checkout provisions org row and manager seat
-- [ ] Tests: seat assignment grants working access via existing resolveAccess
-- [ ] Tests: revoke removes access
-- [ ] Tests: seat cap enforcement blocks over-assignment
-- [ ] Tests: quantity update syncs seatsTotal
-- [ ] Tests: cross-org access denial
-- [ ] Update ARCHITECTURE.md with new tables and orgRouter
+- [x] Schema: add `organizations` table to drizzle/schema.ts
+- [x] Schema: add `organization_members` table to drizzle/schema.ts
+- [x] Schema: add nullable `orgId int` column to `subscriptions` table
+- [x] Run pnpm db:push to apply schema migration
+- [x] stripeRouter: add `createTeamCheckout` procedure (mode subscription, per-seat volume pricing, org metadata)
+- [x] stripeRouter: add `updateTeamSeats` procedure (update Stripe subscription quantity)
+- [x] webhook.ts: extend `customer.subscription.created` to handle `metadata.type === "org"` (create org row, manager member row, grant manager seat)
+- [x] webhook.ts: extend `customer.subscription.updated` to sync `seatsTotal` and bump `currentPeriodEnd` on all managed operator rows
+- [x] webhook.ts: extend `customer.subscription.deleted` to cancel org and expire all managed operator rows
+- [x] server/db.ts: add `assignSeat`, `revokeSeat`, `getOrgByManagerEmail`, `getOrgMembers` helpers
+- [x] server/routers/orgRouter.ts: `requireOrgManager` middleware (resolves orgId from session email)
+- [x] server/routers/orgRouter.ts: `getOrgOverview` procedure (4 metric cards)
+- [x] server/routers/orgRouter.ts: `listMembers` procedure (roster with accuracy, last active, status)
+- [x] server/routers/orgRouter.ts: `getAttention` procedure (at-risk before exam, stalled operators)
+- [x] server/routers/orgRouter.ts: `assignSeat` and `assignSeats` procedures (with seat cap enforcement)
+- [x] server/routers/orgRouter.ts: `revokeSeat` procedure
+- [x] server/routers/orgRouter.ts: `createOrganizationManual` admin procedure (invoice path)
+- [x] Register orgRouter in server/routers.ts
+- [x] client/src/pages/Teams.tsx: public buy page with seat selector, live volume pricing, checkout CTA
+- [x] client/src/pages/TeamDashboard.tsx: manager dashboard (header, 4 cards, attention panel, roster, assign modal)
+- [x] Register /teams and /team routes in App.tsx + SiteNav
+- [x] Tests: team checkout provisions org row and manager seat
+- [x] Tests: seat assignment grants working access via existing resolveAccess
+- [x] Tests: revoke removes access
+- [x] Tests: seat cap enforcement blocks over-assignment
+- [x] Tests: quantity update syncs seatsTotal
+- [x] Tests: cross-org access denial
+- [x] Update ARCHITECTURE.md with new tables and orgRouter
 - [x] Fix Stripe subscription period-end bug: create getSubscriptionPeriod helper (server/stripe/subscriptionPeriod.ts) that reads from sub.items.data[0] first, falls back to sub-level fields
 - [x] Fix webhook.ts: replace raw sub.current_period_* reads with getSubscriptionPeriod(sub) in subscription.created/updated and invoice.payment_succeeded handlers
 - [x] Add runSubscriptionReconciliation to reconcile.ts: pages all Stripe subscriptions, inserts missing rows by stripeSubscriptionId (idempotent)

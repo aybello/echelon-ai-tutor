@@ -153,12 +153,15 @@ async function grantSeat(
       })
       .where(eq(subscriptions.id, existingSub[0].id));
   } else {
+    // Use a unique sentinel for stripeSubscriptionId since the DB column is NOT NULL + UNIQUE.
+    // Format: org-{orgId}-{email} ensures uniqueness per org-operator pair.
+    const orgSubId = `org-${org.id}-${email}`;
     await db.insert(subscriptions).values({
       email,
       tier: "all-access",
       province: org.province,
-      stripeSubscriptionId: null,
-      stripeCustomerId: null,
+      stripeSubscriptionId: orgSubId,
+      stripeCustomerId: "",
       status: "active",
       currentPeriodStart: new Date(),
       currentPeriodEnd: org.termEnd,

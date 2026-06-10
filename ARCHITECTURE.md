@@ -349,3 +349,81 @@ const hasAccess = (examType: string): boolean => {
 - **Navigation** — new pages must be added to `App.tsx` (lazy import + Route) and linked from `SiteNav` or `MobileBottomNav` as appropriate.
 - **Tests** — add vitest tests in `server/*.test.ts`. Run `pnpm test` before every checkpoint.
 - **TypeScript** — run `npx tsc --noEmit` before every checkpoint. Zero errors required.
+
+---
+
+## Echelon for Teams
+
+### Overview
+Echelon for Teams allows utility managers to purchase bulk seat subscriptions and assign access to their operators. Managers log in via OTP (same flow as students) and access the `/team` dashboard.
+
+### Database Tables
+
+**`organizations`** — one row per org account.
+
+| Column | Type | Notes |
+|---|---|---|
+| id | int PK | auto-increment |
+| name | varchar(255) | org display name |
+| province | varchar(32) | 'ontario' \| 'western' |
+| tier | varchar(32) | always 'all-access' for now |
+| seatsTotal | int | total purchased seats |
+| managerEmail | varchar(320) | primary manager email |
+| stripeSubscriptionId | varchar(128) | null for invoice orgs |
+| stripeCustomerId | varchar(128) | null for invoice orgs |
+| termEnd | timestamp | subscription expiry |
+| billingType | varchar(32) | 'stripe' \| 'invoice' |
+| status | varchar(32) | 'active' \| 'cancelled' |
+
+**`organization_members`** — one row per org-operator assignment.
+
+| Column | Type | Notes |
+|---|---|---|
+| id | int PK | auto-increment |
+| orgId | int FK | references organizations.id |
+| email | varchar(320) | operator email |
+| role | varchar(32) | 'manager' \| 'operator' |
+| status | varchar(32) | 'assigned' \| 'revoked' |
+| assignedAt | timestamp | when seat was granted |
+| revokedAt | timestamp | null until revoked |
+
+**`subscriptions.orgId`** — nullable int FK linking a subscription row to an org. Org-managed rows use a sentinel `stripeSubscriptionId` of the form `org-{orgId}-{email}` (since the DB column is NOT NULL + UNIQUE).
+
+### Server Routers
+
+**`server/routers/orgRouter.ts`** — all org management procedures.
+- `requireOrgManager` — middleware that resolves orgId from the manager's session email
+- `getOrgOverview` — 4 metric cards (seatsTotal, seatsAssigned, avgAccuracy, atRiskCount)
+- `listMembers` — full roster with accuracy, last active, exam date, operatorStatus
+- `getAttention` — at-risk operators (exam within 30 days, accuracy < 70%)
+- `assignSeat` — grant single operator access (enforces seat cap)
+- `assignSeats` — bulk assign (enforces seat cap atomically)
+- `revokeSeat` — expire subscription + mark member revoked
+- `createOrganizationManual` — admin procedure for invoice-path org creation
+
+**`server/routers/stripeRouter.ts`** additions:
+- `createTeamCheckout` — Stripe Checkout session for org seat purchase
+- `updateTeamSeats` — update Stripe subscription quantity (proration)
+- `createBillingPortalSession` — Stripe billing portal for org managers
+
+### Webhook Handling (`server/stripe/webhook.ts`)
+- `customer.subscription.created` with `metadata.type === "org"` → creates org row + grants manager seat
+- `customer.subscription.updated` with `metadata.type === "org"` → syncs seatsTotal + extends termEnd on all managed operator rows
+- `customer.subscription.deleted` with `metadata.type === "org"` → sets org status=cancelled, expires all managed subscriptions, revokes all members
+
+### Client Pages
+- `/teams` (`Teams.tsx`) — public buy page with seat selector and volume pricing
+- `/team/login` (`ManagerLogin.tsx`) — OTP login for managers (same flow as students)
+- `/team` (`OrgDashboard.tsx`) — manager dashboard with overview cards, attention panel, member roster, assign/revoke modals, Manage Seats modal, Manage Billing button
+
+### grantSeat Helper
+`grantSeat(db, org, email, role)` in `orgRouter.ts` is the single source of truth for granting access. It:
+1. Upserts the `organization_members` row (insert or re-activate if revoked)
+2. Upserts the `subscriptions` row (insert with sentinel stripeSubscriptionId `org-{orgId}-{email}`, or re-activate if expired)
+3. Sends enrollment email to new/re-activated operators (fire-and-forget)
+
+### Key Invariants
+- Seat cap is enforced in `assignSeat` and `assignSeats` by counting `status='assigned'` members
+- Cross-org isolation is enforced by `requireOrgManager` which resolves orgId from the session email
+- Org-managed subscriptions are excluded from self-serve billing portal (identified by `orgId IS NOT NULL`)
+- `stripeSubscriptionId` is NOT NULL in the live DB; use sentinel `org-{orgId}-{email}` for org-managed rows
