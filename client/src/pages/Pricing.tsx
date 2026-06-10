@@ -1372,6 +1372,68 @@ export default function Pricing() {
 
       </div>
 
+      {/* Teams / Utilities CTA */}
+      <div
+        style={{
+          marginTop: 48,
+          background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)",
+          borderRadius: 20,
+          padding: "40px 28px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+          gap: 16,
+          border: "1px solid rgba(99,179,237,0.2)",
+        }}
+      >
+        <div style={{ fontSize: 36 }}>🏢</div>
+        <h3 style={{ fontSize: 22, fontWeight: 900, color: "#fff", margin: 0, lineHeight: 1.2 }}>
+          Training a team of operators?
+        </h3>
+        <p style={{ color: "#94A3B8", fontSize: 14, margin: 0, maxWidth: 480, lineHeight: 1.6 }}>
+          Utilities, municipalities, and training departments can purchase seats for their whole team.
+          Each operator gets their own account — individual progress tracking, AI tutor access, and exam readiness scores.
+          Volume discounts start at 5 seats.
+        </p>
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginTop: 4 }}>
+          {[
+            { label: "5–9 seats", discount: "10% off" },
+            { label: "10–24 seats", discount: "15% off" },
+            { label: "25+ seats", discount: "20% off" },
+          ].map(t => (
+            <div key={t.label} style={{
+              background: "rgba(255,255,255,0.07)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: 10,
+              padding: "8px 16px",
+              fontSize: 13,
+              color: "#E2E8F0",
+            }}>
+              <span style={{ fontWeight: 700, color: "#63B3ED" }}>{t.discount}</span>
+              {" "}{t.label}
+            </div>
+          ))}
+        </div>
+        <a
+          href="/teams"
+          style={{
+            marginTop: 8,
+            display: "inline-block",
+            background: "#3B82F6",
+            color: "#fff",
+            fontWeight: 700,
+            fontSize: 15,
+            padding: "12px 28px",
+            borderRadius: 10,
+            textDecoration: "none",
+            letterSpacing: 0.2,
+          }}
+        >
+          View Team Plans →
+        </a>
+      </div>
+
       {/* Footer */}
       <div
         style={{
