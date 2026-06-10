@@ -14,6 +14,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import ReviewAITutor from "@/components/ReviewAITutor";
 import { toast } from "sonner";
+import { shuffle } from "@/lib/utils";
 
 const EXAM_DURATION  = 2 * 60 * 60; // 2 hours in seconds
 const EXAM_QUESTIONS = 100;
@@ -79,17 +80,17 @@ function selectExamQuestions(allQuestions: any[], dbMods: string[]): any[] {
   };
   const selected: DBQuestion[] = [];
   for (const mod of dbMods) {
-    const pool = allQuestions.filter((q: any) => q.module === mod).sort(() => Math.random() - 0.5);
+    const pool = shuffle(allQuestions.filter((q: any) => q.module === mod));
     const n = targetPerModule[mod] ?? 5;
     selected.push(...pool.slice(0, n).map(toQ));
   }
   // Fill remaining to reach 100 if any module was short
   const usedIds = new Set(selected.map((q: any) => q.id));
-  const remaining = allQuestions.map(toQ).filter((q: any) => !usedIds.has(q.id)).sort(() => Math.random() - 0.5);
+  const remaining = shuffle(allQuestions.map(toQ).filter((q: any) => !usedIds.has(q.id)));
   while (selected.length < EXAM_QUESTIONS && remaining.length > 0) {
     selected.push(remaining.shift()!);
   }
-  return selected.slice(0, EXAM_QUESTIONS).sort(() => Math.random() - 0.5);
+  return shuffle(selected).slice(0, EXAM_QUESTIONS);
 }
 
 function formatTime(seconds: number): string {

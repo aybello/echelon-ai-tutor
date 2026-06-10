@@ -826,3 +826,5 @@
 - [x] Add reconcileSubscriptions adminProcedure to admin.ts mirroring reconcilePurchases
 - [x] Add "Sync Subscriptions" button to Admin.tsx Revenue tab next to "Sync Stripe (48h)"
 - [x] Write 5 vitest tests for getSubscriptionPeriod (item-level, sub-level fallback, item preference, null, missing items)
+- [x] Fix biased mock exam shuffle (Math.random() - 0.5) in MockExamShell, MockExam, OITMockExam, OITWastewaterMockExam, Class1MockExam, Class1WaterMockExam, WQAMockExam — replace with Fisher-Yates shuffle from @/lib/utils
+- [x] Add shuffle() uniformity regression test (utils.test.ts)

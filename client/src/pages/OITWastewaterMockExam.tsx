@@ -12,6 +12,7 @@ import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import ReviewAITutor from "@/components/ReviewAITutor";
+import { shuffle } from "@/lib/utils";
 import { toast } from "sonner";
 
 const EXAM_DURATION  = 1 * 60 * 60; // 1 hour in seconds
@@ -51,7 +52,7 @@ const EXAM_MODULE_TARGETS: Record<string, number> = {
 };
 
 function selectExamQuestions(questionPool: DBQuestion[]): DBQuestion[] {
-  const pool = [...questionPool].sort(() => Math.random() - 0.5);
+  const pool = shuffle([...questionPool]);
   const selected: DBQuestion[] = [];
   for (const [mod, target] of Object.entries(EXAM_MODULE_TARGETS)) {
     const modQs = pool.filter((q: any) => q.module === mod).slice(0, target);
@@ -62,7 +63,7 @@ function selectExamQuestions(questionPool: DBQuestion[]): DBQuestion[] {
   while (selected.length < EXAM_QUESTIONS && remaining.length > 0) {
     selected.push(remaining.shift()!);
   }
-  return selected.slice(0, EXAM_QUESTIONS).sort(() => Math.random() - 0.5);
+  return shuffle(selected).slice(0, EXAM_QUESTIONS);
 }
 
 function formatTime(seconds: number): string {

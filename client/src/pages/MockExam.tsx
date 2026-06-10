@@ -8,6 +8,7 @@ import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { shuffle } from "@/lib/utils";
 
 // ── Extended question bank (25 questions: 15 original + 10 new) ──
 const EXTRA_QUESTIONS: any[] = [
@@ -131,7 +132,7 @@ const EXTRA_QUESTIONS: any[] = [
 function selectExamQuestions(questionPool: any[]): DBQuestion[] {
   const modules = Array.from(new Set(questionPool.map((q: any) => q.module)));
   const selected: DBQuestion[] = [];
-  const shuffled = [...questionPool].sort(() => Math.random() - 0.5);
+  const shuffled = shuffle([...questionPool]);
 
   // Try to get ~3-4 per module
   for (const mod of modules) {
@@ -145,7 +146,7 @@ function selectExamQuestions(questionPool: any[]): DBQuestion[] {
     selected.push(remaining.shift()!);
   }
 
-  return selected.slice(0, 25).sort(() => Math.random() - 0.5);
+  return shuffle(selected).slice(0, 25);
 }
 
 const EXAM_DURATION = 45 * 60; // 45 minutes in seconds

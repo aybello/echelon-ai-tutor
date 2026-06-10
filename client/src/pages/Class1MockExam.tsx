@@ -8,6 +8,7 @@ import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Link, useLocation } from "wouter";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { shuffle } from "@/lib/utils";
 import { isTrialUnlocked } from "@/components/QuizGate";
 import { trpc } from "@/lib/trpc";
 import ScoreHistory from "@/components/ScoreHistory";
@@ -48,7 +49,7 @@ const STREAM_CONFIG: Record<Stream, { label: string; icon: string; color: string
 function selectExamQuestions(allQs: DBQuestion[], stream: Stream): DBQuestion[] {
   const modules = STREAM_CONFIG[stream].modules;
   const pool = allQs.filter((q: any) => modules.includes(q.module));
-  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  const shuffled = shuffle([...pool]);
   const selected: DBQuestion[] = [];
 
   // Proportional allocation: Water = 60 Treatment + 40 Distribution (from 100/60 pool)
@@ -66,7 +67,7 @@ function selectExamQuestions(allQs: DBQuestion[], stream: Stream): DBQuestion[] 
     selected.push(remaining.shift()!);
   }
 
-  return selected.slice(0, EXAM_QUESTIONS).sort(() => Math.random() - 0.5);
+  return shuffle(selected).slice(0, EXAM_QUESTIONS);
 }
 
 function formatTime(seconds: number): string {

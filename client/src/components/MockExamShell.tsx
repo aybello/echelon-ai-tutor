@@ -12,6 +12,7 @@ import ScoreHistory from "@/components/ScoreHistory";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { shuffle } from "@/lib/utils";
 
 // ─── Inline AI Tutor for review mode ─────────────────────────────────────────
 
@@ -246,7 +247,7 @@ function selectExamQuestions(
   moduleTargets: Record<string, number>,
   total: number
 ): ExamQuestion[] {
-  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  const shuffled = shuffle([...pool]);
   const selected: ExamQuestion[] = [];
   const byModule: Record<string, ExamQuestion[]> = {};
   for (const q of shuffled) {
@@ -262,7 +263,7 @@ function selectExamQuestions(
   while (selected.length < total && remaining.length > 0) {
     selected.push(remaining.shift()!);
   }
-  return selected.sort(() => Math.random() - 0.5).slice(0, total);
+  return shuffle(selected).slice(0, total);
 }
 
 function formatTime(seconds: number): string {
