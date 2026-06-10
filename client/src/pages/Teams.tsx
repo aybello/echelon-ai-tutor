@@ -117,7 +117,25 @@ export default function Teams() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      <SiteNav currentPath={location} />
+      <SiteNav
+        currentPath={location}
+        rightSlot={
+          <div className="flex items-center gap-2">
+            <a
+              href="/login"
+              className="text-sm font-medium text-white/70 hover:text-white px-3 py-1.5 rounded-lg transition-colors"
+            >
+              Student Login
+            </a>
+            <a
+              href="/team/login"
+              className="text-sm font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 px-4 py-1.5 rounded-lg transition-colors"
+            >
+              Manager Login
+            </a>
+          </div>
+        }
+      />
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-12 text-center">
@@ -344,7 +362,7 @@ export default function Teams() {
 
           <div className="text-sm text-gray-400">
             Already purchased?{" "}
-            <Link href="/team">
+            <Link href="/team/login">
               <span className="text-blue-600 hover:text-blue-700 cursor-pointer underline underline-offset-2">
                 Sign in to your manager dashboard
               </span>

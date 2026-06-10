@@ -47,6 +47,7 @@ const WpiLanding = lazy(() => import("./pages/WpiLanding"));
 const MagicLinkConsume = lazy(() => import("./pages/MagicLinkConsume"));
 const Teams = lazy(() => import("./pages/Teams"));
 const OrgDashboard = lazy(() => import("./pages/OrgDashboard"));
+const ManagerLogin = lazy(() => import("./pages/ManagerLogin"));
 
 // Ontario Class mock exams
 const Class1MockExam = lazy(() => import("./pages/Class1MockExam"));
@@ -323,6 +324,7 @@ function Router() {
         <Route path={"/auth/magic"} component={MagicLinkConsume} />
         <Route path={"/dashboard"} component={StudentDashboard} />
         <Route path={"/teams"} component={Teams} />
+        <Route path={"/team/login"} component={ManagerLogin} />
         <Route path={"/team"} component={OrgDashboard} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
