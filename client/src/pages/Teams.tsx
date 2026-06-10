@@ -29,22 +29,10 @@ import { Building2, Users, CheckCircle2, ChevronRight, Zap, Shield, BarChart3 } 
 
 // ── Pricing ───────────────────────────────────────────────────────────────────
 
-// Individual annual prices (cents) per tier × province — mirrors subscriptionProducts.ts
-const INDIVIDUAL_PRICE: Record<string, Record<string, number>> = {
-  ontario: {
-    class1:     9900,
-    class2:     14900,
-    class3:     19900,
-    class4:     24900,
-    "all-access": 34900,
-  },
-  western: {
-    class1:     14900,
-    class2:     19900,
-    class3:     24900,
-    class4:     29900,
-    "all-access": 44900,
-  },
+// All-Access annual base prices per province (cents CAD)
+const ALL_ACCESS_BASE: Record<string, number> = {
+  ontario: 34900,  // $349/yr
+  western: 44900,  // $449/yr
 };
 
 // Volume discount tiers: 1-4 = 0%, 5-9 = 10%, 10-24 = 15%, 25+ = 20%
@@ -62,14 +50,6 @@ const VOLUME_TIERS: VolumeTier[] = [
   { min: 25, max: null, discountPct: 20, label: "25+ seats" },
 ];
 
-const TIER_OPTIONS = [
-  { value: "class1",     label: "Class 1 All-Access" },
-  { value: "class2",     label: "Class 2 All-Access" },
-  { value: "class3",     label: "Class 3 All-Access" },
-  { value: "class4",     label: "Class 4 All-Access" },
-  { value: "all-access", label: "All-Access Pass (every class)" },
-];
-
 function getVolumeTier(seats: number): VolumeTier {
   return (
     VOLUME_TIERS.find(t => seats >= t.min && (t.max === null || seats <= t.max)) ??
@@ -77,8 +57,8 @@ function getVolumeTier(seats: number): VolumeTier {
   );
 }
 
-function getSeatPriceCents(province: string, tier: string, seats: number): number {
-  const base = INDIVIDUAL_PRICE[province]?.[tier] ?? 34900;
+function getSeatPriceCents(province: string, seats: number): number {
+  const base = ALL_ACCESS_BASE[province] ?? 34900;
   const vt = getVolumeTier(seats);
   return Math.round(base * (1 - vt.discountPct / 100));
 }
@@ -109,15 +89,14 @@ const FEATURES = [
 export default function Teams() {
   const [seats, setSeats] = useState(10);
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
-  const [subscriptionTier, setSubscriptionTier] = useState("class3");
   const [orgName, setOrgName] = useState("");
   const [managerEmail, setManagerEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
   const volumeTier = useMemo(() => getVolumeTier(seats), [seats]);
-  const seatPriceCents = useMemo(() => getSeatPriceCents(province, subscriptionTier, seats), [province, subscriptionTier, seats]);
+  const seatPriceCents = useMemo(() => getSeatPriceCents(province, seats), [province, seats]);
   const totalCents = seatPriceCents * seats;
-  const individualPriceCents = INDIVIDUAL_PRICE[province]?.[subscriptionTier] ?? 34900;
+  const individualPriceCents = ALL_ACCESS_BASE[province] ?? 34900;
   const isLarge = seats >= 50;
 
   const createCheckout = trpc.stripe.createTeamCheckout.useMutation();
@@ -141,7 +120,7 @@ export default function Teams() {
       const result = await createCheckout.mutateAsync({
         orgName: orgName.trim(),
         province,
-        tier: subscriptionTier as "class1" | "class2" | "class3" | "class4" | "all-access",
+        tier: "all-access" as const,
         seats,
         managerEmail: managerEmail.trim().toLowerCase(),
         origin: window.location.origin,
@@ -219,20 +198,13 @@ export default function Teams() {
             </Select>
           </div>
 
-          {/* Subscription tier */}
-          <div className="space-y-2">
-            <Label className="text-white/80">Certification level</Label>
-            <Select value={subscriptionTier} onValueChange={setSubscriptionTier}>
-              <SelectTrigger className="bg-white/5 border-white/20 text-white">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-[#0f1929] border-white/20 text-white">
-                {TIER_OPTIONS.map(opt => (
-                  <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <p className="text-xs text-white/40">Each seat grants access to all exam content for this level.</p>
+          {/* All-Access badge */}
+          <div className="flex items-center gap-3 bg-blue-500/10 border border-blue-500/20 rounded-xl px-4 py-3">
+            <span className="text-blue-400 text-lg">✓</span>
+            <div>
+              <p className="text-sm font-semibold text-white">All-Access Plan</p>
+              <p className="text-xs text-white/50">Every certification level included — Class 1 through 4 + All-Access tracks</p>
+            </div>
           </div>
 
           {/* Seats */}
