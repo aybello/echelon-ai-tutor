@@ -66,21 +66,24 @@ export async function resolveAccessByEmail(
     return { hasAccess: true };
   }
 
-  // Check active subscriptions
+  // Check active subscriptions (and past_due within the current period — grace window)
+  // past_due means Stripe is still retrying; the customer should not lose access until
+  // Stripe gives up and emits customer.subscription.deleted (which sets status to 'cancelled').
   const now = new Date();
   const subRows = await db
-    .select({ tier: subscriptions.tier, province: subscriptions.province })
+    .select({ tier: subscriptions.tier, province: subscriptions.province, status: subscriptions.status })
     .from(subscriptions)
     .where(
       and(
         eq(subscriptions.email, normalised),
-        eq(subscriptions.status, "active"),
         gt(subscriptions.currentPeriodEnd, now),
       ),
     );
-  if (subRows.length === 0) return { hasAccess: false };
+  // Filter to active or past_due (grace period) — exclude cancelled/refunded
+  const eligibleRows = subRows.filter((r) => r.status === "active" || r.status === "past_due");
+  if (eligibleRows.length === 0) return { hasAccess: false };
   const unlocked = getAllSubscriptionExamTypes(
-    subRows.map((r) => ({
+    eligibleRows.map((r) => ({
       tier: r.tier as SubscriptionTier,
       province: r.province as SubscriptionProvince,
     })),
@@ -121,21 +124,25 @@ export async function resolveAccess(
     return { hasAccess: true, isOwner: false };
   }
 
-  // Active subscriptions
+  // Active subscriptions (and past_due within the current period — grace window)
+  // past_due means Stripe is still retrying; the customer should not lose access until
+  // Stripe gives up and emits customer.subscription.deleted (which sets status to 'cancelled').
   const now = new Date();
   const subRows = await db
-    .select({ tier: subscriptions.tier, province: subscriptions.province })
+    .select({ tier: subscriptions.tier, province: subscriptions.province, status: subscriptions.status })
     .from(subscriptions)
     .where(
       and(
         eq(subscriptions.email, email),
-        eq(subscriptions.status, "active"),
         gt(subscriptions.currentPeriodEnd, now),
       ),
     );
 
+  // Grant access for active or past_due (Stripe retry window) — deny cancelled/refunded
+  const eligibleRows = subRows.filter((r) => r.status === "active" || r.status === "past_due");
+
   const unlocked = getAllSubscriptionExamTypes(
-    subRows.map((r) => ({
+    eligibleRows.map((r) => ({
       tier: r.tier as SubscriptionTier,
       province: r.province as SubscriptionProvince,
     })),

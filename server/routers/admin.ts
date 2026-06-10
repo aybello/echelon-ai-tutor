@@ -2,7 +2,7 @@
  * Admin router — all procedures require role === 'admin'.
  * Provides read access to trial emails, waitlist signups, and question error reports.
  */
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, sql, count } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
 import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs } from "../../drizzle/schema";
@@ -24,28 +24,42 @@ export const adminRouter = router({
   stats: adminProcedure.query(async () => {
     const db = await getDb();
     if (!db) throw new Error("Database unavailable");
-    const [trials, waitlistRows, errors, scores, purchaseRows, feedbackRows] = await Promise.all([
-      db.select().from(trialEmails),
-      db.select().from(waitlist),
-      db.select().from(questionErrorReports),
-      db.select().from(examResults),
-      db.select().from(purchases),
-      db.select().from(userFeedback),
+    // Use COUNT(*) for all counts — avoids loading full table rows just to call .length
+    const [
+      [{ cnt: trialCount }],
+      [{ cnt: waitlistCount }],
+      [{ cnt: errorCount }],
+      [{ cnt: scoreCount }],
+      [{ cnt: purchaseCount }],
+      [{ cnt: feedbackCount }],
+      [{ cnt: triggerCount }],
+      revenueRows,
+      ratingRows,
+    ] = await Promise.all([
+      db.select({ cnt: count() }).from(trialEmails),
+      db.select({ cnt: count() }).from(waitlist),
+      db.select({ cnt: count() }).from(questionErrorReports),
+      db.select({ cnt: count() }).from(examResults),
+      db.select({ cnt: count() }).from(purchases),
+      db.select({ cnt: count() }).from(userFeedback),
+      db.select({ cnt: count() }).from(triggerLogs),
+      // Revenue: sum amountCAD in DB to avoid loading all rows
+      db.select({ total: sql<number>`COALESCE(SUM(amountCAD), 0)` }).from(purchases),
+      // Rating: avg in DB
+      db.select({ avg: sql<number>`COALESCE(AVG(rating), 0)`, cnt: count() }).from(userFeedback),
     ]);
-    const totalRevenueCents = purchaseRows.reduce((acc, p) => acc + p.amountCAD, 0);
-    const avgRating = feedbackRows.length > 0
-      ? feedbackRows.reduce((acc, f) => acc + f.rating, 0) / feedbackRows.length
-      : 0;
+    const totalRevenueCents = Number(revenueRows[0]?.total ?? 0);
+    const avgRating = Number(ratingRows[0]?.avg ?? 0);
     return {
-      trialCount: trials.length,
-      waitlistCount: waitlistRows.length,
-      errorCount: errors.length,
-      scoreCount: scores.length,
-      purchaseCount: purchaseRows.length,
+      trialCount: Number(trialCount),
+      waitlistCount: Number(waitlistCount),
+      errorCount: Number(errorCount),
+      scoreCount: Number(scoreCount),
+      purchaseCount: Number(purchaseCount),
       totalRevenueCAD: totalRevenueCents / 100,
-      feedbackCount: feedbackRows.length,
+      feedbackCount: Number(feedbackCount),
       avgRating: Math.round(avgRating * 10) / 10,
-      triggerCount: (await db.select().from(triggerLogs)).length,
+      triggerCount: Number(triggerCount),
     };
   }),
 

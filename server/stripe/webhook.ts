@@ -346,6 +346,22 @@ export function registerStripeWebhook(app: Express) {
               .set({ status: "past_due" })
               .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId));
             console.log(`[Stripe Webhook] Subscription payment failed: ${stripeSubscriptionId}`);
+
+            // Notify owner — mirrors the refund/dispute pattern
+            // Fetch the customer email from our DB so the notification is actionable
+            const failedSubRows = await db
+              .select({ email: subscriptions.email, tier: subscriptions.tier })
+              .from(subscriptions)
+              .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId))
+              .limit(1);
+            const failedEmail = failedSubRows[0]?.email ?? "(unknown)";
+            const failedTier = failedSubRows[0]?.tier ?? "(unknown)";
+            await notifyOwner({
+              title: "⚠️ Subscription payment failed",
+              content: `Payment failed for ${failedEmail} (${failedTier} plan, sub ${stripeSubscriptionId}). Stripe will retry automatically. Customer has been moved to past_due and retains access during the retry window.`,
+            }).catch((notifyErr) => {
+              console.error("[Stripe Webhook] notifyOwner failed for payment_failed:", notifyErr.message);
+            });
           } catch (err: any) {
             console.error("[Stripe Webhook] Error processing invoice.payment_failed:", err.message);
           }
