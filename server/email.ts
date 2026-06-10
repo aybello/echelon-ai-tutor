@@ -846,3 +846,154 @@ export async function sendWelcomeOnboardingEmail(payload: WelcomeOnboardingEmail
   const info = await transporter.sendMail(mail);
   console.log(`[Welcome Onboarding Email] Sent to ${email} — ${nodemailer.getTestMessageUrl(info) || "production"}`);
 }
+
+export interface TeamEnrollmentEmailPayload {
+  email: string;
+  orgName: string;
+  managerEmail: string;
+  loginUrl: string; // e.g. https://echeloninstitute.ca/dashboard/login
+}
+
+/**
+ * Sends a team enrollment email to an operator who has been assigned a seat
+ * by their organization manager. Generic — works for any utility or company.
+ * Called from grantSeat() in orgRouter.ts.
+ */
+export async function sendTeamEnrollmentEmail(
+  payload: TeamEnrollmentEmailPayload
+): Promise<void> {
+  const { email, orgName, managerEmail, loginUrl } = payload;
+
+  let transporter: nodemailer.Transporter;
+  if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
+    transporter = createTransporter();
+  } else if (!ENV.isProduction) {
+    const testAccount = await nodemailer.createTestAccount();
+    transporter = nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false,
+      auth: { user: testAccount.user, pass: testAccount.pass },
+    });
+  } else {
+    console.error("[email] SMTP not configured in production — cannot send team enrollment email.");
+    throw new Error("Email service not configured");
+  }
+
+  const siteUrl = "https://echeloninstitute.ca";
+
+  const mail = {
+    from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
+    to: email,
+    subject: `You've been enrolled in Echelon Institute — ${orgName}`,
+    text: [
+      `Hi there,`,
+      ``,
+      `${orgName} has enrolled you in Echelon Institute — Canada's AI-powered exam prep platform for water and wastewater operators.`,
+      ``,
+      `Your All-Access subscription is active and ready to use. You have full access to practice questions, mock exams, flashcards, study guides, and the AI Tutor for every certification level.`,
+      ``,
+      `To get started, sign in here:`,
+      `  ${loginUrl}`,
+      ``,
+      `Use this email address (${email}) to sign in. You'll receive a one-time code — no password needed.`,
+      ``,
+      `Your progress, scores, and exam readiness are tracked on your personal dashboard. Your manager at ${orgName} can see an overview of team readiness but cannot see your individual question responses.`,
+      ``,
+      `Questions? Reply to this email or reach us at abello@echeloninstitute.ca`,
+      ``,
+      `Good luck on your exam!`,
+      `— The Echelon Institute Team`,
+    ].join("\n"),
+    html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,Helvetica,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+
+        <!-- Header -->
+        <tr>
+          <td style="background:linear-gradient(135deg,#1D4ED8 0%,#0E7490 100%);border-radius:12px 12px 0 0;padding:32px 32px 28px;text-align:center;">
+            <div style="font-size:40px;margin-bottom:12px;">🎓</div>
+            <h1 style="color:#ffffff;margin:0 0 8px;font-size:26px;font-weight:800;line-height:1.2;">You've been enrolled!</h1>
+            <p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">${orgName} has given you full access to Echelon Institute.</p>
+          </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td style="background:#ffffff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;">
+
+            <!-- Enrollment summary -->
+            <div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:10px;padding:18px 22px;margin-bottom:28px;">
+              <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#1D4ED8;letter-spacing:0.06em;text-transform:uppercase;">Enrollment Confirmed</p>
+              <p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#0F172A;">All-Access Subscription</p>
+              <p style="margin:0 0 4px;font-size:14px;color:#475569;">Enrolled by: ${orgName}</p>
+              <p style="margin:0;font-size:13px;color:#64748B;">Every certification level included — Class 1 through 4, Water &amp; Wastewater</p>
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align:center;margin-bottom:28px;">
+              <a href="${loginUrl}" style="display:inline-block;background:linear-gradient(135deg,#1D4ED8,#0E7490);color:#ffffff;text-decoration:none;padding:16px 32px;border-radius:10px;font-size:16px;font-weight:800;letter-spacing:-0.01em;">
+                Sign In &amp; Start Studying →
+              </a>
+              <p style="margin:12px 0 0;font-size:13px;color:#64748B;">Use <strong>${email}</strong> to sign in — no password needed, just a one-time code.</p>
+            </div>
+
+            <!-- What's included -->
+            <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#0F172A;">What's included in your All-Access subscription:</p>
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+              <tr>
+                <td style="vertical-align:top;width:50%;padding-right:12px;">
+                  <ul style="margin:0;padding-left:18px;">
+                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">500+ practice questions per exam level</li>
+                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Timed mock exams (100 questions, 2 hrs)</li>
+                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">AI Tutor — step-by-step explanations</li>
+                    <li style="font-size:13px;color:#475569;line-height:1.5;">Flashcard spaced-repetition system</li>
+                  </ul>
+                </td>
+                <td style="vertical-align:top;width:50%;padding-left:12px;">
+                  <ul style="margin:0;padding-left:18px;">
+                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Module-by-module performance tracking</li>
+                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Formula sheets with worked examples</li>
+                    <li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Process guides and study notes</li>
+                    <li style="font-size:13px;color:#475569;line-height:1.5;">Exam date reminders and readiness score</li>
+                  </ul>
+                </td>
+              </tr>
+            </table>
+
+            <!-- Privacy note -->
+            <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;padding:14px 18px;margin-bottom:28px;">
+              <p style="margin:0;font-size:13px;color:#475569;line-height:1.6;">
+                <strong style="color:#0F172A;">Your privacy:</strong> Your manager at ${orgName} can see team-level readiness metrics (overall accuracy, activity, exam dates) but cannot see your individual question responses or session details.
+              </p>
+            </div>
+
+            <!-- Footer -->
+            <div style="border-top:1px solid #E2E8F0;padding-top:20px;text-align:center;">
+              <p style="margin:0 0 6px;font-size:13px;color:#64748B;">Questions? Reply to this email or reach us at</p>
+              <p style="margin:0 0 6px;font-size:13px;"><a href="mailto:abello@echeloninstitute.ca" style="color:#1D4ED8;text-decoration:none;">abello@echeloninstitute.ca</a></p>
+              <p style="margin:12px 0 0;font-size:12px;color:#94A3B8;">Echelon Institute · Canada's AI-powered exam prep for water &amp; wastewater operators</p>
+            </div>
+
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
+    `,
+  };
+
+  const info = await transporter.sendMail(mail);
+  if (!ENV.smtpHost) {
+    console.log("[Team Enrollment Email] Preview URL:", nodemailer.getTestMessageUrl(info));
+  } else {
+    console.log(`[Team Enrollment Email] Sent to ${email} from org ${orgName}`);
+  }
+}

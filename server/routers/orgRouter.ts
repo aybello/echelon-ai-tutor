@@ -27,6 +27,7 @@ import {
   examDates,
 } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
+import { sendTeamEnrollmentEmail } from "../email";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -103,9 +104,10 @@ async function resolveOrgManager(ctx: {
  */
 async function grantSeat(
   db: Awaited<ReturnType<typeof getDb>>,
-  org: { id: number; province: string; termEnd: Date },
+  org: { id: number; province: string; termEnd: Date; name: string },
   email: string,
   role: "manager" | "operator" = "operator",
+  managerEmail?: string,
 ) {
   if (!db) throw new Error("Database unavailable");
 
@@ -115,6 +117,9 @@ async function grantSeat(
     .from(organizationMembers)
     .where(and(eq(organizationMembers.orgId, org.id), eq(organizationMembers.email, email)))
     .limit(1);
+
+  const isNewMember = existingMember.length === 0;
+  const wasRevoked = existingMember.length > 0 && existingMember[0].status === "revoked";
 
   if (existingMember.length > 0) {
     await db
@@ -158,6 +163,20 @@ async function grantSeat(
       currentPeriodStart: new Date(),
       currentPeriodEnd: org.termEnd,
       orgId: org.id,
+    });
+  }
+
+  // Send enrollment email to new operators (or re-activated ones)
+  // Fire-and-forget — don't block the seat assignment if email fails
+  if (role === "operator" && (isNewMember || wasRevoked)) {
+    const loginUrl = "https://echeloninstitute.ca/dashboard/login";
+    sendTeamEnrollmentEmail({
+      email,
+      orgName: org.name,
+      managerEmail: managerEmail ?? "abello@echeloninstitute.ca",
+      loginUrl,
+    }).catch(err => {
+      console.error(`[Team Enrollment Email] Failed to send to ${email}:`, err);
     });
   }
 }

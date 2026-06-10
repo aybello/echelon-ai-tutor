@@ -225,7 +225,7 @@ export function registerStripeWebhook(app: Express) {
               });
               orgId = (insertResult as any).insertId;
               // Grant manager seat (member row + subscription row)
-              await grantSeat(db, { id: orgId, province, termEnd: currentPeriodEnd }, managerEmail, "manager");
+              await grantSeat(db, { id: orgId, name: orgName, province, termEnd: currentPeriodEnd }, managerEmail, "manager");
               console.log(`[Stripe Webhook] Org created: ${orgName} (${orgId}) manager=${managerEmail} seats=${seats}`);
               await notifyOwner({
                 title: `New Team Plan: ${orgName}`,
