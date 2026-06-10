@@ -17,7 +17,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Link } from "wouter";
+import { useLocation, Link } from "wouter";
+import SiteNav from "@/components/SiteNav";
 import { Building2, CheckCircle2, ChevronRight, Zap, Shield, BarChart3 } from "lucide-react";
 
 // ── Pricing ───────────────────────────────────────────────────────────────────
@@ -74,6 +75,7 @@ const FEATURES = [
 ];
 
 export default function Teams() {
+  const [location] = useLocation();
   const [seats, setSeats] = useState(10);
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
   const [orgName, setOrgName] = useState("");
@@ -115,22 +117,7 @@ export default function Teams() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      {/* Nav */}
-      <nav className="border-b border-gray-200 px-6 py-4 flex items-center justify-between max-w-6xl mx-auto">
-        <Link href="/">
-          <span className="text-xl font-bold tracking-tight cursor-pointer">
-            Echelon<span className="text-blue-600"> Institute</span>
-          </span>
-        </Link>
-        <div className="flex items-center gap-4">
-          <Link href="/dashboard">
-            <Button variant="ghost" size="sm" className="text-gray-500 hover:text-gray-900">Student Login</Button>
-          </Link>
-          <Link href="/team">
-            <Button variant="ghost" size="sm" className="text-gray-500 hover:text-gray-900">Manager Login</Button>
-          </Link>
-        </div>
-      </nav>
+      <SiteNav currentPath={location} />
 
       {/* Hero */}
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-12 text-center">

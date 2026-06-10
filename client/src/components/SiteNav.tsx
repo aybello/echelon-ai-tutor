@@ -218,7 +218,7 @@ interface SiteNavProps {
  * Study tool pages (/quiz, /oit-mock, etc.) are NOT marketing pages.
  */
 function isMarketingPage(path: string): boolean {
-  return path === "/" || path === "/wpi" || path === "/pricing" || path === "/about" || path === "/career";
+  return path === "/" || path === "/wpi" || path === "/pricing" || path === "/about" || path === "/career" || path === "/teams";
 }
 
 /** Returns the 5-6 most contextually relevant desktop nav links for the current path. */
