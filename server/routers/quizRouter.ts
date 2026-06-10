@@ -244,7 +244,16 @@ export const quizRouter = router({
         catch (err) { console.error(`[getBankMeta] malformed formulaLinks for ${row.bankKey}:`, err); }
       }
 
-      return { bankKey: row.bankKey, modules, moduleTargets, formulaLinks, totalQuestions: row.totalQuestions };
+      return {
+        bankKey: row.bankKey,
+        modules,
+        moduleTargets,
+        formulaLinks,
+        totalQuestions: row.totalQuestions,
+        /** Issue L: monotonic counter incremented on admin question edits.
+         *  Clients compare against their cached value and invalidate on mismatch. */
+        contentVersion: row.contentVersion ?? 1,
+      };
     }),
 
   /**

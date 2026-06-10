@@ -11,37 +11,31 @@ import { getDb } from "../db";
 import { questionAttempts, studentProfiles, aiChatSessions, examDates } from "../../drizzle/schema";
 import { and, eq, sql, desc, gte, or } from "drizzle-orm";
 import { getResourcesForProfile } from "../resourceIndex";
-import { jwtVerify } from "jose";
-import { ENV } from "../_core/env";
 import { TRPCError } from "@trpc/server";
 
-const JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret);
-const DASHBOARD_COOKIE = "echelon_dashboard_session";
-
 /**
- * Resolves the dashboard identity from either:
- *   - Manus OAuth session (ctx.user.id)
- *   - Email OTP cookie (echelon_dashboard_session)
+ * Resolves the dashboard identity from the tRPC context.
+ *
+ * Issue I fix: this is now a thin wrapper around ctx.user and ctx.studentEmail,
+ * which are already verified and normalized by server/_core/context.ts.
+ * There is no longer a second, independent cookie-verification path here.
+ *
+ * Issue J fix: ctx.studentEmail is already lowercased in context.ts, so email
+ * case mismatches between sign-up and dashboard queries are eliminated.
  *
  * Returns { userId, email } — at least one will be non-null.
  * Throws UNAUTHORIZED if neither is present.
  */
-async function resolveDashboardIdentity(ctx: { user: { id: number; email?: string | null } | null; req: any }) {
-  // 1. OAuth user
+function resolveDashboardIdentity(ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null }) {
+  // 1. OAuth user (admin / owner)
   if (ctx.user) {
     return { userId: ctx.user.id, email: ctx.user.email ?? null };
   }
 
-  // 2. Email OTP session cookie
-  try {
-    const token = ctx.req?.cookies?.[DASHBOARD_COOKIE];
-    if (token) {
-      const { payload } = await jwtVerify(token, JWT_SECRET);
-      if (payload.type === "dashboard" && payload.email) {
-        return { userId: null, email: payload.email as string };
-      }
-    }
-  } catch { /* invalid/expired cookie */ }
+  // 2. OTP session — already verified + normalized (lowercased) by context.ts
+  if (ctx.studentEmail) {
+    return { userId: null, email: ctx.studentEmail };
+  }
 
   throw new TRPCError({ code: "UNAUTHORIZED", message: "Please sign in to view your dashboard." });
 }

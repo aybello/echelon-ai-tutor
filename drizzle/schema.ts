@@ -255,6 +255,9 @@ export const questionBankMeta = mysqlTable("question_bank_meta", {
   formulaLinks: text("formulaLinks"),
     // JSON: { "WQA-M001": "/formulas-wqa#..." } or null
   totalQuestions: int("totalQuestions").notNull(),
+  /** Monotonically increasing counter. Incremented by admin whenever a question in this bank
+   *  is edited. Clients compare this against their cached value and invalidate on mismatch. */
+  contentVersion: int("contentVersion").notNull().default(1),
 });
 
 export type QuestionBankMetaRow = typeof questionBankMeta.$inferSelect;
@@ -291,7 +294,8 @@ export type InsertUserFeedback = typeof userFeedback.$inferInsert;
 /** AI chat sessions — logs every AI tutor conversation for memory injection */
 export const aiChatSessions = mysqlTable("ai_chat_sessions", {
   id: int("id").autoincrement().primaryKey(),
-  userId: int("userId").notNull(), // only logged-in users get memory
+  userId: int("userId"), // nullable — OTP students have no Manus userId
+  studentEmail: varchar("studentEmail", { length: 320 }), // set when userId is null (OTP students)
   examType: varchar("examType", { length: 64 }).notNull(), // which exam context this session was in
   messageCount: int("messageCount").notNull().default(0),
   topicsCovered: text("topicsCovered").notNull(), // JSON array of topic strings discussed

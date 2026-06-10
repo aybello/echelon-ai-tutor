@@ -150,11 +150,13 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     }
   );
 
+  // Issue L: metaQuery always runs (even on cache hit) so we can compare contentVersion
+  // BEFORE rendering. If the server version is higher, we invalidate immediately.
   const metaQuery = trpc.quiz.getBankMeta.useQuery(
     { bankKey },
     {
       staleTime: 1000 * 60 * 30,
-      enabled: !cached,
+      enabled: true, // always fetch — needed for version check
       retry: 4,
       retryDelay: 5000,
     }
@@ -170,7 +172,19 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     }
   );
 
-  // ── Invalidate stale cache when live data differs ─────────────────────────────
+  // ── Issue L: invalidate cache when server contentVersion is newer ────────────────────────
+  // This runs BEFORE questions are rendered, so the user never sees stale content.
+  useEffect(() => {
+    if (!cached || !metaQuery.data) return;
+    const serverVersion = metaQuery.data.contentVersion ?? 1;
+    const cachedVersion = cached.contentVersion ?? 0;
+    if (serverVersion > cachedVersion) {
+      // Admin edited a question — bust the cache immediately
+      invalidate(bankKey);
+    }
+  }, [bankKey, cached, metaQuery.data]);
+
+  // ── Invalidate stale cache when live full-bank data differs ─────────────────────────
   // Always invalidate when live data arrives — the cache may have stale questions
   // (e.g. all from one module) even if the count is the same.
   useEffect(() => {
@@ -204,6 +218,8 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
       formulaLinks: metaQuery.data.formulaLinks ?? null,
       totalQuestions: metaQuery.data.totalQuestions ?? rawQuestions.length,
       overviews: (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null,
+      // Issue L: persist the server version so future loads can detect content changes
+      contentVersion: metaQuery.data.contentVersion ?? 1,
     });
   }, [bankKey, fullQuery.data, metaQuery.data, overviewsQuery.data]);
 

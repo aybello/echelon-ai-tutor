@@ -22,6 +22,9 @@ export interface CachedBank {
   formulaLinks: Record<string, string> | null;
   totalQuestions: number;
   overviews: Record<string, ModuleOverview> | null;
+  /** Issue L: server-driven version stamp. If the server returns a higher value
+   *  the cache is invalidated before rendering, so stale questions are never shown. */
+  contentVersion: number;
 }
 
 function key(bankKey: string) {

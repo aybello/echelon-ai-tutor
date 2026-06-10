@@ -397,39 +397,59 @@ export const appRouter = router({
         try {
           let enrichedMessages = [...input.messages];
 
-          // If user is authenticated, inject student context into the system prompt
-          if (ctx.user?.id && input.examType) {
+          // Inject student context into the system prompt when we have a verified identity.
+          // Issue K fix: gate on any resolved identity (OAuth OR OTP session), not just OAuth.
+          const studentIdent = ctx.user?.id ?? ctx.studentEmail ?? null;
+          if (studentIdent && input.examType) {
             try {
               const db = await getDb();
               if (db) {
-                // Fetch student profile
-                const profiles = await db
-                  .select()
-                  .from(studentProfiles)
-                  .where(eq(studentProfiles.userId, ctx.user.id))
-                  .limit(1);
+                // Fetch student profile — by userId for OAuth, by email for OTP students
+                const profiles = ctx.user?.id
+                  ? await db
+                      .select()
+                      .from(studentProfiles)
+                      .where(eq(studentProfiles.userId, ctx.user.id))
+                      .limit(1)
+                  : await db
+                      .select()
+                      .from(studentProfiles)
+                      .where(eq(studentProfiles.studentEmail, ctx.studentEmail!))
+                      .limit(1);
                 const profile = profiles[0] ?? null;
 
-                // Fetch last 3 AI chat session summaries
-                const recentSessions = await db
-                  .select({
-                    summary: aiChatSessions.summary,
-                    topicsCovered: aiChatSessions.topicsCovered,
-                    sessionEnd: aiChatSessions.sessionEnd,
-                  })
-                  .from(aiChatSessions)
-                  .where(eq(aiChatSessions.userId, ctx.user.id))
-                  .orderBy(desc(aiChatSessions.sessionEnd))
-                  .limit(3);
+                // Fetch last 3 AI chat session summaries — by userId or by email
+                const recentSessions = ctx.user?.id
+                  ? await db
+                      .select({
+                        summary: aiChatSessions.summary,
+                        topicsCovered: aiChatSessions.topicsCovered,
+                        sessionEnd: aiChatSessions.sessionEnd,
+                      })
+                      .from(aiChatSessions)
+                      .where(eq(aiChatSessions.userId, ctx.user.id))
+                      .orderBy(desc(aiChatSessions.sessionEnd))
+                      .limit(3)
+                  : await db
+                      .select({
+                        summary: aiChatSessions.summary,
+                        topicsCovered: aiChatSessions.topicsCovered,
+                        sessionEnd: aiChatSessions.sessionEnd,
+                      })
+                      .from(aiChatSessions)
+                      .where(eq(aiChatSessions.studentEmail, ctx.studentEmail!))
+                      .orderBy(desc(aiChatSessions.sessionEnd))
+                      .limit(3);
 
-                // Fetch exam date if set
-                const examDateRows = ctx.user.email
+                // Fetch exam date if set — use OAuth email or OTP session email
+                const identEmail = ctx.user?.email ?? ctx.studentEmail ?? null;
+                const examDateRows = identEmail
                   ? await db
                       .select()
                       .from(examDates)
                       .where(
                         and(
-                          eq(examDates.email, ctx.user.email),
+                          eq(examDates.email, identEmail),
                           eq(examDates.productKey, input.examType)
                         )
                       )
@@ -475,7 +495,7 @@ export const appRouter = router({
                         .join("\n");
                   }
 
-                  let memoryBlock = `\n\nSTUDENT PROFILE (${ctx.user.name || "Student"}):
+                  let memoryBlock = `\n\nSTUDENT PROFILE (${ctx.user?.name || "Student"}):
 - Questions attempted: ${profile.totalAttempts} | Sessions: ${profile.totalSessions} | Streak: ${profile.currentStreak} days${examCountdown}
 - Strong topics: ${strongTopics.length > 0 ? strongTopics.join(", ") : "Still building data"}
 - Weak topics: ${weakTopics.length > 0 ? weakTopics.join(", ") : "Still building data"}
@@ -554,6 +574,8 @@ BEHAVIOUR RULES:
             .map((m) => `${m.role === "user" ? "Student" : "Tutor"}: ${m.content}`)
             .join("\n");
 
+          // Issue M: cap both LLM calls to small token budgets — a 2-3 sentence summary
+          // needs ~300 tokens max; topic extraction needs ~100.
           const summaryResponse = await invokeLLM({
             messages: [
               {
@@ -566,12 +588,26 @@ BEHAVIOUR RULES:
                 content: conversationText,
               },
             ],
+            maxTokens: 300, // Issue M: small cap — a 2-3 sentence summary needs <300 tokens
           });
 
-          const summary = String(
-            summaryResponse?.choices?.[0]?.message?.content ??
-            "Session summary unavailable."
-          );
+          const rawSummary = String(summaryResponse?.choices?.[0]?.message?.content ?? "").trim();
+
+          // Issue M: do NOT write a placeholder row — it would pollute future tutor memory.
+          // If the LLM returned nothing useful, skip persistence entirely.
+          const PLACEHOLDER_STRINGS = [
+            "session summary unavailable",
+            "unable to summarize",
+            "no summary available",
+          ];
+          const summaryIsUseless =
+            rawSummary.length < 20 ||
+            PLACEHOLDER_STRINGS.some((p) => rawSummary.toLowerCase().includes(p));
+          if (summaryIsUseless) {
+            console.warn("[AI Tutor] saveSession: summary was empty/placeholder — skipping DB write to protect tutor memory.");
+            return { saved: false };
+          }
+          const summary = rawSummary;
 
           // Extract topics from the conversation (simple keyword extraction)
           const topicsResponse = await invokeLLM({
@@ -586,6 +622,7 @@ BEHAVIOUR RULES:
                 content: conversationText,
               },
             ],
+            maxTokens: 100, // Issue M: topic list is tiny — 100 tokens is more than enough
           });
 
           let topicsCovered = "[\"General\"]";

@@ -204,6 +204,20 @@
       "when": 1781107719130,
       "tag": "0028_glossy_lord_hawal",
       "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "5",
+      "when": 1781110813070,
+      "tag": "0029_great_mentallo",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "5",
+      "when": 1781110917784,
+      "tag": "0030_stormy_grim_reaper",
+      "breakpoints": true
     }
   ]
 }

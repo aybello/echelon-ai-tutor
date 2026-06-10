@@ -54,10 +54,12 @@ async function fetchBank(bankKey: string): Promise<void> {
     const formulaLinks = metaJson?.result?.data?.json?.formulaLinks ?? null;
     const totalQuestions = metaJson?.result?.data?.json?.totalQuestions ?? questions.length;
     const overviews = overviewsJson?.result?.data?.json ?? null;
+    // Issue L: persist contentVersion so future loads can detect admin content edits
+    const contentVersion: number = metaJson?.result?.data?.json?.contentVersion ?? 1;
 
     if (questions.length === 0) return; // DB down — don't cache
 
-    setCached(bankKey, { questions, modules, moduleTargets, formulaLinks, totalQuestions, overviews });
+    setCached(bankKey, { questions, modules, moduleTargets, formulaLinks, totalQuestions, overviews, contentVersion });
   } catch {
     // Network error or DB down — silently skip
   }
