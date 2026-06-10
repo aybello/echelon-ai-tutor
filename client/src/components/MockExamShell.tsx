@@ -82,12 +82,12 @@ Provide a clear, educational explanation of why the correct answer is right and 
           🤖 Ask AI Tutor
         </button>
       ) : (
-        <div style={{ background: "#F8FAFC", borderRadius: 10, border: "1.5px solid #E0E7FF", padding: "12px 14px", marginTop: 4 }}>
+        <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1.5px solid #E0E7FF", padding: "12px 14px", marginTop: 4 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#4338CA", letterSpacing: "0.06em" }}>🤖 AI TUTOR</span>
             <button
               onClick={() => setOpen(false)}
-              style={{ background: "none", border: "none", cursor: "pointer", color: "#94A3B8", fontSize: 14, padding: 0 }}
+              style={{ background: "none", border: "none", cursor: "pointer", color: "#64748B", fontSize: 14, padding: 0 }}
             >✕</button>
           </div>
           <div style={{ maxHeight: 200, overflowY: "auto", marginBottom: 8 }}>
@@ -97,14 +97,14 @@ Provide a clear, educational explanation of why the correct answer is right and 
                 padding: "8px 10px", borderRadius: 8,
                 background: m.role === "user" ? "#EEF2FF" : "#fff",
                 border: m.role === "assistant" ? "1px solid #E0E7FF" : "none",
-                fontSize: 12, color: "#0F172A", lineHeight: 1.6,
+                fontSize: 12, color: "#FFFFFF", lineHeight: 1.6,
               }}>
                 {m.role === "user" && <span style={{ fontWeight: 700, color: "#4338CA", marginRight: 4 }}>You:</span>}
                 {m.content}
               </div>
             ))}
             {loading && (
-              <div style={{ padding: "8px 10px", borderRadius: 8, background: "#fff", border: "1px solid #E0E7FF", fontSize: 12, color: "#94A3B8" }}>
+              <div style={{ padding: "8px 10px", borderRadius: 8, background: "#fff", border: "1px solid #E0E7FF", fontSize: 12, color: "#64748B" }}>
                 Thinking…
               </div>
             )}
@@ -127,7 +127,7 @@ Provide a clear, educational explanation of why the correct answer is right and 
               style={{
                 padding: "7px 12px", borderRadius: 8, border: "none",
                 background: loading || !input.trim() ? "#E0E7FF" : "#4338CA",
-                color: loading || !input.trim() ? "#94A3B8" : "#fff",
+                color: loading || !input.trim() ? "#E2E8F0" : "#fff",
                 fontWeight: 700, fontSize: 12, cursor: loading || !input.trim() ? "not-allowed" : "pointer",
                 fontFamily: "inherit",
               }}
@@ -471,7 +471,7 @@ export default function MockExamShell({
         features={features}
         backPath={backPath}
       >
-        <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+        <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
           <SiteNav currentPath={currentPath} />
           <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px 80px" }}>
             <div className="mes-intro-card" style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center" }}>
@@ -480,13 +480,13 @@ export default function MockExamShell({
               <div style={{ display: "inline-block", padding: "4px 14px", borderRadius: 20, background: `${accentColor}18`, color: accentColor, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", marginBottom: 12 }}>
                 {badge}
               </div>
-              <h1 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", margin: "0 0 8px" }}>{title}</h1>
+              <h1 style={{ fontSize: 24, fontWeight: 900, color: "#FFFFFF", margin: "0 0 8px" }}>{title}</h1>
               {infoLine && <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 24px", lineHeight: 1.6 }}>{infoLine}</p>}
 
               {/* Province selector */}
               {showProvinceSelector && (
                 <div style={{ marginBottom: 24, textAlign: "left" }}>
-                  <label style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", display: "block", marginBottom: 8 }}>YOUR PROVINCE</label>
+                  <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", display: "block", marginBottom: 8 }}>YOUR PROVINCE</label>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                     {provinceOptions.map(p => (
                       <button
@@ -494,9 +494,9 @@ export default function MockExamShell({
                         onClick={() => setSelectedProvince(p.value)}
                         style={{
                           padding: "7px 12px", borderRadius: 20,
-                          border: `2px solid ${selectedProvince === p.value ? accentColor : "#E2E8F0"}`,
+                          border: `2px solid ${selectedProvince === p.value ? accentColor : "#94A3B8"}`,
                           background: selectedProvince === p.value ? `${accentColor}12` : "#F8FAFC",
-                          color: selectedProvince === p.value ? accentColor : "#64748B",
+                          color: selectedProvince === p.value ? accentColor : "#E2E8F0",
                           fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                         }}
                       >
@@ -523,17 +523,17 @@ export default function MockExamShell({
                   { icon: "🎯", label: "Pass Mark",  value: `${Math.round(passThreshold * 100)}% (${Math.round(passThreshold * EXAM_QUESTIONS)}/${EXAM_QUESTIONS})` },
                   { icon: "📊", label: "Modules",    value: `${moduleCount ?? Object.keys(moduleTargets).length} Topics` },
                 ].map(({ icon, label, value }) => (
-                  <div key={label} style={{ padding: "14px 16px", borderRadius: 12, background: "#F8FAFC", border: "1px solid #E2E8F0" }}>
+                  <div key={label} style={{ padding: "14px 16px", borderRadius: 12, background: "#FFFFFF", border: "1px solid #E2E8F0" }}>
                     <div style={{ fontSize: 20, marginBottom: 4 }}>{icon}</div>
-                    <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 600, marginBottom: 2 }}>{label}</div>
-                    <div style={{ fontSize: 14, fontWeight: 800, color: "#0F172A" }}>{value}</div>
+                    <div style={{ fontSize: 10, color: "#64748B", fontWeight: 600, marginBottom: 2 }}>{label}</div>
+                    <div style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF" }}>{value}</div>
                   </div>
                 ))}
               </div>
 
               {/* Module distribution */}
-              <div style={{ background: "#F8FAFC", borderRadius: 12, padding: "14px 16px", marginBottom: 28, textAlign: "left" }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>EXAM DISTRIBUTION</div>
+              <div style={{ background: "#FFFFFF", borderRadius: 12, padding: "14px 16px", marginBottom: 28, textAlign: "left" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", marginBottom: 10 }}>EXAM DISTRIBUTION</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {Object.entries(moduleTargets).map(([mod, n]) => (
                     <span key={mod} style={{ padding: "3px 8px", borderRadius: 20, background: moduleColors[mod]?.bg ?? "#E0F2FE", color: moduleColors[mod]?.color ?? accentColor, fontSize: 10, fontWeight: 600 }}>
@@ -550,7 +550,7 @@ export default function MockExamShell({
                 🚀 Start Exam
               </button>
               <div style={{ marginTop: 16 }}>
-                <Link href={practicePath} style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none" }}>
+                <Link href={practicePath} style={{ fontSize: 12, color: "#64748B", textDecoration: "none" }}>
                   &laquo; Back to {practiceLabel}
                 </Link>
               </div>
@@ -568,7 +568,7 @@ export default function MockExamShell({
     const skipped = answers.filter(a => a.selected === null).length;
     const incorrect = EXAM_QUESTIONS - correct - skipped;
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath={currentPath} />
         <div style={{ maxWidth: 700, margin: "0 auto", padding: "32px 20px 80px" }}>
           {/* Score hero */}
@@ -588,18 +588,18 @@ export default function MockExamShell({
             <div className="mes-results-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <button
                 onClick={() => { resultSavedRef.current = false; startExam(); }}
-                style={{ padding: "12px 28px", borderRadius: 10, background: "rgba(255,255,255,0.2)", color: "#fff", border: "2px solid rgba(255,255,255,0.4)", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                style={{ padding: "12px 28px", borderRadius: 10, background: "rgba(0,0,0,0.14)", color: "#fff", border: "2px solid rgba(255,255,255,0.4)", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
               >
                 🔄 Retake Exam
               </button>
               <button
                 onClick={() => setShowReview(v => !v)}
-                style={{ padding: "12px 28px", borderRadius: 10, background: "rgba(255,255,255,0.15)", color: "#fff", border: "2px solid rgba(255,255,255,0.3)", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                style={{ padding: "12px 28px", borderRadius: 10, background: "rgba(0,0,0,0.12)", color: "#fff", border: "2px solid rgba(255,255,255,0.3)", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
               >
                 {showReview ? "Hide" : "Review"} Answers
               </button>
               <Link href={practicePath}>
-                <button style={{ padding: "12px 28px", borderRadius: 10, background: "rgba(255,255,255,0.1)", color: "#fff", border: "2px solid rgba(255,255,255,0.25)", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+                <button style={{ padding: "12px 28px", borderRadius: 10, background: "rgba(0,0,0,0.09)", color: "#fff", border: "2px solid rgba(255,255,255,0.25)", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
                   📝 Practice Mode
                 </button>
               </Link>
@@ -626,18 +626,18 @@ export default function MockExamShell({
 
           {/* Module breakdown — weakest first */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
-            <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 16 }}>📊 Module Breakdown (Weakest First)</div>
+            <div style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", marginBottom: 16 }}>📊 Module Breakdown (Weakest First)</div>
             {sortedModules.map(([module, bd]) => {
               const modPct = bd.total > 0 ? bd.correct / bd.total : 0;
               const barColor = modPct >= 0.7 ? "#22C55E" : modPct >= 0.5 ? "#F59E0B" : "#EF4444";
-              const ms = moduleColors[module] ?? { bg: "#F1F5F9", color: "#475569" };
+              const ms = moduleColors[module] ?? { bg: "#F8FAFC", color: "#64748B" };
               return (
                 <div key={module} style={{ marginBottom: 14 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
                     <span style={{ fontSize: 12, fontWeight: 700, color: ms.color }}>{module}</span>
                     <span style={{ fontSize: 12, fontWeight: 700, color: barColor }}>{bd.correct}/{bd.total} ({Math.round(modPct * 100)}%)</span>
                   </div>
-                  <div style={{ height: 8, background: "#F1F5F9", borderRadius: 4, overflow: "hidden" }}>
+                  <div style={{ height: 8, background: "#FFFFFF", borderRadius: 4, overflow: "hidden" }}>
                     <div style={{ height: "100%", width: `${modPct * 100}%`, background: barColor, borderRadius: 4, transition: "width 0.6s ease" }} />
                   </div>
                 </div>
@@ -648,7 +648,7 @@ export default function MockExamShell({
           {/* Question review */}
           {showReview && (
             <div style={{ background: "#fff", borderRadius: 16, padding: "20px 24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>Question Review</div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#FFFFFF", marginBottom: 16 }}>Question Review</div>
               {questions.map((q, i) => {
                 const a = answers[i];
                 const isCorrect = a?.selected === q.correct;
@@ -657,7 +657,7 @@ export default function MockExamShell({
                   <div key={q.id} style={{ marginBottom: 16, padding: "14px 16px", borderRadius: 12, background: wasSkipped ? "#FFF7ED" : isCorrect ? "#F0FDF4" : "#FFF1F2", border: `1px solid ${wasSkipped ? "#FED7AA" : isCorrect ? "#BBF7D0" : "#FECDD3"}` }}>
                     <div style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: 8 }}>
                       <span style={{ fontSize: 16, flexShrink: 0 }}>{wasSkipped ? "⏭️" : isCorrect ? "✅" : "❌"}</span>
-                      <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>Q{i + 1}. {q.question}</div>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.5 }}>Q{i + 1}. {q.question}</div>
                     </div>
                     {!wasSkipped && !isCorrect && (
                       <div style={{ fontSize: 12, color: "#DC2626", marginBottom: 4 }}>Your answer: {q.options[a.selected!].replace(/^[A-Da-d][.):]\s*/, "")}</div>
@@ -702,7 +702,7 @@ export default function MockExamShell({
   const isLastQ = currentIdx === questions.length - 1;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath={currentPath} />
       {/* Sticky header */}
       <div style={{ position: "sticky", top: 0, zIndex: 100, background: "#fff", borderBottom: "1px solid #E2E8F0", padding: "10px 20px" }}>
@@ -719,7 +719,7 @@ export default function MockExamShell({
                 padding: "6px 12px",
                 borderRadius: 8,
                 border: "1.5px solid #E2E8F0",
-                background: "#F8FAFC",
+                background: "#FFFFFF",
                 color: "#64748B",
                 fontWeight: 600,
                 fontSize: 12,
@@ -732,7 +732,7 @@ export default function MockExamShell({
             >
               ← Exit
             </button>
-            <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A" }}>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#FFFFFF" }}>
               Q{currentIdx + 1} / {questions.length}
               <span style={{ marginLeft: 12, fontSize: 12, color: "#64748B", fontWeight: 500 }}>
                 {answered} answered · {flagged.length} flagged
@@ -758,12 +758,12 @@ export default function MockExamShell({
             <span style={{ fontSize: 11, fontWeight: 600, color: "#64748B" }}>
               {answered} / {EXAM_QUESTIONS} answered
             </span>
-            <span style={{ fontSize: 11, fontWeight: 600, color: flagged.length > 0 ? "#D97706" : "#94A3B8" }}>
+            <span style={{ fontSize: 11, fontWeight: 600, color: flagged.length > 0 ? "#D97706" : "#E2E8F0" }}>
               {flagged.length > 0 ? `🚩 ${flagged.length} flagged` : `Q${currentIdx + 1} of ${EXAM_QUESTIONS}`}
             </span>
           </div>
           {/* Track bar */}
-          <div style={{ height: 5, borderRadius: 99, background: "#E2E8F0", overflow: "hidden" }}>
+          <div style={{ height: 5, borderRadius: 99, background: "#94A3B8", overflow: "hidden" }}>
             <div style={{
               height: "100%",
               borderRadius: 99,
@@ -783,7 +783,7 @@ export default function MockExamShell({
             {currentQ.module}
           </div>
           {/* Question text */}
-          <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.6, marginBottom: 24 }}>
+          <div style={{ fontSize: 16, fontWeight: 700, color: "#FFFFFF", lineHeight: 1.6, marginBottom: 24 }}>
             {currentQ.question}
           </div>
           {/* Options */}
@@ -799,13 +799,13 @@ export default function MockExamShell({
                   onClick={() => setAnswers(prev => prev.map((a, idx) => idx === currentIdx ? { ...a, selected: i } : a))}
                   style={{
                     padding: "14px 18px", borderRadius: 12, textAlign: "left",
-                    border: `2px solid ${isSelected ? accentColor : "#E2E8F0"}`,
+                    border: `2px solid ${isSelected ? accentColor : "#94A3B8"}`,
                     background: isSelected ? `${accentColor}10` : "#F8FAFC",
-                    color: "#0F172A", fontSize: 14, fontWeight: isSelected ? 700 : 500,
+                    color: "#FFFFFF", fontSize: 14, fontWeight: isSelected ? 700 : 500,
                     cursor: "pointer", fontFamily: "inherit",
                   }}
                 >
-                  <span style={{ marginRight: 10, fontWeight: 800, color: isSelected ? accentColor : "#94A3B8" }}>
+                  <span style={{ marginRight: 10, fontWeight: 800, color: isSelected ? accentColor : "#E2E8F0" }}>
                     {String.fromCharCode(65 + i)}.
                   </span>
                   {opt}
@@ -818,19 +818,19 @@ export default function MockExamShell({
             <button
               onClick={() => setCurrentIdx(i => Math.max(0, i - 1))}
               disabled={currentIdx === 0}
-              style={{ flex: 1, minWidth: 100, padding: "12px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: currentIdx === 0 ? "#CBD5E1" : "#0F172A", fontWeight: 700, fontSize: 14, cursor: currentIdx === 0 ? "not-allowed" : "pointer", fontFamily: "inherit" }}
+              style={{ flex: 1, minWidth: 100, padding: "12px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: currentIdx === 0 ? "#94A3B8" : "#FFFFFF", fontWeight: 700, fontSize: 14, cursor: currentIdx === 0 ? "not-allowed" : "pointer", fontFamily: "inherit" }}
             >
               &laquo; Prev
             </button>
             <button
               onClick={toggleFlag}
-              style={{ padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${isFlagged ? "#D97706" : "#E2E8F0"}`, background: isFlagged ? "#FEF9C3" : "#fff", color: isFlagged ? "#A16207" : "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
+              style={{ padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${isFlagged ? "#D97706" : "#94A3B8"}`, background: isFlagged ? "#FEF9C3" : "#fff", color: isFlagged ? "#A16207" : "#E2E8F0", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
             >
               {isFlagged ? "🚩 Flagged" : "🚩 Flag"}
             </button>
             <button
               onClick={() => setReportModal({ id: currentQ.id, text: currentQ.question, module: currentQ.module })}
-              style={{ padding: "12px 14px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#94A3B8", fontWeight: 600, fontSize: 13, cursor: "pointer", fontFamily: "inherit" }}
+              style={{ padding: "12px 14px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#64748B", fontWeight: 600, fontSize: 13, cursor: "pointer", fontFamily: "inherit" }}
               title="Report an error"
             >
               ⚑
@@ -855,7 +855,7 @@ export default function MockExamShell({
 
         {/* Question navigator */}
         <div className="mes-navigator" style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 4 }}>
             {questions.map((_, i) => {
               const isAnswered = answers[i]?.selected !== null;
@@ -869,7 +869,7 @@ export default function MockExamShell({
                     padding: "6px 0", borderRadius: 6,
                     border: isCurrent ? `2px solid ${accentColor}` : "1px solid #E2E8F0",
                     background: isCurrent ? `${accentColor}18` : isFlaggedQ ? "#FEF9C3" : isAnswered ? "#DCFCE7" : "#F8FAFC",
-                    color: isCurrent ? accentColor : isFlaggedQ ? "#A16207" : isAnswered ? "#15803D" : "#94A3B8",
+                    color: isCurrent ? accentColor : isFlaggedQ ? "#A16207" : isAnswered ? "#15803D" : "#E2E8F0",
                     fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                   }}
                 >
@@ -882,7 +882,7 @@ export default function MockExamShell({
             {[
               { color: "#DCFCE7", textColor: "#15803D", label: "Answered" },
               { color: "#FEF9C3", textColor: "#A16207", label: "Flagged" },
-              { color: "#F8FAFC", textColor: "#94A3B8", label: "Unanswered" },
+              { color: "#F8FAFC", textColor: "#E2E8F0", label: "Unanswered" },
             ].map(({ color, textColor, label }) => (
               <div key={label} style={{ display: "flex", alignItems: "center", gap: 6 }}>
                 <div style={{ width: 12, height: 12, borderRadius: 3, background: color, border: "1px solid #E2E8F0" }} />

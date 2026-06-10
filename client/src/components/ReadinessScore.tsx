@@ -61,11 +61,11 @@ export default function ReadinessScore({ history }: Props) {
 
       {/* Labels */}
       <div style={{ flex: 1 }}>
-        <div style={{ fontSize: 12, fontWeight: 700, color: "#0F172A" }}>
+        <div style={{ fontSize: 12, fontWeight: 700, color: "#FFFFFF" }}>
           Session Readiness:{" "}
           <span style={{ color }}>{label}</span>
         </div>
-        <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 2 }}>
+        <div style={{ fontSize: 10, color: "#64748B", marginTop: 2 }}>
           {correct} correct · {wrong} wrong · {history.length} attempted
         </div>
       </div>

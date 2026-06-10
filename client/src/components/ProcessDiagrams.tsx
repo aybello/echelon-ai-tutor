@@ -244,7 +244,7 @@ export function ClarifierDiagram({ active, onClick, color }: DiagramProps) {
       <line x1={320} y1={215} x2={320} y2={228} stroke="#78350F" strokeWidth={3} />
       <polygon points="315,225 320,232 325,225" fill="#78350F" opacity={0.7} />
       {/* Scraper arm */}
-      <line x1={80} y1={135} x2={540} y2={188} stroke="#475569" strokeWidth={3.5} strokeLinecap="round" />
+      <line x1={80} y1={135} x2={540} y2={188} stroke="#E2E8F0" strokeWidth={3.5} strokeLinecap="round" />
       <circle cx={310} cy={162} r={7} fill="#1E3A5C" />
       <line x1={310} y1={45} x2={310} y2={162} stroke="#374151" strokeWidth={2} strokeDasharray="5 3" opacity={0.5} />
       {/* Effluent weir */}
@@ -291,7 +291,7 @@ export function FilterDiagram({ active, onClick, color }: DiagramProps) {
   return (
     <svg viewBox="0 0 660 245" width="100%" height="auto">
       {/* Filter box — narrower to leave right margin for labels */}
-      <rect x={50} y={44} width={490} height={168} rx={8} fill="#F8FAFC" stroke="#CBD5E1" strokeWidth={2} />
+      <rect x={50} y={44} width={490} height={168} rx={8} fill="#1E293B" stroke="#94A3B8" strokeWidth={2} />
       {/* Influent water layer */}
       <rect x={52} y={46} width={486} height={16} rx={4} fill="#BAE6FD" opacity={0.75} />
       {/* Influent arrow from above */}
@@ -307,9 +307,9 @@ export function FilterDiagram({ active, onClick, color }: DiagramProps) {
       <rect x={52} y={152} width={486} height={26} fill="#92400E" opacity={0.07} />
       {gravDots.map((d, i) => <circle key={i} cx={d[0]} cy={d[1]} r={5.5} fill="#92400E" opacity={0.4} />)}
       {/* Underdrain */}
-      <rect x={52} y={178} width={486} height={32} rx={4} fill="#E2E8F0" />
+      <rect x={52} y={178} width={486} height={32} rx={4} fill="#94A3B8" />
       {[68, 96, 124, 152, 180, 208, 236, 264, 292, 320, 348, 376, 404, 432, 460, 488, 516].map(x => (
-        <rect key={x} x={x} y={178} width={8} height={32} rx={2} fill="#CBD5E1" />
+        <rect key={x} x={x} y={178} width={8} height={32} rx={2} fill="#94A3B8" />
       ))}
       {/* Flow arrows (downward through media) */}
       {[110, 200, 295, 395, 480].map((x, i) => (

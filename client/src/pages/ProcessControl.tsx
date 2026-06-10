@@ -354,7 +354,7 @@ export default function ProcessControl() {
   const pidError = pidSetpoint - pidMeasured;
 
   return (
-    <div className="min-h-screen text-slate-900" style={{ background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div className="min-h-screen text-slate-900" style={{ background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath={location} />
 
       {/* ── Header ── */}
@@ -483,7 +483,7 @@ export default function ProcessControl() {
                     { label: "Range", value: currentInstrument.range },
                     { label: "Accuracy", value: currentInstrument.accuracy },
                   ].map(s => (
-                    <div key={s.label} className="rounded-xl p-3" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
+                    <div key={s.label} className="rounded-xl p-3" style={{ background: "#FFFFFF", border: "1px solid #E5E7EB" }}>
                       <p className="text-slate-400 text-xs mb-1">{s.label}</p>
                       <p className="text-slate-900 font-semibold text-sm">{s.value}</p>
                     </div>
@@ -563,7 +563,7 @@ export default function ProcessControl() {
                     { label: "P Action", value: `${(pidError * 2).toFixed(1)}% output`, color: "#3B82F6" },
                     { label: "Direction", value: pidError > 0 ? "Increase output ↑" : pidError < 0 ? "Decrease output ↓" : "No action ✓", color: pidError === 0 ? "#10B981" : "#F59E0B" },
                   ].map(r => (
-                    <div key={r.label} className="rounded-xl p-3 flex justify-between items-center" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
+                    <div key={r.label} className="rounded-xl p-3 flex justify-between items-center" style={{ background: "#FFFFFF", border: "1px solid #E5E7EB" }}>
                       <span className="text-slate-500 text-xs">{r.label}</span>
                       <span className="font-bold text-sm" style={{ color: r.color }}>{r.value}</span>
                     </div>
@@ -592,11 +592,11 @@ export default function ProcessControl() {
               <h3 className="text-xl font-bold text-slate-900 mb-1">{currentPID.name}</h3>
               <p className="text-slate-500 text-sm mb-4">{currentPID.description}</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div className="rounded-xl p-4" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
+                <div className="rounded-xl p-4" style={{ background: "#FFFFFF", border: "1px solid #E5E7EB" }}>
                   <p className="text-slate-400 text-xs mb-1">Formula</p>
                   <p className="text-slate-900 font-mono font-bold">{currentPID.formula}</p>
                 </div>
-                <div className="rounded-xl p-4" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
+                <div className="rounded-xl p-4" style={{ background: "#FFFFFF", border: "1px solid #E5E7EB" }}>
                   <p className="text-slate-400 text-xs mb-1">Typical Setting</p>
                   <p className="text-slate-900 font-semibold text-sm">{currentPID.typical}</p>
                 </div>
@@ -673,7 +673,7 @@ export default function ProcessControl() {
               </div>
 
               {/* Detail panel */}
-              <div className="rounded-xl p-5" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
+              <div className="rounded-xl p-5" style={{ background: "#FFFFFF", border: "1px solid #E5E7EB" }}>
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-2xl">{currentSCADA.icon}</span>
                   <div>
@@ -703,7 +703,7 @@ export default function ProcessControl() {
                   { ma: "20 mA",   meaning: "100% (maximum range)",   color: "#F59E0B" },
                   { ma: "<3.8 mA", meaning: "Broken wire / fault",    color: "#EF4444" },
                 ].map(s => (
-                  <div key={s.ma} className="rounded-xl p-3 text-center" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
+                  <div key={s.ma} className="rounded-xl p-3 text-center" style={{ background: "#FFFFFF", border: "1px solid #E5E7EB" }}>
                     <p className="font-bold text-lg mb-1" style={{ color: s.color }}>{s.ma}</p>
                     <p className="text-slate-600 text-xs">{s.meaning}</p>
                   </div>

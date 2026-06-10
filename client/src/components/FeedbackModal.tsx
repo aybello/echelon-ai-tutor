@@ -101,7 +101,7 @@ export default function FeedbackModal({
         animation: "feedbackFadeIn 0.3s ease",
       }}>
         <div style={{ fontSize: 48, marginBottom: 12 }}>💙</div>
-        <h3 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 8, fontFamily: "Sora, sans-serif" }}>
+        <h3 style={{ fontSize: 20, fontWeight: 800, color: "#FFFFFF", marginBottom: 8, fontFamily: "Sora, sans-serif" }}>
           Thank you for your feedback!
         </h3>
         <p style={{ color: "#64748B", fontSize: 14 }}>
@@ -148,7 +148,7 @@ export default function FeedbackModal({
           style={{
             position: "absolute", top: 14, right: 14,
             width: 32, height: 32, borderRadius: "50%",
-            background: "#F1F5F9", border: "1px solid #E2E8F0",
+            background: "#FFFFFF", border: "1px solid #E2E8F0",
             display: "flex", alignItems: "center", justifyContent: "center",
             cursor: "pointer", fontSize: 15, color: "#64748B",
             lineHeight: 1, padding: 0,
@@ -162,7 +162,7 @@ export default function FeedbackModal({
           {feedbackType === "quiz_gate" ? "📝" : "🎯"}
         </div>
         <h3 style={{
-          fontSize: 19, fontWeight: 800, color: "#0F172A",
+          fontSize: 19, fontWeight: 800, color: "#FFFFFF",
           marginBottom: 6, fontFamily: "Sora, sans-serif",
         }}>
           {feedbackType === "quiz_gate"
@@ -189,7 +189,7 @@ export default function FeedbackModal({
               style={{
                 fontSize: 36,
                 padding: "0 4px",
-                color: star <= activeStar ? "#F59E0B" : "#E2E8F0",
+                color: star <= activeStar ? "#F59E0B" : "#94A3B8",
                 filter: star <= activeStar ? "drop-shadow(0 1px 2px rgba(245,158,11,0.3))" : "none",
               }}
             >
@@ -225,7 +225,7 @@ export default function FeedbackModal({
             minHeight: 72,
           }}
           onFocus={(e) => { e.target.style.borderColor = "#1D4ED8"; }}
-          onBlur={(e) => { e.target.style.borderColor = "#E2E8F0"; }}
+          onBlur={(e) => { e.target.style.borderColor = "#94A3B8"; }}
         />
 
         {/* Submit button */}
@@ -238,9 +238,9 @@ export default function FeedbackModal({
             borderRadius: 12,
             border: "none",
             background: rating === 0
-              ? "#E2E8F0"
+              ? "#94A3B8"
               : "linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%)",
-            color: rating === 0 ? "#94A3B8" : "#fff",
+            color: rating === 0 ? "#E2E8F0" : "#fff",
             fontSize: 15,
             fontWeight: 800,
             cursor: rating === 0 ? "not-allowed" : "pointer",
@@ -261,7 +261,7 @@ export default function FeedbackModal({
             padding: "10px",
             background: "transparent",
             border: "none",
-            color: "#94A3B8",
+            color: "#64748B",
             fontSize: 12,
             fontWeight: 500,
             cursor: "pointer",

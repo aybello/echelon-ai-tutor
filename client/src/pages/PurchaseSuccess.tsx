@@ -185,7 +185,7 @@ export default function PurchaseSuccess() {
     <div
       style={{
         fontFamily: "'Sora', sans-serif",
-        background: "#F8FAFC",
+        background: "#FFFFFF",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -215,7 +215,7 @@ export default function PurchaseSuccess() {
         {verifying ? (
           <>
             <div style={{ fontSize: 40, marginBottom: 16 }}>⏳</div>
-            <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
+            <h1 style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: "0 0 8px" }}>
               Confirming your purchase…
             </h1>
             <p style={{ color: "#64748B", fontSize: 14 }}>
@@ -239,7 +239,7 @@ export default function PurchaseSuccess() {
             >
               ✓
             </div>
-            <h1 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", margin: "0 0 8px" }}>
+            <h1 style={{ fontSize: 24, fontWeight: 900, color: "#FFFFFF", margin: "0 0 8px" }}>
               Payment Successful!
             </h1>
             <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 8px" }}>
@@ -290,7 +290,7 @@ export default function PurchaseSuccess() {
                           border: pk === productKey ? "1.5px solid #86EFAC" : "1px solid #BBF7D0",
                           fontSize: 13,
                           fontWeight: 600,
-                          color: "#0F172A",
+                          color: "#FFFFFF",
                           cursor: "pointer",
                           display: "flex",
                           justifyContent: "space-between",
@@ -309,11 +309,11 @@ export default function PurchaseSuccess() {
 
             {/* How did you hear about us */}
             {!referralSubmitted ? (
-              <div style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 12, padding: "16px", marginBottom: 16, textAlign: "left" }}>
-                <div style={{ fontSize: 12, fontWeight: 700, color: "#475569", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              <div style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 12, padding: "16px", marginBottom: 16, textAlign: "left" }}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.06em" }}>
                   Quick question
                 </div>
-                <p style={{ fontSize: 13, color: "#0F172A", fontWeight: 600, margin: "0 0 10px" }}>
+                <p style={{ fontSize: 13, color: "#FFFFFF", fontWeight: 600, margin: "0 0 10px" }}>
                   How did you hear about Echelon Institute?
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -330,9 +330,9 @@ export default function PurchaseSuccess() {
                       style={{
                         padding: "8px 12px",
                         borderRadius: 8,
-                        border: `1.5px solid ${referralSource === option ? "#1D4ED8" : "#E2E8F0"}`,
+                        border: `1.5px solid ${referralSource === option ? "#1D4ED8" : "#94A3B8"}`,
                         background: referralSource === option ? "#EFF6FF" : "#fff",
-                        color: "#0F172A",
+                        color: "#FFFFFF",
                         fontSize: 13,
                         fontWeight: 500,
                         cursor: "pointer",
@@ -351,7 +351,7 @@ export default function PurchaseSuccess() {
               </div>
             )}
 
-            <div style={{ fontSize: 12, color: "#94A3B8", lineHeight: 1.6 }}>
+            <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.6 }}>
               A receipt has been sent to your email by Stripe.
               Questions? Email{" "}
               <a href="mailto:support@echeloninstitute.ca" style={{ color: "#1D4ED8" }}>
@@ -367,7 +367,7 @@ export default function PurchaseSuccess() {
                     borderRadius: 8,
                     border: "1.5px solid #E2E8F0",
                     background: "#fff",
-                    color: "#475569",
+                    color: "#64748B",
                     fontSize: 13,
                     fontWeight: 600,
                     cursor: "pointer",

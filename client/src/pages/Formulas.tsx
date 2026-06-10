@@ -583,7 +583,7 @@ function FormulaCard({ formula, color, bg }: { formula: Formula; color: string; 
         }}
       >
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", marginBottom: 6 }}>
+          <div style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF", marginBottom: 6 }}>
             {formula.name}
           </div>
           <div style={{
@@ -600,14 +600,14 @@ function FormulaCard({ formula, color, bg }: { formula: Formula; color: string; 
             {formula.formula}
           </div>
           {formula.units && (
-            <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 4, fontWeight: 600 }}>
+            <div style={{ fontSize: 10, color: "#64748B", marginTop: 4, fontWeight: 600 }}>
               Units: {formula.units}
             </div>
           )}
         </div>
         <div style={{
           fontSize: 11,
-          color: expanded ? color : "#94A3B8",
+          color: expanded ? color : "#E2E8F0",
           fontWeight: 700,
           flexShrink: 0,
           marginTop: 2,
@@ -623,7 +623,7 @@ function FormulaCard({ formula, color, bg }: { formula: Formula; color: string; 
           {/* Variables */}
           {formula.variables && formula.variables.length > 0 && (
             <div style={{ marginBottom: 14 }}>
-              <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 8 }}>
+              <div style={{ fontSize: 9, fontWeight: 700, color: "#64748B", letterSpacing: "0.1em", marginBottom: 8 }}>
                 VARIABLES
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -647,16 +647,16 @@ function FormulaCard({ formula, color, bg }: { formula: Formula; color: string; 
           {/* Worked example */}
           {formula.example && (
             <div style={{
-              background: "#F8FAFC",
+              background: "#FFFFFF",
               borderRadius: 10,
               padding: "14px 16px",
               marginBottom: 12,
               border: "1px solid #E5E7EB",
             }}>
-              <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 8 }}>
+              <div style={{ fontSize: 9, fontWeight: 700, color: "#64748B", letterSpacing: "0.1em", marginBottom: 8 }}>
                 WORKED EXAMPLE
               </div>
-              <div style={{ fontSize: 11, fontWeight: 600, color: "#0F172A", marginBottom: 10, lineHeight: 1.5 }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: "#FFFFFF", marginBottom: 10, lineHeight: 1.5 }}>
                 {formula.example.problem}
               </div>
               <div style={{
@@ -741,7 +741,7 @@ export default function Formulas() {
   const totalFormulas = CATEGORIES.reduce((sum, c) => sum + c.formulas.length, 0);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         @keyframes fadeUp   { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
         @keyframes fadeDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
@@ -759,16 +759,16 @@ export default function Formulas() {
 
       {/* ── HERO BANNER ── */}
       <div style={{
-        background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 60%, #0E7490 100%)",
+        background: "linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%)",
         padding: "40px 24px",
         textAlign: "center",
       }}>
         <div style={{ maxWidth: 700, margin: "0 auto" }}>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
-            background: "rgba(255,255,255,0.1)", borderRadius: 20,
+            background: "rgba(0,0,0,0.09)", borderRadius: 20,
             padding: "5px 14px", marginBottom: 16,
-            border: "1px solid rgba(255,255,255,0.15)",
+            border: "1px solid rgba(0,0,0,0.12)",
           }}>
             <span style={{ fontSize: 12 }}>📐</span>
             <span style={{ fontSize: 11, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>
@@ -806,8 +806,8 @@ export default function Formulas() {
                 width: "100%",
                 padding: "12px 16px 12px 40px",
                 borderRadius: 12,
-                border: "1px solid rgba(255,255,255,0.2)",
-                background: "rgba(255,255,255,0.1)",
+                border: "1px solid rgba(0,0,0,0.14)",
+                background: "rgba(0,0,0,0.09)",
                 color: "#fff",
                 fontSize: 13,
                 fontFamily: "inherit",
@@ -830,7 +830,7 @@ export default function Formulas() {
         flexWrap: "wrap",
         overflowX: "auto",
       }}>
-        <span style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", flexShrink: 0 }}>
+        <span style={{ fontSize: 10, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", flexShrink: 0 }}>
           CATEGORY:
         </span>
         <button
@@ -840,7 +840,7 @@ export default function Formulas() {
             padding: "6px 14px", borderRadius: 20,
             border: `1.5px solid ${!activeCategory ? "#1D4ED8" : "#E5E7EB"}`,
             background: !activeCategory ? "#EFF6FF" : "transparent",
-            color: !activeCategory ? "#1D4ED8" : "#64748B",
+            color: !activeCategory ? "#1D4ED8" : "#E2E8F0",
             fontSize: 11, fontWeight: 700, cursor: "pointer",
             fontFamily: "inherit", transition: "all 0.15s", flexShrink: 0,
           }}
@@ -856,7 +856,7 @@ export default function Formulas() {
               padding: "6px 14px", borderRadius: 20,
               border: `1.5px solid ${activeCategory === cat.id ? cat.color : "#E5E7EB"}`,
               background: activeCategory === cat.id ? cat.bg : "transparent",
-              color: activeCategory === cat.id ? cat.color : "#64748B",
+              color: activeCategory === cat.id ? cat.color : "#E2E8F0",
               fontSize: 11, fontWeight: 700, cursor: "pointer",
               fontFamily: "inherit", transition: "all 0.15s", flexShrink: 0,
               display: "flex", alignItems: "center", gap: 5,
@@ -866,7 +866,7 @@ export default function Formulas() {
             <span>{cat.label}</span>
             <span style={{
               background: activeCategory === cat.id ? cat.color : "#E5E7EB",
-              color: activeCategory === cat.id ? "#fff" : "#64748B",
+              color: activeCategory === cat.id ? "#fff" : "#E2E8F0",
               borderRadius: 10, padding: "1px 6px",
               fontSize: 9, fontWeight: 800,
             }}>{cat.formulas.length}</span>
@@ -896,10 +896,10 @@ export default function Formulas() {
             textAlign: "center", border: "1px solid #E5E7EB",
           }}>
             <div style={{ fontSize: 48, marginBottom: 12 }}>🔍</div>
-            <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", marginBottom: 8 }}>
+            <div style={{ fontSize: 16, fontWeight: 700, color: "#FFFFFF", marginBottom: 8 }}>
               No formulas found
             </div>
-            <div style={{ fontSize: 12, color: "#94A3B8" }}>
+            <div style={{ fontSize: 12, color: "#64748B" }}>
               Try a different search term or clear the filter
             </div>
             <button
@@ -929,8 +929,8 @@ export default function Formulas() {
                   fontSize: 18,
                 }}>{cat.icon}</div>
                 <div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: "#0F172A" }}>{cat.label}</div>
-                  <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 600 }}>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF" }}>{cat.label}</div>
+                  <div style={{ fontSize: 10, color: "#64748B", fontWeight: 600 }}>
                     {cat.formulas.length} formula{cat.formulas.length !== 1 ? "s" : ""}
                   </div>
                 </div>
@@ -956,7 +956,7 @@ export default function Formulas() {
         {/* Quick reference cheat sheet */}
         {!searchQuery && !activeCategory && (
           <div style={{
-            background: "linear-gradient(135deg, #0F172A, #1E3A5F)",
+            background: "linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%)",
             borderRadius: 20, padding: "28px 28px",
             marginTop: 8,
           }}>
@@ -980,9 +980,9 @@ export default function Formulas() {
                 { label: "TDH", f: "TDH = Static + Friction + Minor", unit: "m", color: "#B45309" },
               ].map((item, i) => (
                 <div key={i} style={{
-                  background: "rgba(255,255,255,0.06)",
+                  background: "rgba(0,0,0,0.07)",
                   borderRadius: 10, padding: "12px 14px",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(0,0,0,0.08)",
                 }}>
                   <div style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.5)", marginBottom: 4, letterSpacing: "0.08em" }}>
                     {item.label.toUpperCase()}
@@ -1036,7 +1036,7 @@ function FormulaCardWrapper({
         }}
       >
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", marginBottom: 6 }}>
+          <div style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF", marginBottom: 6 }}>
             {formula.name}
           </div>
           <div style={{
@@ -1053,14 +1053,14 @@ function FormulaCardWrapper({
             {formula.formula}
           </div>
           {formula.units && (
-            <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 4, fontWeight: 600 }}>
+            <div style={{ fontSize: 10, color: "#64748B", marginTop: 4, fontWeight: 600 }}>
               Units: {formula.units}
             </div>
           )}
         </div>
         <div style={{
           fontSize: 11,
-          color: isExpanded ? color : "#94A3B8",
+          color: isExpanded ? color : "#E2E8F0",
           fontWeight: 700,
           flexShrink: 0,
           marginTop: 2,
@@ -1076,7 +1076,7 @@ function FormulaCardWrapper({
           {/* Variables */}
           {formula.variables && formula.variables.length > 0 && (
             <div style={{ marginBottom: 14 }}>
-              <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 8 }}>
+              <div style={{ fontSize: 9, fontWeight: 700, color: "#64748B", letterSpacing: "0.1em", marginBottom: 8 }}>
                 VARIABLES
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -1100,16 +1100,16 @@ function FormulaCardWrapper({
           {/* Worked example */}
           {formula.example && (
             <div style={{
-              background: "#F8FAFC",
+              background: "#FFFFFF",
               borderRadius: 10,
               padding: "14px 16px",
               marginBottom: 12,
               border: "1px solid #E5E7EB",
             }}>
-              <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 8 }}>
+              <div style={{ fontSize: 9, fontWeight: 700, color: "#64748B", letterSpacing: "0.1em", marginBottom: 8 }}>
                 WORKED EXAMPLE
               </div>
-              <div style={{ fontSize: 11, fontWeight: 600, color: "#0F172A", marginBottom: 10, lineHeight: 1.5 }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: "#FFFFFF", marginBottom: 10, lineHeight: 1.5 }}>
                 {formula.example.problem}
               </div>
               <div style={{

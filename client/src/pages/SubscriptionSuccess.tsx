@@ -125,7 +125,7 @@ export default function SubscriptionSuccess() {
   return (
     <div style={{
       minHeight: "100vh",
-      background: "linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #0F172A 100%)",
+      background: "linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%)",
       display: "flex",
       flexDirection: "column",
       fontFamily: "'Sora', sans-serif",
@@ -148,10 +148,10 @@ export default function SubscriptionSuccess() {
           display: "flex", alignItems: "center", justifyContent: "center",
           margin: "0 auto 20px", fontSize: 28, color: "#fff",
         }}>✓</div>
-        <h1 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", margin: "0 0 8px" }}>
+        <h1 style={{ fontSize: 24, fontWeight: 900, color: "#FFFFFF", margin: "0 0 8px" }}>
           Subscription Activated!
         </h1>
-        <p style={{ fontSize: 15, color: "#475569", margin: "0 0 20px", lineHeight: 1.6 }}>
+        <p style={{ fontSize: 15, color: "#64748B", margin: "0 0 20px", lineHeight: 1.6 }}>
           Your <strong>{tierLabel}</strong> subscription for <strong>{provinceLabel}</strong> is now active.
           You have full access to all included exam types for the next 12 months.
         </p>
@@ -162,7 +162,7 @@ export default function SubscriptionSuccess() {
           <div style={{ fontSize: 12, fontWeight: 700, color: "#7C3AED", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>
             Your subscription includes
           </div>
-          <ul style={{ margin: 0, padding: "0 0 0 16px", fontSize: 13, color: "#475569", lineHeight: 1.8 }}>
+          <ul style={{ margin: 0, padding: "0 0 0 16px", fontSize: 13, color: "#64748B", lineHeight: 1.8 }}>
             <li>Unlimited practice questions for all included exam types</li>
             <li>AI Tutor with step-by-step explanations</li>
             <li>Timed mock exams &amp; score history</li>
@@ -188,7 +188,7 @@ export default function SubscriptionSuccess() {
             onClick={() => { if (intervalRef.current) clearInterval(intervalRef.current); }}
             style={{
               width: "100%", padding: "12px 0", borderRadius: 12,
-              background: "#F1F5F9", color: "#475569",
+              background: "#FFFFFF", color: "#64748B",
               border: "1.5px solid #E2E8F0", fontSize: 14, fontWeight: 600,
               cursor: "pointer", fontFamily: "inherit", marginBottom: 16,
             }}
@@ -196,7 +196,7 @@ export default function SubscriptionSuccess() {
             View My Subscriptions
           </button>
         </Link>
-        <p style={{ fontSize: 12, color: "#94A3B8", margin: 0 }}>
+        <p style={{ fontSize: 12, color: "#64748B", margin: 0 }}>
           {accessWritten
             ? `Redirecting to your study page in ${countdown}s…`
             : "Activating your access…"}

@@ -57,9 +57,9 @@ const TEAL = "#14B8A6";
 const AMBER = "#F59E0B";
 const RED = "#EF4444";
 const GREEN = "#22C55E";
-const SLATE_700 = "#334155";
-const SLATE_800 = "#1E293B";
-const SLATE_900 = "#0F172A";
+const SLATE_700 = "#CBD5E1";
+const SLATE_800 = "#F1F5F9";
+const SLATE_900 = "#FFFFFF";
 
 export default function StudentDashboard() {
   usePageMeta({
@@ -234,7 +234,7 @@ export default function StudentDashboard() {
       <div style={{ fontFamily: "Sora, sans-serif", background: SLATE_900, minHeight: "100vh" }}>
         <SiteNav currentPath="/dashboard" />
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "80px 24px", textAlign: "center" }}>
-          <div style={{ color: "#94A3B8", fontSize: 16 }}>Loading...</div>
+          <div style={{ color: "#64748B", fontSize: 16 }}>Loading...</div>
         </div>
       </div>
     );
@@ -251,8 +251,8 @@ export default function StudentDashboard() {
         <div style={{ maxWidth: 440, margin: "0 auto", padding: "80px 24px" }}>
           <div style={{ textAlign: "center", marginBottom: 32 }}>
             <div style={{ fontSize: 48, marginBottom: 12 }}>📊</div>
-            <h1 style={{ color: "#F1F5F9", fontSize: 24, fontWeight: 800, margin: "0 0 8px" }}>My Dashboard</h1>
-            <p style={{ color: "#94A3B8", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
+            <h1 style={{ color: "#F8FAFC", fontSize: 24, fontWeight: 800, margin: "0 0 8px" }}>My Dashboard</h1>
+            <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
               Enter the email you used to purchase your course access. We'll send you a one-time code.
             </p>
           </div>
@@ -260,7 +260,7 @@ export default function StudentDashboard() {
           <div style={{ background: SLATE_800, borderRadius: 14, padding: "28px 24px", border: "1px solid #1E293B" }}>
             {otpStep === "email" ? (
               <>
-                <label style={{ display: "block", color: "#94A3B8", fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Email Address</label>
+                <label style={{ display: "block", color: "#64748B", fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Email Address</label>
                 <input
                   type="email"
                   value={otpEmail}
@@ -269,7 +269,7 @@ export default function StudentDashboard() {
                   placeholder="you@example.com"
                   style={{
                     width: "100%", padding: "11px 14px", borderRadius: 8, border: "1px solid #334155",
-                    background: SLATE_900, color: "#F1F5F9", fontSize: 15, boxSizing: "border-box", marginBottom: 16,
+                    background: SLATE_900, color: "#F8FAFC", fontSize: 15, boxSizing: "border-box", marginBottom: 16,
                     outline: "none",
                   }}
                 />
@@ -288,10 +288,10 @@ export default function StudentDashboard() {
               </>
             ) : (
               <>
-                <p style={{ color: "#94A3B8", fontSize: 13, marginBottom: 16 }}>
-                  A 6-digit code was sent to <strong style={{ color: "#F1F5F9" }}>{otpEmail}</strong>. Enter it below.
+                <p style={{ color: "#64748B", fontSize: 13, marginBottom: 16 }}>
+                  A 6-digit code was sent to <strong style={{ color: "#1E293B" }}>{otpEmail}</strong>. Enter it below.
                 </p>
-                <label style={{ display: "block", color: "#94A3B8", fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Verification Code</label>
+                <label style={{ display: "block", color: "#64748B", fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Verification Code</label>
                 <input
                   type="text"
                   inputMode="numeric"
@@ -302,7 +302,7 @@ export default function StudentDashboard() {
                   placeholder="000000"
                   style={{
                     width: "100%", padding: "11px 14px", borderRadius: 8, border: "1px solid #334155",
-                    background: SLATE_900, color: "#F1F5F9", fontSize: 24, letterSpacing: 8, textAlign: "center",
+                    background: SLATE_900, color: "#F8FAFC", fontSize: 24, letterSpacing: 8, textAlign: "center",
                     boxSizing: "border-box", marginBottom: 16, outline: "none",
                   }}
                 />
@@ -344,10 +344,10 @@ export default function StudentDashboard() {
         {/* ── Header ── */}
         <div style={{ marginBottom: 32, display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <div>
-            <h1 style={{ color: "#F1F5F9", fontSize: 28, fontWeight: 900, margin: 0, letterSpacing: "-0.02em" }}>
+            <h1 style={{ color: "#F8FAFC", fontSize: 28, fontWeight: 900, margin: 0, letterSpacing: "-0.02em" }}>
               📊 My Dashboard
             </h1>
-            <p style={{ color: "#94A3B8", fontSize: 14, marginTop: 6 }}>
+            <p style={{ color: "#64748B", fontSize: 14, marginTop: 6 }}>
               Welcome back, {displayName}. Here's your study progress.
             </p>
           </div>
@@ -355,7 +355,7 @@ export default function StudentDashboard() {
             <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
               <a href="/account" style={{
                 background: "none", border: "1px solid #334155", borderRadius: 8,
-                padding: "6px 14px", color: "#94A3B8", fontSize: 13, cursor: "pointer",
+                padding: "6px 14px", color: "#64748B", fontSize: 13, cursor: "pointer",
                 textDecoration: "none", display: "inline-block",
               }}>
                 📚 My Courses
@@ -390,10 +390,10 @@ export default function StudentDashboard() {
             <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
               <div style={{ fontSize: 32 }}>⏱️</div>
               <div>
-                <div style={{ color: "#F1F5F9", fontSize: 15, fontWeight: 800 }}>
+                <div style={{ color: "#F8FAFC", fontSize: 15, fontWeight: 800 }}>
                   {EXAM_TYPE_LABELS[examCountdown.data.examName] ?? examCountdown.data.examName}
                 </div>
-                <div style={{ color: "#94A3B8", fontSize: 13, marginTop: 2 }}>
+                <div style={{ color: "#64748B", fontSize: 13, marginTop: 2 }}>
                   {new Date(examCountdown.data.examDate).toLocaleDateString("en-CA", { month: "long", day: "numeric", year: "numeric" })}
                 </div>
               </div>
@@ -411,13 +411,13 @@ export default function StudentDashboard() {
                 >
                   {examCountdown.data.daysUntil}
                 </div>
-                <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 600 }}>days left</div>
+                <div style={{ color: "#64748B", fontSize: 11, fontWeight: 600 }}>days left</div>
               </div>
               <div style={{ textAlign: "center" }}>
-                <div style={{ color: "#F1F5F9", fontSize: 18, fontWeight: 800, fontFamily: "'Sora', sans-serif", lineHeight: 1 }}>
+                <div style={{ color: "#F8FAFC", fontSize: 18, fontWeight: 800, fontFamily: "'Sora', sans-serif", lineHeight: 1 }}>
                   {examCountdown.data.avgQuestionsPerDay}
                 </div>
-                <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 600 }}>Qs/day avg</div>
+                <div style={{ color: "#64748B", fontSize: 11, fontWeight: 600 }}>Qs/day avg</div>
               </div>
               <div
                 style={{
@@ -474,7 +474,7 @@ export default function StudentDashboard() {
                       }}
                     >
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                        <span style={{ color: "#F1F5F9", fontSize: 13, fontWeight: 700 }}>{t.topic}</span>
+                        <span style={{ color: "#F8FAFC", fontSize: 13, fontWeight: 700 }}>{t.topic}</span>
                         <span
                           style={{
                             padding: "2px 8px",
@@ -530,7 +530,7 @@ export default function StudentDashboard() {
                   responsive: true,
                   maintainAspectRatio: false,
                   plugins: {
-                    legend: { display: true, position: "top", labels: { color: "#94A3B8", font: { size: 11, family: "Sora" } } },
+                    legend: { display: true, position: "top", labels: { color: "#64748B", font: { size: 11, family: "Sora" } } },
                   },
                   scales: {
                     x: { ticks: { color: "#64748B", font: { size: 10 }, maxRotation: 45 }, grid: { display: false } },
@@ -570,7 +570,7 @@ export default function StudentDashboard() {
                     },
                     scales: {
                       x: { min: 0, max: 100, ticks: { color: "#64748B", font: { size: 11 }, callback: (v) => v + "%" }, grid: { color: "#1E293B" } },
-                      y: { ticks: { color: "#CBD5E1", font: { size: 11, family: "Sora" } }, grid: { display: false } },
+                      y: { ticks: { color: "#94A3B8", font: { size: 11, family: "Sora" } }, grid: { display: false } },
                     },
                   }}
                 />
@@ -580,7 +580,7 @@ export default function StudentDashboard() {
             {(topicAccuracy.data?.weakTopics.length ?? 0) > 0 && (
               <div style={{ marginTop: 12, padding: "10px 14px", background: RED + "15", border: `1px solid ${RED}33`, borderRadius: 10 }}>
                 <div style={{ color: RED, fontSize: 12, fontWeight: 700, marginBottom: 4 }}>⚠️ Focus Areas (below 65%)</div>
-                <div style={{ color: "#F1F5F9", fontSize: 13 }}>
+                <div style={{ color: "#F8FAFC", fontSize: 13 }}>
                   {topicAccuracy.data?.weakTopics.join(", ")}
                 </div>
               </div>
@@ -602,7 +602,7 @@ export default function StudentDashboard() {
                       maintainAspectRatio: false,
                       cutout: "60%",
                       plugins: {
-                        legend: { position: "bottom", labels: { color: "#94A3B8", font: { size: 11, family: "Sora" }, padding: 12 } },
+                        legend: { position: "bottom", labels: { color: "#64748B", font: { size: 11, family: "Sora" }, padding: 12 } },
                       },
                     }}
                   />
@@ -625,7 +625,7 @@ export default function StudentDashboard() {
                         <div style={{ color: d.difficulty === "easy" ? GREEN : d.difficulty === "medium" ? AMBER : RED, fontSize: 16, fontWeight: 800 }}>
                           {d.accuracy}%
                         </div>
-                        <div style={{ color: "#94A3B8", fontSize: 10, textTransform: "capitalize" }}>{d.difficulty}</div>
+                        <div style={{ color: "#64748B", fontSize: 10, textTransform: "capitalize" }}>{d.difficulty}</div>
                       </div>
                     ))}
                 </div>
@@ -652,7 +652,7 @@ export default function StudentDashboard() {
                     border: `1px solid ${SLATE_700}`,
                   }}
                 >
-                  <div style={{ color: "#F1F5F9", fontSize: 13, fontWeight: 700, marginBottom: 8 }}>
+                  <div style={{ color: "#F8FAFC", fontSize: 13, fontWeight: 700, marginBottom: 8 }}>
                     {EXAM_TYPE_LABELS[c.examType] ?? c.examType}
                   </div>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
@@ -720,7 +720,7 @@ export default function StudentDashboard() {
                         {s.messageCount} msgs
                       </span>
                     </div>
-                    <div style={{ color: "#CBD5E1", fontSize: 12, lineHeight: 1.5 }}>
+                    <div style={{ color: "#94A3B8", fontSize: 12, lineHeight: 1.5 }}>
                       {s.summary.length > 120 ? s.summary.slice(0, 117) + "\u2026" : s.summary}
                     </div>
                     {s.topicsCovered && (
@@ -764,9 +764,9 @@ export default function StudentDashboard() {
                       <span style={{ fontSize: 14 }}>
                         {r.type === "official" ? "\ud83c\udfe2" : r.type === "video" ? "\ud83c\udfac" : r.type === "textbook" ? "\ud83d\udcd6" : r.type === "practice" ? "\u270d\ufe0f" : r.type === "community" ? "\ud83d\udcac" : "\ud83d\udee0\ufe0f"}
                       </span>
-                      <span style={{ color: "#F1F5F9", fontSize: 13, fontWeight: 700 }}>{r.title}</span>
+                      <span style={{ color: "#F8FAFC", fontSize: 13, fontWeight: 700 }}>{r.title}</span>
                     </div>
-                    <div style={{ color: "#94A3B8", fontSize: 11, lineHeight: 1.4 }}>
+                    <div style={{ color: "#64748B", fontSize: 11, lineHeight: 1.4 }}>
                       {r.description.length > 100 ? r.description.slice(0, 97) + "\u2026" : r.description}
                     </div>
                     {r.reason && (
@@ -792,26 +792,26 @@ export default function StudentDashboard() {
               <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
                 <thead>
                   <tr style={{ borderBottom: `1px solid ${SLATE_700}` }}>
-                    <th style={{ textAlign: "left", padding: "8px 12px", color: "#94A3B8", fontWeight: 600, fontSize: 11 }}>Date</th>
-                    <th style={{ textAlign: "left", padding: "8px 12px", color: "#94A3B8", fontWeight: 600, fontSize: 11 }}>Course</th>
-                    <th style={{ textAlign: "left", padding: "8px 12px", color: "#94A3B8", fontWeight: 600, fontSize: 11 }}>Mode</th>
-                    <th style={{ textAlign: "right", padding: "8px 12px", color: "#94A3B8", fontWeight: 600, fontSize: 11 }}>Score</th>
-                    <th style={{ textAlign: "right", padding: "8px 12px", color: "#94A3B8", fontWeight: 600, fontSize: 11 }}>Accuracy</th>
+                    <th style={{ textAlign: "left", padding: "8px 12px", color: "#64748B", fontWeight: 600, fontSize: 11 }}>Date</th>
+                    <th style={{ textAlign: "left", padding: "8px 12px", color: "#64748B", fontWeight: 600, fontSize: 11 }}>Course</th>
+                    <th style={{ textAlign: "left", padding: "8px 12px", color: "#64748B", fontWeight: 600, fontSize: 11 }}>Mode</th>
+                    <th style={{ textAlign: "right", padding: "8px 12px", color: "#64748B", fontWeight: 600, fontSize: 11 }}>Score</th>
+                    <th style={{ textAlign: "right", padding: "8px 12px", color: "#64748B", fontWeight: 600, fontSize: 11 }}>Accuracy</th>
                   </tr>
                 </thead>
                 <tbody>
                   {recentSessions.data?.map((s, i) => (
                     <tr key={i} style={{ borderBottom: `1px solid ${SLATE_800}` }}>
-                      <td style={{ padding: "10px 12px", color: "#CBD5E1" }}>
+                      <td style={{ padding: "10px 12px", color: "#94A3B8" }}>
                         {new Date(s.startedAt).toLocaleDateString("en-CA", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}
                       </td>
-                      <td style={{ padding: "10px 12px", color: "#F1F5F9", fontWeight: 600 }}>
+                      <td style={{ padding: "10px 12px", color: "#F8FAFC", fontWeight: 600 }}>
                         {EXAM_TYPE_LABELS[s.examType] ?? s.examType}
                       </td>
-                      <td style={{ padding: "10px 12px", color: "#94A3B8", textTransform: "capitalize" }}>
+                      <td style={{ padding: "10px 12px", color: "#64748B", textTransform: "capitalize" }}>
                         {s.quizMode ?? "standard"}
                       </td>
-                      <td style={{ padding: "10px 12px", color: "#F1F5F9", textAlign: "right", fontFamily: "'Sora', sans-serif", fontWeight: 700 }}>
+                      <td style={{ padding: "10px 12px", color: "#F8FAFC", textAlign: "right", fontFamily: "'Sora', sans-serif", fontWeight: 700 }}>
                         {s.correct}/{s.total}
                       </td>
                       <td style={{ padding: "10px 12px", textAlign: "right" }}>
@@ -855,7 +855,7 @@ function StatCard({ label, value, icon, color }: { label: string; value: string;
     >
       <div style={{ fontSize: 22, marginBottom: 6 }}>{icon}</div>
       <div style={{ color, fontSize: 24, fontWeight: 900, fontFamily: "'Sora', sans-serif", lineHeight: 1.1 }}>{value}</div>
-      <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 600, marginTop: 4 }}>{label}</div>
+      <div style={{ color: "#64748B", fontSize: 11, fontWeight: 600, marginTop: 4 }}>{label}</div>
     </div>
   );
 }
@@ -872,7 +872,7 @@ function Section({ title, children, style: extraStyle }: { title: string; childr
         ...extraStyle,
       }}
     >
-      <h2 style={{ color: "#F1F5F9", fontSize: 16, fontWeight: 800, margin: "0 0 14px", letterSpacing: "-0.01em" }}>
+      <h2 style={{ color: "#F8FAFC", fontSize: 16, fontWeight: 800, margin: "0 0 14px", letterSpacing: "-0.01em" }}>
         {title}
       </h2>
       {children}

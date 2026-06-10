@@ -201,7 +201,7 @@ export default function WpiLanding() {
   const track = TRACKS.find(t => t.id === activeTrack)!;
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Sora', sans-serif", background: "#FFFFFF", minHeight: "100vh" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Sora:wght@700;800&display=swap');
         .wpi-track-tab { transition: background 0.15s, color 0.15s, border-color 0.15s; }
@@ -234,7 +234,7 @@ export default function WpiLanding() {
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
-            background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.2)",
+            background: "rgba(0,0,0,0.10)", border: "1px solid rgba(0,0,0,0.14)",
             borderRadius: 100, padding: "6px 16px", marginBottom: 24,
           }}>
             <span style={{ fontSize: 14, color: "rgba(255,255,255,0.9)", fontWeight: 600 }}>
@@ -268,7 +268,7 @@ export default function WpiLanding() {
             </Link>
             <a href="#pricing">
               <button style={{
-                background: "rgba(255,255,255,0.12)", color: "#FFFFFF",
+                background: "rgba(0,0,0,0.10)", color: "#FFFFFF",
                 border: "1px solid rgba(255,255,255,0.25)", borderRadius: 10,
                 padding: "13px 28px", fontSize: 15, fontWeight: 700,
                 cursor: "pointer", fontFamily: "inherit",
@@ -281,7 +281,7 @@ export default function WpiLanding() {
             {[["8,000+", "Questions in bank"], ["4", "Certification tracks"], ["16", "Class levels covered"], ["15", "Free questions per course"]].map(([stat, label]) => (
               <div key={label} style={{ textAlign: "center" }}>
                 <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#38BDF8" }}>{stat}</div>
-                <div style={{ fontSize: 12, color: "#94A3B8", fontWeight: 500 }}>{label}</div>
+                <div style={{ fontSize: 12, color: "#64748B", fontWeight: 500 }}>{label}</div>
               </div>
             ))}
           </div>
@@ -291,7 +291,7 @@ export default function WpiLanding() {
       {/* ── Province Recognition ───────────────────────────────────────── */}
       <section style={{ background: "#FFFFFF", padding: "40px 20px", borderBottom: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: 680, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 18, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 6 }}>
+          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 18, fontWeight: 800, color: "#FFFFFF", textAlign: "center", marginBottom: 6 }}>
             Recognized Across Western Canada
           </h2>
           <p style={{ fontSize: 13, color: "#64748B", textAlign: "center", marginBottom: 20 }}>
@@ -301,11 +301,11 @@ export default function WpiLanding() {
             {PROVINCES.map(p => (
               <a key={p.code} href={p.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
                 <div style={{
-                  background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 12,
+                  background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 12,
                   padding: "16px 12px", textAlign: "center", cursor: "pointer",
                   transition: "border-color 0.15s",
                 }}>
-                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>{p.code}</div>
+                  <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#FFFFFF", marginBottom: 2 }}>{p.code}</div>
                   <div style={{ fontSize: 11, color: "#64748B", fontWeight: 500, marginBottom: 6 }}>{p.name}</div>
                   <div style={{ fontSize: 11, fontWeight: 700, color: "#0E7490", background: "#F0FDFF", padding: "3px 8px", borderRadius: 6, display: "inline-block" }}>{p.body}</div>
                 </div>
@@ -316,9 +316,9 @@ export default function WpiLanding() {
       </section>
 
       {/* ── Tabbed Track Selector + Class Cards ───────────────────────── */}
-      <section id="pricing" style={{ background: "#F8FAFC", padding: "56px 20px" }}>
+      <section id="pricing" style={{ background: "#FFFFFF", padding: "56px 20px" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 8 }}>
+          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 22, fontWeight: 800, color: "#FFFFFF", textAlign: "center", marginBottom: 8 }}>
             Choose Your Certification Track
           </h2>
           <p style={{ fontSize: 14, color: "#64748B", textAlign: "center", marginBottom: 32 }}>
@@ -335,9 +335,9 @@ export default function WpiLanding() {
                   className="wpi-track-tab"
                   onClick={() => { setActiveTrack(t.id); setExpandedCard(null); }}
                   style={{
-                    background: isActive ? "#0F172A" : "#FFFFFF",
-                    color: isActive ? "#FFFFFF" : "#475569",
-                    border: `1px solid ${isActive ? "#0F172A" : "#E2E8F0"}`,
+                    background: isActive ? "#FFFFFF" : "#FFFFFF",
+                    color: isActive ? "#FFFFFF" : "#E2E8F0",
+                    border: `1px solid ${isActive ? "#FFFFFF" : "#94A3B8"}`,
                     borderRadius: 10, padding: "10px 20px", fontSize: 13, fontWeight: 700,
                     cursor: "pointer", fontFamily: "inherit",
                     display: "flex", alignItems: "center", gap: 6,
@@ -359,7 +359,7 @@ export default function WpiLanding() {
                   className="wpi-class-card"
                   style={{
                     background: "#FFFFFF",
-                    border: `1px solid ${isExpanded ? cls.color + "55" : "#E2E8F0"}`,
+                    border: `1px solid ${isExpanded ? cls.color + "55" : "#94A3B8"}`,
                     borderRadius: 16, overflow: "hidden",
                     display: "flex", flexDirection: "column",
                     boxShadow: isExpanded ? `0 4px 16px ${cls.color}22` : "0 2px 8px rgba(0,0,0,0.06)",
@@ -388,12 +388,12 @@ export default function WpiLanding() {
 
                     {/* Class label + badge */}
                     <div style={{ marginBottom: 4 }}>
-                      <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 16, fontWeight: 800, color: "#0F172A" }}>{cls.label}</div>
+                      <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 16, fontWeight: 800, color: "#FFFFFF" }}>{cls.label}</div>
                       {cls.badge && <div style={{ fontSize: 11, fontWeight: 700, color: cls.color, marginTop: 2 }}>{cls.badge}</div>}
                     </div>
 
                     {/* Price */}
-                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#0F172A", lineHeight: 1, marginBottom: 2 }}>{cls.price}</div>
+                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#FFFFFF", lineHeight: 1, marginBottom: 2 }}>{cls.price}</div>
                     <div style={{ fontSize: 11, color: "#64748B", marginBottom: 12 }}>One-time · unlimited access</div>
 
                     {/* Free trial */}
@@ -405,10 +405,10 @@ export default function WpiLanding() {
                       style={{
                         width: "100%",
                         background: isExpanded ? cls.color + "0E" : "#F8FAFC",
-                        border: `1px solid ${isExpanded ? cls.color + "33" : "#E2E8F0"}`,
+                        border: `1px solid ${isExpanded ? cls.color + "33" : "#94A3B8"}`,
                         borderRadius: 8, padding: "8px 12px",
                         fontSize: 12, fontWeight: 600,
-                        color: isExpanded ? cls.color : "#475569",
+                        color: isExpanded ? cls.color : "#E2E8F0",
                         cursor: "pointer", fontFamily: "inherit",
                         textAlign: "left" as const,
                         display: "flex", alignItems: "center", justifyContent: "space-between",
@@ -423,7 +423,7 @@ export default function WpiLanding() {
                     {isExpanded && (
                       <ul style={{ margin: "0 0 14px", padding: 0, listStyle: "none", display: "flex", flexDirection: "column" as const, gap: 5 }}>
                         {cls.topics.map(topic => (
-                          <li key={topic} style={{ fontSize: 12, color: "#475569", display: "flex", alignItems: "flex-start", gap: 6 }}>
+                          <li key={topic} style={{ fontSize: 12, color: "#64748B", display: "flex", alignItems: "flex-start", gap: 6 }}>
                             <span style={{ color: cls.color, fontWeight: 700, flexShrink: 0, marginTop: 1 }}>·</span>
                             {topic}
                           </li>
@@ -457,7 +457,7 @@ export default function WpiLanding() {
       {/* ── WPI vs OWWCO Comparison ───────────────────────────────────── */}
       <section style={{ background: "#FFFFFF", padding: "56px 20px", borderTop: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: 700, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 8 }}>
+          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#FFFFFF", textAlign: "center", marginBottom: 8 }}>
             WPI vs. OWWCO — Which Exam Do You Need?
           </h2>
           <p style={{ fontSize: 13, color: "#64748B", textAlign: "center", marginBottom: 28 }}>
@@ -466,8 +466,8 @@ export default function WpiLanding() {
           <div style={{ overflowX: "auto" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
               <thead>
-                <tr style={{ background: "#F8FAFC" }}>
-                  <th style={{ padding: "10px 16px", textAlign: "left", fontWeight: 700, color: "#0F172A", borderBottom: "2px solid #E2E8F0" }}>Feature</th>
+                <tr style={{ background: "#FFFFFF" }}>
+                  <th style={{ padding: "10px 16px", textAlign: "left", fontWeight: 700, color: "#FFFFFF", borderBottom: "2px solid #E2E8F0" }}>Feature</th>
                   <th style={{ padding: "10px 16px", textAlign: "center", fontWeight: 700, color: "#0E7490", borderBottom: "2px solid #E2E8F0" }}>WPI (Western)</th>
                   <th style={{ padding: "10px 16px", textAlign: "center", fontWeight: 700, color: "#1D4ED8", borderBottom: "2px solid #E2E8F0" }}>OWWCO (Ontario)</th>
                 </tr>
@@ -482,9 +482,9 @@ export default function WpiLanding() {
                   ["Echelon coverage", "✅ All 16 class levels",                       "✅ All 10 courses"],
                 ].map(([feature, wpi, owwco], i) => (
                   <tr key={feature} style={{ background: i % 2 === 0 ? "#FFFFFF" : "#F8FAFC" }}>
-                    <td style={{ padding: "10px 16px", color: "#475569", fontWeight: 600, borderBottom: "1px solid #F1F5F9" }}>{feature}</td>
-                    <td style={{ padding: "10px 16px", color: "#0F172A", textAlign: "center" as const, borderBottom: "1px solid #F1F5F9" }}>{wpi}</td>
-                    <td style={{ padding: "10px 16px", color: "#0F172A", textAlign: "center" as const, borderBottom: "1px solid #F1F5F9" }}>{owwco}</td>
+                    <td style={{ padding: "10px 16px", color: "#64748B", fontWeight: 600, borderBottom: "1px solid #F1F5F9" }}>{feature}</td>
+                    <td style={{ padding: "10px 16px", color: "#FFFFFF", textAlign: "center" as const, borderBottom: "1px solid #F1F5F9" }}>{wpi}</td>
+                    <td style={{ padding: "10px 16px", color: "#FFFFFF", textAlign: "center" as const, borderBottom: "1px solid #F1F5F9" }}>{owwco}</td>
                   </tr>
                 ))}
               </tbody>
@@ -494,9 +494,9 @@ export default function WpiLanding() {
       </section>
 
       {/* ── FAQ ───────────────────────────────────────────────────────── */}
-      <section style={{ background: "#F8FAFC", padding: "56px 20px", borderTop: "1px solid #E2E8F0" }}>
+      <section style={{ background: "#FFFFFF", padding: "56px 20px", borderTop: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: 680, margin: "0 auto" }}>
-          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#0F172A", textAlign: "center", marginBottom: 32 }}>
+          <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#FFFFFF", textAlign: "center", marginBottom: 32 }}>
             Frequently Asked Questions
           </h2>
           <div style={{ display: "flex", flexDirection: "column" as const, gap: 8 }}>
@@ -505,7 +505,7 @@ export default function WpiLanding() {
               return (
                 <div key={i} style={{
                   background: "#FFFFFF",
-                  border: `1px solid ${isOpen ? "#0E749044" : "#E2E8F0"}`,
+                  border: `1px solid ${isOpen ? "#0E749044" : "#94A3B8"}`,
                   borderRadius: 12, overflow: "hidden",
                 }}>
                   <button
@@ -517,11 +517,11 @@ export default function WpiLanding() {
                       gap: 12, fontFamily: "inherit",
                     }}
                   >
-                    <span style={{ fontSize: 14, fontWeight: 600, color: "#0F172A" }}>{faq.q}</span>
-                    <span style={{ color: "#94A3B8", fontSize: 18, flexShrink: 0 }}>{isOpen ? "−" : "+"}</span>
+                    <span style={{ fontSize: 14, fontWeight: 600, color: "#FFFFFF" }}>{faq.q}</span>
+                    <span style={{ color: "#64748B", fontSize: 18, flexShrink: 0 }}>{isOpen ? "−" : "+"}</span>
                   </button>
                   {isOpen && (
-                    <div style={{ padding: "0 20px 16px", fontSize: 13, color: "#475569", lineHeight: 1.7 }}>{faq.a}</div>
+                    <div style={{ padding: "0 20px 16px", fontSize: 13, color: "#64748B", lineHeight: 1.7 }}>{faq.a}</div>
                   )}
                 </div>
               );
@@ -531,12 +531,12 @@ export default function WpiLanding() {
       </section>
 
       {/* ── Footer CTA ────────────────────────────────────────────────── */}
-      <section style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)", padding: "56px 20px", textAlign: "center" }}>
+      <section style={{ background: "linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%)", padding: "56px 20px", textAlign: "center" }}>
         <div style={{ maxWidth: 560, margin: "0 auto" }}>
           <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 26, fontWeight: 800, color: "#FFFFFF", marginBottom: 12 }}>
             Ready to start studying?
           </h2>
-          <p style={{ fontSize: 14, color: "#94A3B8", marginBottom: 28, lineHeight: 1.7 }}>
+          <p style={{ fontSize: 14, color: "#64748B", marginBottom: 28, lineHeight: 1.7 }}>
             First 15 questions are free on every course — no account or credit card needed.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -551,7 +551,7 @@ export default function WpiLanding() {
             </Link>
             <Link href="/pricing?tab=western">
               <button style={{
-                background: "rgba(255,255,255,0.1)", color: "#FFFFFF",
+                background: "rgba(0,0,0,0.09)", color: "#FFFFFF",
                 border: "1px solid rgba(255,255,255,0.25)", borderRadius: 10,
                 padding: "13px 28px", fontSize: 15, fontWeight: 700,
                 cursor: "pointer", fontFamily: "inherit",

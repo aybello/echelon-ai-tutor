@@ -242,7 +242,7 @@ export default function PurchaseGate({
             width: 32,
             height: 32,
             borderRadius: "50%",
-            background: "#F1F5F9",
+            background: "#FFFFFF",
             border: "1px solid #E2E8F0",
             display: "flex",
             alignItems: "center",
@@ -278,7 +278,7 @@ export default function PurchaseGate({
                 fontFamily: "'Sora', sans-serif",
                 fontWeight: 800,
                 fontSize: 17,
-                color: "#0F172A",
+                color: "#FFFFFF",
                 letterSpacing: "-0.02em",
                 whiteSpace: "nowrap",
               }}
@@ -308,7 +308,7 @@ export default function PurchaseGate({
           style={{
             fontSize: 22,
             fontWeight: 900,
-            color: "#0F172A",
+            color: "#FFFFFF",
             margin: "0 0 6px",
             letterSpacing: "-0.5px",
           }}
@@ -372,7 +372,7 @@ export default function PurchaseGate({
                 padding: "10px 0",
                 borderRadius: 10,
                 background: "transparent",
-                color: "#94A3B8",
+                color: "#64748B",
                 border: "none",
                 fontSize: 12,
                 fontWeight: 500,
@@ -409,7 +409,7 @@ export default function PurchaseGate({
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); loginWithReturnPath(window.location.pathname); }}
-            style={{ display: "block", textAlign: "center", color: "#94A3B8", fontWeight: 500, fontSize: 11 }}
+            style={{ display: "block", textAlign: "center", color: "#64748B", fontWeight: 500, fontSize: 11 }}
           >
             Log in to your account →
           </a>
@@ -423,7 +423,7 @@ export default function PurchaseGate({
           marginTop: 20,
           background: "transparent",
           border: "none",
-          color: "#94A3B8",
+          color: "#64748B",
           fontSize: 13,
           cursor: "pointer",
           fontFamily: "inherit",

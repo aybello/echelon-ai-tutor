@@ -81,8 +81,8 @@ export const LEVELS: CertLevel[] = [
     hourly: { min: 24.88, max: 26.41 },
     annual: { min: 51750, max: 54930 },
     tracks: ["water", "wastewater"],
-    color: "#64748B",
-    bg: "#F8FAFC",
+    color: "#E2E8F0",
+    bg: "#1E293B",
     requirements: [
       "Secondary school diploma (or equivalent)",
       "Pass the OIT certification exam",
@@ -270,7 +270,7 @@ export const EMPLOYERS: Employer[] = [
     type: "Government",
     size: "Source water",
     note: "Grand River, Credit Valley, TRCA etc.",
-    color: "#64748B",
+    color: "#E2E8F0",
   },
 ];
 

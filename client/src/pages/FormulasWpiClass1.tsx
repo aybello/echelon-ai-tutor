@@ -518,7 +518,7 @@ export default function FormulasWpiClass1() {
   const activeCat = CATEGORIES.find(c => c.id === activeCategory)!;
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>      <style>{`
+    <div style={{ fontFamily: "'Sora', sans-serif", background: "#FFFFFF", minHeight: "100vh" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }
@@ -534,7 +534,7 @@ export default function FormulasWpiClass1() {
 
       {/* Hero */}
       <div style={{
-        background: "linear-gradient(135deg, #0F172A 0%, #164E63 50%, #0E7490 100%)",
+        background: "linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%)",
         padding: "48px 24px 40px",
         textAlign: "center",
       }}>
@@ -555,7 +555,7 @@ export default function FormulasWpiClass1() {
         }}>
           Class I Water Treatment<br />Formula Sheet
         </h1>
-        <p style={{ fontSize: 15, color: "#94A3B8", maxWidth: 520, margin: "0 auto 24px", lineHeight: 1.6 }}>
+        <p style={{ fontSize: 15, color: "#64748B", maxWidth: 520, margin: "0 auto 24px", lineHeight: 1.6 }}>
           CT values, chlorine dosage, flow rate, turbidity, chemical dosing, sedimentation, and pumping —
           aligned with WPI Need-to-Know Criteria.
         </p>
@@ -571,8 +571,8 @@ export default function FormulasWpiClass1() {
           <Link href="/wpi-class1-water-mock">
             <button style={{
               padding: "10px 22px", borderRadius: 9,
-              background: "rgba(255,255,255,0.1)",
-              color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 13, fontWeight: 700,
+              background: "rgba(0,0,0,0.09)",
+              color: "#fff", border: "1px solid rgba(0,0,0,0.14)", fontSize: 13, fontWeight: 700,
               cursor: "pointer", fontFamily: "inherit",
             }}>Mock Exam →</button>
           </Link>
@@ -597,7 +597,7 @@ export default function FormulasWpiClass1() {
               border: "none",
               borderBottom: activeCategory === cat.id ? `3px solid ${cat.color}` : "3px solid transparent",
               background: "transparent",
-              color: activeCategory === cat.id ? cat.color : "#64748B",
+              color: activeCategory === cat.id ? cat.color : "#E2E8F0",
               fontSize: 12,
               fontWeight: activeCategory === cat.id ? 700 : 500,
               cursor: "pointer",
@@ -620,12 +620,12 @@ export default function FormulasWpiClass1() {
             width: 4, height: 28, borderRadius: 4,
             background: activeCat.color,
           }} />
-          <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: 0 }}>
+          <h2 style={{ fontSize: 20, fontWeight: 800, color: "#FFFFFF", margin: 0 }}>
             {activeCat.icon} {activeCat.label}
           </h2>
           <span style={{
             marginLeft: "auto",
-            fontSize: 12, color: "#94A3B8", fontWeight: 600,
+            fontSize: 12, color: "#64748B", fontWeight: 600,
           }}>
             {activeCat.formulas.length} formula{activeCat.formulas.length !== 1 ? "s" : ""}
           </span>
@@ -642,7 +642,7 @@ export default function FormulasWpiClass1() {
                 style={{
                   background: "#fff",
                   borderRadius: 14,
-                  border: `1.5px solid ${isExpanded ? activeCat.color + "66" : "#E2E8F0"}`,
+                  border: `1.5px solid ${isExpanded ? activeCat.color + "66" : "#94A3B8"}`,
                   overflow: "hidden",
                   boxShadow: isExpanded ? `0 4px 16px ${activeCat.color}18` : "0 1px 4px rgba(0,0,0,0.05)",
                   transition: "border-color 0.2s, box-shadow 0.2s",
@@ -668,7 +668,7 @@ export default function FormulasWpiClass1() {
                     </div>
                     <div style={{
                       fontFamily: "'Courier New', monospace",
-                      fontSize: 15, fontWeight: 700, color: "#0F172A",
+                      fontSize: 15, fontWeight: 700, color: "#FFFFFF",
                       background: activeCat.bg,
                       padding: "10px 14px",
                       borderRadius: 8,
@@ -678,7 +678,7 @@ export default function FormulasWpiClass1() {
                       {f.formula}
                     </div>
                     {f.units && (
-                      <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 6, fontWeight: 600 }}>
+                      <div style={{ fontSize: 11, color: "#64748B", marginTop: 6, fontWeight: 600 }}>
                         Units: {f.units}
                       </div>
                     )}
@@ -718,7 +718,7 @@ export default function FormulasWpiClass1() {
                                 fontSize: 12, fontWeight: 700, color: activeCat.color,
                                 flexShrink: 0,
                               }}>{v.sym}</code>
-                              <span style={{ fontSize: 13, color: "#475569", lineHeight: 1.5 }}>{v.desc}</span>
+                              <span style={{ fontSize: 13, color: "#64748B", lineHeight: 1.5 }}>{v.desc}</span>
                             </div>
                           ))}
                         </div>
@@ -728,7 +728,7 @@ export default function FormulasWpiClass1() {
                     {/* Example */}
                     {f.example && (
                       <div style={{
-                        background: "#F8FAFC",
+                        background: "#FFFFFF",
                         borderRadius: 10,
                         border: "1px solid #E2E8F0",
                         padding: "14px 16px",
@@ -736,10 +736,10 @@ export default function FormulasWpiClass1() {
                         <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>
                           Worked Example
                         </div>
-                        <div style={{ fontSize: 13, color: "#334155", marginBottom: 8, lineHeight: 1.6 }}>
+                        <div style={{ fontSize: 13, color: "#64748B", marginBottom: 8, lineHeight: 1.6 }}>
                           <strong>Problem:</strong> {f.example.problem}
                         </div>
-                        <div style={{ fontSize: 13, color: "#334155", marginBottom: 8, lineHeight: 1.6 }}>
+                        <div style={{ fontSize: 13, color: "#64748B", marginBottom: 8, lineHeight: 1.6 }}>
                           <strong>Solution:</strong> {f.example.solution}
                         </div>
                         <div style={{
@@ -762,7 +762,7 @@ export default function FormulasWpiClass1() {
                         display: "flex", gap: 10, alignItems: "flex-start",
                       }}>
                         <span style={{ fontSize: 16, flexShrink: 0 }}>💡</span>
-                        <span style={{ fontSize: 13, color: "#334155", lineHeight: 1.6 }}>{f.tip}</span>
+                        <span style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6 }}>{f.tip}</span>
                       </div>
                     )}
                   </div>
@@ -775,7 +775,7 @@ export default function FormulasWpiClass1() {
         {/* Quick reference summary */}
         <div style={{
           marginTop: 48,
-          background: "#0F172A",
+          background: "#FFFFFF",
           borderRadius: 16,
           padding: "28px 24px",
           color: "#fff",
@@ -801,9 +801,9 @@ export default function FormulasWpiClass1() {
               <div key={item.label} style={{
                 background: "rgba(255,255,255,0.05)",
                 borderRadius: 8, padding: "10px 14px",
-                border: "1px solid rgba(255,255,255,0.08)",
+                border: "1px solid rgba(0,0,0,0.08)",
               }}>
-                <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 600, marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                <div style={{ fontSize: 10, color: "#64748B", fontWeight: 600, marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                   {item.label}
                 </div>
                 <div style={{ fontSize: 14, fontWeight: 700, color: "#7DD3FC" }}>
@@ -829,7 +829,7 @@ export default function FormulasWpiClass1() {
           <Link href="/wpi-class1-water-mock">
             <button style={{
               padding: "11px 22px", borderRadius: 9,
-              background: "#fff", color: "#0F172A",
+              background: "#fff", color: "#FFFFFF",
               border: "1.5px solid #E2E8F0", fontSize: 13, fontWeight: 700,
               cursor: "pointer", fontFamily: "inherit",
             }}>
@@ -839,7 +839,7 @@ export default function FormulasWpiClass1() {
           <Link href="/pricing">
             <button style={{
               padding: "11px 22px", borderRadius: 9,
-              background: "#fff", color: "#0F172A",
+              background: "#fff", color: "#FFFFFF",
               border: "1.5px solid #E2E8F0", fontSize: 13, fontWeight: 700,
               cursor: "pointer", fontFamily: "inherit",
             }}>

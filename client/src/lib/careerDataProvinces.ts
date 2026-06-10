@@ -98,8 +98,8 @@ const ONTARIO_LEVELS: CertLevel[] = [
     hourly: { min: 24.88, max: 26.41 },
     annual: { min: 51750, max: 54930 },
     tracks: ["water", "wastewater"],
-    color: "#64748B",
-    bg: "#F8FAFC",
+    color: "#E2E8F0",
+    bg: "#1E293B",
     requirements: [
       "Secondary school diploma (or equivalent)",
       "Pass the OIT certification exam",
@@ -260,8 +260,8 @@ const BC_LEVELS: CertLevel[] = [
     hourly: { min: 24.0, max: 26.0 },
     annual: { min: 49920, max: 54080 },
     tracks: ["water", "wastewater"],
-    color: "#64748B",
-    bg: "#F8FAFC",
+    color: "#E2E8F0",
+    bg: "#1E293B",
     requirements: [
       "High school diploma or equivalent",
       "3 months (500 hours) hands-on experience OR 9.0 CEUs of approved training",
@@ -397,8 +397,8 @@ const ALBERTA_LEVELS: CertLevel[] = [
     hourly: { min: 22.0, max: 26.0 },
     annual: { min: 45760, max: 54080 },
     tracks: ["water", "wastewater"],
-    color: "#64748B",
-    bg: "#F8FAFC",
+    color: "#E2E8F0",
+    bg: "#1E293B",
     requirements: [
       "High school diploma or equivalent",
       "Complete Alberta Environment entry-level training course",
@@ -533,8 +533,8 @@ const SASK_LEVELS: CertLevel[] = [
     hourly: { min: 19.72, max: 21.15 },
     annual: { min: 41000, max: 44000 },
     tracks: ["water", "wastewater"],
-    color: "#64748B",
-    bg: "#F8FAFC",
+    color: "#E2E8F0",
+    bg: "#1E293B",
     requirements: [
       "High school diploma or equivalent",
       "Register with Saskatchewan Operator Certification Board (SOCB)",
@@ -668,8 +668,8 @@ const MANITOBA_LEVELS: CertLevel[] = [
     hourly: { min: 20.0, max: 23.0 },
     annual: { min: 41600, max: 47840 },
     tracks: ["water", "wastewater"],
-    color: "#64748B",
-    bg: "#F8FAFC",
+    color: "#E2E8F0",
+    bg: "#1E293B",
     requirements: [
       "High school diploma or equivalent",
       "Register with Manitoba Conservation Water and Wastewater Facility Operators Certification Program",
@@ -809,7 +809,7 @@ export const PROVINCES: ProvinceData[] = [
       { name: "Region of Peel", type: "Regional", size: "Class 4 systems", note: "Serves Mississauga, Brampton, Caledon", color: "#7C3AED" },
       { name: "Veolia Water", type: "Private", size: "Multiple Ontario contracts", note: "Private operation of municipal systems", color: "#B45309" },
       { name: "Municipalities", type: "Municipal", size: "All classes", note: "Hamilton, Ottawa, London, Kitchener, Windsor and 400+ more", color: "#059669" },
-      { name: "Conservation Authorities", type: "Government", size: "Source water", note: "Grand River, Credit Valley, TRCA etc.", color: "#64748B" },
+      { name: "Conservation Authorities", type: "Government", size: "Source water", note: "Grand River, Credit Valley, TRCA etc.", color: "#E2E8F0" },
     ],
     heroStats: [
       { icon: "👷", label: "Licensed Operators in Ontario", value: "8,000+", color: "#1D4ED8" },
@@ -844,7 +844,7 @@ export const PROVINCES: ProvinceData[] = [
       { name: "City of Kelowna", type: "Municipal", size: "Level III systems", note: "Okanagan's largest city", color: "#7C3AED" },
       { name: "City of Kamloops", type: "Municipal", size: "Level III systems", note: "Thompson-Nicola region hub", color: "#B45309" },
       { name: "BC Municipalities", type: "Municipal", size: "All levels", note: "Prince George, Nanaimo, Abbotsford, Chilliwack and 150+ more", color: "#059669" },
-      { name: "First Nations Communities", type: "Indigenous", size: "Small–Level II", note: "Growing demand for certified operators in BC's 200+ First Nations", color: "#64748B" },
+      { name: "First Nations Communities", type: "Indigenous", size: "Small–Level II", note: "Growing demand for certified operators in BC's 200+ First Nations", color: "#E2E8F0" },
     ],
     heroStats: [
       { icon: "👷", label: "Licensed Operators in BC", value: "5,000+", color: "#1D4ED8" },
@@ -879,7 +879,7 @@ export const PROVINCES: ProvinceData[] = [
       { name: "City of Red Deer", type: "Municipal", size: "Level III systems", note: "Central Alberta's largest city", color: "#7C3AED" },
       { name: "City of Lethbridge", type: "Municipal", size: "Level III systems", note: "Southern Alberta hub", color: "#B45309" },
       { name: "Alberta Municipalities", type: "Municipal", size: "All levels", note: "Grande Prairie, Medicine Hat, Fort McMurray and 300+ more", color: "#059669" },
-      { name: "ATCO / Utilities", type: "Private", size: "Multiple contracts", note: "Private utility operations across rural Alberta", color: "#64748B" },
+      { name: "ATCO / Utilities", type: "Private", size: "Multiple contracts", note: "Private utility operations across rural Alberta", color: "#E2E8F0" },
     ],
     heroStats: [
       { icon: "👷", label: "Licensed Operators in Alberta", value: "4,500+", color: "#1D4ED8" },
@@ -914,7 +914,7 @@ export const PROVINCES: ProvinceData[] = [
       { name: "City of Prince Albert", type: "Municipal", size: "Class III systems", note: "Northern Saskatchewan hub", color: "#7C3AED" },
       { name: "City of Moose Jaw", type: "Municipal", size: "Class III systems", note: "South-central Saskatchewan", color: "#B45309" },
       { name: "Saskatchewan Municipalities", type: "Municipal", size: "All classes", note: "Swift Current, Yorkton, North Battleford and 700+ more", color: "#059669" },
-      { name: "SaskWater", type: "Crown", size: "Rural systems", note: "Provincial Crown corporation serving rural communities", color: "#64748B" },
+      { name: "SaskWater", type: "Crown", size: "Rural systems", note: "Provincial Crown corporation serving rural communities", color: "#E2E8F0" },
     ],
     heroStats: [
       { icon: "👷", label: "Licensed Operators in Saskatchewan", value: "2,500+", color: "#1D4ED8" },
@@ -949,7 +949,7 @@ export const PROVINCES: ProvinceData[] = [
       { name: "City of Thompson", type: "Municipal", size: "Class 2–3 systems", note: "Northern Manitoba hub", color: "#7C3AED" },
       { name: "Manitoba Municipalities", type: "Municipal", size: "All classes", note: "Portage la Prairie, Steinbach, Selkirk and 200+ more", color: "#B45309" },
       { name: "Manitoba Hydro", type: "Crown", size: "Industrial water", note: "Water treatment for hydroelectric operations", color: "#059669" },
-      { name: "First Nations Communities", type: "Indigenous", size: "Small–Class 2", note: "Federal investment in First Nations water systems driving demand", color: "#64748B" },
+      { name: "First Nations Communities", type: "Indigenous", size: "Small–Class 2", note: "Federal investment in First Nations water systems driving demand", color: "#E2E8F0" },
     ],
     heroStats: [
       { icon: "👷", label: "Licensed Operators in Manitoba", value: "2,000+", color: "#1D4ED8" },

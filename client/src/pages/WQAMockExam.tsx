@@ -219,11 +219,11 @@ export default function WQAMockExam() {
   if (examState === "intro") {
     return (
       <PurchaseGate examType="wqa" productKey="wqa" productName="WQA Practice Pass" price={149}>
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath="/wqa-mock" />   <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px" }}>
           <div style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center" }}>
             <div style={{ width: 72, height: 72, borderRadius: 20, background: "linear-gradient(135deg, #0369A1, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32, margin: "0 auto 20px" }}>🧪</div>
-            <h1 style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>WQA Mock Exam</h1>
+            <h1 style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF", marginBottom: 8 }}>WQA Mock Exam</h1>
             <p style={{ fontSize: 14, color: "#64748B", marginBottom: 28, lineHeight: 1.6 }}>
               Simulates the Ontario Water Quality Analyst certification exam format under O. Reg. 248/03.
             </p>
@@ -234,16 +234,16 @@ export default function WQAMockExam() {
                 { icon: "🎯", label: "Pass Mark", value: "70% (70/100)" },
                 { icon: "📊", label: "Modules", value: "10 Topics" },
               ].map(({ icon, label, value }) => (
-                <div key={label} style={{ padding: "14px 16px", borderRadius: 12, background: "#F8FAFC", border: "1px solid #E2E8F0" }}>
+                <div key={label} style={{ padding: "14px 16px", borderRadius: 12, background: "#FFFFFF", border: "1px solid #E2E8F0" }}>
                   <div style={{ fontSize: 20, marginBottom: 4 }}>{icon}</div>
-                  <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 600, marginBottom: 2 }}>{label}</div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: "#0F172A" }}>{value}</div>
+                  <div style={{ fontSize: 10, color: "#64748B", fontWeight: 600, marginBottom: 2 }}>{label}</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF" }}>{value}</div>
                 </div>
               ))}
             </div>
             {/* Module distribution */}
-            <div style={{ background: "#F8FAFC", borderRadius: 12, padding: "14px 16px", marginBottom: 28, textAlign: "left" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>EXAM DISTRIBUTION</div>
+            <div style={{ background: "#FFFFFF", borderRadius: 12, padding: "14px 16px", marginBottom: 28, textAlign: "left" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", marginBottom: 10 }}>EXAM DISTRIBUTION</div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                 {[
                   { mod: "Math", n: 6 }, { mod: "Science", n: 14 }, { mod: "Lab & Sampling", n: 19 },
@@ -273,7 +273,7 @@ export default function WQAMockExam() {
               </div>
             )}
             <div style={{ marginTop: 16 }}>
-              <Link href="/wqa" style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none" }}>← Back to Practice Mode</Link>
+              <Link href="/wqa" style={{ fontSize: 12, color: "#64748B", textDecoration: "none" }}>← Back to Practice Mode</Link>
             </div>
           </div>
         </div>
@@ -286,7 +286,7 @@ export default function WQAMockExam() {
   if (examState === "results" && results) {
     const { correct, score, passed, moduleBreakdown } = results;
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath="/wqa-mock" />
         <div style={{ maxWidth: 700, margin: "0 auto", padding: "32px 20px 80px" }}>
           {/* Score hero */}
@@ -316,7 +316,7 @@ export default function WQAMockExam() {
 
           {/* Module breakdown */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
-            <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 16 }}>📊 Module Breakdown (Weakest First)</div>
+            <div style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", marginBottom: 16 }}>📊 Module Breakdown (Weakest First)</div>
             {moduleBreakdown.map(({ module, correct: mc, total, pct }) => {
               const ms = MODULE_COLORS[module] ?? { bg: "#E0F2FE", color: "#0369A1" };
               const barColor = pct >= 0.7 ? "#22C55E" : pct >= 0.5 ? "#F59E0B" : "#EF4444";
@@ -326,7 +326,7 @@ export default function WQAMockExam() {
                     <span style={{ fontSize: 12, fontWeight: 700, color: ms.color }}>{module}</span>
                     <span style={{ fontSize: 11, color: "#64748B" }}>{mc}/{total} ({Math.round(pct * 100)}%)</span>
                   </div>
-                  <div style={{ height: 8, background: "#F1F5F9", borderRadius: 4, overflow: "hidden" }}>
+                  <div style={{ height: 8, background: "#FFFFFF", borderRadius: 4, overflow: "hidden" }}>
                     <div style={{ height: "100%", width: `${pct * 100}%`, background: barColor, borderRadius: 4, transition: "width 0.6s ease" }} />
                   </div>
                 </div>
@@ -343,7 +343,7 @@ export default function WQAMockExam() {
               onClick={() => setShowReview(!showReview)}
               style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", padding: 0 }}
             >
-              <span style={{ fontSize: 13, fontWeight: 800, color: "#0F172A" }}>📋 Full DBQuestion Review</span>
+              <span style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF" }}>📋 Full DBQuestion Review</span>
               <span style={{ fontSize: 12, color: "#64748B" }}>{showReview ? "▲ Hide" : "▼ Show"}</span>
             </button>
             {showReview && (
@@ -354,14 +354,14 @@ export default function WQAMockExam() {
                   const isSkipped = userAns === null;
                   const isFlagged = flagged.includes(i);
                   return (
-                    <div key={i} style={{ marginBottom: 16, padding: "14px 16px", borderRadius: 12, background: isSkipped ? "#F8FAFC" : isCorrect ? "#F0FDF4" : "#FFF7ED", border: `1px solid ${isSkipped ? "#E2E8F0" : isCorrect ? "#BBF7D0" : "#FED7AA"}` }}>
+                    <div key={i} style={{ marginBottom: 16, padding: "14px 16px", borderRadius: 12, background: isSkipped ? "#F1F5F9" : isCorrect ? "#F0FDF4" : "#FFF7ED", border: `1px solid ${isSkipped ? "#94A3B8" : isCorrect ? "#BBF7D0" : "#FED7AA"}` }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8" }}>Q{i + 1} · {q.module} {isFlagged ? "🚩" : ""}</span>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: isSkipped ? "#94A3B8" : isCorrect ? "#15803D" : "#C2410C" }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: "#64748B" }}>Q{i + 1} · {q.module} {isFlagged ? "🚩" : ""}</span>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: isSkipped ? "#E2E8F0" : isCorrect ? "#15803D" : "#C2410C" }}>
                           {isSkipped ? "Skipped" : isCorrect ? "✅ Correct" : "❌ Incorrect"}
                         </span>
                       </div>
-                      <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", marginBottom: 8, lineHeight: 1.5 }}>{(q as any).question}</div>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: "#FFFFFF", marginBottom: 8, lineHeight: 1.5 }}>{(q as any).question}</div>
                       {!isSkipped && !isCorrect && (
                         <div style={{ fontSize: 12, color: "#92400E", marginBottom: 4 }}>
                           Your answer: <strong>{q.options[userAns!]}</strong>
@@ -370,7 +370,7 @@ export default function WQAMockExam() {
                       <div style={{ fontSize: 12, color: "#15803D", marginBottom: 6 }}>
                         Correct: <strong>{q.options[(q as any).correctIndex]}</strong>
                       </div>
-                      <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.5, whiteSpace: "pre-line" }}>{q.explanation}</div>
+                      <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line" }}>{q.explanation}</div>
                       {/* Formula deep-link */}
                       {(() => {
                         const wqaId = reverseIdMap.get(q.id);
@@ -444,7 +444,7 @@ export default function WQAMockExam() {
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         .wqa-exam-opt:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
         @media (max-width: 640px) {
@@ -459,8 +459,8 @@ export default function WQAMockExam() {
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <div style={{ width: 32, height: 32, borderRadius: 8, background: "linear-gradient(135deg, #0369A1, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800, color: "#fff" }}>E</div>
             <div>
-              <div style={{ fontSize: 12, fontWeight: 800, color: "#0F172A" }}>WQA MOCK EXAM</div>
-              <div style={{ fontSize: 10, color: "#94A3B8" }}>Q{currentIdx + 1}/{EXAM_QUESTIONS} · {answered} answered</div>
+              <div style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF" }}>WQA MOCK EXAM</div>
+              <div style={{ fontSize: 10, color: "#64748B" }}>Q{currentIdx + 1}/{EXAM_QUESTIONS} · {answered} answered</div>
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -481,7 +481,7 @@ export default function WQAMockExam() {
           </div>
         </div>
         {/* Progress bar */}
-        <div style={{ height: 3, background: "#E2E8F0" }}>
+        <div style={{ height: 3, background: "#94A3B8" }}>
           <div style={{ height: "100%", width: `${(answered / EXAM_QUESTIONS) * 100}%`, background: "linear-gradient(90deg, #0369A1, #0F766E)", transition: "width 0.3s ease" }} />
         </div>
       </div>
@@ -497,11 +497,11 @@ export default function WQAMockExam() {
                 <span style={{ padding: "3px 10px", borderRadius: 20, background: modStyle.bg, color: modStyle.color, fontSize: 10, fontWeight: 700 }}>{currentQ.module}</span>
                 <span style={{ padding: "3px 10px", borderRadius: 20, background: (currentQ.difficulty ?? 'medium') === "easy" ? "#DCFCE7" : (currentQ.difficulty ?? 'medium') === "medium" ? "#FEF9C3" : "#FEE2E2", color: (currentQ.difficulty ?? 'medium') === "easy" ? "#15803D" : (currentQ.difficulty ?? 'medium') === "medium" ? "#A16207" : "#B91C1C", fontSize: 10, fontWeight: 700 }}>{(currentQ.difficulty ?? 'medium').toUpperCase()}</span>
               </div>
-              <button onClick={toggleFlag} style={{ padding: "4px 10px", borderRadius: 20, border: `1px solid ${isFlagged ? "#7C3AED" : "#E2E8F0"}`, background: isFlagged ? "#EDE9FE" : "#F8FAFC", color: isFlagged ? "#7C3AED" : "#94A3B8", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+              <button onClick={toggleFlag} style={{ padding: "4px 10px", borderRadius: 20, border: `1px solid ${isFlagged ? "#7C3AED" : "#94A3B8"}`, background: isFlagged ? "#EDE9FE" : "#F8FAFC", color: isFlagged ? "#7C3AED" : "#E2E8F0", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
                 {isFlagged ? "🚩 Flagged" : "⚑ Flag"}
               </button>
             </div>
-            <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.6, marginBottom: 20 }}>{currentQ.question}</div>
+            <div style={{ fontSize: 16, fontWeight: 700, color: "#FFFFFF", lineHeight: 1.6, marginBottom: 20 }}>{currentQ.question}</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {currentQ.options.map((opt, idx) => {
                 const isSelected = currentAnswer === idx;
@@ -510,7 +510,7 @@ export default function WQAMockExam() {
                     key={idx}
                     className="wqa-exam-opt"
                     onClick={() => handleAnswer(idx)}
-                    style={{ width: "100%", padding: "13px 16px", borderRadius: 12, border: `1.5px solid ${isSelected ? "#0369A1" : "#E2E8F0"}`, background: isSelected ? "#E0F2FE" : "#F8FAFC", color: isSelected ? "#0369A1" : "#334155", fontSize: 13, fontWeight: 600, textAlign: "left", cursor: "pointer", fontFamily: "inherit", transition: "all 0.15s", lineHeight: 1.5 }}
+                    style={{ width: "100%", padding: "13px 16px", borderRadius: 12, border: `1.5px solid ${isSelected ? "#0369A1" : "#94A3B8"}`, background: isSelected ? "#E0F2FE" : "#F8FAFC", color: isSelected ? "#0369A1" : "#E2E8F0", fontSize: 13, fontWeight: 600, textAlign: "left", cursor: "pointer", fontFamily: "inherit", transition: "all 0.15s", lineHeight: 1.5 }}
                   >
                     <span style={{ fontWeight: 800, marginRight: 8, opacity: 0.5 }}>{String.fromCharCode(65 + idx)}.</span>
                     {opt}
@@ -533,7 +533,7 @@ export default function WQAMockExam() {
 
         {/* DBQuestion navigator */}
         <div style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 80 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>NAVIGATOR</div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", marginBottom: 10 }}>NAVIGATOR</div>
           <div className="wqa-exam-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 4, marginBottom: 14 }}>
             {Array.from({ length: EXAM_QUESTIONS }, (_, i) => {
               const isAnswered = answers[i]?.selected !== null;
@@ -543,14 +543,14 @@ export default function WQAMockExam() {
                 <button
                   key={i}
                   onClick={() => setCurrentIdx(i)}
-                  style={{ width: "100%", aspectRatio: "1", borderRadius: 6, border: `1.5px solid ${isCurrent ? "#0369A1" : isFl ? "#7C3AED" : isAnswered ? "#22C55E" : "#E2E8F0"}`, background: isCurrent ? "#E0F2FE" : isFl ? "#EDE9FE" : isAnswered ? "#F0FDF4" : "#F8FAFC", color: isCurrent ? "#0369A1" : isFl ? "#7C3AED" : isAnswered ? "#15803D" : "#94A3B8", fontSize: 9, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                  style={{ width: "100%", aspectRatio: "1", borderRadius: 6, border: `1.5px solid ${isCurrent ? "#0369A1" : isFl ? "#7C3AED" : isAnswered ? "#22C55E" : "#94A3B8"}`, background: isCurrent ? "#E0F2FE" : isFl ? "#EDE9FE" : isAnswered ? "#F0FDF4" : "#F8FAFC", color: isCurrent ? "#0369A1" : isFl ? "#7C3AED" : isAnswered ? "#15803D" : "#E2E8F0", fontSize: 9, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
                 >
                   {i + 1}
                 </button>
               );
             })}
           </div>
-          <div style={{ fontSize: 10, color: "#94A3B8", lineHeight: 1.8 }}>
+          <div style={{ fontSize: 10, color: "#64748B", lineHeight: 1.8 }}>
             <div>🟩 Answered ({answered})</div>
             <div>⬜ Unanswered ({EXAM_QUESTIONS - answered})</div>
             <div>🟪 Flagged ({flagged.length})</div>

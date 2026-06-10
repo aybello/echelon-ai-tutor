@@ -23,7 +23,7 @@ function AnimatedStat({ value, suffix = "", label }: { value: number; suffix?: s
   const { ref, count } = useCountUp(value, 1600);
   return (
     <div>
-      <span ref={ref} style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif", display: "block" }}>
+      <span ref={ref} style={{ fontSize: 32, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif", display: "block" }}>
         {count.toLocaleString()}{suffix}
       </span>
       <div style={{ fontSize: 13, color: "#64748B", fontWeight: 500, marginTop: 2 }}>{label}</div>
@@ -56,7 +56,7 @@ function FaqItem({ q, a, isLast }: { q: string; a: string; isLast?: boolean }) {
           gap: 16,
         }}
       >
-        <span style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", lineHeight: 1.4 }}>{q}</span>
+        <span style={{ fontSize: 15, fontWeight: 700, color: "#FFFFFF", lineHeight: 1.4 }}>{q}</span>
         <span style={{
           fontSize: 20,
           color: "#1D4ED8",
@@ -69,7 +69,7 @@ function FaqItem({ q, a, isLast }: { q: string; a: string; isLast?: boolean }) {
         }}>+</span>
       </button>
       {open && (
-        <div style={{ paddingBottom: 20, fontSize: 14, color: "#475569", lineHeight: 1.7 }}>
+        <div style={{ paddingBottom: 20, fontSize: 14, color: "#64748B", lineHeight: 1.7 }}>
           {a}
         </div>
       )}
@@ -129,11 +129,11 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" style={{ background: "#F1F5F9", padding: "80px 24px" }}>
+    <section id="contact" style={{ background: "#FFFFFF", padding: "80px 24px" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <div style={{ display: "inline-block", background: "#DBEAFE", color: "#1D4ED8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16 }}>CONTACT US</div>
-          <h2 style={{ fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", margin: "0 0 12px", letterSpacing: "-0.02em" }}>Get in Touch</h2>
+          <h2 style={{ fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 800, color: "#FFFFFF", margin: "0 0 12px", letterSpacing: "-0.02em" }}>Get in Touch</h2>
           <p style={{ fontSize: 16, color: "#64748B", margin: 0, maxWidth: 480, marginLeft: "auto", marginRight: "auto" }}>Have a question about a course, certification, or your account? We're here to help.</p>
         </div>
 
@@ -143,7 +143,7 @@ function ContactSection() {
             <div style={{ background: "#FFFFFF", borderRadius: 16, padding: "24px", border: "1px solid #E2E8F0" }}>
               <div style={{ fontSize: 28, marginBottom: 12 }}>📞</div>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", letterSpacing: "0.06em", marginBottom: 6 }}>PHONE</div>
-              <a href="tel:+12897881885" style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", textDecoration: "none" }}>289-788-1885</a>
+              <a href="tel:+12897881885" style={{ fontSize: 20, fontWeight: 800, color: "#FFFFFF", textDecoration: "none" }}>289-788-1885</a>
               <p style={{ fontSize: 13, color: "#64748B", margin: "6px 0 0" }}>Mon–Fri, 9am–5pm ET</p>
             </div>
             <div style={{ background: "#FFFFFF", borderRadius: 16, padding: "24px", border: "1px solid #E2E8F0" }}>
@@ -171,7 +171,7 @@ function ContactSection() {
             {submitted ? (
               <div style={{ textAlign: "center", padding: "40px 20px" }}>
                 <div style={{ fontSize: 52, marginBottom: 16 }}>✅</div>
-                <h3 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>Message Sent!</h3>
+                <h3 style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: "0 0 8px" }}>Message Sent!</h3>
                 <p style={{ fontSize: 15, color: "#64748B", margin: "0 0 24px" }}>We'll get back to you within 1 business day.</p>
                 <button
                   onClick={() => { setSubmitted(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
@@ -180,7 +180,7 @@ function ContactSection() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-                <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", margin: "0 0 4px" }}>Send Us a Message</h3>
+                <h3 style={{ fontSize: 18, fontWeight: 800, color: "#FFFFFF", margin: "0 0 4px" }}>Send Us a Message</h3>
                 <div className="contact-form-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                   <div>
                     <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 6, letterSpacing: "0.05em" }}>YOUR NAME</label>
@@ -190,7 +190,7 @@ function ContactSection() {
                       onChange={e => handleChange("name", e.target.value)}
                       onBlur={() => handleBlur("name")}
                       placeholder="Jane Smith"
-                      style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.name ? "#DC2626" : "#E2E8F0"}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: "#0F172A" }}
+                      style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.name ? "#DC2626" : "#94A3B8"}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: "#FFFFFF" }}
                     />
                     {fieldErrors.name && <p style={{ margin: "4px 0 0", fontSize: 12, color: "#DC2626" }}>{fieldErrors.name}</p>}
                   </div>
@@ -202,7 +202,7 @@ function ContactSection() {
                       onChange={e => handleChange("email", e.target.value)}
                       onBlur={() => handleBlur("email")}
                       placeholder="jane@example.com"
-                      style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.email ? "#DC2626" : "#E2E8F0"}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: "#0F172A" }}
+                      style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.email ? "#DC2626" : "#94A3B8"}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: "#FFFFFF" }}
                     />
                     {fieldErrors.email && <p style={{ margin: "4px 0 0", fontSize: 12, color: "#DC2626" }}>{fieldErrors.email}</p>}
                   </div>
@@ -214,7 +214,7 @@ function ContactSection() {
                     value={form.subject}
                     onChange={e => handleChange("subject", e.target.value)}
                     onBlur={() => handleBlur("subject")}
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.subject ? "#DC2626" : "#E2E8F0"}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: form.subject ? "#0F172A" : "#94A3B8", background: "#fff" }}
+                    style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.subject ? "#DC2626" : "#94A3B8"}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: form.subject ? "#FFFFFF" : "#E2E8F0", background: "#fff" }}
                   >
                     <option value="" disabled>Select a topic...</option>
                     <option value="Course Question">Course Question</option>
@@ -234,7 +234,7 @@ function ContactSection() {
                     onBlur={() => handleBlur("message")}
                     placeholder="Tell us how we can help..."
                     rows={5}
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.message ? "#DC2626" : "#E2E8F0"}`, fontSize: 14, fontFamily: "inherit", outline: "none", resize: "vertical", boxSizing: "border-box", color: "#0F172A" }}
+                    style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.message ? "#DC2626" : "#94A3B8"}`, fontSize: 14, fontFamily: "inherit", outline: "none", resize: "vertical", boxSizing: "border-box", color: "#FFFFFF" }}
                   />
                   {fieldErrors.message && <p style={{ margin: "4px 0 0", fontSize: 12, color: "#DC2626" }}>{fieldErrors.message}</p>}
                 </div>
@@ -242,7 +242,7 @@ function ContactSection() {
                 <button
                   type="submit"
                   disabled={sendContact.isPending}
-                  style={{ padding: "14px 28px", borderRadius: 12, background: sendContact.isPending ? "#94A3B8" : "linear-gradient(135deg, #1D4ED8, #0E7490)", color: "#fff", border: "none", fontSize: 15, fontWeight: 800, cursor: sendContact.isPending ? "not-allowed" : "pointer", fontFamily: "inherit" }}
+                  style={{ padding: "14px 28px", borderRadius: 12, background: sendContact.isPending ? "#E2E8F0" : "linear-gradient(135deg, #1D4ED8, #0E7490)", color: "#fff", border: "none", fontSize: 15, fontWeight: 800, cursor: sendContact.isPending ? "not-allowed" : "pointer", fontFamily: "inherit" }}
                 >
                   {sendContact.isPending ? "Sending..." : "Send Message →"}
                 </button>
@@ -923,7 +923,7 @@ function CourseCard({ course }: { course: CourseType }) {
             }}>
               {course.code}
             </span>
-            <span style={{ fontSize: 11, color: "#94A3B8", flexShrink: 0 }}>{course.duration}</span>
+            <span style={{ fontSize: 11, color: "#64748B", flexShrink: 0 }}>{course.duration}</span>
             <span style={{ flex: 1 }} />
             <span style={{
               fontSize: 11, fontWeight: 600, color: course.color,
@@ -943,13 +943,13 @@ function CourseCard({ course }: { course: CourseType }) {
           </div>
 
           {/* Title + subtitle */}
-          <h3 style={{ fontSize: 17, fontWeight: 800, color: "#0F172A", margin: "0 0 3px", fontFamily: "Sora, sans-serif", lineHeight: 1.3 }}>
+          <h3 style={{ fontSize: 17, fontWeight: 800, color: "#FFFFFF", margin: "0 0 3px", fontFamily: "Sora, sans-serif", lineHeight: 1.3 }}>
             {course.title}
           </h3>
           <p style={{ fontSize: 12, color: course.color, fontWeight: 600, margin: "0 0 10px" }}>{course.subtitle}</p>
 
           {/* Description */}
-          <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.6, margin: "0 0 14px" }}>{course.description}</p>
+          <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6, margin: "0 0 14px" }}>{course.description}</p>
 
           {/* Topic pills */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 16 }}>
@@ -972,7 +972,7 @@ function CourseCard({ course }: { course: CourseType }) {
             }}>
               <div>
                 <span style={{ fontSize: 12, fontWeight: 700, color: "#1D4ED8" }}>Included in subscription</span>
-                <span style={{ fontSize: 11, color: "#94A3B8", display: "block", marginTop: 1 }}>from {subFromPrice}</span>
+                <span style={{ fontSize: 11, color: "#64748B", display: "block", marginTop: 1 }}>from {subFromPrice}</span>
               </div>
               {!course.comingSoon && (
                 <span style={{
@@ -1168,7 +1168,7 @@ export default function Landing() {
   }, []);
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Sora', sans-serif", background: "#FFFFFF", minHeight: "100vh" }}>
       {nationalWaitlistOpen && (
         <NationalWaitlistModal
           defaultProvince={nationalWaitlistProvince}
@@ -1241,7 +1241,7 @@ export default function Landing() {
             style={{ height: 44, width: 46 }}
           />
           <div>
-            <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em" }}>Echelon Institute</div>
+            <div style={{ fontSize: 15, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em" }}>Echelon Institute</div>
             <div className="landing-nav-subtitle" style={{ fontSize: 10, color: "#64748B", fontWeight: 500, marginTop: -2 }}>Canadian Water & Wastewater Operator Certification</div>
           </div>
         </div>
@@ -1255,7 +1255,7 @@ export default function Landing() {
                 style={{
                   padding: "6px 14px",
                   borderRadius: "8px 8px 0 0",
-                  color: isActive ? "#1D4ED8" : "#475569",
+                  color: isActive ? "#1D4ED8" : "#E2E8F0",
                   fontSize: 13, fontWeight: isActive ? 700 : 600,
                   textDecoration: "none",
                   transition: "color 0.15s, background 0.15s",
@@ -1263,7 +1263,7 @@ export default function Landing() {
                   borderBottom: isActive ? "2px solid #1D4ED8" : "2px solid transparent",
                 }}
                 onMouseEnter={e => { if (!isActive) { e.currentTarget.style.color = "#1D4ED8"; e.currentTarget.style.background = "rgba(29,78,216,0.06)"; } }}
-                onMouseLeave={e => { if (!isActive) { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; } }}
+                onMouseLeave={e => { if (!isActive) { e.currentTarget.style.color = "#E2E8F0"; e.currentTarget.style.background = "transparent"; } }}
               >
                 {item.label}
               </a>
@@ -1275,10 +1275,10 @@ export default function Landing() {
               onClick={() => setResourcesOpen(o => !o)}
               onBlur={() => setTimeout(() => setResourcesOpen(false), 150)}
               onMouseEnter={e => { e.currentTarget.style.color = "#1D4ED8"; e.currentTarget.style.background = "rgba(29,78,216,0.06)"; }}
-              onMouseLeave={e => { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; }}
+              onMouseLeave={e => { e.currentTarget.style.color = "#E2E8F0"; e.currentTarget.style.background = "transparent"; }}
               style={{
                 padding: "6px 14px", borderRadius: 8,
-                color: "#475569", fontSize: 13, fontWeight: 600,
+                color: "#64748B", fontSize: 13, fontWeight: 600,
                 background: "transparent", border: "none",
                 cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
                 display: "flex", alignItems: "center", gap: 4,
@@ -1299,10 +1299,10 @@ export default function Landing() {
                     onClick={() => setResourcesOpen(false)}
                     style={{
                       display: "block", padding: "9px 16px",
-                      fontSize: 13, color: "#334155", fontWeight: 500,
+                      fontSize: 13, color: "#64748B", fontWeight: 500,
                       textDecoration: "none",
                     }}
-                    onMouseEnter={e => (e.currentTarget.style.background = "#F8FAFC")}
+                    onMouseEnter={e => (e.currentTarget.style.background = "#EFF6FF")}
                     onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
                   >
                     {item.label}
@@ -1371,7 +1371,7 @@ export default function Landing() {
             background: "transparent",
             border: "1px solid #E2E8F0",
             borderRadius: 8,
-            color: "#0F172A",
+            color: "#FFFFFF",
             fontSize: 18,
             cursor: "pointer",
             padding: "5px 10px",
@@ -1439,7 +1439,7 @@ export default function Landing() {
                       borderRadius: 10,
                       background: tile.accent ? "linear-gradient(135deg, #1D4ED8, #0E7490)" : "#F8FAFC",
                       border: tile.accent ? "none" : "1px solid #E2E8F0",
-                      color: tile.accent ? "#fff" : "#0F172A",
+                      color: tile.accent ? "#fff" : "#FFFFFF",
                       fontSize: 11,
                       fontWeight: 700,
                       textAlign: "center" as const,
@@ -1486,7 +1486,7 @@ export default function Landing() {
                       borderRadius: 10,
                       background: tile.accent === true ? "linear-gradient(135deg, #1D4ED8, #0E7490)" : tile.accent === "purple" ? "linear-gradient(135deg, #7C3AED, #1D4ED8)" : "#F8FAFC",
                       border: tile.accent ? "none" : "1px solid #E2E8F0",
-                      color: tile.accent ? "#fff" : "#0F172A",
+                      color: tile.accent ? "#fff" : "#FFFFFF",
                       fontSize: 11,
                       fontWeight: 700,
                       textAlign: "center" as const,
@@ -1518,7 +1518,7 @@ export default function Landing() {
               style={{
                 flexShrink: 0,
                 padding: "11px 14px",
-                color: "#475569",
+                color: "#64748B",
                 fontSize: 12,
                 fontWeight: 600,
                 textDecoration: "none",
@@ -1553,7 +1553,7 @@ export default function Landing() {
                   style={{
                     padding: "8px 10px",
                     borderRadius: 8,
-                    color: "#475569",
+                    color: "#64748B",
                     fontSize: 12,
                     fontWeight: 500,
                     cursor: "pointer",
@@ -1600,7 +1600,7 @@ export default function Landing() {
 
       {/* ── Hero ── */}
       <section className="landing-hero-section" style={{
-        background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)",
+        background: "linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%)",
         padding: "80px 24px 100px",
         textAlign: "center",
         position: "relative",
@@ -1636,9 +1636,9 @@ export default function Landing() {
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.25 }}
             style={{
               display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)",
+              background: "rgba(0,0,0,0.09)", backdropFilter: "blur(8px)",
               borderRadius: 20, padding: "6px 16px", marginBottom: 24,
-              border: "1px solid rgba(255,255,255,0.15)",
+              border: "1px solid rgba(0,0,0,0.12)",
             }}
           >
             <span style={{ fontSize: 12 }}>🇨🇦</span>
@@ -1745,8 +1745,8 @@ export default function Landing() {
             <Link href="/pricing" style={{ width: "100%" }}>
               <button style={{
                 padding: "14px 32px", borderRadius: 12,
-                background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)",
-                color: "#fff", border: "1px solid rgba(255,255,255,0.2)",
+                background: "rgba(0,0,0,0.09)", backdropFilter: "blur(8px)",
+                color: "#fff", border: "1px solid rgba(0,0,0,0.14)",
                 fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
                 width: "100%",
               }}>
@@ -1770,7 +1770,7 @@ export default function Landing() {
 
       {/* ── Stats Bar ── */}
       <section style={{
-        background: "#F1F5F9",
+        background: "#FFFFFF",
         borderBottom: "1px solid #E2E8F0",
         padding: "16px 24px",
       }}>
@@ -1794,7 +1794,7 @@ export default function Landing() {
           </StaggerItem>
           <StaggerItem>
             <div>
-              <div style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif" }}>Free</div>
+              <div style={{ fontSize: 32, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif" }}>Free</div>
               <div style={{ fontSize: 13, color: "#64748B", fontWeight: 500, marginTop: 2 }}>OIT Access</div>
             </div>
           </StaggerItem>
@@ -1820,7 +1820,7 @@ export default function Landing() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <span style={{ background: "rgba(255,255,255,0.2)", borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>NEW</span>
+            <span style={{ background: "rgba(0,0,0,0.14)", borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>NEW</span>
             <span style={{ fontSize: 15, fontWeight: 600, color: "#fff" }}>
               🏭 Class 4 Wastewater is now live — 500 questions, mock exam, formula sheet &amp; AI Tutor
             </span>
@@ -1829,7 +1829,7 @@ export default function Landing() {
             href="/class4-ww"
             className="landing-whats-new-btn"
             style={{
-              background: "rgba(255,255,255,0.15)",
+              background: "rgba(0,0,0,0.12)",
               border: "1.5px solid rgba(255,255,255,0.4)",
               borderRadius: 10,
               padding: "8px 18px",
@@ -1852,7 +1852,7 @@ export default function Landing() {
       <section id="courses" className="landing-course-section" style={{ padding: "72px 24px", maxWidth: 1200, margin: "0 auto" }}>
         <FadeUp>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
+          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
             Choose Your Certification Track
           </h2>
           <p style={{ fontSize: 16, color: "#64748B", maxWidth: 560, margin: "0 auto 32px" }}>
@@ -1863,7 +1863,7 @@ export default function Landing() {
           <div
             className="landing-track-toggle"
             style={{
-              display: "inline-flex", background: "#F1F5F9", borderRadius: 12, padding: 4, gap: 4,
+              display: "inline-flex", background: "#FFFFFF", borderRadius: 12, padding: 4, gap: 4,
             }}
           >
             <button
@@ -1871,7 +1871,7 @@ export default function Landing() {
               style={{
                 padding: "10px 20px", borderRadius: 10, border: "none",
                 background: activeTopTab === "water" ? "#1D4ED8" : "transparent",
-                color: activeTopTab === "water" ? "#fff" : "#64748B",
+                color: activeTopTab === "water" ? "#fff" : "#E2E8F0",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                 transition: "all 0.2s", whiteSpace: "nowrap",
               }}
@@ -1883,7 +1883,7 @@ export default function Landing() {
               style={{
                 padding: "10px 20px", borderRadius: 10, border: "none",
                 background: activeTopTab === "wastewater" ? "#059669" : "transparent",
-                color: activeTopTab === "wastewater" ? "#fff" : "#64748B",
+                color: activeTopTab === "wastewater" ? "#fff" : "#E2E8F0",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                 transition: "all 0.2s", whiteSpace: "nowrap",
               }}
@@ -1895,7 +1895,7 @@ export default function Landing() {
               style={{
                 padding: "10px 20px", borderRadius: 10, border: "none",
                 background: activeTopTab === "wqa" ? "#7C3AED" : "transparent",
-                color: activeTopTab === "wqa" ? "#fff" : "#64748B",
+                color: activeTopTab === "wqa" ? "#fff" : "#E2E8F0",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                 transition: "all 0.2s", whiteSpace: "nowrap",
               }}
@@ -1907,7 +1907,7 @@ export default function Landing() {
               style={{
                 padding: "10px 20px", borderRadius: 10, border: "none",
                 background: activeTopTab === "wpi" ? "#0369A1" : "transparent",
-                color: activeTopTab === "wpi" ? "#fff" : "#64748B",
+                color: activeTopTab === "wpi" ? "#fff" : "#E2E8F0",
                 fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                 transition: "all 0.2s", whiteSpace: "nowrap",
               }}
@@ -1962,7 +1962,7 @@ export default function Landing() {
 
       {/* ── Study Tools Feature Section ── */}
       <section id="tools" style={{
-        background: "#0F172A",
+        background: "#FFFFFF",
         padding: "72px 24px",
       }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -1988,7 +1988,7 @@ export default function Landing() {
               <Link key={f.title} href={f.href}>
                 <div className="tool-card-inner" style={{
                   background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(0,0,0,0.08)",
                   borderRadius: 16, padding: "28px 24px",
                   transition: "background 0.2s, transform 0.15s, box-shadow 0.15s",
                   cursor: "pointer",
@@ -2026,7 +2026,7 @@ export default function Landing() {
       </section>
 
       {/* ── About Section (teaser — links to /about for full content) ── */}
-      <section id="about" style={{ background: "#0F172A", padding: "72px 24px", scrollMarginTop: 80 }}>
+      <section id="about" style={{ background: "#FFFFFF", padding: "72px 24px", scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 860, margin: "0 auto" }}>
 
           {/* Teaser Header */}
@@ -2076,8 +2076,8 @@ export default function Landing() {
 
       {/* ── Coming Soon: BC & Alberta ── */}
       <section style={{
-        background: "#0F172A",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
+        background: "#FFFFFF",
+        borderTop: "1px solid rgba(0,0,0,0.07)",
         padding: "72px 24px",
       }}>
         <div style={{ maxWidth: 1060, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
@@ -2103,12 +2103,12 @@ export default function Landing() {
                 <div style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF" }}>8,000+</div>
                 <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>Practice questions</div>
               </div>
-              <div style={{ width: 1, background: "rgba(255,255,255,0.1)" }} />
+              <div style={{ width: 1, background: "rgba(0,0,0,0.09)" }} />
               <div>
                 <div style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF" }}>16</div>
                 <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>WPI courses</div>
               </div>
-              <div style={{ width: 1, background: "rgba(255,255,255,0.1)" }} />
+              <div style={{ width: 1, background: "rgba(0,0,0,0.09)" }} />
               <div>
                 <div style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF" }}>4</div>
                 <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>Provinces covered</div>
@@ -2226,7 +2226,7 @@ export default function Landing() {
           <FadeUp>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div style={{ display: "inline-block", background: "#EFF6FF", color: "#1D4ED8", borderRadius: 20, padding: "4px 14px", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 12 }}>Student Stories</div>
-            <h2 style={{ fontSize: 32, fontWeight: 900, color: "#0F172A", margin: "0 0 12px", letterSpacing: "-0.02em" }}>Operators Who Passed With Echelon</h2>
+            <h2 style={{ fontSize: 32, fontWeight: 900, color: "#FFFFFF", margin: "0 0 12px", letterSpacing: "-0.02em" }}>Operators Who Passed With Echelon</h2>
             <p style={{ fontSize: 16, color: "#64748B", maxWidth: 520, margin: "0 auto" }}>Real feedback from water and wastewater operators across Canada.</p>
           </div>
           </FadeUp>
@@ -2282,7 +2282,7 @@ export default function Landing() {
               },
             ].map((t, i) => (
               <div key={i} style={{
-                background: "#F8FAFC",
+                background: "#FFFFFF",
                 borderRadius: 16,
                 padding: "28px 24px",
                 border: "1px solid #E2E8F0",
@@ -2297,7 +2297,7 @@ export default function Landing() {
                   ))}
                 </div>
                 {/* Quote */}
-                <p style={{ fontSize: 14, color: "#334155", lineHeight: 1.7, margin: 0, fontStyle: "italic" }}>
+                <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.7, margin: 0, fontStyle: "italic" }}>
                   "{t.quote}"
                 </p>
                 {/* Author */}
@@ -2309,7 +2309,7 @@ export default function Landing() {
                     fontSize: 13, fontWeight: 800, flexShrink: 0,
                   }}>{t.initials}</div>
                   <div>
-                    <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A" }}>{t.name}</div>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF" }}>{t.name}</div>
                     <div style={{ fontSize: 11, color: "#64748B" }}>{t.role}</div>
                   </div>
                 </div>
@@ -2325,11 +2325,11 @@ export default function Landing() {
 
       {/* ── FAQ Section ── */}
       <FadeUp>
-      <section id="faq" style={{ background: "#F8FAFC", padding: "80px 24px", borderTop: "1px solid #E2E8F0", scrollMarginTop: 80 }}>
+      <section id="faq" style={{ background: "#FFFFFF", padding: "80px 24px", borderTop: "1px solid #E2E8F0", scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 780, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div style={{ display: "inline-block", background: "#EFF6FF", color: "#1D4ED8", borderRadius: 20, padding: "4px 14px", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 12 }}>FAQ</div>
-            <h2 style={{ fontSize: 32, fontWeight: 900, color: "#0F172A", margin: "0 0 12px", letterSpacing: "-0.02em" }}>Frequently Asked Questions</h2>
+            <h2 style={{ fontSize: 32, fontWeight: 900, color: "#FFFFFF", margin: "0 0 12px", letterSpacing: "-0.02em" }}>Frequently Asked Questions</h2>
             <p style={{ fontSize: 16, color: "#64748B", maxWidth: 520, margin: "0 auto" }}>Everything you need to know before you start studying.</p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
@@ -2379,8 +2379,8 @@ export default function Landing() {
 
       {/* ── Footer ── */}
       <footer style={{
-        background: "#0F172A",
-        borderTop: "1px solid rgba(255,255,255,0.08)",
+        background: "#FFFFFF",
+        borderTop: "1px solid rgba(0,0,0,0.08)",
         padding: "48px 24px 32px",
       }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
@@ -2416,7 +2416,7 @@ export default function Landing() {
                 padding: "10px 20px",
                 borderRadius: 8,
                 background: "rgba(255,255,255,0.07)",
-                border: "1px solid rgba(255,255,255,0.15)",
+                border: "1px solid rgba(0,0,0,0.12)",
                 color: "#FFF",
                 fontSize: 13,
                 fontWeight: 600,
@@ -2478,8 +2478,8 @@ export default function Landing() {
               style={{
                 display: "inline-flex", alignItems: "center", gap: 7,
                 padding: "8px 14px", borderRadius: 8,
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
+                background: "rgba(0,0,0,0.07)",
+                border: "1px solid rgba(0,0,0,0.10)",
                 color: "rgba(255,255,255,0.65)", fontSize: 13, fontWeight: 500,
                 textDecoration: "none", cursor: "pointer",
               }}
@@ -2498,8 +2498,8 @@ export default function Landing() {
               style={{
                 display: "inline-flex", alignItems: "center", gap: 7,
                 padding: "8px 14px", borderRadius: 8,
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
+                background: "rgba(0,0,0,0.07)",
+                border: "1px solid rgba(0,0,0,0.10)",
                 color: "rgba(255,255,255,0.65)", fontSize: 13, fontWeight: 500,
                 textDecoration: "none", cursor: "pointer",
               }}

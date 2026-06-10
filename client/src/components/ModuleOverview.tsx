@@ -90,7 +90,7 @@ export default function ModuleOverviewPanel({
         <div style={{ padding: "20px 18px 18px" }}>
 
           {/* Intro */}
-          <p style={{ fontSize: 14, color: "#334155", lineHeight: 1.7, marginBottom: 18, marginTop: 0 }}>
+          <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.7, marginBottom: 18, marginTop: 0 }}>
             {overview.intro}
           </p>
 
@@ -114,7 +114,7 @@ export default function ModuleOverviewPanel({
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 12, marginBottom: 18 }}>
             {overview.keyPoints.map((kp, i) => (
               <div key={i} style={{
-                background: "#F8FAFC",
+                background: "#FFFFFF",
                 borderRadius: 10,
                 padding: "12px 14px",
                 borderLeft: `3px solid ${moduleColor}`,
@@ -122,7 +122,7 @@ export default function ModuleOverviewPanel({
                 <div style={{ fontSize: 12, fontWeight: 800, color: moduleColor, marginBottom: 5 }}>
                   {kp.heading}
                 </div>
-                <div style={{ fontSize: 13, color: "#475569", lineHeight: 1.6 }}>
+                <div style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6 }}>
                   {kp.body}
                 </div>
               </div>
@@ -160,7 +160,7 @@ export default function ModuleOverviewPanel({
                       {row.map((cell, ci) => (
                         <td key={ci} style={{
                           padding: "8px 12px",
-                          color: ci === 0 ? "#0F172A" : "#475569",
+                          color: ci === 0 ? "#FFFFFF" : "#E2E8F0",
                           fontWeight: ci === 0 ? 700 : 400,
                           verticalAlign: "top",
                         }}>

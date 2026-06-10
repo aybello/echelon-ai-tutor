@@ -101,7 +101,7 @@ export default function PumpingSystems() {
   const p2Ratio = (ratio * ratio * ratio).toFixed(2);
 
   return (
-    <div className="min-h-screen text-slate-900" style={{ background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div className="min-h-screen text-slate-900" style={{ background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
       {/* ── Header ── */}
       <header style={{ background: "#fff", borderBottom: "1px solid #E5E7EB" }} className="sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4 flex-wrap">
@@ -431,7 +431,7 @@ export default function PumpingSystems() {
                     </div>
                   </div>
                 </div>
-                <div className="rounded-xl p-5 space-y-4" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
+                <div className="rounded-xl p-5 space-y-4" style={{ background: "#FFFFFF", border: "1px solid #E5E7EB" }}>
                   <h4 className="text-slate-700 font-semibold text-sm">Predicted Conditions (Speed N₂ = {n2} rpm)</h4>
                   <div className="space-y-3">
                     {[
@@ -499,7 +499,7 @@ export default function PumpingSystems() {
                   { reg: "MECP Design Guidelines", desc: "Pumping stations must be designed for peak hourly flow with one pump out of service." },
                   { reg: "CSA B214", desc: "Installation of hydronic heating systems — relevant for booster pump applications." },
                 ].map(r => (
-                  <div key={r.reg} className="rounded-xl p-4" style={{ background: "#F8FAFC", border: "1px solid #E5E7EB" }}>
+                  <div key={r.reg} className="rounded-xl p-4" style={{ background: "#FFFFFF", border: "1px solid #E5E7EB" }}>
                     <p className="text-blue-600 text-xs font-semibold mb-1">{r.reg}</p>
                     <p className="text-slate-600 text-sm">{r.desc}</p>
                   </div>

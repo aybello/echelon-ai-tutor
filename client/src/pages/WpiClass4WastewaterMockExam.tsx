@@ -12,7 +12,7 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Plant Management, Asset Management & Leadership":   { bg: "#FEE2E2", color: "#B91C1C" },
   "Regulatory Compliance, Reporting & Environmental Management": { bg: "#FEF9C3", color: "#A16207" },
   "Emergency Response & Resilience Planning":          { bg: "#FFEDD5", color: "#C2410C" },
-  "Health, Safety & Environmental Stewardship":        { bg: "#F1F5F9", color: "#475569" },
+  "Health, Safety & Environmental Stewardship":        { bg: "#F8FAFC", color: "#64748B" },
 };
 
 export default function WpiClass4WastewaterMockExam() {

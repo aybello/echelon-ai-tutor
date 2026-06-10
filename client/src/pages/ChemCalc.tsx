@@ -55,17 +55,17 @@ function ChlorineCalc() {
         <div>
           <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Flow Rate (m³/day)</label>
           <input type="number" value={flow} onChange={e => setFlow(e.target.value)}
-            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
         </div>
         <div>
           <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Target Dose (mg/L)</label>
           <input type="number" value={dose} onChange={e => setDose(e.target.value)}
-            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
         </div>
         <div>
           <label htmlFor="chem-form-select" style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Chemical Form</label>
           <select id="chem-form-select" value={form} onChange={e => setForm(e.target.value as typeof form)}
-            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 13, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", background: "#fff", boxSizing: "border-box" }}>
+            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 13, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", background: "#fff", boxSizing: "border-box" }}>
             <option value="gas">Chlorine Gas (99.5% Cl₂)</option>
             <option value="liquid">Sodium Hypochlorite (12.5%)</option>
             <option value="granular">HTH Granular (65% Cl₂)</option>
@@ -78,7 +78,7 @@ function ChlorineCalc() {
           <input type="number" value={form === "gas" ? "99.5" : form === "liquid" ? "12.5" : purity}
             onChange={e => setPurity(e.target.value)}
             disabled={form !== "granular"}
-            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", background: form !== "granular" ? "#F8FAFC" : "#fff", boxSizing: "border-box" }} />
+            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", background: form !== "granular" ? "#E2E8F0" : "#fff", boxSizing: "border-box" }} />
         </div>
       </div>
 
@@ -89,10 +89,10 @@ function ChlorineCalc() {
             { label: form === "liquid" ? "Hypochlorite Volume" : "Product Mass", value: form === "liquid" ? `${round(hypoVolume_L)} L/day` : `${round(productMass_kg)} kg/day`, sub: form === "liquid" ? `${round(hypoVolume_L / 24, 2)} L/hr` : `${round(productMass_kg / 24, 3)} kg/hr`, color: "#1D4ED8" },
             { label: "Feed Rate", value: form === "liquid" ? `${round(feedRate_mLMin)} mL/min` : `${round(feedRate_gMin)} g/min`, sub: "continuous feed", color: "#059669" },
           ].map(({ label, value, sub, color }) => (
-            <div key={label} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 6 }}>{label}</div>
+            <div key={label} style={{ background: "#FFFFFF", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", marginBottom: 6 }}>{label}</div>
               <div style={{ fontSize: 20, fontWeight: 900, color }}>{value}</div>
-              <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 4 }}>{sub}</div>
+              <div style={{ fontSize: 10, color: "#64748B", marginTop: 4 }}>{sub}</div>
             </div>
           ))}
         </div>
@@ -143,7 +143,7 @@ function AlumCalc() {
           <div key={label}>
             <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label}</label>
             <input type="number" value={val} onChange={e => set(e.target.value)}
-              style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+              style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
           </div>
         ))}
       </div>
@@ -155,10 +155,10 @@ function AlumCalc() {
               { label: "Alum Mass Needed", value: `${round(massNeeded_kg)} kg/day`, sub: `${round(massNeeded_kg / 24, 2)} kg/hr`, color: "#1D4ED8" },
               { label: "Liquid Volume", value: `${round(volumeNeeded_L)} L/day`, sub: `${round(feedRate_mLMin)} mL/min`, color: "#7C3AED" },
             ].map(({ label, value, sub, color }) => (
-              <div key={label} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 6 }}>{label}</div>
+              <div key={label} style={{ background: "#FFFFFF", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", marginBottom: 6 }}>{label}</div>
                 <div style={{ fontSize: 20, fontWeight: 900, color }}>{value}</div>
-                <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 4 }}>{sub}</div>
+                <div style={{ fontSize: 10, color: "#64748B", marginTop: 4 }}>{sub}</div>
               </div>
             ))}
           </div>
@@ -223,7 +223,7 @@ function LimeCalc() {
           <div key={label}>
             <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label}</label>
             <input type="number" value={val} onChange={e => set(e.target.value)}
-              style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+              style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
           </div>
         ))}
       </div>
@@ -235,10 +235,10 @@ function LimeCalc() {
             { label: "Lime Mass", value: `${round(limeMass_kg)} kg/day`, sub: `${round(limeMass_kg / 24, 2)} kg/hr`, color: "#1D4ED8" },
             { label: "Feed Rate", value: `${round(feedRate_gMin)} g/min`, sub: "dry feeder", color: "#059669" },
           ].map(({ label, value, sub, color }) => (
-            <div key={label} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 6 }}>{label}</div>
+            <div key={label} style={{ background: "#FFFFFF", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", marginBottom: 6 }}>{label}</div>
               <div style={{ fontSize: 20, fontWeight: 900, color }}>{value}</div>
-              <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 4 }}>{sub}</div>
+              <div style={{ fontSize: 10, color: "#64748B", marginTop: 4 }}>{sub}</div>
             </div>
           ))}
         </div>
@@ -251,7 +251,7 @@ function LimeCalc() {
         </div>
       )}
 
-      <div style={{ marginTop: 20, background: "#F8FAFC", borderRadius: 12, padding: "14px 18px", border: "1px solid #E2E8F0" }}>
+      <div style={{ marginTop: 20, background: "#FFFFFF", borderRadius: 12, padding: "14px 18px", border: "1px solid #E2E8F0" }}>
         <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", marginBottom: 6 }}>📌 Exam Tips</div>
         <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.8 }}>
           • Lime raises pH and alkalinity — used for corrosion control and softening<br/>
@@ -296,12 +296,12 @@ function FluorideCalc() {
         <div>
           <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Flow Rate (m³/day)</label>
           <input type="number" value={flow} onChange={e => setFlow(e.target.value)}
-            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
         </div>
         <div>
           <label htmlFor="fluoride-chem-select" style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Fluoride Chemical</label>
           <select id="fluoride-chem-select" value={chemical} onChange={e => setChemical(e.target.value as typeof chemical)}
-            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 12, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", background: "#fff", boxSizing: "border-box" }}>
+            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 12, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", background: "#fff", boxSizing: "border-box" }}>
             <option value="hfs">Hydrofluosilicic Acid (23% F)</option>
             <option value="naf">Sodium Fluoride (45% F)</option>
             <option value="fsa">Sodium Fluorosilicate (60.7% F)</option>
@@ -310,12 +310,12 @@ function FluorideCalc() {
         <div>
           <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Existing Fluoride (mg/L)</label>
           <input type="number" value={existing} onChange={e => setExisting(e.target.value)}
-            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
         </div>
         <div>
           <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Target Fluoride (mg/L) — Ontario: 0.7 mg/L</label>
           <input type="number" value={target} onChange={e => setTarget(e.target.value)}
-            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+            style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
         </div>
       </div>
 
@@ -332,10 +332,10 @@ function FluorideCalc() {
             { label: chem.unit === "L/day" ? "Chemical Volume" : "Chemical Mass", value: `${round(productAmount)} ${chem.unit}`, sub: chem.name.split(" (")[0], color: "#1D4ED8" },
             { label: "Feed Rate", value: `${round(feedRate)} mL/min`, sub: "metering pump", color: "#7C3AED" },
           ].map(({ label, value, sub, color }) => (
-            <div key={label} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 6 }}>{label}</div>
+            <div key={label} style={{ background: "#FFFFFF", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", marginBottom: 6 }}>{label}</div>
               <div style={{ fontSize: 20, fontWeight: 900, color }}>{value}</div>
-              <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 4 }}>{sub}</div>
+              <div style={{ fontSize: 10, color: "#64748B", marginTop: 4 }}>{sub}</div>
             </div>
           ))}
         </div>
@@ -383,7 +383,7 @@ function PolymerCalc() {
           <div key={label}>
             <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label}</label>
             <input type="number" value={val} onChange={e => set(e.target.value)}
-              style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+              style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
           </div>
         ))}
       </div>
@@ -395,10 +395,10 @@ function PolymerCalc() {
             { label: "Stock Solution", value: `${round(stockVolume_L)} L/day`, sub: `at ${stockConc}% concentration`, color: "#1D4ED8" },
             { label: "Feed Rate", value: `${round(feedRate_mLMin)} mL/min`, sub: "metering pump", color: "#059669" },
           ].map(({ label, value, sub, color }) => (
-            <div key={label} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 6 }}>{label}</div>
+            <div key={label} style={{ background: "#FFFFFF", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", marginBottom: 6 }}>{label}</div>
               <div style={{ fontSize: 20, fontWeight: 900, color }}>{value}</div>
-              <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 4 }}>{sub}</div>
+              <div style={{ fontSize: 10, color: "#64748B", marginTop: 4 }}>{sub}</div>
             </div>
           ))}
         </div>
@@ -426,7 +426,7 @@ export default function ChemCalc() {
   const [activeTab, setActiveTab] = useState<Tab>("chlorine");
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
         @media (max-width: 640px) {
@@ -459,9 +459,9 @@ export default function ChemCalc() {
               onClick={() => setActiveTab(id)}
               style={{
                 padding: "10px 18px", borderRadius: 20,
-                border: `2px solid ${activeTab === id ? color : "#E2E8F0"}`,
+                border: `2px solid ${activeTab === id ? color : "#94A3B8"}`,
                 background: activeTab === id ? `${color}15` : "#fff",
-                color: activeTab === id ? color : "#64748B",
+                color: activeTab === id ? color : "#E2E8F0",
                 fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                 transition: "all 0.15s",
               }}
@@ -473,7 +473,7 @@ export default function ChemCalc() {
 
         {/* Calculator card */}
         <div style={{ background: "#fff", borderRadius: 20, padding: "32px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", animation: "fadeUp 0.25s ease both" }} key={activeTab}>
-          <h2 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", margin: "0 0 24px" }}>
+          <h2 style={{ fontSize: 16, fontWeight: 800, color: "#FFFFFF", margin: "0 0 24px" }}>
             {TABS.find(t => t.id === activeTab)?.icon} {TABS.find(t => t.id === activeTab)?.label} Calculator
           </h2>
           {activeTab === "chlorine"  && <ChlorineCalc />}
@@ -485,10 +485,10 @@ export default function ChemCalc() {
 
         {/* Quick reference table */}
         <div style={{ background: "#fff", borderRadius: 20, padding: "28px 32px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", marginTop: 20 }}>
-          <h2 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", margin: "0 0 16px" }}>📋 Typical Dose Ranges — Quick Reference</h2>
+          <h2 style={{ fontSize: 16, fontWeight: 800, color: "#FFFFFF", margin: "0 0 16px" }}>📋 Typical Dose Ranges — Quick Reference</h2>
           <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
             <thead>
-              <tr style={{ background: "#F8FAFC" }}>
+              <tr style={{ background: "#FFFFFF" }}>
                 {["Chemical", "Typical Dose", "Purpose", "pH Range", "Key Note"].map(h => (
                   <th key={h} style={{ padding: "10px 12px", textAlign: "left", fontWeight: 700, color: "#64748B", borderBottom: "2px solid #E2E8F0", fontSize: 11 }}>{h}</th>
                 ))}
@@ -505,7 +505,7 @@ export default function ChemCalc() {
               ].map((row, i) => (
                 <tr key={i} style={{ borderBottom: "1px solid #F1F5F9" }}>
                   {row.map((cell, j) => (
-                    <td key={j} style={{ padding: "10px 12px", color: j === 0 ? "#0F172A" : "#374151", fontWeight: j === 0 ? 700 : 400 }}>{cell}</td>
+                    <td key={j} style={{ padding: "10px 12px", color: j === 0 ? "#FFFFFF" : "#374151", fontWeight: j === 0 ? 700 : 400 }}>{cell}</td>
                   ))}
                 </tr>
               ))}

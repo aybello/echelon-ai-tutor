@@ -214,10 +214,10 @@ export function PressureZoneDiagram({ active, onClick, color }: DiagramProps) {
       <text x={230} y={107} textAnchor="middle" fontSize={8} fill="#D97706" fontWeight="700">PRV</text>
       <text x={230} y={118} textAnchor="middle" fontSize={7} fill="#D97706" fontWeight="700">350 kPa</text>
       {/* Bypass line */}
-      <path d="M 200 100 Q 230 60 260 100" stroke="#94A3B8" strokeWidth={1.5} fill="none" strokeDasharray="4 3" />
-      <rect x={315} y={88} width={40} height={24} rx={5} fill="#F1F5F9" stroke="#94A3B8" strokeWidth={1.5} />
-      <text x={335} y={100} textAnchor="middle" fontSize={7} fill="#64748B" fontWeight="700">BYPASS</text>
-      <text x={335} y={110} textAnchor="middle" fontSize={7} fill="#64748B" fontWeight="700">VALVE</text>
+      <path d="M 200 100 Q 230 60 260 100" stroke="#E2E8F0" strokeWidth={1.5} fill="none" strokeDasharray="4 3" />
+      <rect x={315} y={88} width={40} height={24} rx={5} fill="#1E293B" stroke="#E2E8F0" strokeWidth={1.5} />
+      <text x={335} y={100} textAnchor="middle" fontSize={7} fill="#E2E8F0" fontWeight="700">BYPASS</text>
+      <text x={335} y={110} textAnchor="middle" fontSize={7} fill="#E2E8F0" fontWeight="700">VALVE</text>
       {/* Low-pressure pipe */}
       <rect x={265} y={101} width={135} height={18} rx={5} fill="#D1FAE5" opacity={0.5} />
       <line x1={265} y1={110} x2={400} y2={110} stroke="#059669" strokeWidth={2.5}
@@ -233,9 +233,9 @@ export function PressureZoneDiagram({ active, onClick, color }: DiagramProps) {
       <line x1={498} y1={110} x2={540} y2={110} stroke="#059669" strokeWidth={2.5}
         strokeDasharray="8 4" style={{ animation: "flow 1.4s linear infinite" }} />
       {/* High elevation area */}
-      <polygon points="540,90 600,55 620,90" fill="#E2E8F0" stroke="#94A3B8" strokeWidth={1.5} />
-      <text x={580} y={80} textAnchor="middle" fontSize={7} fill="#64748B" fontWeight="700">HIGH</text>
-      <text x={580} y={90} textAnchor="middle" fontSize={7} fill="#64748B" fontWeight="700">ELEV.</text>
+      <polygon points="540,90 600,55 620,90" fill="#94A3B8" stroke="#E2E8F0" strokeWidth={1.5} />
+      <text x={580} y={80} textAnchor="middle" fontSize={7} fill="#E2E8F0" fontWeight="700">HIGH</text>
+      <text x={580} y={90} textAnchor="middle" fontSize={7} fill="#E2E8F0" fontWeight="700">ELEV.</text>
       {labels.map(l => <LabelDot key={l.id} {...l} active={active} color={color} onClick={onClick} />)}
     </svg>
   );
@@ -334,8 +334,8 @@ export function CrossConnectionDiagram({ active, onClick, color }: DiagramProps)
       <text x={520} y={83} textAnchor="middle" fontSize={7} fill="#0369A1" fontWeight="700">SUPPLY</text>
       <text x={520} y={93} textAnchor="middle" fontSize={7} fill="#0369A1" fontWeight="700">OUTLET</text>
       {/* Air gap space */}
-      <line x1={520} y1={100} x2={520} y2={118} stroke="#94A3B8" strokeWidth={1} strokeDasharray="3 2" />
-      <text x={560} y={110} fontSize={7} fill="#94A3B8" fontWeight="700">AIR GAP</text>
+      <line x1={520} y1={100} x2={520} y2={118} stroke="#E2E8F0" strokeWidth={1} strokeDasharray="3 2" />
+      <text x={560} y={110} fontSize={7} fill="#E2E8F0" fontWeight="700">AIR GAP</text>
       {/* Receiving vessel */}
       <rect x={500} y={118} width={40} height={30} rx={4} fill="#D1FAE5" stroke="#059669" strokeWidth={1.5} />
       <text x={520} y={131} textAnchor="middle" fontSize={7} fill="#059669" fontWeight="700">TANK</text>

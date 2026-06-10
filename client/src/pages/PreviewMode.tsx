@@ -36,11 +36,11 @@ export default function PreviewMode() {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      background: "#0F172A",
+      background: "#FFFFFF",
       fontFamily: "Sora, sans-serif",
     }}>
       <div style={{
-        background: "#1E293B",
+        background: "#FFFFFF",
         border: "1.5px solid #334155",
         borderRadius: 16,
         padding: "40px 48px",
@@ -48,7 +48,7 @@ export default function PreviewMode() {
         maxWidth: 400,
       }}>
         {status === "checking" && (
-          <p style={{ color: "#94A3B8", fontSize: 16 }}>Checking...</p>
+          <p style={{ color: "#64748B", fontSize: 16 }}>Checking...</p>
         )}
         {status === "enabled" && (
           <>
@@ -56,7 +56,7 @@ export default function PreviewMode() {
             <h2 style={{ color: "#34D399", fontSize: 20, fontWeight: 800, margin: "0 0 8px" }}>
               Preview Mode Active
             </h2>
-            <p style={{ color: "#94A3B8", fontSize: 14 }}>
+            <p style={{ color: "#64748B", fontSize: 14 }}>
               All paywalls are bypassed. Redirecting to homepage...
             </p>
           </>
@@ -67,7 +67,7 @@ export default function PreviewMode() {
             <h2 style={{ color: "#F87171", fontSize: 20, fontWeight: 800, margin: "0 0 8px" }}>
               Preview Mode Disabled
             </h2>
-            <p style={{ color: "#94A3B8", fontSize: 14 }}>
+            <p style={{ color: "#64748B", fontSize: 14 }}>
               Paywalls are back on. Redirecting to homepage...
             </p>
           </>
@@ -78,7 +78,7 @@ export default function PreviewMode() {
             <h2 style={{ color: "#F87171", fontSize: 20, fontWeight: 800, margin: "0 0 8px" }}>
               Invalid Key
             </h2>
-            <p style={{ color: "#94A3B8", fontSize: 14 }}>
+            <p style={{ color: "#64748B", fontSize: 14 }}>
               The preview key is incorrect.
             </p>
           </>

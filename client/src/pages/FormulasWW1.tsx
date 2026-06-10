@@ -517,7 +517,7 @@ export default function FormulasWW1() {
   });
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>      <style>{`
+    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }
@@ -560,7 +560,7 @@ export default function FormulasWW1() {
         <div style={{ display: "flex", gap: 8, maxWidth: 800, margin: "0 auto", flexWrap: "wrap" }}>
           <button
             onClick={() => setActiveCategory(null)}
-            style={{ padding: "5px 14px", borderRadius: 20, border: "1.5px solid " + (activeCategory === null ? BRAND : "#E2E8F0"), background: activeCategory === null ? "#EFF6FF" : "#F8FAFC", color: activeCategory === null ? BRAND : "#64748B", fontSize: 12, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap" }}
+            style={{ padding: "5px 14px", borderRadius: 20, border: "1.5px solid " + (activeCategory === null ? BRAND : "#94A3B8"), background: activeCategory === null ? "#EFF6FF" : "#F8FAFC", color: activeCategory === null ? BRAND : "#E2E8F0", fontSize: 12, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap" }}
           >
             All Categories
           </button>
@@ -568,7 +568,7 @@ export default function FormulasWW1() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
-              style={{ padding: "5px 14px", borderRadius: 20, border: "1.5px solid " + (activeCategory === cat.id ? cat.color : "#E2E8F0"), background: activeCategory === cat.id ? cat.bg : "#F8FAFC", color: activeCategory === cat.id ? cat.color : "#64748B", fontSize: 12, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap" }}
+              style={{ padding: "5px 14px", borderRadius: 20, border: "1.5px solid " + (activeCategory === cat.id ? cat.color : "#94A3B8"), background: activeCategory === cat.id ? cat.bg : "#F8FAFC", color: activeCategory === cat.id ? cat.color : "#E2E8F0", fontSize: 12, fontWeight: 700, cursor: "pointer", whiteSpace: "nowrap" }}
             >
               {cat.icon} {cat.label}
             </button>
@@ -579,7 +579,7 @@ export default function FormulasWW1() {
       {/* Formula cards */}
       <div style={{ maxWidth: 800, margin: "0 auto", padding: "28px 16px 60px" }}>
         {filtered.length === 0 && (
-          <div style={{ textAlign: "center", padding: "60px 20px", color: "#94A3B8" }}>
+          <div style={{ textAlign: "center", padding: "60px 20px", color: "#64748B" }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
             <p style={{ fontSize: 16, fontWeight: 600 }}>No formulas found for "{search}"</p>
           </div>
@@ -593,7 +593,7 @@ export default function FormulasWW1() {
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {cat.formulas.map((f) => (
                 <div key={f.name} style={{ background: "#fff", borderRadius: 14, border: `1.5px solid ${cat.color}22`, padding: "20px 20px 16px", boxShadow: "0 1px 6px rgba(0,0,0,0.05)" }}>
-                  <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>{f.name}</div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: "#FFFFFF", marginBottom: 8 }}>{f.name}</div>
                   <div style={{ background: cat.bg, borderRadius: 8, padding: "10px 14px", fontFamily: "monospace", fontSize: 14, color: cat.color, fontWeight: 700, marginBottom: f.variables || f.example || f.tip ? 12 : 0 }}>
                     {f.formula}
                   </div>
@@ -603,7 +603,7 @@ export default function FormulasWW1() {
                   {f.variables && f.variables.length > 0 && (
                     <div style={{ marginBottom: 10 }}>
                       {f.variables.map((v) => (
-                        <div key={v.sym} style={{ display: "flex", gap: 8, fontSize: 13, color: "#475569", marginBottom: 3 }}>
+                        <div key={v.sym} style={{ display: "flex", gap: 8, fontSize: 13, color: "#64748B", marginBottom: 3 }}>
                           <span style={{ fontWeight: 700, color: cat.color, minWidth: 60 }}>{v.sym}</span>
                           <span>{v.desc}</span>
                         </div>
@@ -611,10 +611,10 @@ export default function FormulasWW1() {
                     </div>
                   )}
                   {f.example && (
-                    <div style={{ background: "#F8FAFC", borderRadius: 8, padding: "10px 14px", marginBottom: 10 }}>
-                      <div style={{ fontSize: 12, fontWeight: 700, color: "#94A3B8", marginBottom: 4 }}>WORKED EXAMPLE</div>
-                      <div style={{ fontSize: 13, color: "#1E293B", marginBottom: 4 }}>{f.example.problem}</div>
-                      <div style={{ fontSize: 13, color: "#475569", marginBottom: 4 }}>{f.example.solution}</div>
+                    <div style={{ background: "#FFFFFF", borderRadius: 8, padding: "10px 14px", marginBottom: 10 }}>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 4 }}>WORKED EXAMPLE</div>
+                      <div style={{ fontSize: 13, color: "#F8FAFC", marginBottom: 4 }}>{f.example.problem}</div>
+                      <div style={{ fontSize: 13, color: "#64748B", marginBottom: 4 }}>{f.example.solution}</div>
                       <div style={{ fontSize: 13, fontWeight: 800, color: "#059669" }}>Answer: {f.example.answer}</div>
                     </div>
                   )}
@@ -639,7 +639,7 @@ export default function FormulasWW1() {
             <span style={{ background: "#F0FDF4", borderRadius: 10, padding: "10px 18px", fontSize: 13, fontWeight: 700, color: "#15803D", cursor: "pointer" }}>📋 Mock Exam →</span>
           </Link>
           <Link href="/formulas-ww2" style={{ textDecoration: "none" }}>
-            <span style={{ background: "#F8FAFC", borderRadius: 10, padding: "10px 18px", fontSize: 13, fontWeight: 700, color: "#64748B", cursor: "pointer" }}>Class 2 WW Formulas →</span>
+            <span style={{ background: "#FFFFFF", borderRadius: 10, padding: "10px 18px", fontSize: 13, fontWeight: 700, color: "#64748B", cursor: "pointer" }}>Class 2 WW Formulas →</span>
           </Link>
         </div>
       </div>

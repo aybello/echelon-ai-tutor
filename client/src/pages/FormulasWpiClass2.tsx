@@ -516,7 +516,7 @@ export default function FormulasWpiClass2() {
   const cat = CATEGORIES.find(c => c.id === activeCategory) ?? CATEGORIES[0];
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>      <style>{`
+    <div style={{ fontFamily: "'Sora', sans-serif", background: "#FFFFFF", minHeight: "100vh" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }
@@ -540,8 +540,8 @@ export default function FormulasWpiClass2() {
           display: "inline-flex",
           alignItems: "center",
           gap: 8,
-          background: "rgba(255,255,255,0.12)",
-          border: "1px solid rgba(255,255,255,0.2)",
+          background: "rgba(0,0,0,0.10)",
+          border: "1px solid rgba(0,0,0,0.14)",
           borderRadius: 100,
           padding: "5px 14px",
           fontSize: 11,
@@ -584,7 +584,7 @@ export default function FormulasWpiClass2() {
           </Link>
           <Link href="/wpi-class2-water-mock">
             <button style={{
-              background: "rgba(255,255,255,0.12)",
+              background: "rgba(0,0,0,0.10)",
               color: "#FFFFFF",
               border: "1px solid rgba(255,255,255,0.25)",
               borderRadius: 10,
@@ -599,7 +599,7 @@ export default function FormulasWpiClass2() {
           </Link>
           <Link href="/formulas-wpi-class1">
             <button style={{
-              background: "rgba(255,255,255,0.12)",
+              background: "rgba(0,0,0,0.10)",
               color: "#FFFFFF",
               border: "1px solid rgba(255,255,255,0.25)",
               borderRadius: 10,
@@ -620,7 +620,7 @@ export default function FormulasWpiClass2() {
 
           {/* ── Sidebar ──────────────────────────────────────────────────── */}
           <div style={{ width: 220, flexShrink: 0 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 10 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 10 }}>
               Categories
             </div>
             <div style={{ display: "flex", flexDirection: "column" as const, gap: 4 }}>
@@ -637,7 +637,7 @@ export default function FormulasWpiClass2() {
                     cursor: "pointer",
                     fontSize: 13,
                     fontWeight: activeCategory === c.id ? 700 : 500,
-                    color: activeCategory === c.id ? c.color : "#475569",
+                    color: activeCategory === c.id ? c.color : "#E2E8F0",
                     fontFamily: "inherit",
                     display: "flex",
                     alignItems: "center",
@@ -664,7 +664,7 @@ export default function FormulasWpiClass2() {
                 cursor: "pointer",
                 fontSize: 13,
                 fontWeight: activeCategory === "quick-ref" ? 700 : 500,
-                color: activeCategory === "quick-ref" ? "#B45309" : "#475569",
+                color: activeCategory === "quick-ref" ? "#B45309" : "#E2E8F0",
                 fontFamily: "inherit",
                 display: "flex",
                 alignItems: "center",
@@ -681,7 +681,7 @@ export default function FormulasWpiClass2() {
           <div style={{ flex: 1, minWidth: 0 }}>
             {activeCategory === "quick-ref" ? (
               <div>
-                <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 20 }}>
+                <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#FFFFFF", marginBottom: 20 }}>
                   ⚡ Quick Reference — WPI Class II
                 </h2>
                 <div style={{
@@ -692,7 +692,7 @@ export default function FormulasWpiClass2() {
                 }}>
                   <table style={{ width: "100%", borderCollapse: "collapse" as const }}>
                     <thead>
-                      <tr style={{ background: "#F8FAFC" }}>
+                      <tr style={{ background: "#FFFFFF" }}>
                         <th style={{ padding: "12px 16px", textAlign: "left", fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.05em", borderBottom: "1px solid #E2E8F0" }}>Parameter</th>
                         <th style={{ padding: "12px 16px", textAlign: "left", fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.05em", borderBottom: "1px solid #E2E8F0" }}>Value / Range</th>
                       </tr>
@@ -700,7 +700,7 @@ export default function FormulasWpiClass2() {
                     <tbody>
                       {QUICK_REF.map((row, i) => (
                         <tr key={i} style={{ borderBottom: i < QUICK_REF.length - 1 ? "1px solid #F1F5F9" : "none" }}>
-                          <td style={{ padding: "12px 16px", fontSize: 13, color: "#0F172A", fontWeight: 500 }}>{row.param}</td>
+                          <td style={{ padding: "12px 16px", fontSize: 13, color: "#FFFFFF", fontWeight: 500 }}>{row.param}</td>
                           <td style={{ padding: "12px 16px", fontSize: 13, color: "#0F766E", fontWeight: 700, fontFamily: "monospace" }}>{row.value}</td>
                         </tr>
                       ))}
@@ -713,10 +713,10 @@ export default function FormulasWpiClass2() {
                 <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
                   <span style={{ fontSize: 28 }}>{cat.icon}</span>
                   <div>
-                    <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>
+                    <h2 style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#FFFFFF", marginBottom: 2 }}>
                       {cat.label}
                     </h2>
-                    <div style={{ fontSize: 12, color: "#94A3B8" }}>{cat.formulas.length} formulas</div>
+                    <div style={{ fontSize: 12, color: "#64748B" }}>{cat.formulas.length} formulas</div>
                   </div>
                 </div>
 
@@ -729,7 +729,7 @@ export default function FormulasWpiClass2() {
                         key={key}
                         style={{
                           background: "#FFFFFF",
-                          border: `1px solid ${isOpen ? cat.color + "40" : "#E2E8F0"}`,
+                          border: `1px solid ${isOpen ? cat.color + "40" : "#94A3B8"}`,
                           borderRadius: 16,
                           overflow: "hidden",
                           transition: "border-color 0.15s",
@@ -753,7 +753,7 @@ export default function FormulasWpiClass2() {
                           }}
                         >
                           <div style={{ flex: 1 }}>
-                            <div style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 6 }}>{f.name}</div>
+                            <div style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", marginBottom: 6 }}>{f.name}</div>
                             <div style={{
                               fontFamily: "monospace",
                               fontSize: 15,
@@ -767,7 +767,7 @@ export default function FormulasWpiClass2() {
                               {f.formula}
                             </div>
                             {f.units && (
-                              <span style={{ marginLeft: 8, fontSize: 11, color: "#94A3B8", fontFamily: "monospace" }}>
+                              <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontFamily: "monospace" }}>
                                 [{f.units}]
                               </span>
                             )}
@@ -783,12 +783,12 @@ export default function FormulasWpiClass2() {
                             {/* Variables */}
                             {f.variables && f.variables.length > 0 && (
                               <div style={{ marginTop: 16 }}>
-                                <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase" as const, letterSpacing: "0.08em", marginBottom: 8 }}>Variables</div>
+                                <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.08em", marginBottom: 8 }}>Variables</div>
                                 <div style={{ display: "flex", flexDirection: "column" as const, gap: 6 }}>
                                   {f.variables.map(v => (
                                     <div key={v.sym} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                                       <span style={{ fontFamily: "monospace", fontSize: 13, fontWeight: 700, color: cat.color, minWidth: 100, flexShrink: 0 }}>{v.sym}</span>
-                                      <span style={{ fontSize: 13, color: "#475569" }}>{v.desc}</span>
+                                      <span style={{ fontSize: 13, color: "#64748B" }}>{v.desc}</span>
                                     </div>
                                   ))}
                                 </div>
@@ -797,12 +797,12 @@ export default function FormulasWpiClass2() {
 
                             {/* Example */}
                             {f.example && (
-                              <div style={{ marginTop: 16, background: "#F8FAFC", borderRadius: 10, padding: "14px 16px" }}>
-                                <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase" as const, letterSpacing: "0.08em", marginBottom: 8 }}>Worked Example</div>
-                                <div style={{ fontSize: 13, color: "#0F172A", marginBottom: 6 }}>
+                              <div style={{ marginTop: 16, background: "#FFFFFF", borderRadius: 10, padding: "14px 16px" }}>
+                                <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.08em", marginBottom: 8 }}>Worked Example</div>
+                                <div style={{ fontSize: 13, color: "#FFFFFF", marginBottom: 6 }}>
                                   <strong>Q:</strong> {f.example.problem}
                                 </div>
-                                <div style={{ fontSize: 13, color: "#475569", marginBottom: 4 }}>
+                                <div style={{ fontSize: 13, color: "#64748B", marginBottom: 4 }}>
                                   <strong>Solution:</strong> {f.example.solution}
                                 </div>
                                 <div style={{ fontSize: 13, fontWeight: 700, color: cat.color }}>
@@ -813,7 +813,7 @@ export default function FormulasWpiClass2() {
 
                             {/* Tip */}
                             {f.tip && (
-                              <div style={{ marginTop: 12, background: cat.bg, borderRadius: 10, padding: "12px 14px", fontSize: 13, color: "#475569", lineHeight: 1.6 }}>
+                              <div style={{ marginTop: 12, background: cat.bg, borderRadius: 10, padding: "12px 14px", fontSize: 13, color: "#64748B", lineHeight: 1.6 }}>
                                 <strong style={{ color: cat.color }}>💡 Tip: </strong>{f.tip}
                               </div>
                             )}

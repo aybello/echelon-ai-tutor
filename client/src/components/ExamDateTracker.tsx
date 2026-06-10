@@ -126,7 +126,7 @@ export default function ExamDateTracker({ email, productKey, productLabel, color
         <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
           <button
             onClick={() => { setDateInput(""); setShowPicker(true); }}
-            style={{ fontSize: 11, color: "#94A3B8", background: "rgba(30,41,59,0.8)", border: "1px solid #334155", borderRadius: 6, padding: "4px 10px", cursor: "pointer", fontFamily: "inherit", fontWeight: 600 }}
+            style={{ fontSize: 11, color: "#64748B", background: "rgba(30,41,59,0.8)", border: "1px solid #334155", borderRadius: 6, padding: "4px 10px", cursor: "pointer", fontFamily: "inherit", fontWeight: 600 }}
           >
             Change
           </button>
@@ -147,8 +147,8 @@ export default function ExamDateTracker({ email, productKey, productLabel, color
               min={minDate}
               onChange={e => setDateInput(e.target.value)}
               style={{
-                flex: 1, background: "#0F172A", border: "1.5px solid #334155",
-                borderRadius: 8, padding: "7px 12px", fontSize: 13, color: "#F1F5F9",
+                flex: 1, background: "#FFFFFF", border: "1.5px solid #334155",
+                borderRadius: 8, padding: "7px 12px", fontSize: 13, color: "#F8FAFC",
                 fontFamily: "inherit", outline: "none",
               }}
             />
@@ -186,7 +186,7 @@ export default function ExamDateTracker({ email, productKey, productLabel, color
         border: "1px solid #334155",
         borderRadius: 10,
       }}>
-        <div style={{ fontSize: 12, color: "#94A3B8", marginBottom: 8, fontWeight: 600 }}>
+        <div style={{ fontSize: 12, color: "#64748B", marginBottom: 8, fontWeight: 600 }}>
           📅 When is your {productLabel} exam?
         </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
@@ -196,8 +196,8 @@ export default function ExamDateTracker({ email, productKey, productLabel, color
             min={minDate}
             onChange={e => setDateInput(e.target.value)}
             style={{
-              flex: 1, background: "#0F172A", border: "1.5px solid #334155",
-              borderRadius: 8, padding: "7px 12px", fontSize: 13, color: "#F1F5F9",
+              flex: 1, background: "#FFFFFF", border: "1.5px solid #334155",
+              borderRadius: 8, padding: "7px 12px", fontSize: 13, color: "#F8FAFC",
               fontFamily: "inherit", outline: "none",
             }}
           />
@@ -220,7 +220,7 @@ export default function ExamDateTracker({ email, productKey, productLabel, color
             Skip
           </button>
         </div>
-        <div style={{ fontSize: 11, color: "#475569", marginTop: 6 }}>
+        <div style={{ fontSize: 11, color: "#64748B", marginTop: 6 }}>
           We'll show you a countdown and send study reminders. Optional — you can remove it anytime.
         </div>
       </div>
@@ -236,12 +236,12 @@ export default function ExamDateTracker({ email, productKey, productLabel, color
         display: "flex", alignItems: "center", gap: 6,
         background: "none", border: "1px dashed #334155",
         borderRadius: 8, padding: "6px 12px",
-        fontSize: 11, color: "#475569", cursor: "pointer",
+        fontSize: 11, color: "#64748B", cursor: "pointer",
         fontFamily: "inherit", fontWeight: 600,
         transition: "border-color 0.15s, color 0.15s",
       }}
-      onMouseEnter={e => { (e.target as HTMLElement).style.borderColor = "#64748B"; (e.target as HTMLElement).style.color = "#94A3B8"; }}
-      onMouseLeave={e => { (e.target as HTMLElement).style.borderColor = "#334155"; (e.target as HTMLElement).style.color = "#475569"; }}
+      onMouseEnter={e => { (e.target as HTMLElement).style.borderColor = "#E2E8F0"; (e.target as HTMLElement).style.color = "#E2E8F0"; }}
+      onMouseLeave={e => { (e.target as HTMLElement).style.borderColor = "#E2E8F0"; (e.target as HTMLElement).style.color = "#E2E8F0"; }}
     >
       📅 Set exam date for countdown &amp; reminders
     </button>

@@ -82,8 +82,8 @@ export default function NationalWaitlistModal({ onClose, defaultProvince }: Nati
       onClick={e => { if (e.target === e.currentTarget) onClose(); }}
     >
       <div style={{
-        background: "#0F172A",
-        border: "1px solid rgba(255,255,255,0.1)",
+        background: "#FFFFFF",
+        border: "1px solid rgba(0,0,0,0.09)",
         borderRadius: 20,
         padding: "40px 36px",
         maxWidth: 480,
@@ -97,7 +97,7 @@ export default function NationalWaitlistModal({ onClose, defaultProvince }: Nati
           onClick={onClose}
           style={{
             position: "absolute", top: 16, right: 16,
-            background: "rgba(255,255,255,0.08)", border: "none",
+            background: "rgba(0,0,0,0.08)", border: "none",
             borderRadius: 8, width: 32, height: 32,
             color: "rgba(255,255,255,0.6)", fontSize: 18,
             cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
@@ -158,8 +158,8 @@ export default function NationalWaitlistModal({ onClose, defaultProvince }: Nati
                     width: "100%",
                     padding: "13px 16px",
                     borderRadius: 10,
-                    border: provinceError ? "1.5px solid #EF4444" : "1.5px solid rgba(255,255,255,0.15)",
-                    background: "rgba(255,255,255,0.06)",
+                    border: provinceError ? "1.5px solid #EF4444" : "1.5px solid rgba(0,0,0,0.12)",
+                    background: "rgba(0,0,0,0.07)",
                     color: province ? "#FFFFFF" : "rgba(255,255,255,0.4)",
                     fontSize: 14,
                     outline: "none",
@@ -168,9 +168,9 @@ export default function NationalWaitlistModal({ onClose, defaultProvince }: Nati
                     cursor: "pointer",
                   }}
                 >
-                  <option value="" disabled style={{ background: "#1E293B", color: "#94A3B8" }}>Select your province…</option>
+                  <option value="" disabled style={{ background: "#FFFFFF", color: "#64748B" }}>Select your province…</option>
                   {PROVINCES.map(p => (
-                    <option key={p.value} value={p.value} style={{ background: "#1E293B", color: "#FFFFFF" }}>
+                    <option key={p.value} value={p.value} style={{ background: "#FFFFFF", color: "#FFFFFF" }}>
                       {p.label}{p.regulator ? ` — ${p.regulator}` : ""}
                     </option>
                   ))}
@@ -193,8 +193,8 @@ export default function NationalWaitlistModal({ onClose, defaultProvince }: Nati
                     width: "100%",
                     padding: "13px 16px",
                     borderRadius: 10,
-                    border: emailError ? "1.5px solid #EF4444" : "1.5px solid rgba(255,255,255,0.15)",
-                    background: "rgba(255,255,255,0.06)",
+                    border: emailError ? "1.5px solid #EF4444" : "1.5px solid rgba(0,0,0,0.12)",
+                    background: "rgba(0,0,0,0.07)",
                     color: "#FFFFFF",
                     fontSize: 14,
                     outline: "none",
@@ -202,7 +202,7 @@ export default function NationalWaitlistModal({ onClose, defaultProvince }: Nati
                     boxSizing: "border-box" as const,
                   }}
                   onFocus={e => { if (!emailError) e.target.style.borderColor = "#38BDF8"; }}
-                  onBlur={e => { if (!emailError) e.target.style.borderColor = "rgba(255,255,255,0.15)"; }}
+                  onBlur={e => { if (!emailError) e.target.style.borderColor = "rgba(0,0,0,0.12)"; }}
                 />
                 {emailError && <p style={{ color: "#EF4444", fontSize: 12, marginTop: 5 }}>{emailError}</p>}
               </div>

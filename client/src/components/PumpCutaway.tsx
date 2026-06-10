@@ -34,7 +34,7 @@ const PUMP_PARTS: PumpPart[] = [
     shortDesc: "Spiral-shaped casing that converts kinetic energy (velocity) into pressure energy.",
     examTip: "The volute's increasing cross-section slows the fluid, converting velocity head to pressure head.",
     color: "#64748B",
-    hoverColor: "#94A3B8",
+    hoverColor: "#E2E8F0",
   },
   {
     id: "shaft",
@@ -163,20 +163,20 @@ export default function PumpCutaway({ isRunning, cavitationMode }: Props) {
             >
               {/* Outer casing */}
               <ellipse cx="260" cy="190" rx="125" ry="125"
-                fill={highlight("volute") ? "#334155" : "#1E293B"}
-                stroke={highlight("volute") ? "#94A3B8" : "#475569"}
+                fill={highlight("volute") ? "#E2E8F0" : "#1E293B"}
+                stroke={highlight("volute") ? "#E2E8F0" : "#E2E8F0"}
                 strokeWidth="3" />
               {/* Volute spiral cutout — inner wall */}
               <ellipse cx="260" cy="190" rx="95" ry="95"
-                fill={highlight("volute") ? "#1E293B" : "#0F172A"}
-                stroke={highlight("volute") ? "#64748B" : "#334155"}
+                fill={highlight("volute") ? "#1E293B" : "#FFFFFF"}
+                stroke={highlight("volute") ? "#E2E8F0" : "#E2E8F0"}
                 strokeWidth="2" />
               {/* Discharge nozzle */}
               <rect x="355" y="155" width="55" height="40" rx="4"
-                fill={highlight("volute") ? "#334155" : "#1E293B"}
-                stroke={highlight("volute") ? "#94A3B8" : "#475569"}
+                fill={highlight("volute") ? "#E2E8F0" : "#1E293B"}
+                stroke={highlight("volute") ? "#E2E8F0" : "#E2E8F0"}
                 strokeWidth="2" />
-              <text x="383" y="179" textAnchor="middle" fill="#94A3B8" fontSize="9" fontFamily="sans-serif">Discharge</text>
+              <text x="383" y="179" textAnchor="middle" fill="#E2E8F0" fontSize="9" fontFamily="sans-serif">Discharge</text>
             </g>
 
             {/* ── OUTLET label ── */}
@@ -326,8 +326,8 @@ export default function PumpCutaway({ isRunning, cavitationMode }: Props) {
             {/* ── LABELS (floating callouts) ── */}
             {/* Volute label */}
             <g className="pointer-events-none">
-              <line x1="260" y1="75" x2="260" y2="95" stroke="#64748B" strokeWidth="1" strokeDasharray="3 2" />
-              <text x="260" y="68" textAnchor="middle" fill={highlight("volute") ? "#CBD5E1" : "#64748B"} fontSize="10" fontFamily="sans-serif" fontWeight="600">Volute Casing</text>
+              <line x1="260" y1="75" x2="260" y2="95" stroke="#E2E8F0" strokeWidth="1" strokeDasharray="3 2" />
+              <text x="260" y="68" textAnchor="middle" fill={highlight("volute") ? "#94A3B8" : "#E2E8F0"} fontSize="10" fontFamily="sans-serif" fontWeight="600">Volute Casing</text>
             </g>
             {/* Impeller label */}
             <g className="pointer-events-none">

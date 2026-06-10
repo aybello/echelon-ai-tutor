@@ -45,7 +45,7 @@ function MasteryBadge({ knownCount, totalCards }: { knownCount: number; totalCar
   const color = pct >= 80 ? "#16a34a" : pct >= 50 ? "#d97706" : "#94a3b8";
   return (
     <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11, color, fontWeight: 700 }}>
-      <span style={{ display: "inline-block", width: 56, height: 4, borderRadius: 4, background: "#E2E8F0", overflow: "hidden" }}>
+      <span style={{ display: "inline-block", width: 56, height: 4, borderRadius: 4, background: "#94A3B8", overflow: "hidden" }}>
         <span style={{ display: "block", width: pct + "%", height: "100%", background: color, borderRadius: 4, transition: "width 0.4s ease" }} />
       </span>
       {knownCount}/{totalCards} cards mastered ({pct}%)
@@ -112,14 +112,14 @@ function MagicLinkSection({ email }: { email: string }) {
 
   return (
     <div style={{
-      background: "#F8FAFC", border: "1px solid #E2E8F0",
+      background: "#FFFFFF", border: "1px solid #E2E8F0",
       borderRadius: 12, padding: "14px 20px", marginBottom: 24,
       display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap",
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <span style={{ fontSize: 18 }}>🔗</span>
         <div>
-          <p style={{ color: "#1E293B", fontWeight: 700, fontSize: 12, margin: "0 0 2px" }}>Need access on another device?</p>
+          <p style={{ color: "#F8FAFC", fontWeight: 700, fontSize: 12, margin: "0 0 2px" }}>Need access on another device?</p>
           <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>We'll email you a one-click sign-in link.</p>
         </div>
       </div>
@@ -128,7 +128,7 @@ function MagicLinkSection({ email }: { email: string }) {
         disabled={sending}
         style={{
           padding: "8px 16px", borderRadius: 8, border: "none",
-          background: sending ? "#CBD5E1" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+          background: sending ? "#94A3B8" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
           color: "#fff", fontSize: 12, fontWeight: 700, cursor: sending ? "not-allowed" : "pointer",
           fontFamily: "inherit", whiteSpace: "nowrap",
         }}
@@ -267,7 +267,7 @@ export default function Account() {
   const otherPasses = unlockedExamTypes.filter(t => !EXAM_META[t]);
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Sora', sans-serif", background: "#FFFFFF", minHeight: "100vh" }}>
       <SiteNav currentPath="/account" />
 
       <style>{`
@@ -297,7 +297,7 @@ export default function Account() {
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 52, width: "auto", marginBottom: 20 }} />
-          <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
+          <h1 style={{ fontSize: 30, fontWeight: 900, color: "#FFFFFF", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Restore Access
           </h1>
           <p style={{ fontSize: 15, color: "#64748B", maxWidth: 440, margin: "0 auto", lineHeight: 1.6 }}>
@@ -316,8 +316,8 @@ export default function Account() {
               <div key={s.step} style={{ display: "flex", alignItems: "center", gap: 10, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 12, padding: "10px 16px", flex: "1 1 160px", minWidth: 160, boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}>
                 <div className="step-badge" style={{ background: "#1D4ED8", color: "#fff" }}>{s.step}</div>
                 <div>
-                  <div style={{ fontSize: 11, color: "#94A3B8", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.icon}</div>
-                  <div style={{ fontSize: 12, color: "#334155", fontWeight: 600, marginTop: 2 }}>{s.label}</div>
+                  <div style={{ fontSize: 11, color: "#64748B", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.icon}</div>
+                  <div style={{ fontSize: 12, color: "#64748B", fontWeight: 600, marginTop: 2 }}>{s.label}</div>
                 </div>
               </div>
             ))}
@@ -327,7 +327,7 @@ export default function Account() {
         {/* Email form */}
         <div className="account-card" style={{ padding: 28, marginBottom: 24 }}>
           <form onSubmit={handleSubmit}>
-            <label htmlFor="restore-email" style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#334155", marginBottom: 8, letterSpacing: "0.02em" }}>
+            <label htmlFor="restore-email" style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#64748B", marginBottom: 8, letterSpacing: "0.02em" }}>
               Purchase email address
             </label>
             <div className="restore-form-row" style={{ display: "flex", gap: 10 }}>
@@ -340,19 +340,19 @@ export default function Account() {
                 placeholder="jane@example.com"
                 autoComplete="email"
                 style={{
-                  flex: 1, background: "#F8FAFC", border: `1.5px solid ${emailError ? "#EF4444" : "#CBD5E1"}`,
-                  borderRadius: 10, padding: "11px 16px", fontSize: 14, color: "#0F172A",
+                  flex: 1, background: "#FFFFFF", border: `1.5px solid ${emailError ? "#EF4444" : "#94A3B8"}`,
+                  borderRadius: 10, padding: "11px 16px", fontSize: 14, color: "#FFFFFF",
                   fontFamily: "inherit", outline: "none", transition: "border-color 0.15s",
                 }}
                 onFocus={e => (e.target.style.borderColor = "#3B82F6")}
-                onBlur={e => (e.target.style.borderColor = emailError ? "#EF4444" : "#CBD5E1")}
+                onBlur={e => (e.target.style.borderColor = emailError ? "#EF4444" : "#94A3B8")}
               />
               <button
                 type="submit"
                 disabled={getPurchases.isFetching || getPurchasesByEmail.isFetching}
                 style={{
                   padding: "11px 22px", borderRadius: 10, border: "none",
-                  background: (getPurchases.isFetching || getPurchasesByEmail.isFetching) ? "#CBD5E1" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                  background: (getPurchases.isFetching || getPurchasesByEmail.isFetching) ? "#94A3B8" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
                   color: "#fff", fontSize: 13, fontWeight: 800, cursor: (getPurchases.isFetching || getPurchasesByEmail.isFetching) ? "not-allowed" : "pointer",
                   fontFamily: "inherit", whiteSpace: "nowrap", flexShrink: 0,
                 }}
@@ -379,7 +379,7 @@ export default function Account() {
             ].map(t => (
               <div key={t.text} style={{ display: "flex", alignItems: "center", gap: 6 }}>
                 <span style={{ fontSize: 12 }}>{t.icon}</span>
-                <span style={{ fontSize: 11, color: "#94A3B8", fontWeight: 500 }}>{t.text}</span>
+                <span style={{ fontSize: 11, color: "#64748B", fontWeight: 500 }}>{t.text}</span>
               </div>
             ))}
           </div>
@@ -390,12 +390,12 @@ export default function Account() {
           <div className="account-card" style={{ padding: 28 }}>
             {[1, 2, 3].map(i => (
               <div key={i} style={{ display: "flex", gap: 12, alignItems: "center", padding: "14px 0", borderBottom: i < 3 ? "1px solid #F1F5F9" : "none" }}>
-                <div style={{ width: 40, height: 40, borderRadius: 10, background: "#E2E8F0", flexShrink: 0 }} />
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: "#94A3B8", flexShrink: 0 }} />
                 <div style={{ flex: 1 }}>
-                  <div style={{ height: 12, background: "#E2E8F0", borderRadius: 6, width: "60%", marginBottom: 8 }} />
-                  <div style={{ height: 10, background: "#F1F5F9", borderRadius: 6, width: "40%" }} />
+                  <div style={{ height: 12, background: "#94A3B8", borderRadius: 6, width: "60%", marginBottom: 8 }} />
+                  <div style={{ height: 10, background: "#FFFFFF", borderRadius: 6, width: "40%" }} />
                 </div>
-                <div style={{ width: 80, height: 30, background: "#E2E8F0", borderRadius: 8 }} />
+                <div style={{ width: 80, height: 30, background: "#94A3B8", borderRadius: 8 }} />
               </div>
             ))}
           </div>
@@ -441,7 +441,7 @@ export default function Account() {
                 {/* Active Subscriptions */}
                 {(getSubscriptions.data?.subscriptions ?? []).length > 0 && (
                   <div style={{ marginBottom: 24 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
                       🔄 Active Annual Subscriptions
                     </div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
@@ -462,12 +462,12 @@ export default function Account() {
                               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                                 <div style={{ width: 46, height: 46, borderRadius: 12, background: "linear-gradient(135deg, #7C3AED, #4F46E5)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, flexShrink: 0 }}>🔑</div>
                                 <div>
-                                  <p style={{ color: "#0F172A", fontWeight: 800, fontSize: 14, margin: "0 0 3px" }}>{tierLabel}</p>
+                                  <p style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 14, margin: "0 0 3px" }}>{tierLabel}</p>
                                   <p style={{ color: "#64748B", fontSize: 12, margin: "0 0 4px" }}>{provinceLabel}</p>
                                   <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                                     <span style={{ fontSize: 11, color: "#15803D", fontWeight: 700, background: "#DCFCE7", border: "1px solid #BBF7D0", borderRadius: 6, padding: "2px 8px" }}>Active</span>
-                                    <span style={{ fontSize: 11, color: "#94A3B8" }}>Renews {renewalDate}</span>
-                                    <span style={{ fontSize: 11, color: daysLeft < 30 ? "#D97706" : "#94A3B8" }}>{daysLeft} days remaining</span>
+                                    <span style={{ fontSize: 11, color: "#64748B" }}>Renews {renewalDate}</span>
+                                    <span style={{ fontSize: 11, color: daysLeft < 30 ? "#D97706" : "#E2E8F0" }}>{daysLeft} days remaining</span>
                                   </div>
                                 </div>
                               </div>
@@ -476,8 +476,8 @@ export default function Account() {
                                 disabled={portalLoading}
                                 style={{
                                   padding: "9px 18px", borderRadius: 10, border: "1.5px solid #7C3AED",
-                                  background: portalLoading ? "#F1F5F9" : "#F5F3FF",
-                                  color: portalLoading ? "#94A3B8" : "#7C3AED",
+                                  background: portalLoading ? "#E2E8F0" : "#F5F3FF",
+                                  color: portalLoading ? "#E2E8F0" : "#7C3AED",
                                   fontSize: 12, fontWeight: 700, cursor: portalLoading ? "not-allowed" : "pointer",
                                   fontFamily: "inherit", whiteSpace: "nowrap", flexShrink: 0,
                                 }}
@@ -489,7 +489,7 @@ export default function Account() {
                         );
                       })}
                       <div style={{ padding: "12px 24px", background: "#FAFAFA", borderTop: "1px solid #F1F5F9" }}>
-                        <p style={{ fontSize: 11, color: "#94A3B8", margin: 0 }}>
+                        <p style={{ fontSize: 11, color: "#64748B", margin: 0 }}>
                           Your subscription unlocks all included exam types below. To cancel, update payment, or view invoices, click "Manage Subscription" above.
                         </p>
                       </div>
@@ -500,7 +500,7 @@ export default function Account() {
                 {/* Ontario passes */}
                 {ontarioPasses.length > 0 && (
                   <div style={{ marginBottom: 20 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
                       🍁 Ontario Certification Passes
                     </div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
@@ -515,8 +515,8 @@ export default function Account() {
                                   {meta.icon}
                                 </div>
                                 <div>
-                                  <p style={{ color: "#0F172A", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
-                                  <p style={{ color: "#94A3B8", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
+                                  <p style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
+                                  <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
                                 </div>
                               </div>
                               <div className="pass-actions">
@@ -525,7 +525,7 @@ export default function Account() {
                                 </Link>
                                 {meta.mockPath && (
                                   <Link href={meta.mockPath}>
-                                    <span className="pass-btn" style={{ background: "#F1F5F9", color: "#475569", border: "1px solid #E2E8F0" }}>Mock Exam</span>
+                                    <span className="pass-btn" style={{ background: "#FFFFFF", color: "#64748B", border: "1px solid #E2E8F0" }}>Mock Exam</span>
                                   </Link>
                                 )}
                                 {meta.flashcardPath && (
@@ -563,7 +563,7 @@ export default function Account() {
                 {/* WPI passes */}
                 {wpiPasses.length > 0 && (
                   <div style={{ marginBottom: 20 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
                       🌊 WPI Certification Passes
                     </div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
@@ -578,8 +578,8 @@ export default function Account() {
                                   {meta.icon}
                                 </div>
                                 <div>
-                                  <p style={{ color: "#0F172A", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
-                                  <p style={{ color: "#94A3B8", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
+                                  <p style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
+                                  <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
                                 </div>
                               </div>
                               <div className="pass-actions">
@@ -588,7 +588,7 @@ export default function Account() {
                                 </Link>
                                 {meta.mockPath && (
                                   <Link href={meta.mockPath}>
-                                    <span className="pass-btn" style={{ background: "#F1F5F9", color: "#475569", border: "1px solid #E2E8F0" }}>Mock Exam</span>
+                                    <span className="pass-btn" style={{ background: "#FFFFFF", color: "#64748B", border: "1px solid #E2E8F0" }}>Mock Exam</span>
                                   </Link>
                                 )}
                                 {meta.flashcardPath && (
@@ -626,15 +626,15 @@ export default function Account() {
                 {/* Unknown passes */}
                 {otherPasses.length > 0 && (
                   <div style={{ marginBottom: 20 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>Other Passes</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>Other Passes</div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
                       {otherPasses.map(examType => (
                         <div key={examType} className="pass-row">
                           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                            <div style={{ width: 42, height: 42, borderRadius: 10, background: "#F1F5F9", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>📋</div>
+                            <div style={{ width: 42, height: 42, borderRadius: 10, background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>📋</div>
                             <div>
-                              <p style={{ color: "#0F172A", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{examType}</p>
-                              <p style={{ color: "#94A3B8", fontSize: 11, margin: 0 }}>Active pass</p>
+                              <p style={{ color: "#FFFFFF", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{examType}</p>
+                              <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Active pass</p>
                             </div>
                           </div>
                         </div>
@@ -646,14 +646,14 @@ export default function Account() {
                 {/* Purchase history */}
                 {purchases.length > 0 && (
                   <div style={{ marginBottom: 24 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
                       🧾 Purchase History
                     </div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
                       <div style={{ padding: "10px 20px 6px", display: "grid", gridTemplateColumns: "1fr auto auto", gap: 12 }}>
-                        <span style={{ fontSize: 11, color: "#94A3B8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Product</span>
-                        <span style={{ fontSize: 11, color: "#94A3B8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Date</span>
-                        <span style={{ fontSize: 11, color: "#94A3B8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Amount</span>
+                        <span style={{ fontSize: 11, color: "#64748B", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Product</span>
+                        <span style={{ fontSize: 11, color: "#64748B", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Date</span>
+                        <span style={{ fontSize: 11, color: "#64748B", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>Amount</span>
                       </div>
                       {purchases.map((p, i) => {
                         const meta = EXAM_META[p.productKey];
@@ -661,9 +661,9 @@ export default function Account() {
                           <div key={i} className="purchase-history-row">
                             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                               <span style={{ fontSize: 14 }}>{meta?.icon ?? "📋"}</span>
-                              <span style={{ fontSize: 12, color: "#334155", fontWeight: 600 }}>{meta?.label ?? p.productKey}</span>
+                              <span style={{ fontSize: 12, color: "#64748B", fontWeight: 600 }}>{meta?.label ?? p.productKey}</span>
                             </div>
-                            <span style={{ fontSize: 11, color: "#94A3B8", whiteSpace: "nowrap" }}>{formatDate(p.createdAt)}</span>
+                            <span style={{ fontSize: 11, color: "#64748B", whiteSpace: "nowrap" }}>{formatDate(p.createdAt)}</span>
                             <span style={{ fontSize: 12, color: "#15803D", fontWeight: 700, whiteSpace: "nowrap" }}>{formatCAD(p.amountCAD)}</span>
                           </div>
                         );
@@ -674,7 +674,7 @@ export default function Account() {
 
                 {/* Device note */}
                 <div style={{ textAlign: "center", padding: "16px 20px", background: "#FFFFFF", borderRadius: 12, border: "1px solid #E2E8F0" }}>
-                  <p style={{ fontSize: 12, color: "#94A3B8", margin: "0 0 6px" }}>
+                  <p style={{ fontSize: 12, color: "#64748B", margin: "0 0 6px" }}>
                     💡 Access is saved to <strong style={{ color: "#64748B" }}>this browser only</strong>. Switching devices? Just re-enter your email here.
                   </p>
                   <button
@@ -688,17 +688,17 @@ export default function Account() {
             ) : (
               /* No purchases found */
               <div className="account-card" style={{ padding: 36, textAlign: "center" }}>
-                <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#F1F5F9", border: "2px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, margin: "0 auto 20px" }}>🔍</div>
-                <h2 style={{ color: "#0F172A", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>No purchases found</h2>
+                <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#FFFFFF", border: "2px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, margin: "0 auto 20px" }}>🔍</div>
+                <h2 style={{ color: "#FFFFFF", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>No purchases found</h2>
                 <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px", lineHeight: 1.6 }}>
                   We couldn't find any purchases for{" "}
-                  <span style={{ color: "#334155", fontWeight: 700 }}>{submittedEmail}</span>.
+                  <span style={{ color: "#64748B", fontWeight: 700 }}>{submittedEmail}</span>.
                 </p>
-                <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 28px", lineHeight: 1.6 }}>
+                <p style={{ color: "#64748B", fontSize: 12, margin: "0 0 28px", lineHeight: 1.6 }}>
                   Make sure you're using the exact email you entered at checkout. Check your inbox for a Stripe receipt to confirm the address.
                 </p>
 
-                <div style={{ background: "#F8FAFC", borderRadius: 12, padding: "16px 20px", marginBottom: 24, textAlign: "left", border: "1px solid #E2E8F0" }}>
+                <div style={{ background: "#FFFFFF", borderRadius: 12, padding: "16px 20px", marginBottom: 24, textAlign: "left", border: "1px solid #E2E8F0" }}>
                   <p style={{ fontSize: 12, fontWeight: 700, color: "#64748B", margin: "0 0 10px" }}>Common reasons:</p>
                   {[
                     "You may have used a different email (e.g., work vs. personal)",
@@ -722,7 +722,7 @@ export default function Account() {
                   <Link href="/pricing">
                     <span style={{ fontSize: 12, color: "#3B82F6", fontWeight: 600, cursor: "pointer" }}>Browse Practice Passes →</span>
                   </Link>
-                  <a href="mailto:support@echeloninstitute.ca?subject=Restore%20Access%20Help&body=Hi%2C%20I%20need%20help%20restoring%20access.%20My%20purchase%20email%20was%3A%20" style={{ fontSize: 12, color: "#94A3B8", fontWeight: 500 }}>
+                  <a href="mailto:support@echeloninstitute.ca?subject=Restore%20Access%20Help&body=Hi%2C%20I%20need%20help%20restoring%20access.%20My%20purchase%20email%20was%3A%20" style={{ fontSize: 12, color: "#64748B", fontWeight: 500 }}>
                     Still stuck? Email support@echeloninstitute.ca
                   </a>
                 </div>
@@ -734,7 +734,7 @@ export default function Account() {
         {/* First-time visitor prompt */}
         {!submittedEmail && (
           <div style={{ textAlign: "center", marginTop: 8 }}>
-            <p style={{ color: "#94A3B8", fontSize: 13 }}>
+            <p style={{ color: "#64748B", fontSize: 13 }}>
               Don't have a pass yet?{" "}
               <Link href="/pricing">
                 <span style={{ color: "#3B82F6", fontWeight: 700, cursor: "pointer" }}>Browse Practice Passes →</span>

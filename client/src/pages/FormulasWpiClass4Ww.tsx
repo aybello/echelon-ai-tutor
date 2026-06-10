@@ -324,7 +324,7 @@ export default function FormulasWpiClass4Ww() {
   })).filter((s) => !search || s.cards.length > 0);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>      <style>{`
+    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }
@@ -346,7 +346,7 @@ export default function FormulasWpiClass4Ww() {
                 ← WPI Exams
               </button>
             </Link>
-            <span style={{ color: "#CBD5E1" }}>·</span>
+            <span style={{ color: "#94A3B8" }}>·</span>
             <Link href="/wpi-class4-wastewater">
               <button style={{ background: "none", border: "none", color: "#64748B", fontSize: 13, cursor: "pointer", padding: 0, fontFamily: "inherit" }}>
                 Class IV Wastewater Practice
@@ -362,7 +362,7 @@ export default function FormulasWpiClass4Ww() {
               🏛️
             </div>
             <div>
-              <h1 style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(20px, 3vw, 26px)", fontWeight: 900, color: "#0F172A", margin: 0 }}>
+              <h1 style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(20px, 3vw, 26px)", fontWeight: 900, color: "#FFFFFF", margin: 0 }}>
                 WPI Class IV Wastewater Formula Sheet
               </h1>
               <p style={{ fontSize: 13, color: "#64748B", margin: "4px 0 0" }}>
@@ -382,7 +382,7 @@ export default function FormulasWpiClass4Ww() {
             style={{
               width: "100%", padding: "10px 16px", borderRadius: 10,
               border: "1.5px solid #E2E8F0", fontSize: 14, fontFamily: "inherit",
-              background: "#fff", color: "#0F172A", outline: "none",
+              background: "#fff", color: "#FFFFFF", outline: "none",
               boxSizing: "border-box",
             }}
           />
@@ -395,8 +395,8 @@ export default function FormulasWpiClass4Ww() {
             style={{
               padding: "6px 14px", borderRadius: 20, fontSize: 12, fontWeight: 600,
               cursor: "pointer", fontFamily: "inherit", border: "none",
-              background: !activeSection ? "#0F172A" : "#F1F5F9",
-              color: !activeSection ? "#fff" : "#475569",
+              background: !activeSection ? "#FFFFFF" : "#F8FAFC",
+              color: !activeSection ? "#fff" : "#E2E8F0",
             }}
           >
             All Sections
@@ -408,8 +408,8 @@ export default function FormulasWpiClass4Ww() {
               style={{
                 padding: "6px 14px", borderRadius: 20, fontSize: 12, fontWeight: 600,
                 cursor: "pointer", fontFamily: "inherit", border: "none",
-                background: activeSection === s.category ? s.color : "#F1F5F9",
-                color: activeSection === s.category ? "#fff" : "#475569",
+                background: activeSection === s.category ? s.color : "#F8FAFC",
+                color: activeSection === s.category ? "#fff" : "#E2E8F0",
               }}
             >
               {s.icon} {s.category}
@@ -434,11 +434,11 @@ export default function FormulasWpiClass4Ww() {
                     background: "#fff", borderRadius: 14, padding: "20px",
                     border: "1px solid #E2E8F0",
                   }}>
-                    <h3 style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", margin: "0 0 10px" }}>
+                    <h3 style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", margin: "0 0 10px" }}>
                       {card.title}
                     </h3>
                     <div style={{
-                      background: "#F8FAFC", borderRadius: 8, padding: "10px 14px",
+                      background: "#FFFFFF", borderRadius: 8, padding: "10px 14px",
                       fontFamily: "monospace", fontSize: 13, color: section.color,
                       fontWeight: 600, marginBottom: 12, lineHeight: 1.5,
                     }}>
@@ -463,7 +463,7 @@ export default function FormulasWpiClass4Ww() {
                       </div>
                     </div>
                     {card.notes && (
-                      <div style={{ fontSize: 11, color: "#94A3B8", lineHeight: 1.5, marginTop: 8 }}>
+                      <div style={{ fontSize: 11, color: "#64748B", lineHeight: 1.5, marginTop: 8 }}>
                         💡 {card.notes}
                       </div>
                     )}
@@ -482,7 +482,7 @@ export default function FormulasWpiClass4Ww() {
           flexWrap: "wrap", gap: 12,
         }}>
           <div>
-            <div style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 4 }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", marginBottom: 4 }}>
               Ready to test your knowledge?
             </div>
             <div style={{ fontSize: 12, color: "#64748B" }}>
@@ -503,7 +503,7 @@ export default function FormulasWpiClass4Ww() {
             <Link href="/wpi-class4-wastewater-mock">
               <button style={{
                 padding: "10px 20px", borderRadius: 10, background: "#fff",
-                color: "#0F172A", border: "1.5px solid #E2E8F0", fontSize: 13,
+                color: "#FFFFFF", border: "1.5px solid #E2E8F0", fontSize: 13,
                 fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
               }}>
                 Mock Exam →

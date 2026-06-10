@@ -13,7 +13,7 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
   "Advanced Biosolids Management":         { bg: "#CCFBF1", color: "#0F766E" },
   "Regulatory Compliance & Reporting":     { bg: "#FEF9C3", color: "#A16207" },
   "Advanced Process Control & Troubleshooting": { bg: "#FFEDD5", color: "#C2410C" },
-  "Health, Safety & Environmental Management": { bg: "#F1F5F9", color: "#475569" },
+  "Health, Safety & Environmental Management": { bg: "#F8FAFC", color: "#64748B" },
 };
 
 export default function WpiClass3WastewaterMockExam() {

@@ -64,8 +64,8 @@ export default function PhoneCollectionModal({ onComplete }: Props) {
       <div
         className="pcm-card-wrap"
         style={{
-          background: "#1E293B",
-          border: "1px solid rgba(255,255,255,0.1)",
+          background: "#FFFFFF",
+          border: "1px solid rgba(0,0,0,0.09)",
           borderRadius: 20,
           padding: "40px 36px",
           width: "100%",
@@ -95,7 +95,7 @@ export default function PhoneCollectionModal({ onComplete }: Props) {
           style={{
             fontSize: 22,
             fontWeight: 800,
-            color: "#F1F5F9",
+            color: "#F8FAFC",
             margin: "0 0 8px",
           }}
         >
@@ -104,7 +104,7 @@ export default function PhoneCollectionModal({ onComplete }: Props) {
         <p
           style={{
             fontSize: 14,
-            color: "#94A3B8",
+            color: "#64748B",
             margin: "0 0 28px",
             lineHeight: 1.6,
           }}
@@ -144,9 +144,9 @@ export default function PhoneCollectionModal({ onComplete }: Props) {
               borderRadius: 12,
               border: error
                 ? "1.5px solid #F87171"
-                : "1.5px solid rgba(255,255,255,0.12)",
+                : "1.5px solid rgba(0,0,0,0.10)",
               background: "rgba(255,255,255,0.05)",
-              color: "#F1F5F9",
+              color: "#F8FAFC",
               fontSize: 15,
               fontFamily: "inherit",
               outline: "none",
@@ -159,7 +159,7 @@ export default function PhoneCollectionModal({ onComplete }: Props) {
             onBlur={(e) =>
               (e.currentTarget.style.borderColor = error
                 ? "#F87171"
-                : "rgba(255,255,255,0.12)")
+                : "rgba(0,0,0,0.10)")
             }
           />
 
@@ -186,11 +186,11 @@ export default function PhoneCollectionModal({ onComplete }: Props) {
               border: "none",
               background:
                 updatePhone.isPending || phone.trim().length < 7
-                  ? "#334155"
+                  ? "#E2E8F0"
                   : "linear-gradient(135deg, #1D4ED8, #0F766E)",
               color:
                 updatePhone.isPending || phone.trim().length < 7
-                  ? "#64748B"
+                  ? "#E2E8F0"
                   : "#fff",
               fontSize: 15,
               fontWeight: 700,
@@ -209,7 +209,7 @@ export default function PhoneCollectionModal({ onComplete }: Props) {
         <p
           style={{
             fontSize: 11,
-            color: "#475569",
+            color: "#64748B",
             marginTop: 16,
             textAlign: "center",
             lineHeight: 1.5,

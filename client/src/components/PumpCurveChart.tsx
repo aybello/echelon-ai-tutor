@@ -152,16 +152,16 @@ export default function PumpCurveChart({ mode, cavitationMode, systemStaticHead 
         <ResponsiveContainer width="100%" height={280}>
           <ComposedChart data={data} margin={{ top: 10, right: 20, bottom: 30, left: 20 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#1E293B" />
-            <XAxis dataKey="flow" stroke="#475569" tick={{ fill: "#94A3B8", fontSize: 11 }}>
-              <Label value="Flow Rate (L/s)" offset={-10} position="insideBottom" fill="#64748B" fontSize={11} />
+            <XAxis dataKey="flow" stroke="#E2E8F0" tick={{ fill: "#E2E8F0", fontSize: 11 }}>
+              <Label value="Flow Rate (L/s)" offset={-10} position="insideBottom" fill="#E2E8F0" fontSize={11} />
             </XAxis>
-            <YAxis stroke="#475569" tick={{ fill: "#94A3B8", fontSize: 11 }} domain={[0, 100]}>
-              <Label value="Head (m)" angle={-90} position="insideLeft" fill="#64748B" fontSize={11} />
+            <YAxis stroke="#E2E8F0" tick={{ fill: "#E2E8F0", fontSize: 11 }} domain={[0, 100]}>
+              <Label value="Head (m)" angle={-90} position="insideLeft" fill="#E2E8F0" fontSize={11} />
             </YAxis>
             <Tooltip content={<CustomTooltip />} />
             <Legend
-              wrapperStyle={{ fontSize: 11, color: "#94A3B8", paddingTop: 8 }}
-              formatter={(value) => <span style={{ color: "#94A3B8" }}>{value}</span>}
+              wrapperStyle={{ fontSize: 11, color: "#64748B", paddingTop: 8 }}
+              formatter={(value) => <span style={{ color: "#64748B" }}>{value}</span>}
             />
 
             {/* Pump H-Q curve */}
@@ -212,11 +212,11 @@ export default function PumpCurveChart({ mode, cavitationMode, systemStaticHead 
         <ResponsiveContainer width="100%" height={160}>
           <ComposedChart data={data} margin={{ top: 5, right: 20, bottom: 25, left: 20 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#1E293B" />
-            <XAxis dataKey="flow" stroke="#475569" tick={{ fill: "#94A3B8", fontSize: 10 }}>
-              <Label value="Flow Rate (L/s)" offset={-10} position="insideBottom" fill="#64748B" fontSize={10} />
+            <XAxis dataKey="flow" stroke="#E2E8F0" tick={{ fill: "#E2E8F0", fontSize: 10 }}>
+              <Label value="Flow Rate (L/s)" offset={-10} position="insideBottom" fill="#E2E8F0" fontSize={10} />
             </XAxis>
-            <YAxis stroke="#475569" tick={{ fill: "#94A3B8", fontSize: 10 }} domain={[0, 100]}>
-              <Label value="Efficiency (%)" angle={-90} position="insideLeft" fill="#64748B" fontSize={10} />
+            <YAxis stroke="#E2E8F0" tick={{ fill: "#E2E8F0", fontSize: 10 }} domain={[0, 100]}>
+              <Label value="Efficiency (%)" angle={-90} position="insideLeft" fill="#E2E8F0" fontSize={10} />
             </YAxis>
             <Tooltip content={<CustomTooltip />} />
             <Line
@@ -251,14 +251,14 @@ export default function PumpCurveChart({ mode, cavitationMode, systemStaticHead 
           <ResponsiveContainer width="100%" height={160}>
             <ComposedChart data={data} margin={{ top: 5, right: 20, bottom: 25, left: 20 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#1E293B" />
-              <XAxis dataKey="flow" stroke="#475569" tick={{ fill: "#94A3B8", fontSize: 10 }}>
-                <Label value="Flow Rate (L/s)" offset={-10} position="insideBottom" fill="#64748B" fontSize={10} />
+              <XAxis dataKey="flow" stroke="#E2E8F0" tick={{ fill: "#E2E8F0", fontSize: 10 }}>
+                <Label value="Flow Rate (L/s)" offset={-10} position="insideBottom" fill="#E2E8F0" fontSize={10} />
               </XAxis>
-              <YAxis stroke="#475569" tick={{ fill: "#94A3B8", fontSize: 10 }} domain={[0, 12]}>
-                <Label value="NPSH (m)" angle={-90} position="insideLeft" fill="#64748B" fontSize={10} />
+              <YAxis stroke="#E2E8F0" tick={{ fill: "#E2E8F0", fontSize: 10 }} domain={[0, 12]}>
+                <Label value="NPSH (m)" angle={-90} position="insideLeft" fill="#E2E8F0" fontSize={10} />
               </YAxis>
               <Tooltip content={<CustomTooltip />} />
-              <Legend wrapperStyle={{ fontSize: 10, color: "#94A3B8", paddingTop: 4 }} />
+              <Legend wrapperStyle={{ fontSize: 10, color: "#64748B", paddingTop: 4 }} />
               <Line type="monotone" dataKey="npshRequired" name="NPSHr (Required)" stroke="#F87171" strokeWidth={2} dot={false} />
               <Line type="monotone" dataKey="npshAvailable" name="NPSHa (Available)" stroke="#34D399" strokeWidth={2} strokeDasharray="5 3" dot={false} />
               <ReferenceDot

@@ -266,7 +266,7 @@ export default function MockExam() {
   // ── INTRO ──
   if (examState === "intro") {
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
         <style>{`
           @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
           @media (max-width: 640px) {
@@ -282,7 +282,7 @@ export default function MockExam() {
         <div className="mockexam-intro" style={{ maxWidth: 680, margin: "60px auto", padding: "0 20px", animation: "fadeUp 0.4s ease both" }}>
           <div style={{ background: "#fff", borderRadius: 24, padding: "48px", boxShadow: "0 8px 32px rgba(0,0,0,0.08)", textAlign: "center" }}>
             <div style={{ fontSize: 56, marginBottom: 16 }}>📝</div>
-            <h1 style={{ fontSize: 28, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>OIT Mock Exam</h1>
+            <h1 style={{ fontSize: 28, fontWeight: 800, color: "#FFFFFF", margin: "0 0 8px" }}>OIT Mock Exam</h1>
             <p style={{ fontSize: 14, color: "#64748B", marginBottom: 32, lineHeight: 1.7 }}>
               Simulate the real Ontario OIT certification exam. 25 questions across all modules, 45-minute time limit, 70% to pass.
             </p>
@@ -293,10 +293,10 @@ export default function MockExam() {
                 { icon: "⏱️", label: "Time Limit", value: "45 min" },
                 { icon: "🎯", label: "Pass Mark", value: "70%" },
               ].map(({ icon, label, value }) => (
-                <div key={label} style={{ background: "#F8FAFC", borderRadius: 16, padding: "20px 16px", border: "1px solid #E2E8F0" }}>
+                <div key={label} style={{ background: "#FFFFFF", borderRadius: 16, padding: "20px 16px", border: "1px solid #E2E8F0" }}>
                   <div style={{ fontSize: 28, marginBottom: 8 }}>{icon}</div>
-                  <div style={{ fontSize: 20, fontWeight: 800, color: "#0F172A" }}>{value}</div>
-                  <div style={{ fontSize: 11, color: "#94A3B8", fontWeight: 600 }}>{label}</div>
+                  <div style={{ fontSize: 20, fontWeight: 800, color: "#FFFFFF" }}>{value}</div>
+                  <div style={{ fontSize: 11, color: "#64748B", fontWeight: 600 }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -331,7 +331,7 @@ export default function MockExam() {
     );
 
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
         <style>{`
           @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
           @keyframes popIn { from{transform:scale(0.9);opacity:0} to{transform:scale(1);opacity:1} }
@@ -371,7 +371,7 @@ export default function MockExam() {
               { label: "Correct", value: correctCount, color: "#059669", bg: "#F0FDF4" },
               { label: "Incorrect", value: 25 - correctCount, color: "#DC2626", bg: "#FEF2F2" },
               { label: "Flagged", value: flagged.length, color: "#D97706", bg: "#FFFBEB" },
-              { label: "Unanswered", value: answers.filter(a => a.selected === null).length, color: "#64748B", bg: "#F8FAFC" },
+              { label: "Unanswered", value: answers.filter(a => a.selected === null).length, color: "#64748B", bg: "#1E293B" },
             ].map(({ label, value, color, bg }) => (
               <div key={label} style={{ background: bg, borderRadius: 16, padding: "20px 16px", textAlign: "center", border: `1px solid ${color}22` }}>
                 <div style={{ fontSize: 28, fontWeight: 900, color }}>{value}</div>
@@ -382,7 +382,7 @@ export default function MockExam() {
 
           {/* Module breakdown */}
           <div style={{ background: "#fff", borderRadius: 20, padding: "28px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", marginBottom: 24 }}>
-            <h2 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", margin: "0 0 20px" }}>Module Breakdown</h2>
+            <h2 style={{ fontSize: 16, fontWeight: 800, color: "#FFFFFF", margin: "0 0 20px" }}>Module Breakdown</h2>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {sortedModules.map(([mod, { correct, total }]) => {
                 const pct = correct / total;
@@ -393,7 +393,7 @@ export default function MockExam() {
                       <span style={{ fontSize: 12, fontWeight: 600, color: "#374151" }}>{mod}</span>
                       <span style={{ fontSize: 12, fontWeight: 700, color: barColor }}>{correct}/{total} ({Math.round(pct * 100)}%)</span>
                     </div>
-                    <div style={{ height: 8, background: "#F1F5F9", borderRadius: 4, overflow: "hidden" }}>
+                    <div style={{ height: 8, background: "#FFFFFF", borderRadius: 4, overflow: "hidden" }}>
                       <div style={{ height: "100%", width: `${pct * 100}%`, background: barColor, borderRadius: 4, transition: "width 0.8s ease" }} />
                     </div>
                   </div>
@@ -405,10 +405,10 @@ export default function MockExam() {
           {/* Answer review toggle */}
           <div style={{ background: "#fff", borderRadius: 20, padding: "28px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: showReview ? 20 : 0 }}>
-              <h2 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", margin: 0 }}>Answer Review</h2>
+              <h2 style={{ fontSize: 16, fontWeight: 800, color: "#FFFFFF", margin: 0 }}>Answer Review</h2>
               <button
                 onClick={() => setShowReview(r => !r)}
-                style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid #E2E8F0", background: "#F8FAFC", color: "#374151", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                style={{ padding: "8px 16px", borderRadius: 20, border: "1px solid #E2E8F0", background: "#FFFFFF", color: "#374151", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
               >
                 {showReview ? "▲ Hide" : "▼ Show all answers"}
               </button>
@@ -424,8 +424,8 @@ export default function MockExam() {
                       <div style={{ display: "flex", gap: 8, marginBottom: 8, alignItems: "flex-start" }}>
                         <span style={{ fontSize: 16 }}>{isCorrect ? "✓" : "✗"}</span>
                         <div>
-                          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 4 }}>Q{i + 1} · {q.module} · {q.difficulty}</div>
-                          <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>{(q as any).question}</div>
+                          <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", marginBottom: 4 }}>Q{i + 1} · {q.module} · {q.difficulty}</div>
+                          <div style={{ fontSize: 13, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.5 }}>{(q as any).question}</div>
                         </div>
                       </div>
                       {!isCorrect && userAns !== null && (
@@ -462,7 +462,7 @@ export default function MockExam() {
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
       <style>{`@keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} } .opt-btn:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,0.08); }`}</style>
 
       {/* Exam header */}
@@ -470,8 +470,8 @@ export default function MockExam() {
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <div style={{ width: 32, height: 32, borderRadius: 8, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800, color: "#fff" }}>E</div>
           <div>
-            <div style={{ fontSize: 12, fontWeight: 800, color: "#0F172A" }}>OIT MOCK EXAM</div>
-            <div style={{ fontSize: 10, color: "#94A3B8" }}>DBQuestion {currentIdx + 1} of 25</div>
+            <div style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF" }}>OIT MOCK EXAM</div>
+            <div style={{ fontSize: 10, color: "#64748B" }}>DBQuestion {currentIdx + 1} of 25</div>
           </div>
         </div>
 
@@ -501,7 +501,7 @@ export default function MockExam() {
       </div>
 
       {/* Progress bar */}
-      <div style={{ height: 3, background: "#E2E8F0" }}>
+      <div style={{ height: 3, background: "#94A3B8" }}>
         <div style={{ height: "100%", width: `${((currentIdx + 1) / 25) * 100}%`, background: "linear-gradient(90deg, #1D4ED8, #0F766E)", transition: "width 0.3s ease" }} />
       </div>
 
@@ -522,7 +522,7 @@ export default function MockExam() {
                   width: 32, height: 32, borderRadius: 8,
                   border: isCurr ? "2px solid #1D4ED8" : "1px solid #E2E8F0",
                   background: isCurr ? "#EFF6FF" : isAnswered ? "#F0FDF4" : "#F8FAFC",
-                  color: isCurr ? "#1D4ED8" : isAnswered ? "#15803D" : "#94A3B8",
+                  color: isCurr ? "#1D4ED8" : isAnswered ? "#15803D" : "#E2E8F0",
                   fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                   position: "relative",
                 }}
@@ -544,25 +544,25 @@ export default function MockExam() {
             <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
               <button
                 onClick={toggleFlag}
-                style={{ padding: "5px 10px", borderRadius: 20, border: `1px solid ${isFlagged ? "#F59E0B" : "#E2E8F0"}`, background: isFlagged ? "#FFFBEB" : "#F8FAFC", color: isFlagged ? "#D97706" : "#94A3B8", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+                style={{ padding: "5px 10px", borderRadius: 20, border: `1px solid ${isFlagged ? "#F59E0B" : "#94A3B8"}`, background: isFlagged ? "#FFFBEB" : "#F8FAFC", color: isFlagged ? "#D97706" : "#E2E8F0", fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
               >
                 {isFlagged ? "🚩 Flagged" : "🏳 Flag"}
               </button>
-              <span style={{ fontSize: 11, color: "#94A3B8", fontWeight: 600 }}>{currentIdx + 1} / 25</span>
+              <span style={{ fontSize: 11, color: "#64748B", fontWeight: 600 }}>{currentIdx + 1} / 25</span>
             </div>
           </div>
 
           {currentQ.tip && (
-            <div style={{ background: "#F8FAFC", borderRadius: 10, padding: "10px 14px", marginBottom: 20, border: "1px solid #E2E8F0", display: "flex", gap: 10, alignItems: "center" }}>
+            <div style={{ background: "#FFFFFF", borderRadius: 10, padding: "10px 14px", marginBottom: 20, border: "1px solid #E2E8F0", display: "flex", gap: 10, alignItems: "center" }}>
               <span style={{ fontSize: 16 }}>📐</span>
               <div>
-                <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.12em", marginBottom: 2 }}>FORMULA HINT</div>
+                <div style={{ fontSize: 9, fontWeight: 700, color: "#64748B", letterSpacing: "0.12em", marginBottom: 2 }}>FORMULA HINT</div>
                 <div style={{ fontFamily: "monospace", fontSize: 12, color: "#1D4ED8", fontWeight: 700 }}>{currentQ.tip}</div>
               </div>
             </div>
           )}
 
-          <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.65, marginBottom: 24 }}>{currentQ.question}</div>
+          <div style={{ fontSize: 16, fontWeight: 700, color: "#FFFFFF", lineHeight: 1.65, marginBottom: 24 }}>{currentQ.question}</div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {currentQ.options.map((opt, i) => {
@@ -574,7 +574,7 @@ export default function MockExam() {
                   onClick={() => selectAnswer(i)}
                   style={{
                     width: "100%", padding: "14px 16px", borderRadius: 12,
-                    border: `2px solid ${isSelected ? "#3B82F6" : "#E2E8F0"}`,
+                    border: `2px solid ${isSelected ? "#3B82F6" : "#94A3B8"}`,
                     background: isSelected ? "#EFF6FF" : "#F8FAFC",
                     color: isSelected ? "#1E3A5F" : "#374151",
                     fontSize: 13, fontWeight: isSelected ? 600 : 400,
@@ -582,7 +582,7 @@ export default function MockExam() {
                     transition: "all 0.15s ease", fontFamily: "inherit",
                   }}
                 >
-                  <span style={{ width: 28, height: 28, borderRadius: "50%", background: isSelected ? "#3B82F6" : "#E2E8F0", color: isSelected ? "#fff" : "#94A3B8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0 }}>
+                  <span style={{ width: 28, height: 28, borderRadius: "50%", background: isSelected ? "#3B82F6" : "#94A3B8", color: isSelected ? "#fff" : "#E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0 }}>
                     {String.fromCharCode(65 + i)}
                   </span>
                   {opt}
@@ -597,7 +597,7 @@ export default function MockExam() {
           <button
             onClick={() => setCurrentIdx(i => Math.max(0, i - 1))}
             disabled={currentIdx === 0}
-            style={{ flex: 1, padding: "14px", borderRadius: 12, border: "1px solid #E2E8F0", background: "#fff", color: currentIdx === 0 ? "#CBD5E1" : "#374151", fontSize: 13, fontWeight: 700, cursor: currentIdx === 0 ? "not-allowed" : "pointer", fontFamily: "inherit" }}
+            style={{ flex: 1, padding: "14px", borderRadius: 12, border: "1px solid #E2E8F0", background: "#fff", color: currentIdx === 0 ? "#94A3B8" : "#374151", fontSize: 13, fontWeight: 700, cursor: currentIdx === 0 ? "not-allowed" : "pointer", fontFamily: "inherit" }}
           >
             ← Previous
           </button>

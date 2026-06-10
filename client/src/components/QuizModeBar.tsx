@@ -93,7 +93,7 @@ export default function QuizModeBar({
                 : "1.5px solid rgba(255,255,255,0.25)",
               background: active
                 ? "rgba(255,255,255,0.22)"
-                : "rgba(255,255,255,0.08)",
+                : "rgba(0,0,0,0.08)",
               color: "#fff",
               cursor: card.disabled ? "not-allowed" : "pointer",
               opacity: card.disabled ? 0.45 : 1,
@@ -109,7 +109,7 @@ export default function QuizModeBar({
               width: 28,
               height: 28,
               borderRadius: 8,
-              background: active ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.12)",
+              background: active ? "rgba(255,255,255,0.25)" : "rgba(0,0,0,0.10)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -131,7 +131,7 @@ export default function QuizModeBar({
                 </span>
                 {card.badge && (
                   <span style={{
-                    background: active ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.15)",
+                    background: active ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.12)",
                     borderRadius: 8,
                     padding: "1px 6px",
                     fontSize: 10,

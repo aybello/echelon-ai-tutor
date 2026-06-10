@@ -217,19 +217,19 @@ export default function OITMockExam() {
   if (examState === "intro") {
     return (
       <PurchaseGate examType="oit" productKey="oit" productName="OIT Practice Pass" price={49}>
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath="/oit-mock" />
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px" }}>
           <div style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center" }}>
             <div style={{ width: 72, height: 72, borderRadius: 20, background: "linear-gradient(135deg, #1D4ED8, #0E7490)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32, margin: "0 auto 20px" }}>📝</div>
-            <h1 style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>OIT Mock Exam</h1>
+            <h1 style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF", marginBottom: 8 }}>OIT Mock Exam</h1>
             <p style={{ fontSize: 14, color: "#64748B", marginBottom: 20, lineHeight: 1.6 }}>
               Simulates the Operator-in-Training (OIT) certification exam format. Covers all 10 exam modules.
             </p>
 
             {/* Province selector */}
             <div style={{ marginBottom: 24, textAlign: "left" }}>
-              <label style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", display: "block", marginBottom: 8 }}>YOUR PROVINCE</label>
+              <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", display: "block", marginBottom: 8 }}>YOUR PROVINCE</label>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                 {PROVINCE_OPTIONS.map(p => (
                   <button
@@ -238,9 +238,9 @@ export default function OITMockExam() {
                     style={{
                       padding: "7px 12px",
                       borderRadius: 20,
-                      border: `2px solid ${selectedProvince === p.value ? "#1D4ED8" : "#E2E8F0"}`,
+                      border: `2px solid ${selectedProvince === p.value ? "#1D4ED8" : "#94A3B8"}`,
                       background: selectedProvince === p.value ? "#EFF6FF" : "#F8FAFC",
-                      color: selectedProvince === p.value ? "#1D4ED8" : "#64748B",
+                      color: selectedProvince === p.value ? "#1D4ED8" : "#E2E8F0",
                       fontSize: 11,
                       fontWeight: 700,
                       cursor: "pointer",
@@ -268,16 +268,16 @@ export default function OITMockExam() {
                 { icon: "🎯", label: "Pass Mark", value: "70% (70/100)" },
                 { icon: "📊", label: "Modules", value: "10 Topics" },
               ].map(({ icon, label, value }) => (
-                <div key={label} style={{ padding: "14px 16px", borderRadius: 12, background: "#F8FAFC", border: "1px solid #E2E8F0" }}>
+                <div key={label} style={{ padding: "14px 16px", borderRadius: 12, background: "#FFFFFF", border: "1px solid #E2E8F0" }}>
                   <div style={{ fontSize: 20, marginBottom: 4 }}>{icon}</div>
-                  <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 600, marginBottom: 2 }}>{label}</div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: "#0F172A" }}>{value}</div>
+                  <div style={{ fontSize: 10, color: "#64748B", fontWeight: 600, marginBottom: 2 }}>{label}</div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF" }}>{value}</div>
                 </div>
               ))}
             </div>
             {/* Module distribution */}
-            <div style={{ background: "#F8FAFC", borderRadius: 12, padding: "14px 16px", marginBottom: 28, textAlign: "left" }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>EXAM DISTRIBUTION</div>
+            <div style={{ background: "#FFFFFF", borderRadius: 12, padding: "14px 16px", marginBottom: 28, textAlign: "left" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", marginBottom: 10 }}>EXAM DISTRIBUTION</div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                 {Object.entries(MODULE_TARGETS).map(([mod, n]) => (
                   <span key={mod} style={{ padding: "3px 8px", borderRadius: 20, background: MODULE_COLORS[mod]?.bg ?? "#E0F2FE", color: MODULE_COLORS[mod]?.color ?? "#0369A1", fontSize: 10, fontWeight: 600 }}>
@@ -290,7 +290,7 @@ export default function OITMockExam() {
               🚀 Start Exam
             </button>
             <div style={{ marginTop: 16 }}>
-              <Link href="/quiz" style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none" }}>← Back to OIT Practice</Link>
+              <Link href="/quiz" style={{ fontSize: 12, color: "#64748B", textDecoration: "none" }}>← Back to OIT Practice</Link>
             </div>
           </div>
         </div>
@@ -302,7 +302,7 @@ export default function OITMockExam() {
   if (examState === "results" && results) {
     const { correct, score, passed, moduleBreakdown } = results;
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath="/oit-mock" />
         <div style={{ maxWidth: 700, margin: "0 auto", padding: "32px 20px 80px" }}>
           {/* Score hero */}
@@ -335,7 +335,7 @@ export default function OITMockExam() {
 
           {/* Module breakdown */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
-            <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 16 }}>📊 Module Breakdown (Weakest First)</div>
+            <div style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", marginBottom: 16 }}>📊 Module Breakdown (Weakest First)</div>
             {moduleBreakdown.map(({ module, correct: mc, total, pct }) => {
               const ms = MODULE_COLORS[module] ?? { bg: "#E0F2FE", color: "#0369A1" };
               const barColor = pct >= 0.7 ? "#22C55E" : pct >= 0.5 ? "#F59E0B" : "#EF4444";
@@ -345,7 +345,7 @@ export default function OITMockExam() {
                     <span style={{ fontSize: 12, fontWeight: 700, color: ms.color }}>{module}</span>
                     <span style={{ fontSize: 12, fontWeight: 700, color: barColor }}>{mc}/{total} ({Math.round(pct * 100)}%)</span>
                   </div>
-                  <div style={{ height: 8, background: "#F1F5F9", borderRadius: 4, overflow: "hidden" }}>
+                  <div style={{ height: 8, background: "#FFFFFF", borderRadius: 4, overflow: "hidden" }}>
                     <div style={{ height: "100%", width: `${pct * 100}%`, background: barColor, borderRadius: 4, transition: "width 0.6s ease" }} />
                   </div>
                 </div>
@@ -357,7 +357,7 @@ export default function OITMockExam() {
           <div style={{ background: "#fff", borderRadius: 16, padding: "20px 24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
             <button
               onClick={() => setShowReview(v => !v)}
-              style={{ width: "100%", padding: "12px", borderRadius: 10, border: "1.5px solid #E2E8F0", background: "transparent", color: "#0F172A", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
+              style={{ width: "100%", padding: "12px", borderRadius: 10, border: "1.5px solid #E2E8F0", background: "transparent", color: "#FFFFFF", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
             >
               {showReview ? "▲ Hide DBQuestion Review" : "▼ Review All Questions"}
             </button>
@@ -371,7 +371,7 @@ export default function OITMockExam() {
                     <div key={q.id} style={{ marginBottom: 16, padding: "14px 16px", borderRadius: 12, background: wasSkipped ? "#FFF7ED" : isCorrect ? "#F0FDF4" : "#FFF1F2", border: `1px solid ${wasSkipped ? "#FED7AA" : isCorrect ? "#BBF7D0" : "#FECDD3"}` }}>
                       <div style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: 8 }}>
                         <span style={{ fontSize: 16, flexShrink: 0 }}>{wasSkipped ? "⏭️" : isCorrect ? "✅" : "❌"}</span>
-                        <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>Q{i + 1}. {(q as any).question}</div>
+                        <div style={{ fontSize: 13, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.5 }}>Q{i + 1}. {(q as any).question}</div>
                       </div>
                       {!wasSkipped && !isCorrect && (
                         <div style={{ fontSize: 12, color: "#DC2626", marginBottom: 4 }}>Your answer: {q.options[a.selected!]}</div>
@@ -433,13 +433,13 @@ export default function OITMockExam() {
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath="/oit-mock" />
 
       {/* Sticky exam header */}
       <div style={{ position: "sticky", top: 0, zIndex: 50, background: "#fff", borderBottom: "1px solid #E2E8F0", padding: "10px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A" }}>
-          Q {currentIdx + 1} <span style={{ color: "#94A3B8" }}>/ {EXAM_QUESTIONS}</span>
+        <div style={{ fontSize: 13, fontWeight: 700, color: "#FFFFFF" }}>
+          Q {currentIdx + 1} <span style={{ color: "#64748B" }}>/ {EXAM_QUESTIONS}</span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <span style={{ fontSize: 12, color: "#64748B" }}>{answered}/{EXAM_QUESTIONS} answered</span>
@@ -470,7 +470,7 @@ export default function OITMockExam() {
               {isFlagged && <span style={{ padding: "3px 10px", borderRadius: 100, background: "#FEF9C3", color: "#A16207", fontSize: 10, fontWeight: 700 }}>🚩 Flagged</span>}
             </div>
 
-            <div style={{ fontSize: 16, fontWeight: 600, color: "#0F172A", lineHeight: 1.65, marginBottom: 24 }}>
+            <div style={{ fontSize: 16, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.65, marginBottom: 24 }}>
               {currentQ.question}
             </div>
 
@@ -486,13 +486,13 @@ export default function OITMockExam() {
                       padding: "14px 18px", borderRadius: 12, textAlign: "left",
                       border: isSelected ? "2px solid #1D4ED8" : "1.5px solid #E2E8F0",
                       background: isSelected ? "#EFF6FF" : "#FAFAFA",
-                      color: isSelected ? "#1D4ED8" : "#0F172A",
+                      color: isSelected ? "#1D4ED8" : "#FFFFFF",
                       fontWeight: isSelected ? 700 : 500, fontSize: 14,
                       cursor: "pointer", fontFamily: "inherit", lineHeight: 1.5,
                       transition: "all 0.1s",
                     }}
                   >
-                    <span style={{ marginRight: 10, fontWeight: 800, color: isSelected ? "#1D4ED8" : "#94A3B8" }}>
+                    <span style={{ marginRight: 10, fontWeight: 800, color: isSelected ? "#1D4ED8" : "#E2E8F0" }}>
                       {String.fromCharCode(65 + i)}.
                     </span>
                     {opt}
@@ -507,13 +507,13 @@ export default function OITMockExam() {
             <button
               onClick={() => setCurrentIdx(i => Math.max(0, i - 1))}
               disabled={currentIdx === 0}
-              style={{ flex: 1, minWidth: 100, padding: "12px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: currentIdx === 0 ? "#CBD5E1" : "#0F172A", fontWeight: 700, fontSize: 14, cursor: currentIdx === 0 ? "not-allowed" : "pointer", fontFamily: "inherit" }}
+              style={{ flex: 1, minWidth: 100, padding: "12px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: currentIdx === 0 ? "#94A3B8" : "#FFFFFF", fontWeight: 700, fontSize: 14, cursor: currentIdx === 0 ? "not-allowed" : "pointer", fontFamily: "inherit" }}
             >
               &laquo; Prev
             </button>
             <button
               onClick={toggleFlag}
-              style={{ padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${isFlagged ? "#D97706" : "#E2E8F0"}`, background: isFlagged ? "#FEF9C3" : "#fff", color: isFlagged ? "#A16207" : "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
+              style={{ padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${isFlagged ? "#D97706" : "#94A3B8"}`, background: isFlagged ? "#FEF9C3" : "#fff", color: isFlagged ? "#A16207" : "#E2E8F0", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
             >
               {isFlagged ? "🚩 Flagged" : "🚩 Flag"}
             </button>
@@ -537,7 +537,7 @@ export default function OITMockExam() {
 
         {/* DBQuestion navigator */}
         <div className="oit-sidebar" style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 4 }}>
             {questions.map((_, i) => {
               const isAnswered = answers[i]?.selected !== null;
@@ -550,7 +550,7 @@ export default function OITMockExam() {
                   style={{
                     padding: "6px 0", borderRadius: 6, border: isCurrent ? "2px solid #1D4ED8" : "1px solid #E2E8F0",
                     background: isCurrent ? "#EFF6FF" : isFlaggedQ ? "#FEF9C3" : isAnswered ? "#DCFCE7" : "#F8FAFC",
-                    color: isCurrent ? "#1D4ED8" : isFlaggedQ ? "#A16207" : isAnswered ? "#15803D" : "#94A3B8",
+                    color: isCurrent ? "#1D4ED8" : isFlaggedQ ? "#A16207" : isAnswered ? "#15803D" : "#E2E8F0",
                     fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                   }}
                 >
@@ -563,7 +563,7 @@ export default function OITMockExam() {
             {[
               { color: "#DCFCE7", textColor: "#15803D", label: "Answered" },
               { color: "#FEF9C3", textColor: "#A16207", label: "Flagged" },
-              { color: "#F8FAFC", textColor: "#94A3B8", label: "Unanswered" },
+              { color: "#F8FAFC", textColor: "#E2E8F0", label: "Unanswered" },
             ].map(({ color, textColor, label }) => (
               <div key={label} style={{ display: "flex", alignItems: "center", gap: 6 }}>
                 <div style={{ width: 12, height: 12, borderRadius: 3, background: color, border: "1px solid #E2E8F0" }} />

@@ -200,7 +200,7 @@ export default function OITWastewaterMockExam() {
   if (examState === "intro") {
     return (
       <PurchaseGate examType="oit-ww" productKey="oit-ww" productName="OIT Wastewater Practice Pass" price={49}>
-        <div style={{ minHeight: "100vh", background: "#F8FAFC" }}>
+        <div style={{ minHeight: "100vh", background: "#FFFFFF" }}>
           <SiteNav currentPath="/oit-ww-mock" />
           <div style={{ maxWidth: 680, margin: "0 auto", padding: "48px 16px" }}>
             <div style={{ background: "#fff", borderRadius: 20, padding: "36px 32px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", border: "1px solid #E2E8F0" }}>
@@ -208,7 +208,7 @@ export default function OITWastewaterMockExam() {
               <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 24 }}>
                 <div style={{ width: 52, height: 52, borderRadius: 14, background: "linear-gradient(135deg, #065F46, #0F766E)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24 }}>🌿</div>
                 <div>
-                  <h1 style={{ margin: 0, fontSize: 22, fontWeight: 800, color: "#0F172A" }}>OIT Wastewater Treatment</h1>
+                  <h1 style={{ margin: 0, fontSize: 22, fontWeight: 800, color: "#FFFFFF" }}>OIT Wastewater Treatment</h1>
                   <p style={{ margin: 0, fontSize: 14, color: "#64748B" }}>Timed Mock Exam · Ontario O. Reg. 129/04</p>
                 </div>
               </div>
@@ -230,13 +230,13 @@ export default function OITWastewaterMockExam() {
 
               {/* Module coverage */}
               <div style={{ marginBottom: 24 }}>
-                <div style={{ fontSize: 12, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>MODULE COVERAGE</div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", marginBottom: 10 }}>MODULE COVERAGE</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {Object.entries(EXAM_MODULE_TARGETS).map(([mod, count]) => (
                     <span key={mod} style={{
                       padding: "4px 10px", borderRadius: 20, fontSize: 12, fontWeight: 600,
                       background: MODULE_COLORS[mod]?.bg ?? "#F1F5F9",
-                      color: MODULE_COLORS[mod]?.color ?? "#475569",
+                      color: MODULE_COLORS[mod]?.color ?? "#E2E8F0",
                     }}>
                       {mod} ({count})
                     </span>
@@ -253,7 +253,7 @@ export default function OITWastewaterMockExam() {
                   id="oit-ww-province-select"
                   value={province}
                   onChange={e => setProvince(e.target.value)}
-                  style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "1.5px solid #E2E8F0", fontSize: 14, color: "#0F172A", background: "#F8FAFC", fontFamily: "inherit" }}
+                  style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "1.5px solid #E2E8F0", fontSize: 14, color: "#FFFFFF", background: "#FFFFFF", fontFamily: "inherit" }}
                 >
                   <option value="">Select province…</option>
                   {PROVINCE_OPTIONS.map(p => (
@@ -305,7 +305,7 @@ export default function OITWastewaterMockExam() {
     const pct = Math.round((results.correct / results.total) * 100);
     const passed = results.passed;
     return (
-      <div style={{ minHeight: "100vh", background: "#F8FAFC" }}>
+      <div style={{ minHeight: "100vh", background: "#FFFFFF" }}>
         <SiteNav currentPath="/oit-ww-mock" />
         <div style={{ maxWidth: 720, margin: "0 auto", padding: "40px 16px" }}>
           {/* Score card */}
@@ -323,18 +323,18 @@ export default function OITWastewaterMockExam() {
 
           {/* Module breakdown */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", marginBottom: 24, border: "1px solid #E2E8F0" }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 16 }}>MODULE BREAKDOWN</div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", marginBottom: 16 }}>MODULE BREAKDOWN</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {Object.entries(results.moduleBreakdown).map(([mod, { correct: c, total: t }]) => {
                 const modPct = t > 0 ? Math.round((c / t) * 100) : 0;
-                const modColors = MODULE_COLORS[mod] ?? { bg: "#F1F5F9", color: "#475569" };
+                const modColors = MODULE_COLORS[mod] ?? { bg: "#F8FAFC", color: "#64748B" };
                 return (
                   <div key={mod}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                      <span style={{ fontSize: 13, fontWeight: 600, color: "#0F172A" }}>{mod}</span>
+                      <span style={{ fontSize: 13, fontWeight: 600, color: "#FFFFFF" }}>{mod}</span>
                       <span style={{ fontSize: 13, fontWeight: 700, color: modPct >= 70 ? "#15803D" : "#DC2626" }}>{c}/{t} ({modPct}%)</span>
                     </div>
-                    <div style={{ height: 6, borderRadius: 3, background: "#F1F5F9", overflow: "hidden" }}>
+                    <div style={{ height: 6, borderRadius: 3, background: "#FFFFFF", overflow: "hidden" }}>
                       <div style={{ height: "100%", width: `${modPct}%`, background: modPct >= 70 ? modColors.color : "#DC2626", borderRadius: 3, transition: "width 0.6s ease" }} />
                     </div>
                   </div>
@@ -352,7 +352,7 @@ export default function OITWastewaterMockExam() {
               onClick={() => setShowReview(!showReview)}
               style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", padding: 0 }}
             >
-              <span style={{ fontSize: 14, fontWeight: 700, color: "#0F172A" }}>Review All Questions ({questions.length})</span>
+              <span style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF" }}>Review All Questions ({questions.length})</span>
               <span style={{ fontSize: 12, color: "#64748B" }}>{showReview ? "▲ Hide" : "▼ Show"}</span>
             </button>
             {showReview && (
@@ -363,14 +363,14 @@ export default function OITWastewaterMockExam() {
                   const isSkipped = userAns === null;
                   const isFlaggedQ = flagged.includes(i);
                   return (
-                    <div key={i} style={{ marginBottom: 16, padding: "14px 16px", borderRadius: 12, background: isSkipped ? "#F8FAFC" : isCorrect ? "#F0FDF4" : "#FFF7ED", border: `1px solid ${isSkipped ? "#E2E8F0" : isCorrect ? "#BBF7D0" : "#FED7AA"}` }}>
+                    <div key={i} style={{ marginBottom: 16, padding: "14px 16px", borderRadius: 12, background: isSkipped ? "#F1F5F9" : isCorrect ? "#F0FDF4" : "#FFF7ED", border: `1px solid ${isSkipped ? "#94A3B8" : isCorrect ? "#BBF7D0" : "#FED7AA"}` }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8" }}>Q{i + 1} · {q.module} {isFlaggedQ ? "🚩" : ""}</span>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: isSkipped ? "#94A3B8" : isCorrect ? "#15803D" : "#C2410C" }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: "#64748B" }}>Q{i + 1} · {q.module} {isFlaggedQ ? "🚩" : ""}</span>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: isSkipped ? "#E2E8F0" : isCorrect ? "#15803D" : "#C2410C" }}>
                           {isSkipped ? "Skipped" : isCorrect ? "✅ Correct" : "❌ Incorrect"}
                         </span>
                       </div>
-                      <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", marginBottom: 8, lineHeight: 1.5 }}>{q.question}</div>
+                      <div style={{ fontSize: 13, fontWeight: 600, color: "#FFFFFF", marginBottom: 8, lineHeight: 1.5 }}>{q.question}</div>
                       {!isSkipped && !isCorrect && (
                         <div style={{ fontSize: 12, color: "#92400E", marginBottom: 4 }}>
                           Your answer: <strong>{q.options[userAns!]}</strong>
@@ -380,7 +380,7 @@ export default function OITWastewaterMockExam() {
                         Correct: <strong>{q.options[(q as any).correctIndex]}</strong>
                       </div>
                       {q.explanation && (
-                        <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.5, whiteSpace: "pre-line", marginBottom: 4 }}>{q.explanation}</div>
+                        <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line", marginBottom: 4 }}>{q.explanation}</div>
                       )}
                       {(!isCorrect || isSkipped) && (
                         <ReviewAITutor
@@ -408,7 +408,7 @@ export default function OITWastewaterMockExam() {
               Retake Exam
             </button>
             <Link href="/oit-ww" style={{ flex: 1, minWidth: 140 }}>
-              <button style={{ width: "100%", padding: "14px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#0F172A", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}>
+              <button style={{ width: "100%", padding: "14px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#FFFFFF", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}>
                 Practice Quiz
               </button>
             </Link>
@@ -437,7 +437,7 @@ export default function OITWastewaterMockExam() {
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F8FAFC" }}>
+    <div style={{ minHeight: "100vh", background: "#FFFFFF" }}>
       {/* Sticky timer bar */}
       <div style={{ position: "sticky", top: 0, zIndex: 50, background: "#fff", borderBottom: "1px solid #E2E8F0", padding: "10px 16px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <Link href="/oit-ww-mock" style={{ fontSize: 13, color: "#64748B", textDecoration: "none", fontWeight: 600 }}>
@@ -470,15 +470,15 @@ export default function OITWastewaterMockExam() {
                 <span style={{
                   padding: "4px 12px", borderRadius: 20, fontSize: 12, fontWeight: 700,
                   background: MODULE_COLORS[currentQ.module]?.bg ?? "#F1F5F9",
-                  color: MODULE_COLORS[currentQ.module]?.color ?? "#475569",
+                  color: MODULE_COLORS[currentQ.module]?.color ?? "#E2E8F0",
                 }}>
                   {currentQ.module}
                 </span>
-                <span style={{ fontSize: 12, color: "#94A3B8" }}>Q{currentIdx + 1} of {EXAM_QUESTIONS}</span>
+                <span style={{ fontSize: 12, color: "#64748B" }}>Q{currentIdx + 1} of {EXAM_QUESTIONS}</span>
               </div>
 
               {/* DBQuestion text */}
-              <p style={{ fontSize: 16, fontWeight: 600, color: "#0F172A", lineHeight: 1.6, marginBottom: 20 }}>
+              <p style={{ fontSize: 16, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.6, marginBottom: 20 }}>
                 {currentQ.question}
               </p>
 
@@ -495,11 +495,11 @@ export default function OITWastewaterMockExam() {
                         padding: "14px 16px", borderRadius: 12, textAlign: "left",
                         border: selected ? "2px solid #0F766E" : "1.5px solid #E2E8F0",
                         background: selected ? "#F0FDFA" : "#FAFAFA",
-                        cursor: "pointer", fontFamily: "inherit", fontSize: 14, color: "#0F172A",
+                        cursor: "pointer", fontFamily: "inherit", fontSize: 14, color: "#FFFFFF",
                         transition: "all 0.15s",
                       }}
                     >
-                      <span style={{ marginRight: 10, fontWeight: 800, color: selected ? "#0F766E" : "#94A3B8" }}>
+                      <span style={{ marginRight: 10, fontWeight: 800, color: selected ? "#0F766E" : "#E2E8F0" }}>
                         {String.fromCharCode(65 + i)}.
                       </span>
                       {opt}
@@ -513,13 +513,13 @@ export default function OITWastewaterMockExam() {
                 <button
                   onClick={() => setCurrentIdx(i => Math.max(0, i - 1))}
                   disabled={currentIdx === 0}
-                  style={{ flex: 1, minWidth: 100, padding: "12px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: currentIdx === 0 ? "#CBD5E1" : "#0F172A", fontWeight: 700, fontSize: 14, cursor: currentIdx === 0 ? "not-allowed" : "pointer", fontFamily: "inherit" }}
+                  style={{ flex: 1, minWidth: 100, padding: "12px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: currentIdx === 0 ? "#94A3B8" : "#FFFFFF", fontWeight: 700, fontSize: 14, cursor: currentIdx === 0 ? "not-allowed" : "pointer", fontFamily: "inherit" }}
                 >
                   &laquo; Prev
                 </button>
                 <button
                   onClick={toggleFlag}
-                  style={{ padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${isFlagged ? "#D97706" : "#E2E8F0"}`, background: isFlagged ? "#FEF9C3" : "#fff", color: isFlagged ? "#A16207" : "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
+                  style={{ padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${isFlagged ? "#D97706" : "#94A3B8"}`, background: isFlagged ? "#FEF9C3" : "#fff", color: isFlagged ? "#A16207" : "#E2E8F0", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
                 >
                   {isFlagged ? "🚩 Flagged" : "🚩 Flag"}
                 </button>
@@ -545,7 +545,7 @@ export default function OITWastewaterMockExam() {
 
         {/* DBQuestion navigator */}
         <div style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 4 }}>
             {questions.map((_, i) => {
               const isAnswered = answers[i]?.selected !== null;
@@ -559,7 +559,7 @@ export default function OITWastewaterMockExam() {
                     padding: "6px 0", borderRadius: 6,
                     border: isCurrent ? "2px solid #0F766E" : "1px solid #E2E8F0",
                     background: isCurrent ? "#F0FDFA" : isFlaggedQ ? "#FEF9C3" : isAnswered ? "#DCFCE7" : "#F8FAFC",
-                    color: isCurrent ? "#0F766E" : isFlaggedQ ? "#A16207" : isAnswered ? "#15803D" : "#94A3B8",
+                    color: isCurrent ? "#0F766E" : isFlaggedQ ? "#A16207" : isAnswered ? "#15803D" : "#E2E8F0",
                     fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                   }}
                 >
@@ -572,7 +572,7 @@ export default function OITWastewaterMockExam() {
             {[
               { color: "#DCFCE7", textColor: "#15803D", label: "Answered" },
               { color: "#FEF9C3", textColor: "#A16207", label: "Flagged" },
-              { color: "#F8FAFC", textColor: "#94A3B8", label: "Unanswered" },
+              { color: "#F8FAFC", textColor: "#E2E8F0", label: "Unanswered" },
             ].map(({ color, textColor, label }) => (
               <div key={label} style={{ display: "flex", alignItems: "center", gap: 6 }}>
                 <div style={{ width: 12, height: 12, borderRadius: 3, background: color, border: "1px solid #E2E8F0" }} />

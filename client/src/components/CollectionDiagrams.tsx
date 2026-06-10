@@ -148,7 +148,7 @@ export function GravitySewerDiagram({ active, onClick, color }: DiagramProps) {
       <line x1={20} y1={80} x2={620} y2={80} stroke="#D1D5DB" strokeWidth={1} strokeDasharray="6 4" />
       <text x={30} y={74} fontSize={8} fill="#9CA3AF">GROUND LEVEL</text>
       {/* Pipe cross-section (left) */}
-      <circle cx={100} cy={140} r={40} fill="#F1F5F9" stroke="#059669" strokeWidth={2.5} />
+      <circle cx={100} cy={140} r={40} fill="#1E293B" stroke="#059669" strokeWidth={2.5} />
       {/* Partial fill indicator */}
       <path d="M 65 155 A 40 40 0 0 0 135 155 Z" fill="#BAE6FD" opacity={0.7} />
       <text x={100} y={138} textAnchor="middle" fontSize={8} fill="#059669" fontWeight="700">60% FULL</text>
@@ -197,7 +197,7 @@ export function ManholeDiagram({ active, onClick, color }: DiagramProps) {
       {/* Cone section */}
       <path d="M 155 58 L 130 100 L 270 100 L 245 58 Z" fill="#E5E7EB" stroke="#9CA3AF" strokeWidth={1.5} />
       {/* Barrel */}
-      <rect x={130} y={100} width={140} height={80} rx={4} fill="#F1F5F9" stroke="#9CA3AF" strokeWidth={2} />
+      <rect x={130} y={100} width={140} height={80} rx={4} fill="#1E293B" stroke="#9CA3AF" strokeWidth={2} />
       {/* Steps */}
       {[115, 130, 145, 160].map((y, i) => (
         <rect key={i} x={i % 2 === 0 ? 135 : 225} y={y} width={15} height={8} rx={2}
@@ -244,12 +244,12 @@ export function LiftStationDiagram({ active, onClick, color }: DiagramProps) {
       {/* Ground line */}
       <line x1={20} y1={65} x2={620} y2={65} stroke="#D1D5DB" strokeWidth={1} strokeDasharray="6 4" />
       {/* Wet well structure */}
-      <rect x={30} y={65} width={160} height={130} rx={6} fill="#F1F5F9" stroke="#374151" strokeWidth={2.5} />
+      <rect x={30} y={65} width={160} height={130} rx={6} fill="#1E293B" stroke="#374151" strokeWidth={2.5} />
       <text x={110} y={82} textAnchor="middle" fontSize={8} fill="#374151" fontWeight="700">WET WELL</text>
       {/* Sewage level */}
       <rect x={34} y={130} width={152} height={62} rx={4} fill="#BAE6FD" opacity={0.4} />
       {/* Level indicators */}
-      <line x1={185} y1={100} x2={185} y2={190} stroke="#94A3B8" strokeWidth={1} strokeDasharray="3 2" />
+      <line x1={185} y1={100} x2={185} y2={190} stroke="#E2E8F0" strokeWidth={1} strokeDasharray="3 2" />
       {[
         { y: 105, label: "HH ALARM", color: "#DC2626" },
         { y: 120, label: "H START", color: "#D97706" },
@@ -303,8 +303,8 @@ export function ForceMainDiagram({ active, onClick, color }: DiagramProps) {
     <svg viewBox="0 0 640 230" width="100%" height="auto">
       {/* Terrain profile */}
       <path d="M 20 140 Q 150 80 280 70 Q 400 60 520 120 L 620 120 L 620 200 L 20 200 Z"
-        fill="#E2E8F0" stroke="#CBD5E1" strokeWidth={1} opacity={0.5} />
-      <text x={50} y={165} fontSize={8} fill="#94A3B8">TERRAIN PROFILE</text>
+        fill="#94A3B8" stroke="#94A3B8" strokeWidth={1} opacity={0.5} />
+      <text x={50} y={165} fontSize={8} fill="#E2E8F0">TERRAIN PROFILE</text>
       {/* Force main pipe (follows terrain) */}
       <path d="M 20 135 Q 150 75 280 65 Q 400 55 520 115 L 620 115"
         stroke="#0F766E" strokeWidth={4} fill="none"

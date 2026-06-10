@@ -35,10 +35,10 @@ export default function ScoreHistory({ sessionId, examType, stream, calcOnly }: 
   if (isLoading) {
     return (
       <div style={{ background: "#fff", borderRadius: 20, padding: "24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
-        <div style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>📈 Your Score History</div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", marginBottom: 16 }}>📈 Your Score History</div>
         <div style={{ display: "flex", gap: 8 }}>
           {[1, 2, 3].map(i => (
-            <div key={i} style={{ flex: 1, height: 60, background: "#F1F5F9", borderRadius: 12, animation: "pulse 1.5s infinite" }} />
+            <div key={i} style={{ flex: 1, height: 60, background: "#FFFFFF", borderRadius: 12, animation: "pulse 1.5s infinite" }} />
           ))}
         </div>
       </div>
@@ -56,7 +56,7 @@ export default function ScoreHistory({ sessionId, examType, stream, calcOnly }: 
   const latest = history[0];
   const prev = history[1];
   let trendIcon = "";
-  let trendColor = "#64748B";
+  let trendColor = "#E2E8F0";
   if (prev) {
     const latestPct = latest.score / latest.total;
     const prevPct = prev.score / prev.total;
@@ -69,7 +69,7 @@ export default function ScoreHistory({ sessionId, examType, stream, calcOnly }: 
     <div style={{ background: "#fff", borderRadius: 20, padding: "24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <div style={{ fontSize: 14, fontWeight: 700, color: "#0F172A" }}>📈 Your Score History</div>
+          <div style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF" }}>📈 Your Score History</div>
           {calcOnly && (
             <span style={{ fontSize: 10, fontWeight: 700, color: "#7C3AED", background: "#F5F3FF", padding: "2px 8px", borderRadius: 6, border: "1px solid #DDD6FE" }}>🧮 Math Practice</span>
           )}
@@ -107,12 +107,12 @@ export default function ScoreHistory({ sessionId, examType, stream, calcOnly }: 
         })}
         {/* Fill empty slots so bars are consistent width */}
         {Array.from({ length: Math.max(0, 5 - sorted.length) }).map((_, i) => (
-          <div key={`empty-${i}`} style={{ flex: 1, height: 4, background: "#F1F5F9", borderRadius: "4px 4px 0 0" }} />
+          <div key={`empty-${i}`} style={{ flex: 1, height: 4, background: "#FFFFFF", borderRadius: "4px 4px 0 0" }} />
         ))}
       </div>
 
       {/* 70% pass line label */}
-      <div style={{ fontSize: 10, color: "#94A3B8", marginBottom: 12, textAlign: "right" }}>
+      <div style={{ fontSize: 10, color: "#64748B", marginBottom: 12, textAlign: "right" }}>
         Pass mark: 70% &nbsp;|&nbsp; Last {history.length} attempt{history.length !== 1 ? "s" : ""}
       </div>
 
@@ -165,7 +165,7 @@ export default function ScoreHistory({ sessionId, examType, stream, calcOnly }: 
                     </span>
                   )}
                 </div>
-                <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 2 }}>
+                <div style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>
                   {formatDate(r.createdAt)} &nbsp;·&nbsp; {formatTime(r.timeTakenSeconds)}
                   {r.stream && <span> &nbsp;·&nbsp; {r.stream.charAt(0).toUpperCase() + r.stream.slice(1)}</span>}
                   {r.calcOnly === "yes" && <span style={{ color: "#7C3AED", fontWeight: 600 }}> &nbsp;·&nbsp; 🧮 Math</span>}
@@ -174,7 +174,7 @@ export default function ScoreHistory({ sessionId, examType, stream, calcOnly }: 
 
               {/* Score bar */}
               <div style={{ width: 60, flexShrink: 0 }}>
-                <div style={{ height: 6, background: "#E2E8F0", borderRadius: 100 }}>
+                <div style={{ height: 6, background: "#94A3B8", borderRadius: 100 }}>
                   <div style={{
                     height: "100%",
                     width: `${pct * 100}%`,

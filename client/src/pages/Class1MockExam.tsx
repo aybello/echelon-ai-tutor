@@ -180,12 +180,12 @@ export default function Class1MockExam() {
   if (examState === "stream-select") {
     return (
       <PurchaseGate examType="class1-water" productKey="class1-water" productName="Class 1 Water Treatment Practice Pass" price={99}>
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath="/class1-mock" />
         <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px" }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <div style={{ fontSize: 48, marginBottom: 12 }}>📋</div>
-            <h1 style={{ fontSize: 28, fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>Class 1 Mock Exam</h1>
+            <h1 style={{ fontSize: 28, fontWeight: 800, color: "#FFFFFF", marginBottom: 8 }}>Class 1 Mock Exam</h1>
             <p style={{ color: "#64748B", fontSize: 16, lineHeight: 1.6 }}>
               100 questions · 2-hour timer · 70% to pass<br />
               Simulates the real EOCP/OWWCO Class 1 certification exam
@@ -239,7 +239,7 @@ export default function Class1MockExam() {
     const poolCount = stream === "water" ? waterCount : wwCount;
 
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath="/class1-mock" />
         <div style={{ maxWidth: 680, margin: "0 auto", padding: "40px 20px 80px" }}>
           {/* Header */}
@@ -260,21 +260,21 @@ export default function Class1MockExam() {
             ].map(stat => (
               <div key={stat.label} style={{ background: "#fff", borderRadius: 16, padding: "20px 16px", textAlign: "center", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
                 <div style={{ fontSize: 24, marginBottom: 6 }}>{stat.icon}</div>
-                <div style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>{stat.value}</div>
-                <div style={{ fontSize: 11, color: "#94A3B8", fontWeight: 600 }}>{stat.label}</div>
+                <div style={{ fontSize: 20, fontWeight: 800, color: "#FFFFFF", marginBottom: 2 }}>{stat.value}</div>
+                <div style={{ fontSize: 11, color: "#64748B", fontWeight: 600 }}>{stat.label}</div>
               </div>
             ))}
           </div>
 
           {/* Modules covered */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "20px 24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
-            <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", marginBottom: 12 }}>📚 Modules Covered</div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#FFFFFF", marginBottom: 12 }}>📚 Modules Covered</div>
             <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
               {cfg.modules.map(mod => (
                 <span key={mod} style={{ padding: "6px 14px", borderRadius: 100, background: cfg.bg, color: cfg.color, fontSize: 12, fontWeight: 700 }}>{mod}</span>
               ))}
             </div>
-            <div style={{ fontSize: 12, color: "#94A3B8", marginTop: 10 }}>
+            <div style={{ fontSize: 12, color: "#64748B", marginTop: 10 }}>
               Drawing from {poolCount} questions in the {cfg.label} bank
             </div>
           </div>
@@ -319,7 +319,7 @@ export default function Class1MockExam() {
                 padding: "14px 48px",
                 borderRadius: 20,
                 border: "none",
-                background: unlocked ? `linear-gradient(135deg, ${cfg.color}, #0F766E)` : "#CBD5E1",
+                background: unlocked ? `linear-gradient(135deg, ${cfg.color}, #0F766E)` : "#94A3B8",
                 color: "#fff",
                 fontSize: 15,
                 fontWeight: 700,
@@ -361,7 +361,7 @@ export default function Class1MockExam() {
     });
 
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath="/class1-mock" />
         <style>{`
           @media (max-width: 600px) {
@@ -410,7 +410,7 @@ export default function Class1MockExam() {
 
           {/* Module breakdown */}
           <div style={{ background: "#fff", borderRadius: 20, padding: "24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>📊 Module Breakdown</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", marginBottom: 16 }}>📊 Module Breakdown</div>
             {sortedModules.map(([mod, { correct, total }]) => {
               const pct = correct / total;
               const barColor = pct >= 0.7 ? "#059669" : pct >= 0.5 ? "#D97706" : "#DC2626";
@@ -420,7 +420,7 @@ export default function Class1MockExam() {
                     <span style={{ fontSize: 13, fontWeight: 600, color: "#374151" }}>{mod}</span>
                     <span style={{ fontSize: 12, fontWeight: 700, color: barColor }}>{correct}/{total} ({Math.round(pct * 100)}%)</span>
                   </div>
-                  <div style={{ height: 8, background: "#F1F5F9", borderRadius: 100 }}>
+                  <div style={{ height: 8, background: "#FFFFFF", borderRadius: 100 }}>
                     <div style={{ height: "100%", width: `${pct * 100}%`, background: barColor, borderRadius: 100, transition: "width 0.6s ease" }} />
                   </div>
                 </div>
@@ -435,7 +435,7 @@ export default function Class1MockExam() {
           <div style={{ background: "#fff", borderRadius: 20, padding: "20px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
             <button
               onClick={() => setShowReview(!showReview)}
-              style={{ width: "100%", padding: "12px", borderRadius: 12, border: "none", background: "#F8FAFC", color: "#374151", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+              style={{ width: "100%", padding: "12px", borderRadius: 12, border: "none", background: "#FFFFFF", color: "#374151", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
             >
               {showReview ? "▲ Hide DBQuestion Review" : "▼ Show All Questions & Explanations"}
             </button>
@@ -449,8 +449,8 @@ export default function Class1MockExam() {
                       <div style={{ display: "flex", gap: 8, marginBottom: 8, alignItems: "flex-start" }}>
                         <span style={{ fontSize: 16 }}>{isCorrect ? "✓" : "✗"}</span>
                         <div>
-                          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 4 }}>Q{i + 1} · {q.module} · {q.difficulty}</div>
-                          <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>{(q as any).question}</div>
+                          <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", marginBottom: 4 }}>Q{i + 1} · {q.module} · {q.difficulty}</div>
+                          <div style={{ fontSize: 13, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.5 }}>{(q as any).question}</div>
                         </div>
                       </div>
                       {!isCorrect && userAns !== null && (
@@ -498,7 +498,7 @@ export default function Class1MockExam() {
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         @keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
         .opt-btn:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
@@ -517,8 +517,8 @@ export default function Class1MockExam() {
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <div style={{ width: 32, height: 32, borderRadius: 8, background: `linear-gradient(135deg, ${cfg.color}, #0F766E)`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800, color: "#fff" }}>E</div>
           <div>
-            <div style={{ fontSize: 11, fontWeight: 800, color: "#0F172A" }}>{cfg.label.toUpperCase()} MOCK EXAM</div>
-            <div style={{ fontSize: 10, color: "#94A3B8" }}>DBQuestion {currentIdx + 1} of {EXAM_QUESTIONS}</div>
+            <div style={{ fontSize: 11, fontWeight: 800, color: "#FFFFFF" }}>{cfg.label.toUpperCase()} MOCK EXAM</div>
+            <div style={{ fontSize: 10, color: "#64748B" }}>DBQuestion {currentIdx + 1} of {EXAM_QUESTIONS}</div>
           </div>
         </div>
         <div className="c1mock-header-right" style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -548,14 +548,14 @@ export default function Class1MockExam() {
       </div>
 
       {/* Progress bar */}
-      <div style={{ height: 3, background: "#E2E8F0" }}>
+      <div style={{ height: 3, background: "#94A3B8" }}>
         <div style={{ height: "100%", width: `${((currentIdx + 1) / EXAM_QUESTIONS) * 100}%`, background: `linear-gradient(90deg, ${cfg.color}, #0F766E)`, transition: "width 0.3s ease" }} />
       </div>
 
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "24px 20px 80px" }}>
         {/* DBQuestion navigator */}
         <div style={{ background: "#fff", borderRadius: 16, padding: "16px 20px", marginBottom: 16, boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
           <div className="c1mock-nav-grid" style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
             {questions.map((_, i) => {
               const ans = answers[i]?.selected;
@@ -571,7 +571,7 @@ export default function Class1MockExam() {
                     width: 30, height: 30, borderRadius: 8,
                     border: isCurr ? `2px solid ${cfg.color}` : "1px solid #E2E8F0",
                     background: isFlaggedQ ? "#FEF9C3" : isCurr ? cfg.bg : isAnswered ? "#DCFCE7" : "#F8FAFC",
-                    color: isCurr ? cfg.color : isAnswered ? "#15803D" : "#94A3B8",
+                    color: isCurr ? cfg.color : isAnswered ? "#15803D" : "#E2E8F0",
                     fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                     transition: "all 0.15s",
                   }}
@@ -583,13 +583,13 @@ export default function Class1MockExam() {
           </div>
           <div style={{ display: "flex", gap: 16, marginTop: 10, flexWrap: "wrap" }}>
             {[
-              { color: "#DCFCE7", border: "#E2E8F0", label: "Answered" },
-              { color: "#F8FAFC", border: "#E2E8F0", label: "Unanswered" },
-              { color: "#FEF9C3", border: "#E2E8F0", label: "Flagged" },
+              { color: "#DCFCE7", border: "#94A3B8", label: "Answered" },
+              { color: "#F8FAFC", border: "#94A3B8", label: "Unanswered" },
+              { color: "#FEF9C3", border: "#94A3B8", label: "Flagged" },
             ].map(l => (
               <div key={l.label} style={{ display: "flex", alignItems: "center", gap: 6 }}>
                 <div style={{ width: 12, height: 12, borderRadius: 3, background: l.color, border: `1px solid ${l.border}` }} />
-                <span style={{ fontSize: 10, color: "#94A3B8" }}>{l.label}</span>
+                <span style={{ fontSize: 10, color: "#64748B" }}>{l.label}</span>
               </div>
             ))}
           </div>
@@ -605,17 +605,17 @@ export default function Class1MockExam() {
               background: (currentQ.difficulty ?? 'medium') === "easy" ? "#DCFCE7" : (currentQ.difficulty ?? 'medium') === "medium" ? "#FEF9C3" : "#FEE2E2",
               color: (currentQ.difficulty ?? 'medium') === "easy" ? "#15803D" : (currentQ.difficulty ?? 'medium') === "medium" ? "#A16207" : "#B91C1C",
             }}>{(currentQ.difficulty ?? 'medium')}</span>
-            <span style={{ padding: "4px 10px", borderRadius: 100, background: "#F1F5F9", color: "#64748B", fontSize: 11, fontWeight: 600 }}>Q{currentIdx + 1}/{EXAM_QUESTIONS}</span>
+            <span style={{ padding: "4px 10px", borderRadius: 100, background: "#FFFFFF", color: "#64748B", fontSize: 11, fontWeight: 600 }}>Q{currentIdx + 1}/{EXAM_QUESTIONS}</span>
             <button
               onClick={toggleFlag}
-              style={{ marginLeft: "auto", padding: "4px 12px", borderRadius: 100, border: `1px solid ${isFlagged ? "#D97706" : "#E5E7EB"}`, background: isFlagged ? "#FFFBEB" : "transparent", color: isFlagged ? "#D97706" : "#94A3B8", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
+              style={{ marginLeft: "auto", padding: "4px 12px", borderRadius: 100, border: `1px solid ${isFlagged ? "#D97706" : "#E5E7EB"}`, background: isFlagged ? "#FFFBEB" : "transparent", color: isFlagged ? "#D97706" : "#E2E8F0", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
             >
               {isFlagged ? "🚩 Flagged" : "🏳 Flag"}
             </button>
           </div>
 
           {/* DBQuestion text */}
-          <div style={{ fontSize: 17, fontWeight: 600, color: "#0F172A", lineHeight: 1.65, marginBottom: 24 }}>
+          <div style={{ fontSize: 17, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.65, marginBottom: 24 }}>
             {currentQ.question}
           </div>
 
@@ -649,7 +649,7 @@ export default function Class1MockExam() {
                     width: 28, height: 28, borderRadius: "50%", flexShrink: 0,
                     border: isSelected ? `2px solid ${cfg.color}` : "1.5px solid #CBD5E1",
                     background: isSelected ? cfg.color : "#fff",
-                    color: isSelected ? "#fff" : "#94A3B8",
+                    color: isSelected ? "#fff" : "#E2E8F0",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     fontSize: 12, fontWeight: 800,
                   }}>
@@ -666,11 +666,11 @@ export default function Class1MockExam() {
             <button
               onClick={() => setCurrentIdx(Math.max(0, currentIdx - 1))}
               disabled={currentIdx === 0}
-              style={{ padding: "10px 24px", borderRadius: 20, border: "1px solid #E5E7EB", background: "transparent", color: currentIdx === 0 ? "#CBD5E1" : "#374151", fontSize: 13, fontWeight: 600, cursor: currentIdx === 0 ? "not-allowed" : "pointer", fontFamily: "inherit" }}
+              style={{ padding: "10px 24px", borderRadius: 20, border: "1px solid #E5E7EB", background: "transparent", color: currentIdx === 0 ? "#94A3B8" : "#374151", fontSize: 13, fontWeight: 600, cursor: currentIdx === 0 ? "not-allowed" : "pointer", fontFamily: "inherit" }}
             >
               ← Previous
             </button>
-            <span style={{ fontSize: 12, color: "#94A3B8" }}>
+            <span style={{ fontSize: 12, color: "#64748B" }}>
               {currentAnswer !== null ? "✓ Answered" : "Not answered"}
             </span>
             {currentIdx < EXAM_QUESTIONS - 1 ? (

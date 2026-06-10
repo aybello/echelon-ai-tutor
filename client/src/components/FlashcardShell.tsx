@@ -278,8 +278,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         .fc-mod-tab.active { border-color: #3b82f6; }
         .fc-act-btn { border: none; border-radius: 12px; padding: 14px 20px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.15s; flex: 1; }
         .fc-act-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-        .fc-nav-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
-        .fc-nav-btn:hover { background: rgba(255,255,255,0.2); }
+        .fc-nav-btn { background: rgba(0,0,0,0.09); border: 1px solid rgba(0,0,0,0.14); color: #fff; border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+        .fc-nav-btn:hover { background: rgba(0,0,0,0.14); }
         .fc-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
         @media (max-width: 640px) {
           .fc-face { padding: 24px 20px; min-height: 240px; }
@@ -296,10 +296,10 @@ export default function FlashcardShell({ questions, examName, examType, backPath
       `}</style>
 
       {/* Header */}
-      <div className="fc-header" style={{ background: "rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.1)", padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
+      <div className="fc-header" style={{ background: "rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(0,0,0,0.09)", padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "12px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <Link href={backPath}>
-            <button style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", cursor: "pointer" }}>
+            <button style={{ background: "rgba(0,0,0,0.09)", border: "1px solid rgba(0,0,0,0.14)", color: "#fff", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", cursor: "pointer" }}>
               Back
             </button>
           </Link>
@@ -311,9 +311,9 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <span style={{ color: "#94a3b8", fontSize: "13px" }}>
             <span style={{ color: "#22c55e", fontWeight: 700 }}>{knownCount}</span> known
-            {email && <span style={{ color: "#475569", marginLeft: 6, fontSize: "11px" }}>· saved</span>}
+            {email && <span style={{ color: "#64748B", marginLeft: 6, fontSize: "11px" }}>· saved</span>}
           </span>
-          <button onClick={handleShuffle} style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", cursor: "pointer" }}>
+          <button onClick={handleShuffle} style={{ background: "rgba(0,0,0,0.09)", border: "1px solid rgba(0,0,0,0.14)", color: "#fff", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", cursor: "pointer" }}>
             Shuffle
           </button>
         </div>
@@ -324,7 +324,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         <div className="fc-module-row" style={{ padding: "12px 24px", overflowX: "auto", display: "flex", gap: "8px", alignItems: "center" }}>
           <span
             className={"fc-mod-tab" + (selectedModule === null ? " active" : "")}
-            style={{ background: selectedModule === null ? "#1e40af" : "rgba(255,255,255,0.1)", color: "#fff" }}
+            style={{ background: selectedModule === null ? "#1e40af" : "rgba(0,0,0,0.09)", color: "#fff" }}
             onClick={() => handleModuleChange(null)}
           >
             All Modules
@@ -333,7 +333,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             <span
               key={mod}
               className={"fc-mod-tab" + (selectedModule === mod ? " active" : "")}
-              style={{ background: selectedModule === mod ? "#1e40af" : "rgba(255,255,255,0.1)", color: "#fff" }}
+              style={{ background: selectedModule === mod ? "#1e40af" : "rgba(0,0,0,0.09)", color: "#fff" }}
               onClick={() => handleModuleChange(mod)}
             >
               {mod}
@@ -344,7 +344,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
 
       {/* Progress bar */}
       <div className="fc-progress-row" style={{ padding: "0 24px 8px" }}>
-        <div style={{ background: "rgba(255,255,255,0.1)", borderRadius: "4px", height: "6px", overflow: "hidden" }}>
+        <div style={{ background: "rgba(0,0,0,0.09)", borderRadius: "4px", height: "6px", overflow: "hidden" }}>
           <div style={{ background: "linear-gradient(90deg, #3b82f6, #06b6d4)", height: "100%", width: progress + "%", transition: "width 0.3s ease", borderRadius: "4px" }} />
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: "4px" }}>
@@ -369,7 +369,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
               {/* Front */}
               <div className="fc-face fc-front">
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
-                  <span style={{ background: "#f1f5f9", color: "#475569", borderRadius: "8px", padding: "4px 10px", fontSize: "12px", fontWeight: 600 }}>
+                  <span style={{ background: "#f1f5f9", color: "#64748B", borderRadius: "8px", padding: "4px 10px", fontSize: "12px", fontWeight: 600 }}>
                     {card.module}
                   </span>
                   <span style={{ background: diffStyle.bg, color: diffStyle.fg, borderRadius: "8px", padding: "4px 10px", fontSize: "12px", fontWeight: 600 }}>
@@ -386,7 +386,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
               {/* Back */}
               <div className="fc-face fc-back">
                 <div style={{ marginBottom: "12px" }}>
-                  <span style={{ background: "rgba(255,255,255,0.15)", color: "#93c5fd", borderRadius: "8px", padding: "4px 10px", fontSize: "12px", fontWeight: 600 }}>
+                  <span style={{ background: "rgba(0,0,0,0.12)", color: "#93c5fd", borderRadius: "8px", padding: "4px 10px", fontSize: "12px", fontWeight: 600 }}>
                     Correct Answer
                   </span>
                 </div>
@@ -435,7 +435,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           <div style={{ background: "#fff", borderRadius: "20px", padding: "40px 36px", maxWidth: "440px", width: "100%", textAlign: "center", boxShadow: "0 24px 80px rgba(0,0,0,0.5)" }}>
             <div style={{ fontSize: "48px", marginBottom: "12px" }}>🃏</div>
             <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#0f172a", margin: "0 0 10px" }}>You've previewed {limit} free cards!</h2>
-            <p style={{ color: "#475569", fontSize: "14px", lineHeight: 1.6, marginBottom: "24px" }}>
+            <p style={{ color: "#64748B", fontSize: "14px", lineHeight: 1.6, marginBottom: "24px" }}>
               Unlock the full <strong>{examName}</strong> flashcard deck — {questions.length}+ cards with spaced repetition, module filters, and progress tracking.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -446,12 +446,12 @@ export default function FlashcardShell({ questions, examName, examType, backPath
               </Link>
               <button
                 onClick={() => setPaywallDismissed(true)}
-                style={{ width: "100%", padding: "12px 20px", borderRadius: "12px", border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}
+                style={{ width: "100%", padding: "12px 20px", borderRadius: "12px", border: "1.5px solid #CBD5E1", background: "#FFFFFF", color: "#374151", fontSize: "13px", fontWeight: 600, cursor: "pointer" }}
               >
                 🔄 Try {limit} More Free Cards
               </button>
               <Link href="/pricing">
-                <button style={{ width: "100%", padding: "10px 20px", borderRadius: "12px", border: "none", background: "transparent", color: "#94A3B8", fontSize: "12px", cursor: "pointer" }}>
+                <button style={{ width: "100%", padding: "10px 20px", borderRadius: "12px", border: "none", background: "transparent", color: "#64748B", fontSize: "12px", cursor: "pointer" }}>
                   📋 View All Courses & Pricing
                 </button>
               </Link>
@@ -467,7 +467,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             Prev
           </button>
           <button
-            style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#94a3b8", borderRadius: "10px", padding: "10px 20px", fontSize: "13px", cursor: "pointer" }}
+            style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(0,0,0,0.09)", color: "#94a3b8", borderRadius: "10px", padding: "10px 20px", fontSize: "13px", cursor: "pointer" }}
             onClick={() => { if (!showPaywall) { setFlipped(f => { if (!f) setTotalFlips(n => n + 1); return !f; }); } }}
           >
             {flipped ? "Show Question" : "Show Answer"}
