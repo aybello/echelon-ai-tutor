@@ -120,6 +120,16 @@ export default function Admin() {
   const purchasesQ = trpc.admin.getPurchases.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "revenue" });
   const healthQ = trpc.admin.getSystemHealth.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "health", refetchInterval: 60_000 });
   const feedbackQ = trpc.admin.getFeedback.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "feedback" });
+  const reconcileSubs = trpc.admin.reconcileSubscriptions.useMutation({
+    onSuccess: (data) => {
+      if (data.recovered > 0) {
+        alert(`Subscription backfill complete. Recovered ${data.recovered} missing subscription(s): ${data.details.map((d: any) => `${d.email} → ${d.tier} (${d.province})`).join(", ")}`);
+      } else {
+        alert(`All subscriptions are already in sync. Skipped: ${data.skipped}. No missing records found.`);
+      }
+    },
+    onError: (err) => alert(`Subscription reconciliation failed: ${err.message}`),
+  });
   const reconcile = trpc.admin.reconcilePurchases.useMutation({
     onSuccess: (data) => {
       purchasesQ.refetch();
@@ -569,6 +579,15 @@ export default function Admin() {
                   style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(99,102,241,0.4)", background: "rgba(99,102,241,0.15)", color: "#A5B4FC", cursor: reconcile.isPending ? "not-allowed" : "pointer", opacity: reconcile.isPending ? 0.6 : 1, fontFamily: "inherit" }}
                 >
                   {reconcile.isPending ? "Syncing..." : "Sync Stripe (48h)"}
+                </button>
+                <button
+                  className="admin-btn"
+                  onClick={() => reconcileSubs.mutate()}
+                  disabled={reconcileSubs.isPending}
+                  title="Backfill any subscriptions dropped by the period-end bug. Safe to run multiple times — idempotent."
+                  style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(52,211,153,0.4)", background: "rgba(52,211,153,0.12)", color: "#34D399", cursor: reconcileSubs.isPending ? "not-allowed" : "pointer", opacity: reconcileSubs.isPending ? 0.6 : 1, fontFamily: "inherit" }}
+                >
+                  {reconcileSubs.isPending ? "Syncing..." : "Sync Subscriptions"}
                 </button>
               </div>
             </div>

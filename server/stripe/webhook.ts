@@ -9,6 +9,7 @@ import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type Subscri
 import { PRODUCT_STUDY_PATHS } from "./products";
 import { eq, and } from "drizzle-orm";
 import { normalizeEmail } from "../_core/access";
+import { getSubscriptionPeriod } from "./subscriptionPeriod";
 
 
 export function registerStripeWebhook(app: Express) {
@@ -198,8 +199,7 @@ export function registerStripeWebhook(app: Express) {
           const stripeSubscriptionId = sub.id;
           const stripeCustomerId = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
           const status = sub.status === "active" ? "active" : sub.status === "past_due" ? "past_due" : "cancelled";
-          const currentPeriodStart = sub.current_period_start ? new Date(sub.current_period_start * 1000) : null;
-          const currentPeriodEnd = sub.current_period_end ? new Date(sub.current_period_end * 1000) : null;
+          const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(sub);
 
           if (!tier || !province || !currentPeriodEnd) {
             // ALERTING: Notify owner immediately so they can manually patch the subscription
@@ -304,7 +304,8 @@ export function registerStripeWebhook(app: Express) {
             if (!db) throw new Error("Database unavailable");
             // Fetch the latest subscription period from Stripe to update our record
             const stripeSub = await stripe.subscriptions.retrieve(stripeSubscriptionId) as any;
-            const currentPeriodEnd = new Date(stripeSub.current_period_end * 1000);
+            const { currentPeriodEnd } = getSubscriptionPeriod(stripeSub);
+            if (!currentPeriodEnd) throw new Error(`Could not resolve currentPeriodEnd for subscription ${stripeSubscriptionId}`);
             await db
               .update(subscriptions)
               .set({ status: "active", currentPeriodEnd })

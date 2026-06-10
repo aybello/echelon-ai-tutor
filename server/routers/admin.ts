@@ -11,6 +11,7 @@ import { adminProcedure, router } from "../_core/trpc";
 import { sendPurchaseConfirmationEmail } from "../email";
 import { PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { runTriggerEngine } from "../jobs/triggerEngine";
+import { runSubscriptionReconciliation } from "../jobs/reconcile";
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -259,6 +260,21 @@ export const adminRouter = router({
         recovered: recovered.length,
         skipped: skipped.length,
         details: recovered,
+      };
+    }),
+
+  /**
+   * Backfill subscriptions dropped by the period-end bug.
+   * Idempotent — safe to run multiple times.
+   */
+  reconcileSubscriptions: adminProcedure
+    .mutation(async () => {
+      const result = await runSubscriptionReconciliation();
+      return {
+        recovered: result.recovered,
+        skipped: result.skipped,
+        errors: result.errors,
+        details: result.details,
       };
     }),
 

@@ -6,7 +6,10 @@ import Stripe from "stripe";
 import { withRetry } from "./retry";
 import { eq } from "drizzle-orm";
 import { getDb } from "../db";
-import { purchases, users } from "../../drizzle/schema";
+import { purchases, users, subscriptions } from "../../drizzle/schema";
+import { normalizeEmail } from "../_core/access";
+import { getSubscriptionPeriod } from "../stripe/subscriptionPeriod";
+import { type SubscriptionTier as ST, type SubscriptionProvince as SP } from "../stripe/subscriptionProducts";
 import { sendPurchaseConfirmationEmail } from "../email";
 import { PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { notifyOwner } from "../_core/notification";
@@ -132,6 +135,106 @@ export async function runReconciliation(hoursBack: number = 48): Promise<Reconci
   }
 
   return { recovered: recovered.length, skipped: skipped.length, details: recovered, errors };
+}
+
+export interface SubscriptionReconcileResult {
+  recovered: number;
+  skipped: number;
+  errors: string[];
+  details: { email: string; tier: string; province: string; stripeSubscriptionId: string }[];
+}
+
+/**
+ * Backfill subscriptions that were dropped due to the period-end bug
+ * (Stripe API 2026-03-25.dahlia moved current_period_end onto subscription items).
+ *
+ * Pages through ALL Stripe subscriptions (status: "all"), skips any that already
+ * exist in the DB by stripeSubscriptionId, and inserts the missing rows.
+ * Safe to run multiple times — idempotent by stripeSubscriptionId.
+ */
+export async function runSubscriptionReconciliation(): Promise<SubscriptionReconcileResult> {
+  const stripe = getStripe();
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+
+  const recovered: SubscriptionReconcileResult["details"] = [];
+  const skipped: string[] = [];
+  const errors: string[] = [];
+
+  let hasMore = true;
+  let startingAfter: string | undefined;
+
+  while (hasMore) {
+    const params: Stripe.SubscriptionListParams = { status: "all", limit: 100 };
+    if (startingAfter) params.starting_after = startingAfter;
+    const page = await stripe.subscriptions.list(params);
+
+    for (const sub of page.data) {
+      try {
+        const tier = sub.metadata?.subscription_tier as ST | undefined;
+        const province = sub.metadata?.subscription_province as SP | undefined;
+        if (!tier || !province) {
+          skipped.push(`${sub.id}: missing tier/province metadata`);
+          continue;
+        }
+
+        // Resolve email from Stripe customer
+        const stripeCustomerId = typeof sub.customer === "string" ? sub.customer : (sub.customer as any)?.id;
+        let email: string | null = null;
+        if (stripeCustomerId) {
+          try {
+            const customer = await stripe.customers.retrieve(stripeCustomerId) as any;
+            email = normalizeEmail(customer.email);
+          } catch (e) { /* ignore */ }
+        }
+        if (!email) {
+          skipped.push(`${sub.id}: could not resolve email for customer ${stripeCustomerId}`);
+          continue;
+        }
+
+        const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(sub);
+        if (!currentPeriodEnd) {
+          skipped.push(`${sub.id}: could not resolve currentPeriodEnd`);
+          continue;
+        }
+
+        // Skip if already in DB (idempotent)
+        const existing = await db
+          .select({ id: subscriptions.id })
+          .from(subscriptions)
+          .where(eq(subscriptions.stripeSubscriptionId, sub.id))
+          .limit(1);
+        if (existing.length > 0) {
+          skipped.push(`${sub.id}: already in DB`);
+          continue;
+        }
+
+        const status = sub.status === "active" ? "active" : sub.status === "past_due" ? "past_due" : "cancelled";
+
+        await db.insert(subscriptions).values({
+          email,
+          tier,
+          province,
+          stripeSubscriptionId: sub.id,
+          stripeCustomerId,
+          status,
+          currentPeriodStart,
+          currentPeriodEnd,
+        });
+
+        recovered.push({ email, tier, province, stripeSubscriptionId: sub.id });
+        console.log(`[reconcile-sub] Recovered: ${email} → ${tier} (${province}) expires ${currentPeriodEnd.toISOString()}`);
+      } catch (err: any) {
+        errors.push(`${sub.id}: ${err.message}`);
+        console.error(`[reconcile-sub] Error processing subscription ${sub.id}:`, err.message);
+      }
+    }
+
+    hasMore = page.has_more;
+    if (page.data.length > 0) startingAfter = page.data[page.data.length - 1].id;
+  }
+
+  return { recovered: recovered.length, skipped: skipped.length, errors, details: recovered };
 }
 
 /**
