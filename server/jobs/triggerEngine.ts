@@ -555,27 +555,54 @@ export async function runTriggerEngine(): Promise<{
       const emailBody = await generateEmailBody(trigger, firstName);
       const emailHtml = wrapEmailHtml(emailBody, trigger.subject);
 
-      // Send email
-      await transporter.sendMail({
-        from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
-        to: email,
-        subject: trigger.subject,
-        text: emailBody,
-        html: emailHtml,
-      });
-
-      // Log the trigger
+      // Issue R: reserve the cooldown BEFORE sending.
+      // This prevents duplicate sends if sendMail throws — the next engine run
+      // will see the 'pending' or 'failed' row and respect the cooldown.
       const cooldownUntil = new Date(
         now.getTime() + trigger.cooldownDays * 24 * 60 * 60 * 1000
       );
-      await db.insert(triggerLogs).values({
+      const [insertResult] = await db.insert(triggerLogs).values({
         userId: userId ?? null,
         studentEmail: studentEmail ?? null,
         triggerType: trigger.type,
         emailSubject: trigger.subject,
         emailBodyPreview: emailBody.slice(0, 200),
         cooldownUntil,
+        status: "pending",
       });
+      const logId = (insertResult as { insertId?: number })?.insertId ?? null;
+
+      // Send email
+      let sendError: Error | null = null;
+      try {
+        await transporter.sendMail({
+          from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
+          to: email,
+          subject: trigger.subject,
+          text: emailBody,
+          html: emailHtml,
+        });
+      } catch (err) {
+        sendError = err as Error;
+      }
+
+      // Update status to 'sent' or 'failed'
+      if (logId) {
+        await db
+          .update(triggerLogs)
+          .set({ status: sendError ? "failed" : "sent" })
+          .where(eq(triggerLogs.id, logId));
+      }
+
+      if (sendError) {
+        // Cooldown is already claimed — log the failure but don't rethrow
+        // (the outer catch would also claim the error, but we want the cooldown to persist)
+        const identifier = userId ? `userId=${userId}` : `email=${email}`;
+        const msg = `${identifier}: sendMail failed — ${sendError.message}`;
+        errors.push(msg);
+        console.error(`[TriggerEngine] SMTP error for ${msg}`);
+        continue;
+      }
 
       sent++;
       console.log(

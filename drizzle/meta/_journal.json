@@ -218,6 +218,20 @@
       "when": 1781110917784,
       "tag": "0030_stormy_grim_reaper",
       "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "5",
+      "when": 1781111730780,
+      "tag": "0031_warm_callisto",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "5",
+      "when": 1781111809799,
+      "tag": "0032_tiny_red_hulk",
+      "breakpoints": true
     }
   ]
 }

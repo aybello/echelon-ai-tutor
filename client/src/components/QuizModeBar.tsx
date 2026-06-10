@@ -3,6 +3,7 @@
  * Inspired by PocketPrep: icon cards in a horizontal row, not a floating pill bar.
  * Pass the return value of <QuizModeBar ... /> into QuizShell's `headerExtra` prop.
  */
+import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 
@@ -186,6 +187,11 @@ export default function QuizModeBar({
 export function useAttemptLogger(examType: string, quizMode: QuizMode = "standard") {
   const logAttempt = trpc.quiz.logAttempt.useMutation();
 
+  // Issue Q: generate a stable UUID for this quiz session so all attempts
+  // from the same session share a sessionId. Initialized once per hook mount
+  // (i.e. once per quiz page load) and never changes during the session.
+  const [sessionId] = useState(() => crypto.randomUUID());
+
   return function log(params: {
     topic: string;
     questionId: number;
@@ -210,6 +216,7 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
       difficulty: params.difficulty ?? undefined,
       quizMode,
       studentEmail,
+      sessionId,
     });
   };
 }

@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
+import { index, int, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -177,8 +177,17 @@ export const questionAttempts = mysqlTable("question_attempts", {
   correct: mysqlEnum("correct", ["yes", "no"]).notNull(),
   difficulty: varchar("difficulty", { length: 16 }), // 'easy' | 'medium' | 'hard'
   quizMode: varchar("quizMode", { length: 32 }).default("standard"), // 'standard' | 'quick10' | 'missed' | 'qotd'
+  /** Issue Q: client-generated UUID identifying the quiz session this attempt belongs to.
+   *  Nullable for historic rows; new rows always include it. */
+  sessionId: varchar("sessionId", { length: 36 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-});
+}, (t) => [
+  // Issue O: composite indexes for the frequent userId/studentEmail + createdAt filter pattern
+  index("qa_userid_createdat_idx").on(t.userId, t.createdAt),
+  index("qa_email_createdat_idx").on(t.studentEmail, t.createdAt),
+  // Issue Q: index for GROUP BY sessionId queries in recentSessions
+  index("qa_sessionid_idx").on(t.sessionId),
+]);
 export type QuestionAttempt = typeof questionAttempts.$inferSelect;
 export type InsertQuestionAttempt = typeof questionAttempts.$inferInsert;
 
@@ -318,7 +327,16 @@ export const triggerLogs = mysqlTable("trigger_logs", {
   emailBodyPreview: text("emailBodyPreview"), // first 200 chars of the email body for admin review
   sentAt: timestamp("sentAt").defaultNow().notNull(),
   cooldownUntil: timestamp("cooldownUntil").notNull(), // don't send same trigger type again until this date
-});
+  /** Issue R: written BEFORE sendMail so cooldown is claimed even on SMTP failure.
+   *  'pending' → row reserved, send in progress
+   *  'sent'    → sendMail succeeded
+   *  'failed'  → sendMail threw; cooldown still applies to prevent duplicate sends */
+  status: varchar("status", { length: 16 }).notNull().default("sent"),
+}, (t) => [
+  // Issue O: composite index for the two cooldown queries (userId + sentAt, userId + triggerType + sentAt)
+  index("trigger_logs_userid_sentat_idx").on(t.userId, t.sentAt),
+  index("trigger_logs_email_sentat_idx").on(t.studentEmail, t.sentAt),
+]);
 
 export type TriggerLog = typeof triggerLogs.$inferSelect;
 export type InsertTriggerLog = typeof triggerLogs.$inferInsert;

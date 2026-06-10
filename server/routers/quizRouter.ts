@@ -295,6 +295,8 @@ export const quizRouter = router({
         quizMode: z.enum(["standard", "quick10", "missed", "qotd"]).default("standard"),
         guestToken: z.string().max(64).optional(),
         studentEmail: z.string().email().optional(), // purchase/trial email for non-OAuth users
+        /** Issue Q: client-generated UUID for the quiz session. Nullable for legacy clients. */
+        sessionId: z.string().uuid().optional().nullable(),
       })
     )
     .mutation(async ({ input, ctx }) => {
@@ -318,6 +320,7 @@ export const quizRouter = router({
           correct: input.correct ? "yes" : "no",
           difficulty: input.difficulty ?? null,
           quizMode: input.quizMode,
+          sessionId: input.sessionId ?? null,
         });
 
         // Update student profile if authenticated (OAuth user) or email-verified (OTP session)

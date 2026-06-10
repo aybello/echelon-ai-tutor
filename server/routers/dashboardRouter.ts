@@ -272,13 +272,46 @@ export const dashboardRouter = router({
 
   /**
    * Recent sessions — last 10 quiz sessions
+   *
+   * Issue Q: rewritten to use GROUP BY sessionId for rows that have a sessionId
+   * (all new rows). Legacy rows (sessionId IS NULL) fall back to the original
+   * 30-minute gap clustering so old data still renders correctly.
    */
   recentSessions: publicProcedure.query(async ({ ctx }) => {
     const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return [];
 
-    const rows = await db
+    // ── Path 1: new rows with sessionId ───────────────────────────────────────────────────────────────────────
+    const groupedRows = await db
+      .select({
+        sessionId: questionAttempts.sessionId,
+        examType: questionAttempts.examType,
+        quizMode: questionAttempts.quizMode,
+        startedAt: sql<Date>`MIN(${questionAttempts.createdAt})`,
+        total: sql<number>`COUNT(*)`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+      })
+      .from(questionAttempts)
+      .where(and(attemptsWhere(userId, email), sql`${questionAttempts.sessionId} IS NOT NULL`))
+      .groupBy(questionAttempts.sessionId, questionAttempts.examType, questionAttempts.quizMode)
+      .orderBy(desc(sql`MIN(${questionAttempts.createdAt})`))
+      .limit(10);
+
+    const sessionedResults = groupedRows.map((r) => ({
+      examType: r.examType,
+      quizMode: r.quizMode ?? null,
+      startedAt: new Date(r.startedAt).toISOString(),
+      total: Number(r.total),
+      correct: Number(r.correct),
+      accuracy: Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0,
+    }));
+
+    // If we already have 10 sessioned results, return them immediately
+    if (sessionedResults.length >= 10) return sessionedResults;
+
+    // ── Path 2: legacy rows (sessionId IS NULL) — 30-minute gap clustering fallback ───────────────────
+    const legacyRows = await db
       .select({
         examType: questionAttempts.examType,
         correct: questionAttempts.correct,
@@ -286,11 +319,11 @@ export const dashboardRouter = router({
         quizMode: questionAttempts.quizMode,
       })
       .from(questionAttempts)
-      .where(attemptsWhere(userId, email))
+      .where(and(attemptsWhere(userId, email), sql`${questionAttempts.sessionId} IS NULL`))
       .orderBy(desc(questionAttempts.createdAt))
       .limit(200);
 
-    const sessions: Array<{
+    const legacySessions: Array<{
       examType: string;
       quizMode: string | null;
       startedAt: string;
@@ -308,7 +341,7 @@ export const dashboardRouter = router({
       correct: number;
     } | null = null;
 
-    const sorted = [...rows].reverse();
+    const sorted = [...legacyRows].reverse();
     for (const row of sorted) {
       const ts = new Date(row.createdAt);
       const isCorrect = row.correct === "yes";
@@ -323,7 +356,7 @@ export const dashboardRouter = router({
         currentSession.lastAt = ts;
       } else {
         if (currentSession) {
-          sessions.push({
+          legacySessions.push({
             examType: currentSession.examType,
             quizMode: currentSession.quizMode,
             startedAt: currentSession.startedAt.toISOString(),
@@ -343,7 +376,7 @@ export const dashboardRouter = router({
       }
     }
     if (currentSession) {
-      sessions.push({
+      legacySessions.push({
         examType: currentSession.examType,
         quizMode: currentSession.quizMode,
         startedAt: currentSession.startedAt.toISOString(),
@@ -353,7 +386,10 @@ export const dashboardRouter = router({
       });
     }
 
-    return sessions.reverse().slice(0, 10);
+    // Merge: sessioned first (most recent), then legacy, capped at 10
+    const remaining = 10 - sessionedResults.length;
+    const legacySlice = legacySessions.reverse().slice(0, remaining);
+    return [...sessionedResults, ...legacySlice];
   }),
 
   /**
