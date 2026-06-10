@@ -4,7 +4,7 @@ import { stripe } from "./stripe";
 import { getDb } from "../db";
 import { purchases, subscriptions, users } from "../../drizzle/schema";
 import { notifyOwner } from "../_core/notification";
-import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail, sendWelcomeOnboardingEmail } from "../email";
+import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail } from "../email";
 import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI } from "./subscriptionProducts";
 import { PRODUCT_STUDY_PATHS } from "./products";
 import { eq, and } from "drizzle-orm";
@@ -118,20 +118,10 @@ export function registerStripeWebhook(app: Express) {
               console.error("[Stripe Webhook] Failed to send confirmation email:", err.message);
             });
 
-            // Schedule welcome onboarding email for 24 hours after purchase (non-blocking)
-            const onboardingStudyPaths = PRODUCT_STUDY_PATHS[productKey] ?? { quizPath: "/quiz", mockPath: "/quiz" };
-            setTimeout(() => {
-              sendWelcomeOnboardingEmail({
-                email,
-                customerName: webhookCustomerName,
-                productName: productName ?? productKey,
-                productKey,
-                quizPath: onboardingStudyPaths.quizPath,
-                mockPath: onboardingStudyPaths.mockPath,
-              }).catch(err => {
-                console.error("[Stripe Webhook] Failed to send welcome onboarding email:", err.message);
-              });
-            }, 24 * 60 * 60 * 1000); // 24 hours
+            // Welcome onboarding email is sent 24 hours after purchase by the hourly
+            // welcomeEmail scheduled job (server/jobs/welcomeEmail.ts), which queries
+            // purchases where welcomeEmailSentAt IS NULL and createdAt <= NOW() - 24h.
+            // No setTimeout needed here — the job survives server restarts.
 
             // Notify owner
             const purchasePhone = session.customer_details?.phone ?? null;

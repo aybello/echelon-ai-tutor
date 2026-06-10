@@ -387,9 +387,9 @@ export const appRouter = router({
           messages: z.array(
             z.object({
               role: z.enum(["system", "user", "assistant"]),
-              content: z.string(),
+              content: z.string().max(4000), // cap per-message content to prevent prompt stuffing
             })
-          ),
+          ).max(40), // cap conversation history to 40 messages
           examType: z.string().optional(), // current exam context
         })
       )
@@ -515,7 +515,7 @@ BEHAVIOUR RULES:
             }
           }
 
-          const response = await invokeLLM({ messages: enrichedMessages });
+          const response = await invokeLLM({ messages: enrichedMessages, maxTokens: 1536 }); // cap tutor replies to 1536 tokens (vs 32768 default)
           const reply =
             response?.choices?.[0]?.message?.content ??
             "I'm having trouble connecting right now — please try again.";

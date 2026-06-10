@@ -545,6 +545,18 @@ export const quizRouter = router({
     }),
 });
 
+// ─── Helper: get today's date in America/Toronto timezone ──────────────────
+// Using UTC (toISOString) causes off-by-one errors for users in Eastern time
+// because midnight UTC is 7-8 PM the previous day in Toronto.
+function getTodayTorontoDate(): string {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Toronto",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date()); // returns YYYY-MM-DD in en-CA locale
+}
+
 // ─── Helper: upsert student profile ─────────────────────────────────────────
 async function upsertStudentProfile(
   db: NonNullable<Awaited<ReturnType<typeof getDb>>>,
@@ -566,7 +578,7 @@ async function upsertStudentProfile(
           : eq(studentProfiles.studentEmail, studentEmail!)
       )
       .limit(1);
-    const today = new Date().toISOString().slice(0, 10);
+    const today = getTodayTorontoDate();
     if (rows.length === 0) {
       // Create new profile
       const topicAccuracy = { [topic]: { correct: correct ? 1 : 0, total: 1 } };
@@ -610,9 +622,13 @@ async function upsertStudentProfile(
       let currentStreak = profile.currentStreak;
       let longestStreak = profile.longestStreak;
       if (profile.lastActiveDate !== today) {
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        const yesterdayStr = yesterday.toISOString().slice(0, 10);
+        // Compute yesterday in Toronto timezone by subtracting 24h from now
+        const yesterdayStr = new Intl.DateTimeFormat("en-CA", {
+          timeZone: "America/Toronto",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        }).format(new Date(Date.now() - 24 * 60 * 60 * 1000));
         if (profile.lastActiveDate === yesterdayStr) {
           currentStreak += 1;
         } else {

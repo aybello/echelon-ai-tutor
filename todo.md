@@ -831,3 +831,12 @@
 - [x] Fix mock exam score denominator (Issue A): use questions.length not EXAM_QUESTIONS in MockExamShell.tsx
 - [x] Fix exam date off-by-one (Issue B): parseExamDate helper in ExamDateTracker.tsx and dashboardRouter.ts
 - [x] Issue C confirmed already fixed: ctx.studentEmail used as primary identity in logAttempt and upsertStudentProfile
+- [x] Round 2 Issue A: Fix rate limiter mount path /api/trpc/ai → /api/trpc/tutor in server/_core/index.ts
+- [x] Round 2 Issue B: Add magicLink rate limiter (/api/trpc/magicLink → authLimiter) in server/_core/index.ts
+- [x] Round 2 Issue A (cont): Add .max(40) on messages array and .max(4000) on content string in tutor.chat schema; add maxTokens: 1536 to invokeLLM call in server/routers.ts
+- [x] Round 2 Issue C (schema): Add welcomeEmailSentAt nullable timestamp column to purchases table in drizzle/schema.ts; run pnpm db:push (migration 0028)
+- [x] Round 2 Issue C (webhook): Remove setTimeout 24h block from server/stripe/webhook.ts; add comment pointing to scheduled job
+- [x] Round 2 Issue C (job): Create server/jobs/welcomeEmail.ts — hourly cron job that sends onboarding email to purchases where welcomeEmailSentAt IS NULL and createdAt <= NOW()-24h; register in server/_core/index.ts
+- [x] Round 2 M1: Fix streak UTC day bug in server/routers/quizRouter.ts — replace toISOString().slice(0,10) with getTodayTorontoDate() helper using Intl.DateTimeFormat America/Toronto; fix both today and yesterdayStr calculations
+- [x] Round 2 M2: Confirmed already guarded — PurchaseGate.tsx and PurchaseSuccess.tsx both have try/catch around JSON.parse
+- [x] Add regression tests: server/streak.timezone.test.ts (6 tests), server/welcomeEmail.job.test.ts (4 tests) — 260/260 tests passing

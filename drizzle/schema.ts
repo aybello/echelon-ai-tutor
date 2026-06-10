@@ -104,6 +104,7 @@ export const purchases = mysqlTable("purchases", {
   customerName: varchar("customerName", { length: 128 }), // captured from pre-checkout modal
   status: varchar("status", { length: 32 }).notNull().default("active"), // 'active' | 'refunded' | 'disputed'
   refundedAt: timestamp("refundedAt"),
+  welcomeEmailSentAt: timestamp("welcomeEmailSentAt"), // set when 24h onboarding email is sent; null = not yet sent
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type Purchase = typeof purchases.$inferSelect;

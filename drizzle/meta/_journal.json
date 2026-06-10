@@ -197,6 +197,13 @@
       "when": 1781045052359,
       "tag": "0027_faulty_apocalypse",
       "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "5",
+      "when": 1781107719130,
+      "tag": "0028_glossy_lord_hawal",
+      "breakpoints": true
     }
   ]
 }
