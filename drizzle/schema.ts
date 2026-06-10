@@ -404,6 +404,7 @@ export const organizationMembers = mysqlTable("organization_members", {
   id: int("id").autoincrement().primaryKey(),
   orgId: int("orgId").notNull(),
   email: varchar("email", { length: 320 }).notNull(), // normalized
+  name: varchar("name", { length: 200 }), // optional display name set by manager at assignment time
   role: varchar("role", { length: 20 }).notNull().default("operator"), // 'manager' | 'operator'
   status: varchar("status", { length: 20 }).notNull().default("assigned"), // 'assigned' | 'revoked'
   assignedAt: timestamp("assignedAt").defaultNow().notNull(),

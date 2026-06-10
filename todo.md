@@ -840,3 +840,6 @@
 - [x] Round 2 M1: Fix streak UTC day bug in server/routers/quizRouter.ts — replace toISOString().slice(0,10) with getTodayTorontoDate() helper using Intl.DateTimeFormat America/Toronto; fix both today and yesterdayStr calculations
 - [x] Round 2 M2: Confirmed already guarded — PurchaseGate.tsx and PurchaseSuccess.tsx both have try/catch around JSON.parse
 - [x] Add regression tests: server/streak.timezone.test.ts (6 tests), server/welcomeEmail.job.test.ts (4 tests) — 260/260 tests passing
+- [x] OrgDashboard: add operator name field to roster table (schema + orgRouter + UI)
+- [x] OrgDashboard: label Revoke button with text (not just icon)
+- [x] OrgDashboard: add prominent Needs Focus alert panel above roster

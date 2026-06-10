@@ -108,6 +108,7 @@ async function grantSeat(
   email: string,
   role: "manager" | "operator" = "operator",
   managerEmail?: string,
+  name?: string,
 ) {
   if (!db) throw new Error("Database unavailable");
 
@@ -124,12 +125,17 @@ async function grantSeat(
   if (existingMember.length > 0) {
     await db
       .update(organizationMembers)
-      .set({ status: "assigned", revokedAt: null as any })
+      .set({
+        status: "assigned",
+        revokedAt: null as any,
+        ...(name !== undefined ? { name } : {}),
+      })
       .where(eq(organizationMembers.id, existingMember[0].id));
   } else {
     await db.insert(organizationMembers).values({
       orgId: org.id,
       email,
+      name: name ?? null,
       role,
       status: "assigned",
     });
@@ -413,6 +419,7 @@ export const orgRouter = router({
       return {
         id: m.id,
         email: m.email,
+        name: m.name ?? null,
         status: m.status,
         assignedAt: m.assignedAt,
         revokedAt: m.revokedAt,
@@ -553,7 +560,7 @@ export const orgRouter = router({
    * Enforces seat cap: active operators must be < seatsTotal.
    */
   assignSeat: publicProcedure
-    .input(z.object({ email: z.string().email() }))
+    .input(z.object({ email: z.string().email(), name: z.string().max(200).optional() }))
     .mutation(async ({ input, ctx }) => {
       const { orgId, managerEmail } = await resolveOrgManager(ctx);
       const db = await getDb();
@@ -568,6 +575,7 @@ export const orgRouter = router({
       if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
 
       const email = normalizeEmail(input.email);
+      const name = input.name?.trim() || undefined;
 
       // Seat cap check
       const [{ cnt }] = await db
@@ -588,7 +596,7 @@ export const orgRouter = router({
         });
       }
 
-      await grantSeat(db, org, email, "operator", managerEmail);
+      await grantSeat(db, org, email, "operator", managerEmail, name);
       return { success: true, email };
     }),
 

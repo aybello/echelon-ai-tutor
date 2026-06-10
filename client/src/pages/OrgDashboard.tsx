@@ -114,6 +114,7 @@ export default function OrgDashboard() {
   const search = useSearch();
   const [assignOpen, setAssignOpen] = useState(false);
   const [assignEmail, setAssignEmail] = useState("");
+  const [assignName, setAssignName] = useState("");
   const [bulkEmails, setBulkEmails] = useState("");
   const [bulkMode, setBulkMode] = useState(false);
   const [revokeTarget, setRevokeTarget] = useState<string | null>(null);
@@ -150,6 +151,7 @@ export default function OrgDashboard() {
       utils.org.getAttention.invalidate();
       setAssignOpen(false);
       setAssignEmail("");
+      setAssignName("");
     },
     onError: (err) => toast.error(err.message),
   });
@@ -266,7 +268,7 @@ export default function OrgDashboard() {
         toast.error("Please enter a valid email address.");
         return;
       }
-      assignSeat.mutate({ email: assignEmail.trim().toLowerCase() });
+      assignSeat.mutate({ email: assignEmail.trim().toLowerCase(), name: assignName.trim() || undefined });
     }
   };
 
@@ -274,6 +276,9 @@ export default function OrgDashboard() {
 
   const activeMembers = members.filter(m => m.status === "assigned");
   const revokedMembers = members.filter(m => m.status === "revoked");
+  const needsFocusMembers = activeMembers.filter(m =>
+    m.operatorStatus === "needs_focus" || m.operatorStatus === "behind"
+  );
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -420,6 +425,33 @@ export default function OrgDashboard() {
           />
         </div>
 
+        {/* Needs Focus panel — operators below 75% who have started studying */}
+        {needsFocusMembers.length > 0 && (
+          <div className="bg-orange-50 border border-orange-200 rounded-xl p-5">
+            <div className="flex items-center gap-2 text-orange-700 font-semibold text-sm mb-3">
+              <AlertTriangle className="w-4 h-4" />
+              {needsFocusMembers.length} Operator{needsFocusMembers.length === 1 ? "" : "s"} Need{needsFocusMembers.length === 1 ? "s" : ""} Focus
+              <span className="text-orange-400 font-normal text-xs ml-1">Below 75% readiness</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {needsFocusMembers.map(m => (
+                <div key={m.id} className="flex items-center justify-between bg-white border border-orange-100 rounded-lg px-3 py-2.5">
+                  <div className="min-w-0">
+                    {m.name && <div className="text-sm font-medium text-slate-800 truncate">{m.name}</div>}
+                    <div className={`text-xs truncate ${m.name ? "text-slate-400" : "text-sm font-medium text-slate-800"}`}>{m.email}</div>
+                  </div>
+                  <span className={`ml-3 flex-shrink-0 text-sm font-bold ${
+                    (m.accuracy ?? 0) >= 50 ? "text-amber-600" : "text-red-600"
+                  }`}>{m.accuracy !== null ? `${m.accuracy}%` : "—"}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-orange-500 mt-3">
+              Consider reaching out to these operators or adjusting their study schedule.
+            </p>
+          </div>
+        )}
+
         {/* Attention panel */}
         {(attention.atRisk.length > 0 || attention.stalled.length > 0) && (
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 space-y-4">
@@ -497,7 +529,7 @@ export default function OrgDashboard() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-slate-100 text-slate-400 text-xs uppercase tracking-wider bg-slate-50">
-                    <th className="text-left px-4 py-3">Email</th>
+                    <th className="text-left px-4 py-3">Operator</th>
                     <th className="text-left px-4 py-3 hidden md:table-cell">Assigned</th>
                     <th className="text-left px-4 py-3 hidden md:table-cell">Last Active</th>
                     <th className="text-left px-4 py-3 hidden lg:table-cell">Accuracy</th>
@@ -515,7 +547,12 @@ export default function OrgDashboard() {
                           i === activeMembers.length - 1 ? "border-b-0" : ""
                         }`}
                       >
-                        <td className="px-4 py-3 font-medium text-slate-800">{m.email}</td>
+                        <td className="px-4 py-3">
+                          {m.name
+                            ? <><div className="font-medium text-slate-800 text-sm">{m.name}</div><div className="text-xs text-slate-400">{m.email}</div></>
+                            : <span className="font-medium text-slate-800">{m.email}</span>
+                          }
+                        </td>
                         <td className="px-4 py-3 text-slate-500 hidden md:table-cell">
                           {formatDate(m.assignedAt)}
                         </td>
@@ -548,10 +585,11 @@ export default function OrgDashboard() {
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="text-slate-300 hover:text-red-600 hover:bg-red-50 h-7 px-2"
+                            className="text-slate-400 hover:text-red-600 hover:bg-red-50 h-7 px-2.5 text-xs gap-1"
                             onClick={() => setRevokeTarget(m.email)}
                           >
                             <UserMinus className="w-3.5 h-3.5" />
+                            <span className="hidden sm:inline">Remove</span>
                           </Button>
                         </td>
                       </tr>
@@ -620,16 +658,28 @@ export default function OrgDashboard() {
             </div>
 
             {!bulkMode ? (
-              <div className="space-y-2">
-                <Label className="text-slate-700">Operator email</Label>
-                <Input
-                  type="email"
-                  placeholder="operator@utility.ca"
-                  value={assignEmail}
-                  onChange={e => setAssignEmail(e.target.value)}
-                  className="border-slate-200 text-slate-900 placeholder:text-slate-400"
-                  onKeyDown={e => e.key === "Enter" && handleAssign()}
-                />
+              <div className="space-y-3">
+                <div className="space-y-1.5">
+                  <Label className="text-slate-700">Operator name <span className="text-slate-400 font-normal">(optional)</span></Label>
+                  <Input
+                    type="text"
+                    placeholder="e.g. James Smith"
+                    value={assignName}
+                    onChange={e => setAssignName(e.target.value)}
+                    className="border-slate-200 text-slate-900 placeholder:text-slate-400"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label className="text-slate-700">Operator email</Label>
+                  <Input
+                    type="email"
+                    placeholder="operator@utility.ca"
+                    value={assignEmail}
+                    onChange={e => setAssignEmail(e.target.value)}
+                    className="border-slate-200 text-slate-900 placeholder:text-slate-400"
+                    onKeyDown={e => e.key === "Enter" && handleAssign()}
+                  />
+                </div>
               </div>
             ) : (
               <div className="space-y-2">
