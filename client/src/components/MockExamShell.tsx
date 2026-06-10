@@ -394,7 +394,7 @@ export default function MockExamShell({
         moduleBreakdown[q.module].correct++;
       }
     });
-    const score = correct / EXAM_QUESTIONS;
+    const score = correct / questions.length;
     const pct = Math.round(score * 100);
     const passed = pct >= Math.round(passThreshold * 100);
     // Sort modules weakest first
@@ -412,7 +412,7 @@ export default function MockExamShell({
       sessionId,
       examType: productKey,
       score: results.correct,
-      total: EXAM_QUESTIONS,
+      total: questions.length,
       passed: results.passed,
       timeTakenSeconds: EXAM_DURATION - timeLeft,
       moduleBreakdown: results.moduleBreakdown,

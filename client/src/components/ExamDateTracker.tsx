@@ -13,16 +13,25 @@ interface Props {
   color: string;
 }
 
+/**
+ * Parse an exam date string as a calendar date in local time.
+ * Avoids the UTC-midnight-to-local-evening drift that affects Canadian users.
+ * e.g. "2026-08-22" → new Date(2026, 7, 22) — local midnight on Aug 22.
+ */
+function parseExamDate(dateStr: string): Date {
+  const [y, m, d] = dateStr.slice(0, 10).split("-").map(Number);
+  return new Date(y, m - 1, d);
+}
+
 function getDaysUntil(dateStr: string): number {
-  const exam = new Date(dateStr);
+  const exam = parseExamDate(dateStr);
   const now = new Date();
   now.setHours(0, 0, 0, 0);
-  exam.setHours(0, 0, 0, 0);
   return Math.ceil((exam.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 }
 
 function formatExamDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString("en-CA", {
+  return parseExamDate(dateStr).toLocaleDateString("en-CA", {
     weekday: "long",
     year: "numeric",
     month: "long",

@@ -479,14 +479,15 @@ export const dashboardRouter = router({
     }
     if (!lookupEmail) return null;
 
-    const now = new Date();
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
     const exams = await db
       .select()
       .from(examDates)
       .where(
         and(
           eq(examDates.email, lookupEmail),
-          gte(examDates.examDate, now)
+          gte(examDates.examDate, todayStart)
         )
       )
       .orderBy(examDates.examDate)
@@ -495,8 +496,14 @@ export const dashboardRouter = router({
     if (!exams.length) return null;
 
     const exam = exams[0];
-    const examDate = new Date(exam.examDate);
-    const daysUntil = Math.ceil((examDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+    // Parse as calendar date (local midnight) to match client-side parseExamDate helper.
+    // Avoids UTC-midnight-to-local-evening drift for Canadian users.
+    const rawDate = exam.examDate instanceof Date ? exam.examDate.toISOString() : String(exam.examDate);
+    const [ey, em, ed] = rawDate.slice(0, 10).split("-").map(Number);
+    const examDate = new Date(ey, em - 1, ed); // local midnight on the intended calendar day
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const daysUntil = Math.ceil((examDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);

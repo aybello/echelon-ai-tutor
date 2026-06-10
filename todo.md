@@ -828,3 +828,6 @@
 - [x] Write 5 vitest tests for getSubscriptionPeriod (item-level, sub-level fallback, item preference, null, missing items)
 - [x] Fix biased mock exam shuffle (Math.random() - 0.5) in MockExamShell, MockExam, OITMockExam, OITWastewaterMockExam, Class1MockExam, Class1WaterMockExam, WQAMockExam — replace with Fisher-Yates shuffle from @/lib/utils
 - [x] Add shuffle() uniformity regression test (utils.test.ts)
+- [x] Fix mock exam score denominator (Issue A): use questions.length not EXAM_QUESTIONS in MockExamShell.tsx
+- [x] Fix exam date off-by-one (Issue B): parseExamDate helper in ExamDateTracker.tsx and dashboardRouter.ts
+- [x] Issue C confirmed already fixed: ctx.studentEmail used as primary identity in logAttempt and upsertStudentProfile
