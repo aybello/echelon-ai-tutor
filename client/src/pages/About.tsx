@@ -50,7 +50,7 @@ export default function About() {
   const { isAuthenticated } = useAuth({ lazy: true });
 
   return (
-    <div style={{ background: "#FFFFFF", minHeight: "100vh", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ background: "#F8FAFC", minHeight: "100vh", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         @media (max-width: 640px) {
           .about-hero { padding: 48px 16px 40px !important; }
@@ -66,7 +66,7 @@ export default function About() {
 
       {/* ── HERO ── */}
       <section className="about-hero" style={{
-        background: "linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%)",
+        background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 100%)",
         padding: "80px 24px 72px",
         textAlign: "center",
       }}>
@@ -110,7 +110,7 @@ export default function About() {
 
       {/* ── WHY ECHELON EXISTS ── */}
       <section className="about-section" style={{ padding: "72px 24px", maxWidth: 800, margin: "0 auto" }}>
-        <h2 style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF", margin: "0 0 28px", letterSpacing: "-0.01em" }}>
+        <h2 style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", margin: "0 0 28px", letterSpacing: "-0.01em" }}>
           Why Echelon Exists
         </h2>
 
@@ -122,7 +122,7 @@ export default function About() {
           ].map((para, i) => (
             <p key={i} style={{
               fontSize: 16,
-              color: "#64748B",
+              color: "#334155",
               lineHeight: 1.8,
               margin: 0,
               padding: "20px 24px",
@@ -139,7 +139,7 @@ export default function About() {
 
       {/* ── TIMELINE ── */}
       <section className="about-section" style={{ padding: "0 24px 72px", maxWidth: 800, margin: "0 auto" }}>
-        <h2 style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF", margin: "0 0 36px", letterSpacing: "-0.01em" }}>
+        <h2 style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", margin: "0 0 36px", letterSpacing: "-0.01em" }}>
           How We Got Here
         </h2>
 
@@ -190,10 +190,10 @@ export default function About() {
                 }}>
                   {item.year}
                 </div>
-                <div style={{ fontSize: 16, fontWeight: 700, color: "#FFFFFF", marginBottom: 8 }}>
+                <div style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", marginBottom: 8 }}>
                   {item.title}
                 </div>
-                <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.75, margin: 0 }}>
+                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.75, margin: 0 }}>
                   {item.body}
                 </p>
               </div>
@@ -204,7 +204,7 @@ export default function About() {
 
       {/* ── WHAT WE STAND FOR ── */}
       <section style={{
-        background: "#FFFFFF",
+        background: "#0F172A",
         padding: "72px 24px",
       }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
@@ -219,7 +219,7 @@ export default function About() {
             {VALUES.map((v) => (
               <div key={v.title} style={{
                 background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(0,0,0,0.09)",
+                border: "1px solid rgba(255,255,255,0.1)",
                 borderRadius: 16,
                 padding: "28px 24px",
               }}>
@@ -235,7 +235,7 @@ export default function About() {
       {/* ── PLATFORM CHANGELOG ── */}
       <section style={{ padding: "72px 24px", maxWidth: 860, margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-          <h2 style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF", margin: 0, letterSpacing: "-0.01em" }}>
+          <h2 style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", margin: 0, letterSpacing: "-0.01em" }}>
             Platform Changelog
           </h2>
           <span style={{
@@ -248,7 +248,7 @@ export default function About() {
             letterSpacing: "0.06em",
             textTransform: "uppercase",
           }}>27 Courses Live</span>
-          <span style={{ fontSize: 12, color: "#64748B", marginLeft: 8 }}>Last updated: May 2026</span>
+          <span style={{ fontSize: 12, color: "#94A3B8", marginLeft: 8 }}>Last updated: May 2026</span>
         </div>
         <p style={{ fontSize: 15, color: "#64748B", margin: "0 0 36px", lineHeight: 1.7 }}>
           A running record of every course and feature added to the platform.
@@ -357,7 +357,7 @@ export default function About() {
             {
               date: "Late 2025",
               badge: "",
-              badgeColor: "#E2E8F0",
+              badgeColor: "#64748B",
               title: "OIT Water & OIT Wastewater — Free Practice",
               body: "Platform launched with free OIT practice for both streams. Includes adaptive quiz engine, AI Tutor, confidence scoring, pattern detection, interactive process diagrams, and formula sheets.",
             },
@@ -383,7 +383,7 @@ export default function About() {
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.07em" }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.07em" }}>
                     {item.date}
                   </span>
                   {item.badge && (
@@ -399,8 +399,8 @@ export default function About() {
                     }}>{item.badge}</span>
                   )}
                 </div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#FFFFFF", marginBottom: 4 }}>{item.title}</div>
-                <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7, margin: 0 }}>{item.body}</p>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", marginBottom: 4 }}>{item.title}</div>
+                <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, margin: 0 }}>{item.body}</p>
               </div>
             </div>
           ))}
@@ -410,7 +410,7 @@ export default function About() {
       {/* ── CTA ── */}
       <section style={{ padding: "72px 24px", textAlign: "center" }}>
         <div style={{ maxWidth: 560, margin: "0 auto" }}>
-          <h2 style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF", margin: "0 0 14px" }}>
+          <h2 style={{ fontSize: 26, fontWeight: 800, color: "#0F172A", margin: "0 0 14px" }}>
             Ready to Start Studying?
           </h2>
           <p style={{ fontSize: 15, color: "#64748B", marginBottom: 32, lineHeight: 1.7 }}>
@@ -464,7 +464,7 @@ export default function About() {
                 borderRadius: 10,
                 border: "1px solid #E2E8F0",
                 background: "#fff",
-                color: "#FFFFFF",
+                color: "#0F172A",
                 fontSize: 14,
                 fontWeight: 600,
                 cursor: "pointer",
@@ -484,7 +484,7 @@ export default function About() {
         textAlign: "center",
         background: "#fff",
       }}>
-        <p style={{ fontSize: 13, color: "#64748B", margin: 0 }}>
+        <p style={{ fontSize: 13, color: "#94A3B8", margin: 0 }}>
           © 2026 Echelon Institute · Built for Canadian water and wastewater operators
         </p>
       </footer>

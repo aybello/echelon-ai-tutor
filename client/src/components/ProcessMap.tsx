@@ -100,7 +100,7 @@ export default function ProcessMap({ onStepClick, activeStepId }: ProcessMapProp
         {connectors.map((c) => (
           <g key={c.id}>
             {/* Track */}
-            <path d={c.d} stroke="#94A3B8" strokeWidth={7} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <path d={c.d} stroke="#E2E8F0" strokeWidth={7} fill="none" strokeLinecap="round" strokeLinejoin="round" />
             {/* Animated flow */}
             <path
               d={c.d} stroke={c.color} strokeWidth={4} fill="none"
@@ -119,7 +119,7 @@ export default function ProcessMap({ onStepClick, activeStepId }: ProcessMapProp
                 </text>
                 {c.label.split("\n")[1] && (
                   <text x={c.labelX} y={c.labelY + 5} textAnchor="middle" fontSize={7.5}
-                    fill="#E2E8F0" fontFamily="'Sora', sans-serif" fontWeight={600}>
+                    fill="#64748B" fontFamily="'Sora', sans-serif" fontWeight={600}>
                     {c.label.split("\n")[1]}
                   </text>
                 )}
@@ -148,7 +148,7 @@ export default function ProcessMap({ onStepClick, activeStepId }: ProcessMapProp
                 className="pm-snake-card"
                 x={0} y={0} width={SW} height={SH} rx={18}
                 fill={isActive ? step.bg : "#FFFFFF"}
-                stroke={isActive ? step.color : "#94A3B8"}
+                stroke={isActive ? step.color : "#E2E8F0"}
                 strokeWidth={isActive ? 2.5 : 1.5}
                 style={{ filter: isActive ? `drop-shadow(0 4px 16px ${step.color}45)` : "drop-shadow(0 2px 8px rgba(0,0,0,0.07))" }}
               />

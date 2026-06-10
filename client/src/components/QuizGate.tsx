@@ -135,7 +135,7 @@ export default function QuizGate({
     }}>
       <div style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", maxWidth: 480, width: "100%", boxShadow: "0 32px 80px rgba(0,0,0,0.35)", textAlign: "center" }}>
         <div style={{ fontSize: 52, marginBottom: 12 }}>🎉</div>
-        <h2 style={{ fontSize: 22, fontWeight: 700, color: "#FFFFFF", marginBottom: 8, fontFamily: "Sora, sans-serif" }}>
+        <h2 style={{ fontSize: 22, fontWeight: 700, color: "#0F172A", marginBottom: 8, fontFamily: "Sora, sans-serif" }}>
           You're in — full access unlocked!
         </h2>
         <p style={{ color: "#64748B", fontSize: 15 }}>Loading your next question…</p>
@@ -182,7 +182,7 @@ export default function QuizGate({
               width: 32,
               height: 32,
               borderRadius: "50%",
-              background: "#FFFFFF",
+              background: "#F1F5F9",
               border: "1px solid #E2E8F0",
               display: "flex",
               alignItems: "center",
@@ -202,7 +202,7 @@ export default function QuizGate({
           <Link href="/">
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 16, cursor: "pointer" }}>
               <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 28, width: "auto", objectFit: "contain" }} />
-              <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 14, color: "#FFFFFF", letterSpacing: "-0.02em", whiteSpace: "nowrap" }}>Echelon Institute</span>
+              <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 14, color: "#0F172A", letterSpacing: "-0.02em", whiteSpace: "nowrap" }}>Echelon Institute</span>
             </div>
           </Link>
 
@@ -210,7 +210,7 @@ export default function QuizGate({
           <div style={{ width: 56, height: 56, borderRadius: "50%", background: "linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", fontSize: 26 }}>
             🏆
           </div>
-          <h2 style={{ fontSize: 20, fontWeight: 800, color: "#FFFFFF", marginBottom: 6, fontFamily: "Sora, sans-serif", lineHeight: 1.3 }}>
+          <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 6, fontFamily: "Sora, sans-serif", lineHeight: 1.3 }}>
             You've finished your 15 free questions!
           </h2>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: 100, padding: "4px 12px", fontSize: 12, color: "#1D4ED8", fontWeight: 600, marginBottom: 16 }}>
@@ -223,7 +223,7 @@ export default function QuizGate({
               <div style={{ background: "linear-gradient(135deg, #EFF6FF 0%, #F0FDFA 100%)", border: "2px solid #BFDBFE", borderRadius: 16, padding: "18px 18px 16px", marginBottom: 14, textAlign: "left" }}>
                 <div style={{ marginBottom: 10 }}>
                   <div style={{ fontSize: 11, fontWeight: 700, color: "#1D4ED8", letterSpacing: "0.08em", marginBottom: 4 }}>UNLOCK FULL ACCESS</div>
-                  <div style={{ fontSize: 15, fontWeight: 800, color: "#FFFFFF", fontFamily: "Sora, sans-serif" }}>{productName}</div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>{productName}</div>
                 </div>
                 <ul style={{ margin: "0 0 14px", padding: "0 0 0 0", listStyle: "none" }}>
                   {(paidFeatures ?? [
@@ -268,21 +268,21 @@ export default function QuizGate({
                 {onDismiss && (
                   <button
                     onClick={onDismiss}
-                    style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#FFFFFF", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
+                    style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
                   >
                     🔄 Try Another 15 Free Questions
                   </button>
                 )}
                 <Link href="/pricing">
                   <button
-                    style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#FFFFFF", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
+                    style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
                   >
                     📋 View All Courses & Pricing
                   </button>
                 </Link>
                 <Link href="/">
                   <button
-                    style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "none", background: "transparent", color: "#64748B", fontSize: 12, fontWeight: 500, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
+                    style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "none", background: "transparent", color: "#94A3B8", fontSize: 12, fontWeight: 500, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
                   >
                     ← Back to Homepage
                   </button>
@@ -298,7 +298,7 @@ export default function QuizGate({
           ) : (
             /* ── FREE PATH — only shown when no productKey (OIT free course) ── */
             <>
-              <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, marginBottom: 20 }}>
+              <p style={{ color: "#475569", fontSize: 14, lineHeight: 1.6, marginBottom: 20 }}>
                 Enter your email to continue with the <strong>full question bank</strong> — completely free.
               </p>
               <form onSubmit={handleFreeSubmit} noValidate>
@@ -319,7 +319,7 @@ export default function QuizGate({
                       boxSizing: "border-box",
                     }}
                     onFocus={e => { if (!emailError) e.target.style.borderColor = "#1D4ED8"; }}
-                    onBlur={e => { if (!emailError) e.target.style.borderColor = "#94A3B8"; }}
+                    onBlur={e => { if (!emailError) e.target.style.borderColor = "#CBD5E1"; }}
                   />
                   {emailError && <p style={{ color: "#EF4444", fontSize: 12, marginTop: 5, textAlign: "left" }}>{emailError}</p>}
                 </div>
@@ -342,20 +342,20 @@ export default function QuizGate({
                 >
                   {unlockMutation.isPending ? "Unlocking…" : "Unlock Full Access — Free →"}
                 </button>
-                <p style={{ color: "#64748B", fontSize: 11, marginTop: 10 }}>No spam, no credit card.</p>
+                <p style={{ color: "#94A3B8", fontSize: 11, marginTop: 10 }}>No spam, no credit card.</p>
               </form>
               <div style={{ borderTop: "1px solid #E2E8F0", paddingTop: 14, marginTop: 14, display: "flex", flexDirection: "column", gap: 8 }}>
                 {onDismiss && (
                   <button
                     onClick={onDismiss}
-                    style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#FFFFFF", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
+                    style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
                   >
                     🔄 Try Another 15 Free Questions
                   </button>
                 )}
                 <Link href="/">
                   <button
-                    style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#FFFFFF", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
+                    style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
                   >
                     ← Back to Homepage
                   </button>

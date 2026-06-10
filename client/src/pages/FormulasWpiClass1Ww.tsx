@@ -389,7 +389,7 @@ export default function FormulasWpiClass1Ww() {
     : SECTIONS;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF", color: "#1E293B" }}>      <style>{`
+    <div style={{ minHeight: "100vh", background: "#0F172A", color: "#F1F5F9" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }
@@ -404,19 +404,19 @@ export default function FormulasWpiClass1Ww() {
       <SiteNav currentPath="/formulas-wpi-class1-ww" />
 
       {/* Hero */}
-      <div style={{ background: "linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%)", borderBottom: "1px solid #334155", padding: "48px 24px 32px" }}>
+      <div style={{ background: "linear-gradient(135deg, #0F172A 0%, #1E293B 100%)", borderBottom: "1px solid #334155", padding: "48px 24px 32px" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-            <Link href="/wpi" style={{ color: "#64748B", fontSize: 14, textDecoration: "none" }}>WPI</Link>
-            <span style={{ color: "#64748B" }}>/</span>
-            <span style={{ color: "#64748B", fontSize: 14 }}>Class I Wastewater</span>
-            <span style={{ color: "#64748B" }}>/</span>
-            <span style={{ color: "#F8FAFC", fontSize: 14 }}>Formula Sheet</span>
+            <Link href="/wpi" style={{ color: "#94A3B8", fontSize: 14, textDecoration: "none" }}>WPI</Link>
+            <span style={{ color: "#475569" }}>/</span>
+            <span style={{ color: "#94A3B8", fontSize: 14 }}>Class I Wastewater</span>
+            <span style={{ color: "#475569" }}>/</span>
+            <span style={{ color: "#F1F5F9", fontSize: 14 }}>Formula Sheet</span>
           </div>
           <h1 style={{ fontSize: 32, fontWeight: 700, marginBottom: 8 }}>
             WPI Class I Wastewater Treatment
           </h1>
-          <p style={{ color: "#64748B", fontSize: 16, marginBottom: 24 }}>
+          <p style={{ color: "#94A3B8", fontSize: 16, marginBottom: 24 }}>
             Formula & Reference Sheet — BC (EOCP) · AB (AWWOA) · SK (SAHO) · MB (MWWA)
           </p>
 
@@ -426,9 +426,9 @@ export default function FormulasWpiClass1Ww() {
               onClick={() => setActiveSection(null)}
               style={{
                 padding: "6px 14px", borderRadius: 20, border: "1px solid",
-                borderColor: !activeSection ? "#3B82F6" : "#E2E8F0",
+                borderColor: !activeSection ? "#3B82F6" : "#334155",
                 background: !activeSection ? "#1E3A5F" : "transparent",
-                color: !activeSection ? "#93C5FD" : "#E2E8F0",
+                color: !activeSection ? "#93C5FD" : "#94A3B8",
                 cursor: "pointer", fontSize: 13,
               }}
             >
@@ -440,9 +440,9 @@ export default function FormulasWpiClass1Ww() {
                 onClick={() => setActiveSection(activeSection === s.id ? null : s.id)}
                 style={{
                   padding: "6px 14px", borderRadius: 20, border: "1px solid",
-                  borderColor: activeSection === s.id ? s.color : "#E2E8F0",
+                  borderColor: activeSection === s.id ? s.color : "#334155",
                   background: activeSection === s.id ? s.color + "22" : "transparent",
-                  color: activeSection === s.id ? s.color : "#E2E8F0",
+                  color: activeSection === s.id ? s.color : "#94A3B8",
                   cursor: "pointer", fontSize: 13,
                 }}
               >
@@ -462,21 +462,21 @@ export default function FormulasWpiClass1Ww() {
             </h2>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(380px, 1fr))", gap: 16 }}>
               {section.cards.map((card) => (
-                <div key={card.title} style={{ background: "#FFFFFF", border: "1px solid #334155", borderRadius: 12, padding: 20 }}>
-                  <h3 style={{ fontSize: 15, fontWeight: 600, color: "#F8FAFC", marginBottom: 12 }}>{card.title}</h3>
-                  <div style={{ background: "#FFFFFF", borderRadius: 8, padding: "10px 14px", marginBottom: 12, fontFamily: "monospace", fontSize: 15, color: section.color, fontWeight: 600 }}>
+                <div key={card.title} style={{ background: "#1E293B", border: "1px solid #334155", borderRadius: 12, padding: 20 }}>
+                  <h3 style={{ fontSize: 15, fontWeight: 600, color: "#F1F5F9", marginBottom: 12 }}>{card.title}</h3>
+                  <div style={{ background: "#0F172A", borderRadius: 8, padding: "10px 14px", marginBottom: 12, fontFamily: "monospace", fontSize: 15, color: section.color, fontWeight: 600 }}>
                     {card.formula}
                   </div>
                   <div style={{ marginBottom: card.example || card.notes ? 12 : 0 }}>
                     {card.variables.map((v) => (
                       <div key={v.symbol} style={{ display: "flex", gap: 8, marginBottom: 4, fontSize: 13 }}>
                         <span style={{ color: section.color, fontFamily: "monospace", minWidth: 80, fontWeight: 600 }}>{v.symbol}</span>
-                        <span style={{ color: "#64748B" }}>{v.meaning}</span>
+                        <span style={{ color: "#94A3B8" }}>{v.meaning}</span>
                       </div>
                     ))}
                   </div>
                   {card.example && (
-                    <div style={{ background: "#FFFFFF", borderRadius: 6, padding: "8px 12px", fontSize: 13, color: "#94A3B8", marginBottom: card.notes ? 8 : 0 }}>
+                    <div style={{ background: "#0F172A", borderRadius: 6, padding: "8px 12px", fontSize: 13, color: "#CBD5E1", marginBottom: card.notes ? 8 : 0 }}>
                       <span style={{ color: "#64748B", marginRight: 6 }}>Example:</span>{card.example}
                     </div>
                   )}
@@ -492,14 +492,14 @@ export default function FormulasWpiClass1Ww() {
         ))}
 
         {/* Quick Reference Table */}
-        <div style={{ background: "#FFFFFF", border: "1px solid #334155", borderRadius: 12, padding: 24, marginBottom: 32 }}>
-          <h2 style={{ fontSize: 18, fontWeight: 700, color: "#F8FAFC", marginBottom: 16 }}>Quick Reference — Typical Operating Ranges</h2>
+        <div style={{ background: "#1E293B", border: "1px solid #334155", borderRadius: 12, padding: 24, marginBottom: 32 }}>
+          <h2 style={{ fontSize: 18, fontWeight: 700, color: "#F1F5F9", marginBottom: 16 }}>Quick Reference — Typical Operating Ranges</h2>
           <div style={{ overflowX: "auto" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
               <thead>
                 <tr style={{ borderBottom: "1px solid #334155" }}>
                   {["Parameter", "Typical Range", "Units", "Notes"].map((h) => (
-                    <th key={h} style={{ textAlign: "left", padding: "8px 12px", color: "#64748B", fontWeight: 600 }}>{h}</th>
+                    <th key={h} style={{ textAlign: "left", padding: "8px 12px", color: "#94A3B8", fontWeight: 600 }}>{h}</th>
                   ))}
                 </tr>
               </thead>
@@ -522,9 +522,9 @@ export default function FormulasWpiClass1Ww() {
                   ["Chlorine residual (effluent)", "0.5–1.0", "mg/L", "After 30-min contact"],
                 ].map(([param, range, unit, note]) => (
                   <tr key={param} style={{ borderBottom: "1px solid #1E293B" }}>
-                    <td style={{ padding: "8px 12px", color: "#94A3B8" }}>{param}</td>
+                    <td style={{ padding: "8px 12px", color: "#CBD5E1" }}>{param}</td>
                     <td style={{ padding: "8px 12px", color: "#3B82F6", fontWeight: 600 }}>{range}</td>
-                    <td style={{ padding: "8px 12px", color: "#64748B" }}>{unit}</td>
+                    <td style={{ padding: "8px 12px", color: "#94A3B8" }}>{unit}</td>
                     <td style={{ padding: "8px 12px", color: "#64748B" }}>{note}</td>
                   </tr>
                 ))}
@@ -535,12 +535,12 @@ export default function FormulasWpiClass1Ww() {
 
         {/* CTA */}
         <div style={{ textAlign: "center", padding: "24px 0" }}>
-          <p style={{ color: "#64748B", marginBottom: 16 }}>Ready to test your knowledge?</p>
+          <p style={{ color: "#94A3B8", marginBottom: 16 }}>Ready to test your knowledge?</p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/wpi-class1-wastewater" style={{ background: "#1D4ED8", color: "#fff", padding: "12px 24px", borderRadius: 8, textDecoration: "none", fontWeight: 600 }}>
               Practice Quiz
             </Link>
-            <Link href="/wpi-class1-wastewater-mock" style={{ background: "#FFFFFF", color: "#93C5FD", padding: "12px 24px", borderRadius: 8, textDecoration: "none", fontWeight: 600, border: "1px solid #334155" }}>
+            <Link href="/wpi-class1-wastewater-mock" style={{ background: "#1E293B", color: "#93C5FD", padding: "12px 24px", borderRadius: 8, textDecoration: "none", fontWeight: 600, border: "1px solid #334155" }}>
               Mock Exam
             </Link>
           </div>

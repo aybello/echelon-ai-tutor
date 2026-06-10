@@ -604,9 +604,9 @@ function CheckoutButton({
           padding: "11px 0",
           borderRadius: 10,
           background: disabled
-            ? "#94A3B8"
+            ? "#E2E8F0"
             : "linear-gradient(135deg, #1D4ED8, #0E7490)",
-          color: disabled ? "#E2E8F0" : "#fff",
+          color: disabled ? "#94A3B8" : "#fff",
           border: "none",
           fontSize: 13,
           fontWeight: 700,
@@ -787,12 +787,12 @@ const PRICING_STYLES = `
 
   /* Hero */
   .pricing-hero {
-    background: linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%);
+    background: linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%);
     padding: 64px 24px 56px; text-align: center;
   }
   .pricing-hero-badge {
     display: inline-block;
-    background: rgba(0,0,0,0.10); border: 1px solid rgba(0,0,0,0.14);
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
     border-radius: 20px; padding: 5px 16px;
     color: #7DD3FC; font-size: 12px; font-weight: 700;
     letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 20px;
@@ -1008,7 +1008,7 @@ export default function Pricing() {
                 style={{
                   border: selectedProvince === p.code
                     ? "2px solid #7DD3FC"
-                    : "1.5px solid rgba(0,0,0,0.12)",
+                    : "1.5px solid rgba(255,255,255,0.15)",
                   background: selectedProvince === p.code
                     ? "rgba(125,211,252,0.15)"
                     : "rgba(255,255,255,0.07)",
@@ -1052,8 +1052,8 @@ export default function Pricing() {
               onClick={() => handleSubProvinceSelect("ontario")}
               style={{
                 padding: "7px 18px", borderRadius: 20, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                background: subProvince === "ontario" ? "#EDE9FE" : "#F8FAFC",
-                color: subProvince === "ontario" ? "#7C3AED" : "#E2E8F0",
+                background: subProvince === "ontario" ? "#EDE9FE" : "#F1F5F9",
+                color: subProvince === "ontario" ? "#7C3AED" : "#64748B",
                 border: subProvince === "ontario" ? "1.5px solid #C4B5FD" : "1.5px solid #E2E8F0",
               }}
             >
@@ -1063,8 +1063,8 @@ export default function Pricing() {
               onClick={() => handleSubProvinceSelect("western")}
               style={{
                 padding: "7px 18px", borderRadius: 20, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                background: subProvince === "western" ? "#ECFEFF" : "#F8FAFC",
-                color: subProvince === "western" ? "#0E7490" : "#E2E8F0",
+                background: subProvince === "western" ? "#ECFEFF" : "#F1F5F9",
+                color: subProvince === "western" ? "#0E7490" : "#64748B",
                 border: subProvince === "western" ? "1.5px solid #A5F3FC" : "1.5px solid #E2E8F0",
               }}
             >
@@ -1117,15 +1117,15 @@ export default function Pricing() {
                         <div style={{ fontSize: 11, fontWeight: 700, color: isActivePlan ? "#15803D" : "#7C3AED", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>
                           {tier.label} All-Access
                         </div>
-                        <div style={{ fontSize: 26, fontWeight: 900, color: "#FFFFFF", lineHeight: 1 }}>
+                        <div style={{ fontSize: 26, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
                           {tier.price}
                           <span style={{ fontSize: 13, fontWeight: 500, color: "#64748B" }}>/yr</span>
                         </div>
                         <div style={{ fontSize: 12, color: "#64748B", marginTop: 4 }}>{tier.tagline}</div>
                       </div>
-                      <ul style={{ margin: 0, padding: "0 0 0 14px", fontSize: 12, color: "#64748B", lineHeight: 1.7 }}>
+                      <ul style={{ margin: 0, padding: "0 0 0 14px", fontSize: 12, color: "#475569", lineHeight: 1.7 }}>
                         {getSubscriptionExamTypes(tier.tier, subProvince).map(et => (
-                          <li key={et} style={{ color: "#64748B" }}>{EXAM_LABELS[et] ?? et}</li>
+                          <li key={et} style={{ color: "#334155" }}>{EXAM_LABELS[et] ?? et}</li>
                         ))}
                         <li style={{ marginTop: 4, color: "#7C3AED", fontWeight: 600 }}>+ AI Tutor, Flashcards & Mock Exams</li>
                       </ul>
@@ -1166,7 +1166,7 @@ export default function Pricing() {
               cursor: "pointer", fontFamily: "inherit", width: "100%", textAlign: "left",
             }}
           >
-            <span style={{ fontSize: 14, fontWeight: 700, color: "#64748B", flex: 1 }}>
+            <span style={{ fontSize: 14, fontWeight: 700, color: "#334155", flex: 1 }}>
               Prefer to buy just one course? View individual practice passes
             </span>
             <span style={{ fontSize: 18, color: "#64748B", transform: showIndividual ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
@@ -1331,13 +1331,13 @@ export default function Pricing() {
             textAlign: "center",
           }}
         >
-          <h3 style={{ fontSize: 18, fontWeight: 800, color: "#FFFFFF", margin: "0 0 8px" }}>
+          <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
             Everything you need to pass — included in every subscription
           </h3>
           <p style={{ color: "#64748B", fontSize: 14, margin: "0 0 8px" }}>
             Annual subscription — cancel anytime. Everything unlocked for your province.
           </p>
-          <p style={{ color: "#64748B", fontSize: 12, margin: "0 0 24px" }}>
+          <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
             15,000+ questions across Water Treatment, Wastewater, WQA, and WPI tracks. Canada-specific. AI-explained.
           </p>
           <div className="trust-grid">
@@ -1358,13 +1358,13 @@ export default function Pricing() {
                 key={f.label}
                 style={{
                   padding: "16px 12px",
-                  background: "#FFFFFF",
+                  background: "#F8FAFC",
                   borderRadius: 10,
                   border: "1px solid #E2E8F0",
                 }}
               >
                 <div style={{ fontSize: 24, marginBottom: 6 }}>{f.icon}</div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: "#64748B" }}>{f.label}</div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: "#334155" }}>{f.label}</div>
               </div>
             ))}
           </div>
@@ -1375,7 +1375,7 @@ export default function Pricing() {
       {/* Footer */}
       <div
         style={{
-          background: "#FFFFFF",
+          background: "#0F172A",
           padding: "24px 20px",
           textAlign: "center",
           color: "#64748B",
@@ -1464,10 +1464,10 @@ function ProductCard({
         </div>
 
         {/* Title + description */}
-        <h3 style={{ fontSize: 17, fontWeight: 800, color: "#FFFFFF", margin: "0 0 8px", fontFamily: "Sora, sans-serif", lineHeight: 1.3 }}>
+        <h3 style={{ fontSize: 17, fontWeight: 800, color: "#0F172A", margin: "0 0 8px", fontFamily: "Sora, sans-serif", lineHeight: 1.3 }}>
           {displayName}
         </h3>
-        <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6, margin: "0 0 14px" }}>
+        <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.6, margin: "0 0 14px" }}>
           {displayDesc}
         </p>
 
@@ -1491,7 +1491,7 @@ function ProductCard({
           borderTop: "1px solid #F1F5F9", paddingTop: 12, marginBottom: 12,
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-            <span style={{ fontSize: 28, fontWeight: 900, color: "#FFFFFF", lineHeight: 1 }}>
+            <span style={{ fontSize: 28, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
               CA${(product.priceCAD / 100).toFixed(0)}
             </span>
             {product.available && (
@@ -1505,7 +1505,7 @@ function ProductCard({
           <span style={{
             display: "inline-block",
             fontSize: 11, color: "#64748B", fontWeight: 500,
-            background: "#FFFFFF", border: "1px solid #E2E8F0",
+            background: "#F8FAFC", border: "1px solid #E2E8F0",
             borderRadius: 20, padding: "2px 10px",
           }}>One-time · no subscription</span>
         </div>

@@ -473,7 +473,7 @@ export default function FormulasWpiClass3Ww() {
   })).filter((s) => s.cards.length > 0);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>      <style>{`
+    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }
@@ -495,7 +495,7 @@ export default function FormulasWpiClass3Ww() {
                 ← Practice Quiz
               </button>
             </Link>
-            <span style={{ color: "#94A3B8", fontSize: 13 }}>·</span>
+            <span style={{ color: "#CBD5E1", fontSize: 13 }}>·</span>
             <Link href="/wpi-class3-wastewater-mock">
               <button style={{ background: "none", border: "none", color: "#64748B", fontSize: 13, cursor: "pointer", padding: 0, fontFamily: "inherit" }}>
                 Mock Exam
@@ -504,7 +504,7 @@ export default function FormulasWpiClass3Ww() {
           </div>
           <h1 style={{
             fontFamily: "'Sora', sans-serif", fontSize: "clamp(20px, 3vw, 28px)",
-            fontWeight: 900, color: "#FFFFFF", margin: "0 0 6px",
+            fontWeight: 900, color: "#0F172A", margin: "0 0 6px",
           }}>
             WPI Class III Wastewater Formula Sheet
           </h1>
@@ -534,9 +534,9 @@ export default function FormulasWpiClass3Ww() {
             onClick={() => setActiveSection(null)}
             style={{
               padding: "6px 14px", borderRadius: 20, border: "1.5px solid",
-              borderColor: activeSection === null ? "#0F766E" : "#94A3B8",
+              borderColor: activeSection === null ? "#0F766E" : "#E2E8F0",
               background: activeSection === null ? "#CCFBF1" : "#fff",
-              color: activeSection === null ? "#0F766E" : "#E2E8F0",
+              color: activeSection === null ? "#0F766E" : "#64748B",
               fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
             }}
           >
@@ -548,9 +548,9 @@ export default function FormulasWpiClass3Ww() {
               onClick={() => setActiveSection(activeSection === s.category ? null : s.category)}
               style={{
                 padding: "6px 14px", borderRadius: 20, border: "1.5px solid",
-                borderColor: activeSection === s.category ? s.color : "#94A3B8",
+                borderColor: activeSection === s.category ? s.color : "#E2E8F0",
                 background: activeSection === s.category ? `${s.color}15` : "#fff",
-                color: activeSection === s.category ? s.color : "#E2E8F0",
+                color: activeSection === s.category ? s.color : "#64748B",
                 fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
               }}
             >
@@ -579,11 +579,11 @@ export default function FormulasWpiClass3Ww() {
                     background: "#fff", borderRadius: 14, border: "1px solid #E2E8F0",
                     padding: "20px", overflow: "hidden",
                   }}>
-                    <h3 style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", margin: "0 0 10px" }}>
+                    <h3 style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", margin: "0 0 10px" }}>
                       {card.title}
                     </h3>
                     <div style={{
-                      background: "#FFFFFF", borderRadius: 8, padding: "10px 14px",
+                      background: "#F8FAFC", borderRadius: 8, padding: "10px 14px",
                       marginBottom: 12, fontFamily: "monospace", fontSize: 13,
                       color: section.color, fontWeight: 600, lineHeight: 1.6,
                       borderLeft: `3px solid ${section.color}`,
@@ -612,7 +612,7 @@ export default function FormulasWpiClass3Ww() {
                       </div>
                     </div>
                     {card.notes && (
-                      <div style={{ marginTop: 8, fontSize: 11, color: "#64748B", fontStyle: "italic", lineHeight: 1.5 }}>
+                      <div style={{ marginTop: 8, fontSize: 11, color: "#94A3B8", fontStyle: "italic", lineHeight: 1.5 }}>
                         ⚠️ {card.notes}
                       </div>
                     )}
@@ -627,7 +627,7 @@ export default function FormulasWpiClass3Ww() {
           marginTop: 40, padding: "24px", background: "linear-gradient(135deg, #F0FDFA, #ECFEFF)",
           borderRadius: 16, border: "1px solid #99F6E4", textAlign: "center",
         }}>
-          <div style={{ fontSize: 15, fontWeight: 700, color: "#FFFFFF", marginBottom: 8 }}>
+          <div style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", marginBottom: 8 }}>
             Ready to test your knowledge?
           </div>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -644,7 +644,7 @@ export default function FormulasWpiClass3Ww() {
             <Link href="/wpi-class3-wastewater-mock">
               <button style={{
                 padding: "10px 24px", borderRadius: 10, background: "#fff",
-                color: "#FFFFFF", border: "1.5px solid #E2E8F0", fontSize: 13,
+                color: "#0F172A", border: "1.5px solid #E2E8F0", fontSize: 13,
                 fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
               }}>
                 Mock Exam →

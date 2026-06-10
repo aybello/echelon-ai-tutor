@@ -5,8 +5,7 @@
 import { desc, eq } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchases, subscriptions, users, userFeedback, triggerLogs } from "../../drizzle/schema";
-import { ALL_SUBSCRIPTION_PRODUCTS, TIER_LABELS, PROVINCE_LABELS } from "../stripe/subscriptionProducts";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs } from "../../drizzle/schema";
 import { getDb } from "../db";
 import { adminProcedure, router } from "../_core/trpc";
 import { sendPurchaseConfirmationEmail } from "../email";
@@ -33,13 +32,7 @@ export const adminRouter = router({
       db.select().from(purchases),
       db.select().from(userFeedback),
     ]);
-    const subscriptionRows = await db.select().from(subscriptions);
-    const purchaseRevenueCents = purchaseRows.reduce((acc, p) => acc + p.amountCAD, 0);
-    const subscriptionRevenueCents = subscriptionRows.reduce((acc, s) => {
-      const product = ALL_SUBSCRIPTION_PRODUCTS.find(p => p.tier === s.tier && p.province === s.province);
-      return acc + (product?.priceCAD ?? 0);
-    }, 0);
-    const totalRevenueCents = purchaseRevenueCents + subscriptionRevenueCents;
+    const totalRevenueCents = purchaseRows.reduce((acc, p) => acc + p.amountCAD, 0);
     const avgRating = feedbackRows.length > 0
       ? feedbackRows.reduce((acc, f) => acc + f.rating, 0) / feedbackRows.length
       : 0;
@@ -49,67 +42,12 @@ export const adminRouter = router({
       errorCount: errors.length,
       scoreCount: scores.length,
       purchaseCount: purchaseRows.length,
-      subscriptionCount: subscriptionRows.length,
       totalRevenueCAD: totalRevenueCents / 100,
       feedbackCount: feedbackRows.length,
       avgRating: Math.round(avgRating * 10) / 10,
       triggerCount: (await db.select().from(triggerLogs)).length,
     };
   }),
-
-  /** Unified revenue history — purchases + subscriptions merged, newest first */
-  getRevenueHistory: adminProcedure
-    .input(z.object({ limit: z.number().int().min(1).max(1000).default(500) }))
-    .query(async ({ input }) => {
-      const db = await getDb();
-      if (!db) throw new Error("Database unavailable");
-      const [purchaseRows, subscriptionRows] = await Promise.all([
-        db.select().from(purchases).orderBy(desc(purchases.createdAt)).limit(input.limit),
-        db.select().from(subscriptions).orderBy(desc(subscriptions.createdAt)).limit(input.limit),
-      ]);
-      type RevenueRow = {
-        id: string;
-        type: "purchase" | "subscription";
-        email: string;
-        name: string | null;
-        productLabel: string;
-        productKey: string;
-        amountCAD: number;
-        status: string;
-        createdAt: Date;
-      };
-      const rows: RevenueRow[] = [
-        ...purchaseRows.map(p => ({
-          id: `p-${p.id}`,
-          type: "purchase" as const,
-          email: p.email,
-          name: p.customerName ?? null,
-          productLabel: p.productName,
-          productKey: p.productKey,
-          amountCAD: p.amountCAD,
-          status: p.status,
-          createdAt: p.createdAt,
-        })),
-        ...subscriptionRows.map(s => {
-          const product = ALL_SUBSCRIPTION_PRODUCTS.find(p => p.tier === s.tier && p.province === s.province);
-          const tierLabel = TIER_LABELS[s.tier as keyof typeof TIER_LABELS] ?? s.tier;
-          const provLabel = PROVINCE_LABELS[s.province as keyof typeof PROVINCE_LABELS] ?? s.province;
-          return {
-            id: `s-${s.id}`,
-            type: "subscription" as const,
-            email: s.email,
-            name: null,
-            productLabel: `${tierLabel} — ${provLabel}`,
-            productKey: `${s.tier}/${s.province}`,
-            amountCAD: product?.priceCAD ?? 0,
-            status: s.status,
-            createdAt: s.createdAt,
-          };
-        }),
-      ];
-      rows.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
-      return rows.slice(0, input.limit);
-    }),
 
   /** Paginated list of purchases, newest first */
   getPurchases: adminProcedure

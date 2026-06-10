@@ -57,7 +57,7 @@ export default function MagicLinkConsume() {
     <div
       style={{
         fontFamily: "'Sora', sans-serif",
-        background: "#FFFFFF",
+        background: "#F8FAFC",
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -87,7 +87,7 @@ export default function MagicLinkConsume() {
           {status === "loading" && (
             <>
               <div style={{ fontSize: 40, marginBottom: 16 }}>🔐</div>
-              <h1 style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: "0 0 8px" }}>
+              <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
                 Signing you in…
               </h1>
               <p style={{ color: "#64748B", fontSize: 14 }}>
@@ -113,7 +113,7 @@ export default function MagicLinkConsume() {
               >
                 ✓
               </div>
-              <h1 style={{ fontSize: 24, fontWeight: 900, color: "#FFFFFF", margin: "0 0 8px" }}>
+              <h1 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", margin: "0 0 8px" }}>
                 You're signed in!
               </h1>
               <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
@@ -156,7 +156,7 @@ export default function MagicLinkConsume() {
               >
                 ✕
               </div>
-              <h1 style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: "0 0 8px" }}>
+              <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
                 {status === "expired" ? "Link Expired" : "Invalid Link"}
               </h1>
               <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>

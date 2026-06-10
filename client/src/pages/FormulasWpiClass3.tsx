@@ -262,7 +262,7 @@ export default function FormulasWpiClass3() {
   const [expandedFormula, setExpandedFormula] = useState<string | null>(null);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>      <style>{`
+    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }
@@ -278,7 +278,7 @@ export default function FormulasWpiClass3() {
 
       {/* Hero */}
       <div style={{ background: "linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4338CA 100%)", padding: "48px 24px 40px", textAlign: "center" }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(0,0,0,0.10)", borderRadius: 20, padding: "6px 16px", fontSize: 12, fontWeight: 700, color: "#C7D2FE", marginBottom: 16, letterSpacing: "0.08em" }}>
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.12)", borderRadius: 20, padding: "6px 16px", fontSize: 12, fontWeight: 700, color: "#C7D2FE", marginBottom: 16, letterSpacing: "0.08em" }}>
           🌊 WPI — BC / AB / SK / MB &nbsp;·&nbsp; CLASS III WATER TREATMENT
         </div>
         <h1 style={{ fontSize: "clamp(28px, 5vw, 44px)", fontWeight: 900, color: "#fff", margin: "0 0 12px", lineHeight: 1.1 }}>
@@ -294,7 +294,7 @@ export default function FormulasWpiClass3() {
             </button>
           </Link>
           <Link href="/wpi-class3-water-mock">
-            <button style={{ background: "rgba(0,0,0,0.10)", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", borderRadius: 12, padding: "12px 24px", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>
+            <button style={{ background: "rgba(255,255,255,0.12)", color: "#fff", border: "1px solid rgba(255,255,255,0.25)", borderRadius: 12, padding: "12px 24px", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>
               Mock Exam →
             </button>
           </Link>
@@ -307,7 +307,7 @@ export default function FormulasWpiClass3() {
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 32 }}>
           <button
             onClick={() => setActiveSection(null)}
-            style={{ padding: "8px 16px", borderRadius: 20, fontSize: 13, fontWeight: 600, cursor: "pointer", border: "none", background: activeSection === null ? "#4338CA" : "#94A3B8", color: activeSection === null ? "#fff" : "#E2E8F0" }}
+            style={{ padding: "8px 16px", borderRadius: 20, fontSize: 13, fontWeight: 600, cursor: "pointer", border: "none", background: activeSection === null ? "#4338CA" : "#E2E8F0", color: activeSection === null ? "#fff" : "#475569" }}
           >
             All Sections
           </button>
@@ -315,7 +315,7 @@ export default function FormulasWpiClass3() {
             <button
               key={i}
               onClick={() => setActiveSection(activeSection === i ? null : i)}
-              style={{ padding: "8px 16px", borderRadius: 20, fontSize: 13, fontWeight: 600, cursor: "pointer", border: "none", background: activeSection === i ? s.color : "#94A3B8", color: activeSection === i ? "#fff" : "#E2E8F0" }}
+              style={{ padding: "8px 16px", borderRadius: 20, fontSize: 13, fontWeight: 600, cursor: "pointer", border: "none", background: activeSection === i ? s.color : "#E2E8F0", color: activeSection === i ? "#fff" : "#475569" }}
             >
               {s.emoji} {s.title}
             </button>
@@ -329,7 +329,7 @@ export default function FormulasWpiClass3() {
               <div style={{ width: 40, height: 40, borderRadius: 12, background: section.color, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>
                 {section.emoji}
               </div>
-              <h2 style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: 0 }}>{section.title}</h2>
+              <h2 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: 0 }}>{section.title}</h2>
             </div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -337,16 +337,16 @@ export default function FormulasWpiClass3() {
                 const key = `${si}-${fi}`;
                 const expanded = expandedFormula === key;
                 return (
-                  <div key={fi} style={{ background: "#fff", borderRadius: 16, overflow: "hidden", boxShadow: "0 2px 8px rgba(0,0,0,0.06)", border: `1px solid ${expanded ? section.color : "#94A3B8"}` }}>
+                  <div key={fi} style={{ background: "#fff", borderRadius: 16, overflow: "hidden", boxShadow: "0 2px 8px rgba(0,0,0,0.06)", border: `1px solid ${expanded ? section.color : "#E2E8F0"}` }}>
                     <button
                       onClick={() => setExpandedFormula(expanded ? null : key)}
                       style={{ width: "100%", padding: "18px 20px", background: "none", border: "none", cursor: "pointer", textAlign: "left", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}
                     >
                       <div>
-                        <div style={{ fontSize: 15, fontWeight: 700, color: "#FFFFFF", marginBottom: 4 }}>{f.name}</div>
+                        <div style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", marginBottom: 4 }}>{f.name}</div>
                         <div style={{ fontFamily: "monospace", fontSize: 14, color: section.color, fontWeight: 700 }}>{f.formula}</div>
                       </div>
-                      <div style={{ fontSize: 18, color: "#64748B", flexShrink: 0 }}>{expanded ? "▲" : "▼"}</div>
+                      <div style={{ fontSize: 18, color: "#94A3B8", flexShrink: 0 }}>{expanded ? "▲" : "▼"}</div>
                     </button>
 
                     {expanded && (
@@ -356,7 +356,7 @@ export default function FormulasWpiClass3() {
                           <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Variables</div>
                           <ul style={{ margin: 0, paddingLeft: 20, display: "flex", flexDirection: "column", gap: 4 }}>
                             {f.variables.map((v, vi) => (
-                              <li key={vi} style={{ fontSize: 13, color: "#64748B", lineHeight: 1.5 }}>{v}</li>
+                              <li key={vi} style={{ fontSize: 13, color: "#475569", lineHeight: 1.5 }}>{v}</li>
                             ))}
                           </ul>
                         </div>
@@ -385,11 +385,11 @@ export default function FormulasWpiClass3() {
 
         {/* Quick Reference Table */}
         <div style={{ background: "#fff", borderRadius: 20, padding: "28px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", border: "1px solid #E2E8F0", marginTop: 16 }}>
-          <h3 style={{ fontSize: 18, fontWeight: 800, color: "#FFFFFF", margin: "0 0 20px" }}>⚡ Quick Reference — Class III Key Values</h3>
+          <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", margin: "0 0 20px" }}>⚡ Quick Reference — Class III Key Values</h3>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 10 }}>
             {QUICK_REF.map((item, i) => (
-              <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "#FFFFFF", borderRadius: 10, gap: 8 }}>
-                <span style={{ fontSize: 12, color: "#64748B", lineHeight: 1.4, flex: 1 }}>{item.label}</span>
+              <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 14px", background: "#F8FAFC", borderRadius: 10, gap: 8 }}>
+                <span style={{ fontSize: 12, color: "#475569", lineHeight: 1.4, flex: 1 }}>{item.label}</span>
                 <span style={{ fontSize: 13, fontWeight: 800, color: "#4338CA", flexShrink: 0 }}>{item.value}</span>
               </div>
             ))}
@@ -409,7 +409,7 @@ export default function FormulasWpiClass3() {
             </button>
           </Link>
           <Link href="/wpi">
-            <button style={{ background: "#FFFFFF", color: "#64748B", border: "none", borderRadius: 12, padding: "10px 20px", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
+            <button style={{ background: "#F1F5F9", color: "#475569", border: "none", borderRadius: 12, padding: "10px 20px", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>
               WPI Overview
             </button>
           </Link>

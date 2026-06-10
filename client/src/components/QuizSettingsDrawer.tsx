@@ -102,7 +102,7 @@ export default function QuizSettingsDrawer({
             onClick={onClose}
             style={{
               width: 32, height: 32, borderRadius: "50%",
-              background: "rgba(0,0,0,0.14)", border: "1px solid rgba(255,255,255,0.3)",
+              background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.3)",
               color: "#fff", cursor: "pointer", fontSize: 15,
               display: "flex", alignItems: "center", justifyContent: "center",
             }}
@@ -220,7 +220,7 @@ export default function QuizSettingsDrawer({
                 style={{
                   width: 44, height: 24,
                   borderRadius: 12,
-                  background: local.timedMode ? "#1D4ED8" : "#94A3B8",
+                  background: local.timedMode ? "#1D4ED8" : "#CBD5E1",
                   border: "none",
                   cursor: "pointer",
                   position: "relative",
@@ -270,13 +270,13 @@ export default function QuizSettingsDrawer({
                     );
                   })}
                 </div>
-                <div style={{ fontSize: 11, color: "#64748B", marginTop: 6 }}>
+                <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 6 }}>
                   ⏱ A countdown timer will appear on each question
                 </div>
               </div>
             )}
             {!local.timedMode && (
-              <div style={{ fontSize: 12, color: "#64748B" }}>
+              <div style={{ fontSize: 12, color: "#94A3B8" }}>
                 Practice at your own pace — no time pressure
               </div>
             )}
@@ -297,7 +297,7 @@ export default function QuizSettingsDrawer({
               padding: "11px 0",
               borderRadius: 10,
               border: "1.5px solid #E2E8F0",
-              background: "#FFFFFF",
+              background: "#F8FAFC",
               color: "#374151",
               fontSize: 13,
               fontWeight: 700,

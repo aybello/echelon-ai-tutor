@@ -125,7 +125,7 @@ export function PrimaryDiagram({ active, onClick, color }: DiagramProps) {
         fill="#92400E" opacity={0.35} />
       <path d="M 282 182 L 310 196 L 338 182" fill="#78350F" opacity={0.7} />
       {/* Scraper arm */}
-      <line x1={84} y1={138} x2={546} y2={178} stroke="#E2E8F0" strokeWidth={3} strokeLinecap="round" />
+      <line x1={84} y1={138} x2={546} y2={178} stroke="#475569" strokeWidth={3} strokeLinecap="round" />
       <circle cx={315} cy={158} r={5} fill="#1E3A5C" />
       {/* Effluent weir */}
       <rect x={570} y={44} width={12} height={130} rx={2} fill="#0F766E" opacity={0.75} />
@@ -223,7 +223,7 @@ export function SecondaryClarifierDiagram({ active, onClick, color }: DiagramPro
         fill="#0369A1" opacity={0.3} />
       <path d="M 282 182 L 310 196 L 338 182" fill="#0C4A6E" opacity={0.7} />
       {/* Scraper */}
-      <line x1={84} y1={138} x2={546} y2={178} stroke="#E2E8F0" strokeWidth={3} strokeLinecap="round" />
+      <line x1={84} y1={138} x2={546} y2={178} stroke="#475569" strokeWidth={3} strokeLinecap="round" />
       <circle cx={315} cy={158} r={5} fill="#1E3A5C" />
       {/* Inlet */}
       <path d="M 14 105 L 56 105" stroke={color} strokeWidth={3} />

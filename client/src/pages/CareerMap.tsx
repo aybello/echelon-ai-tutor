@@ -61,22 +61,22 @@ function LevelCard({ level, active, onClick, track }: {
           <div style={{ fontSize: 9, fontWeight: 700, color: level.color, letterSpacing: "0.1em" }}>
             {level.years} experience
           </div>
-          <div style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF" }}>{level.label}</div>
+          <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A" }}>{level.label}</div>
         </div>
       </div>
 
       <div style={{ marginBottom: 10 }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
-          <span style={{ fontSize: 10, color: "#64748B", fontWeight: 600 }}>SALARY RANGE</span>
-          <span style={{ fontSize: 10, color: "#64748B" }}>per hour</span>
+          <span style={{ fontSize: 10, color: "#94A3B8", fontWeight: 600 }}>SALARY RANGE</span>
+          <span style={{ fontSize: 10, color: "#94A3B8" }}>per hour</span>
         </div>
         <div style={{ fontSize: 16, fontWeight: 800, color: level.color, marginBottom: 4 }}>
           {fmtHr(level.hourly.min)} – {fmtHr(level.hourly.max)}
         </div>
         <SalaryBar min={level.annual.min} max={level.annual.max} color={level.color} />
         <div style={{ display: "flex", justifyContent: "space-between", marginTop: 3 }}>
-          <span style={{ fontSize: 9, color: "#64748B" }}>{fmtSalary(level.annual.min)}/yr</span>
-          <span style={{ fontSize: 9, color: "#64748B" }}>{fmtSalary(level.annual.max)}/yr</span>
+          <span style={{ fontSize: 9, color: "#94A3B8" }}>{fmtSalary(level.annual.min)}/yr</span>
+          <span style={{ fontSize: 9, color: "#94A3B8" }}>{fmtSalary(level.annual.max)}/yr</span>
         </div>
       </div>
 
@@ -103,10 +103,10 @@ function DetailPanel({ level, province }: { level: CertLevel | null; province: P
       flexDirection: "column", alignItems: "center", justifyContent: "center",
     }}>
       <div style={{ fontSize: 48, marginBottom: 16 }}>👆</div>
-      <div style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", marginBottom: 8 }}>
+      <div style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 8 }}>
         Select a certification level
       </div>
-      <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.6, maxWidth: 280 }}>
+      <div style={{ fontSize: 12, color: "#94A3B8", lineHeight: 1.6, maxWidth: 280 }}>
         Click any level on the left to see full details — requirements, salary data, what facilities you can operate, and which Echelon course to take.
       </div>
     </div>
@@ -137,7 +137,7 @@ function DetailPanel({ level, province }: { level: CertLevel | null; province: P
             { l: "Annual Range",   v: `${fmtSalary(level.annual.min)}–${fmtSalary(level.annual.max)}` },
             { l: "35-yr Earnings", v: `~${fmtSalary(careerEarnings)}` },
           ].map((s, i) => (
-            <div key={i} style={{ background: "rgba(0,0,0,0.12)", borderRadius: 10, padding: "10px 12px" }}>
+            <div key={i} style={{ background: "rgba(255,255,255,0.15)", borderRadius: 10, padding: "10px 12px" }}>
               <div style={{ fontSize: 9, opacity: 0.8, marginBottom: 3 }}>{s.l}</div>
               <div style={{ fontSize: 14, fontWeight: 800 }}>{s.v}</div>
             </div>
@@ -155,7 +155,7 @@ function DetailPanel({ level, province }: { level: CertLevel | null; province: P
 
       {/* Requirements */}
       <div style={{ background: "#fff", borderRadius: 14, padding: "18px", border: "1px solid #E5E7EB" }}>
-        <div style={{ fontSize: 10, fontWeight: 700, color: "#64748B", letterSpacing: "0.1em", marginBottom: 12 }}>
+        <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 12 }}>
           ✅ REQUIREMENTS
         </div>
         {level.requirements.map((r, i) => (
@@ -183,7 +183,7 @@ function DetailPanel({ level, province }: { level: CertLevel | null; province: P
             borderRadius: 12, padding: "12px 14px",
             border: item.highlight ? `1.5px solid ${level.color}40` : "1px solid #F1F5F9",
           }}>
-            <div style={{ fontSize: 9, fontWeight: 700, color: "#64748B", marginBottom: 4 }}>
+            <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", marginBottom: 4 }}>
               {item.icon} {item.l.toUpperCase()}
             </div>
             <div style={{ fontSize: 11, fontWeight: 600, color: item.highlight ? level.color : "#374151", lineHeight: 1.4 }}>
@@ -208,7 +208,7 @@ function SalaryChart({ province }: { province: ProvinceData }) {
         {l.short}
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ position: "relative", height: 28, background: "#FFFFFF", borderRadius: 99 }}>
+        <div style={{ position: "relative", height: 28, background: "#F1F5F9", borderRadius: 99 }}>
           <div style={{
             position: "absolute",
             left: `${(l.annual.min / maxSalary) * 100}%`,
@@ -223,7 +223,7 @@ function SalaryChart({ province }: { province: ProvinceData }) {
         <div style={{ fontSize: 11, fontWeight: 700, color: l.color }}>
           {fmtSalary(l.annual.min)} – {fmtSalary(l.annual.max)}
         </div>
-        <div style={{ fontSize: 9, color: "#64748B" }}>{fmtHr(l.hourly.min)} – {fmtHr(l.hourly.max)}/hr</div>
+        <div style={{ fontSize: 9, color: "#94A3B8" }}>{fmtHr(l.hourly.min)} – {fmtHr(l.hourly.max)}/hr</div>
       </div>
     </div>
   );
@@ -231,17 +231,17 @@ function SalaryChart({ province }: { province: ProvinceData }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
-        <div style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", marginBottom: 4 }}>
+        <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>
           Salary Progression — {province.name} Water/Wastewater Operators
         </div>
-        <div style={{ fontSize: 11, color: "#64748B", marginBottom: 20 }}>
+        <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 20 }}>
           Based on Job Bank, Indeed.ca, and industry data (2025)
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           {mainLevels.map(l => <BarRow key={l.id} l={l} />)}
           {wqa && (
             <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 14, marginTop: 4 }}>
-              <div style={{ fontSize: 9, fontWeight: 700, color: "#64748B", marginBottom: 10, letterSpacing: "0.1em" }}>
+              <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", marginBottom: 10, letterSpacing: "0.1em" }}>
                 SPECIALIST PATH
               </div>
               <BarRow l={wqa} />
@@ -254,7 +254,7 @@ function SalaryChart({ province }: { province: ProvinceData }) {
           paddingTop: 8, borderTop: "1px solid #F1F5F9", paddingLeft: 84,
         }}>
           {[0, 30000, 60000, 90000, 120000].map(v => (
-            <span key={v} style={{ fontSize: 9, color: "#94A3B8" }}>{v === 0 ? "$0" : fmtSalary(v)}</span>
+            <span key={v} style={{ fontSize: 9, color: "#CBD5E1" }}>{v === 0 ? "$0" : fmtSalary(v)}</span>
           ))}
         </div>
       </div>
@@ -283,10 +283,10 @@ function CareerTimeline({ onSelect, selected, province }: {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
-        <div style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", marginBottom: 4 }}>
+        <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>
           Typical Career Timeline
         </div>
-        <div style={{ fontSize: 11, color: "#64748B", marginBottom: 24 }}>
+        <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 24 }}>
           Water & Wastewater Track — {province.name} (years of experience)
         </div>
 
@@ -321,11 +321,11 @@ function CareerTimeline({ onSelect, selected, province }: {
             {mainLevels.map(l => (
               <div key={l.id} style={{ textAlign: "center", width: 80 }}>
                 <div style={{ fontSize: 11, fontWeight: 800, color: l.color }}>{l.short}</div>
-                <div style={{ fontSize: 9, color: "#64748B" }}>{l.years}</div>
-                <div style={{ fontSize: 10, fontWeight: 700, color: "#FFFFFF", marginTop: 2 }}>
+                <div style={{ fontSize: 9, color: "#94A3B8" }}>{l.years}</div>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "#0F172A", marginTop: 2 }}>
                   {fmtHr(l.hourly.min)}–{fmtHr(l.hourly.max)}
                 </div>
-                <div style={{ fontSize: 9, color: "#64748B" }}>per hour</div>
+                <div style={{ fontSize: 9, color: "#94A3B8" }}>per hour</div>
               </div>
             ))}
           </div>
@@ -335,10 +335,10 @@ function CareerTimeline({ onSelect, selected, province }: {
         <div className="career-salary-jumps" style={{ marginTop: 20, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8 }}>
           {province.salaryJumps.map((j, i) => (
             <div key={i} style={{
-              background: "#FFFFFF", borderRadius: 10, padding: "10px",
+              background: "#F8FAFC", borderRadius: 10, padding: "10px",
               textAlign: "center", border: "1px solid #E5E7EB",
             }}>
-              <div style={{ fontSize: 9, color: "#64748B", marginBottom: 3 }}>{j.from}</div>
+              <div style={{ fontSize: 9, color: "#94A3B8", marginBottom: 3 }}>{j.from}</div>
               <div style={{ fontSize: 18, fontWeight: 800, color: "#059669" }}>{j.jump}</div>
               <div style={{ fontSize: 9, color: "#64748B" }}>{j.note}</div>
             </div>
@@ -349,8 +349,8 @@ function CareerTimeline({ onSelect, selected, province }: {
       {/* WQA specialist path — only for Ontario */}
       {wqaLevel && (
         <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
-          <div style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", marginBottom: 4 }}>🔬 Specialist Path — Water Quality Analyst (WQA)</div>
-          <div style={{ fontSize: 11, color: "#64748B", marginBottom: 16 }}>Distinct from plant operations — laboratory-focused certification under O. Reg. 128/04</div>
+          <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>🔬 Specialist Path — Water Quality Analyst (WQA)</div>
+          <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 16 }}>Distinct from plant operations — laboratory-focused certification under O. Reg. 128/04</div>
           <div className="career-salary-details" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 12 }}>
             {[
               { label: "Entry", years: "0–1 yr", salary: "$26–$30/hr", note: "Lab Technician / Junior Analyst" },
@@ -359,7 +359,7 @@ function CareerTimeline({ onSelect, selected, province }: {
             ].map((step, i) => (
               <div key={i} style={{ background: "#FAF5FF", borderRadius: 12, padding: "14px", border: "1px solid #DDD6FE" }}>
                 <div style={{ fontSize: 9, fontWeight: 700, color: "#7C3AED", letterSpacing: "0.1em", marginBottom: 4 }}>{step.label.toUpperCase()}</div>
-                <div style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF", marginBottom: 2 }}>{step.salary}</div>
+                <div style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", marginBottom: 2 }}>{step.salary}</div>
                 <div style={{ fontSize: 10, color: "#64748B", marginBottom: 4 }}>{step.years}</div>
                 <div style={{ fontSize: 9, color: "#7C3AED", fontWeight: 600 }}>{step.note}</div>
               </div>
@@ -377,10 +377,10 @@ function CareerTimeline({ onSelect, selected, province }: {
 
       {/* Lifetime earnings */}
       <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
-        <div style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", marginBottom: 4 }}>
+        <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>
           Lifetime Earnings Potential
         </div>
-        <div style={{ fontSize: 11, color: "#64748B", marginBottom: 16 }}>
+        <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 16 }}>
           Estimated career earnings by certification level (35-year career, mid-range salary)
         </div>
         <div className="career-timeline-nodes" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 10 }}>
@@ -397,7 +397,7 @@ function CareerTimeline({ onSelect, selected, province }: {
                 <div style={{ fontSize: 16, fontWeight: 800, color: l.color, marginBottom: 2 }}>
                   ${Math.round(career / 1000000 * 10) / 10}M
                 </div>
-                <div style={{ fontSize: 9, color: "#64748B" }}>est. career total</div>
+                <div style={{ fontSize: 9, color: "#94A3B8" }}>est. career total</div>
               </div>
             );
           })}
@@ -412,14 +412,14 @@ function EmployersSection({ province }: { province: ProvinceData }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       <div style={{ background: "#fff", borderRadius: 16, padding: "24px", border: "1px solid #E5E7EB" }}>
-        <div style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", marginBottom: 4 }}>
+        <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>
           Who Hires {province.name} Operators
         </div>
-        <div style={{ fontSize: 11, color: "#64748B", marginBottom: 16 }}>Key employers across the province</div>
+        <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 16 }}>Key employers across the province</div>
         <div className="career-employers-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10 }}>
           {province.employers.map((e, i) => (
             <div key={i} style={{
-              background: "#FFFFFF", borderRadius: 12, padding: "14px",
+              background: "#F8FAFC", borderRadius: 12, padding: "14px",
               border: `1px solid ${e.color}20`,
             }}>
               <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
@@ -429,9 +429,9 @@ function EmployersSection({ province }: { province: ProvinceData }) {
                   background: e.color + "15", padding: "2px 6px", borderRadius: 20,
                 }}>{e.type}</span>
               </div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#FFFFFF", marginBottom: 4 }}>{e.name}</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#0F172A", marginBottom: 4 }}>{e.name}</div>
               <div style={{ fontSize: 10, color: "#64748B", marginBottom: 3 }}>{e.size}</div>
-              <div style={{ fontSize: 9, color: "#64748B", lineHeight: 1.4 }}>{e.note}</div>
+              <div style={{ fontSize: 9, color: "#94A3B8", lineHeight: 1.4 }}>{e.note}</div>
             </div>
           ))}
         </div>
@@ -465,7 +465,7 @@ function ProvinceSelector({ selected, onChange }: {
       background: "#fff", borderBottom: "1px solid #E5E7EB",
       padding: "10px 28px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap",
     }}>
-      <span style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", flexShrink: 0 }}>
+      <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", flexShrink: 0 }}>
         PROVINCE
       </span>
       <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
@@ -477,7 +477,7 @@ function ProvinceSelector({ selected, onChange }: {
               padding: "7px 14px", borderRadius: 8,
               border: `1px solid ${selected === p.id ? "#1D4ED8" : "#E5E7EB"}`,
               background: selected === p.id ? "#EFF6FF" : "transparent",
-              color: selected === p.id ? "#1D4ED8" : "#E2E8F0",
+              color: selected === p.id ? "#1D4ED8" : "#64748B",
               fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
               transition: "all 0.15s",
             }}
@@ -486,7 +486,7 @@ function ProvinceSelector({ selected, onChange }: {
           </button>
         ))}
       </div>
-      <div style={{ fontSize: 10, color: "#64748B", marginLeft: "auto" }}>
+      <div style={{ fontSize: 10, color: "#94A3B8", marginLeft: "auto" }}>
         {PROVINCES.find(p => p.id === selected)?.certBody}
       </div>
     </div>
@@ -538,7 +538,7 @@ export default function CareerMap() {
   const specialistLevel = province.levels.find(l => l.id === "wqa");
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
         @keyframes popIn  { from{opacity:0;transform:scale(0.92)} to{opacity:1;transform:scale(1)} }
@@ -578,7 +578,7 @@ export default function CareerMap() {
             padding: "7px 14px", borderRadius: 8,
             border: `1px solid ${view === v ? "#1D4ED8" : "#E5E7EB"}`,
             background: view === v ? "#EFF6FF" : "transparent",
-            color: view === v ? "#1D4ED8" : "#E2E8F0",
+            color: view === v ? "#1D4ED8" : "#64748B",
             fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
             transition: "all 0.15s",
           }}>{l}</button>
@@ -598,7 +598,7 @@ export default function CareerMap() {
             }}>
               <div style={{ fontSize: 22, marginBottom: 8 }}>{s.icon}</div>
               <div style={{ fontSize: 22, fontWeight: 800, color: s.color, marginBottom: 4 }}>{s.value}</div>
-              <div style={{ fontSize: 10, color: "#64748B", fontWeight: 600 }}>{s.label}</div>
+              <div style={{ fontSize: 10, color: "#94A3B8", fontWeight: 600 }}>{s.label}</div>
             </div>
           ))}
         </div>
@@ -612,7 +612,7 @@ export default function CareerMap() {
               marginBottom: 16, border: "1px solid #E5E7EB",
               display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap",
             }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em" }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em" }}>
                 FILTER BY TRACK
               </span>
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -621,7 +621,7 @@ export default function CareerMap() {
                     padding: "6px 14px", borderRadius: 20,
                     border: `1.5px solid ${track === id ? color : "#E5E7EB"}`,
                     background: track === id ? color + "15" : "transparent",
-                    color: track === id ? color : "#E2E8F0",
+                    color: track === id ? color : "#64748B",
                     fontSize: 10, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
                     transition: "all 0.15s",
                   }}>{label}</button>
@@ -632,7 +632,7 @@ export default function CareerMap() {
             <div className="career-ladder-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 20 }}>
               {/* Left — certification cards */}
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.1em", marginBottom: 4 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 4 }}>
                   CLICK ANY LEVEL TO SEE FULL DETAILS
                 </div>
                 {/* Main ladder */}
@@ -643,7 +643,7 @@ export default function CareerMap() {
                       <div style={{ display: "flex", justifyContent: "center", padding: "4px 0" }}>
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
                           <div style={{ width: 2, height: 10, background: "#E5E7EB" }} />
-                          <div style={{ fontSize: 9, color: "#64748B", fontWeight: 600 }}>
+                          <div style={{ fontSize: 9, color: "#94A3B8", fontWeight: 600 }}>
                             {i === 0 ? "1 yr exp" : i === 1 ? "2 yr exp" : i === 2 ? "3 yr exp" : "3 yr exp"}
                           </div>
                           <div style={{ width: 2, height: 10, background: "#E5E7EB" }} />
@@ -655,7 +655,7 @@ export default function CareerMap() {
                 {/* WQA specialist — Ontario only */}
                 {specialistLevel && (
                   <div style={{ borderTop: "1px dashed #E5E7EB", paddingTop: 14, marginTop: 4 }}>
-                    <div style={{ fontSize: 9, fontWeight: 700, color: "#64748B", letterSpacing: "0.1em", marginBottom: 8 }}>
+                    <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 8 }}>
                       SPECIALIST PATH
                     </div>
                     <LevelCard level={specialistLevel} active={selected} onClick={setSelected} track={track} />

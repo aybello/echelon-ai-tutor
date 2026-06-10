@@ -251,7 +251,7 @@ Your approach:
                 width: 38,
                 height: 38,
                 borderRadius: "50%",
-                background: "rgba(0,0,0,0.14)",
+                background: "rgba(255,255,255,0.2)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -285,7 +285,7 @@ Your approach:
               onClose();
             }}
             style={{
-              background: "rgba(0,0,0,0.12)",
+              background: "rgba(255,255,255,0.15)",
               border: "none",
               color: "#fff",
               width: 30,
@@ -305,7 +305,7 @@ Your approach:
         {patternMode && (
           <div
             style={{
-              background: "rgba(0,0,0,0.12)",
+              background: "rgba(255,255,255,0.15)",
               borderRadius: 8,
               padding: "8px 12px",
               fontSize: 11,
@@ -322,7 +322,7 @@ Your approach:
         <div
           style={{
             padding: "12px 18px",
-            background: "#FFFFFF",
+            background: "#F8FAFC",
             borderBottom: "1px solid #E5E7EB",
             flexShrink: 0,
           }}
@@ -331,7 +331,7 @@ Your approach:
             style={{
               fontSize: 9,
               fontWeight: 700,
-              color: "#64748B",
+              color: "#94A3B8",
               letterSpacing: "0.1em",
               marginBottom: 3,
             }}
@@ -339,7 +339,7 @@ Your approach:
             CURRENT QUESTION
           </div>
           <div
-            style={{ fontSize: 11, fontWeight: 600, color: "#FFFFFF", lineHeight: 1.4 }}
+            style={{ fontSize: 11, fontWeight: 600, color: "#0F172A", lineHeight: 1.4 }}
           >
             {question.module}{(question as any).difficulty ? ` — ${(question as any).difficulty}` : ""}
           </div>
@@ -414,7 +414,7 @@ Your approach:
                     ? "14px 14px 4px 14px"
                     : "14px 14px 14px 4px",
                 background: m.role === "user" ? "#1D4ED8" : (m.content === "__ERROR__" ? "#FEF2F2" : "#F1F5F9"),
-                color: m.role === "user" ? "#fff" : "#F8FAFC",
+                color: m.role === "user" ? "#fff" : "#1E293B",
                 fontSize: 12,
                 lineHeight: 1.65,
               }}
@@ -469,7 +469,7 @@ Your approach:
             </div>
             <div
               style={{
-                background: "#FFFFFF",
+                background: "#F1F5F9",
                 padding: "10px 14px",
                 borderRadius: "14px 14px 14px 4px",
                 display: "flex",
@@ -484,7 +484,7 @@ Your approach:
                     width: 6,
                     height: 6,
                     borderRadius: "50%",
-                    background: "#E2E8F0",
+                    background: "#94A3B8",
                     animation: "pulse 1.2s ease infinite",
                     animationDelay: `${i * 0.2}s`,
                   }}
@@ -507,7 +507,7 @@ Your approach:
           style={{
             fontSize: 9,
             fontWeight: 700,
-            color: "#94A3B8",
+            color: "#CBD5E1",
             letterSpacing: "0.1em",
             marginBottom: 6,
           }}
@@ -524,7 +524,7 @@ Your approach:
                 padding: "5px 10px",
                 borderRadius: 20,
                 border: "1px solid #E5E7EB",
-                background: "#FFFFFF",
+                background: "#F8FAFC",
                 color: "#374151",
                 fontSize: 10,
                 fontWeight: 500,
@@ -565,8 +565,8 @@ Your approach:
             border: "1px solid #E5E7EB",
             fontSize: 12,
             outline: "none",
-            background: "#FFFFFF",
-            color: "#FFFFFF",
+            background: "#F8FAFC",
+            color: "#0F172A",
             fontFamily: "inherit",
           }}
         />
@@ -578,7 +578,7 @@ Your approach:
             borderRadius: 10,
             border: "none",
             background: input.trim() && !loading ? "#1D4ED8" : "#E5E7EB",
-            color: input.trim() && !loading ? "#fff" : "#E2E8F0",
+            color: input.trim() && !loading ? "#fff" : "#94A3B8",
             fontSize: 12,
             fontWeight: 700,
             cursor: input.trim() && !loading ? "pointer" : "not-allowed",

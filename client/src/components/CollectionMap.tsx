@@ -83,14 +83,14 @@ export default function CollectionMap({ onStepClick, activeStepId }: CollectionM
 
         {connectors.map((c) => (
           <g key={c.id}>
-            <path d={c.d} stroke="#94A3B8" strokeWidth={7} fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <path d={c.d} stroke="#E2E8F0" strokeWidth={7} fill="none" strokeLinecap="round" strokeLinejoin="round" />
             <path d={c.d} stroke={c.color} strokeWidth={4} fill="none" strokeLinecap="round" strokeLinejoin="round"
               strokeDasharray="9 6" className="coll-snake-pipe" markerEnd={`url(#coll-arr-${c.id})`} opacity={0.82} />
             {c.label && (
               <g>
                 <rect x={c.labelX - 38} y={c.labelY - 13} width={76} height={22} rx={11} fill="white" stroke={c.color} strokeWidth={1.2} opacity={0.96} />
                 <text x={c.labelX} y={c.labelY - 4} textAnchor="middle" fontSize={7.5} fill={c.color} fontFamily="'Sora', sans-serif" fontWeight={700}>{c.label.split("\n")[0]}</text>
-                {c.label.split("\n")[1] && <text x={c.labelX} y={c.labelY + 5} textAnchor="middle" fontSize={7.5} fill="#E2E8F0" fontFamily="'Sora', sans-serif" fontWeight={600}>{c.label.split("\n")[1]}</text>}
+                {c.label.split("\n")[1] && <text x={c.labelX} y={c.labelY + 5} textAnchor="middle" fontSize={7.5} fill="#64748B" fontFamily="'Sora', sans-serif" fontWeight={600}>{c.label.split("\n")[1]}</text>}
               </g>
             )}
           </g>
@@ -108,7 +108,7 @@ export default function CollectionMap({ onStepClick, activeStepId }: CollectionM
             <g key={step.id} className="coll-snake-node" onClick={() => onStepClick(step.id)} transform={`translate(${x},${y})`}>
               {isActive && <rect x={-5} y={-5} width={SW + 10} height={SH + 10} rx={22} fill="none" stroke={step.color} strokeWidth={3} opacity={0.4} />}
               <rect x={0} y={0} width={SW} height={SH} rx={18}
-                fill={isActive ? step.bg : "#FFFFFF"} stroke={isActive ? step.color : "#94A3B8"} strokeWidth={isActive ? 2.5 : 1.5}
+                fill={isActive ? step.bg : "#FFFFFF"} stroke={isActive ? step.color : "#E2E8F0"} strokeWidth={isActive ? 2.5 : 1.5}
                 style={{ filter: isActive ? `drop-shadow(0 4px 16px ${step.color}45)` : "drop-shadow(0 2px 8px rgba(0,0,0,0.07))" }} />
               <rect x={8} y={8} width={24} height={17} rx={8.5} fill={step.color} />
               <text x={20} y={20} textAnchor="middle" fontSize={9.5} fill="white" fontWeight={800} fontFamily="'Sora', sans-serif">{step.num}</text>

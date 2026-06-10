@@ -128,7 +128,7 @@ function ChainOfCustody() {
     return (
       <div style={{ textAlign: "center", padding: "40px 20px" }}>
         <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
-        <div style={{ fontSize: 20, fontWeight: 800, color: "#FFFFFF", marginBottom: 8 }}>Chain of Custody Submitted</div>
+        <div style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>Chain of Custody Submitted</div>
         <div style={{ fontSize: 13, color: "#64748B", marginBottom: 24 }}>{entries.length} sample(s) recorded · {new Date().toLocaleString()}</div>
         <div style={{ background: "#F0FDF4", borderRadius: 16, padding: "20px", border: "1px solid #BBF7D0", marginBottom: 24, textAlign: "left" }}>
           <div style={{ fontSize: 12, fontWeight: 700, color: "#15803D", marginBottom: 12 }}>📋 Submitted Samples</div>
@@ -156,7 +156,7 @@ function ChainOfCustody() {
 
       <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 20 }}>
         {entries.map((entry, idx) => (
-          <div key={entry.id} style={{ background: "#FFFFFF", borderRadius: 14, padding: "20px", border: "1px solid #E2E8F0" }}>
+          <div key={entry.id} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px", border: "1px solid #E2E8F0" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
               <span style={{ fontSize: 12, fontWeight: 800, color: "#1D4ED8", background: "#DBEAFE", padding: "4px 10px", borderRadius: 20 }}>Sample {entry.id}</span>
               {entries.length > 1 && (
@@ -179,7 +179,7 @@ function ChainOfCustody() {
                     value={entry[field]}
                     onChange={e => updateEntry(idx, field, e.target.value)}
                     placeholder={placeholder}
-                    style={{ width: "100%", padding: "8px 12px", borderRadius: 8, border: "1px solid #E2E8F0", fontSize: 12, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }}
+                    style={{ width: "100%", padding: "8px 12px", borderRadius: 8, border: "1px solid #E2E8F0", fontSize: 12, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }}
                   />
                 </div>
               ))}
@@ -195,7 +195,7 @@ function ChainOfCustody() {
                   <input
                     value={entry[field]}
                     onChange={e => updateEntry(idx, field, e.target.value)}
-                    style={{ width: "100%", padding: "8px 12px", borderRadius: 8, border: "1px solid #E2E8F0", fontSize: 12, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }}
+                    style={{ width: "100%", padding: "8px 12px", borderRadius: 8, border: "1px solid #E2E8F0", fontSize: 12, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }}
                   />
                 </div>
               ))}
@@ -205,7 +205,7 @@ function ChainOfCustody() {
       </div>
 
       <div style={{ display: "flex", gap: 10 }}>
-        <button onClick={addEntry} style={{ flex: 1, padding: "12px", borderRadius: 12, border: "2px dashed #CBD5E1", background: "#FFFFFF", color: "#64748B", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+        <button onClick={addEntry} style={{ flex: 1, padding: "12px", borderRadius: 12, border: "2px dashed #CBD5E1", background: "#F8FAFC", color: "#64748B", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
           + Add Sample
         </button>
         <button onClick={() => setSubmitted(true)} style={{ flex: 2, padding: "12px", borderRadius: 12, border: "none", background: "linear-gradient(135deg, #1D4ED8, #0F766E)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
@@ -282,7 +282,7 @@ function LabCalculators() {
       <div style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
         {calcTabs.map(({ id, label }) => (
           <button key={id} onClick={() => setCalcType(id)}
-            style={{ padding: "8px 16px", borderRadius: 20, border: `2px solid ${calcType === id ? "#1D4ED8" : "#94A3B8"}`, background: calcType === id ? "#EFF6FF" : "#fff", color: calcType === id ? "#1D4ED8" : "#E2E8F0", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+            style={{ padding: "8px 16px", borderRadius: 20, border: `2px solid ${calcType === id ? "#1D4ED8" : "#E2E8F0"}`, background: calcType === id ? "#EFF6FF" : "#fff", color: calcType === id ? "#1D4ED8" : "#64748B", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
             {label}
           </button>
         ))}
@@ -290,14 +290,14 @@ function LabCalculators() {
 
       {calcType === "rpd" && (
         <div>
-          <h3 style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", marginBottom: 16 }}>Relative Percent Difference (RPD)</h3>
+          <h3 style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>Relative Percent Difference (RPD)</h3>
           <p style={{ fontSize: 12, color: "#64748B", marginBottom: 20 }}>Used to assess precision between field duplicates. RPD ≤ 20% is typically acceptable.</p>
           <div className="lab-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
             {[["Sample Result", rpd1, setRpd1], ["Duplicate Result", rpd2, setRpd2]].map(([label, val, set]) => (
               <div key={label as string}>
                 <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label as string}</label>
                 <input type="number" value={val as string} onChange={e => (set as (v: string) => void)(e.target.value)}
-                  style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+                  style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
               </div>
             ))}
           </div>
@@ -311,14 +311,14 @@ function LabCalculators() {
 
       {calcType === "recovery" && (
         <div>
-          <h3 style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", marginBottom: 16 }}>Matrix Spike Recovery</h3>
+          <h3 style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>Matrix Spike Recovery</h3>
           <p style={{ fontSize: 12, color: "#64748B", marginBottom: 20 }}>Acceptable recovery: 70–130%. Outside this range indicates matrix interference or method error.</p>
           <div className="lab-grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 20 }}>
             {[["Unspiked Sample", spikeUnspiked, setSpikeUnspiked], ["Spiked Sample", spikeSpiked, setSpikeSpiked], ["Spike Added", spikeAdded, setSpikeAdded]].map(([label, val, set]) => (
               <div key={label as string}>
                 <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label as string}</label>
                 <input type="number" value={val as string} onChange={e => (set as (v: string) => void)(e.target.value)}
-                  style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+                  style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
               </div>
             ))}
           </div>
@@ -332,14 +332,14 @@ function LabCalculators() {
 
       {calcType === "dilution" && (
         <div>
-          <h3 style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", marginBottom: 16 }}>Dilution Calculator (C₁V₁ = C₂V₂)</h3>
+          <h3 style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>Dilution Calculator (C₁V₁ = C₂V₂)</h3>
           <p style={{ fontSize: 12, color: "#64748B", marginBottom: 20 }}>Used to prepare standards, dilute concentrated samples, or calculate diluted concentrations.</p>
           <div className="lab-grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 20 }}>
             {[["Initial Conc. C₁", c1, setC1], ["Initial Volume V₁ (mL)", v1, setV1], ["Final Volume V₂ (mL)", v2, setV2]].map(([label, val, set]) => (
               <div key={label as string}>
                 <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label as string}</label>
                 <input type="number" value={val as string} onChange={e => (set as (v: string) => void)(e.target.value)}
-                  style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+                  style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
               </div>
             ))}
           </div>
@@ -353,14 +353,14 @@ function LabCalculators() {
 
       {calcType === "bod" && (
         <div>
-          <h3 style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", marginBottom: 16 }}>BOD₅ Calculation</h3>
+          <h3 style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>BOD₅ Calculation</h3>
           <p style={{ fontSize: 12, color: "#64748B", marginBottom: 20 }}>Biochemical Oxygen Demand over 5 days at 20°C. Key wastewater treatment performance metric.</p>
           <div className="lab-grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 20 }}>
             {[["Initial DO (mg/L)", initialDO, setInitialDO], ["Final DO after 5 days (mg/L)", finalDO, setFinalDO], ["Dilution Factor", dilutionFactor, setDilutionFactor]].map(([label, val, set]) => (
               <div key={label as string}>
                 <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label as string}</label>
                 <input type="number" value={val as string} onChange={e => (set as (v: string) => void)(e.target.value)}
-                  style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#FFFFFF", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
+                  style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
               </div>
             ))}
           </div>
@@ -389,7 +389,7 @@ export default function Lab() {
   const [activeTab, setActiveTab] = useState<Tab>("sampling");
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
+    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
         @media (max-width: 640px) {
@@ -418,7 +418,7 @@ export default function Lab() {
         <div className="lab-tab-bar" style={{ display: "flex", gap: 8, marginBottom: 20, flexWrap: "wrap" }}>
           {TABS.map(({ id, label, icon }) => (
             <button key={id} onClick={() => setActiveTab(id)}
-              style={{ padding: "10px 18px", borderRadius: 20, border: `2px solid ${activeTab === id ? "#0F766E" : "#94A3B8"}`, background: activeTab === id ? "#CCFBF1" : "#fff", color: activeTab === id ? "#0F766E" : "#E2E8F0", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", transition: "all 0.15s" }}>
+              style={{ padding: "10px 18px", borderRadius: 20, border: `2px solid ${activeTab === id ? "#0F766E" : "#E2E8F0"}`, background: activeTab === id ? "#CCFBF1" : "#fff", color: activeTab === id ? "#0F766E" : "#64748B", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", transition: "all 0.15s" }}>
               {icon} {label}
             </button>
           ))}
@@ -435,7 +435,7 @@ export default function Lab() {
                   <div style={{ display: "flex", gap: 12, alignItems: "flex-start", marginBottom: 16 }}>
                     <div style={{ width: 44, height: 44, borderRadius: 12, background: proc.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, flexShrink: 0 }}>{proc.icon}</div>
                     <div>
-                      <h3 style={{ fontSize: 15, fontWeight: 800, color: "#FFFFFF", margin: "0 0 4px" }}>{proc.title}</h3>
+                      <h3 style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", margin: "0 0 4px" }}>{proc.title}</h3>
                       <div style={{ fontSize: 11, color: proc.color, fontWeight: 600, background: proc.bg, display: "inline-block", padding: "2px 8px", borderRadius: 20 }}>{proc.regulation}</div>
                     </div>
                   </div>
@@ -468,17 +468,17 @@ export default function Lab() {
                   <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 12 }}>
                     <span style={{ fontSize: 24 }}>{ctrl.icon}</span>
                     <div>
-                      <div style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF" }}>{ctrl.name}</div>
+                      <div style={{ fontSize: 14, fontWeight: 800, color: "#0F172A" }}>{ctrl.name}</div>
                       <div style={{ fontSize: 11, color: ctrl.color, fontWeight: 600 }}>{ctrl.frequency}</div>
                     </div>
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
                     <div>
-                      <div style={{ fontSize: 10, fontWeight: 700, color: "#64748B", marginBottom: 4 }}>PURPOSE</div>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", marginBottom: 4 }}>PURPOSE</div>
                       <div style={{ fontSize: 12, color: "#374151" }}>{ctrl.purpose}</div>
                     </div>
                     <div>
-                      <div style={{ fontSize: 10, fontWeight: 700, color: "#64748B", marginBottom: 4 }}>HOW TO PREPARE</div>
+                      <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", marginBottom: 4 }}>HOW TO PREPARE</div>
                       <div style={{ fontSize: 12, color: "#374151" }}>{ctrl.how}</div>
                     </div>
                   </div>
@@ -494,10 +494,10 @@ export default function Lab() {
           {/* PARAMETER REFERENCE */}
           {activeTab === "parameters" && (
             <div style={{ background: "#fff", borderRadius: 20, padding: "28px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", overflowX: "auto" }}>
-              <h2 style={{ fontSize: 16, fontWeight: 800, color: "#FFFFFF", margin: "0 0 20px" }}>📊 Ontario Drinking Water & Wastewater Parameter Reference</h2>
+              <h2 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", margin: "0 0 20px" }}>📊 Ontario Drinking Water & Wastewater Parameter Reference</h2>
               <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 11, minWidth: 800 }}>
                 <thead>
-                  <tr style={{ background: "#FFFFFF" }}>
+                  <tr style={{ background: "#F8FAFC" }}>
                     {["Parameter", "Unit", "MAC", "AO/Target", "Ontario Standard", "Method", "Hold Time", "Preservation", "Container"].map(h => (
                       <th key={h} style={{ padding: "10px 10px", textAlign: "left", fontWeight: 700, color: "#64748B", borderBottom: "2px solid #E2E8F0", fontSize: 10, whiteSpace: "nowrap" }}>{h}</th>
                     ))}
@@ -507,9 +507,9 @@ export default function Lab() {
                   {PARAMETERS.map((p, i) => (
                     <>
                       <tr key={p.name} style={{ borderBottom: "1px solid #F1F5F9", background: i % 2 === 0 ? "#fff" : "#FAFAFA" }}>
-                        <td style={{ padding: "10px", fontWeight: 700, color: "#FFFFFF", whiteSpace: "nowrap" }}>{p.name}</td>
+                        <td style={{ padding: "10px", fontWeight: 700, color: "#0F172A", whiteSpace: "nowrap" }}>{p.name}</td>
                         <td style={{ padding: "10px", color: "#374151", fontFamily: "monospace" }}>{p.unit}</td>
-                        <td style={{ padding: "10px", color: p.mac !== "—" ? "#DC2626" : "#E2E8F0", fontWeight: p.mac !== "—" ? 700 : 400 }}>{p.mac}</td>
+                        <td style={{ padding: "10px", color: p.mac !== "—" ? "#DC2626" : "#94A3B8", fontWeight: p.mac !== "—" ? 700 : 400 }}>{p.mac}</td>
                         <td style={{ padding: "10px", color: "#374151" }}>{p.ao}</td>
                         <td style={{ padding: "10px", color: "#1D4ED8", fontWeight: 600 }}>{p.ontario}</td>
                         <td style={{ padding: "10px", color: "#374151" }}>{p.method}</td>

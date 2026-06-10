@@ -554,7 +554,7 @@ export default function FormulasWater3() {
   })).filter(s => s.formulas.length > 0);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>      <style>{`
+    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }
@@ -582,17 +582,17 @@ export default function FormulasWater3() {
           </p>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             <Link href="/class3-water">
-              <button style={{ padding: "8px 14px", background: "rgba(0,0,0,0.12)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+              <button style={{ padding: "8px 14px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
                 📝 Practice Quiz
               </button>
             </Link>
             <Link href="/class3-water-mock">
-              <button style={{ padding: "8px 14px", background: "rgba(0,0,0,0.12)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+              <button style={{ padding: "8px 14px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
                 📋 Mock Exam
               </button>
             </Link>
             <Link href="/formulas">
-              <button style={{ padding: "8px 14px", background: "rgba(0,0,0,0.12)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+              <button style={{ padding: "8px 14px", background: "rgba(255,255,255,0.15)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
                 📐 General Formulas
               </button>
             </Link>
@@ -608,7 +608,7 @@ export default function FormulasWater3() {
             placeholder="Search formulas..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            style={{ width: "100%", padding: "12px 16px", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 14, color: "#F8FAFC", background: "#fff", boxSizing: "border-box" }}
+            style={{ width: "100%", padding: "12px 16px", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 14, color: "#1E293B", background: "#fff", boxSizing: "border-box" }}
           />
         </div>
 
@@ -617,7 +617,7 @@ export default function FormulasWater3() {
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 20 }}>
             <button
               onClick={() => setActiveSection(null)}
-              style={{ padding: "8px 14px", background: !activeSection ? "#1E40AF" : "#fff", color: !activeSection ? "#fff" : "#E2E8F0", border: "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+              style={{ padding: "8px 14px", background: !activeSection ? "#1E40AF" : "#fff", color: !activeSection ? "#fff" : "#475569", border: "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
             >
               All Sections
             </button>
@@ -625,7 +625,7 @@ export default function FormulasWater3() {
               <button
                 key={s.id}
                 onClick={() => setActiveSection(activeSection === s.id ? null : s.id)}
-                style={{ padding: "8px 14px", background: activeSection === s.id ? s.color : "#fff", color: activeSection === s.id ? "#fff" : "#E2E8F0", border: "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+                style={{ padding: "8px 14px", background: activeSection === s.id ? s.color : "#fff", color: activeSection === s.id ? "#fff" : "#475569", border: "1px solid #E2E8F0", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer" }}
               >
                 {s.icon} {s.title}
               </button>
@@ -645,7 +645,7 @@ export default function FormulasWater3() {
                 <h2 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: section.color }}>
                   {section.title}
                 </h2>
-                <span style={{ fontSize: 12, color: "#64748B", fontWeight: 600 }}>
+                <span style={{ fontSize: 12, color: "#94A3B8", fontWeight: 600 }}>
                   {section.formulas.length} formulas
                 </span>
               </div>
@@ -658,7 +658,7 @@ export default function FormulasWater3() {
                       <div style={{ fontSize: 13, color: "#64748B", marginTop: 2 }}>Units: {f.units}</div>
                     </div>
                     <div style={{ padding: "14px 18px" }}>
-                      <div style={{ background: "#FFFFFF", borderRadius: 8, padding: "10px 14px", marginBottom: 12, fontFamily: "monospace", fontSize: 14, color: "#F8FAFC", fontWeight: 600, lineHeight: 1.6 }}>
+                      <div style={{ background: "#F8FAFC", borderRadius: 8, padding: "10px 14px", marginBottom: 12, fontFamily: "monospace", fontSize: 14, color: "#1E293B", fontWeight: 600, lineHeight: 1.6 }}>
                         {f.formula}
                       </div>
                       <div style={{ marginBottom: 12 }}>

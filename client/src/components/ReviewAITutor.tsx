@@ -76,12 +76,12 @@ Provide a clear, educational explanation of why the correct answer is right and 
           🤖 Ask AI Tutor
         </button>
       ) : (
-        <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1.5px solid #E0E7FF", padding: "12px 14px", marginTop: 4 }}>
+        <div style={{ background: "#F8FAFC", borderRadius: 10, border: "1.5px solid #E0E7FF", padding: "12px 14px", marginTop: 4 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#4338CA", letterSpacing: "0.06em" }}>🤖 AI TUTOR</span>
             <button
               onClick={() => setOpen(false)}
-              style={{ background: "none", border: "none", cursor: "pointer", color: "#64748B", fontSize: 14, padding: 0 }}
+              style={{ background: "none", border: "none", cursor: "pointer", color: "#94A3B8", fontSize: 14, padding: 0 }}
             >✕</button>
           </div>
           <div style={{ maxHeight: 200, overflowY: "auto", marginBottom: 8 }}>
@@ -91,14 +91,14 @@ Provide a clear, educational explanation of why the correct answer is right and 
                 padding: "8px 10px", borderRadius: 8,
                 background: m.role === "user" ? "#EEF2FF" : "#fff",
                 border: m.role === "assistant" ? "1px solid #E0E7FF" : "none",
-                fontSize: 12, color: "#FFFFFF", lineHeight: 1.6,
+                fontSize: 12, color: "#0F172A", lineHeight: 1.6,
               }}>
                 {m.role === "user" && <span style={{ fontWeight: 700, color: "#4338CA", marginRight: 4 }}>You:</span>}
                 {m.content}
               </div>
             ))}
             {loading && (
-              <div style={{ padding: "8px 10px", borderRadius: 8, background: "#fff", border: "1px solid #E0E7FF", fontSize: 12, color: "#64748B" }}>
+              <div style={{ padding: "8px 10px", borderRadius: 8, background: "#fff", border: "1px solid #E0E7FF", fontSize: 12, color: "#94A3B8" }}>
                 Thinking…
               </div>
             )}
@@ -121,7 +121,7 @@ Provide a clear, educational explanation of why the correct answer is right and 
               style={{
                 padding: "7px 12px", borderRadius: 8, border: "none",
                 background: loading || !input.trim() ? "#E0E7FF" : "#4338CA",
-                color: loading || !input.trim() ? "#E2E8F0" : "#fff",
+                color: loading || !input.trim() ? "#94A3B8" : "#fff",
                 fontWeight: 700, fontSize: 12, cursor: loading || !input.trim() ? "not-allowed" : "pointer",
                 fontFamily: "inherit",
               }}

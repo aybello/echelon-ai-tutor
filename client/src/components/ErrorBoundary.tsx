@@ -39,7 +39,7 @@ class ErrorBoundary extends Component<Props, State> {
         <div
           style={{
             minHeight: "100vh",
-            background: "#FFFFFF",
+            background: "#F1F5F9",
             fontFamily: "'Sora', sans-serif",
             display: "flex",
             alignItems: "center",
@@ -76,7 +76,7 @@ class ErrorBoundary extends Component<Props, State> {
               style={{
                 fontSize: 20,
                 fontWeight: 900,
-                color: "#FFFFFF",
+                color: "#0F172A",
                 margin: "0 0 10px",
               }}
             >
@@ -102,11 +102,11 @@ class ErrorBoundary extends Component<Props, State> {
                 style={{
                   marginBottom: 24,
                   textAlign: "left",
-                  background: "#FFFFFF",
+                  background: "#F8FAFC",
                   borderRadius: 10,
                   padding: "12px 14px",
                   fontSize: 12,
-                  color: "#64748B",
+                  color: "#94A3B8",
                   fontFamily: "monospace",
                   wordBreak: "break-word",
                 }}
@@ -148,8 +148,8 @@ class ErrorBoundary extends Component<Props, State> {
                   gap: 6,
                   padding: "12px 20px",
                   borderRadius: 10,
-                  background: "#FFFFFF",
-                  color: "#FFFFFF",
+                  background: "#F1F5F9",
+                  color: "#0F172A",
                   fontWeight: 700,
                   fontSize: 14,
                   textDecoration: "none",

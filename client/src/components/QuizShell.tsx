@@ -251,7 +251,7 @@ export default function QuizShell({
   if (!current && history.length > 0) {
     const pct = Math.round((correctCount / history.length) * 100);
     return (
-      <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath={currentPath} />
         {showSessionFeedback && examType && (
           <FeedbackModal
@@ -270,7 +270,7 @@ export default function QuizShell({
             textAlign: "center",
           }} className="qs-session-card">
             <div style={{ fontSize: 52, marginBottom: 12 }}>{pct >= 70 ? "🎉" : "📚"}</div>
-            <h2 style={{ fontSize: 24, fontWeight: 800, color: "#FFFFFF", marginBottom: 8 }}>
+            <h2 style={{ fontSize: 24, fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>
               Session Complete!
             </h2>
             <div style={{
@@ -366,8 +366,8 @@ export default function QuizShell({
 
   const correctIdx = current.correctAnswer ?? current.correct ?? (current as any).correctIndex ?? 0;
   const moduleConfig = modules.find(m => m.name === current.module);
-  const moduleBg = moduleConfig?.bg ?? "#1E293B";
-  const moduleColor = moduleConfig?.color ?? "#E2E8F0";
+  const moduleBg = moduleConfig?.bg ?? "#F1F5F9";
+  const moduleColor = moduleConfig?.color ?? "#475569";
   const moduleIcon = moduleConfig?.icon ?? "📚";
 
   // Formula link for current question
@@ -375,7 +375,7 @@ export default function QuizShell({
     ?? (formulaLinks && current.module ? formulaLinks[current.module] : undefined);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
+    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
@@ -401,7 +401,7 @@ export default function QuizShell({
           .qs-header-actions a, .qs-header-actions button { white-space: nowrap !important; flex-shrink: 0 !important; font-size: 11px !important; padding: 5px 10px !important; }
           /* Inline segmented stats bar */
           .qs-stats-only { display: flex !important; flex-wrap: nowrap !important; gap: 0 !important; background: rgba(0,0,0,0.20) !important; border-radius: 10px !important; overflow: hidden !important; margin-top: 10px !important; width: 100% !important; }
-          .qs-stats-only > div { flex: 1 !important; min-width: 0 !important; padding: 6px 4px !important; border-right: 1px solid rgba(0,0,0,0.10) !important; text-align: center !important; background: transparent !important; border-radius: 0 !important; }
+          .qs-stats-only > div { flex: 1 !important; min-width: 0 !important; padding: 6px 4px !important; border-right: 1px solid rgba(255,255,255,0.12) !important; text-align: center !important; background: transparent !important; border-radius: 0 !important; }
           .qs-stats-only > div:last-child { border-right: none !important; }
           /* Scrollable module pills row */
           .qs-module-pills-row { display: flex !important; gap: 5px !important; overflow-x: auto !important; flex-wrap: nowrap !important; -webkit-overflow-scrolling: touch !important; padding-bottom: 4px !important; scrollbar-width: none !important; margin-top: 8px !important; width: 100% !important; }
@@ -438,7 +438,7 @@ export default function QuizShell({
             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               {headerIcon && (
                 <div style={{
-                  background: "rgba(0,0,0,0.14)",
+                  background: "rgba(255,255,255,0.2)",
                   borderRadius: 8,
                   padding: "6px 8px",
                   fontSize: 16,
@@ -496,7 +496,7 @@ export default function QuizShell({
                 <Link key={a.href} href={a.href}>
                   <button style={{
                     padding: "5px 10px",
-                    background: "rgba(0,0,0,0.12)",
+                    background: "rgba(255,255,255,0.15)",
                     color: "#fff",
                     border: "1px solid rgba(255,255,255,0.3)",
                     borderRadius: 8,
@@ -513,7 +513,7 @@ export default function QuizShell({
               <Link href="/dashboard">
                 <button style={{
                   padding: "5px 10px",
-                  background: "rgba(0,0,0,0.12)",
+                  background: "rgba(255,255,255,0.15)",
                   color: "#fff",
                   border: "1px solid rgba(255,255,255,0.3)",
                   borderRadius: 8,
@@ -550,7 +550,7 @@ export default function QuizShell({
               { label: "Accuracy", value: `${accuracy ?? 0}%` },
             ].map(s => (
               <div key={s.label} style={{
-                background: "rgba(0,0,0,0.12)",
+                background: "rgba(255,255,255,0.15)",
                 borderRadius: 8,
                 padding: "3px 10px",
                 textAlign: "center",
@@ -564,7 +564,7 @@ export default function QuizShell({
 
           {/* Free preview indicator — shown when user has not unlocked */}
           {isFreePreview && (
-            <div style={{ marginTop: 8, padding: "6px 12px", background: "rgba(0,0,0,0.10)", borderRadius: 8, fontSize: 11, fontWeight: 700, color: "#fff", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div style={{ marginTop: 8, padding: "6px 12px", background: "rgba(255,255,255,0.12)", borderRadius: 8, fontSize: 11, fontWeight: 700, color: "#fff", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <span>Free preview · {Math.min(history.length, freeLimit)} of {freeLimit} questions</span>
               <span style={{ opacity: 0.8 }}>
                 {Math.max(0, freeLimit - history.length)} left before unlock
@@ -583,7 +583,7 @@ export default function QuizShell({
                     borderRadius: 20,
                     border: "1.5px solid",
                     borderColor: selectedModule === null ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.3)",
-                    background: selectedModule === null ? "rgba(255,255,255,0.25)" : "rgba(0,0,0,0.09)",
+                    background: selectedModule === null ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.1)",
                     color: "#fff",
                     fontSize: 11,
                     fontWeight: 700,
@@ -604,7 +604,7 @@ export default function QuizShell({
                     borderRadius: 20,
                     border: "1.5px solid",
                     borderColor: selectedModule === m.name ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.3)",
-                    background: selectedModule === m.name ? "rgba(255,255,255,0.25)" : "rgba(0,0,0,0.09)",
+                    background: selectedModule === m.name ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.1)",
                     color: "#fff",
                     fontSize: 11,
                     fontWeight: 600,
@@ -625,7 +625,7 @@ export default function QuizShell({
                     borderRadius: 20,
                     border: "1.5px solid",
                     borderColor: calcOnly ? "rgba(167,139,250,0.9)" : "rgba(255,255,255,0.3)",
-                    background: calcOnly ? "rgba(167,139,250,0.35)" : "rgba(0,0,0,0.09)",
+                    background: calcOnly ? "rgba(167,139,250,0.35)" : "rgba(255,255,255,0.1)",
                     color: "#fff",
                     fontSize: 11,
                     fontWeight: 700,
@@ -735,14 +735,14 @@ export default function QuizShell({
                 padding: "3px 10px",
                 borderRadius: 100,
                 background: DIFF_BG[current.difficulty] ?? "#F1F5F9",
-                color: DIFF_COLOR[current.difficulty] ?? "#E2E8F0",
+                color: DIFF_COLOR[current.difficulty] ?? "#475569",
                 fontSize: 10,
                 fontWeight: 700,
               }}>
                 {current.difficulty}
               </span>
             )}
-            <span className="qs-q-counter" style={{ fontSize: 11, color: "#64748B", marginLeft: "auto" }}>
+            <span className="qs-q-counter" style={{ fontSize: 11, color: "#94A3B8", marginLeft: "auto" }}>
               Q{history.length + 1}
             </span>
           </div>
@@ -751,7 +751,7 @@ export default function QuizShell({
           <p style={{
             fontSize: "clamp(13px, 2.2vw, 15px)",
             fontWeight: 700,
-            color: "#FFFFFF",
+            color: "#0F172A",
             lineHeight: 1.5,
             margin: "0 0 12px",
           }}>
@@ -767,9 +767,9 @@ export default function QuizShell({
               const isCorrect  = confirmed && idx === correctIdx;
               const isWrong    = confirmed && isSelected && idx !== correctIdx;
 
-              let bg     = "#1E293B";
-              let border = "#94A3B8";
-              let color  = "#FFFFFF";
+              let bg     = "#F8FAFC";
+              let border = "#E2E8F0";
+              let color  = "#0F172A";
 
               if (isCorrect)       { bg = "#DCFCE7"; border = "#86EFAC"; color = "#15803D"; }
               else if (isWrong)    { bg = "#FEE2E2"; border = "#FCA5A5"; color = "#B91C1C"; }
@@ -848,8 +848,8 @@ export default function QuizShell({
                     borderRadius: 10,
                     background: selected !== null && confidence !== null
                       ? headerGradient
-                      : "#94A3B8",
-                    color: selected !== null && confidence !== null ? "#fff" : "#E2E8F0",
+                      : "#E2E8F0",
+                    color: selected !== null && confidence !== null ? "#fff" : "#94A3B8",
                     fontWeight: 800,
                     fontSize: 14,
                     border: "none",
@@ -896,7 +896,7 @@ export default function QuizShell({
                       borderRadius: 10,
                       border: "1.5px solid #E2E8F0",
                       background: showSteps ? "#EFF6FF" : "#fff",
-                      color: showSteps ? "#0369A1" : "#E2E8F0",
+                      color: showSteps ? "#0369A1" : "#64748B",
                       fontWeight: 700,
                       fontSize: 13,
                       cursor: "pointer",
@@ -918,7 +918,7 @@ export default function QuizShell({
                     borderRadius: 10,
                     border: "1.5px solid #E2E8F0",
                     background: "#fff",
-                    color: "#FFFFFF",
+                    color: "#0F172A",
                     fontWeight: 600,
                     fontSize: 13,
                     cursor: "pointer",
@@ -965,7 +965,7 @@ export default function QuizShell({
                   return (
                     <div key={i} style={{ marginBottom: 4 }}>
                       {isBold ? (
-                        <strong style={{ color: "#FFFFFF" }}>
+                        <strong style={{ color: "#0F172A" }}>
                           {line.replace(/\*\*/g, "")}
                         </strong>
                       ) : (
@@ -1009,7 +1009,7 @@ export default function QuizShell({
                 background: "none",
                 border: "none",
                 fontSize: 11,
-                color: "#64748B",
+                color: "#94A3B8",
                 cursor: "pointer",
                 fontFamily: "inherit",
                 padding: 0,
@@ -1062,7 +1062,7 @@ export default function QuizShell({
           <div
             onClick={e => e.stopPropagation()}
             style={{
-              background: "#FFFFFF",
+              background: "#F8FAFC",
               borderRadius: 18,
               width: "100%",
               maxWidth: 760,
@@ -1075,7 +1075,7 @@ export default function QuizShell({
             <div style={{
               display: "flex", alignItems: "center", justifyContent: "space-between",
               padding: "18px 22px",
-              background: "#FFFFFF",
+              background: "#0F172A",
               color: "#fff",
             }}>
               <div>

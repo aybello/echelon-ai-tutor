@@ -78,7 +78,7 @@ export default function CheckoutContactModal({
     border: "1.5px solid #CBD5E1",
     fontSize: 14,
     fontFamily: "'Sora', sans-serif",
-    color: "#FFFFFF",
+    color: "#0F172A",
     background: "#FAFBFC",
     outline: "none",
     boxSizing: "border-box",
@@ -142,7 +142,7 @@ export default function CheckoutContactModal({
             width: 32,
             height: 32,
             borderRadius: "50%",
-            background: "#FFFFFF",
+            background: "#F1F5F9",
             border: "1px solid #E2E8F0",
             display: "flex",
             alignItems: "center",
@@ -178,7 +178,7 @@ export default function CheckoutContactModal({
             style={{
               fontSize: 20,
               fontWeight: 900,
-              color: "#FFFFFF",
+              color: "#0F172A",
               margin: "0 0 6px",
               letterSpacing: "-0.4px",
             }}
@@ -204,7 +204,7 @@ export default function CheckoutContactModal({
               onChange={(e) => setName(e.target.value)}
               style={{
                 ...inputStyle,
-                borderColor: errors.name ? "#DC2626" : "#94A3B8",
+                borderColor: errors.name ? "#DC2626" : "#CBD5E1",
               }}
               autoComplete="name"
               disabled={isLoading}
@@ -222,7 +222,7 @@ export default function CheckoutContactModal({
               onChange={(e) => setEmail(e.target.value)}
               style={{
                 ...inputStyle,
-                borderColor: errors.email ? "#DC2626" : "#94A3B8",
+                borderColor: errors.email ? "#DC2626" : "#CBD5E1",
               }}
               autoComplete="email"
               disabled={isLoading}
@@ -240,13 +240,13 @@ export default function CheckoutContactModal({
               onChange={(e) => setPhone(e.target.value)}
               style={{
                 ...inputStyle,
-                borderColor: errors.phone ? "#DC2626" : "#94A3B8",
+                borderColor: errors.phone ? "#DC2626" : "#CBD5E1",
               }}
               autoComplete="tel"
               disabled={isLoading}
             />
             {errors.phone && <p style={errorStyle}>{errors.phone}</p>}
-            <p style={{ fontSize: 11, color: "#64748B", marginTop: 4, textAlign: "left" }}>
+            <p style={{ fontSize: 11, color: "#94A3B8", marginTop: 4, textAlign: "left" }}>
               Used to send your access confirmation — no spam, ever.
             </p>
           </div>
@@ -274,7 +274,7 @@ export default function CheckoutContactModal({
             {isLoading ? "Redirecting to checkout…" : "Continue to Secure Checkout →"}
           </button>
 
-          <p style={{ fontSize: 11, color: "#64748B", marginTop: 8, textAlign: "center" }}>
+          <p style={{ fontSize: 11, color: "#94A3B8", marginTop: 8, textAlign: "center" }}>
             🔒 Secure checkout via Stripe · One-time payment · No subscription
           </p>
         </form>

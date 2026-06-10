@@ -74,7 +74,7 @@ export default function ReportErrorModal({ questionId, questionText, module, onC
         {submitted ? (
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: 48, marginBottom: 12 }}>✅</div>
-            <div style={{ fontSize: 18, fontWeight: 800, color: "#FFFFFF", marginBottom: 8 }}>
+            <div style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>
               Thanks for the report!
             </div>
             <div style={{ fontSize: 13, color: "#64748B", marginBottom: 24, lineHeight: 1.65 }}>
@@ -102,10 +102,10 @@ export default function ReportErrorModal({ questionId, questionText, module, onC
             {/* Header */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
               <div>
-                <div style={{ fontSize: 16, fontWeight: 800, color: "#FFFFFF", marginBottom: 4 }}>
+                <div style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>
                   🚩 Report a Question Error
                 </div>
-                <div style={{ fontSize: 11, color: "#64748B" }}>
+                <div style={{ fontSize: 11, color: "#94A3B8" }}>
                   Q{questionId} · {module}
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function ReportErrorModal({ questionId, questionText, module, onC
                   background: "none",
                   border: "none",
                   fontSize: 18,
-                  color: "#64748B",
+                  color: "#94A3B8",
                   cursor: "pointer",
                   padding: "4px",
                   lineHeight: 1,
@@ -127,7 +127,7 @@ export default function ReportErrorModal({ questionId, questionText, module, onC
 
             {/* Question preview */}
             <div style={{
-              background: "#FFFFFF",
+              background: "#F8FAFC",
               borderRadius: 10,
               padding: "12px 14px",
               marginBottom: 20,
@@ -157,7 +157,7 @@ export default function ReportErrorModal({ questionId, questionText, module, onC
                       gap: 10,
                       padding: "10px 14px",
                       borderRadius: 10,
-                      border: `2px solid ${reportType === rt.value ? "#1D4ED8" : "#94A3B8"}`,
+                      border: `2px solid ${reportType === rt.value ? "#1D4ED8" : "#E2E8F0"}`,
                       background: reportType === rt.value ? "#EFF6FF" : "#F8FAFC",
                       cursor: "pointer",
                       transition: "all 0.15s",
@@ -186,7 +186,7 @@ export default function ReportErrorModal({ questionId, questionText, module, onC
             {/* Optional details */}
             <div style={{ marginBottom: 16 }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#374151", marginBottom: 6 }}>
-                Additional details <span style={{ color: "#64748B", fontWeight: 400 }}>(optional)</span>
+                Additional details <span style={{ color: "#94A3B8", fontWeight: 400 }}>(optional)</span>
               </div>
               <textarea
                 value={details}
@@ -199,7 +199,7 @@ export default function ReportErrorModal({ questionId, questionText, module, onC
                   padding: "10px 12px",
                   borderRadius: 10,
                   border: "1px solid #E2E8F0",
-                  background: "#FFFFFF",
+                  background: "#F8FAFC",
                   fontSize: 12,
                   color: "#374151",
                   fontFamily: "inherit",
@@ -209,7 +209,7 @@ export default function ReportErrorModal({ questionId, questionText, module, onC
                   lineHeight: 1.6,
                 }}
               />
-              <div style={{ fontSize: 10, color: "#64748B", textAlign: "right", marginTop: 2 }}>
+              <div style={{ fontSize: 10, color: "#94A3B8", textAlign: "right", marginTop: 2 }}>
                 {details.length}/500
               </div>
             </div>
@@ -255,8 +255,8 @@ export default function ReportErrorModal({ questionId, questionText, module, onC
                   padding: "12px",
                   borderRadius: 12,
                   border: "none",
-                  background: reportMutation.isPending ? "#94A3B8" : "linear-gradient(135deg, #1D4ED8, #0F766E)",
-                  color: reportMutation.isPending ? "#E2E8F0" : "#fff",
+                  background: reportMutation.isPending ? "#E2E8F0" : "linear-gradient(135deg, #1D4ED8, #0F766E)",
+                  color: reportMutation.isPending ? "#94A3B8" : "#fff",
                   fontSize: 13,
                   fontWeight: 700,
                   cursor: reportMutation.isPending ? "not-allowed" : "pointer",

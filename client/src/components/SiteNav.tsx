@@ -323,8 +323,8 @@ function ResourcesDropdown({ currentPath }: { currentPath: string }) {
           position: "absolute",
           top: "calc(100% + 8px)",
           left: 0,
-          background: "#FFFFFF",
-          border: "1px solid rgba(0,0,0,0.09)",
+          background: "#1E293B",
+          border: "1px solid rgba(255,255,255,0.1)",
           borderRadius: 10,
           boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
           minWidth: 180,
@@ -343,7 +343,7 @@ function ResourcesDropdown({ currentPath }: { currentPath: string }) {
                   cursor: "pointer",
                   transition: "background 0.12s",
                 }}
-                onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,0,0,0.07)")}
+                onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.06)")}
                 onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
               >
                 {item.label}
@@ -445,8 +445,8 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
         }
       `}</style>
       <nav style={{
-        background: "#FFFFFF",
-        borderBottom: "1px solid rgba(0,0,0,0.08)",
+        background: "#0F172A",
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
         padding: "0 20px",
         height: 56,
         display: "flex",
@@ -586,7 +586,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
           aria-label={open ? "Close menu" : "Open menu"}
           style={{
             background: "transparent",
-            border: "1px solid rgba(0,0,0,0.12)",
+            border: "1px solid rgba(255,255,255,0.15)",
             borderRadius: 8,
             color: "#fff",
             fontSize: 18,
@@ -596,7 +596,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
             flexShrink: 0,
             transition: "background 0.15s",
           }}
-          onMouseEnter={e => (e.currentTarget.style.background = "rgba(0,0,0,0.08)")}
+          onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.08)")}
           onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
         >
           {open ? "✕" : "☰"}
@@ -622,11 +622,11 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
         top: 56,
         left: 0,
         right: 0,
-        background: "#FFFFFF",
+        background: "#0F172A",
         zIndex: 199,
         transform: open ? "translateY(0)" : "translateY(calc(-100% - 56px))",
         transition: "transform 0.28s cubic-bezier(0.4,0,0.2,1)",
-        borderBottom: "1px solid rgba(0,0,0,0.09)",
+        borderBottom: "1px solid rgba(255,255,255,0.1)",
         boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
       }}>
         {/* Quick actions — 6 tiles */}
@@ -635,7 +635,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
           gridTemplateColumns: "1fr 1fr 1fr",
           gap: 8,
           padding: "12px 16px 10px",
-          borderBottom: "1px solid rgba(0,0,0,0.08)",
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
         }}>
           {[
             { label: "📝 OIT Practice", href: "/quiz", accent: "linear-gradient(135deg, #1D4ED8, #0E7490)" },
@@ -651,7 +651,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
                   padding: "10px 6px",
                   borderRadius: 10,
                   background: tile.accent ?? "rgba(255,255,255,0.07)",
-                  border: tile.accent ? "none" : "1px solid rgba(0,0,0,0.09)",
+                  border: tile.accent ? "none" : "1px solid rgba(255,255,255,0.1)",
                   color: "#fff",
                   fontSize: 11,
                   fontWeight: 700,
@@ -711,7 +711,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
           display: "flex",
           overflowX: "auto",
           gap: 0,
-          borderBottom: "1px solid rgba(0,0,0,0.08)",
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
           scrollbarWidth: "none",
         }}>
           {DRAWER_SECTIONS.map(section => {

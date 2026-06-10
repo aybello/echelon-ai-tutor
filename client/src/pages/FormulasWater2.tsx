@@ -472,8 +472,8 @@ function FormulaCard({ f }: { f: Formula }) {
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
           <div>
-            <div style={{ fontSize: 15, fontWeight: 700, color: "#FFFFFF", marginBottom: 6 }}>{f.name}</div>
-            <code style={{ fontSize: 13, background: "#FFFFFF", padding: "4px 10px", borderRadius: 6, color: "#1D4ED8", fontFamily: "monospace", display: "inline-block", lineHeight: 1.5 }}>
+            <div style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", marginBottom: 6 }}>{f.name}</div>
+            <code style={{ fontSize: 13, background: "#F1F5F9", padding: "4px 10px", borderRadius: 6, color: "#1D4ED8", fontFamily: "monospace", display: "inline-block", lineHeight: 1.5 }}>
               {f.formula}
             </code>
             {f.units && <span style={{ fontSize: 11, color: "#64748B", marginLeft: 8 }}>[{f.units}]</span>}
@@ -489,8 +489,8 @@ function FormulaCard({ f }: { f: Formula }) {
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                 {f.variables.map(v => (
                   <div key={v.sym} style={{ display: "flex", gap: 10, fontSize: 13 }}>
-                    <code style={{ background: "#FFFFFF", padding: "1px 6px", borderRadius: 4, color: "#7C3AED", fontFamily: "monospace", flexShrink: 0, minWidth: 40, textAlign: "center" }}>{v.sym}</code>
-                    <span style={{ color: "#64748B" }}>{v.desc}</span>
+                    <code style={{ background: "#F8FAFC", padding: "1px 6px", borderRadius: 4, color: "#7C3AED", fontFamily: "monospace", flexShrink: 0, minWidth: 40, textAlign: "center" }}>{v.sym}</code>
+                    <span style={{ color: "#475569" }}>{v.desc}</span>
                   </div>
                 ))}
               </div>
@@ -499,8 +499,8 @@ function FormulaCard({ f }: { f: Formula }) {
           {f.example && (
             <div style={{ background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 10, padding: "12px 14px", marginBottom: 12 }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#15803D", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Worked Example</div>
-              <div style={{ fontSize: 13, color: "#F8FAFC", marginBottom: 4 }}><strong>Q:</strong> {f.example.problem}</div>
-              <div style={{ fontSize: 13, color: "#64748B", marginBottom: 4 }}><strong>Solution:</strong> {f.example.solution}</div>
+              <div style={{ fontSize: 13, color: "#1E293B", marginBottom: 4 }}><strong>Q:</strong> {f.example.problem}</div>
+              <div style={{ fontSize: 13, color: "#475569", marginBottom: 4 }}><strong>Solution:</strong> {f.example.solution}</div>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#15803D" }}>✓ {f.example.answer}</div>
             </div>
           )}
@@ -542,7 +542,7 @@ export default function FormulasWater2() {
   const totalFormulas = CATEGORIES.reduce((s, c) => s + c.formulas.length, 0);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>      <style>{`
+    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }
@@ -565,12 +565,12 @@ export default function FormulasWater2() {
         </p>
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
           <Link href="/class2-water">
-            <button style={{ padding: "9px 18px", borderRadius: 8, background: "rgba(0,0,0,0.12)", border: "1.5px solid rgba(255,255,255,0.3)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+            <button style={{ padding: "9px 18px", borderRadius: 8, background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.3)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
               ← Practice Quiz
             </button>
           </Link>
           <Link href="/class2-water-mock">
-            <button style={{ padding: "9px 18px", borderRadius: 8, background: "rgba(0,0,0,0.12)", border: "1.5px solid rgba(255,255,255,0.3)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+            <button style={{ padding: "9px 18px", borderRadius: 8, background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.3)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
               📋 Mock Exam
             </button>
           </Link>
@@ -589,7 +589,7 @@ export default function FormulasWater2() {
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 24 }}>
           <button
             onClick={() => setActiveCategory(null)}
-            style={{ padding: "6px 14px", borderRadius: 20, border: "1.5px solid #E2E8F0", background: !activeCategory ? "#1D4ED8" : "#fff", color: !activeCategory ? "#fff" : "#E2E8F0", fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}
+            style={{ padding: "6px 14px", borderRadius: 20, border: "1.5px solid #E2E8F0", background: !activeCategory ? "#1D4ED8" : "#fff", color: !activeCategory ? "#fff" : "#475569", fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}
           >
             All
           </button>
@@ -606,7 +606,7 @@ export default function FormulasWater2() {
 
         {/* Categories */}
         {filtered.length === 0 ? (
-          <div style={{ textAlign: "center", padding: "48px 0", color: "#64748B", fontSize: 15 }}>
+          <div style={{ textAlign: "center", padding: "48px 0", color: "#94A3B8", fontSize: 15 }}>
             No formulas match "{search}". Try a different keyword.
           </div>
         ) : (
@@ -616,7 +616,7 @@ export default function FormulasWater2() {
                 <div style={{ width: 36, height: 36, borderRadius: 10, background: cat.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>{cat.icon}</div>
                 <div>
                   <h2 style={{ fontSize: 18, fontWeight: 800, color: cat.color, margin: 0 }}>{cat.label}</h2>
-                  <div style={{ fontSize: 12, color: "#64748B" }}>{cat.formulas.length} formula{cat.formulas.length !== 1 ? "s" : ""}</div>
+                  <div style={{ fontSize: 12, color: "#94A3B8" }}>{cat.formulas.length} formula{cat.formulas.length !== 1 ? "s" : ""}</div>
                 </div>
               </div>
               {cat.formulas.map(f => <FormulaCard key={f.name} f={f} />)}
@@ -624,7 +624,7 @@ export default function FormulasWater2() {
           ))
         )}
 
-        <div style={{ textAlign: "center", padding: "32px 0 48px", fontSize: 12, color: "#64748B" }}>
+        <div style={{ textAlign: "center", padding: "32px 0 48px", fontSize: 12, color: "#94A3B8" }}>
           Formulas reference Ontario Regulation 169/03, O. Reg. 170/03, O. Reg. 128/04, and standard water treatment engineering references.
         </div>
       </div>

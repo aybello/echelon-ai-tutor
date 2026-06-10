@@ -602,7 +602,7 @@ export default function FormulasWater1() {
   const totalFormulas = CATEGORIES.reduce((sum, c) => sum + c.formulas.length, 0);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>      <style>{`
+    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }
@@ -626,13 +626,13 @@ export default function FormulasWater1() {
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16, flexWrap: "wrap" }}>
             <Link href="/class1-water">
               <span style={{
-                background: "rgba(0,0,0,0.12)", border: "1px solid rgba(255,255,255,0.3)",
+                background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)",
                 borderRadius: 20, padding: "4px 14px", fontSize: 13, cursor: "pointer", color: "#fff",
               }}>← Class 1 Water Practice</span>
             </Link>
             <Link href="/class1-water-mock">
               <span style={{
-                background: "rgba(0,0,0,0.12)", border: "1px solid rgba(255,255,255,0.3)",
+                background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)",
                 borderRadius: 20, padding: "4px 14px", fontSize: 13, cursor: "pointer", color: "#fff",
               }}>📋 Mock Exam →</span>
             </Link>
@@ -671,9 +671,9 @@ export default function FormulasWater1() {
             onClick={() => setActiveCategory(null)}
             style={{
               padding: "6px 14px", borderRadius: 20, fontSize: 13, cursor: "pointer",
-              border: "1.5px solid " + (activeCategory === null ? "#1D4ED8" : "#94A3B8"),
+              border: "1.5px solid " + (activeCategory === null ? "#1D4ED8" : "#E2E8F0"),
               background: activeCategory === null ? "#EFF6FF" : "#fff",
-              color: activeCategory === null ? "#1D4ED8" : "#E2E8F0",
+              color: activeCategory === null ? "#1D4ED8" : "#64748B",
               fontWeight: activeCategory === null ? 700 : 400,
             }}
           >All</button>
@@ -683,9 +683,9 @@ export default function FormulasWater1() {
               onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
               style={{
                 padding: "6px 14px", borderRadius: 20, fontSize: 13, cursor: "pointer",
-                border: "1.5px solid " + (activeCategory === cat.id ? cat.color : "#94A3B8"),
+                border: "1.5px solid " + (activeCategory === cat.id ? cat.color : "#E2E8F0"),
                 background: activeCategory === cat.id ? cat.bg : "#fff",
-                color: activeCategory === cat.id ? cat.color : "#E2E8F0",
+                color: activeCategory === cat.id ? cat.color : "#64748B",
                 fontWeight: activeCategory === cat.id ? 700 : 400,
               }}
             >{cat.icon} {cat.label}</button>
@@ -714,7 +714,7 @@ export default function FormulasWater1() {
                   background: "#fff", borderRadius: 12, padding: "20px 24px",
                   border: "1px solid #E2E8F0", boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
                 }}>
-                  <div style={{ fontWeight: 700, fontSize: 16, color: "#F8FAFC", marginBottom: 10 }}>
+                  <div style={{ fontWeight: 700, fontSize: 16, color: "#1E293B", marginBottom: 10 }}>
                     {f.name}
                   </div>
                   <div style={{
@@ -730,8 +730,8 @@ export default function FormulasWater1() {
                   {f.variables && f.variables.length > 0 && (
                     <div style={{ marginBottom: 12 }}>
                       {f.variables.map((v, vi) => (
-                        <div key={vi} style={{ fontSize: 13, color: "#64748B", marginBottom: 3 }}>
-                          <span style={{ fontWeight: 600, color: "#F8FAFC", fontFamily: "monospace" }}>{v.sym}</span>
+                        <div key={vi} style={{ fontSize: 13, color: "#475569", marginBottom: 3 }}>
+                          <span style={{ fontWeight: 600, color: "#1E293B", fontFamily: "monospace" }}>{v.sym}</span>
                           {" — "}{v.desc}
                         </div>
                       ))}
@@ -740,14 +740,14 @@ export default function FormulasWater1() {
 
                   {f.example && (
                     <div style={{
-                      background: "#FFFFFF", borderRadius: 8, padding: "12px 14px",
+                      background: "#F8FAFC", borderRadius: 8, padding: "12px 14px",
                       marginBottom: 10, border: "1px solid #E2E8F0",
                     }}>
                       <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                         Worked Example
                       </div>
-                      <div style={{ fontSize: 13, color: "#64748B", marginBottom: 4 }}>{f.example.problem}</div>
-                      <div style={{ fontSize: 13, color: "#64748B", marginBottom: 4, fontFamily: "monospace" }}>{f.example.solution}</div>
+                      <div style={{ fontSize: 13, color: "#334155", marginBottom: 4 }}>{f.example.problem}</div>
+                      <div style={{ fontSize: 13, color: "#475569", marginBottom: 4, fontFamily: "monospace" }}>{f.example.solution}</div>
                       <div style={{ fontSize: 14, fontWeight: 700, color: "#15803D" }}>✓ {f.example.answer}</div>
                     </div>
                   )}
@@ -785,7 +785,7 @@ export default function FormulasWater1() {
                   {REGULATORY_LIMITS.map((row, i) => (
                     <tr key={i} style={{ borderBottom: i < REGULATORY_LIMITS.length - 1 ? "1px solid #F1F5F9" : "none" }}>
                       <td style={{ padding: "10px 16px", fontSize: 13, fontWeight: 600, color: "#1E293B" }}>{row.parameter}</td>
-                      <td style={{ padding: "10px 16px", fontSize: 13, color: "#64748B" }}>{row.limit}</td>
+                      <td style={{ padding: "10px 16px", fontSize: 13, color: "#334155" }}>{row.limit}</td>
                       <td style={{ padding: "10px 16px", fontSize: 12, color: "#64748B", fontFamily: "monospace" }}>{row.regulation}</td>
                     </tr>
                   ))}
@@ -796,7 +796,7 @@ export default function FormulasWater1() {
         )}
 
         {filtered.length === 0 && (
-          <div style={{ textAlign: "center", padding: "60px 20px", color: "#64748B" }}>
+          <div style={{ textAlign: "center", padding: "60px 20px", color: "#94A3B8" }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
             <div style={{ fontSize: 16 }}>No formulas match your search. Try a different keyword.</div>
           </div>

@@ -76,7 +76,7 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
               style={{ height: 44, width: 46 }}
             />
             <div>
-              <div style={{ fontSize: 15, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em" }}>Echelon Institute</div>
+              <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em" }}>Echelon Institute</div>
               <div style={{ fontSize: 10, color: "#64748B", fontWeight: 500, marginTop: -2 }}>Canadian Water & Wastewater Operator Certification</div>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
                 style={{
                   padding: "6px 14px",
                   borderRadius: "8px 8px 0 0",
-                  color: isActive ? "#1D4ED8" : "#E2E8F0",
+                  color: isActive ? "#1D4ED8" : "#475569",
                   fontSize: 13, fontWeight: isActive ? 700 : 600,
                   textDecoration: "none",
                   transition: "color 0.15s, background 0.15s",
@@ -103,7 +103,7 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
                   background: isActive ? "rgba(29,78,216,0.05)" : "transparent",
                 }}
                 onMouseEnter={e => { if (!isActive) { e.currentTarget.style.color = "#1D4ED8"; e.currentTarget.style.background = "rgba(29,78,216,0.06)"; } }}
-                onMouseLeave={e => { if (!isActive) { e.currentTarget.style.color = "#E2E8F0"; e.currentTarget.style.background = "transparent"; } }}
+                onMouseLeave={e => { if (!isActive) { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; } }}
               >
                 {item.label}
               </a>
@@ -118,7 +118,7 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
                 style={{
                   padding: "6px 14px",
                   borderRadius: "8px 8px 0 0",
-                  color: isActive ? "#1D4ED8" : "#E2E8F0",
+                  color: isActive ? "#1D4ED8" : "#475569",
                   fontSize: 13, fontWeight: isActive ? 700 : 600,
                   textDecoration: "none",
                   transition: "color 0.15s, background 0.15s",
@@ -127,7 +127,7 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
                   background: isActive ? "rgba(29,78,216,0.05)" : "transparent",
                 }}
                 onMouseEnter={e => { if (!isActive) { e.currentTarget.style.color = "#1D4ED8"; e.currentTarget.style.background = "rgba(29,78,216,0.06)"; } }}
-                onMouseLeave={e => { if (!isActive) { e.currentTarget.style.color = "#E2E8F0"; e.currentTarget.style.background = "transparent"; } }}
+                onMouseLeave={e => { if (!isActive) { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; } }}
               >
                 🎫 My Passes
               </a>
@@ -140,10 +140,10 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
               onClick={() => setResourcesOpen(o => !o)}
               onBlur={() => setTimeout(() => setResourcesOpen(false), 150)}
               onMouseEnter={e => { e.currentTarget.style.color = "#1D4ED8"; e.currentTarget.style.background = "rgba(29,78,216,0.06)"; }}
-              onMouseLeave={e => { e.currentTarget.style.color = "#E2E8F0"; e.currentTarget.style.background = "transparent"; }}
+              onMouseLeave={e => { e.currentTarget.style.color = "#475569"; e.currentTarget.style.background = "transparent"; }}
               style={{
                 padding: "6px 14px", borderRadius: 8,
-                color: "#64748B", fontSize: 13, fontWeight: 600,
+                color: "#475569", fontSize: 13, fontWeight: 600,
                 background: "transparent", border: "none",
                 cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
                 display: "flex", alignItems: "center", gap: 4,
@@ -164,10 +164,10 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
                     onClick={() => setResourcesOpen(false)}
                     style={{
                       display: "block", padding: "9px 16px",
-                      fontSize: 13, color: "#64748B", fontWeight: 500,
+                      fontSize: 13, color: "#334155", fontWeight: 500,
                       textDecoration: "none",
                     }}
-                    onMouseEnter={e => (e.currentTarget.style.background = "#EFF6FF")}
+                    onMouseEnter={e => (e.currentTarget.style.background = "#F8FAFC")}
                     onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
                   >
                     {item.label}
@@ -225,7 +225,7 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
             background: "transparent",
             border: "1px solid #E2E8F0",
             borderRadius: 8,
-            color: "#FFFFFF",
+            color: "#0F172A",
             fontSize: 18,
             cursor: "pointer",
             padding: "5px 10px",
@@ -288,7 +288,7 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
                   borderRadius: 10,
                   background: tile.accent === true ? "linear-gradient(135deg, #1D4ED8, #0E7490)" : tile.accent === "purple" ? "linear-gradient(135deg, #7C3AED, #1D4ED8)" : "#F8FAFC",
                   border: tile.accent ? "none" : "1px solid #E2E8F0",
-                  color: tile.accent ? "#fff" : "#FFFFFF",
+                  color: tile.accent ? "#fff" : "#0F172A",
                   fontSize: 11,
                   fontWeight: 700,
                   textAlign: "center" as const,
@@ -322,7 +322,7 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
                 style={{
                   flexShrink: 0,
                   padding: "11px 14px",
-                  color: isMobileActive ? "#1D4ED8" : "#E2E8F0",
+                  color: isMobileActive ? "#1D4ED8" : "#475569",
                   fontSize: 12,
                   fontWeight: isMobileActive ? 700 : 600,
                   textDecoration: "none",
@@ -358,7 +358,7 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
                   style={{
                     padding: "8px 10px",
                     borderRadius: 8,
-                    color: "#64748B",
+                    color: "#475569",
                     fontSize: 12,
                     fontWeight: 500,
                     cursor: "pointer",

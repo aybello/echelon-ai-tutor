@@ -36,8 +36,8 @@ export default function WpiClass4WaterCollQuiz() {
   const MODULES: ModuleConfig[] = dbModules.map((m) => ({
     name: m,
     icon: MODULE_ICONS[m] ?? "📚",
-    bg: MODULE_COLORS[m]?.bg ?? "#1E293B",
-    color: MODULE_COLORS[m]?.color ?? "#E2E8F0",
+    bg: MODULE_COLORS[m]?.bg ?? "#F1F5F9",
+    color: MODULE_COLORS[m]?.color ?? "#475569",
   }));
 
   const session = useQuizSession({ examType: "wpi-class4-water-coll", allQuestions });

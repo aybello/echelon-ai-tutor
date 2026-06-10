@@ -484,7 +484,7 @@ export default function FormulasWQA() {
   })).filter((cat) => cat.formulas.length > 0);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF", fontFamily: "'Sora', sans-serif" }}>      <style>{`
+    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }
@@ -502,12 +502,12 @@ export default function FormulasWQA() {
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
             <Link href="/wqa">
-              <span style={{ background: "rgba(0,0,0,0.14)", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 600, cursor: "pointer", color: "#fff" }}>
+              <span style={{ background: "rgba(255,255,255,0.2)", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 600, cursor: "pointer", color: "#fff" }}>
                 ← WQA Practice
               </span>
             </Link>
             <Link href="/wqa-mock">
-              <span style={{ background: "rgba(0,0,0,0.14)", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 600, cursor: "pointer", color: "#fff" }}>
+              <span style={{ background: "rgba(255,255,255,0.2)", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontWeight: 600, cursor: "pointer", color: "#fff" }}>
                 📋 Mock Exam
               </span>
             </Link>
@@ -551,7 +551,7 @@ export default function FormulasWQA() {
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 24 }}>
           <button
             onClick={() => setActiveCategory(null)}
-            style={{ padding: "6px 14px", borderRadius: 20, border: "1.5px solid", borderColor: activeCategory === null ? "#0369A1" : "#94A3B8", background: activeCategory === null ? "#0369A1" : "#fff", color: activeCategory === null ? "#fff" : "#E2E8F0", fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+            style={{ padding: "6px 14px", borderRadius: 20, border: "1.5px solid", borderColor: activeCategory === null ? "#0369A1" : "#E2E8F0", background: activeCategory === null ? "#0369A1" : "#fff", color: activeCategory === null ? "#fff" : "#64748B", fontSize: 12, fontWeight: 600, cursor: "pointer" }}
           >
             All
           </button>
@@ -559,7 +559,7 @@ export default function FormulasWQA() {
             <button
               key={cat.id}
               onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
-              style={{ padding: "6px 14px", borderRadius: 20, border: "1.5px solid", borderColor: activeCategory === cat.id ? cat.color : "#94A3B8", background: activeCategory === cat.id ? cat.color : "#fff", color: activeCategory === cat.id ? "#fff" : "#E2E8F0", fontSize: 12, fontWeight: 600, cursor: "pointer" }}
+              style={{ padding: "6px 14px", borderRadius: 20, border: "1.5px solid", borderColor: activeCategory === cat.id ? cat.color : "#E2E8F0", background: activeCategory === cat.id ? cat.color : "#fff", color: activeCategory === cat.id ? "#fff" : "#64748B", fontSize: 12, fontWeight: 600, cursor: "pointer" }}
             >
               {cat.icon} {cat.label}
             </button>
@@ -581,7 +581,7 @@ export default function FormulasWQA() {
                     {/* Formula header */}
                     <div style={{ background: cat.bg, padding: "16px 20px", borderBottom: `2px solid ${cat.color}20` }}>
                       <h3 style={{ margin: "0 0 8px", fontSize: 15, fontWeight: 700, color: cat.color }}>{f.name}</h3>
-                      <div style={{ background: "#fff", borderRadius: 8, padding: "10px 14px", fontFamily: "monospace", fontSize: 13, color: "#F8FAFC", fontWeight: 600, border: `1px solid ${cat.color}30`, whiteSpace: "pre-wrap" }}>
+                      <div style={{ background: "#fff", borderRadius: 8, padding: "10px 14px", fontFamily: "monospace", fontSize: 13, color: "#1E293B", fontWeight: 600, border: `1px solid ${cat.color}30`, whiteSpace: "pre-wrap" }}>
                         {f.formula}
                       </div>
                       {f.units && (
@@ -592,12 +592,12 @@ export default function FormulasWQA() {
                       {/* Variables */}
                       {f.variables && f.variables.length > 0 && (
                         <div style={{ marginBottom: 14 }}>
-                          <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Variables / Reference Values</div>
+                          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Variables / Reference Values</div>
                           <div style={{ display: "grid", gap: 4 }}>
                             {f.variables.map((v, j) => (
                               <div key={j} style={{ display: "flex", gap: 8, fontSize: 13 }}>
                                 <span style={{ fontFamily: "monospace", fontWeight: 700, color: cat.color, minWidth: 120, flexShrink: 0 }}>{v.sym}</span>
-                                <span style={{ color: "#64748B" }}>{v.desc}</span>
+                                <span style={{ color: "#475569" }}>{v.desc}</span>
                               </div>
                             ))}
                           </div>
@@ -605,10 +605,10 @@ export default function FormulasWQA() {
                       )}
                       {/* Example */}
                       {f.example && (
-                        <div style={{ background: "#FFFFFF", borderRadius: 10, padding: "14px", marginBottom: 12 }}>
-                          <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Worked Example</div>
-                          <p style={{ fontSize: 13, color: "#F8FAFC", margin: "0 0 8px", fontWeight: 600 }}>{f.example.problem}</p>
-                          <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 6px", whiteSpace: "pre-line" }}>{f.example.solution}</p>
+                        <div style={{ background: "#F8FAFC", borderRadius: 10, padding: "14px", marginBottom: 12 }}>
+                          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>Worked Example</div>
+                          <p style={{ fontSize: 13, color: "#1E293B", margin: "0 0 8px", fontWeight: 600 }}>{f.example.problem}</p>
+                          <p style={{ fontSize: 13, color: "#475569", margin: "0 0 6px", whiteSpace: "pre-line" }}>{f.example.solution}</p>
                           <p style={{ fontSize: 13, color: cat.color, fontWeight: 700, margin: 0 }}>Answer: {f.example.answer}</p>
                         </div>
                       )}
@@ -626,7 +626,7 @@ export default function FormulasWQA() {
           ))}
 
         {filteredCategories.length === 0 && (
-          <div style={{ textAlign: "center", padding: "60px 20px", color: "#64748B" }}>
+          <div style={{ textAlign: "center", padding: "60px 20px", color: "#94A3B8" }}>
             <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
             <div style={{ fontSize: 16, fontWeight: 600 }}>No formulas match "{search}"</div>
             <div style={{ fontSize: 13, marginTop: 6 }}>Try a different keyword</div>

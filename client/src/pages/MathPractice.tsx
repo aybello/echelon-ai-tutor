@@ -54,7 +54,7 @@ export default function MathPractice() {
   });
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#FFFFFF", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       <SiteNav currentPath="/math-practice" />
 
       {/* Hero */}
@@ -89,14 +89,14 @@ export default function MathPractice() {
 
       {/* Exam Tips */}
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "40px 24px 0" }}>
-        <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16 }}>
           💡 Exam Strategy
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12, marginBottom: 40 }}>
           {TIPS.map(tip => (
             <div key={tip.title} style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 14, padding: "16px 18px" }}>
               <div style={{ fontSize: 20, marginBottom: 8 }}>{tip.icon}</div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#FFFFFF", marginBottom: 4 }}>{tip.title}</div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", marginBottom: 4 }}>{tip.title}</div>
               <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.6 }}>{tip.desc}</div>
             </div>
           ))}
@@ -105,7 +105,7 @@ export default function MathPractice() {
         {/* Course groups */}
         {COURSES.map(group => (
           <div key={group.group} style={{ marginBottom: 40 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16 }}>
               {group.group}
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 }}>
@@ -155,10 +155,10 @@ export default function MathPractice() {
           <div style={{ fontSize: 11, fontWeight: 700, color: "#7C3AED", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 8 }}>
             🎯 Pro Tip
           </div>
-          <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#FFFFFF", marginBottom: 8 }}>
+          <div style={{ fontFamily: "'Sora', sans-serif", fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 8 }}>
             Struggling with a specific topic?
           </div>
-          <p style={{ fontSize: 14, color: "#64748B", marginBottom: 20, lineHeight: 1.7 }}>
+          <p style={{ fontSize: 14, color: "#475569", marginBottom: 20, lineHeight: 1.7 }}>
             Use the module filter inside any quiz to focus on one topic at a time — e.g., "Hydraulics" or "Chemical Dosing" — then switch on Math Practice mode for targeted calculation drills.
           </p>
           <Link href="/">

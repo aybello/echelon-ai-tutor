@@ -130,7 +130,7 @@ export default function Login() {
   return (
     <div style={{
       minHeight: "100vh",
-      background: "linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%)",
+      background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0F172A 100%)",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -157,7 +157,7 @@ export default function Login() {
           <>
             <div style={{ textAlign: "center", marginBottom: 28 }}>
               <div style={{ fontSize: 36, marginBottom: 12 }}>👋</div>
-              <h1 style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: 0, letterSpacing: "-0.03em" }}>
+              <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: 0, letterSpacing: "-0.03em" }}>
                 Welcome back
               </h1>
               <p style={{ fontSize: 14, color: "#64748B", marginTop: 8, marginBottom: 0 }}>
@@ -183,11 +183,11 @@ export default function Login() {
                     borderRadius: 10,
                     border: error ? "1.5px solid #EF4444" : "1.5px solid #E2E8F0",
                     fontSize: 15,
-                    color: "#FFFFFF",
+                    color: "#0F172A",
                     outline: "none",
                     boxSizing: "border-box",
                     fontFamily: "inherit",
-                    background: "#FFFFFF",
+                    background: "#F8FAFC",
                   }}
                 />
               </div>
@@ -205,7 +205,7 @@ export default function Login() {
                   width: "100%",
                   padding: "13px",
                   borderRadius: 10,
-                  background: sendOtp.isPending || !email.trim() ? "#E2E8F0" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                  background: sendOtp.isPending || !email.trim() ? "#94A3B8" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
                   color: "#fff",
                   border: "none",
                   fontSize: 15,
@@ -220,13 +220,13 @@ export default function Login() {
             </form>
 
             <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid #F1F5F9", textAlign: "center" }}>
-              <p style={{ fontSize: 13, color: "#64748B", margin: 0 }}>
+              <p style={{ fontSize: 13, color: "#94A3B8", margin: 0 }}>
                 Don't have an account?{" "}
                 <a href="/pricing" style={{ color: "#1D4ED8", fontWeight: 600, textDecoration: "none" }}>
                   View courses →
                 </a>
               </p>
-              <p style={{ fontSize: 13, color: "#64748B", marginTop: 8, marginBottom: 0 }}>
+              <p style={{ fontSize: 13, color: "#94A3B8", marginTop: 8, marginBottom: 0 }}>
                 Need to restore course access?{" "}
                 <a href="/account" style={{ color: "#1D4ED8", fontWeight: 600, textDecoration: "none" }}>
                   Enter pass code →
@@ -238,12 +238,12 @@ export default function Login() {
           <>
             <div style={{ textAlign: "center", marginBottom: 28 }}>
               <div style={{ fontSize: 36, marginBottom: 12 }}>📬</div>
-              <h1 style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: 0, letterSpacing: "-0.03em" }}>
+              <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: 0, letterSpacing: "-0.03em" }}>
                 Check your email
               </h1>
               <p style={{ fontSize: 14, color: "#64748B", marginTop: 8, marginBottom: 0 }}>
                 We sent a 6-digit code to<br />
-                <strong style={{ color: "#FFFFFF" }}>{email}</strong>
+                <strong style={{ color: "#0F172A" }}>{email}</strong>
               </p>
             </div>
 
@@ -269,7 +269,7 @@ export default function Login() {
                       fontSize: 24,
                       fontWeight: 700,
                       textAlign: "center",
-                      color: "#FFFFFF",
+                      color: "#0F172A",
                       background: digit ? "#EFF6FF" : "#F8FAFC",
                       outline: "none",
                       fontFamily: "inherit",
@@ -292,7 +292,7 @@ export default function Login() {
                   width: "100%",
                   padding: "13px",
                   borderRadius: 10,
-                  background: verifyOtp.isPending || code.join("").length !== 6 ? "#E2E8F0" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                  background: verifyOtp.isPending || code.join("").length !== 6 ? "#94A3B8" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
                   color: "#fff",
                   border: "none",
                   fontSize: 15,
@@ -306,10 +306,10 @@ export default function Login() {
             </form>
 
             <div style={{ marginTop: 20, textAlign: "center" }}>
-              <p style={{ fontSize: 13, color: "#64748B", marginBottom: 8 }}>
+              <p style={{ fontSize: 13, color: "#94A3B8", marginBottom: 8 }}>
                 Didn't receive the code?{" "}
                 {resendCooldown > 0 ? (
-                  <span style={{ color: "#64748B" }}>Resend in {resendCooldown}s</span>
+                  <span style={{ color: "#94A3B8" }}>Resend in {resendCooldown}s</span>
                 ) : (
                   <button
                     onClick={() => { setError(""); sendOtp.mutate({ email }); }}
@@ -322,7 +322,7 @@ export default function Login() {
               </p>
               <button
                 onClick={() => { setStep("email"); setCode(["", "", "", "", "", ""]); setError(""); }}
-                style={{ background: "none", border: "none", color: "#64748B", fontSize: 13, cursor: "pointer", padding: 0, fontFamily: "inherit" }}
+                style={{ background: "none", border: "none", color: "#94A3B8", fontSize: 13, cursor: "pointer", padding: 0, fontFamily: "inherit" }}
               >
                 ← Use a different email
               </button>
@@ -331,7 +331,7 @@ export default function Login() {
         )}
       </div>
 
-      <p style={{ color: "#64748B", fontSize: 12, marginTop: 24, textAlign: "center" }}>
+      <p style={{ color: "#475569", fontSize: 12, marginTop: 24, textAlign: "center" }}>
         Echelon Institute · Canadian Water & Wastewater Operator Exam Prep
       </p>
     </div>

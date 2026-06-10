@@ -71,7 +71,7 @@ export default function ProvinceBanner({ onSelect, onDismiss }: Props) {
               style={{
                 padding: "6px 10px",
                 borderRadius: 20,
-                border: "1px solid rgba(0,0,0,0.12)",
+                border: "1px solid rgba(255,255,255,0.15)",
                 background: "rgba(255,255,255,0.07)",
                 color: "#fff",
                 fontSize: 12,

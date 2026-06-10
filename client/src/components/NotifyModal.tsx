@@ -73,7 +73,7 @@ export default function NotifyModal({ courseCode, courseTitle, onClose }: Notify
             <div style={{ fontSize: 48, marginBottom: 16 }}>
               {alreadyRegistered ? "✅" : "🎉"}
             </div>
-            <h2 style={{ fontSize: 20, fontWeight: 800, color: "#FFFFFF", margin: "0 0 8px" }}>
+            <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
               {alreadyRegistered ? "Already on the list!" : "You're on the list!"}
             </h2>
             <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.6, margin: "0 0 24px" }}>
@@ -105,7 +105,7 @@ export default function NotifyModal({ courseCode, courseTitle, onClose }: Notify
               }}>
                 🔔 Coming Soon
               </div>
-              <h2 style={{ fontSize: 20, fontWeight: 800, color: "#FFFFFF", margin: "0 0 6px" }}>
+              <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", margin: "0 0 6px" }}>
                 Notify me when available
               </h2>
               <p style={{ fontSize: 13, color: "#64748B", margin: 0, lineHeight: 1.6 }}>
@@ -129,11 +129,11 @@ export default function NotifyModal({ courseCode, courseTitle, onClose }: Notify
                     width: "100%", padding: "10px 14px", borderRadius: 10,
                     border: error ? "1.5px solid #EF4444" : "1.5px solid #E2E8F0",
                     fontSize: 14, fontFamily: "inherit", outline: "none",
-                    boxSizing: "border-box", color: "#FFFFFF",
+                    boxSizing: "border-box", color: "#0F172A",
                     transition: "border-color 0.15s",
                   }}
                   onFocus={(e) => { if (!error) e.target.style.borderColor = "#1D4ED8"; }}
-                  onBlur={(e) => { if (!error) e.target.style.borderColor = "#94A3B8"; }}
+                  onBlur={(e) => { if (!error) e.target.style.borderColor = "#E2E8F0"; }}
                 />
                 {error && (
                   <p style={{ fontSize: 12, color: "#EF4444", margin: "4px 0 0", fontWeight: 500 }}>
@@ -161,7 +161,7 @@ export default function NotifyModal({ courseCode, courseTitle, onClose }: Notify
                   style={{
                     flex: 2, padding: "10px", borderRadius: 10, border: "none",
                     background: joinWaitlist.isPending
-                      ? "#E2E8F0"
+                      ? "#94A3B8"
                       : "linear-gradient(135deg, #1D4ED8, #0F766E)",
                     color: "#fff", fontSize: 13, fontWeight: 700,
                     cursor: joinWaitlist.isPending ? "not-allowed" : "pointer",

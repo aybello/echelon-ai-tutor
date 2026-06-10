@@ -418,7 +418,7 @@ export default function FormulasWpiClass2Ww() {
               style={{
                 background: activeSection === i ? s.color : "#1e293b",
                 color: activeSection === i ? "#fff" : "#94a3b8",
-                border: `1px solid ${activeSection === i ? s.color : "#E2E8F0"}`,
+                border: `1px solid ${activeSection === i ? s.color : "#334155"}`,
                 borderRadius: 8, padding: "6px 14px", fontSize: 13,
                 cursor: "pointer", fontWeight: 500,
               }}
