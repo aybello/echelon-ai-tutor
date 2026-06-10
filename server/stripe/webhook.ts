@@ -2,7 +2,8 @@ import type { Express, Request, Response } from "express";
 import express from "express";
 import { stripe } from "./stripe";
 import { getDb } from "../db";
-import { purchases, subscriptions, users } from "../../drizzle/schema";
+import { purchases, subscriptions, users, organizations, organizationMembers } from "../../drizzle/schema";
+import { grantSeat } from "../routers/orgRouter";
 import { notifyOwner } from "../_core/notification";
 import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail } from "../email";
 import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI } from "./subscriptionProducts";
@@ -184,6 +185,70 @@ export function registerStripeWebhook(app: Express) {
           const db = await getDb();
           if (!db) throw new Error("Database unavailable");
 
+          // ── Org (team) subscription branch ────────────────────────────────
+          if (sub.metadata?.type === "org") {
+            const orgName = sub.metadata?.org_name ?? "Unknown Organization";
+            const managerEmail = normalizeEmail(sub.metadata?.manager_email ?? "");
+            const province = (sub.metadata?.subscription_province ?? "ontario") as SP;
+            const seats = parseInt(sub.metadata?.seats ?? "1", 10);
+            const stripeSubscriptionId = sub.id;
+            const stripeCustomerId = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
+            const { currentPeriodEnd } = getSubscriptionPeriod(sub);
+            const status = sub.status === "active" ? "active" : sub.status === "past_due" ? "past_due" : "cancelled";
+
+            if (!managerEmail || !currentPeriodEnd) {
+              console.warn(`[Stripe Webhook] Org subscription ${stripeSubscriptionId} missing manager_email or currentPeriodEnd`);
+              return res.json({ received: true });
+            }
+
+            // Upsert organizations row
+            const existingOrg = await db
+              .select({ id: organizations.id })
+              .from(organizations)
+              .where(eq(organizations.stripeSubscriptionId, stripeSubscriptionId))
+              .limit(1);
+
+            let orgId: number;
+            if (existingOrg.length === 0) {
+              // New org — create it and grant manager seat
+              const [insertResult] = await db.insert(organizations).values({
+                name: orgName,
+                province,
+                tier: "all-access",
+                seatsTotal: seats,
+                managerEmail,
+                stripeSubscriptionId,
+                stripeCustomerId,
+                termEnd: currentPeriodEnd,
+                billingType: "stripe",
+                status,
+              });
+              orgId = (insertResult as any).insertId;
+              // Grant manager seat (member row + subscription row)
+              await grantSeat(db, { id: orgId, province, termEnd: currentPeriodEnd }, managerEmail, "manager");
+              console.log(`[Stripe Webhook] Org created: ${orgName} (${orgId}) manager=${managerEmail} seats=${seats}`);
+              await notifyOwner({
+                title: `New Team Plan: ${orgName}`,
+                content: `${managerEmail} purchased a ${seats}-seat All-Access team plan for ${province}. Org ID: ${orgId}. Expires: ${currentPeriodEnd.toISOString()}`,
+              });
+            } else {
+              // Existing org — sync seats, termEnd, status
+              orgId = existingOrg[0].id;
+              await db
+                .update(organizations)
+                .set({ seatsTotal: seats, termEnd: currentPeriodEnd, status })
+                .where(eq(organizations.id, orgId));
+              // Sync termEnd on all active org-managed subscriptions
+              await db
+                .update(subscriptions)
+                .set({ currentPeriodEnd, status: status === "active" ? "active" : "expired" })
+                .where(and(eq(subscriptions.orgId, orgId)));
+              console.log(`[Stripe Webhook] Org updated: ${orgId} seats=${seats} status=${status}`);
+            }
+            return res.json({ received: true });
+          }
+          // ── End org branch ─────────────────────────────────────────────────
+
           const tier = sub.metadata?.subscription_tier as ST | undefined;
           const province = sub.metadata?.subscription_province as SP | undefined;
           const stripeSubscriptionId = sub.id;
@@ -275,6 +340,24 @@ export function registerStripeWebhook(app: Express) {
         try {
           const db = await getDb();
           if (!db) throw new Error("Database unavailable");
+
+          // Org cancellation: expire all org-managed seats
+          if (sub.metadata?.type === "org") {
+            const orgRow = await db
+              .select({ id: organizations.id })
+              .from(organizations)
+              .where(eq(organizations.stripeSubscriptionId, sub.id))
+              .limit(1);
+            if (orgRow.length > 0) {
+              const orgId = orgRow[0].id;
+              await db.update(organizations).set({ status: "cancelled" }).where(eq(organizations.id, orgId));
+              await db.update(subscriptions).set({ status: "expired" }).where(eq(subscriptions.orgId, orgId));
+              await db.update(organizationMembers).set({ status: "revoked", revokedAt: new Date() }).where(eq(organizationMembers.orgId, orgId));
+              console.log(`[Stripe Webhook] Org cancelled: ${orgId}`);
+            }
+            return res.json({ received: true });
+          }
+
           await db
             .update(subscriptions)
             .set({ status: "cancelled" })

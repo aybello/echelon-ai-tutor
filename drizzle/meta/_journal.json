@@ -232,6 +232,13 @@
       "when": 1781111809799,
       "tag": "0032_tiny_red_hulk",
       "breakpoints": true
+    },
+    {
+      "idx": 33,
+      "version": "5",
+      "when": 1781115142912,
+      "tag": "0033_solid_excalibur",
+      "breakpoints": true
     }
   ]
 }

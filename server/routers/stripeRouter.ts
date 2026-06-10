@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { TRPCError } from "@trpc/server";
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { resolveAccess, resolveAccessByEmail, normalizeEmail } from "../_core/access";
 import { stripe } from "../stripe/stripe";
@@ -462,5 +463,144 @@ export const stripeRouter = router({
         unlockedExamTypes,
         accessToken,
       };
+    }),
+
+  /**
+   * Create a Stripe Checkout session for a team (org) plan.
+   * mode: subscription, quantity = seats, volume tiered pricing.
+   * subscription_data.metadata carries type:"org" plus all fields the webhook needs.
+   */
+  createTeamCheckout: publicProcedure
+    .input(z.object({
+      orgName: z.string().min(2).max(200),
+      province: z.enum(["ontario", "western"]),
+      seats: z.number().int().min(1).max(500),
+      managerEmail: z.string().email(),
+      origin: z.string().url(),
+    }))
+    .mutation(async ({ input }) => {
+      // Volume pricing per seat per year (in cents CAD)
+      // Stripe volume tiered pricing handles the discount automatically by quantity.
+      // We use a single price per province track; the Stripe price must be configured
+      // with volume tiers: 1-24 = $279, 25-49 = $239, 50-99 = $199, 100+ = $169.
+      // For now we compute the unit price client-side for display; Stripe enforces it.
+      const TEAM_PRICE_ID: Record<string, string> = {
+        ontario: process.env.STRIPE_TEAM_PRICE_ONTARIO ?? "",
+        western: process.env.STRIPE_TEAM_PRICE_WESTERN ?? "",
+      };
+
+      const priceId = TEAM_PRICE_ID[input.province];
+
+      // Fallback: if Stripe price IDs are not yet configured, use price_data with
+      // the volume-discounted unit price so checkout still works during development.
+      const unitAmount = input.seats >= 100 ? 16900
+        : input.seats >= 50 ? 19900
+        : input.seats >= 25 ? 23900
+        : 27900;
+
+      const lineItem = priceId
+        ? { price: priceId, quantity: input.seats }
+        : {
+            price_data: {
+              currency: "cad",
+              unit_amount: unitAmount,
+              recurring: { interval: "year" as const },
+              product_data: {
+                name: `Echelon for Teams — All-Access ${input.province === "ontario" ? "Ontario" : "Western Canada"} (${input.seats} seat${input.seats === 1 ? "" : "s"})`,
+                description: `All-Access annual team plan for ${input.seats} operator${input.seats === 1 ? "" : "s"} in ${input.province === "ontario" ? "Ontario (EOCP)" : "Western Canada (WPI)"}`,
+              },
+            },
+            quantity: input.seats,
+          };
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        mode: "subscription",
+        line_items: [lineItem as any],
+        customer_email: input.managerEmail,
+        metadata: {
+          type: "org",
+          org_name: input.orgName,
+          manager_email: input.managerEmail,
+          subscription_tier: "all-access",
+          subscription_province: input.province,
+          seats: String(input.seats),
+        },
+        subscription_data: {
+          metadata: {
+            type: "org",
+            org_name: input.orgName,
+            manager_email: input.managerEmail,
+            subscription_tier: "all-access",
+            subscription_province: input.province,
+            seats: String(input.seats),
+          },
+        },
+        allow_promotion_codes: true,
+        success_url: `${input.origin}/team?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${input.origin}/teams`,
+      });
+
+      return { url: session.url };
+    }),
+
+  /**
+   * Update the Stripe subscription quantity for an org (add/remove seats).
+   * Stripe prorates the charge. The webhook customer.subscription.updated
+   * then syncs seatsTotal on the organizations row.
+   */
+  updateTeamSeats: publicProcedure
+    .input(z.object({
+      seats: z.number().int().min(1).max(500),
+      origin: z.string().url(),
+    }))
+    .mutation(async ({ input, ctx }) => {
+      const email = ctx.studentEmail ?? ctx.user?.email ?? null;
+      if (!email) throw new TRPCError({ code: "UNAUTHORIZED", message: "Please sign in." });
+
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+
+      const { organizations: orgsTable, organizationMembers: membersTable } = await import("../../drizzle/schema");
+      const { normalizeEmail: norm } = await import("../_core/access");
+
+      const normEmail = norm(email);
+      const managerRow = await db
+        .select({ orgId: membersTable.orgId })
+        .from(membersTable)
+        .where(
+          and(
+            eq(membersTable.email, normEmail),
+            eq(membersTable.role, "manager"),
+            eq(membersTable.status, "assigned"),
+          ),
+        )
+        .limit(1)
+        .then(r => r[0]);
+
+      if (!managerRow) throw new TRPCError({ code: "UNAUTHORIZED", message: "No manager account found." });
+
+      const org = await db
+        .select()
+        .from(orgsTable)
+        .where(eq(orgsTable.id, managerRow.orgId))
+        .limit(1)
+        .then(r => r[0]);
+
+      if (!org?.stripeSubscriptionId) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "This organization does not have a Stripe subscription. Please contact support." });
+      }
+
+      await stripe.subscriptions.update(org.stripeSubscriptionId, {
+        items: [
+          {
+            id: (await stripe.subscriptions.retrieve(org.stripeSubscriptionId)).items.data[0].id,
+            quantity: input.seats,
+          },
+        ],
+        proration_behavior: "create_prorations",
+      });
+
+      return { success: true, seats: input.seats };
     }),
 });

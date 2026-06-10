@@ -5,7 +5,10 @@
 import { desc, eq, sql, count } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
-import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs } from "../../drizzle/schema";
+import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions } from "../../drizzle/schema";
+import { and } from "drizzle-orm";
+import { grantSeat, revokeSeat } from "./orgRouter";
+import { normalizeEmail } from "../_core/access";
 import { getDb } from "../db";
 import { adminProcedure, router } from "../_core/trpc";
 import { sendPurchaseConfirmationEmail } from "../email";
@@ -396,4 +399,183 @@ export const adminRouter = router({
 
     return { checks, recentPurchases, timestamp: new Date() };
   }),
+
+  /**
+   * listOrganizations — returns all orgs with seat usage for the admin panel.
+   */
+  listOrganizations: adminProcedure.query(async () => {
+    const db = await getDb();
+    if (!db) throw new Error("Database unavailable");
+
+    const orgs = await db
+      .select()
+      .from(organizations)
+      .orderBy(desc(organizations.createdAt));
+
+    // Seat usage per org
+    const usageRows = await db
+      .select({
+        orgId: organizationMembers.orgId,
+        assigned: sql<number>`SUM(CASE WHEN ${organizationMembers.status} = 'assigned' AND ${organizationMembers.role} = 'operator' THEN 1 ELSE 0 END)`,
+      })
+      .from(organizationMembers)
+      .groupBy(organizationMembers.orgId);
+
+    const usageByOrg = new Map(usageRows.map(r => [r.orgId, Number(r.assigned)]));
+
+    return orgs.map(org => ({
+      ...org,
+      seatsUsed: usageByOrg.get(org.id) ?? 0,
+    }));
+  }),
+
+  /**
+   * createOrganizationManual — admin invoice path for utilities that pay by PO.
+   * Creates the org, grants manager seat, and optionally grants initial operator seats.
+   */
+  createOrganizationManual: adminProcedure
+    .input(z.object({
+      name: z.string().min(2).max(200),
+      province: z.enum(["ontario", "western"]),
+      seats: z.number().int().min(1).max(500),
+      managerEmail: z.string().email(),
+      termEnd: z.date(),
+      operatorEmails: z.array(z.string().email()).optional(),
+    }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+
+      const managerEmail = normalizeEmail(input.managerEmail);
+
+      const [insertResult] = await db.insert(organizations).values({
+        name: input.name,
+        province: input.province,
+        tier: "all-access",
+        seatsTotal: input.seats,
+        managerEmail,
+        stripeSubscriptionId: null,
+        stripeCustomerId: null,
+        termEnd: input.termEnd,
+        billingType: "invoice",
+        status: "active",
+      });
+      const orgId = (insertResult as any).insertId;
+
+      const org = { id: orgId, province: input.province, termEnd: input.termEnd };
+
+      // Grant manager seat
+      await grantSeat(db, org, managerEmail, "manager");
+
+      // Grant any pre-loaded operator seats
+      const results: Array<{ email: string; success: boolean; error?: string }> = [];
+      if (input.operatorEmails && input.operatorEmails.length > 0) {
+        for (const rawEmail of input.operatorEmails) {
+          const email = normalizeEmail(rawEmail);
+          try {
+            await grantSeat(db, org, email, "operator");
+            results.push({ email, success: true });
+          } catch (err: any) {
+            results.push({ email, success: false, error: err.message });
+          }
+        }
+      }
+
+      return { orgId, managerEmail, seatsGranted: results };
+    }),
+
+  /**
+   * updateOrganization — admin can change seats, termEnd, or status for an org.
+   * Syncs termEnd to all active org-managed subscriptions.
+   */
+  updateOrganization: adminProcedure
+    .input(z.object({
+      orgId: z.number().int(),
+      seats: z.number().int().min(1).max(500).optional(),
+      termEnd: z.date().optional(),
+      status: z.enum(["active", "past_due", "cancelled"]).optional(),
+    }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+
+      const updates: Record<string, any> = {};
+      if (input.seats !== undefined) updates.seatsTotal = input.seats;
+      if (input.termEnd !== undefined) updates.termEnd = input.termEnd;
+      if (input.status !== undefined) updates.status = input.status;
+
+      if (Object.keys(updates).length === 0) return { success: true };
+
+      await db.update(organizations).set(updates).where(eq(organizations.id, input.orgId));
+
+      // Sync termEnd to all org-managed subscriptions
+      if (input.termEnd !== undefined) {
+        await db
+          .update(subscriptions)
+          .set({ currentPeriodEnd: input.termEnd })
+          .where(eq(subscriptions.orgId, input.orgId));
+      }
+
+      // If cancelled, expire all seats
+      if (input.status === "cancelled") {
+        await db
+          .update(subscriptions)
+          .set({ status: "expired" })
+          .where(eq(subscriptions.orgId, input.orgId));
+        await db
+          .update(organizationMembers)
+          .set({ status: "revoked", revokedAt: new Date() })
+          .where(eq(organizationMembers.orgId, input.orgId));
+      }
+
+      return { success: true };
+    }),
+
+  /**
+   * adminAssignSeat / adminRevokeSeat — admin can manage seats on any org.
+   */
+  adminAssignSeat: adminProcedure
+    .input(z.object({ orgId: z.number().int(), email: z.string().email() }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+
+      const org = await db
+        .select()
+        .from(organizations)
+        .where(eq(organizations.id, input.orgId))
+        .limit(1)
+        .then(r => r[0]);
+      if (!org) throw new Error("Organization not found");
+
+      const [{ cnt }] = await db
+        .select({ cnt: count() })
+        .from(organizationMembers)
+        .where(
+          and(
+            eq(organizationMembers.orgId, input.orgId),
+            eq(organizationMembers.role, "operator"),
+            eq(organizationMembers.status, "assigned"),
+          ),
+        );
+
+      if (Number(cnt) >= org.seatsTotal) {
+        throw new Error(`Seat limit reached (${org.seatsTotal} seats).`);
+      }
+
+      const email = normalizeEmail(input.email);
+      await grantSeat(db, org, email, "operator");
+      return { success: true, email };
+    }),
+
+  adminRevokeSeat: adminProcedure
+    .input(z.object({ orgId: z.number().int(), email: z.string().email() }))
+    .mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+
+      const email = normalizeEmail(input.email);
+      await revokeSeat(db, input.orgId, email);
+      return { success: true, email };
+    }),
 });

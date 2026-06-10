@@ -45,6 +45,8 @@ const PurchaseSuccess = lazy(() => import("./pages/PurchaseSuccess"));
 const SubscriptionSuccess = lazy(() => import("./pages/SubscriptionSuccess"));
 const WpiLanding = lazy(() => import("./pages/WpiLanding"));
 const MagicLinkConsume = lazy(() => import("./pages/MagicLinkConsume"));
+const Teams = lazy(() => import("./pages/Teams"));
+const OrgDashboard = lazy(() => import("./pages/OrgDashboard"));
 
 // Ontario Class mock exams
 const Class1MockExam = lazy(() => import("./pages/Class1MockExam"));
@@ -320,6 +322,8 @@ function Router() {
         <Route path={"/login"} component={Login} />
         <Route path={"/auth/magic"} component={MagicLinkConsume} />
         <Route path={"/dashboard"} component={StudentDashboard} />
+        <Route path={"/teams"} component={Teams} />
+        <Route path={"/team"} component={OrgDashboard} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>

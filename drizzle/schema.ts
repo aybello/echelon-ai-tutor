@@ -122,6 +122,9 @@ export const subscriptions = mysqlTable("subscriptions", {
   status: varchar("status", { length: 32 }).notNull().default("active"), // 'active' | 'cancelled' | 'expired' | 'past_due'
   currentPeriodStart: timestamp("currentPeriodStart"),
   currentPeriodEnd: timestamp("currentPeriodEnd").notNull(),
+  /** Set when this row is org-managed (seat granted by an org). Null for self-serve subscriptions.
+   *  Org-managed rows have stripeSubscriptionId = null and are excluded from the self-serve billing portal. */
+  orgId: int("orgId"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type Subscription = typeof subscriptions.$inferSelect;
@@ -368,3 +371,47 @@ export const dashboardOtps = mysqlTable("dashboard_otps", {
 
 export type DashboardOtp = typeof dashboardOtps.$inferSelect;
 export type InsertDashboardOtp = typeof dashboardOtps.$inferInsert;
+
+/**
+ * Organizations — one row per utility or employer that buys a team plan.
+ * Billing: one Stripe subscription per org (quantity = seats).
+ * Access: per-operator internal managed `subscriptions` rows (orgId set, stripeSubscriptionId null).
+ */
+export const organizations = mysqlTable("organizations", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 200 }).notNull(),
+  province: varchar("province", { length: 32 }).notNull(), // 'ontario' | 'western'
+  tier: varchar("tier", { length: 32 }).notNull().default("all-access"), // always all-access for self-serve teams
+  seatsTotal: int("seatsTotal").notNull(), // = Stripe subscription quantity
+  managerEmail: varchar("managerEmail", { length: 320 }).notNull(),
+  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 128 }).unique(),
+  stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
+  termEnd: timestamp("termEnd").notNull(), // current period end from Stripe
+  billingType: varchar("billingType", { length: 16 }).notNull().default("stripe"), // 'stripe' | 'invoice'
+  status: varchar("status", { length: 32 }).notNull().default("active"), // 'active' | 'past_due' | 'cancelled'
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Organization = typeof organizations.$inferSelect;
+export type InsertOrganization = typeof organizations.$inferInsert;
+
+/**
+ * Organization members — one row per operator (or manager) in an org.
+ * role: 'manager' | 'operator'
+ * status: 'assigned' | 'revoked'
+ */
+export const organizationMembers = mysqlTable("organization_members", {
+  id: int("id").autoincrement().primaryKey(),
+  orgId: int("orgId").notNull(),
+  email: varchar("email", { length: 320 }).notNull(), // normalized
+  role: varchar("role", { length: 20 }).notNull().default("operator"), // 'manager' | 'operator'
+  status: varchar("status", { length: 20 }).notNull().default("assigned"), // 'assigned' | 'revoked'
+  assignedAt: timestamp("assignedAt").defaultNow().notNull(),
+  revokedAt: timestamp("revokedAt"),
+}, (t) => [
+  index("org_members_orgid_idx").on(t.orgId),
+  index("org_members_email_idx").on(t.email),
+]);
+
+export type OrganizationMember = typeof organizationMembers.$inferSelect;
+export type InsertOrganizationMember = typeof organizationMembers.$inferInsert;

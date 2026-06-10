@@ -8,7 +8,7 @@ import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
-type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue" | "health" | "feedback";
+type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue" | "health" | "feedback" | "orgs";
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
   // OIT
@@ -120,6 +120,7 @@ export default function Admin() {
   const purchasesQ = trpc.admin.getPurchases.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "revenue" });
   const healthQ = trpc.admin.getSystemHealth.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "health", refetchInterval: 60_000 });
   const feedbackQ = trpc.admin.getFeedback.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "feedback" });
+  const orgsQ = trpc.admin.listOrganizations.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "orgs" });
   const reconcileSubs = trpc.admin.reconcileSubscriptions.useMutation({
     onSuccess: (data) => {
       if (data.recovered > 0) {
@@ -240,6 +241,7 @@ export default function Admin() {
     { id: "scores", label: "Score History", icon: "📊" },
     { id: "feedback", label: "Feedback", icon: "💬" },
     { id: "health", label: "System Health", icon: "🩺" },
+    { id: "orgs", label: "Organizations", icon: "🏢" },
   ];
 
   return (
@@ -828,6 +830,73 @@ export default function Admin() {
                     </div>
                   );
                 })}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* -- ORGANIZATIONS TAB -- */}
+        {activeTab === "orgs" && (
+          <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
+            <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div style={{ fontSize: 13, fontWeight: 700 }}>
+                🏢 Organizations
+                {orgsQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{orgsQ.data.length} org{orgsQ.data.length === 1 ? "" : "s"}</span>}
+              </div>
+            </div>
+            {orgsQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
+            {orgsQ.data && orgsQ.data.length === 0 && (
+              <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No organizations yet.</div>
+            )}
+            {orgsQ.data && orgsQ.data.length > 0 && (
+              <div style={{ overflowX: "auto" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+                  <thead>
+                    <tr style={{ background: "rgba(0,0,0,0.04)", textAlign: "left" }}>
+                      <th style={{ padding: "10px 16px", fontWeight: 600, color: "#475569", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.05em" }}>Organization</th>
+                      <th style={{ padding: "10px 16px", fontWeight: 600, color: "#475569", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.05em" }}>Manager</th>
+                      <th style={{ padding: "10px 16px", fontWeight: 600, color: "#475569", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.05em" }}>Province</th>
+                      <th style={{ padding: "10px 16px", fontWeight: 600, color: "#475569", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.05em" }}>Seats</th>
+                      <th style={{ padding: "10px 16px", fontWeight: 600, color: "#475569", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.05em" }}>Billing</th>
+                      <th style={{ padding: "10px 16px", fontWeight: 600, color: "#475569", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.05em" }}>Term End</th>
+                      <th style={{ padding: "10px 16px", fontWeight: 600, color: "#475569", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.05em" }}>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {orgsQ.data.map((org) => {
+                      const statusColor = org.status === "active" ? { bg: "rgba(52,211,153,0.15)", color: "#059669" }
+                        : org.status === "past_due" ? { bg: "rgba(251,191,36,0.15)", color: "#D97706" }
+                        : { bg: "rgba(239,68,68,0.15)", color: "#DC2626" };
+                      return (
+                        <tr key={org.id} className="admin-row" style={{ borderTop: "1px solid rgba(0,0,0,0.04)" }}>
+                          <td style={{ padding: "12px 16px" }}>
+                            <div style={{ fontWeight: 600, color: "#1E293B" }}>{org.name}</div>
+                            <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 2 }}>ID #{org.id}</div>
+                          </td>
+                          <td style={{ padding: "12px 16px", color: "#475569" }}>{org.managerEmail}</td>
+                          <td style={{ padding: "12px 16px", color: "#475569", textTransform: "capitalize" }}>{org.province === "ontario" ? "Ontario" : "Western CA"}</td>
+                          <td style={{ padding: "12px 16px" }}>
+                            <span style={{ fontWeight: 600, color: "#1E293B" }}>{(org as any).seatsUsed ?? 0}</span>
+                            <span style={{ color: "#94A3B8" }}> / {org.seatsTotal}</span>
+                          </td>
+                          <td style={{ padding: "12px 16px" }}>
+                            <span style={{ padding: "3px 8px", borderRadius: 100, background: org.billingType === "stripe" ? "rgba(99,102,241,0.12)" : "rgba(0,0,0,0.07)", color: org.billingType === "stripe" ? "#6366F1" : "#475569", fontSize: 10, fontWeight: 700 }}>
+                              {org.billingType === "stripe" ? "Stripe" : "Invoice"}
+                            </span>
+                          </td>
+                          <td style={{ padding: "12px 16px", color: "#475569", fontSize: 12 }}>
+                            {org.termEnd ? new Date(org.termEnd).toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" }) : "—"}
+                          </td>
+                          <td style={{ padding: "12px 16px" }}>
+                            <span style={{ padding: "3px 10px", borderRadius: 100, background: statusColor.bg, color: statusColor.color, fontSize: 10, fontWeight: 700, textTransform: "capitalize" }}>
+                              {org.status}
+                            </span>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
               </div>
             )}
           </div>
