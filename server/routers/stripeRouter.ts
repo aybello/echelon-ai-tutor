@@ -474,44 +474,41 @@ export const stripeRouter = router({
     .input(z.object({
       orgName: z.string().min(2).max(200),
       province: z.enum(["ontario", "western"]),
+      tier: z.enum(["class1", "class2", "class3", "class4", "all-access"]).default("all-access"),
       seats: z.number().int().min(1).max(500),
       managerEmail: z.string().email(),
       origin: z.string().url(),
     }))
     .mutation(async ({ input }) => {
-      // Volume pricing per seat per year (in cents CAD)
-      // Stripe volume tiered pricing handles the discount automatically by quantity.
-      // We use a single price per province track; the Stripe price must be configured
-      // with volume tiers: 1-24 = $279, 25-49 = $239, 50-99 = $199, 100+ = $169.
-      // For now we compute the unit price client-side for display; Stripe enforces it.
-      const TEAM_PRICE_ID: Record<string, string> = {
-        ontario: process.env.STRIPE_TEAM_PRICE_ONTARIO ?? "",
-        western: process.env.STRIPE_TEAM_PRICE_WESTERN ?? "",
+      // Per-tier annual base prices (cents CAD) — mirrors subscriptionProducts.ts
+      const BASE_PRICE: Record<string, Record<string, number>> = {
+        ontario: { class1: 9900, class2: 14900, class3: 19900, class4: 24900, "all-access": 34900 },
+        western: { class1: 14900, class2: 19900, class3: 24900, class4: 29900, "all-access": 44900 },
       };
+      const baseCents = BASE_PRICE[input.province]?.[input.tier] ?? 34900;
 
-      const priceId = TEAM_PRICE_ID[input.province];
+      // Volume discount: 1-4 = 0%, 5-9 = 10%, 10-24 = 15%, 25+ = 20%
+      const discountPct = input.seats >= 25 ? 20
+        : input.seats >= 10 ? 15
+        : input.seats >= 5 ? 10
+        : 0;
+      const unitAmount = Math.round(baseCents * (1 - discountPct / 100));
 
-      // Fallback: if Stripe price IDs are not yet configured, use price_data with
-      // the volume-discounted unit price so checkout still works during development.
-      const unitAmount = input.seats >= 100 ? 16900
-        : input.seats >= 50 ? 19900
-        : input.seats >= 25 ? 23900
-        : 27900;
+      const tierLabel = TIER_LABELS[input.tier as SubscriptionTier] ?? input.tier;
+      const provinceLabel = input.province === "ontario" ? "Ontario (EOCP)" : "Western Canada (WPI)";
 
-      const lineItem = priceId
-        ? { price: priceId, quantity: input.seats }
-        : {
-            price_data: {
-              currency: "cad",
-              unit_amount: unitAmount,
-              recurring: { interval: "year" as const },
-              product_data: {
-                name: `Echelon for Teams — All-Access ${input.province === "ontario" ? "Ontario" : "Western Canada"} (${input.seats} seat${input.seats === 1 ? "" : "s"})`,
-                description: `All-Access annual team plan for ${input.seats} operator${input.seats === 1 ? "" : "s"} in ${input.province === "ontario" ? "Ontario (EOCP)" : "Western Canada (WPI)"}`,
-              },
-            },
-            quantity: input.seats,
-          };
+      const lineItem = {
+        price_data: {
+          currency: "cad",
+          unit_amount: unitAmount,
+          recurring: { interval: "year" as const },
+          product_data: {
+            name: `Echelon for Teams — ${tierLabel} — ${provinceLabel}`,
+            description: `${tierLabel} annual team plan for ${input.seats} operator${input.seats === 1 ? "" : "s"} in ${provinceLabel}${discountPct > 0 ? ` (${discountPct}% volume discount)` : ""}`,
+          },
+        },
+        quantity: input.seats,
+      };
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
@@ -522,7 +519,7 @@ export const stripeRouter = router({
           type: "org",
           org_name: input.orgName,
           manager_email: input.managerEmail,
-          subscription_tier: "all-access",
+          subscription_tier: input.tier,
           subscription_province: input.province,
           seats: String(input.seats),
         },
@@ -531,7 +528,7 @@ export const stripeRouter = router({
             type: "org",
             org_name: input.orgName,
             manager_email: input.managerEmail,
-            subscription_tier: "all-access",
+            subscription_tier: input.tier,
             subscription_province: input.province,
             seats: String(input.seats),
           },

@@ -27,27 +27,60 @@ import {
 import { Link } from "wouter";
 import { Building2, Users, CheckCircle2, ChevronRight, Zap, Shield, BarChart3 } from "lucide-react";
 
-// ── Volume pricing ────────────────────────────────────────────────────────────
+// ── Pricing ───────────────────────────────────────────────────────────────────
 
-interface PriceTier {
+// Individual annual prices (cents) per tier × province — mirrors subscriptionProducts.ts
+const INDIVIDUAL_PRICE: Record<string, Record<string, number>> = {
+  ontario: {
+    class1:     9900,
+    class2:     14900,
+    class3:     19900,
+    class4:     24900,
+    "all-access": 34900,
+  },
+  western: {
+    class1:     14900,
+    class2:     19900,
+    class3:     24900,
+    class4:     29900,
+    "all-access": 44900,
+  },
+};
+
+// Volume discount tiers: 1-4 = 0%, 5-9 = 10%, 10-24 = 15%, 25+ = 20%
+interface VolumeTier {
   min: number;
   max: number | null;
-  unitCents: number;
+  discountPct: number;
   label: string;
 }
 
-const PRICE_TIERS: PriceTier[] = [
-  { min: 1,   max: 24,  unitCents: 27900, label: "1–24 seats" },
-  { min: 25,  max: 49,  unitCents: 23900, label: "25–49 seats" },
-  { min: 50,  max: 99,  unitCents: 19900, label: "50–99 seats" },
-  { min: 100, max: null, unitCents: 16900, label: "100+ seats" },
+const VOLUME_TIERS: VolumeTier[] = [
+  { min: 1,  max: 4,    discountPct: 0,  label: "1–4 seats" },
+  { min: 5,  max: 9,    discountPct: 10, label: "5–9 seats" },
+  { min: 10, max: 24,   discountPct: 15, label: "10–24 seats" },
+  { min: 25, max: null, discountPct: 20, label: "25+ seats" },
 ];
 
-function getTier(seats: number): PriceTier {
+const TIER_OPTIONS = [
+  { value: "class1",     label: "Class 1 All-Access" },
+  { value: "class2",     label: "Class 2 All-Access" },
+  { value: "class3",     label: "Class 3 All-Access" },
+  { value: "class4",     label: "Class 4 All-Access" },
+  { value: "all-access", label: "All-Access Pass (every class)" },
+];
+
+function getVolumeTier(seats: number): VolumeTier {
   return (
-    PRICE_TIERS.find(t => seats >= t.min && (t.max === null || seats <= t.max)) ??
-    PRICE_TIERS[0]
+    VOLUME_TIERS.find(t => seats >= t.min && (t.max === null || seats <= t.max)) ??
+    VOLUME_TIERS[0]
   );
+}
+
+function getSeatPriceCents(province: string, tier: string, seats: number): number {
+  const base = INDIVIDUAL_PRICE[province]?.[tier] ?? 34900;
+  const vt = getVolumeTier(seats);
+  return Math.round(base * (1 - vt.discountPct / 100));
 }
 
 function formatCAD(cents: number): string {
@@ -76,12 +109,15 @@ const FEATURES = [
 export default function Teams() {
   const [seats, setSeats] = useState(10);
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
+  const [subscriptionTier, setSubscriptionTier] = useState("class3");
   const [orgName, setOrgName] = useState("");
   const [managerEmail, setManagerEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const tier = useMemo(() => getTier(seats), [seats]);
-  const totalCents = tier.unitCents * seats;
+  const volumeTier = useMemo(() => getVolumeTier(seats), [seats]);
+  const seatPriceCents = useMemo(() => getSeatPriceCents(province, subscriptionTier, seats), [province, subscriptionTier, seats]);
+  const totalCents = seatPriceCents * seats;
+  const individualPriceCents = INDIVIDUAL_PRICE[province]?.[subscriptionTier] ?? 34900;
   const isLarge = seats >= 50;
 
   const createCheckout = trpc.stripe.createTeamCheckout.useMutation();
@@ -105,6 +141,7 @@ export default function Teams() {
       const result = await createCheckout.mutateAsync({
         orgName: orgName.trim(),
         province,
+        tier: subscriptionTier as "class1" | "class2" | "class3" | "class4" | "all-access",
         seats,
         managerEmail: managerEmail.trim().toLowerCase(),
         origin: window.location.origin,
@@ -182,6 +219,22 @@ export default function Teams() {
             </Select>
           </div>
 
+          {/* Subscription tier */}
+          <div className="space-y-2">
+            <Label className="text-white/80">Certification level</Label>
+            <Select value={subscriptionTier} onValueChange={setSubscriptionTier}>
+              <SelectTrigger className="bg-white/5 border-white/20 text-white">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="bg-[#0f1929] border-white/20 text-white">
+                {TIER_OPTIONS.map(opt => (
+                  <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <p className="text-xs text-white/40">Each seat grants access to all exam content for this level.</p>
+          </div>
+
           {/* Seats */}
           <div className="space-y-2">
             <Label className="text-white/80">Number of seats</Label>
@@ -218,32 +271,43 @@ export default function Teams() {
           <div className="bg-white/5 rounded-xl p-5 space-y-3 border border-white/10">
             <div className="flex items-center justify-between">
               <span className="text-white/60 text-sm">Per seat / year</span>
-              <span className="text-2xl font-bold text-blue-300">{formatCAD(tier.unitCents)}</span>
+              <span className="text-2xl font-bold text-blue-300">{formatCAD(seatPriceCents)}</span>
             </div>
             <div className="flex items-center justify-between border-t border-white/10 pt-3">
               <span className="text-white/60 text-sm">Total / year ({seats} seats)</span>
               <span className="text-2xl font-bold text-white">{formatCAD(totalCents)}</span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-white/40">
-              <span className="inline-block w-2 h-2 rounded-full bg-green-400" />
-              {tier.label} pricing applies
-            </div>
+            {volumeTier.discountPct > 0 && (
+              <div className="flex items-center gap-2 text-xs text-green-400">
+                <span className="inline-block w-2 h-2 rounded-full bg-green-400" />
+                {volumeTier.discountPct}% volume discount applied ({volumeTier.label})
+              </div>
+            )}
+            {volumeTier.discountPct === 0 && (
+              <div className="flex items-center gap-2 text-xs text-white/40">
+                <span className="inline-block w-2 h-2 rounded-full bg-white/30" />
+                Add 5+ seats to unlock volume discounts
+              </div>
+            )}
           </div>
 
           {/* Volume pricing table */}
           <div className="space-y-1">
-            <p className="text-xs text-white/40 uppercase tracking-wider mb-2">Volume tiers</p>
-            {PRICE_TIERS.map(t => (
-              <div
-                key={t.label}
-                className={`flex justify-between text-sm px-3 py-2 rounded-lg transition-colors ${
-                  t === tier ? "bg-blue-500/20 text-blue-200" : "text-white/50"
-                }`}
-              >
-                <span>{t.label}</span>
-                <span className="font-medium">{formatCAD(t.unitCents)} / seat</span>
-              </div>
-            ))}
+            <p className="text-xs text-white/40 uppercase tracking-wider mb-2">Volume discounts</p>
+            {VOLUME_TIERS.map(t => {
+              const discountedCents = Math.round(individualPriceCents * (1 - t.discountPct / 100));
+              return (
+                <div
+                  key={t.label}
+                  className={`flex justify-between text-sm px-3 py-2 rounded-lg transition-colors ${
+                    t === volumeTier ? "bg-blue-500/20 text-blue-200" : "text-white/50"
+                  }`}
+                >
+                  <span>{t.label}{t.discountPct > 0 ? ` (${t.discountPct}% off)` : ""}</span>
+                  <span className="font-medium">{formatCAD(discountedCents)} / seat / yr</span>
+                </div>
+              );
+            })}
           </div>
 
           {/* Org details */}
