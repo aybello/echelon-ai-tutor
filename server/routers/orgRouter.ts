@@ -16,7 +16,7 @@
 
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import { and, count, eq, gte, lt, sql } from "drizzle-orm";
+import { and, count, eq, gte, inArray, lt, sql } from "drizzle-orm";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
 import {
@@ -169,11 +169,15 @@ async function grantSeat(
   // Send enrollment email to new operators (or re-activated ones)
   // Fire-and-forget — don't block the seat assignment if email fails
   if (role === "operator" && (isNewMember || wasRevoked)) {
-    const loginUrl = "https://echeloninstitute.ca/dashboard/login";
+    // Bug fix: use env-based URL instead of hardcoded production URL
+    const origin = process.env.FRONTEND_URL ?? "https://echeloninstitute.ca";
+    const loginUrl = `${origin}/dashboard/login`;
+    // Bug fix: use generic support email instead of personal email as fallback
+    const supportEmail = process.env.SUPPORT_EMAIL ?? "support@echeloninstitute.ca";
     sendTeamEnrollmentEmail({
       email,
       orgName: org.name,
-      managerEmail: managerEmail ?? "abello@echeloninstitute.ca",
+      managerEmail: managerEmail ?? supportEmail,
       loginUrl,
     }).catch(err => {
       console.error(`[Team Enrollment Email] Failed to send to ${email}:`, err);
@@ -256,14 +260,14 @@ export const orgRouter = router({
         province: org.province,
         termEnd: org.termEnd,
         status: org.status,
+        billingType: org.billingType,
+        stripeSubscriptionId: org.stripeSubscriptionId,
       };
     }
 
     const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
 
-    // Per-member accuracy and last-active
-    const emailList = memberEmails.map(e => `'${e.replace(/'/g, "''")}'`).join(",");
-
+    // Bug fix: replaced sql.raw(emailList) with inArray() to prevent SQL injection
     const [accuracyRows, activeRows] = await Promise.all([
       db
         .select({
@@ -272,14 +276,14 @@ export const orgRouter = router({
           correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
         })
         .from(questionAttempts)
-        .where(sql`${questionAttempts.studentEmail} IN (${sql.raw(emailList)})`)
+        .where(inArray(questionAttempts.studentEmail, memberEmails))
         .groupBy(questionAttempts.studentEmail),
       db
         .select({ email: questionAttempts.studentEmail })
         .from(questionAttempts)
         .where(
           and(
-            sql`${questionAttempts.studentEmail} IN (${sql.raw(emailList)})`,
+            inArray(questionAttempts.studentEmail, memberEmails),
             gte(questionAttempts.createdAt, oneWeekAgo),
           ),
         )
@@ -322,6 +326,8 @@ export const orgRouter = router({
       province: org.province,
       termEnd: org.termEnd,
       status: org.status,
+      billingType: org.billingType,
+      stripeSubscriptionId: org.stripeSubscriptionId,
     };
   }),
 
@@ -345,10 +351,9 @@ export const orgRouter = router({
 
     if (members.length === 0) return [];
 
-    const emailList = members
-      .map(m => `'${m.email.replace(/'/g, "''")}'`)
-      .join(",");
+    const memberEmails = members.map(m => m.email);
 
+    // Bug fix: replaced sql.raw(emailList) with inArray() to prevent SQL injection
     const [accuracyRows, lastActiveRows, examDateRows] = await Promise.all([
       db
         .select({
@@ -357,7 +362,7 @@ export const orgRouter = router({
           correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
         })
         .from(questionAttempts)
-        .where(sql`${questionAttempts.studentEmail} IN (${sql.raw(emailList)})`)
+        .where(inArray(questionAttempts.studentEmail, memberEmails))
         .groupBy(questionAttempts.studentEmail),
       db
         .select({
@@ -365,12 +370,12 @@ export const orgRouter = router({
           lastActive: sql<Date>`MAX(${questionAttempts.createdAt})`,
         })
         .from(questionAttempts)
-        .where(sql`${questionAttempts.studentEmail} IN (${sql.raw(emailList)})`)
+        .where(inArray(questionAttempts.studentEmail, memberEmails))
         .groupBy(questionAttempts.studentEmail),
       db
         .select({ email: examDates.email, examDate: examDates.examDate })
         .from(examDates)
-        .where(sql`${examDates.email} IN (${sql.raw(emailList)})`),
+        .where(inArray(examDates.email, memberEmails)),
     ]);
 
     const accuracyByEmail = new Map(
@@ -438,9 +443,7 @@ export const orgRouter = router({
 
     if (members.length === 0) return { atRisk: [], stalled: [] };
 
-    const emailList = members
-      .map(m => `'${m.email.replace(/'/g, "''")}'`)
-      .join(",");
+    const memberEmails = members.map(m => m.email);
 
     const now = new Date();
     const atRiskCutoff = new Date(now.getTime() + AT_RISK_EXAM_DAYS * 24 * 60 * 60 * 1000);
@@ -451,6 +454,7 @@ export const orgRouter = router({
       now.getTime() - STALLED_INACTIVE_DAYS * 24 * 60 * 60 * 1000,
     );
 
+    // Bug fix: replaced sql.raw(emailList) with inArray() to prevent SQL injection
     const [accuracyRows, lastActiveRows, examDateRows] = await Promise.all([
       db
         .select({
@@ -459,7 +463,7 @@ export const orgRouter = router({
           correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
         })
         .from(questionAttempts)
-        .where(sql`${questionAttempts.studentEmail} IN (${sql.raw(emailList)})`)
+        .where(inArray(questionAttempts.studentEmail, memberEmails))
         .groupBy(questionAttempts.studentEmail),
       db
         .select({
@@ -467,14 +471,14 @@ export const orgRouter = router({
           lastActive: sql<Date>`MAX(${questionAttempts.createdAt})`,
         })
         .from(questionAttempts)
-        .where(sql`${questionAttempts.studentEmail} IN (${sql.raw(emailList)})`)
+        .where(inArray(questionAttempts.studentEmail, memberEmails))
         .groupBy(questionAttempts.studentEmail),
       db
         .select({ email: examDates.email, examDate: examDates.examDate })
         .from(examDates)
         .where(
           and(
-            sql`${examDates.email} IN (${sql.raw(emailList)})`,
+            inArray(examDates.email, memberEmails),
             lt(examDates.examDate, atRiskCutoff),
             gte(examDates.examDate, now),
           ),
@@ -548,7 +552,7 @@ export const orgRouter = router({
   assignSeat: publicProcedure
     .input(z.object({ email: z.string().email() }))
     .mutation(async ({ input, ctx }) => {
-      const { orgId } = await resolveOrgManager(ctx);
+      const { orgId, managerEmail } = await resolveOrgManager(ctx);
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
@@ -581,7 +585,7 @@ export const orgRouter = router({
         });
       }
 
-      await grantSeat(db, org, email, "operator");
+      await grantSeat(db, org, email, "operator", managerEmail);
       return { success: true, email };
     }),
 
@@ -592,7 +596,7 @@ export const orgRouter = router({
   assignSeats: publicProcedure
     .input(z.object({ emails: z.array(z.string().email()).min(1).max(100) }))
     .mutation(async ({ input, ctx }) => {
-      const { orgId } = await resolveOrgManager(ctx);
+      const { orgId, managerEmail } = await resolveOrgManager(ctx);
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
@@ -620,8 +624,7 @@ export const orgRouter = router({
         );
 
       const currentActive = Number(cnt);
-      // Count how many of these emails are already active (won't consume a new seat)
-      const emailListSql = uniqueEmails.map(e => `'${e.replace(/'/g, "''")}'`).join(",");
+      // Bug fix: replaced sql.raw(emailListSql) with inArray() to prevent SQL injection
       const alreadyActive = await db
         .select({ email: organizationMembers.email })
         .from(organizationMembers)
@@ -630,7 +633,7 @@ export const orgRouter = router({
             eq(organizationMembers.orgId, orgId),
             eq(organizationMembers.role, "operator"),
             eq(organizationMembers.status, "assigned"),
-            sql`${organizationMembers.email} IN (${sql.raw(emailListSql)})`,
+            inArray(organizationMembers.email, uniqueEmails),
           ),
         );
       const alreadyActiveSet = new Set(alreadyActive.map(r => r.email));
@@ -647,7 +650,7 @@ export const orgRouter = router({
       const results: Array<{ email: string; success: boolean; error?: string }> = [];
       for (const email of uniqueEmails) {
         try {
-          await grantSeat(db, org, email, "operator");
+          await grantSeat(db, org, email, "operator", managerEmail);
           results.push({ email, success: true });
         } catch (err: any) {
           results.push({ email, success: false, error: err.message });
