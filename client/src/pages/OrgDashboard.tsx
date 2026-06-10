@@ -54,7 +54,6 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { Link, useLocation, useSearch } from "wouter";
-import { trpc as trpcClient } from "@/lib/trpc";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -123,7 +122,7 @@ export default function OrgDashboard() {
   const [showWelcomeBanner, setShowWelcomeBanner] = useState(false);
   const welcomeShownRef = useRef(false);
 
-  const utils = trpcClient.useUtils();
+  const utils = trpc.useUtils();
 
   // Queries
   const overviewQuery = trpc.org.getOrgOverview.useQuery(undefined, { retry: false });

@@ -108,27 +108,14 @@ export const dashboardRouter = router({
     const thirtyDaysAgo = new Date();
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-    // Build raw SQL WHERE clause based on identity
-    let whereClause: string;
-    let params: (number | string | Date)[];
-    if (userId && email) {
-      whereClause = "(userId = ? OR studentEmail = ?)";
-      params = [userId, email, thirtyDaysAgo];
-    } else if (userId) {
-      whereClause = "userId = ?";
-      params = [userId, thirtyDaysAgo];
-    } else {
-      whereClause = "studentEmail = ?";
-      params = [email!, thirtyDaysAgo];
-    }
+    // Use Drizzle ORM for parameterized query (no sql.raw)
+    const identityWhere = attemptsWhere(userId, email);
 
     const result = await db.execute(sql`
       SELECT DATE_FORMAT(createdAt, '%Y-%m-%d') AS day, COUNT(*) AS total,
              SUM(CASE WHEN correct = 'yes' THEN 1 ELSE 0 END) AS correct
       FROM question_attempts
-      WHERE ${sql.raw(whereClause.replace("?", userId && email ? `${userId}` : userId ? `${userId}` : `'${email}'`)
-        .replace("?", email ? `'${email}'` : "")
-        .replace("?", ""))}
+      WHERE ${identityWhere}
         AND createdAt >= ${thirtyDaysAgo}
       GROUP BY DATE_FORMAT(createdAt, '%Y-%m-%d')
       ORDER BY day
