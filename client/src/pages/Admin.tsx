@@ -117,7 +117,7 @@ export default function Admin() {
   const waitlistQ = trpc.admin.getWaitlist.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "waitlist" });
   const errorsQ = trpc.admin.getErrorReports.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "errors" });
   const scoresQ = trpc.admin.getScoreHistory.useQuery({ limit: 500, examType: "all" }, { enabled: user?.role === "admin" && activeTab === "scores" });
-  const purchasesQ = trpc.admin.getPurchases.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "revenue" });
+  const revenueQ = trpc.admin.getRevenueHistory.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "revenue" });
   const healthQ = trpc.admin.getSystemHealth.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "health", refetchInterval: 60_000 });
   const feedbackQ = trpc.admin.getFeedback.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "feedback" });
   const reconcileSubs = trpc.admin.reconcileSubscriptions.useMutation({
@@ -132,7 +132,7 @@ export default function Admin() {
   });
   const reconcile = trpc.admin.reconcilePurchases.useMutation({
     onSuccess: (data) => {
-      purchasesQ.refetch();
+      revenueQ.refetch();
       if (data.recovered > 0) {
         alert(`Reconciliation complete. Recovered ${data.recovered} missing purchase(s): ${data.details.map((d: any) => `${d.email} -> ${d.productKey}`).join(", ")}`);
       } else {
@@ -226,7 +226,7 @@ export default function Admin() {
   // ── Dashboard ──
   const statItems = [
     { label: "Total Revenue", value: stats.data?.totalRevenueCAD != null ? `CA$${stats.data.totalRevenueCAD.toFixed(2)}` : "—", icon: "💰", color: "#34D399", tab: "revenue" as Tab },
-    { label: "Purchases", value: stats.data?.purchaseCount ?? "—", icon: "🛒", color: "#38BDF8", tab: "revenue" as Tab },
+    { label: "Customers", value: stats.data != null ? (stats.data.purchaseCount + (stats.data.subscriptionCount ?? 0)) : "—", icon: "🛒", color: "#38BDF8", tab: "revenue" as Tab },
     { label: "Trial Signups", value: stats.data?.trialCount ?? "—", icon: "📧", color: "#A78BFA", tab: "trials" as Tab },
     { label: "Error Reports", value: stats.data?.errorCount ?? "—", icon: "🐛", color: "#F87171", tab: "errors" as Tab },
     { label: "Feedback", value: stats.data ? `${stats.data.feedbackCount} (★${stats.data.avgRating})` : "—", icon: "💬", color: "#FBBF24", tab: "feedback" as Tab },
@@ -562,13 +562,13 @@ export default function Admin() {
           <div style={{ background: "#FFFFFF", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
             <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
               <div style={{ fontSize: 13, fontWeight: 700 }}>
-                💰 Purchase History
-                {purchasesQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{purchasesQ.data.length} orders</span>}
+                💰 Revenue History
+                {revenueQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{revenueQ.data.length} orders</span>}
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                {purchasesQ.data && purchasesQ.data.length > 0 && (
+                {revenueQ.data && revenueQ.data.length > 0 && (
                   <div style={{ fontSize: 13, fontWeight: 800, color: "#34D399" }}>
-                    Total: CA${(purchasesQ.data.reduce((s, p) => s + p.amountCAD, 0) / 100).toFixed(2)}
+                    Total: CA${(revenueQ.data.reduce((s, r) => s + r.amountCAD, 0) / 100).toFixed(2)}
                   </div>
                 )}
                 <button
@@ -576,48 +576,65 @@ export default function Admin() {
                   onClick={() => reconcile.mutate({ hoursBack: 48 })}
                   disabled={reconcile.isPending}
                   title="Check Stripe for any paid sessions in the last 48h that are missing from our database and insert them"
-                  style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(99,102,241,0.4)", background: "rgba(99,102,241,0.15)", color: "#A5B4FC", cursor: reconcile.isPending ? "not-allowed" : "pointer", opacity: reconcile.isPending ? 0.6 : 1, fontFamily: "inherit" }}
+                  style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(99,102,241,0.4)", background: "rgba(99,102,241,0.15)", color: "#6366F1", cursor: reconcile.isPending ? "not-allowed" : "pointer", opacity: reconcile.isPending ? 0.6 : 1, fontFamily: "inherit" }}
                 >
                   {reconcile.isPending ? "Syncing..." : "Sync Stripe (48h)"}
                 </button>
                 <button
                   className="admin-btn"
-                  onClick={() => reconcileSubs.mutate()}
+                  onClick={() => { reconcileSubs.mutate(); }}
                   disabled={reconcileSubs.isPending}
                   title="Backfill any subscriptions dropped by the period-end bug. Safe to run multiple times — idempotent."
-                  style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(52,211,153,0.4)", background: "rgba(52,211,153,0.12)", color: "#34D399", cursor: reconcileSubs.isPending ? "not-allowed" : "pointer", opacity: reconcileSubs.isPending ? 0.6 : 1, fontFamily: "inherit" }}
+                  style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(52,211,153,0.4)", background: "rgba(52,211,153,0.12)", color: "#0F766E", cursor: reconcileSubs.isPending ? "not-allowed" : "pointer", opacity: reconcileSubs.isPending ? 0.6 : 1, fontFamily: "inherit" }}
                 >
                   {reconcileSubs.isPending ? "Syncing..." : "Sync Subscriptions"}
                 </button>
               </div>
             </div>
-            {purchasesQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
-            {purchasesQ.data && purchasesQ.data.length === 0 && (
-              <div style={{ padding: 40, textAlign: "center", color: "#64748B", fontSize: 13 }}>No purchases yet. Share the pricing page to get your first sale!</div>
+            {revenueQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
+            {revenueQ.data && revenueQ.data.length === 0 && (
+              <div style={{ padding: 40, textAlign: "center", color: "#64748B", fontSize: 13 }}>No revenue yet. Share the pricing page to get your first sale!</div>
             )}
-            {purchasesQ.data && purchasesQ.data.length > 0 && (
+            {revenueQ.data && revenueQ.data.length > 0 && (
               <div style={{ overflowX: "auto" }}>
                 <table style={{ width: "100%", borderCollapse: "collapse" }}>
                   <thead>
-                    <tr style={{ background: "rgba(255,255,255,0.03)" }}>
-                      {["#", "Product", "Name", "Email", "Phone", "Amount", "Date"].map(h => (
+                    <tr style={{ background: "#F8FAFC" }}>
+                      {["#", "Type", "Product", "Name", "Email", "Amount", "Status", "Date"].map(h => (
                         <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#64748B", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
-                    {purchasesQ.data.map((row, i) => (
+                    {revenueQ.data.map((row, i) => (
                       <tr key={row.id} className="admin-row" style={{ borderTop: "1px solid rgba(0,0,0,0.04)" }}>
                         <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{i + 1}</td>
                         <td style={{ padding: "12px 16px" }}>
-                          <div style={{ fontSize: 12, fontWeight: 700, color: "#1E293B" }}>{row.productName}</div>
-                          <div style={{ fontSize: 10, color: "#64748B", marginTop: 2 }}>{row.productKey}</div>
+                          <span style={{
+                            padding: "3px 8px", borderRadius: 100, fontSize: 10, fontWeight: 700,
+                            background: row.type === "subscription" ? "rgba(52,211,153,0.12)" : "rgba(59,130,246,0.12)",
+                            color: row.type === "subscription" ? "#0F766E" : "#1D4ED8",
+                          }}>
+                            {row.type === "subscription" ? "🔄 Sub" : "🛒 Pass"}
+                          </span>
                         </td>
-                        <td style={{ padding: "12px 16px", fontSize: 12, color: "#F8FAFC", fontWeight: 600 }}>{(row as any).customerName ?? <span style={{ color: "#64748B", fontWeight: 400 }}>—</span>}</td>
+                        <td style={{ padding: "12px 16px" }}>
+                          <div style={{ fontSize: 12, fontWeight: 700, color: "#1E293B" }}>{row.productLabel}</div>
+                          <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 2 }}>{row.productKey}</div>
+                        </td>
+                        <td style={{ padding: "12px 16px", fontSize: 12, color: "#1E293B", fontWeight: 600 }}>{row.name ?? <span style={{ color: "#CBD5E1", fontWeight: 400 }}>—</span>}</td>
                         <td style={{ padding: "12px 16px", fontSize: 12, color: "#64748B" }}>{row.email}</td>
-                        <td style={{ padding: "12px 16px", fontSize: 12, color: "#64748B" }}>{(row as any).phone ?? <span style={{ color: "#64748B" }}>—</span>}</td>
                         <td style={{ padding: "12px 16px" }}>
                           <span style={{ fontSize: 14, fontWeight: 800, color: "#34D399" }}>CA${(row.amountCAD / 100).toFixed(2)}</span>
+                        </td>
+                        <td style={{ padding: "12px 16px" }}>
+                          <span style={{
+                            padding: "3px 8px", borderRadius: 100, fontSize: 10, fontWeight: 700,
+                            background: row.status === "active" ? "rgba(52,211,153,0.12)" : "rgba(248,113,113,0.12)",
+                            color: row.status === "active" ? "#0F766E" : "#B91C1C",
+                          }}>
+                            {row.status.toUpperCase()}
+                          </span>
                         </td>
                         <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{formatDate(row.createdAt)}</td>
                       </tr>

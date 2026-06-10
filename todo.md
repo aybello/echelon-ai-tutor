@@ -827,3 +827,4 @@
 - [x] Add "Sync Subscriptions" button to Admin.tsx Revenue tab next to "Sync Stripe (48h)"
 - [x] Write 5 vitest tests for getSubscriptionPeriod (item-level, sub-level fallback, item preference, null, missing items)
 - [x] Convert full site from dark theme to light theme (white + navy/teal accents, 100+ files updated)
+- [x] Unified Revenue History: merge purchases + subscriptions into single admin table with Type column
