@@ -246,6 +246,13 @@
       "when": 1781133762971,
       "tag": "0034_chemical_hedge_knight",
       "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "5",
+      "when": 1781186554628,
+      "tag": "0035_gifted_mindworm",
+      "breakpoints": true
     }
   ]
 }

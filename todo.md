@@ -844,3 +844,16 @@
 - [x] OrgDashboard: label Revoke button with text (not just icon)
 - [x] OrgDashboard: add prominent Needs Focus alert panel above roster
 - [x] OrgDashboard: add visual progress bar showing remaining time on 1-year access term
+
+## Blog Feature (SEO — June 2026)
+- [x] Schema: add `blog_posts` table (id, slug, title, excerpt, content, author, publishedAt, tags, metaTitle, metaDescription, readingTimeMinutes)
+- [x] Run pnpm db:push to apply blog schema migration
+- [x] Add blogRouter.ts with tRPC procedures: listPosts, getPostBySlug, getRelatedPosts
+- [x] Register blogRouter in server/routers.ts
+- [x] Build /blog listing page (post cards with title, excerpt, date, reading time, tags)
+- [x] Build /blog/:slug post page (full article with SEO meta tags, related posts)
+- [x] Add /blog and /blog/:slug routes to App.tsx
+- [x] Add Blog link to SiteNav marketing nav (desktop + Resources dropdown)
+- [x] Add /blog and /blog/* to sitemap.xml
+- [x] Seed 5 SEO blog posts targeting Ontario water/wastewater operator certification niche
+- [x] Write vitest for blogRouter procedures (12 tests, 343 total passing)

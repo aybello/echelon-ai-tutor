@@ -514,4 +514,36 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Blog -->
+  <url>
+    <loc>https://echeloninstitute.ca/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/blog/how-to-pass-ontario-oit-water-exam</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/blog/ontario-class-1-vs-class-2-water-operator-differences</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/blog/water-treatment-chlorination-guide-ontario-operators</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/blog/eocp-wastewater-operator-certification-ontario-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://echeloninstitute.ca/blog/ontario-water-operator-exam-math-formulas-cheat-sheet</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

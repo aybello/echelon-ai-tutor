@@ -17,6 +17,7 @@ import { dashboardRouter } from "./routers/dashboardRouter";
 import { magicLinkRouter } from "./routers/magicLinkRouter";
 import { dashboardAuthRouter } from "./routers/dashboardAuthRouter";
 import { orgRouter } from "./routers/orgRouter";
+import { blogRouter } from "./routers/blogRouter";
 import { sendContactEmail } from "./email";
 
 export const appRouter = router({
@@ -30,6 +31,7 @@ export const appRouter = router({
   magicLink: magicLinkRouter,
   dashboardAuth: dashboardAuthRouter,
   org: orgRouter,
+  blog: blogRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

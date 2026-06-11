@@ -416,3 +416,29 @@ export const organizationMembers = mysqlTable("organization_members", {
 
 export type OrganizationMember = typeof organizationMembers.$inferSelect;
 export type InsertOrganizationMember = typeof organizationMembers.$inferInsert;
+
+/**
+ * Blog posts — SEO-targeted articles for Ontario water/wastewater operator certification.
+ * Content stored as HTML string (rendered server-side from markdown).
+ */
+export const blogPosts = mysqlTable("blog_posts", {
+  id: int("id").autoincrement().primaryKey(),
+  slug: varchar("slug", { length: 200 }).notNull().unique(),
+  title: varchar("title", { length: 300 }).notNull(),
+  excerpt: text("excerpt").notNull(),
+  content: text("content").notNull(), // HTML content
+  author: varchar("author", { length: 100 }).notNull().default("Echelon Institute"),
+  tags: varchar("tags", { length: 500 }), // comma-separated
+  metaTitle: varchar("metaTitle", { length: 300 }),
+  metaDescription: varchar("metaDescription", { length: 500 }),
+  readingTimeMinutes: int("readingTimeMinutes").notNull().default(5),
+  published: int("published").notNull().default(1), // 1 = published, 0 = draft
+  publishedAt: timestamp("publishedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (t) => [
+  index("blog_slug_idx").on(t.slug),
+  index("blog_published_idx").on(t.published, t.publishedAt),
+]);
+export type BlogPost = typeof blogPosts.$inferSelect;
+export type InsertBlogPost = typeof blogPosts.$inferInsert;
