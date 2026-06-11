@@ -14,9 +14,9 @@ import { lazy, Suspense } from "react";
 // Each page is loaded only when the user navigates to it, dramatically reducing
 // the initial JS bundle size from ~2MB to ~200KB.
 
-// Core pages (loaded eagerly — visited by almost every user)
-import Landing from "./pages/Landing";
-import Home from "./pages/Home";
+// Core pages — lazy loaded like all others to keep the initial bundle small
+const Landing = lazy(() => import("./pages/Landing"));
+const Home = lazy(() => import("./pages/Home"));
 
 // Tool pages
 const Process = lazy(() => import("./pages/Process"));
