@@ -109,8 +109,10 @@ temp/
 # Webdev artifacts (checkpoint zips, migrations, etc.)
 .webdev/
 
-# Manus version file (auto-generated, not part of source)
+# Manus platform directories (auto-generated, not part of source)
 client/public/__manus__/version.json
+.manus/
+.manus-logs/
 
 # Platform config containing secrets -- never commit
 .project-config.json
