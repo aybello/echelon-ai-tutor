@@ -77,6 +77,76 @@ function FaqItem({ q, a, isLast }: { q: string; a: string; isLast?: boolean }) {
   );
 }
 
+function BlogPreviewSection() {
+  const { data: allPosts } = trpc.blog.listPosts.useQuery();
+  const posts = (allPosts ?? []).slice(0, 3);
+
+  if (posts.length === 0) return null;
+
+  return (
+    <section style={{ background: "#F8FAFC", padding: "80px 24px", borderTop: "1px solid #E2E8F0" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ display: "inline-block", background: "#DBEAFE", color: "#1D4ED8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16 }}>FROM THE BLOG</div>
+          <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: "#0F172A", margin: "0 0 12px", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>Study Guides for Canadian Operators</h2>
+          <p style={{ fontSize: 16, color: "#64748B", maxWidth: 520, margin: "0 auto" }}>Free in-depth articles covering exam content, regulations, and career advice for water and wastewater operators.</p>
+        </div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, marginBottom: 40 }}>
+          {posts.map((post: { slug: string; title: string; excerpt: string; tags: string | null; readingTimeMinutes: number }) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`}>
+              <div style={{
+                background: "#FFFFFF",
+                border: "1px solid #E2E8F0",
+                borderRadius: 12,
+                padding: "28px 24px",
+                cursor: "pointer",
+                transition: "box-shadow 0.2s",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.10)")}
+              onMouseLeave={e => (e.currentTarget.style.boxShadow = "none")}
+              >
+                {post.tags && (
+                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 12 }}>
+                    {post.tags.split(",").slice(0, 2).map((tag: string) => (
+                      <span key={tag} style={{ background: "#EFF6FF", color: "#1D4ED8", fontSize: 11, fontWeight: 600, padding: "3px 10px", borderRadius: 20, letterSpacing: "0.04em" }}>{tag.trim()}</span>
+                    ))}
+                  </div>
+                )}
+                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#0F172A", margin: "0 0 10px", lineHeight: 1.4, fontFamily: "Sora, sans-serif", flex: 1 }}>{post.title}</h3>
+                <p style={{ fontSize: 14, color: "#64748B", margin: "0 0 16px", lineHeight: 1.6 }}>{post.excerpt.slice(0, 120)}{post.excerpt.length > 120 ? "..." : ""}</p>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto" }}>
+                  <span style={{ fontSize: 12, color: "#94A3B8" }}>{post.readingTimeMinutes} min read</span>
+                  <span style={{ fontSize: 13, color: "#1D4ED8", fontWeight: 600 }}>Read article →</span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div style={{ textAlign: "center" }}>
+          <Link href="/blog">
+            <button style={{
+              background: "#1D4ED8",
+              color: "#FFFFFF",
+              border: "none",
+              borderRadius: 8,
+              padding: "12px 28px",
+              fontSize: 15,
+              fontWeight: 600,
+              cursor: "pointer",
+              fontFamily: "Sora, sans-serif",
+            }}>View All Articles</button>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
@@ -2374,6 +2444,9 @@ export default function Landing() {
       </section>
       </FadeUp>
 
+      {/* ── From the Blog Section ── */}
+      <BlogPreviewSection />
+
       {/* ── Contact Section ── */}
       <ContactSection />
 
@@ -2447,6 +2520,10 @@ export default function Landing() {
                 { label: "AI Tutor Quiz", href: "/quiz" },
                 { label: "Formula Sheet", href: "/formulas" },
                 { label: "Flashcards", href: "/oit-water-flashcards" },
+                { label: "Career Map", href: "/career" },
+              ]},
+              { label: "Resources", links: [
+                { label: "Blog", href: "/blog" },
                 { label: "Career Map", href: "/career" },
               ]},
               { label: "Company", links: [
