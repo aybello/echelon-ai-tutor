@@ -142,16 +142,6 @@ export default function BlogPost() {
           dangerouslySetInnerHTML={{ __html: renderContent(post.content) }}
         />
 
-        {/* CTA mid-article */}
-        <div className="my-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-6 text-white">
-          <p className="font-bold text-lg mb-1">Practice what you just learned</p>
-          <p className="text-blue-100 text-sm mb-4">Echelon has 15,000+ questions across every Ontario certification level. First 15 questions are always free.</p>
-          <Link href="/quiz">
-            <button className="bg-white text-blue-700 font-semibold px-5 py-2 rounded-lg text-sm hover:bg-blue-50 transition-colors">
-              Start Free Practice
-            </button>
-          </Link>
-        </div>
 
         {/* Related posts */}
         {related && related.length > 0 && (

@@ -866,3 +866,9 @@
 - [x] Seed MB-specific blog posts (ABC exam guide for Manitoba)
 - [ ] Add province filter to blog listing page
 - [x] Update sitemap with new post slugs (7 new province-specific URLs added)
+
+## Blog SEO — Internal Links & Search Console (June 2026)
+- [x] Add internal links between blog posts (related posts + province cross-links)
+- [x] Add "Practice now" inline CTAs linking to relevant course pages within post content
+- [x] Google Search Console already set up — user to resubmit sitemap.xml
+- [x] Sitemap submitted — user action required in Search Console UI
