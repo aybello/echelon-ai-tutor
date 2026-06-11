@@ -857,3 +857,12 @@
 - [x] Add /blog and /blog/* to sitemap.xml
 - [x] Seed 5 SEO blog posts targeting Ontario water/wastewater operator certification niche
 - [x] Write vitest for blogRouter procedures (12 tests, 343 total passing)
+
+## Blog Expansion — All Canadian Provinces (June 2026)
+- [x] Research BC (BCWWA/EOCP), AB (AWWOA/EPEA), SK (SERM/SWWA), MB (WQAM) certification bodies and exam names
+- [x] Seed BC-specific blog posts (EOCP Classes D-A guide + EOCP exam study tips)
+- [x] Seed AB-specific blog posts (Alberta Levels 1-4 guide + AWWOA Level 1 exam prep)
+- [x] Seed SK-specific blog posts (OCB certification guide)
+- [x] Seed MB-specific blog posts (ABC exam guide for Manitoba)
+- [ ] Add province filter to blog listing page
+- [x] Update sitemap with new post slugs (7 new province-specific URLs added)
