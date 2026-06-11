@@ -1207,6 +1207,7 @@ export default function Landing() {
     { label: "Courses", href: "#courses" },
     { label: "WPI 🌊", href: "/wpi" },
     { label: "Pricing", href: "/pricing" },
+    { label: "Blog", href: "/blog" },
     { label: "About", href: "/about" },
     { label: "FAQ", href: "/#faq" },
   ];
