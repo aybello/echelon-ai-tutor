@@ -52,7 +52,9 @@ import {
   CreditCard,
   Settings,
   CheckCircle2,
+  CalendarDays,
 } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
 import { Link, useLocation, useSearch } from "wouter";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -250,6 +252,18 @@ export default function OrgDashboard() {
   const termDays = daysUntil(overview.termEnd);
   const hasStripe = overview.billingType === "stripe" && !!overview.stripeSubscriptionId;
 
+  // Progress bar: % of the 1-year term that has elapsed
+  const termProgressPct = (() => {
+    if (!overview.termStart || !overview.termEnd) return null;
+    const start = new Date(overview.termStart).getTime();
+    const end = new Date(overview.termEnd).getTime();
+    const now = Date.now();
+    const total = end - start;
+    if (total <= 0) return null;
+    return Math.min(100, Math.max(0, Math.round(((now - start) / total) * 100)));
+  })();
+  const termRemainingPct = termProgressPct !== null ? 100 - termProgressPct : null;
+
   // ── Assign handler ─────────────────────────────────────────────────────────
 
   const handleAssign = () => {
@@ -304,6 +318,58 @@ export default function OrgDashboard() {
             >
               ×
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Term progress bar — full-width strip below welcome banner, above header */}
+      {termRemainingPct !== null && overview.termEnd && (
+        <div className="bg-white border-b border-slate-100 px-6 py-3">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="flex items-center gap-1.5 text-xs text-slate-500">
+                <CalendarDays className="w-3.5 h-3.5" />
+                <span>Annual access</span>
+                {overview.termStart && (
+                  <span className="text-slate-400">
+                    · Started {formatDate(overview.termStart)}
+                  </span>
+                )}
+              </div>
+              <div className="flex items-center gap-2 text-xs">
+                <span
+                  className={
+                    termRemainingPct <= 10
+                      ? "text-red-600 font-semibold"
+                      : termRemainingPct <= 25
+                      ? "text-amber-600 font-medium"
+                      : "text-slate-500"
+                  }
+                >
+                  {termDays !== null && termDays > 0
+                    ? `${termDays} day${termDays === 1 ? "" : "s"} remaining`
+                    : "Expired"}
+                </span>
+                <span className="text-slate-300">·</span>
+                <span className="text-slate-400">Renews {formatDate(overview.termEnd)}</span>
+              </div>
+            </div>
+            <Progress
+              value={termRemainingPct}
+              className="h-2 bg-slate-100"
+              indicatorClassName={
+                termRemainingPct > 50
+                  ? "bg-green-600"
+                  : termRemainingPct > 25
+                  ? "bg-amber-500"
+                  : "bg-red-500"
+              }
+            />
+            <div className="flex justify-between text-[10px] text-slate-300 mt-1">
+              <span>0%</span>
+              <span className="text-slate-400 font-medium">{termRemainingPct}% remaining</span>
+              <span>100%</span>
+            </div>
           </div>
         </div>
       )}

@@ -843,3 +843,4 @@
 - [x] OrgDashboard: add operator name field to roster table (schema + orgRouter + UI)
 - [x] OrgDashboard: label Revoke button with text (not just icon)
 - [x] OrgDashboard: add prominent Needs Focus alert panel above roster
+- [x] OrgDashboard: add visual progress bar showing remaining time on 1-year access term
