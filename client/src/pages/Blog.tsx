@@ -17,9 +17,9 @@ function TagBadge({ tag }: { tag: string }) {
 
 export default function Blog() {
   usePageMeta({
-    title: "Blog | Echelon Institute — Ontario Water & Wastewater Operator Exam Prep",
-    description: "Study guides, exam tips, and certification advice for Ontario water and wastewater operators. OIT, Class 1-4, WQA, and EOCP certification content.",
-    keywords: "Ontario water operator exam, OIT certification, Class 1 water treatment, EOCP, wastewater operator certification, water treatment study guide",
+    title: "Blog | Echelon Institute — Canadian Water & Wastewater Operator Certification Guides",
+    description: "Study guides, exam tips, and certification advice for Canadian water and wastewater operators. Covers OIT, Class 1–4, EOCP (BC), AWWOA (Alberta), OCB (Saskatchewan), ABC (Manitoba), and WQA.",
+    keywords: "water operator certification Canada, OIT exam, EOCP BC, AWWOA Alberta, OCB Saskatchewan, Manitoba water operator, wastewater certification, water treatment study guide",
   });
 
   const { data: posts, isLoading } = trpc.blog.listPosts.useQuery();
@@ -36,10 +36,10 @@ export default function Blog() {
             <span>Echelon Institute Blog</span>
           </div>
           <h1 className="text-3xl font-bold text-slate-900 mb-3">
-            Ontario Operator Certification — Study Guides & Exam Tips
+            Canadian Operator Certification — Study Guides & Exam Tips
           </h1>
           <p className="text-slate-600 text-lg max-w-2xl">
-            Practical guides for water and wastewater operators preparing for OIT, Class 1-4, WQA, and EOCP certification exams in Ontario.
+            Practical guides for water and wastewater operators preparing for certification exams across Canada — Ontario (OIT, Class 1–4, WQA), BC (EOCP), Alberta (AWWOA), Saskatchewan (OCB), and Manitoba (ABC).
           </p>
         </div>
       </div>
