@@ -2,6 +2,24 @@ import { Link, useParams } from "wouter";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { marked } from "marked";
+import { useMemo } from "react";
+
+// Configure marked for safe, clean output
+marked.setOptions({ gfm: true, breaks: false });
+
+/** Detect whether content is raw Markdown or already HTML */
+function isMarkdown(content: string): boolean {
+  // If it starts with a Markdown heading or contains ## it's Markdown
+  return /^\s*#/.test(content) || /\n##\s/.test(content);
+}
+
+function renderContent(content: string): string {
+  if (isMarkdown(content)) {
+    return marked.parse(content) as string;
+  }
+  return content;
+}
 
 function formatDate(d: Date | string) {
   return new Date(d).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" });
@@ -121,7 +139,7 @@ export default function BlogPost() {
             prose-blockquote:border-l-blue-400 prose-blockquote:bg-blue-50 prose-blockquote:rounded-r-lg prose-blockquote:py-1
             prose-table:text-sm prose-th:bg-slate-100 prose-th:text-slate-800
             prose-code:bg-slate-100 prose-code:text-slate-800 prose-code:rounded prose-code:px-1"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: renderContent(post.content) }}
         />
 
         {/* CTA mid-article */}
