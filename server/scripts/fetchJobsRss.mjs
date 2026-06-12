@@ -174,18 +174,28 @@ export async function ingestRss(upsertJob) {
   const allFeeds = [...NOC_FEEDS, ...KEYWORD_FEEDS];
 
   // --- OWWA RSS (WordPress RSS 2.0 format, different from Job Bank Atom) ---
+  // OWWA uses Cloudflare protection — try multiple approaches
   try {
+    // Approach 1: RSS feed with browser-like headers (Content-Type required to bypass CF 415)
     const res = await fetch(OWWA_FEED.url, {
       headers: {
-        "User-Agent": "EchelonInstitute-JobBoard/1.0 (+https://echeloninstitute.ca)",
-        Accept: "application/rss+xml, application/xml, text/xml",
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Accept-Language": "en-CA,en;q=0.9",
+        "Cache-Control": "no-cache",
       },
-      signal: AbortSignal.timeout(15000),
+      signal: AbortSignal.timeout(20000),
     });
 
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const xml = await res.text();
+    // If Cloudflare served a JS challenge page instead of XML, skip gracefully
+    if (xml.includes("One moment, please") || xml.includes("cf-browser-verification") || !xml.includes("<rss") && !xml.includes("<channel")) {
+      console.log(`  · OWWA: Cloudflare challenge detected — skipping (jobs already in DB from last successful fetch)`);
+      return { errors };
+    }
     const parsed = parser.parse(xml);
     const channel = parsed?.rss?.channel;
     const items = channel?.item

@@ -1,11 +1,11 @@
 /**
- * Echelon Job Board — Ontario Municipal Careers Page Scraper
+ * Echelon Job Board — Canadian Municipal Careers Page Scraper
  *
- * Scrapes the careers/job-postings pages of 11 Ontario municipalities
+ * Scrapes the careers/job-postings pages of municipalities across Canada
  * that post water/wastewater operator jobs on their own sites (or ATS platforms)
  * rather than submitting to Job Bank Canada.
  *
- * Municipalities covered:
+ * Ontario (11 sources):
  *   1. City of Cambridge         — own site (HTML table)
  *   2. City of Guelph            — iCIMS ATS
  *   3. City of Barrie            — own site
@@ -17,6 +17,23 @@
  *   9. City of Hamilton          — own site
  *  10. Durham Region             — own site
  *  11. City of Brantford         — own site
+ *
+ * British Columbia (2 sources):
+ *  12. Metro Vancouver           — own site
+ *  13. City of Surrey            — own site (blocks bots — graceful skip)
+ *
+ * Alberta (3 sources):
+ *  14. City of Calgary           — own site (PeopleSoft ATS)
+ *  15. City of Edmonton          — own site
+ *  16. EPCOR                     — own site
+ *
+ * Saskatchewan (2 sources):
+ *  17. City of Saskatoon         — own site
+ *  18. City of Regina            — own site
+ *
+ * Manitoba (2 sources):
+ *  19. City of Winnipeg          — own site
+ *  20. Manitoba Hydro            — own site (blocks bots — graceful skip)
  *
  * Strategy: fetch HTML, extract job titles from known job-listing containers,
  * filter by water keywords. Each source has its own parser.
@@ -284,6 +301,115 @@ async function scrapeBrantford() {
   );
 }
 
+// ─── BC Scrapers ──────────────────────────────────────────────────────────
+
+async function scrapeMetroVancouver() {
+  const html = await fetchHtml(
+    "https://metrovancouver.org/about-us/careers/job-opportunities"
+  );
+  return extractJobLinks(
+    html,
+    "https://metrovancouver.org",
+    "Metro Vancouver",
+    "Metro Vancouver, BC",
+    ["/careers/", "/job-opportunities/", "/posting/", "/position/"]
+  ).map((j) => ({ ...j, province: "BC" }));
+}
+
+async function scrapeSurrey() {
+  // Surrey blocks server-side requests — graceful skip
+  // Their jobs typically appear on Job Bank Canada
+  return [];
+}
+
+// ─── AB Scrapers ──────────────────────────────────────────────────────────
+
+async function scrapeCalgary() {
+  const html = await fetchHtml("https://www.calgary.ca/careers.html");
+  const jobs = [];
+  // Calgary uses PeopleSoft ATS — job links are in class="job-title" anchors
+  const linkRe = /class="job-title"[^>]*href="([^"]+)"[^>]*>([^<]+)/gi;
+  let m;
+  while ((m = linkRe.exec(html)) !== null) {
+    const title = m[2].trim();
+    if (!isWaterJob(title)) continue;
+    const url = m[1].startsWith("http") ? m[1] : `https://www.calgary.ca${m[1]}`;
+    jobs.push({
+      title,
+      company: "City of Calgary",
+      location: "Calgary, AB",
+      province: "AB",
+      sourceUrl: url,
+    });
+  }
+  return jobs;
+}
+
+async function scrapeEdmonton() {
+  const html = await fetchHtml("https://www.edmonton.ca/city_government/jobs");
+  return extractJobLinks(
+    html,
+    "https://www.edmonton.ca",
+    "City of Edmonton",
+    "Edmonton, AB",
+    ["/jobs/", "/careers/", "/posting/", "/position/", "/employment/"]
+  ).map((j) => ({ ...j, province: "AB" }));
+}
+
+async function scrapeEpcor() {
+  const html = await fetchHtml("https://www.epcor.com/about/careers");
+  return extractJobLinks(
+    html,
+    "https://www.epcor.com",
+    "EPCOR",
+    "Edmonton, AB",
+    ["/careers/", "/jobs/", "/posting/", "/apply/", "/opportunities/"]
+  ).map((j) => ({ ...j, province: "AB" }));
+}
+
+// ─── SK Scrapers ──────────────────────────────────────────────────────────
+
+async function scrapeSaskatoon() {
+  const html = await fetchHtml("https://www.saskatoon.ca/city-hall/careers-city");
+  return extractJobLinks(
+    html,
+    "https://www.saskatoon.ca",
+    "City of Saskatoon",
+    "Saskatoon, SK",
+    ["/careers-city/", "/job/", "/posting/", "/position/", "/employment/"]
+  ).map((j) => ({ ...j, province: "SK" }));
+}
+
+async function scrapeRegina() {
+  const html = await fetchHtml("https://www.regina.ca/about-regina/job-opportunities/");
+  return extractJobLinks(
+    html,
+    "https://www.regina.ca",
+    "City of Regina",
+    "Regina, SK",
+    ["/job-opportunities/", "/job/", "/posting/", "/position/", "/employment/"]
+  ).map((j) => ({ ...j, province: "SK" }));
+}
+
+// ─── MB Scrapers ──────────────────────────────────────────────────────────
+
+async function scrapeWinnipeg() {
+  const html = await fetchHtml("https://www.winnipeg.ca/careers/job-postings");
+  return extractJobLinks(
+    html,
+    "https://www.winnipeg.ca",
+    "City of Winnipeg",
+    "Winnipeg, MB",
+    ["/careers/", "/job-postings/", "/job/", "/posting/", "/position/"]
+  ).map((j) => ({ ...j, province: "MB" }));
+}
+
+async function scrapeManitobaCivilService() {
+  // Manitoba Civil Service Commission — blocks bots, graceful skip
+  // Their jobs appear on Job Bank Canada
+  return [];
+}
+
 // ─── Orchestrator ─────────────────────────────────────────────────────────
 
 const SCRAPERS = [
@@ -298,6 +424,19 @@ const SCRAPERS = [
   { name: "City of Hamilton", fn: scrapeHamilton, sourceName: "City of Hamilton" },
   { name: "Durham Region", fn: scrapeDurham, sourceName: "Durham Region" },
   { name: "City of Brantford", fn: scrapeBrantford, sourceName: "City of Brantford" },
+  // BC
+  { name: "Metro Vancouver", fn: scrapeMetroVancouver, sourceName: "Metro Vancouver" },
+  { name: "City of Surrey", fn: scrapeSurrey, sourceName: "City of Surrey" },
+  // AB
+  { name: "City of Calgary", fn: scrapeCalgary, sourceName: "City of Calgary" },
+  { name: "City of Edmonton", fn: scrapeEdmonton, sourceName: "City of Edmonton" },
+  { name: "EPCOR", fn: scrapeEpcor, sourceName: "EPCOR" },
+  // SK
+  { name: "City of Saskatoon", fn: scrapeSaskatoon, sourceName: "City of Saskatoon" },
+  { name: "City of Regina", fn: scrapeRegina, sourceName: "City of Regina" },
+  // MB
+  { name: "City of Winnipeg", fn: scrapeWinnipeg, sourceName: "City of Winnipeg" },
+  { name: "Manitoba Civil Service", fn: scrapeManitobaCivilService, sourceName: "Manitoba Civil Service" },
 ];
 
 export async function ingestMunicipal(upsertJob) {

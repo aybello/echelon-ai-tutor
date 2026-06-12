@@ -2,7 +2,19 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { Briefcase, MapPin, Clock, Building2, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Briefcase,
+  MapPin,
+  Clock,
+  Building2,
+  ExternalLink,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  DollarSign,
+  Calendar,
+  Globe,
+} from "lucide-react";
 
 const PROVINCES = [
   { value: null, label: "All Provinces" },
@@ -16,11 +28,26 @@ const PROVINCES = [
 
 type Province = "ON" | "BC" | "AB" | "SK" | "MB" | "other" | null;
 
+type Job = {
+  id: number;
+  title: string;
+  company: string | null;
+  location: string | null;
+  province: string | null;
+  salary: string | null;
+  jobType: string | null;
+  sourceUrl: string;
+  sourceName: string | null;
+  description: string | null;
+  postedAt: Date | null;
+  isFeatured: number | null;
+};
+
 function formatDate(date: Date | string | null) {
   if (!date) return "";
   return new Date(date).toLocaleDateString("en-CA", {
     year: "numeric",
-    month: "short",
+    month: "long",
     day: "numeric",
   });
 }
@@ -47,7 +74,7 @@ function ProvinceBadge({ province }: { province: string | null }) {
   };
   const labels: Record<string, string> = {
     ON: "Ontario",
-    BC: "BC",
+    BC: "British Columbia",
     AB: "Alberta",
     SK: "Saskatchewan",
     MB: "Manitoba",
@@ -63,30 +90,123 @@ function ProvinceBadge({ province }: { province: string | null }) {
   );
 }
 
-function JobCard({
-  job,
-}: {
-  job: {
-    id: number;
-    title: string;
-    company: string | null;
-    location: string | null;
-    province: string | null;
-    salary: string | null;
-    jobType: string | null;
-    sourceUrl: string;
-    sourceName: string | null;
-    description: string | null;
-    postedAt: Date | null;
-    isFeatured: number | null;
-  };
-}) {
+// ─── Job Detail Modal ─────────────────────────────────────────────────────────
+
+function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
   return (
-    <a
-      href={job.sourceUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`block bg-white rounded-xl border transition-all group ${
+    <div
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
+
+      {/* Modal panel */}
+      <div className="relative w-full sm:max-w-2xl max-h-[92vh] sm:max-h-[85vh] bg-white sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden">
+        {/* Header */}
+        <div className="flex items-start justify-between gap-3 p-5 border-b border-slate-100">
+          <div className="min-w-0">
+            {job.isFeatured ? (
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 mb-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block" />
+                Featured
+              </div>
+            ) : null}
+            <h2 className="text-xl font-bold text-slate-900 leading-snug capitalize">
+              {job.title}
+            </h2>
+            {job.company && (
+              <div className="flex items-center gap-1.5 mt-1 text-sm text-slate-600">
+                <Building2 className="w-4 h-4 text-slate-400 shrink-0" />
+                <span>{job.company}</span>
+              </div>
+            )}
+          </div>
+          <button
+            onClick={onClose}
+            className="shrink-0 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+            aria-label="Close"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Meta row */}
+        <div className="flex flex-wrap gap-x-4 gap-y-2 px-5 py-3 bg-slate-50 border-b border-slate-100">
+          {job.location && (
+            <span className="flex items-center gap-1.5 text-sm text-slate-600">
+              <MapPin className="w-4 h-4 text-slate-400" />
+              {job.location}
+            </span>
+          )}
+          {job.salary && (
+            <span className="flex items-center gap-1.5 text-sm text-slate-600">
+              <DollarSign className="w-4 h-4 text-slate-400" />
+              {job.salary}
+            </span>
+          )}
+          {job.jobType && (
+            <span className="flex items-center gap-1.5 text-sm text-slate-600">
+              <Clock className="w-4 h-4 text-slate-400" />
+              {job.jobType}
+            </span>
+          )}
+          <ProvinceBadge province={job.province} />
+          {job.postedAt && (
+            <span className="flex items-center gap-1.5 text-sm text-slate-500">
+              <Calendar className="w-4 h-4 text-slate-400" />
+              Posted {formatDate(job.postedAt)}
+            </span>
+          )}
+        </div>
+
+        {/* Body — description */}
+        <div className="flex-1 overflow-y-auto px-5 py-5">
+          {job.description ? (
+            <div className="text-sm text-slate-700 leading-relaxed whitespace-pre-line">
+              {job.description}
+            </div>
+          ) : (
+            <div className="text-center py-10 text-slate-400">
+              <Globe className="w-10 h-10 mx-auto mb-3 opacity-40" />
+              <p className="text-sm font-medium text-slate-500">Full description on the employer's site</p>
+              <p className="text-xs mt-1 max-w-xs mx-auto">
+                Click "View Full Posting" below to see the complete job description, requirements, and how to apply.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Footer — source + apply CTA */}
+        <div className="border-t border-slate-100 px-5 py-4 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="text-xs text-slate-400">
+            <span className="font-medium text-slate-500">{job.sourceName ?? "Job Bank Canada"}</span>
+            {job.postedAt && <span> · {timeAgo(job.postedAt)}</span>}
+          </div>
+          <a
+            href={job.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors w-full sm:w-auto justify-center"
+          >
+            View Full Posting
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Job Card ─────────────────────────────────────────────────────────────────
+
+function JobCard({ job, onClick }: { job: Job; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`w-full text-left bg-white rounded-xl border transition-all group ${
         job.isFeatured
           ? "border-blue-300 shadow-sm ring-1 ring-blue-100"
           : "border-slate-200 hover:border-blue-300 hover:shadow-sm"
@@ -112,7 +232,7 @@ function JobCard({
               </div>
             )}
           </div>
-          <ExternalLink className="w-4 h-4 text-slate-300 group-hover:text-blue-400 transition-colors shrink-0 mt-0.5" />
+          <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-blue-400 transition-colors shrink-0 mt-0.5" />
         </div>
 
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mt-3">
@@ -148,25 +268,28 @@ function JobCard({
             {job.sourceName ?? "Job Bank Canada"} · {timeAgo(job.postedAt)}
           </span>
           <span className="text-xs font-semibold text-blue-600 group-hover:text-blue-700">
-            View posting →
+            View details →
           </span>
         </div>
       </div>
-    </a>
+    </button>
   );
 }
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function Careers() {
   usePageMeta({
     title: "Water & Wastewater Operator Jobs in Canada | Echelon Institute",
     description:
-      "Browse live water and wastewater operator job postings across Canada — Ontario, BC, Alberta, Saskatchewan, and Manitoba. Updated daily from Job Bank Canada.",
+      "Browse live water and wastewater operator job postings across Canada — Ontario, BC, Alberta, Saskatchewan, and Manitoba. Updated daily from Job Bank Canada and OWWA.",
     keywords:
       "water operator jobs Canada, wastewater operator jobs, water treatment operator employment, Ontario water operator jobs, BC water operator jobs, Alberta water operator jobs",
   });
 
   const [province, setProvince] = useState<Province>(null);
   const [page, setPage] = useState(1);
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
   const { data, isLoading } = trpc.jobs.listJobs.useQuery(
     { page, province },
@@ -187,6 +310,11 @@ export default function Careers() {
     <div className="min-h-screen bg-slate-50">
       <SiteNav currentPath="/jobs" />
 
+      {/* Job detail modal */}
+      {selectedJob && (
+        <JobModal job={selectedJob} onClose={() => setSelectedJob(null)} />
+      )}
+
       {/* Hero */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 py-12">
@@ -199,7 +327,8 @@ export default function Careers() {
           </h1>
           <p className="text-slate-600 text-lg max-w-2xl">
             Live job postings for certified water and wastewater operators across Ontario, BC,
-            Alberta, Saskatchewan, and Manitoba. Updated daily from Job Bank Canada.
+            Alberta, Saskatchewan, and Manitoba. Updated daily from Job Bank Canada, OWWA, and
+            municipal employers.
           </p>
           {stats && stats.total > 0 && (
             <div className="mt-4 inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 text-sm text-blue-700 font-medium">
@@ -278,7 +407,7 @@ export default function Careers() {
         {!isLoading && jobs.length > 0 && (
           <div className="space-y-4">
             {jobs.map((job) => (
-              <JobCard key={job.id} job={job} />
+              <JobCard key={job.id} job={job} onClick={() => setSelectedJob(job)} />
             ))}
           </div>
         )}
@@ -308,7 +437,7 @@ export default function Careers() {
           </div>
         )}
 
-        {/* CTA — get certified */}
+        {/* CTA */}
         <div className="mt-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-6 text-white">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
@@ -337,7 +466,16 @@ export default function Careers() {
           >
             Government of Canada Job Bank
           </a>
-          . Echelon Institute is not affiliated with any employer. Always verify postings directly.
+          ,{" "}
+          <a
+            href="https://owwa.ca/job-board/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-slate-600"
+          >
+            OWWA
+          </a>
+          , and municipal employers. Echelon Institute is not affiliated with any employer. Always verify postings directly.
         </p>
       </div>
 

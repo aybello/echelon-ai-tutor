@@ -895,3 +895,12 @@
 - [ ] Wire OWWA + municipal scraper into fetchJobs.mjs orchestrator
 - [ ] Run full fetch and verify total job count
 - [ ] Save checkpoint
+
+## Job Board — Modal + BC/AB/SK/MB Sources (June 12, 2026)
+- [ ] Build job detail modal on Careers page (show full description, company, location, salary, Apply button that opens real posting)
+- [ ] Research and add BC employer sources (BC Public Service, Metro Vancouver, City of Surrey, City of Burnaby, BCWWA job board)
+- [ ] Research and add AB employer sources (Alberta Public Service, EPCOR, City of Calgary, City of Edmonton)
+- [ ] Research and add SK employer sources (SaskJobs, City of Saskatoon, City of Regina)
+- [ ] Research and add MB employer sources (Manitoba Civil Service, City of Winnipeg)
+- [ ] Wire new province scrapers into fetchJobs.mjs orchestrator
+- [ ] Run full fetch and verify job volume across all provinces
