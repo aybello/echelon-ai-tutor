@@ -442,3 +442,34 @@ export const blogPosts = mysqlTable("blog_posts", {
 ]);
 export type BlogPost = typeof blogPosts.$inferSelect;
 export type InsertBlogPost = typeof blogPosts.$inferInsert;
+
+/**
+ * Job postings — live water/wastewater operator job board.
+ * Populated by RSS ingestion (Indeed, Job Bank Canada) every 6 hours.
+ * Deduplicated by sourceUrl. Jobs unseen for 14+ days are marked inactive.
+ */
+export const jobPostings = mysqlTable("job_postings", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 255 }).notNull(),
+  company: varchar("company", { length: 255 }),
+  location: varchar("location", { length: 255 }),
+  province: mysqlEnum("province", ["ON", "BC", "AB", "SK", "MB", "other"]).notNull().default("other"),
+  salary: varchar("salary", { length: 255 }),
+  jobType: mysqlEnum("jobType", ["full-time", "part-time", "contract"]).notNull().default("full-time"),
+  sourceUrl: varchar("sourceUrl", { length: 1024 }).notNull().unique(),
+  sourceName: varchar("sourceName", { length: 128 }).notNull(),
+  sourceType: mysqlEnum("sourceType", ["rss", "scraper"]).notNull().default("rss"),
+  description: text("description"),
+  postedAt: timestamp("postedAt"),
+  isFeatured: int("isFeatured").notNull().default(0), // 1 = featured
+  isActive: int("isActive").notNull().default(1),     // 1 = active
+  lastSeenAt: timestamp("lastSeenAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (t) => [
+  index("job_province_idx").on(t.province),
+  index("job_type_idx").on(t.jobType),
+  index("job_posted_at_idx").on(t.postedAt),
+  index("job_active_idx").on(t.isActive),
+]);
+export type JobPosting = typeof jobPostings.$inferSelect;
+export type InsertJobPosting = typeof jobPostings.$inferInsert;

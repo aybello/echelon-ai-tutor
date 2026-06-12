@@ -872,3 +872,18 @@
 - [x] Add "Practice now" inline CTAs linking to relevant course pages within post content
 - [x] Google Search Console already set up — user to resubmit sitemap.xml
 - [x] Sitemap submitted — user action required in Search Console UI
+
+## Careers / Job Board (June 2026)
+- [x] Add `job_postings` table to drizzle/schema.ts (id, title, company, location, province, salary, jobType, sourceUrl, sourceName, description, postedAt, expiresAt, isFeatured, isActive)
+- [x] Run pnpm db:push to apply job_postings migration
+- [x] Write jobUtils.mjs (province detection, relevance filter, RSS/Atom parser helpers)
+- [x] Write fetchJobsRss.mjs (Job Bank Canada Atom feed, NOC codes 92101/92011/92100)
+- [x] Write fetchJobs.mjs orchestrator (upsert, dedup by sourceUrl)
+- [x] Build jobsRouter.ts (listJobs paginated+province-filtered, getJob, markFeatured admin, stats)
+- [x] Register jobsRouter in server/routers.ts
+- [x] Build /jobs Careers page matching site design (province filter chips, job cards, pagination, CTA)
+- [x] Add /jobs route to App.tsx
+- [x] Add Jobs to Landing.tsx NAV_LINKS and footer Resources column
+- [x] Add /jobs to sitemap.xml
+- [x] Wire /api/scheduled/fetch-jobs heartbeat endpoint in server/_core/index.ts
+- [ ] Deploy site then create heartbeat cron (every 6 hours) via manus-heartbeat CLI: manus-heartbeat create --name fetch-jobs --cron "0 0 */6 * * *" --path /api/scheduled/fetch-jobs --description "Refresh job board from Job Bank Canada every 6 hours"

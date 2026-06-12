@@ -50,6 +50,7 @@ const OrgDashboard = lazy(() => import("./pages/OrgDashboard"));
 const ManagerLogin = lazy(() => import("./pages/ManagerLogin"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const Careers = lazy(() => import("./pages/Careers"));
 
 // Ontario Class mock exams
 const Class1MockExam = lazy(() => import("./pages/Class1MockExam"));
@@ -330,6 +331,7 @@ function Router() {
         <Route path={"/team"} component={OrgDashboard} />
         <Route path={"/blog/:slug"} component={BlogPost} />
         <Route path={"/blog"} component={Blog} />
+        <Route path={"/jobs"} component={Careers} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>

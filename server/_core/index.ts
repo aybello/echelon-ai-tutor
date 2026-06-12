@@ -104,6 +104,20 @@ async function startServer() {
     }
   });
 
+  // ── Job board refresh endpoint (Heartbeat cron, every 6 hours) ─────────────
+  app.post("/api/scheduled/fetch-jobs", async (req, res) => {
+    try {
+      const taskUid = req.headers["x-manus-cron-task-uid"] as string | undefined;
+      const { ingestAllFeeds } = await import("../scripts/fetchJobs.mjs" as string) as { ingestAllFeeds: () => Promise<{ inserted: number; skipped: number; total: number }> };
+      const result = await ingestAllFeeds();
+      console.log(`[fetch-jobs] ${result.inserted} inserted, ${result.skipped} skipped, ${result.total} total | taskUid=${taskUid}`);
+      return res.json({ ok: true, ...result, ts: new Date().toISOString() });
+    } catch (err) {
+      console.error("[fetch-jobs] error:", err);
+      return res.status(500).json({ error: String(err), ts: new Date().toISOString() });
+    }
+  });
+
   // development mode uses Vite, production mode uses static files
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);

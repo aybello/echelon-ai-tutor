@@ -1208,6 +1208,7 @@ export default function Landing() {
     { label: "WPI 🌊", href: "/wpi" },
     { label: "Pricing", href: "/pricing" },
     { label: "Blog", href: "/blog" },
+    { label: "Jobs", href: "/jobs" },
     { label: "About", href: "/about" },
     { label: "FAQ", href: "/#faq" },
   ];
@@ -2525,6 +2526,7 @@ export default function Landing() {
               ]},
               { label: "Resources", links: [
                 { label: "Blog", href: "/blog" },
+                { label: "Jobs", href: "/jobs" },
                 { label: "Career Map", href: "/career" },
               ]},
               { label: "Company", links: [

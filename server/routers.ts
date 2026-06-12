@@ -18,6 +18,7 @@ import { magicLinkRouter } from "./routers/magicLinkRouter";
 import { dashboardAuthRouter } from "./routers/dashboardAuthRouter";
 import { orgRouter } from "./routers/orgRouter";
 import { blogRouter } from "./routers/blogRouter";
+import { jobsRouter } from "./routers/jobsRouter";
 import { sendContactEmail } from "./email";
 
 export const appRouter = router({
@@ -32,6 +33,7 @@ export const appRouter = router({
   dashboardAuth: dashboardAuthRouter,
   org: orgRouter,
   blog: blogRouter,
+  jobs: jobsRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
