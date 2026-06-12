@@ -887,3 +887,11 @@
 - [x] Add /jobs to sitemap.xml
 - [x] Wire /api/scheduled/fetch-jobs heartbeat endpoint in server/_core/index.ts
 - [ ] Deploy site then create heartbeat cron (every 6 hours) via manus-heartbeat CLI: manus-heartbeat create --name fetch-jobs --cron "0 0 */6 * * *" --path /api/scheduled/fetch-jobs --description "Refresh job board from Job Bank Canada every 6 hours"
+
+## Job Board — OWWA RSS + Municipal Scrapers (June 2026)
+- [ ] Add OWWA RSS feed (https://owwa.ca/feed/?post_type=job_listing) to fetchJobsRss.mjs
+- [ ] Research and confirm careers page URLs for: Cambridge, Guelph, Barrie, OCWA, Waterloo Region, Region of Peel, York Region, Ottawa, Hamilton, Durham Region, City of Brantford
+- [ ] Build fetchJobsMunicipal.mjs — scraper for 11 Ontario municipal careers pages with water/wastewater keyword filter
+- [ ] Wire OWWA + municipal scraper into fetchJobs.mjs orchestrator
+- [ ] Run full fetch and verify total job count
+- [ ] Save checkpoint

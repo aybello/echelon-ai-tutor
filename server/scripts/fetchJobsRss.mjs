@@ -17,6 +17,15 @@ import { XMLParser } from "fast-xml-parser";
 const JOB_BANK_BASE =
   "https://www.jobbank.gc.ca/jobsearch/feed/jobSearchRSSfeed";
 
+// OWWA (Ontario Water Works Association) job board — WordPress WP Job Manager RSS
+// This is the most targeted source: Ontario water sector employers post here directly
+const OWWA_FEED = {
+  name: "OWWA — Ontario Water Works Association Job Board",
+  url: "https://owwa.ca/feed/?post_type=job_listing",
+  requiresFilter: false, // All posts are water sector jobs by definition
+  format: "rss2", // WordPress RSS 2.0 (not Atom)
+};
+
 // NOC-code based feeds — very precise, no false positives
 const NOC_FEEDS = [
   {
@@ -163,6 +172,65 @@ export async function ingestRss(upsertJob) {
   });
 
   const allFeeds = [...NOC_FEEDS, ...KEYWORD_FEEDS];
+
+  // --- OWWA RSS (WordPress RSS 2.0 format, different from Job Bank Atom) ---
+  try {
+    const res = await fetch(OWWA_FEED.url, {
+      headers: {
+        "User-Agent": "EchelonInstitute-JobBoard/1.0 (+https://echeloninstitute.ca)",
+        Accept: "application/rss+xml, application/xml, text/xml",
+      },
+      signal: AbortSignal.timeout(15000),
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const xml = await res.text();
+    const parsed = parser.parse(xml);
+    const channel = parsed?.rss?.channel;
+    const items = channel?.item
+      ? Array.isArray(channel.item) ? channel.item : [channel.item]
+      : [];
+
+    let owwaCount = 0;
+    for (const item of items) {
+      try {
+        const title = (item.title?.__cdata ?? item.title ?? "").trim();
+        const sourceUrl = (item.link?.__cdata ?? item.link ?? "").trim();
+        if (!title || !sourceUrl) continue;
+        if (seenUrls.has(sourceUrl)) continue;
+        seenUrls.add(sourceUrl);
+
+        const descRaw = item.description?.__cdata ?? item.description ?? "";
+        const description = descRaw.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 400);
+        const company = (item["job-location"]?.__cdata ?? item["job-location"] ?? "").trim() || null;
+        const location = company || "Ontario";
+        const province = detectProvince(location);
+        const postedAt = item.pubDate ? new Date(item.pubDate) : new Date();
+
+        await upsertJob({
+          title,
+          company: null,
+          location,
+          province,
+          salary: null,
+          jobType: "full-time",
+          sourceUrl,
+          sourceName: "OWWA",
+          sourceType: "rss",
+          description,
+          postedAt,
+        });
+        owwaCount++;
+        totalFetched++;
+      } catch (itemErr) {
+        errors.push(`OWWA item error: ${itemErr.message}`);
+      }
+    }
+    console.log(`  ✓ ${OWWA_FEED.name}: ${owwaCount} jobs`);
+  } catch (err) {
+    errors.push(`RSS fetch failed (OWWA): ${err.message}`);
+  }
 
   for (const feed of allFeeds) {
     try {

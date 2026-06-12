@@ -11,6 +11,7 @@
 import "dotenv/config";
 import mysql from "mysql2/promise";
 import { ingestRss } from "./fetchJobsRss.mjs";
+import { ingestMunicipal } from "./fetchJobsMunicipal.mjs";
 
 const DB_URL = process.env.DATABASE_URL;
 if (!DB_URL) {
@@ -75,9 +76,13 @@ export async function fetchAndIngest() {
     }
   }
 
-  console.log("\u2192 Tier 1: RSS ingestion (Indeed + Job Bank)");
+  console.log("\u2192 Tier 1: RSS ingestion (Job Bank Canada + OWWA)");
   const rss = await ingestRss(upsertJob);
   allErrors.push(...rss.errors);
+
+  console.log("\n\u2192 Tier 2: Municipal careers page scrapers (11 Ontario cities)");
+  const municipal = await ingestMunicipal(upsertJob);
+  allErrors.push(...municipal.errors);
 
   // Expiry: mark inactive anything not seen in 14 days
   const staleCutoff = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
