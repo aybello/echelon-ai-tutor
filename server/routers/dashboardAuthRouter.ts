@@ -17,7 +17,7 @@ import { SignJWT, jwtVerify } from "jose";
 import nodemailer from "nodemailer";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { dashboardOtps, purchases, subscriptions } from "../../drizzle/schema";
+import { dashboardOtps, purchases, subscriptions, organizations, organizationMembers } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { ENV } from "../_core/env";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
@@ -69,7 +69,8 @@ async function sendOtpEmail(email: string, code: string): Promise<void> {
 export const dashboardAuthRouter = router({
   /**
    * sendOtp — generates and emails a 6-digit code to the given address.
-   * Only succeeds if the email has at least one active purchase or subscription.
+   * Succeeds if the email has at least one active purchase, subscription,
+   * OR is a team manager (organizations.managerEmail or organizationMembers role=manager).
    */
   sendOtp: publicProcedure
     .input(z.object({ email: z.string().email() }))
@@ -78,32 +79,59 @@ export const dashboardAuthRouter = router({
       const db = await getDb();
       if (!db) throw new Error("Database unavailable");
 
-      // Check the email has purchased/subscribed to at least one course
-      // We use a wildcard examType check by trying a known broad type
-      // Actually we check purchases + subscriptions tables directly
-      const { purchases, subscriptions } = await import("../../drizzle/schema");
-      const { gt: gtOp, eq: eqOp, and: andOp } = await import("drizzle-orm");
-
+      // Check 1: purchases table
       const purchaseRows = await db
         .select({ id: purchases.id })
         .from(purchases)
-        .where(eqOp(purchases.email, email))
+        .where(eq(purchases.email, email))
         .limit(1);
 
-      const now = new Date();
-      const subRows = await db
-        .select({ id: subscriptions.id })
-        .from(subscriptions)
-        .where(
-          andOp(
-            eqOp(subscriptions.email, email),
-            eqOp(subscriptions.status, "active"),
-            gtOp(subscriptions.currentPeriodEnd, now),
-          ),
-        )
-        .limit(1);
+      let hasAccess = purchaseRows.length > 0;
 
-      if (purchaseRows.length === 0 && subRows.length === 0) {
+      // Check 2: active subscriptions (includes org-managed seats)
+      if (!hasAccess) {
+        const now = new Date();
+        const subRows = await db
+          .select({ id: subscriptions.id })
+          .from(subscriptions)
+          .where(
+            and(
+              eq(subscriptions.email, email),
+              eq(subscriptions.status, "active"),
+              gt(subscriptions.currentPeriodEnd, now),
+            ),
+          )
+          .limit(1);
+        hasAccess = subRows.length > 0;
+      }
+
+      // Check 3: team manager — organizations.managerEmail
+      if (!hasAccess) {
+        const orgRows = await db
+          .select({ id: organizations.id })
+          .from(organizations)
+          .where(eq(organizations.managerEmail, email))
+          .limit(1);
+        hasAccess = orgRows.length > 0;
+      }
+
+      // Check 4: team manager — organizationMembers with role=manager, status=assigned
+      if (!hasAccess) {
+        const memberRows = await db
+          .select({ id: organizationMembers.id })
+          .from(organizationMembers)
+          .where(
+            and(
+              eq(organizationMembers.email, email),
+              eq(organizationMembers.role, "manager"),
+              eq(organizationMembers.status, "assigned"),
+            ),
+          )
+          .limit(1);
+        hasAccess = memberRows.length > 0;
+      }
+
+      if (!hasAccess) {
         // Return success anyway to avoid email enumeration — just don't send
         return { sent: true };
       }

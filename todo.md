@@ -904,3 +904,12 @@
 - [ ] Research and add MB employer sources (Manitoba Civil Service, City of Winnipeg)
 - [ ] Wire new province scrapers into fetchJobs.mjs orchestrator
 - [ ] Run full fetch and verify job volume across all provinces
+
+## QA Pass — Teams, Blog, Jobs (June 13, 2026)
+- [x] Fix sendOtp in dashboardAuthRouter.ts — add organizations.managerEmail + organizationMembers check so team managers can log in even if subscription row is missing/expired
+- [x] Visual QA: Blog listing page and individual post pages — clean, no issues
+- [x] Visual QA: Jobs page — province filtering, job detail modal, pagination all working
+- [x] Visual QA: Teams purchase page — form validation, province selector, seat pricing, Stripe checkout flow all correct
+- [x] Visual QA: Manager login page — OTP flow, redirect to /team, proper error handling
+- [x] Visual QA: Org dashboard — auth state handling, metric cards, roster table, assign/revoke modals, manage seats/billing buttons
+- [x] TypeScript clean (no errors), all 343 vitest tests passing
