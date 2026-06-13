@@ -17,7 +17,7 @@ import { SignJWT, jwtVerify } from "jose";
 import nodemailer from "nodemailer";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { dashboardOtps, purchases, subscriptions, organizations, organizationMembers } from "../../drizzle/schema";
+import { dashboardOtps, purchases, subscriptions } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { ENV } from "../_core/env";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
@@ -69,8 +69,10 @@ async function sendOtpEmail(email: string, code: string): Promise<void> {
 export const dashboardAuthRouter = router({
   /**
    * sendOtp — generates and emails a 6-digit code to the given address.
-   * Succeeds if the email has at least one active purchase, subscription,
-   * OR is a team manager (organizations.managerEmail or organizationMembers role=manager).
+   * Succeeds if the email has at least one active purchase or active subscription.
+   * Team managers are covered by the subscriptions check — grantSeat() creates a
+   * subscription row for every manager tied to the org termEnd. If the org plan has
+   * expired, the manager is blocked and must renew before regaining access.
    */
   sendOtp: publicProcedure
     .input(z.object({ email: z.string().email() }))
@@ -103,32 +105,6 @@ export const dashboardAuthRouter = router({
           )
           .limit(1);
         hasAccess = subRows.length > 0;
-      }
-
-      // Check 3: team manager — organizations.managerEmail
-      if (!hasAccess) {
-        const orgRows = await db
-          .select({ id: organizations.id })
-          .from(organizations)
-          .where(eq(organizations.managerEmail, email))
-          .limit(1);
-        hasAccess = orgRows.length > 0;
-      }
-
-      // Check 4: team manager — organizationMembers with role=manager, status=assigned
-      if (!hasAccess) {
-        const memberRows = await db
-          .select({ id: organizationMembers.id })
-          .from(organizationMembers)
-          .where(
-            and(
-              eq(organizationMembers.email, email),
-              eq(organizationMembers.role, "manager"),
-              eq(organizationMembers.status, "assigned"),
-            ),
-          )
-          .limit(1);
-        hasAccess = memberRows.length > 0;
       }
 
       if (!hasAccess) {
