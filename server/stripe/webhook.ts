@@ -292,6 +292,15 @@ export function registerStripeWebhook(app: Express) {
             .where(eq(subscriptions.stripeSubscriptionId, stripeSubscriptionId))
             .limit(1);
 
+          // Extract optional CRM fields from subscription metadata
+          const customerName = (sub.metadata?.customer_name as string | undefined) || null;
+          const customerPhone = (sub.metadata?.customer_phone as string | undefined) || null;
+          const utmSource = (sub.metadata?.utm_source as string | undefined) || null;
+          const utmMedium = (sub.metadata?.utm_medium as string | undefined) || null;
+          const utmCampaign = (sub.metadata?.utm_campaign as string | undefined) || null;
+          const referralSource = (sub.metadata?.referral_source as string | undefined) || null;
+          const userId = sub.metadata?.user_id ? parseInt(sub.metadata.user_id, 10) || null : null;
+
           if (existing.length === 0) {
             await db.insert(subscriptions).values({
               email,
@@ -302,6 +311,13 @@ export function registerStripeWebhook(app: Express) {
               status,
               currentPeriodStart,
               currentPeriodEnd,
+              customerName,
+              phone: customerPhone,
+              utmSource,
+              utmMedium,
+              utmCampaign,
+              referralSource,
+              userId: userId ?? undefined,
             });
             console.log(`[Stripe Webhook] Subscription created: ${email} -> ${tier} (${province}) expires ${currentPeriodEnd.toISOString()}`);
             await notifyOwner({

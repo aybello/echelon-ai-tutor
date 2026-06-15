@@ -913,3 +913,10 @@
 - [x] Visual QA: Manager login page — OTP flow, redirect to /team, proper error handling
 - [x] Visual QA: Org dashboard — auth state handling, metric cards, roster table, assign/revoke modals, manage seats/billing buttons
 - [x] TypeScript clean (no errors), all 343 vitest tests passing
+
+## Subscription Info Capture (Jun 15)
+- [x] Add customerName, phone (required), utmSource, utmMedium, utmCampaign, referralSource, userId to subscriptions schema
+- [x] Run db:push to migrate
+- [x] Update createSubscriptionCheckout to require email + phone, pass all fields via metadata
+- [x] Update webhook to store new fields on insert
+- [x] Update frontend subscription checkout modal to require email and phone

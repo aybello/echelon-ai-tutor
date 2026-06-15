@@ -215,10 +215,14 @@ export const stripeRouter = router({
     .input(z.object({
       tier: z.enum(["class1", "class2", "class3", "class4", "all-access"]),
       province: z.enum(["ontario", "western"]),
-      email: z.string().email().optional(),
+      email: z.string().email(),
       name: z.string().max(128).optional(),
-      phone: z.string().max(30).optional(),
+      phone: z.string().min(7, "Phone number is required").max(30),
       origin: z.string().url(),
+      utmSource: z.string().max(128).optional(),
+      utmMedium: z.string().max(128).optional(),
+      utmCampaign: z.string().max(128).optional(),
+      referralSource: z.string().max(128).optional(),
     }))
     .mutation(async ({ input, ctx }) => {
       const product = getSubscriptionProduct(input.tier as SubscriptionTier, input.province as SubscriptionProvince);
@@ -253,6 +257,11 @@ export const stripeRouter = router({
           user_id: ctx.user?.id?.toString() ?? "",
           customer_email: userEmail ?? "",
           customer_name: input.name ?? "",
+          customer_phone: input.phone,
+          utm_source: input.utmSource ?? "",
+          utm_medium: input.utmMedium ?? "",
+          utm_campaign: input.utmCampaign ?? "",
+          referral_source: input.referralSource ?? "",
         },
         // CRITICAL: subscription_data.metadata is what Stripe attaches to the
         // subscription object itself. The webhook receives the subscription object
@@ -263,6 +272,12 @@ export const stripeRouter = router({
             subscription_province: input.province,
             user_id: ctx.user?.id?.toString() ?? "",
             customer_email: userEmail ?? "",
+            customer_name: input.name ?? "",
+            customer_phone: input.phone,
+            utm_source: input.utmSource ?? "",
+            utm_medium: input.utmMedium ?? "",
+            utm_campaign: input.utmCampaign ?? "",
+            referral_source: input.referralSource ?? "",
           },
         },
         allow_promotion_codes: true,

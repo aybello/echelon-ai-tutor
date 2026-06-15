@@ -125,6 +125,15 @@ export const subscriptions = mysqlTable("subscriptions", {
   /** Set when this row is org-managed (seat granted by an org). Null for self-serve subscriptions.
    *  Org-managed rows have stripeSubscriptionId = null and are excluded from the self-serve billing portal. */
   orgId: int("orgId"),
+  /** Subscriber's full name (captured from pre-checkout modal) */
+  customerName: varchar("customerName", { length: 128 }),
+  /** Subscriber's phone number (required at checkout) */
+  phone: varchar("phone", { length: 32 }),
+  /** Marketing attribution */
+  utmSource: varchar("utmSource", { length: 128 }),
+  utmMedium: varchar("utmMedium", { length: 128 }),
+  utmCampaign: varchar("utmCampaign", { length: 128 }),
+  referralSource: varchar("referralSource", { length: 128 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 export type Subscription = typeof subscriptions.$inferSelect;

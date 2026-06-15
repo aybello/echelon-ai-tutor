@@ -654,6 +654,12 @@ function SubscriptionCheckoutButton({
 
   function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
     try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
+    // Read UTM params and referral source from URL search params
+    const sp = new URLSearchParams(window.location.search);
+    const utmSource = sp.get("utm_source") ?? undefined;
+    const utmMedium = sp.get("utm_medium") ?? undefined;
+    const utmCampaign = sp.get("utm_campaign") ?? undefined;
+    const referralSource = sp.get("ref") ?? document.referrer?.split("/")[2] ?? undefined;
     createSubscription.mutate({
       tier,
       province,
@@ -661,6 +667,10 @@ function SubscriptionCheckoutButton({
       name: contact.name,
       phone: contact.phone,
       origin: window.location.origin,
+      utmSource,
+      utmMedium,
+      utmCampaign,
+      referralSource,
     });
   }
 
