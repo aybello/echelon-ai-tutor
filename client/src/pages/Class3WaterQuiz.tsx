@@ -98,6 +98,7 @@ export default function Class3WaterQuiz() {
               onApply={session.handleSettingsApply}
               onClose={() => session.setSettingsOpen(false)}
               totalQuestions={allQuestions.length}
+              trialUnlocked={session.trialUnlocked}
             />
           )}
         </>

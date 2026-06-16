@@ -108,6 +108,7 @@ export default function WpiClass4WaterDistQuiz() {
               onApply={session.handleSettingsApply}
               onClose={() => session.setSettingsOpen(false)}
               totalQuestions={allQuestions.length}
+              trialUnlocked={session.trialUnlocked}
             />
           )}
         </>

@@ -93,6 +93,7 @@ export default function WQAQuiz() {
               onApply={session.handleSettingsApply}
               onClose={() => session.setSettingsOpen(false)}
               totalQuestions={allQuestions.length}
+              trialUnlocked={session.trialUnlocked}
             />
           )}
         </>

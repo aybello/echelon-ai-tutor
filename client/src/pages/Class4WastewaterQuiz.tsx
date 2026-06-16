@@ -93,6 +93,7 @@ export default function Class4WastewaterQuiz() {
               onApply={session.handleSettingsApply}
               onClose={() => session.setSettingsOpen(false)}
               totalQuestions={allQuestions.length}
+              trialUnlocked={session.trialUnlocked}
             />
           )}
         </>

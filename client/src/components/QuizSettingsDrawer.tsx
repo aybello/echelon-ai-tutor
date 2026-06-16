@@ -28,6 +28,7 @@ interface QuizSettingsDrawerProps {
   onApply: (settings: QuizSettings) => void;
   onClose: () => void;
   totalQuestions?: number;
+  trialUnlocked?: boolean;
 }
 
 const SESSION_SIZE_OPTIONS = [10, 15, 20, 30, 50];
@@ -44,6 +45,7 @@ export default function QuizSettingsDrawer({
   onApply,
   onClose,
   totalQuestions,
+  trialUnlocked = false,
 }: QuizSettingsDrawerProps) {
   const [local, setLocal] = useState<QuizSettings>({ ...settings });
 
@@ -129,28 +131,40 @@ export default function QuizSettingsDrawer({
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {SESSION_SIZE_OPTIONS.map(size => {
                 const active = local.sessionSize === size;
+                const locked = !trialUnlocked && size > 15;
                 return (
                   <button
                     key={size}
-                    onClick={() => setLocal(s => ({ ...s, sessionSize: size }))}
+                    onClick={() => {
+                      if (locked) return; // blocked — gate will show on apply
+                      setLocal(s => ({ ...s, sessionSize: size }));
+                    }}
+                    title={locked ? "Subscribe to unlock sessions longer than 15 questions" : undefined}
                     style={{
                       padding: "8px 16px",
                       borderRadius: 10,
-                      border: active ? "2px solid #1D4ED8" : "1.5px solid #E2E8F0",
-                      background: active ? "#EFF6FF" : "#F8FAFC",
-                      color: active ? "#1D4ED8" : "#374151",
+                      border: active ? "2px solid #1D4ED8" : locked ? "1.5px solid #E2E8F0" : "1.5px solid #E2E8F0",
+                      background: active ? "#EFF6FF" : locked ? "#F1F5F9" : "#F8FAFC",
+                      color: active ? "#1D4ED8" : locked ? "#94A3B8" : "#374151",
                       fontSize: 13,
                       fontWeight: active ? 800 : 600,
-                      cursor: "pointer",
+                      cursor: locked ? "not-allowed" : "pointer",
                       fontFamily: "inherit",
                       transition: "all 0.12s",
+                      opacity: locked ? 0.6 : 1,
+                      position: "relative" as const,
                     }}
                   >
-                    {size} Qs
+                    {locked ? "🔒 " : ""}{size} Qs
                   </button>
                 );
               })}
             </div>
+            {!trialUnlocked && (
+              <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 6 }}>
+                🔒 Sessions longer than 15 questions require a subscription
+              </div>
+            )}
 
           </section>
 
