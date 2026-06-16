@@ -295,6 +295,117 @@ export const adminRouter = router({
       };
     }),
 
+  /**
+   * Backfill phone and customerName for subscriptions and purchases that are missing them.
+   * Looks up each Stripe subscription/customer and updates the DB row.
+   * Idempotent — safe to run multiple times.
+   */
+  backfillContactInfo: adminProcedure
+    .mutation(async () => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+      const stripe = getStripe();
+
+      const updated: { type: string; email: string; phone: string | null; name: string | null }[] = [];
+      const errors: string[] = [];
+
+      // ── Subscriptions ────────────────────────────────────────────────────────
+      const missingSubs = await db
+        .select()
+        .from(subscriptions)
+        .where(
+          sql`(${subscriptions.phone} IS NULL OR ${subscriptions.customerName} IS NULL) AND ${subscriptions.stripeSubscriptionId} IS NOT NULL`
+        );
+
+      for (const sub of missingSubs) {
+        try {
+          let phone: string | null = sub.phone;
+          let customerName: string | null = sub.customerName;
+
+          // Method 1: Subscription metadata
+          const stripeSub = await stripe.subscriptions.retrieve(sub.stripeSubscriptionId!);
+          if (!phone && stripeSub.metadata?.customer_phone) phone = stripeSub.metadata.customer_phone;
+          if (!customerName && stripeSub.metadata?.customer_name) customerName = stripeSub.metadata.customer_name;
+
+          // Method 2: Stripe customer object
+          if ((!phone || !customerName) && sub.stripeCustomerId) {
+            const customer = await stripe.customers.retrieve(sub.stripeCustomerId) as any;
+            if (!customer.deleted) {
+              if (!phone && customer.phone) phone = customer.phone;
+              if (!customerName && customer.name) customerName = customer.name;
+            }
+          }
+
+          // Method 3: Checkout session metadata
+          if (!phone || !customerName) {
+            const sessions = await stripe.checkout.sessions.list({
+              subscription: sub.stripeSubscriptionId!,
+              limit: 5,
+              expand: ["data.customer_details"],
+            });
+            for (const session of sessions.data) {
+              const details = (session as any).customer_details;
+              if (!phone && details?.phone) phone = details.phone;
+              if (!customerName && details?.name) customerName = details.name;
+              if (!phone && session.metadata?.customer_phone) phone = session.metadata.customer_phone;
+              if (!customerName && session.metadata?.customer_name) customerName = session.metadata.customer_name;
+              if (phone && customerName) break;
+            }
+          }
+
+          if (phone !== sub.phone || customerName !== sub.customerName) {
+            await db
+              .update(subscriptions)
+              .set({ ...(phone ? { phone } : {}), ...(customerName ? { customerName } : {}) })
+              .where(eq(subscriptions.id, sub.id));
+            updated.push({ type: "subscription", email: sub.email, phone, name: customerName });
+          }
+        } catch (err: any) {
+          errors.push(`sub ${sub.stripeSubscriptionId}: ${err.message}`);
+        }
+      }
+
+      // ── Purchases ────────────────────────────────────────────────────────────
+      const missingPurchases = await db
+        .select()
+        .from(purchases)
+        .where(
+          sql`(${purchases.phone} IS NULL OR ${purchases.customerName} IS NULL) AND ${purchases.stripeSessionId} IS NOT NULL AND ${purchases.stripeSessionId} NOT LIKE 'manual_%'`
+        );
+
+      for (const p of missingPurchases) {
+        try {
+          let phone: string | null = p.phone;
+          let customerName: string | null = p.customerName;
+
+          const session = await stripe.checkout.sessions.retrieve(p.stripeSessionId!, {
+            expand: ["customer_details"],
+          });
+          const details = (session as any).customer_details;
+          if (!phone && details?.phone) phone = details.phone;
+          if (!customerName && details?.name) customerName = details.name;
+          if (!phone && session.metadata?.customer_phone) phone = session.metadata.customer_phone;
+          if (!customerName && session.metadata?.customer_name) customerName = session.metadata.customer_name;
+
+          if (phone !== p.phone || customerName !== p.customerName) {
+            await db
+              .update(purchases)
+              .set({ ...(phone ? { phone } : {}), ...(customerName ? { customerName } : {}) })
+              .where(eq(purchases.id, p.id));
+            updated.push({ type: "purchase", email: p.email, phone, name: customerName });
+          }
+        } catch (err: any) {
+          errors.push(`purchase ${p.stripeSessionId}: ${err.message}`);
+        }
+      }
+
+      return {
+        updated: updated.length,
+        errors,
+        details: updated,
+      };
+    }),
+
   /** Paginated list of user feedback, newest first */
   getFeedback: adminProcedure
     .input(z.object({ limit: z.number().int().min(1).max(500).default(200) }))

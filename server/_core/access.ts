@@ -13,6 +13,12 @@ import { ENV } from "./env";
 /** Number of questions a non-entitled user may access per bank (free funnel). */
 export const FREE_TRIAL_LIMIT = 15;
 
+/**
+ * Exam types that are fully free — no purchase or subscription required.
+ * OIT (Operator-in-Training) is the free funnel product.
+ */
+export const FREE_EXAM_TYPES = new Set(["oit", "oit-ww"]);
+
 /** Canonical email form for storage AND comparison. */
 export function normalizeEmail(email: string | null | undefined): string {
   return (email ?? "").trim().toLowerCase();
@@ -49,6 +55,8 @@ export async function resolveAccessByEmail(
   email: string | null | undefined,
   examType: string,
 ): Promise<{ hasAccess: boolean }> {
+  // Free exam types are always accessible — no purchase required
+  if (FREE_EXAM_TYPES.has(examType)) return { hasAccess: true };
   const normalised = normalizeEmail(email);
   if (!normalised) return { hasAccess: false };
   const db = await getDb();
@@ -95,6 +103,8 @@ export async function resolveAccess(
   user: User | null,
   examType: string,
 ): Promise<AccessResult> {
+  // Free exam types are always accessible — no purchase required
+  if (FREE_EXAM_TYPES.has(examType)) return { hasAccess: true, isOwner: false };
   if (!user) return { hasAccess: false, isOwner: false };
 
   // Owner always has full access

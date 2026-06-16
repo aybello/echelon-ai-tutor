@@ -131,6 +131,17 @@ export default function Admin() {
     },
     onError: (err) => alert(`Subscription reconciliation failed: ${err.message}`),
   });
+  const backfillContact = trpc.admin.backfillContactInfo.useMutation({
+    onSuccess: (data) => {
+      purchasesQ.refetch();
+      if (data.updated > 0) {
+        alert(`Contact backfill complete. Updated ${data.updated} record(s): ${data.details.map((d: any) => `${d.email} (${d.type}): phone=${d.phone}, name=${d.name}`).join("\n")}`);
+      } else {
+        alert(`All records already have phone/name. No updates needed.${data.errors.length > 0 ? ` Errors: ${data.errors.join(", ")}` : ""}`);
+      }
+    },
+    onError: (err) => alert(`Contact backfill failed: ${err.message}`),
+  });
   const reconcile = trpc.admin.reconcilePurchases.useMutation({
     onSuccess: (data) => {
       purchasesQ.refetch();
@@ -590,6 +601,15 @@ export default function Admin() {
                   style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(52,211,153,0.4)", background: "rgba(52,211,153,0.12)", color: "#34D399", cursor: reconcileSubs.isPending ? "not-allowed" : "pointer", opacity: reconcileSubs.isPending ? 0.6 : 1, fontFamily: "inherit" }}
                 >
                   {reconcileSubs.isPending ? "Syncing..." : "Sync Subscriptions"}
+                </button>
+                <button
+                  className="admin-btn"
+                  onClick={() => backfillContact.mutate()}
+                  disabled={backfillContact.isPending}
+                  title="Look up phone & name from Stripe for any purchases or subscriptions that are missing them. Safe to run multiple times."
+                  style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(251,191,36,0.4)", background: "rgba(251,191,36,0.12)", color: "#FCD34D", cursor: backfillContact.isPending ? "not-allowed" : "pointer", opacity: backfillContact.isPending ? 0.6 : 1, fontFamily: "inherit" }}
+                >
+                  {backfillContact.isPending ? "Backfilling..." : "Backfill Contact Info"}
                 </button>
               </div>
             </div>

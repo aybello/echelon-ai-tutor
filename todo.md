@@ -90,7 +90,7 @@
 - [x] Add SEO meta tags to /quiz, /class1, /class1-mock, /wqa-mock pages (keywords added to all)
 - [x] Build score history — exam_results DB table, save mock exam results on submit (Class 1 + WQA)
 - [x] Review WQA question bank accuracy — fixed alkalinity titration correctIndex bug and hardness question ambiguity
-- [ ] Remove freemium gate from OIT quiz — OIT is fully free and unlimited (no 15-question cap, no email gate)
+- [x] Remove freemium gate from OIT quiz — OIT is fully free and unlimited (no 15-question cap, no email gate)
 - [x] Add escape options to QuizGate modal — homepage link and "Try Another 15 Free" dismiss button so users are not trapped
 - [x] Randomize question order on restart/dismiss across all three quiz pages — no repeated question sets
 - [x] Rewrite OIT easy questions to genuine medium/hard difficulty — 58 easy / 332 medium / 87 hard (was 202/188/87)

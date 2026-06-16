@@ -239,16 +239,23 @@ describe("stripe.getMyPurchases", () => {
 });
 
 describe("stripe.checkAccess", () => {
-  it("returns hasAccess:false for a guest (no login required)", async () => {
+  // OIT and OIT-WW are free exam types — always returns hasAccess:true regardless of login or purchase
+  it("returns hasAccess:true for a guest checking OIT (free exam type)", async () => {
     const caller = appRouter.createCaller(makeCtx());
     const result = await caller.stripe.checkAccess({ examType: "oit" });
-    expect(result.hasAccess).toBe(false);
+    expect(result.hasAccess).toBe(true);
   });
 
-  it("returns hasAccess:false when user is logged in but has no purchase", async () => {
-    // DB is empty (mockPurchases = [])
+  it("returns hasAccess:true for OIT even when user has no purchase (free exam type)", async () => {
+    // OIT is free — no purchase required
     const caller = appRouter.createCaller(makeCtx());
     const result = await caller.stripe.checkAccess({ examType: "oit" });
+    expect(result.hasAccess).toBe(true);
+  });
+
+  it("returns hasAccess:false for a paid exam type when user has no purchase", async () => {
+    const caller = appRouter.createCaller(makeCtx());
+    const result = await caller.stripe.checkAccess({ examType: "class1-water" });
     expect(result.hasAccess).toBe(false);
   });
 });

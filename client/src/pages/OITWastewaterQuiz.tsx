@@ -2,7 +2,6 @@
 import { usePageMeta } from "@/hooks/usePageMeta";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
-import QuizGate from "@/components/QuizGate";
 import QuizModeBar from "@/components/QuizModeBar";
 import QuizSettingsDrawer from "@/components/QuizSettingsDrawer";
 import { useQuestionBank } from "@/hooks/useQuestionBank";
@@ -108,24 +107,7 @@ export default function OITWastewaterQuiz() {
           examType={session.examType}
         />
       )}
-      isFreePreview={!session.trialUnlocked}
-      freeLimit={session.sessionSize}
-      gate={session.trialDone && !session.trialUnlocked ? (
-        <QuizGate
-          questionsAnswered={session.history.length}
-          productKey="oit-ww"
-          productName="OIT Wastewater Practice Pass"
-          priceLabel="CA$49"
-          paidFeatures={[
-            "Full 500+ question bank — unlimited attempts",
-            "OIT Wastewater Mock Exam (100 questions, 2-hour timer)",
-            "AI Tutor explanations on every question",
-            "Score history & module breakdown",
-          ]}
-          onUnlocked={session.handleGateUnlocked}
-          onDismiss={session.resetSession}
-        />
-      ) : undefined}
+
     />
   );
 }
