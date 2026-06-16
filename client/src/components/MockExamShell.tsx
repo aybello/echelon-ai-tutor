@@ -368,19 +368,21 @@ export default function MockExamShell({
   // Timer
   useEffect(() => {
     if (examState !== "active") return;
+    // Seed from the freshly-reset timeLeft (startExam sets it to EXAM_DURATION).
+    let remaining = EXAM_DURATION;
+    let fired = false;
     timerRef.current = setInterval(() => {
-      setTimeLeft(t => {
-        if (t <= 1) {
-          clearInterval(timerRef.current!);
-          toast.warning("\u23f1\ufe0f Time's up!", { description: "Your exam has been auto-submitted.", duration: 5000 });
-          setExamState("results");
-          return 0;
-        }
-        return t - 1;
-      });
+      remaining -= 1;
+      setTimeLeft(remaining > 0 ? remaining : 0);
+      if (remaining <= 0 && !fired) {
+        fired = true;
+        if (timerRef.current) clearInterval(timerRef.current);
+        toast.warning("\u23f1\ufe0f Time's up!", { description: "Your exam has been auto-submitted.", duration: 5000 });
+        setExamState("results");
+      }
     }, 1000);
-    return () => clearInterval(timerRef.current!);
-  }, [examState]);
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  }, [examState]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const results = useMemo(() => {
     if (examState !== "results" || questions.length === 0) return null;
@@ -567,7 +569,7 @@ export default function MockExamShell({
   if (examState === "results" && results) {
     const { correct, pct, passed, sortedModules } = results;
     const skipped = answers.filter(a => a.selected === null).length;
-    const incorrect = EXAM_QUESTIONS - correct - skipped;
+    const incorrect = questions.length - correct - skipped;
     return (
       <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath={currentPath} />
@@ -584,7 +586,7 @@ export default function MockExamShell({
             <div style={{ fontSize: 48, fontWeight: 900, marginBottom: 4 }}>{pct}%</div>
             <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>{passed ? "PASSED" : "NOT YET"}</div>
             <div style={{ fontSize: 14, opacity: 0.85, marginBottom: 24 }}>
-              {correct} / {EXAM_QUESTIONS} correct · {passed ? `You met the ${Math.round(passThreshold * 100)}% pass threshold` : `${Math.round(passThreshold * 100)}% required to pass`}
+              {correct} / {questions.length} correct · {passed ? `You met the ${Math.round(passThreshold * 100)}% pass threshold` : `${Math.round(passThreshold * 100)}% required to pass`}
             </div>
             <div className="mes-results-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <button
@@ -745,7 +747,7 @@ export default function MockExamShell({
               ⏱ {formatTime(timeLeft)}
             </div>
             <button
-              onClick={() => { if (window.confirm(`Submit exam? You have answered ${answered}/${EXAM_QUESTIONS} questions.`)) handleSubmit(); }}
+              onClick={() => { if (window.confirm(`Submit exam? You have answered ${answered}/${questions.length} questions.`)) handleSubmit(); }}
               style={{ padding: "8px 18px", borderRadius: 10, border: "none", background: `linear-gradient(135deg, ${accentColor}, ${accentColor2})`, color: "#fff", fontWeight: 700, fontSize: 13, cursor: "pointer", fontFamily: "inherit" }}
             >
               Submit ✓
@@ -757,10 +759,10 @@ export default function MockExamShell({
         <div className="mes-mobile-progress" style={{ maxWidth: 1100, margin: "6px auto 0", display: "none" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
             <span style={{ fontSize: 11, fontWeight: 600, color: "#64748B" }}>
-              {answered} / {EXAM_QUESTIONS} answered
+              {answered} / {questions.length} answered
             </span>
             <span style={{ fontSize: 11, fontWeight: 600, color: flagged.length > 0 ? "#D97706" : "#94A3B8" }}>
-              {flagged.length > 0 ? `🚩 ${flagged.length} flagged` : `Q${currentIdx + 1} of ${EXAM_QUESTIONS}`}
+              {flagged.length > 0 ? `🚩 ${flagged.length} flagged` : `Q${currentIdx + 1} of ${questions.length}`}
             </span>
           </div>
           {/* Track bar */}
@@ -769,7 +771,7 @@ export default function MockExamShell({
               height: "100%",
               borderRadius: 99,
               background: `linear-gradient(90deg, ${accentColor}, ${accentColor2})`,
-              width: `${(answered / EXAM_QUESTIONS) * 100}%`,
+              width: `${(answered / questions.length) * 100}%`,
               transition: "width 0.3s ease",
             }} />
           </div>
@@ -838,7 +840,7 @@ export default function MockExamShell({
             </button>
             {isLastQ ? (
               <button
-                onClick={() => { if (window.confirm(`Submit exam? You have answered ${answered}/${EXAM_QUESTIONS} questions.`)) handleSubmit(); }}
+                onClick={() => { if (window.confirm(`Submit exam? You have answered ${answered}/${questions.length} questions.`)) handleSubmit(); }}
                 style={{ flex: 1, minWidth: 100, padding: "12px", borderRadius: 12, border: "none", background: `linear-gradient(135deg, ${accentColor}, ${accentColor2})`, color: "#fff", fontWeight: 800, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
               >
                 Submit Exam ✓
@@ -892,7 +894,7 @@ export default function MockExamShell({
             ))}
           </div>
           <button
-            onClick={() => { if (window.confirm(`Submit exam? You have answered ${answered}/${EXAM_QUESTIONS} questions.`)) handleSubmit(); }}
+            onClick={() => { if (window.confirm(`Submit exam? You have answered ${answered}/${questions.length} questions.`)) handleSubmit(); }}
             style={{ width: "100%", marginTop: 14, padding: "10px", borderRadius: 10, border: "none", background: `linear-gradient(135deg, ${accentColor}, ${accentColor2})`, color: "#fff", fontWeight: 800, fontSize: 13, cursor: "pointer", fontFamily: "inherit" }}
           >
             Submit Exam ✓

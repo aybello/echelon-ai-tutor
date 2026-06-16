@@ -226,16 +226,20 @@ export default function QuizShell({
       return;
     }
     setTimeLeft(timedSeconds);
+    // Local guards scoped to this question's timer instance: `remaining` tracks
+    // the countdown and `fired` ensures the time-up side effects run exactly once
+    // (calling them inside the setState updater could double-fire them).
+    let remaining = timedSeconds;
+    let fired = false;
     timerRef.current = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev <= 1) {
-          clearInterval(timerRef.current!);
-          onTimeUp?.();
-          toast.warning("\u23f1\ufe0f Time's up!", { description: "The question was auto-submitted.", duration: 3000 });
-          return 0;
-        }
-        return prev - 1;
-      });
+      remaining -= 1;
+      setTimeLeft(remaining > 0 ? remaining : 0);
+      if (remaining <= 0 && !fired) {
+        fired = true;
+        if (timerRef.current) clearInterval(timerRef.current);
+        onTimeUp?.();
+        toast.warning("\u23f1\ufe0f Time's up!", { description: "The question was auto-submitted.", duration: 3000 });
+      }
     }, 1000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   // eslint-disable-next-line react-hooks/exhaustive-deps

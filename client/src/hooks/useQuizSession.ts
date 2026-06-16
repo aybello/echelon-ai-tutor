@@ -16,7 +16,7 @@
  * directly into QuizShell props. No quiz logic should live in page files.
  */
 
-import { useState, useCallback, useMemo, useEffect } from "react";
+import { useState, useCallback, useMemo, useEffect, useRef } from "react";
 import { useSearch } from "wouter";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
@@ -164,6 +164,15 @@ export function useQuizSession({
   const [current, setCurrent] = useState<DBQuestion | null>(null);
   const [selected, setSelectedState] = useState<number | null>(null);
   const [confidence, setConfidenceState] = useState<number | null>(null);
+
+  // Refs holding the LATEST selected / confidence / handleNext so the timed-mode
+  // auto-submit (invoked from a timer closure captured at question load) reads
+  // current values instead of stale ones, and the auto-advance uses the
+  // post-submit history. Kept in sync by the effect just above handleTimeUp.
+  const selectedRef = useRef<number | null>(selected);
+  const confidenceRef = useRef<number | null>(confidence);
+  const handleNextRef = useRef<() => void>(() => {});
+
   const [confirmed, setConfirmed] = useState(false);
   const [showSteps, setShowSteps] = useState(false);
   const [tutorOpen, setTutorOpenState] = useState(false);
@@ -555,13 +564,25 @@ export function useQuizSession({
     [allQuestions, usedIds, calcOnly, clearUI],
   );
 
+  // Keep the latest-value refs in sync after every render (handleNext is defined
+  // above). The timed-mode handler reads these so it never acts on stale state.
+  useEffect(() => {
+    selectedRef.current = selected;
+    confidenceRef.current = confidence;
+    handleNextRef.current = handleNext;
+  });
+
   // ── Time-up handler (auto-confirm + advance) ──────────────────────────────
   const handleTimeUp = useCallback(() => {
     if (confirmed || !current) return;
     const correctIdx = current.correctIndex ?? 0;
-    const effectiveSelected = selected ?? (correctIdx === 0 ? 1 : 0);
+    // Read the LATEST selection/confidence via refs — if the user had picked an
+    // answer but not confirmed before the timer expired, honour that pick.
+    const latestSelected = selectedRef.current;
+    const latestConfidence = confidenceRef.current;
+    const effectiveSelected = latestSelected ?? (correctIdx === 0 ? 1 : 0);
     const isCorrect = effectiveSelected === correctIdx;
-    const effectiveConfidence = confidence ?? 50;
+    const effectiveConfidence = latestConfidence ?? 50;
 
     const entry: HistoryEntry = {
       questionId: current.id,
@@ -584,10 +605,11 @@ export function useQuizSession({
     setSelectedState(effectiveSelected);
     setConfidenceState(effectiveConfidence);
     setConfirmed(true);
-    // Auto-advance after brief delay
-    setTimeout(() => handleNext(), 800);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [confirmed, current, selected, confidence, logAttemptFn, handleNext]);
+    // Auto-advance after a brief delay. Call through the ref so we run the
+    // freshest handleNext — the one built from the just-updated history — which
+    // keeps the session-boundary check (history.length >= sessionSize) correct.
+    setTimeout(() => handleNextRef.current(), 800);
+  }, [confirmed, current, logAttemptFn]);
 
   // ── Gate unlocked handler ──────────────────────────────────────────────────
   const handleGateUnlocked = useCallback(() => {

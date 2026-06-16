@@ -179,6 +179,15 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     }
   };
 
+  // Flip the card. The free-flip counter is incremented OUTSIDE the setFlipped
+  // updater so it can't double-count (which would burn a free-preview user's
+  // flips twice as fast). Only counts a flip when revealing the answer.
+  const handleFlip = () => {
+    if (showPaywall) return;
+    if (!flipped) setTotalFlips(n => n + 1);
+    setFlipped(f => !f);
+  };
+
   const markKnown = () => {
     if (card) {
       setKnown(prev => {
@@ -364,7 +373,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             )}
             <div
               className={"fc-inner" + (flipped ? " flipped" : "")}
-              onClick={() => { if (!showPaywall) { setFlipped(f => { if (!f) setTotalFlips(n => n + 1); return !f; }); } }}
+              onClick={handleFlip}
             >
               {/* Front */}
               <div className="fc-face fc-front">
@@ -468,7 +477,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           </button>
           <button
             style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", color: "#94a3b8", borderRadius: "10px", padding: "10px 20px", fontSize: "13px", cursor: "pointer" }}
-            onClick={() => { if (!showPaywall) { setFlipped(f => { if (!f) setTotalFlips(n => n + 1); return !f; }); } }}
+            onClick={handleFlip}
           >
             {flipped ? "Show Question" : "Show Answer"}
           </button>
