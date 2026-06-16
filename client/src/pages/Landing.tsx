@@ -2619,33 +2619,31 @@ export default function Landing() {
         </div>
       </footer>
 
-      {/* Fixed Admin shortcut — only visible to admin users */}
-      {isAdmin && (
-        <a
-          href="/admin"
-          style={{
-            position: "fixed",
-            bottom: 24,
-            right: 24,
-            zIndex: 9999,
-            display: "flex",
-            alignItems: "center",
-            gap: 6,
-            padding: "10px 18px",
-            borderRadius: 12,
-            background: "linear-gradient(135deg, #7C3AED, #4F46E5)",
-            color: "#fff",
-            fontSize: 13,
-            fontWeight: 700,
-            textDecoration: "none",
-            boxShadow: "0 4px 20px rgba(124,58,237,0.45)",
-            fontFamily: "inherit",
-            whiteSpace: "nowrap",
-          }}
-        >
-          🛡️ Admin
-        </a>
-      )}
+      {/* Fixed Admin shortcut — always visible, admin page handles auth */}
+      <a
+        href="/admin"
+        style={{
+          position: "fixed",
+          bottom: 24,
+          right: 24,
+          zIndex: 9999,
+          display: "flex",
+          alignItems: "center",
+          gap: 6,
+          padding: "10px 18px",
+          borderRadius: 12,
+          background: "linear-gradient(135deg, #7C3AED, #4F46E5)",
+          color: "#fff",
+          fontSize: 13,
+          fontWeight: 700,
+          textDecoration: "none",
+          boxShadow: "0 4px 20px rgba(124,58,237,0.45)",
+          fontFamily: "inherit",
+          whiteSpace: "nowrap",
+        }}
+      >
+        🛡️ Admin
+      </a>
     </div>
   );
 }
