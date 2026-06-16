@@ -1155,15 +1155,17 @@ export default function Landing() {
   const updateProvinceMutation = trpc.auth.updateProvince.useMutation();
   // Default active track based on province: WPI for western provinces, ontario water for ON
   const defaultTrack = (province === "bc" || province === "ab" || province === "sk" || province === "mb") ? "wpi-water" : "water";
-  // Restore tab from URL hash so browser back-button returns to the correct tab
+  // Always start on the default track when the homepage loads.
+  // We no longer restore from URL hash — the hash was causing the page to
+  // show WPI buttons when navigating back from a WPI quiz page.
   const validTracks = ["water", "wastewater", "wqa", "wpi-water", "wpi-wastewater", "wpi-dist", "wpi-coll"] as const;
   // Top-level tab: 'wpi' is the parent for all 4 WPI sub-tracks
   type TopTab = "water" | "wastewater" | "wqa" | "wpi";
   type WpiSubTab = "wpi-water" | "wpi-wastewater" | "wpi-dist" | "wpi-coll";
   type Track = typeof validTracks[number];
   const getInitialTrack = (): Track => {
-    const hash = window.location.hash.replace("#", "");
-    if (validTracks.includes(hash as Track)) return hash as Track;
+    // Always default to the province-based default track on load.
+    // Do NOT read from URL hash — it causes stale state on back-navigation.
     return defaultTrack as Track;
   };
   const [activeTrack, setActiveTrackRaw] = useState<Track>(getInitialTrack);
