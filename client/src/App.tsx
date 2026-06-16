@@ -24,7 +24,6 @@ const Wastewater = lazy(() => import("./pages/Wastewater"));
 const CareerMap = lazy(() => import("./pages/CareerMap"));
 const PumpingSystems = lazy(() => import("./pages/PumpingSystems"));
 const ProcessControl = lazy(() => import("./pages/ProcessControl"));
-const MockExam = lazy(() => import("./pages/MockExam"));
 const ChemCalc = lazy(() => import("./pages/ChemCalc"));
 const MathPractice = lazy(() => import("./pages/MathPractice"));
 const Lab = lazy(() => import("./pages/Lab"));

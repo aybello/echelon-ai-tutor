@@ -231,6 +231,13 @@ export interface MockExamConfig {
   moduleCount?: number;
   /** Stream for ScoreHistory ("water" | "wastewater") */
   stream?: "water" | "wastewater";
+  /**
+   * Override the examType used when saving scores and querying ScoreHistory.
+   * Defaults to `productKey` when omitted.
+   * Use when the Stripe gate key (productKey) differs from the historical score key
+   * — e.g. Class1Water gates on "class1-water" but saves history under "class1".
+   */
+  scoreExamType?: ExamProductKey;
 }
 
 interface ExamAnswer {
@@ -318,6 +325,7 @@ export default function MockExamShell({
   infoLine,
   moduleCount,
   stream,
+  scoreExamType,
 }: MockExamConfig) {
   const { user } = useAuth();
 
@@ -412,7 +420,7 @@ export default function MockExamShell({
     resultSavedRef.current = true;
     saveResult.mutate({
       sessionId,
-      examType: productKey,
+      examType: scoreExamType ?? productKey,
       score: results.correct,
       total: questions.length,
       passed: results.passed,
@@ -625,7 +633,7 @@ export default function MockExamShell({
           </div>
 
           {/* Score history */}
-          <ScoreHistory sessionId={sessionId} examType={productKey} stream={stream} />
+          <ScoreHistory sessionId={sessionId} examType={scoreExamType ?? productKey} stream={stream} />
 
           {/* Module breakdown — weakest first */}
           <div style={{ background: "#fff", borderRadius: 16, padding: "24px", marginBottom: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
