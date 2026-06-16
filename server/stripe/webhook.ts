@@ -6,7 +6,7 @@ import { purchases, subscriptions, users, organizations, organizationMembers } f
 import { grantSeat } from "../routers/orgRouter";
 import { notifyOwner } from "../_core/notification";
 import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail } from "../email";
-import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI } from "./subscriptionProducts";
+import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI, getSubscriptionProduct } from "./subscriptionProducts";
 import { PRODUCT_STUDY_PATHS } from "./products";
 import { eq, and } from "drizzle-orm";
 import { normalizeEmail } from "../_core/access";
@@ -301,6 +301,10 @@ export function registerStripeWebhook(app: Express) {
           const referralSource = (sub.metadata?.referral_source as string | undefined) || null;
           const userId = sub.metadata?.user_id ? parseInt(sub.metadata.user_id, 10) || null : null;
 
+          // Look up price from product catalog
+          const subProduct = getSubscriptionProduct(tier, province);
+          const subAmountCAD = subProduct?.priceCAD ?? null;
+
           if (existing.length === 0) {
             await db.insert(subscriptions).values({
               email,
@@ -313,6 +317,7 @@ export function registerStripeWebhook(app: Express) {
               currentPeriodEnd,
               customerName,
               phone: customerPhone,
+              amountCAD: subAmountCAD,
               utmSource,
               utmMedium,
               utmCampaign,

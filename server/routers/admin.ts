@@ -41,7 +41,8 @@ export const adminRouter = router({
       [{ cnt: subscriptionCount }],
       [{ cnt: feedbackCount }],
       [{ cnt: triggerCount }],
-      revenueRows,
+      purchaseRevenueRows,
+      subscriptionRevenueRows,
       ratingRows,
     ] = await Promise.all([
       db.select({ cnt: count() }).from(trialEmails).where(ne(trialEmails.email, OWNER_EMAIL)),
@@ -52,12 +53,14 @@ export const adminRouter = router({
       db.select({ cnt: count() }).from(subscriptions).where(ne(subscriptions.email, OWNER_EMAIL)),
       db.select({ cnt: count() }).from(userFeedback),
       db.select({ cnt: count() }).from(triggerLogs),
-      // Revenue: sum amountCAD excluding owner
+      // Revenue: sum amountCAD from purchases, excluding owner
       db.select({ total: sql<number>`COALESCE(SUM(amountCAD), 0)` }).from(purchases).where(ne(purchases.email, OWNER_EMAIL)),
+      // Revenue: sum amountCAD from subscriptions, excluding owner
+      db.select({ total: sql<number>`COALESCE(SUM(amountCAD), 0)` }).from(subscriptions).where(ne(subscriptions.email, OWNER_EMAIL)),
       // Rating: avg in DB
       db.select({ avg: sql<number>`COALESCE(AVG(rating), 0)`, cnt: count() }).from(userFeedback),
     ]);
-    const totalRevenueCents = Number(revenueRows[0]?.total ?? 0);
+    const totalRevenueCents = Number(purchaseRevenueRows[0]?.total ?? 0) + Number(subscriptionRevenueRows[0]?.total ?? 0);
     const avgRating = Number(ratingRows[0]?.avg ?? 0);
     return {
       trialCount: Number(trialCount),

@@ -267,6 +267,13 @@
       "when": 1781567465566,
       "tag": "0037_parallel_next_avengers",
       "breakpoints": true
+    },
+    {
+      "idx": 38,
+      "version": "5",
+      "when": 1781573538613,
+      "tag": "0038_curved_the_anarchist",
+      "breakpoints": true
     }
   ]
 }

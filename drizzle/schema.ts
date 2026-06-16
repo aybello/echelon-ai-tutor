@@ -129,6 +129,8 @@ export const subscriptions = mysqlTable("subscriptions", {
   customerName: varchar("customerName", { length: 128 }),
   /** Subscriber's phone number (required at checkout) */
   phone: varchar("phone", { length: 32 }),
+  /** Price paid in cents CAD (e.g. 9900 = CA$99.00). Populated at checkout from subscription product catalog. */
+  amountCAD: int("amountCAD"),
   /** Marketing attribution */
   utmSource: varchar("utmSource", { length: 128 }),
   utmMedium: varchar("utmMedium", { length: 128 }),
