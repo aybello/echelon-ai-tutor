@@ -167,6 +167,38 @@ export interface ProvinceOption {
   regulator?: string;
 }
 
+/**
+ * One selectable stream for multi-stream exams (e.g. Class 1 Water vs Wastewater).
+ * When `streamOptions` is provided on MockExamConfig, the shell renders a
+ * stream-select screen before the intro and swaps in the chosen stream's config.
+ */
+export interface StreamOption {
+  /** Unique key used as productKey for PurchaseGate */
+  productKey: ExamProductKey;
+  /** Human-readable label, e.g. "Water Class 1" */
+  label: string;
+  /** Emoji icon */
+  icon: string;
+  /** Accent colour for this stream */
+  color: string;
+  /** Light background tint for this stream */
+  bg: string;
+  /** Module targets for proportional sampling */
+  moduleTargets: Record<string, number>;
+  /** Module colour config */
+  moduleColors: Record<string, ModuleColorConfig>;
+  /** Full question pool for this stream */
+  questionPool: ExamQuestion[];
+  /** Override the examType saved to DB (preserves legacy score history) */
+  scoreExamType?: ExamProductKey;
+  /** Stream tag for ScoreHistory ("water" | "wastewater") */
+  stream?: "water" | "wastewater";
+  /** Human-readable product name for paywall */
+  productName: string;
+  /** Price in USD */
+  price: number;
+}
+
 export type ExamProductKey =
   | "class1" | "wqa" | "oit" | "oit-ww"
   | "class1-water" | "class1-ww" | "class2-water" | "class2-ww"
@@ -238,6 +270,14 @@ export interface MockExamConfig {
    * — e.g. Class1Water gates on "class1-water" but saves history under "class1".
    */
   scoreExamType?: ExamProductKey;
+  /**
+   * When provided, the shell renders a stream-select screen before the intro.
+   * The selected stream's moduleTargets / moduleColors / questionPool / scoreExamType
+   * override the top-level props for that session.
+   * Top-level moduleTargets / moduleColors / questionPool / productKey / productName / price
+   * are used as defaults when no stream is selected yet.
+   */
+  streamOptions?: StreamOption[];
 }
 
 interface ExamAnswer {
@@ -245,7 +285,7 @@ interface ExamAnswer {
   selected: number | null;
 }
 
-type ExamState = "intro" | "active" | "results";
+type ExamState = "stream-select" | "intro" | "active" | "results";
 
 // ─── Question selector ────────────────────────────────────────────────────────
 
@@ -305,12 +345,12 @@ export default function MockExamShell({
   examQuestions: EXAM_QUESTIONS,
   examDuration: EXAM_DURATION,
   passThreshold,
-  moduleTargets,
-  moduleColors,
-  questionPool,
-  productKey,
-  productName,
-  price,
+  moduleTargets: moduleTargetsProp,
+  moduleColors: moduleColorsProp,
+  questionPool: questionPoolProp,
+  productKey: productKeyProp,
+  productName: productNameProp,
+  price: priceProp,
   features,
   backPath = "/",
   practicePath,
@@ -324,8 +364,9 @@ export default function MockExamShell({
   currentPath,
   infoLine,
   moduleCount,
-  stream,
-  scoreExamType,
+  stream: streamProp,
+  scoreExamType: scoreExamTypeProp,
+  streamOptions,
 }: MockExamConfig) {
   const { user } = useAuth();
 
@@ -336,9 +377,27 @@ export default function MockExamShell({
     path: currentPath,
   });
 
-  const sessionId = useRef(`mock-${productKey}-${Math.random().toString(36).slice(2)}`).current;
+  // ── Stream selection state (only used when streamOptions is provided) ────────
+  const [selectedStream, setSelectedStream] = useState<StreamOption | null>(null);
 
-  const [examState, setExamState] = useState<ExamState>("intro");
+  // Resolve active config: selected stream overrides top-level props
+  const productKey     = selectedStream?.productKey     ?? productKeyProp;
+  const productName    = selectedStream?.productName    ?? productNameProp;
+  const price          = selectedStream?.price          ?? priceProp;
+  const moduleTargets  = selectedStream?.moduleTargets  ?? moduleTargetsProp;
+  const moduleColors   = selectedStream?.moduleColors   ?? moduleColorsProp;
+  const questionPool   = selectedStream?.questionPool   ?? questionPoolProp;
+  const stream         = selectedStream?.stream         ?? streamProp;
+  const scoreExamType  = selectedStream?.scoreExamType  ?? scoreExamTypeProp;
+  // Accent colour: use stream colour when a stream is selected
+  const resolvedAccent  = selectedStream?.color  ?? accentColor;
+  const resolvedAccent2 = selectedStream?.color  ?? accentColor2;
+
+  const sessionId = useRef(`mock-${productKeyProp}-${Math.random().toString(36).slice(2)}`).current;
+
+  const [examState, setExamState] = useState<ExamState>(
+    streamOptions && streamOptions.length > 0 ? "stream-select" : "intro"
+  );
   const [questions, setQuestions] = useState<ExamQuestion[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<ExamAnswer[]>([]);
@@ -353,11 +412,13 @@ export default function MockExamShell({
   const resultSavedRef = useRef(false);
   const saveResult = trpc.exam.saveResult.useMutation();
 
-  const startExam = useCallback(() => {
+  const startExam = useCallback((overridePool?: ExamQuestion[], overrideTargets?: Record<string, number>) => {
     if (showProvinceSelector) {
       try { localStorage.setItem("echelon_province", selectedProvince); } catch {}
     }
-    const qs = selectExamQuestions(questionPool, moduleTargets, EXAM_QUESTIONS);
+    const pool    = overridePool    ?? questionPool;
+    const targets = overrideTargets ?? moduleTargets;
+    const qs = selectExamQuestions(pool, targets, EXAM_QUESTIONS);
     setQuestions(qs);
     setCurrentIdx(0);
     setAnswers(qs.map((_, i) => ({ questionIndex: i, selected: null })));
@@ -432,13 +493,96 @@ export default function MockExamShell({
 
   const currentQ = questions[currentIdx];
   const answered = answers.filter(a => a.selected !== null).length;
-  const timerColor = timeLeft < 600 ? "#DC2626" : timeLeft < 1800 ? "#D97706" : accentColor;
+  const timerColor = timeLeft < 600 ? "#DC2626" : timeLeft < 1800 ? "#D97706" : resolvedAccent;
 
   const toggleFlag = () => {
     setFlagged(f =>
       f.includes(currentIdx) ? f.filter(i => i !== currentIdx) : [...f, currentIdx]
     );
   };
+
+  // ── STREAM SELECT SCREEN ────────────────────────────────────────────────────
+  if (examState === "stream-select" && streamOptions && streamOptions.length > 0) {
+    return (
+      <>
+      <style>{`
+        @media (max-width: 480px) {
+          .mes-stream-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+      <PurchaseGate
+        examType={productKeyProp}
+        productKey={productKeyProp}
+        productName={productNameProp}
+        price={priceProp}
+        features={features}
+        backPath={backPath}
+      >
+        <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+          <SiteNav currentPath={currentPath} />
+          <div style={{ maxWidth: 640, margin: "0 auto", padding: "48px 20px 80px" }}>
+            {/* Header */}
+            <div style={{ textAlign: "center", marginBottom: 40 }}>
+              <div style={{ width: 72, height: 72, borderRadius: 20, background: `linear-gradient(135deg, ${accentColor}, ${accentColor2})`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32, margin: "0 auto 16px" }}>📋</div>
+              <h1 style={{ fontSize: 26, fontWeight: 900, color: "#0F172A", margin: "0 0 8px" }}>{title}</h1>
+              <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
+                {EXAM_QUESTIONS} questions · {Math.round(EXAM_DURATION / 3600)}-hour timer · {Math.round(passThreshold * 100)}% to pass
+              </p>
+              <p style={{ color: "#94A3B8", fontSize: 13, marginTop: 6 }}>Choose your stream to begin</p>
+            </div>
+
+            {/* Stream cards */}
+            <div className="mes-stream-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${streamOptions.length}, 1fr)`, gap: 16, marginBottom: 32 }}>
+              {streamOptions.map(opt => (
+                <button
+                  key={opt.productKey}
+                  onClick={() => {
+                    setSelectedStream(opt);
+                    setExamState("intro");
+                  }}
+                  style={{
+                    padding: "32px 20px",
+                    borderRadius: 20,
+                    border: `2px solid ${opt.color}`,
+                    background: "#fff",
+                    cursor: "pointer",
+                    textAlign: "center",
+                    fontFamily: "inherit",
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.06)",
+                    transition: "transform 0.15s ease, background 0.15s ease",
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLButtonElement).style.background = opt.bg;
+                    (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-3px)";
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLButtonElement).style.background = "#fff";
+                    (e.currentTarget as HTMLButtonElement).style.transform = "none";
+                  }}
+                >
+                  <div style={{ fontSize: 40, marginBottom: 12 }}>{opt.icon}</div>
+                  <div style={{ fontSize: 16, fontWeight: 800, color: opt.color, marginBottom: 8 }}>{opt.label}</div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 4, justifyContent: "center" }}>
+                    {Object.keys(opt.moduleTargets).map(mod => (
+                      <span key={mod} style={{ padding: "2px 8px", borderRadius: 20, background: opt.bg, color: opt.color, fontSize: 10, fontWeight: 700 }}>{mod}</span>
+                    ))}
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Back link */}
+            <div style={{ textAlign: "center" }}>
+              <Link href={practicePath} style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none" }}>
+                &laquo; Back to {practiceLabel}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </PurchaseGate>
+      </>
+    );
+  }
 
   // ── INTRO SCREEN ────────────────────────────────────────────────────────────
   if (examState === "intro") {
@@ -555,8 +699,8 @@ export default function MockExamShell({
               </div>
 
               <button
-                onClick={startExam}
-                style={{ width: "100%", padding: "14px 24px", borderRadius: 14, background: `linear-gradient(135deg, ${accentColor}, ${accentColor2})`, color: "#fff", fontWeight: 800, fontSize: 16, border: "none", cursor: "pointer", fontFamily: "inherit" }}
+                onClick={() => startExam()}
+                style={{ width: "100%", padding: "14px 24px", borderRadius: 14, background: `linear-gradient(135deg, ${resolvedAccent}, ${resolvedAccent2})`, color: "#fff", fontWeight: 800, fontSize: 16, border: "none", cursor: "pointer", fontFamily: "inherit" }}
               >
                 🚀 Start Exam
               </button>
