@@ -1171,8 +1171,8 @@ export default function Landing() {
   const [activeTrack, setActiveTrackRaw] = useState<Track>(getInitialTrack);
   const setActiveTrack = (track: Track) => {
     setActiveTrackRaw(track);
-    // Update URL hash without triggering a scroll or navigation
-    window.history.replaceState(null, "", `/#${track}`);
+    // Do NOT write the track to the URL hash — doing so causes the wrong
+    // track to show on refresh or back-navigation.
   };
   // Derive top-level tab from active track
   const isWpiTrack = (t: Track): t is WpiSubTab => t.startsWith("wpi-");
