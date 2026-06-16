@@ -457,9 +457,18 @@ export function useQuizSession({
       setUsedIds(new Set());
       setTrialDone(false);
       clearUI();
-      setCurrent(pickRandom(allQuestions));
+      // Build a filtered pool using the NEW settings synchronously
+      // (can't rely on the pool memo since setQuizSettings is async)
+      let newPool = allQuestions;
+      if (selectedModule) newPool = newPool.filter((q) => q.module === selectedModule);
+      if (calcOnly) newPool = newPool.filter((q) => q.isCalc === true);
+      if (settings.difficulty && settings.difficulty !== "all") {
+        const filtered = newPool.filter((q) => q.difficulty === settings.difficulty);
+        if (filtered.length > 0) newPool = filtered;
+      }
+      setCurrent(pickRandom(newPool.length > 0 ? newPool : allQuestions));
     },
-    [allQuestions, clearUI],
+    [allQuestions, selectedModule, calcOnly, clearUI],
   );
 
   // ── Calc-only toggle ───────────────────────────────────────────────────────
