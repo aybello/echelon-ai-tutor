@@ -1121,11 +1121,10 @@ export default function Landing() {
   });
   useStructuredData(landingPageSchemas);
   const { province, provinceInfo, showPrompt, setProvince, dismiss } = useProvince();
-  // lazy: true means auth.me is NOT fired on mount — the landing page loads
-  // immediately from static content. If the user already visited a quiz page
-  // (which does fire auth.me), the cached result is used and isAuthenticated
-  // will correctly show "Dashboard" instead of "Try Free".
-  const { isAuthenticated, logout: oauthLogout, user } = useAuth({ lazy: true });
+  // Eager auth load so admin role is available immediately on the homepage.
+  // auth.me fires on mount — this ensures the Admin button appears without
+  // needing to visit a quiz page first.
+  const { isAuthenticated, logout: oauthLogout, user } = useAuth();
   const isAdmin = user?.role === "admin";
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
   const dashboardLogout = trpc.dashboardAuth.logout.useMutation();
