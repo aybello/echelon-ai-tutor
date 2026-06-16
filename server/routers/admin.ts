@@ -2,19 +2,22 @@
  * Admin router — all procedures require role === 'admin'.
  * Provides read access to trial emails, waitlist signups, and question error reports.
  */
-import { desc, eq, sql, count } from "drizzle-orm";
+import { desc, eq, sql, count, ne, and } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
 import { questionErrorReports, trialEmails, waitlist, examResults, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions } from "../../drizzle/schema";
-import { and } from "drizzle-orm";
+
 import { grantSeat, revokeSeat } from "./orgRouter";
 import { normalizeEmail } from "../_core/access";
 import { getDb } from "../db";
 import { adminProcedure, router } from "../_core/trpc";
+
 import { sendPurchaseConfirmationEmail } from "../email";
 import { PRODUCT_STUDY_PATHS } from "../stripe/products";
 import { runTriggerEngine } from "../jobs/triggerEngine";
 import { runSubscriptionReconciliation } from "../jobs/reconcile";
+
+const OWNER_EMAIL = "belllo.ayoola@gmail.com";
 
 function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -28,26 +31,29 @@ export const adminRouter = router({
     const db = await getDb();
     if (!db) throw new Error("Database unavailable");
     // Use COUNT(*) for all counts — avoids loading full table rows just to call .length
+    // Exclude owner test email from all counts
     const [
       [{ cnt: trialCount }],
       [{ cnt: waitlistCount }],
       [{ cnt: errorCount }],
       [{ cnt: scoreCount }],
       [{ cnt: purchaseCount }],
+      [{ cnt: subscriptionCount }],
       [{ cnt: feedbackCount }],
       [{ cnt: triggerCount }],
       revenueRows,
       ratingRows,
     ] = await Promise.all([
-      db.select({ cnt: count() }).from(trialEmails),
-      db.select({ cnt: count() }).from(waitlist),
+      db.select({ cnt: count() }).from(trialEmails).where(ne(trialEmails.email, OWNER_EMAIL)),
+      db.select({ cnt: count() }).from(waitlist).where(ne(waitlist.email, OWNER_EMAIL)),
       db.select({ cnt: count() }).from(questionErrorReports),
       db.select({ cnt: count() }).from(examResults),
-      db.select({ cnt: count() }).from(purchases),
+      db.select({ cnt: count() }).from(purchases).where(ne(purchases.email, OWNER_EMAIL)),
+      db.select({ cnt: count() }).from(subscriptions).where(ne(subscriptions.email, OWNER_EMAIL)),
       db.select({ cnt: count() }).from(userFeedback),
       db.select({ cnt: count() }).from(triggerLogs),
-      // Revenue: sum amountCAD in DB to avoid loading all rows
-      db.select({ total: sql<number>`COALESCE(SUM(amountCAD), 0)` }).from(purchases),
+      // Revenue: sum amountCAD excluding owner
+      db.select({ total: sql<number>`COALESCE(SUM(amountCAD), 0)` }).from(purchases).where(ne(purchases.email, OWNER_EMAIL)),
       // Rating: avg in DB
       db.select({ avg: sql<number>`COALESCE(AVG(rating), 0)`, cnt: count() }).from(userFeedback),
     ]);
@@ -59,6 +65,7 @@ export const adminRouter = router({
       errorCount: Number(errorCount),
       scoreCount: Number(scoreCount),
       purchaseCount: Number(purchaseCount),
+      subscriptionCount: Number(subscriptionCount),
       totalRevenueCAD: totalRevenueCents / 100,
       feedbackCount: Number(feedbackCount),
       avgRating: Math.round(avgRating * 10) / 10,
@@ -66,7 +73,7 @@ export const adminRouter = router({
     };
   }),
 
-  /** Paginated list of purchases, newest first */
+  /** Paginated list of purchases, newest first — excludes owner test email */
   getPurchases: adminProcedure
     .input(z.object({ limit: z.number().int().min(1).max(500).default(200) }))
     .query(async ({ input }) => {
@@ -75,7 +82,22 @@ export const adminRouter = router({
       return db
         .select()
         .from(purchases)
+        .where(ne(purchases.email, OWNER_EMAIL))
         .orderBy(desc(purchases.createdAt))
+        .limit(input.limit);
+    }),
+
+  /** Paginated list of subscriptions, newest first — excludes owner test email */
+  getSubscriptions: adminProcedure
+    .input(z.object({ limit: z.number().int().min(1).max(500).default(200) }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
+      return db
+        .select()
+        .from(subscriptions)
+        .where(ne(subscriptions.email, OWNER_EMAIL))
+        .orderBy(desc(subscriptions.createdAt))
         .limit(input.limit);
     }),
 
@@ -88,6 +110,7 @@ export const adminRouter = router({
       return db
         .select()
         .from(trialEmails)
+        .where(ne(trialEmails.email, OWNER_EMAIL))
         .orderBy(desc(trialEmails.createdAt))
         .limit(input.limit);
     }),
@@ -101,6 +124,7 @@ export const adminRouter = router({
       return db
         .select()
         .from(waitlist)
+        .where(ne(waitlist.email, OWNER_EMAIL))
         .orderBy(desc(waitlist.createdAt))
         .limit(input.limit);
     }),

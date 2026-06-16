@@ -8,7 +8,7 @@ import { getLoginUrl } from "@/const";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
-type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue" | "health" | "feedback" | "orgs";
+type Tab = "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs";
 
 const EXAM_TYPE_LABELS: Record<string, string> = {
   // OIT
@@ -121,6 +121,7 @@ export default function Admin() {
   const healthQ = trpc.admin.getSystemHealth.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "health", refetchInterval: 60_000 });
   const feedbackQ = trpc.admin.getFeedback.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "feedback" });
   const orgsQ = trpc.admin.listOrganizations.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "orgs" });
+  const subscriptionsQ = trpc.admin.getSubscriptions.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "subscriptions" });
   const reconcileSubs = trpc.admin.reconcileSubscriptions.useMutation({
     onSuccess: (data) => {
       if (data.recovered > 0) {
@@ -239,6 +240,7 @@ export default function Admin() {
   const statItems = [
     { label: "Total Revenue", value: stats.data?.totalRevenueCAD != null ? `CA$${stats.data.totalRevenueCAD.toFixed(2)}` : "—", icon: "💰", color: "#34D399", tab: "revenue" as Tab },
     { label: "Purchases", value: stats.data?.purchaseCount ?? "—", icon: "🛒", color: "#38BDF8", tab: "revenue" as Tab },
+    { label: "Subscribers", value: stats.data?.subscriptionCount ?? "—", icon: "🔄", color: "#F472B6", tab: "subscriptions" as Tab },
     { label: "Trial Signups", value: stats.data?.trialCount ?? "—", icon: "📧", color: "#A78BFA", tab: "trials" as Tab },
     { label: "Error Reports", value: stats.data?.errorCount ?? "—", icon: "🐛", color: "#F87171", tab: "errors" as Tab },
     { label: "Feedback", value: stats.data ? `${stats.data.feedbackCount} (★${stats.data.avgRating})` : "—", icon: "💬", color: "#FBBF24", tab: "feedback" as Tab },
@@ -246,6 +248,7 @@ export default function Admin() {
 
   const TABS: { id: Tab; label: string; icon: string }[] = [
     { id: "revenue", label: "Revenue", icon: "💰" },
+    { id: "subscriptions", label: "Subscriptions", icon: "🔄" },
     { id: "trials", label: "Trial Emails", icon: "📧" },
     { id: "waitlist", label: "Waitlist", icon: "📋" },
     { id: "errors", label: "Error Reports", icon: "🐛" },
@@ -644,6 +647,75 @@ export default function Admin() {
                         <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{formatDate(row.createdAt)}</td>
                       </tr>
                     ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* -- SUBSCRIPTIONS TAB -- */}
+        {activeTab === "subscriptions" && (
+          <div style={{ background: "#F8FAFC", borderRadius: 16, overflow: "hidden", border: "1px solid rgba(0,0,0,0.07)" }}>
+            <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+              <div style={{ fontSize: 13, fontWeight: 700 }}>
+                🔄 Active Subscribers
+                {subscriptionsQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{subscriptionsQ.data.length} subscriber{subscriptionsQ.data.length === 1 ? "" : "s"}</span>}
+              </div>
+              <button
+                className="admin-btn"
+                onClick={() => reconcileSubs.mutate()}
+                disabled={reconcileSubs.isPending}
+                title="Backfill any subscriptions dropped by the period-end bug."
+                style={{ fontSize: 11, fontWeight: 700, padding: "6px 12px", borderRadius: 8, border: "1px solid rgba(52,211,153,0.4)", background: "rgba(52,211,153,0.12)", color: "#34D399", cursor: reconcileSubs.isPending ? "not-allowed" : "pointer", opacity: reconcileSubs.isPending ? 0.6 : 1, fontFamily: "inherit" }}
+              >
+                {reconcileSubs.isPending ? "Syncing..." : "Sync Subscriptions"}
+              </button>
+            </div>
+            {subscriptionsQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
+            {subscriptionsQ.data && subscriptionsQ.data.length === 0 && (
+              <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No subscribers yet.</div>
+            )}
+            {subscriptionsQ.data && subscriptionsQ.data.length > 0 && (
+              <div style={{ overflowX: "auto" }}>
+                <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                  <thead>
+                    <tr style={{ background: "rgba(0,0,0,0.03)" }}>
+                      {["#", "Tier", "Name", "Email", "Phone", "Province", "Status", "Renews", "Date"].map(h => (
+                        <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {subscriptionsQ.data.map((row, i) => {
+                      const statusColors: Record<string, { bg: string; color: string }> = {
+                        active: { bg: "rgba(52,211,153,0.15)", color: "#059669" },
+                        past_due: { bg: "rgba(251,191,36,0.15)", color: "#D97706" },
+                        cancelled: { bg: "rgba(239,68,68,0.15)", color: "#DC2626" },
+                        expired: { bg: "rgba(100,116,139,0.15)", color: "#64748B" },
+                      };
+                      const sc = statusColors[row.status] ?? { bg: "rgba(0,0,0,0.07)", color: "#475569" };
+                      const tierLabel = row.tier === "all-access" ? "All Access" : row.tier.charAt(0).toUpperCase() + row.tier.slice(1);
+                      return (
+                        <tr key={row.id} className="admin-row" style={{ borderTop: "1px solid rgba(0,0,0,0.04)" }}>
+                          <td style={{ padding: "12px 16px", fontSize: 11, color: "#94A3B8", fontWeight: 600 }}>#{i + 1}</td>
+                          <td style={{ padding: "12px 16px" }}>
+                            <span style={{ fontSize: 12, fontWeight: 700, color: "#6366F1" }}>{tierLabel}</span>
+                          </td>
+                          <td style={{ padding: "12px 16px", fontSize: 13, color: "#1E293B", fontWeight: 500 }}>{row.customerName || <span style={{ color: "#94A3B8" }}>—</span>}</td>
+                          <td style={{ padding: "12px 16px", fontSize: 12, color: "#475569" }}>{row.email}</td>
+                          <td style={{ padding: "12px 16px", fontSize: 12, color: "#475569" }}>{row.phone || <span style={{ color: "#94A3B8" }}>—</span>}</td>
+                          <td style={{ padding: "12px 16px", fontSize: 12, color: "#475569", textTransform: "capitalize" }}>{row.province}</td>
+                          <td style={{ padding: "12px 16px" }}>
+                            <span style={{ padding: "3px 8px", borderRadius: 100, background: sc.bg, color: sc.color, fontSize: 10, fontWeight: 700, textTransform: "capitalize" }}>{row.status}</span>
+                          </td>
+                          <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>
+                            {row.currentPeriodEnd ? new Date(row.currentPeriodEnd).toLocaleDateString("en-CA", { year: "numeric", month: "short", day: "numeric" }) : "—"}
+                          </td>
+                          <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{formatDate(row.createdAt)}</td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
