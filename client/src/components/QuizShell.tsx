@@ -244,7 +244,7 @@ export default function QuizShell({
   const timerPct = timedSeconds > 0 ? (timeLeft / timedSeconds) * 100 : 100;
   const timerColor = timerPct > 50 ? "#059669" : timerPct > 25 ? "#D97706" : "#DC2626";
 
-  const progress = sessionSize ? (history.length / sessionSize) * 100 : 0;
+  const progress = sessionSize ? Math.min(100, (history.length / sessionSize) * 100) : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
 
   //  // ── Session complete screen ──────────────────────────────────────────

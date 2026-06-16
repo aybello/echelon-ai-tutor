@@ -244,8 +244,15 @@ export function useQuizSession({
   // ── Derived ────────────────────────────────────────────────────────────────
   const correctCount = history.filter((h) => h.correct).length;
   const wrongCount = history.length - correctCount;
-  // sessionSize: quick10 is always 10; otherwise use the user-configured setting
-  const sessionSize = quizMode === "quick10" ? 10 : (quizSettings.sessionSize ?? DEFAULT_SESSION_SIZE);
+  // sessionSize: quick10 is always 10; the free preview is always fixed at
+  // DEFAULT_SESSION_SIZE (so the counter/limit shown to a locked user can never
+  // disagree with the actual paywall); paid users get their configured setting.
+  const sessionSize =
+    quizMode === "quick10"
+      ? 10
+      : !trialUnlocked
+        ? DEFAULT_SESSION_SIZE
+        : (quizSettings.sessionSize ?? DEFAULT_SESSION_SIZE);
 
   // ── Filtered pool ──────────────────────────────────────────────────────────
   const pool = useMemo(() => {
@@ -346,7 +353,7 @@ export function useQuizSession({
     if (
       quizMode !== "quick10" &&
       !trialUnlocked &&
-      updatedHistory.length === DEFAULT_SESSION_SIZE - 2
+      updatedHistory.length === sessionSize - 2
     ) {
       toast("2 free questions left", { description: "Subscribe to keep going after this." });
     }
@@ -355,7 +362,7 @@ export function useQuizSession({
     if (
       quizMode !== "quick10" &&
       !trialUnlocked &&
-      updatedHistory.length >= DEFAULT_SESSION_SIZE
+      updatedHistory.length >= sessionSize
     ) {
       setTrialDone(true);
     }
@@ -368,19 +375,29 @@ export function useQuizSession({
     logAttemptFn,
     refetchMissed,
     quizMode,
+    sessionSize,
   ]);
 
   // ── Next question (step 2: advance to next question) ───────────────────────
   const handleNext = useCallback(() => {
-    // Quick 10 stop: end session cleanly at 10
+    // Quick 10 stop: end session cleanly at 10 (never paywalled)
     if (quizMode === "quick10" && history.length >= 10) {
       setCurrent(null);
       return;
     }
 
-    // Paywall gate: block advancement if trial exhausted (always 15 for non-unlocked users)
-    if (!trialUnlocked && history.length >= DEFAULT_SESSION_SIZE) {
+    // Free (locked) users are capped at the free preview in every mode except
+    // quick10 (which self-limits at 10). sessionSize is clamped to 15 for them.
+    if (!trialUnlocked && quizMode !== "quick10" && history.length >= sessionSize) {
       setTrialDone(true);
+      return;
+    }
+
+    // Paid (unlocked) users: a STANDARD session ends at their configured size,
+    // showing the Session Complete screen. Missed-review is intentionally
+    // exempt — it runs until the missed pool is exhausted.
+    if (trialUnlocked && quizMode === "standard" && history.length >= sessionSize) {
+      setCurrent(null);
       return;
     }
 
@@ -392,7 +409,7 @@ export function useQuizSession({
     }
     setCurrent(next);
     clearUI();
-  }, [history, pool, trialUnlocked, quizMode, clearUI]);
+  }, [history, pool, trialUnlocked, quizMode, sessionSize, clearUI]);
 
   // ── Go back (undo last answer) ─────────────────────────────────────────────
   const goBack = useCallback(() => {
@@ -448,9 +465,17 @@ export function useQuizSession({
     setUsedIds(new Set());
     setTrialDone(false);
     clearUI();
-    const q = pickRandom(allQuestions);
-    setCurrent(q);
-  }, [allQuestions, clearUI]);
+    // Respect the currently-active filters so the fresh question matches what
+    // the user is studying (module / calc-only / difficulty).
+    let newPool = allQuestions;
+    if (selectedModule) newPool = newPool.filter((q) => q.module === selectedModule);
+    if (calcOnly) newPool = newPool.filter((q) => q.isCalc === true);
+    if (quizSettings.difficulty && quizSettings.difficulty !== "all") {
+      const filtered = newPool.filter((q) => q.difficulty === quizSettings.difficulty);
+      if (filtered.length > 0) newPool = filtered;
+    }
+    setCurrent(pickRandom(newPool.length > 0 ? newPool : allQuestions));
+  }, [allQuestions, selectedModule, calcOnly, quizSettings.difficulty, clearUI]);
 
   // ── Mode change ────────────────────────────────────────────────────────────
   const handleModeChange = useCallback(
