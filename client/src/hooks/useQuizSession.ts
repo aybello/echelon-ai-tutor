@@ -429,10 +429,10 @@ export function useQuizSession({
       setTutorOpenState(false);
     } else {
       // Currently on an unanswered question (not in history yet).
-      // Go back to the last answered question.
+      // Go back to the last answered question WITHOUT modifying history or usedIds.
+      // The previous question stays in history (it was already answered).
+      // The current unanswered question was never added to history, so nothing to undo.
       const prev = history[history.length - 1];
-      setHistory(history.slice(0, -1));
-      setUsedIds((s) => { const n = new Set(Array.from(s)); n.delete(prev.questionId); return n; });
       setCurrent(prev.questionObj);
       setSelectedState(prev.selectedOption);
       setConfidenceState(prev.confidence);
