@@ -1125,7 +1125,8 @@ export default function Landing() {
   // immediately from static content. If the user already visited a quiz page
   // (which does fire auth.me), the cached result is used and isAuthenticated
   // will correctly show "Dashboard" instead of "Try Free".
-  const { isAuthenticated, logout: oauthLogout } = useAuth({ lazy: true });
+  const { isAuthenticated, logout: oauthLogout, user } = useAuth({ lazy: true });
+  const isAdmin = user?.role === "admin";
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
   const dashboardLogout = trpc.dashboardAuth.logout.useMutation();
   const utils = trpc.useUtils();
@@ -1385,6 +1386,18 @@ export default function Landing() {
           </div>
           {isSignedIn ? (
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              {isAdmin && (
+                <Link href="/admin">
+                  <button style={{
+                    padding: "8px 14px", borderRadius: 10,
+                    background: "linear-gradient(135deg, #7C3AED, #4F46E5)",
+                    color: "#fff", border: "none", fontSize: 13, fontWeight: 700,
+                    cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+                  }}>
+                    🛡️ Admin
+                  </button>
+                </Link>
+              )}
               <Link href="/dashboard">
                 <button style={{
                   padding: "8px 20px", borderRadius: 10,
@@ -1496,12 +1509,13 @@ export default function Landing() {
           borderBottom: "1px solid #F1F5F9",
         }}>
           {isSignedIn ? (
-            // Signed-in tiles: Dashboard, Try Free, Pricing, Log Out
+            // Signed-in tiles: Dashboard, Try Free, Pricing, Log Out (+ Admin for admin users)
             <>
               {[
                 { label: "📊 Dashboard", href: "/dashboard", accent: true },
                 { label: "📝 Try Free", href: "/quiz", accent: false },
                 { label: "💰 Pricing", href: "/pricing", accent: false },
+                ...(isAdmin ? [{ label: "🛡️ Admin", href: "/admin", accent: false, adminStyle: true }] : []),
               ].map(tile => (
                 <Link key={tile.href} href={tile.href}>
                   <div
@@ -2605,6 +2619,34 @@ export default function Landing() {
 
         </div>
       </footer>
+
+      {/* Fixed Admin shortcut — only visible to admin users */}
+      {isAdmin && (
+        <a
+          href="/admin"
+          style={{
+            position: "fixed",
+            bottom: 24,
+            right: 24,
+            zIndex: 9999,
+            display: "flex",
+            alignItems: "center",
+            gap: 6,
+            padding: "10px 18px",
+            borderRadius: 12,
+            background: "linear-gradient(135deg, #7C3AED, #4F46E5)",
+            color: "#fff",
+            fontSize: 13,
+            fontWeight: 700,
+            textDecoration: "none",
+            boxShadow: "0 4px 20px rgba(124,58,237,0.45)",
+            fontFamily: "inherit",
+            whiteSpace: "nowrap",
+          }}
+        >
+          🛡️ Admin
+        </a>
+      )}
     </div>
   );
 }
