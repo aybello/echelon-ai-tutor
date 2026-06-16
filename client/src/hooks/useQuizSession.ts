@@ -397,20 +397,50 @@ export function useQuizSession({
   // ── Go back (undo last answer) ─────────────────────────────────────────────
   const goBack = useCallback(() => {
     if (history.length === 0) return;
-    const prev = history[history.length - 1];
-    setHistory(history.slice(0, -1));
-    setUsedIds((s) => {
-      const next = new Set(Array.from(s));
-      next.delete(prev.questionId);
-      return next;
-    });
-    setCurrent(prev.questionObj);
-    setSelectedState(prev.selectedOption);
-    setConfidenceState(prev.confidence);
-    setConfirmed(true);
-    setShowSteps(false);
-    setTutorOpenState(false);
-  }, [history]);
+
+    if (confirmed) {
+      // Currently viewing a confirmed answer (current question IS in history).
+      // We want to go back one more step: pop the current question from history
+      // and restore the one before it.
+      if (history.length < 2) {
+        // Only one entry — go back to unanswered state of that question
+        const entry = history[0];
+        setHistory([]);
+        setUsedIds((s) => { const n = new Set(Array.from(s)); n.delete(entry.questionId); return n; });
+        setCurrent(entry.questionObj);
+        setSelectedState(null);
+        setConfidenceState(null);
+        setConfirmed(false);
+        setShowSteps(false);
+        setTutorOpenState(false);
+        return;
+      }
+      // Pop current (last) entry, restore the one before it
+      const current = history[history.length - 1];
+      const prev = history[history.length - 2];
+      const newHistory = history.slice(0, -1);
+      setHistory(newHistory);
+      setUsedIds((s) => { const n = new Set(Array.from(s)); n.delete(current.questionId); return n; });
+      setCurrent(prev.questionObj);
+      setSelectedState(prev.selectedOption);
+      setConfidenceState(prev.confidence);
+      setConfirmed(true);
+      setShowSteps(false);
+      setTutorOpenState(false);
+    } else {
+      // Currently on an unanswered question (not in history yet).
+      // Go back to the last answered question.
+      const prev = history[history.length - 1];
+      setHistory(history.slice(0, -1));
+      setUsedIds((s) => { const n = new Set(Array.from(s)); n.delete(prev.questionId); return n; });
+      setCurrent(prev.questionObj);
+      setSelectedState(prev.selectedOption);
+      setConfidenceState(prev.confidence);
+      setConfirmed(true);
+      setShowSteps(false);
+      setTutorOpenState(false);
+    }
+  }, [history, confirmed]);
 
   // ── Reset session ──────────────────────────────────────────────────────────
   const resetSession = useCallback(() => {

@@ -542,7 +542,7 @@ export default function QuizShell({
               textAlign: "center",
               minWidth: 56,
             }}>
-              <div style={{ fontSize: 14, fontWeight: 800 }}>Q{confirmed ? history.length : history.length + 1}<span style={{ fontSize: 11, fontWeight: 600, opacity: 0.75 }}>/{sessionSize}</span></div>
+              <div style={{ fontSize: 14, fontWeight: 800 }}>Q{history.length + 1}<span style={{ fontSize: 11, fontWeight: 600, opacity: 0.75 }}>/{sessionSize}</span></div>
               <div style={{ fontSize: 8, opacity: 0.8, textTransform: "uppercase", letterSpacing: "0.08em" }}>Question</div>
             </div>
             {[
@@ -743,7 +743,7 @@ export default function QuizShell({
               </span>
             )}
             <span className="qs-q-counter" style={{ fontSize: 11, color: "#94A3B8", marginLeft: "auto" }}>
-              Q{confirmed ? history.length : history.length + 1}
+              Q{history.length + 1}
             </span>
           </div>
 
