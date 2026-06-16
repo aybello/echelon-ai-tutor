@@ -240,11 +240,10 @@ export default function StudentDashboard() {
     );
   }
 
-  /* ── Email OTP login gate — redirect to /login ── */
-  // Wait for both auth checks to finish before redirecting — prevents redirect loop
+  /* ── Email OTP login gate — show inline form, no redirect ── */
+  // Wait for both auth checks to finish before showing the gate — prevents flash
   const authResolved = !authLoading && !dashboardMe.isLoading;
   if (authResolved && !hasAccess) {
-    window.location.replace("/login");
     return (
       <div style={{ fontFamily: "Sora, sans-serif", background: SLATE_900, minHeight: "100vh" }}>
         <SiteNav currentPath="/dashboard" />
@@ -252,8 +251,11 @@ export default function StudentDashboard() {
           <div style={{ textAlign: "center", marginBottom: 32 }}>
             <div style={{ fontSize: 48, marginBottom: 12 }}>📊</div>
             <h1 style={{ color: "#1E293B", fontSize: 24, fontWeight: 800, margin: "0 0 8px" }}>My Dashboard</h1>
-            <p style={{ color: "#94A3B8", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
-              Enter the email you used to purchase your course access. We'll send you a one-time code.
+            <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 6px" }}>
+              Track your mock exam scores and study progress.
+            </p>
+            <p style={{ color: "#94A3B8", fontSize: 13, lineHeight: 1.6, margin: 0 }}>
+              Enter your email to access your results — no password needed.
             </p>
           </div>
 
