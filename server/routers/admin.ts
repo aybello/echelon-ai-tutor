@@ -511,25 +511,43 @@ export const adminRouter = router({
       detail: smtpOk ? `Configured (${process.env.SMTP_HOST})` : "SMTP_HOST/USER/PASS not set — emails will not send",
     });
 
-    // 5. Recent purchases (last 24h)
-    let recentPurchases: { email: string; productKey: string; amountCAD: number; createdAt: Date | string }[] = [];
+    // 5. Recent purchases + subscriptions (last 24h) — excludes owner test email
+    let recentPurchases: { email: string; productKey: string; amountCAD: number; createdAt: Date | string; type: string }[] = [];
     try {
       const db = await getDb();
       if (db) {
         const cutoff = new Date(now - 24 * 60 * 60 * 1000);
-        const rows = await db
-          .select({ email: purchases.email, productKey: purchases.productKey, amountCAD: purchases.amountCAD, createdAt: purchases.createdAt })
-          .from(purchases)
-          .orderBy(desc(purchases.createdAt))
-          .limit(20);
-        recentPurchases = rows.filter(r => new Date(r.createdAt) >= cutoff);
-        const label = recentPurchases.length > 0
-          ? `${recentPurchases.length} purchase(s) in last 24h`
-          : "No purchases in last 24h";
-        checks.push({ name: "Recent Purchases (24h)", status: "ok", detail: label });
+        const [purchaseRows, subscriptionRows] = await Promise.all([
+          db
+            .select({ email: purchases.email, productKey: purchases.productKey, amountCAD: purchases.amountCAD, createdAt: purchases.createdAt })
+            .from(purchases)
+            .where(ne(purchases.email, OWNER_EMAIL))
+            .orderBy(desc(purchases.createdAt))
+            .limit(20),
+          db
+            .select({ email: subscriptions.email, tier: subscriptions.tier, createdAt: subscriptions.createdAt })
+            .from(subscriptions)
+            .where(ne(subscriptions.email, OWNER_EMAIL))
+            .orderBy(desc(subscriptions.createdAt))
+            .limit(20),
+        ]);
+        const recentOnetimes = purchaseRows
+          .filter(r => new Date(r.createdAt) >= cutoff)
+          .map(r => ({ ...r, productKey: r.productKey, type: "purchase" }));
+        const recentSubs = subscriptionRows
+          .filter(r => new Date(r.createdAt) >= cutoff)
+          .map(r => ({ email: r.email, productKey: r.tier, amountCAD: 0, createdAt: r.createdAt, type: "subscription" }));
+        recentPurchases = [...recentOnetimes, ...recentSubs].sort(
+          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        const total = recentPurchases.length;
+        const label = total > 0
+          ? `${total} transaction(s) in last 24h (${recentOnetimes.length} purchase${recentOnetimes.length !== 1 ? "s" : ""}, ${recentSubs.length} new subscription${recentSubs.length !== 1 ? "s" : ""})`
+          : "No purchases or new subscriptions in last 24h";
+        checks.push({ name: "Recent Activity (24h)", status: "ok", detail: label });
       }
     } catch (err: any) {
-      checks.push({ name: "Recent Purchases (24h)", status: "warn", detail: err.message });
+      checks.push({ name: "Recent Activity (24h)", status: "warn", detail: err.message });
     }
 
     return { checks, recentPurchases, timestamp: new Date() };

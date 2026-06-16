@@ -755,34 +755,47 @@ export default function Admin() {
               )}
             </div>
 
-            {/* Recent purchases in last 24h */}
+            {/* Recent activity in last 24h (purchases + new subscriptions) */}
             {healthQ.data && (
               <div style={{ background: "#F8FAFC", borderRadius: 16, border: "1px solid rgba(0,0,0,0.07)", overflow: "hidden" }}>
                 <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
                   <div style={{ fontSize: 13, fontWeight: 700 }}>
-                    💳 Purchases (Last 24h)
-                    <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{healthQ.data.recentPurchases.length} purchase(s)</span>
+                    💳 Recent Activity (Last 24h)
+                    <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{healthQ.data.recentPurchases.length} transaction(s)</span>
                   </div>
                 </div>
                 {healthQ.data.recentPurchases.length === 0 && (
-                  <div style={{ padding: 32, textAlign: "center", color: "#475569", fontSize: 13 }}>No purchases in the last 24 hours.</div>
+                  <div style={{ padding: 32, textAlign: "center", color: "#475569", fontSize: 13 }}>No purchases or new subscriptions in the last 24 hours.</div>
                 )}
                 {healthQ.data.recentPurchases.length > 0 && (
                   <div style={{ overflowX: "auto" }}>
                     <table style={{ width: "100%", borderCollapse: "collapse" }}>
                       <thead>
                         <tr style={{ background: "rgba(0,0,0,0.03)" }}>
-                          {["Product", "Email", "Amount", "Time"].map(h => (
+                          {["Type", "Product / Tier", "Email", "Amount", "Time"].map(h => (
                             <th key={h} style={{ padding: "10px 16px", textAlign: "left", fontSize: 10, fontWeight: 700, color: "#475569", letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {healthQ.data.recentPurchases.map((row, i) => (
+                        {healthQ.data.recentPurchases.map((row: any, i: number) => (
                           <tr key={i} className="admin-row" style={{ borderTop: "1px solid rgba(0,0,0,0.04)" }}>
+                            <td style={{ padding: "12px 16px" }}>
+                              <span style={{ padding: "3px 8px", borderRadius: 100, fontSize: 10, fontWeight: 700,
+                                background: row.type === "subscription" ? "rgba(244,114,182,0.15)" : "rgba(56,189,248,0.15)",
+                                color: row.type === "subscription" ? "#DB2777" : "#0284C7"
+                              }}>
+                                {row.type === "subscription" ? "Subscription" : "Purchase"}
+                              </span>
+                            </td>
                             <td style={{ padding: "12px 16px", fontSize: 12, fontWeight: 700, color: "#1E293B" }}>{row.productKey}</td>
                             <td style={{ padding: "12px 16px", fontSize: 12, color: "#64748B" }}>{row.email}</td>
-                            <td style={{ padding: "12px 16px" }}><span style={{ fontSize: 13, fontWeight: 800, color: "#34D399" }}>CA${(row.amountCAD / 100).toFixed(2)}</span></td>
+                            <td style={{ padding: "12px 16px" }}>
+                              {row.type === "subscription"
+                                ? <span style={{ fontSize: 12, color: "#94A3B8" }}>Monthly</span>
+                                : <span style={{ fontSize: 13, fontWeight: 800, color: "#34D399" }}>CA${(row.amountCAD / 100).toFixed(2)}</span>
+                              }
+                            </td>
                             <td style={{ padding: "12px 16px", fontSize: 11, color: "#64748B" }}>{formatDate(row.createdAt)}</td>
                           </tr>
                         ))}
