@@ -18,6 +18,7 @@ export default function MagicLinkConsume() {
 
   const [status, setStatus] = useState<"loading" | "success" | "error" | "expired">("loading");
   const [email, setEmail] = useState("");
+  const [isManager, setIsManager] = useState(false);
 
   const consumeMagicLink = trpc.magicLink.consumeMagicLink.useMutation({
     onSuccess: (data) => {
@@ -32,10 +33,12 @@ export default function MagicLinkConsume() {
           localStorage.setItem("echelon_purchased_products", JSON.stringify(data.examTypes));
         }
         setEmail(data.email);
+        setIsManager(!!data.isManager);
         setStatus("success");
 
-        // Auto-redirect to quiz after 3 seconds
-        setTimeout(() => navigate("/quiz"), 3000);
+        // Managers go to team dashboard, students go to quiz
+        const redirectPath = data.isManager ? "/team" : "/quiz";
+        setTimeout(() => navigate(redirectPath), 3000);
       } else {
         setStatus("expired");
       }
@@ -117,9 +120,9 @@ export default function MagicLinkConsume() {
                 You're signed in!
               </h1>
               <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
-                Welcome back, <strong>{email}</strong>. Redirecting to your courses…
+                Welcome back, <strong>{email}</strong>. Redirecting to your {isManager ? "team dashboard" : "courses"}…
               </p>
-              <Link href="/quiz">
+              <Link href={isManager ? "/team" : "/quiz"}>
                 <button
                   style={{
                     padding: "12px 32px",
@@ -133,7 +136,7 @@ export default function MagicLinkConsume() {
                     fontFamily: "inherit",
                   }}
                 >
-                  Go to Practice Quiz →
+                  {isManager ? "Go to Team Dashboard →" : "Go to Practice Quiz →"}
                 </button>
               </Link>
             </>

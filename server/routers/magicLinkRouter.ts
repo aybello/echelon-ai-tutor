@@ -13,10 +13,15 @@ import crypto from "crypto";
 import { eq, and, gt, isNull } from "drizzle-orm";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { magicLinks, purchases, subscriptions } from "../../drizzle/schema";
+import { magicLinks, purchases, subscriptions, organizations } from "../../drizzle/schema";
 import { sendMagicLinkEmail } from "../email";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { getSubscriptionExamTypes } from "../stripe/subscriptionProducts";
+import { SignJWT } from "jose";
+import { ENV } from "../_core/env";
+
+const DASHBOARD_COOKIE = "echelon_dashboard_session";
+const DASHBOARD_JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret);
 
 const MAGIC_LINK_EXPIRY_MINUTES = 15;
 
@@ -112,9 +117,9 @@ export const magicLinkRouter = router({
    */
   consumeMagicLink: publicProcedure
     .input(z.object({ token: z.string() }))
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
       const db = await getDb();
-      if (!db) return { valid: false, email: "", examTypes: [] as string[], accessToken: "" };
+      if (!db) return { valid: false, email: "", examTypes: [] as string[], accessToken: "", isManager: false };
 
       const now = new Date();
 
@@ -132,7 +137,7 @@ export const magicLinkRouter = router({
         .limit(1);
 
       if (!link) {
-        return { valid: false, email: "", examTypes: [] as string[], accessToken: "" };
+        return { valid: false, email: "", examTypes: [] as string[], accessToken: "", isManager: false };
       }
 
       // Mark as used
@@ -145,11 +150,36 @@ export const magicLinkRouter = router({
       // Issue a JWT access token
       const accessToken = await issueSubscriptionToken({ email: link.email, examTypes });
 
+      // Check if this email is a manager of any org — redirect to /team if so
+      const [orgRow] = await db
+        .select({ id: organizations.id })
+        .from(organizations)
+        .where(eq(organizations.managerEmail, link.email))
+        .limit(1);
+      const isManager = !!orgRow;
+
+      // If manager, also set the dashboard session cookie so /team works immediately
+      if (isManager) {
+        const dashboardToken = await new SignJWT({ email: link.email, type: "dashboard" })
+          .setProtectedHeader({ alg: "HS256" })
+          .setIssuedAt()
+          .setExpirationTime("24h")
+          .sign(DASHBOARD_JWT_SECRET);
+        ctx.res.cookie(DASHBOARD_COOKIE, dashboardToken, {
+          httpOnly: true,
+          secure: ENV.isProduction,
+          sameSite: "lax",
+          maxAge: 24 * 60 * 60 * 1000,
+          path: "/",
+        });
+      }
+
       return {
         valid: true,
         email: link.email,
         examTypes,
         accessToken,
+        isManager,
       };
     }),
 });
