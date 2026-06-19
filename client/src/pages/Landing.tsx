@@ -1279,6 +1279,7 @@ export default function Landing() {
           .contact-form-grid { grid-template-columns: 1fr !important; }
           .landing-whats-new { flex-direction: column !important; gap: 12px !important; }
           .landing-whats-new-btn { width: 100% !important; text-align: center !important; }
+          .landing-teams-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .landing-course-section { padding: 48px 16px !important; }
           .landing-nav-subtitle { display: none !important; }
           .landing-hero-section { padding: 40px 16px 32px !important; }
@@ -2314,6 +2315,185 @@ export default function Landing() {
             Start Free OIT Practice →
           </button>
         </Link>
+      </section>
+      </FadeUp>
+
+      {/* ── Teams / Enterprise Section ── */}
+      <FadeUp>
+      <section id="teams" style={{
+        background: "#0F172A",
+        padding: "80px 24px",
+        borderTop: "1px solid rgba(255,255,255,0.06)",
+      }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 60,
+            alignItems: "center",
+          }} className="landing-teams-grid">
+
+            {/* Left — copy */}
+            <div>
+              <div style={{
+                display: "inline-block",
+                background: "rgba(16,185,129,0.12)",
+                border: "1px solid rgba(16,185,129,0.3)",
+                borderRadius: 20,
+                padding: "5px 14px",
+                fontSize: 11,
+                fontWeight: 700,
+                color: "#10B981",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase" as const,
+                marginBottom: 20,
+              }}>For Utilities & Municipalities</div>
+
+              <h2 style={{
+                fontSize: "clamp(24px, 3.5vw, 40px)",
+                fontWeight: 900,
+                color: "#FFFFFF",
+                margin: "0 0 16px 0",
+                letterSpacing: "-0.02em",
+                lineHeight: 1.15,
+              }}>
+                Train Your Entire Team<br />
+                <span style={{ color: "#10B981" }}>Under One Plan</span>
+              </h2>
+
+              <p style={{
+                fontSize: 16,
+                color: "rgba(255,255,255,0.65)",
+                lineHeight: 1.75,
+                margin: "0 0 32px 0",
+                maxWidth: 480,
+              }}>
+                Give every operator on your team access to 15,000+ practice questions, AI Tutor, mock exams, and real-time readiness tracking — all from a single manager dashboard. Bulk pricing starts at 5 seats.
+              </p>
+
+              {/* Benefit bullets */}
+              <div style={{ display: "flex", flexDirection: "column" as const, gap: 12, marginBottom: 36 }}>
+                {[
+                  { icon: "📊", text: "Manager dashboard — track every operator's readiness score" },
+                  { icon: "🪑", text: "Assign and remove seats instantly by email" },
+                  { icon: "💰", text: "Volume discounts from 5% to 15% off" },
+                  { icon: "🇨🇦", text: "Ontario, BC, Alberta, Saskatchewan & more" },
+                ].map(b => (
+                  <div key={b.text} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                    <span style={{ fontSize: 18, marginTop: 1 }}>{b.icon}</span>
+                    <span style={{ fontSize: 14, color: "rgba(255,255,255,0.75)", lineHeight: 1.5 }}>{b.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
+                <Link href="/teams">
+                  <button style={{
+                    padding: "14px 32px",
+                    borderRadius: 10,
+                    background: "#10B981",
+                    color: "#FFFFFF",
+                    border: "none",
+                    fontSize: 15,
+                    fontWeight: 800,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    boxShadow: "0 4px 20px rgba(16,185,129,0.35)",
+                  }}>View Team Plans →</button>
+                </Link>
+                <Link href="/team/login">
+                  <button style={{
+                    padding: "14px 28px",
+                    borderRadius: 10,
+                    background: "transparent",
+                    color: "rgba(255,255,255,0.7)",
+                    border: "1.5px solid rgba(255,255,255,0.2)",
+                    fontSize: 15,
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                  }}>Manager Sign In</button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right — dashboard preview card */}
+            <div style={{
+              background: "rgba(255,255,255,0.04)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              borderRadius: 20,
+              padding: "32px 28px",
+              boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
+            }}>
+              {/* Mock dashboard header */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
+                <div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF" }}>Utilities Kingston</div>
+                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>Manager Dashboard · Ontario (EOCP)</div>
+                </div>
+                <div style={{
+                  background: "rgba(16,185,129,0.15)",
+                  border: "1px solid rgba(16,185,129,0.3)",
+                  borderRadius: 20,
+                  padding: "4px 10px",
+                  fontSize: 11,
+                  fontWeight: 700,
+                  color: "#10B981",
+                }}>Active</div>
+              </div>
+
+              {/* Mock stat cards */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 20 }}>
+                {[
+                  { label: "Seats Assigned", value: "8 / 10", sub: "2 available" },
+                  { label: "Active This Week", value: "6", sub: "of 8 operators" },
+                  { label: "Avg Readiness", value: "71%", sub: "across all operators", highlight: true },
+                  { label: "On Track to Pass", value: "5", sub: "≥75% accuracy" },
+                ].map(s => (
+                  <div key={s.label} style={{
+                    background: "rgba(255,255,255,0.05)",
+                    borderRadius: 12,
+                    padding: "14px 16px",
+                  }}>
+                    <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontWeight: 600, textTransform: "uppercase" as const, letterSpacing: "0.06em", marginBottom: 6 }}>{s.label}</div>
+                    <div style={{ fontSize: 22, fontWeight: 800, color: s.highlight ? "#10B981" : "#FFFFFF", lineHeight: 1 }}>{s.value}</div>
+                    <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>{s.sub}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mock operator rows */}
+              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.06em", marginBottom: 10 }}>Operator Roster</div>
+              {[
+                { name: "Alex Thompson", acc: "81%", status: "On Track", color: "#10B981" },
+                { name: "Jamie Lee", acc: "68%", status: "Needs Focus", color: "#F59E0B" },
+                { name: "Sam Rivera", acc: "—", status: "Not Started", color: "rgba(255,255,255,0.3)" },
+              ].map(op => (
+                <div key={op.name} style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: "10px 0",
+                  borderBottom: "1px solid rgba(255,255,255,0.06)",
+                }}>
+                  <div style={{ fontSize: 13, color: "rgba(255,255,255,0.8)", fontWeight: 600 }}>{op.name}</div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: op.color }}>{op.acc}</span>
+                    <span style={{
+                      fontSize: 10,
+                      fontWeight: 700,
+                      color: op.color,
+                      background: `${op.color}18`,
+                      borderRadius: 20,
+                      padding: "3px 8px",
+                    }}>{op.status}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
       </section>
       </FadeUp>
 
