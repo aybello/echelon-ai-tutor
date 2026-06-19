@@ -1902,24 +1902,26 @@ export default function Landing() {
 
       {/* ── Trusted By Bar ── */}
       <div style={{
-        background: "#FFFFFF",
+        background: "#EEF2F7",
         borderBottom: "1px solid #E2E8F0",
-        padding: "18px 24px",
+        padding: "12px 24px",
       }}>
-        <div style={{ maxWidth: 1000, margin: "0 auto", display: "flex", alignItems: "center", gap: 32, flexWrap: "wrap" as const, justifyContent: "center" }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const }}>Trusted by</div>
+        <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", alignItems: "center", gap: 16, justifyContent: "center", flexWrap: "wrap" as const }}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Trusted by</span>
+          <div style={{ width: 1, height: 14, background: "#CBD5E1" }} />
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <div style={{
-              width: 32, height: 32, borderRadius: 8,
-              background: "rgba(29,78,216,0.1)",
-              border: "1.5px solid rgba(29,78,216,0.2)",
+              width: 26, height: 26, borderRadius: 6,
+              background: "#DBEAFE",
+              border: "1px solid #BFDBFE",
               display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 10, fontWeight: 800, color: "#1D4ED8",
+              fontSize: 8, fontWeight: 800, color: "#1D4ED8",
+              letterSpacing: "0.02em",
               flexShrink: 0,
             }}>UK</div>
-            <span style={{ fontSize: 14, fontWeight: 700, color: "#1E293B" }}>Utilities Kingston</span>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#334155" }}>Utilities Kingston</span>
+            <span style={{ fontSize: 11, color: "#94A3B8" }}>— Ontario</span>
           </div>
-          <div style={{ fontSize: 12, color: "#94A3B8", fontStyle: "italic" as const }}>Ontario's leading municipal water utility</div>
         </div>
       </div>
 
