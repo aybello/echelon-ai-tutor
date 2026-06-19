@@ -1928,7 +1928,7 @@ export default function Landing() {
             </span>
           </div>
           <a
-            href="/pricing#teams"
+            href="/teams"
             className="landing-whats-new-btn"
             style={{
               background: "rgba(255,255,255,0.15)",
