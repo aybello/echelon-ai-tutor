@@ -238,17 +238,21 @@ export function useQuizSession({
     { refetchOnWindowFocus: false, staleTime: 5 * 60 * 1000 }
   );
   // On mount, pre-seed usedIds with mastered questions (answered correctly 2+ times in 30 days)
-  // This ensures returning users don't re-see questions they've already mastered
+  // This ensures returning users don't re-see questions they've already mastered.
+  // SAFETY: only seed if enough questions remain after seeding (at least DEFAULT_SESSION_SIZE).
   useEffect(() => {
-    if (attemptStats && attemptStats.seenIds.length > 0 && usedIds.size === 0 && history.length === 0) {
+    if (attemptStats && attemptStats.seenIds.length > 0 && usedIds.size === 0 && history.length === 0 && allQuestions.length > 0) {
       // Only seed mastered questions (seenIds minus missedIds)
       const missedSet = new Set(attemptStats.missedIds);
-      const masteredIds = attemptStats.seenIds.filter(id => !missedSet.has(id));
-      if (masteredIds.length > 0) {
-        setUsedIds(new Set(masteredIds));
+      const masteredSet = new Set(attemptStats.seenIds.filter(id => !missedSet.has(id)));
+      // Don't seed if it would leave fewer than DEFAULT_SESSION_SIZE questions available
+      const remainingAfterSeed = allQuestions.filter(q => !masteredSet.has(q.id)).length;
+      if (masteredSet.size > 0 && remainingAfterSeed >= DEFAULT_SESSION_SIZE) {
+        setUsedIds(masteredSet);
       }
     }
-  }, [attemptStats]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [attemptStats, allQuestions.length]);
 
   // ── Derived ────────────────────────────────────────────────────────────────
   const correctCount = history.filter((h) => h.correct).length;
@@ -411,14 +415,26 @@ export function useQuizSession({
     }
 
     // Get next question adaptively
-    const next = getAdaptiveNext(history, pool, trialUnlocked);
+    let next = getAdaptiveNext(history, pool, trialUnlocked);
     if (!next) {
-      setCurrent(null);
-      return;
+      // Pool exhausted — recycle by clearing usedIds (keeping only this session's answers)
+      // so the user can keep studying without hitting a premature "Session Complete".
+      const sessionIds = new Set(history.map(h => h.questionId));
+      setUsedIds(sessionIds);
+      // Build a recycled pool from all questions not answered this session
+      let recycledPool = allQuestions.filter(q => !sessionIds.has(q.id));
+      if (selectedModule) recycledPool = recycledPool.filter(q => q.module === selectedModule);
+      if (calcOnly) recycledPool = recycledPool.filter(q => q.isCalc === true);
+      next = getAdaptiveNext(history, recycledPool, trialUnlocked);
+      if (!next) {
+        // Truly exhausted (very small bank + long session) — end session cleanly
+        setCurrent(null);
+        return;
+      }
     }
     setCurrent(next);
     clearUI();
-  }, [history, pool, trialUnlocked, quizMode, sessionSize, clearUI]);
+  }, [history, pool, allQuestions, selectedModule, calcOnly, trialUnlocked, quizMode, sessionSize, clearUI]);
 
   // ── Go back (undo last answer) ─────────────────────────────────────────────
   const goBack = useCallback(() => {
