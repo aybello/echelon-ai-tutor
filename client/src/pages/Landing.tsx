@@ -1900,6 +1900,29 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ── Trusted By Bar ── */}
+      <div style={{
+        background: "#FFFFFF",
+        borderBottom: "1px solid #E2E8F0",
+        padding: "18px 24px",
+      }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto", display: "flex", alignItems: "center", gap: 32, flexWrap: "wrap" as const, justifyContent: "center" }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", textTransform: "uppercase" as const, whiteSpace: "nowrap" as const }}>Trusted by</div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div style={{
+              width: 32, height: 32, borderRadius: 8,
+              background: "rgba(29,78,216,0.1)",
+              border: "1.5px solid rgba(29,78,216,0.2)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: 10, fontWeight: 800, color: "#1D4ED8",
+              flexShrink: 0,
+            }}>UK</div>
+            <span style={{ fontSize: 14, fontWeight: 700, color: "#1E293B" }}>Utilities Kingston</span>
+          </div>
+          <div style={{ fontSize: 12, color: "#94A3B8", fontStyle: "italic" as const }}>Ontario's leading municipal water utility</div>
+        </div>
+      </div>
+
       {/* ── What's New Banner ── */}
       <SlideLeft delay={0.1}>
       <div style={{ padding: "12px 24px 0", maxWidth: 1200, margin: "0 auto" }}>
