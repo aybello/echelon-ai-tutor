@@ -1423,6 +1423,16 @@ export default function Landing() {
             </div>
           ) : (
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <Link href="/team/login">
+                <button style={{
+                  padding: "8px 16px", borderRadius: 10,
+                  background: "transparent",
+                  color: "#475569", border: "1.5px solid #CBD5E1", fontSize: 13, fontWeight: 600,
+                  cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+                }}>
+                  🏢 Team Login
+                </button>
+              </Link>
               <Link href="/login">
                 <button style={{
                   padding: "8px 16px", borderRadius: 10,
@@ -1557,13 +1567,13 @@ export default function Landing() {
               </div>
             </>
           ) : (
-            // Not signed in tiles: Sign In, Try Free, Pricing, WPI
+            // Not signed in tiles: Team Login, Sign In, Try Free, Pricing
             <>
               {[
+                { label: "🏢 Team Login", href: "/team/login", accent: false },
                 { label: "🔑 Sign In", href: "/login", accent: "purple" },
                 { label: "📝 Try Free", href: "/quiz", accent: true },
                 { label: "💰 Pricing", href: "/pricing", accent: false },
-                { label: "🌊 WPI", href: "/wpi", accent: false },
               ].map(tile => (
                 <Link key={tile.href} href={tile.href}>
                   <div
