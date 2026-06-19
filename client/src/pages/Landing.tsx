@@ -1900,56 +1900,35 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ── Trusted By Bar ── */}
-      <div style={{
-        background: "#EEF2F7",
-        borderBottom: "1px solid #E2E8F0",
-        padding: "12px 24px",
-      }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", alignItems: "center", gap: 16, justifyContent: "center", flexWrap: "wrap" as const }}>
-          <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", textTransform: "uppercase" as const }}>Trusted by</span>
-          <div style={{ width: 1, height: 14, background: "#CBD5E1" }} />
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <div style={{
-              width: 26, height: 26, borderRadius: 6,
-              background: "#DBEAFE",
-              border: "1px solid #BFDBFE",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 8, fontWeight: 800, color: "#1D4ED8",
-              letterSpacing: "0.02em",
-              flexShrink: 0,
-            }}>UK</div>
-            <span style={{ fontSize: 13, fontWeight: 600, color: "#334155" }}>Utilities Kingston</span>
-            <span style={{ fontSize: 11, color: "#94A3B8" }}>— Ontario</span>
-          </div>
-        </div>
-      </div>
-
-      {/* ── What's New Banner ── */}
+      {/* ── Teams Promo Banner ── */}
       <SlideLeft delay={0.1}>
       <div style={{ padding: "12px 24px 0", maxWidth: 1200, margin: "0 auto" }}>
         <div
           className="landing-whats-new"
           style={{
-            background: "linear-gradient(135deg, #0F766E 0%, #0E7490 50%, #1D4ED8 100%)",
+            background: "linear-gradient(135deg, #1E3A5F 0%, #1D4ED8 60%, #0E7490 100%)",
             borderRadius: 16,
             padding: "16px 24px",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             gap: 16,
-            flexWrap: "wrap",
-            boxShadow: "0 4px 20px rgba(15,118,110,0.25)",
+            flexWrap: "wrap" as const,
+            boxShadow: "0 4px 20px rgba(29,78,216,0.3)",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <span style={{ background: "rgba(255,255,255,0.2)", borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>NEW</span>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" as const }}>
+            <span style={{ background: "rgba(255,255,255,0.2)", borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: "0.05em", whiteSpace: "nowrap" as const }}>FOR UTILITIES</span>
             <span style={{ fontSize: 15, fontWeight: 600, color: "#fff" }}>
-              🏭 Class 4 Wastewater is now live — 500 questions, mock exam, formula sheet &amp; AI Tutor
+              🏗️ Train your entire team under one plan — dashboards, progress tracking &amp; volume pricing
+            </span>
+            <span style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.1)", borderRadius: 20, padding: "3px 10px 3px 6px", border: "1px solid rgba(255,255,255,0.2)" }}>
+              <span style={{ fontSize: 9, fontWeight: 800, color: "#93C5FD", background: "rgba(147,197,253,0.2)", borderRadius: 4, padding: "2px 5px" }}>UK</span>
+              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", fontWeight: 500 }}>Utilities Kingston</span>
             </span>
           </div>
           <a
-            href="/class4-ww"
+            href="/pricing#teams"
             className="landing-whats-new-btn"
             style={{
               background: "rgba(255,255,255,0.15)",
@@ -1960,11 +1939,11 @@ export default function Landing() {
               fontWeight: 700,
               color: "#fff",
               textDecoration: "none",
-              whiteSpace: "nowrap",
+              whiteSpace: "nowrap" as const,
               flexShrink: 0,
             }}
           >
-            Start Studying →
+            View Team Plans →
           </a>
         </div>
       </div>
