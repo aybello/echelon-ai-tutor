@@ -1918,7 +1918,7 @@ export default function Landing() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" as const }}>
-            <span style={{ background: "rgba(255,255,255,0.2)", borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: "0.05em", whiteSpace: "nowrap" as const }}>FOR UTILITIES</span>
+            <span style={{ background: "rgba(255,255,255,0.2)", borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: "0.05em", whiteSpace: "nowrap" as const }}>ECHELON FOR TEAMS</span>
             <span style={{ fontSize: 15, fontWeight: 600, color: "#fff" }}>
               🏗️ Train your entire team under one plan — dashboards, progress tracking &amp; volume pricing
             </span>
