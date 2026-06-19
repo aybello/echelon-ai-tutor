@@ -1917,15 +1917,20 @@ export default function Landing() {
             boxShadow: "0 4px 24px rgba(217,119,6,0.4)",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" as const }}>
-            <span style={{ background: "rgba(255,255,255,0.2)", borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: "0.05em", whiteSpace: "nowrap" as const }}>ECHELON FOR TEAMS</span>
-            <span style={{ fontSize: 15, fontWeight: 600, color: "#fff" }}>
-              🏗️ Train your entire team under one plan — dashboards, progress tracking &amp; volume pricing
-            </span>
-            <span style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.1)", borderRadius: 20, padding: "3px 10px 3px 6px", border: "1px solid rgba(255,255,255,0.2)" }}>
-              <span style={{ fontSize: 9, fontWeight: 800, color: "#93C5FD", background: "rgba(147,197,253,0.2)", borderRadius: 4, padding: "2px 5px" }}>UK</span>
-              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", fontWeight: 500 }}>Utilities Kingston</span>
-            </span>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" as const }}>
+              <span style={{ background: "rgba(255,255,255,0.2)", borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: "0.05em", whiteSpace: "nowrap" as const }}>ECHELON FOR TEAMS</span>
+              <span style={{ fontSize: 15, fontWeight: 600, color: "#fff" }}>
+                🏗️ Train your entire team under one plan — dashboards, progress tracking &amp; volume pricing
+              </span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", fontWeight: 500 }}>Trusted by</span>
+              <span style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.1)", borderRadius: 20, padding: "3px 10px 3px 6px", border: "1px solid rgba(255,255,255,0.2)" }}>
+                <span style={{ fontSize: 9, fontWeight: 800, color: "#93C5FD", background: "rgba(147,197,253,0.2)", borderRadius: 4, padding: "2px 5px" }}>UK</span>
+                <span style={{ fontSize: 11, color: "rgba(255,255,255,0.7)", fontWeight: 500 }}>Utilities Kingston</span>
+              </span>
+            </div>
           </div>
           <a
             href="/teams"
