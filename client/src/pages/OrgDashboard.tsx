@@ -55,7 +55,15 @@ import {
   CalendarDays,
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Link, useLocation, useSearch } from "wouter";
+import { getTeamCourseOptions, courseKeyToLabel } from "@shared/products";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -117,6 +125,7 @@ export default function OrgDashboard() {
   const [assignOpen, setAssignOpen] = useState(false);
   const [assignEmail, setAssignEmail] = useState("");
   const [assignName, setAssignName] = useState("");
+  const [assignCourseKey, setAssignCourseKey] = useState("");
   const [bulkEmails, setBulkEmails] = useState("");
   const [bulkMode, setBulkMode] = useState(false);
   const [revokeTarget, setRevokeTarget] = useState<string | null>(null);
@@ -154,6 +163,15 @@ export default function OrgDashboard() {
       setAssignOpen(false);
       setAssignEmail("");
       setAssignName("");
+      setAssignCourseKey("");
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  const updateSeatCourse = trpc.org.updateSeatCourse.useMutation({
+    onSuccess: () => {
+      toast.success("Course updated");
+      utils.org.listMembers.invalidate();
     },
     onError: (err) => toast.error(err.message),
   });
@@ -282,7 +300,7 @@ export default function OrgDashboard() {
         toast.error("Please enter a valid email address.");
         return;
       }
-      assignSeat.mutate({ email: assignEmail.trim().toLowerCase(), name: assignName.trim() || undefined });
+      assignSeat.mutate({ email: assignEmail.trim().toLowerCase(), name: assignName.trim() || undefined, courseKey: assignCourseKey || undefined });
     }
   };
 
@@ -596,6 +614,7 @@ export default function OrgDashboard() {
                 <thead>
                   <tr className="border-b border-slate-100 text-slate-400 text-xs uppercase tracking-wider bg-slate-50">
                     <th className="text-left px-4 py-3">Operator</th>
+                    <th className="text-left px-4 py-3 hidden xl:table-cell">Course</th>
                     <th className="text-left px-4 py-3 hidden md:table-cell">Assigned</th>
                     <th className="text-left px-4 py-3 hidden md:table-cell">Last Active</th>
                     <th className="text-left px-4 py-3 hidden lg:table-cell">Accuracy</th>
@@ -618,6 +637,26 @@ export default function OrgDashboard() {
                             ? <><div className="font-medium text-slate-800 text-sm">{m.name}</div><div className="text-xs text-slate-400">{m.email}</div></>
                             : <span className="font-medium text-slate-800">{m.email}</span>
                           }
+                        </td>
+                        <td className="px-4 py-3 hidden xl:table-cell">
+                          {m.courseKey ? (
+                            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100 whitespace-nowrap">
+                              {courseKeyToLabel(m.courseKey, overview.province)}
+                            </span>
+                          ) : (
+                            <Select
+                              onValueChange={(val) => updateSeatCourse.mutate({ email: m.email, courseKey: val })}
+                            >
+                              <SelectTrigger className="h-7 text-xs border-dashed border-slate-300 text-slate-400 w-36">
+                                <SelectValue placeholder="Set course" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {getTeamCourseOptions(overview.province).map(opt => (
+                                  <SelectItem key={opt.key} value={opt.key}>{opt.label}</SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          )}
                         </td>
                         <td className="px-4 py-3 text-slate-500 hidden md:table-cell">
                           {formatDate(m.assignedAt)}
@@ -746,6 +785,19 @@ export default function OrgDashboard() {
                     onKeyDown={e => e.key === "Enter" && handleAssign()}
                   />
                 </div>
+                <div className="space-y-1.5">
+                  <Label className="text-slate-700">Course <span className="text-slate-400 font-normal">(optional — can set later)</span></Label>
+                  <Select value={assignCourseKey} onValueChange={setAssignCourseKey}>
+                    <SelectTrigger className="border-slate-200 text-slate-900">
+                      <SelectValue placeholder="Select a course..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {getTeamCourseOptions(overview.province).map(opt => (
+                        <SelectItem key={opt.key} value={opt.key}>{opt.label}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
             ) : (
               <div className="space-y-2">
@@ -766,8 +818,7 @@ export default function OrgDashboard() {
             )}
 
             <p className="text-xs text-slate-400">
-              {seatsAvailable} seat{seatsAvailable === 1 ? "" : "s"} available. The operator will
-              get immediate access to all Echelon content using this email address.
+              {seatsAvailable} seat{seatsAvailable === 1 ? "" : "s"} available. The operator will receive an invite email with their course access details.
             </p>
           </div>
           <DialogFooter>

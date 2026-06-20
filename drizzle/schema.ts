@@ -410,6 +410,9 @@ export type InsertOrganization = typeof organizations.$inferInsert;
  * Organization members — one row per operator (or manager) in an org.
  * role: 'manager' | 'operator'
  * status: 'assigned' | 'revoked'
+ * courseKey: the specific course bundle assigned to this seat (e.g. 'wpi-class4-water', 'class3-water').
+ *   Null means the seat holder gets the org's default tier (all-access within their province).
+ *   Set by the manager at assignment time or updated later on unassigned seats.
  */
 export const organizationMembers = mysqlTable("organization_members", {
   id: int("id").autoincrement().primaryKey(),
@@ -418,6 +421,8 @@ export const organizationMembers = mysqlTable("organization_members", {
   name: varchar("name", { length: 200 }), // optional display name set by manager at assignment time
   role: varchar("role", { length: 20 }).notNull().default("operator"), // 'manager' | 'operator'
   status: varchar("status", { length: 20 }).notNull().default("assigned"), // 'assigned' | 'revoked'
+  /** Specific course bundle for this seat. Null = org default (all-access for province). */
+  courseKey: varchar("courseKey", { length: 64 }), // e.g. 'wpi-class4-water', 'class3-water', 'class3-ww'
   assignedAt: timestamp("assignedAt").defaultNow().notNull(),
   revokedAt: timestamp("revokedAt"),
 }, (t) => [

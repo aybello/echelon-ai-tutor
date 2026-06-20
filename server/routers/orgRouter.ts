@@ -28,6 +28,7 @@ import {
 } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { sendTeamEnrollmentEmail } from "../email";
+import { courseKeyToTier, courseKeyToLabel } from "../../shared/products";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -99,8 +100,8 @@ async function resolveOrgManager(ctx: {
 /**
  * Grants a seat to an operator:
  *   1. Insert/update organization_members row (role=operator, status=assigned)
- *   2. Upsert subscriptions row (tier=all-access, province=org province, orgId=org.id,
- *      stripeSubscriptionId=null, status=active, currentPeriodEnd=org.termEnd)
+ *   2. Upsert subscriptions row (tier derived from courseKey or all-access, province=org province,
+ *      orgId=org.id, stripeSubscriptionId=null, status=active, currentPeriodEnd=org.termEnd)
  */
 async function grantSeat(
   db: Awaited<ReturnType<typeof getDb>>,
@@ -109,6 +110,7 @@ async function grantSeat(
   role: "manager" | "operator" = "operator",
   managerEmail?: string,
   name?: string,
+  courseKey?: string,
 ) {
   if (!db) throw new Error("Database unavailable");
 
@@ -129,6 +131,7 @@ async function grantSeat(
         status: "assigned",
         revokedAt: null as any,
         ...(name !== undefined ? { name } : {}),
+        ...(courseKey !== undefined ? { courseKey } : {}),
       })
       .where(eq(organizationMembers.id, existingMember[0].id));
   } else {
@@ -138,8 +141,12 @@ async function grantSeat(
       name: name ?? null,
       role,
       status: "assigned",
+      courseKey: courseKey ?? null,
     });
   }
+
+  // Derive tier from courseKey (if set) or fall back to all-access
+  const tier = courseKey ? courseKeyToTier(courseKey, org.province) : "all-access";
 
   // Upsert subscription row for access
   const existingSub = await db
@@ -154,7 +161,7 @@ async function grantSeat(
       .set({
         status: "active",
         currentPeriodEnd: org.termEnd,
-        tier: "all-access",
+        tier: tier as any,
         province: org.province,
       })
       .where(eq(subscriptions.id, existingSub[0].id));
@@ -164,7 +171,7 @@ async function grantSeat(
     const orgSubId = `org-${org.id}-${email}`;
     await db.insert(subscriptions).values({
       email,
-      tier: "all-access",
+      tier: tier as any,
       province: org.province,
       stripeSubscriptionId: orgSubId,
       stripeCustomerId: "",
@@ -183,11 +190,13 @@ async function grantSeat(
     const loginUrl = `${origin}/dashboard/login`;
     // Bug fix: use generic support email instead of personal email as fallback
     const supportEmail = process.env.SUPPORT_EMAIL ?? "support@echeloninstitute.ca";
+    const courseName = courseKey ? courseKeyToLabel(courseKey, org.province) : undefined;
     sendTeamEnrollmentEmail({
       email,
       orgName: org.name,
       managerEmail: managerEmail ?? supportEmail,
       loginUrl,
+      courseName,
     }).catch(err => {
       console.error(`[Team Enrollment Email] Failed to send to ${email}:`, err);
     });
@@ -425,6 +434,7 @@ export const orgRouter = router({
         status: m.status,
         assignedAt: m.assignedAt,
         revokedAt: m.revokedAt,
+        courseKey: m.courseKey ?? null,
         accuracy,
         totalAttempts: total,
         lastActive,
@@ -562,7 +572,11 @@ export const orgRouter = router({
    * Enforces seat cap: active operators must be < seatsTotal.
    */
   assignSeat: publicProcedure
-    .input(z.object({ email: z.string().email(), name: z.string().max(200).optional() }))
+    .input(z.object({
+      email: z.string().email(),
+      name: z.string().max(200).optional(),
+      courseKey: z.string().max(64).optional(),
+    }))
     .mutation(async ({ input, ctx }) => {
       const { orgId, managerEmail } = await resolveOrgManager(ctx);
       const db = await getDb();
@@ -598,8 +612,71 @@ export const orgRouter = router({
         });
       }
 
-      await grantSeat(db, org, email, "operator", managerEmail, name);
+      await grantSeat(db, org, email, "operator", managerEmail, name, input.courseKey);
       return { success: true, email };
+    }),
+
+  /**
+   * updateSeatCourse — update the course assigned to a seat.
+   * Can be used on both assigned and unassigned seats.
+   * Does NOT reset the term expiry — the year started at assignment.
+   */
+  updateSeatCourse: publicProcedure
+    .input(z.object({
+      email: z.string().email(),
+      courseKey: z.string().max(64),
+    }))
+    .mutation(async ({ input, ctx }) => {
+      const { orgId } = await resolveOrgManager(ctx);
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+
+      const org = await db
+        .select()
+        .from(organizations)
+        .where(eq(organizations.id, orgId))
+        .limit(1)
+        .then(r => r[0]);
+      if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+
+      const email = normalizeEmail(input.email);
+
+      // Verify this email belongs to this org
+      const member = await db
+        .select({ id: organizationMembers.id, status: organizationMembers.status })
+        .from(organizationMembers)
+        .where(
+          and(
+            eq(organizationMembers.orgId, orgId),
+            eq(organizationMembers.email, email),
+            eq(organizationMembers.role, "operator"),
+          ),
+        )
+        .limit(1)
+        .then(r => r[0]);
+
+      if (!member) throw new TRPCError({ code: "NOT_FOUND", message: "Seat not found" });
+
+      const tier = courseKeyToTier(input.courseKey, org.province);
+
+      // Update member row
+      await db
+        .update(organizationMembers)
+        .set({ courseKey: input.courseKey })
+        .where(eq(organizationMembers.id, member.id));
+
+      // Update subscription tier (if active)
+      await db
+        .update(subscriptions)
+        .set({ tier: tier as any })
+        .where(
+          and(
+            eq(subscriptions.email, email),
+            eq(subscriptions.orgId, orgId),
+          ),
+        );
+
+      return { success: true };
     }),
 
   /**

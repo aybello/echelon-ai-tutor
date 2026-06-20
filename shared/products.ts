@@ -297,3 +297,66 @@ export function getAllUnlockedExamTypes(productKeys: string[]): string[] {
   }
   return Array.from(types);
 }
+
+// ── Team seat course options ──────────────────────────────────────────────────
+/**
+ * Available course options for team seat assignment, grouped by province.
+ * Each entry maps a courseKey (= individual product key) to a human-readable label.
+ * The courseKey is stored on the organization_members row and used to derive the
+ * subscription tier when granting access.
+ */
+export interface TeamCourseOption {
+  key: string;   // individual product key, e.g. 'class3-water'
+  label: string; // display label for the manager UI
+  tier: string;  // subscription tier this course maps to, e.g. 'class3'
+}
+
+export const TEAM_COURSES_ONTARIO: TeamCourseOption[] = [
+  { key: "oit",          label: "OIT (Water)",                    tier: "class1" },
+  { key: "oit-ww",       label: "OIT (Wastewater)",               tier: "class1" },
+  { key: "class1-water", label: "Class 1 — Water Treatment",      tier: "class1" },
+  { key: "class1-ww",    label: "Class 1 — Wastewater Treatment", tier: "class1" },
+  { key: "class2-water", label: "Class 2 — Water Treatment",      tier: "class2" },
+  { key: "class2-ww",    label: "Class 2 — Wastewater Treatment", tier: "class2" },
+  { key: "class3-water", label: "Class 3 — Water Treatment",      tier: "class3" },
+  { key: "class3-ww",    label: "Class 3 — Wastewater Treatment", tier: "class3" },
+  { key: "class4-water", label: "Class 4 — Water Treatment",      tier: "class4" },
+  { key: "class4-ww",    label: "Class 4 — Wastewater Treatment", tier: "class4" },
+  { key: "wqa",          label: "Water Quality Analyst (WQA)",    tier: "class4" },
+];
+
+export const TEAM_COURSES_WESTERN: TeamCourseOption[] = [
+  { key: "wpi-class1-water",       label: "Class I — Water Treatment",         tier: "class1" },
+  { key: "wpi-class1-wastewater",  label: "Class I — Wastewater Treatment",    tier: "class1" },
+  { key: "wpi-class1-water-dist",  label: "Class I — Water Distribution",      tier: "class1" },
+  { key: "wpi-class1-water-coll",  label: "Class I — Wastewater Collection",   tier: "class1" },
+  { key: "wpi-class2-water",       label: "Class II — Water Treatment",        tier: "class2" },
+  { key: "wpi-class2-wastewater",  label: "Class II — Wastewater Treatment",   tier: "class2" },
+  { key: "wpi-class2-water-dist",  label: "Class II — Water Distribution",     tier: "class2" },
+  { key: "wpi-class2-water-coll",  label: "Class II — Wastewater Collection",  tier: "class2" },
+  { key: "wpi-class3-water",       label: "Class III — Water Treatment",       tier: "class3" },
+  { key: "wpi-class3-wastewater",  label: "Class III — Wastewater Treatment",  tier: "class3" },
+  { key: "wpi-class3-water-dist",  label: "Class III — Water Distribution",    tier: "class3" },
+  { key: "wpi-class3-water-coll",  label: "Class III — Wastewater Collection", tier: "class3" },
+  { key: "wpi-class4-water",       label: "Class IV — Water Treatment",        tier: "class4" },
+  { key: "wpi-class4-wastewater",  label: "Class IV — Wastewater Treatment",   tier: "class4" },
+  { key: "wpi-class4-water-dist",  label: "Class IV — Water Distribution",     tier: "class4" },
+  { key: "wpi-class4-water-coll",  label: "Class IV — Wastewater Collection",  tier: "class4" },
+];
+
+/** Get course options for a given province */
+export function getTeamCourseOptions(province: string): TeamCourseOption[] {
+  return province === "western" ? TEAM_COURSES_WESTERN : TEAM_COURSES_ONTARIO;
+}
+
+/** Given a courseKey, return the subscription tier it maps to */
+export function courseKeyToTier(courseKey: string, province: string): string {
+  const options = getTeamCourseOptions(province);
+  return options.find(o => o.key === courseKey)?.tier ?? "all-access";
+}
+
+/** Given a courseKey, return the human-readable label */
+export function courseKeyToLabel(courseKey: string, province: string): string {
+  const options = getTeamCourseOptions(province);
+  return options.find(o => o.key === courseKey)?.label ?? courseKey;
+}

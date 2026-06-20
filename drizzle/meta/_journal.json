@@ -274,6 +274,13 @@
       "when": 1781573538613,
       "tag": "0038_curved_the_anarchist",
       "breakpoints": true
+    },
+    {
+      "idx": 39,
+      "version": "5",
+      "when": 1781979798349,
+      "tag": "0039_useful_lifeguard",
+      "breakpoints": true
     }
   ]
 }

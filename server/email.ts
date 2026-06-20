@@ -852,6 +852,7 @@ export interface TeamEnrollmentEmailPayload {
   orgName: string;
   managerEmail: string;
   loginUrl: string; // e.g. https://echeloninstitute.ca/dashboard/login
+  courseName?: string; // e.g. 'Class 4 — Water Treatment'
 }
 
 /**
@@ -862,7 +863,8 @@ export interface TeamEnrollmentEmailPayload {
 export async function sendTeamEnrollmentEmail(
   payload: TeamEnrollmentEmailPayload
 ): Promise<void> {
-  const { email, orgName, managerEmail, loginUrl } = payload;
+  const { email, orgName, managerEmail, loginUrl, courseName } = payload;
+  const courseLabel = courseName ?? "All-Access (all certification levels)";
 
   let transporter: nodemailer.Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
@@ -891,7 +893,9 @@ export async function sendTeamEnrollmentEmail(
       ``,
       `${orgName} has enrolled you in Echelon Institute — Canada's AI-powered exam prep platform for water and wastewater operators.`,
       ``,
-      `Your All-Access subscription is active and ready to use. You have full access to practice questions, mock exams, flashcards, study guides, and the AI Tutor for every certification level.`,
+      `Your subscription is active and ready to use. You have been enrolled in: ${courseLabel}.`,
+      ``,
+      `You have full access to practice questions, mock exams, flashcards, study guides, and the AI Tutor for your assigned course.`,
       ``,
       `To get started, sign in here:`,
       `  ${loginUrl}`,
@@ -930,9 +934,9 @@ export async function sendTeamEnrollmentEmail(
             <!-- Enrollment summary -->
             <div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:10px;padding:18px 22px;margin-bottom:28px;">
               <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#1D4ED8;letter-spacing:0.06em;text-transform:uppercase;">Enrollment Confirmed</p>
-              <p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#0F172A;">All-Access Subscription</p>
+              <p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#0F172A;">${courseLabel}</p>
               <p style="margin:0 0 4px;font-size:14px;color:#475569;">Enrolled by: ${orgName}</p>
-              <p style="margin:0;font-size:13px;color:#64748B;">Every certification level included — Class 1 through 4, Water &amp; Wastewater</p>
+              <p style="margin:0;font-size:13px;color:#64748B;">Your access is limited to this course for the duration of your team plan.</p>
             </div>
 
             <!-- CTA -->
@@ -944,7 +948,7 @@ export async function sendTeamEnrollmentEmail(
             </div>
 
             <!-- What's included -->
-            <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#0F172A;">What's included in your All-Access subscription:</p>
+            <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#0F172A;">What's included in your subscription:</p>
             <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
               <tr>
                 <td style="vertical-align:top;width:50%;padding-right:12px;">
