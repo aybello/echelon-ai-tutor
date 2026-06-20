@@ -4,9 +4,8 @@
  * Pulls 25 questions per bank from TiDB and writes them to
  * client/src/lib/seedQuestions.ts as a static bundle.
  *
- * Correct answers are STRIPPED from the output — the client
- * only receives question text, options, explanation, and metadata.
- * The server remains the sole authority on correct answers.
+ * correctIndex is included in the output so seed questions score correctly
+ * from the first millisecond without waiting for the DB to load.
  *
  * Usage: node scripts/generate-seed-questions.mjs
  */
@@ -45,7 +44,7 @@ async function main() {
   for (const bankKey of BANK_KEYS) {
     try {
       const [rows] = await pool.query(
-        `SELECT questionNum, question, options, explanation, difficulty, module, topic, isCalc, steps, tip
+        `SELECT questionNum, question, options, correctIndex, explanation, difficulty, module, topic, isCalc, steps, tip
          FROM questions
          WHERE bankKey = ?
          ORDER BY RAND()
@@ -58,7 +57,7 @@ async function main() {
         continue;
       }
 
-      // Parse JSON fields and STRIP correctAnswer
+      // Parse JSON fields
       const cleaned = rows.map((row) => {
         let options = row.options;
 
@@ -68,19 +67,16 @@ async function main() {
           options = [];
         }
 
-
-
-        // correctIndex intentionally omitted — server is the sole authority
         return {
           questionNum: row.questionNum,
           question: row.question,
           options: Array.isArray(options) ? options : [],
+          correctIndex: row.correctIndex ?? 0,
           explanation: row.explanation ?? null,
           difficulty: row.difficulty ?? null,
           module: row.module ?? null,
           topic: row.topic ?? null,
           isCalc: row.isCalc ?? "no",
-          // correctIndex intentionally omitted
         };
       });
 
@@ -102,8 +98,7 @@ async function main() {
  * Run: node scripts/generate-seed-questions.mjs
  *
  * 25 questions per bank, bundled for instant first-load fallback.
- * Correct answers are intentionally omitted — the server is the
- * sole authority on access and answer validation.
+ * correctIndex is included so questions score correctly before the DB loads.
  *
  * Generated: ${new Date().toISOString()}
  * Banks: ${banksFound} | Questions: ${totalQuestions}
@@ -113,12 +108,12 @@ export interface SeedQuestion {
   questionNum: number;
   question: string;
   options: string[];
+  correctIndex: number;
   explanation: string | null;
   difficulty: string | null;
   module: string | null;
   topic: string | null;
   isCalc: string;
-  // correctIndex intentionally omitted — server is the sole authority
 }
 
 export type SeedBank = Record<string, SeedQuestion[]>;

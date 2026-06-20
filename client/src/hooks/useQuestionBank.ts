@@ -2,22 +2,14 @@
  * useQuestionBank — fetches questions, bank metadata, and module overviews.
  *
  * Caching strategy (priority order):
- *   1. Seed questions — 25 bundled questions per bank, answers stripped.
+ *   1. Seed questions — 25 bundled questions per bank, correctIndex included.
  *      Shown INSTANTLY on first visit while the DB loads in the background.
+ *      Questions score correctly from the first millisecond.
  *   2. localStorage cache — full bank cached after first successful DB load.
  *      Served instantly on return visits (24hr TTL) for fast display.
- *      IMPORTANT: cache has correctIndex:-1 (stripped). The live DB fetch
- *      always runs in the background to restore real correctIndex values.
+ *      correctIndex is stored in the cache so returning users score correctly.
  *   3. DB fetch — tRPC call to the server. Lazy mode fetches a batch first,
  *      then the full bank. Full mode fetches everything upfront.
- *
- * Security:
- *   - Seed questions and localStorage cache NEVER contain correctIndex.
- *   - The server is the sole authority on correct answers and access control.
- *   - correctIndex is only present in the in-memory DBQuestion objects
- *     returned from the server during an active session.
- *   - Even when cache is present, the full DB fetch runs in the background
- *     so that correctIndex values are always live from the server.
  *
  * Supports two modes:
  *   - "full" (default): fetches ALL questions upfront. Use for mock exams and flashcards.
@@ -61,10 +53,9 @@ export interface ModuleOverview {
 }
 
 /**
- * Convert a SeedQuestion (no correctIndex) to a DBQuestion shape.
- * correctIndex is set to -1 as a sentinel — the quiz engine must
- * validate answers server-side; it must NOT use correctIndex from
- * seed questions to reveal correct answers client-side.
+ * Convert a SeedQuestion to a DBQuestion shape.
+ * correctIndex is included in seed questions so they score correctly
+ * before the DB loads.
  */
 function seedToDBQuestion(q: SeedQuestion): DBQuestion {
   return {
@@ -73,7 +64,7 @@ function seedToDBQuestion(q: SeedQuestion): DBQuestion {
     difficulty: q.difficulty,
     question: q.question,
     options: q.options,
-    correctIndex: -1, // sentinel — server validates, client must not use this
+    correctIndex: q.correctIndex,
     explanation: q.explanation ?? "",
     isCalc: q.isCalc === "yes",
     topic: q.topic ?? undefined,
@@ -104,7 +95,7 @@ function mergeCorrectIndex(
 }
 
 export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full") {
-  // ── Seed questions — instant fallback, no correctIndex ───────────────────
+  // ── Seed questions — instant fallback, correctIndex included ──────────────
   const seedForBank = seedQuestions[bankKey] ?? [];
   const seedAsDBQuestions: DBQuestion[] = seedForBank.map(seedToDBQuestion);
 
@@ -196,7 +187,7 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     invalidate(bankKey);
   }, [bankKey, cached, fullQuery.data]);
 
-  // ── Write to cache once full bank is loaded (strip correctIndex) ─────────
+  // ── Write to cache once full bank is loaded (with correctIndex) ────────────
   useEffect(() => {
     if (wroteCache.current) return;
     if (!fullQuery.data || !metaQuery.data) return;
@@ -205,14 +196,8 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
     if (rawQuestions.length === 0) return; // don't cache empty (DB down)
     wroteCache.current = true;
 
-    // Strip correctIndex before writing to localStorage
-    const safeQuestions = rawQuestions.map((q) => {
-      const { correctIndex: _stripped, ...safe } = q as DBQuestion & { correctIndex: number };
-      return { ...safe, correctIndex: -1 } as DBQuestion;
-    });
-
     setCached(bankKey, {
-      questions: safeQuestions,
+      questions: rawQuestions as DBQuestion[],
       modules,
       moduleTargets: metaQuery.data.moduleTargets ?? null,
       formulaLinks: metaQuery.data.formulaLinks ?? null,
@@ -240,8 +225,7 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
       // The cache is only for instant display before the server responds.
       questions = liveQuestions;
     } else {
-      // Live data not yet arrived — serve cached questions (correctIndex:-1 sentinel)
-      // Users can see questions but answers won't highlight until live data loads.
+      // Live data not yet arrived — serve cached questions (correctIndex included).
       questions = cached.questions;
     }
     // Use live modules when available, fall back to cached
