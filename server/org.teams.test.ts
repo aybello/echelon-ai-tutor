@@ -15,12 +15,24 @@
  * They create isolated test data with unique emails/org names and clean up after.
  */
 
-import { describe, it, expect, beforeAll, afterAll } from "vitest";
+import { describe, it, expect, beforeAll, afterAll, vi } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
 import { getDb } from "./db";
 import { organizations, organizationMembers, subscriptions } from "../drizzle/schema";
 import { and, eq } from "drizzle-orm";
+
+// ── Prevent real emails from being sent during tests ─────────────────────────
+// assignSeat fires sendTeamEnrollmentEmail as a side effect; mock it so tests
+// never hit the live SMTP server or send notifications to the owner.
+vi.mock("./email", () => ({
+  sendTeamEnrollmentEmail: vi.fn().mockResolvedValue(undefined),
+  sendWelcomeOnboardingEmail: vi.fn().mockResolvedValue(undefined),
+  sendConfirmationEmail: vi.fn().mockResolvedValue(undefined),
+}));
+vi.mock("./_core/notification", () => ({
+  notifyOwner: vi.fn().mockResolvedValue(true),
+}));
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
