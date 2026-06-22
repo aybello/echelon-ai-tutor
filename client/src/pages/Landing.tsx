@@ -609,6 +609,172 @@ const WPI_WATER_COURSES = [
   },
 ];
 
+const ONTARIO_WATER_DIST_COURSES = [
+  {
+    code: "ON-D1",
+    title: "Class 1 Water Distribution",
+    subtitle: "Ontario Class 1 — Water Distribution",
+    duration: "3–4 weeks",
+    questions: 300,
+    description: "Ontario Class 1 Water Distribution prep aligned with OWWCO certification. Covers pipe materials, valve operation, hydrant maintenance, pressure management, and O. Reg. 170/03.",
+    topics: ["Pipe Materials & Fittings", "Valve & Hydrant Operation", "Pressure Management", "Chlorine Residual", "O. Reg. 170/03"],
+    badge: "NEW",
+    badgeColor: "#B45309",
+    color: "#0369A1",
+    bg: "#E0F2FE",
+    border: "#BAE6FD",
+    comingSoon: false,
+    price: 99,
+    productKey: "class1-water-dist",
+    quizHref: "/class1-water-dist",
+    mockHref: "/class1-water-dist-mock",
+    flashcardHref: "/class1-water-dist-flashcards",
+  },
+  {
+    code: "ON-D2",
+    title: "Class 2 Water Distribution",
+    subtitle: "Ontario Class 2 — Water Distribution",
+    duration: "4–6 weeks",
+    questions: 300,
+    description: "Ontario Class 2 Water Distribution prep. Covers system design, water main installation, cross-connection control, hydraulics, and distribution operations aligned with OWWCO Class 2.",
+    topics: ["System Design", "Water Main Installation", "Cross-Connection Control", "Hydraulics", "Regulatory Compliance"],
+    badge: "NEW",
+    badgeColor: "#B45309",
+    color: "#0F766E",
+    bg: "#F0FDFA",
+    border: "#99F6E4",
+    comingSoon: false,
+    price: 149,
+    productKey: "class2-water-dist",
+    quizHref: "/class2-water-dist",
+    mockHref: "/class2-water-dist-mock",
+    flashcardHref: "/class2-water-dist-flashcards",
+  },
+  {
+    code: "ON-D3",
+    title: "Class 3 Water Distribution",
+    subtitle: "Ontario Class 3 — Water Distribution",
+    duration: "6–8 weeks",
+    questions: 300,
+    description: "Ontario Class 3 Water Distribution prep. Covers advanced hydraulics, system modelling, asset management, and distribution system planning aligned with OWWCO Class 3.",
+    topics: ["Advanced Hydraulics", "System Modelling", "Asset Management", "Distribution Planning", "SCADA & Automation"],
+    badge: "NEW",
+    badgeColor: "#B45309",
+    color: "#1E40AF",
+    bg: "#EFF6FF",
+    border: "#BFDBFE",
+    comingSoon: false,
+    price: 249,
+    productKey: "class3-water-dist",
+    quizHref: "/class3-water-dist",
+    mockHref: "/class3-water-dist-mock",
+    flashcardHref: "/class3-water-dist-flashcards",
+  },
+  {
+    code: "ON-D4",
+    title: "Class 4 Water Distribution",
+    subtitle: "Ontario Class 4 — Water Distribution",
+    duration: "8–10 weeks",
+    questions: 300,
+    description: "Ontario Class 4 Water Distribution prep. Covers strategic asset management, risk-based frameworks, KPIs, capital planning, and regulatory compliance aligned with OWWCO Class 4.",
+    topics: ["Strategic Asset Management", "Risk-Based Frameworks", "KPIs & Performance", "Capital Planning", "Regulatory Leadership"],
+    badge: "NEW",
+    badgeColor: "#B45309",
+    color: "#4C1D95",
+    bg: "#F5F3FF",
+    border: "#DDD6FE",
+    comingSoon: false,
+    price: 299,
+    productKey: "class4-water-dist",
+    quizHref: "/class4-water-dist",
+    mockHref: "/class4-water-dist-mock",
+    flashcardHref: "/class4-water-dist-flashcards",
+  },
+];
+
+const ONTARIO_WASTEWATER_COLL_COURSES = [
+  {
+    code: "ON-C1",
+    title: "Class 1 Wastewater Collection",
+    subtitle: "Ontario Class 1 — Wastewater Collection",
+    duration: "3–4 weeks",
+    questions: 300,
+    description: "Ontario Class 1 Wastewater Collection prep. Covers collection system basics, I/I identification, manhole inspection, and O. Reg. 129/04 aligned with OWWCO Class 1.",
+    topics: ["Collection System Basics", "I/I Identification", "Manhole Inspection", "H\u2082S Safety", "O. Reg. 129/04"],
+    badge: "NEW",
+    badgeColor: "#B45309",
+    color: "#065F46",
+    bg: "#ECFDF5",
+    border: "#A7F3D0",
+    comingSoon: false,
+    price: 99,
+    productKey: "class1-wastewater-coll",
+    quizHref: "/class1-wastewater-coll",
+    mockHref: "/class1-wastewater-coll-mock",
+    flashcardHref: "/class1-wastewater-coll-flashcards",
+  },
+  {
+    code: "ON-C2",
+    title: "Class 2 Wastewater Collection",
+    subtitle: "Ontario Class 2 — Wastewater Collection",
+    duration: "4–6 weeks",
+    questions: 300,
+    description: "Ontario Class 2 Wastewater Collection prep. Covers collection system design, sewer rehabilitation, pump station operations, and CSO management aligned with OWWCO Class 2.",
+    topics: ["Collection System Design", "Sewer Rehabilitation", "Pump Station Operations", "CSO Management", "Regulatory Compliance"],
+    badge: "NEW",
+    badgeColor: "#B45309",
+    color: "#047857",
+    bg: "#F0FDF4",
+    border: "#BBF7D0",
+    comingSoon: false,
+    price: 149,
+    productKey: "class2-wastewater-coll",
+    quizHref: "/class2-wastewater-coll",
+    mockHref: "/class2-wastewater-coll-mock",
+    flashcardHref: "/class2-wastewater-coll-flashcards",
+  },
+  {
+    code: "ON-C3",
+    title: "Class 3 Wastewater Collection",
+    subtitle: "Ontario Class 3 — Wastewater Collection",
+    duration: "6–8 weeks",
+    questions: 300,
+    description: "Ontario Class 3 Wastewater Collection prep. Covers advanced collection system hydraulics, CCTV inspection, force main design, and Long-Term Control Plans aligned with OWWCO Class 3.",
+    topics: ["Advanced Hydraulics", "CCTV Inspection", "Force Main Design", "Long-Term Control Plans", "Senior Operator Responsibilities"],
+    badge: "NEW",
+    badgeColor: "#B45309",
+    color: "#065F46",
+    bg: "#ECFDF5",
+    border: "#6EE7B7",
+    comingSoon: false,
+    price: 249,
+    productKey: "class3-wastewater-coll",
+    quizHref: "/class3-wastewater-coll",
+    mockHref: "/class3-wastewater-coll-mock",
+    flashcardHref: "/class3-wastewater-coll-flashcards",
+  },
+  {
+    code: "ON-C4",
+    title: "Class 4 Wastewater Collection",
+    subtitle: "Ontario Class 4 — Wastewater Collection",
+    duration: "8–10 weeks",
+    questions: 300,
+    description: "Ontario Class 4 Wastewater Collection prep. Covers strategic collection system management, lifecycle cost optimization, green infrastructure, and regulatory compliance aligned with OWWCO Class 4.",
+    topics: ["Strategic System Management", "Lifecycle Cost Optimization", "Green Infrastructure", "CMMS & Asset Management", "Regulatory Leadership"],
+    badge: "NEW",
+    badgeColor: "#B45309",
+    color: "#14532D",
+    bg: "#F0FDF4",
+    border: "#86EFAC",
+    comingSoon: false,
+    price: 299,
+    productKey: "class4-wastewater-coll",
+    quizHref: "/class4-wastewater-coll",
+    mockHref: "/class4-wastewater-coll-mock",
+    flashcardHref: "/class4-wastewater-coll-flashcards",
+  },
+];
+
 const WPI_WATER_DIST_COURSES = [
   {
     code: "WPI-D1",
@@ -936,7 +1102,7 @@ const STATS = [
   { value: "Free", label: "OIT Access" },
 ];
 
-type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number] | (typeof WPI_WATER_COURSES)[number] | (typeof WPI_WASTEWATER_COURSES)[number] | (typeof WPI_WATER_DIST_COURSES)[number] | (typeof WPI_WATER_COLL_COURSES)[number];
+type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number] | (typeof WPI_WATER_COURSES)[number] | (typeof WPI_WASTEWATER_COURSES)[number] | (typeof WPI_WATER_DIST_COURSES)[number] | (typeof WPI_WATER_COLL_COURSES)[number] | (typeof ONTARIO_WATER_DIST_COURSES)[number] | (typeof ONTARIO_WASTEWATER_COLL_COURSES)[number];
 
 function CourseCard({ course }: { course: CourseType }) {
   const [notifyOpen, setNotifyOpen] = useState(false);
@@ -1158,10 +1324,11 @@ export default function Landing() {
   // Always start on the default track when the homepage loads.
   // We no longer restore from URL hash — the hash was causing the page to
   // show WPI buttons when navigating back from a WPI quiz page.
-  const validTracks = ["water", "wastewater", "wqa", "wpi-water", "wpi-wastewater", "wpi-dist", "wpi-coll"] as const;
+  const validTracks = ["water", "wastewater", "wqa", "wpi-water", "wpi-wastewater", "wpi-dist", "wpi-coll", "ontario-dist", "ontario-coll"] as const;
   // Top-level tab: 'wpi' is the parent for all 4 WPI sub-tracks
   type TopTab = "water" | "wastewater" | "wqa" | "wpi";
   type WpiSubTab = "wpi-water" | "wpi-wastewater" | "wpi-dist" | "wpi-coll";
+  type OntarioSubTab = "water" | "ontario-dist" | "wastewater" | "ontario-coll";
   type Track = typeof validTracks[number];
   const getInitialTrack = (): Track => {
     // If the user navigated back from a specific course page, honour that context
@@ -1209,12 +1376,20 @@ export default function Landing() {
   };
   // Derive top-level tab from active track
   const isWpiTrack = (t: Track): t is WpiSubTab => t.startsWith("wpi-");
-  const activeTopTab: TopTab = isWpiTrack(activeTrack) ? "wpi" : (activeTrack as TopTab);
+  const isOntarioDistTrack = (t: Track) => t === "ontario-dist";
+  const isOntarioCollTrack = (t: Track) => t === "ontario-coll";
+  const activeTopTab: TopTab = isWpiTrack(activeTrack) ? "wpi" : (activeTrack === "ontario-dist" ? "water" : activeTrack === "ontario-coll" ? "wastewater" : (activeTrack as TopTab));
   // WPI sub-tab: default to wpi-water when entering WPI parent tab
   const activeWpiSub: WpiSubTab = isWpiTrack(activeTrack) ? activeTrack : "wpi-water";
   const handleTopTab = (tab: TopTab) => {
     if (tab === "wpi") {
       setActiveTrack(activeWpiSub);
+    } else if (tab === "water") {
+      // If currently on ontario-dist, stay on ontario-dist; otherwise go to water
+      if (activeTrack !== "ontario-dist") setActiveTrack("water");
+    } else if (tab === "wastewater") {
+      // If currently on ontario-coll, stay on ontario-coll; otherwise go to wastewater
+      if (activeTrack !== "ontario-coll") setActiveTrack("wastewater");
     } else {
       setActiveTrack(tab as Track);
     }
@@ -2056,6 +2231,74 @@ export default function Landing() {
             </button>
           </div>
 
+          {/* Ontario Water sub-filter row — visible when Water Treatment tab is active */}
+          {activeTopTab === "water" && (
+            <div
+              style={{
+                display: "inline-flex", background: "#E0F2FE", borderRadius: 10, padding: 3, gap: 3,
+                marginTop: 10,
+              }}
+            >
+              <button
+                onClick={() => setActiveTrack("water")}
+                style={{
+                  padding: "8px 16px", borderRadius: 8, border: "none",
+                  background: activeTrack === "water" ? "#1D4ED8" : "transparent",
+                  color: activeTrack === "water" ? "#fff" : "#0369A1",
+                  fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                  transition: "all 0.2s", whiteSpace: "nowrap",
+                }}
+              >
+                💧 Treatment
+              </button>
+              <button
+                onClick={() => setActiveTrack("ontario-dist")}
+                style={{
+                  padding: "8px 16px", borderRadius: 8, border: "none",
+                  background: activeTrack === "ontario-dist" ? "#0369A1" : "transparent",
+                  color: activeTrack === "ontario-dist" ? "#fff" : "#0369A1",
+                  fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                  transition: "all 0.2s", whiteSpace: "nowrap",
+                }}
+              >
+                🚰 Distribution
+              </button>
+            </div>
+          )}
+          {/* Ontario Wastewater sub-filter row — visible when Wastewater tab is active */}
+          {activeTopTab === "wastewater" && (
+            <div
+              style={{
+                display: "inline-flex", background: "#D1FAE5", borderRadius: 10, padding: 3, gap: 3,
+                marginTop: 10,
+              }}
+            >
+              <button
+                onClick={() => setActiveTrack("wastewater")}
+                style={{
+                  padding: "8px 16px", borderRadius: 8, border: "none",
+                  background: activeTrack === "wastewater" ? "#059669" : "transparent",
+                  color: activeTrack === "wastewater" ? "#fff" : "#065F46",
+                  fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                  transition: "all 0.2s", whiteSpace: "nowrap",
+                }}
+              >
+                ♻️ Treatment
+              </button>
+              <button
+                onClick={() => setActiveTrack("ontario-coll")}
+                style={{
+                  padding: "8px 16px", borderRadius: 8, border: "none",
+                  background: activeTrack === "ontario-coll" ? "#065F46" : "transparent",
+                  color: activeTrack === "ontario-coll" ? "#fff" : "#065F46",
+                  fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                  transition: "all 0.2s", whiteSpace: "nowrap",
+                }}
+              >
+                🔩 Collection
+              </button>
+            </div>
+          )}
           {/* WPI sub-filter row — only visible when WPI parent tab is active */}
           {activeTopTab === "wpi" && (
             <div
@@ -2094,7 +2337,7 @@ export default function Landing() {
           gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
           gap: 24,
         }}>
-          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : activeTrack === "wpi-dist" ? WPI_WATER_DIST_COURSES : activeTrack === "wpi-coll" ? WPI_WATER_COLL_COURSES : WQA_COURSES).map(course => (
+          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "ontario-dist" ? ONTARIO_WATER_DIST_COURSES : activeTrack === "ontario-coll" ? ONTARIO_WASTEWATER_COLL_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : activeTrack === "wpi-dist" ? WPI_WATER_DIST_COURSES : activeTrack === "wpi-coll" ? WPI_WATER_COLL_COURSES : WQA_COURSES).map(course => (
             <CourseCard key={course.code} course={course} />
           ))}
         </div>
