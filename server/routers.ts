@@ -188,7 +188,7 @@ export const appRouter = router({
       .input(
         z.object({
           sessionId: z.string().min(1).max(64),
-          examType: z.enum(["class1", "wqa", "oit", "oit-ww", "class1-water", "class1-ww", "class2-water", "class2-ww", "class3-water", "class3-ww", "class4-water", "class4-ww", "wpi-class1-water", "wpi-class2-water", "wpi-class3-water", "wpi-class4-water", "wpi-class1-wastewater", "wpi-class2-wastewater", "wpi-class3-wastewater", "wpi-class4-wastewater", "wpi-class1-water-dist", "wpi-class2-water-dist", "wpi-class3-water-dist", "wpi-class4-water-dist", "wpi-class1-water-coll", "wpi-class2-water-coll", "wpi-class3-water-coll", "wpi-class4-water-coll"]),
+          examType: z.enum(["class1", "wqa", "oit", "oit-ww", "class1-water", "class1-ww", "class2-water", "class2-ww", "class3-water", "class3-ww", "class4-water", "class4-ww", "wpi-class1-water", "wpi-class2-water", "wpi-class3-water", "wpi-class4-water", "wpi-class1-wastewater", "wpi-class2-wastewater", "wpi-class3-wastewater", "wpi-class4-wastewater", "wpi-class1-water-dist", "wpi-class2-water-dist", "wpi-class3-water-dist", "wpi-class4-water-dist", "wpi-class1-water-coll", "wpi-class2-water-coll", "wpi-class3-water-coll", "wpi-class4-water-coll", "class1-water-dist", "class2-water-dist", "class3-water-dist", "class4-water-dist", "class1-wastewater-coll", "class2-wastewater-coll", "class3-wastewater-coll", "class4-wastewater-coll"]),
           stream: z.enum(["water", "wastewater"]).optional(),
           score: z.number().int().min(0),
           total: z.number().int().min(1),
@@ -220,7 +220,7 @@ export const appRouter = router({
     getHistory: publicProcedure
       .input(z.object({
         sessionId: z.string().min(1).max(64),
-        examType: z.enum(["class1", "wqa", "oit", "oit-ww", "class1-water", "class1-ww", "class2-water", "class2-ww", "class3-water", "class3-ww", "class4-water", "class4-ww", "wpi-class1-water", "wpi-class2-water", "wpi-class3-water", "wpi-class4-water", "wpi-class1-wastewater", "wpi-class2-wastewater", "wpi-class3-wastewater", "wpi-class4-wastewater", "wpi-class1-water-dist", "wpi-class2-water-dist", "wpi-class3-water-dist", "wpi-class4-water-dist", "wpi-class1-water-coll", "wpi-class2-water-coll", "wpi-class3-water-coll", "wpi-class4-water-coll"]),
+        examType: z.enum(["class1", "wqa", "oit", "oit-ww", "class1-water", "class1-ww", "class2-water", "class2-ww", "class3-water", "class3-ww", "class4-water", "class4-ww", "wpi-class1-water", "wpi-class2-water", "wpi-class3-water", "wpi-class4-water", "wpi-class1-wastewater", "wpi-class2-wastewater", "wpi-class3-wastewater", "wpi-class4-wastewater", "wpi-class1-water-dist", "wpi-class2-water-dist", "wpi-class3-water-dist", "wpi-class4-water-dist", "wpi-class1-water-coll", "wpi-class2-water-coll", "wpi-class3-water-coll", "wpi-class4-water-coll", "class1-water-dist", "class2-water-dist", "class3-water-dist", "class4-water-dist", "class1-wastewater-coll", "class2-wastewater-coll", "class3-wastewater-coll", "class4-wastewater-coll"]),
         stream: z.enum(["water", "wastewater"]).optional(),
         calcOnly: z.boolean().optional(), // filter to only Math Practice sessions
       }))

@@ -173,6 +173,33 @@ const WpiClass2WaterCollFlashcards = lazy(() => import("./pages/WpiClass2WaterCo
 const WpiClass3WaterCollFlashcards = lazy(() => import("./pages/WpiClass3WaterCollFlashcards"));
 const WpiClass4WaterCollFlashcards = lazy(() => import("./pages/WpiClass4WaterCollFlashcards"));
 
+// Ontario Distribution sub-courses
+const Class1WaterDistQuiz = lazy(() => import("./pages/Class1WaterDistQuiz"));
+const Class1WaterDistMockExam = lazy(() => import("./pages/Class1WaterDistMockExam"));
+const Class1WaterDistFlashcards = lazy(() => import("./pages/Class1WaterDistFlashcards"));
+const Class2WaterDistQuiz = lazy(() => import("./pages/Class2WaterDistQuiz"));
+const Class2WaterDistMockExam = lazy(() => import("./pages/Class2WaterDistMockExam"));
+const Class2WaterDistFlashcards = lazy(() => import("./pages/Class2WaterDistFlashcards"));
+const Class3WaterDistQuiz = lazy(() => import("./pages/Class3WaterDistQuiz"));
+const Class3WaterDistMockExam = lazy(() => import("./pages/Class3WaterDistMockExam"));
+const Class3WaterDistFlashcards = lazy(() => import("./pages/Class3WaterDistFlashcards"));
+const Class4WaterDistQuiz = lazy(() => import("./pages/Class4WaterDistQuiz"));
+const Class4WaterDistMockExam = lazy(() => import("./pages/Class4WaterDistMockExam"));
+const Class4WaterDistFlashcards = lazy(() => import("./pages/Class4WaterDistFlashcards"));
+// Ontario Collection sub-courses
+const Class1WastewaterCollQuiz = lazy(() => import("./pages/Class1WastewaterCollQuiz"));
+const Class1WastewaterCollMockExam = lazy(() => import("./pages/Class1WastewaterCollMockExam"));
+const Class1WastewaterCollFlashcards = lazy(() => import("./pages/Class1WastewaterCollFlashcards"));
+const Class2WastewaterCollQuiz = lazy(() => import("./pages/Class2WastewaterCollQuiz"));
+const Class2WastewaterCollMockExam = lazy(() => import("./pages/Class2WastewaterCollMockExam"));
+const Class2WastewaterCollFlashcards = lazy(() => import("./pages/Class2WastewaterCollFlashcards"));
+const Class3WastewaterCollQuiz = lazy(() => import("./pages/Class3WastewaterCollQuiz"));
+const Class3WastewaterCollMockExam = lazy(() => import("./pages/Class3WastewaterCollMockExam"));
+const Class3WastewaterCollFlashcards = lazy(() => import("./pages/Class3WastewaterCollFlashcards"));
+const Class4WastewaterCollQuiz = lazy(() => import("./pages/Class4WastewaterCollQuiz"));
+const Class4WastewaterCollMockExam = lazy(() => import("./pages/Class4WastewaterCollMockExam"));
+const Class4WastewaterCollFlashcards = lazy(() => import("./pages/Class4WastewaterCollFlashcards"));
+
 // ── Page loading fallback ─────────────────────────────────────────────────────
 function PageLoader() {
   return (
@@ -314,6 +341,32 @@ function Router() {
         <Route path={"/wpi-class4-water-coll"} component={WpiClass4WaterCollQuiz} />
         <Route path={"/wpi-class4-water-coll-flashcards"} component={WpiClass4WaterCollFlashcards} />
         <Route path={"/wpi-class4-water-coll-mock"} component={WpiClass4WaterCollMockExam} />
+        {/* Ontario Water Distribution sub-courses */}
+        <Route path={"/class1-water-dist"} component={Class1WaterDistQuiz} />
+        <Route path={"/class1-water-dist-mock"} component={Class1WaterDistMockExam} />
+        <Route path={"/class1-water-dist-flashcards"} component={Class1WaterDistFlashcards} />
+        <Route path={"/class2-water-dist"} component={Class2WaterDistQuiz} />
+        <Route path={"/class2-water-dist-mock"} component={Class2WaterDistMockExam} />
+        <Route path={"/class2-water-dist-flashcards"} component={Class2WaterDistFlashcards} />
+        <Route path={"/class3-water-dist"} component={Class3WaterDistQuiz} />
+        <Route path={"/class3-water-dist-mock"} component={Class3WaterDistMockExam} />
+        <Route path={"/class3-water-dist-flashcards"} component={Class3WaterDistFlashcards} />
+        <Route path={"/class4-water-dist"} component={Class4WaterDistQuiz} />
+        <Route path={"/class4-water-dist-mock"} component={Class4WaterDistMockExam} />
+        <Route path={"/class4-water-dist-flashcards"} component={Class4WaterDistFlashcards} />
+        {/* Ontario Wastewater Collection sub-courses */}
+        <Route path={"/class1-wastewater-coll"} component={Class1WastewaterCollQuiz} />
+        <Route path={"/class1-wastewater-coll-mock"} component={Class1WastewaterCollMockExam} />
+        <Route path={"/class1-wastewater-coll-flashcards"} component={Class1WastewaterCollFlashcards} />
+        <Route path={"/class2-wastewater-coll"} component={Class2WastewaterCollQuiz} />
+        <Route path={"/class2-wastewater-coll-mock"} component={Class2WastewaterCollMockExam} />
+        <Route path={"/class2-wastewater-coll-flashcards"} component={Class2WastewaterCollFlashcards} />
+        <Route path={"/class3-wastewater-coll"} component={Class3WastewaterCollQuiz} />
+        <Route path={"/class3-wastewater-coll-mock"} component={Class3WastewaterCollMockExam} />
+        <Route path={"/class3-wastewater-coll-flashcards"} component={Class3WastewaterCollFlashcards} />
+        <Route path={"/class4-wastewater-coll"} component={Class4WastewaterCollQuiz} />
+        <Route path={"/class4-wastewater-coll-mock"} component={Class4WastewaterCollMockExam} />
+        <Route path={"/class4-wastewater-coll-flashcards"} component={Class4WastewaterCollFlashcards} />
         <Route path={"/distribution-guide"} component={WaterDistributionGuide} />
         <Route path={"/collection-guide"} component={WastewaterCollectionGuide} />
         <Route path={"/preview"} component={PreviewMode} />

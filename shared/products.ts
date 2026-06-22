@@ -213,6 +213,72 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     priceCAD: 29900,
     examTypes: ["wpi-class4-water-coll"],
   },
+  // ── Ontario Water Distribution sub-courses ─────────────────────────────────
+  {
+    key: "class1-water-dist",
+    shortName: "Class 1 Distribution",
+    name: "Class 1 Water Distribution Practice Pass",
+    description: "Ontario Class 1 Water Distribution — 300 questions. Covers pipe materials, valve operation, hydrant maintenance, and pressure management. Aligned with OWWCO Class 1 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 9900,
+    examTypes: ["class1-water-dist"],
+  },
+  {
+    key: "class2-water-dist",
+    shortName: "Class 2 Distribution",
+    name: "Class 2 Water Distribution Practice Pass",
+    description: "Ontario Class 2 Water Distribution — 300 questions. Covers system design, water main installation, cross-connection control, and distribution operations. Aligned with OWWCO Class 2 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 14900,
+    examTypes: ["class2-water-dist"],
+  },
+  {
+    key: "class3-water-dist",
+    shortName: "Class 3 Distribution",
+    name: "Class 3 Water Distribution Practice Pass",
+    description: "Ontario Class 3 Water Distribution — 300 questions. Covers advanced hydraulics, system modelling, asset management, and distribution system planning. Aligned with OWWCO Class 3 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 24900,
+    examTypes: ["class3-water-dist"],
+  },
+  {
+    key: "class4-water-dist",
+    shortName: "Class 4 Distribution",
+    name: "Class 4 Water Distribution Practice Pass",
+    description: "Ontario Class 4 Water Distribution — 300 questions. Covers strategic asset management, risk-based frameworks, KPIs, capital planning, and regulatory compliance. Aligned with OWWCO Class 4 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 29900,
+    examTypes: ["class4-water-dist"],
+  },
+  // ── Ontario Wastewater Collection sub-courses ─────────────────────────────
+  {
+    key: "class1-wastewater-coll",
+    shortName: "Class 1 Collection",
+    name: "Class 1 Wastewater Collection Practice Pass",
+    description: "Ontario Class 1 Wastewater Collection — 300 questions. Covers collection system basics, I/I identification, manhole inspection, and O. Reg. 129/04. Aligned with OWWCO Class 1 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 9900,
+    examTypes: ["class1-wastewater-coll"],
+  },
+  {
+    key: "class2-wastewater-coll",
+    shortName: "Class 2 Collection",
+    name: "Class 2 Wastewater Collection Practice Pass",
+    description: "Ontario Class 2 Wastewater Collection — 300 questions. Covers collection system design, sewer rehabilitation, pump station operations, and CSO management. Aligned with OWWCO Class 2 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 14900,
+    examTypes: ["class2-wastewater-coll"],
+  },
+  {
+    key: "class3-wastewater-coll",
+    shortName: "Class 3 Collection",
+    name: "Class 3 Wastewater Collection Practice Pass",
+    description: "Ontario Class 3 Wastewater Collection — 300 questions. Covers advanced collection system hydraulics, CCTV inspection, force main design, and Long-Term Control Plans. Aligned with OWWCO Class 3 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 24900,
+    examTypes: ["class3-wastewater-coll"],
+  },
+  {
+    key: "class4-wastewater-coll",
+    shortName: "Class 4 Collection",
+    name: "Class 4 Wastewater Collection Practice Pass",
+    description: "Ontario Class 4 Wastewater Collection — 300 questions. Covers strategic collection system management, lifecycle cost optimization, green infrastructure, and regulatory compliance. Aligned with OWWCO Class 4 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    priceCAD: 29900,
+    examTypes: ["class4-wastewater-coll"],
+  },
   // ── WPI Water Distribution ────────────────────────────────────────────────
   {
     key: "wpi-class1-water-dist",
@@ -279,6 +345,14 @@ export const PRODUCT_STUDY_PATHS: Record<string, ProductStudyPaths> = {
   "wpi-class2-water-coll":  { quizPath: "/wpi-class2-water-coll",     mockPath: "/wpi-class2-water-coll-mock" },
   "wpi-class3-water-coll":  { quizPath: "/wpi-class3-water-coll",     mockPath: "/wpi-class3-water-coll-mock" },
   "wpi-class4-water-coll":  { quizPath: "/wpi-class4-water-coll",     mockPath: "/wpi-class4-water-coll-mock" },
+  "class1-water-dist":      { quizPath: "/class1-water-dist",         mockPath: "/class1-water-dist-mock" },
+  "class2-water-dist":      { quizPath: "/class2-water-dist",         mockPath: "/class2-water-dist-mock" },
+  "class3-water-dist":      { quizPath: "/class3-water-dist",         mockPath: "/class3-water-dist-mock" },
+  "class4-water-dist":      { quizPath: "/class4-water-dist",         mockPath: "/class4-water-dist-mock" },
+  "class1-wastewater-coll": { quizPath: "/class1-wastewater-coll",    mockPath: "/class1-wastewater-coll-mock" },
+  "class2-wastewater-coll": { quizPath: "/class2-wastewater-coll",    mockPath: "/class2-wastewater-coll-mock" },
+  "class3-wastewater-coll": { quizPath: "/class3-wastewater-coll",    mockPath: "/class3-wastewater-coll-mock" },
+  "class4-wastewater-coll": { quizPath: "/class4-wastewater-coll",    mockPath: "/class4-wastewater-coll-mock" },
 };
 
 /** Given a product key, return all exam types it unlocks */
@@ -322,7 +396,15 @@ export const TEAM_COURSES_ONTARIO: TeamCourseOption[] = [
   { key: "class3-ww",    label: "Class 3 — Wastewater Treatment", tier: "class3" },
   { key: "class4-water", label: "Class 4 — Water Treatment",      tier: "class4" },
   { key: "class4-ww",    label: "Class 4 — Wastewater Treatment", tier: "class4" },
-  { key: "wqa",          label: "Water Quality Analyst (WQA)",    tier: "class4" },
+  { key: "wqa",                label: "Water Quality Analyst (WQA)",        tier: "class4" },
+  { key: "class1-water-dist",   label: "Class 1 — Water Distribution",       tier: "class1" },
+  { key: "class1-wastewater-coll", label: "Class 1 — Wastewater Collection",  tier: "class1" },
+  { key: "class2-water-dist",   label: "Class 2 — Water Distribution",       tier: "class2" },
+  { key: "class2-wastewater-coll", label: "Class 2 — Wastewater Collection",  tier: "class2" },
+  { key: "class3-water-dist",   label: "Class 3 — Water Distribution",       tier: "class3" },
+  { key: "class3-wastewater-coll", label: "Class 3 — Wastewater Collection",  tier: "class3" },
+  { key: "class4-water-dist",   label: "Class 4 — Water Distribution",       tier: "class4" },
+  { key: "class4-wastewater-coll", label: "Class 4 — Wastewater Collection",  tier: "class4" },
 ];
 
 export const TEAM_COURSES_WESTERN: TeamCourseOption[] = [

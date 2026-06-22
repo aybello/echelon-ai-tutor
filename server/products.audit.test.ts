@@ -57,6 +57,16 @@ const EXPECTED_PRICES: Record<string, number> = {
   "wpi-class4-wastewater":  29900,
   "wpi-class4-water-coll":  29900,
   "wpi-class4-water-dist":  29900,
+  // Ontario — Distribution sub-courses
+  "class1-water-dist":       9900,
+  "class2-water-dist":      14900,
+  "class3-water-dist":      24900,
+  "class4-water-dist":      29900,
+  // Ontario — Collection sub-courses
+  "class1-wastewater-coll":  9900,
+  "class2-wastewater-coll": 14900,
+  "class3-wastewater-coll": 24900,
+  "class4-wastewater-coll": 29900,
 };
 
 describe("shared/products.ts — price-change audit", () => {
