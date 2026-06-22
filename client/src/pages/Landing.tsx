@@ -1164,8 +1164,41 @@ export default function Landing() {
   type WpiSubTab = "wpi-water" | "wpi-wastewater" | "wpi-dist" | "wpi-coll";
   type Track = typeof validTracks[number];
   const getInitialTrack = (): Track => {
-    // Always default to the province-based default track on load.
-    // Do NOT read from URL hash — it causes stale state on back-navigation.
+    // If the user navigated back from a specific course page, honour that context
+    // so the landing page opens on the matching track — regardless of stored province.
+    try {
+      const ref = document.referrer;
+      if (ref) {
+        const refPath = new URL(ref).pathname;
+        // Ontario / OIT courses → water or wastewater track
+        if (
+          refPath.startsWith("/class1-water") ||
+          refPath.startsWith("/class2-water") ||
+          refPath.startsWith("/class3-water") ||
+          refPath.startsWith("/class4-water") ||
+          refPath.startsWith("/wqa") ||
+          refPath.startsWith("/quiz") ||
+          refPath.startsWith("/oit-mock") ||
+          refPath.startsWith("/formulas-water") ||
+          refPath.startsWith("/formulas-wqa")
+        ) return "water";
+        if (
+          refPath.startsWith("/class1-ww") ||
+          refPath.startsWith("/class2-ww") ||
+          refPath.startsWith("/class3-ww") ||
+          refPath.startsWith("/class4-ww") ||
+          refPath.startsWith("/formulas-ww")
+        ) return "wastewater";
+        // WPI courses → matching wpi sub-track
+        if (refPath.startsWith("/wpi-class") || refPath.startsWith("/formulas-wpi") || refPath === "/wpi") {
+          if (refPath.includes("-wastewater") || refPath.includes("-ww")) return "wpi-wastewater";
+          if (refPath.includes("-dist")) return "wpi-dist";
+          if (refPath.includes("-coll")) return "wpi-coll";
+          return "wpi-water";
+        }
+      }
+    } catch { /* ignore cross-origin or missing referrer */ }
+    // Fall back to province-based default
     return defaultTrack as Track;
   };
   const [activeTrack, setActiveTrackRaw] = useState<Track>(getInitialTrack);
