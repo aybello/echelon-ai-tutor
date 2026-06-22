@@ -1,6 +1,7 @@
-// Echelon Institute — Homepage / Landing Page
+// Echelon Institute — Homepage / Landing Page v2
 // Design: Bold, modern SaaS — feels like the product itself
 // Audience: Canadian water/wastewater operators seeking certification
+// Includes: Ontario Distribution & Collection sub-tabs (class1-4-water-dist, class1-4-wastewater-coll)
 
 import { Link } from "wouter";
 import { useState, useRef, useEffect } from "react";
