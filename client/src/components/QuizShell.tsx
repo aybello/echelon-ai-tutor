@@ -599,28 +599,48 @@ export default function QuizShell({
                   All Modules
                 </button>
               )}
-              {modules.map(m => (
-                <button
-                  key={m.name}
-                  onClick={() => onModuleChange(selectedModule === m.name ? null : m.name)}
-                  style={{
-                    padding: "4px 10px",
-                    borderRadius: 20,
-                    border: "1.5px solid",
-                    borderColor: selectedModule === m.name ? "rgba(255,255,255,0.9)" : "rgba(255,255,255,0.3)",
-                    background: selectedModule === m.name ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.1)",
-                    color: "#fff",
-                    fontSize: 11,
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                    flexShrink: 0,
-                  }}
-                >
-                  {m.icon && <span style={{ marginRight: 4 }}>{m.icon}</span>}
-                  {m.name}
-                </button>
-              ))}
+              {modules.map((m, idx) => {
+                const isDistColl = m.name === "Water Distribution" || m.name === "Wastewater Collection" || m.name === "Collection Systems";
+                // Insert a subtle divider before the Distribution/Collection pill
+                const prevIsDistColl = idx > 0 && (modules[idx-1].name === "Water Distribution" || modules[idx-1].name === "Wastewater Collection" || modules[idx-1].name === "Collection Systems");
+                const needsDivider = isDistColl && idx > 0;
+                return (
+                  <>
+                    {needsDivider && (
+                      <span key={`div-${m.name}`} style={{ display: "flex", alignItems: "center", color: "rgba(255,255,255,0.35)", fontSize: 10, flexShrink: 0, userSelect: "none" }}>|</span>
+                    )}
+                    <button
+                      key={m.name}
+                      onClick={() => onModuleChange(selectedModule === m.name ? null : m.name)}
+                      style={{
+                        padding: isDistColl ? "4px 11px" : "4px 10px",
+                        borderRadius: 20,
+                        border: isDistColl ? "2px solid" : "1.5px solid",
+                        borderColor: selectedModule === m.name
+                          ? "rgba(255,255,255,0.95)"
+                          : isDistColl
+                          ? "rgba(255,220,100,0.75)"
+                          : "rgba(255,255,255,0.3)",
+                        background: selectedModule === m.name
+                          ? "rgba(255,255,255,0.28)"
+                          : isDistColl
+                          ? "rgba(255,200,50,0.18)"
+                          : "rgba(255,255,255,0.1)",
+                        color: "#fff",
+                        fontSize: 11,
+                        fontWeight: isDistColl ? 700 : 600,
+                        cursor: "pointer",
+                        fontFamily: "inherit",
+                        flexShrink: 0,
+                      }}
+                    >
+                      {m.icon && <span style={{ marginRight: 4 }}>{m.icon}</span>}
+                      {m.name}
+                      {isDistColl && <span style={{ marginLeft: 4, fontSize: 9, opacity: 0.85, fontWeight: 800, letterSpacing: "0.03em", background: "rgba(255,200,50,0.35)", borderRadius: 4, padding: "1px 4px" }}>NEW</span>}
+                    </button>
+                  </>
+                );
+              })}
               {hasCalcOnly && (
                 <button
                   onClick={onCalcOnlyToggle}

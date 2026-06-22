@@ -6,6 +6,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
+  "Wastewater Collection":  { bg: "#CCFBF1", color: "#0F766E" },
   "Wastewater Characteristics & Preliminary Treatment": { bg: "#DBEAFE", color: "#1D4ED8" },
   "Primary Treatment":      { bg: "#DCFCE7", color: "#15803D" },
   "Secondary Treatment":    { bg: "#EDE9FE", color: "#6D28D9" },

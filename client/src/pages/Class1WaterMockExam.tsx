@@ -7,15 +7,15 @@ import { useQuestionBank } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 
 const MODULE_TARGETS: Record<string, number> = {
-  "Water Sources & Quality":    12,
-  "Coagulation & Flocculation": 11,
+  "Water Sources & Quality":    11,
+  "Coagulation & Flocculation": 10,
   "Sedimentation":              10,
-  "Filtration":                 13,
-  "Disinfection":               13,
-  "Chemical Feed & Dosing":     11,
-  "Iron & Manganese Removal":   11,
-  "Water Quality & Regulations":11,
-  "Water Distribution":          8,
+  "Filtration":                 12,
+  "Disinfection":               12,
+  "Chemical Feed & Dosing":     10,
+  "Iron & Manganese Removal":   10,
+  "Water Quality & Regulations":10,
+  "Water Distribution":         15,
 };
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
