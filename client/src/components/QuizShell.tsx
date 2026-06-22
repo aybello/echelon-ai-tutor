@@ -600,9 +600,9 @@ export default function QuizShell({
                 </button>
               )}
               {modules.map((m, idx) => {
-                const isDistColl = m.name === "Water Distribution" || m.name === "Wastewater Collection" || m.name === "Collection Systems";
+                const isDistColl = /distrib|collect/i.test(m.name);
                 // Insert a subtle divider before the Distribution/Collection pill
-                const prevIsDistColl = idx > 0 && (modules[idx-1].name === "Water Distribution" || modules[idx-1].name === "Wastewater Collection" || modules[idx-1].name === "Collection Systems");
+                const prevIsDistColl = idx > 0 && /distrib|collect/i.test(modules[idx-1].name);
                 const needsDivider = isDistColl && idx > 0;
                 return (
                   <>
