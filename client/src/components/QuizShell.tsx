@@ -11,7 +11,7 @@
  *  - AI Tutor drawer + Report Error modal
  */
 
-import { useState, useEffect, useRef, type ReactNode } from "react";
+import React, { useState, useEffect, useRef, type ReactNode } from "react";
 import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
 import ModuleOverviewPanel from "@/components/ModuleOverview";
@@ -605,12 +605,11 @@ export default function QuizShell({
                 const prevIsDistColl = idx > 0 && /distrib|collect/i.test(modules[idx-1].name);
                 const needsDivider = isDistColl && idx > 0;
                 return (
-                  <>
+                  <React.Fragment key={m.name}>
                     {needsDivider && (
-                      <span key={`div-${m.name}`} style={{ display: "flex", alignItems: "center", color: "rgba(255,255,255,0.35)", fontSize: 10, flexShrink: 0, userSelect: "none" }}>|</span>
+                      <span style={{ display: "flex", alignItems: "center", color: "rgba(255,255,255,0.35)", fontSize: 10, flexShrink: 0, userSelect: "none" }}>|</span>
                     )}
                     <button
-                      key={m.name}
                       onClick={() => onModuleChange(selectedModule === m.name ? null : m.name)}
                       style={{
                         padding: isDistColl ? "4px 11px" : "4px 10px",
@@ -638,7 +637,7 @@ export default function QuizShell({
                       {m.name}
                       {isDistColl && <span style={{ marginLeft: 4, fontSize: 9, opacity: 0.85, fontWeight: 800, letterSpacing: "0.03em", background: "rgba(255,200,50,0.35)", borderRadius: 4, padding: "1px 4px" }}>NEW</span>}
                     </button>
-                  </>
+                  </React.Fragment>
                 );
               })}
               {hasCalcOnly && (
