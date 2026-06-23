@@ -77,13 +77,13 @@ function smokeCheck(bankKey: string, minCount: number) {
 smokeCheck("oit",                400);
 smokeCheck("class1",             200);
 smokeCheck("class1-water",       300);
-smokeCheck("class1-wastewater",  200);
+smokeCheck("class1-wastewater",  499);
 smokeCheck("class2-water",       300);
-smokeCheck("class2-wastewater",  400);
+smokeCheck("class2-wastewater",  499);
 smokeCheck("class3-water",       300);
-smokeCheck("class3-wastewater",  480);
+smokeCheck("class3-wastewater",  498);
 smokeCheck("class4-water",       300);
-smokeCheck("class4-wastewater",  400);
+smokeCheck("class4-wastewater",  499);
 smokeCheck("wqa",                280);
 
 // WPI Water tracks

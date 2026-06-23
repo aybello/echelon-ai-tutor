@@ -393,6 +393,7 @@ CRITICAL DISTRACTOR QUALITY RULES (violations will make the exam useless):
 13. Wrong answers should represent common misconceptions or plausible confusions -- for example, a wrong flow rate that is close to but not the correct value, a regulation section that is real but governs a different aspect, or a technique that is valid in a different context.
 14. The correct answer must NOT restate or paraphrase the question stem. If the stem asks "What is the purpose of X?", the correct answer should not begin with "X is used to..." in a way that makes it obviously correct from wording alone.
 15. For Class 3-4 questions: all four options should be real management frameworks, engineering approaches, or regulatory strategies. The question should require knowledge to distinguish between them, not just common sense.
+16. HARD LENGTH RULE: Before finalizing each question, count the words in each option. If the correct answer is more than 1.5x the average word count of the wrong answers, REWRITE the wrong answers to be longer and more specific. This is mandatory -- do not skip this check.
 
 EXAMPLE OF BAD DISTRACTORS (never do this):
 Q: What is the primary purpose of a Long-Term Control Plan?
