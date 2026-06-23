@@ -16,7 +16,7 @@ export default function WpiClass4WaterCollFlashcards() {
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 
   return (
-    <FlashcardErrorBoundary examName="WPI Class IV Wastewater Collection" backPath="/wpi-class4-water-coll">
+    <FlashcardErrorBoundary examName="WPI Class IV Water Collection" backPath="/wpi-class4-water-coll">
       <PurchaseGate
         examType="wpi-class4-water-coll"
         productKey="wpi-class4-water-coll"
@@ -25,7 +25,7 @@ export default function WpiClass4WaterCollFlashcards() {
       >
         <FlashcardShell
           questions={questions as unknown as FlashcardQuestion[]}
-          examName="WPI Class IV Wastewater Collection"
+          examName="WPI Class IV Water Collection"
           examType="wpi-class4-water-coll"
           backPath="/wpi-class4-water-coll"
           modules={modules as unknown as string[]}
