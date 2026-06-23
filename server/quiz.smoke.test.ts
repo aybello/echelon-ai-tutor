@@ -76,15 +76,27 @@ function smokeCheck(bankKey: string, minCount: number) {
 // Ontario tracks
 smokeCheck("oit",                400);
 smokeCheck("class1",             200);
-smokeCheck("class1-water",       300);
+smokeCheck("class1-water",       499);
 smokeCheck("class1-wastewater",  499);
-smokeCheck("class2-water",       300);
+smokeCheck("class2-water",       499);
 smokeCheck("class2-wastewater",  499);
-smokeCheck("class3-water",       300);
+smokeCheck("class3-water",       499);
 smokeCheck("class3-wastewater",  498);
-smokeCheck("class4-water",       300);
+smokeCheck("class4-water",       499);
 smokeCheck("class4-wastewater",  499);
 smokeCheck("wqa",                280);
+
+// Ontario Distribution tracks
+smokeCheck("class1-water-dist",  499);
+smokeCheck("class2-water-dist",  499);
+smokeCheck("class3-water-dist",  499);
+smokeCheck("class4-water-dist",  499);
+
+// Ontario Collection tracks
+smokeCheck("class1-wastewater-coll",  499);
+smokeCheck("class2-wastewater-coll",  499);
+smokeCheck("class3-wastewater-coll",  499);
+smokeCheck("class4-wastewater-coll",  499);
 
 // WPI Water tracks
 smokeCheck("wpi-class1-water",   400);
