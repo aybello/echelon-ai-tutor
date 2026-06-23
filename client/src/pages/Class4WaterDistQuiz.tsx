@@ -19,7 +19,7 @@ const MODULE_ICONS: Record<string, string> = {
 export default function Class4WaterDistQuiz() {
   usePageMeta({
     title: "Ontario Class 4 Water Distribution Practice Questions",
-    description: "Practice questions for the Ontario Class 4 Water Distribution operator certification exam. 300 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
+    description: "Practice questions for the Ontario Class 4 Water Distribution operator certification exam. 500 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
   });
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class4-water-dist", "lazy");
   const allQuestions = dbQuestions;
@@ -41,7 +41,7 @@ export default function Class4WaterDistQuiz() {
       currentPath="/class4-water-dist"
       courseLabel="Ontario Class 4 · Water Distribution"
       courseTitle="Ontario Class 4 Water Distribution Quiz"
-      courseSubtitle="300 questions · Ontario Class 4 Water Treatment (Distribution)"
+      courseSubtitle="500 questions · Ontario Class 4 Water Distribution"
       headerGradient="linear-gradient(135deg, #0369A1 0%, #0E7490 100%)"
       headerIcon="🚰"
       headerActions={[

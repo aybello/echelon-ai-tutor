@@ -19,7 +19,7 @@ const MODULE_ICONS: Record<string, string> = {
 export default function Class3WastewaterCollQuiz() {
   usePageMeta({
     title: "Ontario Class 3 Wastewater Collection Practice Questions",
-    description: "Practice questions for the Ontario Class 3 Wastewater Collection operator certification exam. 300 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
+    description: "Practice questions for the Ontario Class 3 Wastewater Collection operator certification exam. 500 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
   });
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class3-wastewater-coll", "lazy");
   const allQuestions = dbQuestions;
@@ -41,7 +41,7 @@ export default function Class3WastewaterCollQuiz() {
       currentPath="/class3-wastewater-coll"
       courseLabel="Ontario Class 3 · Wastewater Collection"
       courseTitle="Ontario Class 3 Wastewater Collection Quiz"
-      courseSubtitle="300 questions · Ontario Class 3 Wastewater Treatment (Collection)"
+      courseSubtitle="500 questions · Ontario Class 3 Wastewater Collection"
       headerGradient="linear-gradient(135deg, #065F46 0%, #0F766E 100%)"
       headerIcon="🔩"
       headerActions={[

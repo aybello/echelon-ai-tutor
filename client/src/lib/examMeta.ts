@@ -8,12 +8,20 @@ export const EXAM_LABELS: Record<string, string> = {
   "oit-ww": "OIT Wastewater Treatment",
   "class1-water": "Class 1 Water Treatment",
   "class1-ww": "Class 1 Wastewater Treatment",
+  "class1-water-dist": "Class 1 Water Distribution",
+  "class1-wastewater-coll": "Class 1 Wastewater Collection",
   "class2-water": "Class 2 Water Treatment",
   "class2-ww": "Class 2 Wastewater Treatment",
+  "class2-water-dist": "Class 2 Water Distribution",
+  "class2-wastewater-coll": "Class 2 Wastewater Collection",
   "class3-water": "Class 3 Water Treatment",
   "class3-ww": "Class 3 Wastewater Treatment",
+  "class3-water-dist": "Class 3 Water Distribution",
+  "class3-wastewater-coll": "Class 3 Wastewater Collection",
   "class4-water": "Class 4 Water Treatment",
   "class4-ww": "Class 4 Wastewater Treatment",
+  "class4-water-dist": "Class 4 Water Distribution",
+  "class4-wastewater-coll": "Class 4 Wastewater Collection",
   wqa: "Water Quality Analyst (WQA)",
   "wpi-class1-water": "WPI Class I Water Treatment",
   "wpi-class1-wastewater": "WPI Class I Wastewater Treatment",
@@ -41,11 +49,11 @@ type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access"
 type SubscriptionProvince = "ontario" | "western";
 
 const ONTARIO_BY_TIER: Record<SubscriptionTier, string[]> = {
-  "class1":     ["oit", "oit-ww", "class1-water", "class1-ww"],
-  "class2":     ["class2-water", "class2-ww"],
-  "class3":     ["class3-water", "class3-ww"],
-  "class4":     ["class4-water", "class4-ww", "wqa"],
-  "all-access": ["oit","oit-ww","class1-water","class1-ww","class2-water","class2-ww","class3-water","class3-ww","class4-water","class4-ww","wqa"],
+  "class1":     ["oit", "oit-ww", "class1-water", "class1-ww", "class1-water-dist", "class1-wastewater-coll"],
+  "class2":     ["class2-water", "class2-ww", "class2-water-dist", "class2-wastewater-coll"],
+  "class3":     ["class3-water", "class3-ww", "class3-water-dist", "class3-wastewater-coll"],
+  "class4":     ["class4-water", "class4-ww", "class4-water-dist", "class4-wastewater-coll", "wqa"],
+  "all-access": ["oit","oit-ww","class1-water","class1-ww","class1-water-dist","class1-wastewater-coll","class2-water","class2-ww","class2-water-dist","class2-wastewater-coll","class3-water","class3-ww","class3-water-dist","class3-wastewater-coll","class4-water","class4-ww","class4-water-dist","class4-wastewater-coll","wqa"],
 };
 
 const WESTERN_BY_TIER: Record<SubscriptionTier, string[]> = {
