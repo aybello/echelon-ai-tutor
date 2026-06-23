@@ -2091,10 +2091,10 @@ export default function Landing() {
         >
           <StaggerContainer style={{ display: "contents" } as React.CSSProperties}>
           <StaggerItem>
-            <AnimatedStat value={15000} suffix="+" label="Practice Questions" />
+            <AnimatedStat value={18000} suffix="+" label="Practice Questions" />
           </StaggerItem>
           <StaggerItem>
-            <AnimatedStat value={27} label="Certification Courses" />
+            <AnimatedStat value={36} label="Certification Courses" />
           </StaggerItem>
           <StaggerItem>
             <AnimatedStat value={6} label="Specialization Tracks" />
@@ -2175,161 +2175,162 @@ export default function Landing() {
             Four certification tracks — Ontario Water, Ontario Wastewater, WQA, and WPI (BC, AB, SK, MB). The WPI track covers Water, Wastewater, Distribution, and Collection at Class I–IV. Every course includes 500+ practice questions and full AI Tutor access.
           </p>
 
-          {/* Track Toggle — 4 top-level tabs */}
-          <div
-            className="landing-track-toggle"
-            style={{
-              display: "inline-flex", background: "#F1F5F9", borderRadius: 12, padding: 4, gap: 4,
-            }}
-          >
-            <button
-              onClick={() => handleTopTab("water")}
-              style={{
-                padding: "10px 20px", borderRadius: 10, border: "none",
-                background: activeTopTab === "water" ? "#1D4ED8" : "transparent",
-                color: activeTopTab === "water" ? "#fff" : "#64748B",
-                fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.2s", whiteSpace: "nowrap",
-              }}
-            >
-              💧 Water Treatment
-            </button>
-            <button
-              onClick={() => handleTopTab("wastewater")}
-              style={{
-                padding: "10px 20px", borderRadius: 10, border: "none",
-                background: activeTopTab === "wastewater" ? "#059669" : "transparent",
-                color: activeTopTab === "wastewater" ? "#fff" : "#64748B",
-                fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.2s", whiteSpace: "nowrap",
-              }}
-            >
-              ♻️ Wastewater
-            </button>
-            <button
-              onClick={() => handleTopTab("wqa")}
-              style={{
-                padding: "10px 20px", borderRadius: 10, border: "none",
-                background: activeTopTab === "wqa" ? "#7C3AED" : "transparent",
-                color: activeTopTab === "wqa" ? "#fff" : "#64748B",
-                fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.2s", whiteSpace: "nowrap",
-              }}
-            >
-              🔬 WQA
-            </button>
-            <button
-              onClick={() => handleTopTab("wpi")}
-              style={{
-                padding: "10px 20px", borderRadius: 10, border: "none",
-                background: activeTopTab === "wpi" ? "#0369A1" : "transparent",
-                color: activeTopTab === "wpi" ? "#fff" : "#64748B",
-                fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                transition: "all 0.2s", whiteSpace: "nowrap",
-              }}
-            >
-              🌐 WPI
-            </button>
-          </div>
+          {/* Track Tree — accordion-style vertical selector */}
+          <div style={{ maxWidth: 640, margin: "0 auto", textAlign: "left" }}>
+            {/* Ontario Water */}
+            <div style={{ marginBottom: 8 }}>
+              <button
+                onClick={() => handleTopTab("water")}
+                style={{
+                  width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
+                  padding: "13px 18px", borderRadius: activeTopTab === "water" ? "10px 10px 0 0" : 10,
+                  border: "2px solid", borderColor: activeTopTab === "water" ? "#1D4ED8" : "#E2E8F0",
+                  background: activeTopTab === "water" ? "#EFF6FF" : "#FAFAFA",
+                  color: activeTopTab === "water" ? "#1D4ED8" : "#374151",
+                  fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                  transition: "all 0.18s",
+                }}
+              >
+                <span>💧 Ontario Water</span>
+                <span style={{ fontSize: 12, opacity: 0.6 }}>{activeTopTab === "water" ? "▲" : "▼"}</span>
+              </button>
+              {activeTopTab === "water" && (
+                <div style={{
+                  display: "flex", gap: 0, border: "2px solid #1D4ED8", borderTop: "none",
+                  borderRadius: "0 0 10px 10px", overflow: "hidden",
+                }}>
+                  <button
+                    onClick={() => setActiveTrack("water")}
+                    style={{
+                      flex: 1, padding: "10px 16px", border: "none", borderRight: "1px solid #BFDBFE",
+                      background: activeTrack === "water" ? "#1D4ED8" : "#EFF6FF",
+                      color: activeTrack === "water" ? "#fff" : "#1D4ED8",
+                      fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                    }}
+                  >💧 Treatment</button>
+                  <button
+                    onClick={() => setActiveTrack("ontario-dist")}
+                    style={{
+                      flex: 1, padding: "10px 16px", border: "none",
+                      background: activeTrack === "ontario-dist" ? "#0369A1" : "#EFF6FF",
+                      color: activeTrack === "ontario-dist" ? "#fff" : "#0369A1",
+                      fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                    }}
+                  >🚰 Distribution</button>
+                </div>
+              )}
+            </div>
 
-          {/* Ontario Water sub-filter row — visible when Water Treatment tab is active */}
-          {activeTopTab === "water" && (
-            <div
-              style={{
-                display: "inline-flex", background: "#E0F2FE", borderRadius: 10, padding: 3, gap: 3,
-                marginTop: 10,
-              }}
-            >
+            {/* Ontario Wastewater */}
+            <div style={{ marginBottom: 8 }}>
               <button
-                onClick={() => setActiveTrack("water")}
+                onClick={() => handleTopTab("wastewater")}
                 style={{
-                  padding: "8px 16px", borderRadius: 8, border: "none",
-                  background: activeTrack === "water" ? "#1D4ED8" : "transparent",
-                  color: activeTrack === "water" ? "#fff" : "#0369A1",
-                  fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                  transition: "all 0.2s", whiteSpace: "nowrap",
+                  width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
+                  padding: "13px 18px", borderRadius: activeTopTab === "wastewater" ? "10px 10px 0 0" : 10,
+                  border: "2px solid", borderColor: activeTopTab === "wastewater" ? "#059669" : "#E2E8F0",
+                  background: activeTopTab === "wastewater" ? "#F0FDF4" : "#FAFAFA",
+                  color: activeTopTab === "wastewater" ? "#059669" : "#374151",
+                  fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                  transition: "all 0.18s",
                 }}
               >
-                💧 Treatment
+                <span>♻️ Ontario Wastewater</span>
+                <span style={{ fontSize: 12, opacity: 0.6 }}>{activeTopTab === "wastewater" ? "▲" : "▼"}</span>
               </button>
+              {activeTopTab === "wastewater" && (
+                <div style={{
+                  display: "flex", gap: 0, border: "2px solid #059669", borderTop: "none",
+                  borderRadius: "0 0 10px 10px", overflow: "hidden",
+                }}>
+                  <button
+                    onClick={() => setActiveTrack("wastewater")}
+                    style={{
+                      flex: 1, padding: "10px 16px", border: "none", borderRight: "1px solid #A7F3D0",
+                      background: activeTrack === "wastewater" ? "#059669" : "#F0FDF4",
+                      color: activeTrack === "wastewater" ? "#fff" : "#065F46",
+                      fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                    }}
+                  >♻️ Treatment</button>
+                  <button
+                    onClick={() => setActiveTrack("ontario-coll")}
+                    style={{
+                      flex: 1, padding: "10px 16px", border: "none",
+                      background: activeTrack === "ontario-coll" ? "#065F46" : "#F0FDF4",
+                      color: activeTrack === "ontario-coll" ? "#fff" : "#065F46",
+                      fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                    }}
+                  >🔩 Collection</button>
+                </div>
+              )}
+            </div>
+
+            {/* WQA */}
+            <div style={{ marginBottom: 8 }}>
               <button
-                onClick={() => setActiveTrack("ontario-dist")}
+                onClick={() => handleTopTab("wqa")}
                 style={{
-                  padding: "8px 16px", borderRadius: 8, border: "none",
-                  background: activeTrack === "ontario-dist" ? "#0369A1" : "transparent",
-                  color: activeTrack === "ontario-dist" ? "#fff" : "#0369A1",
-                  fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                  transition: "all 0.2s", whiteSpace: "nowrap",
+                  width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
+                  padding: "13px 18px", borderRadius: 10,
+                  border: "2px solid", borderColor: activeTopTab === "wqa" ? "#7C3AED" : "#E2E8F0",
+                  background: activeTopTab === "wqa" ? "#F5F3FF" : "#FAFAFA",
+                  color: activeTopTab === "wqa" ? "#7C3AED" : "#374151",
+                  fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                  transition: "all 0.18s",
                 }}
               >
-                🚰 Distribution
+                <span>🔬 Water Quality Analyst (WQA)</span>
+                <span style={{ fontSize: 12, opacity: 0.6 }}>{activeTopTab === "wqa" ? "●" : "▼"}</span>
               </button>
             </div>
-          )}
-          {/* Ontario Wastewater sub-filter row — visible when Wastewater tab is active */}
-          {activeTopTab === "wastewater" && (
-            <div
-              style={{
-                display: "inline-flex", background: "#D1FAE5", borderRadius: 10, padding: 3, gap: 3,
-                marginTop: 10,
-              }}
-            >
+
+            {/* WPI */}
+            <div style={{ marginBottom: 8 }}>
               <button
-                onClick={() => setActiveTrack("wastewater")}
+                onClick={() => handleTopTab("wpi")}
                 style={{
-                  padding: "8px 16px", borderRadius: 8, border: "none",
-                  background: activeTrack === "wastewater" ? "#059669" : "transparent",
-                  color: activeTrack === "wastewater" ? "#fff" : "#065F46",
-                  fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                  transition: "all 0.2s", whiteSpace: "nowrap",
+                  width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
+                  padding: "13px 18px", borderRadius: activeTopTab === "wpi" ? "10px 10px 0 0" : 10,
+                  border: "2px solid", borderColor: activeTopTab === "wpi" ? "#0369A1" : "#E2E8F0",
+                  background: activeTopTab === "wpi" ? "#F0F9FF" : "#FAFAFA",
+                  color: activeTopTab === "wpi" ? "#0369A1" : "#374151",
+                  fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                  transition: "all 0.18s",
                 }}
               >
-                ♻️ Treatment
+                <span>🌐 WPI (BC, AB, SK, MB)</span>
+                <span style={{ fontSize: 12, opacity: 0.6 }}>{activeTopTab === "wpi" ? "▲" : "▼"}</span>
               </button>
-              <button
-                onClick={() => setActiveTrack("ontario-coll")}
-                style={{
-                  padding: "8px 16px", borderRadius: 8, border: "none",
-                  background: activeTrack === "ontario-coll" ? "#065F46" : "transparent",
-                  color: activeTrack === "ontario-coll" ? "#fff" : "#065F46",
-                  fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                  transition: "all 0.2s", whiteSpace: "nowrap",
-                }}
-              >
-                🔩 Collection
-              </button>
+              {activeTopTab === "wpi" && (
+                <div style={{
+                  display: "flex", gap: 0, border: "2px solid #0369A1", borderTop: "none",
+                  borderRadius: "0 0 10px 10px", overflow: "hidden",
+                }}>
+                  {([
+                    { id: "wpi-water" as WpiSubTab, label: "🏔️ Water", activeColor: "#0369A1", hoverBg: "#F0F9FF", hoverColor: "#0369A1" },
+                    { id: "wpi-wastewater" as WpiSubTab, label: "🌿 Wastewater", activeColor: "#B45309", hoverBg: "#F0F9FF", hoverColor: "#B45309" },
+                    { id: "wpi-dist" as WpiSubTab, label: "🚰 Distribution", activeColor: "#0369A1", hoverBg: "#F0F9FF", hoverColor: "#0369A1" },
+                    { id: "wpi-coll" as WpiSubTab, label: "🔩 Collection", activeColor: "#065F46", hoverBg: "#F0F9FF", hoverColor: "#065F46" },
+                  ] as const).map((sub, i, arr) => (
+                    <button
+                      key={sub.id}
+                      onClick={() => setActiveTrack(sub.id)}
+                      style={{
+                        flex: 1, padding: "10px 8px", border: "none",
+                        borderRight: i < arr.length - 1 ? "1px solid #BAE6FD" : "none",
+                        background: activeWpiSub === sub.id ? sub.activeColor : "#F0F9FF",
+                        color: activeWpiSub === sub.id ? "#fff" : sub.hoverColor,
+                        fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {sub.label}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
-          {/* WPI sub-filter row — only visible when WPI parent tab is active */}
-          {activeTopTab === "wpi" && (
-            <div
-              style={{
-                display: "inline-flex", background: "#E0F2FE", borderRadius: 10, padding: 3, gap: 3,
-                marginTop: 10,
-              }}
-            >
-              {([
-                { id: "wpi-water" as WpiSubTab, label: "🏔️ Water", activeColor: "#0369A1" },
-                { id: "wpi-wastewater" as WpiSubTab, label: "🌿 Wastewater", activeColor: "#B45309" },
-                { id: "wpi-dist" as WpiSubTab, label: "🚰 Distribution", activeColor: "#0369A1" },
-                { id: "wpi-coll" as WpiSubTab, label: "🔩 Collection", activeColor: "#065F46" },
-              ] as const).map(sub => (
-                <button
-                  key={sub.id}
-                  onClick={() => setActiveTrack(sub.id)}
-                  style={{
-                    padding: "8px 16px", borderRadius: 8, border: "none",
-                    background: activeWpiSub === sub.id ? sub.activeColor : "transparent",
-                    color: activeWpiSub === sub.id ? "#fff" : "#0369A1",
-                    fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                    transition: "all 0.2s", whiteSpace: "nowrap",
-                  }}
-                >
-                  {sub.label}
-                </button>
-              ))}
-            </div>
-          )}
+          </div>
         </div>
         </FadeUp>
 
