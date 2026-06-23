@@ -4,11 +4,11 @@ import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
 // WPI Class I Wastewater Collection exam blueprint: 100 questions
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Collection System Components":   { bg: "#D1FAE5", color: "#065F46" },
-  "Equipment Operation & Maintenance": { bg: "#DCFCE7", color: "#15803D" },
-  "Safety & Regulations":           { bg: "#FEE2E2", color: "#B91C1C" },
-  "Math & Calculations":            { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Environmental & Public Health":  { bg: "#CCFBF1", color: "#0F766E" },
+  "Equipment Operation & Maintenance":         { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Collection System Components":              { bg: "#DCFCE7", color: "#15803D" },
+  "Lift Station Operation and Maintenance":    { bg: "#EDE9FE", color: "#6D28D9" },
+  "Collection System Monitoring & Evaluation": { bg: "#CCFBF1", color: "#0F766E" },
+  "Safety & Regulations":                      { bg: "#FEE2E2", color: "#B91C1C" },
 };
 export default function WpiClass1WaterCollMockExam() {
   usePageMeta({

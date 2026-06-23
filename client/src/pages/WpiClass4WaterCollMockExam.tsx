@@ -4,11 +4,11 @@ import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
 // WPI Class IV Wastewater Collection exam blueprint: 100 questions
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "System Planning & Capital Improvement":          { bg: "#FEE2E2", color: "#B91C1C" },
-  "Advanced Engineering & Design":                  { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Utility Management & Leadership":                { bg: "#FEF9C3", color: "#A16207" },
-  "Advanced Regulatory & Environmental Management": { bg: "#DCFCE7", color: "#15803D" },
-  "Emerging Technologies & Innovation":             { bg: "#EDE9FE", color: "#6D28D9" },
+  "Equipment Operation & Maintenance":         { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Collection System Components":              { bg: "#DCFCE7", color: "#15803D" },
+  "Lift Station Operation and Maintenance":    { bg: "#EDE9FE", color: "#6D28D9" },
+  "Collection System Monitoring & Evaluation": { bg: "#CCFBF1", color: "#0F766E" },
+  "Safety & Regulations":                      { bg: "#FEE2E2", color: "#B91C1C" },
 };
 export default function WpiClass4WaterCollMockExam() {
   usePageMeta({

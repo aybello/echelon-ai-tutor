@@ -4,11 +4,11 @@ import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
 // WPI Class III Wastewater Collection exam blueprint: 100 questions
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Complex System Operations & SCADA":          { bg: "#EDE9FE", color: "#6D28D9" },
-  "Advanced Pump Station Engineering":          { bg: "#DCFCE7", color: "#15803D" },
-  "System Hydraulic Modelling":                 { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Advanced Maintenance Management":            { bg: "#FEF9C3", color: "#A16207" },
-  "Leadership, Safety & Regulatory Management": { bg: "#FEE2E2", color: "#B91C1C" },
+  "Equipment Operation & Maintenance":         { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Collection System Components":              { bg: "#DCFCE7", color: "#15803D" },
+  "Lift Station Operation and Maintenance":    { bg: "#EDE9FE", color: "#6D28D9" },
+  "Collection System Monitoring & Evaluation": { bg: "#CCFBF1", color: "#0F766E" },
+  "Safety & Regulations":                      { bg: "#FEE2E2", color: "#B91C1C" },
 };
 export default function WpiClass3WaterCollMockExam() {
   usePageMeta({

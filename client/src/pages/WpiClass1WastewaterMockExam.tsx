@@ -6,11 +6,10 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Wastewater Collection Systems":   { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Primary & Secondary Treatment":   { bg: "#CCFBF1", color: "#0F766E" },
-  "Solids Handling & Biosolids":     { bg: "#DCFCE7", color: "#15803D" },
-  "Laboratory & Monitoring":         { bg: "#EDE9FE", color: "#6D28D9" },
-  "Safety, Regulations & Admin":     { bg: "#FFEDD5", color: "#C2410C" },
+  "Equipment Evaluation, Maintenance & Operation": { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Treatment Process Evaluation & Adjustment":     { bg: "#DCFCE7", color: "#15803D" },
+  "Laboratory Analysis":                           { bg: "#EDE9FE", color: "#6D28D9" },
+  "Safety & Admin":                                { bg: "#FEE2E2", color: "#B91C1C" },
 };
 
 export default function WpiClass1WastewaterMockExam() {

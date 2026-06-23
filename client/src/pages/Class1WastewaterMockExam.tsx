@@ -6,15 +6,10 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Wastewater Collection":  { bg: "#CCFBF1", color: "#0F766E" },
-  "Wastewater Characteristics & Preliminary Treatment": { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Primary Treatment":      { bg: "#DCFCE7", color: "#15803D" },
-  "Secondary Treatment":    { bg: "#EDE9FE", color: "#6D28D9" },
-  "Biological Nutrient Removal": { bg: "#CCFBF1", color: "#0F766E" },
-  "Tertiary Treatment & Filtration": { bg: "#FEF9C3", color: "#A16207" },
-  "Disinfection":           { bg: "#FFEDD5", color: "#C2410C" },
-  "Solids Handling & Biosolids": { bg: "#FEE2E2", color: "#B91C1C" },
-  "Regulations, Safety & Operations": { bg: "#F3E8FF", color: "#7C3AED" },
+  "Equipment Evaluation, Maintenance & Operation": { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Treatment Process Evaluation & Adjustment":     { bg: "#DCFCE7", color: "#15803D" },
+  "Laboratory Analysis":                           { bg: "#EDE9FE", color: "#6D28D9" },
+  "Safety & Admin":                                { bg: "#FEE2E2", color: "#B91C1C" },
 };
 
 export default function Class1WastewaterMockExam() {

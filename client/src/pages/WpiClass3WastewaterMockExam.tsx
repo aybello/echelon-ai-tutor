@@ -6,14 +6,10 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Advanced Biological Treatment":         { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Biological Nutrient Removal":           { bg: "#DCFCE7", color: "#15803D" },
-  "Membrane Bioreactors & Advanced Processes": { bg: "#EDE9FE", color: "#6D28D9" },
-  "Industrial Pretreatment & Toxicity":    { bg: "#FEE2E2", color: "#B91C1C" },
-  "Advanced Biosolids Management":         { bg: "#CCFBF1", color: "#0F766E" },
-  "Regulatory Compliance & Reporting":     { bg: "#FEF9C3", color: "#A16207" },
-  "Advanced Process Control & Troubleshooting": { bg: "#FFEDD5", color: "#C2410C" },
-  "Health, Safety & Environmental Management": { bg: "#F1F5F9", color: "#475569" },
+  "Equipment Evaluation, Maintenance & Operation": { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Treatment Process Evaluation & Adjustment":     { bg: "#DCFCE7", color: "#15803D" },
+  "Laboratory Analysis":                           { bg: "#EDE9FE", color: "#6D28D9" },
+  "Safety & Admin":                                { bg: "#FEE2E2", color: "#B91C1C" },
 };
 
 export default function WpiClass3WastewaterMockExam() {

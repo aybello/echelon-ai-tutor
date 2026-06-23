@@ -6,13 +6,10 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Advanced Process Control & Optimization":           { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Advanced Nutrient Removal & Resource Recovery":     { bg: "#DCFCE7", color: "#15803D" },
-  "Emerging Technologies & Innovation":                { bg: "#EDE9FE", color: "#6D28D9" },
-  "Plant Management, Asset Management & Leadership":   { bg: "#FEE2E2", color: "#B91C1C" },
-  "Regulatory Compliance, Reporting & Environmental Management": { bg: "#FEF9C3", color: "#A16207" },
-  "Emergency Response & Resilience Planning":          { bg: "#FFEDD5", color: "#C2410C" },
-  "Health, Safety & Environmental Stewardship":        { bg: "#F1F5F9", color: "#475569" },
+  "Equipment Evaluation, Maintenance & Operation": { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Treatment Process Evaluation & Adjustment":     { bg: "#DCFCE7", color: "#15803D" },
+  "Laboratory Analysis":                           { bg: "#EDE9FE", color: "#6D28D9" },
+  "Safety & Admin":                                { bg: "#FEE2E2", color: "#B91C1C" },
 };
 
 export default function WpiClass4WastewaterMockExam() {

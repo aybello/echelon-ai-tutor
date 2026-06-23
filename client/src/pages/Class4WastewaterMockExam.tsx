@@ -6,12 +6,10 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Advanced Treatment Process Monitoring": { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Equipment Operation & Maintenance":     { bg: "#DCFCE7", color: "#15803D" },
-  "Laboratory Analysis & Interpretation":  { bg: "#EDE9FE", color: "#6D28D9" },
-  "Biosolids Management & Regulations":    { bg: "#CCFBF1", color: "#0F766E" },
-  "Plant Management, Safety & Administration": { bg: "#FEE2E2", color: "#B91C1C" },
-  "Wastewater Collection":                 { bg: "#FEF9C3", color: "#A16207" },
+  "Equipment Evaluation, Maintenance & Operation": { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Treatment Process Evaluation & Adjustment":     { bg: "#DCFCE7", color: "#15803D" },
+  "Laboratory Analysis":                           { bg: "#EDE9FE", color: "#6D28D9" },
+  "Safety & Admin":                                { bg: "#FEE2E2", color: "#B91C1C" },
 };
 
 export default function Class4WastewaterMockExam() {

@@ -6,12 +6,11 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Treatment Process":       { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Laboratory Analysis":     { bg: "#FEF9C3", color: "#A16207" },
-  "Equipment O&M":           { bg: "#DCFCE7", color: "#15803D" },
-  "Regulations & Management":{ bg: "#FEE2E2", color: "#B91C1C" },
-  "Source Water & Quality":  { bg: "#EDE9FE", color: "#6D28D9" },
-  "Water Distribution":      { bg: "#E0F2FE", color: "#0284C7" },
+  "Treatment Process":    { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Laboratory Analysis":  { bg: "#EDE9FE", color: "#6D28D9" },
+  "Equipment O&M":        { bg: "#DCFCE7", color: "#15803D" },
+  "Source Water":         { bg: "#CCFBF1", color: "#0F766E" },
+  "Safety & Admin":       { bg: "#FFEDD5", color: "#C2410C" },
 };
 
 export default function Class4WaterMockExam() {

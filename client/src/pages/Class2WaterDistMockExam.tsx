@@ -4,7 +4,10 @@ import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Water Distribution": { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Distribution System Components":                { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Equipment Installation, O&M & Repair":          { bg: "#DCFCE7", color: "#15803D" },
+  "Water Quality Monitoring & Lab":                { bg: "#EDE9FE", color: "#6D28D9" },
+  "Security, Safety, Admin & Public Interactions": { bg: "#FFEDD5", color: "#C2410C" },
 };
 
 export default function Class2WaterDistMockExam() {

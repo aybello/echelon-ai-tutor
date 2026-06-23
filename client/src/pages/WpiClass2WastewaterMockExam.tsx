@@ -6,11 +6,10 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Nutrient Removal":                          { bg: "#DCFCE7", color: "#15803D" },
-  "Biosolids Management":                      { bg: "#EDE9FE", color: "#6D28D9" },
-  "Secondary Treatment Processes":             { bg: "#CCFBF1", color: "#0F766E" },
-  "Advanced Treatment & Effluent Quality":     { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Safety, Regulations & Administration":      { bg: "#FFEDD5", color: "#C2410C" },
+  "Equipment Evaluation, Maintenance & Operation": { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Treatment Process Evaluation & Adjustment":     { bg: "#DCFCE7", color: "#15803D" },
+  "Laboratory Analysis":                           { bg: "#EDE9FE", color: "#6D28D9" },
+  "Safety & Admin":                                { bg: "#FEE2E2", color: "#B91C1C" },
 };
 
 export default function WpiClass2WastewaterMockExam() {

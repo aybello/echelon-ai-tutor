@@ -6,11 +6,11 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Plant Management & Leadership":                { bg: "#CCFBF1", color: "#0F766E" },
-  "Emergency Response & Contingency Planning":    { bg: "#EDE9FE", color: "#6D28D9" },
-  "Advanced Process Control":                     { bg: "#DBEAFE", color: "#1D4ED8" },
-  "Regulatory Compliance & Reporting":            { bg: "#FFEDD5", color: "#C2410C" },
-  "Advanced Water Quality":                       { bg: "#DCFCE7", color: "#15803D" },
+  "Treatment Process":    { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Laboratory Analysis":  { bg: "#EDE9FE", color: "#6D28D9" },
+  "Equipment O&M":        { bg: "#DCFCE7", color: "#15803D" },
+  "Source Water":         { bg: "#CCFBF1", color: "#0F766E" },
+  "Safety & Admin":       { bg: "#FFEDD5", color: "#C2410C" },
 };
 
 export default function WpiClass4WaterMockExam() {
