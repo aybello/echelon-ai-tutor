@@ -10,10 +10,16 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import type { ModuleConfig } from "@/components/QuizShell";
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Water Distribution": { bg: "#DBEAFE", color: "#1D4ED8" },
+  "General":          { bg: "#FEF9C3", color: "#A16207" },
+  "Support Systems":  { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Processes":        { bg: "#DCFCE7", color: "#15803D" },
+  "Administration":   { bg: "#EDE9FE", color: "#6D28D9" },
 };
 const MODULE_ICONS: Record<string, string> = {
-  "Water Distribution": "🚰",
+  "General":          "📐",
+  "Support Systems":  "⚙️",
+  "Processes":        "🚰",
+  "Administration":   "📋",
 };
 
 export default function Class2WaterDistQuiz() {

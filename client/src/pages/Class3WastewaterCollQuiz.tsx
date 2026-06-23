@@ -10,10 +10,20 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import type { ModuleConfig } from "@/components/QuizShell";
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
-  "Wastewater Collection": { bg: "#D1FAE5", color: "#065F46" },
+  "Operate Equipment":                              { bg: "#DBEAFE", color: "#1D4ED8" },
+  "Evaluate & Maintain Equipment":                  { bg: "#FEF9C3", color: "#A16207" },
+  "Maintain & Restore Collection System":           { bg: "#DCFCE7", color: "#15803D" },
+  "Maintain Lift Stations":                         { bg: "#FFEDD5", color: "#C2410C" },
+  "Monitor, Evaluate & Adjust Collection System":   { bg: "#CCFBF1", color: "#0F766E" },
+  "Security, Safety & Administrative Procedures":   { bg: "#EDE9FE", color: "#6D28D9" },
 };
 const MODULE_ICONS: Record<string, string> = {
-  "Wastewater Collection": "🔩",
+  "Operate Equipment":                              "🔧",
+  "Evaluate & Maintain Equipment":                  "🔩",
+  "Maintain & Restore Collection System":           "🔗",
+  "Maintain Lift Stations":                         "⬆️",
+  "Monitor, Evaluate & Adjust Collection System":   "📊",
+  "Security, Safety & Administrative Procedures":   "🦺",
 };
 
 export default function Class3WastewaterCollQuiz() {
