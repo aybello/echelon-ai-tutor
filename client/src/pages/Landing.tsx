@@ -616,7 +616,7 @@ const ONTARIO_WATER_DIST_COURSES = [
     title: "Class 1 Water Distribution",
     subtitle: "Ontario Class 1 — Water Distribution",
     duration: "3–4 weeks",
-    questions: 300,
+    questions: 500,
     description: "Ontario Class 1 Water Distribution prep aligned with OWWCO certification. Covers pipe materials, valve operation, hydrant maintenance, pressure management, and O. Reg. 170/03.",
     topics: ["Pipe Materials & Fittings", "Valve & Hydrant Operation", "Pressure Management", "Chlorine Residual", "O. Reg. 170/03"],
     badge: "NEW",
@@ -636,7 +636,7 @@ const ONTARIO_WATER_DIST_COURSES = [
     title: "Class 2 Water Distribution",
     subtitle: "Ontario Class 2 — Water Distribution",
     duration: "4–6 weeks",
-    questions: 300,
+    questions: 500,
     description: "Ontario Class 2 Water Distribution prep. Covers system design, water main installation, cross-connection control, hydraulics, and distribution operations aligned with OWWCO Class 2.",
     topics: ["System Design", "Water Main Installation", "Cross-Connection Control", "Hydraulics", "Regulatory Compliance"],
     badge: "NEW",
@@ -656,7 +656,7 @@ const ONTARIO_WATER_DIST_COURSES = [
     title: "Class 3 Water Distribution",
     subtitle: "Ontario Class 3 — Water Distribution",
     duration: "6–8 weeks",
-    questions: 300,
+    questions: 500,
     description: "Ontario Class 3 Water Distribution prep. Covers advanced hydraulics, system modelling, asset management, and distribution system planning aligned with OWWCO Class 3.",
     topics: ["Advanced Hydraulics", "System Modelling", "Asset Management", "Distribution Planning", "SCADA & Automation"],
     badge: "NEW",
@@ -676,7 +676,7 @@ const ONTARIO_WATER_DIST_COURSES = [
     title: "Class 4 Water Distribution",
     subtitle: "Ontario Class 4 — Water Distribution",
     duration: "8–10 weeks",
-    questions: 300,
+    questions: 500,
     description: "Ontario Class 4 Water Distribution prep. Covers strategic asset management, risk-based frameworks, KPIs, capital planning, and regulatory compliance aligned with OWWCO Class 4.",
     topics: ["Strategic Asset Management", "Risk-Based Frameworks", "KPIs & Performance", "Capital Planning", "Regulatory Leadership"],
     badge: "NEW",
@@ -699,7 +699,7 @@ const ONTARIO_WASTEWATER_COLL_COURSES = [
     title: "Class 1 Wastewater Collection",
     subtitle: "Ontario Class 1 — Wastewater Collection",
     duration: "3–4 weeks",
-    questions: 300,
+    questions: 500,
     description: "Ontario Class 1 Wastewater Collection prep. Covers collection system basics, I/I identification, manhole inspection, and O. Reg. 129/04 aligned with OWWCO Class 1.",
     topics: ["Collection System Basics", "I/I Identification", "Manhole Inspection", "H\u2082S Safety", "O. Reg. 129/04"],
     badge: "NEW",
@@ -719,7 +719,7 @@ const ONTARIO_WASTEWATER_COLL_COURSES = [
     title: "Class 2 Wastewater Collection",
     subtitle: "Ontario Class 2 — Wastewater Collection",
     duration: "4–6 weeks",
-    questions: 300,
+    questions: 500,
     description: "Ontario Class 2 Wastewater Collection prep. Covers collection system design, sewer rehabilitation, pump station operations, and CSO management aligned with OWWCO Class 2.",
     topics: ["Collection System Design", "Sewer Rehabilitation", "Pump Station Operations", "CSO Management", "Regulatory Compliance"],
     badge: "NEW",
@@ -739,7 +739,7 @@ const ONTARIO_WASTEWATER_COLL_COURSES = [
     title: "Class 3 Wastewater Collection",
     subtitle: "Ontario Class 3 — Wastewater Collection",
     duration: "6–8 weeks",
-    questions: 300,
+    questions: 500,
     description: "Ontario Class 3 Wastewater Collection prep. Covers advanced collection system hydraulics, CCTV inspection, force main design, and Long-Term Control Plans aligned with OWWCO Class 3.",
     topics: ["Advanced Hydraulics", "CCTV Inspection", "Force Main Design", "Long-Term Control Plans", "Senior Operator Responsibilities"],
     badge: "NEW",
@@ -759,7 +759,7 @@ const ONTARIO_WASTEWATER_COLL_COURSES = [
     title: "Class 4 Wastewater Collection",
     subtitle: "Ontario Class 4 — Wastewater Collection",
     duration: "8–10 weeks",
-    questions: 300,
+    questions: 500,
     description: "Ontario Class 4 Wastewater Collection prep. Covers strategic collection system management, lifecycle cost optimization, green infrastructure, and regulatory compliance aligned with OWWCO Class 4.",
     topics: ["Strategic System Management", "Lifecycle Cost Optimization", "Green Infrastructure", "CMMS & Asset Management", "Regulatory Leadership"],
     badge: "NEW",
@@ -1097,8 +1097,8 @@ const FEATURES = [
 ];
 
 const STATS = [
-  { value: "15,000+", label: "Practice Questions" },
-  { value: "27", label: "Certification Courses" },
+  { value: "18,000+", label: "Practice Questions" },
+  { value: "36", label: "Certification Courses" },
   { value: "6", label: "Specialization Tracks" },
   { value: "Free", label: "OIT Access" },
 ];
@@ -1282,7 +1282,7 @@ function CourseCard({ course }: { course: CourseType }) {
 export default function Landing() {
   usePageMeta({
     title: "Water & Wastewater Operator Exam Prep",
-    description: "Canada's exam prep for water & wastewater operators. 15,000+ practice questions, AI tutor, mock exams, and process guides. Free OIT access.",
+    description: "Canada's exam prep for water & wastewater operators. 18,000+ practice questions, AI tutor, mock exams, and process guides. Free OIT access.",
     keywords: "water operator exam prep, OIT exam, wastewater certification Canada, operator practice questions, EOCP exam, WPI exam prep, water quality analyst",
     path: "/",
   });
@@ -2654,7 +2654,7 @@ export default function Landing() {
                 margin: "0 0 32px 0",
                 maxWidth: 480,
               }}>
-                Give every operator on your team access to 15,000+ practice questions, AI Tutor, mock exams, and real-time readiness tracking — all from a single manager dashboard. Bulk pricing starts at 5 seats.
+                Give every operator on your team access to 18,000+ practice questions, AI Tutor, mock exams, and real-time readiness tracking — all from a single manager dashboard. Bulk pricing starts at 5 seats.
               </p>
 
               {/* Benefit bullets */}

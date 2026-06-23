@@ -24,6 +24,16 @@ const EXAM_TYPE_LABELS: Record<string, string> = {
   "class2-ww": "Class 2 Wastewater",
   "class3-ww": "Class 3 Wastewater",
   "class4-ww": "Class 4 Wastewater",
+  // Ontario Class 1–4 Water Distribution
+  "class1-water-dist": "Class 1 Water Dist",
+  "class2-water-dist": "Class 2 Water Dist",
+  "class3-water-dist": "Class 3 Water Dist",
+  "class4-water-dist": "Class 4 Water Dist",
+  // Ontario Class 1–4 Wastewater Collection
+  "class1-wastewater-coll": "Class 1 WW Coll",
+  "class2-wastewater-coll": "Class 2 WW Coll",
+  "class3-wastewater-coll": "Class 3 WW Coll",
+  "class4-wastewater-coll": "Class 4 WW Coll",
   // Legacy
   class1: "Class 1 (Legacy)",
   // WQA
@@ -61,6 +71,14 @@ const EXAM_TYPE_COLORS: Record<string, { bg: string; color: string }> = {
   "class2-ww": { bg: "#CCFBF1", color: "#0F766E" },
   "class3-ww": { bg: "#CCFBF1", color: "#0F766E" },
   "class4-ww": { bg: "#CCFBF1", color: "#0F766E" },
+  "class1-water-dist": { bg: "#E0F2FE", color: "#0369A1" },
+  "class2-water-dist": { bg: "#E0F2FE", color: "#0369A1" },
+  "class3-water-dist": { bg: "#E0F2FE", color: "#0369A1" },
+  "class4-water-dist": { bg: "#E0F2FE", color: "#0369A1" },
+  "class1-wastewater-coll": { bg: "#FEE2E2", color: "#B91C1C" },
+  "class2-wastewater-coll": { bg: "#FEE2E2", color: "#B91C1C" },
+  "class3-wastewater-coll": { bg: "#FEE2E2", color: "#B91C1C" },
+  "class4-wastewater-coll": { bg: "#FEE2E2", color: "#B91C1C" },
   class1: { bg: "#F1F5F9", color: "#475569" },
   wqa: { bg: "#EDE9FE", color: "#6D28D9" },
   "wpi-class1-water": { bg: "#FEF9C3", color: "#A16207" },

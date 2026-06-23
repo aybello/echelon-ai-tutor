@@ -121,11 +121,11 @@ export function getSubscriptionProduct(
 // ─── Exam type mappings ──────────────────────────────────────────────────────
 
 const ONTARIO_BY_TIER: Record<SubscriptionTier, string[]> = {
-  "class1":     ["oit", "oit-ww", "class1-water", "class1-ww"],
-  "class2":     ["class2-water", "class2-ww"],
-  "class3":     ["class3-water", "class3-ww"],
-  "class4":     ["class4-water", "class4-ww", "wqa"],
-  "all-access": ["oit","oit-ww","class1-water","class1-ww","class2-water","class2-ww","class3-water","class3-ww","class4-water","class4-ww","wqa"],
+  "class1":     ["oit", "oit-ww", "class1-water", "class1-ww", "class1-water-dist", "class1-wastewater-coll"],
+  "class2":     ["class2-water", "class2-ww", "class2-water-dist", "class2-wastewater-coll"],
+  "class3":     ["class3-water", "class3-ww", "class3-water-dist", "class3-wastewater-coll"],
+  "class4":     ["class4-water", "class4-ww", "wqa", "class4-water-dist", "class4-wastewater-coll"],
+  "all-access": ["oit","oit-ww","class1-water","class1-ww","class2-water","class2-ww","class3-water","class3-ww","class4-water","class4-ww","wqa","class1-water-dist","class1-wastewater-coll","class2-water-dist","class2-wastewater-coll","class3-water-dist","class3-wastewater-coll","class4-water-dist","class4-wastewater-coll"],
 };
 
 const WESTERN_BY_TIER: Record<SubscriptionTier, string[]> = {

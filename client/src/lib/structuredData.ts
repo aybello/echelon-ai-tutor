@@ -51,7 +51,7 @@ export const organizationSchema = {
   url: BASE_URL,
   logo: LOGO_URL,
   description:
-    "Canada's AI-powered exam prep platform for water and wastewater operators. OIT, Class 1–4, WQA, and WPI certification preparation with 15,000+ practice questions across 27 courses.",
+    "Canada's AI-powered exam prep platform for water and wastewater operators. OIT, Class 1–4, WQA, and WPI certification preparation with 18,000+ practice questions across 36 courses.",
   foundingDate: "2025",
   founder: {
     "@type": "Person",
@@ -127,21 +127,21 @@ const wpiCourses = [
   course("WPI Class II Wastewater Treatment Exam Prep", "500+ practice questions for WPI Class II Wastewater Treatment. Secondary treatment, nutrient removal, biosolids management, and process control.", "/wpi-class2-wastewater", "149", "WPI-WW2"),
   course("WPI Class III Wastewater Treatment Exam Prep", "500+ practice questions for WPI Class III Wastewater Treatment. Advanced BNR, membrane bioreactors, industrial pretreatment, and regulatory compliance.", "/wpi-class3-wastewater", "249", "WPI-WW3"),
   course("WPI Class IV Wastewater Treatment Exam Prep", "500+ practice questions for WPI Class IV Wastewater Treatment. Advanced process control, BNR & resource recovery, plant management, and strategic compliance.", "/wpi-class4-wastewater", "299", "WPI-WW4"),
-  course("WPI Class I Water Distribution Exam Prep", "150+ practice questions for WPI Class I Water Distribution. Pipe materials, pressure & flow, chlorine residual maintenance, and valve/hydrant operation.", "/wpi-class1-water-dist", "99", "WPI-D1"),
-  course("WPI Class II Water Distribution Exam Prep", "150+ practice questions for WPI Class II Water Distribution. Hydraulic analysis, water quality management, cross-connection control, and system rehabilitation.", "/wpi-class2-water-dist", "149", "WPI-D2"),
-  course("WPI Class III Water Distribution Exam Prep", "150+ practice questions for WPI Class III Water Distribution. Advanced hydraulic modelling, SCADA & automation, and water quality monitoring programs.", "/wpi-class3-water-dist", "249", "WPI-D3"),
-  course("WPI Class IV Water Distribution Exam Prep", "150+ practice questions for WPI Class IV Water Distribution. Large-scale system management, asset management, and advanced DWQMS compliance.", "/wpi-class4-water-dist", "299", "WPI-D4"),
-  course("WPI Class I Wastewater Collection Exam Prep", "150+ practice questions for WPI Class I Wastewater Collection. Collection system components, lift station operation, confined space safety, and basic hydraulics.", "/wpi-class1-water-coll", "99", "WPI-C1"),
-  course("WPI Class II Wastewater Collection Exam Prep", "150+ practice questions for WPI Class II Wastewater Collection. Advanced collection system design, intermediate lift station operations, and regulatory compliance.", "/wpi-class2-water-coll", "149", "WPI-C2"),
-  course("WPI Class III Wastewater Collection Exam Prep", "150+ practice questions for WPI Class III Wastewater Collection. Complex system operations, SCADA, advanced pump station engineering, and hydraulic modelling.", "/wpi-class3-water-coll", "249", "WPI-C3"),
-  course("WPI Class IV Wastewater Collection Exam Prep", "150+ practice questions for WPI Class IV Wastewater Collection. System planning, capital improvement, utility management, and emerging technologies.", "/wpi-class4-water-coll", "299", "WPI-C4"),
+  course("WPI Class I Water Distribution Exam Prep", "500+ practice questions for WPI Class I Water Distribution. Pipe materials, pressure & flow, chlorine residual maintenance, and valve/hydrant operation.", "/wpi-class1-water-dist", "99", "WPI-D1"),
+  course("WPI Class II Water Distribution Exam Prep", "500+ practice questions for WPI Class II Water Distribution. Hydraulic analysis, water quality management, cross-connection control, and system rehabilitation.", "/wpi-class2-water-dist", "149", "WPI-D2"),
+  course("WPI Class III Water Distribution Exam Prep", "500+ practice questions for WPI Class III Water Distribution. Advanced hydraulic modelling, SCADA & automation, and water quality monitoring programs.", "/wpi-class3-water-dist", "249", "WPI-D3"),
+  course("WPI Class IV Water Distribution Exam Prep", "500+ practice questions for WPI Class IV Water Distribution. Large-scale system management, asset management, and advanced DWQMS compliance.", "/wpi-class4-water-dist", "299", "WPI-D4"),
+  course("WPI Class I Wastewater Collection Exam Prep", "499+ practice questions for WPI Class I Wastewater Collection. Collection system components, lift station operation, confined space safety, and basic hydraulics.", "/wpi-class1-water-coll", "99", "WPI-C1"),
+  course("WPI Class II Wastewater Collection Exam Prep", "500+ practice questions for WPI Class II Wastewater Collection. Advanced collection system design, intermediate lift station operations, and regulatory compliance.", "/wpi-class2-water-coll", "149", "WPI-C2"),
+  course("WPI Class III Wastewater Collection Exam Prep", "500+ practice questions for WPI Class III Wastewater Collection. Complex system operations, SCADA, advanced pump station engineering, and hydraulic modelling.", "/wpi-class3-water-coll", "249", "WPI-C3"),
+  course("WPI Class IV Wastewater Collection Exam Prep", "500+ practice questions for WPI Class IV Wastewater Collection. System planning, capital improvement, utility management, and emerging technologies.", "/wpi-class4-water-coll", "299", "WPI-C4"),
 ];
 
 export const courseCatalogSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "Echelon Institute Certification Courses",
-  description: "27 exam prep courses for Canadian water and wastewater operator certifications — Ontario (OWWCO) and Western Provinces (WPI).",
+  description: "36 exam prep courses for Canadian water and wastewater operator certifications — Ontario (OWWCO) and Western Provinces (WPI).",
   numberOfItems: ontarioCourses.length + wpiCourses.length,
   itemListElement: [...ontarioCourses, ...wpiCourses].map((c, i) => ({
     "@type": "ListItem",
@@ -201,7 +201,7 @@ const faqs = [
   {
     question: "How many practice questions are available?",
     answer:
-      "Over 15,000 practice questions across 27 courses. Each course contains 150–650 questions covering every module in the exam blueprint. All questions include detailed explanations, and calculation questions include step-by-step solutions.",
+      "Over 18,000 practice questions across 36 courses. Each course contains 499–650 questions covering every module in the exam blueprint. All questions include detailed explanations, and calculation questions include step-by-step solutions.",
   },
 ];
 

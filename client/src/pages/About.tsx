@@ -289,7 +289,7 @@ export default function About() {
               badge: "New",
               badgeColor: "#0369A1",
               title: "WPI Water & WPI Wastewater Full Ladder Bundles",
-              body: "WPI Class I–IV Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection are all now live. 8,000+ questions total across all four tracks, aligned with WPI Need-to-Know Criteria, recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+              body: "WPI Class I–IV Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection are all now live. 9,500+ questions total across all four tracks, aligned with WPI Need-to-Know Criteria, recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
             },
             {
               date: "April 2026",
