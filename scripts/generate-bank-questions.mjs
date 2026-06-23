@@ -190,12 +190,190 @@ const TOPIC_MAP = {
 - Complex emergency response and business continuity for collection (major SSO events)
 - Advanced SCADA and automation for collection systems (telemetry, predictive analytics, cybersecurity)
 - Climate change adaptation for collection infrastructure (increased rainfall intensity, resilience)
-- Biosolids management implications from collection system operations (FOG, pharmaceuticals, microplastics)`
+- Biosolids management implications from collection system operations (FOG, pharmaceuticals, microplastics)`,
+
+  // ── WATER TREATMENT ────────────────────────────────────────────────────────
+  "class1-water|Water Treatment": `
+- Coagulation and flocculation basics (purpose, common coagulants: alum, ferric chloride, polymer)
+- Sedimentation and clarification (purpose, how suspended solids settle, basic operation)
+- Filtration basics (rapid sand filtration: purpose, media, backwash cycle, turbidity targets)
+- Chlorination basics (purpose, forms of chlorine: gas, sodium hypochlorite, calcium hypochlorite)
+- Chlorine residual testing (DPD colorimetric method, free vs total chlorine, Ontario minimums)
+- pH and alkalinity in water treatment (why pH matters, adjustment chemicals: lime, soda ash, CO2)
+- Turbidity measurement and targets (NTU, regulatory limits under O. Reg. 170/03)
+- Source water types (surface water vs groundwater: characteristics, treatment differences)
+- Basic water chemistry (hardness, alkalinity, pH, iron, manganese)
+- Chemical feed equipment basics (chemical metering pumps, day tanks, hoppers)
+- Water treatment plant safety (chemical hazards: chlorine gas, lime; PPE; SDS)
+- Confined space entry basics in water treatment (permit-required spaces, atmospheric testing)
+- Disinfection byproducts basics (THMs, HAAs: what they are, why they form, Ontario limits)
+- Laboratory tests performed by Class 1 operators (turbidity, pH, chlorine residual, hardness)
+- Taste and odour problems in water treatment (causes: algae, geosmin, MIB; treatment: activated carbon)
+- Iron and manganese removal basics (oxidation and filtration approach)
+- Fluoride in water treatment (purpose, Ontario target, monitoring)
+- Backwash procedures for filters (when to backwash, filter-to-waste, turbidity breakthrough)
+- Water storage basics (clear wells, reservoirs: purpose, disinfection, turnover)
+- Ontario Safe Drinking Water Act and O. Reg. 170/03 basics (operator responsibilities, adverse conditions)`,
+
+  "class2-water|Water Treatment": `
+- Coagulation optimization (jar testing, coagulant dose selection, pH adjustment, streaming current)
+- Flocculation design and operation (G-value, detention time, tapered flocculation)
+- Sedimentation efficiency calculations (overflow rate, detention time, solids loading)
+- Filtration operations (filter run length, turbidity breakthrough, backwash optimization, UFRV)
+- Membrane filtration basics (MF, UF: purpose, integrity testing, fouling, cleaning)
+- Disinfection CT calculations (CT values for Giardia and Cryptosporidium inactivation)
+- Chloramine formation and nitrification (monochloramine formation, nitrification prevention)
+- Disinfection byproduct formation and control (THM/HAA precursors, optimizing treatment)
+- Corrosion control in treatment (Langelier Saturation Index, inhibitors: orthophosphate, zinc)
+- Iron and manganese removal (oxidation: chlorine, KMnO4, ozone; greensand filtration)
+- Activated carbon use (PAC vs GAC: taste/odour, DBP precursor removal, contact time)
+- Fluoride addition calculations (target concentration, dose calculation, equipment)
+- Chemical feed calculations (dosage, solution strength, pump settings)
+- Laboratory analysis for Class 2 (jar test, streaming current, particle count, alkalinity titration)
+- Residuals management (filter backwash water, sedimentation sludge: thickening, disposal)
+- SCADA and process control basics (setpoints, alarms, data logging)
+- Ontario regulatory requirements for water treatment (O. Reg. 170/03 sampling, reporting)
+- Emergency response for treatment upsets (turbidity spike, loss of disinfection, chemical spill)
+- Energy efficiency in water treatment (pump efficiency, chemical optimization)
+- Source water protection and treatment triggers (algal blooms, high turbidity events)`,
+
+  "class3-water|Water Treatment": `
+- Advanced coagulation and flocculation optimization (enhanced coagulation for DBP control, charge neutralization)
+- Advanced filtration management (filter performance optimization, filter media selection, UFRV targets)
+- Membrane filtration systems (MF, UF, NF, RO: design, operation, integrity testing, fouling control)
+- Advanced disinfection systems (UV disinfection: dose, validation, lamp fouling; ozone: CT, bromate)
+- Advanced CT calculations and disinfection credit (multiple barriers, SWTR compliance)
+- Disinfection byproduct control strategies (enhanced coagulation, GAC, chloramines, precursor removal)
+- Advanced corrosion control programs (lead and copper monitoring, inhibitor optimization, LSI)
+- Biological filtration (biofiltration: EBCT, backwash optimization, nutrient addition)
+- Taste and odour management programs (seasonal monitoring, PAC dosing optimization, source control)
+- Advanced residuals management (sludge thickening, dewatering, land application, lagoon management)
+- Emerging contaminants in water treatment (PFAS, microplastics, pharmaceuticals: treatment approaches)
+- Water treatment plant optimization (process control, chemical minimization, energy efficiency)
+- Asset management for treatment facilities (condition assessment, maintenance planning)
+- Advanced laboratory methods (TOC, particle counting, algae monitoring, jar test interpretation)
+- Regulatory compliance management (DWSP, O. Reg. 170/03, Director's Orders, MECP inspections)
+- Source water quality monitoring programs (watershed monitoring, early warning systems)
+- Algal bloom response (cyanotoxin monitoring, treatment modifications, public notification)
+- Advanced SCADA and process automation (PLC programming concepts, alarm management)
+- Capital planning for treatment facility upgrades (process selection, cost estimation)
+- Operator training and competency management for treatment facilities`,
+
+  "class4-water|Water Treatment": `
+- Advanced treatment process optimization and troubleshooting (coagulation, filtration, disinfection integration)
+- Complex membrane system management (NF, RO: system design, concentrate disposal, energy recovery)
+- Advanced oxidation processes (ozone/H2O2, UV/H2O2: design, operation, byproduct control)
+- Multiple barrier disinfection strategies (UV + chlorine, ozone + chloramine: CT compliance, optimization)
+- Advanced DBP control and regulatory compliance (Stage 2 DBPR, optimization studies, treatment changes)
+- PFAS and emerging contaminant treatment (GAC, ion exchange, membrane: design, cost, regulatory drivers)
+- Advanced corrosion control program management (lead service line strategy, inhibitor studies, regulatory)
+- Drinking Water Safety Plans (DWSP): hazard analysis, critical control points, verification
+- Complex residuals management programs (biosolids land application, lagoon design, regulatory compliance)
+- Water treatment plant design review (process selection, hydraulic design, redundancy)
+- Advanced source water protection (watershed risk assessment, treatment triggers, multi-barrier approach)
+- Regulatory audit preparation and response (MECP inspections, corrective action plans, Director's Orders)
+- Performance benchmarking for treatment facilities (AWWA QualServe, energy benchmarking)
+- Risk management frameworks for water treatment (HACCP, ISO 31000, consequence of failure)
+- Capital project management for treatment upgrades (business case, procurement, commissioning)
+- Climate change impacts on water treatment (algal blooms, turbidity events, source water variability)
+- Advanced cyanotoxin management (monitoring, treatment, public notification, regulatory requirements)
+- Energy management programs for water treatment (energy audits, demand management, renewable energy)
+- Strategic planning for treatment capacity (growth projections, technology selection, financing)
+- Operator certification program management (training plans, competency verification, succession planning)`,
+
+  // ── WASTEWATER TREATMENT ───────────────────────────────────────────────────
+  "class1-wastewater|Wastewater Treatment": `
+- Wastewater treatment plant layout and process flow (preliminary, primary, secondary, disinfection)
+- Preliminary treatment (screening: bar screens, mechanically cleaned; grit removal: purpose, operation)
+- Primary treatment (primary clarifiers: purpose, operation, scum and sludge removal)
+- Activated sludge basics (aeration tank, secondary clarifier, return activated sludge, waste activated sludge)
+- Trickling filters basics (media types, distributor arms, recirculation, sloughing)
+- Disinfection of wastewater effluent (chlorination: purpose, contact time, dechlorination)
+- Sludge handling basics (thickening, digestion, dewatering: purpose and basic operation)
+- Effluent quality parameters (BOD, TSS, pH, ammonia: what they measure, typical limits)
+- Laboratory tests for Class 1 operators (BOD, TSS, pH, DO, chlorine residual)
+- Safety in wastewater treatment (H2S hazards, confined spaces, chemical hazards, PPE)
+- Dissolved oxygen in activated sludge (why it matters, typical targets: 1-2 mg/L)
+- Sludge volume index (SVI) basics (what it measures, good vs poor settling)
+- Ontario Environmental Compliance Approval (ECA) basics (what it is, operator responsibilities)
+- Odour control in wastewater treatment (sources: H2S, ammonia; basic control methods)
+- Pumping in wastewater treatment (lift stations, recycle pumps, sludge pumps: basic operation)
+- Nutrient basics in wastewater (nitrogen cycle: ammonia, nitrite, nitrate; phosphorus removal basics)
+- Combined sewer overflows at treatment plants (bypass, overflow: causes, reporting)
+- Wet weather operations (peak flow management, bypasses, effluent quality during storms)
+- Record keeping and reporting for Class 1 operators (daily logs, adverse conditions)
+- Ontario regulations for wastewater treatment (Environmental Protection Act, O. Reg. 129/04)`,
+
+  "class2-wastewater|Wastewater Treatment": `
+- Activated sludge process control (MLSS, MLVSS, SRT/sludge age, F:M ratio, DO control)
+- Activated sludge troubleshooting (bulking: filamentous vs non-filamentous, foaming, rising sludge)
+- Secondary clarifier operations (surface overflow rate, solids loading rate, sludge blanket management)
+- Biological nutrient removal basics (nitrification, denitrification, biological phosphorus removal)
+- Trickling filter operations and troubleshooting (recirculation ratio, ponding, filter flies)
+- Rotating biological contactors (RBC: staging, disc submergence, troubleshooting)
+- Sludge thickening (gravity thickening, DAF thickening: design parameters, operation)
+- Anaerobic digestion (mesophilic digestion: SRT, temperature, volatile solids reduction, gas production)
+- Aerobic digestion (ATAD, conventional: volatile solids reduction, regulatory requirements)
+- Sludge dewatering (belt filter press, centrifuge, screw press: operation, cake solids)
+- Biosolids land application (Class A vs Class B, Ontario regulations, pathogen reduction)
+- Effluent quality calculations (BOD removal efficiency, TSS removal, CBOD)
+- Chemical phosphorus removal (alum, ferric chloride, lime: dosing, sludge production)
+- Disinfection of wastewater (UV disinfection: dose, transmittance; chlorination CT)
+- Membrane bioreactors (MBR) basics (operation, membrane fouling, advantages)
+- Odour control systems (biofilters, chemical scrubbers, covers: design and operation)
+- Septage receiving (acceptance criteria, pretreatment, impact on plant operations)
+- Laboratory analysis for Class 2 (BOD, TSS, VSS, SVI, settleability, ammonia, phosphorus)
+- Energy efficiency in wastewater treatment (aeration efficiency, digester gas utilization)
+- Ontario regulatory requirements for wastewater treatment (ECA conditions, O. Reg. 129/04)`,
+
+  "class3-wastewater|Wastewater Treatment": `
+- Advanced activated sludge process optimization (SRT optimization, selector reactors, DSVI)
+- Advanced biological nutrient removal (BNR) systems (A2O, Bardenpho, UCT, VIP: design and operation)
+- Advanced secondary clarifier design and operation (Vesilind settling, flux theory, thickening vs clarification)
+- Membrane bioreactor (MBR) systems management (fouling control, CIP protocols, energy optimization)
+- Advanced anaerobic digestion (thermophilic digestion, co-digestion, biogas utilization, digestate quality)
+- Advanced biosolids management (Class A pathogen reduction, EQ biosolids, land application program)
+- Tertiary treatment systems (sand filtration, cloth media filtration, disc filtration: design and operation)
+- Advanced nutrient removal (low-level phosphorus removal, effluent polishing, regulatory limits)
+- Advanced disinfection (UV validation, ozone for reuse, chloramine formation and control)
+- Water reuse and reclamation (Ontario guidelines, treatment requirements, end uses)
+- Emerging contaminants in wastewater (pharmaceuticals, microplastics, PFAS: treatment and monitoring)
+- Advanced odour control program management (H2S modeling, chemical optimization, community relations)
+- Regulatory compliance management for wastewater (ECA conditions, Director's Orders, MECP inspections)
+- Asset management for treatment facilities (condition assessment, maintenance planning, lifecycle costing)
+- Process optimization studies (treatability studies, pilot testing, energy audits)
+- Advanced laboratory methods (respirometry, settleability testing, bioassay, toxicity testing)
+- Capital planning for wastewater treatment upgrades (process selection, cost estimation, funding)
+- Operator training and competency management for treatment facilities
+- Climate change impacts on wastewater treatment (wet weather flows, temperature effects)
+- Advanced SCADA and process automation for wastewater treatment`,
+
+  "class4-wastewater|Wastewater Treatment": `
+- Advanced BNR process design and optimization (nutrient trading, effluent limits, technology selection)
+- Complex membrane system management (MBR, NF, RO for reuse: design, energy, concentrate management)
+- Advanced anaerobic treatment (UASB, EGSB, AnMBR: design, biogas recovery, energy neutrality)
+- Resource recovery from wastewater (energy: biogas, heat; nutrients: struvite, phosphorus; water reuse)
+- Advanced biosolids management programs (Class A EQ biosolids, beneficial use, regulatory compliance)
+- Micropollutant and emerging contaminant management (PFAS, pharmaceuticals: treatment, monitoring, regulatory)
+- Advanced disinfection systems management (UV validation studies, ozone system design, regulatory)
+- Environmental compliance approval (ECA) management (amendments, Director's Orders, audit response)
+- Drinking Water Safety Plan equivalent for wastewater (risk assessment, critical control points)
+- Advanced process modeling (BioWin, GPS-X, SUMO: calibration, scenario analysis, design optimization)
+- Regulatory strategy for wastewater treatment (nutrient limits, effluent quality trading, permit negotiation)
+- Capital project management for treatment plant expansions (business case, procurement, commissioning)
+- Performance benchmarking for wastewater treatment (CWWA, WEF benchmarking, energy intensity)
+- Risk management frameworks for wastewater treatment (consequence of failure, business continuity)
+- Advanced energy management (energy audits, demand management, net-zero energy treatment plants)
+- Climate change adaptation for wastewater treatment (capacity planning, resilience, flood protection)
+- Strategic planning for treatment capacity (growth projections, technology selection, financing)
+- Advanced biosolids regulations and policy (Ontario Nutrient Management Act, MECP guidelines)
+- Integrated resource management (collection-treatment-biosolids-reuse as a system)
+- Operator certification program management and succession planning for treatment facilities`
 };
 
 const topics = TOPIC_MAP[`${bankKey}|${module}`] || "General topics for this certification level";
 
-const systemPrompt = `You are a professional water/wastewater operator certification exam developer writing questions for Ontario OWWCO exams. You follow the same item-writing standards used by AWWA, ASSE, and OWWCO certification bodies.
+const systemPrompt = `You are a professional water/wastewater operator certification exam developer writing questions for Ontario OWWCO exams. You follow the same item-writing standards used by AWWA, ASSE, WPI, and OWWCO certification bodies.
 
 CORE ITEM-WRITING RULES:
 1. Return ONLY a valid JSON array, no markdown fences, no explanation, no preamble
@@ -211,8 +389,8 @@ CORE ITEM-WRITING RULES:
 
 CRITICAL DISTRACTOR QUALITY RULES (violations will make the exam useless):
 11. ALL FOUR options must be similar in length. The correct answer must NOT be the longest or most detailed option. If the correct answer is 12 words, every distractor must also be 8-16 words. Never write a 3-word throwaway distractor when the correct answer is a full sentence.
-12. Distractors must be technically plausible. Each wrong answer must be a real technique, value, regulation, or practice that exists in the industry but is incorrect for this specific question. NEVER write distractors like "To reduce the number of employees", "Relying solely on physical security", "Change all passwords annually", or any option that a non-expert could eliminate immediately.
-13. Wrong answers should represent common misconceptions or plausible confusions — for example, a wrong flow rate that is close to but not the correct value, a regulation section that is real but governs a different aspect, or a technique that is valid in a different context.
+12. Distractors must be plausible to someone with partial knowledge. Wrong answers should represent common misconceptions or plausible confusions -- for example, a wrong flow rate that is close to but not the correct value, a regulation section that is real but governs a different aspect, or a technique that is valid in a different context.
+13. Wrong answers should represent common misconceptions or plausible confusions -- for example, a wrong flow rate that is close to but not the correct value, a regulation section that is real but governs a different aspect, or a technique that is valid in a different context.
 14. The correct answer must NOT restate or paraphrase the question stem. If the stem asks "What is the purpose of X?", the correct answer should not begin with "X is used to..." in a way that makes it obviously correct from wording alone.
 15. For Class 3-4 questions: all four options should be real management frameworks, engineering approaches, or regulatory strategies. The question should require knowledge to distinguish between them, not just common sense.
 
