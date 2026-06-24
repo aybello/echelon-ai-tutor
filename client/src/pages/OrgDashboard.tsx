@@ -710,26 +710,55 @@ export default function OrgDashboard() {
                           {m.lastActive ? formatDate(m.lastActive) : <span className="text-slate-300">Never</span>}
                         </td>
                         <td className="px-4 py-3 hidden lg:table-cell">
-                          {m.accuracy !== null ? (
-                            <span
-                              className={
-                                m.accuracy >= 75
-                                  ? "text-green-600 font-medium"
-                                  : m.accuracy >= 40
-                                  ? "text-amber-600 font-medium"
-                                  : "text-red-600 font-medium"
-                              }
-                            >
-                              {m.accuracy}%
-                            </span>
+                          {m.courseProgress && m.courseProgress.length > 1 ? (
+                            // Multi-course: show per-course accuracy rows
+                            <div className="space-y-1">
+                              {m.courseProgress.map(cp => (
+                                <div key={cp.courseKey} className="flex items-center gap-1.5">
+                                  <span className="text-xs text-slate-400 truncate max-w-[120px]" title={courseKeyToLabel(cp.courseKey, overview.province)}>
+                                    {courseKeyToLabel(cp.courseKey, overview.province).replace(/^(Class \d+|WPI Class \d+)\s*/i, '')}
+                                  </span>
+                                  {cp.accuracy !== null ? (
+                                    <span className={`text-xs font-semibold ${
+                                      cp.accuracy >= 75 ? 'text-green-600' : cp.accuracy >= 40 ? 'text-amber-600' : 'text-red-600'
+                                    }`}>{cp.accuracy}%</span>
+                                  ) : (
+                                    <span className="text-xs text-slate-300">—</span>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          ) : m.accuracy !== null ? (
+                            <span className={`${
+                              m.accuracy >= 75 ? 'text-green-600 font-medium' : m.accuracy >= 40 ? 'text-amber-600 font-medium' : 'text-red-600 font-medium'
+                            }`}>{m.accuracy}%</span>
                           ) : (
                             <span className="text-slate-300">—</span>
                           )}
                         </td>
                         <td className="px-4 py-3">
-                          <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${cfg.bg} ${cfg.color}`}>
-                            {cfg.label}
-                          </span>
+                          {m.courseProgress && m.courseProgress.length > 1 ? (
+                            // Multi-course: show per-course status pills stacked
+                            <div className="space-y-1">
+                              {m.courseProgress.map(cp => {
+                                const cpCfg = STATUS_CONFIG[cp.status as OperatorStatus];
+                                return (
+                                  <div key={cp.courseKey} className="flex items-center gap-1">
+                                    <span className={`inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-medium ${cpCfg.bg} ${cpCfg.color}`}>
+                                      {cpCfg.label}
+                                    </span>
+                                    {cp.totalAttempts > 0 && (
+                                      <span className="text-xs text-slate-400">{cp.totalAttempts}q</span>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          ) : (
+                            <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${cfg.bg} ${cfg.color}`}>
+                              {cfg.label}
+                            </span>
+                          )}
                         </td>
                         <td className="px-4 py-3 text-right">
                           <Button

@@ -28,7 +28,7 @@ import {
 } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { sendTeamEnrollmentEmail } from "../email";
-import { courseKeyToTier, courseKeyToLabel } from "../../shared/products";
+import { courseKeyToTier, courseKeyToLabel, getUnlockedExamTypes } from "../../shared/products";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -396,8 +396,8 @@ export const orgRouter = router({
 
     const memberEmails = members.map(m => m.email);
 
-    // Bug fix: replaced sql.raw(emailList) with inArray() to prevent SQL injection
-    const [accuracyRows, lastActiveRows, examDateRows] = await Promise.all([
+        // Bug fix: replaced sql.raw(emailList) with inArray() to prevent SQL injection
+    const [accuracyRows, lastActiveRows, examDateRows, perCourseRows] = await Promise.all([
       db
         .select({
           email: questionAttempts.studentEmail,
@@ -419,8 +419,18 @@ export const orgRouter = router({
         .select({ email: examDates.email, examDate: examDates.examDate })
         .from(examDates)
         .where(inArray(examDates.email, memberEmails)),
+      // Per-course accuracy: group by email + examType
+      db
+        .select({
+          email: questionAttempts.studentEmail,
+          examType: questionAttempts.examType,
+          total: sql<number>`COUNT(*)`,
+          correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+        })
+        .from(questionAttempts)
+        .where(inArray(questionAttempts.studentEmail, memberEmails))
+        .groupBy(questionAttempts.studentEmail, questionAttempts.examType),
     ]);
-
     const accuracyByEmail = new Map(
       accuracyRows.map(r => [
         r.email,
@@ -433,6 +443,13 @@ export const orgRouter = router({
     const examDateByEmail = new Map(
       examDateRows.map(r => [r.email, r.examDate]),
     );
+    // Build per-email, per-examType accuracy map
+    const perCourseByEmail = new Map<string, Map<string, { total: number; correct: number }>>();
+    for (const r of perCourseRows) {
+      if (!r.email) continue;
+      if (!perCourseByEmail.has(r.email)) perCourseByEmail.set(r.email, new Map());
+      perCourseByEmail.get(r.email)!.set(r.examType, { total: Number(r.total), correct: Number(r.correct) });
+    }
 
     return members.map(m => {
       const stats = accuracyByEmail.get(m.email);
@@ -458,6 +475,26 @@ export const orgRouter = router({
         courseKeys = [m.courseKey];
       }
 
+      // Per-course progress breakdown
+      const emailCourseMap = perCourseByEmail.get(m.email);
+      const courseProgress = courseKeys.map(ck => {
+        const examTypes = getUnlockedExamTypes(ck);
+        // Aggregate attempts across all examTypes for this courseKey
+        let cTotal = 0, cCorrect = 0;
+        for (const et of examTypes) {
+          const s = emailCourseMap?.get(et);
+          if (s) { cTotal += s.total; cCorrect += s.correct; }
+        }
+        const cAccuracy = cTotal > 0 ? Math.round((cCorrect / cTotal) * 100) : null;
+        let cStatus: "not_started" | "behind" | "needs_focus" | "on_track" = "not_started";
+        if (cAccuracy !== null) {
+          if (cAccuracy >= ON_TRACK_THRESHOLD) cStatus = "on_track";
+          else if (cAccuracy >= BEHIND_THRESHOLD) cStatus = "needs_focus";
+          else cStatus = "behind";
+        }
+        return { courseKey: ck, accuracy: cAccuracy, totalAttempts: cTotal, status: cStatus };
+      });
+
       return {
         id: m.id,
         email: m.email,
@@ -467,6 +504,7 @@ export const orgRouter = router({
         revokedAt: m.revokedAt,
         courseKey: m.courseKey ?? null,
         courseKeys,
+        courseProgress,
         accuracy,
         totalAttempts: total,
         lastActive,
