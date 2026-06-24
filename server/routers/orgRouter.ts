@@ -100,8 +100,11 @@ async function resolveOrgManager(ctx: {
 /**
  * Grants a seat to an operator:
  *   1. Insert/update organization_members row (role=operator, status=assigned)
- *   2. Upsert subscriptions row (tier derived from courseKey or all-access, province=org province,
- *      orgId=org.id, stripeSubscriptionId=null, status=active, currentPeriodEnd=org.termEnd)
+ *   2. Upsert one subscriptions row per course key (tier derived from courseKey or all-access,
+ *      province=org province, orgId=org.id, status=active, currentPeriodEnd=org.termEnd)
+ *
+ * courseKeys: array of course keys to assign. If empty/undefined, falls back to all-access.
+ * courseKey (singular): kept for backward compat — treated as courseKeys[0] if courseKeys not set.
  */
 async function grantSeat(
   db: Awaited<ReturnType<typeof getDb>>,
@@ -111,8 +114,17 @@ async function grantSeat(
   managerEmail?: string,
   name?: string,
   courseKey?: string,
+  courseKeys?: string[],
 ) {
   if (!db) throw new Error("Database unavailable");
+
+  // Resolve the canonical list of course keys
+  const resolvedKeys: string[] = courseKeys && courseKeys.length > 0
+    ? courseKeys
+    : courseKey ? [courseKey] : [];
+
+  // Primary course key for backward-compat fields
+  const primaryCourseKey = resolvedKeys[0] ?? null;
 
   // Upsert member row — if previously revoked, re-activate
   const existingMember = await db
@@ -124,6 +136,8 @@ async function grantSeat(
   const isNewMember = existingMember.length === 0;
   const wasRevoked = existingMember.length > 0 && existingMember[0].status === "revoked";
 
+  const courseKeysJson = resolvedKeys.length > 0 ? JSON.stringify(resolvedKeys) : null;
+
   if (existingMember.length > 0) {
     await db
       .update(organizationMembers)
@@ -131,7 +145,8 @@ async function grantSeat(
         status: "assigned",
         revokedAt: null as any,
         ...(name !== undefined ? { name } : {}),
-        ...(courseKey !== undefined ? { courseKey } : {}),
+        ...(primaryCourseKey !== null ? { courseKey: primaryCourseKey } : {}),
+        courseKeys: courseKeysJson,
       })
       .where(eq(organizationMembers.id, existingMember[0].id));
   } else {
@@ -141,56 +156,64 @@ async function grantSeat(
       name: name ?? null,
       role,
       status: "assigned",
-      courseKey: courseKey ?? null,
+      courseKey: primaryCourseKey,
+      courseKeys: courseKeysJson,
     });
   }
 
-  // Derive tier from courseKey (if set) or fall back to all-access
-  const tier = courseKey ? courseKeyToTier(courseKey, org.province) : "all-access";
+  // Upsert one subscription row per course key.
+  // If no course keys, upsert a single all-access row (legacy behaviour).
+  const coursesToUpsert = resolvedKeys.length > 0 ? resolvedKeys : [null];
 
-  // Upsert subscription row for access
-  const existingSub = await db
-    .select({ id: subscriptions.id })
-    .from(subscriptions)
-    .where(and(eq(subscriptions.email, email), eq(subscriptions.orgId, org.id)))
-    .limit(1);
+  for (const ck of coursesToUpsert) {
+    const tier = ck ? courseKeyToTier(ck, org.province) : "all-access";
+    // Unique sentinel: org-{orgId}-{email}-{courseKey|all}
+    const orgSubId = `org-${org.id}-${email}-${ck ?? "all"}`;
 
-  if (existingSub.length > 0) {
-    await db
-      .update(subscriptions)
-      .set({
-        status: "active",
-        currentPeriodEnd: org.termEnd,
+    const existingSub = await db
+      .select({ id: subscriptions.id })
+      .from(subscriptions)
+      .where(
+        and(
+          eq(subscriptions.email, email),
+          eq(subscriptions.orgId, org.id),
+          eq(subscriptions.stripeSubscriptionId, orgSubId),
+        ),
+      )
+      .limit(1);
+
+    if (existingSub.length > 0) {
+      await db
+        .update(subscriptions)
+        .set({
+          status: "active",
+          currentPeriodEnd: org.termEnd,
+          tier: tier as any,
+          province: org.province,
+        })
+        .where(eq(subscriptions.id, existingSub[0].id));
+    } else {
+      await db.insert(subscriptions).values({
+        email,
         tier: tier as any,
         province: org.province,
-      })
-      .where(eq(subscriptions.id, existingSub[0].id));
-  } else {
-    // Use a unique sentinel for stripeSubscriptionId since the DB column is NOT NULL + UNIQUE.
-    // Format: org-{orgId}-{email} ensures uniqueness per org-operator pair.
-    const orgSubId = `org-${org.id}-${email}`;
-    await db.insert(subscriptions).values({
-      email,
-      tier: tier as any,
-      province: org.province,
-      stripeSubscriptionId: orgSubId,
-      stripeCustomerId: "",
-      status: "active",
-      currentPeriodStart: new Date(),
-      currentPeriodEnd: org.termEnd,
-      orgId: org.id,
-    });
+        stripeSubscriptionId: orgSubId,
+        stripeCustomerId: "",
+        status: "active",
+        currentPeriodStart: new Date(),
+        currentPeriodEnd: org.termEnd,
+        orgId: org.id,
+      });
+    }
   }
 
   // Send enrollment email to new operators (or re-activated ones)
   // Fire-and-forget — don't block the seat assignment if email fails
   if (role === "operator" && (isNewMember || wasRevoked)) {
-    // Bug fix: use env-based URL instead of hardcoded production URL
     const origin = process.env.FRONTEND_URL ?? "https://echeloninstitute.ca";
     const loginUrl = `${origin}/dashboard/login`;
-    // Bug fix: use generic support email instead of personal email as fallback
     const supportEmail = process.env.SUPPORT_EMAIL ?? "support@echeloninstitute.ca";
-    const courseName = courseKey ? courseKeyToLabel(courseKey, org.province) : undefined;
+    const courseName = primaryCourseKey ? courseKeyToLabel(primaryCourseKey, org.province) : undefined;
     sendTeamEnrollmentEmail({
       email,
       orgName: org.name,
@@ -427,6 +450,14 @@ export const orgRouter = router({
         else operatorStatus = "behind";
       }
 
+      // Parse courseKeys JSON; fall back to [courseKey] for legacy rows
+      let courseKeys: string[] = [];
+      if (m.courseKeys) {
+        try { courseKeys = JSON.parse(m.courseKeys as string); } catch { courseKeys = []; }
+      } else if (m.courseKey) {
+        courseKeys = [m.courseKey];
+      }
+
       return {
         id: m.id,
         email: m.email,
@@ -435,6 +466,7 @@ export const orgRouter = router({
         assignedAt: m.assignedAt,
         revokedAt: m.revokedAt,
         courseKey: m.courseKey ?? null,
+        courseKeys,
         accuracy,
         totalAttempts: total,
         lastActive,
@@ -570,12 +602,14 @@ export const orgRouter = router({
   /**
    * assignSeat — assign a single seat to an operator email.
    * Enforces seat cap: active operators must be < seatsTotal.
+   * Supports multiple courses via courseKeys array.
    */
   assignSeat: publicProcedure
     .input(z.object({
       email: z.string().email(),
       name: z.string().max(200).optional(),
       courseKey: z.string().max(64).optional(),
+      courseKeys: z.array(z.string().max(64)).max(10).optional(),
     }))
     .mutation(async ({ input, ctx }) => {
       const { orgId, managerEmail } = await resolveOrgManager(ctx);
@@ -612,19 +646,20 @@ export const orgRouter = router({
         });
       }
 
-      await grantSeat(db, org, email, "operator", managerEmail, name, input.courseKey);
+      await grantSeat(db, org, email, "operator", managerEmail, name, input.courseKey, input.courseKeys);
       return { success: true, email };
     }),
 
   /**
-   * updateSeatCourse — update the course assigned to a seat.
-   * Can be used on both assigned and unassigned seats.
+   * updateSeatCourses — update the courses assigned to a seat (supports multiple).
+   * Replaces all existing org-managed subscriptions for this operator with new ones.
    * Does NOT reset the term expiry — the year started at assignment.
    */
   updateSeatCourse: publicProcedure
     .input(z.object({
       email: z.string().email(),
-      courseKey: z.string().max(64),
+      courseKey: z.string().max(64).optional(),
+      courseKeys: z.array(z.string().max(64)).max(10).optional(),
     }))
     .mutation(async ({ input, ctx }) => {
       const { orgId } = await resolveOrgManager(ctx);
@@ -657,24 +692,68 @@ export const orgRouter = router({
 
       if (!member) throw new TRPCError({ code: "NOT_FOUND", message: "Seat not found" });
 
-      const tier = courseKeyToTier(input.courseKey, org.province);
+      // Resolve canonical list
+      const resolvedKeys: string[] = input.courseKeys && input.courseKeys.length > 0
+        ? input.courseKeys
+        : input.courseKey ? [input.courseKey] : [];
+      const primaryCourseKey = resolvedKeys[0] ?? null;
+      const courseKeysJson = resolvedKeys.length > 0 ? JSON.stringify(resolvedKeys) : null;
 
       // Update member row
       await db
         .update(organizationMembers)
-        .set({ courseKey: input.courseKey })
+        .set({
+          courseKey: primaryCourseKey,
+          courseKeys: courseKeysJson,
+        })
         .where(eq(organizationMembers.id, member.id));
 
-      // Update subscription tier (if active)
+      // Expire all existing org-managed subscriptions for this operator
       await db
         .update(subscriptions)
-        .set({ tier: tier as any })
+        .set({ status: "expired" })
         .where(
           and(
             eq(subscriptions.email, email),
             eq(subscriptions.orgId, orgId),
           ),
         );
+
+      // Upsert one active subscription per new course key
+      const coursesToUpsert = resolvedKeys.length > 0 ? resolvedKeys : [null];
+      for (const ck of coursesToUpsert) {
+        const tier = ck ? courseKeyToTier(ck, org.province) : "all-access";
+        const orgSubId = `org-${org.id}-${email}-${ck ?? "all"}`;
+        const existingSub = await db
+          .select({ id: subscriptions.id })
+          .from(subscriptions)
+          .where(
+            and(
+              eq(subscriptions.email, email),
+              eq(subscriptions.orgId, orgId),
+              eq(subscriptions.stripeSubscriptionId, orgSubId),
+            ),
+          )
+          .limit(1);
+        if (existingSub.length > 0) {
+          await db
+            .update(subscriptions)
+            .set({ status: "active", tier: tier as any, currentPeriodEnd: org.termEnd })
+            .where(eq(subscriptions.id, existingSub[0].id));
+        } else {
+          await db.insert(subscriptions).values({
+            email,
+            tier: tier as any,
+            province: org.province,
+            stripeSubscriptionId: orgSubId,
+            stripeCustomerId: "",
+            status: "active",
+            currentPeriodStart: new Date(),
+            currentPeriodEnd: org.termEnd,
+            orgId: org.id,
+          });
+        }
+      }
 
       return { success: true };
     }),

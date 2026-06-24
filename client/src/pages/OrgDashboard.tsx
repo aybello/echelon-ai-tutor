@@ -62,6 +62,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Link, useLocation, useSearch } from "wouter";
 import { getTeamCourseOptions, courseKeyToLabel } from "@shared/products";
 
@@ -125,7 +126,10 @@ export default function OrgDashboard() {
   const [assignOpen, setAssignOpen] = useState(false);
   const [assignEmail, setAssignEmail] = useState("");
   const [assignName, setAssignName] = useState("");
-  const [assignCourseKey, setAssignCourseKey] = useState("");
+  const [assignCourseKeys, setAssignCourseKeys] = useState<string[]>([]);
+  // editCourseTarget: email of operator whose courses are being edited inline
+  const [editCourseTarget, setEditCourseTarget] = useState<string | null>(null);
+  const [editCourseKeys, setEditCourseKeys] = useState<string[]>([]);
   const [bulkEmails, setBulkEmails] = useState("");
   const [bulkMode, setBulkMode] = useState(false);
   const [revokeTarget, setRevokeTarget] = useState<string | null>(null);
@@ -163,7 +167,7 @@ export default function OrgDashboard() {
       setAssignOpen(false);
       setAssignEmail("");
       setAssignName("");
-      setAssignCourseKey("");
+      setAssignCourseKeys([]);
     },
     onError: (err) => toast.error(err.message),
   });
@@ -300,7 +304,7 @@ export default function OrgDashboard() {
         toast.error("Please enter a valid email address.");
         return;
       }
-      assignSeat.mutate({ email: assignEmail.trim().toLowerCase(), name: assignName.trim() || undefined, courseKey: assignCourseKey || undefined });
+      assignSeat.mutate({ email: assignEmail.trim().toLowerCase(), name: assignName.trim() || undefined, courseKeys: assignCourseKeys.length > 0 ? assignCourseKeys : undefined });
     }
   };
 
@@ -639,23 +643,64 @@ export default function OrgDashboard() {
                           }
                         </td>
                         <td className="px-4 py-3 hidden xl:table-cell">
-                          {m.courseKey ? (
-                            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100 whitespace-nowrap">
-                              {courseKeyToLabel(m.courseKey, overview.province)}
-                            </span>
-                          ) : (
-                            <Select
-                              onValueChange={(val) => updateSeatCourse.mutate({ email: m.email, courseKey: val })}
-                            >
-                              <SelectTrigger className="h-7 text-xs border-dashed border-slate-300 text-slate-400 w-36">
-                                <SelectValue placeholder="Set course" />
-                              </SelectTrigger>
-                              <SelectContent>
+                          {editCourseTarget === m.email ? (
+                            <div className="space-y-1.5">
+                              <div className="border border-slate-200 rounded-lg p-2 space-y-1 max-h-40 overflow-y-auto w-52">
                                 {getTeamCourseOptions(overview.province).map(opt => (
-                                  <SelectItem key={opt.key} value={opt.key}>{opt.label}</SelectItem>
+                                  <label key={opt.key} className="flex items-center gap-2 cursor-pointer hover:bg-slate-50 rounded px-1 py-0.5">
+                                    <Checkbox
+                                      checked={editCourseKeys.includes(opt.key)}
+                                      onCheckedChange={(checked) => {
+                                        setEditCourseKeys(prev =>
+                                          checked ? [...prev, opt.key] : prev.filter(k => k !== opt.key)
+                                        );
+                                      }}
+                                    />
+                                    <span className="text-xs text-slate-700">{opt.label}</span>
+                                  </label>
                                 ))}
-                              </SelectContent>
-                            </Select>
+                              </div>
+                              <div className="flex gap-1">
+                                <Button
+                                  size="sm"
+                                  className="h-6 text-xs px-2"
+                                  onClick={() => {
+                                    updateSeatCourse.mutate({ email: m.email, courseKeys: editCourseKeys });
+                                    setEditCourseTarget(null);
+                                  }}
+                                >
+                                  Save
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  className="h-6 text-xs px-2"
+                                  onClick={() => setEditCourseTarget(null)}
+                                >
+                                  Cancel
+                                </Button>
+                              </div>
+                            </div>
+                          ) : (
+                            <div
+                              className="flex flex-wrap gap-1 cursor-pointer group"
+                              onClick={() => {
+                                setEditCourseTarget(m.email);
+                                setEditCourseKeys(m.courseKeys ?? (m.courseKey ? [m.courseKey] : []));
+                              }}
+                              title="Click to edit courses"
+                            >
+                              {(m.courseKeys && m.courseKeys.length > 0 ? m.courseKeys : m.courseKey ? [m.courseKey] : []).map(ck => (
+                                <span key={ck} className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100 whitespace-nowrap">
+                                  {courseKeyToLabel(ck, overview.province)}
+                                </span>
+                              ))}
+                              {(!m.courseKeys || m.courseKeys.length === 0) && !m.courseKey && (
+                                <span className="text-xs text-slate-400 border border-dashed border-slate-300 rounded-full px-2 py-0.5 group-hover:border-blue-300 group-hover:text-blue-500 transition-colors">
+                                  + Add courses
+                                </span>
+                              )}
+                            </div>
                           )}
                         </td>
                         <td className="px-4 py-3 text-slate-500 hidden md:table-cell">
@@ -786,17 +831,26 @@ export default function OrgDashboard() {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label className="text-slate-700">Course <span className="text-slate-400 font-normal">(optional — can set later)</span></Label>
-                  <Select value={assignCourseKey} onValueChange={setAssignCourseKey}>
-                    <SelectTrigger className="border-slate-200 text-slate-900">
-                      <SelectValue placeholder="Select a course..." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {getTeamCourseOptions(overview.province).map(opt => (
-                        <SelectItem key={opt.key} value={opt.key}>{opt.label}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <Label className="text-slate-700">Courses <span className="text-slate-400 font-normal">(optional — can set later)</span></Label>
+                  <div className="border border-slate-200 rounded-lg p-3 space-y-2 max-h-48 overflow-y-auto">
+                    {getTeamCourseOptions(overview.province).map(opt => (
+                      <label key={opt.key} className="flex items-center gap-2.5 cursor-pointer hover:bg-slate-50 rounded px-1 py-0.5">
+                        <Checkbox
+                          id={`assign-course-${opt.key}`}
+                          checked={assignCourseKeys.includes(opt.key)}
+                          onCheckedChange={(checked) => {
+                            setAssignCourseKeys(prev =>
+                              checked ? [...prev, opt.key] : prev.filter(k => k !== opt.key)
+                            );
+                          }}
+                        />
+                        <span className="text-sm text-slate-700">{opt.label}</span>
+                      </label>
+                    ))}
+                  </div>
+                  {assignCourseKeys.length > 0 && (
+                    <p className="text-xs text-blue-600">{assignCourseKeys.length} course{assignCourseKeys.length > 1 ? "s" : ""} selected</p>
+                  )}
                 </div>
               </div>
             ) : (

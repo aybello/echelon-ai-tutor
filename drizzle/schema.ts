@@ -423,6 +423,12 @@ export const organizationMembers = mysqlTable("organization_members", {
   status: varchar("status", { length: 20 }).notNull().default("assigned"), // 'assigned' | 'revoked'
   /** Specific course bundle for this seat. Null = org default (all-access for province). */
   courseKey: varchar("courseKey", { length: 64 }), // e.g. 'wpi-class4-water', 'class3-water', 'class3-ww'
+  /**
+   * JSON array of all course keys assigned to this seat.
+   * Supersedes courseKey for multi-course seats. Kept in sync with courseKey (first entry).
+   * e.g. '["class2-wastewater-coll","class2-water-dist"]'
+   */
+  courseKeys: text("courseKeys"), // JSON string: string[] | null
   assignedAt: timestamp("assignedAt").defaultNow().notNull(),
   revokedAt: timestamp("revokedAt"),
 }, (t) => [
