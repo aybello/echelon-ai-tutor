@@ -59,9 +59,12 @@ const MANAGER_EMAIL = `teams-mgr-${RUN_ID}@echelon-test.invalid`;
 const ORG_NAME = `Test Org ${RUN_ID}`;
 const ORG_B_MANAGER = `teams-mgr-b-${RUN_ID}@echelon-test.invalid`;
 const ORG_B_NAME = `Test Org B ${RUN_ID}`;
+const MULTI_MANAGER_EMAIL = `teams-mgr-mc-${RUN_ID}@echelon-test.invalid`;
+const MULTI_ORG_NAME = `Test Org Multi ${RUN_ID}`;
 
 let orgId: number;
 let orgBId: number;
+let multiOrgId: number;
 let db: Awaited<ReturnType<typeof getDb>>;
 
 // ── Setup / teardown ──────────────────────────────────────────────────────────
@@ -118,6 +121,28 @@ beforeAll(async () => {
     role: "manager",
     status: "assigned",
   });
+
+  // Create multi-course test org (10 seats)
+  const [insertMC] = await db.insert(organizations).values({
+    name: MULTI_ORG_NAME,
+    province: "ontario",
+    tier: "all-access",
+    seatsTotal: 10,
+    managerEmail: MULTI_MANAGER_EMAIL,
+    stripeSubscriptionId: null,
+    stripeCustomerId: null,
+    termEnd,
+    billingType: "invoice",
+    status: "active",
+  });
+  multiOrgId = (insertMC as any).insertId;
+
+  await db.insert(organizationMembers).values({
+    orgId: multiOrgId,
+    email: MULTI_MANAGER_EMAIL,
+    role: "manager",
+    status: "assigned",
+  });
 });
 
 afterAll(async () => {
@@ -127,7 +152,8 @@ afterAll(async () => {
   const allTestEmails = [
     MANAGER_EMAIL,
     ORG_B_MANAGER,
-    ...Array.from({ length: 10 }, (_, i) => testEmail(i + 1)),
+    MULTI_MANAGER_EMAIL,
+    ...Array.from({ length: 15 }, (_, i) => testEmail(i + 1)),
   ];
 
   // Delete subscriptions for test emails
@@ -143,6 +169,10 @@ afterAll(async () => {
   if (orgBId) {
     await db.delete(organizationMembers).where(eq(organizationMembers.orgId, orgBId)).catch(() => {});
     await db.delete(organizations).where(eq(organizations.id, orgBId)).catch(() => {});
+  }
+  if (multiOrgId) {
+    await db.delete(organizationMembers).where(eq(organizationMembers.orgId, multiOrgId)).catch(() => {});
+    await db.delete(organizations).where(eq(organizations.id, multiOrgId)).catch(() => {});
   }
 });
 
@@ -364,5 +394,134 @@ describe("Echelon for Teams — org seat management", () => {
       expect(m).toHaveProperty("operatorStatus");
       expect(["not_started", "behind", "needs_focus", "on_track"]).toContain(m.operatorStatus);
     }
+  });
+});
+
+describe("Multi-course seat support", () => {
+  it("assignSeat with courseKeys creates one subscription per course", async () => {
+    if (!process.env.DATABASE_URL || !db) return;
+
+    const email = testEmail(11);
+    const caller = appRouter.createCaller(makeCtx(MULTI_MANAGER_EMAIL));
+
+    await caller.org.assignSeat({
+      email,
+      courseKeys: ["class1-water", "class1-wastewater"],
+    });
+
+    // Verify two active subscription rows exist
+    const subs = await db!
+      .select()
+      .from(subscriptions)
+      .where(and(eq(subscriptions.email, email), eq(subscriptions.status, "active")));
+
+    expect(subs.length).toBe(2);
+
+    // Verify member row has courseKeys JSON
+    const member = await db!
+      .select()
+      .from(organizationMembers)
+      .where(and(eq(organizationMembers.email, email), eq(organizationMembers.orgId, multiOrgId)))
+      .limit(1)
+      .then(r => r[0]);
+
+    expect(member).toBeDefined();
+    const parsedKeys = JSON.parse(member!.courseKeys ?? "[]");
+    expect(parsedKeys).toContain("class1-water");
+    expect(parsedKeys).toContain("class1-wastewater");
+    expect(member!.courseKey).toBe("class1-water"); // primary = first key
+  });
+
+  it("updateSeatCourse replaces subscriptions and updates courseKeys", async () => {
+    if (!process.env.DATABASE_URL || !db) return;
+
+    const email = testEmail(12);
+    const caller = appRouter.createCaller(makeCtx(MULTI_MANAGER_EMAIL));
+
+    // Assign with one course first
+    await caller.org.assignSeat({ email, courseKeys: ["class1-water"] });
+
+    // Update to two courses
+    await caller.org.updateSeatCourse({ email, courseKeys: ["class2-water", "class2-wastewater"] });
+
+    // Old subscription should be expired, two new ones active
+    const subs = await db!
+      .select()
+      .from(subscriptions)
+      .where(and(eq(subscriptions.email, email), eq(subscriptions.orgId, multiOrgId)));
+
+    const active = subs.filter(s => s.status === "active");
+    const expired = subs.filter(s => s.status === "expired");
+    expect(active.length).toBe(2);
+    expect(expired.length).toBeGreaterThanOrEqual(1);
+
+    // Verify courseKeys updated
+    const member = await db!
+      .select()
+      .from(organizationMembers)
+      .where(and(eq(organizationMembers.email, email), eq(organizationMembers.orgId, multiOrgId)))
+      .limit(1)
+      .then(r => r[0]);
+
+    const parsedKeys = JSON.parse(member!.courseKeys ?? "[]");
+    expect(parsedKeys).toContain("class2-water");
+    expect(parsedKeys).toContain("class2-wastewater");
+    expect(parsedKeys).not.toContain("class1-water");
+  });
+
+  it("listMembers includes courseKeys and courseProgress fields", async () => {
+    if (!process.env.DATABASE_URL || !db) return;
+
+    const caller = appRouter.createCaller(makeCtx(MULTI_MANAGER_EMAIL));
+    const members = await caller.org.listMembers();
+
+    for (const m of members) {
+      expect(m).toHaveProperty("courseKeys");
+      expect(m).toHaveProperty("courseProgress");
+      // courseProgress must be an array
+      expect(Array.isArray(m.courseProgress)).toBe(true);
+    }
+  });
+
+  it("revoking a multi-course operator expires all subscription rows", async () => {
+    if (!process.env.DATABASE_URL || !db) return;
+
+    const email = testEmail(13);
+    const caller = appRouter.createCaller(makeCtx(MULTI_MANAGER_EMAIL));
+
+    await caller.org.assignSeat({ email, courseKeys: ["class1-water", "class1-wastewater"] });
+    await caller.org.revokeSeat({ email });
+
+    const subs = await db!
+      .select()
+      .from(subscriptions)
+      .where(and(eq(subscriptions.email, email), eq(subscriptions.orgId, multiOrgId)));
+
+    const active = subs.filter(s => s.status === "active");
+    expect(active.length).toBe(0);
+    expect(subs.every(s => s.status === "expired")).toBe(true);
+  });
+
+  it("assignSeat with courseKeys uses seat cap counting by operator not by course", async () => {
+    if (!process.env.DATABASE_URL || !db) return;
+
+    // multiOrgId has 10 seats — assigning one operator with 2 courses should use only 1 seat
+    const email = testEmail(14);
+    const caller = appRouter.createCaller(makeCtx(MULTI_MANAGER_EMAIL));
+
+    await expect(
+      caller.org.assignSeat({ email, courseKeys: ["class1-water", "class1-wastewater"] })
+    ).resolves.toMatchObject({ success: true });
+
+    // Verify only 1 member row created (not 2)
+    const memberRows = await db!
+      .select()
+      .from(organizationMembers)
+      .where(and(
+        eq(organizationMembers.email, email),
+        eq(organizationMembers.orgId, multiOrgId),
+        eq(organizationMembers.role, "operator"),
+      ));
+    expect(memberRows.length).toBe(1);
   });
 });

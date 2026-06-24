@@ -211,9 +211,12 @@ async function grantSeat(
   // Fire-and-forget — don't block the seat assignment if email fails
   if (role === "operator" && (isNewMember || wasRevoked)) {
     const origin = process.env.FRONTEND_URL ?? "https://echeloninstitute.ca";
-    const loginUrl = `${origin}/dashboard/login`;
+    const loginUrl = `${origin}/login`;
     const supportEmail = process.env.SUPPORT_EMAIL ?? "support@echeloninstitute.ca";
-    const courseName = primaryCourseKey ? courseKeyToLabel(primaryCourseKey, org.province) : undefined;
+    // Build course label: list all assigned courses, not just the primary one
+    const courseName = resolvedKeys.length > 1
+      ? resolvedKeys.map(k => courseKeyToLabel(k, org.province)).join(" & ")
+      : primaryCourseKey ? courseKeyToLabel(primaryCourseKey, org.province) : undefined;
     sendTeamEnrollmentEmail({
       email,
       orgName: org.name,

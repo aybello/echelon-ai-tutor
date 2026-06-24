@@ -851,7 +851,7 @@ export interface TeamEnrollmentEmailPayload {
   email: string;
   orgName: string;
   managerEmail: string;
-  loginUrl: string; // e.g. https://echeloninstitute.ca/dashboard/login
+  loginUrl: string; // e.g. https://echeloninstitute.ca/login
   courseName?: string; // e.g. 'Class 4 — Water Treatment'
 }
 
@@ -936,7 +936,7 @@ export async function sendTeamEnrollmentEmail(
               <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#1D4ED8;letter-spacing:0.06em;text-transform:uppercase;">Enrollment Confirmed</p>
               <p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#0F172A;">${courseLabel}</p>
               <p style="margin:0 0 4px;font-size:14px;color:#475569;">Enrolled by: ${orgName}</p>
-              <p style="margin:0;font-size:13px;color:#64748B;">Your access is limited to this course for the duration of your team plan.</p>
+              <p style="margin:0;font-size:13px;color:#64748B;">Your access covers the course(s) listed above for the duration of your team plan.</p>
             </div>
 
             <!-- CTA -->

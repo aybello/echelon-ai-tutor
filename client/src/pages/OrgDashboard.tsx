@@ -664,7 +664,13 @@ export default function OrgDashboard() {
                                 <Button
                                   size="sm"
                                   className="h-6 text-xs px-2"
+                                  disabled={editCourseKeys.length === 0}
+                                  title={editCourseKeys.length === 0 ? "Select at least one course" : undefined}
                                   onClick={() => {
+                                    if (editCourseKeys.length === 0) {
+                                      toast.error("Please select at least one course.");
+                                      return;
+                                    }
                                     updateSeatCourse.mutate({ email: m.email, courseKeys: editCourseKeys });
                                     setEditCourseTarget(null);
                                   }}
