@@ -137,21 +137,35 @@ export default function OrgDashboard() {
   const [newSeatCount, setNewSeatCount] = useState<number>(0);
   const [showWelcomeBanner, setShowWelcomeBanner] = useState(false);
   const welcomeShownRef = useRef(false);
+  // P2b fix: track whether we arrived from a Stripe checkout (session_id in URL)
+  // so we can show a "Setting up your team" state instead of a confusing sign-in error
+  // if the provisioning webhook hasn't fired yet.
+  const [isPostPurchase, setIsPostPurchase] = useState(false);
+  const postPurchaseRetries = useRef(0);
 
   const utils = trpc.useUtils();
 
   // Queries
-  const overviewQuery = trpc.org.getOrgOverview.useQuery(undefined, { retry: false });
+  // P2b fix: when arriving post-purchase, retry up to 6 times (every 3s = 18s window)
+  // to give the Stripe webhook time to provision the org before showing an error.
+  const overviewQuery = trpc.org.getOrgOverview.useQuery(undefined, {
+    retry: (failureCount, error) => {
+      if (isPostPurchase && failureCount < 6) return true;
+      return false;
+    },
+    retryDelay: 3000,
+  });
   const membersQuery = trpc.org.listMembers.useQuery(undefined, { retry: false });
   const attentionQuery = trpc.org.getAttention.useQuery(undefined, { retry: false });
 
-  // Bug fix: handle ?session_id= param — show welcome banner after Stripe checkout
+  // Handle ?session_id= param — show welcome banner after Stripe checkout
   useEffect(() => {
     if (welcomeShownRef.current) return;
     const params = new URLSearchParams(search);
     if (params.get("session_id")) {
       welcomeShownRef.current = true;
       setShowWelcomeBanner(true);
+      setIsPostPurchase(true);
       // Clean up URL without reloading
       window.history.replaceState({}, "", "/team");
     }
@@ -229,10 +243,27 @@ export default function OrgDashboard() {
 
   // ── Auth check ─────────────────────────────────────────────────────────────
 
-  if (overviewQuery.isLoading) {
+  if (overviewQuery.isLoading || (isPostPurchase && overviewQuery.isFetching)) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="text-slate-400 text-sm animate-pulse">Loading your dashboard...</div>
+      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center gap-4 px-6 text-center">
+        {isPostPurchase ? (
+          <>
+            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+              <Building2 className="w-6 h-6 text-blue-600 animate-pulse" />
+            </div>
+            <h1 className="text-xl font-semibold text-slate-900">Setting up your team…</h1>
+            <p className="text-slate-500 max-w-sm text-sm">
+              Your payment was received. We're provisioning your team dashboard — this usually takes a few seconds.
+            </p>
+            <div className="flex gap-1">
+              {[0, 1, 2].map(i => (
+                <div key={i} className="w-2 h-2 rounded-full bg-blue-400 animate-bounce" style={{ animationDelay: `${i * 0.15}s` }} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="text-slate-400 text-sm animate-pulse">Loading your dashboard...</div>
+        )}
       </div>
     );
   }
@@ -240,12 +271,17 @@ export default function OrgDashboard() {
   if (overviewQuery.error) {
     const msg = overviewQuery.error.message;
     const isUnauth = msg.includes("sign in") || msg.includes("manager account");
+    // P2b: if we arrived post-purchase and still can't load after retries, show a
+    // more helpful message rather than a generic sign-in prompt.
+    const isPostPurchaseTimeout = isPostPurchase && isUnauth;
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center gap-4 px-6 text-center">
         <Building2 className="w-12 h-12 text-slate-300" />
         <h1 className="text-xl font-semibold text-slate-900">Manager Dashboard</h1>
         <p className="text-slate-500 max-w-sm">
-          {isUnauth
+          {isPostPurchaseTimeout
+            ? "Your team is still being set up. Please sign in with your manager email — it may take up to a minute after purchase."
+            : isUnauth
             ? "Please sign in with your manager email to access the team dashboard."
             : msg}
         </p>

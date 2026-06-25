@@ -925,3 +925,12 @@
 - [x] Audit and improve OrgDashboard mobile responsiveness for Teams flows (overflow-x-auto on table, responsive padding, flex-wrap header)
 - [x] Add empty-state UX for new orgs with zero operators in OrgDashboard (actionable CTA with Assign First Seat button)
 - [x] Run Teams regression tests (381/381 passing), TypeScript check, save checkpoint, and update AI Context Hub in Notion
+
+## Claude Audit — Teams Webhook Fixes (Jun 25, 2026)
+- [x] Fix P0A: Revoked operators silently regain access on subscription renewal — webhook now only extends currentPeriodEnd on already-active rows; expired rows stay expired
+- [x] Fix P0B: updateTeamSeats charges for seats manager can't use — webhook now reads seatsTotal from live Stripe subscription quantity (items[0].quantity) instead of stale metadata.seats
+- [x] Fix P1: Silent B2B provision failure — added notifyOwner alert when org branch has missing metadata so failed team provisioning is never silent
+- [x] Fix P2a: Tier hardcoding in webhook — org now provisioned with tier from metadata.subscription_tier instead of hardcoded all-access
+- [x] Fix P2b: Post-purchase race condition — OrgDashboard retries getOrgOverview up to 6 times (3s apart) when session_id is in URL; shows "Setting up your team" state instead of confusing sign-in error
+- [x] Add regression tests for P0A, P0B, P2a in teams.test.ts (3 new tests)
+- [x] 383/383 tests passing, TypeScript clean

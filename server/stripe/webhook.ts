@@ -190,14 +190,32 @@ export function registerStripeWebhook(app: Express) {
             const orgName = sub.metadata?.org_name ?? "Unknown Organization";
             const managerEmail = normalizeEmail(sub.metadata?.manager_email ?? "");
             const province = (sub.metadata?.subscription_province ?? "ontario") as SP;
-            const seats = parseInt(sub.metadata?.seats ?? "1", 10);
+            // P2a fix: honor the tier from subscription metadata instead of hardcoding all-access.
+            // The Teams UI always sends all-access, but direct API calls could send a class tier.
+            // Provisioning the wrong tier would give buyers access they didn't pay for.
+            const tier = (sub.metadata?.subscription_tier ?? "all-access") as ST;
+            // P0B fix: derive seats from the live Stripe subscription quantity, not metadata.seats.
+            // metadata.seats is set at checkout time and is never updated when updateTeamSeats runs,
+            // so reading it here would reset seatsTotal back to the original purchase quantity
+            // after every renewal or seat-change event.
+            const liveQuantity = sub.items?.data?.[0]?.quantity ?? null;
+            const metadataSeats = parseInt(sub.metadata?.seats ?? "1", 10);
+            const seats = liveQuantity ?? metadataSeats;
             const stripeSubscriptionId = sub.id;
             const stripeCustomerId = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
             const { currentPeriodEnd } = getSubscriptionPeriod(sub);
             const status = sub.status === "active" ? "active" : sub.status === "past_due" ? "past_due" : "cancelled";
 
             if (!managerEmail || !currentPeriodEnd) {
-              console.warn(`[Stripe Webhook] Org subscription ${stripeSubscriptionId} missing manager_email or currentPeriodEnd`);
+              const missingOrgFields = [!managerEmail && 'manager_email', !currentPeriodEnd && 'currentPeriodEnd'].filter(Boolean).join(', ');
+              console.warn(`[Stripe Webhook] Org subscription ${stripeSubscriptionId} missing required fields: ${missingOrgFields}`);
+              // P1 fix: alert owner so a failed B2B provision is never silent.
+              // Previously this returned quietly with no notification — a paying team buyer
+              // could get nothing and nobody would know.
+              notifyOwner({
+                title: '⚠️ Team Provision Failed: Missing Metadata',
+                content: `Org subscription ${stripeSubscriptionId} (customer: ${stripeCustomerId}) could NOT be provisioned because required fields are missing: ${missingOrgFields}.\n\nThis means the team buyer has paid but NO org was created and NO manager seat was granted.\n\nAction required:\n1. Look up subscription ${stripeSubscriptionId} in Stripe Dashboard\n2. Identify the manager email and org name\n3. Manually create the org in Admin or re-trigger the webhook\n4. Confirm the manager has dashboard access`,
+              }).catch((notifyErr) => { console.error('[webhook] notifyOwner failed:', notifyErr); });
               return res.json({ received: true });
             }
 
@@ -214,7 +232,7 @@ export function registerStripeWebhook(app: Express) {
               const [insertResult] = await db.insert(organizations).values({
                 name: orgName,
                 province,
-                tier: "all-access",
+                tier,
                 seatsTotal: seats,
                 managerEmail,
                 stripeSubscriptionId,
@@ -229,7 +247,7 @@ export function registerStripeWebhook(app: Express) {
               console.log(`[Stripe Webhook] Org created: ${orgName} (${orgId}) manager=${managerEmail} seats=${seats}`);
               await notifyOwner({
                 title: `New Team Plan: ${orgName}`,
-                content: `${managerEmail} purchased a ${seats}-seat All-Access team plan for ${province}. Org ID: ${orgId}. Expires: ${currentPeriodEnd.toISOString()}`,
+                content: `${managerEmail} purchased a ${seats}-seat ${tier} team plan for ${province}. Org ID: ${orgId}. Expires: ${currentPeriodEnd.toISOString()}`,
               });
             } else {
               // Existing org — sync seats, termEnd, status
@@ -238,11 +256,24 @@ export function registerStripeWebhook(app: Express) {
                 .update(organizations)
                 .set({ seatsTotal: seats, termEnd: currentPeriodEnd, status })
                 .where(eq(organizations.id, orgId));
-              // Sync termEnd on all active org-managed subscriptions
-              await db
-                .update(subscriptions)
-                .set({ currentPeriodEnd, status: status === "active" ? "active" : "expired" })
-                .where(and(eq(subscriptions.orgId, orgId)));
+              // Sync termEnd on org-managed subscriptions.
+              // IMPORTANT: when org is active, only extend rows that are already 'active'.
+              // Do NOT touch 'expired' rows — those are deliberately revoked operators.
+              // Only blanket-expire everything when the org itself goes inactive.
+              if (status === "active" || status === "past_due") {
+                // Org is still live (active or grace period) — only extend already-active rows.
+                // Never touch 'expired' rows: those are deliberately revoked operators.
+                await db
+                  .update(subscriptions)
+                  .set({ currentPeriodEnd })
+                  .where(and(eq(subscriptions.orgId, orgId), eq(subscriptions.status, "active")));
+              } else {
+                // Org cancelled — expire all managed operator rows
+                await db
+                  .update(subscriptions)
+                  .set({ currentPeriodEnd, status: "expired" })
+                  .where(eq(subscriptions.orgId, orgId));
+              }
               console.log(`[Stripe Webhook] Org updated: ${orgId} seats=${seats} status=${status}`);
             }
             return res.json({ received: true });

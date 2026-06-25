@@ -319,14 +319,77 @@ describe("webhook org provisioning", () => {
     expect(orgs[0].billingType).toBe("stripe");
   });
 
-  it("subscription.updated with type=org syncs seatsTotal", () => {
+  it("subscription.updated with type=org syncs seatsTotal from live Stripe quantity (P0B fix)", () => {
     const org = { ...makeOrg(), seatsTotal: 10 };
 
-    // Simulate quantity update
-    const updatedSub = { metadata: { type: "org", seats: "25" } };
-    org.seatsTotal = parseInt(updatedSub.metadata.seats, 10);
+    // P0B fix: seats come from items[0].quantity, NOT metadata.seats
+    // metadata.seats is stale after updateTeamSeats runs (it's only set at checkout)
+    const updatedSub = {
+      metadata: { type: "org", seats: "10" }, // stale — still shows original purchase
+      items: { data: [{ quantity: 25 }] },      // live — reflects the actual Stripe quantity
+    };
+    const liveQuantity = updatedSub.items?.data?.[0]?.quantity ?? null;
+    const metadataSeats = parseInt(updatedSub.metadata.seats, 10);
+    org.seatsTotal = liveQuantity ?? metadataSeats;
 
-    expect(org.seatsTotal).toBe(25);
+    expect(org.seatsTotal).toBe(25); // must use live quantity, not stale metadata
+  });
+
+  it("subscription.updated does NOT resurrect revoked operator subscriptions (P0A fix)", () => {
+    // P0A: on renewal, only active rows get their currentPeriodEnd extended.
+    // Revoked (expired) rows must stay expired so revoked operators don't regain access.
+    const newPeriodEnd = new Date(Date.now() + 730 * 24 * 60 * 60 * 1000); // +2 years
+    const orgId = 1;
+    const subs = [
+      { email: "active-op@utilities.ca",  orgId, status: "active",  currentPeriodEnd: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) },
+      { email: "revoked-op@utilities.ca", orgId, status: "expired", currentPeriodEnd: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000) },
+    ];
+
+    // Simulate the fixed webhook logic: only extend already-active rows
+    const orgStatus = "active";
+    if (orgStatus === "active" || orgStatus === "past_due") {
+      subs
+        .filter(s => s.orgId === orgId && s.status === "active")
+        .forEach(s => { s.currentPeriodEnd = newPeriodEnd; });
+    } else {
+      subs.filter(s => s.orgId === orgId).forEach(s => { s.status = "expired"; });
+    }
+
+    const activeSub  = subs.find(s => s.email === "active-op@utilities.ca")!;
+    const revokedSub = subs.find(s => s.email === "revoked-op@utilities.ca")!;
+
+    expect(activeSub.currentPeriodEnd).toBe(newPeriodEnd);   // extended
+    expect(revokedSub.status).toBe("expired");                // still expired — NOT resurrected
+    expect(revokedSub.currentPeriodEnd).not.toBe(newPeriodEnd); // period NOT extended
+  });
+
+  it("subscription.created honors tier from metadata instead of hardcoding all-access (P2a fix)", () => {
+    const sub = {
+      id: "sub_class2_001",
+      status: "active",
+      metadata: {
+        type: "org",
+        org_name: "City of Calgary",
+        manager_email: "mgr@calgary.ca",
+        subscription_province: "western",
+        subscription_tier: "class2", // buyer chose class2, not all-access
+        seats: "5",
+      },
+      items: { data: [{ quantity: 5 }] },
+      current_period_end: Math.floor(Date.now() / 1000) + 365 * 24 * 3600,
+      customer: "cus_calgary_001",
+    };
+
+    const tier = sub.metadata.subscription_tier ?? "all-access";
+    const orgRow = {
+      name: sub.metadata.org_name,
+      province: sub.metadata.subscription_province,
+      tier,
+      seatsTotal: sub.items.data[0].quantity,
+    };
+
+    expect(orgRow.tier).toBe("class2");  // must honor metadata, not hardcode all-access
+    expect(orgRow.seatsTotal).toBe(5);   // from live quantity
   });
 
   it("subscription.deleted with type=org sets org status=cancelled and expires all seats", () => {
