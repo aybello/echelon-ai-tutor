@@ -817,7 +817,16 @@ export default function OrgDashboard() {
       </main>
 
       {/* Assign Seat modal */}
-      <Dialog open={assignOpen} onOpenChange={setAssignOpen}>
+      <Dialog open={assignOpen} onOpenChange={(open) => {
+        setAssignOpen(open);
+        if (!open) {
+          setAssignEmail("");
+          setAssignName("");
+          setAssignCourseKeys([]);
+          setBulkMode(false);
+          setBulkEmails("");
+        }
+      }}>
         <DialogContent className="bg-white border-slate-200 max-w-md">
           <DialogHeader>
             <DialogTitle className="text-slate-900">Assign Seat</DialogTitle>
