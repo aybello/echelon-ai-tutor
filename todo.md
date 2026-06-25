@@ -920,3 +920,8 @@
 - [x] Update createSubscriptionCheckout to require email + phone, pass all fields via metadata
 - [x] Update webhook to store new fields on insert
 - [x] Update frontend subscription checkout modal to require email and phone
+- [x] Fix Teams seat-cap race condition in assignSeat and assignSeats using atomic transaction-safe logic
+- [x] Fix Teams province-aware course option matching — confirmed consistent, no bug (province values are 'ontario'/'western' throughout)
+- [x] Audit and improve OrgDashboard mobile responsiveness for Teams flows (overflow-x-auto on table, responsive padding, flex-wrap header)
+- [x] Add empty-state UX for new orgs with zero operators in OrgDashboard (actionable CTA with Assign First Seat button)
+- [x] Run Teams regression tests (381/381 passing), TypeScript check, save checkpoint, and update AI Context Hub in Notion

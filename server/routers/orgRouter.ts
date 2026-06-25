@@ -668,26 +668,48 @@ export const orgRouter = router({
       const email = normalizeEmail(input.email);
       const name = input.name?.trim() || undefined;
 
-      // Seat cap check
-      const [{ cnt }] = await db
-        .select({ cnt: count() })
-        .from(organizationMembers)
-        .where(
-          and(
-            eq(organizationMembers.orgId, orgId),
-            eq(organizationMembers.role, "operator"),
-            eq(organizationMembers.status, "assigned"),
-          ),
-        );
+      // Atomic seat cap check + grant inside a transaction to prevent race conditions.
+      // Both the count read and the insert/update happen in the same transaction so
+      // two concurrent requests cannot both pass the cap check and both write a new row.
+      await db.transaction(async (tx) => {
+        // If this email is already an active operator, this is a re-assignment
+        // (e.g. updating courses). It does not consume a new seat, so skip the cap check.
+        const [existingActive] = await tx
+          .select({ id: organizationMembers.id })
+          .from(organizationMembers)
+          .where(
+            and(
+              eq(organizationMembers.orgId, orgId),
+              eq(organizationMembers.email, email),
+              eq(organizationMembers.role, "operator"),
+              eq(organizationMembers.status, "assigned"),
+            ),
+          )
+          .limit(1);
 
-      if (Number(cnt) >= org.seatsTotal) {
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: `Seat limit reached (${org.seatsTotal} seats). Add more seats to assign additional operators.`,
-        });
-      }
+        if (!existingActive) {
+          // New seat — enforce cap atomically inside the transaction
+          const [{ cnt }] = await tx
+            .select({ cnt: count() })
+            .from(organizationMembers)
+            .where(
+              and(
+                eq(organizationMembers.orgId, orgId),
+                eq(organizationMembers.role, "operator"),
+                eq(organizationMembers.status, "assigned"),
+              ),
+            );
 
-      await grantSeat(db, org, email, "operator", managerEmail, name, input.courseKey, input.courseKeys);
+          if (Number(cnt) >= org.seatsTotal) {
+            throw new TRPCError({
+              code: "BAD_REQUEST",
+              message: `Seat limit reached (${org.seatsTotal} seats). Add more seats to assign additional operators.`,
+            });
+          }
+        }
+
+        await grantSeat(tx as any, org, email, "operator", managerEmail, name, input.courseKey, input.courseKeys);
+      });
       return { success: true, email };
     }),
 
@@ -821,51 +843,56 @@ export const orgRouter = router({
       const emails = input.emails.map(normalizeEmail);
       const uniqueEmails = Array.from(new Set(emails));
 
-      // Seat cap check
-      const [{ cnt }] = await db
-        .select({ cnt: count() })
-        .from(organizationMembers)
-        .where(
-          and(
-            eq(organizationMembers.orgId, orgId),
-            eq(organizationMembers.role, "operator"),
-            eq(organizationMembers.status, "assigned"),
-          ),
-        );
-
-      const currentActive = Number(cnt);
-      // Bug fix: replaced sql.raw(emailListSql) with inArray() to prevent SQL injection
-      const alreadyActive = await db
-        .select({ email: organizationMembers.email })
-        .from(organizationMembers)
-        .where(
-          and(
-            eq(organizationMembers.orgId, orgId),
-            eq(organizationMembers.role, "operator"),
-            eq(organizationMembers.status, "assigned"),
-            inArray(organizationMembers.email, uniqueEmails),
-          ),
-        );
-      const alreadyActiveSet = new Set(alreadyActive.map(r => r.email));
-      const newSeatsNeeded = uniqueEmails.filter(e => !alreadyActiveSet.has(e)).length;
-
-      if (currentActive + newSeatsNeeded > org.seatsTotal) {
-        const available = org.seatsTotal - currentActive;
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: `Not enough seats. You have ${available} seat${available === 1 ? "" : "s"} available but are trying to assign ${newSeatsNeeded} new operator${newSeatsNeeded === 1 ? "" : "s"}. Add more seats first.`,
-        });
-      }
-
+      // Atomic seat cap check + bulk grant inside a transaction to prevent race conditions.
+      // The count read, the already-active check, and all grantSeat calls happen in one
+      // transaction so a concurrent single-assign cannot sneak past the cap.
       const results: Array<{ email: string; success: boolean; error?: string }> = [];
-      for (const email of uniqueEmails) {
-        try {
-          await grantSeat(db, org, email, "operator", managerEmail);
-          results.push({ email, success: true });
-        } catch (err: any) {
-          results.push({ email, success: false, error: err.message });
+      await db.transaction(async (tx) => {
+        // Re-read count inside the transaction
+        const [{ cnt }] = await tx
+          .select({ cnt: count() })
+          .from(organizationMembers)
+          .where(
+            and(
+              eq(organizationMembers.orgId, orgId),
+              eq(organizationMembers.role, "operator"),
+              eq(organizationMembers.status, "assigned"),
+            ),
+          );
+
+        const currentActive = Number(cnt);
+        // Bug fix: replaced sql.raw(emailListSql) with inArray() to prevent SQL injection
+        const alreadyActive = await tx
+          .select({ email: organizationMembers.email })
+          .from(organizationMembers)
+          .where(
+            and(
+              eq(organizationMembers.orgId, orgId),
+              eq(organizationMembers.role, "operator"),
+              eq(organizationMembers.status, "assigned"),
+              inArray(organizationMembers.email, uniqueEmails),
+            ),
+          );
+        const alreadyActiveSet = new Set(alreadyActive.map(r => r.email));
+        const newSeatsNeeded = uniqueEmails.filter(e => !alreadyActiveSet.has(e)).length;
+
+        if (currentActive + newSeatsNeeded > org.seatsTotal) {
+          const available = org.seatsTotal - currentActive;
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: `Not enough seats. You have ${available} seat${available === 1 ? "" : "s"} available but are trying to assign ${newSeatsNeeded} new operator${newSeatsNeeded === 1 ? "" : "s"}. Add more seats first.`,
+          });
         }
-      }
+
+        for (const email of uniqueEmails) {
+          try {
+            await grantSeat(tx as any, org, email, "operator", managerEmail);
+            results.push({ email, success: true });
+          } catch (err: any) {
+            results.push({ email, success: false, error: err.message });
+          }
+        }
+      });
 
       return { results };
     }),
