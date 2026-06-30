@@ -1269,11 +1269,12 @@ export default function Pricing() {
                         </div>
                         <div style={{ fontSize: 12, color: "#64748B", marginTop: 4 }}>{tier.tagline}</div>
                       </div>
-                      <ul style={{ margin: 0, padding: "0 0 0 14px", fontSize: 12, color: "#475569", lineHeight: 1.7 }}>
-                        {getSubscriptionExamTypes(tier.tier, subProvince).map(et => (
-                          <li key={et} style={{ color: "#334155" }}>{EXAM_LABELS[et] ?? et}</li>
-                        ))}
-                        <li style={{ marginTop: 4, color: "#7C3AED", fontWeight: 600 }}>+ AI Tutor, Flashcards & Mock Exams</li>
+                      <ul style={{ margin: 0, padding: "0 0 0 14px", fontSize: 12, color: "#475569", lineHeight: 1.8 }}>
+                        <li style={{ color: "#334155" }}>Water Treatment &amp; Wastewater Treatment</li>
+                        <li style={{ color: "#334155" }}>Water Distribution &amp; Wastewater Collection</li>
+                        {tier.tier === "class4" && subProvince === "ontario" && <li style={{ color: "#334155" }}>Water Quality Analyst (WQA)</li>}
+                        {tier.tier === "all-access" && <li style={{ color: "#334155" }}>All classes — OIT through Class 4</li>}
+                        <li style={{ color: "#7C3AED", fontWeight: 600 }}>+ AI Tutor, Flashcards &amp; Mock Exams</li>
                       </ul>
                       {isActivePlan ? (
                         <Link href="/account">
