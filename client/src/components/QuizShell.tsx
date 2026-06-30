@@ -21,6 +21,7 @@ import StepSolution from "@/components/StepSolution";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import FeedbackModal from "@/components/FeedbackModal";
 import { Link } from "wouter";
+import { trpc } from "@/lib/trpc";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -195,6 +196,14 @@ export default function QuizShell({
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
+  const [bookmarked, setBookmarked] = useState(false);
+  const toggleBookmarkMutation = trpc.dashboard.toggleBookmark.useMutation({
+    onSuccess: (data) => {
+      setBookmarked(data.bookmarked);
+      toast(data.bookmarked ? "🔖 Bookmarked" : "Bookmark removed");
+    },
+    onError: () => toast.error("Could not save bookmark — please try again."),
+  });
 
   // ── Session-complete feedback modal ──────────────────────────────────────────
   const [showSessionFeedback, setShowSessionFeedback] = useState(false);
@@ -247,6 +256,15 @@ export default function QuizShell({
 
   const timerPct = timedSeconds > 0 ? (timeLeft / timedSeconds) * 100 : 100;
   const timerColor = timerPct > 50 ? "#059669" : timerPct > 25 ? "#D97706" : "#DC2626";
+
+  // Reset bookmark state when question changes
+  const prevQuestionId = useRef<number | undefined>(undefined);
+  useEffect(() => {
+    if (current?.id !== prevQuestionId.current) {
+      setBookmarked(false);
+      prevQuestionId.current = current?.id;
+    }
+  }, [current?.id]);
 
   const progress = sessionSize ? Math.min(100, (history.length / sessionSize) * 100) : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
@@ -1043,22 +1061,47 @@ export default function QuizShell({
               </a>
             )}
 
-            <button
-              onClick={() => setReportModalOpen(true)}
-              style={{
-                display: "block",
-                marginTop: 10,
-                background: "none",
-                border: "none",
-                fontSize: 11,
-                color: "#94A3B8",
-                cursor: "pointer",
-                fontFamily: "inherit",
-                padding: 0,
-              }}
-            >
-              Report an error with this question
-            </button>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 10 }}>
+              <button
+                onClick={() => setReportModalOpen(true)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  fontSize: 11,
+                  color: "#94A3B8",
+                  cursor: "pointer",
+                  fontFamily: "inherit",
+                  padding: 0,
+                }}
+              >
+                Report an error with this question
+              </button>
+              {current?.id && (
+                <button
+                  onClick={() => {
+                    if (!current?.id) return;
+                    toggleBookmarkMutation.mutate({ questionId: current.id });
+                  }}
+                  disabled={toggleBookmarkMutation.isPending}
+                  style={{
+                    background: bookmarked ? "#EFF6FF" : "none",
+                    border: bookmarked ? "1px solid #BFDBFE" : "1px solid #E2E8F0",
+                    borderRadius: 6,
+                    padding: "3px 10px",
+                    fontSize: 11,
+                    color: bookmarked ? "#2563EB" : "#94A3B8",
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 4,
+                    fontWeight: bookmarked ? 700 : 400,
+                  }}
+                >
+                  {bookmarked ? "🔖 Bookmarked" : "📑 Bookmark"}
+                </button>
+              )}
+            </div>
           </div>
         )}
 

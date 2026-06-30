@@ -146,6 +146,8 @@ export default function StudentDashboard() {
   const examCountdown = trpc.dashboard.examCountdown.useQuery(undefined, { enabled: hasAccess, retry: false });
   const aiSessions = trpc.dashboard.aiSessionHistory.useQuery(undefined, { enabled: hasAccess, retry: false });
   const recommendedResources = trpc.dashboard.recommendedResources.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const readinessScore = trpc.dashboard.readinessScore.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const studyPlan = trpc.dashboard.studyPlan.useQuery(undefined, { enabled: hasAccess, retry: false });
 
   /* ── Activity chart data (last 30 days) ── */
   const activityChartData = useMemo(() => {
@@ -450,6 +452,129 @@ export default function StudentDashboard() {
           <StatCard label="Longest Streak" value={isLoading ? "—" : `${stats?.longestStreak ?? 0} days`} icon="🏆" color={TEAL} />
         </div>
 
+        {/* ── Readiness Score + Study Plan ── */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
+          {/* Readiness Score Card */}
+          <div style={{ background: SLATE_800, borderRadius: 14, padding: "20px 22px", border: "1px solid #E2E8F0" }}>
+            <div style={{ color: "#94A3B8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 14 }}>Exam Readiness</div>
+            {readinessScore.isLoading ? (
+              <Skeleton height={120} />
+            ) : !readinessScore.data ? (
+              <div style={{ color: "#94A3B8", fontSize: 13 }}>Start practicing to see your readiness score.</div>
+            ) : (
+              <>
+                <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 14 }}>
+                  {/* Ring */}
+                  <div style={{ position: "relative", width: 80, height: 80, flexShrink: 0 }}>
+                    <svg viewBox="0 0 80 80" style={{ width: 80, height: 80, transform: "rotate(-90deg)" }}>
+                      <circle cx="40" cy="40" r="32" fill="none" stroke="#E2E8F0" strokeWidth="8" />
+                      <circle
+                        cx="40" cy="40" r="32" fill="none"
+                        stroke={
+                          (readinessScore.data.score ?? 0) >= 75 ? GREEN :
+                          (readinessScore.data.score ?? 0) >= 60 ? TEAL :
+                          (readinessScore.data.score ?? 0) >= 40 ? AMBER : RED
+                        }
+                        strokeWidth="8"
+                        strokeLinecap="round"
+                        strokeDasharray={`${2 * Math.PI * 32}`}
+                        strokeDashoffset={`${2 * Math.PI * 32 * (1 - (readinessScore.data.score ?? 0) / 100)}`}
+                      />
+                    </svg>
+                    <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <span style={{ fontSize: 18, fontWeight: 900, color: "#1E293B" }}>{readinessScore.data.score}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div style={{
+                      fontSize: 14, fontWeight: 800, marginBottom: 4,
+                      color: (readinessScore.data.score ?? 0) >= 75 ? GREEN : (readinessScore.data.score ?? 0) >= 60 ? TEAL : (readinessScore.data.score ?? 0) >= 40 ? AMBER : RED,
+                    }}>{readinessScore.data.label}</div>
+                    <div style={{ color: "#64748B", fontSize: 12, lineHeight: 1.5 }}>{readinessScore.data.description}</div>
+                  </div>
+                </div>
+                {/* Breakdown bars */}
+                {readinessScore.data.hasData && (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    {([
+                      { label: "Recent Accuracy", value: readinessScore.data.breakdown.recentAccuracy, weight: "30%" },
+                      { label: "Mock Exam", value: readinessScore.data.breakdown.mockAccuracy, weight: "25%" },
+                      { label: "Topic Coverage", value: readinessScore.data.breakdown.topicCoverage, weight: "20%" },
+                      { label: "Study Frequency", value: readinessScore.data.breakdown.studyFrequency, weight: "15%" },
+                    ] as const).map((b) => (
+                      <div key={b.label}>
+                        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
+                          <span style={{ color: "#64748B", fontSize: 11 }}>{b.label} <span style={{ color: "#CBD5E1" }}>({b.weight})</span></span>
+                          <span style={{ color: "#1E293B", fontSize: 11, fontWeight: 700 }}>{b.value}%</span>
+                        </div>
+                        <div style={{ height: 4, borderRadius: 2, background: "#E2E8F0", overflow: "hidden" }}>
+                          <div style={{ height: "100%", width: `${b.value}%`, borderRadius: 2, background: b.value >= 70 ? GREEN : b.value >= 50 ? TEAL : b.value >= 30 ? AMBER : RED }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                <div style={{ marginTop: 12, padding: "8px 12px", background: BLUE + "15", borderRadius: 8, color: BLUE, fontSize: 12, fontWeight: 600 }}>
+                  💡 {readinessScore.data.nextAction}
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* Study Plan Card */}
+          <div style={{ background: SLATE_800, borderRadius: 14, padding: "20px 22px", border: "1px solid #E2E8F0" }}>
+            <div style={{ color: "#94A3B8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 14 }}>Recommended Study Plan</div>
+            {studyPlan.isLoading ? (
+              <Skeleton height={120} />
+            ) : !studyPlan.data || studyPlan.data.recommendations.length === 0 ? (
+              <div style={{ color: "#94A3B8", fontSize: 13 }}>Complete some questions to get personalized recommendations.</div>
+            ) : (
+              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                {studyPlan.data.recommendations.map((rec, i) => {
+                  const iconMap: Record<string, string> = {
+                    weak_topic: "⚠️", missed_review: "❌", low_confidence: "😰",
+                    bookmarked: "🔖", mock_exam: "📋", start_practicing: "🚀",
+                  };
+                  const colorMap: Record<string, string> = {
+                    weak_topic: RED, missed_review: AMBER, low_confidence: AMBER,
+                    bookmarked: BLUE, mock_exam: TEAL, start_practicing: GREEN,
+                  };
+                  const color = colorMap[rec.type] ?? BLUE;
+                  return (
+                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 12px", background: color + "10", borderRadius: 10, border: `1px solid ${color}22` }}>
+                      <span style={{ fontSize: 16, flexShrink: 0, marginTop: 1 }}>{iconMap[rec.type] ?? "📌"}</span>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ color: "#1E293B", fontSize: 13, fontWeight: 700, marginBottom: 2 }}>{rec.title}</div>
+                        <div style={{ color: "#64748B", fontSize: 12, lineHeight: 1.4 }}>{rec.description}</div>
+                      </div>
+                    </div>
+                  );
+                })}
+                {/* Review Modes quick-launch */}
+                {(studyPlan.data.totalMissed > 0 || studyPlan.data.totalLowConf > 0 || studyPlan.data.totalBookmarked > 0) && (
+                  <div style={{ marginTop: 4, display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    {studyPlan.data.totalMissed > 0 && (
+                      <a href="/?mode=missed" style={{ padding: "5px 12px", borderRadius: 7, background: AMBER + "20", color: AMBER, fontSize: 12, fontWeight: 700, textDecoration: "none", border: `1px solid ${AMBER}33` }}>
+                        ❌ Review Missed ({studyPlan.data.totalMissed})
+                      </a>
+                    )}
+                    {studyPlan.data.totalBookmarked > 0 && (
+                      <a href="/?mode=bookmarked" style={{ padding: "5px 12px", borderRadius: 7, background: BLUE + "20", color: BLUE, fontSize: 12, fontWeight: 700, textDecoration: "none", border: `1px solid ${BLUE}33` }}>
+                        🔖 Bookmarks ({studyPlan.data.totalBookmarked})
+                      </a>
+                    )}
+                    {studyPlan.data.totalLowConf > 0 && (
+                      <a href="/?mode=low-confidence" style={{ padding: "5px 12px", borderRadius: 7, background: RED + "20", color: RED, fontSize: 12, fontWeight: 700, textDecoration: "none", border: `1px solid ${RED}33` }}>
+                        😰 Low Confidence ({studyPlan.data.totalLowConf})
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* ── Weak Topics Focus ── */}
         {topicAccuracy.data && topicAccuracy.data.topics?.length > 0 && (() => {
           const weak = topicAccuracy.data.topics
@@ -508,8 +633,25 @@ export default function StudentDashboard() {
                         />
                       </div>
                       <div style={{ color: "#64748B", fontSize: 11, marginTop: 6 }}>
-                        {t.correct}/{t.total} correct \u00B7 Needs review
+                        {t.correct}/{t.total} correct · Needs review
                       </div>
+                      <a
+                        href={`/?topic=${encodeURIComponent(t.topic)}`}
+                        style={{
+                          display: "inline-block",
+                          marginTop: 8,
+                          padding: "4px 10px",
+                          borderRadius: 6,
+                          fontSize: 11,
+                          fontWeight: 700,
+                          background: acc < 40 ? RED + "15" : AMBER + "15",
+                          color: acc < 40 ? RED : AMBER,
+                          textDecoration: "none",
+                          border: `1px solid ${acc < 40 ? RED : AMBER}33`,
+                        }}
+                      >
+                        Practice this topic →
+                      </a>
                     </div>
                   );
                 })}

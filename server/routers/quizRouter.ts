@@ -262,11 +262,15 @@ export const quizRouter = router({
         questionId: z.number().int().positive(),
         correct: z.boolean(),
         difficulty: z.string().max(16).optional().nullable(),
-        quizMode: z.enum(["standard", "quick10", "missed", "qotd"]).default("standard"),
+        quizMode: z.enum(["standard", "quick10", "missed", "qotd", "mock", "bookmarked", "low-confidence"]).default("standard"),
         guestToken: z.string().max(64).optional(),
         studentEmail: z.string().email().optional(), // purchase/trial email for non-OAuth users
         /** Issue Q: client-generated UUID for the quiz session. Nullable for legacy clients. */
         sessionId: z.string().uuid().optional().nullable(),
+        /** Confidence self-rating — set by the student after answering. */
+        confidence: z.enum(["low", "medium", "high"]).optional().nullable(),
+        /** Bookmarked — student can flag a question for later review. */
+        bookmarked: z.boolean().optional(),
       })
     )
     .mutation(async ({ input, ctx }) => {
@@ -299,6 +303,8 @@ export const quizRouter = router({
           difficulty: input.difficulty ?? null,
           quizMode: input.quizMode,
           sessionId: input.sessionId ?? null,
+          confidence: input.confidence ?? null,
+          bookmarked: input.bookmarked ? "yes" : "no",
         });
 
         // Update student profile if authenticated (OAuth user) or email-verified (OTP session)

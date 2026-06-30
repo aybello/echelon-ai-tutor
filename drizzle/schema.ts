@@ -191,6 +191,10 @@ export const questionAttempts = mysqlTable("question_attempts", {
   correct: mysqlEnum("correct", ["yes", "no"]).notNull(),
   difficulty: varchar("difficulty", { length: 16 }), // 'easy' | 'medium' | 'hard'
   quizMode: varchar("quizMode", { length: 32 }).default("standard"), // 'standard' | 'quick10' | 'missed' | 'qotd'
+  /** Confidence self-rating — set by the student after answering. Used in readiness scoring and review prioritization. */
+  confidence: mysqlEnum("confidence", ["low", "medium", "high"]),
+  /** Bookmarked — student can flag a question for later review. */
+  bookmarked: mysqlEnum("bookmarked", ["yes", "no"]).default("no"),
   /** Issue Q: client-generated UUID identifying the quiz session this attempt belongs to.
    *  Nullable for historic rows; new rows always include it. */
   sessionId: varchar("sessionId", { length: 36 }),

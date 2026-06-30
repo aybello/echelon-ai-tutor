@@ -155,8 +155,14 @@ export function useQuizSession({
 }: UseQuizSessionConfig): UseQuizSessionReturn {
   // ── URL params ─────────────────────────────────────────────────────────────
   const searchString = useSearch();
-  const initialCalcOnly =
-    new URLSearchParams(searchString).get("calcOnly") === "true";
+  const _urlParams = new URLSearchParams(searchString);
+  const initialCalcOnly = _urlParams.get("calcOnly") === "true";
+  const initialMode = (() => {
+    const m = _urlParams.get("mode");
+    if (m === "missed" || m === "bookmarked" || m === "low-confidence" || m === "quick10") return m as QuizMode;
+    return "standard" as QuizMode;
+  })();
+  const initialTopic = _urlParams.get("topic") ?? null;
 
   // ── Core state ─────────────────────────────────────────────────────────────
   const [history, setHistory] = useState<HistoryEntry[]>([]);
@@ -176,7 +182,7 @@ export function useQuizSession({
   const [confirmed, setConfirmed] = useState(false);
   const [showSteps, setShowSteps] = useState(false);
   const [tutorOpen, setTutorOpenState] = useState(false);
-  const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [selectedModule, setSelectedModule] = useState<string | null>(initialTopic);
   const [calcOnly, setCalcOnly] = useState(initialCalcOnly);
   const [initialized, setInitialized] = useState(false);
 
@@ -217,7 +223,7 @@ export function useQuizSession({
   }, [accessData?.hasAccess, trialUnlocked]);
 
   // ── Quiz mode & settings ───────────────────────────────────────────────────
-  const [quizMode, setQuizMode] = useState<QuizMode>("standard");
+  const [quizMode, setQuizMode] = useState<QuizMode>(initialMode);
   const [quizSettings, setQuizSettings] =
     useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -231,6 +237,20 @@ export function useQuizSession({
       { refetchOnWindowFocus: false },
     );
   const missedCount = missedData?.total ?? 0;
+
+  // ── Bookmarked questions data ──────────────────────────────────────────────
+  const { data: bookmarkedData } = trpc.dashboard.bookmarkedQuestions.useQuery(
+    { examType },
+    { enabled: quizMode === "bookmarked", refetchOnWindowFocus: false },
+  );
+  const bookmarkedIds = useMemo(() => new Set((bookmarkedData ?? []).map(r => r.questionId).filter((id): id is number => id != null)), [bookmarkedData]);
+
+  // ── Low-confidence questions data ─────────────────────────────────────────
+  const { data: lowConfidenceData } = trpc.dashboard.missedQuestions.useQuery(
+    { examType, limit: 100 },
+    { enabled: quizMode === "low-confidence", refetchOnWindowFocus: false },
+  );
+  const lowConfidenceIds = useMemo(() => new Set((lowConfidenceData ?? []).map(r => r.questionId).filter((id): id is number => id != null)), [lowConfidenceData]);
 
   // ── Progress persistence: seed usedIds from previously-mastered questions ──
   const { data: attemptStats } = trpc.quiz.getAttemptStats.useQuery(
@@ -275,6 +295,10 @@ export function useQuizSession({
       qs = allQuestions.filter(
         (q) => missedSet.has(q.id) && !usedIds.has(q.id),
       );
+    } else if (quizMode === "bookmarked" && bookmarkedIds.size > 0) {
+      qs = allQuestions.filter((q) => bookmarkedIds.has(q.id) && !usedIds.has(q.id));
+    } else if (quizMode === "low-confidence" && lowConfidenceIds.size > 0) {
+      qs = allQuestions.filter((q) => lowConfidenceIds.has(q.id) && !usedIds.has(q.id));
     } else {
       if (selectedModule)
         qs = qs.filter((q) => q.module === selectedModule);
@@ -287,7 +311,7 @@ export function useQuizSession({
       if (filtered.length > 0) qs = filtered;
     }
     return qs;
-  }, [allQuestions, usedIds, selectedModule, calcOnly, quizMode, missedIds, quizSettings.difficulty]);
+  }, [allQuestions, usedIds, selectedModule, calcOnly, quizMode, missedIds, bookmarkedIds, lowConfidenceIds, quizSettings.difficulty]);
 
   // ── Clear UI state helper ──────────────────────────────────────────────────
   const clearUI = useCallback(() => {
@@ -351,12 +375,17 @@ export function useQuizSession({
     setConfirmed(true);
     setShowSteps(false);
 
+    // Map numeric confidence (0-100 from ConfidenceMeter) to 1/2/3 level
+    const confLevel = confidence != null
+      ? (confidence <= 33 ? 1 : confidence <= 66 ? 2 : 3)
+      : null;
     // Log attempt to backend
     logAttemptFn({
       topic: current.module,
       questionId: current.id,
       correct: isCorrect,
       difficulty: current.difficulty ?? undefined,
+      confidenceLevel: confLevel,
     });
 
     // Refetch missed questions if wrong
@@ -612,11 +641,16 @@ export function useQuizSession({
 
     setHistory((h) => [...h, entry]);
     setUsedIds((s) => new Set([...Array.from(s), current.id]));
+    // Map numeric confidence (1-3 scale from ConfidenceMeter) to level
+    const confLevel = latestConfidence != null
+      ? (latestConfidence <= 33 ? 1 : latestConfidence <= 66 ? 2 : 3)
+      : null;
     logAttemptFn({
       topic: current.module,
       questionId: current.id,
       correct: isCorrect,
       difficulty: current.difficulty ?? undefined,
+      confidenceLevel: confLevel,
     });
     setSelectedState(effectiveSelected);
     setConfidenceState(effectiveConfidence);

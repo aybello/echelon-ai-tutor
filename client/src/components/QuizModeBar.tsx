@@ -7,7 +7,7 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 
-export type QuizMode = "standard" | "quick10" | "missed";
+export type QuizMode = "standard" | "quick10" | "missed" | "bookmarked" | "low-confidence";
 
 interface QuizModeBarProps {
   examType: string;          // e.g. "oit" | "wpi-class1-water"
@@ -197,6 +197,9 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
     questionId: number;
     correct: boolean;
     difficulty?: string;
+    /** Confidence self-rating (1=low, 2=medium, 3=high) mapped to enum */
+    confidenceLevel?: number | null;
+    bookmarked?: boolean;
   }) {
     // Pass the student's purchase/trial email so attempts are linked to their account
     // even when they haven't signed in with OAuth
@@ -208,6 +211,9 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
         undefined;
     } catch { /* ignore */ }
 
+    const confidenceMap: Record<number, "low" | "medium" | "high"> = { 1: "low", 2: "medium", 3: "high" };
+    const confidence = params.confidenceLevel != null ? (confidenceMap[params.confidenceLevel] ?? null) : null;
+
     logAttempt.mutate({
       examType,
       topic: params.topic,
@@ -217,6 +223,8 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
       quizMode,
       studentEmail,
       sessionId,
+      confidence,
+      bookmarked: params.bookmarked ?? false,
     });
   };
 }

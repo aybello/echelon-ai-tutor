@@ -12,6 +12,7 @@ import { questionAttempts, studentProfiles, aiChatSessions, examDates } from "..
 import { and, eq, sql, desc, gte, or } from "drizzle-orm";
 import { getResourcesForProfile } from "../resourceIndex";
 import { TRPCError } from "@trpc/server";
+import { z } from "zod";
 
 /**
  * Resolves the dashboard identity from the tRPC context.
@@ -552,4 +553,328 @@ export const dashboardRouter = router({
       paceStatus,
     };
   }),
+
+  /**
+   * Exam Readiness Score — weighted composite score per examType.
+   *
+   * Weights: 30% recent accuracy | 25% mock accuracy | 20% topic coverage
+   *          15% study frequency | 10% recency bonus
+   */
+  readinessScore: publicProcedure
+    .input(z.object({ examType: z.string() }).optional())
+    .query(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      const db = await getDb();
+      if (!db) return null;
+
+      const examTypeFilter = input?.examType;
+      const thirtyDaysAgo = new Date();
+      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+      const sevenDaysAgo = new Date();
+      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+      const identityWhere = userId
+        ? eq(questionAttempts.userId, userId)
+        : eq(questionAttempts.studentEmail, email!);
+
+      // 1. Recent accuracy (last 30 days)
+      const recentRows = await db
+        .select({
+          total: sql<number>`COUNT(*)`,
+          correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+          activeDays: sql<number>`COUNT(DISTINCT DATE(${questionAttempts.createdAt}))`,
+          distinctTopics: sql<number>`COUNT(DISTINCT ${questionAttempts.topic})`,
+        })
+        .from(questionAttempts)
+        .where(
+          and(
+            identityWhere,
+            gte(questionAttempts.createdAt, thirtyDaysAgo),
+            examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined,
+          )
+        );
+
+      const recent = recentRows[0];
+      const recentTotal = Number(recent?.total ?? 0);
+      const recentCorrect = Number(recent?.correct ?? 0);
+      const activeDays = Number(recent?.activeDays ?? 0);
+      const distinctTopics = Number(recent?.distinctTopics ?? 0);
+      const recentAccuracy = recentTotal > 0 ? recentCorrect / recentTotal : 0;
+
+      // 2. Mock exam accuracy (last 3 mock sessions)
+      const mockRows = await db
+        .select({
+          sessionId: questionAttempts.sessionId,
+          total: sql<number>`COUNT(*)`,
+          correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+        })
+        .from(questionAttempts)
+        .where(
+          and(
+            identityWhere,
+            eq(questionAttempts.quizMode, "mock"),
+            examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined,
+          )
+        )
+        .groupBy(questionAttempts.sessionId)
+        .orderBy(desc(sql`MAX(${questionAttempts.createdAt})`))
+        .limit(3);
+
+      let mockAccuracy = 0;
+      if (mockRows.length > 0) {
+        const totalMockCorrect = mockRows.reduce((s, r) => s + Number(r.correct), 0);
+        const totalMockAttempts = mockRows.reduce((s, r) => s + Number(r.total), 0);
+        mockAccuracy = totalMockAttempts > 0 ? totalMockCorrect / totalMockAttempts : 0;
+      }
+
+      // 3. Topic coverage
+      const topicCountRows = await db
+        .select({ count: sql<number>`COUNT(DISTINCT ${questionAttempts.topic})` })
+        .from(questionAttempts)
+        .where(examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : sql`1=1`);
+      const totalTopicsInBank = Math.max(Number(topicCountRows[0]?.count ?? 1), 1);
+      const topicCoverage = Math.min(distinctTopics / totalTopicsInBank, 1);
+
+      // 4. Study frequency
+      const studyFrequency = Math.min(activeDays / 20, 1);
+
+      // 5. Recency bonus
+      const recentActiveRows = await db
+        .select({ count: sql<number>`COUNT(*)` })
+        .from(questionAttempts)
+        .where(
+          and(
+            identityWhere,
+            gte(questionAttempts.createdAt, sevenDaysAgo),
+            examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined,
+          )
+        );
+      const recentBonus = Number(recentActiveRows[0]?.count ?? 0) > 0 ? 1 : 0;
+
+      const rawScore =
+        recentAccuracy * 0.30 +
+        mockAccuracy   * 0.25 +
+        topicCoverage  * 0.20 +
+        studyFrequency * 0.15 +
+        recentBonus    * 0.10;
+
+      const score = Math.round(rawScore * 100);
+
+      let level: "not_ready" | "building" | "getting_close" | "likely_ready" | "exam_ready";
+      let label: string;
+      let description: string;
+      let nextAction: string;
+
+      if (score >= 85) {
+        level = "exam_ready"; label = "Exam-Ready";
+        description = "You're performing at a high level across all areas. Consider booking your exam.";
+        nextAction = "Take a full mock exam to confirm your readiness.";
+      } else if (score >= 75) {
+        level = "likely_ready"; label = "Likely Ready with Review";
+        description = "Strong performance overall. A focused review of weak topics will push you over the top.";
+        nextAction = "Review your weak topics, then take a mock exam.";
+      } else if (score >= 60) {
+        level = "getting_close"; label = "Getting Close";
+        description = "Good progress. Keep studying consistently and focus on your weakest areas.";
+        nextAction = "Practice 20 questions on your weakest topic today.";
+      } else if (score >= 40) {
+        level = "building"; label = "Building Foundation";
+        description = "You're making progress. Consistent daily practice will accelerate your readiness.";
+        nextAction = "Aim for 15–20 questions per day across all topics.";
+      } else {
+        level = "not_ready"; label = "Not Ready Yet";
+        description = recentTotal === 0
+          ? "Start practicing to build your readiness score."
+          : "Keep practicing. Your score will improve with consistent study.";
+        nextAction = "Start with 10 questions today to build momentum.";
+      }
+
+      return {
+        score, level, label, description, nextAction,
+        breakdown: {
+          recentAccuracy: Math.round(recentAccuracy * 100),
+          mockAccuracy: Math.round(mockAccuracy * 100),
+          topicCoverage: Math.round(topicCoverage * 100),
+          studyFrequency: Math.round(studyFrequency * 100),
+          recentBonus: recentBonus === 1,
+        },
+        hasData: recentTotal > 0,
+      };
+    }),
+
+  /**
+   * Study Plan — personalized recommendation engine.
+   */
+  studyPlan: publicProcedure.query(async ({ ctx }) => {
+    const { userId, email } = resolveDashboardIdentity(ctx);
+    const db = await getDb();
+    if (!db) return null;
+
+    let topicAccuracyMap: Record<string, { correct: number; total: number }> = {};
+    let weakTopics: string[] = [];
+
+    if (userId) {
+      const profiles = await db.select().from(studentProfiles).where(eq(studentProfiles.userId, userId)).limit(1);
+      if (profiles[0]) {
+        try { topicAccuracyMap = JSON.parse(profiles[0].topicAccuracy || "{}"); } catch { /* empty */ }
+        try { weakTopics = JSON.parse(profiles[0].weakTopics || "[]"); } catch { /* empty */ }
+      }
+    } else {
+      const rows = await db
+        .select({
+          topic: questionAttempts.topic,
+          total: sql<number>`COUNT(*)`,
+          correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+        })
+        .from(questionAttempts)
+        .where(eq(questionAttempts.studentEmail, email!))
+        .groupBy(questionAttempts.topic);
+      for (const r of rows) {
+        topicAccuracyMap[r.topic] = { correct: Number(r.correct), total: Number(r.total) };
+        if (Number(r.total) >= 5 && Number(r.correct) / Number(r.total) < 0.65) weakTopics.push(r.topic);
+      }
+    }
+
+    const identityWhere = userId
+      ? eq(questionAttempts.userId, userId)
+      : eq(questionAttempts.studentEmail, email!);
+
+    const [missedRow] = await db
+      .select({ count: sql<number>`COUNT(*)` })
+      .from(questionAttempts)
+      .where(and(identityWhere, eq(questionAttempts.correct, "no")));
+    const totalMissed = Number(missedRow?.count ?? 0);
+
+    const [lowConfRow] = await db
+      .select({ count: sql<number>`COUNT(*)` })
+      .from(questionAttempts)
+      .where(and(identityWhere, eq(questionAttempts.confidence, "low")));
+    const totalLowConf = Number(lowConfRow?.count ?? 0);
+
+    const [bookmarkRow] = await db
+      .select({ count: sql<number>`COUNT(*)` })
+      .from(questionAttempts)
+      .where(and(identityWhere, eq(questionAttempts.bookmarked, "yes")));
+    const totalBookmarked = Number(bookmarkRow?.count ?? 0);
+
+    const totalAttempts = Object.values(topicAccuracyMap).reduce((s, t) => s + t.total, 0);
+
+    type RecType = "weak_topic" | "missed_review" | "low_confidence" | "bookmarked" | "mock_exam" | "start_practicing";
+    const recommendations: Array<{ type: RecType; title: string; description: string; action: string; priority: number }> = [];
+
+    if (totalAttempts === 0) {
+      recommendations.push({ type: "start_practicing", title: "Start Practicing", description: "Answer your first questions to get a personalized study plan.", action: "Start Quiz", priority: 1 });
+    } else {
+      const weakWithData = weakTopics
+        .map((t) => ({ topic: t, ...(topicAccuracyMap[t] ?? { correct: 0, total: 0 }) }))
+        .filter((t) => t.total >= 5)
+        .sort((a, b) => (a.correct / a.total) - (b.correct / b.total))
+        .slice(0, 3);
+
+      for (const weak of weakWithData) {
+        const acc = Math.round((weak.correct / weak.total) * 100);
+        recommendations.push({ type: "weak_topic", title: `Practice: ${weak.topic}`, description: `Your accuracy on ${weak.topic} is ${acc}%. Focus here to improve your score.`, action: "Practice this topic", priority: 2 });
+      }
+      if (totalMissed > 0) recommendations.push({ type: "missed_review", title: "Review Missed Questions", description: `You have ${totalMissed} missed question${totalMissed === 1 ? "" : "s"} to review.`, action: "Review missed", priority: 3 });
+      if (totalLowConf > 0) recommendations.push({ type: "low_confidence", title: "Review Low-Confidence Questions", description: `You marked ${totalLowConf} question${totalLowConf === 1 ? "" : "s"} as low-confidence.`, action: "Review low-confidence", priority: 4 });
+      if (totalBookmarked > 0) recommendations.push({ type: "bookmarked", title: "Review Bookmarked Questions", description: `You have ${totalBookmarked} bookmarked question${totalBookmarked === 1 ? "" : "s"}.`, action: "Review bookmarks", priority: 5 });
+      if (totalAttempts >= 50 && weakWithData.length === 0) recommendations.push({ type: "mock_exam", title: "Take a Mock Exam", description: "You've built a solid foundation. Test yourself with a full mock exam.", action: "Start mock exam", priority: 6 });
+    }
+
+    recommendations.sort((a, b) => a.priority - b.priority);
+    return { recommendations: recommendations.slice(0, 4), totalMissed, totalLowConf, totalBookmarked, hasData: totalAttempts > 0 };
+  }),
+
+  /**
+   * Missed questions — most recent incorrect attempts
+   */
+  missedQuestions: publicProcedure
+    .input(z.object({ examType: z.string().optional(), limit: z.number().min(1).max(100).default(20) }))
+    .query(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      const db = await getDb();
+      if (!db) return [];
+      const identityWhere = userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
+      return db
+        .select({ id: questionAttempts.id, questionId: questionAttempts.questionId, examType: questionAttempts.examType, topic: questionAttempts.topic, difficulty: questionAttempts.difficulty, confidence: questionAttempts.confidence, createdAt: questionAttempts.createdAt })
+        .from(questionAttempts)
+        .where(and(identityWhere, eq(questionAttempts.correct, "no"), input.examType ? eq(questionAttempts.examType, input.examType) : undefined))
+        .orderBy(desc(questionAttempts.createdAt))
+        .limit(input.limit);
+    }),
+
+  /**
+   * Bookmarked questions
+   */
+  bookmarkedQuestions: publicProcedure
+    .input(z.object({ examType: z.string().optional() }))
+    .query(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      const db = await getDb();
+      if (!db) return [];
+      const identityWhere = userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
+      return db
+        .select({ id: questionAttempts.id, questionId: questionAttempts.questionId, examType: questionAttempts.examType, topic: questionAttempts.topic, difficulty: questionAttempts.difficulty, confidence: questionAttempts.confidence, createdAt: questionAttempts.createdAt })
+        .from(questionAttempts)
+        .where(and(identityWhere, eq(questionAttempts.bookmarked, "yes"), input.examType ? eq(questionAttempts.examType, input.examType) : undefined))
+        .orderBy(desc(questionAttempts.createdAt));
+    }),
+
+  /**
+   * Set confidence on a question attempt
+   */
+  setConfidence: publicProcedure
+    .input(z.object({ attemptId: z.number(), confidence: z.enum(["low", "medium", "high"]) }))
+    .mutation(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      const db = await getDb();
+      if (!db) return { ok: false };
+      const identityWhere = userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
+      await db.update(questionAttempts).set({ confidence: input.confidence }).where(and(eq(questionAttempts.id, input.attemptId), identityWhere));
+      return { ok: true };
+    }),
+
+  /**
+   * Toggle bookmark on a question attempt.
+   * Accepts either attemptId (DB row) or questionId (question bank ID, uses most recent attempt).
+   */
+  toggleBookmark: publicProcedure
+    .input(z.object({
+      attemptId: z.number().optional(),
+      questionId: z.number().optional(),
+      bookmarked: z.boolean().optional(), // if provided, set to this value instead of toggling
+    }).refine(d => d.attemptId != null || d.questionId != null, { message: "Provide attemptId or questionId" }))
+    .mutation(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      const db = await getDb();
+      if (!db) return { ok: false, bookmarked: false };
+      const identityWhere = userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
+      if (!userId && !email) return { ok: false, bookmarked: false };
+
+      let targetId: number | null = null;
+      if (input.attemptId != null) {
+        targetId = input.attemptId;
+      } else if (input.questionId != null) {
+        // Find most recent attempt for this questionId
+        const rows = await db.select({ id: questionAttempts.id, bookmarked: questionAttempts.bookmarked })
+          .from(questionAttempts)
+          .where(and(identityWhere, eq(questionAttempts.questionId, input.questionId)))
+          .orderBy(desc(questionAttempts.createdAt))
+          .limit(1);
+        if (!rows.length) return { ok: false, bookmarked: false };
+        targetId = rows[0].id;
+      }
+      if (targetId == null) return { ok: false, bookmarked: false };
+
+      const rows = await db.select({ bookmarked: questionAttempts.bookmarked })
+        .from(questionAttempts)
+        .where(and(eq(questionAttempts.id, targetId), identityWhere))
+        .limit(1);
+      if (!rows.length) return { ok: false, bookmarked: false };
+      const newState = input.bookmarked != null
+        ? (input.bookmarked ? "yes" : "no")
+        : (rows[0].bookmarked === "yes" ? "no" : "yes");
+      await db.update(questionAttempts).set({ bookmarked: newState }).where(and(eq(questionAttempts.id, targetId), identityWhere));
+      return { ok: true, bookmarked: newState === "yes" };
+    }),
 });

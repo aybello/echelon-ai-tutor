@@ -288,6 +288,13 @@
       "when": 1782320926969,
       "tag": "0040_wandering_elektra",
       "breakpoints": true
+    },
+    {
+      "idx": 41,
+      "version": "5",
+      "when": 1782832572347,
+      "tag": "0041_lame_jubilee",
+      "breakpoints": true
     }
   ]
 }
