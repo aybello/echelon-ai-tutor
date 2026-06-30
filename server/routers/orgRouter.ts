@@ -28,7 +28,8 @@ import {
 } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { sendTeamEnrollmentEmail } from "../email";
-import { courseKeyToTier, courseKeyToTierStrict, isValidCourseKey, courseKeyToLabel, getUnlockedExamTypes } from "../../shared/products";
+import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
+import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -491,7 +492,7 @@ export const orgRouter = router({
       // Per-course progress breakdown
       const emailCourseMap = perCourseByEmail.get(m.email);
       const courseProgress = courseKeys.map(ck => {
-        const examTypes = getUnlockedExamTypes(ck);
+        const examTypes = getExamTypesForCourseKey(ck);
         // Aggregate attempts across all examTypes for this courseKey
         let cTotal = 0, cCorrect = 0;
         for (const et of examTypes) {

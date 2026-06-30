@@ -10,6 +10,8 @@ import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmis
 import { and, desc, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { adminRouter } from "./routers/admin";
+import { resolveEntitlementsByEmail } from "./_core/access";
+import { getAccessibleCoursesForIdentity, resolveVerifiedIdentity } from "./_core/accessService";
 import { stripeRouter } from "./routers/stripeRouter";
 import { flashcardRouter } from "./routers/flashcardRouter";
 import { quizRouter } from "./routers/quizRouter";
@@ -24,6 +26,72 @@ import { sendContactEmail } from "./email";
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
+
+  /**
+   * access — entitlement audit and access resolution endpoints.
+   * Phase 6 of the 9/10 Product Readiness Plan.
+   */
+  access: router({
+    /**
+     * auditMyEntitlements — returns the full entitlement breakdown for the
+     * current authenticated user. Useful for debugging access issues and for
+     * the frontend to know which courses are unlocked without making per-course
+     * requests.
+     *
+     * Requires authentication (OAuth or OTP session).
+     */
+    auditMyEntitlements: protectedProcedure.query(async ({ ctx }) => {
+      const identity = resolveVerifiedIdentity(ctx);
+      const email =
+        identity.type === "oauth"
+          ? identity.email
+          : identity.type === "otp"
+            ? identity.email
+            : null;
+
+      if (!email) {
+        return {
+          email: null,
+          hasAnyAccess: false,
+          unlockedExamTypes: [],
+          purchasedProductKeys: [],
+          activeSubscriptions: [],
+          accessibleCourses: [],
+          identityType: identity.type,
+        };
+      }
+
+      const entitlements = await resolveEntitlementsByEmail(email);
+      const accessibleCourses = await getAccessibleCoursesForIdentity(identity);
+
+      return {
+        email: entitlements.email,
+        hasAnyAccess: entitlements.hasAnyAccess,
+        unlockedExamTypes: entitlements.unlockedExamTypes,
+        purchasedProductKeys: entitlements.purchasedProductKeys,
+        activeSubscriptions: entitlements.activeSubscriptionRows.map(s => ({
+          tier: s.tier,
+          province: s.province,
+          status: s.status,
+          currentPeriodEnd: s.currentPeriodEnd,
+          orgId: s.orgId,
+        })),
+        accessibleCourses: accessibleCourses.map(c => ({
+          courseKey: c.courseKey,
+          displayName: c.displayName,
+          shortName: c.shortName,
+          examFamily: c.examFamily,
+          track: c.track,
+          classLevel: c.classLevel,
+          quizPath: c.quizPath,
+          mockExamPath: c.mockExamPath,
+          subscriptionTier: c.subscriptionTier,
+        })),
+        identityType: identity.type,
+      };
+    }),
+  }),
+
   admin: adminRouter,
   stripe: stripeRouter,
   flashcard: flashcardRouter,

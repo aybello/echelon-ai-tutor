@@ -4,8 +4,8 @@
  */
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { TRPCError } from "@trpc/server";
-import { resolveAccess, resolveAccessByEmail, bankKeyToExamType, FREE_TRIAL_LIMIT } from "../_core/access";
-import { verifySubscriptionToken } from "../_core/subscriptionToken";
+import { bankKeyToExamType, FREE_TRIAL_LIMIT } from "../_core/access";
+import { resolveAccessForRequest } from "../_core/accessService";
 import { getDb } from "../db";
 import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews } from "../../drizzle/schema";
 import { and, eq, desc, sql, gte } from "drizzle-orm";
@@ -27,26 +27,11 @@ export const quizRouter = router({
       if (!db) {
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       }
-      const examType = bankKeyToExamType(input.bankKey);
-      let { hasAccess } = await resolveAccess(ctx.user, examType);
-      // Fallback 1: student OTP session cookie (server-verified — no client input trusted)
-      if (!hasAccess && ctx.studentEmail) {
-        const sessionResult = await resolveAccessByEmail(ctx.studentEmail, examType);
-        hasAccess = sessionResult.hasAccess;
-      }
-      // Fallback 2: verify signed subscription access token (no DB lookup)
-      if (!hasAccess && input.accessToken) {
-        const tokenPayload = await verifySubscriptionToken(input.accessToken);
-        if (tokenPayload && tokenPayload.examTypes.includes(examType)) {
-          hasAccess = true;
-        }
-      }
-      // Fallback 3: client-supplied email (legacy Restore Access — only when no session exists)
-      if (!hasAccess && !ctx.user && !ctx.studentEmail && input.email) {
-        const emailResult = await resolveAccessByEmail(input.email, examType);
-        hasAccess = emailResult.hasAccess;
-      }
-
+            const examType = bankKeyToExamType(input.bankKey);
+      const hasAccess = await resolveAccessForRequest(ctx, examType, {
+        accessToken: input.accessToken,
+        clientEmail: input.email,
+      });
       const rows = await db
         .select()
         .from(questions)
@@ -121,26 +106,11 @@ export const quizRouter = router({
     .query(async ({ input, ctx }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-      const examType = bankKeyToExamType(input.bankKey);
-      let { hasAccess } = await resolveAccess(ctx.user, examType);
-      // Fallback 1: student OTP session cookie (server-verified — no client input trusted)
-      if (!hasAccess && ctx.studentEmail) {
-        const sessionResult = await resolveAccessByEmail(ctx.studentEmail, examType);
-        hasAccess = sessionResult.hasAccess;
-      }
-      // Fallback 2: verify signed subscription access token (no DB lookup)
-      if (!hasAccess && input.accessToken) {
-        const tokenPayload = await verifySubscriptionToken(input.accessToken);
-        if (tokenPayload && tokenPayload.examTypes.includes(examType)) {
-          hasAccess = true;
-        }
-      }
-      // Fallback 3: client-supplied email (legacy Restore Access — only when no session exists)
-      if (!hasAccess && !ctx.user && !ctx.studentEmail && input.email) {
-        const emailResult = await resolveAccessByEmail(input.email, examType);
-        hasAccess = emailResult.hasAccess;
-      }
-
+            const examType = bankKeyToExamType(input.bankKey);
+      const hasAccess = await resolveAccessForRequest(ctx, examType, {
+        accessToken: input.accessToken,
+        clientEmail: input.email,
+      });
       const excludeClause = input.excludeIds.length > 0
         ? sql` AND ${questions.questionNum} NOT IN (${sql.join(input.excludeIds.map((id) => sql`${id}`), sql`, `)})`
         : sql``;

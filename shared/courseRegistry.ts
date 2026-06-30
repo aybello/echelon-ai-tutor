@@ -881,3 +881,26 @@ export function getAllActiveCourseKeysForFamily(family: ExamFamily): string[] {
 export function getAllCourses(): readonly CourseEntry[] {
   return REGISTRY;
 }
+
+/**
+ * Returns the exam type(s) for a given courseKey.
+ * For most courses this is a single-element array [questionBankKey].
+ * Returns [] for unknown keys (fail closed).
+ */
+export function getExamTypesForCourseKey(courseKey: string): string[] {
+  const entry = resolveCourseKey(courseKey);
+  if (!entry) return [];
+  return [entry.questionBankKey];
+}
+
+/**
+ * Returns a human-readable label for a courseKey.
+ * Equivalent to the legacy courseKeyToLabel from products.ts.
+ * Falls back to the courseKey itself if not found.
+ * The province parameter is accepted for API compatibility but not used
+ * (province is encoded in the courseKey itself via the registry).
+ */
+export function courseKeyToLabel(courseKey: string, _province?: string): string {
+  const entry = resolveCourseKey(courseKey);
+  return entry?.displayName ?? courseKey;
+}

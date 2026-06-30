@@ -250,6 +250,66 @@ export async function hasAccessToCourse(
 }
 
 // ---------------------------------------------------------------------------
+// Convenience wrapper for soft-gate procedures (quiz, flashcard)
+// ---------------------------------------------------------------------------
+
+/**
+ * Resolve whether a request has access to an exam type.
+ * This is the drop-in replacement for the 4-step access check pattern
+ * used in getQuestions / getRandomQuestions / similar soft-gate procedures.
+ *
+ * Unlike assertAccess (which throws), this returns a boolean so the caller
+ * can decide whether to return trial content or full content.
+ *
+ * Priority:
+ * 1. Free exam types — always true
+ * 2. OAuth session (ctx.user)
+ * 3. OTP session (ctx.studentEmail)
+ * 4. Signed subscription token (client localStorage — no DB lookup)
+ * 5. Legacy client-supplied email (restore-access fallback only)
+ */
+export async function resolveAccessForRequest(
+  ctx: TrpcContext,
+  examType: string,
+  opts?: {
+    accessToken?: string | null;
+    clientEmail?: string | null;
+  },
+): Promise<boolean> {
+  // 1. Free exam types
+  if (FREE_EXAM_TYPES.has(examType)) return true;
+
+  const identity = resolveVerifiedIdentity(ctx);
+
+  // 2 & 3. Verified identity (OAuth or OTP)
+  if (identity.type !== "anonymous") {
+    const ok = await hasAccessToExam(identity, examType);
+    if (ok) return true;
+  }
+
+  // 4. Signed subscription token (fast path — no DB)
+  if (opts?.accessToken) {
+    const tokenPayload = await verifySubscriptionToken(opts.accessToken);
+    if (tokenPayload && tokenPayload.examTypes.includes(examType)) {
+      return true;
+    }
+  }
+
+  // 5. Legacy client-email fallback
+  if (
+    identity.type === "anonymous" &&
+    opts?.clientEmail &&
+    !ctx.user &&
+    !ctx.studentEmail
+  ) {
+    const result = await resolveAccessByEmail(opts.clientEmail, examType);
+    if (result.hasAccess) return true;
+  }
+
+  return false;
+}
+
+// ---------------------------------------------------------------------------
 // Re-exports for convenience
 // ---------------------------------------------------------------------------
 

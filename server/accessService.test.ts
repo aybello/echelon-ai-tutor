@@ -195,3 +195,105 @@ describe("verifyAccessTokenAndRecheckDb", () => {
     expect(result.hasAccess).toBe(false);
   });
 });
+
+// ---------------------------------------------------------------------------
+// resolveAccessForRequest — Phase 4 integration helper
+// ---------------------------------------------------------------------------
+
+import { resolveAccessForRequest } from "../server/_core/accessService";
+
+describe("resolveAccessForRequest — free exam types", () => {
+  it("returns true for OIT (free) with anonymous context", async () => {
+    const ctx = makeAnonCtx();
+    const result = await resolveAccessForRequest(ctx as any, "oit");
+    expect(result).toBe(true);
+  });
+
+  it("returns true for oit-ww (free) with anonymous context", async () => {
+    const ctx = makeAnonCtx();
+    const result = await resolveAccessForRequest(ctx as any, "oit-ww");
+    expect(result).toBe(true);
+  });
+
+  it("returns false for paid exam type with anonymous context and no token", async () => {
+    const ctx = makeAnonCtx();
+    const result = await resolveAccessForRequest(ctx as any, "class1-water");
+    expect(result).toBe(false);
+  });
+
+  it("returns false for unknown exam type (fail closed)", async () => {
+    const ctx = makeAnonCtx();
+    const result = await resolveAccessForRequest(ctx as any, "totally-unknown-exam-xyz");
+    expect(result).toBe(false);
+  });
+
+  it("returns false for paid exam type with garbage access token", async () => {
+    const ctx = makeAnonCtx();
+    const result = await resolveAccessForRequest(ctx as any, "class1-water", {
+      accessToken: "not-a-valid-jwt",
+    });
+    expect(result).toBe(false);
+  });
+
+  it("returns false for paid exam type with anonymous context and null clientEmail", async () => {
+    const ctx = makeAnonCtx();
+    const result = await resolveAccessForRequest(ctx as any, "class1-water", {
+      clientEmail: null,
+    });
+    expect(result).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// courseRegistry helpers — Phase 7
+// ---------------------------------------------------------------------------
+
+import {
+  getExamTypesForCourseKey,
+  courseKeyToLabel,
+} from "../shared/courseRegistry";
+
+describe("getExamTypesForCourseKey", () => {
+  it("returns the questionBankKey for a canonical Ontario key", () => {
+    expect(getExamTypesForCourseKey("class1-water")).toEqual(["class1-water"]);
+  });
+
+  it("returns the questionBankKey for a canonical WPI key", () => {
+    expect(getExamTypesForCourseKey("wpi-class1-water")).toEqual(["wpi-class1-water"]);
+  });
+
+  it("resolves legacy alias to canonical questionBankKey", () => {
+    // class1-wastewater is an alias for class1-ww
+    expect(getExamTypesForCourseKey("class1-wastewater")).toEqual(["class1-ww"]);
+  });
+
+  it("returns [] for unknown course key (fail closed)", () => {
+    expect(getExamTypesForCourseKey("totally-unknown-course-xyz")).toEqual([]);
+  });
+
+  it("returns the questionBankKey for OIT", () => {
+    expect(getExamTypesForCourseKey("oit")).toEqual(["oit"]);
+  });
+});
+
+describe("courseKeyToLabel", () => {
+  it("returns display name for a canonical Ontario key", () => {
+    expect(courseKeyToLabel("class1-water")).toBe("Class 1 Water Treatment");
+  });
+
+  it("returns display name for a WPI key", () => {
+    expect(courseKeyToLabel("wpi-class1-water")).toBe("WPI Class I Water Treatment");
+  });
+
+  it("resolves legacy alias to display name", () => {
+    expect(courseKeyToLabel("class1-wastewater")).toBe("Class 1 Wastewater Treatment");
+  });
+
+  it("falls back to the key itself for unknown keys", () => {
+    expect(courseKeyToLabel("totally-unknown-course-xyz")).toBe("totally-unknown-course-xyz");
+  });
+
+  it("accepts and ignores the province parameter (for API compat)", () => {
+    expect(courseKeyToLabel("class2-water", "ontario")).toBe("Class 2 Water Treatment");
+  });
+});
