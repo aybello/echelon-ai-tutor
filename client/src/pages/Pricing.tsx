@@ -436,7 +436,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class1-water",
     name: "WPI Class I Water Treatment Practice Pass",
     shortName: "WPI Class I Water",
-    description: "WPI Class I Water Treatment — 500 questions covering treatment process, equipment O&M, lab analysis, and source water. Recognized by EOCP (BC), AWWOA (AB), SK, and MB.",
+    description: "Treatment process, equipment O&M, lab analysis, and source water. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class1-water"),
     examTypes: ["wpi-class1-water"],
     badge: "WPI",
@@ -451,7 +451,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class2-water",
     name: "WPI Class II Water Treatment Practice Pass",
     shortName: "WPI Class II Water",
-    description: "WPI Class II Water Treatment — 500 advanced questions across 5 modules. Covers advanced treatment processes, system design, lab monitoring, source water management, and regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Advanced treatment, system design, lab monitoring, and source water management. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class2-water"),
     examTypes: ["wpi-class2-water"],
     badge: "WPI",
@@ -466,7 +466,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class3-water",
     name: "WPI Class III Water Treatment Practice Pass",
     shortName: "WPI Class III Water",
-    description: "WPI Class III Water Treatment — 500 questions across 5 advanced modules. Covers ozone/UV disinfection, membrane filtration, advanced process control, distribution management, and regulatory QMS. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Ozone/UV disinfection, membrane filtration, advanced process control, and regulatory QMS. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class3-water"),
     examTypes: ["wpi-class3-water"],
     badge: "WPI",
@@ -481,7 +481,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class4-water",
     name: "WPI Class IV Water Treatment Practice Pass",
     shortName: "WPI Class IV Water",
-    description: "WPI Class IV Water Treatment — 500 questions across 6 chief-operator modules. Covers advanced CT/disinfection, membrane systems, plant management & leadership, asset management, regulatory compliance, and emergency response. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Chief-operator level: advanced CT/disinfection, plant management, asset management, and emergency response. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class4-water"),
     examTypes: ["wpi-class4-water"],
     badge: "WPI",
@@ -496,7 +496,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class1-wastewater",
     name: "WPI Class I Wastewater Treatment Practice Pass",
     shortName: "WPI Class I Wastewater",
-    description: "WPI Class I Wastewater Treatment — 500 questions across 5 modules: Collection Systems, Primary & Secondary Treatment, Solids Handling & Biosolids, Lab & Monitoring, Safety & Regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Primary & secondary treatment, solids handling, biosolids, lab monitoring, and safety. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class1-wastewater"),
     examTypes: ["wpi-class1-wastewater"],
     badge: "WPI",
@@ -511,7 +511,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class2-wastewater",
     name: "WPI Class II Wastewater Treatment Practice Pass",
     shortName: "WPI Class II Wastewater",
-    description: "WPI Class II Wastewater Treatment — 500 questions across 5 advanced modules: Secondary Treatment, Nutrient Removal, Biosolids Management, Advanced Treatment, and Process Control & Safety. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Nutrient removal, biosolids management, advanced treatment, and process control. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class2-wastewater"),
     examTypes: ["wpi-class2-wastewater"],
     badge: "WPI",
@@ -526,7 +526,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class3-wastewater",
     name: "WPI Class III Wastewater Treatment Practice Pass",
     shortName: "WPI Class III Wastewater",
-    description: "WPI Class III Wastewater Treatment — 500 questions across 8 senior-level modules: Advanced BNR, MBR, Industrial Pretreatment, Biosolids, Process Control, Regulatory Compliance, Safety, and Emerging Technologies. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Advanced BNR, MBR, industrial pretreatment, biosolids, and regulatory compliance. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class3-wastewater"),
     examTypes: ["wpi-class3-wastewater"],
     badge: "WPI",
@@ -541,7 +541,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class4-wastewater",
     name: "WPI Class IV Wastewater Treatment Practice Pass",
     shortName: "WPI Class IV Wastewater",
-    description: "WPI Class IV Wastewater Treatment — 500 questions across 7 chief-operator-level modules: Advanced Process Control, BNR & Resource Recovery, Emerging Technologies, Plant Management, Regulatory Compliance, Emergency Response, and Health & Safety. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Chief-operator level: BNR & resource recovery, plant management, regulatory compliance, and emergency response. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class4-wastewater"),
     examTypes: ["wpi-class4-wastewater"],
     badge: "WPI",
@@ -556,7 +556,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class1-water-dist",
     name: "WPI Class I Water Distribution Practice Pass",
     shortName: "WPI Class I Distribution",
-    description: "WPI Class I Water Distribution — 500 questions covering distribution system basics, pipe materials, pressure & flow, chlorine residual maintenance, valve & hydrant operation, and regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Pipe materials, pressure & flow, chlorine residual, valve & hydrant operation. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class1-water-dist"),
     examTypes: ["wpi-class1-water-dist"],
     badge: "WPI",
@@ -571,7 +571,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class2-water-dist",
     name: "WPI Class II Water Distribution Practice Pass",
     shortName: "WPI Class II Distribution",
-    description: "WPI Class II Water Distribution — 500 questions covering hydraulic analysis, pressure zone design, water quality management, cross-connection control, and regulatory compliance. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Hydraulic analysis, pressure zone design, water quality management, and cross-connection control. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class2-water-dist"),
     examTypes: ["wpi-class2-water-dist"],
     badge: "WPI",
@@ -586,7 +586,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class3-water-dist",
     name: "WPI Class III Water Distribution Practice Pass",
     shortName: "WPI Class III Distribution",
-    description: "WPI Class III Water Distribution — 500 questions covering advanced hydraulic modeling, transmission main design, multi-zone systems, SCADA & automation, and senior operator responsibilities. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Advanced hydraulic modelling, transmission main design, multi-zone systems, and SCADA. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class3-water-dist"),
     examTypes: ["wpi-class3-water-dist"],
     badge: "WPI",
@@ -601,7 +601,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class4-water-dist",
     name: "WPI Class IV Water Distribution Practice Pass",
     shortName: "WPI Class IV Distribution",
-    description: "WPI Class IV Water Distribution — 500 questions covering large-scale system management, asset management, advanced water quality, DWQMS implementation, and strategic regulatory compliance. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Large-scale system management, asset management, DWQMS implementation, and regulatory compliance. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class4-water-dist"),
     examTypes: ["wpi-class4-water-dist"],
     badge: "WPI",
@@ -616,7 +616,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class1-water-coll",
     name: "WPI Class I Wastewater Collection Practice Pass",
     shortName: "WPI Class I Collection",
-    description: "WPI Class I Wastewater Collection — 500 questions covering collection system components, lift station operation, confined space safety, basic hydraulics, and environmental regulations. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Collection system components, lift station operation, confined space safety, and basic hydraulics. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class1-water-coll"),
     examTypes: ["wpi-class1-water-coll"],
     badge: "WPI",
@@ -631,7 +631,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class2-water-coll",
     name: "WPI Class II Wastewater Collection Practice Pass",
     shortName: "WPI Class II Collection",
-    description: "WPI Class II Wastewater Collection — 500 questions covering advanced collection system design, intermediate lift station operations, system maintenance & rehabilitation, hydraulics & flow analysis, and regulatory compliance. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Advanced collection design, lift station operations, system rehabilitation, and hydraulics. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class2-water-coll"),
     examTypes: ["wpi-class2-water-coll"],
     badge: "WPI",
@@ -646,7 +646,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class3-water-coll",
     name: "WPI Class III Wastewater Collection Practice Pass",
     shortName: "WPI Class III Collection",
-    description: "WPI Class III Wastewater Collection — 500 questions covering complex system operations & SCADA, advanced pump station engineering, system hydraulic modelling, advanced maintenance management, and leadership & regulatory management. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "Complex system operations, SCADA, advanced pump station engineering, and hydraulic modelling. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class3-water-coll"),
     examTypes: ["wpi-class3-water-coll"],
     badge: "WPI",
@@ -661,7 +661,7 @@ const INDIVIDUAL: Product[] = [
     key: "wpi-class4-water-coll",
     name: "WPI Class IV Wastewater Collection Practice Pass",
     shortName: "WPI Class IV Collection",
-    description: "WPI Class IV Wastewater Collection — 500 questions covering system planning & capital improvement, advanced engineering & design, utility management & leadership, advanced regulatory & environmental management, and emerging technologies. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB).",
+    description: "System planning, capital improvement, utility management, and advanced regulatory compliance. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     priceCAD: sharedPrice("wpi-class4-water-coll"),
     examTypes: ["wpi-class4-water-coll"],
     badge: "WPI",
@@ -867,7 +867,7 @@ const WPI_WATER_LABELS: Record<string, { shortName: string; description: string;
   },
   "class1-water": {
     shortName: "Level I / Class I",
-    description: "WPI Class I Water Treatment — 500 questions covering treatment process, equipment O&M, lab analysis, and source water. Recognized by EOCP (BC), AWWOA (AB), SK, and MB.",
+    description: "Treatment process, equipment O&M, lab analysis, and source water. EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB).",
     badge: "WPI",
   },
   "class2-water": {
@@ -1000,8 +1000,9 @@ const PRICING_STYLES = `
   }
   .product-grid-1 {
     display: grid;
-    grid-template-columns: minmax(0, 280px);
+    grid-template-columns: minmax(0, 320px);
     gap: 16px;
+    justify-content: center;
   }
 
   /* Trust grid */
@@ -1765,6 +1766,7 @@ function ProductCard({
             fontSize: 11, color: "#64748B", fontWeight: 500,
             background: "#F8FAFC", border: "1px solid #E2E8F0",
             borderRadius: 20, padding: "2px 10px",
+          whiteSpace: "nowrap",
           }}>One-time · no subscription</span>
         </div>
       </div>
