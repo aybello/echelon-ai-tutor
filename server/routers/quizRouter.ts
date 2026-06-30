@@ -304,10 +304,18 @@ export const quizRouter = router({
         const db = await getDb();
         if (!db) return { success: false };
         const userId = ctx.user?.id ?? null;
-        // Prefer OAuth user email, then server-verified session email, then client-supplied (for guest tracking only)
+        // Attribution priority:
+        //   1. OAuth user email (most trusted)
+        //   2. Server-verified OTP session email (trusted cookie)
+        //   3. Client-supplied email ONLY when a guestToken is also present
+        //      (genuine guest session, not an arbitrary unauthenticated caller)
+        // This prevents unauthenticated callers from writing attempts under any email.
+        const clientEmailForGuest = input.guestToken && input.studentEmail
+          ? input.studentEmail.trim().toLowerCase()
+          : null;
         const studentEmail = userId
           ? (ctx.user?.email ?? null)
-          : (ctx.studentEmail ?? input.studentEmail?.trim().toLowerCase() ?? null);
+          : (ctx.studentEmail ?? clientEmailForGuest ?? null);
 
         // Log the attempt
         await db.insert(questionAttempts).values({

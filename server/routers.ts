@@ -293,7 +293,13 @@ export const appRouter = router({
   examDate: router({
     get: publicProcedure
       .input(z.object({ email: z.string().email(), productKey: z.string() }))
-      .query(async ({ input }) => {
+      .query(async ({ input, ctx }) => {
+        // Identity check: caller must be the owner of this email record.
+        // Accept either an OAuth user or a student OTP session cookie.
+        const callerEmail = ctx.user?.email ?? ctx.studentEmail;
+        if (!callerEmail || callerEmail.toLowerCase() !== input.email.toLowerCase()) {
+          return null; // Silently return null rather than leaking existence
+        }
         const db = await getDb();
         if (!db) return null;
         const rows = await db
@@ -306,7 +312,12 @@ export const appRouter = router({
       }),
     set: publicProcedure
       .input(z.object({ email: z.string().email(), productKey: z.string(), examDate: z.string() }))
-      .mutation(async ({ input }) => {
+      .mutation(async ({ input, ctx }) => {
+        // Identity check: caller must own this email.
+        const callerEmail = ctx.user?.email ?? ctx.studentEmail;
+        if (!callerEmail || callerEmail.toLowerCase() !== input.email.toLowerCase()) {
+          throw new Error("Unauthorized: you may only set your own exam date");
+        }
         const db = await getDb();
         if (!db) throw new Error("Database unavailable");
         const date = new Date(input.examDate);
@@ -333,7 +344,12 @@ export const appRouter = router({
       }),
     remove: publicProcedure
       .input(z.object({ email: z.string().email(), productKey: z.string() }))
-      .mutation(async ({ input }) => {
+      .mutation(async ({ input, ctx }) => {
+        // Identity check: caller must own this email.
+        const callerEmail = ctx.user?.email ?? ctx.studentEmail;
+        if (!callerEmail || callerEmail.toLowerCase() !== input.email.toLowerCase()) {
+          throw new Error("Unauthorized: you may only remove your own exam date");
+        }
         const db = await getDb();
         if (!db) throw new Error("Database unavailable");
         await db

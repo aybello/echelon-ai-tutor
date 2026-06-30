@@ -15,15 +15,15 @@
  *   email      — the subscriber's email address
  *   examTypes  — array of exam type strings this token grants access to
  *   iat        — issued at (Unix seconds)
- *   exp        — expires at (Unix seconds, default 1 year)
+ *   exp        — expires at (Unix seconds, default 7 days)
  *
  * SECURITY NOTES:
  * - Signed with JWT_SECRET (HS256). Anyone with the token can read questions
  *   for the covered exam types — this is intentional (same as localStorage).
  * - The token does NOT grant admin access or mutation rights.
- * - If a subscription is cancelled, old tokens remain valid until expiry.
- *   For now this is acceptable (annual subscriptions). If needed, add a
- *   token revocation list in the DB.
+ * - TTL is 7 days. The frontend re-issues the token on each Restore Access / OTP login,
+ *   so active subscribers are refreshed transparently. A cancelled or revoked subscriber
+ *   loses access within 7 days without any explicit revocation list.
  */
 
 import { SignJWT, jwtVerify } from "jose";
@@ -31,7 +31,9 @@ import { ENV } from "./env";
 
 const TOKEN_ISSUER = "echelon-access";
 const TOKEN_AUDIENCE = "echelon-quiz";
-const ONE_YEAR_MS = 365 * 24 * 60 * 60 * 1000;
+// 7-day TTL: short enough that a cancelled/revoked subscriber loses access within a week
+// (previously 1 year, which meant revocation was toothless until the token expired).
+const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 
 function getSecret(): Uint8Array {
   const secret = ENV.cookieSecret;
@@ -50,7 +52,7 @@ export interface SubscriptionTokenPayload {
  */
 export async function issueSubscriptionToken(
   payload: SubscriptionTokenPayload,
-  expiresInMs = ONE_YEAR_MS
+  expiresInMs = SEVEN_DAYS_MS
 ): Promise<string> {
   const secret = getSecret();
   const expirationSeconds = Math.floor((Date.now() + expiresInMs) / 1000);

@@ -79,9 +79,16 @@ export const flashcardRouter = router({
       totalCards: z.number().int().min(0),
     }))
     .mutation(async ({ input, ctx }) => {
-      // Priority: OAuth email > server-verified OTP session email > client-supplied email
-      const email = (ctx.user?.email ?? ctx.studentEmail ?? input.email ?? "").toLowerCase();
-      if (!email) return { success: false };
+      // Attribution priority: OAuth email > server-verified OTP session email > client-supplied email.
+      // The client-supplied email fallback is kept for genuine guest sessions (no session cookie)
+      // but is NOT trusted for attribution when a session exists — the session always wins.
+      // This prevents unauthenticated callers from writing flashcard progress under any email.
+      // Resolve the email for attribution: session always wins over client-supplied.
+      const verifiedEmail = ctx.user?.email ?? ctx.studentEmail ?? null;
+      const resolvedEmail = verifiedEmail
+        ? verifiedEmail.toLowerCase()
+        : (input.email ?? "").toLowerCase();
+      if (!resolvedEmail) return { success: false };
       const db = await getDb();
       if (!db) return { success: false };
 
@@ -101,7 +108,7 @@ export const flashcardRouter = router({
         .from(flashcardProgress)
         .where(
           and(
-            eq(flashcardProgress.email, email),
+            eq(flashcardProgress.email, resolvedEmail),
             eq(flashcardProgress.examType, input.examType),
           )
         )
@@ -113,13 +120,13 @@ export const flashcardRouter = router({
           .set({ knownIds: knownIdsJson, totalCards: input.totalCards })
           .where(
             and(
-              eq(flashcardProgress.email, email),
+              eq(flashcardProgress.email, resolvedEmail),
               eq(flashcardProgress.examType, input.examType),
             )
           );
       } else {
         await db.insert(flashcardProgress).values({
-          email,
+          email: resolvedEmail,
           examType: input.examType,
           knownIds: knownIdsJson,
           totalCards: input.totalCards,

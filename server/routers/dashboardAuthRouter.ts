@@ -12,7 +12,7 @@
 
 import { createHash, randomInt } from "crypto";
 import { z } from "zod";
-import { eq, and, gt, lt } from "drizzle-orm";
+import { eq, and, gt, lt, isNull } from "drizzle-orm";
 import { SignJWT, jwtVerify } from "jose";
 import nodemailer from "nodemailer";
 import { publicProcedure, router } from "../_core/trpc";
@@ -157,6 +157,7 @@ export const dashboardAuthRouter = router({
           and(
             eq(dashboardOtps.email, email),
             gt(dashboardOtps.expiresAt, now),
+            isNull(dashboardOtps.usedAt), // Prevent replay: reject already-used codes
           ),
         )
         .limit(1);

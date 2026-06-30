@@ -934,3 +934,10 @@
 - [x] Fix P2b: Post-purchase race condition — OrgDashboard retries getOrgOverview up to 6 times (3s apart) when session_id is in URL; shows "Setting up your team" state instead of confusing sign-in error
 - [x] Add regression tests for P0A, P0B, P2a in teams.test.ts (3 new tests)
 - [x] 383/383 tests passing, TypeScript clean
+
+## Claude Audit 2 — Security Hardening (Jun 25, 2026)
+- [x] Fix P1A: Exam date IDOR — bind examDate.set/get/remove to caller's verified session email (no client-supplied email)
+- [x] Fix P1B: Subscription token revocation gap — shorten JWT TTL to 7 days (was 1 year); revoked/cancelled subscribers lose access within 7 days
+- [x] Fix P2: Drop client-email fallback in logAttempt and saveProgress — require verified session for attribution; client email only accepted with guestToken
+- [x] Fix P3: OTP replay — add isNull(usedAt) filter to verifyOtp query so used codes cannot be replayed within the 10-min window
+- [x] Run tests (383/383 passing), TypeScript clean, save checkpoint, update Notion AI Context Hub
