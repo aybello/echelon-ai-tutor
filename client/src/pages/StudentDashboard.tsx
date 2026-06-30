@@ -339,485 +339,361 @@ export default function StudentDashboard() {
 
   const stats = overview.data;
   const isLoading = overview.isLoading;
-
   return (
-    <div style={{ fontFamily: "Sora, sans-serif", background: SLATE_900, minHeight: "100vh" }}>
+    <div style={{ fontFamily: "Sora, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       <SiteNav currentPath="/dashboard" />
+      <div style={{ maxWidth: 1040, margin: "0 auto", padding: "28px 20px 100px" }}>
 
-      <div style={{ maxWidth: 960, margin: "0 auto", padding: "32px 20px 120px" }}>
-        {/* ── Header ── */}
-        <div style={{ marginBottom: 32, display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+        {/* ═══════════════════════════════════════════════════
+            TOP SECTION: Welcome · Readiness · Countdown · Next Step
+        ═══════════════════════════════════════════════════ */}
+
+        {/* Header row */}
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 12, marginBottom: 24 }}>
           <div>
-            <h1 style={{ color: "#1E293B", fontSize: 28, fontWeight: 900, margin: 0, letterSpacing: "-0.02em" }}>
-              📊 My Dashboard
+            <h1 style={{ color: "#0F172A", fontSize: 26, fontWeight: 900, margin: 0, letterSpacing: "-0.03em" }}>
+              Welcome back{displayName ? `, ${displayName.split(" ")[0]}` : ""}
             </h1>
-            <p style={{ color: "#94A3B8", fontSize: 14, marginTop: 6 }}>
-              Welcome back, {displayName}. Here's your study progress.
+            <p style={{ color: "#64748B", fontSize: 14, marginTop: 4, marginBottom: 0 }}>
+              Here's where you stand today.
             </p>
           </div>
-          {hasAccess && (
-            <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-              <a href="/account" style={{
-                background: "none", border: "1px solid #E2E8F0", borderRadius: 8,
-                padding: "6px 14px", color: "#94A3B8", fontSize: 13, cursor: "pointer",
-                textDecoration: "none", display: "inline-block",
-              }}>
-                📚 My Courses
-              </a>
-              <button
-                onClick={handleDashboardLogout}
-                disabled={dashboardLogout.isPending}
-                style={{ background: "none", border: "1px solid #E2E8F0", borderRadius: 8, padding: "6px 14px", color: "#64748B", fontSize: 13, cursor: "pointer", display: "flex", alignItems: "center", gap: 6 }}
-              >
-                {dashboardLogout.isPending ? "Signing out..." : "🚪 Log Out"}
-              </button>
-            </div>
-          )}
-        </div>
-
-        {/* ── Exam Countdown Banner ── */}
-        {examCountdown.data && (
-          <div
-            style={{
-              background: `linear-gradient(135deg, ${BLUE}22, ${TEAL}22)`,
-              border: `1px solid ${examCountdown.data.paceStatus === "falling_behind" ? RED : examCountdown.data.paceStatus === "needs_more" ? AMBER : TEAL}44`,
-              borderRadius: 14,
-              padding: "16px 20px",
-              marginBottom: 20,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              gap: 12,
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-              <div style={{ fontSize: 32 }}>⏱️</div>
-              <div>
-                <div style={{ color: "#1E293B", fontSize: 15, fontWeight: 800 }}>
-                  {EXAM_TYPE_LABELS[examCountdown.data.examName] ?? examCountdown.data.examName}
-                </div>
-                <div style={{ color: "#94A3B8", fontSize: 13, marginTop: 2 }}>
-                  {new Date(examCountdown.data.examDate).toLocaleDateString("en-CA", { month: "long", day: "numeric", year: "numeric" })}
-                </div>
-              </div>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-              <div style={{ textAlign: "center" }}>
-                <div
-                  style={{
-                    color: examCountdown.data.daysUntil <= 7 ? RED : examCountdown.data.daysUntil <= 14 ? AMBER : TEAL,
-                    fontSize: 28,
-                    fontWeight: 900,
-                    fontFamily: "'Sora', sans-serif",
-                    lineHeight: 1,
-                  }}
-                >
-                  {examCountdown.data.daysUntil}
-                </div>
-                <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 600 }}>days left</div>
-              </div>
-              <div style={{ textAlign: "center" }}>
-                <div style={{ color: "#1E293B", fontSize: 18, fontWeight: 800, fontFamily: "'Sora', sans-serif", lineHeight: 1 }}>
-                  {examCountdown.data.avgQuestionsPerDay}
-                </div>
-                <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 600 }}>Qs/day avg</div>
-              </div>
-              <div
-                style={{
-                  padding: "5px 12px",
-                  borderRadius: 8,
-                  fontSize: 12,
-                  fontWeight: 700,
-                  background:
-                    examCountdown.data.paceStatus === "on_track" ? GREEN + "20" :
-                    examCountdown.data.paceStatus === "needs_more" ? AMBER + "20" : RED + "20",
-                  color:
-                    examCountdown.data.paceStatus === "on_track" ? GREEN :
-                    examCountdown.data.paceStatus === "needs_more" ? AMBER : RED,
-                }}
-              >
-                {examCountdown.data.paceStatus === "on_track" ? "On Track" :
-                 examCountdown.data.paceStatus === "needs_more" ? "Needs More" : "Falling Behind"}
-              </div>
-            </div>
+          <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+            <a href="/account" style={{
+              background: "#fff", border: "1px solid #E2E8F0", borderRadius: 8,
+              padding: "7px 14px", color: "#475569", fontSize: 13, fontWeight: 600, cursor: "pointer",
+              textDecoration: "none", display: "inline-block",
+            }}>
+              📚 My Courses
+            </a>
+            <button
+              onClick={handleDashboardLogout}
+              disabled={dashboardLogout.isPending}
+              style={{ background: "#fff", border: "1px solid #E2E8F0", borderRadius: 8, padding: "7px 14px", color: "#64748B", fontSize: 13, fontWeight: 600, cursor: "pointer" }}
+            >
+              {dashboardLogout.isPending ? "Signing out…" : "Log Out"}
+            </button>
           </div>
-        )}
-
-        {/* ── Hero Stats Row ── */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 14, marginBottom: 28 }}>
-          <StatCard label="Questions Answered" value={isLoading ? "—" : String(stats?.totalAttempts ?? 0)} icon="📝" color={BLUE} />
-          <StatCard label="Overall Accuracy" value={isLoading ? "—" : `${stats?.overallAccuracy ?? 0}%`} icon="🎯" color={stats?.overallAccuracy && stats.overallAccuracy >= 70 ? GREEN : AMBER} />
-          <StatCard label="Current Streak" value={isLoading ? "—" : `${stats?.currentStreak ?? 0} day${(stats?.currentStreak ?? 0) !== 1 ? "s" : ""}`} icon="🔥" color={AMBER} />
-          <StatCard label="Longest Streak" value={isLoading ? "—" : `${stats?.longestStreak ?? 0} days`} icon="🏆" color={TEAL} />
         </div>
 
-        {/* ── Readiness Score + Study Plan ── */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
-          {/* Readiness Score Card */}
-          <div style={{ background: SLATE_800, borderRadius: 14, padding: "20px 22px", border: "1px solid #E2E8F0" }}>
-            <div style={{ color: "#94A3B8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 14 }}>Exam Readiness</div>
+        {/* Top row: Readiness ring + Countdown + Key stats */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 14, marginBottom: 20 }}>
+
+          {/* Readiness Score */}
+          <div style={{ background: "#fff", borderRadius: 16, padding: "20px 18px", border: "1px solid #E2E8F0", gridColumn: "span 1" }}>
+            <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Exam Readiness</div>
             {readinessScore.isLoading ? (
-              <Skeleton height={120} />
+              <Skeleton height={80} />
             ) : !readinessScore.data ? (
-              <div style={{ color: "#94A3B8", fontSize: 13 }}>Start practicing to see your readiness score.</div>
+              <div style={{ color: "#94A3B8", fontSize: 12, lineHeight: 1.5 }}>Answer questions to unlock your readiness score.</div>
             ) : (
               <>
-                <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 14 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                   {/* Ring */}
-                  <div style={{ position: "relative", width: 80, height: 80, flexShrink: 0 }}>
-                    <svg viewBox="0 0 80 80" style={{ width: 80, height: 80, transform: "rotate(-90deg)" }}>
-                      <circle cx="40" cy="40" r="32" fill="none" stroke="#E2E8F0" strokeWidth="8" />
-                      <circle
-                        cx="40" cy="40" r="32" fill="none"
-                        stroke={
-                          (readinessScore.data.score ?? 0) >= 75 ? GREEN :
-                          (readinessScore.data.score ?? 0) >= 60 ? TEAL :
-                          (readinessScore.data.score ?? 0) >= 40 ? AMBER : RED
-                        }
-                        strokeWidth="8"
-                        strokeLinecap="round"
-                        strokeDasharray={`${2 * Math.PI * 32}`}
-                        strokeDashoffset={`${2 * Math.PI * 32 * (1 - (readinessScore.data.score ?? 0) / 100)}`}
-                      />
-                    </svg>
-                    <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <span style={{ fontSize: 18, fontWeight: 900, color: "#1E293B" }}>{readinessScore.data.score}</span>
-                    </div>
-                  </div>
+                  <svg width="64" height="64" viewBox="0 0 64 64">
+                    <circle cx="32" cy="32" r="26" fill="none" stroke="#E2E8F0" strokeWidth="7" />
+                    <circle
+                      cx="32" cy="32" r="26" fill="none"
+                      stroke={readinessScore.data.score >= 80 ? "#22C55E" : readinessScore.data.score >= 60 ? "#14B8A6" : readinessScore.data.score >= 40 ? "#F59E0B" : "#EF4444"}
+                      strokeWidth="7"
+                      strokeDasharray={`${(readinessScore.data.score / 100) * 163.4} 163.4`}
+                      strokeLinecap="round"
+                      transform="rotate(-90 32 32)"
+                    />
+                    <text x="32" y="37" textAnchor="middle" fontSize="15" fontWeight="900" fontFamily="Sora,sans-serif"
+                      fill={readinessScore.data.score >= 80 ? "#22C55E" : readinessScore.data.score >= 60 ? "#14B8A6" : readinessScore.data.score >= 40 ? "#F59E0B" : "#EF4444"}>
+                      {readinessScore.data.score}
+                    </text>
+                  </svg>
                   <div>
-                    <div style={{
-                      fontSize: 14, fontWeight: 800, marginBottom: 4,
-                      color: (readinessScore.data.score ?? 0) >= 75 ? GREEN : (readinessScore.data.score ?? 0) >= 60 ? TEAL : (readinessScore.data.score ?? 0) >= 40 ? AMBER : RED,
-                    }}>{readinessScore.data.label}</div>
-                    <div style={{ color: "#64748B", fontSize: 12, lineHeight: 1.5 }}>{readinessScore.data.description}</div>
+                    <div style={{ color: "#0F172A", fontSize: 13, fontWeight: 800, lineHeight: 1.2 }}>{readinessScore.data.label}</div>
+                    <div style={{ color: "#94A3B8", fontSize: 11, marginTop: 4, lineHeight: 1.4 }}>{readinessScore.data.nextAction}</div>
                   </div>
-                </div>
-                {/* Breakdown bars */}
-                {readinessScore.data.hasData && (
-                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                    {([
-                      { label: "Recent Accuracy", value: readinessScore.data.breakdown.recentAccuracy, weight: "30%" },
-                      { label: "Mock Exam", value: readinessScore.data.breakdown.mockAccuracy, weight: "25%" },
-                      { label: "Topic Coverage", value: readinessScore.data.breakdown.topicCoverage, weight: "20%" },
-                      { label: "Study Frequency", value: readinessScore.data.breakdown.studyFrequency, weight: "15%" },
-                    ] as const).map((b) => (
-                      <div key={b.label}>
-                        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
-                          <span style={{ color: "#64748B", fontSize: 11 }}>{b.label} <span style={{ color: "#CBD5E1" }}>({b.weight})</span></span>
-                          <span style={{ color: "#1E293B", fontSize: 11, fontWeight: 700 }}>{b.value}%</span>
-                        </div>
-                        <div style={{ height: 4, borderRadius: 2, background: "#E2E8F0", overflow: "hidden" }}>
-                          <div style={{ height: "100%", width: `${b.value}%`, borderRadius: 2, background: b.value >= 70 ? GREEN : b.value >= 50 ? TEAL : b.value >= 30 ? AMBER : RED }} />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                <div style={{ marginTop: 12, padding: "8px 12px", background: BLUE + "15", borderRadius: 8, color: BLUE, fontSize: 12, fontWeight: 600 }}>
-                  💡 {readinessScore.data.nextAction}
                 </div>
               </>
             )}
           </div>
 
-          {/* Study Plan Card */}
-          <div style={{ background: SLATE_800, borderRadius: 14, padding: "20px 22px", border: "1px solid #E2E8F0" }}>
-            <div style={{ color: "#94A3B8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 14 }}>Recommended Study Plan</div>
-            {studyPlan.isLoading ? (
-              <Skeleton height={120} />
-            ) : !studyPlan.data || studyPlan.data.recommendations.length === 0 ? (
-              <div style={{ color: "#94A3B8", fontSize: 13 }}>Complete some questions to get personalized recommendations.</div>
-            ) : (
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {studyPlan.data.recommendations.map((rec, i) => {
-                  const iconMap: Record<string, string> = {
-                    weak_topic: "⚠️", missed_review: "❌", low_confidence: "😰",
-                    bookmarked: "🔖", mock_exam: "📋", start_practicing: "🚀",
-                  };
-                  const colorMap: Record<string, string> = {
-                    weak_topic: RED, missed_review: AMBER, low_confidence: AMBER,
-                    bookmarked: BLUE, mock_exam: TEAL, start_practicing: GREEN,
-                  };
-                  const color = colorMap[rec.type] ?? BLUE;
-                  return (
-                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 12px", background: color + "10", borderRadius: 10, border: `1px solid ${color}22` }}>
-                      <span style={{ fontSize: 16, flexShrink: 0, marginTop: 1 }}>{iconMap[rec.type] ?? "📌"}</span>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ color: "#1E293B", fontSize: 13, fontWeight: 700, marginBottom: 2 }}>{rec.title}</div>
-                        <div style={{ color: "#64748B", fontSize: 12, lineHeight: 1.4 }}>{rec.description}</div>
-                      </div>
-                    </div>
-                  );
-                })}
-                {/* Review Modes quick-launch */}
-                {(studyPlan.data.totalMissed > 0 || studyPlan.data.totalLowConf > 0 || studyPlan.data.totalBookmarked > 0) && (
-                  <div style={{ marginTop: 4, display: "flex", gap: 8, flexWrap: "wrap" }}>
-                    {studyPlan.data.totalMissed > 0 && (
-                      <a href="/?mode=missed" style={{ padding: "5px 12px", borderRadius: 7, background: AMBER + "20", color: AMBER, fontSize: 12, fontWeight: 700, textDecoration: "none", border: `1px solid ${AMBER}33` }}>
-                        ❌ Review Missed ({studyPlan.data.totalMissed})
-                      </a>
-                    )}
-                    {studyPlan.data.totalBookmarked > 0 && (
-                      <a href="/?mode=bookmarked" style={{ padding: "5px 12px", borderRadius: 7, background: BLUE + "20", color: BLUE, fontSize: 12, fontWeight: 700, textDecoration: "none", border: `1px solid ${BLUE}33` }}>
-                        🔖 Bookmarks ({studyPlan.data.totalBookmarked})
-                      </a>
-                    )}
-                    {studyPlan.data.totalLowConf > 0 && (
-                      <a href="/?mode=low-confidence" style={{ padding: "5px 12px", borderRadius: 7, background: RED + "20", color: RED, fontSize: 12, fontWeight: 700, textDecoration: "none", border: `1px solid ${RED}33` }}>
-                        😰 Low Confidence ({studyPlan.data.totalLowConf})
-                      </a>
-                    )}
-                  </div>
-                )}
+          {/* Exam Countdown */}
+          <div style={{ background: "#fff", borderRadius: 16, padding: "20px 18px", border: "1px solid #E2E8F0", gridColumn: "span 1" }}>
+            <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Exam Countdown</div>
+            {examCountdown.isLoading ? (
+              <Skeleton height={80} />
+            ) : !examCountdown.data ? (
+              <div style={{ color: "#94A3B8", fontSize: 12, lineHeight: 1.5 }}>
+                No exam date set.{" "}
+                <a href="/account" style={{ color: "#3B82F6", textDecoration: "none", fontWeight: 600 }}>Set one →</a>
               </div>
+            ) : (
+              <>
+                <div style={{ color: "#0F172A", fontSize: 13, fontWeight: 800, marginBottom: 4 }}>
+                  {EXAM_TYPE_LABELS[examCountdown.data.examName] ?? examCountdown.data.examName}
+                </div>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 6 }}>
+                  <span style={{
+                    fontSize: 32, fontWeight: 900, fontFamily: "Sora,sans-serif", lineHeight: 1,
+                    color: examCountdown.data.daysUntil <= 7 ? "#EF4444" : examCountdown.data.daysUntil <= 14 ? "#F59E0B" : "#14B8A6",
+                  }}>
+                    {examCountdown.data.daysUntil}
+                  </span>
+                  <span style={{ color: "#94A3B8", fontSize: 12, fontWeight: 600 }}>days left</span>
+                </div>
+                <div style={{
+                  display: "inline-block", padding: "3px 10px", borderRadius: 6, fontSize: 11, fontWeight: 700,
+                  background: examCountdown.data.paceStatus === "on_track" ? "#22C55E20" : examCountdown.data.paceStatus === "needs_more" ? "#F59E0B20" : "#EF444420",
+                  color: examCountdown.data.paceStatus === "on_track" ? "#22C55E" : examCountdown.data.paceStatus === "needs_more" ? "#F59E0B" : "#EF4444",
+                }}>
+                  {examCountdown.data.paceStatus === "on_track" ? "On Track" : examCountdown.data.paceStatus === "needs_more" ? "Needs More" : "Falling Behind"}
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* Questions Answered */}
+          <div style={{ background: "#fff", borderRadius: 16, padding: "20px 18px", border: "1px solid #E2E8F0" }}>
+            <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Questions Answered</div>
+            {isLoading ? <Skeleton height={50} /> : (
+              <>
+                <div style={{ color: "#3B82F6", fontSize: 34, fontWeight: 900, fontFamily: "Sora,sans-serif", lineHeight: 1 }}>{stats?.totalAttempts ?? 0}</div>
+                <div style={{ color: "#94A3B8", fontSize: 12, marginTop: 6 }}>
+                  {stats?.currentStreak ?? 0} day streak 🔥
+                </div>
+              </>
+            )}
+          </div>
+
+          {/* Overall Accuracy */}
+          <div style={{ background: "#fff", borderRadius: 16, padding: "20px 18px", border: "1px solid #E2E8F0" }}>
+            <div style={{ color: "#94A3B8", fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 12 }}>Overall Accuracy</div>
+            {isLoading ? <Skeleton height={50} /> : (
+              <>
+                <div style={{
+                  fontSize: 34, fontWeight: 900, fontFamily: "Sora,sans-serif", lineHeight: 1,
+                  color: (stats?.overallAccuracy ?? 0) >= 70 ? "#22C55E" : (stats?.overallAccuracy ?? 0) >= 50 ? "#F59E0B" : "#EF4444",
+                }}>
+                  {stats?.overallAccuracy ?? 0}%
+                </div>
+                <div style={{ color: "#94A3B8", fontSize: 12, marginTop: 6 }}>
+                  {stats?.totalSessions ?? 0} sessions total
+                </div>
+              </>
             )}
           </div>
         </div>
 
-        {/* ── Weak Topics Focus ── */}
-        {topicAccuracy.data && topicAccuracy.data.topics?.length > 0 && (() => {
-          const weak = topicAccuracy.data.topics
-            .filter((t: any) => {
-              const acc = t.total > 0 ? (t.correct / t.total) * 100 : 100;
-              return acc < 60 && t.total >= 3;
-            })
-            .sort((a: any, b: any) => (a.correct / a.total) - (b.correct / b.total))
-            .slice(0, 4);
-          if (weak.length === 0) return null;
-          return (
-            <Section title="⚠️ Focus Areas">
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 10 }}>
-                {weak.map((t: any, i: number) => {
-                  const acc = Math.round((t.correct / t.total) * 100);
-                  return (
-                    <div
-                      key={i}
-                      style={{
-                        background: SLATE_900,
-                        borderRadius: 10,
-                        padding: "12px 14px",
-                        border: `1px solid ${acc < 40 ? RED : AMBER}33`,
-                      }}
-                    >
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                        <span style={{ color: "#1E293B", fontSize: 13, fontWeight: 700 }}>{t.topic}</span>
-                        <span
-                          style={{
-                            padding: "2px 8px",
-                            borderRadius: 6,
-                            fontSize: 11,
-                            fontWeight: 700,
-                            background: acc < 40 ? RED + "20" : AMBER + "20",
-                            color: acc < 40 ? RED : AMBER,
-                          }}
-                        >
-                          {acc}%
-                        </span>
-                      </div>
-                      <div
-                        style={{
-                          height: 6,
-                          borderRadius: 3,
-                          background: SLATE_700,
-                          overflow: "hidden",
-                        }}
-                      >
-                        <div
-                          style={{
-                            height: "100%",
-                            width: `${acc}%`,
-                            borderRadius: 3,
-                            background: acc < 40 ? RED : AMBER,
-                          }}
-                        />
-                      </div>
-                      <div style={{ color: "#64748B", fontSize: 11, marginTop: 6 }}>
-                        {t.correct}/{t.total} correct · Needs review
-                      </div>
-                      <a
-                        href={`/?topic=${encodeURIComponent(t.topic)}`}
-                        style={{
-                          display: "inline-block",
-                          marginTop: 8,
-                          padding: "4px 10px",
-                          borderRadius: 6,
-                          fontSize: 11,
-                          fontWeight: 700,
-                          background: acc < 40 ? RED + "15" : AMBER + "15",
-                          color: acc < 40 ? RED : AMBER,
-                          textDecoration: "none",
-                          border: `1px solid ${acc < 40 ? RED : AMBER}33`,
-                        }}
-                      >
-                        Practice this topic →
-                      </a>
-                    </div>
-                  );
-                })}
-              </div>
-            </Section>
-          );
-        })()}
-
-        {/* ── Daily Activity Chart ── */}
-        <Section title="📅 Daily Activity (Last 30 Days)">
-          {dailyActivity.isLoading ? (
-            <Skeleton height={200} />
-          ) : (dailyActivity.data?.length ?? 0) === 0 ? (
-            <EmptyState text="No activity yet. Start a quiz to see your daily progress here." />
-          ) : (
-            <div style={{ height: 220 }}>
-              <Bar
-                data={activityChartData}
-                options={{
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  plugins: {
-                    legend: { display: true, position: "top", labels: { color: "#94A3B8", font: { size: 11, family: "Sora" } } },
-                  },
-                  scales: {
-                    x: { ticks: { color: "#64748B", font: { size: 10 }, maxRotation: 45 }, grid: { display: false } },
-                    y: { ticks: { color: "#64748B", font: { size: 11 }, stepSize: 5 }, grid: { color: "#1E293B" }, beginAtZero: true },
-                  },
-                }}
-              />
+        {/* Recommended Next Step banner */}
+        {studyPlan.data?.recommendations?.[0] && (
+          <div style={{
+            background: "linear-gradient(135deg, #3B82F615, #14B8A615)",
+            border: "1px solid #3B82F630",
+            borderRadius: 14, padding: "14px 18px", marginBottom: 20,
+            display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap",
+          }}>
+            <span style={{ fontSize: 22 }}>
+              {{ weak_topic: "⚠️", missed_review: "❌", low_confidence: "😰", bookmarked: "🔖", mock_exam: "📋", start_practicing: "🚀" }[studyPlan.data.recommendations[0].type] ?? "📌"}
+            </span>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ color: "#0F172A", fontSize: 13, fontWeight: 800 }}>{studyPlan.data.recommendations[0].title}</div>
+              <div style={{ color: "#64748B", fontSize: 12, marginTop: 2 }}>{studyPlan.data.recommendations[0].description}</div>
             </div>
-          )}
-        </Section>
+            {studyPlan.data.recommendations[0].action && (
+              <a href={studyPlan.data.recommendations[0].action} style={{
+                padding: "8px 16px", borderRadius: 8, background: "#3B82F6", color: "#fff",
+                fontSize: 13, fontWeight: 700, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0,
+              }}>
+                Start Now →
+              </a>
+            )}
+          </div>
+        )}
 
-        {/* ── Two-column: Topic Accuracy + Difficulty ── */}
-        <div className="dashboard-two-col" style={{ display: "grid", gap: 16, marginBottom: 16 }}>
+        {/* ═══════════════════════════════════════════════════
+            MIDDLE SECTION: Action Cards
+        ═══════════════════════════════════════════════════ */}
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 14, marginBottom: 24 }}>
+
+          {/* Continue Practicing */}
+          <a href="/" style={{ textDecoration: "none" }}>
+            <div style={{ background: "linear-gradient(135deg, #3B82F6, #2563EB)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
+              <div style={{ fontSize: 28, marginBottom: 10 }}>📝</div>
+              <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Continue Practicing</div>
+              <div style={{ color: "#BFDBFE", fontSize: 12, lineHeight: 1.4 }}>Pick up where you left off with adaptive questions.</div>
+            </div>
+          </a>
+
+          {/* Review Weak Topics */}
+          {(topicAccuracy.data?.topics?.filter((t: any) => t.status === "weak")?.length ?? 0) > 0 ? (
+            <a href={`/?topic=${encodeURIComponent(topicAccuracy.data!.topics.filter((t: any) => t.status === "weak")[0].name)}`} style={{ textDecoration: "none" }}>
+              <div style={{ background: "linear-gradient(135deg, #EF4444, #DC2626)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
+                <div style={{ fontSize: 28, marginBottom: 10 }}>⚠️</div>
+                <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Weak Topics</div>
+                <div style={{ color: "#FECACA", fontSize: 12, lineHeight: 1.4 }}>
+                  {topicAccuracy.data!.topics.filter((t: any) => t.status === "weak").length} topic{topicAccuracy.data!.topics.filter((t: any) => t.status === "weak").length !== 1 ? "s" : ""} need attention.
+                </div>
+              </div>
+            </a>
+          ) : (
+            <a href="/?mode=standard" style={{ textDecoration: "none" }}>
+              <div style={{ background: "linear-gradient(135deg, #F59E0B, #D97706)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
+                <div style={{ fontSize: 28, marginBottom: 10 }}>⚠️</div>
+                <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Weak Topics</div>
+                <div style={{ color: "#FEF3C7", fontSize: 12, lineHeight: 1.4 }}>No weak topics yet — keep practicing!</div>
+              </div>
+            </a>
+          )}
+
+          {/* Take Mock Exam */}
+          <a href="/mock-exam" style={{ textDecoration: "none" }}>
+            <div style={{ background: "linear-gradient(135deg, #14B8A6, #0D9488)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
+              <div style={{ fontSize: 28, marginBottom: 10 }}>📋</div>
+              <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Take Mock Exam</div>
+              <div style={{ color: "#CCFBF1", fontSize: 12, lineHeight: 1.4 }}>Simulate real exam conditions and track your score.</div>
+            </div>
+          </a>
+
+          {/* Review Missed Questions */}
+          <a href="/?mode=missed" style={{ textDecoration: "none" }}>
+            <div style={{ background: "linear-gradient(135deg, #8B5CF6, #7C3AED)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
+              <div style={{ fontSize: 28, marginBottom: 10 }}>❌</div>
+              <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Review Missed</div>
+              <div style={{ color: "#EDE9FE", fontSize: 12, lineHeight: 1.4 }}>
+                {studyPlan.data?.totalMissed ? `${studyPlan.data.totalMissed} questions to review.` : "Practice questions you got wrong."}
+              </div>
+            </div>
+          </a>
+        </div>
+
+        {/* ═══════════════════════════════════════════════════
+            BOTTOM SECTION: Performance · Topics · AI Tutor · Flashcards
+        ═══════════════════════════════════════════════════ */}
+
+        {/* Row 1: Daily Activity + Topic Accuracy */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+
+          {/* Daily Activity */}
+          <Section title="📅 Daily Activity (Last 30 Days)" style={{ margin: 0 }}>
+            {dailyActivity.isLoading ? (
+              <Skeleton height={200} />
+            ) : (dailyActivity.data?.length ?? 0) === 0 ? (
+              <EmptyState text="No activity yet. Start a quiz to see your daily progress." />
+            ) : (
+              <div style={{ height: 200 }}>
+                <Bar
+                  data={activityChartData}
+                  options={{
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: true, position: "top", labels: { color: "#94A3B8", font: { size: 10, family: "Sora" } } } },
+                    scales: {
+                      x: { ticks: { color: "#64748B", font: { size: 9 }, maxRotation: 45 }, grid: { display: false } },
+                      y: { ticks: { color: "#64748B", font: { size: 10 }, stepSize: 5 }, grid: { color: "#F1F5F9" }, beginAtZero: true },
+                    },
+                  }}
+                />
+              </div>
+            )}
+          </Section>
+
+          {/* Topic Accuracy */}
           <Section title="📚 Topic Accuracy" style={{ margin: 0 }}>
             {topicAccuracy.isLoading ? (
               <Skeleton height={200} />
             ) : (topicAccuracy.data?.topics.length ?? 0) === 0 ? (
               <EmptyState text="No topic data yet. Answer some quiz questions to see your strengths and weaknesses." />
             ) : (
-              <div style={{ height: 280 }}>
+              <div style={{ height: 200 }}>
                 <Bar
                   data={topicChartData}
                   options={{
                     indexAxis: "y" as const,
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                      legend: { display: false },
-                      tooltip: {
-                        callbacks: {
-                          label: (ctx) => {
-                            const topic = topicAccuracy.data?.topics[ctx.dataIndex];
-                            return topic ? `${topic.accuracy}% (${topic.correct}/${topic.total})` : "";
-                          },
-                        },
-                      },
-                    },
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
                     scales: {
-                      x: { min: 0, max: 100, ticks: { color: "#64748B", font: { size: 11 }, callback: (v) => v + "%" }, grid: { color: "#1E293B" } },
-                      y: { ticks: { color: "#64748B", font: { size: 11, family: "Sora" } }, grid: { display: false } },
+                      x: { min: 0, max: 100, ticks: { color: "#64748B", font: { size: 10 } }, grid: { color: "#F1F5F9" } },
+                      y: { ticks: { color: "#64748B", font: { size: 10 } }, grid: { display: false } },
                     },
                   }}
                 />
               </div>
             )}
-            {/* Weak topics alert */}
-            {(topicAccuracy.data?.weakTopics.length ?? 0) > 0 && (
-              <div style={{ marginTop: 12, padding: "10px 14px", background: RED + "15", border: `1px solid ${RED}33`, borderRadius: 10 }}>
-                <div style={{ color: RED, fontSize: 12, fontWeight: 700, marginBottom: 4 }}>⚠️ Focus Areas (below 65%)</div>
-                <div style={{ color: "#1E293B", fontSize: 13 }}>
-                  {topicAccuracy.data?.weakTopics.join(", ")}
+          </Section>
+        </div>
+
+        {/* Row 2: Weak Focus Areas + Difficulty Split */}
+        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: 16, marginBottom: 16 }}>
+
+          {/* Weak Focus Areas */}
+          <Section title="⚠️ Focus Areas" style={{ margin: 0 }}>
+            {topicAccuracy.isLoading ? (
+              <Skeleton height={120} />
+            ) : (() => {
+              const weak = (topicAccuracy.data?.topics ?? []).filter((t: any) => t.status === "weak").slice(0, 4);
+              return weak.length === 0 ? (
+                <EmptyState text="No weak topics yet — you're doing great! Keep practicing." />
+              ) : (
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 10 }}>
+                  {weak.map((t: any, i: number) => {
+                    const acc = t.accuracy;
+                    return (
+                      <div key={i} style={{ background: "#FFF7F7", borderRadius: 10, padding: "12px 14px", border: `1px solid ${acc < 40 ? "#EF444433" : "#F59E0B33"}` }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+                          <span style={{ color: "#0F172A", fontSize: 12, fontWeight: 700 }}>{t.name}</span>
+                          <span style={{ padding: "2px 7px", borderRadius: 5, fontSize: 10, fontWeight: 700, background: acc < 40 ? "#EF444420" : "#F59E0B20", color: acc < 40 ? "#EF4444" : "#F59E0B" }}>{acc}%</span>
+                        </div>
+                        <div style={{ height: 5, borderRadius: 3, background: "#E2E8F0", overflow: "hidden", marginBottom: 8 }}>
+                          <div style={{ height: "100%", width: `${acc}%`, borderRadius: 3, background: acc < 40 ? "#EF4444" : "#F59E0B" }} />
+                        </div>
+                        <a href={`/?topic=${encodeURIComponent(t.name)}`} style={{ display: "inline-block", padding: "4px 10px", borderRadius: 6, fontSize: 11, fontWeight: 700, background: acc < 40 ? "#EF444415" : "#F59E0B15", color: acc < 40 ? "#EF4444" : "#F59E0B", textDecoration: "none", border: `1px solid ${acc < 40 ? "#EF444433" : "#F59E0B33"}` }}>
+                          Practice →
+                        </a>
+                      </div>
+                    );
+                  })}
                 </div>
-              </div>
-            )}
+              );
+            })()}
           </Section>
 
+          {/* Difficulty Split */}
           <Section title="⚡ Difficulty Split" style={{ margin: 0 }}>
             {difficultyBreakdown.isLoading ? (
-              <Skeleton height={200} />
+              <Skeleton height={120} />
             ) : (difficultyBreakdown.data?.length ?? 0) === 0 ? (
               <EmptyState text="No data yet." />
             ) : (
-              <>
-                <div style={{ height: 180, display: "flex", justifyContent: "center" }}>
-                  <Doughnut
-                    data={difficultyChartData}
-                    options={{
-                      responsive: true,
-                      maintainAspectRatio: false,
-                      cutout: "60%",
-                      plugins: {
-                        legend: { position: "bottom", labels: { color: "#94A3B8", font: { size: 11, family: "Sora" }, padding: 12 } },
-                      },
-                    }}
-                  />
-                </div>
-                {/* Accuracy per difficulty */}
-                <div style={{ marginTop: 12, display: "flex", gap: 8, justifyContent: "center" }}>
-                  {(difficultyBreakdown.data ?? [])
-                    .filter((d) => ["easy", "medium", "hard"].includes(d.difficulty))
-                    .map((d) => (
-                      <div
-                        key={d.difficulty}
-                        style={{
-                          padding: "6px 10px",
-                          borderRadius: 8,
-                          background: SLATE_800,
-                          textAlign: "center",
-                          flex: 1,
-                        }}
-                      >
-                        <div style={{ color: d.difficulty === "easy" ? GREEN : d.difficulty === "medium" ? AMBER : RED, fontSize: 16, fontWeight: 800 }}>
-                          {d.accuracy}%
-                        </div>
-                        <div style={{ color: "#94A3B8", fontSize: 10, textTransform: "capitalize" }}>{d.difficulty}</div>
-                      </div>
-                    ))}
-                </div>
-              </>
+              <div style={{ height: 160 }}>
+                <Doughnut
+                  data={difficultyChartData}
+                  options={{
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { position: "bottom", labels: { color: "#64748B", font: { size: 11 }, padding: 12 } } },
+                    cutout: "65%",
+                  }}
+                />
+              </div>
             )}
           </Section>
         </div>
 
-        {/* ── Course Breakdown ── */}
+        {/* Row 3: Course Breakdown */}
         <Section title="🎓 Course Breakdown">
           {courseBreakdown.isLoading ? (
-            <Skeleton height={100} />
+            <Skeleton height={80} />
           ) : (courseBreakdown.data?.length ?? 0) === 0 ? (
-            <EmptyState text="No course data yet. Start practicing to see your per-course stats." />
+            <EmptyState text="No course data yet. Start a quiz to see your course breakdown." />
           ) : (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 12 }}>
-              {courseBreakdown.data?.map((c) => (
-                <div
-                  key={c.examType}
-                  style={{
-                    background: SLATE_800,
-                    borderRadius: 12,
-                    padding: "14px 16px",
-                    border: "1px solid #E2E8F0",
-                  }}
-                >
-                  <div style={{ color: "#1E293B", fontSize: 13, fontWeight: 700, marginBottom: 8 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {courseBreakdown.data?.map((c, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                  <div style={{ minWidth: 140, color: "#0F172A", fontSize: 13, fontWeight: 600 }}>
                     {EXAM_TYPE_LABELS[c.examType] ?? c.examType}
                   </div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-                    <div>
-                      <div style={{ color: c.accuracy >= 70 ? GREEN : c.accuracy >= 50 ? AMBER : RED, fontSize: 22, fontWeight: 900, fontFamily: "'Sora', sans-serif" }}>
-                        {c.accuracy}%
-                      </div>
-                      <div style={{ color: "#64748B", fontSize: 11 }}>{c.correct}/{c.total} correct</div>
-                    </div>
-                    {/* Mini progress bar */}
-                    <div style={{ width: 60, height: 6, borderRadius: 3, background: SLATE_700, overflow: "hidden" }}>
-                      <div
-                        style={{
-                          width: `${c.accuracy}%`,
-                          height: "100%",
-                          borderRadius: 3,
-                          background: c.accuracy >= 70 ? GREEN : c.accuracy >= 50 ? AMBER : RED,
-                          transition: "width 0.5s ease",
-                        }}
-                      />
-                    </div>
+                  <div style={{ flex: 1, height: 10, borderRadius: 5, background: "#E2E8F0", overflow: "hidden" }}>
+                    <div style={{ height: "100%", width: `${c.accuracy}%`, borderRadius: 5, background: c.accuracy >= 70 ? "#22C55E" : c.accuracy >= 50 ? "#14B8A6" : "#F59E0B" }} />
+                  </div>
+                  <div style={{ minWidth: 80, textAlign: "right" }}>
+                    <span style={{ color: c.accuracy >= 70 ? "#22C55E" : c.accuracy >= 50 ? "#14B8A6" : "#F59E0B", fontSize: 13, fontWeight: 800 }}>{c.accuracy}%</span>
+                    <span style={{ color: "#94A3B8", fontSize: 11, marginLeft: 6 }}>{c.total} Qs</span>
                   </div>
                 </div>
               ))}
@@ -825,107 +701,75 @@ export default function StudentDashboard() {
           )}
         </Section>
 
-        {/* ── Two-column: AI Sessions + Recommended Resources ── */}
-        <div className="dashboard-two-col" style={{ display: "grid", gap: 16, marginBottom: 16 }}>
-          {/* ── AI Tutor Session History ── */}
+        {/* Row 4: AI Tutor Sessions + Study Plan */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
+
+          {/* AI Tutor Sessions */}
           <Section title="🤖 AI Tutor Sessions" style={{ margin: 0 }}>
             {aiSessions.isLoading ? (
-              <Skeleton height={140} />
+              <Skeleton height={120} />
             ) : (aiSessions.data?.length ?? 0) === 0 ? (
-              <EmptyState text="No AI tutor sessions yet. Open the AI Tutor during a quiz to get personalized help." />
+              <EmptyState text="No AI tutor sessions yet. Ask the AI tutor a question while practicing." />
             ) : (
-              <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                {aiSessions.data?.slice(0, 5).map((s) => (
-                  <div
-                    key={s.id}
-                    style={{
-                      background: SLATE_900,
-                      borderRadius: 10,
-                      padding: "12px 14px",
-                      border: "1px solid #E2E8F0",
-                    }}
-                  >
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-                      <span
-                        style={{
-                          padding: "2px 8px",
-                          borderRadius: 6,
-                          fontSize: 11,
-                          fontWeight: 700,
-                          background: BLUE + "20",
-                          color: BLUE,
-                        }}
-                      >
-                        {EXAM_TYPE_LABELS[s.examType] ?? s.examType}
-                      </span>
-                      <span style={{ color: "#64748B", fontSize: 11 }}>
-                        {new Date(s.sessionStart).toLocaleDateString("en-CA", { month: "short", day: "numeric" })}
-                        {" \u00B7 "}
-                        {s.messageCount} msgs
-                      </span>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                {aiSessions.data?.slice(0, 4).map((s, i) => (
+                  <div key={i} style={{ padding: "10px 12px", background: "#F8FAFC", borderRadius: 10, border: "1px solid #E2E8F0" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+                      <span style={{ color: "#0F172A", fontSize: 12, fontWeight: 700 }}>{EXAM_TYPE_LABELS[s.examType] ?? s.examType}</span>
+                      <span style={{ color: "#94A3B8", fontSize: 11 }}>{new Date(s.sessionStart).toLocaleDateString("en-CA", { month: "short", day: "numeric" })}</span>
                     </div>
-                    <div style={{ color: "#64748B", fontSize: 12, lineHeight: 1.5 }}>
-                      {s.summary.length > 120 ? s.summary.slice(0, 117) + "\u2026" : s.summary}
+                    <div style={{ color: "#64748B", fontSize: 12, lineHeight: 1.4 }}>
+                      {s.summary ? (s.summary.length > 80 ? s.summary.slice(0, 77) + "…" : s.summary) : `${s.messageCount} messages`}
                     </div>
-                    {s.topicsCovered && (
-                      <div style={{ color: "#64748B", fontSize: 11, marginTop: 6 }}>
-                        Topics: {s.topicsCovered}
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>
             )}
           </Section>
 
-          {/* ── Recommended Resources ── */}
-          <Section title="📚 Recommended For You" style={{ margin: 0 }}>
-            {recommendedResources.isLoading ? (
-              <Skeleton height={140} />
-            ) : (recommendedResources.data?.length ?? 0) === 0 ? (
-              <EmptyState text="Answer more questions to get personalized resource recommendations." />
+          {/* Full Study Plan */}
+          <Section title="📋 Your Study Plan" style={{ margin: 0 }}>
+            {studyPlan.isLoading ? (
+              <Skeleton height={120} />
+            ) : !studyPlan.data || studyPlan.data.recommendations.length === 0 ? (
+              <EmptyState text="Complete some questions to get a personalized study plan." />
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {recommendedResources.data?.map((r, i) => (
-                  <a
-                    key={i}
-                    href={r.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "block",
-                      background: SLATE_900,
-                      borderRadius: 10,
-                      padding: "12px 14px",
-                      border: "1px solid #E2E8F0",
-                      textDecoration: "none",
-                      transition: "border-color 0.15s",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.borderColor = BLUE)}
-                    onMouseLeave={(e) => (e.currentTarget.style.borderColor = SLATE_700)}
-                  >
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                      <span style={{ fontSize: 14 }}>
-                        {r.type === "official" ? "\ud83c\udfe2" : r.type === "video" ? "\ud83c\udfac" : r.type === "textbook" ? "\ud83d\udcd6" : r.type === "practice" ? "\u270d\ufe0f" : r.type === "community" ? "\ud83d\udcac" : "\ud83d\udee0\ufe0f"}
-                      </span>
-                      <span style={{ color: "#1E293B", fontSize: 13, fontWeight: 700 }}>{r.title}</span>
-                    </div>
-                    <div style={{ color: "#94A3B8", fontSize: 11, lineHeight: 1.4 }}>
-                      {r.description.length > 100 ? r.description.slice(0, 97) + "\u2026" : r.description}
-                    </div>
-                    {r.reason && (
-                      <div style={{ color: TEAL, fontSize: 11, marginTop: 4, fontWeight: 600 }}>
-                        \u2192 {r.reason}
+                {studyPlan.data.recommendations.slice(0, 4).map((rec, i) => {
+                  const iconMap: Record<string, string> = { weak_topic: "⚠️", missed_review: "❌", low_confidence: "😰", bookmarked: "🔖", mock_exam: "📋", start_practicing: "🚀" };
+                  const colorMap: Record<string, string> = { weak_topic: "#EF4444", missed_review: "#F59E0B", low_confidence: "#F59E0B", bookmarked: "#3B82F6", mock_exam: "#14B8A6", start_practicing: "#22C55E" };
+                  const color = colorMap[rec.type] ?? "#3B82F6";
+                  return (
+                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, padding: "10px 12px", background: color + "10", borderRadius: 10, border: `1px solid ${color}22` }}>
+                      <span style={{ fontSize: 15, flexShrink: 0, marginTop: 1 }}>{iconMap[rec.type] ?? "📌"}</span>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ color: "#0F172A", fontSize: 12, fontWeight: 700, marginBottom: 2 }}>{rec.title}</div>
+                        <div style={{ color: "#64748B", fontSize: 11, lineHeight: 1.4 }}>{rec.description}</div>
                       </div>
-                    )}
-                  </a>
-                ))}
+                      {rec.action && (
+                        <a href={rec.action} style={{ padding: "4px 10px", borderRadius: 6, background: color, color: "#fff", fontSize: 11, fontWeight: 700, textDecoration: "none", flexShrink: 0 }}>Go</a>
+                      )}
+                    </div>
+                  );
+                })}
+                {/* Review mode quick-links */}
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 4 }}>
+                  {(studyPlan.data.totalMissed ?? 0) > 0 && (
+                    <a href="/?mode=missed" style={{ padding: "4px 10px", borderRadius: 6, background: "#F59E0B20", color: "#F59E0B", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #F59E0B33" }}>❌ Missed ({studyPlan.data.totalMissed})</a>
+                  )}
+                  {(studyPlan.data.totalBookmarked ?? 0) > 0 && (
+                    <a href="/?mode=bookmarked" style={{ padding: "4px 10px", borderRadius: 6, background: "#3B82F620", color: "#3B82F6", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #3B82F633" }}>🔖 Bookmarks ({studyPlan.data.totalBookmarked})</a>
+                  )}
+                  {(studyPlan.data.totalLowConf ?? 0) > 0 && (
+                    <a href="/?mode=low-confidence" style={{ padding: "4px 10px", borderRadius: 6, background: "#EF444420", color: "#EF4444", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #EF444433" }}>😰 Low Confidence ({studyPlan.data.totalLowConf})</a>
+                  )}
+                </div>
               </div>
             )}
           </Section>
         </div>
 
-        {/* ── Recent Sessions ── */}
+        {/* Row 5: Recent Sessions */}
         <Section title="🕐 Recent Sessions">
           {recentSessions.isLoading ? (
             <Skeleton height={120} />
@@ -935,7 +779,7 @@ export default function StudentDashboard() {
             <div style={{ overflowX: "auto" }}>
               <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
                 <thead>
-                  <tr style={{ borderBottom: `1px solid ${SLATE_700}` }}>
+                  <tr style={{ borderBottom: "1px solid #E2E8F0" }}>
                     <th style={{ textAlign: "left", padding: "8px 12px", color: "#94A3B8", fontWeight: 600, fontSize: 11 }}>Date</th>
                     <th style={{ textAlign: "left", padding: "8px 12px", color: "#94A3B8", fontWeight: 600, fontSize: 11 }}>Course</th>
                     <th style={{ textAlign: "left", padding: "8px 12px", color: "#94A3B8", fontWeight: 600, fontSize: 11 }}>Mode</th>
@@ -945,30 +789,21 @@ export default function StudentDashboard() {
                 </thead>
                 <tbody>
                   {recentSessions.data?.map((s, i) => (
-                    <tr key={i} style={{ borderBottom: `1px solid ${SLATE_800}` }}>
+                    <tr key={i} style={{ borderBottom: "1px solid #F1F5F9" }}>
                       <td style={{ padding: "10px 12px", color: "#64748B" }}>
                         {new Date(s.startedAt).toLocaleDateString("en-CA", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}
                       </td>
-                      <td style={{ padding: "10px 12px", color: "#1E293B", fontWeight: 600 }}>
+                      <td style={{ padding: "10px 12px", color: "#0F172A", fontWeight: 600 }}>
                         {EXAM_TYPE_LABELS[s.examType] ?? s.examType}
                       </td>
                       <td style={{ padding: "10px 12px", color: "#94A3B8", textTransform: "capitalize" }}>
                         {s.quizMode ?? "standard"}
                       </td>
-                      <td style={{ padding: "10px 12px", color: "#1E293B", textAlign: "right", fontFamily: "'Sora', sans-serif", fontWeight: 700 }}>
+                      <td style={{ padding: "10px 12px", color: "#0F172A", textAlign: "right", fontFamily: "Sora,sans-serif", fontWeight: 700 }}>
                         {s.correct}/{s.total}
                       </td>
                       <td style={{ padding: "10px 12px", textAlign: "right" }}>
-                        <span
-                          style={{
-                            padding: "3px 10px",
-                            borderRadius: 6,
-                            fontSize: 12,
-                            fontWeight: 700,
-                            background: s.accuracy >= 70 ? GREEN + "20" : s.accuracy >= 50 ? AMBER + "20" : RED + "20",
-                            color: s.accuracy >= 70 ? GREEN : s.accuracy >= 50 ? AMBER : RED,
-                          }}
-                        >
+                        <span style={{ padding: "3px 10px", borderRadius: 6, fontSize: 12, fontWeight: 700, background: s.accuracy >= 70 ? "#22C55E20" : s.accuracy >= 50 ? "#F59E0B20" : "#EF444420", color: s.accuracy >= 70 ? "#22C55E" : s.accuracy >= 50 ? "#F59E0B" : "#EF4444" }}>
                           {s.accuracy}%
                         </span>
                       </td>
@@ -979,6 +814,7 @@ export default function StudentDashboard() {
             </div>
           )}
         </Section>
+
       </div>
     </div>
   );
