@@ -221,6 +221,11 @@ export default function Account() {
   const [magicLinkSent, setMagicLinkSent] = useState(false);
   const [magicLinkSending, setMagicLinkSending] = useState(false);
 
+  // Read ?next= param so we can show a helpful hint after magic link is sent
+  const nextParam = typeof window !== "undefined"
+    ? new URLSearchParams(window.location.search).get("next") ?? ""
+    : "";
+
   const requestMagicLinkMutation = trpc.magicLink.requestMagicLink.useMutation({
     onSuccess: () => {
       setMagicLinkSent(true);
@@ -261,7 +266,7 @@ export default function Account() {
     setSubmittedEmail(trimmed);
     // FIX 1: Trigger magic-link immediately on submit — no email-only DB lookup
     setMagicLinkSending(true);
-    requestMagicLinkMutation.mutate({ email: trimmed, origin: window.location.origin });
+    requestMagicLinkMutation.mutate({ email: trimmed, origin: window.location.origin, next: nextParam || undefined });
   };
 
   const unlockedExamTypes = [
@@ -406,10 +411,13 @@ export default function Account() {
             </p>
             <p style={{ color: "#64748B", fontSize: 12, margin: "0 0 24px", lineHeight: 1.6 }}>
               Click the link in your email to restore access on this device. The link expires in 30 minutes.
+              {nextParam && (
+                <span> After signing in, you'll be taken to <strong style={{ color: "#1D4ED8" }}>{nextParam}</strong>.</span>
+              )}
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 10, alignItems: "center" }}>
               <button
-                onClick={() => { setMagicLinkSending(true); requestMagicLinkMutation.mutate({ email: submittedEmail, origin: window.location.origin }); }}
+                onClick={() => { setMagicLinkSending(true); requestMagicLinkMutation.mutate({ email: submittedEmail, origin: window.location.origin, next: nextParam || undefined }); }}
                 disabled={magicLinkSending}
                 style={{ padding: "10px 24px", borderRadius: 9, border: "1.5px solid #BFDBFE", background: "#EFF6FF", color: "#1D4ED8", fontSize: 12, fontWeight: 700, cursor: magicLinkSending ? "not-allowed" : "pointer", fontFamily: "inherit" }}
               >

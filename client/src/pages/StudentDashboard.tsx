@@ -82,6 +82,17 @@ export default function StudentDashboard() {
   const [otpError, setOtpError] = useState("");
   const [otpSent, setOtpSent] = useState(false);
 
+  // FIX 8: Inline exam date picker state
+  const [inlineExamDate, setInlineExamDate] = useState("");
+  const [inlineDateSaving, setInlineDateSaving] = useState(false);
+  const setExamDateMutation = trpc.examDate.set.useMutation({
+    onSuccess: () => {
+      setInlineDateSaving(false);
+      utils.dashboard.examCountdown.invalidate();
+    },
+    onError: () => setInlineDateSaving(false),
+  });
+
   // Pre-fill email from localStorage if available
   useEffect(() => {
     try {
@@ -242,95 +253,23 @@ export default function StudentDashboard() {
     );
   }
 
-  /* ── Email OTP login gate — show inline form, no redirect ── */
-  // Wait for both auth checks to finish before showing the gate — prevents flash
+  /* ── Auth gate — redirect to /account?next=/dashboard ── */
+  // Wait for both auth checks to finish before redirecting — prevents flash on page load
   const authResolved = !authLoading && !dashboardMe.isLoading;
-  if (authResolved && !hasAccess) {
+  useEffect(() => {
+    if (authResolved && !hasAccess) {
+      window.location.replace("/account?next=/dashboard");
+    }
+  }, [authResolved, hasAccess]);
+
+  if (!authResolved || !hasAccess) {
     return (
       <div style={{ fontFamily: "Sora, sans-serif", background: SLATE_900, minHeight: "100vh" }}>
         <SiteNav currentPath="/dashboard" />
-        <div style={{ maxWidth: 440, margin: "0 auto", padding: "80px 24px" }}>
-          <div style={{ textAlign: "center", marginBottom: 32 }}>
-            <div style={{ fontSize: 48, marginBottom: 12 }}>📊</div>
-            <h1 style={{ color: "#1E293B", fontSize: 24, fontWeight: 800, margin: "0 0 8px" }}>My Dashboard</h1>
-            <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 6px" }}>
-              Track your mock exam scores and study progress.
-            </p>
-            <p style={{ color: "#94A3B8", fontSize: 13, lineHeight: 1.6, margin: 0 }}>
-              Enter your email to access your results — no password needed.
-            </p>
-          </div>
-
-          <div style={{ background: SLATE_800, borderRadius: 14, padding: "28px 24px", border: "1px solid #E2E8F0" }}>
-            {otpStep === "email" ? (
-              <>
-                <label style={{ display: "block", color: "#94A3B8", fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Email Address</label>
-                <input
-                  type="email"
-                  value={otpEmail}
-                  onChange={(e) => setOtpEmail(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleSendOtp()}
-                  placeholder="you@example.com"
-                  style={{
-                    width: "100%", padding: "11px 14px", borderRadius: 8, border: "1px solid #E2E8F0",
-                    background: SLATE_900, color: "#1E293B", fontSize: 15, boxSizing: "border-box", marginBottom: 16,
-                    outline: "none",
-                  }}
-                />
-                {otpError && <p style={{ color: RED, fontSize: 13, marginBottom: 12 }}>{otpError}</p>}
-                <button
-                  onClick={handleSendOtp}
-                  disabled={sendOtp.isPending || !otpEmail.trim()}
-                  style={{
-                    width: "100%", padding: "12px", borderRadius: 8, border: "none", cursor: "pointer",
-                    background: `linear-gradient(135deg, ${BLUE}, ${TEAL})`,
-                    color: "#fff", fontWeight: 700, fontSize: 15, opacity: sendOtp.isPending ? 0.7 : 1,
-                  }}
-                >
-                  {sendOtp.isPending ? "Sending..." : "Send Code"}
-                </button>
-              </>
-            ) : (
-              <>
-                <p style={{ color: "#94A3B8", fontSize: 13, marginBottom: 16 }}>
-                  A 6-digit code was sent to <strong style={{ color: "#1E293B" }}>{otpEmail}</strong>. Enter it below.
-                </p>
-                <label style={{ display: "block", color: "#94A3B8", fontSize: 13, fontWeight: 600, marginBottom: 8 }}>Verification Code</label>
-                <input
-                  type="text"
-                  inputMode="numeric"
-                  maxLength={6}
-                  value={otpCode}
-                  onChange={(e) => setOtpCode(e.target.value.replace(/\D/g, ""))}
-                  onKeyDown={(e) => e.key === "Enter" && otpCode.length === 6 && handleVerifyOtp()}
-                  placeholder="000000"
-                  style={{
-                    width: "100%", padding: "11px 14px", borderRadius: 8, border: "1px solid #E2E8F0",
-                    background: SLATE_900, color: "#1E293B", fontSize: 24, letterSpacing: 8, textAlign: "center",
-                    boxSizing: "border-box", marginBottom: 16, outline: "none",
-                  }}
-                />
-                {otpError && <p style={{ color: RED, fontSize: 13, marginBottom: 12 }}>{otpError}</p>}
-                <button
-                  onClick={handleVerifyOtp}
-                  disabled={verifyOtp.isPending || otpCode.length !== 6}
-                  style={{
-                    width: "100%", padding: "12px", borderRadius: 8, border: "none", cursor: "pointer",
-                    background: `linear-gradient(135deg, ${BLUE}, ${TEAL})`,
-                    color: "#fff", fontWeight: 700, fontSize: 15, opacity: verifyOtp.isPending ? 0.7 : 1,
-                    marginBottom: 12,
-                  }}
-                >
-                  {verifyOtp.isPending ? "Verifying..." : "Access Dashboard"}
-                </button>
-                <button
-                  onClick={() => { setOtpStep("email"); setOtpCode(""); setOtpError(""); }}
-                  style={{ background: "none", border: "none", color: "#64748B", fontSize: 13, cursor: "pointer", width: "100%" }}
-                >
-                  Use a different email
-                </button>
-              </>
-            )}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "60vh" }}>
+          <div style={{ textAlign: "center", color: "#94A3B8", fontSize: 14 }}>
+            <div style={{ fontSize: 32, marginBottom: 12 }}>⏳</div>
+            Redirecting to sign in…
           </div>
         </div>
       </div>
@@ -420,9 +359,29 @@ export default function StudentDashboard() {
             {examCountdown.isLoading ? (
               <Skeleton height={80} />
             ) : !examCountdown.data ? (
-              <div style={{ color: "#94A3B8", fontSize: 12, lineHeight: 1.5 }}>
-                No exam date set.{" "}
-                <a href="/account" style={{ color: "#3B82F6", textDecoration: "none", fontWeight: 600 }}>Set one →</a>
+              <div>
+                <div style={{ color: "#94A3B8", fontSize: 12, marginBottom: 10 }}>No exam date set.</div>
+                <input
+                  type="date"
+                  value={inlineExamDate}
+                  min={new Date().toISOString().split("T")[0]}
+                  onChange={e => setInlineExamDate(e.target.value)}
+                  style={{ width: "100%", padding: "7px 10px", borderRadius: 8, border: "1.5px solid #E2E8F0", fontSize: 13, color: "#0F172A", fontFamily: "inherit", marginBottom: 8, boxSizing: "border-box" }}
+                />
+                <button
+                  onClick={() => {
+                    const callerEmail = user?.email ?? emailSession;
+                    const examTypes: string[] = (() => { try { return JSON.parse(localStorage.getItem("echelon_subscription_exam_types") ?? "[]"); } catch { return []; } })();
+                    const productKey = examTypes[0] ?? "oit";
+                    if (!callerEmail || !inlineExamDate) return;
+                    setInlineDateSaving(true);
+                    setExamDateMutation.mutate({ email: callerEmail, productKey, examDate: inlineExamDate });
+                  }}
+                  disabled={!inlineExamDate || inlineDateSaving}
+                  style={{ width: "100%", padding: "8px", borderRadius: 8, border: "none", background: inlineExamDate ? "#3B82F6" : "#E2E8F0", color: inlineExamDate ? "#fff" : "#94A3B8", fontSize: 12, fontWeight: 700, cursor: inlineExamDate ? "pointer" : "not-allowed", fontFamily: "inherit" }}
+                >
+                  {inlineDateSaving ? "Saving…" : "Set Exam Date"}
+                </button>
               </div>
             ) : (
               <>
@@ -496,8 +455,8 @@ export default function StudentDashboard() {
               <div style={{ color: "#0F172A", fontSize: 13, fontWeight: 800 }}>{studyPlan.data.recommendations[0].title}</div>
               <div style={{ color: "#64748B", fontSize: 12, marginTop: 2 }}>{studyPlan.data.recommendations[0].description}</div>
             </div>
-            {studyPlan.data.recommendations[0].action && (
-              <a href={studyPlan.data.recommendations[0].action} style={{
+            {studyPlan.data.recommendations[0].actionHref && (
+              <a href={studyPlan.data.recommendations[0].actionHref} style={{
                 padding: "8px 16px", borderRadius: 8, background: "#3B82F6", color: "#fff",
                 fontSize: 13, fontWeight: 700, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0,
               }}>
@@ -746,8 +705,8 @@ export default function StudentDashboard() {
                         <div style={{ color: "#0F172A", fontSize: 12, fontWeight: 700, marginBottom: 2 }}>{rec.title}</div>
                         <div style={{ color: "#64748B", fontSize: 11, lineHeight: 1.4 }}>{rec.description}</div>
                       </div>
-                      {rec.action && (
-                        <a href={rec.action} style={{ padding: "4px 10px", borderRadius: 6, background: color, color: "#fff", fontSize: 11, fontWeight: 700, textDecoration: "none", flexShrink: 0 }}>Go</a>
+                      {rec.actionHref && (
+                        <a href={rec.actionHref} style={{ padding: "4px 10px", borderRadius: 6, background: color, color: "#fff", fontSize: 11, fontWeight: 700, textDecoration: "none", flexShrink: 0 }}>Go</a>
                       )}
                     </div>
                   );
@@ -755,13 +714,13 @@ export default function StudentDashboard() {
                 {/* Review mode quick-links */}
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 4 }}>
                   {(studyPlan.data.totalMissed ?? 0) > 0 && (
-                    <a href="/?mode=missed" style={{ padding: "4px 10px", borderRadius: 6, background: "#F59E0B20", color: "#F59E0B", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #F59E0B33" }}>❌ Missed ({studyPlan.data.totalMissed})</a>
+                    <a href="/quiz?mode=missed" style={{ padding: "4px 10px", borderRadius: 6, background: "#F59E0B20", color: "#F59E0B", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #F59E0B33" }}>❌ Missed ({studyPlan.data.totalMissed})</a>
                   )}
                   {(studyPlan.data.totalBookmarked ?? 0) > 0 && (
-                    <a href="/?mode=bookmarked" style={{ padding: "4px 10px", borderRadius: 6, background: "#3B82F620", color: "#3B82F6", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #3B82F633" }}>🔖 Bookmarks ({studyPlan.data.totalBookmarked})</a>
+                    <a href="/quiz?mode=bookmarked" style={{ padding: "4px 10px", borderRadius: 6, background: "#3B82F620", color: "#3B82F6", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #3B82F633" }}>🔖 Bookmarks ({studyPlan.data.totalBookmarked})</a>
                   )}
                   {(studyPlan.data.totalLowConf ?? 0) > 0 && (
-                    <a href="/?mode=low-confidence" style={{ padding: "4px 10px", borderRadius: 6, background: "#EF444420", color: "#EF4444", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #EF444433" }}>😰 Low Confidence ({studyPlan.data.totalLowConf})</a>
+                    <a href="/quiz?mode=low-confidence" style={{ padding: "4px 10px", borderRadius: 6, background: "#EF444420", color: "#EF4444", fontSize: 11, fontWeight: 700, textDecoration: "none", border: "1px solid #EF444433" }}>😰 Low Confidence ({studyPlan.data.totalLowConf})</a>
                   )}
                 </div>
               </div>

@@ -779,10 +779,10 @@ export const dashboardRouter = router({
     const totalAttempts = Object.values(topicAccuracyMap).reduce((s, t) => s + t.total, 0);
 
     type RecType = "weak_topic" | "missed_review" | "low_confidence" | "bookmarked" | "mock_exam" | "start_practicing";
-    const recommendations: Array<{ type: RecType; title: string; description: string; action: string; priority: number }> = [];
+    const recommendations: Array<{ type: RecType; title: string; description: string; action: string; actionHref: string; priority: number }> = [];
 
     if (totalAttempts === 0) {
-      recommendations.push({ type: "start_practicing", title: "Start Practicing", description: "Answer your first questions to get a personalized study plan.", action: "Start Quiz", priority: 1 });
+      recommendations.push({ type: "start_practicing", title: "Start Practicing", description: "Answer your first questions to get a personalized study plan.", action: "Start Quiz", actionHref: "/quiz", priority: 1 });
     } else {
       const weakWithData = weakTopics
         .map((t) => ({ topic: t, ...(topicAccuracyMap[t] ?? { correct: 0, total: 0 }) }))
@@ -792,12 +792,14 @@ export const dashboardRouter = router({
 
       for (const weak of weakWithData) {
         const acc = Math.round((weak.correct / weak.total) * 100);
-        recommendations.push({ type: "weak_topic", title: `Practice: ${weak.topic}`, description: `Your accuracy on ${weak.topic} is ${acc}%. Focus here to improve your score.`, action: "Practice this topic", priority: 2 });
+        // Encode the topic as a URL param so the quiz page can pre-filter
+        const topicParam = encodeURIComponent(weak.topic);
+        recommendations.push({ type: "weak_topic", title: `Practice: ${weak.topic}`, description: `Your accuracy on ${weak.topic} is ${acc}%. Focus here to improve your score.`, action: "Practice this topic", actionHref: `/quiz?topic=${topicParam}`, priority: 2 });
       }
-      if (totalMissed > 0) recommendations.push({ type: "missed_review", title: "Review Missed Questions", description: `You have ${totalMissed} missed question${totalMissed === 1 ? "" : "s"} to review.`, action: "Review missed", priority: 3 });
-      if (totalLowConf > 0) recommendations.push({ type: "low_confidence", title: "Review Low-Confidence Questions", description: `You marked ${totalLowConf} question${totalLowConf === 1 ? "" : "s"} as low-confidence.`, action: "Review low-confidence", priority: 4 });
-      if (totalBookmarked > 0) recommendations.push({ type: "bookmarked", title: "Review Bookmarked Questions", description: `You have ${totalBookmarked} bookmarked question${totalBookmarked === 1 ? "" : "s"}.`, action: "Review bookmarks", priority: 5 });
-      if (totalAttempts >= 50 && weakWithData.length === 0) recommendations.push({ type: "mock_exam", title: "Take a Mock Exam", description: "You've built a solid foundation. Test yourself with a full mock exam.", action: "Start mock exam", priority: 6 });
+      if (totalMissed > 0) recommendations.push({ type: "missed_review", title: "Review Missed Questions", description: `You have ${totalMissed} missed question${totalMissed === 1 ? "" : "s"} to review.`, action: "Review missed", actionHref: "/quiz?mode=missed", priority: 3 });
+      if (totalLowConf > 0) recommendations.push({ type: "low_confidence", title: "Review Low-Confidence Questions", description: `You marked ${totalLowConf} question${totalLowConf === 1 ? "" : "s"} as low-confidence.`, action: "Review low-confidence", actionHref: "/quiz?mode=low-confidence", priority: 4 });
+      if (totalBookmarked > 0) recommendations.push({ type: "bookmarked", title: "Review Bookmarked Questions", description: `You have ${totalBookmarked} bookmarked question${totalBookmarked === 1 ? "" : "s"}.`, action: "Review bookmarks", actionHref: "/quiz?mode=bookmarked", priority: 5 });
+      if (totalAttempts >= 50 && weakWithData.length === 0) recommendations.push({ type: "mock_exam", title: "Take a Mock Exam", description: "You've built a solid foundation. Test yourself with a full mock exam.", action: "Start mock exam", actionHref: "/quiz?mode=mock", priority: 6 });
     }
 
     recommendations.sort((a, b) => a.priority - b.priority);

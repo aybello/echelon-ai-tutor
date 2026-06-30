@@ -1,13 +1,16 @@
 /**
- * dashboardAuthRouter — email OTP login for the student dashboard.
+ * dashboardAuthRouter — legacy route name for email verification / restore access.
+ *
+ * This creates a verified Echelon email session used by dashboard, account,
+ * study history, and team access. It is NOT a separate dashboard login product.
  *
  * Flow:
  *   1. sendOtp: client sends email -> server resolves live entitlements
  *              -> if hasAnyAccess or isManager, generates 6-digit code -> stores SHA-256 hash -> sends email
  *   2. verifyOtp: client sends email + code -> server verifies hash + expiry + attempts
- *               -> re-resolves live entitlements -> issues a signed JWT in an httpOnly cookie
- *   3. me: returns the email from the current dashboard session cookie (or null)
- *   4. logout: clears the dashboard_session cookie
+ *               -> re-resolves live entitlements -> issues a verified Echelon session cookie
+ *   3. me: returns the email from the current session cookie (or null)
+ *   4. logout: clears the session cookie
  *
  * KEY PRINCIPLE: email verification proves identity, not entitlement.
  * Entitlement is always re-resolved from live DB state before issuing an access token.
@@ -16,7 +19,6 @@
 import { createHash, randomInt } from "crypto";
 import { z } from "zod";
 import { eq, and, gt, isNull } from "drizzle-orm";
-import { SignJWT, jwtVerify } from "jose";
 import nodemailer from "nodemailer";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
@@ -24,9 +26,13 @@ import { dashboardOtps } from "../../drizzle/schema";
 import { normalizeEmail, resolveEntitlementsByEmail } from "../_core/access";
 import { ENV } from "../_core/env";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
+import {
+  issueVerifiedEmailSessionCookie,
+  clearVerifiedEmailSessionCookie,
+  readVerifiedEmailFromRequest,
+  ECHELON_SESSION_COOKIE,
+} from "../_core/emailSession";
 
-const JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret);
-const COOKIE_NAME = "echelon_dashboard_session";
 const OTP_TTL_MS = 10 * 60 * 1000; // 10 minutes
 const MAX_ATTEMPTS = 5;
 
@@ -51,25 +57,27 @@ async function sendOtpEmail(email: string, code: string): Promise<void> {
   await transporter.sendMail({
     from: `"Echelon Institute" <${ENV.smtpUser}>`,
     to: email,
-    subject: `Your Echelon dashboard code: ${code}`,
+    subject: `Your Echelon verification code: ${code}`,
     html: `
       <div style="font-family:'Sora',Arial,sans-serif;max-width:480px;margin:0 auto;padding:32px 24px;background:#0F172A;border-radius:12px;color:#F1F5F9">
-        <div style="font-size:32px;margin-bottom:8px">📊</div>
-        <h1 style="font-size:22px;font-weight:800;margin:0 0 8px">Your dashboard login code</h1>
-        <p style="color:#94A3B8;font-size:14px;margin:0 0 24px">Enter this code to access your Echelon progress dashboard. It expires in 10 minutes.</p>
+        <div style="font-size:32px;margin-bottom:8px">🔐</div>
+        <h1 style="font-size:22px;font-weight:800;margin:0 0 8px">Your Echelon verification code</h1>
+        <p style="color:#94A3B8;font-size:14px;margin:0 0 24px">
+          Enter this code to continue to your Echelon study tools. It expires in 10 minutes.
+        </p>
         <div style="background:#1E293B;border-radius:10px;padding:20px 24px;text-align:center;margin-bottom:24px">
           <span style="font-size:40px;font-weight:900;letter-spacing:10px;color:#38BDF8">${code}</span>
         </div>
         <p style="color:#64748B;font-size:12px;margin:0">If you didn't request this, you can safely ignore this email.</p>
       </div>
     `,
-    text: `Your Echelon dashboard login code is: ${code}\n\nThis code expires in 10 minutes.`,
+    text: `Your Echelon verification code is: ${code}\n\nThis code expires in 10 minutes.`,
   });
 }
 
 export const dashboardAuthRouter = router({
   /**
-   * sendOtp — generates and emails a 6-digit code to the given address.
+   * sendOtp — generates and emails a 6-digit verification code to the given address.
    *
    * Uses the shared entitlement resolver to check access — this ensures:
    * - Refunded/disputed purchases do NOT trigger an OTP send.
@@ -122,14 +130,14 @@ export const dashboardAuthRouter = router({
     }),
 
   /**
-   * verifyOtp — checks the code and issues a dashboard session cookie on success.
+   * verifyOtp — checks the code and issues a verified Echelon session cookie on success.
    *
    * After verifying the OTP code, re-resolves live entitlements before issuing
    * the access token. This ensures:
    * - A refunded customer who still has a valid OTP code cannot regain access.
    * - A cancelled subscriber who still has a valid OTP code cannot regain access.
    * - Only currently active purchases/subscriptions grant course access.
-   * - Managers get a dashboard session even without course entitlements.
+   * - Managers get a session even without course entitlements.
    */
   verifyOtp: publicProcedure
     .input(z.object({ email: z.string().email(), code: z.string().length(6) }))
@@ -177,22 +185,8 @@ export const dashboardAuthRouter = router({
         .set({ usedAt: now })
         .where(eq(dashboardOtps.id, otp.id));
 
-      // Issue a signed JWT session (24 hours)
-      const token = await new SignJWT({ email, type: "dashboard" })
-        .setProtectedHeader({ alg: "HS256" })
-        .setIssuedAt()
-        .setExpirationTime("24h")
-        .sign(JWT_SECRET);
-
-      // Set httpOnly cookie
-      const res = ctx.res;
-      res.cookie(COOKIE_NAME, token, {
-        httpOnly: true,
-        secure: ENV.isProduction,
-        sameSite: "lax",
-        maxAge: 24 * 60 * 60 * 1000,
-        path: "/",
-      });
+      // Issue the shared verified Echelon session cookie (24 hours)
+      await issueVerifiedEmailSessionCookie(ctx.res, email);
 
       // Re-resolve live entitlements — do not use stale purchase/subscription queries.
       // This is the authoritative access check: a refunded or cancelled customer
@@ -214,27 +208,22 @@ export const dashboardAuthRouter = router({
     }),
 
   /**
-   * me — returns the authenticated email from the dashboard session cookie, or null.
+   * me — returns the authenticated email from the Echelon session cookie, or null.
    */
   me: publicProcedure.query(async ({ ctx }) => {
     try {
-      const req = ctx.req;
-      const token = (req as any).cookies?.[COOKIE_NAME];
-      if (!token) return { email: null };
-      const { payload } = await jwtVerify(token, JWT_SECRET);
-      if (payload.type !== "dashboard" || !payload.email) return { email: null };
-      return { email: payload.email as string };
+      const email = await readVerifiedEmailFromRequest(ctx.req);
+      return { email };
     } catch {
       return { email: null };
     }
   }),
 
   /**
-   * logout — clears the dashboard session cookie.
+   * logout — clears the Echelon verified email session cookie.
    */
   logout: publicProcedure.mutation(async ({ ctx }) => {
-      const res = ctx.res;
-      res.clearCookie(COOKIE_NAME, { path: "/" });
+    clearVerifiedEmailSessionCookie(ctx.res);
     return { success: true };
   }),
 });

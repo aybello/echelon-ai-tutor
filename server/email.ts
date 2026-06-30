@@ -1009,3 +1009,113 @@ export async function sendTeamEnrollmentEmail(
     console.log(`[Team Enrollment Email] Sent to ${email} from org ${orgName}`);
   }
 }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FIX 13: Dedicated study reminder email — separate from enrollment email
+// ─────────────────────────────────────────────────────────────────────────────
+
+export interface OperatorStudyReminderPayload {
+  email: string;
+  orgName: string;
+  managerEmail: string;
+  loginUrl: string;
+  courseName?: string;
+  daysUntilExam?: number | null;
+  unsubscribeUrl?: string;
+}
+
+/**
+ * Sends a study reminder email to an operator. Distinct from the enrollment
+ * email — uses motivational copy focused on exam prep, not onboarding.
+ * Called from sendOperatorReminder() and sendBulkReminders() in orgRouter.ts.
+ */
+export async function sendOperatorStudyReminderEmail(
+  payload: OperatorStudyReminderPayload
+): Promise<void> {
+  const { email, orgName, managerEmail, loginUrl, courseName, daysUntilExam, unsubscribeUrl } = payload;
+  const courseLabel = courseName ?? "your certification exam prep";
+  const urgencyLine = daysUntilExam !== null && daysUntilExam !== undefined
+    ? daysUntilExam <= 7
+      ? `⚠️ Your exam is in ${daysUntilExam} day${daysUntilExam === 1 ? "" : "s"}. Every practice session counts.`
+      : daysUntilExam <= 14
+        ? `Your exam is coming up in ${daysUntilExam} days — now is the time to push hard.`
+        : `You have ${daysUntilExam} days until your exam. Keep your momentum going.`
+    : "Your manager wants to make sure you're on track for your upcoming exam.";
+
+  let transporter: nodemailer.Transporter;
+  if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
+    transporter = createTransporter();
+  } else if (!ENV.isProduction) {
+    const testAccount = await nodemailer.createTestAccount();
+    transporter = nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false,
+      auth: { user: testAccount.user, pass: testAccount.pass },
+    });
+  } else {
+    console.warn("[Study Reminder Email] SMTP not configured — skipping send");
+    return;
+  }
+
+  const mail: nodemailer.SendMailOptions = {
+    from: `"Echelon Institute" <${ENV.smtpUser ?? "noreply@echeloninstitute.ca"}>`,
+    to: email,
+    subject: `📚 Study reminder from ${orgName} — keep up the great work`,
+    text: `Hi,\n\n${urgencyLine}\n\nYour organization (${orgName}) has enrolled you in ${courseLabel} through Echelon Institute. Log in to continue your practice:\n\n${loginUrl}\n\nIf you have questions, contact your manager at ${managerEmail}.\n\n${unsubscribeUrl ? `To stop receiving these reminders: ${unsubscribeUrl}` : ""}`,
+    html: `<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Study Reminder</title></head>
+<body style="margin:0;padding:0;background:#F1F5F9;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:40px 0;">
+    <tr><td align="center">
+      <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,0.07);">
+        <!-- Header -->
+        <tr><td style="background:linear-gradient(135deg,#1E40AF,#0EA5E9);padding:32px 40px;">
+          <div style="color:#fff;font-size:22px;font-weight:800;letter-spacing:-0.5px;">📚 Time to study</div>
+          <div style="color:#BFDBFE;font-size:14px;margin-top:6px;">Echelon Institute — Exam Prep Reminder</div>
+        </td></tr>
+        <!-- Body -->
+        <tr><td style="padding:36px 40px;">
+          <p style="margin:0 0 16px;color:#1E293B;font-size:15px;line-height:1.6;">${urgencyLine}</p>
+          <p style="margin:0 0 16px;color:#475569;font-size:14px;line-height:1.6;">
+            <strong>${orgName}</strong> has enrolled you in <strong>${courseLabel}</strong> through Echelon Institute.
+            Log in to pick up where you left off — your progress is saved.
+          </p>
+          <div style="text-align:center;margin:28px 0;">
+            <a href="${loginUrl}" style="display:inline-block;background:linear-gradient(135deg,#2563EB,#0EA5E9);color:#fff;font-size:15px;font-weight:700;padding:14px 36px;border-radius:10px;text-decoration:none;">
+              Continue Studying →
+            </a>
+          </div>
+          <p style="margin:0;color:#94A3B8;font-size:12px;">
+            Questions? Contact your manager at <a href="mailto:${managerEmail}" style="color:#3B82F6;">${managerEmail}</a>.
+          </p>
+        </td></tr>
+        <!-- Footer -->
+        <tr><td style="background:#F8FAFC;padding:20px 40px;border-top:1px solid #E2E8F0;">
+          <p style="margin:0;color:#94A3B8;font-size:11px;text-align:center;">
+            Echelon Institute · Water &amp; Wastewater Operator Exam Prep
+            ${unsubscribeUrl ? `<br><a href="${unsubscribeUrl}" style="color:#94A3B8;">Unsubscribe from reminders</a>` : ""}
+          </p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`,
+  };
+
+  if (unsubscribeUrl) {
+    (mail as any).headers = {
+      "List-Unsubscribe": `<${unsubscribeUrl}>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    };
+  }
+
+  const info = await transporter.sendMail(mail);
+  if (!ENV.smtpHost) {
+    console.log("[Study Reminder Email] Preview URL:", nodemailer.getTestMessageUrl(info));
+  } else {
+    console.log(`[Study Reminder Email] Sent to ${email} from org ${orgName}`);
+  }
+}

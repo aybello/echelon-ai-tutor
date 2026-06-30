@@ -1016,6 +1016,9 @@ export default function OrgDashboard() {
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Readiness</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Questions</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Weak Topic</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Exam Date</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Days Left</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Risk</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Last Active</th>
                     <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
                     <th className="px-4 py-3"></th>
@@ -1072,6 +1075,30 @@ export default function OrgDashboard() {
                           </td>
                           <td className="px-4 py-3 text-xs text-slate-600">{op.totalAttempts.toLocaleString()}</td>
                           <td className="px-4 py-3 text-xs text-slate-500">{op.weakestTopic ?? "—"}</td>
+                          <td className="px-4 py-3 text-xs text-slate-500">
+                            {op.examDate ? new Date(op.examDate).toLocaleDateString("en-CA") : "—"}
+                          </td>
+                          <td className="px-4 py-3 text-xs font-semibold">
+                            {op.daysUntilExam !== null ? (
+                              <span className={op.daysUntilExam <= 7 ? "text-red-600" : op.daysUntilExam <= 14 ? "text-amber-600" : "text-slate-600"}>
+                                {op.daysUntilExam}d
+                              </span>
+                            ) : "—"}
+                          </td>
+                          <td className="px-4 py-3">
+                            {op.examRisk === "none" ? (
+                              <span className="text-xs text-slate-400">—</span>
+                            ) : (
+                              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                                op.examRisk === "critical" ? "bg-red-100 text-red-700" :
+                                op.examRisk === "high" ? "bg-orange-100 text-orange-700" :
+                                op.examRisk === "medium" ? "bg-amber-100 text-amber-700" :
+                                "bg-green-50 text-green-700"
+                              }`}>
+                                {op.examRisk.charAt(0).toUpperCase() + op.examRisk.slice(1)}
+                              </span>
+                            )}
+                          </td>
                           <td className="px-4 py-3 text-xs text-slate-500">{op.lastActive ? formatDate(op.lastActive) : "Never"}</td>
                           <td className="px-4 py-3">
                             <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${statusColors[op.operatorStatus] ?? "bg-slate-100 text-slate-600"}`}>

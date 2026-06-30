@@ -442,7 +442,8 @@ describe("Multi-course seat support", () => {
     await caller.org.assignSeat({ email, courseKeys: ["class1-water"] });
 
     // Update to two courses
-    await caller.org.updateSeatCourse({ email, courseKeys: ["class2-water", "class2-wastewater"] });
+    // FIX 10: class2-wastewater is not a valid course key; use class2-ww (the correct Ontario wastewater key)
+    await caller.org.updateSeatCourse({ email, courseKeys: ["class2-water", "class2-ww"] });
 
     // Old subscription should be expired, two new ones active
     const subs = await db!
@@ -465,7 +466,7 @@ describe("Multi-course seat support", () => {
 
     const parsedKeys = JSON.parse(member!.courseKeys ?? "[]");
     expect(parsedKeys).toContain("class2-water");
-    expect(parsedKeys).toContain("class2-wastewater");
+    expect(parsedKeys).toContain("class2-ww");
     expect(parsedKeys).not.toContain("class1-water");
   });
 

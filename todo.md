@@ -1001,8 +1001,25 @@
 
 ## Claude Audit Fix Tickets — Jun 30, 2026
 
-- [ ] FIX 1 (P0): Close email-only access hole — remove accessToken from getPurchasesByEmail, getSubscriptionsByEmail, verifySubscriptionSession; redirect restore to OTP/magic-link only
-- [ ] FIX 2 (P1): Add JWT_SECRET and DATABASE_URL startup guard in env.ts; fail-closed blank-key cookie verify
-- [ ] FIX 3 (P2): Fix readiness topic coverage denominator to use question bank count per exam type (not questionAttempts)
-- [ ] FIX 4 (P2): Add per-operator reminder cooldown (1/day) and unsubscribe link + List-Unsubscribe header to reminder emails
-- [ ] FIX 5 (P3): Migrate bookmarks from per-attempt to per-user+question bookmarks table with upsert toggle
+- [x] FIX 1 (P0): Close email-only access hole — remove accessToken from getPurchasesByEmail, getSubscriptionsByEmail, verifySubscriptionSession; redirect restore to OTP/magic-link only
+- [x] FIX 2 (P1): Add JWT_SECRET and DATABASE_URL startup guard in env.ts; fail-closed blank-key cookie verify
+- [x] FIX 3 (P2): Fix readiness topic coverage denominator to use question bank count per exam type (not questionAttempts)
+- [x] FIX 4 (P2): Add per-operator reminder cooldown (1/day) and unsubscribe link + List-Unsubscribe header to reminder emails
+- [x] FIX 5 (P3): Migrate bookmarks from per-attempt to per-user+question bookmarks table with upsert toggle
+
+## Unified Access + Dashboard Feature Stabilization — Jun 30, 2026
+
+- [ ] FIX 1: Rename dashboard auth copy in dashboardAuthRouter.ts, StudentDashboard.tsx, ManagerLogin.tsx, Login.tsx, Account.tsx
+- [ ] FIX 2: Create server/_core/emailSession.ts with issueVerifiedEmailSessionCookie, clearVerifiedEmailSessionCookie, readVerifiedEmailFromRequest
+- [ ] FIX 3: Wire emailSession.ts into context.ts and dashboardAuthRouter.ts (replace inline JWT/cookie code)
+- [ ] FIX 4: Issue verified email session cookie on payment success (verifySession + verifySubscriptionSession + PurchaseSuccess.tsx + SubscriptionSuccess.tsx)
+- [ ] FIX 5: Add live DB entitlement re-check after token verification in accessService.ts and stripeRouter.checkAccess
+- [ ] FIX 6: Update StudentDashboard inline OTP copy to general Echelon sign-in language; redirect unauthenticated to /account?next=/dashboard
+- [ ] FIX 7: Fix study plan recommendation links — backend returns actionLabel + href; frontend uses href not action text
+- [ ] FIX 8: Add inline exam date picker to dashboard (dashboard.myExamDates, dashboard.setExamDate, dashboard.removeExamDate)
+- [ ] FIX 9: Add exam-date-aware risk status to orgIntel.getOperatorReadiness; update OrgDashboard table with Exam Date, Days Left, Risk columns
+- [ ] FIX 10: Fix updateSeatCourse fail-open — throw on invalid course key instead of silently granting all-access
+- [ ] FIX 11: Fix access.auditMyEntitlements to work for OTP/email sessions (publicProcedure with ctx.studentEmail fallback)
+- [ ] FIX 12: Fix missed-question quiz for OTP/email users (ctx.studentEmail priority in getMissedQuestions, getWrongCountForQuestion, getAttemptStats)
+- [ ] FIX 13: Add dedicated sendOperatorStudyReminderEmail function; update sendOperatorReminder + sendBulkReminders to use it
+- [ ] FIX 14: Consolidate course registry — orgRouter.ts imports all course helpers from shared/courseRegistry.ts

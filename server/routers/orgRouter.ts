@@ -28,7 +28,7 @@ import {
   examDates,
 } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
-import { sendTeamEnrollmentEmail } from "../email";
+import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail } from "../email";
 import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
 import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
 
@@ -797,7 +797,17 @@ export const orgRouter = router({
       // Upsert one active subscription per new course key
       const coursesToUpsert = resolvedKeys.length > 0 ? resolvedKeys : [null];
       for (const ck of coursesToUpsert) {
-        const tier = ck ? (courseKeyToTierStrict(ck, org.province) ?? "all-access") : "all-access";
+        // FIX 10: Fail closed — reject unknown course keys instead of silently granting all-access
+        let tier: string;
+        if (!ck) {
+          tier = "all-access";
+        } else {
+          const resolvedTier = courseKeyToTierStrict(ck, org.province);
+          if (!resolvedTier) {
+            throw new TRPCError({ code: "BAD_REQUEST", message: `Unknown course key: ${ck}. Please use a valid course key for province ${org.province ?? "unknown"}.` });
+          }
+          tier = resolvedTier;
+        }
         const orgSubId = `org-${org.id}-${email}-${ck ?? "all"}`;
         const existingSub = await db
           .select({ id: subscriptions.id })
@@ -1029,7 +1039,7 @@ export const orgIntelRouter = router({
     if (members.length === 0) return { operators: [] };
     const allEmails = members.map(m => m.email);
     const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
-    const [accuracyRows, topicRows, mockRows, lastActiveRows] = await Promise.all([
+    const [accuracyRows, topicRows, mockRows, lastActiveRows, examDateRows] = await Promise.all([
       db.select({
         email: questionAttempts.studentEmail,
         total: sql<number>`COUNT(*)`,
@@ -1049,10 +1059,18 @@ export const orgIntelRouter = router({
         email: questionAttempts.studentEmail,
         lastActive: sql<Date>`MAX(${questionAttempts.createdAt})`,
       }).from(questionAttempts).where(inArray(questionAttempts.studentEmail, allEmails)).groupBy(questionAttempts.studentEmail),
+      // FIX 9: Fetch the nearest upcoming exam date per operator
+      db.select({
+        email: examDates.email,
+        examDate: sql<Date>`MIN(${examDates.examDate})`,
+      }).from(examDates)
+        .where(and(inArray(examDates.email, allEmails), sql`${examDates.examDate} >= NOW()`))
+        .groupBy(examDates.email),
     ]);
     const accuracyByEmail = new Map(accuracyRows.map(r => [r.email, { total: Number(r.total), correct: Number(r.correct) }]));
     const mockByEmail = new Map(mockRows.map(r => [r.email, Number(r.mockCount)]));
     const lastActiveByEmail = new Map(lastActiveRows.map(r => [r.email, r.lastActive]));
+    const examDateByEmail = new Map(examDateRows.map(r => [r.email, r.examDate]));
     const topicsByEmail = new Map<string, Array<{ topic: string; accuracy: number; total: number }>>();
     for (const r of topicRows) {
       if (!r.email) continue;
@@ -1081,7 +1099,17 @@ export const orgIntelRouter = router({
       else if (readinessScore >= 60) operatorStatus = "active";
       else if (readinessScore < 40 && total > 10) operatorStatus = "at_risk";
       else operatorStatus = "improving";
-      return { id: m.id, email: m.email, name: m.name ?? null, memberStatus: m.status as "assigned" | "revoked", courseKey: m.courseKey ?? null, assignedAt: m.assignedAt, lastActive, totalAttempts: total, accuracy, readinessScore, weakestTopic, mockExamsCompleted, operatorStatus };
+      // FIX 9: Compute exam date risk
+      const examDate = examDateByEmail.get(m.email) ?? null;
+      const daysUntilExam = examDate ? Math.max(0, Math.round((examDate.getTime() - Date.now()) / (1000 * 60 * 60 * 24))) : null;
+      let examRisk: "none" | "low" | "medium" | "high" | "critical" = "none";
+      if (daysUntilExam !== null) {
+        if (daysUntilExam <= 7) examRisk = readinessScore < 60 ? "critical" : "low";
+        else if (daysUntilExam <= 14) examRisk = readinessScore < 60 ? "high" : "low";
+        else if (daysUntilExam <= 30) examRisk = readinessScore < 50 ? "medium" : "low";
+        else examRisk = "low";
+      }
+      return { id: m.id, email: m.email, name: m.name ?? null, memberStatus: m.status as "assigned" | "revoked", courseKey: m.courseKey ?? null, assignedAt: m.assignedAt, lastActive, totalAttempts: total, accuracy, readinessScore, weakestTopic, mockExamsCompleted, operatorStatus, examDate, daysUntilExam, examRisk };
     });
     return { operators };
   }),
@@ -1183,7 +1211,8 @@ export const orgIntelRouter = router({
       const unsubscribeUrl = `https://echeloninstitute.ca/api/unsubscribe-reminder?token=${unsubscribeToken}`;
 
       const courseLabel = member.courseKey ? courseKeyToLabel(member.courseKey, org.province) : "All Courses";
-      await sendTeamEnrollmentEmail({ email, orgName: org.name, managerEmail, loginUrl: "https://echeloninstitute.ca/login", courseName: courseLabel + " — Reminder: Your exam prep is waiting!", unsubscribeUrl });
+      // FIX 13: Use dedicated reminder email instead of reusing enrollment email
+      await sendOperatorStudyReminderEmail({ email, orgName: org.name, managerEmail, loginUrl: "https://echeloninstitute.ca/login", courseName: courseLabel, unsubscribeUrl });
 
       // FIX 4: Stamp lastRemindedAt and persist unsubscribeToken
       await db.update(organizationMembers)
@@ -1225,7 +1254,8 @@ export const orgIntelRouter = router({
         const unsubscribeToken = m.unsubscribeToken ?? randomBytes(24).toString("hex");
         const unsubscribeUrl = `https://echeloninstitute.ca/api/unsubscribe-reminder?token=${unsubscribeToken}`;
         const courseLabel = m.courseKey ? courseKeyToLabel(m.courseKey, org.province) : "All Courses";
-        await sendTeamEnrollmentEmail({ email: m.email, orgName: org.name, managerEmail, loginUrl: "https://echeloninstitute.ca/login", courseName: courseLabel + " — Reminder: Your exam prep is waiting!", unsubscribeUrl });
+        // FIX 13: Use dedicated reminder email instead of reusing enrollment email
+        await sendOperatorStudyReminderEmail({ email: m.email, orgName: org.name, managerEmail, loginUrl: "https://echeloninstitute.ca/login", courseName: courseLabel, unsubscribeUrl });
         // FIX 4: Stamp lastRemindedAt and persist unsubscribeToken
         await db.update(organizationMembers)
           .set({ lastRemindedAt: new Date(), unsubscribeToken })

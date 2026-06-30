@@ -339,8 +339,10 @@ export const quizRouter = router({
         const db = await getDb();
         if (!db) return { questionIds: [], total: 0 };
         const userId = ctx.user?.id ?? null;
+        // FIX 12: Also handle OTP/email session users (ctx.studentEmail)
+        const studentEmail = ctx.studentEmail ?? null;
 
-        if (!userId && !input.guestToken) {
+        if (!userId && !studentEmail && !input.guestToken) {
           return { questionIds: [], total: 0 };
         }
 
@@ -349,7 +351,9 @@ export const quizRouter = router({
         // only include a question if the most recent attempt was wrong.
         const allCondition = userId
           ? and(eq(questionAttempts.userId, userId), eq(questionAttempts.examType, input.examType))
-          : and(eq(questionAttempts.guestToken, input.guestToken!), eq(questionAttempts.examType, input.examType));
+          : studentEmail
+            ? and(eq(questionAttempts.studentEmail, studentEmail), eq(questionAttempts.examType, input.examType))
+            : and(eq(questionAttempts.guestToken, input.guestToken!), eq(questionAttempts.examType, input.examType));
         const allRows = await db
           .select({ questionId: questionAttempts.questionId, correct: questionAttempts.correct })
           .from(questionAttempts)

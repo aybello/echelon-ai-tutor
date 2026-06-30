@@ -20,6 +20,7 @@ import { ENV } from "../_core/env";
 import { sendPurchaseConfirmationEmail } from "../email";
 import { notifyOwner } from "../_core/notification";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
+import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 
 export const stripeRouter = router({
   /** Return all products with prices for the Pricing page */
@@ -99,7 +100,7 @@ export const stripeRouter = router({
       sessionId: z.string(),
       productKey: z.string(),
     }))
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
       try {
         const session = await stripe.checkout.sessions.retrieve(input.sessionId, {
           expand: ["customer_details"],
@@ -126,6 +127,13 @@ export const stripeRouter = router({
           typeof session.payment_intent === "string" ? session.payment_intent : null;
 
         if (session.payment_status === "paid" && email && productKey) {
+          // FIX 4: Issue verified Echelon session cookie so dashboard opens without OTP
+          try {
+            await issueVerifiedEmailSessionCookie(ctx.res, email);
+          } catch (e) {
+            console.error("[verifySession] Failed to issue session cookie:", e);
+          }
+
           const db = await getDb();
           if (db) {
             // Upsert — avoid duplicate on page refresh
@@ -163,7 +171,15 @@ export const stripeRouter = router({
           }
         }
 
-        return { email, productKey, paid: session.payment_status === "paid" };
+        // Also return unlockedExamTypes and accessToken for immediate localStorage convenience
+        const unlockedExamTypes = session.payment_status === "paid" && productKey
+          ? getAllUnlockedExamTypes([productKey])
+          : [];
+        const accessToken = unlockedExamTypes.length > 0 && email
+          ? await issueSubscriptionToken({ email, examTypes: unlockedExamTypes })
+          : null;
+
+        return { email, productKey, paid: session.payment_status === "paid", unlockedExamTypes, accessToken };
       } catch (err: any) {
         console.error("[verifySession] Error:", err.message);
         // Notify owner so they can manually restore access if needed
@@ -405,7 +421,7 @@ export const stripeRouter = router({
    */
   verifySubscriptionSession: publicProcedure
     .input(z.object({ sessionId: z.string() }))
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
       try {
         const session = await stripe.checkout.sessions.retrieve(input.sessionId, {
           expand: ["customer_details"],
@@ -424,6 +440,12 @@ export const stripeRouter = router({
         }
         const examTypes = getSubscriptionExamTypes(tier, province);
         const accessToken = await issueSubscriptionToken({ email, examTypes });
+        // FIX 4: Issue verified Echelon session cookie so dashboard opens without OTP
+        try {
+          await issueVerifiedEmailSessionCookie(ctx.res, email);
+        } catch (e) {
+          console.error("[verifySubscriptionSession] Failed to issue session cookie:", e);
+        }
         return { paid: true, email, tier, province, examTypes, accessToken };
       } catch (err: any) {
         console.error("[verifySubscriptionSession] Error:", err.message);

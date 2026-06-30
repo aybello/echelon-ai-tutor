@@ -15,6 +15,8 @@ export default function MagicLinkConsume() {
   const [, navigate] = useLocation();
   const params = new URLSearchParams(window.location.search);
   const token = params.get("token") ?? "";
+  // Support ?next= redirect param — set by /account?next=/dashboard when user was redirected from dashboard
+  const nextParam = params.get("next") ?? "";
 
   const [status, setStatus] = useState<"loading" | "success" | "error" | "expired">("loading");
   const [email, setEmail] = useState("");
@@ -36,8 +38,8 @@ export default function MagicLinkConsume() {
         setIsManager(!!data.isManager);
         setStatus("success");
 
-        // Managers go to team dashboard, students go to quiz
-        const redirectPath = data.isManager ? "/team" : "/quiz";
+        // Managers go to team dashboard; honour ?next= for students (e.g. /dashboard), else default to /quiz
+        const redirectPath = data.isManager ? "/team" : (nextParam && nextParam.startsWith("/") ? nextParam : "/quiz");
         setTimeout(() => navigate(redirectPath), 3000);
       } else {
         setStatus("expired");

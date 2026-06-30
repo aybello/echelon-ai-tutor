@@ -53,6 +53,7 @@ export const magicLinkRouter = router({
     .input(z.object({
       email: z.string().email(),
       origin: z.string().url().optional(), // accepted but ignored for URL construction
+      next: z.string().max(200).optional(), // optional redirect path after magic link consume
     }))
     .mutation(async ({ input }) => {
       const email = normalizeEmail(input.email);
@@ -83,7 +84,11 @@ export const magicLinkRouter = router({
 
       // Build the magic link URL from the server-approved base URL
       // NEVER use input.origin here — it is client-controlled and could be attacker-supplied
-      const magicLinkUrl = `${ENV.appBaseUrl}/auth/magic?token=${token}`;
+      // Append ?next= only if it is a safe relative path (starts with /)
+      const safeNext = input.next && input.next.startsWith("/") ? input.next : null;
+      const magicLinkUrl = safeNext
+        ? `${ENV.appBaseUrl}/auth/magic?token=${token}&next=${encodeURIComponent(safeNext)}`
+        : `${ENV.appBaseUrl}/auth/magic?token=${token}`;
 
       // Send the email (non-blocking)
       sendMagicLinkEmail({

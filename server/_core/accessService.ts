@@ -287,12 +287,11 @@ export async function resolveAccessForRequest(
     if (ok) return true;
   }
 
-  // 4. Signed subscription token (fast path — no DB)
+  // 4. Signed subscription token — verify signature AND re-check DB entitlement
+  // (ensures revoked/cancelled subscriptions are denied even with a valid JWT)
   if (opts?.accessToken) {
-    const tokenPayload = await verifySubscriptionToken(opts.accessToken);
-    if (tokenPayload && tokenPayload.examTypes.includes(examType)) {
-      return true;
-    }
+    const recheckResult = await verifyAccessTokenAndRecheckDb(opts.accessToken, examType);
+    if (recheckResult.hasAccess) return true;
   }
 
   // 5. Legacy client-email fallback

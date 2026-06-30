@@ -40,7 +40,8 @@ export const appRouter = router({
      *
      * Requires authentication (OAuth or OTP session).
      */
-    auditMyEntitlements: protectedProcedure.query(async ({ ctx }) => {
+    // FIX 11: Changed from protectedProcedure to publicProcedure so OTP/email-session users can call it
+    auditMyEntitlements: publicProcedure.query(async ({ ctx }) => {
       const identity = resolveVerifiedIdentity(ctx);
       const email =
         identity.type === "oauth"
