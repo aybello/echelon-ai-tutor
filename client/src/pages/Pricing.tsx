@@ -1756,7 +1756,7 @@ function ProductCard({
               <span style={{
                 marginLeft: "auto", fontSize: 11, fontWeight: 600, color: "#15803D",
                 background: "#F0FDF4", border: "1px solid #86EFAC",
-                borderRadius: 6, padding: "3px 8px",
+                borderRadius: 6, padding: "3px 8px", whiteSpace: "nowrap",
               }}>15 free ✓</span>
             )}
           </div>
