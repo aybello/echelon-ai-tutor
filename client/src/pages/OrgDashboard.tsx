@@ -53,6 +53,14 @@ import {
   Settings,
   CheckCircle2,
   CalendarDays,
+  Download,
+  Bell,
+  BellRing,
+  BarChart3,
+  Shield,
+  ShieldAlert,
+  ShieldCheck,
+  ArrowUpDown,
 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import {
@@ -240,6 +248,46 @@ export default function OrgDashboard() {
     // Bug fix: was "/team-login", correct route is "/team/login"
     onSuccess: () => navigate("/team/login"),
   });
+
+  // ── Phase 5: Teams Manager Intelligence ──────────────────────────────────────
+  const readinessSummaryQuery = trpc.orgIntel.getTeamReadinessSummary.useQuery(undefined, { retry: false });
+  const weakTopicsQuery = trpc.orgIntel.getTeamWeakTopics.useQuery(undefined, { retry: false });
+  const operatorReadinessQuery = trpc.orgIntel.getOperatorReadiness.useQuery(undefined, { retry: false });
+  const exportCSVQuery = trpc.orgIntel.exportTeamCSV.useQuery(undefined, { enabled: false });
+
+  const [intelSortKey, setIntelSortKey] = useState<"readinessScore" | "accuracy" | "totalAttempts" | "lastActive">("readinessScore");
+  const [intelSortDir, setIntelSortDir] = useState<"asc" | "desc">("desc");
+  const [intelFilter, setIntelFilter] = useState<"all" | "at_risk" | "not_started" | "exam_ready">("all");
+  const [reminderSent, setReminderSent] = useState<Set<string>>(new Set());
+
+  const sendReminder = trpc.orgIntel.sendOperatorReminder.useMutation({
+    onSuccess: (data) => {
+      toast.success(`Reminder sent to ${data.email}`);
+      setReminderSent(prev => { const next = new Set(prev); next.add(data.email); return next; });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  const sendBulkReminders = trpc.orgIntel.sendBulkReminders.useMutation({
+    onSuccess: (data) => {
+      toast.success(`Reminders sent to ${data.sent} inactive operator${data.sent === 1 ? "" : "s"}`);
+      setReminderSent(prev => { const next = new Set(prev); data.emails.forEach(e => next.add(e)); return next; });
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  function handleExportCSV() {
+    exportCSVQuery.refetch().then(result => {
+      if (!result.data) return;
+      const blob = new Blob([result.data.csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${result.data.orgName.replace(/\s+/g, "-")}-team-progress.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  }
 
   // ── Auth check ─────────────────────────────────────────────────────────────
 
@@ -856,6 +904,247 @@ export default function OrgDashboard() {
             </details>
           )}
         </div>
+
+        {/* ── Phase 5: Team Intelligence Sections ─────────────────────────── */}
+
+        {/* Team Readiness Summary */}
+        {readinessSummaryQuery.data && (
+          <div className="mt-8">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-base font-semibold text-slate-800 flex items-center gap-2">
+                <BarChart3 className="w-4 h-4 text-blue-500" />
+                Team Readiness Intelligence
+              </h2>
+              <div className="flex gap-2">
+                <Button
+                  size="sm" variant="outline"
+                  className="text-xs gap-1.5"
+                  onClick={handleExportCSV}
+                  disabled={exportCSVQuery.isFetching}
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  {exportCSVQuery.isFetching ? "Exporting…" : "Export CSV"}
+                </Button>
+                <Button
+                  size="sm" variant="outline"
+                  className="text-xs gap-1.5 text-amber-700 border-amber-200 hover:bg-amber-50"
+                  onClick={() => sendBulkReminders.mutate()}
+                  disabled={sendBulkReminders.isPending}
+                >
+                  <BellRing className="w-3.5 h-3.5" />
+                  {sendBulkReminders.isPending ? "Sending…" : "Remind Inactive"}
+                </Button>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+              <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><ShieldCheck className="w-3.5 h-3.5 text-green-500" />Exam Ready</div>
+                <div className="text-2xl font-bold text-green-600">{readinessSummaryQuery.data.examReadyCount}</div>
+                <div className="text-xs text-slate-400 mt-0.5">≥ 80% accuracy</div>
+              </div>
+              <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><ShieldAlert className="w-3.5 h-3.5 text-red-500" />At Risk</div>
+                <div className="text-2xl font-bold text-red-600">{readinessSummaryQuery.data.atRiskCount}</div>
+                <div className="text-xs text-slate-400 mt-0.5">&lt; 50% accuracy</div>
+              </div>
+              <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><Clock className="w-3.5 h-3.5 text-amber-500" />Inactive</div>
+                <div className="text-2xl font-bold text-amber-600">{readinessSummaryQuery.data.inactiveCount}</div>
+                <div className="text-xs text-slate-400 mt-0.5">No activity 14+ days</div>
+              </div>
+              <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                <div className="flex items-center gap-1.5 text-slate-500 text-xs mb-2"><Target className="w-3.5 h-3.5 text-blue-500" />Avg Readiness</div>
+                <div className="text-2xl font-bold text-blue-600">{readinessSummaryQuery.data.avgReadiness}%</div>
+                <div className="text-xs text-slate-400 mt-0.5">Across all operators</div>
+              </div>
+            </div>
+            {readinessSummaryQuery.data.topWeakTopics.length > 0 && (
+              <div className="bg-amber-50 border border-amber-100 rounded-xl p-4 mb-6">
+                <div className="text-xs font-semibold text-amber-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                  <AlertTriangle className="w-3.5 h-3.5" />Team Weak Topics
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {readinessSummaryQuery.data.topWeakTopics.map(t => (
+                    <span key={t} className="bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded-full font-medium">{t}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Operator Progress Table */}
+        {operatorReadinessQuery.data && operatorReadinessQuery.data.operators.length > 0 && (
+          <div className="mt-6">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-base font-semibold text-slate-800">Operator Progress</h2>
+              <div className="flex items-center gap-2">
+                <select
+                  value={intelFilter}
+                  onChange={e => setIntelFilter(e.target.value as typeof intelFilter)}
+                  className="text-xs border border-slate-200 rounded-lg px-2 py-1.5 bg-white text-slate-600"
+                >
+                  <option value="all">All operators</option>
+                  <option value="at_risk">At Risk</option>
+                  <option value="not_started">Not Started</option>
+                  <option value="exam_ready">Exam Ready</option>
+                </select>
+                <select
+                  value={intelSortKey}
+                  onChange={e => setIntelSortKey(e.target.value as typeof intelSortKey)}
+                  className="text-xs border border-slate-200 rounded-lg px-2 py-1.5 bg-white text-slate-600"
+                >
+                  <option value="readinessScore">Sort: Readiness</option>
+                  <option value="accuracy">Sort: Accuracy</option>
+                  <option value="totalAttempts">Sort: Questions Done</option>
+                  <option value="lastActive">Sort: Last Active</option>
+                </select>
+                <button
+                  onClick={() => setIntelSortDir(d => d === "asc" ? "desc" : "asc")}
+                  className="p-1.5 border border-slate-200 rounded-lg bg-white text-slate-500 hover:text-slate-700"
+                >
+                  <ArrowUpDown className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-slate-100 bg-slate-50">
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Operator</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Course</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Readiness</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Questions</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Weak Topic</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Last Active</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+                    <th className="px-4 py-3"></th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {operatorReadinessQuery.data.operators
+                    .filter(op => intelFilter === "all" || op.operatorStatus === intelFilter)
+                    .sort((a, b) => {
+                      let av: number, bv: number;
+                      if (intelSortKey === "lastActive") {
+                        av = a.lastActive ? new Date(a.lastActive).getTime() : 0;
+                        bv = b.lastActive ? new Date(b.lastActive).getTime() : 0;
+                      } else {
+                        av = (a[intelSortKey] as number | null) ?? 0;
+                        bv = (b[intelSortKey] as number | null) ?? 0;
+                      }
+                      return intelSortDir === "desc" ? bv - av : av - bv;
+                    })
+                    .map(op => {
+                      const statusColors: Record<string, string> = {
+                        not_started: "bg-slate-100 text-slate-600",
+                        active: "bg-blue-50 text-blue-700",
+                        improving: "bg-sky-50 text-sky-700",
+                        at_risk: "bg-red-50 text-red-700",
+                        exam_ready: "bg-green-50 text-green-700",
+                      };
+                      const statusLabels: Record<string, string> = {
+                        not_started: "Not Started",
+                        active: "Active",
+                        improving: "Improving",
+                        at_risk: "At Risk",
+                        exam_ready: "Exam Ready",
+                      };
+                      return (
+                        <tr key={op.id} className="hover:bg-slate-50 transition-colors">
+                          <td className="px-4 py-3">
+                            <div className="font-medium text-slate-800">{op.name ?? op.email.split("@")[0]}</div>
+                            <div className="text-xs text-slate-400">{op.email}</div>
+                          </td>
+                          <td className="px-4 py-3 text-xs text-slate-500">
+                            {op.courseKey ? courseKeyToLabel(op.courseKey, overview.province) : "All Access"}
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="flex items-center gap-2">
+                              <div className="w-16 bg-slate-100 rounded-full h-1.5">
+                                <div
+                                  className={`h-1.5 rounded-full ${op.readinessScore >= 80 ? "bg-green-500" : op.readinessScore >= 50 ? "bg-blue-500" : "bg-red-400"}`}
+                                  style={{ width: `${op.readinessScore}%` }}
+                                />
+                              </div>
+                              <span className="text-xs font-semibold text-slate-700">{op.readinessScore}%</span>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3 text-xs text-slate-600">{op.totalAttempts.toLocaleString()}</td>
+                          <td className="px-4 py-3 text-xs text-slate-500">{op.weakestTopic ?? "—"}</td>
+                          <td className="px-4 py-3 text-xs text-slate-500">{op.lastActive ? formatDate(op.lastActive) : "Never"}</td>
+                          <td className="px-4 py-3">
+                            <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${statusColors[op.operatorStatus] ?? "bg-slate-100 text-slate-600"}`}>
+                              {statusLabels[op.operatorStatus] ?? op.operatorStatus}
+                            </span>
+                          </td>
+                          <td className="px-4 py-3">
+                            {op.memberStatus === "assigned" && (
+                              <button
+                                onClick={() => sendReminder.mutate({ email: op.email })}
+                                disabled={sendReminder.isPending || reminderSent.has(op.email)}
+                                className={`text-xs px-2.5 py-1 rounded-lg border transition-colors flex items-center gap-1 ${
+                                  reminderSent.has(op.email)
+                                    ? "border-green-200 text-green-600 bg-green-50 cursor-default"
+                                    : "border-slate-200 text-slate-600 hover:bg-slate-50"
+                                }`}
+                              >
+                                {reminderSent.has(op.email) ? <><CheckCircle2 className="w-3 h-3" />Sent</> : <><Bell className="w-3 h-3" />Remind</>}
+                              </button>
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* Team Weak Topics Report */}
+        {weakTopicsQuery.data && weakTopicsQuery.data.topics.length > 0 && (
+          <div className="mt-6">
+            <h2 className="text-base font-semibold text-slate-800 mb-3 flex items-center gap-2">
+              <Shield className="w-4 h-4 text-amber-500" />
+              Team Weak Topic Report
+            </h2>
+            <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-slate-100 bg-slate-50">
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Topic</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Team Avg Accuracy</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Operators Affected</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Attempts</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {weakTopicsQuery.data.topics.map(t => (
+                    <tr key={t.topic} className="hover:bg-slate-50">
+                      <td className="px-4 py-3 font-medium text-slate-800">{t.topic}</td>
+                      <td className="px-4 py-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-20 bg-slate-100 rounded-full h-1.5">
+                            <div
+                              className={`h-1.5 rounded-full ${t.avgAccuracy >= 70 ? "bg-green-400" : t.avgAccuracy >= 50 ? "bg-amber-400" : "bg-red-400"}`}
+                              style={{ width: `${t.avgAccuracy}%` }}
+                            />
+                          </div>
+                          <span className={`text-xs font-semibold ${t.avgAccuracy >= 70 ? "text-green-600" : t.avgAccuracy >= 50 ? "text-amber-600" : "text-red-600"}`}>
+                            {t.avgAccuracy}%
+                          </span>
+                        </div>
+                      </td>
+                      <td className="px-4 py-3 text-xs text-slate-600">{t.operatorsAffected}</td>
+                      <td className="px-4 py-3 text-xs text-slate-600">{t.totalAttempts.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
 
         {/* Footer links */}
         <div className="flex items-center gap-4 text-xs text-slate-400 pt-4 border-t border-slate-200">

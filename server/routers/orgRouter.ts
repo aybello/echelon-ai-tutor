@@ -925,5 +925,278 @@ export const orgRouter = router({
     }),
 });
 
+// ── Phase 5: Teams Manager Intelligence ──────────────────────────────────────
+
+export const orgIntelRouter = router({
+  /**
+   * getTeamReadinessSummary — enhanced overview with readiness breakdown,
+   * exam-ready count, at-risk count, inactive count, and top weak topics.
+   */
+  getTeamReadinessSummary: publicProcedure.query(async ({ ctx }) => {
+    const { orgId } = await resolveOrgManager(ctx);
+    const db = await getDb();
+    if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+    const org = await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1).then(r => r[0]);
+    if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+    const activeMembers = await db
+      .select({ email: organizationMembers.email, assignedAt: organizationMembers.assignedAt })
+      .from(organizationMembers)
+      .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator"), eq(organizationMembers.status, "assigned")));
+    const totalAssigned = activeMembers.length;
+    if (totalAssigned === 0) {
+      return { orgName: org.name, seatsTotal: org.seatsTotal, seatsAssigned: 0, activeThisWeek: 0, inactiveCount: 0, examReadyCount: 0, atRiskCount: 0, avgReadiness: 0, topWeakTopics: [] };
+    }
+    const memberEmails = activeMembers.map(m => m.email);
+    const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
+    const [accuracyRows, activeRows, topicRows] = await Promise.all([
+      db.select({
+        email: questionAttempts.studentEmail,
+        total: sql<number>`COUNT(*)`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+        lastActive: sql<Date>`MAX(${questionAttempts.createdAt})`,
+      }).from(questionAttempts).where(inArray(questionAttempts.studentEmail, memberEmails)).groupBy(questionAttempts.studentEmail),
+      db.select({ email: questionAttempts.studentEmail }).from(questionAttempts)
+        .where(and(inArray(questionAttempts.studentEmail, memberEmails), gte(questionAttempts.createdAt, oneWeekAgo)))
+        .groupBy(questionAttempts.studentEmail),
+      db.select({
+        topic: questionAttempts.topic,
+        total: sql<number>`COUNT(*)`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+      }).from(questionAttempts).where(inArray(questionAttempts.studentEmail, memberEmails))
+        .groupBy(questionAttempts.topic).having(sql`COUNT(*) >= 5`),
+    ]);
+    const accuracyByEmail = new Map(accuracyRows.map(r => [r.email, { total: Number(r.total), correct: Number(r.correct), lastActive: r.lastActive }]));
+    const activeEmails = new Set(activeRows.map(r => r.email));
+    let totalReadiness = 0, examReadyCount = 0, atRiskCount = 0, inactiveCount = 0;
+    for (const m of activeMembers) {
+      const stats = accuracyByEmail.get(m.email);
+      const total = stats?.total ?? 0;
+      const correct = stats?.correct ?? 0;
+      const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+      const lastActive = stats?.lastActive ?? null;
+      totalReadiness += accuracy;
+      if (accuracy >= 80) examReadyCount++;
+      if (accuracy < 50 && total > 10) atRiskCount++;
+      if (!lastActive || lastActive <= twoWeeksAgo) inactiveCount++;
+    }
+    const avgReadiness = totalAssigned > 0 ? Math.round(totalReadiness / totalAssigned) : 0;
+    const topWeakTopics = topicRows
+      .map(r => ({ topic: r.topic, accuracy: Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0 }))
+      .sort((a, b) => a.accuracy - b.accuracy).slice(0, 3).map(t => t.topic);
+    return { orgName: org.name, seatsTotal: org.seatsTotal, seatsAssigned: totalAssigned, activeThisWeek: activeEmails.size, inactiveCount, examReadyCount, atRiskCount, avgReadiness, topWeakTopics };
+  }),
+
+  /**
+   * getTeamWeakTopics — aggregate weak topics across all active operators.
+   */
+  getTeamWeakTopics: publicProcedure.query(async ({ ctx }) => {
+    const { orgId } = await resolveOrgManager(ctx);
+    const db = await getDb();
+    if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+    const activeMembers = await db.select({ email: organizationMembers.email }).from(organizationMembers)
+      .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator"), eq(organizationMembers.status, "assigned")));
+    if (activeMembers.length === 0) return { topics: [] };
+    const memberEmails = activeMembers.map(m => m.email);
+    const topicRows = await db.select({
+      topic: questionAttempts.topic,
+      total: sql<number>`COUNT(*)`,
+      correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+      operatorCount: sql<number>`COUNT(DISTINCT ${questionAttempts.studentEmail})`,
+    }).from(questionAttempts).where(inArray(questionAttempts.studentEmail, memberEmails))
+      .groupBy(questionAttempts.topic).having(sql`COUNT(*) >= 5`);
+    const topics = topicRows
+      .map(r => ({
+        topic: r.topic,
+        totalAttempts: Number(r.total),
+        avgAccuracy: Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0,
+        operatorsAffected: Number(r.operatorCount),
+      }))
+      .sort((a, b) => a.avgAccuracy - b.avgAccuracy).slice(0, 10);
+    return { topics };
+  }),
+
+  /**
+   * getOperatorReadiness — per-operator readiness scores for the progress table.
+   */
+  getOperatorReadiness: publicProcedure.query(async ({ ctx }) => {
+    const { orgId } = await resolveOrgManager(ctx);
+    const db = await getDb();
+    if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+    const members = await db.select().from(organizationMembers)
+      .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator")));
+    if (members.length === 0) return { operators: [] };
+    const allEmails = members.map(m => m.email);
+    const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
+    const [accuracyRows, topicRows, mockRows, lastActiveRows] = await Promise.all([
+      db.select({
+        email: questionAttempts.studentEmail,
+        total: sql<number>`COUNT(*)`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+      }).from(questionAttempts).where(inArray(questionAttempts.studentEmail, allEmails)).groupBy(questionAttempts.studentEmail),
+      db.select({
+        email: questionAttempts.studentEmail,
+        topic: questionAttempts.topic,
+        total: sql<number>`COUNT(*)`,
+        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+      }).from(questionAttempts).where(inArray(questionAttempts.studentEmail, allEmails)).groupBy(questionAttempts.studentEmail, questionAttempts.topic),
+      db.select({
+        email: questionAttempts.studentEmail,
+        mockCount: sql<number>`COUNT(DISTINCT ${questionAttempts.sessionId})`,
+      }).from(questionAttempts).where(and(inArray(questionAttempts.studentEmail, allEmails), eq(questionAttempts.quizMode, "mock"))).groupBy(questionAttempts.studentEmail),
+      db.select({
+        email: questionAttempts.studentEmail,
+        lastActive: sql<Date>`MAX(${questionAttempts.createdAt})`,
+      }).from(questionAttempts).where(inArray(questionAttempts.studentEmail, allEmails)).groupBy(questionAttempts.studentEmail),
+    ]);
+    const accuracyByEmail = new Map(accuracyRows.map(r => [r.email, { total: Number(r.total), correct: Number(r.correct) }]));
+    const mockByEmail = new Map(mockRows.map(r => [r.email, Number(r.mockCount)]));
+    const lastActiveByEmail = new Map(lastActiveRows.map(r => [r.email, r.lastActive]));
+    const topicsByEmail = new Map<string, Array<{ topic: string; accuracy: number; total: number }>>();
+    for (const r of topicRows) {
+      if (!r.email) continue;
+      if (!topicsByEmail.has(r.email)) topicsByEmail.set(r.email, []);
+      const acc = Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0;
+      topicsByEmail.get(r.email)!.push({ topic: r.topic, accuracy: acc, total: Number(r.total) });
+    }
+    const operators = members.map(m => {
+      const stats = accuracyByEmail.get(m.email);
+      const total = stats?.total ?? 0;
+      const correct = stats?.correct ?? 0;
+      const accuracy = total > 0 ? Math.round((correct / total) * 100) : null;
+      const lastActive = lastActiveByEmail.get(m.email) ?? null;
+      const mockExamsCompleted = mockByEmail.get(m.email) ?? 0;
+      let readinessScore = 0;
+      if (total > 0 && accuracy !== null) {
+        readinessScore = Math.min(100, Math.round(accuracy * 0.5 + Math.min(total / 200, 1) * 20 + Math.min(mockExamsCompleted * 5, 20) + (lastActive && lastActive >= twoWeeksAgo ? 10 : 0)));
+      }
+      const topics = topicsByEmail.get(m.email) ?? [];
+      const eligibleTopics = topics.filter(t => t.total >= 3);
+      const weakestTopic = eligibleTopics.length > 0 ? eligibleTopics.sort((a, b) => a.accuracy - b.accuracy)[0].topic : null;
+      let operatorStatus: "not_started" | "active" | "at_risk" | "improving" | "exam_ready" = "not_started";
+      if (m.status === "revoked") operatorStatus = "not_started";
+      else if (total === 0) operatorStatus = "not_started";
+      else if (readinessScore >= 80) operatorStatus = "exam_ready";
+      else if (readinessScore >= 60) operatorStatus = "active";
+      else if (readinessScore < 40 && total > 10) operatorStatus = "at_risk";
+      else operatorStatus = "improving";
+      return { id: m.id, email: m.email, name: m.name ?? null, memberStatus: m.status as "assigned" | "revoked", courseKey: m.courseKey ?? null, assignedAt: m.assignedAt, lastActive, totalAttempts: total, accuracy, readinessScore, weakestTopic, mockExamsCompleted, operatorStatus };
+    });
+    return { operators };
+  }),
+
+  /**
+   * exportTeamCSV — export team progress as CSV string.
+   */
+  exportTeamCSV: publicProcedure.query(async ({ ctx }) => {
+    const { orgId } = await resolveOrgManager(ctx);
+    const db = await getDb();
+    if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+    const org = await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1).then(r => r[0]);
+    if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+    const members = await db.select().from(organizationMembers)
+      .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator")));
+    const header = "Email,Name,Assigned Course,Readiness Score,Questions Attempted,Last Active,Weakest Topic,Status";
+    if (members.length === 0) return { csv: header + "\n", orgName: org.name };
+    const allEmails = members.map(m => m.email);
+    const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
+    const [accuracyRows, topicRows, mockRows, lastActiveRows] = await Promise.all([
+      db.select({ email: questionAttempts.studentEmail, total: sql<number>`COUNT(*)`, correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)` })
+        .from(questionAttempts).where(inArray(questionAttempts.studentEmail, allEmails)).groupBy(questionAttempts.studentEmail),
+      db.select({ email: questionAttempts.studentEmail, topic: questionAttempts.topic, total: sql<number>`COUNT(*)`, correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)` })
+        .from(questionAttempts).where(inArray(questionAttempts.studentEmail, allEmails)).groupBy(questionAttempts.studentEmail, questionAttempts.topic),
+      db.select({ email: questionAttempts.studentEmail, mockCount: sql<number>`COUNT(DISTINCT ${questionAttempts.sessionId})` })
+        .from(questionAttempts).where(and(inArray(questionAttempts.studentEmail, allEmails), eq(questionAttempts.quizMode, "mock"))).groupBy(questionAttempts.studentEmail),
+      db.select({ email: questionAttempts.studentEmail, lastActive: sql<Date>`MAX(${questionAttempts.createdAt})` })
+        .from(questionAttempts).where(inArray(questionAttempts.studentEmail, allEmails)).groupBy(questionAttempts.studentEmail),
+    ]);
+    const accuracyByEmail = new Map(accuracyRows.map(r => [r.email, { total: Number(r.total), correct: Number(r.correct) }]));
+    const mockByEmail = new Map(mockRows.map(r => [r.email, Number(r.mockCount)]));
+    const lastActiveByEmail = new Map(lastActiveRows.map(r => [r.email, r.lastActive]));
+    const topicsByEmail = new Map<string, Array<{ topic: string; accuracy: number; total: number }>>();
+    for (const r of topicRows) {
+      if (!r.email) continue;
+      if (!topicsByEmail.has(r.email)) topicsByEmail.set(r.email, []);
+      const acc = Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0;
+      topicsByEmail.get(r.email)!.push({ topic: r.topic, accuracy: acc, total: Number(r.total) });
+    }
+    const escapeCSV = (v: string | null | undefined) => { if (v == null) return ""; const s = String(v); return s.includes(",") || s.includes("\"") || s.includes("\n") ? `"${s.replace(/"/g, '""')}"` : s; };
+    const rows = members.map(m => {
+      const stats = accuracyByEmail.get(m.email);
+      const total = stats?.total ?? 0;
+      const correct = stats?.correct ?? 0;
+      const accuracy = total > 0 ? Math.round((correct / total) * 100) : null;
+      const lastActive = lastActiveByEmail.get(m.email) ?? null;
+      const mockExamsCompleted = mockByEmail.get(m.email) ?? 0;
+      let readinessScore = 0;
+      if (total > 0 && accuracy !== null) readinessScore = Math.min(100, Math.round(accuracy * 0.5 + Math.min(total / 200, 1) * 20 + Math.min(mockExamsCompleted * 5, 20) + (lastActive && lastActive >= twoWeeksAgo ? 10 : 0)));
+      const topics = topicsByEmail.get(m.email) ?? [];
+      const eligibleTopics = topics.filter(t => t.total >= 3);
+      const weakestTopic = eligibleTopics.length > 0 ? eligibleTopics.sort((a, b) => a.accuracy - b.accuracy)[0].topic : null;
+      let status = "Not Started";
+      if (m.status === "revoked") status = "Revoked";
+      else if (total === 0) status = "Not Started";
+      else if (readinessScore >= 80) status = "Exam Ready";
+      else if (readinessScore >= 60) status = "Active";
+      else if (readinessScore < 40 && total > 10) status = "At Risk";
+      else status = "Improving";
+      const courseLabel = m.courseKey ? courseKeyToLabel(m.courseKey, org.province) : "All Access";
+      return [escapeCSV(m.email), escapeCSV(m.name), escapeCSV(courseLabel), readinessScore > 0 ? readinessScore + "%" : "0%", String(total), lastActive ? lastActive.toISOString().split("T")[0] : "Never", escapeCSV(weakestTopic), status].join(",");
+    });
+    return { csv: [header, ...rows].join("\n"), orgName: org.name };
+  }),
+
+  /**
+   * sendOperatorReminder — send a reminder email to an inactive operator.
+   */
+  sendOperatorReminder: publicProcedure
+    .input(z.object({ email: z.string().email() }))
+    .mutation(async ({ input, ctx }) => {
+      const { orgId, managerEmail } = await resolveOrgManager(ctx);
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const email = normalizeEmail(input.email);
+      const member = await db.select().from(organizationMembers)
+        .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.email, email), eq(organizationMembers.role, "operator"), eq(organizationMembers.status, "assigned")))
+        .limit(1).then(r => r[0]);
+      if (!member) throw new TRPCError({ code: "NOT_FOUND", message: "Operator not found in your organization" });
+      const org = await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1).then(r => r[0]);
+      if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+      const courseLabel = member.courseKey ? courseKeyToLabel(member.courseKey, org.province) : "All Courses";
+      await sendTeamEnrollmentEmail({ email, orgName: org.name, managerEmail, loginUrl: "https://echeloninstitute.ca/login", courseName: courseLabel + " — Reminder: Your exam prep is waiting!" });
+      return { success: true, email };
+    }),
+
+  /**
+   * sendBulkReminders — send reminders to all inactive operators in the org.
+   */
+  sendBulkReminders: publicProcedure.mutation(async ({ ctx }) => {
+    const { orgId, managerEmail } = await resolveOrgManager(ctx);
+    const db = await getDb();
+    if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+    const org = await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1).then(r => r[0]);
+    if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+    const members = await db.select().from(organizationMembers)
+      .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator"), eq(organizationMembers.status, "assigned")));
+    if (members.length === 0) return { sent: 0, emails: [] };
+    const memberEmails = members.map(m => m.email);
+    const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
+    const recentRows = await db.select({ email: questionAttempts.studentEmail }).from(questionAttempts)
+      .where(and(inArray(questionAttempts.studentEmail, memberEmails), gte(questionAttempts.createdAt, twoWeeksAgo)))
+      .groupBy(questionAttempts.studentEmail);
+    const recentEmails = new Set(recentRows.map(r => r.email));
+    const inactiveMembers = members.filter(m => !recentEmails.has(m.email));
+    const sentEmails: string[] = [];
+    for (const m of inactiveMembers) {
+      try {
+        const courseLabel = m.courseKey ? courseKeyToLabel(m.courseKey, org.province) : "All Courses";
+        await sendTeamEnrollmentEmail({ email: m.email, orgName: org.name, managerEmail, loginUrl: "https://echeloninstitute.ca/login", courseName: courseLabel + " — Reminder: Your exam prep is waiting!" });
+        sentEmails.push(m.email);
+      } catch (err) { console.error(`[sendBulkReminders] Failed to send to ${m.email}:`, err); }
+    }
+    return { sent: sentEmails.length, emails: sentEmails };
+  }),
+});
+
 // Export helpers for use in webhook and admin router
 export { grantSeat, revokeSeat };

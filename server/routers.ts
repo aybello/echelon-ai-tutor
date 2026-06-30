@@ -18,7 +18,7 @@ import { quizRouter } from "./routers/quizRouter";
 import { dashboardRouter } from "./routers/dashboardRouter";
 import { magicLinkRouter } from "./routers/magicLinkRouter";
 import { dashboardAuthRouter } from "./routers/dashboardAuthRouter";
-import { orgRouter } from "./routers/orgRouter";
+import { orgRouter, orgIntelRouter } from "./routers/orgRouter";
 import { blogRouter } from "./routers/blogRouter";
 import { jobsRouter } from "./routers/jobsRouter";
 import { sendContactEmail } from "./email";
@@ -100,6 +100,7 @@ export const appRouter = router({
   magicLink: magicLinkRouter,
   dashboardAuth: dashboardAuthRouter,
   org: orgRouter,
+  orgIntel: orgIntelRouter,
   blog: blogRouter,
   jobs: jobsRouter,
   auth: router({
