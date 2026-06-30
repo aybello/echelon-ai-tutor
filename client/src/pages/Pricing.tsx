@@ -1690,10 +1690,10 @@ function ProductCard({
       <div style={{ height: 4, background: product.color, flexShrink: 0 }} />
 
       {/* Card body */}
-      <div style={{ padding: "20px 20px 0", flex: 1, display: "flex", flexDirection: "column" }}>
+      <div style={{ padding: "14px 16px 0", flex: 1, display: "flex", flexDirection: "column" }}>
 
         {/* Header row: label tag + question count + badge */}
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
           <span style={{
             background: product.bg, color: product.color,
             fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 6,
@@ -1722,20 +1722,20 @@ function ProductCard({
         </div>
 
         {/* Title + description */}
-        <h3 style={{ fontSize: 17, fontWeight: 800, color: "#0F172A", margin: "0 0 8px", fontFamily: "Sora, sans-serif", lineHeight: 1.3 }}>
+        <h3 style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", margin: "0 0 6px", fontFamily: "Sora, sans-serif", lineHeight: 1.3 }}>
           {displayName}
         </h3>
-        <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.6, margin: "0 0 14px" }}>
+        <p style={{ fontSize: 12, color: "#475569", lineHeight: 1.5, margin: "0 0 10px" }}>
           {displayDesc}
         </p>
 
         {/* Feature pills */}
         {product.features && product.features.length > 0 && (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 16 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 4, marginBottom: 10 }}>
             {product.features.map(f => (
               <span key={f} style={{
-                fontSize: 11, color: product.color, background: product.bg,
-                borderRadius: 20, padding: "3px 9px", fontWeight: 500,
+                fontSize: 10, color: product.color, background: product.bg,
+                borderRadius: 20, padding: "2px 8px", fontWeight: 500,
               }}>{f}</span>
             ))}
           </div>
@@ -1746,10 +1746,10 @@ function ProductCard({
 
         {/* Price row */}
         <div style={{
-          borderTop: "1px solid #F1F5F9", paddingTop: 12, marginBottom: 12,
+          borderTop: "1px solid #F1F5F9", paddingTop: 10, marginBottom: 10,
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-            <span style={{ fontSize: 28, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
+            <span style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
               CA${(product.priceCAD / 100).toFixed(0)}
             </span>
             {product.available && (
@@ -1770,7 +1770,7 @@ function ProductCard({
       </div>
 
       {/* CTA footer */}
-      <div style={{ padding: "0 20px 20px", display: "flex", flexDirection: "column", gap: 8 }}>
+      <div style={{ padding: "0 16px 16px", display: "flex", flexDirection: "column", gap: 6 }}>
         <CheckoutButton
           productKey={product.key}
           label={`Get ${product.shortName} Pass →`}
