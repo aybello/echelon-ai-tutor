@@ -2,27 +2,28 @@
  * dashboardAuthRouter — email OTP login for the student dashboard.
  *
  * Flow:
- *   1. sendOtp: client sends email -> server checks it exists in purchases/subscriptions
- *              -> generates 6-digit code -> stores SHA-256 hash -> sends email
+ *   1. sendOtp: client sends email -> server resolves live entitlements
+ *              -> if hasAnyAccess or isManager, generates 6-digit code -> stores SHA-256 hash -> sends email
  *   2. verifyOtp: client sends email + code -> server verifies hash + expiry + attempts
- *               -> issues a signed JWT in an httpOnly cookie (dashboard_session)
+ *               -> re-resolves live entitlements -> issues a signed JWT in an httpOnly cookie
  *   3. me: returns the email from the current dashboard session cookie (or null)
  *   4. logout: clears the dashboard_session cookie
+ *
+ * KEY PRINCIPLE: email verification proves identity, not entitlement.
+ * Entitlement is always re-resolved from live DB state before issuing an access token.
  */
 
 import { createHash, randomInt } from "crypto";
 import { z } from "zod";
-import { eq, and, gt, lt, isNull } from "drizzle-orm";
+import { eq, and, gt, isNull } from "drizzle-orm";
 import { SignJWT, jwtVerify } from "jose";
 import nodemailer from "nodemailer";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { dashboardOtps, purchases, subscriptions } from "../../drizzle/schema";
-import { normalizeEmail } from "../_core/access";
+import { dashboardOtps } from "../../drizzle/schema";
+import { normalizeEmail, resolveEntitlementsByEmail } from "../_core/access";
 import { ENV } from "../_core/env";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
-import { getAllUnlockedExamTypes } from "../stripe/products";
-import { getAllSubscriptionExamTypes, type SubscriptionTier, type SubscriptionProvince } from "../stripe/subscriptionProducts";
 
 const JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret);
 const COOKIE_NAME = "echelon_dashboard_session";
@@ -69,48 +70,29 @@ async function sendOtpEmail(email: string, code: string): Promise<void> {
 export const dashboardAuthRouter = router({
   /**
    * sendOtp — generates and emails a 6-digit code to the given address.
-   * Succeeds if the email has at least one active purchase or active subscription.
-   * Team managers are covered by the subscriptions check — grantSeat() creates a
-   * subscription row for every manager tied to the org termEnd. If the org plan has
-   * expired, the manager is blocked and must renew before regaining access.
+   *
+   * Uses the shared entitlement resolver to check access — this ensures:
+   * - Refunded/disputed purchases do NOT trigger an OTP send.
+   * - Expired/cancelled subscriptions do NOT trigger an OTP send.
+   * - Managers (isManager) can still receive an OTP even without course entitlements.
+   *
+   * Always returns { sent: true } to prevent email enumeration.
    */
   sendOtp: publicProcedure
     .input(z.object({ email: z.string().email() }))
     .mutation(async ({ input }) => {
       const email = normalizeEmail(input.email);
-      const db = await getDb();
-      if (!db) throw new Error("Database unavailable");
 
-      // Check 1: purchases table
-      const purchaseRows = await db
-        .select({ id: purchases.id })
-        .from(purchases)
-        .where(eq(purchases.email, email))
-        .limit(1);
+      // Re-resolve live entitlements — do not trust stale purchase/subscription queries
+      const entitlements = await resolveEntitlementsByEmail(email);
 
-      let hasAccess = purchaseRows.length > 0;
-
-      // Check 2: active subscriptions (includes org-managed seats)
-      if (!hasAccess) {
-        const now = new Date();
-        const subRows = await db
-          .select({ id: subscriptions.id })
-          .from(subscriptions)
-          .where(
-            and(
-              eq(subscriptions.email, email),
-              eq(subscriptions.status, "active"),
-              gt(subscriptions.currentPeriodEnd, now),
-            ),
-          )
-          .limit(1);
-        hasAccess = subRows.length > 0;
-      }
-
-      if (!hasAccess) {
+      if (!entitlements.hasAnyAccess && !entitlements.isManager) {
         // Return success anyway to avoid email enumeration — just don't send
         return { sent: true };
       }
+
+      const db = await getDb();
+      if (!db) return { sent: true };
 
       // Generate 6-digit code
       const code = String(randomInt(100000, 999999));
@@ -141,6 +123,13 @@ export const dashboardAuthRouter = router({
 
   /**
    * verifyOtp — checks the code and issues a dashboard session cookie on success.
+   *
+   * After verifying the OTP code, re-resolves live entitlements before issuing
+   * the access token. This ensures:
+   * - A refunded customer who still has a valid OTP code cannot regain access.
+   * - A cancelled subscriber who still has a valid OTP code cannot regain access.
+   * - Only currently active purchases/subscriptions grant course access.
+   * - Managers get a dashboard session even without course entitlements.
    */
   verifyOtp: publicProcedure
     .input(z.object({ email: z.string().email(), code: z.string().length(6) }))
@@ -182,7 +171,7 @@ export const dashboardAuthRouter = router({
         throw new Error(`Incorrect code. ${remaining} attempt${remaining === 1 ? "" : "s"} remaining.`);
       }
 
-      // Mark OTP as used
+      // Mark OTP as used — prevents replay within the 10-min window
       await db
         .update(dashboardOtps)
         .set({ usedAt: now })
@@ -205,35 +194,23 @@ export const dashboardAuthRouter = router({
         path: "/",
       });
 
-      // Look up all course access for this email and return it so the client
-      // can store it in localStorage — giving full course access on sign-in
-      const [purchaseRows, subRows] = await Promise.all([
-        db.select({ productKey: purchases.productKey })
-          .from(purchases)
-          .where(eq(purchases.email, email)),
-        db.select({ tier: subscriptions.tier, province: subscriptions.province })
-          .from(subscriptions)
-          .where(
-            and(
-              eq(subscriptions.email, email),
-              eq(subscriptions.status, "active"),
-              gt(subscriptions.currentPeriodEnd, now),
-            )
-          ),
-      ]);
+      // Re-resolve live entitlements — do not use stale purchase/subscription queries.
+      // This is the authoritative access check: a refunded or cancelled customer
+      // who still has a valid OTP code will not receive course access here.
+      const entitlements = await resolveEntitlementsByEmail(email);
 
-      const purchasedProductKeys = purchaseRows.map(r => r.productKey);
-      const purchaseExamTypes = getAllUnlockedExamTypes(purchasedProductKeys);
-      const subscriptionExamTypes = getAllSubscriptionExamTypes(
-        subRows.map(r => ({ tier: r.tier as SubscriptionTier, province: r.province as SubscriptionProvince }))
-      );
-      const allExamTypes = Array.from(new Set([...purchaseExamTypes, ...subscriptionExamTypes]));
-
-      const accessToken = allExamTypes.length > 0
-        ? await issueSubscriptionToken({ email, examTypes: allExamTypes })
+      // Only issue an access token if there are actual course entitlements
+      const accessToken = entitlements.unlockedExamTypes.length > 0
+        ? await issueSubscriptionToken({ email, examTypes: entitlements.unlockedExamTypes })
         : null;
 
-      return { success: true, email, accessToken, unlockedExamTypes: allExamTypes, purchasedProductKeys };
+      return {
+        success: true,
+        email,
+        accessToken,
+        unlockedExamTypes: entitlements.unlockedExamTypes,
+        purchasedProductKeys: entitlements.purchasedProductKeys,
+      };
     }),
 
   /**

@@ -6,6 +6,14 @@
  * 1. User enters email on /account page
  * 2. If they have purchases/subscriptions, a magic link is emailed
  * 3. User clicks link -> token is validated -> session is established
+ *
+ * KEY PRINCIPLE: The magic link URL is built from ENV.appBaseUrl (server-approved),
+ * NOT from the client-supplied origin. This prevents open-redirect attacks where
+ * a malicious caller could supply an arbitrary origin to redirect victims to
+ * attacker-controlled domains.
+ *
+ * The client-supplied origin is still accepted as input (for backward compat) but
+ * is ignored when building the link URL.
  */
 
 import { z } from "zod";
@@ -13,10 +21,10 @@ import crypto from "crypto";
 import { eq, and, gt, isNull } from "drizzle-orm";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { magicLinks, purchases, subscriptions, organizations } from "../../drizzle/schema";
+import { magicLinks, organizations } from "../../drizzle/schema";
 import { sendMagicLinkEmail } from "../email";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
-import { getSubscriptionExamTypes } from "../stripe/subscriptionProducts";
+import { resolveEntitlementsByEmail, normalizeEmail } from "../_core/access";
 import { SignJWT } from "jose";
 import { ENV } from "../_core/env";
 
@@ -25,78 +33,56 @@ const DASHBOARD_JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret);
 
 const MAGIC_LINK_EXPIRY_MINUTES = 15;
 
-function normalizeEmail(email: string): string {
-  return email.trim().toLowerCase();
-}
-
 export const magicLinkRouter = router({
   /**
-   * Request a magic link email. Checks if the email has any purchases or active subscriptions.
-   * If yes, generates a token and sends an email. Returns success regardless (to prevent email enumeration).
+   * Request a magic link email.
+   *
+   * Uses resolveEntitlementsByEmail for consistent, fail-closed access checking:
+   * - Refunded/disputed purchases do NOT trigger a magic link send.
+   * - Expired/cancelled subscriptions do NOT trigger a magic link send.
+   * - Managers (isManager) can still receive a magic link even without course entitlements.
+   *
+   * The magic link URL is built from ENV.appBaseUrl — the server-approved domain —
+   * NOT from the client-supplied origin. The origin input is kept for backward
+   * compatibility but is ignored for URL construction.
+   *
+   * Always returns { sent: true } to prevent email enumeration.
    */
   requestMagicLink: publicProcedure
     .input(z.object({
       email: z.string().email(),
-      origin: z.string().url(), // frontend origin for building the magic link URL
+      origin: z.string().url().optional(), // accepted but ignored for URL construction
     }))
     .mutation(async ({ input }) => {
-      const db = await getDb();
-      if (!db) return { sent: true }; // always return true to prevent enumeration
-
       const email = normalizeEmail(input.email);
 
-      // Check if user has any purchases or active subscriptions
-      const [purchaseRows, subRows] = await Promise.all([
-        db.select({ productKey: purchases.productKey })
-          .from(purchases)
-          .where(eq(purchases.email, email))
-          .limit(1),
-        db.select({ tier: subscriptions.tier, province: subscriptions.province, status: subscriptions.status })
-          .from(subscriptions)
-          .where(eq(subscriptions.email, email))
-          .limit(5),
-      ]);
+      // Re-resolve live entitlements — single source of truth
+      const entitlements = await resolveEntitlementsByEmail(email);
 
-      const hasPurchases = purchaseRows.length > 0;
-      const hasActiveSubs = subRows.some(s => s.status === "active" || s.status === "trialing");
-
-      if (!hasPurchases && !hasActiveSubs) {
-        // No purchases found, but still return true to prevent enumeration
-        console.log(`[MagicLink] No purchases/subs found for ${email}`);
+      if (!entitlements.hasAnyAccess && !entitlements.isManager) {
+        // No access — return success anyway to prevent email enumeration
+        console.log(`[MagicLink] No entitlements found for ${email}`);
         return { sent: true };
       }
 
-      // Build the exam types list from purchases + subscriptions
-      const examTypesFromPurchases = purchaseRows.length > 0
-        ? (await db.select({ productKey: purchases.productKey }).from(purchases).where(eq(purchases.email, email))).map(r => r.productKey)
-        : [];
-
-      const examTypesFromSubs = subRows
-        .filter(s => s.status === "active" || s.status === "trialing")
-        .flatMap(s => {
-          try {
-            return getSubscriptionExamTypes(s.tier as any, s.province as any);
-          } catch {
-            return [];
-          }
-        });
-
-      const allExamTypes = Array.from(new Set([...examTypesFromPurchases, ...examTypesFromSubs]));
+      const db = await getDb();
+      if (!db) return { sent: true };
 
       // Generate a secure token
       const token = crypto.randomBytes(48).toString("base64url");
       const expiresAt = new Date(Date.now() + MAGIC_LINK_EXPIRY_MINUTES * 60 * 1000);
 
-      // Store the magic link
+      // Store the magic link with the live exam types at time of request
       await db.insert(magicLinks).values({
         email,
         token,
-        examTypes: JSON.stringify(allExamTypes),
+        examTypes: JSON.stringify(entitlements.unlockedExamTypes),
         expiresAt,
       });
 
-      // Build the magic link URL
-      const magicLinkUrl = `${input.origin}/auth/magic?token=${token}`;
+      // Build the magic link URL from the server-approved base URL
+      // NEVER use input.origin here — it is client-controlled and could be attacker-supplied
+      const magicLinkUrl = `${ENV.appBaseUrl}/auth/magic?token=${token}`;
 
       // Send the email (non-blocking)
       sendMagicLinkEmail({
@@ -107,13 +93,18 @@ export const magicLinkRouter = router({
         console.error("[MagicLink] Failed to send email:", err.message);
       });
 
-      console.log(`[MagicLink] Sent to ${email} with ${allExamTypes.length} exam types`);
+      console.log(`[MagicLink] Sent to ${email} with ${entitlements.unlockedExamTypes.length} exam types`);
       return { sent: true };
     }),
 
   /**
-   * Consume a magic link token. Validates the token, marks it as used,
-   * and returns an access token (JWT) + exam types for the client to store.
+   * Consume a magic link token.
+   *
+   * Validates the token, marks it as used, then re-resolves live entitlements
+   * before issuing the access token. This ensures:
+   * - A refunded customer who still has a valid magic link cannot regain access.
+   * - A cancelled subscriber who still has a valid magic link cannot regain access.
+   * - The examTypes in the access token always reflect current DB state.
    */
   consumeMagicLink: publicProcedure
     .input(z.object({ token: z.string() }))
@@ -140,23 +131,23 @@ export const magicLinkRouter = router({
         return { valid: false, email: "", examTypes: [] as string[], accessToken: "", isManager: false };
       }
 
-      // Mark as used
+      // Mark as used immediately to prevent replay
       await db.update(magicLinks)
         .set({ usedAt: now })
         .where(eq(magicLinks.id, link.id));
 
-      const examTypes: string[] = JSON.parse(link.examTypes);
+      // Re-resolve live entitlements — do not use the stored examTypes snapshot.
+      // The snapshot was taken at request time; by consume time the user may have
+      // been refunded or their subscription may have lapsed.
+      const entitlements = await resolveEntitlementsByEmail(link.email);
 
-      // Issue a JWT access token
-      const accessToken = await issueSubscriptionToken({ email: link.email, examTypes });
+      // Only issue an access token if there are actual course entitlements
+      const accessToken = entitlements.unlockedExamTypes.length > 0
+        ? await issueSubscriptionToken({ email: link.email, examTypes: entitlements.unlockedExamTypes })
+        : "";
 
       // Check if this email is a manager of any org — redirect to /team if so
-      const [orgRow] = await db
-        .select({ id: organizations.id })
-        .from(organizations)
-        .where(eq(organizations.managerEmail, link.email))
-        .limit(1);
-      const isManager = !!orgRow;
+      const isManager = entitlements.isManager;
 
       // If manager, also set the dashboard session cookie so /team works immediately
       if (isManager) {
@@ -177,7 +168,7 @@ export const magicLinkRouter = router({
       return {
         valid: true,
         email: link.email,
-        examTypes,
+        examTypes: entitlements.unlockedExamTypes,
         accessToken,
         isManager,
       };

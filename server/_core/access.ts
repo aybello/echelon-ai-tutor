@@ -1,5 +1,5 @@
 import { getDb } from "../db";
-import { purchases, subscriptions } from "../../drizzle/schema";
+import { purchases, subscriptions, organizations } from "../../drizzle/schema";
 import type { User } from "../../drizzle/schema";
 import { eq, and, gt } from "drizzle-orm";
 import { getAllUnlockedExamTypes } from "../stripe/products";
@@ -47,39 +47,112 @@ export function bankKeyToExamType(bankKey: string): string {
 
 export type AccessResult = { hasAccess: boolean; isOwner: boolean };
 
-/**
- * Lightweight email-only entitlement check for unauthenticated subscription customers.
- * Checks both subscriptions AND one-time purchases by email.
- */
-export async function resolveAccessByEmail(
-  email: string | null | undefined,
-  examType: string,
-): Promise<{ hasAccess: boolean }> {
-  // Free exam types are always accessible — no purchase required
-  if (FREE_EXAM_TYPES.has(examType)) return { hasAccess: true };
-  const normalised = normalizeEmail(email);
-  if (!normalised) return { hasAccess: false };
-  const db = await getDb();
-  if (!db) return { hasAccess: false };
+// ---------------------------------------------------------------------------
+// Entitlement source and result types
+// ---------------------------------------------------------------------------
 
-  // Check one-time purchases
+export type EntitlementSource =
+  | "free"
+  | "purchase"
+  | "subscription"
+  | "owner"
+  | "admin"
+  | "org_manager";
+
+export type ResolvedEntitlements = {
+  email: string;
+  hasAnyAccess: boolean;
+  unlockedExamTypes: string[];
+  purchasedProductKeys: string[];
+  activeSubscriptionRows: Array<{
+    tier: string;
+    province: string;
+    status: string;
+    currentPeriodEnd: Date;
+    orgId: number | null;
+  }>;
+  isManager: boolean;
+  sources: EntitlementSource[];
+};
+
+/**
+ * Status sets for access decisions — fail closed by default.
+ * Only these statuses count for access; all others (cancelled, expired, refunded, disputed) do not.
+ */
+const PURCHASE_ACCESS_STATUSES = new Set(["active"]);
+const SUBSCRIPTION_ACCESS_STATUSES = new Set(["active", "past_due"]);
+const ORG_ACCESS_STATUSES = new Set(["active", "past_due"]);
+
+/**
+ * Full entitlement resolver — single source of truth for who has access to what.
+ *
+ * Rules:
+ * 1. Normalizes email; returns no-access for empty/null email.
+ * 2. Active one-time purchases only (status missing/null or "active"; excludes refunded/disputed).
+ * 3. Active subscriptions only (status "active" or "past_due" AND currentPeriodEnd > now).
+ * 4. Unknown purchase product keys → unlock nothing (fail closed).
+ * 5. Unknown subscription tier/province → unlock nothing (fail closed, caught per-row).
+ * 6. Manager status alone does NOT grant course access unless backed by an active org seat/sub.
+ * 7. All unlockedExamTypes are deduplicated.
+ */
+export async function resolveEntitlementsByEmail(
+  email: string | null | undefined,
+): Promise<ResolvedEntitlements> {
+  const normalised = normalizeEmail(email);
+
+  const empty: ResolvedEntitlements = {
+    email: normalised,
+    hasAnyAccess: false,
+    unlockedExamTypes: [],
+    purchasedProductKeys: [],
+    activeSubscriptionRows: [],
+    isManager: false,
+    sources: [],
+  };
+
+  if (!normalised) return empty;
+
+  const db = await getDb();
+  if (!db) return empty;
+
+  const sources: EntitlementSource[] = [];
+  const now = new Date();
+
+  // -------------------------------------------------------------------------
+  // 1. One-time purchases
+  // -------------------------------------------------------------------------
   const purchaseRows = await db
     .select({ productKey: purchases.productKey, status: purchases.status })
     .from(purchases)
     .where(eq(purchases.email, normalised));
-  const activeKeys = purchaseRows
-    .filter((r) => !r.status || r.status === "active")
+
+  // Preserve historic behaviour: missing status counts as active
+  const activePurchaseKeys = purchaseRows
+    .filter((r) => !r.status || PURCHASE_ACCESS_STATUSES.has(r.status))
     .map((r) => r.productKey);
-  if (getAllUnlockedExamTypes(activeKeys).includes(examType)) {
-    return { hasAccess: true };
+
+  let purchaseExamTypes: string[] = [];
+  if (activePurchaseKeys.length > 0) {
+    try {
+      purchaseExamTypes = getAllUnlockedExamTypes(activePurchaseKeys);
+      if (purchaseExamTypes.length > 0) sources.push("purchase");
+    } catch (err) {
+      console.warn("[resolveEntitlements] Purchase mapping error:", err);
+      // fail closed — no access from this row
+    }
   }
 
-  // Check active subscriptions (and past_due within the current period — grace window)
-  // past_due means Stripe is still retrying; the customer should not lose access until
-  // Stripe gives up and emits customer.subscription.deleted (which sets status to 'cancelled').
-  const now = new Date();
+  // -------------------------------------------------------------------------
+  // 2. Subscriptions (direct + org-managed seats)
+  // -------------------------------------------------------------------------
   const subRows = await db
-    .select({ tier: subscriptions.tier, province: subscriptions.province, status: subscriptions.status })
+    .select({
+      tier: subscriptions.tier,
+      province: subscriptions.province,
+      status: subscriptions.status,
+      currentPeriodEnd: subscriptions.currentPeriodEnd,
+      orgId: subscriptions.orgId,
+    })
     .from(subscriptions)
     .where(
       and(
@@ -87,16 +160,95 @@ export async function resolveAccessByEmail(
         gt(subscriptions.currentPeriodEnd, now),
       ),
     );
-  // Filter to active or past_due (grace period) — exclude cancelled/refunded
-  const eligibleRows = subRows.filter((r) => r.status === "active" || r.status === "past_due");
-  if (eligibleRows.length === 0) return { hasAccess: false };
-  const unlocked = getAllSubscriptionExamTypes(
-    eligibleRows.map((r) => ({
-      tier: r.tier as SubscriptionTier,
-      province: r.province as SubscriptionProvince,
-    })),
+
+  const eligibleSubRows = subRows.filter((r) =>
+    SUBSCRIPTION_ACCESS_STATUSES.has(r.status ?? ""),
   );
-  return { hasAccess: unlocked.includes(examType) };
+
+  let subscriptionExamTypes: string[] = [];
+  const activeSubscriptionRows: ResolvedEntitlements["activeSubscriptionRows"] = [];
+
+  for (const row of eligibleSubRows) {
+    try {
+      const examTypes = getAllSubscriptionExamTypes([
+        {
+          tier: row.tier as SubscriptionTier,
+          province: row.province as SubscriptionProvince,
+        },
+      ]);
+      if (examTypes.length > 0) {
+        subscriptionExamTypes = subscriptionExamTypes.concat(examTypes);
+        activeSubscriptionRows.push({
+          tier: row.tier,
+          province: row.province,
+          status: row.status ?? "active",
+          currentPeriodEnd: row.currentPeriodEnd,
+          orgId: row.orgId ?? null,
+        });
+      }
+    } catch (err) {
+      console.warn("[resolveEntitlements] Subscription mapping error for row:", row, err);
+      // fail closed — skip this row
+    }
+  }
+
+  if (subscriptionExamTypes.length > 0) sources.push("subscription");
+
+  // -------------------------------------------------------------------------
+  // 3. Manager check — does NOT grant course access by itself
+  // -------------------------------------------------------------------------
+  let isManager = false;
+  try {
+    const [orgRow] = await db
+      .select({ id: organizations.id, status: organizations.status })
+      .from(organizations)
+      .where(eq(organizations.managerEmail, normalised))
+      .limit(1);
+
+    if (orgRow && ORG_ACCESS_STATUSES.has(orgRow.status ?? "active")) {
+      isManager = true;
+      sources.push("org_manager");
+    }
+  } catch (err) {
+    console.warn("[resolveEntitlements] Manager check error:", err);
+    // fail closed
+  }
+
+  // -------------------------------------------------------------------------
+  // 4. Combine and deduplicate
+  // -------------------------------------------------------------------------
+  const allExamTypes = Array.from(
+    new Set([...purchaseExamTypes, ...subscriptionExamTypes]),
+  );
+
+  return {
+    email: normalised,
+    hasAnyAccess: allExamTypes.length > 0 || isManager,
+    unlockedExamTypes: allExamTypes,
+    purchasedProductKeys: activePurchaseKeys,
+    activeSubscriptionRows,
+    isManager,
+    sources,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Existing per-exam checks — now delegate to the shared resolver
+// ---------------------------------------------------------------------------
+
+/**
+ * Lightweight email-only entitlement check for unauthenticated subscription customers.
+ * Delegates to resolveEntitlementsByEmail for consistent logic.
+ */
+export async function resolveAccessByEmail(
+  email: string | null | undefined,
+  examType: string,
+): Promise<{ hasAccess: boolean }> {
+  // Free exam types are always accessible — no purchase required
+  if (FREE_EXAM_TYPES.has(examType)) return { hasAccess: true };
+
+  const entitlements = await resolveEntitlementsByEmail(email);
+  return { hasAccess: entitlements.unlockedExamTypes.includes(examType) };
 }
 
 export async function resolveAccess(
@@ -114,49 +266,6 @@ export async function resolveAccess(
   // Admin role has full access
   if (user.role === "admin") return { hasAccess: true, isOwner: false };
 
-  const email = normalizeEmail(user.email);
-  if (!email) return { hasAccess: false, isOwner: false };
-
-  const db = await getDb();
-  if (!db) return { hasAccess: false, isOwner: false };
-
-  // One-time purchases (exclude refunded/disputed)
-  const purchaseRows = await db
-    .select({ productKey: purchases.productKey, status: purchases.status })
-    .from(purchases)
-    .where(eq(purchases.email, email));
-
-  const activeKeys = purchaseRows
-    .filter((r) => !r.status || r.status === "active")
-    .map((r) => r.productKey);
-
-  if (getAllUnlockedExamTypes(activeKeys).includes(examType)) {
-    return { hasAccess: true, isOwner: false };
-  }
-
-  // Active subscriptions (and past_due within the current period — grace window)
-  // past_due means Stripe is still retrying; the customer should not lose access until
-  // Stripe gives up and emits customer.subscription.deleted (which sets status to 'cancelled').
-  const now = new Date();
-  const subRows = await db
-    .select({ tier: subscriptions.tier, province: subscriptions.province, status: subscriptions.status })
-    .from(subscriptions)
-    .where(
-      and(
-        eq(subscriptions.email, email),
-        gt(subscriptions.currentPeriodEnd, now),
-      ),
-    );
-
-  // Grant access for active or past_due (Stripe retry window) — deny cancelled/refunded
-  const eligibleRows = subRows.filter((r) => r.status === "active" || r.status === "past_due");
-
-  const unlocked = getAllSubscriptionExamTypes(
-    eligibleRows.map((r) => ({
-      tier: r.tier as SubscriptionTier,
-      province: r.province as SubscriptionProvince,
-    })),
-  );
-
-  return { hasAccess: unlocked.includes(examType), isOwner: false };
+  const entitlements = await resolveEntitlementsByEmail(user.email);
+  return { hasAccess: entitlements.unlockedExamTypes.includes(examType), isOwner: false };
 }

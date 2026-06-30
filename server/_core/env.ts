@@ -12,4 +12,14 @@ export const ENV = {
   smtpPort: process.env.SMTP_PORT ?? "587",
   smtpUser: process.env.SMTP_USER ?? "",
   smtpPass: process.env.SMTP_PASS ?? "",
+  /**
+   * Server-approved base URL for generating sensitive links (magic links, etc.).
+   * Do NOT use client-provided origin for these — use this value instead.
+   * Set APP_BASE_URL in production env; defaults to localhost in development.
+   */
+  appBaseUrl:
+    process.env.APP_BASE_URL ??
+    (process.env.NODE_ENV === "production"
+      ? "https://echeloninstitute.ca"
+      : "http://localhost:3000"),
 };

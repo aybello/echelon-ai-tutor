@@ -948,3 +948,14 @@
 - [x] Added defensive rendering to ModuleOverviewPanel — handles both keyTopics and keyPoints without crashing (immediate fix)
 - [x] Re-seeded all 8 banks in DB with rich keyPoints + examTips content via fix-module-notes-schema.mjs (Updated: 8, Failed: 0)
 - [x] 383/383 tests passing after fix
+
+## Entitlement Hardening Sprint — Jun 30, 2026
+
+- [x] Task 1: Add APP_BASE_URL to env.ts for server-approved link generation
+- [x] Task 2: Create resolveEntitlementsByEmail in server/_core/access.ts — single source of truth for all entitlement checks
+- [x] Task 3: Update resolveAccess and resolveAccessByEmail to delegate to the new resolver
+- [x] Task 4: Update dashboardAuthRouter.ts sendOtp and verifyOtp to use resolveEntitlementsByEmail
+- [x] Task 5: Update magicLinkRouter.ts to use live entitlements and ENV.appBaseUrl (no client-supplied origin)
+- [x] Task 6: Audit products.ts and subscriptionProducts.ts — both already fail-closed (unknown keys/tiers return [])
+- [x] Task 7: Write 30 regression tests in server/_core/access.test.ts covering all edge cases
+- [x] 413/413 tests passing, TypeScript clean, checkpoint saved
