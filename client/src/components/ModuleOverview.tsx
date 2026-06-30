@@ -9,6 +9,18 @@
 import { useState } from "react";
 import type { ModuleOverview } from "@/lib/questionTypes";
 
+// Normalise legacy `keyTopics: string[]` shape into `keyPoints` so the component
+// never crashes on distribution/collection banks that were seeded with the old schema.
+function normaliseOverview(overview: ModuleOverview & { keyTopics?: string[] }): ModuleOverview {
+  if (overview.keyPoints) return overview as ModuleOverview;
+  const topics: string[] = (overview as any).keyTopics ?? [];
+  return {
+    ...overview,
+    keyPoints: topics.map(t => ({ heading: t, body: "" })),
+    examTips: (overview as any).examTips ?? [],
+  };
+}
+
 interface ModuleOverviewProps {
   overview: ModuleOverview;
   moduleName: string;
@@ -27,6 +39,8 @@ export default function ModuleOverviewPanel({
   defaultExpanded = true,
 }: ModuleOverviewProps) {
   const [expanded, setExpanded] = useState(defaultExpanded);
+  // Normalise legacy keyTopics shape so we never crash on old-schema banks
+  overview = normaliseOverview(overview as any);
 
   return (
     <div style={{

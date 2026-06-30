@@ -941,3 +941,10 @@
 - [x] Fix P2: Drop client-email fallback in logAttempt and saveProgress — require verified session for attribution; client email only accepted with guestToken
 - [x] Fix P3: OTP replay — add isNull(usedAt) filter to verifyOtp query so used codes cannot be replayed within the 10-min window
 - [x] Run tests (383/383 passing), TypeScript clean, save checkpoint, update Notion AI Context Hub
+
+## Module Notes Schema Fix — Jun 30, 2026
+
+- [x] Identified 8 banks with wrong schema (keyTopics string[] instead of keyPoints {heading,body}[]): all 4 Ontario water-dist and all 4 Ontario wastewater-coll banks
+- [x] Added defensive rendering to ModuleOverviewPanel — handles both keyTopics and keyPoints without crashing (immediate fix)
+- [x] Re-seeded all 8 banks in DB with rich keyPoints + examTips content via fix-module-notes-schema.mjs (Updated: 8, Failed: 0)
+- [x] 383/383 tests passing after fix
