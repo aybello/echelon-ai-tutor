@@ -21,16 +21,13 @@ import crypto from "crypto";
 import { eq, and, gt, isNull } from "drizzle-orm";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { magicLinks, organizations } from "../../drizzle/schema";
+import { magicLinks } from "../../drizzle/schema";
 import { sendMagicLinkEmail } from "../email";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { resolveEntitlementsByEmail, normalizeEmail } from "../_core/access";
-import { SignJWT } from "jose";
 import { ENV } from "../_core/env";
 import { trackEvent } from "../analytics";
-
-const DASHBOARD_COOKIE = "echelon_dashboard_session";
-const DASHBOARD_JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret);
+import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 
 const MAGIC_LINK_EXPIRY_MINUTES = 15;
 
@@ -70,14 +67,15 @@ export const magicLinkRouter = router({
       const db = await getDb();
       if (!db) return { sent: true };
 
-      // Generate a secure token
+      // Generate a secure token — store only the SHA-256 hash, never the raw token
       const token = crypto.randomBytes(48).toString("base64url");
+      const tokenHash = crypto.createHash("sha256").update(token).digest("hex");
       const expiresAt = new Date(Date.now() + MAGIC_LINK_EXPIRY_MINUTES * 60 * 1000);
 
-      // Store the magic link with the live exam types at time of request
+      // Store the hash — the raw token is only ever in the email link
       await db.insert(magicLinks).values({
         email,
-        token,
+        tokenHash,
         examTypes: JSON.stringify(entitlements.unlockedExamTypes),
         expiresAt,
       });
@@ -121,13 +119,16 @@ export const magicLinkRouter = router({
 
       const now = new Date();
 
-      // Find the token
+      // Hash the incoming token and look up by hash — the raw token is never stored
+      const incomingHash = crypto.createHash("sha256").update(input.token).digest("hex");
+
+      // Find the token by hash
       const [link] = await db
         .select()
         .from(magicLinks)
         .where(
           and(
-            eq(magicLinks.token, input.token),
+            eq(magicLinks.tokenHash, incomingHash),
             gt(magicLinks.expiresAt, now),
             isNull(magicLinks.usedAt),
           )
@@ -156,21 +157,10 @@ export const magicLinkRouter = router({
       // Check if this email is a manager of any org — redirect to /team if so
       const isManager = entitlements.isManager;
 
-      // If manager, also set the dashboard session cookie so /team works immediately
-      if (isManager) {
-        const dashboardToken = await new SignJWT({ email: link.email, type: "dashboard" })
-          .setProtectedHeader({ alg: "HS256" })
-          .setIssuedAt()
-          .setExpirationTime("24h")
-          .sign(DASHBOARD_JWT_SECRET);
-        ctx.res.cookie(DASHBOARD_COOKIE, dashboardToken, {
-          httpOnly: true,
-          secure: ENV.isProduction,
-          sameSite: "lax",
-          maxAge: 24 * 60 * 60 * 1000,
-          path: "/",
-        });
-      }
+      // Issue the shared verified Echelon email session cookie for ALL valid magic link consumes.
+      // This is the unified session model: students, managers, and team operators all get the same
+      // cookie after a valid magic link — no separate dashboard login required.
+      await issueVerifiedEmailSessionCookie(ctx.res, link.email);
 
       trackEvent("restore_access_completed", { email: link.email });
       return {

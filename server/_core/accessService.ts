@@ -162,12 +162,13 @@ export async function assertAccess(
     if (ok) return;
   }
 
-  // 2. Verify signed subscription token (no DB lookup — fast path)
+  // 2. Verify signed subscription token WITH live DB re-check.
+  // We intentionally do not trust the token alone — a refunded or cancelled user
+  // could still have a valid signed token in localStorage. The DB re-check ensures
+  // that revoked entitlements are enforced on the next access attempt.
   if (opts?.accessToken) {
-    const tokenPayload = await verifySubscriptionToken(opts.accessToken);
-    if (tokenPayload && tokenPayload.examTypes.includes(examType)) {
-      return; // token is valid and covers this exam type
-    }
+    const recheckResult = await verifyAccessTokenAndRecheckDb(opts.accessToken, examType);
+    if (recheckResult.hasAccess) return;
   }
 
   // 3. Legacy client-email fallback (only when no session exists)

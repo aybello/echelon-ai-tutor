@@ -158,6 +158,7 @@ export default function StudentDashboard() {
   const aiSessions = trpc.dashboard.aiSessionHistory.useQuery(undefined, { enabled: hasAccess, retry: false });
   const recommendedResources = trpc.dashboard.recommendedResources.useQuery(undefined, { enabled: hasAccess, retry: false });
   const readinessScore = trpc.dashboard.readinessScore.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const studyFocus = trpc.dashboard.studyFocus.useQuery(undefined, { enabled: hasAccess, retry: false });
   const studyPlan = trpc.dashboard.studyPlan.useQuery(undefined, { enabled: hasAccess, retry: false });
 
   /* ── Activity chart data (last 30 days) ── */
@@ -314,6 +315,50 @@ export default function StudentDashboard() {
             </button>
           </div>
         </div>
+
+        {/* Primary Study Focus banner */}
+        {studyFocus.data?.courseKey && (
+          <div style={{
+            background: "linear-gradient(135deg, #EFF6FF, #DBEAFE)",
+            border: "1px solid #BFDBFE",
+            borderRadius: 12,
+            padding: "12px 18px",
+            marginBottom: 16,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: 10,
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <span style={{ fontSize: 20 }}>🎯</span>
+              <div>
+                <div style={{ color: "#1E40AF", fontSize: 13, fontWeight: 800, lineHeight: 1.2 }}>
+                  Studying: {studyFocus.data.label ?? studyFocus.data.courseKey}
+                </div>
+                <div style={{ color: "#3B82F6", fontSize: 11, marginTop: 2 }}>
+                  {studyFocus.data.source === "exam_date" ? "Prioritized by upcoming exam date" :
+                   studyFocus.data.source === "recent_activity" ? "Based on recent activity" :
+                   "Your enrolled course"}
+                </div>
+              </div>
+            </div>
+            <div style={{ display: "flex", gap: 8 }}>
+              <a
+                href={studyFocus.data.quizPath}
+                style={{ padding: "6px 14px", borderRadius: 8, background: "#3B82F6", color: "#fff", fontSize: 12, fontWeight: 700, textDecoration: "none" }}
+              >
+                Practice
+              </a>
+              <a
+                href={studyFocus.data.mockExamPath}
+                style={{ padding: "6px 14px", borderRadius: 8, background: "#fff", border: "1px solid #BFDBFE", color: "#1E40AF", fontSize: 12, fontWeight: 700, textDecoration: "none" }}
+              >
+                Mock Exam
+              </a>
+            </div>
+          </div>
+        )}
 
         {/* Top row: Readiness ring + Countdown + Key stats */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 14, marginBottom: 20 }}>
@@ -503,7 +548,7 @@ export default function StudentDashboard() {
           )}
 
           {/* Take Mock Exam */}
-          <a href="/mock-exam" style={{ textDecoration: "none" }}>
+          <a href={studyFocus.data?.mockExamPath ?? "/mock-exam"} style={{ textDecoration: "none" }}>
             <div style={{ background: "linear-gradient(135deg, #14B8A6, #0D9488)", borderRadius: 16, padding: "20px 18px", cursor: "pointer", height: "100%", boxSizing: "border-box" }}>
               <div style={{ fontSize: 28, marginBottom: 10 }}>📋</div>
               <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, marginBottom: 4 }}>Take Mock Exam</div>

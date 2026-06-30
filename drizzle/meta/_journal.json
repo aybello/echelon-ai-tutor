@@ -309,6 +309,13 @@
       "when": 1782837538526,
       "tag": "0043_huge_fantastic_four",
       "breakpoints": true
+    },
+    {
+      "idx": 44,
+      "version": "5",
+      "when": 1782900000000,
+      "tag": "0044_magic_link_token_hash",
+      "breakpoints": true
     }
   ]
 }

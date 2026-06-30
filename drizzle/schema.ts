@@ -363,7 +363,8 @@ export type InsertTriggerLog = typeof triggerLogs.$inferInsert;
 export const magicLinks = mysqlTable("magic_links", {
   id: int("id").autoincrement().primaryKey(),
   email: varchar("email", { length: 320 }).notNull(),
-  token: varchar("token", { length: 128 }).notNull().unique(),
+  /** SHA-256 hex hash of the raw token. The raw token is only ever in the email link — never stored. */
+  tokenHash: varchar("tokenHash", { length: 64 }).notNull().unique(),
   examTypes: text("examTypes").notNull(), // JSON array of exam types the user has access to
   expiresAt: timestamp("expiresAt").notNull(),
   usedAt: timestamp("usedAt"),

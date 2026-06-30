@@ -13,6 +13,9 @@ import { and, eq, sql, desc, gte, or } from "drizzle-orm";
 import { getResourcesForProfile } from "../resourceIndex";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
+import { resolveEntitlementsByEmail } from "../_core/access";
+import { resolvePrimaryStudyFocus } from "../_core/studyFocus";
+import { getCourseByKey } from "../../shared/courseRegistry";
 
 /**
  * Resolves the dashboard identity from the tRPC context.
@@ -719,11 +722,22 @@ export const dashboardRouter = router({
 
   /**
    * Study Plan — personalized recommendation engine.
+   * Defaults to the student's Primary Study Focus exam type when no examType is provided.
    */
-  studyPlan: publicProcedure.query(async ({ ctx }) => {
+  studyPlan: publicProcedure
+    .input(z.object({ examType: z.string().optional() }).optional())
+    .query(async ({ ctx, input }) => {
     const { userId, email } = resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return null;
+
+    // Resolve primary focus if no explicit examType is provided
+    let examTypeFilter: string | null = input?.examType ?? null;
+    if (!examTypeFilter && email) {
+      const entitlements = await resolveEntitlementsByEmail(email);
+      const focus = await resolvePrimaryStudyFocus({ email, unlockedExamTypes: entitlements.unlockedExamTypes });
+      examTypeFilter = focus.examType;
+    }
 
     let topicAccuracyMap: Record<string, { correct: number; total: number }> = {};
     let weakTopics: string[] = [];
@@ -742,7 +756,10 @@ export const dashboardRouter = router({
           correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
         })
         .from(questionAttempts)
-        .where(eq(questionAttempts.studentEmail, email!))
+        .where(and(
+          eq(questionAttempts.studentEmail, email!),
+          examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined,
+        ))
         .groupBy(questionAttempts.topic);
       for (const r of rows) {
         topicAccuracyMap[r.topic] = { correct: Number(r.correct), total: Number(r.total) };
@@ -754,35 +771,48 @@ export const dashboardRouter = router({
       ? eq(questionAttempts.userId, userId)
       : eq(questionAttempts.studentEmail, email!);
 
+    const examTypeWhere = examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined;
+
     const [missedRow] = await db
       .select({ count: sql<number>`COUNT(*)` })
       .from(questionAttempts)
-      .where(and(identityWhere, eq(questionAttempts.correct, "no")));
+      .where(and(identityWhere, examTypeWhere, eq(questionAttempts.correct, "no")));
     const totalMissed = Number(missedRow?.count ?? 0);
 
     const [lowConfRow] = await db
       .select({ count: sql<number>`COUNT(*)` })
       .from(questionAttempts)
-      .where(and(identityWhere, eq(questionAttempts.confidence, "low")));
+      .where(and(identityWhere, examTypeWhere, eq(questionAttempts.confidence, "low")));
     const totalLowConf = Number(lowConfRow?.count ?? 0);
 
-    // FIX 5: Count from the new bookmarks table (per-user+question)
+    // Count bookmarks scoped to the current focus exam type (via bankKey prefix)
     const bmIdentityWhere = userId
       ? eq(bookmarks.userId, userId)
       : eq(bookmarks.studentEmail, email!);
+    const bmWhere = examTypeFilter
+      ? and(bmIdentityWhere, eq(bookmarks.bankKey, examTypeFilter))
+      : bmIdentityWhere;
     const [bookmarkRow] = await db
       .select({ count: sql<number>`COUNT(*)` })
       .from(bookmarks)
-      .where(bmIdentityWhere);
+      .where(bmWhere);
     const totalBookmarked = Number(bookmarkRow?.count ?? 0);
 
     const totalAttempts = Object.values(topicAccuracyMap).reduce((s, t) => s + t.total, 0);
+
+    // Use course-specific paths from the primary focus
+    const quizBase = examTypeFilter
+      ? (getCourseByKey(examTypeFilter)?.quizPath ?? "/quiz")
+      : "/quiz";
+    const mockBase = examTypeFilter
+      ? (getCourseByKey(examTypeFilter)?.mockExamPath ?? "/quiz?mode=mock")
+      : "/quiz?mode=mock";
 
     type RecType = "weak_topic" | "missed_review" | "low_confidence" | "bookmarked" | "mock_exam" | "start_practicing";
     const recommendations: Array<{ type: RecType; title: string; description: string; action: string; actionHref: string; priority: number }> = [];
 
     if (totalAttempts === 0) {
-      recommendations.push({ type: "start_practicing", title: "Start Practicing", description: "Answer your first questions to get a personalized study plan.", action: "Start Quiz", actionHref: "/quiz", priority: 1 });
+      recommendations.push({ type: "start_practicing", title: "Start Practicing", description: "Answer your first questions to get a personalized study plan.", action: "Start Quiz", actionHref: quizBase, priority: 1 });
     } else {
       const weakWithData = weakTopics
         .map((t) => ({ topic: t, ...(topicAccuracyMap[t] ?? { correct: 0, total: 0 }) }))
@@ -792,18 +822,17 @@ export const dashboardRouter = router({
 
       for (const weak of weakWithData) {
         const acc = Math.round((weak.correct / weak.total) * 100);
-        // Encode the topic as a URL param so the quiz page can pre-filter
         const topicParam = encodeURIComponent(weak.topic);
-        recommendations.push({ type: "weak_topic", title: `Practice: ${weak.topic}`, description: `Your accuracy on ${weak.topic} is ${acc}%. Focus here to improve your score.`, action: "Practice this topic", actionHref: `/quiz?topic=${topicParam}`, priority: 2 });
+        recommendations.push({ type: "weak_topic", title: `Practice: ${weak.topic}`, description: `Your accuracy on ${weak.topic} is ${acc}%. Focus here to improve your score.`, action: "Practice this topic", actionHref: `${quizBase}?topic=${topicParam}`, priority: 2 });
       }
-      if (totalMissed > 0) recommendations.push({ type: "missed_review", title: "Review Missed Questions", description: `You have ${totalMissed} missed question${totalMissed === 1 ? "" : "s"} to review.`, action: "Review missed", actionHref: "/quiz?mode=missed", priority: 3 });
-      if (totalLowConf > 0) recommendations.push({ type: "low_confidence", title: "Review Low-Confidence Questions", description: `You marked ${totalLowConf} question${totalLowConf === 1 ? "" : "s"} as low-confidence.`, action: "Review low-confidence", actionHref: "/quiz?mode=low-confidence", priority: 4 });
-      if (totalBookmarked > 0) recommendations.push({ type: "bookmarked", title: "Review Bookmarked Questions", description: `You have ${totalBookmarked} bookmarked question${totalBookmarked === 1 ? "" : "s"}.`, action: "Review bookmarks", actionHref: "/quiz?mode=bookmarked", priority: 5 });
-      if (totalAttempts >= 50 && weakWithData.length === 0) recommendations.push({ type: "mock_exam", title: "Take a Mock Exam", description: "You've built a solid foundation. Test yourself with a full mock exam.", action: "Start mock exam", actionHref: "/quiz?mode=mock", priority: 6 });
+      if (totalMissed > 0) recommendations.push({ type: "missed_review", title: "Review Missed Questions", description: `You have ${totalMissed} missed question${totalMissed === 1 ? "" : "s"} to review.`, action: "Review missed", actionHref: `${quizBase}?mode=missed`, priority: 3 });
+      if (totalLowConf > 0) recommendations.push({ type: "low_confidence", title: "Review Low-Confidence Questions", description: `You marked ${totalLowConf} question${totalLowConf === 1 ? "" : "s"} as low-confidence.`, action: "Review low-confidence", actionHref: `${quizBase}?mode=low-confidence`, priority: 4 });
+      if (totalBookmarked > 0) recommendations.push({ type: "bookmarked", title: "Review Bookmarked Questions", description: `You have ${totalBookmarked} bookmarked question${totalBookmarked === 1 ? "" : "s"}.`, action: "Review bookmarks", actionHref: `${quizBase}?mode=bookmarked`, priority: 5 });
+      if (totalAttempts >= 50 && weakWithData.length === 0) recommendations.push({ type: "mock_exam", title: "Take a Mock Exam", description: "You've built a solid foundation. Test yourself with a full mock exam.", action: "Start mock exam", actionHref: mockBase, priority: 6 });
     }
 
     recommendations.sort((a, b) => a.priority - b.priority);
-    return { recommendations: recommendations.slice(0, 4), totalMissed, totalLowConf, totalBookmarked, hasData: totalAttempts > 0 };
+    return { recommendations: recommendations.slice(0, 4), totalMissed, totalLowConf, totalBookmarked, hasData: totalAttempts > 0, examType: examTypeFilter };
   }),
 
   /**
@@ -941,4 +970,43 @@ export const dashboardRouter = router({
 
       return { ok: true, bookmarked: shouldBookmark };
     }),
+
+  /**
+   * Primary Study Focus
+   *
+   * Determines the single most relevant course for this student's current session.
+   * Priority: upcoming exam date > recent activity > first unlocked course.
+   * Returns course metadata (quizPath, mockExamPath, etc.) so the dashboard
+   * can build course-specific links without hardcoding routes.
+   */
+  studyFocus: publicProcedure.query(async ({ ctx }) => {
+    // Use a soft identity resolution — return null focus for anonymous users
+    // rather than throwing, so the dashboard can show a generic state.
+    let email: string | null = null;
+    if (ctx.user) {
+      email = ctx.user.email ?? null;
+    } else if (ctx.studentEmail) {
+      email = ctx.studentEmail;
+    }
+
+    // Resolve live entitlements to get the list of unlocked exam types
+    const entitlements = email ? await resolveEntitlementsByEmail(email) : null;
+    const unlockedExamTypes = entitlements?.unlockedExamTypes ?? [];
+
+    const focus = await resolvePrimaryStudyFocus({ email, unlockedExamTypes });
+
+    const course = focus.courseKey ? getCourseByKey(focus.courseKey) : null;
+
+    return {
+      courseKey: focus.courseKey,
+      examType: focus.examType,
+      source: focus.source,
+      label: course?.displayName ?? focus.courseKey ?? null,
+      shortName: course?.shortName ?? focus.courseKey ?? null,
+      quizPath: course?.quizPath ?? "/quiz",
+      mockExamPath: course?.mockExamPath ?? "/quiz?mode=mock",
+      flashcardPath: course?.flashcardPath ?? null,
+      formulaPath: course?.formulaPath ?? null,
+    };
+  }),
 });

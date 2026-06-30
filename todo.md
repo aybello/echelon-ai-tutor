@@ -1030,3 +1030,13 @@
 - [x] PATCH 2: Move updateSeatCourse validation before any writes and wrap entire mutation in a DB transaction
 - [x] PATCH 3: Add ctx.studentEmail support to getWrongCountForQuestion and getAttemptStats
 - [x] PATCH 4: Align team summary at-risk count with exam-date risk (use examRisk from getOperatorReadiness, not just readiness score)
+
+## Primary Study Focus + Restore Polish — Jun 30 2026
+
+- [ ] FIX 1: magicLinkRouter.consumeMagicLink — issue verified session cookie for ALL valid consumes, not just managers
+- [ ] FIX 5: assertAccess() — replace token-only fast path with verifyAccessTokenAndRecheckDb
+- [ ] FIX 2: Create server/_core/studyFocus.ts (resolvePrimaryStudyFocus); add dashboard.studyFocus procedure; wire into studyPlan + readinessScore
+- [ ] Dashboard UI: Primary Study Focus banner + course-specific mock exam link using studyFocus.data.mockExamPath
+- [ ] FIX 3: Account.tsx — detect verified email session via trpc.dashboardAuth.me; show active passes for email-session users
+- [ ] FIX 4: Account.tsx — use entitlements.data.accessibleCourses as primary data source; EXAM_META as fallback only
+- [ ] FIX 6: Hash magic link tokens — store SHA-256 hash on request, compare hash on consume

@@ -171,6 +171,18 @@ export default function Account() {
 
   const { isAuthenticated, logout } = useAuth();
 
+  // FIX 3: Detect verified email session (OTP/magic-link users who are not OAuth-authenticated)
+  const emailSessionQuery = trpc.dashboardAuth.me.useQuery(undefined, { retry: false });
+  const emailSession: string | null = emailSessionQuery.data?.email ?? null;
+  // Combined auth: either OAuth or email session
+  const isAnyAuthenticated = isAuthenticated || !!emailSession;
+
+  // FIX 4: Use live entitlements as primary data source for course display
+  const entitlementsQuery = trpc.access.auditMyEntitlements.useQuery(
+    undefined,
+    { enabled: isAnyAuthenticated, retry: false, staleTime: 60_000 }
+  );
+
   const handleClearDeviceState = () => {
     try {
       localStorage.removeItem("echelon_trial_email");
@@ -188,12 +200,12 @@ export default function Account() {
 
   const getPurchases = trpc.stripe.getMyPurchases.useQuery(
     undefined,
-    { enabled: !!isAuthenticated, retry: false }
+    { enabled: !!isAuthenticated, retry: false } // OAuth only — entitlementsQuery covers email sessions
   );
 
   const getSubscriptions = trpc.stripe.getMySubscriptions.useQuery(
     undefined,
-    { enabled: !!isAuthenticated, retry: false }
+    { enabled: !!isAuthenticated, retry: false } // OAuth only — entitlementsQuery covers email sessions
   );
 
   const createBillingPortal = trpc.stripe.createBillingPortalSession.useMutation({
@@ -239,7 +251,7 @@ export default function Account() {
 
   const getFlashcardProgress = trpc.flashcard.getAllProgress.useQuery(
     { email: submittedEmail ?? "" },
-    { enabled: !!submittedEmail && !!isAuthenticated, retry: false, staleTime: 30_000 }
+    { enabled: !!submittedEmail && isAnyAuthenticated, retry: false, staleTime: 30_000 }
   );
   const flashcardMastery = getFlashcardProgress.data?.progress ?? {};
 
@@ -269,16 +281,20 @@ export default function Account() {
     requestMagicLinkMutation.mutate({ email: trimmed, origin: window.location.origin, next: nextParam || undefined });
   };
 
-  const unlockedExamTypes = [
-    ...(getPurchases.data?.unlockedExamTypes ?? []),
-    ...(getSubscriptions.data?.unlockedExamTypes ?? []),
-  ].filter((v, i, a) => a.indexOf(v) === i);
+  // FIX 4: Prefer live entitlements as primary source; fall back to legacy purchase queries for OAuth users
+  const entitlementCourses = entitlementsQuery.data?.accessibleCourses ?? [];
+  const unlockedExamTypes = entitlementCourses.length > 0
+    ? entitlementCourses.map((c: { courseKey: string }) => c.courseKey)
+    : [
+        ...(getPurchases.data?.unlockedExamTypes ?? []),
+        ...(getSubscriptions.data?.unlockedExamTypes ?? []),
+      ].filter((v, i, a) => a.indexOf(v) === i);
   const purchases = getPurchases.data?.purchases ?? [];
   const hasPurchases = unlockedExamTypes.length > 0;
 
-  const ontarioPasses = unlockedExamTypes.filter(t => EXAM_META[t]?.track === "Ontario");
-  const wpiPasses = unlockedExamTypes.filter(t => EXAM_META[t]?.track === "WPI");
-  const otherPasses = unlockedExamTypes.filter(t => !EXAM_META[t]);
+  const ontarioPasses = unlockedExamTypes.filter((t: string) => EXAM_META[t]?.track === "Ontario");
+  const wpiPasses = unlockedExamTypes.filter((t: string) => EXAM_META[t]?.track === "WPI");
+  const otherPasses = unlockedExamTypes.filter((t: string) => !EXAM_META[t]);
 
   return (
     <div style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
@@ -312,11 +328,13 @@ export default function Account() {
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 52, width: "auto", marginBottom: 20 }} />
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
-            {isAuthenticated ? "My Account" : "Restore Access"}
+            {isAnyAuthenticated ? "My Account" : "Restore Access"}
           </h1>
           <p style={{ fontSize: 15, color: "#64748B", maxWidth: 440, margin: "0 auto", lineHeight: 1.6 }}>
             {isAuthenticated
               ? "View your active passes, subscriptions, and team seats. Manage your account below."
+              : emailSession
+              ? `Signed in as ${emailSession}. Your active passes are shown below.`
               : "Enter the email you used at checkout to unlock your passes on this device. Works on any browser or phone."}
           </p>
         </div>
@@ -402,7 +420,7 @@ export default function Account() {
         </div>
 
         {/* Magic-link sent confirmation (unauthenticated restore flow) */}
-        {submittedEmail && !isAuthenticated && magicLinkSent && (
+        {submittedEmail && !isAnyAuthenticated && magicLinkSent && (
           <div className="account-card" style={{ padding: 28, textAlign: "center" }}>
             <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#EFF6FF", border: "2px solid #BFDBFE", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, margin: "0 auto 20px" }}>📧</div>
             <h2 style={{ color: "#1D4ED8", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>Check your inbox</h2>
@@ -434,7 +452,7 @@ export default function Account() {
         )}
 
         {/* Results — only shown for authenticated users (who have proven inbox ownership) */}
-        {isAuthenticated && submittedEmail && !getPurchases.isFetching && (
+        {isAnyAuthenticated && submittedEmail && !(getPurchases.isFetching || entitlementsQuery.isFetching) && (
           <>
             {hasPurchases ? (
               <>
@@ -536,7 +554,7 @@ export default function Account() {
                       🍁 Ontario Certification Passes
                     </div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
-                      {ontarioPasses.map(examType => {
+                      {ontarioPasses.map((examType: string) => {
                         const meta = EXAM_META[examType];
                         if (!meta) return null;
                         return (
@@ -599,7 +617,7 @@ export default function Account() {
                       🌊 WPI Certification Passes
                     </div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
-                      {wpiPasses.map(examType => {
+                      {wpiPasses.map((examType: string) => {
                         const meta = EXAM_META[examType];
                         if (!meta) return null;
                         return (
@@ -660,7 +678,7 @@ export default function Account() {
                   <div style={{ marginBottom: 20 }}>
                     <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>Other Passes</div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
-                      {otherPasses.map(examType => (
+                      {otherPasses.map((examType: string) => (
                         <div key={examType} className="pass-row">
                           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                             <div style={{ width: 42, height: 42, borderRadius: 10, background: "#F1F5F9", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>📋</div>
@@ -791,7 +809,7 @@ export default function Account() {
             >
               🗑️ Clear Device State
             </button>
-            {isAuthenticated && (
+            {isAnyAuthenticated && (
               <button
                 onClick={() => logout()}
                 style={{
