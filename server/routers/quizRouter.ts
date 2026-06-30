@@ -399,10 +399,13 @@ export const quizRouter = router({
         const db = await getDb();
         if (!db) return { count: 0 };
         const userId = ctx.user?.id ?? null;
-        if (!userId && !input.guestToken) return { count: 0 };
+        const studentEmail = ctx.studentEmail ?? null; // PATCH 3: OTP/email session support
+        if (!userId && !studentEmail && !input.guestToken) return { count: 0 };
 
         const condition = userId
           ? and(eq(questionAttempts.userId, userId), eq(questionAttempts.examType, input.examType), eq(questionAttempts.questionId, input.questionId), eq(questionAttempts.correct, "no"))
+          : studentEmail
+          ? and(eq(questionAttempts.studentEmail, studentEmail), eq(questionAttempts.examType, input.examType), eq(questionAttempts.questionId, input.questionId), eq(questionAttempts.correct, "no"))
           : and(eq(questionAttempts.guestToken, input.guestToken!), eq(questionAttempts.examType, input.examType), eq(questionAttempts.questionId, input.questionId), eq(questionAttempts.correct, "no"));
 
         const rows = await db
@@ -483,8 +486,9 @@ export const quizRouter = router({
         const db = await getDb();
         if (!db) return { seenIds: [] as number[], missedIds: [] as number[] };
         const userId = ctx.user?.id ?? null;
+        const studentEmail = ctx.studentEmail ?? null; // PATCH 3: OTP/email session support
 
-        if (!userId && !input.guestToken) {
+        if (!userId && !studentEmail && !input.guestToken) {
           return { seenIds: [] as number[], missedIds: [] as number[] };
         }
 
@@ -493,6 +497,12 @@ export const quizRouter = router({
         const condition = userId
           ? and(
               eq(questionAttempts.userId, userId),
+              eq(questionAttempts.examType, input.examType),
+              gte(questionAttempts.createdAt, thirtyDaysAgo)
+            )
+          : studentEmail
+          ? and(
+              eq(questionAttempts.studentEmail, studentEmail),
               eq(questionAttempts.examType, input.examType),
               gte(questionAttempts.createdAt, thirtyDaysAgo)
             )

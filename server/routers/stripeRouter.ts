@@ -20,6 +20,7 @@ import { ENV } from "../_core/env";
 import { sendPurchaseConfirmationEmail } from "../email";
 import { notifyOwner } from "../_core/notification";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
+import { verifyAccessTokenAndRecheckDb } from "../_core/accessService";
 import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 
 export const stripeRouter = router({
@@ -397,11 +398,10 @@ export const stripeRouter = router({
     .input(z.object({ examType: z.string(), email: z.string().email().optional(), accessToken: z.string().optional() }))
     .query(async ({ input, ctx }) => {
       let { hasAccess, isOwner } = await resolveAccess(ctx.user, input.examType);
-      // Fallback 1: verify signed access token (faster — no DB lookup)
+      // Fallback 1: verify signed access token + live DB re-check (PATCH 1: was JWT-only, now also re-checks DB)
       if (!hasAccess && !ctx.user && input.accessToken) {
-        const { verifySubscriptionToken } = await import('../_core/subscriptionToken');
-        const tokenResult = await verifySubscriptionToken(input.accessToken);
-        if (tokenResult && tokenResult.examTypes.includes(input.examType)) {
+        const recheckResult = await verifyAccessTokenAndRecheckDb(input.accessToken, input.examType);
+        if (recheckResult.hasAccess) {
           hasAccess = true;
         }
       }

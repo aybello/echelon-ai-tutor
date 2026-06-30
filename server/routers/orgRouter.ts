@@ -774,71 +774,78 @@ export const orgRouter = router({
       const primaryCourseKey = resolvedKeys[0] ?? null;
       const courseKeysJson = resolvedKeys.length > 0 ? JSON.stringify(resolvedKeys) : null;
 
-      // Update member row
-      await db
-        .update(organizationMembers)
-        .set({
-          courseKey: primaryCourseKey,
-          courseKeys: courseKeysJson,
-        })
-        .where(eq(organizationMembers.id, member.id));
-
-      // Expire all existing org-managed subscriptions for this operator
-      await db
-        .update(subscriptions)
-        .set({ status: "expired" })
-        .where(
-          and(
-            eq(subscriptions.email, email),
-            eq(subscriptions.orgId, orgId),
-          ),
-        );
-
-      // Upsert one active subscription per new course key
+      // PATCH 2: Validate ALL course keys BEFORE any writes (fail fast, no partial state)
       const coursesToUpsert = resolvedKeys.length > 0 ? resolvedKeys : [null];
+      const resolvedTiers = new Map<string | null, string>();
       for (const ck of coursesToUpsert) {
-        // FIX 10: Fail closed — reject unknown course keys instead of silently granting all-access
-        let tier: string;
         if (!ck) {
-          tier = "all-access";
+          resolvedTiers.set(null, "all-access");
         } else {
           const resolvedTier = courseKeyToTierStrict(ck, org.province);
           if (!resolvedTier) {
             throw new TRPCError({ code: "BAD_REQUEST", message: `Unknown course key: ${ck}. Please use a valid course key for province ${org.province ?? "unknown"}.` });
           }
-          tier = resolvedTier;
+          resolvedTiers.set(ck, resolvedTier);
         }
-        const orgSubId = `org-${org.id}-${email}-${ck ?? "all"}`;
-        const existingSub = await db
-          .select({ id: subscriptions.id })
-          .from(subscriptions)
+      }
+
+      // PATCH 2: Wrap all writes in a transaction — member update + subscription expire + upserts are atomic
+      await db.transaction(async (tx) => {
+        // Update member row
+        await tx
+          .update(organizationMembers)
+          .set({
+            courseKey: primaryCourseKey,
+            courseKeys: courseKeysJson,
+          })
+          .where(eq(organizationMembers.id, member.id));
+
+        // Expire all existing org-managed subscriptions for this operator
+        await tx
+          .update(subscriptions)
+          .set({ status: "expired" })
           .where(
             and(
               eq(subscriptions.email, email),
               eq(subscriptions.orgId, orgId),
-              eq(subscriptions.stripeSubscriptionId, orgSubId),
             ),
-          )
-          .limit(1);
-        if (existingSub.length > 0) {
-          await db
-            .update(subscriptions)
-            .set({ status: "active", tier: tier as any, currentPeriodEnd: org.termEnd })
-            .where(eq(subscriptions.id, existingSub[0].id));
-        } else {
-          await db.insert(subscriptions).values({
-            email,
-            tier: tier as any,
-            province: org.province,
-            stripeSubscriptionId: orgSubId,
-            stripeCustomerId: "",
-            status: "active",
-            currentPeriodStart: new Date(),
-            currentPeriodEnd: org.termEnd,
-            orgId: org.id,
-          });
+          );
+
+        // Upsert one active subscription per new course key
+        for (const ck of coursesToUpsert) {
+          const tier = resolvedTiers.get(ck)!;
+          const orgSubId = `org-${org.id}-${email}-${ck ?? "all"}`;
+          const existingSub = await tx
+            .select({ id: subscriptions.id })
+            .from(subscriptions)
+            .where(
+              and(
+                eq(subscriptions.email, email),
+                eq(subscriptions.orgId, orgId),
+                eq(subscriptions.stripeSubscriptionId, orgSubId),
+              ),
+            )
+            .limit(1);
+          if (existingSub.length > 0) {
+            await tx
+              .update(subscriptions)
+              .set({ status: "active", tier: tier as any, currentPeriodEnd: org.termEnd })
+              .where(eq(subscriptions.id, existingSub[0].id));
+          } else {
+            await tx.insert(subscriptions).values({
+              email,
+              tier: tier as any,
+              province: org.province,
+              stripeSubscriptionId: orgSubId,
+              stripeCustomerId: "",
+              status: "active",
+              currentPeriodStart: new Date(),
+              currentPeriodEnd: org.termEnd,
+              orgId: org.id,
+            });
+          }
         }
-      }
+      });
 
       return { success: true };
     }),
@@ -977,9 +984,24 @@ export const orgIntelRouter = router({
       }).from(questionAttempts).where(inArray(questionAttempts.studentEmail, memberEmails))
         .groupBy(questionAttempts.topic).having(sql`COUNT(*) >= 5`),
     ]);
+    // PATCH 4: Also fetch exam dates to align at-risk count with exam-date risk
+    const examDateRows = memberEmails.length > 0
+      ? await db
+          .select({ email: examDates.email, examDate: examDates.examDate })
+          .from(examDates)
+          .where(inArray(examDates.email, memberEmails))
+      : [];
+    // Keep the nearest upcoming exam date per email
+    const examDateByEmail = new Map<string, Date>();
+    for (const row of examDateRows) {
+      if (!row.examDate || row.examDate <= new Date()) continue;
+      const existing = examDateByEmail.get(row.email);
+      if (!existing || row.examDate < existing) examDateByEmail.set(row.email, row.examDate);
+    }
     const accuracyByEmail = new Map(accuracyRows.map(r => [r.email, { total: Number(r.total), correct: Number(r.correct), lastActive: r.lastActive }]));
     const activeEmails = new Set(activeRows.map(r => r.email));
     let totalReadiness = 0, examReadyCount = 0, atRiskCount = 0, inactiveCount = 0;
+    const now = new Date();
     for (const m of activeMembers) {
       const stats = accuracyByEmail.get(m.email);
       const total = stats?.total ?? 0;
@@ -988,7 +1010,12 @@ export const orgIntelRouter = router({
       const lastActive = stats?.lastActive ?? null;
       totalReadiness += accuracy;
       if (accuracy >= 80) examReadyCount++;
-      if (accuracy < 50 && total > 10) atRiskCount++;
+      // PATCH 4: at-risk = score-based risk OR exam-date risk (exam within 21 days and accuracy < 70%)
+      const examDate = examDateByEmail.get(m.email);
+      const daysUntilExam = examDate ? Math.ceil((examDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24)) : null;
+      const examDateRisk = daysUntilExam !== null && daysUntilExam <= 21 && accuracy < 70;
+      const scoreRisk = accuracy < 50 && total > 10;
+      if (scoreRisk || examDateRisk) atRiskCount++;
       if (!lastActive || lastActive <= twoWeeksAgo) inactiveCount++;
     }
     const avgReadiness = totalAssigned > 0 ? Math.round(totalReadiness / totalAssigned) : 0;

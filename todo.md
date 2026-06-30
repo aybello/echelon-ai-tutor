@@ -1023,3 +1023,10 @@
 - [ ] FIX 12: Fix missed-question quiz for OTP/email users (ctx.studentEmail priority in getMissedQuestions, getWrongCountForQuestion, getAttemptStats)
 - [ ] FIX 13: Add dedicated sendOperatorStudyReminderEmail function; update sendOperatorReminder + sendBulkReminders to use it
 - [ ] FIX 14: Consolidate course registry — orgRouter.ts imports all course helpers from shared/courseRegistry.ts
+
+## Final Stabilization Patch — Jun 30 2026
+
+- [x] PATCH 1: Fix stripeRouter.checkAccess token path to re-check DB (call verifyAccessTokenAndRecheckDb)
+- [x] PATCH 2: Move updateSeatCourse validation before any writes and wrap entire mutation in a DB transaction
+- [x] PATCH 3: Add ctx.studentEmail support to getWrongCountForQuestion and getAttemptStats
+- [x] PATCH 4: Align team summary at-risk count with exam-date risk (use examRisk from getOperatorReadiness, not just readiness score)
