@@ -564,13 +564,20 @@ export const dashboardRouter = router({
    *          15% study frequency | 10% recency bonus
    */
   readinessScore: publicProcedure
-    .input(z.object({ examType: z.string() }).optional())
+    .input(z.object({ examType: z.string().optional() }).optional())
     .query(async ({ ctx, input }) => {
       const { userId, email } = resolveDashboardIdentity(ctx);
       const db = await getDb();
       if (!db) return null;
 
-      const examTypeFilter = input?.examType;
+      // Default to Primary Study Focus when no explicit examType is provided.
+      // This keeps readinessScore and studyPlan scoped to the same course.
+      let examTypeFilter = input?.examType ?? null;
+      if (!examTypeFilter && email) {
+        const entitlements = await resolveEntitlementsByEmail(email);
+        const focus = await resolvePrimaryStudyFocus({ email, unlockedExamTypes: entitlements.unlockedExamTypes });
+        examTypeFilter = focus.examType;
+      }
       const thirtyDaysAgo = new Date();
       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
       const sevenDaysAgo = new Date();
@@ -849,6 +856,25 @@ export const dashboardRouter = router({
         .select({ id: questionAttempts.id, questionId: questionAttempts.questionId, examType: questionAttempts.examType, topic: questionAttempts.topic, difficulty: questionAttempts.difficulty, confidence: questionAttempts.confidence, createdAt: questionAttempts.createdAt })
         .from(questionAttempts)
         .where(and(identityWhere, eq(questionAttempts.correct, "no"), input.examType ? eq(questionAttempts.examType, input.examType) : undefined))
+        .orderBy(desc(questionAttempts.createdAt))
+        .limit(input.limit);
+    }),
+
+  /**
+   * Low-confidence questions — questions the student has marked with confidence = "low".
+   * Distinct from missed questions (incorrect answers).
+   */
+  lowConfidenceQuestions: publicProcedure
+    .input(z.object({ examType: z.string().optional(), limit: z.number().min(1).max(100).default(20) }))
+    .query(async ({ ctx, input }) => {
+      const { userId, email } = resolveDashboardIdentity(ctx);
+      const db = await getDb();
+      if (!db) return [];
+      const identityWhere = userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
+      return db
+        .select({ id: questionAttempts.id, questionId: questionAttempts.questionId, examType: questionAttempts.examType, topic: questionAttempts.topic, difficulty: questionAttempts.difficulty, confidence: questionAttempts.confidence, createdAt: questionAttempts.createdAt })
+        .from(questionAttempts)
+        .where(and(identityWhere, eq(questionAttempts.confidence, "low"), input.examType ? eq(questionAttempts.examType, input.examType) : undefined))
         .orderBy(desc(questionAttempts.createdAt))
         .limit(input.limit);
     }),

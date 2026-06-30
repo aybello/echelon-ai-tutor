@@ -246,7 +246,9 @@ export function useQuizSession({
   const bookmarkedIds = useMemo(() => new Set((bookmarkedData ?? []).map(r => r.questionId).filter((id): id is number => id != null)), [bookmarkedData]);
 
   // ── Low-confidence questions data ─────────────────────────────────────────
-  const { data: lowConfidenceData } = trpc.dashboard.missedQuestions.useQuery(
+  // Uses the dedicated lowConfidenceQuestions endpoint (confidence = "low"),
+  // not missedQuestions (incorrect answers) — these are distinct concepts.
+  const { data: lowConfidenceData } = trpc.dashboard.lowConfidenceQuestions.useQuery(
     { examType, limit: 100 },
     { enabled: quizMode === "low-confidence", refetchOnWindowFocus: false },
   );

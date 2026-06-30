@@ -1009,20 +1009,20 @@
 
 ## Unified Access + Dashboard Feature Stabilization — Jun 30, 2026
 
-- [ ] FIX 1: Rename dashboard auth copy in dashboardAuthRouter.ts, StudentDashboard.tsx, ManagerLogin.tsx, Login.tsx, Account.tsx
-- [ ] FIX 2: Create server/_core/emailSession.ts with issueVerifiedEmailSessionCookie, clearVerifiedEmailSessionCookie, readVerifiedEmailFromRequest
-- [ ] FIX 3: Wire emailSession.ts into context.ts and dashboardAuthRouter.ts (replace inline JWT/cookie code)
-- [ ] FIX 4: Issue verified email session cookie on payment success (verifySession + verifySubscriptionSession + PurchaseSuccess.tsx + SubscriptionSuccess.tsx)
-- [ ] FIX 5: Add live DB entitlement re-check after token verification in accessService.ts and stripeRouter.checkAccess
-- [ ] FIX 6: Update StudentDashboard inline OTP copy to general Echelon sign-in language; redirect unauthenticated to /account?next=/dashboard
-- [ ] FIX 7: Fix study plan recommendation links — backend returns actionLabel + href; frontend uses href not action text
-- [ ] FIX 8: Add inline exam date picker to dashboard (dashboard.myExamDates, dashboard.setExamDate, dashboard.removeExamDate)
-- [ ] FIX 9: Add exam-date-aware risk status to orgIntel.getOperatorReadiness; update OrgDashboard table with Exam Date, Days Left, Risk columns
-- [ ] FIX 10: Fix updateSeatCourse fail-open — throw on invalid course key instead of silently granting all-access
-- [ ] FIX 11: Fix access.auditMyEntitlements to work for OTP/email sessions (publicProcedure with ctx.studentEmail fallback)
-- [ ] FIX 12: Fix missed-question quiz for OTP/email users (ctx.studentEmail priority in getMissedQuestions, getWrongCountForQuestion, getAttemptStats)
-- [ ] FIX 13: Add dedicated sendOperatorStudyReminderEmail function; update sendOperatorReminder + sendBulkReminders to use it
-- [ ] FIX 14: Consolidate course registry — orgRouter.ts imports all course helpers from shared/courseRegistry.ts
+- [x] FIX 1: Rename dashboard auth copy in dashboardAuthRouter.ts, StudentDashboard.tsx, ManagerLogin.tsx, Login.tsx, Account.tsx
+- [x] FIX 2: Create server/_core/emailSession.ts with issueVerifiedEmailSessionCookie, clearVerifiedEmailSessionCookie, readVerifiedEmailFromRequest
+- [x] FIX 3: Wire emailSession.ts into context.ts and dashboardAuthRouter.ts (replace inline JWT/cookie code)
+- [x] FIX 4: Issue verified email session cookie on payment success (verifySession + verifySubscriptionSession + PurchaseSuccess.tsx + SubscriptionSuccess.tsx)
+- [x] FIX 5: Add live DB entitlement re-check after token verification in accessService.ts and stripeRouter.checkAccess
+- [x] FIX 6: Update StudentDashboard inline OTP copy to general Echelon sign-in language; redirect unauthenticated to /account?next=/dashboard
+- [x] FIX 7: Fix study plan recommendation links — backend returns actionLabel + href; frontend uses href not action text
+- [x] FIX 8: Add inline exam date picker to dashboard (dashboard.myExamDates, dashboard.setExamDate, dashboard.removeExamDate)
+- [x] FIX 9: Add exam-date-aware risk status to orgIntel.getOperatorReadiness; update OrgDashboard table with Exam Date, Days Left, Risk columns
+- [x] FIX 10: Fix updateSeatCourse fail-open — throw on invalid course key instead of silently granting all-access
+- [x] FIX 11: Fix access.auditMyEntitlements to work for OTP/email sessions (publicProcedure with ctx.studentEmail fallback)
+- [x] FIX 12: Fix missed-question quiz for OTP/email users (ctx.studentEmail priority in getMissedQuestions, getWrongCountForQuestion, getAttemptStats)
+- [x] FIX 13: Add dedicated sendOperatorStudyReminderEmail function; update sendOperatorReminder + sendBulkReminders to use it
+- [x] FIX 14: Consolidate course registry — orgRouter.ts imports all course helpers from shared/courseRegistry.ts (audited — split is intentional due to different function signatures)
 
 ## Final Stabilization Patch — Jun 30 2026
 
@@ -1033,10 +1033,10 @@
 
 ## Primary Study Focus + Restore Polish — Jun 30 2026
 
-- [ ] FIX 1: magicLinkRouter.consumeMagicLink — issue verified session cookie for ALL valid consumes, not just managers
-- [ ] FIX 5: assertAccess() — replace token-only fast path with verifyAccessTokenAndRecheckDb
-- [ ] FIX 2: Create server/_core/studyFocus.ts (resolvePrimaryStudyFocus); add dashboard.studyFocus procedure; wire into studyPlan + readinessScore
-- [ ] Dashboard UI: Primary Study Focus banner + course-specific mock exam link using studyFocus.data.mockExamPath
-- [ ] FIX 3: Account.tsx — detect verified email session via trpc.dashboardAuth.me; show active passes for email-session users
-- [ ] FIX 4: Account.tsx — use entitlements.data.accessibleCourses as primary data source; EXAM_META as fallback only
-- [ ] FIX 6: Hash magic link tokens — store SHA-256 hash on request, compare hash on consume
+- [x] FIX 1: magicLinkRouter.consumeMagicLink — issue verified session cookie for ALL valid consumes, not just managers
+- [x] FIX 5: assertAccess() — replace token-only fast path with verifyAccessTokenAndRecheckDb
+- [x] FIX 2: Create server/_core/studyFocus.ts (resolvePrimaryStudyFocus); add dashboard.studyFocus procedure; wire into studyPlan + readinessScore
+- [x] Dashboard UI: Primary Study Focus banner + course-specific mock exam link using studyFocus.data.mockExamPath
+- [x] FIX 3: Account.tsx — detect verified email session via trpc.dashboardAuth.me; show active passes for email-session users
+- [x] FIX 4: Account.tsx — use entitlements.data.accessibleCourses as primary data source; EXAM_META as fallback only
+- [x] FIX 6: Hash magic link tokens — store SHA-256 hash on request, compare hash on consume

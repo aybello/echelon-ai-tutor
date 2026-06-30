@@ -5,7 +5,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Question, HistoryEntry } from "@/lib/questionTypes";
 import { trpc } from "@/lib/trpc";
-import { useAuth } from "@/_core/hooks/useAuth";
 
 interface Props {
   question: Question | null;
@@ -39,9 +38,11 @@ export default function AITutor({
   onClose,
   examType,
 }: Props) {
-  const { isAuthenticated } = useAuth();
   const [sessionStartMs] = useState(() => Date.now());
   const saveSessionMutation = trpc.tutor.saveSession.useMutation();
+  // Support both OAuth and verified email session users for session saving
+  const emailSessionQuery = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
+  const hasSession = !!emailSessionQuery.data?.email;
   // Normalise field names — Ontario uses `correct`, WPI uses `correctAnswer`
   const correctIdx: number | undefined =
     (question as any)?.correctAnswer ?? (question as any)?.correct ?? undefined;
@@ -274,8 +275,8 @@ Your approach:
           <button
             aria-label="Close AI Tutor"
             onClick={() => {
-              // Save session on close if authenticated and there were user messages
-              if (isAuthenticated && examType && messages.filter(m => m.role === "user").length > 0) {
+              // Save session on close for any verified user (OAuth or email session)
+              if (hasSession && examType && messages.filter(m => m.role === "user").length > 0) {
                 saveSessionMutation.mutate({
                   examType,
                   messages: messages.filter(m => m.role === "user" || m.role === "assistant"),

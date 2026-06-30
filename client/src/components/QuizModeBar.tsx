@@ -5,7 +5,6 @@
  */
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
-import { useAuth } from "@/_core/hooks/useAuth";
 
 export type QuizMode = "standard" | "quick10" | "missed" | "bookmarked" | "low-confidence";
 
@@ -35,8 +34,6 @@ export default function QuizModeBar({
   missedCount,
   onSettingsOpen,
 }: QuizModeBarProps) {
-  const { isAuthenticated } = useAuth();
-
   const cards: ModeCard[] = [
     {
       id: "standard",
@@ -53,17 +50,15 @@ export default function QuizModeBar({
       badge: "10 Qs",
       color: "#0F766E",
     },
-    ...(isAuthenticated
-      ? [{
-          id: "missed" as QuizMode,
-          icon: "🔁",
-          label: "Retry Mistakes",
-          description: missedCount ? `${missedCount} question${missedCount !== 1 ? "s" : ""} to retry` : "No mistakes yet",
-          badge: missedCount ? `${missedCount}` : undefined,
-          color: "#DC2626",
-          disabled: !missedCount,
-        }]
-      : []),
+    {
+      id: "missed" as QuizMode,
+      icon: "🔁",
+      label: "Retry Mistakes",
+      description: missedCount && missedCount > 0 ? `${missedCount} question${missedCount !== 1 ? "s" : ""} to retry` : "No mistakes yet",
+      badge: missedCount && missedCount > 0 ? `${missedCount}` : undefined,
+      color: "#DC2626",
+      disabled: !missedCount || missedCount === 0,
+    },
   ];
 
   return (
