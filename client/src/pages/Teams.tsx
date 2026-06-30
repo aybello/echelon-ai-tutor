@@ -172,7 +172,7 @@ export default function Teams() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="ontario">Ontario (EOCP)</SelectItem>
+                <SelectItem value="ontario">Ontario (MOECP / OWWCO)</SelectItem>
                 <SelectItem value="western">Western Canada (WPI)</SelectItem>
               </SelectContent>
             </Select>
@@ -288,7 +288,7 @@ export default function Teams() {
           {isLarge ? (
             <div className="space-y-3">
               <a
-                href={`mailto:hello@echeloninstitute.ca?subject=Team Plan Quote - ${seats} seats&body=Hi,%0A%0AWe are interested in a ${seats}-seat All-Access team plan for ${province === "ontario" ? "Ontario (EOCP)" : "Western Canada (WPI)"}. Our organization is ${orgName || "[org name]"}.%0A%0APlease send us a quote.%0A%0AThanks`}
+                href={`mailto:hello@echeloninstitute.ca?subject=Team Plan Quote - ${seats} seats&body=Hi,%0A%0AWe are interested in a ${seats}-seat All-Access team plan for ${province === "ontario" ? "Ontario (MOECP / OWWCO)" : "Western Canada (WPI)"}. Our organization is ${orgName || "[org name]"}.%0A%0APlease send us a quote.%0A%0AThanks`}
                 className="block"
               >
                 <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 text-base font-semibold">

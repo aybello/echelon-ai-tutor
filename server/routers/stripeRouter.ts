@@ -310,6 +310,34 @@ export const stripeRouter = router({
     .query(async ({ ctx }) => {
       const email = ctx.user.email;
       if (!email) return { subscriptions: [], unlockedExamTypes: [] };
+      const db = await getDb();
+      if (!db) return { subscriptions: [], unlockedExamTypes: [] };
+      const now = new Date();
+      const rows = await db
+        .select()
+        .from(subscriptions)
+        .where(
+          and(
+            eq(subscriptions.email, email),
+            eq(subscriptions.status, "active"),
+            gt(subscriptions.currentPeriodEnd, now),
+          )
+        );
+      const unlockedExamTypes = getAllSubscriptionExamTypes(
+        rows.map(r => ({ tier: r.tier as SubscriptionTier, province: r.province as SubscriptionProvince }))
+      );
+      return { subscriptions: rows, unlockedExamTypes };
+    }),
+
+  /**
+   * Same as getMySubscriptions but works for verified email-session users (OTP login)
+   * who do not have an OAuth user record. Uses ctx.studentEmail from the Echelon
+   * session cookie — fails closed if cookie is missing or invalid.
+   */
+  getMySubscriptionsForEmailSession: publicProcedure
+    .query(async ({ ctx }) => {
+      const email = ctx.studentEmail ?? ctx.user?.email ?? null;
+      if (!email) return { subscriptions: [], unlockedExamTypes: [] };
 
       const db = await getDb();
       if (!db) return { subscriptions: [], unlockedExamTypes: [] };

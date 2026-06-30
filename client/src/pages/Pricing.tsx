@@ -779,7 +779,7 @@ function SubscriptionCheckoutButton({
   const createSubscription = trpc.stripe.createSubscriptionCheckout.useMutation({
     onSuccess: (data) => {
       if (data.url) {
-        window.open(data.url, "_blank");
+        window.location.href = data.url;
       }
     },
     onError: (err) => {
@@ -1112,14 +1112,20 @@ export default function Pricing() {
   const [showIndividual, setShowIndividual] = useState(false);
 
   // Active subscriptions — used to show "Your Current Plan" badge
+  // Works for both OAuth users (isAuthenticated) and verified email-session users (OTP login)
   const { user, isAuthenticated } = useAuth();
   const { data: mySubsData } = trpc.stripe.getMySubscriptions.useQuery(
     undefined,
     { enabled: !!isAuthenticated }
   );
+  const { data: emailSubsData } = trpc.stripe.getMySubscriptionsForEmailSession.useQuery(
+    undefined,
+    { enabled: !isAuthenticated } // only call when OAuth user is not present
+  );
+  const activeSubs = mySubsData?.subscriptions ?? emailSubsData?.subscriptions ?? [];
   // Build a Set of "tier:province" keys for O(1) lookup
   const activePlanKeys = new Set(
-    (mySubsData?.subscriptions ?? []).map(s => `${s.tier}:${s.province}`)
+    activeSubs.map(s => `${s.tier}:${s.province}`)
   );
 
   return (
@@ -1190,7 +1196,7 @@ export default function Pricing() {
             <span className="section-badge" style={{ background: "#F5F3FF", color: "#7C3AED", borderColor: "#C4B5FD" }}>New</span>
           </div>
           <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
-            Subscribe annually and unlock every exam type for your class level. Ontario subscriptions include all four EOCP tracks: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Western Canada subscriptions cover all four WPI tracks.
+            Subscribe annually and unlock every exam type for your class level. Ontario subscriptions include all four MOECP / OWWCO tracks: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Western Canada subscriptions cover all four WPI tracks.
           </p>
 
           {/* Province toggle for subscriptions */}
@@ -1204,7 +1210,7 @@ export default function Pricing() {
                 border: subProvince === "ontario" ? "1.5px solid #C4B5FD" : "1.5px solid #E2E8F0",
               }}
             >
-              🍁 Ontario (EOCP)
+              🍁 Ontario (MOECP / OWWCO)
             </button>
             <button
               onClick={() => handleSubProvinceSelect("western")}
@@ -1594,7 +1600,7 @@ export default function Pricing() {
             },
             {
               q: "What courses are included in each subscription tier?",
-              a: "Ontario subscriptions cover the EOCP tracks: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection — all levels included in your tier. WPI subscriptions cover the Western Canada Water & Wastewater Operators program tracks. The exact exam types are shown on each plan card above."
+              a: "Ontario subscriptions cover all four MOECP / OWWCO tracks: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection — all levels included in your tier. WPI subscriptions cover the Western Canada Water & Wastewater Operators program tracks. The exact exam types are shown on each plan card above."
             },
             {
               q: "How do I access my passes after purchase?",
@@ -1613,7 +1619,7 @@ export default function Pricing() {
               a: "A manager purchases a seat plan and assigns individual operators to seats. Each operator gets their own access to the included courses, plus the manager gets a team dashboard showing readiness scores, weak topics, and activity. Volume discounts apply automatically at checkout."
             },
             {
-              q: "Is Echelon affiliated with EOCP or WPI?",
+              q: "Is Echelon affiliated with MOECP, OWWCO, EOCP, or WPI?",
               a: "No. Echelon Institute is an independent exam prep platform. We are not affiliated with, endorsed by, or the official certifying body for any provincial or national certification program. We help operators prepare — the official exams are administered by your provincial authority."
             },
             {

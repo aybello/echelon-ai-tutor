@@ -492,7 +492,7 @@ export default function OrgDashboard() {
               <div className="flex items-center gap-2 text-xs text-slate-400">
                 <span>Manager Dashboard</span>
                 <span>·</span>
-                <span className="capitalize">{overview.province === "ontario" ? "Ontario (EOCP)" : "Western Canada (WPI)"}</span>
+                <span className="capitalize">{overview.province === "ontario" ? "Ontario (MOECP / OWWCO)" : "Western Canada (WPI)"}</span>
                 {termDays !== null && (
                   <>
                     <span>·</span>

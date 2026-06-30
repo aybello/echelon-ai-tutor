@@ -29,28 +29,28 @@ const ONTARIO_SUBSCRIPTION_PRODUCTS: SubscriptionProduct[] = [
     tier: "class1",
     province: "ontario",
     name: "Class 1 All-Access — Ontario",
-    description: "OIT + Class 1 Water Treatment + Class 1 Wastewater Treatment (EOCP). Annual.",
+    description: "OIT + Class 1 Water Treatment + Class 1 Wastewater Treatment (MOECP / OWWCO). Annual.",
     priceCAD: 9900,
   },
   {
     tier: "class2",
     province: "ontario",
     name: "Class 2 All-Access — Ontario",
-    description: "Class 2 Water Treatment + Class 2 Wastewater Treatment (EOCP). Annual.",
+    description: "Class 2 Water Treatment + Class 2 Wastewater Treatment (MOECP / OWWCO). Annual.",
     priceCAD: 14900,
   },
   {
     tier: "class3",
     province: "ontario",
     name: "Class 3 All-Access — Ontario",
-    description: "Class 3 Water Treatment + Class 3 Wastewater Treatment (EOCP). Annual.",
+    description: "Class 3 Water Treatment + Class 3 Wastewater Treatment (MOECP / OWWCO). Annual.",
     priceCAD: 19900,
   },
   {
     tier: "class4",
     province: "ontario",
     name: "Class 4 All-Access — Ontario",
-    description: "Class 4 Water Treatment + Class 4 Wastewater Treatment + WQA (EOCP). Annual.",
+    description: "Class 4 Water Treatment + Class 4 Wastewater Treatment + WQA (MOECP / OWWCO). Annual.",
     priceCAD: 24900,
   },
   {
@@ -167,7 +167,7 @@ export const TIER_LABELS: Record<SubscriptionTier, string> = {
 };
 
 export const PROVINCE_LABELS: Record<SubscriptionProvince, string> = {
-  "ontario": "Ontario (EOCP)",
+  "ontario": "Ontario (MOECP / OWWCO)",
   "western": "Western Canada (WPI — BC, AB, SK, MB)",
 };
 

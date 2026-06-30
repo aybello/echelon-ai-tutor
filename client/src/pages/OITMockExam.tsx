@@ -51,7 +51,7 @@ export default function OITMockExam() {
       title="OIT Mock Exam"
       badge="OPERATOR-IN-TRAINING · WATER & WASTEWATER"
       metaDescription="100-question timed mock exam for the Operator-in-Training (OIT) certification. 2-hour timer, 70% pass threshold, and full module breakdown on results. For Ontario, BC, Alberta, and all Canadian provinces."
-      metaKeywords="OIT mock exam, Canadian operator in training exam, water operator practice test, OWWCO OIT, EOCP OIT, timed exam prep"
+      metaKeywords="OIT mock exam, Canadian operator in training exam, water operator practice test, OWWCO OIT, MOECP OIT, timed exam prep"
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}

@@ -1283,7 +1283,7 @@ export default function Landing() {
   usePageMeta({
     title: "Water & Wastewater Operator Exam Prep",
     description: "Canada's exam prep for water & wastewater operators. 18,000+ practice questions, AI tutor, mock exams, and process guides. Free OIT access.",
-    keywords: "water operator exam prep, OIT exam, wastewater certification Canada, operator practice questions, EOCP exam, WPI exam prep, water quality analyst",
+    keywords: "water operator exam prep, OIT exam, wastewater certification Canada, operator practice questions, MOECP exam, OWWCO exam, WPI exam prep, water quality analyst",
     path: "/",
   });
   useStructuredData(landingPageSchemas);
@@ -2520,7 +2520,7 @@ export default function Landing() {
               {
                 flag: "🏔️",
                 province: "British Columbia",
-                certBody: "EOCP",
+                certBody: "MOECP / OWWCO",
                 operators: "~4,200 operators",
                 color: "#0891B2",
                 colorBg: "rgba(8,145,178,0.1)",
@@ -2716,7 +2716,7 @@ export default function Landing() {
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
                 <div>
                   <div style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF" }}>Utilities Kingston</div>
-                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>Manager Dashboard · Ontario (EOCP)</div>
+                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>Manager Dashboard · Ontario (MOECP / OWWCO)</div>
                 </div>
                 <div style={{
                   background: "rgba(16,185,129,0.15)",
@@ -2904,7 +2904,7 @@ export default function Landing() {
               },
               {
                 q: "Do the practice questions match the real exam?",
-                a: "Yes. All questions are written by certified water and wastewater operators and aligned with OWWCO, EOCP, and provincial exam syllabi. Every calculation question includes a full step-by-step AI-explained solution.",
+                a: "Yes. All questions are written by certified water and wastewater operators and aligned with OWWCO, MOECP, and provincial exam syllabi. Every calculation question includes a full step-by-step AI-explained solution.",
               },
               {
                 q: "Which provinces are supported?",
@@ -3098,7 +3098,7 @@ export default function Landing() {
           {/* Bottom bar */}
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
             <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", margin: 0 }}>
-              © {new Date().getFullYear()} Echelon Institute. All rights reserved. · Not affiliated with EOCP or WPI.
+              © {new Date().getFullYear()} Echelon Institute. All rights reserved. · Not affiliated with MOECP, OWWCO, EOCP, or WPI.
             </p>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
               <Link href="/privacy"><span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", cursor: "pointer" }}>Privacy</span></Link>
