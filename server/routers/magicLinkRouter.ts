@@ -27,6 +27,7 @@ import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { resolveEntitlementsByEmail, normalizeEmail } from "../_core/access";
 import { SignJWT } from "jose";
 import { ENV } from "../_core/env";
+import { trackEvent } from "../analytics";
 
 const DASHBOARD_COOKIE = "echelon_dashboard_session";
 const DASHBOARD_JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret);
@@ -94,6 +95,7 @@ export const magicLinkRouter = router({
       });
 
       console.log(`[MagicLink] Sent to ${email} with ${entitlements.unlockedExamTypes.length} exam types`);
+      trackEvent("restore_access_requested", { email });
       return { sent: true };
     }),
 
@@ -165,6 +167,7 @@ export const magicLinkRouter = router({
         });
       }
 
+      trackEvent("restore_access_completed", { email: link.email });
       return {
         valid: true,
         email: link.email,

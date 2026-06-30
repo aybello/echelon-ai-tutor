@@ -3024,8 +3024,18 @@ export default function Landing() {
               { label: "Company", links: [
                 { label: "About", href: "/about" },
                 { label: "Pricing", href: "/pricing" },
+                { label: "Teams", href: "/teams" },
                 { label: "FAQ", href: "/#faq" },
                 { label: "Contact", href: "/#contact" },
+              ]},
+              { label: "Legal", links: [
+                { label: "Privacy & Security", href: "/privacy" },
+                { label: "Terms of Use", href: "/terms" },
+                { label: "Refund Policy", href: "/refund" },
+              ]},
+              { label: "Support", links: [
+                { label: "Restore Access", href: "/account" },
+                { label: "Email Support", href: "mailto:support@echeloninstitute.ca" },
               ]},
             ].map(col => (
               <div key={col.label}>
@@ -3088,11 +3098,14 @@ export default function Landing() {
           {/* Bottom bar */}
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
             <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", margin: 0 }}>
-              © {new Date().getFullYear()} Echelon Institute. All rights reserved.
+              © {new Date().getFullYear()} Echelon Institute. All rights reserved. · Not affiliated with EOCP or WPI.
             </p>
-            <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", margin: 0 }}>
-              📍 1291 Gordon St, Guelph, ON N1L 0M5 &nbsp;·&nbsp; 📞 (289) 788-1885
-            </p>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <Link href="/privacy"><span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", cursor: "pointer" }}>Privacy</span></Link>
+              <Link href="/terms"><span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", cursor: "pointer" }}>Terms</span></Link>
+              <Link href="/refund"><span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", cursor: "pointer" }}>Refunds</span></Link>
+              <a href="mailto:support@echeloninstitute.ca" style={{ fontSize: 11, color: "rgba(255,255,255,0.3)" }}>Support</a>
+            </div>
           </div>
 
         </div>

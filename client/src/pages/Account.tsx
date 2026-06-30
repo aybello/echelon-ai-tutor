@@ -169,7 +169,22 @@ export default function Account() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [portalLoading, setPortalLoading] = useState(false);
 
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
+
+  const handleClearDeviceState = () => {
+    try {
+      localStorage.removeItem("echelon_trial_email");
+      localStorage.removeItem("echelon_purchased_products");
+      localStorage.removeItem("echelon_trial_unlocked");
+      localStorage.removeItem("echelon_subscription_email");
+      localStorage.removeItem("echelon_subscription_exam_types");
+      localStorage.removeItem("echelon_access_token");
+    } catch { /* ignore */ }
+    setSubmittedEmail(null);
+    setEmail("");
+    setRestored(false);
+    toast.success("Device state cleared", { description: "All saved access on this device has been removed." });
+  };
 
   const getPurchases = trpc.stripe.getMyPurchases.useQuery(
     undefined,
@@ -306,10 +321,12 @@ export default function Account() {
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 52, width: "auto", marginBottom: 20 }} />
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
-            Restore Access
+            {isAuthenticated ? "My Account" : "Restore Access"}
           </h1>
           <p style={{ fontSize: 15, color: "#64748B", maxWidth: 440, margin: "0 auto", lineHeight: 1.6 }}>
-            Enter the email you used at checkout to unlock your passes on this device. Works on any browser or phone.
+            {isAuthenticated
+              ? "View your active passes, subscriptions, and team seats. Manage your account below."
+              : "Enter the email you used at checkout to unlock your passes on this device. Works on any browser or phone."}
           </p>
         </div>
 
@@ -750,6 +767,43 @@ export default function Account() {
             </p>
           </div>
         )}
+
+        {/* Clear device state / sign out */}
+        <div style={{ marginTop: 40, borderTop: "1px solid #E2E8F0", paddingTop: 24, display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+          <p style={{ fontSize: 12, color: "#94A3B8", margin: 0, textAlign: "center" }}>
+            Using a shared or public device? Clear all saved access from this browser.
+          </p>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
+            <button
+              onClick={handleClearDeviceState}
+              style={{
+                padding: "9px 18px", borderRadius: 9, border: "1.5px solid #E2E8F0",
+                background: "#fff", color: "#64748B", fontSize: 12, fontWeight: 700,
+                cursor: "pointer", fontFamily: "inherit",
+              }}
+            >
+              🗑️ Clear Device State
+            </button>
+            {isAuthenticated && (
+              <button
+                onClick={() => logout()}
+                style={{
+                  padding: "9px 18px", borderRadius: 9, border: "1.5px solid #E2E8F0",
+                  background: "#fff", color: "#EF4444", fontSize: 12, fontWeight: 700,
+                  cursor: "pointer", fontFamily: "inherit",
+                }}
+              >
+                Sign Out
+              </button>
+            )}
+          </div>
+          <a
+            href="mailto:support@echeloninstitute.ca?subject=Account%20Help"
+            style={{ fontSize: 11, color: "#94A3B8", fontWeight: 500 }}
+          >
+            Need help? Contact support@echeloninstitute.ca
+          </a>
+        </div>
       </div>
 
       <style>{`

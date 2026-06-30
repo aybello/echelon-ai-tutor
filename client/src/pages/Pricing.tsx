@@ -1580,6 +1580,54 @@ export default function Pricing() {
         </a>
       </div>
 
+      {/* FAQ Section */}
+      <div style={{ marginTop: 64, maxWidth: 720, margin: "64px auto 0" }}>
+        <h3 style={{ fontSize: 22, fontWeight: 900, color: "#0F172A", textAlign: "center", marginBottom: 8 }}>Frequently Asked Questions</h3>
+        <p style={{ color: "#64748B", fontSize: 14, textAlign: "center", marginBottom: 32 }}>Everything you need to know before purchasing.</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {[
+            {
+              q: "What's the difference between a subscription and a one-time pass?",
+              a: "A subscription gives you access to all exam types included in your tier for one year, with automatic renewal. A one-time pass gives you lifetime access to a single exam type — no renewal required. Both include the same features: practice questions, AI tutor, mock exams, and flashcards."
+            },
+            {
+              q: "What courses are included in each subscription tier?",
+              a: "Ontario subscriptions cover the EOCP tracks: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection — all levels included in your tier. WPI subscriptions cover the Western Canada Water & Wastewater Operators program tracks. The exact exam types are shown on each plan card above."
+            },
+            {
+              q: "How do I access my passes after purchase?",
+              a: "After checkout, you'll receive a Stripe receipt to your email. Visit echeloninstitute.ca/account and enter your purchase email to restore access on any device. You can also request a magic sign-in link from that page."
+            },
+            {
+              q: "Can I use Echelon on my phone or tablet?",
+              a: "Yes. Echelon is fully mobile-friendly and works on any modern browser — iOS Safari, Android Chrome, or desktop. No app download required."
+            },
+            {
+              q: "What is your refund policy?",
+              a: "We offer a 7-day refund for first-time purchases if you haven't completed more than 50 questions. Contact support@echeloninstitute.ca with your purchase email and we'll process the refund promptly."
+            },
+            {
+              q: "How do Teams / utility plans work?",
+              a: "A manager purchases a seat plan and assigns individual operators to seats. Each operator gets their own access to the included courses, plus the manager gets a team dashboard showing readiness scores, weak topics, and activity. Volume discounts apply automatically at checkout."
+            },
+            {
+              q: "Is Echelon affiliated with EOCP or WPI?",
+              a: "No. Echelon Institute is an independent exam prep platform. We are not affiliated with, endorsed by, or the official certifying body for any provincial or national certification program. We help operators prepare — the official exams are administered by your provincial authority."
+            },
+            {
+              q: "Can I cancel my subscription?",
+              a: "Yes. You can cancel anytime from your account page using the Manage Subscription link. Your access continues until the end of your current billing period."
+            },
+          ].map((item, i) => (
+            <FAQItem key={i} q={item.q} a={item.a} />
+          ))}
+        </div>
+        <div style={{ textAlign: "center", marginTop: 32, padding: "20px", background: "#F8FAFC", borderRadius: 12, border: "1px solid #E2E8F0" }}>
+          <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px" }}>Still have questions?</p>
+          <a href="mailto:support@echeloninstitute.ca?subject=Pricing%20Question" style={{ color: "#3B82F6", fontWeight: 700, fontSize: 13 }}>Email support@echeloninstitute.ca →</a>
+        </div>
+      </div>
+
       {/* Footer */}
       <div
         style={{
@@ -1588,9 +1636,10 @@ export default function Pricing() {
           textAlign: "center",
           color: "#64748B",
           fontSize: 12,
+          marginTop: 48,
         }}
       >
-        © 2026 Echelon Institute. All rights reserved. · Payments secured by Stripe.
+        © 2026 Echelon Institute. All rights reserved. · Payments secured by Stripe. · <a href="/account" style={{ color: "#94A3B8" }}>My Account</a> · <a href="mailto:support@echeloninstitute.ca" style={{ color: "#94A3B8" }}>Support</a>
       </div>
     </div>
   );
@@ -1753,6 +1802,46 @@ function ProductCard({
           </Link>
         )}
       </div>
+    </div>
+  );
+}
+
+// ─── FAQ Item ────────────────────────────────────────────────────────────
+function FAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      style={{
+        background: "#fff",
+        border: "1px solid #E2E8F0",
+        borderRadius: 12,
+        overflow: "hidden",
+      }}
+    >
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "16px 20px",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          fontFamily: "inherit",
+          textAlign: "left",
+          gap: 12,
+        }}
+      >
+        <span style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", lineHeight: 1.4 }}>{q}</span>
+        <span style={{ fontSize: 18, color: "#94A3B8", flexShrink: 0, transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
+      </button>
+      {open && (
+        <div style={{ padding: "0 20px 16px", fontSize: 13, color: "#64748B", lineHeight: 1.7, borderTop: "1px solid #F1F5F9" }}>
+          <div style={{ paddingTop: 12 }}>{a}</div>
+        </div>
+      )}
     </div>
   );
 }

@@ -79,14 +79,43 @@ async function startServer() {
   );
 
   // ── Health endpoint ────────────────────────────────────────────────────────
+  // Phase 8: Comprehensive health check covering DB, Stripe, Email, Cron, AI
   app.get("/api/health", async (_req, res) => {
+    const checks: Record<string, boolean | string> = {};
+    let overallOk = true;
+
+    // DB check
     try {
       const db = await getDb();
-      if (!db) return res.status(503).json({ status: "degraded", db: false, ts: new Date().toISOString() });
-      return res.json({ status: "ok", db: true, ts: new Date().toISOString() });
+      checks.db = !!db;
+      if (!db) overallOk = false;
     } catch {
-      return res.status(503).json({ status: "error", db: false, ts: new Date().toISOString() });
+      checks.db = false;
+      overallOk = false;
     }
+
+    // Stripe check
+    const stripeKey = process.env.STRIPE_SECRET_KEY ?? "";
+    checks.stripe = !!(stripeKey && stripeKey.startsWith("sk_"));
+    if (!checks.stripe) overallOk = false;
+
+    // Email provider check
+    checks.email = !!(ENV.smtpHost && ENV.smtpUser);
+    if (!checks.email) overallOk = false;
+
+    // Cron secret check (warn only — not a hard failure)
+    checks.cronSecret = !!ENV.cronSecret;
+
+    // AI provider check
+    checks.ai = !!(ENV.forgeApiKey && ENV.forgeApiUrl);
+    if (!checks.ai) overallOk = false;
+
+    const status = overallOk ? "ok" : "degraded";
+    return res.status(overallOk ? 200 : 503).json({
+      status,
+      checks,
+      ts: new Date().toISOString(),
+    });
   });
 
   // ── CRON_SECRET middleware — protects all /api/scheduled/* endpoints ────────
