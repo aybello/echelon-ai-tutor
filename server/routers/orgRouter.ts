@@ -17,6 +17,7 @@
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { and, count, eq, gte, inArray, lt, sql } from "drizzle-orm";
+import { randomBytes } from "crypto";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
 import {
@@ -1160,10 +1161,35 @@ export const orgIntelRouter = router({
         .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.email, email), eq(organizationMembers.role, "operator"), eq(organizationMembers.status, "assigned")))
         .limit(1).then(r => r[0]);
       if (!member) throw new TRPCError({ code: "NOT_FOUND", message: "Operator not found in your organization" });
+
+      // FIX 4: Cooldown — refuse to send if a reminder was sent in the last 7 days
+      if (member.lastRemindedAt) {
+        const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+        if (member.lastRemindedAt > sevenDaysAgo) {
+          throw new TRPCError({ code: "TOO_MANY_REQUESTS", message: "A reminder was already sent to this operator within the last 7 days." });
+        }
+      }
+
+      // FIX 4: Respect unsubscribe opt-out
+      if (member.reminderOptOut) {
+        throw new TRPCError({ code: "FORBIDDEN", message: "This operator has unsubscribed from reminder emails." });
+      }
+
       const org = await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1).then(r => r[0]);
       if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+
+      // FIX 4: Generate or reuse unsubscribe token
+      const unsubscribeToken = member.unsubscribeToken ?? randomBytes(24).toString("hex");
+      const unsubscribeUrl = `https://echeloninstitute.ca/api/unsubscribe-reminder?token=${unsubscribeToken}`;
+
       const courseLabel = member.courseKey ? courseKeyToLabel(member.courseKey, org.province) : "All Courses";
-      await sendTeamEnrollmentEmail({ email, orgName: org.name, managerEmail, loginUrl: "https://echeloninstitute.ca/login", courseName: courseLabel + " — Reminder: Your exam prep is waiting!" });
+      await sendTeamEnrollmentEmail({ email, orgName: org.name, managerEmail, loginUrl: "https://echeloninstitute.ca/login", courseName: courseLabel + " — Reminder: Your exam prep is waiting!", unsubscribeUrl });
+
+      // FIX 4: Stamp lastRemindedAt and persist unsubscribeToken
+      await db.update(organizationMembers)
+        .set({ lastRemindedAt: new Date(), unsubscribeToken })
+        .where(eq(organizationMembers.id, member.id));
+
       return { success: true, email };
     }),
 
@@ -1181,16 +1207,29 @@ export const orgIntelRouter = router({
     if (members.length === 0) return { sent: 0, emails: [] };
     const memberEmails = members.map(m => m.email);
     const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
+    const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
     const recentRows = await db.select({ email: questionAttempts.studentEmail }).from(questionAttempts)
       .where(and(inArray(questionAttempts.studentEmail, memberEmails), gte(questionAttempts.createdAt, twoWeeksAgo)))
       .groupBy(questionAttempts.studentEmail);
     const recentEmails = new Set(recentRows.map(r => r.email));
-    const inactiveMembers = members.filter(m => !recentEmails.has(m.email));
+    // FIX 4: Filter out opted-out and recently-reminded operators
+    const eligibleMembers = members.filter(m =>
+      !recentEmails.has(m.email) &&
+      !m.reminderOptOut &&
+      (!m.lastRemindedAt || m.lastRemindedAt < sevenDaysAgo)
+    );
     const sentEmails: string[] = [];
-    for (const m of inactiveMembers) {
+    for (const m of eligibleMembers) {
       try {
+        // FIX 4: Generate or reuse unsubscribe token per operator
+        const unsubscribeToken = m.unsubscribeToken ?? randomBytes(24).toString("hex");
+        const unsubscribeUrl = `https://echeloninstitute.ca/api/unsubscribe-reminder?token=${unsubscribeToken}`;
         const courseLabel = m.courseKey ? courseKeyToLabel(m.courseKey, org.province) : "All Courses";
-        await sendTeamEnrollmentEmail({ email: m.email, orgName: org.name, managerEmail, loginUrl: "https://echeloninstitute.ca/login", courseName: courseLabel + " — Reminder: Your exam prep is waiting!" });
+        await sendTeamEnrollmentEmail({ email: m.email, orgName: org.name, managerEmail, loginUrl: "https://echeloninstitute.ca/login", courseName: courseLabel + " — Reminder: Your exam prep is waiting!", unsubscribeUrl });
+        // FIX 4: Stamp lastRemindedAt and persist unsubscribeToken
+        await db.update(organizationMembers)
+          .set({ lastRemindedAt: new Date(), unsubscribeToken })
+          .where(eq(organizationMembers.id, m.id));
         sentEmails.push(m.email);
       } catch (err) { console.error(`[sendBulkReminders] Failed to send to ${m.email}:`, err); }
     }

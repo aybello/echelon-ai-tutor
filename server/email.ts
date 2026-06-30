@@ -853,6 +853,8 @@ export interface TeamEnrollmentEmailPayload {
   managerEmail: string;
   loginUrl: string; // e.g. https://echeloninstitute.ca/login
   courseName?: string; // e.g. 'Class 4 — Water Treatment'
+  /** FIX 4: One-click unsubscribe URL for reminder emails. */
+  unsubscribeUrl?: string;
 }
 
 /**
@@ -863,7 +865,7 @@ export interface TeamEnrollmentEmailPayload {
 export async function sendTeamEnrollmentEmail(
   payload: TeamEnrollmentEmailPayload
 ): Promise<void> {
-  const { email, orgName, managerEmail, loginUrl, courseName } = payload;
+  const { email, orgName, managerEmail, loginUrl, courseName, unsubscribeUrl } = payload;
   const courseLabel = courseName ?? "All-Access (all certification levels)";
 
   let transporter: nodemailer.Transporter;
@@ -982,6 +984,7 @@ export async function sendTeamEnrollmentEmail(
               <p style="margin:0 0 6px;font-size:13px;color:#64748B;">Questions? Reply to this email or reach us at</p>
               <p style="margin:0 0 6px;font-size:13px;"><a href="mailto:abello@echeloninstitute.ca" style="color:#1D4ED8;text-decoration:none;">abello@echeloninstitute.ca</a></p>
               <p style="margin:12px 0 0;font-size:12px;color:#94A3B8;">Echelon Institute · Canada's AI-powered exam prep for water &amp; wastewater operators</p>
+              ${unsubscribeUrl ? `<p style="margin:10px 0 0;font-size:11px;color:#CBD5E1;"><a href="${unsubscribeUrl}" style="color:#94A3B8;text-decoration:underline;">Unsubscribe from reminder emails</a></p>` : ""}
             </div>
 
           </td>
@@ -993,6 +996,11 @@ export async function sendTeamEnrollmentEmail(
 </html>
     `,
   };
+
+  // FIX 4: Add List-Unsubscribe header for email clients that show a native unsubscribe button
+  if (unsubscribeUrl) {
+    (mail as any).headers = { "List-Unsubscribe": `<${unsubscribeUrl}>`, "List-Unsubscribe-Post": "List-Unsubscribe=One-Click" };
+  }
 
   const info = await transporter.sendMail(mail);
   if (!ENV.smtpHost) {

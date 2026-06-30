@@ -959,3 +959,50 @@
 - [x] Task 6: Audit products.ts and subscriptionProducts.ts — both already fail-closed (unknown keys/tiers return [])
 - [x] Task 7: Write 30 regression tests in server/_core/access.test.ts covering all edge cases
 - [x] 413/413 tests passing, TypeScript clean, checkpoint saved
+
+## 9/10 Product Readiness Plan — Phase 6-9 (Jun 30, 2026)
+
+### Phase 6: Student Dashboard UX Overhaul
+- [x] Add exam countdown timer to StudentDashboard header
+- [x] Add exam date setter modal with calendar input
+- [x] Add study streak display (current streak, best streak)
+- [x] Add module accuracy breakdown chart (Chart.js bar chart)
+- [x] Add recent activity feed (last 5 sessions)
+- [x] Add readiness score ring (animated SVG)
+- [x] Add quick-access course cards from dashboard
+- [x] Add "Set Exam Date" CTA when no exam date is set
+- [x] Fix TypeScript errors in StudentDashboard (actionUrl, totalAttempts, startedAt field names)
+- [x] 510/510 tests passing, TypeScript clean, checkpoint saved (37018929)
+
+### Phase 7: Account/Pricing/Restore UX
+- [x] Account page: dynamic header ("My Account" for authenticated, "Restore Access" for guests)
+- [x] Account page: "Clear Device State" button to wipe localStorage access tokens
+- [x] Account page: "Sign Out" button for authenticated users
+- [x] Account page: support email link in footer
+- [x] Pricing page: 8-question FAQ accordion section (FAQItem component)
+- [x] Pricing page: improved footer with My Account and Support links
+- [x] Landing footer: added Legal and Support columns
+- [x] Landing footer: added Privacy/Terms/Refunds links to bottom bar
+- [x] Landing footer: added "Not affiliated with EOCP or WPI" disclaimer
+
+### Phase 8: Production Operations Layer
+- [x] Upgraded /api/health endpoint to check DB, Stripe, Email, Cron, AI
+- [x] Created server/analytics.ts with trackEvent() helper (structured JSON logging)
+- [x] Wired trackEvent to magicLinkRouter (restore_access_requested, restore_access_completed)
+- [x] Wired trackEvent to Stripe webhook (checkout_completed, stripe_provisioning_failed)
+
+### Phase 9: Trust, Credibility, Enterprise Polish
+- [x] Created /privacy page (Privacy & Security policy, 9 sections)
+- [x] Created /terms page (Terms of Use, 11 sections)
+- [x] Created /refund page (Refund Policy, 5 sections)
+- [x] Registered /privacy, /terms, /refund routes in App.tsx
+- [x] Added legal pages to SiteNav isMarketingPage list (correct nav variant)
+- [x] 510/510 tests passing, TypeScript clean, checkpoint saved (f8bd1186)
+
+## Claude Audit Fix Tickets — Jun 30, 2026
+
+- [ ] FIX 1 (P0): Close email-only access hole — remove accessToken from getPurchasesByEmail, getSubscriptionsByEmail, verifySubscriptionSession; redirect restore to OTP/magic-link only
+- [ ] FIX 2 (P1): Add JWT_SECRET and DATABASE_URL startup guard in env.ts; fail-closed blank-key cookie verify
+- [ ] FIX 3 (P2): Fix readiness topic coverage denominator to use question bank count per exam type (not questionAttempts)
+- [ ] FIX 4 (P2): Add per-operator reminder cooldown (1/day) and unsubscribe link + List-Unsubscribe header to reminder emails
+- [ ] FIX 5 (P3): Migrate bookmarks from per-attempt to per-user+question bookmarks table with upsert toggle

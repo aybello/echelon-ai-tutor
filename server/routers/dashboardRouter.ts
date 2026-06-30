@@ -8,7 +8,7 @@
  */
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { questionAttempts, studentProfiles, aiChatSessions, examDates } from "../../drizzle/schema";
+import { questionAttempts, studentProfiles, aiChatSessions, examDates, questions, bookmarks } from "../../drizzle/schema";
 import { and, eq, sql, desc, gte, or } from "drizzle-orm";
 import { getResourcesForProfile } from "../resourceIndex";
 import { TRPCError } from "@trpc/server";
@@ -628,11 +628,26 @@ export const dashboardRouter = router({
       }
 
       // 3. Topic coverage
-      const topicCountRows = await db
-        .select({ count: sql<number>`COUNT(DISTINCT ${questionAttempts.topic})` })
-        .from(questionAttempts)
-        .where(examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : sql`1=1`);
-      const totalTopicsInBank = Math.max(Number(topicCountRows[0]?.count ?? 1), 1);
+      // FIX 3 (P2): The denominator must be the real number of distinct topics in the
+      // question BANK for this exam type — not from questionAttempts (which counts
+      // topics any user has ever practiced and drifts over time).
+      // If no examType filter is provided, we still scope to the bank to avoid
+      // cross-exam contamination.
+      let totalTopicsInBank = 1;
+      if (examTypeFilter) {
+        const bankTopicRows = await db
+          .select({ count: sql<number>`COUNT(DISTINCT ${questions.topic})` })
+          .from(questions)
+          .where(eq(questions.bankKey, examTypeFilter));
+        totalTopicsInBank = Math.max(Number(bankTopicRows[0]?.count ?? 1), 1);
+      } else {
+        // No exam type — count distinct topics across all questions in the bank.
+        // This is still per-bank (not per-user) so it doesn't drift.
+        const bankTopicRows = await db
+          .select({ count: sql<number>`COUNT(DISTINCT ${questions.topic})` })
+          .from(questions);
+        totalTopicsInBank = Math.max(Number(bankTopicRows[0]?.count ?? 1), 1);
+      }
       const topicCoverage = Math.min(distinctTopics / totalTopicsInBank, 1);
 
       // 4. Study frequency
@@ -751,10 +766,14 @@ export const dashboardRouter = router({
       .where(and(identityWhere, eq(questionAttempts.confidence, "low")));
     const totalLowConf = Number(lowConfRow?.count ?? 0);
 
+    // FIX 5: Count from the new bookmarks table (per-user+question)
+    const bmIdentityWhere = userId
+      ? eq(bookmarks.userId, userId)
+      : eq(bookmarks.studentEmail, email!);
     const [bookmarkRow] = await db
       .select({ count: sql<number>`COUNT(*)` })
-      .from(questionAttempts)
-      .where(and(identityWhere, eq(questionAttempts.bookmarked, "yes")));
+      .from(bookmarks)
+      .where(bmIdentityWhere);
     const totalBookmarked = Number(bookmarkRow?.count ?? 0);
 
     const totalAttempts = Object.values(topicAccuracyMap).reduce((s, t) => s + t.total, 0);
@@ -812,12 +831,33 @@ export const dashboardRouter = router({
       const { userId, email } = resolveDashboardIdentity(ctx);
       const db = await getDb();
       if (!db) return [];
-      const identityWhere = userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
-      return db
-        .select({ id: questionAttempts.id, questionId: questionAttempts.questionId, examType: questionAttempts.examType, topic: questionAttempts.topic, difficulty: questionAttempts.difficulty, confidence: questionAttempts.confidence, createdAt: questionAttempts.createdAt })
-        .from(questionAttempts)
-        .where(and(identityWhere, eq(questionAttempts.bookmarked, "yes"), input.examType ? eq(questionAttempts.examType, input.examType) : undefined))
-        .orderBy(desc(questionAttempts.createdAt));
+      // FIX 5: Query from the new bookmarks table (per-user+question, not per-attempt)
+      const bmIdentityWhere = userId
+        ? eq(bookmarks.userId, userId)
+        : eq(bookmarks.studentEmail, email!);
+      // Join bookmarks -> questions to get examType, topic, difficulty
+      const rows = await db
+        .select({
+          bookmarkId: bookmarks.id,
+          questionId: bookmarks.questionId,
+          bankKey: bookmarks.bankKey,
+          createdAt: bookmarks.createdAt,
+          topic: questions.topic,
+          difficulty: questions.difficulty,
+        })
+        .from(bookmarks)
+        .leftJoin(questions, and(eq(questions.bankKey, bookmarks.bankKey), eq(questions.questionNum, bookmarks.questionId)))
+        .where(and(bmIdentityWhere, input.examType ? eq(bookmarks.bankKey, input.examType) : undefined))
+        .orderBy(desc(bookmarks.createdAt));
+      return rows.map(r => ({
+        id: r.bookmarkId,
+        questionId: r.questionId,
+        examType: r.bankKey,
+        topic: r.topic ?? "",
+        difficulty: r.difficulty ?? null,
+        confidence: null,
+        createdAt: r.createdAt,
+      }));
     }),
 
   /**
@@ -835,46 +875,68 @@ export const dashboardRouter = router({
     }),
 
   /**
-   * Toggle bookmark on a question attempt.
-   * Accepts either attemptId (DB row) or questionId (question bank ID, uses most recent attempt).
+   * FIX 5: Toggle bookmark on a question.
+   * Uses the new per-user+question bookmarks table so bookmark state persists across
+   * multiple attempts of the same question.
+   * Accepts bankKey + questionId (preferred) or attemptId (legacy — resolves to bankKey+questionId).
    */
   toggleBookmark: publicProcedure
     .input(z.object({
-      attemptId: z.number().optional(),
+      bankKey: z.string().optional(),
       questionId: z.number().optional(),
-      bookmarked: z.boolean().optional(), // if provided, set to this value instead of toggling
-    }).refine(d => d.attemptId != null || d.questionId != null, { message: "Provide attemptId or questionId" }))
+      attemptId: z.number().optional(), // legacy: resolve to bankKey+questionId via questionAttempts
+      bookmarked: z.boolean().optional(), // if provided, force to this value instead of toggling
+    }).refine(d => (d.bankKey != null && d.questionId != null) || d.attemptId != null, { message: "Provide bankKey+questionId or attemptId" }))
     .mutation(async ({ ctx, input }) => {
       const { userId, email } = resolveDashboardIdentity(ctx);
       const db = await getDb();
       if (!db) return { ok: false, bookmarked: false };
-      const identityWhere = userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
       if (!userId && !email) return { ok: false, bookmarked: false };
 
-      let targetId: number | null = null;
-      if (input.attemptId != null) {
-        targetId = input.attemptId;
-      } else if (input.questionId != null) {
-        // Find most recent attempt for this questionId
-        const rows = await db.select({ id: questionAttempts.id, bookmarked: questionAttempts.bookmarked })
+      let bankKey = input.bankKey;
+      let questionId = input.questionId;
+
+      // Legacy path: resolve attemptId to bankKey+questionId
+      if (input.attemptId != null && (bankKey == null || questionId == null)) {
+        const identityWhere = userId ? eq(questionAttempts.userId, userId) : eq(questionAttempts.studentEmail, email!);
+        const rows = await db.select({ examType: questionAttempts.examType, questionId: questionAttempts.questionId })
           .from(questionAttempts)
-          .where(and(identityWhere, eq(questionAttempts.questionId, input.questionId)))
-          .orderBy(desc(questionAttempts.createdAt))
+          .where(and(eq(questionAttempts.id, input.attemptId), identityWhere))
           .limit(1);
         if (!rows.length) return { ok: false, bookmarked: false };
-        targetId = rows[0].id;
+        bankKey = rows[0].examType;
+        questionId = rows[0].questionId;
       }
-      if (targetId == null) return { ok: false, bookmarked: false };
 
-      const rows = await db.select({ bookmarked: questionAttempts.bookmarked })
-        .from(questionAttempts)
-        .where(and(eq(questionAttempts.id, targetId), identityWhere))
+      if (!bankKey || questionId == null) return { ok: false, bookmarked: false };
+
+      const bmIdentityWhere = userId
+        ? eq(bookmarks.userId, userId)
+        : eq(bookmarks.studentEmail, email!);
+
+      // Check current bookmark state
+      const existing = await db.select({ id: bookmarks.id })
+        .from(bookmarks)
+        .where(and(bmIdentityWhere, eq(bookmarks.bankKey, bankKey), eq(bookmarks.questionId, questionId)))
         .limit(1);
-      if (!rows.length) return { ok: false, bookmarked: false };
-      const newState = input.bookmarked != null
-        ? (input.bookmarked ? "yes" : "no")
-        : (rows[0].bookmarked === "yes" ? "no" : "yes");
-      await db.update(questionAttempts).set({ bookmarked: newState }).where(and(eq(questionAttempts.id, targetId), identityWhere));
-      return { ok: true, bookmarked: newState === "yes" };
+
+      const isCurrentlyBookmarked = existing.length > 0;
+      const shouldBookmark = input.bookmarked != null ? input.bookmarked : !isCurrentlyBookmarked;
+
+      if (shouldBookmark && !isCurrentlyBookmarked) {
+        // Insert new bookmark
+        await db.insert(bookmarks).values({
+          userId: userId ?? null,
+          studentEmail: userId ? null : (email ?? null),
+          bankKey,
+          questionId,
+        });
+      } else if (!shouldBookmark && isCurrentlyBookmarked) {
+        // Delete existing bookmark
+        await db.delete(bookmarks)
+          .where(and(bmIdentityWhere, eq(bookmarks.bankKey, bankKey), eq(bookmarks.questionId, questionId)));
+      }
+
+      return { ok: true, bookmarked: shouldBookmark };
     }),
 });

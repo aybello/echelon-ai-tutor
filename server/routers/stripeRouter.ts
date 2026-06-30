@@ -353,33 +353,27 @@ export const stripeRouter = router({
     }),
 
   /**
-   * Look up purchases by email — used by the Restore Access page for unauthenticated users.
-   * Returns only product keys and unlocked exam types (no sensitive payment data).
-   * Returns empty array for unknown emails to avoid enumeration.
+   * Neutral email lookup — confirms only whether an account exists.
+   * Does NOT return tokens, exam types, or course data.
+   * Access restoration must go through the verified OTP or magic-link flow.
+   * @deprecated Use magicLink.requestMagicLink for actual access restoration.
    */
   getPurchasesByEmail: publicProcedure
     .input(z.object({ email: z.string().email() }))
     .query(async ({ input }) => {
+      // FIX 1 (P0): Never return tokens or unlocked exam types from a public email-only endpoint.
+      // The caller cannot prove they own this inbox. Access restoration must go through
+      // magicLinkRouter (inbox-verified) or dashboardAuthRouter OTP (inbox-verified).
+      // We still check DB existence so the UI can show a neutral "if an account exists" message.
       const db = await getDb();
-      if (!db) return { purchases: [], unlockedExamTypes: [] };
+      if (!db) return { accountExists: false };
       const normalised = normalizeEmail(input.email);
       const rows = await db
-        .select()
+        .select({ id: purchases.id })
         .from(purchases)
-        .where(eq(purchases.email, normalised));
-      const productKeys = rows.map(r => r.productKey);
-      const unlockedExamTypes = getAllUnlockedExamTypes(productKeys);
-      // Return minimal safe data — no Stripe IDs or personal info
-      const safePurchases = rows.map(r => ({
-        productKey: r.productKey,
-        createdAt: r.createdAt,
-      }));
-      // Issue a signed JWT so the client can pass it on question fetches
-      // instead of sending the raw email on every request
-      const accessToken = unlockedExamTypes.length > 0
-        ? await issueSubscriptionToken({ email: normalised, examTypes: unlockedExamTypes })
-        : null;
-      return { purchases: safePurchases, unlockedExamTypes, accessToken };
+        .where(eq(purchases.email, normalised))
+        .limit(1);
+      return { accountExists: rows.length > 0 };
     }),
 
   /** Check if a specific exam type is unlocked for the current user (guests get hasAccess:false) */
@@ -438,23 +432,21 @@ export const stripeRouter = router({
     }),
 
   /**
-   * Public lookup of active subscriptions by email — for Restore Access flow.
-   * Returns minimal safe data (no Stripe IDs). Used when user is not logged in.
+   * Neutral subscription lookup — confirms only whether an active subscription exists.
+   * Does NOT return tokens, exam types, or course data.
+   * Access restoration must go through the verified OTP or magic-link flow.
+   * @deprecated Use magicLink.requestMagicLink for actual access restoration.
    */
   getSubscriptionsByEmail: publicProcedure
     .input(z.object({ email: z.string().email() }))
     .query(async ({ input }) => {
+      // FIX 1 (P0): Never return tokens or unlocked exam types from a public email-only endpoint.
       const db = await getDb();
-      if (!db) return { subscriptions: [], unlockedExamTypes: [] };
+      if (!db) return { accountExists: false };
       const normalised = normalizeEmail(input.email);
       const now = new Date();
       const rows = await db
-        .select({
-          tier: subscriptions.tier,
-          province: subscriptions.province,
-          status: subscriptions.status,
-          currentPeriodEnd: subscriptions.currentPeriodEnd,
-        })
+        .select({ id: subscriptions.id })
         .from(subscriptions)
         .where(
           and(
@@ -462,22 +454,9 @@ export const stripeRouter = router({
             eq(subscriptions.status, "active"),
             gt(subscriptions.currentPeriodEnd, now),
           )
-        );
-      const unlockedExamTypes = getAllSubscriptionExamTypes(
-        rows.map(r => ({ tier: r.tier as SubscriptionTier, province: r.province as SubscriptionProvince }))
-      );
-      const accessToken = unlockedExamTypes.length > 0
-        ? await issueSubscriptionToken({ email: normalised, examTypes: unlockedExamTypes })
-        : null;
-      return {
-        subscriptions: rows.map(r => ({
-          tier: r.tier,
-          province: r.province,
-          currentPeriodEnd: r.currentPeriodEnd,
-        })),
-        unlockedExamTypes,
-        accessToken,
-      };
+        )
+        .limit(1);
+      return { accountExists: rows.length > 0 };
     }),
 
   /**

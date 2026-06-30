@@ -1,4 +1,4 @@
-import { index, int, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
+import { boolean, index, int, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -435,6 +435,12 @@ export const organizationMembers = mysqlTable("organization_members", {
   courseKeys: text("courseKeys"), // JSON string: string[] | null
   assignedAt: timestamp("assignedAt").defaultNow().notNull(),
   revokedAt: timestamp("revokedAt"),
+  /** FIX 4: Cooldown tracking — last time a reminder was sent to this operator. */
+  lastRemindedAt: timestamp("lastRemindedAt"),
+  /** FIX 4: Unsubscribe flag — true if operator has opted out of reminder emails. */
+  reminderOptOut: boolean("reminderOptOut").default(false).notNull(),
+  /** FIX 4: Unsubscribe token — signed token for one-click unsubscribe links. */
+  unsubscribeToken: varchar("unsubscribeToken", { length: 128 }),
 }, (t) => [
   index("org_members_orgid_idx").on(t.orgId),
   index("org_members_email_idx").on(t.email),
@@ -442,6 +448,28 @@ export const organizationMembers = mysqlTable("organization_members", {
 
 export type OrganizationMember = typeof organizationMembers.$inferSelect;
 export type InsertOrganizationMember = typeof organizationMembers.$inferInsert;
+
+/**
+ * FIX 5 (P3): Bookmarks — per-user+question table so bookmark state persists across
+ * multiple attempts of the same question. Keyed by (userId OR studentEmail) + bankKey + questionId.
+ * Replaces the per-attempt bookmarked enum on questionAttempts (kept for backward compat).
+ */
+export const bookmarks = mysqlTable("bookmarks", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),
+  studentEmail: varchar("studentEmail", { length: 320 }),
+  bankKey: varchar("bankKey", { length: 64 }).notNull(),
+  questionId: int("questionId").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (t) => [
+  // Unique constraint: one bookmark per user+question (upsert-safe)
+  uniqueIndex("bm_user_question_idx").on(t.userId, t.bankKey, t.questionId),
+  uniqueIndex("bm_email_question_idx").on(t.studentEmail, t.bankKey, t.questionId),
+  index("bm_userid_idx").on(t.userId),
+  index("bm_email_idx").on(t.studentEmail),
+]);
+export type Bookmark = typeof bookmarks.$inferSelect;
+export type InsertBookmark = typeof bookmarks.$inferInsert;
 
 /**
  * Blog posts — SEO-targeted articles for Ontario water/wastewater operator certification.

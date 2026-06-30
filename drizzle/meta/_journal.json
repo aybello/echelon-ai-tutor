@@ -295,6 +295,20 @@
       "when": 1782832572347,
       "tag": "0041_lame_jubilee",
       "breakpoints": true
+    },
+    {
+      "idx": 42,
+      "version": "5",
+      "when": 1782837262791,
+      "tag": "0042_sad_scorpion",
+      "breakpoints": true
+    },
+    {
+      "idx": 43,
+      "version": "5",
+      "when": 1782837538526,
+      "tag": "0043_huge_fantastic_four",
+      "breakpoints": true
     }
   ]
 }

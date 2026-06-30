@@ -1080,7 +1080,8 @@ export default function QuizShell({
                 <button
                   onClick={() => {
                     if (!current?.id) return;
-                    toggleBookmarkMutation.mutate({ questionId: current.id });
+                    // FIX 5: Pass bankKey (examType) + questionId for per-user+question bookmark
+                    toggleBookmarkMutation.mutate({ bankKey: examType ?? "unknown", questionId: current.id });
                   }}
                   disabled={toggleBookmarkMutation.isPending}
                   style={{

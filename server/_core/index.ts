@@ -118,6 +118,33 @@ async function startServer() {
     });
   });
 
+  // ── FIX 4: One-click unsubscribe endpoint for reminder emails ────────────────
+  // Accessible without authentication — the token IS the credential.
+  app.get("/api/unsubscribe-reminder", async (req, res) => {
+    const token = typeof req.query.token === "string" ? req.query.token.trim() : "";
+    if (!token) {
+      return res.status(400).send("<html><body><h2>Invalid unsubscribe link.</h2></body></html>");
+    }
+    try {
+      const db = await getDb();
+      if (!db) return res.status(503).send("<html><body><h2>Service temporarily unavailable. Please try again later.</h2></body></html>");
+      const { organizationMembers } = await import("../../drizzle/schema");
+      const { eq } = await import("drizzle-orm");
+      const rows = await db.select().from(organizationMembers)
+        .where(eq(organizationMembers.unsubscribeToken, token)).limit(1);
+      if (rows.length === 0) {
+        return res.status(404).send("<html><body><h2>Unsubscribe link not found or already used.</h2></body></html>");
+      }
+      await db.update(organizationMembers)
+        .set({ reminderOptOut: true })
+        .where(eq(organizationMembers.unsubscribeToken, token));
+      return res.send(`<html><head><meta charset='utf-8'><title>Unsubscribed</title><style>body{font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#F1F5F9;}div{background:#fff;border-radius:12px;padding:40px;max-width:480px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,0.08);}h2{color:#15803D;margin:0 0 12px;}p{color:#475569;font-size:14px;line-height:1.6;}</style></head><body><div><div style='font-size:40px;margin-bottom:16px'>✅</div><h2>You've been unsubscribed</h2><p>You will no longer receive reminder emails from Echelon Institute for Teams. Your access to the platform is not affected.</p><p style='margin-top:20px;font-size:12px;color:#94A3B8;'>If this was a mistake, contact <a href='mailto:abello@echeloninstitute.ca' style='color:#1D4ED8;'>abello@echeloninstitute.ca</a></p></div></body></html>`);
+    } catch (err) {
+      console.error("[unsubscribe-reminder] Error:", err);
+      return res.status(500).send("<html><body><h2>An error occurred. Please try again later.</h2></body></html>");
+    }
+  });
+
   // ── CRON_SECRET middleware — protects all /api/scheduled/* endpoints ────────
   // Ticket 10: In production, require x-cron-secret header to match ENV.cronSecret.
   // If ENV.cronSecret is empty (local dev), the check is skipped.

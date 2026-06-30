@@ -191,16 +191,6 @@ export default function Account() {
     { enabled: !!isAuthenticated, retry: false }
   );
 
-  const getPurchasesByEmail = trpc.stripe.getPurchasesByEmail.useQuery(
-    { email: submittedEmail ?? "" },
-    { enabled: !!submittedEmail && !isAuthenticated, retry: false, staleTime: 30_000 }
-  );
-
-  const getSubscriptionsByEmail = trpc.stripe.getSubscriptionsByEmail.useQuery(
-    { email: submittedEmail ?? "" },
-    { enabled: !!submittedEmail && !isAuthenticated, retry: false, staleTime: 30_000 }
-  );
-
   const getSubscriptions = trpc.stripe.getMySubscriptions.useQuery(
     undefined,
     { enabled: !!isAuthenticated, retry: false }
@@ -223,47 +213,41 @@ export default function Account() {
     );
   };
 
+  // FIX 1 (P0): Magic-link state for the restore-access flow.
+  // We no longer look up purchases/subscriptions by email directly — that would
+  // return tokens to anyone who knows a paying customer's email.
+  // Instead, submitting an email triggers a magic link to that inbox; access is
+  // only restored after the user clicks the link and proves inbox ownership.
+  const [magicLinkSent, setMagicLinkSent] = useState(false);
+  const [magicLinkSending, setMagicLinkSending] = useState(false);
+
+  const requestMagicLinkMutation = trpc.magicLink.requestMagicLink.useMutation({
+    onSuccess: () => {
+      setMagicLinkSent(true);
+      setMagicLinkSending(false);
+    },
+    onError: (err) => {
+      setMagicLinkSending(false);
+      toast.error("Failed to send sign-in link", { description: err.message });
+    },
+  });
+
   const getFlashcardProgress = trpc.flashcard.getAllProgress.useQuery(
     { email: submittedEmail ?? "" },
-    { enabled: !!submittedEmail, retry: false, staleTime: 30_000 }
+    { enabled: !!submittedEmail && !!isAuthenticated, retry: false, staleTime: 30_000 }
   );
   const flashcardMastery = getFlashcardProgress.data?.progress ?? {};
 
+  // Restore authenticated user's purchases to localStorage on load
   useEffect(() => {
     const data = getPurchases.data;
-    if (data && data.purchases.length > 0 && !restored && submittedEmail) {
+    if (data && data.purchases.length > 0 && !restored) {
       const keys = data.purchases.map((p) => p.productKey);
-      restoreLocalStorage(submittedEmail, keys);
+      const email = data.purchases[0] ? (submittedEmail ?? "") : "";
+      if (email) restoreLocalStorage(email, keys);
       setRestored(true);
     }
   }, [getPurchases.data, submittedEmail, restored]);
-
-  useEffect(() => {
-    const data = getPurchasesByEmail.data;
-    if (data && data.purchases.length > 0 && !restored && submittedEmail) {
-      const keys = data.purchases.map((p) => p.productKey);
-      restoreLocalStorage(submittedEmail, keys);
-      setRestored(true);
-      if (data.accessToken) {
-        try { localStorage.setItem("echelon_access_token", data.accessToken); } catch { /* ignore */ }
-      }
-    }
-  }, [getPurchasesByEmail.data, submittedEmail, restored]);
-
-  useEffect(() => {
-    const data = getSubscriptionsByEmail.data;
-    if (data && data.unlockedExamTypes.length > 0 && submittedEmail) {
-      try {
-        localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(data.unlockedExamTypes));
-        localStorage.setItem("echelon_trial_unlocked", "true");
-        localStorage.setItem("echelon_trial_email", submittedEmail);
-        localStorage.setItem("echelon_subscription_email", submittedEmail);
-        if (data.accessToken) {
-          localStorage.setItem("echelon_access_token", data.accessToken);
-        }
-      } catch { /* ignore */ }
-    }
-  }, [getSubscriptionsByEmail.data, submittedEmail]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -273,13 +257,15 @@ export default function Account() {
       return;
     }
     setRestored(false);
+    setMagicLinkSent(false);
     setSubmittedEmail(trimmed);
+    // FIX 1: Trigger magic-link immediately on submit — no email-only DB lookup
+    setMagicLinkSending(true);
+    requestMagicLinkMutation.mutate({ email: trimmed, origin: window.location.origin });
   };
 
   const unlockedExamTypes = [
     ...(getPurchases.data?.unlockedExamTypes ?? []),
-    ...(getPurchasesByEmail.data?.unlockedExamTypes ?? []),
-    ...(getSubscriptionsByEmail.data?.unlockedExamTypes ?? []),
     ...(getSubscriptions.data?.unlockedExamTypes ?? []),
   ].filter((v, i, a) => a.indexOf(v) === i);
   const purchases = getPurchases.data?.purchases ?? [];
@@ -374,20 +360,20 @@ export default function Account() {
               />
               <button
                 type="submit"
-                disabled={getPurchases.isFetching || getPurchasesByEmail.isFetching}
+                disabled={magicLinkSending}
                 style={{
                   padding: "11px 22px", borderRadius: 10, border: "none",
-                  background: (getPurchases.isFetching || getPurchasesByEmail.isFetching) ? "#CBD5E1" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
-                  color: "#fff", fontSize: 13, fontWeight: 800, cursor: (getPurchases.isFetching || getPurchasesByEmail.isFetching) ? "not-allowed" : "pointer",
+                  background: magicLinkSending ? "#CBD5E1" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                  color: "#fff", fontSize: 13, fontWeight: 800, cursor: magicLinkSending ? "not-allowed" : "pointer",
                   fontFamily: "inherit", whiteSpace: "nowrap", flexShrink: 0,
                 }}
               >
-                {(getPurchases.isFetching || getPurchasesByEmail.isFetching) ? (
+                {magicLinkSending ? (
                   <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
                     <span style={{ display: "inline-block", width: 12, height: 12, border: "2px solid #fff", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.7s linear infinite" }} />
-                    Checking…
+                    Sending…
                   </span>
-                ) : "Find My Passes →"}
+                ) : "Send Sign-In Link →"}
               </button>
             </div>
             {emailError && (
@@ -398,8 +384,8 @@ export default function Account() {
           {/* Trust signals */}
           <div style={{ display: "flex", gap: 20, marginTop: 18, flexWrap: "wrap" }}>
             {[
-              { icon: "🔒", text: "Email is never stored in your browser" },
-              { icon: "⚡", text: "Instant access — no login required" },
+              { icon: "🔒", text: "Inbox-verified — only you can restore access" },
+              { icon: "📧", text: "Sign-in link sent to your email" },
               { icon: "📱", text: "Works on any device or browser" },
             ].map(t => (
               <div key={t.text} style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -410,24 +396,37 @@ export default function Account() {
           </div>
         </div>
 
-        {/* Loading skeleton */}
-        {(getPurchases.isFetching || getPurchasesByEmail.isFetching) && (
-          <div className="account-card" style={{ padding: 28 }}>
-            {[1, 2, 3].map(i => (
-              <div key={i} style={{ display: "flex", gap: 12, alignItems: "center", padding: "14px 0", borderBottom: i < 3 ? "1px solid #F1F5F9" : "none" }}>
-                <div style={{ width: 40, height: 40, borderRadius: 10, background: "#E2E8F0", flexShrink: 0 }} />
-                <div style={{ flex: 1 }}>
-                  <div style={{ height: 12, background: "#E2E8F0", borderRadius: 6, width: "60%", marginBottom: 8 }} />
-                  <div style={{ height: 10, background: "#F1F5F9", borderRadius: 6, width: "40%" }} />
-                </div>
-                <div style={{ width: 80, height: 30, background: "#E2E8F0", borderRadius: 8 }} />
-              </div>
-            ))}
+        {/* Magic-link sent confirmation (unauthenticated restore flow) */}
+        {submittedEmail && !isAuthenticated && magicLinkSent && (
+          <div className="account-card" style={{ padding: 28, textAlign: "center" }}>
+            <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#EFF6FF", border: "2px solid #BFDBFE", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, margin: "0 auto 20px" }}>📧</div>
+            <h2 style={{ color: "#1D4ED8", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>Check your inbox</h2>
+            <p style={{ color: "#334155", fontSize: 13, margin: "0 0 8px", lineHeight: 1.6 }}>
+              If an account exists for <strong style={{ color: "#1D4ED8" }}>{submittedEmail}</strong>, we've sent a sign-in link.
+            </p>
+            <p style={{ color: "#64748B", fontSize: 12, margin: "0 0 24px", lineHeight: 1.6 }}>
+              Click the link in your email to restore access on this device. The link expires in 30 minutes.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10, alignItems: "center" }}>
+              <button
+                onClick={() => { setMagicLinkSending(true); requestMagicLinkMutation.mutate({ email: submittedEmail, origin: window.location.origin }); }}
+                disabled={magicLinkSending}
+                style={{ padding: "10px 24px", borderRadius: 9, border: "1.5px solid #BFDBFE", background: "#EFF6FF", color: "#1D4ED8", fontSize: 12, fontWeight: 700, cursor: magicLinkSending ? "not-allowed" : "pointer", fontFamily: "inherit" }}
+              >
+                {magicLinkSending ? "Sending…" : "Resend link"}
+              </button>
+              <button
+                onClick={() => { setSubmittedEmail(null); setEmail(""); setMagicLinkSent(false); }}
+                style={{ fontSize: 11, color: "#94A3B8", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", fontWeight: 600 }}
+              >
+                ← Use a different email
+              </button>
+            </div>
           </div>
         )}
 
-        {/* Results */}
-        {submittedEmail && !getPurchases.isFetching && !getPurchasesByEmail.isFetching && (
+        {/* Results — only shown for authenticated users (who have proven inbox ownership) */}
+        {isAuthenticated && submittedEmail && !getPurchases.isFetching && (
           <>
             {hasPurchases ? (
               <>
@@ -460,7 +459,7 @@ export default function Account() {
                   </button>
                 </div>
 
-                {/* Magic Link option */}
+                {/* Sign-in link option for other devices */}
                 <MagicLinkSection email={submittedEmail ?? ""} />
 
                 {/* Active Subscriptions */}

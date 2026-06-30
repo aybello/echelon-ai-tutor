@@ -4,7 +4,12 @@ import { sdk } from "./sdk";
 import { jwtVerify } from "jose";
 import { ENV } from "./env";
 
-const DASHBOARD_JWT_SECRET = new TextEncoder().encode(ENV.cookieSecret);
+// FIX 2 (P1): Fail-closed blank-key guard.
+// If JWT_SECRET is blank, jwtVerify would accept any token signed with an empty key.
+// We guard against this by refusing to verify cookies when the secret is missing.
+const DASHBOARD_JWT_SECRET = ENV.cookieSecret
+  ? new TextEncoder().encode(ENV.cookieSecret)
+  : null;
 const DASHBOARD_COOKIE = "echelon_dashboard_session";
 
 export type TrpcContext = {
@@ -31,16 +36,20 @@ export async function createContext(
 
   // Verify the student OTP session cookie independently of Manus OAuth.
   // Uses the same jose/cookieSecret that dashboardAuthRouter uses.
-  try {
-    const token = (opts.req as any).cookies?.[DASHBOARD_COOKIE];
-    if (token) {
-      const { payload } = await jwtVerify(token, DASHBOARD_JWT_SECRET);
-      if (payload.type === "dashboard" && typeof payload.email === "string" && payload.email) {
-        studentEmail = payload.email.trim().toLowerCase();
+  // FIX 2: Skip verification entirely when DASHBOARD_JWT_SECRET is null (blank JWT_SECRET).
+  // This ensures a missing secret fails closed rather than accepting forged cookies.
+  if (DASHBOARD_JWT_SECRET) {
+    try {
+      const token = (opts.req as any).cookies?.[DASHBOARD_COOKIE];
+      if (token) {
+        const { payload } = await jwtVerify(token, DASHBOARD_JWT_SECRET);
+        if (payload.type === "dashboard" && typeof payload.email === "string" && payload.email) {
+          studentEmail = payload.email.trim().toLowerCase();
+        }
       }
+    } catch {
+      // Invalid or expired cookie — studentEmail stays null.
     }
-  } catch {
-    // Invalid or expired cookie — studentEmail stays null.
   }
 
   return {
