@@ -64,7 +64,7 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link, useLocation, useSearch } from "wouter";
-import { getTeamCourseOptions, courseKeyToLabel } from "@shared/products";
+import { getTeamCourseOptions, courseKeyToLabel } from "@shared/courseRegistry";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 

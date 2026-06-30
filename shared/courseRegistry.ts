@@ -904,3 +904,18 @@ export function courseKeyToLabel(courseKey: string, _province?: string): string 
   const entry = resolveCourseKey(courseKey);
   return entry?.displayName ?? courseKey;
 }
+
+/**
+ * Returns team-assignable courses for a province as { key, label } pairs.
+ * Drop-in replacement for the legacy getTeamCourseOptions from products.ts.
+ * Province values: "ontario" | "western" (or any string — unknown maps to ontario).
+ */
+export function getTeamCourseOptions(
+  province: string,
+): { key: string; label: string }[] {
+  const family: ExamFamily = province === "western" ? "western" : "ontario";
+  return getTeamAssignableCourses(family).map((e) => ({
+    key: e.courseKey,
+    label: e.displayName,
+  }));
+}

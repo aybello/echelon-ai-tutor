@@ -448,15 +448,18 @@ export function courseKeyToTierStrict(courseKey: string, province: string): stri
 }
 
 /**
- * Given a courseKey, return the subscription tier it maps to.
- * Legacy: falls back to 'all-access' for unknown keys.
- * Prefer courseKeyToTierStrict for all new access-granting code.
+ * @deprecated Use courseKeyToTierStrict from shared/courseRegistry.ts instead.
+ * This legacy version silently falls back to "all-access" for unknown keys — dangerous for access-granting paths.
+ * Kept for backward compatibility only — do not use in new code.
  */
 export function courseKeyToTier(courseKey: string, province: string): string {
   return courseKeyToTierStrict(courseKey, province) ?? "all-access";
 }
 
-/** Given a courseKey, return the human-readable label */
+/**
+ * @deprecated Use courseKeyToLabel from shared/courseRegistry.ts instead.
+ * Kept for backward compatibility only — do not use in new code.
+ */
 export function courseKeyToLabel(courseKey: string, province: string): string {
   const options = getTeamCourseOptions(province);
   return options.find(o => o.key === courseKey)?.label ?? courseKey;

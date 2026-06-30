@@ -11,7 +11,7 @@ import { and, desc, eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { adminRouter } from "./routers/admin";
 import { resolveEntitlementsByEmail } from "./_core/access";
-import { getAccessibleCoursesForIdentity, resolveVerifiedIdentity } from "./_core/accessService";
+import { getAccessibleCoursesForIdentity, resolveVerifiedIdentity, resolveAccessForRequest } from "./_core/accessService";
 import { stripeRouter } from "./routers/stripeRouter";
 import { flashcardRouter } from "./routers/flashcardRouter";
 import { quizRouter } from "./routers/quizRouter";
@@ -485,6 +485,22 @@ export const appRouter = router({
       )
       .mutation(async ({ input, ctx }) => {
         try {
+          // Phase 10 access gate: AI Tutor is a paid feature.
+          // Free exam types (OIT, OIT-WW) are always allowed.
+          // For all other exam types, verify the caller has access before invoking the LLM.
+          if (input.examType) {
+            const hasAccess = await resolveAccessForRequest(ctx, input.examType, {
+              clientEmail: undefined,
+              accessToken: undefined,
+            });
+            if (!hasAccess) {
+              return {
+                reply:
+                  "The AI Tutor is available with a paid practice pass. Upgrade at echeloninstitute.ca/pricing to unlock personalized coaching for this exam.",
+              };
+            }
+          }
+
           let enrichedMessages = [...input.messages];
 
           // Inject student context into the system prompt when we have a verified identity.
