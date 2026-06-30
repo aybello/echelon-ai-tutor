@@ -28,7 +28,7 @@ import {
 } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { sendTeamEnrollmentEmail } from "../email";
-import { courseKeyToTier, courseKeyToLabel, getUnlockedExamTypes } from "../../shared/products";
+import { courseKeyToTier, courseKeyToTierStrict, isValidCourseKey, courseKeyToLabel, getUnlockedExamTypes } from "../../shared/products";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -123,6 +123,16 @@ async function grantSeat(
     ? courseKeys
     : courseKey ? [courseKey] : [];
 
+  // Ticket 6: Validate all course keys against the org's province — reject unknown or cross-province keys
+  for (const ck of resolvedKeys) {
+    if (!isValidCourseKey(ck, org.province)) {
+      throw new Error(
+        `Invalid course key '${ck}' for province '${org.province}'. ` +
+        `Only courses available in this province may be assigned.`
+      );
+    }
+  }
+
   // Primary course key for backward-compat fields
   const primaryCourseKey = resolvedKeys[0] ?? null;
 
@@ -166,7 +176,7 @@ async function grantSeat(
   const coursesToUpsert = resolvedKeys.length > 0 ? resolvedKeys : [null];
 
   for (const ck of coursesToUpsert) {
-    const tier = ck ? courseKeyToTier(ck, org.province) : "all-access";
+    const tier = ck ? (courseKeyToTierStrict(ck, org.province) ?? "all-access") : "all-access";
     // Unique sentinel: org-{orgId}-{email}-{courseKey|all}
     const orgSubId = `org-${org.id}-${email}-${ck ?? "all"}`;
 
@@ -785,7 +795,7 @@ export const orgRouter = router({
       // Upsert one active subscription per new course key
       const coursesToUpsert = resolvedKeys.length > 0 ? resolvedKeys : [null];
       for (const ck of coursesToUpsert) {
-        const tier = ck ? courseKeyToTier(ck, org.province) : "all-access";
+        const tier = ck ? (courseKeyToTierStrict(ck, org.province) ?? "all-access") : "all-access";
         const orgSubId = `org-${org.id}-${email}-${ck ?? "all"}`;
         const existingSub = await db
           .select({ id: subscriptions.id })

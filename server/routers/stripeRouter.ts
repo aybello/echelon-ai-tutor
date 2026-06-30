@@ -15,7 +15,7 @@ import {
 } from "../stripe/subscriptionProducts";
 import { getDb } from "../db";
 import { purchases, subscriptions } from "../../drizzle/schema";
-import { eq, and, gt } from "drizzle-orm";
+import { eq, and, gt, count } from "drizzle-orm";
 import { ENV } from "../_core/env";
 import { sendPurchaseConfirmationEmail } from "../email";
 import { notifyOwner } from "../_core/notification";
@@ -601,6 +601,26 @@ export const stripeRouter = router({
 
       if (!org?.stripeSubscriptionId) {
         throw new TRPCError({ code: "BAD_REQUEST", message: "This organization does not have a Stripe subscription. Please contact support." });
+      }
+
+      // Ticket 7: Prevent seat downsizing below active operator count
+      const activeOperatorCount = await db
+        .select({ cnt: count() })
+        .from(membersTable)
+        .where(
+          and(
+            eq(membersTable.orgId, org.id),
+            eq(membersTable.role, "operator"),
+            eq(membersTable.status, "assigned"),
+          ),
+        )
+        .then(r => Number(r[0]?.cnt ?? 0));
+
+      if (input.seats < activeOperatorCount) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: `Cannot reduce seats to ${input.seats} — ${activeOperatorCount} operator${activeOperatorCount === 1 ? " is" : "s are"} currently active. Revoke seats first, then reduce.`,
+        });
       }
 
       await stripe.subscriptions.update(org.stripeSubscriptionId, {

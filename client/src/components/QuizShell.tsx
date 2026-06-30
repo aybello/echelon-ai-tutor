@@ -716,8 +716,24 @@ export default function QuizShell({
       {/* ── Body ── */}
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "12px 16px 24px" }}>
 
+        {/* Ticket 12: Gate skeleton — when gate is active, render a blurred placeholder instead of the full quiz content.
+             This prevents locked question text and answer options from being sent to the DOM. */}
+        {gate ? (
+          <div style={{ filter: "blur(4px)", pointerEvents: "none", userSelect: "none", opacity: 0.5 }} aria-hidden="true">
+            {/* Static skeleton cards — no real question data */}
+            <div style={{ background: "#fff", borderRadius: 14, padding: "16px 18px 14px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", marginBottom: 10 }}>
+              <div style={{ height: 12, background: "#E2E8F0", borderRadius: 6, marginBottom: 12, width: "30%" }} />
+              <div style={{ height: 16, background: "#E2E8F0", borderRadius: 6, marginBottom: 8, width: "90%" }} />
+              <div style={{ height: 16, background: "#E2E8F0", borderRadius: 6, marginBottom: 20, width: "70%" }} />
+              {[1, 2, 3, 4].map(i => (
+                <div key={i} style={{ height: 44, background: "#F1F5F9", borderRadius: 10, marginBottom: 8 }} />
+              ))}
+            </div>
+          </div>
+        ) : null}
+
         {/* Module Overview panel — shown when a specific module is selected */}
-        {moduleOverviews && selectedModule && moduleOverviews[selectedModule] && (
+        {!gate && moduleOverviews && selectedModule && moduleOverviews[selectedModule] && (
           <ModuleOverviewPanel
             key={selectedModule}
             overview={moduleOverviews[selectedModule]}
@@ -728,6 +744,9 @@ export default function QuizShell({
             defaultExpanded={false}
           />
         )}
+
+        {/* Only render quiz content when gate is NOT active */}
+        {!gate && (<>
 
         {/* Question card */}
         <div className="qs-question-card" style={{
@@ -1055,6 +1074,8 @@ export default function QuizShell({
 
         {/* ── Extra content slot ── */}
         {extraContent}
+        {/* Close the !gate fragment */}
+        </>)}
       </div>
 
       {/* ── AI Tutor drawer ── */}

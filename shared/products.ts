@@ -431,10 +431,29 @@ export function getTeamCourseOptions(province: string): TeamCourseOption[] {
   return province === "western" ? TEAM_COURSES_WESTERN : TEAM_COURSES_ONTARIO;
 }
 
-/** Given a courseKey, return the subscription tier it maps to */
-export function courseKeyToTier(courseKey: string, province: string): string {
+/** Check whether a courseKey is valid for the given province */
+export function isValidCourseKey(courseKey: string, province: string): boolean {
   const options = getTeamCourseOptions(province);
-  return options.find(o => o.key === courseKey)?.tier ?? "all-access";
+  return options.some(o => o.key === courseKey);
+}
+
+/**
+ * Given a courseKey, return the subscription tier it maps to.
+ * FAIL-CLOSED: returns null for unknown or cross-province keys.
+ * Use this for all access-granting paths.
+ */
+export function courseKeyToTierStrict(courseKey: string, province: string): string | null {
+  const options = getTeamCourseOptions(province);
+  return options.find(o => o.key === courseKey)?.tier ?? null;
+}
+
+/**
+ * Given a courseKey, return the subscription tier it maps to.
+ * Legacy: falls back to 'all-access' for unknown keys.
+ * Prefer courseKeyToTierStrict for all new access-granting code.
+ */
+export function courseKeyToTier(courseKey: string, province: string): string {
+  return courseKeyToTierStrict(courseKey, province) ?? "all-access";
 }
 
 /** Given a courseKey, return the human-readable label */

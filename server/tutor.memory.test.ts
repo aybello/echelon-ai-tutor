@@ -129,18 +129,19 @@ describe("tutor.saveSession", () => {
     expect(typeof result.saved).toBe("boolean");
   });
 
-  it("rejects unauthenticated users", async () => {
+  it("returns saved:false for unauthenticated users (Ticket 13: publicProcedure, graceful no-op)", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
-    await expect(
-      caller.tutor.saveSession({
-        examType: "oit",
-        messages: [
-          { role: "user", content: "test" },
-        ],
-        sessionStartMs: Date.now(),
-      })
-    ).rejects.toThrow();
+    // saveSession is now a publicProcedure that accepts OTP users.
+    // Unauthenticated callers (no userId, no studentEmail) get { saved: false } gracefully.
+    const result = await caller.tutor.saveSession({
+      examType: "oit",
+      messages: [
+        { role: "user", content: "test" },
+      ],
+      sessionStartMs: Date.now(),
+    });
+    expect(result).toMatchObject({ saved: false });
   });
 });
 

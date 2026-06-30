@@ -16,6 +16,7 @@ import { startExamReminderJob } from "../jobs/examReminders";
 import { startTriggerEngineJob } from "../jobs/triggerEngine";
 import { startWelcomeEmailJob } from "../jobs/welcomeEmail";
 import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
+import { ENV } from "./env";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -86,6 +87,16 @@ async function startServer() {
     } catch {
       return res.status(503).json({ status: "error", db: false, ts: new Date().toISOString() });
     }
+  });
+
+  // ── CRON_SECRET middleware — protects all /api/scheduled/* endpoints ────────
+  // Ticket 10: In production, require x-cron-secret header to match ENV.cronSecret.
+  // If ENV.cronSecret is empty (local dev), the check is skipped.
+  app.use("/api/scheduled", (req, res, next) => {
+    if (ENV.cronSecret && req.headers["x-cron-secret"] !== ENV.cronSecret) {
+      return res.status(401).json({ error: "Unauthorized: missing or invalid x-cron-secret" });
+    }
+    return next();
   });
 
   // ── Platform-managed DB keep-alive endpoint ────────────────────────────────

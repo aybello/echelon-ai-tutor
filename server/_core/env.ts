@@ -22,4 +22,10 @@ export const ENV = {
     (process.env.NODE_ENV === "production"
       ? "https://echeloninstitute.ca"
       : "http://localhost:3000"),
+  /**
+   * Secret token for protecting scheduled/cron endpoints (/api/scheduled/*).
+   * Set CRON_SECRET in production env; if unset, cron endpoints are unprotected
+   * (acceptable for local dev, not for production).
+   */
+  cronSecret: process.env.CRON_SECRET ?? "",
 };

@@ -572,7 +572,7 @@ BEHAVIOUR RULES:
      * saveSession — called when the student closes the AI tutor panel.
      * Generates a summary via LLM and saves the session to ai_chat_sessions.
      */
-    saveSession: protectedProcedure
+    saveSession: publicProcedure
       .input(
         z.object({
           examType: z.string(),
@@ -586,6 +586,12 @@ BEHAVIOUR RULES:
         })
       )
       .mutation(async ({ input, ctx }) => {
+        // Ticket 13: Accept both OAuth users and OTP students
+        const resolvedUserId = ctx.user?.id ?? null;
+        const resolvedEmail = ctx.user?.email ?? ctx.studentEmail ?? null;
+        // Require at least one identity
+        if (!resolvedUserId && !resolvedEmail) return { saved: false };
+
         // Only save if there were actual user messages (not just the initial greeting)
         const userMessages = input.messages.filter((m) => m.role === "user");
         if (userMessages.length === 0) return { saved: false };
@@ -662,7 +668,8 @@ BEHAVIOUR RULES:
           if (!db) return { saved: false };
 
           await db.insert(aiChatSessions).values({
-            userId: ctx.user.id,
+            userId: resolvedUserId ?? undefined,
+            studentEmail: resolvedUserId ? undefined : resolvedEmail ?? undefined,
             examType: input.examType,
             messageCount: input.messages.length,
             topicsCovered,
@@ -671,12 +678,20 @@ BEHAVIOUR RULES:
             sessionEnd: new Date(),
           });
 
-          // Increment totalSessions on the student profile
-          await db
-            .update(studentProfiles)
-            .set({ totalSessions: sql`${studentProfiles.totalSessions} + 1` })
-            .where(eq(studentProfiles.userId, ctx.user.id))
-            .catch((err) => { console.error("[session] profile update failed:", err); }); // non-fatal
+          // Increment totalSessions on the student profile (OAuth users only — OTP profiles use email)
+          if (resolvedUserId) {
+            await db
+              .update(studentProfiles)
+              .set({ totalSessions: sql`${studentProfiles.totalSessions} + 1` })
+              .where(eq(studentProfiles.userId, resolvedUserId))
+              .catch((err) => { console.error("[session] profile update failed:", err); }); // non-fatal
+          } else if (resolvedEmail) {
+            await db
+              .update(studentProfiles)
+              .set({ totalSessions: sql`${studentProfiles.totalSessions} + 1` })
+              .where(eq(studentProfiles.studentEmail, resolvedEmail))
+              .catch((err) => { console.error("[session] profile update (email) failed:", err); }); // non-fatal
+          }
 
           return { saved: true, summary };
         } catch (err) {

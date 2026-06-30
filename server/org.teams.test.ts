@@ -406,7 +406,7 @@ describe("Multi-course seat support", () => {
 
     await caller.org.assignSeat({
       email,
-      courseKeys: ["class1-water", "class1-wastewater"],
+      courseKeys: ["class1-water", "class1-ww"],
     });
 
     // Verify two active subscription rows exist
@@ -428,7 +428,7 @@ describe("Multi-course seat support", () => {
     expect(member).toBeDefined();
     const parsedKeys = JSON.parse(member!.courseKeys ?? "[]");
     expect(parsedKeys).toContain("class1-water");
-    expect(parsedKeys).toContain("class1-wastewater");
+    expect(parsedKeys).toContain("class1-ww");
     expect(member!.courseKey).toBe("class1-water"); // primary = first key
   });
 
@@ -489,7 +489,7 @@ describe("Multi-course seat support", () => {
     const email = testEmail(13);
     const caller = appRouter.createCaller(makeCtx(MULTI_MANAGER_EMAIL));
 
-    await caller.org.assignSeat({ email, courseKeys: ["class1-water", "class1-wastewater"] });
+    await caller.org.assignSeat({ email, courseKeys: ["class1-water", "class1-ww"] });
     await caller.org.revokeSeat({ email });
 
     const subs = await db!
@@ -510,7 +510,7 @@ describe("Multi-course seat support", () => {
     const caller = appRouter.createCaller(makeCtx(MULTI_MANAGER_EMAIL));
 
     await expect(
-      caller.org.assignSeat({ email, courseKeys: ["class1-water", "class1-wastewater"] })
+      caller.org.assignSeat({ email, courseKeys: ["class1-water", "class1-ww"] })
     ).resolves.toMatchObject({ success: true });
 
     // Verify only 1 member row created (not 2)

@@ -1189,7 +1189,7 @@ export default function Pricing() {
             <span className="section-badge" style={{ background: "#F5F3FF", color: "#7C3AED", borderColor: "#C4B5FD" }}>New</span>
           </div>
           <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
-            Subscribe annually and unlock every exam type for your class level. Province-scoped: Ontario subscribers get EOCP tracks; Western Canada subscribers get WPI tracks.
+            Subscribe annually and unlock every exam type for your class level. Ontario subscriptions include all four EOCP tracks: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Western Canada subscriptions cover all four WPI tracks.
           </p>
 
           {/* Province toggle for subscriptions */}
