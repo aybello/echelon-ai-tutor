@@ -99,14 +99,9 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   const seedForBank = seedQuestions[bankKey] ?? [];
   const seedAsDBQuestions: DBQuestion[] = seedForBank.map(seedToDBQuestion);
 
-  // ── Read subscription/purchase email and access token from localStorage for server-side access check ──
-  const [storedEmail] = useState<string | undefined>(() => {
-    try {
-      return localStorage.getItem("echelon_subscription_email")
-        ?? localStorage.getItem("echelon_trial_email")
-        ?? undefined;
-    } catch { return undefined; }
-  });
+  // ── Read signed access token from localStorage for server-side access check ──
+  // NOTE: We no longer send client-supplied email to the server as an access proof.
+  // Only verified sessions (OAuth, OTP) and signed access tokens are accepted.
   const [storedAccessToken] = useState<string | undefined>(() => {
     try { return localStorage.getItem("echelon_access_token") ?? undefined; } catch { return undefined; }
   });
@@ -117,7 +112,7 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
 
   // ── Fast batch (lazy mode only, skip if cache hit) ───────────────────────
   const batchQuery = trpc.quiz.getRandomQuestions.useQuery(
-    { bankKey, limit: 20, email: storedEmail, accessToken: storedAccessToken },
+    { bankKey, limit: 20, accessToken: storedAccessToken },
     {
       enabled: mode === "lazy" && !cached,
       staleTime: 1000 * 60 * 5,
@@ -130,7 +125,7 @@ export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full")
   // When cache is present: runs silently in background, result used to patch correctIndex.
   // When no cache: runs normally to populate questions.
   const fullQuery = trpc.quiz.getQuestions.useQuery(
-    { bankKey, email: storedEmail, accessToken: storedAccessToken },
+    { bankKey, accessToken: storedAccessToken },
     {
       staleTime: 1000 * 60 * 30,
       // Always fetch full bank — cache hit just means we show cached questions

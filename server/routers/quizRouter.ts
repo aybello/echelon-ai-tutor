@@ -19,7 +19,6 @@ export const quizRouter = router({
     getQuestions: publicProcedure
     .input(z.object({
       bankKey: z.string().min(1).max(64),
-      email: z.string().email().optional(),
       accessToken: z.string().optional(),
     }))
     .query(async ({ input, ctx }) => {
@@ -30,7 +29,6 @@ export const quizRouter = router({
             const examType = bankKeyToExamType(input.bankKey);
       const hasAccess = await resolveAccessForRequest(ctx, examType, {
         accessToken: input.accessToken,
-        clientEmail: input.email,
       });
       const rows = await db
         .select()
@@ -100,7 +98,6 @@ export const quizRouter = router({
       bankKey: z.string().min(1).max(64),
       limit: z.number().int().min(1).max(50).default(20),
       excludeIds: z.array(z.number().int()).max(200).default([]),
-      email: z.string().email().optional(),
       accessToken: z.string().optional(),
     }))
     .query(async ({ input, ctx }) => {
@@ -109,7 +106,6 @@ export const quizRouter = router({
             const examType = bankKeyToExamType(input.bankKey);
       const hasAccess = await resolveAccessForRequest(ctx, examType, {
         accessToken: input.accessToken,
-        clientEmail: input.email,
       });
       const excludeClause = input.excludeIds.length > 0
         ? sql` AND ${questions.questionNum} NOT IN (${sql.join(input.excludeIds.map((id) => sql`${id}`), sql`, `)})`

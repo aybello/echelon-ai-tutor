@@ -19,12 +19,19 @@
  *   6. verifyAccessTokenAndRecheckDb(token, examType)
  *      → verifies a signed token AND re-checks DB entitlement
  *
- * Rules:
+ * Security rules:
  * - The server decides access. localStorage is a convenience cache only.
  * - Signed tokens identify a session/email but do NOT prove entitlement alone.
  * - Stripe is billing truth. Database is access truth.
  * - Revoked, cancelled, refunded, disputed, or expired access MUST fail.
  * - Unknown exam types MUST fail closed.
+ * - Client-supplied email NEVER proves ownership. Only verified sessions do.
+ *
+ * Valid access paths:
+ * 1. Verified email session: ctx.studentEmail (OTP-proven)
+ * 2. OAuth session: ctx.user
+ * 3. Signed access token with live DB re-check
+ * 4. Free exam type
  */
 
 import { TRPCError } from "@trpc/server";
@@ -58,9 +65,8 @@ export type VerifiedIdentity =
  * 2. OTP session (ctx.studentEmail) — server-verified email cookie
  * 3. Anonymous — no verified identity
  *
- * NOTE: Client-supplied email inputs are NOT a verified identity.
- * They may be used as a last-resort fallback for legacy restore-access
- * flows, but MUST NOT be used to prove entitlement alone.
+ * NOTE: Client-supplied email inputs are NOT a verified identity and
+ * MUST NOT be used to prove entitlement. A typed email is not authentication.
  */
 export function resolveVerifiedIdentity(ctx: TrpcContext): VerifiedIdentity {
   if (ctx.user) {
@@ -138,17 +144,23 @@ export async function hasAccessToExam(
  * This is the primary guard for protected quiz/mock/flashcard procedures.
  * It checks all identity layers in priority order.
  *
+ * Valid access paths:
+ * 1. Free exam type
+ * 2. Verified OAuth session (ctx.user)
+ * 3. Verified OTP session (ctx.studentEmail)
+ * 4. Signed access token with live DB re-check
+ *
+ * Client-supplied email is NOT an accepted access path.
+ *
  * @param ctx - tRPC context
  * @param examType - the exam type to check (e.g. "class1-water")
- * @param accessToken - optional signed subscription token from client localStorage
- * @param clientEmail - optional client-supplied email (legacy fallback only)
+ * @param opts.accessToken - optional signed subscription token from client localStorage
  */
 export async function assertAccess(
   ctx: TrpcContext,
   examType: string,
   opts?: {
     accessToken?: string | null;
-    clientEmail?: string | null;
   },
 ): Promise<void> {
   // Free exam types are always accessible
@@ -169,20 +181,6 @@ export async function assertAccess(
   if (opts?.accessToken) {
     const recheckResult = await verifyAccessTokenAndRecheckDb(opts.accessToken, examType);
     if (recheckResult.hasAccess) return;
-  }
-
-  // 3. Legacy client-email fallback (only when no session exists)
-  // This is the weakest check — email alone does not prove identity.
-  // It is kept for backward compatibility with restore-access flows
-  // that have not yet been migrated to OTP sessions.
-  if (
-    identity.type === "anonymous" &&
-    opts?.clientEmail &&
-    !ctx.user &&
-    !ctx.studentEmail
-  ) {
-    const result = await resolveAccessByEmail(opts.clientEmail, examType);
-    if (result.hasAccess) return;
   }
 
   throw new TRPCError({
@@ -262,19 +260,21 @@ export async function hasAccessToCourse(
  * Unlike assertAccess (which throws), this returns a boolean so the caller
  * can decide whether to return trial content or full content.
  *
- * Priority:
+ * Valid access paths:
  * 1. Free exam types — always true
  * 2. OAuth session (ctx.user)
  * 3. OTP session (ctx.studentEmail)
- * 4. Signed subscription token (client localStorage — no DB lookup)
- * 5. Legacy client-supplied email (restore-access fallback only)
+ * 4. Signed subscription token with live DB re-check
+ *
+ * Client-supplied email is NOT an accepted access path.
+ * A typed email is not authentication — only verified ownership + active entitlement
+ * can unlock paid content.
  */
 export async function resolveAccessForRequest(
   ctx: TrpcContext,
   examType: string,
   opts?: {
     accessToken?: string | null;
-    clientEmail?: string | null;
   },
 ): Promise<boolean> {
   // 1. Free exam types
@@ -293,17 +293,6 @@ export async function resolveAccessForRequest(
   if (opts?.accessToken) {
     const recheckResult = await verifyAccessTokenAndRecheckDb(opts.accessToken, examType);
     if (recheckResult.hasAccess) return true;
-  }
-
-  // 5. Legacy client-email fallback
-  if (
-    identity.type === "anonymous" &&
-    opts?.clientEmail &&
-    !ctx.user &&
-    !ctx.studentEmail
-  ) {
-    const result = await resolveAccessByEmail(opts.clientEmail, examType);
-    if (result.hasAccess) return true;
   }
 
   return false;

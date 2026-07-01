@@ -235,12 +235,64 @@ describe("resolveAccessForRequest — free exam types", () => {
     expect(result).toBe(false);
   });
 
-  it("returns false for paid exam type with anonymous context and null clientEmail", async () => {
+});
+
+// ---------------------------------------------------------------------------
+// P0 Security Regression — client-supplied email MUST NOT grant access
+// These tests verify that the vulnerability (passing any email string to bypass
+// access control) is permanently closed. resolveAccessForRequest no longer
+// accepts a clientEmail parameter at all.
+// ---------------------------------------------------------------------------
+
+describe("P0 Security: client-supplied email cannot bypass access control", () => {
+  it("anonymous user with a paid-subscriber email string is still denied", async () => {
     const ctx = makeAnonCtx();
+    // The old vulnerable path: pass a known subscriber's email as clientEmail.
+    // resolveAccessForRequest no longer accepts clientEmail — extra keys are ignored.
     const result = await resolveAccessForRequest(ctx as any, "class1-water", {
-      clientEmail: null,
+      // @ts-expect-error — clientEmail is intentionally no longer in the type
+      clientEmail: "subscriber@example.com",
     });
     expect(result).toBe(false);
+  });
+
+  it("anonymous user with an admin email string is still denied", async () => {
+    const ctx = makeAnonCtx();
+    const result = await resolveAccessForRequest(ctx as any, "class1-water", {
+      // @ts-expect-error
+      clientEmail: "admin@echeloninstitute.ca",
+    });
+    expect(result).toBe(false);
+  });
+
+  it("anonymous user with a garbage email string is still denied", async () => {
+    const ctx = makeAnonCtx();
+    const result = await resolveAccessForRequest(ctx as any, "class2-water", {
+      // @ts-expect-error
+      clientEmail: "hacker@evil.com",
+    });
+    expect(result).toBe(false);
+  });
+
+  it("anonymous user with a valid access token AND a spoofed email — token decides, not email", async () => {
+    const ctx = makeAnonCtx();
+    // No valid token + spoofed email = denied
+    const result = await resolveAccessForRequest(ctx as any, "class1-water", {
+      accessToken: "not-a-valid-jwt",
+      // @ts-expect-error
+      clientEmail: "subscriber@example.com",
+    });
+    expect(result).toBe(false);
+  });
+
+  it("assertAccess throws FORBIDDEN even when clientEmail is passed as extra option", async () => {
+    const ctx = makeAnonCtx();
+    await expect(
+      assertAccess(ctx as any, "class1-water", {
+        // @ts-expect-error
+        clientEmail: "subscriber@example.com",
+      })
+    ).rejects.toThrow(TRPCError);
   });
 });
 
