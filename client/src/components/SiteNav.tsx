@@ -107,7 +107,7 @@ export const NAV_LINKS = [
   { label: "🗺️ Career Map",    href: "/career" },
   { label: "ℹ️ About",         href: "/about" },
   { label: "📊 Dashboard",      href: "/dashboard" },
-  { label: "🔑 Sign In",      href: "/login" },
+  { label: "🔑 Sign In",      href: "/account" },
 ];
 
 // Grouped sections for the mobile drawer
@@ -199,7 +199,7 @@ const DRAWER_SECTIONS = [
       { label: "📐 Formulas", href: "/formulas" },
       { label: "🗺️ Career Map", href: "/career" },
       { label: "📊 Dashboard", href: "/dashboard" },
-      { label: "🔑 Sign In", href: "/login" },
+      { label: "🔑 Sign In", href: "/account" },
     ],
   },
 ];
@@ -379,7 +379,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
        "echelon_access_token","echelon_subscription_exam_types","echelon_purchased_products"]
         .forEach(k => localStorage.removeItem(k));
     } catch { /* ignore */ }
-    window.location.href = "/login";
+    window.location.href = "/account";
   };
 
   // Lock body scroll when drawer is open so the page behind doesn't scroll.
@@ -686,7 +686,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
               🚪 Log Out
             </div>
           ) : (
-            <Link href="/login">
+            <Link href="/account">
               <div
                 onClick={close}
                 style={{
@@ -807,7 +807,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
               🚪 Log Out
             </span>
           ) : (
-            <Link href="/login">
+            <Link href="/account">
               <span
                 onClick={close}
                 style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", cursor: "pointer" }}

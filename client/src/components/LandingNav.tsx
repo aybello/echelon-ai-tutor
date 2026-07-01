@@ -191,16 +191,6 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
             </Link>
           ) : (
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <Link href="/team/login">
-                <button style={{
-                  padding: "8px 16px", borderRadius: 10,
-                  background: "transparent",
-                  color: "#475569", border: "1.5px solid #CBD5E1", fontSize: 13, fontWeight: 600,
-                  cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
-                }}>
-                  🏢 Team Login
-                </button>
-              </Link>
               <Link href="/account">
                 <button style={{
                   padding: "8px 16px", borderRadius: 10,
@@ -287,8 +277,8 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
               ? { label: "📊 Dashboard", href: "/dashboard", accent: true }
               : { label: "🔑 Sign In", href: "/account", accent: "purple" },
             { label: "📝 Try Free", href: "/quiz", accent: isAuthenticated ? false : true },
-            { label: "🏢 Team Login", href: "/team/login", accent: false },
             { label: "💰 Pricing", href: "/pricing", accent: false },
+            { label: "🏢 For Teams", href: "/pricing#teams", accent: false },
           ].map(tile => (
             <Link key={tile.href} href={tile.href}>
               <div

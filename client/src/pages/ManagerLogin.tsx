@@ -229,7 +229,7 @@ export default function ManagerLogin() {
             <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid #F1F5F9", textAlign: "center" }}>
               <p style={{ fontSize: 13, color: "#94A3B8", margin: 0 }}>
                 Not a manager?{" "}
-                <a href="/login" style={{ color: "#1D4ED8", fontWeight: 600, textDecoration: "none" }}>
+                <a href="/account" style={{ color: "#1D4ED8", fontWeight: 600, textDecoration: "none" }}>
                   Student sign in →
                 </a>
               </p>

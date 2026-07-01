@@ -122,16 +122,10 @@ export default function Teams() {
         rightSlot={
           <div className="flex items-center gap-2">
             <a
-              href="/login"
-              className="text-sm font-medium text-white/70 hover:text-white px-3 py-1.5 rounded-lg transition-colors"
-            >
-              Student Login
-            </a>
-            <a
-              href="/team/login"
+              href="/account"
               className="text-sm font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 px-4 py-1.5 rounded-lg transition-colors"
             >
-              Manager Login
+              Sign In
             </a>
           </div>
         }
@@ -362,9 +356,9 @@ export default function Teams() {
 
           <div className="text-sm text-gray-400">
             Already purchased?{" "}
-            <Link href="/team/login">
+            <Link href="/account">
               <span className="text-blue-600 hover:text-blue-700 cursor-pointer underline underline-offset-2">
-                Sign in to your manager dashboard
+                Sign in to your dashboard
               </span>
             </Link>
           </div>

@@ -245,8 +245,7 @@ export default function OrgDashboard() {
   });
 
   const logoutMutation = trpc.dashboardAuth.logout.useMutation({
-    // Bug fix: was "/team-login", correct route is "/team/login"
-    onSuccess: () => navigate("/team/login"),
+    onSuccess: () => navigate("/account"),
   });
 
   // ── Phase 5: Teams Manager Intelligence ──────────────────────────────────────
@@ -333,8 +332,7 @@ export default function OrgDashboard() {
             ? "Please sign in with your manager email to access the team dashboard."
             : msg}
         </p>
-        {/* Bug fix: was "/team-login", correct route is "/team/login" */}
-        <Link href="/team/login">
+        <Link href="/account">
           <Button className="bg-blue-600 hover:bg-blue-700 text-white">
             Sign In
             <ChevronRight className="w-4 h-4 ml-1" />
