@@ -60,6 +60,11 @@ export function trackEvent(
       ts: new Date().toISOString(),
       ...props,
     };
+    // Mask email before logging — applies to every caller without requiring
+    // each call site to remember to redact. Pattern: abc@example.com → abc***@example.com
+    if (payload.email) {
+      payload.email = payload.email.replace(/(^.{3}).+@/, '$1***@');
+    }
     // Structured log line — parseable by any log aggregator
     console.log(`[analytics] ${JSON.stringify(payload)}`);
   } catch {

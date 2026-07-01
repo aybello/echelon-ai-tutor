@@ -457,15 +457,35 @@ export const dashboardRouter = router({
         .map((r) => r.topic);
     }
 
-    // Get most practiced exam type
-    const [examRow] = await db
-      .select({ examType: questionAttempts.examType, cnt: sql<number>`COUNT(*)` })
-      .from(questionAttempts)
-      .where(attemptsWhere(userId, email))
-      .groupBy(questionAttempts.examType)
-      .orderBy(desc(sql`COUNT(*)`));
-
-    examType = examRow?.examType ?? "oit";
+    // Resolve current primary study focus (avoids stale stored examType — same pattern as triggerEngine)
+    try {
+      const entitlements = await resolveEntitlementsByEmail(email ?? "");
+      if (entitlements.unlockedExamTypes.length > 0) {
+        const focus = await resolvePrimaryStudyFocus({
+          email: email ?? null,
+          unlockedExamTypes: entitlements.unlockedExamTypes,
+        });
+        if (focus.examType) examType = focus.examType;
+      } else {
+        // No entitlements — fall back to most-practiced exam type from attempts
+        const [examRow] = await db
+          .select({ examType: questionAttempts.examType, cnt: sql<number>`COUNT(*)` })
+          .from(questionAttempts)
+          .where(attemptsWhere(userId, email))
+          .groupBy(questionAttempts.examType)
+          .orderBy(desc(sql`COUNT(*)`));
+        examType = examRow?.examType ?? "oit";
+      }
+    } catch {
+      // fail open — fall back to most-practiced exam type from attempts
+      const [examRow] = await db
+        .select({ examType: questionAttempts.examType, cnt: sql<number>`COUNT(*)` })
+        .from(questionAttempts)
+        .where(attemptsWhere(userId, email))
+        .groupBy(questionAttempts.examType)
+        .orderBy(desc(sql`COUNT(*)`));
+      examType = examRow?.examType ?? "oit";
+    }
 
     const resources = getResourcesForProfile(
       { examType, weakTopics, strongTopics: [] },
