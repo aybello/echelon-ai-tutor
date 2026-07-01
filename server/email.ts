@@ -182,7 +182,7 @@ export async function sendPurchaseConfirmationEmail(
   if (!ENV.smtpHost) {
     console.log("[Purchase Email] Preview URL:", nodemailer.getTestMessageUrl(info));
   } else {
-    console.log(`[Purchase Email] Sent to ${email} for ${productKey}`);
+    console.log(`[Purchase Email] Sent to ${email.replace(/(^.{3}).+@/, '$1***@')} for ${productKey}`);
   }
 }
 
@@ -301,7 +301,7 @@ export async function sendSubscriptionConfirmationEmail(
   if (!ENV.smtpHost) {
     console.log("[Subscription Email] Preview URL:", nodemailer.getTestMessageUrl(info));
   } else {
-    console.log(`[Subscription Email] Activation sent to ${email}`);
+    console.log(`[Subscription Email] Activation sent to ${email.replace(/(^.{3}).+@/, '$1***@')}`);
   }
 }
 
@@ -410,7 +410,7 @@ export async function sendSubscriptionRenewalEmail(
   if (!ENV.smtpHost) {
     console.log("[Subscription Email] Preview URL:", nodemailer.getTestMessageUrl(info));
   } else {
-    console.log(`[Subscription Email] Renewal sent to ${email}`);
+    console.log(`[Subscription Email] Renewal sent to ${email.replace(/(^.{3}).+@/, '$1***@')}`);
   }
 }
 
@@ -614,7 +614,7 @@ export async function sendMagicLinkEmail(
   if (!ENV.smtpHost) {
     console.log("[Magic Link Email] Preview URL:", nodemailer.getTestMessageUrl(info));
   } else {
-    console.log(`[Magic Link Email] Sent to ${email}`);
+    console.log(`[Magic Link Email] Sent to ${email.replace(/(^.{3}).+@/, '$1***@')}`);
   }
 }
 
@@ -725,7 +725,7 @@ export async function sendReEngagementEmail(payload: ReEngagementEmailPayload): 
   };
 
   const info = await transporter.sendMail(mail);
-  console.log(`[Re-engagement Email] Sent to ${email} — ${nodemailer.getTestMessageUrl(info) || "production"}`);
+  console.log(`[Re-engagement Email] Sent to ${email.replace(/(^.{3}).+@/, '$1***@')} — ${nodemailer.getTestMessageUrl(info) || "production"}`);
 }
 
 // ─── Welcome / onboarding email (Day 1 after purchase) ──────────────────────
@@ -844,7 +844,7 @@ export async function sendWelcomeOnboardingEmail(payload: WelcomeOnboardingEmail
   };
 
   const info = await transporter.sendMail(mail);
-  console.log(`[Welcome Onboarding Email] Sent to ${email} — ${nodemailer.getTestMessageUrl(info) || "production"}`);
+  console.log(`[Welcome Onboarding Email] Sent to ${email.replace(/(^.{3}).+@/, '$1***@')} — ${nodemailer.getTestMessageUrl(info) || "production"}`);
 }
 
 export interface TeamEnrollmentEmailPayload {
@@ -1006,7 +1006,7 @@ export async function sendTeamEnrollmentEmail(
   if (!ENV.smtpHost) {
     console.log("[Team Enrollment Email] Preview URL:", nodemailer.getTestMessageUrl(info));
   } else {
-    console.log(`[Team Enrollment Email] Sent to ${email} from org ${orgName}`);
+    console.log(`[Team Enrollment Email] Sent to ${email.replace(/(^.{3}).+@/, '$1***@')} from org ${orgName}`);
   }
 }
 
@@ -1116,6 +1116,6 @@ export async function sendOperatorStudyReminderEmail(
   if (!ENV.smtpHost) {
     console.log("[Study Reminder Email] Preview URL:", nodemailer.getTestMessageUrl(info));
   } else {
-    console.log(`[Study Reminder Email] Sent to ${email} from org ${orgName}`);
+    console.log(`[Study Reminder Email] Sent to ${email.replace(/(^.{3}).+@/, '$1***@')} from org ${orgName}`);
   }
 }

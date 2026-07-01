@@ -293,7 +293,7 @@ export const adminRouter = router({
           }).catch(err => console.error("[reconcile] Email failed:", err.message));
 
           recovered.push({ email, productKey, sessionId: session.id });
-          console.log(`[reconcile] Recovered missing purchase: ${email} → ${productKey} (${session.id})`);
+          console.log(`[reconcile] Recovered missing purchase: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (${session.id})`);
         }
 
         hasMore = page.has_more;

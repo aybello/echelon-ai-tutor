@@ -123,7 +123,7 @@ export async function runReconciliation(hoursBack: number = 48): Promise<Reconci
         }).catch(err => console.error("[reconcile] Email failed:", err.message));
 
         recovered.push({ email, productKey, sessionId: session.id });
-        console.log(`[reconcile] Recovered missing purchase: ${email} → ${productKey} (${session.id})`);
+        console.log(`[reconcile] Recovered missing purchase: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (${session.id})`);
       } catch (err: any) {
         errors.push(`${session.id}: ${err.message}`);
         console.error(`[reconcile] Error processing session ${session.id}:`, err.message);
@@ -223,7 +223,7 @@ export async function runSubscriptionReconciliation(): Promise<SubscriptionRecon
         });
 
         recovered.push({ email, tier, province, stripeSubscriptionId: sub.id });
-        console.log(`[reconcile-sub] Recovered: ${email} → ${tier} (${province}) expires ${currentPeriodEnd.toISOString()}`);
+        console.log(`[reconcile-sub] Recovered: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${tier} (${province}) expires ${currentPeriodEnd.toISOString()}`);
       } catch (err: any) {
         errors.push(`${sub.id}: ${err.message}`);
         console.error(`[reconcile-sub] Error processing subscription ${sub.id}:`, err.message);

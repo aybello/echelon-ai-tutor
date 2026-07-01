@@ -25,6 +25,8 @@ import { eq, and, desc, gte, sql, or, isNull } from "drizzle-orm";
 import { invokeLLM } from "../_core/llm";
 import { notifyOwner } from "../_core/notification";
 import { ENV } from "../_core/env";
+import { resolveEntitlementsByEmail } from "../_core/access";
+import { resolvePrimaryStudyFocus } from "../_core/studyFocus";
 import nodemailer from "nodemailer";
 
 // ── Trigger Definitions ──────────────────────────────────────────────────────
@@ -483,6 +485,21 @@ export async function runTriggerEngine(): Promise<{
         .orderBy(desc(examDates.examDate))
         .limit(1);
 
+      // Resolve current primary study focus (avoids stale profileRow.examType)
+      let currentExamType = profileRow.examType; // fallback
+      try {
+        const entitlements = await resolveEntitlementsByEmail(email);
+        if (entitlements.unlockedExamTypes.length > 0) {
+          const focus = await resolvePrimaryStudyFocus({
+            email,
+            unlockedExamTypes: entitlements.unlockedExamTypes,
+          });
+          if (focus.examType) currentExamType = focus.examType;
+        }
+      } catch {
+        // fail open — use profileRow.examType as fallback
+      }
+
       // Build student data
       const studentData: StudentData = {
         userId: userId ?? null,
@@ -490,7 +507,7 @@ export async function runTriggerEngine(): Promise<{
         name,
         email,
         profile: {
-          examType: profileRow.examType,
+          examType: currentExamType,
           weakTopics,
           strongTopics,
           totalAttempts: profileRow.totalAttempts,

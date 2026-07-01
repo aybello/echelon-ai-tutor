@@ -492,7 +492,6 @@ export const appRouter = router({
           // For all other exam types, verify the caller has access before invoking the LLM.
           if (input.examType) {
             const hasAccess = await resolveAccessForRequest(ctx, input.examType, {
-              clientEmail: undefined,
               accessToken: undefined,
             });
             if (!hasAccess) {

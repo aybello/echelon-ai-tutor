@@ -378,11 +378,11 @@ function Router() {
         <Route path={"/purchase-success"} component={PurchaseSuccess} />
         <Route path={"/subscription-success"} component={SubscriptionSuccess} />
         <Route path={"/account"} component={Account} />
-        <Route path={"/login"} component={Login} />
+        <Route path={"/login"}>{() => { window.location.replace("/account"); return null; }}</Route>
         <Route path={"/auth/magic"} component={MagicLinkConsume} />
         <Route path={"/dashboard"} component={StudentDashboard} />
         <Route path={"/teams"} component={Teams} />
-        <Route path={"/team/login"} component={ManagerLogin} />
+        <Route path={"/team/login"}>{() => { window.location.replace("/account?next=/team"); return null; }}</Route>
         <Route path={"/team"} component={OrgDashboard} />
         <Route path={"/blog/:slug"} component={BlogPost} />
         <Route path={"/blog"} component={Blog} />

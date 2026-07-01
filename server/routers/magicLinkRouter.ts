@@ -60,7 +60,7 @@ export const magicLinkRouter = router({
 
       if (!entitlements.hasAnyAccess && !entitlements.isManager) {
         // No access — return success anyway to prevent email enumeration
-        console.log(`[MagicLink] No entitlements found for ${email}`);
+        console.log(`[MagicLink] No entitlements found for ${email.replace(/(^.{3}).+@/, '$1***@')}`);
         return { sent: true };
       }
 
@@ -97,7 +97,7 @@ export const magicLinkRouter = router({
         console.error("[MagicLink] Failed to send email:", err.message);
       });
 
-      console.log(`[MagicLink] Sent to ${email} with ${entitlements.unlockedExamTypes.length} exam types`);
+      console.log(`[MagicLink] Sent to ${email.replace(/(^.{3}).+@/, '$1***@')} with ${entitlements.unlockedExamTypes.length} exam types`);
       trackEvent("restore_access_requested", { email });
       return { sent: true };
     }),

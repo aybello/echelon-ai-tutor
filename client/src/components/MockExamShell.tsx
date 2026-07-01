@@ -469,7 +469,7 @@ export default function MockExamShell({
     });
     const score = correct / questions.length;
     const pct = Math.round(score * 100);
-    const passed = pct >= Math.round(passThreshold * 100);
+    const passed = score >= passThreshold; // compare raw floats to avoid rounding artifacts (e.g. 69.5% rounding to 70% and passing a 70% threshold)
     // Sort modules weakest first
     const sortedModules = Object.entries(moduleBreakdown)
       .filter(([, bd]) => bd.total > 0)

@@ -205,7 +205,7 @@ export async function runExamReminders(): Promise<{ sent: number; errors: string
           .where(and(eq(examDates.email, row.email), eq(examDates.productKey, row.productKey)));
 
         sent++;
-        console.log(`[ExamReminder] Sent ${interval}-day reminder to ${row.email} for ${row.productKey}`);
+        console.log(`[ExamReminder] Sent ${interval}-day reminder to ${row.email.replace(/(^.{3}).+@/, '$1***@')} for ${row.productKey}`);
       } catch (err) {
         const msg = `Failed to send ${interval}-day reminder to ${row.email}: ${(err as Error).message}`;
         errors.push(msg);

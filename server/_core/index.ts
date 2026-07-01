@@ -79,10 +79,16 @@ async function startServer() {
   );
 
   // ── Health endpoint ────────────────────────────────────────────────────────
-  // Phase 8: Comprehensive health check covering DB, Stripe, Email, Cron, AI
-  app.get("/api/health", async (_req, res) => {
-    const checks: Record<string, boolean | string> = {};
+  // Public surface: returns only { status, ts } — no internal config details.
+  // Internal details (db, stripe, email, ai checks) are only returned when the
+  // caller provides the correct X-Health-Secret header matching ENV.cronSecret.
+  app.get("/api/health", async (req, res) => {
+    const internalSecret = ENV.cronSecret;
+    const callerSecret = req.headers["x-health-secret"];
+    const isInternal = internalSecret && callerSecret === internalSecret;
+
     let overallOk = true;
+    const checks: Record<string, boolean | string> = {};
 
     // DB check
     try {
@@ -111,11 +117,15 @@ async function startServer() {
     if (!checks.ai) overallOk = false;
 
     const status = overallOk ? "ok" : "degraded";
-    return res.status(overallOk ? 200 : 503).json({
-      status,
-      checks,
-      ts: new Date().toISOString(),
-    });
+    const httpStatus = overallOk ? 200 : 503;
+
+    if (isInternal) {
+      // Full details for internal callers (daily-health-check.mjs, monitoring)
+      return res.status(httpStatus).json({ status, checks, ts: new Date().toISOString() });
+    }
+
+    // Public callers only see the aggregate status
+    return res.status(httpStatus).json({ status, ts: new Date().toISOString() });
   });
 
   // ── FIX 4: One-click unsubscribe endpoint for reminder emails ────────────────

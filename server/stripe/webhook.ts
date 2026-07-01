@@ -105,7 +105,7 @@ export function registerStripeWebhook(app: Express) {
               stripePaymentIntentId,
             });
 
-            console.log(`[Stripe Webhook] Purchase recorded: ${email} → ${productKey} (CA$${(amountCAD / 100).toFixed(2)})`);
+            console.log(`[Stripe Webhook] Purchase recorded: ${email.replace(/(^.{3}).+@/, '$1***@')} → ${productKey} (CA$${(amountCAD / 100).toFixed(2)})`);
             trackEvent("checkout_completed", { email, productKey, extra: { amountCAD } });
 
             // Send purchase confirmation email (non-blocking — don't fail webhook on email error)
@@ -247,7 +247,7 @@ export function registerStripeWebhook(app: Express) {
               orgId = (insertResult as any).insertId;
               // Grant manager seat (member row + subscription row)
               await grantSeat(db, { id: orgId, name: orgName, province, termEnd: currentPeriodEnd }, managerEmail, "manager");
-              console.log(`[Stripe Webhook] Org created: ${orgName} (${orgId}) manager=${managerEmail} seats=${seats}`);
+              console.log(`[Stripe Webhook] Org created: ${orgName} (${orgId}) manager=${managerEmail.replace(/(^.{3}).+@/, '$1***@')} seats=${seats}`);
               await notifyOwner({
                 title: `New Team Plan: ${orgName}`,
                 content: `${managerEmail} purchased a ${seats}-seat ${tier} team plan for ${province}. Org ID: ${orgId}. Expires: ${currentPeriodEnd.toISOString()}`,
@@ -358,7 +358,7 @@ export function registerStripeWebhook(app: Express) {
               referralSource,
               userId: userId ?? undefined,
             });
-            console.log(`[Stripe Webhook] Subscription created: ${email} -> ${tier} (${province}) expires ${currentPeriodEnd.toISOString()}`);
+            console.log(`[Stripe Webhook] Subscription created: ${email.replace(/(^.{3}).+@/, '$1***@')} -> ${tier} (${province}) expires ${currentPeriodEnd.toISOString()}`);
             await notifyOwner({
               title: `New Subscription: ${tier} (${province})`,
               content: `${email} subscribed to ${tier} for ${province}. Expires: ${currentPeriodEnd.toISOString()}`,
