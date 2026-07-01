@@ -1059,7 +1059,7 @@ export default function Pricing() {
   // Sync with the global province selector (useProvince hook)
   const { province: globalProvince } = useProvince();
 
-  // Derive initial province from global hook; fall back to "ON" if not set
+  // Derive province code from global hook (used for syncing after user changes province)
   const globalProvinceCode: ProvinceCode =
     globalProvince === "bc" ? "BC"
     : globalProvince === "ab" ? "AB"
@@ -1067,7 +1067,9 @@ export default function Pricing() {
     : globalProvince === "mb" ? "MB"
     : "ON";
 
-  const [selectedProvince, setSelectedProvince] = useState<ProvinceCode>(globalProvinceCode);
+  // /pricing always defaults to Ontario regardless of stored province.
+  // Only ?tab=western or an explicit user click on the province selector switches to western.
+  const [selectedProvince, setSelectedProvince] = useState<ProvinceCode>("ON");
   const isWpi = selectedProvince !== "ON";
   const provinceInfo = PROVINCES.find(p => p.code === selectedProvince)!;
 
@@ -1083,9 +1085,9 @@ export default function Pricing() {
   );
   const subProvince: SubscriptionProvince = subProvinceOverride ?? derivedSubProvince;
 
-  // If ?tab=western is in the URL and user's global province is ON, pre-select BC so individual cards show WPI
+  // If ?tab=western is in the URL, pre-select BC so individual cards show WPI
   useEffect(() => {
-    if (tabParam === "western" && selectedProvince === "ON") {
+    if (tabParam === "western") {
       setSelectedProvince("BC");
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -1102,12 +1104,8 @@ export default function Pricing() {
     setSubProvinceOverride(p);
   };
 
-  // Sync if global province changes after mount (e.g. user picks province on homepage then navigates here)
-  useEffect(() => {
-    setSelectedProvince(globalProvinceCode);
-    setSubProvinceOverride(null);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [globalProvince]);
+  // Do NOT sync selectedProvince from globalProvince on mount or change.
+  // /pricing defaults to Ontario; only ?tab=western or explicit user action changes it.
 
   const [showIndividual, setShowIndividual] = useState(false);
 

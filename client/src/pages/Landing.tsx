@@ -1320,56 +1320,15 @@ export default function Landing() {
   };
 
   const updateProvinceMutation = trpc.auth.updateProvince.useMutation();
-  // Default active track based on province: WPI for western provinces, ontario water for ON
-  const defaultTrack = (province === "bc" || province === "ab" || province === "sk" || province === "mb") ? "wpi-water" : "water";
-  // Always start on the default track when the homepage loads.
-  // We no longer restore from URL hash — the hash was causing the page to
-  // show WPI buttons when navigating back from a WPI quiz page.
+  // Homepage always defaults to Ontario Water/OIT regardless of stored province or referrer.
+  // WPI is accessible via explicit tab selection only — it is not the default.
   const validTracks = ["water", "wastewater", "wqa", "wpi-water", "wpi-wastewater", "wpi-dist", "wpi-coll", "ontario-dist", "ontario-coll"] as const;
   // Top-level tab: 'wpi' is the parent for all 4 WPI sub-tracks
   type TopTab = "water" | "wastewater" | "wqa" | "wpi";
   type WpiSubTab = "wpi-water" | "wpi-wastewater" | "wpi-dist" | "wpi-coll";
   type OntarioSubTab = "water" | "ontario-dist" | "wastewater" | "ontario-coll";
   type Track = typeof validTracks[number];
-  const getInitialTrack = (): Track => {
-    // If the user navigated back from a specific course page, honour that context
-    // so the landing page opens on the matching track — regardless of stored province.
-    try {
-      const ref = document.referrer;
-      if (ref) {
-        const refPath = new URL(ref).pathname;
-        // Ontario / OIT courses → water or wastewater track
-        if (
-          refPath.startsWith("/class1-water") ||
-          refPath.startsWith("/class2-water") ||
-          refPath.startsWith("/class3-water") ||
-          refPath.startsWith("/class4-water") ||
-          refPath.startsWith("/wqa") ||
-          refPath.startsWith("/quiz") ||
-          refPath.startsWith("/oit-mock") ||
-          refPath.startsWith("/formulas-water") ||
-          refPath.startsWith("/formulas-wqa")
-        ) return "water";
-        if (
-          refPath.startsWith("/class1-ww") ||
-          refPath.startsWith("/class2-ww") ||
-          refPath.startsWith("/class3-ww") ||
-          refPath.startsWith("/class4-ww") ||
-          refPath.startsWith("/formulas-ww")
-        ) return "wastewater";
-        // WPI courses → matching wpi sub-track
-        if (refPath.startsWith("/wpi-class") || refPath.startsWith("/formulas-wpi") || refPath === "/wpi") {
-          if (refPath.includes("-wastewater") || refPath.includes("-ww")) return "wpi-wastewater";
-          if (refPath.includes("-dist")) return "wpi-dist";
-          if (refPath.includes("-coll")) return "wpi-coll";
-          return "wpi-water";
-        }
-      }
-    } catch { /* ignore cross-origin or missing referrer */ }
-    // Fall back to province-based default
-    return defaultTrack as Track;
-  };
-  const [activeTrack, setActiveTrackRaw] = useState<Track>(getInitialTrack);
+  const [activeTrack, setActiveTrackRaw] = useState<Track>("water");
   const setActiveTrack = (track: Track) => {
     setActiveTrackRaw(track);
     // Do NOT write the track to the URL hash — doing so causes the wrong
