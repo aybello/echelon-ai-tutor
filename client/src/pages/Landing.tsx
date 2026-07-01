@@ -1938,18 +1938,13 @@ export default function Landing() {
             Adaptive practice questions, module study notes, 500+ flashcards per course, interactive process guides, and an AI tutor available 24/7.
           </motion.p>
 
-          {/* Province-aware hero CTA */}
-          {(() => {
-            const isWestern = province === "bc" || province === "ab" || province === "sk" || province === "mb";
-            const ctaHref = isWestern ? "/wpi-class1-water" : "/quiz";
-            const ctaLabel = isWestern ? `💧 Try WPI Water Treatment Free →` : "Try Free OIT Practice →";
-            return (
+          {/* Hero CTAs — always Ontario-first */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.7 }}
             className="landing-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href={ctaHref} style={{ width: "100%" }}>
+            <Link href="/quiz" style={{ width: "100%" }}>
               <button className="btn-pulse" style={{
                 padding: "14px 32px", borderRadius: 12,
                 background: "linear-gradient(135deg, #2563EB, #0E7490)",
@@ -1958,46 +1953,9 @@ export default function Landing() {
                 boxShadow: "0 4px 24px rgba(37,99,235,0.4)",
                 width: "100%",
               }}>
-                {ctaLabel}
+                Try Free OIT Practice →
               </button>
             </Link>
-            {isWestern && (
-              <div className="landing-wpi-secondary-btns" style={{ display: "flex", flexDirection: "column", gap: 8, width: "100%" }}>
-                <Link href="/wpi-class1-water-dist" style={{ width: "100%" }}>
-                  <button style={{
-                    padding: "12px 24px", borderRadius: 12,
-                    background: "rgba(3,105,161,0.18)", backdropFilter: "blur(8px)",
-                    color: "#BAE6FD", border: "1px solid rgba(186,230,253,0.3)",
-                    fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-                    width: "100%",
-                  }}>
-                    🚰 Try WPI Distribution Free →
-                  </button>
-                </Link>
-                <Link href="/wpi-class1-wastewater" style={{ width: "100%" }}>
-                  <button style={{
-                    padding: "12px 24px", borderRadius: 12,
-                    background: "rgba(15,118,110,0.18)", backdropFilter: "blur(8px)",
-                    color: "#99F6E4", border: "1px solid rgba(153,246,228,0.3)",
-                    fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-                    width: "100%",
-                  }}>
-                    ♻️ Try WPI Wastewater Free →
-                  </button>
-                </Link>
-                <Link href="/wpi-class1-water-coll" style={{ width: "100%" }}>
-                  <button style={{
-                    padding: "12px 24px", borderRadius: 12,
-                    background: "rgba(6,95,70,0.18)", backdropFilter: "blur(8px)",
-                    color: "#6EE7B7", border: "1px solid rgba(110,231,183,0.3)",
-                    fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-                    width: "100%",
-                  }}>
-                    🔩 Try WPI Collection Free →
-                  </button>
-                </Link>
-              </div>
-            )}
             <Link href="/pricing" style={{ width: "100%" }}>
               <button style={{
                 padding: "14px 32px", borderRadius: 12,
@@ -2010,8 +1968,6 @@ export default function Landing() {
               </button>
             </Link>
           </motion.div>
-            );
-          })()}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
