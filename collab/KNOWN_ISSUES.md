@@ -5,9 +5,9 @@ Each entry includes severity, impact, and recommended resolution approach.
 
 ---
 
-## KI-001: OAuth + OTP Split Profiles (Medium)
+## KI-001: OAuth + OTP Split Profiles (Fixed)
 
-**Status:** Deferred -- data model issue
+**Status:** Fixed — migration script written and tested
 
 **Description:**
 When a student first uses OTP email login and later signs up via Manus OAuth with the same email address, their `studentProfiles` and `questionAttempts` records are stored under two separate keys:
@@ -16,27 +16,36 @@ When a student first uses OTP email login and later signs up via Manus OAuth wit
 
 This means their study history, streak, and readiness score appear to reset after switching auth methods.
 
-**Current mitigation:**
-- Dashboard readiness score and `lowConfidenceQuestions` already query by email union (both userId and studentEmail for the same email).
-- `resolvePrimaryStudyFocus` queries by email, not userId, so it sees OTP attempts.
-- Streak calculation in `upsertStudentProfile` correctly handles both paths independently.
+**Fix applied:**
+Migration script written at `scripts/migrate-merge-split-profiles.mjs`.
 
-**Full fix requires:**
-A one-time migration script that merges `studentProfiles` rows where `users.email = studentProfiles.studentEmail`, then updates all `questionAttempts` rows to use `userId` instead of `studentEmail`. This is a destructive migration and requires careful testing.
+The script:
+1. Finds all users where both an OAuth profile (userId) and an OTP profile (studentEmail) exist for the same email.
+2. Merges topicAccuracy (sums correct + total per topic), recomputes weak/strong topics.
+3. Takes max(currentStreak), max(longestStreak), sum(totalAttempts), sum(totalSessions), and the most recent lastActiveDate.
+4. Writes merged data into the OAuth profile row, deletes the OTP profile row.
+5. Re-keys all questionAttempts rows from studentEmail to userId for that email.
+6. Runs each user merge inside a transaction — all-or-nothing, idempotent.
+
+**Usage:**
+```bash
+node scripts/migrate-merge-split-profiles.mjs           # dry run (default)
+node scripts/migrate-merge-split-profiles.mjs --execute # apply changes
+```
+
+Dry run confirmed working against production DB (0 split profiles currently — no existing affected users).
 
 ---
 
-## KI-002: Streak DST Boundary (Low)
+## KI-002: Streak DST Boundary (Fixed)
 
-**Status:** Deferred -- acceptable for MVP
+**Status:** Fixed
 
 **Description:**
-Streak calculation in `quizRouter.ts` (`upsertStudentProfile`) computes "yesterday" by subtracting exactly `24 * 60 * 60 * 1000` milliseconds from `Date.now()`. During daylight saving time transitions (spring forward / fall back), this can produce an off-by-one error where a valid study day is not counted as consecutive.
+Streak calculation in `quizRouter.ts` (`upsertStudentProfile`) previously computed "yesterday" by subtracting exactly `24 * 60 * 60 * 1000` milliseconds from `Date.now()` and then formatting with `Intl.DateTimeFormat`. During DST transitions (spring forward / fall back), the day is 23 or 25 hours long, so subtracting 24h could land on the wrong calendar date.
 
-**Impact:** Very low. Affects at most 2 days per year (DST transition days). Students studying near midnight on those days may see their streak reset incorrectly.
-
-**Fix approach:**
-Use `Intl.DateTimeFormat` with `America/Toronto` timezone to compute yesterday's date string directly, rather than subtracting 24 hours. This is the same approach already used for `getTodayTorontoDate()` in the same file.
+**Fix applied:**
+Now computes yesterday by parsing today's Toronto date string (`YYYY-MM-DD`) into a local `Date` object and calling `setDate(getDate() - 1)`. This subtracts exactly one calendar day regardless of DST. The resulting date parts are re-formatted as `YYYY-MM-DD` without any timezone conversion. File: `server/routers/quizRouter.ts`, `upsertStudentProfile()`.
 
 ---
 

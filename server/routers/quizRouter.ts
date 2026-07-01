@@ -628,13 +628,17 @@ async function upsertStudentProfile(
       let currentStreak = profile.currentStreak;
       let longestStreak = profile.longestStreak;
       if (profile.lastActiveDate !== today) {
-        // Compute yesterday in Toronto timezone by subtracting 24h from now
-        const yesterdayStr = new Intl.DateTimeFormat("en-CA", {
-          timeZone: "America/Toronto",
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        }).format(new Date(Date.now() - 24 * 60 * 60 * 1000));
+        // Compute yesterday in Toronto timezone by decrementing the calendar date.
+        // Do NOT subtract 24 * 60 * 60 * 1000 ms — that breaks on DST transition days
+        // (spring forward / fall back) where the day is 23 or 25 hours long.
+        // Instead, parse today's date string and subtract exactly one calendar day.
+        const [ty, tm, td] = today.split("-").map(Number);
+        const todayLocal = new Date(ty, tm - 1, td); // local midnight, no TZ shift
+        todayLocal.setDate(todayLocal.getDate() - 1);
+        const yy = todayLocal.getFullYear();
+        const ym = String(todayLocal.getMonth() + 1).padStart(2, "0");
+        const yd = String(todayLocal.getDate()).padStart(2, "0");
+        const yesterdayStr = `${yy}-${ym}-${yd}`;
         if (profile.lastActiveDate === yesterdayStr) {
           currentStreak += 1;
         } else {
