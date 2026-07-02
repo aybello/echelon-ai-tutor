@@ -24,7 +24,7 @@ export default function MagicLinkConsume() {
 
   const consumeMagicLink = trpc.magicLink.consumeMagicLink.useMutation({
     onSuccess: (data) => {
-      if (data.valid && data.accessToken) {
+      if (data.valid) {
         // Store access in localStorage
         localStorage.setItem("echelon_access_token", data.accessToken);
         localStorage.setItem("echelon_subscription_email", data.email);

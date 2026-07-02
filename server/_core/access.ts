@@ -1,5 +1,5 @@
 import { getDb } from "../db";
-import { purchases, subscriptions, organizations } from "../../drizzle/schema";
+import { purchases, subscriptions, organizations, organizationMembers } from "../../drizzle/schema";
 import type { User } from "../../drizzle/schema";
 import { eq, and, gt } from "drizzle-orm";
 import { getAllUnlockedExamTypes } from "../stripe/products";
@@ -55,6 +55,7 @@ export type EntitlementSource =
   | "free"
   | "purchase"
   | "subscription"
+  | "org_seat"
   | "owner"
   | "admin"
   | "org_manager";
@@ -195,7 +196,57 @@ export async function resolveEntitlementsByEmail(
   if (subscriptionExamTypes.length > 0) sources.push("subscription");
 
   // -------------------------------------------------------------------------
-  // 3. Manager check — does NOT grant course access by itself
+  // 3. Org seat entitlements — operator is a member of an active org
+  // -------------------------------------------------------------------------
+  let orgSeatExamTypes: string[] = [];
+  try {
+    const seatRows = await db
+      .select({
+        courseKey: organizationMembers.courseKey,
+        courseKeys: organizationMembers.courseKeys,
+        orgProvince: organizations.province,
+        orgTier: organizations.tier,
+        orgTermEnd: organizations.termEnd,
+        orgStatus: organizations.status,
+      })
+      .from(organizationMembers)
+      .innerJoin(organizations, eq(organizationMembers.orgId, organizations.id))
+      .where(
+        and(
+          eq(organizationMembers.email, normalised),
+          eq(organizationMembers.status, "assigned"),
+          gt(organizations.termEnd, now),
+        ),
+      );
+    for (const seat of seatRows) {
+      if (!ORG_ACCESS_STATUSES.has(seat.orgStatus ?? "active")) continue;
+      // Multi-course seat: courseKeys JSON array takes precedence
+      if (seat.courseKeys) {
+        try {
+          const keys: string[] = JSON.parse(seat.courseKeys);
+          orgSeatExamTypes = orgSeatExamTypes.concat(getAllUnlockedExamTypes(keys));
+          continue;
+        } catch { /* fall through to single courseKey */ }
+      }
+      // Single-course seat
+      if (seat.courseKey) {
+        orgSeatExamTypes = orgSeatExamTypes.concat(getAllUnlockedExamTypes([seat.courseKey]));
+      } else {
+        // No specific course — org default: all-access for the org's province
+        const province = seat.orgProvince === "western" ? "western" : "ontario";
+        orgSeatExamTypes = orgSeatExamTypes.concat(
+          getAllSubscriptionExamTypes([{ tier: "all-access" as SubscriptionTier, province: province as SubscriptionProvince }])
+        );
+      }
+    }
+    if (orgSeatExamTypes.length > 0) sources.push("org_seat");
+  } catch (err) {
+    console.warn("[resolveEntitlements] Org seat check error:", err);
+    // fail closed
+  }
+
+  // -------------------------------------------------------------------------
+  // 4. Manager check — does NOT grant course access by itself
   // -------------------------------------------------------------------------
   let isManager = false;
   try {
@@ -218,7 +269,7 @@ export async function resolveEntitlementsByEmail(
   // 4. Combine and deduplicate
   // -------------------------------------------------------------------------
   const allExamTypes = Array.from(
-    new Set([...purchaseExamTypes, ...subscriptionExamTypes]),
+    new Set([...purchaseExamTypes, ...subscriptionExamTypes, ...orgSeatExamTypes]),
   );
 
   return {
