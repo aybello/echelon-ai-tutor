@@ -1119,3 +1119,103 @@ export async function sendOperatorStudyReminderEmail(
     console.log(`[Study Reminder Email] Sent to ${email.replace(/(^.{3}).+@/, '$1***@')} from org ${orgName}`);
   }
 }
+
+
+// ─── Email OTP ──────────────────────────────────────────────────────────────
+
+export interface OtpEmailPayload {
+  email: string;
+  code: string;
+  expiresInMinutes: number;
+}
+
+/**
+ * Sends a 6-digit OTP code email for org operator login.
+ */
+export async function sendOtpEmail(payload: OtpEmailPayload): Promise<void> {
+  const { email, code, expiresInMinutes } = payload;
+
+  let transporter: nodemailer.Transporter;
+  if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
+    transporter = createTransporter();
+  } else if (!ENV.isProduction) {
+    const testAccount = await nodemailer.createTestAccount();
+    transporter = nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false,
+      auth: { user: testAccount.user, pass: testAccount.pass },
+    });
+  } else {
+    console.error("[email] SMTP not configured in production — cannot send OTP.");
+    throw new Error("Email service not configured");
+  }
+
+  // Format code with a space in the middle for readability: 123 456
+  const displayCode = `${code.slice(0, 3)} ${code.slice(3)}`;
+
+  const mail = {
+    from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
+    to: email,
+    subject: `Your Echelon Institute login code: ${displayCode}`,
+    text: [
+      `Hi there,`,
+      ``,
+      `Your one-time login code for Echelon Institute is:`,
+      ``,
+      `  ${displayCode}`,
+      ``,
+      `Enter this code on the login page. It expires in ${expiresInMinutes} minutes.`,
+      ``,
+      `If you didn't request this, you can safely ignore this email.`,
+      ``,
+      `- The Echelon Institute Team`,
+    ].join("\n"),
+    html: `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,Helvetica,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+        <tr>
+          <td style="background:linear-gradient(135deg,#1D4ED8 0%,#0E7490 100%);border-radius:12px 12px 0 0;padding:32px 32px 28px;text-align:center;">
+            <div style="font-size:40px;margin-bottom:12px;">🔑</div>
+            <h1 style="color:#ffffff;margin:0 0 8px;font-size:24px;font-weight:800;">Your Login Code</h1>
+            <p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">Enter this code to access your courses.</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#ffffff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;text-align:center;">
+            <p style="margin:0 0 24px;font-size:15px;color:#475569;line-height:1.6;">
+              Use the code below to sign in to Echelon Institute. No password needed.
+            </p>
+            <div style="background:#F8FAFC;border:2px solid #E2E8F0;border-radius:12px;padding:24px;margin:0 auto 24px;display:inline-block;">
+              <span style="font-size:42px;font-weight:800;letter-spacing:8px;color:#1D4ED8;font-family:'Courier New',monospace;">${displayCode}</span>
+            </div>
+            <p style="margin:0 0 8px;font-size:13px;color:#94A3B8;">
+              This code expires in <strong>${expiresInMinutes} minutes</strong> and can only be used once.
+            </p>
+            <div style="border-top:1px solid #E2E8F0;margin-top:28px;padding-top:20px;">
+              <p style="margin:0;font-size:12px;color:#94A3B8;">
+                If you didn't request this code, you can safely ignore this email.
+              </p>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
+    `,
+  };
+
+  const info = await transporter.sendMail(mail);
+  if (!ENV.smtpHost) {
+    console.log("[OTP Email] Preview URL:", nodemailer.getTestMessageUrl(info));
+  } else {
+    console.log(`[OTP Email] Sent to ${email.replace(/(^.{3}).+@/, "$1***@")}`);
+  }
+}

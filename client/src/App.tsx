@@ -44,6 +44,7 @@ const PurchaseSuccess = lazy(() => import("./pages/PurchaseSuccess"));
 const SubscriptionSuccess = lazy(() => import("./pages/SubscriptionSuccess"));
 const WpiLanding = lazy(() => import("./pages/WpiLanding"));
 const MagicLinkConsume = lazy(() => import("./pages/MagicLinkConsume"));
+const OtpLogin = lazy(() => import("./pages/OtpLogin"));
 const Teams = lazy(() => import("./pages/Teams"));
 const OrgDashboard = lazy(() => import("./pages/OrgDashboard"));
 const ManagerLogin = lazy(() => import("./pages/ManagerLogin"));
@@ -380,6 +381,7 @@ function Router() {
         <Route path={"/account"} component={Account} />
         <Route path={"/login"}>{() => { window.location.replace("/account"); return null; }}</Route>
         <Route path={"/auth/magic"} component={MagicLinkConsume} />
+        <Route path={"/login/otp"} component={OtpLogin} />
         <Route path={"/dashboard"} component={StudentDashboard} />
         <Route path={"/teams"} component={Teams} />
         <Route path={"/team/login"}>{() => { window.location.replace("/account?next=/team"); return null; }}</Route>

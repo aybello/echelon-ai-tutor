@@ -118,7 +118,7 @@ All 6 fix batches from the 9/10 stabilization pass are complete. The platform is
 - TypeScript: clean (0 errors)
 
 **Checkpoint:**
-- Version ID: TBD (set after webdev_save_checkpoint)
+- Version ID: 2b108120
 - Message: Fix ticket Jul 02 2026 — blog EOCP, KI-001 runtime, P3 hygiene
 
 **Current state:**

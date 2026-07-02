@@ -528,3 +528,22 @@ export const jobPostings = mysqlTable("job_postings", {
 ]);
 export type JobPosting = typeof jobPostings.$inferSelect;
 export type InsertJobPosting = typeof jobPostings.$inferInsert;
+
+/**
+ * Email OTP codes — 6-digit one-time passcodes for org operator login.
+ * Issued when an operator requests a code; consumed when they enter it.
+ * Single-use and short-lived (10 minutes).
+ */
+export const emailOtpCodes = mysqlTable("email_otp_codes", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  codeHash: varchar("codeHash", { length: 64 }).notNull(), // SHA-256 of the 6-digit code
+  expiresAt: timestamp("expiresAt").notNull(),
+  usedAt: timestamp("usedAt"), // null = not yet used
+  attempts: int("attempts").notNull().default(0), // wrong-guess counter (max 5)
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (t) => [
+  index("otp_email_idx").on(t.email),
+]);
+export type EmailOtpCode = typeof emailOtpCodes.$inferSelect;
+export type InsertEmailOtpCode = typeof emailOtpCodes.$inferInsert;
