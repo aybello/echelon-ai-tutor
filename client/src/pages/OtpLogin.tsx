@@ -18,7 +18,11 @@ type Step = "email" | "code" | "success" | "error";
 export default function OtpLogin() {
   const [, navigate] = useLocation();
   const [step, setStep] = useState<Step>("email");
-  const [email, setEmail] = useState("");
+  // Pre-fill email from ?email= URL param (set by /account redirect)
+  const [email, setEmail] = useState(() => {
+    if (typeof window === "undefined") return "";
+    return new URLSearchParams(window.location.search).get("email") ?? "";
+  });
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const [errorMsg, setErrorMsg] = useState("");
   const [attemptsLeft, setAttemptsLeft] = useState(5);
@@ -227,10 +231,10 @@ export default function OtpLogin() {
               </button>
             </form>
             <p style={{ marginTop: 20, fontSize: 13, color: "#94A3B8" }}>
-              Prefer a magic link?{" "}
-              <Link href="/account" style={{ color: "#1D4ED8", textDecoration: "none", fontWeight: 600 }}>
-                Use the Account page
-              </Link>
+              Need help?{" "}
+              <a href="mailto:support@echeloninstitute.ca" style={{ color: "#1D4ED8", textDecoration: "none", fontWeight: 600 }}>
+                Contact support
+              </a>
             </p>
           </div>
         )}

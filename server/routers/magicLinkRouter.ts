@@ -46,59 +46,22 @@ export const magicLinkRouter = router({
    *
    * Always returns { sent: true } to prevent email enumeration.
    */
+  /**
+   * @deprecated Magic link login has been replaced by email OTP (/login/otp).
+   * This procedure is kept for backward compatibility (old emails in inboxes)
+   * but no longer sends new magic link emails.
+   * Returns { sent: true } silently — callers should migrate to emailOtp.requestOtp.
+   */
   requestMagicLink: publicProcedure
     .input(z.object({
       email: z.string().email(),
-      origin: z.string().url().optional(), // accepted but ignored for URL construction
-      next: z.string().max(200).optional(), // optional redirect path after magic link consume
+      origin: z.string().url().optional(),
+      next: z.string().max(200).optional(),
     }))
-    .mutation(async ({ input }) => {
-      const email = normalizeEmail(input.email);
-
-      // Re-resolve live entitlements — single source of truth
-      const entitlements = await resolveEntitlementsByEmail(email);
-
-      if (!entitlements.hasAnyAccess && !entitlements.isManager) {
-        // No access — return success anyway to prevent email enumeration
-        console.log(`[MagicLink] No entitlements found for ${email.replace(/(^.{3}).+@/, '$1***@')}`);
-        return { sent: true };
-      }
-
-      const db = await getDb();
-      if (!db) return { sent: true };
-
-      // Generate a secure token — store only the SHA-256 hash, never the raw token
-      const token = crypto.randomBytes(48).toString("base64url");
-      const tokenHash = crypto.createHash("sha256").update(token).digest("hex");
-      const expiresAt = new Date(Date.now() + MAGIC_LINK_EXPIRY_MINUTES * 60 * 1000);
-
-      // Store the hash — the raw token is only ever in the email link
-      await db.insert(magicLinks).values({
-        email,
-        tokenHash,
-        examTypes: JSON.stringify(entitlements.unlockedExamTypes),
-        expiresAt,
-      });
-
-      // Build the magic link URL from the server-approved base URL
-      // NEVER use input.origin here — it is client-controlled and could be attacker-supplied
-      // Append ?next= only if it is a safe relative path (starts with /)
-      const safeNext = input.next && input.next.startsWith("/") ? input.next : null;
-      const magicLinkUrl = safeNext
-        ? `${ENV.appBaseUrl}/auth/magic?token=${token}&next=${encodeURIComponent(safeNext)}`
-        : `${ENV.appBaseUrl}/auth/magic?token=${token}`;
-
-      // Send the email (non-blocking)
-      sendMagicLinkEmail({
-        email,
-        magicLinkUrl,
-        expiresInMinutes: MAGIC_LINK_EXPIRY_MINUTES,
-      }).catch(err => {
-        console.error("[MagicLink] Failed to send email:", err.message);
-      });
-
-      console.log(`[MagicLink] Sent to ${email.replace(/(^.{3}).+@/, '$1***@')} with ${entitlements.unlockedExamTypes.length} exam types`);
-      trackEvent("restore_access_requested", { email });
+    .mutation(async () => {
+      // DEPRECATED: Magic link login retired in favour of email OTP.
+      // No new magic link emails are sent. Existing links in inboxes still work via consumeMagicLink.
+      console.log("[MagicLink] requestMagicLink called but is deprecated — no email sent");
       return { sent: true };
     }),
 

@@ -165,11 +165,9 @@ export default function MagicLinkConsume() {
                 {status === "expired" ? "Link Expired" : "Invalid Link"}
               </h1>
               <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
-                {status === "expired"
-                  ? "This magic link has expired or has already been used. Please request a new one."
-                  : "This link is invalid. Please request a new sign-in link from the Account page."}
+                This link has expired or has already been used. Sign in with a 6-digit code instead — it's faster and more reliable.
               </p>
-              <Link href="/account">
+              <Link href="/login/otp">
                 <button
                   style={{
                     padding: "12px 32px",
@@ -183,7 +181,7 @@ export default function MagicLinkConsume() {
                     fontFamily: "inherit",
                   }}
                 >
-                  Request New Link →
+                  Sign In with Code →
                 </button>
               </Link>
             </>

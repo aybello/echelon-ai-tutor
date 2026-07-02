@@ -81,43 +81,7 @@ function formatDate(ts: Date | string | number) {
 }
 
 /** Magic Link section */
-function MagicLinkSection({ email }: { email: string }) {
-  const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
-
-  const requestMagicLink = trpc.magicLink.requestMagicLink.useMutation({
-    onSuccess: () => {
-      setSent(true);
-      setSending(false);
-      toast.success("Sign-in link sent!", { description: `Check ${email} for a magic link.` });
-    },
-    onError: (err) => {
-      setSending(false);
-      toast.error("Failed to send link", { description: err.message });
-    },
-  });
-
-  const handleSend = () => {
-    setSending(true);
-    requestMagicLink.mutate({ email, origin: window.location.origin });
-  };
-
-  if (sent) {
-    return (
-      <div style={{
-        background: "#EFF6FF", border: "1px solid #BFDBFE",
-        borderRadius: 12, padding: "14px 20px", marginBottom: 24,
-        display: "flex", alignItems: "center", gap: 12,
-      }}>
-        <span style={{ fontSize: 20 }}>📧</span>
-        <div>
-          <p style={{ color: "#1D4ED8", fontWeight: 700, fontSize: 13, margin: "0 0 2px" }}>Sign-in link sent!</p>
-          <p style={{ color: "#64748B", fontSize: 12, margin: 0 }}>Check <strong style={{ color: "#1D4ED8" }}>{email}</strong> for a link that works on any device.</p>
-        </div>
-      </div>
-    );
-  }
-
+function OtpAccessSection({ email }: { email: string }) {
   return (
     <div style={{
       background: "#F8FAFC", border: "1px solid #E2E8F0",
@@ -125,24 +89,23 @@ function MagicLinkSection({ email }: { email: string }) {
       display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap",
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        <span style={{ fontSize: 18 }}>🔗</span>
+        <span style={{ fontSize: 18 }}>🔑</span>
         <div>
           <p style={{ color: "#1E293B", fontWeight: 700, fontSize: 12, margin: "0 0 2px" }}>Need access on another device?</p>
-          <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>We'll email you a one-click sign-in link.</p>
+          <p style={{ color: "#64748B", fontSize: 11, margin: 0 }}>Sign in with a 6-digit code sent to <strong>{email}</strong>.</p>
         </div>
       </div>
-      <button
-        onClick={handleSend}
-        disabled={sending}
+      <a
+        href="/login/otp"
         style={{
           padding: "8px 16px", borderRadius: 8, border: "none",
-          background: sending ? "#CBD5E1" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
-          color: "#fff", fontSize: 12, fontWeight: 700, cursor: sending ? "not-allowed" : "pointer",
-          fontFamily: "inherit", whiteSpace: "nowrap",
+          background: "linear-gradient(135deg, #1D4ED8, #0E7490)",
+          color: "#fff", fontSize: 12, fontWeight: 700, cursor: "pointer",
+          fontFamily: "inherit", whiteSpace: "nowrap", textDecoration: "none", display: "inline-block",
         }}
       >
-        {sending ? "Sending…" : "Send Sign-In Link →"}
-      </button>
+        Sign In with Code →
+      </a>
     </div>
   );
 }
@@ -225,29 +188,8 @@ export default function Account() {
     );
   };
 
-  // FIX 1 (P0): Magic-link state for the restore-access flow.
-  // We no longer look up purchases/subscriptions by email directly — that would
-  // return tokens to anyone who knows a paying customer's email.
-  // Instead, submitting an email triggers a magic link to that inbox; access is
-  // only restored after the user clicks the link and proves inbox ownership.
-  const [magicLinkSent, setMagicLinkSent] = useState(false);
-  const [magicLinkSending, setMagicLinkSending] = useState(false);
-
-  // Read ?next= param so we can show a helpful hint after magic link is sent
-  const nextParam = typeof window !== "undefined"
-    ? new URLSearchParams(window.location.search).get("next") ?? ""
-    : "";
-
-  const requestMagicLinkMutation = trpc.magicLink.requestMagicLink.useMutation({
-    onSuccess: () => {
-      setMagicLinkSent(true);
-      setMagicLinkSending(false);
-    },
-    onError: (err) => {
-      setMagicLinkSending(false);
-      toast.error("Failed to send sign-in link", { description: err.message });
-    },
-  });
+  // OTP login redirect state — email form now redirects to /login/otp with email pre-filled
+  const [otpRedirecting, setOtpRedirecting] = useState(false);
 
   const getFlashcardProgress = trpc.flashcard.getAllProgress.useQuery(
     { email: submittedEmail ?? "" },
@@ -273,12 +215,9 @@ export default function Account() {
       setEmailError("Please enter a valid email address.");
       return;
     }
-    setRestored(false);
-    setMagicLinkSent(false);
-    setSubmittedEmail(trimmed);
-    // FIX 1: Trigger magic-link immediately on submit — no email-only DB lookup
-    setMagicLinkSending(true);
-    requestMagicLinkMutation.mutate({ email: trimmed, origin: window.location.origin, next: nextParam || undefined });
+    // Redirect to OTP login with email pre-filled
+    setOtpRedirecting(true);
+    window.location.href = `/login/otp?email=${encodeURIComponent(trimmed)}`;
   };
 
   // FIX 4: Prefer live entitlements as primary source; fall back to legacy purchase queries for OAuth users
@@ -383,20 +322,20 @@ export default function Account() {
               />
               <button
                 type="submit"
-                disabled={magicLinkSending}
+                disabled={otpRedirecting}
                 style={{
                   padding: "11px 22px", borderRadius: 10, border: "none",
-                  background: magicLinkSending ? "#CBD5E1" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
-                  color: "#fff", fontSize: 13, fontWeight: 800, cursor: magicLinkSending ? "not-allowed" : "pointer",
+                  background: otpRedirecting ? "#CBD5E1" : "linear-gradient(135deg, #1D4ED8, #0E7490)",
+                  color: "#fff", fontSize: 13, fontWeight: 800, cursor: otpRedirecting ? "not-allowed" : "pointer",
                   fontFamily: "inherit", whiteSpace: "nowrap", flexShrink: 0,
                 }}
               >
-                {magicLinkSending ? (
+                {otpRedirecting ? (
                   <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
                     <span style={{ display: "inline-block", width: 12, height: 12, border: "2px solid #fff", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.7s linear infinite" }} />
-                    Sending…
+                    Redirecting…
                   </span>
-                ) : "Send Sign-In Link →"}
+                ) : "Sign In with Code →"}
               </button>
             </div>
             {emailError && (
@@ -407,8 +346,8 @@ export default function Account() {
           {/* Trust signals */}
           <div style={{ display: "flex", gap: 20, marginTop: 18, flexWrap: "wrap" }}>
             {[
-              { icon: "🔒", text: "Inbox-verified — only you can restore access" },
-              { icon: "📧", text: "Sign-in link sent to your email" },
+              { icon: "🔒", text: "Inbox-verified — only you can sign in" },
+              { icon: "🔢", text: "6-digit code sent to your email" },
               { icon: "📱", text: "Works on any device or browser" },
             ].map(t => (
               <div key={t.text} style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -419,37 +358,7 @@ export default function Account() {
           </div>
         </div>
 
-        {/* Magic-link sent confirmation (unauthenticated restore flow) */}
-        {submittedEmail && !isAnyAuthenticated && magicLinkSent && (
-          <div className="account-card" style={{ padding: 28, textAlign: "center" }}>
-            <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#EFF6FF", border: "2px solid #BFDBFE", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, margin: "0 auto 20px" }}>📧</div>
-            <h2 style={{ color: "#1D4ED8", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>Check your inbox</h2>
-            <p style={{ color: "#334155", fontSize: 13, margin: "0 0 8px", lineHeight: 1.6 }}>
-              If an account exists for <strong style={{ color: "#1D4ED8" }}>{submittedEmail}</strong>, we've sent a sign-in link.
-            </p>
-            <p style={{ color: "#64748B", fontSize: 12, margin: "0 0 24px", lineHeight: 1.6 }}>
-              Click the link in your email to restore access on this device. The link expires in 30 minutes.
-              {nextParam && (
-                <span> After signing in, you'll be taken to <strong style={{ color: "#1D4ED8" }}>{nextParam}</strong>.</span>
-              )}
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10, alignItems: "center" }}>
-              <button
-                onClick={() => { setMagicLinkSending(true); requestMagicLinkMutation.mutate({ email: submittedEmail, origin: window.location.origin, next: nextParam || undefined }); }}
-                disabled={magicLinkSending}
-                style={{ padding: "10px 24px", borderRadius: 9, border: "1.5px solid #BFDBFE", background: "#EFF6FF", color: "#1D4ED8", fontSize: 12, fontWeight: 700, cursor: magicLinkSending ? "not-allowed" : "pointer", fontFamily: "inherit" }}
-              >
-                {magicLinkSending ? "Sending…" : "Resend link"}
-              </button>
-              <button
-                onClick={() => { setSubmittedEmail(null); setEmail(""); setMagicLinkSent(false); }}
-                style={{ fontSize: 11, color: "#94A3B8", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", fontWeight: 600 }}
-              >
-                ← Use a different email
-              </button>
-            </div>
-          </div>
-        )}
+
 
         {/* Results — only shown for authenticated users (who have proven inbox ownership) */}
         {isAnyAuthenticated && submittedEmail && !(getPurchases.isFetching || entitlementsQuery.isFetching) && (
@@ -486,7 +395,7 @@ export default function Account() {
                 </div>
 
                 {/* Sign-in link option for other devices */}
-                <MagicLinkSection email={submittedEmail ?? ""} />
+                <OtpAccessSection email={submittedEmail ?? ""} />
 
                 {/* Active Subscriptions */}
                 {(getSubscriptions.data?.subscriptions ?? []).length > 0 && (
