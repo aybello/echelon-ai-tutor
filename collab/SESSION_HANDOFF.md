@@ -101,3 +101,43 @@ All 6 fix batches from the 9/10 stabilization pass are complete. The platform is
 
 **Tests:** 514 passing
 **Checkpoint:** 60613415 (P0 fix), d58c30ac (study notes), 0a6221e0 (OAuth removal)
+
+---
+
+### Session: 2026-07-02 — Fix Ticket (Blog EOCP + KI-001 Runtime + P3 Hygiene)
+
+**What was done:**
+- Fix 1 (P1) — Ontario blog EOCP error: Rewrote `server/scripts/seedBlog.mjs` Ontario wastewater post. Replaced all 14 EOCP references with OWWCO/MECP. New slug: `owwco-wastewater-operator-certification-ontario-guide`. Old slug deleted from live DB. Client-side redirect added in `App.tsx` (old slug to new slug). BC posts untouched. Seed re-run: 5/5 posts upserted.
+- Fix 2 (P2) — KI-001 runtime root cause: `logAttempt` OTP branch in `server/routers/quizRouter.ts` now resolves `email -> userId` via a single indexed `users` lookup before calling `upsertStudentProfile`. Known-account OTP sessions write to the userId-keyed profile; unknown emails fall back to email-keyed (guest/trial). Added `users` import. New test file: `server/ki001.otp.test.ts` (4 tests).
+- Fix 3 (P3) — Migration script comment: `scripts/migrate-merge-split-profiles.mjs` step 4c comment corrected from "Takes max(totalAttempts), max(totalSessions)" to "Sums totalAttempts and totalSessions (streaks take max)".
+- Fix 4 (P3) — Test path portability: Three `fs.readFileSync("/home/ubuntu/echelon-ai-tutor/drizzle/schema.ts")` calls in `server/round5.test.ts` replaced with `require("path").join(process.cwd(), "drizzle/schema.ts")`.
+- KI-001 status updated in `collab/KNOWN_ISSUES.md` to "Fixed — runtime + migration".
+
+**Tests:**
+- 518/518 tests passing (31 test files)
+- TypeScript: clean (0 errors)
+
+**Checkpoint:**
+- Version ID: TBD (set after webdev_save_checkpoint)
+- Message: Fix ticket Jul 02 2026 — blog EOCP, KI-001 runtime, P3 hygiene
+
+**Current state:**
+All four items from the Claude-authored fix ticket are closed. The blog EOCP factual error is corrected in both the seed and the live DB, with a redirect preserving the old URL. KI-001 is now fully fixed at both the migration layer (existing split profiles) and the runtime layer (prevents future re-splitting). The P3 hygiene items (migration comment, test paths) are clean. 518/518 tests pass.
+
+**Remaining work:**
+- [ ] Publish checkpoint to production (click Publish in Management UI)
+- [ ] Instagram Reels 2 and 3 are ready to publish (awaiting Ay's go-ahead)
+- [ ] B2B manager reporting feature (next major build)
+- [ ] Diagnostic funnel (email-gated 30-question lead magnet)
+
+**Known issues introduced this session:**
+- None.
+
+**Files changed this session:**
+- `client/src/App.tsx`: Added redirect route for old EOCP Ontario blog slug
+- `server/scripts/seedBlog.mjs`: Rewrote Ontario wastewater post (EOCP -> OWWCO/MECP, new slug)
+- `server/routers/quizRouter.ts`: KI-001 runtime fix in logAttempt OTP branch; added users import
+- `server/ki001.otp.test.ts`: New test file (4 tests for KI-001 fix)
+- `scripts/migrate-merge-split-profiles.mjs`: Step 4c comment corrected
+- `server/round5.test.ts`: Absolute sandbox paths replaced with process.cwd()-relative paths
+- `collab/KNOWN_ISSUES.md`: KI-001 status updated to "Fixed — runtime + migration"

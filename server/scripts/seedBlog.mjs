@@ -196,23 +196,23 @@ const posts = [
     `.trim(),
   },
   {
-    slug: "eocp-wastewater-operator-certification-ontario-guide",
-    title: "EOCP Wastewater Operator Certification in Ontario: Complete Guide",
+    slug: "owwco-wastewater-operator-certification-ontario-guide",
+    title: "OWWCO Wastewater Operator Certification in Ontario: Complete Guide",
     excerpt:
-      "The Environmental Operators Certification Program (EOCP) governs wastewater operator certification in Ontario. This guide covers the OIT Wastewater exam, Class 1-4 levels, experience requirements, and how to prepare.",
+      "The Ontario Water Wastewater Certification Office (OWWCO) under MECP governs wastewater operator certification in Ontario under O. Reg. 129/04. This guide covers the OIT Wastewater exam, Class 1-4 levels, experience requirements, and how to prepare.",
     author: "Echelon Institute",
-    tags: "EOCP,wastewater,Ontario,OIT wastewater,Class 1 wastewater,certification",
-    metaTitle: "EOCP Wastewater Operator Certification Ontario: Complete Guide | Echelon Institute",
+    tags: "OWWCO,MECP,wastewater,Ontario,OIT wastewater,Class 1 wastewater,certification",
+    metaTitle: "OWWCO Wastewater Operator Certification Ontario: Complete Guide | Echelon Institute",
     metaDescription:
-      "Everything you need to know about EOCP wastewater operator certification in Ontario. Covers OIT Wastewater, Class 1-4 exams, experience requirements, exam content, and study strategies.",
+      "Everything you need to know about OWWCO wastewater operator certification in Ontario under MECP. Covers OIT Wastewater, Class 1-4 exams, O. Reg. 129/04 requirements, exam content, and study strategies.",
     readingTimeMinutes: 8,
     content: `
-<h2>What Is the EOCP?</h2>
-<p>The Environmental Operators Certification Program (EOCP) is the body responsible for certifying wastewater treatment and collection system operators in Ontario. While water treatment certification is administered directly by the MECP, wastewater certification in Ontario is managed by the EOCP, a non-profit organization established in partnership with the province.</p>
-<p>EOCP certification is required for anyone who operates a wastewater treatment plant or collection system in Ontario. The program has five levels: OIT (Operator-in-Training), Class 1, Class 2, Class 3, and Class 4, mirroring the structure of the water treatment certification system.</p>
+<h2>What Is OWWCO?</h2>
+<p>The Ontario Water Wastewater Certification Office (OWWCO) is the body responsible for certifying wastewater treatment and collection system operators in Ontario. OWWCO operates under the authority of the Ministry of the Environment, Conservation and Parks (MECP) and administers certification under Ontario Regulation 129/04 — the <em>Wastewater Systems Effluent Regulation</em>. Both water treatment and wastewater certification in Ontario are administered by the province through MECP/OWWCO, not by a third-party body.</p>
+<p>OWWCO certification is required for anyone who operates a wastewater treatment plant or collection system in Ontario. The program has five levels: OIT (Operator-in-Training), Class 1, Class 2, Class 3, and Class 4, mirroring the structure of the water treatment certification system under O. Reg. 128/04.</p>
 
 <h2>The OIT Wastewater Exam</h2>
-<p>The OIT Wastewater exam is the entry point for the EOCP certification ladder. It covers six core subject areas and consists of 100 multiple-choice questions. The passing score is 70%.</p>
+<p>The OIT Wastewater exam is the entry point for the OWWCO certification ladder. It covers six core subject areas and consists of 100 multiple-choice questions. The passing score is 70%.</p>
 
 <table>
   <thead><tr><th>Module</th><th>Approximate Weight</th><th>Key Topics</th></tr></thead>
@@ -240,13 +240,13 @@ const posts = [
 <p>Wastewater facilities have a higher density of confined spaces than most other industrial workplaces. Manholes, wet wells, digesters, and chemical storage tanks all qualify as confined spaces under Ontario's Occupational Health and Safety Act. The exam tests your knowledge of the permit-to-enter system, atmospheric testing requirements (oxygen, flammable gases, H₂S), and rescue procedures.</p>
 <p>Hydrogen sulfide (H₂S) is the most dangerous gas encountered in wastewater operations. It is heavier than air, accumulates in low points, and is immediately dangerous to life and health (IDLH) at 100 ppm. Critically, H₂S deadens the sense of smell at concentrations above 100 ppm, so you cannot rely on the characteristic rotten-egg odour as a warning at high concentrations.</p>
 
-<h2>Experience Requirements for EOCP Certification</h2>
-<p>The experience requirements for EOCP certification are similar to those for water treatment certification. To write the Class 1 exam, you need an OIT certificate and 12 months of full-time operating experience at a Class 1 or higher wastewater facility. For Class 2, you need a Class 1 certificate and an additional 24 months of experience.</p>
-<p>EOCP also accepts experience at collection system facilities, which can be useful for operators who work primarily in the field rather than at a treatment plant.</p>
+<h2>Experience Requirements for OWWCO Certification</h2>
+<p>The experience requirements for OWWCO certification under O. Reg. 129/04 are similar to those for water treatment certification under O. Reg. 128/04. To write the Class 1 exam, you need an OIT certificate and 12 months of full-time operating experience at a Class 1 or higher wastewater facility. For Class 2, you need a Class 1 certificate and an additional 24 months of experience at a Class 2 or higher facility.</p>
+<p>OWWCO also accepts experience at collection system facilities, which can be useful for operators who work primarily in the field rather than at a treatment plant. All experience must be verified by the facility's chief operator and submitted to OWWCO for approval.</p>
 
-<h2>How to Prepare for the EOCP Exams</h2>
-<p>The EOCP publishes a study guide and a list of reference materials for each certification level. The Ontario Wastewater Treatment Operator Training Manual is the primary reference for OIT and Class 1 preparation. For higher levels, the Metcalf and Eddy textbook "Wastewater Engineering: Treatment and Resource Recovery" is the standard reference.</p>
-<p>Practice questions are the most effective preparation tool. Echelon Institute's OIT Wastewater practice bank covers all six modules with detailed explanations. The Class 1 and Class 2 Wastewater banks are also available for operators preparing for higher-level exams.</p>
+<h2>How to Prepare for the OWWCO Wastewater Exams</h2>
+<p>MECP and OWWCO publish the exam syllabi and reference lists for each certification level. The Ontario Wastewater Treatment Operator Training Manual is the primary reference for OIT and Class 1 preparation. For higher levels, the Metcalf and Eddy textbook "Wastewater Engineering: Treatment and Resource Recovery" is the standard reference used across Ontario.</p>
+<p>Practice questions are the most effective preparation tool. Echelon Institute's OIT Wastewater practice bank covers all six modules with detailed explanations. The Class 1 and Class 2 Wastewater banks are also available for operators preparing for higher-level OWWCO exams.</p>
     `.trim(),
   },
   {

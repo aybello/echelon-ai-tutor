@@ -384,6 +384,7 @@ function Router() {
         <Route path={"/teams"} component={Teams} />
         <Route path={"/team/login"}>{() => { window.location.replace("/account?next=/team"); return null; }}</Route>
         <Route path={"/team"} component={OrgDashboard} />
+        <Route path={"/blog/eocp-wastewater-operator-certification-ontario-guide"}>{() => { window.location.replace("/blog/owwco-wastewater-operator-certification-ontario-guide"); return null; }}</Route>
         <Route path={"/blog/:slug"} component={BlogPost} />
         <Route path={"/blog"} component={Blog} />
         <Route path={"/jobs"} component={Careers} />

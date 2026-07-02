@@ -7,7 +7,7 @@ import { TRPCError } from "@trpc/server";
 import { bankKeyToExamType, FREE_TRIAL_LIMIT } from "../_core/access";
 import { resolveAccessForRequest } from "../_core/accessService";
 import { getDb } from "../db";
-import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews } from "../../drizzle/schema";
+import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews, users } from "../../drizzle/schema";
 import { and, eq, desc, sql, gte } from "drizzle-orm";
 import { z } from "zod";
 
@@ -303,11 +303,25 @@ export const quizRouter = router({
           bookmarked: input.bookmarked ? "yes" : "no",
         });
 
-        // Update student profile if authenticated (OAuth user) or email-verified (OTP session)
+        // Update student profile if authenticated (OAuth user) or email-verified (OTP session).
+        // KI-001 root-cause fix: for OTP sessions, resolve email → userId if a users row exists
+        // so the profile is always keyed by userId (not email) for known accounts.
         if (userId) {
           await upsertStudentProfile(db, userId, null, input.examType, input.topic, input.correct);
         } else if (ctx.studentEmail) {
-          await upsertStudentProfile(db, null, ctx.studentEmail, input.examType, input.topic, input.correct);
+          const normalizedEmail = ctx.studentEmail.trim().toLowerCase();
+          const [existingUser] = await db
+            .select({ id: users.id })
+            .from(users)
+            .where(eq(users.email, normalizedEmail))
+            .limit(1);
+          if (existingUser) {
+            // Known account: key by userId to prevent profile re-splitting
+            await upsertStudentProfile(db, existingUser.id, null, input.examType, input.topic, input.correct);
+          } else {
+            // Unknown email: fall back to email-keyed profile (guest/trial flow)
+            await upsertStudentProfile(db, null, normalizedEmail, input.examType, input.topic, input.correct);
+          }
         }
 
         return { success: true };

@@ -188,7 +188,7 @@ describe("Issue Q — sessionId passed through logAttempt", () => {
 describe("Issue O — schema has composite indexes", () => {
   it("questionAttempts schema definition includes userId+createdAt index", async () => {
     const schemaText = await import("fs").then((fs) =>
-      fs.readFileSync("/home/ubuntu/echelon-ai-tutor/drizzle/schema.ts", "utf-8")
+      fs.readFileSync(require("path").join(process.cwd(), "drizzle/schema.ts"), "utf-8")
     );
     expect(schemaText).toContain("qa_userid_createdat_idx");
     expect(schemaText).toContain("qa_email_createdat_idx");
@@ -196,7 +196,7 @@ describe("Issue O — schema has composite indexes", () => {
 
   it("triggerLogs schema definition includes userId+sentAt index", async () => {
     const schemaText = await import("fs").then((fs) =>
-      fs.readFileSync("/home/ubuntu/echelon-ai-tutor/drizzle/schema.ts", "utf-8")
+      fs.readFileSync(require("path").join(process.cwd(), "drizzle/schema.ts"), "utf-8")
     );
     expect(schemaText).toContain("trigger_logs_userid_sentat_idx");
     expect(schemaText).toContain("trigger_logs_email_sentat_idx");
@@ -204,7 +204,7 @@ describe("Issue O — schema has composite indexes", () => {
 
   it("questionAttempts schema includes sessionId index", async () => {
     const schemaText = await import("fs").then((fs) =>
-      fs.readFileSync("/home/ubuntu/echelon-ai-tutor/drizzle/schema.ts", "utf-8")
+      fs.readFileSync(require("path").join(process.cwd(), "drizzle/schema.ts"), "utf-8")
     );
     expect(schemaText).toContain("qa_sessionid_idx");
   });

@@ -19,7 +19,7 @@
  *   4. If both exist, merges them:
  *        a. Combines topicAccuracy (sum correct + total per topic).
  *        b. Takes max(currentStreak), max(longestStreak).
- *        c. Takes max(totalAttempts), max(totalSessions).
+ *        c. Sums totalAttempts and totalSessions (streaks take max — see step 4b).
  *        d. Takes the most recent lastActiveDate.
  *        e. Writes the merged data into the OAuth profile row (userId row).
  *        f. Deletes the OTP profile row (studentEmail row).

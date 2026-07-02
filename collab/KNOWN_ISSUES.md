@@ -5,9 +5,9 @@ Each entry includes severity, impact, and recommended resolution approach.
 
 ---
 
-## KI-001: OAuth + OTP Split Profiles (Fixed)
+## KI-001: OAuth + OTP Split Profiles (Fixed — runtime + migration)
 
-**Status:** Fixed — migration script written and tested
+**Status:** Fixed — migration script + runtime root-cause fix applied
 
 **Description:**
 When a student first uses OTP email login and later signs up via Manus OAuth with the same email address, their `studentProfiles` and `questionAttempts` records are stored under two separate keys:
@@ -16,10 +16,8 @@ When a student first uses OTP email login and later signs up via Manus OAuth wit
 
 This means their study history, streak, and readiness score appear to reset after switching auth methods.
 
-**Fix applied:**
-Migration script written at `scripts/migrate-merge-split-profiles.mjs`.
-
-The script:
+**Fix 1 — Migration (commit e33bd94):**
+Migration script at `scripts/migrate-merge-split-profiles.mjs` merges existing split profiles:
 1. Finds all users where both an OAuth profile (userId) and an OTP profile (studentEmail) exist for the same email.
 2. Merges topicAccuracy (sums correct + total per topic), recomputes weak/strong topics.
 3. Takes max(currentStreak), max(longestStreak), sum(totalAttempts), sum(totalSessions), and the most recent lastActiveDate.
@@ -27,7 +25,12 @@ The script:
 5. Re-keys all questionAttempts rows from studentEmail to userId for that email.
 6. Runs each user merge inside a transaction — all-or-nothing, idempotent.
 
-**Usage:**
+**Fix 2 — Runtime root cause (this checkpoint):**
+`logAttempt` in `quizRouter.ts` (OTP branch) now resolves `email → userId` before writing the student profile. If a `users` row exists for the OTP session email, the profile is keyed by `userId` (not email), preventing re-splitting after migration. Unknown emails (genuine guest/trial flow) continue to use email-keyed profiles.
+
+Test coverage: `server/ki001.otp.test.ts` — 4 tests covering the known-account, unknown-email, case-normalization, and no-re-split invariants.
+
+**Usage (migration):**
 ```bash
 node scripts/migrate-merge-split-profiles.mjs           # dry run (default)
 node scripts/migrate-merge-split-profiles.mjs --execute # apply changes
