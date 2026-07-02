@@ -113,7 +113,20 @@ def check_answer_highlighting(page, base):
         page.wait_for_load_state("domcontentloaded", timeout=TIMEOUT)
         # Wait for quiz to fully load — wait for the question text to appear
         # The quiz renders a question stem before answer options
-        time.sleep(5)
+        # Use an explicit wait for A/B/C/D buttons to appear (up to 15s)
+        try:
+            page.wait_for_function("""
+                () => {
+                    const buttons = Array.from(document.querySelectorAll('button'));
+                    return buttons.some(b => {
+                        const t = b.innerText.trim();
+                        const rect = b.getBoundingClientRect();
+                        return rect.width > 50 && /^[A-D][.\\n]/.test(t);
+                    });
+                }
+            """, timeout=15000)
+        except Exception:
+            time.sleep(8)  # fallback: just wait longer
         # Answer buttons are rendered as 'A.\nText', 'B.\nText' etc.
         # Find them by looking for buttons starting with A., B., C., D.
         clicked = page.evaluate("""
@@ -175,22 +188,24 @@ def check_restore_access(page, base):
         if not email_input.is_visible():
             email_input = page.locator("input").filter(has_placeholder="email").first
         email_input.fill("test@example.com")
-        # Find and click the restore/find button
-        for btn_text in ["Find My Passes", "Find", "Restore", "Look up", "Submit"]:
+        # Find and click the sign-in / restore button
+        # Button text changed to "Send Sign-In Link" after auth consolidation (Fix 3)
+        for btn_text in ["Send Sign-In Link", "Find My Passes", "Find", "Restore", "Look up", "Submit"]:
             btn = page.locator(f"button:has-text('{btn_text}')").first
             if btn.is_visible():
                 btn.click()
                 break
         else:
-            raise AssertionError("Could not find Restore/Find button on account page")
+            raise AssertionError("Could not find sign-in/restore button on account page")
         time.sleep(2)
         page_text = page.inner_text("body")
         has_response = any(word in page_text.lower() for word in [
-            "no purchases", "found", "pass", "access", "purchase"
+            "no purchases", "found", "pass", "access", "purchase",
+            "check your email", "sent", "link", "sign-in", "magic"
         ])
         if not has_response:
-            raise AssertionError("No response shown after submitting email for restore access")
-        ok(name, "restore access form responds to email input")
+            raise AssertionError("No response shown after submitting email for sign-in")
+        ok(name, "sign-in form responds to email input")
     except Exception as e:
         fail(name, str(e)[:200])
 
