@@ -10,6 +10,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { registerBlogSsrRoutes, buildDynamicSitemap } from "../blogSsr";
+import { registerPageSsrRoutes } from "../pageSsr";
 import { registerStripeWebhook } from "../stripe/webhook";
 import { generalLimiter, aiTutorLimiter, contactLimiter, authLimiter } from "../rateLimit";
 import { startReconciliationJob } from "../jobs/reconcile";
@@ -196,10 +197,17 @@ async function startServer() {
     }
   });
 
+  // isDev is used by both SSR handlers
+  const isDev = process.env.NODE_ENV === "development";
+
+  // ── Static page SSR routes — must be BEFORE the SPA catch-all ────────────────────────────────────────
+  // Handles /, /pricing, /about, /jobs, /blog, /wpi, /faq, /privacy, /terms, /refund
+  // Each returns per-route title, canonical, H1, and structured data in raw HTML.
+  registerPageSsrRoutes(app, isDev);
+
   // ── Blog SSR routes — must be BEFORE the SPA catch-all ────────────────────────────────────────
   // /blog and /blog/:slug return server-rendered HTML so crawlers see full
   // article content without executing JavaScript.
-  const isDev = process.env.NODE_ENV === "development";
   registerBlogSsrRoutes(app, isDev);
 
   // ── Dynamic sitemap — generated from DB at request time ────────────────────────────
