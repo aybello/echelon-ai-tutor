@@ -9,6 +9,7 @@ import { registerOAuthRoutes } from "./oauth";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
+import { registerBlogSsrRoutes, buildDynamicSitemap } from "../blogSsr";
 import { registerStripeWebhook } from "../stripe/webhook";
 import { generalLimiter, aiTutorLimiter, contactLimiter, authLimiter } from "../rateLimit";
 import { startReconciliationJob } from "../jobs/reconcile";
@@ -192,6 +193,25 @@ async function startServer() {
     } catch (err) {
       console.error("[fetch-jobs] error:", err);
       return res.status(500).json({ error: String(err), ts: new Date().toISOString() });
+    }
+  });
+
+  // ── Blog SSR routes — must be BEFORE the SPA catch-all ────────────────────────────────────────
+  // /blog and /blog/:slug return server-rendered HTML so crawlers see full
+  // article content without executing JavaScript.
+  const isDev = process.env.NODE_ENV === "development";
+  registerBlogSsrRoutes(app, isDev);
+
+  // ── Dynamic sitemap — generated from DB at request time ────────────────────────────
+  // New posts appear in the sitemap automatically with lastmod dates.
+  // The static client/public/sitemap.xml has been deleted to avoid shadowing this.
+  app.get("/sitemap.xml", async (_req, res) => {
+    try {
+      const xml = await buildDynamicSitemap();
+      res.status(200).set({ "Content-Type": "application/xml; charset=utf-8" }).end(xml);
+    } catch (err) {
+      console.error("[sitemap] error:", err);
+      res.status(500).send("Internal server error");
     }
   });
 
