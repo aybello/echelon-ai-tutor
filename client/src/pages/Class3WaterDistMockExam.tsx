@@ -14,6 +14,7 @@ export default function Class3WaterDistMockExam() {
   usePageMeta({
     title: "Ontario Class 3 Water Distribution Mock Exam",
     description: "100-question timed mock exam for the Ontario Class 3 Water Distribution certification. 2-hour timer, 70% pass threshold.",
+    noindex: true
   });
   const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class3-water-dist");
   const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({

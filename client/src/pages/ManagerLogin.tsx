@@ -10,6 +10,7 @@ export default function ManagerLogin() {
   usePageMeta({
     title: "Manager Sign In | Echelon Institute",
     description: "Sign in to your Echelon for Teams manager dashboard to track your operators' progress.",
+    noindex: true
   });
 
   const [step, setStep] = useState<"email" | "code">("email");

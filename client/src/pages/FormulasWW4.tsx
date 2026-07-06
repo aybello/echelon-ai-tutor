@@ -435,6 +435,7 @@ export default function FormulasWW4() {
     path: "/formulas-ww4",
     keywords:
       "Class 4 wastewater formulas, Ontario operator exam, BNR, MBR, biosolids, UV disinfection, OWWCO, O. Reg. 128/04",
+    noindex: true
   });
 
   const [activeCategory, setActiveCategory] = useState<string | null>(null);

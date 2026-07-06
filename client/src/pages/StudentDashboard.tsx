@@ -65,6 +65,7 @@ export default function StudentDashboard() {
   usePageMeta({
     title: "My Dashboard — Echelon Institute",
     description: "Track your study progress, accuracy trends, and exam readiness.",
+    noindex: true
   });
 
   const { user, loading: authLoading, isAuthenticated } = useAuth();

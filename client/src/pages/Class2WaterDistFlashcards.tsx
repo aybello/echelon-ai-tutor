@@ -9,6 +9,7 @@ export default function Class2WaterDistFlashcards() {
   usePageMeta({
     title: "Ontario Class 2 Water Distribution Flashcards",
     description: "Flashcards for the Ontario Class 2 Water Distribution operator certification exam.",
+    noindex: true
   });
   const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("class2-water-dist");
   if (isLoading) return <QuizSkeleton />;

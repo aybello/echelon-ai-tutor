@@ -80,6 +80,7 @@ export default function WastewaterCollectionGuide() {
   usePageMeta({
     title: "Wastewater Collection",
     description: "Wastewater collection system operator exam prep. Practice questions and study materials.",
+    noindex: true
   });
 
   const [activeStep, setActiveStep] = useState<CollectionStep>(COLL_STEPS[0]);

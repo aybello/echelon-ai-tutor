@@ -336,6 +336,7 @@ export default function ProcessControl() {
   usePageMeta({
     title: "Process Control",
     description: "Process control concepts for water and wastewater treatment operators.",
+    noindex: true
   });
 
   const [location] = useLocation();

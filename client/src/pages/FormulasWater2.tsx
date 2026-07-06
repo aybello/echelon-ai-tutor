@@ -523,6 +523,7 @@ export default function FormulasWater2() {
   usePageMeta({
     title: "Class 2 Water Formula Sheet | Echelon Institute",
     description: "Complete formula reference for the Ontario Class 2 Water Treatment operator exam — treatment process, lab analysis, equipment O&M, source water, and regulatory limits.",
+    noindex: true
   });
 
   const filtered = CATEGORIES

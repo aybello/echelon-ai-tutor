@@ -115,6 +115,7 @@ export default function Account() {
     title: "My Passes — Echelon Institute",
     description: "Restore access to your Echelon Institute practice passes. Enter your purchase email to unlock your exams on any device.",
     keywords: "restore access, my passes, Echelon Institute account",
+    noindex: true
   });
 
   const [email, setEmail] = useState(() => {

@@ -16,6 +16,7 @@ export default function Class1WastewaterMockExam() {
   usePageMeta({
     title: "Class 1 Wastewater Treatment Mock Exam",
     description: "Mock Exam for Ontario OWWCO Class 1 Wastewater Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
+    noindex: true
   });
 
   const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-wastewater");

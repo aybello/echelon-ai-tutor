@@ -353,6 +353,7 @@ export default function FormulasWpiClass2Ww() {
   usePageMeta({
     title: "WPI Class 2 Wastewater Formulas",
     description: "Essential formulas and calculations for WPI Class 2 Wastewater operator certification exam. Quick reference formula sheet.",
+    noindex: true
   });
 
   const [activeSection, setActiveSection] = useState<number | null>(null);

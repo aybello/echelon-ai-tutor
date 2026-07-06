@@ -10,6 +10,7 @@ export default function Class1WaterFlashcards() {
   usePageMeta({
     title: "Class 1 Water Treatment Flashcards",
     description: "Flashcards for Ontario OWWCO Class 1 Water Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
+    noindex: true
   });
 
 

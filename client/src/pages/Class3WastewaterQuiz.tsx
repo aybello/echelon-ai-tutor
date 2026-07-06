@@ -13,6 +13,7 @@ export default function Class3WastewaterQuiz() {
   usePageMeta({
     title: "Class 3 Wastewater Treatment Practice Questions",
     description: "Practice Questions for Ontario OWWCO Class 3 Wastewater Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
+    noindex: true
   });
 
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class3-wastewater", "lazy");

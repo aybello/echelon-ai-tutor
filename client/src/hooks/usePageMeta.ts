@@ -11,6 +11,11 @@ interface PageMetaOptions {
   keywords?: string;
   /** Canonical path, e.g. "/quiz". Defaults to current pathname. */
   path?: string;
+  /**
+   * Set to true for private/app pages (quiz, dashboard, account, admin, auth).
+   * Injects <meta name="robots" content="noindex, nofollow"> and removes canonical.
+   */
+  noindex?: boolean;
 }
 
 const BASE_TITLE = "Echelon Institute";
@@ -28,7 +33,7 @@ function setMeta(name: string, content: string, property = false) {
   el.setAttribute("content", content);
 }
 
-export function usePageMeta({ title, description, keywords, path }: PageMetaOptions) {
+export function usePageMeta({ title, description, keywords, path, noindex }: PageMetaOptions) {
   useEffect(() => {
     const fullTitle = `${title} | ${BASE_TITLE}`;
     const canonicalUrl = `${BASE_URL}${path ?? window.location.pathname}`;
@@ -52,13 +57,21 @@ export function usePageMeta({ title, description, keywords, path }: PageMetaOpti
     setMeta("twitter:description", description);
     setMeta("twitter:image", OG_IMAGE);
 
-    // Canonical link
+    // Robots: noindex for private/app pages, index for public SEO pages
+    setMeta("robots", noindex ? "noindex, nofollow" : "index, follow");
+
+    // Canonical link — only set for indexable pages
     let canonical = document.querySelector<HTMLLinkElement>("link[rel='canonical']");
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
+    if (noindex) {
+      // Remove canonical from private pages
+      if (canonical) canonical.remove();
+    } else {
+      if (!canonical) {
+        canonical = document.createElement("link");
+        canonical.setAttribute("rel", "canonical");
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute("href", canonicalUrl);
     }
-    canonical.setAttribute("href", canonicalUrl);
-  }, [title, description, keywords, path]);
+  }, [title, description, keywords, path, noindex]);
 }

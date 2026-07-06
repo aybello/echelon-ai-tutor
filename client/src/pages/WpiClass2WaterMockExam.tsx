@@ -17,6 +17,7 @@ export default function WpiClass2WaterMockExam() {
   usePageMeta({
     title: "WPI Class 2 Water Treatment Mock Exam",
     description: "Mock Exam for WPI Class 2 Water Treatment operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    noindex: true
   });
 
   const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class2-water");

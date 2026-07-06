@@ -26,6 +26,7 @@ export default function Class4WaterDistQuiz() {
   usePageMeta({
     title: "Ontario Class 4 Water Distribution Practice Questions",
     description: "Practice questions for the Ontario Class 4 Water Distribution operator certification exam. 500 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
+    noindex: true
   });
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class4-water-dist", "lazy");
   const allQuestions = dbQuestions;

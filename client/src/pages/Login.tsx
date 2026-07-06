@@ -10,6 +10,7 @@ export default function Login() {
   usePageMeta({
     title: "Sign In | Echelon Institute",
     description: "Sign in to your Echelon Institute account to access your dashboard and track your progress.",
+    noindex: true
   });
 
   const [, navigate] = useLocation();

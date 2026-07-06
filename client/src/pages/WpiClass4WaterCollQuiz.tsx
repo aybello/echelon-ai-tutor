@@ -28,6 +28,7 @@ export default function WpiClass4WaterCollQuiz() {
   usePageMeta({
     title: "WPI Class 4 Water Collection Practice Questions",
     description: "Practice Questions for WPI Class 4 Water Collection operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    noindex: true
   });
 
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class4-wastewater-coll", "lazy");

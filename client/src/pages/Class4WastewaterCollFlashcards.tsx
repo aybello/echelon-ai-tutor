@@ -9,6 +9,7 @@ export default function Class4WastewaterCollFlashcards() {
   usePageMeta({
     title: "Ontario Class 4 Wastewater Collection Flashcards",
     description: "Flashcards for the Ontario Class 4 Wastewater Collection operator certification exam.",
+    noindex: true
   });
   const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("class4-wastewater-coll");
   if (isLoading) return <QuizSkeleton />;

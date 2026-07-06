@@ -13,6 +13,7 @@ export default function OITWastewaterQuiz() {
     title: "OIT Wastewater Practice Quiz — 500+ Questions",
     description: "Practice for the Ontario OIT Wastewater exam with 500+ questions. AI Tutor, step-by-step solutions, and confidence tracking.",
     keywords: "OIT wastewater exam, Ontario wastewater certification, operator practice questions",
+    noindex: true
   });
 
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit-ww", "lazy");

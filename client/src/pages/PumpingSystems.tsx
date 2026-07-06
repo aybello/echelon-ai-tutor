@@ -82,6 +82,7 @@ export default function PumpingSystems() {
   usePageMeta({
     title: "Pumping Systems",
     description: "Pumping systems training for water and wastewater operators. Learn pump curves, head loss, and system design.",
+    noindex: true
   });
 
   const [activeTab, setActiveTab] = useState("cutaway");

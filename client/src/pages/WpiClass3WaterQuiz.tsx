@@ -30,6 +30,7 @@ export default function WpiClass3WaterQuiz() {
     description: "Practice for the WPI Class 3 Water Treatment operator exam with 500 questions.",
     path: "/wpi-class3-water",
     keywords: "WPI Class 3 water treatment, operator exam prep",
+    noindex: true
   });
 
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class3-water", "lazy");

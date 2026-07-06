@@ -15,6 +15,7 @@ export default function Class2WastewaterCollMockExam() {
   usePageMeta({
     title: "Ontario Class 2 Wastewater Collection Mock Exam",
     description: "100-question timed mock exam for the Ontario Class 2 Wastewater Collection certification. 2-hour timer, 70% pass threshold.",
+    noindex: true
   });
   const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class2-wastewater-coll");
   const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({

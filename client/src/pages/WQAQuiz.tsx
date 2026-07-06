@@ -13,6 +13,7 @@ export default function WQAQuiz() {
   usePageMeta({
     title: "WQA Practice Questions",
     description: "Practice Questions for Water Quality Analyst (WQA) certification exam. Comprehensive practice with AI-powered explanations.",
+    noindex: true
   });
 
   const { questions: dbQuestions, modules: dbModules, formulaLinks, overviews: dbOverviews, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wqa", "lazy");

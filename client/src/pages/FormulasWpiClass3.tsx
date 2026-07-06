@@ -256,6 +256,7 @@ export default function FormulasWpiClass3() {
   usePageMeta({
     title: "WPI Class 3 Water Formulas",
     description: "Essential formulas and calculations for WPI Class 3 Water operator certification exam. Quick reference formula sheet.",
+    noindex: true
   });
 
   const [activeSection, setActiveSection] = useState<number | null>(null);

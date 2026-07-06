@@ -28,6 +28,7 @@ export default function Home() {
     title: "OIT Practice Quiz — 551+ Questions",
     description: "Practice for the Ontario Operator-in-Training (OIT) exam with 551+ questions across 11 modules including Water Distribution. AI Tutor, step-by-step solutions, and confidence tracking included.",
     keywords: "water operator exam, OIT exam prep, wastewater certification, operator practice questions",
+    noindex: true
   });
 
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit");

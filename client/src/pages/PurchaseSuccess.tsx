@@ -129,6 +129,7 @@ export default function PurchaseSuccess() {
   usePageMeta({
     title: "Purchase Successful",
     description: "Your purchase was successful. Thank you for choosing Echelon Institute.",
+    noindex: true
   });
 
   const params = new URLSearchParams(window.location.search);

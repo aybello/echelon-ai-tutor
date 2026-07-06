@@ -10,6 +10,7 @@ export default function OITWastewaterFlashcards() {
   usePageMeta({
     title: "OIT Wastewater Flashcards",
     description: "Flashcards for Ontario OIT (Operator-in-Training) Wastewater certification exam. Free access, no account required.",
+    noindex: true
   });
 
 

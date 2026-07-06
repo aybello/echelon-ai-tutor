@@ -80,6 +80,7 @@ export default function Wastewater() {
   usePageMeta({
     title: "Wastewater Treatment",
     description: "Wastewater treatment operator exam prep. Practice questions, mock exams, and flashcards for all certification levels.",
+    noindex: true
   });
 
   const [activeStep, setActiveStep] = useState<WastewaterStep>(WW_STEPS[0]);

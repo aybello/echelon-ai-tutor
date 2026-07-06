@@ -508,6 +508,7 @@ export default function FormulasWpiClass2() {
     path: "/formulas-wpi-class2",
     keywords:
       "WPI Class II formulas, EOCP Class II, AWWOA Class II, membrane filtration formulas, ozone CT value, UV dose calculation, water treatment advanced formulas",
+    noindex: true
   });
 
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0].id);

@@ -421,6 +421,7 @@ export default function ChemCalc() {
   usePageMeta({
     title: "Chemical Calculator",
     description: "Water and wastewater chemical dosage calculator. Calculate chlorine dosing, chemical feed rates, and more.",
+    noindex: true
   });
 
   const [activeTab, setActiveTab] = useState<Tab>("chlorine");

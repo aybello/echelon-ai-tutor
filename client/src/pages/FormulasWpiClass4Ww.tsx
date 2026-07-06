@@ -308,6 +308,7 @@ export default function FormulasWpiClass4Ww() {
   usePageMeta({
     title: "WPI Class 4 Wastewater Formulas",
     description: "Essential formulas and calculations for WPI Class 4 Wastewater operator certification exam. Quick reference formula sheet.",
+    noindex: true
   });
 
   const [activeSection, setActiveSection] = useState<string | null>(null);

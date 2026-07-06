@@ -538,6 +538,7 @@ export default function FormulasWater3() {
     description: "Comprehensive formula sheet for the Ontario Class 3 Water Treatment operator exam. Covers LSI, CT values, lime softening, membrane flux, pump efficiency, and more.",
     path: "/formulas-water3",
     keywords: "Class 3 water treatment formulas, LSI calculation, CT value, lime softening, membrane flux, pump efficiency, Ontario operator exam",
+    noindex: true
   });
 
   const [activeSection, setActiveSection] = useState<string | null>(null);

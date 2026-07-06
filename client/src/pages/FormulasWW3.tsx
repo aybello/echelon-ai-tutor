@@ -418,6 +418,7 @@ export default function FormulasWW3() {
     description: "Complete formula reference for Ontario Class 3 Wastewater Treatment certification — BNR, anaerobic digestion, biosolids, MBR, tertiary treatment, and lab analysis.",
     path: "/formulas-ww3",
     keywords: "Class 3 wastewater formulas, BNR, anaerobic digestion, biosolids, MBR, Ontario operator exam",
+    noindex: true
   });
 
   const [activeCategory, setActiveCategory] = useState<string | null>(null);

@@ -10,6 +10,7 @@ export default function Class3WastewaterFlashcards() {
   usePageMeta({
     title: "Class 3 Wastewater Treatment Flashcards",
     description: "Flashcards for Ontario OWWCO Class 3 Wastewater Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
+    noindex: true
   });
 
 

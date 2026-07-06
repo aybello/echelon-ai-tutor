@@ -501,6 +501,7 @@ export default function CareerMap() {
     title: "Canadian Operator Career Map — OIT to Class 4",
     description: "Explore the full Canadian water and wastewater operator career path from OIT to Class 4 across Ontario, BC, Alberta, Saskatchewan, and Manitoba. Salary ranges, employer landscape, certification timelines.",
     path: "/career",
+    noindex: true
   });
   // Read ?province=bc from URL, fall back to localStorage, then default to "on"
   const initialProvince = useMemo(() => {

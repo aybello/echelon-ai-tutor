@@ -927,6 +927,7 @@ export default function FormulasWW2() {
     description: "Complete Class 2 Wastewater Treatment formula sheet: activated sludge, SRT, SVI, F:M ratio, BNR, biosolids, collection systems, and safety thresholds for Ontario operator exams.",
     path: "/formulas-ww2",
     keywords: "Class 2 wastewater formulas, SRT, SVI, F:M ratio, MLSS, BNR, biosolids, Manning's equation, Ontario operator exam",
+    noindex: true
   });
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");

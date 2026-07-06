@@ -579,6 +579,7 @@ export default function FormulasWater1() {
     title: "Class 1 Water Treatment Formula Sheet — Ontario Operator Exam",
     description: "Complete formula reference for the Ontario Class 1 Water Treatment operator exam. Covers coagulation, sedimentation, filtration, disinfection, CT values, chemical dosing, iron/manganese removal, and water quality regulations.",
     path: "/formulas-water1",
+    noindex: true
   });
 
   const [search, setSearch] = useState("");

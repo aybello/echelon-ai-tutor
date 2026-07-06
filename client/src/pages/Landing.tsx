@@ -2923,6 +2923,9 @@ export default function Landing() {
               ]},
               { label: "Resources", links: [
                 { label: "Blog", href: "/blog" },
+                { label: "Operator Salaries", href: "/blog/water-operator-salary-canada-by-province-2025" },
+                { label: "Ontario OIT Guide", href: "/blog/how-to-pass-ontario-oit-water-exam" },
+                { label: "Province Comparison", href: "/blog/canadian-water-operator-certification-by-province" },
                 { label: "Jobs", href: "/jobs" },
                 { label: "Career Map", href: "/career" },
               ]},

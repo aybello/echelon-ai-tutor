@@ -28,6 +28,7 @@ export default function WpiClass2WaterDistQuiz() {
   usePageMeta({
     title: "WPI Class 2 Water Distribution Practice Questions",
     description: "Practice Questions for WPI Class 2 Water Distribution operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    noindex: true
   });
 
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class2-water-dist", "lazy");

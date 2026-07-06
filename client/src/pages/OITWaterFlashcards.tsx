@@ -7,6 +7,7 @@ export default function OITWaterFlashcards() {
   usePageMeta({
     title: "OIT Water Flashcards",
     description: "Flashcards for Ontario OIT (Operator-in-Training) Water certification exam. Free access, no account required.",
+    noindex: true
   });
 
 

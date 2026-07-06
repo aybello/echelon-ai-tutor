@@ -357,6 +357,7 @@ export default function FormulasWpiClass4() {
   usePageMeta({
     title: "WPI Class 4 Water Formulas",
     description: "Essential formulas and calculations for WPI Class 4 Water operator certification exam. Quick reference formula sheet.",
+    noindex: true
   });
 
   const [activeCategory, setActiveCategory] = useState<number>(0);

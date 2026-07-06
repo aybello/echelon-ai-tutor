@@ -16,6 +16,7 @@ export default function Class4WastewaterMockExam() {
   usePageMeta({
     title: "Class 4 Wastewater Treatment Mock Exam",
     description: "Mock Exam for Ontario OWWCO Class 4 Wastewater Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
+    noindex: true
   });
 
   const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class4-wastewater");

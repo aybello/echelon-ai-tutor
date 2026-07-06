@@ -16,6 +16,7 @@ export default function WpiClass4WastewaterMockExam() {
   usePageMeta({
     title: "WPI Class 4 Wastewater Treatment Mock Exam",
     description: "Mock Exam for WPI Class 4 Wastewater Treatment operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    noindex: true
   });
 
   const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class4-wastewater");

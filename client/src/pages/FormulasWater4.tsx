@@ -622,6 +622,7 @@ export default function FormulasWater4() {
     description: "Comprehensive formula sheet for the Ontario Class 4 Water Treatment operator exam. Covers advanced treatment, membrane filtration, UV disinfection, ozone, source water protection, and more.",
     path: "/formulas-water4",
     keywords: "Class 4 water treatment formulas, membrane filtration, UV disinfection, ozone, CT value, advanced water treatment, Ontario operator exam",
+    noindex: true
   });
   const [searchTerm, setSearchTerm] = useState("");
   const [activeSection, setActiveSection] = useState<string | null>(null);

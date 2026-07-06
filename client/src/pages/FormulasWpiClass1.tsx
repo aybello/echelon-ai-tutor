@@ -510,6 +510,7 @@ export default function FormulasWpiClass1() {
     title: "WPI Class I Water Treatment Formulas — Echelon Institute",
     description:
       "WPI Class I Water Treatment formula sheet: CT values, chlorine dosage, flow rate, turbidity, chemical dosing, sedimentation, and pumping. Aligned with WPI Need-to-Know Criteria for BC, Alberta, Saskatchewan, and Manitoba.",
+    noindex: true
   });
 
   const [activeCategory, setActiveCategory] = useState<string>(CATEGORIES[0].id);

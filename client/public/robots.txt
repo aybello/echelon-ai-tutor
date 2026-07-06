@@ -1,11 +1,30 @@
 User-agent: *
 Allow: /
+Allow: /blog
+Allow: /blog/
+Allow: /pricing
+Allow: /about
+Allow: /jobs
+Allow: /privacy
+Allow: /terms
+Allow: /refund
+Allow: /wpi
 
-# Block admin and private pages
+# Block all app/private pages — these are authenticated or utility pages
+# that should not be indexed by search engines
 Disallow: /admin
 Disallow: /admin/
-Disallow: /purchase-success
+Disallow: /quiz
+Disallow: /dashboard
 Disallow: /account
+Disallow: /login
+Disallow: /auth/
+Disallow: /login/
+Disallow: /purchase-success
+Disallow: /subscription-success
+Disallow: /preview
+Disallow: /team
+Disallow: /teams
 Disallow: /api/
 
 # Sitemap location

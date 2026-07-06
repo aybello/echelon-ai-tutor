@@ -14,6 +14,7 @@ export default function WpiClass2WaterCollMockExam() {
   usePageMeta({
     title: "WPI Class 2 Water Collection Mock Exam",
     description: "Mock Exam for WPI Class 2 Water Collection operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    noindex: true
   });
 
   const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class2-wastewater-coll");

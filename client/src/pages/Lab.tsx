@@ -384,6 +384,7 @@ export default function Lab() {
   usePageMeta({
     title: "Virtual Lab",
     description: "Interactive virtual laboratory for water and wastewater operator training.",
+    noindex: true
   });
 
   const [activeTab, setActiveTab] = useState<Tab>("sampling");

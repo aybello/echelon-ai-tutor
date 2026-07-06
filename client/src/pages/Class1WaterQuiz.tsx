@@ -25,6 +25,7 @@ export default function Class1WaterQuiz() {
   usePageMeta({
     title: "Class 1 Water Treatment Practice Questions",
     description: "Practice Questions for Ontario OWWCO Class 1 Water Treatment operator certification exam. AI-powered exam prep with detailed explanations.",
+    noindex: true
   });
 
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-water", "lazy");

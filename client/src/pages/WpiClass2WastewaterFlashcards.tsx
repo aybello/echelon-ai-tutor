@@ -10,6 +10,7 @@ export default function WpiClass2WastewaterFlashcards() {
   usePageMeta({
     title: "WPI Class 2 Wastewater Treatment Flashcards",
     description: "Flashcards for WPI Class 2 Wastewater Treatment operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    noindex: true
   });
 
 

@@ -8,6 +8,7 @@ export default function WpiClass4WaterDistFlashcards() {
   usePageMeta({
     title: "WPI Class 4 Water Distribution Flashcards",
     description: "Flashcards for WPI Class 4 Water Distribution operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    noindex: true
   });
 
 

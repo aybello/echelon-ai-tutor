@@ -28,6 +28,7 @@ export default function WpiClass1WaterDistQuiz() {
   usePageMeta({
     title: "WPI Class 1 Water Distribution Practice Questions",
     description: "Practice Questions for WPI Class 1 Water Distribution operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    noindex: true
   });
 
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class1-water-dist", "lazy");

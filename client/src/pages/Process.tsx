@@ -80,6 +80,7 @@ export default function Process() {
   usePageMeta({
     title: "Process Diagrams",
     description: "Interactive water and wastewater treatment process diagrams and flow charts.",
+    noindex: true
   });
 
   const [activeStep, setActiveStep] = useState<ProcessStep>(STEPS[0]);

@@ -30,6 +30,7 @@ export default function Class1WastewaterCollQuiz() {
   usePageMeta({
     title: "Ontario Class 1 Wastewater Collection Practice Questions",
     description: "Practice questions for the Ontario Class 1 Wastewater Collection operator certification exam. 500 questions aligned to Ontario O. Reg. 170/03 and O. Reg. 129/04.",
+    noindex: true
   });
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class1-wastewater-coll", "lazy");
   const allQuestions = dbQuestions;

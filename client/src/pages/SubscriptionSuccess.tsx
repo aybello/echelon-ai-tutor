@@ -60,6 +60,7 @@ export default function SubscriptionSuccess() {
   usePageMeta({
     title: "Subscription Activated — Echelon Institute",
     description: "Your Echelon Institute annual subscription is now active.",
+    noindex: true
   });
 
   const [, setLocation] = useLocation();

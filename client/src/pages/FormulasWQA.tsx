@@ -464,6 +464,7 @@ export default function FormulasWQA() {
     description: "Complete formula reference for the Ontario Water Quality Analyst (WQA) exam. Covers unit conversions, dilution, alkalinity, hardness, CT values, Langelier Index, QA/QC, and O. Reg. 169/03 regulatory limits.",
     path: "/formulas-wqa",
     keywords: "WQA formula sheet, Water Quality Analyst formulas, alkalinity calculation, CT value, Langelier saturation index, dilution formula, O. Reg. 169/03, Ontario drinking water",
+    noindex: true
   });
 
   const [activeCategory, setActiveCategory] = useState<string | null>(null);

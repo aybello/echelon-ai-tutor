@@ -10,6 +10,7 @@ export default function WpiClass1WaterFlashcards() {
   usePageMeta({
     title: "WPI Class 1 Water Treatment Flashcards",
     description: "Flashcards for WPI Class 1 Water Treatment operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    noindex: true
   });
 
 

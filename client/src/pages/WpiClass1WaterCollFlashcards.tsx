@@ -8,6 +8,7 @@ export default function WpiClass1WaterCollFlashcards() {
   usePageMeta({
     title: "WPI Class 1 Water Collection Flashcards",
     description: "Flashcards for WPI Class 1 Water Collection operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    noindex: true
   });
 
 

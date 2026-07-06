@@ -10,6 +10,7 @@ export default function WQAFlashcards() {
   usePageMeta({
     title: "WQA Flashcards",
     description: "Flashcards for Water Quality Analyst (WQA) certification exam. Comprehensive practice with AI-powered explanations.",
+    noindex: true
   });
 
 

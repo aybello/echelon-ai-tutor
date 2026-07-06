@@ -9,6 +9,7 @@ export default function Class3WastewaterCollFlashcards() {
   usePageMeta({
     title: "Ontario Class 3 Wastewater Collection Flashcards",
     description: "Flashcards for the Ontario Class 3 Wastewater Collection operator certification exam.",
+    noindex: true
   });
   const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("class3-wastewater-coll");
   if (isLoading) return <QuizSkeleton />;

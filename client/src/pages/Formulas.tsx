@@ -716,6 +716,7 @@ export default function Formulas() {
     title: "Ontario Operator Exam Formula Sheet",
     description: "33 Ontario water and wastewater operator exam formulas with worked examples and exam tips. CT values, SVI, chlorine dose, flow calculations, and more.",
     path: "/formulas",
+    noindex: true
   });
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");

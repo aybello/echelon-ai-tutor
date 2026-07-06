@@ -80,6 +80,7 @@ export default function WaterDistributionGuide() {
   usePageMeta({
     title: "Water Distribution",
     description: "Water distribution system operator exam prep. Practice questions and study materials.",
+    noindex: true
   });
 
   const [activeStep, setActiveStep] = useState<DistributionStep>(DIST_STEPS[0]);

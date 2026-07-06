@@ -124,6 +124,7 @@ export default function Admin() {
   usePageMeta({
     title: "Admin Dashboard",
     description: "Echelon Institute administration panel.",
+    noindex: true
   });
 
   const { user, loading } = useAuth();

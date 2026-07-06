@@ -495,6 +495,7 @@ export default function FormulasWW1() {
     description: "Complete formula reference for the Ontario Class 1 Wastewater Treatment operator exam. Covers BOD removal, SVI, F/M ratio, clarifier design, disinfection, solids handling, and collection system hydraulics.",
     path: "/formulas-ww1",
     keywords: "Class 1 wastewater formulas, BOD removal, SVI, F/M ratio, Manning equation, Ontario operator exam, OWWCO",
+    noindex: true
   });
 
   const [activeCategory, setActiveCategory] = useState<string | null>(null);

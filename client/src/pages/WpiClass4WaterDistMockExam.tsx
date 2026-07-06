@@ -13,6 +13,7 @@ export default function WpiClass4WaterDistMockExam() {
   usePageMeta({
     title: "WPI Class 4 Water Distribution Mock Exam",
     description: "Mock Exam for WPI Class 4 Water Distribution operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    noindex: true
   });
 
   const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class4-water-dist");

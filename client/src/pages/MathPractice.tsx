@@ -51,6 +51,7 @@ export default function MathPractice() {
     description: "Practice calculation-only questions for water and wastewater operator exams. Step-by-step solutions for OIT, ABC Class 1–4, WQA, and WPI exams.",
     path: "/math-practice",
     keywords: "water operator math practice, wastewater calculation questions, OIT exam calculations, ABC water exam math, WPI calculation practice, operator exam formulas",
+    noindex: true
   });
 
   return (

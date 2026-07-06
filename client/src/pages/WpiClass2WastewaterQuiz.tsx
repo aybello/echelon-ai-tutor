@@ -28,6 +28,7 @@ export default function WpiClass2WastewaterQuiz() {
   usePageMeta({
     title: "WPI Class 2 Wastewater Treatment Practice Questions",
     description: "Practice Questions for WPI Class 2 Wastewater Treatment operator certification exam. Practice with hundreds of questions aligned to Canadian provincial standards.",
+    noindex: true
   });
 
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class2-wastewater", "lazy");
