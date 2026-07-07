@@ -189,19 +189,25 @@ def check_restore_access(page, base):
             email_input = page.locator("input").filter(has_placeholder="email").first
         email_input.fill("test@example.com")
         # Find and click the sign-in / restore button
-        # Button text changed to "Send Sign-In Link" after auth consolidation (Fix 3)
-        for btn_text in ["Send Sign-In Link", "Find My Passes", "Find", "Restore", "Look up", "Submit"]:
+        # Button text is now "Sign In with Code →" after OTP migration (Jul 2026)
+        for btn_text in ["Sign In with Code", "Send Sign-In Link", "Find My Passes", "Find", "Restore", "Look up", "Submit"]:
             btn = page.locator(f"button:has-text('{btn_text}')").first
             if btn.is_visible():
                 btn.click()
                 break
         else:
             raise AssertionError("Could not find sign-in/restore button on account page")
-        time.sleep(2)
+        # After OTP migration: clicking the button redirects to /login/otp — wait for navigation
+        try:
+            page.wait_for_url("**/login/otp**", timeout=5000)
+        except Exception:
+            pass  # May not redirect if already on the right page
+        time.sleep(1)
         page_text = page.inner_text("body")
         has_response = any(word in page_text.lower() for word in [
             "no purchases", "found", "pass", "access", "purchase",
-            "check your email", "sent", "link", "sign-in", "magic"
+            "check your email", "sent", "link", "sign-in", "magic",
+            "enter your email", "6-digit", "otp", "code", "verify"
         ])
         if not has_response:
             raise AssertionError("No response shown after submitting email for sign-in")
