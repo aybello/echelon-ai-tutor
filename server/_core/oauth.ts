@@ -1,4 +1,5 @@
-import { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
+import { COOKIE_NAME, ONE_YEAR_MS, OAUTH_STATE_COOKIE, decodeOAuthState } from "@shared/const";
+import { parse as parseCookieHeader } from "cookie";
 import type { Express, Request, Response } from "express";
 import * as db from "../db";
 import { getSessionCookieOptions } from "./cookies";
@@ -18,6 +19,17 @@ export function registerOAuthRoutes(app: Express) {
       res.status(400).json({ error: "code and state are required" });
       return;
     }
+
+    // CSRF guard: the nonce in `state` must match the one-time cookie that
+    // startLogin set in the browser that began this login. An attacker can
+    // forge `state`, but cannot plant this cookie in the victim's browser.
+    const { nonce } = decodeOAuthState(state);
+    const expectedNonce = parseCookieHeader(req.headers.cookie ?? "")[OAUTH_STATE_COOKIE];
+    if (!nonce || nonce !== expectedNonce) {
+      res.status(403).json({ error: "invalid oauth state" });
+      return;
+    }
+    res.clearCookie(OAUTH_STATE_COOKIE, { path: "/", secure: true, sameSite: "none" });
 
     try {
       const tokenResponse = await sdk.exchangeCodeForToken(code, state);
@@ -44,22 +56,7 @@ export function registerOAuthRoutes(app: Express) {
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
-      // Redirect to a small HTML page that reads the return path from sessionStorage
-      // and navigates there, falling back to homepage
-      res.send(`<!DOCTYPE html>
-<html>
-<head><title>Redirecting...</title></head>
-<body>
-<script>
-  var returnPath = sessionStorage.getItem('echelon_login_return') || '/';
-  sessionStorage.removeItem('echelon_login_return');
-  // Validate it's a safe relative path
-  if (!returnPath.startsWith('/')) returnPath = '/';
-  window.location.replace(returnPath);
-</script>
-<p>Redirecting...</p>
-</body>
-</html>`);
+      res.redirect(302, "/");
     } catch (error) {
       console.error("[OAuth] Callback failed", error);
       res.status(500).json({ error: "OAuth callback failed" });
