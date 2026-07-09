@@ -1040,3 +1040,7 @@
 - [x] FIX 3: Account.tsx — detect verified email session via trpc.dashboardAuth.me; show active passes for email-session users
 - [x] FIX 4: Account.tsx — use entitlements.data.accessibleCourses as primary data source; EXAM_META as fallback only
 - [x] FIX 6: Hash magic link tokens — store SHA-256 hash on request, compare hash on consume
+
+## Job Board Maintenance (Jul 8, 2026)
+- [x] Fix HTML entity decoding in jobUtils.mjs extractTag — add numeric (&#NNN;) and hex (&#xHH;) entity support
+- [x] Manual job board refresh — 10 new postings inserted, 18 stale expired
