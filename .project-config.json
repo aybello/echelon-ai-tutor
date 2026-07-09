@@ -7,15 +7,16 @@
   ],
   "dev_command": "pnpm run dev",
   "env_vars": {
-    "DATABASE_URL": "mysql://2325AuXExBRxzca.root:c42K2J7fiWe3MXN8VgrB@gateway03.us-east-1.prod.aws.tidbcloud.com:4000/9YRbBamkQDMXNb5cx5zZ4o?ssl={\"rejectUnauthorized\":true}"
+    "DATABASE_URL": "mysql://2325AuXExBRxzca.root:c42K2J7fiWe3MXN8VgrB@gateway03.us-east-1.prod.aws.tidbcloud.com:4000/9YRbBamkQDMXNb5cx5zZ4o?ssl={\"rejectUnauthorized\":true}",
+    "DRIZZLE_DATABASE_URL": "mysql://2325AuXExBRxzca.root:c42K2J7fiWe3MXN8VgrB@gateway03.us-east-1.prod.aws.tidbcloud.com:4000/9YRbBamkQDMXNb5cx5zZ4o?ssl={\"rejectUnauthorized\":true}"
   },
   "experiments": [
     "no_db_push"
   ],
   "git_remote": {
     "repo_url": "https://7f0548f6b28a1758d9bf7be630d36cb4.artifacts.cloudflare.net/git/prod/9YRbBamkQDMXNb5cx5zZ4o.git",
-    "expiration": "2026-07-10T17:00:08.619Z",
-    "token": "art_v1_de8580cdae11edca0f53146e84f888a2d95449b7?expires=1783702808",
+    "expiration": "2026-07-10T17:06:39.082Z",
+    "token": "art_v1_0dfbbbdae9dc8b0cc945e276ca230b80ae1e7f25?expires=1783703199",
     "backend": "GIT_BACKEND_ARTIFACTS"
   },
   "name": "echelon-ai-tutor",
@@ -28,14 +29,21 @@
     "OAUTH_SERVER_URL": "https://api.manus.im",
     "OWNER_NAME": "Ay Bello",
     "OWNER_OPEN_ID": "WnmVihShoT6mctaat3qLAG",
+    "SMTP_HOST": "smtp.gmail.com",
+    "SMTP_PASS": "oqxlpokfrodxklpi",
+    "SMTP_PORT": "587",
+    "SMTP_USER": "abello@echeloninstitute.ca",
+    "STRIPE_SECRET_KEY": "sk_test_51Tr7xYEROyn8LD01NYM1Yj4r7jYNLDXt5GC6FvYHkGc3XDrqB33Jr70XsbulDXNZDxdnbV1WEOdDk2Sqzd0OsjGP00DRoYIjod",
+    "STRIPE_WEBHOOK_SECRET": "whsec_nTxG6wXofaBwJbdJkSWGaZfr1zhgA7XW",
     "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
     "VITE_ANALYTICS_WEBSITE_ID": "50834c65-373c-4243-8c5f-0c6a04f2d8fa",
     "VITE_APP_ID": "9YRbBamkQDMXNb5cx5zZ4o",
-    "VITE_APP_LOGO": "",
+    "VITE_APP_LOGO": "https://files.manuscdn.com/user_upload_by_module/web_dev_logo/310519663824308637/iTGIcuVljSejAOea.png",
     "VITE_APP_TITLE": "Echelon AI Tutor",
     "VITE_FRONTEND_FORGE_API_KEY": "8A6qwzggT5yrSZvnPaPi6A",
     "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
-    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im",
+    "VITE_STRIPE_PUBLISHABLE_KEY": "pk_test_51Tr7xYEROyn8LD01IiHB0NYfekOXvOhy1ghXvL5l4aPD1VLbveaxEbHO9jR2fPR8zqcbWdBr6K85DI8tyk7NpM4S00WpY0IuMc"
   },
   "template_id": "web-db-user",
   "test_command": "pnpm test"

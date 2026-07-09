@@ -6,7 +6,7 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 
-export async function setupVite(app: Express, server: Server) {
+export async function setupVite(app: Express, server: Server): Promise<{ transformIndexHtml: (url: string, html: string) => Promise<string> }> {
   const serverOptions = {
     middlewareMode: true,
     hmr: { server },
@@ -21,6 +21,8 @@ export async function setupVite(app: Express, server: Server) {
   });
 
   app.use(vite.middlewares);
+  // Return vite instance so SSR handlers can use transformIndexHtml
+  // The catch-all below handles any routes not matched by SSR handlers
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
 
@@ -45,6 +47,8 @@ export async function setupVite(app: Express, server: Server) {
       next(e);
     }
   });
+
+  return vite;
 }
 
 export function serveStatic(app: Express) {

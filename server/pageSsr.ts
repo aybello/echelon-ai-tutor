@@ -396,19 +396,24 @@ function injectSeoIntoTemplate(template: string, meta: PageMeta): string {
 }
 
 /** Register SSR routes for all static public pages */
-export function registerPageSsrRoutes(app: Express, isDev: boolean): void {
+export function registerPageSsrRoutes(app: Express, isDev: boolean, vite?: { transformIndexHtml: (url: string, html: string) => Promise<string> }): void {
   // Exact-path routes only — /blog/:slug is handled by blogSsr.ts
   const staticPaths = STATIC_PAGE_META.map((m) => m.path);
 
   for (const pagePath of staticPaths) {
-    app.get(pagePath === "/" ? "/" : pagePath, (req: Request, res: Response) => {
+    app.get(pagePath === "/" ? "/" : pagePath, async (req: Request, res: Response) => {
       // Only handle exact path match (no query string confusion)
       const meta = META_MAP.get(pagePath);
       if (!meta) return res.status(404).send("Not found");
 
       try {
         const template = getIndexHtml(isDev);
-        const html = injectSeoIntoTemplate(template, meta);
+        const seoHtml = injectSeoIntoTemplate(template, meta);
+        // In dev mode, run Vite's transformIndexHtml so it injects @vite/client
+        // and HMR scripts — without this, React never mounts on SSR-served pages.
+        const html = (isDev && vite)
+          ? await vite.transformIndexHtml(req.originalUrl, seoHtml)
+          : seoHtml;
         res.status(200).set({ "Content-Type": "text/html; charset=utf-8" }).end(html);
       } catch (err) {
         console.error(`[pageSsr] Error rendering ${pagePath}:`, err);

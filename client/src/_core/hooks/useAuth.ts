@@ -1,4 +1,4 @@
-import { startLogin } from "@/const";
+import { getLoginUrl } from "@/const";
 import { trpc } from "@/lib/trpc";
 import { TRPCClientError } from "@trpc/client";
 import { useCallback, useEffect, useMemo } from "react";
@@ -6,19 +6,29 @@ import { useCallback, useEffect, useMemo } from "react";
 type UseAuthOptions = {
   redirectOnUnauthenticated?: boolean;
   redirectPath?: string;
+  /**
+   * When true, the auth.me query is disabled on mount and will NOT fire until
+   * the component explicitly calls `refresh()`. Use this on public pages (e.g.
+   * the landing page) so the DB is not woken up just by loading the page.
+   * The page will render immediately with `isAuthenticated: false` and update
+   * once the user navigates to a feature page that enables the query.
+   */
+  lazy?: boolean;
 };
 
 export function useAuth(options?: UseAuthOptions) {
-  // Login is started via startLogin() in the effect below, only when we actually
-  // navigate — never during render. startLogin() mints a one-time nonce + writes
-  // the state cookie, so calling it per render would overwrite the cookie and
-  // desync it from an in-flight login's `state`.
-  const { redirectOnUnauthenticated = false, redirectPath } = options ?? {};
+  const { redirectOnUnauthenticated = false, redirectPath = getLoginUrl(), lazy = false } =
+    options ?? {};
   const utils = trpc.useUtils();
 
   const meQuery = trpc.auth.me.useQuery(undefined, {
     retry: false,
     refetchOnWindowFocus: false,
+    // When lazy=true, disable the query entirely on mount so no DB call is made.
+    // The query will still fire if the cache already has data from a previous
+    // navigation (e.g. user visited a quiz page first), so returning users
+    // still see the correct "Dashboard" button on the landing page.
+    enabled: !lazy,
   });
 
   const logoutMutation = trpc.auth.logout.useMutation({
@@ -39,12 +49,6 @@ export function useAuth(options?: UseAuthOptions) {
       }
       throw error;
     } finally {
-      // Clear the Preview auto-login token mirrored into sessionStorage, so
-      // header-based sessions (Safari ITP / WebView) are logged out too. The
-      // backend cookie is cleared by the logout mutation.
-      try {
-        sessionStorage.removeItem("manus-cookie");
-      } catch {}
       utils.auth.me.setData(undefined, null);
       await utils.auth.me.invalidate();
     }
@@ -57,6 +61,8 @@ export function useAuth(options?: UseAuthOptions) {
     );
     return {
       user: meQuery.data ?? null,
+      // When lazy=true and query is disabled, isLoading stays false so the
+      // page renders immediately without a loading spinner.
       loading: meQuery.isLoading || logoutMutation.isPending,
       error: meQuery.error ?? logoutMutation.error ?? null,
       isAuthenticated: Boolean(meQuery.data),
@@ -74,14 +80,9 @@ export function useAuth(options?: UseAuthOptions) {
     if (meQuery.isLoading || logoutMutation.isPending) return;
     if (state.user) return;
     if (typeof window === "undefined") return;
-    if (redirectPath && window.location.pathname === redirectPath) return;
+    if (window.location.pathname === redirectPath) return;
 
-    // Navigate at this moment only. startLogin() mints the nonce + cookie itself.
-    if (redirectPath) {
-      window.location.href = redirectPath;
-    } else {
-      startLogin();
-    }
+    window.location.href = redirectPath
   }, [
     redirectOnUnauthenticated,
     redirectPath,

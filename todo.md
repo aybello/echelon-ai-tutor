@@ -1044,3 +1044,18 @@
 ## Job Board Maintenance (Jul 8, 2026)
 - [x] Fix HTML entity decoding in jobUtils.mjs extractTag — add numeric (&#NNN;) and hex (&#xHH;) entity support
 - [x] Manual job board refresh — 10 new postings inserted, 18 stale expired
+
+## Account Migration (Jul 9, 2026)
+- [x] Cloned from GitHub repo (aybello/echelon-ai-tutor)
+- [x] Initialized new Manus web-db-user project in new account
+- [x] Restored all source files from original repo
+- [x] Installed all dependencies (node-cron, nodemailer, marked, chart.js, react-chartjs-2, etc.)
+- [x] Configured SMTP secrets (abello@echeloninstitute.ca via Gmail)
+- [x] Migrated database schema and all data from old TiDB to new TiDB (28 tables)
+- [x] Fixed SSR/Vite initialization order so React mounts on landing page
+- [x] TypeScript check passes (0 errors)
+- [x] Production build passes (✓ built in 19.26s)
+- [x] All 523 tests pass across 32 test files
+- [ ] Switch to live Stripe keys once site is published (Settings → Payment)
+- [ ] Register Stripe live webhook endpoint in Stripe Dashboard using published URL
+- [ ] Add live Stripe Webhook Secret (whsec_...) in Settings → Payment
