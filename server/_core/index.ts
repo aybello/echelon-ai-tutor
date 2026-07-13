@@ -205,8 +205,6 @@ async function startServer() {
   let viteInstance: { transformIndexHtml: (url: string, html: string) => Promise<string> } | undefined;
   if (isDev) {
     viteInstance = await setupVite(app, server);
-  } else {
-    serveStatic(app);
   }
 
   // ── Static page SSR routes — must be AFTER Vite init (needs viteInstance) ────────────────────────────────────────
@@ -219,7 +217,7 @@ async function startServer() {
   registerBlogSsrRoutes(app, isDev);
   // ── Dynamic sitemap — generated from DB at request time ────────────────────────────
   // New posts appear in the sitemap automatically with lastmod dates.
-  // The static client/public/sitemap.xml has been deleted to avoid shadowing this.
+  // Must be registered BEFORE serveStatic (which adds a wildcard catch-all).
   app.get("/sitemap.xml", async (_req, res) => {
     try {
       const xml = await buildDynamicSitemap();
@@ -229,6 +227,13 @@ async function startServer() {
       res.status(500).send("Internal server error");
     }
   });
+
+  // ── Static file serving / SPA catch-all — must be LAST ────────────────────────────
+  // In production, serves built assets and falls through to index.html for SPA routes.
+  // In dev, Vite middleware (registered above via setupVite) handles this.
+  if (!isDev) {
+    serveStatic(app);
+  }
 
   const preferredPort = parseInt(process.env.PORT || "3000");
   const port = await findAvailablePort(preferredPort);
