@@ -1,0 +1,311 @@
+/**
+ * Echelon Institute — Access Service
+ *
+ * Central server-side access authority. All paid-content access decisions
+ * MUST flow through this module. No route should make its own access decision
+ * independently.
+ *
+ * Architecture:
+ *   1. resolveVerifiedIdentity(ctx)
+ *      → returns the verified identity (userId | email | null)
+ *   2. getEntitlementsForIdentity(identity)
+ *      → returns all unlocked exam types (delegates to resolveEntitlementsByEmail)
+ *   3. hasAccessToExam(identity, examType)
+ *      → boolean check for a single exam type
+ *   4. assertAccess(ctx, examType)
+ *      → throws TRPCError if no access (use in protected procedures)
+ *   5. getAccessibleCoursesForIdentity(identity)
+ *      → returns CourseEntry[] for all unlocked courses
+ *   6. verifyAccessTokenAndRecheckDb(token, examType)
+ *      → verifies a signed token AND re-checks DB entitlement
+ *
+ * Security rules:
+ * - The server decides access. localStorage is a convenience cache only.
+ * - Signed tokens identify a session/email but do NOT prove entitlement alone.
+ * - Stripe is billing truth. Database is access truth.
+ * - Revoked, cancelled, refunded, disputed, or expired access MUST fail.
+ * - Unknown exam types MUST fail closed.
+ * - Client-supplied email NEVER proves ownership. Only verified sessions do.
+ *
+ * Valid access paths:
+ * 1. Verified email session: ctx.studentEmail (OTP-proven)
+ * 2. OAuth session: ctx.user
+ * 3. Signed access token with live DB re-check
+ * 4. Free exam type
+ */
+
+import { TRPCError } from "@trpc/server";
+import type { TrpcContext } from "./context";
+import {
+  resolveEntitlementsByEmail,
+  resolveAccess,
+  resolveAccessByEmail,
+  normalizeEmail,
+  FREE_EXAM_TYPES,
+  type ResolvedEntitlements,
+} from "./access";
+import { verifySubscriptionToken } from "./subscriptionToken";
+import { getCourseByKey, getAllCourses } from "../../shared/courseRegistry";
+import type { CourseEntry } from "../../shared/courseRegistry";
+
+// ---------------------------------------------------------------------------
+// Identity
+// ---------------------------------------------------------------------------
+
+export type VerifiedIdentity =
+  | { type: "oauth"; userId: number; email: string }
+  | { type: "otp"; email: string }
+  | { type: "anonymous" };
+
+/**
+ * Resolve the verified identity from a tRPC context.
+ *
+ * Priority:
+ * 1. OAuth session (ctx.user) — strongest, server-issued cookie
+ * 2. OTP session (ctx.studentEmail) — server-verified email cookie
+ * 3. Anonymous — no verified identity
+ *
+ * NOTE: Client-supplied email inputs are NOT a verified identity and
+ * MUST NOT be used to prove entitlement. A typed email is not authentication.
+ */
+export function resolveVerifiedIdentity(ctx: TrpcContext): VerifiedIdentity {
+  if (ctx.user) {
+    return {
+      type: "oauth",
+      userId: ctx.user.id,
+      email: normalizeEmail(ctx.user.email),
+    };
+  }
+  if (ctx.studentEmail) {
+    return { type: "otp", email: normalizeEmail(ctx.studentEmail) };
+  }
+  return { type: "anonymous" };
+}
+
+/**
+ * Extract the email from a verified identity, or null for anonymous.
+ */
+export function identityEmail(identity: VerifiedIdentity): string | null {
+  if (identity.type === "anonymous") return null;
+  return identity.email;
+}
+
+// ---------------------------------------------------------------------------
+// Entitlement resolution
+// ---------------------------------------------------------------------------
+
+/**
+ * Resolve all entitlements for a verified identity.
+ * Returns the full ResolvedEntitlements object.
+ * Returns empty entitlements for anonymous identity.
+ */
+export async function getEntitlementsForIdentity(
+  identity: VerifiedIdentity,
+): Promise<ResolvedEntitlements> {
+  const email = identityEmail(identity);
+  return resolveEntitlementsByEmail(email);
+}
+
+/**
+ * Check whether a verified identity has access to a specific exam type.
+ *
+ * For OAuth users, also checks owner/admin bypass.
+ * For OTP users, checks DB entitlement by email.
+ * For anonymous, returns false (unless the exam type is free).
+ */
+export async function hasAccessToExam(
+  identity: VerifiedIdentity,
+  examType: string,
+): Promise<boolean> {
+  // Free exam types are always accessible
+  if (FREE_EXAM_TYPES.has(examType)) return true;
+
+  if (identity.type === "oauth") {
+    // resolveAccess handles owner/admin bypass
+    const result = await resolveAccess(
+      { id: identity.userId, email: identity.email } as Parameters<typeof resolveAccess>[0],
+      examType,
+    );
+    return result.hasAccess;
+  }
+
+  if (identity.type === "otp") {
+    const result = await resolveAccessByEmail(identity.email, examType);
+    return result.hasAccess;
+  }
+
+  return false;
+}
+
+/**
+ * Assert that the context has access to a given exam type.
+ * Throws TRPCError FORBIDDEN if not.
+ *
+ * This is the primary guard for protected quiz/mock/flashcard procedures.
+ * It checks all identity layers in priority order.
+ *
+ * Valid access paths:
+ * 1. Free exam type
+ * 2. Verified OAuth session (ctx.user)
+ * 3. Verified OTP session (ctx.studentEmail)
+ * 4. Signed access token with live DB re-check
+ *
+ * Client-supplied email is NOT an accepted access path.
+ *
+ * @param ctx - tRPC context
+ * @param examType - the exam type to check (e.g. "class1-water")
+ * @param opts.accessToken - optional signed subscription token from client localStorage
+ */
+export async function assertAccess(
+  ctx: TrpcContext,
+  examType: string,
+  opts?: {
+    accessToken?: string | null;
+  },
+): Promise<void> {
+  // Free exam types are always accessible
+  if (FREE_EXAM_TYPES.has(examType)) return;
+
+  const identity = resolveVerifiedIdentity(ctx);
+
+  // 1. Check verified identity (OAuth or OTP)
+  if (identity.type !== "anonymous") {
+    const ok = await hasAccessToExam(identity, examType);
+    if (ok) return;
+  }
+
+  // 2. Verify signed subscription token WITH live DB re-check.
+  // We intentionally do not trust the token alone — a refunded or cancelled user
+  // could still have a valid signed token in localStorage. The DB re-check ensures
+  // that revoked entitlements are enforced on the next access attempt.
+  if (opts?.accessToken) {
+    const recheckResult = await verifyAccessTokenAndRecheckDb(opts.accessToken, examType);
+    if (recheckResult.hasAccess) return;
+  }
+
+  throw new TRPCError({
+    code: "FORBIDDEN",
+    message: `Access denied for exam type: ${examType}`,
+  });
+}
+
+/**
+ * Verify a signed subscription access token AND re-check DB entitlement.
+ *
+ * Unlike the fast-path token check in assertAccess, this performs a full
+ * DB re-check to ensure the token has not been invalidated by cancellation,
+ * refund, or revocation since it was issued.
+ *
+ * Use this for high-value operations (e.g. mock exam start, bulk question fetch).
+ *
+ * @returns { hasAccess: boolean; email: string | null }
+ */
+export async function verifyAccessTokenAndRecheckDb(
+  token: string | null | undefined,
+  examType: string,
+): Promise<{ hasAccess: boolean; email: string | null }> {
+  if (!token) return { hasAccess: false, email: null };
+
+  // Step 1: verify the token signature and expiry
+  const tokenPayload = await verifySubscriptionToken(token);
+  if (!tokenPayload) return { hasAccess: false, email: null };
+
+  // Step 2: token covers this exam type
+  if (!tokenPayload.examTypes.includes(examType)) {
+    return { hasAccess: false, email: tokenPayload.email };
+  }
+
+  // Step 3: re-check DB to confirm entitlement is still active
+  const result = await resolveAccessByEmail(tokenPayload.email, examType);
+  return { hasAccess: result.hasAccess, email: tokenPayload.email };
+}
+
+/**
+ * Return all CourseEntry objects that a verified identity has access to.
+ * Useful for building "your courses" lists on the dashboard/account page.
+ */
+export async function getAccessibleCoursesForIdentity(
+  identity: VerifiedIdentity,
+): Promise<CourseEntry[]> {
+  const entitlements = await getEntitlementsForIdentity(identity);
+  const unlockedTypes = new Set(entitlements.unlockedExamTypes);
+
+  return getAllCourses()
+    .filter((course) => unlockedTypes.has(course.courseKey))
+    .filter((course) => course.isActive);
+}
+
+/**
+ * Check whether a specific course key is accessible to a verified identity.
+ * Resolves via the course's productKey (= examType for individual courses).
+ */
+export async function hasAccessToCourse(
+  identity: VerifiedIdentity,
+  courseKey: string,
+): Promise<boolean> {
+  const course = getCourseByKey(courseKey);
+  if (!course) return false; // unknown course key — fail closed
+  return hasAccessToExam(identity, course.courseKey);
+}
+
+// ---------------------------------------------------------------------------
+// Convenience wrapper for soft-gate procedures (quiz, flashcard)
+// ---------------------------------------------------------------------------
+
+/**
+ * Resolve whether a request has access to an exam type.
+ * This is the drop-in replacement for the 4-step access check pattern
+ * used in getQuestions / getRandomQuestions / similar soft-gate procedures.
+ *
+ * Unlike assertAccess (which throws), this returns a boolean so the caller
+ * can decide whether to return trial content or full content.
+ *
+ * Valid access paths:
+ * 1. Free exam types — always true
+ * 2. OAuth session (ctx.user)
+ * 3. OTP session (ctx.studentEmail)
+ * 4. Signed subscription token with live DB re-check
+ *
+ * Client-supplied email is NOT an accepted access path.
+ * A typed email is not authentication — only verified ownership + active entitlement
+ * can unlock paid content.
+ */
+export async function resolveAccessForRequest(
+  ctx: TrpcContext,
+  examType: string,
+  opts?: {
+    accessToken?: string | null;
+  },
+): Promise<boolean> {
+  // 1. Free exam types
+  if (FREE_EXAM_TYPES.has(examType)) return true;
+
+  const identity = resolveVerifiedIdentity(ctx);
+
+  // 2 & 3. Verified identity (OAuth or OTP)
+  if (identity.type !== "anonymous") {
+    const ok = await hasAccessToExam(identity, examType);
+    if (ok) return true;
+  }
+
+  // 4. Signed subscription token — verify signature AND re-check DB entitlement
+  // (ensures revoked/cancelled subscriptions are denied even with a valid JWT)
+  if (opts?.accessToken) {
+    const recheckResult = await verifyAccessTokenAndRecheckDb(opts.accessToken, examType);
+    if (recheckResult.hasAccess) return true;
+  }
+
+  return false;
+}
+
+// ---------------------------------------------------------------------------
+// Re-exports for convenience
+// ---------------------------------------------------------------------------
+
+export {
+  resolveEntitlementsByEmail,
+  resolveAccess,
+  resolveAccessByEmail,
+  normalizeEmail,
+  FREE_EXAM_TYPES,
+} from "./access";

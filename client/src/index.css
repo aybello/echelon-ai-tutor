@@ -1,0 +1,309 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * ECHELON AI TUTOR — Design System
+ * Philosophy: Professional SaaS — Clean Dark-Accent
+ * Palette: Slate-100 bg, white cards, blue-700 primary, teal-700 secondary
+ * Typography: Sora (display/body) + Nunito (score numbers)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Echelon brand colors */
+  --color-echelon-blue: oklch(0.45 0.22 260);
+  --color-echelon-teal: oklch(0.42 0.14 185);
+  --color-echelon-slate: oklch(0.96 0.005 240);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.96 0.005 240);
+  --foreground: oklch(0.1 0.015 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.1 0.015 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.1 0.015 250);
+  --primary: oklch(0.45 0.22 260);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.94 0.008 240);
+  --secondary-foreground: oklch(0.3 0.015 250);
+  --muted: oklch(0.94 0.008 240);
+  --muted-foreground: oklch(0.55 0.015 250);
+  --accent: oklch(0.94 0.008 240);
+  --accent-foreground: oklch(0.1 0.015 250);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.9 0.008 240);
+  --input: oklch(0.9 0.008 240);
+  --ring: oklch(0.45 0.22 260);
+  --chart-1: oklch(0.45 0.22 260);
+  --chart-2: oklch(0.42 0.14 185);
+  --chart-3: oklch(0.55 0.18 150);
+  --chart-4: oklch(0.65 0.18 55);
+  --chart-5: oklch(0.6 0.22 25);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.1 0.015 250);
+  --sidebar-primary: oklch(0.45 0.22 260);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.94 0.008 240);
+  --sidebar-accent-foreground: oklch(0.1 0.015 250);
+  --sidebar-border: oklch(0.9 0.008 240);
+  --sidebar-ring: oklch(0.45 0.22 260);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Sora', sans-serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+    /* Eliminate 300ms tap delay on mobile browsers */
+    touch-action: manipulation;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.8 0.008 240);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.7 0.01 240);
+}
+
+/* Echelon gradient utilities */
+.echelon-gradient {
+  background: linear-gradient(135deg, oklch(0.45 0.22 260), oklch(0.42 0.14 185));
+}
+
+/* Monospace formula style */
+.formula-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+}
+
+/* ── Global Mobile Optimizations ─────────────────────────────────────────── */
+
+/* Prevent horizontal overflow on all pages */
+html, body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Ensure images don't overflow their containers */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Improve tap target sizes on mobile */
+@media (max-width: 640px) {
+  /* Ensure buttons and links have adequate tap targets */
+  button, a {
+    min-height: 36px;
+  }
+
+  /* Prevent text from being too small */
+  input, select, textarea {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+}
+
+/* ── Phase 1 Animation Polish ──────────────────────────────────────────── */
+
+/* Button hover lift + glow */
+.btn-primary {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(29, 78, 216, 0.35);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Course card hover lift */
+.course-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+}
+
+/* Echelon branded loading spinner */
+@keyframes echelon-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.echelon-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(29, 78, 216, 0.15);
+  border-top-color: #1D4ED8;
+  border-radius: 50%;
+  animation: echelon-spin 0.75s linear infinite;
+}
+
+/* Page fade-in transition */
+@keyframes page-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: page-fade-in 0.35s ease forwards;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary,
+  .course-card {
+    transition: none !important;
+    transform: none !important;
+  }
+  .echelon-spinner {
+    animation: none;
+  }
+  .page-enter {
+    animation: none;
+  }
+}
+
+/* Dashboard skeleton shimmer */
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Pulsing CTA button animation */
+@keyframes pulse-cta {
+  0%   { box-shadow: 0 0 0 0 rgba(29, 78, 216, 0.55); transform: scale(1); }
+  50%  { box-shadow: 0 0 0 10px rgba(29, 78, 216, 0); transform: scale(1.02); }
+  100% { box-shadow: 0 0 0 0 rgba(29, 78, 216, 0); transform: scale(1); }
+}
+.btn-pulse {
+  animation: pulse-cta 2s ease-in-out infinite;
+}
+.btn-pulse:hover {
+  animation: none;
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(29, 78, 216, 0.45);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-pulse {
+    animation: none;
+  }
+}
+
+/* Dashboard responsive layout */
+.dashboard-two-col {
+  grid-template-columns: 1fr 300px;
+}
+@media (max-width: 768px) {
+  .dashboard-two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile bottom nav — hidden on desktop, shown on mobile */
+.echelon-mobile-bottom-nav {
+  display: none !important;
+}
+@media (max-width: 640px) {
+  .echelon-mobile-bottom-nav {
+    display: flex !important;
+  }
+  body {
+    padding-bottom: 64px;
+  }
+}

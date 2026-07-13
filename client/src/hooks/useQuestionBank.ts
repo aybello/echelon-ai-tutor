@@ -1,0 +1,289 @@
+/**
+ * useQuestionBank — fetches questions, bank metadata, and module overviews.
+ *
+ * Caching strategy (priority order):
+ *   1. Seed questions — 25 bundled questions per bank, correctIndex included.
+ *      Shown INSTANTLY on first visit while the DB loads in the background.
+ *      Questions score correctly from the first millisecond.
+ *   2. localStorage cache — full bank cached after first successful DB load.
+ *      Served instantly on return visits (24hr TTL) for fast display.
+ *      correctIndex is stored in the cache so returning users score correctly.
+ *   3. DB fetch — tRPC call to the server. Lazy mode fetches a batch first,
+ *      then the full bank. Full mode fetches everything upfront.
+ *
+ * Supports two modes:
+ *   - "full" (default): fetches ALL questions upfront. Use for mock exams and flashcards.
+ *   - "lazy": fetches a small random batch (20 questions) instantly for fast first-question,
+ *     then loads the full bank in the background. Use for quiz pages.
+ *
+ * When the database is temporarily unavailable (TiDB hibernation), the API
+ * returns empty arrays instead of hanging. This hook detects that case and
+ * exposes `dbUnavailable` so the UI can show a retry message.
+ *
+ * Usage:
+ *   const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("class1-water", "lazy");
+ */
+import { useEffect, useRef, useState } from "react";
+import { trpc } from "@/lib/trpc";
+import { getCached, setCached, invalidate, type CachedBank } from "@/lib/questionCache";
+import seedQuestions, { type SeedQuestion } from "@/lib/seedQuestions";
+
+export interface DBQuestion {
+  id: number;
+  module: string;
+  difficulty: string | null;
+  question: string;
+  options: string[];
+  correctIndex: number;
+  explanation: string;
+  steps?: { l: string; c: string }[];
+  tip?: string;
+  isCalc: boolean;
+  topic?: string;
+}
+
+export interface ModuleOverview {
+  title: string;
+  intro: string;
+  keyPoints: { heading: string; body: string }[];
+  tableHeadings?: string[];
+  tableRows?: string[][];
+  examTips: string[];
+  formulaHint?: string;
+}
+
+/**
+ * Convert a SeedQuestion to a DBQuestion shape.
+ * correctIndex is included in seed questions so they score correctly
+ * before the DB loads.
+ */
+function seedToDBQuestion(q: SeedQuestion): DBQuestion {
+  return {
+    id: q.questionNum,
+    module: q.module ?? "General",
+    difficulty: q.difficulty,
+    question: q.question,
+    options: q.options,
+    correctIndex: q.correctIndex,
+    explanation: q.explanation ?? "",
+    isCalc: q.isCalc === "yes",
+    topic: q.topic ?? undefined,
+  };
+}
+
+/**
+ * Merge live correctIndex values from the server into cached questions.
+ * Matches by question text (since IDs may differ between cache and live).
+ * Returns a new array with correctIndex restored for all matched questions.
+ */
+function mergeCorrectIndex(
+  cached: DBQuestion[],
+  live: DBQuestion[],
+): DBQuestion[] {
+  // Build a map from question text → correctIndex for fast lookup
+  const liveMap = new Map<string, number>();
+  for (const q of live) {
+    liveMap.set(q.question, q.correctIndex);
+  }
+  return cached.map((q) => {
+    const liveIdx = liveMap.get(q.question);
+    if (liveIdx !== undefined && liveIdx >= 0) {
+      return { ...q, correctIndex: liveIdx };
+    }
+    return q;
+  });
+}
+
+export function useQuestionBank(bankKey: string, mode: "full" | "lazy" = "full") {
+  // ── Seed questions — instant fallback, correctIndex included ──────────────
+  const seedForBank = seedQuestions[bankKey] ?? [];
+  const seedAsDBQuestions: DBQuestion[] = seedForBank.map(seedToDBQuestion);
+
+  // ── Read signed access token from localStorage for server-side access check ──
+  // NOTE: We no longer send client-supplied email to the server as an access proof.
+  // Only verified sessions (OAuth, OTP) and signed access tokens are accepted.
+  const [storedAccessToken] = useState<string | undefined>(() => {
+    try { return localStorage.getItem("echelon_access_token") ?? undefined; } catch { return undefined; }
+  });
+
+  // ── Check localStorage cache first ───────────────────────────────────────
+  const [cached] = useState<CachedBank | null>(() => getCached(bankKey));
+  const wroteCache = useRef(false);
+
+  // ── Fast batch (lazy mode only, skip if cache hit) ───────────────────────
+  const batchQuery = trpc.quiz.getRandomQuestions.useQuery(
+    { bankKey, limit: 20, accessToken: storedAccessToken },
+    {
+      enabled: mode === "lazy" && !cached,
+      staleTime: 1000 * 60 * 5,
+      retry: 4,
+      retryDelay: 5000, // TiDB cold-start can take 10-15s; 4 retries × 5s = 20s window
+    }
+  );
+
+  // ── Full bank — ALWAYS enabled (even on cache hit) to restore correctIndex ──
+  // When cache is present: runs silently in background, result used to patch correctIndex.
+  // When no cache: runs normally to populate questions.
+  const fullQuery = trpc.quiz.getQuestions.useQuery(
+    { bankKey, accessToken: storedAccessToken },
+    {
+      staleTime: 1000 * 60 * 30,
+      // Always fetch full bank — cache hit just means we show cached questions
+      // instantly, but we still need live correctIndex values from the server.
+      enabled: cached != null || mode === "full" || (mode === "lazy" && batchQuery.isSuccess),
+      retry: 4,
+      retryDelay: 5000,
+    }
+  );
+
+  // Issue L: metaQuery always runs (even on cache hit) so we can compare contentVersion
+  // BEFORE rendering. If the server version is higher, we invalidate immediately.
+  const metaQuery = trpc.quiz.getBankMeta.useQuery(
+    { bankKey },
+    {
+      staleTime: 1000 * 60 * 30,
+      enabled: true, // always fetch — needed for version check
+      retry: 4,
+      retryDelay: 5000,
+    }
+  );
+
+  const overviewsQuery = trpc.quiz.getModuleOverviews.useQuery(
+    { bankKey },
+    {
+      staleTime: 1000 * 60 * 30,
+      enabled: !cached,
+      retry: 4,
+      retryDelay: 5000,
+    }
+  );
+
+  // ── Issue L: invalidate cache when server contentVersion is newer ────────────────────────
+  // This runs BEFORE questions are rendered, so the user never sees stale content.
+  useEffect(() => {
+    if (!cached || !metaQuery.data) return;
+    const serverVersion = metaQuery.data.contentVersion ?? 1;
+    const cachedVersion = cached.contentVersion ?? 0;
+    if (serverVersion > cachedVersion) {
+      // Admin edited a question — bust the cache immediately
+      invalidate(bankKey);
+    }
+  }, [bankKey, cached, metaQuery.data]);
+
+  // ── Invalidate stale cache when live full-bank data differs ─────────────────────────
+  // Always invalidate when live data arrives — the cache may have stale questions
+  // (e.g. all from one module) even if the count is the same.
+  useEffect(() => {
+    if (!cached || !fullQuery.data) return;
+    const liveQuestions = fullQuery.data.questions ?? [];
+    if (liveQuestions.length === 0) return;
+    // Always invalidate: live data is authoritative. The cache will be rewritten
+    // with the fresh data on the next cycle via the write-cache effect.
+    invalidate(bankKey);
+  }, [bankKey, cached, fullQuery.data]);
+
+  // ── Write to cache once full bank is loaded (with correctIndex) ────────────
+  useEffect(() => {
+    if (wroteCache.current) return;
+    if (!fullQuery.data || !metaQuery.data) return;
+    const rawQuestions = fullQuery.data.questions ?? [];
+    const modules = metaQuery.data.modules ?? [];
+    if (rawQuestions.length === 0) return; // don't cache empty (DB down)
+    wroteCache.current = true;
+
+    setCached(bankKey, {
+      questions: rawQuestions as DBQuestion[],
+      modules,
+      moduleTargets: metaQuery.data.moduleTargets ?? null,
+      formulaLinks: metaQuery.data.formulaLinks ?? null,
+      totalQuestions: metaQuery.data.totalQuestions ?? rawQuestions.length,
+      overviews: (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null,
+      // Issue L: persist the server version so future loads can detect content changes
+      contentVersion: metaQuery.data.contentVersion ?? 1,
+    });
+  }, [bankKey, fullQuery.data, metaQuery.data, overviewsQuery.data]);
+
+  // ── Resolve data: cache (+ live correctIndex patch) → full → batch → seed ─
+  let questions: DBQuestion[];
+  let modules: string[];
+  let moduleTargets: Record<string, number> | null;
+  let formulaLinks: Record<string, string> | null;
+  let totalQuestions: number;
+  let overviews: Record<string, ModuleOverview> | null;
+  let isLoading: boolean;
+
+  if (cached) {
+    // Start with cached questions for instant display
+    const liveQuestions = fullQuery.data?.questions;
+    if (liveQuestions && liveQuestions.length > 0) {
+      // Live data arrived — ALWAYS use it (it has correct modules + correctIndex).
+      // The cache is only for instant display before the server responds.
+      questions = liveQuestions;
+    } else {
+      // Live data not yet arrived — serve cached questions (correctIndex included).
+      questions = cached.questions;
+    }
+    // Use live modules when available, fall back to cached
+    modules = (liveQuestions && liveQuestions.length > 0)
+      ? Array.from(new Set(liveQuestions.map((q: any) => q.module)))
+      : cached.modules;
+    moduleTargets = cached.moduleTargets;
+    formulaLinks = cached.formulaLinks;
+    totalQuestions = (liveQuestions && liveQuestions.length > 0) ? liveQuestions.length : cached.totalQuestions;
+    overviews = cached.overviews;
+    // isLoading: false so quiz renders immediately; fullQuery runs silently in bg
+    isLoading = false;
+  } else if (mode === "lazy") {
+    if (fullQuery.data) {
+      questions = fullQuery.data.questions ?? [];
+    } else if (batchQuery.data?.questions?.length) {
+      questions = batchQuery.data.questions;
+    } else {
+      // Seed fallback — shown instantly while DB loads
+      questions = seedAsDBQuestions;
+    }
+    isLoading = batchQuery.isLoading || metaQuery.isLoading || overviewsQuery.isLoading;
+    modules = metaQuery.data?.modules ?? [];
+    moduleTargets = metaQuery.data?.moduleTargets ?? null;
+    formulaLinks = metaQuery.data?.formulaLinks ?? null;
+    totalQuestions = metaQuery.data?.totalQuestions ?? 0;
+    overviews = (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null;
+  } else {
+    if (fullQuery.data?.questions?.length) {
+      questions = fullQuery.data.questions;
+    } else {
+      // Seed fallback for full mode too (mock exams, flashcards)
+      questions = seedAsDBQuestions;
+    }
+    isLoading = fullQuery.isLoading || metaQuery.isLoading || overviewsQuery.isLoading;
+    modules = metaQuery.data?.modules ?? [];
+    moduleTargets = metaQuery.data?.moduleTargets ?? null;
+    formulaLinks = metaQuery.data?.formulaLinks ?? null;
+    totalQuestions = metaQuery.data?.totalQuestions ?? 0;
+    overviews = (overviewsQuery.data as Record<string, ModuleOverview> | null) ?? null;
+  }
+
+  // ── Detect DB unavailable state ──────────────────────────────────────────
+  // dbUnavailable is true only when queries settled with no data AND no seed
+  const queriesSettled = !isLoading;
+  const noError = !fullQuery.error && !batchQuery.error && !metaQuery.error;
+  const emptyResult = questions.length === 0 && modules.length === 0;
+  const dbUnavailable = !cached && queriesSettled && noError && emptyResult && seedAsDBQuestions.length === 0;
+
+  return {
+    questions,
+    modules,
+    moduleTargets,
+    formulaLinks,
+    totalQuestions,
+    overviews,
+    isLoading,
+    isFullyLoaded: cached != null || fullQuery.isSuccess,
+    /** True when the DB appears down AND no seed questions available */
+    dbUnavailable,
+    /** True when showing seed questions (DB not yet loaded) */
+    isShowingSeed: !cached && !fullQuery.isSuccess && !batchQuery.isSuccess && seedAsDBQuestions.length > 0,
+    error:
+      fullQuery.error || batchQuery.error || metaQuery.error || overviewsQuery.error || null,
+  };
+}
