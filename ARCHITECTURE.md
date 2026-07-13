@@ -3,6 +3,18 @@
 > **Read this file before building any feature.**
 > Update it whenever you add something reusable.
 
+## GitHub Sync
+
+This project is mirrored to **https://github.com/aybello/echelon-ai-tutor**.
+
+After every session where changes are made, push to GitHub as the final step:
+
+```bash
+git push github main
+```
+
+The `github` remote is already configured. This keeps the repo in sync so the other Manus account can pull the latest changes.
+
 ---
 
 ## Stack

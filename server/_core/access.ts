@@ -17,7 +17,22 @@ export const FREE_TRIAL_LIMIT = 15;
  * Exam types that are fully free — no purchase or subscription required.
  * OIT (Operator-in-Training) is the free funnel product.
  */
-export const FREE_EXAM_TYPES = new Set(["oit", "oit-ww"]);
+export const FREE_EXAM_TYPES = new Set([
+  // OIT free tiers
+  "oit", "oit-ww",
+  // Ontario Class 1–4 Water & Wastewater
+  "class1-water", "class1-ww", "class1-water-dist", "class1-wastewater-coll",
+  "class2-water", "class2-ww", "class2-water-dist", "class2-wastewater-coll",
+  "class3-water", "class3-ww", "class3-water-dist", "class3-wastewater-coll",
+  "class4-water", "class4-ww", "class4-water-dist", "class4-wastewater-coll",
+  // WPI Class 1–4
+  "wpi-class1-water", "wpi-class1-wastewater", "wpi-class1-water-dist", "wpi-class1-water-coll",
+  "wpi-class2-water", "wpi-class2-wastewater", "wpi-class2-water-dist", "wpi-class2-water-coll",
+  "wpi-class3-water", "wpi-class3-wastewater", "wpi-class3-water-dist", "wpi-class3-water-coll",
+  "wpi-class4-water", "wpi-class4-wastewater", "wpi-class4-water-dist", "wpi-class4-water-coll",
+  // WQA
+  "wqa",
+]);
 
 /** Canonical email form for storage AND comparison. */
 export function normalizeEmail(email: string | null | undefined): string {
