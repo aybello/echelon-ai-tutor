@@ -328,7 +328,7 @@ export default function Admin() {
         <div className="admin-stats" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginBottom: 28 }}>
           {statItems.map(s => (
             <button
-              key={s.tab}
+              key={s.label}
               onClick={() => setActiveTab(s.tab)}
               style={{
                 background: activeTab === s.tab ? "rgba(0,0,0,0.07)" : "#F8FAFC",

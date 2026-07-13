@@ -481,7 +481,7 @@ export async function sendContactEmail(payload: ContactEmailPayload): Promise<vo
     from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
     to: `"${name}" <${email}>`,
     subject: `We received your message — Echelon Institute`,
-    text: `Hi ${name},\n\nThank you for reaching out to Echelon Institute! We've received your message and will get back to you within 1 business day.\n\nHere's a copy of what you sent:\n\nSubject: ${subject}\n\n${message}\n\n---\nEchelon Institute\nPhone: 289-788-1885\nEmail: abello@echeloninstitute.ca\nhttps://echeloninstitute.manus.space`,
+    text: `Hi ${name},\n\nThank you for reaching out to Echelon Institute! We've received your message and will get back to you within 1 business day.\n\nHere's a copy of what you sent:\n\nSubject: ${subject}\n\n${message}\n\n---\nEchelon Institute\nPhone: 289-788-1885\nEmail: abello@echeloninstitute.ca\nhttps://echeloninstitute.ca`,
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <div style="background: linear-gradient(135deg, #1D4ED8, #0E7490); padding: 28px 24px; border-radius: 8px 8px 0 0; text-align: center;">

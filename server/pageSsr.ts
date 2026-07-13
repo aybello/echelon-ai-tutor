@@ -381,12 +381,16 @@ function injectSeoIntoTemplate(template: string, meta: PageMeta): string {
   let html = template
     // Replace the default <title>
     .replace(/<title>[^<]*<\/title>/, titleTag)
-    // Replace the default <meta name="description"> if present
+    // Remove default <meta name="description"> to avoid duplicates
     .replace(/<meta name="description"[^>]*>/, "")
-    // Replace the default canonical if present
+    // Remove default canonical to avoid duplicates
     .replace(/<link rel="canonical"[^>]*>/, "")
-    // Replace the default robots meta if present
+    // Remove default robots meta to avoid duplicates
     .replace(/<meta name="robots"[^>]*>/, "")
+    // Remove all OG meta tags from the template (SSR will inject correct ones)
+    .replace(/<meta property="og:[^"]+"[^>]*>/g, "")
+    // Remove all Twitter Card meta tags from the template (SSR will inject correct ones)
+    .replace(/<meta name="twitter:[^"]+"[^>]*>/g, "")
     // Inject all SEO tags before </head>
     .replace("</head>", `${seoHead}\n</head>`)
     // Inject SSR body shell right after <div id="root">
