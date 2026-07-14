@@ -1059,3 +1059,32 @@
 - [ ] Switch to live Stripe keys once site is published (Settings → Payment)
 - [ ] Register Stripe live webhook endpoint in Stripe Dashboard using published URL
 - [ ] Add live Stripe Webhook Secret (whsec_...) in Settings → Payment
+
+## US Market Expansion (Jul 2026)
+
+### Phase 1: US State Config + Landing Pages
+- [x] Add `stateConfig.ts` — US state registry mapping states to WPI exam framework
+- [x] Extend `provinceConfig.ts` types to support US states (or create parallel `stateConfig.ts`)
+- [x] Build `/us` landing page targeting US water/wastewater operators
+- [x] Build `/us/states` state-selection page (interactive US map or state dropdown)
+- [x] Build `/us/[state]` dynamic state page (e.g. `/us/iowa`, `/us/colorado`)
+- [x] Add US routes to App.tsx
+- [x] Add US nav entry to SiteNav
+
+### Phase 2: US Course Pages (reuse WPI question banks)
+- [ ] Build US quiz pages for all 4 streams × 4 classes (reuse wpi-class{1-4}-{water/ww/dist/coll} banks)
+- [ ] Build US mock exam pages for all 4 streams × 4 classes
+- [ ] Build US flashcard pages for all 4 streams × 4 classes
+- [ ] Wire all US course routes in App.tsx
+
+### Phase 3: US Pricing + Stripe Products
+- [ ] Add US pricing tier to Pricing page ($59/$79/$99 USD vs CA$79/99/129)
+- [ ] Add US Stripe products in server/stripe/products.ts
+- [ ] Add US currency detection (IP or user preference)
+- [ ] Update PurchaseGate to show USD pricing for US users
+
+### Phase 4: US SEO Content
+- [x] Add US SSR pages to pageSsr.ts (targeting "water operator exam [state]" keywords)
+- [ ] Seed 5 US-targeted blog posts (Iowa DNR exam, Colorado CDPHE, ABC certification guide, etc.)
+- [x] Update llms.txt to include US content
+- [ ] Update sitemap.xml with US routes

@@ -55,6 +55,12 @@ const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const Refund = lazy(() => import("./pages/Refund"));
 
+// US Expansion pages
+const USLanding = lazy(() => import("./pages/USLanding"));
+const USStates = lazy(() => import("./pages/USStates"));
+const USStatePage = lazy(() => import("./pages/USStatePage"));
+const USCourses = lazy(() => import("./pages/USCourses"));
+
 // Ontario Class mock exams
 const Class1MockExam = lazy(() => import("./pages/Class1MockExam"));
 
@@ -393,6 +399,11 @@ function Router() {
         <Route path={"/privacy"} component={Privacy} />
         <Route path={"/terms"} component={Terms} />
         <Route path={"/refund"} component={Refund} />
+        {/* US Expansion routes */}
+        <Route path={"/us"} component={USLanding} />
+        <Route path={"/us/states"} component={USStates} />
+        <Route path={"/us/states/:slug"} component={USStatePage} />
+        <Route path={"/us/courses"} component={USCourses} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>

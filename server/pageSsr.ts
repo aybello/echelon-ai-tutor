@@ -482,6 +482,112 @@ export const STATIC_PAGE_META: PageMeta[] = [
       <p>To request a refund or ask about eligibility, contact <a href="mailto:abello@echeloninstitute.ca">abello@echeloninstitute.ca</a>. View <a href="${SITE_URL}/pricing">subscription plans</a> or return to the <a href="${SITE_URL}/">homepage</a>.</p>
     `,
   },
+  // ── US Expansion Pages ────────────────────────────────────────────────────
+  {
+    path: "/us",
+    title: "US Water Operator Exam Prep | ABC/WPI Certification Study — Echelon Institute",
+    description:
+      "AI-powered exam prep for US water and wastewater operators. Aligned to the 2025 ABC/WPI Need-to-Know Criteria for all 4 streams (water treatment, wastewater treatment, distribution, collection) and all 4 class levels.",
+    h1: "US Water Operator Exam Prep — Pass Your ABC/WPI Certification",
+    jsonLd: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "US Water Operator Exam Prep | Echelon Institute",
+      description: "AI-powered ABC/WPI exam prep for US water and wastewater operators.",
+      url: `${SITE_URL}/us`,
+      inLanguage: "en-US",
+      isPartOf: { "@type": "WebSite", name: "Echelon Institute", url: SITE_URL },
+    }),
+    bodyHtml: `
+      <h2>ABC/WPI Exam Prep for US Water Operators</h2>
+      <p>Echelon Institute provides AI-powered exam preparation for US water and wastewater operators pursuing ABC/WPI certification. All content is aligned to the official 2025 WPI Need-to-Know Criteria published by Water Professionals International (WPI) and the Association of Boards of Certification (ABC).</p>
+
+      <h2>All Four Certification Streams</h2>
+      <p>Echelon covers all four operator certification streams: <a href="${SITE_URL}/wpi-class1-water">Water Treatment</a>, <a href="${SITE_URL}/wpi-class1-wastewater">Wastewater Treatment</a>, <a href="${SITE_URL}/wpi-class1-water-dist">Water Distribution</a>, and <a href="${SITE_URL}/wpi-class1-water-coll">Wastewater Collection</a>. Each stream is available for Class I through Class IV.</p>
+
+      <h2>45 States Covered</h2>
+      <p>Approximately 45 US states use the ABC/WPI standardized exam system. Echelon covers operators in Iowa, Colorado, Oregon, Ohio, Michigan, Wisconsin, Minnesota, Indiana, Virginia, North Carolina, Georgia, Maryland, Massachusetts, Washington, Pennsylvania, and all other WPI states. <a href="${SITE_URL}/us/states">Find your state</a>.</p>
+
+      <h2>What the WPI Exam Covers</h2>
+      <p>The WPI exam consists of 100 multiple-choice questions covering treatment processes, laboratory analysis, equipment operation and maintenance, source water quality, and safety and security. Calculation questions make up 10–16% of the exam. The passing score is 70%.</p>
+
+      <h2>AI-Powered Study Tools</h2>
+      <p>Echelon's AI tutor explains every answer in detail, identifies your weak modules, and adapts the session to focus where you need it most. Practice with 500+ questions per level, take full-length 100-question timed mock exams, and review key concepts with organized flashcards.</p>
+
+      <h2>Pricing for US Operators</h2>
+      <p>Echelon offers monthly and annual subscription plans. The annual plan provides the best value. <a href="${SITE_URL}/pricing">View current pricing</a>. Free practice questions are included — no account required to begin.</p>
+
+      <h2>Start Preparing Today</h2>
+      <p>Select your stream and class level to begin: <a href="${SITE_URL}/us/courses">browse all 16 courses</a> or <a href="${SITE_URL}/us/states">find your state</a> for state-specific certification information.</p>
+    `,
+  },
+  {
+    path: "/us/courses",
+    title: "US Water Operator Courses | All 4 Streams & 4 Levels — Echelon Institute",
+    description:
+      "Browse all 16 ABC/WPI water operator certification prep courses. Water treatment, wastewater treatment, distribution, and collection — Class I through Class IV. AI-powered practice questions, mock exams, and flashcards.",
+    h1: "US Water Operator Certification Courses — All Streams & Levels",
+    jsonLd: buildWebPageJsonLd({
+      path: "/us/courses",
+      title: "US Water Operator Courses | Echelon Institute",
+      description: "All 16 ABC/WPI water operator certification prep courses.",
+      h1: "US Water Operator Certification Courses",
+    }),
+    bodyHtml: `
+      <h2>16 Courses for US Water and Wastewater Operators</h2>
+      <p>Echelon Institute offers 16 certification prep courses covering all four ABC/WPI streams and all four class levels. Each course includes 500+ practice questions, a 100-question timed mock exam, and organized flashcards aligned to the 2025 WPI Need-to-Know Criteria.</p>
+
+      <h2>Water Treatment — Class I through Class IV</h2>
+      <p>Water treatment operator courses cover coagulation, flocculation, sedimentation, filtration, disinfection, chemical feed, source water quality, and regulatory compliance. <a href="${SITE_URL}/wpi-class1-water">Start with Class I Water Treatment</a>.</p>
+
+      <h2>Wastewater Treatment — Class I through Class IV</h2>
+      <p>Wastewater treatment courses cover primary, secondary, and tertiary treatment, activated sludge, nutrient removal, biosolids management, laboratory analysis, and equipment operation. <a href="${SITE_URL}/wpi-class1-wastewater">Start with Class I Wastewater Treatment</a>.</p>
+
+      <h2>Water Distribution — Class I through Class IV</h2>
+      <p>Distribution system courses cover pipe materials, pressure zones, cross-connection control, water quality monitoring, hydrant maintenance, and system hydraulics. <a href="${SITE_URL}/wpi-class1-water-dist">Start with Class I Water Distribution</a>.</p>
+
+      <h2>Wastewater Collection — Class I through Class IV</h2>
+      <p>Collection system courses cover gravity sewers, force mains, lift stations, infiltration and inflow, CCTV inspection, cleaning equipment, and confined space safety. <a href="${SITE_URL}/wpi-class1-water-coll">Start with Class I Wastewater Collection</a>.</p>
+
+      <h2>Free Trial Available</h2>
+      <p>The first 15 questions on every course are free — no account or credit card required. <a href="${SITE_URL}/pricing">View pricing</a> for full access.</p>
+    `,
+  },
+  {
+    path: "/us/states",
+    title: "US Water Operator Certification by State | ABC/WPI Exam Prep — Echelon Institute",
+    description:
+      "Find water and wastewater operator certification exam prep for your state. Echelon covers all 45 states that use the ABC/WPI standardized exam — Iowa, Colorado, Oregon, Ohio, Michigan, and more.",
+    h1: "US Water Operator Certification by State",
+    jsonLd: buildWebPageJsonLd({
+      path: "/us/states",
+      title: "US Water Operator Certification by State | Echelon Institute",
+      description: "ABC/WPI exam prep for all 45 US states that use the standardized exam.",
+      h1: "US Water Operator Certification by State",
+    }),
+    bodyHtml: `
+      <h2>45 States Using the ABC/WPI Standardized Exam</h2>
+      <p>Approximately 45 US states use the ABC/WPI standardized exam for water and wastewater operator certification. Echelon Institute covers operators in all of these states with content aligned to the 2025 WPI Need-to-Know Criteria.</p>
+
+      <h2>Midwest States</h2>
+      <p>Iowa (Iowa DNR), Minnesota (MDH), Wisconsin (WI DNR), Michigan (EGLE), Indiana (IDEM), Ohio (Ohio EPA), Missouri (MO DNR), North Dakota (NDDEQ), South Dakota (SD DANR), Nebraska (NDEE), Kansas (KDHE).</p>
+
+      <h2>Northeast States</h2>
+      <p>Maine (Maine DWP), New Hampshire (NHDES), Vermont (VT DEC), Massachusetts (MassDEP), Rhode Island (RIDOH), Connecticut (CT DPH), New Jersey (NJDEP), Delaware (DNREC), Maryland (MDE), Pennsylvania (PA DEP), West Virginia (WV BPH).</p>
+
+      <h2>Southern States</h2>
+      <p>Virginia (VDH), North Carolina (NC DWR), South Carolina (SCDHEC), Georgia (Georgia EPD), Alabama (ADEM), Mississippi (MSDH), Arkansas (ADH), Oklahoma (Oklahoma DEQ), Louisiana (LDH), Kentucky (KY DOW), Tennessee (TDEC).</p>
+
+      <h2>Western States</h2>
+      <p>Washington (WA DOH), Oregon (OHA), Idaho (Idaho DEQ), Montana (Montana DEQ), Wyoming (Wyoming DEQ), Colorado (CDPHE), Utah (Utah DDW), Nevada (NDEP), Arizona (ADEQ), New Mexico (NMED), Alaska (Alaska DEC), Hawaii (Hawaii DOH).</p>
+
+      <h2>States Not Covered</h2>
+      <p>California (SWRCB), Texas (TCEQ), Florida (FDEP), and New York (NYSDOH) use their own state-specific exam systems rather than the ABC/WPI standardized exam. Echelon does not currently offer prep for these state-specific exams.</p>
+
+      <h2>Start Practicing</h2>
+      <p><a href="${SITE_URL}/us/courses">Browse all courses</a> or <a href="${SITE_URL}/us">return to the US overview</a>.</p>
+    `,
+  },
 ];
 
 /** Build a map for O(1) lookup */
@@ -584,11 +690,11 @@ function injectSeoIntoTemplate(template: string, meta: PageMeta): string {
 /** Build the llms.txt content for AI model discoverability */
 function buildLlmsTxt(): string {
   return `# Echelon Institute
-> Canada's AI-powered exam prep platform for water and wastewater operators.
+> AI-powered exam prep platform for water and wastewater operators in Canada and the United States.
 
-Echelon Institute helps Canadian water and wastewater operators pass their certification exams. The platform provides adaptive practice questions, flashcards, mock exams, study notes, interactive process guides (WPI), and a 24/7 AI tutor. The first 15 questions on every course are free.
+Echelon Institute helps water and wastewater operators in Canada and the US pass their certification exams. The platform provides adaptive practice questions, flashcards, mock exams, study notes, interactive process guides, and a 24/7 AI tutor. The first 15 questions on every course are free.
 
-## Certifications Covered
+## Canadian Certifications Covered
 - Ontario OIT (Operator-in-Training) — Water Treatment and Wastewater Treatment
 - Ontario Class 1, 2, 3, 4 — Water Treatment
 - Ontario Class 1, 2, 3, 4 — Water Distribution
@@ -599,8 +705,19 @@ Echelon Institute helps Canadian water and wastewater operators pass their certi
 - Saskatchewan SLWA (Saskatchewan Water and Wastewater Association)
 - Manitoba WQAM (Water and Wastewater Association of Manitoba)
 
+## US Certifications Covered (ABC/WPI Standardized Exam)
+- Water Treatment — Class I, II, III, IV
+- Wastewater Treatment — Class I, II, III, IV
+- Water Distribution — Class I, II, III, IV
+- Wastewater Collection — Class I, II, III, IV
+- Covers all 45 states using the ABC/WPI exam (Iowa, Colorado, Oregon, Ohio, Michigan, Wisconsin, Minnesota, Indiana, Virginia, North Carolina, Georgia, Maryland, Massachusetts, Washington, Pennsylvania, and more)
+- Content aligned to 2025 WPI Need-to-Know Criteria published by Water Professionals International (WPI) and the Association of Boards of Certification (ABC)
+
 ## Key Pages
 - Homepage: ${SITE_URL}/
+- US Operator Exam Prep: ${SITE_URL}/us
+- US Courses: ${SITE_URL}/us/courses
+- US States: ${SITE_URL}/us/states
 - Pricing: ${SITE_URL}/pricing
 - About: ${SITE_URL}/about
 - FAQ: ${SITE_URL}/faq

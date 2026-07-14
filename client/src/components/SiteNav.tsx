@@ -94,6 +94,9 @@ export const NAV_LINKS = [
   { label: "📋 WPI C4 Coll Mock",       href: "/wpi-class4-water-coll-mock" },
   { label: "📐 WPI C4 Coll Formulas",   href: "/formulas-wpi-class4-coll" },
   { label: "🌊 WPI Overview",         href: "/wpi" },
+  { label: "🇺🇸 US Operator Prep",     href: "/us" },
+  { label: "🇺🇸 US All Courses",        href: "/us/courses" },
+  { label: "🇺🇸 US Find My State",      href: "/us/states" },
   { label: "📐 Formulas",      href: "/formulas" },
   { label: "🏭 Process Guide",      href: "/process" },
   { label: "♻️ Wastewater Guide",   href: "/wastewater" },
@@ -178,6 +181,20 @@ const DRAWER_SECTIONS = [
     ],
   },
   {
+    key: "us",
+    label: "🇺🇸 US — ABC/WPI Exam Prep",
+    color: "#60A5FA",
+    links: [
+      { label: "US Overview", href: "/us" },
+      { label: "All Courses", href: "/us/courses" },
+      { label: "Find My State", href: "/us/states" },
+      { label: "C1 Water Practice", href: "/wpi-class1-water" },
+      { label: "C1 WW Practice", href: "/wpi-class1-wastewater" },
+      { label: "C1 Distribution", href: "/wpi-class1-water-dist" },
+      { label: "C1 Collection", href: "/wpi-class1-water-coll" },
+    ],
+  },
+  {
     key: "wqa",
     label: "WQA — Water Quality Analyst",
     color: "#FCD34D",
@@ -218,7 +235,7 @@ interface SiteNavProps {
  * Study tool pages (/quiz, /oit-mock, etc.) are NOT marketing pages.
  */
 function isMarketingPage(path: string): boolean {
-  return path === "/" || path === "/wpi" || path === "/pricing" || path === "/about" || path === "/career" || path === "/teams" || path === "/blog" || path.startsWith("/blog/") || path === "/privacy" || path === "/terms" || path === "/refund" || path === "/jobs";
+  return path === "/" || path === "/wpi" || path === "/pricing" || path === "/about" || path === "/career" || path === "/teams" || path === "/blog" || path.startsWith("/blog/") || path === "/privacy" || path === "/terms" || path === "/refund" || path === "/jobs" || path === "/us" || path.startsWith("/us/");
 }
 
 /** Returns the 5-6 most contextually relevant desktop nav links for the current path. */
@@ -245,6 +262,8 @@ function getContextualPrimary(currentPath: string): string[] {
   if (currentPath.startsWith("/wpi-class4-wastewater")) return ["/wpi-class4-wastewater", "/wpi-class4-wastewater-mock", "/formulas-wpi-class4-ww", "/dashboard", "/account", "/wpi"];
   // WPI landing
   if (currentPath === "/wpi") return ["/wpi-class1-water", "/wpi-class1-wastewater", "/wpi", "/dashboard", "/pricing", "/account"];
+  // US pages
+  if (currentPath === "/us" || currentPath.startsWith("/us/")) return ["/us", "/us/courses", "/us/states", "/pricing", "/account", "/wpi"];
   // Ontario Water pages
   if (currentPath.startsWith("/class1-water")) return ["/class1-water", "/class1-water-mock", "/formulas-water1", "/dashboard", "/pricing", "/account"];
   if (currentPath.startsWith("/class2-water")) return ["/class2-water", "/class2-water-mock", "/formulas-water2", "/dashboard", "/pricing", "/account"];

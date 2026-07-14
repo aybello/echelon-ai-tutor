@@ -12,6 +12,7 @@ interface LandingNavProps {
 const NAV_LINKS = [
   { label: "Courses", href: "/#courses" },
   { label: "WPI 🌊", href: "/wpi" },
+  { label: "🇺🇸 US", href: "/us" },
   { label: "Pricing", href: "/pricing" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/#faq" },
@@ -77,7 +78,7 @@ export default function LandingNav({ isAuthenticated = false, currentPath }: Lan
             />
             <div>
               <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em" }}>Echelon Institute</div>
-              <div style={{ fontSize: 10, color: "#64748B", fontWeight: 500, marginTop: -2 }}>Canadian Water & Wastewater Operator Certification</div>
+              <div style={{ fontSize: 10, color: "#64748B", fontWeight: 500, marginTop: -2 }}>Water & Wastewater Operator Certification · CA & US</div>
             </div>
           </div>
         </Link>
