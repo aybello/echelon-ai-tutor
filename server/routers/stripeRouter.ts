@@ -434,8 +434,10 @@ export const stripeRouter = router({
           hasAccess = true;
         }
       }
-      // Fallback 2: check by email if user is not authenticated but provided email
-      if (!hasAccess && !ctx.user && input.email) {
+      // Fallback 2: check by email — only allowed when caller also provides a valid
+      // access token (proves they own that email's purchase). Without this guard,
+      // any unauthenticated caller could enumerate purchase status for arbitrary emails.
+      if (!hasAccess && !ctx.user && input.email && input.accessToken) {
         const emailResult = await resolveAccessByEmail(input.email, input.examType);
         hasAccess = emailResult.hasAccess;
       }

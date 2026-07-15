@@ -1056,8 +1056,7 @@ const PRICING_STYLES = `
 
 // ─── Main Pricing Page ────────────────────────────────────────────────────────
 export default function Pricing() {
-  const geoRegion = useGeoRegion();
-  const isUS = geoRegion === "US";
+  const { region: geoRegion, isUS } = useGeoRegion();
   usePageMeta({
     title: "Pricing — Echelon Institute",
     description: isUS

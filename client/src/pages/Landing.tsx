@@ -1282,8 +1282,7 @@ function CourseCard({ course }: { course: CourseType }) {
 }
 
 export default function Landing() {
-  const geoRegion = useGeoRegion();
-  const isUS = geoRegion === "US";
+  const { region: geoRegion, isUS } = useGeoRegion();
   usePageMeta({
     title: "Water & Wastewater Operator Exam Prep",
     description: isUS

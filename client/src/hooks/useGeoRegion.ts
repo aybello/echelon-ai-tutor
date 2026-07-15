@@ -114,13 +114,25 @@ function detectRegion(): GeoRegion {
 
 let _cachedRegion: GeoRegion | null = null;
 
-export function useGeoRegion(): GeoRegion {
+export interface GeoRegionResult {
+  region: GeoRegion;
+  isUS: boolean;
+  isCA: boolean;
+  isOther: boolean;
+}
+
+export function useGeoRegion(): GeoRegionResult {
   const [region] = useState<GeoRegion>(() => {
     if (_cachedRegion) return _cachedRegion;
     _cachedRegion = detectRegion();
     return _cachedRegion;
   });
-  return region;
+  return {
+    region,
+    isUS: region === "US",
+    isCA: region === "CA",
+    isOther: region === "OTHER",
+  };
 }
 
 /** Non-hook version for use outside React components */
