@@ -4,6 +4,8 @@
 
 import { useState, useEffect } from "react";
 import { useProvince } from "@/hooks/useProvince";
+import { useGeoRegion } from "@/hooks/useGeoRegion";
+import { formatPriceUSD } from "@shared/products";
 import { Link, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -13,9 +15,13 @@ import LandingNav from "@/components/LandingNav";
 import { ALL_PRODUCTS as SHARED_PRODUCTS } from "@shared/products";
 import { getSubscriptionExamTypes, EXAM_LABELS } from "@/lib/examMeta";
 
-/** Helper: get the canonical price from shared/products.ts by product key */
+/** Helper: get the canonical CAD price from shared/products.ts by product key */
 function sharedPrice(key: string): number {
   return SHARED_PRODUCTS.find(p => p.key === key)?.priceCAD ?? 0;
+}
+/** Helper: get the canonical USD price from shared/products.ts by product key */
+function sharedPriceUSD(key: string): number {
+  return SHARED_PRODUCTS.find(p => p.key === key)?.priceUSD ?? 0;
 }
 
 type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access";
@@ -1050,10 +1056,13 @@ const PRICING_STYLES = `
 
 // ─── Main Pricing Page ────────────────────────────────────────────────────────
 export default function Pricing() {
+  const geoRegion = useGeoRegion();
+  const isUS = geoRegion === "US";
   usePageMeta({
     title: "Pricing — Echelon Institute",
-    description:
-      "Affordable Practice Passes for every Canadian water and wastewater operator certification level. OIT, Class 1–4 Water, Class 1–4 Wastewater, and WQA.",
+    description: isUS
+      ? "Affordable Practice Passes for US water and wastewater operators. WPI Class I–IV, all 4 streams. Start free."
+      : "Affordable Practice Passes for every Canadian water and wastewater operator certification level. OIT, Class 1–4 Water, Class 1–4 Wastewater, and WQA.",
   });
 
   // Sync with the global province selector (useProvince hook)
@@ -1135,9 +1144,9 @@ export default function Pricing() {
 
       {/* ── Hero ── */}
       <div className="pricing-hero">
-        <div className="pricing-hero-badge">Canadian Water &amp; Wastewater Operator Certification</div>
+        <div className="pricing-hero-badge">{isUS ? "US Water & Wastewater Operator Certification" : "Canadian Water & Wastewater Operator Certification"}</div>
         <h1>Invest in Your Certification.<br />Earn It Back in Your First Paycheck.</h1>
-        <p>Annual subscription — cancel anytime. Unlimited practice. AI Tutor &amp; step-by-step solutions included.<br />Operators who pass Class 3–4 earn <strong>$85K–$130K+</strong>. Your pass costs less than one day's pay.</p>
+        <p>Annual subscription — cancel anytime. Unlimited practice. AI Tutor &amp; step-by-step solutions included.<br />{isUS ? "Operators who pass Class III–IV earn $80K–$120K+." : "Operators who pass Class 3–4 earn $85K–$130K+."} Your pass costs less than one day's pay.</p>
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8,
           background: "rgba(240,253,244,0.15)", border: "1.5px solid rgba(134,239,172,0.5)",
@@ -1194,7 +1203,9 @@ export default function Pricing() {
             <span className="section-badge" style={{ background: "#F5F3FF", color: "#7C3AED", borderColor: "#C4B5FD" }}>New</span>
           </div>
           <p style={{ fontSize: 13, color: "#64748B", margin: "0 0 20px", lineHeight: 1.5 }}>
-            Subscribe annually and unlock every exam type for your class level. Ontario subscriptions include all four MOECP / OWWCO tracks: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Western Canada subscriptions cover all four WPI tracks.
+            {isUS
+              ? "Subscribe annually and unlock every exam type for your class level. All four WPI tracks included: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Prices in USD."
+              : "Subscribe annually and unlock every exam type for your class level. Ontario subscriptions include all four MOECP / OWWCO tracks: Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Western Canada subscriptions cover all four WPI tracks."}
           </p>
 
           {/* Province toggle for subscriptions */}
@@ -1425,7 +1436,7 @@ export default function Pricing() {
           </div>
           <div className="product-grid-1">
             {INDIVIDUAL.filter(p => p.key === "wqa").map(product => (
-              <ProductCard key={product.key} product={product} />
+              <ProductCard key={product.key} product={product} isUS={isUS} />
             ))}
           </div>
         </div>
@@ -1449,7 +1460,7 @@ export default function Pricing() {
               </div>
               <div className="product-grid-4">
                 {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-water")).map(product => (
-                  <ProductCard key={product.key} product={product} />
+                  <ProductCard key={product.key} product={product} isUS={isUS} />
                 ))}
               </div>
             </div>
@@ -1461,7 +1472,7 @@ export default function Pricing() {
               </div>
               <div className="product-grid-4">
                 {INDIVIDUAL.filter(p => p.key.startsWith("wpi-") && p.key.includes("-wastewater")).map(product => (
-                  <ProductCard key={product.key} product={product} />
+                  <ProductCard key={product.key} product={product} isUS={isUS} />
                 ))}
               </div>
             </div>
@@ -1656,10 +1667,12 @@ function ProductCard({
   product,
   isWpi = false,
   wpiLabel,
+  isUS = false,
 }: {
   product: Product;
   isWpi?: boolean;
   wpiLabel?: { shortName: string; description: string; badge?: string };
+  isUS?: boolean;
 }) {
   const displayName = isWpi && wpiLabel ? wpiLabel.shortName : product.shortName;
   const displayDesc = isWpi && wpiLabel ? wpiLabel.description : product.description;
@@ -1755,7 +1768,9 @@ function ProductCard({
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
             <span style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", lineHeight: 1 }}>
-              CA${(product.priceCAD / 100).toFixed(0)}
+              {isUS
+                ? `US$${(sharedPriceUSD(product.key) / 100).toFixed(0)}`
+                : `CA$${(product.priceCAD / 100).toFixed(0)}`}
             </span>
             {product.available && (
               <span style={{
@@ -1782,7 +1797,7 @@ function ProductCard({
           label={`Get ${product.shortName} Pass →`}
           disabled={!product.available}
           productName={product.name}
-          priceLabel={`CA$${(product.priceCAD / 100).toFixed(0)}`}
+          priceLabel={isUS ? `US$${(sharedPriceUSD(product.key) / 100).toFixed(0)}` : `CA$${(product.priceCAD / 100).toFixed(0)}`}
         />
         {product.available && QUIZ_ROUTES[product.key] && (
           <Link href={QUIZ_ROUTES[product.key]}>

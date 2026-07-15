@@ -1,7 +1,8 @@
 // Echelon Institute — Homepage / Landing Page v2
 // Design: Bold, modern SaaS — feels like the product itself
-// Audience: Canadian water/wastewater operators seeking certification
+// Audience: Canadian and US water/wastewater operators seeking certification
 // Includes: Ontario Distribution & Collection sub-tabs (class1-4-water-dist, class1-4-wastewater-coll)
+// Geo-aware: hero CTA and course section header adapt to CA vs US visitors
 
 import { Link } from "wouter";
 import { useState, useRef, useEffect } from "react";
@@ -17,6 +18,7 @@ import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { FadeUp, FadeIn, SlideLeft, StaggerContainer, StaggerItem } from "@/components/animations";
 import { useCountUp } from "@/hooks/useCountUp";
+import { useGeoRegion } from "@/hooks/useGeoRegion";
 import React from "react";
 
 // Animated stat component using count-up hook
@@ -89,7 +91,7 @@ function BlogPreviewSection() {
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <div style={{ display: "inline-block", background: "#DBEAFE", color: "#1D4ED8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16 }}>FROM THE BLOG</div>
-          <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: "#0F172A", margin: "0 0 12px", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>Study Guides for Canadian Operators</h2>
+          <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: "#0F172A", margin: "0 0 12px", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>Study Guides for Water &amp; Wastewater Operators</h2>
           <p style={{ fontSize: 16, color: "#64748B", maxWidth: 520, margin: "0 auto" }}>Free in-depth articles covering exam content, regulations, and career advice for water and wastewater operators.</p>
         </div>
 
@@ -1280,10 +1282,14 @@ function CourseCard({ course }: { course: CourseType }) {
 }
 
 export default function Landing() {
+  const geoRegion = useGeoRegion();
+  const isUS = geoRegion === "US";
   usePageMeta({
     title: "Water & Wastewater Operator Exam Prep",
-    description: "Canada's exam prep for water & wastewater operators. 18,000+ practice questions, AI tutor, mock exams, and process guides. Free OIT access.",
-    keywords: "water operator exam prep, OIT exam, wastewater certification Canada, operator practice questions, MOECP exam, OWWCO exam, WPI exam prep, water quality analyst",
+    description: isUS
+      ? "Exam prep for US water & wastewater operators. 18,000+ practice questions, AI tutor, mock exams, and process guides. WPI exam prep for all 4 streams."
+      : "Canada's exam prep for water & wastewater operators. 18,000+ practice questions, AI tutor, mock exams, and process guides. Free OIT access.",
+    keywords: "water operator exam prep, OIT exam, wastewater certification, operator practice questions, WPI exam prep, water quality analyst, ABC certification",
     path: "/",
   });
   useStructuredData(landingPageSchemas);
@@ -1953,7 +1959,7 @@ export default function Landing() {
                 boxShadow: "0 4px 24px rgba(37,99,235,0.4)",
                 width: "100%",
               }}>
-                Try Free OIT Practice →
+                {isUS ? "Try Free Practice →" : "Try Free OIT Practice →"}
               </button>
             </Link>
             <Link href="/pricing" style={{ width: "100%" }}>
@@ -3006,7 +3012,7 @@ export default function Landing() {
           {/* Bottom bar */}
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
             <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", margin: 0 }}>
-              © {new Date().getFullYear()} Echelon Institute. All rights reserved. · Not affiliated with MOECP, OWWCO, EOCP, or WPI.
+              © {new Date().getFullYear()} Echelon Institute. All rights reserved. · Not affiliated with MOECP, OWWCO, EOCP, WPI, ABC, or any state certifying authority.
             </p>
             <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
               <Link href="/privacy"><span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", cursor: "pointer" }}>Privacy</span></Link>

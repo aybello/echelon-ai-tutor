@@ -1088,3 +1088,24 @@
 - [ ] Seed 5 US-targeted blog posts (Iowa DNR exam, Colorado CDPHE, ABC certification guide, etc.)
 - [x] Update llms.txt to include US content
 - [ ] Update sitemap.xml with US routes
+
+## Site Neutralization + USD Pricing (Jul 15 2026)
+
+### Phase A — Site Neutralization
+- [ ] Create `useGeoRegion()` hook (timezone-based CA/US detection, localStorage cached)
+- [ ] Landing.tsx: geo-aware hero CTA ("Try Free OIT Practice" for CA, "Try Free Practice" for US)
+- [ ] Landing.tsx: blog section h2 "Study Guides for Canadian Operators" → "Study Guides for Water & Wastewater Operators"
+- [ ] Landing.tsx: footer disclaimer — add state certifying authorities to "not affiliated" list
+- [ ] About.tsx: "Canada-First" value → "Operator-First"
+- [ ] About.tsx: remove "No American content repurposed for Canadian exams"
+- [ ] About.tsx: update founding story to include US expansion
+- [ ] About.tsx: footer "Built for Canadian water and wastewater operators" → "Built for water and wastewater operators across North America"
+
+### Phase B — USD Pricing
+- [ ] shared/products.ts: add `priceUSD?: number` field and USD prices for all products
+- [ ] Pricing.tsx: show USD prices for US visitors, CAD for Canadian visitors
+- [ ] server/stripe/products.ts: add USD Stripe Price IDs
+
+### Phase C — State Config Fix
+- [ ] stateConfig.ts: fix 3-category classification (WPI Direct / Own+ABC / Fully Independent)
+- [ ] USStatePage.tsx: show coverage note for Category 2 and "coming soon" for Category 3

@@ -5,7 +5,10 @@
  * and study paths. Both the server (Stripe billing) and the client (Pricing page)
  * import from here. Never duplicate this data.
  *
- * All prices are in CAD cents (e.g. 4900 = CA$49.00)
+ * Prices:
+ *   priceCAD — Canadian dollars, in cents (e.g. 4900 = CA$49.00)
+ *   priceUSD — US dollars, in cents (e.g. 3500 = US$35.00)
+ *             USD prices are ~20-25% cheaper than CAD to win US customers.
  */
 
 export interface EchelonProduct {
@@ -14,6 +17,7 @@ export interface EchelonProduct {
   shortName: string;
   description: string;
   priceCAD: number; // cents
+  priceUSD: number; // cents
   examTypes: string[];
   badge?: string;
   highlight?: boolean;
@@ -33,6 +37,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "OIT Practice Pass",
     description: "Full OIT (Operator-in-Training) question bank — 500+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 4900,
+    priceUSD: 3500,
     examTypes: ["oit"],
   },
   {
@@ -41,6 +46,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "OIT Wastewater Practice Pass",
     description: "Full OIT Wastewater question bank — 500+ questions covering wastewater collection, treatment principles, and Ontario O. Reg. 129/04. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 4900,
+    priceUSD: 3500,
     examTypes: ["oit-ww"],
   },
   {
@@ -49,6 +55,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 1 Water Treatment Practice Pass",
     description: "Full Class 1 Water Treatment question bank — 500+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 9900,
+    priceUSD: 6900,
     examTypes: ["class1-water"],
   },
   {
@@ -57,6 +64,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 2 Water Treatment Practice Pass",
     description: "Full Class 2 Water Treatment question bank — 500 questions across 5 modules, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
+    priceUSD: 10900,
     examTypes: ["class2-water"],
   },
   {
@@ -65,6 +73,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 3 Water Treatment Practice Pass",
     description: "Full Class 3 Water Treatment question bank — 500+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
+    priceUSD: 17900,
     examTypes: ["class3-water"],
   },
   {
@@ -73,6 +82,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 4 Water Treatment Practice Pass",
     description: "Full Class 4 Water Treatment question bank — 500+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
+    priceUSD: 21900,
     examTypes: ["class4-water"],
   },
   {
@@ -81,6 +91,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 1 Wastewater Treatment Practice Pass",
     description: "Full Class 1 Wastewater Treatment question bank — 500+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 9900,
+    priceUSD: 6900,
     examTypes: ["class1-ww"],
   },
   {
@@ -89,6 +100,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 2 Wastewater Treatment Practice Pass",
     description: "Full Class 2 Wastewater Treatment question bank — 500+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
+    priceUSD: 10900,
     examTypes: ["class2-ww"],
   },
   {
@@ -97,6 +109,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 3 Wastewater Treatment Practice Pass",
     description: "Full Class 3 Wastewater Treatment question bank — 500+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
+    priceUSD: 17900,
     examTypes: ["class3-ww"],
   },
   {
@@ -105,6 +118,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 4 Wastewater Treatment Practice Pass",
     description: "Full Class 4 Wastewater Treatment question bank — 500+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
+    priceUSD: 21900,
     examTypes: ["class4-ww"],
   },
   {
@@ -113,71 +127,80 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "WQA Practice Pass",
     description: "Full Water Quality Analyst question bank — 500+ questions, adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
+    priceUSD: 10900,
     examTypes: ["wqa"],
   },
-  // ── WPI (BC / AB / SK / MB) ──────────────────────────────────────────────
+  // ── WPI (BC / AB / SK / MB / US) ─────────────────────────────────────────
   {
     key: "wpi-class1-water",
     shortName: "WPI Class I Water",
     name: "WPI Class I Water Treatment Practice Pass",
-    description: "WPI Class I Water Treatment — 502 questions across 5 modules. Aligned with WPI Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class I Water Treatment — 502 questions across 5 modules. Aligned with WPI Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies using the WPI exam. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
+    priceUSD: 10900,
     examTypes: ["wpi-class1-water"],
   },
   {
     key: "wpi-class2-water",
     shortName: "WPI Class II Water",
     name: "WPI Class II Water Treatment Practice Pass",
-    description: "WPI Class II Water Treatment — 501 questions across 5 advanced modules. Aligned with WPI Class II Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class II Water Treatment — 501 questions across 5 advanced modules. Aligned with WPI Class II Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies using the WPI exam. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 19900,
+    priceUSD: 14900,
     examTypes: ["wpi-class2-water"],
   },
   {
     key: "wpi-class3-water",
     shortName: "WPI Class III Water",
     name: "WPI Class III Water Treatment Practice Pass",
-    description: "WPI Class III Water Treatment — 502 questions across 5 advanced modules. Aligned with WPI Class III Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class III Water Treatment — 502 questions across 5 advanced modules. Aligned with WPI Class III Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies using the WPI exam. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
+    priceUSD: 17900,
     examTypes: ["wpi-class3-water"],
   },
   {
     key: "wpi-class4-water",
     shortName: "WPI Class IV Water",
     name: "WPI Class IV Water Treatment Practice Pass",
-    description: "WPI Class IV Water Treatment — 501 questions across 6 chief-operator modules. Aligned with WPI Class IV Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class IV Water Treatment — 501 questions across 6 chief-operator modules. Aligned with WPI Class IV Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies using the WPI exam. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
+    priceUSD: 21900,
     examTypes: ["wpi-class4-water"],
   },
   {
     key: "wpi-class1-wastewater",
     shortName: "WPI Class I Wastewater",
     name: "WPI Class I Wastewater Treatment Practice Pass",
-    description: "WPI Class I Wastewater Treatment — 500 questions across 5 modules. Aligned with WPI Class I Wastewater Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class I Wastewater Treatment — 500 questions across 5 modules. Aligned with WPI Class I Wastewater Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies using the WPI exam. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
+    priceUSD: 10900,
     examTypes: ["wpi-class1-wastewater"],
   },
   {
     key: "wpi-class2-wastewater",
     shortName: "WPI Class II Wastewater",
     name: "WPI Class II Wastewater Treatment Practice Pass",
-    description: "WPI Class II Wastewater Treatment — 501 questions across 5 advanced modules. Aligned with WPI Class II Wastewater Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class II Wastewater Treatment — 501 questions across 5 advanced modules. Aligned with WPI Class II Wastewater Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies using the WPI exam. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 19900,
+    priceUSD: 14900,
     examTypes: ["wpi-class2-wastewater"],
   },
   {
     key: "wpi-class3-wastewater",
     shortName: "WPI Class III Wastewater",
     name: "WPI Class III Wastewater Treatment Practice Pass",
-    description: "WPI Class III Wastewater Treatment — 501 questions across 8 senior-operator modules. Aligned with WPI Class III Wastewater Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class III Wastewater Treatment — 501 questions across 8 senior-operator modules. Aligned with WPI Class III Wastewater Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies using the WPI exam. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
+    priceUSD: 17900,
     examTypes: ["wpi-class3-wastewater"],
   },
   {
     key: "wpi-class4-wastewater",
     shortName: "WPI Class IV Wastewater",
     name: "WPI Class IV Wastewater Treatment Practice Pass",
-    description: "WPI Class IV Wastewater Treatment — 502 questions across 7 chief-operator modules. Aligned with WPI Class IV Wastewater Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class IV Wastewater Treatment — 502 questions across 7 chief-operator modules. Aligned with WPI Class IV Wastewater Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies using the WPI exam. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
+    priceUSD: 21900,
     examTypes: ["wpi-class4-wastewater"],
   },
   // ── WPI Wastewater Collection ─────────────────────────────────────────────
@@ -185,32 +208,36 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     key: "wpi-class1-water-coll",
     shortName: "WPI Class I Collection",
     name: "WPI Class I Wastewater Collection Practice Pass",
-    description: "WPI Class I Wastewater Collection — 150 questions. Aligned with WPI Class I Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class I Wastewater Collection — 150 questions. Aligned with WPI Class I Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
+    priceUSD: 10900,
     examTypes: ["wpi-class1-water-coll"],
   },
   {
     key: "wpi-class2-water-coll",
     shortName: "WPI Class II Collection",
     name: "WPI Class II Wastewater Collection Practice Pass",
-    description: "WPI Class II Wastewater Collection — 150 questions. Aligned with WPI Class II Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class II Wastewater Collection — 150 questions. Aligned with WPI Class II Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 19900,
+    priceUSD: 14900,
     examTypes: ["wpi-class2-water-coll"],
   },
   {
     key: "wpi-class3-water-coll",
     shortName: "WPI Class III Collection",
     name: "WPI Class III Wastewater Collection Practice Pass",
-    description: "WPI Class III Wastewater Collection — 150 questions. Aligned with WPI Class III Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class III Wastewater Collection — 150 questions. Aligned with WPI Class III Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
+    priceUSD: 17900,
     examTypes: ["wpi-class3-water-coll"],
   },
   {
     key: "wpi-class4-water-coll",
     shortName: "WPI Class IV Collection",
     name: "WPI Class IV Wastewater Collection Practice Pass",
-    description: "WPI Class IV Wastewater Collection — 150 questions. Aligned with WPI Class IV Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class IV Wastewater Collection — 150 questions. Aligned with WPI Class IV Wastewater Collection Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
+    priceUSD: 21900,
     examTypes: ["wpi-class4-water-coll"],
   },
   // ── Ontario Water Distribution sub-courses ─────────────────────────────────
@@ -220,6 +247,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 1 Water Distribution Practice Pass",
     description: "Ontario Class 1 Water Distribution — 500 questions. Covers pipe materials, valve operation, hydrant maintenance, and pressure management. Aligned with OWWCO Class 1 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 9900,
+    priceUSD: 6900,
     examTypes: ["class1-water-dist"],
   },
   {
@@ -228,6 +256,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 2 Water Distribution Practice Pass",
     description: "Ontario Class 2 Water Distribution — 500 questions. Covers system design, water main installation, cross-connection control, and distribution operations. Aligned with OWWCO Class 2 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
+    priceUSD: 10900,
     examTypes: ["class2-water-dist"],
   },
   {
@@ -236,6 +265,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 3 Water Distribution Practice Pass",
     description: "Ontario Class 3 Water Distribution — 500 questions. Covers advanced hydraulics, system modelling, asset management, and distribution system planning. Aligned with OWWCO Class 3 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
+    priceUSD: 17900,
     examTypes: ["class3-water-dist"],
   },
   {
@@ -244,6 +274,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 4 Water Distribution Practice Pass",
     description: "Ontario Class 4 Water Distribution — 500 questions. Covers strategic asset management, risk-based frameworks, KPIs, capital planning, and regulatory compliance. Aligned with OWWCO Class 4 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
+    priceUSD: 21900,
     examTypes: ["class4-water-dist"],
   },
   // ── Ontario Wastewater Collection sub-courses ─────────────────────────────
@@ -253,6 +284,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 1 Wastewater Collection Practice Pass",
     description: "Ontario Class 1 Wastewater Collection — 500 questions. Covers collection system basics, I/I identification, manhole inspection, and O. Reg. 129/04. Aligned with OWWCO Class 1 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 9900,
+    priceUSD: 6900,
     examTypes: ["class1-wastewater-coll"],
   },
   {
@@ -261,6 +293,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 2 Wastewater Collection Practice Pass",
     description: "Ontario Class 2 Wastewater Collection — 500 questions. Covers collection system design, sewer rehabilitation, pump station operations, and CSO management. Aligned with OWWCO Class 2 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
+    priceUSD: 10900,
     examTypes: ["class2-wastewater-coll"],
   },
   {
@@ -269,6 +302,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 3 Wastewater Collection Practice Pass",
     description: "Ontario Class 3 Wastewater Collection — 500 questions. Covers advanced collection system hydraulics, CCTV inspection, force main design, and Long-Term Control Plans. Aligned with OWWCO Class 3 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
+    priceUSD: 17900,
     examTypes: ["class3-wastewater-coll"],
   },
   {
@@ -277,6 +311,7 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     name: "Class 4 Wastewater Collection Practice Pass",
     description: "Ontario Class 4 Wastewater Collection — 500 questions. Covers strategic collection system management, lifecycle cost optimization, green infrastructure, and regulatory compliance. Aligned with OWWCO Class 4 certification. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
+    priceUSD: 21900,
     examTypes: ["class4-wastewater-coll"],
   },
   // ── WPI Water Distribution ────────────────────────────────────────────────
@@ -284,36 +319,106 @@ export const INDIVIDUAL_PRODUCTS: EchelonProduct[] = [
     key: "wpi-class1-water-dist",
     shortName: "WPI Class I Distribution",
     name: "WPI Class I Water Distribution Practice Pass",
-    description: "WPI Class I Water Distribution — 150 questions. Aligned with WPI Class I Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class I Water Distribution — 150 questions. Aligned with WPI Class I Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 14900,
+    priceUSD: 10900,
     examTypes: ["wpi-class1-water-dist"],
   },
   {
     key: "wpi-class2-water-dist",
     shortName: "WPI Class II Distribution",
     name: "WPI Class II Water Distribution Practice Pass",
-    description: "WPI Class II Water Distribution — 136 questions. Aligned with WPI Class II Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class II Water Distribution — 150 questions. Aligned with WPI Class II Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 19900,
+    priceUSD: 14900,
     examTypes: ["wpi-class2-water-dist"],
   },
   {
     key: "wpi-class3-water-dist",
     shortName: "WPI Class III Distribution",
     name: "WPI Class III Water Distribution Practice Pass",
-    description: "WPI Class III Water Distribution — 150 questions. Aligned with WPI Class III Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class III Water Distribution — 150 questions. Aligned with WPI Class III Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 24900,
+    priceUSD: 17900,
     examTypes: ["wpi-class3-water-dist"],
   },
   {
     key: "wpi-class4-water-dist",
     shortName: "WPI Class IV Distribution",
     name: "WPI Class IV Water Distribution Practice Pass",
-    description: "WPI Class IV Water Distribution — 150 questions. Aligned with WPI Class IV Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), and MWWA (MB). Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
+    description: "WPI Class IV Water Distribution — 150 questions. Aligned with WPI Class IV Water Distribution Need-to-Know Criteria. Recognized by EOCP (BC), AWWOA (AB), SAHO (SK), MWWA (MB), and US state agencies. Adaptive difficulty, AI Tutor, score history. Unlimited attempts.",
     priceCAD: 29900,
+    priceUSD: 21900,
     examTypes: ["wpi-class4-water-dist"],
   },
 ];
 
+// ── Bundles ───────────────────────────────────────────────────────────────────
+
+export interface EchelonBundle {
+  key: string;
+  name: string;
+  shortName: string;
+  description: string;
+  priceCAD: number; // cents
+  priceUSD: number; // cents
+  examTypes: string[];
+  badge?: string;
+  highlight?: boolean;
+}
+
+export const BUNDLES: EchelonBundle[] = [
+  {
+    key: "bundle-water",
+    shortName: "Water Bundle",
+    name: "Water Treatment Bundle",
+    description: "All 4 Water Treatment levels (Class 1–4 / WPI I–IV) — 2,000+ questions, AI Tutor, mock exams, and formula sheets for every level.",
+    priceCAD: 69900,
+    priceUSD: 49900,
+    examTypes: ["class1-water", "class2-water", "class3-water", "class4-water"],
+    badge: "Save 30%",
+  },
+  {
+    key: "bundle-wastewater",
+    shortName: "Wastewater Bundle",
+    name: "Wastewater Treatment Bundle",
+    description: "All 4 Wastewater Treatment levels (Class 1–4 / WPI I–IV) — 2,000+ questions, AI Tutor, mock exams, and formula sheets for every level.",
+    priceCAD: 69900,
+    priceUSD: 49900,
+    examTypes: ["class1-ww", "class2-ww", "class3-ww", "class4-ww"],
+    badge: "Save 30%",
+  },
+  {
+    key: "bundle-all-access",
+    shortName: "All-Access",
+    name: "All-Access Pass",
+    description: "Every course on the platform — all 4 streams, all 4 levels, WPI and Ontario. 18,000+ questions, AI Tutor, mock exams, formula sheets, and unlimited attempts.",
+    priceCAD: 34900,
+    priceUSD: 24900,
+    examTypes: [],
+    badge: "Best Value",
+    highlight: true,
+  },
+];
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+export function getProductByKey(key: string): EchelonProduct | EchelonBundle | undefined {
+  return (
+    INDIVIDUAL_PRODUCTS.find(p => p.key === key) ??
+    BUNDLES.find(b => b.key === key)
+  );
+}
+
+export function formatPriceCAD(cents: number): string {
+  return `CA$${(cents / 100).toFixed(0)}`;
+}
+
+export function formatPriceUSD(cents: number): string {
+  return `US$${(cents / 100).toFixed(0)}`;
+}
+
+// ── Backward-compatible flat list ─────────────────────────────────────────────
 export const ALL_PRODUCTS = [...INDIVIDUAL_PRODUCTS];
 
 /** Maps product key to quiz and mock exam paths */
@@ -372,17 +477,12 @@ export function getAllUnlockedExamTypes(productKeys: string[]): string[] {
   return Array.from(types);
 }
 
-// ── Team seat course options ──────────────────────────────────────────────────
-/**
- * Available course options for team seat assignment, grouped by province.
- * Each entry maps a courseKey (= individual product key) to a human-readable label.
- * The courseKey is stored on the organization_members row and used to derive the
- * subscription tier when granting access.
- */
+// ── Team / Org course options ─────────────────────────────────────────────────
+
 export interface TeamCourseOption {
-  key: string;   // individual product key, e.g. 'class3-water'
-  label: string; // display label for the manager UI
-  tier: string;  // subscription tier this course maps to, e.g. 'class3'
+  key: string;
+  label: string;
+  tier: string;
 }
 
 export const TEAM_COURSES_ONTARIO: TeamCourseOption[] = [
