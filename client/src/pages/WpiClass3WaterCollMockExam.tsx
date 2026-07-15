@@ -35,7 +35,7 @@ export default function WpiClass3WaterCollMockExam() {
       title="WPI Class III Wastewater Collection Mock Exam"
       badge="WPI CLASS III · WASTEWATER COLLECTION"
       metaDescription="100-question timed mock exam for the WPI Class III Wastewater Collection certification. 2-hour timer, 70% pass threshold."
-      metaKeywords="WPI Class 3 wastewater collection mock exam, BC EOCP, Alberta AWWOA Class III collection"
+      metaKeywords="WPI Class III wastewater collection mock exam, ABC WPI exam prep, BC EOCP Level III, Alberta AWWOA Class III, US wastewater collection operator exam"
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
@@ -50,7 +50,7 @@ export default function WpiClass3WaterCollMockExam() {
       practiceLabel="Class III Collection Practice"
       showProvinceSelector={false}
       currentPath="/wpi-class3-water-coll-mock"
-      infoLine={`${POOL.length} questions · BC (EOCP Level III) · Alberta (AWWOA Class III) · SK · MB`}
+      infoLine={`${POOL.length} questions · Canada & US · ABC/WPI Standard · Class III`}
       stream="wastewater"
       accentColor="#7C3AED"
     />

@@ -57,7 +57,7 @@ export default function WpiClass2WastewaterQuiz() {
       currentPath="/wpi-class2-wastewater"
       courseLabel="WPI Class 2 · Wastewater Treatment"
       courseTitle="WPI Class 2 Wastewater Practice Quiz"
-      courseSubtitle="500 questions · BC (EOCP Level II) · Alberta (AWWOA Class 2)"
+      courseSubtitle="Canada & US · ABC/WPI Standard · Class II"
       headerGradient="linear-gradient(135deg, #1D4ED8 0%, #0E7490 100%)"
       headerIcon="🔬"
       headerActions={[

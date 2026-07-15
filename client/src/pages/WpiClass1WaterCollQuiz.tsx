@@ -57,7 +57,7 @@ export default function WpiClass1WaterCollQuiz() {
       currentPath="/wpi-class1-water-coll"
       courseLabel="WPI Class 1 · Wastewater Collection"
       courseTitle="WPI Class 1 Wastewater Collection Quiz"
-      courseSubtitle="500 questions · BC (EOCP Level I) · Alberta (AWWOA Class 1) · SK · MB"
+      courseSubtitle="Canada & US · ABC/WPI Standard · Class I"
       headerGradient="linear-gradient(135deg, #065F46 0%, #059669 100%)"
       headerIcon="🚧"
       headerActions={[

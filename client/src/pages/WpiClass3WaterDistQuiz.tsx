@@ -57,7 +57,7 @@ export default function WpiClass3WaterDistQuiz() {
       currentPath="/wpi-class3-water-dist"
       courseLabel="WPI Class 3 · Water Distribution"
       courseTitle="WPI Class 3 Water Distribution Quiz"
-      courseSubtitle="500 questions · BC (EOCP Level III) · Alberta (AWWOA Class 3) · SK · MB"
+      courseSubtitle="Canada & US · ABC/WPI Standard · Class III"
       headerGradient="linear-gradient(135deg, #0369A1 0%, #0E7490 100%)"
       headerIcon="🚰"
       headerActions={[

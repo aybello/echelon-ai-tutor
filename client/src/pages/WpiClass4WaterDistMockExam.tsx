@@ -34,7 +34,7 @@ export default function WpiClass4WaterDistMockExam() {
       title="WPI Class IV Water Distribution Mock Exam"
       badge="WPI CLASS IV · WATER DISTRIBUTION"
       metaDescription="100-question timed mock exam for the WPI Class IV Water Distribution certification. 2-hour timer, 70% pass threshold."
-      metaKeywords="WPI Class 4 water distribution mock exam, BC EOCP Level IV, Alberta AWWOA Class IV distribution"
+      metaKeywords="WPI Class IV water distribution mock exam, ABC WPI exam prep, BC EOCP Level IV, Alberta AWWOA Class IV, US water distribution operator exam"
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
@@ -49,7 +49,7 @@ export default function WpiClass4WaterDistMockExam() {
       practiceLabel="Class IV Distribution Practice"
       showProvinceSelector={false}
       currentPath="/wpi-class4-water-dist-mock"
-      infoLine={`${POOL.length} questions · BC (EOCP Level IV) · Alberta (AWWOA Class IV) · SK · MB`}
+      infoLine={`${POOL.length} questions · Canada & US · ABC/WPI Standard · Class IV`}
       stream="water"
       accentColor="#1E3A5F"
     />

@@ -37,7 +37,7 @@ export default function WpiClass4WastewaterMockExam() {
       title="WPI Class IV Wastewater Treatment Mock Exam"
       badge="WPI CLASS IV · WASTEWATER TREATMENT"
       metaDescription="100-question timed mock exam for the WPI Class IV Wastewater Treatment certification. 2-hour timer, 70% pass threshold."
-      metaKeywords="WPI Class 4 wastewater mock exam, BC EOCP Level IV wastewater, Alberta AWWOA Class IV"
+      metaKeywords="WPI Class IV wastewater treatment mock exam, ABC WPI exam prep, BC EOCP Level IV, Alberta AWWOA Class IV, US wastewater operator exam"
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
@@ -52,7 +52,7 @@ export default function WpiClass4WastewaterMockExam() {
       practiceLabel="Class IV Wastewater Practice"
       showProvinceSelector={false}
       currentPath="/wpi-class4-wastewater-mock"
-      infoLine={`${POOL.length} questions · BC (EOCP Level IV) · Alberta (AWWOA Class IV) · SK · MB`}
+      infoLine={`${POOL.length} questions · Canada & US · ABC/WPI Standard · Class IV`}
       stream="wastewater"
       accentColor="#0F766E"
     />

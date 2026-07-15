@@ -59,7 +59,7 @@ export default function WpiClass4WaterQuiz() {
       currentPath="/wpi-class4-water"
       courseLabel="WPI Class 4 · Water Treatment"
       courseTitle="WPI Class 4 Water Practice Quiz"
-      courseSubtitle="500 questions · BC (EOCP Level IV) · Alberta (AWWOA Class 4) · SK · MB"
+      courseSubtitle="Canada & US · ABC/WPI Standard · Class IV"
       headerGradient="linear-gradient(135deg, #1D4ED8 0%, #0E7490 100%)"
       headerIcon="👑"
       headerActions={[

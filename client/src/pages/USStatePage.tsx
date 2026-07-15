@@ -7,7 +7,6 @@ import {
   getStateBySlug,
   US_STREAMS,
   US_LEVELS,
-  getUSBankKey,
 } from "@/lib/stateConfig";
 
 const STREAM_ICONS: Record<string, string> = {
@@ -54,6 +53,18 @@ function getMockRoute(level: string, stream: string): string {
   return `/wpi-class${levelNum}-${streamMap[stream]}-mock`;
 }
 
+/** Waitlist form — simple mailto link for now */
+function WaitlistCTA({ stateName }: { stateName: string }) {
+  return (
+    <a
+      href={`mailto:abello@echeloninstitute.ca?subject=Waitlist: ${encodeURIComponent(stateName)} Exam Prep&body=I'm interested in exam prep for ${encodeURIComponent(stateName)}. Please add me to the waitlist.`}
+      className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+    >
+      Join the Waitlist →
+    </a>
+  );
+}
+
 export default function USStatePage() {
   const params = useParams<{ slug: string }>();
   const state = getStateBySlug(params.slug ?? "");
@@ -79,6 +90,98 @@ export default function USStatePage() {
       </div>
     );
   }
+
+  // ── Limited coverage: fully independent exam, coming soon ──────────────────
+  if (state.coverage === "limited") {
+    return (
+      <div className="min-h-screen bg-[#0a0f1a] text-white">
+        {/* Nav */}
+        <nav className="border-b border-white/10 bg-[#0a0f1a]/95 backdrop-blur-sm sticky top-0 z-50">
+          <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <Link href="/us/states">
+              <span className="text-white/70 hover:text-white cursor-pointer text-sm">
+                ← All States
+              </span>
+            </Link>
+            <Link href="/us">
+              <span className="text-xl font-bold text-white cursor-pointer">Echelon US</span>
+            </Link>
+            <Link href="/pricing">
+              <Button size="sm" className="bg-blue-600 hover:bg-blue-500 text-white">
+                Pricing
+              </Button>
+            </Link>
+          </div>
+        </nav>
+
+        <div className="max-w-3xl mx-auto px-4 py-24 text-center">
+          {/* State badge */}
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 text-sm px-3 py-1">
+              🇺🇸 {state.code}
+            </Badge>
+            <Badge className="bg-amber-500/10 text-amber-400 border-amber-500/20 text-sm px-3 py-1">
+              Coming Soon
+            </Badge>
+          </div>
+
+          {/* Heading */}
+          <h1 className="text-4xl font-bold mb-6">
+            {state.name} Exam Prep — Coming Soon
+          </h1>
+          <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-xl mx-auto">
+            {state.name} uses a state-administered exam through {state.certBodyAbbr} that is
+            independent of the ABC/WPI standardized framework. We are building a dedicated
+            {state.name} question bank and expect to launch in late 2025.
+          </p>
+
+          {/* Certifying body */}
+          <div className="bg-white/5 border border-white/10 rounded-xl p-6 inline-block mb-10 text-left">
+            <div className="text-xs text-white/40 uppercase tracking-wider mb-1">Certifying Authority</div>
+            <div className="font-semibold text-white mb-1">{state.certBody}</div>
+            <a
+              href={state.certBodyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 text-sm"
+            >
+              Official certification page →
+            </a>
+          </div>
+
+          {/* Waitlist CTA */}
+          <div className="mb-6">
+            <p className="text-white/50 text-sm mb-4">
+              Be the first to know when {state.name} exam prep launches.
+            </p>
+            <WaitlistCTA stateName={state.name} />
+          </div>
+
+          {/* Fallback: WPI practice */}
+          <div className="mt-12 bg-blue-500/5 border border-blue-500/20 rounded-xl p-8">
+            <h2 className="text-xl font-bold mb-3">Practice with WPI Content in the Meantime</h2>
+            <p className="text-white/60 text-sm mb-6">
+              While we build the {state.name}-specific bank, our WPI Class I–IV question banks
+              cover the same core water and wastewater science. Many operators in {state.name}
+              find them useful for building foundational knowledge.
+            </p>
+            <Link href="/us/courses">
+              <Button className="bg-white/10 hover:bg-white/20 text-white border border-white/20">
+                Browse WPI Courses →
+              </Button>
+            </Link>
+          </div>
+
+          <p className="mt-8 text-white/30 text-xs">
+            Not affiliated with {state.certBodyAbbr}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Partial coverage: state exam based on WPI criteria ─────────────────────
+  const isPartial = state.coverage === "partial";
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-white">
@@ -108,9 +211,15 @@ export default function USStatePage() {
             <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20 text-sm px-3 py-1">
               🇺🇸 {state.code}
             </Badge>
-            <Badge className="bg-white/5 text-white/60 border-white/10 text-sm px-3 py-1">
-              ABC/WPI Exam
-            </Badge>
+            {isPartial ? (
+              <Badge className="bg-amber-500/10 text-amber-400 border-amber-500/20 text-sm px-3 py-1">
+                ~85% WPI Coverage
+              </Badge>
+            ) : (
+              <Badge className="bg-white/5 text-white/60 border-white/10 text-sm px-3 py-1">
+                ABC/WPI Exam
+              </Badge>
+            )}
           </div>
           <h1 className="text-4xl font-bold mb-4">
             {state.name} Water Operator Exam Prep
@@ -119,6 +228,25 @@ export default function USStatePage() {
             {state.examNote} Echelon Institute provides AI-powered practice questions,
             timed mock exams, and flashcards aligned to the 2025 WPI Need-to-Know Criteria.
           </p>
+
+          {/* Partial coverage notice */}
+          {isPartial && (
+            <div className="mt-6 bg-amber-500/5 border border-amber-500/20 rounded-xl p-5">
+              <div className="flex items-start gap-3">
+                <span className="text-amber-400 text-lg mt-0.5">⚠️</span>
+                <div>
+                  <div className="font-semibold text-amber-400 mb-1">Partial Coverage Note</div>
+                  <p className="text-white/60 text-sm leading-relaxed">
+                    {state.name} administers its own state exam through {state.certBodyAbbr},
+                    but the exam content is based on the ABC/WPI Need-to-Know Criteria.
+                    Our WPI question banks cover approximately 85% of what you will see on
+                    the {state.certBodyAbbr} exam. State-specific regulations and local
+                    procedures may not be covered.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Certifying body */}
           <div className="mt-6 bg-white/5 border border-white/10 rounded-xl p-5 inline-block">
@@ -137,7 +265,12 @@ export default function USStatePage() {
 
         {/* Course grid */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">Available Courses</h2>
+          <h2 className="text-2xl font-bold mb-2">Available Courses</h2>
+          {isPartial && (
+            <p className="text-white/50 text-sm mb-6">
+              WPI-aligned content · ~85% coverage for {state.certBodyAbbr} exam
+            </p>
+          )}
           <div className="grid md:grid-cols-2 gap-6">
             {US_STREAMS.map(stream => (
               <Card key={stream.key} className="bg-white/5 border-white/10 overflow-hidden">
@@ -207,8 +340,14 @@ export default function USStatePage() {
             </div>
             <div>
               <div className="text-white/40 text-xs uppercase tracking-wider mb-1">Exam Provider</div>
-              <div className="text-white">ABC / Water Professionals International (WPI)</div>
-              <div className="text-white/60 mt-1">Computer-based testing at Pearson VUE centers</div>
+              <div className="text-white">
+                {isPartial ? state.certBodyAbbr : "ABC / Water Professionals International (WPI)"}
+              </div>
+              <div className="text-white/60 mt-1">
+                {isPartial
+                  ? `${state.name} state-administered exam based on WPI criteria`
+                  : "Computer-based testing at Pearson VUE centers"}
+              </div>
             </div>
           </div>
         </div>

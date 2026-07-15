@@ -38,7 +38,7 @@ export default function WpiClass3WaterMockExam() {
       title="WPI Class III Water Treatment Mock Exam"
       badge="WPI CLASS III · WATER TREATMENT"
       metaDescription="100-question timed mock exam for the WPI Class III Water Treatment certification. 2-hour timer, 70% pass threshold."
-      metaKeywords="WPI Class 3 water treatment mock exam, BC EOCP Level III, Alberta AWWOA Class III"
+      metaKeywords="WPI Class III water treatment mock exam, ABC WPI exam prep, BC EOCP Level III, Alberta AWWOA Class III, US water operator exam"
       examQuestions={100}
       examDuration={2 * 60 * 60}
       passThreshold={0.7}
@@ -53,7 +53,7 @@ export default function WpiClass3WaterMockExam() {
       practiceLabel="Class III Water Practice"
       showProvinceSelector={false}
       currentPath="/wpi-class3-water-mock"
-      infoLine={`${POOL.length} questions · BC (EOCP Level III) · Alberta (AWWOA Class III) · SK · MB`}
+      infoLine={`${POOL.length} questions · Canada & US · ABC/WPI Standard · Class III`}
       stream="water"
       accentColor="#0F766E"
     />
