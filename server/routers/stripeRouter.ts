@@ -434,7 +434,14 @@ export const stripeRouter = router({
           hasAccess = true;
         }
       }
-      // Fallback 2: check by email — only allowed when caller also provides a valid
+      // Fallback 2: OTP / email-session users — ctx.studentEmail is server-verified via
+      // the signed httpOnly session cookie issued after OTP login. This is safe because
+      // the identity was already proven server-side; no accessToken is needed here.
+      if (!hasAccess && !ctx.user && ctx.studentEmail) {
+        const emailResult = await resolveAccessByEmail(ctx.studentEmail, input.examType);
+        if (emailResult.hasAccess) hasAccess = true;
+      }
+      // Fallback 3: check by email — only allowed when caller also provides a valid
       // access token (proves they own that email's purchase). Without this guard,
       // any unauthenticated caller could enumerate purchase status for arbitrary emails.
       if (!hasAccess && !ctx.user && input.email && input.accessToken) {
