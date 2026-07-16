@@ -200,19 +200,24 @@ async function startServer() {
   // isDev is used by both SSR handlers
   const isDev = process.env.NODE_ENV === "development";
 
-  // ── Static page SSR routes — must be BEFORE the SPA catch-all ────────────────────────────────────────
+  // In dev mode, initialize Vite FIRST so we can pass its transformIndexHtml
+  // to the SSR handlers — without this, React never mounts on SSR-served pages.
+  let viteInstance: { transformIndexHtml: (url: string, html: string) => Promise<string> } | undefined;
+  if (isDev) {
+    viteInstance = await setupVite(app, server);
+  }
+
+  // ── Static page SSR routes — must be AFTER Vite init (needs viteInstance) ────────────────────────────────────────
   // Handles /, /pricing, /about, /jobs, /blog, /wpi, /faq, /privacy, /terms, /refund
   // Each returns per-route title, canonical, H1, and structured data in raw HTML.
-  registerPageSsrRoutes(app, isDev);
-
+  registerPageSsrRoutes(app, isDev, viteInstance);
   // ── Blog SSR routes — must be BEFORE the SPA catch-all ────────────────────────────────────────
   // /blog and /blog/:slug return server-rendered HTML so crawlers see full
   // article content without executing JavaScript.
   registerBlogSsrRoutes(app, isDev);
-
   // ── Dynamic sitemap — generated from DB at request time ────────────────────────────
   // New posts appear in the sitemap automatically with lastmod dates.
-  // The static client/public/sitemap.xml has been deleted to avoid shadowing this.
+  // Must be registered BEFORE serveStatic (which adds a wildcard catch-all).
   app.get("/sitemap.xml", async (_req, res) => {
     try {
       const xml = await buildDynamicSitemap();
@@ -223,10 +228,10 @@ async function startServer() {
     }
   });
 
-  // development mode uses Vite, production mode uses static files
-  if (process.env.NODE_ENV === "development") {
-    await setupVite(app, server);
-  } else {
+  // ── Static file serving / SPA catch-all — must be LAST ────────────────────────────
+  // In production, serves built assets and falls through to index.html for SPA routes.
+  // In dev, Vite middleware (registered above via setupVite) handles this.
+  if (!isDev) {
     serveStatic(app);
   }
 

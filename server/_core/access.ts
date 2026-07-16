@@ -17,7 +17,17 @@ export const FREE_TRIAL_LIMIT = 15;
  * Exam types that are fully free — no purchase or subscription required.
  * OIT (Operator-in-Training) is the free funnel product.
  */
-export const FREE_EXAM_TYPES = new Set(["oit", "oit-ww"]);
+export const FREE_EXAM_TYPES = new Set([
+  // OIT free tiers — full quiz access without a purchase
+  "oit", "oit-ww",
+]);
+
+/**
+ * AI Tutor is free for ALL exam types — users hit the 15-question quiz gate
+ * as the conversion funnel instead. This is intentionally separate from
+ * FREE_EXAM_TYPES so the paywall still applies to quiz/mock-exam access.
+ */
+export const FREE_AI_TUTOR = true;
 
 /** Canonical email form for storage AND comparison. */
 export function normalizeEmail(email: string | null | undefined): string {

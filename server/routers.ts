@@ -489,20 +489,10 @@ export const appRouter = router({
       )
       .mutation(async ({ input, ctx }) => {
         try {
-          // Phase 10 access gate: AI Tutor is a paid feature.
-          // Free exam types (OIT, OIT-WW) are always allowed.
-          // For all other exam types, verify the caller has access before invoking the LLM.
-          if (input.examType) {
-            const hasAccess = await resolveAccessForRequest(ctx, input.examType, {
-              accessToken: undefined,
-            });
-            if (!hasAccess) {
-              return {
-                reply:
-                  "The AI Tutor is available with a paid practice pass. Upgrade at echeloninstitute.ca/pricing to unlock personalized coaching for this exam.",
-              };
-            }
-          }
+          // AI Tutor is free for all exam types — users hit the 15-question quiz gate
+          // as the conversion funnel. FREE_AI_TUTOR = true in access.ts controls this.
+          // The access check below is intentionally skipped so all students can use the tutor.
+          // (Previously this was a paid-only gate; removed to improve engagement/conversion.)
 
           let enrichedMessages = [...input.messages];
 
