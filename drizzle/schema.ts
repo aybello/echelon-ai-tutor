@@ -564,3 +564,25 @@ export const commandDrillQueue = mysqlTable("command_drill_queue", {
 ]);
 export type CommandDrillQueue = typeof commandDrillQueue.$inferSelect;
 export type InsertCommandDrillQueue = typeof commandDrillQueue.$inferInsert;
+
+/**
+ * Command run history — one row per completed scenario run.
+ * Powers personal score timeline and the operator leaderboard.
+ */
+export const commandRunHistory = mysqlTable("command_run_history", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  scenarioId: varchar("scenarioId", { length: 60 }).notNull(),
+  scenarioTitle: varchar("scenarioTitle", { length: 120 }).notNull(),
+  commandScore: int("commandScore").notNull(),
+  optimalCalls: int("optimalCalls").notNull(),
+  totalSteps: int("totalSteps").notNull(),
+  elapsedSeconds: int("elapsedSeconds").notNull().default(0),
+  completedAt: timestamp("completedAt").defaultNow().notNull(),
+}, (t) => [
+  index("crh_user_idx").on(t.userId),
+  index("crh_scenario_idx").on(t.scenarioId),
+  index("crh_score_idx").on(t.commandScore),
+]);
+export type CommandRunHistory = typeof commandRunHistory.$inferSelect;
+export type InsertCommandRunHistory = typeof commandRunHistory.$inferInsert;

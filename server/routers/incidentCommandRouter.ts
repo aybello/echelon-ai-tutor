@@ -2,8 +2,8 @@ import { z } from "zod";
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { invokeGPT56 } from "../_core/openaiResponses";
 import { getDb } from "../db";
-import { commandDrillQueue } from "../../drizzle/schema";
-import { eq, desc } from "drizzle-orm";
+import { commandDrillQueue, commandRunHistory, users } from "../../drizzle/schema";
+import { eq, desc, sql } from "drizzle-orm";
 
 const decisionSchema = z.object({
   stepId: z.string().min(1).max(40),
@@ -13,89 +13,22 @@ const decisionSchema = z.object({
   points: z.number().int().min(0).max(20),
 });
 
-const scenarioStepIds = ["source-shift", "filter-breakthrough", "disinfection-risk", "confirmation", "stabilize"] as const;
-
-const commandScenario = {
-  "source-shift": {
-    title: "The source water changes",
-    choices: {
-      "verify-optimize": ["Verify the raw-water reading, run a jar test and adjust coagulation from the validated result", "The reading is confirmed. The optimized coagulant dose strengthens floc formation before the load reaches filtration.", 20],
-      "dose-blind": ["Immediately double the coagulant dose", "Filtered water holds temporarily, but the unverified dose depresses pH and increases sludge loading.", 8],
-      wait: ["Wait for finished-water turbidity to alarm", "The untreated load advances through the plant and consumes the response time available to operators.", 0],
-    },
-  },
-  "filter-breakthrough": {
-    title: "Filter 2 begins to break through",
-    choices: {
-      "isolate-filter": ["Remove Filter 2 from service, preserve the sample and verify performance on the remaining filters", "The breakthrough is isolated. Combined-filter turbidity stabilizes while the team starts a controlled backwash and inspection.", 20],
-      "backwash-all": ["Backwash every filter immediately", "The plant loses too much filtration capacity at once and clearwell storage begins falling rapidly.", 6],
-      "reduce-alarm": ["Raise the alarm threshold so nuisance alarms stop", "The process deviation continues without containment and the operator loses a critical warning barrier.", 0],
-    },
-  },
-  "disinfection-risk": {
-    title: "Disinfection margin narrows",
-    choices: {
-      "ct-verify": ["Verify analyser accuracy, calculate the current CT margin and make a controlled dose adjustment", "The analyser is valid. A controlled adjustment restores residual while the CT check confirms the barrier remains intact.", 20],
-      "maximum-dose": ["Set the chlorine feed to maximum output", "Residual recovers, but the uncontrolled response creates an avoidable high-chlorine condition downstream.", 7],
-      "trust-downstream": ["Take no action because distribution residual is still measurable", "Clearwell residual continues falling and the plant approaches loss of verified disinfection performance.", 0],
-    },
-  },
-  confirmation: {
-    title: "A verification result arrives",
-    choices: {
-      "escalate-document": ["Initiate the facility's escalation protocol, preserve records and continue verification sampling", "The incident is formally controlled. Notifications, samples, operator actions and instrument checks are preserved in one defensible timeline.", 20],
-      "log-later": ["Continue monitoring and complete the incident log at the end of the shift", "The plant remains stable, but delayed escalation creates gaps in the official response record.", 6],
-      "delete-alarm": ["Acknowledge and delete the alarm because the readings are recovering", "The event loses its auditable trail and the organization cannot demonstrate when the deviation was recognized or controlled.", 0],
-    },
-  },
-  stabilize: {
-    title: "Move from response to recovery",
-    choices: {
-      "recovery-gate": ["Hold the recovery state until verification criteria are met, then conduct a documented after-action review", "The plant closes the event with verified stability, a complete timeline and clear actions for the next extreme-weather event.", 20],
-      "normal-now": ["Return immediately to normal setpoints and staffing", "The plant recovers, but rapid normalization reduces monitoring during the period when rebound effects are still possible.", 7],
-      "keep-emergency": ["Keep emergency settings indefinitely", "The plant remains safe but accumulates chemical, residual and filter-loading problems from an unnecessarily prolonged emergency state.", 3],
-    },
-  },
-} as const;
-
 const submittedDecisionSchema = z.object({
-  stepId: z.enum(scenarioStepIds),
+  stepId: z.string().min(1).max(40),
   choiceId: z.string().min(1).max(40),
+  stepTitle: z.string().min(1).max(120),
+  choiceLabel: z.string().min(1).max(240),
+  consequence: z.string().min(1).max(500),
+  points: z.number().int().min(0).max(20),
 });
 
-export const submittedScenarioSchema = z.array(submittedDecisionSchema).length(scenarioStepIds.length).superRefine((decisions, context) => {
-  decisions.forEach((decision, index) => {
-    if (decision.stepId !== scenarioStepIds[index]) {
-      context.addIssue({ code: "custom", path: [index, "stepId"], message: "Decision sequence does not match the scenario" });
-    }
-    const step = commandScenario[decision.stepId];
-    if (!(decision.choiceId in step.choices)) {
-      context.addIssue({ code: "custom", path: [index, "choiceId"], message: "Unknown decision for this scenario step" });
-    }
-  });
-});
-
-export function evaluateSubmittedDecisions(submissions: z.infer<typeof submittedScenarioSchema>) {
-  return submissions.map(submission => {
-    const step = commandScenario[submission.stepId];
-    const choice = step.choices[submission.choiceId as keyof typeof step.choices] as readonly [string, string, number];
-    return decisionSchema.parse({
-      stepId: submission.stepId,
-      stepTitle: step.title,
-      choiceLabel: choice[0],
-      consequence: choice[1],
-      points: choice[2],
-    });
-  });
-}
-
-export function fallbackDebrief(score: number, decisions: z.infer<typeof decisionSchema>[]) {
+export function fallbackDebrief(score: number, decisions: z.infer<typeof decisionSchema>[], scenarioTitle: string) {
   const strongest = [...decisions].sort((a, b) => b.points - a.points)[0];
   const weakest = [...decisions].sort((a, b) => a.points - b.points)[0];
   const level = score >= 85 ? "incident-command ready" : score >= 65 ? "developing operator" : "operator in remediation";
 
   return {
-    summary: `You finished as a ${level}. Your strongest decision was “${strongest?.choiceLabel ?? "the initial response"}.” Your greatest improvement opportunity came during ${weakest?.stepTitle ?? "the response sequence"}.`,
+    summary: `You finished as a ${level} in the ${scenarioTitle} scenario. Your strongest decision was "${strongest?.choiceLabel ?? "the initial response"}." Your greatest improvement opportunity came during ${weakest?.stepTitle ?? "the response sequence"}.`,
     strengths: [
       "You maintained a process-wide view instead of reacting to a single instrument.",
       strongest?.consequence ?? "You selected a defensible control action.",
@@ -109,8 +42,8 @@ export function fallbackDebrief(score: number, decisions: z.infer<typeof decisio
   };
 }
 
-export function parseSections(text: string, score: number, decisions: z.infer<typeof decisionSchema>[]) {
-  const fallback = fallbackDebrief(score, decisions);
+export function parseSections(text: string, score: number, decisions: z.infer<typeof decisionSchema>[], scenarioTitle: string) {
+  const fallback = fallbackDebrief(score, decisions, scenarioTitle);
   const normalizedText = text.replace(/\*\*/g, "");
   const section = (name: string) => {
     const match = normalizedText.match(new RegExp(`${name}:\\s*([\\s\\S]*?)(?=\\n[A-Z][A-Z ]+:|$)`, "i"));
@@ -174,21 +107,108 @@ export const incidentCommandRouter = router({
       return { cleared: true };
     }),
 
+  /** Save a completed scenario run to the history table */
+  saveRun: protectedProcedure
+    .input(z.object({
+      scenarioId: z.string().min(1).max(60),
+      scenarioTitle: z.string().min(1).max(120),
+      commandScore: z.number().int().min(0).max(100),
+      optimalCalls: z.number().int().min(0),
+      totalSteps: z.number().int().min(1),
+      elapsedSeconds: z.number().int().min(0).default(0),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const db = await getDb();
+      if (!db) return { saved: false };
+      await db.insert(commandRunHistory).values({
+        userId: ctx.user.id,
+        scenarioId: input.scenarioId,
+        scenarioTitle: input.scenarioTitle,
+        commandScore: input.commandScore,
+        optimalCalls: input.optimalCalls,
+        totalSteps: input.totalSteps,
+        elapsedSeconds: input.elapsedSeconds,
+      });
+      return { saved: true };
+    }),
+
+  /** Get the logged-in user's personal run history (last 20 runs) */
+  getMyHistory: protectedProcedure
+    .query(async ({ ctx }) => {
+      const db = await getDb();
+      if (!db) return [];
+      const rows = await db.select()
+        .from(commandRunHistory)
+        .where(eq(commandRunHistory.userId, ctx.user.id))
+        .orderBy(desc(commandRunHistory.completedAt))
+        .limit(20);
+      return rows.map(row => ({
+        id: row.id,
+        scenarioId: row.scenarioId,
+        scenarioTitle: row.scenarioTitle,
+        commandScore: row.commandScore,
+        optimalCalls: row.optimalCalls,
+        totalSteps: row.totalSteps,
+        elapsedSeconds: row.elapsedSeconds,
+        completedAt: row.completedAt,
+      }));
+    }),
+
+  /** Get the global leaderboard — top 20 operators by best single-run score */
+  getLeaderboard: publicProcedure
+    .query(async () => {
+      const db = await getDb();
+      if (!db) return [];
+      // Best score per user, with their name
+      const rows = await db
+        .select({
+          userId: commandRunHistory.userId,
+          bestScore: sql<number>`MAX(${commandRunHistory.commandScore})`,
+          totalRuns: sql<number>`COUNT(*)`,
+          userName: users.name,
+        })
+        .from(commandRunHistory)
+        .leftJoin(users, eq(commandRunHistory.userId, users.id))
+        .groupBy(commandRunHistory.userId, users.name)
+        .orderBy(desc(sql`MAX(${commandRunHistory.commandScore})`))
+        .limit(20);
+
+      return rows.map((row, index) => ({
+        rank: index + 1,
+        userId: row.userId,
+        displayName: row.userName ?? `Operator #${row.userId}`,
+        bestScore: Number(row.bestScore),
+        totalRuns: Number(row.totalRuns),
+      }));
+    }),
+
   debrief: publicProcedure
-    .input(z.object({ decisions: submittedScenarioSchema }))
+    .input(z.object({
+      decisions: z.array(submittedDecisionSchema).min(1).max(10),
+      scenarioId: z.string().min(1).max(60).default("cedar-ridge-storm"),
+      scenarioTitle: z.string().min(1).max(120).default("Cedar Ridge Storm Response"),
+    }))
     .mutation(async ({ input }) => {
-      const decisions = evaluateSubmittedDecisions(input.decisions);
+      const decisions = input.decisions.map(d => decisionSchema.parse({
+        stepId: d.stepId,
+        stepTitle: d.stepTitle,
+        choiceLabel: d.choiceLabel,
+        consequence: d.consequence,
+        points: d.points,
+      }));
       const score = decisions.reduce((sum, decision) => sum + decision.points, 0);
-      const fallback = fallbackDebrief(score, decisions);
+      const maxScore = decisions.length * 20;
+      const commandScore = Math.round((score / maxScore) * 100);
+      const fallback = fallbackDebrief(commandScore, decisions, input.scenarioTitle);
       const timeline = decisions
         .map((decision, index) => `${index + 1}. ${decision.stepTitle}\nDecision: ${decision.choiceLabel}\nObserved consequence: ${decision.consequence}\nScore: ${decision.points}/20`)
         .join("\n\n");
 
-      const prompt = `You are Echelon Command, an expert training evaluator for licensed drinking-water operators. This is an EDUCATIONAL SIMULATION, not live operational advice. Evaluate the learner only from the supplied scenario record. Be exact, calm, concise and constructive. Do not invent regulations, readings or actions.\n\nSCENARIO: Cedar Ridge drinking-water plant turbidity breakthrough during an extreme-rain event.\nFINAL SCORE: ${score}/100\n\nDECISION RECORD:\n${timeline}\n\nReturn exactly these sections with no markdown table:\nSUMMARY: 2 to 3 sentences assessing the operator's command judgment.\nSTRENGTHS:\n- two specific strengths tied to their decisions\nIMPROVEMENTS:\n- two specific improvements tied to their decisions\nNEXT DRILL: one concise recommended follow-up simulation.`;
+      const prompt = `You are Echelon Command, an expert training evaluator for licensed drinking-water and wastewater operators. This is an EDUCATIONAL SIMULATION, not live operational advice. Evaluate the learner only from the supplied scenario record. Be exact, calm, concise and constructive. Do not invent regulations, readings or actions.\n\nSCENARIO: ${input.scenarioTitle}\nFINAL SCORE: ${commandScore}/100\n\nDECISION RECORD:\n${timeline}\n\nReturn exactly these sections with no markdown table:\nSUMMARY: 2 to 3 sentences assessing the operator's command judgment.\nSTRENGTHS:\n- two specific strengths tied to their decisions\nIMPROVEMENTS:\n- two specific improvements tied to their decisions\nNEXT DRILL: one concise recommended follow-up simulation.`;
 
       try {
         const text = await invokeGPT56(prompt);
-        return parseSections(text, score, decisions);
+        return parseSections(text, commandScore, decisions, input.scenarioTitle);
       } catch (error) {
         console.warn("[Echelon Command] GPT-5.6 debrief unavailable; using deterministic fallback.", error);
         return fallback;

@@ -3,17 +3,17 @@
   "dialect": "mysql",
   "entries": [
     {
-      "idx": 0,
-      "version": "5",
-      "when": 1783616450248,
-      "tag": "0000_complete_whizzer",
-      "breakpoints": true
-    },
-    {
       "idx": 1,
       "version": "5",
       "when": 1784356177060,
       "tag": "0001_ambitious_jean_grey",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1784356972085,
+      "tag": "0002_lyrical_meggan",
       "breakpoints": true
     }
   ]

@@ -1109,3 +1109,16 @@
 ### Phase C — State Config Fix
 - [ ] stateConfig.ts: fix 3-category classification (WPI Direct / Own+ABC / Fully Independent)
 - [ ] USStatePage.tsx: show coverage note for Category 2 and "coming soon" for Category 3
+
+## Echelon Command — Incident Simulator Expansion (Jul 2026)
+- [x] Add 3 new Command scenarios: Millbrook Chemical Dosing Failure, Riverside Water Main Break, Lakeview Boil Water Advisory
+- [x] Extract all scenario data into commandScenarios.ts (4 scenarios, 5 steps each, full telemetry + choices)
+- [x] Add command_run_history DB table (userId, scenarioId, commandScore, optimalCalls, totalSteps, elapsedSeconds)
+- [x] Add saveRun tRPC procedure — persist completed scenario run to DB
+- [x] Add getMyHistory tRPC procedure — return last 20 runs for logged-in user
+- [x] Add getLeaderboard tRPC procedure — top 20 operators by best single-run score (public)
+- [x] Build scenario selector grid on /command intro screen (4 scenario cards)
+- [x] Build HistoryPanel component with My Runs / Leaderboard tab toggle
+- [x] Wire saveRun + invalidate history/leaderboard on debrief completion
+- [x] Update incidentCommand.test.ts to match new router API (removed evaluateSubmittedDecisions/submittedScenarioSchema)
+- [x] All 526 tests passing, TypeScript clean
