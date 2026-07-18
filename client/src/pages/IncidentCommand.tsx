@@ -229,6 +229,12 @@ export default function IncidentCommand() {
   const [drillQueued, setDrillQueued] = useState(false);
   const clockRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const debriefMutation = trpc.incidentCommand.debrief.useMutation();
+  const queueDrillMutation = trpc.incidentCommand.queueDrill.useMutation({
+    onSuccess: () => { setDrillQueued(true); },
+  });
+  const { data: queuedDrillData } = trpc.incidentCommand.getQueuedDrill.useQuery(undefined, {
+    retry: false,
+  });
 
   const step = SCENARIO_STEPS[stepIndex];
   const score = useMemo(() => decisions.reduce((sum, decision) => sum + decision.points, 0), [decisions]);
@@ -332,6 +338,15 @@ export default function IncidentCommand() {
               <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
                 Step into a live drinking-water control room. Read the plant, contain a treatment-barrier failure and defend every decision in a GPT-5.6 after-action review.
               </p>
+              {queuedDrillData && (
+                <div className="mt-7 inline-flex max-w-xl items-start gap-3 rounded-xl border border-teal-400/30 bg-teal-400/[.08] px-5 py-4">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-300" />
+                  <div>
+                    <div className="text-xs font-black uppercase tracking-[.14em] text-teal-300">Queued drill</div>
+                    <div className="mt-0.5 text-sm text-white">{queuedDrillData.drillName}</div>
+                  </div>
+                </div>
+              )}
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <button onClick={begin} className="group inline-flex items-center justify-center gap-3 rounded-xl bg-teal-400 px-6 py-4 text-sm font-black text-slate-950 shadow-[0_0_40px_rgba(45,212,191,.2)] transition hover:bg-teal-300">
                   Enter the control room
@@ -428,7 +443,7 @@ export default function IncidentCommand() {
                 <div className="rounded-xl bg-slate-800 p-4"><div className="text-2xl font-black text-teal-300">{decisions.filter(d => d.points === 20).length}/5</div><div className="mt-1 text-[10px] uppercase tracking-wider text-slate-300">Optimal calls</div></div>
                 <div className="rounded-xl bg-slate-800 p-4"><div className="text-2xl font-black text-blue-300">74 min</div><div className="mt-1 text-[10px] uppercase tracking-wider text-slate-300">Simulated time</div></div>
               </div>
-              <button onClick={begin} className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl border border-slate-700 px-4 py-3 text-sm font-bold text-slate-200 transition hover:border-slate-500 hover:bg-slate-800"><RotateCcw className="h-4 w-4" /> Run scenario again</button>
+              <button onClick={begin} className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-teal-400 px-4 py-3 text-sm font-black text-slate-950 shadow-[0_0_20px_rgba(45,212,191,.25)] transition hover:bg-teal-300 active:scale-[.97]"><RotateCcw className="h-4 w-4" /> Run scenario again</button>
             </section>
 
             <section className="space-y-5">
@@ -449,7 +464,10 @@ export default function IncidentCommand() {
               <div className="flex flex-col justify-between gap-4 rounded-2xl border border-slate-700 bg-slate-800 p-6 sm:flex-row sm:items-center">
                 <div><div className="text-xs font-black uppercase tracking-[.16em] text-slate-300">Recommended next drill</div><div className="mt-2 text-lg font-bold text-white">{debrief.nextDrill}</div></div>
                 <button
-                  onClick={() => { setQueuedDrill(debrief.nextDrill); setDrillQueued(true); }}
+                  onClick={() => {
+                    setQueuedDrill(debrief.nextDrill);
+                    queueDrillMutation.mutate({ drillName: debrief.nextDrill });
+                  }}
                   className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-black transition ${
                     drillQueued
                       ? "bg-teal-600 text-white cursor-default"
@@ -475,12 +493,19 @@ export default function IncidentCommand() {
               ))}
             </div>
           </section>
+                    <div className="mt-8 flex flex-col items-center gap-4 rounded-2xl border border-teal-400/20 bg-teal-400/[.06] px-6 py-8 text-center">
+            <RotateCcw className="h-8 w-8 text-teal-300" />
+            <div>
+              <div className="text-lg font-black text-white">Ready for another run?</div>
+              <div className="mt-1 text-sm text-slate-300">Each scenario is identical — but your decisions shape the outcome.</div>
+            </div>
+            <button onClick={begin} className="inline-flex items-center gap-2 rounded-xl bg-teal-400 px-8 py-3 text-sm font-black text-slate-950 shadow-[0_0_30px_rgba(45,212,191,.3)] transition hover:bg-teal-300 active:scale-[.97]"><RotateCcw className="h-4 w-4" /> Run scenario again</button>
+          </div>
           <p className="mt-5 text-center text-[11px] text-slate-600">Training simulation only. Follow approved facility procedures and governing requirements during real incidents.</p>
         </main>
       </div>
     );
   }
-
   return (
           <div className="min-h-screen text-white" style={{ fontFamily: "'Sora', sans-serif", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)" }}>
       <SiteNav currentPath={location} brandName="Echelon Command" />

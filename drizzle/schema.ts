@@ -547,3 +547,20 @@ export const emailOtpCodes = mysqlTable("email_otp_codes", {
 ]);
 export type EmailOtpCode = typeof emailOtpCodes.$inferSelect;
 export type InsertEmailOtpCode = typeof emailOtpCodes.$inferInsert;
+
+/**
+ * Command drill queue — stores the next recommended drill for a user
+ * after completing an Echelon Command scenario.
+ * One active row per user; upserted on each "Queue simulation" click.
+ */
+export const commandDrillQueue = mysqlTable("command_drill_queue", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  drillName: varchar("drillName", { length: 255 }).notNull(),
+  queuedAt: timestamp("queuedAt").defaultNow().notNull(),
+  completedAt: timestamp("completedAt"),
+}, (t) => [
+  index("cdq_user_idx").on(t.userId),
+]);
+export type CommandDrillQueue = typeof commandDrillQueue.$inferSelect;
+export type InsertCommandDrillQueue = typeof commandDrillQueue.$inferInsert;

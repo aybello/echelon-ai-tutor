@@ -1,6 +1,9 @@
 import { z } from "zod";
-import { publicProcedure, router } from "../_core/trpc";
+import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
 import { invokeGPT56 } from "../_core/openaiResponses";
+import { getDb } from "../db";
+import { commandDrillQueue } from "../../drizzle/schema";
+import { eq, desc } from "drizzle-orm";
 
 const decisionSchema = z.object({
   stepId: z.string().min(1).max(40),
@@ -129,6 +132,48 @@ export function parseSections(text: string, score: number, decisions: z.infer<ty
 }
 
 export const incidentCommandRouter = router({
+  /** Save the recommended next drill for the logged-in user */
+  queueDrill: protectedProcedure
+    .input(z.object({ drillName: z.string().min(1).max(255) }))
+    .mutation(async ({ ctx, input }) => {
+      const db = await getDb();
+      if (!db) return { queued: false, drillName: input.drillName };
+      await db.update(commandDrillQueue)
+        .set({ completedAt: new Date() })
+        .where(eq(commandDrillQueue.userId, ctx.user.id));
+      await db.insert(commandDrillQueue).values({
+        userId: ctx.user.id,
+        drillName: input.drillName,
+      });
+      return { queued: true, drillName: input.drillName };
+    }),
+
+  /** Get the current queued drill for the logged-in user */
+  getQueuedDrill: protectedProcedure
+    .query(async ({ ctx }) => {
+      const db = await getDb();
+      if (!db) return null;
+      const rows = await db.select()
+        .from(commandDrillQueue)
+        .where(eq(commandDrillQueue.userId, ctx.user.id))
+        .orderBy(desc(commandDrillQueue.queuedAt))
+        .limit(1);
+      const row = rows[0];
+      if (!row || row.completedAt) return null;
+      return { drillName: row.drillName, queuedAt: row.queuedAt };
+    }),
+
+  /** Mark the current queued drill as completed */
+  clearQueuedDrill: protectedProcedure
+    .mutation(async ({ ctx }) => {
+      const db = await getDb();
+      if (!db) return { cleared: false };
+      await db.update(commandDrillQueue)
+        .set({ completedAt: new Date() })
+        .where(eq(commandDrillQueue.userId, ctx.user.id));
+      return { cleared: true };
+    }),
+
   debrief: publicProcedure
     .input(z.object({ decisions: submittedScenarioSchema }))
     .mutation(async ({ input }) => {
