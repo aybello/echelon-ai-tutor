@@ -135,9 +135,23 @@ function HistoryPanel({ authenticated }: { authenticated: boolean }) {
 
   if (!authenticated) {
     return (
-      <div className="rounded-2xl border border-slate-700 bg-slate-800/60 p-5 text-center">
-        <Trophy className="mx-auto mb-3 h-8 w-8 text-slate-500" />
-        <p className="text-sm text-slate-400">Sign in to track your scores and appear on the leaderboard.</p>
+      <div className="overflow-hidden rounded-2xl border border-teal-400/30 bg-slate-800/70">
+        <div className="border-b border-slate-700 bg-teal-400/[.06] p-5 text-center">
+          <CheckCircle2 className="mx-auto mb-3 h-8 w-8 text-teal-300" />
+          <div className="text-sm font-black text-white">Guest mode is ready</div>
+          <p className="mt-2 text-xs leading-5 text-slate-300">No account is required to run any scenario or receive the GPT-5.6 review. Sign-in is only for saving scores and follow-up drills.</p>
+        </div>
+        <div className="px-5 py-3 text-[10px] font-black uppercase tracking-[.14em] text-slate-400">Public leaderboard</div>
+        <div className="divide-y divide-slate-700/60">
+          {!leaderboard?.length && <div className="px-5 py-4 text-center text-xs text-slate-400">Complete a scenario and see how you compare.</div>}
+          {leaderboard?.slice(0, 5).map(entry => (
+            <div key={entry.userId} className="flex items-center gap-3 px-5 py-3">
+              <div className="w-7 text-xs font-black text-slate-400">#{entry.rank}</div>
+              <div className="min-w-0 flex-1 truncate text-xs font-bold text-white">{entry.displayName}</div>
+              <div className="text-sm font-black text-teal-300">{entry.bestScore}</div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
@@ -223,6 +237,8 @@ export default function IncidentCommand() {
   const [drillQueued, setDrillQueued] = useState(false);
   const [judgmentResponse, setJudgmentResponse] = useState("");
   const [judgmentDegraded, setJudgmentDegraded] = useState(false);
+  const [showJudgmentHelp, setShowJudgmentHelp] = useState(false);
+  const [guidedMode, setGuidedMode] = useState(false);
   const clockRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const startTimeRef = useRef<number>(0);
 
@@ -296,6 +312,8 @@ export default function IncidentCommand() {
     setDrillQueued(false);
     setJudgmentResponse("");
     setJudgmentDegraded(false);
+    setShowJudgmentHelp(false);
+    setGuidedMode(false);
     startTimeRef.current = Date.now();
   };
 
@@ -348,6 +366,8 @@ export default function IncidentCommand() {
       setSelectedChoice(null);
       setJudgmentResponse("");
       setJudgmentDegraded(false);
+      setShowJudgmentHelp(false);
+      setGuidedMode(false);
       return;
     }
 
@@ -394,6 +414,10 @@ export default function IncidentCommand() {
                 <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
                   Step into a live control room. Read the plant, contain a treatment-barrier failure and defend every decision in a GPT-5.6 after-action review.
                 </p>
+                <div className="mt-5 inline-flex items-center gap-2 rounded-xl border border-teal-400/40 bg-teal-400/10 px-4 py-3 text-sm font-black text-teal-100">
+                  <CheckCircle2 className="h-4 w-4 text-teal-300" />
+                  No account required. Choose a scenario and start instantly.
+                </div>
                 {queuedDrillData && (
                   <div className="mt-7 inline-flex max-w-xl items-start gap-3 rounded-xl border border-teal-400/30 bg-teal-400/[.08] px-5 py-4">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-300" />
@@ -577,7 +601,7 @@ export default function IncidentCommand() {
                 <div><div className="text-[10px] font-black uppercase tracking-[.18em] text-blue-300">Command decision {stepIndex + 1}</div><h2 className="mt-1 text-xl font-black">{step.title}</h2><p className="mt-2 text-sm leading-6 text-slate-300">{step.briefing}</p></div>
               </div>
               <div className="mb-4 rounded-xl border border-rose-400/20 bg-rose-400/[.06] px-4 py-3 text-xs font-black tracking-wide text-rose-200"><AlertTriangle className="mr-2 inline h-4 w-4" /> {step.alarm}</div>
-              {step.judgment && !selectedChoice && !judgmentDegraded && (
+              {step.judgment && !selectedChoice && !judgmentDegraded && !guidedMode && (
                 <div className="rounded-2xl border border-violet-400/30 bg-violet-400/[.06] p-5">
                   <div className="mb-2 flex items-center gap-2 text-xs font-black uppercase tracking-[.16em] text-violet-200"><Sparkles className="h-4 w-4" /> GPT-5.6 judgment turn</div>
                   <p className="mb-4 text-sm leading-6 text-slate-200">{step.judgment.prompt}</p>
@@ -589,6 +613,26 @@ export default function IncidentCommand() {
                     rows={5}
                     className="w-full resize-y rounded-xl border border-slate-600 bg-slate-950/50 p-4 text-sm leading-6 text-white outline-none transition placeholder:text-slate-500 focus:border-violet-400"
                   />
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button onClick={() => setShowJudgmentHelp(value => !value)} className="rounded-lg border border-violet-300/30 bg-violet-300/10 px-3 py-2 text-xs font-bold text-violet-100 transition hover:bg-violet-300/20">
+                      {showJudgmentHelp ? "Hide response help" : "Help me structure my response"}
+                    </button>
+                    <button onClick={() => setGuidedMode(true)} className="rounded-lg border border-slate-600 bg-slate-900/60 px-3 py-2 text-xs font-bold text-slate-200 transition hover:border-blue-400">
+                      Use guided mode
+                    </button>
+                  </div>
+                  {showJudgmentHelp && (
+                    <div className="mt-3 rounded-xl border border-blue-400/20 bg-blue-400/[.06] p-4">
+                      <div className="text-xs font-black text-blue-200">Build your response around four questions</div>
+                      <ul className="mt-3 grid gap-2 text-xs leading-5 text-slate-300 sm:grid-cols-2">
+                        <li>• What will you verify first?</li>
+                        <li>• How will you protect the treatment barrier?</li>
+                        <li>• Who will you notify?</li>
+                        <li>• What records or samples will you preserve?</li>
+                      </ul>
+                      <p className="mt-3 rounded-lg bg-slate-950/40 p-3 text-xs italic leading-5 text-slate-300">First, I would verify... Then I would protect... I would notify... Finally, I would document...</p>
+                    </div>
+                  )}
                   <div className="mt-3 flex items-center justify-between gap-4">
                     <span className="text-[10px] text-slate-400">{judgmentResponse.trim().length}/1200 characters</span>
                     <button
@@ -607,7 +651,14 @@ export default function IncidentCommand() {
                   <p className="mt-1 text-xs text-amber-100/80">Choose the closest canonical action below to continue in explicit degraded mode.</p>
                 </div>
               )}
-              <div className={`space-y-3 ${step.judgment && !judgmentDegraded && !selectedChoice ? "hidden" : ""}`}>
+              {guidedMode && !selectedChoice && (
+                <div className="mb-3 rounded-xl border border-blue-400/30 bg-blue-400/[.08] p-4 text-sm text-blue-100">
+                  <div className="font-black">Guided mode</div>
+                  <p className="mt-1 text-xs text-blue-100/80">Choose the action closest to your judgment. You can return to the written response at any time.</p>
+                  <button onClick={() => setGuidedMode(false)} className="mt-3 text-xs font-black underline underline-offset-4">Return to written response</button>
+                </div>
+              )}
+              <div className={`space-y-3 ${step.judgment && !judgmentDegraded && !guidedMode && !selectedChoice ? "hidden" : ""}`}>
                 {step.choices.map((choice, index) => {
                   const chosen = selectedChoice?.id === choice.id;
                   const disabled = Boolean(selectedChoice && !chosen);
