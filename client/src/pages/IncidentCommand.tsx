@@ -114,16 +114,8 @@ function ScenarioCard({ scenario, onSelect }: { scenario: ScenarioMeta; onSelect
 function HistoryPanel({ userId }: { userId?: number }) {
   const { data: history, isLoading } = trpc.incidentCommand.getMyHistory.useQuery(undefined, { retry: false });
   const { data: leaderboard } = trpc.incidentCommand.getLeaderboard.useQuery(undefined, { retry: false });
-  const [tab, setTab] = useState<"history" | "leaderboard">("history");
-
-  if (!userId) {
-    return (
-      <div className="rounded-2xl border border-slate-700 bg-slate-800/60 p-5 text-center">
-        <Trophy className="mx-auto mb-3 h-8 w-8 text-slate-500" />
-        <p className="text-sm text-slate-400">Sign in to track your scores and appear on the leaderboard.</p>
-      </div>
-    );
-  }
+  // Guests default to leaderboard tab; signed-in users default to their history
+  const [tab, setTab] = useState<"history" | "leaderboard">(userId ? "history" : "leaderboard");
 
   return (
     <div className="rounded-2xl border border-slate-700 bg-slate-800/60 overflow-hidden">
@@ -143,7 +135,17 @@ function HistoryPanel({ userId }: { userId?: number }) {
         <div className="divide-y divide-slate-800">
           {isLoading && <div className="p-5 text-center text-xs text-slate-400">Loading…</div>}
           {!isLoading && (!history || history.length === 0) && (
-            <div className="p-5 text-center text-xs text-slate-400">No runs yet. Complete a scenario to see your history.</div>
+            <div className="p-5 text-center">
+              {!userId ? (
+                <>
+                  <Trophy className="mx-auto mb-2 h-6 w-6 text-slate-500" />
+                  <p className="text-xs text-slate-400">Sign in to track your scores and appear on the leaderboard.</p>
+                  <a href="/account" className="mt-3 inline-block rounded-lg bg-teal-400/10 px-4 py-2 text-xs font-black text-teal-300 transition hover:bg-teal-400/20">Sign in →</a>
+                </>
+              ) : (
+                <p className="text-xs text-slate-400">No runs yet. Complete a scenario to see your history.</p>
+              )}
+            </div>
           )}
           {history?.map(run => (
             <div key={run.id} className="flex items-center justify-between gap-3 px-5 py-3">

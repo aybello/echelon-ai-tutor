@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
+import { publicProcedure, router } from "../_core/trpc";
 import { invokeGPT56 } from "../_core/openaiResponses";
 import { getDb } from "../db";
 import { commandDrillQueue, commandRunHistory, users } from "../../drizzle/schema";
@@ -65,10 +65,11 @@ export function parseSections(text: string, score: number, decisions: z.infer<ty
 }
 
 export const incidentCommandRouter = router({
-  /** Save the recommended next drill for the logged-in user */
-  queueDrill: protectedProcedure
+  /** Save the recommended next drill for the logged-in user (no-op for guests) */
+  queueDrill: publicProcedure
     .input(z.object({ drillName: z.string().min(1).max(255) }))
     .mutation(async ({ ctx, input }) => {
+      if (!ctx.user) return { queued: false, drillName: input.drillName };
       const db = await getDb();
       if (!db) return { queued: false, drillName: input.drillName };
       await db.update(commandDrillQueue)
@@ -81,9 +82,10 @@ export const incidentCommandRouter = router({
       return { queued: true, drillName: input.drillName };
     }),
 
-  /** Get the current queued drill for the logged-in user */
-  getQueuedDrill: protectedProcedure
+  /** Get the current queued drill for the logged-in user (null for guests) */
+  getQueuedDrill: publicProcedure
     .query(async ({ ctx }) => {
+      if (!ctx.user) return null;
       const db = await getDb();
       if (!db) return null;
       const rows = await db.select()
@@ -96,9 +98,10 @@ export const incidentCommandRouter = router({
       return { drillName: row.drillName, queuedAt: row.queuedAt };
     }),
 
-  /** Mark the current queued drill as completed */
-  clearQueuedDrill: protectedProcedure
+  /** Mark the current queued drill as completed (no-op for guests) */
+  clearQueuedDrill: publicProcedure
     .mutation(async ({ ctx }) => {
+      if (!ctx.user) return { cleared: false };
       const db = await getDb();
       if (!db) return { cleared: false };
       await db.update(commandDrillQueue)
@@ -107,8 +110,8 @@ export const incidentCommandRouter = router({
       return { cleared: true };
     }),
 
-  /** Save a completed scenario run to the history table */
-  saveRun: protectedProcedure
+  /** Save a completed scenario run to the history table (no-op for guests) */
+  saveRun: publicProcedure
     .input(z.object({
       scenarioId: z.string().min(1).max(60),
       scenarioTitle: z.string().min(1).max(120),
@@ -118,6 +121,7 @@ export const incidentCommandRouter = router({
       elapsedSeconds: z.number().int().min(0).default(0),
     }))
     .mutation(async ({ ctx, input }) => {
+      if (!ctx.user) return { saved: false };
       const db = await getDb();
       if (!db) return { saved: false };
       await db.insert(commandRunHistory).values({
@@ -132,9 +136,10 @@ export const incidentCommandRouter = router({
       return { saved: true };
     }),
 
-  /** Get the logged-in user's personal run history (last 20 runs) */
-  getMyHistory: protectedProcedure
+  /** Get the logged-in user's personal run history (empty array for guests) */
+  getMyHistory: publicProcedure
     .query(async ({ ctx }) => {
+      if (!ctx.user) return [];
       const db = await getDb();
       if (!db) return [];
       const rows = await db.select()
