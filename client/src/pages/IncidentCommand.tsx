@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import {
   Activity,
   AlertTriangle,
+  ArrowLeft,
   ArrowRight,
   BrainCircuit,
   CheckCircle2,
@@ -499,7 +500,14 @@ export default function IncidentCommand() {
       <SiteNav currentPath={location} brandName="Echelon Command" />
       <main className="mx-auto max-w-[1500px] px-4 py-5">
         <header className="mb-4 flex flex-col justify-between gap-4 rounded-2xl border border-slate-700 bg-slate-800 px-5 py-4 lg:flex-row lg:items-center">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setMode("intro")}
+              className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-slate-700 bg-slate-800/80 text-slate-400 transition hover:border-teal-400/40 hover:text-teal-300 active:scale-95"
+              title="Back to scenarios"
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </button>
             <div className="grid h-11 w-11 place-items-center rounded-xl bg-rose-500/15 text-rose-300"><AlertTriangle className="h-5 w-5" /></div>
             <div><div className="flex items-center gap-2"><h1 className="font-black">{selectedScenario.facilityName}</h1><span className="rounded-full bg-rose-500/15 px-2 py-1 text-[9px] font-black uppercase tracking-wider text-rose-300">Incident active</span></div><p className="mt-1 text-xs text-slate-300">{selectedScenario.incidentLabel}</p></div>
           </div>
