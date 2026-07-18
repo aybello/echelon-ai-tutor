@@ -23,7 +23,7 @@ import {
 import SiteNav from "@/components/SiteNav";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { ALL_SCENARIOS, getScenarioById, type ScenarioMeta, type ScenarioStep, type Choice } from "@shared/commandScenarios";
+import { ALL_SCENARIOS, getScenarioById, getScenarioStepAtIndex, type ScenarioMeta, type ScenarioStep, type Choice } from "@shared/commandScenarios";
 import { useGuestSession } from "@/hooks/useGuestSession";
 
 type DecisionRecord = {
@@ -226,7 +226,10 @@ export default function IncidentCommand() {
   );
   const utils = trpc.useUtils();
 
-  const step = selectedScenario.steps[stepIndex];
+  const step = useMemo(() => {
+    const previousChoiceIds = decisions.map(d => d.choiceId);
+    return getScenarioStepAtIndex(selectedScenario, stepIndex, previousChoiceIds) ?? selectedScenario.steps[stepIndex];
+  }, [selectedScenario, stepIndex, decisions]);
   const commandScore = useMemo(() => {
     const score = decisions.reduce((sum, d) => sum + d.points, 0);
     return Math.round((score / (selectedScenario.steps.length * 20)) * 100);
