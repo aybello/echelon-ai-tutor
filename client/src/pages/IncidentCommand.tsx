@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import {
   Activity,
@@ -212,6 +212,10 @@ export default function IncidentCommand() {
   const [selectedChoice, setSelectedChoice] = useState<Choice | null>(null);
   const [decisions, setDecisions] = useState<DecisionRecord[]>([]);
   const [debrief, setDebrief] = useState<Debrief | null>(null);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [queuedDrill, setQueuedDrill] = useState<string | null>(null);
+  const [drillQueued, setDrillQueued] = useState(false);
+  const clockRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const debriefMutation = trpc.incidentCommand.debrief.useMutation();
 
   const step = SCENARIO_STEPS[stepIndex];
@@ -230,12 +234,41 @@ export default function IncidentCommand() {
     ];
   }, [decisions]);
 
+  // Parse step base time ("02:14" → seconds) and tick from there
+  const stepBaseSeconds = useMemo(() => {
+    const [h, m] = (SCENARIO_STEPS[stepIndex]?.time ?? "02:14").split(":").map(Number);
+    return h * 3600 + m * 60;
+  }, [stepIndex]);
+
+  useEffect(() => {
+    if (mode !== "live") {
+      if (clockRef.current) clearInterval(clockRef.current);
+      return;
+    }
+    setElapsedSeconds(stepBaseSeconds);
+    clockRef.current = setInterval(() => {
+      setElapsedSeconds(prev => prev + 1);
+    }, 1000);
+    return () => {
+      if (clockRef.current) clearInterval(clockRef.current);
+    };
+  }, [mode, stepIndex, stepBaseSeconds]);
+
+  const clockDisplay = useMemo(() => {
+    const h = Math.floor(elapsedSeconds / 3600).toString().padStart(2, "0");
+    const m = Math.floor((elapsedSeconds % 3600) / 60).toString().padStart(2, "0");
+    const s = (elapsedSeconds % 60).toString().padStart(2, "0");
+    return `${h}:${m}:${s}`;
+  }, [elapsedSeconds]);
+
   const begin = () => {
     setMode("live");
     setStepIndex(0);
     setSelectedChoice(null);
     setDecisions([]);
     setDebrief(null);
+    setElapsedSeconds(0);
+    setDrillQueued(false);
   };
 
   const choose = (choice: Choice) => {
@@ -403,7 +436,17 @@ export default function IncidentCommand() {
               </div>
               <div className="flex flex-col justify-between gap-4 rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:flex-row sm:items-center">
                 <div><div className="text-xs font-black uppercase tracking-[.16em] text-slate-500">Recommended next drill</div><div className="mt-2 text-lg font-bold text-white">{debrief.nextDrill}</div></div>
-                <button className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-black text-white hover:bg-blue-500">Queue simulation <ChevronRight className="h-4 w-4" /></button>
+                <button
+                  onClick={() => { setQueuedDrill(debrief.nextDrill); setDrillQueued(true); }}
+                  className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-black transition ${
+                    drillQueued
+                      ? "bg-teal-600 text-white cursor-default"
+                      : "bg-blue-600 text-white hover:bg-blue-500"
+                  }`}
+                  disabled={drillQueued}
+                >
+                  {drillQueued ? <><CheckCircle2 className="h-4 w-4" /> Drill queued</> : <>Queue simulation <ChevronRight className="h-4 w-4" /></>}
+                </button>
               </div>
             </section>
           </div>
@@ -435,14 +478,14 @@ export default function IncidentCommand() {
             <div className="grid h-11 w-11 place-items-center rounded-xl bg-rose-500/15 text-rose-300"><AlertTriangle className="h-5 w-5" /></div>
             <div><div className="flex items-center gap-2"><h1 className="font-black">Cedar Ridge WTP</h1><span className="rounded-full bg-rose-500/15 px-2 py-1 text-[9px] font-black uppercase tracking-wider text-rose-300">Incident active</span></div><p className="mt-1 text-xs text-slate-400">Extreme-rain treatment-barrier response</p></div>
           </div>
-          <div className="flex items-center gap-5 text-xs">
-            <div><span className="text-slate-500">Scenario time</span><div className="mt-1 font-black text-white">{step.time}:00</div></div>
+          <div className="flex flex-wrap items-center gap-4 text-xs">
+            <div><span className="text-slate-500">Scenario time</span><div className="mt-1 font-mono font-black text-white tabular-nums">{clockDisplay}</div></div>
             <div><span className="text-slate-500">Decision</span><div className="mt-1 font-black text-white">{stepIndex + 1} of {SCENARIO_STEPS.length}</div></div>
             <div className="min-w-28"><span className="text-slate-500">Command score</span><div className="mt-1 flex items-center gap-2"><div className="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-800"><div className="h-full rounded-full bg-teal-400 transition-all" style={{ width: `${commandScore}%` }} /></div><span className="font-black text-teal-300">{commandScore}</span></div></div>
           </div>
         </header>
 
-        <div className="grid gap-4 xl:grid-cols-[1.2fr_.8fr]">
+        <div className="grid gap-4 lg:grid-cols-[1.2fr_.8fr]">
           <div className="space-y-4">
             <section className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
               <div className="mb-5 flex items-center justify-between"><div><div className="text-[10px] font-black uppercase tracking-[.18em] text-slate-500">Live plant topology</div><div className="mt-1 text-sm font-bold">Treatment barriers</div></div><div className="flex items-center gap-2 text-[10px] text-teal-300"><span className="h-2 w-2 animate-pulse rounded-full bg-teal-300" /> telemetry streaming</div></div>
