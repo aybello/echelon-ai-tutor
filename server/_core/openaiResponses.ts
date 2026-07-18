@@ -15,6 +15,16 @@ type OpenAIResponse = {
   output?: OpenAIOutputItem[];
 };
 
+export type GPT56Options = {
+  reasoningEffort?: "low" | "medium";
+  verbosity?: "low" | "medium";
+  maxOutputTokens?: number;
+  jsonSchema?: {
+    name: string;
+    schema: Record<string, unknown>;
+  };
+};
+
 function extractOutputText(response: OpenAIResponse): string {
   if (typeof response.output_text === "string" && response.output_text.trim()) {
     return response.output_text.trim();
@@ -33,10 +43,22 @@ function extractOutputText(response: OpenAIResponse): string {
  * Kept separate from the legacy Forge chat-completions client so the feature
  * has an explicit, auditable GPT-5.6 integration.
  */
-export async function invokeGPT56(input: string): Promise<string> {
+export async function invokeGPT56(input: string, options: GPT56Options = {}): Promise<string> {
   if (!ENV.openAiApiKey) {
     throw new Error("OPENAI_API_KEY is not configured");
   }
+
+  const textConfig = options.jsonSchema
+    ? {
+        verbosity: options.verbosity ?? "medium",
+        format: {
+          type: "json_schema",
+          name: options.jsonSchema.name,
+          strict: true,
+          schema: options.jsonSchema.schema,
+        },
+      }
+    : { verbosity: options.verbosity ?? "medium" };
 
   const response = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
@@ -46,10 +68,10 @@ export async function invokeGPT56(input: string): Promise<string> {
     },
     body: JSON.stringify({
       model: ENV.openAiModel,
-      reasoning: { effort: "medium" },
-      text: { verbosity: "medium" },
+      reasoning: { effort: options.reasoningEffort ?? "medium" },
+      text: textConfig,
       store: false,
-      max_output_tokens: 1200,
+      max_output_tokens: options.maxOutputTokens ?? 1200,
       input,
     }),
   });
@@ -60,7 +82,7 @@ export async function invokeGPT56(input: string): Promise<string> {
   }
 
   const result = (await response.json()) as OpenAIResponse;
-  const text = extractOutputText(result);
-  if (!text) throw new Error("OpenAI returned an empty debrief");
-  return text;
+  const outputText = extractOutputText(result);
+  if (!outputText) throw new Error("OpenAI returned an empty response");
+  return outputText;
 }

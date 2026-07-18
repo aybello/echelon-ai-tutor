@@ -23,7 +23,7 @@ import {
 import SiteNav from "@/components/SiteNav";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { ALL_SCENARIOS, getScenarioById, type ScenarioMeta, type ScenarioStep, type Choice } from "@/lib/commandScenarios";
+import { ALL_SCENARIOS, getScenarioById, type ScenarioMeta, type ScenarioStep, type Choice } from "@shared/commandScenarios";
 import { useGuestSession } from "@/hooks/useGuestSession";
 
 type DecisionRecord = {
@@ -216,7 +216,6 @@ export default function IncidentCommand() {
   const { data: me } = trpc.auth.me.useQuery(undefined, { retry: false });
   const { guestId, displayName: guestDisplayName } = useGuestSession();
   const debriefMutation = trpc.incidentCommand.debrief.useMutation();
-  const saveRunMutation = trpc.incidentCommand.saveRun.useMutation();
   const queueDrillMutation = trpc.incidentCommand.queueDrill.useMutation({
     onSuccess: () => { setDrillQueued(true); },
   });
@@ -313,37 +312,21 @@ export default function IncidentCommand() {
     const finalScore = Math.round((finalDecisions.reduce((s, d) => s + d.points, 0) / (selectedScenario.steps.length * 20)) * 100);
     const optimalCalls = finalDecisions.filter(d => d.points === 20).length;
 
+    // The new debrief procedure handles server-side scoring AND saving the run
     const result = await debriefMutation.mutateAsync({
       decisions: finalDecisions.map(d => ({
         stepId: d.stepId,
         choiceId: d.choiceId,
-        stepTitle: d.stepTitle,
-        choiceLabel: d.choiceLabel,
-        consequence: d.consequence,
-        points: d.points,
       })),
       scenarioId: selectedScenario.id,
-      scenarioTitle: selectedScenario.title,
-    });
-    setDebrief(result);
-    setMode("debrief");
-
-    // Persist run to DB — works for both authenticated users and guests
-    saveRunMutation.mutate({
-      scenarioId: selectedScenario.id,
-      scenarioTitle: selectedScenario.title,
-      commandScore: finalScore,
-      optimalCalls,
-      totalSteps: selectedScenario.steps.length,
       elapsedSeconds: elapsed,
       guestId: me ? undefined : guestId,
       displayName: me ? undefined : guestDisplayName,
-    }, {
-      onSuccess: () => {
-        utils.incidentCommand.getMyHistory.invalidate();
-        utils.incidentCommand.getLeaderboard.invalidate();
-      },
     });
+    setDebrief(result);
+    setMode("debrief");
+    utils.incidentCommand.getMyHistory.invalidate();
+    utils.incidentCommand.getLeaderboard.invalidate();
   };
 
   // ─── INTRO ──────────────────────────────────────────────────────────────────
