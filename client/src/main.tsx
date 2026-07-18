@@ -18,6 +18,10 @@ const redirectToLoginIfUnauthorized = (error: unknown) => {
 
   if (!isUnauthorized) return;
 
+  // Echelon Command is a public competition demo. Optional account features
+  // must never turn an incidental 401 into a page-level login redirect.
+  if (window.location.pathname === "/command") return;
+
   window.location.href = getLoginUrl();
 };
 

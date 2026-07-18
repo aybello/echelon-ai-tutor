@@ -31,6 +31,11 @@ export type JudgmentConfig = {
   prompt: string;
   placeholder: string;
   minCharacters: number;
+  ruleBranches: {
+    strong: string;
+    partial: string;
+    unsafe: string;
+  };
 };
 
 export type ScenarioStep = {
@@ -148,6 +153,11 @@ export const CEDAR_RIDGE_STORM: ScenarioMeta = {
         prompt: "You are the operator in charge. State what you do next and why. Include the checks, escalation and incident record you would require before recovery.",
         placeholder: "I would first verify... Then I would escalate... I would preserve...",
         minCharacters: 20,
+        ruleBranches: {
+          strong: "escalate-document",
+          partial: "log-later",
+          unsafe: "delete-alarm",
+        },
       },
       branchSteps: {
         "escalate-document": {
@@ -317,6 +327,71 @@ export const MILLBROOK_CHEMICAL_DOSING: ScenarioMeta = {
         { id: "run-standby", label: "Continue running the standby pump and schedule the duty pump repair for the next planned outage", rationale: "The standby pump is working well and a repair can wait for a convenient time.", points: 7, consequence: "The plant operates with reduced redundancy. If the standby pump also fails before the repair is completed, there is no backup chemical feed." },
         { id: "ignore-cause", label: "Return the duty pump to service without repair and monitor its performance", rationale: "The pump may still be functional enough for short-term use.", points: 0, consequence: "The worn seal fails again within days. A second coagulant feed interruption occurs during a higher-turbidity event, creating a more serious treatment barrier risk." },
       ],
+      judgment: {
+        prompt: "The predictable pump failure is confirmed. Explain your corrective action, how you preserve chemical-feed redundancy and what must be documented before the event can close.",
+        placeholder: "First, I would verify the maintenance finding... Then I would protect redundancy...",
+        minCharacters: 20,
+        ruleBranches: { strong: "schedule-repair", partial: "run-standby", unsafe: "ignore-cause" },
+      },
+      branchSteps: {
+        "schedule-repair": {
+          id: "close-event-controlled",
+          time: "11:14",
+          title: "Close-out with redundancy restored",
+          briefing: "The duty pump has been repaired and tested, the standby unit is available and the preventive-maintenance update is awaiting final approval. The supervisor requests formal incident closure.",
+          alarm: "CORRECTIVE ACTION VERIFICATION REQUIRED",
+          focusNode: 1,
+          telemetry: [
+            { label: "Duty pump test", value: "PASS", unit: "", status: "normal", trend: [0, 0, 0, 1, 1, 1] },
+            { label: "Standby availability", value: "READY", unit: "", status: "normal", trend: [1, 1, 1, 1, 1, 1] },
+            { label: "Filtered turbidity", value: "0.09", unit: "NTU", status: "normal", trend: [0.18, 0.15, 0.12, 0.1, 0.09, 0.09] },
+            { label: "Open actions", value: "1", unit: "approval", status: "warning", trend: [4, 3, 3, 2, 1, 1] },
+          ],
+          choices: [
+            { id: "verify-close", label: "Approve the maintenance update, verify both pumps are available and close with a complete regulatory review and timeline", rationale: "Close only after the repair, redundancy and learning actions are evidenced.", points: 20, consequence: "The facility closes the event with restored redundancy and an auditable corrective-action record." },
+            { id: "close-before-approval", label: "Close the incident now and approve the maintenance change next week", rationale: "The physical repair is complete, so the remaining approval can follow.", points: 7, consequence: "Operations recover, but the prevention action remains vulnerable to being lost after the incident closes." },
+            { id: "skip-review", label: "Return to normal operations without a formal close-out review", rationale: "Both pumps are working and no further response is needed.", points: 0, consequence: "The repair succeeds, but the facility cannot demonstrate that notification and recurrence controls were reviewed." },
+          ],
+        },
+        "run-standby": {
+          id: "close-event-redundancy-loss",
+          time: "11:14",
+          title: "The standby pump begins vibrating",
+          briefing: "The unrepaired duty pump remains unavailable. The standby pump now shows rising vibration while carrying the full chemical-feed duty, leaving the plant one fault away from losing coagulation again.",
+          alarm: "CHEMICAL FEED REDUNDANCY AT RISK",
+          focusNode: 1,
+          telemetry: [
+            { label: "Standby vibration", value: "8.2", unit: "mm/s", status: "critical", trend: [2.1, 2.4, 3.2, 4.7, 6.3, 8.2] },
+            { label: "Duty pump", value: "OUT", unit: "", status: "critical", trend: [0, 0, 0, 0, 0, 0] },
+            { label: "Coagulant flow", value: "41", unit: "L/h", status: "warning", trend: [44, 44, 43, 43, 42, 41] },
+            { label: "Filtered turbidity", value: "0.12", unit: "NTU", status: "normal", trend: [0.09, 0.09, 0.1, 0.1, 0.11, 0.12] },
+          ],
+          choices: [
+            { id: "restore-redundancy", label: "Keep the event open, reduce loading, expedite the duty-pump repair and inspect the standby before redundancy is declared restored", rationale: "Contain the new warning while urgently rebuilding a verified backup path.", points: 20, consequence: "Plant loading is controlled and maintenance restores a tested duty pump before the standby condition worsens." },
+            { id: "watch-vibration", label: "Continue operating the standby and trend the vibration until the planned outage", rationale: "The pump is still delivering chemical and may remain serviceable.", points: 5, consequence: "The plant continues with narrowing reliability margin and no verified backup." },
+            { id: "silence-vibration", label: "Acknowledge the vibration alarm and close the original event", rationale: "The alarm is unrelated to the original seal failure.", points: 0, consequence: "The organization closes an event while the only operating feed pump is showing a critical precursor." },
+          ],
+        },
+        "ignore-cause": {
+          id: "close-event-repeat-failure",
+          time: "11:14",
+          title: "The duty pump fails again",
+          briefing: "The unrepaired seal has failed during a new raw-water turbidity rise. Coagulant flow has dropped to zero and the earlier incident record contains no corrective action.",
+          alarm: "REPEAT COAGULANT FEED FAILURE",
+          focusNode: 1,
+          telemetry: [
+            { label: "Coagulant flow", value: "0", unit: "L/h", status: "critical", trend: [44, 42, 39, 21, 7, 0] },
+            { label: "Raw turbidity", value: "12.6", unit: "NTU", status: "critical", trend: [6.8, 7.1, 8.2, 9.4, 11.1, 12.6] },
+            { label: "Filtered turbidity", value: "0.19", unit: "NTU", status: "warning", trend: [0.09, 0.1, 0.11, 0.13, 0.16, 0.19] },
+            { label: "Available feed pumps", value: "1", unit: "pump", status: "warning", trend: [2, 2, 2, 2, 1, 1] },
+          ],
+          choices: [
+            { id: "contain-repeat", label: "Start the standby, reduce flow until delivery is verified, preserve both failure records and escalate the repeat corrective-action failure", rationale: "Restore the barrier while treating recurrence as a distinct organizational failure.", points: 20, consequence: "Chemical feed is restored under controlled loading and the repeat event receives formal root-cause escalation." },
+            { id: "standby-only", label: "Start the standby and resume normal flow immediately", rationale: "The backup pump restores the lost feed.", points: 6, consequence: "Feed returns, but the response repeats the earlier omission of verification and corrective-action governance." },
+            { id: "manual-dose", label: "Add coagulant manually while continuing full production", rationale: "Manual addition can bridge the pump outage without reducing output.", points: 0, consequence: "Uncontrolled dosing and full flow create an unstable coagulation barrier during the rising load." },
+          ],
+        },
+      },
     },
     {
       id: "close-event",
@@ -426,6 +501,71 @@ export const RIVERSIDE_MAIN_BREAK: ScenarioMeta = {
         { id: "visual-only", label: "Conduct a visual inspection of the repair and return the main to service without sampling", rationale: "The repair looks clean and the bypass has maintained flow throughout.", points: 4, consequence: "The main is returned to service without verification. A regulator audit later identifies the missing contamination assessment as a compliance gap." },
         { id: "skip-assessment", label: "Return the main to service immediately to restore full pressure to Zone 3", rationale: "Customers have been without full service for over an hour and pressure restoration is the priority.", points: 0, consequence: "The main is returned without a contamination assessment. A coliform sample collected the next day tests positive, triggering a boil water advisory and a regulatory investigation." },
       ],
+      judgment: {
+        prompt: "The repair site was submerged. Explain the conditions you require before returning the main to service, including verification, public-health escalation and the evidence record.",
+        placeholder: "Before restoring service, I would verify... I would protect customers by...",
+        minCharacters: 20,
+        ruleBranches: { strong: "full-protocol", partial: "visual-only", unsafe: "skip-assessment" },
+      },
+      branchSteps: {
+        "full-protocol": {
+          id: "service-restoration-verified",
+          time: "09:15",
+          title: "Verified service restoration",
+          briefing: "The contamination assessment and disinfection flush are complete. Verification samples meet the restoration criteria and Zone 3 pressure is recovering under a documented plan.",
+          alarm: "VERIFIED RESTORATION GATE",
+          focusNode: 4,
+          telemetry: [
+            { label: "Zone 3 pressure", value: "386", unit: "kPa", status: "normal", trend: [38, 120, 210, 295, 350, 386] },
+            { label: "Verification samples", value: "PASS", unit: "", status: "normal", trend: [0, 0, 0, 1, 1, 1] },
+            { label: "Pump station flow", value: "91", unit: "L/s", status: "normal", trend: [45, 55, 68, 78, 86, 91] },
+            { label: "Open critical alarms", value: "0", unit: "alarms", status: "normal", trend: [3, 3, 2, 1, 1, 0] },
+          ],
+          choices: [
+            { id: "full-closeout", label: "Issue the restoration notice, document reservoir recovery, submit the incident report and schedule a post-incident review", rationale: "Complete the public, operational and organizational close-out together.", points: 20, consequence: "Customers are informed, the recovery plan is controlled and the review identifies valve and bypass investments." },
+            { id: "partial-closeout", label: "Restore service and notify the call centre, but defer the incident report", rationale: "The emergency is over and the report can wait.", points: 6, consequence: "Service recovers, but important details are later reconstructed from memory." },
+            { id: "no-closeout", label: "Return to normal operations without formal close-out", rationale: "Verification passed, so no additional work is required.", points: 0, consequence: "The utility loses the incident learning and cannot demonstrate its complete restoration process." },
+          ],
+        },
+        "visual-only": {
+          id: "service-restoration-evidence-gap",
+          time: "09:15",
+          title: "The missing sample is challenged",
+          briefing: "Pressure is restored, but the public-health inspector requests the contamination assessment and sample results. The file contains only a field visual inspection.",
+          alarm: "RESTORATION EVIDENCE INCOMPLETE",
+          focusNode: 4,
+          telemetry: [
+            { label: "Zone 3 pressure", value: "382", unit: "kPa", status: "normal", trend: [38, 115, 205, 286, 344, 382] },
+            { label: "Verification samples", value: "NONE", unit: "", status: "critical", trend: [0, 0, 0, 0, 0, 0] },
+            { label: "Customer complaints", value: "3", unit: "calls", status: "warning", trend: [0, 0, 1, 1, 2, 3] },
+            { label: "Incident status", value: "OPEN", unit: "", status: "warning", trend: [1, 1, 1, 1, 1, 1] },
+          ],
+          choices: [
+            { id: "reopen-verify", label: "Keep the incident open, disclose the verification gap, collect samples and apply interim public-health precautions", rationale: "Correct the gap transparently before treating restoration as complete.", points: 20, consequence: "The utility delays close-out, completes verification and preserves a defensible correction record." },
+            { id: "sample-after-close", label: "Close the event and collect a confirmation sample during routine rounds", rationale: "Pressure is stable and sampling can follow normal operations.", points: 5, consequence: "A sample is eventually collected, but the main was restored without a controlled verification gate." },
+            { id: "defend-visual", label: "Defend the visual inspection as sufficient and provide no further evidence", rationale: "The repair appeared clean and the water is flowing normally.", points: 0, consequence: "The evidence gap becomes a formal compliance finding." },
+          ],
+        },
+        "skip-assessment": {
+          id: "service-restoration-positive-sample",
+          time: "09:15",
+          title: "A post-restoration sample is positive",
+          briefing: "After the main was returned without assessment, a routine sample detects coliform in Zone 3. Full pressure is back, but the contamination risk is now a public-health incident.",
+          alarm: "POSITIVE COLIFORM RESULT — ZONE 3",
+          focusNode: 4,
+          telemetry: [
+            { label: "Zone 3 pressure", value: "389", unit: "kPa", status: "normal", trend: [38, 125, 220, 305, 355, 389] },
+            { label: "Coliform result", value: "POSITIVE", unit: "", status: "critical", trend: [0, 0, 0, 0, 0, 1] },
+            { label: "Affected connections", value: "340", unit: "services", status: "critical", trend: [340, 340, 340, 340, 340, 340] },
+            { label: "Open notifications", value: "4", unit: "groups", status: "critical", trend: [0, 0, 1, 2, 3, 4] },
+          ],
+          choices: [
+            { id: "escalate-advisory", label: "Notify public health, issue the required advisory, isolate or flush the affected main and preserve the restoration decision record", rationale: "Treat the positive result and the skipped barrier as one controlled incident.", points: 20, consequence: "Customers receive precautions while the utility performs corrective flushing and verified resampling." },
+            { id: "resample-first", label: "Collect another sample before notifying customers", rationale: "The first result may be anomalous.", points: 4, consequence: "Public-health action is delayed while potentially affected water remains in service." },
+            { id: "flush-quietly", label: "Flush the zone without disclosing the result", rationale: "Operational correction can resolve the issue without public alarm.", points: 0, consequence: "The utility compounds the restoration failure with delayed public-health escalation." },
+          ],
+        },
+      },
     },
     {
       id: "service-restoration",
@@ -535,6 +675,71 @@ export const LAKEVIEW_BOIL_WATER: ScenarioMeta = {
         { id: "random-flush", label: "Open hydrants throughout the zone simultaneously to flush the system quickly", rationale: "Opening multiple hydrants at once will flush the zone faster.", points: 6, consequence: "Simultaneous flushing creates pressure transients that may introduce contamination at service connections. Some dead-end areas are not reached and residual remains at zero." },
         { id: "wait-natural", label: "Allow natural system flow to restore residual without active flushing", rationale: "The system will eventually restore residual on its own as chlorinated water moves through.", points: 0, consequence: "Natural flow takes 18-24 hours to restore residual in dead-end areas. The boil water advisory remains in effect for an extended period, increasing public health risk and community impact." },
       ],
+      judgment: {
+        prompt: "The dilution source is controlled but the eastern zone still has no residual. Explain how you will restore and verify the barrier before recommending that the advisory be lifted.",
+        placeholder: "I would restore residual by... I would verify each area using...",
+        minCharacters: 20,
+        ruleBranches: { strong: "systematic-flush", partial: "random-flush", unsafe: "wait-natural" },
+      },
+      branchSteps: {
+        "systematic-flush": {
+          id: "advisory-lift-verified",
+          time: "18:45",
+          title: "Verified advisory-lift decision",
+          briefing: "The systematic flush reached every monitoring point. Residual is restored and the first laboratory sample round is clean; the second round remains pending.",
+          alarm: "SECOND VERIFICATION ROUND PENDING",
+          focusNode: 4,
+          telemetry: [
+            { label: "East zone residual", value: "0.52", unit: "mg/L", status: "normal", trend: [0, 0.12, 0.28, 0.38, 0.46, 0.52] },
+            { label: "Dead-end coverage", value: "100", unit: "%", status: "normal", trend: [0, 20, 45, 70, 90, 100] },
+            { label: "Sample round 1", value: "PASS", unit: "", status: "normal", trend: [0, 0, 0, 0, 1, 1] },
+            { label: "Sample round 2", value: "PENDING", unit: "", status: "warning", trend: [0, 0, 0, 0, 0, 0] },
+          ],
+          choices: [
+            { id: "wait-second-round", label: "Wait for the second clean sample round and prepare the public notice for immediate release after confirmation", rationale: "Complete the verification protocol while minimizing the communication delay.", points: 20, consequence: "The second round passes and the advisory is lifted with a complete recovery record." },
+            { id: "lift-on-residual", label: "Recommend lifting now because residual and the first round are satisfactory", rationale: "The available evidence indicates recovery.", points: 5, consequence: "The advisory is lifted before the full verification protocol is complete." },
+            { id: "lift-immediately", label: "Lift immediately and treat the second sample as post-advisory monitoring", rationale: "Customers have waited long enough.", points: 0, consequence: "The utility abandons its final verification barrier at the point of recovery." },
+          ],
+        },
+        "random-flush": {
+          id: "advisory-lift-pressure-transient",
+          time: "18:45",
+          title: "A dead-end remains unverified",
+          briefing: "Simultaneous hydrant flushing restored residual at central monitors, but a dead-end school zone remains at zero after a pressure transient. The advisory cannot be evaluated from a complete zone record.",
+          alarm: "DEAD-END RESIDUAL ZERO",
+          focusNode: 4,
+          telemetry: [
+            { label: "Central residual", value: "0.48", unit: "mg/L", status: "normal", trend: [0, 0.1, 0.22, 0.34, 0.42, 0.48] },
+            { label: "School-zone residual", value: "0.00", unit: "mg/L", status: "critical", trend: [0, 0, 0, 0, 0, 0] },
+            { label: "Minimum pressure", value: "91", unit: "kPa", status: "critical", trend: [371, 330, 275, 198, 123, 91] },
+            { label: "Zone coverage", value: "82", unit: "%", status: "warning", trend: [0, 25, 45, 62, 74, 82] },
+          ],
+          choices: [
+            { id: "targeted-recovery", label: "Keep the advisory active, stabilize pressure and complete a targeted unidirectional flush and sampling plan for the unverified area", rationale: "Repair the coverage and pressure gaps before making a zone-wide safety claim.", points: 20, consequence: "The dead-end is brought into the verified recovery boundary without another uncontrolled transient." },
+            { id: "exclude-dead-end", label: "Lift the advisory elsewhere and keep only the school block under precaution", rationale: "Most of the zone has recovered.", points: 5, consequence: "A partial lift is attempted without a fully documented isolation and communication plan." },
+            { id: "average-result", label: "Use the average residual across all monitors and lift the advisory", rationale: "The zone-wide average is now acceptable.", points: 0, consequence: "Averages conceal the specific unprotected dead-end and create an unsupported safety claim." },
+          ],
+        },
+        "wait-natural": {
+          id: "advisory-lift-prolonged-outage",
+          time: "18:45",
+          title: "The advisory extends overnight",
+          briefing: "Natural turnover has not restored the eastern dead ends. Schools and care facilities need an overnight water plan, and public health requests a defined recovery timeline.",
+          alarm: "RESIDUAL LOSS PERSISTS — 18 HOURS",
+          focusNode: 4,
+          telemetry: [
+            { label: "East zone residual", value: "0.06", unit: "mg/L", status: "critical", trend: [0, 0, 0.01, 0.02, 0.04, 0.06] },
+            { label: "Advisory duration", value: "18", unit: "hours", status: "critical", trend: [4, 6, 9, 12, 15, 18] },
+            { label: "Critical facilities", value: "4", unit: "open needs", status: "warning", trend: [2, 2, 3, 3, 4, 4] },
+            { label: "Verified coverage", value: "35", unit: "%", status: "critical", trend: [0, 8, 15, 21, 29, 35] },
+          ],
+          choices: [
+            { id: "activate-recovery", label: "Keep the advisory active, initiate a systematic flushing and sampling plan, and coordinate alternate water for critical facilities", rationale: "Move from passive delay to a controlled operational and public-health recovery.", points: 20, consequence: "The utility establishes a credible recovery timeline and protects critical facilities while verification proceeds." },
+            { id: "wait-overnight", label: "Continue natural turnover overnight and reassess in the morning", rationale: "Additional time should eventually restore residual.", points: 4, consequence: "The advisory continues without a defined barrier-restoration plan." },
+            { id: "lift-for-fatigue", label: "Lift the advisory because the public has complied long enough", rationale: "Advisory fatigue may become a larger risk than low residual.", points: 0, consequence: "The utility lifts precautions while most of the zone remains unverified." },
+          ],
+        },
+      },
     },
     {
       id: "advisory-lift",
