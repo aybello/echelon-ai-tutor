@@ -27,6 +27,7 @@ const ProcessControl = lazy(() => import("./pages/ProcessControl"));
 const ChemCalc = lazy(() => import("./pages/ChemCalc"));
 const MathPractice = lazy(() => import("./pages/MathPractice"));
 const Lab = lazy(() => import("./pages/Lab"));
+const IncidentCommand = lazy(() => import("./pages/IncidentCommand"));
 const Formulas = lazy(() => import("./pages/Formulas"));
 const About = lazy(() => import("./pages/About"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -238,6 +239,7 @@ function Router() {
         <Route path={"/chem-calc"} component={ChemCalc} />
         <Route path={"/math-practice"} component={MathPractice} />
         <Route path={"/lab"} component={Lab} />
+        <Route path={"/command"} component={IncidentCommand} />
         <Route path={"/formulas"} component={Formulas} />
         <Route path={"/about"} component={About} />
         <Route path={"/class1"}>{() => <Redirect to="/class1-water" />}</Route>

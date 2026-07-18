@@ -22,6 +22,7 @@ import { orgRouter, orgIntelRouter } from "./routers/orgRouter";
 import { blogRouter } from "./routers/blogRouter";
 import { jobsRouter } from "./routers/jobsRouter";
 import { emailOtpRouter } from "./routers/emailOtpRouter";
+import { incidentCommandRouter } from "./routers/incidentCommandRouter";
 import { sendContactEmail } from "./email";
 
 export const appRouter = router({
@@ -106,6 +107,7 @@ export const appRouter = router({
   blog: blogRouter,
   jobs: jobsRouter,
   emailOtp: emailOtpRouter,
+  incidentCommand: incidentCommandRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
