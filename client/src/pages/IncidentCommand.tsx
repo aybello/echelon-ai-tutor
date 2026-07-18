@@ -24,6 +24,7 @@ import SiteNav from "@/components/SiteNav";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { ALL_SCENARIOS, getScenarioById, type ScenarioMeta, type ScenarioStep, type Choice } from "@/lib/commandScenarios";
+import { useGuestSession } from "@/hooks/useGuestSession";
 
 type DecisionRecord = {
   stepId: string;
@@ -111,8 +112,11 @@ function ScenarioCard({ scenario, onSelect }: { scenario: ScenarioMeta; onSelect
   );
 }
 
-function HistoryPanel({ userId }: { userId?: number }) {
-  const { data: history, isLoading } = trpc.incidentCommand.getMyHistory.useQuery(undefined, { retry: false });
+function HistoryPanel({ userId, guestId }: { userId?: number; guestId?: string }) {
+  const { data: history, isLoading } = trpc.incidentCommand.getMyHistory.useQuery(
+    { guestId: userId ? undefined : guestId },
+    { retry: false },
+  );
   const { data: leaderboard } = trpc.incidentCommand.getLeaderboard.useQuery(undefined, { retry: false });
   // Guests default to leaderboard tab; signed-in users default to their history
   const [tab, setTab] = useState<"history" | "leaderboard">(userId ? "history" : "leaderboard");
@@ -169,7 +173,7 @@ function HistoryPanel({ userId }: { userId?: number }) {
             <div className="p-5 text-center text-xs text-slate-400">No runs recorded yet. Be the first on the board.</div>
           ) : (
             leaderboard.map(entry => (
-              <div key={entry.userId} className="flex items-center gap-3 px-5 py-3">
+              <div key={entry.key} className="flex items-center gap-3 px-5 py-3">
                 <div className={`w-7 shrink-0 text-center text-xs font-black ${entry.rank === 1 ? "text-amber-300" : entry.rank === 2 ? "text-slate-300" : entry.rank === 3 ? "text-amber-600" : "text-slate-500"}`}>
                   {entry.rank === 1 ? "🥇" : entry.rank === 2 ? "🥈" : entry.rank === 3 ? "🥉" : `#${entry.rank}`}
                 </div>
@@ -210,14 +214,17 @@ export default function IncidentCommand() {
   const startTimeRef = useRef<number>(0);
 
   const { data: me } = trpc.auth.me.useQuery(undefined, { retry: false });
+  const { guestId, displayName: guestDisplayName } = useGuestSession();
   const debriefMutation = trpc.incidentCommand.debrief.useMutation();
   const saveRunMutation = trpc.incidentCommand.saveRun.useMutation();
   const queueDrillMutation = trpc.incidentCommand.queueDrill.useMutation({
     onSuccess: () => { setDrillQueued(true); },
   });
-  const { data: queuedDrillData } = trpc.incidentCommand.getQueuedDrill.useQuery(undefined, {
-    retry: false,
-  });
+  // Pass guestId so guests get their queued drill back on page reload
+  const { data: queuedDrillData } = trpc.incidentCommand.getQueuedDrill.useQuery(
+    { guestId: me ? undefined : guestId },
+    { retry: false },
+  );
   const utils = trpc.useUtils();
 
   const step = selectedScenario.steps[stepIndex];
@@ -321,22 +328,22 @@ export default function IncidentCommand() {
     setDebrief(result);
     setMode("debrief");
 
-    // Persist run to DB (fire and forget)
-    if (me) {
-      saveRunMutation.mutate({
-        scenarioId: selectedScenario.id,
-        scenarioTitle: selectedScenario.title,
-        commandScore: finalScore,
-        optimalCalls,
-        totalSteps: selectedScenario.steps.length,
-        elapsedSeconds: elapsed,
-      }, {
-        onSuccess: () => {
-          utils.incidentCommand.getMyHistory.invalidate();
-          utils.incidentCommand.getLeaderboard.invalidate();
-        },
-      });
-    }
+    // Persist run to DB — works for both authenticated users and guests
+    saveRunMutation.mutate({
+      scenarioId: selectedScenario.id,
+      scenarioTitle: selectedScenario.title,
+      commandScore: finalScore,
+      optimalCalls,
+      totalSteps: selectedScenario.steps.length,
+      elapsedSeconds: elapsed,
+      guestId: me ? undefined : guestId,
+      displayName: me ? undefined : guestDisplayName,
+    }, {
+      onSuccess: () => {
+        utils.incidentCommand.getMyHistory.invalidate();
+        utils.incidentCommand.getLeaderboard.invalidate();
+      },
+    });
   };
 
   // ─── INTRO ──────────────────────────────────────────────────────────────────
@@ -388,7 +395,7 @@ export default function IncidentCommand() {
               {/* Score history / leaderboard */}
               <section className="space-y-3">
                 <div className="text-xs font-black uppercase tracking-[.16em] text-slate-400">Operator performance</div>
-                <HistoryPanel userId={me?.id} />
+                <HistoryPanel userId={me?.id} guestId={me ? undefined : guestId} />
               </section>
             </div>
 
@@ -456,7 +463,7 @@ export default function IncidentCommand() {
               <div className="flex flex-col justify-between gap-4 rounded-2xl border border-slate-700 bg-slate-800 p-6 sm:flex-row sm:items-center">
                 <div><div className="text-xs font-black uppercase tracking-[.16em] text-slate-300">Recommended next drill</div><div className="mt-2 text-lg font-bold text-white">{debrief.nextDrill}</div></div>
                 <button
-                  onClick={() => { queueDrillMutation.mutate({ drillName: debrief.nextDrill }); }}
+                  onClick={() => { queueDrillMutation.mutate({ drillName: debrief.nextDrill, guestId: me ? undefined : guestId }); }}
                   className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-black transition ${drillQueued ? "bg-teal-600 text-white cursor-default" : "bg-blue-600 text-white hover:bg-blue-500"}`}
                   disabled={drillQueued}
                 >

@@ -555,12 +555,14 @@ export type InsertEmailOtpCode = typeof emailOtpCodes.$inferInsert;
  */
 export const commandDrillQueue = mysqlTable("command_drill_queue", {
   id: int("id").autoincrement().primaryKey(),
-  userId: int("userId").notNull(),
+  userId: int("userId"),
+  guestId: varchar("guestId", { length: 64 }),
   drillName: varchar("drillName", { length: 255 }).notNull(),
   queuedAt: timestamp("queuedAt").defaultNow().notNull(),
   completedAt: timestamp("completedAt"),
 }, (t) => [
   index("cdq_user_idx").on(t.userId),
+  index("cdq_guest_idx").on(t.guestId),
 ]);
 export type CommandDrillQueue = typeof commandDrillQueue.$inferSelect;
 export type InsertCommandDrillQueue = typeof commandDrillQueue.$inferInsert;
@@ -571,7 +573,9 @@ export type InsertCommandDrillQueue = typeof commandDrillQueue.$inferInsert;
  */
 export const commandRunHistory = mysqlTable("command_run_history", {
   id: int("id").autoincrement().primaryKey(),
-  userId: int("userId").notNull(),
+  userId: int("userId"),
+  guestId: varchar("guestId", { length: 64 }),
+  displayName: varchar("displayName", { length: 80 }),
   scenarioId: varchar("scenarioId", { length: 60 }).notNull(),
   scenarioTitle: varchar("scenarioTitle", { length: 120 }).notNull(),
   commandScore: int("commandScore").notNull(),
@@ -581,6 +585,7 @@ export const commandRunHistory = mysqlTable("command_run_history", {
   completedAt: timestamp("completedAt").defaultNow().notNull(),
 }, (t) => [
   index("crh_user_idx").on(t.userId),
+  index("crh_guest_idx").on(t.guestId),
   index("crh_scenario_idx").on(t.scenarioId),
   index("crh_score_idx").on(t.commandScore),
 ]);

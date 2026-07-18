@@ -65,34 +65,53 @@ export function parseSections(text: string, score: number, decisions: z.infer<ty
 }
 
 export const incidentCommandRouter = router({
-  /** Save the recommended next drill for the logged-in user (no-op for guests) */
+  /** Save the recommended next drill — works for both authenticated users and guests */
   queueDrill: publicProcedure
-    .input(z.object({ drillName: z.string().min(1).max(255) }))
+    .input(z.object({
+      drillName: z.string().min(1).max(255),
+      guestId: z.string().max(64).optional(),
+    }))
     .mutation(async ({ ctx, input }) => {
-      if (!ctx.user) return { queued: false, drillName: input.drillName };
       const db = await getDb();
       if (!db) return { queued: false, drillName: input.drillName };
-      await db.update(commandDrillQueue)
-        .set({ completedAt: new Date() })
-        .where(eq(commandDrillQueue.userId, ctx.user.id));
-      await db.insert(commandDrillQueue).values({
-        userId: ctx.user.id,
-        drillName: input.drillName,
-      });
+      if (ctx.user) {
+        await db.update(commandDrillQueue)
+          .set({ completedAt: new Date() })
+          .where(eq(commandDrillQueue.userId, ctx.user.id));
+        await db.insert(commandDrillQueue).values({
+          userId: ctx.user.id,
+          drillName: input.drillName,
+        });
+      } else if (input.guestId) {
+        await db.update(commandDrillQueue)
+          .set({ completedAt: new Date() })
+          .where(eq(commandDrillQueue.guestId, input.guestId));
+        await db.insert(commandDrillQueue).values({
+          guestId: input.guestId,
+          drillName: input.drillName,
+        });
+      }
       return { queued: true, drillName: input.drillName };
     }),
 
-  /** Get the current queued drill for the logged-in user (null for guests) */
+  /** Get the current queued drill — works for both authenticated users and guests */
   getQueuedDrill: publicProcedure
-    .query(async ({ ctx }) => {
-      if (!ctx.user) return null;
+    .input(z.object({ guestId: z.string().max(64).optional() }).optional())
+    .query(async ({ ctx, input }) => {
       const db = await getDb();
       if (!db) return null;
-      const rows = await db.select()
-        .from(commandDrillQueue)
-        .where(eq(commandDrillQueue.userId, ctx.user.id))
-        .orderBy(desc(commandDrillQueue.queuedAt))
-        .limit(1);
+      let rows;
+      if (ctx.user) {
+        rows = await db.select().from(commandDrillQueue)
+          .where(eq(commandDrillQueue.userId, ctx.user.id))
+          .orderBy(desc(commandDrillQueue.queuedAt)).limit(1);
+      } else if (input?.guestId) {
+        rows = await db.select().from(commandDrillQueue)
+          .where(eq(commandDrillQueue.guestId, input.guestId))
+          .orderBy(desc(commandDrillQueue.queuedAt)).limit(1);
+      } else {
+        return null;
+      }
       const row = rows[0];
       if (!row || row.completedAt) return null;
       return { drillName: row.drillName, queuedAt: row.queuedAt };
@@ -110,7 +129,7 @@ export const incidentCommandRouter = router({
       return { cleared: true };
     }),
 
-  /** Save a completed scenario run to the history table (no-op for guests) */
+  /** Save a completed scenario run — works for both authenticated users and guests */
   saveRun: publicProcedure
     .input(z.object({
       scenarioId: z.string().min(1).max(60),
@@ -119,34 +138,55 @@ export const incidentCommandRouter = router({
       optimalCalls: z.number().int().min(0),
       totalSteps: z.number().int().min(1),
       elapsedSeconds: z.number().int().min(0).default(0),
+      guestId: z.string().max(64).optional(),
+      displayName: z.string().max(80).optional(),
     }))
     .mutation(async ({ ctx, input }) => {
-      if (!ctx.user) return { saved: false };
       const db = await getDb();
       if (!db) return { saved: false };
-      await db.insert(commandRunHistory).values({
-        userId: ctx.user.id,
-        scenarioId: input.scenarioId,
-        scenarioTitle: input.scenarioTitle,
-        commandScore: input.commandScore,
-        optimalCalls: input.optimalCalls,
-        totalSteps: input.totalSteps,
-        elapsedSeconds: input.elapsedSeconds,
-      });
+      if (ctx.user) {
+        await db.insert(commandRunHistory).values({
+          userId: ctx.user.id,
+          scenarioId: input.scenarioId,
+          scenarioTitle: input.scenarioTitle,
+          commandScore: input.commandScore,
+          optimalCalls: input.optimalCalls,
+          totalSteps: input.totalSteps,
+          elapsedSeconds: input.elapsedSeconds,
+        });
+      } else if (input.guestId) {
+        await db.insert(commandRunHistory).values({
+          guestId: input.guestId,
+          displayName: input.displayName ?? "Guest Operator",
+          scenarioId: input.scenarioId,
+          scenarioTitle: input.scenarioTitle,
+          commandScore: input.commandScore,
+          optimalCalls: input.optimalCalls,
+          totalSteps: input.totalSteps,
+          elapsedSeconds: input.elapsedSeconds,
+        });
+      }
       return { saved: true };
     }),
 
-  /** Get the logged-in user's personal run history (empty array for guests) */
+  /** Get run history — authenticated users get their DB history; guests pass their guestId */
   getMyHistory: publicProcedure
-    .query(async ({ ctx }) => {
-      if (!ctx.user) return [];
+    .input(z.object({ guestId: z.string().max(64).optional() }).optional())
+    .query(async ({ ctx, input }) => {
       const db = await getDb();
       if (!db) return [];
-      const rows = await db.select()
-        .from(commandRunHistory)
-        .where(eq(commandRunHistory.userId, ctx.user.id))
-        .orderBy(desc(commandRunHistory.completedAt))
-        .limit(20);
+      let rows;
+      if (ctx.user) {
+        rows = await db.select().from(commandRunHistory)
+          .where(eq(commandRunHistory.userId, ctx.user.id))
+          .orderBy(desc(commandRunHistory.completedAt)).limit(20);
+      } else if (input?.guestId) {
+        rows = await db.select().from(commandRunHistory)
+          .where(eq(commandRunHistory.guestId, input.guestId))
+          .orderBy(desc(commandRunHistory.completedAt)).limit(20);
+      } else {
+        return [];
+      }
       return rows.map(row => ({
         id: row.id,
         scenarioId: row.scenarioId,
@@ -159,32 +199,68 @@ export const incidentCommandRouter = router({
       }));
     }),
 
-  /** Get the global leaderboard — top 20 operators by best single-run score */
+  /** Get the global leaderboard — top 20 operators by best single-run score (auth + guest) */
   getLeaderboard: publicProcedure
     .query(async () => {
       const db = await getDb();
       if (!db) return [];
-      // Best score per user, with their name
-      const rows = await db
+
+      // Authenticated user entries (grouped by userId)
+      const authRows = await db
         .select({
-          userId: commandRunHistory.userId,
+          key: sql<string>`CONCAT('user-', ${commandRunHistory.userId})`,
           bestScore: sql<number>`MAX(${commandRunHistory.commandScore})`,
           totalRuns: sql<number>`COUNT(*)`,
-          userName: users.name,
+          displayName: users.name,
         })
         .from(commandRunHistory)
         .leftJoin(users, eq(commandRunHistory.userId, users.id))
+        .where(sql`${commandRunHistory.userId} IS NOT NULL`)
         .groupBy(commandRunHistory.userId, users.name)
-        .orderBy(desc(sql`MAX(${commandRunHistory.commandScore})`))
-        .limit(20);
+        .orderBy(desc(sql`MAX(${commandRunHistory.commandScore})`));
 
-      return rows.map((row, index) => ({
-        rank: index + 1,
-        userId: row.userId,
-        displayName: row.userName ?? `Operator #${row.userId}`,
-        bestScore: Number(row.bestScore),
-        totalRuns: Number(row.totalRuns),
-      }));
+      // Guest entries (grouped by guestId)
+      const guestRows = await db
+        .select({
+          key: sql<string>`CONCAT('guest-', ${commandRunHistory.guestId})`,
+          bestScore: sql<number>`MAX(${commandRunHistory.commandScore})`,
+          totalRuns: sql<number>`COUNT(*)`,
+          displayName: sql<string>`MAX(${commandRunHistory.displayName})`,
+        })
+        .from(commandRunHistory)
+        .where(sql`${commandRunHistory.guestId} IS NOT NULL AND ${commandRunHistory.userId} IS NULL`)
+        .groupBy(commandRunHistory.guestId)
+        .orderBy(desc(sql`MAX(${commandRunHistory.commandScore})`));
+
+      // Merge and sort by best score, take top 20
+      const combined = [
+        ...authRows.map(r => ({
+          key: r.key,
+          displayName: r.displayName ?? "Anonymous Operator",
+          bestScore: Number(r.bestScore),
+          totalRuns: Number(r.totalRuns),
+          isGuest: false,
+        })),
+        ...guestRows.map(r => ({
+          key: r.key,
+          displayName: r.displayName ?? "Guest Operator",
+          bestScore: Number(r.bestScore),
+          totalRuns: Number(r.totalRuns),
+          isGuest: true,
+        })),
+      ]
+        .sort((a, b) => b.bestScore - a.bestScore)
+        .slice(0, 20)
+        .map((row, index) => ({
+          rank: index + 1,
+          key: row.key,
+          displayName: row.displayName,
+          bestScore: row.bestScore,
+          totalRuns: row.totalRuns,
+          isGuest: row.isGuest,
+        }));
+
+      return combined;
     }),
 
   debrief: publicProcedure
