@@ -1,5 +1,5 @@
 /**
- * Echelon Command — scenario library
+ * Echelon Command scenario library shared by the browser and server.
  * Each scenario follows the same data shape as the original Cedar Ridge storm scenario.
  * Scenarios are referenced by ID in the router and the UI.
  */
@@ -20,6 +20,19 @@ export type Choice = {
   consequence: string;
 };
 
+export type JudgmentRubric = {
+  verifiedBeforeActing: boolean;
+  barrierPreserved: boolean;
+  escalationInitiated: boolean;
+  recordDefensible: boolean;
+};
+
+export type JudgmentConfig = {
+  prompt: string;
+  placeholder: string;
+  minCharacters: number;
+};
+
 export type ScenarioStep = {
   id: string;
   time: string;
@@ -29,6 +42,8 @@ export type ScenarioStep = {
   focusNode: number;
   telemetry: Telemetry[];
   choices: Choice[];
+  judgment?: JudgmentConfig;
+  branchSteps?: Record<string, ScenarioStep>;
 };
 
 export type ScenarioMeta = {
@@ -129,6 +144,70 @@ export const CEDAR_RIDGE_STORM: ScenarioMeta = {
         { id: "log-later", label: "Continue monitoring and complete the incident log at the end of the shift", rationale: "The immediate process risk has passed, so paperwork can wait.", points: 6, consequence: "The plant remains stable, but delayed escalation creates gaps in the official response record." },
         { id: "delete-alarm", label: "Acknowledge and delete the alarm because the readings are recovering", rationale: "Closing the alarm returns the control room to normal operation.", points: 0, consequence: "The event loses its auditable trail and the organization cannot demonstrate when the deviation was recognized or controlled." },
       ],
+      judgment: {
+        prompt: "You are the operator in charge. State what you do next and why. Include the checks, escalation and incident record you would require before recovery.",
+        placeholder: "I would first verify... Then I would escalate... I would preserve...",
+        minCharacters: 20,
+      },
+      branchSteps: {
+        "escalate-document": {
+          id: "stabilize-controlled",
+          time: "03:28",
+          title: "Controlled recovery gate",
+          briefing: "Your escalation has brought the duty manager and compliance lead into the response. The treatment barriers are stable, the official timeline is current and leadership asks when the incident can be closed.",
+          alarm: "RECOVERY CRITERIA REVIEW",
+          focusNode: 3,
+          telemetry: [
+            { label: "Raw turbidity", value: "16.2", unit: "NTU", status: "warning", trend: [28, 27, 25, 22, 19, 16] },
+            { label: "Filtered turbidity", value: "0.16", unit: "NTU", status: "normal", trend: [0.31, 0.27, 0.23, 0.2, 0.18, 0.16] },
+            { label: "Verified samples", value: "3", unit: "clear", status: "normal", trend: [0, 0, 1, 1, 2, 3] },
+            { label: "Open record gaps", value: "0", unit: "items", status: "normal", trend: [4, 4, 3, 2, 1, 0] },
+          ],
+          choices: [
+            { id: "recovery-gate", label: "Hold recovery until verification criteria are met, then conduct a documented after-action review", rationale: "Recovery is a controlled phase with evidence-based exit criteria and organizational learning.", points: 20, consequence: "The plant closes the event with verified stability, a complete timeline and clear actions for the next extreme-weather event." },
+            { id: "normal-now", label: "Return immediately to normal setpoints and staffing", rationale: "The major alarms have cleared and the process looks stable.", points: 7, consequence: "Rapid normalization reduces monitoring during the period when rebound effects are still possible." },
+            { id: "keep-emergency", label: "Keep emergency settings indefinitely", rationale: "Conservative operation is safer after a serious event.", points: 3, consequence: "The prolonged emergency state creates avoidable chemical, residual and filter-loading problems." },
+          ],
+        },
+        "log-later": {
+          id: "stabilize-record-gap",
+          time: "03:28",
+          title: "Leadership finds a record gap",
+          briefing: "The process has stabilized, but the duty manager cannot reconcile the alarm time, verification sample and escalation sequence. A regulator has requested the incident chronology before recovery is approved.",
+          alarm: "INCIDENT RECORD INCOMPLETE",
+          focusNode: 4,
+          telemetry: [
+            { label: "Filtered turbidity", value: "0.17", unit: "NTU", status: "normal", trend: [0.31, 0.28, 0.24, 0.21, 0.19, 0.17] },
+            { label: "Unlogged actions", value: "4", unit: "items", status: "critical", trend: [0, 1, 2, 3, 4, 4] },
+            { label: "Verification samples", value: "2", unit: "clear", status: "normal", trend: [0, 0, 1, 1, 2, 2] },
+            { label: "Recovery approval", value: "HOLD", unit: "", status: "warning", trend: [1, 1, 1, 0, 0, 0] },
+          ],
+          choices: [
+            { id: "reconstruct-escalate", label: "Keep the incident open, reconstruct the timeline from system records and samples, and escalate the documentation gap", rationale: "A late but transparent correction protects the integrity of the official record.", points: 20, consequence: "Recovery is delayed while the team reconciles the record, but both the deviation and documentation failure are formally controlled." },
+            { id: "estimate-times", label: "Fill the missing entries from memory and close the incident", rationale: "Approximate entries can complete the record quickly.", points: 5, consequence: "The log appears complete, but unsupported times weaken its reliability during review." },
+            { id: "process-only", label: "Close the incident because the treatment process is stable", rationale: "Operational recovery matters more than delayed paperwork.", points: 0, consequence: "The facility enters regulatory review without a defensible chronology." },
+          ],
+        },
+        "delete-alarm": {
+          id: "stabilize-audit-loss",
+          time: "03:28",
+          title: "The audit trail is challenged",
+          briefing: "The process is recovering, but the compliance lead discovers that the alarm was deleted. The control-room record no longer shows when the confirmed deviation was acknowledged or controlled.",
+          alarm: "EVIDENCE CHAIN FAILURE",
+          focusNode: 4,
+          telemetry: [
+            { label: "Filtered turbidity", value: "0.18", unit: "NTU", status: "normal", trend: [0.31, 0.28, 0.25, 0.22, 0.2, 0.18] },
+            { label: "Alarm history", value: "MISSING", unit: "", status: "critical", trend: [1, 1, 1, 1, 0, 0] },
+            { label: "Independent samples", value: "2", unit: "records", status: "warning", trend: [0, 0, 1, 1, 2, 2] },
+            { label: "Incident status", value: "OPEN", unit: "", status: "critical", trend: [1, 1, 1, 1, 1, 1] },
+          ],
+          choices: [
+            { id: "disclose-reconstruct", label: "Disclose the deletion, preserve all remaining evidence and reconstruct the event with independent records", rationale: "Recovery starts with transparency and preservation of every surviving source.", points: 20, consequence: "The alarm history cannot be restored, but prompt disclosure and corroborating records create the strongest defensible recovery path available." },
+            { id: "restore-copy", label: "Create a replacement alarm entry using the remembered time", rationale: "A reconstructed entry may make the timeline look complete.", points: 4, consequence: "The new entry is not a system-generated record and creates a second integrity concern." },
+            { id: "omit-deletion", label: "Document only the current stable readings and omit the deletion", rationale: "The recovered process condition should be sufficient to close the event.", points: 0, consequence: "The organization compounds the original evidence loss with an incomplete disclosure." },
+          ],
+        },
+      },
     },
     {
       id: "stabilize",
@@ -488,4 +567,16 @@ export const ALL_SCENARIOS: ScenarioMeta[] = [
 
 export function getScenarioById(id: string): ScenarioMeta | undefined {
   return ALL_SCENARIOS.find(s => s.id === id);
+}
+
+export function getScenarioStepAtIndex(
+  scenario: ScenarioMeta,
+  index: number,
+  previousChoiceIds: string[],
+): ScenarioStep | undefined {
+  const baseStep = scenario.steps[index];
+  if (!baseStep || index === 0) return baseStep;
+  const previousBaseStep = scenario.steps[index - 1];
+  const previousChoiceId = previousChoiceIds[index - 1];
+  return previousBaseStep?.branchSteps?.[previousChoiceId] ?? baseStep;
 }

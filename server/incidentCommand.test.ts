@@ -1,66 +1,64 @@
 import { describe, expect, it } from "vitest";
+import { TRPCError } from "@trpc/server";
 import {
+  evaluateCanonicalDecisions,
   fallbackDebrief,
-  parseSections,
 } from "./routers/incidentCommandRouter";
 
-const decisions = [
-  {
-    stepId: "source-shift",
-    stepTitle: "The source water changes",
-    choiceLabel: "Verify the reading and optimize coagulation",
-    consequence: "The reading is confirmed and the treatment response is controlled.",
-    points: 20,
-  },
-  {
-    stepId: "filter-breakthrough",
-    stepTitle: "Filter 2 begins to break through",
-    choiceLabel: "Backwash every filter immediately",
-    consequence: "The plant loses filtration capacity and clearwell storage falls.",
-    points: 6,
-  },
+const optimalCedarRun = [
+  { stepId: "source-shift", choiceId: "verify-optimize" },
+  { stepId: "filter-breakthrough", choiceId: "isolate-filter" },
+  { stepId: "disinfection-risk", choiceId: "ct-verify" },
+  { stepId: "confirmation", choiceId: "escalate-document" },
+  { stepId: "stabilize-controlled", choiceId: "recovery-gate" },
 ];
 
-describe("Echelon Command debrief", () => {
-  it("produces a complete deterministic evaluation when GPT-5.6 is unavailable", () => {
-    const result = fallbackDebrief(72, decisions, "Cedar Ridge Storm Response");
+describe("Echelon Command canonical incident evaluation", () => {
+  it("computes a perfect score only from server-owned scenario data", () => {
+    const result = evaluateCanonicalDecisions("cedar-ridge-storm", optimalCedarRun);
+
+    expect(result.commandScore).toBe(100);
+    expect(result.optimalCalls).toBe(5);
+    expect(result.decisions[0]).toMatchObject({
+      stepTitle: "The source water changes",
+      points: 20,
+    });
+  });
+
+  it("requires the final development that matches the previous judgment branch", () => {
+    const recordGapRun = [
+      ...optimalCedarRun.slice(0, 3),
+      { stepId: "confirmation", choiceId: "log-later" },
+      { stepId: "stabilize-record-gap", choiceId: "reconstruct-escalate" },
+    ];
+    const result = evaluateCanonicalDecisions("cedar-ridge-storm", recordGapRun);
+
+    expect(result.commandScore).toBe(86);
+    expect(result.decisions[4].stepTitle).toBe("Leadership finds a record gap");
+  });
+
+  it("rejects a final step copied from a different branch", () => {
+    const impossibleRun = [
+      ...optimalCedarRun.slice(0, 3),
+      { stepId: "confirmation", choiceId: "delete-alarm" },
+      { stepId: "stabilize-controlled", choiceId: "recovery-gate" },
+    ];
+
+    expect(() => evaluateCanonicalDecisions("cedar-ridge-storm", impossibleRun)).toThrow(TRPCError);
+  });
+
+  it("rejects incomplete incident records", () => {
+    expect(() => evaluateCanonicalDecisions("cedar-ridge-storm", optimalCedarRun.slice(0, 4))).toThrow("incomplete");
+  });
+
+  it("produces a complete deterministic, record-grounded fallback", () => {
+    const evaluation = evaluateCanonicalDecisions("cedar-ridge-storm", optimalCedarRun);
+    const result = fallbackDebrief(evaluation);
 
     expect(result.generatedBy).toBe("rules-engine");
-    expect(result.summary).toContain("developing operator");
-    expect(result.summary).toContain("Cedar Ridge Storm Response");
+    expect(result.verification.label).toBe("Deterministic record-grounded review");
+    expect(result.summary).toContain("incident-command ready");
     expect(result.strengths).toHaveLength(2);
     expect(result.improvements).toHaveLength(2);
-    expect(result.nextDrill).toContain("filter breakthrough");
-  });
-
-  it("parses the bounded GPT-5.6 response into the after-action review", () => {
-    const modelResponse = `**SUMMARY:** You protected the first barrier but consumed too much reserve at filtration.
-**STRENGTHS:**
-- Verified the source-water signal.
-- Connected process evidence to the control action.
-**IMPROVEMENTS:**
-- Isolate the affected filter before backwashing.
-- State the verification and escalation chain.
-**NEXT DRILL:** Low-pressure contamination response`;
-
-    const result = parseSections(modelResponse, 72, decisions, "Cedar Ridge Storm Response");
-
-    expect(result.generatedBy).toBe("gpt-5.6");
-    expect(result.summary).toContain("protected the first barrier");
-    expect(result.strengths).toEqual([
-      "Verified the source-water signal.",
-      "Connected process evidence to the control action.",
-    ]);
-    expect(result.improvements[0]).toContain("Isolate the affected filter");
-    expect(result.nextDrill).toBe("Low-pressure contamination response");
-  });
-
-  it("falls back section by section when the model omits part of the contract", () => {
-    const result = parseSections("SUMMARY: Concise operator assessment.", 72, decisions, "Cedar Ridge Storm Response");
-
-    expect(result.summary).toBe("Concise operator assessment.");
-    expect(result.strengths).toHaveLength(2);
-    expect(result.improvements).toHaveLength(2);
-    expect(result.nextDrill).toContain("filter breakthrough");
   });
 });
