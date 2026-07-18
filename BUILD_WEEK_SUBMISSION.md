@@ -6,7 +6,7 @@
 
 **Tagline:** AI-powered incident command training for the operators responsible for safe drinking water.
 
-**One-sentence pitch:** Echelon Command puts drinking-water operators inside a live treatment-barrier emergency, makes every decision change the plant, and uses GPT-5.6 to turn the complete response into a personalized after-action review.
+**One-sentence pitch:** Echelon Command puts drinking-water operators inside a live treatment-barrier emergency, interprets their own written judgment with GPT-5.6, changes the incident around that judgment, and verifies the final coaching against the incident record.
 
 ## The problem
 
@@ -18,7 +18,7 @@ Real emergencies are the wrong place to discover those gaps.
 
 Echelon Command is an adaptive emergency simulation for licensed and aspiring drinking-water operators.
 
-The Build Week scenario places the learner in the Cedar Ridge Water Treatment Plant during an extreme-rain event. Raw-water turbidity rises, a filter begins to break through, disinfection margin narrows and a verified barrier deviation requires escalation. Across five critical decisions, the learner must interpret live telemetry, choose a control action and observe the operational consequence.
+The flagship Build Week scenario places the learner in the Cedar Ridge Water Treatment Plant during an extreme-rain event. Raw-water turbidity rises, a filter begins to break through, disinfection margin narrows and a verified barrier deviation requires escalation. At the critical fourth turn, the learner does not pick an answer. They write what they would do and why. GPT-5.6 interprets that judgment, the deterministic engine maps it to an authored safety branch, and the fifth incident development changes around the decision.
 
 The simulator tracks three forms of plant resilience in real time:
 
@@ -26,20 +26,20 @@ The simulator tracks three forms of plant resilience in real time:
 - Available operating reserve
 - Incident-record integrity
 
-At the end, GPT-5.6 evaluates the entire decision chain and produces a bounded after-action review with specific strengths, improvements and a recommended next drill. The AI does not operate the plant or generate live advice. It evaluates a closed educational record.
+At the end, GPT-5.6 evaluates the entire decision chain and produces a structured after-action review. A second GPT-5.6 pass checks every factual claim against the canonical incident record. Unsupported reviews are regenerated once and then replaced by a deterministic record-grounded fallback if necessary. The AI does not operate the plant or generate live advice. It interprets and evaluates a closed educational record.
 
 ## Why GPT-5.6 is essential
 
-A rule engine controls the scenario, consequences and numeric score. GPT-5.6 handles the part that static scoring cannot: evaluating judgment across a sequence.
+A rule engine controls every valid path, consequence and numeric score. GPT-5.6 handles the parts that static scoring cannot: understanding an operator's own words, mapping them to a safe authored branch and evaluating judgment across a sequence.
 
 The model receives a tightly bounded record containing only:
 
 - The known scenario
-- The learner's five decisions
+- The learner's canonical decision identifiers
 - The observed consequence of each decision
 - The deterministic score for each decision
 
-It is instructed not to invent regulations, readings or actions. It must return a fixed assessment contract: summary, strengths, improvements and next drill. A deterministic fallback keeps the product functional if the model is unavailable, while the live competition demo should use the GPT-5.6 response.
+It returns strict JSON rather than free-form sections. A separate structured verification pass compares the review with the same canonical record. The server, not the browser or model, calculates and persists the score.
 
 ## What Codex built
 
@@ -58,13 +58,14 @@ Codex was used as the primary engineering environment for the Build Week feature
 ## Technical implementation
 
 - React 19 and TypeScript client
-- Five-stage deterministic incident state machine
+- Five-stage incident state machine with three authored final branches
 - Live telemetry and process topology
 - Cumulative consequence model for barrier, reserve and record health
-- tRPC server boundary for debrief generation
+- Server-authoritative path validation, scoring and run persistence
+- Free-text judgment classification with an explicit degraded-mode fallback
 - OpenAI Responses API with explicit `gpt-5.6`
-- Zod validation and bounded prompt inputs
-- Structured GPT response parsing with section-level fallback
+- Zod validation, bounded prompt inputs and strict JSON Schemas
+- Second-pass grounding verification with deterministic fallback
 - Responsive interface with no additional client dependency
 
 ## Design principles
@@ -106,23 +107,23 @@ The long-term product is a scenario authoring and competency platform for traini
 
 > The scenario is deterministic where safety and scoring matter. Each action has an authored operational consequence. Watch what happens when I backwash every filter instead of isolating the failed unit: operating reserve falls immediately. This is not a chatbot asking what I would do. It is a stateful training environment responding to what I did.
 
-### 1:20 to 1:55 | Complete the incident
+### 1:20 to 2:00 | Make GPT-5.6 change the incident
 
-**Visual:** Move quickly through the remaining decisions. Choose one imperfect escalation decision to create a useful debrief.
-
-**Narration:**
-
-> The learner also has to verify disinfection margin, escalate a confirmed barrier deviation and define evidence-based recovery criteria. Echelon records the entire decision chain, including what the operator prioritized, verified and documented.
-
-### 1:55 to 2:30 | Reveal GPT-5.6
-
-**Visual:** Click **Generate after-action review**. Show the score, GPT-5.6 label, strengths and improvements.
+**Visual:** Move through the disinfection decision. At the confirmed barrier deviation, type: "The readings are recovering, so I will keep monitoring and finish the incident log at shift change." Commit the judgment. Show GPT-5.6's rubric, then advance to the new **Leadership finds a record gap** development.
 
 **Narration:**
 
-> GPT-5.6 now evaluates that bounded record. The rule engine owns the scenario and score. The model does what static scoring cannot: it finds the pattern across the response and gives specific coaching tied to the actual decisions. It cannot invent readings, actions or regulations, and the simulator remains usable with a deterministic fallback.
+> Here is where GPT-5.6 becomes part of the simulation itself. I respond in my own words. The model interprets my judgment, but the rule engine owns safety and scoring. Because I delayed escalation and documentation, the next incident is no longer generic. Leadership finds a record gap and a regulator is waiting for the chronology.
 
-### 2:30 to 2:53 | Show the complete loop
+### 2:00 to 2:35 | Reveal the verified review
+
+**Visual:** Choose **Keep the incident open, reconstruct the timeline...**, then click **Generate after-action review**. Show the server-owned score, strengths, improvements and **Verified against incident record · GPT-5.6** badge.
+
+**Narration:**
+
+> GPT-5.6 now evaluates the bounded record, then a second model pass checks every factual claim against what actually happened. The visible verification badge means the review cleared that grounding check. If it does not, Echelon regenerates it or serves a deterministic record-grounded review.
+
+### 2:35 to 2:53 | Show the complete loop
 
 **Visual:** Scroll through the decision timeline and recommended next drill.
 
@@ -141,16 +142,16 @@ The long-term product is a scenario authoring and competency platform for traini
 ## Recording plan
 
 - Record at 1080p with the browser at 100 percent zoom.
-- Seed the demo with a mixed response: strong decisions 1, 3 and 5; imperfect decisions 2 and 4.
+- Use strong decisions 1 to 3, the delayed-documentation written response above, and the best corrective response in the branch-specific final step.
 - Keep the cursor still during narration and move only when demonstrating an interaction.
-- Use the live GPT-5.6 integration. Confirm the debrief badge says **Personalized by GPT-5.6** before recording the final take.
+- Use the live GPT-5.6 integration. Confirm the judgment rubric appears and the debrief badge says **Verified against incident record · GPT-5.6** before recording the final take.
 - Keep the final upload below three minutes. Target 2:50 to leave room for platform encoding.
 
 ## Final submission checklist
 
 - [ ] Set `OPENAI_API_KEY` in the production environment
 - [ ] Confirm `OPENAI_MODEL=gpt-5.6`
-- [ ] Deploy the `codex/build-week-command` branch or merge it into the production branch
+- [ ] Merge the competition branch into `main` and confirm the production deployment
 - [ ] Complete one full production scenario and confirm the GPT-5.6 badge
 - [ ] Record and publish a public YouTube demo under three minutes
 - [ ] Add the public repository URL and working application URL to Devpost

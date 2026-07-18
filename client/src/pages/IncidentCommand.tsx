@@ -22,7 +22,13 @@ import {
 import SiteNav from "@/components/SiteNav";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { ALL_SCENARIOS, getScenarioById, type ScenarioMeta, type ScenarioStep, type Choice } from "@/lib/commandScenarios";
+import {
+  ALL_SCENARIOS,
+  getScenarioStepAtIndex,
+  type ScenarioMeta,
+  type Choice,
+  type JudgmentRubric,
+} from "@shared/commandScenarios";
 
 type DecisionRecord = {
   stepId: string;
@@ -31,6 +37,9 @@ type DecisionRecord = {
   choiceLabel: string;
   consequence: string;
   points: number;
+  operatorResponse?: string;
+  judgmentRubric?: JudgmentRubric;
+  evaluationRationale?: string;
 };
 
 type Debrief = {
@@ -39,6 +48,15 @@ type Debrief = {
   improvements: string[];
   nextDrill: string;
   generatedBy: "gpt-5.6" | "rules-engine";
+  verification: {
+    verified: true;
+    label: string;
+    attempts: number;
+  };
+  commandScore: number;
+  optimalCalls: number;
+  totalSteps: number;
+  runSaved: boolean;
 };
 
 function Sparkline({ values, status }: { values: number[]; status: "normal" | "warning" | "critical" }) {
@@ -110,12 +128,12 @@ function ScenarioCard({ scenario, onSelect }: { scenario: ScenarioMeta; onSelect
   );
 }
 
-function HistoryPanel({ userId }: { userId?: number }) {
+function HistoryPanel({ authenticated }: { authenticated: boolean }) {
   const { data: history, isLoading } = trpc.incidentCommand.getMyHistory.useQuery(undefined, { retry: false });
   const { data: leaderboard } = trpc.incidentCommand.getLeaderboard.useQuery(undefined, { retry: false });
   const [tab, setTab] = useState<"history" | "leaderboard">("history");
 
-  if (!userId) {
+  if (!authenticated) {
     return (
       <div className="rounded-2xl border border-slate-700 bg-slate-800/60 p-5 text-center">
         <Trophy className="mx-auto mb-3 h-8 w-8 text-slate-500" />
@@ -203,12 +221,16 @@ export default function IncidentCommand() {
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [totalElapsed, setTotalElapsed] = useState(0);
   const [drillQueued, setDrillQueued] = useState(false);
+  const [judgmentResponse, setJudgmentResponse] = useState("");
+  const [judgmentDegraded, setJudgmentDegraded] = useState(false);
   const clockRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const startTimeRef = useRef<number>(0);
 
   const { data: me } = trpc.auth.me.useQuery(undefined, { retry: false });
+  const { data: accessIdentity } = trpc.access.auditMyEntitlements.useQuery(undefined, { retry: false });
+  const isAuthenticated = Boolean(me || (accessIdentity && accessIdentity.identityType !== "anonymous"));
   const debriefMutation = trpc.incidentCommand.debrief.useMutation();
-  const saveRunMutation = trpc.incidentCommand.saveRun.useMutation();
+  const judgmentMutation = trpc.incidentCommand.evaluateJudgment.useMutation();
   const queueDrillMutation = trpc.incidentCommand.queueDrill.useMutation({
     onSuccess: () => { setDrillQueued(true); },
   });
@@ -217,7 +239,7 @@ export default function IncidentCommand() {
   });
   const utils = trpc.useUtils();
 
-  const step = selectedScenario.steps[stepIndex];
+  const step = getScenarioStepAtIndex(selectedScenario, stepIndex, decisions.map(decision => decision.choiceId))!;
   const commandScore = useMemo(() => {
     const score = decisions.reduce((sum, d) => sum + d.points, 0);
     return Math.round((score / (selectedScenario.steps.length * 20)) * 100);
@@ -236,9 +258,9 @@ export default function IncidentCommand() {
   }, [decisions]);
 
   const stepBaseSeconds = useMemo(() => {
-    const [h, m] = (selectedScenario.steps[stepIndex]?.time ?? "02:14").split(":").map(Number);
+    const [h, m] = (step?.time ?? "02:14").split(":").map(Number);
     return h * 3600 + m * 60;
-  }, [stepIndex, selectedScenario.steps]);
+  }, [step?.time]);
 
   useEffect(() => {
     if (mode !== "live") {
@@ -272,6 +294,8 @@ export default function IncidentCommand() {
     setElapsedSeconds(0);
     setTotalElapsed(0);
     setDrillQueued(false);
+    setJudgmentResponse("");
+    setJudgmentDegraded(false);
     startTimeRef.current = Date.now();
   };
 
@@ -288,11 +312,42 @@ export default function IncidentCommand() {
     }]);
   };
 
+  const submitJudgment = async () => {
+    if (!step.judgment || selectedChoice || judgmentMutation.isPending) return;
+    const response = judgmentResponse.trim();
+    if (response.length < step.judgment.minCharacters) return;
+    const result = await judgmentMutation.mutateAsync({
+      scenarioId: selectedScenario.id,
+      stepId: step.id,
+      response,
+    });
+    if (result.mode === "degraded") {
+      setJudgmentDegraded(true);
+      return;
+    }
+    const choice = step.choices.find(candidate => candidate.id === result.choiceId);
+    if (!choice) return;
+    setSelectedChoice(choice);
+    setDecisions(current => [...current, {
+      stepId: step.id,
+      choiceId: choice.id,
+      stepTitle: step.title,
+      choiceLabel: choice.label,
+      consequence: choice.consequence,
+      points: choice.points,
+      operatorResponse: response,
+      judgmentRubric: result.rubric,
+      evaluationRationale: result.rationale,
+    }]);
+  };
+
   const continueScenario = async () => {
     if (!selectedChoice) return;
     if (stepIndex < selectedScenario.steps.length - 1) {
       setStepIndex(index => index + 1);
       setSelectedChoice(null);
+      setJudgmentResponse("");
+      setJudgmentDegraded(false);
       return;
     }
 
@@ -300,39 +355,19 @@ export default function IncidentCommand() {
     setTotalElapsed(elapsed);
 
     const finalDecisions = [...decisions];
-    const finalScore = Math.round((finalDecisions.reduce((s, d) => s + d.points, 0) / (selectedScenario.steps.length * 20)) * 100);
-    const optimalCalls = finalDecisions.filter(d => d.points === 20).length;
-
     const result = await debriefMutation.mutateAsync({
       decisions: finalDecisions.map(d => ({
         stepId: d.stepId,
         choiceId: d.choiceId,
-        stepTitle: d.stepTitle,
-        choiceLabel: d.choiceLabel,
-        consequence: d.consequence,
-        points: d.points,
       })),
       scenarioId: selectedScenario.id,
-      scenarioTitle: selectedScenario.title,
+      elapsedSeconds: elapsed,
     });
     setDebrief(result);
     setMode("debrief");
-
-    // Persist run to DB (fire and forget)
-    if (me) {
-      saveRunMutation.mutate({
-        scenarioId: selectedScenario.id,
-        scenarioTitle: selectedScenario.title,
-        commandScore: finalScore,
-        optimalCalls,
-        totalSteps: selectedScenario.steps.length,
-        elapsedSeconds: elapsed,
-      }, {
-        onSuccess: () => {
-          utils.incidentCommand.getMyHistory.invalidate();
-          utils.incidentCommand.getLeaderboard.invalidate();
-        },
-      });
+    if (result.runSaved) {
+      utils.incidentCommand.getMyHistory.invalidate();
+      utils.incidentCommand.getLeaderboard.invalidate();
     }
   };
 
@@ -385,7 +420,7 @@ export default function IncidentCommand() {
               {/* Score history / leaderboard */}
               <section className="space-y-3">
                 <div className="text-xs font-black uppercase tracking-[.16em] text-slate-400">Operator performance</div>
-                <HistoryPanel userId={me?.id} />
+                <HistoryPanel authenticated={isAuthenticated} />
               </section>
             </div>
 
@@ -420,15 +455,15 @@ export default function IncidentCommand() {
             </div>
             <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs text-slate-300">
               <Sparkles className="h-4 w-4 text-violet-300" />
-              {debrief.generatedBy === "gpt-5.6" ? "Personalized by GPT-5.6" : "Offline evaluation mode"}
+              {debrief.generatedBy === "gpt-5.6" ? `${debrief.verification.label} · GPT-5.6` : debrief.verification.label}
             </div>
           </div>
 
           <div className="grid gap-5 lg:grid-cols-[340px_1fr]">
             <section className="rounded-2xl border border-slate-700 bg-slate-800 p-6">
-              <div className="flex justify-center"><ScoreRing score={commandScore} /></div>
+              <div className="flex justify-center"><ScoreRing score={debrief.commandScore} /></div>
               <div className="mt-6 grid grid-cols-2 gap-3">
-                <div className="rounded-xl bg-slate-800 p-4"><div className="text-2xl font-black text-teal-300">{decisions.filter(d => d.points === 20).length}/{selectedScenario.steps.length}</div><div className="mt-1 text-[10px] uppercase tracking-wider text-slate-300">Optimal calls</div></div>
+                <div className="rounded-xl bg-slate-800 p-4"><div className="text-2xl font-black text-teal-300">{debrief.optimalCalls}/{debrief.totalSteps}</div><div className="mt-1 text-[10px] uppercase tracking-wider text-slate-300">Optimal calls</div></div>
                 <div className="rounded-xl bg-slate-800 p-4"><div className="text-2xl font-black text-blue-300">{Math.round(totalElapsed / 60)} min</div><div className="mt-1 text-[10px] uppercase tracking-wider text-slate-300">Real time</div></div>
               </div>
               <button onClick={() => begin()} className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-teal-400 px-4 py-3 text-sm font-black text-slate-950 shadow-[0_0_20px_rgba(45,212,191,.25)] transition hover:bg-teal-300 active:scale-[.97]"><RotateCcw className="h-4 w-4" /> Run scenario again</button>
@@ -453,11 +488,11 @@ export default function IncidentCommand() {
               <div className="flex flex-col justify-between gap-4 rounded-2xl border border-slate-700 bg-slate-800 p-6 sm:flex-row sm:items-center">
                 <div><div className="text-xs font-black uppercase tracking-[.16em] text-slate-300">Recommended next drill</div><div className="mt-2 text-lg font-bold text-white">{debrief.nextDrill}</div></div>
                 <button
-                  onClick={() => { queueDrillMutation.mutate({ drillName: debrief.nextDrill }); }}
-                  className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-black transition ${drillQueued ? "bg-teal-600 text-white cursor-default" : "bg-blue-600 text-white hover:bg-blue-500"}`}
-                  disabled={drillQueued}
+                  onClick={() => { if (isAuthenticated) queueDrillMutation.mutate({ drillName: debrief.nextDrill }); }}
+                  className={`inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-black transition ${drillQueued ? "bg-teal-600 text-white cursor-default" : isAuthenticated ? "bg-blue-600 text-white hover:bg-blue-500" : "cursor-not-allowed bg-slate-700 text-slate-400"}`}
+                  disabled={drillQueued || !isAuthenticated}
                 >
-                  {drillQueued ? <><CheckCircle2 className="h-4 w-4" /> Drill queued</> : <>Queue simulation <ChevronRight className="h-4 w-4" /></>}
+                  {drillQueued ? <><CheckCircle2 className="h-4 w-4" /> Drill queued</> : isAuthenticated ? <>Queue simulation <ChevronRight className="h-4 w-4" /></> : <>Sign in to queue</>}
                 </button>
               </div>
             </section>
@@ -468,7 +503,7 @@ export default function IncidentCommand() {
             <div className="divide-y divide-slate-800">
               {decisions.map((decision, index) => (
                 <div key={decision.stepId} className="grid gap-3 px-6 py-5 md:grid-cols-[60px_1fr_110px] md:items-center">
-                  <div className="text-xs font-black text-slate-300">{selectedScenario.steps[index]?.time}</div>
+                  <div className="text-xs font-black text-slate-300">{getScenarioStepAtIndex(selectedScenario, index, decisions.map(item => item.choiceId))?.time}</div>
                   <div><div className="text-sm font-bold text-white">{decision.choiceLabel}</div><div className="mt-1 text-xs leading-5 text-slate-300">{decision.consequence}</div></div>
                   <div className={`text-right text-sm font-black ${decision.points === 20 ? "text-teal-300" : decision.points >= 6 ? "text-amber-300" : "text-rose-300"}`}>{decision.points}/20</div>
                 </div>
@@ -542,7 +577,37 @@ export default function IncidentCommand() {
                 <div><div className="text-[10px] font-black uppercase tracking-[.18em] text-blue-300">Command decision {stepIndex + 1}</div><h2 className="mt-1 text-xl font-black">{step.title}</h2><p className="mt-2 text-sm leading-6 text-slate-300">{step.briefing}</p></div>
               </div>
               <div className="mb-4 rounded-xl border border-rose-400/20 bg-rose-400/[.06] px-4 py-3 text-xs font-black tracking-wide text-rose-200"><AlertTriangle className="mr-2 inline h-4 w-4" /> {step.alarm}</div>
-              <div className="space-y-3">
+              {step.judgment && !selectedChoice && !judgmentDegraded && (
+                <div className="rounded-2xl border border-violet-400/30 bg-violet-400/[.06] p-5">
+                  <div className="mb-2 flex items-center gap-2 text-xs font-black uppercase tracking-[.16em] text-violet-200"><Sparkles className="h-4 w-4" /> GPT-5.6 judgment turn</div>
+                  <p className="mb-4 text-sm leading-6 text-slate-200">{step.judgment.prompt}</p>
+                  <textarea
+                    value={judgmentResponse}
+                    onChange={event => setJudgmentResponse(event.target.value)}
+                    placeholder={step.judgment.placeholder}
+                    maxLength={1200}
+                    rows={5}
+                    className="w-full resize-y rounded-xl border border-slate-600 bg-slate-950/50 p-4 text-sm leading-6 text-white outline-none transition placeholder:text-slate-500 focus:border-violet-400"
+                  />
+                  <div className="mt-3 flex items-center justify-between gap-4">
+                    <span className="text-[10px] text-slate-400">{judgmentResponse.trim().length}/1200 characters</span>
+                    <button
+                      onClick={submitJudgment}
+                      disabled={judgmentResponse.trim().length < step.judgment.minCharacters || judgmentMutation.isPending}
+                      className="inline-flex items-center gap-2 rounded-xl bg-violet-500 px-5 py-3 text-sm font-black text-white transition hover:bg-violet-400 disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                      {judgmentMutation.isPending ? "Interpreting judgment..." : "Commit judgment"}<ArrowRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              )}
+              {judgmentDegraded && !selectedChoice && (
+                <div className="mb-3 rounded-xl border border-amber-400/30 bg-amber-400/[.08] p-4 text-sm leading-6 text-amber-100">
+                  <div className="font-black">AI judgment is temporarily unavailable</div>
+                  <p className="mt-1 text-xs text-amber-100/80">Choose the closest canonical action below to continue in explicit degraded mode.</p>
+                </div>
+              )}
+              <div className={`space-y-3 ${step.judgment && !judgmentDegraded && !selectedChoice ? "hidden" : ""}`}>
                 {step.choices.map((choice, index) => {
                   const chosen = selectedChoice?.id === choice.id;
                   const disabled = Boolean(selectedChoice && !chosen);
@@ -551,7 +616,19 @@ export default function IncidentCommand() {
                   </button>;
                 })}
               </div>
-              {selectedChoice && <div className={`mt-4 rounded-xl border p-4 ${selectedChoice.points === 20 ? "border-teal-400/30 bg-teal-400/[.06]" : selectedChoice.points > 0 ? "border-amber-400/30 bg-amber-400/[.06]" : "border-rose-400/30 bg-rose-400/[.06]"}`}><div className="flex items-start justify-between gap-4"><div><div className="text-[10px] font-black uppercase tracking-[.16em] text-slate-300">Plant consequence</div><p className="mt-2 text-sm leading-6 text-slate-200">{selectedChoice.consequence}</p></div><span className={`shrink-0 rounded-full px-3 py-1 text-xs font-black ${selectedChoice.points === 20 ? "bg-teal-400/15 text-teal-200" : selectedChoice.points > 0 ? "bg-amber-400/15 text-amber-200" : "bg-rose-400/15 text-rose-200"}`}>+{selectedChoice.points}</span></div><button onClick={continueScenario} disabled={debriefMutation.isPending} className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-slate-200 disabled:opacity-60">{debriefMutation.isPending ? "Generating GPT-5.6 review..." : stepIndex === selectedScenario.steps.length - 1 ? "Generate after-action review" : "Advance incident"}<ChevronRight className="h-4 w-4" /></button></div>}
+              {selectedChoice && <div className={`mt-4 rounded-xl border p-4 ${selectedChoice.points === 20 ? "border-teal-400/30 bg-teal-400/[.06]" : selectedChoice.points > 0 ? "border-amber-400/30 bg-amber-400/[.06]" : "border-rose-400/30 bg-rose-400/[.06]"}`}>
+                <div className="flex items-start justify-between gap-4"><div><div className="text-[10px] font-black uppercase tracking-[.16em] text-slate-300">Plant consequence</div><p className="mt-2 text-sm leading-6 text-slate-200">{selectedChoice.consequence}</p></div><span className={`shrink-0 rounded-full px-3 py-1 text-xs font-black ${selectedChoice.points === 20 ? "bg-teal-400/15 text-teal-200" : selectedChoice.points > 0 ? "bg-amber-400/15 text-amber-200" : "bg-rose-400/15 text-rose-200"}`}>+{selectedChoice.points}</span></div>
+                {decisions[decisions.length - 1]?.judgmentRubric && (
+                  <div className="mt-4 rounded-xl border border-violet-400/20 bg-violet-400/[.06] p-4">
+                    <div className="text-[10px] font-black uppercase tracking-[.16em] text-violet-200">GPT-5.6 interpretation</div>
+                    <div className="mt-3 grid grid-cols-2 gap-2 text-[10px]">
+                      {Object.entries(decisions[decisions.length - 1].judgmentRubric!).map(([key, met]) => <div key={key} className={`rounded-lg px-3 py-2 font-bold ${met ? "bg-teal-400/10 text-teal-200" : "bg-slate-900/50 text-slate-400"}`}>{met ? "✓" : "○"} {key.replace(/([A-Z])/g, " $1").toLowerCase()}</div>)}
+                    </div>
+                    <p className="mt-3 text-xs leading-5 text-slate-300">{decisions[decisions.length - 1].evaluationRationale}</p>
+                  </div>
+                )}
+                <button onClick={continueScenario} disabled={debriefMutation.isPending} className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:bg-slate-200 disabled:opacity-60">{debriefMutation.isPending ? "Generating and verifying review..." : stepIndex === selectedScenario.steps.length - 1 ? "Generate after-action review" : "Advance incident"}<ChevronRight className="h-4 w-4" /></button>
+              </div>}
             </section>
           </div>
 
@@ -571,7 +648,7 @@ export default function IncidentCommand() {
               <div className="mb-4 flex items-center justify-between"><h2 className="text-sm font-black">Incident timeline</h2><span className="text-[10px] text-slate-300">live record</span></div>
               <div className="space-y-4">
                 <div className="flex gap-3"><div className="flex flex-col items-center"><span className="mt-1 h-2.5 w-2.5 rounded-full bg-rose-400" /><span className="mt-1 h-full w-px bg-slate-800" /></div><div className="pb-2"><div className="text-[10px] font-black text-slate-300">{selectedScenario.steps[0]?.time}</div><div className="mt-1 text-xs font-bold text-slate-200">{selectedScenario.incidentLabel} initiated</div></div></div>
-                {decisions.map((decision, index) => <div key={decision.stepId} className="flex gap-3"><div className="flex flex-col items-center"><span className={`mt-1 h-2.5 w-2.5 rounded-full ${decision.points === 20 ? "bg-teal-400" : decision.points > 0 ? "bg-amber-400" : "bg-rose-400"}`} /><span className="mt-1 h-full w-px bg-slate-800" /></div><div className="pb-2"><div className="text-[10px] font-black text-slate-300">{selectedScenario.steps[index]?.time}</div><div className="mt-1 text-xs font-bold leading-5 text-slate-200">{decision.choiceLabel}</div><div className="mt-1 line-clamp-2 text-[10px] leading-4 text-slate-300">{decision.consequence}</div></div></div>)}
+                {decisions.map((decision, index) => <div key={decision.stepId} className="flex gap-3"><div className="flex flex-col items-center"><span className={`mt-1 h-2.5 w-2.5 rounded-full ${decision.points === 20 ? "bg-teal-400" : decision.points > 0 ? "bg-amber-400" : "bg-rose-400"}`} /><span className="mt-1 h-full w-px bg-slate-800" /></div><div className="pb-2"><div className="text-[10px] font-black text-slate-300">{getScenarioStepAtIndex(selectedScenario, index, decisions.map(item => item.choiceId))?.time}</div><div className="mt-1 text-xs font-bold leading-5 text-slate-200">{decision.choiceLabel}</div><div className="mt-1 line-clamp-2 text-[10px] leading-4 text-slate-300">{decision.consequence}</div></div></div>)}
                 {decisions.length < selectedScenario.steps.length && <div className="flex gap-3"><div className="mt-1 h-2.5 w-2.5 animate-pulse rounded-full bg-blue-400" /><div><div className="text-[10px] font-black text-blue-300">{step.time}</div><div className="mt-1 text-xs font-bold text-slate-300">Awaiting operator decision</div></div></div>}
               </div>
             </section>
