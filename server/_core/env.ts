@@ -7,6 +7,8 @@ export const ENV = {
   isProduction: process.env.NODE_ENV === "production",
   forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
   forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
+  openAiApiKey: process.env.OPENAI_API_KEY ?? "",
+  openAiModel: process.env.OPENAI_MODEL ?? "gpt-5.6",
   // SMTP email settings (optional — falls back to Ethereal test account if not set)
   smtpHost: process.env.SMTP_HOST ?? "",
   smtpPort: process.env.SMTP_PORT ?? "587",

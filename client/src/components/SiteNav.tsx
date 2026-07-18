@@ -107,6 +107,7 @@ export const NAV_LINKS = [
   { label: "🧮 Math Practice", href: "/math-practice" },
   { label: "🧪 Chem Calc",     href: "/chem-calc" },
   { label: "🔬 Lab",           href: "/lab" },
+  { label: "🚨 Echelon Command", href: "/command" },
   { label: "🗺️ Career Map",    href: "/career" },
   { label: "ℹ️ About",         href: "/about" },
   { label: "📊 Dashboard",      href: "/dashboard" },
@@ -214,6 +215,7 @@ const DRAWER_SECTIONS = [
       { label: "🚰 Distribution Guide", href: "/distribution-guide" },
       { label: "🔩 Collection Guide", href: "/collection-guide" },
       { label: "📐 Formulas", href: "/formulas" },
+      { label: "🚨 Echelon Command", href: "/command" },
       { label: "🗺️ Career Map", href: "/career" },
       { label: "📊 Dashboard", href: "/dashboard" },
       { label: "🔑 Sign In", href: "/account" },
@@ -282,6 +284,7 @@ function getContextualPrimary(currentPath: string): string[] {
   // Formula / tool pages
   if (currentPath.startsWith("/formulas")) return ["/formulas", "/quiz", "/career", "/pricing", "/about", "/account"];
   if (currentPath === "/instrumentation") return ["/instrumentation", "/quiz", "/formulas", "/career", "/pricing", "/account"];
+  if (currentPath === "/command") return ["/command", "/instrumentation", "/process", "/quiz", "/about", "/account"];
   if (currentPath === "/process") return ["/process", "/wastewater", "/quiz", "/formulas", "/career", "/account"];
   if (currentPath === "/wastewater") return ["/wastewater", "/process", "/quiz", "/formulas", "/career", "/account"];
   if (currentPath === "/career") return ["/career", "/quiz", "/formulas", "/pricing", "/about", "/account"];
@@ -295,7 +298,7 @@ function getContextualPrimary(currentPath: string): string[] {
 function ResourcesDropdown({ currentPath }: { currentPath: string }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const resourcePaths = ["/formulas", "/career", "/process", "/wastewater", "/about", "/contact"];
+  const resourcePaths = ["/formulas", "/career", "/process", "/wastewater", "/command", "/about", "/contact"];
   const isActive = resourcePaths.some(p => currentPath.startsWith(p));
 
   useEffect(() => {
@@ -311,6 +314,7 @@ function ResourcesDropdown({ currentPath }: { currentPath: string }) {
     { label: "📐 Formulas", href: "/formulas" },
     { label: "🗺️ Career Map", href: "/career" },
     { label: "🏭 Study Tools", href: "/process" },
+    { label: "🚨 Echelon Command", href: "/command" },
     { label: "ℹ️ Contact", href: "/about" },
   ];
 
@@ -664,6 +668,7 @@ export default function SiteNav({ currentPath, brandName = "Echelon Institute", 
             { label: "♻️ Wastewater", href: "/wastewater", accent: null },
             { label: "🚰 Distribution", href: "/distribution-guide", accent: null },
             { label: "🔩 Collection", href: "/collection-guide", accent: null },
+            { label: "🚨 Command", href: "/command", accent: "linear-gradient(135deg, #BE123C, #7C3AED)" },
           ].map(tile => (
             <Link key={tile.href} href={tile.href}>
               <div
