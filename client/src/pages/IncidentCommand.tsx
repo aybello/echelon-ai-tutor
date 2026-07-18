@@ -193,20 +193,24 @@ function Sparkline({ values, status }: { values: number[]; status: Telemetry["st
   );
 }
 
-function ScoreRing({ score, size = 132 }: { score: number; size?: number }) {
-  const radius = 52;
+function ScoreRing({ score, size = 180 }: { score: number; size?: number }) {
+  const radius = 72;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (score / 100) * circumference;
+  const colour = score >= 80 ? "#2dd4bf" : score >= 60 ? "#60a5fa" : "#f59e0b";
   return (
-    <div className="relative grid place-items-center" style={{ width: size, height: size }}>
-      <svg viewBox="0 0 120 120" className="absolute inset-0 -rotate-90">
-        <circle cx="60" cy="60" r={radius} fill="none" stroke="#334155" strokeWidth="8" />
-        <circle cx="60" cy="60" r={radius} fill="none" stroke="#2dd4bf" strokeWidth="8" strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={offset} className="transition-all duration-700" />
-      </svg>
-      <div className="text-center">
-        <div className="text-3xl font-black text-white">{score}</div>
-        <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-300">Command score</div>
+    <div className="flex flex-col items-center gap-3">
+      <div className="relative grid place-items-center" style={{ width: size, height: size }}>
+        <svg viewBox="0 0 160 160" className="absolute inset-0 -rotate-90">
+          <circle cx="80" cy="80" r={radius} fill="none" stroke="#1e293b" strokeWidth="10" />
+          <circle cx="80" cy="80" r={radius} fill="none" stroke={colour} strokeWidth="10" strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={offset} className="transition-all duration-700" />
+        </svg>
+        <div className="text-center">
+          <div className="text-5xl font-black text-white leading-none">{score}</div>
+          <div className="mt-1 text-xs font-bold text-slate-400">/ 100</div>
+        </div>
       </div>
+      <div className="text-xs font-black uppercase tracking-[0.2em] text-slate-300">Command Score</div>
     </div>
   );
 }
