@@ -23,6 +23,7 @@ import SiteNav from "@/components/SiteNav";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useGuestSession } from "@/hooks/useGuestSession";
+import { RadialGauge, AlarmPanel, ProcessFlowDiagram, TelemetryTicker, PlantStateBars, ScadaHeader } from "@/components/ScadaPanel";
 import {
   ALL_SCENARIOS,
   getScenarioStepAtIndex,
@@ -528,47 +529,57 @@ export default function IncidentCommand() {
   }
 
   // ─── LIVE ────────────────────────────────────────────────────────────────────
+  const scadaAlarms = (() => {
+    const alarms: { id: string; severity: "critical" | "warning" | "info"; message: string; time: string }[] = [];
+    step.telemetry.forEach(t => {
+      if (t.status === "critical") alarms.push({ id: `alarm-${t.label}`, severity: "critical", message: `${t.label} at ${t.value} ${t.unit} — exceeds limit`, time: step.time });
+      else if (t.status === "warning") alarms.push({ id: `warn-${t.label}`, severity: "warning", message: `${t.label} trending high (${t.value} ${t.unit})`, time: step.time });
+    });
+    if (alarms.length === 0) alarms.push({ id: "info-nominal", severity: "info", message: "All parameters within operating envelope", time: step.time });
+    return alarms;
+  })();
+
+  // Pick top 4 telemetry items for radial gauges
+  const gaugeItems = step.telemetry.slice(0, 4);
+
   return (
-    <div className="min-h-screen text-white" style={{ fontFamily: "'Sora', sans-serif", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)" }}>
+    <div className="min-h-screen text-white" style={{ fontFamily: "'Sora', sans-serif", background: "#060B14" }}>
       <SiteNav currentPath={location} brandName="Echelon Command" />
-      <main className="mx-auto max-w-[1500px] px-4 py-5">
-        <header className="mb-4 flex flex-col justify-between gap-4 rounded-2xl border border-slate-700 bg-slate-800 px-5 py-4 lg:flex-row lg:items-center">
-          <div className="flex items-center gap-4">
-            <div className="grid h-11 w-11 place-items-center rounded-xl bg-rose-500/15 text-rose-300"><AlertTriangle className="h-5 w-5" /></div>
-            <div><div className="flex items-center gap-2"><h1 className="font-black">{selectedScenario.facilityName}</h1><span className="rounded-full bg-rose-500/15 px-2 py-1 text-[9px] font-black uppercase tracking-wider text-rose-300">Incident active</span></div><p className="mt-1 text-xs text-slate-300">{selectedScenario.incidentLabel}</p></div>
-          </div>
-          <div className="flex flex-wrap items-center gap-4 text-xs">
-            <div><span className="text-slate-300">Scenario time</span><div className="mt-1 font-mono font-black text-white tabular-nums">{clockDisplay}</div></div>
-            <div><span className="text-slate-300">Decision</span><div className="mt-1 font-black text-white">{stepIndex + 1} of {selectedScenario.steps.length}</div></div>
-            <div className="min-w-28"><span className="text-slate-300">Command score</span><div className="mt-1 flex items-center gap-2"><div className="h-1.5 flex-1 overflow-hidden rounded-full bg-slate-800"><div className="h-full rounded-full bg-teal-400 transition-all" style={{ width: `${commandScore}%` }} /></div><span className="font-black text-teal-300">{commandScore}</span></div></div>
-          </div>
-        </header>
+      {/* Scanline overlay for CRT effect */}
+      <style>{`
+        .scada-scanline { background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,200,0.015) 2px, rgba(0,255,200,0.015) 4px); pointer-events: none; position: fixed; inset: 0; z-index: 1; }
+        .scada-grid { background-image: linear-gradient(rgba(45,212,191,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(45,212,191,.04) 1px, transparent 1px); background-size: 24px 24px; }
+        @keyframes scadaBlink { 0%,100%{opacity:1} 50%{opacity:.4} }
+      `}</style>
+      <div className="scada-scanline" />
+      <main className="scada-grid relative mx-auto max-w-[1600px] px-3 py-4" style={{ zIndex: 2 }}>
+        <ScadaHeader
+          facilityName={selectedScenario.facilityName}
+          incidentLabel={selectedScenario.incidentLabel}
+          clockDisplay={clockDisplay}
+          stepIndex={stepIndex}
+          totalSteps={selectedScenario.steps.length}
+          commandScore={commandScore}
+          onBack={() => setMode("intro")}
+        />
 
-        <div className="grid gap-4 lg:grid-cols-[1.2fr_.8fr]">
-          <div className="space-y-4">
-            <section className="rounded-2xl border border-slate-700 bg-slate-800 p-5">
-              <div className="mb-5 flex items-center justify-between"><div><div className="text-[10px] font-black uppercase tracking-[.18em] text-slate-300">Live plant topology</div><div className="mt-1 text-sm font-bold">Treatment barriers</div></div><div className="flex items-center gap-2 text-[10px] text-teal-300"><span className="h-2 w-2 animate-pulse rounded-full bg-teal-300" /> telemetry streaming</div></div>
-              <div className="grid grid-cols-5 items-start gap-2">
-                {selectedScenario.processNodes.map((node, index) => {
-                  const active = index === step.focusNode;
-                  const completed = index < step.focusNode;
-                  return <div key={node} className="relative flex flex-col items-center text-center">
-                    {index < 4 && <div className={`absolute left-[60%] top-6 h-[2px] w-[80%] ${completed ? "bg-teal-400" : "bg-slate-700"}`} />}
-                    <div className={`relative z-10 grid h-12 w-12 place-items-center rounded-full border-2 transition-all ${active ? "border-rose-400 bg-rose-400/20 text-rose-200 shadow-[0_0_25px_rgba(251,113,133,.25)]" : completed ? "border-teal-400 bg-teal-400/15 text-teal-300" : "border-slate-700 bg-slate-800 text-slate-300"}`}>{active ? <Activity className="h-5 w-5" /> : index === 0 ? <Waves className="h-5 w-5" /> : index === 4 ? <Droplets className="h-5 w-5" /> : <Gauge className="h-5 w-5" />}</div>
-                    <span className={`mt-3 text-[10px] font-bold ${active ? "text-white" : "text-slate-300"}`}>{node}</span>
-                  </div>;
-                })}
-              </div>
-            </section>
+        <div className="grid gap-3 lg:grid-cols-[1fr_320px]">
+          {/* LEFT COLUMN — main operational view */}
+          <div className="space-y-3">
+            {/* Process flow diagram */}
+            <ProcessFlowDiagram nodes={selectedScenario.processNodes} focusNode={step.focusNode} decisions={decisions} />
 
-            <section className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-              {step.telemetry.map(item => (
-                <div key={item.label} className={`rounded-2xl border bg-slate-800 p-4 ${item.status === "critical" ? "border-rose-400/40" : item.status === "warning" ? "border-amber-400/30" : "border-slate-700"}`}>
-                  <div className="flex items-start justify-between gap-2"><div className="text-[10px] font-bold text-slate-300">{item.label}</div><span className={`mt-1 h-2 w-2 rounded-full ${item.status === "critical" ? "animate-pulse bg-rose-400" : item.status === "warning" ? "bg-amber-400" : "bg-teal-400"}`} /></div>
-                  <div className="mt-3 flex items-end justify-between gap-2"><div><span className={`text-2xl font-black ${item.status === "critical" ? "text-rose-300" : item.status === "warning" ? "text-amber-300" : "text-white"}`}>{item.value}</span><span className="ml-1 text-[10px] text-slate-300">{item.unit}</span></div><Sparkline values={item.trend} status={item.status} /></div>
+            {/* Radial gauges row */}
+            <div className="grid grid-cols-2 gap-2 lg:grid-cols-4">
+              {gaugeItems.map(item => (
+                <div key={item.label} className={`flex justify-center rounded-xl border p-3 ${item.status === "critical" ? "border-rose-500/40 bg-rose-500/[.04]" : item.status === "warning" ? "border-amber-400/30 bg-amber-400/[.03]" : "border-slate-700 bg-[#0B1120]"}`}>
+                  <RadialGauge value={parseFloat(String(item.value)) || 0} max={(parseFloat(String(item.value)) || 50) * 2} label={item.label} unit={item.unit} status={item.status} size={110} />
                 </div>
               ))}
-            </section>
+            </div>
+
+            {/* Telemetry ticker (all items) */}
+            <TelemetryTicker items={step.telemetry} />
 
             <section className="rounded-2xl border border-slate-700 bg-slate-800 p-5">
               <div className="mb-4 flex items-start gap-4">
@@ -631,34 +642,51 @@ export default function IncidentCommand() {
             </section>
           </div>
 
-          <aside className="space-y-4">
-            <section className="rounded-2xl border border-slate-700 bg-slate-800 p-5">
-              <div className="mb-4 flex items-center justify-between"><h2 className="text-sm font-black">Live plant state</h2><span className="text-[10px] text-slate-300">consequence model</span></div>
-              <div className="space-y-4">
-                {plantState.map(item => {
-                  const colour = item.value >= 75 ? "bg-teal-400" : item.value >= 50 ? "bg-amber-400" : "bg-rose-400";
-                  const textColour = item.value >= 75 ? "text-teal-300" : item.value >= 50 ? "text-amber-300" : "text-rose-300";
-                  return <div key={item.label}><div className="mb-2 flex items-center justify-between text-[11px]"><span className="font-bold text-slate-300">{item.label}</span><span className={`font-black ${textColour}`}>{item.value}%</span></div><div className="h-1.5 overflow-hidden rounded-full bg-slate-800"><div className={`h-full rounded-full transition-all duration-500 ${colour}`} style={{ width: `${item.value}%` }} /></div></div>;
-                })}
+          {/* RIGHT COLUMN — operational panels */}
+          <aside className="space-y-3">
+            {/* Alarm register */}
+            <AlarmPanel alarms={scadaAlarms} />
+
+            {/* Plant state / barrier integrity */}
+            <PlantStateBars items={plantState} />
+
+            {/* Incident timeline */}
+            <div className="rounded-xl border border-slate-700 bg-[#0B1120] p-3">
+              <div className="mb-2 flex items-center justify-between">
+                <span className="text-[9px] font-black uppercase tracking-[.16em] text-slate-400">Incident timeline</span>
+                <span className="text-[8px] font-mono text-slate-500">live record</span>
               </div>
-              <p className="mt-4 text-[10px] leading-5 text-slate-300">Every decision changes treatment-barrier protection, available operating capacity or the defensibility of the incident record.</p>
-            </section>
-            <section className="rounded-2xl border border-slate-700 bg-slate-800 p-5">
-              <div className="mb-4 flex items-center justify-between"><h2 className="text-sm font-black">Incident timeline</h2><span className="text-[10px] text-slate-300">live record</span></div>
-              <div className="space-y-4">
-                <div className="flex gap-3"><div className="flex flex-col items-center"><span className="mt-1 h-2.5 w-2.5 rounded-full bg-rose-400" /><span className="mt-1 h-full w-px bg-slate-800" /></div><div className="pb-2"><div className="text-[10px] font-black text-slate-300">{selectedScenario.steps[0]?.time}</div><div className="mt-1 text-xs font-bold text-slate-200">{selectedScenario.incidentLabel} initiated</div></div></div>
-                {decisions.map((decision, index) => <div key={decision.stepId} className="flex gap-3"><div className="flex flex-col items-center"><span className={`mt-1 h-2.5 w-2.5 rounded-full ${decision.points === 20 ? "bg-teal-400" : decision.points > 0 ? "bg-amber-400" : "bg-rose-400"}`} /><span className="mt-1 h-full w-px bg-slate-800" /></div><div className="pb-2"><div className="text-[10px] font-black text-slate-300">{getScenarioStepAtIndex(selectedScenario, index, decisions.map(item => item.choiceId))?.time}</div><div className="mt-1 text-xs font-bold leading-5 text-slate-200">{decision.choiceLabel}</div><div className="mt-1 line-clamp-2 text-[10px] leading-4 text-slate-300">{decision.consequence}</div></div></div>)}
-                {decisions.length < selectedScenario.steps.length && <div className="flex gap-3"><div className="mt-1 h-2.5 w-2.5 animate-pulse rounded-full bg-blue-400" /><div><div className="text-[10px] font-black text-blue-300">{step.time}</div><div className="mt-1 text-xs font-bold text-slate-300">Awaiting operator decision</div></div></div>}
+              <div className="max-h-[200px] space-y-3 overflow-y-auto scrollbar-thin">
+                <div className="flex gap-2">
+                  <div className="flex flex-col items-center"><span className="mt-1 h-2 w-2 rounded-full bg-rose-400" /><span className="mt-1 h-full w-px bg-slate-800" /></div>
+                  <div className="pb-1.5"><div className="text-[8px] font-mono text-slate-500">{selectedScenario.steps[0]?.time}</div><div className="mt-0.5 text-[10px] font-bold text-slate-300">{selectedScenario.incidentLabel} initiated</div></div>
+                </div>
+                {decisions.map((decision, index) => (
+                  <div key={decision.stepId} className="flex gap-2">
+                    <div className="flex flex-col items-center"><span className={`mt-1 h-2 w-2 rounded-full ${decision.points === 20 ? "bg-teal-400" : decision.points > 0 ? "bg-amber-400" : "bg-rose-400"}`} /><span className="mt-1 h-full w-px bg-slate-800" /></div>
+                    <div className="pb-1.5"><div className="text-[8px] font-mono text-slate-500">{getScenarioStepAtIndex(selectedScenario, index, decisions.map(d => d.choiceId))?.time}</div><div className="mt-0.5 text-[10px] font-bold leading-4 text-slate-200">{decision.choiceLabel}</div></div>
+                  </div>
+                ))}
+                {decisions.length < selectedScenario.steps.length && (
+                  <div className="flex gap-2">
+                    <div className="mt-1 h-2 w-2 animate-pulse rounded-full bg-blue-400" />
+                    <div><div className="text-[8px] font-mono text-blue-300">{step.time}</div><div className="mt-0.5 text-[10px] font-bold text-slate-400">Awaiting operator decision</div></div>
+                  </div>
+                )}
               </div>
-            </section>
-            <section className="rounded-2xl border border-blue-400/20 bg-blue-400/[.05] p-5">
-              <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[.16em] text-blue-300"><Sparkles className="h-4 w-4" /> Adaptive review</div>
-              <p className="mt-3 text-xs leading-6 text-slate-300">GPT-5.6 will evaluate the complete chain of decisions, including what you prioritized, what you verified and how your choices changed the plant.</p>
-            </section>
-            <section className="rounded-2xl border border-slate-700 bg-slate-800 p-5">
-              <div className="flex items-center gap-2 text-xs font-black text-slate-300"><ShieldCheck className="h-4 w-4 text-teal-300" /> Training boundary</div>
-              <p className="mt-2 text-[11px] leading-5 text-slate-300">This simulator teaches decision structure. Real operators must follow their facility emergency plan, approved procedures and governing requirements.</p>
-            </section>
+            </div>
+
+            {/* GPT-5.6 adaptive review info */}
+            <div className="rounded-xl border border-blue-400/20 bg-blue-400/[.04] p-3">
+              <div className="flex items-center gap-2 text-[9px] font-black uppercase tracking-[.16em] text-blue-300"><Sparkles className="h-3 w-3" /> GPT-5.6 review</div>
+              <p className="mt-2 text-[10px] leading-5 text-slate-400">Adaptive after-action review will evaluate your full decision chain upon completion.</p>
+            </div>
+
+            {/* Training boundary */}
+            <div className="rounded-xl border border-slate-700 bg-[#0B1120] p-3">
+              <div className="flex items-center gap-2 text-[9px] font-black text-slate-400"><ShieldCheck className="h-3 w-3 text-teal-400" /> Training boundary</div>
+              <p className="mt-1.5 text-[9px] leading-4 text-slate-500">Simulator only. Follow your facility ERP and governing requirements.</p>
+            </div>
           </aside>
         </div>
       </main>

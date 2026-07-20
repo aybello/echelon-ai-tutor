@@ -1127,3 +1127,4 @@
 - [x] Full guest mode — guestId in all Command procedures, leaderboard shows guest entries, localStorage persistence
 - [x] Add prominent Echelon Command CTA to the homepage
 - [x] Ensure Command is easily accessible from all key navigation points (Landing nav, hero CTA, Study Tools grid, MobileBottomNav)
+- [x] Rebuild Command live-mode UI into realistic SCADA/HMI control room (animated gauges, live telemetry, alarm panel, process flow, dark industrial theme)
