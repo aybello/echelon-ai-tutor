@@ -1125,3 +1125,5 @@
 - [x] Fix "Generate Action Review" button — client used base step array instead of branch-aware getScenarioStepAtIndex, causing stepId mismatch on branching scenarios
 - [x] Merge codex/command-ai-director branch — server-side scoring, branching scenarios, GPT-5.6 judgment evaluator, grounding verifier
 - [x] Full guest mode — guestId in all Command procedures, leaderboard shows guest entries, localStorage persistence
+- [x] Add prominent Echelon Command CTA to the homepage
+- [x] Ensure Command is easily accessible from all key navigation points (Landing nav, hero CTA, Study Tools grid, MobileBottomNav)

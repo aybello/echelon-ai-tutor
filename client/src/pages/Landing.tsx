@@ -1096,6 +1096,13 @@ const FEATURES = [
     color: "#B45309",
     href: "/quiz",
   },
+  {
+    icon: "🚨",
+    title: "Echelon Command",
+    description: "Step into a live control room. Respond to treatment-barrier failures, make real-time decisions, and defend every call in a GPT-5.6 after-action review.",
+    color: "#BE123C",
+    href: "/command",
+  },
 ];
 
 const STATS = [
@@ -1381,6 +1388,7 @@ export default function Landing() {
   const NAV_LINKS = [
     { label: "Courses", href: "#courses" },
     { label: "WPI 🌊", href: "/wpi" },
+    { label: "🚨 Command", href: "/command" },
     { label: "Pricing", href: "/pricing" },
     { label: "Blog", href: "/blog" },
     { label: "Jobs", href: "/jobs" },
@@ -1970,6 +1978,18 @@ export default function Landing() {
                 width: "100%",
               }}>
                 View Pricing
+              </button>
+            </Link>
+            <Link href="/command" style={{ width: "100%" }}>
+              <button style={{
+                padding: "14px 32px", borderRadius: 12,
+                background: "linear-gradient(135deg, #BE123C, #7C3AED)",
+                color: "#fff", border: "none",
+                fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
+                boxShadow: "0 4px 24px rgba(190,18,60,0.4)",
+                width: "100%",
+              }}>
+                🚨 Try Echelon Command →
               </button>
             </Link>
           </motion.div>
