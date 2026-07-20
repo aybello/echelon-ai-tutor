@@ -30,8 +30,12 @@ export function RadialGauge({
 }) {
   const [displayValue, setDisplayValue] = useState(0);
   const animRef = useRef<number>(0);
+  const jitterRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const targetRef = useRef(value);
 
+  // Animate to new target value
   useEffect(() => {
+    targetRef.current = value;
     const start = displayValue;
     const diff = value - start;
     const duration = 800;
@@ -46,6 +50,16 @@ export function RadialGauge({
     };
     animRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animRef.current);
+  }, [value]);
+
+  // Continuous needle jitter — small random fluctuation around the target value
+  useEffect(() => {
+    jitterRef.current = setInterval(() => {
+      const jitterRange = Math.max(0.3, targetRef.current * 0.015); // ±1.5% of value
+      const jitter = (Math.random() - 0.5) * 2 * jitterRange;
+      setDisplayValue(Math.max(0, targetRef.current + jitter));
+    }, 600 + Math.random() * 400); // every 600-1000ms
+    return () => { if (jitterRef.current) clearInterval(jitterRef.current); };
   }, [value]);
 
   const radius = (size - 20) / 2;
