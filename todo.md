@@ -1128,3 +1128,4 @@
 - [x] Add prominent Echelon Command CTA to the homepage
 - [x] Ensure Command is easily accessible from all key navigation points (Landing nav, hero CTA, Study Tools grid, MobileBottomNav)
 - [x] Rebuild Command live-mode UI into realistic SCADA/HMI control room (animated gauges, live telemetry, alarm panel, process flow, dark industrial theme)
+- [x] Simplify all 4 Command scenario scripts to Class 1 operator student reading level (clear, direct language, short sentences, plain verbs)

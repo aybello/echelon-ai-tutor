@@ -203,7 +203,7 @@ function HistoryPanel({ authenticated, guestId }: { authenticated: boolean; gues
 export default function IncidentCommand() {
   usePageMeta({
     title: "Echelon Command | Adaptive Water Operator Incident Simulator",
-    description: "Practice critical drinking-water incident decisions in an adaptive control-room simulation.",
+    description: "Practice real water treatment incident decisions in an interactive control-room simulation.",
     noindex: true,
   });
 
@@ -249,7 +249,7 @@ export default function IncidentCommand() {
     const recoveryPenalty = decisions[decisions.length - 1] ? (20 - decisions[decisions.length - 1].points) * 0.7 : 0;
     const recordPenalty = decisions[decisions.length - 2] ? (20 - decisions[decisions.length - 2].points) * 3.4 : 0;
     return [
-      { label: "Barrier integrity", value: Math.max(12, Math.round(100 - missedControl * 0.9)) },
+      { label: "Safety barriers", value: Math.max(12, Math.round(100 - missedControl * 0.9)) },
       { label: "Operating reserve", value: Math.max(15, Math.round(88 - filtrationPenalty - recoveryPenalty)) },
       { label: "Record integrity", value: Math.max(8, Math.round(100 - recordPenalty)) },
     ];
@@ -392,7 +392,7 @@ export default function IncidentCommand() {
                   You cannot learn incident command from a question bank.
                 </h1>
                 <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-                  Step into a live control room. Read the plant, contain a treatment-barrier failure and defend every decision in a GPT-5.6 after-action review.
+                  Step into a live control room. Read the instruments, respond to a real treatment problem, and defend every decision in a GPT-5.6 after-action review.
                 </p>
                 {queuedDrillData && (
                   <div className="mt-7 inline-flex max-w-xl items-start gap-3 rounded-xl border border-teal-400/30 bg-teal-400/[.08] px-5 py-4">
@@ -535,7 +535,7 @@ export default function IncidentCommand() {
       if (t.status === "critical") alarms.push({ id: `alarm-${t.label}`, severity: "critical", message: `${t.label} at ${t.value} ${t.unit} — exceeds limit`, time: step.time });
       else if (t.status === "warning") alarms.push({ id: `warn-${t.label}`, severity: "warning", message: `${t.label} trending high (${t.value} ${t.unit})`, time: step.time });
     });
-    if (alarms.length === 0) alarms.push({ id: "info-nominal", severity: "info", message: "All parameters within operating envelope", time: step.time });
+    if (alarms.length === 0) alarms.push({ id: "info-nominal", severity: "info", message: "All readings normal", time: step.time });
     return alarms;
   })();
 
@@ -614,7 +614,7 @@ export default function IncidentCommand() {
               {judgmentDegraded && !selectedChoice && (
                 <div className="mb-3 rounded-xl border border-amber-400/30 bg-amber-400/[.08] p-4 text-sm leading-6 text-amber-100">
                   <div className="font-black">AI judgment is temporarily unavailable</div>
-                  <p className="mt-1 text-xs text-amber-100/80">Choose the closest canonical action below to continue in explicit degraded mode.</p>
+                  <p className="mt-1 text-xs text-amber-100/80">Pick the closest action below to continue.</p>
                 </div>
               )}
               <div className={`space-y-3 ${step.judgment && !judgmentDegraded && !selectedChoice ? "hidden" : ""}`}>
