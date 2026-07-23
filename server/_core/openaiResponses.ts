@@ -41,7 +41,7 @@ function extractOutputText(response: OpenAIResponse): string {
 /**
  * Small Responses API wrapper used by the Build Week incident simulator.
  * Kept separate from the legacy Forge chat-completions client so the feature
- * has an explicit, auditable GPT-5.6 integration.
+ * has an explicit, auditable AI integration.
  */
 export async function invokeGPT56(input: string, options: GPT56Options = {}): Promise<string> {
   if (!ENV.openAiApiKey) {

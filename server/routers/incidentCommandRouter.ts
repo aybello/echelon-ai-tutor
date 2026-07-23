@@ -350,7 +350,7 @@ export const incidentCommandRouter = router({
       .map((row, index) => ({ rank: index + 1, ...row }));
   }),
 
-  /** GPT-5.6 evaluates a written operator judgment and maps it to a canonical branch */
+  /** AI evaluates a written operator judgment and maps it to a canonical branch */
   evaluateJudgment: publicProcedure
     .input(z.object({
       scenarioId: z.string().min(1).max(60),
@@ -415,12 +415,12 @@ export const incidentCommandRouter = router({
         const choice = step.choices.find(candidate => candidate.id === ruleOwnedBranch) as Choice;
         return { mode: "ai" as const, choiceId: choice.id, label: choice.label, consequence: choice.consequence, points: choice.points, rationale: parsed.rationale, rubric };
       } catch (error) {
-        console.warn("[Echelon Command] GPT-5.6 judgment unavailable; offering explicit degraded mode.", error);
-        return { mode: "degraded" as const, reason: "GPT-5.6 is temporarily unavailable. Choose the closest canonical action to continue in degraded mode." };
+        console.warn("[Echelon Command] AI judgment unavailable; offering explicit degraded mode.", error);
+        return { mode: "degraded" as const, reason: "AI judgment is temporarily unavailable. Choose the closest canonical action to continue in degraded mode." };
       }
     }),
 
-  /** Full debrief — server-side scoring + GPT-5.6 after-action review with grounding verifier */
+  /** Full debrief — server-side scoring + AI after-action review with grounding verifier */
   debrief: publicProcedure
     .input(z.object({
       scenarioId: z.string().min(1).max(60),
@@ -475,7 +475,7 @@ export const incidentCommandRouter = router({
         if (!verification.grounded) throw new Error("The generated review remained ungrounded after correction.");
         return {
           ...review,
-          generatedBy: "gpt-5.6" as const,
+          generatedBy: "ai" as const,
           verification: { verified: true as const, label: "Verified against incident record", attempts },
           commandScore: evaluation.commandScore,
           optimalCalls: evaluation.optimalCalls,
@@ -484,7 +484,7 @@ export const incidentCommandRouter = router({
           runSaved,
         };
       } catch (error) {
-        console.warn("[Echelon Command] Grounded GPT-5.6 debrief unavailable; using deterministic fallback.", error);
+        console.warn("[Echelon Command] Grounded AI debrief unavailable; using deterministic fallback.", error);
         return { ...fallbackDebrief(evaluation), runSaved };
       }
     }),

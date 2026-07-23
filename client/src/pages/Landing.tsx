@@ -1099,7 +1099,7 @@ const FEATURES = [
   {
     icon: "🚨",
     title: "Echelon Command",
-    description: "Step into a live control room. Respond to treatment-barrier failures, make real-time decisions, and defend every call in a GPT-5.6 after-action review.",
+    description: "Step into a live control room. Respond to treatment-barrier failures, make real-time decisions, and defend every call in an AI-powered after-action review.",
     color: "#BE123C",
     href: "/command",
   },
