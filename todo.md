@@ -1147,3 +1147,12 @@
 - [x] Add feedback modal after debrief (1-5 stars + optional text)
 - [x] Add email capture CTA on debrief ("Get notified when new scenarios drop")
 - [ ] Weekly scenario rotation system
+
+## Command Centre — UI/UX Redesign
+- [x] Switch Command Centre from dark mode to light mode (clean, professional)
+- [x] Redesign intro/scenario selector page in light mode
+- [x] Redesign live simulation screen in light mode
+- [x] Redesign debrief screen in light mode
+- [x] Redesign ScadaHeader and ScadaPanel components for light mode
+- [x] Rewrite scenario answer choices to be more nuanced (no obvious correct answer)
+- [x] Make all options sound plausible with subtle procedural differences

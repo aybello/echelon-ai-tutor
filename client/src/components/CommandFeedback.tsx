@@ -26,7 +26,7 @@ export function FeedbackPanel({ scenarioId, guestId }: FeedbackPanelProps) {
   if (dismissed) return null;
   if (submitted) {
     return (
-      <div className="flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-950/30 px-4 py-3 text-sm text-emerald-300">
+      <div className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
         <CheckCircle2 className="h-4 w-4 shrink-0" />
         <span>Thanks for the feedback!</span>
       </div>
@@ -34,12 +34,12 @@ export function FeedbackPanel({ scenarioId, guestId }: FeedbackPanelProps) {
   }
 
   return (
-    <div className="rounded-lg border border-slate-700 bg-slate-900/80 p-4 space-y-3">
+    <div className="rounded-lg border border-slate-200 bg-white p-4 space-y-3 shadow-sm">
       <div className="flex items-center justify-between">
-        <p className="text-sm font-medium text-slate-300">How was this scenario?</p>
+        <p className="text-sm font-medium text-slate-700">How was this scenario?</p>
         <button
           onClick={() => setDismissed(true)}
-          className="text-slate-500 hover:text-slate-300 transition-colors"
+          className="text-slate-400 hover:text-slate-600 transition-colors"
         >
           <X className="h-4 w-4" />
         </button>
@@ -59,7 +59,7 @@ export function FeedbackPanel({ scenarioId, guestId }: FeedbackPanelProps) {
               className={`h-7 w-7 transition-colors ${
                 star <= (hovered || rating)
                   ? "fill-amber-400 text-amber-400"
-                  : "text-slate-600"
+                  : "text-slate-300"
               }`}
             />
           </button>
@@ -73,7 +73,7 @@ export function FeedbackPanel({ scenarioId, guestId }: FeedbackPanelProps) {
             placeholder="Any thoughts? (optional)"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            className="bg-slate-800 border-slate-700 text-slate-200 placeholder:text-slate-500 resize-none h-16 text-sm"
+            className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 resize-none h-16 text-sm"
           />
           <Button
             size="sm"
@@ -86,7 +86,7 @@ export function FeedbackPanel({ scenarioId, guestId }: FeedbackPanelProps) {
               })
             }
             disabled={submitMutation.isPending}
-            className="bg-emerald-600 hover:bg-emerald-500 text-white"
+            className="bg-blue-600 hover:bg-blue-500 text-white"
           >
             {submitMutation.isPending ? "Sending..." : "Submit"}
           </Button>
@@ -111,7 +111,6 @@ export function EmailCapturePanel({ guestId }: EmailCapturePanelProps) {
     onSuccess: () => setSubmitted(true),
   });
 
-  // Check localStorage if user already subscribed
   const alreadySubscribed = typeof window !== "undefined" && localStorage.getItem("echelon_command_subscribed") === "true";
 
   if (dismissed || alreadySubscribed) return null;
@@ -120,7 +119,7 @@ export function EmailCapturePanel({ guestId }: EmailCapturePanelProps) {
       localStorage.setItem("echelon_command_subscribed", "true");
     }
     return (
-      <div className="flex items-center gap-2 rounded-lg border border-blue-500/30 bg-blue-950/30 px-4 py-3 text-sm text-blue-300">
+      <div className="flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-4 py-3 text-sm text-blue-700">
         <Mail className="h-4 w-4 shrink-0" />
         <span>You're on the list. We'll let you know when new scenarios drop.</span>
       </div>
@@ -128,15 +127,15 @@ export function EmailCapturePanel({ guestId }: EmailCapturePanelProps) {
   }
 
   return (
-    <div className="rounded-lg border border-slate-700 bg-slate-900/80 p-4 space-y-3">
+    <div className="rounded-lg border border-slate-200 bg-white p-4 space-y-3 shadow-sm">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-medium text-slate-300">New scenarios coming soon</p>
+          <p className="text-sm font-medium text-slate-700">New scenarios coming soon</p>
           <p className="text-xs text-slate-500">Get notified when we add more drills.</p>
         </div>
         <button
           onClick={() => setDismissed(true)}
-          className="text-slate-500 hover:text-slate-300 transition-colors"
+          className="text-slate-400 hover:text-slate-600 transition-colors"
         >
           <X className="h-4 w-4" />
         </button>
@@ -156,7 +155,7 @@ export function EmailCapturePanel({ guestId }: EmailCapturePanelProps) {
           placeholder="your@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="bg-slate-800 border-slate-700 text-slate-200 placeholder:text-slate-500 text-sm flex-1"
+          className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 text-sm flex-1"
           required
         />
         <Button
