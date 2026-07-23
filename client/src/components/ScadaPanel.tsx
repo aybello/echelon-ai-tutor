@@ -384,6 +384,8 @@ export function ScadaHeader({
   stepIndex,
   totalSteps,
   commandScore,
+  countdown,
+  countdownMax,
   onBack,
 }: {
   facilityName: string;
@@ -392,6 +394,8 @@ export function ScadaHeader({
   stepIndex: number;
   totalSteps: number;
   commandScore: number;
+  countdown?: number;
+  countdownMax?: number;
   onBack: () => void;
 }) {
   return (
@@ -418,6 +422,18 @@ export function ScadaHeader({
         </div>
 
         <div className="flex items-center gap-5 text-[10px]">
+          {/* Countdown */}
+          {countdown !== undefined && countdownMax !== undefined && (
+            <div className="text-center">
+              <div className="text-[8px] font-bold uppercase tracking-wider text-slate-500">DEADLINE</div>
+              <div className={`mt-0.5 font-mono text-base font-black tabular-nums ${countdown <= 15 ? "text-rose-400" : countdown <= 30 ? "text-amber-300" : "text-white"}`} style={countdown <= 15 ? { animation: "scadaBlink 1s ease-in-out infinite" } : undefined}>
+                {Math.floor(countdown / 60)}:{(countdown % 60).toString().padStart(2, "0")}
+              </div>
+              <div className="mt-0.5 h-1 w-16 overflow-hidden rounded-full bg-slate-800">
+                <div className={`h-full rounded-full transition-all duration-1000 ${countdown <= 15 ? "bg-rose-500" : countdown <= 30 ? "bg-amber-400" : "bg-teal-400"}`} style={{ width: `${(countdown / countdownMax) * 100}%` }} />
+              </div>
+            </div>
+          )}
           {/* Clock */}
           <div className="text-center">
             <div className="text-[8px] font-bold uppercase tracking-wider text-slate-500">ELAPSED</div>

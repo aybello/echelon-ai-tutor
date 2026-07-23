@@ -1132,10 +1132,10 @@
 
 ## Command Centre — Full Product Build-Out
 - [x] Switch all Command OpenAI/GPT calls to built-in Manus LLM
-- [ ] Expand scenario library to 10-12 scenarios (7-10 steps each, branching paths)
-- [ ] Add countdown timer / time pressure per decision step
-- [ ] Add "INCIDENT DETECTED" intro animation before scenario starts
-- [ ] Add score breakdown on debrief (green/red per decision, points gained/lost)
+- [x] Expand scenario library to 10-12 scenarios (7-10 steps each, branching paths)
+- [x] Add countdown timer / time pressure per decision step
+- [x] Add "INCIDENT DETECTED" intro animation before scenario starts
+- [x] Add score breakdown on debrief (green/red per decision, points gained/lost)
 - [ ] Add adaptive difficulty (easy → medium → hard based on performance)
 - [ ] Add weak-area targeting ("You struggle with X — try this scenario")
 - [ ] Add spaced repetition scheduling for failed scenarios

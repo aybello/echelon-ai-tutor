@@ -209,7 +209,7 @@ export default function IncidentCommand() {
   });
 
   const [location] = useLocation();
-  const [mode, setMode] = useState<"intro" | "live" | "debrief">("intro");
+  const [mode, setMode] = useState<"intro" | "alerting" | "live" | "debrief">("intro");
   const [selectedScenario, setSelectedScenario] = useState<ScenarioMeta>(ALL_SCENARIOS[0]);
   const [stepIndex, setStepIndex] = useState(0);
   const [selectedChoice, setSelectedChoice] = useState<Choice | null>(null);
@@ -220,8 +220,12 @@ export default function IncidentCommand() {
   const [drillQueued, setDrillQueued] = useState(false);
   const [judgmentResponse, setJudgmentResponse] = useState("");
   const [judgmentDegraded, setJudgmentDegraded] = useState(false);
+  const [stepCountdown, setStepCountdown] = useState(90);
+  const [alertingProgress, setAlertingProgress] = useState(0);
   const clockRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const countdownRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const startTimeRef = useRef<number>(0);
+  const STEP_DEADLINE_SECONDS = 90;
 
   const { data: me } = trpc.auth.me.useQuery(undefined, { retry: false });
   const { data: accessIdentity } = trpc.access.auditMyEntitlements.useQuery(undefined, { retry: false });
@@ -275,6 +279,21 @@ export default function IncidentCommand() {
     };
   }, [mode, stepIndex, stepBaseSeconds]);
 
+  // Countdown timer per step (90 seconds)
+  useEffect(() => {
+    if (mode !== "live" || selectedChoice) {
+      if (countdownRef.current) clearInterval(countdownRef.current);
+      return;
+    }
+    setStepCountdown(STEP_DEADLINE_SECONDS);
+    countdownRef.current = setInterval(() => {
+      setStepCountdown(prev => Math.max(0, prev - 1));
+    }, 1000);
+    return () => {
+      if (countdownRef.current) clearInterval(countdownRef.current);
+    };
+  }, [mode, stepIndex, selectedChoice]);
+
   const clockDisplay = useMemo(() => {
     const h = Math.floor(elapsedSeconds / 3600).toString().padStart(2, "0");
     const m = Math.floor((elapsedSeconds % 3600) / 60).toString().padStart(2, "0");
@@ -285,7 +304,8 @@ export default function IncidentCommand() {
   const begin = (scenario?: ScenarioMeta) => {
     const s = scenario ?? selectedScenario;
     setSelectedScenario(s);
-    setMode("live");
+    setMode("alerting");
+    setAlertingProgress(0);
     setStepIndex(0);
     setSelectedChoice(null);
     setDecisions([]);
@@ -295,7 +315,18 @@ export default function IncidentCommand() {
     setDrillQueued(false);
     setJudgmentResponse("");
     setJudgmentDegraded(false);
+    setStepCountdown(STEP_DEADLINE_SECONDS);
     startTimeRef.current = Date.now();
+    // Alerting animation: 3 seconds then go live
+    let progress = 0;
+    const alertInterval = setInterval(() => {
+      progress += 2;
+      setAlertingProgress(progress);
+      if (progress >= 100) {
+        clearInterval(alertInterval);
+        setMode("live");
+      }
+    }, 60); // 60ms * 50 steps = 3 seconds
   };
 
   const choose = (choice: Choice) => {
@@ -347,6 +378,7 @@ export default function IncidentCommand() {
       setSelectedChoice(null);
       setJudgmentResponse("");
       setJudgmentDegraded(false);
+      setStepCountdown(STEP_DEADLINE_SECONDS);
       return;
     }
 
@@ -373,6 +405,35 @@ export default function IncidentCommand() {
   };
 
   // ─── INTRO ──────────────────────────────────────────────────────────────────
+  // ─── ALERTING (INCIDENT DETECTED animation) ─────────────────────────────────
+  if (mode === "alerting") {
+    return (
+      <div className="flex min-h-screen items-center justify-center" style={{ fontFamily: "'Sora', sans-serif", background: "#060B14" }}>
+        <style>{`
+          @keyframes alertFlash { 0%,100%{opacity:1} 50%{opacity:.3} }
+          @keyframes alertScan { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+          @keyframes alertPulse { 0%,100%{box-shadow:0 0 40px rgba(239,68,68,.3)} 50%{box-shadow:0 0 80px rgba(239,68,68,.6)} }
+        `}</style>
+        <div className="relative flex flex-col items-center gap-6 text-center" style={{ animation: "alertPulse 1.5s ease-in-out infinite" }}>
+          <div className="relative">
+            <AlertTriangle className="h-20 w-20 text-rose-500" style={{ animation: "alertFlash .8s ease-in-out infinite" }} />
+          </div>
+          <div>
+            <div className="text-[10px] font-black uppercase tracking-[.3em] text-rose-400" style={{ animation: "alertFlash 1.2s ease-in-out infinite" }}>⚠ INCIDENT DETECTED</div>
+            <h1 className="mt-3 text-3xl font-black tracking-tight text-white sm:text-4xl">{selectedScenario.title}</h1>
+            <p className="mt-2 text-sm text-slate-400">{selectedScenario.facilityName} · {selectedScenario.incidentLabel}</p>
+          </div>
+          <div className="mt-4 w-64">
+            <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
+              <div className="h-full rounded-full bg-rose-500 transition-all duration-75" style={{ width: `${alertingProgress}%` }} />
+            </div>
+            <div className="mt-2 text-[9px] font-bold uppercase tracking-[.2em] text-slate-500">Initializing control room...</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (mode === "intro") {
     return (
       <div className="min-h-screen text-white" style={{ fontFamily: "'Sora', sans-serif", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)" }}>
@@ -406,8 +467,8 @@ export default function IncidentCommand() {
                 )}
                 <div className="mt-10 grid max-w-2xl grid-cols-3 gap-3">
                   {[
-                    ["4", "scenarios"],
-                    ["20+", "live signals"],
+                    ["12", "scenarios"],
+                    ["60+", "live signals"],
                     ["1", "AI debrief"],
                   ].map(([value, label]) => (
                     <div key={label} className="rounded-xl border border-white/10 bg-white/[.04] p-4">
@@ -427,7 +488,7 @@ export default function IncidentCommand() {
 
             {/* Scenario selector */}
             <div className="mb-4 text-xs font-black uppercase tracking-[.18em] text-slate-400">Choose a scenario</div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {ALL_SCENARIOS.map(scenario => (
                 <ScenarioCard
                   key={scenario.id}
@@ -500,15 +561,45 @@ export default function IncidentCommand() {
           </div>
 
           <section className="mt-6 overflow-hidden rounded-2xl border border-slate-700 bg-slate-800">
-            <div className="border-b border-slate-700 px-6 py-4"><h2 className="font-black">Decision timeline</h2></div>
-            <div className="divide-y divide-slate-800">
-              {decisions.map((decision, index) => (
-                <div key={decision.stepId} className="grid gap-3 px-6 py-5 md:grid-cols-[60px_1fr_110px] md:items-center">
-                  <div className="text-xs font-black text-slate-300">{getScenarioStepAtIndex(selectedScenario, index, decisions.map(item => item.choiceId))?.time}</div>
-                  <div><div className="text-sm font-bold text-white">{decision.choiceLabel}</div><div className="mt-1 text-xs leading-5 text-slate-300">{decision.consequence}</div></div>
-                  <div className={`text-right text-sm font-black ${decision.points === 20 ? "text-teal-300" : decision.points >= 6 ? "text-amber-300" : "text-rose-300"}`}>{decision.points}/20</div>
-                </div>
-              ))}
+            <div className="border-b border-slate-700 px-6 py-4 flex items-center justify-between">
+              <h2 className="font-black">Score breakdown</h2>
+              <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-teal-400" /> Optimal</span>
+                <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-amber-400" /> Partial</span>
+                <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-rose-400" /> Unsafe</span>
+              </div>
+            </div>
+            <div className="divide-y divide-slate-700/50">
+              {decisions.map((decision, index) => {
+                const color = decision.points === 20 ? "teal" : decision.points >= 6 ? "amber" : "rose";
+                return (
+                  <div key={decision.stepId} className="relative px-6 py-5">
+                    <div className={`absolute left-0 top-0 h-full w-1 ${color === "teal" ? "bg-teal-400" : color === "amber" ? "bg-amber-400" : "bg-rose-400"}`} />
+                    <div className="grid gap-3 md:grid-cols-[60px_1fr_120px] md:items-start">
+                      <div className="flex flex-col items-center gap-1">
+                        <span className="text-xs font-black text-slate-300">{getScenarioStepAtIndex(selectedScenario, index, decisions.map(item => item.choiceId))?.time}</span>
+                        <span className={`text-[9px] font-black uppercase ${color === "teal" ? "text-teal-400" : color === "amber" ? "text-amber-400" : "text-rose-400"}`}>Step {index + 1}</span>
+                      </div>
+                      <div>
+                        <div className="text-sm font-bold text-white">{decision.stepTitle}</div>
+                        <div className="mt-1 text-xs leading-5 text-slate-300">{decision.choiceLabel}</div>
+                        <div className={`mt-2 rounded-lg px-3 py-2 text-xs leading-5 ${color === "teal" ? "bg-teal-400/[.06] text-teal-100" : color === "amber" ? "bg-amber-400/[.06] text-amber-100" : "bg-rose-400/[.06] text-rose-100"}`}>{decision.consequence}</div>
+                      </div>
+                      <div className="flex flex-col items-end gap-1">
+                        <div className={`rounded-full px-3 py-1 text-sm font-black ${color === "teal" ? "bg-teal-400/15 text-teal-200" : color === "amber" ? "bg-amber-400/15 text-amber-200" : "bg-rose-400/15 text-rose-200"}`}>+{decision.points}</div>
+                        <div className="h-1.5 w-20 overflow-hidden rounded-full bg-slate-700">
+                          <div className={`h-full rounded-full ${color === "teal" ? "bg-teal-400" : color === "amber" ? "bg-amber-400" : "bg-rose-400"}`} style={{ width: `${(decision.points / 20) * 100}%` }} />
+                        </div>
+                        <span className="text-[9px] text-slate-500">{decision.points}/20 pts</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="border-t border-slate-700 px-6 py-4 flex items-center justify-between">
+              <span className="text-sm font-bold text-slate-300">Total earned</span>
+              <span className="text-lg font-black text-white">{decisions.reduce((s, d) => s + d.points, 0)} / {decisions.length * 20}</span>
             </div>
           </section>
 
@@ -567,6 +658,8 @@ export default function IncidentCommand() {
           stepIndex={stepIndex}
           totalSteps={selectedScenario.steps.length}
           commandScore={commandScore}
+          countdown={stepCountdown}
+          countdownMax={STEP_DEADLINE_SECONDS}
           onBack={() => setMode("intro")}
         />
 
