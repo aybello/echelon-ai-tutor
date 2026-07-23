@@ -1129,3 +1129,21 @@
 - [x] Ensure Command is easily accessible from all key navigation points (Landing nav, hero CTA, Study Tools grid, MobileBottomNav)
 - [x] Rebuild Command live-mode UI into realistic SCADA/HMI control room (animated gauges, live telemetry, alarm panel, process flow, dark industrial theme)
 - [x] Simplify all 4 Command scenario scripts to Class 1 operator student reading level (clear, direct language, short sentences, plain verbs)
+
+## Command Centre — Full Product Build-Out
+- [x] Switch all Command OpenAI/GPT calls to built-in Manus LLM
+- [ ] Expand scenario library to 10-12 scenarios (7-10 steps each, branching paths)
+- [ ] Add countdown timer / time pressure per decision step
+- [ ] Add "INCIDENT DETECTED" intro animation before scenario starts
+- [ ] Add score breakdown on debrief (green/red per decision, points gained/lost)
+- [ ] Add adaptive difficulty (easy → medium → hard based on performance)
+- [ ] Add weak-area targeting ("You struggle with X — try this scenario")
+- [ ] Add spaced repetition scheduling for failed scenarios
+- [ ] Add multi-role coordination (lab, maintenance, management comms)
+- [ ] Add sound effects (alarm beeps, click feedback, success chime)
+- [ ] Add typing animation on AI debrief text
+- [ ] Add certificate of completion after passing all scenarios
+- [ ] Add session tracking (log every run: scenario, score, time spent, decisions)
+- [x] Add feedback modal after debrief (1-5 stars + optional text)
+- [x] Add email capture CTA on debrief ("Get notified when new scenarios drop")
+- [ ] Weekly scenario rotation system

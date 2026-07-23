@@ -24,6 +24,7 @@ import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useGuestSession } from "@/hooks/useGuestSession";
 import { RadialGauge, AlarmPanel, ProcessFlowDiagram, TelemetryTicker, PlantStateBars, ScadaHeader } from "@/components/ScadaPanel";
+import { FeedbackPanel, EmailCapturePanel } from "@/components/CommandFeedback";
 import {
   ALL_SCENARIOS,
   getScenarioStepAtIndex,
@@ -510,6 +511,12 @@ export default function IncidentCommand() {
               ))}
             </div>
           </section>
+
+          {/* Feedback & Email Capture */}
+          <div className="mt-6 space-y-3">
+            <FeedbackPanel scenarioId={selectedScenario.id} guestId={guestId} />
+            <EmailCapturePanel guestId={guestId} />
+          </div>
 
           <div className="mt-8 flex flex-col items-center gap-4 rounded-2xl border border-teal-400/20 bg-teal-400/[.06] px-6 py-8 text-center">
             <RotateCcw className="h-8 w-8 text-teal-300" />

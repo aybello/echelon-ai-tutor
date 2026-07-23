@@ -591,3 +591,31 @@ export const commandRunHistory = mysqlTable("command_run_history", {
 ]);
 export type CommandRunHistory = typeof commandRunHistory.$inferSelect;
 export type InsertCommandRunHistory = typeof commandRunHistory.$inferInsert;
+
+// --- Command Centre: Feedback & Email Capture ---
+
+export const commandFeedback = mysqlTable("command_feedback", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId"),
+  guestId: varchar("guestId", { length: 64 }),
+  scenarioId: varchar("scenarioId", { length: 64 }).notNull(),
+  runId: int("runId"), // references command_run_history.id
+  rating: int("rating").notNull(), // 1-5 stars
+  comment: text("comment"), // optional text feedback
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type CommandFeedback = typeof commandFeedback.$inferSelect;
+export type InsertCommandFeedback = typeof commandFeedback.$inferInsert;
+
+export const commandEmailCapture = mysqlTable("command_email_capture", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  userId: int("userId"),
+  guestId: varchar("guestId", { length: 64 }),
+  source: varchar("source", { length: 64 }).default("command_debrief").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type CommandEmailCapture = typeof commandEmailCapture.$inferSelect;
+export type InsertCommandEmailCapture = typeof commandEmailCapture.$inferInsert;
