@@ -16,7 +16,7 @@
 
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import { and, count, eq, gte, inArray, lt, sql } from "drizzle-orm";
+import { and, count, desc, eq, gte, inArray, lt, sql } from "drizzle-orm";
 import { randomBytes } from "crypto";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
@@ -26,6 +26,8 @@ import {
   subscriptions,
   questionAttempts,
   examDates,
+  commandRunHistory,
+  users,
 } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail } from "../email";
@@ -1291,6 +1293,102 @@ export const orgIntelRouter = router({
       } catch (err) { console.error(`[sendBulkReminders] Failed to send to ${m.email}:`, err); }
     }
     return { sent: sentEmails.length, emails: sentEmails };
+  }),
+
+  /**
+   * getCommandCohortSummary — aggregate Command Centre performance across org operators.
+   * Returns: per-scenario completion counts, average scores, and most-missed steps.
+   */
+  getCommandCohortSummary: publicProcedure.query(async ({ ctx }) => {
+    const { orgId } = await resolveOrgManager(ctx);
+    const db = await getDb();
+    if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+
+    // Get all active operator members
+    const activeMembers = await db
+      .select({ email: organizationMembers.email })
+      .from(organizationMembers)
+      .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator"), eq(organizationMembers.status, "assigned")));
+    if (activeMembers.length === 0) return { totalRuns: 0, scenarios: [], mostMissedSteps: [], operatorScores: [] };
+
+    // Find user IDs for these org members
+    const memberEmails = activeMembers.map(m => m.email);
+    const userRows = await db.select({ id: users.id, email: users.email, name: users.name })
+      .from(users)
+      .where(inArray(users.email, memberEmails));
+    if (userRows.length === 0) return { totalRuns: 0, scenarios: [], mostMissedSteps: [], operatorScores: [] };
+    const userIds = userRows.map(u => u.id);
+    const userNameById = new Map(userRows.map(u => [u.id, u.name ?? u.email]));
+
+    // Fetch all command runs for these users
+    const runs = await db.select()
+      .from(commandRunHistory)
+      .where(inArray(commandRunHistory.userId, userIds))
+      .orderBy(desc(commandRunHistory.completedAt));
+
+    if (runs.length === 0) return { totalRuns: 0, scenarios: [], mostMissedSteps: [], operatorScores: [] };
+
+    // Aggregate per-scenario stats
+    const scenarioMap = new Map<string, { title: string; runs: number; totalScore: number; bestScore: number }>();
+    for (const run of runs) {
+      const existing = scenarioMap.get(run.scenarioId) ?? { title: run.scenarioTitle, runs: 0, totalScore: 0, bestScore: 0 };
+      existing.runs++;
+      existing.totalScore += run.commandScore;
+      if (run.commandScore > existing.bestScore) existing.bestScore = run.commandScore;
+      scenarioMap.set(run.scenarioId, existing);
+    }
+    const scenarios = Array.from(scenarioMap.entries()).map(([id, s]) => ({
+      scenarioId: id,
+      scenarioTitle: s.title,
+      totalRuns: s.runs,
+      avgScore: Math.round(s.totalScore / s.runs),
+      bestScore: s.bestScore,
+    })).sort((a, b) => a.avgScore - b.avgScore);
+
+    // Aggregate most-missed steps from decisionsJson
+    const stepFailures = new Map<string, { scenarioId: string; stepId: string; failCount: number; totalAppearances: number }>();
+    for (const run of runs) {
+      if (!run.decisionsJson) continue;
+      try {
+        const decisions: Array<{ stepId: string; choiceId: string; points: number }> = JSON.parse(run.decisionsJson);
+        for (const d of decisions) {
+          const key = `${run.scenarioId}::${d.stepId}`;
+          const existing = stepFailures.get(key) ?? { scenarioId: run.scenarioId, stepId: d.stepId, failCount: 0, totalAppearances: 0 };
+          existing.totalAppearances++;
+          if (d.points < 20) existing.failCount++; // Non-optimal = failed
+          stepFailures.set(key, existing);
+        }
+      } catch { /* skip malformed JSON */ }
+    }
+    const mostMissedSteps = Array.from(stepFailures.values())
+      .filter(s => s.totalAppearances >= 2) // Only show steps with enough data
+      .map(s => ({
+        scenarioId: s.scenarioId,
+        stepId: s.stepId,
+        failRate: Math.round((s.failCount / s.totalAppearances) * 100),
+        totalAppearances: s.totalAppearances,
+      }))
+      .sort((a, b) => b.failRate - a.failRate)
+      .slice(0, 10);
+
+    // Per-operator score summary
+    const operatorMap = new Map<number, { runs: number; totalScore: number; bestScore: number }>();
+    for (const run of runs) {
+      if (!run.userId) continue;
+      const existing = operatorMap.get(run.userId) ?? { runs: 0, totalScore: 0, bestScore: 0 };
+      existing.runs++;
+      existing.totalScore += run.commandScore;
+      if (run.commandScore > existing.bestScore) existing.bestScore = run.commandScore;
+      operatorMap.set(run.userId, existing);
+    }
+    const operatorScores = Array.from(operatorMap.entries()).map(([userId, s]) => ({
+      name: userNameById.get(userId) ?? "Unknown",
+      totalRuns: s.runs,
+      avgScore: Math.round(s.totalScore / s.runs),
+      bestScore: s.bestScore,
+    })).sort((a, b) => b.avgScore - a.avgScore);
+
+    return { totalRuns: runs.length, scenarios, mostMissedSteps, operatorScores };
   }),
 });
 

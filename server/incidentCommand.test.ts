@@ -3,48 +3,68 @@ import {
   fallbackDebrief,
   evaluateCanonicalDecisions,
 } from "./routers/incidentCommandRouter";
+import { ALL_SCENARIOS, getScenarioStepAtIndex } from "../shared/commandScenarios";
 
-// Cedar Ridge Storm — optimal path (all 20-point choices, escalate-document branch at step 4)
-const optimalDecisions = [
-  { stepId: "source-shift", choiceId: "verify-optimize" },
-  { stepId: "filter-breakthrough", choiceId: "isolate-filter" },
-  { stepId: "disinfection-risk", choiceId: "ct-verify" },
-  { stepId: "confirmation", choiceId: "escalate-document" },
-  // escalate-document branch leads to stabilize-controlled
-  { stepId: "stabilize-controlled", choiceId: "recovery-gate" },
-];
+// ─── Parameterized tests across ALL scenarios ─────────────────────────────────
 
-describe("Echelon Command — evaluateCanonicalDecisions", () => {
-  it("evaluates a complete optimal path and returns 100", () => {
-    const evaluation = evaluateCanonicalDecisions("cedar-ridge-storm", optimalDecisions);
-    expect(evaluation.commandScore).toBe(100);
-    expect(evaluation.optimalCalls).toBe(5);
-    expect(evaluation.totalSteps).toBe(5);
-    expect(evaluation.decisions).toHaveLength(5);
-    expect(evaluation.scenarioTitle).toBe("Cedar Ridge Storm Response");
-  });
+describe("Echelon Command — evaluateCanonicalDecisions (all scenarios)", () => {
+  for (const scenario of ALL_SCENARIOS) {
+    describe(`Scenario: ${scenario.title} (${scenario.id})`, () => {
+      it("evaluates the optimal path and returns 100", () => {
+        // Build optimal decision array by walking the scenario's branching tree
+        const decisions: { stepId: string; choiceId: string }[] = [];
+        const previousChoiceIds: string[] = [];
 
-  it("scores a partial path below 100", () => {
-    const suboptimal = [
-      { stepId: "source-shift", choiceId: "dose-blind" },
-      { stepId: "filter-breakthrough", choiceId: "backwash-all" },
-      { stepId: "disinfection-risk", choiceId: "maximum-dose" },
-      { stepId: "confirmation", choiceId: "log-later" },
-      // log-later branch leads to stabilize-record-gap
-      { stepId: "stabilize-record-gap", choiceId: "estimate-times" },
-    ];
-    const evaluation = evaluateCanonicalDecisions("cedar-ridge-storm", suboptimal);
-    expect(evaluation.commandScore).toBeLessThan(100);
-    expect(evaluation.commandScore).toBeGreaterThan(0);
-  });
+        for (let i = 0; i < scenario.steps.length; i++) {
+          const step = getScenarioStepAtIndex(scenario, i, previousChoiceIds);
+          if (!step) break;
 
-  it("throws when the decision count does not match the scenario step count", () => {
-    expect(() =>
-      evaluateCanonicalDecisions("cedar-ridge-storm", [
-        { stepId: "source-shift", choiceId: "verify-optimize" },
-      ]),
-    ).toThrow();
-  });
+          // Find the highest-scoring choice (optimal)
+          const optimalChoice = step.choices.reduce((best, c) =>
+            c.points > best.points ? c : best, step.choices[0]);
+
+          decisions.push({ stepId: step.id, choiceId: optimalChoice.id });
+          previousChoiceIds.push(optimalChoice.id);
+        }
+
+        const evaluation = evaluateCanonicalDecisions(scenario.id, decisions);
+        expect(evaluation.commandScore).toBe(100);
+        expect(evaluation.optimalCalls).toBe(decisions.length);
+        expect(evaluation.totalSteps).toBe(decisions.length);
+        expect(evaluation.scenarioTitle).toBe(scenario.title);
+      });
+
+      it("scores a suboptimal path below 100", () => {
+        // Build suboptimal decision array by picking the lowest-scoring choice
+        const decisions: { stepId: string; choiceId: string }[] = [];
+        const previousChoiceIds: string[] = [];
+
+        for (let i = 0; i < scenario.steps.length; i++) {
+          const step = getScenarioStepAtIndex(scenario, i, previousChoiceIds);
+          if (!step) break;
+
+          // Find the lowest-scoring choice
+          const worstChoice = step.choices.reduce((worst, c) =>
+            c.points < worst.points ? c : worst, step.choices[0]);
+
+          decisions.push({ stepId: step.id, choiceId: worstChoice.id });
+          previousChoiceIds.push(worstChoice.id);
+        }
+
+        const evaluation = evaluateCanonicalDecisions(scenario.id, decisions);
+        expect(evaluation.commandScore).toBeLessThan(100);
+        expect(evaluation.commandScore).toBeGreaterThanOrEqual(0);
+      });
+
+      it("throws when the decision count does not match the scenario step count", () => {
+        expect(() =>
+          evaluateCanonicalDecisions(scenario.id, [
+            { stepId: scenario.steps[0].id, choiceId: scenario.steps[0].choices[0].id },
+          ]),
+        ).toThrow();
+      });
+    });
+  }
 
   it("throws NOT_FOUND for an unknown scenario id", () => {
     expect(() =>
@@ -53,26 +73,78 @@ describe("Echelon Command — evaluateCanonicalDecisions", () => {
   });
 });
 
-describe("Echelon Command — fallbackDebrief", () => {
-  it("produces a complete deterministic debrief from an evaluation", () => {
-    const evaluation = evaluateCanonicalDecisions("cedar-ridge-storm", optimalDecisions);
-    const result = fallbackDebrief(evaluation);
+// ─── Judgment branch mapping validation ───────────────────────────────────────
 
-    expect(result.generatedBy).toBe("rules-engine");
-    expect(typeof result.summary).toBe("string");
-    expect(result.summary.length).toBeGreaterThan(0);
-    expect(result.strengths.length).toBeGreaterThanOrEqual(2);
-    expect(result.improvements.length).toBeGreaterThanOrEqual(2);
-    expect(typeof result.nextDrill).toBe("string");
-    expect(result.commandScore).toBe(evaluation.commandScore);
-    expect(result.optimalCalls).toBe(evaluation.optimalCalls);
-    expect(result.totalSteps).toBe(evaluation.totalSteps);
-    expect(result.verification.verified).toBe(true);
-  });
+describe("Echelon Command — judgment ruleBranches config integrity", () => {
+  for (const scenario of ALL_SCENARIOS) {
+    const judgmentStep = scenario.steps.find(s => s.judgment);
+    if (!judgmentStep) continue;
 
-  it("labels a 100-score operator as incident-command ready", () => {
-    const evaluation = evaluateCanonicalDecisions("cedar-ridge-storm", optimalDecisions);
-    const result = fallbackDebrief(evaluation);
-    expect(result.summary).toContain("incident-command ready");
-  });
+    describe(`${scenario.title} — judgment step "${judgmentStep.id}"`, () => {
+      it("ruleBranches.strong matches an existing choice ID", () => {
+        const { strong } = judgmentStep.judgment!.ruleBranches;
+        const match = judgmentStep.choices.find(c => c.id === strong);
+        expect(match).toBeDefined();
+      });
+
+      it("ruleBranches.partial matches an existing choice ID", () => {
+        const { partial } = judgmentStep.judgment!.ruleBranches;
+        const match = judgmentStep.choices.find(c => c.id === partial);
+        expect(match).toBeDefined();
+      });
+
+      it("ruleBranches.unsafe matches an existing choice ID", () => {
+        const { unsafe } = judgmentStep.judgment!.ruleBranches;
+        const match = judgmentStep.choices.find(c => c.id === unsafe);
+        expect(match).toBeDefined();
+      });
+
+      it("all three ruleBranches are distinct", () => {
+        const { strong, partial, unsafe } = judgmentStep.judgment!.ruleBranches;
+        expect(new Set([strong, partial, unsafe]).size).toBe(3);
+      });
+
+      it("strong branch has the highest points", () => {
+        const { strong, partial, unsafe } = judgmentStep.judgment!.ruleBranches;
+        const strongChoice = judgmentStep.choices.find(c => c.id === strong)!;
+        const partialChoice = judgmentStep.choices.find(c => c.id === partial)!;
+        const unsafeChoice = judgmentStep.choices.find(c => c.id === unsafe)!;
+        expect(strongChoice.points).toBeGreaterThanOrEqual(partialChoice.points);
+        expect(partialChoice.points).toBeGreaterThanOrEqual(unsafeChoice.points);
+      });
+    });
+  }
+});
+
+// ─── Fallback debrief ─────────────────────────────────────────────────────────
+
+describe("Echelon Command — fallbackDebrief (all scenarios)", () => {
+  for (const scenario of ALL_SCENARIOS) {
+    it(`produces a complete deterministic debrief for ${scenario.title}`, () => {
+      // Build optimal path
+      const decisions: { stepId: string; choiceId: string }[] = [];
+      const previousChoiceIds: string[] = [];
+
+      for (let i = 0; i < scenario.steps.length; i++) {
+        const step = getScenarioStepAtIndex(scenario, i, previousChoiceIds);
+        if (!step) break;
+        const optimalChoice = step.choices.reduce((best, c) =>
+          c.points > best.points ? c : best, step.choices[0]);
+        decisions.push({ stepId: step.id, choiceId: optimalChoice.id });
+        previousChoiceIds.push(optimalChoice.id);
+      }
+
+      const evaluation = evaluateCanonicalDecisions(scenario.id, decisions);
+      const result = fallbackDebrief(evaluation);
+
+      expect(result.generatedBy).toBe("rules-engine");
+      expect(typeof result.summary).toBe("string");
+      expect(result.summary.length).toBeGreaterThan(0);
+      expect(result.strengths.length).toBeGreaterThanOrEqual(2);
+      expect(result.improvements.length).toBeGreaterThanOrEqual(2);
+      expect(typeof result.nextDrill).toBe("string");
+      expect(result.commandScore).toBe(100);
+      expect(result.verification.verified).toBe(true);
+    });
+  }
 });

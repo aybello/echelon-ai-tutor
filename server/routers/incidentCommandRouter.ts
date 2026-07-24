@@ -412,9 +412,16 @@ export const incidentCommandRouter = router({
           : rubric.barrierPreserved || rubric.recordDefensible
             ? branches.partial
             : branches.unsafe;
-        const choice = step.choices.find(candidate => candidate.id === ruleOwnedBranch) as Choice;
+        const choice = step.choices.find(candidate => candidate.id === ruleOwnedBranch);
+        if (!choice) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: `Scenario ${scenario.id} step ${step.id}: ruleBranches maps to "${ruleOwnedBranch}" but no matching choice exists. Check ruleBranches config.`,
+          });
+        }
         return { mode: "ai" as const, choiceId: choice.id, label: choice.label, consequence: choice.consequence, points: choice.points, rationale: parsed.rationale, rubric };
       } catch (error) {
+        if (error instanceof TRPCError) throw error; // Re-throw config errors, don't swallow them
         console.warn("[Echelon Command] AI judgment unavailable; offering explicit degraded mode.", error);
         return { mode: "degraded" as const, reason: "AI judgment is temporarily unavailable. Choose the closest canonical action to continue in degraded mode." };
       }
@@ -428,13 +435,20 @@ export const incidentCommandRouter = router({
       elapsedSeconds: z.number().int().min(0).max(86400).default(0),
       // Guest identity — used when the user is not authenticated
       guestId: z.string().max(64).optional(),
-      displayName: z.string().max(80).optional(),
+      displayName: z.string().max(80).optional(), // Ignored — derived server-side from guestId
     }))
     .mutation(async ({ ctx, input }) => {
       const evaluation = evaluateCanonicalDecisions(input.scenarioId, input.decisions);
       let runSaved = false;
       const commandUser = await resolveCommandUser(ctx);
       const db = await getDb();
+
+      // Serialize decisions for cohort analytics (step-level failure tracking)
+      const decisionsJson = JSON.stringify(evaluation.decisions.map(d => ({
+        stepId: d.stepId,
+        choiceId: d.choiceId,
+        points: d.points,
+      })));
 
       if (commandUser) {
         await commandUser.db.insert(commandRunHistory).values({
@@ -445,19 +459,21 @@ export const incidentCommandRouter = router({
           optimalCalls: evaluation.optimalCalls,
           totalSteps: evaluation.totalSteps,
           elapsedSeconds: input.elapsedSeconds,
+          decisionsJson,
         });
         runSaved = true;
       } else if (input.guestId && db) {
         // Save guest run so it appears in their history and on the leaderboard
         await db.insert(commandRunHistory).values({
           guestId: input.guestId,
-          displayName: input.displayName ?? "Guest Operator",
+          displayName: input.guestId ? `Guest Operator #${input.guestId.replace(/-/g, '').slice(-4).toUpperCase()}` : "Guest Operator",
           scenarioId: evaluation.scenarioId,
           scenarioTitle: evaluation.scenarioTitle,
           commandScore: evaluation.commandScore,
           optimalCalls: evaluation.optimalCalls,
           totalSteps: evaluation.totalSteps,
           elapsedSeconds: input.elapsedSeconds,
+          decisionsJson,
         });
         runSaved = true;
       }

@@ -1143,7 +1143,7 @@
 - [ ] Add sound effects (alarm beeps, click feedback, success chime)
 - [ ] Add typing animation on AI debrief text
 - [ ] Add certificate of completion after passing all scenarios
-- [ ] Add session tracking (log every run: scenario, score, time spent, decisions)
+- [x] Add session tracking (log every run: scenario, score, time spent, decisions)
 - [x] Add feedback modal after debrief (1-5 stars + optional text)
 - [x] Add email capture CTA on debrief ("Get notified when new scenarios drop")
 - [ ] Weekly scenario rotation system
@@ -1156,3 +1156,13 @@
 - [x] Redesign ScadaHeader and ScadaPanel components for light mode
 - [x] Rewrite scenario answer choices to be more nuanced (no obvious correct answer)
 - [x] Make all options sound plausible with subtle procedural differences
+
+## Command Centre — Phase 4: Supervisor Cohort View
+- [x] Add decisionsJson column to command_run_history (stores step-level choices per run)
+- [x] Populate decisionsJson on every debrief insert (authenticated + guest)
+- [x] Add getCommandCohortSummary procedure to orgIntelRouter (per-scenario stats, most-missed steps, operator scores)
+- [x] Add Command Centre section to OrgDashboard (summary metrics, most-missed steps table, operator scores table)
+- [x] Remove `as Choice` cast — add proper runtime error for misconfigured branch IDs
+- [x] Add parameterized tests for all 12 scenarios (branch mapping, optimal path, judgment config)
+- [x] Server-side displayName derivation (ignore client input, derive from guestId)
+- [x] Tighter rate limiter for Command debrief (5 req/min)

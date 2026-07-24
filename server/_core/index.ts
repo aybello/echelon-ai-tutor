@@ -12,7 +12,7 @@ import { serveStatic, setupVite } from "./vite";
 import { registerBlogSsrRoutes, buildDynamicSitemap } from "../blogSsr";
 import { registerPageSsrRoutes } from "../pageSsr";
 import { registerStripeWebhook } from "../stripe/webhook";
-import { generalLimiter, aiTutorLimiter, contactLimiter, authLimiter } from "../rateLimit";
+import { generalLimiter, aiTutorLimiter, contactLimiter, authLimiter, commandDebriefLimiter } from "../rateLimit";
 import { startReconciliationJob } from "../jobs/reconcile";
 import { startExamReminderJob } from "../jobs/examReminders";
 import { startTriggerEngineJob } from "../jobs/triggerEngine";
@@ -65,7 +65,9 @@ async function startServer() {
 
   // Rate limiting
   app.use("/api/trpc/tutor", aiTutorLimiter);     // AI Tutor — 15 req/min (LLM cost protection)
-  app.use("/api/trpc/incidentCommand", aiTutorLimiter); // AI debrief cost protection
+  app.use("/api/trpc/incidentCommand.debrief", commandDebriefLimiter); // Debrief fans out to 2-4 LLM calls
+  app.use("/api/trpc/incidentCommand.evaluateJudgment", commandDebriefLimiter); // Judgment also calls LLM
+  app.use("/api/trpc/incidentCommand", aiTutorLimiter); // General Command cost protection
   app.use("/api/trpc/contact", contactLimiter);   // Contact form — 5 req/15min (spam protection)
   app.use("/api/trpc/auth", authLimiter);          // Auth — 10 req/min (brute force protection)
   app.use("/api/trpc/dashboardAuth", authLimiter); // Dashboard OTP — 10 req/min (brute force protection)

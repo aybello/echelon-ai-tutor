@@ -253,6 +253,7 @@ export default function OrgDashboard() {
   const weakTopicsQuery = trpc.orgIntel.getTeamWeakTopics.useQuery(undefined, { retry: false });
   const operatorReadinessQuery = trpc.orgIntel.getOperatorReadiness.useQuery(undefined, { retry: false });
   const exportCSVQuery = trpc.orgIntel.exportTeamCSV.useQuery(undefined, { enabled: false });
+  const commandCohortQuery = trpc.orgIntel.getCommandCohortSummary.useQuery(undefined, { retry: false });
 
   const [intelSortKey, setIntelSortKey] = useState<"readinessScore" | "accuracy" | "totalAttempts" | "lastActive">("readinessScore");
   const [intelSortDir, setIntelSortDir] = useState<"asc" | "desc">("desc");
@@ -1167,6 +1168,110 @@ export default function OrgDashboard() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        )}
+
+        {/* ── Command Centre Cohort Intelligence ─────────────────────────── */}
+        {commandCohortQuery.data && commandCohortQuery.data.totalRuns > 0 && (
+          <div className="mt-8">
+            <h2 className="text-base font-semibold text-slate-800 flex items-center gap-2 mb-4">
+              <Shield className="w-4 h-4 text-indigo-500" />
+              Command Centre — Team Performance
+            </h2>
+
+            {/* Summary metrics */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+              <div className="bg-indigo-50 border border-indigo-100 rounded-lg p-3 text-center">
+                <div className="text-xl font-bold text-indigo-700">{commandCohortQuery.data.totalRuns}</div>
+                <div className="text-xs text-indigo-600">Total Runs</div>
+              </div>
+              <div className="bg-indigo-50 border border-indigo-100 rounded-lg p-3 text-center">
+                <div className="text-xl font-bold text-indigo-700">{commandCohortQuery.data.scenarios.length}</div>
+                <div className="text-xs text-indigo-600">Scenarios Attempted</div>
+              </div>
+              <div className="bg-indigo-50 border border-indigo-100 rounded-lg p-3 text-center">
+                <div className="text-xl font-bold text-indigo-700">{commandCohortQuery.data.operatorScores.length}</div>
+                <div className="text-xs text-indigo-600">Operators Active</div>
+              </div>
+              <div className="bg-indigo-50 border border-indigo-100 rounded-lg p-3 text-center">
+                <div className="text-xl font-bold text-indigo-700">
+                  {commandCohortQuery.data.operatorScores.length > 0
+                    ? Math.round(commandCohortQuery.data.operatorScores.reduce((sum, o) => sum + o.avgScore, 0) / commandCohortQuery.data.operatorScores.length)
+                    : 0}%
+                </div>
+                <div className="text-xs text-indigo-600">Avg Score</div>
+              </div>
+            </div>
+
+            {/* Most-Missed Steps — the money table */}
+            {commandCohortQuery.data.mostMissedSteps.length > 0 && (
+              <div className="bg-white border border-slate-200 rounded-xl p-4 mb-4">
+                <h3 className="text-sm font-medium text-slate-700 mb-3 flex items-center gap-2">
+                  <ShieldAlert className="w-4 h-4 text-red-500" />
+                  Most-Missed Steps (Toolbox Talk Targets)
+                </h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-slate-100">
+                        <th className="text-left px-3 py-2 text-slate-500 font-medium">Scenario</th>
+                        <th className="text-left px-3 py-2 text-slate-500 font-medium">Step</th>
+                        <th className="text-left px-3 py-2 text-slate-500 font-medium">Fail Rate</th>
+                        <th className="text-left px-3 py-2 text-slate-500 font-medium">Appearances</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {commandCohortQuery.data.mostMissedSteps.map((step, i) => (
+                        <tr key={i} className="border-b border-slate-50 hover:bg-slate-50">
+                          <td className="px-3 py-2 text-slate-700">{step.scenarioId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</td>
+                          <td className="px-3 py-2 text-slate-600">{step.stepId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</td>
+                          <td className="px-3 py-2">
+                            <span className={`font-medium ${step.failRate >= 60 ? 'text-red-600' : step.failRate >= 40 ? 'text-amber-600' : 'text-green-600'}`}>
+                              {step.failRate}%
+                            </span>
+                          </td>
+                          <td className="px-3 py-2 text-slate-500">{step.totalAppearances}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+
+            {/* Per-Operator Command Scores */}
+            <div className="bg-white border border-slate-200 rounded-xl p-4">
+              <h3 className="text-sm font-medium text-slate-700 mb-3 flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-green-500" />
+                Operator Command Scores
+              </h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-slate-100">
+                      <th className="text-left px-3 py-2 text-slate-500 font-medium">Operator</th>
+                      <th className="text-left px-3 py-2 text-slate-500 font-medium">Runs</th>
+                      <th className="text-left px-3 py-2 text-slate-500 font-medium">Avg Score</th>
+                      <th className="text-left px-3 py-2 text-slate-500 font-medium">Best Score</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {commandCohortQuery.data.operatorScores.map((op, i) => (
+                      <tr key={i} className="border-b border-slate-50 hover:bg-slate-50">
+                        <td className="px-3 py-2 text-slate-700 font-medium">{op.name}</td>
+                        <td className="px-3 py-2 text-slate-500">{op.totalRuns}</td>
+                        <td className="px-3 py-2">
+                          <span className={`font-medium ${op.avgScore >= 80 ? 'text-green-600' : op.avgScore >= 50 ? 'text-amber-600' : 'text-red-600'}`}>
+                            {op.avgScore}%
+                          </span>
+                        </td>
+                        <td className="px-3 py-2 text-slate-600">{op.bestScore}%</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         )}

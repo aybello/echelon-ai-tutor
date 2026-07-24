@@ -582,6 +582,7 @@ export const commandRunHistory = mysqlTable("command_run_history", {
   optimalCalls: int("optimalCalls").notNull(),
   totalSteps: int("totalSteps").notNull(),
   elapsedSeconds: int("elapsedSeconds").notNull().default(0),
+  decisionsJson: text("decisionsJson"), // JSON array of { stepId, choiceId, points } — nullable for historical rows
   completedAt: timestamp("completedAt").defaultNow().notNull(),
 }, (t) => [
   index("crh_user_idx").on(t.userId),
