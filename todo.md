@@ -1166,3 +1166,11 @@
 - [x] Add parameterized tests for all 12 scenarios (branch mapping, optimal path, judgment config)
 - [x] Server-side displayName derivation (ignore client input, derive from guestId)
 - [x] Tighter rate limiter for Command debrief (5 req/min)
+
+## Google Review Funnel
+- [x] Update FeedbackModal: 4-5 stars → redirect to Google review, 1-3 stars → internal form
+- [x] Update CommandFeedback (FeedbackPanel): same 4-5 → Google, 1-3 → internal logic
+- [x] Add review prompt after mock exam completion
+- [x] Add one-time review prompt after first quiz score ≥ 80%
+- [x] Add passive "Rate us on Google" link on Account page
+- [x] Track review prompt count per user (max 3 total, never more than 1 per session)

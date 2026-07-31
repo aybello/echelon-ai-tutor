@@ -3,9 +3,10 @@ import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { Star, Mail, CheckCircle2, X } from "lucide-react";
+import { Star, Mail, CheckCircle2, X, ExternalLink } from "lucide-react";
+import { isHappyRating, openGoogleReview, markReviewPromptShown } from "@/lib/reviewFunnel";
 
-// --- Feedback Modal (1-5 stars + optional comment) ---
+// --- Feedback Panel (Google review funnel) ---
 
 interface FeedbackPanelProps {
   scenarioId: string;
@@ -17,13 +18,41 @@ export function FeedbackPanel({ scenarioId, guestId }: FeedbackPanelProps) {
   const [hovered, setHovered] = useState(0);
   const [comment, setComment] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [redirectedToGoogle, setRedirectedToGoogle] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
   const submitMutation = trpc.incidentCommand.submitFeedback.useMutation({
     onSuccess: () => setSubmitted(true),
   });
 
+  function handleStarClick(star: number) {
+    setRating(star);
+
+    if (isHappyRating(star)) {
+      // Record internally then redirect to Google
+      markReviewPromptShown();
+      submitMutation.mutate({
+        scenarioId,
+        rating: star,
+        comment: "[Redirected to Google Review]",
+        guestId,
+      });
+      openGoogleReview();
+      setRedirectedToGoogle(true);
+    }
+  }
+
   if (dismissed) return null;
+
+  if (redirectedToGoogle) {
+    return (
+      <div className="flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+        <ExternalLink className="h-4 w-4 shrink-0" />
+        <span>Thanks! A Google Review tab opened — your review helps other operators.</span>
+      </div>
+    );
+  }
+
   if (submitted) {
     return (
       <div className="flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
@@ -52,7 +81,7 @@ export function FeedbackPanel({ scenarioId, guestId }: FeedbackPanelProps) {
             key={star}
             onMouseEnter={() => setHovered(star)}
             onMouseLeave={() => setHovered(0)}
-            onClick={() => setRating(star)}
+            onClick={() => handleStarClick(star)}
             className="transition-transform active:scale-90"
           >
             <Star
@@ -66,11 +95,12 @@ export function FeedbackPanel({ scenarioId, guestId }: FeedbackPanelProps) {
         ))}
       </div>
 
-      {/* Comment (shows after rating) */}
-      {rating > 0 && (
+      {/* Comment form — only for 1-3 stars (unhappy path) */}
+      {rating > 0 && !isHappyRating(rating) && (
         <div className="space-y-2 animate-in fade-in slide-in-from-top-1 duration-200">
+          <p className="text-xs text-slate-500">We're sorry to hear that. What could we do better?</p>
           <Textarea
-            placeholder="Any thoughts? (optional)"
+            placeholder="Tell us what went wrong..."
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 resize-none h-16 text-sm"

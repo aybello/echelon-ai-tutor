@@ -1,24 +1,23 @@
 /**
- * FeedbackModal — Collects star rating + optional comment from users.
+ * FeedbackModal — Review funnel that routes users based on rating:
+ *  - 4-5 stars → redirects to Google review (one action = Google review)
+ *  - 1-3 stars → shows internal comment form (keeps complaints private)
  *
- * Shown in two contexts:
- *  1. After 15 free questions (quiz gate) — before the email/payment gate
- *  2. After a quiz session completes — for paying/logged-in users
- *
- * Props:
- *  - examType: the bank key (e.g. "class1-water", "oit")
- *  - feedbackType: "quiz_gate" | "session_complete"
- *  - onClose: dismiss the modal
- *  - onSubmitted: optional callback after successful submission
+ * Shown in multiple contexts:
+ *  1. After 15 free questions (quiz gate)
+ *  2. After a quiz session completes
+ *  3. After mock exam completion
+ *  4. After first 80%+ score (one-time)
  */
 
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { trpc } from "@/lib/trpc";
+import { isHappyRating, openGoogleReview, markReviewPromptShown } from "@/lib/reviewFunnel";
 
 interface FeedbackModalProps {
   examType: string;
-  feedbackType: "quiz_gate" | "session_complete";
+  feedbackType: "quiz_gate" | "session_complete" | "mock_exam" | "first_high_score";
   onClose: () => void;
   onSubmitted?: () => void;
 }
@@ -35,10 +34,12 @@ export default function FeedbackModal({
   const [hoveredStar, setHoveredStar] = useState(0);
   const [comment, setComment] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [redirectedToGoogle, setRedirectedToGoogle] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    markReviewPromptShown();
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => { document.body.style.overflow = prev; };
@@ -53,7 +54,6 @@ export default function FeedbackModal({
       }, 1800);
     },
     onError: () => {
-      // Still close on error — don't block the user
       setSubmitted(true);
       setTimeout(() => {
         onSubmitted?.();
@@ -62,12 +62,42 @@ export default function FeedbackModal({
     },
   });
 
+  function handleStarClick(star: number) {
+    setRating(star);
+
+    // If happy rating (4-5), redirect to Google immediately
+    if (isHappyRating(star)) {
+      // Still record internally that they gave a high rating
+      let province: string | undefined;
+      try { province = localStorage.getItem("echelon_province") ?? undefined; } catch {}
+      let email: string | undefined;
+      try { email = localStorage.getItem("echelon_trial_email") ?? undefined; } catch {}
+
+      submitMutation.mutate({
+        examType,
+        rating: star,
+        comment: "[Redirected to Google Review]",
+        feedbackType,
+        province,
+        email,
+      });
+
+      // Open Google review
+      openGoogleReview();
+      setRedirectedToGoogle(true);
+
+      // Auto-close after a moment
+      setTimeout(() => {
+        onSubmitted?.();
+        onClose();
+      }, 2500);
+    }
+  }
+
   function handleSubmit() {
     if (rating === 0) return;
-    // Get province from localStorage if available
     let province: string | undefined;
     try { province = localStorage.getItem("echelon_province") ?? undefined; } catch {}
-    // Get email from localStorage for guest users
     let email: string | undefined;
     try { email = localStorage.getItem("echelon_trial_email") ?? undefined; } catch {}
 
@@ -83,33 +113,76 @@ export default function FeedbackModal({
 
   const activeStar = hoveredStar || rating;
 
-  const content = submitted ? (
-    <div style={{
-      position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
-      background: "rgba(15,23,42,0.55)",
-      backdropFilter: "blur(8px)",
-      WebkitBackdropFilter: "blur(8px)",
-      zIndex: 99998,
-      display: "flex", alignItems: "center", justifyContent: "center",
-      padding: 20,
-    }}>
+  // Thank you state after Google redirect
+  if (redirectedToGoogle) {
+    const content = (
       <div style={{
-        background: "#fff", borderRadius: 20, padding: "36px 32px",
-        maxWidth: 420, width: "100%",
-        boxShadow: "0 32px 80px rgba(0,0,0,0.35)",
-        textAlign: "center",
-        animation: "feedbackFadeIn 0.3s ease",
+        position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
+        background: "rgba(15,23,42,0.55)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+        zIndex: 99998,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        padding: 20,
       }}>
-        <div style={{ fontSize: 48, marginBottom: 12 }}>💙</div>
-        <h3 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 8, fontFamily: "Sora, sans-serif" }}>
-          Thank you for your feedback!
-        </h3>
-        <p style={{ color: "#64748B", fontSize: 14 }}>
-          Your input helps us improve Echelon for every operator.
-        </p>
+        <div style={{
+          background: "#fff", borderRadius: 20, padding: "36px 32px",
+          maxWidth: 420, width: "100%",
+          boxShadow: "0 32px 80px rgba(0,0,0,0.35)",
+          textAlign: "center",
+          animation: "feedbackFadeIn 0.3s ease",
+        }}>
+          <div style={{ fontSize: 48, marginBottom: 12 }}>⭐</div>
+          <h3 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 8, fontFamily: "Sora, sans-serif" }}>
+            Thanks! A Google Review tab opened.
+          </h3>
+          <p style={{ color: "#64748B", fontSize: 14 }}>
+            Your review helps other operators find quality training.
+          </p>
+        </div>
       </div>
-    </div>
-  ) : (
+    );
+    if (!mounted) return null;
+    return createPortal(content, document.body);
+  }
+
+  // Thank you state after internal submission
+  if (submitted) {
+    const content = (
+      <div style={{
+        position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
+        background: "rgba(15,23,42,0.55)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+        zIndex: 99998,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        padding: 20,
+      }}>
+        <div style={{
+          background: "#fff", borderRadius: 20, padding: "36px 32px",
+          maxWidth: 420, width: "100%",
+          boxShadow: "0 32px 80px rgba(0,0,0,0.35)",
+          textAlign: "center",
+          animation: "feedbackFadeIn 0.3s ease",
+        }}>
+          <div style={{ fontSize: 48, marginBottom: 12 }}>💙</div>
+          <h3 style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", marginBottom: 8, fontFamily: "Sora, sans-serif" }}>
+            Thank you for your feedback!
+          </h3>
+          <p style={{ color: "#64748B", fontSize: 14 }}>
+            Your input helps us improve Echelon for every operator.
+          </p>
+        </div>
+      </div>
+    );
+    if (!mounted) return null;
+    return createPortal(content, document.body);
+  }
+
+  // Main form — shows comment only for 1-3 star ratings
+  const showCommentForm = rating > 0 && !isHappyRating(rating);
+
+  const content = (
     <div style={{
       position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
       background: "rgba(15,23,42,0.55)",
@@ -159,7 +232,7 @@ export default function FeedbackModal({
 
         {/* Header */}
         <div style={{ fontSize: 36, marginBottom: 10 }}>
-          {feedbackType === "quiz_gate" ? "📝" : "🎯"}
+          {feedbackType === "quiz_gate" ? "📝" : feedbackType === "mock_exam" ? "🏆" : feedbackType === "first_high_score" ? "🎉" : "🎯"}
         </div>
         <h3 style={{
           fontSize: 19, fontWeight: 800, color: "#0F172A",
@@ -167,11 +240,19 @@ export default function FeedbackModal({
         }}>
           {feedbackType === "quiz_gate"
             ? "How was your experience?"
+            : feedbackType === "mock_exam"
+            ? "How was that exam?"
+            : feedbackType === "first_high_score"
+            ? "Nice score! How's Echelon working for you?"
             : "How was this session?"}
         </h3>
         <p style={{ color: "#64748B", fontSize: 13, marginBottom: 20, lineHeight: 1.5 }}>
           {feedbackType === "quiz_gate"
             ? "Quick feedback before you continue — it helps us improve!"
+            : feedbackType === "mock_exam"
+            ? "Rate your mock exam experience."
+            : feedbackType === "first_high_score"
+            ? "You're clearly learning — let us know how it's going."
             : "Rate your practice session — your feedback shapes Echelon."}
         </p>
 
@@ -183,7 +264,7 @@ export default function FeedbackModal({
               className="fb-star"
               role="button"
               aria-label={`${star} star${star > 1 ? "s" : ""}`}
-              onClick={() => setRating(star)}
+              onClick={() => handleStarClick(star)}
               onMouseEnter={() => setHoveredStar(star)}
               onMouseLeave={() => setHoveredStar(0)}
               style={{
@@ -204,53 +285,58 @@ export default function FeedbackModal({
           {activeStar > 0 ? STAR_LABELS[activeStar] : "Tap a star to rate"}
         </div>
 
-        {/* Comment (optional) */}
-        <textarea
-          placeholder="Any suggestions? (optional)"
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          maxLength={1000}
-          rows={3}
-          style={{
-            width: "100%",
-            padding: "10px 14px",
-            borderRadius: 10,
-            border: "1.5px solid #E2E8F0",
-            fontSize: 14,
-            fontFamily: "inherit",
-            resize: "vertical",
-            outline: "none",
-            boxSizing: "border-box",
-            marginBottom: 16,
-            minHeight: 72,
-          }}
-          onFocus={(e) => { e.target.style.borderColor = "#1D4ED8"; }}
-          onBlur={(e) => { e.target.style.borderColor = "#E2E8F0"; }}
-        />
+        {/* Comment form — only for 1-3 stars (unhappy path) */}
+        {showCommentForm && (
+          <>
+            <p style={{ color: "#64748B", fontSize: 12, marginBottom: 10 }}>
+              We're sorry to hear that. What could we do better?
+            </p>
+            <textarea
+              placeholder="Tell us what went wrong..."
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              maxLength={1000}
+              rows={3}
+              style={{
+                width: "100%",
+                padding: "10px 14px",
+                borderRadius: 10,
+                border: "1.5px solid #E2E8F0",
+                fontSize: 14,
+                fontFamily: "inherit",
+                resize: "vertical",
+                outline: "none",
+                boxSizing: "border-box",
+                marginBottom: 16,
+                minHeight: 72,
+              }}
+              onFocus={(e) => { e.target.style.borderColor = "#1D4ED8"; }}
+              onBlur={(e) => { e.target.style.borderColor = "#E2E8F0"; }}
+            />
 
-        {/* Submit button */}
-        <button
-          onClick={handleSubmit}
-          disabled={rating === 0 || submitMutation.isPending}
-          style={{
-            width: "100%",
-            padding: "13px 20px",
-            borderRadius: 12,
-            border: "none",
-            background: rating === 0
-              ? "#E2E8F0"
-              : "linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%)",
-            color: rating === 0 ? "#94A3B8" : "#fff",
-            fontSize: 15,
-            fontWeight: 800,
-            cursor: rating === 0 ? "not-allowed" : "pointer",
-            fontFamily: "inherit",
-            touchAction: "manipulation",
-            letterSpacing: "0.01em",
-          }}
-        >
-          {submitMutation.isPending ? "Sending…" : "Submit Feedback"}
-        </button>
+            {/* Submit button */}
+            <button
+              onClick={handleSubmit}
+              disabled={submitMutation.isPending}
+              style={{
+                width: "100%",
+                padding: "13px 20px",
+                borderRadius: 12,
+                border: "none",
+                background: "linear-gradient(135deg, #1D4ED8 0%, #0EA5E9 100%)",
+                color: "#fff",
+                fontSize: 15,
+                fontWeight: 800,
+                cursor: "pointer",
+                fontFamily: "inherit",
+                touchAction: "manipulation",
+                letterSpacing: "0.01em",
+              }}
+            >
+              {submitMutation.isPending ? "Sending…" : "Submit Feedback"}
+            </button>
+          </>
+        )}
 
         {/* Skip link */}
         <button

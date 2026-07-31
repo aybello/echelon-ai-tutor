@@ -20,6 +20,7 @@ import ConfidenceMeter from "@/components/ConfidenceMeter";
 import StepSolution from "@/components/StepSolution";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import FeedbackModal from "@/components/FeedbackModal";
+import { shouldShowReviewPrompt, GOOGLE_REVIEW_URL, markReviewPromptShown } from "@/lib/reviewFunnel";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 
@@ -307,17 +308,13 @@ export default function QuizShell({
               {correctCount} correct · {wrongCount} incorrect
               {sessionSize ? ` · ${sessionSize} questions` : ""}
             </p>
-            {/* Google Review prompt — shown when user scores 70%+ AND has completed 3+ sessions */}
-            {pct >= 70 && (() => {
-              try {
-                const count = parseInt(localStorage.getItem("echelon_session_count") ?? "0", 10) || 0;
-                return count >= 3;
-              } catch { return false; }
-            })() && (
+            {/* Google Review prompt — shown when user scores 70%+ AND review prompt budget allows */}
+            {pct >= 70 && shouldShowReviewPrompt() && (
               <a
-                href="https://g.page/r/CWsjBbkUlS8rEBM/review"
+                href={GOOGLE_REVIEW_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => markReviewPromptShown()}
                 style={{
                   display: "flex",
                   alignItems: "center",

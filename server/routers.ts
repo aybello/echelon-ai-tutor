@@ -442,7 +442,7 @@ export const appRouter = router({
           rating: z.number().int().min(1).max(5),
           comment: z.string().max(1000).optional(),
           email: z.string().email().optional(), // for guest users
-          feedbackType: z.enum(["quiz_gate", "session_complete"]),
+          feedbackType: z.enum(["quiz_gate", "session_complete", "mock_exam", "first_high_score"]),
           province: z.string().max(32).optional(),
         })
       )

@@ -13,6 +13,8 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { shuffle } from "@/lib/utils";
+import FeedbackModal from "@/components/FeedbackModal";
+import { shouldShowReviewPrompt } from "@/lib/reviewFunnel";
 
 // ─── Inline AI Tutor for review mode ─────────────────────────────────────────
 
@@ -407,6 +409,7 @@ export default function MockExamShell({
   const [flagged, setFlagged] = useState<number[]>([]);
   const [showReview, setShowReview] = useState(false);
   const [reportModal, setReportModal] = useState<{ id: number; text: string; module: string } | null>(null);
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [selectedProvince, setSelectedProvince] = useState<string>(() =>
     typeof localStorage !== "undefined" ? (localStorage.getItem("echelon_province") ?? "Ontario") : "Ontario"
   );
@@ -492,6 +495,14 @@ export default function MockExamShell({
       ...(stream ? { stream } : {}),
     });
   }, [examState, results]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Show feedback modal after mock exam results (with delay for user to see score)
+  useEffect(() => {
+    if (examState !== "results" || !results) return;
+    if (!shouldShowReviewPrompt()) return;
+    const timer = setTimeout(() => setShowFeedbackModal(true), 3000);
+    return () => clearTimeout(timer);
+  }, [examState, results]);
 
   const currentQ = questions[currentIdx];
   const answered = answers.filter(a => a.selected !== null).length;
@@ -847,6 +858,13 @@ export default function MockExamShell({
             questionText={reportModal.text}
             module={reportModal.module}
             onClose={() => setReportModal(null)}
+          />
+        )}
+        {showFeedbackModal && (
+          <FeedbackModal
+            examType={scoreExamType ?? productKey}
+            feedbackType="mock_exam"
+            onClose={() => setShowFeedbackModal(false)}
           />
         )}
       </div>
