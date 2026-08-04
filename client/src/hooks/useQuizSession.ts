@@ -58,6 +58,7 @@ export interface UseQuizSessionReturn {
   tutorOpen: boolean;
   selectedModule: string | null;
   calcOnly: boolean;
+  noCalcQuestions: boolean;
   quizMode: QuizMode;
   quizSettings: QuizSettings;
   settingsOpen: boolean;
@@ -184,6 +185,7 @@ export function useQuizSession({
   const [tutorOpen, setTutorOpenState] = useState(false);
   const [selectedModule, setSelectedModule] = useState<string | null>(initialTopic);
   const [calcOnly, setCalcOnly] = useState(initialCalcOnly);
+  const [noCalcQuestions, setNoCalcQuestions] = useState(false);
   const [initialized, setInitialized] = useState(false);
 
   // ── Trial / gate state ─────────────────────────────────────────────────────
@@ -585,14 +587,20 @@ export function useQuizSession({
   // ── Calc-only toggle ───────────────────────────────────────────────────────
   const handleCalcOnlyToggle = useCallback(() => {
     const next = !calcOnly;
-    setCalcOnly(next);
-    setHistory([]);
-    setUsedIds(new Set());
-    clearUI();
     const newPool = allQuestions.filter((q) => !next || q.isCalc);
     const filtered = selectedModule
       ? newPool.filter((q) => q.module === selectedModule)
       : newPool;
+    // Guard: if toggling ON but no calc questions exist, don't toggle — keep current state
+    if (next && filtered.length === 0) {
+      setNoCalcQuestions(true);
+      return;
+    }
+    setNoCalcQuestions(false);
+    setCalcOnly(next);
+    setHistory([]);
+    setUsedIds(new Set());
+    clearUI();
     setCurrent(pickRandom(filtered));
   }, [calcOnly, allQuestions, selectedModule, clearUI]);
 
@@ -685,6 +693,7 @@ export function useQuizSession({
     tutorOpen,
     selectedModule,
     calcOnly,
+    noCalcQuestions,
     quizMode,
     quizSettings,
     settingsOpen,
