@@ -1174,3 +1174,6 @@
 - [x] Add one-time review prompt after first quiz score ≥ 80%
 - [x] Add passive "Rate us on Google" link on Account page
 - [x] Track review prompt count per user (max 3 total, never more than 1 per session)
+- [x] Permanently suppress review prompt after user clicks through to Google (markAsReviewed localStorage flag)
+- [x] Add "I already left a review" dismiss button to FeedbackModal (permanently suppresses future prompts)
+- [x] Wire markAsReviewed into QuizShell direct CTA and CommandFeedback panel

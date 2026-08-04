@@ -13,7 +13,7 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { trpc } from "@/lib/trpc";
-import { isHappyRating, openGoogleReview, markReviewPromptShown } from "@/lib/reviewFunnel";
+import { isHappyRating, openGoogleReview, markReviewPromptShown, markAsReviewed } from "@/lib/reviewFunnel";
 
 interface FeedbackModalProps {
   examType: string;
@@ -338,6 +338,29 @@ export default function FeedbackModal({
           </>
         )}
 
+        {/* "I already left a review" — permanently suppress */}
+        <button
+          onClick={() => {
+            markAsReviewed();
+            onClose();
+          }}
+          style={{
+            display: "block",
+            width: "100%",
+            padding: "10px",
+            background: "transparent",
+            border: "none",
+            color: "#1D4ED8",
+            fontSize: 12,
+            fontWeight: 600,
+            cursor: "pointer",
+            fontFamily: "inherit",
+            marginTop: 12,
+          }}
+        >
+          I already left a review
+        </button>
+
         {/* Skip link */}
         <button
           onClick={onClose}
@@ -352,7 +375,7 @@ export default function FeedbackModal({
             fontWeight: 500,
             cursor: "pointer",
             fontFamily: "inherit",
-            marginTop: 8,
+            marginTop: 4,
           }}
         >
           Skip for now
