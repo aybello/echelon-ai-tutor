@@ -63,6 +63,7 @@ export default function Class3WaterQuiz() {
       onModuleChange={session.handleModuleChange}
       hasCalcOnly
       calcOnly={session.calcOnly}
+      noCalcQuestions={session.noCalcQuestions}
       onCalcOnlyToggle={session.handleCalcOnlyToggle}
       current={session.current}
       selected={session.selected}

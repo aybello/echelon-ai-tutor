@@ -79,6 +79,7 @@ export interface QuizShellProps {
   // Calc Only
   hasCalcOnly?: boolean;
   calcOnly: boolean;
+  noCalcQuestions?: boolean;
   onCalcOnlyToggle: () => void;
 
   // Current question
@@ -165,6 +166,7 @@ export default function QuizShell({
   onModuleChange,
   hasCalcOnly = false,
   calcOnly,
+  noCalcQuestions = false,
   onCalcOnlyToggle,
   current,
   selected,
@@ -194,6 +196,13 @@ export default function QuizShell({
   isFreePreview = false,
   freeLimit = 15,
 }: QuizShellProps) {
+  // Show toast when calc-only has no questions available
+  useEffect(() => {
+    if (noCalcQuestions) {
+      toast.error("No calculation questions available for this course yet.", { duration: 4000 });
+    }
+  }, [noCalcQuestions]);
+
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);

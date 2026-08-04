@@ -1177,3 +1177,6 @@
 - [x] Permanently suppress review prompt after user clicks through to Google (markAsReviewed localStorage flag)
 - [x] Add "I already left a review" dismiss button to FeedbackModal (permanently suppresses future prompts)
 - [x] Wire markAsReviewed into QuizShell direct CTA and CommandFeedback panel
+
+## Bug Fix (Aug 4, 2026)
+- [x] Fix blank white screen when clicking "Calc Only" questions filter in quiz pages
