@@ -1059,3 +1059,121 @@
 - [ ] Switch to live Stripe keys once site is published (Settings → Payment)
 - [ ] Register Stripe live webhook endpoint in Stripe Dashboard using published URL
 - [ ] Add live Stripe Webhook Secret (whsec_...) in Settings → Payment
+
+## US Market Expansion (Jul 2026)
+
+### Phase 1: US State Config + Landing Pages
+- [x] Add `stateConfig.ts` — US state registry mapping states to WPI exam framework
+- [x] Extend `provinceConfig.ts` types to support US states (or create parallel `stateConfig.ts`)
+- [x] Build `/us` landing page targeting US water/wastewater operators
+- [x] Build `/us/states` state-selection page (interactive US map or state dropdown)
+- [x] Build `/us/[state]` dynamic state page (e.g. `/us/iowa`, `/us/colorado`)
+- [x] Add US routes to App.tsx
+- [x] Add US nav entry to SiteNav
+
+### Phase 2: US Course Pages (reuse WPI question banks)
+- [ ] Build US quiz pages for all 4 streams × 4 classes (reuse wpi-class{1-4}-{water/ww/dist/coll} banks)
+- [ ] Build US mock exam pages for all 4 streams × 4 classes
+- [ ] Build US flashcard pages for all 4 streams × 4 classes
+- [ ] Wire all US course routes in App.tsx
+
+### Phase 3: US Pricing + Stripe Products
+- [ ] Add US pricing tier to Pricing page ($59/$79/$99 USD vs CA$79/99/129)
+- [ ] Add US Stripe products in server/stripe/products.ts
+- [ ] Add US currency detection (IP or user preference)
+- [ ] Update PurchaseGate to show USD pricing for US users
+
+### Phase 4: US SEO Content
+- [x] Add US SSR pages to pageSsr.ts (targeting "water operator exam [state]" keywords)
+- [ ] Seed 5 US-targeted blog posts (Iowa DNR exam, Colorado CDPHE, ABC certification guide, etc.)
+- [x] Update llms.txt to include US content
+- [ ] Update sitemap.xml with US routes
+
+## Site Neutralization + USD Pricing (Jul 15 2026)
+
+### Phase A — Site Neutralization
+- [ ] Create `useGeoRegion()` hook (timezone-based CA/US detection, localStorage cached)
+- [ ] Landing.tsx: geo-aware hero CTA ("Try Free OIT Practice" for CA, "Try Free Practice" for US)
+- [ ] Landing.tsx: blog section h2 "Study Guides for Canadian Operators" → "Study Guides for Water & Wastewater Operators"
+- [ ] Landing.tsx: footer disclaimer — add state certifying authorities to "not affiliated" list
+- [ ] About.tsx: "Canada-First" value → "Operator-First"
+- [ ] About.tsx: remove "No American content repurposed for Canadian exams"
+- [ ] About.tsx: update founding story to include US expansion
+- [ ] About.tsx: footer "Built for Canadian water and wastewater operators" → "Built for water and wastewater operators across North America"
+
+### Phase B — USD Pricing
+- [ ] shared/products.ts: add `priceUSD?: number` field and USD prices for all products
+- [ ] Pricing.tsx: show USD prices for US visitors, CAD for Canadian visitors
+- [ ] server/stripe/products.ts: add USD Stripe Price IDs
+
+### Phase C — State Config Fix
+- [ ] stateConfig.ts: fix 3-category classification (WPI Direct / Own+ABC / Fully Independent)
+- [ ] USStatePage.tsx: show coverage note for Category 2 and "coming soon" for Category 3
+
+## Echelon Command — Incident Simulator Expansion (Jul 2026)
+- [x] Add 3 new Command scenarios: Millbrook Chemical Dosing Failure, Riverside Water Main Break, Lakeview Boil Water Advisory
+- [x] Extract all scenario data into commandScenarios.ts (4 scenarios, 5 steps each, full telemetry + choices)
+- [x] Add command_run_history DB table (userId, scenarioId, commandScore, optimalCalls, totalSteps, elapsedSeconds)
+- [x] Add saveRun tRPC procedure — persist completed scenario run to DB
+- [x] Add getMyHistory tRPC procedure — return last 20 runs for logged-in user
+- [x] Add getLeaderboard tRPC procedure — top 20 operators by best single-run score (public)
+- [x] Build scenario selector grid on /command intro screen (4 scenario cards)
+- [x] Build HistoryPanel component with My Runs / Leaderboard tab toggle
+- [x] Wire saveRun + invalidate history/leaderboard on debrief completion
+- [x] Update incidentCommand.test.ts to match new router API (removed evaluateSubmittedDecisions/submittedScenarioSchema)
+- [x] All 526 tests passing, TypeScript clean
+- [x] Fix "Generate Action Review" button — client used base step array instead of branch-aware getScenarioStepAtIndex, causing stepId mismatch on branching scenarios
+- [x] Merge codex/command-ai-director branch — server-side scoring, branching scenarios, GPT-5.6 judgment evaluator, grounding verifier
+- [x] Full guest mode — guestId in all Command procedures, leaderboard shows guest entries, localStorage persistence
+- [x] Add prominent Echelon Command CTA to the homepage
+- [x] Ensure Command is easily accessible from all key navigation points (Landing nav, hero CTA, Study Tools grid, MobileBottomNav)
+- [x] Rebuild Command live-mode UI into realistic SCADA/HMI control room (animated gauges, live telemetry, alarm panel, process flow, dark industrial theme)
+- [x] Simplify all 4 Command scenario scripts to Class 1 operator student reading level (clear, direct language, short sentences, plain verbs)
+
+## Command Centre — Full Product Build-Out
+- [x] Switch all Command OpenAI/GPT calls to built-in Manus LLM
+- [x] Expand scenario library to 10-12 scenarios (7-10 steps each, branching paths)
+- [x] Add countdown timer / time pressure per decision step
+- [x] Add "INCIDENT DETECTED" intro animation before scenario starts
+- [x] Add score breakdown on debrief (green/red per decision, points gained/lost)
+- [ ] Add adaptive difficulty (easy → medium → hard based on performance)
+- [ ] Add weak-area targeting ("You struggle with X — try this scenario")
+- [ ] Add spaced repetition scheduling for failed scenarios
+- [ ] Add multi-role coordination (lab, maintenance, management comms)
+- [ ] Add sound effects (alarm beeps, click feedback, success chime)
+- [ ] Add typing animation on AI debrief text
+- [ ] Add certificate of completion after passing all scenarios
+- [x] Add session tracking (log every run: scenario, score, time spent, decisions)
+- [x] Add feedback modal after debrief (1-5 stars + optional text)
+- [x] Add email capture CTA on debrief ("Get notified when new scenarios drop")
+- [ ] Weekly scenario rotation system
+
+## Command Centre — UI/UX Redesign
+- [x] Switch Command Centre from dark mode to light mode (clean, professional)
+- [x] Redesign intro/scenario selector page in light mode
+- [x] Redesign live simulation screen in light mode
+- [x] Redesign debrief screen in light mode
+- [x] Redesign ScadaHeader and ScadaPanel components for light mode
+- [x] Rewrite scenario answer choices to be more nuanced (no obvious correct answer)
+- [x] Make all options sound plausible with subtle procedural differences
+
+## Command Centre — Phase 4: Supervisor Cohort View
+- [x] Add decisionsJson column to command_run_history (stores step-level choices per run)
+- [x] Populate decisionsJson on every debrief insert (authenticated + guest)
+- [x] Add getCommandCohortSummary procedure to orgIntelRouter (per-scenario stats, most-missed steps, operator scores)
+- [x] Add Command Centre section to OrgDashboard (summary metrics, most-missed steps table, operator scores table)
+- [x] Remove `as Choice` cast — add proper runtime error for misconfigured branch IDs
+- [x] Add parameterized tests for all 12 scenarios (branch mapping, optimal path, judgment config)
+- [x] Server-side displayName derivation (ignore client input, derive from guestId)
+- [x] Tighter rate limiter for Command debrief (5 req/min)
+
+## Google Review Funnel
+- [x] Update FeedbackModal: 4-5 stars → redirect to Google review, 1-3 stars → internal form
+- [x] Update CommandFeedback (FeedbackPanel): same 4-5 → Google, 1-3 → internal logic
+- [x] Add review prompt after mock exam completion
+- [x] Add one-time review prompt after first quiz score ≥ 80%
+- [x] Add passive "Rate us on Google" link on Account page
+- [x] Track review prompt count per user (max 3 total, never more than 1 per session)
+- [x] Permanently suppress review prompt after user clicks through to Google (markAsReviewed localStorage flag)
+- [x] Add "I already left a review" dismiss button to FeedbackModal (permanently suppresses future prompts)
+- [x] Wire markAsReviewed into QuizShell direct CTA and CommandFeedback panel

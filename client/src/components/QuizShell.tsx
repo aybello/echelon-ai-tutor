@@ -20,7 +20,7 @@ import ConfidenceMeter from "@/components/ConfidenceMeter";
 import StepSolution from "@/components/StepSolution";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import FeedbackModal from "@/components/FeedbackModal";
-import { shouldShowReviewPrompt, GOOGLE_REVIEW_URL, markReviewPromptShown } from "@/lib/reviewFunnel";
+import { shouldShowReviewPrompt, GOOGLE_REVIEW_URL, markReviewPromptShown, markAsReviewed } from "@/lib/reviewFunnel";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 
@@ -314,7 +314,7 @@ export default function QuizShell({
                 href={GOOGLE_REVIEW_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => markReviewPromptShown()}
+                onClick={() => { markReviewPromptShown(); markAsReviewed(); }}
                 style={{
                   display: "flex",
                   alignItems: "center",

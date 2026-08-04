@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Star, Mail, CheckCircle2, X, ExternalLink } from "lucide-react";
-import { isHappyRating, openGoogleReview, markReviewPromptShown } from "@/lib/reviewFunnel";
+import { isHappyRating, openGoogleReview, markReviewPromptShown, markAsReviewed } from "@/lib/reviewFunnel";
 
 // --- Feedback Panel (Google review funnel) ---
 
@@ -29,8 +29,9 @@ export function FeedbackPanel({ scenarioId, guestId }: FeedbackPanelProps) {
     setRating(star);
 
     if (isHappyRating(star)) {
-      // Record internally then redirect to Google
+      // Record internally then redirect to Google — permanently suppress future prompts
       markReviewPromptShown();
+      markAsReviewed();
       submitMutation.mutate({
         scenarioId,
         rating: star,
