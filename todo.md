@@ -1180,3 +1180,4 @@
 
 ## Bug Fix (Aug 4, 2026)
 - [x] Fix blank white screen when clicking "Calc Only" questions filter in quiz pages
+- [x] Tag isCalc='yes' for all calculation questions in Ontario Class 1-4 banks (16 banks, ~8000 questions) — 613 existing tagged + 987 new calc questions generated and inserted, all 16 banks now have 100 calc questions each
