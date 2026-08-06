@@ -49,7 +49,6 @@ const MagicLinkConsume = lazy(() => import("./pages/MagicLinkConsume"));
 const OtpLogin = lazy(() => import("./pages/OtpLogin"));
 const Teams = lazy(() => import("./pages/Teams"));
 const OrgDashboard = lazy(() => import("./pages/OrgDashboard"));
-const ManagerLogin = lazy(() => import("./pages/ManagerLogin"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Careers = lazy(() => import("./pages/Careers"));

@@ -33,6 +33,22 @@ function createTransporter(): nodemailer.Transporter {
   throw new Error("SMTP not configured");
 }
 
+async function getTransporter(): Promise<nodemailer.Transporter> {
+  if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
+    return createTransporter();
+  }
+  if (!ENV.isProduction) {
+    const testAccount = await nodemailer.createTestAccount();
+    return nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false,
+      auth: { user: testAccount.user, pass: testAccount.pass },
+    });
+  }
+  throw new Error("SMTP not configured in production");
+}
+
 /**
  * Sends a purchase confirmation email to the buyer after a successful Stripe checkout.
  * Includes their access link, the email they used, and a restore-access reminder.
@@ -1218,4 +1234,92 @@ export async function sendOtpEmail(payload: OtpEmailPayload): Promise<void> {
   } else {
     console.log(`[OTP Email] Sent to ${email.replace(/(^.{3}).+@/, "$1***@")}`);
   }
+}
+
+// ─── Manager onboarding email (sent immediately after org provisioning) ────────
+
+export interface ManagerOnboardingEmailPayload {
+  managerEmail: string;
+  orgName: string;
+  seats: number;
+  tierLabel: string;
+  dashboardUrl: string;
+}
+
+export async function sendManagerOnboardingEmail(payload: ManagerOnboardingEmailPayload): Promise<void> {
+  const { managerEmail, orgName, seats, tierLabel, dashboardUrl } = payload;
+  const transporter = await getTransporter();
+  const info2 = await transporter.sendMail({
+    from: `"Echelon Institute" <${ENV.smtpUser ?? "noreply@echeloninstitute.ca"}>`,
+    to: managerEmail,
+    subject: `Your ${orgName} team plan is ready - Echelon Institute`,
+    text: [
+      `Hi,`,
+      ``,
+      `Your ${orgName} team plan on Echelon Institute is ready.`,
+      ``,
+      `Plan: ${tierLabel} | ${seats} operator licence${seats === 1 ? "" : "s"}`,
+      ``,
+      `How to sign in:`,
+      `  1. Use this email address (${managerEmail}) - the one you used at checkout.`,
+      `  2. Echelon will send you a six-digit verification code. No password needed.`,
+      `  3. From the Team Dashboard, invite operators and assign courses.`,
+      ``,
+      `Your manager account does not consume an operator licence.`,
+      ``,
+      `Open Team Dashboard: ${dashboardUrl}`,
+      ``,
+      `Questions? Reply to this email or reach us at abello@echeloninstitute.ca`,
+      ``,
+      `-- The Echelon Institute Team`,
+    ].join("\n"),
+    html: `<!DOCTYPE html><html><head><meta charset="utf-8"></head><body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,sans-serif;"><table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;"><tr><td align="center"><table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;"><tr><td style="background:linear-gradient(135deg,#1D4ED8 0%,#0E7490 100%);border-radius:12px 12px 0 0;padding:32px;text-align:center;"><h1 style="color:#fff;margin:0 0 8px;font-size:26px;font-weight:800;">Your team plan is ready</h1><p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">${orgName}</p></td></tr><tr><td style="background:#fff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;"><div style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:10px;padding:18px 22px;margin-bottom:24px;"><p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#1D4ED8;text-transform:uppercase;">Plan Summary</p><p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#0F172A;">${orgName}</p><p style="margin:0 0 4px;font-size:14px;color:#475569;">${tierLabel} &middot; ${seats} operator licence${seats === 1 ? "" : "s"}</p><p style="margin:0;font-size:13px;color:#64748B;">Your manager account does not consume an operator licence.</p></div><ol style="margin:0 0 24px;padding-left:20px;"><li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Use <strong>${managerEmail}</strong> to sign in.</li><li style="font-size:13px;color:#475569;margin-bottom:8px;line-height:1.5;">Echelon will send you a six-digit verification code. No password needed.</li><li style="font-size:13px;color:#475569;line-height:1.5;">From the Team Dashboard, invite operators and assign courses.</li></ol><div style="text-align:center;margin-bottom:24px;"><a href="${dashboardUrl}" style="display:inline-block;background:linear-gradient(135deg,#1D4ED8,#0E7490);color:#fff;text-decoration:none;padding:16px 32px;border-radius:10px;font-size:16px;font-weight:800;">Open Team Dashboard</a></div><p style="margin:0;font-size:12px;color:#94A3B8;text-align:center;">Questions? <a href="mailto:abello@echeloninstitute.ca" style="color:#1D4ED8;">abello@echeloninstitute.ca</a></p></td></tr></table></td></tr></table></body></html>`,
+  });
+  if (!ENV.smtpHost) {
+    console.log("[Manager Onboarding Email] Preview URL:", nodemailer.getTestMessageUrl(info2));
+  } else {
+    console.log(`[Manager Onboarding Email] Sent to ${managerEmail.replace(/(^.{3}).+@/, "$1***@")}`);
+  }
+}
+
+// ─── Org payment confirmation email (invoice.payment_succeeded) ────────────────
+
+export interface OrgPaymentConfirmationEmailPayload {
+  managerEmail: string;
+  orgName: string;
+  seats: number;
+  tierLabel: string;
+  amountFormatted: string;
+  periodEnd: Date;
+  hostedInvoiceUrl?: string | null;
+  invoicePdfUrl?: string | null;
+}
+
+export async function sendOrgPaymentConfirmationEmail(payload: OrgPaymentConfirmationEmailPayload): Promise<void> {
+  const { managerEmail, orgName, seats, tierLabel, amountFormatted, periodEnd, hostedInvoiceUrl, invoicePdfUrl } = payload;
+  const transporter = await getTransporter();
+  const periodEndStr = periodEnd.toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" });
+  const invoiceLink = hostedInvoiceUrl ?? invoicePdfUrl ?? null;
+  await transporter.sendMail({
+    from: `"Echelon Institute" <${ENV.smtpUser ?? "noreply@echeloninstitute.ca"}>`,
+    to: managerEmail,
+    subject: `Payment confirmed - ${orgName} team plan renewed`,
+    text: [
+      `Hi,`,
+      ``,
+      `Your ${orgName} team plan has been renewed.`,
+      ``,
+      `Plan: ${tierLabel} | ${seats} operator licence${seats === 1 ? "" : "s"}`,
+      `Amount charged: ${amountFormatted}`,
+      `Next renewal: ${periodEndStr}`,
+      ``,
+      invoiceLink ? `View your invoice: ${invoiceLink}` : `Your Stripe receipt has been sent to ${managerEmail}.`,
+      ``,
+      `Questions? Reply to this email or reach us at abello@echeloninstitute.ca`,
+      ``,
+      `-- The Echelon Institute Team`,
+    ].join("\n"),
+    html: `<!DOCTYPE html><html><head><meta charset="utf-8"></head><body style="margin:0;padding:0;background:#F1F5F9;font-family:Arial,sans-serif;"><table width="100%" cellpadding="0" cellspacing="0" style="background:#F1F5F9;padding:32px 16px;"><tr><td align="center"><table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;"><tr><td style="background:linear-gradient(135deg,#059669 0%,#0E7490 100%);border-radius:12px 12px 0 0;padding:32px;text-align:center;"><h1 style="color:#fff;margin:0 0 8px;font-size:26px;font-weight:800;">Payment confirmed</h1><p style="color:rgba(255,255,255,0.85);margin:0;font-size:15px;">${orgName} team plan renewed</p></td></tr><tr><td style="background:#fff;padding:32px;border:1px solid #E2E8F0;border-top:none;border-radius:0 0 12px 12px;"><div style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:10px;padding:18px 22px;margin-bottom:24px;"><p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#059669;text-transform:uppercase;">Renewal Summary</p><p style="margin:0 0 4px;font-size:18px;font-weight:800;color:#0F172A;">${orgName}</p><p style="margin:0 0 4px;font-size:14px;color:#475569;">${tierLabel} &middot; ${seats} operator licence${seats === 1 ? "" : "s"}</p><p style="margin:0 0 4px;font-size:14px;color:#475569;">Amount: <strong>${amountFormatted}</strong></p><p style="margin:0;font-size:13px;color:#64748B;">Next renewal: ${periodEndStr}</p></div>${invoiceLink ? `<div style="text-align:center;margin-bottom:24px;"><a href="${invoiceLink}" style="display:inline-block;background:linear-gradient(135deg,#059669,#0E7490);color:#fff;text-decoration:none;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:700;">View Invoice</a></div>` : `<p style="font-size:13px;color:#64748B;text-align:center;margin-bottom:24px;">Your Stripe receipt has been sent to ${managerEmail}.</p>`}<p style="margin:0;font-size:12px;color:#94A3B8;text-align:center;">Questions? <a href="mailto:abello@echeloninstitute.ca" style="color:#1D4ED8;">abello@echeloninstitute.ca</a></p></td></tr></table></td></tr></table></body></html>`,
+  });
+  console.log(`[Org Payment Confirmation Email] Sent to ${managerEmail.replace(/(^.{3}).+@/, "$1***@")}`);
 }

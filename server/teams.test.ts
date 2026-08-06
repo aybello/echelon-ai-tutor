@@ -13,7 +13,7 @@
  *  9. Quantity update: subscription.updated with type=org syncs seatsTotal
  * 10. Cancellation: subscription.deleted with type=org expires all seats
  * 11. normalizeEmail: mixed-case emails match correctly
- * 12. Admin createOrganizationManual: creates org + manager seat + operator seats
+ * 12. (Removed — createOrganizationManual was deleted; see teams.selfserve.test.ts)
  */
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
@@ -428,46 +428,5 @@ describe("normalizeEmail", () => {
     const email1 = normalize("Carl@Utilities.CA");
     const email2 = normalize("carl@utilities.ca");
     expect(email1).toBe(email2);
-  });
-});
-
-describe("admin createOrganizationManual", () => {
-  it("creates org with invoice billingType", () => {
-    const input = {
-      name: "City of Kingston",
-      province: "ontario",
-      seats: 20,
-      managerEmail: "manager@kingston.ca",
-      termEnd: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
-    };
-
-    const orgRow = {
-      name: input.name,
-      province: input.province,
-      tier: "all-access",
-      seatsTotal: input.seats,
-      managerEmail: input.managerEmail,
-      termEnd: input.termEnd,
-      billingType: "invoice",
-      status: "active",
-      stripeSubscriptionId: null,
-      stripeCustomerId: null,
-    };
-
-    expect(orgRow.billingType).toBe("invoice");
-    expect(orgRow.stripeSubscriptionId).toBeNull();
-    expect(orgRow.seatsTotal).toBe(20);
-  });
-
-  it("bulk operator emails are granted seats individually", () => {
-    const operatorEmails = ["op1@city.ca", "op2@city.ca", "op3@city.ca"];
-    const results: Array<{ email: string; success: boolean }> = [];
-
-    operatorEmails.forEach(email => {
-      results.push({ email, success: true });
-    });
-
-    expect(results).toHaveLength(3);
-    expect(results.every(r => r.success)).toBe(true);
   });
 });

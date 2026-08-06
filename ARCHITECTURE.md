@@ -382,7 +382,15 @@ const hasAccess = (examType: string): boolean => {
 ## Echelon for Teams
 
 ### Overview
-Echelon for Teams allows utility managers to purchase bulk seat subscriptions and assign access to their operators. Managers log in via OTP (same flow as students) and access the `/team` dashboard.
+Echelon for Teams allows utility managers to purchase bulk seat subscriptions and assign access to their operators.
+
+**Provisioning authority:** Stripe is the only path to creating an organization. There is no manual org creation, no invoice billing path, and no admin backdoor. All team plans are purchased through Stripe Checkout (`/teams`), and the resulting `customer.subscription.created` webhook provisions the org and manager account.
+
+**Manager authentication:** Managers authenticate through the unified `/account` OTP flow, the same flow used by individual learners. After entering their email, they receive a six-digit verification code. No separate manager password or magic link exists. After successful verification, managers are redirected to `/team`. The `/account?next=/team` URL is the canonical entry point; the `next` parameter is validated server-side to reject absolute URLs, protocol-relative URLs, and external domains.
+
+**Operator licences:** One purchased licence may be assigned to one distinct employee during a contract year. Revoking access does not restore that annual licence for reassignment to a different employee. Reactivating the same employee during the same term does not consume another licence. The organization manager does not consume an operator licence. Operators only see courses assigned to them by their manager. The purchased stream controls which courses the manager may assign.
+
+**Course key identity:** Canonical course keys and question-bank keys may differ. The `courseRegistry` (`shared/courseRegistry.ts`) is the source of truth connecting these identities. For Western Collection courses, the entitlement key is `wpi-class*-water-coll`, the public route is `/wpi-class*-water-coll`, and the question-bank key is `wpi-class*-wastewater-coll`. The `bankKeyToExamType` override map in `server/_core/access.ts` handles the translation.
 
 ### Database Tables
 
@@ -396,10 +404,10 @@ Echelon for Teams allows utility managers to purchase bulk seat subscriptions an
 | tier | varchar(32) | always 'all-access' for now |
 | seatsTotal | int | total purchased seats |
 | managerEmail | varchar(320) | primary manager email |
-| stripeSubscriptionId | varchar(128) | null for invoice orgs |
-| stripeCustomerId | varchar(128) | null for invoice orgs |
+| stripeSubscriptionId | varchar(128) | always set; Stripe is the only provisioning path |
+| stripeCustomerId | varchar(128) | always set; Stripe is the only provisioning path |
 | termEnd | timestamp | subscription expiry |
-| billingType | varchar(32) | 'stripe' \| 'invoice' |
+| billingType | varchar(32) | always 'stripe' |
 | status | varchar(32) | 'active' \| 'cancelled' |
 
 **`organization_members`** — one row per org-operator assignment.
@@ -426,21 +434,27 @@ Echelon for Teams allows utility managers to purchase bulk seat subscriptions an
 - `assignSeat` — grant single operator access (enforces seat cap)
 - `assignSeats` — bulk assign (enforces seat cap atomically)
 - `revokeSeat` — expire subscription + mark member revoked
-- `createOrganizationManual` — admin procedure for invoice-path org creation
+
+Note: `createOrganizationManual`, `updateOrganization`, `adminAssignSeat`, and `adminRevokeSeat` have been removed. Stripe is the only provisioning authority.
 
 **`server/routers/stripeRouter.ts`** additions:
-- `createTeamCheckout` — Stripe Checkout session for org seat purchase
+- `createTeamCheckout` — Stripe Checkout session for org seat purchase (1-500 licences, volume discounts auto-applied)
 - `updateTeamSeats` — update Stripe subscription quantity (proration)
 - `createBillingPortalSession` — Stripe billing portal for org managers
 
 ### Webhook Handling (`server/stripe/webhook.ts`)
-- `customer.subscription.created` with `metadata.type === "org"` → creates org row + grants manager seat
+- `customer.subscription.created` with `metadata.type === "org"` → creates org row + grants manager seat + sends manager onboarding email
 - `customer.subscription.updated` with `metadata.type === "org"` → syncs seatsTotal + extends termEnd on all managed operator rows
 - `customer.subscription.deleted` with `metadata.type === "org"` → sets org status=cancelled, expires all managed subscriptions, revokes all members
+- `invoice.payment_succeeded` with matching `organizations.stripeSubscriptionId` → updates org term dates + sends org payment confirmation email to manager. Falls through to individual learner renewal if no org matches.
+
+Failed provisioning is recovered by correcting the missing metadata on the Stripe subscription and replaying the webhook event from the Stripe Dashboard. Do not create orgs manually.
 
 ### Client Pages
-- `/teams` (`Teams.tsx`) — public buy page with seat selector and volume pricing
-- `/team/login` (`ManagerLogin.tsx`) — OTP login for managers (same flow as students)
+- `/teams` (`Teams.tsx`) — public buy page with seat selector and volume pricing (1-500 licences, all go through Stripe Checkout)
+- `/team/login` — redirects to `/account?next=/team` (no separate manager login page)
+- `/account` (`Account.tsx`) — unified OTP login for both learners and managers; reads `?next=` param and forwards it to `/login/otp` for post-auth redirect
+- `/login/otp` (`OtpLogin.tsx`) — 6-digit code entry; reads `?next=` param and redirects there after successful verification (safe relative paths only)
 - `/team` (`OrgDashboard.tsx`) — manager dashboard with overview cards, attention panel, member roster, assign/revoke modals, Manage Seats modal, Manage Billing button
 
 ### grantSeat Helper
@@ -454,3 +468,7 @@ Echelon for Teams allows utility managers to purchase bulk seat subscriptions an
 - Cross-org isolation is enforced by `requireOrgManager` which resolves orgId from the session email
 - Org-managed subscriptions are excluded from self-serve billing portal (identified by `orgId IS NOT NULL`)
 - `stripeSubscriptionId` is NOT NULL in the live DB; use sentinel `org-{orgId}-{email}` for org-managed rows
+- Annual licence consumption is tracked per distinct employee per contract term via `organization_term_operator_usage`
+- Reactivating the same employee in the same term does not consume a new licence (idempotent)
+- Revoking an operator preserves their progress; the member row and subscription row are kept with status='revoked'/'expired'
+- The `next` redirect parameter in `/account` and `/login/otp` accepts only same-application relative paths (must start with `/`, must not start with `//`, must not contain `:`)

@@ -19,6 +19,15 @@ export default function OtpLogin() {
   const [, navigate] = useLocation();
   const [step, setStep] = useState<Step>("email");
   // Pre-fill email from ?email= URL param (set by /account redirect)
+  // Read ?next= param — safe same-application relative paths only
+  const nextParam = (() => {
+    if (typeof window === "undefined") return "";
+    const raw = new URLSearchParams(window.location.search).get("next") ?? "";
+    // Accept only relative paths starting with / but not // (protocol-relative)
+    // and not containing : (absolute URL or data: URI)
+    return /^\/[^/]/.test(raw) && !/^\/\//.test(raw) && !raw.includes(":") ? raw : "";
+  })();
+
   const [email, setEmail] = useState(() => {
     if (typeof window === "undefined") return "";
     return new URLSearchParams(window.location.search).get("email") ?? "";
@@ -58,7 +67,8 @@ export default function OtpLogin() {
         setIsManager(!!data.isManager);
         setStep("success");
         const redirectPath = data.isManager ? "/team" : "/quiz";
-        setTimeout(() => navigate(redirectPath), 2500);
+        const finalPath = nextParam || redirectPath;
+        setTimeout(() => navigate(finalPath), 2500);
       } else {
         if (data.reason === "expired") {
           setErrorMsg("This code has expired. Please request a new one.");
@@ -386,7 +396,7 @@ export default function OtpLogin() {
             <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 20px" }}>
               Welcome back, <strong>{email}</strong>. Redirecting to your {isManager ? "team dashboard" : "courses"}…
             </p>
-            <Link href={isManager ? "/team" : "/quiz"}>
+            <Link href={nextParam || (isManager ? "/team" : "/quiz")}>
               <button style={btnStyle}>
                 {isManager ? "Go to Team Dashboard →" : "Go to Practice Quiz →"}
               </button>
