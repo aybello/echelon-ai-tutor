@@ -1181,3 +1181,8 @@
 ## Bug Fix (Aug 4, 2026)
 - [x] Fix blank white screen when clicking "Calc Only" questions filter in quiz pages
 - [x] Tag isCalc='yes' for all calculation questions in Ontario Class 1-4 banks (16 banks, ~8000 questions) — 613 existing tagged + 987 new calc questions generated and inserted, all 16 banks now have 100 calc questions each
+
+## Instagram & Marketing (Aug 4, 2026)
+- [x] Update Instagram post colors from light blue to deep electric blue (#0047AB)
+- [ ] Create 30-second video ad: exam struggles → Echelon Institute as solution (9:16 vertical reel)
+- [ ] Publish 5 Instagram posts (sharper color palette) to @echelon.institute
