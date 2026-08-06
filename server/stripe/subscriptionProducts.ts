@@ -152,17 +152,17 @@ export function validateOrgCourseKeys(
  */
 export const TEAM_BASE_PRICE: Record<string, Record<TeamStreamTier, number>> = {
   ontario: {
-    "stream-water":           19900,
-    "stream-wastewater":      19900,
-    "stream-water-dist":      19900,
-    "stream-wastewater-coll": 19900,
+    "stream-water":           27900,
+    "stream-wastewater":      27900,
+    "stream-water-dist":      27900,
+    "stream-wastewater-coll": 27900,
     "all-access":             34900,
   },
   western: {
-    "stream-water":           24900,
-    "stream-wastewater":      24900,
-    "stream-water-dist":      24900,
-    "stream-wastewater-coll": 24900,
+    "stream-water":           34900,
+    "stream-wastewater":      34900,
+    "stream-water-dist":      34900,
+    "stream-wastewater-coll": 34900,
     "all-access":             44900,
   },
 };

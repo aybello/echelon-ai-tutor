@@ -76,6 +76,7 @@ beforeAll(async () => {
   if (!db) return;
 
   const termEnd = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000);
+  const termStart = new Date(Date.now() - 1000); // term started just now
 
   // Create org A (3 seats)
   const [insertA] = await db.insert(organizations).values({
@@ -87,6 +88,7 @@ beforeAll(async () => {
     stripeSubscriptionId: null,
     stripeCustomerId: null,
     termEnd,
+    termStart,
     billingType: "invoice",
     status: "active",
   });
@@ -110,6 +112,7 @@ beforeAll(async () => {
     stripeSubscriptionId: null,
     stripeCustomerId: null,
     termEnd,
+    termStart,
     billingType: "invoice",
     status: "active",
   });
@@ -132,6 +135,7 @@ beforeAll(async () => {
     stripeSubscriptionId: null,
     stripeCustomerId: null,
     termEnd,
+    termStart,
     billingType: "invoice",
     status: "active",
   });
@@ -304,7 +308,7 @@ describe("Echelon for Teams — org seat management", () => {
     expect(overview.seatsAssigned).toBe(3);
 
     // Attempt to assign op4 — should throw BAD_REQUEST
-    await expect(caller.org.assignSeat({ email: op4, courseKeys: ["class1-water"] })).rejects.toThrow(/Seat limit reached/);
+    await expect(caller.org.assignSeat({ email: op4, courseKeys: ["class1-water"] })).rejects.toThrow(/licence limit reached/i);
   });
 
   it("bulk assignSeats respects seat cap and returns per-email results", async () => {
@@ -322,7 +326,7 @@ describe("Echelon for Teams — org seat management", () => {
 
     await expect(
       caller.org.assignSeats({ emails: [op5, op6], courseKeys: ["class1-water"] }),
-    ).rejects.toThrow(/Not enough seats/);
+    ).rejects.toThrow(/licence limit reached/i);
 
     // Re-assigning op2 (already counted this term) should succeed without consuming a new slot
     const result = await caller.org.assignSeats({ emails: [testEmail(2)], courseKeys: ["class1-water"] });

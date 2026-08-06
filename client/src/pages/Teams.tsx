@@ -26,17 +26,17 @@ import { Building2, CheckCircle2, ChevronRight, Zap, Shield, BarChart3 } from "l
 // Mirrors TEAM_BASE_PRICE in server/stripe/subscriptionProducts.ts — keep in sync
 const TEAM_BASE_PRICE_CLIENT: Record<string, Record<TeamStreamTier, number>> = {
   ontario: {
-    "stream-water":           19900,
-    "stream-wastewater":      19900,
-    "stream-water-dist":      19900,
-    "stream-wastewater-coll": 19900,
+    "stream-water":           27900,
+    "stream-wastewater":      27900,
+    "stream-water-dist":      27900,
+    "stream-wastewater-coll": 27900,
     "all-access":             34900,
   },
   western: {
-    "stream-water":           24900,
-    "stream-wastewater":      24900,
-    "stream-water-dist":      24900,
-    "stream-wastewater-coll": 24900,
+    "stream-water":           34900,
+    "stream-wastewater":      34900,
+    "stream-water-dist":      34900,
+    "stream-wastewater-coll": 34900,
     "all-access":             44900,
   },
 };
@@ -100,7 +100,7 @@ const FEATURES = [
   "Exam date tracking and reminders",
   "Flashcard spaced-repetition system",
   "Proactive email nudges for inactive operators",
-  "Annual renewal with seat flexibility",
+  "Annual renewal — operator access can be deactivated and restored without losing progress",
 ];
 
 export default function Teams() {
@@ -204,7 +204,7 @@ export default function Teams() {
 
           {/* Tier selector */}
           <div className="space-y-2">
-            <Label className="text-gray-700">Certification level</Label>
+            <Label className="text-gray-700">Certification stream</Label>
             <div className="grid grid-cols-5 gap-1.5">
               {(["stream-water","stream-wastewater","stream-water-dist","stream-wastewater-coll","all-access"] as TeamStreamTier[]).map(t => (
                 <button
@@ -225,7 +225,8 @@ export default function Teams() {
 
           {/* Seats */}
           <div className="space-y-2">
-            <Label className="text-gray-700">Number of seats</Label>
+            <Label className="text-gray-700">Number of annual operator licences</Label>
+            <p className="text-xs text-gray-500 -mt-1">Each annual licence covers one operator during the contract year. Operator access can be deactivated and restored without losing progress, but assigning a different employee uses another annual licence.</p>
             <div className="flex items-center gap-3">
               <Input
                 type="number"
@@ -257,11 +258,11 @@ export default function Teams() {
           {/* Pricing display */}
           <div className="bg-gray-50 rounded-xl p-5 space-y-3 border border-gray-200">
             <div className="flex items-center justify-between">
-              <span className="text-gray-500 text-sm">Per seat / year</span>
+              <span className="text-gray-500 text-sm">Per operator licence / year</span>
               <span className="text-2xl font-bold text-blue-600">{formatCAD(seatPriceCents)}</span>
             </div>
             <div className="flex items-center justify-between border-t border-gray-200 pt-3">
-              <span className="text-gray-500 text-sm">Total / year ({seats} seats)</span>
+              <span className="text-gray-500 text-sm">Total / year ({seats} annual licences)</span>
               <span className="text-2xl font-bold text-gray-900">{formatCAD(totalCents)}</span>
             </div>
             {volumeTier.discountPct > 0 ? (

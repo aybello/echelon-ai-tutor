@@ -220,26 +220,8 @@ async function grantSeat(
     }
   }
 
-  // Record usage in the annual licence ledger (operators only).
-  // INSERT IGNORE: unique constraint (orgId, memberEmail, termStart) prevents double-counting.
-  if (role === "operator") {
-    const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
-    try {
-      await db.insert(organizationTermUsage).values({
-        orgId: org.id,
-        memberEmail: email,
-        termStart,
-        termEnd: org.termEnd,
-      });
-    } catch (err: any) {
-      // Duplicate entry = operator already counted this term (reactivation). Safe to ignore.
-      const msg = err.message ?? "";
-      const causeMsg = err.cause?.message ?? "";
-      if (!msg.includes("Duplicate entry") && !causeMsg.includes("Duplicate entry") && !msg.includes("term_usage_unique_idx") && !causeMsg.includes("term_usage_unique_idx")) {
-        throw err;
-      }
-    }
-  }
+  // Note: annual licence usage is recorded by consumeOrReuseAnnualLicence BEFORE grantSeat is called.
+  // grantSeat no longer inserts into organizationTermUsage directly.
 
   // Send enrollment email to new operators (or re-activated ones)
   // Fire-and-forget — don't block the seat assignment if email fails
@@ -290,6 +272,81 @@ async function revokeSeat(
     .update(subscriptions)
     .set({ status: "expired" })
     .where(and(eq(subscriptions.email, email), eq(subscriptions.orgId, orgId)));
+}
+
+// ── Annual licence allocation ─────────────────────────────────────────────────
+
+/**
+ * Consumes or reuses an annual licence for an operator within a transaction.
+ * Uses a pessimistic FOR UPDATE lock on the organization row to prevent concurrent oversubscription.
+ * Must be called inside a database transaction.
+ */
+async function consumeOrReuseAnnualLicence(
+  tx: any,
+  org: { id: number; seatsTotal: number; termStart: Date | null; termEnd: Date },
+  rawEmail: string,
+): Promise<{ alreadyCounted: boolean; used: number; remaining: number }> {
+  const email = normalizeEmail(rawEmail);
+
+  if (!org.termStart || !org.termEnd) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "Organization contract term is not configured.",
+    });
+  }
+
+  // Pessimistic lock: serialize licence allocation for this organization
+  await tx.execute(sql`SELECT id FROM organizations WHERE id = ${org.id} FOR UPDATE`);
+
+  // Check if this email is already counted in the current term
+  const existingUsage = await tx
+    .select({ id: organizationTermUsage.id })
+    .from(organizationTermUsage)
+    .where(
+      and(
+        eq(organizationTermUsage.orgId, org.id),
+        eq(organizationTermUsage.memberEmail, email),
+        eq(organizationTermUsage.termStart, org.termStart),
+      ),
+    )
+    .limit(1);
+
+  // Count total usage for this term
+  const [{ usageCount }] = await tx
+    .select({ usageCount: sql<number>`COUNT(*)` })
+    .from(organizationTermUsage)
+    .where(
+      and(
+        eq(organizationTermUsage.orgId, org.id),
+        eq(organizationTermUsage.termStart, org.termStart),
+      ),
+    );
+
+  const used = Number(usageCount);
+
+  if (existingUsage.length > 0) {
+    // Reactivation — already counted this term, no new licence consumed
+    return { alreadyCounted: true, used, remaining: Math.max(0, org.seatsTotal - used) };
+  }
+
+  // New operator — enforce cap before inserting
+  if (used >= org.seatsTotal) {
+    throw new TRPCError({
+      code: "BAD_REQUEST",
+      message:
+        `Annual operator licence limit reached. ` +
+        `${used} of ${org.seatsTotal} licences have already been used this term.`,
+    });
+  }
+
+  await tx.insert(organizationTermUsage).values({
+    orgId: org.id,
+    memberEmail: email,
+    termStart: org.termStart,
+    termEnd: org.termEnd,
+  });
+
+  return { alreadyCounted: false, used: used + 1, remaining: Math.max(0, org.seatsTotal - used - 1) };
 }
 
 // ── Router ────────────────────────────────────────────────────────────────────
@@ -725,42 +782,11 @@ export const orgRouter = router({
       // Both the count read and the insert/update happen in the same transaction so
       // two concurrent requests cannot both pass the cap check and both write a new row.
       await db.transaction(async (tx) => {
-        // If this email is already an active operator, this is a re-assignment
-        // (e.g. updating courses). It does not consume a new seat, so skip the cap check.
-        const [existingActive] = await tx
-          .select({ id: organizationMembers.id })
-          .from(organizationMembers)
-          .where(
-            and(
-              eq(organizationMembers.orgId, orgId),
-              eq(organizationMembers.email, email),
-              eq(organizationMembers.role, "operator"),
-              eq(organizationMembers.status, "assigned"),
-            ),
-          )
-          .limit(1);
-
-        if (!existingActive) {
-          // New seat — enforce cap using the annual licence ledger.
-          // Count usage records for this term. Reactivations are handled by the unique constraint in grantSeat.
-          const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
-          const [{ cnt }] = await tx
-            .select({ cnt: sql<number>`COUNT(*)` })
-            .from(organizationTermUsage)
-            .where(
-              and(
-                eq(organizationTermUsage.orgId, orgId),
-                eq(organizationTermUsage.termStart, termStart),
-              ),
-            );
-
-          if (Number(cnt) >= org.seatsTotal) {
-            throw new TRPCError({
-              code: "BAD_REQUEST",
-              message: `Seat limit reached (${org.seatsTotal} licences used this term). All ${org.seatsTotal} operator slots have been used this term. Add more seats to enroll additional operators.`,
-            });
-          }
-        }
+        // consumeOrReuseAnnualLicence handles the full reactivation-vs-new-operator logic:
+        // - Reactivation (previously counted this term): allowed even at full capacity
+        // - New operator: blocked if all licences are consumed
+        // - Pessimistic FOR UPDATE lock prevents concurrent oversubscription
+        await consumeOrReuseAnnualLicence(tx, org, email);
 
         await grantSeat(tx as any, org, email, "operator", managerEmail, name, input.courseKey, input.courseKeys);
       });
@@ -927,53 +953,16 @@ export const orgRouter = router({
       const emails = input.emails.map(normalizeEmail);
       const uniqueEmails = Array.from(new Set(emails));
 
-      // Atomic seat cap check + bulk grant inside a transaction to prevent race conditions.
-      // The count read, the already-active check, and all grantSeat calls happen in one
-      // transaction so a concurrent single-assign cannot sneak past the cap.
+      // All-or-nothing bulk assignment inside a single transaction.
+      // consumeOrReuseAnnualLicence handles reactivation vs new-operator logic with a pessimistic lock.
       const results: Array<{ email: string; success: boolean; error?: string }> = [];
       await db.transaction(async (tx) => {
-        // Count usage records for this term from the annual licence ledger
-        const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
-        const [{ cnt }] = await tx
-          .select({ cnt: sql<number>`COUNT(*)` })
-          .from(organizationTermUsage)
-          .where(
-            and(
-              eq(organizationTermUsage.orgId, orgId),
-              eq(organizationTermUsage.termStart, termStart),
-            ),
-          );
-
-        const seatsUsedThisTerm = Number(cnt);
-        // Operators already in the usage ledger this term do not consume additional licences
-        const alreadyCountedThisTerm = await tx
-          .select({ memberEmail: organizationTermUsage.memberEmail })
-          .from(organizationTermUsage)
-          .where(
-            and(
-              eq(organizationTermUsage.orgId, orgId),
-              eq(organizationTermUsage.termStart, termStart),
-              inArray(organizationTermUsage.memberEmail, uniqueEmails),
-            ),
-          );
-        const alreadyCountedSet = new Set(alreadyCountedThisTerm.map(r => r.memberEmail));
-        const newSeatsNeeded = uniqueEmails.filter(e => !alreadyCountedSet.has(e)).length;
-
-        if (seatsUsedThisTerm + newSeatsNeeded > org.seatsTotal) {
-          const available = org.seatsTotal - seatsUsedThisTerm;
-          throw new TRPCError({
-            code: "BAD_REQUEST",
-            message: `Not enough seats. You have ${available} licence${available === 1 ? "" : "s"} remaining this term but are trying to assign ${newSeatsNeeded} new operator${newSeatsNeeded === 1 ? "" : "s"}. Add more seats first.`,
-          });
-        }
-
         for (const email of uniqueEmails) {
-          try {
-            await grantSeat(tx as any, org, email, "operator", managerEmail, undefined, undefined, validatedCourseKeys);
-            results.push({ email, success: true });
-          } catch (err: any) {
-            results.push({ email, success: false, error: err.message });
-          }
+          // consumeOrReuseAnnualLicence throws if a new licence is needed but cap is reached.
+          // It allows reactivation even at full capacity.
+          await consumeOrReuseAnnualLicence(tx, org, email);
+          await grantSeat(tx as any, org, email, "operator", managerEmail, undefined, undefined, validatedCourseKeys);
+          results.push({ email, success: true });
         }
       });
 
@@ -1026,7 +1015,24 @@ export const orgRouter = router({
         throw new TRPCError({ code: "BAD_REQUEST", message: "This operator is not a member of your organization." });
       }
 
-      // Validate: course must be in the org's entitlement
+      // Validate: course must be in the operator's assigned courses (not just org entitlement)
+      // This prevents recording outcomes for courses the operator was never assigned
+      const memberCourseKeys: string[] = (() => {
+        if (member.courseKeys) {
+          try { return JSON.parse(member.courseKeys as string) as string[]; } catch { return []; }
+        }
+        return [];
+      })();
+
+      if (memberCourseKeys.length > 0 && !memberCourseKeys.includes(input.courseKey)) {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: `This operator is not assigned to course '${input.courseKey}'. ` +
+            `Their assigned courses are: ${memberCourseKeys.join(", ")}.`,
+        });
+      }
+
+      // Also validate against org entitlement as a secondary check
       const org = await db
         .select({ tier: organizations.tier, province: organizations.province })
         .from(organizations)
