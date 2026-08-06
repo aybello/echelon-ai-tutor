@@ -18,7 +18,7 @@ Real emergencies are the wrong place to discover those gaps.
 
 Echelon Command is an adaptive emergency simulation for licensed and aspiring drinking-water operators.
 
-The flagship Build Week scenario places the learner in the Cedar Ridge Water Treatment Plant during an extreme-rain event. Raw-water turbidity rises, a filter begins to break through, disinfection margin narrows and a verified barrier deviation requires escalation. At the critical fourth turn, the learner does not pick an answer. They write what they would do and why. GPT-5.6 interprets that judgment, the deterministic engine maps it to an authored safety branch, and the fifth incident development changes around the decision. The same adaptive pattern now powers all four scenarios, covering chemical-feed redundancy, main-break contamination and boil-water-advisory recovery.
+The flagship Build Week scenario places the learner in the Cedar Ridge Water Treatment Plant during an extreme-rain event. Raw-water turbidity rises, a filter begins to break through, disinfection margin narrows and a verified barrier deviation requires escalation. At the critical fourth turn, the learner does not pick an answer. They write what they would do and why. GPT-5.6 interprets that judgment, the deterministic engine maps it to an authored safety branch, and the fifth incident development changes around the decision.
 
 The simulator tracks three forms of plant resilience in real time:
 
@@ -63,7 +63,6 @@ Codex was used as the primary engineering environment for the Build Week feature
 - Cumulative consequence model for barrier, reserve and record health
 - Server-authoritative path validation, scoring and run persistence
 - Free-text judgment classification with an explicit degraded-mode fallback
-- Optional response framework and guided mode for learners who do not know what to type
 - OpenAI Responses API with explicit `gpt-5.6`
 - Zod validation, bounded prompt inputs and strict JSON Schemas
 - Second-pass grounding verification with deterministic fallback
