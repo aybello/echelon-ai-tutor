@@ -206,7 +206,7 @@ export function registerStripeWebhook(app: Express) {
             const seats = liveQuantity ?? metadataSeats;
             const stripeSubscriptionId = sub.id;
             const stripeCustomerId = typeof sub.customer === "string" ? sub.customer : sub.customer?.id;
-            const { currentPeriodEnd } = getSubscriptionPeriod(sub);
+            const { currentPeriodStart, currentPeriodEnd } = getSubscriptionPeriod(sub);
             const status = sub.status === "active" ? "active" : sub.status === "past_due" ? "past_due" : "cancelled";
 
             if (!managerEmail || !currentPeriodEnd) {
@@ -240,13 +240,14 @@ export function registerStripeWebhook(app: Express) {
                 managerEmail,
                 stripeSubscriptionId,
                 stripeCustomerId,
+                termStart: currentPeriodStart,
                 termEnd: currentPeriodEnd,
                 billingType: "stripe",
                 status,
               });
               orgId = (insertResult as any).insertId;
               // Grant manager seat (member row + subscription row)
-              await grantSeat(db, { id: orgId, name: orgName, province, termEnd: currentPeriodEnd, tier }, managerEmail, "manager");
+              await grantSeat(db, { id: orgId, name: orgName, province, termStart: currentPeriodStart, termEnd: currentPeriodEnd, tier }, managerEmail, "manager");
               console.log(`[Stripe Webhook] Org created: ${orgName} (${orgId}) manager=${managerEmail.replace(/(^.{3}).+@/, '$1***@')} seats=${seats}`);
               await notifyOwner({
                 title: `New Team Plan: ${orgName}`,
@@ -257,7 +258,7 @@ export function registerStripeWebhook(app: Express) {
               orgId = existingOrg[0].id;
               await db
                 .update(organizations)
-                .set({ seatsTotal: seats, termEnd: currentPeriodEnd, status })
+                .set({ seatsTotal: seats, termStart: currentPeriodStart, termEnd: currentPeriodEnd, status })
                 .where(eq(organizations.id, orgId));
               // Sync termEnd on org-managed subscriptions.
               // IMPORTANT: when org is active, only extend rows that are already 'active'.

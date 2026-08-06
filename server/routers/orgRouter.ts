@@ -30,6 +30,7 @@ import {
   users,
   examOutcomes,
 } from "../../drizzle/schema";
+import { organizationTermUsage } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail } from "../email";
 import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
@@ -114,7 +115,7 @@ async function resolveOrgManager(ctx: {
  */
 async function grantSeat(
   db: Awaited<ReturnType<typeof getDb>>,
-  org: { id: number; province: string; termEnd: Date; name: string; tier: string },
+  org: { id: number; province: string; termEnd: Date; termStart?: Date | null; name: string; tier: string },
   email: string,
   role: "manager" | "operator" = "operator",
   managerEmail?: string,
@@ -219,6 +220,27 @@ async function grantSeat(
     }
   }
 
+  // Record usage in the annual licence ledger (operators only).
+  // INSERT IGNORE: unique constraint (orgId, memberEmail, termStart) prevents double-counting.
+  if (role === "operator") {
+    const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
+    try {
+      await db.insert(organizationTermUsage).values({
+        orgId: org.id,
+        memberEmail: email,
+        termStart,
+        termEnd: org.termEnd,
+      });
+    } catch (err: any) {
+      // Duplicate entry = operator already counted this term (reactivation). Safe to ignore.
+      const msg = err.message ?? "";
+      const causeMsg = err.cause?.message ?? "";
+      if (!msg.includes("Duplicate entry") && !causeMsg.includes("Duplicate entry") && !msg.includes("term_usage_unique_idx") && !causeMsg.includes("term_usage_unique_idx")) {
+        throw err;
+      }
+    }
+  }
+
   // Send enrollment email to new operators (or re-activated ones)
   // Fire-and-forget — don't block the seat assignment if email fails
   if (role === "operator" && (isNewMember || wasRevoked)) {
@@ -305,16 +327,15 @@ export const orgRouter = router({
     const memberEmails = activeMembers.map(m => m.email);
     const seatsAssigned = memberEmails.length;
 
-    // Count distinct operators used this term (for per-term seat cap display)
+    // Count licences used this term from the annual usage ledger
     const orgTermStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
     const [{ termCnt }] = await db
-      .select({ termCnt: sql<number>`COUNT(DISTINCT ${organizationMembers.email})` })
-      .from(organizationMembers)
+      .select({ termCnt: sql<number>`COUNT(*)` })
+      .from(organizationTermUsage)
       .where(
         and(
-          eq(organizationMembers.orgId, orgId),
-          eq(organizationMembers.role, "operator"),
-          gte(organizationMembers.assignedAt, orgTermStart),
+          eq(organizationTermUsage.orgId, orgId),
+          eq(organizationTermUsage.termStart, orgTermStart),
         ),
       );
     const seatsUsedThisTerm = Number(termCnt);
@@ -716,24 +737,23 @@ export const orgRouter = router({
           .limit(1);
 
         if (!existingActive) {
-          // New seat — enforce cap: count distinct operators assigned since termStart (per-term counting)
-          // Re-assigning a previously revoked operator in the same term does NOT consume a new seat.
+          // New seat — enforce cap using the annual licence ledger.
+          // Count usage records for this term. Reactivations are handled by the unique constraint in grantSeat.
           const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
           const [{ cnt }] = await tx
-            .select({ cnt: sql<number>`COUNT(DISTINCT ${organizationMembers.email})` })
-            .from(organizationMembers)
+            .select({ cnt: sql<number>`COUNT(*)` })
+            .from(organizationTermUsage)
             .where(
               and(
-                eq(organizationMembers.orgId, orgId),
-                eq(organizationMembers.role, "operator"),
-                gte(organizationMembers.assignedAt, termStart),
+                eq(organizationTermUsage.orgId, orgId),
+                eq(organizationTermUsage.termStart, termStart),
               ),
             );
 
           if (Number(cnt) >= org.seatsTotal) {
             throw new TRPCError({
               code: "BAD_REQUEST",
-              message: `Seat limit reached (${org.seatsTotal} seats used this term). All ${org.seatsTotal} operator slots have been used this term. Add more seats to enroll additional operators.`,
+              message: `Seat limit reached (${org.seatsTotal} licences used this term). All ${org.seatsTotal} operator slots have been used this term. Add more seats to enroll additional operators.`,
             });
           }
         }
@@ -908,40 +928,38 @@ export const orgRouter = router({
       // transaction so a concurrent single-assign cannot sneak past the cap.
       const results: Array<{ email: string; success: boolean; error?: string }> = [];
       await db.transaction(async (tx) => {
-        // Count distinct operators assigned since termStart (per-term counting)
+        // Count usage records for this term from the annual licence ledger
         const termStart = org.termStart ?? new Date(org.termEnd.getTime() - 365 * 24 * 60 * 60 * 1000);
         const [{ cnt }] = await tx
-          .select({ cnt: sql<number>`COUNT(DISTINCT ${organizationMembers.email})` })
-          .from(organizationMembers)
+          .select({ cnt: sql<number>`COUNT(*)` })
+          .from(organizationTermUsage)
           .where(
             and(
-              eq(organizationMembers.orgId, orgId),
-              eq(organizationMembers.role, "operator"),
-              gte(organizationMembers.assignedAt, termStart),
+              eq(organizationTermUsage.orgId, orgId),
+              eq(organizationTermUsage.termStart, termStart),
             ),
           );
 
         const seatsUsedThisTerm = Number(cnt);
-        // Operators already counted this term do not consume additional seats on re-assign
+        // Operators already in the usage ledger this term do not consume additional licences
         const alreadyCountedThisTerm = await tx
-          .select({ email: organizationMembers.email })
-          .from(organizationMembers)
+          .select({ memberEmail: organizationTermUsage.memberEmail })
+          .from(organizationTermUsage)
           .where(
             and(
-              eq(organizationMembers.orgId, orgId),
-              eq(organizationMembers.role, "operator"),
-              gte(organizationMembers.assignedAt, termStart),
-              inArray(organizationMembers.email, uniqueEmails),
+              eq(organizationTermUsage.orgId, orgId),
+              eq(organizationTermUsage.termStart, termStart),
+              inArray(organizationTermUsage.memberEmail, uniqueEmails),
             ),
           );
-        const alreadyCountedSet = new Set(alreadyCountedThisTerm.map(r => r.email));
+        const alreadyCountedSet = new Set(alreadyCountedThisTerm.map(r => r.memberEmail));
         const newSeatsNeeded = uniqueEmails.filter(e => !alreadyCountedSet.has(e)).length;
 
         if (seatsUsedThisTerm + newSeatsNeeded > org.seatsTotal) {
           const available = org.seatsTotal - seatsUsedThisTerm;
           throw new TRPCError({
             code: "BAD_REQUEST",
-            message: `Not enough seats. You have ${available} seat${available === 1 ? "" : "s"} remaining this term but are trying to assign ${newSeatsNeeded} new operator${newSeatsNeeded === 1 ? "" : "s"}. Add more seats first.`,
+            message: `Not enough seats. You have ${available} licence${available === 1 ? "" : "s"} remaining this term but are trying to assign ${newSeatsNeeded} new operator${newSeatsNeeded === 1 ? "" : "s"}. Add more seats first.`,
           });
         }
 

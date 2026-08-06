@@ -452,6 +452,28 @@ export type OrganizationMember = typeof organizationMembers.$inferSelect;
 export type InsertOrganizationMember = typeof organizationMembers.$inferInsert;
 
 /**
+ * Annual licence usage ledger.
+ * One row per distinct operator per organization per contract term.
+ * Used to enforce the annual-licence model: revoking an operator does NOT free a licence.
+ * Unique constraint: (orgId, memberEmail, termStart) — one record per operator per term.
+ */
+export const organizationTermUsage = mysqlTable("organization_term_operator_usage", {
+  id: int("id").autoincrement().primaryKey(),
+  orgId: int("orgId").notNull(),
+  memberEmail: varchar("memberEmail", { length: 320 }).notNull(),
+  termStart: timestamp("termStart").notNull(),
+  termEnd: timestamp("termEnd").notNull(),
+  firstActivatedAt: timestamp("firstActivatedAt").defaultNow().notNull(),
+}, (t) => [
+  index("term_usage_orgid_idx").on(t.orgId),
+  index("term_usage_email_idx").on(t.memberEmail),
+  uniqueIndex("term_usage_unique_idx").on(t.orgId, t.memberEmail, t.termStart),
+]);
+
+export type OrganizationTermUsage = typeof organizationTermUsage.$inferSelect;
+export type InsertOrganizationTermUsage = typeof organizationTermUsage.$inferInsert;
+
+/**
  * Exam outcomes — manager-recorded pass/fail results for operators.
  * Used to compute first-time pass rates for renewal justification.
  */
