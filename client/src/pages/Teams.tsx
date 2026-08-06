@@ -202,7 +202,7 @@ export default function Teams() {
           <div className="mt-8 flex justify-center">
             <div className="flex items-center gap-3 bg-white/10 border border-white/20 rounded-full px-5 py-2.5 backdrop-blur-sm">
               <span className="text-yellow-300 text-sm">★★★★★</span>
-              <span className="text-white/90 text-sm font-medium">Trusted by <span className="font-bold text-white">Utilities Kingston</span> — Phil Emon &amp; Carl</span>
+              <span className="text-white/90 text-sm font-medium">Trusted by <span className="font-bold text-white">Utilities Kingston</span></span>
             </div>
           </div>
         </div>
