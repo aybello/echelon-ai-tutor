@@ -689,6 +689,7 @@ function CheckoutButton({
   style,
   productName,
   priceLabel,
+  currency = "cad",
 }: {
   productKey: string;
   label: string;
@@ -696,6 +697,7 @@ function CheckoutButton({
   style?: React.CSSProperties;
   productName?: string;
   priceLabel?: string;
+  currency?: "cad" | "usd";
 }) {
   const [showModal, setShowModal] = useState(false);
   const createSession = trpc.stripe.createCheckoutSession.useMutation({
@@ -718,13 +720,14 @@ function CheckoutButton({
   function handleContactSubmit(contact: { name: string; email: string; phone: string }) {
     // Save email to localStorage for access restoration
     try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
-    createSession.mutate({
-      productKey,
-      email: contact.email,
-      name: contact.name,
-      phone: contact.phone,
-      origin: window.location.origin,
-    });
+      createSession.mutate({
+        productKey,
+        email: contact.email,
+        name: contact.name,
+        phone: contact.phone,
+        origin: window.location.origin,
+        currency,
+      });
   }
 
   return (
@@ -775,11 +778,13 @@ function SubscriptionCheckoutButton({
   province,
   label,
   priceLabel,
+  currency = "cad",
 }: {
   tier: SubscriptionTier;
   province: SubscriptionProvince;
   label: string;
   priceLabel: string;
+  currency?: "cad" | "usd";
 }) {
   const [showModal, setShowModal] = useState(false);
   const createSubscription = trpc.stripe.createSubscriptionCheckout.useMutation({
@@ -802,18 +807,19 @@ function SubscriptionCheckoutButton({
     const utmMedium = sp.get("utm_medium") ?? undefined;
     const utmCampaign = sp.get("utm_campaign") ?? undefined;
     const referralSource = sp.get("ref") ?? document.referrer?.split("/")[2] ?? undefined;
-    createSubscription.mutate({
-      tier,
-      province,
-      email: contact.email,
-      name: contact.name,
-      phone: contact.phone,
-      origin: window.location.origin,
-      utmSource,
-      utmMedium,
-      utmCampaign,
-      referralSource,
-    });
+      createSubscription.mutate({
+        tier,
+        province,
+        email: contact.email,
+        name: contact.name,
+        phone: contact.phone,
+        origin: window.location.origin,
+        utmSource,
+        utmMedium,
+        utmCampaign,
+        referralSource,
+        currency,
+      });
   }
 
   // priceLabel is passed in from the parent (province-aware)
@@ -1303,11 +1309,12 @@ export default function Pricing() {
                           </button>
                         </Link>
                       ) : (
-                        <SubscriptionCheckoutButton
+                       <SubscriptionCheckoutButton
                           tier={tier.tier}
                           province={subProvince}
                           label={`Subscribe — ${tier.price}/yr`}
                           priceLabel={`${tier.price}/yr`}
+                          currency={isUS ? "usd" : "cad"}
                         />
                       )}
                     </div>
@@ -1797,6 +1804,7 @@ function ProductCard({
           disabled={!product.available}
           productName={product.name}
           priceLabel={isUS ? `US$${(sharedPriceUSD(product.key) / 100).toFixed(0)}` : `CA$${(product.priceCAD / 100).toFixed(0)}`}
+          currency={isUS ? "usd" : "cad"}
         />
         {product.available && QUIZ_ROUTES[product.key] && (
           <Link href={QUIZ_ROUTES[product.key]}>

@@ -46,6 +46,7 @@ export const stripeRouter = router({
       utmSource: z.string().max(128).optional(),
       utmMedium: z.string().max(128).optional(),
       utmCampaign: z.string().max(128).optional(),
+      currency: z.enum(["cad", "usd"]).default("cad"),
     }))
     .mutation(async ({ input, ctx }) => {
       const product = ALL_PRODUCTS.find(p => p.key === input.productKey);
@@ -56,6 +57,8 @@ export const stripeRouter = router({
       // so verifySession and webhook can save them to the purchases table
       const preCheckoutPhone = input.phone ?? "";
       const preCheckoutName = input.name ?? "";
+      const currency = input.currency ?? "cad";
+      const unitAmount = currency === "usd" ? product.priceUSD : product.priceCAD;
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
@@ -63,8 +66,8 @@ export const stripeRouter = router({
         line_items: [
           {
             price_data: {
-              currency: "cad",
-              unit_amount: product.priceCAD,
+              currency,
+              unit_amount: unitAmount,
               product_data: {
                 name: product.name,
                 description: product.description,
@@ -85,6 +88,7 @@ export const stripeRouter = router({
           utm_source: input.utmSource ?? "",
           utm_medium: input.utmMedium ?? "",
           utm_campaign: input.utmCampaign ?? "",
+          currency,
         },
         allow_promotion_codes: true,
         phone_number_collection: { enabled: true },
@@ -240,6 +244,7 @@ export const stripeRouter = router({
       utmMedium: z.string().max(128).optional(),
       utmCampaign: z.string().max(128).optional(),
       referralSource: z.string().max(128).optional(),
+      currency: z.enum(["cad", "usd"]).default("cad"),
     }))
     .mutation(async ({ input, ctx }) => {
       const product = getSubscriptionProduct(input.tier as SubscriptionTier, input.province as SubscriptionProvince);
@@ -248,6 +253,8 @@ export const stripeRouter = router({
       const userEmail = ctx.user?.email ?? input.email;
       const tierLabel = TIER_LABELS[input.tier as SubscriptionTier];
       const provinceLabel = PROVINCE_LABELS[input.province as SubscriptionProvince];
+      const currency = input.currency ?? "cad";
+      const unitAmount = currency === "usd" ? product.priceUSD : product.priceCAD;
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
@@ -255,8 +262,8 @@ export const stripeRouter = router({
         line_items: [
           {
             price_data: {
-              currency: "cad",
-              unit_amount: product.priceCAD,
+              currency,
+              unit_amount: unitAmount,
               recurring: { interval: "year" },
               product_data: {
                 name: `${tierLabel} -- ${provinceLabel}`,

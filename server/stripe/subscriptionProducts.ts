@@ -21,6 +21,8 @@ export interface SubscriptionProduct {
   description: string;
   /** Price in cents CAD */
   priceCAD: number;
+  /** Price in cents USD */
+  priceUSD: number;
 }
 
 /** Ontario (EOCP) subscription products — 2 tracks per class */
@@ -31,6 +33,7 @@ const ONTARIO_SUBSCRIPTION_PRODUCTS: SubscriptionProduct[] = [
     name: "Class 1 All-Access — Ontario",
     description: "OIT + Class 1 Water Treatment + Class 1 Wastewater Treatment (MOECP / OWWCO). Annual.",
     priceCAD: 9900,
+    priceUSD: 7900,
   },
   {
     tier: "class2",
@@ -38,6 +41,7 @@ const ONTARIO_SUBSCRIPTION_PRODUCTS: SubscriptionProduct[] = [
     name: "Class 2 All-Access — Ontario",
     description: "Class 2 Water Treatment + Class 2 Wastewater Treatment (MOECP / OWWCO). Annual.",
     priceCAD: 14900,
+    priceUSD: 10900,
   },
   {
     tier: "class3",
@@ -45,6 +49,7 @@ const ONTARIO_SUBSCRIPTION_PRODUCTS: SubscriptionProduct[] = [
     name: "Class 3 All-Access — Ontario",
     description: "Class 3 Water Treatment + Class 3 Wastewater Treatment (MOECP / OWWCO). Annual.",
     priceCAD: 19900,
+    priceUSD: 14900,
   },
   {
     tier: "class4",
@@ -52,6 +57,7 @@ const ONTARIO_SUBSCRIPTION_PRODUCTS: SubscriptionProduct[] = [
     name: "Class 4 All-Access — Ontario",
     description: "Class 4 Water Treatment + Class 4 Wastewater Treatment + WQA (MOECP / OWWCO). Annual.",
     priceCAD: 24900,
+    priceUSD: 17900,
   },
   {
     tier: "all-access",
@@ -59,6 +65,7 @@ const ONTARIO_SUBSCRIPTION_PRODUCTS: SubscriptionProduct[] = [
     name: "All-Access Pass — Ontario",
     description: "Every Ontario exam type: all classes, Water Treatment + Wastewater Treatment + WQA. Annual.",
     priceCAD: 34900,
+    priceUSD: 24900,
   },
 ];
 
@@ -70,6 +77,7 @@ const WESTERN_SUBSCRIPTION_PRODUCTS: SubscriptionProduct[] = [
     name: "Class I All-Access — Western Canada",
     description: "Class I Water Treatment + Wastewater Treatment + Water Distribution + Wastewater Collection (WPI). Annual.",
     priceCAD: 14900,
+    priceUSD: 10900,
   },
   {
     tier: "class2",
@@ -77,6 +85,7 @@ const WESTERN_SUBSCRIPTION_PRODUCTS: SubscriptionProduct[] = [
     name: "Class II All-Access — Western Canada",
     description: "Class II Water Treatment + Wastewater Treatment + Water Distribution + Wastewater Collection (WPI). Annual.",
     priceCAD: 19900,
+    priceUSD: 14900,
   },
   {
     tier: "class3",
@@ -84,6 +93,7 @@ const WESTERN_SUBSCRIPTION_PRODUCTS: SubscriptionProduct[] = [
     name: "Class III All-Access — Western Canada",
     description: "Class III Water Treatment + Wastewater Treatment + Water Distribution + Wastewater Collection (WPI). Annual.",
     priceCAD: 24900,
+    priceUSD: 17900,
   },
   {
     tier: "class4",
@@ -91,6 +101,7 @@ const WESTERN_SUBSCRIPTION_PRODUCTS: SubscriptionProduct[] = [
     name: "Class IV All-Access — Western Canada",
     description: "Class IV Water Treatment + Wastewater Treatment + Water Distribution + Wastewater Collection (WPI). Annual.",
     priceCAD: 29900,
+    priceUSD: 21900,
   },
   {
     tier: "all-access",
@@ -98,6 +109,7 @@ const WESTERN_SUBSCRIPTION_PRODUCTS: SubscriptionProduct[] = [
     name: "All-Access Pass — Western Canada",
     description: "Every WPI exam type: all classes, all 4 tracks (Water Treatment, Wastewater Treatment, Water Distribution, Wastewater Collection). Annual.",
     priceCAD: 44900,
+    priceUSD: 32900,
   },
 ];
 
