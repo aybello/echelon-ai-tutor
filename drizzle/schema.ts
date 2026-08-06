@@ -676,17 +676,27 @@ export const stripeEventLog = mysqlTable("stripe_event_log", {
   eventType: varchar("eventType", { length: 128 }).notNull(),
   stripeObjectId: varchar("stripeObjectId", { length: 128 }),
   orgId: int("orgId"),
-  status: varchar("status", { length: 32 }).notNull().default("pending"),
+  status: varchar("status", { length: 40 }).notNull().default("pending"),
   dbProcessed: boolean("dbProcessed").notNull().default(false),
   emailDelivered: boolean("emailDelivered").notNull().default(false),
   attemptCount: int("attemptCount").notNull().default(0),
+  processingToken: varchar("processingToken", { length: 64 }),
+  processingStartedAt: timestamp("processingStartedAt"),
   lastError: text("lastError"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   completedAt: timestamp("completedAt"),
 }, (table) => ({
   eventTypeIdx: index("stripe_event_log_event_type_idx").on(table.eventType),
   orgIdIdx: index("stripe_event_log_org_id_idx").on(table.orgId),
+  statusIdx: index("stripe_event_log_status_idx").on(table.status),
 }));
 
 export type StripeEventLog = typeof stripeEventLog.$inferSelect;
 export type InsertStripeEventLog = typeof stripeEventLog.$inferInsert;
+
+export type StripeEventStatus =
+  | "pending"
+  | "processing"
+  | "db_completed_email_pending"
+  | "completed"
+  | "failed";
