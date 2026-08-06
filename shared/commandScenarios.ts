@@ -31,6 +31,7 @@ export type JudgmentConfig = {
   prompt: string;
   placeholder: string;
   minCharacters: number;
+  ruleBranches?: Record<string, string>;
 };
 
 export type ScenarioStep = {

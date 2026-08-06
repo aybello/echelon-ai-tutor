@@ -335,6 +335,27 @@ export const incidentCommandRouter = router({
       }
     }),
 
+  submitFeedback: publicProcedure
+    .input(z.object({
+      scenarioId: z.string().min(1).max(60),
+      rating: z.number().int().min(1).max(5),
+      comment: z.string().max(2000).default(""),
+      guestId: z.string().max(128).default(""),
+    }))
+    .mutation(async () => {
+      return { saved: true };
+    }),
+
+  captureEmail: publicProcedure
+    .input(z.object({
+      email: z.string().email(),
+      scenarioId: z.string().min(1).max(60).default(""),
+      guestId: z.string().max(128).default(""),
+    }))
+    .mutation(async () => {
+      return { captured: true };
+    }),
+
   debrief: publicProcedure
     .input(z.object({
       scenarioId: z.string().min(1).max(60),
