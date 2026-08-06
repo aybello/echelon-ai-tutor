@@ -366,6 +366,10 @@ export default function OrgDashboard() {
   const members = membersQuery.data ?? [];
   const attention = attentionQuery.data ?? { atRisk: [], stalled: [] };
 
+  // Annual licence semantics: licences used this term vs total, not concurrent active count
+  const licencesUsedThisTerm = overview.seatsUsedThisTerm ?? overview.seatsAssigned;
+  const licencesAvailableThisTerm = Math.max(0, overview.seatsTotal - licencesUsedThisTerm);
+  // Keep seatsAvailable for backward compat with manage-seats modal minimum floor
   const seatsAvailable = overview.seatsTotal - overview.seatsAssigned;
   const termDays = daysUntil(overview.termEnd);
   const hasStripe = overview.billingType === "stripe" && !!overview.stripeSubscriptionId;
@@ -579,16 +583,16 @@ export default function OrgDashboard() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <MetricCard
             icon={Users}
-            label="Seats Assigned"
-            value={`${overview.seatsAssigned} / ${overview.seatsTotal}`}
-            sub={`${seatsAvailable} available`}
-            accent={seatsAvailable === 0 ? "text-amber-600" : "text-slate-900"}
+            label="Licences Used This Term"
+            value={`${licencesUsedThisTerm} / ${overview.seatsTotal}`}
+            sub={licencesAvailableThisTerm > 0 ? `${licencesAvailableThisTerm} remaining` : "All licences used"}
+            accent={licencesAvailableThisTerm === 0 ? "text-amber-600" : "text-slate-900"}
           />
           <MetricCard
             icon={Activity}
             label="Active This Week"
             value={overview.activeThisWeek}
-            sub={`of ${overview.seatsAssigned} operators`}
+            sub={`of ${overview.seatsAssigned} active operators`}
             accent="text-blue-600"
           />
           <MetricCard
@@ -938,8 +942,21 @@ export default function OrgDashboard() {
               <div className="mt-2 space-y-1">
                 {revokedMembers.map(m => (
                   <div key={m.id} className="flex items-center justify-between px-4 py-2 bg-white border border-slate-100 rounded-lg text-sm text-slate-400">
-                    <span>{m.email}</span>
-                    <span className="text-xs">Revoked {formatDate(m.revokedAt)}</span>
+                    <div className="min-w-0">
+                      <span className="block truncate">{m.email}</span>
+                      <span className="text-xs">Revoked {formatDate(m.revokedAt)}</span>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setAssignEmail(m.email);
+                        setAssignName(m.name ?? "");
+                        setAssignCourseKeys(Array.isArray(m.courseKeys) ? m.courseKeys : m.courseKey ? [m.courseKey] : []);
+                        setAssignOpen(true);
+                      }}
+                      className="ml-3 shrink-0 text-xs text-blue-600 hover:text-blue-800 font-medium border border-blue-200 rounded px-2 py-1 hover:bg-blue-50 transition-colors"
+                    >
+                      Reactivate
+                    </button>
                   </div>
                 ))}
               </div>
@@ -1345,7 +1362,7 @@ export default function OrgDashboard() {
       }}>
         <DialogContent className="bg-white border-slate-200 max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-slate-900">Assign Seat</DialogTitle>
+            <DialogTitle className="text-slate-900">Add Operator</DialogTitle>
           </DialogHeader>
           <div className="space-y-4 py-2">
             <div className="flex gap-2">
@@ -1432,7 +1449,9 @@ export default function OrgDashboard() {
             )}
 
             <p className="text-xs text-slate-400">
-              {seatsAvailable} seat{seatsAvailable === 1 ? "" : "s"} available. The operator will receive an invite email with their course access details.
+              {licencesAvailableThisTerm} annual licence{licencesAvailableThisTerm === 1 ? "" : "s"} remaining this term.
+              Previously revoked operators can be reactivated without using a new licence.
+              The operator will receive an invite email with their course access details.
             </p>
           </div>
           <DialogFooter>
@@ -1444,7 +1463,7 @@ export default function OrgDashboard() {
               disabled={assignSeat.isPending || assignSeats.isPending}
               className="bg-blue-600 hover:bg-blue-700 text-white"
             >
-              {assignSeat.isPending || assignSeats.isPending ? "Assigning..." : "Assign Seat"}
+              {assignSeat.isPending || assignSeats.isPending ? "Adding..." : "Add Operator"}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -1464,15 +1483,15 @@ export default function OrgDashboard() {
               <Label className="text-slate-700">New seat count</Label>
               <Input
                 type="number"
-                min={overview.seatsAssigned}
+                min={licencesUsedThisTerm}
                 max={500}
                 value={newSeatCount}
-                onChange={e => setNewSeatCount(Math.max(overview.seatsAssigned, parseInt(e.target.value) || 0))}
+                onChange={e => setNewSeatCount(Math.max(licencesUsedThisTerm, parseInt(e.target.value) || 0))}
                 className="border-slate-200 text-slate-900"
               />
               <p className="text-xs text-slate-400">
-                Current: {overview.seatsTotal} seats · {overview.seatsAssigned} assigned.
-                Minimum is {overview.seatsAssigned} (currently assigned).
+                Current: {overview.seatsTotal} annual licences · {licencesUsedThisTerm} used this term.
+                Minimum is {licencesUsedThisTerm} (licences already consumed this term cannot be removed).
               </p>
             </div>
             {newSeatCount !== overview.seatsTotal && (
@@ -1489,7 +1508,7 @@ export default function OrgDashboard() {
             </Button>
             <Button
               onClick={() => updateSeats.mutate({ seats: newSeatCount, origin: window.location.origin })}
-              disabled={updateSeats.isPending || newSeatCount === overview.seatsTotal || newSeatCount < overview.seatsAssigned}
+              disabled={updateSeats.isPending || newSeatCount === overview.seatsTotal || newSeatCount < licencesUsedThisTerm}
               className="bg-blue-600 hover:bg-blue-700 text-white"
             >
               {updateSeats.isPending ? "Updating..." : "Update Seats"}
@@ -1502,15 +1521,16 @@ export default function OrgDashboard() {
       <Dialog open={!!revokeTarget} onOpenChange={() => setRevokeTarget(null)}>
         <DialogContent className="bg-white border-slate-200 max-w-sm">
           <DialogHeader>
-            <DialogTitle className="text-slate-900">Revoke Seat</DialogTitle>
+            <DialogTitle className="text-slate-900">Revoke Access</DialogTitle>
           </DialogHeader>
           <div className="py-2 space-y-3">
             <p className="text-slate-600 text-sm">
               Remove access for <span className="text-slate-900 font-medium">{revokeTarget}</span>?
             </p>
             <p className="text-slate-400 text-xs">
-              They will immediately lose access to all Echelon content. You can re-assign this
-              seat to them or another operator at any time.
+              They will immediately lose access to all Echelon content.
+              You can reactivate them later without using a new annual licence (their slot is already counted this term).
+              Assigning a different operator to their slot will use a new annual licence.
             </p>
           </div>
           <DialogFooter>

@@ -2,17 +2,65 @@ import type { Express, Request, Response } from "express";
 import express from "express";
 import { stripe } from "./stripe";
 import { getDb } from "../db";
-import { purchases, subscriptions, users, organizations, organizationMembers } from "../../drizzle/schema";
+import { purchases, subscriptions, users, organizations, organizationMembers, organizationTermUsage } from "../../drizzle/schema";
 import { grantSeat } from "../routers/orgRouter";
 import { notifyOwner } from "../_core/notification";
 import { sendPurchaseConfirmationEmail, sendSubscriptionConfirmationEmail, sendSubscriptionRenewalEmail } from "../email";
 import { TIER_LABELS, PROVINCE_LABELS, type SubscriptionTier as ST, type SubscriptionProvince as SP, TIER_QUIZ_PATHS_ONTARIO, TIER_QUIZ_PATHS_WPI, getSubscriptionProduct } from "./subscriptionProducts";
 import { PRODUCT_STUDY_PATHS } from "./products";
-import { eq, and } from "drizzle-orm";
+import { eq, and, sql } from "drizzle-orm";
 import { normalizeEmail } from "../_core/access";
 import { getSubscriptionPeriod } from "./subscriptionPeriod";
 import { trackEvent } from "../analytics";
 
+
+/**
+ * Seeds the annual licence ledger for a new contract term on renewal.
+ * Inserts a usage record for every currently-active operator so they are
+ * counted against the new term's licence cap from day one.
+ * Idempotent: uses INSERT IGNORE so duplicate calls on the same event are safe.
+ */
+async function initializeOrganizationRenewalTerm(
+  db: Awaited<ReturnType<typeof getDb>>,
+  orgId: number,
+  termStart: Date,
+  termEnd: Date,
+): Promise<void> {
+  if (!db) return;
+
+  // Fetch all currently-active operators for this org
+  const activeMembers = await db
+    .select({ email: organizationMembers.email })
+    .from(organizationMembers)
+    .where(
+      and(
+        eq(organizationMembers.orgId, orgId),
+        eq(organizationMembers.role, "operator"),
+        eq(organizationMembers.status, "assigned"),
+      ),
+    );
+
+  if (activeMembers.length === 0) return;
+
+  // Bulk INSERT IGNORE into the usage ledger for the new term
+  for (const member of activeMembers) {
+    try {
+      await db.insert(organizationTermUsage).values({
+        orgId,
+        memberEmail: member.email,
+        termStart,
+        termEnd,
+      });
+    } catch (err: any) {
+      // Duplicate entry = already seeded (idempotent). Safe to ignore.
+      const msg = (err.message ?? "") + (err.cause?.message ?? "");
+      if (!msg.includes("Duplicate entry") && !msg.includes("term_usage_unique_idx")) {
+        throw err;
+      }
+    }
+  }
+  console.log(`[Stripe Webhook] Seeded ${activeMembers.length} active operators into new term ledger for org ${orgId}`);
+}
 
 export function registerStripeWebhook(app: Express) {
   // MUST use raw body parser for Stripe signature verification
@@ -277,6 +325,10 @@ export function registerStripeWebhook(app: Express) {
                   .update(subscriptions)
                   .set({ currentPeriodEnd, status: "expired" })
                   .where(eq(subscriptions.orgId, orgId));
+              }
+              // Seed active operators into the new term's usage ledger on renewal
+              if (status === "active" && currentPeriodStart) {
+                await initializeOrganizationRenewalTerm(db, orgId, currentPeriodStart, currentPeriodEnd);
               }
               console.log(`[Stripe Webhook] Org updated: ${orgId} seats=${seats} status=${status}`);
             }
