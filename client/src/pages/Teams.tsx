@@ -187,9 +187,9 @@ export default function Teams() {
           </p>
           <div className="flex flex-wrap justify-center gap-10 mt-10">
             {[
-            { icon: <Award className="w-4 h-4" />, value: "36", label: "Courses available" },
-            { icon: <Users className="w-4 h-4" />, value: "18,000+", label: "Practice questions" },
-            { icon: <TrendingUp className="w-4 h-4" />, value: "5", label: "Provinces supported" },
+            { icon: <Users className="w-4 h-4" />, value: "25", label: "Operators at Utilities Kingston" },
+            { icon: <Award className="w-4 h-4" />, value: "105", label: "Five-star ratings" },
+            { icon: <TrendingUp className="w-4 h-4" />, value: "18,885", label: "Questions answered" },
             ].map((stat: { icon: React.ReactNode; value: string; label: string }) => (
               <div key={stat.label} className="flex items-center gap-2 text-white/80">
                 <span className="text-cyan-200">{stat.icon}</span>
@@ -197,6 +197,13 @@ export default function Teams() {
                 <span className="text-sm">{stat.label}</span>
               </div>
             ))}
+          </div>
+          {/* Trust badge */}
+          <div className="mt-8 flex justify-center">
+            <div className="flex items-center gap-3 bg-white/10 border border-white/20 rounded-full px-5 py-2.5 backdrop-blur-sm">
+              <span className="text-yellow-300 text-sm">★★★★★</span>
+              <span className="text-white/90 text-sm font-medium">Trusted by <span className="font-bold text-white">Utilities Kingston</span> — Phil Emon &amp; Carl</span>
+            </div>
           </div>
         </div>
       </section>
