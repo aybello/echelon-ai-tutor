@@ -28,6 +28,30 @@ const ALL_ACCESS_BASE: Record<string, number> = {
   western: 44900,
 };
 
+// Per-tier base prices (cents CAD) — mirrors stripeRouter.ts BASE_PRICE
+const TIER_BASE_PRICE: Record<string, Record<string, number>> = {
+  ontario: { class1: 9900, class2: 14900, class3: 19900, class4: 24900, "all-access": 34900 },
+  western: { class1: 14900, class2: 19900, class3: 24900, class4: 29900, "all-access": 44900 },
+};
+
+type SubscriptionTier = "class1" | "class2" | "class3" | "class4" | "all-access";
+
+const TIER_LABELS: Record<SubscriptionTier, string> = {
+  "class1":     "Class 1",
+  "class2":     "Class 2",
+  "class3":     "Class 3",
+  "class4":     "Class 4",
+  "all-access": "All-Access",
+};
+
+const TIER_DESCRIPTIONS: Record<SubscriptionTier, string> = {
+  "class1":     "OIT + Class 1 — Water Treatment, Wastewater Treatment, Distribution & Collection",
+  "class2":     "Class 2 — Water Treatment, Wastewater Treatment, Distribution & Collection",
+  "class3":     "Class 3 — Water Treatment, Wastewater Treatment, Distribution & Collection",
+  "class4":     "Class 4 — Water Treatment, Wastewater Treatment, Distribution & Collection",
+  "all-access": "Every certification level — Class 1 through 4, all tracks included",
+};
+
 interface VolumeTier {
   min: number;
   max: number | null;
@@ -49,8 +73,8 @@ function getVolumeTier(seats: number): VolumeTier {
   );
 }
 
-function getSeatPriceCents(province: string, seats: number): number {
-  const base = ALL_ACCESS_BASE[province] ?? 34900;
+function getSeatPriceCents(province: string, tier: string, seats: number): number {
+  const base = TIER_BASE_PRICE[province]?.[tier] ?? ALL_ACCESS_BASE[province] ?? 34900;
   const vt = getVolumeTier(seats);
   return Math.round(base * (1 - vt.discountPct / 100));
 }
@@ -78,14 +102,15 @@ export default function Teams() {
   const [location] = useLocation();
   const [seats, setSeats] = useState(10);
   const [province, setProvince] = useState<"ontario" | "western">("ontario");
+  const [tier, setTier] = useState<SubscriptionTier>("all-access");
   const [orgName, setOrgName] = useState("");
   const [managerEmail, setManagerEmail] = useState("");
   const [loading, setLoading] = useState(false);
 
   const volumeTier = useMemo(() => getVolumeTier(seats), [seats]);
-  const seatPriceCents = useMemo(() => getSeatPriceCents(province, seats), [province, seats]);
+  const seatPriceCents = useMemo(() => getSeatPriceCents(province, tier, seats), [province, tier, seats]);
   const totalCents = seatPriceCents * seats;
-  const individualPriceCents = ALL_ACCESS_BASE[province] ?? 34900;
+  const individualPriceCents = TIER_BASE_PRICE[province]?.[tier] ?? ALL_ACCESS_BASE[province] ?? 34900;
   const isLarge = seats >= 50;
 
   const createCheckout = trpc.stripe.createTeamCheckout.useMutation();
@@ -103,7 +128,7 @@ export default function Teams() {
       const result = await createCheckout.mutateAsync({
         orgName: orgName.trim(),
         province,
-        tier: "all-access" as const,
+        tier,
         seats,
         managerEmail: managerEmail.trim().toLowerCase(),
         origin: window.location.origin,
@@ -172,13 +197,25 @@ export default function Teams() {
             </Select>
           </div>
 
-          {/* All-Access badge */}
-          <div className="flex items-center gap-3 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3">
-            <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0" />
-            <div>
-              <p className="text-sm font-semibold text-blue-900">All-Access Plan</p>
-              <p className="text-xs text-blue-600">Every certification level included - Class 1 through 4 + All-Access tracks</p>
+          {/* Tier selector */}
+          <div className="space-y-2">
+            <Label className="text-gray-700">Certification level</Label>
+            <div className="grid grid-cols-5 gap-1.5">
+              {(["class1","class2","class3","class4","all-access"] as SubscriptionTier[]).map(t => (
+                <button
+                  key={t}
+                  onClick={() => setTier(t)}
+                  className={`px-2 py-2 rounded-lg text-xs font-semibold border transition-colors ${
+                    tier === t
+                      ? "bg-blue-600 border-blue-600 text-white"
+                      : "border-gray-300 text-gray-600 hover:border-blue-400 hover:text-blue-700 bg-white"
+                  }`}
+                >
+                  {t === "all-access" ? "All" : TIER_LABELS[t]}
+                </button>
+              ))}
             </div>
+            <p className="text-xs text-gray-500 pt-1">{TIER_DESCRIPTIONS[tier]}</p>
           </div>
 
           {/* Seats */}
@@ -282,7 +319,7 @@ export default function Teams() {
           {isLarge ? (
             <div className="space-y-3">
               <a
-                href={`mailto:hello@echeloninstitute.ca?subject=Team Plan Quote - ${seats} seats&body=Hi,%0A%0AWe are interested in a ${seats}-seat All-Access team plan for ${province === "ontario" ? "Ontario (MOECP / OWWCO)" : "Western Canada (WPI)"}. Our organization is ${orgName || "[org name]"}.%0A%0APlease send us a quote.%0A%0AThanks`}
+                href={`mailto:abello@echeloninstitute.ca?subject=Team Plan Quote - ${seats} seats&body=Hi,%0A%0AWe are interested in a ${seats}-seat ${TIER_LABELS[tier]} team plan for ${province === "ontario" ? "Ontario (MOECP / OWWCO)" : "Western Canada (WPI)"}. Our organization is ${orgName || "[org name]"}.%0A%0APlease send us a quote.%0A%0AThanks`}
                 className="block"
               >
                 <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 text-base font-semibold">
